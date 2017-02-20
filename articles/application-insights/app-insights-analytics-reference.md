@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 71cf6cd6e7a33b3aeb3e0e20b9b047377412786d
+ms.sourcegitcommit: f336058fd743b4dfec17eb301a3b28d035ca8d0f
+ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 71cf6cd6e7a33b3aeb3e0e20b9b047377412786d
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
 
-**クエリと演算子** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**クエリと演算子** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **集計** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -94,6 +94,18 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
     let rows = (n:long) { range steps from 1 to n step 1 };
     rows(10) | ...
 
+テーブルの結果をスカラーに変換してクエリで使用:
+
+```
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
 
 自己結合:
 
@@ -157,6 +169,63 @@ requests // The request table starts this pipeline.
 ```AIQL
 requests | count
 ```
+
+### <a name="datatable-operator"></a>datatable 演算子
+
+テーブルをインライン形式で指定します。 スキーマと値は、クエリ自体で定義します。
+
+この演算子にパイプラインの入力はないことに注意してください。
+
+**構文**
+
+    datatable ( ColumnName1 : ColumnType1 , ...) [ScalarValue1, ...]
+
+* *ColumnName* 列の名前。
+* *ColumnType* [データ型](#scalars)。 
+* *ScalarValue* 適切な型の値。 値の数は、列の数の倍数である必要があります。 
+
+**戻り値**
+
+指定された値が含まれるテーブル。
+
+**例**
+
+```AIQL
+datatable (Date:datetime, Event:string)
+    [datetime(1910-06-11), "Born",
+     datetime(1930-01-01), "Enters Ecole Navale",
+     datetime(1953-01-01), "Published first book",
+     datetime(1997-06-25), "Died"]
+| where strlen(Event) > 4
+```
+
+### <a name="distinct-operator"></a>distinct 演算子
+
+値の組み合わせ (重複は除外されます) からなる行のセットが含まれるテーブルを返します。 必要に応じて、演算前にその対象を列のサブセットに限定します。
+
+**構文**
+
+    T | distinct *              // All columns
+    T | distinct Column1, ...   // Columns to project
+
+**例**
+
+```AIQL
+datatable (Supplier: string, Fruit: string, Price:int) 
+["Contoso", "Grapes", 22,
+"Fabrikam", "Apples", 14,
+"Contoso", "Apples", 15,
+"Fabrikam", "Grapes", 22]
+| distinct Fruit, Price 
+```
+
+
+|Fruit|料金|
+|---|---|
+|Grapes|22|
+|Apples|14|
+|Apples|15|
+
 
 ### <a name="evaluate-operator"></a>evaluate 演算子
 `evaluate` は、クエリに特殊なアルゴリズムを追加できるようにする拡張メカニズムです。
@@ -571,32 +640,32 @@ UK からのすべての要求と例外を見つけます。ただし、可用�
 2 つのモードのプロパティ バッグの展開がサポートされています。
 
 * `bagexpansion=bag`: プロパティ バッグは、単一エントリのプロパティ バッグに展開されます。 これが既定の展開です。
-* `bagexpansion=array`: プロパティ バッグは&2; 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。 
+* `bagexpansion=array`: プロパティ バッグは&2; 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。
 
 **例**
 
-    exceptions | take 1 
+    exceptions | take 1
     | mvexpand details[0]
 
 例外のレコードを詳細フィールドの項目ごとに行に分割します。
 
 ### <a name="parse-operator"></a>parse 演算子
-    T | parse "I got 2 socks for my birthday when I was 63 years old" 
+    T | parse "I got 2 socks for my birthday when I was 63 years old"
     with * "got" counter:long " " present "for" * "was" year:long *
 
 
     T | parse kind=relaxed
-          "I got no socks for my birthday when I was 63 years old" 
-    with * "got" counter:long " " present "for" * "was" year:long * 
+          "I got no socks for my birthday when I was 63 years old"
+    with * "got" counter:long " " present "for" * "was" year:long *
 
-    T |  parse kind=regex "I got socks for my 63rd birthday" 
-    with "(I|She) got " present " for .*?" year:long * 
+    T |  parse kind=regex "I got socks for my 63rd birthday"
+    with "(I|She) got " present " for .*?" year:long *
 
 文字列から値を抽出します。 単純な照合または正規表現の照合を使用できます。
 
 **構文**
 
-    T | parse [kind=regex|relaxed] SourceText 
+    T | parse [kind=regex|relaxed] SourceText
         with [Match | Column [: Type [*]] ]  ...
 
 **引数**
@@ -844,6 +913,50 @@ render では、テーブルの表示方法をプレゼンテーション層に�
     restrict access to (e1, e2);
     union * |  take 10 
 
+### <a name="sample-operator"></a>sample 演算子
+
+入力テーブルから、一様に分布したランダムな行を返します。
+
+
+**構文**
+
+    T | sample NumerOfRows
+
+* *NumberOfRows* サンプルとして返される行の数。
+
+**ヒント**
+
+一様に分布したサンプルが必要ない場合は、`Take` を使用します。
+
+
+### <a name="sample-distinct-operator"></a>sample-distinct 演算子
+
+要求された列について、指定された個数までの重複なしの値が含まれる&1; つの列を返します。 現時点では、適切に分布したサンプルは返されません。
+
+**構文**
+
+    T | sample-distinct NumberOfValues of ColumnName
+
+* *NumberOfValues* 必要とする、テーブルの長さ。
+* *ColumnName* 必要とする列。
+
+**ヒント**
+
+sample-distinct を let ステートメントに配置し、後で in 演算子を使用してフィルター処理して、母集団をサンプリングする場合に便利なことがあります (例をご覧ください)。
+ 
+ただのサンプルではなく上位値が必要な場合は、top-hitters 演算子を使用できます。
+
+(特定の列の値ではなく) データ行をサンプリングする場合は、「[sample 演算子](#sample-operator)」をご覧ください。
+
+**例**
+
+summarize 演算がクエリの制限を超えないことがわかっている場合に、母集団をサンプリングしてさらに計算を行います。
+
+```AIQL
+let sampleops = toscalar(requests | sample-distinct 10 of OperationName);
+requests | where OperationName in (sampleops) | summarize total=count() by OperationName
+```
+
 ### <a name="sort-operator"></a>sort 演算子
     T | sort by country asc, price desc
 
@@ -853,7 +966,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 
 **構文**
 
-    T  | sort by Column [ asc | desc ] [ `,` ... ]
+    T  | sort by Column [ asc | desc ] [ , ... ]
 
 **引数**
 
@@ -886,9 +999,9 @@ Traces
 **構文**
 
     T | summarize
-         [  [ Column = ] Aggregation [ `,` ... ] ]
+         [  [ Column = ] Aggregation [ , ... ] ]
          [ by
-            [ Column = ] GroupExpression [ `,` ... ] ]
+            [ Column = ] GroupExpression [ , ... ] ]
 
 **引数**
 
@@ -919,7 +1032,7 @@ Traces
 
 **構文**
 
-    T | top NumberOfRows by Sort_expression [ `asc` | `desc` ] [`nulls first`|`nulls last`] [, ... ]
+    T | top NumberOfRows by Sort_expression [ asc | desc ] [nulls first|nulls last] [, ... ]
 
 **引数**
 
@@ -933,11 +1046,11 @@ Traces
 `top 5 by name` は、表面的には `sort by name | take 5` と同等です。 しかし、こちらの方が処理速度が早く、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
 
 ### <a name="top-nested-operator"></a>top-nested 演算子
-    requests 
-    | top-nested 5 of name by count()  
-    , top-nested 3 of performanceBucket by count() 
+    requests
+    | top-nested 5 of name by count()
+    , top-nested 3 of performanceBucket by count()
     , top-nested 3 of client_CountryOrRegion by count()
-    | render barchart 
+    | render barchart
 
 各レベルが前のレベルからのドリルダウンである、階層型の結果を生成します。 これは、"上位 5 件のリクエストは何か。そのそれぞれについて、上位 3 つのパフォーマンス バケットはどのようなものか。さらにそのそれぞれについて、リクエストの出された上位 3 つの国はどこか" というような質問に答える場合に便利です。
 
@@ -1077,17 +1190,54 @@ traces
 
 **構文**
 
-    T | where col in (expr1, expr2, ...)
-    T | where col !in (expr1, expr2, ...)
+    T | where col in (listExpression)
+    T | where col !in (listExpression)
 
 **引数**
 
 * `col`: テーブルの列。
-* `expr1`...: スカラー式のリスト。
+* `listExpression`...: スカラー式のリスト、またはリストに評価される式。 
+
+入れ子になった配列は、1 つのリストにフラット化されます。たとえば、`where x in (dynamic([1,[2,3]]))` は `where x in (1,2,3)` になります。
 
 `in` は、`col` が式 `expr1...` のいずれかに等しい行のみを含めるために使用します。
 
 `!in` は、`col` が式 `expr1...` のいずれにも等しくない行のみを含めるために使用します。  
+
+**例**
+
+```AIQL
+let cities = dynamic(['Dublin','Redmond','Amsterdam']);
+requests | where client_City in (cities) 
+|  summarize count() by client_City
+```
+
+計算されるリスト:
+
+```AIQL
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
+
+リストの式として関数呼び出しを使用:
+
+```AIQL
+let topCities =  (n:int) {toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City)) };
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+ 
 
 ## <a name="aggregations"></a>集計
 集計とは、 [summarize 演算](#summarize-operator)で作成されたグループの値を結合するための関数です。 たとえば、次のクエリでは、dcount() が集計関数です。
@@ -1160,10 +1310,10 @@ traces
 
 結果:
 
-    { "`indexer`":
+    { "indexer":
      {"id":"string",
        "parsedStack":
-       { "`indexer`": 
+       { "indexer": 
          {  "level":"int",
             "assembly":"string",
             "fileName":"string",
@@ -1195,11 +1345,11 @@ traces
 
 結果のスキーマは次のようになります。
 
-    { 
-      "x":["int", "string"], 
-      "y":["double", {"w": "string"}], 
-      "z":{"`indexer`": ["int", "string"]}, 
-      "t":{"`indexer`": "string"} 
+    {
+      "x":["int", "string"],
+      "y":["double", {"w": "string"}],
+      "z":{"indexer": ["int", "string"]},
+      "t":{"indexer": "string"}
     }
 
 スキーマの内容は以下のとおりです。
@@ -1216,19 +1366,19 @@ traces
 返されるスキーマの構文は次のとおりです。
 
     Container ::= '{' Named-type* '}';
-    Named-type ::= (name | '"`indexer`"') ':' Type;
+    Named-type ::= (name | '"indexer"') ':' Type;
     Type ::= Primitive-type | Union-type | Container;
     Union-type ::= '[' Type* ']';
     Primitive-type ::= "int" | "string" | ...;
 
 これらは TypeScript 型の注釈のサブセットと同等であり、動的値としてエンコードされます。 TypeScript のスキーマ例を以下に示します。
 
-    var someobject: 
-    { 
-      x?: (number | string), 
-      y?: (number | { w?: string}), 
+    var someobject:
+    {
+      x?: (number | string),
+      y?: (number | { w?: string}),
       z?: { [n:number] : (int | string)},
-      t?: { [n:number]: string } 
+      t?: { [n:number]: string }
     }
 
 
@@ -1634,6 +1784,12 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
     and 
     or 
 
+### <a name="convert-to-boolean"></a>ブール値への変換
+
+値 "true" または "false" を含む文字列 `aStringBoolean` がある場合、次のようにしてブール値に変換できます。
+
+    booleanResult = aStringBoolean =~ "true"
+
 
 
 ## <a name="numbers"></a>数値
@@ -1785,13 +1941,6 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
 
-### <a name="tolong"></a>tolong
-    tolong(20.7) == 20 // conversion from double
-    tolong(20.4) == 20 // conversion from double
-    tolong("  123  ")  // parse string
-    tolong(a[0])       // cast from dynamic
-    tolong(b.c)        // cast from dynamic
-
 
 ### <a name="todouble"></a>todouble
     todouble(20) == 20.0 // conversion from long or int
@@ -1799,6 +1948,13 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
     todouble(a[0])       // cast from dynamic
     todouble(b.c)        // cast from dynamic
 
+
+### <a name="tolong"></a>tolong
+    tolong(20.7) == 20 // conversion from double
+    tolong(20.4) == 20 // conversion from double
+    tolong("  123  ")  // parse string
+    tolong(a[0])       // cast from dynamic
+    tolong(b.c)        // cast from dynamic
 
 
 ## <a name="date-and-time"></a>日付と時刻
@@ -2066,7 +2222,7 @@ h"hello"
 | --- | --- | --- | --- |
 | `==` |等しい |はい |`"aBc" == "aBc"` |
 | `<>` `!=` |等しくない |はい |`"abc" <> "ABC"` |
-| `=~` |等しい |いいえ |`"abc" =~ "ABC"` |
+| `=~` |等しい |いいえ |`"abc" =~ "ABC"` <br/>`boolAsString =~ "true"` |
 | `!~` |等しくない |いいえ |`"aBc" !~ "xyz"` |
 | `has` |右辺 (RHS) が左辺 (LHS) に&1; つの単語として含まれる |いいえ |`"North America" has "america"` |
 | `!has` |RHS が LHS に完全な単語として含まれない |いいえ |`"North America" !has "amer"` |
@@ -2375,8 +2531,8 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | summarize count() 
       by toint(details[0].parsedStack[0].line)
 
-    exceptions 
-    | summarize count() 
+    exceptions
+    | summarize count()
       by tostring(details[0].parsedStack[0].assembly)
 
 **リテラル:** 明示的な配列またはプロパティ バッグ オブジェクトを作成するには、次のように、JSON 文字列として記述し、キャストします。
@@ -2386,7 +2542,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 **mvexpand:** オブジェクトのプロパティを個々の行に分解するには、次のように、mvexpand を使用します。
 
-    exceptions | take 1 
+    exceptions | take 1
     | mvexpand details[0].parsedStack[0]
 
 
@@ -2394,8 +2550,8 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 **treepath:** 複合オブジェクト内のすべてのパスを検索するには、次のようにします。
 
-    exceptions | take 1 | project timestamp, details 
-    | extend path = treepath(details) 
+    exceptions | take 1 | project timestamp, details
+    | extend path = treepath(details)
     | mvexpand path
 
 
@@ -2407,10 +2563,10 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 結果:
 
-    { "`indexer`":
+    { "indexer":
      {"id":"string",
        "parsedStack":
-       { "`indexer`": 
+       { "indexer":
          {  "level":"int",
             "assembly":"string",
             "fileName":"string",
@@ -2436,7 +2592,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 動的リテラルを作成するには、次のように、JSON 文字列引数を指定した `parsejson` (エイリアスは `todynamic`) を使用します。
 
 * `parsejson('[43, 21, 65]')` - 数値の配列
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
+* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
 * `parsejson('21')` - 数値を示す、動的な型の単一の値
 * `parsejson('"21"')` - 文字列を示す、動的な型の単一の値
 
@@ -2681,6 +2837,6 @@ range(1, 8, 3)
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

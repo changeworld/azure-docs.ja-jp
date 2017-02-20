@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 を使用して Web API を呼び出す .NET MVC Web アプリをセキュリティで保護する | Microsoft Docs"
+title: "Azure AD v2.0 .NET Web アプリの呼び出し API の概要 | Microsoft Docs"
 description: "サインインに Microsoft の個人および職場/学校アカウントを使用する Web サービスを呼び出す .NET MVC Web アプリを構築する方法。"
 services: active-directory
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: 8c35bfbc75f99fc8558f83667b12a6df1cd3eefd
+ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
+ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
 
 
 ---
@@ -202,6 +202,6 @@ catch (MsalException ee)
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

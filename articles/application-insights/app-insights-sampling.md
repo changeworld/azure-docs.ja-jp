@@ -1,31 +1,31 @@
 ---
-title: "Application Insights におけるテレメトリ サンプリング | Microsoft Docs"
+title: "Azure Application Insights におけるテレメトリ サンプリング | Microsoft Docs"
 description: "テレメトリのボリュームを抑制する方法。"
 services: application-insights
 documentationcenter: windows
 author: vgorbenko
-manager: douge
+manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
+ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
+ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
 
 
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
 
-サンプリングは [Azure Application Insights](app-insights-overview.md) の機能です。サンプリングは、アプリケーション データの分析に関して統計的な正しさを保ちながらテレメトリのトラフィックと保存スペースを減らす方法として推奨されます。 フィルターによって関連のある項目が選択されるため、診断調査を行うときに項目間を移動できるようになります。
+サンプリングは [Azure Application Insights](app-insights-overview.md) の機能です。 サンプリングは、アプリケーション データの分析に関して統計的な正しさを保ちながら、テレメトリのトラフィックと保存スペースを減らす方法として推奨されます。 フィルターによって関連のある項目が選択されるため、診断調査を行うときに項目間を移動できるようになります。
 ポータルでメトリック数が表示されるときは、統計値への影響を最小限に抑えるために、メトリック数を再正規化してサンプリングに配慮します。
 
-サンプリングを使用することでトラフィックが減るため、データを月間クォータ以内に収めることができるほか、スロットルを回避できます。
+サンプリングによってトラフィックとデータ コストが減り、スロットルを回避できます。
 
 ## <a name="in-brief"></a>概要:
 * サンプリングでは、 *n* 個のレコードのうちの 1 個が保持されて、残りは破棄されます。 たとえば、5 イベントのうち 1 個を残した場合、サンプリング レートは 20% です。 
@@ -36,7 +36,7 @@ ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
 * Analytics クエリを作成する場合は、 [サンプリングを考慮する](app-insights-analytics-tour.md#counting-sampled-data)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
 
 ## <a name="types-of-sampling"></a>サンプリングの種類
-現在は 3 つのサンプリング メソッドがあります。
+現在は&3; つのサンプリング メソッドがあります。
 
 * **アダプティブ サンプリング** は、ASP.NET アプリの SDK から送信されるテレメトリの量を自動的に調整します。 SDK v 2.0.0-beta3 からの既定値です。 現在は、ASP.NET サーバー側テレメトリでのみ使用できます。 
 * **固定レート サンプリング** は、ASP.NET サーバーおよびユーザーのブラウザーから送信されるテレメトリの量を削減します。 管理者がレートを設定します。 クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
@@ -103,6 +103,17 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
 * `<InitialSamplingPercentage>100</InitialSamplingPercentage>`
   
     アプリの起動直後に割り当てられる値。 デバッグ中はこの値を減らさないでください。 
+
+* `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
+  
+    サンプリング対象にしない型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。
+
+* `<IncludedTypes>Request;Dependency</IncludedTypes>`
+  
+    サンプリング対象にする型のセミコロン区切りのリスト。 認識される型は、Dependency、Event、Exception、PageView、Request、Trace です。 指定した型はサンプリングされます。他の型のすべてのインスタンスは常に転送されます。
+
+
+アダプティブ サンプリングを**オフにする**には、applicationinsights-config から AdaptiveSamplingTelemetryProcessor ノードを削除します。
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>代替方法: コードでのアダプティブ サンプリングの構成
 .config ファイルでサンプリングを調整する代わりに、コードを使用できます。 この方法では、サンプリング レートが再評価されるたびに呼び出されるコールバック関数を指定できます。 たとえば、この方法を使用して、どのようなサンプリング レートが使用されているかを確認できます。
@@ -319,7 +330,7 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 * 1 つの方法として、アダプティブ サンプリングから始め、決定されたレートを確認したら (前の質問を参照)、そのレートを使って固定レート サンプリングに切り替えます。 
   
-    それ以外では、推測するしかありません。 AI での現在のテレメトリ使用状況を分析し、発生しているスロットルを観察して、収集されるテレメトリの量を見積もります。 この 3 つの情報に、選択した価格レベルを合わせて考えると、収集されるテレメトリの量をどれくらい削減すればよいかがわかります。 ただし、ユーザー数の増加やテレメトリ量の何らかの変化によって、見積りが無効になることがあります。
+    それ以外では、推測するしかありません。 AI での現在のテレメトリ使用状況を分析し、発生しているスロットルを観察して、収集されるテレメトリの量を見積もります。 この&3; つの情報に、選択した価格レベルを合わせて考えると、収集されるテレメトリの量をどれくらい削減すればよいかがわかります。 ただし、ユーザー数の増加やテレメトリ量の何らかの変化によって、見積りが無効になることがあります。
 
 *サンプリング率を低く構成しすぎると、どうなりますか。*
 
@@ -344,6 +355,6 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

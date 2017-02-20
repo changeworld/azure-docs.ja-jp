@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2284b12c87eee6a453844e54cdcb2add5874218b
-ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
+ms.sourcegitcommit: ab9006b915b3455b6e63857514e98ed89ad78c7c
+ms.openlocfilehash: 9914f1dc96672020a4d7e7a1976d20e5abf7028b
 
 
 ---
@@ -91,7 +91,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 ```AIQL
 
     requests
-    | where resultCode  == "404" 
+    | where resultCode  == "404"
     | take 10
 ```
 
@@ -128,26 +128,26 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
     // What were the slowest requests over the past 3 days?
     requests
-    | where timestamp > ago(3d)  // Override the time range 
+    | where timestamp > ago(3d)  // Override the time range
     | top 5 by duration
 ```
 
-時間範囲の機能は、いずれかのソース テーブルの各メンションの後に挿入される 'where' 句に相当します。 
+時間範囲の機能は、いずれかのソース テーブルの各メンションの後に挿入される 'where' 句に相当します。
 
-`ago(3d)` は "3 日前" を意味します。 他の時間単位には、時間 (`2h`、`2.5h`)、分 (`25m`)、および秒 (`10s`) があります。 
+`ago(3d)` は "3 日前" を意味します。 他の時間単位には、時間 (`2h`、`2.5h`)、分 (`25m`)、および秒 (`10s`) があります。
 
 その他の例:
 
 ```AIQL
 
     // Last calendar week:
-    requests 
-    | where timestamp > startofweek(now()-7d) 
-        and timestamp < startofweek(now()) 
+    requests
+    | where timestamp > startofweek(now()-7d)
+        and timestamp < startofweek(now())
     | top 5 by duration
 
     // First hour of every day in past seven days:
-    requests 
+    requests
     | where timestamp > ago(7d) and timestamp % 1d < 1h
     | top 5 by duration
 
@@ -189,7 +189,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 * `['...']` や `["..."]` のように角かっこで囲まれている場合は、[列名](app-insights-analytics-reference.md#names)にスペースまたは記号を含めることができます。
 * `%` は一般的なモジュロ演算子です。
-* `1d` (数字の 1 の後に "d" が付加されている) は 1 日を意味する期間リテラルです。 期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
+* `1d` (数字の&1; の後に "d" が付加されている) は&1; 日を意味する期間リテラルです。 期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
 * `floor` (エイリアスは `bin`) は、指定した基準値の最も近い倍数に値を切り捨てます。 したがって、 `floor(aTime, 1s)` の場合、最も近い秒数に時間を切り捨てます。
 
 [式](app-insights-analytics-reference.md#scalars)には、一般的な演算子 (`+` や `-` など) をすべて含めることができ、各種の便利な関数があります。
@@ -212,7 +212,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ```AIQL
 
-    requests 
+    requests
     | top 10 by timestamp desc
     | extend localTime = timestamp - 8h
 ```
@@ -229,7 +229,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作名) は、結果のテーブルに 1 列で表示されます。
+`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作名) は、結果のテーブルに&1; 列で表示されます。
 
 結果を時間帯でグループ分けすることもできます。
 
@@ -294,7 +294,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 ## <a name="multiple-series"></a>複数の系列
 `summarize` 句の複数の式によって複数の列が作成されます。
 
-`by` 句の複数の式によって複数の行 (値の組み合わせごとに 1 つ) が作成されます。
+`by` 句の複数の式によって複数の行 (値の組み合わせごとに&1; つ) が作成されます。
 
 ```AIQL
 
@@ -318,14 +318,14 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 ```AIQL
 
     // Bounce rate: sessions with only one page view
-    requests 
-    | where notempty(session_Id) 
+    requests
+    | where notempty(session_Id)
     | where tostring(operation_SyntheticSource) == "" // real users
-    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp) 
-               by session_Id 
-    | extend isbounce= pagesInSession == 1 
-    | summarize count() 
-               by tostring(isbounce), bin (sessionEnd, 1h) 
+    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp)
+               by session_Id
+    | extend isbounce= pagesInSession == 1
+    | summarize count()
+               by tostring(isbounce), bin (sessionEnd, 1h)
     | render timechart
 ```
 
@@ -343,7 +343,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 
 ```AIQL
 
-    requests 
+    requests
     | where timestamp > ago(30d)  // Override "Last 24h"
     | where tostring(operation_SyntheticSource) == "" // real users
     | extend hour = bin(timestamp % 1d , 1h)
@@ -459,6 +459,7 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
 その場合、同じ句で、タイムスタンプ列の名前を変更します。
 
 ## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[let](app-insights-analytics-reference.md#let-clause): 結果を変数に代入する
+
 上記の式の部分を分割する場合は、`let` を使用します。 結果は変わりません。
 
 ```AIQL
@@ -471,23 +472,37 @@ ms.openlocfilehash: e5872f48e77cbb729dca88a2e5c603fdf2759fa5
     | take 30
 ```
 
-> ヒント: Analytics クライアントでは、クエリの各部分の間に空白行を入れないでください。 必ず、すべて間を空けずに実行してください。
->
+> [!Tip] 
+> Analytics クライアントでは、クエリの各部分の間に空白行を入れないでください。 必ず、すべて間を空けずに実行してください。
 >
 
-### <a name="functions"></a>関数 
+`toscalar` を使用して、単一のテーブル セルを値に変換します。
+
+```AIQL
+let topCities =  toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City));
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+
+
+### <a name="functions"></a>関数
 
 *Let* を使用して関数を定義します。
 
 ```AIQL
 
-    let usdate = (t:datetime) 
+    let usdate = (t:datetime)
     {
-      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ", 
+      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
       bin((t-1h)%12h+1h,1s), iff(t%24h<12h, "AM", "PM"))
     };
     requests  
-    | extend PST = usdate(timestamp-8h) 
+    | extend PST = usdate(timestamp-8h)
 ```
 
 ## <a name="accessing-nested-objects"></a>入れ子になったオブジェクトへのアクセス
@@ -547,24 +562,24 @@ Analytics でこれらの値を抽出するには、次のようにします。
 
 ## <a name="combine-with-imported-data"></a>インポート済みデータと組み合わせる
 
-Analytics レポートはダッシュボードで非常にわかりやすいものの、データをより消化しやすい形式に変換することが必要な場合もあります。 たとえば、認証されたユーザーがテレメトリでエイリアスにより識別されるとします。 結果には、ユーザーの実名を表示する必要があるとします。 このために必要なのは、エイリアスから実際の名前にマップする CSV ファイルです。 
+Analytics レポートはダッシュボードで非常にわかりやすいものの、データをより消化しやすい形式に変換することが必要な場合もあります。 たとえば、認証されたユーザーがテレメトリでエイリアスにより識別されるとします。 結果には、ユーザーの実名を表示する必要があるとします。 このために必要なのは、エイリアスから実際の名前にマップする CSV ファイルです。
 
 データ ファイルをインポートし、標準的なテーブル (要求、例外など) と同じようにそれを使用できます。 それに単独でクエリを実行するか、他のテーブルと結合します。 たとえば、ユーザーマップという名前のテーブルに `realName` および `userId` という列がある場合、これを使用して要求テレメトリで `user_AuthenticatedId` フィールドを変換できます。
 
 ```AIQL
 
     requests
-    | where notempty(user_AuthenticatedId) 
+    | where notempty(user_AuthenticatedId)
     | project userId = user_AuthenticatedId
       // get the realName field from the usermap table:
-    | join kind=leftouter ( usermap ) on userId 
+    | join kind=leftouter ( usermap ) on userId
       // count transactions by name:
     | summarize count() by realName
 ```
 
-テーブルをインポートするには、[スキーマ] ブレードの **[他のデータ ソース]** で、データのサンプルをアップロードして、指示に従って新しいデータ ソースを追加します。 次に、この定義を使用して、テーブルをアップロードできます。 
+テーブルをインポートするには、[スキーマ] ブレードの **[他のデータ ソース]** で、データのサンプルをアップロードして、指示に従って新しいデータ ソースを追加します。 次に、この定義を使用して、テーブルをアップロードできます。
 
-インポート機能は現在プレビュー段階であるため、最初に [他のデータ ソース] に [お問い合わせ] リンクが表示されます。 これを使用してプレビュー プログラムにサインアップすると、リンクは [新しいデータ ソースの追加] ボタンに変わります。 
+インポート機能は現在プレビュー段階であるため、最初に [他のデータ ソース] に [お問い合わせ] リンクが表示されます。 これを使用してプレビュー プログラムにサインアップすると、リンクは [新しいデータ ソースの追加] ボタンに変わります。
 
 
 ## <a name="tables"></a>テーブル
@@ -580,7 +595,7 @@ Web アプリとセグメントに対する HTTP 要求をページ名別にカ�
 ![名前別にセグメント化された要求をカウントします。](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>カスタム イベント テーブル
-[TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) を使用して独自のイベントを送信すると、このテーブルからイベントを読み取ることができます。
+[TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) を使用して独自のイベントを送信すると、このテーブルからイベントを読み取ることができます。
 
 アプリ コードに次の行が含まれている例を見てみましょう。
 
@@ -602,7 +617,7 @@ Web アプリとセグメントに対する HTTP 要求をページ名別にカ�
 ![カスタム イベントの表示率](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>カスタム メトリック テーブル
-[TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) を使用して独自のメトリック値を送信すると、**customMetrics** ストリームでその結果がわかります。 次に例を示します。  
+[TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) を使用して独自のメトリック値を送信すると、**customMetrics** ストリームでその結果がわかります。 次に例を示します。  
 
 ![Application Insights Analytics のカスタム メトリック](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
@@ -655,16 +670,16 @@ Web アプリとセグメントに対する HTTP 要求をページ名別にカ�
 ブラウザーからの AJAX 呼び出し:
 
 ```AIQL
-    
-    dependencies | where client_Type == "Browser" 
+
+    dependencies | where client_Type == "Browser"
     | take 10
 ```
 
 サーバーからの依存関係呼び出し:
 
 ```AIQL
-    
-    dependencies | where client_Type == "PC" 
+
+    dependencies | where client_Type == "PC"
     | take 10
 ```
 
@@ -683,6 +698,6 @@ TrackTrace() を使用してアプリが送信したテレメトリ、または 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

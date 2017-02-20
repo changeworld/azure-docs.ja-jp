@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ac82535515f346d43bbceeb274ce61d81ade60b1
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: bb140097831453d46f6bfef1c9fbe569eefb3020
 
 
 ---
@@ -27,7 +27,7 @@ Tangoe Command Premium Mobile と Azure AD の統合には、次の利点があ�
 
 * Tangoe Command Premium Mobile にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが各自の Azure AD アカウントで Tangoe Command Premium Mobile に自動的にサインオン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+* Azure クラシック ポータルでアカウントを一元的に管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -35,7 +35,7 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Azure AD と Tangoe Command Premium Mobile の統合を構成するには、次のものが必要です。
 
 * Azure サブスクリプション
-* Tangoe Command Premium Mobile でのシングル サインオンが有効なサブスクリプション
+* Tangoe Command Premium Mobile でのシングル サインオン (SSO) が有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -45,12 +45,12 @@ Azure AD と Tangoe Command Premium Mobile の統合を構成するには、次�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Tangoe Command Premium Mobile の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -110,40 +110,39 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_04.png) 
 
-    a. **[サインオン URL]** ボックスに、ユーザーが Tangoe Command Premium Mobile アプリケーションへのサインオンに使用する URL を **"https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<tenant issuer\>&Target=\<target page URL\>"** の形式で入力します。
+   1. **[サインオン URL]** ボックスに、ユーザーが Tangoe Command Premium Mobile アプリケーションへのサインオンに使用する URL を **"https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<tenant issuer\>&Target=\<target page URL\>"** の形式で入力します。
 
-    b. **[応答 URL]** ボックスに、**"https://sso.tangoe.com/sp/ACS.saml2"** の形式で URL を入力します。
+   2. **[応答 URL]** ボックスに、**"https://sso.tangoe.com/sp/ACS.saml2"** の形式で URL を入力します。
 
-    > [AZURE.NOTE]  URL の正しい値がわからない場合、上記の値をプレース ホルダーとして使用し、Tangoe のカスタマー サポート担当者に連絡して正しい値を入手してください。
+    > [!NOTE]  
+    > URL の正しい値がわからない場合、上記の値をプレース ホルダーとして使用し、Tangoe のカスタマー サポート担当者に連絡して正しい値を入手してください。
+    >
 
-
-1. **[Tangoe Command Premium Mobile でのシングル サインオンの構成]** ページで、次の手順を実行します。
+4. **[Tangoe Command Premium Mobile でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_05.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
-2. アプリケーション用に構成された SSO を入手するには、Tangoe のカスタマー サポート担当者に連絡し、次のものを情報として提供してください。
+   1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+   2. **[次へ]**をクリックします。
 
-    - ダウンロードしたメタデータ ファイル
-    - **発行者の URL**
-    - **SAML SSO URL**
-    - **シングル サインアウト サービス URL**
+5. アプリケーション用に構成された SSO を入手するには、Tangoe のカスタマー サポート担当者に連絡し、次のものを情報として提供してください。
 
+   - ダウンロードしたメタデータ ファイル
+   - **発行者の URL**
+   - **SAML SSO URL**
+   - **シングル サインアウト サービス URL**
 
-
-1. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
-2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
+7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
-ユーザーの一覧で **[Britta Simon]**を選択します。
+* ユーザーの一覧で **[Britta Simon]**を選択します。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -172,15 +171,11 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tangoe-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tangoe-tutorial/create_aaduser_07.png) 
@@ -188,16 +183,14 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tangoe-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-tangoe-command-premium-mobile-test-user"></a>Tangoe Command Premium Mobile テスト ユーザーの作成
 このセクションでは、Tangoe Command Premium Mobile で Britta Simon というユーザーを作成します。 Tangoe Command Premium Mobile アプリケーションでは、シングル サインオンを行う前に、すべてのユーザーをアプリケーションにプロビジョニングする必要があります。 Tangoe のカスタマー サポート担当者と連携し、すべてのユーザーをアプリケーションにプロビジョニングしてください。 
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合、またはユーザーのバッチを作成する必要がある場合は、Tangoe Command Premium Mobile のサポート チームにお問い合わせください。
-> 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -209,18 +202,18 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-![ユーザーの割り当て][201] 
+ ![ユーザーの割り当て][201] 
 
-1. アプリケーションの一覧で **[Tangoe Command Premium Mobile]**を選択します。
+2. アプリケーションの一覧で **[Tangoe Command Premium Mobile]**を選択します。
 
-![[シングル サインオンの構成]](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ ![[シングル サインオンの構成]](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ 
+3. 上部のメニューで **[ユーザー]**をクリックします。
 
-1. 上部のメニューで **[ユーザー]**をクリックします。
+ ![ユーザーの割り当て][203] 
 
-![ユーザーの割り当て][203] 
-
-1. ユーザーの一覧で **[Britta Simon]**を選択します。
-2. 下部にあるツール バーで **[割り当て]**をクリックします。
+4. ユーザーの一覧で **[Britta Simon]**を選択します。
+5. 下部にあるツール バーで **[割り当て]**をクリックします。
 
 ![ユーザーの割り当て][205]
 
@@ -253,6 +246,6 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

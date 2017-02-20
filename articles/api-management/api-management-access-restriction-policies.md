@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 2b2d71decf6027a7ffdde444c0746ad5da0080b5
+ms.sourcegitcommit: fd3a08f227ade7589bbc7a17fa600e5a283d8054
+ms.openlocfilehash: 7e1f99c6c603420386432e04d0a2f0ecda95d6b7
 
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
@@ -368,7 +368,8 @@ ms.openlocfilehash: 2b2d71decf6027a7ffdde444c0746ad5da0080b5
     header-name="name of http header containing the token (use query-parameter-name attribute if the token is passed in the URL)"   
     failed-validation-httpcode="http status code to return on failure"   
     failed-validation-error-message="error message to return on failure"   
-    require-expiration-time="true|false"   
+    require-expiration-time="true|false"
+    require-scheme="scheme"
     require-signed-tokens="true|false"   
     clock-skew="allowed clock skew in seconds">  
   <issuer-signing-keys>  
@@ -491,7 +492,8 @@ ms.openlocfilehash: 2b2d71decf6027a7ffdde444c0746ad5da0080b5
 |id|`key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。|なし|該当なし|  
 |match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも&1; つトークン内に存在する必要があります。|なし|すべて|  
 |query-paremeter-name|トークンを保持するクエリ パラメーターの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
-|require-expiration-time|ブール値。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。|いいえ|true|  
+|require-expiration-time|ブール値。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。|いいえ|true|
+|require-scheme|トークン スキームの名前 (例: "Bearer")。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ|該当なし|
 |require-signed-tokens|ブール値。 トークンに署名が必要かどうかを指定します。|いいえ|true|  
 |url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 Azure Active Directory の場合は、`https://login.windows.net/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
   
@@ -506,6 +508,7 @@ ms.openlocfilehash: 2b2d71decf6027a7ffdde444c0746ad5da0080b5
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO1-->
 
 

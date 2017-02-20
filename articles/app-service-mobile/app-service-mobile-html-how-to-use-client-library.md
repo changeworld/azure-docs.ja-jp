@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: d6e68497cf0a4c48e6f611834089224b50b9bd5e
-ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 3914d5bdc8feff7d7de5c6f7255396acade341b9
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
 
 このガイドでは、最新の [Azure Mobile Apps 向け JavaScript SDK]を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドおよびテーブルの作成を行ってください。 このガイドでは、HTML/JavaScript Web アプリケーションでのモバイル バックエンドの使用に重点を置いています。
 
-## <a name="supported-platforms"></a>サポートされているプラットフォーム
+## <a name="supported-platforms"></a>サポートされるプラットフォーム
 ブラウザーのサポートは、現在のバージョンおよび最新バージョンの主要ブラウザー (Google Chrome、Microsoft Edge、Microsoft Internet Explorer、Mozilla Firefox) に制限されています。  この SDK は、比較的新しいブラウザーで機能すると思われます。
 
 パッケージは Universal JavaScript モジュールとして配布されるので、グローバル、AMD、CommonJS の各形式をサポートします。
@@ -59,16 +59,16 @@ CDN から直接ダウンロードして、SDK のビルド済みバージョン
 ## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>方法: ユーザーを認証する
 Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
 
-サーバー フローとクライアント フローの 2 つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
+サーバー フローとクライアント フローの&2; つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>方法: 外部リダイレクト URL 用に Mobile App Service を構成する
+### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の JavaScript アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  次のような機能があります。
 
 * サービスをローカルで実行する。
 * Ionic Framework でライブ リロードを使用する。
-* 認証のために App Service にリダイレクトする。 
+* 認証のために App Service にリダイレクトする。
 
 既定では、App Service 認証は、モバイル アプリ バックエンドからのアクセスだけを許可するように構成されているため、ローカルで実行すると、問題が発生する可能性があります。 App Service 設定を変更して、サーバーがローカルで実行されているときに認証を有効にするには、次の手順を実行します。
 
@@ -79,12 +79,12 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 5. アプリの **config** ノード、 > **authsettings** ノードの順に展開します。
 6. **[編集]** ボタンをクリックして、リソースの編集を有効にします。
 7. **allowedExternalRedirectUrls** 要素を探します。この要素は null になっています。 配列に実際の URL を追加します。
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     配列内の URL をサービスの URL に置き換えます。この例では、ローカルの Node.js サンプル サービス用の `http://localhost:3000` を使用しています。 アプリケーションの構成に応じて、Ripple サービス用の `http://localhost:4400` や他の URL を使用することもできます。
 8. ページの上部で **[読み取り/書き込み]**、**[PUT]** の順にクリックして、更新を保存します。
 
@@ -110,6 +110,6 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

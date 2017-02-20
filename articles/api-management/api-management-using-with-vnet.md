@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 40d9b0ee5a24e5503de19daa030bf1e8169dec24
-ms.openlocfilehash: 58be070ea5d5f4ea9f6d9453a1adcc23c4b9b2a2
+ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
+ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
 
-Azure API Management を仮想ネットワーク (VNET) に接続すると、ネットワーク内のバックエンド サービスにアクセスできるとともに、ネットワーク内で開発者ポータルと API ゲートウェイにアクセスできます。
+Azure API Management は、仮想ネットワーク (VNET) の内部でデプロイできるため、ネットワーク内でバックエンド サービスにアクセスできます。 開発者ポータルと API ゲートウェイは、インターネットから、または仮想ネットワーク内でのみアクセスできるように構成可能です。
 
 > [!NOTE]
 > Azure API Management では、従来型および Azure Resource Manager の両方の VNet がサポートされています。
@@ -101,12 +101,14 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 | ソース / ターゲット ポート | 方向 | トランスポート プロトコル | 目的 | ソース / ターゲット | アクセスの種類 |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 / 80, 443 |受信 |TCP |API Management へのクライアント通信 |INTERNET / VIRTUAL_NETWORK |外部 |
+| * / 80, 443 |受信 |TCP |API Management へのクライアント通信 |INTERNET / VIRTUAL_NETWORK |外部 |
 | * / 3443 |受信 |TCP |Azure Portal と Powershell 用の管理エンドポイント |INTERNET / VIRTUAL_NETWORK |外部 / 内部 |
-| 80, 443 / 80, 443 |送信 |TCP |Azure Storage および Azure Service Bus への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 1433 / 1433 |送信 |TCP |Azure SQL への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 9350 - 9354 / 9350 - 9354 |送信 |TCP |Service Bus への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 5671 / 5671 |送信 |AMQP |Event Hub へのログ記録ポリシーのための依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 80, 443 |送信 |TCP |Azure Storage および Azure Service Bus への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 1433 |送信 |TCP |Azure SQL への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 11000 - 11999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 14000 - 14999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 9350 - 9354 |送信 |TCP |Service Bus への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
+| * / 5671 |送信 |AMQP |Event Hub へのログ記録ポリシーのための依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | 6381 - 6383 / 6381 - 6383 |受信および送信 |UDP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
 | * / 445 |送信 |TCP |GIT のための Azure ファイル共有への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / * | 受信 |TCP |Azure インフラストラクチャの Load Balancer | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部 / 内部 |
@@ -152,6 +154,6 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

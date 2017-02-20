@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 エンドポイントを使用して .NET MVC Web アプリにサインインを追加する | Microsoft Docs"
+title: "Azure AD v2.0 .NET Web アプリのサインインの概要 | Microsoft Docs"
 description: "サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する .NET MVC Web アプリを構築する方法を説明します。"
 services: active-directory
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
-ms.openlocfilehash: 30c03d5b55ee726264c87c4aef14d8487efe1c5e
+ms.sourcegitcommit: 43b77cabdb2d8832bda8fd0b726ba27edb0a0602
+ms.openlocfilehash: 2992b074986a7b7f3244ce996f2b41269bff8bbd
 
 
 ---
@@ -47,154 +47,155 @@ v2.0 エンドポイントを使用すると、Microsoft の個人および職�
 ## <a name="install--configure-owin-authentication"></a>OWIN 認証のインストールと構成
 ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
-* 最初に、プロジェクトのルートにある `web.config` ファイルを開いて、`<appSettings>` セクションでアプリの構成値を入力します。
+1. 最初に、プロジェクトのルートにある `web.config` ファイルを開いて、`<appSettings>` セクションでアプリの構成値を入力します。
 
   * `ida:ClientId` は、登録ポータルでアプリに割り当てられた **アプリケーション ID** です。
   * `ida:RedirectUri` は、ポータルで入力した **リダイレクト URI** です。
-* 次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
-```
-PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
-PM> Install-Package Microsoft.Owin.Security.Cookies
-PM> Install-Package Microsoft.Owin.Host.SystemWeb
-```
+2. 次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
-* OWIN Startup クラスを `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]** --> **[新しい項目]** の順にクリックして、"OWIN" を検索します。  アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
-* クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。  `Configuration(...)` メソッドで、ConfigureAuth(...) を呼び出して、Web アプリ用の認証をセットアップします。  
+        ```
+        PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
+        PM> Install-Package Microsoft.Owin.Security.Cookies
+        PM> Install-Package Microsoft.Owin.Host.SystemWeb
+        ```  
 
-```C#
-[assembly: OwinStartup(typeof(Startup))]
+3. OWIN Startup クラスを `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]** --> **[新しい項目]** の順にクリックして、"OWIN" を検索します。  アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
+4. クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。  `Configuration(...)` メソッドで、ConfigureAuth(...) を呼び出して、Web アプリ用の認証をセットアップします。  
 
-namespace TodoList_WebApp
-{
-    public partial class Startup
-    {
-        public void Configuration(IAppBuilder app)
+        ```C#
+        [assembly: OwinStartup(typeof(Startup))]
+        
+        namespace TodoList_WebApp
         {
-            ConfigureAuth(app);
+            public partial class Startup
+            {
+                public void Configuration(IAppBuilder app)
+                {
+                    ConfigureAuth(app);
+                }
+            }
         }
-    }
-}
-```
+        ```
 
-* ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。  `OpenIdConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。  OpenID Connect ミドルウェアは、ユーザーに意識されない Cookie を使用するため、Cookie 認証もセットアップする必要があります。
+5. ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。  `OpenIdConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。  OpenID Connect ミドルウェアは、ユーザーに意識されない Cookie を使用するため、Cookie 認証もセットアップする必要があります。
 
-```C#
-public void ConfigureAuth(IAppBuilder app)
-             {
-                     app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
-
-                     app.UseCookieAuthentication(new CookieAuthenticationOptions());
-
-                     app.UseOpenIdConnectAuthentication(
-                             new OpenIdConnectAuthenticationOptions
-                             {
-                                     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
-                                     // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
-                                     // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
-
-                                     ClientId = clientId,
-                                     Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0 "),
-                                     RedirectUri = redirectUri,
-                                     Scope = "openid email profile",
-                                     ResponseType = "id_token",
-                                     PostLogoutRedirectUri = redirectUri,
-                                     TokenValidationParameters = new TokenValidationParameters
+        ```C#
+        public void ConfigureAuth(IAppBuilder app)
+                     {
+                             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+        
+                             app.UseCookieAuthentication(new CookieAuthenticationOptions());
+        
+                             app.UseOpenIdConnectAuthentication(
+                                     new OpenIdConnectAuthenticationOptions
                                      {
-                                             ValidateIssuer = false,
-                                     },
-                                     Notifications = new OpenIdConnectAuthenticationNotifications
-                                     {
-                                             AuthenticationFailed = OnAuthenticationFailed,
-                                     }
-                             });
-             }
-```
+                                             // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+                                             // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
+                                             // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
+        
+                                             ClientId = clientId,
+                                             Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0 "),
+                                             RedirectUri = redirectUri,
+                                             Scope = "openid email profile",
+                                             ResponseType = "id_token",
+                                             PostLogoutRedirectUri = redirectUri,
+                                             TokenValidationParameters = new TokenValidationParameters
+                                             {
+                                                     ValidateIssuer = false,
+                                             },
+                                             Notifications = new OpenIdConnectAuthenticationNotifications
+                                             {
+                                                     AuthenticationFailed = OnAuthenticationFailed,
+                                             }
+                                     });
+                     }
+        ```
 
 ## <a name="send-authentication-requests"></a>認証要求を送信する
 これまでに、アプリは、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと適切に通信するように構成されています。  OWIN は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての煩わしい処理を実行します。  OWIN により処理されないのは、ユーザーにサインインおよびサインアウトの方法を提供する処理のみです。
 
-* コントローラーで承認タグを使用することにより、特定のページでは、サインインしてからでないとアクセスできないようにすることができます。  `Controllers\HomeController.cs` を開いて、`[Authorize]` タグを About コントローラーに追加します。
+- コントローラーで承認タグを使用することにより、特定のページでは、サインインしてからでないとアクセスできないようにすることができます。  `Controllers\HomeController.cs` を開いて、`[Authorize]` タグを About コントローラーに追加します。
+        
+        ```C#
+        [Authorize]
+        public ActionResult About()
+        {
+          ...
+        ```
 
-```C#
-[Authorize]
-public ActionResult About()
-{
-  ...
-```
+- OWIN を使用することにより、コード内から認証要求を直接発行することもできます。  `Controllers\AccountController.cs`を開きます。  SignIn() アクションおよび SignOut() アクションで、それぞれ OpenID Connect チャレンジおよびサインアウト要求を発行します。
 
-* OWIN を使用することにより、コード内から認証要求を直接発行することもできます。  `Controllers\AccountController.cs`を開きます。  SignIn() アクションおよび SignOut() アクションで、それぞれ OpenID Connect チャレンジおよびサインアウト要求を発行します。
+        ```C#
+        public void SignIn()
+        {
+            // Send an OpenID Connect sign-in request.
+            if (!Request.IsAuthenticated)
+            {
+                HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
+        }
+        
+        // BUGBUG: Ending a session with the v2.0 endpoint is not yet supported.  Here, we just end the session with the web app.  
+        public void SignOut()
+        {
+            // Send an OpenID Connect sign-out request.
+            HttpContext.GetOwinContext().Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
+            Response.Redirect("/");
+        }
+        ```
 
-```C#
-public void SignIn()
-{
-    // Send an OpenID Connect sign-in request.
-    if (!Request.IsAuthenticated)
-    {
-        HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
-    }
-}
+- ここで、 `Views\Shared\_LoginPartial.cshtml`を開きます。  ここは、ユーザーに、アプリのサインイン リンクおよびサインアウト リンクを表示し、ユーザーの名前をビュー内に表示する場所です。
 
-// BUGBUG: Ending a session with the v2.0 endpoint is not yet supported.  Here, we just end the session with the web app.  
-public void SignOut()
-{
-    // Send an OpenID Connect sign-out request.
-    HttpContext.GetOwinContext().Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
-    Response.Redirect("/");
-}
-```
-
-* ここで、 `Views\Shared\_LoginPartial.cshtml`を開きます。  ここは、ユーザーに、アプリのサインイン リンクおよびサインアウト リンクを表示し、ユーザーの名前をビュー内に表示する場所です。
-
-```HTML
-@if (Request.IsAuthenticated)
-{
-    <text>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-text">
-
-                @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
-
-                Hello, @(System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value)!
-            </li>
-            <li>
-                @Html.ActionLink("Sign out", "SignOut", "Account")
-            </li>
-        </ul>
-    </text>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
-```
+        ```HTML
+        @if (Request.IsAuthenticated)
+        {
+            <text>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">
+        
+                        @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
+        
+                        Hello, @(System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value)!
+                    </li>
+                    <li>
+                        @Html.ActionLink("Sign out", "SignOut", "Account")
+                    </li>
+                </ul>
+            </text>
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        }
+        ```
 
 ## <a name="display-user-information"></a>ユーザー情報を表示する
 OpenID Connect を使用してユーザーの認証処理を実行すると、v2.0 エンドポイントは id_token をアプリに返します。id_token には、"要求"、つまりユーザーに関する "アサーション" が含まれます。  これらのクレームを使用して、アプリを個人向けにカスタマイズすることができます。
 
-* `Controllers\HomeController.cs` ファイルを開きます。  `ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
+- `Controllers\HomeController.cs` ファイルを開きます。  `ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
 
-```C#
-[Authorize]
-public ActionResult About()
-{
-    ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;
-
-    // The object ID claim will only be emitted for work or school accounts at this time.
-    Claim oid = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier");
-    ViewBag.ObjectId = oid == null ? string.Empty : oid.Value;
-
-    // The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves
-    ViewBag.Username = ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
-
-    // The subject or nameidentifier claim can be used to uniquely identify the user
-    ViewBag.Subject = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-
-    return View();
-}
-```
+        ```C#
+        [Authorize]
+        public ActionResult About()
+        {
+            ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;
+        
+            // The object ID claim will only be emitted for work or school accounts at this time.
+            Claim oid = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier");
+            ViewBag.ObjectId = oid == null ? string.Empty : oid.Value;
+        
+            // The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves
+            ViewBag.Username = ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
+        
+            // The subject or nameidentifier claim can be used to uniquely identify the user
+            ViewBag.Subject = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+        
+            return View();
+        }
+        ```
 
 ## <a name="run"></a>実行
 最後に、アプリを構築して実行します。   Microsoft の個人または職場/学校アカウントのいずれかでサインインすると、ユーザーの ID が上部のナビゲーション バーにどのように反映されるかがわかります。  これで、Web アプリが業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。
@@ -218,6 +219,6 @@ public ActionResult About()
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

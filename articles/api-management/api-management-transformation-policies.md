@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
+ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
+ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
 
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
@@ -472,11 +472,11 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   
 > [!NOTE]
 >  ポリシーを使用して追加できるのはクエリ文字列パラメーターのみです。 書き換え URL にさらにテンプレート パス パラメーターを追加することはできません。  
-  
+
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<rewrite-uri template="uri template" />  
+<rewrite-uri template="uri template" copy-unmatched-params="true | false" />  
 ```  
   
 ### <a name="example"></a>例  
@@ -492,7 +492,33 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
     </outbound>  
 </policies>  
 ```  
-  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put?c=d -->
+```  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" copy-unmatched-params="false" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put -->
+```
+
 ### <a name="elements"></a>要素  
   
 |名前|説明|必須|  
@@ -503,7 +529,8 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|template|クエリ文字列パラメーターを設定した実際の Web サービス URL。|はい|該当なし|  
+|template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|はい|該当なし|  
+|copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|なし|true|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -547,7 +574,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
   <outbound>  
       <base />  
       <xsl-transform>  
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">  
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />  
             <!-- Copy all nodes directly-->  
             <xsl:template match="node()| @*|*">  
@@ -555,7 +582,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
                     <xsl:apply-templates select="@* | node()|*" />  
                 </xsl:copy>  
             </xsl:template>  
-        </xsl:stylesheet>  
+          </xsl:stylesheet>  
     </xsl-transform>  
   </outbound>  
 </policies>  
@@ -580,6 +607,7 @@ ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 
