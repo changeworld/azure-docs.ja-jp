@@ -1,6 +1,6 @@
 ---
-title: "Enterprise Integration Pack の概要 | Microsoft Docs"
-description: "Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。"
+title: "変換による XML データの変更 - Azure Logic Apps | Microsoft Docs"
+description: "Enterprise Integration SDK を使用して、ロジック アプリで XML データの形式を変更する変換 (マップ) を作成する"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: deonhe
+ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: cca850073040cde0fb6f035f041419ac777bb0a2
+ms.sourcegitcommit: 9369b90471ee775664b942b21ceb450b8852eafd
+ms.openlocfilehash: a8684769e73dd3f7a76cba9c78046abceb842918
 
 
 ---
@@ -75,6 +75,6 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

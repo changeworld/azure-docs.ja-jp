@@ -1,10 +1,10 @@
 
 ---
 title: "Enterprise Integration Pack での証明書の使用 |Microsoft Docs"
-description: "Enterprise Integration Pack と Logic Apps で証明書を使用する方法について説明します"
+description: "Enterprise Integration Pack で証明書を使用する方法 | Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
+author: padmavc
 manager: anneta
 editor: cgronlun
 ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
@@ -13,11 +13,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
-ms.author: deonhe
+ms.date: 02/03/2016
+ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: a1baafa9a2b4552ad711615e5e0abb0180a0d562
-ms.openlocfilehash: e6c8ed2fe6ff574fb40991d7060865ea08887df9
+ms.sourcegitcommit: c8cfe5fb933cf9056b971d3e524f3c9ebc910215
+ms.openlocfilehash: b494d5abfdd4045776b408cbb8ec99ee3905cf72
 
 
 ---
@@ -37,9 +37,9 @@ ms.openlocfilehash: e6c8ed2fe6ff574fb40991d7060865ea08887df9
 * メッセージの内容を暗号化することによって
 * メッセージをデジタル署名することによって  
 
-## <a name="how-do-you-upload-certificates"></a>証明書のアップロード方法
-### <a name="public-certificates"></a>パブリック証明書
-B2B 機能を備えたロジック アプリで *パブリック証明書* を使用するには、まず統合アカウントにこの証明書をアップロードする必要があります。 B2B 機能を備えたロジック アプリで *自己署名証明書*を使用する場合は、最初に [Azure Key Vault](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")に証明書をアップロードする必要があります。
+## <a name="upload-a-public-certificate"></a>パブリック証明書のアップロード
+
+B2B 機能を備えたロジック アプリで *パブリック証明書* を使用するには、まず統合アカウントにこの証明書をアップロードする必要があります。  
 
 証明書をアップロードすると、作成する [契約](logic-apps-enterprise-integration-agreements.md) で B2B メッセージのプロパティを定義して、B2B メッセージを保護できるようになります。  
 
@@ -61,8 +61,9 @@ B2B 機能を備えたロジック アプリで *パブリック証明書* を�
 9. **[証明書]** タイルを選択します。 新しく追加された証明書が表示されます。  
 ![新しい証明書の確認](media/logic-apps-enterprise-integration-certificates/certificate-4.png)  
 
-### <a name="private-certificates"></a>プライベート証明書
-統合アカウントへのプライベート証明書のアップロードは、次の手順で行うことが出来ます。  
+## <a name="upload-a-private-certificate"></a>プライベート証明書のアップロード
+
+B2B 機能を備えたロジック アプリで*プライベート証明書*を使用するには、次の手順に従ってプライベート証明書を統合アカウントにアップロードします。
 
 1. [Key Vault に秘密キーをアップロード](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")して、**キー名**を指定します。 
    
@@ -100,6 +101,6 @@ B2B 機能を備えたロジック アプリで *パブリック証明書* を�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
