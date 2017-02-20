@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/09/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: f886b942fa2dce22fef7e3f39904d6448f7d9d4e
-ms.openlocfilehash: c093c0b6ea953780edf3584799411b025390df24
+ms.sourcegitcommit: fbc96a248de20b67a72e6a0150fe4b9b754ec4fe
+ms.openlocfilehash: d61ec29026ae5bbbdf33d7810e2e35c4d6bee1e7
 
 
 ---
@@ -198,7 +198,6 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
@@ -217,6 +216,6 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
