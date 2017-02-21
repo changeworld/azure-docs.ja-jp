@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 24e675ebd63554be0bbc51e1013c4ade94b56abe
+ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
+ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
 
 
 ---
@@ -56,8 +56,8 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 > [!NOTE]
 > [Azure AD Attribute Duplicate Attribute Resiliency](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) 機能は、Azure Active Directory の既定動作としても展開されます。  これにより、オンプレミス AD 環境に存在する重複した ProxyAddresses 属性や UserPrincipalName 属性の処理において、Azure AD の復元力が向上し、Azure AD Connect (および他の同期クライアント) によって検出される同期エラーの数が減少します。 この機能では重複エラーは修正されません。 したがって、データの修正は必要です。 ただし、新しいオブジェクトのプロビジョニングは許可されます (この機能がない場合には、Azure AD に重複値があるとプロビジョニングが禁止されます)。 これにより、同期クライアントに返される同期エラーの数も減少します。
 > テナントでこの機能が有効になっている場合、新しいオブジェクトのプロビジョニング中に InvalidSoftMatch 同期エラーは生成されません。
-> 
-> 
+>
+>
 
 #### <a name="example-scenarios-for-invalidsoftmatch"></a>InvalidSoftMatch のシナリオ例
 1. ProxyAddresses 属性の値が同じ複数のオブジェクトがオンプレミス Active Directory に存在します。 1 つだけが Azure AD でプロビジョニングされます。
@@ -100,8 +100,8 @@ Azure AD Connect Health for sync の同期エラーレポートは 30 分ごと�
 
 > [!NOTE]
 > ImmutableId は、名前が示すとおり、オブジェクトの存続期間中に変更すべきではありません。 Azure AD Connect が上記のリストのシナリオを念頭に置いて構成されてなかった場合は、同じエンティティ (同じユーザー、グループ、連絡先など) を表す AD オブジェクトについて Azure AD Connect が異なる SourceAnchor 値を計算し、Azure AD オブジェクトを引き続き使用する必要があるという状況が生じることがあります。
-> 
-> 
+>
+>
 
 #### <a name="related-articles"></a>関連記事
 * [Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/en-us/kb/2647098)
@@ -180,7 +180,7 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 * [Office 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="datavalidationfailed"></a>DataValidationFailed
-#### <a name="description"></a>Description
+#### <a name="description"></a>説明
 これは、ユーザーの UserPrincipalName のサフィックスのフェデレーション ドメインが変更された場合に **"DataValidationFailed"** 同期エラーが発生する特殊なケースです。
 
 #### <a name="scenarios"></a>シナリオ
@@ -198,6 +198,9 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
 
+#### <a name="related-articles"></a>関連記事
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>Description
 Azure Active Directory スキーマで設定されている、使用可能なサイズ制限、長さの制限、または個数制限を属性が超過すると、同期操作は **LargeObject** または **ExceededAllowedLength** 同期エラーで終了します。 通常、このエラーは次の属性について発生します。
@@ -207,8 +210,8 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>考えられるシナリオ
-1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。
-2. Active Directory で設定された Bob の thmubnailPhoto が大きすぎ、Azure AD で同期できません。
+1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 証明書のハード制限は 50 個ですが、25 個より少なくしておくことをお勧めします。
+2. Active Directory で設定された Bob の thumbnailPhoto が大きすぎ、Azure AD で同期できません。
 3. Active Directory での ProxyAddresses 属性の自動作成時に、500 を超える ProxyAddresses がオブジェクトに割り当てられました。
 
 ### <a name="how-to-fix"></a>修正方法
@@ -220,7 +223,6 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

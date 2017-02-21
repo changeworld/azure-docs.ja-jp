@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 783952ef1a19d18c3dd5d25c9ccf25cf3b29af45
+ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
+ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
 
 
 ---
@@ -114,7 +114,7 @@ LDAPS では、SSL 3.0 または TLS を使用する必要があります。 SSL
 
 True/False フィルターは、LDAP ディレクトリでサポートされていても、多くの場合は報告されません。**[Mandatory Features Not Found (必須機能が見つかりません)]** という状況下で **[Global Page (グローバル ページ)]** に表示される場合があります。　 True/False フィルターは、LDAP クエリで **OR** フィルターを作成する場合に使用します (たとえば、複数のオブジェクト型をインポートする場合)。 複数の種類のオブジェクトをインポートできる場合に、LDAP サーバーでこの機能がサポートされます。
 
-使用するディレクトリの一意の識別子がアンカーである場合は、次の属性も使用できなければなりません (詳細については、この記事で後述する「[アンカーの構成](#configure-anchors)」セクションを参照してください)。  
+使用するディレクトリの一意の識別子がアンカーである場合は、次の属性も使用できる必要があります (詳細については、「[アンカーの構成](#configure-anchors)」セクションを参照してください)。  
 `1.3.6.1.4.1.4203.1.5.1` すべての操作属性
 
 1 回のディレクトリ呼び出しに収まり切れない数のオブジェクトがディレクトリにある場合は、ページングの使用をお勧めします。 ページングが機能するには、次のオプションのいずれかが必要です。
@@ -138,9 +138,9 @@ ShowDeletedControl は USNChanged 差分インポート方法で使用できる�
 差分インポートは、サポート ディレクトリが検出された場合にのみ使用できます。 現在、次の方法が使用されています。
 
 * LDAP アクセスログ。 [http://www.openldap.org/doc/admin24/overlays.html#Access Logging](http://www.openldap.org/doc/admin24/overlays.html#Access Logging) を参照してください
-* LDAP 変更ログ。  [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
+* LDAP 変更ログ。 [http://tools.ietf.org/html/draft-good-ldap-changelog-04](http://tools.ietf.org/html/draft-good-ldap-changelog-04)
 * タイムスタンプ。 Novell/NetIQ eDirectory の場合、コネクタは最後の日付/時刻を使用して、作成されたオブジェクトと更新されたオブジェクトを取得します。 Novell/NetIQ eDirectory の場合、同等の方法を使用して、削除されたオブジェクトを取得することはできません。 タイムスタンプ オプションはまた、LDAP サーバー上で他にアクティブになっている差分インポート方法がない場合に使用することができます。 このオプションを使用して削除されたオブジェクトをインポートすることはできません。
-* USNChanged。  [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
+* USNChanged。 [https://msdn.microsoft.com/library/ms677627.aspx](https://msdn.microsoft.com/library/ms677627.aspx)
 
 ### <a name="not-supported"></a>サポートされていません
 次の LDAP 機能はサポートされていません。
@@ -162,7 +162,7 @@ ShowDeletedControl は USNChanged 差分インポート方法で使用できる�
 * その他のバインディングの場合は、ユーザー名/パスワードに情報を入力するか、または証明書を選択します。
 * Kerberos を使用して認証する場合は、ユーザーの領域/ドメインを指定します。
 
-RFC4522 構文を使用してスキーマに属性を定義する場合は、 **[属性の別名]** テキスト ボックスを使用します。 スキーマの検出中にこれらの属性を検出することはできないため、コネクタがそれらの属性を識別できるようにサポートが必要です。 たとえば、バイナリ属性として userCertificate 属性を正しく識別するには、[属性の別名] ボックスに次を入力する必要があります。
+RFC4522 構文を使用してスキーマに属性を定義する場合は、 **[属性の別名]** テキスト ボックスを使用します。 スキーマの検出中にこれらの属性を検出することはできないため、コネクタがそれらの属性を識別できるようにサポートが必要です。 たとえば、バイナリ属性として userCertificate 属性を正しく識別するには、[Attribute Aliases (属性の別名)] ボックスに次を入力する必要があります。
 
 `userCertificate;binary`
 
@@ -186,7 +186,7 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、 **
 * ツリー削除を選択すると、1 回の LDAP 呼び出しで階層が削除されます。 ツリー削除を選択していない場合、コネクタは必要に応じて再帰削除を実行します。
 * 結果のページングが選択されている場合、コネクタは実行の手順で指定されたサイズに従ってページング インポートを行います。
 * VLVControl および SortControl は、pagedResultsControl に代わる、LDAP ディレクトリからのデータの読み取り方法です。
-* 3 つのオプション (pagedResultsControl、VLVControl、SortControl) がいずれも選択されていない場合、コネクタは 1 回の操作であらゆるオブジェクトをインポートします。この場合、オブジェクトが大規模なディレクトリであると、失敗する可能性があります。
+* 3 つのオプション (pagedResultsControl、VLVControl、SortControl) がいずれも選択されていない場合、コネクタは&1; 回の操作であらゆるオブジェクトをインポートします。この場合、オブジェクトが大規模なディレクトリであると、失敗する可能性があります。
 * ShowDeletedControl は、差分インポート方法が USNChanged である場合にのみ使用されます。
 
 変更ログ DN は差分変更ログで使用される名前付けコンテキストです (たとえば、 **cn=changelog**)。 差分インポートを実行するには、この値を指定する必要があります。
@@ -210,7 +210,7 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、 **
 パスワード属性は、パスワード変更およびパスワード設定の操作でパスワードを設定する場合に、コネクタで使用する必要がある属性の名前です。
 この値は既定で **userPassword** に設定されますが、特定の LDAP システムについては必要に応じて変更することができます。
 
-追加のパーティションの一覧に加えて、自動的に検出されない名前空間を追加することもできます。 たとえばこの設定は、複数のサーバーが 1 つの論理クラスターを構成していて、すべて同時にインポートする必要がある場合などに使用することができます。 Active Directory では 1 つのフォレスト内に複数のドメインを保持することができますが、ドメインはすべて 1 つのスキーマを共有します。それと同じことを、このボックスに追加の名前空間を入力することでシミュレートできます。 それぞれの名前空間は、さまざまなサーバーからインポートすることができ、[Configure Partitions and Hierarchies (パーティションと階層の構成)] ページで追加の構成を行うことができます。 新しい行を取得するには Ctrl + Enter キーを使用します。
+追加のパーティションの一覧に加えて、自動的に検出されない名前空間を追加することもできます。 たとえばこの設定は、複数のサーバーが&1; つの論理クラスターを構成していて、すべて同時にインポートする必要がある場合などに使用することができます。 Active Directory では&1; つのフォレスト内に複数のドメインを保持することができますが、ドメインはすべて&1; つのスキーマを共有します。それと同じことを、このボックスに追加の名前空間を入力することでシミュレートできます。 それぞれの名前空間は、さまざまなサーバーからインポートすることができ、[Configure Partitions and Hierarchies (パーティションと階層の構成)] ページで追加の構成を行うことができます。 新しい行を取得するには Ctrl + Enter キーを使用します。
 
 ### <a name="configure-provisioning-hierarchy"></a>プロビジョニング階層の構成
 このページは、プロビジョニングが必要なオブジェクトの種類 (organizationalUnit など) に DN コンポーネント (OU など) をマップする場合に使用します。
@@ -264,7 +264,6 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

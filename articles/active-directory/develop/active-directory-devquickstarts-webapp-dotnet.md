@@ -1,5 +1,5 @@
 ---
-title: "Azure AD .NET の概要 | Microsoft Docs"
+title: "Azure AD .NET Web アプリの概要 | Microsoft Docs"
 description: "サインインのために Azure AD と連携する .NET MVC Web アプリを構築する方法"
 services: active-directory
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 3972d899a85b7eabe54ab963b136898fa87abd38
+ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
+ms.openlocfilehash: 60e11448dc83cba1f9bed8dbe49509232c064325
 
 
 ---
@@ -185,6 +185,6 @@ public ActionResult About()
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

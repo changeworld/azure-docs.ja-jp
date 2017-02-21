@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/04/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: da1a8c45a1753d617e0cb62f99bc47d22838a8e8
-ms.openlocfilehash: ac58f3f5498edbd6f7b19db647a9513a485d6dbf
+ms.sourcegitcommit: 617599c7df6284e6319a1b3331d1e894e5d4b2d1
+ms.openlocfilehash: 2ced7d0d4e2e653013c605932066c412c4202082
 
 
 ---
@@ -167,7 +167,7 @@ AD FS 管理コンソールの **[サービス] の [エンドポイント]** �
 
 #### <a name="setting-ad-fs-rules-in-a-single-domain-environment"></a>単一ドメイン環境での AD FS 規則の設定
 
-**確認済みのドメインが 1 つ**だけの場合、次のスクリプトを使用して AD FS 規則を追加します。
+**確認済みのドメインが&1; つ**だけの場合、次のスクリプトを使用して AD FS 規則を追加します。
 
 
     <#----------------------------------------------------------------------
@@ -353,11 +353,15 @@ AD FS 管理コンソールの **[サービス] の [エンドポイント]** �
 インストーラーは、スケジュールされたタスクを、ユーザーのコンテキストで実行されるシステムに作成します。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 IWA によってユーザーの認証が行われた後、その資格情報を使ってサイレントにデバイスが Azure AD に登録されます。 スケジュールされたタスクを確認するには、**[Microsoft]** > **[社内参加]** に移動し、タスク スケジューラ ライブラリにアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
+
+- 自動デバイス登録中に問題が発生した場合は、次のトラブルシューティングのトピックを参照してください。
+    - [Windows 10 と Windows Server 2016 の場合](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+    - [Windows ダウンレベル クライアントの場合](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+- 一般的な質問に対する回答については、「[Automatic device registration FAQ (自動デバイス登録に関する FAQ)](active-directory-conditional-access-automatic-device-registration-faq.md)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

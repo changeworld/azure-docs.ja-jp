@@ -13,15 +13,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 12/19/2016
+ms.date: 02/06/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 74de313cf9ea98d80fcc60a4fe5573c6a32801da
-ms.openlocfilehash: b1e2199ff80954486fedaa1307753b35d60f0af7
+ms.sourcegitcommit: ff3ea3564d3cde5369f87d5f5102176229686acb
+ms.openlocfilehash: 6b828f7256c27aab567428706cd38c38b2f896eb
 
 
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
+
+## <a name="what-is-the-current-version-of-sql-database"></a>SQL Database の現在のバージョンは何ですか。
+SQL Database の現在のバージョンは V12 です。 バージョン V11 は廃止されました。
+
+## <a name="what-is-the-sla-for-sql-database"></a>SQL Database の SLA はどうなっていますか。
+Microsoft は、お客様の Basic、Standard、または Premium エディションの Microsoft Azure SQL Database (シングルまたはエラスティック) と Microsoft のインターネット ゲートウェイの間で 99.99% の時間接続できることを保証します。 詳細については、[SLA](http://azure.microsoft.com/support/legal/sla/) のページを参照してください。
+
+## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>サーバー管理者のパスワードをリセットするにはどうすればよいですか。
+[Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
+
+## <a name="how-do-i-manage-databases-and-logins"></a>データベースとログインはどのように管理しますか。
+[データベースとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
+
+## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>承認した IP アドレスにのみサーバーへのアクセスを許可するにはどうすればよいですか。
+「 [方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+
 ## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>SQL Database の使用量は請求書にどのように表示されますか。
 SQL Database では、予測可能な&1; 時間単位のレートで、サービス階層と、Single Database の場合はパフォーマンス レベル、エラスティック プールの場合は eDTU の両方に基づいて請求が行われます。 実際の使用量は時間単位でコンピューティングされるため、表示される請求額は&1; 時間分に満たない場合があります。 たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。 また、請求書にはサービス階層とパフォーマンス レベルおよびプールあたりの eDTU の内訳が記載されるため、それぞれが&1; か月間に発生したデータベース日数を簡単に把握できます。
 
@@ -35,7 +51,7 @@ SQL Database では、予測可能な&1; 時間単位のレートで、サービ
 * 午前 11 時 00 分に、データベースを Premium から Basic にダウングレードし始めて、 午後 2 時 15 分に完了した場合、Premium の料金が課金されるのは午後 3 時 00 分までで、それ以降は Basic の料金が課金されます。
 
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>エラスティック プールの使用量は請求書にどのように表示されますか。プールあたりの eDTU を変更した場合どうなりますか。
-エラスティック プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの eDTU 下の単位に従い請求書に Elastic DTU (eDTU) として表示されます。 エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが&1; 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して&1; 時間単位で行われます。 
+エラスティック プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの最大 eDTU 数の部分に記載の単位に従い、請求書にエラスティック DTU (eDTU) として表示されます。 エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが&1; 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して&1; 時間単位で行われます。 
 
 例
 
@@ -48,13 +64,14 @@ SQL Database では、予測可能な&1; 時間単位のレートで、サービ
 
 * エラスティック プールは、プールにデータベースがない場合でも、その作成時に課金されます。
 * エラスティック プールは&1; 時間ごとに課金されます。 これは、シングル データベースのパフォーマンス レベルと同じ使用状況測定の頻度です。
-* エラスティック プールが新しい eDTU 量にサイズ変更されると、サイズ変更操作が完了するまでは新しい eDTU 量に応じた課金はされません。 これは、Single Database のパフォーマンス レベルを変更する場合と同様のパターンに従っています。
+* エラスティック プールのサイズが変更され、eDTU の数が変わった場合には、サイズ変更の操作が完了するまでは新しい eDTU の量に応じた課金はされません。 これは、Single Database のパフォーマンス レベルを変更する場合と同様のパターンに従っています。
 * エラスティック プールの価格は、プールの eDTU 数に基づきます。 エラスティック プールの価格は、内部のエラスティック データベースの数および使用率とは関係ありません。
 * 価格は、(プールの eDTU 数) x (eDTU あたりの単価) で計算されます。
 
 エラスティック プールの eDTU 単価は、同じサービス階層の Single Database の DTU 単価よりも高くなります。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
 
 eDtu およびサービス レベルについては、 [SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)に関するページをご覧ください。
+
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>エラスティック プールでアクティブ geo レプリケーションを使用した場合、請求書にはどのように表示されますか。
 Elastic Database で [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用した場合、Single Database とは異なり、請求書には直接の影響はありません。  各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされた eDTU に対してのみ課金されます。
 
@@ -106,6 +123,6 @@ DMV を使ってプライマリ データベースと geo セカンダリの間�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

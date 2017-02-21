@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 4afdde65fe4c69d1944c0e1a3c5dd3300c5b970c
+ms.sourcegitcommit: 8102c014dae3f2e87b1e6642278feefe0962cdc1
+ms.openlocfilehash: 261986d0f0c442398781be211ea2c4211916a2fe
 
 
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-replying-party-trust"></a>Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
-## <a name="overview"></a>Overview
-Azure Active Directory フェデレーション サービス (AD FS) から Microsoft Azure Active Directory に対して発行されるトークンには、改ざんを防ぐために署名が施されます。 この署名には、SHA1 または SHA256 を使用できます。 Azure Active Directory は SHA256 アルゴリズムで署名されたトークンをサポートするようになり、最上位レベルのセキュリティ確保のためトークン署名アルゴリズムを SHA256 に設定することを推奨します。 この記事では、トークン署名アルゴリズムをより安全性の高い SHA 256 レベルに設定するために必要なステップについて説明します。
+## <a name="overview"></a>概要
+Active Directory フェデレーション サービス (AD FS) から Microsoft Azure Active Directory に対して発行されるトークンには、改ざんを防ぐために署名が施されます。 この署名には、SHA1 または SHA256 を使用できます。 Azure Active Directory は SHA256 アルゴリズムで署名されたトークンをサポートするようになり、最上位レベルのセキュリティ確保のためトークン署名アルゴリズムを SHA256 に設定することを推奨します。 この記事では、トークン署名アルゴリズムをより安全性の高い SHA&256; レベルに設定するために必要なステップについて説明します。
 
 ## <a name="change-the-token-signing-algorithm"></a>トークン署名アルゴリズムの変更
 以下に示したいずれかの手順で署名アルゴリズムが設定されると、Office 365 の証明書利用者信頼用のトークンに対し、AD FS が SHA256 で署名するようになります。 特別な構成変更は必要ありません。変更したとしても、Office 365 をはじめとする Azure AD アプリケーションへのアクセス権には一切影響しません。
@@ -32,7 +32,7 @@ Azure Active Directory フェデレーション サービス (AD FS) から Micr
 1. プライマリ AD FS サーバーで AD FS 管理コンソールを開きます。
 2. AD FS ノードを展開し、 **[証明書利用者信頼]**をクリックします。
 3. Office 365/Azure 証明書利用者信頼を右クリックし、 **[プロパティ]**を選択します。
-4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA 256 を選択します。
+4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA&256; を選択します。
 5. **[OK]**をクリックします。
 
 ![SHA256 署名アルゴリズム - MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
@@ -49,6 +49,6 @@ Azure Active Directory フェデレーション サービス (AD FS) から Micr
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

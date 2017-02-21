@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 2bd95836edf77e812b1c8bb36927cf571e1a7a5f
+ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
+ms.openlocfilehash: 70918f2bea789edb2a4000847360e5c7e563951b
 
 
 ---
@@ -172,6 +172,6 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

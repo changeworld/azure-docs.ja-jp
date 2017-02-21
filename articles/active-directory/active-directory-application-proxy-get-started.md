@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c0f17c4ff79bab7f5b13f42cd31e170780fc0c2
+ms.sourcegitcommit: 9ee3ba5a5dee206c2358a76aaea680b998e994f8
+ms.openlocfilehash: 732f9b135732c33364cab7200d43893d4cdda5f9
 
 
 ---
@@ -53,8 +53,10 @@ Azure AD アプリケーション プロキシを使用すると、次のよう�
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API  
 * リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション  
 
-## <a name="how-does-it-work"></a>それはどのように機能しますか?
+## <a name="how-does-the-service-work-with-connectors"></a>このサービスがコネクタと連携するしくみ
 アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 コネクタを使用すると、受信ポートを開いたり、DMZ に配置したりする必要はありません。 アプリのトラフィック量が多い場合は、コネクタを増設すれば、このサービスによって負荷分散が行われます。 コネクタはステートレスで、すべての情報が必要に応じてクラウドから取得されます。
+
+コネクタの詳細については、「[Understand Azure AD Application Proxy connectors (Azure AD アプリケーション プロキシ コネクタについて)](application-proxy-understand-connectors.md)」を参照してください。 
 
 ユーザーは、アプリケーションにリモートでアクセスするときは、公開されているエンドポイントに接続します。 ユーザーは、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。
 
@@ -74,15 +76,16 @@ Azure AD アプリケーション プロキシは、統合 Wndows 認証 (IWA) �
 ## <a name="how-to-get-started"></a>ファースト ステップ
 Azure AD Basic または Azure AD Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリが必要です。 ディレクトリ管理者、およびアプリにアクセスするユーザーについても、Azure AD Basic または Azure AD Premium のライセンスが必要となります。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md) 」をご覧ください。
 
-アプリケーション プロキシの設定は、次の 2 つの手順で行います。
+アプリケーション プロキシの設定は、次の&2; つの手順で行います。
 
-1. [アプリケーション プロキシを有効にしてコネクタを構成する。](active-directory-application-proxy-enable.md)    
+1. [アプリケーション プロキシを有効にしてコネクタを構成する](active-directory-application-proxy-enable.md)。    
 2. [アプリケーションを発行する。](active-directory-application-proxy-publish.md) ウィザードを使ってオンプレミスのアプリを発行し、リモートからアクセスできるようにします。
 
 ## <a name="whats-next"></a>次の手順
 アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+* [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-working-with-proxy-servers.md) 
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 * [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 * [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
@@ -92,6 +95,6 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

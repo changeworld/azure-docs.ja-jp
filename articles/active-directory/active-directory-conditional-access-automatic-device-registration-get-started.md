@@ -12,352 +12,98 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/04/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: da1a8c45a1753d617e0cb62f99bc47d22838a8e8
-ms.openlocfilehash: ac58f3f5498edbd6f7b19db647a9513a485d6dbf
+ms.sourcegitcommit: 374046ce97e3fec9b94815acb5805250d867b6f3
+ms.openlocfilehash: a0bb6e4dc2e6ce80674841e2857e036384140ef2
 
 
 ---
-# <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法
+# <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録の使用
 
-[Azure Active Directory のデバイスベースの条件付きアクセス](active-directory-conditional-access.md)を使用するためには、コンピューターを Azure Active Directory (Azure AD) に登録する必要があります。 この記事では、ユーザーの組織において、Azure AD による Windows ドメイン参加デバイスの自動登録を構成する手順について説明します。
+Azure Active Directory デバイス登録は、デバイスに基づいて条件付きでアクセスを許可するというシナリオの基礎となる機能です。 デバイスが登録されると、Azure Active Directory デバイス登録によって、そのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
-> [!NOTE]
-> 強化された Azure AD のユーザー エクスペリエンスは、Windows 10 November Update で一部対応していますが、デバイス ベースの条件付きアクセスが完全にサポートされるのは Windows 10 Anniversary Update からとなります。 条件付きアクセスの詳細については、[Azure Active Directory デバイスベースの条件付きアクセス](active-directory-conditional-access.md)に関する記事を参照してください。 Windows 10 デバイスの仕事への利用と Windows 10 デバイスを Azure AD に登録する方法について詳しくは、[エンタープライズ向け Windows 10 デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)に関するページをご覧ください。
-> 
-> 
+Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。 Microsoft Intune へのデバイスの登録の詳細については、「管理するデバイスを Intune に登録する」を参照してください。
+Azure Active Directory Device Registration で実現されるシナリオ。Azure Active Directory Device Registration は、iOS、Android、Windows の各デバイスをサポートしています。 Azure AD Device Registration を使用する個々のシナリオでは、より具体的な要件とプラットフォームのサポートが存在する場合があります。 
 
-Windows を実行しているデバイスの場合は、以前のバージョンの Windows を登録することもできます。対応しているバージョンを次に示します。
+そうしたシナリオを次に示します。
 
-- Windows 8.1
-- Windows 7
+- **Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス:** IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。 詳細については、「Office 365 サービス用条件付きアクセスのデバイス ポリシー」を参照してください。
 
-Windows Server を実行しているデバイスの場合は、次のプラットフォームを登録できます。
+- **オンプレミスでホストされるアプリケーションへの条件付きアクセス:** Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。 オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。
 
-- Windows Server 2016
-- Windows Server 2012 R2
-- Windows Server 2012
-- Windows Server 2008 R2
+## <a name="setting-up-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration の設定
 
+デバイス登録をセットアップするには、次のような複数のオプションがあります。
 
+1.    Azure AD ドメインに参加しているときに、デバイスを登録できます。 このトピックに関しては、Azure AD Join と、ユーザーが Azure AD ドメインに参加するために必要な設定について、より詳細に学習できます。
 
-## <a name="prerequisites"></a>前提条件
+2.    ユーザーが職場または学校のアカウントを個人のデバイスの Windows に追加するとき、または登録を必要とする職場のリソースにモバイル デバイスが接続されるときに、デバイスを登録できます。 これを確実に行うには、Azure Portal で Azure AD Device Registration を有効にする必要があります。 
 
-Azure AD を使用したドメイン参加済みデバイスの自動登録にはまず、最新バージョンの Azure Active Directory Connect (Azure AD Connect) が必要となります。
+3.    従来のドメイン参加コンピューターでは、自動デバイス登録を使用して、デバイスを登録することができます。 これを確実に行うには、自動デバイス登録を続行する前に、Azure AD Connect をセットアップする必要があります。
 
-Azure AD Connect のデプロイ方法 (簡易またはカスタム インストール、あるいはインプレース アップグレード) によっては、次の前提条件が自動的に構成されている場合があります。
+最新の手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。  
+Azure Active Directory の管理者ポータルを使用して、登録されているデバイスを確認し、有効または無効にすることもできます。
 
-- Azure AD へ登録するコンピューターによる、Azure AD のテナント情報検出用の**オンプレミスの Active Directory のサービス接続ポイント**。
+## <a name="enable-the-azure-active-directory-device-registration-service"></a>Azure Active Directory デバイス登録サービスを有効にする
+
+**Azure Active Directory デバイス登録サービスを有効にするには:**
+
+1.    Microsoft Azure Portal に管理者としてサインインします。
+
+2.    左ウィンドウで、 **[Active Directory]**を選択します。
+
+3.    [ディレクトリ] タブで、ディレクトリを選択します。
+
+4.    **[構成]**をクリックします。
+
+5.    **[デバイス]** までスクロールします。
+
+6.    [ユーザーはデバイスを Azure AD に登録できます] で [すべて] を選択します。
+
+7.    ユーザーごとに承認するデバイスの最大数を選択します。
+
+Office 365 用に Microsoft Intune またはモバイル デバイス管理を使用して登録するには、デバイス登録が必要です。 これらのサービスのいずれかを構成している場合は、**[すべて]** が選択され、**[なし]** は無効になります。 正しく構成されていて、適切なライセンスがあることを確認してください。
+
+既定では、サービスに対する&2; 要素認証は有効になっていません。 ただし、デバイスを登録するときに&2; 要素認証を使用することをお勧めします。
+
+- このサービスに対して&2; 要素認証を必要とするように設定する場合は、事前に Azure Active Directory で&2; 要素認証プロバイダーを構成し、Multi-Factor Authentication に対してユーザー アカウントを構成する必要があります。「Multi-Factor Authentication を Azure Active Directory に追加する」を参照してください。
+
+- Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。Active Directory フェデレーション サービスでの Multi-Factor Authentication の使用に関する記事を参照してください。
+
+## <a name="view-and-manage-device-objects-in-azure-active-directory"></a>Azure Active Directory のデバイス オブジェクトを表示および管理する
+
+Azure 管理者ポータルから、デバイスの表示、ブロック、およびブロック解除を行うことができます。 ブロックされたデバイスからは、登録済みデバイスのみを許可するように構成されたアプリケーションにアクセスできなくなります。
+
+**Azure Active Directory のデバイス オブジェクトを表示および管理するには:**
  
-- 登録時のコンピューター認証用の **Active Directory フェデレーション サービス (AD FS) 発行変換規則** (フェデレーション構成に適用)。
+1.    Microsoft Azure Portal に管理者としてログオンします。
 
-ドメインに参加していない Windows 10 デバイスが組織内にある場合、次の手順を実行します。
+2.    左ウィンドウで、 **[Active Directory]**を選択します。
 
-* ユーザーがデバイスを登録できるように Azure AD のポリシーを設定する
-* AD FS の多要素認証に代わる有効な選択肢として統合 Windows 認証 (IWA) を設定する
+3.    ディレクトリを選択します。
 
-## <a name="step-1-configure-service-connection-point"></a>手順 1: サービス接続ポイントの構成 
+4.    **[ユーザー]** を選択します。 
 
-コンピューターのドメインの構成名前付けコンテキストのパーティションに、サービス接続ポイント (SCP) オブジェクトが存在していなければなりません。 サービス接続ポイントには、コンピューターの登録先となる Azure AD テナントに関する検出情報が保持されます。 マルチ フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが存在するすべてのフォレストにサービス接続ポイントが存在している必要があります。
+5.  表示するデバイスのユーザーをクリックします。
 
-SCP は次の場所にあります。  
+6.    **[デバイス]** を選択します。
 
-**CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,[ユーザーの構成名前付けコンテキスト]**
+7.    **[登録済みのデバイス]** を選択します。
 
-Active Directory ドメイン名が *example.com* であるフォレストの場合、構成名前付けコンテキストは次のようになります。  
+これで、ユーザーの登録済みデバイスを表示、ブロック、またはブロック解除することができます。
+オンプレミスのドメインに参加済みで自動的に登録された Windows 10 デバイスは、[ユーザー] タブには表示されません。 企業のすべてのデバイスを検索するには、Get-MsolDevice PowerShell コマンドを使用してください。 
 
-**CN=Configuration,DC=example,DC=com**
-
-次の Windows PowerShell スクリプトを使用して、オブジェクトの存在を確認し、検出値を取得することができます。 
-
-    $scp = New-Object System.DirectoryServices.DirectoryEntry;
-
-    $scp.Path = "LDAP://CN=62a0ff2e-97b9-4513-943f-0d221bd30080,CN=Device Registration Configuration,CN=Services,CN=Configuration,DC=example,DC=com";
-
-    $scp.Keywords;
-
-**$scp.Keywords** の出力は次のような Azure AD テナント情報を示します。
-
-azureADName:microsoft.com  
-azureADId:72f988bf-86f1-41af-91ab-2d7cd011db47
-
-サービス接続ポイントが存在しない場合は、Azure AD Connect サーバーで次の PowerShell スクリプトを実行して作成してください。
-
-    Import-Module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1";
-
-    $aadAdminCred = Get-Credential;
-
-    Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
-
-
-
-**解説:**
-
-- **$aadAdminCred = Get-Credential** を実行するときに、ユーザー名を入力する必要があります。 ユーザー名には次の形式を使用します。**user@example.com** 
-
-
-- **Initialize-ADSyncDomainJoinedComputerSync** コマンドレットを実行するときは、[*connector account name*] を、Active Directory コネクタ アカウントで使用するドメイン アカウントに置き換えます。
-  
-- このコマンドレットには Active Directory PowerShell モジュールが使用されていますが、そのモジュールは、ドメイン コント ローラーの Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降のドメイン コントローラーでサポートされます。 ドメイン コントローラーが Windows Server 2008 以前のバージョンである場合は、PowerShell から System.DirectoryServices API を使用してサービス接続ポイントを作成したうえで、Keywords の値を代入してください。
- 
- 
-
-
-
-##<a name="step-2-register-your-devices"></a>手順 2: デバイスの登録
-
-デバイスを登録するための適切な方法は、組織がフェデレーションされているかどうかによって異なります。 
-
-
-### <a name="device-registration-in-non-federated-organizations"></a>非フェデレーション組織でのデバイスの登録
-
-非フェデレーション組織内のデバイスの登録は、次に該当する場合にのみサポートされます。
-
-- デバイスで Windows 10 または Windows Server 2016 を実行している
-- デバイスがドメインに参加している
-- Azure AD Connect を使用したパスワード同期が有効になっている
-
-これらすべての要件が満たされている場合は、デバイスを登録するために必要な処理はありません。  
-
-
-### <a name="device-registration-in-federated-organizations"></a>フェデレーション組織でのデバイスの登録
-
-Azure AD のフェデレーション構成では、Azure AD に対するデバイスの認証に AD FS (またはオンプレミスのフェデレーション サーバー) が使用されます。 デバイスは Azure Active Directory Device Registration サービスに登録されます。
-
-Windows 10 コンピューターと Windows Server 2016 コンピューターに関しては、Azure AD 内のデバイス オブジェクトとオンプレミスのコンピューター アカウント オブジェクトとが、Azure AD Connect によって関連付けられます。 Azure AD Device Registration サービスが登録処理を完了してデバイス オブジェクトを作成するためには、認証時に次の要求が存在している必要があります。
-
-- **http://schemas.microsoft.com/ws/2012/01/accounttype** - DJ 値を保持します。プリンシパルの認証子は、DJ 値によってドメイン参加済みコンピューターとして識別されます。
-
-- **http://schemas.microsoft.com/identity/claims/onpremobjectguid** - オンプレミス コンピューター アカウントの **objectGUID** 属性の値を保持します。
- 
-- **http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid** - コンピューターのプライマリ セキュリティ ID (SID) を保持します。この ID は、オンプレミス コンピューター アカウントの **objectSid** 属性の値と対応します。
-
-- **http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid** - AD FS から発行されたトークンやオンプレミスの Security Token Service (STS) から発行されたトークンを信頼するために Azure AD が使用する値を保持します。 これは、Azure AD にいくつかの確認済みのドメインがある場合に重要です。 AD FS では、**http://\<*domain-name*\>/adfs/services/trust/** を使用してください。**\<domain-name\>** には、Azure AD の確認済みのドメイン名が入ります。
-
-確認済みのドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-add-domain.md)」を参照してください。  
-確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain) コマンドレットを使用できます。 
-
-![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
-
-
-Windows 10 および Windows Server 2016 ドメインに参加しているコンピューターでは、Windows 統合認証を使用して、AD FS でホストされているアクティブな WS-Trust エンドポイントに対する認証を実行します。 このエンドポイントが有効になっていることを確認します。 Web 認証プロキシを使用している場合は、このエンドポイントがプロキシ経由で公開されていることも確認します。 エンドポイントは、**adfs/services/trust/13/windowstransport** です。 
-
-AD FS 管理コンソールの **[サービス] の [エンドポイント]** に有効である必要があります。 オンプレミスのフェデレーション サーバーとして AD FS を使用していない場合は、ベンダーの指示に従って対応するエンドポイントが有効になっていることを確認します。 
-
-
-
-> [!NOTE]
-> オンプレミスのフェデレーション サーバーに AD FS を使用していない場合は、ご利用のベンダーの指示に従って、これらの要求の発行規則を作成してください。
-> 
-> 
-
-
-
-
-**AD FS で規則を手動で作成するには、次の手順を実行します。**
-
-- 次の Windows PowerShell スクリプトのいずれかを選択します。 
-- サーバーに接続されているセッションで Windows PowerShell スクリプトを実行します。 
-- 先頭行を、Azure AD における組織の確認済みドメイン名で置き換えます。
-
-
-
-
-#### <a name="setting-ad-fs-rules-in-a-single-domain-environment"></a>単一ドメイン環境での AD FS 規則の設定
-
-**確認済みのドメインが 1 つ**だけの場合、次のスクリプトを使用して AD FS 規則を追加します。
-
-
-    <#----------------------------------------------------------------------
-    |   Modify the Azure AD Relying Party to include the claims needed
-    |   for DomainJoin++. The rules include:
-    |   -ObjectGuid
-    |   -AccountType
-    |   -ObjectSid
-    +---------------------------------------------------------------------#>
-
-    $rule1 = '@RuleName = "Issue object GUID" 
-
-    c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
-
-    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-    => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/identity/claims/onpremobjectguid"), query = ";objectguid;{0}", param = c2.Value);' 
-
-    $rule2 = '@RuleName = "Issue account type for domain joined computers" 
-
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-    => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");' 
-
-    $rule3 = '@RuleName = "Pass through primary SID" 
-
-    c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
-
-    c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-    => issue(claim = c2);' 
-
-    $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
-
-    $updatedRules = $existingRules + $rule1 + $rule2 + $rule3
-
-    $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules 
-
-    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
-
-
-#### <a name="setting-ad-fs-rules-in-a-multi-domain-environment"></a>複数ドメイン環境での AD FS 規則の設定
-
-検証済みのドメインが複数存在する場合は、次の手順を実行します。
-
-1. Azure AD Connect によって作成された、既存の **IssuerID** 規則を削除します。  
-この規則の例を次に示します: c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)",  "http://${domain}/adfs/services/trust/")); 
-
-
-2. このスクリプトを実行します。 
-
-        <#----------------------------------------------------------------------  
-        |   Modify the Azure AD Relying Party to include the claims needed  
-        |   for DomainJoin++. The rules include:
-        |   -ObjectGuid
-        |   -AccountType
-        |   -ObjectSid
-        +---------------------------------------------------------------------#>
-
-        $VerifiedDomain = 'example.com'      # Replace example.com with one of your verified domains
-
-        $rule1 = '@RuleName = "Issue object GUID" 
-
-        c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
-
-        c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-        => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/identity/claims/onpremobjectguid"), query = ";objectguid;{0}", param = c2.Value);' 
-
-        $rule2 = '@RuleName = "Issue account type for domain joined computers" 
-
-        c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-        => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");' 
-
-        $rule3 = '@RuleName = "Pass through primary SID" 
-
-        c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "-515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] && 
-
-        c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] 
-
-        => issue(claim = c2);' 
-
-        $rule4 = '@RuleName = "Issue AccountType with the value User when its not a computer account" 
-
-        NOT EXISTS([Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"]) 
-
-        => add(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "User");' 
-
-        $rule5 = '@RuleName = "Capture UPN when AccountType is User and issue the IssuerID" 
-
-        c1:[Type == "http://schemas.xmlsoap.org/claims/UPN"] && 
-
-        c2:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "User"] 
-
-        => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c1.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));' 
-
-        $rule6 = '@RuleName = "Update issuer for DJ computer auth" 
-
-        c1:[Type == "http://schemas.microsoft.com/ws/2012/01/accounttype", Value == "DJ"] 
-
-        => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = "http://'+$VerifiedDomain+'/adfs/services/trust/");' 
-
-        $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
-
-        $updatedRules = $existingRules + $rule1 + $rule2 + $rule3 + $rule4+ $rule5+  $rule6 
-
-        $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules 
-
-        Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
-
-
-
-## <a name="step-3-setup-ad-fs-for-authentication-of-device-registration"></a>手順 3: デバイス登録の認証に必要な AD FS の設定
-
-デバイス登録に関して、多要素認証に代わる有効な選択肢として WIA が AD FS で設定されていることを確認してください。 そのためには、この認証方法をパスする発行変換規則を用意しておく必要があります。
-
-1. AD FS 管理コンソールで **[AD FS]** > **[信頼関係]** > **[証明書利用者信頼]** に移動します。
-2. [Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、 **[要求規則の編集]**を選択します。
-3. **[発行変換規則]** タブで、**[規則の追加]** を選択します。
-4. **[要求規則]** テンプレート一覧から **[カスタム規則を使用して要求を送信]** を選択します。
-5. **[次へ]**を選択します。
-6. **[要求規則名]** ボックスに「**Auth Method Claim Rule**」と入力します。
-7. **[要求規則]** ボックスに、この規則を入力します。  
-**c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);**
-8. ご利用のフェデレーション サーバーで、次の PowerShell コマンドを入力します。
-   
-    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
-
-**\<RPObjectName\>** は、Azure AD 証明書利用者信頼オブジェクトの証明書利用者オブジェクト名です。 通常、このオブジェクトは "**Microsoft Office 365 ID プラットフォーム**" という名前です。
-
-
-
-##<a name="step-4-deployment-and-rollout"></a>手順 4: デプロイとロールアウト
-
-ドメイン参加済みコンピューターは、以上の前提条件を満たした時点で Azure AD に登録することができます。
-
-ドメイン参加済み Windows 10 Anniversary Update コンピューターおよび Windows Server 2016 コンピューターは、次回デバイスを再起動したときか、ユーザーが Windows にサインインしたときに Azure AD に自動的に登録されます。 新しくドメインに参加したコンピューターは、ドメインへの参加処理の後、そのデバイスを再起動したときに Azure AD に登録されます。
-
-> [!NOTE]
-> Windows 10 November Update を実行する Windows 10 ドメイン参加済みコンピューターは、展開グループ ポリシー オブジェクトが設定されている場合にのみ Azure AD に自動的に登録されます。
-> 
-> 
-
-ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターについては、自動登録のロールアウトをグループ ポリシー オブジェクトで制御することができます。 
-
-ドメイン参加済みコンピューターが Windows 10 以外である場合は、対象となるコンピューターを選んで Windows インストーラー パッケージをデプロイすることで自動登録をロールアウトすることができます。
-
-> [!NOTE]
-> Windows 10/Windows Server 2016 以外のすべてのコンピューターでは、このドキュメントの以降に説明されているように、Windows インストーラー パッケージを使用することをお勧めします。
-> 
-> 
-
-### <a name="create-a-group-policy-object-to-control-the-rollout-of-automatic-registration"></a>自動登録のロールアウトを制御するグループ ポリシー オブジェクトの作成
-
-ドメイン参加済みコンピューターを対象に Azure AD で自動登録のロールアウトを制御する場合は、登録対象のコンピューターに **[ドメインに参加しているコンピューターをデバイスとして登録する]** というグループ ポリシーをデプロイしてください。 たとえば、このポリシーを組織単位やセキュリティ グループにデプロイすることができます。
-
-**ポリシーを設定するには、次の手順を実行します。**
-
-1. サーバー マネージャーを開き、**[ツール]** > **[グループ ポリシーの管理]** に移動します。
-2. Windows 10 コンピューターまたは Windows Server 2016 コンピューターの自動登録を有効にするドメインのノードに移動します。
-3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。
-4. グループ ポリシー オブジェクトの名前を入力します。 たとえば、「*Automatic Registration to Azure AD*」と入力します。 **[OK]**を選択します。
-5. 新しいグループ ポリシー オブジェクトを右クリックし、**[編集]**を選択します。
-6. **[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[デバイスの登録]** に移動します。 **[ドメインに参加しているコンピューターをデバイスとして登録する]** を右クリックし、**[編集]** を選択します。
-   
-   > [!NOTE]
-   > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、**[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[社内参加]** > **[クライアント コンピューターを自動的に社内参加する]** に移動します。
-   > 
-   > 
-7. **[有効]** を選択し、**[適用]** を選択します。
-8. **[OK]**を選択します。
-9. グループ ポリシー オブジェクトを選択した場所にリンクします。 たとえば、特定の組織単位に関連付けることができます。 また、Azure AD に自動登録するコンピューターの特定のセキュリティ グループに関連付けることもできます。 組織内のすべてのドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターに対してこのポリシーを設定するには、このグループ ポリシー オブジェクトをドメインに関連付けてください。
-
-### <a name="windows-installer-packages-for-non-windows-10-computers"></a>非 Windows 10 コンピューター用の Windows インストーラー パッケージ
-フェデレーション環境で Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 のいずれかを実行しているドメイン参加コンピューターを登録するには、次の Windows インストーラー パッケージ (.msi) ファイルをダウンロードしてインストールします。
-
-* [x64](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x64.msi)
-* [x86](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x86.msi)
-
-このパッケージのデプロイには、System Center Configuration Manager などのソフトウェア ディストリビューション システムを使用します。 パッケージは、*quiet* パラメーターを使用する、標準のサイレント インストール オプションをサポートしています。 System Center Configuration Manager 2016 には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。 詳細については、 [System Center 2016](https://www.microsoft.com/en-us/cloud-platform/system-center)に関するページを参照してください。
-
-インストーラーは、スケジュールされたタスクを、ユーザーのコンテキストで実行されるシステムに作成します。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 IWA によってユーザーの認証が行われた後、その資格情報を使ってサイレントにデバイスが Azure AD に登録されます。 スケジュールされたタスクを確認するには、**[Microsoft]** > **[社内参加]** に移動し、タスク スケジューラ ライブラリにアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
+
+自動化されたデバイス登録をセットアップするには、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+
+<!--HONumber=Feb17_HO2-->
 
 
