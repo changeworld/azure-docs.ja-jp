@@ -129,7 +129,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 ## <a name="see-your-app-running-live"></a>アプリがライブ実行されるのを確認する
 Azure で実稼働しているアプリを確認するには、リポジトリ内の任意のディレクトリから次のコマンドを実行します。
 
-    azure site browse
+    az appservice web browse -n <app-name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>アプリを更新する
 Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。 これは、初めてコードをデプロイしたときと同様に行います。 たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。

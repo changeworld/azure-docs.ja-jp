@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
+experiment_id: heidist-experiment1-20170221
 translationtype: Human Translation
 ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
 ms.openlocfilehash: 99b3babee9b252b2d741515391295d8b1dc5c747
-
 
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは

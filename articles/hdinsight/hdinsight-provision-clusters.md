@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
@@ -22,8 +22,6 @@ ms.openlocfilehash: f014b92516879a0255dda3736bf5af6142555d92
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight"></a>HDInsight での Windows ベースの Hadoop クラスターの作成
-
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
 Hadoop クラスターは、クラスターでのタスクの分散処理に使用される複数の仮想マシン (ノード) で構成されます。 Azure では個々のノードのインストールと構成の実装の詳細を抽象化しているため、一般的な構成情報を提供する必要があります。 この記事では、これらの構成設定について説明します。
 
