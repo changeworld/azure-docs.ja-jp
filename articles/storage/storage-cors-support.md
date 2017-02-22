@@ -100,7 +100,7 @@ CORS ルールは、次のように評価されます。
 
 ルールは要求本文に含まれている順序で処理されるため、元のドメインに関する最も制限の厳しいルールを一覧の先頭に指定して、そのルールが最初に評価されるようにすることをお勧めします。 制限の緩いルール (すべての元のドメインを許可するルールなど) は一覧の末尾に指定します。
 
-### <a name="example-cors-rules-evaluation"></a>例 – CORS ルールの評価
+### <a name="example--cors-rules-evaluation"></a>例 – CORS ルールの評価
 次の例では、ストレージ サービスに CORS ルールを設定する操作の要求本文の一部を示しています。 要求の作成について詳しくは、「[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)」、「[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)」、「[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)」をご覧ください。
 
 ```xml

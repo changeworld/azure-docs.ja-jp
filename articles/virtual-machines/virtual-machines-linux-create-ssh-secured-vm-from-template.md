@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: ea1274dd53a93f00fa251ed03684b17b58b009c2
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: ff7ea65c329a37acf8b2febb52fd140954d81e97
 * `azure login` でログインした [Azure CLI](../xplat-cli-install.md)。
 * Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である "*必要があります*"。
 
-[Azure Portal](virtual-machines-linux-quick-create-portal.md) を使用して、Linux VM テンプレートをすばやくデプロイすることもできます。
+[Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して、Linux VM テンプレートをすばやくデプロイすることもできます。
 
 ## <a name="quick-command-summary"></a>クイック コマンドの概要
 ```azurecli
