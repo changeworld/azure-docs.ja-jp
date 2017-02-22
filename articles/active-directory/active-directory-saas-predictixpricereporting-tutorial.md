@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 675014c9914ea8ff95c65b53e626061f7644266f
-ms.openlocfilehash: aca828ae5d065ed5369584a2ec81cd666a1a08e4
+ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
+ms.openlocfilehash: dfb5859a08234d034fe6b0d87910b9dd92e4ac47
 
 
 ---
@@ -45,12 +45,12 @@ Predictix Price Reporting と Azure AD の統合を構成するには、次の�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Predictix Price Reporting の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -126,7 +126,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. ページの下部にある **[次へ]**」を参照してください。
 
@@ -181,7 +181,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_06.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a. **[名]** ボックスに「**Britta**」と入力します。  
    
     b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -260,6 +260,6 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: c033c1b32ad7b69565f870636110d317d01266df
-ms.openlocfilehash: 28489985797a638c04e1fabba30f42dac56d4d9c
+ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
+ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
 
 
 ---
@@ -82,7 +82,6 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-troubleshoot-performance.md)
-* [Azure SQL Database のアクセス許可のトラブルシューティング](sql-database-troubleshoot-permissions.md)
 * [Microsoft Azure ドキュメントの検索](http://azure.microsoft.com/search/documentation/)
 * [Azure SQL Database サービスの更新情報](http://azure.microsoft.com/updates/?service=sql-database)
 
@@ -90,12 +89,10 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md)
 * [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
-* [SQL Database トレーニング: Azure SQL Database について](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-* [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

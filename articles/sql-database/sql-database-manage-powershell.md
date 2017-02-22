@@ -12,22 +12,16 @@ ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 11/15/2016
+ms.topic: article
+ms.date: 02/09/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: adad6b8e27e0996559d5e6dacb8dd60fbf52a631
-ms.openlocfilehash: 0c1ce1c29e447d9db4ef0df7873ef89cb835abee
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 32d8c5f13d95c3de8b06782f4f6541866389be5b
 
 
 ---
 # <a name="managing-azure-sql-database-using-powershell"></a>PowerShell を使用した Azure SQL Database の管理
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-manage-portal.md)
-> * [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
 
 このトピックで説明する PowerShell コマンドレットを使用すると、Azure SQL Database タスクの多くを実行できます。 完全な一覧については、「 [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/mt574084\(v=azure.300\).aspx)」(Azure SQL Database コマンドレット) をご覧ください。
 
@@ -48,7 +42,7 @@ New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocati
 完全なチュートリアルについては、「[Azure PowerShell を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる](sql-database-get-started-powershell.md)」を参照してください。
 
 ## <a name="how-do-i-create-a-sql-database-server"></a>SQL Database サーバーの作成方法
-SQL Database サーバーを作成するには、[New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715\(v=azure.300\).aspx) コマンドレットを使用します。 *server1* を、ご利用のサーバー名に置き換えます。 サーバー名は、すべての Azure SQL Database サーバーで一意であることが必要です。 サーバー名を既に取得している場合は、エラーが表示されます。 このコマンドは、完了までに数分かかる場合があります。 サブスクリプションにリソース グループが既に存在している必要があります。
+SQL Database サーバーを作成するには、[New-AzureRmSqlServer](/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) コマンドレットを使用します。 *server1* を、ご利用のサーバー名に置き換えます。 サーバー名は、すべての Azure SQL Database サーバーで一意であることが必要です。 サーバー名を既に取得している場合は、エラーが表示されます。 このコマンドは、完了までに数分かかる場合があります。 サブスクリプションにリソース グループが既に存在している必要があります。
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -123,7 +117,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName `
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)」を参照してください。 サンプル スクリプトについては、「 [SQL Database のサービス階層とパフォーマンス レベルを変更するサンプル PowerShell スクリプト](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database)」を参照してください。
+詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)」を参照してください。 サンプル スクリプトについては、「 [SQL Database のサービス階層とパフォーマンス レベルを変更するサンプル PowerShell スクリプト](sql-database-manage-single-databases-powershell.md#change-the-service-tier-and-performance-level-of-a-single-database)」を参照してください。
 
 ## <a name="how-do-i-copy-a-sql-database-to-the-same-server"></a>SQL Database を同じサーバーにコピーする方法
 SQL Database を同じサーバーにコピーするには、[New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644\(v=azure.300\).aspx) コマンドレットを使用します。 `-CopyServerName` と `-CopyResourceGroupName` を、ソース データベース サーバーおよびリソース グループと同じ値に設定します。
@@ -168,7 +162,7 @@ Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceG
 ```
 
 ## <a name="how-do-i-create-and-manage-elastic-pools-using-powershell"></a>PowerShell を使用したエラスティック プールの作成と管理の方法
-PowerShell を使用したエラスティック プール作成の詳細については、「[PowerShell による新しいエラスティック プールの作成](sql-database-elastic-pool-create-powershell.md)」を参照してください。
+PowerShell を使用したエラスティック プール作成の詳細については、「[PowerShell による新しいエラスティック プールの作成](sql-database-elastic-pool-manage-powershell.md)」を参照してください。
 
 PowerShell を使用したエラスティック プールの管理の詳細については、「[PowerShell でのエラスティック プールの監視と管理](sql-database-elastic-pool-manage-powershell.md)」を参照してください。
 
@@ -179,6 +173,6 @@ PowerShell を使用したエラスティック プールの管理の詳細に�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

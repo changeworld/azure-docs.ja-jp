@@ -16,19 +16,12 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 7b9803d7d0b4982dece276d6f5a7ec8293ce4361
-ms.openlocfilehash: 37725b1abe0ad13124b9206c9aa6fcf1185b6db4
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 07593e7f1d92a9a5943714f662568fec10a8886a
 
 
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-with-transact-sql"></a>Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する
-> [!div class="op_single_selector"]
-> * [概要](sql-database-geo-replication-overview.md)
-> * [Azure ポータル](sql-database-geo-replication-portal.md)
-> * [PowerShell](sql-database-geo-replication-powershell.md)
-> * [T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
 
 この記事では、Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
 
@@ -127,7 +120,7 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 ## <a name="monitor-active-geo-replication-configuration-and-health"></a>アクティブ geo レプリケーションの構成と正常性を監視する
 
-監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。  master データベースの **sys.dm_geo_replication_links** 動的管理ビューを使用すると、Azure SQL Database 論理サーバー上の各データベースについて、既存のレプリケーション リンクすべてに関する情報が返されます。 このビューでは、プライマリ データベースとセカンダリ データベースの間の各レプリケーション リンクについて 1 行表示されます。 **sys.dm_replication_link_status** 動的管理ビューを使用すると、レプリケーション リンクに現在関係している Azure SQL Database ごとに行が返されます。 これには、プライマリ データベースとセカンダリ データベースの両方が含まれます。 特定のプライマリ データベースについて複数の連続レプリケーション リンクが存在する場合、このテーブルには、各リレーションシップについて 1 行が含まれます。 このビューは、すべてのデータベース (論理 master データベースを含む) で作成されます。 ただし、論理 master データベースでこのビューにクエリを実行しても、空のセットが返されます。 **sys.dm_operation_status** 動的管理ビューを使用すると、レプリケーション リンクの状態など、すべてのデータベース操作の状態を表示できます。 詳細については、[sys.geo_replication_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm_geo_replication_link_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx)、[sys.dm_operation_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx) に関するページをご覧ください。
+監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。  master データベースの **sys.dm_geo_replication_links** 動的管理ビューを使用すると、Azure SQL Database 論理サーバー上の各データベースについて、既存のレプリケーション リンクすべてに関する情報が返されます。 このビューでは、プライマリ データベースとセカンダリ データベースの間の各レプリケーション リンクについて&1; 行表示されます。 **sys.dm_replication_link_status** 動的管理ビューを使用すると、レプリケーション リンクに現在関係している Azure SQL Database ごとに行が返されます。 これには、プライマリ データベースとセカンダリ データベースの両方が含まれます。 特定のプライマリ データベースについて複数の連続レプリケーション リンクが存在する場合、このテーブルには、各リレーションシップについて&1; 行が含まれます。 このビューは、すべてのデータベース (論理 master データベースを含む) で作成されます。 ただし、論理 master データベースでこのビューにクエリを実行しても、空のセットが返されます。 **sys.dm_operation_status** 動的管理ビューを使用すると、レプリケーション リンクの状態など、すべてのデータベース操作の状態を表示できます。 詳細については、[sys.geo_replication_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm_geo_replication_link_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx)、[sys.dm_operation_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx) に関するページをご覧ください。
 
 アクティブ geo レプリケーション パートナーシップを監視するには、次の手順に従います。
 
@@ -171,6 +164,6 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

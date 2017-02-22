@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 2d1ff28d5c7d989d4c81758bd191e8d1e8100b2e
+ms.sourcegitcommit: f772060243ce6d741d26113710be32cb76135479
+ms.openlocfilehash: 41a28f43942d4e6bf395b7fd024bd22b96420d55
 
 
 ---
@@ -28,13 +28,13 @@ ms.openlocfilehash: 2d1ff28d5c7d989d4c81758bd191e8d1e8100b2e
 ## <a name="general"></a>全般
 * [ここに質問の答えがない場合はどうすればいいですか。](#what-if-my-question-isnt-answered-here)
 * [なぜ Azure DevTest Labs を使用する必要があるのですか。](#why-should-i-use-azure-devtest-labs) 
-* [「worry free, self-service (心配無用のセルフ サービス)」とはどのような意味ですか。](#what-does-quotworry-free-self-servicequot-mean)
+* [「worry free, self-service (心配無用のセルフ サービス)」とはどのような意味ですか。](#what-does-worry-free-self-service-mean)
 * [Azure DevTest Labs を使用するにはどうすればよいですか。](#how-can-i-use-azure-devtest-labs) 
 * [Azure DevTest Labs の課金方法を教えてください。](#how-am-i-billed-for-azure-devtest-labs) 
 
 ## <a name="security"></a>セキュリティ
 * [Azure DevTest Labs の各種セキュリティ レベルはどのようなものですか。](#what-are-the-different-security-levels-in-azure-devtest-labs) 
-* [特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。](#how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task) 
+* [特定の&1; つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。](#how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task) 
 
 ## <a name="cicd-integration--automation"></a>CI/CD 統合と自動化
 * [Azure DevTest Labs は、CI/CD ツールチェーンと統合されますか。](#does-azure-devtest-labs-integrate-with-my-cicd-toolchain) 
@@ -81,7 +81,7 @@ Azure DevTest Labs は、開発環境やテスト環境が必要であり、迅�
 
 お客様が Azure DevTest Labs を使用しているシナリオのいくつかを次に示します。 
 
-* 開発環境およびテスト環境を 1 か所で管理し、ポリシーを使用してコストを削減し、カスタム イメージを使用してチーム全体でビルドを共有します。
+* 開発環境およびテスト環境を&1; か所で管理し、ポリシーを使用してコストを削減し、カスタム イメージを使用してチーム全体でビルドを共有します。
 * 開発段階全体にわたってディスクの状態を保存するために、カスタム イメージを使用してアプリケーションを開発します。
 * 進行状況に関連してコストを追跡します。 
 * 品質保証テスト用の大容量テスト環境を作成します。
@@ -98,14 +98,14 @@ Azure DevTest Labs は、無料サービスです。つまり、ラボの作成�
 * **ロール** - ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、"サブスクリプション所有者" ロールは、サブスクリプション内のすべてのリソースにアクセスできます。 
 * **スコープ** - スコープとは、Azure リソースの階層内のレベルのことです。 たとえば、リソース グループや単一のラボ、またはサブスクリプション全体などがスコープになります。 
 
-Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可を定義する 2 種類のロールがあります。ラボ所有者とラボ ユーザーです。
+Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可を定義する&2; 種類のロールがあります。ラボ所有者とラボ ユーザーです。
 
 * **ラボ所有者** - ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 そのため、ポリシーの変更、任意の VM の読み取りと書き込み、仮想ネットワークの変更などを行うことができます。 
 * **ラボ ユーザー**: ラボ ユーザーは VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できますが、他のユーザーが作成したポリシーまたは VM を変更することはできません。 Azure DevTest Labs にカスタム ロールを作成することもできます。実施方法については、記事「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。 
 
 スコープは階層構造を持つため、ユーザーが特定のスコープのアクセス許可を持つ場合は、含まれているすべての下位のスコープでそのアクセス許可が自動的に付与されます。 たとえば、ユーザーにサブスクリプション所有者のロールが割り当てられている場合、ユーザーはサブスクリプションのすべてのリソースにアクセスできます。 これには、すべての仮想マシン、すべての仮想ネットワーク、およびすべてのラボが含まれます。てのリソースにアクセスできます。 このため、サブスクリプション所有者は、ラボ所有者のロールを自動的に継承します。 ただし、その逆は真ではありません。 ラボ所有者はラボにアクセスできます。これはサブスクリプション レベルよりも下位のスコープです。 そのため、ラボ所有者はラボの外にある仮想マシン、仮想ネットワーク、またはいずれのリソースも表示できません。 
 
-### <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
+### <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>特定の&1; つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
 カスタム ロールを作成し、そのロールにアクセス許可を割り当てる方法についての包括的な記事がこちらにあります。 ラボ内のすべての VM を開始および停止するアクセス許可を持つロール "DevTest Labs Advanced User" を作成するスクリプトの例を次に示します。
 
     $policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User" 
@@ -238,7 +238,7 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 > 
 
 ### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>VM の作成時にアーティファクトでエラーが発生しました。 どのようにトラブルシューティングすればよいですか。
-障害が発生したアーティファクトに関するログを取得する方法については、MVP の 1 人によるブログ記事「 [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs 内のアーティファクトの障害をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) 」をご覧ください。 
+障害が発生したアーティファクトに関するログを取得する方法については、MVP の&1; 人によるブログ記事「 [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs 内のアーティファクトの障害をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) 」をご覧ください。 
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>既存の仮想ネットワークが正しく保存されないのはなぜですか。
 仮想ネットワーク名にピリオドが含まれていることが原因となっている可能性があります。 その場合は、ピリオドを削除するかハイフンに置き換えてから、仮想ネットワークをもう一度保存してみてください。
@@ -246,6 +246,6 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

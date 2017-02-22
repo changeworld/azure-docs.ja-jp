@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
 
 
 ---
@@ -147,7 +147,7 @@ ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
-[エラスティック プールを作成](sql-database-elastic-pool-create-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+[エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
 
 **推定所要時間:** 10 分。
 
@@ -181,6 +181,6 @@ ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

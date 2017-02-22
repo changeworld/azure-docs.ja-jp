@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
-ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 次の手順は、AzCopy コマンド ライン ユーティリティを使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示しています。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](../virtual-machines/virtual-machines-linux-about-disks-vhds.md)」を参照してください。
+Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 次の手順は、AzCopy コマンド ライン ユーティリティを使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示しています。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](../storage/storage-about-disks-and-vhds-linux.md)」を参照してください。
 
 > [!NOTE] 
 >  
@@ -37,7 +37,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. Azure Portal を使用して、ラボのストレージ アカウントを取得します。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -85,6 +85,6 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 - [PowerShell を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
