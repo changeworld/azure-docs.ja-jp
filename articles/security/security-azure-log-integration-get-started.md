@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 08/24/2016
+ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: d02a99406fd22f7578cb4825447f7710df374210
-ms.openlocfilehash: 1ccd7d97596b3a74efcb9a066f42b04b62600fe3
+ms.sourcegitcommit: aaa69e2e4fed314e8bc363f60e7538b12bb3a56d
+ms.openlocfilehash: ca7f05534113752f3607268c15a9fe3e0e2982e0
 
 
 ---
 # <a name="get-started-with-azure-log-integration-preview"></a>Azure ログ統合の使用 (プレビュー)
 Azure ログ統合を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
-このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。 このチュートリアルの推定所要時間は 1 時間です。
-このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
+このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。 このチュートリアルの推定所要時間は&1; 時間です。
+
+## <a name="prerequisites"></a>前提条件
+このチュートリアルを完了するには、以下が必要です。
 
 * Azure ログ統合サービスをインストールするコンピューター (オンプレミスまたはクラウド)。 64 ビット Windows OS が実行され、.Net 4.5.1 がインストールされている必要があります。 このコンピューターは、 **Azlog インテグレーター**と呼ばれます。
-Azure サブスクリプション。 サブスクリプションがない場合でも、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
+* として機能します。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
 * Azure 仮想マシン (VM) が有効になっている Azure 診断。 Cloud Services に対する診断の有効化については、「 [Azure Cloud Services での Azure 診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。 Windows を実行している Azure VM に対する診断の有効化については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * Azlog インテグレーターから Azure ストレージへの接続、および Azure サブスクリプションに対する認証と承認。
 * Azure VM ログについては、SIEM エージェント (Splunk Universal Forwarder、HP ArcSight Windows Event Collector エージェント、IBM QRadar WinCollect など) を Azlog インテグレーターにインストールする必要があります。
@@ -50,35 +52,35 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
 > [!NOTE]
 > このオプションをオフにして、利用統計情報の収集を無効にすることができます。
-> 
-> 
+>
+>
 
 
 ## <a name="set-your-azure-environment"></a>Azure 環境を設定する
-1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
+1. PowerShell コンソールを管理者として開き、**cd** を **c:\Program Files\Microsoft Azure Log Integration** にします。
 2. コマンド Set-AzLogAzureEnvironment -Name <Cloud> を実行します。
-       
+
        Replace the Cloud with any of the following
-       AzureCloud 
-       AzureChinaCloud 
-       AzureUSGovernment 
+       AzureCloud
+       AzureChinaCloud
+       AzureUSGovernment
        AzureGermanCloud
-       
-       Note that at this time, an Azlog integrator only supports integrating logs from one cloud that you choose to integrate
-       
+
+       Note that at this time, an Azlog integrator only supports integrating logs from one cloud that you choose to integrate.
+
 ## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Azure 診断ストレージ アカウントからの Azure VM ログの統合
 1. 上記の前提条件をチェックして、Azure ログ統合を続行する前に、WAD ストレージ アカウントがログを収集していることを確認します。 WAD ストレージ アカウントがログを収集していない場合は、以下の手順を実行しないでください。
 2. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
 3. コマンドを実行します
-   
+
         azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>
-   
+
       StorageAccountName を、VM から診断イベントを受信するように構成された Azure ストレージ アカウントの名前に置き換えます。
-   
+
         azlog source add azlogtest WAD azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==
-   
+
       サブスクリプション ID がイベント XML に表示されるようにするには、サブスクリプション ID を表示名に追加します。
-   
+
         azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>
 4. 30 ～ 60 分間待って (1 時間かかる場合があります)、ストレージ アカウントから取得されたイベントを表示します。 表示するには、Azlog インテグレーターで **[イベント ビューアー] > [Windows ログ] > [転送されたイベント]** を開きます。
 5. コンピューターにインストールされている標準 SIEM コネクタが、 **[転送されたイベント]** フォルダーからイベントを選択し、SIEM インスタンスにパイプするように構成されていることを確認します。 SIEM 固有の構成を確認してログ統合を構成し、表示します。
@@ -100,28 +102,28 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 ## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Azure 監査ログと Security Center の警告の統合
 1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
 2. コマンドを実行します
-   
+
         azlog createazureid
-   
+
       このコマンドは Azure ログインを要求します。 このコマンドは、管理者、共同管理者、または所有者としてログインしている、Azure サブスクリプションをホストする Azure AD テナントに [Azure Active Directory サービス プリンシパル](../active-directory/active-directory-application-objects.md) を作成します。 単なる Guest ユーザーとして Azure AD テナントにログインしている場合、コマンドは失敗します。 Azure への認証は、Azure Active Directory (AD) によって行われます。  Azlog 統合のサービス プリンシパルを作成すると、Azure AD の ID が作成され、Azure サブスクリプションからの読み取りアクセス許可が付与されます。
 3. コマンドを実行します
-   
+
         azlog authorize <SubscriptionID>
-   
+
       これにより、サブスクリプションの閲覧者アクセス許可が、手順 2. で作成されたサービス プリンシパルに割り当てられます。 SubscriptionID を指定しないと、このコマンドは、サービス プリンシパルの閲覧者ロールを、アクセスできるすべてのサブスクリプションに割り当てようとします。
-   
+
         azlog authorize 0ee9d577-9bc4-4a32-a4e8-c29981025328
-   
+
    > [!NOTE]
    > **createazureid** コマンドの実行後すぐに **authorize** コマンドを実行すると、警告が表示される可能性があります。 Azure AD アカウントが作成されてから、そのアカウントが使用できるようになるまで、少し時間がかかります。 **createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
-   > 
-   > 
+   >
+   >
 4. 次のフォルダーを調べて、監査ログの JSON ファイルがあることを確認します。
-   
+
    * **c:\Users\azlog\AzureResourceManagerJson**
    * **c:\Users\azlog\AzureResourceManagerJsonLD**
 5. 次のフォルダーを調べて、Security Center のアラートが存在することを確認します。
-   
+
    * **c:\Users\azlog\ AzureSecurityCenterJson**
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
 6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
@@ -140,7 +142,6 @@ Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

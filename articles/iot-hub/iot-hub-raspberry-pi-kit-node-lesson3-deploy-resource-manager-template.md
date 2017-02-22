@@ -1,5 +1,5 @@
 ---
-title: "Azure Function App と Azure Storage アカウントの作成 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 3: テンプレートのデプロイ | Microsoft Docs"
 description: "Azure Function App は、Azure IoT ハブのイベントをリッスンして受信メッセージを処理し、それらを Azure Table Storage に書き込みます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: df446b1a6b244761f39bfdcebb7e404435c2c35d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: a3a7ec4c81556e4cb530f32c9997d8701db68b2c
 
 
 ---
@@ -67,7 +67,7 @@ Visual Studio Code で `arm-template-param.json` ファイルを更新します�
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
-これらのリソースの作成には約 5 分かかります。 リソースの作成の進行中に、次の記事に進むことができます。
+これらのリソースの作成には約&5; 分かかります。 リソースの作成の進行中に、次の記事に進むことができます。
 
 ## <a name="summary"></a>概要
 IoT ハブのメッセージを処理する Azure Function App と、それらのメッセージを格納する Azure Storage アカウントを作成しました。 デバイスからクラウドへのメッセージを送信するサンプルを Pi にデプロイして実行できます。
@@ -78,6 +78,6 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

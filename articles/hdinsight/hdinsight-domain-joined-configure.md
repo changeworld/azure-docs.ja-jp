@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c28ad5efa3cfcdc63559b50056ca6c79f8d600c9
+ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
+ms.openlocfilehash: b0122a87ec64d16d6e026f9b37a563125a5f1920
 
 
 ---
@@ -31,9 +31,9 @@ Azure HDInsight クラスターと Azure Active Directory (Azure AD) および [
 
 最終的なトポロジの例は、次のようになります。
 
-![ドメイン参加済み HDInsight のトポロジ](.\\media\\hdinsight-domain-joined-configure\\hdinsight-domain-joined-topology.png)
+![ドメイン参加済み HDInsight のトポロジ](./media/hdinsight-domain-joined-configure/hdinsight-domain-joined-topology.png)
 
-現在、Azure AD では従来の仮想ネットワーク (VNet) のみがサポートされていて、Linux ベースの HDInsight クラスターでは Azure Resource Manager ベースの VNet のみがサポートされているため、HDInsight Azure AD 統合には 2 つの VNet とそれらの間のピアリングが必要です。 2 つのデプロイメント モデルの比較情報については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../resource-manager-deployment-model.md)」を参照してください。 2 つの VNet は、Azure AD DS と同じリージョンにある必要があります。
+現在、Azure AD では従来の仮想ネットワーク (VNet) のみがサポートされていて、Linux ベースの HDInsight クラスターでは Azure Resource Manager ベースの VNet のみがサポートされているため、HDInsight Azure AD 統合には 2 つの VNet とそれらの間のピアリングが必要です。 2 つのデプロイメント モデルの比較情報については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。 2 つの VNet は、Azure AD DS と同じリージョンにある必要があります。
 
 Azure サービス名は、グローバルに一意である必要があります。 このチュートリアルでは、次の名前を使用しています。 Contoso は架空の名前です。 チュートリアルを進めるときには、*contoso* を別の名前に置き換える必要があります。 
 
@@ -119,7 +119,7 @@ Azure サービス名は、グローバルに一意である必要がありま�
    * **名前**: contosoaaddirectory
    * **ドメイン名**: contoso。  この名前はグローバルに一意である必要があります。
    * **国またはリージョン**: 国またはリージョンを選択します。
-3. ページの下部にある [完了]」を参照してください。
+3. ページの下部にある **[完了]**」を参照してください。
 
 **Azure AD ユーザーの作成**
 
@@ -142,7 +142,7 @@ Azure サービス名は、グローバルに一意である必要がありま�
    
    * **名前**: AAD DC Administrators。  グループ名は変更しないでください。
    * **グループの種類**: セキュリティ。
-5. ページの下部にある [完了]」を参照してください。
+5. ページの下部にある **[完了]**」を参照してください。
 6. **[AAD DC Administrators]** をクリックして、グループを開きます。
 7. **[メンバーの追加]** をクリックします。
 8. 前の手順で作成した最初のユーザーを選択し、**[完了]** をクリックします。
@@ -200,9 +200,9 @@ Azure サービス名は、グローバルに一意である必要がありま�
    * パスワード: (パスワードを入力)
      
      ユーザー名とパスワードはローカル管理者である点に注意してください。
-4.  **[次へ]**
+4. **[次へ]**
 5. **[リージョン/仮想ネットワーク]** で、前の手順で作成した新しい仮想ネットワーク (contosoaadvnet) を選択し、**[次へ]** をクリックします。
-6. ページの下部にある [完了]」を参照してください。
+6. ページの下部にある **[完了]**」を参照してください。
 
 **VM に RDP で接続するには**
 
@@ -232,12 +232,12 @@ Azure サービス名は、グローバルに一意である必要がありま�
 2. **[スタート]** ボタンをクリックし、**[サーバー マネージャー]** をクリックします。
 3. 左側のメニューで **[ダッシュボード]** をクリックします。
 4. **[管理]** をクリックし、**[役割と機能の追加]** をクリックします。
-5. ページの下部にある [次へ]」を参照してください。
+5. **[次へ]**をクリックします。
 6. **[役割ベースまたは機能ベースのインストール]** を選択し、**[次へ]** をクリックします。
 7. サーバー プールから現在の仮想マシンを選択して、**[次へ]** をクリックします。
 8. **[次へ]** をクリックして、ロールをスキップします。
 9. **[リモート サーバー管理ツール]**、**[役割管理ツール]** の順に展開し、**[AD DS および AD LDS ツール]** と **[DNS サーバー ツール]** を選択して、**[次へ]** をクリックします。 
-10.  **[次へ]**
+10. **[次へ]**
 11. **[インストール]**をクリックします。
 
 詳細については、「[仮想マシンに Active Directory 管理ツールをインストールする](../active-directory-domain-services/active-directory-ds-admin-guide-administer-domain.md#task-2---install-active-directory-administration-tools-on-the-virtual-machine)」を参照してください。
@@ -254,7 +254,7 @@ Azure サービス名は、グローバルに一意である必要がありま�
 8. **[このドメインのドメイン コントローラー上で実行しているすべての DNS サーバー]** を選択し、**[次へ]** をクリックします。
 9. **[IPv4 逆引き参照ゾーン]** を選択し、**[次へ]** をクリックします。
 10. **[ネットワーク ID]** に HDInsight VNET ネットワーク範囲のプレフィックスを入力し、**[次へ]** をクリックします。 次のセクションでは、HDInsight VNet を作成します。
-11. ページの下部にある [次へ]」を参照してください。
+11. **[次へ]**をクリックします。
 12. **[次へ]**をクリックします。
 13. **[完了]**をクリックします。
 
@@ -324,7 +324,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 8. **[OK]**をクリックします。
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight クラスターの作成
-このセクションでは、Azure Portal または [Azure Resource Manager テンプレート](../resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 Resource Manager テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、[Resource Manager テンプレートを使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)に関するページを参照してください。
+このセクションでは、Azure Portal または [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 Resource Manager テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、[Resource Manager テンプレートを使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)に関するページを参照してください。
 
 **Azure Portal を使用して、ドメイン参加済み HDInsight クラスターを作成するには**
 
@@ -375,7 +375,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 
 1. 次の画像をクリックして、Azure Portal で Resource Manager テンプレートを開きます。 Resource Manager テンプレートは、パブリック BLOB コンテナー内にあります。 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/hdinsight-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
    
    * **サブスクリプション**: (Azure サブスクリプションを選択します)。
@@ -404,11 +404,11 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 ## <a name="next-steps"></a>次のステップ
 * Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成については、「[Configure Domain-joined HDInsight clusters use Azure PowerShell (Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成)](hdinsight-domain-joined-configure-use-powershell.md)」をご覧ください。
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
-* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-domain-joined-hdinsight-cluster)」を参照してください。
+* SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

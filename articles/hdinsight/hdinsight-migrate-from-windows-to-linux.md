@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: f82e8fcb6228df25c8e3181059fe06fea5fbce78
+ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
+ms.openlocfilehash: 856d75c58cd911c641ec74b78f5c6133e605b2ec
 
 
 ---
@@ -27,8 +27,6 @@ Windows ベースの HDInsight にはクラウドで Hadoop を使用する簡�
 
 > [!NOTE]
 > HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。 HDInsight で使用可能な Ubuntu のバージョンの詳細や他のコンポーネントのバージョン情報については、[HDInsight コンポーネントのバージョンに関する記事](hdinsight-component-versioning.md)を参照してください。
->
->
 
 ## <a name="migration-tasks"></a>移行タスク
 移行の一般的なワークフローは次のとおりです。
@@ -56,10 +54,13 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 
 1. 既存のクラスターのストレージ アカウントと既定のコンテナー情報を見つけます。 これは、次の Azure PowerShell スクリプトを使用して実行できます。
 
-        $clusterName="Your existing HDInsight cluster name"
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
-        write-host "Default container: $clusterInfo.DefaultStorageContainer"
+    ```powershell
+    $clusterName="Your existing HDInsight cluster name"
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
+    write-host "Default container: $clusterInfo.DefaultStorageContainer"
+    ```
+
 2. HDInsight での Linux ベース クラスターの作成に関するドキュメントの手順に従って、新しいテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]**を選択します。
 3. [オプションの構成] ブレードで、 **[リンクされたストレージ アカウント]**を選択します。
 4. **[ストレージ キーを追加]** を選択し、メッセージが表示されたら、手順 1. で PowerShell スクリプトによって返されたストレージ アカウントを選択します。 各ブレードで **[選択]** を選択して閉じます。 最後に、クラスターを作成します。
@@ -71,7 +72,8 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 
         hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
 
-    [AZURE.NOTE] テスト環境にデータを格納するディレクトリ構造が存在しない場合は、次のコマンドを使用して作成できます。
+    > [!NOTE]
+    > テスト環境にデータを格納するディレクトリ構造が存在しない場合は、次のコマンドを使用して作成できます。
 
         hdfs dfs -mkdir -p /new/path/to/create
 
@@ -81,7 +83,7 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 `Start-AzureStorageBlobCopy` Azure PowerShell コマンドレットを使用して、HDInsight 外のストレージ アカウント間で BLOB をコピーすることもできます。 詳細については、「Azure Storage での Azure PowerShell の使用」の「Azure BLOB の管理方法」セクションを参照してください。
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
-通常、[Azure PowerShell コマンドレット](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジは、Linux ベースのクラスターでも同じように引き続き機能します。これは、依存する REST API が両方のクラスターの OS タイプで同じであるためです。
+通常、[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジは、Linux ベースのクラスターでも同じように引き続き機能します。これは、依存する REST API が両方のクラスターの OS タイプで同じであるためです。
 
 ## <a name="server-side-technologies"></a>サーバー側のテクノロジ
 次の表では、Windows 固有のサーバー側コンポーネントの移行に関するガイダンスを示します。
@@ -90,7 +92,7 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
 | **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 サーバー側スクリプトで必要な場合は、Linux ベースのプラットフォームへのインストールについて、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照してください。 |
-| **.NET コンポーネント** |.Net は、Linux ベースの HDInsight クラスターで全面的にはサポートされていません。 2017 年 10 月 28 日以降に作成される HDInsight クラスター上の Linux ベース Storm は、SCP.NET フレームワークを使用して C# Storm トポロジをサポートします。 .NET のその他のサポートは将来の更新時に追加される予定です。 |
+| **.NET コンポーネント** |.Net は、Linux ベースの HDInsight クラスターのすべての種類で全面的にサポートされているわけではありません。 2016 年 10 月 28 日以降に作成された HDInsight クラスター上の Linux ベース Storm は、SCP.NET フレームワークを使用して C# Storm トポロジをサポートします。 .NET のその他のサポートは将来の更新時に追加される予定です。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。Linux と互換性のあるバージョンを見つけることができる場合や、代替ソリューションを見つけるかこのコンポーネントを書き換える必要がある場合があります。 |
 
 ## <a name="cluster-creation"></a>クラスターの作成
@@ -135,8 +137,6 @@ Ambari には、クラスターに関する潜在的な問題を通知できる�
 > Ambari アラートは問題が*ある可能性のある*ことを示すものであり、問題が*ある*ことを示すものではありません。 たとえば、HiveServer2 に通常どおりアクセスできる場合でも、アクセスできないことを示すアラートを受け取ることがあります。
 >
 > 多くのアラートがサービスに対する一定間隔のクエリとして実装され、特定の期間内での応答を予期します。 したがって、アラートは必ずしもサービスが停止していることを意味するわけでなく、単に予期した期間内に結果が返されなかったことを意味します。
->
->
 
 通常は、アラートが長期間発生していたか、アクションを実行する前にクラスターで以前報告されたユーザーの問題を反映しているのかを評価する必要があります。
 
@@ -147,7 +147,7 @@ Linux クラスターのファイル システムは、Windows ベースの HDIn
 | --- | --- |
 | 構成 |`/etc`」を参照してください。 たとえば、 `/etc/hadoop/conf/core-site.xml` |
 | ログ ファイル |`/var/logs` |
-| Hortonworks Data Platform (HDP) |`/usr/hdp`。ここには 2 つのディレクトリがあります。つまり、現在の HDP バージョン (`2.2.9.1-1` など) と `current` のディレクトリです。 `current` ディレクトリには、バージョン番号ディレクトリにあるファイルとディレクトリへのシンボリック リンクが含まれています。バージョン番号は HDP バージョンの更新時に変更されるため、HDP ファイルにアクセスするための便利な方法として提供されます。 |
+| Hortonworks Data Platform (HDP) |`/usr/hdp`。ここには&2; つのディレクトリがあります。つまり、現在の HDP バージョン (`2.2.9.1-1` など) と `current` のディレクトリです。 `current` ディレクトリには、バージョン番号ディレクトリにあるファイルとディレクトリへのシンボリック リンクが含まれています。バージョン番号は HDP バージョンの更新時に変更されるため、HDP ファイルにアクセスするための便利な方法として提供されます。 |
 | hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
 
 通常、ファイル名がわかっている場合は、SSH セッションから次のコマンドを使用してファイル パスを検索することができます。
@@ -222,6 +222,6 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

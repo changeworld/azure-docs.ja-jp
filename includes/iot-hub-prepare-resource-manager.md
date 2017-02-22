@@ -41,9 +41,9 @@
 * パスワード
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: ../articles/powershell-install-configure.md
+[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

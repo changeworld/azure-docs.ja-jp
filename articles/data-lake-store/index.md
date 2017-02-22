@@ -1,13 +1,25 @@
 ---
+title: "Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。"
+services: data-lake-store
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-lake-store
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: d26d0f965ad1195ab41e04e870ead1b335ff513e
+ms.sourcegitcommit: dcc8f86fe5871d307bf304252e80e64a0084ef49
+ms.openlocfilehash: d7f56dd2658de2cc270f569b871ebf28ad610fd7
 
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
 
-Azure Data Lake Store は、ビッグ データの分析ワークロード用のハイパースケール リポジトリです。 Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。  Azure Data Lake Store には、Hadoop (HDInsight クラスターで使用可能) から、WebHDFS 互換のシナリオを使用してアクセスできます。 Azure Data Lake Store には、エンタープライズ レベルのすべての機能 (セキュリティ、管理の容易性、スケーラビリティ、信頼性、および可用性) が組み込まれています。
+あらゆるサイズ、種類、取り込み速度のデータの分析を目的として、Data Lake Store を使用して、Hadoop と互換性のある超大規模リポジトリを作成する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、運用分析や調査分析を目的として Data Lake リポジトリを設定、管理、アクセスする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -180,7 +192,7 @@ Azure Data Lake Store は、ビッグ データの分析ワークロード用の
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datalake.store">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
-                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.JS</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html">Python (アカウント管理)</a></p>
                         <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (ファイルシステム管理)</a></p>
                     </div>
@@ -202,15 +214,9 @@ Azure Data Lake Store は、ビッグ データの分析ワークロード用の
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-lake-store.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Data Lake Store のドキュメントのダウンロード </div>
-    </a>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,24 +13,29 @@ ms.workload: multiple
 ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
+ms.date: 01/03/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 028e09c031037f3c4001eccfb4543122eef2c055
+ms.sourcegitcommit: 9a2ab28a2dc456d5f21242ded1d348f411d3d994
+ms.openlocfilehash: ee42c2e4344fe712084208c25fb5c1a062dba1aa
 
 
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
 この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
 
-開始するには、まず、[Azure CLI をインストール](../xplat-cli-install.md)し、職場/学校のアカウント、または Microsoft アカウント ID を使用して [Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
+> [!NOTE]
+> この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure CLI 1.0 と呼ばれることがあります。 Resource Manager モードでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) で試すこともできます。
+>詳細については、[新旧の Azure CLI](/cli/azure/old-and-new-clis)に関するページを参照してください。
+>
+
+最初に、[Azure CLI をインストール](../xplat-cli-install.md)し、[Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
 
 リソース マネージャー モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。 ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。 その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが&3; つあります。 `-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。 `--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
 
 ## <a name="setting-the-resource-manager-mode"></a>リソース マネージャー モードの設定
 次のコマンドを使用して Azure CLI リソース マネージャー モードのコマンドを有効にします。
@@ -105,11 +110,11 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     availset list [options] <resource-group>
 
-**リソース グループ内の可用性セットを 1 つ取得します**
+**リソース グループ内の可用性セットを&1; つ取得します**
 
     availset show [options] <resource-group> <name>
 
-**リソース グループ内の可用性セットを 1 つ削除します**
+**リソース グループ内の可用性セットを&1; つ削除します**
 
     availset delete [options] <resource-group> <name>
 
@@ -944,7 +949,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 バックエンド アドレス プールの範囲によって、ロード バランサーが Azure Resource Manager を使用してエンドポイントからの着信ネットワーク トラフィックをルーティングするリソースを確認する方法が決まります。 バックエンド アドレス プールの範囲を作成し名前を付けた後 (コマンド "azure network lb address-pool create" を参照してください)、"ネットワーク インターフェイス" と呼ばれるリソースによって定義されるエンドポイントを追加する必要があります。
 
-バックエンド アドレスの範囲を構成するには、少なくとも 1 つの "ネットワーク インターフェイス" (詳細については "azure network lb nic" コマンド ラインを参照してください) が必要です。
+バックエンド アドレスの範囲を構成するには、少なくとも&1; つの "ネットワーク インターフェイス" (詳細については "azure network lb nic" コマンド ラインを参照してください) が必要です。
 
 次の例では、以前に作成した "nic1" という名前のネットワーク インターフェイスを使用して、バックエンド アドレス プールの範囲を作成しています。
 
@@ -1608,7 +1613,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     resource list [options] [resource-group]
 
-**リソース グループまたはサブスクリプションのリソースを 1 つ取得します**
+**リソース グループまたはサブスクリプションのリソースを&1; つ取得します**
 
     resource show [options] <resource-group> <name> <resource-type> <api-version>
 
@@ -1789,27 +1794,27 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
     vm list [options]
 
-**リソース グループ内の仮想マシンを 1 つ取得します**
+**リソース グループ内の仮想マシンを&1; つ取得します**
 
     vm show [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを 1 つ削除します**
+**リソース グループ内の仮想マシンを&1; つ削除します**
 
     vm delete [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを 1 つシャットダウンします**
+**リソース グループ内の仮想マシンを&1; つシャットダウンします**
 
     vm stop [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを 1 つ再起動します**
+**リソース グループ内の仮想マシンを&1; つ再起動します**
 
     vm restart [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを 1 つ起動します**
+**リソース グループ内の仮想マシンを&1; つ起動します**
 
     vm start [options] <resource-group> <name>
 
-**リソース グループ内の仮想マシンを 1 つシャットダウンし、コンピューティング リソースを解放します**
+**リソース グループ内の仮想マシンを&1; つシャットダウンし、コンピューティング リソースを解放します**
 
     vm deallocate [options] <resource-group> <name>
 
@@ -1861,6 +1866,6 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ | Microsoft Docs"
+title: "Azure Machine Learning Web サービスでのデータのインポートとエクスポートの使用 | Microsoft Docs"
 description: "データのインポート モジュールとデータのエクスポート モジュールを使用して、Web サービスとデータを送受信する方法について説明します。"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
+ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2b6a932fef8c2bf2223ae525ff765fc7e01c3f0a
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
 
 
 ---
@@ -106,13 +106,13 @@ Web サービスとして予測実験をデプロイできるようになりま�
 8. *apiKey* 変数の値を、以前に保存した API キーで更新します。
 9. 要求の宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
    
-     var request = new BatchExecutionRequest()   {    
-   
-         GlobalParameters = new Dictionary<string, string>() {
-         { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-         { "Table", "dbo.ScoredTable2" },
-         }
-     };
+        var request = new BatchExecutionRequest() 
+        {           
+            GlobalParameters = new Dictionary<string, string>() {
+                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+                { "Table", "dbo.ScoredTable2" },
+            }
+        };
 10. アプリケーションを実行します。 
 
 実行が完了すると、新しいテーブルがスコア付けの結果を含むデータベースに追加されます。
@@ -130,21 +130,21 @@ Web サービスとして予測実験をデプロイできるようになりま�
 8. *apiKey* 変数の値を、**[Basic consumption info (基本的な実行情報)]** セクションにある**プライマリ キー**を使用して更新します。
 9. *scoreRequest* 宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
    
-     var scoreRequest = new   {
-   
-         Inputs = new Dictionary<string, StringTable>()
-         {
-         },
-         GlobalParameters = new Dictionary<string, string>() {
-              { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-             { "Table", "dbo.ScoredTable3" },
-         }
-     };
+        var scoreRequest = new
+        {       
+            Inputs = new Dictionary<string, StringTable>()
+            {
+            },
+            GlobalParameters = new Dictionary<string, string>() {
+                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+                { "Table", "dbo.ScoredTable3" },
+            }
+        };
 10. アプリケーションを実行します。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

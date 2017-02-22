@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 01/05/2017
 ms.author: cephalin;dariac
 translationtype: Human Translation
-ms.sourcegitcommit: 471bb707a3126eabb82e060a614beb87b95dfd72
-ms.openlocfilehash: fca6ff6c97c70422a1e90f3861f4be24786c844c
+ms.sourcegitcommit: 283b1cfda82b4f96ad5148c522a4c9833cb4c381
+ms.openlocfilehash: 4b3b96e9c5d7a4ff99c803aa356dcb5ad6997978
 
 
 ---
@@ -26,24 +26,24 @@ ms.openlocfilehash: fca6ff6c97c70422a1e90f3861f4be24786c844c
 ## <a name="a-nameoverviewaazure-app-service-deployment-overview"></a><a name="overview"></a>Azure App Service のデプロイの概要
 Azure App Service では、アプリケーション フレームワーク (ASP.NET、PHP、Node.js など) を自動的に保持します。 既定で有効化されるフレームワークもあれば、有効にするために簡単なチェックマークによる構成が必要なフレームワーク (Java や Python など) もあります。 また、PHP のバージョンやランタイムのビット数など、アプリケーション フレームワークをカスタマイズすることもできます。 詳細については、「 [Azure App Service での Web アプリの構成](web-sites-configure.md)」をご覧ください。
 
-Web サーバーやアプリケーション フレームワークを気にする必要がないため、アプリを App Service にデプロイするときは、コード、バイナリ、コンテンツ ファイル、それぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にデプロイすることが重要になります。 App Service では、次のデプロイ オプションをサポートしています。 
+Web サーバーやアプリケーション フレームワークを気にする必要がないため、アプリを App Service にデプロイするときは、コード、バイナリ、コンテンツ ファイル、それぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にデプロイすることが重要になります。 App Service では、3 つの異なるデプロイ プロセスをサポートしています。 この記事のデプロイ方法はすべて、次のいずれかのプロセスを使用します。 
 
 * [FTP または FTPS](https://en.wikipedia.org/wiki/File_Transfer_Protocol): [FileZilla](https://filezilla-project.org) から [NetBeans](https://netbeans.org) などのフル機能を備えた IDE まで、好みの FTP または FTPS 対応ツールを使用して、ファイルを Azure に移動します。 これは、厳密なファイル アップロード プロセスです。 App Service からバージョン管理やファイル構造管理などの追加サービスは提供されません。 
-* [Kudu (Git/Mercurial または OneDrive/Dropbox)](https://github.com/projectkudu/kudu/wiki/Deployment): App Service の[デプロイ エンジン](https://github.com/projectkudu/kudu/wiki)を使用します。 任意のリポジトリから Kudu にコードを直接プッシュします。 Kudu では、コードをプッシュしたときに、継続的なデプロイと他の自動タスクのための追加サービス (バージョン管理、パッケージの復元、MSBuild、 [Web フック](https://github.com/projectkudu/kudu/wiki/Web-hooks) など) も提供されます。 Kudu デプロイ エンジンでは、次の 3 つの異なる種類のデプロイ ソースをサポートしています。   
+* [Kudu (Git/Mercurial または OneDrive/Dropbox)](https://github.com/projectkudu/kudu/wiki/Deployment): Kudu は App Service の[デプロイ エンジン](https://github.com/projectkudu/kudu/wiki)です。 任意のリポジトリから Kudu にコードを直接プッシュします。 Kudu では、コードをプッシュしたときに、継続的なデプロイと他の自動タスクのための追加サービス (バージョン管理、パッケージの復元、MSBuild、 [Web フック](https://github.com/projectkudu/kudu/wiki/Web-hooks) など) も提供されます。 Kudu デプロイ エンジンでは、次の 3 つの異なる種類のデプロイ ソースをサポートしています。   
   
   * OneDrive および Dropbox からのコンテンツの同期   
   * GitHub、Bitbucket、および Visual Studio Team Services からの自動同期によるリポジトリ ベースの継続的なデプロイ  
   * ローカル Git からの手動での同期によるリポジトリ ベースのデプロイ  
 * [Web Deploy](http://www.iis.net/learn/publish/using-web-deploy/introduction-to-web-deploy): Visual Studio など、好きな Microsoft ツールから、IIS サーバーへのデプロイを自動化するのと同じツールを使用して、直接 App Service にコードをデプロイします。 このツールは、差分のみのデプロイ、データベースの作成、接続文字列の変換などをサポートします。Web Deploy は、Azure にデプロイする前にアプリケーション バイナリがビルドされる点で Kudu とは異なります。 FTP と同様に、App Service から追加サービスは提供されません。
 
-一般的な Web 開発ツールでは、これらのデプロイメント プロセスを 1 つ以上サポートします。 選択したツールによって利用できるデプロイメント プロセスが決まりますが、自由に使える実際の DevOps 機能は、デプロイメント プロセスと選択したツールの組み合わせによって異なります。 たとえば、 [Visual Studio と Azure SDK](#vspros)から Web Deploy を実行する場合、Kudu の自動化機能を利用できなくても、Visual Studio でパッケージの復元と MSBuild による自動化が提供されます。 
+一般的な Web 開発ツールでは、これらのデプロイメント プロセスを&1; つ以上サポートします。 選択したツールによって利用できるデプロイメント プロセスが決まりますが、自由に使える実際の DevOps 機能は、デプロイメント プロセスと選択したツールの組み合わせによって異なります。 たとえば、 [Visual Studio と Azure SDK](#vspros)から Web Deploy を実行する場合、Kudu の自動化機能を利用できなくても、Visual Studio でパッケージの復元と MSBuild による自動化が提供されます。 
 
 > [!NOTE]
-> これらのデプロイ プロセスでは、実際には、アプリで必要な [Azure リソースがプロビジョニング](../resource-group-template-deploy-portal.md) されるわけではありません。 ただし、リンクされている手順に関する記事のほとんどは、アプリをプロビジョニングし、コードをエンド ツー エンドでデプロイする方法を示しています。 また、「 [コマンド ライン ツールを使用したデプロイの自動化](#automate) 」では、Azure リソースをプロビジョニングするための追加オプションを紹介しています。
+> これらのデプロイ プロセスでは、実際には、アプリで必要な [Azure リソースがプロビジョニング](../azure-resource-manager/resource-group-template-deploy-portal.md) されるわけではありません。 ただし、リンクされている手順に関する記事のほとんどは、アプリをプロビジョニングし、コードをエンド ツー エンドでデプロイする方法を示しています。 また、「 [コマンド ライン ツールを使用したデプロイの自動化](#automate) 」では、Azure リソースをプロビジョニングするための追加オプションを紹介しています。
 > 
 > 
 
-## <a name="a-nameftpadeploy-via-ftp-by-copying-files-to-azure-manually"></a><a name="ftp"></a>Azure へのファイルの手動コピーによる FTP 経由でのデプロイ
+## <a name="a-nameftpadeploy-manually-by-uploading-files-with-ftp"></a><a name="ftp"></a>FTP を使用したファイルのアップロードによる手動デプロイ
 Web コンテンツを Web サーバーに手動でコピーすることに慣れている場合は、エクスプローラーや [FileZilla](https://filezilla-project.org/) などの [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) ユーティリティを使用してファイルをコピーできます。
 
 ファイルの手動コピーの利点は次のとおりです。
@@ -59,7 +59,10 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 * デプロイに関する問題のトラブルシューティングに利用できる組み込みのデプロイ履歴がありません。
 * 多くの FTP ツールでは、差分のみのコピーは行われず、すべてのファイルがコピーされるため、デプロイ時間が長くなる可能性があります。  
 
-### <a name="a-namehowtoftpahow-to-deploy-by-copying-files-to-azure-manually"></a><a name="howtoftp"></a>Azure にファイルを手動でコピーしてデプロイする方法
+### <a name="a-namehowtoftpahow-to-upload-files-with-ftp"></a><a name="howtoftp"></a>FTP を使用してファイルをアップロードする方法
+[Azure Portal](https://portal.azure.com) では、FTP または FTPS を使用してアプリのディレクトリに接続するために必要な情報がすべて提供されます。
+
+* [FTP を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)
 
 ## <a name="a-namedropboxadeploy-by-syncing-with-a-cloud-folder"></a><a name="dropbox"></a>クラウド フォルダーとの同期によるデプロイ
 [ファイルの手動コピー](#ftp) に代わる優れた方法として、OneDrive や Dropbox などのクラウド ストレージ サービスから App Service にファイルとフォルダーを同期する方法があります。 クラウド フォルダーとの同期では、デプロイに Kudu プロセスを利用します (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
@@ -99,6 +102,8 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 
 * [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)。 
 
+Azure Portal で一覧表示されていないクラウド リポジトリ ([GitLab](https://gitlab.com/) など) から継続的なデプロイを手動で構成する方法については、「[Setting up continuous deployment using manual steps (手動による手順を使用した継続的デプロイの設定)](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)」を参照してください。
+
 ## <a name="a-namelocalgitdeploymentadeploy-from-local-git"></a><a name="localgitdeployment"></a>ローカル Git からのデプロイ
 開発チームで Git に基づくオンプレミスのローカル ソース コード管理 (SCM) サービスを使用している場合は、App Service へのデプロイ ソースとしてこれを構成できます。 
 
@@ -122,7 +127,7 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 ## <a name="deploy-using-an-ide"></a>IDE を使用したデプロイ
 [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) と [Azure SDK](https://azure.microsoft.com/downloads/)、[Xcode](https://developer.apple.com/xcode/)、[Eclipse](https://www.eclipse.org)、[IntelliJ IDEA](https://www.jetbrains.com/idea/) などの IDE スイートを既に使用している場合は、IDE 内から直接 Azure にデプロイできます。 このオプションは個人開発者に最適です。
 
-Visual Studio は 3 つのデプロイ プロセス (FTP、Git、Web Deploy) をすべてサポートしていますが、FTP または Git と統合されていれば、他の IDE でも App Service にデプロイできます (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
+Visual Studio は&3; つのデプロイ プロセス (FTP、Git、Web Deploy) をすべてサポートしていますが、FTP または Git と統合されていれば、他の IDE でも App Service にデプロイできます (「 [デプロイメント プロセスの概要](#overview)」を参照してください)。
 
 IDE を使用したデプロイの利点は次のとおりです。
 
@@ -155,58 +160,21 @@ Azure には、[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md) や 
 * [IntelliJ で Azure 用の Hello World Web アプリを作成する](app-service-web-intellij-create-hello-world-web-app.md) このチュートリアルでは、Azure Toolkit for IntelliJ を使用して、Azure 用の Hello World Web アプリを作成、デプロイする方法について説明します。
 
 ## <a name="a-nameautomateaautomate-deployment-by-using-command-line-tools"></a><a name="automate"></a>コマンド ライン ツールを使用したデプロイの自動化
-* [MSBuild を使用したデプロイの自動化](#msbuild)
-* [FTP ツールとスクリプトを使用してファイルをコピー](#ftp)
-* [Windows PowerShell を使用したデプロイの自動化](#powershell)
-* [.NET 管理 API を使用したデプロイの自動化](#api)
-* [Azure コマンド ライン インターフェイス (Azure CLI) からデプロイ](#cli)
-* [Web デプロイ コマンド ラインからデプロイ](#webdeploy)
-* [FTP バッチ スクリプトの使用](http://support.microsoft.com/kb/96269)。
+コマンド ライン ターミナルを開発環境として使用する場合は、コマンド ライン ツールを使用して App Service アプリのデプロイ タスクをスクリプト化できます。 
 
-もう 1 つのデプロイ オプションとして、 [Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy)などのクラウド ベースのサービスを使用することもできます。 詳細については、「 [Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
+コマンド ライン ツールを使用したデプロイの利点は次のとおりです。
 
-### <a name="a-namemsbuildaautomate-deployment-with-msbuild"></a><a name="msbuild"></a>MSBuild を使用したデプロイの自動化
-[Visual Studio IDE](#vs) を使用して開発を行う場合は、[MSBuild](http://msbuildbook.com/) を使用して IDE 内のすべての作業を自動化することができます。 [Web Deploy](#webdeploy) または [FTP/FTPS](#ftp) を使用してファイルをコピーするように MSBuild を構成することができます。 Web Deploy では、データベースのデプロイなど、デプロイに関連する多くのタスクを自動化することもできます。
+* スクリプト化されたデプロイ シナリオが可能になります。
+* Azure リソースのプロビジョニングとコードのデプロイを統合できます。
+* Azure のデプロイを既存の継続的な統合スクリプトに統合できます。
 
-MSBuild を使用したコマンドライン デプロイの詳細については、次のリソースを参照してください。
+コマンド ライン ツールを使用したデプロイの欠点は次のとおりです。
 
-* [Visual Studio を使用した ASP.NET Web のデプロイ: コマンド ラインのデプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 Visual Studio を使用して Azure のデプロイを行うチュートリアル シリーズの第 10 部。 Visual Studio でプロファイルの発行を設定した後に、コマンド ラインを使用してデプロイを行う方法を示します。
-* [『Inside the Microsoft Build Engine: Using MSBuild and Team Foundation Build』](http://msbuildbook.com/)。 MSBuild を使用してデプロイを実行する方法に関する章が掲載されている書籍。
+* GUI を好む開発者には適していません。
 
-### <a name="a-namepowershellaautomate-deployment-with-windows-powershell"></a><a name="powershell"></a>Windows PowerShell を使用したデプロイの自動化
-[Windows PowerShell](http://msdn.microsoft.com/library/dd835506.aspx)から MSBuild または FTP デプロイの機能を実行することができます。 この機能を実行する場合は、Azure の REST 管理 API を簡単に呼び出せる一連の Windows PowerShell コマンドレットを使用することもできます。
+### <a name="a-nameautomatehowahow-to-automate-deployment-with-command-line-tools"></a><a name="automatehow"></a>コマンド ライン ツールを使用してデプロイを自動化する方法
 
-詳細については、次のリソースを参照してください。
-
-* [GitHub リポジトリにリンクされる Web アプリのデプロイ](app-service-web-arm-from-github-provision.md)
-* [Web アプリと SQL Database をプロビジョニングする](app-service-web-arm-with-sql-database-provision.md)
-* [Azure でマイクロサービスを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
-* [Azure での実際のクラウド アプリケーションのビルド - すべてを自動化](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。 電子書籍の中に掲載されているサンプル アプリケーションが、Windows PowerShell スクリプトをどのように使用して Azure テスト環境を作成し、その環境をデプロイするかを説明する、電子書籍の章。 Azure PowerShell の他のドキュメントへのリンクを掲載している「 [リソース](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources) 」セクションを参照してください。
-* [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](../vs-azure-tools-publishing-using-powershell-scripts.md)。 Visual Studio で生成される Windows PowerShell デプロイ スクリプトの使用方法
-
-### <a name="a-nameapiaautomate-deployment-with-net-management-api"></a><a name="api"></a>.NET 管理 API を使用したデプロイの自動化
-C# のコードを作成し、デプロイの目的で MSBuild や FTP の機能を実行することができます。 この作業を実行する場合は、Azure の管理 REST API にアクセスして、サイト管理機能を実行することができます。
-
-詳細については、次のリソースを参照してください。
-
-* [Azure 管理ライブラリと .NET を使用してすべてを自動化](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx)。 .NET 管理 API の紹介とその他のドキュメントへのリンク。
-
-### <a name="a-namecliadeploy-from-azure-command-line-interface-azure-cli"></a><a name="cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) からデプロイ
-Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を使用してデプロイを実行することもできます。 この作業を実行する場合は、Azure CLI を使用して Azure REST 管理 API にアクセスすることもできます。
-
-詳細については、次のリソースを参照してください。
-
-* [Azure コマンド ライン ツール](https://azure.microsoft.com/downloads/)。 コマンド ライン ツールに関する情報を掲載している Azure.com のポータル ページです。
-
-### <a name="a-namewebdeployadeploy-from-web-deploy-command-line"></a><a name="webdeploy"></a>Web デプロイ コマンド ラインからデプロイ
-[Web Deploy](http://www.iis.net/downloads/microsoft/web-deploy) は IIS へのデプロイを行うマイクロソフトのソフトウェアであり、インテリジェントなファイルの同期機能に加えて、FTP を使用する場合は自動化できない他の多くのデプロイ関連タスクも実行または調整することができます。 たとえば、Web Deploy を使用して Web アプリと共に新しいデータベースをデプロイ、またはデータベースの更新をデプロイすることができます。 また、Web Deploy は、変更されたファイルのみをインテリジェントにコピーするため、既存のサイトを更新するのに要する時間を最小化することもできます。 Microsoft Visual Studio および Team Foundation Server では Web Deploy のビルトイン機能をサポートしていますが、コマンド ラインから Web Deploy を直接使用してデプロイを自動化することもできます。 Web Deploy の各コマンドは非常に強力ですが、学習曲線を急上昇させることもできます。
-
-詳細については、次のリソースを参照してください。
-
-* [シンプルな Web アプリ: デプロイ](https://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/)。 Web デプロイの使用を簡単にするために作成したツールに関する David Ebbo のブログ
-* [Web デプロイ ツール](http://technet.microsoft.com/library/dd568996)。 Microsoft TechNet サイトの公式ドキュメント。 作成以来期間が経過していますが、現在も有効な出発点として使用できます。
-* [Web Deploy の使用](http://www.iis.net/learn/publish/using-web-deploy)。 Microsoft IIS.NET サイトの公式ドキュメント。 同じく作成以来期間が経過していますが、現在も有効な出発点として使用できます。
-* [Visual Studio を使用した ASP.NET Web のデプロイ: コマンド ラインのデプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。 MSBuild は Visual Studio によって使用されるビルド エンジンであり、Web アプリケーションを Web Apps にデプロイする目的でコマンド ラインから使用することもできます。 このチュートリアルは、Visual Studio のデプロイに注目したシリーズの一部です。
+コマンド ライン ツールの一覧とチュートリアルへのリンクについては、「[Automate deployment of your Azure app with command-line tools](app-service-deploy-command-line.md)」(コマンド ライン ツールを使用した Azure アプリのデプロイの自動化) をご覧ください。 
 
 ## <a name="a-namenextstepsanext-steps"></a><a name="nextsteps"></a>次のステップ
 シナリオによっては、アプリをステージングと運用バージョンの間で簡単に切り替えることができる環境が必要です。 詳細については、 [Web アプリのステージングされたデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
@@ -215,17 +183,9 @@ Windows、Mac、Linux マシンでコマンド ラインを使用し、FTP を�
 
 Azure のロールベースのアクセス許可を使用して、App Service のデプロイへのアクセスを管理する方法については、 [RBAC と Web Apps の公開](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/)に関するブログを参照してください。
 
-<a name="see-also"></a>
-
-## <a name="see-also"></a>関連項目
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター]を参照してください。
-
-<!-- URL List -->
-
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

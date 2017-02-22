@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: charleywen
+ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 68ad5679a2a6fcb7cfca25410af3f2f113490bdc
 
 
 ---
-# <a name="configure-expressroute-and-sitetosite-coexisting-connections-for-the-resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-for-the-resource-manager-deployment-model"></a>リソース マネージャーのデプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - クラシック](expressroute-howto-coexist-classic.md)
@@ -47,7 +47,7 @@ ms.openlocfilehash: 44f6761b3c3680af923f2a3b16671ca19672e281
 * **ExpressRoute ゲートウェイは先に構成する必要があります。** サイト間 VPN ゲートウェイを追加する前に、まず ExpressRoute ゲートウェイを作成する必要があります。
 
 ## <a name="configuration-designs"></a>構成の設計
-### <a name="configure-a-sitetosite-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
+### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
 ExpressRoute のバックアップとしてサイト間 VPN 接続を構成することができます。 これは、Azure のプライベート ピアリング パスにリンクされている仮想ネットワークにのみ適用されます。 Azure パブリックおよび Microsoft ピアリングを通じてアクセス可能なサービスの VPN ベースのフェールオーバー ソリューションはありません。 ExpressRoute 回線は常にプライマリ リンクです。 データは、ExpressRoute 回線で障害が発生した場合にのみ、サイト間 VPN パスを通過します。
 
 > [!NOTE]
@@ -57,7 +57,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ![共存](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
-### <a name="configure-a-sitetosite-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>ExpressRoute 経由で接続されていないサイトに接続するようにサイト間 VPN を構成する
+### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>ExpressRoute 経由で接続されていないサイトに接続するようにサイト間 VPN を構成する
 サイト間 VPN 経由で Azure に直接接続するサイトと、ExpressRoute 経由で接続するサイトがあるネットワークを構成することができます。 
 
 ![共存](media/expressroute-howto-coexist-resource-manager/scenario2.jpg)
@@ -82,7 +82,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 ## <a name="a-namenewato-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。
 2. アカウントにログインし、環境を設定します。
    
         login-AzureRmAccount
@@ -160,7 +160,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 > 
 > 
 
-1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。 
    
         Remove-AzureRmVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup>
@@ -183,7 +183,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
         $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 5. この時点では、VNet にゲートウェイがありません。 新しいゲートウェイを作成し、接続を完了するには、前述の [手順 4、ExpressRoute ゲートウェイの作成手順](#gw)に進みます。
 
-## <a name="to-add-pointtosite-configuration-to-the-vpn-gateway"></a>VPN ゲートウェイにポイント対サイト構成を追加するには
+## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>VPN ゲートウェイにポイント対サイト構成を追加するには
 共存設定で VPN ゲートウェイにポイント対サイト構成を追加するのには、次の手順に従います。
 
 1. VPN クライアント アドレス プールを追加します。 
@@ -212,6 +212,6 @@ ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-f
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

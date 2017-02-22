@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 01/30/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: ea59ff3f527d051e01baf12f596ff44af8a0dfc1
-ms.openlocfilehash: 7fe3bc6a5eab1d1b9a8b73ab3c88f9808817369a
+ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
+ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
 
 
 ---
 # <a name="connect-to-an-azure-container-service-cluster"></a>Azure コンテナー サービス クラスターに接続する
-Azure Container Service クラスターを作成したら、クラスターに接続してワークロードのデプロイと管理を行う必要があります。 この記事では、リモート コンピューターからクラスターのマスター VM に接続する方法について説明します。 Kubernetes クラスター、DC/OS クラスター、Docker Swarm クラスターはすべて REST エンドポイントを公開します。 Kubernetes では、このエンドポイントがセキュリティ保護されてインターネット上に公開されているため、インターネットに接続されている任意のコンピューターから `kubectl` コマンド ライン ツールを実行することによってアクセスできます。 DC/OS と Docker Swarm では、REST エンドポイントに安全に接続するために Secure Shell (SSH) トンネルを作成する必要があります。 
+Azure Container Service クラスターを作成したら、クラスターに接続してワークロードのデプロイと管理を行う必要があります。 この記事では、リモート コンピューターからクラスターのマスター VM に接続する方法について説明します。 
+
+Kubernetes クラスター、DC/OS クラスター、Docker Swarm クラスターはローカルで HTTP エンドポイントを提供します。 Kubernetes では、このエンドポイントがセキュリティ保護されてインターネット上に公開されているため、インターネットに接続されている任意のコンピューターから `kubectl` コマンド ライン ツールを実行することによってアクセスできます。 
+
+DC/OS と Docker Swarm では、内部システムに対する Secure Shell (SSH) トンネルを作成する必要があります。 トンネルが確立されたら、HTTP エンドポイントを使用してローカル システムからクラスターの Web インターフェイスを表示するコマンドを実行できます。 
 
 > [!NOTE]
 > Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
@@ -43,7 +47,7 @@ Azure Container Service クラスターを作成したら、クラスターに�
 > 
 
 ### <a name="install-kubectl"></a>kubectl のインストール
-このツールをインストールする 1 つの方法は、`az acs kubernetes install cli` Azure CLI 2.0 (プレビュー) コマンドを使用することです。 このコマンドを実行するには、Azure CLI 2.0 (プレビュー) の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+このツールをインストールする 1 つの方法は、`az acs kubernetes install-cli` Azure CLI 2.0 (プレビュー) コマンドを使用することです。 このコマンドを実行するには、Azure CLI 2.0 (プレビュー) の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
 
 ```azurecli
 # Linux or OS X
@@ -56,7 +60,7 @@ az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 または、[リリース ページ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)から直接クライアントをダウンロードすることもできます。
 
 ### <a name="download-cluster-credentials"></a>クラスターの資格情報のダウンロード
-`kubectl` をインストールしたら、クラスターの資格情報をコンピューターにコピーする必要があります。 資格情報を取得する 1 つの方法は、`az acs kubernetes get-credentials` コマンドを使用することです。 リソース グループの名前とコンテナー サービス リソースの名前を渡します。
+`kubectl` をインストールしたら、クラスターの資格情報をコンピューターにコピーする必要があります。 資格情報を取得する&1; つの方法は、`az acs kubernetes get-credentials` コマンドを使用することです。 リソース グループの名前とコンテナー サービス リソースの名前を渡します。
 
 
 ```azurecli
@@ -68,7 +72,7 @@ az acs kubernetes get-credentials --resource-group=<cluster-resource-group> --na
 または、`scp` を使用して、マスター VM の `$HOME/.kube/config` からローカル コンピューターにファイルを安全にコピーすることもできます。 次に例を示します。
 
 ```console
-mkdir $HOME/.kube/config
+mkdir $HOME/.kube
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
@@ -96,10 +100,10 @@ Kubernetes UI は現在、`http://localhost:8001/ui` で利用できます。
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>DC/OS または Swarm クラスターへの接続
 
-Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Docker Swarm クラスターは、REST エンドポイントを公開しています。 ただし、これらのエンドポイントは外部には開放されていません。 これらのエンドポイントを管理するには、Secure Shell (SSH) トンネルを作成する必要があります。 SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。 以降のセクションでは、Linux、OS X、Windows の各オペレーティング システムを実行するコンピューターから SSH トンネルを作成する手順について説明します。
+Azure Container Service によってデプロイされた DC/OS と Docker Swarm クラスターを使用するには、次の手順に従って、ローカルの Linux、OS X、または Windows システムから Secure Shell (SSH) トンネルを作成してください。 
 
 > [!NOTE]
-> SSH セッションは、クラスター管理システムとの間で作成することができます。 ただし、これは推奨されません。 管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。
+> ここでの手順では、SSH 経由の TCP トラフィックのトンネリングに重点を置いています。 また、内部クラスター管理システムの&1; つを使用して対話型の SSH セッションを開始することもできますが、これはお勧めしません。 内部システムで直接作業すると、意図せずに構成を変更してしまうおそれがあります。  
 > 
 
 ### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>Linux または OS X での SSH トンネルの作成
@@ -108,41 +112,47 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 
 1. [Azure Portal](https://portal.azure.com) で、コンテナー サービス クラスターを含むリソース グループに移動します。 各リソースが表示されるようにリソース グループを展開します。 
 
-2. マスターの仮想マシンを探して選択します。 DC/OS クラスターでは、このリソースに、**dcos-master-** で始まる名前が付いています。 
-
-    **[仮想マシン]** ブレードには、パブリック IP アドレスに関する情報が表示されます。これには、DNS 名が含まれています。 後で使用するためにこの名前を保存します。 
+2. コンテナー サービス リソースをクリックし、**[概要]** をクリックします。 クラスターの **[Master FQDN (マスター FQDN)]** が **[要点]** の下に表示されます。 後で使用するためにこの名前を保存します。 
 
     ![Public DNS name](media/pubdns.png)
 
+    または、コンテナー サービスに対して `az acs show` コマンドを実行します。 コマンドの出力で **Master Profile:fqdn** プロパティを探します。
+
 3. ここでシェルを開き、次の値を指定して `ssh` コマンドを実行します。 
 
-    **PORT** は、公開するエンドポイントのポートです。 Swarm の場合、ポート 2375 を使用します。 DC/OS の場合、ポート 80 を使用します。  
+    **LOCAL_PORT** は、トンネルのサービス側にある接続先の TCP ポートです。 Swarm の場合、これを 2375 に設定します。 DC/OS の場合、これを 80 に設定します。  
+    **REMOTE_PORT** は、公開するエンドポイントのポートです。 Swarm の場合、ポート 2375 を使用します。 DC/OS の場合、ポート 80 を使用します。  
     **USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。  
     **DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。  
     **REGION** は、リソース グループが置かれているリージョンです。  
     **PATH_TO_PRIVATE_KEY** (省略可能) は、クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。 このオプションは、`-i` フラグと共に使用します。
 
     ```bash
-    ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
-    > SSH 接続ポートは、標準の 22 ではなく 2200 です。 複数のマスター VM を含むクラスターでは、これが最初のマスター VM への接続ポートです。
+    > SSH 接続ポートは、標準ポート 22 ではなく、2200 です。 複数のマスター VM を含むクラスターでは、これが最初のマスター VM への接続ポートです。
     > 
+
+
 
 DC/OS と Swarm の例については、以降のセクションを参照してください。    
 
 ### <a name="dcos-tunnel"></a>DC/OS トンネル
-DC/OS 関連のエンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
+DC/OS エンドポイントのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
-sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+sudo ssh -fNL 80:localhost:80 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com 
 ```
 
-これで DC/OS 関連のエンドポイントに次の場所でアクセスできます。
+> [!NOTE]
+> ポート 80 以外のローカル ポート (ポート 8888 など) を指定できます。 ただし、このポートを使用すると、一部の Web UI リンクは動作しない可能性があります。
 
-* DC/OS: `http://localhost/`
-* Marathon: `http://localhost/marathon`
-* Mesos: `http://localhost/mesos`
+これで、次の URL を使用してローカル システムから DC/OS エンドポイントにアクセスできます (ローカル ポート 80 を想定)。
+
+* DC/OS: `http://localhost:80/`
+* Marathon: `http://localhost:80/marathon`
+* Mesos: `http://localhost:80/mesos`
 
 同様に、各アプリケーションの REST API にはこのトンネルを経由して到達できます。
 
@@ -150,7 +160,7 @@ sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.az
 Swarm エンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
-ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+ssh -fNL 2375:localhost:2375 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com
 ```
 
 これで、DOCKER_HOST 環境変数を次のように設定できます。 通常どおり、Docker コマンド ライン インターフェイス (CLI) を使用し続けることができます。
@@ -166,7 +176,7 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
 2. アプリケーションを実行します。
 
-3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「2200」と入力します。
+3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第&1; マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「2200」と入力します。
 
     ![PuTTY configuration 1](media/putty1.png)
 
@@ -211,6 +221,6 @@ Docker Swarm のトンネルを構成したら、Windows の設定を開き、`D
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

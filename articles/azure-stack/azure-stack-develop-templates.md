@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 02/07/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9fdf43aba811d2bdea5dcd903b19bf6fd556f2e6
+ms.sourcegitcommit: 24aade3de17781510f2c7c4f0bb5252fddd6014d
+ms.openlocfilehash: 9ea44afc9622040351b2e8c85b528133514e0f2d
 
 
 ---
@@ -38,12 +38,13 @@ Azure service versions may differ between Azure and Azure Stack. Each resource r
 | Compute |'2015-06-15' |
 | Network |'2015-06-15', '2015-05-01-preview' |
 | Storage |'2016-01-01', '2015-06-15', '2015-05-01-preview' |
+| KeyVault | '2016-06-01' |
 | App Service |'2015-08-01' |
 | MySQL |'2015-09-01' |
 | SQL |'2014-04-01-preview' |
 
 ## <a name="template-functions"></a>Template functions
-Resource Manager [functions](../resource-group-template-functions.md) provide capabilities required to build dynamic templates. As an example, you can use functions for tasks like:
+Resource Manager [functions](../azure-resource-manager/resource-group-template-functions.md) provide capabilities required to build dynamic templates. As an example, you can use functions for tasks like:
 
 * Concatenating or trimming strings 
 * Reference values from other resources
@@ -79,6 +80,6 @@ Resource Manager templates use a location attribute to place resources during de
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/28/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1add923868a3d187401d33f6d4e38cbf028f92dc
+ms.sourcegitcommit: 5072baf94919e82aff4407715936e8270821fb1f
+ms.openlocfilehash: 39a102c0fa1aa22056e2dfcfcf2c386ce02d30ae
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 1add923868a3d187401d33f6d4e38cbf028f92dc
 * [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
 * [.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
 * [.NET のログ記録アダプター](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
+* [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android/releases)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
@@ -40,6 +40,6 @@ Application Insights サービス全体の主要な機能強化をまとめた�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

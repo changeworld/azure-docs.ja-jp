@@ -1,6 +1,6 @@
 ---
-title: "Azure Virtual Networks でのサイト間 VPN Gateway 接続の VPN デバイスについて | Microsoft Docs"
-description: "この記事では、S2S VPN Gateway 接続に使用する VPN デバイスと IPsec パラメーターについて説明します。また、構成に関する手順とサンプルへのリンクも紹介します。"
+title: "クロスプレミス Azure 接続の VPN デバイスについて | Microsoft Docs"
+description: "この記事では、S2S VPN Gateway クロスプレミス接続の VPN デバイスと IPsec パラメーターについて説明します。 構成の手順およびサンプルへのリンクが提供されています。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bbaf89bca07fd2d4c4a12403d2daa8323f4d7be5
-ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
+ms.sourcegitcommit: bf262073b46daa8b7dcf50fabf5f455d7d5850e7
+ms.openlocfilehash: b8e65f6c314457b76bd062ea09bda53099fb79d9
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN Gateway 接続の VPN デバイスについて
-サイト間 (S2S) VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。
+VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。
 
 > [!NOTE]
 > サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
@@ -115,7 +115,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | **プロパティ** | **PolicyBased** | **RouteBased、および Standard または 高性能 VPN ゲートウェイ** |
 | --- | --- | --- |
 | IKE のバージョン |IKEv1 |IKEv2 |
-| ハッシュ アルゴリズム |SHA1(SHA128) |SHA1(SHA128) |
+| ハッシュ アルゴリズム |SHA1(SHA128)、SHA2(SHA256) |SHA1(SHA128)、SHA2(SHA256) |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) |3,600 秒 |3,600 秒 |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) |102,400,000 KB |- |
 | IPsec SA 暗号化および認証のプラン (優先度順) |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 該当なし |*RouteBased ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン*を参照 (下記) |
@@ -153,6 +153,6 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

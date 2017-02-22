@@ -1,6 +1,6 @@
 ---
-title: "HDInsight で Hadoop クラスターを作成する | Microsoft Docs"
-description: "Azure ポータルを使用して Azure HDInsight のクラスターを作成する方法について説明します。"
+title: "HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Docs"
+description: "Azure Portal を使用した HDInsight での Windows ベースの Hadoop の作成方法を説明します。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/18/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d6680fb1e33b221a74d6c5db4cf5012d9109eac6
+ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
+ms.openlocfilehash: a9d7a4372693ad021a898fae9818f2d037d42547
 
 
 ---
-# <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+# <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Azure ポータルを使用した HDInsight で Hadoop クラスターを作成する方法について説明します。 Azure リソースのプロビジョニングと管理は、Microsoft [Azure ポータル](../azure-portal-overview.md) を使って 1 か所で行うことができます。 Azure ポータルは、HDInsight での Linux ベースまたは Windows ベースの Hadoop クラスターの作成に使用できるツールの 1 つです。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure Portal を使用して HDInsight で Windows ベースの Hadoop クラスターを作成する方法について説明します。 
+
+この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの作成方法の詳細については、[Azure Portal を使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -40,98 +46,38 @@ Azure ポータルを使用した HDInsight で Hadoop クラスターを作成�
 **HDInsight クラスターを作成するには**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
-   
-    ![Creating a new cluster in the Azure Portal](./media/hdinsight-provision-clusters/HDI.CreateCluster.1.png "Creating a new cluster in the Azure Portal")
+2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
 3. 次の値を入力または選択します。
    
-   * **[クラスター名]**: クラスターの名前を入力します。 その名前を使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
-   * **[クラスターの種類]**: **[Hadoop]** を選択します。 その他のオプションには、**[HBase]**、**[Storm]**、および **[Spark]** が含まれます。
-     
-     > [!IMPORTANT]
-     > HDInsight クラスターにはさまざまな種類があり、それぞれ適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
-     > 
-     > 
-   * **[クラスターのオペレーティング システム]**: **[Windows]** を選択します。 Linux ベースのクラスターを作成するには、 **[Linux]**を選択します。
-   * **[バージョン]**: [HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
-   * **[サブスクリプション]**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
-   * **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループを作成します。 このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
-   * **[資格情報]**: Hadoop ユーザー (HTTP ユーザー) のユーザー名とパスワードを構成します。 クラスターのリモート デスクトップを有効にする場合は、リモート デスクトップ ユーザーのユーザー名とパスワード、アカウントの有効期限を構成する必要があります。 下部にある **[選択]** をクリックして、変更を保存します。
-     
-          ![Provide cluster credentials](./media/hdinsight-provision-clusters/HDI.CreateCluster.3.png "Provide cluster credentials")
-   * **[データ ソース]**: クラスターの既定のファイル システムとして使用する Azure Storage アカウントを新しく作成するか、既存の Azure Storage アカウントを選択します。
-     
-          ![Data source blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.4.png "Provide data source configuration")
-     
-         * **[選択方法]**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。 既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
-         * **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。 新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。 表示されたフィールドに、ストレージ アカウントの名前を入力します。 名前を使用できる場合は、緑色のチェック マークが表示されます。
-         * **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。 任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
-         * **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。 この場所は、クラスターの場所を決定します。  クラスターとその既定のストレージ アカウントは、同じデータセンター内に配置されている必要があります。
-   * **[ノード価格レベル]**: クラスターで必要なworker ノードの数を設定します。 クラスターの推定コストがブレード内に表示されます。
+   * **クラスター名**: クラスターの名前を指定します。
+   * **サブスクリプション**: このクラスターに使用する Azure サブスクリプションを選択します。
+   * **クラスター構成**:
 
-        ![[ノード価格レベル] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.5.png "Specify number of cluster nodes")
+     * **クラスターの種類**: このチュートリアルでは、**[hadoop]** を選択します。
+     * **オペレーティング システム**: このチュートリアルでは、**[Windows]** を選択します。
+     * **バージョン**: **[Hadoop 2.7.0 (HDI 3.3)]** を選択します。  これが、Windows ベースの Hadoop クラスターの最新のバージョンです。
+     * **クラスター レベル**: このチュートリアルでは、**[Standard]** を選択します。
 
+   * **資格情報**:
 
-    * **[オプションの構成]** をクリックし、クラスターのバージョンを選択して、その他のオプションの設定を構成します。その他のオプションには、**仮想ネットワーク**への参加、Hive と Oozie 用のデータを保持する**外部メタストア**の設定、スクリプト アクションを使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターでの追加のストレージ アカウントの使用などがあります。
+     * **クラスター ログイン ユーザー名**: 既定の名前は **admin** です。 
+     * **クラスター ログイン パスワード**: パスワードを入力します。
+     * **リモート デスクトップの有効化**: このチュートリアルでは、リモート デスクトップは必要ありません。
 
-    * **[HDInsight のバージョン]**: クラスターで使用するバージョンを選択します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。
-    * **[Virtual Network]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。  
+   * **データ ソース**:
 
-        ![[仮想ネットワーク] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.6.png "Specify virtual network details")
+     * **メソッドの選択**: **[すべてのサブスクリプションから]** を選択します。
+     * **ストレージ アカウントを選択してください**: **[新規作成]** をクリックして、既定のストレージ アカウントの名前を入力します。
+     * **既定のコンテナー**: 既定では、既定のコンテナーにはクラスターと同じ名前を使用します。
+     * **場所**: 近くの場所を選択します。  この場所は、クラスターと既定のストレージ アカウントの両方で使用されます。
+   * **クラスター サイズ**:
 
-        Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「 [Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
+     * **worker ノードの数**: このチュートリアルで必要なのは、1 つのノードのみです。
+   * **詳細な構成**: このチュートリアルではこの部分をスキップすることができます。
+   * **リソース グループ**: **[新規作成]** を選択して、名前を入力します。
 
-
-
-    * **[外部メタストア]**: クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL Database を指定します。
-
-        > [AZURE.NOTE] HBase のクラスターの種類では、メタストア構成は使用できません。
-
-    ![[カスタム メタストア] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.7.png "Specify external metastores")
-
-    **[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。 **[Oozie メタデータで既存の SQL DB を使用する]**場合は、これらの手順を繰り返します。 **[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
-
-    >[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。 これは、SQL Database インスタンスが実行されているサーバーです。 サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
-
-            &nbsp;
-
-            > [AZURE.IMPORTANT] メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。
-
-          * **Script Actions** if you want to use a custom script to customize a cluster, as the cluster is being created. For more information about script actions, see [Customize HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md). On the Script Actions blade provide the details as shown in the screen capture.
-
-
-            ![Script action blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.8.png "Specify script action")
-
-
-        * **[Azure ストレージ キー]**: クラスターに関連付ける追加のストレージ アカウントを指定します。 **[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか、新しいアカウントを作成します。
-
-
-            ![[追加ストレージ] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.9.png "Specify additional storage accounts")
-
-
-1. **[作成]**をクリックします。 **[スタート画面にピン留めする]** を選択すると、ポータルのスタート画面にクラスターのタイルが追加されます。 アイコンはクラスターが作成中であることを示し、作成が完了すると、[HDInsight] アイコンを表示するように変化します。
-   
-    クラスターが作成されるまで、通常は約 15 分かかります。 プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
-2. 作成が完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。 クラスター ブレードには、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などのクラスターに関する基本情報が表示されます。
-
-    ![クラスター ブレード](./media/hdinsight-provision-clusters/HDI.Cluster.Blade.png "Cluster properties")
-
-
-    次の説明を参照して、このブレードの上部と **[要点]** セクションにあるアイコンについて理解してください。
-
-
-    * **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
-    * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはいつでもクラスター ダッシュボードにアクセスする方法です。クラスター ダッシュボードは、クラスターに関するジョブを実行するための Web ポータルです。
-    * **[リモート デスクトップ]**: クラスター ノードのリモート デスクトップを有効/無効にすることができます。
-    * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
-    * **削除**: HDInsight クラスターを削除します。
-    * **[クイック スタート]** (![cloud and thunderbolt icon = quickstart](./media/hdinsight-provision-clusters/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
-    * **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-provision-clusters/users.png)): このクラスターの "_ポータル管理_" に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
-
-
-        > [AZURE.IMPORTANT] これは、ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight __ クラスターに接続でき、ジョブを送信できるかには影響しません。
-
-    * **[タグ]** (![タグ アイコン](./media/hdinsight-provision-clusters/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。 たとえば、 __プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 **[スタート画面にピン留めする]** を選択すると、ポータルのスタート画面にクラスターのタイルが追加されます。 クラスターの作成には 15 ～ 20 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+5. 作成が完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。 クラスター ブレードには、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などのクラスターに関する基本情報が表示されます。
 
 ## <a name="customize-clusters"></a>クラスターのカスタマイズ
 * 「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
@@ -142,11 +88,11 @@ Azure ポータルを使用した HDInsight で Hadoop クラスターを作成�
 
 * [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
-* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
+* [Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ecdf6e68a8d2bf7c034b92b57b45ae496a063713
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b568a9bea9679a9edeb708a5f7fcc6d68854574f
 
 
 ---
@@ -57,7 +57,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 ### <a name="view-effective-routes-for-a-network-interface"></a>ネットワーク インターフェイスの有効なルートを表示する
 ネットワーク インターフェイスに適用されている集約ルートを表示するには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」の記事をご覧ください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の記事をご覧ください。
 2. 次のコマンドを使用すると、リソース グループ *RG1* の *VM1-NIC1* という名前のネットワーク インターフェイスに適用されているすべてのルートが返されます。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -139,6 +139,6 @@ VM に適用されている集約ルートを表示するには、次の手順�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

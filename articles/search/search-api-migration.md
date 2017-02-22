@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 165ab7363efaf90eaab41098f71e2f1b846c346e
-ms.openlocfilehash: 5ac292729d236bd539e71ba431283ca417ea3980
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
 
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Azure Search サービス REST API バージョン 2016-09-01 へのアップグレード
 バージョン 2015-02-28 または 2015-02-28-Preview 以前の [Azure Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を使用している場合、この記事を参考にして、次に一般公開される API バージョンの 2016-09-01 にアップグレードできます。
 
 バージョン 2016-09-01 の REST API には、前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新しいバージョンの API を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
+
+> [!NOTE]
+> Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。
 
 <a name="WhatsNew"></a>
 
@@ -67,6 +70,6 @@ Azure Search をお使いいただきありがとうございます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

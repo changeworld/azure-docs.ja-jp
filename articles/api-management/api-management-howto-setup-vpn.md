@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: antonba
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3016778f22597921f716cfcf7845c550d6d822d5
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 98e88b1c69de8732f1a4ae54c8ecd0b11a547f35
 
 
 ---
@@ -29,11 +29,11 @@ API Management の VPN のサポートにより、API Management ゲートウェ
 > 
 
 ## <a name="enable-vpn"> </a>VPN 接続を有効にする
-> VPN 接続は、**Premium** レベルと **Developer** レベルでのみ利用できます。 Premium レベルに切り替えるには、[Azure クラシック ポータル][Azure クラシック ポータル]で API Management サービスを開き、**[スケール]** タブを開きます。 **[全般]** セクションで、Premium レベルを選択し、[保存] をクリックします。
+> VPN 接続は、**Premium** レベルと **Developer** レベルでのみ利用できます。 Premium レベルに切り替えるには、[Azure クラシック ポータル][Azure Classic Portal]で API Management サービスを開き、**[スケール]** タブを開きます。 **[全般]** セクションで、Premium レベルを選択し、[保存] をクリックします。
 > 
 > 
 
-VPN 接続を有効にするには、[Azure クラシック ポータル][Azure クラシック ポータル]で API Management サービスを開き、**[構成]** タブに切り替えます。 
+VPN 接続を有効にするには、[Azure クラシック ポータル][Azure Classic Portal]で API Management サービスを開き、**[構成]** タブに切り替えます。 
 
 [VPN] セクションで、**[VPN 接続]** を **[オン]** に切り替えます。
 
@@ -71,24 +71,24 @@ API Management サービス インスタンスが VNET でホストされてい�
 API Management は、さまざまな Azure サービスに依存しています。 カスタム DNS サーバーが使用される VNET で API Management サービス インスタンスをホストする場合、このサービス インスタンスは、これらの Azure サービスのホスト名を解決できる必要があります。 カスタム DNS のセットアップについては、 [こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) ガイダンスに従ってください。  
 
 ## <a name="related-content"> </a>関連コンテンツ
-* [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する][Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]
-* [Azure API Management で API Inspector を使用して呼び出しをトレースする方法][Azure API Management で API Inspector を使用して呼び出しをトレースする方法]
+* [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する][Create a virtual network with a site-to-site VPN connection using the Azure Classic Portal]
+* [Azure API Management で API Inspector を使用して呼び出しをトレースする方法][How to use the API Inspector to trace calls in Azure API Management]
 
 [api-management-setup-vpn-configure]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-configure.png
 [api-management-setup-vpn-select]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-add-api.png
 
-[VPN 接続を有効にする]: #enable-vpn
-[VPN の背後にある Web サービスへの接続]: #connect-vpn
-[関連コンテンツ]: #related-content
+[Enable VPN connections]: #enable-vpn
+[Connect to a web service behind VPN]: #connect-vpn
+[Related content]: #related-content
 
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 
-[Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
-[Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
+[Create a virtual network with a site-to-site VPN connection using the Azure Classic Portal]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
+[How to use the API Inspector to trace calls in Azure API Management]: api-management-howto-api-inspector.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "移行する行の選択にフィルター関数を使用する (Stretch Database) | Microsoft Docs"
+title: "Stretch Database で移行する行を選ぶ - Azure | Microsoft Docs"
 description: "移行する行の選択にフィルター関数を使用する方法について説明します。"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/28/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 76af756316523935cf04e19f12a3a1380d0f3a42
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: fc27cd6e25de8e5c3e6b50a0d887755f70d634fd
 
 
 ---
 # <a name="select-rows-to-migrate-by-using-a-filter-function-stretch-database"></a>移行する行の選択にフィルター関数を使用する (Stretch Database)
-別個のテーブルにコールド データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。 その一方で、テーブルにホット データとコールド データ両方のデータが含まれている場合、移行する行を選択するフィルター関数を指定できます。 フィルター述語は、インライン テーブル値関数です。 このトピックでは、移行する行を選択するインライン テーブル値関数を記述する方法について説明します。
+別個のテーブルにコールド データを保存する場合、テーブル全体を移行するように Stretch Database を設定できます。 その一方で、テーブルにホット データとコールド データ両方のデータが含まれている場合、移行する行を選択するフィルター関数を指定できます。 フィルター述語は、インライン テーブル値関数です。 このトピックでは、移行する行を選ぶインライン テーブル値関数を記述する方法について説明します。
 
 > [!NOTE]
 > 指定したフィルター関数のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。 Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター関数を適用します。
-> 
-> 
+>
+>
 
 フィルター関数を指定しない場合、テーブル全体が移行されます。
 
@@ -56,12 +56,12 @@ RETURN    SELECT 1 AS is_eligible
 関数が空ではない結果を返す場合、行は移行の対象となります。 それ以外の場合、つまり結果が返されない場合、行は移行の対象となりません。
 
 ### <a name="conditions"></a>条件
-&lt;*述語*&gt;は 1 つの条件か AND 論理演算子で結合された複数の条件で構成されます。
+&lt;*述語*&gt;は&1; つの条件か AND 論理演算子で結合された複数の条件で構成されます。
 
 ```
 <predicate> ::= <condition> [ AND <condition> ] [ ...n ]
 ```
-各条件は 1 つのプリミティブ条件か OR 論理演算子で結合された複数のプリミティブ条件で構成されます。
+各条件は&1; つのプリミティブ条件か OR 論理演算子で結合された複数のプリミティブ条件で構成されます。
 
 ```
 <condition> ::= <primitive_condition> [ OR <primitive_condition> ] [ ...n ]
@@ -80,9 +80,9 @@ RETURN    SELECT 1 AS is_eligible
 ```
 
 * 関数パラメーターと定数式を比較します。 たとえば、「 `@column1 < 1000`」のように入力します。
-  
+
   次の例では、*date* 列の値が &lt; 1/1/2016 であるかどうかが確認されます。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datetime)
   RETURNS TABLE
@@ -91,7 +91,7 @@ RETURN    SELECT 1 AS is_eligible
   RETURN    SELECT 1 AS is_eligible
           WHERE @column1 < CONVERT(datetime, '1/1/2016', 101)
   GO
-  
+
   ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(date),
       MIGRATION_STATE = OUTBOUND
@@ -99,9 +99,9 @@ RETURN    SELECT 1 AS is_eligible
   ```
 * IS NULL または IS NOT NULL 演算子を関数パラメーターに適用します。
 * IN 演算子を使用し、関数パラメーターと定数値の一覧を比較します。
-  
+
   次の例では、*shipment\_status* 列の値が `IN (N'Completed', N'Returned', N'Cancelled')` であるかどうかが確認されます。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate(@column1 nvarchar(15))
   RETURNS TABLE
@@ -110,7 +110,7 @@ RETURN    SELECT 1 AS is_eligible
   RETURN    SELECT 1 AS is_eligible
           WHERE @column1 IN (N'Completed', N'Returned', N'Cancelled')
   GO
-  
+
   ALTER TABLE table1 SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(shipment_status),
       MIGRATION_STATE = OUTBOUND
@@ -137,7 +137,7 @@ RETURN    SELECT 1 AS is_eligible
 ### <a name="other-expressions"></a>その他の式
 BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、結果的に生成される関数がここで説明するルールに準拠する場合、BETWEEN 演算子と NOT BETWEEN 演算子を利用できます。
 
-サブクエリや RAND() または GETDATE() のような非決定性の関数は使用できません。
+サブクエリや RAND() または GETDATE() のような非決定性の関数は使うことができません。
 
 ## <a name="add-a-filter-function-to-a-table"></a>フィルター関数をテーブルに追加する
 テーブルにフィルター関数を追加するには、**ALTER TABLE** ステートメントを実行し、**FILTER\_PREDICATE** パラメーターの値として既存のインライン テーブル値関数を指定します。 次に例を示します。
@@ -157,13 +157,13 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 
 > [!NOTE]
 > フィルター関数のパフォーマンスを向上させるには、関数で使用される列にインデックスを作成します。
-> 
-> 
+>
+>
 
 ### <a name="passing-column-names-to-the-filter-function"></a>フィルター関数に列名を渡す
-テーブルにフィルター関数を割り当てる場合は、フィルター関数に渡す列名を 1 部構成の名前で指定します。 列名を渡す際に 3 部構成の名前を指定すると、Stretch が有効なテーブルに対するその後のクエリが失敗します。
+テーブルにフィルター関数を割り当てる場合は、フィルター関数に渡す列名を&1; 部構成の名前で指定します。 列名を渡す際に&3; 部構成の名前を指定すると、Stretch が有効なテーブルに対するその後のクエリが失敗します。
 
-たとえば、次の例に示すような 3 部構成の名前を指定すると、ステートメントは正常に実行されますが、テーブルに対するその後のクエリが失敗します。
+たとえば、次の例に示すような&3; 部構成の名前を指定すると、ステートメントは正常に実行されますが、テーブルに対するその後のクエリが失敗します。
 
 ```tsql
 ALTER TABLE SensorTelemetry
@@ -173,7 +173,7 @@ ALTER TABLE SensorTelemetry
   )
 ```
 
-代わりに、次の例に示すような 1 部構成の名前のフィルター関数を指定 します。
+代わりに、次の例に示すような&1; 部構成の名前のフィルター関数を指定 します。
 
 ```tsql
 ALTER TABLE SensorTelemetry
@@ -187,7 +187,7 @@ ALTER TABLE SensorTelemetry
 **[Stretch Database を有効にする]** ウィザードで作成できない関数を使用する場合は、ウィザードを終了してから ALTER TABLE ステートメントを実行して関数を指定します。 ただし、この場合は、関数を適用する前に、既に進行中のデータ移行を停止して、移行されたデータを元に戻す必要があります。 この操作が必要な理由の詳細については、「 [既存のフィルター関数を置き換える](#replacePredicate)」を参照してください。  
 
 1. 移行の方向を逆にして、既に移行されたデータを元に戻します。 開始後にこの操作をキャンセルすることはできません。 また、Azure での送信データ転送 \(送信\) の料金が発生します。 詳細については、 [Azure の料金体系](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。  
-   
+
     ```tsql  
     ALTER TABLE <table name>  
          SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = INBOUND ) ) ;   
@@ -195,7 +195,7 @@ ALTER TABLE SensorTelemetry
 2. データ移行が完了するまで待ちます。 SQL Server Management Studio から **Stretch Database Monitor** でデータ移行の状態を確認するか、もしくは **sys.dm_db_rda_migration_status** ビューをクエリします。 詳細については、[データ移行の監視とトラブルシューティング](sql-server-stretch-database-monitor.md)に関する記事または [sys.dm_db_rda_migration_status](https://msdn.microsoft.com/library/dn935017.aspx) に関する記事をご覧ください。  
 3. テーブルに適用するフィルター関数を作成します。  
 4. テーブルに関数を追加して、Azure へのデータ移行を再開します。  
-   
+
     ```tsql  
     ALTER TABLE <table name>  
         SET ( REMOTE_DATA_ARCHIVE  
@@ -297,8 +297,8 @@ COMMIT ;
 ```
 
 ## <a name="more-examples-of-valid-filter-functions"></a>有効なフィルター関数のその他の例
-* 次の例では、AND 論理演算子を使用して 2 つのプリミティブ条件を結合します。
-  
+* 次の例では、AND 論理演算子を使用して&2; つのプリミティブ条件を結合します。
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate((@column1 datetime, @column2 nvarchar(15))
   RETURNS TABLE
@@ -307,14 +307,14 @@ COMMIT ;
   RETURN    SELECT 1 AS is_eligible
     WHERE @column1 < N'20150101' AND @column2 IN (N'Completed', N'Returned', N'Cancelled')
   GO
-  
+
   ALTER TABLE table1 SET ( REMOTE_DATA_ARCHIVE = ON (
       FILTER_PREDICATE = dbo.fn_stretchpredicate(date, shipment_status),
       MIGRATION_STATE = OUTBOUND
   ) )
   ```
 * 次の例では、いくつかの条件、確定変換、CONVERT が使用されています。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example1(@column1 datetime, @column2 int, @column3 nvarchar)
   RETURNS TABLE
@@ -325,7 +325,7 @@ COMMIT ;
   GO
   ```
 * 次の例では、算術演算子と関数が使用されています。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example2(@column1 float)
   RETURNS TABLE
@@ -336,7 +336,7 @@ COMMIT ;
   GO
   ```
 * 次の例では、BETWEEN 演算子と NOT BETWEEN 演算子が使用されています。 BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、結果的に生成される関数がここで説明するルールに準拠するため、この使用方法は有効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example3(@column1 int, @column2 int)
   RETURNS TABLE
@@ -348,7 +348,7 @@ COMMIT ;
   GO
   ```
   BETWEEN 演算子と NOT BETWEEN 演算子を同等の AND 式と OR 式で置換した後、先行する関数は後続の関数と等しくなります。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate_example4(@column1 int, @column2 int)
   RETURNS TABLE
@@ -361,7 +361,7 @@ COMMIT ;
 
 ## <a name="examples-of-filter-functions-that-arent-valid"></a>無効なフィルター関数の例
 * 非決定性の変換が含まれるため、次の関数は無効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_example5(@column1 datetime)
   RETURNS TABLE
@@ -372,7 +372,7 @@ COMMIT ;
   GO
   ```
 * 非決定性の関数呼び出しが含まれるため、次の関数は無効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_example6(@column1 datetime)
   RETURNS TABLE
@@ -383,7 +383,7 @@ COMMIT ;
   GO
   ```
 * サブクエリが含まれるため、次の関数は無効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_example7(@column1 int)
   RETURNS TABLE
@@ -393,8 +393,8 @@ COMMIT ;
           WHERE @column1 IN (SELECT SupplierID FROM Supplier WHERE Status = 'Defunct'))
   GO
   ```
-* 関数の定義時、代数演算子または組み込み関数を使用する式が定数に評価される必要があるため、次の関数は無効です。 代数の式や関数呼び出しに列参照を含めることはできません。
-  
+* 関数の定義時、代数演算子または組み込み関数を使う式が定数に評価される必要があるため、次の関数は無効です。 代数の式や関数呼び出しに列参照を含めることはできません。
+
   ```tsql
   CREATE FUNCTION dbo.fn_example8(@column1 int)
   RETURNS TABLE
@@ -403,7 +403,7 @@ COMMIT ;
   RETURN    SELECT 1 AS is_eligible
           WHERE @column1 % 2 =  0
   GO
-  
+
   CREATE FUNCTION dbo.fn_example9(@column1 int)
   RETURNS TABLE
   WITH SCHEMABINDING
@@ -413,7 +413,7 @@ COMMIT ;
   GO
   ```
 * BETWEEN 演算子を同等の AND 式で置換した後、ここで説明するルールに違反するため、次の関数は無効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_example10(@column1 int, @column2 int)
   RETURNS TABLE
@@ -424,7 +424,7 @@ COMMIT ;
   GO
   ```
   BETWEEN 演算子を同等の AND 式で置換した後、先行する関数は後続の関数と等しくなります。 プリミティブ条件は OR 論理演算子のみを使用できるために、この関数は無効です。
-  
+
   ```tsql
   CREATE FUNCTION dbo.fn_example11(@column1 int, @column2 int)
   RETURNS TABLE
@@ -498,7 +498,7 @@ RETURN    SELECT 1 AS is_eligible
             AND (@column2 < -100 OR @column2 > 100)
 GO
 ```
-比較演算子の 1 つが削除されているため、次の関数は有効な置換になりません。
+比較演算子の&1; つが削除されているため、次の関数は有効な置換になりません。
 
 ```tsql
 CREATE FUNCTION dbo.fn_notvalidreplacement_2 (@column1 datetime, @column2 int)
@@ -549,7 +549,6 @@ db_owner 権限を持つ危害を受けたアカウントによって、次の�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

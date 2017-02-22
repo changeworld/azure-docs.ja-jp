@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 417a68942535fa2808c7e47d12c7ff6c6d6af49c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 81df166cadd33677cb62823440e04402354eba43
 
 
 ---
@@ -187,7 +187,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-yonyx-interactive-guides-test-user"></a>Yonyx Interactive Guides のテスト ユーザーの作成
 このセクションの目的は、Yonyx Interactive Guides で Britta Simon というユーザーを作成することです。 Yonyx Interactive Guides では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -249,6 +249,6 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

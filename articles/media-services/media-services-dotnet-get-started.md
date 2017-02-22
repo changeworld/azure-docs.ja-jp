@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/05/2017
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 34b166d63e539883a110dc96f7333a2379bc4963
 
 
 ---
@@ -24,12 +24,28 @@ ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-> [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
->
->
+このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure Media Services .NET SDK を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 
-## <a name="overview"></a>Overview
+## <a name="prerequisites"></a>前提条件
+
+チュートリアルを完了するには次のものが必要です。
+
+* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* .NET Framework 4.0 以降
+* Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
+
+このチュートリアルに含まれるタスクは次のとおりです。
+
+1. (Azure Portal を使用した) ストリーミング エンドポイントの開始
+2. Visual Studio プロジェクトの作成と構成
+3. Media Services アカウントに接続します。
+2. ビデオ ファイルをアップロードする
+3. 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
+4. 資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する  
+5. コンテンツの再生
+
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
 チュートリアルでは Media Services の基本的なワークフローや、Media Services 開発に必要となる一般的なプログラミング オブジェクトやタスクについて紹介します。 このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、ダウンロードして、ストリーミングやプログレッシブ ダウンロードを実行できます。
@@ -40,67 +56,27 @@ ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
 モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.15)で確認できます。  
-
-
-## <a name="prerequisites"></a>前提条件
-チュートリアルを完了するには次のものが必要です。
-
-* このチュートリアルを完了するには、Azure アカウントが必要です。
-
-    アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、Azure App Service の Web Apps 機能など、無料の Azure サービスと機能を利用できます。
-* オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
-* .NET Framework 4.0 以降
-* Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
-
-## <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Portal を使用した Azure Media Services アカウントの作成
-このセクションでは、AMS アカウントを作成する方法について説明します。
-
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. **[+新規]** > **[メディア + CDN]** > **[Media Services]** の順にクリックします。
-
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
-3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
-
-    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
-
-   1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
-   2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
-   3. **[リソース グループ]**ボックスで、新規または既存のリソースを選択します。  リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をご覧ください。
-   4. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。 このリージョンでメディアの処理とストリーミングが行われます。 ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
-   5. **[ストレージ アカウント]**ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。 Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。 新しいストレージ アカウントは同じリージョンに作成されます。 ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
-
-       ストレージの詳細については、 [こちら](../storage/storage-introduction.md)を参照してください。
-   6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
-4. フォームの下部にある **[作成]** をクリックします。
-
-    アカウントが正常に作成されると、概要ページが読み込まれます。 ストリーミング エンドポイントのテーブルで、アカウントには既定のストリーミング エンドポイントが**停止**状態で示されます。
-
-    >[!NOTE]
-    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
-
-    ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
-
-    AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、 **[設定]** ウィンドウを使用します。
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Azure Portal を使用したストリーミング エンドポイントの開始
 
 アダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
 
 >[!NOTE]
->AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+>AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
 
 ストリーミング エンドポイントを開始するには、次の操作を行います。
 
-1. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。 
-2. 既定のストリーミング エンドポイントをクリックします。 
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
+2. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。
+3. 既定のストリーミング エンドポイントをクリックします。
 
     [DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)] ウィンドウが表示されます。
 
-3. [開始] アイコンをクリックします。
-4. [保存] をクリックして、変更を保存します。
+4. [開始] アイコンをクリックします。
+5. [保存] をクリックして、変更を保存します。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
@@ -140,7 +116,7 @@ ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
 
 Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、 **CloudMediaContext** クラスが必要となります。
 
-既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 Media Services への接続の詳細については、「 [Media Services SDK for .NET を使用した Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)」をご覧ください。
+既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 Media Services への接続の詳細については、「 [Media Services SDK for .NET を使用した Media Services への接続](media-services-dotnet-connect-programmatically.md)」をご覧ください。
 
 メディア ファイルのある場所に合わせて、ファイル名とパスを更新してください。
 
@@ -243,7 +219,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。 このジョブには、 **Media Encoder Standard**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。 このコードは、ジョブを送信してその完了を待機します。
 
 ジョブが完了したら、資産をストリーミングしたり、コード変換によって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
- 
+
 次のメソッドを Program クラスに追加します。
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -426,7 +402,7 @@ MPEG DASH
 ## <a name="download-sample"></a>サンプルのダウンロード
 このチュートリアルで作成したコードは、[このサンプル コード](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)に含まれています。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

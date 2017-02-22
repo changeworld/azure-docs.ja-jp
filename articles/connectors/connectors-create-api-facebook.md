@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 7ac9d7eb9e322d8c44434add381030b51c9e9a4b
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: b8a66308c4f4f1df610cdacd092ef133bd605665
 
 
 ---
@@ -35,7 +35,7 @@ Facebook では、次の操作を実行できます。
 * 新しい投稿を取得したときにトリガーを使用できます。
 * タイムラインへの投稿、ページ フィードの取得などのアクションを使用できます。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、タイムラインに新しい投稿がある場合、その投稿を取得して、Twitter フィードにプッシュすることができます。 
 
-ロジック アプリに操作を追加する方法については、「 [SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、「 [SaaS サービスを接続する新しいロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」をご覧ください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 Facebook コネクタには、次のトリガーとアクションがあります。 
@@ -415,11 +415,11 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 | rsvp_status |string |はい |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

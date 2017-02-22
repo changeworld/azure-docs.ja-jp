@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc0e49f96bc80045eed888ff5354e5b6902a841c
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: ae39e06022a8bf53832283173dc97ef8c0e0b9ef
 
 
 ---
@@ -30,13 +30,12 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 > [!NOTE]
 > Linux ベースの Hadoop サーバーは使い慣れているが、HDInsight は初めてという場合は、「 [Linux ベースの HDInsight の Hadoop について知っておくべきこと](hdinsight-hadoop-linux-information.md)」をご覧ください。
-> 
-> 
+
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
-* HDInsight クラスター (Linux または Windows ベース) の Hadoop
+* HDInsight クラスター上の Hadoop
 * [Curl](http://curl.haxx.se/)
 * [jq](http://stedolan.github.io/jq/)
 
@@ -123,6 +122,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

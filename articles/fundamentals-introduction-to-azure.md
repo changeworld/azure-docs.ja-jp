@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a3e09e63f3952ad8b7229397f22c8d2f86ce6614
+ms.sourcegitcommit: 01623fa76175091439d5a571fb8b8f96aee01c4c
+ms.openlocfilehash: 298679883416a871016563aa789522413ff4c019
 
 
 ---
@@ -152,7 +152,7 @@ BLOB ストレージは、ユーザーのワークロードを確実に処理で
 
 ビデオ、大量のファイル、その他のバイナリ情報を格納するアプリケーションで、簡単な低価格のストレージを確保するために BLOB を使用することができます。 また、BLOB は一般に、Content Delivery Network (後述) などの他のサービスと組み合わせて使用されます。  
 
-### <a name="import-export"></a>Import / Export
+### <a name="import--export"></a>Import / Export
 ![Azure Import Export Service](./media/fundamentals-introduction-to-azure/ImportExportIntroNew.png)  
 
 *図: Azure Import/Export では、データの一括インポートまたはエクスポートをより速く安価にするために、Azure との間に物理ハード ドライブを接続する機能を提供する。*  
@@ -519,7 +519,7 @@ Azure Media Services はこの問題に対処します。 ビデオや他のメ�
 
 **参照**
 
-Media Services の詳細に関するビジュアルな表示については、 [Azure Media Services ポスター][Azure Media Services ポスター]などのさまざまな視覚的な説明の中で、サービスをいくつかのカテゴリに分類しています。
+Media Services の詳細に関するビジュアルな表示については、[Azure Media Services ポスター][Azure Media Services Poster]をダウンロードしてください。
 
 ## <a name="commerce"></a>コマース
 サービスとしてのソフトウェアの登場により、アプリケーションの作成方法が変わろうとしています。 さらに、アプリケーションの販売方法も変わろうとしています。 SaaS アプリケーションはクラウドに存在するため、当然ながら潜在的な顧客はソリューションをオンラインで探します。 この変化は、アプリケーションだけでなくデータにも当てはまります。 ユーザーは、商用データセットもクラウドで探すはずです。 Microsoft は、 [Azure Marketplace](https://azure.microsoft.com/marketplace/)でどちらの懸念事項にも対応しています。
@@ -536,10 +536,10 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 ## <a name="getting-started"></a>Getting Started (概要)
 これで全体像を把握できたため、次のステップは最初の Azure アプリケーションを記述することです。 言語を選択して[適切な SDK を入手し](/downloads/)、作成してみましょう。 クラウド コンピューティングはこれからの基本です。今すぐ始めましょう。
 
-[Azure Media Services ポスター]: http://azure.microsoft.com/documentation/infographics/media-services/
+[Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "SQLFilter 構文リファレンス | Microsoft Docs"
+title: "Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs"
 description: "SQLFilter の文法について詳しく説明します。"
 services: service-bus-messaging
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/22/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 5fb6b670ffa496d6626347bc50d537d35d51e08c
-ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 
 
 ---
@@ -86,7 +86,7 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-これは、文字で始まり、その後に 1 つ以上のアンダースコア/文字/数字が続くことを意味します。  
+これは、文字で始まり、その後に&1; つ以上のアンダースコア/文字/数字が続くことを意味します。  
   
 `[:IsLetter:]` は、Unicode の文字として分類される任意の Unicode 文字を表します。 `c` が Unicode の文字の場合、`System.Char.IsLetter(c)` は `true` を返します。  
   
@@ -94,7 +94,7 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
   
 `<regular_identifier>` に予約済みのキーワードを指定することはできません。  
   
-`<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは 2 つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
+`<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは&2; つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
   
 ```  
 [Property With Space]  
@@ -102,7 +102,7 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
   
 ```  
   
-`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
+`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は&2; つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
   
 ```  
 "Contoso & Northwind"  
@@ -119,9 +119,9 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
--   `%`: 0 個以上の文字から成る任意の文字列。  
+-   `%`:&0; 個以上の文字から成る任意の文字列。  
   
--   `_`: 1 つの任意の文字。  
+-   `_`:&1; つの任意の文字。  
   
 ## <a name="escapechar"></a>escape_char  
   
@@ -285,6 +285,6 @@ ms.openlocfilehash: 8a5571ed56c6aa20cf157e7787004e2c329c9d54
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

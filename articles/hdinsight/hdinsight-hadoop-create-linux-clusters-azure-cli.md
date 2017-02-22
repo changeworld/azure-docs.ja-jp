@@ -1,6 +1,6 @@
 ---
-title: "クロスプラットフォーム Azure CLI を使用した HDInsight での Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Docs"
-description: "クロスプラットフォーム Azure CLI、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
+title: "コマンド ラインを使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+description: "クロスプラットフォーム Azure CLI、Azure Resource Manager テンプレート、および Azure REST API を使用して、HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,29 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8d2956e9f0240392ba839b076d632ccc45d728
-ms.openlocfilehash: df8a5124b35ee00fcbe2c25a032443a1a55b7b1d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 777168c5d48cc589c54a12265bd54e87c4b64274
 
 
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-cli"></a>Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
+
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Azure CLI は、Azure サービスを管理できる、プラットフォームに依存しないコマンドライン ユーティリティです。 Azure Resource Manager テンプレートと共に使用して、HDInsight クラスター、関連するストレージ アカウント、その他のサービスを作成できます。
 
-Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なすべてのリソースを 1 つのテンプレートで定義することができます。 **デプロイ**の際にグループの全体としての変更を管理して、グループ全体に変更を適用することもできます。
+Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート ベースのアプローチでは、HDInsight で必要なすべてのリソースを&1; つのテンプレートで定義することができます。 **デプロイ**の際にグループの全体としての変更を管理して、グループ全体に変更を適用することもできます。
 
 このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
 
 > [!IMPORTANT]
-> この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。 クラスターの作成または拡張にあたって 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
-> 
-> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
-> 
-> 
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,9 +48,11 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
+
 「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、 **login** メソッドを使用してサブスクリプションに接続します。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
+
 Azure CLI をインストールして構成したら、コマンド プロンプト、シェル、またはターミナル セッションから次の手順を実行します。
 
 1. 次のコマンドを使用して、Azure サブスクリプションに対して認証します。
@@ -108,6 +108,11 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
    * `--defaultStorageContainer` パラメーターには、クラスターに使用している名前と同じ名前を指定します。
    * **admin** と **httppassword** には、HTTPS でクラスターにアクセスするときに使用する名前とパスワードを指定します。
    * **sshuser** と **sshuserpassword** には、SSH でクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
+   
+   > [!IMPORTANT]
+   > 上記の例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成または拡張にあたって 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。 `--headNodeSize` パラメーターを使用して、ヘッド ノードのサイズを設定することができます。
+   > 
+   > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
      
      クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
 
@@ -131,6 +136,6 @@ Azure CLI を使用して HDInsight クラスターを作成したら、クラ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

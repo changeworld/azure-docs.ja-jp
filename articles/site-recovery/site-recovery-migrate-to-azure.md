@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 20aecf6df4af0b89fb6cafbd2047facdb345bae5
-ms.openlocfilehash: 8f658cb80a43e0eb21585ea851251b1339ab546b
+ms.sourcegitcommit: f82634af931a1e9a9646c5631ebd0e5923a0adcc
+ms.openlocfilehash: cbb6de4587871c40c9d4e97c9fb2a88eab4945a6
 
 
 ---
@@ -73,6 +73,6 @@ AWS インスタンスを Azure VM に移行できます。 このシナリオ�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

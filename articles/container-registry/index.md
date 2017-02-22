@@ -1,14 +1,26 @@
 ---
+title: "Azure Container Registry のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "管理された Docker レジストリ サービスを使用して、デプロイ イメージを保存するコンテナー レジストリを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+services: container-registry
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: container-registry
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 2e77ba043efd03ecffd3e5e786046dedbed58877
+ms.sourcegitcommit: 97a09226c0f784c4834e96e47ac9052844ff7a36
+ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
 
 ---
 
 # <a name="azure-container-registry-documentation"></a>Azure Container Registry のドキュメント
 
-Azure Container Registry (プレビュー) は、コンテナー イメージをホストするためのプライベート レジストリです。 Azure Container Registry を使用すると、すべての種類のコンテナー デプロイに対応する Docker 形式のイメージを格納できます。 Azure Container Registry は、Docker Swarm、DC/OS、Kubernetes など、Azure Container Service でホストされている Orchestrator にも緊密に統合されています。 
+Container Registry を使用して、あらゆる種類のコンテナー デプロイ向けのイメージを格納および管理する方法について説明します。 チュートリアルや REST API リファレンスなどのドキュメントでは、この管理された Docker レジストリ サービスを使用してコンテナー レジストリを作成および管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,6 +110,7 @@ Azure Container Registry (プレビュー) は、コンテナー イメージを
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

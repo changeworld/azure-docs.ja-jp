@@ -1,5 +1,5 @@
 ---
-title: "Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法 | Microsoft Docs"
+title: "API Management 開発者ポータルをテンプレートを使用してカスタマイズする - Azure | Microsoft Docs"
 description: "Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。"
 services: api-management
 documentationcenter: 
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: apipm
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 9ddd871a845af1169337480804b216a9a4fc9a06
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 01fb45cc2d2323290427a08e3210fadf27f6cda8
 
 
 ---
@@ -48,9 +48,9 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 
 ![ユーザー プロファイル テンプレート][api-management-user-profile-templates]
 
-各開発者ポータル テンプレート用のエディターでは、ページの下部に 2 つのセクションが表示されます。 左側にはテンプレートの編集ウィンドウが表示され、右側にはテンプレートのデータ モデルが表示されます。 
+各開発者ポータル テンプレート用のエディターでは、ページの下部に&2; つのセクションが表示されます。 左側にはテンプレートの編集ウィンドウが表示され、右側にはテンプレートのデータ モデルが表示されます。 
 
-テンプレート編集ウィンドウには、開発者ポータルの対応するページの外観と動作を制御するマークアップが含まれています。 テンプレートのマークアップでは、 [DotLiquid](http://dotliquidmarkup.org/) 構文を使用します。 DotLiquid 用の一般的なエディターの 1 つに、 [設計者向け DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)があります。 編集中にテンプレートに加えられた変更はブラウザーにリアルタイムで表示されますが、テンプレートを[保存](#to-save-a-template)して[発行](#to-publish-a-template)するまで顧客の目に触れることはありません。
+テンプレート編集ウィンドウには、開発者ポータルの対応するページの外観と動作を制御するマークアップが含まれています。 テンプレートのマークアップでは、 [DotLiquid](http://dotliquidmarkup.org/) 構文を使用します。 DotLiquid 用の一般的なエディターの&1; つに、 [設計者向け DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)があります。 編集中にテンプレートに加えられた変更はブラウザーにリアルタイムで表示されますが、テンプレートを[保存](#to-save-a-template)して[発行](#to-publish-a-template)するまで顧客の目に触れることはありません。
 
 ![テンプレートのマークアップ][api-management-template]
 
@@ -58,7 +58,7 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 
 ![テンプレートのデータ モデル][api-management-template-data]
 
-前の例には、次の例に示す **テンプレート データ** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される 2 つの製品があります。
+前の例には、次の例に示す **テンプレート データ** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される&2; つの製品があります。
 
 ```json
 {
@@ -210,6 +210,6 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

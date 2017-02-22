@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/07/2016
+ms.date: 01/19/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: bb5fee05bb14276ab0a9e2309f8a20cb3684df57
+ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
+ms.openlocfilehash: daa914f14a2bd6eb830728f2519eb9749d483c9f
 
 
 ---
@@ -28,19 +28,22 @@ ms.openlocfilehash: bb5fee05bb14276ab0a9e2309f8a20cb3684df57
 
 > [!NOTE]
 > このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される HiveQL については、「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
-> 
-> 
 
 **前提条件**
 
 この記事の手順を完了するには、次のものが必要です。
 
-* **Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)**
+* **Azure HDInsight クラスター**: クラスターが Windows ベースか Linux ベースかは関係ありません。
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * **Azure PowerShell を実行できるワークステーション**。
   
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ## <a name="run-hive-queries-using-azure-powershell"></a>Azure PowerShell を使用して Hive クエリを実行する
+
 Azure PowerShell では、HDInsight で Hive クエリをリモートに実行できる *コマンドレット* が提供されます。 これは、HDInsight クラスター上で実行される [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
 リモート HDInsight クラスターで Hive クエリを実行するときに次のコマンドレットを使用します。
@@ -55,89 +58,88 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
-1. エディターを使用して、次のコードを **hivejob.ps1**として保存します。 **CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
+1. エディターを使用して、次のコードを **hivejob.ps1**として保存します。
    
-        #Specify the values
-        $clusterName = "CLUSTERNAME"
-        $creds=Get-Credential
-   
-        # Login to your Azure subscription
-        # Is there an active Azure subscription?
-        $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-        if(-not($sub))
-        {
-            Add-AzureRmAccount
-        }
-   
-        #HiveQL
-        #Note: set hive.execution.engine=tez; is not required for
-        #      Linux-based HDInsight
-        $queryString = "set hive.execution.engine=tez;" +
-                    "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
-                    "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-   
-        #Create an HDInsight Hive job definition
-        $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString 
-   
-        #Submit the job to the cluster
-        Write-Host "Start the Hive job..." -ForegroundColor Green
-   
-        $hiveJob = Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $creds
-   
-        #Wait for the Hive job to complete
-        Write-Host "Wait for the job to complete..." -ForegroundColor Green
-        Wait-AzureRmHDInsightJob -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $creds
-   
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup)[0].Value
-        # Print the output
-        Write-Host "Display the standard output..." -ForegroundColor Green
-        Get-AzureRmHDInsightJobOutput `
-            -Clustername $clusterName `
-            -JobId $hiveJob.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds
+   ```powershell
+    # Login to your Azure subscription
+    # Is there an active Azure subscription?
+    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Add-AzureRmAccount
+    }
+    
+    #Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+
+    #HiveQL
+    #Note: set hive.execution.engine=tez; is not required for
+    #      Linux-based HDInsight
+    $queryString = "set hive.execution.engine=tez;" +
+                "DROP TABLE log4jLogs;" +
+                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
+                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
+
+    #Create an HDInsight Hive job definition
+    $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString 
+
+    #Submit the job to the cluster
+    Write-Host "Start the Hive job..." -ForegroundColor Green
+
+    $hiveJob = Start-AzureRmHDInsightJob -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $creds
+
+    #Wait for the Hive job to complete
+    Write-Host "Wait for the job to complete..." -ForegroundColor Green
+    Wait-AzureRmHDInsightJob -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $creds
+
+    # Print the output
+    Write-Host "Display the standard output..." -ForegroundColor Green
+    Get-AzureRmHDInsightJobOutput `
+        -Clustername $clusterName `
+        -JobId $hiveJob.JobId `
+        -HttpCredential $creds
+   ```
+
 2. **Azure PowerShell** コマンド プロンプトを開きます。 ディレクトリを **hivejob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
    
         .\hivejob.ps1
    
-    スクリプトの実行時に、クラスター用の HTTPS/管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのログインが求められる場合もあります。
+    スクリプトの実行時に、クラスター名とクラスター用の HTTPS/管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのログインが求められる場合もあります。
+
 3. ジョブが完了すると、次のような情報が返されます。
    
         Display the standard output...
         2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
-4. 前述のように、 **Invoke-Hive** を使用してクエリを実行し、応答を待機できます。 次のコマンドを使用して、 **CLUSTERNAME** をクラスターの名前で置き換えます。
+
+4. 前述のように、 **Invoke-Hive** を使用してクエリを実行し、応答を待機できます。 次のスクリプトを使用して、Invoke-Hive の動作を確認します。
    
-        Use-AzureRmHDInsightCluster -ClusterName $clusterName -HttpCredential $creds
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=(Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-        -ResourceGroupName $resourceGroup)[0].Value
-        $queryString = "set hive.execution.engine=tez;" +
-                    "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
-                    "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
-        Invoke-AzureRmHDInsightHiveJob `
-            -StatusFolder "statusout" `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -Query $queryString
+   ```powershell
+    # Login to your Azure subscription
+    # Is there an active Azure subscription?
+    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Add-AzureRmAccount
+    }
+
+    #Get cluster info
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    $creds=Get-Credential -Message "Enter the login for the cluster"
+
+    # Set the cluster to use
+    Use-AzureRmHDInsightCluster -ClusterName $clusterName -HttpCredential $creds
+    
+    $queryString = "set hive.execution.engine=tez;" +
+                "DROP TABLE log4jLogs;" +
+                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
+                "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
+    Invoke-AzureRmHDInsightHiveJob `
+        -StatusFolder "statusout" `
+        -Query $queryString
+   ```
    
     出力は次のようになります。
    
@@ -151,28 +153,28 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
    > `Invoke-AzureRmHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    > 
    > **Here-Strings** の詳細については、<a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>に関するページをご覧ください。
-   > 
-   > 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
 ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。 このジョブに関するエラーを表示するには、以下を **hivejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
-    # Print the output of the Hive job.
-    Get-AzureRmHDInsightJobOutput `
-            -Clustername $clusterName `
-            -JobId $job.JobId `
-            -DefaultContainer $container `
-            -DefaultStorageAccountName $storageAccountName `
-            -DefaultStorageAccountKey $storageAccountKey `
-            -HttpCredential $creds `
-            -DisplayOutputType StandardError
+```powershell
+# Print the output of the Hive job.
+Get-AzureRmHDInsightJobOutput `
+        -Clustername $clusterName `
+        -JobId $job.JobId `
+        -HttpCredential $creds `
+        -DisplayOutputType StandardError
+```
 
 これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
 
 ## <a name="summary"></a>概要
+
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
 ## <a name="next-steps"></a>次のステップ
+
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
@@ -185,6 +187,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Reliable Actors のイベント | Microsoft Docs"
+title: "アクター ベースの Azure マイクロサービスでのイベント | Microsoft Docs"
 description: "Service Fabric Reliable Actors のイベントの概要"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e57ea14e8d0664df624037759685f11baa312d26
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 92df9505416c5b4326f007dbf4b920f2c7ec3bd8
 
 
 ---
@@ -84,6 +84,6 @@ ev.GameScoreUpdated(Id.GetGuidId(), score);
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

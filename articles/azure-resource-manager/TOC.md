@@ -43,19 +43,22 @@
 ### [Azure CLI でサービス プリンシパルを作成する](resource-group-authenticate-service-principal-cli.md)
 ### [ポータルでサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
-### [管理ポリシーを設定する](resource-manager-policy.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 ### [セキュリティに関する考慮事項](best-practices-resource-manager-security.md)
+## リソース ポリシーの設定
+### [リソース ポリシーとは](resource-manager-policy.md)
+### [リソース ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)
+### [リソースのタグ ポリシー](resource-manager-policy-tags.md)
+### [ストレージのポリシー](resource-manager-policy-storage.md)
+### [Linux VM のポリシー](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Windows VM のポリシー](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## 監査とトラブルシューティング
 ### [一般的なデプロイ エラーのトラブルシューティング](resource-manager-common-deployment-errors.md)
 ### [アクティビティ ログを表示する](resource-group-audit.md)
-### [ポータルでデプロイ操作を表示する](resource-manager-troubleshoot-deployments-portal.md)
-### [PowerShell でデプロイ操作を表示する](resource-manager-troubleshoot-deployments-powershell.md)
-### [Azure CLI でのデプロイ操作の表示](resource-manager-troubleshoot-deployments-cli.md)
-### [REST API でデプロイ操作を表示する](resource-manager-troubleshoot-deployments-rest.md)
+### [デプロイ操作の表示](resource-manager-deployment-operations.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
 ## [Azure 2.0 CLI (プレビュー)](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
@@ -65,11 +68,12 @@
 
 # リソース
 ## [スロットル リクエスト](resource-manager-request-limits.md)
+## [非同期操作の追跡](resource-manager-async-operations.md)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

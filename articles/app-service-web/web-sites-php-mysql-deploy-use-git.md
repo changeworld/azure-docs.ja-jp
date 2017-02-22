@@ -13,20 +13,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
 
 
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
-このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。 コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。 このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。 このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。 コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使います。 このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。 このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
 学習内容:
 
-* [Azure Portal][management-portal]を使用して Web アプリと MySQL データベースを作成する方法。 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure Portal][management-portal] を使って Web アプリと MySQL データベースを作成する方法。 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
 * Composer 拡張機能を有効にして `git push`ごとに Composer のタスクを自動化する方法。
 
@@ -82,7 +82,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 ## <a name="build-and-test-your-app-locally"></a>アプリケーションの作成とローカル テスト
 Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
-Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションを構成するファイルは&1; つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 
@@ -234,7 +234,7 @@ Registration アプリケーションは、名前と電子メール アドレス
     ![Azure の PHP Web サイト][running-app]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -299,6 +299,6 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

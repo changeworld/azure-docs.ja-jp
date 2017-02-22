@@ -3,7 +3,7 @@ title: "Linux で Azure Files を使用する方法 | Microsoft Docs"
 description: "この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。 Linux を実行している Azure の仮想マシン (VM) または SMB 3.0 をサポートするオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
 services: storage
 documentationcenter: na
-author: mine-msft
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: 6edc37ce-698f-4d50-8fc1-591ad456175d
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: minet
+ms.date: 1/18/2017
+ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26e74cada6186239c58011de155662c3e2a24978
+ms.sourcegitcommit: e296e468309b53338231e283ac62e4d917e0834b
+ms.openlocfilehash: 8cb98eb721d5769125926a6c75f776a9d510376e
 
 
 ---
 # <a name="how-to-use-azure-file-storage-with-linux"></a>Linux で Azure File Storage を使用する方法
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 Azure Files を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。 Azure で実行されているアプリケーションでは、Linux を実行している Azure の仮想マシンからファイル共有を簡単にマウントできます。 また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
 
 Azure のファイル共有は、 [Azure ポータル](https://portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 また、ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
@@ -38,7 +38,7 @@ File ストレージは現在一般に提供されており、SMB 2.1 と SMB 3.
 ## <a name="video-using-azure-file-storage-with-linux"></a>ビデオ: Linux で Azure File ストレージを使用する方法
 このビデオでは、Linux で Azure のファイル共有を作成して使用する方法について説明しています。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Linux/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Linux/player]
 > 
 > 
 
@@ -108,6 +108,17 @@ Filesystem  Size  Used Avail Use% Mounted on
 //myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
 ```
 
+RHEL 7.3 を使用する場合は、次に示すようにファイルをマウントできます。
+
+```
+azureuser@AzureconRedhat:~> sudo yum install cifs-utils
+azureuser@AzureconRedhat:~> sudo mkdir /mnt/mountpoint
+azureuser@AzureconRedhat:~> sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+azureuser@AzureconRedhat:~> df -h /mnt/mountpoint
+Filesystem  Size  Used Avail Use% Mounted on
+//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
+```
+
 ## <a name="manage-the-file-share"></a>ファイル共有の管理
 [Azure ポータル](https://portal.azure.com) では、Azure File Storage を管理するためのユーザー インターフェイスを使用できます。 Web ブラウザーから、次の操作を実行できます。
 
@@ -150,6 +161,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 * [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

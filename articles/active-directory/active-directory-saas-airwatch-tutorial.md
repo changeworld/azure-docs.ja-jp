@@ -43,14 +43,14 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
 ### <a name="to-enable-the-application-integration-for-airwatch-perform-the-following-steps"></a>AirWatch のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-airwatch-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-airwatch-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-airwatch-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-airwatch-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-airwatch-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-airwatch-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-airwatch-tutorial/IC749322.png "Add an application from gallerry")
@@ -70,32 +70,32 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **[AirWatch]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-airwatch-tutorial/IC791916.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791916.png "Configure Single Sign-On")
 2. **[ユーザーの AirWatch へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-airwatch-tutorial/IC791917.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791917.png "Configure Single Sign-On")
 3. **[アプリケーション URL の構成]** ページの **[AirWatch サインオン URL]** テキスト ボックスに、AirWatch アプリケーションへのサインインにユーザーが使用する URL (例: ”*https:// companycode.awmdm.com/AirWatch/Login?gid=companycode*”) を入力し、**[次へ]** をクリックします。
    
-   ![Configure App URL](./media/active-directory-saas-airwatch-tutorial/IC791918.png "Configure App URL")
+   ![アプリケーション URL の構成](./media/active-directory-saas-airwatch-tutorial/IC791918.png "Configure App URL")
 4. **[AirWatch でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-airwatch-tutorial/IC791919.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791919.png "Configure Single Sign-On")
 5. 別の Web ブラウザーのウィンドウで、管理者として AirWatch 企業サイトにログインします。
 6. 左側のナビゲーション ウィンドウで、**[Accounts]**、**[Administrators]** の順にクリックします。
    
    ![管理者](./media/active-directory-saas-airwatch-tutorial/IC791920.png "Administrators")
 7. **[Settings]** メニューを展開し、**[Directory Services]** をクリックします。
    
-   ![[設定]](./media/active-directory-saas-airwatch-tutorial/IC791921.png "Settings")
+   ![設定](./media/active-directory-saas-airwatch-tutorial/IC791921.png "Settings")
 8. **[User]** タブをクリックし、**[Base DN]** テキスト フィールドにドメイン名を入力してから **[Save]** をクリックします。
    
-   ![User](./media/active-directory-saas-airwatch-tutorial/IC791922.png "User")
+   ![ユーザー](./media/active-directory-saas-airwatch-tutorial/IC791922.png "User")
 9. [ **Server** ] タブをクリックします。
    
-   ![Server](./media/active-directory-saas-airwatch-tutorial/IC791923.png "Server")
+   ![サーバー](./media/active-directory-saas-airwatch-tutorial/IC791923.png "Server")
 10. 次の手順に従います。
     
-    ![[アップロード]](./media/active-directory-saas-airwatch-tutorial/IC791924.png "Upload")
+    ![アップロード](./media/active-directory-saas-airwatch-tutorial/IC791924.png "Upload")
     
     1. **[Directory Type]** として **[None]** を選択します。
     2. [ **Use SAML For Authentication**] を選択します。
@@ -110,10 +110,10 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
     4. [ **Save**] をクリックします。
 12. [ **User** ] タブをもう一度クリックします。
     
-    ![User](./media/active-directory-saas-airwatch-tutorial/IC791926.png "User")
+    ![ユーザー](./media/active-directory-saas-airwatch-tutorial/IC791926.png "User")
 13. [ **Attribute** ] セクションで、次の手順に従います。
     
-    ![Attribute](./media/active-directory-saas-airwatch-tutorial/IC791927.png "Attribute")
+    ![属性](./media/active-directory-saas-airwatch-tutorial/IC791927.png "Attribute")
     
     1. **[Object Identifier]** ボックスに、**http://schemas.microsoft.com/identity/claims/objectidentifier** と入力します。
     2. **[Username]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。
@@ -124,7 +124,7 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
     7. **[Save]**をクリックします。
 14. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-airwatch-tutorial/IC791928.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791928.png "Configure Single Sign-On")
     
     ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -135,7 +135,7 @@ AirWatch の場合、プロビジョニングは手動で行います。
 1. **AirWatch** 企業サイトに管理者としてログインします。
 2. 左側のナビゲーション ウィンドウで、**[Accounts]**、**[Users]** の順にクリックします。
    
-   ![Users](./media/active-directory-saas-airwatch-tutorial/IC791929.png "Users")
+   ![ユーザー](./media/active-directory-saas-airwatch-tutorial/IC791929.png "Users")
 3. **[Users]** メニューで、**[List View]**、**[Add] \> [Add User]** の順にクリックします。
    
    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791930.png "Add User")
@@ -158,7 +158,7 @@ AirWatch の場合、プロビジョニングは手動で行います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **AirWatch** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-airwatch-tutorial/IC791932.png "Assign Users")
+   ![ユーザーの割り当て](./media/active-directory-saas-airwatch-tutorial/IC791932.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-airwatch-tutorial/IC767830.png "Yes")
@@ -168,6 +168,6 @@ AirWatch の場合、プロビジョニングは手動で行います。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

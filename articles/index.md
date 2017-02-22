@@ -4,8 +4,8 @@ hide_bc: true
 title: "Microsoft Azure のドキュメント | Microsoft Docs"
 description: "Microsoft Azure Cloud Services を使用して、強力なアプリケーションを構築し、管理する方法について説明します。 ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 87041c127fb3381480b162c3a3648bfd46dbaaf7
-ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
+ms.sourcegitcommit: 39bebdc52aea8f4ee154c8369c1c564ffe8be95d
+ms.openlocfilehash: 108064e5da31f99d683714417aea3129f2b0f669
 
 ---
 <div id="main" class="v2">
@@ -99,8 +99,8 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
                                         </li>
                                         <li>
                                             <a href="/azure/app-service/">
-                                                <img src="media/index/AppService.svg" alt="" />
-                                                <p>App Service</p>
+                                                <img src="media/index/app-service-web.svg" alt="" />
+                                                <p>Web Apps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -714,18 +714,18 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/app-service/">
+                                <a href="/azure/app-service-web">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/AppService.svg" alt="" />
+                                                        <img src="media/index/app-service-web.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>App Service</h3>
-                                                    <p>プラットフォームやデバイスを問わず Web アプリとモバイル アプリを作成します</p>
+                                                    <h3>Web Apps</h3>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2909,6 +2909,6 @@ ms.openlocfilehash: e2eacb21be4240e7402ce6ff1e7f44e24063a6e0
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,32 +1,18 @@
 ---
-title: "Logic Apps を使用した DocumentDB の変更通知 |Microsoft Docs"
-description: " をクリックします。"
-keywords: "変更通知"
-services: documentdb
-author: hedidin
-manager: jhubbard
-editor: mimig
-documentationcenter: 
-ms.assetid: 58925d95-dde8-441b-8142-482b487e4bdd
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
-ms.date: 09/23/2016
-ms.author: b-hoedid
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-change-feed-hl7-fhir-logic-apps
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 115d35bd56918ad8e93a9032cbff6e84a7b70e0c
+ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
+ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
 
 
 ---
 # <a name="notifications-for-new-or-changed-documentdb-resources-using-logic-apps"></a>Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
-この記事は、Azure DocumentDB コミュニティ フォーラムの 1 つに投稿されていた質問を基にして作成しました。 その質問とは " **DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
+この記事は、Azure DocumentDB コミュニティ フォーラムの&1; つに投稿されていた質問を基にして作成しました。 その質問とは " **DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
 
 私は長年 BizTalk Server に携わっているのですが、変更通知は [WCF LOB アダプター](https://msdn.microsoft.com/library/bb798128.aspx)を使用している場合にはごく一般的なシナリオです。 そこで私は、この機能を DocumentDB の新規作成または変更されたドキュメントに対しても実装できるかどうかを調べることにしました。
 
-この記事では、[トリガー](documentdb-programming.md#trigger)と[ロジック アプリ](../app-service-logic/app-service-logic-what-are-logic-apps.md)を含む、変更通知ソリューションのコンポーネントについて概要を説明します。 重要なコード スニペットは記事の中で紹介していますが、ソリューション全体は [GitHub](https://github.com/HEDIDIN/DocDbNotifications)から取得できます。
+この記事では、[トリガー](documentdb-programming.md#trigger)と[ロジック アプリ](../logic-apps/logic-apps-what-are-logic-apps.md)を含む、変更通知ソリューションのコンポーネントについて概要を説明します。 重要なコード スニペットは記事の中で紹介していますが、ソリューション全体は [GitHub](https://github.com/HEDIDIN/DocDbNotifications)から取得できます。
 
 ## <a name="use-case"></a>ユース ケース
 この記事で扱うユース ケースは次のとおりです。
@@ -41,7 +27,7 @@ IT 部門は、その方法を簡単に提供できると答えました。 ま�
 このアプリケーションを作成するために、IT 部門では、まずこれをモデル化することにしました。  ビジネス プロセス モデリング表記 (BPMN) には、技術者だけでなく技術系以外の人にも理解しやすいという利点があります。 ここでは、通知プロセス全体をビジネス プロセスとして捉えます。 
 
 ## <a name="high-level-view-of-notification-process"></a>通知プロセスの概要
-1. 出発点は、タイマー トリガーを持つロジック アプリです。 トリガーは既定で 1 時間おきに実行されます。
+1. 出発点は、タイマー トリガーを持つロジック アプリです。 トリガーは既定で&1; 時間おきに実行されます。
 2. 次に、このロジック アプリに対して HTTP POST を実行します。
 3. ロジック アプリがすべての作業を実行します。
 
@@ -54,7 +40,7 @@ IT 部門は、その方法を簡単に提供できると答えました。 ま�
 
 手順は次のとおりです。
 
-1. API アプリから現在の UTC DateTime を取得する必要があります。  既定値は 1 時間前です。
+1. API アプリから現在の UTC DateTime を取得する必要があります。  既定値は&1; 時間前です。
 2. UTC DateTime は、UNIX タイムスタンプ形式に変換されます。 これは、DocumentDB におけるタイムスタンプの既定の形式です。
 3. この値を API アプリに POST します。API アプリでは DocumentDB クエリが実行されます。 クエリでこの値が使用されます。
    
@@ -77,7 +63,7 @@ IT 部門は、その方法を簡単に提供できると答えました。 ま�
 ワークフローの内容を理解できたところで、これを実装する方法を見てみましょう。
 
 ### <a name="lets-start-with-the-main-logic-app"></a>メインのロジック アプリから着手する
-Logic Apps に慣れていない場合は、[Azure Marketplace](https://portal.azure.com/) で Logic Apps を取得し、[「Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」で詳細情報を確認できます。
+Logic Apps に慣れていない場合は、[Azure Marketplace](https://portal.azure.com/) で Logic Apps を取得し、[「Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」で詳細情報を確認できます。
 
 ロジック アプリを新規作成する際、" **何を出発点にしたいか**
 
@@ -926,7 +912,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 では、API アプリを見てみましょう。
 
 ## <a name="docdbnotificationapi"></a>DocDBNotificationApi
-アプリにはいくつかの操作がありますが、使用するのは次の 3 つのみです。
+アプリにはいくつかの操作がありますが、使用するのは次の&3; つのみです。
 
 * GetUTCDate
 * ConvertToTimeStamp
@@ -1132,6 +1118,6 @@ DocumentDB をさらに詳しく知りたい場合は、こちらの [ラーニ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -3,7 +3,7 @@ title: "Azure Data Lake Tools for Visual Studio Code の使用 | Microsoft Docs"
 description: "Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
-author: mumian
+author: jejiang
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/22/2016
-ms.author: jgao
+ms.date: 11/30/2016
+ms.author: jejiang
 translationtype: Human Translation
-ms.sourcegitcommit: fe5ef9bba31abdf9b29ad7c817a376407309f289
-ms.openlocfilehash: 59f2e4473aac85a8476055d2d955f576c099d787
+ms.sourcegitcommit: e79513590bb37570764f398e716182a11c74612a
+ms.openlocfilehash: 59cc35bc740625ed0582c1557fac9a04bf0cb8bc
 
 ---
 
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
-Azure Data Lake Tools for Visual Studio Code (VSCode) を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。
+Azure Data Lake Tools for Visual Studio Code (VSCode) を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。  この情報は、次のビデオにも含まれています。
 
+<a href="https://www.youtube.com/watch?v=J_gWuyFnaGA&feature=youtu.be"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -187,7 +188,7 @@ U-SQL ジョブを送信すると、送信ログが VSCode の出力ウィンド
 2. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 3. 「**ADL: Generate Code Behind**」と入力します。  分離コード ファイルが同じフォルダーに作成されます。 
 
-スクリプト ファイルを右クリックし、**[ADL: Generate Code Behind]** をクリックして U-SQL ジョブを送信することもできます。 
+スクリプト ファイルを右クリックし、**[ADL: Generate Code Behind]** をクリックして、分離コード ファイルを生成することもできます。 
 
 分離コードを含む U-SQL スクリプトのコンパイルと送信は、単独の U-SQL スクリプトの場合と同様です。
 
@@ -197,9 +198,11 @@ U-SQL ジョブを送信すると、送信ログが VSCode の出力ウィンド
 
 ![Data Lake Tools for Visual Studio Code の分離コード](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-behind-call.png) 
 
-## <a name="register-assemblies"></a>アセンブリの登録
+## <a name="use-assemblies"></a>アセンブリの使用
 
-Data Lake Tools を使用すると、カスタム コード アセンブリを Data Lake Analytics metastore に登録できます。
+アセンブリの開発に関する情報については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください。
+
+Data Lake Tools を使用すると、カスタム コード アセンブリを Data Lake Analytics カタログに登録できます。
 
 **アセンブリを登録するには**
 
@@ -209,9 +212,26 @@ Data Lake Tools を使用すると、カスタム コード アセンブリを D
 4.  データベースを選択します。
 5.  ローカル アセンブリのパスを指定します。
 
-## <a name="access-data-lake-analytics-metadata"></a>Data Lake Analytics メタデータへのアクセス
+次の U-SQL コードは、アセンブリを呼び出す方法を示しています。 このサンプルでは、アセンブリ名は *test* です。
 
-Azure に接続した後は、以下の手順に従って U-SQL メタデータにアクセスできます。
+    REFERENCE ASSEMBLY [test];
+    @a=EXTRACT Iid int,Starts DateTime,Region string,Query string,DwellTime int,Results string,ClickedUrls string 
+    FROM @"ruoxin/SearchLog.txt" USING Extractors.Tsv();
+    
+    @d=SELECT DISTINCT Region FROM @a;
+    
+    @d1=PROCESS @d
+        PRODUCE Region string,
+                Mkt string
+                USING new USQLApplication_codebehind.MyProcessor();
+    
+    OUTPUT @d1 TO @"ruoxin/SearchLogtest.txt" USING Outputters.Tsv();
+
+
+
+## <a name="access-data-lake-analytics-catalog"></a>Data Lake Analytics カタログへのアクセス
+
+Azure に接続した後は、以下の手順に従って U-SQL カタログにアクセスできます。
 
 **U-SQL メタデータにアクセスするには**
 
@@ -250,12 +270,13 @@ Data Lake Tools for VSCode では、以下の各機能がサポートされて�
 
 - Data Lake Analytics の概要については、[Azure Data Lake Analytics の使用開始に関するチュートリアル](data-lake-analytics-get-started-portal.md)のページを参照してください。
 - Data Lake Tools for Visual Studio の使用方法については、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+- アセンブリの開発に関する情報については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください。
 
 
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure アクティビティ ログ アラートでの webhook の構成 | Microsoft Docs"
-description: "アクティビティ ログ アラートを使用して webhook を呼び出す方法について説明します。 "
+title: "Azure アクティビティ ログ アラートでの webhook の呼び出し | Microsoft Docs"
+description: "カスタム アクションのためにアクティビティ ログ イベントを他のサービスにルーティングします。 たとえば、チャット/メッセージング サービスを使用して SMS の送信、バグの記録、またはチームへの通知を行います。"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 3c240e5f8eac50f4151a5a72bea690241597fc01
-ms.openlocfilehash: 0b912bc130ab5de3236a0e3f1f60087624b089a0
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
 
 
 ---
-# <a name="configure-a-webhook-on-an-azure-activity-log-alert"></a>Azure アクティビティ ログ アラートでの webhook の構成
-webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。 この記事では、Azure アクティビティ ログ アラートで webhook を設定する方法のほか、webhook に対する HTTP POST のペイロードの内容について説明します。 Azure メトリック アラートの設定とスキーマについては、[こちらのページをご覧ください](insights-webhooks-alerts.md)。 また、起動時に電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
+# <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートでの webhook の呼び出し
+webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。 この記事では、webhook が Azure アクティビティ ログ アラートの発生時に呼び出されるように設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure メトリック アラートの設定とスキーマについては、[こちらのページをご覧ください](insights-webhooks-alerts.md)。 また、起動時に電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
 
 > [!NOTE]
 > この機能は現在プレビュー段階で、今後ある時点で削除されます。
-> 
-> 
+>
+>
 
-アクティビティ ログ アラートは、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-alert-rules)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用して設定できます。
+アクティビティ ログ アラートは、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-alert-rules)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用して設定できます。 現時点では、Azure Portal を使用してアラートを設定することはできません。
 
 ## <a name="authenticating-the-webhook"></a>webhook の認証
 webhook は、次の方法のいずれかを使用して認証できます。
 
-1. **トークンベースの認証** - webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **基本認証** - webhook URI は次のようなユーザー名とパスワードを使用して保存されます。 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+1. **トークンベースの認証** - webhook URI は、`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` のようなトークン ID を使用して保存されます。
+2. **基本認証** - webhook URI は、`https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar` のようにユーザー名とパスワードを使用して保存されます。
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作には、すべてのアクティビティ ログベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。 このスキーマは、メトリックベースのアラートによって使用されるものと似ています。
@@ -114,7 +114,7 @@ POST 操作には、すべてのアクティビティ ログベースのアラ�
 | operationId |通常、単一の操作に対応する複数のイベントで共有される GUID。 |
 | operationName |操作の名前。 |
 | properties |イベントのプロパティ。 |
-| status |文字列] をオンにします。 操作の状態。 一般的な値は "Started"、"In Progress"、"Succeeded"、"Failed"、"Active"、"Resolved" です。 |
+| status |文字列 をオンにします。 操作の状態。 一般的な値は "Started"、"In Progress"、"Succeeded"、"Failed"、"Active"、"Resolved" です。 |
 | subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。 |
 
 ## <a name="next-steps"></a>次のステップ
@@ -126,7 +126,6 @@ POST 操作には、すべてのアクティビティ ログベースのアラ�
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

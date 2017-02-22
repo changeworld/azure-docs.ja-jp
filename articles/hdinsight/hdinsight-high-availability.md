@@ -13,40 +13,40 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 1f40d6119d5fefc48c1e12d510423f996239fe14
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: dd28e295df7acead773f9076d790e0e96b66adb9
 
 
 ---
 # <a name="availability-and-reliability-of-windows-based-hadoop-clusters-in-hdinsight"></a>HDInsight における Windows ベースの Hadoop クラスターの可用性と信頼性
-> [!NOTE]
-> このドキュメントで使用する手順は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターを使用している場合、Linux 固有の情報については、 [HDInsight における Linux ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md) に関する記事をご覧ください。
+> [!IMPORTANT]
+> このドキュメントで使用する手順は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターを使用している場合、Linux 固有の情報については、 [HDInsight における Linux ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md) に関する記事をご覧ください。
 >
 >
 
 HDInsight を使用すると、さまざまなクラスターの種類を、異なるデータ分析ワークロードにデプロイできるようになります。 現在提供されているクラスターの種類は、クエリとワークロードの分析のための Hadoop クラスター、NoSQL ワークロードのための HBase クラスター、リアルタイムのイベントの処理ワークロードのための Storm クラスターです。 特定のクラスターの種類には、さまざまなノードに合わせたロールがあります。 次に例を示します。
 
-* HDInsight の Hadoop クラスターは 2 つのロールでデプロイされます。
+* HDInsight の Hadoop クラスターは&2; つのロールでデプロイされます。
 
   * ヘッド ノード (2 ノード)
   * データ ノード (1 つ以上のノード)
-* HDInsight の HBase クラスターは 3 つのロールでデプロイされます。
+* HDInsight の HBase クラスターは&3; つのロールでデプロイされます。
 
   * ヘッド サーバー (2 つのノード)
   * リージョン サーバー (1 つ以上のノード)
   * マスター/Zookeeper ノード (3 つのノード)
-* HDInsight の Storm クラスターは 3 つのロールでデプロイされます。
+* HDInsight の Storm クラスターは&3; つのロールでデプロイされます。
 
   * Nimbus ノード (2 つのノード)
   * Supervisor サーバー (1 つ以上のノード)
   * Zookeeper ノード (3 つのノード)
 
-通常 Hadoop クラスターの標準的な実装には、ヘッド ノードは 1 つしかありません。 HDInsight は、セカンダリのヘッド ノード/ヘッド サーバー/Nimbus ノードを追加してこの単一障害点を削除して、ワークロードの管理に必要なサービスの可用性と信頼性を高めます。 これらのヘッド ノード/ヘッド サーバー/Nimbus ノードは、ワーカー ノードの障害を円滑に管理するよう設計されていますが、ヘッド ノードで実行中のマスター サービスが停止すると、クラスターが動作を停止する原因になることがあります。
+通常 Hadoop クラスターの標準的な実装には、ヘッド ノードは&1; つしかありません。 HDInsight は、セカンダリのヘッド ノード/ヘッド サーバー/Nimbus ノードを追加してこの単一障害点を削除して、ワークロードの管理に必要なサービスの可用性と信頼性を高めます。 これらのヘッド ノード/ヘッド サーバー/Nimbus ノードは、ワーカー ノードの障害を円滑に管理するよう設計されていますが、ヘッド ノードで実行中のマスター サービスが停止すると、クラスターが動作を停止する原因になることがあります。
 
-[ZooKeeper](http://zookeeper.apache.org/) ノード (ZK) を追加して、ヘッド ノードのリーダー選定に使用すると、ワーカー ノードとゲートウェイ (GW) は、アクティブ ヘッド ノード (ヘッド ノード 0) が非アクティブになったときに 2 つ目のヘッド ノード (ヘッド ノード 1) にフェールオーバーするタイミングを認識できます。
+[ZooKeeper](http://zookeeper.apache.org/) ノード (ZK) を追加して、ヘッド ノードのリーダー選定に使用すると、ワーカー ノードとゲートウェイ (GW) は、アクティブ ヘッド ノード (ヘッド ノード&0;) が非アクティブになったときに&2; つ目のヘッド ノード (ヘッド ノード&1;) にフェールオーバーするタイミングを認識できます。
 
 ![HDInsight の Hadoop 実装における信頼性の高いヘッド ノード図。](./media/hdinsight-high-availability/hadoop.high.availability.architecture.diagram.png)
 
@@ -58,12 +58,12 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 このスクリーン ショットでは、アクティブなヘッド ノードは *headnode0*です。
 
 ## <a name="access-log-files-on-the-secondary-head-node"></a>セカンダリ ヘッド ノードのログ ファイルにアクセスする
-セカンダリ ヘッド ノードがアクティブ ヘッド ノードになった場合、セカンダリ ヘッド ノードのログ ファイルにアクセスできるよう、引き続きプライマリ アクティブ ノードと同様に JobTracker UI を参照できます。 Job Tracker にアクセスするには、前のセクションで説明したように RDP を使用して Hadoop クラスターに接続する必要があります。 クラスターにリモート接続したら、デスクトップにある **[Hadoop 名前ノードの状態]** アイコンをダブルクリックし、**[NameNode ログ]** をクリックしてセカンダリ ヘッド ノード上のログのディレクトリを参照します。
+セカンダリ ヘッド ノードがアクティブ ヘッド ノードになった場合、セカンダリ ヘッド ノードのログ ファイルにアクセスできるよう、引き続きプライマリ アクティブ ノードと同様に JobTracker UI を参照できます。 Job Tracker にアクセスするには、前のセクションで説明したように RDP を使用して Hadoop クラスターに接続する必要があります。 クラスターにRDP 経由で接続したら、デスクトップにある **[Hadoop 名前ノードの状態]** アイコンをダブルクリックし、**[NameNode ログ]** をクリックしてセカンダリ ヘッド ノード上のログのディレクトリを参照します。
 
 ![](./media/hdinsight-high-availability/Hadoop.Head.Node.Log.Files.png)
 
 ## <a name="configure-head-node-size"></a>ヘッド ノード サイズの構成
-既定では、ヘッド ノードは L サイズの仮想マシン (VM) として割り当てられます。 このサイズは、クラスター上で実行されるほとんどの Hadoop ジョブを管理するには十分です。 ただし、XL サイズの VM がヘッド ノードに必要となるシナリオもあります。 その例の 1 つに、クラスターで小さな Oozie ジョブを多数管理しなければならない場合があります。
+既定では、ヘッド ノードは L サイズの仮想マシン (VM) として割り当てられます。 このサイズは、クラスター上で実行されるほとんどの Hadoop ジョブを管理するには十分です。 ただし、XL サイズの VM がヘッド ノードに必要となるシナリオもあります。 その例の&1; つに、クラスターで小さな Oozie ジョブを多数管理しなければならない場合があります。
 
 XL サイズの VM は、Azure PowerShell コマンドレットまたは HDInsight SDK を使用して構成できます。
 
@@ -106,6 +106,6 @@ SDK でも、同じような方法を使用します。 SDK を使用したク�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

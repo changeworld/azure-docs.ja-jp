@@ -1,5 +1,5 @@
 ---
-title: "カスタム テスト シナリオ | Microsoft Docs"
+title: "Azure マイクロサービスでのエラーをシミュレートする | Microsoft Docs"
 description: "グレースフル/非グレースフル エラーに対してサービスを強化する方法"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/17/2016
 ms.author: anmola
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ebdffa2a9270fb19ab80fac234e8c5edcfbaa49e
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: eefc05c85d07f397261f2230373ad93e07675159
 
 
 ---
@@ -161,6 +161,6 @@ class Test
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

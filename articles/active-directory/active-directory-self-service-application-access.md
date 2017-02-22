@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/09/2016
 ms.author: asmalser
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c14be0292b08419ebaf4270d7e451e930d43810b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 57093159c0b9c63b6e2dc0971e3aea645a33aa55
 
 
 ---
@@ -106,6 +106,6 @@ ms.openlocfilehash: c14be0292b08419ebaf4270d7e451e930d43810b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

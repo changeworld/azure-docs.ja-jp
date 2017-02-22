@@ -1,5 +1,5 @@
 ---
-title: "Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする | Microsoft Docs"
+title: "Azure Toolkit for IntelliJ を使用した Spark クラスター上のアプリケーションのリモート デバッグ | Microsoft Docs"
 description: "Azure Toolkit for IntelliJ の HDInsight ツールを使用して、HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする方法について解説します。"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
 
 
 ---
-# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-linux-cluster"></a>Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター上で Spark アプリケーションをリモートでデバッグする
+# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-cluster"></a>Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスター上で Spark アプリケーションをリモートでデバッグする
 この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使って HDInsight Spark クラスター上で Spark ジョブを送信し、デスクトップ コンピューターからリモートでデバッグするための詳細な手順を紹介します。 この作業に必要な手順は、大まかに言うと次のとおりです。
 
 1. サイト間またはポイント対サイトの Azure 仮想ネットワークを作成します。 このドキュメントの手順では、サイト間ネットワークを使用することを想定しています。
@@ -32,7 +32,7 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 * Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 * IntelliJ IDEA。 この記事では、バージョン 15.0.1 を使用します。 [ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 * Azure toolkit for IntelliJ の HDInsight ツール。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
@@ -173,7 +173,7 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
           }
         }
 
-1. 上の手順 8. と手順 9. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。 このクラスには次のコードを追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
+1. 上の手順 8. と手順 9. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。 このクラスには次のコードを追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の&7; 番目の列で&1; 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
    
        import org.apache.spark.SparkContext
    
@@ -283,6 +283,6 @@ ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

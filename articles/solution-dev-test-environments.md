@@ -1,12 +1,12 @@
 ---
-redirect_url: /azure/azure-resource-manager/solution-dev-test-environments
+redirect_url: /azure/devtest-lab/devtest-lab-overview
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 41ac9d9ca3a4d4eda6dde974eb4bfa53eac95280
+ms.sourcegitcommit: 05376b09785fec9c5cb4cb16fdf544def3d148eb
+ms.openlocfilehash: 65e534f689947623ea2bc91d944ef25a33d35395
 
 ---
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

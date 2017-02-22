@@ -1,5 +1,5 @@
 ---
-title: "リソース グループのガイドライン | Microsoft Docs"
+title: "Azure の Windows VM 用リソース グループ | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでのリソース グループのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0c915429f5dc631a4498b6e3224a4bdff36d5407
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: ec2392cb926df7c375c1c7c58766ef3b6ca2ff2d
 
 
 ---
@@ -49,7 +49,7 @@ Azure では、ストレージ アカウント、仮想ネットワーク、仮�
 * ストレージ アカウント、仮想ネットワーク、サブネット、VM、ロード バランサーなどを組み合わせた各アプリケーションのデプロイのためのリソース グループ。
 * コア仮想ネットワーク、サブネット、またはストレージ アカウントを含む一元的なリソース グループ。 アプリケーションは、VM、ロード バランサー、ネットワーク インターフェイスなどのアイテムのみを含む独自のリソース グループに含まれます。
 
-スケールアウトするとき、仮想ネットワークおよびサブネットの一元的なリソース グループを作成することで、ハイブリッド接続オプション用のクロスプレミス ネットワーク接続を容易に構築できます。 もう 1 つのアプローチでは、アプリケーションごとに、構成と保守が必要な独自の仮想ネットワークを使用します。  [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) により、リソース グループへのアクセスを詳細に制御できます。 運用アプリケーションの場合は、リソースにアクセスできるユーザーを制御でき、コア インフラストラクチャのリソースの場合は、インフラストラクチャ エンジニアだけが扱えるように制限することができます。 アプリケーション所有者はリソース グループ内のアプリケーション コンポーネントにのみアクセスでき、お使いの環境の Azure インフラストラクチャの中心となる部分にはアクセスできません。 環境を設計する際、リソースへのアクセスを必要とするユーザーと、それに応じたリソース グループの設計を考慮してください。 
+スケールアウトするとき、仮想ネットワークおよびサブネットの一元的なリソース グループを作成することで、ハイブリッド接続オプション用のクロスプレミス ネットワーク接続を容易に構築できます。 もう&1; つのアプローチでは、アプリケーションごとに、構成と保守が必要な独自の仮想ネットワークを使用します。  [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) により、リソース グループへのアクセスを詳細に制御できます。 運用アプリケーションの場合は、リソースにアクセスできるユーザーを制御でき、コア インフラストラクチャのリソースの場合は、インフラストラクチャ エンジニアだけが扱えるように制限することができます。 アプリケーション所有者はリソース グループ内のアプリケーション コンポーネントにのみアクセスでき、お使いの環境の Azure インフラストラクチャの中心となる部分にはアクセスできません。 環境を設計する際、リソースへのアクセスを必要とするユーザーと、それに応じたリソース グループの設計を考慮してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
@@ -57,6 +57,6 @@ Azure では、ストレージ アカウント、仮想ネットワーク、仮�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

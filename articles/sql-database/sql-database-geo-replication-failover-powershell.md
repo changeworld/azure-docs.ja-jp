@@ -16,18 +16,12 @@ ms.workload: data-management
 ms.date: 08/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: ac575284544819c6bed7ef84669b2793085a3dc6
 
 
 ---
 # <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-powershell"></a>PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-geo-replication-failover-portal.md)
-> * [PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 この記事では、PowerShell を使用して、SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーを開始する方法について説明します。 geo レプリケーションを構成する場合は、 [Azure SQL Database の geo レプリケーションの構成](sql-database-geo-replication-powershell.md)に関するページをご覧ください。
 
@@ -45,7 +39,7 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" 上の "mydb" という名前のデータベースのロールをプライマリに切り替えます。 "db2" の接続先である元のプライマリは、2 つのデータベースが完全に同期すると、セカンダリに切り替わります。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
@@ -70,8 +64,8 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 次のコマンドでは、プライマリが利用できない場合に、"mydb" という名前のデータベースのロールをプライマリに切り替えます。 "mydb" の接続先であった元のプライマリ データベースは、それがオンラインに戻ると、セカンダリ データベースに切り替わります。 その時点で、同期化によってデータが失われる可能性があります。
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg2” -ServerName "srv2”
+    $database | Set-AzureRmSqlDatabaseSecondary -Failover -AllowDataLoss
 
 
 
@@ -87,6 +81,6 @@ ms.openlocfilehash: 2f63098e2087e9bc96493f98bdb5900671e659a1
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

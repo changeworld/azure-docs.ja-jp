@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/22/2016
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5d66c03926008f89fe53102847e541a41385d43c
+ms.sourcegitcommit: b0abc4df06849ef2a887a190a8ea306849d40b3d
+ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
 
 
 ---
@@ -267,36 +267,37 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 以下のコード サンプルは、カスタムの **ClientRequestId** 値を設定する方法を示しています。この場合、**OperationContext** オブジェクトを、Storage サービスに対する要求に接続します。 また、応答メッセージから **ServerRequestId** 値を取得する方法も示しています。
 
-    //Parse the connection string for the storage account.
-    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+```csharp
+//Parse the connection string for the storage account.
+const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
-    OperationContext oc = new OperationContext();
-    oc.ClientRequestID = String.Format("{0} {1} {2} {3}", HOSTNAME, APPNAME, USERID, Guid.NewGuid().ToString());
+// Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
+OperationContext oc = new OperationContext();
+oc.ClientRequestID = String.Format("{0} {1} {2} {3}", HOSTNAME, APPNAME, USERID, Guid.NewGuid().ToString());
 
-    try
+try
+{
+    CloudBlobContainer container = blobClient.GetContainerReference("democontainer");
+    ICloudBlob blob = container.GetBlobReferenceFromServer("testImage.jpg", null, null, oc);  
+    var downloadToPath = string.Format("./{0}", blob.Name);
+    using (var fs = File.OpenWrite(downloadToPath))
     {
-        CloudBlobContainer container = blobClient.GetContainerReference("democontainer");
-        ICloudBlob blob = container.GetBlobReferenceFromServer("testImage.jpg", null, null, oc);  
-        var downloadToPath = string.Format("./{0}", blob.Name);
-        using (var fs = File.OpenWrite(downloadToPath))
-        {
-            blob.DownloadToStream(fs, null, null, oc);
-            Console.WriteLine("\t Blob downloaded to file: {0}", downloadToPath);
-        }
+        blob.DownloadToStream(fs, null, null, oc);
+        Console.WriteLine("\t Blob downloaded to file: {0}", downloadToPath);
     }
-    catch (StorageException storageException)
+}
+catch (StorageException storageException)
+{
+    Console.WriteLine("Storage exception {0} occurred", storageException.Message);
+    // Multiple results may exist due to client side retry logic - each retried operation will have a unique ServiceRequestId
+    foreach (var result in oc.RequestResults)
     {
-        Console.WriteLine("Storage exception {0} occurred", storageException.Message);
-        // Multiple results may exist due to client side retry logic - each retried operation will have a unique ServiceRequestId
-        foreach (var result in oc.RequestResults)
-        {
-                Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID);
-        }
+            Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID);
     }
-
+}
+```
 
 ### <a name="a-nametimestampsatimestamps"></a><a name="timestamps"></a>タイムスタンプ
 またタイムスタンプを使用して、関連するログ エントリを見つけることもできます。ただし、クライアントとサーバー間で存在する可能性があるクロック スキューに注意してください。 サーバー側の項目は、クライアントのタイムスタンプを基準として前後に 15 分ずつずらして一致項目を検索する必要があります。 メトリックが含まれる BLOB 用の BLOB メタデータは、BLOB で格納されているメトリックの時間範囲を示しています。これは、同じ分数または時間で多くのメトリック BLOB が含まれる場合に役立ちます。
@@ -364,11 +365,13 @@ Storage サービスが正常な要求に関して算出するのはメトリッ
 
 Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳しくは、「[Nagle’s Algorithm is Not Friendly towards Small Requests (小さな要求に不親切な Nagle アルゴリズム)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)」をご覧ください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
 
-    var storageAccount = CloudStorageAccount.Parse(connStr);
-    ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-    tableServicePoint.UseNagleAlgorithm = false;
-    ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
-    queueServicePoint.UseNagleAlgorithm = false;
+```csharp
+var storageAccount = CloudStorageAccount.Parse(connStr);
+ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
+tableServicePoint.UseNagleAlgorithm = false;
+ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
+queueServicePoint.UseNagleAlgorithm = false;
+```
 
 クライアント側のログを調べて、クライアント アプリケーションが送信している要求数を確認したり、CPU、.NET ガベージ コレクション、ネットワーク使用率、メモリなどの一般的な .NET 関連のパフォーマンス ボトルネックがクライアントに存在しないかどうかを確かめたりしてください。 .NET クライアント アプリケーションのトラブルシューティングの開始点として、「 [Debugging, Tracing, and Profiling (デバッグ、トレース、およびプロファイリング)](http://msdn.microsoft.com/library/7fe0dd2y)」を参照してください。
 
@@ -563,53 +566,29 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-<table>
-  <tr>
-    <td>要求の開始時刻</td>
-    <td>2014-05-30T06:17:48.4473697Z</td>
-  </tr>
-  <tr>
-    <td>操作の種類</td>
-    <td>GetBlobProperties</td>
-  </tr>
-  <tr>
-    <td>要求の状態</td>
-    <td>SASAuthorizationError</td>
-  </tr>
-  <tr>
-    <td>HTTP 状態コード</td>
-    <td>404</td>
-  </tr>
-  <tr>
-    <td>認証の種類</td>
-    <td>SAS</td>
-  </tr>
-  <tr>
-    <td>サービスの種類</td>
-    <td>BLOB</td>
-  </tr>
-  <tr>
-    <td>要求 URL</td>
-    <td>
-    https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;amp;sr=c&amp;amp;si=mypolicy&amp;amp;sig=XXXXX&amp;amp;api-version=2014-02-14&amp;amp;</td>
-  </tr>
-  <tr>
-    <td>[要求 ID ヘッダー]</td>
-    <td>a1f348d5-8032-4912-93ef-b393e5252a3b</td>
-  </tr>
-  <tr>
-    <td>クライアント要求 ID</td>
-    <td>2d064953-8436-4ee0-aa0c-65cb874f7929</td>
-  </tr>
-</table>
+| 名前 | 値 |
+| --- | --- |
+| 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
+| 操作の種類     | GetBlobProperties            |
+| 要求の状態     | SASAuthorizationError        |
+| HTTP 状態コード   | 404                          |
+| 認証の種類| SAS                          |
+| サービスの種類       | BLOB                         |
+| 要求 URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| [要求 ID ヘッダー]  | a1f348d5-8032-4912-93ef-b393e5252a3b |
+| クライアント要求 ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
+
 
 クライアント アプリケーションが、アクセス許可を付与されていない操作を実行しようとした理由を調べる必要があります。
 
 #### <a name="a-namejavascript-code-does-not-have-permissionaclient-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>クライアント側の JavaScript コードにオブジェクトへのアクセス許可がない
 JavaScript クライアントを使用していて Storage サービスから HTTP 404 メッセージが返された場合は、以下の JavaScript エラーをブラウザーで確認する必要があります。
 
-    SEC7120: Origin http://localhost:56309 not found in Access-Control-Allow-Origin header.
-    SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
+```
+SEC7120: Origin http://localhost:56309 not found in Access-Control-Allow-Origin header.
+SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
+```
 
 > [!NOTE]
 > クライアント側の JavaScript の問題をトラブルシューティングするときには、Internet Explorer の F12 開発者ツールを使用して、ブラウザーと Storage サービスの間で交換されたメッセージをトレースできます。
@@ -622,19 +601,21 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 以下のコード サンプルは、Contoso ドメインで実行される JavaScript に対して Blob Storage サービスの BLOB へのアクセスを許可する BLOB サービスを構成する方法を示しています。
 
-    CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
-    // Set the service properties.
-    ServiceProperties sp = client.GetServiceProperties();
-    sp.DefaultServiceVersion = "2013-08-15";
-    CorsRule cr = new CorsRule();
-    cr.AllowedHeaders.Add("*");
-    cr.AllowedMethods = CorsHttpMethods.Get | CorsHttpMethods.Put;
-    cr.AllowedOrigins.Add("http://www.contoso.com");
-    cr.ExposedHeaders.Add("x-ms-*");
-    cr.MaxAgeInSeconds = 5;
-    sp.Cors.CorsRules.Clear();
-    sp.Cors.CorsRules.Add(cr);
-    client.SetServiceProperties(sp);
+```csharp
+CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
+// Set the service properties.
+ServiceProperties sp = client.GetServiceProperties();
+sp.DefaultServiceVersion = "2013-08-15";
+CorsRule cr = new CorsRule();
+cr.AllowedHeaders.Add("*");
+cr.AllowedMethods = CorsHttpMethods.Get | CorsHttpMethods.Put;
+cr.AllowedOrigins.Add("http://www.contoso.com");
+cr.ExposedHeaders.Add("x-ms-*");
+cr.MaxAgeInSeconds = 5;
+sp.Cors.CorsRules.Clear();
+sp.Cors.CorsRules.Add(cr);
+client.SetServiceProperties(sp);
+```
 
 #### <a name="a-namenetwork-failureanetwork-failure"></a><a name="network-failure"></a>ネットワーク エラー
 状況によっては、ネットワーク パケットの紛失が原因で、Storage サービスが HTTP 404 メッセージをクライアントに返すことがあります。 たとえば、クライアント アプリケーションがエンティティを Table サービスから削除するときに、クライアントが、Table サービスからの "HTTP 404 (未検出)" 状態メッセージを報告するストレージ例外をスローすることがあります。 Table Storage サービスのテーブルを調べると、要求どおりにサービスがエンティティを削除したことがわかります。
@@ -713,10 +694,12 @@ SDK をインストールしようとすると、ローカル マシンへのス
 
 原因は、既存の LocalDB インストール環境の問題にあります。 既定では、Azure Storage サービスをシミュレートするときに、ストレージ エミュレーターは LocalDB を使用してデータを保持します。 SDK のインストールを試行する前に、コマンド プロンプト ウィンドウで次のコマンドを使用することによって、LocalDB インスタンスをリセットできます。
 
-    sqllocaldb stop v11.0
-    sqllocaldb delete v11.0
-    delete %USERPROFILE%\WAStorageEmulatorDb3*.*
-    sqllocaldb create v11.0
+```
+sqllocaldb stop v11.0
+sqllocaldb delete v11.0
+delete %USERPROFILE%\WAStorageEmulatorDb3*.*
+sqllocaldb create v11.0
+```
 
 **delete** コマンドは、ストレージ エミュレーターの既存のインストール環境から古いデータベース ファイルをすべて削除します。
 
@@ -789,7 +772,9 @@ Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HT
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用した Web トレース セッションの構成
 Microsoft Message Analyzer を使用した HTTP と HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、**[File]** メニューで **[Capture/Trace]** をクリックします。 使用可能なトレース シナリオのリストで、[ **Web Proxy**] を選択します。 **[Trace Scenario Configuration (トレース シナリオの構成)]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure Portal](https://portal.azure.com) で調べられます)。 たとえば、Azure Storage アカウントの名前が **contosodata** である場合は、**[HostnameFilter]** テキストボックスに以下を追加する必要があります。
 
-    contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
+```
+contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
+```
 
 > [!NOTE]
 > 空白文字でホスト名を区切ります。
@@ -908,6 +893,6 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

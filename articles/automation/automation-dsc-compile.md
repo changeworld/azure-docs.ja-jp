@@ -1,6 +1,6 @@
 ---
 title: "Azure Automation DSC での構成のコンパイル | Microsoft Docs"
-description: "Desired State Configuration (DSC) 構成をコンパイルする&2; つの方法 (Azure ポータルで行う方法と Windows PowerShell を使用する方法) の概要。 "
+description: "この記事では、Azure Automation の Desired State Configuration (DSC) 構成をコンパイルする方法について説明します。"
 services: automation
 documentationcenter: na
 author: eslesar
@@ -11,18 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
-ms.date: 12/13/2016
-ms.author: eslesar
+ms.date: 02/07/2017
+ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 30c93d801c68e24b45f5fbc119724e0a18076a13
+ms.sourcegitcommit: 032747ffb7a603c54e8913c0d82edbc8e11b73c3
+ms.openlocfilehash: 0b808dd6bcf0a0d1f8e459927a4010dc1887ca60
 
 ---
+
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
-Azure Automation を使用して、Desired State Configuration (DSC) 構成をコンパイルする方法は、2 とおりあります。Azure ポータルで行う方法と、Windows PowerShell を使用する方法です。 次の表は、各方法の特徴を確認し、どちらの方法をどのような場合に使用するかを判断する際に役立ちます。
+Azure Automation を使用して、Desired State Configuration (DSC) 構成をコンパイルする方法は、2 通りあります。Azure Portal で行う方法と、Windows PowerShell を使用する方法です。 次の表は、各方法の特徴を確認し、どちらの方法をどのような場合に使用するかを判断する際に役立ちます。
 
-### <a name="azure-preview-portal"></a>Azure プレビュー ポータル
+### <a name="azure-portal"></a>Azure Portal
 
 * 対話型ユーザー インターフェイスを使用する、最も簡単な方法
 * フォームに単純なパラメーター値を入力する
@@ -43,7 +44,7 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Azure プレビューを使用した DSC 構成のコンパイル
 
-1. Automation アカウントから、 **[Configurations]**をクリックします。
+1. Automation アカウントから、 **[構成]**をクリックします。
 2. 構成をクリックし、ブレードを開きます。
 3. **[コンパイル]**をクリックします。
 4. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、以下の「 [**基本パラメーター**](#basic-parameters) 」セクションを参照してください。
@@ -204,7 +205,7 @@ Azure Automation の DSC 構成では **Get-AzureRmAutomationCredential**を使�
 ```powershell
 Configuration CredentialSample
 {
-    $Cred = Get-AzureRmAutomationCredential -Name "SomeCredentialAsset"
+    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAcct" -Name "SomeCredentialAsset"
 
     Node $AllNodes.NodeName
     {
@@ -241,6 +242,6 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

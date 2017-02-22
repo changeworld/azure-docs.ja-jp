@@ -1,5 +1,5 @@
 ---
-title: "Azure AD とアプリケーション: ユーザー割り当ての要求 | Microsoft Docs"
+title: "ユーザー割り当ての要求 - Azure AD | Microsoft Docs"
 description: "Azure アプリケーションにユーザーの割り当てを要求する方法です。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2015
+ms.date: 02/06/2017
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: de23d1d775cefa818b6f8a104194eecaa5d740e3
+ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
+ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
 
 
 ---
-# <a name="azure-ad-and-applications-requiring-user-assignment"></a>Azure AD とアプリケーション: ユーザー割り当ての要求
+# <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD とアプリケーション: ユーザー割り当ての要求
 ## <a name="requiring-user-assignment"></a>ユーザー割り当ての要求
 1. 管理者アカウントを使用して、Azure Portal にログインします。
 2. メイン メニューの **[すべてのアイテム]** をクリックします。
@@ -38,7 +38,6 @@ ms.openlocfilehash: de23d1d775cefa818b6f8a104194eecaa5d740e3
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

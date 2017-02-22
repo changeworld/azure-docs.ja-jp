@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04b506da28def0549d3ecc3b5d424371790b51d4
+ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
+ms.openlocfilehash: 877b7b98757bed9fe9123c8fb5e17f891ef7cbda
 
 
 ---
@@ -45,12 +45,12 @@ Printix と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから Printix を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -126,7 +126,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 
 5. Printix テナントに管理者としてサインオンします。
 
@@ -142,7 +142,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_08.png)
    
-    a.手順 4. でダウンロードしたメタデータの XML ファイルは、Printix サポート チームにメール (**support@printix.net**) で添付しました。 XML ファイルはその後サポート チームによってアップロードされ、フェデレーション メタデータの URL が支給されます。
+    a.手順&4;. でダウンロードしたメタデータの XML ファイルは、Printix サポート チームにメール (**support@printix.net**) で添付しました。 XML ファイルはその後サポート チームによってアップロードされ、フェデレーション メタデータの URL が支給されます。
 
 9. テストに成功した場合は、**[Test (テスト)]** ボタンをクリックし、**[OK]** ボタンをクリックします。
    
@@ -215,7 +215,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. **[完了]** をクリックします。   
 
 ### <a name="creating-an-printix-test-user"></a>Printix テスト ユーザーの作成
 このセクションの目的は、Printix で Britta Simon というユーザーを作成することです。 Printix では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -281,6 +281,6 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

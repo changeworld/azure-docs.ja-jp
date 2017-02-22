@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2016
+ms.date: 01/04/2017
 ms.author: karolz@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 86fc691f3149ed73358ea13ccc686fce19e0cd39
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 86c1b4dd0cc8833404bd7b66804fa67bbf0d119a
 
 
 ---
@@ -245,6 +245,6 @@ Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 12/1/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: b1369c742c0ee1eac7638ca20598060c8542c75f
+ms.sourcegitcommit: 638e3e59f91202d55347c830542801ccead1b90f
+ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array を管理する
@@ -41,11 +41,11 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 #### <a name="to-connect-to-the-service"></a>サービスに接続するには
 1. [https://ms.portal.azure.com](https://ms.portal.azure.com) に移動します。
-2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure クラシック ポータルにログオンします。
-3. 左側のナビゲーション ウィンドウで下へスクロールして、StorSimple デバイス マネージャー サービスにアクセスします。
+2. Microsoft アカウントの資格情報を使用して、ウィンドウの右上にある Microsoft Azure Portal にログオンします。
+3. [参照]、[StorSimple デバイス マネージャー] の [フィルター] の順に移動し、特定のサブスクリプションのデバイス マネージャーをすべて表示します。
 
 ## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>StorSimple デバイス マネージャー サービスを使用して管理タスクを実行する
-次の表に、StorSimple デバイス マネージャー サービス UI 内で実行できる一般的な管理タスクと複雑なワークフローすべての概要を示します。 これらのタスクは、タスクが開始される UI ページに基づいてまとめられています。
+次の表に、StorSimple デバイス マネージャー サービスの [概要] ブレードで実行できる一般的な管理タスクと複雑なワークフローすべての概要を示します。 これらのタスクは、タスクが開始されるブレードに基づいてまとめられています。
 
 各ワークフローの詳細については、表内の適切な手順をクリックしてください。
 
@@ -53,11 +53,11 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | 目的の操作 | 実行する手順 |
 | --- | --- | --- |
 | サービスを作成する</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md) |
-| サービス データ暗号化キーを変更する</br>アクティビティ ログを表示する |[StorSimple サービスの概要を使用する](storsimple-virtual-array-service-summary.md) |
+| アクティビティ ログを表示する |[StorSimple サービスの概要を使用する](storsimple-virtual-array-service-summary.md) |
 | 仮想アレイを非アクティブ化する</br>仮想アレイを削除する |[仮想アレイを非アクティブ化または削除する](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| 障害復旧とデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>仮想デバイスへのフェールオーバー</br>ビジネス継続性障害復旧 (BCDR)</br>障害復旧時のエラー |[StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
+| 障害復旧とデバイスのフェールオーバー</br>フェールオーバーの前提条件</br>ビジネス継続性障害復旧 (BCDR)</br>障害復旧時のエラー |[StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー](storsimple-virtual-array-failover-dr.md) |
 | 共有やボリュームをバックアップする</br>手動バックアップの取得</br>バックアップのスケジュールを変更する</br>既存のバックアップを表示する |[StorSimple Virtual Array をバックアップする](storsimple-virtual-array-backup.md) |
-| バックアップ セットからの共有の復元</br>バックアップ セットからのボリュームの復元</br>項目レベルの回復 (ファイル サーバーのみ) |[StorSimple Virtual Array のバックアップから復元する](storsimple-virtual-array-clone.md) |
+| バックアップ セットから共有を複製する</br>バックアップ セットからボリュームを複製する</br>項目レベルの回復 (ファイル サーバーのみ) |[StorSimple Virtual Array のバックアップから複製する](storsimple-virtual-array-clone.md) |
 | ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントの削除 |[StorSimple Virtual Array のストレージ アカウントを管理する](storsimple-virtual-array-manage-storage-accounts.md) |
 | アクセス制御レコードについて</br>アクセス制御レコードの追加または変更 </br>アクセス制御レコードの削除 |[StorSimple Virtual Array のアクセス制御レコードを管理する](storsimple-virtual-array-manage-acrs.md) |
 | ジョブの詳細を表示する |[StorSimple Virtual Array ジョブを管理する](storsimple-virtual-array-manage-jobs.md) |
@@ -80,6 +80,6 @@ Web UI とその使用方法については、「 [StorSimple Web UI を使用�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

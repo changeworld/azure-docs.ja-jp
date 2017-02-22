@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: daa6f079-13ed-462f-b346-e201aa61681b
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.date: 09/19/2016
 ms.author: sstein
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d70045b3ed20d387fa856614647409deb73c127
+ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
+ms.openlocfilehash: 57bc3c00a1ea79ac69b62965a77debea91c6002e
 
 
 ---
@@ -86,6 +87,6 @@ SQL データベースをコピーするには、以下の項目が必要です�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

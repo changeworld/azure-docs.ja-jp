@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 1/05/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4917f58f9e179b6adca0886e7d278055e5c3d281
-ms.openlocfilehash: 4218b8e066d8323444695aca3c970f4f21fadea4
+ms.sourcegitcommit: 62374d57829067b27bb5876e6bbd9f869cff9187
+ms.openlocfilehash: 4991992f15b941ab9250705e20ff5f37defc30d0
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 4218b8e066d8323444695aca3c970f4f21fadea4
 
 2 つの異なるマニフェスト ファイル (サービス マニフェストとアプリケーション マニフェスト) はアプリケーションとサービスの記述に使用されます。 サービス マニフェストとアプリケーション マニフェストについては次のセクションで詳しく説明します。
 
-クラスターにはアクティブな 1 つ以上のサービスの種類のインスタンスがある可能性があります。 たとえば、ステートフル サービス インスタンスやレプリカの場合、クラスター内の別のノード上にあるレプリカ間で状態をレプリケートすることで高い信頼性を実現します。 レプリカは基本的に、クラスター内の 1 つのノードが失敗した場合でも使用できるように、サービスの冗長性を実現します。 [パーティション分割されたサービス](service-fabric-concepts-partitioning.md) は、クラスター内のノード間でその状態 (状態へのアクセス パターンも) をさらに分割します。
+クラスターにはアクティブな&1; つ以上のサービスの種類のインスタンスがある可能性があります。 たとえば、ステートフル サービス インスタンスやレプリカの場合、クラスター内の別のノード上にあるレプリカ間で状態をレプリケートすることで高い信頼性を実現します。 レプリカは基本的に、クラスター内の&1; つのノードが失敗した場合でも使用できるように、サービスの冗長性を実現します。 [パーティション分割されたサービス](service-fabric-concepts-partitioning.md) は、クラスター内のノード間でその状態 (状態へのアクセス パターンも) をさらに分割します。
 
 次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
 
@@ -52,7 +52,7 @@ ms.openlocfilehash: 4218b8e066d8323444695aca3c970f4f21fadea4
 ## <a name="describe-a-service"></a>サービスを記述する
 サービス マニフェストは、宣言によって、サービスの種類とバージョンを定義します。 サービスの種類、ヘルスのプロパティ、負荷分散のメトリック、サービスのバイナリ、および構成ファイルなどのサービス メタデータを指定します。  別の言い方をすれば、1 つ以上のサービスの種類をサポートするよう、サービス パッケージを構成するコード、構成、データのパッケージを記述します。 次に、サービス マニフェストの単純な例を示します。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest</Description>
@@ -70,11 +70,15 @@ ms.openlocfilehash: 4218b8e066d8323444695aca3c970f4f21fadea4
         <Program>MyServiceHost.exe</Program>
       </ExeHost>
     </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
+      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+    </EnvironmentVariables>
   </CodePackage>
   <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
   <DataPackage Name="MyData" Version="DataVersion1" />
 </ServiceManifest>
-~~~
+```
 
 **Version** 属性は構造化されていない文字列で、システムでは解析されません。 これらは、アップグレード用の各コンポーネントのバージョン管理に使用されます。
 
@@ -82,18 +86,20 @@ ms.openlocfilehash: 4218b8e066d8323444695aca3c970f4f21fadea4
 
 **SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *LocalSystem* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは通常は実行時間の長いサービス ホストです。 別々にセットアップされたエントリ ポイントの存在により、長期にわたって高い権限でサービス ホストを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは、終了またはクラッシュした場合に、監視されて再起動されます ( **SetupEntryPoint**で再起動)。
 
+**EnvironmentVariables** は、このコード パッケージに対して設定されている環境変数の一覧を提供します。 `ApplicationManifest.xml` でこれらをオーバーライドすれば、各種のサービス インスタンスに対して異なる値を指定できます。 
+
 **DataPackage** は、実行時にプロセスで消費される任意の静的データを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。
 
 **ConfigPackage** は、*Settings.xml* ファイルを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。 このファイルには、実行時にプロセスが読み取ることができるユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に **ConfigPackage** の**バージョン**のみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 次に *Settings.xml* ファイルの一例を示します。
 
-~~~
+```xml
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Section Name="MyConfigurationSecion">
     <Parameter Name="MySettingA" Value="Example1" />
     <Parameter Name="MySettingB" Value="Example2" />
   </Section>
 </Settings>
-~~~
+```
 
 > [!NOTE]
 > サービス マニフェストには、複数のコード、構成、データのパッケージを含めることができます。 それぞれを個別にバージョン管理できます。
@@ -115,7 +121,7 @@ For more information about other features supported by service manifests, refer 
 
 そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。 次に、アプリケーション マニフェストの単純な例を示します。
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ApplicationManifest
       ApplicationTypeName="MyApplicationType"
@@ -125,6 +131,8 @@ For more information about other features supported by service manifests, refer 
   <Description>An example application manifest</Description>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="MyServiceManifest" ServiceManifestVersion="SvcManifestVersion1"/>
+    <ConfigOverrides/>
+    <EnvironmentOverrides CodePackageRef="MyCode"/>
   </ServiceManifestImport>
   <DefaultServices>
      <Service Name="MyService">
@@ -134,11 +142,12 @@ For more information about other features supported by service manifests, refer 
      </Service>
   </DefaultServices>
 </ApplicationManifest>
-~~~
+```
 
 サービス マニフェストと同様に、 **Version** 属性は構造化されていない文字列で、システムでは解析されません。 これらは、アップグレード用の各コンポーネントのバージョン管理にも使用されます。
 
-**ServiceManifestImport** には、このアプリケーションの種類を構成するサービス マニフェストへの参照が含まれています。 インポートされたサービス マニフェストは、このアプリケーション内で有効なサービスの種類を決定します。
+**ServiceManifestImport** には、このアプリケーションの種類を構成するサービス マニフェストへの参照が含まれています。 インポートされたサービス マニフェストは、このアプリケーション内で有効なサービスの種類を決定します。 ServiceManifestImport 内では、Settings.xml ファイル内の構成値と、ServiceManifest.xml ファイル内の環境変数をオーバーライドできます。 
+
 
 **DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。 既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。 アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。
 
@@ -161,7 +170,7 @@ For more information about other features supported by application manifests, re
 ### <a name="package-layout"></a>パッケージのレイアウト
 アプリケーション マニフェスト、サービス マニフェスト、その他の必要なパッケージ ファイルを Service Fabric クラスターへのデプロイメント用の特定のレイアウトにまとめる必要があります。 この記事のマニフェスト例は、次のディレクトリ構造でまとめる必要があります。
 
-~~~
+```
 PS D:\temp> tree /f .\MyApplicationType
 
 D:\TEMP\MYAPPLICATIONTYPE
@@ -178,9 +187,9 @@ D:\TEMP\MYAPPLICATIONTYPE
     │
     └───MyData
             init.dat
-~~~
+```
 
-フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。 たとえば、**MyCodeA** と **MyCodeB** という名前の付いた 2 つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージと同じ名前のフォルダーにそれぞれのコード パッケージに必要なバイナリが含まれます。
+フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。 たとえば、**MyCodeA** と **MyCodeB** という名前の付いた&2; つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージと同じ名前のフォルダーにそれぞれのコード パッケージに必要なバイナリが含まれます。
 
 ### <a name="use-setupentrypoint"></a>SetupEntryPoint の使用
 **SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 次に例を示します。
@@ -188,6 +197,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 * サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
 * セキュリティ証明書のインストールによるアクセス制御の設定
 
+**SetupEntryPoint** の構成方法について詳しくは、「[エントリ ポイント セットアップ サービスのポリシーを構成する](service-fabric-application-runas-security.md)」をご覧ください  
+
+### <a name="configure"></a>構成 
 ### <a name="build-a-package-by-using-visual-studio"></a>Visual Studio を使用したパッケージ構築
 Visual Studio 2015 を使用して、アプリケーションを作成する場合、パッケージのコマンドを使用して、前述のレイアウトと一致するパッケージを自動的に作成できます。
 
@@ -197,19 +209,26 @@ Visual Studio 2015 を使用して、アプリケーションを作成する場�
 
 パッケージ化が完了したら、[ **出力** ] ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われることにご注意ください。
 
+### <a name="build-a-package-by-command-line"></a>コマンド ラインを使用したパッケージ構築
+`msbuild.exe` を使用して、アプリケーションをプログラムによってパッケージ化することもできます。 これは内部的には Visual Studio で実行されているため、出力は同じになります。
+
+```shell
+D:\Temp> msbuild HelloWorld.sfproj /t:Package
+```
+
 ### <a name="test-the-package"></a>パッケージのテスト
 パッケージ構造を PowerShell の **Test-ServiceFabricApplicationPackage** コマンドを使用して、ローカルで検証することができます。 このコマンドは、マニフェストの解析の問題がチェックし、すべての参照を検証します。 このコマンドは、パッケージ内のディレクトリやファイルの構造的な正確性を検証するだけであることに注意してください。 コードやデータ パッケージのコンテンツのいずれについても検証は行われず、それらがすべてそろっているかどうかは確認されません。
 
-~~~
+```
 PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
 False
 Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
-~~~
+```
 
 このエラーは、 *SetupEntryPoint* サービス マニフェストで参照される **MySetup.bat** ファイルがコード パッケージに見つからないことを示しています。 不足しているファイルを追加すると、アプリケーションの検証に合格します。
 
-~~~
+```
 PS D:\temp> tree /f .\MyApplicationType
 
 D:\TEMP\MYAPPLICATIONTYPE
@@ -231,16 +250,16 @@ D:\TEMP\MYAPPLICATIONTYPE
 PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 PS D:\temp>
-~~~
+```
 
 アプリケーションが正しくパッケージ化されて検証に合格すると、デプロイメントの準備完了です。
 
 ## <a name="next-steps"></a>次のステップ
-[アプリケーションのデプロイと削除] [10]
+「[アプリケーションのデプロイと削除][10]」では、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています
 
-[複数の環境のアプリケーション パラメーターを管理する] [11]
+「[複数の環境のアプリケーション パラメーターの管理][11]」では、複数のアプリケーション インスタンスに対してパラメーターと環境変数を構成する方法について説明しています。
 
-[RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行] [12]
+「[アプリケーションのセキュリティ ポリシーの構成][12]」では、セキュリティ ポリシーの下でサービスを実行して、アクセスを制限する方法について説明しています。
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
@@ -255,6 +274,6 @@ PS D:\temp>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

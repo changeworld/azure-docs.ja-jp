@@ -1,5 +1,5 @@
 ---
-title: "Relay ハイブリッド接続の概要 | Microsoft Docs"
+title: ".NET での Azure Relay ハイブリッド接続の概要 | Microsoft Docs"
 description: "ハイブリッド接続用の C# コンソール アプリケーションを作成する方法"
 services: service-bus-relay
 documentationcenter: .net
@@ -12,24 +12,26 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/03/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 3ab92ba4e5c19d4b713ceb2da30835542f343d68
+ms.sourcegitcommit: 1ee1e7d0c6f239abfda474d51c8d02d5338dabc7
+ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
 
 
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Relay ハイブリッド接続の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
+このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections)の概要について説明し、対応するリスナー アプリケーションにメッセージを送信するクライアント アプリケーションを作成する方法を示しています。 
+
 ## <a name="what-will-be-accomplished"></a>作業内容
-ハイブリッド接続ではクライアントとサーバーの 2 つのコンポーネントが必要になります。このため、このチュートリアルでは 2 つのコンソール アプリケーションを作成します。 手順は次のようになります。
+ハイブリッド接続ではクライアントとサーバーの&2; つのコンポーネントが必要になります。このため、このチュートリアルでは&2; つのコンソール アプリケーションを作成します。 手順は次のとおりです。
 
 1. Azure Portal を使用した Relay 名前空間の作成
 2. Azure Portal を使用したハイブリッド接続の作成
-3. メッセージを受信するサーバー コンソール アプリケーションの作成
-4. メッセージを送信するクライアント コンソール アプリケーションの作成
+3. メッセージを受信するサーバー (リスナー) コンソール アプリケーションの作成
+4. メッセージを送信するクライアント (送信側) コンソール アプリケーションの作成
 
 ## <a name="prerequisites"></a>前提条件
 1. [Visual Studio 2013 または Visual Studio 2015](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2015 を使用します。
@@ -42,7 +44,7 @@ Relay 名前空間を既に作成してある場合には、「[Azure Portal を
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2.Azure Portal を使用したハイブリッド接続の作成
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>手順&2;.Azure Portal を使用したハイブリッド接続の作成
 ハイブリッド接続を既に作成してある場合には、「[サーバー アプリケーションの作成](#3-create-a-server-application-listener)」セクションに進んでください。
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
@@ -74,6 +76,6 @@ Relay にメッセージを送信するために、Visual Studio を使って C#
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 11d9869e656014fe7106f9c66975792c5faa357d
 
 
 ---
@@ -41,12 +41,12 @@ ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
 > [!NOTE]
 > これは長いチュートリアルです。 Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「 [Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。 トラブルシューティングの情報については、「 [トラブルシューティング](#troubleshooting) 」セクションを参照してください。
 > 
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページをご覧ください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。 アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 開発環境をセットアップするには、[Visual Studio 2013 Update 5](http://go.microsoft.com/fwlink/?LinkId=390521) 以降と最新バージョンの [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールする必要があります。 この記事は、Visual Studio Update 4 および SDK 2.8.1 を対象にしています。 同じ手順は、最新の [Azure SDK for .NET](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) がインストールされている Visual Studio 2015 でも使用できますが、一部の画面は画像と異なる場合があります。
 
@@ -77,7 +77,7 @@ ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
 9. **[Explore additional Azure services (他の Azure サービスを探す)]** をタップして、SQL データベースを追加します。
    
     ![新しいサービスの追加](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/n2.png)
-10.  **+** アイコンをタップして、SQL データベースを追加します。
+10. **+** アイコンをタップして、SQL データベースを追加します。
     
      ![新しい SQL DB](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/nsql.png)
 11. **[SQL データベースの構成]** ダイアログで **[New (新規)]** をタップして、以下の操作を実行します。
@@ -104,10 +104,10 @@ ms.openlocfilehash: 3aaddd0b8ff500e3417a0ae7dd21207be45ade64
     ![_Layout.cshtml in Solution Explorer][newapp004]
 2. *Layout.cshtml* ファイル内の ActionLink を次のコードに置き換えます。
 
-    @Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
-
-
-    3 番目のパラメーターを "Home" から "Contacts" に変更します。 上のマークアップにより、各ページの "Contacts" リンクが Contacts コントローラーの Index メソッドに作成されます。 ヘッダーとフッターのアプリケーション名を「My ASP.NET Application」と「Application name」から「Contact Manager」と「CM Demo」に変更します。 
+```
+   @Html.ActionLink("CM Demo", "Index", "Contacts", new { area = "" }, new { @class = "navbar-brand" })
+```
+   3 番目のパラメーターを "Home" から "Contacts" に変更します。 上のマークアップにより、各ページの "Contacts" リンクが Contacts コントローラーの Index メソッドに作成されます。 ヘッダーとフッターのアプリケーション名を「My ASP.NET Application」と「Application name」から「Contact Manager」と「CM Demo」に変更します。 
 
 ### <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
@@ -431,7 +431,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
    
     このコードにより、[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) フィルターと [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターがアプリケーションに追加されます。 [Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) フィルターによって、匿名ユーザーは、アプリケーション内のメソッドに一切アクセスできなくなります。 2 つのメソッドについては、 [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を使用して承認要件を免除し、匿名ユーザーがログインしてホーム ページを表示できるようにします。 [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) により、Web アプリケーションに対するすべてのアクセスは HTTPS に限定されます。
    
-    [Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性と [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。 アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。 詳しくは、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)」をご覧ください。 
+    [Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性と [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。 アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。 詳しくは、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC&4; アプリケーションの保護と新しい AllowAnonymous 属性)](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)」をご覧ください。 
 2. [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を Home コントローラーの **Index** メソッドに追加します。 [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を使用すれば、特定のメソッドを認証不要として指定できます。 
    
         public class HomeController : Controller
@@ -443,7 +443,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
           }
    
     グローバルに検索すると、Account コントローラーのログイン メソッドや登録メソッドで *AllowAnonymous*が使われていることがわかります。
-3. *CmController.cs* の *Cm* コントローラーで、データの変更 (Create、Edit、Delete、つまり、Index と Details を除くすべてのアクション メソッド) を伴う HttpGet メソッドと HttpPost メソッドに `[Authorize(Roles = "canEdit")]` を追加します。 追加後のコードは次のようになります。 
+3. *ContactsController.cs* の *Cm* コントローラーで、データの変更 (Create、Edit、Delete、つまり、Index と Details を除くすべてのアクション メソッド) を伴う HttpGet メソッドと HttpPost メソッドに `[Authorize(Roles = "canEdit")]` を追加します。 追加後のコードは次のようになります。 
    
         // GET: Cm/Create
         [Authorize(Roles = "canEdit")]
@@ -603,10 +603,10 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
-[OAuth プロバイダーを追加する]: #addOauth
-[メンバーシップ API を使用する]:#mbrDB
-[データ デプロイ スクリプトを作成する]:#ppd
-[メンバーシップ データベースを更新する]:#ppd2
+[Add an OAuth Provider]: #addOauth
+[Using the Membership API]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -655,14 +655,14 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 [addcode009]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/dntutmobile-migrations-package-manager-console.png
 
 
-[Azure の Web アプリでの ASP.NET に関する重要な情報]: #aspnetwindowsazureinfo
-[次のステップ]: #nextsteps
+[Important information about ASP.NET in Azure web apps]: #aspnetwindowsazureinfo
+[Next steps]: #nextsteps
 
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

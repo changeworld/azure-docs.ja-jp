@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 02/02/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 2d8caf829d59262ab4802745e61fe6745376001a
+ms.sourcegitcommit: 6d1f26e462e011a2226ac5a14c7dc3360d0c6f36
+ms.openlocfilehash: f06703d4082e55d571367fe61221d657b3e30a58
 
 
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
-一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
+一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを&1; つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
 
 ## <a name="attaching-data-disks"></a>データ ディスクをアタッチする
 RAID デバイスの構成には、2 つ以上の空のデータ ディスクが必要です。  RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。  IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。 この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。  Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事 「[Linux VM へのディスクの追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
@@ -45,7 +45,7 @@ zypper install mdadm
 ```
 
 ## <a name="create-the-disk-partitions"></a>ディスク パーティションを作成する
-この例では、/dev/sdc に 1 つのディスク パーティションを作成します。 その後、新しいディスク パーティションに /dev/sdc1 という名前を付けます。
+この例では、/dev/sdc に&1; つのディスク パーティションを作成します。 その後、新しいディスク パーティションに /dev/sdc1 という名前を付けます。
 
 1. `fdisk` を使用してパーティションの作成を開始する
 
@@ -88,7 +88,7 @@ zypper install mdadm
     Using default value 1
     ```
 
-6. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。 または、 `<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
+6. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。 または、 `<enter>` キーを押して、ドライブ全体にまたがる&1; つのパーティションを作成します。
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
@@ -132,7 +132,7 @@ zypper install mdadm
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11 と openSUSE** - boot.md を有効にし、mdadm.conf を作成します
+    c. **SLES 11** - boot.md を有効にし、mdadm.conf を作成します。
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -167,7 +167,7 @@ zypper install mdadm
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
     ```
    
-    または、**SLES 11 と openSUSE** の場合は、次のようになります。
+    または、**SLES 11** 上で次のように指定します。
 
     ```bash
     /dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
@@ -210,8 +210,37 @@ zypper install mdadm
     カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。 たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。  Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
 
+## <a name="trimunmap-support"></a>TRIM/UNMAP のサポート
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 これらの操作は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。 ページを破棄すると、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+
+> [!NOTE]
+> 配列のチャンク サイズが既定値 (512 KB) よりも小さく設定されている場合、RAID が破棄コマンドを発行しない可能性があります。 これは、ホストでの UNMAP の粒度も 512 KB であるためです。 mdadm の `--chunk=` パラメーターを使用して配列のチャンク サイズを変更した場合、TRIM/UNMAP 要求がカーネルによって無視される可能性があります。
+
+Linux VM で TRIM のサポートを有効にする方法は&2; 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+
+- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+
+    ```bash
+    UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
+    ```
+
+- 場合によっては、`discard` オプションがパフォーマンスに影響する可能性があります。 または、 `fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
+
+    **Ubuntu**
+
+    ```bash
+    # sudo apt-get install util-linux
+    # sudo fstrim /data
+    ```
+
+    **RHEL/CentOS**
+    ```bash
+    # sudo yum install util-linux
+    # sudo fstrim /data
+    ```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Feb17_HO1-->
 
 

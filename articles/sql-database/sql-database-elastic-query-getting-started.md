@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
+ms.sourcegitcommit: bee6dbf8910534b07a77e7fd7dd84edf07cf3dd5
+ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
 
 
 ---
@@ -36,8 +36,8 @@ ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
 1. 「 **「エラスティック データベース ツールの概要** 」に示されているサンプル アプリケーションをビルドして実行します。 セクション「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)」の手順 7 まで実行します。 手順 7 を終了すると、次のコマンド プロンプトが表示されます。
 
     ![コマンド プロンプト][1]
-2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の 3 つの新しいデータベースが表示されるはずです。
+2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を&4; 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
+3. [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の&3; つの新しいデータベースが表示されるはずです。
 
    ![Visual Studio の確認][2]
 
@@ -51,7 +51,9 @@ ms.openlocfilehash: e39f2bb273bee9719f8f87cd27a1e1c92b6c4b53
 
     ![Azure ポータルと価格レベル][3]
 
-    注: 既存のデータベースを使用できます。 そうする場合、その既存のプレミアム データベースを、クエリの実行対象とするシャードに含めることはできません。 このデータベースは、エラスティック データベース クエリのメタデータ オブジェクトを作成するために使用されます。
+    > [!NOTE]
+    > 既存のデータベースを使用できます。 そうする場合、その既存のプレミアム データベースを、クエリの実行対象とするシャードに含めることはできません。 このデータベースは、エラスティック データベース クエリのメタデータ オブジェクトを作成するために使用されます。
+    >
 
 ## <a name="create-database-objects"></a>データベース オブジェクトを作成する
 ### <a name="database-scoped-master-key-and-credentials"></a>データベース スコープのマスター キーと資格情報
@@ -139,6 +141,6 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

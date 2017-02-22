@@ -69,15 +69,18 @@
 ## [Linux 仮想マシンをデプロイする](azure-stack-linux.md)
 ## [更新プログラムの管理](azure-stack-updates.md)
 ## [Azure Stack 向けの開発](azure-stack-developer.md)
-## SQL または MySQL リソース プロバイダーのデプロイ
-### [Azure Stack で MySQL データベースを PaaS として使用する](azure-stack-mysql-resource-provider-deploy.md)
-### [Azure Stack での SQL Server リソース プロバイダー アダプターのデプロイ](azure-stack-sql-resource-provider-deploy.md)
+## SQL または MySQL を PaaS として提供する
+### [MySQL リソース プロバイダーのデプロイ](azure-stack-mysql-resource-provider-deploy.md)
+### [SQL リソース プロバイダーのデプロイ](azure-stack-sql-resource-provider-deploy.md)
 
-## App Service の計画およびデプロイ
+## App Service を PaaS として提供する
 ### [Azure Stack 上の App Service の概要](azure-stack-app-service-overview.md)
 ### [開始する前に](azure-stack-app-service-before-you-get-started.md)
+### [App Service リソース プロバイダーのデプロイ](azure-stack-app-service-deploy.md)
 ### [web worker ロールを追加する](azure-stack-app-service-add-worker-roles.md)
-### [App Service リソース プロバイダーを Azure Stack に追加する](azure-stack-app-service-deploy.md)
+### [FTP 発行を有効にする](azure-stack-app-service-enable-ftp.md)
+### [デプロイ ソースを構成する](azure-stack-app-service-configure-deployment-sources.md)
+
 
 # トラブルシューティング
 ## [Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
@@ -88,6 +91,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

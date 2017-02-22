@@ -1,5 +1,5 @@
 ---
-title: "クラシック VM に関してよく寄せられる質問 | Microsoft Docs"
+title: "クラシック Windows VM に関してよく寄せられる質問 | Microsoft Docs"
 description: "クラシック デプロイ モデルで作成された Windows 仮想マシンについてよく寄せられる質問への回答を示します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,21 +16,20 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 7da83c0a541cc6a4b470b772961cea0e9b874f7f
+ms.sourcegitcommit: 872965ae70a0f0938f190a99832104cdfed25ef9
+ms.openlocfilehash: d05b0ff22fc20a6a049cc85cd0e401c680364820
 
 
 ---
 # <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Azure Windows 仮想マシンについてよく寄せられる質問
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Resource Manager モデルの使用時によく寄せられる質問については、[こちら](virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルの使用時によく寄せられる質問については、[こちら](virtual-machines-windows-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../includes/virtual-machines-common-classic-faq.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

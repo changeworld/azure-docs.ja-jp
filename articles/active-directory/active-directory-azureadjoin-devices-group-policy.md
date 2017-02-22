@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/21/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0e211d13e41526157f6ade960b86f31dfdfd54e1
+ms.sourcegitcommit: 7d141adf04cfb99e57c63ba62de4a7dad9ab8326
+ms.openlocfilehash: 290645b920bc4a83c610e80266854450b6e1509a
 
 
 ---
@@ -54,85 +54,8 @@ PKI のデプロイ要件の代替策として、次の操作を実行できま�
 * System Center Configuration Manager Version 1509 for Technical Preview (Passport のシナリオ用)
 
 ## <a name="deployment-instructions"></a>デプロイの手順
-### <a name="step-1-deploy-azure-active-directory-connect"></a>手順 1: Azure Active Directory Connect をデプロイする
-Azure AD Connect により、オンプレミスのコンピューターをクラウド内のデバイス オブジェクトとしてプロビジョニングできます。 Azure AD Connect のデプロイについては、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md#install-azure-ad-connect)」の「Azure AD Connect をインストールする」を参照してください。
 
-* [Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md) (高速インストールではありません) を実行した場合は、次にこの後の「**オンプレミスの Active Directory でサービス接続ポイントを作成する**」の手順に従います。
-* Azure AD Connect をインストールする前に Azure AD で構成をフェデレーションした場合は (たとえば、以前に Active Directory フェデレーション サービス (AD FS) をデプロイした場合)、後の「 **AD FS の要求規則を構成する** 」の手順に従います。
-
-#### <a name="create-a-service-connection-point-in-on-premises-active-directory"></a>オンプレミスの Active Directory でサービス接続ポイントを作成する
-ドメイン参加済みデバイスでは、Azure デバイス登録サービスへの自動登録の時点で、サービス接続ポイントを使用して Azure AD のテナント情報を探します。
-
-Azure AD Connect サーバーで、次の PowerShell コマンドを実行します。
-
-    Import-Module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1";
-
-    $aadAdminCred = Get-Credential;
-
-    Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
-
-
-コマンドレット $aadAdminCred = Get-Credential を実行するときは、Get-Credential ポップアップが表示されたら *user@example.com* の形式で資格情報のユーザー名を入力します。
-
-コマンドレット Initialize-ADSyncDomainJoinedComputerSync... を実行するときは、[*connector account name*] を、Active Directory コネクタ アカウントとして使用するドメイン アカウントに置き換えます。
-
-#### <a name="configure-ad-fs-claim-rules"></a>AD FS の要求規則を構成する
-AD FS 要求規則を構成すると、AD FS 経由での Kerberos/NTLM を使用した認証がコンピューターに許可されるため、Azure デバイス登録サービスにすぐにコンピューターを登録できます。 この手順を実行しないと、コンピューターは Azure AD への到達が遅くなります (Azure AD Connect の同期時間の影響を受けます)。
-
-> [!NOTE]
-> オンプレミスのフェデレーション サーバーとして AD FS を使用していない場合は、ベンダーの指示に従って要求規則を作成します。
-> 
-> 
-
-AD FS サーバー (または AD FS サーバーに接続されているセッション) で、次の PowerShell コマンドを実行します。
-
-      <#----------------------------------------------------------------------
-     |   Modify the Azure AD Relying Party to include the claims needed
-     |   for DomainJoin++. The rules include:
-     |   -ObjectGuid
-     |   -AccountType
-     |   -ObjectSid
-     +---------------------------------------------------------------------#>
-
-    $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules
-
-    $rule1 = '@RuleName = "Issue object GUID"
-          c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] &&
-          c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"]
-          => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/identity/claims/onpremobjectguid"), query = ";objectguid;{0}", param = c2.Value);'
-
-    $rule2 = '@RuleName = "Issue account type for domain joined computers"
-          c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"]
-          => issue(Type = "http://schemas.microsoft.com/ws/2012/01/accounttype", Value = "DJ");'
-
-    $rule3 = '@RuleName = "Pass through primary SID"
-          c1:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value =~ "515$", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"] &&
-          c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid", Issuer =~ "^(AD AUTHORITY|SELF AUTHORITY|LOCAL AUTHORITY)$"]
-          => issue(claim = c2);'
-
-    $updatedRules = $existingRules + $rule1 + $rule2 + $rule3
-
-    $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules
-
-    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString
-
-> [!NOTE]
-> Windows 10 コンピューターでは、Windows 統合認証を使用して、AD FS でホストされているアクティブな WS-Trust エンドポイントに対する認証を実行します。 このエンドポイントが有効になっていることを確認します。 Web 認証プロキシを使用している場合は、このエンドポイントがプロキシ経由で公開されていることも確認します。 これは、adfs/services/trust/13/windowstransport を確認することで行うことができます。 AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** に有効と表示される必要があります。
-> 
-> 
-
-### <a name="step-2-configure-automatic-device-registration-via-group-policy-in-active-directory"></a>手順 2: Active Directory のグループ ポリシーを使用してデバイスの自動登録を構成する
-Active Directory のグループ ポリシーを使用すると、自動的に Azure AD に登録するよう Windows 10 ドメイン参加済みデバイスを構成できます。
-
-> [!NOTE]
-> デバイスの自動登録をセットアップする方法の最新手順については、「 [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
-> 
-> このグループ ポリシー テンプレートの名前は、Windows 10 で変更されました。 Windows 10 コンピューターからグループ ポリシー ツールを実行している場合、ポリシーは次のように表示されます。 <br>
-> **ドメインに参加しているコンピューターをデバイスとして登録する**<br>
-> ポリシーは次の場所にあります。<br>
-> ***コンピューターの構成/ポリシー/管理用テンプレート/Windows コンポーネント/デバイスの登録***
-> 
-> 
+デプロイするには、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」で説明されている手順に従います。
 
 ## <a name="additional-information"></a>追加情報
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
@@ -144,6 +67,6 @@ Active Directory のグループ ポリシーを使用すると、自動的に A
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

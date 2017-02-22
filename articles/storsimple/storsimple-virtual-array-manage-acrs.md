@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array のアクセス制御レコードを管理する | Microsoft Docs"
+title: "StorSimple Virtual Array のアクセス制御レコードの管理 | Microsoft Docs"
 description: "ACR (アクセス制御レコード) を管理して、StorSimple Virtual Array 上のボリュームに接続できるホストを判別する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: a0ba81faa20587d9559bf25cdc82dd6e20f42948
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 1a93ef9c3418da64302d251203fd195708437931
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のアクセス制御レコードを管理する
@@ -48,7 +48,7 @@ Windows Server 2012 を実行する Windows ホストの IQN を取得するに�
 
 ## <a name="add-an-acr"></a>ACR の追加
 
-StorSimple デバイス マネージャー サービスの **[構成]** セクション内で **[アクセス制御レコード]** ブレードを使用して、ACR を追加します。 通常は、1 つの ACR を 1 つのボリュームに関連付けます。
+StorSimple デバイス マネージャー サービスの **[構成]** セクション内で **[アクセス制御レコード]** ブレードを使用して、ACR を追加します。 通常は、1 つの ACR を&1; つのボリュームに関連付けます。
 
 ACR とボリュームの関連付けについては、[ボリュームの追加](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)に関するセクションをご覧ください。
 
@@ -131,6 +131,6 @@ Azure Portal の **[構成]** ページを使用して、ACR を削除します�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

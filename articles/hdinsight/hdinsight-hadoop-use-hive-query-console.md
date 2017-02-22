@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dcddd23ed51c9e115b5b961547652d57513b75aa
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
 
 
 ---
@@ -27,9 +27,9 @@ ms.openlocfilehash: dcddd23ed51c9e115b5b961547652d57513b75aa
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
 > [!IMPORTANT]
-> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux ベースの HDInsight クラスターを使用している場合は、 [Hive ビューを使用した Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
-> 
-> 
+> HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+>
+> HDInsight 3.4 以上での Web ブラウザーからの Hive クエリの実行に関する情報については、[Ambari Hive ビューでの Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
@@ -65,7 +65,7 @@ ms.openlocfilehash: dcddd23ed51c9e115b5b961547652d57513b75aa
      > 
    * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
-   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 3. **[Submit]**をクリックします。 ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 4. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。 詳細ページの **[ジョブ出力]** に `[ERROR]    3` が含まれます。 このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
@@ -117,7 +117,7 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
-[Powershell-install-configure]: powershell-install-configure.md
+[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 
@@ -125,6 +125,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

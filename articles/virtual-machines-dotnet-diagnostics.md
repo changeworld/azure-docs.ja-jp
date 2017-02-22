@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8824001526565e64f398b8f1e520d82d29d2f58
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4480366f620ccd8397aa4264ab7f0cc1c5b37c7d
 
 
 ---
@@ -24,10 +24,10 @@ ms.openlocfilehash: d8824001526565e64f398b8f1e520d82d29d2f58
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](azure-diagnostics.md) 」をご覧ください。
 
 ## <a name="how-to-enable-diagnostics-in-a-virtual-machine"></a>仮想マシンの診断を有効にする方法
-このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。 また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][EventSource クラス]を使用した利用統計情報の生成方法を学習します。 Azure 診断を使用してテレメトリを収集し、これを Azure ストレージ アカウントに格納します。
+このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。 また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][EventSource Class]を使用したテレメトリデータの生成方法を学習します。 Azure 診断を使用してテレメトリを収集し、これを Azure ストレージ アカウントに格納します。
 
 ### <a name="pre-requisites"></a>前提条件
-このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][無料試用版]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Azure PowerShell Version 0.8.7 以降をインストールして構成している]ことを確認してください。
+このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
 
 ### <a name="step-1-create-a-virtual-machine"></a>手順 1. 仮想マシンを作成する
 1. 開発コンピューター上で Visual Studio 2013 を起動します。
@@ -112,7 +112,7 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
    
      2.(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
 2. 既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。 Visual Studio で、**[追加]** -> **[新しい項目]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選択します。 ファイルに「WadExample.xml」という名前を付けます。
-3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで in the **[…]** をクリックします。  **[追加]**  ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
+3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
 4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
 ```
@@ -160,15 +160,15 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 ## <a name="next-steps"></a>次のステップ
 [仮想マシンに関連する Azure 診断に関する記事の一覧](azure-diagnostics.md#virtual-machines-using-azure-diagnostics) をご覧ください。
 
-[EventSource クラス]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
+[EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 
-[Azure アプリケーションのデバッグ]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
-[Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
-[無料試用版]: http://azure.microsoft.com/pricing/free-trial/
-[Azure PowerShell Version 0.8.7 以降をインストールして構成している]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[Debugging an Azure Application]: http://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
+[Collect Logging Data by Using Azure Diagnostics]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
+[Free Trial]: http://azure.microsoft.com/pricing/free-trial/
+[Install and configure Azure PowerShell version 0.8.7 or later]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

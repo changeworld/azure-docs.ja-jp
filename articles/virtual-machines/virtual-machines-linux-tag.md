@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6e39b13de1808ebb1d0571ab0c1c620261046d0d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 56777605e84326fdde1821b42279bd7fc752c553
 
 
 ---
@@ -47,17 +47,17 @@ Azure CLI を使用して新しい VM タグを追加するには、タグ パ�
 [!INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* Azure リソースへのタグ付けについて詳しくは、「[Azure Resource Manager の概要]」「[Azure Resource Manager の概要]」と「[タグを使用した Azure リソースの整理]」「[タグを使用した Azure リソースの整理]」をご覧ください。
-* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認][Azure の課金内容の確認]に関するページと「[Microsoft Azure リソースの消費を把握する]」「[Microsoft Azure リソースの消費を把握する]」をご覧ください。
+* Azure リソースへのタグ付けの詳細については、「[Azure Resource Manager の概要][Azure Resource Manager Overview]」と「[Using tags to organize your Azure resources (タグを使用した Azure リソースの整理)][Using Tags to organize your Azure Resources]」を参照してください。
+* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認][Understanding your Azure Bill]に関するページと「[Microsoft Azure リソースの消費を把握する][Gain insights into your Microsoft Azure resource consumption]」を参照してください。
 
-[Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
-[Azure Resource Manager の概要]: ../azure-resource-manager/resource-group-overview.md
-[タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
-[Azure の課金内容の確認]: ../billing/billing-understand-your-bill.md
-[Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
+[Azure CLI environment]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Azure Resource Manager Overview]: ../azure-resource-manager/resource-group-overview.md
+[Using Tags to organize your Azure Resources]: ../azure-resource-manager/resource-group-using-tags.md
+[Understanding your Azure Bill]: ../billing/billing-understand-your-bill.md
+[Gain insights into your Microsoft Azure resource consumption]: ../billing/billing-usage-rate-card-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

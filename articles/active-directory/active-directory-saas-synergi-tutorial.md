@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/20/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: aa89b6a536cfe0e594e71d00d90737fa7e5a495f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2a5b04f8f8fe521993aae0c63be2408034030ecf
 
 
 ---
@@ -119,7 +119,7 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するために、Synergi サポート チームに連絡し、次のものを情報として提供します。
    
     • ダウンロードした証明書
@@ -153,14 +153,14 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-synergi-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-synergi-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-synergi-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a. **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -178,7 +178,7 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-synergi-test-user"></a>Synergi のテスト ユーザーの作成
 このセクションでは、Synergi で Britta Simon というユーザーを作成します。 Synergi サポート チームと連携し、Synergi プラットフォームにユーザーを追加してください。
@@ -233,6 +233,6 @@ Synergi で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

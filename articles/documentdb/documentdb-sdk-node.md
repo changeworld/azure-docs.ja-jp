@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB Node.js API と SDK | Microsoft Docs"
+title: "Node.js API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Node.js SDK の各バージョン間の変更など、Node.js API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: nodejs
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/22/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
 
 
 ---
@@ -54,6 +54,11 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11011101a"></a><a name="1.10.1"/>1.10.1</a>
+* SDK を使用して emulator(hostname=localhost) を対象とするときに SSL 検証が無効になります。
+* ストアド プロシージャの実行時にスクリプトのログ記録を有効することができるようになりました。
+
 ### <a name="a-name11001100a"></a><a name="1.10.0"/>1.10.0</a>
 * クロス パーティションの並列クエリのサポートを追加しました。
 * パーティション分割コレクションの TOP/ORDER BY クエリのサポートを追加しました。
@@ -129,22 +134,18 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 ### <a name="a-name100100a"></a><a name="1.0.0"/>1.0.0</a>
 * GA SDK。
 
-## <a name="release-retirement-dates"></a>リリース日と提供終了日
+## <a name="release--retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
 提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
 
-> [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Node.js は **2016 年 2 月 29 日**で提供が終了します。
-> 
-> 
-
 <br/>
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 10 月 3 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |
 | [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
@@ -167,11 +168,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.0.2](#1.0.2) |2015 年 5 月 23 日 |--- |
 | [1.0.1](#1.0.1) |2015 年 5 月 15 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
-| 0.9.4-prerelease |2015 年 4 月 6 日 |2016 年 2 月 29 日 |
-| 0.9.3-prerelease |2015 年 1 月 14 日 |2016 年 2 月 29 日 |
-| 0.9.2-prerelease |2014 年 12 月 18 日 |2016 年 2 月 29 日 |
-| 0.9.1-prerelease |2014 年 8 月 22 日 |2016 年 2 月 29 日 |
-| 0.9.0-prerelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
 ## <a name="faq"></a>FAQ
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -182,6 +178,6 @@ DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.m
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

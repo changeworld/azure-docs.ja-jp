@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6dc3068f50afc6bd3911e4a209f9a4b984b314ce
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 53bd995e8ee68b9dd76bf792e4420e0c52f5ebac
 
 
 ---
@@ -38,17 +38,17 @@ Azure Machine Learning Studio は、Machine Learning の実験のさまざまな
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Machine Learning での Python スクリプトの設計原則
-Azure Machine Learning Studio での Python の主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します (図 1 参照)。
+Azure Machine Learning Studio でのPython の主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します (図 1 参照)。
 
 ![Image1](./media/machine-learning-execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
 ![Image2](./media/machine-learning-execute-python-scripts/embedded-machine-learning-python-script.png)
 
-図 1.  **Python スクリプトの実行** モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。
+図 1. **Python スクリプトの実行** モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。
 
 [Python スクリプトの実行][execute-python-script]モジュールは、R アナログの [R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。 実行される Python コードは、 `azureml_main`という特別に指定されたエントリポイント関数としてパラメーター ボックスに入力されます。 次にこのモジュールの実装に使用される主要な設計原則を示します。
 
-1. *Python ユーザーにとって慣用的であること。*  ほとんどの Python ユーザーは、モジュール内の関数としてコードを組み込むため、最上位レベルのモジュールに多くの実行可能ステートメントを置くことは比較的まれです。 そのため、単なるステートメントのシーケンスとは対照的に、スクリプト ボックスにも特別に指定された Python 関数が入力されます。 この関数で公開されるオブジェクトは、[Pandas](http://pandas.pydata.org/) データ フレームや [NumPy](http://www.numpy.org/) 配列などの標準的な Python ライブラリの型です。
+1. *Python ユーザーにとって慣用的であること。* ほとんどの Python ユーザーは、モジュール内の関数としてコードを組み込むため、最上位レベルのモジュールに多くの実行可能ステートメントを置くことは比較的まれです。 そのため、単なるステートメントのシーケンスとは対照的に、スクリプト ボックスにも特別に指定された Python 関数が入力されます。 この関数で公開されるオブジェクトは、[Pandas](http://pandas.pydata.org/) データ フレームや [NumPy](http://www.numpy.org/) 配列などの標準的な Python ライブラリの型です。
 2. *ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューション、 [Anaconda](https://store.continuum.io/cshop/anaconda/) 2.1 に基づいています。 最も一般的な Python パッケージが 200 個近く付属しています。 そのため、データ サイエンティストは、ローカルの Azure Machine Learning と互換性のある Anaconda 環境で、コードをデバッグおよび検証できます。 [IPython](http://ipython.org/) notebook や [Python Tools for Visual Studio](http://aka.ms/ptvs) などの既存の開発環境を使用し、高い信頼性で、Azure Machine Learning の実験の一部として実行します。 さらに、 `azureml_main` エントリ ポイントは、vanilla Python 関数であり、Azure Machine Learning 固有のコードや SDK がインストールされていなくても作成できます。
 3. *他のAzure Machine Learning モジュールとシームレスに構成できること。* [Python スクリプトの実行][execute-python-script]モジュールは、入力と出力として、標準の Azure Machine Learning データセットを受け取ります。 基になるフレームワークは、透過的かつ効率的に Azure Machine Learning と Python のランタイムを埋めます (不足値などの特徴をサポート)。 そのため、Python は既存の Azure Machine Learning ワークフロー (R や SQLite の呼び出しを含む) と組み合わせて使用できます。 ユーザーは次のようなワークフローを予測できます。
    * データの前処理とクリーニングに Python と Pandas を使用する。 
@@ -161,11 +161,11 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 図 11: ピマ インディアン糖尿病の特徴の順位付けの実験
 
 ## <a name="limitations"></a>制限事項
-[Python スクリプトの実行][execute-python-script]には、現在、次のような制限があります。
+[Python スクリプトの実行][execute-python-script]には、現在次のような制限があります。
 
-1. *セキュリティで保護された実行。*  Python ランタイムは、現在セキュリティで保護されているため、永続的な方法でのネットワークやローカル ファイル システムへのアクセスを許可しません。 ローカルに保存されているすべてのファイルは分離され、モジュールが終了すると削除されます。 Python コードは、現在のディレクトリとそのサブディレクトリを除く、実行中のコンピューターのほとんどのディレクトリにアクセスできません。
-2. *高度な開発とデバッグ サポートの欠如。*  Python モジュールは、現在、Intellisense やデバッグなどの IDE 機能をサポートしていません。 また、モジュールが実行時に失敗した場合は、完全な Python スタック トレースが使用できますが、モジュールのログ出力に表示される必要があります。 ユーザーが IPython などの環境で自身の Python スクリプトを作成してデバッグし、そのコードをモジュールにインポートすることをお勧めします。
-3. *1 つのデータ フレームの出力。*  Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現在は、Azure Machine Learning ランタイムに直接戻されたトレーニング済みのモデルなどの、任意の Python オブジェクトを返すことはできません。 [R スクリプトの実行][execute-r-script]と同様、同じ制限がありますが、多くの場合は、バイト配列にオブジェクトを変換し、そのデータ フレームの内部を返すことができます。
+1. *セキュリティで保護された実行。* Python ランタイムは、現在セキュリティで保護されているため、永続的な方法でのネットワークやローカル ファイル システムへのアクセスを許可しません。 ローカルに保存されているすべてのファイルは分離され、モジュールが終了すると削除されます。 Python コードは、現在のディレクトリとそのサブディレクトリを除く、実行中のコンピューターのほとんどのディレクトリにアクセスできません。
+2. *高度な開発とデバッグ サポートの欠如。* Python モジュールは、現在、Intellisense やデバッグなどの IDE 機能をサポートしていません。 また、モジュールが実行時に失敗した場合は、完全な Python スタック トレースが使用できますが、モジュールのログ出力に表示される必要があります。 ユーザーが IPython などの環境で自身の Python スクリプトを作成してデバッグし、そのコードをモジュールにインポートすることをお勧めします。
+3. *1 つのデータ フレームの出力。* Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現在は、Azure Machine Learning ランタイムに直接戻されたトレーニング済みのモデルなどの、任意の Python オブジェクトを返すことはできません。 [R スクリプトの実行][execute-r-script]と同様、同じ制限がありますが、多くの場合は、バイト配列にオブジェクトを変換し、そのデータ フレームの内部を返すことができます。
 4. *Python のインストールをカスタマイズできない*。 現時点では、カスタムの Python モジュールを追加する唯一の方法は、前に説明した zip ファイルのメカニズムを使用することです。 これは、小さなモジュールに適していますが、大きなモジュール (特にネイティブ DLL を使用するモジュール) や大量のモジュールでは、使用が面倒です。 
 
 ## <a name="conclusions"></a>まとめ
@@ -182,6 +182,6 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

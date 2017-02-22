@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b57bd17a8887dbf9bdecee4a3ad79b55ec7fb610
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 2fbbfd3d221ef2f6bce302ed169eddf5a8b0d73e
 
 
 ---
@@ -30,11 +30,13 @@ WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、
 ## <a name="modifying-configuration"></a>構成の変更
 > [!IMPORTANT]
 > このドキュメントに示すエラーのいくつかは、構成されている最大値が超過したことが原因で発生します。 解決策に値が変更可能であることが示されている場合は、次のどちらかの方法で値を変更する必要があります。
-> 
-> 
+
 
 * **Windows** クラスターの場合: スクリプト アクションを使用して、クラスターの作成時に値を構成します。 詳細については、 [スクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
 * **Linux** クラスターの場合: Ambari (Web または REST API) を使用して値を変更します。 詳細については、 [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ### <a name="default-configuration"></a>既定の構成
 WebHCat のパフォーマンスに影響を与えたり、超過したときにエラーが発生したりする既定の構成値を次に示します。
@@ -65,7 +67,7 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 | 原因 | 解決策 |
 | --- | --- |
 | ジョブ履歴クリーナーによってジョブの詳細がクリーンアップされた。 |ジョブ履歴の既定の保有期間は 7 日間です。 これは、 `mapreduce.jobhistory.max-age-ms`を変更することによって変更できます。 詳細については、「 [構成の変更](#modifying-configuration) 」を参照してください。 |
-| フェールオーバーによってジョブが強制終了した。 |最大で 2 分間にわたってジョブの送信を再試行してください。 |
+| フェールオーバーによってジョブが強制終了した。 |最大で&2; 分間にわたってジョブの送信を再試行してください。 |
 | 無効なジョブ ID が使用された。 |ジョブ ID が正しいことを確認してください。 |
 
 ## <a name="bad-gateway"></a>Bad gateway
@@ -86,6 +88,6 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

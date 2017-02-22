@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: f6fa6511c8d54e191de27fda73aad9feb734191f
-ms.openlocfilehash: cf946c491bc9868b9d79d09c1d019e894ecc39ff
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 41bba6660c52d4aa7d10d846ad65e1f6aa5e582c
 
 
 ---
@@ -69,7 +69,7 @@ ms.openlocfilehash: cf946c491bc9868b9d79d09c1d019e894ecc39ff
 
 ## <a name="before-beginning"></a>作業を開始する前に
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
-* Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。 この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。 
+* Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。 
 
 ## <a name="a-namedeclareapart-1---log-in-and-set-variables"></a><a name="declare"></a>パート 1 - ログインと変数の設定
 このセクションでは、ログインのほか、この構成で使用される値の宣言を行います。 サンプル スクリプトでは、宣言済みの値が使用されます。 実際の環境に合わせて値を変更してください。 宣言済みの値を使用し、以下の手順を練習として使用することもできます。
@@ -268,7 +268,7 @@ PowerShell または Azure Portal を使用して、信頼されたルート証�
 1. 失効させるクライアント証明書の拇印を取得します。
    
         $RevokedClientCert1 = "ClientCert1"
-        $RevokedThumbprint1 = "‎ef2af033d0686820f5a3c74804d167b88b69982f"
+        $RevokedThumbprint1 = "?ef2af033d0686820f5a3c74804d167b88b69982f"
 2. 失効した拇印のリストに拇印を追加します。
    
         Add-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName $RevokedClientCert1 `
@@ -294,6 +294,6 @@ PowerShell または Azure Portal を使用して、信頼されたルート証�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

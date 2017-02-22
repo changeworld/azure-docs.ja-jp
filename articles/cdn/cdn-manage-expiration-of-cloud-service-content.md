@@ -1,9 +1,9 @@
 ---
-title: "Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、IIS コンテンツの有効期限を管理する方法 | Microsoft Docs"
-description: "Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法について説明します"
+title: "Azure CDN での Web コンテンツ有効期限の管理 | Microsoft Docs"
+description: "Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツの有効期限を管理する方法について説明します。"
 services: cdn
 documentationcenter: .NET
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
 
 
 ---
-# <a name="how-to-manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、IIS コンテンツの有効期限を管理する方法
+# <a name="manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>Azure CDN での Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツ有効期限の管理
 > [!div class="op_single_selector"]
 > * [Azure Web Apps/Cloud Services、ASP.NET、または IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Storage BLOB サービス](cdn-manage-expiration-of-blob-content.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
 パブリックにアクセス可能な任意の配信元 Web サーバーのファイルは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、配信元サーバーからの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)によって決まります。  この記事では、Azure Web Apps、Azure Cloud Services、ASP.NET アプリケーション、インターネット インフォメーション サービス サイトの `Cache-Control` ヘッダーの設定方法について説明します。これらはすべて同様に構成されます。
 
 > [!TIP]
-> ファイルに TTL を設定しなくてもかまいません。  その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
+> ファイルに TTL を設定しなくてもかまいません。  その場合は、Azure CDN が既定の&7; 日間の TTL を自動的に適用します。
 > 
 > ファイルとその他のリソースへのアクセスを高速化する Azure CDN のしくみの詳細については、[Azure CDN の概要](cdn-overview.md)に関するページをご覧ください。
 > 
@@ -75,6 +75,6 @@ Response.Cache.SetLastModified(DateTime.Now);
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

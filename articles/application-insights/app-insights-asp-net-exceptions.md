@@ -1,5 +1,5 @@
 ---
-title: "Application Insights を利用し、ASP.NET アプリの障害と例外を診断する | Microsoft Docs"
+title: "Azure Application Insights を利用し、Web アプリの障害と例外を診断する | Microsoft Docs"
 description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 41843c3b847fedb0531fa6b193b56cbd3d74466d
 
 ## <a name="set-up-exception-reporting"></a>例外のレポートを設定する
 * 例外がサーバー アプリから報告されるようにするには、次のいずれかを実行します。
-  * [Application Insights SDK](app-insights-asp-net.md) をアプリ コードにインストールする 
+  * [Application Insights SDK](app-insights-asp-net.md) をアプリ コードにインストールする
   * IIS Web サーバー: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)を実行する
   * Azure Web アプリ: [Application Insights Extension](app-insights-azure-web-apps.md) を追加する
 * ブラウザー例外をキャッチする [JavaScript スニペット](app-insights-javascript.md)を Web ページにインストールします。
@@ -44,7 +44,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 ![プロジェクトを右クリックし、[Application Insights] を選択して開きます。](./media/app-insights-asp-net-exceptions/34.png)
 
-レポートをフィルター処理して例外だけを表示することができます。 
+レポートをフィルター処理して例外だけを表示することができます。
 
 *例外が表示されませんか?[例外のキャプチャ](#exceptions)に関するセクションをご覧ください。*
 
@@ -59,7 +59,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 ![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)
 
-一覧にある失敗した要求の種類を 1 つクリックし、障害の個別発生を表示します。 そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
+一覧にある失敗した要求の種類を&1; つクリックし、障害の個別発生を表示します。 そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
 
 ![失敗した要求のインスタンスを選択し、例外の詳細で、例外のインスタンスを表示します。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
@@ -76,12 +76,12 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 [診断検索の詳細については、こちらをご覧ください](app-insights-diagnostic-search.md)。
 
 ## <a name="custom-tracing-and-log-data"></a>カスタムのトレースとログ データ
-アプリに固有の診断データを取得するには、独自のテレメトリ データを送信するコードを挿入します。 これは、要求、ページ ビュー、およびその他の自動収集されたデータとともに、診断検索に表示されます。 
+アプリに固有の診断データを取得するには、独自のテレメトリ データを送信するコードを挿入します。 これは、要求、ページ ビュー、およびその他の自動収集されたデータとともに、診断検索に表示されます。
 
 いくつかのオプションがあります。
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索のカスタム イベントの下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](app-insights-diagnostic-search.md)できます。
-* [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) は、POST 情報などの長いデータを送信できます。
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索のカスタム イベントの下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](app-insights-diagnostic-search.md)できます。
+* [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) は、POST 情報などの長いデータを送信できます。
 * [TrackException()](#exceptions) は、スタック トレースを送信します。 [例外に関する詳細](#exceptions)をご覧ください。
 * 既に Log4Net、NLog などのログ記録フレームワークを使用している場合は、[これらのログのキャプチャ](app-insights-asp-net-trace-logs.md)して、診断検索の要求や例外データの横に表示できます。
 
@@ -91,14 +91,14 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 > [!NOTE]
 > アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。 同じ操作に含まれるイベントは、グループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 [サンプリングについてはこちらを参照してください。](app-insights-sampling.md)
-> 
-> 
+>
+>
 
 ### <a name="how-to-see-request-post-data"></a>要求の POST データを表示する方法
 要求詳細では、POST 呼び出しでアプリに送信されたデータは含まれません。 このデータを報告するには:
 
 * アプリケーション プロジェクトに [SDK をインストールします](app-insights-asp-net.md)。
-* アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) を呼び出します。 メッセージ パラメーターで POST データを送信します。 許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
+* アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) を呼び出します。 メッセージ パラメーターで POST データを送信します。 許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
 * 失敗した要求を調査するときは、関連付けられているトレースを検索します。  
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/060-req-related.png)
@@ -116,13 +116,13 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 JavaScript
 
-    try 
+    try
     { ...
     }
     catch (ex)
     {
       appInsights.trackException(ex, "handler loc",
-        {Game: currentGame.Name, 
+        {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
 
@@ -130,13 +130,13 @@ C#
 
     var telemetry = new TelemetryClient();
     ...
-    try 
+    try
     { ...
     }
     catch (Exception ex)
     {
        // Set up some properties:
-       var properties = new Dictionary <string, string> 
+       var properties = new Dictionary <string, string>
          {{"Game", currentGame.Name}};
 
        var measurements = new Dictionary <string, double>
@@ -198,7 +198,7 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
 
     namespace MVC2App.Controllers
     {
-      [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)] 
+      [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
       public class AiHandleErrorAttribute : HandleErrorAttribute
       {
         public override void OnException(ExceptionContext filterContext)
@@ -210,7 +210,7 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
-                } 
+                }
             }
             base.OnException(filterContext);
         }
@@ -269,7 +269,7 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
-            {  //or reuse instance (recommended!). see note above 
+            {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
                 ai.TrackException(actionExecutedContext.Exception);    
             }
@@ -278,7 +278,7 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
       }
     }
 
-この上書きされた属性を特定のコントローラーに追加するか、WebApiConfig クラスのグローバル フィルター構成に追加できます。 
+この上書きされた属性を特定のコントローラーに追加するか、WebApiConfig クラスのグローバル フィルター構成に追加できます。
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -304,10 +304,10 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
 
 例外フィルターが処理できないケースがあります。 For example:
 
-* コントローラー コンストラクターからスローされる例外。 
-* メッセージ ハンドラーからスローされる例外。 
-* ルーティング中にスローされる例外。 
-* 応答コンテンツのシリアル化中にスローされる例外。 
+* コントローラー コンストラクターからスローされる例外。
+* メッセージ ハンドラーからスローされる例外。
+* ルーティング中にスローされる例外。
+* 応答コンテンツのシリアル化中にスローされる例外。
 
 ## <a name="web-api-2x"></a>Web API 2.x
 IExceptionLogger の実装を追加します。
@@ -322,7 +322,7 @@ IExceptionLogger の実装を追加します。
         public override void Log(ExceptionLoggerContext context)
         {
             if (context !=null && context.Exception != null)
-            {//or reuse instance (recommended!). see note above 
+            {//or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
                 ai.TrackException(context.Exception);
             }
@@ -353,7 +353,7 @@ IExceptionLogger の実装を追加します。
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger()); 
+            config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
   }
@@ -362,7 +362,7 @@ IExceptionLogger の実装を追加します。
 
 代替として、次のように操作できます。
 
-1. 唯一の ExceptionHandler を IExceptionHandler のカスタム実装で置換します。 これはフレームワークが送信する応答メッセージを選択できるときにのみ呼び出されます (たとえば、接続が中止されるときではなく)。 
+1. 唯一の ExceptionHandler を IExceptionHandler のカスタム実装で置換します。 これはフレームワークが送信する応答メッセージを選択できるときにのみ呼び出されます (たとえば、接続が中止されるときではなく)。
 2. 例外フィルター (上の Web API 1.x コントローラーのセクション参照) - 場合によっては呼び出されません。
 
 ## <a name="wcf"></a>WCF
@@ -387,7 +387,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
         {
         }
 
-        public void ApplyDispatchBehavior(ServiceDescription serviceDescription, 
+        public void ApplyDispatchBehavior(ServiceDescription serviceDescription,
             System.ServiceModel.ServiceHostBase serviceHostBase)
         {
             foreach (ChannelDispatcher disp in serviceHostBase.ChannelDispatchers)
@@ -396,21 +396,21 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
             }
         }
 
-        public void Validate(ServiceDescription serviceDescription, 
+        public void Validate(ServiceDescription serviceDescription,
             System.ServiceModel.ServiceHostBase serviceHostBase)
         {
         }
 
         bool IErrorHandler.HandleError(Exception error)
-        {//or reuse instance (recommended!). see note above 
+        {//or reuse instance (recommended!). see note above
             var ai = new TelemetryClient();
 
             ai.TrackException(error);
             return false;
         }
 
-        void IErrorHandler.ProvideFault(Exception error, 
-            System.ServiceModel.Channels.MessageVersion version, 
+        void IErrorHandler.ProvideFault(Exception error,
+            System.ServiceModel.Channels.MessageVersion version,
             ref System.ServiceModel.Channels.Message fault)
         {
         }
@@ -422,8 +422,8 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
     namespace WcfService4
     {
         [AiLogException]
-        public class Service1 : IService1 
-        { 
+        public class Service1 : IService1
+        {
          ...
 
 [サンプル](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
@@ -431,9 +431,9 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 ## <a name="exception-performance-counters"></a>例外パフォーマンス カウンター
 サーバーに [Application Insights エージェントがインストール](app-insights-monitor-performance-live-website-now.md)されている場合は、.NET によって測定された例外レートのグラフを取得できます。 これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
 
-メトリックス エクスプローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に表示されている **[例外レート]** を選択します。 
+メトリックス エクスプローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に表示されている **[例外レート]** を選択します。
 
-.NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。 
+.NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。
 
 この値は、TrackException レポートをカウントすることにより、Application Insights ポータルで算出される「例外」数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
@@ -444,7 +444,6 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 169366535ed15d40de22bf71f444df7569562c8a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
 
 
 ---
@@ -60,7 +60,7 @@ App Service アプリ用に作成された **\*.azurewebsites.net** ドメイン
 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) を有効にすると、アプリとそのユーザー間の通信を狙った MITM 攻撃から保護することができます。
 
 ## <a name="secure-data-tier"></a>データ層をセキュリティで保護する
-App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、*アプリの実行時にのみ*暗号化が解除されます。 さらに、Azure SQL Database には、[保存暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](../sql-database/sql-database-dynamic-data-masking-get-started.md)、[脅威検出](../sql-database/sql-database-threat-detection-get-started.md)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。 機密データやコンプライアンスの要件がある場合、データをセキュリティで保護する方法の詳細については、「[SQL Database の保護](../sql-database/sql-database-security.md)」をご覧ください。
+App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、*アプリの実行時にのみ*暗号化が解除されます。 さらに、Azure SQL Database には、[保存暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](../sql-database/sql-database-dynamic-data-masking-get-started.md)、[脅威検出](../sql-database/sql-database-threat-detection.md)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。 機密データやコンプライアンスの要件がある場合、データをセキュリティで保護する方法の詳細については、「[SQL Database の保護](../sql-database/sql-database-security-overview.md)」をご覧ください。
 
 ClearDB などのサードパーティのデータベース プロバイダーを使用する場合は、プロバイダーのマニュアルを直接参照してセキュリティのベスト プラクティスを確認する必要があります。  
 
@@ -120,6 +120,6 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

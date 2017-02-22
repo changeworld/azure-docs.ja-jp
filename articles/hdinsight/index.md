@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、HBase、R-Server などを使用して、ビッグ データを処理、分析し、洞察を得る方法について説明します。"
+services: hdinsight
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: hdinsight
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: d78d12c6844e88da8b5d8b7cd99a38d6f4d36774
+ms.sourcegitcommit: 2d07e801ea3375e06c9f66db49219b6c79f97e61
+ms.openlocfilehash: bf303554aa47116cdfce074d87235901b5390769
 
 ---
+
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
 
 HDInsight のクラウドで Hadoop を使用して、ストリーミング データや履歴データを分析する方法について説明します。 チュートリアルなどのドキュメントでは、クラスターの作成、ビッグ データの処理と分析、Hadoop エコシステムでの Hadoop、Spark、HBase、R-Server、Storm などのテクノロジによるソリューションの開発を行う方法を紹介します。
@@ -171,6 +183,6 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,13 +1,13 @@
 ---
 title: "ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs"
-description: "Azure Service Bus Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。"
-services: service-bus
+description: "Azure WCF Relay を使用して .NET オンプレミス/クラウド ハイブリッド アプリケーションを作成する方法について説明します。"
+services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus
+ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -15,35 +15,35 @@ ms.topic: hero-article
 ms.date: 09/16/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c9d542edf04c119f5d97f80eacdfd0521acd77d
+ms.sourcegitcommit: 29ede770e6e63a50ba398cfb0bc8035cacdea392
+ms.openlocfilehash: 2b00b8206189dbed02e03807658c53f81171b111
 
 
 ---
-# <a name="net-onpremisescloud-hybrid-application-using-azure-service-bus-wcf-relay"></a>Azure Service Bus WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
+# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Azure WCF Relay を使用した .NET オンプレミス/クラウド ハイブリッド アプリケーション
 ## <a name="introduction"></a>はじめに
 この記事では、Microsoft Azure と Visual Studio を使ってハイブリッド クラウド アプリケーションを作成する方法について説明します。 このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。 複数の Azure リソースをクラウドで運用するアプリケーションを 30 分未満で作成できます。
 
 学習内容:
 
 * Web ソリューションによって使用される Web サービスを作成、または既存の Web サービスを適合させる方法。
-* Azure アプリケーションと別の場所でホストされている Web サービスの間で、Azure Service Bus WCF Relay サービスを使用してデータを共有する方法。
+* Azure アプリケーションと別の場所でホストされている Web サービスの間で、Azure WCF Relay サービスを使用してデータを共有する方法。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="how-the-service-bus-relay-helps-with-hybrid-solutions"></a>Service Bus Relay がハイブリッド ソリューションで役立つ理由
+## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Azure Relay がハイブリッド ソリューションで役立つ理由
 ビジネス ソリューションは、通常、新しい独自のビジネス要件に対処するために記述されるカスタム コードと、既に配置されているソリューションとシステムによって提供される既存の機能の組み合わせによって構成されます。
 
 ソリューション アーキテクトたちは、スケーラビリティが高く運用コストが低いクラウドを使い始めています。 その中で、ソリューションの構成要素として利用する既存のサービス資産は企業ファイアウォールの内部にあり、クラウド ソリューションからのアクセスが難しいということがわかってきました。 多くの内部サービスは、企業ネットワークと外部との境界で簡単に公開できるような方法では構築されたり、ホストされたりしていません。
 
-Service Bus Relay は、既存の Windows Communication Foundation (WCF) Web サービスを使用し、企業ネットワークのインフラストラクチャを大幅に変更することなく、企業の境界の外部にあるソリューションからそれらのサービスに安全にアクセスできる使用事例として設計されています。 このような Service Bus Relay サービスは既存の環境内でもホストされていますが、受信セッションや要求のリッスンは、クラウドでホストされている Service Bus にデリゲートしています。 さらに Service Bus は、[Shared Access Signature](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 認証を使用して、これらのサービスを未承認のアクセスから保護します。
+Azure Relay は、既存の Windows Communication Foundation (WCF) Web サービスを使用し、企業ネットワークのインフラストラクチャを大幅に変更することなく、企業の境界の外部にあるソリューションからそれらのサービスに安全にアクセスできる使用事例として設計されています。 このような Relay サービスは既存の環境内でもホストされていますが、受信セッションや要求のリッスンは、クラウドでホストされている Relay サービスにデリゲートしています。 さらに Azure Relay は、[Shared Access Signature](../service-bus-messaging/service-bus-sas-overview.md) (SAS) 認証を使用して、これらのサービスを未承認のアクセスから保護します。
 
 ## <a name="solution-scenario"></a>ソリューション シナリオ
 このチュートリアルでは、商品在庫ページに商品の一覧を表示する ASP.NET Web サイトを作成します。
 
 ![][0]
 
-このチュートリアルでは、既存のオンプレミスのシステムに商品情報が格納されているものとし、Service Bus Relay を使用してそのシステムにアクセスします。 これを、単純なコンソール アプリケーションで実行された、メモリ内の商品のセットが基盤となっている Web サービスでシミュレートします。 このコンソール アプリケーションをユーザー自身のコンピューターで実行し、Web ロールを Azure にデプロイできます。 そうすることで、Azure データセンターで実行されている Web ロールが実際にどのようにコンピューターを呼び出すかを確認できます。ただし、ユーザーのコンピューターは、ほぼ確実に少なくとも 1 つのファイアウォールとネットワーク アドレス変換 (NAT) レイヤーの背後に配置されます。
+このチュートリアルでは、既存のオンプレミスのシステムに商品情報が格納されているものとし、Azure Relay を使用してそのシステムにアクセスします。 これを、単純なコンソール アプリケーションで実行された、メモリ内の商品のセットが基盤となっている Web サービスでシミュレートします。 このコンソール アプリケーションをユーザー自身のコンピューターで実行し、Web ロールを Azure にデプロイできます。 そうすることで、Azure データセンターで実行されている Web ロールが実際にどのようにコンピューターを呼び出すかを確認できます。ただし、ユーザーのコンピューターは、ほぼ確実に少なくとも 1 つのファイアウォールとネットワーク アドレス変換 (NAT) レイヤーの背後に配置されます。
 
 次に、完成した Web アプリケーションの開始ページのスクリーンショットを示します。
 
@@ -59,11 +59,11 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 5. インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。 SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。 Visual Studio がインストールされていない場合、無料の Visual Studio Express もインストールされます。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
-Azure で Service Bus 機能を使用するには、最初にサービス名前空間を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure で Relay 機能を使用するには、最初にサービス名前空間を作成する必要があります。 名前空間は、アプリケーション内で Azure リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-an-onpremises-server"></a>オンプレミスのサーバーを作成する
+## <a name="create-an-on-premises-server"></a>オンプレミスのサーバーを作成する
 まず、仮のオンプレミスの商品カタログ システムを構築します。 かなり単純なものですが、これがこれから統合しようとしている完全なサービス機能を備えた実際のオンプレミスの商品カタログ システムであると考えてください。
 
 このプロジェクトは Visual Studio コンソール アプリケーションです。[Azure Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)を使用して、Service Bus ライブラリと構成設定を組み込みます。
@@ -434,10 +434,10 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
     ![][38]
 
 ## <a name="next-steps"></a>次のステップ
-Service Bus の詳細については、次のリソースを参照してください。  
+Azure Relay の詳細については、次のリソースを参照してください。  
 
-* [Azure Service Bus][sbwacom]  
-* [Service Bus キューの使用方法][sbwacomqhowto]  
+* [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)  
+* [リレーの使用方法](service-bus-dotnet-how-to-use-relay.md)  
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png
@@ -467,12 +467,8 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
 
 
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
 
-
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

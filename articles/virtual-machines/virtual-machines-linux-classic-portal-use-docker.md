@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51490fa46a1d9c23d73d4071fb900a97327425a8
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: a1742808be5df2a57e53bb6918f89df4953d0694
 
 
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Docker VM 拡張機能を使用する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 [Azure Linux エージェント] で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
@@ -137,11 +138,11 @@ WARNING: No swap limit support
 「 [Docker ユーザー ガイド] 」にアクセスして Docker VM の使用を開始する準備が整いました。 コマンド ライン インターフェイスから Azure VM の Docker ホストを自動的に作成する方法については、「 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用]
 
 <!--Anchors-->
-[イメージ ギャラリーからの新しい VM の作成]: #createvm
-[Docker 証明書の作成]: #dockercerts
-[Docker VM 拡張機能の追加]: #adddockerextension
-[Docker クライアントと Azure Docker ホストのテスト]: #testclientandserver
-[次のステップ]: #next-steps
+[Create a new VM from the Image Gallery]: #createvm
+[Create Docker Certificates]: #dockercerts
+[Add the Docker VM Extension]: #adddockerextension
+[Test Docker Client and Azure Docker Host]: #testclientandserver
+[Next steps]: #next-steps
 
 <!--Image references-->
 [StartingPoint]: ./media/StartingPoint.png
@@ -159,13 +160,13 @@ WARNING: No swap limit support
 <!--Link references-->
 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
 [Azure Linux エージェント]: virtual-machines-linux-agent-user-guide.md
-[別の azure.microsoft.com ドキュメント トピックへのリンク 3]: ../storage-whatis-account.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 05c82a87e839a0a95e7050092d6f6867e76fb316
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 199f07ce705036c3d8f9d56115b5df9c8c52dc45
 
 
 ---
@@ -208,17 +208,17 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
 これで BLE Gateway サンプルを Raspberry Pi 3 で実行する準備が整いました。
 
 ## <a name="run-the-ble-gateway-sample"></a>BLE Gateway サンプルの実行
-BLE サンプルを実行するには、次の 3 つのタスクを完了する必要があります。
+BLE サンプルを実行するには、次の&3; つのタスクを完了する必要があります。
 
-* IoT Hub に 2 つのサンプル デバイスを構成する。
+* IoT Hub に&2; つのサンプル デバイスを構成する。
 * Raspberry Pi 3 デバイスで IoT Gateway SDK をビルドする。
 * Raspberry Pi 3 デバイスで BLE サンプルを構成して実行する。
 
 この記事の執筆時点では、IoT Gateway SDK でサポートされているのは、Linux で BLE モジュールを使用するゲートウェイのみです。
 
-### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に 2 つのサンプル デバイスを構成する
+### <a name="configure-two-sample-devices-in-your-iot-hub"></a>IoT Hub に&2; つのサンプル デバイスを構成する
 * Azure サブスクリプションで [IoT ハブを作成][lnk-create-hub]します。このチュートリアルを実行するには、ハブの名前が必要です。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
-* **SensorTag_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
+* **SensorTag_01** という名前の&1; つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。 [デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。 このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
 
 ### <a name="build-the-azure-iot-gateway-sdk-on-your-raspberry-pi-3"></a>Raspberry Pi 3 デバイスで Azure IoT Gateway SDK をビルドする
 
@@ -236,10 +236,10 @@ cd azure-iot-gateway-sdk
 git submodule update --init --recursive
 ```
 
-IoT Gateway SDK リポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます。
+IoT Gateway SDK リポジトリの完全なコピーを Raspberry Pi 3 上に用意したら、SDK が含まれているフォルダーから次のコマンドを使用してビルドすることができます
 
 ```
-./tools/build.sh --skip-unittests
+./tools/build.sh
 ```
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Raspberry Pi 3 で BLE サンプルを構成して実行する
@@ -429,11 +429,11 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
 サンプルを実行する際に[デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用すると、ゲートウェイによって SensorTag デバイスから転送されるメッセージを監視することができます。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
-BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) または [iothub-explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) ツールを使用して BLE ゲートウェイ モジュールから BLE デバイスに渡す JSON メッセージを送信することができます。
-Texas Instruments の SensorTag デバイスを使用している場合、IoT Hub からコマンドを送信して、赤色の LED、緑色の LED、またはブザーをオンにすることができます。 これを行うには、最初に次の 2 つの JSON メッセージをこの順序で送信します。 次に、いずれかのコマンドを送信して、LED またはブザーをオンにすることができます。
+BLE モジュールでは、Azure IoT Hub からデバイスへの命令の送信もサポートしています。 [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) または [iothub-explorer](https://github.com/Azure/iothub-explorer) ツールを使用して BLE ゲートウェイ モジュールから BLE デバイスに渡す JSON メッセージを送信することができます。
+Texas Instruments の SensorTag デバイスを使用している場合、IoT Hub からコマンドを送信して、赤色の LED、緑色の LED、またはブザーをオンにすることができます。 これを行うには、最初に次の&2; つの JSON メッセージをこの順序で送信します。 次に、いずれかのコマンドを送信して、LED またはブザーをオンにすることができます。
 
-1 すべての LED とブザーをリセットする (オフにする)
-  
+1. すべての LED とブザーをリセットします (オフにします)。
+
     ```json
     {
       "type": "write_once",
@@ -441,7 +441,8 @@ Texas Instruments の SensorTag デバイスを使用している場合、IoT Hu
       "data": "AA=="
     }
     ```
-2 I/O を "リモート" として構成する
+    
+2. I/O を "リモート" として構成します。
   
     ```json
     {
@@ -450,7 +451,10 @@ Texas Instruments の SensorTag デバイスを使用している場合、IoT Hu
       "data": "AQ=="
     }
     ```
-* 赤色の LED をオンにする
+    
+その後、次のいずれかのコマンドを送信して、LED またはブザーをオンにすることができます。
+
+* 赤色の LED をオンにします。
   
     ```json
     {
@@ -459,7 +463,8 @@ Texas Instruments の SensorTag デバイスを使用している場合、IoT Hu
       "data": "AQ=="
     }
     ```
-* 緑色の LED をオンにする
+
+* 緑色の LED をオンにします。
   
     ```json
     {
@@ -468,7 +473,8 @@ Texas Instruments の SensorTag デバイスを使用している場合、IoT Hu
       "data": "Ag=="
     }
     ```
-* ブザーをオンにする
+
+* ブザーをオンにします。
   
     ```json
     {
@@ -501,6 +507,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "ホスト コンピューターと Azure IoT ハブの準備 | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - レッスン 2: ツールの取得 (Ubuntu) | Microsoft Docs"
 description: "Ubuntu を実行中のホスト コンピューターにツールとソフトウェアをインストールし、IoT ハブを作成し、IoT ハブにデバイスを登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: f09ad1624f8a7ce4e1b13217d085cfc172d870ca
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
   - Node.js は、豊富なパッケージ エコシステムが存在する JavaScript ランタイムです。
 - NPM を使用して Node.js 開発ツールをインストールする方法。
   - Node.js の最低限必要なバージョンは 4.5 LTS です。
-  - NPM は、Node.js 向けのパッケージ マネージャーの 1 つです。
+  - NPM は、Node.js 向けのパッケージ マネージャーの&1; つです。
 - Visual Studio Code をインストールする方法。
   - Visual Studio Code は、Windows、Linux、および macOS 向けのクロスプラットフォームの軽量で強力なソース コード エディターです。 デバッグ、Git コントロールの埋め込み、構文の強調表示、インテリジェントなコードの完了、スニペット、およびコードのリファクタリングを広くサポートしています。
 - 方法: Azure CLI をインストールする
@@ -115,7 +115,7 @@ Azure CLI をインストールするには、次の手順を実行します。
 
 Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/setup/linux)して、インストールします。
 
-## <a name="summary"></a>まとめ
+## <a name="summary"></a>概要
 
 すべての必要なツールとソフトウェアをホスト コンピューターにインストールしました。 次のタスクは、Azure CLI を使用して IoT ハブを作成し、IoT ハブにデバイスを登録することです。
 
@@ -124,6 +124,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

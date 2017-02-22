@@ -1,5 +1,5 @@
 ---
-title: "Windows VM への MongoDB のインストール | Microsoft Docs"
+title: "Azure 上の Windows VM に MongoDB をインストールする | Microsoft Docs"
 description: "Windows Server 2012 R2 を実行している、Resource Manager デプロイメント モデルで作成された Azure VM に、MongoDB をインストールする方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 6f171df26ba58d01b1ad81e7ff33f9ce47f34c4c
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: 0772376d2d858b32dfdd06b64d61003388268361
 
 
 ---
@@ -47,7 +47,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
      
      ![Internet Explorer のセキュリティ設定の構成](./media/virtual-machines-windows-install-mongodb/configure-internet-explorer-security.png)
 4. [MongoDB のダウンロード](http://www.mongodb.org/downloads)のページ (http://www.mongodb.org/downloads) に移動します。
-5. 既定では、**Community Server** エディションと、Windows Server 2008 R2 64 ビット以降用の最新の安定版リリースが選択されます。 インストーラーをダウンロードするには、**[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
+5. 必要に応じて、**Community Server** エディションを選んでから、Windows Server 2008 R2 64 ビット以降用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、**[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
    
     ![MongoDB インストーラーのダウンロード](./media/virtual-machines-windows-install-mongodb/download-mongodb.png)
    
@@ -167,6 +167,6 @@ New-NetFirewallRule -DisplayName "Allow MongoDB" -Direction Inbound `
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

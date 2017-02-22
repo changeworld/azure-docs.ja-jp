@@ -1,10 +1,10 @@
 ---
-title: "Azure Resource Manager と PowerShell を使用して ExpressRoute 回線を作成および変更する | Microsoft Docs"
+title: "ExpressRoute 回線の作成および変更: PowerShell: Azure Resource Manager | Microsoft Docs"
 description: "この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。"
 documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: ganesr
+ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: a68481073ea07b4c7775da6682e1753b32f0793c
+ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
+ms.openlocfilehash: 0aacbdafdb5ded81dbc8495a30837e2f4941075f
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
-> * [Azure ポータル - Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell - Resource Manager](expressroute-howto-circuit-arm.md)
-> * [PowerShell - クラシック](expressroute-howto-circuit-classic.md)
+> * [Resource Manager - Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
+> * [クラシック - PowerShell](expressroute-howto-circuit-classic.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 この記事では、Windows PowerShell コマンドレットと Azure リソース マネージャー デプロイ モデルを使用して、Azure ExpressRoute 回線を作成する方法について説明します。 この記事では、回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
@@ -36,8 +37,9 @@ ms.openlocfilehash: a68481073ea07b4c7775da6682e1753b32f0793c
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) を入手します。 PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」の手順に従ってください。
+* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) を入手します。 PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」の手順に従ってください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
+
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
@@ -53,7 +55,7 @@ ExpressRoute 回線を作成するサブスクリプションを選択します�
 
     Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>手順 2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>手順&2;.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
 PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実行すると、この情報が返されます。この情報は、後のステップで使用します。
@@ -81,7 +83,7 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
 * SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。 標準 SKU を取得する場合は *[Standard]* を、プレミアム アドオンの場合は *[Premium]* を指定できます。
-* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類を *Metereddata* から *Unlimiteddata* に変更することはできますが、*Unlimiteddata* から *Metereddata* に変更することはできません。
+* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
@@ -376,6 +378,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
 
 ## <a name="next-steps"></a>次のステップ
+
 回線を作成したら、次の操作を必ず実行します。
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
@@ -384,6 +387,6 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

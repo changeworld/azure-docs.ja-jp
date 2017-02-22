@@ -8,6 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 8c851d8e-8fd5-4327-89c1-9178b20ddd69
 ms.service: sql-database
+ms.custom: multiple databases
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 44dd0842f23fc7e454153984836ccd7e10af6b8c
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 6f51f0585dfc75d28da72d1056ef7173c06b24fd
 
 
 ---
@@ -61,12 +62,12 @@ ShardMapManager の詳細については、「 [シャード マップの管理]
 ## <a name="step-2-create-the-shard-map"></a>手順 2: シャード マップを作成する
 作成するシャード マップの種類を選択する必要があります。 何を選択するかはデータベースのアーキテクチャによって異なります。 
 
-1. データベースごとに 1 つのテナント (用語については「 [用語集](sql-database-elastic-scale-glossary.md)」を参照) 
+1. データベースごとに&1; つのテナント (用語については「 [用語集](sql-database-elastic-scale-glossary.md)」を参照) 
 2. データベースごとに複数のテナント (2 種類):
    1. リスト マッピング
    2. 範囲マッピング
 
-シングルテナント モデルの場合は、 **リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに 1 つのデータベースが割り当てられます。 これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
+シングルテナント モデルの場合は、 **リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに&1; つのデータベースが割り当てられます。 これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
 
 ![リスト マッピング][1]
 
@@ -74,7 +75,7 @@ ShardMapManager の詳細については、「 [シャード マップの管理]
 
 ![範囲マッピング][2]
 
-または、 *リスト マッピング* を使用して複数のテナントを 1 つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
+または、 *リスト マッピング* を使用して複数のテナントを&1; つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
 
 ![単一 DB 上の複数のテナント][3] 
 
@@ -173,6 +174,6 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

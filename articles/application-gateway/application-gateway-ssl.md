@@ -1,10 +1,10 @@
 ---
-title: "クラシック デプロイを使用した SSL オフロード用のアプリケーション ゲートウェイの構成 | Microsoft Docs"
+title: "SSL オフロードの構成 - Azure Application Gateway - PowerShell クラシック | Microsoft Docs"
 description: "この記事では、Azure のクラシック デプロイ モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb291817462a2af59a17693a29b8667750c877f
-ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
 
 
 ---
@@ -26,8 +26,6 @@ ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
 > * [Azure ポータル](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-ssl-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ssl.md)
-> 
-> 
 
 Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
@@ -92,8 +90,6 @@ State..........: Provisioned
 
 > [!NOTE]
 > 証明書のパスワードは、4 ～ 12 文字の英数字で指定する必要があります。 特殊文字は使用できません。
-> 
-> 
 
 ## <a name="configure-the-gateway"></a>ゲートウェイの構成
 
@@ -218,6 +214,6 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

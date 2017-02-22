@@ -1,5 +1,5 @@
 ---
-title: "Dynatrace による Azure Container Service (DC/OS) クラスターの監視 | Microsoft Docs"
+title: "Azure DC/OS クラスターの監視 - Dynatrace | Microsoft Docs"
 description: "Dynatrace で Azure Container Service (DC/OS) クラスターを監視します。 DC/OS ダッシュボードを使用して Dynatrace OneAgent をデプロイします。"
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 96d35fbc4a8dfb620a2cfe67df449134d2f1e542
-ms.openlocfilehash: 48bb16972f2e846997e081e702ffbce57736c484
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 8878baa230bc8e91f814fd97fdc852c76b17e823
 
 
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-dynatrace-saasmanaged"></a>Dynatrace SaaS/Managed を使用して Azure Container Service クラスターを監視します。
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Dynatrace SaaS/Managed を使用した Azure Container Service DC/OS クラスターの監視
 この記事では、Azure Container Service クラスターのすべてのエージェント ノードを監視するための [Dynatrace](https://www.dynatrace.com/) OneAgent のデプロイ方法を説明します。 この設定には、Dynatrace SaaS/Managed のアカウントが必要です。 
 
 ## <a name="dynatrace-saasmanaged"></a>Dynatrace SaaS/Managed
@@ -63,6 +63,6 @@ Azure Container Service によって構成されたクラスターに[デプロ�
 パッケージをインストールしたら、Dynatrace ダッシュ ボードに戻ります。 クラスター内のコンテナーのさまざまな利用状況指標をご覧ください。 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

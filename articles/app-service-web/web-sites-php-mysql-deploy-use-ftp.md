@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 134239990df959fe2657340eca4f2a8bf646a7b0
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
 ![Azure PHP Web Site][running-app]
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。 
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。 
 > 
 > 
 
@@ -62,17 +62,17 @@ Web アプリと MySQL データベースを作成するには、次のステッ
     ![発行資格情報の作成][portal-ftp-username-password]
 
 ## <a name="build-and-test-your-app-locally"></a>アプリケーションの作成とローカル テスト
-Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションは、次の 2 つのファイルで構成されます。
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。 それまでの登録者情報がテーブルに表示されます。 登録情報は MySQL データベースに保存されます。 アプリケーションは、次の&2; つのファイルで構成されます。
 
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
-* **createtable.php**: アプリケーション用の MySQL テーブルを作成します。 このファイルは 1 度しか使用されません。
+* **createtable.php**: アプリケーション用の MySQL テーブルを作成します。 このファイルは&1; 度しか使用されません。
 
 アプリケーションを作成してローカルで実行するには、次の手順に従います。 ここに示す手順は、ローカル コンピューターに PHP、MySQL、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
 1. " `registration`" という MySQL データベースを作成します。 これには、MySQL コマンド プロンプトで次のコマンドを実行します。
    
         mysql> create database registration;
-2. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に 2 つのファイル (`createtable.php` と `index.php`) を作成します。
+2. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に&2; つのファイル (`createtable.php` と `index.php`) を作成します。
 3. `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。 このコードは、`registration_tbl` データベースに `registration` テーブルを作成するために使用します。
    
         <?php
@@ -197,7 +197,7 @@ Registration アプリケーションは、名前と電子メール アドレス
             echo "<h3>No one is currently registered.</h3>";
         }
 
-これで、[http://localhost/registration/index.php][localhost-index] にアクセスしてアプリケーションをテストできます。
+これで、[http://localhost/registration/index.php][localhost-index] にアクセスしてアプリをテストできます。
 
 ## <a name="get-mysql-and-ftp-connection-information"></a>MySQL と FTP の接続情報の取得
 Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。 MySQL の接続情報を取得するには、次の手順に従います。
@@ -276,6 +276,6 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

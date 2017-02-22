@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 39ccb6e9b810d1c02a96b25946893ddd3e316463
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
 
 
 ---
@@ -148,13 +148,13 @@ Azure CLI を使用して、リソース グループの現在の状態を表す
 > 
 
 ## <a name="next-steps"></a>次のステップ
-* Azure CLI を使用したデプロイ操作とデプロイ エラーのトラブルシューティングの詳細については、「[Azure CLI でのデプロイ操作の表示](resource-manager-troubleshoot-deployments-cli.md)」を参照してください。
+* Azure CLI を使用したデプロイ操作とデプロイ エラーのトラブルシューティングの詳細については、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関する記事を参照してください。
 * CLI を使用してリソースにアクセスするアプリケーションやスクリプトを設定する場合は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法 | Microsoft Docs"
+title: "Azure CLI を使用した Azure Redis Cache の管理 | Microsoft Docs"
 description: "任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で Redis Cache を作成および管理する方法。"
 services: redis-cache
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 830eb6627cae71f358b9790791b1d86f7c82c566
-ms.openlocfilehash: db8095f225a6d5a954474f7014ce35800a363b55
+ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
+ms.openlocfilehash: 940210325c28252de2f38cfe56e56d4c3ecd28ed
 
 
 ---
@@ -53,7 +53,7 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
 | 仮想ネットワーク |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t、--key-type |更新するキーの種類です。 有効な値: [Primary、Secondary] |
-| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
+| StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが&1; つ選択されます。 |
 | サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
@@ -269,6 +269,6 @@ Redis Cache を削除するには、次のコマンドを使用します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

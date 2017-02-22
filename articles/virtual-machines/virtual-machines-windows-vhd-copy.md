@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: e516d3cea9a53dec209a51fc8729f2cca934d3cd
+ms.sourcegitcommit: e5bacb7ce32845b97e06cb0d35cc62935a3c86f6
+ms.openlocfilehash: 79b597fb1d76ec0dd7bdfca701a16f885d245b94
 
 
 ---
@@ -93,7 +93,7 @@ Elapsed time:            00.00:13:07
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-* AZCopy の使用時に、"Server failed to authenticate the request.  Make sure the value of Authorization header is formed correctly including the signature.(サーバーが要求を認証できませんでした。認証ヘッダーの値が、署名を含め正しく形成されていることを確認してください。)」 というエラーが表示され、キー 2 (つまりセカンダリ ストレージ キー) を使用している場合は、プライマリ ストレージ キーまたは最初のストレージ キーを使用してください。
+* AZCopy の使用時に、サーバーが要求の認証に失敗したことを示すエラーが発生した場合は、Authorization ヘッダーの値が署名を含む正しい形式であることを確認し、Key 2 (セカンダリ ストレージ キー) を使用している場合は、プライマリ ストレージ キー (最初のストレージ キー) を使ってみてください。
 
 ## <a name="next-steps"></a>次のステップ
 * [VHD のコピーを OS ディスクとして VM に接続する](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことで、新しい VM を作成できます。
@@ -101,6 +101,6 @@ Elapsed time:            00.00:13:07
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

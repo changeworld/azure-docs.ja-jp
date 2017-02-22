@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成 | Microsoft Docs"
+title: "テンプレートを使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
 description: "Azure Resource Manager テンプレートを使用して Azure の Azure HDInsight のクラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
-ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 1816b7f5bb95669197891315ca57f93fd779c5c3
 
 
 ---
-# <a name="create-linux-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Hadoop クラスターを作成する
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して、HDInsight で Hadoop クラスターを作成する
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -40,7 +40,7 @@ Azure リソース マネージャー (ARM) テンプレートを使用して HD
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="resource-manager-templates"></a>リソース マネージャーのテンプレート
-Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。 テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
+Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が&1; 回の連携した操作で容易になります。 テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
 HDInsight クラスターと依存 Azure Storage アカウントを作成するための Resource Manager テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。 クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [Resource Manager の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存します。 テンプレートを呼び出すさまざまな方法について説明します。
 
@@ -59,9 +59,9 @@ Resource Manager テンプレートの詳細については、以下を参照し
 
     ポータルでは、構成に基づいた Resource Manager テンプレートが作成されます。
 
-   ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
+## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-次の手順では、Linux ベースの HDInsight クラスターを作成します。
+次の手順では、HDInsight で Hadoop クラスターを作成します。
 
 **Resource Manager テンプレートを使用してクラスターをデプロイするには**
 
@@ -151,7 +151,7 @@ Visual Studio とリソース グループの使用の概要については、�
 * Azure Resource Manager のテンプレートで使用できる関数の一覧については、「 [Azure Resource Manager のテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)」を参照してください。
 
 ## <a name="appx-a-resource-manager-template"></a>付録 A: Resource Manager テンプレート
-次に示す Azure リソース マネージャーのテンプレートは、Azure ストレージ アカウントに依存する Linux ベースの Hadoop クラスターを作成します。
+次に示す Azure Resource Manager テンプレートは、Azure ストレージ アカウントに依存する Linux ベースの Hadoop クラスターを作成します。
 
 > [!NOTE]
 > このサンプルには、Hive metastore と Oozie metastore の構成情報が含まれます。  セクションを削除するか、テンプレートを使用する前にセクションを構成します。
@@ -359,6 +359,6 @@ Visual Studio とリソース グループの使用の概要については、�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96a8342dc782a9270a6de5b67387c35ea45b860e
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 72b0b7feef583799613b1cb2c18b2020c1401b36
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: 96a8342dc782a9270a6de5b67387c35ea45b860e
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
@@ -62,13 +62,13 @@ SAS URL には次の形式があります。
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
+ロケーターの有効期限を更新するには、[REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用して資産を発行するには
 ポータルを使用して資産を発行するには、次の操作を行います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2.  **[設定]** > **[資産]**を参照してください。
+2. **[設定]** > **[資産]**を参照してください。
 3. 発行する資産を選択します。
 4. **[発行]** ボタンをクリックします。
 5. ロケーターの種類を選択します。
@@ -90,7 +90,6 @@ URL が **[発行された URL]**の一覧に追加されます。
 * ビデオが発行されたことを確認します。
 * この **メディア プレイヤー** は既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。 ( [Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
 * ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。  
-* ストリーミング エンドポイントからストリーミングするには、1 つ以上のストリーミング ユニットを追加する必要があります。 詳細については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。   
 
 ## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
@@ -103,6 +102,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

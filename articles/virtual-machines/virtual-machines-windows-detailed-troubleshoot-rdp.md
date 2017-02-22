@@ -1,5 +1,5 @@
 ---
-title: "Azure でのリモート デスクトップの詳細なトラブルシューティング | Microsoft Docs"
+title: "リモート デスクトップの詳細なトラブルシューティング |Microsoft Docs"
 description: "Azure の Windows 仮想マシンに接続できないリモート デスクトップ エラーをトラブルシューティングする詳細な手順の確認"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 12/20/2016
+ms.date: 09/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 8835427415e8e01e851796eaf323bce7d1918c8c
-ms.openlocfilehash: 5c9d51d633b07497c230be9da2646bf49b6e8c0e
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 1f42e8f320e061fed8428b7ef88f3cb5247b81a2
 
 
 ---
@@ -28,6 +28,8 @@ ms.openlocfilehash: 5c9d51d633b07497c230be9da2646bf49b6e8c0e
 
 > [!IMPORTANT]
 > リモート デスクトップのより一般的なエラーを解消するには、先に進む前に、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をお読みください。
+> 
+> 
 
 [リモート デスクトップの基本的なトラブルシューティング ガイド](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)で扱われている具体的なエラー メッセージのいずれにも似ていないエラー メッセージがリモート デスクトップで表示されることもあります。 次の手順に従って、リモート デスクトップ (RDP) クライアントが Azure VM 上の RDP サービスに接続できない原因を特定してください。
 
@@ -139,7 +141,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 クラシック デプロイメント モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。 最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。 [Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) に関するページを参照し、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
 
-次に、まだ Azure PowerShell がインストールされていなければ、インストールします。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+次に、まだ Azure PowerShell がインストールされていなければ、インストールします。 「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。 Azure PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。 **Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。 適切なレベルの設定方法の詳細については、「 [Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)」 を参照してください。
 
@@ -190,7 +192,7 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
+[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -199,6 +201,6 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Nov16_HO3-->
 
 

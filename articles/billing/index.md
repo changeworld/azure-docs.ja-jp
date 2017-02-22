@@ -1,17 +1,29 @@
 ---
+title: "Azure Billing のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Azure の課金を確認する方法に加えて、使用量とコストの管理および監視方法について説明します。 チュートリアル、FAQ、API リファレンスなどのドキュメントを提供します。"
+services: billing
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: billing
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
+ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
+ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
 
 ---
 # <a name="azure-billing-documentation"></a>Azure Billing のドキュメント
 
-ユーザーとパートナーには、Azure のコストを正確に予測し、管理する機能が必要です。 資本支出モデルから運営コスト モデルに移行する場合、特に大規模なクラウド デプロイの場合には、ショーバックとチャージバックを分析する機能だけでなく、見積と課金に関するモードの忠実度も提供する必要があります。
+Azure の課金を確認したり、使用量とコストを監視したりする方法について説明します。 チュートリアル、FAQ、API リファレンスなどのドキュメントでは、アカウントの管理方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/billing/billing-understand-your-bill">
+        <a href="/azure/billing/billing-getting-started">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -87,7 +99,7 @@ ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>他の</h3>
+                        <h3>その他</h3>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">API の概要</a></p>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">パートナー ソリューション: Cloud Cruiser</a></p>
                         <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">パートナー ソリューション: Cloudyn</a></p>
@@ -98,17 +110,10 @@ ms.openlocfilehash: c67a65aa1053a3acb6059625877ec1c515d49258
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/billing.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Billing のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

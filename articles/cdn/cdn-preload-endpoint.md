@@ -1,9 +1,9 @@
 ---
 title: "Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs"
-description: "CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
+description: "Azure CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e54ab1d1e1d363f92c05772a5367b28c46fe4038
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
 
 
 ---
@@ -70,6 +70,6 @@ ms.openlocfilehash: e54ab1d1e1d363f92c05772a5367b28c46fe4038
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

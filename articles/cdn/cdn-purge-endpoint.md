@@ -1,9 +1,9 @@
 ---
 title: "Azure CDN エンドポイントの消去 | Microsoft Docs"
-description: "CDN エンドポイントからキャッシュされたすべてのコンテンツを消去する方法について説明します。"
+description: "Azure CDN エンドポイントからキャッシュされたすべてのコンテンツを消去する方法について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bacc40df27e01ac33a032720efc27e68c35ab8d0
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: e19c08d7a47255eb6a6db631cb88ecaa053ee183
 
 
 ---
@@ -74,6 +74,6 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

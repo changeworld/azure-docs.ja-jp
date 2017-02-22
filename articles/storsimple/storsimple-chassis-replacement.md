@@ -1,5 +1,5 @@
 ---
-title: "StorSimple デバイスのシャーシを交換する | Microsoft Docs"
+title: "StorSimple 8000 シリーズ デバイスのシャーシを交換する | Microsoft Docs"
 description: "StorSimple プライマリ エンクロージャまたは EBOD エンクロージャのシャーシを取り外して交換する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f2568dac43a0fa870c7b3db7bde3458e7cfafd8
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
 
 
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>StorSimple デバイスのシャーシを交換する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、StorSimple 8000 シリーズ デバイスのシャーシを取り外して交換する方法について説明します。 StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。 8600 モデルでは、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシと EBOD エンクロージャのシャーシです。
 
 どちらの場合も、Microsoft から出荷される交換用のシャーシは空です。 電源および冷却モジュール (PCM)、コントローラー モジュール、ソリッド ステート ディスク ドライブ (SSD)、ハード ディスク ドライブ (HDD)、または EBOD モジュールは付属していません。
@@ -63,6 +63,6 @@ ms.openlocfilehash: 0f2568dac43a0fa870c7b3db7bde3458e7cfafd8
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "cURL と Azure REST API を使用した HDInsight 用の Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Docs"
-description: "cURL、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
+title: "cURL と REST を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+description: "cURL、Azure Resource Manager テンプレート、および Azure REST API を使用して HDInsight クラスターを作成する方法について説明します。 クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,33 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: c7ad743ee68f83853bc450c3ef6ca779e01fd51f
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a4dc3d4599cfe2c6dd7580c423987f6173a9c5ba
 
 
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-curl-and-the-azure-rest-api"></a>cURL と Azure REST API を使用して HDInsight に Linux ベースのクラスターを作成する
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hdinsight-clusters-using-curl-and-the-azure-rest-api"></a>cURL と Azure REST API を使用して HDInsight クラスターを作成する
 
-Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、Linux ベースの HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。 このドキュメントでは、Azure リソース マネージャー テンプレートを作成し、HDInsight クラスターと関連するストレージを構成してから、cURL を使用してテンプレートを Azure REST API にデプロイして新しい HDInsight クラスターを作成する方法を学びます。
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+
+Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。 このドキュメントでは、Azure リソース マネージャー テンプレートを作成し、HDInsight クラスターと関連するストレージを構成してから、cURL を使用してテンプレートを Azure REST API にデプロイして新しい HDInsight クラスターを作成する方法を学びます。
 
 > [!IMPORTANT]
-> この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。 クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
->
-> ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
->
->
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure CLI**。 Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。
 
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+* **Azure CLI 2.0 (プレビュー)**。 Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。 Azure CLI 2.0 プレビューの詳細については、「[Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」 (Azure CLI 2.0 の使用を開始する) を参照してください。
+
 * **cURL**。 このユーティリティは、パッケージ管理システムを通じて、または [http://curl.haxx.se/](http://curl.haxx.se/)からダウンロードして使用できます。
 
   > [!NOTE]
@@ -50,16 +48,15 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
   > `Remove-item alias:curl`
   >
   > エイリアスが削除されると、システムにインストールした cURL のバージョンを使用できるようになります。
-  >
-  >
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-a-template"></a>テンプレートの作成
-Azure リソース管理テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する**デプロイメント**を介して、グループに対する変更をまとめて管理できます。
 
-通常、テンプレートは 2 つの部分 (テンプレート自体と、自身の構成に固有の値を読み込んだパラメーター ファイル) から成ります。 たとえば、クラスター名、管理者名、パスワードなどです。 直接 REST API を使用する場合、これらを 1 つのファイルにまとめる必要があります。 この JSON ドキュメントの形式は次のようになります。
+Azure Resource Manager テンプレートは、**リソース グループ**とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する**デプロイメント**を介して、グループに対する変更をまとめて管理できます。
+
+通常、テンプレートは&2; つの部分 (テンプレート自体と、自身の構成に固有の値を読み込んだパラメーター ファイル) から成ります。 たとえば、クラスター名、管理者名、パスワードなどです。 直接 REST API を使用する場合、これらを&1; つのファイルにまとめる必要があります。 この JSON ドキュメントの形式は次のようになります。
 
     {
         "properties": {
@@ -267,92 +264,64 @@ Azure リソース管理テンプレートは、**リソース グループ**と
 
 このサンプルをこのドキュメントの手順で使用します。 ドキュメント末尾の *Parameters* セクションのプレースホルダーの **値** を、クラスターに使用する値に置き換える必要があります。
 
+> [!IMPORTANT]
+> テンプレートでは、HDInsight クラスターに既定数 (4) の worker ノードを使用します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+>
+> ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+
 ## <a name="login-to-your-azure-subscription"></a>Azure サブスクリプションへのログイン
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、`azure login` コマンドを使用してサブスクリプションに接続します。
+
+「[Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」 (Azure CLI 2.0 の使用を開始する) に記載されている手順に従って、自分のサブスクリプションに `az login` コマンドを使用して接続します。
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+
 > [!NOTE]
-> これらの手順は、「[Use Azure CLI to create a service principal to access resources (Azure CLI を使用してリソースにアクセスするためのサービス プリンシパルを作成する)](../resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password)」ドキュメントの「*Create service principal with password (パスワードによるサービス プリンシパルの作成)*」で提供される情報の要約版です。 これらの手順は、HDInsight クラスターなどの Azure リソースを作成するために使用する REST API 要求の認証に使用できる新しいサービス プリンシパルを作成します。
->
->
+> これらの手順は、「[Use Azure CLI to create a service principal to access resources (Azure CLI を使用してリソースにアクセスするためのサービス プリンシパルを作成する)](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password)」ドキュメントの「*Create service principal with password (パスワードによるサービス プリンシパルの作成)*」で提供される情報の要約版です。 これらの手順は、HDInsight クラスターなどの Azure リソースを作成するために使用する REST API 要求の認証に使用できる新しいサービス プリンシパルを作成します。
 
-1. コマンド プロンプト、ターミナル セッション、またはシェルから、次のコマンドを使用して Azure サブスクリプションを一覧します。
+1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
 
-        azure account list
+         az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
 
-    一覧で、使用するサブスクリプションを選択し、 **Id** 列を書き留めます。 これは **サブスクリプション ID** で、このドキュメントのほとんどの手順で使用されます。
-2. Azure Active Directory に新しいアプリケーションを作成する
+    一覧で、使用するサブスクリプションを選択し、**Subscription_ID** 列と __Tenant_ID__ 列を書き留めます。 これらの値を保存します。
 
-        azure ad app create --name "exampleapp" --home-page "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your_Password>
+2. 次のコマンドを使用して、Azure Active Directory 内にアプリケーションを作成します。
 
-    `--name`、`--home-page`、および `--identifier-uris` の値を自分の値に置き換えます。 新しい Active Directory エントリのパスワードを指定します。
+        az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
+
+    `--display-name`、`--homepage`、および `--identifier-uris` の値を自分の値に置き換えます。 新しい Active Directory エントリのパスワードを指定します。
 
    > [!NOTE]
    > このアプリケーションをサービス プリンシパルでの認証用に作成しているため、`--home-page` と `--identifier-uris` の値は、一意の URI である必要があるだけで、インターネットでホストされている実際の Web ページを参照する必要はありません。
-   >
-   >
 
-    返されたデータの **AppId** 値を保存します。
+   このコマンドから返される値は、新しいアプリケーションの__アプリ ID__ です。 この値を保存します。
 
-        data:    AppId:          4fd39843-c338-417d-b549-a545f584a745
-        data:    ObjectId:       4f8ee977-216a-45c1-9fa3-d023089b2962
-        data:    DisplayName:    exampleapp
-        ...
-        info:    ad app create command OK
-3. 前に返された **AppId** 値を使用して、サービス プリンシパルを作成します。
+3. 次のコマンドを使用して、**アプリ ID** を使用するサービス プリンシパルを作成します。
 
-        azure ad sp create 4fd39843-c338-417d-b549-a545f584a745
+        az ad sp create --id <App ID> --query 'objectId'
 
-     返されたデータの **Object Id** 値を保存します。
+     このコマンドから返される値は、__オブジェクト ID__です。 この値を保存します。
 
-        info:    Executing command ad sp create
-        - Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
-        data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
-        data:    Display Name:     exampleapp
-        data:    Service Principal Names:
-        data:                      4fd39843-c338-417d-b549-a545f584a745
-        data:                      https://www.contoso.org/example
-        info:    ad sp create command OK
-4. 以前に返された **Object ID** 値を使用して、**所有者**の役割をサービス プリンシパルに割り当てます。 前に取得した **サブスクリプション ID** も使用する必要があります。
+4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した **サブスクリプション ID** も使用する必要があります。
 
-        azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Owner -c /subscriptions/{SubscriptionID}/
-
-    このコマンドが完了すると、サービス プリンシパルには特定のサブスクリプション ID にアクセスする所有者があります。
+        az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
 
 ## <a name="get-an-authentication-token"></a>認証トークンの取得
-1. 次を使用して、自分のサブスクリプションの **Tenant ID** を見つけます。
 
-        azure account show -s <subscription ID>
+次のコマンドを使用して、認証トークンを取得します。
 
-    返されたデータで、 **Tenant ID**を検索します。
+    curl -X "POST" "https://login.microsoftonline.com/TenantID/oauth2/token" \
+    -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    --data-urlencode "client_id=AppID" \
+    --data-urlencode "grant_type=client_credentials" \
+    --data-urlencode "client_secret=password" \
+    --data-urlencode "resource=https://management.azure.com/"
 
-        info:    Executing command account show
-        data:    Name                        : MyAzureAccount
-        data:    ID                          : 45a1014d-0f27-25d2-b838-b8f373d6d52e
-        data:    State                       : Enabled
-        data:    Tenant ID                   : 22f988bf-56f1-41af-91ab-3d7cd011db47
-        data:    Is Default                  : true
-        data:    Environment                 : AzureCloud
-        data:    Has Certificate             : No
-        data:    Has Access Token            : Yes
-        data:    User name                   : myname@contoso.org
-        data:    
-        info:    account show command OK
-2. Azure REST API を使用して新しいトークンを生成します。
+    Replace **TenantID**, **AppID**, and **password** with the values obtained or used previously.
 
-        curl -X "POST" "https://login.microsoftonline.com/TenantID/oauth2/token" \
-        -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
-        -H "Content-Type: application/x-www-form-urlencoded" \
-        --data-urlencode "client_id=AppID" \
-        --data-urlencode "grant_type=client_credentials" \
-        --data-urlencode "client_secret=password" \
-        --data-urlencode "resource=https://management.azure.com/"
+    If this request is successful, you will receive a 200 series response and the response body will contain a JSON document.
 
-    **TenantID**、**AppID**、**パスワード**を、以前に取得または使用した値に置き換えます。
-
-    この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
-
-    この要求によって返される JSON ドキュメントには **access_token** という名前の要素が含まれます。この要素の値はアクセス トークンで、これは本ドキュメントの次のセクションで使用される要求の認証に使用する必要があります。
+    The JSON document returned by this request will contain an element named **access_token**; the value of this element is the access token you must use to authentication the requests used in the next sections of this document.
 
         {
             "token_type":"Bearer",
@@ -363,6 +332,7 @@ Azure リソース管理テンプレートは、**リソース グループ**と
         }
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
+
 次を利用して新しいリソース グループを作成します。 リソース (HDInsight クラスターなど) を作成するには、まずグループを作成する必要があります。
 
 * **SubscriptionID** をサービス プリンシパルの作成時に受信するサブスクリプション ID に置き換えます。
@@ -382,6 +352,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにグループに関する情報が含まれています。 `"provisioningState"` 要素には `"Succeeded"` の値が含まれます。
 
 ## <a name="create-a-deployment"></a>デプロイの作成
+
 以下を使用して、クラスター構成 (テンプレートとパラメーター値) をリソース グループにデプロイします。
 
 * **SubscriptionID** と **AccessToken** を前に使用した値に置き換えます。
@@ -399,17 +370,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 > テンプレートとパラメーターを含む JSON ドキュメントをファイルに保存した場合、`-d "{ template and parameters}"` の代わりに以下を使用できます。
 >
 > `--data-binary "@/path/to/file.json"`
->
->
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにデプロイ操作に関する情報が含まれています。
 
 > [!IMPORTANT]
 > デプロイは送信済みですが、この時点では完了していないことに注意してください。 デプロイを完了するには時間がかかる場合があります (通常約 15 分)。
->
->
 
 ## <a name="check-the-status-of-a-deployment"></a>デプロイの状態の確認
+
 デプロイの状態を確認するには、次のコマンドを使用します。
 
 * **SubscriptionID** と **AccessToken** を前に使用した値に置き換えます。
@@ -424,24 +392,28 @@ curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 これにより返される JSON ドキュメントにデプロイ操作に関する情報が含まれます。 `"provisioningState"` 要素にはデプロイの状態が含まれます。これに `"Succeeded"` の値が含まれている場合、デプロイは正常に完了しています。 この時点で、クラスターは使用可能になっています。
 
 ## <a name="next-steps"></a>次のステップ
+
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
 ### <a name="hadoop-clusters"></a>Hadoop クラスター
+
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>HBase クラスター
+
 * [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
 * [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm クラスター
+
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/29/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c5ce6c8024026e8fb88a2c6e8e5475c8aba7aa30
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 5ce82ddd2f58fed338bd061fa963978aa63e5fdc
 
 
 ---
@@ -25,17 +25,17 @@ ms.openlocfilehash: c5ce6c8024026e8fb88a2c6e8e5475c8aba7aa30
 Git を使用すると、ASP.NET アプリケーションを Azure App Service Web Apps にデプロイできます。 このチュートリアルでは、Azure の仮想マシンで実行されている MongoDB データベースに接続する、ASP.NET MVC の単純なフロントエンド タスク一覧アプリケーションをビルドします。  [MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 開発用コンピューターで ASP.NET アプリケーションを実行してテストした後、Git を使用してアプリケーションを App Service Web Apps にアップロードします。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
 ## <a name="background-knowledge"></a>背景知識
 このチュートリアルでは次の事項に関する知識があると楽ですが、必須ではありません。
 
-* MongoDB の C# ドライバー。 MongoDB 用 C# アプリケーションの開発の詳細については、MongoDB の [CSharp Language Center][MongoC#LangCenter] を参照してください。 
-* ASP .NET Web アプリケーション フレームワーク。 詳細については、[ASP.net の Web サイト][ASP.NET]を参照してください。
-* ASP .NET MVC Web アプリケーション フレームワーク。 詳細については、[ASP.NET MVC の Web サイト][MVCWebSite]を参照してください。
-* Azure。 詳細については、[Azure][WindowsAzure] サイトを参照してください。
+* MongoDB の C# ドライバー。 MongoDB 用 C# アプリケーションの開発の詳細については、MongoDB の [CSharp Language Center][MongoC#LangCenter] をご覧ください。 
+* ASP .NET Web アプリケーション フレームワーク。 詳しくは、[ASP.net の Web サイト][ASP.NET]をご覧ください。
+* ASP .NET MVC Web アプリケーション フレームワーク。 詳しくは、[ASP.NET MVC の Web サイト][MVCWebSite]をご覧ください。
+* Azure。 詳しくは、[Azure][WindowsAzure] サイトをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio Express 2013 for Web][VSEWeb] または [Visual Studio 2013][VSUlt]
@@ -49,7 +49,7 @@ Git を使用すると、ASP.NET アプリケーションを Azure App Service W
 ## <a name="create-a-virtual-machine-and-install-mongodb"></a>仮想マシンを作成して MongoDB をインストールする
 このチュートリアルは、Azure に仮想マシンが作成済みであることを前提としています。 仮想マシンの作成後、仮想マシンに MongoDB をインストールする必要があります。
 
-* Windows 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnWindowsVM]」を参照してください。
+* Windows 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnWindowsVM]」をご覧ください。
 
 Azure に仮想マシンを作成して MongoDB をインストールしたら、仮想マシンの DNS 名 (たとえば "testlinuxvm.cloudapp.net") とエンドポイントで指定した MongoDB 用の外部ポートを忘れずに記録してください。  この情報は後で必要になります。
 
@@ -413,7 +413,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 
     private string connectionString = "mongodb://<vm-dns-name>";
 
-`<vm-dns-name>` を、このチュートリアルの「[仮想マシンを作成して MongoDB をインストールする][仮想マシンを作成して MongoDB をインストールする]」で作成した MongoDB を実行する仮想マシンの DNS 名で置き換えます。  仮想マシンの DNS 名を確認するには、Azure Portal で **[仮想マシン]** をクリックし、**[DNS 名]** の値を確認します。
+`<vm-dns-name>` を、このチュートリアルの「[仮想マシンを作成して MongoDB をインストールする][Create a virtual machine and install MongoDB]」で作成した MongoDB を実行する仮想マシンの DNS 名で置き換えます。  仮想マシンの DNS 名を確認するには、Azure Portal で **[仮想マシン]** をクリックし、**[DNS 名]** の値を確認します。
 
 仮想マシンの DNS 名が "testlinuxvm.cloudapp.net" で、MongoDB が既定のポート 27017 をリッスンしている場合、その接続文字列のコード行は次のようになります。
 
@@ -423,7 +423,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 
      private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
-MongoDB の接続文字列の詳細については、[接続に関するページ][MongoConnectionStrings]を参照してください。
+MongoDB の接続文字列の詳細については、「[Connections][MongoConnectionStrings]」(接続) をご覧ください。
 
 ## <a name="test-the-local-deployment"></a>ローカル デプロイをテストする
 開発用コンピューターでアプリケーションを実行するには、**[デバッグ]** メニューの **[デバッグ開始]** をクリックするか、**F5** キーを押します。 IIS Express が起動し、ブラウザーが開いて、アプリケーションのホーム ページが表示されます。  新しいタスクを追加でき、そのデータは Azure の仮想マシンで実行されている MongoDB データベースに追加されます。
@@ -445,7 +445,7 @@ MongoDB の接続文字列の詳細については、[接続に関するペー�
 2. **[Web Apps]**をクリックします。 
 3. **[Web Apps]** ボックスの一覧から Web アプリを選択します。
 
-MongoDB 用 C# アプリケーションの開発の詳細については、[CSharp Language Center][MongoC#LangCenter] を参照してください。 
+MongoDB 用 C# アプリケーションの開発の詳細については、[CSharp Language Center][MongoC#LangCenter] をご覧ください。 
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -482,13 +482,13 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [Image11]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitDeploymentComplete.png
 
 <!-- TOC BOOKMARKS -->
-[仮想マシンを作成して MongoDB をインストールする]: #virtualmachine
-[開発用コンピューターで My Task List ASP.NET アプリケーションを作成して実行する]: #createapp
-[Azure の Web サイトを作成する]: #createwebsite
-[Git を使用して Web サイトに ASP.NET アプリケーションをデプロイする]: #deployapp
+[Create a virtual machine and install MongoDB]: #virtualmachine
+[Create and run the My Task List ASP.NET application on your development computer]: #createapp
+[Create an Azure web site]: #createwebsite
+[Deploy the ASP.NET application to the web site using Git]: #deployapp
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: "Azure CDN のリアルタイム アラート | Microsoft Docs"
 description: "Microsoft Azure CDN のリアルタイム アラート。 リアルタイム アラートは、CDN プロファイル内のエンドポイントのパフォーマンスに関する通知を提供します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a6bd8982bb89c1829a6a5945f6ff9d8ed7009f0
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
 
 
 ---
@@ -76,7 +76,7 @@ ms.openlocfilehash: 2a6bd8982bb89c1829a6a5945f6ff9d8ed7009f0
     
     * **[Condition Start (条件開始時)]** は、指定された条件を最初に検出したときに通知を送信することを示します。
     * **[Condition End (条件終了時)]** は、指定された条件を検出しなくなったときに通知を送信することを示します。 この通知は、ネットワーク監視システムが、指定された条件の発生を検出した後にのみトリガーすることができます。
-    * **[継続]** は、ネットワーク監視システムが指定された条件を検出するたびに通知を送信することを示します。 ネットワーク監視システムは、間隔 1 回ごとに 1 回しか指定された条件をチェックしないことに注意してください。
+    * **[継続]** は、ネットワーク監視システムが指定された条件を検出するたびに通知を送信することを示します。 ネットワーク監視システムは、間隔&1; 回ごとに&1; 回しか指定された条件をチェックしないことに注意してください。
     * **[Condition Start and End (条件の開始時と終了時)]** は、指定された条件を最初に検出したときと、条件が検出されなくなったときに、通知を送信することを示します。
 11. 電子メールで通知を受信する場合は、 **[Notify by Email (電子メールで通知)]** チェックボックスをオンします。  
     
@@ -107,13 +107,13 @@ ms.openlocfilehash: 2a6bd8982bb89c1829a6a5945f6ff9d8ed7009f0
 13. **[保存]** ボタンをクリックして、アラートの構成を保存します。  手順 5 で **[有効な警告]** をオンにした場合は、ここでアラートがアクティブになります。
 
 ## <a name="next-steps"></a>次のステップ
-*  [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
-*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-*  [使用量パターン](cdn-analyze-usage-patterns.md)
+* [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
+* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+* [使用量パターン](cdn-analyze-usage-patterns.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

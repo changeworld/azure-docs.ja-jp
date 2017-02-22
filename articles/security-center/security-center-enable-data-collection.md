@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center のデータ収集を有効にする | Microsoft Docs"
-description: " Azure Security Center のデータ収集を有効にする方法について説明します。 "
+description: " Azure Security Center のデータ収集を有効にする方法について説明します。. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 01/04/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 536759cd4c6dbbfd73491422d426223cd71f8ce0
+ms.sourcegitcommit: 486ab53ede1465da2cba16ff4160599b50c2b092
+ms.openlocfilehash: 7cad771f5f134a9dffe7846a2c82017e3da9d9bc
 
 
 ---
@@ -25,8 +25,8 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。 ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[セキュリティ センター]** ブレードの **[推奨事項]** タイルを選択します。  **[推奨事項]** ブレードが表示されます。
@@ -35,7 +35,9 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
    ![Recommendations blade][2]
 3. **[Turn on data collection (データ収集の有効化)]** ブレードで、該当するサブスクリプションを選択します。 対応するサブスクリプションの **[セキュリティ ポリシー]** ブレードが表示されます。
 4. **[セキュリティ ポリシー]** ブレードで、**[データ収集]** の下の **[オン]** を選択すると、自動的にログが収集されます。 また、データの収集をオンにすると、サブスクリプションの既存の VM と、サポートされる新しい VM のすべてで、監視拡張機能がプロビジョニングされるようになります。
+
    ![Security policy blade][3]
+
 5. [ **保存**] を選択します。
 6. **[Choose a storage account per region (リージョンごとにストレージ アカウントを選択)]**を選択します。 実行している仮想マシンがある各リージョンに対し、これらの仮想マシンから収集されたデータが格納されているストレージ アカウントを選択します。 リージョンごとにストレージ アカウントを選択しないと、自動的に作成されます。 この例では、**[newstoracct]** を選択します。 ストレージ アカウントは、サブスクリプションのセキュリティ ポリシーに戻って別のストレージ アカウントを選択することで後で変更できます。
    ![Choose a storage account][4]
@@ -43,19 +45,19 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 > [!NOTE]
 > データ収集を有効にして、最初にサブスクリプション レベルでストレージ アカウントを選択することをお勧めします。 セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、データ収集とストレージ アカウントの構成はサブスクリプション レベルでのみ発生します。
-> 
-> 
+>
+>
 
 ## <a name="after-data-collection-is-enabled"></a>データ収集の有効化後
 データ収集は、Azure Monitoring Agent と Azure セキュリティの監視拡張機能を使用して有効にします。 Azure セキュリティの監視拡張機能では、さまざまなセキュリティ関連の構成をスキャンして、 [Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースに送信します。 さらに、オペレーティング システムでは、イベント ログ エントリが作成されます。 Azure Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをストレージ アカウントにコピーします。 またストレージ アカウントには、監視エージェントによってクラッシュ ダンプ ファイルがコピーされます。 これは、セキュリティ ポリシーで構成したストレージ アカウントです。
 
 ## <a name="disabling-data-collection"></a>データ収集の無効化
-データ収集はいつでも無効にすることができます。データ収集を無効にすると、Security Center によってインストールされていた監視エージェントが削除されます。  データ収集をオフにするには、サブスクリプションを選択する必要があります。
+データ収集はいつでも無効にすることができます。データ収集を無効にすると、Security Center によってインストールされていた監視エージェントが自動的に削除されます。  データ収集をオフにするには、サブスクリプションを選択する必要があります。
 
 > [!NOTE]
 > セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、データの収集をオフにするにはサブスクリプションを選択する必要があります。
-> 
-> 
+>
+>
 
 1. **[セキュリティ センター]** ブレードに戻り、**[ポリシー]** タイルを選択します。 **[セキュリティ ポリシー - サブスクリプションまたはリソース グループごとにポリシーを定義する]** ブレードが表示されます。
    ![Select the policy tile][5]
@@ -63,7 +65,7 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
    ![Select subscription to disable data collection][6]
 3. 対応するサブスクリプションの **[セキュリティ ポリシー]** ブレードが表示されます。  [データ収集] の下の **[オフ]** を選択します。
 4. 上部のリボンで **[保存]** を選択します。
-5. 上部のリボンにある **[エージェントを削除]** を選択し、既存の仮想マシンからエージェントを削除します。
+
 
 ## <a name="see-also"></a>関連項目
 この記事では、"データ収集の有効化" という Security Center の推奨事項を実践する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
@@ -86,6 +88,6 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

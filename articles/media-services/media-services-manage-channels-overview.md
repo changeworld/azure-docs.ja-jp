@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: b9a4a790cab7b5600bf4942ac81367192a008447
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
 
 
 ---
@@ -44,7 +44,7 @@ Azure Media Services では、**チャネル**、**プログラム**、**スト�
 
 **チャネル** は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは次の方法でライブ入力ストリームを受信できます。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。  Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
   > [!NOTE]
   > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
@@ -91,14 +91,14 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>チャネルとその関連コンポーネントの説明
 ### <a name="channel"></a>チャネル
-Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://msdn.microsoft.com/library/azure/dn783458.aspx)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
+Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://docs.microsoft.com/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
 
 チャネル作成時に取り込み URL とプレビュー URL を取得できます。 これらの URL を取得するには、チャネルが開始済み状態である必要はありません。 ライブ トランスコーダーからチャネルへのデータのプッシュを開始する準備ができたら、チャネルを開始する必要があります。 ライブ トランスコーダーがデータの取り込みを開始した後、ストリームをプレビューできます。
 
 各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを&1; つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
 
 ### <a name="program"></a>プログラム
-ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://msdn.microsoft.com/library/azure/dn783463.aspx)を使用して制御します。 プログラムはチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
+ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://docs.microsoft.com/rest/api/media/operations/program)を使用して制御します。 プログラムはチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
 録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
 クライアントが現在のライブ位置からさかのぼってシークできる最長時間も ArchiveWindowLength によって決まります。 プログラムの放送は、指定された期間継続しますが、ArchiveWindowLength を過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
@@ -157,6 +157,6 @@ Media Services においてライブ ストリーミング コンテンツの処
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

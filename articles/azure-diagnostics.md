@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: eba5adfcbba4800632e197d3f25760a857137a88
+ms.sourcegitcommit: 7814e02df5c6aa0ea9c38e3a048dd52e39436c3c
+ms.openlocfilehash: 349a7d82a96868f65598597c1db192484da9b34d
 
 
 ---
-# <a name="what-is-microsoft-azure-diagnostics"></a>Microsoft Azure 診断とは
+# <a name="what-is-azure-diagnostics"></a>Azure 診断について
 Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在時点でのサポート対象は、Azure Cloud Service Web および Worker ロール、Microsoft Windows を実行している Azure Virtual Machines、および Service Fabric となっています。 その他の Azure サービスには、独自の独立した診断があります。
 
 ## <a name="data-you-can-collect"></a>収集可能なデータ
@@ -82,6 +82,6 @@ Web Apps では Azure 診断が使用されないので注意してください�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

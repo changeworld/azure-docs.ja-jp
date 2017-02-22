@@ -28,7 +28,7 @@ ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な使用シナリオを次に示します。
 
 * 顧客に受信通知を自動送信する
-* 顧客に広告メールを月 1 回送信するための配布リストを管理する
+* 顧客に広告メールを月&1; 回送信するための配布リストを管理する
 * ブロックされた電子メールや顧客の応答性などを表す測定値をリアルタイムで収集する
 * 傾向を認識するために役立つレポートを生成する
 * 顧客の問い合わせを転送する
@@ -46,7 +46,7 @@ Azure PHP アプリケーションで SendGrid を使用するために、特別
 SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
 
 ### <a name="smtp-api"></a>SMTP API
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 *Swift Mailer* ライブラリは、[http://swiftmailer.org/download][http://swiftmailer.org/download] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[[Composer]] を使用します)。 このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。 *Swift Mailer* ライブラリは、[http://swiftmailer.org/download][http://swiftmailer.org/download] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[Composer] を使用します)。 このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
 
     <?php
      include_once "vendor/autoload.php";
@@ -280,7 +280,7 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 
 フィルターは、フィルターのプロパティを使用してメッセージに適用できます。 各フィルターは、フィルター固有の設定を格納したハッシュで指定します。 次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。
 この例では、 [sendgrid-php]ライブラリを使用します。
-ライブラリをインストールするには、 [[Composer]] を使用します。
+ライブラリをインストールするには、 [Composer] を使用します。
 
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -397,7 +397,7 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
 [トランザクション メール配信]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[[Composer]]: https://getcomposer.org/download/
+[Composer]: https://getcomposer.org/download/
 
 
 

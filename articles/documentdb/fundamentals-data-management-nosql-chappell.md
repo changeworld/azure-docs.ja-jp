@@ -1,24 +1,9 @@
 ---
-title: "Azure での NoSQL テクノロジについて | Microsoft Docs"
-description: "Azure NoSQL が役立つリレーショナル データベースに適していないデータを管理する方法について説明します。 DocumentDB、テーブル ストレージ、HBase、HDInsight、およびSQL Database。"
-editor: cgronlun
-manager: jhubbard
-services: documentdb, storage, hdinsight
-documentationcenter: 
-author: mimig1
-ms.assetid: eb9c081f-7d67-4d60-be77-1181108da30d
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/26/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1445c35231274b816df632f2c81f5d102d8a885f
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
 
 
 
@@ -26,7 +11,7 @@ ms.openlocfilehash: 1445c35231274b816df632f2c81f5d102d8a885f
 # <a name="understanding-nosql-on-microsoft-azure"></a>Microsoft Azure での NoSQL について
 Azure で利用できる一連の NoSQL テクノロジに関心があるものの、それらの特長や使用できるリレーショナル モデルに関する情報が不足していますか。 または、特定の情報は把握しているが、使用しているアプリケーションにどの NoSQL テクノロジが最適か知る必要がありますか。 
 
-該当する場合は、次の 2 つのリソースを使用できます。 
+該当する場合は、次の&2; つのリソースを使用できます。 
 
 * [NoSQL 対 SQL](documentdb-nosql-vs-sql.md) 」の記事。 この記事は、NoSQL と SQL の相違点について説明し、Microsoft から提供している NoSQL および SQL サービスの概要を紹介しています。
 * [Microsoft Azure での NoSQL について](http://go.microsoft.com/fwlink/p/?LinkId=330292) 」のホワイト ペーパー。 このホワイトペーパーでは、次の手順について説明します。
@@ -40,6 +25,6 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

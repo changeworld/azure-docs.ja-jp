@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation DSC で Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする | Microsoft Docs"
-description: "Azure Automation DSC を使用して Azure に Azure Site Recovery モビリティ サービスと仮想/物理マシン用 Azure エージェントを自動的にデプロイする方法について説明します。"
+title: "Azure Automation DSC を使用して Site Recovery モビリティ サービスをデプロイする | Microsoft Docs"
+description: "Azure に VMware VM と物理サーバーをレプリケートするために Azure Automation DSC を使用して Azure Site Recovery モビリティ サービスと Azure エージェントを自動デプロイする方法についての説明"
 services: site-recovery
 documentationcenter: 
 author: krnese
@@ -12,15 +12,15 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/06/2017
 ms.author: krnese
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b5895b772d411f783480275ee990163f662b7ee2
+ms.sourcegitcommit: efacf5d10b80fbeea7bd3d2569d878bd8bfa002b
+ms.openlocfilehash: ac6b72bbb70f838493a7e4857217f7c0e669841c
 
 
 ---
-# <a name="replicate-vmware-virtual-machines-to-azure-by-using-site-recovery-with-azure-automation-dsc"></a>Azure Automation DSC で Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする
+# <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>VM レプリケーションのために Azure Automation DSC を使用してモビリティ サービスをデプロイする
 Operations Management Suite では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよび障害復旧ソリューションが提供されています。
 
 当初は HYPER-V レプリカを使用した HYPER-V に対応していました。 しかし、お客様が複数のハイパーバイザーとプラットフォームをクラウドでデプロイしていることを認識したため、多様なセットアップをサポートするように拡張しました。
@@ -32,7 +32,7 @@ Operations Management Suite では、ビジネス継続性計画の一部とし�
 
 管理サーバーは複数のサーバー ロールを実行します。 これらのロールの1 つが ” *構成*” で、通信を調整し、データ レプリケーションと復旧プロセスを管理します。
 
-また ” *プロセス* ” ロールは、レプリケーションのゲートウェイとして機能します。 プロセス ロールは保護されたソース マシンからレプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージ アカウントに送信します。 また、プロセス ロールの機能の 1 つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
+また ” *プロセス* ” ロールは、レプリケーションのゲートウェイとして機能します。 プロセス ロールは保護されたソース マシンからレプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージ アカウントに送信します。 また、プロセス ロールの機能の&1; つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
 
 Azure でのフェールバックがある場合は、” *マスター ターゲット* ” ロールが、この操作の一環としてレプリケーション データを処理します。
 
@@ -50,31 +50,31 @@ Azure でのフェールバックがある場合は、” *マスター ター�
 ## <a name="prerequisites"></a>前提条件
 * 必須のセットアップを格納するリポジトリ
 * 管理サーバーへの登録に必要なパスフレーズを格納するリポジトリ
-  
+
   > [!NOTE]
   > 管理サーバーごとに一意のパスフレーズが生成されます。 複数の管理サーバーをデプロイする場合は、passphrase.txt ファイルに正しいパスフレーズが保存されていることを確認してください。
-  > 
-  > 
+  >
+  >
 * 保護を有効にするコンピューターにインストールされている Windows Management Framework (WMF) 5.0 (Automation DSC の要件)
-  
+
   > [!NOTE]
   > WMF 4.0 がインストールされている Windows コンピューターに対して DSC を使用する場合は、[分離された環境での DSC の使用](#Use DSC in disconnected environments)セクションをご覧ください。
-  > 
-  > 
+  >
+  >
 
 モビリティ サービスは、コマンドラインからインストールでき、いくつかの引数を使用できます。 このため、バイナリを (セットアップからの抽出後に) 取得し、DSC 構成を使用して取得できる場所に保存する必要があります。
 
 ## <a name="step-1-extract-binaries"></a>手順 1: バイナリの抽出
 1. このセットアップに必要なファイルを抽出するために、管理サーバーで次のディレクトリに移動します。
-   
+
     **\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**
-   
+
     このフォルダーに、次の名前の MSI ファイルがあります。
-   
+
     **Microsoft-ASR_UA_version_Windows_GA_date_Release.exe**
-   
+
     次のコマンドを使用してインストーラーを抽出します。
-   
+
     **.\Microsoft-ASR_UA_9.1.0.0_Windows_GA_02May2016_release.exe /q /x:C:\Users\Administrator\Desktop\Mobility_Service\Extract**
 2. すべてのファイルを選択し、圧縮 (zip 形式) フォルダーに送ります。
 
@@ -205,8 +205,8 @@ configuration ASRMobilityService {
 
 > [!NOTE]
 > 実際の管理サーバーに合わせて構成の CSIP を置換して、エージェントが正しく接続され、正しいパスフレーズが使用されるようにしてください。
-> 
-> 
+>
+>
 
 ## <a name="step-3-upload-to-automation-dsc"></a>手順 3: Automation DSC へのアップロード
 作成した DSC 構成によって必要な DSC リソース モジュール (xPSDesiredStateConfiguration) がインポートされるため、DSC 構成をアップロードする前に、Automation にこのモジュールをインポートする必要があります。
@@ -254,9 +254,9 @@ DSC 構成が正常に Automation DSC へ公開およびアップロードされ
 
 ## <a name="step-4-onboard-machines-to-automation-dsc"></a>手順 4: Automation DSC へのマシンの追加
 > [!NOTE]
-> このシナリオを完了するための前提条件の 1 つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。 お使いのプラットフォームに適切なバージョンは、 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=50395)からダウンロードおよびインストールできます。
-> 
-> 
+> このシナリオを完了するための前提条件の&1; つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。 お使いのプラットフォームに適切なバージョンは、 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=50395)からダウンロードおよびインストールできます。
+>
+>
 
 ノードに適用する DSC の metaconfig を作成します。 正常に作成するには、Azure で選択した Automation アカウントのエンドポイント URL とプライマリ キーを取得する必要があります。 これらの値は、Automation アカウントの **[すべての設定]** ブレードの **[キー]** にあります。
 
@@ -514,7 +514,6 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

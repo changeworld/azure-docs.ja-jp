@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>ビッグ データの要件に対する Azure Data Lake Store の使用
-ビッグ データの処理には主に 4 つの段階があります。
+ビッグ データの処理には主に&4; つの段階があります。
 
 * データ ストアへの大量のデータの取り込み (リアルタイムまたは一括)
 * データの処理
@@ -33,7 +33,7 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 ## <a name="ingest-data-into-data-lake-store"></a>Data Lake Store へのデータの取り込み
 このセクションでは、さまざまなデータ ソースと、そのデータを Data Lake Store アカウントに取り込む各種方法について説明します。
 
-![Data Lake Store へのデータの取り込み](./media/data-lake-store-data-scenarios/ingest-data.png "Ingest data into Data Lake Store")
+![Data Lake Store へのデータの取り込み](./media/data-lake-store-data-scenarios/ingest-data.png "Data Lake Store へのデータの取り込み")
 
 ### <a name="ad-hoc-data"></a>アドホック データ
 これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 アドホック データの取り込み方法は、データ ソースに応じてさまざまです。
@@ -50,7 +50,7 @@ ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
 
 * [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md)。イベント ハブに取り込まれたイベントは、Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)。イベント ハブからイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。イベント ハブからイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
 
 ### <a name="relational-data"></a>リレーショナル データ
 リレーショナル データベースのデータもソースとして扱うことができます。 一定の期間を経て、リレーショナル データベースには大量のデータが収集されます。ビッグ データのパイプラインを介して処理すると、これらのデータから重要な知見が得られます。 このようなデータを Data Lake Store に移動するには、次のツールを使用できます。
@@ -76,7 +76,7 @@ Web サーバー ログ データをアップロードする場合、または�
 * [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)
 
 ### <a name="data-stored-in-on-premise-or-iaas-hadoop-clusters"></a>オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
-大量のデータが既存の Hadoop クラスターの HDFS を使用するコンピューターにローカルに格納されている場合があります。 Hadoop クラスターは、オンプレミスのデプロイ内にある場合も、Azure の IaaS クラスター内にある場合もあります。 このようなデータを 1 回限りまたは定期的に Azure Data Lake Store にコピーする要件が存在します。 これを実現するために、さまざまな方法を使用できます。 以下の表に、それぞれの方法とそのトレードオフを示します。
+大量のデータが既存の Hadoop クラスターの HDFS を使用するコンピューターにローカルに格納されている場合があります。 Hadoop クラスターは、オンプレミスのデプロイ内にある場合も、Azure の IaaS クラスター内にある場合もあります。 このようなデータを&1; 回限りまたは定期的に Azure Data Lake Store にコピーする要件が存在します。 これを実現するために、さまざまな方法を使用できます。 以下の表に、それぞれの方法とそのトレードオフを示します。
 
 | アプローチ | 詳細 | 長所 | 考慮事項 |
 | --- | --- | --- | --- |
@@ -91,14 +91,14 @@ Web サーバー ログ データをアップロードする場合、または�
 * **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../storage/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
 
   > [!NOTE]
-  > Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 200 GB 以下である必要があります。
+  > Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 195 GB 以下である必要があります。
   >
   >
 
 ## <a name="process-data-stored-in-data-lake-store"></a>Data Lake Store に格納されているデータの処理
 Data Lake Store でデータが利用できるようになったら、サポートされているビッグ データ アプリケーションを使用して、そのデータの分析を実行できます。 現在、Data Lake Store に格納されたデータに対してデータ分析ジョブを実行するには、Azure HDInsight と Azure Data Lake Analytics が使用できます。
 
-![Analyze data in Data Lake Store](./media/data-lake-store-data-scenarios/analyze-data.png "Analyze data in Data Lake Store")
+![Data Lake Store 内のデータの分析](./media/data-lake-store-data-scenarios/analyze-data.png "Data Lake Store 内のデータの分析")
 
 次の例を参考にしてください。
 
@@ -111,7 +111,7 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 * 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Store から Azure SQL Database またはオンプレミスの SQL Server にデータを移動できます。
 * アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
-![Egress data from Data Lake Store](./media/data-lake-store-data-scenarios/egress-data.png "Egress data from Data Lake Store")
+![Data Lake Store からのデータの出力](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Store からのデータの出力")
 
 このような場合、次のオプションのいずれかを使用できます。
 
@@ -128,13 +128,13 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 ## <a name="visualize-data-in-data-lake-store"></a>Data Lake Store 内のデータの視覚化
 複数のサービスを組み合わせて使用することで、Data Lake Store に格納されたデータを視覚的に表現することができます。
 
-![Data Lake Store 内のデータの視覚化](./media/data-lake-store-data-scenarios/visualize-data.png "Visualize data in Data Lake Store")
+![Data Lake Store 内のデータの視覚化](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Store 内のデータの視覚化")
 
 * まず、[Azure Data Factory を使って、Data Lake Store から Azure SQL Data Warehouse にデータを移動](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)します。
 * その後、 [Power BI を Azure SQL Data Warehouse と統合](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) して、データを視覚的に表現することができます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

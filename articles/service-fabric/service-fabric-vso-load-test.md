@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 11/18/2016
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b7d5280fd6dccdf325920ea3f924f965d533b210
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e8e270ce865d4da3ee219958b308db2c1c89b11b
 
 
 ---
@@ -128,6 +128,6 @@ Visual Studio Team Services のロード テストで提供されている API �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

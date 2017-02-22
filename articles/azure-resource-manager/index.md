@@ -1,13 +1,25 @@
 ---
+title: "Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。"
+services: azure-resource-manager
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: azure-resource-manager
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: e48fea077e09518ab5005518c8e8a413df458b93
-ms.openlocfilehash: a7b6655d2314b198706177f1adaf1b88eb135307
+ms.sourcegitcommit: c4a7875e7a5cace68b592cc7c4ea673851e0b070
+ms.openlocfilehash: ecf5fcec2ec5c1d11c34a035f24d78f991d66b57
 
 ---
 #<a name="azure-resource-manager-documentation"></a>Azure Resource Manager のドキュメント
 
-アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure リソース マネージャーを使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 リソース マネージャーには、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+Resource Manager を使用して、グループなどのソリューション リソースをデプロイ、監視、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソース グループを設定し、一貫性のある繰り返し可能なデプロイ用にテンプレートを作成する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -112,7 +124,7 @@ ms.openlocfilehash: a7b6655d2314b198706177f1adaf1b88eb135307
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources">PowerShell</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources">PowerShell</a></p>
                         <p><a href="/cli/azure/resource">Azure CLI</a></p>
                     </div>
                 </div>
@@ -148,16 +160,10 @@ ms.openlocfilehash: a7b6655d2314b198706177f1adaf1b88eb135307
     </li>
 </ul>
 
----
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/azure-resource-manager.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Resource Manager のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO3-->
 
 

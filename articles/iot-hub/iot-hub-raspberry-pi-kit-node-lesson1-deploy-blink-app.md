@@ -1,6 +1,8 @@
 ---
-title: "点滅アプリケーションを作成してデプロイする | Microsoft Docs"
-description: "GitHub のサンプル Node.js アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。"
+featureFlags:
+- usabilla
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 1: アプリのデプロイ | Microsoft Docs"
+description: "GitHub のサンプル Node.js アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。"
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,14 +18,14 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 09554b64f31c909e413f5a93dfd6d74186bf6e21
-ms.openlocfilehash: b9e49d3637b3e3aff1a89e57c125a59877544e01
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 90ceb432bd9506dc40e340af21a3cae4e21a20b0
 
 
 ---
 # <a name="create-and-deploy-the-blink-application"></a>点滅アプリケーションを作成してデプロイする
 ## <a name="what-you-will-do"></a>学習内容
-GitHub のサンプル Node.js アプリケーションを複製し、gulp ツールを使ってサンプル アプリケーションを Raspberry Pi 3 にデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-raspberry-pi-kit-node-troubleshooting.md)で解決策を探してください。
+GitHub のサンプル Node.js アプリケーションを複製し、gulp ツールを使ってサンプル アプリケーションを Raspberry Pi 3 にデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。 問題が発生した場合は、[トラブルシューティングのページ](iot-hub-raspberry-pi-kit-node-troubleshooting.md)で解決策を探してください。
 
 ## <a name="what-you-will-learn"></a>学習内容
 この記事では、次のことについて説明します。
@@ -141,7 +143,7 @@ gulp deploy && gulp run
 ```
 
 ### <a name="verify-the-app-works"></a>アプリの動作確認
-Pi の LED が 2 秒間隔で点滅していることを確認します。  LED が点滅していない場合、一般的な問題の解決策については、[トラブルシューティング ガイド](iot-hub-raspberry-pi-kit-node-troubleshooting.md)をご覧ください。
+Pi の LED が&2; 秒間隔で点滅していることを確認します。  LED が点滅していない場合、一般的な問題の解決策については、[トラブルシューティング ガイド](iot-hub-raspberry-pi-kit-node-troubleshooting.md)をご覧ください。
 ![LED の点滅](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)
 
 ## <a name="summary"></a>概要
@@ -153,6 +155,6 @@ Pi を操作するために必要なツールをインストールし、Pi に�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

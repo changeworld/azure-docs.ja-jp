@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a83b4e910dbb8421d80416286c3d1eadcbf7bba7
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
 
 
 ---
@@ -127,13 +127,13 @@ Resource Manager テンプレートでは、ブートストラップを使用で
     }
 
 
-![hdinsight hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>関連項目
-* 「[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]」では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
-* 「[HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]」
+* [HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
+* [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
 * [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* 「[HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]」
+* [HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
 
@@ -141,7 +141,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-provision-clusters.md
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
@@ -258,6 +258,6 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

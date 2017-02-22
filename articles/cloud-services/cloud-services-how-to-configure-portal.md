@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2016
+ms.date: 12/07/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a8d681490c174d73361633a9e0e63208eea993e6
+ms.sourcegitcommit: bb66627b170c9010414b24266fdae608e67f5c61
+ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
 
 
 ---
@@ -24,17 +24,17 @@ ms.openlocfilehash: a8d681490c174d73361633a9e0e63208eea993e6
 > [!div class="op_single_selector"]
 > * [Azure ポータル](cloud-services-how-to-configure-portal.md)
 > * [Azure クラシック ポータル](cloud-services-how-to-configure.md)
-> 
-> 
+>
+>
 
 クラウド サービスで最もよく使用される設定は Azure ポータルで構成できます。 また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。 どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 また、クラウド サービス ロールまたはリモート デスクトップのインスタンスを管理することもできます。
 
-Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。 この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。 この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう&1; 台で更新を行うことができます。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 ## <a name="change-a-cloud-service"></a>クラウド サービスの変更
-[Azure ポータル](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。 ここから、多くの部分を管理します。 
+[Azure ポータル](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。 ここから、多くの部分を管理します。
 
 ![[設定] ページ](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
@@ -42,13 +42,20 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ![Azure クラウド サービス設定ブレード](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
-> [!NOTE]
-> **Azure Portal** を使用して、クラウド サービスで使用するオペレーティング システムを変更することはできません。この設定を変更するには、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使用する必要があります。 詳細については、[こちら](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)を参照してください。
-> 
-> 
+### <a name="manage-guest-os-version"></a>ゲスト OS バージョンの管理
+
+既定では、ゲスト OS は、サービス構成 (.cscfg) で指定した Windows Server 2016 などの OS ファミリー内で、サポートされている最新のイメージに定期的に更新されます。
+
+特定の OS バージョンを対象とする必要がある場合は、**[構成]** ブレードで設定できます。
+
+![OS バージョンの設定](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
+
+
+>[!IMPORTANT]
+> 特定の OS バージョンを選択すると、OS の自動更新は無効になり、パッチ適用はユーザー自身の責任で行う必要があります。 ロール インスタンスが確実に更新プログラムを受け取らないと、アプリケーションのセキュリティが脆弱になる可能性があります。
 
 ## <a name="monitoring"></a>監視
-クラウド サービスにアラートを追加できます。 **[設定]** > **[アラート ルール]** > **[アラートの追加]** の順にクリックします。 
+クラウド サービスにアラートを追加できます。 **[設定]** > **[アラート ルール]** > **[アラートの追加]** の順にクリックします。
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -58,7 +65,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * ディスクの書き込み
 * ネットワーク受信
 * ネットワーク送信
-* CPU の割合 
+* CPU の割合
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
@@ -70,7 +77,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 ここからは、タイルで使用するグラフをカスタマイズしたり、アラート ルールを追加したりできます。
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>再起動、再イメージ化、またはリモート デスクトップ
-現時点では、 **Azure ポータル**を使用してリモート デスクトップを構成することはできません。 ただし、[Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)、または [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) を使用すれば設定できます。 
+現時点では、 **Azure ポータル**を使用してリモート デスクトップを構成することはできません。 ただし、[Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)、または [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) を使用すれば設定できます。
 
 最初に、クラウド サービス インスタンスをクリックします。
 
@@ -84,17 +91,17 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 [サービス構成 (cscfg)](cloud-services-model-and-package.md#cscfg) ファイルを使用してクラウド サービスを再構成することが必要な場合があります。 .cscfg ファイルをダウンロードし、変更して、アップロードする必要があります。
 
 1. **[設定]** アイコンまたは **[すべての設定]** リンクをクリックして、**[設定]** ブレードを開きます。
-   
+
     ![[設定] ページ](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. **[構成]** 項目をクリックします。
-   
+
     ![[構成] ブレード](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **[ダウンロード]** ボタンをクリックします。
-   
+
     ![[ダウンロード]](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. サービス構成ファイルを更新した後、次のステップでファイルをアップロードして構成の更新内容を適用します。
-   
-    ![アップロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png) 
+
+    ![アップロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. .cscfg ファイルを選択し、 **[OK]**をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
@@ -105,7 +112,6 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

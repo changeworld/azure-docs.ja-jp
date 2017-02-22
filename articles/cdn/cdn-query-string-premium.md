@@ -1,9 +1,9 @@
 ---
-title: "クエリ文字列による要求の Azure CDN Premium from Verizon キャッシュ動作の制御 | Microsoft Docs"
+title: "クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium | Microsoft Docs"
 description: "Azure CDN クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 20efef4e60da6a0ab07eab22ff18e7ae9ab12a30
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 145067c2ce50b41c4783f4de4052c0e7cb529fc7
 
 
 ---
-# <a name="controlling-caching-behavior-of-cdn-requests-with-query-strings---premium"></a>クエリ文字列による CDN 要求のキャッシュ動作の制御 - Premium
+# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium
 > [!div class="op_single_selector"]
 > * [Standard](cdn-query-string.md)
 > * [Azure CDN Premium from Verizon](cdn-query-string-premium.md)
@@ -35,7 +35,7 @@ ms.openlocfilehash: 20efef4e60da6a0ab07eab22ff18e7ae9ab12a30
 > 
 > 
 
-次の 3 つのモードを使用できます。
+次の&3; つのモードを使用できます。
 
 * **standard-cache**: これは、既定のモードです。  CDN エッジ ノードは、クエリ文字列を要求元から最初の要求の配信元に渡して、資産をキャッシュします。  エッジ ノードから提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
 * **no-cache**: このモードでは、クエリ文字列のある要求は CDN エッジ ノードでキャッシュされません。  エッジ ノードは配信元から直接資産を取得し、それを各要求により要求元に渡します。
@@ -62,6 +62,6 @@ ms.openlocfilehash: 20efef4e60da6a0ab07eab22ff18e7ae9ab12a30
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

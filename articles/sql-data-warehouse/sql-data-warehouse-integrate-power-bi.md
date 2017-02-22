@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1f20835c98badbcd7f179555c4740127efbedb79
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 201efc5225d6c12028b48ccaf6764c60b44dce58
 
 
 ---
@@ -57,8 +57,8 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]:  ./sql-data-warehouse-overview-develop/
-[SQL Data Warehouse の統合の概要]:  ./sql-data-warehouse-overview-integration/
+[SQL Data Warehouse development overview]:  ./sql-data-warehouse-overview-develop/
+[SQL Data Warehouse integration overview]:  ./sql-data-warehouse-overview-integration/
 
 <!--MSDN references-->
 
@@ -66,6 +66,6 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

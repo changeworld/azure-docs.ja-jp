@@ -8,6 +8,7 @@
 ## [プロキシとファイアウォール](log-analytics-proxy-firewall.md)
 ## [使用状況データ](log-analytics-usage.md)
 ## [Log Analytics FAQ](log-analytics-faq.md)
+## [サービス プロバイダー](log-analytics-service-providers.md)
 
 # 方法
 ## データを収集する
@@ -15,7 +16,7 @@
 #### [Windows エージェント](log-analytics-windows-agents.md)
 #### [Linux エージェント](log-analytics-linux-agents.md)
 #### [Azure Virtual Machines](log-analytics-azure-vm-extension.md)
-#### [Azure Storage](log-analytics-azure-storage.md)
+#### [Azure リソース](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Configuration Manager](log-analytics-sccm.md)
 #### [OMS ゲートウェイ](log-analytics-oms-gateway.md)
@@ -45,6 +46,9 @@
 #### [変更の追跡](log-analytics-change-tracking.md)
 #### [コンテナー](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
+#### Logic Apps B2B メッセージ
+##### [Logic Apps B2B メッセージ ソリューション](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
+##### [Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [マルウェアの評価](log-analytics-malware.md)
 #### [ネットワーク分析](log-analytics-azure-networking-analytics.md)
 #### [ネットワーク パフォーマンス監視](log-analytics-network-performance-monitor.md)
@@ -59,11 +63,13 @@
 ## 開発
 ### [データ コレクター API](log-analytics-data-collector-api.md)
 ### [PowerShell コマンドレット](log-analytics-powershell-workspace-configuration.md)
+### [Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)
 ### [ログ検索 API](log-analytics-log-search-api.md)
 ### [アラート API](log-analytics-api-alerts.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [REST ()](/rest/api/loganalytics)
 
 # リソース
 ## [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
@@ -71,6 +77,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

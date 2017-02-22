@@ -1,6 +1,6 @@
 ---
-title: "デバイス ツイン プロパティを使用する | Microsoft Docs"
-description: "このチュートリアルでは、デバイス ツイン プロパティの使用方法について説明します。"
+title: "Azure IoT Hub デバイス ツインのプロパティの使用 (Node) | Microsoft Docs"
+description: "Azure IoT Hub デバイス ツインを使用してデバイスを構成する方法。 Azure IoT SDK for Node.js を使用して、シミュレートされたデバイス アプリと、デバイス ツインを使用してデバイスの構成を変更するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 400eab43a417980abe9df5fa75ee9f9e43b296d0
-ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 
 
 ---
-# <a name="tutorial-use-desired-properties-to-configure-devices"></a>チュートリアル: 必要なプロパティを使用してデバイスを構成する
+# <a name="use-desired-properties-to-configure-devices-node"></a>必要なプロパティを使用してデバイスを構成する (Node)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 * **SimulateDeviceConfiguration.js**: 必要な構成の更新を待機し、シミュレートされた構成の更新プロセスの状態を報告する、シミュレートされたデバイス アプリです。
-* **SetDesiredConfigurationAndQuery.js**: バックエンドから実行し、デバイスの必要な構成を設定して、構成の更新プロセスをクエリする、Node.js アプリです。
+* **SetDesiredConfigurationAndQuery.js**: Node.js バックエンド アプリで、デバイス上に目的の構成を設定し、構成更新プロセスをクエリします。
 
 > [!NOTE]
-> デバイス アプリケーションとバックエンド アプリケーション両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリケーションとバックエンド アプリの両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
@@ -58,7 +58,7 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. テキスト エディターを使用して、**simulatedeviceconfiguration** フォルダーに新しい **SimulateDeviceConfiguration.js** ファイルを作成します。
-4. **SimulateDeviceConfiguration.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーした接続文字列で置き換えます。
+4. **SimulateDeviceConfiguration.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -141,7 +141,7 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
             });
         };
    
-    **initConfigChange** メソッドは、構成の更新要求を使ってローカル デバイス ツイン オブジェクトの報告されるプロパティを更新し、状態を **Pending (保留中)** に設定し、サービス上のデバイス ツインを更新します。 デバイス ツインを正常に更新できたら、**completeConfigChange** を実行して停止する、長期間実行していたプロセスをシミュレートします。 このメソッドは、ローカル デバイス ツインの報告されるプロパティを更新し、状態を **Success (成功)** に設定して、**pendingConfig** オブジェクトを削除します。 その後、サービス上のデバイス ツインを更新します。
+    **initConfigChange** メソッドは、構成の更新要求を使用してローカル デバイス ツイン オブジェクトの報告されるプロパティを更新し、状態を **保留中**に設定し、サービス上のデバイス ツインを更新します。 デバイス ツインを正常に更新できたら、**completeConfigChange** を実行して停止する、長期間実行していたプロセスをシミュレートします。 このメソッドは、ローカル デバイス ツインの報告されるプロパティを更新し、状態を **Success (成功)** に設定して、**pendingConfig** オブジェクトを削除します。 その後、サービス上のデバイス ツインを更新します。
    
     帯域幅を節約するため、報告されたプロパティの更新は、ドキュメント全体を置き換えるのではなく、変更するプロパティのみを指定して行われます (上のコードでは **patch**)。
    
@@ -169,12 +169,12 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
     npm install azure-iothub node-uuid --save
     ```
 3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **SetDesiredAndQuery.js** ファイルを作成します。
-4. **SetDesiredAndQuery.js** ファイルに次のコードを追加し、**{service connection string}** プレースホルダーを、ハブの作成時にコピーした接続文字列で置き換えます。
+4. **SetDesiredAndQuery.js** ファイルに次のコードを追加し、**{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
    
         'use strict';
         var iothub = require('azure-iothub');
         var uuid = require('node-uuid');
-        var connectionString = '{service connection string}';
+        var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
    
         registry.getTwin('myDeviceId', function(err, twin){
@@ -246,7 +246,7 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
    > 
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、バックエンド アプリケーションから必要な構成を "*必要なプロパティ*" として設定し、その変更を検出してデバイス ツインに "*報告されるプロパティ*" として状態を報告するマルチステップの更新プロセスをシミュレートするための、シミュレートされたデバイス アプリを記述しました。
+このチュートリアルでは、バックエンド アプリから必要な構成を "*必要なプロパティ*" として設定し、その変更を検出してデバイス ツインに "*報告されるプロパティ*" として状態を報告するマルチステップの更新プロセスをシミュレートするための、シミュレートされたデバイス アプリを記述しました。
 
 詳細については、次のリソースをご覧ください。
 
@@ -265,7 +265,7 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-schedule-jobs]: iot-hub-node-node-schedule-jobs.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
@@ -278,6 +278,6 @@ ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

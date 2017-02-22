@@ -1,5 +1,5 @@
 ---
-title: "Media Services REST API を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Docs"
+title: "REST を使用したコンテンツ キー承認ポリシーの構成 - Azure | Microsoft Docs"
 description: "Media Services REST API を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: e00c18be79eb5f7ee4d1dcb8f5e9a5b084afe60f
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
 
 
 ---
@@ -43,7 +43,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
 ### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
-* 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。 詳細については、「 [Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+* ダイナミック パッケージと動的暗号化を使用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 * 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
@@ -285,7 +285,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](https://msdn.microsoft.com/library/azure/dn783459.aspx)を定義する XML 文字列を指定する必要があります。 
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の&1; つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 
 
 ### <a name="open-restriction"></a>オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
@@ -450,6 +450,6 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

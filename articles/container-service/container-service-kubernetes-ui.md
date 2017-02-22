@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Service の Kubernetes Web UI を使用する |Microsoft Docs"
+title: "Web UI を使用した Azure Kubernetes クラスターの管理 | Microsoft Docs"
 description: "Azure Container Service の Kubernetes Web UI を使用する"
 services: container-service
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
-ms.openlocfilehash: 9ae6e606bf215d9f53f725899b8ac7c466b781f1
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 4192369f2e7758200131aa85c60d07436f7cbbdc
 
 
 ---
 
-# <a name="microsoft-azure-container-service-engine---using-the-kubernetes-web-ui"></a>Microsoft Azure Container Service エンジン - Kubernetes Web UI を使用する
+# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Azure Container Service で Kubernetes Web UI を使用する
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。
@@ -136,6 +136,6 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

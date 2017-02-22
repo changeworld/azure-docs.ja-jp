@@ -16,15 +16,14 @@ ms.workload: infrastructure
 ms.date: 01/04/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 5cf20d5cccba235984b74a780ba63b0b69f7a20a
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: 834bb8a60c3dcb2d0b50809ffb0e4780579b2cda
 
 
 ---
 # <a name="how-to-use-docker-with-swarm"></a>Docker Swarm を使用する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Docker Swarm をデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)を参照してください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Docker Swarm をデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)を参照してください。
 
 このトピックでは、[docker](https://www.docker.com/) と [swarm](https://github.com/docker/swarm) を使用して Azure で swarm 管理クラスターを作成する非常に簡単な方法を示します。 ここでは Azure で 4 つの仮想マシンが作成されます。1 つは Swarm マネージャーとして動作し、その他の 3 つは Docker ホストのクラスターの一部として機能します。 終了すれば、Swarm を使ってクラスターを確認し、クラスター上で Docker を使用できるようになります。 さらに、このトピックで使用される Azure CLI 呼び出しは、サービス管理 (asm) モードを使用します。 
 
@@ -146,6 +145,6 @@ Swarm でお試しください。 詳細については、[https://github.com/do
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

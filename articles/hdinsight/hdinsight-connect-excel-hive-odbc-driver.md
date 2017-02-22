@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c2edb529cde2e9658817ee370e3dc4e0266cb72e
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: 1f0b951e7b3ffc328604ce799590d478da36915d
 
 
 ---
@@ -37,7 +37,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **HDInsight クラスター**。 その作成方法については、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
+* **HDInsight クラスター**。 その作成方法については、[Azure HDInsight の概要][hdinsight-get-started]に関するページをご覧ください。
 * **ワークステーション** 。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
@@ -129,6 +129,6 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

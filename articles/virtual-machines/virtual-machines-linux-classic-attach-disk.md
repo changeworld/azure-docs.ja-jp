@@ -1,5 +1,5 @@
 ---
-title: "ディスクを Linux VM にアタッチする | Microsoft Docs"
+title: "Azure で Linux VM にディスクをアタッチする | Microsoft Docs"
 description: "クラシック デプロイ モデルを使用してデータ ディスクを Linux VM に接続し、初期化して、使用できる状態にする方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 17ddda372f3a232be62e565b700bb1be967fb8e3
-ms.openlocfilehash: 96ec97914784f53739b11b4ef7916de620b4ed6e
+ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
+ms.openlocfilehash: b78deeeb7fd8d337b83c8e831f51f8e57014cf43
 
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法をご覧ください。
 
 空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。 どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。 Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。 この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
 
@@ -37,7 +37,7 @@ ms.openlocfilehash: 96ec97914784f53739b11b4ef7916de620b4ed6e
 
 ## <a name="initialize-a-new-data-disk-in-linux"></a>Linux での新しいデータ ディスクの初期化
 1. VM に SSH 接続します。 詳細については、「[Linux を実行する仮想マシンにログオンする方法][Logon]」を参照してください。
-2. 次に、データ ディスクの初期化のためにデバイスの ID を検索する必要があります。 この作業を実行する 2 つの方法があります。
+2. 次に、データ ディスクの初期化のためにデバイスの ID を検索する必要があります。 この作業を実行する&2; つの方法があります。
    
     a) 次のコマンドのように、ログの SCSI デバイスを検索します。
    
@@ -195,7 +195,7 @@ ms.openlocfilehash: 96ec97914784f53739b11b4ef7916de620b4ed6e
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure における Linux の TRIM/UNMAP サポート
 一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 これらの操作は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。 ページを破棄すると、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
 
-Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+Linux VM で TRIM のサポートを有効にする方法は&2; 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
 * 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
 
@@ -227,7 +227,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 * [Linux が実行されている仮想マシンにログオンする方法][Logon]
 * [Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-classic-detach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
+* [クラシック デプロイ モデルでの Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure で Linux VM の RAID を構成する](virtual-machines-linux-configure-raid.md)
 * [Azure で Linux VM の LVM を構成する](virtual-machines-linux-configure-lvm.md)
 
@@ -237,6 +237,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

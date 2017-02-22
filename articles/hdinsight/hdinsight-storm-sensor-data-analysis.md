@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 0d2743f10d828aaf5ef401ac5378c94384e0a46b
+ms.sourcegitcommit: b19e8b8e6f90ad502799fafd70ad6838d6e6ba4d
+ms.openlocfilehash: 215698f2089934eac549e36644f0bfd4247fe2b9
 
 
 ---
@@ -224,8 +224,7 @@ Event Hub は、この例のデータ ソースです。 新しい Event Hub を
    
    > [!NOTE]
    > この例では、**sensordata** を Event Hub の名前として使うことと、**Send** 要求を持つポリシーの名前として **devices** を使うことを前提としています。
-   > 
-   > 
+
 3. 次のコマンドを使用して、Event Hub に新しいエントリを挿入します。
    
         node app.js
@@ -345,12 +344,11 @@ HBase にデータを格納するには、まず、テーブルを作成する�
         exit
 
 ## <a name="configure-the-hbase-bolt"></a>HBase ボルトの構成
-Storm クラスターから HBase に書き込むには、HBase クラスターの構成の詳細と共に HBase ボルトを指定する必要があります。 そのための最も簡単な方法は、クラスターから **hbase-site.xml** をダウンロードしてプロジェクトに含めることです。 また、**pom.xml** ファイル内のいくつかの依存関係のコメントを解除する必要もあります。これにより、storm-hbase コンポーネントと必要な依存関係が読み込まれます。
+
+Storm クラスターから HBase に書き込むには、HBase クラスターの構成の詳細と共に HBase ボルトを指定する必要があります。 そのための最も簡単な方法は、クラスターから **hbase-site.xml** をダウンロードしてプロジェクトに含めることです。 
 
 > [!IMPORTANT]
 > HDInsight クラスター 3.3 または 3.4 クラスターでは、Storm で提供されている storm-hbase.jar ファイルもダウンロードする必要があります。このバージョンは、HBase 1.1.x で動作するようにコンパイルされており、HDInsight 3.3 および 3.4 クラスターの HBase に使用されます。 別の場所から storm-hbase コンポーネントを使用する場合は、以前のバージョンの HBase に対してコンパイルされる可能性があります。
-> 
-> 
 
 ### <a name="download-the-hbase-sitexml"></a>hbase-site.xml のダウンロード
 コマンド プロンプトで SCP を使用して、クラスターから **hbase-site.xml** ファイルをダウンロードします。 次の例では、**USERNAME** はクラスターの作成時に指定した SSH ユーザーに置き換え、**BASENAME** は前に指定したベース名に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。 `/path/to/TemperatureMonitor/resources/hbase-site.xml` は、TemperatureMonitor プロジェクト内のこのファイルへのパスに置き換えます。
@@ -373,33 +371,18 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
    
         mvn install:install-file "-Dfile=storm-hbase-####.jar" "-DgroupId=org.apache.storm" "-DartifactId=storm-hbase" "-Dversion=####" "-Dpackaging=jar"
 
-### <a name="enable-the-storm-hbase-component-in-the-project"></a>プロジェクトでの storm-hbase コンポーネントの有効化
-1. **TemperatureMonitor/pom.xml** ファイルを開き、次の行を削除します。
-   
-        <!-- uncomment this section to enable the hbase-bolt
-        end comment for hbase-bolt section -->
-   
-   > [!IMPORTANT]
-   > 削除するのは上記の&2; 行のみです。この&2; つの行の間にある行は削除しないでください。
-   > 
-   > 
-   
-    これで、hbase ボルトを使用して HBase と通信するときに必要ないくつかのコンポーネントが有効になります。
-2. 次の行を探し、 **####** を、前の手順でダウンロードした storm-hbase ファイルのバージョン番号に置き換えます。
-   
+3. __pom.xml__ ファイルで、__storm-hbase__ の依存関係セクションを探します。 依存関係を囲む `<!--` と `-->` を削除することで、依存関係のコメントを解除します。 また、前の手順で使用している #### に合うように、`<version></version>` エントリを変更します。 エントリは、次の例のようになります。
+
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-hbase</artifactId>
-            <version>####</version>
+            <version>0.10.0.2.4.2.4-5</version>
         </dependency>
-   
-   > [!IMPORTANT]
-   > バージョン番号は、コンポーネントをローカルの Maven リポジトリにインストールしたときに使用したバージョンと一致する必要があります。Maven がプロジェクトをビルドするときに、この情報を使用してコンポーネントを読み込むためです。
-   > 
-   > 
-3. **pom.xml** ファイルを保存します。
+
+   変更を行った後に、ファイルを保存します。
 
 ## <a name="build-package-and-deploy-the-solution-to-hdinsight"></a>ソリューションのビルド、パッケージ化、HDInsight へのデプロイ
+
 開発環境で、以下の手順に従って Storm トポロジを storm クラスターにデプロイします。
 
 1. **TemperatureMonitor** ディレクトリから次のコマンドを使用して、新しいビルドを実行し、プロジェクトから JAR パッケージを作成します。
@@ -409,7 +392,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
     これにより、プロジェクトの **TemperatureMonitor-1.0-SNAPSHOT.jar** in the **TemperatureMonitor-1.0-SNAPSHOT.jar** という名前のファイルが作成されます。
 2. scp を使用して、 **TemperatureMonitor-1.0-SNAPSHOT.jar** ファイルを Storm クラスターにアップロードします。 次の例では、**USERNAME** はクラスターの作成時に指定した SSH ユーザーに置き換え、**BASENAME** は前に指定したベース名に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
    
-        scp target\TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
+        scp target/TemperatureMonitor-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:TemperatureMonitor-1.0-SNAPSHOT.jar
    
    > [!NOTE]
    > サイズが数メガバイトになるため、ファイルのアップロードには数分かかる場合があります。

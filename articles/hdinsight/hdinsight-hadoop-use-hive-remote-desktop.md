@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 96779ca2f6719fd3e55f9be0fea716c46f662bf0
+ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
+ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
 
 
 ---
@@ -26,10 +26,10 @@ ms.openlocfilehash: 96779ca2f6719fd3e55f9be0fea716c46f662bf0
 
 この記事では、リモート デスクトップを使用して HDInsight クラスターに接続し、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを実行する方法について説明します。
 
-> [!NOTE]
-> このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される HiveQL については、「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
+> [!IMPORTANT]
+> リモート デスクトップは、オペレーティング システムとして Windows を使用する HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 >
->
+> HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Hive クエリの実行に関する情報については、[HDInsight と Beeline での Hive の使用](hdinsight-hadoop-use-hive-beeline.md)に関するページを参照してください。
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
@@ -71,7 +71,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
      >
    * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
-   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 4. 次のステートメントを使用して、 **errorLogs**という名前の新しい "内部" テーブルを作成します。
 
@@ -145,6 +145,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

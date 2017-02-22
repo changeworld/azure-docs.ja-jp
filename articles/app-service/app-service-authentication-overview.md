@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 
 
 ---
@@ -24,12 +24,12 @@ ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
 App Service の認証および承認は、アプリケーションで、アプリのバックエンドでコードを変更する必要がないように、ユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
-App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の 5 つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
+App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の&5; つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
 
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 
 * [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
-* [Azure App Service での API Apps のユーザー認証][apia-user]
+* [Azure App Service の API Apps でのユーザー認証][apia-user]
 * [Azure App Service の使用 - 第 2 部][web-getstarted]
 
 ## <a name="how-authentication-works-in-app-service"></a>App Service の認証のしくみ
@@ -42,7 +42,7 @@ Web ブラウザーを使用してアプリケーションとやり取りする�
 App Service は、アプリケーションが発行したすべての Cookie とトークンを検証して、ユーザーを認証します。 アプリケーションにアクセスできるユーザーを制限するには、この記事で後述する [認証](#authorization) に関するセクションを参照してください。
 
 ### <a name="mobile-authentication-with-a-provider-sdk"></a>プロバイダー SDK を使用したモバイル認証
-バックエンドですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには 2 つの方法はあります。
+バックエンドですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには&2; つの方法はあります。
 
 * 特定の ID プロバイダーが発行する SDK を使用して、ID を確立し、App Service にアクセスできるようにします。
 * 1 行のコードを使用して、Mobile Apps クライアント SDK でユーザーがサインインできるようにします。
@@ -73,7 +73,7 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 
 App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
-App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「 [App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
+App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「 [App Service でホストされたカスタム API のロジック アプリでの使用](../logic-apps/logic-apps-custom-hosted-api.md)」で説明されています。
 
 ## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>App Service の認証のしくみ
 アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
@@ -153,7 +153,7 @@ Google のクライアント主導のフローを使用する場合は、次の�
 ### <a name="api-applications"></a>API アプリケーション
 次のチュートリアルで、API Apps を保護する方法を示しています。
 
-* [Azure App Service での API Apps のユーザー認証][apia-user]
+* [Azure App Service の API Apps でのユーザー認証][apia-user]
 * [Azure App Service での API Apps のサービス プリンシパル認証][apia-service]
 
 [apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
@@ -183,6 +183,6 @@ Google のクライアント主導のフローを使用する場合は、次の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

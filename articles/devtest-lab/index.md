@@ -1,13 +1,25 @@
 ---
+title: "Azure Devtest Labs のドキュメント - チュートリアル | Microsoft Docs"
+description: "再利用可能なアーティファクトを使用して、アプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアルやビデオなどで、ラボを作成、管理、保護する方法を紹介します。"
+services: devtest-lab
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: devtest-lab
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 381c936b7e615cc35ddd429f2a70c468d511a8cf
-ms.openlocfilehash: 838593f4b7d1d83b182faf88433a5bfbf5620288
+ms.sourcegitcommit: 78ae030b07f8f96ab3e4e0cb506fa8495d16543c
+ms.openlocfilehash: 19536533ad795ceab7e6223a36575a774d0cfc27
 
 ---
 #<a name="devtest-labs-documentation"></a>DevTest Labs ドキュメント
 
-Azure DevTest Labs は、無駄を最小限に抑え、コストを管理しつつ、Azure で迅速に環境を作成するためのサポートを開発者とテスト担当者に提供するサービスです。  再利用可能なテンプレートとアーティファクトを使用して Windows と Linux の環境を迅速にプロビジョニングすることで、アプリケーションの最新バージョンをテストできます。
+Devtest Labs を使用して、再利用可能なアーティファクトを用いてアプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、ラボの作成、管理、保護と、アーティファクトの追加と管理の方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -102,17 +114,10 @@ Azure DevTest Labs は、無駄を最小限に抑え、コストを管理しつ�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/devtest-lab.pdf">
-        <div class="img"></div>
-        <div class="text">
-Devtest Lab のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

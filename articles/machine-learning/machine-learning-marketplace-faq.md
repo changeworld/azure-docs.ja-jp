@@ -1,6 +1,6 @@
 ---
-title: "Azure Marketplace での Machine Learning アプリの公開と使用に関する FAQ | Microsoft Docs"
-description: "よく寄せられる質問"
+title: "(非推奨) Azure Marketplace での Machine Learning アプリの公開と使用に関する FAQ | Microsoft Docs"
+description: "(非推奨) Azure Marketplace での Machine Learning アプリの公開に関する FAQ"
 services: machine-learning
 documentationcenter: 
 author: bharaths
@@ -11,16 +11,24 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/11/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8ae758a406dfed48968531ae20a9bbd2383db92
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
 
 
 ---
-# <a name="publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
+# <a name="deprecated-publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>(非推奨) Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
+
+> [!NOTE]
+> DataMarket および Data Services は間もなく提供終了となる予定です。既存のサブスクリプションは、2017 年 3 月 31 日付けで提供終了となり、取り消されます。 その結果、この記事は非推奨となる予定です。 
+> 
+> 代わりに、Machine Learning 実験を [Cortana Intelligence Gallery ギャラリー](https://gallery.cortanaintelligence.com/)に発行して、データ サイエンス コミュニティのために役立てることができます。 詳しくは、「[Cortana Intelligence ギャラリーでリソースを共有および発見する](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish)」をご覧ください。
+
+
 ## <a name="questions-about-consuming-from-marketplace"></a>Marketplace から使用する場合
 **1.Web サービスの入力を入力した後に、なぜ次のエラー メッセージが表示されるのですか。**
 
@@ -38,7 +46,7 @@ ms.openlocfilehash: f8ae758a406dfed48968531ae20a9bbd2383db92
 
 **要求の処理中に予期しないエラーが発生しました。もう一度実行してください。**
 
-Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの 1 つ以上の入力パラメーターが長さの制限を超過した可能性があります。 HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。 例については、「 [Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
+Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの&1; つ以上の入力パラメーターが長さの制限を超過した可能性があります。 HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。 例については、「 [Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
 
 **4.なぜ Azure クラシック ポータルのストアの [API エクスプローラー] タブに何も表示されないのでしょうか。** 
 
@@ -72,6 +80,6 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

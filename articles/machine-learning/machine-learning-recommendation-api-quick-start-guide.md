@@ -1,5 +1,5 @@
 ---
-title: "クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Docs"
+title: "クイック スタート: Azure Machine Learning Recommendations API (バージョン  1) | Microsoft Docs"
 description: "Azure Machine Learning Recommendations - クイック スタート ガイド"
 services: machine-learning
 documentationcenter: 
@@ -12,22 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/07/2017
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 099090d06163f15a08592e25f6171cfacf24b0f1
-ms.openlocfilehash: bf47dd8f88405f2bed31c621e37531e3641ddc6c
+ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
+ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
 
 
 ---
-# <a name="quick-start-guide-for-the-machine-learning-recommendations-api"></a>Machine Learning の Recommendations API のクイック スタート ガイド
+# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>Machine Learning Recommendations API (バージョン 1) のクイック スタート ガイド
+
 > [!NOTE]
-> このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。 このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。 Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。
-> 詳細については、「 [Migrating to the new Cognitive Service](http://aka.ms/recomigrate)
+> このバージョンの代わりに [Recommendations API Cognitive Service](https://www.microsoft.com/cognitive-services/recommendations-api) の使用を開始することをお勧めします。 このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。 Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。
+>
+> 詳細については、[新しい Cognitive Service への移行](http://aka.ms/recomigrate)に関するページを参照してください。
 > 
 > 
 
-このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。 Recommendations API の詳細については、 [ギャラリー](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)を参照してください。
+このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。 Recommendations API の詳細については、[Cortana Intelligence Gallery ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2)を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -43,14 +45,14 @@ Azure Machine Learning の Recommendations を使用するには、次の手順�
 * 推奨モデルの構築 – これは、推奨システムがすべての使用状況データを受け取って推奨モデルを作成する非同期操作です。 この操作は、データのサイズとビルド構成パラメーターによっては、数分または数時間かかることがあります。 ビルドをトリガーすると、ビルドの ID を取得します。 Recommendations の使用を開始する前に、ビルド ID を使用してビルド プロセスの終了を確認します。
 * 推奨の使用 – 特定の項目や項目一覧に対する推奨を取得します。
 
-これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。   [ギャラリー](http://1drv.ms/1xeO2F3)
+これらの手順がすべて、Azure Machine Learning の Recommendations API で実行されます。  [ギャラリー](http://1drv.ms/1xeO2F3)
 
 ## <a name="limitations"></a>制限事項
 * サブスクリプションごとのモデルの最大数は 10 です。
 * カタログが保持できる項目の最大数は 100,000 です。
 * 保持される使用状況ポイントの最大数は ~5,000,000 です。 新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。 有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+* 無効な推奨モデルのビルドの&1; 秒あたりのトランザクションの数は ~2TPS です。 有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
 ## <a name="integration"></a>統合
 ### <a name="authentication"></a>認証
@@ -63,12 +65,12 @@ Microsoft Azure Marketplace は、Basic または OAuth のいずれかの認証
 
     Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 
-Base 64 に変換 (c#)
+Base&64; に変換 (c#)
 
     var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
     var creds = Convert.ToBase64String(bytes);
 
-Base 64 に変換 (JavaScript)
+Base&64; に変換 (JavaScript)
 
     var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 
@@ -420,7 +422,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-応答には、ビルドごとに 1 つのエントリが含まれています。 各エントリには、次のデータが含まれています。
+応答には、ビルドごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `feed/entry/content/properties/UserName` – ユーザーの名前。
 * `feed/entry/content/properties/ModelName` – モデルの名前。
@@ -505,7 +507,7 @@ OData XML
 
 HTTP 状態コード: 200
 
-応答には、推奨項目ごとに 1 つのエントリが含まれています。 各エントリには、次のデータが含まれています。
+応答には、推奨項目ごとに&1; つのエントリが含まれています。 各エントリには、次のデータが含まれています。
 
 * `Feed\entry\content\properties\Id` - 推奨項目の ID。
 * `Feed\entry\content\properties\Name` - 項目の名前。
@@ -703,6 +705,6 @@ OData XML
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

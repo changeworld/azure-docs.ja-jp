@@ -10,14 +10,14 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: servers
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 17e2830dceeaa313dd0fd7d406bf68a75b6f900e
+ms.sourcegitcommit: 79a9e72d29b5522dc3960b79bae7876f21acb4c5
+ms.openlocfilehash: 07181e5d35703cddf8a896badd45e7485c9e07a2
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 17e2830dceeaa313dd0fd7d406bf68a75b6f900e
 このトピックは、Azure SQL 論理サーバーを操作するための考慮事項とガイドラインを示します。 Azure SQL Database については、[SQL Database](sql-database-overview.md) に関するページをご覧ください。
 
 ## <a name="what-is-an-azure-sql-database-logical-server"></a>Azure SQL Database 論理サーバーとは
-Azure SQL Database 論理サーバーは、複数のデータベースの中央管理ポイントとして機能します。 SQL Database におけるサーバーとは、オンプレミスでなじみのある SQL Server インスタンスとは別の論理コンストラクトです。 具体的には、SQL Database サービスは論理サーバーに関連したデータベースの場所について保証しません。また、インスタンス レベルのアクセスまたは機能を公開しません。 Azure SQL 論理サーバーの詳細については、[論理サーバー](sql-database-server-overview.md)に関する記事を参照してください。 
+Azure SQL Database 論理サーバーは、複数のデータベースの中央管理ポイントとして機能します。 SQL Database におけるサーバーとは、オンプレミスでなじみのある SQL Server インスタンスとは別の論理コンストラクトです。 具体的には、SQL Database サービスは論理サーバーに関連したデータベースの場所について保証しません。また、インスタンス レベルのアクセスまたは機能を公開しません。  
 
 Azure SQL Database 論理サーバーは、
 
@@ -40,11 +40,11 @@ Azure SQL Database 論理サーバーは、
 - データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
 - マスター データベースに接続することで、含まれているリソースに関するメタデータへの DMV 経由のアクセスを提供します 
 - データベースに適用される管理ポリシーの範囲 (ログイン、ファイアウォール、監査、脅威の検出など) を提供します 
-- 親サブスクリプション内のクォータによって制限されます (サブスクリプションあたり 6 サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
+- 親サブスクリプション内のクォータによって制限されます (サブスクリプションあたり&6; サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
 - 含まれるリソースのデータベースのクォータと DTU クォータの範囲 (V12 では 45000 DTU など) を提供します
 - 含まれるリソース (最新バージョンは V12) で有効な機能のバージョン管理の範囲です
 - サーバー レベルのプリンシパルのログインによってサーバー上のすべてのデータベースを管理できます
-- サーバー上の 1 つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
+- サーバー上の&1; つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-sql-database-logical-server"></a>Azure SQL Database 論理サーバーに接続して認証するにはどうすればよいですか。
 
@@ -85,6 +85,6 @@ Azure SQL Database 論理サーバーは、
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

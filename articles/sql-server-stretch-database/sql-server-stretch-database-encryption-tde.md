@@ -1,5 +1,5 @@
 ---
-title: "Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 | Microsoft Docs"
+title: "Stretch Database に対する Transparent Data Encryption の有効化 - Azure | Microsoft Docs"
 description: "Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: a8a2c05bb341869e6dd67a9d6872fba6a35ffabe
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: a8a2c05bb341869e6dd67a9d6872fba6a35ffabe
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
-> 
-> 
+>
+>
 
 Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
@@ -61,6 +61,6 @@ Stretch 対応 SQL Server データベースから移行したデータを格納
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

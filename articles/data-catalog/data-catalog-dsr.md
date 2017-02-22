@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/15/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c357d477684444342c74e04a2c5545a76b9ee0e3
+ms.sourcegitcommit: 24143b6866c4393b18636669b5b4281a0d18c3d1
+ms.openlocfilehash: 64e8c8b284f21320601208c798d354df2496274c
 
 
 ---
 # <a name="azure-data-catalog-supported-data-sources"></a>Azure Data Catalog でサポートされるデータ ソース
-Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。  また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 記事の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。  また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 記事の&2; 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
 
 ## <a name="list-of-supported-data-sources"></a>サポートされるデータ ソースの一覧
 <table>
@@ -225,8 +225,8 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>✓</td>
       <td>✓ </td>
       <td>✓</td>
-      <td><font size=2>[ブラウザー] ボタンを</font></td>
-      <td><font size=2>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。</font></td>
+      <td><font size=2>ブラウザー</font></td>
+      <td><font size=2>ネイティブ モードのサーバーのみ。SharePoint モードはサポートされていません。</font></td>
     </tr>
 
     <tr>
@@ -419,7 +419,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 ## <a name="data-source-reference-specification"></a>データ ソース参照の仕様
 > [!NOTE]
 > 以下の表の「DSL 構造体」列には、Azure Data Catalog に使用される "address" プロパティ バッグの接続プロパティのみが表示されます (つまり、"address" プロパティ バッグには、Azure Data Catalog が保持し、使用しないデータ ソースのその他の接続プロパティを含めることができます)。
-> 
+>
 > <table>
 > <tr>
 > <td><b>ソースの種類</b></td>
@@ -1169,11 +1169,10 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
 > <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
 > </td>
 > </tr>
-> </table> 
+> </table>>
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

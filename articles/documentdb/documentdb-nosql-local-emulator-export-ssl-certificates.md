@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/16/2016
+ms.date: 01/22/2017
 ms.author: tvoellm
 translationtype: Human Translation
-ms.sourcegitcommit: 638c6c5ac9ffac7e726d86a979e2c5dc7fab41f4
-ms.openlocfilehash: 32bebcbd724d577f78672cb623748fcf77cee20a
+ms.sourcegitcommit: 224897c09073fe36c7d4f9f8c965212c25297271
+ms.openlocfilehash: 3f89e192052bb633190610a4dffbefb930dbc01c
 
 
 ---
@@ -26,11 +26,11 @@ ms.openlocfilehash: 32bebcbd724d577f78672cb623748fcf77cee20a
 
 [**Emulator をダウンロードする**](https://aka.ms/documentdb-emulator)
 
-Azure DocumentDB Emulator では、SSL 接続の使用など、Azure DocumentDB サービスを開発用にエミュレートするローカル環境を使用できます。 この記事では、独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)を使用する Java や、[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)を使用する Python など、Windows 証明書ストアと統合されていない言語とランタイムで使用するために、SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure DocumentDB Emulator の使用](./documentdb-nosql-local-emulator.md)」をご覧ください。
+Azure DocumentDB Emulator では、SSL 接続の使用など、Azure DocumentDB サービスを開発用にエミュレートするローカル環境を使用できます。 この記事では、独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)を使用する Java、[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)を使用する Python、[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) を使用する Node.js など、Windows 証明書ストアと統合されていない言語とランタイムで使用するために、SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure DocumentDB Emulator の使用](./documentdb-nosql-local-emulator.md)」をご覧ください。
 
 ## <a name="certification-rotation"></a>証明書のローテーション
 
-DocumentDB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は 2 つあります。 1 つはローカル エミュレーターに接続するために使用し、もう 1 つはエミュレーター内のシークレットを管理するために使用します。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
+DocumentDB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は&2; つあります。 1 つはローカル エミュレーターに接続するために使用し、もう&1; つはエミュレーター内のシークレットを管理するために使用します。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
 
 どちらの証明書も、Windows トレイで実行されている DocumentDB エミュレーターから、次に示す **[データのリセット]** をクリックすることで生成し直すことができます。 証明書を Java 証明書ストアにインストールしたり、その他の場所で使用したりしていた場合に、証明書を生成し直したときは、元の証明書を更新する必要があります。更新を行わないと、アプリケーションはローカル エミュレーターに接続しなくなります。
 
@@ -58,7 +58,7 @@ DocumentDB ローカル エミュレーターの証明書は、エミュレー�
 
     ![DocumentDB ローカル エミュレーターのエクスポート手順 5.](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-export-step-5.png)
 
-6. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、**[次へ]** をクリックします。
+6. **[Base&64; encoded X.509 (.CER)]** をクリックしてから、**[次へ]** をクリックします。
 
     ![DocumentDB ローカル エミュレーターのエクスポート手順 6.](./media/documentdb-nosql-local-emulator/azure-documentdb-database-local-emulator-export-step-6.png)
 
@@ -80,7 +80,11 @@ X.509 証明書を既定の Java 証明書ストアにインポートする場�
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Python で証明書を使用する方法
 
-Python SDK for DocumentDB の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html)に関するドキュメントの例に従ってください。
+[Python SDK (バージョン 2.0.0 以降)](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-sdk-python) for DocumentDB の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html)に関するドキュメントの例に従ってください。
+
+## <a name="how-to-use-the-certificate-in-nodejs"></a>Node.js で証明書を使用する方法
+
+[Node.js SDK (バージョン 1.10.1 以降)](https://docs.microsoft.com/en-us/azure/documentdb/documentdb-sdk-node) for DocumentDB の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用する場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 * DocumentDB の詳細については、[Azure DocumentDB の概要](documentdb-introduction.md)に関する記事を参照してください。
@@ -88,6 +92,6 @@ Python SDK for DocumentDB の場合、既定ではローカル エミュレー�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

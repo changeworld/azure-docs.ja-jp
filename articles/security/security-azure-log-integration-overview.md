@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure ログ統合の概要 | Microsoft Docs"
+title: "Azure のリソースから SIEM システムへのログの統合 | Microsoft Docs"
 description: "Azure ログ統合と、その主な機能およびしくみについて紹介します。"
 services: security
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2016
+ms.date: 01/23/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 8bded635f95e640f6a0edba05e5190341ce362c5
-ms.openlocfilehash: d3a8df0bcfbab0afc8eaa5dd13a22fd6b346c443
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 62b5469d06974dfbe1b243091d34e1141416c971
 
 
 ---
@@ -31,7 +31,7 @@ Azure ログ統合を使用すると、未加工のログを、Azure リソー�
 ![Azure ログ統合][1]
 
 ## <a name="what-logs-can-i-integrate"></a>統合できるログ
-Azure サービスでは、すべてのサービスの広範なログ記録を作成します。 これらのログは、主に次の 2 つのタイプに分類されます。
+Azure サービスでは、すべてのサービスの広範なログ記録を作成します。 これらのログは、主に次の&2; つのタイプに分類されます。
 
 * **コントロール/管理ログ**は、Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。 Azure 監査ログは、このタイプのログです。
 * **データ プレーン ログ**は、Azure リソース使用の一環として発生するイベントの可視性を提供します。 仮想マシンの Windows イベントのシステム ログ、セキュリティ ログ、およびアプリケーション ログは、このタイプのログです。
@@ -55,6 +55,6 @@ Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

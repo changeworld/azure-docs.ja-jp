@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae6d85a3b6efddff1bd1df7b9b022d91b8de634e
+ms.sourcegitcommit: 4e5568bfcc3d488ef07203b7d3ad95f44354cabc
+ms.openlocfilehash: f35a42154e5d14e798a787a3ecd100ab72512b96
 
 
 ---
@@ -24,6 +24,10 @@ ms.openlocfilehash: ae6d85a3b6efddff1bd1df7b9b022d91b8de634e
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
 
 Service Fabric アプリケーションは、通常はさまざまなサービスで構成されており、各サービスがそれぞれに特化したタスクを実行します。 これらのサービスが互いに通信することによって、Web アプリケーションの異なる部分のレンダリングのような機能を完成させることができます。 また、サービスに接続して通信するクライアント アプリケーションもあります。 このドキュメントでは、Service Fabric のサービスとの通信やサービス間での通信を設定する方法について説明します。
+
+次の Microsoft Virtual Academy のビデオでも、サービスの通信について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
+<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
+</a></center>
 
 ## <a name="bring-your-own-protocol"></a>独自のプロトコルを使用する
 Service Fabric は、サービスのライフサイクル管理に役立ちますが、サービスで何を実行するかを決める機能は備えていません。 このことは通信にも当てはまります。 Service Fabric によってサービスが開かれると、サービスの側で、必要なプロトコルまたは通信スタックを使用して、受信要求向けにエンドポイントを設定することができます。 サービスは、URI などのアドレス指定スキームを使用して通常の **IP:ポート** アドレスでリッスンします。 複数のサービス インスタンスまたはレプリカでホスト プロセスを共有できますが、その場合はそれぞれが別のポートを使用するか、Windows での http.sys カーネル ドライバーのようなポート共有メカニズムを使用する必要があります。 いずれの場合も、ホスト プロセス内の各サービス インスタンスまたはレプリカを一意にアドレス指定できることが必要です。
@@ -135,6 +139,6 @@ Reliable Services フレームワークには、事前に構築されたいく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

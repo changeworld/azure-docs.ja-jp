@@ -1,5 +1,5 @@
 ---
-title: "Azure AD とアプリケーション: アプリケーションへのグループの割り当て | Microsoft Docs"
+title: "Azure AD アプリへのグループの割り当て | Microsoft Docs"
 description: "Azure アプリケーションへのグループの割り当てを実装する方法です。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2015
+ms.date: 02/06/2017
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 698eb6e48f8e7d270ae1b07bfc7e68fd22b02776
+ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
+ms.openlocfilehash: 81b9b66bb16e183b8c3c206a4a49b2f4845bc201
 
 
 ---
-# <a name="azure-ad-and-applications-assigning-groups-to-an-application"></a>Azure AD とアプリケーション: アプリケーションへのグループの割り当て
+# <a name="azure-ad-and-applications-assign-groups-to-an-application"></a>Azure AD とアプリケーション: アプリケーションへのグループの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。 ユーザー割り当てを要求する方法については、 [ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md) に関する記事をご覧ください。
 
 この記事では、このアプリケーションに使用する Active Directory に既にグループが作成されていることを前提としています。
@@ -42,7 +42,6 @@ ms.openlocfilehash: 698eb6e48f8e7d270ae1b07bfc7e68fd22b02776
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cad20d6dc02d7c569d593e2cf02fd4347a9008e8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fff688c7088a3c677763495b1a46ce54606d6816
 
 
 ---
@@ -109,12 +109,11 @@ Application Insights にすべてのエラー (**DiagnosticMonitorConfiguration*
 * Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。 たとえば、 *Directories* ノードの下で指定されたデータです。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次のステップ
-* [PowerShell](cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。 
+* [PowerShell](cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 * [Visual Studio](vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

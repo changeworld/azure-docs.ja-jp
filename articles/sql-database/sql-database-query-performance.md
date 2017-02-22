@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Query Performance Insight
+title: "Azure SQL Database の Query Performance Insight | Microsoft Docs"
 description: "クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。"
 services: sql-database
 documentationcenter: 
@@ -8,6 +8,7 @@ manager: jhubbard
 editor: monicar
 ms.assetid: c2f580b2-3835-453f-89f5-140e02dd2ea7
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 174fedeb49b1ce8ca84ff2302314d683fe181fff
+ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
+ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
 
 
 ---
@@ -26,12 +27,11 @@ ms.openlocfilehash: 174fedeb49b1ce8ca84ff2302314d683fe181fff
 * データベース リソース (DTU) の消費量の詳細な情報。 
 * CPU/期間/実行回数の上位クエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
 * クエリの詳細にドリルダウンして、テキストやリソース使用率履歴を表示する機能。 
-*  [SQL Azure Database Advisor](sql-database-advisor.md)  
+* [SQL Azure Database Advisor](sql-database-advisor.md)  
 
 
 
 ## <a name="prerequisites"></a>前提条件
-* Query Performance Insight は、Azure SQL Database V12 でのみ使用できます。
 * Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx) がデータベース上で実行されている必要があります。 クエリ ストアが実行されていない場合、ポータルで、クエリ ストアを有効にするよう求められます。
 
 ## <a name="permissions"></a>アクセス許可
@@ -65,7 +65,7 @@ Query Performance Insight は簡単に使用できます。
     ![[Query Performance Insight]][1]
    
     上位クエリ ビューが開き、CPU 消費量上位クエリの一覧が表示されます。
-2. グラフのあたりをクリックして詳細を確認します。<br>上の折れ線はデータベース全体の DTU% を示します。棒グラフは、選択した期間に、選択したクエリによって消費された CPU% を示します (**[過去 1 週間]** を選択した場合は各棒グラフが 1 日を表します)。
+2. グラフのあたりをクリックして詳細を確認します。<br>上の折れ線はデータベース全体の DTU% を示します。棒グラフは、選択した期間に、選択したクエリによって消費された CPU% を示します (**[過去&1; 週間]** を選択した場合は各棒グラフが&1; 日を表します)。
    
     ![上位クエリ][2]
    
@@ -105,7 +105,7 @@ Query Performance Insight は簡単に使用できます。
 4. 必要に応じて、スライダーやズーム ボタンを使うか、 **[設定]** をクリックして、クエリ データの表示方法をカスタマイズしたり、別の期間を選択したりできます。
 
 ## <a name="review-top-queries-per-duration"></a>実行時間あたりの上位クエリを確認する
-最近の Query Performance Insight の更新により、潜在的なボトルネックの特定に役立つ 2 つの新しいメトリックとして、実行時間と実行回数が導入されました。<br>
+最近の Query Performance Insight の更新により、潜在的なボトルネックの特定に役立つ&2; つの新しいメトリックとして、実行時間と実行回数が導入されました。<br>
 
 実行時間の長いクエリは、長期にわたるリソースのロック、他のユーザーのブロック、スケーラビリティの制限を引き起こす最大の原因と考えられます。 こうしたクエリは、最適化に最も適した要素でもあります。<br>
 
@@ -149,7 +149,7 @@ Query Performance Insight でワークロードを探索する場合、垂直線
 ![クエリの注釈の詳細][7]
 
 ### <a name="multiple-annotations"></a>複数の注釈
-ズーム レベルによっては、互いに近接する注釈が 1 つに折りたたまれている場合があります。 この場合は、特殊なアイコンが表示されます。このアイコンをクリックすると新しいブレードが開き、グループ化された注釈の一覧が表示されます。
+ズーム レベルによっては、互いに近接する注釈が&1; つに折りたたまれている場合があります。 この場合は、特殊なアイコンが表示されます。このアイコンをクリックすると新しいブレードが開き、グループ化された注釈の一覧が表示されます。
 相互に関連するクエリやパフォーマンス チューニング アクションは、ワークロードへの理解を深めるのに役立ちます。 
 
 ## <a name="optimizing-the-query-store-configuration-for-query-performance-insight"></a>Query Performance Insight 用のクエリ ストア構成の最適化
@@ -169,7 +169,7 @@ Query Performance Insight の使用中に、次のようなクエリ ストア �
 ![qds ボタン][9]
 
 ### <a name="recommended-retention-and-capture-policy"></a>推奨される保存とキャプチャのポリシー
-保持ポリシーには 2 つの種類があります。
+保持ポリシーには&2; つの種類があります。
 
 * サイズ ベース – AUTO に設定した場合、最大サイズの近づくとデータが自動的にクリーンアップされます。
 * 時間ベース – 既定では 30 日に設定されます。つまり、クエリ ストアの領域が不足すると、30 日より古いクエリ情報が削除されます。
@@ -228,6 +228,6 @@ Query Performance Insight を使うと、クエリ ワークロードの影響�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

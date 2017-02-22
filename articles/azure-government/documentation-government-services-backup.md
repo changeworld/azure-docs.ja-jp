@@ -1,21 +1,21 @@
 ---
 title: Azure Government Backup | Microsoft Docs
 description: "この記事では、Azure Government で使用できる Azure Backup の機能の概要を示します。"
-services: backup
+services: azure-government
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 ms.assetid: a7622135-8790-4be4-a02a-7b9ac8a4996f
-ms.service: backup
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/11/2016
+ms.workload: azure-government
+ms.date: 1/5/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 0095a95afc14de42c1160a73139a0f059cd758dd
-ms.openlocfilehash: 3b3ecaef33aefc89e5a5c1cd351566d21246d0b8
+ms.sourcegitcommit: fa00142a9e89c5ad2630f688ea9771a1a542c052
+ms.openlocfilehash: e5f89f845302ecb890caa50dd8f86503b29f1154
 
 
 ---
@@ -33,25 +33,35 @@ ms.openlocfilehash: 3b3ecaef33aefc89e5a5c1cd351566d21246d0b8
 
 Azure Backup を利用するのが初めてであり、使用可能な機能の概要を確認したい方は、「[Azure Backup とは](../backup/backup-introduction-to-azure-backup.md)」をご覧ください。
 
-> [!IMPORTANT]
-> 現時点では、Azure Government Backup は Service Manager デプロイメント (別名クラシック デプロイメント モデル) をサポートしています。 Resource Manager デプロイメントはまだサポートされていません。 Azure Resource Manager デプロイメント モデルとクラシック デプロイメント モデルの違いについては、[こちらをご覧ください](../resource-manager-deployment-model.md)。
-
 [!INCLUDE [learn-about-backup-deployment models](../../includes/backup-deployment-models.md)]
 
 ## <a name="azure-backup-components-available-in-azure-government-backup"></a>Azure Government Backup で使用できる Azure Backup コンポーネント
 
-Azure Backup を使用して保護できるものとしては、ファイル、フォルダー、ボリューム、仮想マシン、アプリケーション、ワークロードがあります。 保護の対象とデータの存在場所に応じて、異なる Azure Backup コンポーネントを使用します。 以下の各セクションに、コンポーネントごとの Azure Backup パブリック ドキュメントの記事へのリンクを示します。
+Azure Backup を使用して保護できるものとしては、ファイル、フォルダー、ボリューム、仮想マシン、アプリケーション、ワークロードがあります。 保護の対象とデータの存在場所に応じて、異なる Azure Backup コンポーネントを使用します。 以下の各セクションに、コンポーネントごとの Azure Backup パブリック ドキュメントの記事へのリンクを示します。 セクションは、クラシック ポータル向けと Azure Portal 向けに分かれています。 Resource Manager デプロイを使用する場合は、Azure Portal バージョンを使用してください。
 
-各記事では、クラシック バージョンのポータルでの Azure Backup コンポーネントの使用方法について説明しています。
+### <a name="using-windows-server-and-windows-computers-in-azure-portal"></a>Azure Portal での Windows Server と Windows コンピューターの使用
 
-### <a name="windows-server-and-windows-computers"></a>Windows Server および Windows コンピューター
-
-- [Windows Server および Windows クライアント コンピューターのバックアップ](../backup/backup-configure-vault-classic.md)
+- [Windows Server および Windows クライアント コンピューターのバックアップ](../backup/backup-configure-vault.md)
 - [Windows Server および Windows クライアント コンピューターの復元](../backup/backup-azure-restore-windows-server.md)
 - [Windows Server および Windows クライアント コンピューターのバックアップの管理](../backup/backup-azure-manage-windows-server.md)
+- [PowerShell を使用した Windows Server のバックアップ](../backup/backup-client-automation.md)
+
+### <a name="using-windows-server-and-windows-computers-in-classic-portal"></a>クラシック ポータルでの Windows Server と Windows コンピューターの使用
+
+- [Windows Server および Windows クライアント コンピューターのバックアップ](../backup/backup-configure-vault-classic.md)
+- [Windows Server および Windows クライアント コンピューターの復元](../backup/backup-azure-restore-windows-server-classic.md)
+- [Windows Server および Windows クライアント コンピューターのバックアップの管理](../backup/backup-azure-manage-windows-server-classic.md)
 - [PowerShell を使用した Windows Server のバックアップ](../backup/backup-client-automation-classic.md)
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="using-virtual-machines-in-azure-portal"></a>Azure Portal での Virtual Machines の使用
+
+- [仮想マシン環境の準備](../backup/backup-azure-arm-vms-prepare.md)
+- [仮想マシンのバックアップ](../backup/backup-azure-vms-first-look-arm.md)
+- [仮想マシンの復元](../backup/backup-azure-arm-restore-vms.md)
+- [仮想マシンの管理](../backup/backup-azure-manage-vms.md)
+- [PowerShell を使用した仮想マシンのバックアップ](../backup/backup-azure-vms-automation.md)
+
+### <a name="using-virtual-machines-in-classic-portal"></a>クラシック ポータルでの Virtual Machines の使用
 
 - [仮想マシン環境の準備](../backup/backup-azure-vms-prepare.md)
 - [仮想マシンのバックアップ](../backup/backup-azure-vms-first-look.md)
@@ -59,24 +69,33 @@ Azure Backup を使用して保護できるものとしては、ファイル、�
 - [仮想マシンの管理](../backup/backup-azure-manage-vms-classic.md)
 - [PowerShell を使用した仮想マシンのバックアップ](../backup/backup-azure-vms-classic-automation.md)
 
-### <a name="system-center-data-protection-manager"></a>System Center Data Protection Manager
+### <a name="using-system-center-data-protection-manager-in-azure-portal"></a>Azure Portal での System Center Data Protection Manager の使用
+
+- [System Center Data Protection Manager のバックアップ](../backup/backup-azure-dpm-introduction.md)
+
+### <a name="using-system-center-data-protection-manager-in-classic-portal"></a>クラシック ポータルでの System Center Data Protection Manager の使用
 
 - [System Center Data Protection Manager のバックアップ](../backup/backup-azure-dpm-introduction-classic.md)
 
-### <a name="azure-backup-server"></a>Azure Backup Server
+### <a name="using-azure-backup-server-in-azure-portal"></a>Azure Portal での Azure Backup Server の使用
+
+Azure Backup Server は、System Center Data Protection Manager (DPM) と同様の働きをする Azure Backup コンポーネントです。ただし、Azure Backup Server ではデータをテープに保存できないという例外があります。 Azure Backup Server では、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードをクラウドに保護することができます。 Azure Backup Server では、System Center ライセンスは必要ありません。
+
+- [Azure Backup Server](../backup/backup-azure-microsoft-azure-backup.md)
+
+### <a name="using-azure-backup-server-in-classic-portal"></a>クラシック ポータルでの Azure Backup Server の使用
 
 - [Azure Backup Server](../backup/backup-azure-microsoft-azure-backup-classic.md)
 
-Azure Backup Server は、System Center Data Protection Manager (DPM) と同様の働きをする Azure Backup コンポーネントです。 Azure Backup Server では、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードをクラウドに保護することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
 どこから手を付ければよいかわからない場合は、こちらの「[クラシック デプロイメント モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする](../backup/backup-configure-vault-classic.md)」からご覧ください。 このチュートリアルでは、Windows Server またはコンピューターでのバックアップ プロジェクトのを設定手順について説明しています。
 
-Azure Backup の使い方は知っているものの料金が気になる場合は、[Backup の価格ページ](http://azure.microsoft.com/pricing/details/backup/)をご覧ください。 このページにはよく寄せられる質問のリストも記載されており、役立つ情報を得ることができます。 また、**[リージョン]** ドロップダウン メニューに Azure Government リージョンは 2 つ含まれています。
+Azure Backup の使い方は知っているものの料金が気になる場合は、[Backup の価格ページ](http://azure.microsoft.com/pricing/details/backup/)をご覧ください。 このページにはよく寄せられる質問のリストも記載されており、役立つ情報を得ることができます。 また、**[リージョン]** ドロップダウン メニューに Azure Government リージョンは&2; つ含まれています。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

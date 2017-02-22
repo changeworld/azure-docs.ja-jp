@@ -1,5 +1,5 @@
 ---
-title: "HBase のチュートリアル: Hadoop で Linux ベースの HBase クラスターを使用する | Microsoft Docs"
+title: "Azure HDInsight での HBase の使用 | Microsoft Docs"
 description: "HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
 keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル"
 services: hdinsight
@@ -13,20 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8056e7ece1942c9090a7c36447a96829febaf1a4
-ms.openlocfilehash: 81cdadcd7200f20274c2851eda8677078b8b505c
+ms.sourcegitcommit: 0a09f1511778623b21a26042a752009ae2208ba6
+ms.openlocfilehash: 415f6f71642726aeb8477f067bd406a57717ff2a
 
 
 ---
-# <a name="hbase-tutorial-get-started-using-apache-hbase-with-linux-based-hadoop-in-hdinsight"></a>HBase チュートリアル: HDInsight の Linux ベースの Hadoop で Apache HBase を使用する
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
+# <a name="hbase-tutorial-get-started-using-apache-hbase-in-hdinsight"></a>HBase チュートリアル: HDInsight で Apache HBase を使用する
 
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Hive を使用してテーブルを照会する方法について説明します。 HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
-
-このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -100,7 +97,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
    
         get 'Contacts', '1000'
    
-    行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
+    行は&1; 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
    
     HBase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」を参照してください。
 5. シェルを終了します。
@@ -207,7 +204,7 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
         -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d "{\"Row\":{\"key\":\"MTAwMA==\",\"Cell\":{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}}}" \
+        -d "{\"Row\":[{\"key\":\"MTAwMA==\",\"Cell\": [{\"column\":\"UGVyc29uYWw6TmFtZQ==\", \"$\":\"Sm9obiBEb2xl\"}]}]}" \
         -v
    
     -d スイッチで指定された値に base64 エンコードを使用する必要があります。  たとえば、次のようになります。
@@ -286,6 +283,6 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 01/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fb8a8563d41827ce22604e2fb485c84a1441efa2
-ms.openlocfilehash: 2aea15d4560d225bed18438b93d88bb8f64b71b9
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: 8b74f2e4169ac97e09da12d5ed85e0e24b50e150
 
 
 ---
@@ -49,7 +49,7 @@ HDInsight クラスターで R をインストールする [サンプル スク�
 1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
 
-    ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Use Script Action to customize a cluster")
+    ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
     <table border='1'>
         <tr><th>プロパティ</th><th>値</th></tr>
@@ -107,13 +107,13 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 * [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
 * [HDInsight クラスターに Solr をインストールし、使用する](hdinsight-hadoop-solr-install-linux.md): Solr のインストールに関する Script Action サンプル。
 
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

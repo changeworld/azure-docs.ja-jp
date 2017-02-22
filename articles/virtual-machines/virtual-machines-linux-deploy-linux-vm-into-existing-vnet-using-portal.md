@@ -1,5 +1,5 @@
 ---
-title: "ポータルを使用して既存の Azure Virtual Network に Linux VM をデプロイする | Microsoft Docs"
+title: "既存のネットワークに Linux VM をデプロイする - Azure Portal | Microsoft Docs"
 description: "ポータルを使用して、既存の Azure Virtual Network に Linux VM をデプロイします。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 6b285b67c3d5bcc89be4d371e444796501eb7de2
-ms.openlocfilehash: 7c07a99f9a72cb69812191ca042fac905d2e3706
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 8e75aa3b38df512dc93031d5a0e9047febe7ab74
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 7c07a99f9a72cb69812191ca042fac905d2e3706
 
 ## <a name="create-the-vnet"></a>VNet の作成
 
-まず、VM を起動する VNet を作成します。  この VNet にはサブネットが 1 つ含まれます。後の手順で、このサブネットに NSG を関連付けます。
+まず、VM を起動する VNet を作成します。  この VNet にはサブネットが&1; つ含まれます。後の手順で、このサブネットに NSG を関連付けます。
 
 ![createVNet](../media/virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal/createVNet.png)
 
@@ -60,7 +60,7 @@ Linux VM はインターネットからのアクセスを必要とするため�
 
 ## <a name="associate-the-nsg-with-the-subnet"></a>サブネットへの NSG の関連付け
 
-VNet とサブネットが作成されたので、サブネットに NSG を関連付けます。  NSG はサブネット全体に関連付けることも、個々の VNic に関連付けることもできます。  NSG を 1 つの VNic だけに関連付けると、1 つの VM だけが保護されるのに対し、サブネット レベルでトラフィックをフィルター処理するファイアウォールを使用すると、サブネット内のすべての VNic と VM が NSG によって保護されます。
+VNet とサブネットが作成されたので、サブネットに NSG を関連付けます。  NSG はサブネット全体に関連付けることも、個々の VNic に関連付けることもできます。  NSG を&1; つの VNic だけに関連付けると、1 つの VM だけが保護されるのに対し、サブネット レベルでトラフィックをフィルター処理するファイアウォールを使用すると、サブネット内のすべての VNic と VM が NSG によって保護されます。
 
 ![associateNSG](../media/virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-portal/associateNSG.png)
 
@@ -81,6 +81,6 @@ Azure Portal を使用して、既存の Azure リソース グループ、VNet�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

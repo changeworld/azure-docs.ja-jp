@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8bd214c166190248662634d488d8e7b1427b5738
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
 
 
 ---
 # <a name="get-started-using-azure-data-lake-hdinsight-tools-for-visual-studio-to-run-a-hive-query"></a>Azure Data Lake (HDInsight) Tools for Visual Studio を使用して Hive クエリを実行する
-Data Lake (HDInsight) Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。 HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。 Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
+Data Lake (HDInsight) Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。 HDInsight の使用に関する詳細については、[HDInsight の概要][hdinsight.introduction]と [HDInsight の使用][hdinsight.get.started]に関するページを参照してください。 Storm クラスターへの接続に関する詳細については、[Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発][hdinsight.storm.visual.studio.tools]に関するページを参照してください。
 
 Data Lake Tools for Visual Studio は、Data Lake Analytics と HDInsight の両方へのアクセスに使用できます。  Data Lake Tools の詳細については、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 
@@ -81,7 +81,7 @@ Azure サブスクリプションに接続した後で、次を実行できま�
 
 **Visual Studio から Azure ポータルに接続するには**
 
-* サーバー エクスプローラーで、**[Azure]**、**[HDInsight]** の順に展開し、[HDInsight クラスター] を右クリックして、**[Manage Cluster in Azure portal (Azure Portal でのクラスターの管理)]** をクリックします。
+* サーバー エクスプローラーで、**[Azure]**、 > **[HDInsight]** の順に展開し、[HDInsight クラスター] を右クリックして、**[Manage Cluster in Azure portal (Azure Portal でのクラスターの管理)]** をクリックします。
 
 **Visual Studio から質問をしたりフィードバックを提供したりするには**
 
@@ -97,7 +97,7 @@ Azure サブスクリプションに接続した後で、次を実行できま�
 ![Data Lake Tools for Visual Studio サーバー エクスプローラーでの BLOB 操作](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
-[Apache Hive][apache.hive] は Hadoop に構築されるデータ ウェアハウス基盤であり、データを集約、照会、分析できます。 Data Lake Tools for Visual Studio は Visual Studio からの Hive クエリの実行をサポートします。 Hive の詳細については、[HDInsight での Hive の使用][hdinsight.hive]に関するページをご覧ください。
+[Apache Hive][apache.hive] は Hadoop に構築されるデータ ウェアハウス基盤であり、データを集約、照会、分析できます。 Data Lake Tools for Visual Studio は Visual Studio からの Hive クエリの実行をサポートします。 Hive の詳細については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。
 
 HDInsight クラスターに対して Hive スクリプトをテストするには、 数分以上かかる場合があります。 Data Lake Tools for Visual Studio では、ライブ クラスターに接続しなくても、Hive スクリプトをローカルで検証できます。
 
@@ -108,7 +108,7 @@ HDInsight クラスターに対して Hive スクリプトをテストするに�
 
 **Hive テーブルを一覧表示し、Hive テーブル スキーマを表示するには**
 
-1. **サーバー エクスプローラー**から、**[Azure]**、**[HDInsight]**、任意のクラスター、**[Hive データベース]**、**[既定]**、**[hivesampletable]** の順に展開し、テーブル スキーマを表示します。
+1. **サーバー エクスプローラー**から、**[Azure]**、 > **[HDInsight]**、任意のクラスター、**[Hive データベース]**、 > **[既定]**、 > **[hivesampletable]** の順に展開し、テーブル スキーマを表示します。
 2. **[hivesampletable]** を右クリックし、**[上位 100 行を表示]** をクリックして、行を一覧表示します。 これは、Hive ODBC ドライバーを使用して、次の Hive クエリを実行することと同等です。
    
      SELECT * FROM hivesampletable LIMIT 100
@@ -122,7 +122,7 @@ GUI を使用して Hive テーブルを作成するか、Hive クエリを使�
 
 **Hive テーブルを作成するには**
 
-1. **サーバー エクスプローラー**から、**[Azure]**、**[HDInsight クラスター]**、HDInsight クラスター、**[Hive データベース]** の順に展開し、**[既定]** を右クリックして、**[テーブルの作成]** をクリックします。
+1. **サーバー エクスプローラー**から、**[Azure]**、 > **[HDInsight クラスター]**、HDInsight クラスター、**[Hive データベース]** の順に展開し、**[既定]** を右クリックして、**[テーブルの作成]** をクリックします。
 2. テーブルを構成します。
 3. **[テーブルの作成]** をクリックして、新しい Hive テーブルを作成するためのジョブを送信します。
    
@@ -173,7 +173,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 ### <a name="view-hive-jobs"></a>Hive ジョブの表示
 Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Yarn ログを表示できます。 詳細については、先のスクリーンショットをご覧ください。
 
-最新版のツールでは、YARN ログを収集して表示することで、Hive ジョブの内容を確認できます。 YARN ログは、パフォーマンス問題の検証に役立ちます。 HDInsight での YARN ログの収集に関する詳細については、「[Access HDInsight Application Logs Programmatically (プログラムを使用してHDInsight アプリケーション ログにアクセスする)][hdinsight.access.application.logs]」をご覧ください。
+最新版のツールでは、YARN ログを収集して表示することで、Hive ジョブの内容を確認できます。 YARN ログは、パフォーマンス問題の検証に役立ちます。 HDInsight での YARN ログの収集に関する詳細については、[プログラムによる HDInsight アプリケーション ログへのアクセス][hdinsight.access.application.logs]に関するページを参照してください。
 
 **Hive ジョブの表示**
 
@@ -232,7 +232,7 @@ Hive on Tez ジョブのタスク実行ビューは、Hive ジョブの構造化
 ## <a name="run-pig-scripts"></a>Pig のスクリプトを実行する
 Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsight クラスターへの送信をサポートしています。 ユーザーは、テンプレートから Pig プロジェクトを作成して、HDInsight クラスターにスクリプトを送信できます。
 
-## <a name="feedbacks-known-issues"></a>フィードバックと既知の問題
+## <a name="feedbacks--known-issues"></a>フィードバックと既知の問題
 * 現在 HiveServer2 の結果は、ピュア テキスト形式で表示され、これは最適とは言えません。 Microsoft では、この問題の解決に取り組んでいます。
 * 結果が NULL 値で始まっている場合、現在その結果は表示されません。 この問題は修正されており、この問題で支障が出ている場合は、電子メールでお知らせいただくか、サポート チームにお問い合わせください。
 * ユーザーのローカルのリージョン設定によっては、Visual Studio によって作成された HQL スクリプトがエンコードされます。 ユーザーがスクリプトをバイナリとしてクラスターにアップロードする場合、これは正常に実行されないことがあります。
@@ -240,17 +240,17 @@ Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 ## <a name="next-steps"></a>次のステップ
 この記事では、Data Lake (HDInsight) Tools パッケージを使用して Visual Studio から HDInsight クラスターに接続し、Hive クエリを実行する方法を説明しました。 詳細については、次を参照してください。
 
-* [Use Hadoop Hive in HDInsight (HDInsight で Hadoop Hive を使用する)][hdinsight.hive]
-* [HDInsight で Hive と Hadoop を使用する][hdinsight.get.started]
+* [HDInsight での Hadoop Hive の使用][hdinsight.hive]
+* [HDInsight での Hadoop の使用][hdinsight.get.started]
 * [HDInsight での Hadoop ジョブの送信][hdinsight.submit.jobs]
 * [HDInsight での Hadoop を使用した Twitter データの分析][hdinsight.analyze.twitter.data]
 
 <!--Anchors-->
-[インストール]: #installation
-[Azure サブスクリプションへの接続]: #connect-to-your-azure-subscription
-[リンクしているリソースへの移動]: #navigate-the-linked-resources
-[Hive クエリの実行]: #run-hive-queries
-[次のステップ]: #next-steps
+[Installation]: #installation
+[Connect to your Azure subscription]: #connect-to-your-azure-subscription
+[Navigate the linked resources]: #navigate-the-linked-resources
+[Run Hive queries]: #run-hive-queries
+[Next steps]: #next-steps
 
 <!--Image references-->
 [1]: ./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.wpi.png
@@ -281,6 +281,6 @@ Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

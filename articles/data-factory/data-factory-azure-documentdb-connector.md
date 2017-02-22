@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 01/30/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a86d5fb7c0215293e281a52d0f805053bb7b7c11
-ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
+ms.sourcegitcommit: f0592824bc5296a4c6e5781d43746c09d80609f9
+ms.openlocfilehash: 622f5547dee171d1b3f0a0cb65cba375d5478476
 
 
 ---
@@ -46,86 +46,91 @@ ms.openlocfilehash: 935de6643bbfdc8674836a33ce0dfe77df0e2d1e
 
 **Azure DocumentDB のリンクされたサービス:**
 
-    {
-      "name": "DocumentDbLinkedService",
-      "properties": {
-        "type": "DocumentDb",
-        "typeProperties": {
-          "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-        }
-      }
+```JSON
+{
+  "name": "DocumentDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
     }
-
+  }
+}
+```
 **Azure BLOB ストレージのリンクされたサービス:**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **Azure Document DB 入力データセット:**
 
 このサンプルでは、「 **Person** 」というコレクションが Azure DocumentDB データベースにあるものと想定しています。
 
 「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
 
-    {
-      "name": "PersonDocumentDbTable",
-      "properties": {
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "PersonDocumentDbTable",
+  "properties": {
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 
 **Azure BLOB の出力データセット:**
 
 データは、時間の粒度で特定の日時を反映している BLOB のパスの新しい BLOB に 1 時間ごとにコピーされます。
 
-    {
-      "name": "PersonBlobTableOut",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "docdb",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "nullValue": "NULL"
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonBlobTableOut",
+  "properties": {
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "folderPath": "docdb",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "nullValue": "NULL"
       }
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 DocumentDB データベースの「Person」コレクションのサンプル JSON 文書:
 
-    {
-      "PersonId": 2,
-      "Name": {
-        "First": "Jane",
-        "Middle": "",
-        "Last": "Doe"
-      }
-    }
-
+```JSON
+{
+  "PersonId": 2,
+  "Name": {
+    "First": "Jane",
+    "Middle": "",
+    "Last": "Doe"
+  }
+}
+```
 DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用し、文書にクエリを実行できます。
 
 例: 
@@ -136,46 +141,47 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 次のパイプラインは DocumentDB データベースの「Person」コレクションから Azure BLOB にデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。  
 
-    {
-      "name": "DocDbToBlobPipeline",
-      "properties": {
-        "activities": [
+```JSON
+{
+  "name": "DocDbToBlobPipeline",
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DocumentDbCollectionSource",
+            "query": "SELECT Person.Id, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person",
+            "nestingSeparator": "."
+          },
+          "sink": {
+            "type": "BlobSink",
+            "blobWriterAddHeader": true,
+            "writeBatchSize": 1000,
+            "writeBatchTimeout": "00:00:59"
+          }
+        },
+        "inputs": [
           {
-            "type": "Copy",
-            "typeProperties": {
-              "source": {
-                "type": "DocumentDbCollectionSource",
-                "query": "SELECT Person.Id, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person",
-                "nestingSeparator": "."
-              },
-              "sink": {
-                "type": "BlobSink",
-                "blobWriterAddHeader": true,
-                "writeBatchSize": 1000,
-                "writeBatchTimeout": "00:00:59"
-              }
-            },
-            "inputs": [
-              {
-                "name": "PersonDocumentDbTable"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "PersonBlobTableOut"
-              }
-            ],
-            "policy": {
-              "concurrency": 1
-            },
-            "name": "CopyFromDocDbToBlob"
+            "name": "PersonDocumentDbTable"
           }
         ],
-        "start": "2015-04-01T00:00:00Z",
-        "end": "2015-04-02T00:00:00Z"
+        "outputs": [
+          {
+            "name": "PersonBlobTableOut"
+          }
+        ],
+        "policy": {
+          "concurrency": 1
+        },
+        "name": "CopyFromDocDbToBlob"
       }
-    }
-
+    ],
+    "start": "2015-04-01T00:00:00Z",
+    "end": "2015-04-02T00:00:00Z"
+  }
+}
+```
 ## <a name="sample-copy-data-from-azure-blob-to-azure-documentdb"></a>Sample: Azure BLOB から Azure DocumentDB にデータをコピーします。
 下のサンプルで確認できる要素:
 
@@ -189,167 +195,174 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+  "name": "StorageLinkedService",
+  "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+  }
+}
+```
 **Azure DocumentDB のリンクされたサービス:**
 
-    {
-      "name": "DocumentDbLinkedService",
-      "properties": {
-        "type": "DocumentDb",
-        "typeProperties": {
-          "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-        }
-      }
+```JSON
+{
+  "name": "DocumentDbLinkedService",
+  "properties": {
+    "type": "DocumentDb",
+    "typeProperties": {
+      "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
     }
-
+  }
+}
+```
 **Azure BLOB の入力データセット:**
 
-    {
-      "name": "PersonBlobTableIn",
-      "properties": {
-        "structure": [
-          {
-            "name": "Id",
-            "type": "Int"
-          },
-          {
-            "name": "FirstName",
-            "type": "String"
-          },
-          {
-            "name": "MiddleName",
-            "type": "String"
-          },
-          {
-            "name": "LastName",
-            "type": "String"
-          }
-        ],
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "fileName": "input.csv",
-          "folderPath": "docdb",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ",",
-            "nullValue": "NULL"
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonBlobTableIn",
+  "properties": {
+    "structure": [
+      {
+        "name": "Id",
+        "type": "Int"
+      },
+      {
+        "name": "FirstName",
+        "type": "String"
+      },
+      {
+        "name": "MiddleName",
+        "type": "String"
+      },
+      {
+        "name": "LastName",
+        "type": "String"
       }
+    ],
+    "type": "AzureBlob",
+    "linkedServiceName": "StorageLinkedService",
+    "typeProperties": {
+      "fileName": "input.csv",
+      "folderPath": "docdb",
+      "format": {
+        "type": "TextFormat",
+        "columnDelimiter": ",",
+        "nullValue": "NULL"
+      }
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 **Azure DocumentDB 出力データセット:**
 
 このサンプルでは、「Person」という名前のコレクションにデータをコピーします。
 
-    {
-      "name": "PersonDocumentDbTableOut",
-      "properties": {
-        "structure": [
-          {
-            "name": "Id",
-            "type": "Int"
-          },
-          {
-            "name": "Name.First",
-            "type": "String"
-          },
-          {
-            "name": "Name.Middle",
-            "type": "String"
-          },
-          {
-            "name": "Name.Last",
-            "type": "String"
-          }
-        ],
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
+```JSON
+{
+  "name": "PersonDocumentDbTableOut",
+  "properties": {
+    "structure": [
+      {
+        "name": "Id",
+        "type": "Int"
+      },
+      {
+        "name": "Name.First",
+        "type": "String"
+      },
+      {
+        "name": "Name.Middle",
+        "type": "String"
+      },
+      {
+        "name": "Name.Last",
+        "type": "String"
       }
+    ],
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 次のパイプラインは Azure BLOB から DocumentDB データベースの「Person」コレクションにデータをコピーします。 コピー アクティビティの一部として、入力データセットと出力データセットが指定されています。
 
-    {
-      "name": "BlobToDocDbPipeline",
-      "properties": {
-        "activities": [
+```JSON
+{
+  "name": "BlobToDocDbPipeline",
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "DocumentDbCollectionSink",
+            "nestingSeparator": ".",
+            "writeBatchSize": 2,
+            "writeBatchTimeout": "00:00:00"
+          }
+          "translator": {
+              "type": "TabularTranslator",
+              "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
+          }
+        },
+        "inputs": [
           {
-            "type": "Copy",
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "DocumentDbCollectionSink",
-                "nestingSeparator": ".",
-                "writeBatchSize": 2,
-                "writeBatchTimeout": "00:00:00"
-              }
-              "translator": {
-                  "type": "TabularTranslator",
-                  "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
-              }
-            },
-            "inputs": [
-              {
-                "name": "PersonBlobTableIn"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "PersonDocumentDbTableOut"
-              }
-            ],
-            "policy": {
-              "concurrency": 1
-            },
-            "name": "CopyFromBlobToDocDb"
+            "name": "PersonBlobTableIn"
           }
         ],
-        "start": "2015-04-14T00:00:00Z",
-        "end": "2015-04-15T00:00:00Z"
+        "outputs": [
+          {
+            "name": "PersonDocumentDbTableOut"
+          }
+        ],
+        "policy": {
+          "concurrency": 1
+        },
+        "name": "CopyFromBlobToDocDb"
       }
-    }
-
+    ],
+    "start": "2015-04-14T00:00:00Z",
+    "end": "2015-04-15T00:00:00Z"
+  }
+}
+```
 サンプル BLOB 入力が次の場合
 
-    1,John,,Doe
-
+```
+1,John,,Doe
+```
 DocumentDB の JSON は次のようになります。
 
-    {
-      "Id": 1,
-      "Name": {
-        "First": "John",
-        "Middle": null,
-        "Last": "Doe"
-      },
-      "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
-    }
-
+```JSON
+{
+  "Id": 1,
+  "Name": {
+    "First": "John",
+    "Middle": null,
+    "Last": "Doe"
+  },
+  "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
+}
+```
 DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、**nestingSeparator** で階層を示すことができます。 この例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。
 
 ## <a name="azure-documentdb-linked-service-properties"></a>Azure DocumentDB のリンクされたサービスのプロパティ
@@ -371,22 +384,23 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 例:
 
-    {
-      "name": "PersonDocumentDbTable",
-      "properties": {
-        "type": "DocumentDbCollection",
-        "linkedServiceName": "DocumentDbLinkedService",
-        "typeProperties": {
-          "collectionName": "Person"
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        }
-      }
+```JSON
+{
+  "name": "PersonDocumentDbTable",
+  "properties": {
+    "type": "DocumentDbCollection",
+    "linkedServiceName": "DocumentDbLinkedService",
+    "typeProperties": {
+      "collectionName": "Person"
+    },
+    "external": true,
+    "availability": {
+      "frequency": "Day",
+      "interval": 1
     }
-
+  }
+}
+```
 ### <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
 DocumentDB などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。  
 
@@ -398,7 +412,8 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 ## <a name="azure-documentdb-copy-activity-type-properties"></a>Azure DocumentDB のコピー アクティビティの type プロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-**注:** コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
+> [!NOTE]
+> コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
@@ -453,6 +468,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

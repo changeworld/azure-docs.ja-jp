@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 09/11/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: c7569177db0821b36e49439ec54224e1aeb9ad9d
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6e7761d07beebbbc68db7d3e30a26153bd8f9655
 
 
 ---
@@ -43,29 +43,23 @@ ms.openlocfilehash: c7569177db0821b36e49439ec54224e1aeb9ad9d
 ### <a name="to-enable-the-application-integration-for-wikispaces-perform-the-following-steps"></a>Wikispaces のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-wikispaces-tutorial/IC700993.png "Active Directory")
-
+   ![[Active Directory]](./media/active-directory-saas-wikispaces-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-wikispaces-tutorial/IC700994.png "Applications")
-
+   ![[アプリケーション]](./media/active-directory-saas-wikispaces-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-wikispaces-tutorial/IC749321.png "Add application")
-
+   ![[アプリケーションの追加]](./media/active-directory-saas-wikispaces-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-wikispaces-tutorial/IC749322.png "Add an application from gallerry")
-
+   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-wikispaces-tutorial/IC749322.png "Add an application from gallerry")
 6. **検索ボックス**に「**Wikispaces**」と入力します。
    
-    ![アプリケーション ギャラリー](./media/active-directory-saas-wikispaces-tutorial/IC787186.png "Application Gallery")
-
+   ![アプリケーション ギャラリー](./media/active-directory-saas-wikispaces-tutorial/IC787186.png "Application Gallery")
 7. 結果ウィンドウで **[Wikispaces]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
-    ![Wikispaces](./media/active-directory-saas-wikispaces-tutorial/IC787187.png "Wikispaces")
+   ![Wikispaces](./media/active-directory-saas-wikispaces-tutorial/IC787187.png "Wikispaces")
 
 ## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Wikispaces に対する認証を行うことができるようにする方法を説明します。
@@ -73,30 +67,25 @@ ms.openlocfilehash: c7569177db0821b36e49439ec54224e1aeb9ad9d
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **[Wikispaces]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787188.png "Configure Single Sign-On")
-
+   ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787188.png "Configure Single Sign-On")
 2. **[ユーザーの Wikispaces へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787189.png "Configure Single Sign-On")
-
+   ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787189.png "Configure Single Sign-On")
 3. **[アプリケーション URL の構成]** ページの **[Wikispaces サインオン URL]** ボックスに、" *http://company.wikispaces.net* " というパターンの URL を入力し、**[次へ]** をクリックします。
    
-    ![Configure App URL](./media/active-directory-saas-wikispaces-tutorial/IC787190.png "Configure App URL")
-
+   ![Configure App URL](./media/active-directory-saas-wikispaces-tutorial/IC787190.png "Configure App URL")
 4. **[Wikispaces でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
    
    ![[シングル サインオンの構成]](./media/active-directory-saas-wikispaces-tutorial/IC787191.png "Configure Single Sign-On")
-
 5. Wikispaces サポート チームに、メタデータ ファイルを送信します。
    
-    > [!NOTE]
-    > シングル サインオンの構成は、Wikispaces サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
-    > 
-    > 
-
+   > [!NOTE]
+   > シングル サインオンの構成は、Wikispaces サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
+   > 
+   > 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wikispaces-tutorial/IC787192.png "Configure Single Sign-On")
+   ![[シングル サインオンの構成]](./media/active-directory-saas-wikispaces-tutorial/IC787192.png "Configure Single Sign-On")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが Wikispaces にログインできるようにするには、そのユーザーを Wikispaces にプロビジョニングする必要があります。  
@@ -104,27 +93,23 @@ Wikispaces の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 1. **Wikispaces** 企業サイトに管理者としてログインします。
-
 2. **[メンバー]**に移動します。
    
-    ![[メンバー]](./media/active-directory-saas-wikispaces-tutorial/IC787193.png "Members")
-
+   ![[メンバー]](./media/active-directory-saas-wikispaces-tutorial/IC787193.png "Members")
 3. **[ユーザーの招待]**をクリックします。
    
-    ![[ユーザーの招待]](./media/active-directory-saas-wikispaces-tutorial/IC787194.png "Invite People")
-
+   ![[ユーザーの招待]](./media/active-directory-saas-wikispaces-tutorial/IC787194.png "Invite People")
 4. **[ユーザーの招待]** セクションで、次の手順を実行します。
    
-    ![[ユーザーの招待]](./media/active-directory-saas-wikispaces-tutorial/IC787208.png "Invite People")
+   ![[ユーザーの招待]](./media/active-directory-saas-wikispaces-tutorial/IC787208.png "Invite People")
    
-    a. プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、 **名前または電子メール アドレス** を入力します。
-   
-    b. [ **送信**] をクリックします。  
+   1. プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、 **名前または電子メール アドレス** を入力します。
+   2. [ **送信**] をクリックします。  
       
-    > [!NOTE]
-    > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
-    > 
-    > 
+      > [!NOTE]
+      > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+      > 
+      > 
 
 > [!NOTE]
 > Wikispaces から提供されている他の Wikispaces ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -136,20 +121,18 @@ Wikispaces の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-assign-users-to-wikispaces-perform-the-following-steps"></a>ユーザーを Wikispaces に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-
 2. **Wikispaces** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-wikispaces-tutorial/IC787195.png "Assign Users")
-
+   ![[ユーザーの割り当て]](./media/active-directory-saas-wikispaces-tutorial/IC787195.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
-    ![はい](./media/active-directory-saas-wikispaces-tutorial/IC767830.png "Yes")
+   ![はい](./media/active-directory-saas-wikispaces-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

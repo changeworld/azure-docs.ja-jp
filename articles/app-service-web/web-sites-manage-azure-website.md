@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dadae052868fcb0952b4480525efc0267a4a8e22
+ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
+ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
 
 
 ---
@@ -29,7 +29,7 @@ Azure ポータルでは、多くの Web アプリ管理作業を実行できま
 
 ## <a name="before-you-deploy-your-web-app-to-production"></a>Web アプリを運用環境にデプロイする前
 ### <a name="choose-a-tier"></a>レベルの選択
-Azure App Service には、 Free、Shared、Basic、Standard、および Premium の 5 つのレベルが用意されています。 それぞれのレベルの機能と料金については、 [料金の詳細](/pricing/details/app-service/)を参照してください。 
+Azure App Service には、 Free、Shared、Basic、Standard、および Premium の 5 つのレベルが用意されています。 それぞれのレベルの機能と料金については、 [料金の詳細](https://azure.microsoft.com/pricing/details/app-service/)を参照してください。 
 
 * [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) により、複数の Web アプリを同じレベルにグループ化できます。
 * Web アプリ作成後、いつでも [レベルの切り替え](web-sites-scale.md) が可能です。
@@ -83,14 +83,14 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
 <!-- Anchors. -->
 
-[サイトを運用環境にデプロイする前]: #before-you-deploy-your-site-to-production
-[Web サイトの運用中]: #while-your-website-is-running
-[Web サイトの更新時]: #when-you-update-your-website
+[Before you deploy your site to production]: #before-you-deploy-your-site-to-production
+[While your website is running]: #while-your-website-is-running
+[When you update your website]: #when-you-update-your-website
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

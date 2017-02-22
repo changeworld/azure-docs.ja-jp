@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 13d0a71762d3cba05c3dccb647d0890862307327
-ms.openlocfilehash: 30c4c9da56687fb90e46eb9a2830d95df6e1c2f4
+ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
+ms.openlocfilehash: 2c24699f6253fc7952b331ebcce4b937f1c83603
 
 
 ---
@@ -27,13 +27,13 @@ Webhook アクションおよびトリガーを使用すると、以下を実現
 * 項目を受信するとすぐに [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) からトリガーする
 * 承認を待ってからワークフローを続行する
 
-Webhook のサブスクライブをサポートする API の作成については、 [Logic Apps のコネクタの作成に関するこちらの記事](../app-service-logic/app-service-logic-create-api-app.md)をご覧ください。
+Webhook のサブスクライブをサポートする API の作成については、 [Logic Apps のコネクタの作成に関するこちらの記事](../logic-apps/logic-apps-create-api-app.md)をご覧ください。
 
 - - -
 ## <a name="use-the-webhook-trigger"></a>Webhook トリガーの使用
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。  Webhook トリガーは、イベントが発生するとすぐにロジック アプリが起動する[要求トリガー](connectors-native-reqres.md)と同様に、新しい項目のポーリングに依存しないので特に便利です。  Webhook トリガーでは、必要に応じてロジック アプリの起動に使用できるサービスに ** "コールバック URL" を登録することでこれを実行します。
 
-ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。  これは、 [Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../app-service-logic/app-service-logic-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。  サブスクライブ呼び出しは、ロジック アプリが新しい Webhook と共に保存されるか、無効から有効に切り替えられるたびに実行されます。  サブスクライブ解除呼び出しは、ロジック アプリの Webhook トリガーが削除されて保存されるか、有効から無効に切り替えられるたびに実行されます。
+ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。  これは、 [Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。  サブスクライブ呼び出しは、ロジック アプリが新しい Webhook と共に保存されるか、無効から有効に切り替えられるたびに実行されます。  サブスクライブ解除呼び出しは、ロジック アプリの Webhook トリガーが削除されて保存されるか、有効から無効に切り替えられるたびに実行されます。
 
 1. ロジック アプリでの最初の手順として、 **HTTP Webhook** トリガーを追加します。
 2. Webhook のサブスクライブ呼び出しとサブスクライブ解除呼び出しのパラメーターを入力します。
@@ -46,12 +46,12 @@ Webhook のサブスクライブをサポートする API の作成について�
 5. サービスがコールバック URL に対して `HTTP POST` を実行するたびに、ロジック アプリが起動します (また、ロジック アプリには、要求で渡されたすべてのデータが含まれます)。
 
 ## <a name="use-the-webhook-action"></a>Webhook アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md)  Webhook アクションは、 ** をサービスに登録し、その URL が呼び出されるまで待機してから再開するので特に便利です。  ["承認電子メールの送信"](connectors-create-api-office365-outlook.md) は、このパターンに従うコネクタの一例です。  Webhook アクションを使用することで、このパターンをどのサービスにも適用できます。  これは、 [Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../app-service-logic/app-service-logic-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。  ロジック アプリが Webhook アクションを実行すると、サブスクライブ呼び出しが実行されます。  応答を待っている間またはロジック アプリが実行タイムアウトになる前に実行がキャンセルされると、サブスクライブ解除呼び出しが実行されます。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md)  Webhook アクションは、 ** をサービスに登録し、その URL が呼び出されるまで待機してから再開するので特に便利です。  ["承認電子メールの送信"](connectors-create-api-office365-outlook.md) は、このパターンに従うコネクタの一例です。  Webhook アクションを使用することで、このパターンをどのサービスにも適用できます。  これは、 [Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。  ロジック アプリが Webhook アクションを実行すると、サブスクライブ呼び出しが実行されます。  応答を待っている間またはロジック アプリが実行タイムアウトになる前に実行がキャンセルされると、サブスクライブ解除呼び出しが実行されます。
 
 Webhook アクションを追加するには、次の手順に従います。
 
 1. **[新しいステップ]** をクリックします。
-2.  **[アクションの追加]**
+2. **[アクションの追加]**
 3. アクションの検索ボックスに「webhook」と入力して、 **[HTTP Webhook]** アクションを表示します。
 
     ![クエリ アクションの選択](./media/connectors-native-webhook/using-action-1.png)
@@ -68,9 +68,9 @@ Webhook アクションを追加するには、次の手順に従います。
 Webhook でサポートされているトリガーとアクションの詳細を以下に示します。
 
 ## <a name="webhook-triggers"></a>Webhook トリガー
-トリガーとは、ワークフローを開始するための操作です。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md)  このコネクタにはトリガー 1 つあります。
+トリガーとは、ワークフローを開始するための操作です。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) このコネクタにはトリガー 1 つあります。
 
-|  アクションを表示します。 | 説明 |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。 |
 
@@ -107,9 +107,9 @@ Webhook 要求
 | 状態コード |int |Webhook 要求の状態コード |
 
 ## <a name="webhook-actions"></a>Webhook アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md)  このコネクタには、使用可能なアクションが 1 つあります。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) このコネクタには、使用可能なアクションが 1 つあります。
 
-|  アクションを表示します。 | 説明 |
+| アクションを表示します。 | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。 |
 
@@ -150,10 +150,10 @@ Webhook 要求
 ロジック アプリに取り組む方法とコミュニティの詳細を次に示します。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
-プラットフォームを試用し、 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md) してください。 [API リスト](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタについて確認できます。
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md) してください。 [API リスト](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタについて確認できます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

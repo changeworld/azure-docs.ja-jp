@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0fa4d1af8bc67f806175bd9ec0139638479413ea
+ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
+ms.openlocfilehash: 5c595bd2175f1cbc650bd1a757eeacc80cf39e23
 
 
 ---
 # <a name="add-a-git-artifact-repository-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに Git アーティファクト リポジトリを追加する
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/How-to-add-your-private-Artifacts-Repository-in-a-DevTest-Lab/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-add-your-private-Artifacts-Repository-in-a-DevTest-Lab/player]
 > 
 > 
 
@@ -99,6 +99,6 @@ Visual Studio Team Services リポジトリのクローン URL と個人用ア�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

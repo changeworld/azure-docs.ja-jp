@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/14/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 6e8239199edb40813081094b4efa680346685b42
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: 8b924f29594a9f0c8c161661b216a12ff65b42a9
 
 
 ---
@@ -29,11 +29,11 @@ ms.openlocfilehash: 6e8239199edb40813081094b4efa680346685b42
 この記事では、HDInsight での Pig の使用方法を説明します。
 
 ## <a name="a-idwhyawhy-use-pig"></a><a id="why"></a>Pig を使用する理由
-Hadoop での MapReduce を使用したデータ処理における課題の 1 つは、map と reduce 関数のみを使用する処理ロジックの実装です。 複雑な処理では、多くの場合、望ましい結果を得るために、一緒にチェーンされている複数の MapReduce 操作に処理を分割する必要があります。
+Hadoop での MapReduce を使用したデータ処理における課題の&1; つは、map と reduce 関数のみを使用する処理ロジックの実装です。 複雑な処理では、多くの場合、望ましい結果を得るために、一緒にチェーンされている複数の MapReduce 操作に処理を分割する必要があります。
 
 Pig では、map と reduce 関数のみの使用を強制するのではなく、データ フローに使用される一連の変換として処理を定義し、目的の出力を生成することができます。
 
-Pig Latin 言語では、生の入力から 1 つ以上の変換を介して目的の出力を生成するデータ フローを記述できます。 Pig Latin プログラムはこの一般的なパターンに従います。
+Pig Latin 言語では、生の入力から&1; つ以上の変換を介して目的の出力を生成するデータ フローを記述できます。 Pig Latin プログラムはこの一般的なパターンに従います。
 
 * **Load**: 操作対象のデータをファイル システムから読み取ります。
 * **Transform**: データを操作します。
@@ -98,6 +98,9 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 | [Windows PowerShell](hdinsight-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) |✔ |✔ |Windows |Windows |
 
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 ## <a name="running-pig-jobs-on-azure-hdinsight-using-on-premises-sql-server-integration-services"></a>オンプレミスの SQL Server Integration Services を利用した Azure HDInsight での Pig ジョブの実行
 SQL Server Integration Services (SSIS) を利用して Pig ジョブを実行することもできます。 Azure Feature Pack for SSIS には、HDInsight の Pig ジョブと連動する次のコンポーネントがあります。
 
@@ -115,8 +118,6 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 * [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
-[check]: ./media/hdinsight-use-pig/hdi.checkmark.png
-
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
@@ -124,9 +125,9 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
 [ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 
-[hdinsight-storage]: hdinsight-use-blob-storage.md
+
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: ../hdinsight-get-started.md
+
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
@@ -139,13 +140,12 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 
-[image-hdi-log4j-sample]: ./media/hdinsight-use-pig/HDI.wholesamplefile.png
+
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif
-[image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
-[image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

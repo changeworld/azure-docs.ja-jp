@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub Gateway SDK の使用 | Microsoft Docs"
-description: "Azure IoT Gateway SDK を使用する場合に理解する必要のある主な概念を説明するための、Windows を使用した Azure IoT Gateway SDK のチュートリアルです。"
+title: "Azure IoT Gateway SDK の使用 (Windows) | Microsoft Docs"
+description: "Windows コンピューターにゲートウェイを作成する方法と、モジュールや JSON 構成ファイルなどの Azure IoT Gateway SDK の主要な概念について説明します。"
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 2d8b98fbd5345edd5dc6891df12f05eccd8e7ca8
-ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
 
 
 ---
-# <a name="azure-iot-gateway-sdk---get-started-using-windows"></a>Azure IoT Gateway SDK - Windows の使用
+# <a name="get-started-with-the-azure-iot-gateway-sdk-windows"></a>Azure IoT Gateway SDK の使用 (Windows)
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>サンプルをビルドする方法
@@ -28,10 +28,10 @@ ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
 
 1. **開発者コマンド プロンプト for VS2015** コマンド プロンプトを開きます。
 2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
-3. **tools\\build.cmd** スクリプトを実行します。 このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドして、テストを実行します。 Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。
+3. **tools\\build.cmd** スクリプトを実行します。 このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドします。 Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。 スクリプトで追加のパラメーターを指定すると、ユニット テストとエンド ツー エンド テストをビルドして実行できます。 パラメーターはそれぞれ、**--run-unittests** と **--run-e2e-tests** です。 
 
 ## <a name="how-to-run-the-sample"></a>サンプルを実行する方法
-1. **build.cmd** スクリプトにより、リポジトリのローカル コピーに**ビルド**という名前のフォルダーが作成されます。 このフォルダーには、このサンプルで使用する 2 つのモジュールが含まれています。
+1. **build.cmd** スクリプトにより、リポジトリのローカル コピーに**ビルド**という名前のフォルダーが作成されます。 このフォルダーには、このサンプルで使用する&2; つのモジュールが含まれています。
    
     このスクリプトにより、**logger.dll** が **build\\modules\\logger\\Debug** フォルダーに配置され、**hello_world.dll** が **build\\modules\\hello_world\\Debug** フォルダーに配置されます。 次の JSON 設定ファイルに示すように、**モジュール パス**の値にはこれらのパスを使用します。
 2. hello_world_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取得します。 次のサンプル JSON ファイルは、**azure-iot-gateway-sdk\samples\hello_world\src\hello_world_win.json** でリポジトリの一部として提供されています。 既定以外の場所にモジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、そのままで動作します。 
@@ -86,6 +86,6 @@ ms.openlocfilehash: 6f2fe4fd3442d97955519348416b35fe6f9075d1
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

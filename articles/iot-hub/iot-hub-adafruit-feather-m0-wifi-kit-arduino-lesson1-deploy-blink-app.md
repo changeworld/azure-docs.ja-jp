@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT スタート キットに点滅アプリケーションをデプロイする | Microsoft Docs"
+title: "Azure IoT への Arduino の接続 - レッスン 1: アプリのデプロイ | Microsoft Docs"
 description: "GitHub のサンプル Arduino アプリケーションを複製し、gulp を実行してこのアプリケーションを Adafruit Feather M0 WiFi にデプロイします。 このサンプル アプリケーションでは、GPIO を点滅させます"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 918c8d7c732dc9b50c1e22917d3c4314c326a57d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: a2058611cecb33eab04de9249ad73b1c4ec6c2a5
 
 
 ---
@@ -135,6 +135,6 @@ Arduino ボードを操作するために必要なツールをインストール
 [get-the-azure-tools]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

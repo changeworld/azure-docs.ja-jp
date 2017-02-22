@@ -31,7 +31,7 @@ ms.openlocfilehash: 42d00e3e6058c7a2f88e3488923a1793c128f07e
 定義された間隔でデータのスナップショットを取得してデータを保護します。 これらのスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 VM を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元することができます。 復旧ポイントを復元すると、VM は、復旧ポイントが作成された時点の状態に戻ります。 この記事では、VM を復元する方法について説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 > 
 > 
 
@@ -97,7 +97,7 @@ ms.openlocfilehash: 42d00e3e6058c7a2f88e3488923a1793c128f07e
 1. 現在 **[復元]** ブレードを表示していない場合は、表示します。 いずれかの**復元ポイント**が選択されている状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
    
     ![recovery configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
-2. **[復元の構成]** ブレードには、次の 2 つの選択肢があります。
+2. **[復元の構成]** ブレードには、次の&2; つの選択肢があります。
 
    * 完全な仮想マシンの復元
    * バックアップ ディスクの復元

@@ -1,5 +1,5 @@
 ---
-title: "Reliable Actors のライフサイクル | Microsoft Docs"
+title: "アクター ベースの Azure マイクロサービスのライフサイクルの概要 | Microsoft Docs"
 description: "Service Fabric 高信頼アクターのライフ サイクル、ガベージ コレクション、およびアクターとその状態の手動による削除について説明します。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: e39c130b1abb0b2c31511abdd51f02446d3898f6
-ms.openlocfilehash: 681c9aa628ea9364f73e6a41f0f71139d3b983d7
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 22f906de37ad7ae2a48acf26be26f2af1e3bde7a
 
 
 ---
@@ -85,7 +85,7 @@ public class Program
 
 アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターが使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
 
-次の図は、これらの概念を表す 1 つのアクターのライフ サイクルを示しています。
+次の図は、これらの概念を表す&1; つのアクターのライフ サイクルを示しています。
 
 ![アイドル時間の例][1]
 
@@ -137,6 +137,6 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 55ed7d44006f18fa3573a5bef5e8f24107ca20fa
+ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
+ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
 
 
 ---
@@ -80,7 +80,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 11. **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、アプリケーションへのサインアップのコンシューマー エクスペリエンスを確認できます。
     
     > [!NOTE]
-    > ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+    > ポリシーの作成と更新が有効になるまで、最大で&1; 分間かかります。
     > 
     > 
 
@@ -99,7 +99,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 10. **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、アプリケーションへのサインインのコンシューマー エクスペリエンスを確認できます。
     
     > [!NOTE]
-    > ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+    > ポリシーの作成と更新が有効になるまで、最大で&1; 分間かかります。
     > 
     > 
 
@@ -119,7 +119,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 11. **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、構成したサインアップまたはサインインのコンシューマー エクスペリエンスを確認できます。
     
     > [!NOTE]
-    > ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+    > ポリシーの作成と更新が有効になるまで、最大で&1; 分間かかります。
     > 
     > 
 
@@ -139,7 +139,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 11. **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、アプリケーションでプロファイル編集のコンシューマー エクスペリエンスを確認できます。
     
     > [!NOTE]
-    > ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+    > ポリシーの作成と更新が有効になるまで、最大で&1; 分間かかります。
     > 
     > 
 
@@ -158,16 +158,20 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 10. **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、アプリケーションでパスワード リセットのコンシューマー エクスペリエンスを確認できます。
     
     > [!NOTE]
-    > ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+    > ポリシーの作成と更新が有効になるまで、最大で&1; 分間かかります。
     > 
     > 
+
+## <a name="how-to-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>サインアップまたはサインイン ポリシーをパスワード リセット ポリシーに関連付ける方法
+(ローカル アカウントで) サインアップまたはサインイン ポリシーを作成すると、エクスペリエンスの最初のページに  "パスワードを忘れた場合" リンクが表示されます。 このリンクをクリックしても、パスワード リセット ポリシーは自動的にはトリガーされません。 代わりに、エラーコード `AADB2C90118` がアプリに返されます。 アプリはこれを処理し、特定のパスワード リセット ポリシーを呼び出す必要があります。 ポリシーを関連付けるこの方法を示すサンプルについては、[こちら](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)。
+* [コンシューマーのサインアップ時の電子メール検証の無効化](active-directory-b2c-reference-disable-ev.md)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "クラウドからデバイスへのメッセージを Azure IoT Hub から受信するサンプル アプリケーションの実行 | Microsoft Docs"
+title: "Azure IoT への Arduino (C) の接続 - レッスン 4: クラウドからデバイス | Microsoft Docs"
 description: "サンプル アプリケーションは、Adafruit Feather M0 WiFi 上で動作し、IoT Hub からの受信メッセージを監視します。 新しい gulp タスクによって、IoT ハブから Adafruit Feather M0 WiFi にメッセージを送信して、LED を点滅させます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 55eda75c1e3290cedda1c4433db67c3cf320df20
+ms.sourcegitcommit: 4f9feb665ac93028023df86889ca53a64ac2ec0e
+ms.openlocfilehash: 63113841ca836681232e0aa43b15b444f8bb92e2
 
 
 ---
@@ -139,6 +139,6 @@ IoT Hub から Arduino ボードにメッセージを送信して、LED を点�
 [change-the-on-and-off-led-behavior]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

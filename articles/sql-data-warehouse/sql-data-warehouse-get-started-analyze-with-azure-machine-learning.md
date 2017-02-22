@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 42d71bf43070e08ae287a7b251c5bb94a6a80548
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: db402a9d8bdccf0db9783450fa4cb60a2c047ece
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 42d71bf43070e08ae287a7b251c5bb94a6a80548
 
 このチュートリアルでは、Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。 具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
@@ -83,7 +83,7 @@ FROM [dbo].[vTargetMail]
 1. **[プロジェクト列]** モジュールをキャンバスにドラッグします。
 2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。
    ![[プロジェクト列]][4]
-3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。
+3. CustomerAlternateKey と GeographyKey の&2; つの列を除外します。
    ![不要な列を削除する][5]
 
 ## <a name="3-build-the-model"></a>3.モデルを構築する
@@ -105,7 +105,7 @@ FROM [dbo].[vTargetMail]
 
 1. **[Score Model (モデルのスコア付け)]** モジュールをキャンバスにドラッグします。
     1 つ目の入力: トレーニング済みのモデル、2 つ目の入力: テスト データ。![[Score Model (モデルのスコア付け)]][9]
-2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
+2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを&2; クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
 3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。
 4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
 5. **[実行]** します。
@@ -113,10 +113,10 @@ FROM [dbo].[vTargetMail]
 6. [Evaluate Model (モデルの評価)] モジュールの下部にある出力ポートをクリックし、[Visualize (視覚化)] をクリックします。
    ![評価結果を視覚化する][11]
 
-指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。 これらのメトリックを見ると、最初に実行されたモデルの方が 2 つ目のモデルよりもパフォーマンスが優れていることがわかります。 1 つ目のモデルが予測した内容を確認するには、[Score Model (モデルのスコア付け)] の出力ポートをクリックし、[Visualize (視覚化)] をクリックします。
+指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。 これらのメトリックを見ると、最初に実行されたモデルの方が&2; つ目のモデルよりもパフォーマンスが優れていることがわかります。 1 つ目のモデルが予測した内容を確認するには、[Score Model (モデルのスコア付け)] の出力ポートをクリックし、[Visualize (視覚化)] をクリックします。
 ![スコア結果を視覚化する][12]
 
-テスト データセットに追加された 2 つの列が表示されます。
+テスト データセットに追加された&2; つの列が表示されます。
 
 * スコア付け確率: 顧客が自転車を購入する可能性
 * スコア付けラベル: モデルによって行われた分類 - 自転車を購入する顧客 (1) か、購入しない顧客 (0) このラベル付けの確率のしきい値は 50% に設定されており、調整できます。
@@ -149,6 +149,6 @@ FROM [dbo].[vTargetMail]
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

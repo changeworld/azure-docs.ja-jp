@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 1b439e2b48cc009e727a49c271318cfd4ead9ef2
+ms.sourcegitcommit: a287ebd634a9305229424d0efea266146f88a952
+ms.openlocfilehash: 234032630cb3911deb7c7d32cfc4963ad6aee43f
 
 
 ---
@@ -29,13 +29,18 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 または、オンプレミスのデータ ソースに接続する直接クエリ モデルがある場合、ネイティブ プロバイダーを使うと、**"Error creating OLE DB row set.Incorrect syntax near 'LIMIT'"** (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります") というエラー メッセージが表示される場合があります。
 
 ## <a name="data-source-providers"></a>データ ソース プロバイダー
-オンプレミスのデータ ソースまたはクラウド データ ソースに接続する場合、メモリ内データ モデルまたは直接クエリ データ モデルに対しては次のデータ ソース プロバイダーがサポートされます。
+クラウドまたはオンプレミスのデータ ソースに接続する場合、メモリ内データ モデルまたは直接クエリ データ モデルに対しては次のデータ ソース プロバイダーがサポートされます。
 
-|  | **データ ソース** | **メモリ内** | **直接クエリ** |
-| --- | --- | --- | --- |
-| **クラウド** |Azure SQL Data Warehouse |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー |
+### <a name="cloud"></a>クラウド
+| **データ ソース** | **メモリ内** | **直接クエリ** |
+|  --- | --- | --- |
+| Azure SQL Data Warehouse |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー |
 | Azure SQL Database |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
-| **オンプレミス** (ゲートウェイ経由) |SQL Server |SQL Server Native Client 11.0 |SQL Server 用の .NET Framework データ プロバイダー |
+
+### <a name="on-premises-via-gateway"></a>オンプレミス (ゲートウェイ経由)
+|**データ ソース** | **メモリ内** | **直接クエリ** |
+|  --- | --- | --- |
+| SQL Server |SQL Server Native Client 11.0 |SQL Server 用の .NET Framework データ プロバイダー |
 | SQL Server |Microsoft OLE DB Provider for SQL Server |SQL Server 用の .NET Framework データ プロバイダー | |
 | SQL Server |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
 | Oracle |Microsoft OLE DB Provider for Oracle |Oracle Data Provider for .NET | |
@@ -75,6 +80,6 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

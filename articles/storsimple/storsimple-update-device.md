@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 11/18/2016
 ms.author: v-sharos
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9e37687e44fa80f59a3e95ec0e3051290bd9c0c0
+ms.sourcegitcommit: 9c0a113e50fdb78307b8030f9b0d95b696f3f234
+ms.openlocfilehash: 8490110942741b049b6d44ac93697303cef40e8a
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 9e37687e44fa80f59a3e95ec0e3051290bd9c0c0
 ## <a name="overview"></a>概要
 StorSimple の更新プログラムの機能を使用すると、StorSimple デバイスを簡単に最新の状態に保つことができます。 更新プログラムの種類に応じて、Azure クラシック ポータルまたは Windows PowerShell インターフェイスを使用して、デバイスに更新プログラムを適用できます。 このチュートリアルでは、更新プログラムの種類とそれぞれのインストール方法について説明します。
 
-次の 2 種類のデバイス更新プログラムを適用することができます。 
+次の&2; 種類のデバイス更新プログラムを適用することができます。 
 
 * 通常 (または標準モード) の更新プログラム
 * メンテナンス モードの更新プログラム
@@ -101,7 +101,7 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
 
 ## <a name="install-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用した修正プログラムのインストール
-Microsoft Azure StorSimple の更新プログラムとは異なり、修正プログラムは共有フォルダーからインストールされます。 更新プログラムと同様に、修正プログラムも 2 種類あります。 
+Microsoft Azure StorSimple の更新プログラムとは異なり、修正プログラムは共有フォルダーからインストールされます。 更新プログラムと同様に、修正プログラムも&2; 種類あります。 
 
 * 通常の修正プログラム 
 * メンテナンス モードの修正プログラム  
@@ -122,6 +122,6 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

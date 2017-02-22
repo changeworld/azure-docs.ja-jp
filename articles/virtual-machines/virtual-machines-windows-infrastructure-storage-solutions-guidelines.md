@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage ソリューションのガイドライン | Microsoft Docs"
+title: "Azure の Windows VM 向けのストレージ ソリューション | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでのストレージ ソリューションのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-windows
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
-ms.openlocfilehash: 38f17470f7d4067ba5a9d3d974cfa5dd051320a5
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: e4c1dd67dce33c2cb30f6fd3e7163c68c7084e67
 
 
 ---
@@ -42,12 +42,12 @@ ms.openlocfilehash: 38f17470f7d4067ba5a9d3d974cfa5dd051320a5
 ## <a name="storage"></a>Storage
 Azure Storage は仮想マシン (VM) とアプリケーションをデプロイし、管理するための重要な要素です。 Azure Storage はファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。VM をサポートするインフラストラクチャの一部でもあります。
 
-VM をサポートするために 2 種類のストレージ アカウントを使用できます。
+VM をサポートするために&2; 種類のストレージ アカウントを使用できます。
 
 * Standard Storage アカウントでは、BLOB ストレージ (Azure VM ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。
 * [Premium Storage](../storage/storage-premium-storage.md) アカウントは、AlwaysOn クラスターの SQL Server などの高負荷 I/O ワークロードを対象に、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage では、現在、Azure VM ディスクのみがサポートされています。
 
-Azure で作成される VM には、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。 オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。 メンテナンス イベント中 VM をホスト間に移行する場合があるため、一時ディスクを非永続的データに使用するためだけにアプリケーションを設計する場合は注意が必要です。 一時ディスクに格納されているデータが失われます。
+Azure で作成される VM には、オペレーティング システム ディスク、一時ディスク、および&0; 個以上のオプションのデータ ディスクが含まれます。 オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。 メンテナンス イベント中 VM をホスト間に移行する場合があるため、一時ディスクを非永続的データに使用するためだけにアプリケーションを設計する場合は注意が必要です。 一時ディスクに格納されているデータが失われます。
 
 持続性と高可用性が、基盤となる Azure Storage 環境に備わっており、計画外メンテナンスやハードウェアの故障からデータを保護します。 Azure Storage 環境を設計するとき、次のように VM ストレージをレプリケートするように指定できます。
 
@@ -78,7 +78,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 詳細については、「 [Storage Spaces - Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」(記憶域スペース - パフォーマンスのための設計) を参照してください。
 
 ## <a name="multiple-storage-accounts"></a>複数のストレージ アカウント
-Azure Storage 環境を設計するとき、デプロイする VM の増加に伴って複数のストレージ アカウントを使用できます。 このアプローチにより、I/O を基盤となる Azure Storage インフラストラクチャ間に分散させ、VM とアプリケーションの最適なパフォーマンスを維持することができます。 デプロイするアプリケーションを設計する場合は、各 VM の I/O 要件を考慮し、Azure Storage アカウント間に VM を分散してください。 I/O 要求の高いすべての VM を、1 ～ 2 個のストレージ アカウントだけにまとめることは避けてください。
+Azure Storage 環境を設計するとき、デプロイする VM の増加に伴って複数のストレージ アカウントを使用できます。 このアプローチにより、I/O を基盤となる Azure Storage インフラストラクチャ間に分散させ、VM とアプリケーションの最適なパフォーマンスを維持することができます。 デプロイするアプリケーションを設計する場合は、各 VM の I/O 要件を考慮し、Azure Storage アカウント間に VM を分散してください。 I/O 要求の高いすべての VM を、1 ～&2; 個のストレージ アカウントだけにまとめることは避けてください。
 
 さまざまな Azure Storage オプションの I/O 機能と推奨する最大値の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」を参照してください。
 
@@ -88,6 +88,6 @@ Azure Storage 環境を設計するとき、デプロイする VM の増加に�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

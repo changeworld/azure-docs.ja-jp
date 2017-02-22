@@ -1,10 +1,10 @@
 ---
-title: "Azure Portal を使用してクラシック モードで静的プライベート IP を設定する方法 | Microsoft Docs"
+title: "静的プライベート IP アドレスの設定| Azure Portal | クラシック | Microsoft Docs"
 description: "静的プライベート IP の概要と、Azure ポータルを使用してクラシック モードで静的プライベート IP を管理する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a9a18f67a5c124f5f6d00a852f44ab5d071a7715
+ms.sourcegitcommit: 446a7dd37e6a58875ba0202cb512b4cc661e0c93
+ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
 
 
 ---
@@ -83,6 +83,6 @@ ms.openlocfilehash: a9a18f67a5c124f5f6d00a852f44ab5d071a7715
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

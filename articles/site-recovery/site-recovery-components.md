@@ -227,6 +227,6 @@ Site Recovery は、サポートされている VM と物理サーバーで実�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

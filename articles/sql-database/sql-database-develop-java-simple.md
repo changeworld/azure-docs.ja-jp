@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/03/2017
 ms.author: lbosq
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: aafc89ca958e4bdc2ba52bf1a7d379e3a4cddf1c
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 
 このトピックでは、Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。 Java サンプルは、Java Development Kit (JDK) バージョン 1.8 に依存します。 サンプルは、JDBC ドライバーを使用して、Azure SQL Database に接続されます。
 
-## <a name="step-1-configure-development-environment"></a>手順 1: 開発環境を設定する
-[Java 開発用の開発環境を構成する](https://msdn.microsoft.com/library/mt720658.aspx)
+## <a name="step-1--configure-development-environment"></a>手順 1: 開発環境を設定する
+[Java 開発用の開発環境を構成する](https://docs.microsoft.com/sql/connect/jdbc/step-1-configure-development-environment-for-java-development/)
 
 ## <a name="step-2-create-a-sql-database"></a>手順 2: SQL Database を作成する
 「 [作業の開始](sql-database-get-started.md) 」ページで、データベースを作成する方法についてご確認ください。  
@@ -41,20 +41,20 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 > 
 
 ## <a name="step-4-run-sample-code"></a>手順 4: サンプル コードを実行する
-* [Java を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt720656.aspx)
+* [Java を使用した SQL 接続の概念実証](https://docs.microsoft.com/sql/connect/jdbc/step-3-proof-of-concept-connecting-to-sql-using-java/)
 
 ## <a name="next-steps"></a>次のステップ
 * [Java Developer Center](/develop/java/)を参照して下さい。
 * 「 [SQL Database の開発: 概要](sql-database-develop-overview.md)
-*  [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx)
+* [Microsoft JDBC Driver for SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/)
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-*  [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e88511058b1de79ca222d87ada6c9abdf4daf11c
+ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
+ms.openlocfilehash: 2459f106e90616b05062224be82a06ef20fbc7b4
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: e88511058b1de79ca222d87ada6c9abdf4daf11c
 ローカル ネットワーク ゲートウェイの AddressPrefix または GatewayIPAddress の設定が変わることがあります。 次の手順に従うと、ローカル ネットワーク ゲートウェイの設定を変更することができます。 これらの設定は、Azure ポータルで変更することもできます。
 
 ## <a name="before-you-begin"></a>開始する前に
-Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
 ## <a name="to-modify-ip-address-prefixes"></a>IP アドレスのプレフィックスを変更するには
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
@@ -39,6 +39,6 @@ Azure リソース マネージャー PowerShell コマンドレットの最新�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

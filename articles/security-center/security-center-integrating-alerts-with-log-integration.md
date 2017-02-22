@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: f946ef41f0fc5ab39351d85c37ed24715b92b882
-ms.openlocfilehash: cd58f24c356e6d1ec0ebe77b1c336ee8370a4a9a
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
 
 
 ---
@@ -84,7 +84,7 @@ Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.c
 ## <a name="next-steps"></a>次のステップ
 Azure 監査ログとプロパティ定義の詳細については、次をご覧ください。
 
-* [リソース マネージャーの監査操作](../resource-group-audit.md)
+* [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)
 * [List the management events in a subscription (サブスクリプションでの管理イベントを一覧表示する) (サブスクリプションでの管理イベントを一覧表示する)](https://msdn.microsoft.com/library/azure/dn931934.aspx) 」-- 監査ログのイベントを取得する方法です。
 
 セキュリティ センターの詳細については、次を参照してください。
@@ -95,6 +95,6 @@ Azure 監査ログとプロパティ定義の詳細については、次をご�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

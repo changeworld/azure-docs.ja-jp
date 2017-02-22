@@ -1,5 +1,5 @@
 ---
-title: "ポータルを使用して Application Gateway のパスベース ルールを作成する | Microsoft Docs"
+title: "パスベース ルールを作成する - Azure Application Gateway - Azure Portal | Microsoft Docs"
 description: "ポータルを使用して Application Gateway のパスベース ルールを作成する方法を説明します"
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 09aeb63d4c2e68f22ec02f8c08f5a30c32d879dc
-ms.openlocfilehash: 2889716d6b5b6079c311d6a7f1eb97b001098b45
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: e92c33b81aa1b69da0336bec1260cbda96c7a72e
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 2889716d6b5b6079c311d6a7f1eb97b001098b45
 
 URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。 Application Gateway の URL 一覧に対して構成されたバックエンド プールへのルートがあるかどうかを調べ、定義されたバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
 
-URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。 Application Gateway には、基本ルールとパスベース ルールという 2 つのルールの種類があります。 基本ルールは、バックエンド プールに対してラウンドロビン サービスを提供します。一方、パスベース ルールはラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
+URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。 Application Gateway には、基本ルールとパスベース ルールという&2; つのルールの種類があります。 基本ルールは、バックエンド プールに対してラウンドロビン サービスを提供します。一方、パスベース ルールはラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -54,7 +54,7 @@ URL ベースのルーティングでは、新しいルールの種類が Applic
 
 ### <a name="step-3"></a>手順 3.
 
-**[Add path-based rule (パスベース ルールの追加)]** ブレードには 2 つのセクションがあります。 最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。 既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。 **[Add path-based rule (パスベース ルールの追加)]** ブレードの 2 番目のセクションでは、パスベース ルールそのものを定義します。
+**[Add path-based rule (パスベース ルールの追加)]** ブレードには&2; つのセクションがあります。 最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。 既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。 **[Add path-based rule (パスベース ルールの追加)]** ブレードの&2; 番目のセクションでは、パスベース ルールそのものを定義します。
 
 **基本設定**
 
@@ -90,6 +90,6 @@ Azure Application Gateway で SSL オフロードを構成する方法を学習�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

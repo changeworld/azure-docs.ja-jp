@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
+ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
+ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
 
 
 ---
@@ -44,10 +44,11 @@ ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
 5. 「Census Model」と入力します。
 6. 実験キャンバスの下部で、 **[実行]**をクリックします。
 7. **[Set Up Web Service (Web サービスの設定)]** をクリックして、**[Retraining Web Service (Web サービスの再トレーニング)]** を選択します。 
+
+初期状態の実験を次に示します。
    
    ![最初の実験。][2]
 
-図 2: 最初の実験。
 
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>予測実験を作成して Web サービスとして発行する
 次に、予測実験を作成します。
@@ -69,17 +70,17 @@ ms.openlocfilehash: 70004ff5c59427dfd5c58e5633cae95a08a18a3a
 
 **従来の Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス **ダッシュボード** が、API キーとバッチ実行用 API ヘルプ ページとともに表示されます。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 **新しい Web サービス**
 
-実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、**[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
+実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])** を選択します。 Web サービス Azure Machine Learning Web サービスのポータルが [Deploy web service (Web サービスのデプロイ)] ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、**[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
 いずれの場合でも、実験の実行が完了すると、ワークフローは次のようになります。
 
 ![実行後のワークフロー。][4]
 
-図 3: 実行後のワークフロー。
+
 
 ## <a name="retrain-the-model-with-new-data-using-bes"></a>BES を使用して新しいデータでモデルを再トレーニングする
 この例では、C# を使用して再トレーニング アプリケーションを作成します。 Python または R サンプル コードを使用してこのタスクを行うこともできます。
@@ -146,7 +147,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
         },
 
 > [!NOTE]
-> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は 2 つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
+> 出力場所の名前は、このチュートリアルで使用されている名前とは異なる場合があります。これは、Web サービス出力モジュールを追加した順序に基づいています。 このトレーニング実験は&2; つの出力で設定したため、結果には、両方のストレージの場所に関する情報が含まれています。  
 > 
 > 
 
@@ -185,6 +186,6 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

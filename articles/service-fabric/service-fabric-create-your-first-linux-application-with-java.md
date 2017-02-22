@@ -1,5 +1,5 @@
 ---
-title: "Java を使用して Linux 上で最初の Service Fabric アプリケーションを作成する | Microsoft Docs"
+title: "Java を使用して Linux で初めての Azure マイクロサービス アプリを作成する | Microsoft Docs"
 description: "Java を使用して Service Fabric アプリケーションを作成およびデプロイします"
 services: service-fabric
 documentationcenter: java
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 381d372b549fa0ed0900d97c03b9584b21624b25
-ms.openlocfilehash: 4a8fb3499ec55e451b54a05d5642bdf9a924294f
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
 
 
 ---
@@ -46,7 +46,7 @@ Service Fabric では、.NET Core と Java の両方で Linux 上のサービス
 作業を開始する前に、 [Linux 開発環境がセットアップ](service-fabric-get-started-linux.md)されていることを確認してください。 Mac OS X を使用している場合は、 [Vagrant を使用して仮想マシンに Linux ワンボックス環境を設定](service-fabric-get-started-mac.md)します。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを&1; つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
 
 1. ターミナルで、「``yo azuresfjava``」と入力します。
 2. アプリケーションに名前を付けます。
@@ -99,7 +99,7 @@ Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) �
 
     ![Finding the primary replica in Service Fabric Explorer][sfx-primary]
 
-3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 ローカル クラスターの 5 つのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカのいずれかに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
+3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 ローカル クラスターの&5; つのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカのいずれかに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
 
 ## <a name="build-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Eclipse Neon プラグインによるアプリケーションのビルドとデプロイ
 
@@ -147,6 +147,6 @@ Service Fabric テンプレートには、アプリケーションをビルド�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

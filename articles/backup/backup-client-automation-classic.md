@@ -1,6 +1,7 @@
 ---
-title: "PowerShell を使用した Windows Server/クライアント バックアップのデプロイと管理 | Microsoft Docs"
-description: "PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明"
+
+title: "PowerShell を使用して Azure 内の Windows Server バックアップを管理する | Microsoft Docs"
+description: "PowerShell を使用して Windows Server バックアップをデプロイおよび管理します。"
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -13,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
-ms.author: saurse;markgal;jimpark;nkolli;trinadhk
+ms.author: saurse;markgal;nkolli;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c21c1687221a9e5c218d03ead969f7c52b7fa2ac
+ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
+ms.openlocfilehash: 096c119ad116b87b3e27b71ab9a286d2961cf7df
 
 
 ---
@@ -24,8 +25,8 @@ ms.openlocfilehash: c21c1687221a9e5c218d03ead969f7c52b7fa2ac
 > [!div class="op_single_selector"]
 > * [ARM](backup-client-automation.md)
 > * [クラシック](backup-client-automation-classic.md)
-> 
-> 
+>
+>
 
 この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
@@ -43,8 +44,8 @@ Azure PowerShell 1.0 は、2015 年 10 月にリリースされました。 こ�
 ## <a name="create-a-backup-vault"></a>バックアップ資格情報コンテナーの作成
 > [!WARNING]
 > 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。 これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
-> 
-> 
+>
+>
 
 **New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。 バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。 管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -123,8 +124,8 @@ Machine registration succeeded.
 
 > [!IMPORTANT]
 > コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。 このコマンドレットへの入力には、絶対パスを指定する必要があります。
-> 
-> 
+>
+>
 
 ## <a name="networking-settings"></a>ネットワークの設定
 プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。 この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
@@ -151,11 +152,11 @@ Server properties updated successfully
 
 > [!IMPORTANT]
 > 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。 このパスフレーズがないと、Azure からデータを復元できません。
-> 
-> 
+>
+>
 
 ## <a name="back-up-files-and-folders"></a>ファイルとフォルダーのバックアップ
-Windows サーバーおよびクライアントから Microsoft Azure Backup へのすべてのバックアップは、ポリシーによって管理されます。 ポリシーは 3 つの部分で構成されます。
+Windows サーバーおよびクライアントから Microsoft Azure Backup へのすべてのバックアップは、ポリシーによって管理されます。 ポリシーは&3; つの部分で構成されます。
 
 1. **バックアップ スケジュール**。バックアップをいつ実行し、いつサービスと同期するかを指定します。
 2. **保持スケジュール** は、Azure で回復ポイントを保持する期間を指定します。
@@ -172,7 +173,7 @@ PS C:\> $newpolicy = New-OBPolicy
 ### <a name="configuring-the-backup-schedule"></a>バックアップ スケジュールの構成
 ポリシーの 3 つの構成要素の最初はバックアップ スケジュールです。これは、[New-OBSchedule](https://technet.microsoft.com/library/hh770401) コマンドレットを使って作成します。 バックアップ スケジュールでは、バックアップをいつ実行するかを定義します。 スケジュールを作成するとき、次の 2 つの入力パラメーターを指定する必要があります。
 
-* **曜日** 。 バックアップ ジョブは、週に 1 回、毎日、またはこれらを組み合わせたさまざまな間隔で実行できます。
+* **曜日** 。 バックアップ ジョブは、週に&1; 回、毎日、またはこれらを組み合わせたさまざまな間隔で実行できます。
 * **1 日のうちの時間帯** 。 1 日最大 3 回のバックアップを起動する時間を定義できます。
 
 たとえば、毎週土曜日と日曜日の午後 4 時に実行されるようにバックアップ ポリシーを構成できます。
@@ -227,7 +228,7 @@ PolicyState     : Valid
 
 後者は、New-OBFileSpec コマンドの NonRecursive フラグを使用して実行できます。
 
-次の例では、ボリューム C: および D: をバックアップし、Windows フォルダーと任意の一時フォルダー内の OS バイナリを除外します。 このためには、 [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) コマンドレットを使用して 2 つのファイル指定 (内包用と除外用にそれぞれ 1 つずつ) を作成します。 ファイル指定が作成されたら、 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) コマンドレットを使用してポリシーに関連付けます。
+次の例では、ボリューム C: および D: をバックアップし、Windows フォルダーと任意の一時フォルダー内の OS バイナリを除外します。 このためには、 [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) コマンドレットを使用して&2; つのファイル指定 (内包用と除外用にそれぞれ&1; つずつ) を作成します。 ファイル指定が作成されたら、 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) コマンドレットを使用してポリシーに関連付けます。
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -607,7 +608,6 @@ Azure Backup for Windows Server/Client の詳細については、以下を参�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

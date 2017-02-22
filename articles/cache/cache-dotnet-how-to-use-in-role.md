@@ -12,21 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/15/2016
+ms.date: 01/20/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 57851e6dc52e331eefde0a940987d2a68f98f0bf
+ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
+ms.openlocfilehash: 9593f49d98794e72728e0683e34a407e39144a5d
 
 
 ---
 # <a name="how-to-use-in-role-cache-for-azure-cache"></a>Azure のキャッシュの In-Role Cache の使用方法
-このガイドでは、 **Azure のキャッシュの In-Role Cache**の基本的な使用方法について説明します。 サンプルは C\# コードで記述され、.NET API を利用しています。 紹介するシナリオは、**キャッシュ クラスターの構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。 In-Role Cache の使い方の詳細については、「[Next Steps][Next Steps]」を参照してください。
-
 > [!IMPORTANT]
-> 昨年 [お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache サービスは 2016 年 11 月 30 日で提供が終了します。 そのため、 [Azure Redis Cache](https://azure.microsoft.com/services/cache/)を使用することをお勧めします。 移行については、「 [Managed Cache Service から Azure Redis Cache への移行](../redis-cache/cache-migrate-to-redis.md)」を参照してください。
+> 昨年[お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache は 2016 年 11 月 30 日で**提供が終了しました**。 そのため、 [Azure Redis Cache](https://azure.microsoft.com/services/cache/)を使用することをお勧めします。 移行については、「 [Managed Cache Service から Azure Redis Cache への移行](../redis-cache/cache-migrate-to-redis.md)」を参照してください。
 > 
 > 
+
+このガイドでは、 **Azure のキャッシュの In-Role Cache**の基本的な使用方法について説明します。 サンプルは C\# コードで記述され、.NET API を利用しています。 紹介するシナリオは、**キャッシュ クラスターの構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。 In-Role Cache の使い方の詳細については、「[次の手順][Next Steps]」を参照してください。
+
+
 
 <a name="what-is"></a>
 
@@ -62,20 +64,20 @@ In-Role Cache では、Azure クラウド サービス (ホステッド サー�
 * 必要に応じて個々のキャッシュに高可用性を構成する。
 * リージョン、タグ付け、通知などの拡張キャッシュ機能を使用する。
 
-このガイドでは、In-Role Cache の基本的な概要について説明します。 この概要ガイドでは扱われていない機能の詳細については、[In-Role Cache の概要に関するページ][In-Role Cache の概要に関するページ]に関するページをご覧ください。
+このガイドでは、In-Role Cache の基本的な概要について説明します。 この概要ガイドでは扱われていない機能の詳細については、[In-Role Cache の概要][Overview of In-Role Cache]に関するページをご覧ください。
 
 <a name="getting-started-cache-role-instance"></a>
 
 ## <a name="getting-started-with-in-role-cache"></a>In-Role Cache の概要
-In-Role Cache は、ロール インスタンスをホストしている仮想マシン上のメモリを使用して、キャッシュを利用できるようにします。 キャッシュをホストするロール インスタンスは、 **キャッシュ クラスター**と呼ばれます。 ロール インスタンスでのキャッシュには、次の 2 つのデプロイ トポロジがあります。
+In-Role Cache は、ロール インスタンスをホストしている仮想マシン上のメモリを使用して、キャッシュを利用できるようにします。 キャッシュをホストするロール インスタンスは、 **キャッシュ クラスター**と呼ばれます。 ロール インスタンスでのキャッシュには、次の&2; つのデプロイ トポロジがあります。
 
 * **専用ロール** キャッシュ - ロール インスタンスがキャッシュだけのために使用されます。
 * **併置ロール** キャッシュ - キャッシュは VM リソース (帯域幅、CPU、およびメモリ) をアプリケーションと共有します。
 
 ロール インスタンスでキャッシュを使用するには、キャッシュ クラスターを構成してから、キャッシュ クラスターにアクセスできるようにキャッシュ クライアントを構成する必要があります。
 
-* [キャッシュ クラスターの構成][キャッシュ クラスターの構成]
-* [キャッシュ クライアントの構成][キャッシュ クライアントの構成]
+* [キャッシュ クラスターの構成][Configure the cache cluster]
+* [キャッシュ クライアントの構成][Configure the cache clients]
 
 <a name="enable-caching"></a>
 
@@ -106,7 +108,7 @@ In-Role Cache は、ロール インスタンスをホストしている仮想�
 
 キャッシュのサイズは、ロールの VM サイズ、ロールのインスタンス数、およびキャッシュ クラスターが専用ロールと併置ロールのどちらとして構成されているかの組み合わせによって決まります。
 
-> このセクションでは、キャッシュ サイズの構成についての簡単な概要を示します。 キャッシュ サイズとその他の容量計画の考慮事項の詳細については、[In-Role Cache の容量計画に関する考慮事項のページ][In-Role Cache の容量計画に関する考慮事項のページ]のページをご覧ください。
+> このセクションでは、キャッシュ サイズの構成についての簡単な概要を示します。 キャッシュ サイズとその他の容量計画の考慮事項の詳細については、[In-Role Cache の容量計画に関する考慮事項][In-Role Cache Capacity Planning Considerations]のページをご覧ください。
 > 
 > 
 
@@ -125,11 +127,11 @@ VM サイズの合計メモリは、次のとおりです。
 * **L**: 7 GB
 * **XL**: 14 GB
 
-> これらのメモリ サイズは、OS、キャッシュ プロセス、キャッシュ データ、およびアプリケーション間で共有される、VM で利用できるメモリの合計量を表しています。 仮想マシン サイズの構成の詳細については、[仮想マシンのサイズの構成方法][仮想マシンのサイズの構成方法]に関するページをご覧ください。 キャッシュは **XS** VM サイズではサポートされていないことに注意してください。
+> これらのメモリ サイズは、OS、キャッシュ プロセス、キャッシュ データ、およびアプリケーション間で共有される、VM で利用できるメモリの合計量を表しています。 仮想マシン サイズの構成の詳細については、[仮想マシンのサイズの構成方法][How to Configure Virtual Machine Sizes]に関するページをご覧ください。 キャッシュは **XS** VM サイズではサポートされていないことに注意してください。
 > 
 > 
 
-**併置ロール** キャッシュが指定された場合、キャッシュ サイズは仮想マシン メモリの指定された割合によって決定されます。 **専用ロール** キャッシュが指定された場合、仮想マシンの利用可能なすべてのメモリがキャッシュに使用されます。 2 つのロール インスタンスが構成されている場合は、仮想マシンの合計されたメモリが使用されます。 このようにキャッシュ クラスターが形成され、利用可能なキャッシュ メモリは複数のロール インスタンスに分散されているものの、キャッシュのクライアントには 1 つのリソースとして提示されます。 追加のロール インスタンスを構成すると、同じようにキャッシュ サイズが増加します。 希望するサイズのキャッシュをプロビジョニングするために必要な設定を判断するには、[In-Role Cache の容量計画に関する考慮事項のページ][In-Role Cache の容量計画に関する考慮事項のページ]のページで示されている容量計画スプレッドシートを使用できます。
+**併置ロール** キャッシュが指定された場合、キャッシュ サイズは仮想マシン メモリの指定された割合によって決定されます。 **専用ロール** キャッシュが指定された場合、仮想マシンの利用可能なすべてのメモリがキャッシュに使用されます。 2 つのロール インスタンスが構成されている場合は、仮想マシンの合計されたメモリが使用されます。 このようにキャッシュ クラスターが形成され、利用可能なキャッシュ メモリは複数のロール インスタンスに分散されているものの、キャッシュのクライアントには&1; つのリソースとして提示されます。 追加のロール インスタンスを構成すると、同じようにキャッシュ サイズが増加します。 希望するサイズのキャッシュをプロビジョニングするために必要な設定を判断するには、 [In-Role Cache の容量計画に関する考慮事項][In-Role Cache Capacity Planning Considerations]のページで示されている容量計画スプレッドシートを使用できます。
 
 キャッシュ クラスターの構成が済んだら、キャッシュにアクセスできるようにキャッシュ クライアントを構成できます。
 
@@ -150,7 +152,7 @@ In-Role Cache のキャッシュにアクセスするには、クライアント
 
 NuGet パッケージは、いくつかの処理を行います。必要な構成をロールの config ファイルに追加したり、キャッシュ クライアントの診断レベル設定を Azure アプリケーションの ServiceConfiguration.cscfg ファイルに追加したり、必要なアセンブリ参照を追加したりします。
 
-> ASP.NET Web ロールでは、Caching NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。 1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。 詳細については、「[方法: ASP.NET セッション状態をキャッシュに格納する]」および「[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][方法: ASP.NET ページ出力キャッシュをキャッシュに格納する]」を参照してください。
+> ASP.NET Web ロールでは、Caching NuGet パッケージは&2; つのコメント アウトされたセクションも web.config に追加します。 1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。 詳細については、「[方法: ASP.NET セッション状態をキャッシュに格納する]」および「[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][How To: Store ASP.NET Page Output Caching in the Cache]」を参照してください。
 > 
 > 
 
@@ -199,7 +201,7 @@ NuGet パッケージは、キャッシュ クライアント ロールの Servi
       </ConfigurationSettings>
     </Role>
 
-> In-Role Cache では、キャッシュ サーバーとキャッシュ クライアントの両方の診断レベルが用意されています。 診断レベルは、キャッシュのために収集される診断情報のレベルを構成する 1 つの設定です。 詳細については、[In-Role Cache のトラブルシューティングと診断に関するページ][In-Role Cache のトラブルシューティングと診断に関するページ]に関するページをご覧ください
+> In-Role Cache では、キャッシュ サーバーとキャッシュ クライアントの両方の診断レベルが用意されています。 診断レベルは、キャッシュのために収集される診断情報のレベルを構成する&1; つの設定です。 詳細については、[In-Role Cache のトラブルシューティングと診断][Troubleshooting and Diagnostics for In-Role Cache]に関するページをご覧ください
 > 
 > 
 
@@ -223,11 +225,11 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 ## <a name="working-with-caches"></a>キャッシュの操作
 このセクションの手順では、キャッシュに対する一般的なタスクを行う方法について説明します。
 
-* [方法: DataCache オブジェクトを作成する][方法: DataCache オブジェクトを作成する]
-* [方法: キャッシュでオブジェクトを追加および削除する][方法: キャッシュでオブジェクトを追加および削除する]
-* [方法: キャッシュ内のオブジェクトの有効期限を指定する][方法: キャッシュ内のオブジェクトの有効期限を指定する]
+* [方法: DataCache オブジェクトを作成する][How To: Create a DataCache Object]
+* [方法: キャッシュでオブジェクトを追加および削除する][How To: Add and Retrieve an Object from the Cache]
+* [方法: キャッシュ内のオブジェクトの有効期限を指定する][How To: Specify the Expiration of an Object in the Cache]
 * [方法: ASP.NET セッション状態をキャッシュに格納する][方法: ASP.NET セッション状態をキャッシュに格納する]
-* [方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][方法: ASP.NET ページ出力キャッシュをキャッシュに格納する]
+* [方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][How To: Store ASP.NET Page Output Caching in the Cache]
 
 <a name="create-cache-object"></a>
 
@@ -236,7 +238,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
     using Microsoft.ApplicationServer.Caching;
 
-> Caching NuGet パッケージをインストールして、必要な参照が追加された後も、Visual Studio が using ステートメント内の型を認識しない場合は、プロジェクトのターゲット プロファイルが .NET Framework 4.0 以降であることを確認し、 **クライアント プロファイル**が指定されていないプロファイルを選択するようにしてください。 キャッシュ クライアントを構成する手順については、「[キャッシュ クライアントの構成][キャッシュ クライアントの構成]」を参照してください。
+> Caching NuGet パッケージをインストールして、必要な参照が追加された後も、Visual Studio が using ステートメント内の型を認識しない場合は、プロジェクトのターゲット プロファイルが .NET Framework 4.0 以降であることを確認し、 **クライアント プロファイル**が指定されていないプロファイルを選択するようにしてください。 キャッシュ クライアントを構成する手順については、「[キャッシュ クライアントの構成][Configure the cache clients]」を参照してください。
 > 
 > 
 
@@ -297,7 +299,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 
 ![RoleCache6][RoleCache6]
 
-**[有効期限の種類]** には、**[なし]**、**[絶対]**、**[スライディング ウィンドウ]** の 3 つがあります。 これらは、**[Time to Live (分)]** を使用して有効期限を決定する方法を構成します。 既定の **[有効期限の種類]** は **[絶対]** であり、キャッシュの項目の有効期限のカウントダウン タイマーは、キャッシュに項目が置かれたときに始まります。 指定された時間が経過すると、項目は期限切れになります。 **[スライディング ウィンドウ]** が指定されている場合、項目の有効期限のカウントダウンはキャッシュ内の項目がアクセスされるたびにリセットされ、最後のアクセス以降に指定の時間が経過するまでは期限切れになりません。 **[なし]** が指定されている場合、**[Time to Live (分)]** は **0** に設定されている必要があります。項目は期限切れにならずに、キャッシュ内にある限り有効のままになります。
+**[有効期限の種類]** には、**[なし]**、**[絶対]**、**[スライディング ウィンドウ]** の&3; つがあります。 これらは、**[Time to Live (分)]** を使用して有効期限を決定する方法を構成します。 既定の **[有効期限の種類]** は **[絶対]** であり、キャッシュの項目の有効期限のカウントダウン タイマーは、キャッシュに項目が置かれたときに始まります。 指定された時間が経過すると、項目は期限切れになります。 **[スライディング ウィンドウ]** が指定されている場合、項目の有効期限のカウントダウンはキャッシュ内の項目がアクセスされるたびにリセットされ、最後のアクセス以降に指定の時間が経過するまでは期限切れになりません。 **[なし]** が指定されている場合、**[Time to Live (分)]** は **0** に設定されている必要があります。項目は期限切れにならずに、キャッシュ内にある限り有効のままになります。
 
 ロール プロパティで構成されているよりも長いまたは短いタイムアウト間隔にする場合は、キャッシュ内の項目を追加または更新するときに、**TimeSpan** パラメーターを取る **Add** および **Put** のオーバーロードを使用して、特定の期間を指定できます。 次の例では、文字列 **value** が **item** でキー付けされ、30 分のタイムアウトでキャッシュに追加されます。
 
@@ -315,7 +317,7 @@ NuGet パッケージは、次のアセンブリへの参照も追加します�
 <a name="store-session"></a>
 
 ## <a name="how-to-store-aspnet-session-state-in-the-cache"></a>方法: ASP.NET セッション状態をキャッシュに格納する
-In-Role Cache のセッション状態プロバイダーは、ASP.NET アプリケーション用のプロセス外ストレージ メカニズムです。 このプロバイダーを使用すると、セッション状態をメモリ内や SQL Server データベース内ではなく、Azure のキャッシュ内に格納できます。 キャッシュ セッション状態プロバイダーを使用するには、まずキャッシュ クラスターを構成し、次に「[In-Role Cache の概要][In-Role Cache の概要]」で説明されているように Caching NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。 Caching NuGet パッケージをインストールすると、コメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが In-Role Cache 用のセッション状態プロバイダーを使用するために必要な構成が含まれています。
+In-Role Cache のセッション状態プロバイダーは、ASP.NET アプリケーション用のプロセス外ストレージ メカニズムです。 このプロバイダーを使用すると、セッション状態をメモリ内や SQL Server データベース内ではなく、Azure のキャッシュ内に格納できます。 キャッシュ セッション状態プロバイダーを使用するには、まずキャッシュ クラスターを構成し、次に「[In-Role Cache の概要][Getting Started with In-Role Cache]」で説明されているように Caching NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。 Caching NuGet パッケージをインストールすると、コメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが In-Role Cache 用のセッション状態プロバイダーを使用するために必要な構成が含まれています。
 
     <!--Uncomment this section to use In-Role Cache for session state caching
     <system.web>
@@ -330,18 +332,18 @@ In-Role Cache のセッション状態プロバイダーは、ASP.NET アプリ�
       </sessionState>
     </system.web>-->
 
-> Caching NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][NuGet パッケージ マネージャーのインストールのページ]のページからインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
+> Caching NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][NuGet Package Manager Installation]からインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
 > 
 > 
 
 In-Role Cache 用のセッション状態プロバイダーを有効にするには、指定されたセクションをコメント解除します。 既定のキャッシュは、提供されるスニペットで指定されています。 別のキャッシュを使用するには、目的のキャッシュを **cacheName** 属性で指定します。
 
-キャッシュ サービス セッション状態プロバイダーの使い方の詳細については、[Azure Cache のセッション状態プロバイダー][Azure Cache のセッション状態プロバイダー]に関するページをご覧ください。
+キャッシュ サービス セッション状態プロバイダーの使い方の詳細については、[In-Role Cache のセッション状態プロバイダー][Session State Provider for In-Role Cache]に関するページをご覧ください。
 
 <a name="store-page"></a>
 
 ## <a name="how-to-store-aspnet-page-output-caching-in-the-cache"></a>方法: ASP.NET ページ出力キャッシュをキャッシュに格納する
-In-Role Cache の出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。 出力キャッシュ プロバイダーを使用するには、まずキャッシュ クラスターを構成し、次に「[In-Role Cache の概要][In-Role Cache の概要]」で説明されているように Caching NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。 Caching NuGet パッケージをインストールすると、次のコメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが In-Role Cache 用の出力キャッシュ プロバイダーを使用するために必要な構成が含まれています。
+In-Role Cache の出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。 出力キャッシュ プロバイダーを使用するには、まずキャッシュ クラスターを構成し、次に「[In-Role Cache の概要][Getting Started with In-Role Cache]」で説明されているように Caching NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。 Caching NuGet パッケージをインストールすると、次のコメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが In-Role Cache 用の出力キャッシュ プロバイダーを使用するために必要な構成が含まれています。
 
     <!--Uncomment this section to use In-Role Cache for output caching
     <caching>
@@ -356,7 +358,7 @@ In-Role Cache の出力キャッシュ プロバイダーは、出力キャッ�
       </outputCache>
     </caching>-->
 
-> Caching NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][NuGet パッケージ マネージャーのインストールのページ]のページからインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
+> Caching NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][NuGet Package Manager Installation]からインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
 > 
 > 
 
@@ -366,9 +368,9 @@ In-Role Cache 用の出力キャッシュ プロバイダーを有効にする�
 
     <%@ OutputCache Duration="60" VaryByParam="*" %>
 
-この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 使用できるオプションの詳細については、[OutputCache ディレクティブに関するページ][OutputCache ディレクティブに関するページ]に関するページをご覧ください。
+この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 使用できるオプションの詳細については、[OutputCache ディレクティブ][OutputCache Directive]に関するページをご覧ください。
 
-In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細については、[インロール キャッシュの出力キャッシュ プロバイダーに関するページ][インロール キャッシュの出力キャッシュ プロバイダーに関するページ]に関するページをご覧ください。
+In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細については、[In-Role Cache の出力キャッシュ プロバイダー][Output Cache Provider for In-Role Cache]に関するページをご覧ください。
 
 <a name="next-steps"></a>
 
@@ -376,29 +378,29 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 これで、In-Role Cache の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
 * MSDN リファレンス: [In-Role Cache][In-Role Cache]
-* In-Role Cache への移行方法を確認する: [Microsoft Azure のキャッシュのインロール キャッシュへの移行][Microsoft Azure のキャッシュのインロール キャッシュへの移行]
-* サンプルをチェックする: [In-Role Cache のサンプル][In-Role Cache のサンプル]
-* TechEd 2013 の「[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する) (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する) (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)]」セッションで、In-Role Cache に関する説明をご覧ください
+* In-Role Cache への移行方法を確認する: [In-Role Cache への移行][Migrate to In-Role Cache]
+* サンプルをチェックする: [In-Role Cache のサンプル][In-Role Cache Samples]
+* TechEd 2013 の「[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)][Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching]」セッションで、In-Role Cache に関する説明をご覧ください
 
 <!-- INTRA-TOPIC LINKS -->
 [Next Steps]: #next-steps
-[In-Role Cache とは]: #what-is
-[Azure Cache の作成]: #create-cache
-[最適なキャッシュの種類]: #choosing-cache
-[In-Role Cache サービスの概要]: #getting-started-cache-service
-[In-Role Cache を使用するための Visual Studio プロジェクトの準備]: #prepare-vs
-[Caching を使用するようにアプリケーションを構成する]: #configure-app
-[In-Role Cache の概要]: #getting-started-cache-role-instance
-[キャッシュ クラスターの構成]: #enable-caching
-[必要なキャッシュ サイズの構成]: #cache-size
-[キャッシュ クライアントの構成]: #NuGet
-[キャッシュの操作]: #working-with-caches
-[方法: DataCache オブジェクトを作成する]: #create-cache-object
-[方法: キャッシュでオブジェクトを追加および削除する]: #add-object
-[方法: キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
+[What is In-Role Cache?]: #what-is
+[Create an Azure Cache]: #create-cache
+[Which type of caching is right for me?]: #choosing-cache
+[Getting Started with the In-Role Cache Service]: #getting-started-cache-service
+[Prepare Your Visual Studio Project to Use In-Role Cache]: #prepare-vs
+[Configure Your Application to Use Caching]: #configure-app
+[Getting Started with In-Role Cache]: #getting-started-cache-role-instance
+[Configure the cache cluster]: #enable-caching
+[Configure the desired cache size]: #cache-size
+[Configure the cache clients]: #NuGet
+[Working with Caches]: #working-with-caches
+[How To: Create a DataCache Object]: #create-cache-object
+[How To: Add and Retrieve an Object from the Cache]: #add-object
+[How To: Specify the Expiration of an Object in the Cache]: #specify-expiration
 [方法: ASP.NET セッション状態をキャッシュに格納する]: #store-session
-[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
-[サポートされている .NET Framework プロファイル]: #prepare-vs-target-net
+[How To: Store ASP.NET Page Output Caching in the Cache]: #store-page
+[Target a Supported .NET Framework Profile]: #prepare-vs-target-net
 
 <!-- IMAGES --> 
 [RoleCache1]: ./media/cache-dotnet-how-to-use-in-role/cache8.png
@@ -412,31 +414,31 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [RoleCache10]: ./media/cache-dotnet-how-to-use-in-role/cache17.png
 
 <!-- LINKS -->
-[仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
-[方法: プログラムによってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[方法: プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[方法: 宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
-[In-Role Cache の容量計画に関する考慮事項のページ]: http://go.microsoft.com/fwlink/?LinkId=252651
-[In-Role Cache のサンプル]: http://msdn.microsoft.com/library/jj189876.aspx
+[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
+[How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
+[How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
+[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[In-Role Cache Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=252651
+[In-Role Cache Samples]: http://msdn.microsoft.com/library/jj189876.aspx
 [In-Role Cache]: http://go.microsoft.com/fwlink/?LinkId=252658
 [In-Role Cache]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する) (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
-[Microsoft Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/library/hh914163.aspx
-[NuGet パッケージ マネージャーのインストールのページ]: http://go.microsoft.com/fwlink/?LinkId=240311
-[インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
-[OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
-[In-Role Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=254172
-[Azure Cache のセッション状態プロバイダー]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
-[チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
-[In-Role Cache のトラブルシューティングと診断に関するページ]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
-[Azure AppFabric キャッシュ: セッション状態のキャッシュ]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
+[Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU
+[Migrate to In-Role Cache]: http://msdn.microsoft.com/library/hh914163.aspx
+[NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
+[Output Cache Provider for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/gg185662.aspx
+[OutputCache Directive]: http://go.microsoft.com/fwlink/?LinkId=251979
+[Overview of In-Role Cache]: http://go.microsoft.com/fwlink/?LinkId=254172
+[Session State Provider for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/gg185668.aspx
+[Team Blog]: http://blogs.msdn.com/b/windowsazure/
+[Troubleshooting and Diagnostics for In-Role Cache]: http://msdn.microsoft.com/library/windowsazure/hh914135.aspx
+[Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
-[どの Azure Cache を利用すればよいですか。]: cache-faq.md#which-azure-cache-offering-is-right-for-me
+[Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

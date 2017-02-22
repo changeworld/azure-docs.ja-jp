@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 7e28fdde31c735b5de99aa7031ceb1b2abf72576
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 7f4bccda8a7cebff0d80627320d34062d4d55add
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの作成
@@ -36,7 +36,7 @@ ms.openlocfilehash: 7e28fdde31c735b5de99aa7031ceb1b2abf72576
 
 REST API を使用して Azure Search インデックスを作成するには、Azure Search サービスの URL エンドポイントに単一の HTTP POST 要求を発行します。 インデックス定義は、適切な形式の JSON コンテンツとして要求本文に含まれます。
 
-## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Azure Search サービスの管理者 API キーの識別
+## <a name="identify-your-azure-search-services-admin-api-key"></a>Azure Search サービスの管理者 API キーの識別
 Azure Search サービスのプロビジョニングが完了すると、REST API を使用して、サービスの URL エンドポイントに対して HTTP 要求を発行できます。 "*すべての*" API 要求に、プロビジョニングした Search サービス用に生成された API キーを含める必要があります。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
 1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にログインする必要があります。
@@ -45,16 +45,16 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 
 サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
 
-* プライマリおよびセカンダリ *管理者キー* は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。 キーは&2; つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+* プライマリおよびセカンダリ *管理者キー* は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。 キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
 * *クエリ キー* はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
 インデックスを作成する目的では、プライマリ管理者キーとセカンダリ管理者キーのどちらかを使用できます。
 
-## <a name="ii-define-your-azure-search-index-using-well-formed-json"></a>II. 適切な形式の JSON を使用した Azure Search インデックスの定義
-サービスに対する&1; つの HTTP POST 要求で、インデックスを作成します。 HTTP POST 要求の本文には、Azure Search インデックスを定義する&1; つの JSON オブジェクトが含まれます。
+## <a name="define-your-azure-search-index-using-well-formed-json"></a>適切な形式の JSON を使用した Azure Search インデックスの定義
+サービスに対する 1 つの HTTP POST 要求で、インデックスを作成します。 HTTP POST 要求の本文には、Azure Search インデックスを定義する 1 つの JSON オブジェクトが含まれます。
 
 1. この JSON オブジェクトの最初のプロパティは、インデックスの名前です。
-2. この JSON オブジェクトの&2; 番目のプロパティは、 `fields` という名前の JSON 配列で、インデックスのフィールドごとに個別の JSON オブジェクトを格納します。 これらの各 JSON オブジェクトには、"name"、"type" などのフィールド属性ごとに複数の名前/値ペアが含まれます。
+2. この JSON オブジェクトの 2 番目のプロパティは、 `fields` という名前の JSON 配列で、インデックスのフィールドごとに個別の JSON オブジェクトを格納します。 これらの各 JSON オブジェクトには、"name"、"type" などのフィールド属性ごとに複数の名前/値ペアが含まれます。
 
 各フィールドには [適切な属性](https://docs.microsoft.com/rest/api/searchservice/Create-Index)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意することが重要です。 これらの属性では、どのフィールドにどの検索機能 (フィルター、ファセット、フルテキスト検索の並べ替えなど) が適用されるかを制御します。 指定しない属性については、明確に無効にしない限り、既定では、対応する検索機能が有効になります。
 
@@ -82,11 +82,11 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 
 各フィールドのインデックスの属性は、アプリケーションでどのように使用されるかに応じて、慎重に選択しています。 たとえば、`hotelId` は、ユーザーが知らないホテルについて検索する一意のキーです。そのため、`searchable` を `false` に設定してそのフィールドのフルテキスト検索を無効にします。これにより、インデックスの領域が節約されます。
 
-インデックスの `Edm.String` 型のフィールドを&1; つだけ、"key" フィールドとして指定する必要があることに注意してください。
+インデックスの `Edm.String` 型のフィールドを 1 つだけ、"key" フィールドとして指定する必要があることに注意してください。
 
 上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドに言語アナライザーを使用しています。 言語アナライザーの詳細については、[言語サポートのトピック](https://docs.microsoft.com/rest/api/searchservice/Language-support)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
 
-## <a name="iii-issue-the-http-request"></a>III. HTTP 要求の発行
+## <a name="issue-the-http-request"></a>HTTP 要求の発行
 1. インデックス定義を要求本文として使用して、Azure Search サービス エンドポイントの URL に HTTP POST 要求を発行します。 URL では、ホスト名としてサービス名を使用し、クエリ文字列パラメーターとして適切な `api-version` を配置するようにしてください (このドキュメントが書かれた時点で最新の API バージョンは `2016-09-01` です)。
 2. 要求ヘッダーで、`Content-Type` を `application/json` として指定します。 また、 `api-key` ヘッダーでは、ステップ I で特定したサービスの管理者キーを指定する必要があります。
 
@@ -105,11 +105,11 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
     api-key: [api-key]
 
 
-## <a name="next"></a>次へ
+## <a name="next-steps"></a>次のステップ
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

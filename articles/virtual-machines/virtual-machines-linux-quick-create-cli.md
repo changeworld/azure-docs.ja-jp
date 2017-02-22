@@ -12,22 +12,22 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2016
+ms.date: 01/13/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
-ms.openlocfilehash: 70592ac773aced0bfcec5c7418a6dc53555fab33
+ms.sourcegitcommit: 42ee74ac250e6594616652157fe85a9088f4021a
+ms.openlocfilehash: 0fd7aa8f941adaeb9961fd0e4724161b9fe2eeee
 
 
 ---
 
 # <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Azure CLI 2.0 プレビュー (az.py) を使用した Linux VM の作成
-この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm#create) コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 
+この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm#create) コマンドを使用して、Managed Disks を使用する Linux 仮想マシン (VM) とネイティブ ストレージ アカウント内の非管理対象ディスクを使用する Linux 仮想マシン (VM) の両方を Azure にすばやくデプロイする方法を説明します。
 
 > [!NOTE] 
-> Azure CLI 2.0 (プレビュー) は、次世代マルチプラットフォーム CLI です。 [実際に使ってみてください。](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)
+> Azure CLI 2.0 プレビューは、次世代マルチプラットフォーム CLI です。 [実際に使ってみてください。](https://docs.microsoft.com/cli/azure/install-az-cli2)
 >
-> ドキュメントの残りの部分では、既存の Azure CLI を使用します。 Azure CLI 2.0 プレビューではなく、既存の Azure CLI 1.0 を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
+> Azure CLI 2.0 プレビューではなく、既存の Azure CLI 1.0 を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
 
 VM を作成するには、以下が必要です。 
 
@@ -35,24 +35,25 @@ VM を作成するには、以下が必要です。
 * [Azure CLI v.2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールする
 * Azure アカウントにログインする (「[az login](/cli/azure/#login)」と入力します)
 
-([Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して、Linux VM をすばやくデプロイすることもできます。)
+([Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Linux VM をデプロイすることもできます。)
 
-次の例は、Debian VM をデプロイし、Secure Shell (SSH) キーを添付する方法を示しています (引数は異なる場合があります。別のイメージが必要な場合は、[検索できます](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。
+次の例は、Debian VM をデプロイし、それに Secure Shell (SSH) キーを使用して接続する方法を示しています。 引数は異なる場合があります。別のイメージが必要な場合は、[検索できます](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="using-managed-disks"></a>Managed Disks の使用
 
-まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたリソースをすべて含むリソース グループを作成します。
+Azure Managed Disks を使用するには、Azure Managed Disks をサポートしているリージョンを使用する必要があります。 まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたリソースをすべて含むリソース グループを作成します。
 
 ```azurecli
-az group create -n myResourceGroup -l westus
+ az group create -n myResourceGroup -l westus
 ```
 
-出力は次のようになります (必要に応じて、別の `--output` オプションを選択できます)。
+出力は次のようになります (別の形式で表示したい場合は、別の`--output`オプションを指定できます)。
 
 ```json
 {
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
   "location": "westus",
+  "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
@@ -60,17 +61,15 @@ az group create -n myResourceGroup -l westus
   "tags": null
 }
 ```
-
-## <a name="create-your-vm-using-the-latest-debian-image"></a>最新の Debian イメージを使用した VM の作成
-
-これで、VM とその環境を作成できます。 必ず `----public-ip-address-dns-name` の値を一意の値に置き換えます。以下の値は既に使用されている可能性があります。
+### <a name="create-your-vm"></a>VM の作成 
+これで、VM とその環境を作成できます。 必ず `--public-ip-address-dns-name` の値を一意の値に置き換えます。以下の値は既に使用されている可能性があります。
 
 ```azurecli
 az vm create \
 --image credativ:Debian:8:latest \
---admin-username ops \
+--admin-username azureuser \
 --ssh-key-value ~/.ssh/id_rsa.pub \
---public-ip-address-dns-name mydns \
+--public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
 --name myVM
@@ -82,28 +81,29 @@ az vm create \
 
 ```json
 {
-  "fqdn": "mydns.westus.cloudapp.azure.com",
+  "fqdn": "manageddisks.westus.cloudapp.azure.com",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
-  "macAddress": "00-0D-3A-32-05-07",
+  "macAddress": "00-0D-3A-32-E9-41",
   "privateIpAddress": "10.0.0.4",
-  "publicIpAddress": "40.112.217.29",
+  "publicIpAddress": "104.42.127.53",
   "resourceGroup": "myResourceGroup"
 }
 ```
 
-この出力に示されているパブリック IP アドレスを使用して、VM にログインします。 ここで示されている完全修飾ドメイン名 (FQDN) を使用することもできます。
+この出力に示されているパブリック IP アドレスまたは完全修飾ドメイン名 (FQDN) を使用して、VM にログインします。
 
 ```bash
-ssh ops@mydns.westus.cloudapp.azure.com
+ssh ops@manageddisks.westus.cloudapp.azure.com
 ```
 
 選択したディストリビューションによっては、次のような出力が表示されます。
 
-```
-The authenticity of host 'mydns.westus.cloudapp.azure.com (40.112.217.29)' can't be established.
-RSA key fingerprint is SHA256:xbVC//lciRvKild64lvup2qIRimr/GB8C43j0tSHWnY.
+```bash
+The authenticity of host 'manageddisks.westus.cloudapp.azure.com (134.42.127.53)' can't be established.
+RSA key fingerprint is c9:93:f5:21:9e:33:78:d0:15:5c:b2:1a:23:fa:85:ba.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'mydns.westus.cloudapp.azure.com,40.112.217.29' (RSA) to the list of known hosts.
+Warning: Permanently added 'manageddisks.westus.cloudapp.azure.com' (RSA) to the list of known hosts.
+Enter passphrase for key '/home/ops/.ssh/id_rsa':
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
@@ -111,7 +111,86 @@ individual files in /usr/share/doc/*/copyright.
 
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
-ops@mynewvm:~$ ls /
+Last login: Fri Jan 13 14:44:21 2017 from net-37-117-240-123.cust.vodafonedsl.it
+ops@myVM:~$ 
+```
+
+Managed Disks を使用する新しい VM で実行できるその他の作業については、「[次のステップ](#next-steps)」をご覧ください。
+
+## <a name="using-unmanaged-disks"></a>非管理対象ディスクの使用 
+
+非管理対象ディスクを使用する VM は、非管理対象ストレージ アカウントを持ちます。まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたソースをすべて含むリソース グループを作成します。
+
+```azurecli
+az group create --name nativedisks --location westus
+```
+
+出力は次のようになります (必要に応じて、別の `--output` オプションを選択できます)。
+
+```json
+{
+  "id": "/subscriptions/<guid>/resourceGroups/nativedisks",
+  "location": "westus",
+  "managedBy": null,
+  "name": "nativedisks",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null
+}
+```
+
+### <a name="create-your-vm"></a>VM の作成 
+
+これで、VM とその環境を作成できます。 必ず `--public-ip-address-dns-name` の値を一意の値に置き換えます。以下の値は既に使用されている可能性があります。
+
+```azurecli
+az vm create \
+--image credativ:Debian:8:latest \
+--admin-username azureuser \
+--ssh-key-value ~/.ssh/id_rsa.pub \
+--public-ip-address-dns-name nativedisks \
+--resource-group nativedisks \
+--location westus \
+--name myVM \
+--use-native-disk
+```
+
+出力は次のようになります。 VM に **SSH** 接続するために、`publicIpAddress` または `fqdn` の値をメモします。
+
+```json
+{
+  "fqdn": "nativedisks.westus.cloudapp.azure.com",
+  "id": "/subscriptions/<guid>/resourceGroups/nativedisks/providers/Microsoft.Compute/virtualMachines/myVM",
+  "macAddress": "00-0D-3A-33-24-3C",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "13.91.91.195",
+  "resourceGroup": "nativedisks"
+}
+```
+
+上記の出力に示されているパブリック IP アドレスまたは完全修飾ドメイン名 (FQDN) を使用して、VM にログインします。
+
+```bash
+ssh ops@nativedisks.westus.cloudapp.azure.com
+```
+
+選択したディストリビューションによっては、次のような出力が表示されます。
+
+```
+The authenticity of host 'nativedisks.westus.cloudapp.azure.com (13.91.93.195)' can't be established.
+RSA key fingerprint is 3f:65:22:b9:07:c9:ef:7f:8c:1b:be:65:1e:86:94:a2.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'nativedisks.westus.cloudapp.azure.com,13.91.93.195' (RSA) to the list of known hosts.
+Enter passphrase for key '/home/ops/.ssh/id_rsa':
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+ops@myVM:~$ ls /
 bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  vmlinuz
 ```
 
@@ -127,6 +206,6 @@ bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

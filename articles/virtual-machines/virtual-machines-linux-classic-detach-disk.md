@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f556fd0318accc19f0fa56fa7f2a8716ee6f1c02
-ms.openlocfilehash: 74925fe82d7f05799b7e850eb2807a7d4d7197a1
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: f3b622ae6fd5f29ba92686ffeb3a3806b67b7e3a
 
 
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Linux 仮想マシンからディスクを切断する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../includes/howto-detach-disk-linux.md)]
 
@@ -30,11 +31,11 @@ ms.openlocfilehash: 74925fe82d7f05799b7e850eb2807a7d4d7197a1
 以下の記事で、Linux VM の使用方法について詳しい情報を得ることができます。
 
 * [データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
+* [クラシック デプロイ モデルでの Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

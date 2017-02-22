@@ -1,6 +1,6 @@
 ---
-title: "Cloud Services に関する FAQ | Microsoft Docs"
-description: "Cloud Services に関してよく寄せられる質問。"
+title: "Azure Cloud Services のロールに関する FAQ | Microsoft Docs"
+description: "Azure Cloud Services に関してよく寄せられる質問。 証明書、Web ロール、worker ロールについての一般的な質問に対する回答を示します。"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2501b6480e81b236995c37db7171a4ed1429dcbf
-ms.openlocfilehash: f7bad9a46132dec43f73e561362c9e6441a5c1c0
+ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
+ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: f7bad9a46132dec43f73e561362c9e6441a5c1c0
 * **My**  
   秘密キーを持つアプリケーション証明書 (\*.pfx、\*.p12)。
 * **CA**  
-   すべての中間証明書をこのストア内に保存します (ポリシー CA および下位 CA)。
+  すべての中間証明書をこのストア内に保存します (ポリシー CA および下位 CA)。
 * **ROOT**  
   ルート CA ストア。メインのルート CA 証明書をここに保存します。
 
@@ -71,6 +71,6 @@ Azure サブスクリプションには、使用できるコアの数に制限�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

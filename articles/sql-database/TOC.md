@@ -6,12 +6,6 @@
 ### [リソース制限](sql-database-resource-limits.md)
 ### [機能](sql-database-features.md)
 ### [SQL Database に関する FAQ](sql-database-faq.md)
-## メリット
-### [学習と適応](sql-database-learn-and-adapt.md)
-### [すばやいスケール](sql-database-scale-on-the-fly.md)
-### [マルチテナント アプリの構築](sql-database-build-multi-tenant-apps.md)
-### [セキュリティと保護](sql-database-helps-secures-and-protects.md)
-### [お客様の環境に対応](sql-database-works-in-your-environment.md)
 ## 比較
 ### [VM 上の SQL Database と SQL](sql-database-paas-vs-sql-server-iaas.md)
 ### [T-SQL の相違点](sql-database-transact-sql-information.md)
@@ -20,6 +14,7 @@
 ## [SQL Database のチュートリアル](sql-database-explore-tutorials.md)
 ## [ソリューション クイックスタート](sql-database-solution-quick-starts.md)
 ## セキュリティ
+### [セキュリティの概要](sql-database-security-overview.md)
 ### [Azure SQL Database の Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
 ### [SQL セキュリティ センター](https://msdn.microsoft.com/library/azure/bb510589)
 # 作業の開始
@@ -69,12 +64,12 @@
 #### [SQL Database をコピーする](sql-database-copy.md)
 ## ファイアウォール規則、認証、承認
 ### 詳細情報
-#### [概要](sql-database-security.md)
-#### [セキュリティ ガイドライン](sql-database-security-guidelines.md)
+#### [アクセス制御](sql-database-control-access.md)
 #### [ファイアウォール](sql-database-firewall-configure.md)
 #### [ログインの管理](sql-database-manage-logins.md)
 ### すべきこと
-#### [SQL の認証と承認](sql-database-get-started-security.md)
+#### [SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)
+#### [Azure AD 認証と承認](sql-database-control-access-aad-authentication-get-started.md)
 ## データの安全性を確保して保護する
 ### 詳細情報
 #### 監査
@@ -106,7 +101,8 @@
 #### [障害復旧訓練を実施する](sql-database-disaster-recovery-drills.md)
 #### [アクティブ geo レプリケーションの概要](sql-database-geo-replication-overview.md)
 ### すべきこと
-#### [SQL Database のバックアップと復元の概要](sql-database-get-started-backup-recovery.md)
+#### [Azure Portal: バックアップと復元](sql-database-get-started-backup-recovery.md)
+#### [PowerShell: バックアップと復元](sql-database-get-started-backup-recovery-powershell.md)
 ## アプリケーション開発
 ### 詳細情報
 #### [データベース アプリケーションの開発の概要](sql-database-develop-overview.md)
@@ -150,7 +146,7 @@
 #### [単一データベース](sql-database-single-database-monitor.md)
 #### [SQL Database Advisor の概要](sql-database-advisor.md)
 #### [Single Database のガイダンス](sql-database-performance-guidance.md)
-#### [Azure Portal でのワークロードの洞察](sql-database-performance.md)
+#### [パフォーマンスの洞察: Azure Portal](sql-database-performance.md)
 #### [バッチ処理を使用する](sql-database-use-batching-to-improve-performance.md)
 #### [拡張イベント](sql-database-xevent-db-diff-from-svr.md)
 ## SQL Database V11
@@ -253,15 +249,14 @@
 #### [長期のバックアップ リテンション期間の構成](sql-database-configure-long-term-retention.md)
 #### [Recovery Services コンテナー内のバックアップの表示](sql-database-view-backups-in-vault.md)
 #### [長期のバックアップ リテンション期間からの復元](sql-database-restore-from-long-term-retention.md)
+#### [長期的なバックアップ保有期間からの削除](sql-database-long-term-retention-delete.md)
 ### 削除済みデータベースの復元
 #### [Azure Portal を使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-portal.md)
 #### [PowerShell を使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-powershell.md)
 ### ポイントインタイム リストア
 #### [特定の時点への復元](sql-database-point-in-time-restore.md)
 #### [最も古い復元ポイントの表示](sql-database-view-oldest-restore-point.md)
-### geo リストア
-#### [Azure Portal を使用した geo リストア](sql-database-geo-restore-portal.md)
-#### [PowerShell を使用した geo リストア](sql-database-geo-restore-powershell.md)
+### [geo 冗長バックアップからの復元](sql-database-geo-restore.md)
 ## アクティブ geo レプリケーションを選択するとき
 ### [Azure Portal を使用した構成](sql-database-geo-replication-portal.md)
 ### [PowerShell を使用した構成](sql-database-geo-replication-powershell.md)
@@ -309,6 +304,6 @@
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

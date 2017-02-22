@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87b90a164daad8c376b0b8536ec8338a3be548e1
+ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
+ms.openlocfilehash: 3778964172946fa928e2a908943f50897957eb42
 
 
 ---
@@ -26,18 +26,18 @@ ms.openlocfilehash: 87b90a164daad8c376b0b8536ec8338a3be548e1
 ## <a name="assign-a-role-to-a-user"></a>ユーザーにロールを割り当てる
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのユーザー]** を選択します。
-   
+
    ![[すべてのユーザー] ブレードを開く](./media/active-directory-users-assign-role-azure-portal/create-users-open-users-blade.png)
 4. **[ユーザーとグループ - すべてのユーザー]** ブレードで、一覧からユーザーを選択します。
 5. 選択したユーザーのブレードで、**[ディレクトリの役割]** を選択し、**[ディレクトリの役割]** 一覧のロールにユーザーを割り当てます。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
-   
+
       ![ユーザーをロールに割り当てる](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 6. [ **保存**] を選択します。
 
-## <a name="whats-next"></a>参照トピック
+## <a name="next-steps"></a>次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)
 * [新しい Azure Portal でのユーザーのパスワードのリセット](active-directory-users-reset-password-azure-portal.md)
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
@@ -46,7 +46,6 @@ ms.openlocfilehash: 87b90a164daad8c376b0b8536ec8338a3be548e1
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

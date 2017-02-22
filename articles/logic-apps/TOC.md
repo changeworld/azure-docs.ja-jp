@@ -23,6 +23,7 @@
 ### [呼び出し可能なエンドポイントとしてのロジック アプリ](logic-apps-http-endpoint.md)
 ### [ループ、スコープ、分割処理](logic-apps-loops-and-scopes.md)
 ### [カスタム API の使用](logic-apps-custom-hosted-api.md)
+### [switch ステートメントの使用](logic-apps-switch-case.md)
 ### [例外処理](logic-apps-exception-handling.md)
 ### [例外処理のシナリオ](logic-apps-scenario-error-and-exception-handling.md)
 ### [コンテンツ タイプの処理](logic-apps-content-type.md)
@@ -91,6 +92,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

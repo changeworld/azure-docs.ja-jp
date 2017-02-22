@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f9bd4484a4cb9cbb01524b55d72524554cc6822
+ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
+ms.openlocfilehash: eb22b8e8c2d2b4a619e50b94321d4f819764bdaa
 
 
 ---
@@ -28,7 +28,7 @@ Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージ�
 この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-dotnet-advanced-message-queuing.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## <a name="get-started-with-service-bus"></a>Service Bus の概要
-このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](https://portal.azure.com)を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](https://portal.azure.com)を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [!NOTE]
 > パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
@@ -63,7 +63,7 @@ queue.QUEUE = queue1
 ```
 
 #### <a name="configure-the-connectionfactory"></a>ConnectionFactory の構成
-Qpid Properties File JNDI Provider で **ConnectionFactory** の定義に使用するエントリは、次のような形式になります。
+Qpid プロパティ ファイル JNDI プロバイダーで **ConnectionFactory** の定義に使用するエントリは、次のような形式になります。
 
 ```
 connectionfactory.[jndi_name] = [ConnectionURL]
@@ -91,7 +91,7 @@ amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 > 
 
 #### <a name="configure-destinations"></a>送信先の構成
-Qpid Properties File JNDI Provider で送信先の定義に使用するエントリは、次のような形式になります。
+Qpid プロパティ ファイル JNDI プロバイダーで送信先の定義に使用するエントリは、次のような形式になります。
 
 ```
 queue.[jndi_name] = [physical_name]
@@ -117,9 +117,9 @@ topic.[jndi_name] = [physical_name]
 JMS と Service Bus の使用時に必要になる特殊な API やオプションはありません。 ただし、この後で取り上げているようないくつかの制限があります。 いずれの JMS アプリケーションでも、まず、**ConnectionFactory** と送信先の名前解決が可能になるように JNDI 環境を構成する必要があります。
 
 #### <a name="configure-the-jndi-initialcontext"></a>JNDI InitialContext の構成
-JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の 2 つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
+JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の&2; つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
 
-```
+```java
 Hashtable<String, String> env = new Hashtable<String, String>(); 
 env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
 env.put(Context.PROVIDER_URL, "servicebus.properties"); 
@@ -129,7 +129,7 @@ InitialContext context = new InitialContext(env);
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Service Bus キューを使用するシンプルな JMS アプリケーション
 次のサンプル プログラムでは、JNDI 論理名が QUEUE の Service Bus キューに JMS TextMessages を送信し、折り返しそれらのメッセージを受信します。
 
-```
+```java
 // SimpleSenderReceiver.java
 
 import javax.jms.*;
@@ -310,7 +310,7 @@ exit
 ## <a name="unsupported-features-and-restrictions"></a>サポートされていない機能および制限
 JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があります。
 
-* **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
+* **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は&1; つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
 * **MessageSelectors** は現在サポートされていません。
 * 一時的な送信先である **TemporaryQueue** と **TemporaryTopic**、およびそれらを使用する **QueueRequestor** API と **TopicRequestor** API は現在サポートされていません。
@@ -325,12 +325,12 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
 * [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
-* [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
-* [Java デベロッパー センター](/develop/java/)
+* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
+* [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

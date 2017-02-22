@@ -1,5 +1,5 @@
 ---
-title: "Azure ツールの入手 (Windows 7 以降) | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 2: Azure ツール (Windows) | Microsoft Docs"
 description: "Python と Azure コマンド ライン インターフェイス (Azure CLI) を、Windows 7 以降のバージョンにインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 59d6edc1af60c9850a97378ac8758f0f245e68d6
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 1ae210489b8d369a5fca33e1824b9dc224ad33d2
 
 
 ---
@@ -75,6 +75,6 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

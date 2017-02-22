@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/21/2016
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: ad39a17ae7aa6d7a1e2de0acee7259821e481728
+ms.sourcegitcommit: 7611f7940b076ba18b3966b0bc9a63fe53b55592
+ms.openlocfilehash: 0ebec265fe2ac2d53dbe3afcb660dddbe7b050ea
 
 
 ---
@@ -44,7 +44,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 
 ### <a name="prerequisites"></a>前提条件
 * Azure サブスクリプションが必要です。 サブスクリプションがない場合は、1 か月間の[無料試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプションを作成するか、「[Azure の価格](https://azure.microsoft.com/pricing/)」でさらに多くのオプションを利用することができます。
-* PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) 」を参照してください。
+* PowerShell コマンドレットを実行するには、Microsoft Azure PowerShell モジュールが必要です。 インストール先とインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 * Premium Storage で実行されている Azure VM を使う予定がある場合は、Premium Storage 対応の VM を使う必要があります。 Premium Storage 対応の VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使えます。 Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。 使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### <a name="considerations"></a>考慮事項
@@ -62,7 +62,7 @@ VM で使えるディスクには 3 種類あり、それぞれに特定の IOPS
 | ディスクあたりの IOPS |500 |2300 |5000 |
 | ディスクあたりのスループット |100 MB/秒 |150 MB/秒 |200 MB/秒 |
 
-ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使って Premium Storage データ ディスクをストライピングする場合は、使うディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
+ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 
 #### <a name="storage-account-scalability-targets"></a>ストレージ アカウントのスケーラビリティ ターゲット
 Premium Storage アカウントには、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)に加えて、次のスケーラビリティ ターゲットがあります。 アプリケーションの要件が単一のストレージ アカウントのスケーラビリティ ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。
@@ -313,7 +313,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 ダウンタイムに備えてアプリケーションを準備します。 移行を問題なく実行するには、現在のシステムですべての処理を停止する必要があります。 そうすることで初めて、新しいプラットフォームに移行できる安定した状態になります。 ダウンタイム時間は、移行するディスクのデータ量によって異なります。
 
 > [!NOTE]
-> 特殊化された VHD ディスクから Azure Resource Manager VM を作成する場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd)で、既存のディスクを使った Resource Manager VM のデプロイを参照してください。
+> 特殊化された VHD ディスクから Azure Resource Manager VM を作成する場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)で、既存のディスクを使った Resource Manager VM のデプロイを参照してください。
 >
 >
 
@@ -773,6 +773,6 @@ Update-AzureVM  -VM $vm
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

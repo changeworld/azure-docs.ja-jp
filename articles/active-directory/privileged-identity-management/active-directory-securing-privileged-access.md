@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1150f7eaba41e42c94ed7297bd7603dc506a97a9
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 936e152304dc4a4a3bd95c7bfba071a02a20d0dd
 
 
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
 現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するためには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
 
-クラウド サービスを経由して特権アクセスを取得するユーザーが増えつつあります。 たとえば、Office 365 のグローバル管理者、Azure サブスクリプション管理者、VM や SaaS アプリの管理アクセス権を持つユーザーなどがこれにあたります。
+クラウド サービスを経由して特権アクセスを取得するユーザーが増えつつあります。 たとえば、Office&365; のグローバル管理者、Azure サブスクリプション管理者、VM や SaaS アプリの管理アクセス権を持つユーザーなどがこれにあたります。
 
 Microsoft では、 [特権アクセスのセキュリティ保護](https://technet.microsoft.com/library/mt631194.aspx)に関するこちらのロードマップを採用することをお勧めしています。
 
 Azure Active Directory を使用して Azure や Office 365 などの Microsoft サービスとアプリケーションへのアクセスを管理しているお客様は、ユーザー アカウントの管理と認証を Active Directory と Azure Active Directory のどちらで行っている場合でも、これらの原則が当てはまります。 次のセクションでは、特権アクセスのセキュリティ保護をサポートする Azure AD の機能について詳しく説明します。
 
 ## <a name="multi-factor-authentication"></a>多要素認証
-管理者認証のセキュリティを高めるために、権限を付与する前に多要素認証 (MFA) を要求する必要があります。 MFA は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。
+管理者認証のセキュリティを高めるために、権限を付与する前に多要素認証 (MFA) を要求する必要があります。 MFA は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに&2; 層構造のセキュリティを確保することができます。
 
 Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。 電話、テキスト メッセージ、モバイル アプリによる通知、確認コードやサード パーティの OATH トークンなど、一連の簡単な照合方法を通じて確実な認証を行うことができます。
 
 Azure Multi-Factor Authentication の概要については、次のビデオをご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Windows-Azure-Multi-Factor-Authentication/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
 > 
 > 
 
@@ -75,6 +75,6 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

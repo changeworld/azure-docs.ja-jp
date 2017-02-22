@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 414c41cbccb755e058fb76f10bba62bd1ffa1835
-ms.openlocfilehash: d2989a3292117ada029fb26536bfffbce83f5e1b
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: 4ddd790efde26b6c2d2215c72e42bd9e2839e50e
 
 
 ---
@@ -627,11 +627,10 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 * プログラミング モデルの詳細については、 [DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
 
 [documentdb-create-account]: documentdb-create-account.md
-[documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

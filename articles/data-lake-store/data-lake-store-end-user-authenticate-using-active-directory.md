@@ -1,6 +1,6 @@
 ---
-title: "Active Directory を使用して Data Lake Store を認証する | Microsoft Docs"
-description: "Data Lake Store で Active Directory を使用して認証する方法について説明します"
+title: "エンドユーザー認証: Data Lake Store と Azure Active Directory | Microsoft Docs"
+description: "Data Lake Store での Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
 
 
 ---
@@ -29,8 +29,8 @@ ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
 
 Azure Data Lake Store では、認証するために Azure Active Directory を使用します。 Azure Data Lake Store または Azure Data Lake Analytics と組み合わせて動作するアプリケーションを作成する前に、Azure Active Directory (Azure AD) でアプリケーションを認証する方法を決めておく必要があります。 2 種類のオプションを使用できます。
 
-* エンドユーザー認証 
-* サービス間認証 
+* エンドユーザー認証 (この記事)
+* サービス間認証
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
@@ -48,10 +48,10 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 これは、エンドユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
 
-エンドユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに与えられます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、定期的に使用されるのであれば、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
+エンドユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに与えられます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では&1; 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、定期的に使用されるのであれば、既定では最大&2; 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2.0 ポップアップの使用
-アプリケーションで、エンドユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
+アプリケーションで、エンドユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の&2; 要素認証 (2FA) プロセスでも機能します。 
 
 > [!NOTE]
 > この方法は、Python または Java 用の Azure AD Authentication Library (ADAL) ではまだサポートされていません。
@@ -59,7 +59,7 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>ユーザーの資格情報を直接渡す
-アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com. で終わる個人/"Live ID" ユーザー アカウントには対応しません。さらに、この方法は、Azure AD の 2 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
+アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com で終わる個人/"Live ID" ユーザー アカウントには対応しません。 さらに、この方法は、Azure AD の&2; 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>この方法を使用するには何が必要か
 * Azure AD ドメイン名。 これは、この記事の前提条件で既に示されています。
@@ -75,7 +75,7 @@ AD Web アプリケーションを作成し、上記の要件に合わせて構�
 
 ### <a name="step-1-create-an-azure-active-directory-application"></a>手順 1. Azure Active Directory アプリケーションを作成する
 > [!NOTE]
-> 以下の手順では、Azure Portal を使用します。 Azure AD アプリケーションは、[Azure PowerShell](../resource-group-authenticate-service-principal.md) または [Azure CLI](../resource-group-authenticate-service-principal-cli.md) を使用して作成することもできます。
+> 以下の手順では、Azure Portal を使用します。 Azure AD アプリケーションは、[Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) または [Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) を使用して作成することもできます。
 > 
 > 
 
@@ -120,7 +120,7 @@ AD Web アプリケーションを作成し、上記の要件に合わせて構�
    
     ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 5. **他のアプリケーションに対するアクセス許可**ウィザードで、**[Azure Data Lake]** と **[Windows** **Azure Service Management API]** を選択し、チェックマークをクリックします。
-6. 既定では、新しく追加されたサービスの **[委任されたアクセス許可]** は 0 に設定されます。 Azure Data Lake と Windows Azure Management Service の **[Delegated Permissions (委任されたアクセス許可)]** ドロップダウンをクリックし、[利用可能] チェック ボックスをオンにして、値を 1 に設定します。 結果は次のようになります。
+6. 既定では、新しく追加されたサービスの **[委任されたアクセス許可]** は&0; に設定されます。 Azure Data Lake と Windows Azure Management Service の **[Delegated Permissions (委任されたアクセス許可)]** ドロップダウンをクリックし、[利用可能] チェック ボックスをオンにして、値を 1 に設定します。 結果は次のようになります。
    
      ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 7. [ **Save**] をクリックします。
@@ -134,6 +134,6 @@ AD Web アプリケーションを作成し、上記の要件に合わせて構�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

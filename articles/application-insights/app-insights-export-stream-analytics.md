@@ -1,5 +1,5 @@
 ---
-title: "Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する | Microsoft Docs"
+title: "Azure Application Insights からの Stream Analytics のエクスポート | Microsoft Docs"
 description: "Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6fb4cdbbe8c334245517f2df0292ca172af5c7b
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: be47e9de14700b66a3f1c59554762303987f67be
 
 
 ---
@@ -73,7 +73,7 @@ ms.openlocfilehash: e6fb4cdbbe8c334245517f2df0292ca172af5c7b
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに&1; つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [従来の Azure ポータル](https://manage.windowsazure.com/)で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
@@ -230,7 +230,7 @@ ms.openlocfilehash: e6fb4cdbbe8c334245517f2df0292ca172af5c7b
 ## <a name="video"></a>ビデオ
 Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデータを処理する方法を示します。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Export-to-Power-BI-from-Application-Insights/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
 > 
 > 
 
@@ -243,6 +243,6 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

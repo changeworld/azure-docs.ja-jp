@@ -12,29 +12,32 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/27/2016
+ms.date: 12/15/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 9fd40ebce2f249d0ac7d42b3dc068083d90afc95
-ms.openlocfilehash: 3f224cb1a7e2d9d3527a79a2d1fe255354ae6783
+ms.sourcegitcommit: 2c37d5186e169789881a4b29597cb37cd6f7ede9
+ms.openlocfilehash: dc5c575873ceb2acc8321b949031276d9a8f8cc8
 
 
 ---
 # <a name="create-a-linux-vm-using-the-azure-cli"></a>Azure CLI を使用して新しく Linux VM を作成する
-この記事では、Azure コマンド ライン インターフェイス (CLI) で `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 `quick-create` コマンドは、プロトタイプの作成や概念のテストを迅速に行うことができる、セキュリティで保護された基本的なインフラストラクチャ内に VM をデプロイします。 
 
-> [!NOTE] 
+この記事では、Azure コマンド ライン インターフェイス (CLI) で `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 `quick-create` コマンドは、プロトタイプの作成や概念のテストを迅速に行うことができる、セキュリティで保護された基本的なインフラストラクチャ内に VM をデプロイします。
+
+> [!NOTE]
 Azure CLI 2.0 (プレビュー) を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 この記事では以下が必要です。
 
-* Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* `azure login` でログインした [Azure CLI](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である "*必要があります*"。
+- [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+
+- [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
 
 [Azure ポータル](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、Linux VM をすばやくデプロイすることもできます。
 
 ## <a name="quick-commands"></a>クイック コマンド
+
 次の例は、CoreOS VM をデプロイし、Secure Shell (SSH) キーを添付する方法を示しています (引数は異なる場合があります)。
 
 ```azurecli
@@ -42,9 +45,11 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 ```
 
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
+
 次のチュートリアルでは、各手順で実行する操作について説明しつつ、UbuntuLTS VM を順を追ってデプロイします。
 
 ## <a name="vm-quick-create-aliases"></a>VM の quick-create エイリアス
+
 ディストリビューションを簡単に選択するには、最も一般的な OS ディストリビューションにマップされた Azure CLI のエイリアスを使用します。 次の表にエイリアスを示します (Azure CLI バージョン 0.10 の時点)。 `quick-create` を使用したすべてのデプロイの既定の VM では、プロビジョニングの高速化と高パフォーマンスのディスク アクセスを実現するソリッドステート ドライブ (SSD) ストレージを利用します  (これらのエイリアスは、Azure で利用可能なディストリビューションのごく一部を表しています。 Azure Marketplace ではさらに多くのイメージを見つけることができます。[PowerShell でイメージを検索するか](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Web で探してください](https://azure.microsoft.com/marketplace/virtual-machines/)。[独自のカスタム イメージをアップロードすることもできます](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。
 
 | エイリアス | 発行元 | プラン | SKU | バージョン |
@@ -75,7 +80,7 @@ azure vm quick-create \
   --location westus \
   --os-type Linux \
   --admin-username myAdminUser \
-  --ssh-public-file ~/.ssh/id_rsa.pub \
+  --ssh-publickey-file ~/.ssh/id_rsa.pub \
   --image-urn UbuntuLTS
 ```
 
@@ -209,7 +214,6 @@ myAdminUser@myVM:~$
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

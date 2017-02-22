@@ -1,14 +1,26 @@
 ---
+title: "Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Container Service を使用して、DC/OS、Docker Swarm、または Kubernetes でアプリケーション コンテナーをデプロイして管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+services: container-service
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: container-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 445c13f0ff0106aa1d919be81ca373377464b32a
-ms.openlocfilehash: 5e027ac1a0a9ec4d11c76bbce1e0c944742ffaf9
+ms.sourcegitcommit: 8dd0b2fe35c7f6280e6c1032d788955c891668d2
+ms.openlocfilehash: b5e7c83af078678454e6fc036bff657de402cf73
 
 ---
 
 # <a name="azure-container-service-documentation"></a>Azure Container Service のドキュメント
 
-Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 Azure Container Service では、一般的なオープンソースのスケジューリングおよびオーケストレーション ツールの最適化された構成を使用します。 これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure でコンテナーベースのアプリケーションをデプロイおよび管理できます。
+Container Service を使用して、完全に移植可能なアプリケーション コンテナーをデプロイして管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、DC/OS、Docker Swarm、または Kubernetes を使用してコンテナーの拡張とオーケストレーションを行う方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -59,20 +71,8 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute">PowerShell</a></p>
+                        <p><a href="/cli/azure/acs">Azure CLI 2.0 (プレビュー)</a></p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>言語</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.compute.models">.NET</a></p>
-                   </div>
                 </div>
             </div>
         </div>
@@ -91,15 +91,9 @@ Azure Container Service を使用すると、コンテナー化されたアプ�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/container-service.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Container Service のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO3-->
 
 

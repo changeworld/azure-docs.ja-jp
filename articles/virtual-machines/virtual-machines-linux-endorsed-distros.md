@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: eaca6a05cdbc1dc5b9a62d8f60da689d06f315cc
+ms.sourcegitcommit: ab139ce55ba293526a3ccfb6bcd6cd5838b383f9
+ms.openlocfilehash: 0be5bb571f3d8fe6d5d9fcde2fe64e9147837445
 
 
 ---
@@ -31,7 +31,7 @@ Azure ギャラリーまたは Marketplace にある Linux イメージは多く
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="supported-distributions-versions"></a>サポートされているディストリビューションとバージョン
+## <a name="supported-distributions--versions"></a>サポートされているディストリビューションとバージョン
 次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 詳細については、[Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/en-us/kb/2941892)に関するページを参照してください。
 
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。  LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、以前の RHEL/CentOS ベースのディストリビューションの場合は [こちらで](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)個別にダウンロードする形で入手できます。  LIS ドライバーの詳細については、 [こちらの記事](virtual-machines-linux-create-upload-generic.md#linux-kernel-requirements) を参照してください。
@@ -45,8 +45,8 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 | Debian |Debian 7.9+、8.2+ |カーネル内 |パッケージ: リポジトリ内の "waagent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7+、7.1+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES 11 SP4、SLES 12 SP1 以降、 <p> SLES for SAP 11 SP3 以降 |カーネル内 |パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE 13.2+ |カーネル内 |パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES 11 SP4、SLES 12 SP1 以降、 <p> SLES for SAP |カーネル内 |パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Leap 42.1+ |カーネル内 |パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04、14.04、16.04、16.10 |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="partners"></a>パートナー
@@ -60,7 +60,7 @@ OpenLogic は、クラウドおよびデータ センター向けの企業オー
 
 CoreOS Web サイトから入手:
 
-*CoreOS はセキュリティ、一貫性、信頼性を実現するように設計されています。yum や apt でパッケージをインストールする代わりに、Linux コンテナーを使用して、より抽象的なレベルでサービスを管理します。コンテナーには 1 つのサービス コードとすべての依存関係がパッケージ化されており、1 つまたは複数の CoreOS マシン上で実行できます。*
+*CoreOS はセキュリティ、一貫性、信頼性を実現するように設計されています。yum や apt でパッケージをインストールする代わりに、Linux コンテナーを使用して、より抽象的なレベルでサービスを管理します。コンテナーには&1; つのサービス コードとすべての依存関係がパッケージ化されており、1 つまたは複数の CoreOS マシン上で実行できます。*
 
 ### <a name="credativ"></a>Credativ
 [http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
@@ -92,6 +92,6 @@ Canonical のエンジニアリングおよびオープン コミュニティ体
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

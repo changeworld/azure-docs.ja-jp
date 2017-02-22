@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0063c689d4259d15c6aa2c8ca037a512644419fd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
 
 
 ---
@@ -125,6 +125,11 @@ Azure Search でマルチテナント シナリオをモデル化する前述の
 
 この方法を使用すると、個別のユーザー アカウント、個別のアクセス許可レベル、完全に別個のアプリケーションの機能を実現できます。
 
+> [!NOTE]
+> 上記の方法を使用して、複数のテナントに対応するように 1 つのインデックスを構成すると、検索結果の関連性に影響を及ぼします。 検索の関連性スコアは、テナント レベルのスコープではなく、インデックス レベルのスコープで計算されるので、すべてのテナントのデータが、関連性スコアの基になる統計 (語句の頻度など) に組み込まれます。
+> 
+> 
+
 ## <a name="next-steps"></a>次のステップ
 Azure Search は、多くのアプリケーションにとって魅力的な選択肢です。このサービスの信頼性の高い機能の詳細については、[こちら](http://aka.ms/whatisazsearch)をご覧ください。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Search を最適に調整してください。
 
@@ -133,6 +138,6 @@ Azure Search とマルチテナント シナリオに関するご質問があれ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

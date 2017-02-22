@@ -1,6 +1,6 @@
 ---
-title: "StorSimple Virtual Array をデプロイする 3 - ファイル サーバーとしてセットアップする"
-description: "StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
+title: "StorSimple Virtual Array をファイル サーバーとして設定する | Microsoft Docs"
+description: "StorSimple Virtual Array のデプロイの&3; 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/26/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f99e3dc59c0637053cad6c2b3b6baedac803f42
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 仮想デバイスを構成およびセットアップする前に、
 
 * 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の説明に従って仮想デバイスをプロビジョニングし、接続していること。
 * StorSimple 仮想デバイスを管理するために作成した、StorSimple Manager サービスからのサービス登録キーがあること。 詳細については、StorSimple Virtual Array の「 [手順 2. サービス登録キーを取得する](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) 」をご覧ください。
-* 既存の StorSimple Manager サービスに登録する 2 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
+* 既存の StorSimple Manager サービスに登録する&2; 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
 StorSimple 仮想デバイスをセットアップして構成するには、次の詳細な手順を実行します。
@@ -177,7 +177,7 @@ StorSimple デバイスのデバイス構成を完了するには、次の手順
 
 StorSimple Virtual Array をファイル サーバーとして構成、登録する方法を説明したビデオをご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Configure-a-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Configure-a-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -187,6 +187,6 @@ StorSimple Virtual Array をファイル サーバーとして構成、登録す
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

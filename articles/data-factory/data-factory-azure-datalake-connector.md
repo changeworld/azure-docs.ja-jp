@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 32f69c4bcfdeb5dbbbc41deb6d98b2e97e9a095f
-ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
+ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
+ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
 
 
 ---
@@ -26,9 +26,9 @@ ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
 > [!NOTE]
 > Azure Data Lake Store との間でデータを移動するには、コピー アクティビティを含むパイプラインを作成する前に Azure Data Lake Store アカウントを作成します。 Azure Data Lake Store の詳細については、 [Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事をご覧ください。
 >
-> Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、 [最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md) に関するページを確認してください。 Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
->
->
+
+## <a name="supported-authentication-types"></a>サポートされている認証の種類
+Azure Data Lake Store コネクタでは、**サービス プリンシパル**認証と**ユーザー資格情報**認証がサポートされています。 特にスケジュールされたデータ コピーについては前者を使用し、後者でのトークンの有効期限の動作を避けることをお勧めします。 構成の詳細については、「[Azure Data Lake Store のリンクされたサービスのプロパティ](#azure-data-lake-store-linked-service-properties)」を参照してください。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
 Azure Data Lake Store との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
@@ -69,28 +69,18 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
         }
     }
 }
 ```
 
-### <a name="to-create-azure-data-lake-linked-service-using-data-factory-editor"></a>Data Factory エディターを使用して Azure Data Lake のリンクされたサービスを作成するには
-次の手順では、Data Factory エディターを使用して Azure Data Lake Store のリンクされたサービスを作成する手順について説明します。
-
-1. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Data Lake Store]** を選択します。
-2. JSON エディターで、 **dataLakeStoreUri** プロパティに Data Lake の URI を入力します。
-3. コマンド バーの **[承認する]** をクリックします。 ポップアップ ウィンドウが表示されます。
-
-    ![Authorize button](./media/data-factory-azure-data-lake-connector/authorize-button.png)
-4. 資格情報を使用してサインインし、JSON の **authorization** プロパティに今すぐ値を割り当てる必要があります。
-5. (省略可能) JSON の **accountName**、**subscriptionID**、**resourceGroupName** などの省略可能なパラメーターの値を指定するか、これらのプロパティを JSON から削除します。
-6. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
-
-> [!IMPORTANT]
-> **[認証]** ボタンを使用して生成した認証コードは、いずれ有効期限が切れます。 **トークンの有効期限が切れたら**、**[承認する]** ボタンを使用して**再承認**し、リンクされたサービスを再デプロイします。 詳細については、「 [Azure Data Lake Store のリンクされたサービス](#azure-data-lake-store-linked-service-properties) 」のセクションを参照してください。
->
+> [!NOTE]
+> 構成の詳細については、「[Azure Data Lake Store のリンクされたサービスのプロパティ](#azure-data-lake-store-linked-service-properties)」セクションの手順を参照してください。
 >
 
 **Azure BLOB の入力データセット:**
@@ -208,9 +198,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
                 ],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource",
-                        "treatEmptyAsNull": true,
-                        "blobColumnSeparators": ","
+                        "type": "BlobSource"
                       },
                       "sink": {
                         "type": "AzureDataLakeStoreSink"
@@ -252,16 +240,16 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
         }
     }
 }
 ```
 
 > [!NOTE]
-> 承認 URL を取得するには、前の例の手順を参照してください。  
->
+> 構成の詳細については、「[Azure Data Lake Store のリンクされたサービスのプロパティ](#azure-data-lake-store-linked-service-properties)」セクションの手順を参照してください。
 >
 
 **Azure Storage のリンクされたサービス:**
@@ -371,6 +359,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
   }
 }
 ```
+
 **コピー アクティビティのあるパイプライン:**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **AzureDataLakeStoreSource** に設定され、**sink** の型が **BlobSink** に設定されています。
@@ -422,19 +411,74 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 ```
 
 ## <a name="azure-data-lake-store-linked-service-properties"></a>Azure Data Lake Store のリンクされたサービスのプロパティ
-Azure Storage のリンクされたサービスを利用し、Azure Storage アカウントを Azure Data Factory にリンクできます。 次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+次の表では、Azure Data Lake Store のリンクされたサービスに固有の JSON 要素について説明します。**サービス プリンシパル**または**ユーザー資格情報**のいずれかの認証を選択できます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティを **AzureDataLakeStore** |はい |
-| dataLakeStoreUri |Azure Data Lake Store アカウントの情報を指定します。 https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 |はい |
-| authorization |**Data Factory エディター**で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 |はい |
-| sessionId |OAuth 承認セッションの OAuth セッション ID。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 |はい |
-| accountName |Data Lake アカウント名 |なし |
-| subscriptionId |Azure サブスクリプション ID。 |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
-| resourceGroupName |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
+| type | type プロパティを **AzureDataLakeStore** | はい |
+| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 **https://[アカウント名].azuredatalakestore.net/webhdfs/v1** or **adl://[アカウント名].azuredatalakestore.net/** という形式で指定します。 | はい |
+| subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
+| resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
 
-## <a name="token-expiration"></a>トークンの有効期限
+### <a name="using-service-principal-authentication-recommended"></a>サービス プリンシパル認証の使用 (推奨)
+サービス プリンシパル認証を使用するには、最初に Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与する必要があります。 その後、対応するアプリケーション ID、アプリケーション キー、およびテナント情報によって Azure Data Factory で以下のプロパティを指定して、Data Lake Store との間でデータをコピーできます。 これを設定して、必要な情報を取得する方法については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
+
+> [!IMPORTANT]
+> コピー ウィザードを使用する場合、フォルダー間を移動するには、サービス プリンシパルで少なくとも ADLS ルート ("/") に対する読み取りアクセス許可か、ADLS アカウントの閲覧者ロールが付与されている必要があります。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
+>
+> サービス プリンシパルを AAD から新しく作成/更新した場合は、実際に有効になるまで数分間かかります。 まずサービス プリンシパルと ADLS ACL 構成を再確認し、「提供された資格情報が無効です」というエラーが解消されない場合、しばらく待ってからやり直してください。
+>
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 | はい |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure ポータルの右上隅にマウスを置くことで取得できます。 | はい |
+
+**例: サービス プリンシパル認証の使用**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+### <a name="using-user-credential-authentication"></a>ユーザー資格情報認証の使用
+また、以下のプロパティを指定することで、ユーザー資格情報認証を使用して、Data Lake Store との間でデータをコピーすることもできます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| authorization | **Data Factory エディター**で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
+| sessionId | OAuth 承認セッションの OAuth セッション ID。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい |
+
+**例: ユーザー資格情報認証の使用**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "sessionId": "<session ID>",
+            "authorization": "<authorization URL>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+#### <a name="token-expiration"></a>トークンの有効期限
 **[承認する]** ボタンを使用して生成した承認コードは、いずれ有効期限が切れます。 さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。 認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります: "資格情報の操作エラー: invalid_grant - AADSTS70002: 資格情報の検証中にエラーが発生しました。 AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21-09-31Z"
 
 | ユーザー タイプ | 有効期限 |
@@ -446,7 +490,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。 
 
-### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>プログラムを使用して sessionId と authorization の値を生成するには
+#### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>プログラムを使用して sessionId と authorization の値を生成するには
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -552,6 +596,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

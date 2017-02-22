@@ -1,5 +1,5 @@
 ---
-title: "デバイスを構成する | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 1: デバイスの構成 | Microsoft Docs"
 description: "Raspberry Pi 3 の初回使用時の構成を行い、Raspbian OS (Raspberry Pi ハードウェア用に最適化されている無料のオペレーティング システム) をインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: abe7c8b00648a101ea8255a3a6a1091a6fcccc46
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 4fdd8de3a24bf521b8ea13416900e69d24e1b62d
 
 
 ---
@@ -84,7 +84,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 Pi は、ワイヤード (有線) ネットワークまたはワイヤレス ネットワークに接続できます。 必ず Pi をコンピューターと同じネットワークに接続してください。 たとえば、コンピューターが接続しているのと同じスイッチに Pi を接続します。
 
 ### <a name="connect-to-a-wired-network"></a>ワイヤード (有線) ネットワークへの接続
-イーサネット ケーブルを使って、Pi をワイヤード (有線) ネットワークに接続します。 接続が確立されると、Pi の 2 つの LED が点灯します。
+イーサネット ケーブルを使って、Pi をワイヤード (有線) ネットワークに接続します。 接続が確立されると、Pi の&2; つの LED が点灯します。
 
 ![イーサネット ケーブルを使用した接続](media/iot-hub-raspberry-pi-lessons/lesson1/connect_ethernet.jpg)
 
@@ -117,6 +117,6 @@ LED の極性が重要であることに注意してください。 この極性
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

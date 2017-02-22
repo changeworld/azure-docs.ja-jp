@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2016
+ms.date: 12/20/2016
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: d220b3b8189a22e6450897fd5e7a865725051a8f
-ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
+ms.sourcegitcommit: 7e10f4d051a484965c7d58de6351dd357aa64c0f
+ms.openlocfilehash: 0c0e682c79a6a25ac29760f649a832f22f39e8b5
 
 
 ---
@@ -43,12 +43,14 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 次のコマンドでは、DocumentDB データベース アカウントを作成することができます。 新しいデータベース アカウントは、単一リージョンまたは[複数リージョン][scaling-globally]で、特定の[一貫性ポリシー](documentdb-consistency-levels.md)に基づいて構成します。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
+    $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -PropertyObject $DocumentDBProperties
     
-* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
+* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに&1; つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
+* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[DocumentDB のファイアウォール サポート](documentdb-firewall-support.md)」を参照してください。
 * `<default-consistency-level>` DocumentDB アカウントの既定の一貫性レベル。 詳細については、「[DocumentDB の一貫性レベル](documentdb-consistency-levels.md)」を参照してください。
 * `<max-interval>` 有界整合性制約の一貫性と併用すると、この値は許容される古さの期間を秒単位で示します。 この値の許容範囲は、1 ～ 100 です。
 * `<max-staleness-prefix>` 有界整合性制約の一貫性と併用すると、この値は許容される古い要求の数を示します。 この値の許容範囲は、1 ～ 2,147,483,647 です。
@@ -59,8 +61,9 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 例: 
 
     $locations = @(@{"locationName"="West US"; "failoverPriority"=0}, @{"locationName"="East US"; "failoverPriority"=1})
+    $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -PropertyObject $DocumentDBProperties
 
 ### <a name="notes"></a>メモ
@@ -75,13 +78,15 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 > このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更することはできません。 フェールオーバー優先度の変更方法については、[こちら](#modify-failover-priority-powershell)を参照してください。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
+    $iprangefilter = "<ip-range-filter>"
     $consistencyPolicy = @{"defaultConsistencyLevel"="<default-consistency-level>"; "maxIntervalInSeconds"="<max-interval>"; "maxStalenessPrefix"="<max-staleness-prefix>"}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -PropertyObject $DocumentDBProperties
     
-* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
+* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに&1; つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
 * `<default-consistency-level>` DocumentDB アカウントの既定の一貫性レベル。 詳細については、「[DocumentDB の一貫性レベル](documentdb-consistency-levels.md)」を参照してください。
+* `<ip-range-filter>` 特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式で指定する必要があります。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 詳細については、「[DocumentDB のファイアウォール サポート](documentdb-firewall-support.md)」を参照してください。
 * `<max-interval>` 有界整合性制約の一貫性と併用すると、この値は許容される古さの期間を秒単位で示します。 この値の許容範囲は、1 ～ 100 です。
 * `<max-staleness-prefix>` 有界整合性制約の一貫性と併用すると、この値は許容される古い要求の数を示します。 この値の許容範囲は、1 ～ 2,147,483,647 です。
 * `<resource-group-name>` 新しい DocumentDB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
@@ -91,8 +96,9 @@ ms.openlocfilehash: 0722c7c08cd7b994c25284cac45bd6f663b289b7
 例: 
 
     $locations = @(@{"locationName"="West US"; "failoverPriority"=0}, @{"locationName"="East US"; "failoverPriority"=1})
+    $iprangefilter = ""
     $consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; "maxIntervalInSeconds"=5; "maxStalenessPrefix"=100}
-    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy}
+    $DocumentDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -PropertyObject $DocumentDBProperties
 
 ## <a name="a-iddelete-documentdb-account-powershella-delete-a-documentdb-database-account"></a><a id="delete-documentdb-account-powershell"></a> DocumentDB データベース アカウントの削除
@@ -148,13 +154,13 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 ## <a name="a-idregenerate-account-key-powershella-regenerate-account-key"></a><a id="regenerate-account-key-powershell"></a> アカウント キーの再生成
 
-接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
+接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは&2; つ割り当てられます。
 
     Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
 * `<resource-group-name>` 新しい DocumentDB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` DocumentDB データベース アカウントの名前。
-* `<key-kind>` "Primary"、"Secondary"、"PrimaryReadonly"、"SecondaryReadonly" の 4 種類のキーのいずれかを再生成します。
+* `<key-kind>` "Primary"、"Secondary"、"PrimaryReadonly"、"SecondaryReadonly" の&4; 種類のキーのいずれかを再生成します。
 
 例:
 
@@ -167,7 +173,7 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
     $failoverPolicies = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0},@{"locationName"="<read-region-location>"; "failoverPriority"=1})
     Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
-* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに 1 つである必要があります。
+* `<write-region-location>` データベース アカウントの書き込みリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 である必要があります。 書き込みリージョンは、データベース アカウントごとに&1; つである必要があります。
 * `<read-region-location>` データベース アカウントの読み取りリージョンの場所の名前。 この場所のフェールオーバー優先度の値は 0 よりも大きい値である必要があります。 読み取りリージョンは、データベース アカウントごとに複数あってもかまいません。
 * `<resource-group-name>` 新しい DocumentDB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` DocumentDB データベース アカウントの名前。
@@ -186,6 +192,6 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 [rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

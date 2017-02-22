@@ -1,14 +1,26 @@
 ---
 layout: LandingPage
+description: Learn how to synchronize directories and enable single sign-on. Documentation shows you how to integrate a full suite of identity management capabilities.
+title: "Azure Active Directory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+services: active-directory
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: active-directory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 72d219c4150ddbfd59231f9131bf3502897f0ab4
+ms.sourcegitcommit: 2dc340dcb864325554700f58057d157dd46f7f7a
+ms.openlocfilehash: ba13ea0d6c17e50e7b1887373d67ca691bdfad01
 
 ---
 
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory のドキュメント
 
-Azure Active Directory Premium は、ID およびアクセス管理クラウド ソリューションで、何千ものクラウド (SaaS) アプリへのシングル サインオンと、オンプレミスで実行する Web アプリへのアクセスを提供します。 Azure Active Directory では、エンタープライズ モビリティとコラボレーションが実現し、デバイスの正常性、ユーザーの所在地、リスク レベルに基づき Multi-Factor Authentication (MFA)、セキュリティ レポート、監査、警告、および適応可能な条件付きアクセス ポリシーを使用して高度な ID 保護を提供します。
+ディレクトリを同期し、Azure Active Directory (Azure AD) によるシングル サインオンを有効にする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、多要素認証、デバイスの登録、ロールベースのアクセス制御、セキュリティの監視とアラートなど、ID 管理機能を統合する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -119,7 +131,7 @@ Azure Active Directory Premium は、ID およびアクセス管理クラウド 
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>他の</h3>
+                        <h3>その他</h3>
                         <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">サービスの制限と制約</a></p>
                     </div>
                 </div>
@@ -128,16 +140,8 @@ Azure Active Directory Premium は、ID およびアクセス管理クラウド 
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory.pdf">
-        <div class="img"></div>
-        <div class="text">
-Active Directory のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

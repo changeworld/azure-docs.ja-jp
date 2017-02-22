@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics で Service Fabric ソリューションによる環境を最適化する | Microsoft Docs"
+title: "Azure Service Fabric アプリケーションとマイクロ サービスの評価 | Microsoft Docs"
 description: "Service Fabric ソリューションを使用して、Service Fabric アプリケーション、マイクロサービス、ノード、およびクラスターのリスクと正常性を評価することができます。"
 services: log-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/21/2016
 ms.author: nini
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e6697c85194e18fcaac0f6d55bf00c3b005f6f00
+ms.sourcegitcommit: 7695debd9f8152efbbc04b6d63a0b44e70646f16
+ms.openlocfilehash: 7cf1174791187cd7d751c4e2d2646282f4a0a5ce
 
 
 ---
@@ -24,15 +24,15 @@ ms.openlocfilehash: e6697c85194e18fcaac0f6d55bf00c3b005f6f00
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
-> 
-> 
+>
+>
 
 この記事では、Log Analytics で Service Fabric ソリューションを使用して、Service Fabric ノードのパフォーマンス、およびアプリケーションとマイクロサービスの実行の可視性を実現することにより、Service Fabric クラスター全体にわたる問題の特定と解決に役立てる方法を説明します。
 
 Service Fabric ソリューションでは Service Fabric VM からの Azure 診断データを使用しますが、このデータは Azure WAD テーブルから収集されます。 Log Analytics は**Reliable Service イベント**、**アクター イベント**、**操作イベント**、および**カスタム ETW イベント**を含む Service Fabric フレームワークのイベントを読み取ります。 Service Fabric ソリューション ダッシュボードに、Service Fabric 環境における注目すべき問題や関連イベントが表示されます。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
-次の簡単な 3 つの手順に従って、ソリューションのインストールと構成を行います。
+次の簡単な&3; つの手順に従って、ソリューションのインストールと構成を行います。
 
 1. ご使用の OMS ワークスペースが、ストレージ アカウントを含むすべてのクラスター リソースの作成に使用したものと同じ Azure サブスクリプションに関連付けられていることを確認します。 OMS ワークスペースの作成の詳細については、「[Get started with Log Analytics](log-analytics-get-started.md) (Log Analytics を使ってみる)」を参照してください。
 2. Service Fabric ログを収集して表示するように OMS を構成します。
@@ -43,8 +43,8 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 > [!NOTE]
 > OMS が検索するものと同じストレージ テーブルにログをアップロードするように、Azure 診断拡張機能を構成する必要があります。 ログを収集する方法の詳細については、「[How to collect logs with Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md) (Azure 診断を使用してログを収集する方法)」を参照してください。 この記事の構成設定例では、ストレージ テーブルの名前の付け方を示します。 Azure 診断をクラスターにセットアップし、ログがストレージ アカウントにアップロードされるようになったら、次に、これらのログを収集するように OMS を構成します。
-> 
-> 
+>
+>
 
 **template.json** ファイルの **EtwEventSourceProviderConfiguration** セクションを更新して、新しい EventSource のエントリを追加してから、**deploy.ps1** を実行して構成の更新を適用するようにします。 アップロードのテーブルは (ETWEventTable) と同じです。 現時点では、OMS は、アプリケーションによって生成された ETW イベントをこのテーブルからのみ読み取ることができます。 カスタム ETW テーブルのサポートは、現在開発中です。
 
@@ -347,7 +347,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 ![[Service Fabric] タイル](./media/log-analytics-service-fabric/sf2.png)
 
 ### <a name="view-service-fabric-events"></a>Service Fabric イベントの表示
-**[Service Fabric]** タイルをクリックして、Service Fabric ダッシュボードを開きます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Service Fabric]** タイルをクリックして、Service Fabric ダッシュボードを開きます。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間範囲について、その列の基準に該当するイベント数の上位&10; 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | **Service Fabric イベント** | **description** |
 | --- | --- |
@@ -369,8 +369,8 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
 
 > [!NOTE]
 > ダッシュボードの上部にある **[Data based on last 7 days] \(過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
-> 
-> 
+>
+>
 
 ## <a name="troubleshoot-your-service-fabric-and-oms-configuration"></a>Service Fabric と OMS の構成のトラブルシューティング
 OMS でイベント データが表示できないために OMS の構成を確認する必要がある場合は、次のスクリプトを使用します。 Service Fabric 診断の構成が読み込まれ、テーブルに書き込まれるデータがチェックされて、テーブルから読み取るように OMS が構成されているか確認されます。
@@ -542,7 +542,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
         Write-Debug ("Found WADcfg")
         Write-Debug $scaleSetDiagnostics.WadCfg
         $serviceFabricProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwEventSourceProviderConfiguration
-        $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration 
+        $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
     } else
     {
         Write-Error "Unable to parse Azure Diagnostics setting for $id"
@@ -639,7 +639,6 @@ foreach($storageAccount in $storageAccountsToCheck)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

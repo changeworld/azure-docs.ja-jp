@@ -1,5 +1,5 @@
 ---
-title: "データ ウェアハウスのワークロード"
+title: "Azure SQL Data Warehouse の操作について | Microsoft Docs"
 description: 'SQL Data Warehouse''s elasticity lets you grow, shrink, or pause compute power by using a sliding scale of data warehouse units (DWUs). This article explains the data warehouse metrics and how they relate to DWUs. '
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess;mausher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43ee395fab826549ddd9ede3c3aa45aa8e97c7dd
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 79fedaabc438bc4cd884af6b494e43d32361950a
 
 
 ---
@@ -59,19 +59,19 @@ ms.openlocfilehash: 43ee395fab826549ddd9ede3c3aa45aa8e97c7dd
 * PolyBase はデータ管理に関して重要な役割を果たします。 PolyBase を使用して、古いデータを Hadoop または Azure BLOB ストレージにアーカイブすることもできます。  データはオンラインのままであるため、これによって多数のオプションが提供されます。  Hadoop からデータを取得する方が時間がかかる可能性はありますが、取得時間がかかってもストレージ コストが安い方が重要である場合もあります。
 
 ### <a name="exporting-data"></a>データのエクスポート
-データをレポートや分析に使用できるようにする方法の 1 つとして、データ ウェアハウスから、レポートや分析の実行専用のサーバーにデータを送信する方法があります。 これらのサーバーは、データ マートと呼ばれます。 たとえば、レポート データを事前処理して、それをデータ ウェアハウスから世界中の多数のサーバーにエクスポートし、顧客やアナリストが幅広く使用できるようにすることができます。
+データをレポートや分析に使用できるようにする方法の&1; つとして、データ ウェアハウスから、レポートや分析の実行専用のサーバーにデータを送信する方法があります。 これらのサーバーは、データ マートと呼ばれます。 たとえば、レポート データを事前処理して、それをデータ ウェアハウスから世界中の多数のサーバーにエクスポートし、顧客やアナリストが幅広く使用できるようにすることができます。
 
 * レポートを生成するために、読み取り専用のレポート サーバーに毎日のデータのスナップショットを取り込むことができます。 これにより、顧客により広い帯域幅を提供しながら、データ ウェアハウスに必要なコンピューティング リソースを削減することができます。 データ マートを使用すると、セキュリティの面からデータ ウェアハウスへのアクセス権を持つユーザーの数を減らすことができます。
 * 分析に関しては、データ ウェアハウスに分析キューブを作成し、データ ウェアハウスに対して分析を実行するか、データを事前処理して、将来の分析用にそれを分析サーバーにエクスポートすることができます。
 
 ## <a name="next-steps"></a>次のステップ
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][SQL Data Warehouse の作成]し、[サンプル データを読み込む][サンプル データを読み込む]方法について学習してください。
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[サンプル データを読み込む]: ./sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
+[load sample data]: ./sql-data-warehouse-load-sample-databases.md
+[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
@@ -79,6 +79,6 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 959eaca7aafd8516cfc6f3b5dd2a44ce21ec4825
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: e6f569355dd73919824f22c88ce3eead10e5b853
 
 
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Office 365 Video コネクタの使用
+# <a name="get-started-with-the-office365-video-connector"></a>Office&365; Video コネクタの使用
 Office 365 ビデオに関する情報の取得、ビデオの一覧の取得などを行うには、Office 365 ビデオに接続します。 Office 365 Video コネクタは、次のツールから使用できます。
 
 * Logic Apps 
@@ -36,18 +36,18 @@ Office 365 ビデオは、次のことを行えます。
 * Office 365 ビデオから取得したデータに基づいてビジネス フローを構築できます。 
 * ビデオ ポータルの状態の確認、チャネル内にあるすべてのビデオの一覧の取得などのアクションを使用できます。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、Bing Search コネクタを使用して Office 365 ビデオを検索でき、Office 365 Video コネクタを使用してそのビデオに関する情報を取得できます。 ビデオが要件を満たしている場合は、Facebook にこのビデオを投稿できます。 
 
-ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 Office 365 Video コネクタでは、次のアクションを使用できます。 トリガーはありません。
 
 | トリガー | アクション |
 | --- | --- |
-| なし |<ul><li>ビデオ ポータルの状態を確認します</li><li>表示可能なすべてのチャネルを取得します</li><li>ビデオの Azure Media Services マニフェストの再生 URL を取得します</li><li>ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます</li><li>特定の Office 365 ビデオの情報を取得します</li><li>チャネル内にあるすべての Office 365 ビデオを一覧表示します</li></ul> |
+| なし |<ul><li>ビデオ ポータルの状態を確認します</li><li>表示可能なすべてのチャネルを取得します</li><li>ビデオの Azure Media Services マニフェストの再生 URL を取得します</li><li>ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます</li><li>特定の Office&365; ビデオの情報を取得します</li><li>チャネル内にあるすべての Office&365; ビデオを一覧表示します</li></ul> |
 
 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Office 365 Video コネクタへの接続を作成する
+## <a name="create-a-connection-to-office365-video-connector"></a>Office&365; Video コネクタへの接続を作成する
 このコネクタをロジック アプリに追加する場合は、Office 365 Video アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
@@ -100,8 +100,8 @@ Office 365 Video コネクタでは、次のアクションを使用できます
 | 500 |内部サーバー エラー |
 | default |操作に失敗しました。 |
 
-### <a name="lists-all-the-office365-videos-present-in-a-channel"></a>チャネル内にあるすべての Office 365 ビデオを一覧表示します
-チャネル内にあるすべての Office 365 ビデオを一覧表示します。  
+### <a name="lists-all-the-office365-videos-present-in-a-channel"></a>チャネル内にあるすべての Office&365; ビデオを一覧表示します
+チャネル内にあるすべての Office&365; ビデオを一覧表示します。  
 ```GET: /{tenant}/Channels/{channelId}/Videos``` 
 
 | 名前 | データ型 | 必須 | 場所 | 既定値 | 説明 |
@@ -119,8 +119,8 @@ Office 365 Video コネクタでは、次のアクションを使用できます
 | 500 |内部サーバー エラー |
 | default |操作に失敗しました。 |
 
-### <a name="gets-information-about-a-particular-office365-video"></a>特定の Office 365 ビデオの情報を取得します
-特定の Office 365 ビデオの情報を取得します。  
+### <a name="gets-information-about-a-particular-office365-video"></a>特定の Office&365; ビデオの情報を取得します
+特定の Office&365; ビデオの情報を取得します。  
 ```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}``` 
 
 | 名前 | データ型 | 必須 | 場所 | 既定値 | 説明 |
@@ -203,11 +203,11 @@ Office 365 Video コネクタでは、次のアクションを使用できます
 | ViewCount |整数 |× |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

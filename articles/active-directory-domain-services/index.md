@@ -1,13 +1,25 @@
 ---
+title: "Azure Active Directory Domain Services のドキュメント - チュートリアル | Microsoft Docs"
+description: "Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに Azure 仮想マシンをドメインに参加させ、グループ ポリシーで管理する方法について説明します。"
+services: active-directory-ds
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: active-directory-ds
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 55dedcab5b8e62b3666cffcfc7d9a0a31c624784
-ms.openlocfilehash: d3a6b967921edad13479c615ebec8edc9e568458
+ms.sourcegitcommit: ca9fd58260f97836c08e71a50d8411d1862fd650
+ms.openlocfilehash: 9654ec8791de56c33e4973e8ba20ef6e52780955
 
 ---
 # <a name="active-directory-domain-services-documentation"></a>Active Directory Domain Services のドキュメント
 
-Azure AD Domain Services (DS) では、Windows Server Active Directory と完全に互換性のある管理対象ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) を提供します。  このサービスにより、さまざまなコンピューティング ソリューションを機敏にデプロイすることができます。
+Active Directory Domain Services を使用して、ドメイン コントローラーをデプロイせずに、Azure 仮想マシンをドメインに参加させる方法について説明します。 チュートリアルなどのドキュメントでは、グループ ポリシーを使用して仮想マシンを管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -156,18 +168,9 @@ Azure AD Domain Services (DS) では、Windows Server Active Directory と完全
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-domain-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Active Directory Domain Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

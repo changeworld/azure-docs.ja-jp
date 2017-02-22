@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 11/08/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cf0baa0bb9dab87a3ac0376a0aa115dca198f790
-ms.openlocfilehash: 82a7dc272d101e6c608209121f3edf1062ad1b5f
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 1fbf8cd4347c5a49fe7769fd8d02c2dbfddfc74e
 
 
 ---
@@ -34,6 +34,10 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Hadoop。 Linux または Windows ベースのクラスターが動作します。
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL は、JDBC クライアント アプリケーションです。
 
 この記事からリンクされている Java アプリケーションの例をビルドおよび実行するには、以下が必要です。
@@ -195,6 +199,6 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Azure Backup のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Backup に関するドキュメントを使用して、クラウドにバックアップする方法を説明します。 アプリケーション、Windows サーバー、Azure 仮想マシンのバックアップに関するチュートリアルとビデオをご覧ください。"
+services: backup
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: backup
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 4c3a00fe82ec903bcd756e8cd2ef940fc10e8af2
+ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
+ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
 
 ---
 #<a name="backup-documentation"></a>Backup のドキュメント
 
-Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できるクラウド サービスです。  Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。  
+Azure Backup を使用して、データをクラウド上で保護し、長期保有と復元を実現する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、データ、アプリケーション、Windows サーバー、Azure 仮想マシンをバックアップする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -132,16 +144,10 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure Backup のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

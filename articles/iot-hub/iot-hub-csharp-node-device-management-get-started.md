@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub デバイス管理の使用 | Microsoft Docs"
-description: "このチュートリアルでは Azure IoT Hub でデバイスの管理を開始する方法を示します"
+title: "Azure IoT Hub デバイス管理の開始 (.NET/Node) | Microsoft Docs"
+description: "Azure IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT device SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,20 +15,20 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: cf9741e7bc30ccb5e6b8f79dad7c8ef725cd683a
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: e4072903a0040d34ad4d41e6c28793d3594fa2f2
 
 
 ---
-# <a name="tutorial-get-started-with-device-management"></a>チュートリアル: デバイス管理の開始
+# <a name="get-started-with-device-management-netnode"></a>デバイス管理の開始 (.NET/Node)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 ## <a name="introduction"></a>はじめに
-IoT バックエンド アプリは、Azure IoT Hub のプリミティブ (デバイス ツインとダイレクト メソッド) を使用して、デバイス上でデバイス管理アクションをリモートで開始して監視できます。  この記事では、IoT バックエンド アプリとデバイスが、IoT Hub を使用したデバイスの再起動をリモートで開始して監視するためにどのように連携するかについて説明し、それらの操作を実行するためのコードを示します。
+バックエンド アプリは、Azure IoT Hub のプリミティブ (デバイス ツインとダイレクト メソッド) を使用して、デバイス上でデバイス管理アクションをリモートで開始して監視できます。  この記事では、バックエンド アプリとデバイスが、IoT Hub を使用したデバイスの再起動をリモートで開始して監視するためにどのように連携するかについて説明し、それらの操作を実行するためのコードを示します。
 
 クラウド ベースのバックエンド アプリから、デバイスのデバイス管理操作をリモートで起動して監視するには、[デバイス ツイン][lnk-devtwin]や[ダイレクト メソッド][lnk-c2dmethod]などの IoT Hub プリミティブを使用します。 このチュートリアルでは、バックエンド アプリケーションとデバイスをどのように連携させると、IoT Hub からデバイスの再起動をリモートで開始して監視できるかについて示します。
 
-ダイレクト メソッドを使用して、クラウド内のバックエンド アプリからデバイス管理操作 (再起動、出荷時の設定に戻す、ファームウェアの更新など) を開始します。 デバイスは次の操作を担当します。
+ダイレクト メソッドを使用して、クラウド内のバックエンド アプリケーションからデバイス管理操作 (再起動、出荷時の設定に戻す、ファームウェアの更新など) を開始します。 デバイスは次の操作を担当します。
 
 * IoT Hub から送信されたメソッド要求の処理。
 * デバイスでの対応するデバイス固有の操作の開始。
@@ -40,7 +40,7 @@ IoT バックエンド アプリは、Azure IoT Hub のプリミティブ (デ�
 
 * Azure Portal を使用して IoT Hub を作成し、IoT Hub 内にデバイス ID を作成します。
 * クラウドから呼び出すことができ、再起動を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
-* シミュレート対象デバイス アプリで再起動ダイレクト メソッドを IoT Hub 経由で呼び出すコンソール アプリケーションを作成します。
+* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT Hub 経由で呼び出す .NET コンソール アプリを作成します。
 
 このチュートリアルが終わると、次の Node.js コンソール デバイス アプリと .NET (C#) コンソール バックエンド アプリが完成しています。
 
@@ -66,14 +66,14 @@ IoT バックエンド アプリは、Azure IoT Hub のプリミティブ (デ�
     ![New Visual C# Windows Classic Desktop project][img-createapp]
 
 2. ソリューション エクスプローラーで **TriggerReboot** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
 
-    ![Nuget Package Manager window][img-servicenuget]
+    ![NuGet Package Manager window][img-servicenuget]
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションとターゲット デバイスで作成した IoT Hub の接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションとターゲット デバイスで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -138,7 +138,7 @@ IoT バックエンド アプリは、Azure IoT Hub のプリミティブ (デ�
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -218,7 +218,7 @@ IoT バックエンド アプリは、Azure IoT Hub のプリミティブ (デ�
 IoT ソリューションでは、定義された一連のデバイス管理パターンを拡張したり、デバイス ツインと cloud-to-device メソッド プリミティブを使用してカスタム パターンを作成したりできます。 デバイス管理操作の他の例には、出荷時の設定への復帰、ファームウェアの更新、ソフトウェアの更新、電源管理、ネットワークと接続の管理、データの暗号化などがあります。
 
 ## <a name="device-maintenance-windows"></a>デバイスのメンテナンス期間
-通常、デバイスは、中断やダウンタイムを最小限に抑えることができる時間に操作を実行するように構成します。  デバイスのメンテナンス期間は、デバイスがその構成を更新する必要がある時間を定義する一般的に使用されるパターンです。 バックエンド ソリューションは、デバイス ツインの必要なプロパティを使用して、メンテナンス期間を可能にするデバイスのポリシーを定義してアクティブにすることができます。 デバイスは、メンテナンス期間ポリシーを受信したときに、デバイス ツインの報告されるプロパティを使用してポリシーの状態を報告することができます。 その後、バックエンド アプリケーションは、デバイス ツインのクエリを使用して、デバイスが各ポリシーに対応していることを確認できます。
+通常、デバイスは、中断やダウンタイムを最小限に抑えることができる時間に操作を実行するように構成します。  デバイスのメンテナンス期間は、デバイスがその構成を更新する必要がある時間を定義する一般的に使用されるパターンです。 バックエンド ソリューションは、デバイス ツインの必要なプロパティを使用して、メンテナンス期間を可能にするデバイスのポリシーを定義してアクティブにすることができます。 デバイスは、メンテナンス期間ポリシーを受信したときに、デバイス ツインの報告されたプロパティを使用してポリシーの状態を報告することができます。 その後、バックエンド アプリケーションは、デバイス ツインのクエリを使用して、デバイスが各ポリシーに対応していることを確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ダイレクト メソッドを使用してデバイスのリモート再起動をトリガーし、報告されるプロパティを使用してデバイスの最後の再起動時間を報告し、デバイス ツインのクエリを実行してクラウドからデバイスの最後の再起動時間を検出しました。
@@ -237,7 +237,7 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [img-servicenuget]: media/iot-hub-csharp-node-device-management-get-started/servicesdknuget.png
 [img-createapp]: media/iot-hub-csharp-node-device-management-get-started/createnetapp.png
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
@@ -253,6 +253,6 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

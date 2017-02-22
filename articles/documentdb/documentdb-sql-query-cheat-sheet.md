@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf63bc0fed285feef8fa0af5796d2b70d86ed098
+ms.sourcegitcommit: 82ac3feb64c688a372d2b6d41a259d7126df44c1
+ms.openlocfilehash: 68968f3300ff783a526469274d07ba524b7d3569
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: bf63bc0fed285feef8fa0af5796d2b70d86ed098
 DocumentDB は、[SQL](documentdb-sql-query.md) を利用した JSON ドキュメントのリレーショナル クエリ、階層クエリ、空間クエリにサポートしています。スキーマやセカンダリ インデックスを指定する必要がありません。 標準 ANSI-SQL のキーワードと演算子に加え、DocumentDB は JavaScript のユーザー定義関数 (UDF)、JavaScript 演算子、さまざまな組み込み関数に対応しています。
 
 ## <a name="download-the-documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL クエリのチート シート PDF のダウンロード
-SQL クエリ チート シートをダウンロードし、それをクイック リファレンスとして利用し、クエリを短時間で記述します。 SQL チート シート PDF には 2 つのサンプル JSON ドキュメントからデータを取得するための共通クエリが表示されます。 片面 SQL クエリ チート シートをページ レター サイズ (8.5 x 11 インチ) で印刷し、手元に置いておくことができます。
+SQL クエリ チート シートをダウンロードし、それをクイック リファレンスとして利用し、クエリを短時間で記述します。 SQL チート シート PDF には&2; つのサンプル JSON ドキュメントからデータを取得するための共通クエリが表示されます。 片面 SQL クエリ チート シートをページ レター サイズ (8.5 x 11 インチ) で印刷し、手元に置いておくことができます。
 
 **SQL チート シートはここでダウンロードします: [Microsoft Azure DocumentDB SQL チート シート](http://go.microsoft.com/fwlink/?LinkId=623215)**
 
@@ -46,6 +46,6 @@ TOP を含めるために 2016 年 7 月 29 日に更新されました。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

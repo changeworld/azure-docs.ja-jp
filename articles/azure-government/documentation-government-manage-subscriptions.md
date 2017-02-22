@@ -1,23 +1,22 @@
 ---
 title: "Azure Government サブスクリプション | Microsoft Docs"
 description: "Azure Government でサブスクリプションを管理する方法"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: zakramer
 manager: liki
-editor: 
 ms.assetid: d3375e84-a37d-4e44-9040-70dbe08eabfc
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/21/2016
+ms.date: 01/12/2017
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 40432290f50ce08320fef1604e764b5a93a9eb0b
-ms.openlocfilehash: a49552a68a0f1f077d4416cb2ba70fe2f7a632ff
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 398abc29328adc179b860ab2cde5e6122f81779d
 
 
 ---
@@ -36,7 +35,7 @@ Azure Government には、環境を管理するための独自の URL とエン�
 * リージョン名
 
 > [!NOTE]
-> PowerShell を初めて使用する場合は、[Azure PowerShell の概要](../powershell-install-configure.md)に関するページを確認してください。
+> PowerShell を初めて使用する場合は、[Azure PowerShell の概要](/powershell/azureps-cmdlets-docs)に関するページを確認してください。
 > 
 > 
 
@@ -122,7 +121,7 @@ Visual Studio の Azure パブリックへの接続を有効にするには、Az
 5. Visual Studio を起動します。
 
 > [!NOTE]
-> このレジストリ キーが元に戻ると、Azure Government サブスクリプションは表示されてもアクセスできなくなり、  安全に削除できます。
+> このレジストリ キーが元に戻ると、Azure Government サブスクリプションは表示されてもアクセスできなくなります。  安全に削除できます。
 > 
 > 
 
@@ -138,6 +137,6 @@ Visual Studio の Azure パブリックへの接続を有効にするには、Az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

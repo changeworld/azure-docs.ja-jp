@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dea75987df0cf05126564d2c7e20d59b842dc1c
-ms.openlocfilehash: a9aa385d8c18600c50797a76e5a67754c695fdf8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 286a4f46e19b9ed38f9920e169bdadd013186ef6
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: a9aa385d8c18600c50797a76e5a67754c695fdf8
 
 <br/>
 
-[アプリケーションの種類をパッケージ化][]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の 3 つの手順が含まれます。
+[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の 3 つの手順が含まれます。
 
 1. アプリケーション パッケージをアップロードする
 2. アプリケーションの種類を登録する
@@ -248,6 +248,6 @@ PS D:\temp>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

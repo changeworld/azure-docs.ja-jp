@@ -1,5 +1,5 @@
 ---
-title: "ポータルでのコンテナー レジストリの作成 | Microsoft Docs"
+title: "Azure コンテナー レジストリの作成 - ポータル | Microsoft Docs"
 description: "Azure Portal を使用した Azure コンテナー レジストリの作成と管理の概要"
 services: container-registry
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: aa4b960ed75b5a4702317bf557b4588e7a54fa0e
-ms.openlocfilehash: c22fee1a9172eba28d8f841d973704934cdb3ebb
+ms.sourcegitcommit: d3047cd4cddb23c4daeb9265afc4d7b3fe30d46c
+ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
 
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
@@ -52,7 +52,7 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
    > [!IMPORTANT]
    > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
    
-    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。
+    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 Premium およびクラシック ストレージ アカウントはサポートされていないことに注意してください。
 
 ## <a name="manage-registry-settings"></a>レジストリ設定の管理
 レジストリを作成すると、ポータルの **[Container Registries (コンテナー レジストリ)]** ブレードからレジストリ設定を検索できます。 たとえば、レジストリにログインするための設定が必要な場合や、管理者ユーザーを有効または無効にすることが必要な場合があります。
@@ -77,6 +77,6 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

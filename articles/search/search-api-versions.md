@@ -12,31 +12,35 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 01/11/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 66aec5feaa370aef6dc4a9f83119e26ab47d726a
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
 
 ---
 
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
-Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンを公開することが必要な場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
+Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンの公開が必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
 
 原則として、新しい API バージョンの発行は、必要な場合にのみ行うようにしています。お客様側で新しいバージョンを使用できるようにコードをアップグレードする作業が必要になる可能性があるからです。 下位互換性が保たれなくなる形で API の一部の要素を変更する必要がある場合に限り、新しいバージョンを発行します。 下位互換性は、既存の機能に変更を加えたことや、新機能において既存の API のセキュリティ構成を変更したことが原因で維持できなくなることがあります。
 
 SDK 更新プログラムの場合も同じルールに従っています。 Azure Search SDK は[セマンティック バージョニング](http://semver.org/) ルールに従います。そのため、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合は、マイナー バージョンがインクリメントされ、バグ修正の場合は、ビルド バージョンのみがインクリメントされます。
 
+> [!NOTE]
+> Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
+
 ## <a name="snapshot-of-current-versions"></a>現在のバージョンのスナップショット
-Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。 このドキュメントの後続のセクションでは、ロードマップとその他の詳細について説明します。
+Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
 
 | インターフェイス | 最新のメジャー バージョン | 状態 |
 | --- | --- | --- |
-| [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) |1.1 |一般公開、2016年 2 月にリリース済み |
-| [.NET SDK のプレビュー](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) |2.0-preview |2016 年 8 月にリリースのプレビュー |
-| [サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) |2016-09-01 |一般公開 |
+| [.NET SDK](https://aka.ms/search-sdk) |3.0 |一般公開、2016年 11 月にリリース済み |
+| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |2.0-preview |2016 年 8 月にリリースのプレビュー |
+| [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2016-09-01 |一般公開 |
 | [サービス REST API プレビュー](search-api-2015-02-28-preview.md) |2015-02-28-Preview |Preview |
-| [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx) |2015-08-19 |一般公開 |
+| [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |2015-08-19 |一般公開 |
+| [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
 
 REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。 これにより、容易にプレビュー API などの特定のバージョンを対象にすることができます。 次の例に、 `api-version` パラメーターを指定する方法を示します。
 
@@ -46,21 +50,8 @@ REST API の場合は、各呼び出しに対して `api-version` を含める�
 > 各要求で `api-version` を指定するとしても、すべての API 要求で同じバージョンを使用することをお勧めします。 このことは、特に、新しい API バージョンが、以前のバージョンで認識されない属性または操作を導入している場合に当てはまります。 API バージョンを混在させると、意図しない結果を招くおそれがあるので、お勧めしません。
 >
 > サービス REST API と管理 REST API は、それぞれ別々にバージョン管理されます。 バージョン番号の類似性は偶然によるものです。
->
->
 
 一般公開 (またはGA) の API は、実稼働環境で使用でき、Azure サービス レベル アグリーメントの対象です。 プレビュー バージョンには、必ずしも GA バージョンに移行されるとは限らない実験用の機能が含まれています。 **実稼働アプリケーションではプレビュー API を使用しないことを強くお勧めします。**
-
-## <a name="sdk-version-roadmap"></a>SDK バージョンのロードマップ
-.NET SDK の各バージョンは、サービス REST API の特定のバージョンを対象としています。 機能はまず REST API でロールアウトされ、次に SDK で実装されます。
-
-.NET SDK は現在一般に公開されており、次のバージョンに向けた作業が進行中です。 下表では、次に登場するものを把握できるように、SDK の今後のバージョンに目を向けます。
-
-| .NET SDK バージョン | REST API バージョン | Features (機能) | ETA |
-| --- | --- | --- | --- |
-| 1.1 |2015-02-28 |Lucene クエリ構文 |2016 年 2 月 |
-| 2.0-preview |2015-02-28-Preview |カスタム アナライザー、Azure BLOB および Table インデクサー、フィールド マッピング、ETag |2016 年 8 月 |
-| 3.x |2016-09-01 |CSV および JSON ファイルに対する BLOB インデクサーのサポートがないこと以外は 2.0-preview と同じ |2016 年 11 月 |
 
 ## <a name="about-preview-and-generally-available-versions"></a>プレビュー バージョンと一般公開バージョンについて
 Azure Search の場合は常に、まず REST API によって、次に .NET SDK のプレリリース版によって実験機能を事前に公開します。
@@ -75,6 +66,6 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

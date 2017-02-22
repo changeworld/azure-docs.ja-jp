@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/19/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
+ms.sourcegitcommit: 2f5c5e9af193c843765f63640d46c25f3a6d10c3
+ms.openlocfilehash: 3641f9309cc38f6575ce36d3450448cdae1601a9
 
 
 ---
@@ -26,23 +26,24 @@ ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
 
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。
-![Schema Extension Wizard](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)インストールでは、以下の属性が表示されます。これらは有効な候補です。
+![スキーマ拡張機能のウィザード](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)  
+インストールでは、次の属性が表示されます。これらは有効な候補です。
 
 * ユーザーおよびグループ オブジェクト型
 * 単一値の属性: 文字列、ブール値、整数、バイナリ
 * 複数値の属性: 文字列、バイナリ
 
-属性の一覧は、Azure AD Connect のインストール中に作成されたキャッシュから読み取られます。 その他の属性で Active Directory スキーマを拡張した場合は、これらの新しい属性が表示されるように [スキーマを更新する必要があります](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema) 。
+属性の一覧は、Azure AD Connect のインストール中に作成されたスキーマ キャッシュから読み取られます。 その他の属性で Active Directory スキーマを拡張した場合は、これらの新しい属性が表示されるように[スキーマを更新する必要があります](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema)。
 
-オブジェクトは、最大で 100 個のディレクトリ拡張機能属性を持つことができます。 最大長は、250 文字です。 属性値がそれより長い場合は、同期エンジンによって切り捨てられます。
+Azure AD のオブジェクトは、最大で 100 個のディレクトリ拡張機能属性を持つことができます。 最大長は、250 文字です。 属性値がそれより長い場合は、同期エンジンによって切り捨てられます。
 
 これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure Portal で確認できます。  
-![Schema Extension App](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3.png)
+![Schema Extension App](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
 これで、これらの属性を Graph を通じて利用できるようになりました。  
 ![Graph](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
 
-属性には、extension\_{AppClientId}\_ というプレフィックスが付きます。 AppClientId の値は、ご使用の Azure AD ディレクトリに存在するすべての属性で同じになります。
+属性には、extension\_{AppClientId}\_ というプレフィックスが付きます。 AppClientId の値は、ご使用の Azure AD テナントに存在するすべての属性で同じになります。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
@@ -51,7 +52,6 @@ ms.openlocfilehash: 78fa8bc1394f98c6aa90a75ba17ec36106f09290
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

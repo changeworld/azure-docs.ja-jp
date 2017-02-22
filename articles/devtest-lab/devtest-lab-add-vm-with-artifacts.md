@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 01/11/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: aa6c87ef6e1f87cb47f68f9480ea068aa6262bf9
+ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
+ms.openlocfilehash: f1993113664c3ac108005dbf599baf7eaa7a30b3
 
 
 ---
 # <a name="add-a-vm-with-artifacts-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でアーティファクトを含む VM を ラボに追加する
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/How-to-create-VMs-with-Artifacts-in-a-DevTest-Lab/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-create-VMs-with-Artifacts-in-a-DevTest-Lab/player]
 > 
 > 
 
@@ -107,11 +107,11 @@ Azure Resource Manager テンプレートでは、反復可能なデプロイを
 ## <a name="next-steps"></a>次のステップ
 * VM が作成されたら、VM のブレードで **[接続]** を選択して VM に接続できます。
 * [DevTest Labs VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
-*  [DevTest Labs ARM のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)
+* [DevTest Labs ARM のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

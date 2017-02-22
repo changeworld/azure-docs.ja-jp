@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/06/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dac614de38447bfeaf92f15f156217c9bd44b4ff
-ms.openlocfilehash: 580b4b67cf2180e32b2c7d9eb1359d0a9036e3d0
+ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
+ms.openlocfilehash: c488fcc8de41fe4d58d78517deea98c4617b5f49
 
 
 ---
@@ -93,8 +93,8 @@ Azure Redis Cache を開始する方法はいくつかあります。
 
 Azure アカウントをお持ちでない場合は、次の操作を行います。
 
-* [無料で Azure アカウントを開きます](/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
-* [Visual Studio サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+* [無料で Azure アカウントを開きます](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
+* [Visual Studio サブスクライバーの特典を有効にします](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="cache-size"></a>
 
@@ -113,7 +113,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * **Redis の構成**: Standard レベルと Premium レベルでは、Keyspace 通知用に Redis を構成できます。
 * **最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。 [詳細については、価格のページを参照してください](https://azure.microsoft.com/pricing/details/cache/)。
 * **Redis サーバー専用コア**: Premium レベルでは、すべてのキャッシュ サイズに Redis 専用のコアがあります。 Basic/Standard レベルでは、C1 サイズ以上に Redis サーバー専用コアがあります。
-* **Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。 キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
+* **Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても&2; つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。 キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 * **パフォーマンス向上**: Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
 
 <a name="cache-performance"></a>
@@ -180,7 +180,7 @@ StackExchange.Redis には多くのオプションが用意されています。
 * **タイムアウト値**
   * ワークロードを考慮したうえで値を適宜設定します。 大きな値を保存する場合は、タイムアウトを大きな値に設定します。
   * StackExchange.Redis が再接続できるように、 `AbortOnConnectFail` を false に設定します。
-  * アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
+  * アプリケーションに対して ConnectionMultiplexer インスタンスを&1; つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
   * 診断用には、 `ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
   * カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
   * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 次に例を示します。
@@ -191,7 +191,7 @@ StackExchange.Redis には多くのオプションが用意されています。
   * これにより、 `ConnectionMultiplexer`あたりの待機時間が合理化されます。
 
 ### <a name="what-redis-cache-clients-can-i-use"></a>どのような Redis キャッシュ クライアントを使用できますか。
-Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](http://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントのチュートリアルについては、「 [Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md) 」の上部にある言語のタブで、目的の言語をクリックしてください。
+Redis のメリットの&1; つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](http://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントのチュートリアルについては、「 [Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md) 」の上部にある言語のタブで、目的の言語をクリックしてください。
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -295,7 +295,7 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>一般的な Redis コマンドの使用に関するいくつかの考慮事項
 * 処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
-  * たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。 Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](http://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
+  * たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。 Redis はシングル スレッド サーバーであり、一度に&1; つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](http://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
 * キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、それはシナリオしだいです。 サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値、再試行回数、再試行ロジックを調整できます。 Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
 * これは、サイズの大きな値を Redis に格納できないという意味ではありません。次の点に考慮する必要があります。 待機時間は長くなります。 サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
@@ -329,9 +329,9 @@ CLR ThreadPool には、2 種類のスレッド - 「Worker」と「I/O 完了�
 
 スレッド プールは、各種のスレッドについて「最小」設定に達するまで、新しい worker スレッドまたは I/O 完了スレッドをオンデマンドで (スロットルなしで) 提供します。 既定では、スレッドの最小数はシステム上のプロセッサの数に設定されます。
 
-既存の (ビジー) スレッドの数がスレッドの「最小」数に達すると、ThreadPool は新しいスレッドを挿入する速度を、500 ミリ秒ごとに 1 スレッドへとスロットルします。 つまり、IOCP スレッドを必要とする作業のバーストをシステムが取得した場合、その作業を非常に高速に処理します。 ただし、作業のバーストが構成済みの「最小」設定を超えた場合は、次の 2 つの状態のうちどちらかが発生するまで ThreadPool が待機するので、多少の遅延が生じます。
+既存の (ビジー) スレッドの数がスレッドの「最小」数に達すると、ThreadPool は新しいスレッドを挿入する速度を、500 ミリ秒ごとに 1 スレッドへとスロットルします。 つまり、IOCP スレッドを必要とする作業のバーストをシステムが取得した場合、その作業を非常に高速に処理します。 ただし、作業のバーストが構成済みの「最小」設定を超えた場合は、次の&2; つの状態のうちどちらかが発生するまで ThreadPool が待機するので、多少の遅延が生じます。
 
-1. 既存のスレッドの 1 つが空き状態になり、作業を処理する。
+1. 既存のスレッドの&1; つが空き状態になり、作業を処理する。
 2. 既存のスレッドが 500 ミリ秒間空き状態にならずに、新しいスレッドが作成される。
 
 つまり、基本的には、ビジー状態のスレッド数が最小スレッド数よりも多い場合、ネットワーク トラフィックがアプリケーションによって処理されるまで 500 ミリ秒の遅延が発生すると考えられます。 また、既存のスレッドが (私の記憶によると) 15 秒を超えてアイドル状態になると、そのスレッドはクリーンアップされ、拡大と縮小のこのサイクルが繰り返されることがあります。
@@ -352,11 +352,11 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定]["minIoThreads" 構成設定]を使用します。 Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、これは global.asax.cs の Application_Start メソッドからプログラムで設定できるはずです (下記を参照)。
+* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定]["minIoThreads" configuration setting]を使用します。 Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、これは global.asax.cs の Application_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、 *"コアごと"* の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
->
->
+  > [!NOTE] 
+  > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
+  >
 
 * ASP.NET の外部では、 [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
 
@@ -384,7 +384,7 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティングの設定」を参照してください。
 
 ### <a name="my-cache-diagnostics-storage-account-settings-changed-what-happened"></a>キャッシュ診断ストレージ アカウントの設定を変更した場合
-同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。 キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。 確認する 1 つの方法として、 `Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
+同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。 キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。 確認する&1; つの方法として、 `Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
 ### <a name="why-is-diagnostics-enabled-for-some-new-caches-but-not-others"></a>新しいキャッシュの診断を有効にして、それ以外は有効にしない理由
 同じリージョンとサブスクリプションのキャッシュは、同じ診断ストレージの設定を共有します。 新しいキャッシュを、別のキャッシュとして同じリージョンとサブスクリプションに作成し、診断を有効にすると、同じ設定が新しいキャッシュの診断で使用されます。
@@ -435,10 +435,10 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 ### <a name="in-role-cache"></a>In-Role Cache
 [In-Role Cache は 2016 年 11 月 30 日に終了となります。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
+["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

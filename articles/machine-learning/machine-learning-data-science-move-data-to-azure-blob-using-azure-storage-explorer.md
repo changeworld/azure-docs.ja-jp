@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage Explorer を使用して Azure Blob Storage 間でデータを移動する | Microsoft Docs"
+title: "Azure ストレージ エクスプローラーを使用して Blob Storage 間でデータを移動する | Microsoft Docs"
 description: "Azure Storage Explorer を使用して Azure BLOB ストレージ間でデータを移動する"
 services: machine-learning,storage
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a67f2e77d3bc7da35a03b68d7f32fd3a2a42bfcd
-ms.openlocfilehash: 18c05ade1ee0c0c716307613a3c0daf1c8d853aa
+ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
+ms.openlocfilehash: a258404e659bd6d6e7e0f468a5f3ce5e184be2a3
 
 
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB ストレージ間でデータを移動する
+# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB Storage 間でデータを移動する
 Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB ストレージからデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
@@ -46,18 +46,18 @@ Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で 
 次の手順では、Azure ストレージ エクスプローラーを使用してデータをアップロード/ダウンロードする方法について説明します。 
 
 1. Microsoft Azure ストレージ エクスプローラーを起動します。
-2. **アカウントにサインイン...** ウィザードを起動するには、**[Azure アカウントの設定]** アイコンをクリックし、**[アカウントの追加]** をクリックして、資格情報を入力します。 ![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. **Azure Storage へ接続**ウィザードを起動するには、**[Azure Storage へ接続]** アイコンをクリックします。 ![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. **Azure Storage へ接続**ウィザードで Azure ストレージ アカウントのアクセス キーを入力し、**[次へ]** をクリックします。 ![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
-5. **[アカウント名]** ボックスにストレージ アカウント名を入力し、**[次へ]** をクリックします。 ![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+2. **アカウントにサインイン...** ウィザードを起動するには、**[Azure アカウントの設定]** アイコンをクリックし、**[アカウントの追加]** をクリックして、資格情報を入力します。 ![Azure Storage アカウントの追加](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3. **Azure Storage へ接続**ウィザードを起動するには、**[Azure Storage へ接続]** アイコンをクリックします。 ![Azure Storage への接続](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. **Azure Storage へ接続**ウィザードで Azure ストレージ アカウントのアクセス キーを入力し、**[次へ]** をクリックします。 ![Azure Storage への接続](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. **[アカウント名]** ボックスにストレージ アカウント名を入力し、**[次へ]** をクリックします。 ![外部ストレージの接続](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
 6. 追加されたストレージ アカウントが表示されます。 ストレージ アカウントに BLOB コンテナーを作成するには、そのアカウントの **[BLOB コンテナー]** ノードを右クリックして **[BLOB コンテナーの作成]** を選択し、名前を入力します。
-7. コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]**をクリックします。 ![](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+7. コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** をクリックします。![Storage アカウント](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする&1; つ以上のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]**をクリックします。 ![ファイルのダウンロード](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

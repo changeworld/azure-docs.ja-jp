@@ -1,10 +1,10 @@
 ---
-title: " ロジック アプリで Slack コネクタを使用する | Microsoft Docs"
-description: "Microsoft Azure App Service Logic Apps で Slack コネクタを使用する方法の概要について説明します"
+title: " ロジック アプリでの Slack コネクタの使用 | Microsoft Docss"
+description: "ロジック アプリで Slack コネクタを使用します"
 services: 
 documentationcenter: 
 author: msftman
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cacaa4a4a0089e1c3df54ae466af251026e1a55b
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: 404776283ee10aa9410d002597e054757516bcab
 
 
 ---
 # <a name="get-started-with-the-slack-connector"></a>Slack コネクタの使用
-Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが 1 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。
+Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが&1; 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。
 
 > [!NOTE]
 > 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
@@ -33,7 +33,7 @@ Slack コネクタでは、次の操作を実行できます。
 
 * ロジック アプリを構築できます
 
-ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」を参照してください。
 
 ## <a name="lets-talk-about-triggers-and-actions"></a>トリガーとアクション
 Slack コネクタは、アクションとして使用できます。トリガーはありません。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -56,12 +56,12 @@ Slack コネクタを使用するには、最初に **接続** を作成し、�
 
 次の手順に従って、Slack にサインインし、ロジック アプリの Slack **接続** の構成を完了します。
 
-1.  **[繰り返し]**
+1. **[繰り返し]**
 2. **[頻度]** を選択し、**[間隔]** を入力します。
 3. **[アクションの追加]** を選択します。  
    ![Slack の構成][1]  
 4. 検索ボックスに「Slack」と入力し、名前に Slack が含まれたすべてのエントリが返されるまで待ちます。
-5.  **[Slack - メッセージの投稿]**
+5. **[Slack - メッセージの投稿]**
 6. **[Slack にサインイン]** をクリックします。  
    ![Slack の構成][2]
 7. アプリケーションを承認するために、Slack 資格情報を入力してサインインします。    
@@ -109,7 +109,7 @@ Slack コネクタを使用するには、最初に **接続** を作成し、�
 
 - - -
 ## <a name="object-definitions"></a>オブジェクト定義:
- **Message**: Slack メッセージ
+ **メッセージ**: Slack メッセージ
 
 Message の必須プロパティ:
 
@@ -139,9 +139,9 @@ Message の必須プロパティ:
 | notified_user_ids |array |
 | privacy |string |
 | liked_by |未定義 |
-| system_message |boolean |
+| system_message |ブール値 |
 
- **PostOperationRequest**: Slack に投稿する Slack コネクタの post 要求を表します。
+ **PostOperationRequest**: Slack に投稿する Slack コネクタの post 要求を表します
 
 PostOperationRequest の必須プロパティ:
 
@@ -231,7 +231,7 @@ YammmerEntity の必須プロパティ:
 | full_name |string |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 ## <a name="object-definitions"></a>オブジェクト定義:
  **WebResultModel**: Bing の Web 検索結果
@@ -400,7 +400,7 @@ MessageItem の必須のプロパティ:
 | is_user-deleted |boolean |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
 [2]: ./media/connectors-create-api-slack/connectionconfig2.png 
@@ -411,6 +411,6 @@ MessageItem の必須のプロパティ:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

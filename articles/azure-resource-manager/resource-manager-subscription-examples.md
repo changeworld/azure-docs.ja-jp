@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
-ms.openlocfilehash: 95dae0597cf9fc812bb04f070de2175a1ff4f45d
+ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
+ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
 
 
 ---
@@ -118,10 +118,10 @@ Contoso IT サービス管理部門では、脅威をすばやく特定し、処
 これらの要件を満たすために、Dave は [Azure Security Center](../security-center/security-center-intro.md) を有効にし、セキュリティ マネージャー ロールがアクセスできるようにしました。
 
 ## <a name="scenario-2-customer-facing-app"></a>シナリオ 2: 顧客向けアプリケーション
-サプライ チェーン部のビジネス リーダーは、ロイヤルティ カードを使用して Contoso 社の顧客との関わりを強化するさまざまな機会を特定しました。 Alice のチームはこのアプリケーションを作成する必要があり、Azure がビジネス ニーズへの対応力を高めると判断しました。 Alice は ETS の Dave と協力して、このアプリケーションの開発と運用に使用する 2 つのサブスクリプションを構成することにしました。
+サプライ チェーン部のビジネス リーダーは、ロイヤルティ カードを使用して Contoso 社の顧客との関わりを強化するさまざまな機会を特定しました。 Alice のチームはこのアプリケーションを作成する必要があり、Azure がビジネス ニーズへの対応力を高めると判断しました。 Alice は ETS の Dave と協力して、このアプリケーションの開発と運用に使用する&2; つのサブスクリプションを構成することにしました。
 
 ### <a name="azure-subscriptions"></a>Azure サブスクリプション
-Dave は Azure Enterprise Portal にログインし、サプライ チェーン部門が既に存在することを確認しました。  ただし、このプロジェクトは Azure におけるサプライ チェーン チームの最初の開発プロジェクトであるため、Dave は Alice の開発チーム用の新しいアカウントが必要であることに気付きました。  Dave はチーム用の "R & D" アカウントを作成し、Alice にアクセスを割り当てました。 Alice はアカウント ポータルからログインし、2 つのサブスクリプションを作成しました。1 つは開発サーバーを保持するためのサブスクリプション、もう 1 つは運用サーバーを保持するためのサブスクリプションです。  Alice は次のサブスクリプションを作成するときに、以前に定めた命名規則に従いました。
+Dave は Azure Enterprise Portal にログインし、サプライ チェーン部門が既に存在することを確認しました。  ただし、このプロジェクトは Azure におけるサプライ チェーン チームの最初の開発プロジェクトであるため、Dave は Alice の開発チーム用の新しいアカウントが必要であることに気付きました。  Dave はチーム用の "R & D" アカウントを作成し、Alice にアクセスを割り当てました。 Alice は Azure Portal からログインし、2 つのサブスクリプションを作成しました。1 つは開発サーバーを保持するためのサブスクリプション、もう&1; つは運用サーバーを保持するためのサブスクリプションです。  Alice は次のサブスクリプションを作成するときに、以前に定めた命名規則に従いました。
 
 | サブスクリプションの用途 | 名前 |
 | --- | --- |
@@ -200,6 +200,6 @@ Contoso IT サービス管理部門では、脅威をすばやく特定し、処
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

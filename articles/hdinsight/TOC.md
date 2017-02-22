@@ -77,9 +77,7 @@
 ### [Phoenix および SQLLine を使用する](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [リアルタイムのツイートの分析](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [仮想ネットワークでクラスターを作成する](hdinsight-hbase-provision-vnet.md)
-### [VPN 接続の構成](hdinsight-hbase-geo-replication-configure-vnets.md)
-### [DNS サーバーを構成する](hdinsight-hbase-geo-replication-configure-dns.md)
-### [HBase geo レプリケーションの構成](hdinsight-hbase-geo-replication.md)
+### [HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 ### [Java でアプリを開発する](hdinsight-hbase-build-java-maven-linux.md)
 ## Storm の使用
 ### [トポロジをデプロイおよび管理する](hdinsight-storm-deploy-monitor-topology-linux.md)
@@ -198,7 +196,6 @@
 ### [Hadoop の開始](hdinsight-hadoop-tutorial-get-started-windows.md)
 ### [Storm の開始](hdinsight-apache-storm-tutorial-get-started.md)
 ### [HBase を開始する](hdinsight-hbase-tutorial-get-started.md)
-### [HDInsight サンプル ギャラリー](hdinsight-learn-hadoop-use-sample-gallery.md)
 ### [Hadoop MapReduce サンプルを実行する](hdinsight-run-samples.md)
 ### [Hadoop クラスターを作成する](hdinsight-provision-clusters.md)
 #### [Azure Portal の使用](hdinsight-hadoop-create-windows-clusters-portal.md)
@@ -228,6 +225,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

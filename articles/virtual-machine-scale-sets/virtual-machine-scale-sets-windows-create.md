@@ -3,7 +3,7 @@ title: "PowerShell を使用した仮想マシン スケール セットの作�
 description: "PowerShell を使用した仮想マシン スケール セットの作成"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
 この記事の手順を実行するには約 30 分かかります。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ## <a name="step-2-create-resources"></a>手順 2: リソースを作成する
 新しいスケール セットに必要なリソースを作成します。
@@ -130,7 +130,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
    
         $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
    
-    この例では、3 つの仮想マシンを使用して作成されるスケール セットを示しています。 スケール セットの容量について詳しくは、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md) 」をご覧ください。 この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) も設定します。 自分のニーズに応じたサイズを見つけるには、[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)に関するページを参照してください。
+    この例では、3 つの仮想マシンを使用して作成されるスケール セットを示しています。 スケール セットの容量について詳しくは、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md) 」をご覧ください。 この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) も設定します。 自分のニーズに応じたサイズを見つけるには、[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 5. ネットワーク インターフェイス構成をスケール セット構成に追加します。
    
         Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
@@ -172,7 +172,7 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
    
-    使用する他のイメージについて詳しくは、「[PowerShell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)」をご覧ください。
+    使用する他のイメージについて詳しくは、「[PowerShell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 3. **$vhdContainers** の値を、仮想ハード ディスクが格納されているパス (https://mystorage.blob.core.windows.net/vhds など) を含むリストに置き換えた後、変数を作成します。
    
         $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
@@ -225,6 +225,6 @@ ms.openlocfilehash: 6d70338ebf918a3f9178a4f633dd46a607d72b1c
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

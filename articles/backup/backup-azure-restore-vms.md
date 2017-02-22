@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 9c8410a847d943c5baee3e08397ebf24072b3f78
+ms.sourcegitcommit: 5e22f3b395a2c8d62caa6ae0abf5f81833b00780
+ms.openlocfilehash: 2018f37b3b3426ba6a066310ddfd65fc31b7eb25
 
 
 ---
@@ -60,7 +60,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
    * 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。 既存の VM の上書きはサポートされていません。 
    * 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。 既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
      
-        クラウド サービス名の選択は、グローバルに一意である必要があります。 通常、クラウド サービス名は、[cloudservice].cloudapp.net という形式の公開された URL に関連付けられます。 Azure では、名前が既に使用されている場合に、新しいクラウド サービスを作成することはできません。 新しいクラウド サービスを作成することにすると、その名前は仮想マシンと同じ名前になります。その場合、選択した VM には、関連するクラウド サービスに適用できる程度に一意の名前を付ける必要があります。
+        クラウド サービス名の選択は、グローバルに一意である必要があります。 通常、クラウド サービス名は、[cloudservice].cloudapp.net という形式の公開された URL に関連付けられます。 Azure では、名前が既に使用されている場合に、新しいクラウド サービスを作成することはできません。 新しいクラウド サービスを作成することを選択した場合、その名前は仮想マシンと同じ名前になります。その場合、選択した VM には、関連するクラウド サービスに適用できる程度に一意の名前を付ける必要があります。
      
         復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。 [詳細情報](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)
 2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。 Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。 ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
@@ -145,10 +145,10 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 1. [Azure Backup PowerShell](backup-azure-vms-classic-automation.md#restore-an-azure-vm) を使用してバックアップ資格情報コンテナーからディスクを復元します。
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
    
-   *  [内部ロード バランサー ](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)
+   * [内部ロード バランサー ](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)
    * [インターネットに接続するロード バランサー](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成する
-   *  [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)
-   *  [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)
+   * [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)
+   * [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)
 
 ## <a name="next-steps"></a>次のステップ
 * [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
@@ -157,6 +157,6 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

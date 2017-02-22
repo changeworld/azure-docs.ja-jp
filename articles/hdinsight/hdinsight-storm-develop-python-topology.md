@@ -12,23 +12,29 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4b667dda33c61c44090cf89ebeebece0b19c84ea
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
 
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
+
 Apache Storm では複数の言語がサポートされています。これにより、1 つのトポロジでの複数の言語からのコンポーネントの結合も可能になります。 このドキュメントでは、HDInsight での Java および Clojure ベース Storm トポロジにおける Python コンポーネントの使用方法を学習します。
 
+> [!IMPORTANT]
+> このドキュメントでは、Windows ベースと Linux ベースの HDInsight クラスターの両方を使用する方法を説明します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
+
 * Python 2.7 以上
 * Java JDK 1.7 以上
 * [Leiningen](http://leiningen.org/)
 
 ## <a name="storm-multi-language-support"></a>Storm の複数言語サポート
+
 Storm は任意のプログラミング言語を使用して記述されたコンポーネントで使用するために設計されていますが、その場合、コンポーネントが [Storm の Thrift 定義](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)の使用方法を理解している必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)にあります。
 
 Apache Storm は Java 仮想マシン (JVM) で実行される Java プロセスであるために、その他の言語で記述されたコンポーネントはサブプロセスとして実行されます。 JVM で実行されている Storm ビットは、stdin/stdout 経由で送信された JSON メッセージを使用してこれらのサブプロセスと通信します。 コンポーネント間の通信の詳細については、 [多言語プロトコル](https://storm.apache.org/documentation/Multilang-protocol.html) に関するドキュメントを参照してください。
@@ -44,7 +50,7 @@ Storm モジュール (https://github.com/apache/storm/blob/master/storm-multila
 また、Storm クラスターは分散環境で実行されるため、Python コンポーネントで必要なすべてのモジュールが、クラスター内のすべての worker ノードで使用できることを確認する必要があります。 Storm の場合、多言語リソースではこれを容易に行うことはできません。つまり、トポロジの jar ファイルの一部として依存関係をすべて含めるか、クラスター内の各 worker ノードに依存関係を手動でインストールする必要があります。
 
 ### <a name="java-vs-clojure-topology-definition"></a>Java とClojure トポロジの定義
-トポロジを定義する 2 つの方法の 1 つである Clojure は、トポロジ定義で Python コンポーネントを直接参照できるため、非常に簡単でわかりやすい方法です。 Java ベースのトポロジ定義の場合、Python コンポーネントから返されるタプルでのフィールド宣言などを処理する Java コンポーネントを定義する必要もあります。
+トポロジを定義する&2; つの方法の&1; つである Clojure は、トポロジ定義で Python コンポーネントを直接参照できるため、非常に簡単でわかりやすい方法です。 Java ベースのトポロジ定義の場合、Python コンポーネントから返されるタプルでのフィールド宣言などを処理する Java コンポーネントを定義する必要もあります。
 
 このドキュメントでは両方の方法について説明し、プロジェクト例も示します。
 
@@ -181,6 +187,6 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

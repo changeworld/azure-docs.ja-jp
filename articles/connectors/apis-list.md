@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 12/07/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 73369c2aed062bb3fe1ec37c4650d1f86b0afb68
-ms.openlocfilehash: b2d4a153f472d350dbcb21c35ef73430e1657844
+ms.sourcegitcommit: d2eefb6b99955f9b9a1bd5b5c94617d538f079ec
+ms.openlocfilehash: 8e1b8cee12406628dae1deff15406beb13778b40
 
 
 ---
@@ -65,7 +65,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 
 | エンタープライズ<br/>コネクタ |  |
 | --- | --- |
-|![API アイコン][MQicon]<br/>**MQ**|![API アイコン][SAPicon]<br/>**SAP**|
+|![API アイコン][MQicon]<br/>**MQ**|![API アイコン][SAPicon]<br/>**SAP**<br/>[sapconnector]|
 
 
 
@@ -151,6 +151,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [youtubedoc]: ./connectors-create-api-youtube.md "YouTube に接続して、ビデオおよびチャネルを操作できます。"
 [sparkpostdoc]: ./connectors-create-api-sparkpost.md "SparkPost に接続して通信を行えます。"
 [filesystemdoc]: ..//app-service-logic/app-service-logic-use-file-connector.md "ファイル システム コネクタを使用して、オンプレミスのファイル システムと通信できます。"
+[sapconnector]: ..//app-service-logic/app-service-logic-enterprise-connector-sap-connector.md "SAP コネクタについて説明します。"
 
 <!--Icon references-->
 [appFiguresicon]: ./media/apis-list/appfigures.png
@@ -248,6 +249,6 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

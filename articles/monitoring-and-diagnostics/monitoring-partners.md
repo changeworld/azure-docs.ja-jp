@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebbd4166bc3f76c91823ee17b8b9c460feb9e194
+ms.sourcegitcommit: 244cc5e4f053901a8de94adb8fc983edf30ca516
+ms.openlocfilehash: 46b3ade8bb58ccd0637ce4f2cf5c484f599e6173
 
 
 ---
@@ -75,7 +75,7 @@ OpsGenie は、Azure によって生成されたアラートのディスパッ�
 [ドキュメントを確認する。][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure アプリケーションの Azure Monitor アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
+トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 現時点で PagerDuty がサポートするのは、Azure サービスのプラットフォーム レベルのメトリックに関する通知のほか、Azure Monitor アラートの通知、自動スケールの通知、および監査ログ イベントの通知です。 こうした拡張機能により、ユーザーは、Azure コア プラットフォームを高度に視覚化しながら、PagerDuty のインシデント管理機能を最大限に利用し、リアルタイムな応答を得ることができます。 Azure 統合の強化することで、webhook を使用して、すばやく簡単に設定やカスタマイズを行うことができます。
 
 [ドキュメントを確認する。][pagerduty-doc]
 
@@ -90,7 +90,7 @@ Sumo Logic は、セキュリティで保護されたクラウド ネイティ�
 [詳細情報。][sumologic-doc]
 
 ## <a name="next-steps"></a>次のステップ
-* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
+* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
 
 <!--Connectors Documentation-->
@@ -137,6 +137,6 @@ Sumo Logic は、セキュリティで保護されたクラウド ネイティ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

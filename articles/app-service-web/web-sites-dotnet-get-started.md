@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio を使用した Azure App Service への ASP.NET アプリのデプロイ | Microsoft Docs"
+title: "Visual Studio を使用した Azure への ASP.NET アプリのデプロイ | Microsoft Docs"
 description: "Visual Studio を使用して ASP.NET Web プロジェクトを Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
 services: app-service\web
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 4a0d72f46fada5112563d10d22f61abc439730a7
+ms.sourcegitcommit: 9b7e0b429575d080819f25e04d492a2b09d4d63a
+ms.openlocfilehash: 946552d1b268c6e70a9e8fcd4c40bd6e2ab76178
 
 
 ---
@@ -47,7 +47,7 @@ Azure SDK for .NET のインストールに必要な時間は別にして、こ�
 * このチュートリアルは、ASP.NET MVC と Visual Studio での作業経験があることを前提としています。 概要説明が必要な場合は、「 [Getting Started with ASP.NET MVC 5 (ASP.NET MVC 5 での作業の開始)](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)」を参照してください。
 * Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
   
-    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+    Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスしてください。 有効期間が短いスターター アプリを App Service で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## <a name="a-namesetupdevenvaset-up-the-development-environment"></a><a name="setupdevenv"></a>開発環境の設定
 このチュートリアルは、Visual Studio 2015 と [Azure SDK for .NET](../dotnet-sdk.md) 2.9 以降向けに書かれています。 
@@ -55,7 +55,7 @@ Azure SDK for .NET のインストールに必要な時間は別にして、こ�
 * [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio 2015 をまだインストールしていない場合は、SDK によってインストールされます。
   
   > [!NOTE]
-  > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
+  > マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から&30; 分以上) かかる場合があります。
   > 
   > 
 
@@ -87,7 +87,7 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
     ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started/GS13newaspnetprojdb.png)
    
     このように設定すると、Visual Studio によってこの Web プロジェクトの Azure Web アプリが自動的に作成されます。
-10.  **[OK]**
+10. **[OK]**
 
 ## <a name="create-the-azure-resources"></a>Azure リソースの作成
 ここでは、作成する Azure リソースについて、Visual Studio に指示します。
@@ -129,7 +129,7 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
 9. **[App Service の作成]** ダイアログ ボックスで、**[作成]** をクリックします。
 
 ## <a name="inspect-the-azure-resources-in-visual-studio"></a>Visual Studio での Azure リソースの確認
-ごく短時間で (通常は 1 分未満)、Visual Studio によって Web プロジェクトと Web アプリが作成されます。  
+ごく短時間で (通常は&1; 分未満)、Visual Studio によって Web プロジェクトと Web アプリが作成されます。  
 
 **[ソリューション エクスプローラー]** ウィンドウには、新しいプロジェクトのファイルとフォルダーが表示されます
 
@@ -170,7 +170,7 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
    
    ![Web の発行ウィザードの [プレビュー] タブ](./media/web-sites-dotnet-get-started/GS13previewoutput.png)
    
-   **[発行]**をクリックすると、Visual Studio で Azure サーバーにファイルをコピーする処理が開始されます。 これには 1 ～ 2 分ほどかかることがあります。
+   **[発行]**をクリックすると、Visual Studio で Azure サーバーにファイルをコピーする処理が開始されます。 これには&1; ～&2; 分ほどかかることがあります。
    
    **[出力]** ウィンドウと **[Azure App Service アクティビティ]** ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
    
@@ -181,8 +181,8 @@ Visual Studio 2013 を持っていて、それを使用する場合は、 [最�
    ![Azure で実行されている Web アプリ](./media/web-sites-dotnet-get-started/GS13deployedsite.png)
    
    > [!TIP]
-   > **[Web の 1 クリック発行]** ツール バーを有効にすると、簡単にデプロイできるようになります。 **[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。 このツール バーを使用すると、プロファイルを選択できるほか、ボタンをクリックして発行したり、ボタンをクリックして **Web の発行** ウィザードを開いたりできます。
-   > ![[Web の 1 クリック発行] ツール バー](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
+   > **[Web の&1; クリック発行]** ツール バーを有効にすると、簡単にデプロイできるようになります。 **[表示]、[ツール バー]** の順にクリックし、**[Web の&1; クリック発行]** を選択します。 このツール バーを使用すると、プロファイルを選択できるほか、ボタンをクリックして発行したり、ボタンをクリックして **Web の発行** ウィザードを開いたりできます。
+   > ![[Web の&1; クリック発行] ツール バー](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
    > 
    > 
 
@@ -222,6 +222,6 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 7b58db43f247182553a5766e11fa263ee93beff7
 
 
 ---
@@ -24,24 +24,24 @@ ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
-> 
-> 
+>
+>
 
 ## <a name="how-to-reset-the-password-for-a-user"></a>ユーザーのパスワードをリセットする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
-   
+
    ![[ユーザー] ブレードを開く](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
 4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
 5. 選択したユーザーのブレードで、**[概要]** を選択し、コマンド バーの **[パスワードのリセット]** を選択します。
-   
+
     ![[パスワードのリセット] コマンドの選択](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
 6. **[パスワードのリセット]** ブレードで、**[パスワードのリセット]** を選択します。
 
-## <a name="whats-next"></a>参照トピック
+## <a name="next-steps"></a>次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)
 * [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
@@ -50,7 +50,6 @@ ms.openlocfilehash: 02a5487578468062e42f25053eb161a810279a47
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

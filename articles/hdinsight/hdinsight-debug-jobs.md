@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bc5c3eb66f1f87dec9b0236be85a4fc96c598db3
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: bcf2791f0e1788d7d18a4efc123066aaf633d549
 
 
 ---
@@ -36,7 +36,7 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * ambariserverlog
 * ambariagentlog
 
-Windows ベースのクラスターの場合は、次の 3 つのテーブルが作成されます。
+Windows ベースのクラスターの場合は、次の&3; つのテーブルが作成されます。
 
 * setuplog: HDInsight クラスターのプロビジョニング/設定で発生したイベントと例外のログ。
 * hadoopinstalllog: クラスターに Hadoop をインストールする際に発生したイベントと例外のログ。 このテーブルは、カスタム パラメーターを使用して作成されたクラスターに関連した問題のデバッグに役立つことがあります。
@@ -116,7 +116,7 @@ Power Query は、[www.microsoft.com/en-us/download/details.aspx?id=39379](http:
 
 ## <a name="view-cluster-health-and-job-logs"></a>クラスターの状態とジョブ ログの表示
 ### <a name="access-hadoop-ui"></a>Hadoop UI にアクセスする
-Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。
 
 ![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
 
@@ -125,7 +125,7 @@ Azure ポータルから、HDInsight クラスター名をクリックし、ク�
 ![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
 
 ### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
-Azure ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[YARN UI]**をクリックします。
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[YARN UI]**をクリックします。
 
 YARN UI では、次の操作を実行できます。
 
@@ -136,7 +136,7 @@ YARN UI では、次の操作を実行できます。
 * **ジョブの状態を監視します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]**の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 
 ### <a name="access-the-hbase-ui"></a>HBase UI にアクセスする
-Azure ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[HBase UI]**をクリックします。
+Azure Portal から、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。 クラスター ブレードから、 **[ダッシュボード]**をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 クエリ コンソールが開いたら、 **[HBase UI]**をクリックします。
 
 ## <a name="hdinsight-error-codes"></a>HDInsight のエラー コード
 このセクションで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に直面する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復するための手順も示されています。
@@ -269,7 +269,7 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 
 ### <a name="a-idmorethanoneheadnodeamorethanoneheadnode"></a><a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
 * **説明**: 無効なクラスター構成です。 ヘッド ノード構成が複数見つかりました。  
-* **対応策**: 構成を編集して、ヘッド ノードが 1 つだけ指定されるようにします。
+* **対応策**: 構成を編集して、ヘッド ノードが&1; つだけ指定されるようにします。
 
 ### <a name="a-idoperationtimedoutretryrequestaoperationtimedoutretryrequest"></a><a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
 * **説明**: 許容時間または最大試行回数内に操作を完了できませんでした。 要求を再試行してください。  
@@ -280,7 +280,7 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 * **対応策**: パラメーターの有効な値を指定します。
 
 ### <a name="a-idpreclustercreationvalidationfailureapreclustercreationvalidationfailure"></a><a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **説明**: クラスターの作成要求入力が 1 つ以上、無効です。 入力値が正しいことを確認して、要求を再試行してください。  
+* **説明**: クラスターの作成要求入力が&1; つ以上、無効です。 入力値が正しいことを確認して、要求を再試行してください。  
 * **対応策**: 入力値が正しいことを確認して、要求を再試行してください。
 
 ### <a name="a-idregioncapabilitynotavailablearegioncapabilitynotavailable"></a><a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
@@ -331,6 +331,6 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

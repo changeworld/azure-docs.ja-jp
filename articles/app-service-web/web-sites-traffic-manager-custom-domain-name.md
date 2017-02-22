@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
 
 
 ---
@@ -57,10 +57,10 @@ ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
    * このページには多くの場合、いくつかのレコードが既に作成されています。たとえば、'**@**' or '\*' を "ドメイン パーキング" ページに関連付けるエントリが既にあります。 **www** のような一般的なサブドメインのレコードが含まれることもあります。
    * このページには **CNAME レコード**が表示されるか、レコード タイプを選択するためのドロップダウンが表示されます。 さらに、**A レコード**や **MX レコード**などの他のレコードが表示されることもあります。 場合によっては、CNAME レコードは **Alias Record**などの別の名前で呼ばれています。
    * このページには、**ホスト名**または**ドメイン名**から別のドメイン名に**マッピング**できるフィールドも表示されます。
-3. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) ”*から*”、Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net など**) ”*に*” マッピングします。
+3. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) "*から*"、Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net など**) "*に*" マッピングします。
    
    > [!NOTE]
-   > レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」を参照してください。
+   > レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」をご覧ください。
    > 
    > 
 4. レジストラーで DNS レコードの追加または変更が完了したら、変更を保存します。
@@ -83,6 +83,6 @@ ms.openlocfilehash: 0f8d2941b30079463954b4f9b8b9dfb10cfa3ea1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

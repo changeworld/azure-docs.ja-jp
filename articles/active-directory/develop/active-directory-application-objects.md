@@ -23,7 +23,7 @@ ms.openlocfilehash: 6d2b0d0c28963693f8fa5607200e73572ea748a0
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 Azure Active Directory (Azure AD) の "アプリケーション" という用語の意味は誤解されやいものであり、裏付けとなるコンテキストが不足している場合は特にその可能性が高まります。 この記事の目的は、Azure AD アプリケーションの統合について概念的な側面と具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録および同意の例を示しながら明らかにして、この用語の意味をよりわかりやすくすることです。
 
-## <a name="overview"></a>概要
+## <a name="overview"></a>Overview
 Azure AD アプリケーションとは、単なるソフトウェアのことではありません。 これは、アプリケーション ソフトウェアだけでなく、その Azure AD への登録 (ID 構成とも呼ばれる) も意味する概念的な用語です。Azure AD に登録することで、そのアプリケーション ソフトウェアは、実行時に認証および承認の "対話" に参加できるようになります。 定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。 対話プロトコルは [OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)によって定義されており、その目的は、クライアントとリソースがそれぞれリソースのデータに対してアクセス/保護を実行できるようにすることです。 次はもう 1 段階掘り下げ、Azure AD アプリケーション モデルにおいて、アプリケーションが内部的にはどのように表されるのかを見てみましょう。 
 
 ## <a name="application-registration"></a>アプリケーションの登録

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: b7953033247f8c243b4e9fcabc57e2826e531ac0
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 50e9095d38c96323db3ccce4e3601eccbb9eb2ab
 
 
 ---
@@ -30,10 +30,7 @@ ms.openlocfilehash: b7953033247f8c243b4e9fcabc57e2826e531ac0
 
 また、Media Services にはダイナミック パッケージ機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、Smooth Streaming のストリーミング形式でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
-動的パッケージ化機能を利用するには、次の作業が必要となります。
-
-* ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする (エンコードの手順はこのセクションで後ほど説明します)。
-* コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも&1; つ取得する。 詳細については、「 [ストリーミング エンドポイントの構成](media-services-portal-vod-get-started.md#configure-streaming-endpoints)」セクションを参照してください。 
+ダイナミック パッケージを活用するには、ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする必要があります (エンコードの手順はこのセクションで後ほど説明します)。
 
 メディア処理をスケール調整する場合は、 [こちら](media-services-portal-scale-media-processing.md) のトピックをご覧ください。
 
@@ -44,7 +41,7 @@ ms.openlocfilehash: b7953033247f8c243b4e9fcabc57e2826e531ac0
 2. **[設定]** ウィンドウで、**[資産]** を選択します。  
 3. **[資産]** ウィンドウで、エンコードする資産を選択します。
 4. **[エンコード]** ボタンをクリックします。
-5. **[資産のエンコード]** ウィンドウで、"Media Encoder Standard" プロセッサとプリセットを選択します。 たとえば、入力ビデオの解像度が 1920 x 1080 ピクセルであるとわかっている場合は、"H264 Multiple Bitrate 1080p" のプリセットを使用できます。 プリセットについて詳しくは、[こちら](https://msdn.microsoft.com/library/azure/mt269960.aspx)の記事をご覧ください。重要なのは、入力ビデオに最適なプリセットを選択することです。 低解像度 (640 x 360) のビデオの場合は、既定の "H264 Multiple Bitrate 1080p" のプリセットは使用しないでください。
+5. **[資産のエンコード]** ウィンドウで、"Media Encoder Standard" プロセッサとプリセットを選択します。 たとえば、入力ビデオの解像度が 1920 x 1080 ピクセルであるとわかっている場合は、"H264 Multiple Bitrate 1080p" のプリセットを使用できます。 プリセットについて詳しくは、[こちら](media-services-mes-presets-overview.md)の記事をご覧ください。重要なのは、入力ビデオに最適なプリセットを選択することです。 低解像度 (640 x 360) のビデオの場合は、既定の "H264 Multiple Bitrate 1080p" のプリセットは使用しないでください。
    
    出力資産とジョブの名前を編集するオプションを利用すると、効率よく管理を行えます。
    
@@ -63,6 +60,6 @@ ms.openlocfilehash: b7953033247f8c243b4e9fcabc57e2826e531ac0
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

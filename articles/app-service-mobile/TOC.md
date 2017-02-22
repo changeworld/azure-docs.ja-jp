@@ -207,18 +207,30 @@
 ### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リファレンス
-## [.NET](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [.NET バックエンド SDK](https://msdn.microsoft.com/library/azure/dn961176.aspx)
+## [Node.js バックエンド SDK](https://azure.github.io/azure-mobile-apps-node/)
+## [Android クライアント SDK](https://azure.github.io/azure-mobile-apps-android-client/)
+## [iOS クライアント SDK](https://azure.github.io/azure-mobile-apps-ios-client/)
+## [JavaScript/Cordova クライアント SDK](https://azure.github.io/azure-mobile-apps-js-client/)
+## [Windows/Xamarin クライアント SDK](https://msdn.microsoft.com/library/azure/mt419521.aspx)
 
 # 関連項目
-## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+## [GitHub リポジトリ](https://github.com/Azure/azure-mobile-apps)
+## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # リソース
 ## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## サンプル
+### [フィールド エンジニア](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
+### [構造化データの同期](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)
+### クイック スタートの完了
+#### [Windows](https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/)
+#### [Xamarin.Android](https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/)
+#### [.NET バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/)
+#### [Node.JS バックエンド](https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -227,6 +239,6 @@
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

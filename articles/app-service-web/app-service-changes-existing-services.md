@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2016
-ms.author: yochayk
+ms.author: yochaykk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 295ee5a3c067010059a0435a8867eb8f4137ccbb
+ms.sourcegitcommit: 75d42f41e6218d83cda00f2ef8926d6ca1f0aacd
+ms.openlocfilehash: 8f458884d0ea649dffa5f92fd459bbaaa9f5e4cf
 
 
 ---
@@ -95,6 +95,6 @@ App Service では、[Websites](https://azure.microsoft.com/services/websites/)�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

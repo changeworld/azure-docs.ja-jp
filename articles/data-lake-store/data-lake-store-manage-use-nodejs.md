@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 968e4039b2c94d67560fafb245b6558c70b6d2e3
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 091ab246826c96b9d816c87b27014c1e54039429
 
 
 ---
@@ -31,6 +31,11 @@ ms.openlocfilehash: 968e4039b2c94d67560fafb245b6558c70b6d2e3
 > * [Node.JS](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
+> 
+
+> [!NOTE]
+> 大量のデータ (サイズの大きいファイル、多数のファイル、またはその両方) をアップロードおよびダウンロードする場合は、[Python SDK](data-lake-store-get-started-python.md)、[.NET SDK](data-lake-store-get-started-net-sdk.md)、または [Azure PowerShell](data-lake-store-get-started-powershell.md) を使用することをお勧めします。 これらのオプションではスレッドを複数使用してデータ移動が並列化されるため、パフォーマンスが改善されます。
+> 
 > 
 
 Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。 現在 SDK では以下のものがサポートされています
@@ -51,7 +56,7 @@ npm install azure-arm-datalake-store
 ```
 
 ## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する
-以下のスニペットは、Azure AD を使用した Data Lake Store での 2 つの別々の認証方法を示したものです。 Data Lake Store での認証に利用できるさまざまな方法の詳細については、[Data Lake Store での Azure Active Directory を使用した認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+以下のスニペットは、Azure AD を使用した Data Lake Store での&2; つの別々の認証方法を示したものです。 Data Lake Store での認証に利用できるさまざまな方法の詳細については、[Data Lake Store での Azure Active Directory を使用した認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
 次のスニペットには、Azure AD ドメイン名や Azure AD アプリのクライアント ID などの入力値も必要です。これらの詳細情報は、作成した Azure AD アプリケーションからすべて取得できます。また、アプリケーションの詳細は上記のリンク先にも記載されています。
 
@@ -146,6 +151,6 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

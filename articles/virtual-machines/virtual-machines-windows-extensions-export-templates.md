@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: 73eec3322f8ee027c68ede89501b8b9fb00961a6
+ms.sourcegitcommit: f24227a33b2106955dc44defe8feb5a7d4dc655e
+ms.openlocfilehash: 6f6338d8c0e941b7fee4fb8c04315b26919716a3
 
 ---
 
@@ -148,18 +148,18 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 }
 ```
 
-テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureObject` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+テンプレート パラメーターを使用してプロパティ値を指定する場合は、これらを作成する必要があります。 保護された設定の値用のテンプレート パラメーターを作成するときは、機密性の高い値が保護されるように、`SecureString` パラメーター型を使用してください。 パラメーターの使用の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 この `IaasDiagnostic` 拡張機能の例では、Resource Manager テンプレートのパラメーター セクションに次のパラメーターが作成されます。
 
 ```json
 "storageAccountName": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 },
 "storageAccountKey": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 }
 ```
 
@@ -167,6 +167,6 @@ Azure Resource Manager の Automation スクリプトは、Resource Manager テ�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

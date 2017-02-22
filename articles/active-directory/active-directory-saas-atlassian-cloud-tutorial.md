@@ -183,7 +183,7 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
     a. [SAML] 画面から SP 識別 ID をコピーし、Azure AD に **[識別子]** の値として貼り付けます。
 
-    b. サインオン URL は、Atlassian Cloud のテナント URL です。   
+    b. サインオン URL は、Atlassian Cloud のテナント URL です。     
 
     ![シングル サインオンの構成](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
@@ -335,6 +335,6 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

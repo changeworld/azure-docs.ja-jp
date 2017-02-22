@@ -1,5 +1,5 @@
 ---
-title: "車両テレメトリ分析ソリューション プレイブック | Microsoft Docs"
+title: "車両の状態と運転習慣の予測 - Azure | Microsoft Docs"
 description: "Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 307ed83dc1f47bb86af4a476acbb51876012ff25
-ms.openlocfilehash: e4311a740ccb4cac2c1d6e7e1197a736d3a4a777
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 3467c5549381f1354987fead424646afe847739c
 
 
 ---
@@ -61,6 +61,6 @@ Microsoft の Cortana Intelligence は、データをインテリジェントな
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

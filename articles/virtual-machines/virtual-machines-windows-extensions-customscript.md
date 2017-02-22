@@ -1,9 +1,9 @@
 ---
-title: "テンプレートを使用した Windows VM のカスタム スクリプト | Microsoft Docs"
-description: "カスタム スクリプト拡張機能と Resource Manager テンプレートを使用して Windows VM 構成タスクを自動化する"
+title: "Windows の Azure カスタム スクリプト拡張機能 | Microsoft Docs"
+description: "カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。"
 services: virtual-machines-windows
 documentationcenter: 
-author: kundanap
+author: neilpeterson
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,70 +13,130 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/29/2016
-ms.author: kundanap
+ms.date: 01/17/2017
+ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: ac63fd346f158d52b359f2d6b398d0d00ea0c67e
+ms.sourcegitcommit: f9ea0d14a99a7881b816606058e5ad72a0fef499
+ms.openlocfilehash: 01adbd43c5c77c3a80c5141e06a2ab14a49b8454
 
 
 ---
-# <a name="windows-vm-custom-script-extensions-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの Windows VM のカスタム スクリプト拡張機能の使用
-[!INCLUDE [virtual-machines-common-extensions-customscript](../../includes/virtual-machines-common-extensions-customscript.md)]
+# <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
-## <a name="template-example-for-a-windows-vm"></a>Windows VM のテンプレートの例
-テンプレートの Resource セクションで、次のリソースを定義します。
+カスタム スクリプト拡張機能は、Azure 仮想マシンでスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。
 
-       {
-       "type": "Microsoft.Compute/virtualMachines/extensions",
-       "name": "MyCustomScriptExtension",
-       "apiVersion": "2015-05-01-preview",
-       "location": "[parameters('location')]",
-       "dependsOn": [
-           "[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'))]"
-       ],
-       "properties": {
-           "publisher": "Microsoft.Compute",
-           "type": "CustomScriptExtension",
-           "typeHandlerVersion": "1.7",
-           "autoUpgradeMinorVersion":true,
-           "settings": {
-               "fileUris": [
-               "http://Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-           ],
-           "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File start.ps1"
-         }
-       }
-     }
+このドキュメントでは、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法について詳しく説明します。また、Windows システムでのトラブルシューティング手順についても詳しく説明します。
 
-上記の例で、ファイルの URL とファイル名を独自の設定に置き換えます。
-テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
+## <a name="prerequisites"></a>前提条件
 
-スクリプトの URL とパラメーターを公開しない場合は、スクリプトの URL を **private**に設定します。 スクリプトの URL が **private**に設定されている場合には、保護された設定としてストレージ アカウント名とキーを送信しないとアクセスできません。 また、バージョン 1.7 以降のカスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
+### <a name="operating-system"></a>オペレーティング システム
 
-## <a name="template-example-for-a-windows-vm-with-protected-settings"></a>保護された設定を持つ Windows VM テンプレートの例
-        {
+Windows 用のカスタム スクリプト拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。
+
+### <a name="script-location"></a>スクリプトの場所
+
+スクリプトは、Azure Storage か、有効な URLを通じてアクセスできるその他の場所に格納されている必要があります。
+
+### <a name="internet-connectivity"></a>インターネット接続
+
+Windows 用のカスタム スクリプト拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
+
+## <a name="extension-schema"></a>拡張機能のスキーマ
+
+次の JSON は、カスタム スクリプト拡張機能のスキーマを示しています。 この拡張機能には、スクリプトの場所 (Azure Storage か、有効な URL でアクセスできるその他の場所) と、実行するコマンドが必要です。 Azure Storage をスクリプトのソースとして使用する場合は、Azure Storage のアカウント名とアカウント キーが必要です。 これらの項目は機密データとして扱う必要があり、拡張機能の保護された構成設定で指定する必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。
+
+```json
+{
+    "apiVersion": "2015-06-15",
+    "type": "extensions",
+    "name": "config-app",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
+        "[variables('musicstoresqlName')]"
+    ],
+    "tags": {
+        "displayName": "config-app"
+    },
+    "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.7",
+        "typeHandlerVersion": "1.8",
+        "autoUpgradeMinorVersion": true,
         "settings": {
-        "fileUris": [
-        "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-        ]
+            "fileUris": [
+                "script location"
+            ]
         },
         "protectedSettings": {
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -start.ps1",
-        "storageAccountName": "yourStorageAccountName",
-        "storageAccountKey": "yourStorageAccountKey"
+            "commandToExecute": "myExecutionCommand",
+            "storageAccountName": "myStorageAccountName",
+            "storageAccountKey": "myStorageAccountKey"
         }
-        }
-カスタム スクリプト拡張機能の最新バージョンのスキーマについては、「[Azure Windows VM 拡張機能の構成サンプル](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+    }
+}
+```
 
-カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成するサンプルについては、「 [Windows 仮想マシンでのカスタムのスクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)」を参照してください。
+### <a name="property-values"></a>プロパティ値
+
+| 名前 | 値/例 |
+| ---- | ---- |
+| apiVersion | 2015-06-15 |
+| publisher | Microsoft.Compute |
+| type | 拡張機能 |
+| typeHandlerVersion | 1.8 |
+| fileUris (例) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 |
+| commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 |
+| storageAccountName (例) | examplestorageacct |
+| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== |
+
+## <a name="template-deployment"></a>テンプレートのデプロイ
+
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時にカスタム スクリプト拡張機能を実行できます。 カスタム スクリプト拡張機能を含むサンプル テンプレートは、[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) で入手できます。
+
+## <a name="powershell-deployment"></a>PowerShell でのデプロイ
+
+`Set-AzureRmVMCustomScriptExtension` コマンドを使用して、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。 詳細については、「[Set-AzureRmVMCustomScriptExtension ](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.compute/v2.1.0/set-azurermvmcustomscriptextension)」をご覧ください。
+
+```powershell
+Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+-VMName myVM `
+-Location myLocation `
+-FileUri myURL `
+-Run 'myScript.ps1' `
+-Name DemoScriptExtension
+```
+
+## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
+
+### <a name="troubleshoot"></a>トラブルシューティング
+
+拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell モジュールを使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、次のコマンドを実行します。
+
+```powershell
+Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+```
+
+拡張機能の実行の出力は、ターゲット仮想マシンの次のディレクトリ内のファイルにログ記録されます。
+
+```cmd
+C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
+```
+
+スクリプト自体は、ターゲット仮想マシンの次のディレクトリにダウンロードされます。
+
+```cmd
+C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads
+```
+
+### <a name="support"></a>サポート
+
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/en-us/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/en-us/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

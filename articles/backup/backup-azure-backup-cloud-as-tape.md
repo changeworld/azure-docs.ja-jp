@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/10/2017
-ms.author: jimpark;trinadhk;markgal
+ms.author: saurse;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 3bd18e805dafbfae315cab0e1d5c9421c8210b95

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cbac2de7334b8733c17b2db5b407eecb925bcc2f
+ms.sourcegitcommit: 16a2c6f8e704528c38054bba394e3d11098077e0
+ms.openlocfilehash: c39e7bca6f339a1797a9344778e6a01ffa8adecc
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: cbac2de7334b8733c17b2db5b407eecb925bcc2f
 * 認証プロバイダーを構成する方法と、Azure Active Directory (Azure AD) の詳細。
 * [Active Directory Authentication Library (ADAL) for JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js)を使用して保護された API アプリを使用する方法。
 
-この記事には 2 つのセクションがあります。
+この記事には&2; つのセクションがあります。
 
 * 「[Azure App Service でユーザー認証を構成する方法](#authconfig)」セクションでは、API アプリ用にユーザー認証を構成する一般的な方法について説明します。この説明は、.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークに適用されます。
 * 「 [.NET API アプリ チュートリアルの続行](#tutorialstart) 」セクション以降では、ユーザー認証に Azure Active Directory を使用するように、.NET バックエンドと AngularJS フロントエンドによりサンプル アプリケーションを構成する方法について説明します。 
@@ -47,7 +47,7 @@ ms.openlocfilehash: cbac2de7334b8733c17b2db5b407eecb925bcc2f
    * すべての呼び出しが API アプリにアクセスできるようにする場合は、 **[要求の許可 (操作不要)]**を選択します。 このオプションを使用すると、認証されていない呼び出し元に認証プロバイダーを選択させることができます。 このオプションを使用する場合は、承認を処理するコードを記述する必要があります。
      
      詳細については、「 [Azure App Service での API Apps の認証と承認](app-service-api-authentication.md#multiple-protection-options)」を参照してください。
-4. **[認証プロバイダー]**を 1 つ以上選択します。
+4. **[認証プロバイダー]**を&1; つ以上選択します。
    
     下の図では、すべての呼び出し元が Azure AD によって認証される必要がある選択肢が示されています。
    
@@ -68,10 +68,10 @@ API アプリの Node.js または Java チュートリアルに従って学習�
 
 API アプリの .NET チュートリアルに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[App Service と Azure AD での認証の設定](#azureauth)」セクションに進みます。
 
-1 番目と 2 番目のチュートリアルをとばしてこのチュートリアルを読みたい場合は、自動プロセスでサンプル アプリケーションをデプロイして始める方法が説明されている以下の手順に従ってください。
+1 番目と&2; 番目のチュートリアルをとばしてこのチュートリアルを読みたい場合は、自動プロセスでサンプル アプリケーションをデプロイして始める方法が説明されている以下の手順に従ってください。
 
 > [!NOTE]
-> 以下の手順の開始点は、最初の 2 つのチュートリアルを実行した場合と同じになります。例外が 1 つあります。それは Visual Studio では各プロジェクトがどの Web アプリまたは API アプリにデプロイされるのかまだ識別できないという点です。 つまり、正しいターゲットにデプロイする方法はこのチュートリアルではわかりません。 自分でデプロイする方法がよくわからない場合は、この自動デプロイ プロセスで始めるのではなく、チュートリアル シリーズの [1 番目のチュートリアル](app-service-api-dotnet-get-started.md)から従うことをお勧めします。
+> 以下の手順の開始点は、最初の&2; つのチュートリアルを実行した場合と同じになります。例外が&1; つあります。それは Visual Studio では各プロジェクトがどの Web アプリまたは API アプリにデプロイされるのかまだ識別できないという点です。 つまり、正しいターゲットにデプロイする方法はこのチュートリアルではわかりません。 自分でデプロイする方法がよくわからない場合は、この自動デプロイ プロセスで始めるのではなく、チュートリアル シリーズの [1 番目のチュートリアル](app-service-api-dotnet-get-started.md)から従うことをお勧めします。
 > 
 > 
 
@@ -133,7 +133,7 @@ API アプリの .NET チュートリアルに従って学習していて、[1 �
 Azure AD 認証を構成すると、App Service によって Azure AD アプリケーションが自動的に作成されました。 既定では、新しい Azure AD アプリケーションは API アプリの URL にベアラー トークンを提供するように構成されます。 このセクションでは、中間層 API アプリに直接提供するのではなく、AngularJS フロントエンドにベアラー トークンを提供するように、Azure AD アプリケーションを構成します。 AngularJS フロントエンドは、API アプリを呼び出すときに、トークンを API アプリに送信します。
 
 > [!NOTE]
-> プロセスをできるだけシンプルにするために、このチュートリアルではフロントエンドと中間層の両方の API アプリに 1 つの Azure AD アプリケーションを使用します。 別の選択肢として、2 つの Azure AD アプリケーションを使用します。 この場合は、中間層の Azure AD アプリケーションを呼び出すための、フロントエンドの Azure AD アプリケーション アクセス許可の付与が必要になる場合があります。 このマルチ アプリケーションの手法では、各階層へのアクセス許可をより細かく制御できます。
+> プロセスをできるだけシンプルにするために、このチュートリアルではフロントエンドと中間層の両方の API アプリに&1; つの Azure AD アプリケーションを使用します。 別の選択肢として、2 つの Azure AD アプリケーションを使用します。 この場合は、中間層の Azure AD アプリケーションを呼び出すための、フロントエンドの Azure AD アプリケーション アクセス許可の付与が必要になる場合があります。 このマルチ アプリケーションの手法では、各階層へのアクセス許可をより細かく制御できます。
 > 
 > 
 
@@ -182,7 +182,7 @@ Azure AD 認証を構成すると、App Service によって Azure AD アプリ�
 
 ToDoListAngular プロジェクトのファイルを次のように変更します。
 
-1. *index.html* ファイルを開きます。
+1. *index.cshtml* ファイルを開きます。
 2. Active Directory Authentication Library (ADAL) for JS スクリプトを参照している行のコメントを外します。
    
         <script src="app/scripts/adal.js"></script>
@@ -284,6 +284,6 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/18/2016
 ms.author: alkohli@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 2000ee9d88dc0f2f0f9046b1ef6b3d2a104e7d6b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 562e20d274079d221360d45302ff288190c1cd6e
 
 
 ---
@@ -34,7 +34,7 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 > [!NOTE]
 > * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn920427.aspx)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/servicemanagement/azure.storsimple/v3.1.0/azure.storsimple)」を参照してください。
 > 
 > 
 
@@ -144,7 +144,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 | メンテナンス モードで更新プログラムと修正プログラムをインストールする |[デバイスを更新する](storsimple-update-device.md) |
 | メンテナンス モードに移行する </br>メンテナンス モードを終了する |[StorSimple デバイスのモード](storsimple-device-modes.md) |
 | サポート パッケージを作成する</br>サポート パッケージの暗号化を解除して編集する |[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md) |
-| サポート セッションを開始する</br> |[StorSimple 用 Windows PowerShell でのサポート セッションの開始](/storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
+| サポート セッションを開始する</br> |[StorSimple 用 Windows PowerShell でのサポート セッションの開始](storsimple-create-manage-support-package.md#manually-create-a-support-package) |
 
 ## <a name="get-help-in-windows-powershell-for-storsimple"></a>Windows PowerShell for StorSimple のヘルプを取得する
 Windows PowerShell for StorSimple では、コマンドレット ヘルプを利用できます。 このヘルプのオンラインの最新バージョンも利用できます。これを使用して、システム上のヘルプを更新できます。
@@ -178,6 +178,6 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

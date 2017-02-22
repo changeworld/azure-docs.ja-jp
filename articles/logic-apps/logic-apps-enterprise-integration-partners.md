@@ -13,65 +13,79 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: deonhe
+ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 549dd716df6ee64892ef33ffe4d42751d8662ccb
+ms.sourcegitcommit: 2549531d21c8e15e5bbb4321c4119e6aaac53e96
+ms.openlocfilehash: de12b83c811dcdd93ed691ddade9d748383110df
 
 
 ---
-# <a name="learn-about-partners-and-enterprise-integration-pack"></a>パートナーと Enterprise Integration Pack についての詳細情報
-## <a name="overview"></a>概要
-パートナーを作成する前に、相互にやり取りされるメッセージの識別と検証に役立つ情報を、取引を始める相手の組織と共有する必要があります。 こうした話し合いが終わり、取引を始める準備が整ったら、統合アカウントで *パートナー* を作成できます。
+# <a name="partners-in-b2b-scenarios"></a>B2B シナリオのパートナー
 
-## <a name="what-is-a-partner"></a>パートナーとは
-パートナーとは、企業間 (B2B) のメッセージングとトランザクションに参加するエンティティです。 
+パートナーとは、企業間 (B2B) のトランザクションとメッセージング交換に参加するエンティティです。 これらのトランザクションで自身の組織と別の組織を表すパートナーを作成するには、まず交換するメッセージを識別して検証するための情報を共有する必要があります。 これらの詳細について話し合い、取引関係を開始する準備が整ったら、統合アカウントに両者を表すパートナーを作成できます。
 
-## <a name="how-are-partners-used"></a>パートナーの使用方法
-パートナーは、契約の作成に使用されます。 契約は、パートナー間で交換されるメッセージに関する詳細を定義するものです。 
+## <a name="what-roles-do-partners-have-in-your-integration-account"></a>統合アカウントのパートナーの役割
 
-契約を作成する前に、少なくとも&2; つのパートナーを統合アカウントに追加しておく必要があります。 契約の対象となるパートナーのいずれかは、自分の組織である必要があります。 自分の組織を表すパートナーは、**ホスト パートナー**と呼ばれます。 2 つ目のパートナーは、自分の組織とメッセージを交換する他の組織を表し、 **ゲスト パートナー**と呼ばれます。 ゲスト パートナーには、別の会社のほか、自身の組織内の部署も指定できます。  
+パートナー間で交換するメッセージの詳細を定義するには、それらのパートナー間の契約を作成します。 ただし、契約を作成する前に、少なくとも&2; つのパートナーを統合アカウントに追加しておく必要があります。 自身の組織は、契約の**ホスト パートナー**にする必要があります。 もう一方の組織、すなわち**ゲスト パートナー**は、自身の組織とメッセージを交換する組織です。 ゲスト パートナーには、別の会社のほか、自身の組織内の部署も指定できます。
 
-パートナーを追加した後、追加したパートナーを使用して契約を作成します。 
+これらのパートナーを追加したら、契約を作成できます。
 
 受信と送信の設定は、ホスト パートナー側から見た方向になります。 たとえば、契約の受信設定は、ホスト パートナーがゲスト パートナーからメッセージを受信する方法を決めるものです。 同様に、契約の送信設定は、ホスト パートナーがゲスト パートナーにメッセージを送信する方法を示すものです。
 
 ## <a name="how-to-create-a-partner"></a>パートナーを作成する方法
-Azure ポータルで次の手順を実行します。  
 
-1. **[参照]** を選択します。  
-   ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)    
-2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[統合アカウント]** を選択します。     
-   ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)  
-3. パートナーの追加先となる**統合アカウント**を選択します。  
-   ![](./media/logic-apps-enterprise-integration-overview/overview-3.png)  
-4. **[パートナー]** タイルを選択します。  
-   ![](./media/logic-apps-enterprise-integration-partners/partner-1.png)  
-5. 開いた [パートナー] ブレードの **[追加]** ボタンを選択します。  
-   ![](./media/logic-apps-enterprise-integration-partners/partner-2.png)  
-6. パートナーの**名前**を入力してから、**[Qualifier (修飾子)]** を選択し、最後に**値**を入力します。 この値は、アプリに届くドキュメントを識別するために使用されます。  
-   ![](./media/logic-apps-enterprise-integration-partners/partner-3.png)  
-7. *ベル* 通知アイコンを選択して、パートナー作成プロセスの進捗状況を確認します。  
-   ![](./media/logic-apps-enterprise-integration-partners/partner-4.png)  
-8. **[パートナー]** タイルを選択します。 これにより、タイルが更新されます。新しいパートナーが正しく追加されたことが反映されており、パートナーの増加後の数が表示されます。    
-   ![](./media/logic-apps-enterprise-integration-partners/partner-5.png)  
-9. [パートナー] タイルを選択すると、[パートナー] ブレードにも、新しく追加されたパートナーが表示されます。    
-   ![](./media/logic-apps-enterprise-integration-partners/partner-6.png)  
+1. Azure Portal で **[参照]** を選択します。
 
-## <a name="how-to-edit-a-partner"></a>パートナーを編集する方法
-統合アカウントに既に存在するパートナーを編集するには、次の手順に従います。  
+    ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
 
-1. **[パートナー]** タイルを選択します。  
-2. [パートナー] ブレードが開いたら、編集するパートナーを選択します。  
-3. **[Update Partner (パートナーの更新)]** タイルで、必要な変更を行います。  
-4. 変更に問題がない場合は、**[保存]** リンクを選択します。問題がある場合は、**[破棄]** リンクを選択して変更を破棄します。  
-   ![](./media/logic-apps-enterprise-integration-partners/edit-1.png)  
+2. フィルター検索ボックスに「**統合**」と入力し、結果リストから **[統合アカウント]** を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
+
+3. パートナーの追加先となる統合アカウントを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+
+4. **[パートナー]** タイルを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-1.png)
+
+5. [パートナー] ブレードで **[追加]** を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-2.png)
+
+6. パートナーの名前を入力してから、**[Qualifier (修飾子)]** を選択します。 最後に**値**を入力します。この値は、アプリに届くドキュメントを識別するために使用されます。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-3.png)
+
+7. パートナー作成プロセスの進捗状況を確認するには、"*ベル*" の通知アイコンを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-4.png)
+
+8. 新しいパートナーが正常に追加されたことを確認するには、**[パートナー]** タイルを選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-5.png)
+
+    [パートナー] タイルを選択すると、[パートナー] ブレードにも、新しく追加されたパートナーが表示されます。
+
+    ![](./media/logic-apps-enterprise-integration-partners/partner-6.png)
+
+## <a name="how-to-edit-existing-partners-in-your-integration-account"></a>統合アカウント内の既存のパートナーを編集する方法
+
+1. **[パートナー]** タイルを選択します。
+2. [パートナー] ブレードが開いたら、編集するパートナーを選択します。
+3. **[パートナーの更新]** タイルで、必要な変更を行います。
+4. 変更が完了したら、**[保存]** を選択します。変更をキャンセルするには、**[破棄]** を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/edit-1.png)
 
 ## <a name="how-to-delete-a-partner"></a>パートナーを削除する方法
-1. **[パートナー]** タイルを選択します。  
-2. [パートナー] ブレードが開いたら、編集するパートナーを選択します。  
-3. **[削除]** リンクを選択します。    
-   ![](./media/logic-apps-enterprise-integration-partners/delete-1.png)   
+
+1. **[パートナー]** タイルを選択します。
+2. [パートナー] ブレードが開いたら、削除するパートナーを選択します。
+3. **[削除]** を選択します。
+
+    ![](./media/logic-apps-enterprise-integration-partners/delete-1.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
@@ -79,6 +93,6 @@ Azure ポータルで次の手順を実行します。
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

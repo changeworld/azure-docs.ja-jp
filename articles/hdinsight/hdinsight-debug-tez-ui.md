@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c5ea8696c8f04b7bd391c6ed060b343e0ab22e0b
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 6de7798f117f0362ac80a390b7e341c7f6fc01b8
 
 
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする
 Tez UI は、Windows ベースの HDInsight クラスターで実行エンジンとして Tez を使用するジョブの確認とデバッグに使用できる Web ページです。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
-> [!NOTE]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースの HDInsight で Tez を表示してデバッグする方法については、「 [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)」を参照してください。
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Windows ベースの HDInsight クラスター。 新しいクラスターの作成手順については、「 [Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
@@ -95,7 +93,7 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
    
     Tez UI が読み込まれると、クラスターで現在実行されている DAG や実行されていた DAG の一覧が表示されます。 既定のビューには、DAG 名、ID、送信者、状態、開始時刻、終了時刻、期間、アプリケーション ID、キューが表示されます。 ページの右側にある歯車アイコンを使用すると、列をさらに追加できます。
    
-    エントリが 1 つしかない場合、それは、前のセクションで実行したクエリのエントリになります。 エントリが複数ある場合は、DAG の上にあるフィールドで検索条件を入力して検索してから、**Enter**キーを押します。
+    エントリが&1; つしかない場合、それは、前のセクションで実行したクエリのエントリになります。 エントリが複数ある場合は、DAG の上にあるフィールドで検索条件を入力して検索してから、**Enter**キーを押します。
 6. 最新の DAG エントリの **DAG 名**を選択します。 選択すると、その DAG に関する情報のほか、DAG に関する情報が含まれる JSON ファイルの zip ファイルをダウンロードするオプションが表示されます。
    
     ![DAG Details](./media/hdinsight-debug-tez-ui/dagdetails.png)
@@ -147,6 +145,6 @@ Tez に関する技術的な情報の詳細については、 [Hortonworks の T
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

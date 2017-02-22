@@ -1,6 +1,6 @@
 ---
-title: "Azure のアプリケーション アーキテクチャ | Microsoft Docs"
-description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。 "
+title: "Azure のアーキテクチャ設計へのセキュリティの統合 | Microsoft Docs"
+description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャの理解に役立ち、設計および実装へのセキュリティの統合を簡単にします。. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5006e7dc237c53cd4b74ca08ea54ca6c999ebefe
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: e7ccc71f222d4af9a52cbf55bb6bb446f211e819
 
 
 ---
@@ -53,11 +53,11 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 テンプレートは、このコース以外でも利用もできます。
 
 * [トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo) する
-*  [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)
+* [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)
 * 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](../architecture-overview.md#drawing-symbol-and-icon-sets) をダウンロードする
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

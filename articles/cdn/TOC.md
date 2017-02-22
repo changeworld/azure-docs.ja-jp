@@ -11,7 +11,8 @@
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
 
-## 管理
+## Manage
+### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
 ### [PowerShell で管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
@@ -62,6 +63,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

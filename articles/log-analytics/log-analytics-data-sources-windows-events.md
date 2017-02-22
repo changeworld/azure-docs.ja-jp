@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics での Windows イベント ログ | Microsoft Docs"
-description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+title: "OMS Log Analytics での Windows イベント ログの収集と分析 | Microsoft Docs"
+description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの&1; つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 055a60c174c280ba56ea40cb47779e233b54fe8e
-ms.openlocfilehash: 867dc9fd84793debc8c8dcd2a27dfc0b0ccf69c4
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: b6627ed7e3b08e0a94dec229d735114b3ed1b9df
 
 
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
-Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
+Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の&1; つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
 
 ![Windows イベント](media/log-analytics-data-sources-windows-events/overview.png)     
 
@@ -35,7 +35,9 @@ Log Analytics は、設定で指定されている Windows イベント ログ�
 ![Windows イベントの構成](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は、監視対象のイベントが作成された時点で、選択した重大度に一致するイベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントが一定時間オフラインになった場合、Log Analytics は中止した箇所からイベントの収集を再開します。オフラインの間に作成されたイベントも収集されます。
+Log Analytics は、監視対象のイベントが作成された時点で、選択した重大度に一致するイベントをそのイベント ログから収集します。  エージェントは、収集元の場所を各イベント ログに記録します。  エージェントが一定時間オフラインになった場合、Log Analytics は中止した箇所からイベントの収集を再開します。オフラインの間に作成されたイベントも収集されます。  エージェントがオフラインのときに、未収集のイベントにラップされたイベント ログが上書きされた場合は、これらのイベントが収集されない可能性もあります。
+
+
 
 ## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ
 Windows イベント レコードの型は **Event** になり、次の表に示すプロパティがあります。
@@ -53,7 +55,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は AOI-<workspace ID> です。 |
 | RenderedDescription |イベントの説明とパラメーターの値 |
 | Source |イベントのソース。 |
-| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br>  Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
 | TimeGenerated |イベントが Windows で作成された日付と時刻。 |
 | UserName |イベントのログを記録したアカウントのユーザー名。 |
 
@@ -76,6 +78,6 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

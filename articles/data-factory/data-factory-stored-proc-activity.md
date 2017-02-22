@@ -12,70 +12,67 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 12/12/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 1b2514e1e6f39bb3ce9d8a46f4af01835284cdcc
-ms.openlocfilehash: 3510b0446cf3c1a7ffb3ff02a4d84d24ead1cae7
+ms.sourcegitcommit: ec522d843b2827c12ff04afac15d89d525d88676
+ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 
 
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
+
 > [!div class="op_single_selector"]
-> [Hive](data-factory-hive-activity.md)  
-> [Pig](data-factory-pig-activity.md)  
-> [MapReduce](data-factory-map-reduce.md)  
-> [Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
-> [Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> [.NET カスタム](data-factory-use-custom-activities.md)
+> * [Hive](data-factory-hive-activity.md) 
+> * [Pig](data-factory-pig-activity.md)
+> * [MapReduce](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
+> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
+> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+> * [.NET カスタム](data-factory-use-custom-activities.md)
 >
->
 
-SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
+Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
-* Azure SQL Database
-* Azure SQL Data Warehouse  
-* エンタープライズ内または Azure VM 内の SQL Server データベース。 データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上に Data Management Gateway をインストールする必要があります。 Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースまたは Azure VM でホストされているデータ ソースをクラウド サービスに接続するソフトウェアです。 Data Management Gateway の詳細については、 [オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事を参照してください。
+ストアド プロシージャ アクティビティを使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます。社内または Azure 仮想マシン (VM) 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。  SQL Server を使用している場合、データベースとのリソースの競合を避けるため、データベースをホストするコンピューターと同じコンピューターまたは別のコンピューター上にデータ管理ゲートウェイをインストールする必要があります。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するソフトウェアです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 
-この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
+次のチュートリアルでは、ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL データベース内のストアド プロシージャを呼び出す手順を説明します。 
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="sample-table-and-stored-procedure"></a>サンプル テーブルとストアド プロシージャ
 1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の **テーブル** を作成します。 datetimestamp 列は、対応する ID が生成された日付と時刻です。
 
-        CREATE TABLE dbo.sampletable
-        (
-            Id uniqueidentifier,
-            datetimestamp nvarchar(127)
-        )
-        GO
+    ```SQL
+    CREATE TABLE dbo.sampletable
+    (
+        Id uniqueidentifier,
+        datetimestamp nvarchar(127)
+    )
+    GO
 
-        CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
-        GO
-
+    CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
+    GO
+    ```
     Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。
+    
     ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
 
-   > [!NOTE]
-   > このサンプルでは、Azure SQL Database を使用しますが、Azure SQL Data Warehouse や SQL Server Database でも同様に機能します。
-   >
-   >
+    このサンプルでは Azure SQL Database を使用しますが、Azure SQL Data Warehouse や SQL Server Database でも同様に機能します。SQL Server データベースでは、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をインストールする必要があります。
 2. **sampletable** にデータを挿入する、次の**ストアド プロシージャ**を作成します。
 
-        CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
-        AS
+    ```SQL
+    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    AS
 
-        BEGIN
-            INSERT INTO [sampletable]
-            VALUES (newid(), @DateTime)
-        END
+    BEGIN
+        INSERT INTO [sampletable]
+        VALUES (newid(), @DateTime)
+    END
+    ```
 
    > [!IMPORTANT]
    > パラメーター (この例では DateTime) の**名前**と**大文字小文字の区別**は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。 ストアド プロシージャ定義で、 **@** がパラメーターのプレフィックスとして使用されていることを確認します。
-   >
-   >
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. [Azure Portal](https://portal.azure.com/) にログインします。
@@ -93,7 +90,8 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 7. 次回ログオンしたときにデータ ファクトリがダッシュボードに表示されるようにするために、**[ダッシュボードにピン留めする]** を選択します。
 8. **[新しい Data Factory]** ブレードで **[作成]** をクリックします。
 9. 作成したデータ ファクトリは、Azure Portal の**ダッシュボード**に表示されます。 データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
-   ![データ ファクトリのホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
+
+   ![Data Factory ホーム ページ](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL のリンク サービスを作成する
 データ ファクトリの作成後、Azure SQL Database をデータ ファクトリに関連付ける Azure SQL リンク サービスを作成します。 このデータベースには、sampletable テーブルと sp_sample ストアド プロシージャが含まれます。
@@ -120,20 +118,22 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 次の JSON スクリプトをコピーして、JSON エディターに貼り付けます。
 
-        {                
-            "name": "sprocsampleout",
-            "properties": {
-                "type": "AzureSqlTable",
-                "linkedServiceName": "AzureSqlLinkedService",
-                "typeProperties": {
-                    "tableName": "sampletable"
-                },
-                "availability": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
+    ```JSON
+    {                
+        "name": "sprocsampleout",
+        "properties": {
+            "type": "AzureSqlTable",
+            "linkedServiceName": "AzureSqlLinkedService",
+            "typeProperties": {
+                "tableName": "sampletable"
+            },
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
             }
         }
+    }
+    ```
 3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。 ツリー ビューにデータセットが表示されることを確認します。
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view-2.png)
@@ -144,35 +144,37 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
 2. 次の JSON スニペットをコピーして貼り付けます。 **storedProcedureName** は **sp_sample** に設定します。 パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
 
-        {
-            "name": "SprocActivitySamplePipeline",
-            "properties": {
-                "activities": [
-                    {
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-                            "storedProcedureName": "sp_sample",
-                            "storedProcedureParameters": {
-                                "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
-                            }
-                        },
-                        "outputs": [
-                            {
-                                "name": "sprocsampleout"
-                            }
-                        ],
-                        "scheduler": {
-                            "frequency": "Hour",
-                            "interval": 1
-                        },
-                        "name": "SprocActivitySample"
-                    }
-                ],
-                 "start": "2016-08-02T00:00:00Z",
-                 "end": "2016-08-02T05:00:00Z",
-                "isPaused": false
-            }
+    ```JSON
+    {
+        "name": "SprocActivitySamplePipeline",
+        "properties": {
+            "activities": [
+                {
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "sp_sample",
+                        "storedProcedureParameters": {
+                            "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
+                        }
+                    },
+                    "outputs": [
+                        {
+                            "name": "sprocsampleout"
+                        }
+                    ],
+                    "scheduler": {
+                        "frequency": "Hour",
+                        "interval": 1
+                    },
+                    "name": "SprocActivitySample"
+                }
+            ],
+             "start": "2016-08-02T00:00:00Z",
+             "end": "2016-08-02T05:00:00Z",
+            "isPaused": false
         }
+    }
+    ```
 
     パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。
 3. ツール バーの **[デプロイ]** をクリックしてパイプラインをデプロイします。  
@@ -199,30 +201,34 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 >
 
 ## <a name="json-format"></a>JSON 形式
+JSON 形式のストアド プロシージャ アクティビティの定義を次に示します。
+
+```JSON
+{
+    "name": "SQLSPROCActivity",
+    "description": "description",
+    "type": "SqlServerStoredProcedure",
+    "inputs":  [ { "name": "inputtable"  } ],
+    "outputs":  [ { "name": "outputtable" } ],
+    "typeProperties":
     {
-        "name": "SQLSPROCActivity",
-        "description": "description",
-        "type": "SqlServerStoredProcedure",
-        "inputs":  [ { "name": "inputtable"  } ],
-        "outputs":  [ { "name": "outputtable" } ],
-        "typeProperties":
+        "storedProcedureName": "<name of the stored procedure>",
+        "storedProcedureParameters":  
         {
-            "storedProcedureName": "<name of the stored procedure>",
-            "storedProcedureParameters":  
-            {
-                "param1": "param1Value"
-                …
-            }
+            "param1": "param1Value"
+            …
         }
     }
+}
+```
 
 ## <a name="json-properties"></a>JSON のプロパティ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
+| name | アクティビティの名前 |はい |
 | 説明 |アクティビティの用途を説明するテキストです。 |なし |
-| type |SqlServerStoredProcedure |はい |
-| inputs |省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |なし |
+| type | **SqlServerStoredProcedure** に設定する必要があります | はい |
+| inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |なし |
 | outputs |ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |あり |
 | storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |なし |
@@ -232,29 +238,102 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 
 ![サンプル データ 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127) , @Scenario nvarchar(127)
+**テーブル:**
 
-    AS
+```SQL
+CREATE TABLE dbo.sampletable2
+(
+    Id uniqueidentifier,
+    datetimestamp nvarchar(127),
+    scenario nvarchar(127)
+)
+GO
 
-    BEGIN
-        INSERT INTO [sampletable]
-        VALUES (newid(), @DateTime, @Scenario)
-    END
+CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
+```
 
-ストアド プロシージャ アクティビティから Scenario パラメーターとその値を渡します。 前のサンプルの typeProperties セクションは、次のスニペットのようになります。
+**ストアド プロシージャ:**
 
-    "typeProperties":
+```SQL
+CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+
+AS
+
+BEGIN
+    INSERT INTO [sampletable2]
+    VALUES (newid(), @DateTime, @Scenario)
+END
+```
+
+ストアド プロシージャ アクティビティから **Scenario** パラメーターとその値を渡します。 前のサンプルの「**typeProperties**」セクションは、次のスニペットのようになります。
+
+```JSON
+"typeProperties":
+{
+    "storedProcedureName": "sp_sample",
+    "storedProcedureParameters":
     {
-        "storedProcedureName": "sp_sample",
-        "storedProcedureParameters":
-        {
-            "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
-            "Scenario": "Document sample"
+        "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
+        "Scenario": "Document sample"
+    }
+}
+```
+
+**Data Factory データセット:**
+
+```JSON
+{
+    "name": "sprocsampleout2",
+    "properties": {
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "AzureSqlLinkedService",
+        "typeProperties": {
+            "tableName": "sampletable2"
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
+}
+```
+
+**Data Factory パイプライン**
+
+```JSON
+{
+    "name": "SprocActivitySamplePipeline2",
+    "properties": {
+        "activities": [
+            {
+                "type": "SqlServerStoredProcedure",
+                "typeProperties": {
+                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureParameters": {
+                        "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
+                        "Scenario": "Document sample"
+                    }
+                },
+                "outputs": [
+                    {
+                        "name": "sprocsampleout2"
+                    }
+                ],
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
+                },
+                "name": "SprocActivitySample"
+            }
+        ],
+        "start": "2016-10-02T00:00:00Z",
+        "end": "2016-10-02T05:00:00Z"
+    }
+}
+```
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

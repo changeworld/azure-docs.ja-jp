@@ -13,14 +13,12 @@ ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
 translationtype: Human Translation
-ms.sourcegitcommit: 0475c0f209cde80177df7dbf23eaf8dd17a44752
-ms.openlocfilehash: b5754a08e0683344cc97bdc664ed26ef9a9cf34d
+ms.sourcegitcommit: 10bcd51746315d80cef20592b869dca95eaacb56
+ms.openlocfilehash: a460ef42dafac04088ecdce12f64ee5e19ba77ff
 
 
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>利用料金支払いのため Azure サブスクリプションを Azure B2C テナントにリンクする
-> [!IMPORTANT]
-> 近日対応予定。 この機能は、すべての B2C テナントで未提供です。
 
 Azure Active Directory B2C (または Azure AD B2C) の現行の利用料金は、Azure サブスクリプションに課金されます。 テナント管理者は B2C テナント自体を作成した後、Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。  リンクするには、ターゲットの Azure サブスクリプションに Azure AD "B2C テナント" リソースを作成します。 B2C テナントの多くは、他の Azure リソース (VM、データ ストレージ、LogicApps) と共に単一の Azure サブスクリプションにリンクすることができます。
 
@@ -50,7 +48,7 @@ Azure AD B2C リソースの作成ダイアログでは、次のパラメータ�
 
 2. Azure AD B2C リソース名: B2C テナントのドメイン名に一致する名前があらかじめ選択されています。
 
-3. サブスクリプション: 自身が管理者または共同管理者であるアクティブな Azure サブスクリプション。  複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションに追加できます。
+3. サブスクリプション: 自身が管理者または共同管理者であるアクティブな Azure サブスクリプション。  複数の Azure AD B2C テナントを&1; つの Azure サブスクリプションに追加できます。
 
 4. リソース グループとリソース グループの場所: このアーティファクトでは、複数の Azure リソースを整理できます。  この選択が、B2C テナントの場所、パフォーマンス、または課金状態に影響することはありません。
 
@@ -69,6 +67,9 @@ B2C テナント リソースをクリックして、次のことを実行でき
 
 ![B2C リソース設定](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
+## <a name="known-issues"></a>既知の問題
+- B2C テナントの削除。 B2C テナントを作成、削除し、同じドメイン名で再作成した場合は、"リンクしている" リソースも削除し、同じドメイン名で再作成してください。  この "リンクしている" リソースは、Azure Portal のサブスクリプションのテナントの [すべてのリソース] に表示されます。
+- リージョンのリソースの場所に対する自己制限。  ユーザーが Azure リソースの作成に関してリージョンの制限を定めていることがまれにあります。  この制限により、Azure サブスクリプションと B2C テナント間のリンクを作成できなくなる場合があります。 このような状況に対処するには、この制限を緩和してください。
 
 ## <a name="next-steps"></a>次のステップ
 B2C テナントごとにこれらの手順を完了したら、Azure Direct または Enterprise Agreement の詳細に従って Azure サブスクリプションが課金されます。
@@ -84,6 +85,6 @@ B2C テナントごとにこれらの手順を完了したら、Azure Direct ま
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

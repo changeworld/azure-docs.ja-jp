@@ -213,6 +213,6 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

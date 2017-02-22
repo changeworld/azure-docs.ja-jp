@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 032ac0cf678dad3ab544d6e9257b65cf01f36385
-ms.openlocfilehash: 3c4d41689fc3c127c60e6e0988d1efe60d4d71b8
+ms.sourcegitcommit: 43eaec477ef5279631454edd584f22573e224977
+ms.openlocfilehash: b97a81cd516b6d3d20740609c064a13fb9f8622a
 
 
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell を使用した Azure Cloud Services での診断の有効化
-Azure 診断拡張機能を使用して、Cloud Service からアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure 診断拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md) に関するページを参照してください。
+Azure 診断拡張機能を使用して、クラウド サービスからアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure 診断拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) に関するページを参照してください。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Cloud Service のデプロイの一環としての診断拡張機能の有効化
-この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーションのシナリオに適しています。 新しいクラウド サービスのデプロイを作成するときに、 *ExtensionConfiguration* パラメーターを [New-AzureDeployment](https://msdn.microsoft.com/library/azure/mt589089.aspx) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/library/azure/mt589168.aspx) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
+この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーション型のシナリオに適用できます。 新しいクラウド サービスのデプロイを作成するときに、 *ExtensionConfiguration* パラメーターを [New-AzureDeployment](https://msdn.microsoft.com/library/azure/mt589089.aspx) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/library/azure/mt589168.aspx) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
 
-次の例は、診断構成がそれぞれ異なる WebRole と WorkerRole を含む Cloud Service の診断を有効にする方法を示しています。
+次の例は、診断構成がそれぞれ異なる WebRole と WorkerRole を含むクラウド サービスの診断を有効にする方法を示しています。
 
 ```powershell
 $service_name = "MyService"
@@ -41,7 +41,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-診断構成ファイルでストレージ アカウント名を設定した StorageAccount 要素を指定すると、そのストレージ アカウントが New-AzureServiceDiagnosticsExtensionConfig コマンドレットによって自動的に使用されます。 これを機能させるには、ストレージ アカウントが、デプロイしているクラウド サービスと同じサブスクリプションに属している必要があります。
+診断構成ファイルでストレージ アカウント名を設定した `StorageAccount` 要素を指定すると、そのストレージ アカウントが `New-AzureServiceDiagnosticsExtensionConfig` コマンドレットによって自動的に使用されます。 これを機能させるには、ストレージ アカウントが、デプロイしているクラウド サービスと同じサブスクリプションに属している必要があります。
 
 Azure SDK 2.6 からは、MSBuild の発行先への出力によって生成された拡張機能の構成ファイルに、サービス構成ファイル (.cscfg) で指定された診断の構成文字列に基づいて、ストレージ アカウント名が含まれるようになります。 次のスクリプトは、発行先に出力された拡張機能の構成ファイルを解析し、クラウド サービスのデプロイ時に各ロールの診断拡張機能を構成する方法を示しています。
 
@@ -84,11 +84,11 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online では、クラウド サービスの自動デプロイに診断拡張機能と同様の方法が使用されます。 完全な例については、「 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) 」を参照してください。
+Visual Studio Online では、Cloud Services の自動デプロイに診断拡張機能と同様の方法が使用されます。 完全な例については、「 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) 」を参照してください。
 
-診断構成で StorageAccount を指定しなかった場合は、StorageAccountName パラメーターをコマンドレットに渡す必要があります。 StorageAccountName パラメーターを指定すると、診断構成ファイルに指定されたストレージ アカウントではなく、このパラメーターに指定されたストレージ アカウントがコマンドレットで常に使用されます。
+診断構成で `StorageAccount` を指定しなかった場合は、*StorageAccountName* パラメーターをコマンドレットに渡す必要があります。 *StorageAccountName* パラメーターを指定すると、診断構成ファイルに指定されたストレージ アカウントではなく、このパラメーターに指定されたストレージ アカウントがコマンドレットで常に使用されます。
 
-診断ストレージ アカウントがクラウド サービスと異なるサブスクリプションに属している場合は、StorageAccountName パラメーターと StorageAccountKey パラメーターをコマンドレットに明示的に渡す必要があります。 診断ストレージ アカウントが同じサブスクリプションに属している場合、診断拡張機能を有効にすると、コマンドレットによってキー値が自動的に照会され、設定されるので、StorageAccountKey パラメーターは不要です。 ただし、診断ストレージ アカウントが別のサブスクリプションに属している場合は、コマンドレットでキーを自動的に取得できないので、StorageAccountKey パラメーターでキーを明示的に指定する必要があります。
+診断ストレージ アカウントがクラウド サービスと異なるサブスクリプションに属している場合は、*StorageAccountName* パラメーターと *StorageAccountKey* パラメーターをコマンドレットに明示的に渡す必要があります。 診断ストレージ アカウントが同じサブスクリプションに属している場合、診断拡張機能を有効にすると、コマンドレットによってキー値が自動的に照会され、設定されるので、 *StorageAccountKey* パラメーターは不要です。 ただし、診断ストレージ アカウントが別のサブスクリプションに属している場合は、コマンドレットでキーを自動的に取得できないので、 *StorageAccountKey* パラメーターでキーを明示的に指定する必要があります。
 
 ```powershell
 $webrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole" -DiagnosticsConfigurationPath $webrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
@@ -97,6 +97,8 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>既存の Cloud Service での診断拡張機能の有効化
 [Set-AzureServiceDiagnosticsExtension](https://msdn.microsoft.com/library/azure/mt589140.aspx) コマンドレットを使用して、既に実行されているクラウド サービスで診断構成を有効にしたり、更新したりできます。
+
+[!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
 ```powershell
 $service_name = "MyService"
@@ -138,6 +140,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

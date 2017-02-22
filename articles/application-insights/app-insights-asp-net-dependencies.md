@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e2e81139152549eaa40d788c80cfdd2388b2d55d
-ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 * Web ページ
   * AJAX 呼び出し
 
-[TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して他の依存関係を監視するために、クライアントとサーバーの両方のコードで、独自の SDK 呼び出しを記述することもできます。
+[TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) を使用して他の依存関係を監視するために、クライアントとサーバーの両方のコードで、独自の SDK 呼び出しを記述することもできます。
 
 ## <a name="set-up-dependency-monitoring"></a>依存関係の監視の設定
 [Application Insights SDK](app-insights-asp-net.md) では、部分的な依存関係情報が自動的に収集されます。 完全なデータを取得するには、ホスト サーバー用の適切なエージェントをインストールします。
@@ -53,7 +53,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 * 依存関係データのクエリを実行するには、[Analytics](#analytics) を使用できます。
 
 ## <a name="application-map"></a>アプリケーション マップ
-アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。 これは、アプリから送信されたテレメトリから自動的に生成されます。 この例では、ブラウザー スクリプトからの AJAX 呼び出しとサーバー アプリから 2 つの外部サービスへの REST 呼び出しが示されています。
+アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。 これは、アプリから送信されたテレメトリから自動的に生成されます。 この例では、ブラウザー スクリプトからの AJAX 呼び出しとサーバー アプリから&2; つの外部サービスへの REST 呼び出しが示されています。
 
 ![アプリケーション マップ](./media/app-insights-asp-net-dependencies/08.png)
 
@@ -118,7 +118,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 
 ### <a name="profiling-your-live-site"></a>ライブ サイトのプロファイリング
 
-時間がどこで使われているのか見当がつかないでしょうか。 Application Insights プロファイラーは、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。 現在、このプロファイラーは限定プレビュー中です。[サインアップして試す](https://aka.ms/AIProfilerPreview)ことができます。
+時間がどこに使われているのか見当がつかないでしょうか。 Application Insights プロファイラーは、ライブ サイトへの HTTP 呼び出しをトレースし、コード内の関数のうち最も時間がかかったものを示します。 現在、このプロファイラーは限定プレビュー中です。[サインアップして試す](https://aka.ms/AIProfilerPreview)ことができます。
 
 ## <a name="failed-requests"></a>失敗した要求
 失敗した要求も、依存関係への失敗した呼び出しに関連している可能性があります。 この場合も、クリック操作で問題を追跡することができます。
@@ -172,7 +172,7 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 ## <a name="custom-dependency-tracking"></a>カスタム依存関係の追跡
 標準の依存関係追跡モジュールは、外部の依存関係 (データベース、REST API など) を自動的に検出しますが、 同じように扱える追加のコンポーネントが必要になる可能性もあります。
 
-標準のモジュールで使用するのと同じ [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して、依存関係情報を送信するコードを記述できます。
+標準のモジュールで使用するのと同じ [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) を使用して、依存関係情報を送信するコードを記述できます。
 
 たとえば、自分で記述していないアセンブリを使ってコードを作成する場合、それに対するすべての呼び出しを測定し、何が応答時間に貢献するかを知ることができます。 このデータを Application Insights 内の依存関係グラフに表示するには、データを `TrackDependency`を使用して送信します。
 
@@ -209,6 +209,6 @@ ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

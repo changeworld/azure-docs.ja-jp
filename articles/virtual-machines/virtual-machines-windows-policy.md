@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager Virtual Machines にポリシーを適用する | Microsoft Docs"
+title: "Azure の Windows VM にセキュリティとポリシーを適用する | Microsoft Docs"
 description: "Azure Resource Manager Windows 仮想マシンにポリシーを適用する方法"
 services: virtual-machines-windows
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2016
-ms.author: singhkay
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 6f2e187a4767ac75350a629ace6e15e3ba3eee33
-ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Azure Resource Manager 仮想マシンにポリシーを適用する
+# <a name="apply-security-and-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager を使って Windows VM にセキュリティとポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の仮想マシンの望ましい行動を定義する方法について説明します。
 
 これを実現するための手順の概要を、以下に示します
@@ -34,7 +34,7 @@ ms.openlocfilehash: ca4f7c854008131d56747e316a1a0a7d5f8aac61
 ## <a name="azure-resource-manager-policy-101"></a>Azure Resource Manager ポリシー 101
 Azure Resource Manager ポリシーの作業を開始するにあたって、この記事の手順を実行する前に、次の記事を読むことをお勧めします。 次の記事では、ポリシーの基本的な定義と構造や、ポリシーが評価されるしくみが説明されています。ポリシーの定義のさまざまな例も示されています。
 
-* [ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md)
+* [ポリシーを使用したリソース管理とアクセス制御](../azure-resource-manager/resource-manager-policy.md)
 
 ## <a name="define-a-policy-for-your-virtual-machine"></a>仮想マシンのポリシーの定義
 企業の一般的なシナリオでは、LOB アプリケーションとの互換性をテスト済みの特定のオペレーティング システムからだけ、ユーザーが仮想マシンを作成することを許可します。 Azure Resource Manager ポリシーを使用すると、このタスクをわずかな手順で完了できます。
@@ -84,7 +84,7 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 #### <a name="virtual-machine-property-fields"></a>仮想マシンのプロパティ フィールド
 次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。 ポリシー フィールドの詳細については、以下の記事を参照してください。
 
-* [フィールドおよびソース](../resource-manager-policy.md#conditions)
+* [フィールドおよびソース](../azure-resource-manager/resource-manager-policy.md#conditions)
 
 | フィールド名 | Description |
 | --- | --- |
@@ -96,15 +96,15 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 ## <a name="create-the-policy"></a>ポリシーの作成
 ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 ポリシーの作成については、以下の記事を参照してください。
 
-* [ポリシーの作成](../resource-manager-policy.md#create-and-assign-a-policy)
+* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
 
 ## <a name="apply-the-policy"></a>ポリシーの適用
 ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの適用については、以下の記事を参照してください。
 
-* [ポリシーの作成](../resource-manager-policy.md#create-and-assign-a-policy)
+* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

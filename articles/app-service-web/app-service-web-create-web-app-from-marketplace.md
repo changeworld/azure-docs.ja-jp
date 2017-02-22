@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 00c4336bd5cef4ddc0b92127d0945d39291b9c7f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: a04c7129cd2e16c129f3e4b8e8e40f76ff37114d
 
 
 ---
@@ -67,7 +67,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
     Web アプリの URL は *{name}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
    
     ![Configure the WordPress web app name][ConfigAppName]
-3. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
+3. サブスクリプションが複数ある場合には、使用するものを&1; つ選択します。
    
     ![Configure the subscription for the web app][ConfigSubscription]
 4. **リソース グループ** を選択するか、新しく作成します。
@@ -97,7 +97,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
    
     ![Finish the web app settings and click OK][ConfigFinished]
    
-    Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
+    Azure App Service によって、通常は&1; 分以内に Web アプリが作成されます。 進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
    
     ![進捗状況インジケーター][ConfigProgress]
 
@@ -138,7 +138,7 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 [Python]: https://azure.microsoft.com/develop/python/
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [free trial]: https://azure.microsoft.com/pricing/free-trial/
-[App Service の試用]: http://go.microsoft.com/fwlink/?LinkId=523751
+[App Service の試用]: https://azure.microsoft.com/try/app-service/
 [ResourceGroups]: ../azure-resource-manager/resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
@@ -168,6 +168,6 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d60ca38364d7ea7991af18e39407f42a8c9abb84
+ms.sourcegitcommit: 30abc823a72431dfd12f1051434191ea904533f6
+ms.openlocfilehash: 4970db1f7b780ed0048f4c1839fff33bed640278
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: d60ca38364d7ea7991af18e39407f42a8c9abb84
 2015 年 11 月の Connect() イベントで、Azure App Service に対する複数の機能強化の内容が [発表](https://azure.microsoft.com/blog/azure-app-service-updates-november-2015/)されました。 この機能強化では、Mobile および Web Apps との適合性の向上、コンセプト カウントの抑制、デプロイおよび実行時のパフォーマンスの向上を実現するために基礎となる変更が API Apps に加えられました。 2015 年 11 月 30 日以降、Microsoft Azure 管理ポータルまたは最新のツールを使用して作成する新しい API アプリでは、これらの変更が反映されます。 この記事では、これらの変更内容について説明するほか、既存のアプリを再デプロイして、強化された機能を利用する方法を説明します。
 
 ## <a name="feature-changes"></a>機能の変更
-API Apps の主な機能である認証、CORS、および API メタデータは、App Service に直接移されました。 この変更により、それらの機能はすべて Web、Mobile、および API Apps にわたって使用できます。 実際のところ、これら 3 つはすべて、リソース マネージャーで同じ **Microsoft.Web/site** リソース タイプを共有します。 API Apps ゲートウェイはもはや必要なくなり、API Apps では提供されません。 これにより、API Management ゲートウェイが 1 つのみになるので、Azure API Management も使いやすくなります。
+API Apps の主な機能である認証、CORS、および API メタデータは、App Service に直接移されました。 この変更により、それらの機能はすべて Web、Mobile、および API Apps にわたって使用できます。 実際のところ、これら&3; つはすべて、リソース マネージャーで同じ **Microsoft.Web/site** リソース タイプを共有します。 API Apps ゲートウェイはもはや必要なくなり、API Apps では提供されません。 これにより、API Management ゲートウェイが&1; つのみになるので、Azure API Management も使いやすくなります。
 
 ![API Apps の概要](./media/app-service-api-whats-changed/api-apps-overview.png)
 
 この API Apps 更新における重要な設計原則は、お客様が、API を現状のまま、使用する言語に取り入れることができるようにすることです。  API が既に Web アプリまたはモバイル アプリとしてデプロイされている場合は、アプリを再デプロイしなくても新しい機能を利用できます。 現在 API Apps のプレビューを使用している場合は、以下に示す移行のガイドラインを参照してください。
 
 ### <a name="authentication"></a>認証
-API Apps、Mobile Services/Apps、および Web Apps の既存の設定不要の認証機能は統合され、管理ポータルの Azure App Service 認証ブレード 1 つで利用できるようになりました。 App Service での認証サービスの概要については、「 [App Service 認証/承認の展開](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/)」を参照してください。
+API Apps、Mobile Services/Apps、および Web Apps の既存の設定不要の認証機能は統合され、管理ポータルの Azure App Service 認証ブレード&1; つで利用できるようになりました。 App Service での認証サービスの概要については、「 [App Service 認証/承認の展開](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/)」を参照してください。
 
 API シナリオの場合は、関連の新機能が複数あります。
 
@@ -114,7 +114,7 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 4. デプロイ時に、すべての API アプリ (およびクライアント) のアプリ設定を他の API アプリのエンドポイントに設定します。 これはテンプレートのデプロイで実行可能であり、API Apps で URL を制御できるようになります。
 
 ## <a name="using-api-apps-with-logic-apps"></a>API Apps と Logic Apps の併用
-新しい API Apps モデルは、 [Logic Apps スキーマ バージョン 2015-08-01](../app-service-logic/app-service-logic-schema-2015-08-01.md)とうまく連動します。
+新しい API Apps モデルは、 [Logic Apps スキーマ バージョン 2015-08-01](../logic-apps/logic-apps-schema-2015-08-01.md)とうまく連動します。
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [API Apps のドキュメント セクション](https://azure.microsoft.com/documentation/services/app-service/api/)の記事を参照してください。 これらの記事は更新され、API Apps の新しいモデルを反映しています。 さらに、移行に関する詳細またはガイダンスについては、次のフォーラムを参照してください。
@@ -125,6 +125,6 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

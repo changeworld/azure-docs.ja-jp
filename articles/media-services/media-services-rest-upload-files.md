@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 02/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0123a322e9dcbdf82dd79bfd4eec7a189cfbe3b5
+ms.sourcegitcommit: d58462cbd6578093e00c93c7e2753efc1493441d
+ms.openlocfilehash: 8f17399846eafcac8b86a9b7d7baa7a029005c8c
 
 
 ---
@@ -28,14 +28,14 @@ ms.openlocfilehash: 0123a322e9dcbdf82dd79bfd4eec7a189cfbe3b5
 > 
 > 
 
-Media Services で、デジタル ファイルを資産にアップロードします。 [Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
+Media Services で、デジタル ファイルを資産にアップロードします。 [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 > [!NOTE]
-> 資産ファイル名を選択するときは、次の考慮事項が適用されます。
+> 次の考慮事項が適用されます。
 > 
-> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#[]". は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+> * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は&1; つのみです。
 > * 名前は 260 文字以内で指定する必要があります。
-> 
+> * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)のトピックを参照してください。
 > 
 
 資産をアップロードする基本的なワークフローは、次のセクションに分けられます。
@@ -59,7 +59,7 @@ AMS では、資産を一括でアップロードすることもできます。 
 
 資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-資産を作成するときに指定できるプロパティの 1 つは **Options** です。 **Options** は、資産の作成に使用できる暗号化オプションを説明する列挙値です。 有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。 
+資産を作成するときに指定できるプロパティの&1; つは **Options** です。 **Options** は、資産の作成に使用できる暗号化オプションを説明する列挙値です。 有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。 
 
 * **None** = **0**: 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
     プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
@@ -122,9 +122,9 @@ AMS では、資産を一括でアップロードすることもできます。 
     }
 
 ### <a name="create-an-assetfile"></a>AssetFile を作成する
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には 1 つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。 資産ファイルは、常に資産に関連付けられており、資産には&1; つまたは複数の資産ファイルが含まれている可能性があります。 資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
-**AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+**AssetFile** インスタンスと実際のメディア ファイルは次の&2; つの異なるオブジェクトであることに注意してください。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 デジタル メディア ファイルを BLOB コンテナーにアップロードした後、 **MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半で説明します) に関する情報で AssetFile を更新します。 
 
@@ -186,7 +186,7 @@ AMS では、資産を一括でアップロードすることもできます。 
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>書き込みのアクセス許可を持つ AccessPolicy を作成する
-すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
+すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) をご覧ください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 
@@ -232,7 +232,7 @@ AMS では、資産を一括でアップロードすることもできます。 
     }
 
 ### <a name="get-the-upload-url"></a>アップロード URL を取得する
-実際のアップロード URL を受信するには、SAS Locator　を作成します。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)」をご覧ください。
 
 SAS URL には次の形式があります。
 
@@ -240,8 +240,8 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-* 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。 詳細については、「Locator」をご覧ください。
-* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。    
+* 特定の資産に関連付けられている&5; つの一意の Locator を同時に使用することはできません。 詳細については、「Locator」をご覧ください。
+* すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の&5; 分前に設定する必要があります。 これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。 また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。    
 * Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。 この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケーターの場合は "1"、オンデマンド配信元ロケーターの場合は "2")。 返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
@@ -298,14 +298,14 @@ SAS URL には次の形式があります。
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>Blob ストレージ コンテナーにファイルをアップロードする
-AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。 ページにアップロードするか、blob をブロックできます。 
+AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。 ファイルはブロック BLOB としてをアップロードする必要があります。 ページ BLOB は Azure Media Services ではサポートされていません。  
 
 > [!NOTE]
 > 前のセクションで受信したロケーターの **Path** 値にアップロードするファイルのファイル名を追加する必要があります。 例: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? に関するページを参照してください。 が必要です。 」をご覧ください。 
 > 
 > 
 
-Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx)をご覧ください。
+Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Blob-Service-REST-API)をご覧ください。
 
 ### <a name="update-the-assetfile"></a>AssetFile を更新する
 ファイルをアップロードしたので、FileAsset サイズ (およびその他) の情報を更新します。 次に例を示します。
@@ -448,7 +448,7 @@ IngestManifestFile とは、資産の一括取り込みの一環としてアッ�
 資産ファイルを BLOB ストレージ コンテナーの URI にアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。これは、IngestManifest の BlobStorageUriForUpload プロパティから提供します。 有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](http://go.microsoft.com/fwlink/?LinkId=272001)などがあります。
 
 ### <a name="monitor-bulk-ingest-progress"></a>一括取り込みの進捗状況を監視する
-IngestManifest の Statistics プロパティをポーリングすることによって、IngestManifest の一括取り込み操作の進行状況を監視できます。 このプロパティは複合型の [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx)です。 Statistics プロパティをポーリングするには、IngestManifest ID を渡して、HTTP GET 要求を送信します。
+IngestManifest の Statistics プロパティをポーリングすることによって、IngestManifest の一括取り込み操作の進行状況を監視できます。 このプロパティは複合型の [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics)です。 Statistics プロパティをポーリングするには、IngestManifest ID を渡して、HTTP GET 要求を送信します。
 
 ## <a name="create-contentkeys-used-for-encryption"></a>暗号化に使用する ContentKey を作成する
 資産で暗号化を使用する場合、資産ファイルを作成する前に、暗号化に使用する ContentKey を作成しておく必要があります。 ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
@@ -478,7 +478,7 @@ IngestManifest の Statistics プロパティをポーリングすることに�
     {"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
 
 ### <a name="link-the-contentkey-to-the-asset"></a>ContentKey を資産にリンクする
-ContentKey は、HTTP POST 要求を送信することによって 1 つ以上の資産に関連付けます。 次では、ID を使用して、ContentKey の例と資産の例をリンクする要求の例を示します。
+ContentKey は、HTTP POST 要求を送信することによって&1; つ以上の資産に関連付けます。 次では、ID を使用して、ContentKey の例と資産の例をリンクする要求の例を示します。
 
 **HTTP 応答**
 
@@ -506,11 +506,13 @@ ContentKey は、HTTP POST 要求を送信することによって 1 つ以上�
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
     Host: media.windows.net
 
+## <a name="next-steps"></a>次のステップ
 
+これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 
-## <a name="next-step"></a>次のステップ
-Media Services のラーニング パスを確認します。
+また、Azure Functions を使用すると、構成したコンテナーに到着するファイルに基づいてエンコード ジョブをトリガーすることもできます。 詳細については、[このサンプル](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )を参照してください。
 
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
@@ -521,6 +523,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager での従来のエンドポイント | Microsoft Docs"
+title: "Azure での Linux VM のエンドポイントの概要 | Microsoft Docs"
 description: "ネットワーク セキュリティ グループおよび ACL ルールを使用して、クラシック デプロイ モデルのエンドポイントが Resource Manager でどのように実装されるかを理解する"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 381d098fcd3c82aa0ea73cc05b42d8412b473e52
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 3079b9103f450b511d60ce3a2bf5021332149525
 
 
 ---
-# <a name="classic-endpoints-in-resource-manager"></a>Resource Manager での従来のエンドポイント
+# <a name="classic-endpoints-for-linux-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用した Linux VM の従来のエンドポイント
 [!INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -34,6 +34,6 @@ ms.openlocfilehash: 381d098fcd3c82aa0ea73cc05b42d8412b473e52
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

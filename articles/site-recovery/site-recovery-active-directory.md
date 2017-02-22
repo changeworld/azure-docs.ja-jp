@@ -4,7 +4,7 @@ description: "この記事では、Azure Site Recovery を使って Active Direc
 services: site-recovery
 documentationcenter: 
 author: prateek9us
-manager: abhiag
+manager: gauravd
 editor: 
 ms.assetid: af1d9b26-1956-46ef-bd05-c545980b72dc
 ms.service: site-recovery
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/19/2016
+ms.date: 1/9/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
-ms.openlocfilehash: 9f3d87fe08b13f08622b4bd169240a2ec0683b00
+ms.sourcegitcommit: feb0200fc27227f546da8c98f21d54f45d677c98
+ms.openlocfilehash: a583225b4f3acd747a10c1c1fd337bc1b7ac599c
 
 
 ---
@@ -29,18 +29,16 @@ Site Recovery を使用すると、Active Directory に合わせて完全な自�
 
 この記事では、Active Directory 用の障害復旧ソリューションの作成方法や、ワンクリック復旧計画を使用した計画済み、計画外、テスト フェールオーバーの実行方法、サポートされている構成と前提条件について説明します。  先に進む前に、Active Directory と Azure Site Recovery について理解しておく必要があります。
 
-推奨される選択肢は 2 つあり、実際の環境の複雑さに応じて使い分けてください。
+## <a name="replicating-domain-controller"></a>ドメイン コントローラーのレプリケート
 
-### <a name="option-1"></a>方法 1
-アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合にサイト全体をフェールオーバーするには、Site Recovery を使用して、(フェールオーバー先が Azure であるかセカンダリ サイトであるかに関係なく) セカンダリ サイトにドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じ仮想マシンをテスト フェールオーバー用にも使用できます。
+ドメイン コントローラーと DNS をホストしている少なくとも&1; つの仮想マシンで、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、Site Recovery でドメイン コントローラー仮想マシンをレプリケートするだけでなく、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップする必要もあります。 
 
-### <a name="option-2"></a>方法 2
-環境内にアプリケーションが多数あってドメイン コントローラーが複数存在する場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、別のドメイン コントローラーをターゲット サイト (Azure またはセカンダリのオンプレミス データセンター) にセットアップすることをお勧めします。
+### <a name="single-domain-controller-environment"></a>ドメイン コントローラーが&1; 台の環境
+アプリケーションの数が少なく、ドメイン コントローラーが&1; つしかない場合にサイト全体をフェールオーバーするには、Site Recovery を使って、(フェールオーバー先が Azure であるかセカンダリ サイトであるかに関係なく) セカンダリ サイトにドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラー/DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)用にも使うことができます。
 
-> [!NOTE]
-> 方法 2 を選んだ場合でも、テスト フェールオーバーを実行するためには、Site Recovery を使ってドメイン コントローラーをレプリケートする必要があります。 詳細については、「 [テスト フェールオーバーの考慮事項](#considerations-for-test-failover) 」を参照してください。
-> 
-> 
+### <a name="environment-with-multiple-domain-controllers"></a>複数のドメイン コントローラーがある環境
+環境内にアプリケーションが多数あってドメイン コントローラーが複数存在する場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[別のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリのオンプレミス データセンター) にセットアップすることをお勧めします。 このシナリオでは、Site Recovery によってレプリケートされるドメイン コントローラーを[テスト フェールオーバー](#test-failover-considerations)のために使い、フェールオーバーを行うときはターゲット サイト上の追加ドメイン コントローラーを使います。 
+
 
 以降のセクションでは、Site Recovery でドメイン コントローラーの保護を有効にする方法と、Azure でドメイン コントローラーをセットアップする方法について説明します。
 
@@ -56,7 +54,7 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 ### <a name="configure-virtual-machine-network-settings"></a>仮想マシンのネットワーク設定の構成
 ドメイン コントローラー/DNS 仮想マシンに関して、フェールオーバー後、VM が適切なネットワークに接続されるように Site Recovery でネットワーク設定を構成します。 たとえば、Hyper-V の VM を Azure にレプリケートする場合、VMM クラウド内の VM または保護グループ内の VM を選択して、以下のようにネットワーク設定を構成することができます。
 
-![VM ネットワークの設定](./media/site-recovery-active-directory/VM-Network-Settings.png)
+![VM ネットワークの設定](./media/site-recovery-active-directory/DNS-Target-IP.png)
 
 ## <a name="protect-active-directory-with-active-directory-replication"></a>Active Directory レプリケーションで Active Directory を保護する
 ### <a name="site-to-site-protection"></a>サイト間の保護
@@ -69,6 +67,8 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 
 ![Azure ネットワーク](./media/site-recovery-active-directory/azure-network.png)
 
+**Azure 運用ネットワークの DNS**
+
 ## <a name="test-failover-considerations"></a>テスト フェールオーバーの考慮事項
 テスト フェールオーバーは、運用環境のワークロードに影響が生じないよう、運用ネットワークから分離されたネットワークで行われます。
 
@@ -76,19 +76,62 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 
 1. Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護を有効にします。
 1. 分離されたネットワークを作成します。 既定では、Azure で作成されるすべての仮想ネットワークは、その他のネットワークから分離します。 このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。 このネットワーク上でサイト間接続を有効化しないでください。
-1. DNS 仮想マシンに取得させる IP アドレスとして、作成したネットワークに DNS の IP アドレスを指定します。 レプリケート先として Azure を使用している場合は、フェールオーバーで使用する VM の IP アドレスを VM プロパティの **[ターゲット IP]** 設定で指定します。 別のオンプレミス サイトにレプリケートしていて、かつ DHCP を使用している場合は、所定の手順に従って、 [テスト フェールオーバー用に DNS と DHCP をセットアップ](site-recovery-failover.md#prepare-dhcp)
+1. DNS 仮想マシンに取得させる IP アドレスとして、作成したネットワークに DNS の IP アドレスを指定します。 レプリケート先として Azure を使っている場合は、フェールオーバーで使われる VM の IP アドレスを **[コンピューティングとネットワーク]** の設定の **[ターゲット IP]** の設定で指定します。 
 
-    > [!NOTE]
-    > テスト フェールオーバー中に仮想マシンに割り当てられた IP アドレスは、テスト フェールオーバー ネットワークで利用可能である場合、計画されたフェールオーバーや計画されていないフェールオーバー中に取得される IP アドレスと同じです。 その IP アドレスが利用できない場合は、テスト フェールオーバー ネットワーク内で利用できる他の IP アドレスが仮想マシンに割り当てられます。
-    > 
-    > 
+    ![ターゲット IP](./media/site-recovery-active-directory/DNS-Target-IP.png)
+    **ターゲット IP**
 
-1. ドメイン コントローラーの仮想マシンで、分離されたネットワークでテスト フェールオーバーを実行します。 テスト フェールオーバーの実行には、ドメイン コントローラー仮想マシンにある**アプリケーション整合性**復旧ポイントのうち最新のものを使用します。 
+    ![Azure テスト ネットワーク](./media/site-recovery-active-directory/azure-test-network.png)
+
+    **Azure テスト ネットワークの DNS**
+
+1. 別のオンプレミス サイトにレプリケートしていて、かつ DHCP を使用している場合は、所定の手順に従って、 [テスト フェールオーバー用に DNS と DHCP をセットアップ](site-recovery-test-failover-vmm-to-vmm.md#prepare-dhcp)
+1. 分離されたネットワークで実行されているドメイン コントローラー仮想マシンのテスト フェールオーバーを行います。 テスト フェールオーバーの実行には、ドメイン コントローラー仮想マシンにある**アプリケーション整合性**復旧ポイントのうち最新のものを使用します。 
 1. アプリケーション復旧計画のテスト フェールオーバーを実行します。
 1. テストが完了したら、Site Recovery ポータルの **[ジョブ]** タブで、ドメイン コントローラー仮想マシンと復旧計画のそれぞれのテスト フェールオーバー ジョブを "完了" としてマークします。
 
+
+> [!TIP]
+> テスト フェールオーバー中に仮想マシンに割り当てられた IP アドレスは、テスト フェールオーバー ネットワークで利用可能である場合、計画されたフェールオーバーや計画されていないフェールオーバー中に取得される IP アドレスと同じです。 その IP アドレスが利用できない場合は、テスト フェールオーバー ネットワーク内で利用できる他の IP アドレスが仮想マシンに割り当てられます。
+> 
+> 
+
+
 ### <a name="removing-reference-to-other-domain-controllers"></a>その他のドメイン コントローラーへの参照を削除する
 テスト フェールオーバーを実行する場合、テスト用ネットワークですべてのドメイン コントローラーを使用するわけではありません。 運用環境に存在する他のドメイン コント ローラーの参照を削除するには、使用しないドメイン コントローラーに [Active Directory の FSMO 役割を強制し、メタデータのクリーンアップを実行する](http://aka.ms/ad_seize_fsmo)必要があります。 
+
+### <a name="troubleshooting-domain-controller-issues-during-test-failover"></a>テスト フェールオーバーの間のドメイン コントローラーの問題のトラブルシューティング
+
+
+コマンド プロンプトで次のコマンドを実行して、SYSVOL フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
+
+    NET SHARE
+
+コマンド プロンプトで次のコマンドを実行して、ドメイン コントローラーが正常に機能していることを確認します。
+
+    dcdiag /v > dcdiag.txt
+
+出力ログで次のテキストを探し、ドメイン コントローラーが正しく機能していることを確認します。 
+
+* "passed test Connectivity"
+* "passed test Advertising"
+* "passed test MachineAccount"
+
+上記の条件が満たされている場合、ドメイン コントローラーは正常に機能していると考えられます。 それ以外の場合は、次の手順を試します。
+
+
+* ドメイン コントローラーの Authoritative Restore を実行します。
+    * [FRS レプリケーションを使うことは推奨されません](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)が、まだ使っている場合は、[こちら](https://support.microsoft.com/en-in/kb/290762)で提供されている手順に従って、Authoritative Restore を行います。 前記のリンクで言及されている Burflags について詳しくは、[こちら](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)をご覧ください。
+    * DFSR レプリケーションを使っている場合は、[こちら](https://support.microsoft.com/en-us/kb/2218556)の手順に従って、Authoritative Restore を行います。 また、[こちらのリンク](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)で説明されている Powershell 関数をこの目的に使うこともできます。 
+    
+* 次のレジストリ キーを 0 に設定して、初期同期要件をバイパスします。 この DWORD 値が存在しない場合は、"Parameters" ノードの下に作成できます。 詳しくは、[こちら](https://support.microsoft.com/en-us/kb/2001093)をご覧ください。
+
+        HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations
+
+* 次のレジストリ キーを 1 に設定して、ユーザーのログオンを検証するためにグローバル カタログ サーバーを利用する要件を無効にします。 この DWORD 値が存在しない場合は、"Lsa" ノードの下に作成できます。 詳しくは、[こちら](http://support.microsoft.com/kb/241789/EN-US)をご覧ください。
+
+        HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures
+
 
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
@@ -118,6 +161,6 @@ Azure Site Recovery によるエンタープライズ ワークロード保護�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

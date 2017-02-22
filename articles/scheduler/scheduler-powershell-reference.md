@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e36a52f44bc30662a01299d2d4a2f3c36d9033a7
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 26eb1469bc508ef518103a955fa0fbc6db2be46d
 
 
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 次のテーブルでは、Azure Scheduler の主なコマンドレットを説明し、各コマンドレットのリファレンス ページへのリンクを示します。
 
-Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 
+Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 
 
 [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
@@ -79,6 +79,6 @@ Get-Help <cmdlet name> -Full
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

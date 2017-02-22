@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: rupisure
 translationtype: Human Translation
-ms.sourcegitcommit: c6451b6b518e919e9803b0291c05cd5a25bdc6c5
-ms.openlocfilehash: 63421fd86a99c6bcd28d71a2c07d50c58a72c98c
+ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
+ms.openlocfilehash: 20925a3f6532b9aa0dccbee3f3965c5aa6303ee4
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 63421fd86a99c6bcd28d71a2c07d50c58a72c98c
        /Contoso.TodoList/Icons/
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
-3. [Create an Azure Resource Manager template](../resource-group-authoring-templates.md) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
+3. [Create an Azure Resource Manager template](../azure-resource-manager/resource-group-authoring-templates.md) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
 4. Test the template with the Microsoft Azure Stack APIs to make sure that the resource can be deployed successfully.
 5. If your template relies on a virtual machine image, follow the instructions to [add a virtual machine image to Azure Stack](azure-stack-add-vm-image.md).
 6. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
@@ -159,6 +159,6 @@ Icons and text for Marketplace items as seen in the Azure Stack portal are as fo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

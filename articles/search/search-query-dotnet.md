@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: 88d5148806e58d61b7b64327e07809eea5126211
 
 
 ---
@@ -34,21 +34,21 @@ ms.openlocfilehash: e862002a5b1406196516e5ddd786790da7bd5a4d
 
 この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。
 
-## <a name="i-identify-your-azure-search-services-query-api-key"></a>I. Azure Search サービスのクエリ API キーの識別
-Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの&1; つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+## <a name="identify-your-azure-search-services-query-api-key"></a>Azure Search サービスのクエリ API キーの識別
+Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にログインする必要があります。
+1. サービスの API キーを探すには、[Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Search サービスのブレードに移動します。
 3. "キー" アイコンをクリックします。
 
 サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
 
-* プライマリおよびセカンダリ *管理者キー* は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。 キーは&2; つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+* プライマリおよびセカンダリ *管理者キー* は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。 キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
 * *クエリ キー* はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
 インデックスを照会する目的では、いずれかのクエリ キーを使用できます。 クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
-## <a name="ii-create-an-instance-of-the-searchindexclient-class"></a>II. SearchIndexClient クラスのインスタンスの作成
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。 `SearchCredentials` は API キーをラップします。
 
 次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
@@ -62,13 +62,13 @@ SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels
 
 `SearchIndexClient` には `Documents` プロパティがあります。 このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
 
-## <a name="iii-query-your-index"></a>III. インデックスの照会
+## <a name="query-your-index"></a>インデックスの照会
 .NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。 このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。
 
 #### <a name="types-of-queries"></a>クエリの種類
-主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の&2; つです。 `search` クエリは、インデックスのすべての *検索可能* フィールドで&1; つ以上の語句を検索します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。
+主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の 2 つです。 `search` クエリは、インデックスのすべての *検索可能* フィールドで 1 つ以上の語句を検索します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。
 
-検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。 検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。 検索せずにフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。 フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを&1; つも渡さないようにします。
+検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。 検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。 検索せずにフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。 フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを 1 つも渡さないようにします。
 
 #### <a name="example-queries"></a>クエリの例
 次のサンプル コードは、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#DefineIndex)」で定義した "hotels" というインデックスを照会するための、異なるいくつかの方法を示しています。 検索結果で返されるドキュメントは `Hotel` クラスのインスタンスであることに注意してください。このクラスは、「[.NET SDK を使用した Azure Search へのデータのアップロード](search-import-data-dotnet.md#HotelClass)」で定義したクラスです。 サンプル コードでは、`WriteDocuments` メソッドを使用して検索結果をコンソールに出力しています。 このメソッドについては次のセクションで説明します。
@@ -127,7 +127,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv-handle-search-results"></a>IV. 検索結果の処理方法
+## <a name="handle-search-results"></a>検索結果の処理方法
 `Documents.Search` メソッドは、クエリの結果を含む `DocumentSearchResult` オブジェクトを返します。 前のセクションの例では、 `WriteDocuments` というメソッドを使用して検索結果をコンソールに出力しています。
 
 ```csharp
@@ -169,6 +169,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

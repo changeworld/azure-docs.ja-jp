@@ -21,11 +21,14 @@
 ## アプリケーションのビルド
 ### [パターンとシナリオ](service-fabric-patterns-and-scenarios.md)
 ### 基本
-#### [プログラミング モデル](service-fabric-choose-framework.md)
 #### [アプリケーション モデル](service-fabric-application-model.md)
+#### [サポートされるプログラミング モデル](service-fabric-choose-framework.md)
+#### [サービスの状態](service-fabric-concepts-state.md)
 #### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
+#### [Web フロントエンドの追加](service-fabric-add-a-web-frontend.md)
 #### [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
-#### [ツール](service-fabric-manage-application-in-visual-studio.md)
+#### [Visual Studio でアプリを管理する](service-fabric-manage-application-in-visual-studio.md)
+#### [Visual Studio でセキュリティ保護された接続を構成する](service-fabric-visualstudio-configure-secure-connections.md)
 #### デバッグ
 ##### [VS での C# サービスのデバッグ](service-fabric-debugging-your-application.md)
 ##### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
@@ -36,6 +39,15 @@
 #### [アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)  
 #### [複数環境向けアプリケーションの構成](service-fabric-manage-multiple-environment-app-configuration.md)  
 #### [一般的なエラーと例外](service-fabric-errors-and-exceptions.md) 
+
+### ゲスト実行可能アプリケーション
+#### [ゲスト実行可能ファイルをデプロイする](service-fabric-deploy-existing-app.md)
+#### [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
+
+### コンテナー アプリケーション
+#### [概要](service-fabric-containers-overview.md)
+#### [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
+#### [Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
 
 ### Reliable Service アプリケーション
 #### [概要](service-fabric-reliable-services-introduction.md)
@@ -73,15 +85,6 @@
 #### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
-### ゲスト実行可能アプリケーション
-#### [ゲスト実行可能ファイルをデプロイする](service-fabric-deploy-existing-app.md)
-#### [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
-
-### コンテナー アプリケーション
-#### [概要](service-fabric-containers-overview.md)
-#### [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
-#### [Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
-
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
 ### [Service Fabric への移行](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -95,7 +98,7 @@
 #### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 #### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 #### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md) 
-#### [セキュリティ](service-fabric-cluster-security.md)
+#### [クラスターの保護](service-fabric-cluster-security.md)
 #### [障害復旧](service-fabric-disaster-recovery.md)
 
 ### Azure 上のクラスター
@@ -108,6 +111,7 @@
 #### [クラスターの削除](service-fabric-cluster-delete.md)
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-fabric-settings.md)
+#### [証明書を使用したクラスターの保護](service-fabric-windows-cluster-x509-security.md)
 #### [クラスター証明書の追加またはロールオーバー](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
@@ -116,30 +120,15 @@
 #### [Azure Virtual Machines でのスタンドアロン クラスターの作成](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [クラスターを拡張する](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [クラスターのアップグレード](service-fabric-cluster-upgrade-windows-server.md)
-#### [クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-manifest.md)
 #### [証明書を使用したクラスターの保護](service-fabric-windows-cluster-x509-security.md)  
 #### [Windows セキュリティを使用したクラスターの保護](service-fabric-windows-cluster-windows-security.md) 
 
-## クラスター リソースを管理および調整する
-### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
-### [Cluster Resource Manager のアーキテクチャ](service-fabric-cluster-resource-manager-architecture.md)
-### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
-### [アプリケーション グループの概要](service-fabric-cluster-resource-manager-application-groups.md)
-### [Cluster Resource Manager 設定の構成](service-fabric-cluster-resource-manager-configure-services.md)
-### [リソース使用量メトリックス](service-fabric-cluster-resource-manager-metrics.md)
-### [サービス アフィニティの使用](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-### [サービス配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-### [クラスターの管理](service-fabric-cluster-resource-manager-management-integration.md)
-### [クラスターの最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-### [クラスターの分散](service-fabric-cluster-resource-manager-balancing.md)
-### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
-### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
-
 ## アプリケーションのライフサイクルを管理する
 ### [概要](service-fabric-application-lifecycle.md)
 ### [継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
+### [ImageStoreConnectionString 設定について](service-fabric-image-store-connection-string.md)
 ### アプリケーションをデプロイまたは削除する
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -161,6 +150,7 @@
 ### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
 ## 監視と診断
+### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
 ### ローカルでのサービスの監視と診断
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
@@ -168,8 +158,8 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [サービス プロセスからのログの収集](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
+### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 ### [一般的な問題のトラブルシューティング](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
@@ -191,6 +181,21 @@
 #### [Node Transition API の使用](service-fabric-node-transition-apis.md)
 ### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)
 
+## クラスター リソースを管理および調整する
+### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
+### [Cluster Resource Manager のアーキテクチャ](service-fabric-cluster-resource-manager-architecture.md)
+### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
+### [アプリケーション グループの概要](service-fabric-cluster-resource-manager-application-groups.md)
+### [Cluster Resource Manager 設定の構成](service-fabric-cluster-resource-manager-configure-services.md)
+### [リソース使用量メトリックス](service-fabric-cluster-resource-manager-metrics.md)
+### [サービス アフィニティの使用](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+### [サービス配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+### [クラスターの管理](service-fabric-cluster-resource-manager-management-integration.md)
+### [クラスターの最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+### [クラスターの分散](service-fabric-cluster-resource-manager-balancing.md)
+### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
+### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
+
 # リファレンス
 ## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
 ## [Java API](/java/api/microsoft.servicefabric.services)
@@ -208,6 +213,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

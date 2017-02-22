@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
-ms.author: markgal; trinadhk
+ms.author: trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
 ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49

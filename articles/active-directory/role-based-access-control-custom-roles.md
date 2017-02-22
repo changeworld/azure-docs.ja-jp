@@ -1,10 +1,10 @@
 ---
-title: "Azure RBAC のカスタム ロール | Microsoft Docs"
+title: "Azure RBAC のカスタム ロールの作成 | Microsoft Docs"
 description: "Azure サブスクリプションのきめ細かい ID 管理を実現するために Azure のロールベースのアクセス制御でカスタム ロールを定義する方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: kgremban
+manager: femila
 editor: 
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/25/2016
+ms.date: 01/31/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b5ffc0f9d337c776f2702aa95d991d1b57829f3b
+ms.sourcegitcommit: a474aa115425293660ba59ed1c6f7fd2ba4db5ce
+ms.openlocfilehash: 277c97289ba6dd66028394000d17deed80ba6cc6
 
 
 ---
@@ -54,9 +54,10 @@ ms.openlocfilehash: b5ffc0f9d337c776f2702aa95d991d1b57829f3b
 }
 ```
 ## <a name="actions"></a>アクション
-カスタム ロールを通じてアクセス権を付与する Azure の操作は、ロールの **Actions** プロパティで指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 操作文字列にワイルドカード (\*) を指定すると、その文字列と一致するすべての操作にアクセス権が与えられます。 次に例を示します。
+カスタム ロールを通じてアクセス権を付与する Azure の操作は、ロールの **Actions** プロパティで指定します。 このプロパティに文字列で指定された一連の操作によって、Azure リソース プロバイダーのセキュリティ保護可能な操作が識別されます。 操作文字列は、`Microsoft.<ProviderName>/<ChildResourceType>/<action>` の形式に従います。 操作文字列にワイルドカード (\*) を指定すると、その文字列と一致するすべての操作にアクセス権が与えられます。 次に例を示します。
 
 * `*/read` は、すべての Azure リソース プロバイダーの全リソース タイプを対象に読み取り操作のアクセス権を付与します。
+* `Microsoft.Compute/*` は、Microsoft.Compute リソース プロバイダーのすべてのリソース タイプに対するすべての操作のアクセス権を付与します。
 * `Microsoft.Network/*/read` は、Azure の Microsoft.Network リソース プロバイダーの全リソース タイプを対象に読み取り操作のアクセス権を付与します。
 * `Microsoft.Compute/virtualMachines/*` は、Virtual Machines とその子リソース タイプを対象にすべての操作のアクセス権を付与します。
 * `Microsoft.Web/sites/restart/Action` は、Web サイトを再起動するためのアクセス権を付与します。
@@ -69,7 +70,7 @@ Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Ope
 Get-AzureRMProviderOperation Microsoft.Network/*
 ```
 
-![PowerShell screnshot - Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
+![PowerShell のスクリーンショット - Get-AzureRMProviderOperation](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
 
 ```
 azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
@@ -84,22 +85,22 @@ azure provider operations show "Microsoft.Network/*"
 
 > [!NOTE]
 > **NotActions**で特定の操作を除外したロールをユーザーに割り当てたうえで、同じユーザーにその操作へのアクセス権を付与する別のロールを割り当てた場合、ユーザーはその操作の実行が許可されます。 **NotActions** は拒否ルールとは異なり、特定の操作を除外する必要があるときに、許可の対象となる一連の操作を指定しやすくすることを目的としたものに過ぎません。
-> 
-> 
+>
+>
 
 ## <a name="assignablescopes"></a>AssignableScopes
 カスタム ロールの **AssignableScopes** プロパティでは、割り当てにカスタム ロールを利用できるスコープ (サブスクリプション、リソース グループ、リソースのいずれか) を指定します。 カスタム ロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。
 
 有効な AssignableScopes の例を次に示します。
 
-* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"、"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - 対象となるロールの割り当てを 2 つのサブスクリプションに許可します。
-* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - 対象となるロールの割り当てを 1 つのサブスクリプションに許可します。
+* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"、"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - 対象となるロールの割り当てを&2; つのサブスクリプションに許可します。
+* "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - 対象となるロールの割り当てを&1; つのサブスクリプションに許可します。
 * "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network" - 対象となるロールの割り当てを Network リソース グループのみに許可します。
 
 > [!NOTE]
-> 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
-> 
-> 
+> 少なくとも&1; つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+>
+>
 
 ## <a name="custom-roles-access-control"></a>カスタム ロールのアクセス制御
 カスタム ロールの **AssignableScopes** プロパティは、そのロールをだれが表示、変更、削除できるかという点も制御することができます。
@@ -122,7 +123,6 @@ azure provider operations show "Microsoft.Network/*"
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

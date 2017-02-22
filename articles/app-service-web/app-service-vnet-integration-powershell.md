@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7b0dcf833981364abfbc77d0cd6dfde8beb081b7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e8763f1ab7e51e10ae59cf2b6b2c609f0f45dcd3
 
 
 ---
@@ -706,6 +706,6 @@ Resource Manager デプロイ モデルを使用する仮想ネットワーク�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

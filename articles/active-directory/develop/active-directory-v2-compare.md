@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 エンドポイント | Microsoft Docs"
+title: "Azure AD v2.0 エンドポイントの変更点 | Microsoft Docs"
 description: "元の Azure AD と v2.0 エンドポイントの比較。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 8a8f8af9b23c66461385a73f80c148a2fdd652d5
+ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
+ms.openlocfilehash: 9f00013c4eb6c32707489d5f78a5e95b7419bcd2
 
 
 ---
@@ -33,7 +33,7 @@ v2.0 エンドポイントを使用すると、開発者は、1 つの認証エ�
 
 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io)を呼び出す場合、エンタープライズ環境のユーザーは、SharePoint サイトや Directory データなどの追加の機能とデータを使用できます。  ただし、 [ユーザーのメールを読む](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message)などの多くの操作について、Microsoft アカウントと Azure AD アカウントの両方に対して完全に同じコードを作成できます。  
 
-Microsoft アカウントと Azure AD アカウントのアプリを 1 つの単純なプロセスで統合できるようになりました。  1 組のエンドポイント、1 つのライブラリ、1 回のアプリ登録によって、コンシューマー向けおよびエンタープライズ向けの両方の環境にアクセスできます。  v2.0 エンドポイントの詳細については、 [概要](active-directory-appmodel-v2-overview.md)のページを参照してください。
+Microsoft アカウントと Azure AD アカウントのアプリを&1; つの単純なプロセスで統合できるようになりました。  1 組のエンドポイント、1 つのライブラリ、1 回のアプリ登録によって、コンシューマー向けおよびエンタープライズ向けの両方の環境にアクセスできます。  v2.0 エンドポイントの詳細については、 [概要](active-directory-appmodel-v2-overview.md)のページを参照してください。
 
 ## <a name="new-app-registration-portal"></a>新しいアプリ登録ポータル
 v2.0 エンドポイントは、新しい場所 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) にのみ登録できます。  このポータルでは、アプリケーション ID の取得、アプリのサインイン ページの外観のカスタマイズなどを行うことができます。  ポータルにアクセスするために必要なのは、Microsoft の強化されたアカウント (個人アカウントまたは職場/学校アカウントのいずれか) だけです。  
@@ -49,7 +49,7 @@ v2.0 エンドポイントは、新しい場所 ([apps.dev.microsoft.com](https:
 
 <!-- You may have even registered different apps for each of your build environments - one for dev, one for test, and one for production. -->
 
-v2.0 では、各プロジェクトに対して 1 つのアプリケーション ID を使用して 1 回のアプリ登録を行うだけでかまいません。  それぞれのプロジェクトに複数の "プラットフォーム" を追加し、追加した各プラットフォームに対して適切なデータを提供できます。  もちろんアプリは要件に応じて必要な数だけ作成できますが、大半の場合、必要なアプリケーション ID は 1 つだけです。
+v2.0 では、各プロジェクトに対して&1; つのアプリケーション ID を使用して&1; 回のアプリ登録を行うだけでかまいません。  それぞれのプロジェクトに複数の "プラットフォーム" を追加し、追加した各プラットフォームに対して適切なデータを提供できます。  もちろんアプリは要件に応じて必要な数だけ作成できますが、大半の場合、必要なアプリケーション ID は&1; つだけです。
 
 <!-- You can also label a particular platform as "production-ready" when it is ready to be published to the outside world, and use that same Application Id safely in your development environments. -->
 
@@ -109,14 +109,14 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 #### <a name="offline-access"></a>オフライン アクセス
 v2.0 エンドポイントでは、アプリのよく知られた新しいアクセス許可を使用することが必要な場合があります ( `offline_access` スコープ)。  すべてのアプリは、ユーザーがアプリを積極的に利用しない可能性がある場合でも、長期間ユーザーに代わってリソースにアクセスするために必要な、このアクセス許可を要求する必要があります。  `offline_access` スコープは、コンテンツ ダイアログで "データにオフラインでアクセスします" と表示されます。  `offline_access` アクセス許可を要求すると、Web アプリで v2.0 エンドポイントから OAuth 2.0 の refresh_tokens を受け取ることができます。  refresh_tokens は、長期間維持され、アクセスの期間を延長するために新しい OAuth 2.0 の access_tokens と交換することができます。  
 
-アプリが `offline_access` スコープを要求しない場合、refresh_tokens を受け取ることはありません。  つまり、OAuth 2.0 承認コード フローの authorization_code を使用すると、`/token` エンドポイントから access_token だけが取得されます。  その access_token は、短時間 (通常は 1 時間) 有効ですが、最終的には期限が切れます。  その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい authorization_code を取得する必要があります。  このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
+アプリが `offline_access` スコープを要求しない場合、refresh_tokens を受け取ることはありません。  つまり、OAuth 2.0 承認コード フローの authorization_code を使用すると、`/token` エンドポイントから access_token だけが取得されます。  その access_token は、短時間 (通常は&1; 時間) 有効ですが、最終的には期限が切れます。  その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい authorization_code を取得する必要があります。  このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
 
 OAuth 2.0、refresh_tokens、および access_tokens の詳細については、[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
 
-#### <a name="openid-profile--email"></a>OpenID、プロファイル、および電子メール
+#### <a name="openid-profile-and-email"></a>OpenID、プロファイルと電子メール
 元の Azure Active Directory サービスでは、結果の id_token のユーザーに関する情報は、最も基本的な OpenID Connect サインイン フローで多数提供されていました。  id_token 内の要求には、ユーザー名、推奨ユーザー名、電子メール アドレス、オブジェクト ID などを含めることができます。
 
-今は、アプリで `openid` のスコープでアクセスできる情報が制限されるようになりました。  ‘openid’ スコープでは、ユーザーのサインインの許可と、ユーザーのアプリ固有の ID の受信のみをアプリに許可します。  アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。  それを実行できる 2 つの新しいスコープ、`email` と `profile` スコープが導入されました。
+今は、アプリで `openid` のスコープでアクセスできる情報が制限されるようになりました。  ‘openid’ スコープでは、ユーザーのサインインの許可と、ユーザーのアプリ固有の ID の受信のみをアプリに許可します。  アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。  それを実行できる&2; つの新しいスコープ、`email` と `profile` スコープが導入されました。
 
 `email` スコープは非常に明解です。id_token の `email` 要求を使用すると、アプリでユーザーのプライマリ電子メール アドレスにアクセスできます。  `profile` スコープでは、アプリに名前、推奨ユーザー名、オブジェクト ID など、ユーザーに関するその他のすべての基本的な情報へのアクセスを許可します。
 
@@ -132,6 +132,6 @@ v2.0 エンドポイントを使用する場合に注意する必要があるい
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

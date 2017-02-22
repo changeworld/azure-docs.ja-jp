@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/22/2016
-ms.author: msfussell;mikhegn
+ms.author: mfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 6f9580bd96007239eb5dc0276a87c63ec62804c5
+ms.sourcegitcommit: 72fcad2957d6fc5466719c1d275ae0f86f7fa302
+ms.openlocfilehash: bf2e34a27806ca79f88db9a9f8d052cd7bfcc94d
 
 
 ---
@@ -203,11 +203,20 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。 また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
 
+
+## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Linux で Yeoman を使用した既存のアプリケーションへのゲスト実行可能ファイルの追加
+
+`yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。 
+1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
+2. `yo azuresfguest:AddService` を実行し、必要な詳細を指定します。
+
+
+
 ## <a name="next-steps"></a>次のステップ
 * コンテナーのデプロイについて、[Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)に関する記事で確認してください
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

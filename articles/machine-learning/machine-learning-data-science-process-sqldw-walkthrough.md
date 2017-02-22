@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2016
+ms.date: 12/09/2016
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3307418f3bcbf1e13b47ffb4d37024f90bdd2c2e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 572f09e5034f60e20b6668b5d513741048619ab6
 
 
 ---
@@ -542,7 +542,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>モデルのビルド用にデータを準備する
-次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Database インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -832,7 +832,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure ML に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
 
-1. [データのインポート][import-data] モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、Azure ML にデータを取得します。 詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+1. [データのインポート][import-data] モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、Azure ML にデータを取得します。 詳細については、 [データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
    
     ![Azure ML データのインポート][17]
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
@@ -923,6 +923,6 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

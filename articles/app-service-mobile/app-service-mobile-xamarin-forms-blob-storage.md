@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2e8cdbbd7f97c5095a151d0ef228cfdeb671345a
-ms.openlocfilehash: 1f5eb285e061b1e221e1d68f894bbd9dd0a50b32
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c8568846837f404eee0293be284c70bd27f06380
 
 
 ---
@@ -37,7 +37,7 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 * 「[Xamarin.Forms アプリの作成]」チュートリアルを完了していること。このチュートリアルには、他の前提条件も記載されています。 この記事では、そのチュートリアルで完成させたアプリケーションを使用します。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページにアクセスしてください。 有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/mobile/)に関するページにアクセスしてください。 有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -96,7 +96,7 @@ Azure Storage の SAS トークンの要求に応答するサーバー プロジ
 7. サーバー プロジェクトをモバイル アプリ バックエンドに発行します。
 
 ### <a name="a-nameroutes-registeredaroutes-registered-by-the-storage-controller"></a><a name="routes-registered"></a>ストレージ コントローラーによって登録されているルート
-新しい `TodoItemStorageController` は、管理するレコードの下で次の 2 つのサブリソースを公開します。
+新しい `TodoItemStorageController` は、管理するレコードの下で次の&2; つのサブリソースを公開します。
 
 * StorageToken
   
@@ -691,6 +691,6 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

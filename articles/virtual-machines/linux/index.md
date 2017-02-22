@@ -1,20 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "選択した Linux ディストリビューションを使用して仮想マシンを作成する方法について説明します。 ドキュメントでは、VM テンプレートを作成するさまざまな方法を紹介します。"
-title: "Linux 向けの Azure Virtual Machines のドキュメント、チュートリアル、API リファレンス | Microsoft Docs"
-services: virtual-machines-linux
+services: virtual-machines\linux
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
-ms.service: virtual-machines-linux
+ms.service: virtual-machines\linux
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
-ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
+ms.sourcegitcommit: 4736be260d3fa0ed7ec402959fd53604f55aceca
+ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
@@ -146,6 +146,6 @@ ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

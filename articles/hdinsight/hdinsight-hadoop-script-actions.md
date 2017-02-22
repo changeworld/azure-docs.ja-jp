@@ -13,21 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: d7e51bee4b9ec4441a080004f938cdc609fd1250
+ms.sourcegitcommit: 6c468c8ed0d817a32c343d55cac780b904ee8668
+ms.openlocfilehash: 6cedd18c22bcd97f7fb2b6926bdf637fe9f04ab4
 
 
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
 HDInsight 用の Script Action スクリプトを記述する方法について説明します。 Script Action スクリプトの使用方法については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。 Linux ベースの HDInsight クラスターに関する同様の記事については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
-> [!NOTE]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight (Linux) でのスクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
+
+
+> [!IMPORTANT]
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターでのスクリプト アクションの使用方法について詳しくは、[HDInsight でのスクリプト アクションの開発 (Linux) ](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
 >
 >
+
+
 
 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。 Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。 Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。 各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
 
@@ -87,7 +91,7 @@ Windows オペレーティング システムで HDInsight クラスターを作
 
     Write-HDILog "$configFileName has been configured."
 
-このスクリプトでは、構成ファイルの名前、変更するプロパティ、設定する値、および説明の 4 つのパラメーターを使用します。 For example:
+このスクリプトでは、構成ファイルの名前、変更するプロパティ、設定する値、および説明の&4; つのパラメーターを使用します。 For example:
 
     hive-site.xml hive.metastore.client.socket.timeout 90
 
@@ -99,12 +103,12 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 
 | 名前 | スクリプト |
 | --- | --- |
-| **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1。 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」をご覧ください。 |
-| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。 「[HDInsight クラスターに R をインストールして使用する][hdinsight-r-scripts]」をご覧ください。 |
+| **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1。 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
+| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。 [HDInsight クラスターでの R のインストールと使用][hdinsight-r-scripts]に関する記事を参照してください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。 「 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。 |
 | - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 「 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。 |
 
-Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。  詳しくは、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]」をご覧ください。
+Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。  詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]」をご覧ください。
 
 > [!NOTE]
 > サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -187,7 +191,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-このステートメントは、環境変数 **MDS_RUNNER_CUSTOM_CLUSTER** を値 'true' に設定します。またコンピューター全体にこの変数の範囲を設定します。 環境変数はコンピューターやユーザーの適切な範囲で設定されていることが重要になることがあります。 環境変数の設定について詳しくは、[こちら][1]をご覧ください。
+このステートメントは、環境変数 **MDS_RUNNER_CUSTOM_CLUSTER** を値 'true' に設定します。またコンピューター全体にこの変数の範囲を設定します。 環境変数はコンピューターやユーザーの適切な範囲で設定されていることが重要になることがあります。 環境変数の設定の詳細については、[こちら][1]を参照してください。
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>カスタム スクリプトを保管する場所へのアクセス
 クラスターのカスタマイズに使用したスクリプトは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。 スクリプトが他の場所に配置されているリソースにアクセスする場合、パブリックでアクセスできる (少なくともパブリック読み取り専用にする) ようにする必要があります。 たとえば、SaveFile HDI コマンドを使用してファイルにアクセスし、保存する必要がある場合などです。
@@ -311,6 +315,6 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

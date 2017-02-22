@@ -1,5 +1,5 @@
 ---
-title: "Windows VM のリージョンと可用性 | Microsoft Docs"
+title: "Azure のリージョンと Windows VM の可用性 |Microsoft Docs"
 description: "リージョンと Azure で Windows 仮想マシンを実行するための可用性機能について"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 01/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 837901095b7dc7b57e88917c420b0f6d71706316
+ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
+ms.openlocfilehash: 6b50c3a4a621520973081da544e3248454b019e2
 
 
 ---
@@ -25,6 +25,6 @@ ms.openlocfilehash: 837901095b7dc7b57e88917c420b0f6d71706316
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

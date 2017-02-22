@@ -1,6 +1,6 @@
 ---
-title: "PowerShell ワークフローについての説明"
-description: "この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いについて簡単に説明します。"
+title: "Azure Automation の PowerShell ワークフローについて | Microsoft Docs"
+description: "この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。"
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -12,27 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
-ms.author: bwren
+ms.date: 01/23/2017
+ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
-ms.openlocfilehash: 3893d8508535ee605c3555d2ddf40d6f286d85fa
+ms.sourcegitcommit: 480a40bd5ecd58f11b10c27e7e0d2828bcae1f17
+ms.openlocfilehash: 50966ed518b79f2033680790432e29b0c9e7b289
 
 
 ---
-# <a name="learning-windows-powershell-workflow"></a>Windows PowerShell ワークフローについて
-Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は既に PowerShell に慣れているユーザーを対象としており、PowerShell スクリプトを PowerShell ワークフローに変換する場合に必要となる考え方について説明します。  
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 
+Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いが多数あるため、効果的なワークフローを記述するにはさらに作業が必要になります。  
 
 A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. The benefits of a workflow over a normal script include the ability to simultaneously perform an action against multiple devices and the ability to automatically recover from failures. A Windows PowerShell Workflow is a Windows PowerShell script that leverages Windows Workflow Foundation. ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
 
 この記事のトピックに関する詳細については、「 [Windows PowerShell ワークフローについて](http://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
-
-## <a name="types-of-runbook"></a>Runbook の種類
-Azure Automation の Runbook には、*PowerShell ワークフロー*、*PowerShell*、"*グラフィカル*" の 3 種類があります。  Runbook を作成するときに Runbook の種類を定義し、作成した後で種類を変えることはできません。
-
-PowerShell ワークフロー Runbook および PowerShell Runbook は、Azure Automation のテキスト エディター、または PowerShell ISE などのオフライン エディターを使用して PowerShell のコードを直接操作するユーザーに適しています。 PowerShell ワークフロー Runbook を作成するには、この記事の説明を理解する必要があります。
-
-グラフィカルな Runbook ではグラフィカル インターフェイスを使用するため、基になる PowerShell ワークフローの複雑性を意識することなく、同じアクティビティとコマンドレットを使用して Runbook を作成することができます。  チェックポイントや並列実行などのこの記事で紹介する概念は、グラフィカルな Runbook にも当てはまりますが、詳細な構文を気にする必要はありません。
 
 ## <a name="basic-structure-of-a-workflow"></a>ワークフローの基本構造
 PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを **Workflow** キーワードで囲むことです。  ワークフローは、 **Workflow** キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。 次の構文に示すように、ワークフローの名前は **Workflow** キーワードの後に続きます。
@@ -50,7 +43,7 @@ The name of the workflow must match the name of the Automation runbook. Runbook 
 PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。  次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
 
 ### <a name="activities"></a>アクティビティ
-アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが 1 つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される 1 つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、実際には Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
+アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが&1; つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される&1; つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、実際には Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
 
 ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 ワークフローの共通パラメーターの詳細については、「[about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
 
@@ -76,7 +69,7 @@ For example, consider the following code that gets all running services.
 
 ワークフローでこれを実行しようとすると、「Windows PowerShell ワークフローでは、メソッド呼び出しはサポートされていません」というエラー メッセージが表示されます。  
 
-これに対処する 1 つの方法は、これら 2 つのコード行を [InlineScript](#inlinescript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
+これに対処する&1; つの方法は、これら&2; つのコード行を [InlineScript](#inlinescript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
 
     Workflow Stop-Service
     {
@@ -86,7 +79,7 @@ For example, consider the following code that gets all running services.
         }
     }
 
-もう 1 つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。  このサンプルの場合、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
+もう&1; つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。  このサンプルの場合、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
 
     Workflow Stop-MyService
     {
@@ -96,7 +89,7 @@ For example, consider the following code that gets all running services.
 
 
 ## <a name="inlinescript"></a>InlineScript
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。  While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell.
+**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして&1; つまたは複数のコマンドを実行する必要がある場合に便利です。  While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell.
 
 InlineScript uses the syntax shown below.
 
@@ -144,7 +137,7 @@ InlineScript アクティビティは特定のワークフローにとって重�
 InlineScript の使用の詳細については、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」を参照してください。
 
 ## <a name="parallel-processing"></a>並列処理
-Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
+Windows PowerShell ワークフローの利点の&1; つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
 **Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 This uses the syntax shown below. この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
@@ -203,7 +196,6 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 > [!NOTE]
 > We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.  子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
->
 >
 
 ## <a name="checkpoints"></a>チェックポイント
@@ -267,10 +259,10 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 チェックポイントの詳細については、「 [スクリプト ワークフローへのチェックポイントの追加](http://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* PowerShell ワークフロー Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
+* PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

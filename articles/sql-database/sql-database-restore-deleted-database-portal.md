@@ -16,18 +16,12 @@ ms.workload: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b5a3f40ff8811c08d130c2a3e0a7d61aed9457d1
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 9ea5287884cd7f1eb7314002b3ae98c9259686c3
 
 
 ---
 # <a name="restore-a-deleted-azure-sql-database-using-the-azure-portal"></a>Azure ポータルを使用した、削除済み Azure SQL データベースの復元
-> [!div class="op_single_selector"]
-> * [概要](sql-database-recovery-using-backups.md)
-> * [**削除済みデータベースの復元: Portal**](sql-database-restore-deleted-database-portal.md)
-> * [削除済みデータベースの復元: PowerShell](sql-database-restore-deleted-database-powershell.md)
-> 
-> 
 
 ## <a name="select-the-database-to-restore"></a>復元するデータベースの選択
 Azure Portal で削除済みデータベースを復元するには:
@@ -50,6 +44,6 @@ Azure Portal で削除済みデータベースを復元するには:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

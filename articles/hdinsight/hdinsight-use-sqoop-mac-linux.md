@@ -13,23 +13,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: f39e0aec85856adba8dea99159f94fc55c822224
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: e6a3e91e5821e761af0ff710da2a817eb7c185bb
 
 
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight-ssh"></a>HDInsight の Hadoop での Sqoop の使用 (SSH)
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Linux ベースの HDInsight クラスターと Azure SQL Database または SQL Server データベースの間のインポートとエクスポートに Sqoop を使用する方法について説明します。
+HDInsight クラスターと Azure SQL Database または SQL Server データベースの間のインポートとエクスポートに Sqoop を使用する方法について説明します。
 
-> [!NOTE]
-> この記事の手順では、Linux ベースの HDInsight クラスターへの接続に SSH を使用します。 Windows クライアントでは、Azure PowerShell および HDInsight .NET SDK を使用して、Linux ベースのクラスターで Sqoop を使用することもできます。 これらの記事を表示するには、タブ セレクターをクリックしてください。
->
->
+> [!IMPORTANT]
+> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -201,6 +199,6 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

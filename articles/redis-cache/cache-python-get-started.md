@@ -1,6 +1,6 @@
 ---
 title: "Python で Azure Redis Cache を使用する方法 | Microsoft Docs"
-description: "Python を使って Azure Redis Cache を使用します"
+description: "Python を使用して Azure Redis Cache を使用します"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -12,11 +12,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: ac73ab86ba17df9b71a4f07776fef0f4c6e687e8
+ms.sourcegitcommit: 5369dcd6ad1ec93c63eb442db9fc5ffdcca37375
+ms.openlocfilehash: cdbee52574d0ffbe82ef3dc98f2848f4d00ba2ff
 
 
 ---
@@ -64,6 +64,6 @@ ms.openlocfilehash: ac73ab86ba17df9b71a4f07776fef0f4c6e687e8
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

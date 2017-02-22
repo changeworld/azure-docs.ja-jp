@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 02/01/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 51452ce98a02f3bcea9914b741c611b00f862cc6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 408394e529c262c0a47aae680c8f6ea1bc8eb7c6
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 51452ce98a02f3bcea9914b741c611b00f862cc6
 
 * **ウェルカム メール:** 新しい公開元は、Seller Insights マンスリー レポートの提供が始まることを通知するウェルカム メールを受け取ります。
 * **マンスリー売上レポート:** 使用実績がある場合は、レポートとパスワードにアクセスする方法が含まれる 2 番目の電子メールを受け取ります。
-  
+
   * VM がある場合、または使用量ベース課金制開発者サービス SKU の使用実績ある場合は、提供品の注文、使用量、市場、顧客に関する詳細がマンスリー レポートで示されます。
   * レポートは、顧客データを保護するため、パブリッシャーと Microsoft だけが知っているパスワードによってロックされています。
   * 該当月にどの提供品にも使用実績がない場合、レポートは送られません。
@@ -117,6 +117,6 @@ URL で公開元 ID を探します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

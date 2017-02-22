@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8e31757037c2040235d55ae8e653fe2995d1b7af
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: d8fefaf3c371a2eb0fb83c59122a7419cff99e79
 
 
 ---
@@ -117,9 +117,9 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するために、Predictix Assortment Planning サポート チームに連絡し、次のものを情報として提供します。
    
     • ダウンロードした証明書
@@ -155,14 +155,14 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. ページの下部にある **[次へ]**」を参照してください。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+   a. **[名]** ボックスに「**Britta**」と入力します。  
    
    b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -180,7 +180,7 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning のテスト ユーザーの作成
 このセクションでは、Predictix Assortment Planning で Britta Simon というユーザーを作成します。 Predictix Assortment Planning サポート チームと連携し、Predictix Assortment Planning プラットフォームにユーザーを追加してください。
@@ -235,6 +235,6 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

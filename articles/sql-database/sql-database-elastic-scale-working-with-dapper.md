@@ -7,6 +7,7 @@ manager: jhubbard
 author: torsteng
 ms.assetid: 463d2676-3b19-47c2-83df-f8c50492c9d2
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f4a678b1c6759d50e321f0858fd4d478132b2166
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 01369360fa10ae39e2f9b435d877de0171574286
 
 
 ---
@@ -27,13 +28,13 @@ ms.openlocfilehash: f4a678b1c6759d50e321f0858fd4d478132b2166
 **Dapper** と **DapperExtensions** を Azure SQL Database の Elastic Database クライアント ライブラリに統合することは容易です。 アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](http://msdn.microsoft.com/library/azure/dn765902.aspx)の [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更します。 これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。 
 
 ## <a name="dapper-overview"></a>Dapper の概要
-**Dapper** はオブジェクト リレーショナル マッパーです。 Dapper は、アプリケーションの .NET オブジェクトをリレーショナル データベースに (またはその逆に) マップします。 サンプル コードの最初の部分は、エラスティック データベース クライアント ライブラリと Dapper ベースのアプリケーションを統合する方法を示します。 サンプル コードの 2 番目の部分は、Dapper と DapperExtensions の両方を使用する場合の統合方法を示します。  
+**Dapper** はオブジェクト リレーショナル マッパーです。 Dapper は、アプリケーションの .NET オブジェクトをリレーショナル データベースに (またはその逆に) マップします。 サンプル コードの最初の部分は、エラスティック データベース クライアント ライブラリと Dapper ベースのアプリケーションを統合する方法を示します。 サンプル コードの&2; 番目の部分は、Dapper と DapperExtensions の両方を使用する場合の統合方法を示します。  
 
 Dapper のマッパー機能には、データベース接続に対する拡張メソッドが用意されています。このメソッドによって、データベースの実行または照会のための T-SQL ステートメントの送信が簡略化されます。 たとえば、Dapper を使用すると、**Execute** の呼び出しでの .NET オブジェクトと SQL ステートメントのパラメーター間のマッピングを容易に行うことができます。また、Dapper から **Query** の呼び出しを使用して、SQL クエリの結果を .NET オブジェクトに容易に組み込むことができます。 
 
 DapperExtensions を使用する場合に SQL ステートメントを指定する必要はなくなりました。 データベース接続経由で使用する、**GetList** や **Insert** などの拡張メソッドでは SQL ステートメントがバックグラウンドで作成されます。
 
-Dapper と DapperExtensions のもう 1 つの利点は、データベース接続の作成がアプリケーションによって制御されることです。 これにより、データベースに対するシャードレットのマッピングに基づいてデータベース接続を仲介するエラスティック データベース クライアント ライブラリとやり取りできるようになります。
+Dapper と DapperExtensions のもう&1; つの利点は、データベース接続の作成がアプリケーションによって制御されることです。 これにより、データベースに対するシャードレットのマッピングに基づいてデータベース接続を仲介するエラスティック データベース クライアント ライブラリとやり取りできるようになります。
 
 Dapper アセンブリを入手するには、「 [Dapper dot net](http://www.nuget.org/packages/Dapper/)」をご覧ください。 Dapper の拡張機能については、「 [DapperExtensions](http://www.nuget.org/packages/DapperExtensions)」をご覧ください。
 
@@ -104,7 +105,7 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
             }
     }
 
-DDR 接続を含む **using** ブロックのスコープは、tenantId1 が保持されている 1 つのシャードに対する、そのブロック内のすべてのデータベース操作であることに注目してください。 このクエリが返すのは、現在のシャードに格納されているブログのみです。他のシャードに格納されているブログは返されません。 
+DDR 接続を含む **using** ブロックのスコープは、tenantId1 が保持されている&1; つのシャードに対する、そのブロック内のすべてのデータベース操作であることに注目してください。 このクエリが返すのは、現在のシャードに格納されているブログのみです。他のシャードに格納されているブログは返されません。 
 
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Dapper と DapperExtensions を使用したデータ依存ルーティング
 Dapper には、データベース アプリケーションの開発時にデータベースからさらなる利便性と抽象化を実現する追加の拡張機能のエコシステムが用意されています。 DapperExtensions はその一例です。 
@@ -157,7 +158,7 @@ Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Ap
 このドキュメントで説明した方法には、いくつかの制限事項があります。
 
 * このドキュメントのサンプル コードには、複数のシャードにおけるスキーマの管理方法を示していません。
-* 要求を受け取った場合、要求によって提供されたシャーディング キーで識別される 1 つのシャード内にそのすべてのデータベース処理が含まれると見なします。 ただし、この仮定が常に正しいとは限りません。たとえば、シャーディング キーを使用可能にできないことがあります。 これに対処するために、[MultiShardQuery クラス](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)が Elastic Database クライアント ライブラリに含まれています。 このクラスは、複数のシャードに対してクエリを実行するための接続の抽象化を実装します。 Dapper と組み合わせた MultiShardQuery の使用方法については、このドキュメントの範囲を超えているため省略します。
+* 要求を受け取った場合、要求によって提供されたシャーディング キーで識別される&1; つのシャード内にそのすべてのデータベース処理が含まれると見なします。 ただし、この仮定が常に正しいとは限りません。たとえば、シャーディング キーを使用可能にできないことがあります。 これに対処するために、[MultiShardQuery クラス](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)が Elastic Database クライアント ライブラリに含まれています。 このクラスは、複数のシャードに対してクエリを実行するための接続の抽象化を実装します。 Dapper と組み合わせた MultiShardQuery の使用方法については、このドキュメントの範囲を超えているため省略します。
 
 ## <a name="conclusion"></a>まとめ
 Dapper と DapperExtensions を使用するアプリケーションは、Azure SQL Database のエラスティック データベース ツールのメリットを簡単に活用できます。 このドキュメントで説明した手順に従って、Elastic Database クライアント ライブラリの [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更することにより、これらのアプリケーションでツールの機能をデータ依存ルーティングに利用できるようになります。 これにより、アプリケーションに対して必要な変更が、新しい接続を作成して開く場所だけに制限されます。 
@@ -169,6 +170,6 @@ Dapper と DapperExtensions を使用するアプリケーションは、Azure S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

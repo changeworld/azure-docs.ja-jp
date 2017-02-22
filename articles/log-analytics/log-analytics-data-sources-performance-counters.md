@@ -1,10 +1,10 @@
 ---
-title: "Log Analytics での Windows および Linux のパフォーマンス カウンター |Microsoft Docs"
+title: "Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
 description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b4d326064059b42cf2bf059184066c9acb4dcfd0
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
 
 
 ---
@@ -63,7 +63,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または SCOM <br>  Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |データが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり
@@ -82,7 +82,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | Type=Perf (ObjectName=Processor) CounterName="% Processor Time" InstanceName=_Total &#124; measure Avg(Average) as AVGCPU  by Computer |コンピューター全体の平均 CPU 使用率 |
 | Type=Perf (CounterName="% Processor Time") &#124;  measure max(Max) by Computer |コンピューター全体の最大 CPU 使用率 |
 | Type=Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" &#124; measure Avg(Average) by InstanceName |特定のコンピューターのインスタンス全体における現在のディスク キューの長さの平均 |
-| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |コンピューター全体のディスク転送数/秒の 95 パーセンタイル |
+| Type=Perf CounterName="DiskTransfers/sec" &#124; measure percentile95(Average) by Computer |コンピューター全体のディスク転送数/秒の&95; パーセンタイル |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  &#124; measure avg(CounterValue) by Computer Interval 1HOUR |全コンピューターの CPU 使用率の平均値 (1 時間ごと) |
 | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=_Total &#124; measure percentile70(CounterValue) by CounterName Interval 1HOUR |特定のコンピューターの各パーセント (%) カウンターの 70 パーセンタイル (1 時間ごと) |
 | Type=Perf CounterName="% Processor Time" InstanceName="_Total"  (Computer="MyComputer") &#124; measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
@@ -105,6 +105,6 @@ Log Analytics は、カウンターがインストールされているすべて
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -9,25 +9,20 @@ manager: jhubbard
 editor: 
 ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
 ms.service: sql-database
+ms.custom: development
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/17/2016
-ms.author: stevestein
+ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 333babec567a4700ca0882c883e4460442d844e1
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
 
 
 ---
 # <a name="connect-to-a-sql-database-with-visual-studio"></a>Visual Studio で SQL Database に接続する
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
-> 
 
 Visual Studio で Azure SQL データベースに接続する方法について説明します。 
 
@@ -86,6 +81,6 @@ Visual Studio を使用して SQL データベースに接続するには、以�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

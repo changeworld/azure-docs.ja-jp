@@ -1,6 +1,6 @@
 ---
-title: "API Management の重要概念"
-description: "API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。"
+title: "Azure API Management への API のインポート | Microsoft Docs"
+description: "Azure API Management に API とその操作をインポートする方法について説明します。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: b69c8e918bb0380a10b1505fbf9792e284149de0
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: c851b88fc1067e65044266d07775717c028e75d9
 
 ---
 # <a name="how-to-import-the-definition-of-an-api-with-operations-in-azure-api-management"></a>Azure API Management で API の定義を操作と共にインポートする方法
@@ -39,7 +38,7 @@ API を作成および構成するには、パブリッシャー ポータルを
 
 ![[API のインポート]][api-management-import-apis]
 
-**[API のインポート]** ウィンドウには、3 つのタブがあります。これらのタブは、API 仕様を指定するための 3 つの方法に対応しています。
+**[API のインポート]** ウィンドウには、3 つのタブがあります。これらのタブは、API 仕様を指定するための&3; つの方法に対応しています。
 
 * **[クリップボードから]** では、専用のテキスト ボックスに API 仕様を貼り付けることができます。
 * **[ファイルから]** では、API 仕様を含むファイルを参照して選択できます。
@@ -97,6 +96,6 @@ API を作成して操作をインポートした後は、追加の設定を確�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory のパイプラインの監視と管理"
+title: "Azure Portal/PowerShell を使用したパイプラインの監視と管理 | Microsoft Docs"
 description: "Azure ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。"
 services: data-factory
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6a816e56400abe281b0422abbcd3415f3762a96e
-ms.openlocfilehash: 43b828bad5d21fe0f452aa23bbdf6fff758525f2
+ms.sourcegitcommit: eb9126d21c5eaa605a8ca292ab1f444085dd6612
+ms.openlocfilehash: 5bc3a81d82a838f04051fa1cbd6d567532e4824a
 
 
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインの監視と管理
+# <a name="monitor-and-manage-azure-data-factory-pipelines-using-azure-portalpowershell"></a>Azure Portal/PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
 > * [Azure Portal の使用/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
 > * [Monitoring and Management App の使用](data-factory-monitor-manage-app.md)
@@ -62,7 +62,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
    ![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Data Factory のダイアグラム ビュー
-Data Factory のダイアグラム ビューでは、Data Factory とその資産を監視および管理する 1 つのウィンドウが提供されます。
+Data Factory のダイアグラム ビューでは、Data Factory とその資産を監視および管理する&1; つのウィンドウが提供されます。
 
 Data Factory のダイアグラム ビューを表示するには、Data Factory のホーム ページで **[ダイアグラム]** をクリックします。
 
@@ -74,7 +74,7 @@ Data Factory のダイアグラム ビューを表示するには、Data Factory
 1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティおよびアクティビティの入力データセットと出力データセットが表示されます。 この機能は、パイプラインが複数のアクティビティで構成されている場合に、1 つのパイプラインの動作系列を理解するときに便利です。
    
     ![パイプラインを開くメニュー](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
-2. 次の例では、パイプラインの 2 つのアクティビティとその入力および出力がわかります。 このサンプル パイプラインには、**JoinData** という名前の HDInsight Hive 型アクティビティと、**EgressDataAzure** という名前のコピー型アクティビティがあります。 
+2. 次の例では、パイプラインの&2; つのアクティビティとその入力および出力がわかります。 このサンプル パイプラインには、**JoinData** という名前の HDInsight Hive 型アクティビティと、**EgressDataAzure** という名前のコピー型アクティビティがあります。 
    
     ![パイプライン内のアクティビティ](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png) 
 3. 左上隅の階層リンクの [Data Factory] リンクをクリックして、Data Factory のホーム ページに戻ることができます。
@@ -88,7 +88,7 @@ Data Factory のダイアグラム ビューを表示するには、Data Factory
 
 ![パイプラインの状態](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
-ダイアグラム ビューの **PartitionedProductsUsageTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 **BlobPartitionHiveActivity** は過去 8 か月間毎月正常に実行され、**Ready** 状態のスライスを生成したことがわかります。
+ダイアグラム ビューの **PartitionedProductsUsageTable** をダブルクリックすると、パイプライン内のさまざまなアクティビティの実行によって生成されたすべてのスライスが表示されます。 **BlobPartitionHiveActivity** は過去&8; か月間毎月正常に実行され、**Ready** 状態のスライスを生成したことがわかります。
 
 Data Factory のデータセット スライスは、次のいずれかの状態になります。
 
@@ -164,7 +164,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 ![アップストリーム スライスの準備ができていない](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
 ### <a name="dataset-state-diagram"></a>データセット状態ダイアグラム
-Data Factory をデプロイした後、パイプラインに有効なアクティブ期間があると、データセット スライスは 1 つの状態から別の状態に遷移します。 現在、スライスのステータスは、次の状態ダイアグラムに従います。
+Data Factory をデプロイした後、パイプラインに有効なアクティブ期間があると、データセット スライスは&1; つの状態から別の状態に遷移します。 現在、スライスのステータスは、次の状態ダイアグラムに従います。
 
 ![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
@@ -538,7 +538,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![Diagnostics blade](./media/data-factory-monitor-manage-pipelines/diagnostics-blade.png)
 
-メトリックの集計は 1 時間ごとに行われるので、保存した後、メトリックが監視ブレードに表示されるまでに最大で 1 時間かかることがあります。
+メトリックの集計は&1; 時間ごとに行われるので、保存した後、メトリックが監視ブレードに表示されるまでに最大で&1; 時間かかることがあります。
 
 ### <a name="setting-up-alert-on-metrics"></a>メトリックに対するアラートの設定:
 **[データ ファクトリ メトリックス]** ブレードをクリックします。 
@@ -624,7 +624,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 サンプルの subscriptionId、resourceGroupName、dataFactoryName を、適切な値に置き換えます。
 
-*metricName* がサポートしている値は次の 2 つです。
+*metricName* がサポートしている値は次の&2; つです。
 
 * FailedRuns
 * SuccessfulRuns
@@ -668,6 +668,6 @@ Outputs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

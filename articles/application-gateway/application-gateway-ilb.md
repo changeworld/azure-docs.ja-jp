@@ -1,5 +1,5 @@
 ---
-title: "Virtual Network 内の内部ロード バランサー (ILB) を使用した Application Gateway の作成と構成 | Microsoft Docs"
+title: "内部ロード バランサーと Azure Application Gateway の使用 | Microsoft Docs"
 description: "このページでは、内部ロード バランサーのエンドポイントを使用して Azure Application Gateway を構成する手順について説明します。"
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: bb514e1a65fc051d6a36123820c68998bed36fb9
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
 
 
 ---
@@ -176,7 +176,7 @@ Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 ゲートウェイを構成したら、 `Start-AzureApplicationGateway` コマンドレットを使用してゲートウェイを起動します。 Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。 
 
 > [!NOTE]
->  `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。 
+> `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。 
 > 
 > 
 
@@ -226,6 +226,6 @@ DnsName       : appgw-b2a11563-2b3a-4172-a4aa-226ee4c23eed.cloudapp.net
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

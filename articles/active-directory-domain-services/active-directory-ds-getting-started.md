@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0dfc373cc65033cfb7c2b1882dca41faa7c7bcae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6160c560b951c1355bf956a392dda5b41ac9cd7
 
 
 ---
@@ -66,6 +66,6 @@ ms.openlocfilehash: 0dfc373cc65033cfb7c2b1882dca41faa7c7bcae
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

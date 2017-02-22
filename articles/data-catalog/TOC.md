@@ -21,25 +21,21 @@
 ## [検索条件の保存とデータ資産のピン留め](data-catalog-how-to-save-pin.md)
 ## [ビジネス用語集を設定する](data-catalog-how-to-business-glossary.md)
 
-## 開発
-### [開発者の概念](data-catalog-developer-concepts.md)
-### [開発者向けサンプル](data-catalog-samples.md)
-
 # リファレンス
 ## [REST ()](/rest/api/datacatalog/)
+## [開発者の概念](data-catalog-developer-concepts.md)
+## [開発者向けサンプル](data-catalog-samples.md)
 
 # リソース
 ## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
 ## [用語集](data-catalog-terminology.md)
-## リリース ノート
-### [リリース ノート - 新機能](data-catalog-whats-new.md)
-### [リリース ノート](data-catalog-release-notes.md)
+## [リリース ノート](data-catalog-whats-new.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

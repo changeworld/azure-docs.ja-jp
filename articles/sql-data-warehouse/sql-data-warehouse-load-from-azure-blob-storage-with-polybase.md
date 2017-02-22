@@ -1,5 +1,5 @@
 ---
-title: "Azure Blob Storage から SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Docs"
+title: "Azure Blob から Azure Data Warehouse に読み込む | Microsoft Docs"
 description: "PolyBase を使用して、Azure Blob Storage から SQL Data Warehouse にデータを読み込む方法について説明します。 パブリック データから Contoso Retail Data Warehouse スキーマにテーブルをいくつか読み込みます。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea83972d4b12a83fbf339acb6601dc961674be6f
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 348605fed8101cf83cbcfb559c71f34407692f7a
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: ea83972d4b12a83fbf339acb6601dc961674be6f
 
 PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込みます。 
 
-このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の 2 つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから [「完全な Contoso Retail Data Warehouse を読み込む」][完全な Contoso Retail Data Warehouse を読み込む] 例を実行します。
+このチュートリアルでは、シンプルにするために、パブリック Azure Storage BLOB の&2; つのテーブルを Contoso Retail Data Warehouse スキーマに読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む][Load the full Contoso Retail Data Warehouse]例を実行します。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -38,7 +38,7 @@ PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage 
 3. 読み込みの完了後、最適化を実行する。
 
 ## <a name="before-you-begin"></a>開始する前に
-このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。 アカウントがない場合は、[SQL Data Warehouse の作成][SQL Data Warehouse の作成] に関するページをご覧ください。
+このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。 アカウントがない場合は、「[SQL Data Warehouse の作成][Create a SQL Data Warehouse]」をご覧ください。
 
 ## <a name="1-configure-the-data-source"></a>1.データ ソースの構成
 PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Data Warehouse に格納されます。 データ自体は外部に保存されます。
@@ -84,7 +84,7 @@ WITH (
 スキップして手順 2. に進みます。
 
 ### <a name="12-create-the-external-data-source"></a>1.2. 外部データ ソースを作成する
-この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用して、データの場所とデータ型を格納します。 
+この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -226,7 +226,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
-Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを利用します。データを新しいテーブルに読み込むには、テーブルごとに 1 つの [CTAS][CTAS] ステートメントを使用します。 
+Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使います。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを使います。データを新しいテーブルに読み込むには、テーブルごとに&1; つの [CTAS][CTAS] ステートメントを使います。 
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -277,7 +277,7 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳細については、[「列ストア インデックスの管理」][列ストア インデックスの管理]を参照してください。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
 
@@ -289,12 +289,12 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-列ストア インデックスの保守の詳細については、[列ストア インデックスの管理][列ストア インデックスの管理] に関する記事をご覧ください。
+列ストア インデックスの保守について詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
 
 ## <a name="6-optimize-statistics"></a>6.統計の最適化
 読み込みの直後に単一列の統計を作成することをお勧めします。 統計には選択肢がいくつかあります。 たとえば、すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。
 
-すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計][statistics] に関する記事のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使用できます。
+すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事][statistics]のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
 
 次の例は、統計の作成の出発点として適しています。 これによりディメンション テーブルの各列と、ファクト テーブルの各結合列に、単一列の統計が作成されます。 他のファクト テーブルの列には、後で単一列または複数列の統計をいつでも追加できます。
 
@@ -354,32 +354,32 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使用します。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)] に関するページをご覧ください。
+Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使います。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要に関する記事][SQL Data Warehouse development overview]をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み) (SQL Data Warehouse へのデータの読み込み)]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]: sql-data-warehouse-overview-develop.md
-[列ストア インデックスの管理]: sql-data-warehouse-tables-index.md
-[統計]: sql-data-warehouse-tables-statistics.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[manage columnstore indexes]: sql-data-warehouse-tables-index.md
+[Statistics]: sql-data-warehouse-tables-statistics.md
 [CTAS]: sql-data-warehouse-develop-ctas.md
-[ラベル]: sql-data-warehouse-develop-label.md
+[label]: sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 [CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/en-us/library/dn935022.aspx
 [CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/en-us/library/dn935026.aspx
 [CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 [sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[再構築]: https://msdn.microsoft.com/library/ms188388.aspx
+[REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
 
 <!--Other Web references-->
-[Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
-[完全な Contoso Retail Data Warehouse を読み込む]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
+[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
+[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

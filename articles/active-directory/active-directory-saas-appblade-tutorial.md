@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 38efa35e126a83de7ff2377428a5ec76ada101db
+ms.sourcegitcommit: 82e5a947d48f8a289deb2f6e85bbb47990a9fcd7
+ms.openlocfilehash: a378ca7be4c5a7df066c5450f9205c02c2acda0f
 
 
 ---
@@ -73,7 +73,7 @@ Azure AD への AppBlade の統合を構成するには、ギャラリーから�
     ![アプリケーション][4]
 6. [検索] ボックスに、「 **AppBlade**」と入力します。
 
-![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_01.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_01.png)
 
 1. 結果ウィンドウで **[AppBlade]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
@@ -156,17 +156,18 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
     c. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_07.png) 
@@ -239,6 +240,6 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

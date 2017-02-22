@@ -1,5 +1,5 @@
 ---
-title: "Azure Function App とストレージ アカウントの作成 | Microsoft Docs"
+title: "Azure IoT への Intel Edison (Node) の接続 - レッスン 3: Function App の作成 | Microsoft Docs"
 description: "Azure Function App は、Azure IoT ハブのイベントをリッスンして受信メッセージを処理し、それらを Azure Table Storage に書き込みます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: 2a0471afe0be575405bcc8d542c2f1dec6e309a2
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 72d1496fcf353662fa2f7b003ee3757c45b8181e
 
 
 ---
@@ -84,6 +84,6 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 [send-device-to-cloud-messages]: iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

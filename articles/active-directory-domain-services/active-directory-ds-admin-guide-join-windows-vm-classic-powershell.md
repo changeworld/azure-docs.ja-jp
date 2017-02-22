@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4eb9a5c4087fc7e91d79a7789a261d590485555a
+ms.sourcegitcommit: fdc53ee24c623218e218cdda1c24dffbbec50bc5
+ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 4eb9a5c4087fc7e91d79a7789a261d590485555a
 <br>
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
 > 
 > 
 
@@ -119,7 +119,7 @@ VM のサブネットを設定します。
 
 * Windows Server 2012 R2 Datacenter イメージを使用する。
 * 仮想マシンを極小にする。
-* 名前を contoso-test にする。
+* Contoso100-test という名前を持つ。
 * contoso100 という管理対象ドメインに自動的に参加する。
 * 管理対象ドメインと同じ仮想ネットワークに追加される。
 
@@ -160,6 +160,6 @@ VM のサブネットを設定します。
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO1-->
 
 

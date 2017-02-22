@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
-ms.author: billmath
+ms.date: 02/10/2017
+ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: c9ebe21acbe06aa25bcadb3b500c34cf89154388
-ms.openlocfilehash: 9abdfa7349bee74b89a23663969904110c730395
+ms.sourcegitcommit: 21e599fc2adf3d7dce84cc1c4130504b71928db7
+ms.openlocfilehash: c8c5f30e4cb0467f6ccdc65d96b57b766593ba31
 
 
 ---
@@ -89,13 +89,16 @@ Azure AD Connect Health は簡単に使用を開始できます。 次の手順�
 >
 
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Azure AD Connect Health エージェントのダウンロードとインストール
-* Azure AD Connect Health の要件を必ず満たしてください。
-* Azure AD Connect Health for AD FS の使用を開始するには、こちら ([Azure AD Connect Health for AD FS エージェントのダウンロード](http://go.microsoft.com/fwlink/?LinkID=518973)
-  [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)) から最新バージョンのエージェントをダウンロードします。
-* Azure AD Connect Health for Sync の使用を開始するには、 [Azure AD Connect の最新バージョン](http://go.microsoft.com/fwlink/?linkid=615771)をダウンロードしてインストールします。  Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以降)。  Azure AD Connect では、以前のバージョンからのインプレース アップグレードがサポートされています。
-* Azure AD Connect Health for AD DS の使用を開始するには、こちら ([Azure AD Connect Health for AD DS エージェントのダウンロード](http://go.microsoft.com/fwlink/?LinkID=820540)
-  [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)) から最新バージョンのエージェントをダウンロードします。
-
+* Azure AD Connect Health の要件 (active-directory-aadconnect-health-agent-install.md#requirements) を満たしていることを確認します
+* Azure AD Connect Health for AD FS の使用を開始します
+    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [インストール手順を参照します](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+* Azure AD Connect Health for sync の使用を開始します
+    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](http://go.microsoft.com/fwlink/?linkid=615771)。 同期用 Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以降)。
+* Azure AD Connect Health for AD DS の使用を開始します
+    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=820540)
+    * [インストール手順を参照します](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+    
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health ポータル
 Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、使用状況の分析を表示できます。 https://aka.ms/aadconnecthealth から Azure AD Connect Health のメイン ブレードに移動できます。  ブレードは、ウィンドウと考えることができます。 メイン ブレードでは、[クイック スタート]、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。 スクリーン ショットの下に、それぞれの簡単な説明を示します。  エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
@@ -120,7 +123,6 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

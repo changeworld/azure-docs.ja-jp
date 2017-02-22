@@ -1,5 +1,5 @@
 ---
-title: "テンプレートを使用して IPv6 でインターネットに接続する負荷分散されたソリューションをデプロイする | Microsoft Docs"
+title: "IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート | Microsoft Docs"
 description: "Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。"
 services: load-balancer
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 01/23/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: f031fb76e225248a6d0535106b846dc3bef10e76
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 752793ed481b0b69203fa13b214add32e9129dfd
 
 ---
 
@@ -29,7 +29,7 @@ ms.openlocfilehash: f031fb76e225248a6d0535106b846dc3bef10e76
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 ## <a name="example-deployment-scenario"></a>デプロイ シナリオの例
 
@@ -41,7 +41,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 * IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
 * IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
-* パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
+* パブリック VIP をプライベート エンドポイントにマップする&2; つの負荷分散規則
 * 2 つの VM が含まれる可用性セット
 * 2 つの仮想マシン (VM)
 
@@ -95,7 +95,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 テンプレートが正常にデプロイされると、次のタスクを実行して接続を検証できます。
 
 1. Azure ポータルにサインインし、テンプレート デプロイメントで作成した各 VM に接続します。 Windows Server VM をデプロイした場合は、コマンド プロンプトから ipconfig /all を実行します。 VM に IPv4 と IPv6 の両方のアドレスがあることがわかります。 Linux VM をデプロイした場合は、お使いの Linux ディストリビューションで提供されている手順を使用して、動的な IPv6 のアドレスを受け取るように Linux OS を構成する必要があります。
-2. インターネットに接続された IPv6 クライアントから、ロード バランサーのパブリック IPv6 アドレスへの接続を開始します。 ロード バランサーが 2 つの VM 間で負荷を分散していることを確認するには、各 VM に Microsoft インターネット インフォメーション サービス (IIS) などの Web サーバーをインストールします。 各サーバーの既定の Web ページには "Server0" や "Server1" などのテキストが含まれており、一意に識別できます。 次に、インターネットに接続された IPv6 クライアントでインターネット ブラウザーを開き、ロード バランサーの dnsNameforIPv6LbIP パラメーターに指定したホスト名を参照して、IPv6 の各 VM へのエンド ツー エンドの接続を確認します。 1 台のサーバーからの Web ページのみが表示された場合は、ブラウザー キャッシュをクリアする必要がある場合があります。 複数のプライベート ブラウズ セッションを開きます。 各サーバーからの応答が表示されます。
+2. インターネットに接続された IPv6 クライアントから、ロード バランサーのパブリック IPv6 アドレスへの接続を開始します。 ロード バランサーが&2; つの VM 間で負荷を分散していることを確認するには、各 VM に Microsoft インターネット インフォメーション サービス (IIS) などの Web サーバーをインストールします。 各サーバーの既定の Web ページには "Server0" や "Server1" などのテキストが含まれており、一意に識別できます。 次に、インターネットに接続された IPv6 クライアントでインターネット ブラウザーを開き、ロード バランサーの dnsNameforIPv6LbIP パラメーターに指定したホスト名を参照して、IPv6 の各 VM へのエンド ツー エンドの接続を確認します。 1 台のサーバーからの Web ページのみが表示された場合は、ブラウザー キャッシュをクリアする必要がある場合があります。 複数のプライベート ブラウズ セッションを開きます。 各サーバーからの応答が表示されます。
 3. インターネットに接続された IPv4 クライアントから、ロード バランサーのパブリック IPv4 アドレスへの接続を開始します。 ロード バランサーが 2 つの VM の負荷を分散していることを確認するには、IIS を使用してテストできます。IIS については手順 2 に詳述されています。
 4. 各 VM から、インターネットに接続されている IPv6 デバイスまたは IPv4 デバイスへの送信接続を開始します。 どちらの場合でも、宛先のデバイスで確認される送信元の IP がロード バランサーの IPv4 または IPv6 のパブリック アドレスです。
 
@@ -135,6 +135,6 @@ Azure Resource Manager のテンプレートには複数の変数とパラメー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

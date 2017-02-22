@@ -1,30 +1,37 @@
 ---
-title: "Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法 | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシ コネクタのサイレント インストールを実行して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について説明します。"
+title: "Azure AD アプリケーション プロキシ コネクタのサイレント インストール | Microsoft Docs"
+description: "Azure AD アプリケーション プロキシ コネクタの無人インストールを実行して、オンプレミスのアプリへの安全なリモート アクセスを実現する方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2016
+ms.date: 02/03/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: cf00d47efc613f7bdc152c1b5f0d0830fb44a785
 
 
 ---
 # <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。 このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
 
+この機能は次の場合に便利です。
+
+* UI レイヤーがないコンピューターや、RDP 経由で接続できないコンピューターにコネクタをインストールする。
+* 一度に多数のコネクタをインストールし、登録する。
+* コネクタのインストールと登録を別の手順の一部として統合する。
+* コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
+
 ## <a name="enabling-access"></a>アクセスの実現
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
+アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。 アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。 または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
 
 ## <a name="step-1--install-the-connector-without-registration"></a>手順 1: 登録せずにコネクタをインストールする
 次のように、コネクタを登録せずにコネクタ MSI をインストールします。
@@ -41,7 +48,7 @@ ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
 * オフラインで作成したトークンを使用してコネクタを登録する
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
-1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"<username>" と "<password>" をディレクトリのユーザー名とパスワードに置き換えます。
+1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。\<username\> と \<password\> をディレクトリのユーザー名とパスワードに置き換えます。
    
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -108,25 +115,23 @@ ms.openlocfilehash: fe96fb2159a7d0dba0ad391d25f38f79cf8aeeb3
         }
 
 
+2. トークンを作成したら、そのトークンを使用して SecureString を作成します。
 
-
-
-1. トークンを作成したら、そのトークンを使用して SecureString を作成します。 <br>
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
-2. 次の Windows PowerShell コマンドを実行します。SecureToken は上記で作成したトークンの名前です。tenantID はテナントの GUID です。 <br>
+
+3. \<tenant GUID\> をご使用のディレクトリ ID で置き換えて、次の Windows PowerShell コマンドを実行します。
+
    `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 
-## <a name="see-also"></a>関連項目
-* [Azure Active Directory のアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
+## <a name="next-steps"></a>次のステップ 
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
-最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

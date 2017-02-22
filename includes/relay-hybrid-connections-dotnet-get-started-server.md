@@ -6,7 +6,7 @@
 2. **[参照]** タブをクリックし、"Microsoft Azure Relay" を検索して、**[Microsoft Azure Relay]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
 ### <a name="write-some-code-to-receive-messages"></a>メッセージを受信するコードを記述する
-1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
+1. Program.cs ファイルの先頭にある既存の `using` ステートメントを次のステートメントに置き換えます。
    
     ```csharp
     using System;
@@ -23,7 +23,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. 次に示すように、`ProcessMessagesOnConnection` という新しいメソッドを `Program` クラスに追加します。
+3. `ProcessMessagesOnConnection` という次の新しいメソッドを `Program` クラスに追加します。
    
     ```csharp
     // Method is used to initiate connection
@@ -242,6 +242,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

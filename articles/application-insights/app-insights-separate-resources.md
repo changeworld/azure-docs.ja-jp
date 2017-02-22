@@ -1,5 +1,5 @@
 ---
-title: "開発、テスト、および実稼働用に Application Insights リソースを分ける"
+title: "Azure Application Insights での開発、テスト、および運用の監視 | Microsoft Docs"
 description: "開発のさまざまな段階で、アプリケーションのパフォーマンスと使用状況を監視します。"
 services: application-insights
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: bd4ba58715b216473caa4193567f6d3b95d9d347
+ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
+ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 
 
 ---
 # <a name="separating-application-insights-resources"></a>Application Insights リソースの分離
-さまざまなコンポーネントとアプリケーションからのテレメトリは、Application Insights の異なるリソースに送信するべきでしょうか、それとも 1 つのリソースにまとめるべきでしょうか。 この記事では、そのベスト プラクティスと必要な手法について説明します。
+さまざまなコンポーネントとアプリケーションからのテレメトリは、Application Insights の異なるリソースに送信するべきでしょうか、それとも&1; つのリソースにまとめるべきでしょうか。 この記事では、そのベスト プラクティスと必要な手法について説明します。
 
 まず、質問を理解しておきましょう。 アプリケーションから受け取ったデータは Microsoft Azure *リソース*に格納され、Application Insights によって処理されます。 各リソースは、 *インストルメンテーション キー* (iKey) によって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。 キーは、コード内または ApplicationInsights.config で指定できます。 SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。 
 
@@ -33,7 +33,7 @@ ms.openlocfilehash: bd4ba58715b216473caa4193567f6d3b95d9d347
 ## <a name="when-to-use-separate-ikeys"></a>異なる iKey を使用する場合
 一般的なガイドラインを次に示します。
 
-* 他のコンポーネントとは独立してスケールアップ/スケールダウンできるサーバー インスタンスのセットで実行する個別にデプロイ可能なアプリケーション ユニットがある場合は、通常、それを 1 つのリソースにマップします。つまり、1 つのインストルメンテーション キー (iKey) を使用します。
+* 他のコンポーネントとは独立してスケールアップ/スケールダウンできるサーバー インスタンスのセットで実行する個別にデプロイ可能なアプリケーション ユニットがある場合は、通常、それを&1; つのリソースにマップします。つまり、1 つのインストルメンテーション キー (iKey) を使用します。
 * これに対し、次のような場合には異なる iKey を使用します。
   * 異なるコンポーネントからの異なるメトリックを読みやすくする。
   * 量の少ないテレメトリと量の多いテレメトリを分離し、あるストリームのスロットル、クォータ、サンプリングが他のストリームに影響を与えないようにする。
@@ -44,7 +44,7 @@ ms.openlocfilehash: bd4ba58715b216473caa4193567f6d3b95d9d347
 Application Insights ポータルのエクスペリエンスの多くは、これらのガイドラインを考慮して設計されています。 たとえば、サーバーは、1 つの論理コンポーネントに関するテレメトリは複数のサーバー インスタンスからのものであると想定して、サーバー インスタンスのセグメントを表示します。
 
 ## <a name="single-ikey"></a>単一の iKey
-複数のコンポーネントから 1 つの iKey にテレメトリを送信する場合:
+複数のコンポーネントから&1; つの iKey にテレメトリを送信する場合:
 
 * コンポーネントの ID でセグメント分割およびフィルター処理できるプロパティをすべてのテレメトリに追加します。 ロール ID はサーバー ロール インスタンスからテレメトリに自動的に追加されますが、それ以外の場合は、 [テレメトリ初期化子](app-insights-api-filtering-sampling.md#add-properties) を使用してプロパティを追加できます。
 * 同時に複数の異なるコンポーネントで Application Insights SDK を更新します。 1 つの iKey のテレメトリは、同じバージョンの SDK から生成される必要があります。
@@ -99,7 +99,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-separate-resources/01-new.png)
 
-* **アプリケーションの種類** に応じて、概要ブレードに表示されるものと [メトリック エクスプローラー](app-insights-metrics-explorer.md)で使用できるプロパティが決まります。 自分のアプリの種類が表示されない場合、Web ページの Web の種類を 1 つ選択します。
+* **アプリケーションの種類** に応じて、概要ブレードに表示されるものと [メトリック エクスプローラー](app-insights-metrics-explorer.md)で使用できるプロパティが決まります。 自分のアプリの種類が表示されない場合、Web ページの Web の種類を&1; つ選択します。
 * **リソース グループ** は、 [アクセス制御](app-insights-resources-roles-access-control.md)などのプロパティを管理するのに便利です。 開発、テスト、および実稼働用に別々のリソース グループを使用できます。
 * **サブスクリプション** は、Azure での支払いアカウントです。
 * **場所** は、データの保存場所です。 現在、これは変更できません。 
@@ -119,6 +119,6 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

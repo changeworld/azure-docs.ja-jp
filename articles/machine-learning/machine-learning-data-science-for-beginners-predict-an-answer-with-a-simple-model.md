@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/20/2016
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 9db45dd89d59a1d8e33f0523eefc336eec35a444
 
 
 ---
@@ -27,12 +27,12 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
 > 
 > 
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
@@ -41,7 +41,7 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト: 単純なモデルで回答を予測する
-"初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
+"初心者向けデータ サイエンス" シリーズの&4; 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
 
 *"モデル"* とは、データについての単純化されたストーリーです。 何が言いたいかを説明します。
 
@@ -52,9 +52,9 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 ![ダイヤモンドのデータの列](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/diamond-data.png)
 
-リストが 2 列になっていることに注目してください。 各列は、重さ (カラット単位) と価格という異なる属性を持ち、各行は 1 つのダイヤモンドを表す 1 つのデータ ポイントです。
+リストが&2; 列になっていることに注目してください。 各列は、重さ (カラット単位) と価格という異なる属性を持ち、各行は&1; つのダイヤモンドを表す&1; つのデータ ポイントです。
 
-実際に、これで小さなデータ セット、つまり 1 つのテーブルができたことになります。 このテーブルが品質の条件を満たしていることに注目してください。
+実際に、これで小さなデータ セット、つまり&1; つのテーブルができたことになります。 このテーブルが品質の条件を満たしていることに注目してください。
 
 * データに **関連性がある** : 重さは間違いなく価格に関連しています。
 * **正確である** : 書き留めた価格をダブルチェックしました。
@@ -75,7 +75,7 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 このデータを取得し、 *"散布図"*に変換します。 数値のデータ セットを視覚化するにはこの方法がお勧めです。
 
-最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。 次に、7,366 ドルの位置で水平軸の見当を付けてください。 それらが交差する場所に点を描きます。 これが 1 番目のダイヤモンドを表します。
+最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。 次に、7,366 ドルの位置で水平軸の見当を付けてください。 それらが交差する場所に点を描きます。 これが&1; 番目のダイヤモンドを表します。
 
 リストの各ダイヤモンドで同じ作業を行います。 すべて終わると、点の集まりが得られます。点はそれぞれダイヤモンドを表します。
 
@@ -123,7 +123,7 @@ ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
 
 列を増やします。 その場合は、数学が役立ちます。 3 列以上ある場合、紙に点を描画するのは困難です。 数学によって、線または面をデータと非常にうまく適合させることができます。
 
-また、ダイヤモンドがほんのわずかではなく、2,000 個または 200 万個あった場合は、コンピューターを使用してこの処理をより高速に実行できます。
+また、ダイヤモンドがほんのわずかではなく、2,000 個または&200; 万個あった場合は、コンピューターを使用してこの処理をより高速に実行できます。
 
 ここでは、線形回帰を実行する方法について説明し、データを使用して予測しました。
 
@@ -136,6 +136,6 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

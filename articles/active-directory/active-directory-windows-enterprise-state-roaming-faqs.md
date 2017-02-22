@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: f5b9a4d83e21dfefc12ea2931702a9dce3f03016
-ms.openlocfilehash: bd4352cd6f8a909d518b0c5527d6c0e63e4bad51
+ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
+ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
 
 
 ---
@@ -44,7 +44,7 @@ Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft ア�
 
 Windows 10 における設定の同期機能に使用できるのは、デバイスのプライマリ アカウントだけです (「[Windows 8 における Microsoft アカウントでの設定の同期を Windows 10 における Azure AD での設定の同期にアップグレードするとどうなりますか](active-directory-windows-enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)」を参照)。
 
-デバイス上の異なるユーザー アカウントのデータがミックスされることはありません。 設定の同期には次の 2 つの規則があります。
+デバイス上の異なるユーザー アカウントのデータがミックスされることはありません。 設定の同期には次の&2; つの規則があります。
 
 * Windows の設定は常にプライマリ アカウントでローミングされます。
 * アプリのデータは、そのアプリを取得する際に使われたアカウントでタグ付けされます。 同期されるのは、プライマリ アカウントでタグ付けされたアプリだけです。 アプリの所有権タグは、Windows ストアやモバイル デバイス管理 (MDM) 経由でアプリをサイド ローディングしたときに決定されます。
@@ -78,7 +78,7 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 3. ライセンス配布ポイントの URL は、 **Get-AadrmConfiguration** コマンドレットを実行して確認できます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>既存の Windows デスクトップ アプリケーションに使用されるローミングの設定に関しては、どのような選択肢がありますか
-ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の 2 つの選択肢があります。
+ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の&2; つの選択肢があります。
 
 * [Desktop Bridge](http://aka.ms/desktopbridge) を使用する。既存の Windows デスクトップ アプリをユニバーサル Windows プラットフォームに移行できます。 そこから、ごくわずかな変更をコードに加えることで、Azure AD のアプリ データ ローミングを利用できるようになります。 既存のデスクトップ アプリは、そのデータのローミングに必要なアプリ ID を Desktop Bridge から得ることができます。
 * [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) を使用する。Win32 アプリについては、UE-V を使用して既存の Windows デスクトップ アプリ用のカスタム設定テンプレートを作成し、ローミングを有効にできます。 この方法を選んだ場合、アプリの開発者がそのコードを変更する必要はありません。 UE-V は、オンプレミスの Active Directory ローミングに限られ、Microsoft Desktop Optimization Pack を購入済みであることが必要となります。
@@ -120,23 +120,17 @@ Enterprise State Roaming は Windows 10 クライアント SKU でサポート�
 Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプションでのローミングを既にご利用の場合、有料の Azure RMS サブスクリプションを購入しても、ローミング機能の働きには一切影響せず、IT 管理者が構成に変更を加える必要もありません。
 
 ## <a name="known-issues"></a>既知の問題
-* スマート カードまたは仮想スマート カードを使用して Windows デバイスにサインインしようとすると、設定の同期機能が停止します。 この問題は今後、Windows 10 の更新プログラムで解決される可能性があります。
-* Internet Explorer のお気に入りの同期機能を使用するためには、July Cumulative Update for Windows 10 (ビルド 10586.494 以降) が必要です。
-* Windows Information Protection で保護されているデータは、Enterprise State Roaming での同期を行いません。 さらに、Windows Information Protection が有効になっているマシンでは、テーマの同期は発生しません。
-* Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。
-
-  * お使いのデバイスが Azure Active Directory ポータルで [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスのサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、 [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
-  * 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。  一度サインオフしてから [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
-* コンピューターが Azure Active Directory デバイスへの自動登録によってドメインに参加している場合、コンピューターが長期にわたって接続されず、かつドメイン認証が完了できないと同期に失敗することがあります。 この問題を解決するには、コンピューターを企業ネットワークに接続します。これで同期を再開することができます。
+既知の問題の一覧については、「[troubleshooting](active-directory-windows-enterprise-state-roaming-troubleshooting.md)」(トラブルシューティング) セクションのドキュメントを参照してください。 
 
 ## <a name="related-topics"></a>関連トピック
 * [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)
 * [Azure Active Directory の Enterprise State Roaming を有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

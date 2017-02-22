@@ -16,15 +16,14 @@ ms.topic: article
 ms.date: 07/12/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: c0ba77046a24346b7c197d0a0e0f9ff18f449c4a
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: ba920ba7ae6052174445bd2ebeee928710a89a83
 
 
 ---
 # <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルに Linux 仮想マシンの可用性セットを構成する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-リソース マネージャー デプロイメントで[可用性セットを構成する](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)こともできます。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager デプロイメントで[可用性セットを構成する](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)こともできます。
 
 [!INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
@@ -34,6 +33,6 @@ ms.openlocfilehash: c0ba77046a24346b7c197d0a0e0f9ff18f449c4a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

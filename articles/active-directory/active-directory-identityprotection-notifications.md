@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 12/20/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: afb51a4513a7f1bcbbc85394d8dc7ab8af762f43
+ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
+ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
 
 
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
-Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ 2 種類の自動通知電子メールが送信されます。
+Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ&2; 種類の自動通知電子メールが送信されます。
 
 * ユーザー侵害アラート電子メール
 * 週間ダイジェスト電子メール
 
 ## <a name="user-compromised-alert-email"></a>ユーザー侵害アラート電子メール
-ユーザー侵害電子メール アラートは、Azure AD Identity Protection がアカウントの侵害を識別すると生成されます。 この電子メールには、Identity Protection ダッシュボードのリスクのフラグ付きユーザー レポートへのリンクが含まれます。 侵害に関する通知はすぐに調査することをお勧めします。
+ユーザー侵害電子メール アラートは、Azure AD Identity Protection がアカウントの侵害を識別すると生成されます。 この電子メールには、Identity Protection ダッシュボードのリスクのフラグ付きユーザー レポートへのリンクが含まれます。 侵害されたアカウントに関する通知はすぐに調査することをお勧めします。
 
 ## <a name="weekly-digest-email"></a>週間ダイジェスト電子メール
 週間ダイジェスト電子メールには、新しいリスク イベントの概要が含まれます。<br>
@@ -41,7 +41,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 <br>
 ![修復](./media/active-directory-identityprotection-notifications/400.png "Remediation")
-<br> 
+<br>
 
 週間ダイジェスト電子メールの送信は無効化できます。
 <br><br>
@@ -52,19 +52,18 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。
    <br><br>
-   ![ユーザー リスクのポリシー](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
+   ![ユーザー リスク ポリシー](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
    <br>
 2. **[全般]** セクションで **[通知]** をクリックします。
    <br><br>
-   ![ユーザー リスクのポリシー](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
+   ![ユーザー リスク ポリシー](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
    <br>
 
 ## <a name="see-also"></a>関連項目
-* [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: f6e7cf0e9e2055df5f8a9fcf9ea49330a91be656
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: add307420b9e16a60b0e57b0ba08188b2509978e
 
 
 ---
@@ -28,7 +28,7 @@ Microsoft Translator に接続して、テキストの翻訳、言語の検出�
 * Microsoft Translator から取得したデータに基づいてビジネス フローを構築できます。 
 * アクションを使用して、テキストの翻訳、言語の検出などを行うことができます。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、Dropbox で新しいファイルが作成されたときに、Microsoft Translator を使用してファイル内のテキストを別の言語に翻訳することができます。
 
-ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、「 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)」を参照してください。
 
 ## <a name="triggers-and-actions"></a>トリガーとアクション
 Microsoft Translator には、次のアクションがあります。 トリガーはありません。
@@ -125,7 +125,7 @@ Microsoft Translator がサポートするすべての言語を取得します�
 | 名前 |string |× |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
 
 [API リスト](apis-list.md)に戻ります。
 
@@ -135,6 +135,6 @@ Microsoft Translator がサポートするすべての言語を取得します�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

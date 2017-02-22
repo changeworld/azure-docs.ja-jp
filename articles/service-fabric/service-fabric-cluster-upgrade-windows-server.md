@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/10/2016
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 3d2e6380e4987c559e9ed62c3eaacb1ce45c917d
-ms.openlocfilehash: 79d9d65c93aae92170667c1bc98fbd6bb1ffc3ff
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
 
 
 ---
@@ -194,6 +194,6 @@ Service Fabric の最新バージョンまたはサポートされているバ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

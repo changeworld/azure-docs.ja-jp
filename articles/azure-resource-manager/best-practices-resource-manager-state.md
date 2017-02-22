@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager テンプレートでの状態の処理 | Microsoft Docs"
-description: "複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
+title: "Azure テンプレート間での複雑な値のやり取り | Microsoft Docs"
+description: "複合オブジェクトを使用して Azure Resource Manager テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 23cc4321159a87b61c177b11381646af8bd9eb35
 
 
 ---
-# <a name="sharing-state-in-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートでの状態の共有
+# <a name="share-state-to-and-from-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの状態の共有
 このトピックでは、テンプレート内で状態を管理して共有するためのベスト プラクティスを説明します。 このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。 これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
 
 このトピックは大型のホワイト ペーパーの一部です。 すべてご覧になりたい場合は、[ワールド クラスの Resource Manager テンプレートの考慮事項と実証済みプラクティス](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)に関するホワイト ペーパーをダウンロードしてください。
@@ -236,7 +236,7 @@ ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
 上記の例で、生成されたこの変数について説明しています。
 
 #### <a name="networksettings"></a>networkSettings
-容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。 わかりやすい方法の 1 つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
+容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。 わかりやすい方法の&1; つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
 
 以下にネットワーク設定をやり取りする例を示します。
 
@@ -415,6 +415,6 @@ ms.openlocfilehash: cf2f6a82df28047ba7b50dc2cfd6fc2f0dfad794
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

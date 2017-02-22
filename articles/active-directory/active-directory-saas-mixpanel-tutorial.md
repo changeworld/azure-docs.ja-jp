@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f76b0f17eecaa6f86e67810296df14decf459153
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 58c8e1b6bcc90ecf5cc630aa0249ea811c1d1174
 
 
 ---
@@ -258,6 +258,6 @@ Mixpanel で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

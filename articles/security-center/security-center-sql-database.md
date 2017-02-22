@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
+ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
+ms.openlocfilehash: ba8fd7ea8979c8c2afbace60a5675b411438d6b4
 
 
 ---
@@ -38,7 +38,7 @@ Security Center の機能は、SQL Database のリソースを保護すること
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがあれば、Security Center の Free レベルが有効になっています。 Security Center の Free レベルと Standard レベルの詳細については、「[セキュリティ センターの価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
-セキュリティ センターは、ロール ベースのアクセスをサポートしています。 ロールベースのアクセス制御 (RBAC) の詳細については、「 [Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。 Security Center の FAQ に、[Security Center でのアクセス許可の処理](security-center-faq.md#how-are-permissions-handled-in-azure-security-center)についての情報が提供されています。
+セキュリティ センターは、ロール ベースのアクセスをサポートしています。 ロールベースのアクセス制御 (RBAC) の詳細については、「 [Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。 Security Center の FAQ に、[Security Center でのアクセス許可の処理](security-center-faq.md#permissions)についての情報が提供されています。
 
 ## <a name="access-security-center"></a>セキュリティ センターへのアクセス
 Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 [ポータルにサインイン](https://portal.azure.com/)して **[セキュリティ センター] オプション**を選択します。
@@ -118,6 +118,6 @@ Security Center は、真の脅威を検出し、偽陽性の検出を減らす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "省略可能: LED のオンとオフの動作の変更 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 4: アプリの変更 | Microsoft Docs"
 description: "LED のオンとオフの動作を変更するメッセージをカスタマイズします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: dd74474d315c94ae3f2d3e69f8696f9be8508499
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 53c9408bedc6c61cdb0e755b46b3090e8723e271
 
 
 ---
@@ -92,7 +92,7 @@ Node.js 関数を追加して、LED のオンとオフの動作を変更しま�
 gulp deploy && gulp run
 ```
 
-LED が 2 秒間点灯した後、2 秒間消灯します。 最後の "stop" メッセージは、サンプル アプリケーションの実行を停止するためのものです。
+LED が&2; 秒間点灯した後、2 秒間消灯します。 最後の "stop" メッセージは、サンプル アプリケーションの実行を停止するためのものです。
 
 ![サンプル アプリケーションの "オン/オフ" メッセージ](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_on_and_off.png)
 
@@ -104,6 +104,6 @@ LED が 2 秒間点灯した後、2 秒間消灯します。 最後の "stop" �
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Kafka に Apache Spark を使用する | Microsoft Docs"
+title: "Azure HDInsight での Kafka に Apache Spark を使用する | Microsoft Docs"
 description: "HDInsight で Spark を使用して、HDInsight クラスター上の Kafka に対するデータの読み取りと書き込みを行う方法について説明します。 この例では、Jupyter Notebook で Scala を使用し、HDInsight の Kafka にランダムなデータを書き込んだ後に、Spark ストリーミングを使用してそのデータを読み取ります。"
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/14/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 535e8fc7503e21eea470a1fdb0a10fbc8a18349c
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>HDInsight での Kafka (プレビュー) に Apache Spark を使用する
@@ -44,7 +44,7 @@ Apache Spark は、Apache Kafka 内外へのデータのストリームに使用
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスを提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
+HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
 
 ![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
@@ -130,7 +130,7 @@ HDInsight 上の Kafka で動作するアプリケーションを作成する場
         curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
 
     > [!IMPORTANT]
-    > Windows PowerShell からこのコマンドを使用すると、シェルの引用符に関するエラー メッセージが表示される場合があります。 その場合は、次のコマンドを使用します。`curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'
+    > Windows PowerShell からこのコマンドを使用すると、シェルの引用符に関するエラー メッセージが表示される場合があります。 その場合は、次のコマンドを使用します: `curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'`
 
 * __Zookeeper ホスト__情報を取得するには：
 
@@ -187,6 +187,6 @@ HDInsight 上の Kafka で動作するアプリケーションを作成する場
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

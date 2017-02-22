@@ -16,17 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: d988b30457e1882a90ce6aac4efaf87a0d71c858
+ms.sourcegitcommit: 94afcefe2e6f2b51914993f7219f5e0fd2466ead
+ms.openlocfilehash: 321ea57a292bfcc74732d600c35703484bf6d23f
 
 
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>FreeBSD VHD の作成と Azure へのアップロード
 この記事では、FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure の仮想マシン (VM) を作成することができます。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Resource Manager モデルを使用した VHD のアップロード方法については、[こちら](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した VHD のアップロード方法については、[こちら](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、次の項目があることを前提としています。
@@ -177,7 +176,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
    詳細については、「 [Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください。
 
-   PowerShell のインストールと構成の詳細については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+   PowerShell のインストールと構成の詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ## <a name="step-4-upload-the-vhd-file"></a>ステップ 4: .vhd ファイルをアップロードする
 .vhd ファイルをアップロードするときは、Blob Storage 内であればどこにでも .vhd ファイルを置くことができます。 以下、ファイルをアップロードするときに使用するいくつかの用語について補足します。
@@ -215,6 +214,6 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/25/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: 8b085c94078a8e6c4ded95c85443d14637025dc2
+ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
+ms.openlocfilehash: 78117fd3947be922e339931a0f8f31040ebf79fe
 
 
 ---
@@ -31,7 +31,12 @@ ms.openlocfilehash: 8b085c94078a8e6c4ded95c85443d14637025dc2
 >
 >
 
-この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。
+この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
+
+> [!NOTE]
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+> 
+> 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
@@ -187,7 +192,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 }
 ```
 
-この JSON では、**AzureBlobOutput** という名前のデータセットを定義します。これは、パイプラインのアクティビティの出力データを表します。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+この JSON では、**AzureBlobOutput** という名前のデータセットを定義します。これは、パイプラインのアクティビティの出力データを表します。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
 
 ### <a name="pipelinejson"></a>pipeline.json
 > [!IMPORTANT]
@@ -234,7 +239,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 }
 ```
 
-この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
+この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する&1; つのアクティビティで構成されるパイプラインを作成します。
 
 Hive スクリプト ファイル **partitionweblogs.hql** は、(**StorageLinkedService** という scriptLinkedService によって指定された) Azure ストレージ アカウントと **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
 
@@ -305,7 +310,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 * Azure Data Factory の名前はグローバルに一意にする必要があります。 results に " **データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の手順に従います。
   1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
   2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
-  3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
+  3. REST API を呼び出す次の&2; つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
 * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 * "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
@@ -465,10 +470,10 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
 
 1. Azure **データ ファクトリ**を作成しました。
-2. 次の 2 つの **リンクされたサービス**を作成しました。
+2. 次の&2; つの **リンクされたサービス**を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する&2; つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
@@ -477,16 +482,14 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 ## <a name="see-also"></a>関連項目
 | トピック | 説明 |
 |:--- |:--- |
-| [Data Factory REST API リファレンス](https://msdn.microsoft.com/library/azure/dn906738.aspx) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
-| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) |この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+| [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
-| [Azure ポータルのブレードを使用したパイプラインの監視と管理に関するページ](data-factory-monitor-manage-pipelines.md) |この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

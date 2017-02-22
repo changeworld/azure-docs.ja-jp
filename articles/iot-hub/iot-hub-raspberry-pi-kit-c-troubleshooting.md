@@ -1,5 +1,5 @@
 ---
-title: "トラブルシューティング | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - トラブルシューティング | Microsoft Docs"
 description: "Raspberry Pi の Node.js エクスペリエンスに関するトラブルシューティング ページ"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 6decf4f836b03c2437914756683ad282be300fbb
-ms.openlocfilehash: b37d2e93bda04d1934e94478ba1c2f9574d29e10
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 52d76bb967471ae49b55b0fcb930c223984b39e3
 
 
 ---
@@ -67,13 +67,13 @@ sudo gdb app
 ```
 
 ## <a name="azure-cli-issues"></a>Azure CLI の問題
-Azure コマンド ライン インターフェイス (Azure CLI) は、プレビュー ビルドです。 解決方法については、「[Preview Install Guide (プレビュー インストール ガイド)](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md)」を参照してください。 コマンドが期待どおりに機能しない場合は、Azure CLI を最新バージョンにアップグレードしてみてください。
+Azure コマンド ライン インターフェイス (Azure CLI) は、プレビュー ビルドです。 解決方法をお探しの際は、[プレビュー インストール ガイド](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md)に関するページを参照してください。 コマンドが正常に動作しない場合は、Azure CLI を最新バージョンにアップグレードしてみてください。
 
 ツールにバグを発見した場合には、GitHub リポジトリの **[Issues (問題)]** セクションで[問題](https://github.com/Azure/azure-cli/issues)を報告してください。
 
 よくある問題のトラブルシューティングについては、[readme](https://github.com/Azure/azure-cli/blob/master/README.rst) を参照してください。
 
-"要件を満たすバージョンが見つかりません" と表示された場合は、次のコマンドを実行して pip を最新バージョンにアップグレードしてください。
+"Could not find a version that satisfies the requirement (要件を満たすバージョンが見つかりません)" と表示された場合は、次のコマンドを実行して pip を最新バージョンにアップグレードしてください。
 
 ```bash
 python -m pip install --upgrade pip
@@ -81,7 +81,7 @@ python -m pip install --upgrade pip
 
 ## <a name="python-installation-issues"></a>Python のインストールに関する問題
 ### <a name="legacy-installation-issues-macos"></a>レガシのインストールに関する問題 (macOS)
-以前のパッケージが **su** アクセス許可の下でインストールされている場合、**pip** をインストールするときにアクセス許可のエラーがスローされます。 このような状況は、以前に brew (macOS) を使ってインストールした Python が完全にアンインストールできていないために発生します。 以前のインストールの **pip** パッケージは一部がルートによって作成されており、これがアクセス許可のエラーを引き起こします。 このエラーを解決する方法は、ルートによってインストールされたパッケージを削除することです。 そのためには、以下の手順を実行してください。
+**pip** をインストールする際に、以前のパッケージが **su** アクセス許可の下でインストールされている場合には、アクセス許可のエラーがスローされます。 このような状況は、以前に brew (macOS) を使ってインストールした Python が完全にアンインストールできていないために発生します。 以前のインストールの **pip** パッケージは一部がルートによって作成されており、これがアクセス許可のエラーを引き起こします。 このエラーを解決する方法は、ルートによってインストールされたパッケージを削除することです。 そのためには、以下の手順を実行してください。
 
 1. /usr/local/lib/python2.7/site-packages に移動します。
 2. ルートによって作成されたパッケージを表示します: `ls -l | grep root`
@@ -89,10 +89,10 @@ python -m pip install --upgrade pip
 4. Python を再インストールします。
 
 ## <a name="azure-iot-hub-issues"></a>Azure IoT Hub の問題
-`azure-cli` で Azure IoT Hub 正常にプロビジョニングでき、IoT Hub に接続するデバイスを管理するためのツールが必要な場合には、以下をお試しください。
+`azure-cli` で Azure IoT ハブを正常にプロビジョニングでき、IoT ハブに接続するデバイスを管理するためのツールが必要な場合には、以下をお試しください。
 
 ### <a name="device-explorer"></a>デバイス エクスプローラー
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)は、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](iot-hub-devguide.md) と通信します。
+[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)は、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](iot-hub-devguide.md) と通信します。
 
 * "*デバイス ID 管理*": IoT Hub に登録されているデバイスのプロビジョニングと管理ができます。
 * "*デバイスからクラウドへのメッセージ受信*": デバイスから IoT ハブに送信されるメッセージを監視できます。
@@ -101,7 +101,7 @@ python -m pip install --upgrade pip
 このツールで `IoT hub connection string` を構成すると、その機能を余すところなく使用できます。
 
 ### <a name="iot-hub-explorer"></a>IoT Hub エクスプローラー
-[IoT Hub エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) は、デバイス クライアントを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのコマンドの送信が可能になります。
+[IoT Hub エクスプローラー](https://github.com/Azure/iothub-explorer) は、デバイス クライアントを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのコマンドの送信が可能になります。
 
 iothub-explorer ツールの最新版 (プレリリース版) をインストールするには、コマンド ライン環境で以下のコマンドを実行します。
 
@@ -123,6 +123,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

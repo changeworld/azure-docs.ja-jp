@@ -1,5 +1,5 @@
 ---
-title: "SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Docs"
+title: "Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化 | Microsoft Docs"
 description: "SQL パーティション テーブルを使用した並列の一括データ インポート"
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e6c45f4be168cef1a05958624f666097779e76f6
-ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
 
 
 ---
@@ -24,18 +24,16 @@ ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
-* [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (データベースが存在しない場合)
-* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加する
-  
-  新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
-* 1 つまたは複数のファイル (必要に応じて) を各データベース ファイル グループに追加する
+* [新しいデータベースを作成します](https://technet.microsoft.com/library/ms176061.aspx) (まだ存在しない場合)。
+* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイルグループを追加します。新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用して行います。
+* 1 つまたは複数のファイル (必要に応じて) を各データベース ファイルグループに追加します。
   
   > [!NOTE]
   > このパーティションのデータを保持するターゲット ファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
   > 
   > 
 
-次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
+次の例では、それぞれに&1; つの物理ファイルが含まれている、プライマリとログ グループ以外に&3; つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -185,6 +183,6 @@ ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

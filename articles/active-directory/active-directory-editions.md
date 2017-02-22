@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b241d70ab7c7e8468a3f358fef5af47a89d42e56
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 8dd4c5ab11c43ca09085004ee4dce3e616b19d8e
 
 
 ---
@@ -95,7 +95,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 #### <a name="directory-objects"></a>ディレクトリ オブジェクト
 **種類:** 共通機能
 
-既定の使用量クォータは 150,000 オブジェクトです。 1 個のオブジェクトは、一意の識別名によって表される、ディレクトリ サービス内の 1 つのエントリです。 オブジェクトの例としては、認証目的に使用されるユーザー エントリなどがあります。 この既定のクォータを超えるオブジェクト数が必要な場合は、サポートにお問い合わせください。 Office 365、Microsoft Intune、および Azure Active Directory をディレクトリ サービスの基盤とするその他の有料 Microsoft オンライン サービスには 500,000 オブジェクト制限は適用されません。
+既定の使用量クォータは 150,000 オブジェクトです。 1 個のオブジェクトは、一意の識別名によって表される、ディレクトリ サービス内の&1; つのエントリです。 オブジェクトの例としては、認証目的に使用されるユーザー エントリなどがあります。 この既定のクォータを超えるオブジェクト数が必要な場合は、サポートにお問い合わせください。 Office 365、Microsoft Intune、および Azure Active Directory をディレクトリ サービスの基盤とするその他の有料 Microsoft オンライン サービスには 500,000 オブジェクト制限は適用されません。
 
 **可用性:**
 
@@ -377,7 +377,7 @@ Azure AD には、Free、Basic、Premium (P1 および P2) の各エディショ
 * [iOS の証明書ベースの認証](active-directory-certificate-based-authentication-ios.md)
 * [Android の証明書ベースの認証](active-directory-certificate-based-authentication-android.md)
 
-## <a name="whats-next"></a>参照トピック
+## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 * [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 * [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)

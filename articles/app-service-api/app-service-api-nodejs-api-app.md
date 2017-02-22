@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
-ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
+ms.sourcegitcommit: 633caca05835aa204d4fec5fe216043a50520000
+ms.openlocfilehash: 87d2792d4f7610c62ed96cb522958844d4dc982b
 
 
 ---
@@ -230,23 +230,29 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
         git init
    
      ![新しいローカル Git リポジトリ](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. 次のコマンドを実行して、API アプリのリポジトリの Git リモートを追加します。 
+3. このチュートリアルの最初の部分を完了し、`ContactList` フォルダーをコピーすると、そのコピーには `node_modules` フォルダーが含まれることがあります。 `node_modules` フォルダーはデプロイ プロセス中に `package.json` ファイルと `npm install` から作成されたものなので、ソース管理には含めたくありません。 したがって、プロジェクト ディレクトリのルートで次のコマンドを実行して、`.gitignore` ファイルを追加します。
+
+         touch .gitignore
+      
+   .gitignore ファイルを開き、ファイルの最初の行に `node_modules` を追加します。 `git status` を実行しても一覧内にディレクトリが表示されていなければ、`node_modules` フォルダーがソース管理から無視されていることを確認できます。 さらにルールを追加する場合に NodeJS プロジェクトで無視することが推奨されるファイルに関する (GitHub プロジェクト)[https://github.com/github/gitignore/blob/master/Node.gitignore] があります。
+ 
+4. 次のコマンドを実行して、API アプリのリポジトリの Git リモートを追加します。 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
     **注**: 文字列 "YOUR_GIT_CLONE_URL_HERE" は、前の手順でコピーした Git クローン URL に置き換えます。 
-4. 次のコマンドを実行して、すべてのコードを含むコミットを作成します。 
+5. 次のコマンドを実行して、すべてのコードを含むコミットを作成します。 
    
         git add .
         git commit -m "initial revision"
    
     ![Git Commit の出力](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. Azure にコードをプッシュするコマンドを実行します。 パスワードの入力を求められたら、前に Azure ポータルで作成したパスワードを入力します。
+6. Azure にコードをプッシュするコマンドを実行します。 パスワードの入力を求められたら、前に Azure ポータルで作成したパスワードを入力します。
    
         git push azure master
    
     API アプリへのデプロイが開始されます。  
-6. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることがわかります。 
+7. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることがわかります。 
    
     ![デプロイメントの実行中](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
@@ -275,6 +281,6 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

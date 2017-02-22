@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 08/04/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 138e23a0964c0e540c6b2ddf8891aa9af6782233
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 35f58e8664c47c4e7a86c27e90813ad7be3cea04
 
 
 ---
@@ -25,7 +25,7 @@ Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使�
 
 ![IIS 認証](./media/multi-factor-authentication-get-started-server-iis/iis.png)
 
-## <a name="using-formbased-iis-authentication-with-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server でフォームベースの IIS 認証を使用する
+## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でフォームベースの IIS 認証を使用する
 フォームベースの認証を使用する IIS Web アプリケーションを保護するには、IIS Web サーバーに Azure Multi-Factor Authentication Server をインストールし、次の手順で Server を構成します。
 
 1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
@@ -43,7 +43,7 @@ Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使�
 13. URL とページの変数が検出または入力されれば、Web サイトのデータがフォーム ベースのパネルに表示されます。
 14. この後の「Azure Multi-Factor Authentication Server の IIS プラグインを有効にする」の項を参照して、IIS 認証の構成を完了してください。
 
-## <a name="using-integrated-windows-authentication-with-azure-multifactor-authentication-server"></a>統合 Windows 認証と Azure Multi-Factor Authentication Server を使用する
+## <a name="using-integrated-windows-authentication-with-azure-multi-factor-authentication-server"></a>統合 Windows 認証と Azure Multi-Factor Authentication Server を使用する
 統合 Windows HTTP 認証を使用する IIS Web アプリケーションを保護するには、IIS Web サーバーに Azure Multi-Factor Authentication Server をインストールし、次の手順で Server を構成します。
 
 1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
@@ -56,7 +56,7 @@ Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使�
 8. [OK] ボタンをクリックします。
 9. この後の「 [Azure Multi-Factor Authentication Server の IIS プラグインを有効にする](#enable-iis-plug-ins-for-azure-multi-factor-authentication-server) 」の項を参照して、IIS 認証の構成を完了してください。
 
-## <a name="enable-iis-plugins-for-azure-multifactor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
+## <a name="enable-iis-plug-ins-for-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の IIS プラグインを有効にする
 フォームベースまたは HTTP 認証 URL と設定を構成した後、Azure Multi-Factor Authentication の IIS プラグインを読み込んで IIS で有効になる場所を選択する必要があります。 次の手順に従います。
 
 1. IIS 6 で実行する場合は、[ISAPI] タブをクリックし、Web アプリケーションが実行される Web サイト (例: 既定の Web サイト) を選択し、そのサイトに対して Azure Multi-Factor Authentication の ISAPI フィルター プラグインを有効にします。
@@ -74,6 +74,6 @@ Azure Multi-Factor Authentication Server の [IIS 認証] セクションを使�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
 
 
 ---
@@ -659,7 +659,7 @@ TCP 443 (HTTPS) 経由のすべてのトラフィック<br\><br\></li>
               <p>Microsoft Azure 管理ポータルからユーザーの代わりにパスワードをリセットしようとすると、"オンプレミスの環境で実行されているパスワード リセット サービスは、ユーザーのパスワードをリセットする管理者をサポートしていません。 これを解決するには、最新のバージョンの Azure AD Connect にアップグレードしてください" というメッセージが表示されます。</p>
             </td>
             <td>
-              <p>これは、同期エンジンのバージョンが、使用した特定のパスワード ライトバック操作をサポートしていない場合に発生します。 Azure AD Connect の 1.0.0419.0911 以降のバージョンでは、Microsoft Azure 管理ポータルからのすべてのパスワード管理操作 (パスワード リセットのライトバック、パスワード変更のライトバック、管理者によるパスワード リセットのライトバック) をサポートしています。&nbsp; DirSync の 1.0.6862 以降のバージョンでは、パスワード リセットのライトバックのみをサポートしています。 この問題を解決するには、最新バージョンの Azure AD Connect または Azure Active Directory Connect をインストールすることを強くお勧めします。 詳細については、[オンプレミス ID の統合](connect/active-directory-aadconnect.md)に関するページを参照して、この問題を解決し、組織内でパスワード ライトバックを最大限に活用してください。</p>
+              <p>これは、同期エンジンのバージョンが、使用した特定のパスワード ライトバック操作をサポートしていない場合に発生します。 Azure AD Connect の 1.0.0419.0911 以降のバージョンでは、Microsoft Azure 管理ポータルからのすべてのパスワード管理操作 (パスワード リセットのライトバック、パスワード変更のライトバック、管理者によるパスワード リセットのライトバック) をサポートしています。&nbsp; DirSync の 1.0.6862 以降のバージョンでは、パスワード リセットのライトバックのみをサポートしています。 この問題を解決するには、最新バージョンの Azure AD Connect または Azure Active Directory Connect をインストールすることを強くお勧めします。 詳細については、[オンプレミス ID の統合](active-directory-aadconnect.md)に関するページを参照して、この問題を解決し、組織内でパスワード ライトバックを最大限に活用してください。</p>
             </td>
           </tr>
         </tbody></table>
@@ -1486,7 +1486,7 @@ Azure AD Connect 同期サービスを再起動すると、サービスに関す
 Azure AD Connect パッケージを再インストールすると、クラウド サービスに接続する際やローカル AD 環境でパスワードを管理する際に影響を及ぼす可能性がある構成の問題を解決できます。
 上記の 2 つの手順を試した後に、この手順を実行することをお勧めします。
 
-1. [こちら](connect/active-directory-aadconnect.md#install-azure-ad-connect)から Azure AD Connect の最新バージョンをダウンロードします。
+1. [こちら](active-directory-aadconnect.md#install-azure-ad-connect)から Azure AD Connect の最新バージョンをダウンロードします。
 2. Azure AD Connect が既にインストールされているので、インプレース アップグレードを実行するだけで Azure AD Connect のインストールが最新バージョンに更新されます。
 3. ダウンロードしたパッケージを実行し、画面の指示に従って Azure AD Connect コンピューターを更新します。  既定の同期ルールをカスタマイズしていない場合は、手動による追加の手順は必要ありませんが、カスタマイズしている場合は、 **アップグレードを開始する前にこれらをバックアップし、終了後に手動で再デプロイする**必要があります。
 
@@ -1519,6 +1519,6 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Nov16_HO3-->
 
 

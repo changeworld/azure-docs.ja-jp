@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 128e3607829d3838cdbb285fa95a1f7cd2112229
+ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
+ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 128e3607829d3838cdbb285fa95a1f7cd2112229
 
 * **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
 * **ReadDeviceToCloudMessages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、AMQP プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
@@ -202,12 +202,12 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         Console.WriteLine("Simulated device\n");
-        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
+        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey), TransportType.Mqtt);
    
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
    
-   既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。 HTTP プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。 HTTP プロトコルを使用する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
+   既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。 MQTT または HTTP プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。 HTTP プロトコルを使用する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
 
 このチュートリアルでは、IoT Hub シミュレーション対象デバイス アプリを作成する手順について説明します。 Visual Studio 拡張機能である [Connected Service for Azure IoT Hub][lnk-connected-service] を使用して、デバイス アプリに必要なコードを追加することもできます。
 
@@ -270,6 +270,6 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

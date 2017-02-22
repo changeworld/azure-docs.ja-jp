@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56bee9c0a2da3e522290c2274b6d0301defe3f71
+ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
+ms.openlocfilehash: 2dfcdf2207d1437a917c493075e3245bd58381ac
 
 
 ---
@@ -44,7 +44,7 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 ## <a name="get-an-azure-machine-learning-authorization-key"></a>Azure Machine Learning の承認キーを取得する
 実験をデプロイすると、Web サービスの API キーが生成されます。 複数の場所からキーを取得できます。
 
-## <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Microsoft Azure Machine Learning Web サービス ポータルを使用する
+### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Microsoft Azure Machine Learning Web サービス ポータルを使用する
 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインする
 
 新しい Machine Learning Web サービスの API キーを取得するには:
@@ -62,14 +62,14 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 4. 上部のメニューで **[Consume(使用)]**をクリックします。
 5. **主キー**をコピーして保存します。
 
-## <a name="classic-web-service"></a>従来の Web サービス
- Machine Learning Studio または Azure ポータルからクラシック Web サービスのキーを取得することもできます。
+### <a name="classic-web-service"></a>従来の Web サービス
+ Machine Learning Studio または Azure クラシック ポータルからクラシック Web サービスのキーを取得することもできます。
 
-### <a name="machine-learning-studio"></a>Machine Learning Studio
+#### <a name="machine-learning-studio"></a>Machine Learning Studio
 1. Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
 2. Web サービスをクリックします。 **[ダッシュボード]** タブに **[API キー]** があります。
 
-### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-classic-portal"></a>Azure クラシック ポータル
 1. 左側の **[Machine Learning]** をクリックします。
 2. Web サービスがあるワークスペースをクリックします。
 3. **[Web サービス]**をクリックします。
@@ -127,6 +127,6 @@ Machine Learning Web サービスに接続するには、ScoreData を渡す **u
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

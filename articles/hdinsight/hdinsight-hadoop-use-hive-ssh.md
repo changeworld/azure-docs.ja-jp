@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 366642a753223aec116ebd87751dfce0c393f7a7
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
 
 
 ---
@@ -27,14 +27,17 @@ ms.openlocfilehash: 366642a753223aec116ebd87751dfce0c393f7a7
 この記事では、Secure Shell (SSH) を使用して Azure HDInsight クラスターで Hadoop に接続してから、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを対話的に実行する方法について説明します。
 
 > [!IMPORTANT]
-> Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。 Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。 使用方法に関する詳細については、「 [Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
-> 
-> 
+> Hive コマンドは HDInsight クラスターで利用できますが、Beeline の使用を検討してください。 Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。 使用方法に関する詳細については、「 [Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
+
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
 ## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
@@ -73,7 +76,7 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    * **CREATE EXTERNAL TABLE** : Hive に新しく '外部' テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
    * **ROW FORMAT** - Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
-   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が&3; 行あるため、 **3** という値が返されています。
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
      
      > [!NOTE]
@@ -154,6 +157,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

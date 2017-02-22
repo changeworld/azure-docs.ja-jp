@@ -1,5 +1,5 @@
 ---
-title: "Azure Security Center でのセキュリティ ヘルスの監視 | Microsoft Docs"
+title: "Azure Security Center でのセキュリティの監視 | Microsoft Docs"
 description: "この記事は、Azure Security Center の監視機能の使用を開始する際に役立ちます。"
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
-ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 私たちは監視について、状況に対処できるように、イベントが発生するのを監視して待機することだと考えがちです。 セキュリティの監視は、組織の標準やベスト プラクティスを満たしていないシステムを識別するために、リソースを監査するプロアクティブな戦略を持つことを意味します。
 
 ## <a name="monitoring-security-health"></a>セキュリティ ヘルスの監視
-サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで 1 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Resources security health (リソース セキュリティの正常性)]** ブレードに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、 **[推奨事項]** ブレードでも確認できます。
+サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 これに対して、セキュリティ更新プログラムの状態やオペレーティング システムの構成など、仮想マシンの構成に関する情報は、利用可能になるまで&1; 時間以上かかることがあります。 リソースのセキュリティの状態は、**[Resources security health (リソース セキュリティの正常性)]** ブレードに表示されます。問題がある場合には、同じブレードで問題も確認できます。 これらの問題の一覧は、 **[推奨事項]** ブレードでも確認できます。
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
@@ -59,9 +59,9 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 ![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
 
 > [!NOTE]
-> **ネットワーク トポロジ**の一覧の **[Networking Health (ネットワークの正常性)]** ブレードに表示されるのは、少なくとも 1 つのパブリック エンドポイントを持つ仮想マシンだけです。
-> 
-> 
+> **ネットワーク トポロジ**の一覧の **[Networking Health (ネットワークの正常性)]** ブレードに表示されるのは、少なくとも&1; つのパブリック エンドポイントを持つ仮想マシンだけです。
+>
+>
 
 各推奨事項にはいくつかのアクションが示されており、クリックして実行できます。 たとえば、**[システムの更新プログラムがありません]** をクリックすると、**[システムの更新プログラムがありません]** ブレードが開きます。 以下のスクリーンショットに示すように、ここには修正プログラムが不足している仮想マシンと、不足している更新プログラムの重大度が表示されます。
 
@@ -87,11 +87,11 @@ ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
 
 > [!NOTE]
 > ここに示したセキュリティの推奨事項は、**[推奨事項]** ブレードに表示されているものと同じです。 推奨事項の解決方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」の記事を参照してください。 これは仮想マシンだけでなく、**[リソース正常性]** タイルで利用できるすべてのリソースにも適用されます。
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>[仮想マシン] セクション
-[仮想マシン] セクションには、すべての仮想マシンと推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の 1 つのセットを表します。
+[仮想マシン] セクションには、すべての仮想マシンと推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の&1; つのセットを表します。
 
 ![すべての仮想マシンと推奨事項の概要](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
 
@@ -217,7 +217,6 @@ Azure ワークロードに、[(Azure Resource Manager で作成した) 仮想�
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

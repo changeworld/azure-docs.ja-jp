@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: bf92cdc3f6adf1bfaffbcae4e8a0257d0682e33d
-ms.openlocfilehash: 0bb3e5f74cb6d013a2b14b4e4c81f0936f90004a
+ms.sourcegitcommit: 482e0d8084d84f9a3170180c2e5414ca77364da8
+ms.openlocfilehash: 6fb458d47173b4922f085e8b1e6339cabefc7da6
 
 
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
+> * [ポータル](virtual-network-multiple-ip-addresses-portal.md)
 > * [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 > * [CLI](virtual-network-multiple-ip-addresses-cli.md)
 
@@ -32,7 +32,7 @@ Azure 仮想マシン (VM) には、1 つ以上のネットワーク インタ�
 
 * 異なる IP アドレスと SSL 証明書を持つ複数のウェブサイトやサービスを、1つのサーバーでホストする。
 * ファイアウォールやロード バランサーのような、ネットワーク仮想アプライアンスとして機能する。
-* 複数の NIC いずれかの複数のプライベート IP アドレスいずれかを Azure Load Balancer のバックエンド プールに追加する。 以前は、プライマリ NIC のプライマリ IP アドレスのみをバックエンド プールに追加できました。 複数の IP 構成の負荷分散方法の詳細については、[複数の IP 構成の負荷分散](../load-balancer/load-balancer-multiple-ip.md)に関する記事をご覧ください。
+* 複数の NIC いずれかの複数のプライベート IP アドレスいずれかを Azure Load Balancer のバックエンド プールに追加する。 以前は、プライマリ NIC のプライマリ IP アドレスのみをバックエンド プールに追加できました。 複数の IP 構成の負荷分散方法の詳細については、[複数の IP 構成の負荷分散](../load-balancer/load-balancer-multiple-ip.md)に関する記事を参照してください。
 
 VM に接続された各 NIC には、1 つ以上の IP 構成が関連付けられています。 各構成には、1 つの静的または動的プライベート IP アドレスが割り当てられています。 また、1 つのパブリック IP アドレス リソースが関連付けられている場合もあります。 パブリック IP アドレス リソースには、動的または静的 IP アドレスが割り当てられています。 Azure 内の IP アドレスの詳細については、「 [Azure 内の IP アドレス](virtual-network-ip-addresses-overview-arm.md) 」の記事をご覧ください。
 
@@ -41,11 +41,11 @@ VM に接続された各 NIC には、1 つ以上の IP 構成が関連付けら
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
 ## <a name="scenario"></a>シナリオ
-1 つの NIC が接続された VM を作成し、仮想ネットワークに接続します。 VM には、3 つの*プライベート* IP アドレスと 2 つの*パブリック* IP アドレスが必要です。 各 IP アドレスを次の IP 構成に割り当てます。
+1 つの NIC が接続された VM を作成し、仮想ネットワークに接続します。 VM には、3 つの "*プライベート*" IP アドレスと 2 つの "*パブリック*" IP アドレスが必要です。 各 IP アドレスを次の IP 構成に割り当てます。
 
-* **IPConfig-1:** *動的*プライベート IP アドレス (既定) と*静的*パブリック IP アドレスを割り当てます。
-* **IPConfig-2:** *静的*プライベート IP アドレスと*静的*パブリック IP アドレスを割り当てます。
-* **IPConfig-3:** *動的*プライベート IP アドレスを割り当てます。パブリック IP アドレスは割り当てません。
+* **IPConfig-1:** "*動的*" プライベート IP アドレス (既定) と "*静的*" パブリック IP アドレスを割り当てます。
+* **IPConfig-2:** "*静的*" プライベート IP アドレスと "*静的*" パブリック IP アドレスを割り当てます。
+* **IPConfig-3:** "*動的*" プライベート IP アドレスを割り当てます。パブリック IP アドレスは割り当てません。
   
     ![複数の IP アドレス](./media/virtual-network-multiple-ip-addresses-powershell/OneNIC-3IP.png)
 
@@ -70,7 +70,6 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     >上記の参照先の記事では、リソースを作成する場所として西ヨーロッパを使用していますが、この記事では米国中西部を使用します。 場所は適宜変更してください。
 
 4. VM の[ストレージ アカウントを作成](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-storage-account)します。
-
 
 5. NIC と NIC に割り当てる IP 構成を作成します。 構成は、必要に応じて追加、削除、または変更できます。 このシナリオで説明する構成は次のとおりです。
 
@@ -115,9 +114,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
 6. [Linux VM の作成](../virtual-machines/virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms)手順に従って、Linux VM を作成します。 ```  --availset-name myAvailabilitySet \ ``` プロパティはこのシナリオでは不要であるため、必ず削除してください。 実際のシナリオに基づいて適切な場所を使用します。 
 
     >[!WARNING] 
-    > 選択した場所で該当の VM サイズがサポートされていない場合、VM の作成に関する記事の手順 6 は失敗します。 たとえば、米国中西部の VM の一覧を取得するには、次のコマンドを実行します。 場所の名前は、実際のシナリオに基づいて変更できます。
-    > 
-    >       azure vm sizes --location westcentralus
+    > 選択した場所で該当の VM サイズがサポートされていない場合、VM の作成に関する記事の手順 6 は失敗します。 たとえば、米国中西部の VM の一覧を取得するには、`azure vm sizes --location westcentralus` コマンドを実行します。この場所の名前は、実際のシナリオに基づいて変更できます。
 
     たとえば、VM サイズを Standard DS2 v2 に変更するには、手順 6 の ``` azure vm create ``` コマンドに ```  --vm-size Standard_DS3_v2``` プロパティを追加します。
 
@@ -126,144 +123,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     ```azurecli
     azure network nic show --resource-group myResourceGroup --name myNic1
     ```
-
-## <a name="a-nameosconfigaadd-ip-addresses-to-a-vm-operating-system"></a><a name="OsConfig"></a>VM オペレーティング システムに IP アドレスを追加する
-
-複数のプライベート IP アドレスを構成して作成した VM に接続し、ログインします。 VM に追加したプライベート IP アドレスは、プライマリも含め、すべて手動で追加する必要があります。 お使いの VM オペレーティング システムに応じて、次の手順を実行します。
-
-### <a name="windows"></a>Windows
-
-1. コマンド プロンプトで、「 *ipconfig /all*」と入力します。  *プライマリ* の IP アドレス (DHCP 経由) のみを表示できます。
-2. コマンド プロンプトで「*ncpa.cpl*」と入力して、**[ネットワーク接続]** ウィンドウを開きます。
-3. **[ローカル エリア接続]** のプロパティを開きます。
-4. インターネット プロトコル バージョン 4 (IPv4) をダブルクリックします。
-5. **[次の IP アドレスを使う]** を選択して、次の値を入力します。
-
-    * **IP アドレス**: *プライマリ* のプライベート IP アドレスを入力します。
-    * **サブネット マスク**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
-    * **デフォルト ゲートウェイ**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
-    * **[次の DNS サーバーのアドレスを使う]** をクリックし、次の値を入力します。
-        * **[優先 DNS サーバー]**: 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。
-    * **[詳細]** ボタンをクリックし、他の IP アドレスを追加します。 手順 8 にある各セカンダリ プライベート IP アドレスを、プライマリ IP アドレスに指定されたのと同じサブネットの NIC に追加します。
-    * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで RDP 接続が再確立されます。
-6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示され、DHCP が無効になります。
-    
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-
-1. ターミナル ウィンドウを開きます。
-2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
-
-    ```bash
-    sudo -i
-    ```
-
-3. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
-
-    * DHCP の既存の行アイテムを保持します。 プライマリ IP アドレスが以前と同じ構成のまま維持されます。
-    * 次のコマンドを使用して、追加の静的 IP アドレスの構成を追加します。
-
-        ```bash
-        cd /etc/network/interfaces.d/
-        ls
-        ```
-
-    .cfg ファイルが表示されます。
-4. ファイルを開きます: vi *filename*。
-
-    ファイルの末尾に次の行が表示されます。
-
-    ```bash
-    auto eth0
-    iface eth0 inet dhcp
-    ```
-
-5. このファイルの行の最後に、次の行を追加します。
-
-    ```bash
-    iface eth0 inet static
-    address <your private IP address here>
-    ```
-
-6. 次のコマンドを使用して、ファイルの内容を保存します。
-
-    ```bash
-    :wq
-    ```
-
-7. 次のコマンドを使用して、ネットワーク インターフェイスをリセットします。
-
-    ```bash
-    sudo ifdown eth0 && sudo ifup eth0
-    ```
-
-    > [!IMPORTANT]
-    > リモート接続を使用する場合は、同じ行で ifdown と ifup の両方を実行します。
-    >
-
-8. 次のコマンドを使用して、IP アドレスがネットワーク インターフェイスに追加されたことを確認します。
-
-    ```bash
-    Ip addr list eth0
-    ```
-
-    追加した IP アドレスが、リストの一部として表示されます。
-    
-### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat、CentOS、その他)
-
-1. ターミナル ウィンドウを開きます。
-2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
-
-    ```bash
-    sudo -i
-    ```
-
-3. パスワードを入力し、画面の指示に従います。 ルート ユーザーになったら、次のコマンドを使用して、ネットワーク スクリプト フォルダーに移動します。
-
-    ```bash
-    cd /etc/sysconfig/network-scripts
-    ```
-
-4. 次のコマンドを使用して、関連する ifcfg ファイルをリストアップします。
-
-    ```bash
-    ls ifcfg-*
-    ```
-
-    ファイルのうちの 1 つに *ifcfg-eth0* があります。
-
-5. 次のコマンドを使用して、*ifcfg-eth0* ファイルをコピーし、名前を *ifcfg-eth0:0* に変更します。
-
-    ```bash
-    cp ifcfg-eth0 ifcfg-eth0:0
-    ```
-
-6. 次のコマンドを使って、 *ifcfg-eth0:0* ファイルを編集します。
-
-    ```bash
-    vi ifcfg-eth1
-    ```
-
-7. 次のコマンドを使って、ファイル内のデバイスを適切な名前 (ここでは *eth0:0* ) に変更します。
-
-    ```bash
-    DEVICE=eth0:0
-    ```
-
-8. *IPADDR = YourPrivateIPAddress* 行を、IP アドレスを反映するように変更します。
-9. 次のコマンドを使用して、ファイルの内容を保存します。
-
-    ```bash
-    :wq
-    ```
-
-10. ネットワーク サービスを再起動し、次のコマンドを実行して、変更が成功したかどうかを確認します。
-
-    ```bash
-    /etc/init.d/network restart
-    Ipconfig
-    ```
-
-    返されるリストに、追加した IP アドレス「 *eth0:0*」が表示されることを確認します。
+8. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載されたご使用のオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。
 
 ## <a name="a-nameaddaadd-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
@@ -274,7 +134,6 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
 2. サブスクリプション ID と使用目的を[複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)まで電子メールで連絡して、プレビューに登録します。 次の場合、残りの手順は実行しないでください。
     - プレビューへの登録が受諾されたことを通知する電子メールを受け取っていない場合
     - 受け取った電子メールの指示に従っていない場合
-
 
 3. 要件に基づいて、以下のいずれかのセクションの手順を実行します。
 
@@ -336,7 +195,6 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     azure network nic ip-config set --resource-group myResourceGroup --nic-name myNic1 --name IPConfig-3 --public-ip-name myPublicIP3
     ```
 
-
 7. 次のコマンドを入力して、NIC に割り当てられたプライベート IP アドレスとパブリック IP アドレス リソースを表示します。
 
     ```azurecli
@@ -350,9 +208,11 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
         IPConfig-2         Succeeded           false    Static                 IPv4                10.0.0.5            mySubnet  myPublicIP2
         IPConfig-3         Succeeded           false    Dynamic                IPv4                10.0.0.6            mySubnet  myPublicIP3
      
-9. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#OsConfig)」の手順に従って、NIC に追加した IP アドレスを、VM オペレーティング システムに追加します。
+9. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」の手順に従って、NIC に追加したプライベート IP アドレスを、VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
+
+[!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -17,19 +17,19 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04b081d265c53ddcf77c79bf604296a0d44be4ed
+ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
+ms.openlocfilehash: ade380b7fc6adfb929f42c0e6c75b3fa613c45b1
 
 
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>HTTP + Swagger アクションの概要
 HTTP + Swagger アクションでは、 [Swagger ドキュメント](https://swagger.io)を使用して REST エンドポイントへのファースト クラス コネクタを作成できます。 ロジック アプリ デザイナーの優れたエクスペリエンスを使用し、ロジック アプリを拡張して任意の REST エンドポイントを呼び出すこともできます。
 
-ロジック アプリで HTTP + Swagger アクションの使用を開始する方法については、 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリで HTTP + Swagger アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
 
 - - -
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>トリガーまたはアクションとしての HTTP + Swagger の使用
-HTTP + Swagger トリガーおよびアクションは [HTTP アクション](connectors-native-http.md)と同様に機能しますが、[Swagger メタデータ](https://swagger.io)を使用してデザイナーで API と出力の状態を表示することでデザイン エクスペリエンスが向上します。 また、HTTP + Swagger をトリガーとして使用することもできます。 ポーリング トリガーを実装する場合は、「 [Logic Apps で使用するカスタム API の作成](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
+HTTP + Swagger トリガーおよびアクションは [HTTP アクション](connectors-native-http.md)と同様に機能しますが、[Swagger メタデータ](https://swagger.io)を使用してデザイナーで API と出力の状態を表示することでデザイン エクスペリエンスが向上します。 また、HTTP + Swagger をトリガーとして使用することもできます。 ポーリング トリガーを実装する場合は、「 [Logic Apps で使用するカスタム API の作成](../logic-apps/logic-apps-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
 
 [ロジック アプリのトリガーとアクションの詳細についてはこちらを参照してください](connectors-overview.md)
 
@@ -64,21 +64,21 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 この HTTP + Swagger コネクタでサポートされているトリガーとアクションの詳細を次に示します。
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md)  HTTP + Swagger コネクタにはトリガーが 1 つあります。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが&amp;1; つあります。
 
 | トリガー | Description |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md)  HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが&amp;1; つあります。
 
 | アクション | Description |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ### <a name="action-details"></a>アクションの詳細
-HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用意されています。 各アクションの情報、必須および任意の入力フィールド、アクションの使用に伴う出力の詳細を次に示します。
+HTTP + Swagger コネクタには、使用可能なアクションが&1; つ用意されています。 各アクションの情報、必須および任意の入力フィールド、アクションの使用に伴う出力の詳細を次に示します。
 
 #### <a name="http--swagger"></a>HTTP + Swagger
 Swagger メタデータを使用して HTTP 送信要求を行います。
@@ -117,11 +117,11 @@ HTTP 応答
 
 - - -
 ## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md) してください。 [API のリスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md) してください。 [API のリスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

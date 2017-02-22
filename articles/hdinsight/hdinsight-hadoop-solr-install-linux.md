@@ -13,21 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cf3df8eb82fa0aa7c5848ea5da91734226a62b3e
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
 
 
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 このトピックでは、スクリプト アクションを使用して Azure HDInsight に Solr をインストールする方法について説明します。 Solr は強力な検索プラットフォームで、Hadoop が管理するデータに対してエンタープライズ レベルの検索機能を提供します。 HDInsight クラスターに Solr をインストールした後で、Solr を使用したデータの検索方法についても説明します。
 
-> [!NOTE]
-> このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。 Windows ベースのクラスターでの Solr の操作については、「 [HDInsight Hadoop クラスターに Solr をインストールして使用する (Windows)](hdinsight-hadoop-solr-install.md)
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 このトピックで使用するサンプル スクリプトは、既定の構成で Solr クラスターを作成します。 この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、それに応じてスクリプトと Solr バイナリを変更する必要があります。
 
@@ -105,7 +103,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
    
-    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という 2 つのサンプル ドキュメントで Solr のインデックスを作成します。 これらは、Solr 内の **collection1** に格納されます。
+    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という&2; つのサンプル ドキュメントで Solr のインデックスを作成します。 これらは、Solr 内の **collection1** に格納されます。
 3. 次のコマンドを使用して、Solr によって公開される REST API を照会します。
    
         curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
@@ -201,7 +199,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
      
      ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
      
-     これによる出力は、Solr のインデックス作成のために使用した 2 つのドキュメントを返します。 出力結果は、以下のようになります。
+     これによる出力は、Solr のインデックス作成のために使用した&2; つのドキュメントを返します。 出力結果は、以下のようになります。
      
            "response": {
                "numFound": 2,
@@ -304,7 +302,7 @@ Solr のバックアップと復元の操作の詳細については、 [SolrCor
 ## <a name="see-also"></a>関連項目
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 Hue は、Pig ジョブや Hive ジョブの作成、実行、保存や、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
 * [HDInsight クラスターに R をインストールする][hdinsight-install-r]。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに R をインストールします。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
-* [HDInsight クラスターでに Giraph をインストールする](hdinsight-hadoop-giraph-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
+* [HDInsight クラスターに Giraph をインストールする](hdinsight-hadoop-giraph-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 * [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。 Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
@@ -312,6 +310,6 @@ Solr のバックアップと復元の操作の詳細については、 [SolrCor
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

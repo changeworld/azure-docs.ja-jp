@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 12/13/2016
+ms.date: 01/05/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 52f2bf14c60dbb062a6f4aec26403c5064bba036
-ms.openlocfilehash: 3dc513e99ad3ac0f4f18f70666ee299a95ee9294
+ms.sourcegitcommit: c3af0df0f2e5a0367bef8e12edaca4937db7e39f
+ms.openlocfilehash: 50bc63845bab1322090097dd0d5736e11642a95b
 
 
 ---
@@ -35,7 +35,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 | サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1、2012、2012R2 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>Windows Server 2012 シン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
+| Windows Server |2008R2 SP1、2012、2012R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
 | VMWare ESX |5.5 および 6.0 |iSCSI クライアントとして VMWare vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
 | Linux RHEL/CentOS |5、6 および 7 |Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
 | Linux |SUSE Linux 11 | |
@@ -253,6 +253,6 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

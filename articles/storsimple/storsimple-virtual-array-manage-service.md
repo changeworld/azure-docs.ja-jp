@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs"
+title: "StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs"
 description: "Azure Portal で StorSimple デバイス マネージャー サービスを作成および削除する方法と、サービス登録キーを管理する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: b6440796fb2afc713cba40dba576f9439e5ed296
-ms.openlocfilehash: 4761d4261f64a9332830e5373a0a2ee6a63b96a1
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
 
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
 ## <a name="overview"></a>Overview
 
-StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを 1 か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
+StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを&1; か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
 
 StorSimple デバイス マネージャー サービスに関連する一般的なタスクは次のとおりです。
 
@@ -124,6 +124,6 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

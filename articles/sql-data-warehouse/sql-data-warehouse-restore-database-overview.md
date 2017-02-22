@@ -1,5 +1,5 @@
 ---
-title: "SQL Data Warehouse の復元 | Microsoft Docs"
+title: "Azure Data Warehouse を復元する - ローカル冗長と geo 冗長 | Microsoft Docs"
 description: "Azure SQL Data Warehouse でデータベースを復旧するためのデータベース復元オプションの概要。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2147967edc1dadcc8bda5e5a33bbdedd62a22b4f
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
 
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse の復元
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [ポータル][ポータル]
+> * [概要][Overview]
+> * [ポータル][Portal]
 > * [PowerShell][PowerShell]
-> * [REST ()][REST ()]
+> * [REST][REST]
 > 
 > 
 
@@ -44,7 +44,7 @@ SQL Data Warehouse には、データ ウェアハウスの障害復旧機能の
 ## <a name="data-warehouse-restore-points"></a>データ ウェアハウスの復元ポイント
 Azure Premium Storage を使用する利点として、SQL Data Warehouse は Azure Storage BLOB のスナップショットを使用して、プライマリ データ ウェアハウスをバックアップします。 各スナップショットには、スナップショットの開始時刻を表す復元ポイントがあります。 データ ウェアハウスを復元するには、復元ポイントを選択して restore コマンドを実行します。  
 
-SQL Data Warehouse は、常に新しいデータ ウェアハウスにバックアップを復元します。 復元されたデータ ウェアハウスと現在のデータ ウェアハウスの両方を保持するか、いずれか 1 つを削除することができます。 現在のデータ ウェアハウスを復元されたデータ ウェアハウスに置き換える場合は、名前を変更します。
+SQL Data Warehouse は、常に新しいデータ ウェアハウスにバックアップを復元します。 復元されたデータ ウェアハウスと現在のデータ ウェアハウスの両方を保持するか、いずれか&1; つを削除することができます。 現在のデータ ウェアハウスを復元されたデータ ウェアハウスに置き換える場合は、名前を変更します。
 
 削除済みまたは一時停止中のデータ ウェアハウスを復元する必要がある場合は、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)します。 
 
@@ -59,7 +59,7 @@ Yes, for the next seven calendar days. When you delete a data warehouse, SQL Dat
 geo 冗長ストレージを使用している場合は、異なるリージョンにある[ペアのデータ センター](../best-practices-availability-paired-regions.md)にデータ ウェアハウスを復元できます。 データ ウェアハウスは、最新の日次バックアップから復元されます。 
 
 ## <a name="restore-timeline"></a>タイムライン復元
-過去 7 日間の任意の復元ポイントにデータベースを復元できます。 スナップショットは 4 ～ 8 時間ごとに開始され、7 日間使用できます。 スナップショットが 7 日間以上経過した場合、期限切れとなり、復元ポイントは使用できなくなります。
+過去&7; 日間の任意の復元ポイントにデータベースを復元できます。 スナップショットは&4; ～&8; 時間ごとに開始され、7 日間使用できます。 スナップショットが&7; 日間以上経過した場合、期限切れとなり、復元ポイントは使用できなくなります。
 
 ## <a name="restore-costs"></a>復元コスト
 復元されたデータ ウェアハウスのストレージ料金は、Azure Premium Storage レートで請求されます。 
@@ -71,7 +71,7 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 ## <a name="uses-for-restore"></a>復元の用途
 データ ウェアハウスの復元の主な用途は、偶発的なデータの消失や破損が生じた際にデータを回復することです。
 
-バックアップを 8 日以上保持する場合にも、データ ウェアハウスの復元を使用できます。 バックアップが復元されたら、データ ウェアハウスをオンラインにして、データベースを無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 
+バックアップを&8; 日以上保持する場合にも、データ ウェアハウスの復元を使用できます。 バックアップが復元されたら、データ ウェアハウスをオンラインにして、データベースを無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 
 
 ## <a name="related-topics"></a>関連トピック
 ### <a name="scenarios"></a>シナリオ
@@ -90,11 +90,11 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL Database のビジネス継続性の概要]: ../sql-database/sql-database-business-continuity.md
-[概要]: ./sql-data-warehouse-restore-database-overview.md
-[ポータル]: ./sql-data-warehouse-restore-database-portal.md
+[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
+[Overview]: ./sql-data-warehouse-restore-database-overview.md
+[Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
+[REST]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
 
@@ -103,6 +103,6 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

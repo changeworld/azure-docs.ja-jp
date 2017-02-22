@@ -16,17 +16,12 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e16587c3eb7366c92297455e8a175ab118174526
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: f63bd47c15439e6fedc0f6edf579681697155592
 
 
 ---
 # <a name="sql-database-advisor-using-the-azure-portal"></a>Azure Portal を使用した SQL Database Advisor
-> [!div class="op_single_selector"]
-> * [SQL Database Advisor の概要](sql-database-advisor.md)
-> * [ポータル](sql-database-advisor-portal.md)
-> 
-> 
 
 Azure SQL Database Advisor を Azure ポータルで使用して、現在のクエリのパフォーマンスを向上できる、既存の SQL Database 向けの推奨事項の確認および実装ができます。
 
@@ -40,7 +35,7 @@ Azure SQL Database Advisor を Azure ポータルで使用して、現在のク�
 3. **[パフォーマンスの推奨事項]**を順にクリックし、選択したデータベースで使用できる推奨事項を表示します。
 
 > [!NOTE]
-> 推奨事項を得るには、データベースを約 1 日使用し、いくつかのアクティビティを行う必要があります。 さらに、一貫性のアクティビティも行う必要もあります。 SQL Database Advisor は、ランダムでむらのある瞬間的なアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。 推奨事項を使用できない場合は、**[パフォーマンスの推奨事項]** ページに、その理由を説明するメッセージが表示されます。
+> 推奨事項を得るには、データベースを約&1; 日使用し、いくつかのアクティビティを行う必要があります。 さらに、一貫性のアクティビティも行う必要もあります。 SQL Database Advisor は、ランダムでむらのある瞬間的なアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。 推奨事項を使用できない場合は、**[パフォーマンスの推奨事項]** ページに、その理由を説明するメッセージが表示されます。
 > 
 > 
 
@@ -50,7 +45,7 @@ Azure ポータルの、「スキーマの問題の修正」に関する推奨�
 
 ![スキーマの問題の修正](./media/sql-database-advisor-portal/sql-database-advisor-schema-issue.png)
 
-お勧め候補は、パフォーマンスへの潜在的な影響ごとに、次の 4 つのカテゴリに並べ替えられます。
+お勧め候補は、パフォーマンスへの潜在的な影響ごとに、次の&4; つのカテゴリに並べ替えられます。
 
 | 影響 | 説明 |
 |:--- |:--- |
@@ -71,9 +66,9 @@ Azure ポータルの、「スキーマの問題の修正」に関する推奨�
 3. 必要に応じて、**[破棄を元に戻す]** をクリックして、インデックスを **[推奨事項]** の主な一覧に戻します。
 
 ## <a name="applying-recommendations"></a>推奨事項の適用
-SQL Database Advisor では、次の 3 つのオプションのいずれかを使用して、推奨事項を有効にする方法を完全に制御できます。 
+SQL Database Advisor では、次の&3; つのオプションのいずれかを使用して、推奨事項を有効にする方法を完全に制御できます。 
 
-* 個々の推奨インデックスを 1 つずつ適用する。
+* 個々の推奨インデックスを&1; つずつ適用する。
 * アドバイザーが推奨事項を自動的に適用できるようにします (現時点では、インデックスに関する推奨事項にのみ適用されます)。
 * 推奨事項を手作業で実装するには、推奨される T-SQL スクリプトをデータベースに対して実行します。
 
@@ -156,6 +151,6 @@ SQL Database Advisor は、データベースのパフォーマンス向上の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

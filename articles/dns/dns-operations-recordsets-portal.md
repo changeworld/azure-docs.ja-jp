@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal を使用して DNS のレコード セットとレコードを管理する | Microsoft Docs"
-description: "Azure DNS でドメインをホストする際に DNS のレコード セットとレコードを管理する方法について説明します。"
+title: "Azure DNS での DNS レコード セットとレコードの管理 | Microsoft Docs"
+description: "Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: db14074ba4f3b5b675f608b76c496c84f7c22945
+ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
+ms.openlocfilehash: b09b66c44ba94df12934211d5d09430adb667003
 
 ---
 
@@ -45,7 +45,7 @@ Azure ポータルでレコード セットを作成する方法については�
 
 ## <a name="add-a-new-record-to-a-record-set"></a>レコード セットに新しいレコードを追加する
 
-すべてのレコード セットに対して、最大 20 個のレコードを追加できます。 レコード セットには、同一の 2 つのレコードを含めることはできません。 空のレコード セット (レコードが 0 個) を作成することはできますが、Azure DNS ネーム サーバーには表示されません。 レコード セットの種類が CNAME の場合、そこに含めることができるレコードは 1 つまでです。
+すべてのレコード セットに対して、最大 20 個のレコードを追加できます。 レコード セットには、同一の&2; つのレコードを含めることはできません。 空のレコード セット (レコードが&0; 個) を作成することはできますが、Azure DNS ネーム サーバーには表示されません。 レコード セットの種類が CNAME の場合、そこに含めることができるレコードは&1; つまでです。
 
 1. DNS ゾーンの **[Record set properties (レコード セットのプロパティ)]** ブレードで、レコードを追加するレコード セットをクリックします。
 
@@ -105,11 +105,11 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ### <a name="modify-soa-records"></a>SOA レコードを変更する
 
-ゾーンの頂点 (名前は "@").) に自動的に作成された SOA レコード セットのレコードを追加または削除することはできませんが、SOA レコード内のすべてのパラメーター ("Host" を除く) とレコード セット TTL は変更できます。
+ゾーンの頂点 (名前は "@")) に自動的に作成された SOA レコード セットのレコードを追加または削除することはできません。 ただし、("ホスト" を除く) SOA レコードおよびレコード セットの TTL 内のパラメーターを変更することはできます。
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>ゾーンの頂点にある NS レコードを変更する
 
-ゾーンの頂点 (名前は "@").) に自動的に作成された NS レコード セットのレコードを追加、削除、または変更することはできません。実行できる変更操作はレコード セット TTL の変更のみです。
+ゾーンの頂点 (名前は "@")) に自動的に作成された NS レコード セットのレコードを追加、削除、または変更することはできません。 許可されている変更操作は、レコード セットの TTL の変更のみです。
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA レコード セットまたは NS レコード セットを削除する
 
@@ -123,6 +123,6 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

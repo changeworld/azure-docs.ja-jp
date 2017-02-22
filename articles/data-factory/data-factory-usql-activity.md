@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する"
-description: "Azure Data Lake Analytics コンピューティング サービスで U-SQL スクリプトを実行してデータを処理する方法について説明します。"
+title: "U-SQL スクリプトを使用したデータ変換 - Azure | Microsoft Docs"
+description: "Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/07/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: f2d7655f0e119b524b7fb9a32bee4cc874e265a5
+ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
+ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
 
 
 ---
-# <a name="run-u-sql-script-on-azure-data-lake-analytics-from-azure-data-factory"></a>Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -79,7 +79,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com, @live.com, など)。 |12 時間 |
-| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。 
 
@@ -303,6 +303,6 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -14,6 +14,7 @@
 ## バックエンドをセキュリティで保護する
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
 ### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
+### [内部仮想ネットワークに接続する](api-management-using-with-internal-vnet.md)
 ### [相互証明書認証](api-management-howto-mutual-certificates.md)
 ## ポリシーを構成する
 ### [カスタム キャッシュ](api-management-sample-cache-by-key.md)
@@ -82,6 +83,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

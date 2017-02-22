@@ -1,6 +1,6 @@
 ---
-title: "Enterprise Integration Pack の Encode EDIFACT Message コネクタの詳細情報 | Microsoft Docs"
-description: "Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。"
+title: "Azure Logic Apps で EDIFACT メッセージをエンコードする | Microsoft Docs"
+description: "ロジック アプリで Enterprise Integration Pack の EDIFACT エンコーダーを使用する方法"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,25 +12,24 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 7f9feb7b9ae01c18712f14035ac8c56256cf4d26
+ms.sourcegitcommit: 5bc7011d7b0d22a7f8c11a2fee8d002c24d3467c
+ms.openlocfilehash: 94d120cd8a5e33733ecc39af96d2719ad59ab090
 
 
 ---
 # <a name="get-started-with-encode-edifact-message"></a>Encode EDIFACT Message を使ってみる
 EDI およびパートナー固有のプロパティを検証する 
 
-## <a name="create-the-connection"></a>接続の作成
-### <a name="prerequisites"></a>前提条件
+## <a name="prereqs"></a>前提条件
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * Encode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[パートナー](logic-apps-enterprise-integration-partners.md)、および [EDIFACT 契約](../logic-apps/logic-apps-enterprise-integration-edifact.md)の作成方法の詳細を確認してください。
 
-### <a name="connect-to-decode-edifact-message-using-the-following-steps"></a>次の手順に従って、Decode EDIFACT Message に接続します。
-1. [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事に例が記載されています。
-2. このコネクタにはトリガーがありません。 ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。  Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。  ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「EDIFACT」と入力します。  [Encode EDIFACT Message by agreement name (契約名による Encode EDIFACT Message)] または [Encode to EDIFACT message by identities (ID による Encode EDIFACT Message)] を選択します。
+## <a name="encode-edifact-messages"></a>EDIFACT メッセージをエンコードする
+1. [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)。
+2. このコネクタにはトリガーがありません。 ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。  Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。  ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「EDIFACT」と入力します。  [Encode to EDIFACT message by agreement name] (契約名により EDIFACT メッセージにエンコードする) または [Encode to EDIFACT message by identities] (ID により EDIFACT メッセージにエンコードする) を選択します。
    
     ![search EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
@@ -43,25 +42,26 @@ EDI およびパートナー固有のプロパティを検証する
    | 接続名 * |接続の任意の名前を入力します。 |
    | 統合アカウント * |統合アカウント名を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
    
-    入力を完了すると、接続の詳細は次のようになります。
+    入力が完了すると、接続の詳細は次のようになります。
    
     ![integration account connection](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
-5. **[作成]**
+5. **[作成]**を選択します。
 6. 接続が作成されたことを確認します。
    
     ![integration account connection details](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>契約名による Encode EDIFACT Message
-1. エンコードする EDIFACT 契約名と xml メッセージを指定します。
+エンコードする EDIFACT 契約名と XML メッセージを指定します。
    
    ![provide mandatory fields](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
 #### <a name="encode-edifact-message-by-identities"></a>ID による Encode EDIFACT Message
-1. 送信者の識別子、送信者の修飾子、受信者の識別子、および受信者の修飾子を、EDIFACT 契約で構成されているとおりに指定します。  エンコードする xml メッセージを選択します。
-   
+送信者の識別子、送信者の修飾子、受信者の識別子、および受信者の修飾子を、EDIFACT 契約で構成されているとおりに入力します。 エンコードする XML メッセージを選択します。  
     ![provide mandatory fields](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-does-following"></a>EDIFACT Encode の機能
+## <a name="edifact-encode-details"></a>EDIFACT エンコードの詳細
+Encode EDIFACT コネクタは次の処理を行います。 
+
 * 送信者の修飾子および識別子を受信者の修飾子および識別子と照合することで、契約を解決する
 * XML エンコード メッセージをインターチェンジ内の EDI トランザクション セットに変換して、EDI インターチェンジをシリアル化する
 * トランザクション セット ヘッダーおよびトレーラー セグメントを適用する
@@ -82,6 +82,6 @@ EDI およびパートナー固有のプロパティを検証する
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

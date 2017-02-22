@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 01/18/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
+ms.sourcegitcommit: 2a66cdb9825cfc3935d534afaf3f6f0cf5d5fb5a
+ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
 
 
 ---
 # <a name="change-tracking-solution-in-log-analytics"></a>Log Analytics の変更の追跡ソリューション
-この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、ソフトウェア、Windows サービス、Linux デーモン、および Linux パッケージに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。 特定の Windows ファイルに対する変更を追跡するようにソリューションを構成することもできます。
+この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイル、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
-このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 変更が見つかると、変更があるサーバーが [変更の追跡] ダッシュボードに表示されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
@@ -53,7 +53,7 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 
 * **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
 * 30 分間の収集サイクルで収集するファイル数が 2500 を超えると、ソリューションのパフォーマンスが低下する可能性があります。
-* ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で 6 時間かかることがあります。
+* ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で&6; 時間かかることがあります。
 * コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターからは前の構成に対応するファイル変更が送信される可能性があります。
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
@@ -63,12 +63,12 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Linux エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows および Linux |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![なし](./media/log-analytics-change-tracking/oms-bullet-red.png) |![いいえ](./media/log-analytics-change-tracking/oms-bullet-red.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |時間単位 |
+| Windows および Linux |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![なし](./media/log-analytics-change-tracking/oms-bullet-red.png) |![いいえ](./media/log-analytics-change-tracking/oms-bullet-red.png) |![はい](./media/log-analytics-change-tracking/oms-bullet-green.png) | 変更の種類に応じて、15 分～ 1 時間 |
 
 ## <a name="use-change-tracking"></a>変更の追跡を使用する
 ソリューションをインストールした後で、OMS の **[概要]** ページにある **[変更の追跡]** タイルを使用すると、監視対象サーバーの変更の概要を確認できます。
 
-![[変更の追跡] タイルの画像](./media/log-analytics-change-tracking/oms-changetracking-tile.png)
+![[変更の追跡] タイルの画像](./media/log-analytics-change-tracking/change-tracking-tile.png)
 
 インフラストラクチャに対する変更を確認し、変更の詳細を次のカテゴリ別に表示することができます。
 
@@ -79,13 +79,13 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 * 個々のサーバーでの Windows サービスの変更
 * Linux デーモンの変更
 
-![[変更の追跡] ダッシュボードの画像](./media/log-analytics-change-tracking/oms-changetracking01.png)
+![[変更の追跡] ダッシュボードの画像](./media/log-analytics-change-tracking/change-tracking-dash01.png)
 
-![[変更の追跡] ダッシュボードの画像](./media/log-analytics-change-tracking/oms-changetracking02.png)
+![[変更の追跡] ダッシュボードの画像](./media/log-analytics-change-tracking/change-tracking-dash02.png)
 
 ### <a name="to-view-changes-for-any-change-type"></a>変更の種類別に変更を表示するには
 1. **[概要]** ページで、**[変更の追跡]** タイルをクリックします。
-2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の 1 つをクリックします。
+2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の&1; つをクリックします。
 3. どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="next-steps"></a>次のステップ
@@ -93,6 +93,6 @@ ms.openlocfilehash: 56faeccbb25d2f0e3dbe6b104b5e9bc95a06ca36
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

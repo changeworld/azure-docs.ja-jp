@@ -3,8 +3,8 @@ title: "StorSimple Manager サービスをデプロイする | Microsoft Docs"
 description: "Azure クラシック ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
 services: storsimple
 documentationcenter: 
-author: SharS
-manager: carmonm
+author: alkohli
+manager: byronr
 editor: 
 ms.assetid: bc1d5650-275c-42ed-bc77-cdb596f85943
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2016
-ms.author: v-sharos
+ms.date: 12/05/2016
+ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf39b922e51dd60b5b2c51cb7030436c60232a5
-ms.openlocfilehash: 51c414bacb825dd51bcd76a06e1f9e0f0c001b93
+ms.sourcegitcommit: f507eb6986f7c62965dc00673ee5ebe38e70f1d7
+ms.openlocfilehash: 1858fa9e1223d0938bb1eb6195c42fb1ec3b007d
 
 
 ---
@@ -51,6 +51,9 @@ StorSimple デバイスをデプロイする場合は、 **[簡易作成]** オ�
 
 単一のサービスで複数のデバイスを管理できます。 ただし、1 つのデバイスを複数のサービスに割り当てることはできません。 大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、デプロイの場所に対応することができます。 StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の管理には、StorSimple Manager サービスの個別のインスタンスが必要であることに注意してください。
 
+> [!IMPORTANT] 
+> 2016 年 8 月よりも前に作成された未使用のサービスがある (このリソースでデバイスの操作が実行されていない) 場合は、Azure Portal または Azure クラシック ポータル経由で管理することはできません。 Azure Portal に新しいサービスを作成することをお勧めします。
+
 サービスを作成するには、次の手順を実行します。
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
@@ -58,7 +61,8 @@ StorSimple デバイスをデプロイする場合は、 **[簡易作成]** オ�
 ## <a name="delete-a-service"></a>サービスの削除
 サービスを削除する際は、接続されているデバイスでそのサービスが使用されていないことを先に確認します。 サービスが使用されている場合は、該当するデバイスを非アクティブにします。 非アクティブ化操作によってデバイスとサービス間の接続は切断されますが、クラウド内のデバイスのデータは保持されます。
 
-[AZURE.IMPORTANT] いったんサービスを削除すると、その操作を元に戻すことはできません。 このサービスを利用していたデバイスを別のサービスで使用するには、デバイスを出荷時の状態にリセットする必要があります。 このとき、デバイス上のローカル データや構成は失われます。
+> [!IMPORTANT] 
+> いったんサービスを削除すると、その操作を元に戻すことはできません。 このサービスを利用していたデバイスを別のサービスで使用するには、デバイスを出荷時の状態にリセットする必要があります。 このとき、デバイス上のローカル データや構成は失われます。
 
 サービスを削除するには次の手順を実行します。
 
@@ -89,15 +93,15 @@ StorSimple デバイスをデプロイする場合は、 **[簡易作成]** オ�
 3. 確認メッセージが表示されます。 **[OK]** をクリックして、再生成を続行します。
 4. 新しいサービス登録キーが表示されます。
 5. このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
-6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-service/HCS_CheckIcon.png)  をクリックして、このダイアログ ボックスを閉じます。
+6. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-service/HCS_CheckIcon.png) をクリックして、このダイアログ ボックスを閉じます。
 
 ## <a name="next-steps"></a>次のステップ
-* [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough.md)
+* [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-manage-storage-accounts.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

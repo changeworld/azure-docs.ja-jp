@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3f4f0794f5dff8b341b324a508ea2616ea952108
-
+ms.sourcegitcommit: 0849c77c66ac8617e217a69696b5c404be3b5eb4
+ms.openlocfilehash: 3aefb8188880fac5c1fcbe237a1e133584089e6a
 
 ---
+
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>チュートリアル: Azure Active Directory と Tableau Server の統合
 このチュートリアルの目的は、Tableau Server と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
@@ -27,7 +27,7 @@ Tableau Server と Azure AD の統合には、次の利点があります。
 
 * Tableau Server にアクセスするユーザーを Azure AD で管理できます。
 * ユーザーが各自の Azure AD アカウントで Tableau Server に自動的にサインオン (シングル サインオン) するように、設定が可能です。
-* 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+* Azure クラシック ポータルでアカウントを一元的に管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -40,17 +40,16 @@ Azure AD と Tableau Server の統合を構成するには、次のものが必�
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 > 
-> 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから Tableau Server を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -109,80 +108,64 @@ Tableau Server アプリケーションは、特定の形式で構成された S
     ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_81.png) 
 2. **[Saml トークン属性]** ダイアログで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックして、**[ユーザー属性の追加]** ダイアログを開きます。
+   1. **[ユーザー属性の追加]** をクリックして、**[ユーザー属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_82.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_82.png) 
+   2. **[属性名]** テキストボックスに「**username**」と入力します。
+   3. **[属性値]** リストから **[user.displayname]** を選択します。
+   4. ページの下部にある **[完了]**」を参照してください。    
 
-
-    b. **[属性名]** テキストボックスに「**username**」と入力します。
-
-    c. **[属性値]** リストから **[user.displayname]** を選択します。
-
-    d. ページの下部にある [完了]」を参照してください。    
-
-
-
-
-1. 上部のメニューで **[クイック スタート]**をクリックします。
+3. 上部のメニューで **[クイック スタート]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_83.png)  
-2. **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+4. **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![[シングル サインオンの構成]][6] 
-3. **[ユーザーの Tableau Server へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+5. **[ユーザーの Tableau Server へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_03.png) 
-4. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
+6. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_04.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_04.png) 
 
-    a. **[サインイン URL]** テキストボックスに Tableau Server の URL を入力します。 
-
-    b. [識別子] ボックスで 
-
-    c.  **[次へ]**
-
-
-1. **[Tableau Server シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
+   1. **[サインイン URL]** テキストボックスに Tableau Server の URL を入力します。 
+   2. **[識別子]** ボックスで URL をコピーします。
+   3. **[次へ]**をクリックします。
+h
+7. **[Tableau Server シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_05.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_05.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+   1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+   2. **[次へ]**をクリックします。
 
-    b. **[次へ]**をクリックします。
-
-
-1. アプリケーションに合わせて SSO を構成するには、管理者として Tableau Server テナントにサインオンする必要があります。
+8. アプリケーションに合わせて SSO を構成するには、管理者として Tableau Server テナントにサインオンする必要があります。
    
-    a. Tableau Server の構成で、**[SAML]** タブをクリックします。
+   1. Tableau Server の構成で、**[SAML]** タブをクリックします。
+  
+    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_001.png) 
+   2. **[Use SAML for single sign-on]** チェックボックスをオンにします。
+   3. Azure クラシック ポータルからダウンロードしたフェデレーション メタデータ ファイルを検索し、**[SAML Idp metadata file]** でアップロードします。
+   4. [Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。http://tableau_server など。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (http://tableau_server/ など) はサポートされていません。 **[Tableau Server return URL]** をコピーし、手順 3 のように Azure AD の **[サインオン URL]** テキストボックスに貼り付けます。
+   5. [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]** をコピーし、手順 3 のように Azure AD の **[識別子]** テキストボックスに貼り付けます。
+   6. **[Export Metadata File]** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 手順 3 のように、その URL を Azure AD の **[応答 URL]** に貼り付けます。 
+   7. Tableau Server の [Configiuration] (構成) ページの **[OK]** ボタンをクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_001.png) 
+    >[!NOTE] 
+    >Tableau Server で SAML を構成する方法について不明な点がある場合は、[SAML の構成](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)に関する記事を参照してください。
+    >
 
-    b. **[Use SAML for single sign-on]** チェックボックスをオンにします。
-
-    c. Azure クラシック ポータルからダウンロードしたフェデレーション メタデータ ファイルを検索し、**[SAML Idp metadata file]** でアップロードします。
-
-    d. [Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。http://tableau_server など。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (http://tableau_server/ など) はサポートされていません。 **[Tableau Server return URL]** をコピーし、手順 3 のように Azure AD の **[サインオン URL]** テキストボックスに貼り付けます。
-
-    e. [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]** をコピーし、手順 3 のように Azure AD の **[識別子]** テキストボックスに貼り付けます。
-
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Export Metadata File]** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 手順 3 のように、その URL を Azure AD の **[応答 URL]** に貼り付けます。 
-
-    g. Tableau Server の [Configiuration] ページの **[OK]** ボタンをクリックします。
-
-    > [AZURE.NOTE] Tableau Server で SAML を構成する方法について不明な点がある場合は、こちらの記事「[SAML の構成](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)」を参照してください。 
-
-1. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+9. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
-2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。 
+10. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。 
    
     ![Azure AD のシングル サインオン][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-ユーザーの一覧で **[Britta Simon]**を選択します。
+* ユーザーの一覧で **[Britta Simon]**を選択します。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -202,24 +185,18 @@ Tableau Server アプリケーションは、特定の形式で構成された S
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
-   
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+   1. **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
+   2. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+   3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+   1. **[名]** ボックスに「**Britta**」と入力します。  
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_07.png) 
@@ -227,9 +204,8 @@ Tableau Server アプリケーションは、特定の形式で構成された S
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+   1. **[新しいパスワード]** の値を書き留めます。
+   2. **[完了]** をクリックします。   
 
 ### <a name="creating-a-tableau-server-test-user"></a>Tableau Server テスト ユーザーの作成
 このセクションの目的は、Tableau Server で Britta Simon というユーザーを作成することです。 Tableau Server 内のすべてのユーザーをプロビジョニングする必要があります。 また、ユーザーのユーザー名は、Azure AD のカスタム属性 **username**で構成した値と同じにする必要があります。 正しい対応付けがあれば、統合で「 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」が機能します。
@@ -289,6 +265,6 @@ Tableau Server アプリケーションは、特定の形式で構成された S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

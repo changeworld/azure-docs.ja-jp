@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートと PowerShell を使用した IoT ハブの作成 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートと PowerShell を使って IoT Hub を作成する方法についてわかりやすく説明します。"
+title: "テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2016
+ms.date: 12/06/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: cbd9c2a5d3e3f03fd9136feb35a82be0cd1ee420
+ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
+ms.openlocfilehash: b884fe128b8414ae1692df92e89a41f7ba1c0447
 
 
 ---
-# <a name="create-an-iot-hub-using-powershell"></a>PowerShell を使用した IoT Hub の作成
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>はじめに
@@ -33,8 +33,8 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
-* [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降。
+* アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* [Azure PowerShell 1.0][lnk-powershell-install] 以降。
 
 > [!TIP]
 > PowerShell スクリプトと Azure Resource Manager テンプレートを使って Azure のリソースを作成する方法の詳細については、[Azure Resource Manager での Azure PowerShell の使用][lnk-powershell-arm]に関する記事を参照してください。 
@@ -148,7 +148,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: ../powershell-install-configure.md
+[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/powershell-azure-resource-manager.md
@@ -160,6 +160,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

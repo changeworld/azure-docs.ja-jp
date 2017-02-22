@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 12/21/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: c9b16bd5cd3dc2429a30fd30f9ec942c568abe42
-ms.openlocfilehash: 802249883c6adf3fedc9873e35fb64a9085d905b
+ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
+ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
 
 
 ---
@@ -67,6 +67,10 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階層です。 次の手順では、BLOB コンテナーを作成する方法を説明します。
 
+> [!NOTE]
+> 
+> このセクションのコードは、「[開発環境を設定する](#set-up-the-development-environment)」の手順を完了していることを前提にしています。 
+
 1. `BlobsController.cs` ファイルを開きます。
 
 1. **ActionResult** を返す **CreateBlobContainer** というメソッドを追加します。
@@ -80,7 +84,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
  
-1. **CreateBlobContainer** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure Storage アカウントの名前に変更します)
+1. **CreateBlobContainer** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -99,7 +103,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. まだない場合は、**CloudBlobContainer.CreateIfNotExists** メソッドを呼び出して、コンテナーを作成します。 **CloudBlobContainer.CreateIfNotExists** メソッドでは、コンテナーが存在せず、正常に作成された場合は **true** が返され、それ以外の場合は **false** が返されます。    
+1. まだない場合は、**CloudBlobContainer.CreateIfNotExists** メソッドを呼び出して、コンテナーを作成します。 **CloudBlobContainer.CreateIfNotExists** メソッドでは、コンテナーが存在せず、正常に作成された場合は **true** が返されます。 それ以外の場合は、**false** が返されます。    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExists();
@@ -115,14 +119,14 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **[ビューの追加] ** ダイアログで、ビューの名前として **CreateBlobContainer** と入力し、**[追加]** を選択します。
 
-1. `CreateBlobContainer.cshtml` を開き、次のように変更します。
+1. `CreateBlobContainer.cshtml` を開き、次のコード スニペットのように変更します。
 
     ```csharp
     @{
-        ViewBag.Title = "Create blob container";
+        ViewBag.Title = "Create Blob Container";
     }
     
-    <h2>Create blob container results</h2>
+    <h2>Create Blob Container results</h2>
 
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
@@ -135,15 +139,19 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. アプリケーションを実行し、**[BLOB コンテナーの作成]** を選択します。 次のスクリーンショットに示すような結果が表示されます。 
+1. アプリケーションを実行して **[BLOB コンテナーの作成]** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
-    ![BLOB コンテナーを作成する](./media/vs-storage-aspnet-getting-started-blobs/results.png)
+    ![BLOB コンテナーを作成する](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
     前述したように、**CloudBlobContainer.CreateIfNotExists** メソッドは、コンテナーが存在しないため作成された場合にのみ **true** を返します。 そのため、コンテナーが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にコンテナーを削除する必要があります。 コンテナーを削除するには、**CloudBlobContainer.Delete** メソッドを使用します。 [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してコンテナーを削除することもできます。  
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>BLOB コンテナーに BLOB をアップロードする
 
-[BLOB コンテナーを作成したら](#create-a-blob-container)、そのコンテナーにファイルをアップロードできます。 このセクションでは、ローカル ファイルを BLOB コンテナーにアップロードする手順を説明します。 この手順では、*test-blob-container* という名前の BLOB コンテナーを作成していることを前提とします。 これを目的の BLOB コンテナーの名前に変更する必要があります。 
+[BLOB コンテナーを作成したら](#create-a-blob-container)、そのコンテナーにファイルをアップロードできます。 このセクションでは、ローカル ファイルを BLOB コンテナーにアップロードする手順を説明します。 この手順では、*test-blob-container* という名前の BLOB コンテナーを作成していることを前提とします。 
+
+> [!NOTE]
+> 
+> このセクションのコードは、「[開発環境を設定する](#set-up-the-development-environment)」の手順を完了していることを前提にしています。 
 
 1. `BlobsController.cs` ファイルを開きます。
 
@@ -158,7 +166,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
  
-1. **UploadBlob** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure Storage アカウントの名前に変更します)
+1. **UploadBlob** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更してください)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -177,7 +185,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. 前述のように、Azure Storage ではさまざまな種類の BLOB がサポートされています。 ページ BLOB への参照を取得するには、**CloudBlobContainer.GetPageBlobReference** メソッドを呼び出します。 ブロック BLOB への参照を取得するには、**CloudBlobContainer.GetBlockBlobReference** メソッドを呼び出します。 通常は、ブロック BLOB を使用することをお勧めします。 (*<blob-name>* を、アップロードされたときに BLOB に付ける名前に変更します)
+1. 前述のように、Azure Storage ではさまざまな種類の BLOB がサポートされています。 ページ BLOB への参照を取得するには、**CloudBlobContainer.GetPageBlobReference** メソッドを呼び出します。 ブロック BLOB への参照を取得するには、**CloudBlobContainer.GetBlockBlobReference** メソッドを呼び出します。 通常は、ブロック BLOB を使用することをお勧めします。 (<blob-name>* を、アップロードされたときに BLOB に付ける名前に変更します)。
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
@@ -204,11 +212,15 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. アプリケーションを実行し、**[BLOB のアップロード]** を選択します。  
   
-次のセクションでは、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。     
+「[BLOB コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-blob-container)」セクションで、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。    
 
 ## <a name="list-the-blobs-in-a-blob-container"></a>BLOB コンテナー内の BLOB を一覧表示する
 
 このセクションでは、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。 サンプル コードでは、セクション「[BLOB コンテナーを作成する](#create-a-blob-container)」で作成された *test-blob-container* を参照します。
+
+> [!NOTE]
+> 
+> このセクションのコードは、「[開発環境を設定する](#set-up-the-development-environment)」の手順を完了していることを前提にしています。 
 
 1. `BlobsController.cs` ファイルを開きます。
 
@@ -223,7 +235,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
  
-1. **ListBlobs** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure Storage アカウントの名前に変更します)
+1. **ListBlobs** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更してください)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -242,7 +254,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. BLOB コンテナー内の BLOB を一覧表示するには、**CloudBlobContainer.ListBlobs** メソッドを使います。 **CloudBlobContainer.ListBlobs** メソッドは、**CloudBlockBlob**、**CloudPageBlob**、または **CloudBlobDirectory** オブジェクトにキャストする **IListBlobItem** オブジェクトを返します。 次のコード スニペットは、その種類に基づいて、返されるオブジェクトを適切なオブジェクトにキャストして BLOB コンテナー内のすべての BLOB を列挙し、表示可能なリストに名前 (または **CloudBlobDirectory** の場合は URI) を追加します。
+1. BLOB コンテナー内の BLOB を一覧表示するには、**CloudBlobContainer.ListBlobs** メソッドを使います。 **CloudBlobContainer.ListBlobs** メソッドは、**CloudBlockBlob**、**CloudPageBlob**、または **CloudBlobDirectory** オブジェクトにキャストする **IListBlobItem** オブジェクトを返します。 次のコード スニペットでは、BLOB コンテナー内のすべての BLOB を列挙します。 各 BLOB がその型に基づいて適切なオブジェクトにキャストされ、その名前 (または、**CloudBlobDirectory** の場合は URI) が一覧に追加されます。
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -299,7 +311,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **[ビューの追加] ** ダイアログで、ビューの名前として **ListBlobs** と入力し、**[追加]** を選択します。
 
-1. `ListBlobs.cshtml` を開き、次のように変更します。
+1. `ListBlobs.cshtml` を開き、次のコード スニペットのように変更します。
 
     ```html
     @model List<string>
@@ -325,13 +337,13 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
     ```
 
-1. アプリケーションを実行し、**[List blobs (BLOB の一覧)]** を選択します。 次のスクリーンショットに示すような結果が表示されます。 
+1. アプリケーションを実行して **[List blobs (BLOB の一覧表示)]** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![BLOB の一覧](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 
-次の手順では BLOB をダウンロードして、ローカル ストレージに保存する方法、または、内容を文字列に読み込む方法を説明します。 サンプル コードでは、セクション「[BLOB コンテナーを作成する](#create-a-blob-container)」で作成された *test-blob-container* を参照します。
+このセクションでは、BLOB をダウンロードし、ローカル ストレージに保存するか、または内容を文字列に読み込む方法を説明します。 サンプル コードでは、セクション「[BLOB コンテナーを作成する](#create-a-blob-container)」で作成された *test-blob-container* を参照します。
 
 1. `BlobsController.cs` ファイルを開きます。
 
@@ -346,7 +358,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
  
-1. **DownloadBlob** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure Storage アカウントの名前に変更します)
+1. **DownloadBlob** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更してください)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -371,7 +383,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
     ```
 
-1. BLOB をダウンロードするには、BLOB の種類に基づいて **CloudBlockBlob.DownloadToStream** または **CloudPageBlob.DownloadToStream** メソッドを使用します。 次のコード スニペットは、**CloudBlockBlob.DownloadToStream** メソッドを使用して、ローカル ファイルに保存されるストリーム オブジェクトに BLOB の内容を転送します。 (*&lt;local-file-name>* を BLOB をダウンロードする場所を表す完全修飾ファイル名に変更します) 
+1. BLOB をダウンロードするには、BLOB の種類に基づいて **CloudBlockBlob.DownloadToStream** または **CloudPageBlob.DownloadToStream** メソッドを使用します。 次のコード スニペットは、**CloudBlockBlob.DownloadToStream** メソッドを使用して、ローカル ファイルに保存されるストリーム オブジェクトに BLOB の内容を転送します (*&lt;local-file-name>* を BLOB をダウンロードする場所を表す完全修飾ファイル名に変更します)。 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -392,7 +404,11 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 ## <a name="delete-blobs"></a>BLOB を削除する
 
-次の手順では、BLOB を削除する方法を説明します。 
+次の手順では、BLOB を削除する方法を説明します。
+
+> [!NOTE]
+> 
+> このセクションのコードは、「[開発環境を設定する](#set-up-the-development-environment)」の手順を完了していることを前提にしています。 
 
 1. `BlobsController.cs` ファイルを開きます。
 
@@ -407,7 +423,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。 (*&lt;storage-account-name>* はアクセスする Azure Storage アカウントの名前に変更します)
+1. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウントの情報を取得します (*&lt;storage-account-name>* をアクセス対象の Azure ストレージ アカウントの名前に変更してください)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -455,6 +471,6 @@ Azure でデータを格納するための追加のオプションについて�
   * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要](./vs-storage-aspnet-getting-started-queues.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

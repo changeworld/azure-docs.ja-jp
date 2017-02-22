@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ゲートウェイのトラブルシューティング | Microsoft ドキュメント"
+title: "シミュレートされたデバイスと Azure IoT Gateway - トラブルシューティング | Microsoft Docs"
 description: "Intel NUC ゲートウェイのトラブルシューティングのページ"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: 1c747085e47e997f549eff36a9f8d96cb243e228
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: a70de978d4636a31644702c6f3a8ca0d0b80f5c2
 
 
 ---
@@ -174,6 +174,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

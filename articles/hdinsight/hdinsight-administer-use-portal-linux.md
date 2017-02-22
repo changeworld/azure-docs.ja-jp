@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal を使用した HDInsight での Linux ベースの Hadoop クラスターの管理 | Microsoft Docs"
-description: "Azure を使用して Linux ベースの HDInsight クラスターを作成および管理する方法について説明します。"
+title: "Azure Portal を使用した HDInsight での Hadoop クラスターの管理 | Microsoft Docs"
+description: "Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 7bfa0d73f870202e4caeb893830952ca39a35c26
-ms.openlocfilehash: 27ee26b38b9881ed7f0cd7b0253be123af27955f
+ms.sourcegitcommit: 8c439591dae0bd561ba4f079aba9f2073d1e954b
+ms.openlocfilehash: dc94c3f428200f107f7e953a57cf4e0e83bc7de1
 
 
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure Portal][azure-portal] を使用すると、Azure HDInsight で Linux ベースのクラスターを管理できます。 他のツールを使用して HDInsight で Hadoop クラスターを管理する方法については、タブ セレクターを使用してください。 
+[Azure Portal][azure-portal] を使用すると、Azure HDInsight で Hadoop クラスターを管理できます。 他のツールを使用して HDInsight で Hadoop クラスターを管理する方法については、タブ セレクターを使用してください。 
 
 **前提条件**
 
@@ -43,6 +43,8 @@ ms.openlocfilehash: 27ee26b38b9881ed7f0cd7b0253be123af27955f
      
        ![Azure ポータル [HDInsight クラスター] ボタン](./media/hdinsight-administer-use-portal-linux/azure-portal-hdinsight-button.png)
 
+       HDInsight クラスターが表示されない場合は、一覧の最後の **[その他のサービス]** をクリックし、**[インテリジェンス + 分析]**セクションで **[HDInsight クラスター]** をクリックします。
+
 ## <a name="create-clusters"></a>クラスターの作成
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -56,14 +58,14 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    
     ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)
    
-    **[概要] メニュー**:
+    **[概要] メニュー:**
 
-   * **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
+   * **ダッシュ ボード**: クラスターのダッシュボード (Linux ベースのクラスターの場合は Ambari Web) を開きます。
    * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
    * **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
    * **[削除]**: クラスターを削除します。
 
-    **左側のメニュー**
+    **左側のメニュー:**
    
    * **[アクティビティ ログ]**: アクティビティ ログを表示およびクエリします。
    * **[アクセス制御 (IAM)]**: ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
@@ -141,7 +143,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
   
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
   
-    バランス再調整は、次の 2 つの方法で実行できます。
+    バランス再調整は、次の&2; つの方法で実行できます。
   
   * Storm Web UI
   * コマンド ライン インターフェイス (CLI) ツール
@@ -226,7 +228,7 @@ Ambari Web UI を使用してクラスターのユーザー パスワードを�
    | 名前 |SSH パスワードの変更 |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
    | ノード (ヘッド、worker、Nimbus、Supervisor、Zookeeper など) |表示するすべてのノード型に ✓ |
-   | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
+   | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを&1; つ入れる必要があります。 |
    | このスクリプト アクションを保持する… |このフィールドはオフのままにします。 |
 5. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しいパスワードで SSH を使用して、クラスターに接続することができます。
 
@@ -315,6 +317,6 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

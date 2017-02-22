@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ゲートウェイ スタート キットの使用 | Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - 作業開始 | Microsoft Docs"
 description: "IoT ゲートウェイ スタート キットを使用して Azure IoT ハブを作成し、SensorTag とゲートウェイを IoT ハブに接続します"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ab8f4f7bbb823cc56783a0cb39bb22157c74087f
-ms.openlocfilehash: fb45ef6239827ea2860b707b2bb5016ea680ad17
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
 
 
 ---
@@ -109,6 +109,6 @@ Azure Table Storage に書き込まれるゲートウェイからクラウドへ
 詳細については、[Intel IoT Gateway Kit developer zone](http://software.intel.com/iot/microsoft-azure) (Intel IoT Gateway Kit デベロッパー ゾーン) を参照してください。
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

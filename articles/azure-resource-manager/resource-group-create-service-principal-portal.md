@@ -1,5 +1,5 @@
 ---
-title: "ポータルでサービス プリンシパルを作成する | Microsoft Docs"
+title: "ポータルでの Azure アプリ ID の作成 | Microsoft Docs"
 description: "Azure リソース マネージャーでロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4312002b311ec17f175f6eb6bc45fbe1ce7c7a01
-ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
 
 ---
@@ -28,7 +28,13 @@ ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
 >
 >
 
-アプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。 このトピックでは、それらの手順をポータルで行う方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
+アプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
+
+* お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。
+* お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
+* 無人インストール用スクリプトを実行するときに、証明書を使用して認証を自動化できます。
+
+このトピックでは、それらの手順をポータルで行う方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
  
 ## <a name="required-permissions"></a>必要なアクセス許可
 このトピックの手順を実行するには、アプリケーションを Active Directory に登録し、Azure サブスクリプションでアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。 これらの手順を実行するための適切なアクセス許可があることを確認しましょう。
@@ -74,7 +80,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 3. **[Azure リソース]** を選択します。
 
      ![リソースを選択する](./media/resource-group-create-service-principal-portal/select-azure-resources.png) 
-3. 割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは 2 つのサブスクリプションの所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。 
+3. 割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは&2; つのサブスクリプションの所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。 
 
      ![アクセス許可を表示する](./media/resource-group-create-service-principal-portal/view-assigned-roles.png)
 
@@ -157,9 +163,19 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
      ![アプリを検索する](./media/resource-group-create-service-principal-portal/search-app.png)
 9. **[OK]** をクリックして、ロールの割り当てを完了します。 該当のスコープのロールに割り当てられたユーザーの一覧にアプリケーションが表示されます。
 
-Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 アプリケーション コードでタスクを実行する方法の詳細については、サンプル アプリケーションを参照してください。
+## <a name="log-in-as-the-application"></a>アプリケーションとしてログイン
 
-## <a name="sample-applications"></a>サンプル アプリケーション
+Active Directory でアプリケーションがセットアップされました。 アプリケーションとしてサインインする際に使用する ID とキーも用意しました。 アプリケーションは、実行できる特定のアクションを提供するロールに割り当てられています。 
+
+PowerShell でログインするには、「[Provide credentials through PowerShell (資格情報を PowerShell で渡す)](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell)」を参照してください。
+
+Azure CLI でログインするには、「[資格情報を Azure CLI で渡す](resource-group-authenticate-service-principal-cli.md#provide-credentials-through-azure-cli)」を参照してください。
+
+REST 操作のアクセス トークンを取得するには、「[Create the request (要求を作成する)](/rest/api/#create-the-request)」を参照してください。
+
+アプリケーション コードからのログインの詳細については、次のサンプル アプリケーションを確認してください。
+
+### <a name="sample-applications"></a>サンプル アプリケーション
 以下のサンプル アプリケーションでは、AD アプリケーションとしてログインする方法を紹介しています。
 
 **.NET**
@@ -194,6 +210,6 @@ Active Directory でアプリケーションがセットアップされました
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

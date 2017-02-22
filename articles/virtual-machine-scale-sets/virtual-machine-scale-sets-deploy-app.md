@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/26/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 611099e8c28584e091f9dc6c07eebf7e397092ea
+ms.sourcegitcommit: da5ad10e01d83d714b47f8d478dc73a824797dea
+ms.openlocfilehash: 714e0dd907b1efe8d2c4d6e062a6cedd08f44c4c
 
 
 ---
@@ -51,13 +51,11 @@ Packer および Terraform Azure でも Azure Resource Manager がサポート�
 スケール セット VM はコンテナーの安定したサブストレートとなり、セキュリティと OS 関連の更新プログラムも稀にしか必要になりません。 前に説明したように、このアプローチを採用し、それに基づいてサービスを構築している典型的な例が Azure Container Service です。
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>OS の更新プログラムはどのように更新ドメインに展開するのでしょうか。
-VM スケール セットを実行しながら、OS イメージを更新する必要があるとします。 これを行う 1 つの方法が、VM イメージを 1 つの VM ごとに更新することです。 それには、PowerShell または Azure CLI を使用します。 VM スケール セット モデル (その構成の定義方法) を更新して、個別の VM で "手動アップグレード" 呼び出しを発行するコマンドも別にあります。
-
-[こちら](https://github.com/gbowerman/vmsstools) の Python スクリプトの例では、VM スケール セットを 1 つの更新ドメインごとに更新するプロセスを自動化しています (注: これは堅牢な運用対応ソリューションというよりも、概念実証です。 エラー チェックなどを追加することをお勧めします)。
+VM スケール セットを実行しながら、OS イメージを更新する必要があるとします。 これを行う 1 つの方法が、VM イメージを 1 つの VM ごとに更新することです。 それには、PowerShell または Azure CLI を使用します。 VM スケール セット モデル (その構成の定義方法) を更新して、個別の VM で "手動アップグレード" 呼び出しを発行するコマンドも別にあります。 Azure のドキュメント「[仮想マシン スケール セットのアップグレード](./virtual-machine-scale-sets-upgrade-scale-set.md)」でも、VM スケール セット全体で OS をアップグレードするときに利用できるオプションについて詳しく説明しています。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 33d3d50980341e0810b1222ce1199fa8689d95d0
+ms.sourcegitcommit: c57505d037d991f3c0d720a481393ec2ae6b8069
+ms.openlocfilehash: ef6ae32c1d9b2e417d2a766207575f19aa06feaa
 
 
 ---
@@ -26,15 +26,15 @@ Azure Active Directory (Azure AD) プレビューで、ユーザーがサイン�
 ## <a name="how-do-i-disable-user-sign-ins"></a>ユーザー サインインを無効にする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-3. **[Azure Active Directory - <*ディレクトリ名*>]** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**[エンタープライズ アプリケーション]** を選択します。
-   
+3. **[Azure Active Directory  -   ***<ディレクトリ名>***]** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**[エンタープライズ アプリケーション]** を選択します。
+
     ![エンタープライズ アプリケーションを開く](./media/active-directory-coreapps-disable-app-azure-portal/open-enterprise-apps.png)
 4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 管理できるアプリケーションの一覧が表示されます。
 5. **[Enterprise applications - All applications (エンタープライズ アプリケーション - すべてのアプリケーション)]** ブレードで、アプリケーションを選択します。
 6. ***[<アプリケーション名>]*** ブレード (タイトルが選択したアプリケーションの名前であるブレード) で、**[プロパティ]** を選択します。
-   
+
     ![[すべてのアプリケーション] を選択する](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
-7. [***<アプリケーション名>*** **- プロパティ]** ブレードで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
+7. **[***<アプリケーション名>***  -  プロパティ]** ブレードで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
 8. **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
@@ -45,7 +45,6 @@ Azure Active Directory (Azure AD) プレビューで、ユーザーがサイン�
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Analytics で顔編集する | Microsoft Docs"
+title: "Azure Media Analytics で顔を編集する | Microsoft Docs"
 description: "このトピックでは、Azure Media Analytics で顔を編集する方法を示します。"
 services: media-services
 documentationcenter: 
@@ -12,26 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/01/2017
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a272384d76baf2d8c22b612d6a736fa1fae377e5
+ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
+ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
 
 
 ---
-# <a name="face-redaction-with-azure-media-analytics"></a>Azure Media Analytics での顔編集
-## <a name="overview"></a>Overview
+# <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
+## <a name="overview"></a>概要
 **Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](media-services-analytics-overview.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
 ここでは、 **Azure Media Redactor** の詳細と、Media Services SDK for .NET での使用方法について説明します。
 
-**Azure Media Redactor** MP は現在プレビュー段階です。
+**Azure Media Redactor** MP は現在プレビュー段階です。 すべてのパブリックな Azure リージョン、米国政府、および中国国内のデータセンターで使用できます。 このプレビューは、現在無料で提供されています。 
 
 ## <a name="face-redaction-modes"></a>顔編集モード
 顔編集は、ビデオのフレームごとに顔を検出し、その顔オブジェクトを時間軸の前後にわたって追跡することで、同一の人間を他の角度からも処理します。 自動修正のプロセスは非常に複雑で、常に 100% 満足のいく結果になるとは限りません。そのため、Media Analytics には最終的なアウトプットを変更する方法がいくつか用意されています。
 
-完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析**モードと**編集**モードに分かれています。 単一のパスに 2 つのモードを結合して、両方のタスクを 1 つのジョブで実行します。このモードは**結合**と呼ばれます。
+完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析**モードと**編集**モードに分かれています。 単一のパスに&2; つのモードを結合して、両方のタスクを&1; つのジョブで実行します。このモードは**結合**と呼ばれます。
 
 ### <a name="combined-mode"></a>結合モード
 手作業なしで、自動的に修正された mp4 が生成されます。
@@ -94,7 +94,7 @@ ms.openlocfilehash: a272384d76baf2d8c22b612d6a736fa1fae377e5
 ... 省略
 
 ### <a name="redact-mode"></a>編集モード
-ワークフローの 2 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
+ワークフローの&2; 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
 
 これには、ぼかす対象となる Id の一覧、元のビデオ、JSON の注釈が含まれます。 このモードでは、注釈を使用して入力ビデオにぼかし効果を適用します。
 
@@ -103,13 +103,13 @@ Analyze パスからの出力は、元のビデオを含みません。 ビデ�
 | 段階 | ファイル名 | メモ |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ 手順 1 と同じビデオです。 |
-| 入力資産 |foo_annotations.json |フェーズ 1 からの注釈メタデータ ファイルで、変更可能です。 |
+| 入力資産 |foo_annotations.json |フェーズ&1; からの注釈メタデータ ファイルで、変更可能です。 |
 | 入力資産 |foo_IDList.txt (Optional) |行で区切られた、編集する顔 ID の新しい一覧です (オプション)。 空白の場合、すべての顔をぼかします。 |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'redact'}} |
 | 出力資産 |foo_redacted.mp4 |注釈に基づいてぼかし効果を適用したビデオ |
 
 #### <a name="example-output"></a>出力例
-これは 1 つの ID を選択した場合の IDList からの出力です。
+これは&1; つの ID を選択した場合の IDList からの出力です。
 
 [ビデオ](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
@@ -308,6 +308,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: ad4878dd2684c44f8458a9eb8288730e8fd45308
-ms.openlocfilehash: dbb39aad69f63765bf7f72129dbdcde36ed40ec7
+ms.sourcegitcommit: 89e5486f3302098f3a1d49e4390ec5b21617d778
+ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
 
 ---
 
@@ -34,7 +34,7 @@ Windows PowerShell で Automation 証明書資産を作成および管理する�
 
 |コマンドレット|Description|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AzureRmAutomationCertificate アクティビティから取得できるのは、証明書自体のみです。|
+|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AutomationCertificate アクティビティから取得できるのは、証明書自体のみです。|
 |[New-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603604.aspx)|新しい証明書を Azure Automation に作成します。|
 [Remove-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603529.aspx)|証明書を Azure Automation から削除します。|新しい証明書を Azure Automation に作成します。
 |[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|証明書ファイルのアップロードや .pfx のパスワードの設定など、既存の証明書のプロパティを設定します。|
@@ -98,6 +98,6 @@ Windows PowerShell で Automation 証明書資産を作成および管理する�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

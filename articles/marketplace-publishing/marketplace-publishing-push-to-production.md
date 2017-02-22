@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
 
 
 ---
@@ -88,6 +88,6 @@ ms.openlocfilehash: a91e8b3d64ec68ae43e7237c27488e5240585a4e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

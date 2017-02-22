@@ -1,6 +1,6 @@
 ---
-title: "リソース マネージャーでの Azure PowerShell | Microsoft Docs"
-description: "Azure PowerShell を使用して複数のリソースをリソース グループとして Azure にデプロイする方法について、概要を示します。"
+title: "PowerShell で Azure ソリューションを管理する | Microsoft Docs"
+description: "Azure PowerShell と Resource Manager を使用してリソースを管理します。"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -12,360 +12,271 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2016
+ms.date: 12/05/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 14419f36a9404202d6238d5825fb1ae77d46038a
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: d1f4b7806f72dc2632ba981781097b19e89d07f3
 
 
 ---
-# <a name="using-azure-powershell-with-azure-resource-manager"></a>Azure リソース マネージャーでの Azure PowerShell の使用
+# <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Azure PowerShell と Resource Manager でリソースを管理する
 > [!div class="op_single_selector"]
 > * [ポータル](resource-group-portal.md)
 > * [Azure CLI](xplat-cli-azure-resource-manager.md)
 > * [Azure PowerShell](powershell-azure-resource-manager.md)
 > * [REST API](resource-manager-rest-api.md)
+>
+>
 
-Azure Resource Manager では、Azure リソースのライフサイクル管理のための最新のアプローチが実装されています。 個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki など、ソリューション全体の構想を練ります。 ソリューションの宣言型表現であるテンプレートを使用して、ソリューションをサポートするために必要なすべてのリソースが含まれているリソース グループを定義します。 その後、そのリソース グループを論理ユニットとしてデプロイし、管理します。
+このトピックでは、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
 
-このチュートリアルでは、Azure リソース マネージャーで Azure PowerShell を使用する方法について説明します。 ソリューションのデプロイとそのソリューションの使用のプロセスについて段階的に説明します。 Azure PowerShell とリソース マネージャーのテンプレートを使用し、以下をデプロイします。
+1. リソース グループの作成
+2. リソース グループへのリソースの追加
+3. リソースへのタグの追加
+4. 名前とタグの値に基づいたリソースへのクエリ実行
+5. リソースへのロック適用と解除
+6. リソース グループからの Resource Manager テンプレートの作成
+7. リソース グループの削除
 
-* データベースをホストする SQL Server
-* データを格納する SQL Database
-* Web アプリにデータベースへの接続を許可するファイアウォール ルール
-* Web アプリの機能とコストを定義するための App Service プラン
-* Web アプリを実行するための Web サイト
-* データベースへの接続文字列を格納するための Web 構成
-* アラート ルール - パフォーマンスとエラーの監視用
-* App Insights - 自動スケール設定用
+## <a name="get-started-with-azure-powershell"></a>Azure PowerShell の使用に関するページ
 
-Azure PowerShell を取得するには、「[Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+Azure PowerShell がインストールされていない場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。
 
-## <a name="get-help-for-cmdlets"></a>コマンドレットのヘルプの取得
-このチュートリアルに表示されているすべてのコマンドレットの詳細なヘルプを取得するには、Get-Help コマンドレットを使用します。
+前に Azure PowerShell をインストールしていても、最近更新していない場合は、最新バージョンをインストールすることを検討してください。 バージョンの更新は、インストールと同じ方法で行うことができます。 たとえば、Web Platform Installer を使用した場合は、それを再度起動して、更新プログラムを探します。
 
-    Get-Help <cmdlet-name> -Detailed
+Azure Resource モジュールのバージョンを確認するには、次のコマンドレットを使用してください。
 
-たとえば、Get-AzureRmResource コマンドレットのヘルプを取得するには、次のように入力します。
+```powershell
+Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
+```
 
-    Get-Help Get-AzureRmResource -Detailed
+このトピックは、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、このトピックに示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/en-us/powershell/resourcemanager/azurerm.resources/v3.3.0/azurerm.resources)」を参照してください。
 
-ヘルプの概要と Resources モジュールのコマンドレットの一覧を取得するには、次のように入力します。
-
-    Get-Command -Module AzureRM.Resources | Get-Help | Format-Table Name, Synopsis
-
-次のような出力が表示されます。
-
-    Name                                   Synopsis
-    ----                                   --------
-    Find-AzureRmResource                   Searches for resources using the specified parameters.
-    Find-AzureRmResourceGroup              Searches for resource group using the specified parameters.
-    Get-AzureRmADGroup                     Filters active directory groups.
-    Get-AzureRmADGroupMember               Get a group members.
-    ...
-
-コマンドレットの完全なヘルプを取得するには、次の形式でコマンドを入力します。
-
-    Get-Help <cmdlet-name> -Full
-
-## <a name="login-to-your-azure-account"></a>Azure アカウントへのログイン
+## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
 
-Azure アカウントにログインするには、 **Add-AzureRmAccount** コマンドレットを使用します。
+Azure アカウントにログインするには、**Add-AzureRmAccount** コマンドレットを使用します。
 
-    Add-AzureRmAccount
+```powershell
+Add-AzureRmAccount
+```
 
 このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。
 
-アカウント設定の有効期限が切れるため、ときどき更新する必要があります。 アカウント設定を更新するには、 **Add-AzureRmAccount** をもう一度実行します。
+コマンドレットは、自分のアカウントと、タスクに使用するサブスクリプションに関する情報を返します。
 
-> [!NOTE]
-> リソース マネージャー モジュールでは Add-AzureRmAccount が必要になります。 発行設定ファイルでは不十分です。
->
->
+```powershell
+Environment           : AzureCloud
+Account               : example@contoso.com
+TenantId              : {guid}
+SubscriptionId        : {guid}
+SubscriptionName      : Example Subscription One
+CurrentStorageAccount :
 
-サブスクリプションが複数ある場合、 **Set-AzureRmContext** コマンドレットでデプロイに使用するサブスクリプション ID を指定します。
+```
 
-    Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+複数のサブスクリプションがある場合は、別のサブスクリプションに切り替えることができます。 最初に、自分のアカウントのすべてのサブスクリプションを見てみましょう。
+
+```powershell
+Get-AzureRmSubscription
+```
+
+有効および無効なサブスクリプションを返します。
+
+```powershell
+SubscriptionName : Example Subscription One
+SubscriptionId   : {guid}
+TenantId         : {guid}
+State            : Enabled
+
+SubscriptionName : Example Subscription Two
+SubscriptionId   : {guid}
+TenantId         : {guid}
+State            : Enabled
+
+SubscriptionName : Example Subscription Three
+SubscriptionId   : {guid}
+TenantId         : {guid}
+State            : Disabled
+```
+
+別のサブスクリプションに切り替えるには、**Set-AzureRmContext** コマンドレットでサブスクリプション名を指定します。
+
+```powershell
+Set-AzureRmContext -SubscriptionName "Example Subscription Two"
+```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 サブスクリプションにリソースをデプロイする前に、そのリソースを含めるリソース グループを作成する必要があります。
 
-リソース グループを作成するには、 **New-AzureRmResourceGroup** コマンドレットを使用します。
+リソース グループを作成するには、 **New-AzureRmResourceGroup** コマンドレットを使用します。 コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。
 
-コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。 前のセクションで検出した内容に基づいて、"West US" を場所に指定します。
+```powershell
+New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
+```
 
-    New-AzureRmResourceGroup -Name TestRG1 -Location "West US"
+出力の形式は次のとおりです。
 
-次のように出力されます。
+```powershell
+ResourceGroupName : TestRG1
+Location          : southcentralus
+ProvisioningState : Succeeded
+Tags              :
+ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+```
 
-    ResourceGroupName : TestRG1
-    Location          : westus
-    ProvisioningState : Succeeded
-    Tags              :
-    ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+後でリソース グループを取得する必要がある場合は、次のコマンドレットを使用します。
 
-リソース グループが正常に作成されました。
+```powershell
+Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+```
 
-## <a name="deploy-your-solution"></a>ソリューションのデプロイ
-このトピックでは、テンプレートの作成方法やテンプレートの構造については説明しません。 詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」と「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から事前定義済みの [Web アプリと SQL Database をプロビジョニングする](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)テンプレートをデプロイします。
+自分のサブスクリプションのリソース グループをすべて取得するには、名前を指定しないでください。
 
-リソース グループとテンプレートの作成が終わり、これでテンプレート内で定義されたインフラストラクチャをリソース グループにデプロイする準備が整いました。 **New-AzureRmResourceGroupDeployment** コマンドレットを使用してリソースをデプロイします。 テンプレートにより、使用されるさまざまな既定値が指定されます。それらのパラメーターの値を指定する必要がありません。 基本的な構文は次のようになります。
+```powershell
+Get-AzureRmResourceGroup
+```
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -administratorLogin exampleadmin -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
+## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
+リソースをリソース グループに追加するには、**New-AzureRmResource** コマンドレット、または作成するリソースの種類に固有のコマンドレット (**New-AzureRmStorageAccount** など) を使用します。 リソースの種類に固有のコマンドレットには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、ほとんどの場合、こちらを使用する方が簡単です。 **New-AzureRmResource** を使用するには、設定するすべてのプロパティを把握しておく必要があります。こうしたプロパティを入力するよう求めるメッセージは表示されません。
 
-リソース グループとテンプレートの場所を指定します。 テンプレートがローカル ファイルの場合、 **-TemplateFile** パラメーターを使用し、テンプレートのパスを指定します。 **-Mode** パラメーターを **Incremental** または **Complete** のいずれかに設定できます。 既定では、リソース マネージャーはデプロイ中に増分更新を実行するため、**増分**が必要な場合に **-Mode** を設定する必要はありません。
-これらのデプロイ モード間の相違については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 このトピックでは、Resource Manager テンプレートをサブスクリプションにデプロイする方法については説明しません。 この情報については、「[Deploy resources with Resource Manager templates and Azure PowerShell (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ)](resource-group-template-deploy.md)」を参照してください。 このトピックでは、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
 
-### <a name="dynamic-template-parameters"></a>動的なテンプレート パラメーター
-PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。 この機能は、テンプレートで定義するパラメーターでも同様に使用できます。 テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、解析して、テンプレート パラメーターをコマンドに動的に追加します。 これにより、テンプレート パラメーターの値の指定が非常に簡単になります。
+次のコマンドレットは、ストレージ アカウントを作成します。 この例で示されている名前ではなく、ストレージ アカウントの一意の名前を指定してください。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。 この例で示されている名前は既に使用済みのため、その名前を使うと、エラーが発生します。
 
-コマンドを入力すると、不足している必須パラメーター **administratorLoginPassword**を入力するように求められます。 パスワードを入力すると、セキュリティ保護された文字列値が隠されます。 この対策によって、プレーンテキストでパスワードを提供することの危険性が解消されます。
+```powershell
+New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
+```
 
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
-    Supply values for the following parameters:
-    (Type !? for Help.)
-    administratorLoginPassword: ********
+後でこのリソースを取得する必要がある場合は、次のコマンドレットを使用します。
 
-テンプレートをデプロイするコマンド内のパラメーターのいずれかと名前が一致するパラメーターがテンプレートに含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate など**) に値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+```powershell
+Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
+```
 
-コマンドを実行してリソースが作成されると、メッセージが返されます。 最終的に、デプロイの結果が表示されます。
+## <a name="add-a-tag"></a>タグを追加します
 
-    DeploymentName    : azuredeploy
-    ResourceGroupName : TestRG1
-    ProvisioningState : Succeeded
-    Timestamp         : 4/11/2016 7:26:11 PM
-    Mode              : Incremental
-    TemplateLink      :
-                Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
-                ContentVersion : 1.0.0.0
-    Parameters        :
-                Name             Type                       Value
-                ===============  =========================  ==========
-                skuName          String                     F1
-                skuCapacity      Int                        1
-                administratorLogin  String                  exampleadmin
-                administratorLoginPassword  SecureString
-                databaseName     String                     sampledb
-                collation        String                     SQL_Latin1_General_CP1_CI_AS
-                edition          String                     Basic
-                maxSizeBytes     String                     1073741824
-                requestedServiceObjectiveName  String       Basic
+タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 このトピックでは、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
 
-    Outputs           :
-                Name             Type                       Value
-                ===============  =========================  ==========
-                siteUri          String                     websites5wdai7p2k2g4.azurewebsites.net
-                sqlSvrFqdn       String                     sqlservers5wdai7p2k2g4.database.windows.net
+次のコマンドレットでは、2 つのタグをストレージ アカウントに適用します。
 
-    DeploymentDebugLogLevel :
+```powershell
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
+ ```
 
-わずかな手順で、複雑な Web サイトに必要なリソースを作成してデプロイしました。
+タグは&1; つのオブジェクトとして更新されます。 タグが既に含まれているリソースにタグを追加するには、最初に既存のタグを取得します。 新しいタグを、既存のタグが含まれるオブジェクトに追加したら、すべてのタグをリソースに再度適用します。
 
-### <a name="log-debug-information"></a>デバッグ情報のログ
-テンプレートをデプロイするとき、要求と応答に関する追加情報をログに記録できます。**New-AzureRmResourceGroupDeployment** の実行時に **-DeploymentDebugLogLevel** パラメーターを指定します。 その情報を基に、デプロイ時に発生したエラーを解決できる可能性があります。 既定値は **[なし]** です。要求と応答のいずれの内容もログに記録されません。 要求、応答、または両方の内容をログに記録するように指定できます。  デプロイのトラブルシューティングとデバッグ情報のログの詳細については、[Azure PowerShell でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)に関するページを参照してください。 次の例では、デプロイの要求と応答の内容がログに記録されます。
+```powershell
+$tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
+$tags += @{Status="Approved"}
+Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
+```
 
-    New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
+## <a name="search-for-resources"></a>リソースの検索
 
-> [!NOTE]
-> DeploymentDebugLogLevel パラメーターを設定するときは、デプロイ中に渡す情報の種類を慎重に検討してください。 要求または応答に関する情報をログ記録すると、デプロイ操作で取得される重要なデータを公開する可能性があります。
+**Find-AzureRmResource** コマンドレットを使用して、さまざまな検索条件でリソースを取得します。
 
-## <a name="get-information-about-your-resource-groups"></a>リソース グループに関する情報を取得します。
-リソース グループを作成したら、リソース マネージャー モジュールでコマンドレットを使用してリソース グループを管理できます。
+* 名前によってリソースを取得するには、**ResourceNameContains** パラメーターを指定します。
 
-* サブスクリプションのリソース グループを取得するには、 **Get-AzureRmResourceGroup** コマンドレットを使用します。
+  ```powershell
+  Find-AzureRmResource -ResourceNameContains mystoragename
+  ```
 
-        Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+* リソース グループですべてのリソースを取得するには、**ResourceGroupNameContains** パラメーターを指定します。
 
-    返される情報は次のとおりです。
+  ```powershell
+  Find-AzureRmResource -ResourceGroupNameContains TestRG1
+  ```
 
-        ResourceGroupName : TestRG1
-        Location          : westus
-        ProvisioningState : Succeeded
-        Tags              :
-        ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG
+* タグ名と値ですべてのリソースを取得するには、**TagName** パラメーターと **TagValue** パラメーターを指定します。
 
-        ...
+  ```powershell
+  Find-AzureRmResource -TagName Dept -TagValue IT
+  ```
 
-    リソース グループ名を指定しない場合、このコマンドレットはサブスクリプションのすべてのリソース グループを返します。
-* リソース グループのリソースを取得するには、**Find-AzureRmResource** コマンドレットとその **ResourceGroupNameContains** パラメーターを使用します。 パラメーターがない場合、Find-AzureRmResource は Azure サブスクリプション内のすべてのリソースを取得します。
+* 特定のリソースの種類のリソースをすべて取得するには、**ResourceType** パラメーターを指定します。
 
-        Find-AzureRmResource -ResourceGroupNameContains TestRG1
+  ```powershell
+  Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
+  ```
 
-     次のように書式設定されたリソースの一覧が返されます。
+## <a name="lock-a-resource"></a>リソースのロック
 
-        Name              : sqlservers5wdai7p2k2g4
-        ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Sql/servers/sqlservers5wdai7p2k2g4
-        ResourceName      : sqlservers5wdai7p2k2g4
-        ResourceType      : Microsoft.Sql/servers
-        Kind              : v2.0
-        ResourceGroupName : TestRG1
-        Location          : westus
-        SubscriptionId    : {guid}
-        Tags              : {System.Collections.Hashtable}
-        ...
-* タグを使用してサブスクリプションのリソースを論理的に整理し、**Find-AzureRmResource** コマンドレットと **Find-AzureRmResourceGroup** コマンドレットでリソースを取得できます。
+重要なリソースが誤って削除または変更されないようにするには、そのリソースにロックを適用します。 **CanNotDelete** または **ReadOnly** のいずれかを指定できます。
 
-        Find-AzureRmResource -TagName displayName -TagValue Website
+管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、所有者とユーザー アクセス管理者にのみこれらのアクションが許可されています。
 
-        Name              : webSites5wdai7p2k2g4
-        ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1/providers/Microsoft.Web/sites/webSites5wdai7p2k2g4
-        ResourceName      : webSites5wdai7p2k2g4
-        ResourceType      : Microsoft.Web/sites
-        ResourceGroupName : TestRG1
-        Location          : westus
-        SubscriptionId    : {guid}
+ロックを適用するには、次のコマンドレットを使用します。
 
-      There is much more you can do with tags. For more information, see [Using tags to organize your Azure resources](resource-group-using-tags.md).
+```powershell
+New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
+```
 
-## <a name="add-to-a-resource-group"></a>リソース グループへの追加
-リソース グループにリソースを追加するには、 **New-AzureRmResource** コマンドレットを使用できます。 ただし、この方法でリソースを追加した場合は、その新しいリソースがテンプレート内には存在しないため、将来混乱が生じる可能性があります。 元のテンプレートを再度デプロイすると、不完全なソリューションがデプロイされることになります。 頻繁にデプロイしていれば、新しいリソースをテンプレートに追加して再度デプロイする方が簡単で確実であることがわかります。
+前の例でロックされたリソースは、ロックが解除されるまで削除できません。 ロックを解除するには、次を使用します。
 
-## <a name="move-a-resource"></a>リソースの移動
-新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
+```powershell
+Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
+```
 
-## <a name="export-template"></a>テンプレートをエクスポートする
+ロックの詳細については、[Azure Resource Manager でのリソースのロック](resource-group-lock-resources.md)に関するページをご覧ください。
+
+## <a name="export-resource-manager-template"></a>Resource Manager テンプレートのエクスポート
 (PowerShell または、ポータルなど、その他の方法でデプロイされた) 既存のリソース グループの場合、そのリソース グループのリソース マネージャーのテンプレートを参照できます。 テンプレートのエクスポートには、2 つの利点があります。
 
 1. ソリューションの将来のデプロイを簡単に自動化できます。すべてのインフラストラクチャがテンプレートに定義されているためです。
 2. ソリューションを表す JavaScript Object Notation (JSON) を見ることでテンプレートの構文に詳しくなります。
 
-PowerShell により、リソース グループの現在の状態を表すテンプレートを生成するか、特定のデプロイに使用されたテンプレートを取得できます。
-
-リソース グループのテンプレートのエクスポートは、リソース グループを変更した後、その現在の状態の JSON 表現を取得する必要があるときに便利です。 しかしながら、生成されたテンプレートには、最小数のパラメーターのみが含まれ、変数はありません。 テンプレートの大半の値はハードコーディングされています。 生成されたテンプレートをデプロイする前に、さまざまな環境に合わせてデプロイをカスタマイズできるように、多くの値をパラメーターに変換しておくと便利です。
-
-リソースのデプロイに使用された実際のテンプレートを表示する必要があるとき、特定のデプロイのテンプレートをエクスポートすると便利です。 テンプレートには、元のデプロイに定義されていたすべてのパラメーターと変数が含まれます。 ただし、組織の誰かがテンプレートに定義されている以外のリソース グループを変更した場合、そのテンプレートはそのリソース グループの現在の状態を表しません。
-
 > [!NOTE]
 > テンプレートのエクスポート機能はプレビューの段階にあり、現在のところ、一部の種類のリソースでは、テンプレートをエクスポートできません。 テンプレートのエクスポートを試行したとき、一部のリソースがエクスポートされなかったというエラーが表示されることがあります。 必要に応じて、ダウンロード後、エクスポートされなかったリソースをテンプレート内で手動で定義できます。
+>
+>
 
-
-### <a name="export-template-from-resource-group"></a>リソース グループからテンプレートをエクスポートする
 リソース グループのテンプレートを表示するには、 **Export-AzureRmResourceGroup** コマンドレットを実行します。
 
-    Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\TestRG1.json
+```powershell
+Export-AzureRmResourceGroup -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\TestRG1.json
+```
 
-### <a name="download-template-from-deployment"></a>デプロイからテンプレートをダウンロードする
-特定のデプロイで使用されたテンプレートをダウンロードするには、 **Save-AzureRmResourceGroupDeploymentTemplate** コマンドレットを実行します。
+Resource Manager テンプレートをエクスポートするオプションとシナリオは多数あります。 詳細については、「[Export an Azure Resource Manager template from existing resources (既存のリソースから Azure Resource Manager テンプレートをエクスポートする)](resource-manager-export-template.md)」を参照してください。
 
-    Save-AzureRmResourceGroupDeploymentTemplate -DeploymentName azuredeploy -ResourceGroupName TestRG1 -Path c:\Azure\Templates\Downloads\azuredeploy.json
+## <a name="remove-resources-or-resource-group"></a>リソースまたはリソース グループの削除
+リソースまたはリソース グループを削除できます。 リソース グループを削除すると、そのリソース グループ内のリソースもすべて削除されます。
 
-## <a name="delete-resources-or-resource-group"></a>リソースまたはリソース グループを削除する
 * リソース グループからリソースを削除するには、 **Remove-AzureRmResource** コマンドレットを使用します。 このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
 
-    このコマンドは、TestRG1 リソース グループから TestSite Web サイトを削除します。
+  ```powershell
+  Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
+  ```
 
-        Remove-AzureRmResource -Name TestSite -ResourceGroupName TestRG1 -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01
-* リソース グループを削除するには、 **Remove-AzureRmResourceGroup** コマンドレットを使用します。 このコマンドレットは、リソース グループとそのリソースを削除します。
+* リソース グループとそのグループのリソースすべてを削除するには、**Remove-AzureRmResourceGroup** コマンドレットを使用します。
 
-        Remove-AzureRmResourceGroup -Name TestRG1
+  ```powershell
+  Remove-AzureRmResourceGroup -Name TestRG1
+  ```
 
-    削除の確認が求められます。
+どちらのコマンドレットについても、リソースまたはリソース グループを削除するかどうかを確認するメッセージが表示されます。 リソースまたはリソース グループが適切に削除されると、**True** が返されます。
 
-        Confirm
-        Are you sure you want to remove resource group 'TestRG1'
-        [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+## <a name="run-resource-manager-scripts-with-azure-automation"></a>Azure Automation での Resource Manager スクリプトの実行
 
-## <a name="deployment-script"></a>デプロイ スクリプト
-このトピックの最初のデプロイ例では、Azure にリソースをデプロイするために必要な個々のコマンドレットのみが示されていました。 続く例では、リソース グループを作成し、リソースをデプロイするデプロイ スクリプトが示されています。
+このトピックでは、Azure PowerShell でリソースに対して基本的な操作を行う方法について説明します。 高度な管理シナリオでは、通常、スクリプトを作成し、そのスクリプトを、必要に応じてまたはスケジュールに従って再利用する必要があります。 [Azure Automation](../automation/automation-intro.md) を使用すると、よく使用される Azure ソリューション管理スクリプトを自動化できます。
 
-    <#
-      .SYNOPSIS
-      Deploys a template to Azure
+次のトピックでは、Azure Automation、Resource Manager、および PowerShell を使用して、管理タスクを効果的に実行する方法について説明します。
 
-      .DESCRIPTION
-      Deploys an Azure Resource Manager template
-
-      .PARAMETER subscriptionId
-      The subscription id where the template will be deployed.
-
-      .PARAMETER resourceGroupName
-      The resource group where the template will be deployed. Can be the name of an existing or a new resource group.
-
-      .PARAMETER resourceGroupLocation
-      Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
-
-      .PARAMETER deploymentName
-      The deployment name.
-
-      .PARAMETER templateFilePath
-      Optional, path to the template file. Defaults to template.json.
-
-      .PARAMETER parametersFilePath
-      Optional, path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter values based on template.
-    #>
-
-    param(
-      [Parameter(Mandatory=$True)]
-      [string]
-      $subscriptionId,
-
-      [Parameter(Mandatory=$True)]
-      [string]
-      $resourceGroupName,
-
-      [string]
-      $resourceGroupLocation,
-
-      [Parameter(Mandatory=$True)]
-      [string]
-      $deploymentName,
-
-      [string]
-      $templateFilePath = "template.json",
-
-      [string]
-      $parametersFilePath = "parameters.json"
-    )
-
-    #******************************************************************************
-    # Script body
-    # Execution begins here
-    #******************************************************************************
-    $ErrorActionPreference = "Stop"
-
-    # sign in
-    Write-Host "Logging in...";
-    Add-AzureRmAccount;
-
-    # select subscription
-    Write-Host "Selecting subscription '$subscriptionId'";
-    Set-AzureRmContext -SubscriptionID $subscriptionId;
-
-    #Create or check for existing resource group
-    $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
-    if(!$resourceGroup)
-    {
-      Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
-      if(!$resourceGroupLocation) {
-        $resourceGroupLocation = Read-Host "resourceGroupLocation";
-      }
-      Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'";
-      New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
-    }
-    else{
-      Write-Host "Using existing resource group '$resourceGroupName'";
-    }
-
-    # Start the deployment
-    Write-Host "Starting deployment...";
-    if(Test-Path $parametersFilePath) {
-      New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
-    } else {
-      New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath;
-    }
+- Runbook 作成の詳細については、「[初めての PowerShell Runbook](../automation/automation-first-runbook-textual-powershell.md)」を参照してください。
+- スクリプト ギャラリーの使用については、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](../automation/automation-runbook-gallery.md)」を参照してください。
+- 仮想マシンを起動および停止する Rubbook については、「[Azure Automation シナリオ: JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する](../automation/automation-scenario-start-stop-vm-wjson-tags.md)」を参照してください。
+- ピーク時間外に仮想マシンを起動および停止する Runbook については、「[ピーク時間外 VM 起動/停止 ソリューション (Automation)](../automation/automation-solution-vm-management.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
-* プロジェクトのデプロイの詳細な例については、 [Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
-* 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)」を参照してください。
+* 新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

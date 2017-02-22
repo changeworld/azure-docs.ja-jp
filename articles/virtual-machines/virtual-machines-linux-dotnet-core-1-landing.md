@@ -1,5 +1,5 @@
 ---
-title: "Azure Virtual Machines DotNet Core チュートリアル 1 | Microsoft Docs"
+title: "Azure Linux Virtual Machine DotNet Core チュートリアル 1 | Microsoft Docs"
 description: "Azure Virtual Machines DotNet Core チュートリアル"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 11d67e09c25028a66c33020dedfb7acb8699d55f
+ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
+ms.openlocfilehash: d761bd2cb01d121a3abdd91b59737bece567aba5
 
 
 ---
 # <a name="automating-application-deployments-to-azure-virtual-machines"></a>Azure Virtual Machines へのアプリケーションのデプロイを自動化する
-この 4 部構成のシリーズでは、Azure Resource Manage テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。 
+この&4; 部構成のシリーズでは、Azure Resource Manage テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。 
 
 ## <a name="music-store-application"></a>ミュージック ストア アプリケーション
 このシリーズで使うサンプルは、ミュージック ストアのショッピング体験をシミュレートする .Net Core アプリケーションです。 このアプリケーションは、Linux または Windows の仮想システムにデプロイできます。両方のサンプルのデプロイを作成しています。 このアプリケーションには、Web アプリケーションと SQL データベースが含まれています。 このシリーズの記事を読む前に、このページにあるデプロイ ボタンを使って、アプリケーションをデプロイしてください。 完全にデプロイすると、アプリケーション/Azure のアーキテクチャは次の図のようになります。 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 11d67e09c25028a66c33020dedfb7acb8699d55f
 
 ![ミュージック ストア アプリケーション](./media/virtual-machines-linux-dotnet-core/music-store.png)
 
-関連するテンプレート JSON を含め、これらの各コンポーネントについては、次の 4 つの記事で確認します。
+関連するテンプレート JSON を含め、これらの各コンポーネントについては、次の&4; つの記事で確認します。
 
 * [**アプリケーション アーキテクチャ**](virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – Web サイトやデータベースなどのアプリケーション コンポーネントは、仮想マシンや Azure SQL データベースなどの Azure コンピューター リソースでホストする必要があります。 このドキュメントでは、コンピューティング ニーズを Azure リソースにマッピングし、Azure Resource Manager テンプレートを使ってこれらのリソースをデプロイする方法について説明します。 
 * [**アクセスとセキュリティ**](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – Azure でアプリケーションをホストする場合は、アプリケーションにアクセスする方法とさまざまなアプリケーション コンポーネントが相互にアクセスする方法を検討する必要があります。 このドキュメントでは、アプリケーションへのインターネット アクセスとアプリケーション コンポーネント間のアクセスを提供し、セキュリティで保護する方法について説明します。
@@ -73,6 +73,6 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

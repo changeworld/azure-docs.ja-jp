@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 
 ![テレメトリを表示する主な方法](./media/app-insights-dashboards/010-oview.png)
 
-他のグラフをカスタマイズし、ダッシュボードにピン留めできます。 これにより、さまざまなアプリの重要なグラフをまとめて表示することができます。
+グラフとグリッドをカスタマイズし、ダッシュボードにピン留めできます。 これにより、さまざまなアプリの重要なテレメトリをまとめて、中央のダッシュボードに表示することができます。
 
 ## <a name="dashboards"></a>ダッシュボード
 [Microsoft Azure ポータル](https://portal.azure.com) にサインインすると、まず、ダッシュボードが表示されます。 ここでは、 [Azure Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
@@ -119,8 +119,8 @@ ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 調査
 
 * [**アプリケーション マップ**](app-insights-app-map.md) - 依存関係情報から取得される、アプリケーションのコンポーネントを示すアクティブ マップ。
-* [**プロアクティブ診断**](app-insights-proactive-diagnostics.md) - 最近のパフォーマンス アラートを確認します。
-* [**Live Stream**](app-insights-metrics-explorer.md#live-metrics-stream) - ほぼ即時のメトリックの固定セットが表示されます。これは、新しいビルドのデプロイ時やデバッグ時に役立ちます。
+* [**スマート検出**](app-insights-proactive-diagnostics.md) - 最近のパフォーマンス アラートを確認します。
+* [**Live Stream**](app-insights-live-stream.md) - ほぼ即時のメトリックの固定セットが表示されます。これは、新しいビルドのデプロイ時やデバッグ時に役立ちます。
 * [**可用性/Web テスト**](app-insights-monitor-web-app-availability.md) - Web アプリに世界中から通常の要求を送信します。*
 * [**失敗、パフォーマンス**](app-insights-web-monitor-performance.md) - 例外、失敗率、アプリへの要求とアプリから[依存関係](app-insights-asp-net-dependencies.md)への要求の応答時間です。
 * [**パフォーマンス**](app-insights-web-monitor-performance.md) - 応答時間および依存関係の応答時間です。
@@ -157,6 +157,6 @@ ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

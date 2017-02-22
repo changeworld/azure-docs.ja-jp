@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
+ms.openlocfilehash: 50a465f314909c10bc3c3f95be2d9dc377d433a7
 
 
 ---
@@ -47,7 +47,7 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 * SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
 
 > [!TIP]
-> 既存のデータベースと Azure SQL Database の互換性をテストするには、[Azure SQL Database の互換性の検証](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)に関するページを参照してください。
+> 既存のデータベースと Azure SQL Database の互換性をテストするには、[SQL Server Database から Azure への移行](sql-database-cloud-migrate.md)に関するページをご覧ください。
 >
 
 | **機能** | **SQL Server** | **Azure SQL Database** | 
@@ -161,6 +161,6 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

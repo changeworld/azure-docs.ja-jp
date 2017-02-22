@@ -1,5 +1,5 @@
 ---
-title: "Azure AD とアプリケーション: 開発者ガイド | Microsoft Docs"
+title: "Azure AD 用の LOB アプリの開発 | Microsoft Docs"
 description: "IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: fe295cb9b79593f7fd4635d142ec86d1c6897192
+ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
+ms.openlocfilehash: cd1c8d74afa51815b3f6c093e6a9054b97359843
 
 
 ---
@@ -33,21 +33,21 @@ Azure Active Directory を使用するようにアプリケーションを登録
 アプリケーションを登録すると、ユーザーは次の操作を実行できます。
 
 * Azure AD が認識するアプリケーションの ID を取得する
-* アプリケーションが自身を AD に対して認証するために使用する 1 つまたは複数のシークレット/キーを取得する
+* アプリケーションが自身を AD に対して認証するために使用する&1; つまたは複数のシークレット/キーを取得する
 * カスタム名やロゴなどを使用して Azure Portal でアプリケーションをブランド化する
 * アプリ用に次の Azure AD 承認機能を適用する
-  
+
   * ロール ベースのアクセス制御 (RBAC)
   * OAuth 承認サーバーとしての Azure Active Directory (アプリケーションによって公開される API をセキュリティで保護する)
 * アプリケーションが期待どおりに機能するために必要な次のアクセス許可を宣言する
-  
+
       - アプリのアクセス許可 (グローバル管理者のみ)。 例: 別の Azure AD アプリケーションのロール メンバーシップ、または Azure リソース、リソースグループ、またはサブスクリプションに関係するロール メンバーシップ
       - 委任されたアクセス許可 (任意のユーザー) 例: Azure AD、サインイン、プロファイルの読み取り
 
 > [!NOTE]
 > 既定では、すべてのメンバーがアプリケーションを登録できます。 アプリケーションを登録するためのアクセス許可を特定のメンバーに制限する方法については、 [アプリケーションを Azure AD に追加する方法に関する記事](develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)を参照してください。
-> 
-> 
+>
+>
 
 開発者によるアプリケーションの作成をサポートするために、グローバル管理者として次の操作を行う必要があります。
 
@@ -83,7 +83,6 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

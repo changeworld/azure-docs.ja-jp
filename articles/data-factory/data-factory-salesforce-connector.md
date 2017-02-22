@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 12/22/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: ff7ab2560e544beb8110af9f78074aa184227885
-ms.openlocfilehash: cc74dd3400018a09433b83cd62b8d893fe118f04
+ms.sourcegitcommit: 9e70638af1ecdd0bf89244b2a83cd7a51d527037
+ms.openlocfilehash: 98b841e300d5b704d134bcfab0968523f3b9c3f0
 
 
 ---
@@ -55,56 +55,60 @@ Salesforce から、サポートされているシンク データ ストアに�
 
 この例では、 **Salesforce** のリンクされたサービスを使用します。 このリンクされたサービスでサポートされているプロパティについては、 [Salesforce のリンクされたサービス](#salesforce-linked-service-properties) に関するセクションをご覧ください。  セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。
 
+```JSON
+{
+    "name": "SalesforceLinkedService",
+    "properties":
     {
-        "name": "SalesforceLinkedService",
-        "properties":
+        "type": "Salesforce",
+        "typeProperties":
         {
-            "type": "Salesforce",
-            "typeProperties":
-            {
-                "username": "<user name>",
-                "password": "<password>",
-                "securityToken": "<security token>"
-            }
+            "username": "<user name>",
+            "password": "<password>",
+            "securityToken": "<security token>"
         }
     }
-
+}
+```
 **Azure Storage のリンクされたサービス**
 
-    {
-      "name": "AzureStorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-      }
+```JSON
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+    "type": "AzureStorage",
+    "typeProperties": {
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
     }
-
+    }
+}
+```
 **Salesforce の入力データセット**
 
-    {
-        "name": "SalesforceInput",
-        "properties": {
-            "linkedServiceName": "SalesforceLinkedService",
-            "type": "RelationalTable",
-            "typeProperties": {
-                "tableName": "AllDataType__c"  
-            },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            },
-            "external": true,
-            "policy": {
-                "externalData": {
-                    "retryInterval": "00:01:00",
-                    "retryTimeout": "00:10:00",
-                    "maximumRetry": 3
-                }
+```JSON
+{
+    "name": "SalesforceInput",
+    "properties": {
+        "linkedServiceName": "SalesforceLinkedService",
+        "type": "RelationalTable",
+        "typeProperties": {
+            "tableName": "AllDataType__c"  
+        },
+        "availability": {
+            "frequency": "Hour",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
             }
         }
     }
+}
+```
 
 **external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
@@ -119,24 +123,25 @@ Salesforce から、サポートされているシンク データ ストアに�
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。
 
+```JSON
+{
+    "name": "AzureBlobOutput",
+    "properties":
     {
-        "name": "AzureBlobOutput",
-        "properties":
+        "type": "AzureBlob",
+        "linkedServiceName": "AzureStorageLinkedService",
+        "typeProperties":
         {
-            "type": "AzureBlob",
-            "linkedServiceName": "AzureStorageLinkedService",
-            "typeProperties":
-            {
-                "folderPath": "adfgetstarted/alltypes_c"
-            },
-            "availability":
-            {
-                "frequency": "Hour",
-                "interval": 1
-            }
+            "folderPath": "adfgetstarted/alltypes_c"
+        },
+        "availability":
+        {
+            "frequency": "Hour",
+            "interval": 1
         }
     }
-
+}
+```
 
 **コピー アクティビティのあるパイプライン**
 
@@ -144,51 +149,52 @@ Salesforce から、サポートされているシンク データ ストアに�
 
 RelationalSource でサポートされるプロパティの一覧については、「 [RelationalSource type プロパティ](#relationalsource-type-properties) 」をご覧ください。
 
-    {  
-        "name":"SamplePipeline",
-        "properties":{  
-            "start":"2016-06-01T18:00:00",
-            "end":"2016-06-01T19:00:00",
-            "description":"pipeline with copy activity",
-            "activities":[  
+```JSON
+{  
+    "name":"SamplePipeline",
+    "properties":{  
+        "start":"2016-06-01T18:00:00",
+        "end":"2016-06-01T19:00:00",
+        "description":"pipeline with copy activity",
+        "activities":[  
+        {
+            "name": "SalesforceToAzureBlob",
+            "description": "Copy from Salesforce to an Azure blob",
+            "type": "Copy",
+            "inputs": [
             {
-                "name": "SalesforceToAzureBlob",
-                "description": "Copy from Salesforce to an Azure blob",
-                "type": "Copy",
-                "inputs": [
-                {
-                    "name": "SalesforceInput"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "AzureBlobOutput"
-                }
-                ],
-                "typeProperties": {
-                    "source": {
-                        "type": "RelationalSource",
-                        "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"                
-                    },
-                    "sink": {
-                        "type": "BlobSink"
-                    }
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                },
-                "policy": {
-                    "concurrency": 1,
-                    "executionPriorityOrder": "OldestFirst",
-                    "retry": 0,
-                    "timeout": "01:00:00"
-                }
+                "name": "SalesforceInput"
             }
-            ]
+            ],
+            "outputs": [
+            {
+                "name": "AzureBlobOutput"
+            }
+            ],
+            "typeProperties": {
+                "source": {
+                    "type": "RelationalSource",
+                    "query": "SELECT Id, Col_AutoNumber__c, Col_Checkbox__c, Col_Currency__c, Col_Date__c, Col_DateTime__c, Col_Email__c, Col_Number__c, Col_Percent__c, Col_Phone__c, Col_Picklist__c, Col_Picklist_MultiSelect__c, Col_Text__c, Col_Text_Area__c, Col_Text_AreaLong__c, Col_Text_AreaRich__c, Col_URL__c, Col_Text_Encrypt__c, Col_Lookup__c FROM AllDataType__c"                
+                },
+                "sink": {
+                    "type": "BlobSink"
+                }
+            },
+            "scheduler": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "policy": {
+                "concurrency": 1,
+                "executionPriorityOrder": "OldestFirst",
+                "retry": 0,
+                "timeout": "01:00:00"
+            }
         }
+        ]
     }
-
+}
+```
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
 >
@@ -201,7 +207,7 @@ RelationalSource でサポートされるプロパティの一覧については
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **Salesforce**に設定する必要があります。 |はい |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、"https://[domain].my.salesforce.com" を指定します。 |なし |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |なし |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | パスワード |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
@@ -290,6 +296,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

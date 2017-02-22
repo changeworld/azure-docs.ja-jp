@@ -8,27 +8,27 @@ manager: erikre
 editor: monicar
 tags: azure-service-management
 ms.assetid: c681e7a7-eeda-48aa-bc35-6277f4828244
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.workload: iaas-sql-server
+ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 761126cb6a5e119e07d4d8fd7b04f6ea50856f6e
+ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
+ms.openlocfilehash: 60bd5469b4d22bac87e8794bcb6e1d3713645415
 
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。 ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。 このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。 また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
 ## <a name="license-considerations"></a>ライセンスに関する考慮事項
-Microsoft Azure Virtual Machines の SQL Server のライセンスを取得するには、次の 2 つの方法があります。
+Microsoft Azure Virtual Machines の SQL Server のライセンスを取得するには、次の&2; つの方法があります。
 
 1. ソフトウェア アシュアランスの一部であるライセンス モビリティを利用する。 詳細については、「 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 2. SQL Server がインストールされている Azure Virtual Machines の時間単位の料金を支払う。 「 [Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」の SQL Server に関するセクションをご覧ください。
@@ -67,11 +67,12 @@ SQL Server でサポートされているエディションと機能の詳細に
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>SQL Server 仮想マシン ギャラリー イメージにインストールされている BI 機能
 次の表は、SQL Server の一般的な Microsoft Azure 仮想マシン ギャラリー イメージにインストールされている Business Intelligence 機能を示しています。
 
-* SQL Server 2016 RC3
-* SQL Server 2014 SP1 Enterprise
-* SQL Server 2014 SP1 Standard
-* SQL Server 2012 SP2 Enterprise
-* SQL Server 2012 SP2 Standard
+* SQL Server 2016 SP1 Enterprise
+* SQL Server 2016 SP1 Standard
+* SQL Server 2014 SP2 Enterprise
+* SQL Server 2014 SP2 Standard
+* SQL Server 2012 SP3 Enterprise
+* SQL Server 2012 SP3 Standard
 
 | SQL Server BI 機能 | ギャラリー イメージにインストールされているかどうか | メモ |
 | --- | --- | --- |
@@ -103,8 +104,6 @@ SQL Server でサポートされているエディションと機能の詳細に
   
   > [!NOTE]
   > サポートされている BI シナリオでは、SQL Server データベース エンジンが必要です。 1 つのサーバー VM のトポロジでは、データベース エンジンが同じ VM 上で実行されている必要があります。
-  > 
-  > 
   
     詳細については、「[Reporting Services のアンインストール](https://msdn.microsoft.com/library/hh479745.aspx)」および「[Analysis Services のインスタンスをアンインストールする方法](https://msdn.microsoft.com/library/ms143687.aspx)」をご覧ください。
 * **Windows Update** で新しい "重要な更新プログラム" があるかどうかを確認します。 Microsoft Azure Virtual Machines のイメージは頻繁に更新されます。ただし、VM イメージの最終更新後は、重要な更新プログラムを **Windows Update** から入手できるようになります。
@@ -140,11 +139,9 @@ SQL Server の仮想マシン ギャラリー イメージには、Reporting Ser
 
 > [!NOTE]
 > Windows PowerShell スクリプトを使用したレポート サーバーの構成に関する類似コンテンツについては、「 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)」をご覧ください。
-> 
-> 
 
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>仮想マシンへの接続と Reporting Services 構成マネージャーの起動
-Azure 仮想マシンに接続するための 2 つの一般的なワークフローがあります。
+Azure 仮想マシンに接続するための&2; つの一般的なワークフローがあります。
 
 * で接続するには、仮想マシンの名前をクリックし、 **[接続]**をクリックします。 リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
   
@@ -160,7 +157,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 **Reporting Services 構成マネージャーを起動します。**
 
-1. **Windows Server 2012**では、次の手順を実行します。
+1. **Windows Server 2012/2016** では、次の手順を実行します。
 2. **[スタート]** 画面で、「**Reporting Services**」と入力してアプリケーションの一覧を表示します。
 3. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
 4. **Windows Server 2008 R2**では、次の手順を実行します。
@@ -304,7 +301,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 ## <a name="virtual-machine-endpoints-and-firewall-ports"></a>仮想マシン エンドポイントとファイアウォール ポート
 ここでは、作成する Microsoft Azure 仮想マシン エンドポイントと、仮想マシンのファイアウォールで開くポートの概要を説明します。 次の表は、エンドポイントの作成対象の **TCP** ポートと、仮想マシンのファイアウォールで開くポートを示しています。
 
-* VM を 1 つだけ使用し、次の 2 つの条件に該当する場合は、VM エンドポイントを作成する必要はありません。また、VM 上のファイアウォールでポートを開く必要もありません。
+* VM を&1; つだけ使用し、次の&2; つの条件に該当する場合は、VM エンドポイントを作成する必要はありません。また、VM 上のファイアウォールでポートを開く必要もありません。
   
   * VM 上の SQL Server 機能にリモート接続しない。 VM へのリモート デスクトップ接続を確立し、VM 上で SQL Server 機能にローカルでアクセスすることは、SQL Server 機能へのリモート接続とは見なされません。
   * Azure Virtual Networking または別の VPN トンネリング ソリューションを使用して、VM をオンプレミス ドメインに参加させない。
@@ -346,8 +343,6 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 
 > [!NOTE]
 > [Microsoft SQL Server Connect を使用してフィードバックや連絡先情報を送信してください。](https://connect.microsoft.com/SQLServer/Feedback)
-> 
-> 
 
 ### <a name="community-content"></a>コミュニティ コンテンツ
 * [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
@@ -355,6 +350,6 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

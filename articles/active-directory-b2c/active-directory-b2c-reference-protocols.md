@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 03c511f53704f306aa3fce2dd394188e5b3a0fa2
+ms.sourcegitcommit: 24e86b2a0c47576eba67f74c88bf9b9a42394653
+ms.openlocfilehash: 556da1513345b3cadf4fda622bb351835c114845
 
 
 ---
@@ -39,7 +39,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
+OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに&4; つの当事者が関係します。
 
 ![OAuth 2.0 Roles](./media/active-directory-b2c-reference-protocols/protocols_roles.png)
 
@@ -65,10 +65,11 @@ Azure AD B2C で使われている各種トークンの詳細については、 
 
 * [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-b2c-reference-oauth-code.md)
 * [OpenID Connect を使用して Web アプリを構築する](active-directory-b2c-reference-oidc.md)
+* [OAuth 2.0 暗黙的フローを使用してシングルページのアプリを作成する](active-directory-b2c-reference-spa.md)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

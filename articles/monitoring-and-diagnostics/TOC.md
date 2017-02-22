@@ -23,7 +23,7 @@
 ### [自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ### [自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ### [Resource Manager テンプレートを使用した VM Scale Sets の自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
-### [仮想マシン スケール セットでのマシンの自動スケール](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)
+### [仮想マシン スケール セットでのマシンの自動スケール](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [自動スケールで webhook と電子メール通知を構成する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
 ## アクティビティ ログの使用
 ### [アクティビティ ログでのイベントの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)
@@ -38,17 +38,22 @@
 ## REST API の使用
 ### [REST API を使用したチュートリアル](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
 
-
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST ()](/rest/api/monitor/)
+## [Azure 診断スキーマ](../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+### [診断スキーマ 1.0](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md)
+### [診断スキーマ 1.2](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md)
+### [診断スキーマ 1.3 ～ 1.5](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5.md)
+
 
 # リソース
 ## [PowerShell のサンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
-## [Azure CLI 2.0 (プレビュー) のサンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
+## [Azure CLI 1.0 のサンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO3-->
 
 

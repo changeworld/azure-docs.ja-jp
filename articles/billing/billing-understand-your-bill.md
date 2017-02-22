@@ -13,80 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 12/2/2016
 ms.author: erihur;genli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8768ccd5a1d04566c5f2e1f26ab328cea570cc61
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b107405081429626bf1e758567ae5427e2dbca15
 
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
-> [!NOTE]
-> この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-> 
-> 
+Azure の課金内容を理解するには、料金の概要が記載された請求書のほかに、毎日の使用状況の詳細なファイルを確認します。 この記事では、請求書と毎日の使用状況ファイルに表示される主な用語について説明します。 ファイルの取得については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../billing-download-azure-invoice-daily-usage-date.md)」を参照してください。 無料試用版のサブスクリプションをご利用の場合は、毎日の使用状況に関する情報は取得できますが、請求書は発行されません。
 
 Microsoft Azure サブスクリプションの課金額は、料金プランによって異なります。 Visual Studio Enterprise (MPN) サブスクライバーなどの一部の料金プランには、お客様のニーズに合わせて Azure サービスで利用できる月々のクレジットが含まれています。
 
-前の請求期間の潜在的使用時間のうち、最大 24 時間が現在の請求期間として報告される場合があることにご注意ください。
+前回の請求期間末の最大 24 時間分の使用状況が、現在の請求書に表示される場合があります。 また、銀行ではさまざまな費用に通貨換算率を適用しているため 、米国以外のお客様向けの課金明細書に記載されている料金は、見積もりとしての使用を目的として提供されています。
 
-消費量と料金プランの詳細については、 [Microsoft Azure の購入オプション](https://azure.microsoft.com/pricing/purchase-options/)に関するページを参照してください。
+## <a name="a-namepdfa-understand-your-invoice-pdf"></a><a name="pdf"></a> 請求書 (.pdf) を理解する
+請求書には料金の概要が表示されており 、[Azure Portal](https://portal.azure.com) から Portable Document Format (.pdf) でダウンロードできます。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../billing-download-azure-invoice-daily-usage-date.md)」を参照してください。 
 
-<!-- The below links cover a complete list of all Microsoft Azure services.
+次のセクションでは、請求書に表示される主な用語と、各用語の説明を一覧に示します。
 
-<!-- - [Service Details list (csv1)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
-<!-- - [Service Details list (csv2)](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
-
-<!-- *NOTE: The **csv1** link refers to the column header names for csv version 1 and **csv2** link refers to the new column header names for csv version 2.  These files are updated monthly.*-->
-
-### <a name="view-or-download-a-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の表示またはダウンロード:
-1. Microsoft アカウントまたは組織 ID を使用して [アカウント センター](https://account.windowsazure.com/subscriptions) にサインインします。
-2. 詳細と使用状況を表示するサブスクリプションをクリックします。
-3.  **[請求履歴]**
-   
-    ![概要 - 請求履歴 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
-4. **[請求履歴]** セクションには、以前の請求期間と現行の未請求期間に関する明細が表示されます。 現在の期間の明細は、見積もりを作成した時点での料金の見積もりです。 この情報は毎日更新されますが、その日までのすべての累計使用量が含まれていない可能性があります。 その月に実際に支払う料金は、この見積もりとは異なる場合があります。  
-   
-    ![概要 - 請求履歴 2](./media/billing-understand-your-bill/ContentViewaBillforMA2.png)
-5. 見積もりを作成した時点での料金の見積もりを表示するには、 **[現在の明細書の表示]** をクリックします。 この情報は毎日更新されますが、その日までのすべての累計使用量が含まれていない可能性があります。 その月に実際に支払う料金は、この見積もりとは異なる場合があります。
-   
-    ![概要 - 請求履歴 3](./media/billing-understand-your-bill/ContentViewaBillforMA3.png)
-   
-    ![概要 - 請求履歴 4](./media/billing-understand-your-bill/ContentViewaBillforMA4.png)
-6. 以前の請求書のコピーを表示するには、 **[請求書のダウンロード]** をクリックします。
-   
-    ![概要 - 請求履歴 5](./media/billing-understand-your-bill/ContentViewaBillforMA5.png)
-
-> [!NOTE]
-> 銀行ではさまざまな費用に通貨換算率を適用しているため、米国以外のお客様向けの課金明細書に記載されている料金は、見積もりとしての使用を目的として提供されています。
-> 
-> 
-
-Microsoft Azure で使用できる 2 つのプランのステートメント例を次に示します。
-
-| プランの種類 | Description | ダウンロード |
-|:--- |:--- |:--- |
-| 従量課金制 |毎月、未払い分を支払います |[サンプル ファイル](https://azurepricing.blob.core.windows.net/sampleinvoices/Microsoft_Azure_ccinvoice_Sample.pdf) |
-| コミットメント プラン |前払いのコミットメントから利用分が差し引かれます |[サンプル ファイル](https://azurepricing.blob.core.windows.net/sampleinvoices/Microsoft_Azure_invoice_Sample.pdf) |
-
-## <a name="account-information"></a>アカウント情報
-アカウント情報のセクションでは、使用状況とプロファイルの関連情報を確認できます。
+### <a name="account-information"></a>アカウント情報
+アカウント情報セクションには、ユーザーの使用状況とプロファイルに関する情報が表示されます。
 
 ![ヘッダー](./media/billing-understand-your-bill/Header.png)
 
 | 用語 | Description |
 | --- | --- |
 | 請求書番号 |追跡を目的とする一意の請求書の識別子 |
-| 請求サイクル |使用された期間 |
+| 請求サイクル |この請求書に含まれる日付の範囲 |
 | 請求日 |請求書が作成された日付 |
-| 支払い方法 |アカウントで使用される支払いの種類 (請求書またはクレジット カード) |
-| 請求先 |Microsoft Azure の支払いをする住所 |
-| サブスクリプション プラン |購入したサブスクリプション プランの種類 (従量課金制、BizSpark Plus、Azure Pass など) |
-| アカウント所有者メール アドレス |Microsoft Azure アカウントが登録されたアカウントのメール アドレス |
+| 支払い方法 |アカウントで使用される支払いの種類 (請求書またはクレジット カード)。 クレジット カードを更新する場合は、「[Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](../billing-how-to-change-credit-card.md)」を参照してください。 法人のお客様は、Azure サブスクリプションの支払いに、小切手、オーバーナイト小切手、電信送金など、請求書による支払い方法を利用できます。 [Azure の課金で請求書払いを使用する方法](https://azure.microsoft.com/pricing/invoicing/)に関するページを参照してください。 |
+| 請求先 |Microsoft Azure の支払いをする住所。 クレジット カードに関連付けられている請求先住所を更新するには、Azure アカウント センターの[サブスクリプション ページ](https://account.windowsazure.com/subscriptions)に移動します。 |
+| サブスクリプション プラン |購入したサブスクリプション プランの種類 (従量課金制、BizSpark Plus、Azure Pass など)。 従量課金制を別のプランに変更する場合は、「[別のプランへの Azure サブスクリプションの切り替え](../billing-how-to-switch-azure-offer.md)」を参照してください。 |
+| アカウント所有者メール アドレス |Microsoft Azure アカウントが登録されたアカウントのメール アドレス。 メール アドレスの変更については、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](../billing-how-to-change-azure-account-profile.md)」を参照してください。 |
 
-## <a name="understand-the-invoice-summary"></a>請求書の要約について
-請求書の **[請求書の要約]** セクションでは、前回の請求以降の明細と現在の使用料金が要約されています。
+### <a name="understand-the-invoice-summary"></a>請求書の要約について
+請求書の**請求書の要約**セクションでは、前回の請求以降の明細と現在の利用料金が要約されています。
 
 ![[請求書の要約]](./media/billing-understand-your-bill/InvoiceSummary.png)
 
@@ -98,140 +61,94 @@ Microsoft Azure で使用できる 2 つのプランのステートメント例�
 | 入金額 |前回の請求に対する合計支払い金額 |
 | (前の請求サイクルからの) 未払い残高 |前回の請求以降にアカウントに適用された請求書の調整 (クレジットまたは残高) |
 
-## <a name="understand-the-current-charges"></a>現在の料金について
-請求書の「現在の料金セクション」には、月々の料金の詳細が表示されます。 各リンクは、次のサブセクションに分かれています。
+### <a name="understand-the-current-charges"></a>現在の料金について
+請求書の現在の料金セクションには、月々の料金の詳細が表示されます。 
 
 | 用語 | Description |
 | --- | --- |
-| 利用料金 |利用料金は、サブスクリプションの月額料金の合計です。 前月の利用量の未払い分が課金されます。 |
-| 割引 |現在の請求書に適用されるサービス割引は、対象の明細項目に反映されます。 |
-| 調整 |その他の調整とは、現在の請求書に適用されるその他のクレジット、または未処理料金です。 たとえば、Visual Studio Enterprise with MSDN のプランをご利用の場合、この明細項目には毎月のクレジット額が表示されます。 サブスクリプションを取り消した場合、その月の使用料金については、その月の課金開始日から取り消し日までに含まれるクレジット額を超過した分の金額が表示されます。 |
+| 利用料金 |利用料金は、サブスクリプションの月額料金の合計です。 前月の利用量分が課金されます。 |
+| 割引 |現在の請求書に適用されるサービス割引。 |
+| 調整 |現在の請求書に適用されるその他のクレジットまたは未処理料金です。 たとえば、Visual Studio Enterprise with MSDN のプランをご利用の場合は、毎月のクレジット額が表示されます。 サブスクリプションをキャンセルすると、サブスクリプション プランで提供される毎月のクレジット額を超えた月額利用料金が表示されます。 料金は、現在の請求期間の開始日からサブスクリプションのキャンセル日までです。 |
 
-## <a name="footer-information"></a>フッター情報
-![フッター](./media/billing-understand-your-bill/footerinformation.png)
 
-## <a name="understand-the-additional-information"></a>追加情報について
-追加情報のページでは、請求書について理解するためのその他のリソースへの参照、使用状況を表示するためのリンク、請求書に関するその他の関連情報を記載しています。
-
-![追加情報](./media/billing-understand-your-bill/AdditionalInformation.png)
-
-### <a name="detailed-usage"></a>詳細な使用状況
-**[詳細な使用状況]** の説明のリンクから、アカウント センターに移動します。ここで、このサブスクリプションの詳細な使用状況を確認できます。  現在、ダウンロードできるバージョンは 2 種類です。**.csv version 1** には、古い命名規則と使用状況のフィールドが含まれ、**.csv version 2** には、各カテゴリのユーザーにわかりやすい名前と、Microsoft Azure で使用しているサービス内容を理解できるその他のフィールドが含まれています。 .csv version 1 には Azure Resource Manager の詳細がないことに注意してください。 Azure Resource Manager の情報は .csv version 2 に含まれています。
-
-### <a name="additional-information-and-useful-resources"></a>追加情報と役立つリソース
-このセクションには、コンピューティング インスタンスのサイズに関する簡単な質問、SQL DB 料金へのリンク、および詳細な質問に答えるための役立つリンクがあります。
+### <a name="sold-to-and-payment-instructions"></a>販売先と支払い指示
+次の表では、請求書に表示される販売先と支払い指示について説明します。
 
 | 用語 | Description |
 | --- | --- |
-| 販売先 |ここには、アカウントのプロファイル住所があらかじめ入力されています。 |
-| 支払い指示 |このセクションは、小切手の送信先、電信送金、または支払い方法が請求書の場合のオーバーナイト チェックに関する支払いの指示のセクションです。 |
+| 販売先 |ここには、アカウントのプロファイル住所があらかじめ入力されています。 変更する場合は、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](../billing-how-to-change-azure-account-profile.md)」を参照してください。 |
+| 支払い指示 |支払い方法が請求書の場合は、小切手の送信先、電信送金、またはオーバーナイト チェックに関する支払の指示になります。 詳細については、[Azure の課金で請求書払いを使用する方法](https://azure.microsoft.com/pricing/invoicing/)に関するページを参照してください。 |
 
-## <a name="understand-detailed-usage-charges"></a>詳細な使用料金について
-ユーザーが Azure の使用状況を管理しやすくなるように、Azure サービスの使用状況とコストについて報告する使用状況ファイルのダウンロード機能を強化しています。  ダウンロード リンクには、2 つのバージョンの使用状況ファイルがあります。
+## <a name="a-namecsva-understand-detailed-usage-charges-csv"></a><a name="csv"></a>詳細な利用料金について理解する (.csv)
+使用状況ファイルには、現在の請求期間内に使用された各リソースの量が表示されます。このファイルは、スプレッドシート アプリケーションで開くことができるコンマ区切り値 (.csv) ファイル形式で入手できます。 It’s available in a comma-separated values (.csv) file format that you can open in a spreadsheet application. 使用可能なバージョンが 2 つ表示される場合は、バージョン 2 をダウンロードします。 こちらが最新のファイル形式になります。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../billing-download-azure-invoice-daily-usage-date.md)」を参照してください。
 
-* **Version 1** では既存の形式を使用します。
-* **Version 2** には、[日ごとの使用量] セクションの追加情報と更新された列名が含まれています。  
+利用料金は、サブスクリプションに対する合計**月額**料金にクレジットまたは割引を適用した金額になります。 前月の利用量分が課金されます。  
 
-使用料金は、サブスクリプションに対する合計 **月額** 料金にクレジットまたは割引を適用した金額になります。 前月の利用量の未払い分が課金されます。  ファイルの最上部セクションには、前月の請求サイクル中に課金されたサービスに関する詳細が表示されます。  次の表に、各バージョンの .csv ファイルの列名を示します。
+次のセクションでは、バージョン 2 の詳細な使用状況ファイルに表示される主な用語について説明します。
 
-| Version 1 | Version 2 | Description |
-|:--- |:--- | --- |
-| 請求期間 |請求期間 |リソースが消費された請求期間。 |
-| 名前 |測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します。 |
-| 型 |測定サブカテゴリ |この列で、Azure サービスをさらに種類で分類することがあります。種類が違うと料金も異なる場合があります。 |
-| リソース |測定名 |消費しているリソースの測定単位を示します。 |
-| リージョン |測定リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
-| SKU |SKU |各 Azure リソースの一意のシステム ID を示します。 |
-| 単位 |単位 |サービスが課金される単位を特定します。 たとえば、GB、時間、10,000 単位などです。 |
-| 消費量 |消費量 |請求期間中に使用されたリソースの量が表示されます。 |
-| あり |含まれる量 |現在の請求期間内に無料で含まれるリソースの量が表示されます。 |
-| 課金対象 |超過量 |消費量がベース量を超えた場合、この列にはその差異が表示されます。 この差異について課金されます。 プランに一定量が含まれない従量課金制では、この合計は消費量と同じになります。 |
-| コミットメント以内 |コミットメント以内 |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額から差し引かれるリソース料金が表示されます。 コミットメント額から差し引かれるリソース料金は、発生順に表示されます。 |
-| 通貨 |通貨 |現在の請求期間で使用する通貨を示します。 |
-| 超過料金 |超過料金 |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額を超えたリソース料金が表示されます。 |
-| コミットメント レート |コミットメント レート |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額の合計に基づいてコミットメント レートが表示されます。 |
-| 料金 |料金 |単価は、課金対象項目ごとに請求される価格を示します。 |
-| 値 |値 |[課金対象] 列に [単価] 列を掛けた料金を示します。 消費量がベース量を超えない場合は、この列に料金は表示されません。 |
+### <a name="statement"></a>ステートメント 
+ファイルの最上部のセクションには、前の月の請求サイクルで使用したサービスが表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-## <a name="analyze-daily-usage-data"></a>日ごとの使用量データの分析
-使用量に応じて、日ごとの使用量データが数千行存在する場合があります。 このデータを分析するには、 **[使用量のダウンロード]** をクリックし、コンマ区切り値 (.csv) バージョンを選択して、該当する請求期間の日ごとの使用量データを確認します。  以下の各バージョンのサンプル .csv ファイルをダウンロードすることもできます。
+| 用語 | 説明 |
+| --- | --- |
+|請求期間 |リソースまたはサービスが使用された請求期間。 |
+|測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します。 |
+|測定サブカテゴリ |Azure サービスの種類を定義します。この定義は料金に影響します。 |
+|測定名 |消費しているリソースの測定単位を示します。 |
+|測定リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
+|SKU |各 Azure リソースの一意のシステム ID を示します。 |
+|単位 |サービスが課金される単位を特定します。 たとえば、GB、時間、10,000 単位などです。 |
+|消費量 |請求期間中に使用したリソースの量。 |
+|含まれる量 |現在の請求期間内に無料で含まれるリソースの量。 |
+|超過量 |消費量と含まれる量の差が表示されます。 この差異について課金されます。 プランに一定量が含まれない従量課金制では、この合計は消費量と同じになります。 |
+|コミットメント以内 |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額から差し引かれるリソース料金が表示されます。 リソース料金は発生順にコミットメント額から差し引かれます。 |
+|通貨 |現在の請求期間で使用する通貨。 |
+|超過料金 |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額を超えたリソース料金が表示されます。 |
+|コミットメント レート |6 か月プランまたは 12 か月プランに関連付けられたコミットメント額の合計に基づいてコミットメント レートが表示されます。 |
+|料金 |課金対象項目ごとに請求される価格。 |
+|値 |[超過量] 列に [単価] 列を掛けた料金を示します。 消費量が含まれる量を超過していない場合、この列の料金は発生しません。 |
 
-| 名前 | ダウンロード |
-|:---:|:---:|
-|   Detailed Usage .csv Version 1 |[サンプル ファイル](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx) |
-|   Detailed Usage .csv Version 2 |[サンプル ファイル](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx) |
+### <a name="daily-usage"></a>毎日の使用状況 
 
-![csv2screenshot](./media/billing-understand-your-bill/csv2screenshot.png)
+ファイルの毎日の使用状況セクションには、請求金額に影響する使用状況の詳細が表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。 
 
-この .csv ファイルには、現在の請求期間内の各リソースの消費量が詳細に記載されています。
+| 用語| 説明 |
+| --- | --- |
+|使用日 |リソースが使用された日付。 |
+|測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します。 |
+|測定 ID |課金測定の識別子です。 課金データの料金計算に使用される識別子です。 |
+|測定サブカテゴリ |料金に影響する Azure サービスの種類を定義します。 |
+|測定名 |消費しているリソースの測定単位を示します。 |
+|測定リージョン|データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
+|単位 |サービスが課金される単位を特定します。 たとえば、GB、時間、10,000 単位などです。 |
+|消費量 |その日に消費されたリソースの量。 |
+|リソースの場所 |リソースが実行されているデータ センターを特定します。 |
+|使用サービス |使用した Azure プラットフォーム サービス。 |
+|リソース グループ |デプロイされたリソースが実行されるリソース グループ。 詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 |
+|インスタンス ID |リソースの識別子。 識別子には、リソースの作成時に指定した名前が含まれています。 リソース名または完全修飾リソース ID のいずれかです。 詳細については、[Azure Resource Manager API](/rest/api/resources/resources) に関するページを参照してください。 |
+|タグ |この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 たとえば、タグを使用して、リソースを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
+|追加情報 |サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 |
+|サービス情報 1 |サブスクリプションでサービスが属しているプロジェクトの名前。 |
+|サービス情報 2 |これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 |
 
-![csv のスナップショット](./media/billing-understand-your-bill/csvsnapshotportal.png)
+## <a name="how-do-i-make-a-payment"></a>支払い方法を教えてください。
+支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。 [支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用するように設定している場合、請求書の下部に記載されている場所に支払いを送付します。 詳しくは、 [サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-以下の列は、請求期間開始時の料金に影響する詳細を示します。
+## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>クレジット カードによる支払い状況を確認するにはどうすればよいですか。
+[サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)して、支払い状況の確認に関するサポートを要求してください。 
 
-| Version 1 | Version 2 | Description |
-|:--- |:--- | --- |
-| 使用日 |使用日 |リソースが使用された日付。 |
-| 名前 |測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します。 |
-| リソース GUID |測定 ID |課金測定の識別子です。  課金データの料金計算に使用される識別子です。 |
-| 型 |測定サブカテゴリ |この列で、Azure サービスをさらに種類で分類することがあります。種類が違うと料金も異なる場合があります。 |
-| リソース |測定名 |消費しているリソースの測定単位を示します。 |
-| リージョン |測定リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
-| 単位 |単位 |サービスが課金される単位を特定します。 たとえば、GB、時間、10,000 単位などです。 |
-| 消費量 |消費量 |その日に消費されたリソースの量が表示されます。 |
-| サブ リージョン |リソースの場所 |リソースが実行されているデータ センターを特定します。 |
-| サービス |使用サービス |この列を使用して、[名前] 列だけでは詳しく識別できない、個々の Azure Platform サービスを追跡します。 この [サービス] 列には、使用量の対象となるサービスが表示されます。 |
-| 該当なし |リソース グループ |***新しい列の追加。***  デプロイされたリソースが実行されるリソース グループ。 「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください |
-| コンポーネント |インスタンス ID |実行中のリソースの識別子です。 識別子には、リソースの作成時に指定した名前が含まれています。 |
-| 該当なし |タグ |***新しい列の追加。***  Azure の新しいリソースの種類では、リソースにタグを付けることができます。 「 [Organize your Azure resources with tags (タグを使用した Azure リソースの整理)](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) |
-| 追加情報 |追加情報 |サービスに関連する追加のメタデータ。 |
-| サービス情報 1 |サービス情報 1 |この列は、サブスクリプションでサービスが属しているプロジェクトの名前を特定します。 |
-| サービス情報 2 |サービス情報 2 |これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 |
+## <a name="what-about-marketplace-orders-or-external-service-charges"></a>Marketplace での注文や外部サービスの課金について教えてください。
+外部サービスは、以前は Marketplace と呼ばれていました。 外部サービスは、独立系サービス ベンダーによって提供されますが、Azure エコシステムに統合されます。 詳細については、「[Azure 外部サービスの課金について](../billing-understand-your-azure-marketplace-charges.md)」を参照してください。
 
-いくつかの新しいフィールドと、csv Version 2 への名前の変更に加え、以下のフィールドのデータに対して、標準化された書式設定があります。
-
-* **インスタンス ID**: [インスタンス ID] フィールドは、プロビジョニングされたサービスのユーザー指定の識別子を示します。 現在、インスタンス ID を表現する書式は 2 つあり、リソース名、または完全修飾リソース ID です。 Microsoft Azure サービスは、インスタンス ID を標準化された完全修飾リソース ID 形式 ***(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)*** で表すように移行しています。 サービスが新しい書式に移行すると、[インスタンス ID] データ フィールドはリソース名からリソース ID に変わります。 リソース ID は、 [Azure Resource Manager API](https://msdn.microsoft.com/library/azure/dn790567.aspx) がサブスクリプション内のリソースを識別するために使用する形式です。
-
-![instanceid](./media/billing-understand-your-bill/instanceid.png)
-
-* **追加情報**: 使用状況の .csv の [追加情報] 列は、サービス固有のメタデータを示します。 たとえば、VM のイメージの種類です。 現在、サービスからは、[追加情報]、[サービス情報 1]、[サービス情報 2] フィールドという複数の列にサービス固有のメタデータが出力されます。 Microsoft Azure サービスは、[追加情報] 列のみについて、サービス固有のメタデータの出力を標準化します。  標準化された形式のスナップショットを次に示します。
-
-![additionalinfo_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
-
-* **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。 タグは、課金記録のグループ化に使用できます。 たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。 タグの使用方法については、「[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)」を参照してください。 タグの生成をサポートするサービスは、次のとおりです。  
-  
-  * Virtual Machines
-  * 記憶域
-  * [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
-
-![タグ](./media/billing-understand-your-bill/tags.png)
-
-## <a name="next-steps"></a>次のステップ
-* [課金アラートのセットアップ](../billing-set-up-alerts.md)
-* [支払い方法の管理](../billing-how-to-change-credit-card.md)
-* [Azure Marketplace の料金について](../billing-understand-your-azure-marketplace-charges.md)
-* [Azure の課金とサブスクリプションに関する FAQ ](../billing-subscription-faq.md)
-
-> [!NOTE]
-> まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-> 
-> 
-
-<!--
-OLD MSDN Articles
-- [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)
-- [Edit payment information for an existing credit card](https://msdn.microsoft.com/library/azure/dn736053.aspx)
-- [Add a new credit card to use as a payment method](https://msdn.microsoft.com/library/azure/dn736057.aspx)
-- [Change the credit card on your Microsoft Azure account](https://msdn.microsoft.com/library/azure/dn736050.aspx)
-- [Manage your payment method](https://msdn.microsoft.com/library/azure/dn736054.aspx)
--->
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。 
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ 
 
 
 
-<!--Image references-->
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

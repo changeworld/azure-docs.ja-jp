@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用してルーティングを制御してと仮想アプライアンスを使用する | Microsoft Docs"
+title: "Azure Virtual Network でのルーティングの制御 - PowerShell - クラシック | Microsoft Docs"
 description: "PowerShell を使用して VNet でのルーティングを制御する方法 | Classic"
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 0bf0f3b64319a42a3b693f64ae705756b10be64e
+ms.sourcegitcommit: 39dafb04f2b155790d58db524a3ff52960891e16
+ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
 
 
 ---
@@ -33,7 +33,7 @@ ms.openlocfilehash: 0bf0f3b64319a42a3b693f64ae705756b10be64e
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-resource-manager/resource-manager-deployment-model.md) について知識をつけておいてください。 この記事の上部にあるオプションを選択すると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの&2; 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-resource-manager/resource-manager-deployment-model.md) について知識をつけておいてください。 この記事の上部にあるオプションを選択すると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
@@ -134,6 +134,6 @@ FW1 VM で IP 転送を有効にするには、次の手順に従います。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

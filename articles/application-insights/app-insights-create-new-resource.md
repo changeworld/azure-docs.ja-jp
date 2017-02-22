@@ -1,6 +1,6 @@
 ---
-title: "新しい Application Insights リソースを作成する | Microsoft Docs"
-description: "新しいライブ アプリケーションを対象にした Application Insights 監視をセットアップします。 Web ベースのアプローチです。"
+title: "新しい Azure Application Insights リソースの作成 | Microsoft Docs"
+description: "新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
@@ -11,25 +11,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 0157b796a09b5685386cd96d6969da04179279dc
+ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
+ms.openlocfilehash: 60a94a333ffb4bf674e370972abd6fa0caf37d91
 
 
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
-Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定の一部です][start]。 多くの場合、これは IDE によって自動的に行うことができ、可能な場合には常にそうするよう勧められています。 しかし、リソースを手動で作成する場合もあります。
+Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、これは IDE によって自動的に行うことができ、可能な場合には常にそうするよう勧められています。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
 
 リソースを作成した後、インストルメンテーション キーを取得し、それを使用してアプリケーション内の SDK を構成します。 これは、リソースにテレメトリを送信します。
 
 ## <a name="sign-up-to-microsoft-azure"></a>Microsoft Azure へのサインアップ
 取得していない場合、[Microsoft アカウントをここで取得してください](http://live.com)。 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
 
-[Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。
-
-または、新しいサブスクリプションを作成することもできます。 無料アカウントでは、Azure 内のすべてを試すことができます。 評価期間が過ぎた後、無料サービスでは課金されないため、従量課金制サブスクリプションが適切であると感じるかもしれません。 
+[Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金されるのは使用分に対してのみで、既定の Basic プランでは、試験段階の一定量を無料で使用できます。
 
 サブスクリプションへのアクセスを取得したら、Application Insights ( [http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
@@ -38,7 +36,7 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-create-new-resource/01-new.png)
 
-* **アプリケーションの種類**に応じて、概要ブレードに表示されるものと[メトリック エクスプローラー][メトリック]で使用できるプロパティが決まります。 お使いの種類のアプリが表示されない場合は、ASP.NET を選択します。
+* **アプリケーションの種類**に応じて、概要ブレードに表示されるものと、[メトリック エクスプローラー][metrics]で使用できるプロパティが決まります。 お使いの種類のアプリが表示されない場合は、ASP.NET を選択します。
 * **リソース グループ** は、アクセス制御などのプロパティを管理するのに便利です。 その他の Azure リソースが既に作成されている場合、新しいリソースを同じグループに入れることもできます。
 * **サブスクリプション** は、Azure での支払いアカウントです。
 * **場所** は、データの保存場所です。
@@ -63,7 +61,7 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 ## <a name="a-namemonitorasee-telemetry-data"></a><a name="monitor"></a>テレメトリ データを参照
 クイック スタート ブレードを閉じ、Azure ポータルのアプリケーション ブレードに戻ります。
 
-[検索] タイルをクリックして [[診断検索]][診断] を確認します。ここには、最初のイベントが表示されます。 
+[検索] タイルをクリックして [[診断検索]][diagnostic] を確認します。ここには、最初のイベントが表示されます。 
 
 大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
@@ -79,13 +77,13 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[診断]: app-insights-diagnostic-search.md
-[メトリック]: app-insights-metrics-explorer.md
+[diagnostic]: app-insights-diagnostic-search.md
+[metrics]: app-insights-metrics-explorer.md
 [start]: app-insights-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
  **[Jupyter Notebooks](https://gallery.cortanaintelligence.com/notebooks)**
  ページには、最も人気のある Notebooks の一覧が表示されます。
 **[すべて表示]** をクリックし、すべての Notebooks を表示します。
-このページから、ギャラリー内のすべての Notebooks を閲覧することができます。または、ページ左側のフィルター条件を選択して上部に検索語句を入力し、検索することができます。
+このページで、ギャラリー内のすべての Notebooks を見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
  任意の Notebooks をクリックし、Notebooks の詳細ページを開いて詳細情報を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 Notebook へのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
@@ -75,6 +75,6 @@ Notebook は、Studio の **[Notebooks]** ページ ([Studio ホーム ページ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

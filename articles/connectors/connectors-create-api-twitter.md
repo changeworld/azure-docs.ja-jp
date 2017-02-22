@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a9a1bcd75dbea49a4eff8e7eb9113cc47f7ab86f
+ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
+ms.openlocfilehash: 13ecb8936484b1c86938a16c7dd6da8000d4ffec
 
 
 ---
@@ -28,7 +28,7 @@ Twitter コネクタでは、次のことが可能です。
 * タイムライン、友達、フォロワーへのアクセス
 * 以下で説明するその他のアクションやトリガーの実行  
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)から始めることができます。  
+[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)から始めることができます。  
 
 ## <a name="connect-to-twitter"></a>Twitter への接続
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
@@ -39,7 +39,7 @@ Twitter コネクタでは、次のことが可能です。
 > 
 
 ## <a name="use-a-twitter-trigger"></a>Twitter トリガーの使用
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。
 
 この例では、**When a new tweet is posted (新しいツイートの投稿時)** トリガーを使用して #Seattle を検索し、#Seattle が見つかった場合に、Dropbox のファイルをツイートのテキストで更新する方法について説明します。 企業での使用例として、自社の名前を検索し、SQL データベースをツイートのテキストで更新できます。
 
@@ -51,7 +51,7 @@ Twitter コネクタでは、次のことが可能です。
 これで、ワークフローでその他のトリガーとアクションの実行を開始するトリガーのあるロジック アプリが構成されました。 
 
 > [!NOTE]
-> ロジック アプリを機能させるには、少なくとも 1 つのトリガーとアクションが含まれている必要があります。 アクションを追加するには、次のセクションの手順に従います。  
+> ロジック アプリを機能させるには、少なくとも&1; つのトリガーとアクションが含まれている必要があります。 アクションを追加するには、次のセクションの手順に従います。  
 > 
 > 
 
@@ -65,7 +65,7 @@ Twitter コネクタでは、次のことが可能です。
    **[条件]** コントロールが開きます。ここで、*[is equal to (次の値に等しい)]*、*[is less than (次の値より小さい)]*、*[is greater than (次の値より大きい)]*、*[contains (次の値を含む)]* などの条件を確認できます。  
    ![Twitter 条件の画像 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
 3. **[値の選択]** コントロールを選択します。  
-   このコントロールでは、条件が true または false に評価される値として、以前のアクションまたはトリガーの 1 つ以上のプロパティを選択できます。
+   このコントロールでは、条件が true または false に評価される値として、以前のアクションまたはトリガーの&1; つ以上のプロパティを選択できます。
    ![Twitter 条件の画像 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
 4. 使用可能なすべてのプロパティを確認できるように、**[...]** をクリックしてプロパティの一覧を展開します。        
    ![Twitter 条件の画像 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
@@ -80,7 +80,7 @@ Twitter コネクタでは、次のことが可能です。
    ![Twitter 条件の画像 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>Twitter アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)を参照してください。  
 
 トリガーを追加したら、次の手順に従って、トリガーによって検出されたツイートの内容を含む新しいツイートを投稿するアクションを追加します。 このチュートリアルでは、50 人以上のフォロワーを持つユーザーのツイートだけを投稿します。  
 
@@ -370,7 +370,7 @@ TriggerBatchResponse[TweetModel]
 | 値 |array |
 
 ## <a name="http-responses"></a>HTTP 応答
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。 
+上記のアクションとトリガーは、次の HTTP 状態コードを&1; つ以上返す場合があります。 
 
 | 名前 | 説明 |
 | --- | --- |
@@ -384,11 +384,11 @@ TriggerBatchResponse[TweetModel]
 | default |操作に失敗しました。 |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

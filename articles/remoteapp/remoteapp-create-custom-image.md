@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 550d46d4e280af2423a494857ffb808e6dffca37
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e28f4004e3cafcfa09309ff0143c83af5fa5493a
 
 
 ---
@@ -55,7 +55,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 * [サインアップ](https://azure.microsoft.com/services/remoteapp/) します。
 * RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。 ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。 詳細については、「 [Configure Azure Active Directory for RemoteApp](remoteapp-ad.md) 」を参照してください。
 * オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
-* [Azure PowerShell](../powershell-install-configure.md) モジュールをインストールします。
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs) モジュールをインストールします。
 * アクセス権を付与するユーザーに関する情報を集めます。 この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 
 ## <a name="create-a-template-image"></a>テンプレート イメージの作成
@@ -146,6 +146,6 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 04/18/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f7b0c3acea5bef6017230df82c57ab7a6ebccd80
-ms.openlocfilehash: 19e5ef3d18deb4bf49699df6449d1cafab92ff53
+ms.sourcegitcommit: 783390791f27a9bf8ea400403a8b0f866f8c5cee
+ms.openlocfilehash: 0f1ae486340270cac5cfdb5d44485d05cb996388
 
 
 ---
@@ -57,6 +57,6 @@ Azure の証明書の詳細 (自己署名証明書の作成を含む) につい�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

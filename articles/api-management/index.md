@@ -1,13 +1,25 @@
 ---
+title: "Azure API Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "API Management を使用して、API を安全かつ大規模に発行する方法について説明します。 ドキュメントでは、既存のバックエンド サービスの最新型 API ゲートウェイを作成する方法を紹介します。"
+services: api-management
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: api-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 79b75ae11af07735449714d3a3034c867224ebf4
+ms.sourcegitcommit: 5710f0aeb9af0f5d829c30d4b3e604c0a62afdb5
+ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
 
 ---
 # <a name="api-management-documentation"></a>API Management のドキュメント
 
-API Management が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。  API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。
+API Management を使用して、API を社外、パートナー、社内の開発者に対して安全かつ大規模に発行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、任意の場所にホストされた既存のバックエンド サービスの最新型 API ゲートウェイを作成して管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -129,18 +141,12 @@ API Management が組織にもたらす利点は、外部のパートナーや�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/api-management.pdf">
-        <div class="img"></div>
-        <div class="text">
-API Management のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

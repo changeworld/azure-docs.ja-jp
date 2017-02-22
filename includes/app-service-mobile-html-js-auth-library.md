@@ -1,65 +1,85 @@
 ### <a name="a-nameserver-authahow-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>方法: プロバイダーでの認証 (サーバー フロー)
 Mobile Apps によってアプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。 その後、Azure App Service 内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。
-詳細については、チュートリアル「 [アプリへの認証の追加](../articles/app-service-mobile/app-service-mobile-ios-get-started-users.md)」を参照してください。
+詳細については、チュートリアル「 [アプリへの認証の追加](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)」を参照してください。
 
-ID プロバイダーを登録したら、プロバイダーの値を指定して .login() メソッドを呼び出します。 たとえば、Facebook にログインするには、次のコードを使用します。
+ID プロバイダーを登録したら、プロバイダーの名前を指定して `.login()` メソッドを呼び出します。 たとえば、Facebook にログインするには、次のコードを使用します。
 
 ```
 client.login("facebook").done(function (results) {
      alert("You are now logged in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
-});app-service-mobile
-app-service-mobile-ios-get-started-users value passed to the login method above to one of
-the following: `microsoftaccount`, `facebook`, `twitter`, `google`, or `aad`.
-
-In this case, Azure App Service manages the OAuth 2.0 authentication flow by displaying the login page of the selected
-provider and generating a App Service authentication token after successful login with the identity provider. The login
-function, when complete, returns a JSON object (user) that exposes both the user ID and App Service authentication token
-in the userId and authenticationToken fields, respectively. This token can be cached and re-used until it expires.
-
-###<a name="client-auth"></a>How to: Authenticate with a Provider (Client Flow)
-
-Your app can also independently contact the identity provider and then provide the returned token to your App Service for
-authentication. This client flow enables you to provide a single sign-in experience for users or to retrieve additional
-user data from the identity provider.
-
-#### Social Authentication basic example
-
-This example uses Facebook client SDK for authentication:
-
-```
-client.login( "facebook", {"access_token": token}) .done(function (results) { alert("You are now logged in as: " + results.userId); }, function (err) { alert("Error: " + err); });
-
-```
-This example assumes that the token provided by the respective provider SDK is stored in the token variable.
-
-#### Microsoft Account example
-
-The following example uses the Live SDK, which supports single-sign-on for Windows Store apps by using Microsoft Account:
-
-```
-WL.login({ scope: "wl.basic"}).then(function (result) { client.login( "microsoftaccount", {"authenticationToken": result.session.authentication_token}) .done(function(results){ alert("You are now logged in as: " + results.userId); }, function(error){ alert("Error: " + err); }); });
-
+});
 ```
 
-This example gets a token from Live Connect, which is supplied to your App Service by calling the login function.
+プロバイダーの名前として有効な値は、"aad"、"facebook"、"google"、"microsoftaccount"、"twitter" です。
 
-###<a name="auth-getinfo"></a>How to: Obtain information about the authenticated user
+> [!NOTE]
+> 現在、サーバー フローでは Google 認証が正しく機能しません。  Google の認証には、[クライアント フロー](#client-auth)を使用する必要があります。
 
-The authentication information for the current user can be retrieved from the `/.auth/me` endpoint using any
-AJAX method.  Ensure you set the `X-ZUMO-AUTH` header to your authentication token.  The authentication token
-is stored in `client.currentUser.mobileServiceAuthenticationToken`.  For example, to use the fetch API:
+この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
+
+###<a name="a-nameclient-authahow-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
+
+アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために App Service に提供することもできます。 このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
+
+#### <a name="social-authentication-basic-example"></a>ソーシャル認証の基本的な例
+
+この例では、認証用の Facebook クライアント SDK を使用します。
 
 ```
-var url = client.applicationUrl + '/.auth/me'; var headers = new Headers(); headers.append('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken); fetch(url, { headers: headers }) .then(function (data) { return data.json() }).then(function (user) { // The user object contains the claims for the authenticated user });
+client.login(
+     "facebook",
+     {"access_token": token})
+.done(function (results) {
+     alert("You are now logged in as: " + results.userId);
+}, function (err) {
+     alert("Error: " + err);
+});
+
+```
+この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 token に格納されるとします。
+
+#### <a name="microsoft-account-example"></a>Microsoft アカウントの例
+
+次の例では、Windows ストア アプリケーションのシングル サインオンを Microsoft アカウントによってサポートしている Live SDK を使用します。
+
+```
+WL.login({ scope: "wl.basic"}).then(function (result) {
+      client.login(
+            "microsoftaccount",
+            {"authenticationToken": result.session.authentication_token})
+      .done(function(results){
+            alert("You are now logged in as: " + results.userId);
+      },
+      function(error){
+            alert("Error: " + err);
+      });
+});
+
 ```
 
-Fetch is available as an npm package or for browser download from CDNJS. You could also use
-jQuery or another AJAX API to fetch the information.  Data will be received as a JSON object.
+この例では、トークンを Live Connect から取得します。このトークンは、login 関数を呼び出すことによって、App Service に渡されます。
+
+###<a name="a-nameauth-getinfoahow-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
+
+認証情報は、AJAX ライブラリによる HTTP 呼び出しを使用して `/.auth/me` エンドポイントから取得できます。  `X-ZUMO-AUTH` ヘッダーを認証トークンに設定していることを確認してください。  認証トークンは `client.currentUser.mobileServiceAuthenticationToken`に格納されています。  たとえば、次のフェッチ API を使用します。
+
+```
+var url = client.applicationUrl + '/.auth/me';
+var headers = new Headers();
+headers.append('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken);
+fetch(url, { headers: headers })
+    .then(function (data) {
+        return data.json()
+    }).then(function (user) {
+        // The user object contains the claims for the authenticated user
+    });
+```
+
+フェッチは [npm パッケージ](https://www.npmjs.com/package/whatwg-fetch)として、または [CDNJS](https://cdnjs.com/libraries/fetch) からのブラウザーのダウンロードに使用できます。 jQuery または別の AJAX API を使用して情報を取得することも可能です。  データは JSON オブジェクトとして取得されます。
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

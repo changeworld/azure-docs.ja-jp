@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: ffe250e0ad1ede2eff62989d90f5ef93e633b846
-ms.openlocfilehash: c85a07a9154e9ac28a1ee8aa974a5528cce6beff
+ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
+ms.openlocfilehash: 05db0ade3f74f380ccf287be61ae19b96bfee902
 
 
 ---
@@ -47,13 +47,13 @@ Azure AD と Nexonia の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから Nexonia を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -132,7 +132,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure Single Sign-On](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_05.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
     b. **[次へ]**をクリックします。
 
@@ -180,7 +180,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nexonia-tutorial/create_aaduser_05.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
 
@@ -188,7 +188,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-nexonia-tutorial/create_aaduser_06.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a. **[名]** ボックスに「**Britta**」と入力します。  
 
     b. **[姓]** ボックスに「**Simon**」と入力します。
 
@@ -277,6 +277,6 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

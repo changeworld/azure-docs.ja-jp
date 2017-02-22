@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
 
 
 ---
@@ -30,7 +30,10 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
 * ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、基になるデータ ソースを参照するために必要です。
 
 ## <a name="overview"></a>概要
-**注**: 行方向のパーティション分割とは異なり、これらの DDL ステートメントは、Elastic Database クライアント ライブラリを介したシャード マップを使ったデータ層の定義に依存しません。
+
+> [!NOTE]
+> 行方向のパーティション分割とは異なり、これらの DDL ステートメントは、Elastic Database クライアント ライブラリを介したシャード マップを使ったデータ層の定義に依存しません。
+>
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -45,7 +48,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
     SECRET = '<password>'
     [;]
 
-**注**: *<username>* にサフィックス *"@servername"* が含まれていないことを確認してください。 
+> [!NOTE]
+> `<username>` にサフィックス **"@servername"** が含まれていないことを確認してください。 
+>
 
 ## <a name="create-external-data-sources"></a>外部データ ソースの作成
 構文:
@@ -58,7 +63,9 @@ ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
-**重要**: TYPE パラメーターを **RDBMS** に設定する必要があります。 
+> [!IMPORTANT]
+> TYPE パラメーターを **RDBMS** に設定する必要があります。 
+>
 
 ### <a name="example"></a>例
 次の例では、外部データ ソースに対して CREATE ステートメントを使用する方法について説明します。 
@@ -130,7 +137,7 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理する必要があります。 外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>例: 列方向にパーティション分割されたデータベースのクエリ
-次のクエリは、注文と注文明細行用の 2 つのローカル テーブルと、顧客用のリモート テーブルの間で 3 方向の結合を実行します。 これは、エラスティック クエリの参照データのユース ケースの例を示します。 
+次のクエリは、注文と注文明細行用の&2; つのローカル テーブルと、顧客用のリモート テーブルの間で&3; 方向の結合を実行します。 これは、エラスティック クエリの参照データのユース ケースの例を示します。 
 
     SELECT      
      c_id as customer,
@@ -185,6 +192,6 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

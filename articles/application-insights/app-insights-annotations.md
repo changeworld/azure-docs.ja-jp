@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 97b81c9b5904dea8d43042fd5b6529580eb35e74
-ms.openlocfilehash: e83518c0cd41c101170de6598c3321543b2ccf53
+ms.sourcegitcommit: 2d568a38f66605da63054d1797ce23653e6204d4
+ms.openlocfilehash: ff5d64bc00bc5fb3617160db852c7d08f8b3677b
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: e83518c0cd41c101170de6598c3321543b2ccf53
 
 ![Team Service Web ページの右上で Marketplace を開く Select Visual Team Services and then under Build and Release, choose See More.](./media/app-insights-annotations/10.png)
 
-この操作は、Visual Studio Team Services アカウントごとに 1 回行うだけですみます。 これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。 
+この操作は、Visual Studio Team Services アカウントごとに&1; 回行うだけですみます。 これで、リリース注釈をアカウントのプロジェクトに対して構成できるようになりました。 
 
 ### <a name="configure-release-annotations"></a>リリース注釈を構成する
 
@@ -68,7 +68,7 @@ VSTS リリース テンプレートごとに別個の API キーを取得する
    
     ApiKey の変数の定義に API キーを貼り付けます。
    
-    ![[Team Services] ウィンドウで、[構成] タブを選択し、[変数の追加] をクリックします。 ApiKey の名前を設定し、[値] に生成したキーを貼り付けます。](./media/app-insights-annotations/50.png)
+    ![[Team Services] ウィンドウで、[構成] タブを選択し、[変数の追加] をクリックします。 ApiKey の名前を設定し、[値] に生成したキーを貼り付けて、ロック アイコンをクリックします。](./media/app-insights-annotations/50.png)
 7. 最後に、リリースの定義を **保存** します。
 
 
@@ -109,6 +109,6 @@ VSTS リリース テンプレートごとに別個の API キーを取得する
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

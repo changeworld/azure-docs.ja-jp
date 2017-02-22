@@ -1,5 +1,5 @@
 ---
-title: "Mac コンピューターと Azure IoT ハブの準備 | Microsoft Docs"
+title: "シミュレートされたデバイスと Azure IoT Gateway - レッスン 2: ツールの取得 (macOS) | Microsoft Docs"
 description: "Mac コンピューターにツールをインストールし、IoT ハブを作成し、IoT ハブにデバイスを登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: f3bed8620c13372c3af50657bb54aa8dce115529
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 8b79b166fb16d6454fde46996e715779bf19eac7
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: f3bed8620c13372c3af50657bb54aa8dce115529
   - Node.js は、豊富なパッケージ エコシステムが存在する JavaScript ランタイムです。
 - [NPM](https://www.npmjs.com/) を使用して Node.js 開発ツールをインストールする方法。
   - Node.js の最低限必要なバージョンは 4.5 LTS です。
-  - NPM は、Node.js 向けのパッケージ マネージャーの 1 つです。
+  - NPM は、Node.js 向けのパッケージ マネージャーの&1; つです。
 - Visual Studio Code をインストールする方法。
   - Visual Studio Code は、Windows、Linux、および macOS 向けのクロスプラットフォームの軽量で強力なソース コード エディターです。 デバッグ、Git コントロールの埋め込み、構文の強調表示、インテリジェントなコードの完了、スニペット、およびコードのリファクタリングを広くサポートしています。
 - Python のインストール方法。
@@ -134,6 +134,6 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

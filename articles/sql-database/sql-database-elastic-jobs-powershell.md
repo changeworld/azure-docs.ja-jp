@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用してエラスティック データベース ジョブを作成して管理する"
+title: "PowerShell を使用したエラスティック ジョブの作成と管理 | Microsoft Docs"
 description: "Azure SQL Database プールを管理するために使用するPowerShell"
 services: sql-database
 documentationcenter: 
@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 737d8d13-5632-4e18-9cb0-4d3b8a19e495
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: 5dc7bd506060ec04691abae3054fa3514893e953
 
 
 ---
-# <a name="create-and-manage-a-sql-database-elastic-database-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
+# <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-elastic-jobs-create-and-manage.md)
 > * [PowerShell](sql-database-elastic-jobs-powershell.md)
@@ -31,7 +32,7 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * エラスティック データベース ツールで作成された一連のデータベース。 「 [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
-* Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 * **Elastic Database ジョブ**の PowerShell パッケージ。「[Elastic Database ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
 
 ### <a name="select-your-azure-subscription"></a>Azure サブスクリプションを選択します。
@@ -144,7 +145,7 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
 <tr>
     <td>ジョブ タスク実行</td>
     <td>
-    <p>ジョブを実行する 1 つの作業ユニット。</p>
+    <p>ジョブを実行する&1; つの作業ユニット。</p>
     <p>ジョブ タスクの実行に成功しなかった場合、結果の例外メッセージがログに記録され、新しい対応するジョブ タスクが作成され、指定された実行ポリシーに従って実行されます。</p></p>
     </td>
     <td>
@@ -194,7 +195,7 @@ ms.openlocfilehash: 92a986e9a5ff736408d1221143d38b117eab437f
 ## <a name="supported-elastic-database-jobs-group-types"></a>サポートされているエラスティック データベース ジョブ グループの種類
 このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。 
 
-次の 2 種類のグループを作成できます。 
+次の&2; 種類のグループを作成できます。 
 
 * [シャード マップ](sql-database-elastic-scale-shard-map-management.md) グループ: シャード マップを対象に送信されたジョブは、まずシャード マップを照会して現在のシャード セットを特定し、その後、シャード マップ内の各シャードに対応する子ジョブを作成します。
 * カスタム コレクション グループ: カスタムの定義済みデータベース セット。 カスタム コレクションを対象とするジョブは、現在カスタム コレクション内に存在する各データベースについて子ジョブを作成します。
@@ -357,7 +358,7 @@ T-SQL スクリプトがファイル内に定義されている場合は、次�
 非アクティブなジョブ実行を含め、指定したジョブ実行 ID のすべての子ジョブ実行を取得します。
 
     $parentJobExecutionId = "{Job Execution Id}"
-    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId –IncludeInactive -IncludeChildren
+    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
 
 非アクティブなジョブ実行を含め、スケジュールとジョブの組み合わせを使用して作成したすべてのジョブ実行を取得します。
 
@@ -371,13 +372,13 @@ T-SQL スクリプトがファイル内に定義されている場合は、次�
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
     $target = Get-AzureSqlJobTarget -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapServerName -ShardMapName $shardMapName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
 非アクティブなジョブを含め、指定したカスタム コレクションを対象とするすべてのジョブ実行を取得します。
 
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
 指定したジョブ実行内のジョブ タスク実行の一覧を取得します。
 
@@ -422,7 +423,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 * 初期再試行間隔: 最初の再試行前に待機する間隔。
 * 最大再試行間隔: 使用する再試行間隔の上限。
 * 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
-* 最大試行回数: 1 つのジョブ内で実行する最大再試行回数。
+* 最大試行回数:&1; つのジョブ内で実行する最大再試行回数。
 
 既定の実行ポリシーでは、次の値を使用します。
 
@@ -483,7 +484,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
     Remove-AzureSqlJob -JobName $jobName
 
 ## <a name="to-create-a-custom-database-target"></a>カスタム データベース ターゲットを作成するには
-カスタム データベース ターゲットは、直接実行するように定義できるほか、カスタム データベース グループに含めて定義することができます。 たとえば、**Elastic Database プール**を PowerShell API で直接扱うことが現時点ではできません。そこで、カスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成し、そこにプール内のデータベースをすべて含めるようにします。
+カスタム データベース ターゲットは、直接実行するように定義できるほか、カスタム データベース グループに含めて定義することができます。 たとえば、**エラスティック プール**を PowerShell API で直接扱うことが現時点ではできません。そこで、カスタム データベース ターゲットとカスタム データベース コレクション ターゲットを作成し、そこにプール内のデータベースをすべて含めるようにします。
 
 目的のデータベース情報を反映するように、次の変数を設定します。
 
@@ -585,7 +586,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
     $scheduleName = "{Schedule Name}"
     $jobTrigger = New-AzureSqlJobTrigger
     -ScheduleName $scheduleName
-    –JobName $jobName
+    -JobName $jobName
     Write-Output $jobTrigger
 
 ### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>スケジュールされた関連付けを解除してジョブのスケジュール実行を停止するには
@@ -651,6 +652,6 @@ DACPAC の作成については、 [データ層アプリケーション](https:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "PowerShell スクリプトで Windows HPC クラスターをデプロイする | Microsoft Docs"
-description: "PowerShell スクリプトを実行し、Azure 仮想マシンで Windows HPC Pack クラスターをデプロイします。"
+description: "PowerShell スクリプトを実行し、Azure 仮想マシンで Windows HPC Pack 2012 R2 クラスターをデプロイします。"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -13,18 +13,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 07/07/2016
+ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: f2c3121cf6fed47a5dd844c06de3dd9175fbcd5a
+ms.sourcegitcommit: ff9fb5f0b2229a470ea3f5c736622ee1e9228c93
+ms.openlocfilehash: 6c38e460f9194f0becba46cbdfd85075de00e27d
 
 
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
-HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。 Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。 例については、「[Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」 (HPC クラスターを作成する) および「[Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」 (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する) を参照してください。
+HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC Pack 2012 R2 クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。 Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。 例については、「[Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」 (HPC クラスターを作成する) および「[Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」 (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する) を参照してください。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> この記事で説明する PowerShell スクリプトでは、クラシック デプロイメント モデルを使用して Azure で Microsoft HPC Pack 2012 R2 クラスターを作成します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> また、この記事で説明するスクリプトは HPC Pack 2016 をサポートしていません。
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -34,7 +36,7 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 ### <a name="example-1"></a>例 1
 次の構成ファイルでは、ローカル データベースを持つヘッド ノードを 1 つと Windows Server 2012 R2 オペレーティング システムを実行しているコンピューティング ノードを 5 つ含む HPC Pack クラスターがデプロイされます。 すべてのクラウド サービスは米国西部の場所に直接作成されます。 ヘッド ノードはドメイン フォレストのドメイン コントローラーとして機能します。
 
-```
+```Xml
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
   <Subscription>
@@ -70,9 +72,9 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 
 ### <a name="example-2"></a>例 2
 次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターにはローカル データベースを持つヘッド ノードが 1 つあり、BGInfo VM 拡張機能が適用されたコンピューティング ノードが 12 あります。
-Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。 すべてのクラウド サービスは東アジアの場所に直接作成されます。 コンピューティング ノードは、3 つのクラウド サービスと 3 つのストレージ アカウント (*MyHPCCNService01* と *mycnstorage01* の *MyHPCCN-0001* ～ *MyHPCCN-0005*、*MyHPCCNService02* と *mycnstorage02* の *MyHPCCN-0006* ～ *MyHPCCN0010*、*MyHPCCNService03* と *mycnstorage03* の *MyHPCCN-0011* ～ *MyHPCCN-0012*) で作成されます。 コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。 自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
+Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。 すべてのクラウド サービスは東アジアの場所に直接作成されます。 コンピューティング ノードは、3 つのクラウド サービスと&3; つのストレージ アカウント (*MyHPCCNService01* と *mycnstorage01* の *MyHPCCN-0001* ～ *MyHPCCN-0005*、*MyHPCCNService02* と *mycnstorage02* の *MyHPCCN-0006* ～ *MyHPCCN0010*、*MyHPCCNService03* と *mycnstorage03* の *MyHPCCN-0011* ～ *MyHPCCN-0012*) で作成されます。 コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。 自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
 
-```
+```Xml
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
   <Subscription>
@@ -133,9 +135,9 @@ Windows 更新プログラムの自動インストールはドメイン フォ�
 ```
 
 ### <a name="example-3"></a>例 3
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ヘッド ノードが 1 つ、500 GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行するコンピューティング ノードが 5 つ含まれています。 クラウド サービス MyHPCCNService は、アフィニティ グループ *MyIBAffinityGroup* で作成されます。その他のクラウド サービスはすべて、アフィニティ グループ *MyAffinityGroup* で作成されます。 HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ヘッド ノードが 1 つ、500 GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行する計算ノードが 5 つ含まれています。 クラウド サービス MyHPCCNService は、アフィニティ グループ *MyIBAffinityGroup* で作成されます。その他のクラウド サービスはすべて、アフィニティ グループ *MyAffinityGroup* で作成されます。 HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
 
-```
+```Xml
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
   <Subscription>
@@ -188,9 +190,9 @@ Windows 更新プログラムの自動インストールはドメイン フォ�
 
 
 ### <a name="example-4"></a>例 4
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ローカル データベースを持つヘッド ノードが 1 つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート *AzureTemplate1* に対して、中サイズの Azure ノードが 3 つ作成されます。 ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ローカル データベースを持つヘッド ノードが&1; つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート *AzureTemplate1* に対して、中サイズの Azure ノードが&3; つ作成されます。 ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
 
-```
+```Xml
 <?xml version="1.0" encoding="utf-8" ?>
 <IaaSClusterConfig>
   <Subscription>
@@ -255,13 +257,13 @@ Windows 更新プログラムの自動インストールはドメイン フォ�
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-* **“VNet が存在しない” エラー** - 1 つサブスクリプションの下でスクリプトを実行して Azure で複数のクラスターを同時にデプロイするとき、“VNet *VNet\_Name* が存在しない” というエラーで 1 つまたは複数のデプロイが失敗することがあります。
+* **“VNet が存在しない” エラー** -&1; つサブスクリプションの下でスクリプトを実行して Azure で複数のクラスターを同時にデプロイするとき、“VNet *VNet\_Name* が存在しない” というエラーで&1; つまたは複数のデプロイが失敗することがあります。
   このエラーが発生した場合、失敗したデプロイに対してスクリプトを再び実行してください。
 * **Azure Virtual Network からインターネットにアクセスできない** - デプロイ スクリプトを利用し、新しいドメイン コントローラーを含むクラスターを作成する場合、あるいは手動でヘッド ノード VM をドメイン コントローラーに昇格する場合、VM をインターネットに接続できないことがあります。 この問題は、フォワーダー DNS サーバーがドメイン コントローラーで自動的に構成されるとき、このフォワーダー DNS サーバーが適切に解決しない場合に発生することがあります。
   
     この問題を回避するには、ドメイン コントローラーにログオンし、フォワーダー構成設定を削除するか、有効なフォワーダー DNS サーバーを構成します。 この設定を構成するには、サーバー マネージャーで、**[ツール]**  >
      **[DNS]** をクリックして DNS マネージャーを開き、**[フォワーダー]** をダブルクリックします。
-* **コンピューティング集中型 VM から RDMA ネットワークにアクセスできない** - A8 や A9 などの RDMA 対応サイズを使用し、Windows Server コンピューティング ノードまたはブローカー ノード VM を追加する場合、これらの VM を RDMA アプリケーション ネットワークに接続できないことがあります。 この問題が発生する原因の 1 つとして、VM がクラスターに追加されたとき、HpcVmDrivers 拡張機能が適切にインストールされていないことがあります。 たとえば、拡張機能のインストールが途中で止まります。
+* **コンピューティング集中型 VM から RDMA ネットワークにアクセスできない** - A8 や A9 などの RDMA 対応サイズを使用し、Windows Server コンピューティング ノードまたはブローカー ノード VM を追加する場合、これらの VM を RDMA アプリケーション ネットワークに接続できないことがあります。 この問題が発生する原因の&1; つとして、VM がクラスターに追加されたとき、HpcVmDrivers 拡張機能が適切にインストールされていないことがあります。 たとえば、拡張機能のインストールが途中で止まります。
   
     この問題を回避するには、最初に VM の拡張機能の状態を確認します。 拡張機能が適切にインストールされていない場合、HPC クラスターからノードを削除し、ノードを再度追加してみます。 たとえば、ヘッド ノードで Add-HpcIaaSNode.ps1 スクリプトを実行し、コンピューティング ノード VM を追加できます。
 
@@ -274,6 +276,6 @@ Windows 更新プログラムの自動インストールはドメイン フォ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

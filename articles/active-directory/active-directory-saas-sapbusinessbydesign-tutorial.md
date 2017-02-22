@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 12/02/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6aef2489e8097e467ccca10fe8026b962786b4b9
+ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
+ms.openlocfilehash: e2506fc2fc7802dd0097cbb97687d9d2b0382871
 
 
 ---
@@ -63,19 +63,25 @@ Azure AD への SAP Business ByDesign の統合を構成するには、ギャラ
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![[アプリケーション]][2]
+
 4. ページの下部にある **[追加]** をクリックします。
    
     ![アプリケーション][3]
+
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
     ![アプリケーション][4]
+
 6. 検索ボックスに、「 **SAP Business ByDesign**」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_01.png)
+
 7. 結果ウィンドウで **[SAP Business ByDesign]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
     ![Active Directory](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_02.png)
@@ -105,9 +111,11 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 1. Azure クラシック ポータルの **[SAP Business ByDesign]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_80.png) 
+
 2. [SAML トークンの属性] 一覧で、nameidentifier 属性を選択して **[編集]**をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_84.png) 
+
 3. [ユーザー属性の編集] ダイアログで、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_85.png) 
@@ -118,12 +126,15 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、**[user.extensionattribute2]** を選択します。 
    
     c. ページの下部にある **[完了]**」を参照してください。 
+
 4. クラシック ポータルの **SAP Business ByDesign** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![Configure Single Sign-On][6] 
+
 5. **[ユーザーの SAP Business ByDesign へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択してから **[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_03.png) 
+
 6. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_04.png) 
@@ -146,7 +157,7 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
    
     c. **[New Identity Provider (新しい ID プロバイダー)]** をクリックし、Azure クラシック ポータルからダウンロードしたメタデータの XML ファイルを選択します。 メタデータをインポートすることによって、必要な署名証明書と暗号化証明書が自動的にアップロードされます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
    
     d. **Assertion Consumer Service URL** を SAML 要求に追加するには、**[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** を選択します。
    
@@ -180,9 +191,11 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
     SSO が有効ではない場合、システムの通常の URL が従業員に送信されます。 SSO が有効である場合は、従業員がパスワードを持っているかどうかがシステムによってチェックされます。 パスワードを持っていた場合は、SSO の URL と非 SSO の URL の両方が従業員に送信されます。 一方、従業員がパスワードを持っていない場合は、SSO の URL だけが従業員に送信されます。
    
     k. 変更を保存します。
+
 9. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
+
 10. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
     
     ![Azure AD のシングル サインオン][11]
@@ -197,13 +210,17 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_09.png) 
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png) 
+
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_04.png) 
+
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_05.png) 
@@ -213,22 +230,25 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
     c. **[次へ]**をクリックします。
+
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_06.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
    
-   b. **[姓]** ボックスに「**Simon**」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
    
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]**をクリックします。
+    e. **[次へ]**をクリックします。
+
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_07.png) 
+
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_08.png) 
@@ -255,13 +275,17 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
     ![ユーザーの割り当て][201] 
+
 2. アプリケーションの一覧で **[SAP Business ByDesign]**を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_50.png) 
+
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
     ![ユーザーの割り当て][203]
+
 4. ユーザーの一覧で **[Britta Simon]**を選択します。
+
 5. 下部にあるツール バーで **[割り当て]**をクリックします。
    
     ![ユーザーの割り当て][205]
@@ -295,6 +319,6 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Docs"
+title: "HBase のチュートリアル: Hadoop で Windows ベースの HBase クラスターを使用する | Microsoft Docs"
 description: "HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
 keywords: "Apache HBase, HBase, HBase シェル, HBase チュートリアル"
 services: hdinsight
@@ -13,25 +13,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 501c44ff8db2b825b58d98b9b89219ec9fff8b7c
-ms.openlocfilehash: 6384d7b0f4851ce4d1612857203e7c3c1381d6fc
+ms.sourcegitcommit: 541c06240f0c437ad92ea955caee67456851a6e1
+ms.openlocfilehash: 59aee407be91279276ec6eaafed608e354030676
 
 
 ---
 # <a name="hbase-tutorial-get-started-using-apache-hbase-with-windows-based-hadoop-in-hdinsight"></a>HBase チュートリアル: HDInsight の Windows ベースの Hadoop で Apache HBase を使用する
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
 HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルを照会する方法について説明します。 HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関する記事を参照してください。
 
-このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
-
-> [!NOTE]
-> Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。 バージョン情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][hdinsight-versions]」を参照してください。
-> 
-> 
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターの詳細については、「[HBase チュートリアル: HDInsight で Apache HBase を使用する](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -64,7 +59,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
    * **ノード価格レベル** : HBase クラスター用のリージョン サーバーの数を選択します。
      
      > [!WARNING]
-     > HBase サービスの高可用性を実現するには、最低 **3 つ** のノードを含むクラスターを作成する必要があります。 これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+     > HBase サービスの高可用性を実現するには、最低 **3 つ** のノードを含むクラスターを作成する必要があります。 これで&1; つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
      > 
      > 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
      > 
@@ -82,11 +77,11 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 多くの場合、データは次のような表形式で表示されます。
 
-![hdinsight hbase tabular data][img-hbase-sample-data-tabular]
+![HDInsight HBase の表形式データ][img-hbase-sample-data-tabular]
 
 BigTable の実装である HBase では、同じデータが次のように表示されます。
 
-![hdinsight hbase bigtable data][img-hbase-sample-data-bigtable]
+![HDInsight HBase の Bigtable データ][img-hbase-sample-data-bigtable]
 
 次の手順を完了すると、この操作をよく理解できます。  
 
@@ -110,12 +105,12 @@ BigTable の実装である HBase では、同じデータが次のように表�
         put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
         scan 'Contacts'
    
-    ![hdinsight hadoop hbase shell][img-hbase-shell]
+    ![HDInsight Hadoop HBase シェル][img-hbase-shell]
 6. 1 つの行を取得します。
    
         get 'Contacts', '1000'
    
-    行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
+    行は&1; 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
    
     HBase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」を参照してください。
 7. シェルを終了します。
@@ -126,7 +121,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。 詳細については、 [一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt. このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルがパブリック BLOB コンテナー wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt にアップロードされています。 このデータ ファイルの内容は次のとおりです。
 
     8396    Calvin Raji        230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600    Karen Wu        646-555-0113    230-555-0192    9265 La Paz
@@ -182,7 +177,7 @@ Hive を使用することで、HBase に格納されたデータを照会でき
 2. 次の HiveQL スクリプトを Hive エディターに入力してから、 **[送信]**をクリックします。 次のように Hive クエリが HBase テーブル内のデータを照会します。
    
          SELECT count(*) FROM hbasecontacts;
-3. Hive クエリの結果を取得するには、ジョブが実行を終了するときに、**[ジョブ セッション]** ウィンドウで **[詳細の表示]** リンクをクリックします。 HBase テーブルに挿入したレコードは 1 つなので、ジョブの出力ファイルは 1 つだけになります。
+3. Hive クエリの結果を取得するには、ジョブが実行を終了するときに、**[ジョブ セッション]** ウィンドウで **[詳細の表示]** リンクをクリックします。 HBase テーブルに挿入したレコードは&1; つなので、ジョブの出力ファイルは&1; つだけになります。
 
 **出力ファイルを参照するには**
 
@@ -191,7 +186,7 @@ Hive を使用することで、HBase に格納されたデータを照会でき
 3. HBase クラスター名をクリックします。 既定の Azure ストレージ アカウントのコンテナーでこのクラスター名が使用されます。
 4. **[ユーザー]**、**[Admin]** の順にクリックします  (これが Hadoop ユーザー名です)。
 5. Hive クエリ SELECT が実行された時刻と **[最終更新]** の時刻が一致しているジョブ名をクリックします。
-6. **[stdout]**をクリックします。 ファイルを保存し、メモ帳でファイルを開きます。 出力ファイルは 1 つになります。
+6. **[stdout]**をクリックします。 ファイルを保存し、メモ帳でファイルを開きます。 出力ファイルは&1; つになります。
    
     ![HDInsight HBase Hive エディター ファイル ブラウザー][img-hdinsight-hbase-file-browser]
 
@@ -271,7 +266,7 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
             Console.WriteLine("Press ENTER to continue ...");
             Console.ReadLine();
         }
-6. **Main** 関数の最初の 3 つの変数を設定します。
+6. **Main** 関数の最初の&3; つの変数を設定します。
 7. **F5** キーを押してアプリケーションを実行します。
 
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
@@ -329,6 +324,6 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

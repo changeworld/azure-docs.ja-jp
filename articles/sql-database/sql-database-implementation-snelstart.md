@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 40ad0b85072c3a54c7791500663c4dd88133c095
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: 0c37a035cfc782e05dd72da7323fe244eadc4ce9
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 40ad0b85072c3a54c7791500663c4dd88133c095
 
 SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。 SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。 デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、使い慣れたC# 言語の環境を使用して作成しています。またエラスティック プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。 Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
 > 
 > 
 
@@ -111,6 +111,6 @@ SnelStart の目下の目標は、顧客満足度をさらに高めていくこ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

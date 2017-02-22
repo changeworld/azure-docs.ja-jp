@@ -15,13 +15,13 @@ ms.workload: TBD
 ms.date: 08/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7df0243622af7166a57a6ec81ed356022246a3ed
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
 
 
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple デバイスのデプロイメントのトラブルシューティング
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 この記事は、Microsoft Azure StorSimple のデプロイに役立つトラブルシューティングのガイダンスです。 StorSimple の構成時に発生する可能性のある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。 この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
 
 > [!NOTE]
@@ -77,8 +77,8 @@ ms.openlocfilehash: 7df0243622af7166a57a6ec81ed356022246a3ed
 | 2 |Invoke-HcsSetupWizard: デバイスの準備ができていません。 |DATA 0 にネットワーク接続の問題があります。 |DATA 0 の物理的なネットワーク接続を確認してください。 |
 | 3 |Invoke-HcsSetupWizard: ネットワーク上の別のシステムと競合する IP アドレスがあります (HRESULT からの例外: 0x80070263)。 |DATA 0 に対して指定した IP は既に別のシステムによって使用されています。 |使用されていない新しい IP を指定してください。 |
 | 4 |Invoke-HcsSetupWizard: クラスター リソースが失敗しました  (HRESULT からの例外: 0x800713AE)。 |VIP が重複しています。 指定された IP は既に使用されています。 |使用されていない新しい IP を指定してください。 |
-| 5 |Invoke-HcsSetupWizard: IPv4 アドレスが無効です。 |指定された IP アドレスの形式に誤りがあります。 |形式を確認し、IP アドレスを指定し直してください。 詳細については、「 [Ipv4 のアドレス指定][1]に関するページを参照してください。 |
-| 6 |Invoke-HcsSetupWizard: IPv6 アドレスが無効です。 |指定された IP アドレスの形式に誤りがあります。 |形式を確認し、IP アドレスを指定し直してください。 詳細については、「 [Ipv6 のアドレス指定][2]に関するページを参照してください。 |
+| 5 |Invoke-HcsSetupWizard: IPv4 アドレスが無効です。 |指定された IP アドレスの形式に誤りがあります。 |形式を確認し、IP アドレスを指定し直してください。 詳細については、「[Ipv4 Addressing (IPv4 のアドレス指定)][1]」を参照してください。 |
+| 6 |Invoke-HcsSetupWizard: IPv6 アドレスが無効です。 |指定された IP アドレスの形式に誤りがあります。 |形式を確認し、IP アドレスを指定し直してください。 詳細については、「[Ipv6 Addressing (IPv6 のアドレス指定)][2]」を参照してください。 |
 | 7 |Invoke-HcsSetupWizard: エンドポイント マッパーから使用できるエンドポイントはこれ以上ありません  (HRESULT からの例外: 0x800706D9)。 |クラスターの機能が正常に動作していません。 |[Microsoft サポート](storsimple-contact-microsoft-support.md) に対処法をお問い合わせください。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>省略可能な Web プロキシの設定中のエラー
@@ -530,7 +530,7 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 2. デバイスが正しく配線されていることを確認します。デバイスのバック プレーンでネットワークのケーブル配線を確認します。 ケーブル配線はデバイスのモデルによって異なります。 詳細については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
    
    > [!NOTE]
-   > 10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。 詳細については、 [Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
+   > 10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。 詳細については、[10 GbE ポートの推奨のケーブル、スイッチ、トランシーバーの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)を参照してください。
    > 
    > 
 3. ネットワーク インターフェイスの状態を確認します。
@@ -568,6 +568,6 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

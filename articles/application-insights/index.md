@@ -1,13 +1,25 @@
 ---
+title: "Azure Application Insights のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "拡張可能なアプリケーション パフォーマンス管理である Application Insights を使用して、Web アプリや Web サービスの問題を検出、トリアージ、診断する方法について説明します。"
+services: application-insights
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: application-insights
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7f01669fe78aebfb17ebc6a33ae29d098b62868a
-ms.openlocfilehash: 8100f42cc97155431e4d3ba47f7946b546296700
+ms.sourcegitcommit: d22dec77ea0fde59a86799cf5f2d13c2c4d6dacd
+ms.openlocfilehash: 1f3fc2431bacd6852c6babc7ebbb07c6a3b74145
 
 ---
 # <a name="application-insights-documentation"></a>Application Insights のドキュメント
 
-Application Insights は、Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスとも統合でき、さまざまなツールへの接続ポイントも備えています。
+Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理サービスである Application Insights を使用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Web アプリや Web サービスの問題を検出、トリアージ、診断する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -151,16 +163,10 @@ Application Insights は、Web 開発者向けの拡張可能なアプリケー�
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-insights.pdf">
-        <div class="img"></div>
-        <div class="text">
-Application Insights のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

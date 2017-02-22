@@ -13,37 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 11/28/2016
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c14547e54d7f09267b12f3bbe22e45e51ff08744
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
 
 
 ---
 # <a name="run-hive-queries-using-the-hdinsight-tools-for-visual-studio"></a>Visual Studio の HDInsight ツールを使用して Hive クエリを実行
+
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
 この記事では、Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターに送信する方法を説明します。
 
 > [!NOTE]
 > このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される HiveQL については、「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
-> 
-> 
 
 ## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+
 この記事の手順を完了するには、次のものが必要です。
 
-* Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
+* Azure HDInsight (HDInsight で Hadoop を使用) クラスター
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * 下記のいずれかのバージョンの Visual Studio
   
     Visual Studio 2013 Community/Professional/Premium/Ultimate の [アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
   
     Visual Studio 2015 (Community/Enterprise)
-* HDInsight Tools for Visual Studio。 ツールのインストールおよび構成については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md) に関するページをご覧ください。
 
-## <a name="a-idruna-run-hive-queries-using-the-hdinsight-tools-for-visual-studio"></a><a id="run"></a> Visual Studio の HDInsight ツールを使用して Hive クエリを実行
-1. **Visual Studio** を開き、**[新規]** > **[プロジェクト]** > **[HDInsight]** > **[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
+* HDInsight Tools for Visual Studio または Azure Data Lake Tools for Visual Studio ツールのインストールおよび構成については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md) に関するページをご覧ください。
+
+## <a name="a-idruna-run-hive-queries-using-the-visual-studio"></a><a id="run"></a>Visual Studio を使用して Hive クエリを実行
+
+1. **Visual Studio** を開き、**[新規]** > 、**[プロジェクト]** > 、**[Azure Data Lake]** > 、**[Hive]** > 、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
+
 2. このプロジェクトで作成した **Script.hql** ファイルを開き、次の HiveQL ステートメントを貼り付けます。
    
         set hive.execution.engine=tez;
@@ -56,21 +63,28 @@ ms.openlocfilehash: c14547e54d7f09267b12f3bbe22e45e51ff08744
     これらのステートメントは次のアクションを実行します。
    
    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+
    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
      
      > [!NOTE]
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
      > 
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
-     > 
-     > 
+
    * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+
    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
+
    * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+
    * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
+
 3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[Submit to WebHCat (WebHCat に送信)]** を選択して、WebHCat を使用して Hive ジョブとしてステートメントを実行します。 HiveServer2 をクラスター バージョンで使用できる場合は、**[Execute via HiveServer2 (HiveServer2 経由で実行)]** ボタンを使用してジョブを送信することもできます。 **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
+
 4. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 SELECT ステートメントによって返された値「 `[ERROR] 3`」が表示されます。
+
 5. プロジェクトを作成せずに Hive クエリを実行することもできます。 **サーバー エクスプローラー**を使用して **[Azure]** > **[HDInsight]** の順に展開し、HDInsight サーバーを右クリックして、**[Hive クエリを記述]** を選択します。
+
 6. 表示された **temp.hql** ドキュメントに次の HiveQL ステートメントを追加します。
    
         set hive.execution.engine=tez;
@@ -83,17 +97,21 @@ ms.openlocfilehash: c14547e54d7f09267b12f3bbe22e45e51ff08744
      
      > [!NOTE]
      > **EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
-     > 
-     > 
+
    * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+
    * **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+
 7. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
+
 8. ジョブが完了し、新しいテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で **[Azure]** > **[HDInsight]** > HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** および **log4jLogs** テーブルが表示されます。
 
 ## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+
 このように、Visual Studio の HDInsight ツールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
@@ -101,6 +119,7 @@ HDInsight での Hive に関する全般的な情報
 HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 Visual Studio の HDInsight ツールに関する詳細情報:
@@ -140,6 +159,6 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

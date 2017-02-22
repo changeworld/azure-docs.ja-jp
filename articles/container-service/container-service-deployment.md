@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service クラスターのデプロイ | Microsoft Docs"
-description: "Azure ポータル、Azure CLI、PowerShell を利用して Azure コンテナー サービスをデプロイします。"
+title: "Azure での Docker コンテナー クラスターのデプロイ | Microsoft Docs"
+description: "Azure Portal または Azure Resource Manager テンプレートを使用して、Azure Container Service クラスターをデプロイします。"
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -14,142 +14,158 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 02/02/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: dc7ce9f0524567b861a40940f02cd07e0b7b22bf
-ms.openlocfilehash: 52331c92a4e3e254c044c9cba85a937b6ba95011
+ms.sourcegitcommit: 01fe5302e1c596017755c4669103bac910e3452c
+ms.openlocfilehash: 470bf39bf0e61325f36a2f45316f57545c69e3de
 
 
 ---
 # <a name="deploy-an-azure-container-service-cluster"></a>Azure コンテナー サービス クラスターのデプロイ
-Azure コンテナー サービスでは、人気のオープン ソースのコンテナー クラスタリングやオーケストレーション ソリューションを短期間でデプロイできます。 Azure Container Service のほか、Azure Resource Manager テンプレートまたは Azure Portal を利用することで、DC/OS クラスター、Kubernetes クラスター、Docker Swarm クラスターをデプロイできます。 これらのクラスターは Azure 仮想マシン スケール セットでデプロイされ、Azure ネットワーキングとストレージ サービスが活用されます。 Azure コンテナー サービスにアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションがない場合でも、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。
+
+
+
+Azure コンテナー サービスでは、人気のオープン ソースのコンテナー クラスタリングやオーケストレーション ソリューションを短期間でデプロイできます。 このドキュメントでは、Azure Portal または Azure Resource Manager クイックスタート テンプレートを使用して Azure Container Service クラスターをデプロイする手順について説明します。 
 
 > [!NOTE]
 > Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
->
 
-このドキュメントでは、[Azure Portal](#creating-a-service-using-the-azure-portal)、[Azure コマンド ライン インターフェイス (CLI)](#creating-a-service-using-the-azure-cli)、[Azure PowerShell モジュール](#creating-a-service-using-powershell)を使用して、Azure Container Service クラスターをデプロイする方法を段階的に説明します。  
+[Azure CLI 2.0 (プレビュー)](container-service-create-acs-cluster-cli.md) または Azure Container Service API を使用して、Azure Container Service クラスターをデプロイすることもできます。
 
-## <a name="create-a-service-by-using-the-azure-portal"></a>Azure ポータルを使用してサービスを作成する
+
+
+## <a name="prerequisites"></a>前提条件
+
+* **Azure サブスクリプション**: お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。
+
+* **SSH 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための公開キーを指定する必要があります。 Secure Shell (SSH) キーを作成するには、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) のガイダンスを参照してください。 
+
+* **サービス プリンシパル クライアント ID とシークレット** (Kubernetes のみ): サービス プリンシパルの作成の詳細とガイダンスについては、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
+
+
+
+## <a name="create-a-cluster-by-using-the-azure-portal"></a>Azure Portal を使用してクラスターを作成する
 1. Azure Portal にサインインし、**[新規]** を選択して、Azure Marketplace で **Azure Container Service** を検索します。
 
-    ![Create deployment 1](media/acs-portal1.png)  <br />
+    ![Marketplace の Azure Container Service](media/container-service-deployment/acs-portal1.png)  <br />
 
 2. **[Azure Container Service]** を選択し、**[作成]** をクリックします。
 
-    ![Create deployment 2](media/acs-portal2.png)  <br />
+    ![コンテナー サービスを作成する](media/container-service-deployment/acs-portal2.png)  <br />
 
 3. 次の情報を入力します。
 
-    * **[ユーザー名]**: Azure コンテナー サービス クラスターの各仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
+    * **[ユーザー名]**: Azure Container Service クラスターのそれぞれの仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
     * **[サブスクリプション]**: Azure サブスクリプションを選択します。
     * **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループを作成します。
     * **[場所]**: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。
-    * **[SSH 公開キー]**: Azure Container Service の Virtual Machines に対する認証に使用する公開キーを追加します。 このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。 **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。 Secure Shell (SSH) キーの作成方法については、[Linux](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) の記事と [Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) の記事を参照してください。
+    * **[SSH 公開キー]**: Azure Container Service の仮想マシンに対する認証に使用される公開キーを追加します。 このキーに改行を含めないことと、`ssh-rsa` プレフィックスを付けることが重要です。 `username@domain` ポストフィックスは省略可能です。 キーは、**ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。 
 
 4. 準備が完了したら、 **[OK]** をクリックします。
 
-    ![Create deployment 3](media/acs-portal3.png)  <br />
+    ![[基本設定]](media/container-service-deployment/acs-portal3.png)  <br />
 
 5. オーケストレーションの種類を選択します。 オプションは次のとおりです。
 
-    * **[DC/OS]**: DC/OS クラスターをデプロイします。
-    * **[Swarm]**: Docker Swarm クラスターをデプロイします。
-    * **[Kubernetes]**: Kubernetes クラスターをデプロイします。
+  * **[DC/OS]**: DC/OS クラスターをデプロイします。
+  * **[Swarm]**: Docker Swarm クラスターをデプロイします。
+  * **[Kubernetes]**: Kubernetes クラスターをデプロイします。
+
 
 6. 準備が完了したら、 **[OK]** をクリックします。
 
-    ![Create deployment 4](media/acs-portal4-new.png)  <br />
+    ![オーケストレーターを選択する](media/container-service-deployment/acs-portal4-new.png)  <br />
 
 7. ドロップダウン ボックスの一覧で **[Kubernetes]** を選択した場合は、サービス プリンシパルのクライアント ID とクライアント シークレットを入力する必要があります。 詳細については、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
 
-    ![デプロイ 4.5 の作成](media/acs-portal10.PNG)  <br />
+    ![Kubernetes のサービス プリンシパルを入力する](media/container-service-deployment/acs-portal10.png)  <br />
 
 7. **Azure Container Service** 設定ブレードで、次の情報を入力します。
 
     * **[Master count (マスター数)]**: クラスターのマスター数。 Kubernetes を選択すると、マスターの数は既定の 1 に設定されます。
-    * **[Agent count (エージェント数)]**: Docker Swarm と Kubernetes の場合、エージェント スケール セットのエージェントの初期数になります。 DC/OS の場合、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。 このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
+    * **[Agent count (エージェント数)]**: Docker Swarm と Kubernetes の場合、この値はエージェント スケール セットのエージェントの初期数になります。 DC/OS の場合は、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが、DC/OS 用に作成されます。 このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに&1; パブリック エージェント、3 または&5; マスターに&2; パブリック エージェント)。
     * **[Agent virtual machine size (エージェント仮想マシン サイズ)]**: エージェント仮想マシンのサイズ。
-    * **[DNS プレフィックス]**: サービス名の完全修飾ドメイン名の主要部分の先頭に付ける世界で一意の名前。
+    * **[DNS プレフィックス]**: サービスの完全修飾ドメイン名の主要部分の先頭に付ける、世界で一意の名前。
+    * **[VM diagnostics (VM 診断)]**: 一部のオーケストレーターでは、VM 診断を有効にすることができます。
 
 8. 準備が完了したら、 **[OK]** をクリックします。
 
-    ![Create deployment 5](media/acs-portal5.png)  <br />
+    ![Container Service の設定](media/container-service-deployment/acs-portal5.png)  <br />
 
 9. サービスの検証が完了したら、 **[OK]** をクリックします。
 
-    ![Create deployment 6](media/acs-portal6.png)  <br />
+    ![検証](media/container-service-deployment/acs-portal6.png)  <br />
 
-10. **[購入]** をクリックしてデプロイ プロセスを開始します。
+10. 使用条件を確認します。 デプロイ プロセスを開始するには、**[購入]** をクリックします。
 
-    ![Create deployment 7](media/acs-portal7.png)  <br />
+    ![Purchase](media/container-service-deployment/acs-portal7.png)  <br />
 
     デプロイを Azure ポータルに固定した場合、デプロイの状態を確認できます。
 
-    ![Create deployment 8](media/acs-portal8.png)  <br />
+    ![[デプロイ ステータス]](media/container-service-deployment/acs-portal8.png)  <br />
 
-デプロイが完了したら、Azure コンテナー サービス クラスターを利用できます。
+デプロイが完了するまで、数分間かかります。 その後、Azure Container Service クラスターを利用できるようになります。
 
-## <a name="create-a-service-by-using-the-azure-cli"></a>Azure CLI を使用してサービスを作成する
-コマンド ラインを使用して Azure コンテナー サービスのインスタンスを作成するには、Azure サブスクリプションが必要です。 サブスクリプションがない場合でも、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。 また、Azure CLI を[インストール](../xplat-cli-install.md)し、[構成](../xplat-cli-connect.md)する必要があります。
 
-1. DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。 
+
+## <a name="create-a-cluster-by-using-a-quickstart-template"></a>クイックスタート テンプレートを使用してクラスターを作成する
+Azure クイックスタート テンプレートは、Azure Container Service でクラスターをデプロイするために使用できます。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 Azure クイックスタート テンプレートを使用して Azure Container Service クラスターを作成するには、Azure サブスクリプションが必要です。 お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。 
+
+テンプレートと Azure CLI 2.0 (プレビュー) を使用してクラスターをデプロイするには、以下の手順に従ってください ([インストールとセットアップの手順](/cli/azure/install-az-cli2.md)を参照してください)。
+
+> [!NOTE] 
+> Windows システムの場合は、同様の手順で、Azure PowerShell を使用してテンプレートをデプロイすることができます。 このセクションの後の方の手順を参照してください。 [ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md)またはその他の方法でテンプレートをデプロイすることもできます。
+
+1. DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、DC/OS と Swarm のテンプレートは同じです。
 
     * [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
     * [Kubernetes テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)
 
-2. 次に、Azure CLI が Azure サブスクリプションに接続されたことを確認します。 この処理には、次のコマンドを使用できます。
+2. Azure アカウントにログイン (`az login`) し、Azure CLI が Azure サブスクリプションに接続されていることを確認します。 次のコマンドを使用して、既定のサブスクリプションを確認できます。
 
-    ```bash
-    azure account show
+    ```azurecli
+    az account show
     ```
-    Azure アカウントが返されない場合、次のコマンドを使用して CLI を Azure にサインインさせます。
+    
+    複数のサブスクリプションがあり、別の既定のサブスクリプションを設定する必要がある場合は、`az account set --subscription` を実行し、サブスクリプション ID または名前を指定します。
 
-    ```bash
-    azure login -u user@domain.com
-    ```
+3. ベスト プラクティスとしては、デプロイ用の新しいリソース グループを使用することをお勧めします。 リソース グループを作成するには、次のように `az group create` コマンドを使用し、リソース グループの名前と場所を指定します。 
 
-3. Azure Resource Manager を使用するように Azure CLI ツールを構成します。
-
-    ```bash
-    azure config mode arm
+    ```azurecli
+    az group create --name "RESOURCE_GROUP" --location "LOCATION"
     ```
 
-4. 次のコマンドを使用して、Azure リソース グループとコンテナー サービス クラスターを作成します。
+4. 必要なテンプレート パラメーターが含まれている JSON ファイルを作成します。 `azuredeploy.parameters.json` という名前のパラメーター ファイルをダウンロードします。このファイルは、GitHub の Azure Container Service テンプレート `azuredeploy.json` に付属しています。 クラスターの必須パラメーター値を入力します。 
 
-    * **RESOURCE_GROUP** は、このサービスで使用するリソース グループの名前です。
-    * **LOCATION** は、リソース グループと Azure コンテナー サービスのデプロイを作成する Azure リージョンです。
-    * **TEMPLATE_URI** は、デプロイ ファイルの場所です。 これは Raw ファイルになります。GitHub UI のポインターではありません。 この URL を見つけるには、GitHub で azuredeploy.json ファイルを選択し、**[Raw]** ボタンをクリックします。
+    たとえば、[DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)を使用するには、`dnsNamePrefix` と `sshRSAPublicKey` のパラメーター値を指定します。 他のパラメーターについては、`azuredeploy.json` とオプションの説明を参照してください。  
+ 
+
+5. 次のコマンドでデプロイ パラメーター ファイルを渡して、Container Service クラスターを作成します。このコマンドで、以下のものを指定します。
+
+    * **RESOURCE_GROUP** は、前の手順で作成したリソース グループの名前です。
+    * **DEPLOYMENT_NAME** (省略可能) は、デプロイに付ける名前です。
+    * **TEMPLATE_URI** は、デプロイ ファイル `azuredeploy.json` の場所です。 この URI は、GitHub UI へのポインターではなく、Raw ファイルである必要があります。 この URI を調べるには、GitHub で `azuredeploy.json` ファイルを選択し、**[Raw]** ボタンをクリックします。  
+
+    ```azurecli
+    az group deployment create -g RESOURCE_GROUP -n DEPLOYMENT_NAME --template-uri TEMPLATE_URI --parameters @azuredeploy.parameters.json
+    ```
+
+    コマンド ラインで JSON 形式の文字列としてパラメーターを指定することもできます。 次のようなコマンドを使用します。
+
+    ```azurecli
+    az group deployment create -g RESOURCE_GROUP -n DEPLOYMENT_NAME --template-uri TEMPLATE_URI --parameters "{ \"param1\": {\"value1\"} … }"
+    ```
 
     > [!NOTE]
-    > このコマンドを実行すると、シェルからデプロイのパラメーター値の入力が求められます。
+    > デプロイが完了するまで、数分間かかります。
     > 
 
-    ```bash
-    azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
-    ```
+### <a name="equivalent-powershell-commands"></a>同等の PowerShell コマンド
+PowerShell を使用して Azure Container Service クラスター テンプレートをデプロイすることもできます。 このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール](https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
 
-### <a name="provide-template-parameters"></a>テンプレート パラメーターを指定する
-このバージョンのコマンドでは、パラメーターを対話で定義する必要があります。 JSON で書式設定された文字列などのパラメーターを指定する場合、 `-p` スイッチでそれを実行できます。 次に例を示します。
-
- ```bash
-azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
-```
-
-または、 `-e` スイッチを利用し、JSON で書式設定されたパラメーター ファイルを指定することもできます。
-
-```bash
-azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -e PATH/FILE.JSON
-```
-
-`azuredeploy.parameters.json`という名前のサンプル パラメーター ファイルを参照するには、GitHub で Azure コンテナー サービス テンプレートと共にこのファイルを検索します。
-
-## <a name="create-a-service-by-using-powershell"></a>PowerShell を使用してサービスを作成する
-PowerShell を使用して Azure コンテナー サービス クラスターをデプロイすることもできます。 このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール](https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
-
-1. DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
+1. DC/OS、Docker Swarm、または Kubernetes のクラスターをデプロイするには、次のテンプレートのいずれかを選択します。 既定のオーケストレーターの選択を除き、DC/OS と Swarm のテンプレートは同じです。
 
     * [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
@@ -167,7 +183,7 @@ PowerShell を使用して Azure コンテナー サービス クラスターを
     Login-AzureRmAccount
     ```
 
-4. 新しいリソース グループにデプロイする場合、最初にリソース グループを作成する必要があります。 新しいリソース グループを作成するには、 `New-AzureRmResourceGroup` コマンドを使用し、リソース グループの名前とターゲット リージョンを指定します。
+4. ベスト プラクティスとしては、デプロイ用の新しいリソース グループを使用することをお勧めします。 リソース グループを作成するには、`New-AzureRmResourceGroup` コマンドを使用し、リソース グループの名前とターゲット リージョンを指定します。
 
     ```powershell
     New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
@@ -179,7 +195,7 @@ PowerShell を使用して Azure コンテナー サービス クラスターを
     New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
     ```
 
-### <a name="provide-template-parameters"></a>テンプレート パラメーターを指定する
+#### <a name="provide-template-parameters"></a>テンプレート パラメーターを指定する
 PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。 この機能は、テンプレートで定義するパラメーターでも同様に使用できます。 テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、パラメーターを解析して、テンプレート パラメーターをコマンドに動的に追加します。 これにより、テンプレート パラメーターの値の指定が非常に簡単になります。 また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
 
 パラメーターが含まれている完全なコマンドを以下に示します。 リソースの名前には独自の値を指定できます。
@@ -198,7 +214,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

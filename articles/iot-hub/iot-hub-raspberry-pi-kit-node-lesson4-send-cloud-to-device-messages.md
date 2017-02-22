@@ -1,5 +1,7 @@
 ---
-title: "クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行 | Microsoft Docs"
+featureFlags:
+- usabilla
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 4: クラウドからデバイス | Microsoft Docs"
 description: "サンプル アプリケーションは、Pi 上で動作し、IoT ハブからの受信メッセージを監視します。 新しい gulp タスクを使って IoT ハブから Pi にメッセージを送信して、LED を点滅させます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 4a42967ceddcd1ad8d6fdd861367a6060578353b
-ms.openlocfilehash: 06ade85c7f24ed4b55de3d57a86ad747f5ae9f2f
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 92ee9d6faae9f539c663395e47714609a146f2df
 
 
 ---
@@ -91,6 +93,6 @@ IoT ハブから Pi にメッセージを送信し、LED を点滅させるこ�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

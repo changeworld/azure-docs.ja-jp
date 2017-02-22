@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
 translationtype: Human Translation
-ms.sourcegitcommit: 9bfc1a281bb63a9fd7528106d7bdbc808371c5fb
-ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
+ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
+ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
 
 ---
 
@@ -30,7 +30,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
 
 開始する前に、次の要件が満たされていることを確認します。
 *   Visual Studio 2012、2013、または 2015 がインストールされている。
-*   [Azure Powershell] もインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
 *   リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
 *   すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
@@ -62,27 +62,27 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     5. **場所**として「**C:\DataTransformation**」を入力します。
     6. **[OK]** をクリックしてプロジェクトを作成します。
 
-3.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての DLL を、作成したプロジェクトに**参照**として追加します。 dll ファイルをダウンロードするには、次の操作を行います。
+4.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての DLL を、作成したプロジェクトに**参照**として追加します。 dll ファイルをダウンロードするには、次の操作を行います。
 
     1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
     1. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
     2. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
 
-4. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
+5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
-    ````
+    ```
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using Microsoft.Azure.Management.HybridData.Models;
     using Microsoft.Internal.Dms.DmsWebJob;
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
-    ````
+    ```
 
 
-5. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド**に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名**と**ハイブリッド データ リソース名**の値をプラグインします。 **リソース グループ名**は、ジョブ定義が構成されたハイブリッド データ リソースをホストするリソース グループの名前です。
+6. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド**に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名**と**ハイブリッド データ リソース名**の値をプラグインします。 **リソース グループ名**は、ジョブ定義が構成されたハイブリッド データ リソースをホストするリソース グループの名前です。
 
-    ````
+    ```
     // Setup the configuration parameters.
     var configParams = new ConfigurationParams
     {
@@ -97,24 +97,23 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     // Initialize the Data Transformation Job instance.
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
 
-    ````
+    ```
 
-6. ジョブ定義を実行するときに使用するパラメーターを指定します
+7. ジョブ定義を実行するときに使用するパラメーターを指定します
 
-    ````
+    ```
     string jobDefinitionName = "job-definition-name";
 
     DataTransformationInput dataTransformationInput = dataTransformationJob.GetJobDefinitionParameters(jobDefinitionName);
 
-    ````
+    ```
 
     (または)
 
     実行時にジョブ定義パラメーターを変更する場合は、次のコードを追加します。
 
+    ```
     string jobDefinitionName = "job-definition-name";
-
-    ````
     // Must start with a '\'
     var rootDirectories = new List<string> {@"\root"};
 
@@ -136,23 +135,24 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
         // Name of the volume on StorSimple device on which the relevant data is present. 
         VolumeNames = volumeNames
     };
-    ````
+    
+    ```
 
-7. 初期化したら、次のコードを追加して、ジョブ定義でデータ変換ジョブをトリガーします。 適切な**ジョブ定義名**をプラグインします。
+8. 初期化したら、次のコードを追加して、ジョブ定義でデータ変換ジョブをトリガーします。 適切な**ジョブ定義名**をプラグインします。
 
-    ````
+    ```
     // Trigger a job, retrieve the jobId and the retry interval for polling.
     int retryAfter;
     string jobId = dataTransformationJob.RunJobAsync(jobDefinitionName, 
     dataTransformationInput, out retryAfter);
 
-    ````
+    ```
 
-8. このジョブでは、StorSimple ボリュームのルート ディレクトリの一致するファイルを、指定されたコンテナーにアップロードします。 ファイルがアップロードされると、ジョブ定義と同じ名前の、(コンテナーと同じストレージ アカウントにある) キュー内のメッセージが破棄されます。 このメッセージは、ファイルの追加処理を開始するトリガーとして使用できます。
+9. このジョブでは、StorSimple ボリュームのルート ディレクトリの一致するファイルを、指定されたコンテナーにアップロードします。 ファイルがアップロードされると、ジョブ定義と同じ名前の、(コンテナーと同じストレージ アカウントにある) キュー内のメッセージが破棄されます。 このメッセージは、ファイルの追加処理を開始するトリガーとして使用できます。
 
-9. ジョブが開始されたら、次のコードを追加して、ジョブの完了を追跡します。
+10. ジョブが開始されたら、次のコードを追加して、ジョブの完了を追跡します。
 
-    ````
+    ```
     Job jobDetails = null;
 
     // Poll the job.
@@ -171,7 +171,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
     // To hold the console before exiting.
     Console.Read();
 
-    ````
+    ```
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -179,6 +179,7 @@ ms.openlocfilehash: 5791527b39a24643bcd6f7d0c0aa1dd169f2d1b7
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Dec16_HO4-->
 
 

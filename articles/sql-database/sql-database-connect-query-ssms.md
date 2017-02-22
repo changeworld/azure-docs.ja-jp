@@ -15,20 +15,15 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 02/01/2017
 ms.author: sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: c0d085d03c1eebe0cff4f0ad48825991ea40619c
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
 
 
 ---
 # <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
 
 この記事では、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースに接続する方法について説明します。 正常に接続した後、単純な Transact-SQL (T-SQL) クエリを実行して、データベースとの通信を確認します。
 
@@ -60,19 +55,20 @@ ms.openlocfilehash: c0d085d03c1eebe0cff4f0ad48825991ea40619c
     ![新しいサンプル データベースのシステム オブジェクトに対するクエリ実行 (SSMS)](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
 
 > [!Tip]
-> チュートリアルについては、[サーバー、サーバーレベルのファイアウォール規則、サンプル データベース、データベースレベルのファイアウォール規則の作成と SQL Server への接続に関する SQL Database のチュートリアル](sql-database-get-started.md)を参照してください。    
+> チュートリアルについては、「[チュートリアル: Azure Portal と SQL Server Management Studio を使用した Azure SQL データベースのプロビジョニングとアクセス](sql-database-get-started.md)」を参照してください。    
 >
 
 ## <a name="next-steps"></a>次のステップ
 
 - SQL Server で可能な方法とほぼ同じように、T-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。 SQL Server で T-SQL を使用するのに慣れている場合は、「 [Azure SQL Database TRANSACT-SQL 情報](sql-database-transact-sql-information.md) 」で相違点の概要を参照してください。
 - T-SQL を初めて使用する場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
-- データベース ユーザーおよびデータベース ユーザー管理者の作成の概要については、 [Azure SQL Database セキュリティの概要](sql-database-get-started-security.md)
+- SQL Server 認証のチュートリアルを開始するには、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
+- Azure Active Directory 認証のチュートリアルを開始するには、[Azure AD の認証と承認](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
 - SSMS の詳細については、「 [SQL Server Management Studio の使用](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

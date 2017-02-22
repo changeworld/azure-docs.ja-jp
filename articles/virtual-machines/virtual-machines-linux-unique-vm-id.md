@@ -1,6 +1,6 @@
 ---
-title: "VM ID へのアクセス"
-description: "Azure VM の一意の ID へのアクセスと使用について説明します"
+title: "Azure Linux VM の ID を取得する | Microsoft Docs"
+description: "Azure Linux VM の一意の ID を取得して使う方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: kmouss
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/08/2016
+ms.date: 01/23/2017
 ms.author: kmouss
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 8bbde19aeccec285f9c5727540f49b7c9207b3b3
+ms.sourcegitcommit: 167863b0de66d89f1cec80b1c6b2aec64f48b790
+ms.openlocfilehash: 70d1d3ee35c32bb95306c7ce6089574d035de6a6
 
 
 ---
@@ -62,6 +62,6 @@ Azure VM 一意 ID は VM が Azure またはオンプレミスのどちらで�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

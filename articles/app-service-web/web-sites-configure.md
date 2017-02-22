@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: bca182190933253d5b2741b2835983909fb24a1b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 98e5764f84f23ec586ebd823634b9024e4689c5c
 
 
 ---
@@ -63,7 +63,7 @@ ms.openlocfilehash: bca182190933253d5b2741b2835983909fb24a1b
 このセクションには、起動時に Web アプリがロードする名前/値ペアが含まれます。 
 
 * .NET アプリの場合、実行時にこれらの設定が .NET 構成の `AppSettings` に挿入され、既存の設定がオーバーライドされます。 
-* PHP、Python、Java および Node アプリケーションでは、実行時に環境変数としてこれらの設定にアクセスできます。 各アプリ設定で、2 つの環境変数が作成されます。1 つは、アプリ設定エントリで指定された名前になり、もう 1 つはプレフィックスとして APPSETTING_ が付加されます。 両方に同じ値が格納されます。
+* PHP、Python、Java および Node アプリケーションでは、実行時に環境変数としてこれらの設定にアクセスできます。 各アプリ設定で、2 つの環境変数が作成されます。1 つは、アプリ設定エントリで指定された名前になり、もう&1; つはプレフィックスとして APPSETTING_ が付加されます。 両方に同じ値が格納されます。
 
 ### <a name="connection-strings"></a>接続文字列
 リンク済みリソースの接続文字列です。 
@@ -110,7 +110,7 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 
 **詳細なエラー メッセージ**。 詳細なエラー メッセージの .htm ファイルを保存します。 ファイルは、/LogFiles/DetailedErrors に保存されます。 
 
-**失敗した要求トレース**。 XML ファイルへのログ要求が失敗しました。 ファイルは /LogFiles/W3SVC*xxx*に保存されます (xxx は一意の識別子)。 このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。 この XSL ファイルは、XML ファイルのコンテンツの書式設定とフィルター処理を行う役割を果たすため、必ずダウンロードしてください。
+**失敗した要求トレース**。 XML ファイルへのログ要求が失敗しました。 ファイルは /LogFiles/W3SVC*xxx*に保存されます (xxx は一意の識別子)。 このフォルダーには、1 つの XSL ファイルと&1; つ以上の XML ファイルが格納されます。 この XSL ファイルは、XML ファイルのコンテンツの書式設定とフィルター処理を行う役割を果たすため、必ずダウンロードしてください。
 
 ログ ファイルを表示するには、次のように FTP の資格情報を作成する必要があります。
 
@@ -143,7 +143,7 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 デプロイ スロットを表示するには、 **[すべての設定]** > **[デプロイ スロット]**を使用して Web アプリを構成する方法について説明します。
 
 ### <a name="monitoring"></a>監視
-基本モードまたは標準モードでは、最大 3 つの地理的に分散した場所から HTTP または HTTPS エンドポイントの可用性をテストすることができます。 HTTP 応答コードがエラー (4xx または 5xx) である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。 すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。 
+基本モードまたは標準モードでは、最大&3; つの地理的に分散した場所から HTTP または HTTPS エンドポイントの可用性をテストすることができます。 HTTP 応答コードがエラー (4xx または 5xx) である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。 すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。 
 
 詳細については、「 [方法: Web エンドポイントの状態を監視する]」をご覧ください。
 
@@ -170,7 +170,7 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 [パイプライン モード]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Azure App Service での Web アプリの拡張]: ./web-sites-scale.md
 [socket.io]: ./web-sites-nodejs-chat-app-socketio.md
-[Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
+[Azure App Service アプリケーションの作成]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->
 
@@ -180,6 +180,6 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 
