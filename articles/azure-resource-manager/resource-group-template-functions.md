@@ -1,5 +1,5 @@
 ---
-title: "リソース マネージャーのテンプレートの関数 | Microsoft Docs"
+title: "Resource Manager テンプレートの関数 | Microsoft Docs"
 description: "値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 11/11/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 33e6b9ba880f56d967b49d0b89e61d1b531e8376
-ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
+ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
+ms.openlocfilehash: 971a154170c5deb08e4aa5f061a53d120e6dead6
 
 
 ---
@@ -39,14 +39,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="add" />
 
 ### <a name="add"></a>追加
-`add(operand1, operand2)`
+**add(operand1, operand2)**
 
-指定された&2; つ整数の合計を返します。
+指定された 2 つ整数の合計を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- | 
-|operand1 |はい |整数 |加算する最初の整数。 |
-|operand2 |はい |整数 |加算する&2; つ目の整数。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| operand1 |はい |加算する最初の整数。 |
+| operand2 |はい |加算する 2 つ目の整数。 |
 
 次の例では、2 つのパラメーターを加算します。
 
@@ -75,15 +75,15 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="copyindex" />
 
 ### <a name="copyindex"></a>copyIndex
-`copyIndex(offset)`
+**copyIndex(offset)**
 
-反復処理のループのインデックスを返します。 
+反復処理のループの現在のインデックスを返します。 
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| offset |なし |整数 |0 から始まる反復値に追加する整数。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| offset |なし |現在の反復値に追加する量。 |
 
-この関数は常に **copy** オブジェクトと共に使用されます。 **offset** の値が指定されていない場合、現在の反復値が返されます。 反復値は&0; から始まります。 **copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+この関数は常に **copy** オブジェクトと共に使用されます。 **copyIndex**の使用方法の詳細については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 次の例では、コピー ループと、名前に含まれるインデックス値を示します。 
 
@@ -103,14 +103,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="div" />
 
 ### <a name="div"></a>div
-`div(operand1, operand2)`
+**div(operand1, operand2)**
 
-指定された&2; つの整数の整数除算を返します。
+指定された 2 つの整数の整数除算を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| operand1 |はい |整数 |除算される整数。 |
-| operand2 |はい |整数 |除算に使用される整数。 0 にすることはできません。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| operand1 |はい |除算される整数。 |
+| operand2 |はい |除算に使用される整数。 0 にすることはできません。 |
 
 次の例では、一方のパラメーターをもう一方のパラメーターで除算します。
 
@@ -139,13 +139,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="int" />
 
 ### <a name="int"></a>int
-`int(valueToConvert)`
+**int(valueToConvert)**
 
 指定された値を整数に変換します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| valueToConvert |はい |文字列または整数 |整数に変換する値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| valueToConvert |はい |整数に変換する値。 値の種類は文字列か整数になります。 |
 
 次の例では、ユーザー指定のパラメーター値を整数に変換します。
 
@@ -160,14 +160,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="mod" />
 
 ### <a name="mod"></a>mod
-`mod(operand1, operand2)`
+**mod(operand1, operand2)**
 
-指定された&2; つの整数を使用した整数除算の剰余を返します。
+指定された 2 つの整数を使用した整数除算の剰余を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| operand1 |はい |整数 |除算される整数。 |
-| operand2 |はい |整数 |除算に使用される整数。0 にすることはできません。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| operand1 |はい |除算される整数。 |
+| operand2 |はい |除算に使用される整数。0 以外にする必要があります。 |
 
 次の例では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
 
@@ -196,14 +196,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="mul" />
 
 ### <a name="mul"></a>mul
-`mul(operand1, operand2)`
+**mul(operand1, operand2)**
 
-指定された&2; つの整数の乗算を返します。
+指定された 2 つの整数の乗算を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| operand1 |あり |整数 |乗算する最初の整数。 |
-| operand2 |あり |整数 |乗算する&2; つ目の整数。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| operand1 |はい |乗算する最初の整数。 |
+| operand2 |はい |乗算する 2 つ目の整数。 |
 
 次の例では、一方のパラメーターをもう一方のパラメーターで乗算します。
 
@@ -232,14 +232,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="sub" />
 
 ### <a name="sub"></a>sub
-`sub(operand1, operand2)`
+**sub(operand1, operand2)**
 
-指定された&2; つの整数の減算を返します。
+指定された 2 つの整数の減算を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| operand1 |はい |整数 |減算される整数。 |
-| operand2 |はい |整数 |減算する整数。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| operand1 |はい |減算される整数。 |
+| operand2 |はい |減算する整数。 |
 
 次の例では、一方のパラメーターからもう一方のパラメーターを減算します。
 
@@ -287,13 +287,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="base64" />
 
 ### <a name="base64"></a>base64
-`base64 (inputString)`
+**base64 (inputString)**
 
 入力文字列の base64 表現を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| inputString |はい |String |Base&64; 形式として返す値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| inputString |はい |Base 64 形式として返す文字列の値。 |
 
 次の例では、base64 関数を使用する方法を示します。
 
@@ -305,18 +305,18 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="concat" />
 
 ### <a name="concat---string"></a>concat - 文字列
-`concat (string1, string2, string3, ...)`
+**concat (string1, string2, string3, ...)**
 
 複数の文字列値を結合し、連結された文字列を返します。 
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| string1 |はい |string |連結の最初の値。 |
-| 追加の文字列 |なし |String |連結する順の追加の値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| string1 |はい |連結する文字列値。 |
+| 追加の文字列 |なし |連結する文字列値。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 配列を連結する例については、「 [concat - 配列](#concatarray)」を参照してください。
 
-次の例は、複数の文字列値を結合して&1; つの連結文字列を返す方法を示しています。
+次の例は、複数の文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
     "outputs": {
         "siteUri": {
@@ -329,13 +329,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="lengthstring" />
 
 ### <a name="length---string"></a>length - 文字列
-`length(string)`
+**length(string)**
 
 文字列の文字数を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| string |あり |String |文字数の取得に使用する値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| string |はい |文字数を取得する対象の文字列値。 |
 
 配列に対して length を使用する例については、「 [length - 配列](#length)」を参照してください。
 
@@ -352,15 +352,15 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="padleft" />
 
 ### <a name="padleft"></a>padLeft
-`padLeft(valueToPad, totalLength, paddingCharacter)`
+**padLeft(valueToPad, totalLength, paddingCharacter)**
 
 指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| valueToPad |あり |文字列または整数 |右揃えにする値。 |
-| totalLength |はい |整数 |返される文字列の文字合計数。 |
-| paddingCharacter |いいえ |1 文字 |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| valueToPad |はい |右揃えにする文字列または整数。 |
+| totalLength |はい |返される文字列の文字合計数。 |
+| paddingCharacter |なし |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
 
 次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。 元のパラメーター値が 10 文字より長い場合、文字は追加されません。
 
@@ -374,15 +374,15 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="replace" />
 
 ### <a name="replace"></a>replace
-`replace(originalString, oldCharacter, newCharacter)`
+**replace(originalString, oldCharacter, newCharacter)**
 
 指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| originalString |はい |String |ある文字のすべてのインスタンスが別の文字に置き換えられた値。 |
-| oldCharacter |あり |string |元の文字列から削除する文字。 |
-| newCharacter |あり |String |削除された文字の代わりに追加する文字。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| originalString |はい |ある文字のすべてのインスタンスが別の文字に置き換えられた文字列。 |
+| oldCharacter |はい |元の文字列から削除する文字。 |
+| newCharacter |はい |削除された文字の代わりに追加する文字。 |
 
 次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
 
@@ -396,14 +396,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="skipstring" />
 
 ### <a name="skip---string"></a>skip - 文字列
-`skip(originalValue, numberToSkip)`
+**skip(originalValue, numberToSkip)**
 
 文字列内の指定した位置より後ろにある文字をすべて含む文字列を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| originalValue |はい |String |スキップの対象の文字列。 |
-| numberToSkip |はい |整数 |スキップする文字数。 この値が 0 以下である場合は、文字列内のすべての文字が返されます。 文字列の長さを超える場合は、空の文字列が返されます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| originalValue |はい |スキップの対象の文字列。 |
+| numberToSkip |はい |スキップする文字数。 この値が 0 以下である場合は、文字列内のすべての文字が返されます。 文字列の長さを超える場合は、空の文字列が返されます。 |
 
 配列に対して skip を使用する例については、「 [skip - 配列](#skip)」を参照してください。
 
@@ -436,16 +436,16 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="split" />
 
 ### <a name="split"></a>split
-`split(inputString, delimiterString)`
+**split(inputString, delimiterString)**
 
-`split(inputString, delimiterArray)`
+**split(inputString, delimiterArray)**
 
 指定された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| inputString |はい |string |分割する文字列。 |
-| delimiter |はい |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| inputString |はい |分割する文字列。 |
+| delimiter |はい |使用する区切り記号。1 つの文字列または文字列の配列を指定できます。 |
 
 次の例では、入力文字列をコンマで分割します。
 
@@ -473,13 +473,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="string" />
 
 ### <a name="string"></a>string
-`string(valueToConvert)`
+**string(valueToConvert)**
 
 指定された値を文字列に変換します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| valueToConvert |はい | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| valueToConvert |はい |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
 次の例では、ユーザー指定のパラメーター値を文字列に変換します。
 
@@ -509,17 +509,17 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="substring" />
 
 ### <a name="substring"></a>substring
-`substring(stringToParse, startIndex, length)`
+**substring(stringToParse, startIndex, length)**
 
 指定した文字位置から始まる指定された文字数分の部分文字列を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| stringToParse |あり |String |部分文字列の抽出元となる文字列。 |
-| startIndex |いいえ |整数 |部分文字列の&0; から始まる開始文字位置。 |
-| length |なし |整数 |部分文字列の文字数。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| stringToParse |はい |部分文字列の抽出元となる文字列。 |
+| startIndex |なし |部分文字列の 0 から始まる開始文字位置。 |
+| length |なし |部分文字列の文字数。 |
 
-次の例では、パラメーターから先頭の&3; 文字を抽出します。
+次の例では、パラメーターから先頭の 3 文字を抽出します。
 
     "parameters": {
         "inputString": { "type": "string" }
@@ -531,14 +531,14 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="takestring" />
 
 ### <a name="take---string"></a>take - 文字列
-`take(originalValue, numberToTake)`
+**take(originalValue, numberToTake)**
 
 文字列の先頭から指定された数の文字を含む文字列を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| originalValue |はい |String |文字の取得元となる値。 |
-| numberToTake |はい |整数 |取得する文字数。 この値が 0 以下である場合、空の文字列が返されます。 指定された文字列の長さを超える場合、その文字列のすべての文字が返されます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| originalValue |はい |文字の取得元となる文字列。 |
+| numberToTake |はい |取得する文字数。 この値が 0 以下である場合、空の文字列が返されます。 指定された文字列の長さを超える場合、その文字列のすべての文字が返されます。 |
 
 配列に対して take を使用する例については、「 [take - 配列](#take)」を参照してください。
 
@@ -570,13 +570,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="tolower" />
 
 ### <a name="tolower"></a>toLower
-`toLower(stringToChange)`
+**toLower(stringToChange)**
 
 指定された文字列を小文字に変換します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| stringToChange |あり |String |小文字に変換する値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| stringToChange |はい |小文字に変換する文字列。 |
 
 次の例では、ユーザー指定のパラメーター値を小文字に変換します。
 
@@ -590,13 +590,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="toupper" />
 
 ### <a name="toupper"></a>toUpper
-`toUpper(stringToChange)`
+**toUpper(stringToChange)**
 
 指定した文字列を大文字に変換します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| stringToChange |はい |String |大文字に変換する値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| stringToChange |はい |大文字に変換する文字列。 |
 
 次の例では、ユーザー指定のパラメーター値を大文字に変換します。
 
@@ -610,13 +610,13 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="trim" />
 
 ### <a name="trim"></a>trim
-`trim (stringToTrim)`
+**trim (stringToTrim)**
 
 指定された文字列から先頭と末尾の空白文字をすべて削除します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| stringToTrim |はい |String |トリムする値。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| stringToTrim |はい |トリムする文字列。 |
 
 次の例では、ユーザー指定のパラメーター値から空白文字を削除します。
 
@@ -630,18 +630,18 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="uniquestring" />
 
 ### <a name="uniquestring"></a>uniqueString
-`uniqueString (baseString, ...)`
+**uniqueString (baseString, ...)**
 
 パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。 
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| baseString |はい |String |一意の文字列を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |なし |String |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| baseString |はい |一意の文字列を作成するためにハッシュ関数で使用される文字列。 |
+| 必要に応じて追加のパラメーター |なし |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 この関数は、リソースの一意の名前を作成する必要がある場合に便利です。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。 
 
-返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、13 文字です。 グローバルに一意ではありません。 命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。 次の例では、戻り値の形式を示します。 実際の値は、指定されたパラメーターによって異なります。
+返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、13 文字です。 グローバルに一意ではありません。 命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。 次の例では、戻り値の形式を示します。 当然ながら、実際の値は、指定されたパラメーターによって異なります。
 
     tcvhiyu5h2o5o
 
@@ -659,7 +659,7 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 
     "[uniqueString(resourceGroup().id, deployment().name)]"
 
-次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。 リソース グループ内で、同じ方法で名前が作成されると、名前は一意ではなくなります。
+次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています (このリソース グループ内で、同じ方法で名前が作成されると、名前は一意ではなくなる)。
 
     "resources": [{ 
         "name": "[concat('storage', uniqueString(resourceGroup().id))]", 
@@ -671,16 +671,16 @@ ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
 <a id="uri" />
 
 ### <a name="uri"></a>uri
-`uri (baseUri, relativeUri)`
+**uri (baseUri, relativeUri)**
 
 baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| baseUri |はい |String |ベース URI 文字列。 |
-| relativeUri |はい |String |ベース URI 文字列に追加する相対 URI 文字列。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| baseUri |はい |ベース URI 文字列。 |
+| relativeUri |はい |ベース URI 文字列に追加する相対 URI 文字列。 |
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。 たとえば、baseUri パラメーターとして `http://contoso.com/resources/azuredeploy.json` を渡すと、`http://contoso.com/resources/` というベース URI が作成されます。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。 たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、ベース URI は **http://contoso.com/resources/** になります。
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
@@ -699,14 +699,14 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="concatarray" />
 
 ### <a name="concat---array"></a>concat - 配列
-`concat (array1, array2, array3, ...)`
+**concat (array1, array2, array3, ...)**
 
 複数の配列を結合し、連結された配列を返します。 
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| array1 |はい |array |連結の最初の配列。 |
-| 追加の配列 |いいえ |array |連結する順の追加の配列。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| array1 |はい |連結する配列。 |
+| 追加の配列 |なし |連結する配列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 文字列値を連結する例については、「 [concat - 文字列](#concat)」を参照してください。
 
@@ -728,13 +728,13 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="length" />
 
 ### <a name="length---array"></a>length - 配列
-`length(array)`
+**length(array)**
 
 配列内の要素数を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| array |はい |array |要素の数を取得する対象の配列。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| array |はい |要素の数を取得する対象の配列。 |
 
 この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。 次の例では、 **siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
 
@@ -750,14 +750,14 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="skip" />
 
 ### <a name="skip---array"></a>skip - 配列
-`skip(originalValue, numberToSkip)`
+**skip(originalValue, numberToSkip)**
 
 配列内の指定した位置より後ろにある要素をすべて含む配列を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| originalValue |はい |array |スキップの対象の配列。 |
-| numberToSkip |はい |整数 |スキップする要素数。 この値が 0 以下である場合は、配列内のすべての要素が返されます。 配列の長さを超える場合は、空の配列が返されます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| originalValue |はい |スキップの対象の配列。 |
+| numberToSkip |はい |スキップする要素数。 この値が 0 以下である場合は、配列内のすべての要素が返されます。 配列の長さを超える場合は、空の配列が返されます。 |
 
 文字列に対して skip を使用する例については、「 [skip - 文字列](#skipstring)」を参照してください。
 
@@ -790,14 +790,14 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="take" />
 
 ### <a name="take---array"></a>take - 配列
-`take(originalValue, numberToTake)`
+**take(originalValue, numberToTake)**
 
 配列の先頭から指定された数の要素を含む配列を返します。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| originalValue |はい |array |要素の取得元となる配列。 |
-| numberToTake |あり |整数 |取得する要素数。 この値が 0 以下である場合は、空の配列が返されます。 指定された配列の長さを超える場合は、その配列のすべての要素が返されます。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| originalValue |はい |要素の取得元となる配列。 |
+| numberToTake |はい |取得する要素数。 この値が 0 以下である場合は、空の配列が返されます。 指定された配列の長さを超える場合は、その配列のすべての要素が返されます。 |
 
 文字列に対して take を使用する例については、「 [take - 文字列](#takestring)」を参照してください。
 
@@ -839,7 +839,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="deployment" />
 
 ### <a name="deployment"></a>deployment
-`deployment()`
+**デプロイ()**
 
 現在のデプロイ操作に関する情報を返します。
 
@@ -865,7 +865,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
         }
     }
 
-オブジェクトがリンクとして渡された場合 (**-TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。 
+オブジェクトがリンクとして渡された場合 ( **TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。 
 
     {
         "name": "",
@@ -896,13 +896,13 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="parameters" />
 
 ### <a name="parameters"></a>parameters
-`parameters (parameterName)`
+**parameters (parameterName)**
 
 パラメーター値を返します。 指定したパラメーター名は、テンプレートのパラメーター セクションで定義されている必要があります。
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| parameterName |あり |String |返されるパラメーターの名前。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| parameterName |はい |返されるパラメーターの名前。 |
 
 次の例では、parameters 関数の簡単な使用方法を示しています。
 
@@ -923,13 +923,13 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="variables" />
 
 ### <a name="variables"></a>variables
-`variables (variableName)`
+**variables (variableName)**
 
 変数の値を返します。 指定した変数名は、テンプレートの変数セクションで定義されている必要があります。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| variableName |はい |string |返す変数の名前。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| variable Name |はい |返す変数の名前。 |
 
 次の例では、変数の値を使用します。
 
@@ -960,16 +960,16 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 <a id="list" />
 
 ### <a name="listkeys-and-listvalue"></a>listKeys と list{Value}
-`listKeys (resourceName or resourceIdentifier, apiVersion)`
+**listKeys (resourceName or resourceIdentifier, [apiVersion])**
 
-`list{Value} (resourceName or resourceIdentifier, apiVersion)`
+**list{Value} (resourceName または resourceIdentifier, apiVersion)**
 
 list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、 **listKeys**です。 
 
-| パラメーター | 必須 | 型 | 説明 |
-|:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |String |リソースの一意識別子です。 |
-| apiVersion |あり |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| resourceName または resourceIdentifier |はい |リソースの一意識別子です。 |
+| apiVersion |はい |リソースのランタイム状態の API バージョン。 |
 
 **list** で始まるすべての操作は、テンプレート内で関数として使用できます。 使用可能な操作には、**listKeys** だけでなく、**list**、**listAdminKeys**、**listStatus** などの操作も含まれます。 どのリソースの種類にリスト処理を含めるかを指定するには、次の PowerShell コマンドを使用します。
 
@@ -1010,14 +1010,14 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 <a id="providers" />
 
 ### <a name="providers"></a>providers
-`providers (providerNamespace, [resourceType])`
+**providers (providerNamespace, [resourceType])**
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。 リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| providerNamespace |はい |String |プロバイダーの名前空間 |
-| resourceType |いいえ |String |指定した名前空間内にあるリソースの種類。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| providerNamespace |はい |プロバイダーの名前空間 |
+| resourceType |なし |指定した名前空間内にあるリソースの種類。 |
 
 サポートされている各種類は、次の形式で返されます。 配列の順序は保証されません。
 
@@ -1039,14 +1039,14 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
 <a id="reference" />
 
 ### <a name="reference"></a>reference
-`reference (resourceName or resourceIdentifier, [apiVersion])`
+**reference (resourceName or resourceIdentifier, [apiVersion])**
 
 別のリソースのランタイム状態を表すオブジェクトを返します。
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |あり |String |名前またはリソースの一意の識別子。 |
-| apiVersion |いいえ |String |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| resourceName または resourceIdentifier |はい |名前またはリソースの一意の識別子。 |
+| apiVersion |なし |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 |
 
 **reference** 関数はその値をランタイム状態から取得するので、変数セクションでは使用できません。 これは、テンプレートの出力セクションで使用できます。
 
@@ -1093,7 +1093,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 <a id="resourcegroup" />
 
 ### <a name="resourcegroup"></a>resourceGroup
-`resourceGroup()`
+**resourceGroup()**
 
 現在のリソース グループを表すオブジェクトを返します。 
 
@@ -1125,17 +1125,17 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 <a id="resourceid" />
 
 ### <a name="resourceid"></a>resourceId
-`resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+**resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
 リソースの一意の識別子を返します。 
 
-| パラメーター | 必須 | 型 | Description |
-|:--- |:--- |:--- |:--- |
-| subscriptionId |なし |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceGroupName |なし |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceType |はい |String |リソース プロバイダーの名前空間を含むリソースの種類。 |
-| resourceName1 |はい |String |リソースの名前。 |
-| resourceName2 |いいえ |String |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| パラメーター | 必須 | Description |
+|:---:|:---:|:--- |
+| subscriptionId |なし |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceGroupName |なし |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceType |はい |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |リソースの名前。 |
+| resourceName2 |なし |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 識別子は、次の形式で返されます。
 
@@ -1192,7 +1192,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 <a id="subscription" />
 
 ### <a name="subscription"></a>サブスクリプション
-`subscription()`
+**subscription()**
 
 サブスクリプションの詳細を次の形式で返します。
 
@@ -1221,6 +1221,6 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Nov16_HO3-->
 
 
