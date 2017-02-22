@@ -14,7 +14,7 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
-ms.author: singhkay
+ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: 2deaf44de51a989463826d6e4815f9ce9f0bbee5
 ms.openlocfilehash: 4b1fd3527140bc40299c008071753a91d264d567

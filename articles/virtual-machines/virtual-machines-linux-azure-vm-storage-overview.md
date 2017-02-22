@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM と Azure Storage | Microsoft Docs"
-description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage について説明します。"
+description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage と、Managed Disks および Unmanaged Disks について説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -12,28 +12,84 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/04/2016
-ms.author: v-livech
+ms.date: 2/7/2017
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: a3dc017811cb891bc82b072e13e58b3af047a490
-ms.openlocfilehash: e74ede9b3132ff4b4c3e67e614b9996f56856ebc
+ms.sourcegitcommit: 8651566079a0875e1a3a549d4bf1dbbc6ac7ce21
+ms.openlocfilehash: 410159ad7b5abc5eb3cb1a212895eda7ac225323
 
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure と Linux の VM ストレージ
 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  Azure Storage は、開発者が新しいシナリオをサポートするための大規模なアプリケーションの構築に使用できるだけでなく、Azure Virtual Machines のストレージ基盤となります。
 
-## <a name="azure-storage-standard-and-premium"></a>Azure Storage: Standard と Premium
-Azure VM は、Standard Storage ディスクまたは Premium Storage ディスクを基盤とすることができます。  ポータルを使用して VM を選択する場合は、[基本] 画面の Standard ディスクと Premium ディスクの両方が表示されるドロップダウン リストを切り替える必要があります。  次のスクリーン ショットでは、その切り替えメニューを強調表示しています。  [SSD] に切り替えると、Premium Storage 対応の VM のみが表示されます。これらはすべて、SSD ドライブによってサポートされます。  [HDD] に切り替えると、SSD によってサポートされる Premium Storage VM に加えて、回転ディスク ドライブによってサポートされるStandard Storage 対応の VM も表示されます。
+## <a name="managed-disks"></a>Managed Disks
 
-  ![screen1](../virtual-machines/media/virtual-machines-linux-azure-vm-storage-overview/screen1.png)
+[Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Azure VM を利用できるようになりました。これにより、[Azure ストレージ アカウント](../storage/storage-introduction.md)を自分で作成または管理しなくても VM を作成できます。 Premium Storage と Standard Storage のどちらが必要かと、ディスクの大きさを指定すると、Azure によって VM ディスクが作成されます。 Managed Disks を使用する VM には、次のような多くの重要な機能があります。
+
+- 自動的なスケーラビリティのサポート。 Azure では、サブスクリプションあたり最大 10,000 個のディスクをサポートするように、ディスクが作成され、基になるストレージが管理されます。
+- 可用性セットでの信頼性が向上します。 Azure により、VM ディスクが可用性セット内で相互に自動的に分離されます。
+- アクセス制御が向上します。 Managed Disks は、[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) によって制御されるさまざまな操作を公開します。 
+
+Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../storage/storage-managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。 
+
+[az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
+
+- [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに[仮想ハード ディスク (VHD) をコピー](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks)します。
+- 管理ディスクを使用する VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。または
+- [az vm disk attach](/cli/azure/vm/disk#attach) を使用して、コピーした VHD を管理ディスクで実行中の VM に接続します。
+
+
+## <a name="azure-storage-standard-and-premium"></a>Azure Storage: Standard と Premium
+Azure VM は、Managed Disks と非管理対象ディスクのどちらを使用しているかにかかわらず、Standard Storage ディスクまたは Premium Storage ディスクにビルドすることができます。 ポータルを使用して VM を選ぶ場合は、**[基本]** 画面の Standard ディスクと Premium ディスクの両方が表示されるドロップダウン リストを切り替える必要があります。 [SSD] に切り替えると、Premium Storage 対応の VM のみが表示されます。これらはすべて、SSD ドライブによってサポートされます。  [HDD] に切り替えると、SSD によってサポートされる Premium Storage VM に加えて、回転ディスク ドライブによってサポートされるStandard Storage 対応の VM も表示されます。
 
 `azure-cli` から VM を作成する場合は、CLI フラグ `-z` または `--vm-size` で VM のサイズを選択するときに Standard または Premium のいずれかを選択できます。
 
-### <a name="create-a-vm-with-standard-storage-vm-on-the-cli"></a>Standard Storage を使用する VM を CLI で作成する
-次の CLI フラグ `-z` は、A1 を使用する Standard_A1 を選択します。これは Standard Storage を基盤とする Linux VM です。
+## <a name="creating-a-vm-with-a-managed-disk"></a>Managed Disk での VM の作成
 
-```bash
+次の例では、[ここでインストール] できる Azure CLI 2.0 (プレビュー) が必要です。
+
+まず、リソースを管理するリソース グループを作成します。
+
+```azurecli
+az group create --location westus --name myResourceGroup
+```
+
+続いて、次の例に示すように `az vm create` コマンドで VM を作成します。`manageddisks` が取得される可能性が高いため、必ず一意の `--public-ip-address-dns-name` 引数を指定してください。
+
+```azurecli
+az vm create \
+--image credativ:Debian:8:latest \
+--admin-username azureuser \
+--ssh-key-value ~/.ssh/id_rsa.pub 
+--public-ip-address-dns-name manageddisks \
+--resource-group myResourceGroup \
+--location westus \
+--name myVM
+```
+
+前の例では、Standard Storage アカウントの管理ディスクを使用して VM を作成します。 Premium Storage アカウントを使用するには、次の例のように `--storage-sku Premium_LRS` 引数を追加します。
+
+```azurecli
+az vm create \
+--storage-sku Premium_LRS
+--image credativ:Debian:8:latest \
+--admin-username azureuser \
+--ssh-key-value ~/.ssh/id_rsa.pub 
+--public-ip-address-dns-name manageddisks \
+--resource-group myResourceGroup \
+--location westus \
+--name myVM
+```
+
+
+### <a name="create-a-vm-with-an-unmanaged-standard-disk-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した、非管理対象の Standard ディスクでの VM の作成
+
+当然のことながら、Azure CLI 1.0 を使用して、Standard ディスクと Premium ディスクの VM も作成できます。現時点では、Azure CLI 1.0 を使用して、Managed Disks によってサポートされる VM を作成することはできません。
+
+`-z` オプションは、Standard_A1 を選びます。これは Standard Storage を基盤とする Linux VM です。
+
+```azurecli
 azure vm quick-create -g rbg \
 exampleVMname \
 -l westus \
@@ -44,10 +100,10 @@ exampleVMname \
 -z Standard_A1
 ```
 
-### <a name="create-a-vm-with-premium-storage-on-the-cli"></a>Premium Storage を使用する VM を CLI で作成する
-次の CLI フラグ `-z` は、DS1 を使用する Standard_DS1 を選択します。これは、Premium Storage を基盤とする Linux VM です。
+### <a name="create-a-vm-with-premium-storage-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した Premium Storage を使用する VM の作成
+`-z` オプションは、Standard_DS1 を選びます。これは Premium Storage を基盤とする Linux VM です。
 
-```bash
+```azurecli
 azure vm quick-create -g rbg \
 exampleVMname \
 -l westus \
@@ -186,6 +242,6 @@ Storage Service Encryption (SSE) と、ストレージ アカウントで Storag
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

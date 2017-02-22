@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
@@ -236,7 +236,7 @@ ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
         }
       }
     }
-    ```     
+    ```       
     以下の点に注意してください。 
    
    * データセットの **type** は **AzureSQLTable** に設定されています。
