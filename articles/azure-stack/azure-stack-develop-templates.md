@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 02/07/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: 065f935c07737f13adf0c5f5d8e0c665a98a2af7
+ms.sourcegitcommit: 24aade3de17781510f2c7c4f0bb5252fddd6014d
+ms.openlocfilehash: 9ea44afc9622040351b2e8c85b528133514e0f2d
 
 
 ---
@@ -38,6 +38,7 @@ Azure service versions may differ between Azure and Azure Stack. Each resource r
 | Compute |'2015-06-15' |
 | Network |'2015-06-15', '2015-05-01-preview' |
 | Storage |'2016-01-01', '2015-06-15', '2015-05-01-preview' |
+| KeyVault | '2016-06-01' |
 | App Service |'2015-08-01' |
 | MySQL |'2015-09-01' |
 | SQL |'2014-04-01-preview' |
@@ -79,6 +80,6 @@ Resource Manager templates use a location attribute to place resources during de
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
