@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB データベースとコレクションの作成 | Microsoft Docs"
-description: "クラウド ベースのドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、NoSQL データベースと JSON ドキュメント コレクションを作成する方法について説明します。 無料評価版を今すぐ入手してください。"
+description: "クラウド ベースのドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、NoSQL データベースと JSON ドキュメント コレクションを作成する方法について説明します。 無料試用版を今すぐ入手してください。"
 services: documentdb
 author: mimig1
 manager: jhubbard
