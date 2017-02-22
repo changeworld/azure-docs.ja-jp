@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 847081123123c849033c9de2b3c4359042d41359
-ms.openlocfilehash: da29f6015502e4ce5a63ca1c47106dc346026803
+ms.sourcegitcommit: cd2aafd80db337cadaa2217a6638d93186975b68
+ms.openlocfilehash: 563a6821b4a3736ef1233aa67d86b9ba06565788
 
 
 ---
@@ -768,9 +768,9 @@ LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS 
            string.IsNullOrEmpty(LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,           
            USQLApplication21.UserSession.StampUserSession
            (
-            EventDateTime,
-            LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
-            LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
+               EventDateTime,
+               LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
+               LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
            )
            AS UserSessionTimestamp
     FROM @records;
@@ -824,7 +824,10 @@ USING Outputters.Csv();
 ## <a name="using-user-defined-types---udt"></a>ユーザー定義型 (UDT)
 ユーザー定義型 (UDT) は、U-SQL に用意されているもう&1; つのプログラミング機能です。 U-SQL の UDT の動作は、C# の一般的なユーザー定義型とよく似ています。 C# は、組み込みの型と独自のユーザー定義型のどちらも使用できる型付けの強固な言語です。
 
-U-SQL では現在、外部ファイルとの間で暗黙的に UDT データをシリアル化または逆シリアル化することができません。 このため、UDT の定義の一環としてシリアル化と逆シリアル化のためのメソッドを備えた IFormatter インターフェイスを定義する必要があります。 ADLA V1 では、中間シリアル化のみサポートしています。 つまり、IFormatter は UDT 内部の処理では重要であるものの、エクストラクターまたはアウトプッターで永続的なシリアル化に使用することはできないということです。 アウトプッターを使ってファイルにデータを書き込むときや、エクストラクターでデータを読み取るときには、UDT の実装の ToString() メソッドを使用し、UDT を文字列にシリアル化する必要があります。 UDT を扱うときにはほかにも、エクストラクターまたはアウトプッターをカスタマイズして使用することもできます。  
+U-SQL では、UDT が行セットの頂点間で渡されるときに、任意の UDT を暗黙的にシリアル化または逆シリアル化することができません。 このため、ユーザーは IFormatter インターフェイスを使用して明示的なフォーマッタを指定する必要があります。 これにより、U-SQL に UDT のシリアル化および逆シリアル化メソッドが提供されます。 
+
+> [!NOTE]
+> U-SQL の組み込みのエクストラクターおよびアウトプッターは現在、IFormatter セットを使用してもファイルとの間で UDT データをシリアル化または逆シリアル化することができません。  このため、OUTPUT ステートメントで UDT データをファイルに書き込む場合、またはエクストラクターでデータを読み取る場合に、これを文字列またはバイト配列として渡して、シリアル化および逆シリアル化コード (UDT の ToString() メソッドなど) を明示的に呼び出す必要があります。 一方、ユーザー定義のエクストラクターおよびアウトプッターでは、UDT の読み取り/書き込みを行えます。
 
 エクストラクターまたはアウトプッター (前の SELECT の外部) で UDT を使用する場合のコードは、以下のとおりです。
 
@@ -839,7 +842,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 このコードでは、以下のエラーが発生します。
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
+    Error    1    E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
     MyNameSpace.Myfunction_Returning_UDT.
 
     Description:
@@ -849,8 +852,8 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
     Resolution:
 
     Implement a custom outputter that knows how to serialize this type or call a serialization method on the type in
-    the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
-    USQL-Programmability\Types.usql 52  1   USQL-Programmability
+    the preceding SELECT.    C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
+    USQL-Programmability\Types.usql    52    1    USQL-Programmability
 ```
 
 アウトプッターで UDT を使用するには、ToString() メソッドを使って UDT をシリアル化するか、カスタム アウトプッターを作成する必要があります。
@@ -858,7 +861,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 現時点では、GROUP BY で UDT を使用することはできません。 GROUP BY で UDT を使用した場合には、以下のエラーが表示されます。
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
+    Error    1    E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
     for column myfield
 
     Description:
@@ -869,7 +872,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
     Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
     C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
-    62  5   USQL-Programmability
+    62    5    USQL-Programmability
 ```
 
 UDT を定義する手順は、以下のとおりです。
@@ -898,7 +901,7 @@ SqlUserDefinedType は、UDT を定義するうえで必須の属性です。
 ```c#
     [SqlUserDefinedType(typeof(MyTypeFormatter))]
       public class MyType
-           {
+              {
              …
            }
 ```
@@ -1118,6 +1121,8 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
            fiscalquarter,
            fiscalmonth,
            USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).ToString() AS fiscalperiod,
+       
+       // This user-defined type was created in the prior SELECT.  Passing the UDT to this subsequent SELECT would have failed if the UDT was not annotated with an IFormatter.
            fiscalperiod_adjusted.ToString() AS fiscalperiod_adjusted,
            user,
            des
@@ -1286,9 +1291,6 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 }
 ```
-
-### <a name="udts-from-built-in-types"></a>組み込み型を使った UDT
-近日対応予定
 
 ## <a name="user-defined-aggregates--udagg"></a>ユーザー定義集計 (UDAGG)
 ユーザー定義集計とは、U-SQL であらかじめ用意されていない集計関連の関数のことを指します。 たとえば、カスタムの算術計算、文字列の連結、文字列の操作などを実行する集計関数が、ユーザー定義集計に該当します。
@@ -1525,7 +1527,7 @@ SqlUserDefinedExtractor は、UDE の定義のオプション属性です。 こ
     {
     …
         string[] parts = line.Split(my_column_delimiter);
-            foreach (string part in parts)
+               foreach (string part in parts)
         {
         …
         }
@@ -2176,9 +2178,9 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 このユース ケース シナリオでは、ユーザー定義アプライヤーが車のプロパティのコンマ区切り値のパーサーとしての役割を果たしています。 入力ファイルの行は、以下のようになります。
 
 ```
-103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
-210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
+103    Z1AB2CD123XY45889    Ford,Explorer,2005,SUV,152345
+303    Y0AB2CD34XY458890    Shevrolet,Cruise,2010,4Dr,32455
+210    X5AB2CD45XY458893    Nissan,Altima,2011,4Dr,74000
 ```
 
 これは、典型的なタブ区切り (TSV) ファイルです。プロパティ列には製造元、モデルなど、車のプロパティが格納されています。これらのプロパティは解析のうえ、テーブルの列の形に並べられます。 このほか、ここに示したアプライヤーでは、渡されるパラメーターに基づいて結果の行セットに生成するプロパティの数を動的に変えることができるようになっています。つまり、プロパティを全部返すことも、一部のプロパティのみを返すこともできます。
@@ -2610,6 +2612,6 @@ OUTPUT @rs2 TO @output_file USING Outputters.Text();
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

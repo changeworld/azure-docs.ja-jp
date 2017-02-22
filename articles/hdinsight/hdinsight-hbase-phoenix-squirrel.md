@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
-ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
+ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
+ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
 
 
 ---
-# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDinsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
+# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDInsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、 [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.openlocfilehash: bcefe7e0b0f1836dc77709329a07dd8d009abbb2
 >
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「 [HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 >
 
 
@@ -83,10 +83,6 @@ SQLLine を使用するには、以下のものが必要です。
 
 * DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。  方法については、「[Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]」を参照してください。
 
-  > [!IMPORTANT]
-  > 仮想ネットワークに DNS サーバーをインストールする必要があります。 方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-dns.md)」を参照してください。
-  >
-  >
 * HBase クラスターの接続固有の DNS サフィックスを取得します。 そのためには、RDP でクラスターに接続して、IPConfig を実行します。  DNS サフィックスの例を次に示します。
 
         myhbase.b7.internal.cloudapp.net
@@ -295,6 +291,6 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

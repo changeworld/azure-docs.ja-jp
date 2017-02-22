@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: c9cf1540c0f8d16b0a5cdbedc78ac58cd5686107
-ms.openlocfilehash: 51ebadc241892ebc6fb26b29955e3030ae1bdcb3
+ms.sourcegitcommit: 68f1088a7303b5eddecc9ff99f7330c0462baafc
+ms.openlocfilehash: 9fb517a08fb56a1adb9e23f820aa2e4aa20eacf6
 
 
 ---
@@ -49,10 +49,8 @@ Windows Server 2008 R2 SP1 以降 (NPS コンポーネントが有効になっ�
 
 ### <a name="libraries"></a>ライブラリ
 
-NPS 拡張機能には&2; つのライブラリが必要です。 これらはセットアップ中にインストールされます。
-
--   Microsoft Visual Studio 2013 C++ 再頒布可能パッケージ (X64)
--   Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166
+-    [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
+-    [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -64,19 +62,22 @@ NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect
 
 ## <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
+> [!IMPORTANT]
+> VPN アクセス ポイントとは異なるサーバーに NPS 拡張機能をインストールします。 
+
 Azure MFA の NPS 拡張機能をインストールするには:
 
-1.  Microsoft Download Center から [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
-2.  構成するバイナリをネットワーク ポリシー サーバーにコピーします。
-3.  *setup.exe* を実行してインストールの指示に従います。
+1.    Microsoft Download Center から [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
+2.    構成するバイナリをネットワーク ポリシー サーバーにコピーします。
+3.    *setup.exe* を実行してインストールの指示に従います。
 
 インストールが完了したら、次の場所に PowerShell スクリプトが作成されます: `C:\Program Files\Microsoft\AzureMfa\Config` (C:\ はインストール先のドライブ)。 この PowerShell スクリプトは、次のアクションを実行します。
 
--   自己署名証明書を作成します。
--   Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
--   ローカル コンピューターの証明書ストアに証明書を格納する。
--   ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
--   NPS を再起動する。
+-    自己署名証明書を作成します。
+-    Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
+-    ローカル コンピューターの証明書ストアに証明書を格納する。
+-    ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
+-    NPS を再起動する。
 
 (PowerShell スクリプトで生成される自己署名証明書ではなく) 独自の証明書を使用する場合を除き、PowerShell スクリプトを実行してインストールを完了します。
 
@@ -137,7 +138,7 @@ PowerShell コマンド プロンプトを開き、次のコマンドを実行�
 1. NPS サーバーを再起動します。
 2. クライアント証明書が正常にインストールされていることを確認します。
 3. 証明書が Azure AD のテナントに関連付けられていることを確認します。
-4. 拡張機能を実行しているサーバーから https://login.windows.new/ にアクセスできることを確認します。
+4. 拡張機能を実行しているサーバーから https://login.windows.net/ にアクセスできることを確認します。
 
 -------------------------------------------------------------
 
@@ -157,6 +158,6 @@ Azure MFA を [Active Directory](multi-factor-authentication-get-started-server-
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

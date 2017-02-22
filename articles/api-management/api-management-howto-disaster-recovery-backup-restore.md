@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 809fc7a5454c814d1d3edb8ebcdd40978952bc2c
-ms.openlocfilehash: d05404ed6893978a857a3ad66d5129998272ebbd
+ms.sourcegitcommit: 1c812fc31011b57f2cdb357574877d6b7125280f
+ms.openlocfilehash: c5ae5049588d5bc7628442942e71f182a425fead
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
@@ -148,7 +148,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 
 * 要求の本文に指定された**コンテナー**は、**存在する必要があります**。
 * バックアップの進行中には、SKU のアップグレードやダウングレード、ドメイン名の変更、その他の操作などの、 **サービス管理操作は試行しないでください** 。
-* バックアップの復元は、作成されたときから **7 日間だけ保証されます** 。
+* バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
 * 分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][Azure API Management REST API] を使用して、分析レポートを保管用に定期的に取り出します。
 * サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して重要な変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 * バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**バックアップに含まれないので失われる可能性があります**。
@@ -213,6 +213,6 @@ API Management サービスをバックアップするには、次の HTTP 要�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

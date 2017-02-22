@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/3/2017
+ms.date: 02/9/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: fdb15c3af4980e284e1a9effe434b1cab959d24c
-ms.openlocfilehash: 826ae11e4826b37379caa53d85d8ec834a5ed0fb
+ms.sourcegitcommit: 1683b52d4e5e6370a737038128f48b8ea8263038
+ms.openlocfilehash: 27df2afd97107dd13a7aa2dd79343ec9425c0aed
 
 
 ---
@@ -37,13 +37,13 @@ Service Fabric を使用すると、インフラストラクチャの障害時�
 
 ### <a name="azure-monitoring"></a>Azure 監視
 
-Azure にデプロイされたクラスターの場合、[Azure 監視](../monitoring-and-diagnostics/toc.md)によって、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。 [仮想マシン スケール セット (VMSS)](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets) と個々の [VM](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines) について、一連のメトリックが自動的に収集され、Azure Portal に表示されます。 Azure Portal でこの情報を表示するには、Service Fabric クラスターが含まれているリソース グループを選択し、表示する VMSS を選択します。 次に、監視のナビゲーション セクションでメトリックを選択すると、値のグラフが表示されます。
+Azure にデプロイされたクラスターの場合、[Azure 監視](../monitoring-and-diagnostics/monitoring-overview.md)によって、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。 [仮想マシン スケール セット (VMSS)](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets) と個々の [VM](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines) について、一連のメトリックが自動的に収集され、Azure Portal に表示されます。 Azure Portal でこの情報を表示するには、Service Fabric クラスターが含まれているリソース グループを選択し、表示する VMSS を選択します。 次に、監視のナビゲーション セクションでメトリックを選択すると、値のグラフが表示されます。
 
 ![収集されたメトリック情報の Azure Portal での表示](./media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 
-グラフは、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)」に記載された手順に従ってカスタマイズできます。 また、「[Azure Portal での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「Azure メトリック アラートでの webhook の構成(../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure 監視では、サブスクリプションを&1; つだけサポートします。 複数のサブスクリプションのサポートが必要な場合や、追加機能が必要な場合は、[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) が、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションを提供します。 Azure 監視のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを&1; か所で確認できます。
+グラフは、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)」に記載された手順に従ってカスタマイズできます。 また、「[Azure Portal での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「Azure メトリック アラートでの webhook の構成(../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure 監視では、サブスクリプションを&1; つだけサポートします。 複数のサブスクリプションのサポートが必要な場合や、追加機能が必要な場合は、Operations Management Suite に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) が、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションを提供します。 Azure 監視のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを&1; か所で確認できます。
 
-[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) は、オンプレミスのインフラストラクチャを監視する方法として推奨されますが、会社でインフラストラクチャの監視に使用している既存のソリューションを使用することもできます。
+Operations Management Suite は、オンプレミスのインフラストラクチャを監視する方法として推奨されますが、会社でインフラストラクチャの監視に使用している既存のソリューションを使用することもできます。
 
 ### <a name="service-fabric-support-logs"></a>Service Fabric のサポート ログ
 
@@ -51,7 +51,7 @@ Azure Service Fabric クラスターに関する支援を得るために Microso
 
 ## <a name="instrument-your-code"></a>コードをインストルメント化する
 
-コードのインストルメント化は、サービスの監視の他のほとんどの側面の基礎となります。 必要とされるインストルメンテーションの量に驚くことも少なくありませんが、このインストルメンテーションが、問題点を把握し、修正する必要があるものを診断するための唯一の方法であることを考えると、驚くべきことではありません。 運用環境のサービスへのデバッガーの接続は技術的には可能ですが、通常は行わないため、詳細なインストルメンテーション データを入手することが重要です。 この大量の情報を生成するときに、すべてのイベントをローカル ノードから配布すると、コストがかかる可能性があります。 多くのサービスでは、大量のインストルメンテーション データを処理するために、次のような二部戦略を使用しています。
+コードのインストルメント化は、サービスの監視の他のほとんどの側面の基礎となります。 必要とされるインストルメンテーションの量に驚くことも少なくありませんが、このインストルメンテーションが、問題点を把握し、修正する必要があるものを診断するための唯一の方法であるということを考慮してください。 運用環境のサービスへのデバッガーの接続は技術的には可能ですが、通常は行わないため、詳細なインストルメンテーション データを入手することが重要です。 この大量の情報を生成するときに、すべてのイベントをローカル ノードから配布すると、コストがかかる可能性があります。 多くのサービスでは、大量のインストルメンテーション データを処理するために、次のような二部戦略を使用しています。
 * すべてのイベントは、数日の短期間、ローカルのローリング ログ ファイルに保持され、デバッグに必要な場合にのみ収集されます。 一般に、コストとリソース使用率を削減するために、詳細な診断に必要なイベントはノード上に残されます。
 * エラー イベント、ハート ビート イベント、パフォーマンス イベントなど、サービスの正常性を示すイベントは、中央リポジトリに送信されます。中央リポジトリでこれらのイベントを使用して、問題のあるサービスのアラートを生成できます。
 
@@ -63,7 +63,7 @@ Visual Studio でテンプレートから Azure Service Fabric ソリューシ�
 
 #### <a name="using-structured-eventsource-events"></a>構造化された EventSource イベントの使用
 
-下記のイベントは、サービスの種類の登録など、それぞれ特定のケース用に定義されています。 このようにしてメッセージが定義されていると、データをエラー テキストと共にパッケージ化できます。 これにより、指定したプロパティの名前や値に基づく適切な検索とフィルター処理が可能になります。 インストルメンテーション出力を構造化すると使いやすくなりますが、ユース ケースごとに新しいイベントを定義するためによく考える必要があり、時間がかかります。 アプリケーション全体で共有できるイベント定義もあります。たとえば、メソッド開始/停止イベントは、アプリケーション内の多くのサービスで再利用されます。 注文システムなど、ドメイン固有のサービスでは CreateOrder イベントを使用することがありますが、このイベントには独自のイベントが含まれます。 多くの場合、この方法では多数のイベントが生成されるので、プロジェクト チーム間で識別子の調整が必要になる可能性があります。 Service Fabric の構造化された EventSource の完全な例については、パーティ クラスター サンプル内の PartyCluster.ApplicationDeployService を参照してください。
+下記のイベントは、サービスの種類の登録など、それぞれ特定のケース用に定義されています。 このようにしてメッセージが定義されていると、データをエラー テキストと共にパッケージ化できます。 これにより、指定したプロパティの名前や値に基づく適切な検索とフィルター処理が可能になります。 インストルメンテーション出力を構造化すると使いやすくなりますが、ユース ケースごとに新しいイベントを定義するためによく考える必要があり、時間がかかります。 アプリケーション全体で共有できるイベント定義もあります。たとえば、メソッド開始/停止イベントは、アプリケーション内の多くのサービスで再利用されます。 注文システムなど、ドメイン固有のサービスでは CreateOrder イベントを使用することがありますが、このイベントには独自のイベントが含まれます。 多くの場合、この方法では多数のイベントが生成されるので、プロジェクト チーム間で識別子の調整が必要になる可能性があります。 Service Fabric の構造化された EventSource の完全な例については、パーティ クラスター サンプル内の [PartyCluster.ApplicationDeployService.ServiceEventSource](https://github.com/Azure-Samples/service-fabric-dotnet-management-party-cluster/blob/master/src/PartyCluster.ApplicationDeployService/ServiceEventSource.cs) を参照してください。
 
 ```csharp
     [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -124,29 +124,38 @@ Visual Studio でテンプレートから Azure Service Fabric ソリューシ�
 
 ### <a name="aspnet-core-logging"></a>ASP.NET Core のログ記録
 
-コードをインストルメント化する方法の選択は難しい場合があります。選択を誤り、再度インストルメント化する必要がある場合、コード ベースを再検討することになり、コード ベースの安定性が失われる可能性があります。 このリスクを軽減するために、開発者は ASP.NET Core で提供される [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) などのインストルメンテーション ライブラリを選択できます。 このライブラリには、既存のコードへの影響を最小限に抑えながら、自分が選んだプロバイダーを使用できる [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) インターフェイスが用意されています。 このライブラリのもう&1; つの優れた点は、Windows および Linux 上の .NET Core だけでなく、完全なフレームワーク内でもコードを使用できるので、.NET と .NET Core 間でインストルメンテーション コードを標準化できることです。
+コードをインストルメント化する方法の選択は難しい場合があります。選択を誤り、再度インストルメント化する必要がある場合、コード ベースを再検討することになり、コード ベースの安定性が失われる可能性があります。 このリスクを軽減するために、開発者は ASP.NET Core で提供される [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) などのインストルメンテーション ライブラリを選択できます。 このライブラリには、既存のコードへの影響を最小限に抑えながら、自分が選んだプロバイダーを使用できる [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) インターフェイスが用意されています。 このライブラリのもう&1; つの優れた点は、Windows および Linux 上の .NET Core だけでなく、完全な .NET フレームワーク内でもコードを使用できるので、.NET と .NET Core 間でインストルメンテーション コードを標準化できることです。
 
 #### <a name="how-to-use-microsoftextensionslogging-within-service-fabric"></a>Service Fabric 内で Microsoft.Extensions.Logging を使用する方法
 
 1. インストルメント化するプロジェクトに、**Microsoft.Extensions.Logging** NuGet パッケージを追加します。 任意のプロバイダー パッケージを追加することもできます。ここでは、サード パーティ製パッケージを後ほど追加します。 詳細については、「[Logging in ASP.NET Core (ASP.NET Core のログ記録)](https://docs.microsoft.com/aspnet/core/fundamentals/logging)」をご覧ください。
-2. "Microsoft.Extensions.Logging" の using ディレクティブをサービス ファイルに追加します。
+
+2. "Microsoft.Extensions.Logging" の **using** ディレクティブをサービス ファイルに追加します。
+
 3. サービス クラス内でプライベート変数を定義します。
-```csharp
+
+    ```csharp
         private ILogger _logger = null;
-```
+    ```
+
 4. サービス クラスのコンストラクターに、次のコードを追加します。
-```csharp
+    
+    ```csharp
         _logger = new LoggerFactory().CreateLogger<Stateless>();
-```
+    ```
+
 5. 独自の方法でコードのインストルメント化を開始します。 いくつかのサンプルを次に示します。
-```csharp
+    
+    ```csharp
+
         _logger.LogDebug("Debug level event from Microsoft.Logging");
         _logger.LogInformation("Informational level event from Microsoft.Logging");
 
         // In this variant, we're adding structured properties RequestName and Duration that has values MyRequest and the duration of the request.
         // More on why you'll want to do this later.
         _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
-```
+
+    ```
 
 #### <a name="using-other-logging-providers"></a>他のログ記録プロバイダーの使用
 
@@ -154,15 +163,24 @@ Visual Studio でテンプレートから Azure Service Fabric ソリューシ�
 
 1. **Serilog**、**Serilog.Extensions.Logging**、**Serilog.Sinks.Observable** の各 NuGet パッケージをプロジェクトに追加します。 この例では、**SeriLog.Sinks.Literate** も追加します。さらにすぐれた方法を後ほど紹介します。
 2. SeriLog で LoggerConfiguration とロガー インスタンスを作成します。
-```csharp
-    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
-```
+
+    ```csharp
+
+        Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
+
+    ```
+
 3. SeriLog.ILogger 引数をサービス コンストラクターに追加し、新しく作成されたロガーを渡します。
-```csharp
-    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
-```
+    
+    ```csharp
+
+        ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
+
+    ```
+
 4. サービス コンストラクターに次のコードを追加します。このコードでは、サービスの ServiceTypeName、ServiceName、PartitionId、InstanceId の各プロパティのプロパティ エンリッチャーを作成します。 また、コードで Microsoft.Extensions.Logging.ILogger を使用できるように、ASP.NET Core のログ ファクトリに追加します。
-```csharp
+    
+    ```csharp
         public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
             : base(context)
         {
@@ -178,7 +196,8 @@ Visual Studio でテンプレートから Azure Service Fabric ソリューシ�
 
             _logger = new LoggerFactory().AddSerilog(serilog.ForContext(properties)).CreateLogger<Stateless>();
         }
-```
+    ```
+
 5. SeriLog を使用せずに ASP.NET Core を使用する場合と同様にコードをインストルメント化します。
 
 > [!NOTE] 
@@ -209,7 +228,7 @@ Azure 診断は、Azure にデプロイされている Service Fabric クラス�
 
 ### <a name="eventflow"></a>EventFlow
 
-[Visual Studio チームによってリリースされた EventFlow](service-fabric-diagnostic-collect-logs-without-an-agent.md) は、ノードから&1; つ以上の監視対象にイベントをルーティングするためのメカニズムを提供します。 EventFlow は NuGet パッケージとしてサービス プロジェクトに含まれるため、EventFlow のコードと構成はサービスと共に移動します。これにより、Azure 診断で説明したノードごとの構成の問題が排除されます。 EventFlow はサービス プロセス内で実行され、構成済みの出力に直接接続されます。 この直接接続により、EventFlow はサービスの Azure、コンテナー、オンプレミスの各デプロイメントで機能します。 各 EventFlow パイプラインは外部接続を行うため、コンテナーなどの高密度シナリオで実行するときには注意が必要です。多数のプロセスをホストしている場合、最終的に多数の送信接続が発生することになります。 Service Fabric アプリケーションでは、ServiceType のすべてのレプリカが同じプロセス内で実行され、送信接続の数が限られるため、これはそれほど問題にはなりません。 また、EventFlow ではイベントのフィルター処理も行われるので、指定したフィルターと一致するイベントだけが送信されます。 Service Fabric で EventFlow を使用する方法の詳細については、「[Azure Service Fabric サービス プロセスからログを直接収集する](service-fabric-diagnostic-collect-logs-without-an-agent.md)」をご覧ください。
+[Visual Studio チームによってリリースされた EventFlow](https://github.com/Azure/diagnostics-eventflows) は、ノードから&1; つ以上の監視対象にイベントをルーティングするためのメカニズムを提供します。 EventFlow は NuGet パッケージとしてサービス プロジェクトに含まれるため、EventFlow のコードと構成はサービスと共に移動します。これにより、Azure 診断で説明したノードごとの構成の問題が排除されます。 EventFlow はサービス プロセス内で実行され、構成済みの出力に直接接続されます。 この直接接続により、EventFlow はサービスの Azure、コンテナー、オンプレミスの各デプロイメントで機能します。 各 EventFlow パイプラインは外部接続を行うため、多数のレプリカを同じノードで実行するときには注意が必要です。 多数のプロセスをホストしている場合、最終的に多数の送信接続が発生することになります。 Service Fabric アプリケーションでは、ServiceType のすべてのレプリカが同じプロセス内で実行され、送信接続の数が限られるため、これはそれほど問題にはなりません。 また、EventFlow ではイベントのフィルター処理も行われるので、指定したフィルターと一致するイベントだけが送信されます。 Service Fabric で EventFlow を使用する方法の詳細については、「[Azure Service Fabric サービス プロセスからログを直接収集する](service-fabric-diagnostic-collect-logs-without-an-agent.md)」をご覧ください。
 
 > [!NOTE]
 > Service Fabric の今後のリリースでは、EventSource ホスト アプリケーションを使用できるようになり、ETW ベースの入力のリッスン、ノード レベルのメトリックの収集、ローリング ログ ファイルのサポートが可能になります。
@@ -217,9 +236,8 @@ Azure 診断は、Azure にデプロイされている Service Fabric クラス�
 EventFlow は非常に簡単に使用できます。
 1. NuGet パッケージをサービス プロジェクトに追加します。
 2. サービスの **Main** 関数内で EventFlow パイプラインを作成し、出力を構成します。 この例では、出力として SeriLog を使用する方法を示しています。
-```csharp
-    internal static class Program
-    {
+    ```csharp
+
         /// <summary>
         /// This is the entry point of the service host process.
         /// </summary>
@@ -229,8 +247,7 @@ EventFlow は非常に簡単に使用できます。
             {
                 using (var pipeline = ServiceFabricDiagnosticPipelineFactory.CreatePipeline("MonitoringE2E-Stateless-Pipeline"))
                 {
-                    IObserver<LogEvent> serilogInput = pipeline.Inputs.OfType<SerilogInput>().First();
-                    Log.Logger = new LoggerConfiguration().WriteTo.Observers(events => events.Subscribe(serilogInput)).CreateLogger();
+                    Log.Logger = new LoggerConfiguration().WriteTo.EventFlow(pipeline).CreateLogger();
 
                     // The ServiceManifest.XML file defines one or more service type names.
                     // Registering a service maps a service type name to a .NET type.
@@ -250,73 +267,73 @@ EventFlow は非常に簡単に使用できます。
                 throw;
             }
         }
-    }
-```
+
+    ```
 3. サービスの PackageRoot | Config フォルダーに、*eventFlowConfig.json* という名前のファイルを作成します。 このファイル内の構成は次のようになります。
-```json
-    {
-    "inputs": [
+    ```json
         {
-        "type": "EventSource",
-        "sources": [
-            { "providerName": "Microsoft-ServiceFabric-Services" },
-            { "providerName": "Microsoft-ServiceFabric-Actors" },
-            { "providerName": "MyCompany-MonitoringE2E-Stateless" }
-        ]
-        },
-        {
-        "type": "Serilog"
+        "inputs": [
+            {
+            "type": "EventSource",
+            "sources": [
+                { "providerName": "Microsoft-ServiceFabric-Services" },
+                { "providerName": "Microsoft-ServiceFabric-Actors" },
+                { "providerName": "MyCompany-MonitoringE2E-Stateless" }
+            ]
+            },
+            {
+            "type": "Serilog"
+            }
+        ],
+        "filters": [
+            {
+            "type": "drop",
+            "include": "Level == Verbose"
+            },
+            {
+            "type": "metadata",
+            "metadata": "request",
+            "requestNameProperty": "RequestName",
+            "include":  "RequestName==MyRequest",
+            "durationProperty": "Duration",
+            "durationUnit": "milliseconds"
+            }
+        ],
+        "outputs": [
+            {
+            "type": "StdOutput"
+            },
+            {
+            "type": "ApplicationInsights",
+            "instrumentationKey": "== instrumentation key here =="
+            }
+        ],
+        "schemaVersion": "2016-08-11",
+        "extensions": []
         }
-    ],
-    "filters": [
-        {
-        "type": "drop",
-        "include": "Level == Verbose"
-        },
-        {
-        "type": "metadata",
-        "metadata": "request",
-        "requestNameProperty": "RequestName",
-        "include":  "RequestName==MyRequest",
-        "durationProperty": "Duration",
-        "durationUnit": "milliseconds"
-        }
-    ],
-    "outputs": [
-        {
-        "type": "StdOutput"
-        },
-        {
-        "type": "ApplicationInsights",
-        "instrumentationKey": "== instrumentation key here =="
-        }
-    ],
-    "schemaVersion": "2016-08-11",
-    "extensions": []
-    }
-```
+    ```
 この構成では、2 つの入力が定義されており、Service Fabric によって作成された&2; つの EventSource ベースのソースとサービスの EventSource があります。 ETW を使用するシステム レベルのイベントと正常性イベントは EventFlow で使用できないことに注意してください。 これは、ETW ソースをリッスンするには高レベルの権限が必要ですが、高い特権でサービスを実行してはいけないためです。 もう&1; つの入力である SeriLog は、**Main** メソッド内で構成されます。  フィルターもいくつか適用されます。最初のフィルターは、イベント レベルが verbose (詳細) であるすべてのイベントを破棄するよう EventFlow に伝えます。 他のフィルター定義については後ほど説明します。 2 つの出力も構成されています。標準出力は、Visual Studio 内の出力ウィンドウに書き込みます。 もう&1; つの出力は ApplicationInsights です。インストルメンテーション キーを必ず追加してください。
 
 4. 最後の手順として、コードをインストルメント化します。 この例では、いくつかの方法で RunAsync をインストルメント化します。 次のコードでは、引き続き SeriLog を使用しており、使用されている構文の一部は SeriLog に固有のものです。 選択したログ記録ソリューションの特定の機能に注意してください。 ここでは&3; つのイベントが生成されます。1 つはデバッグ レベルのイベント、2 つは情報レベルのイベントです。2 つ目の情報レベルのイベントは要求の期間を追跡します。 上記の EventFlow の構成により、デバッグ レベルのイベントは出力に送信されません。
 
-```csharp
-    Stopwatch sw = Stopwatch.StartNew();
+    ```csharp
+        Stopwatch sw = Stopwatch.StartNew();
 
-    while (true)
-    {
-        cancellationToken.ThrowIfCancellationRequested();
+        while (true)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
 
-        sw.Restart();
+            sw.Restart();
 
-        // Delay a random interval to provide a more interesting request duration.
-        await Task.Delay(TimeSpan.FromMilliseconds(DateTime.Now.Millisecond), cancellationToken);
+            // Delay a random interval to provide a more interesting request duration.
+            await Task.Delay(TimeSpan.FromMilliseconds(DateTime.Now.Millisecond), cancellationToken);
 
-        ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
-        _logger.LogDebug("Debug level event from Microsoft.Logging");
-        _logger.LogInformation("Informational level event from Microsoft.Logging");
-        _logger.LogInformation("{RequestName} {Duration}", "MyRequest", sw.ElapsedMilliseconds);
-    }
-```
+            ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
+            _logger.LogDebug("Debug level event from Microsoft.Logging");
+            _logger.LogInformation("Informational level event from Microsoft.Logging");
+            _logger.LogInformation("{RequestName} {Duration}", "MyRequest", sw.ElapsedMilliseconds);
+        }
+    ```
 
 Application Insights でイベントを表示するには、Azure Portal を開き、ApplicationInsights リソースに移動します。 左上の [検索] をクリックすると、イベントが表示されます。
 
@@ -346,19 +363,17 @@ Service Fabric には、次の記事で詳述する独自の正常性モデル�
 メトリックと正常性レポートの候補となるのは、アプリケーションの正常性とパフォーマンスを示すことができるものです。 CPU パフォーマンス カウンターではノードの使用状況がわかりますが、1 つのノードで複数のサービスが実行されている場合があるため、特定のサービスが正常かどうかを実際に示すわけではありません。 一方、RPS、処理された項目数、要求の待機時間などのメトリックは、いずれも特定のサービスの正常性を示すことができます。
 
 正常性を報告するには、次のようなコードを追加します。
-
 ```csharp
- if (!result.HasValue)
- {
-     HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-     this.Partition.ReportInstanceHealth(healthInformation);
- }
+        if (!result.HasValue)
+        {
+            HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
+            this.Partition.ReportInstanceHealth(healthInformation);
+        }
 ```
 
 メトリックを報告するには、サービスに次のようなコードを追加します。
-
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+        this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
 ```
 
 ## <a name="watchdogs"></a>ウォッチドッグ
@@ -378,6 +393,6 @@ this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryIn
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

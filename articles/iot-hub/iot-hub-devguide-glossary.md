@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 85fd7b0e867ebe5fff937ff9fc83b688649fcfba
-ms.openlocfilehash: 70feb409d05b26a4d874bad2d1984fda5db32216
+ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
+ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
 
 
 ---
@@ -131,7 +131,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 ## <a name="device-twin-queries"></a>デバイス ツイン クエリ
 [デバイス ツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
 
-## <a name="device-twins-rest-api"></a>デバイス ツイン REST API
+## <a name="device-twin-rest-api"></a>デバイス ツイン REST API
 ソリューションのバック エンドから[デバイス ツイン REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) を使用して、デバイス ツインを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、および[ダイレクト メソッド](#direct-method)の呼び出しを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
 ## <a name="device-twin-synchronization"></a>デバイス ツインの同期
@@ -185,8 +185,8 @@ Azure IoT Suite では、複数の Azure サービスと構成済みソリュー
 ## <a name="job"></a>ジョブ
 ソリューションのバックエンドは、[ジョブ](iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
 
-## <a name="job-api"></a>ジョブ API
-[ジョブ API](https://docs.microsoft.com/rest/api/iothub/jobapi) は REST API で、これにより IoT Hub で実行されている[ジョブ](#job)を管理できます。
+## <a name="jobs-rest-api"></a>ジョブ REST API
+[ジョブ REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) を使用して、IoT Hub で実行されている[ジョブ](#job)を管理できます。
 
 ## <a name="module"></a>モジュール
 [Azure IoT Gateway SDK](iot-hub-linux-gateway-sdk-get-started.md) において、[モジュール](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Gateway SDK には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。

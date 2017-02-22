@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 532cfeb5115feb7558018af73968576dac17ff88
-ms.openlocfilehash: 28ca2d86f5008ee26376d76f3411cac05ffdfde4
+ms.sourcegitcommit: abf65ccbf8806d6581135f41224ef46840715f85
+ms.openlocfilehash: 51e7188530574703a178c5927092d9bc9d15a45f
 
 
 ---
 # <a name="performance-tips-for-documentdb"></a>DocumentDB のパフォーマンスに関するヒント
-Azure DocumentDB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 DocumentDB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](documentdb-performance-levels.md#changing-performance-levels-using-the-net-sdk)を&1; 回行うだけで簡単に実行できます。 ただし、DocumentDB にはネットワーク呼び出しによってアクセスするため、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
+Azure DocumentDB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 DocumentDB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](documentdb-set-throughput.md#set-throughput-sdk)を&1; 回行うだけで簡単に実行できます。 ただし、DocumentDB にはネットワーク呼び出しによってアクセスするため、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。
 
@@ -36,7 +36,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
    1. ゲートウェイ モード (既定値)
    2. 直接モード
 
-      ゲートウェイ モードは構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。  ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、DocumentDB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。   そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
+      ゲートウェイ モードは構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。  ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントを使用するため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、DocumentDB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 そのため、ネットワーク ホップ数が少ない直接モードの方がパフォーマンスが向上します。
 <a id="use-tcp"></a>
 2. **接続ポリシー: TCP プロトコルを使用する**
 
@@ -51,19 +51,21 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
      接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
 
-         var serviceEndpoint = new Uri("https://contoso.documents.net");
-         var authKey = new "your authKey from Azure Mngt Portal";
-         DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-         new ConnectionPolicy
-         {
+    ```C#
+    var serviceEndpoint = new Uri("https://contoso.documents.net");
+    var authKey = new "your authKey from the Azure portal";
+    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+    new ConnectionPolicy
+    {
+        ConnectionMode = ConnectionMode.Direct,
+        ConnectionProtocol = Protocol.Tcp
+    });
+    ```
 
-             ConnectionMode = ConnectionMode.Direct,
-             ConnectionProtocol = Protocol.Tcp
-         });
+    TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、ConnectionPolicy の Protocol 値は無視されます。
 
-     TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、ConnectionPolicy の Protocol 値は無視されます。
+    ![DocumentDB 接続ポリシーの図](./media/documentdb-performance-tips/azure-documentdb-connection-policy.png)
 
-     ![DocumentDB 接続ポリシーの図](./media/documentdb-performance-tips/azure-documentdb-connection-policy.png)
 3. **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 
     既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 最初の要求でこの開始時の待機時間を回避するには、次のように初期化中に OpenAsync() を&1; 回呼び出します。
@@ -87,6 +89,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 2. **アプリケーションの有効期間中はシングルトン DocumentDB クライアントを使用する**
 
     各 DocumentClient インスタンスはスレッド セーフであり、直接モードで動作しているときには効率的な接続管理とアドレスのキャッシュが実行されます。 DocumentClient による効率的な接続管理とパフォーマンスの向上を実現するために、アプリケーションの有効期間中は、AppDomain ごとに DocumentClient の単一のインスタンスを使用することをお勧めします。
+
    <a id="max-connection"></a>
 3. **ホストあたりの System.Net MaxConnections を増やす**
 
@@ -119,7 +122,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
    <a id="tune-page-size"></a>
 9. **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
-    読み取りフィード機能 (ReadDocumentFeedAsync) を使用してドキュメントの一括読み取りを実行したときや、DocumentDB SQL クエリを発行したときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
+    読み取りフィード機能 (ReadDocumentFeedAsync など) を使用してドキュメントの一括読み取りを実行したときや、DocumentDB SQL クエリを発行したときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 
     該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、x-ms-max-item-count 要求ヘッダーを使用して、ページ サイズを最大 1,000 まで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
@@ -132,7 +135,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
     
 11. **64 ビット ホスト プロセスを使用する**
 
-    DocumentDB SDK は、32 ビット ホスト プロセスで動作します。ただし、クロス パーティション クエリを使用している場合は、パフォーマンス向上のために 64 ビット ホスト プロセスを使用することをお勧めします。 次の種類のアプリケーションでは 32 ビット ホスト プロセスが既定で使用されるため、64 ビットに変更するには、アプリケーションの種類に基づいて次の手順に従ってください。
+    DocumentDB SDK は、32 ビット ホスト プロセスで動作します。 ただし、クロス パーティション クエリを使用する場合は、パフォーマンス向上のために 64 ビット ホスト プロセスを使用することをお勧めします。 次の種類のアプリケーションでは 32 ビット ホスト プロセスが既定で使用されるため、64 ビットに変更するには、アプリケーションの種類に基づいて次の手順に従ってください。
     
     - 実行可能なアプリケーションの場合、これは **[ビルド]** タブの **[プロジェクトのプロパティ]** ウィンドウで **[32 ビットを優先]** オプションをオフにすることで実行できます。 
     
@@ -154,10 +157,12 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
     DocumentDB のインデックス作成ポリシーでは、パスのインデックス作成 (IndexingPolicy.IncludedPaths および IndexingPolicy.ExcludedPaths) を使用して、インデックス作成に含める/除外するドキュメント パスを指定できます。 インデックス作成コストはインデックス付きの一意のパスの数に直接関係するため、パスのインデックス作成を使用すると、クエリ パターンが事前にわかっているシナリオで書き込みパフォーマンスが向上し、インデックス ストレージを削減できます。  たとえば、次のコードは、ワイルドカード "*" を使用してドキュメントのセクション全体 (別名 サブツリーとも呼ばれます) をインデックス作成から除外する方法を示しています。
 
-        var collection = new DocumentCollection { Id = "excludedPathCollection" };
-        collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-        collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-        collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    ```C#
+    var collection = new DocumentCollection { Id = "excludedPathCollection" };
+    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
+    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    ```
 
     詳細については、「 [DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」を参照してください。
 
@@ -166,7 +171,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
 1. **測定と調整によって&1; 秒あたりの要求ユニットの使用量を削減する**
 
-    DocumentDB には、UDF、ストアド プロシージャ、トリガーを使用したリレーショナル クエリや階層クエリなど、さまざまなデータベース操作が用意されています。これらの操作はすべて、データベース コレクション内のドキュメントに対して実行できます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに基づいて異なります。 ハードウェア リソースの管理について考える代わりに、各種のデータベース操作を実行しアプリケーション要求を処理するのに必要なリソースに関する単一の測定単位として要求単位 (RU) を考えることができます。
+    DocumentDB には、UDF、ストアド プロシージャ、トリガーを使用したリレーショナル クエリや階層クエリなど、さまざまなデータベース操作が用意されています。これらの操作はすべて、データベース コレクション内のドキュメントに対して実行できます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに応じて異なります。 ハードウェア リソースの管理について考える代わりに、各種のデータベース操作を実行しアプリケーション要求を処理するのに必要なリソースに関する単一の測定単位として要求単位 (RU) を考えることができます。
 
     [要求ユニット](documentdb-request-units.md) は、購入した容量ユニット数に基づいて、データベース アカウントごとにプロビジョニングされます。 要求単位の消費は、1 秒あたりのレートとして評価されます。 アカウントのプロビジョニング済み要求ユニット レートを超過したアプリケーションは、レートがそのアカウントに予約されているレベルを下回るまで制限されます。 アプリケーションでより高いスループットが必要になった場合は、追加の容量単位を購入できます。
 
@@ -174,16 +179,18 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
     操作 (作成、更新、または削除) のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (あるいは、.NET SDK の ResourceResponse<T> または FeedResponse<T> の同等の RequestCharge プロパティ) を調べて、これらの操作で使用される要求ユニット数を測定します。
 
-        // Measure the performance (request units) of writes
-        ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
-        Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
-        // Measure the performance (request units) of queries
-        IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
-        while (queryable.HasMoreResults)
-             {
-                  FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
-                  Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
-             }
+    ```C#
+    // Measure the performance (request units) of writes
+    ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
+    Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
+    // Measure the performance (request units) of queries
+    IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
+    while (queryable.HasMoreResults)
+         {
+              FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
+              Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
+         }
+    ```             
 
     このヘッダーで返される要求の使用量は、プロビジョニングしたスループット (2000 RU/秒) の一部です。 たとえば、上記のクエリが 1 KB のドキュメントを 1000 個返した場合、この操作のコストは 1000 になります。 そのため、後続の要求を調整する前に、サーバーは&1; 秒以内にこのような要求を&2; つだけ受け付けます。 詳細については、[要求ユニット](documentdb-request-units.md)に関する記事および[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)のページを参照してください。
 <a id="429"></a>
@@ -211,6 +218,6 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63485f0c9e151db22f23d291e2a4425dd01fb7ee
-ms.openlocfilehash: b22ac95ee11fe059d36a9416434a14814da1ee7d
+ms.sourcegitcommit: 34e9b401444aeec233d846a6b52f4a452c54cdaf
+ms.openlocfilehash: 106571bf36454ab20e75cb4ee42b2aca787a9d5a
 
 
 ---
@@ -53,12 +53,9 @@ az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
 ```
 
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
@@ -154,17 +151,23 @@ az network nic create \
 
 [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 完全な VM をデプロイするために Azure CLI 2.0 (プレビュー) で使用するフラグの詳細については、「[Azure CLI を使用して、完全な Linux 環境を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
+次の例では、Azure Managed Disks を使用して VM を作成します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Managed Disks の詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md)」をご覧ください。 非管理対象ディスクを使用する場合は、次の追加のメモを参照してください。
+
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
+```
+
+Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用する場合は、続行するコマンドに次の追加パラメーターを加えて、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成する必要があります。 
+
+```azurecli
+    --use-unmanaged-disk \
+    --storage-account mystorageaccount
 ```
 
 CLI フラグを使用して既存のリソースを呼び出すことで、既存のネットワーク内に VM をデプロイするよう Azure に指示します。 繰り返しますが、仮想ネットワークとサブネットをデプロイしたら、Azure リージョン内でこれらを静的または永続的なリソースにしておくことができます。 この例では、パブリック IP アドレスを作成して VNic に割り当てていません。したがって、この VM にインターネット経由でパブリックにアクセスすることはできません。 詳細については、「[Azure CLI を使用して静的パブリック IP を持つ VM を作成する](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
@@ -178,6 +181,6 @@ Azure で仮想マシンを作成する方法の詳細については、次の�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

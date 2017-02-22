@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/09/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 9919f9430626b02635272599e7d1f3f09e0068cd
-ms.openlocfilehash: ae83dc01113e72576a35aa57acbac3b71d87e9f8
+ms.sourcegitcommit: c65c4021f5d0beda8005abdd375ac51729acf0a8
+ms.openlocfilehash: 8ff246ab7d70bd00ce989d3049e016d692722d18
 
 
 ---
@@ -24,6 +24,31 @@ ms.openlocfilehash: ae83dc01113e72576a35aa57acbac3b71d87e9f8
 # <a name="set-throughput-for-azure-documentdb-collections"></a>Azure DocumentDB コレクションのスループットの設定
 
 Azure Portal またはクライアントの SDK を使用して、DocumentDB コレクションのスループットを設定できます。 
+
+次の表に、コレクションで使用できるスループットを示します。
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td valign="top"><p></p></td>
+            <td valign="top"><p><strong>単一パーティション コレクション</strong></p></td>
+            <td valign="top"><p><strong>パーティション分割コレクション</strong></p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>最小スループット</p></td>
+            <td valign="top"><p>400 要求ユニット/秒</p></td>
+            <td valign="top"><p>2,500 要求ユニット/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>最大スループット</p></td>
+            <td valign="top"><p>10,000 要求ユニット/秒</p></td>
+            <td valign="top"><p>無制限</p></td>
+        </tr>
+    </tbody>
+</table>
+
+> [!NOTE] 
+> 分割コレクションのスループット値を 2,500 RU/秒～ 10,000 RU/秒に設定するには、一時的に Azure Portal を使用する必要があります。 SDK では、まだこの機能を使用できません。
 
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Azure Portal を使用してスループットを設定するには
 
@@ -35,20 +60,22 @@ Azure Portal またはクライアントの SDK を使用して、DocumentDB コ
 
     ![Azure Portal で、アカウントに移動して [スケール] をクリックすることによって、コレクションのスループットを変更する方法を示すスクリーン ショット](./media/documentdb-set-throughput/azure-documentdb-change-throughput-value.png)
 
+<a id="set-throughput-sdk"></a>
+
 ## <a name="to-set-the-throughput-by-using-the-net-sdk"></a>.NET SDK を使用してスループットを設定するには
 
 ```C#
-    //Fetch the resource to be updated
-    Offer offer = client.CreateOfferQuery()
-        .Where(r => r.ResourceLink == collection.SelfLink)    
-        .AsEnumerable()
-        .SingleOrDefault();
+//Fetch the resource to be updated
+Offer offer = client.CreateOfferQuery()
+    .Where(r => r.ResourceLink == collection.SelfLink)    
+    .AsEnumerable()
+    .SingleOrDefault();
 
-    // Set the throughput to the new value, for example 12,000 request units per second
-    offer = new OfferV2(offer, 12000);
+// Set the throughput to the new value, for example 12,000 request units per second
+offer = new OfferV2(offer, 12000);
 
-    //Now persist these changes to the database by replacing the original resource
-    await client.ReplaceOfferAsync(offer);
+//Now persist these changes to the database by replacing the original resource
+await client.ReplaceOfferAsync(offer);
 ```
 
 ## <a name="next-steps"></a>次のステップ

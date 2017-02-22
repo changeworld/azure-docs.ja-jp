@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: b01d0ddef2271c440cbff1684c85d23dcda9a1de
-ms.openlocfilehash: 75d657412a61de38ab53708a8108d40309de742d
+ms.sourcegitcommit: 67650676117fef834ea819da2fc45ca66ed15493
+ms.openlocfilehash: 1b713e015f48b044c6c9d8ff6a0d8669d4532a9f
 
 
 ---
@@ -54,7 +54,7 @@ Azure AD アプリケーション プロキシには、次のセキュリティ�
 * Azure AD Identity Protection と、機械学習を活用したインテリジェンスとデータは、Microsoft の Digital Crimes Unit および Microsoft セキュリティ レスポンス センターから情報を取得しています。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように、リアルタイムで保護します。 感染したデバイスからのアクセス、匿名ネットワークを経由したアクセス、一般的でない場所や異常な場所からのアクセスなど、多数の要因が考慮されます。
 * これらのレポートとイベントの多くは、お客様の SIEM システムとの統合を可能にする API を通じて既に使用可能です。
 * Azure AD Identity Protection の詳細については、「[Azure Active Directory Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection)」をご覧ください。
-
+!
 **サービスとしてのリモート アクセス:** オンプレミス サーバーの保守やパッチの適用について心配する必要がない
 
 * Azure AD アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードが適用された状態で利用できます。 したがって、お客様のネットワークのセキュリティが保たれます。
@@ -65,6 +65,12 @@ Azure AD で提供されるリモート アクセス サービスは、[Azure �
 次の図は、Azure AD を使用して、お客様のオンプレミスのアプリケーションで安全なリモート アクセスを有効にする方法を示しています。
 
  ![Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-security-considerations/secure-remote-access.png)
+
+>[!NOTE] 
+>Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、アプリケーションをインデックスおよびアーカイブしないように Web クローラー ロボットがブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシは以下を含む robots.txt ファイルで応答します。 <br>
+>   _User-agent: *_<br>
+>   _Disallow: /_
+>
 
 ## <a name="components-of-the-azure-ad-app-proxy-solution"></a>Azure AD アプリケーション プロキシ ソリューションのコンポーネント
 
@@ -141,6 +147,6 @@ Azure AD アプリケーション プロキシは、以下の&2; つで構成さ
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
