@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 79adce1f3fb9a33e60159af72e83118dd88e0946
-ms.openlocfilehash: ecddf255f4b4750bf67f2689b0274c04f8ec54b7
+ms.sourcegitcommit: bb078183b24cd5c5172b48f1135eced061220cf5
+ms.openlocfilehash: 3c0c00bf9e4380a682ff1e155fb6d9a3826f4b00
 
 
 ---
@@ -70,7 +70,7 @@ Azure にレプリケートする場合、この手順は必要ありません�
 3. 認証をセットアップします。
 
    * **[認証とポート]** で、プライマリ サーバーを認証する方法と、認証ポートを選択します。 証明書を使用する場合は、**[証明書の選択]** をクリックしていずれかを選択します。 プライマリと復旧の両方の Hyper-V ホストが同じドメインにあるか、信頼されたドメインにある場合は、Kerberos を使用します。 ドメインが異なるか、またはワークグループのデプロイの場合は証明書を使用します。
-   * **[承認と記憶域]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可します。 
+   * **[承認と記憶域]** セクションで、**任意**の認証済み (プライマリ) サーバーにこのレプリカ サーバーに複製データを送信することを許可します。
 
      ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
    * 「**netsh http show servicestate**」を実行して、指定したプロトコル/ポートに対してリスナーが実行されていることを確認します。  
@@ -133,11 +133,9 @@ Azure にレプリケートする場合、この手順は必要ありません�
 * [VMM クラウドの Hyper-V VM を Azure にレプリケートする](site-recovery-vmm-to-azure.md)
 * [Hyper-V VM (VMM なし) を Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md)
 * [VMM サイト間で Hyper-V VM をレプリケートする](site-recovery-vmm-to-vmm.md)
-* [VMM サイト間で SAN を使用して Hyper-V VM をレプリケートする](site-recovery-vmm-san.md)
-* [単一 VMM サーバーで Hyper-V VM をレプリケートする](site-recovery-single-vmm.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

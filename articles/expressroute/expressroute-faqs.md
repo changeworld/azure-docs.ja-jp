@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 899fbfb63633286a1065546b1f262cbc1d7d39c4
-ms.openlocfilehash: d11d57a352138e43f7a7e9d2ec91663361be6f95
+ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
+ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
 
 
 ---
@@ -245,11 +245,11 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。 ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由で Dynamics 365 for Operations (旧称 Dynamics AX Online) にアクセスできますか。
-はい。 [Dynamics 365 for Operations](https://www.microsoft.com/en-us/dynamics365/operations) は、Azure でホストされています。 それに接続するには、ExpressRoute 回線で Azure パブリック ピアリングを有効にします。 
+はい。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) は、Azure でホストされています。 それに接続するには、ExpressRoute 回線で Azure パブリック ピアリングを有効にします。 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

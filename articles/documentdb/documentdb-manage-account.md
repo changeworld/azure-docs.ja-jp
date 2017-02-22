@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: e82d677c9d53ec5d28a40a7def4b911081765ca5
-ms.openlocfilehash: 0a249d63df35f9c3334a658672777e9b1359265e
+ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
+ms.openlocfilehash: ee1668dce71a1f5d7b91e839670b69c9527c4892
 
 
 ---
@@ -101,8 +101,6 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
 [DocumentDB アカウントの使用方法](http://go.microsoft.com/fwlink/p/?LinkId=402364)について取り上げます。
 
-DocumentDB の詳細については、 [azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409)で Azure DocumentDB に関するドキュメントを参照してください。
-
 <!--Image references-->
 [1]: ./media/documentdb-manage-account/documentdb_add_region-1.png
 [2]: ./media/documentdb-manage-account/documentdb_add_region-2.png
@@ -119,6 +117,6 @@ DocumentDB の詳細については、 [azure.com](http://go.microsoft.com/fwlin
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

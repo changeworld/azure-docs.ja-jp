@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 41239b5164de0d51848431f45f45958af29a9706
-ms.openlocfilehash: 09e078c8f806b91f8a4de55bc3abbb271823c203
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: e9b9febe0c7533e0d2de24b97c98707d08f5e461
 
 
 ---
@@ -46,12 +46,12 @@ ms.openlocfilehash: 09e078c8f806b91f8a4de55bc3abbb271823c203
 ## <a name="azure-database-security"></a>Azure Database Security
 * [Azure SQL ファイアウォール](../sql-database/sql-database-firewall-configure.md)
 * [Azure SQL Cell Level Encryption (Azure SQL セル レベルの暗号化)](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
-* [Azure SQL 接続の暗号化](../sql-database/sql-database-security-guidelines.md)
-* [Azure の SQL 認証](../sql-database/sql-database-security-guidelines.md)
+* [Azure SQL 接続の暗号化](../sql-database/sql-database-control-access.md)
+* [Azure の SQL 認証](../sql-database/sql-database-control-access.md)
 * [Azure SQL Always Encryption (Azure SQL の常時暗号化)](https://msdn.microsoft.com/library/mt163865.aspx)
 * [Azure SQL の列レベルの暗号化](https://msdn.microsoft.com/library/ms179331.aspx)
 * [Azure SQL の Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096.aspx)
-* [Azure SQL Database 監査](../sql-database/sql-database-auditing-get-started.md)
+* [Azure SQL Database 監査](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Azure の ID 管理とアクセス管理
 * [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
@@ -75,6 +75,6 @@ ms.openlocfilehash: 09e078c8f806b91f8a4de55bc3abbb271823c203
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

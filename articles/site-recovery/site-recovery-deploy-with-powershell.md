@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: d3bf50e9e686acdac33ffaf9d781f02193406298
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
 
 
 ---
@@ -49,7 +49,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### <a name="azure-prerequisites"></a>Azure の前提条件
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 * レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
-* 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。
+* 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認する必要があります。
 
 ### <a name="vmm-prerequisites"></a>VMM の前提条件
 * System Center 2012 R2 で実行される VMM サーバーが必要です。
@@ -74,7 +74,6 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 * ソース VMM サーバー上の保護する仮想マシンが VM ネットワークに接続している。 そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
 * レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。 フェールオーバー時にこのネットワークを選択します。 ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
-* [参照する](site-recovery-network-mapping.md) 。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
 Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定方法の詳細については、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
@@ -302,7 +301,7 @@ marsagentinstaller.exe /q /nu
 ## <a name="step-9-enable-protection-for-virtual-machines"></a>ステップ 9: 仮想マシンの保護を有効化する
 サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。 以下の点に注意してください。
 
-仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
+仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしている必要があります。
 
 オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンにプロパティを設定する必要があります。 仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。 また、仮想マシンのプロパティの **[全般]** タブと **[ハードウェア構成]** タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。 VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
@@ -408,6 +407,6 @@ Azure Site Recovery PowerShell コマンドレットの詳細を[確認します
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

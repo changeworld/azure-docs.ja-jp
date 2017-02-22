@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: ec08ab30003994f3e60c3f37d39bb5b4ef498173
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -62,7 +62,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 * 1 つ以上の仮想マシンを含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。
 * 直接、またはプロキシを経由して、インターネットに接続するHyper-V サーバー。
-* 保護する仮想マシンは、 [仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に従う必要があります。
+* 保護する仮想マシンは、 [仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に従う必要があります。
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
 1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、アカウントの資格情報を入力するように求められます。
@@ -247,6 +247,6 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

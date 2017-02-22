@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 8de57909d4abf753a58e389f401018601c3eef24
+ms.sourcegitcommit: 70b0aef629ceb0fe0021f633183d2a6f09145d85
+ms.openlocfilehash: b164865aaef16799ccdec24d163d4723acb88530
 
 
 ---
@@ -91,7 +91,7 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 ## <a name="next-steps"></a>次のステップ
 アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、デプロイする方法](app-service-web/web-sites-nodejs-develop-deploy-mac.md)、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
 
-詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+詳細については、 [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: xplat-cli-install.md
 [Azure コマンド ライン ツール]: xplat-cli-install.md
@@ -100,6 +100,6 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

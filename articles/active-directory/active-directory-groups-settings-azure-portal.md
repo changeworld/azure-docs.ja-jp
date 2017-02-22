@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 246ad13f92ea5146f28213a330a49cf2d639089a
+ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
+ms.openlocfilehash: ffb2f8d2eaaa0754063cd2f92791739b2dee3b16
 
 
 ---
@@ -26,20 +26,20 @@ ms.openlocfilehash: 246ad13f92ea5146f28213a330a49cf2d639089a
 ## <a name="how-do-i-find-and-change-the-settings"></a>設定を探して変更する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
-   
+
    ![グループ ブレードを開く](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
 5. **グループ - *グループ名*** ブレードで、**[プロパティ]** を選択します。
-   
+
    ![[プロパティ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
 6. グループのプロパティの変更が完了したら、 **[保存]**をクリックします。    
-   
+
    ![プロパティの変更を保存する](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
 
-## <a name="additional-information"></a>追加情報
+## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [既存のグループの表示](active-directory-groups-view-azure-portal.md)
@@ -50,7 +50,6 @@ ms.openlocfilehash: 246ad13f92ea5146f28213a330a49cf2d639089a
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

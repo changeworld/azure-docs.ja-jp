@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c94d114c50d44a3ca2933ec3464e7a2396867d60
-ms.openlocfilehash: eb94a0e383be4a2c125b9f5a2e7c1e49beacd4df
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 5c43e6c646928ef17e1bf2e5b9bce90f9038d5d0
 
 
 ---
@@ -38,7 +38,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop", 
+      "name": "virtualMachineLoop",    
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -230,7 +230,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ```
 "copy": {
-  "name": "virtualMachineLoop", 
+  "name": "virtualMachineLoop",    
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -307,7 +307,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 ## <a name="disks-and-images"></a>ディスクとイメージ
    
-Azure では、vhd ファイルは[ディスクまたはイメージ](virtual-machines-windows-about-disks-vhds.md)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
+Azure では、vhd ファイルは[ディスクまたはイメージ](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を表すことができます。 vhd ファイルのオペレーティング システムは、特定の VM に特化している場合はディスクと呼ばれます。 vhd ファイルのオペレーティング システムが、多くの VM の作成に使用されるように一般化されている場合は、イメージと呼ばれます。   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>プラットフォーム イメージから新しい仮想マシンと新しいディスクを作成する
 
@@ -500,6 +500,6 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を読んで、作成した VM を管理する方法を確認します。
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

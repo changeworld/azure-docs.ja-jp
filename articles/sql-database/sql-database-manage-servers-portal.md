@@ -16,8 +16,8 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 325ef2cd13a090ad0ee0c09cc16c81d80672a70b
-ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: 74f94ad347b31e8c7848e1fd72692732431338b2
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
 > Azure Portal を使用してサーバーを作成する入門用のチュートリアルについては、[Azure Portal を使用したデータベースの作成](sql-database-get-started.md)に関するページを参照してください。
 >
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 * 管理ツールの概要については、[管理ツールの概要](sql-database-manage-overview.md)に関するページをご覧ください。
 * Azure Portal を使用して管理タスクを実行する方法については、「[Azure ポータルを使用した Azure SQL データベースの管理](sql-database-manage-portal.md)」をご覧ください。
 * PowerShell を使用して管理タスクを実行する方法については、「[PowerShell を使用した Azure SQL Database の管理](sql-database-manage-powershell.md)」をご覧ください。
@@ -63,6 +63,6 @@ ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/10/2017
+ms.date: 02/21/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 1d9fe568a3b6632950cccbbd4ea3fe024e7aa68a
-ms.openlocfilehash: f0ac2d226f9df9eeae9c3b29674459ec330ae04b
+ms.sourcegitcommit: 988d859e2cc9cd723e23704193b6c3bbdce08379
+ms.openlocfilehash: 976aa382e34cdc417a79b513c0e8e063b30d9e01
 
 
 ---
@@ -75,7 +75,7 @@ Update 4 のインストールにお勧めの方法は、Azure クラシック �
 
 | 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |ソフトウェア更新 &#42; |通常  <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
+| 1. |KB4011839 |ソフトウェア更新 |通常  <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI ドライバーおよびファームウェアの更新プログラム <br> USM ファームウェアの更新プログラム (バージョン 3.38) |通常  <br></br>中断なし |～ 3 時間 <br> (2A. + 2B. + 2C.)|SecondOrderUpdate|
 | 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS のセキュリティ更新プログラム |通常  <br></br>中断なし |- |SecondOrderUpdate|
 | 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS の更新プログラム パッケージ |通常  <br></br>中断なし |- |SecondOrderUpdate|
@@ -105,6 +105,6 @@ Update 4 のインストールにお勧めの方法は、Azure クラシック �
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

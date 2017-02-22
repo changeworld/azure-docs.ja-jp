@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/14/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: d634db213f73341ed09be58c720d4e058986a38e
-ms.openlocfilehash: ef5f574712cf6fc6f10261d14e280a697163ec4c
+ms.sourcegitcommit: 09577d3160137b7879a5c128552d8dcbef89bb0d
+ms.openlocfilehash: c025629c7700c0ee7b6495a922b9bf6823769cfa
 
 
 ---
@@ -39,8 +39,8 @@ Shared Access Signature の承認規則は、Service Bus の [リレー](service
 
 SAS 認証では、次の要素が使用されます。
 
-* [共有アクセス承認規則](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule): Base64 形式の 256 ビット プライマリ暗号化キー、オプションのセカンダリ キー、キー名と関連付けられている権限 (*Listen*、*Send*、*Manage* 権限のコレクション)。
-* [Shared Access Signature](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) トークン: リソース文字列の HMAC-SHA256 を使用して生成されます。この文字列は、暗号化キーによって、アクセスされるリソースの URI と、有効期限で構成されます。 以下のセクションで説明する署名とその他の要素は、SAS トークンを構成するために文字列にフォーマットされています。
+* [共有アクセス承認規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule): Base64 形式の 256 ビット プライマリ暗号化キー、オプションのセカンダリ キー、キー名と関連付けられている権限 (*Listen*、*Send*、*Manage* 権限のコレクション)。
+* [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) トークン: リソース文字列の HMAC-SHA256 を使用して生成されます。この文字列は、暗号化キーによって、アクセスされるリソースの URI と、有効期限で構成されます。 以下のセクションで説明する署名とその他の要素は、SAS トークンを構成するために文字列にフォーマットされています。
 
 ## <a name="shared-access-policy"></a>共有アクセス ポリシー
 
@@ -55,6 +55,26 @@ SAS を理解するうえで重要な点の&1; つは、SAS の基盤はポリ�
 ポリシーを作成した後、そのポリシーには*プライマリ キー*と*セカンダリ キー*が割り当てられます。 これらは、暗号化された強力なキーです。 これらをなくしたり、外部に漏らしたりしないでください。これらは、常に [Azure Portal][Azure portal] から入手可能です。 生成されたキーのいずれかを使用できます。また、いつでも再生成できます。 ただし、再生成するか、またはポリシーのプライマリ キーを変更する場合は、ポリシーから作成された Shared Access Signature がすべて無効になります。
 
 Service Bus の名前空間を作成するときに、**RootManageSharedAccessKey** という名前空間全体に対してポリシーが自動的に作成され、そのポリシーにはすべての権限が与えられます。 **root** としてログオンしないため、本当に正当な理由がない限り、このポリシーを使用しないでください。 ポータルの名前空間の **[構成]** タブで、追加のポリシーを作成できます。 重要なのは、Service Bus の 1 つのツリーのレベル (名前空間、キューなど) には、最大 12 個のポリシーだけを保持できることです。
+
+## <a name="configuration-for-shared-access-signature-authentication"></a>Shared Access Signature 認証の構成
+[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 この手順を示す作業サンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) に関するサンプルを参照してください。
+
+Service Bus の名前空間、キュー、トピックでは、このような規則を最大 12 個構成できます。 Service Bus 名前空間に構成されている規則は、その名前空間内のすべてのエンティティに適用されます。
+
+![SAS](./media/service-bus-sas/service-bus-namespace.png)
+
+この図では、*manageRuleNS**sendRuleNS* および *listenRuleNS* の承認規則は、キュー Q1 とトピック T1 の両方に適用されます。それに対し、*listenRuleQ* および *sendRuleQ* は、キュー Q1 にのみ適用され、*sendRuleT* はトピック T1 にのみ適用されます。
+
+[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の主なパラメーターは次のとおりです。
+
+| パラメーター | 説明 |
+| --- | --- |
+| *KeyName* |承認規則を説明する文字列。 |
+| *PrimaryKey* |SAS トークンの署名と検証用の Base64 でエンコードされた 256 ビットのプライマリ キー。 |
+| *SecondaryKey* |SAS トークンの署名と検証用の Base64 でエンコードされた 256 ビットのセカンダリ キー。 |
+| *AccessRights* |承認規則によって付与されたアクセス権限の一覧。 これらの権限には、Listen、Send、Manage 権限の任意のコレクションを指定できます。 |
+
+Service Bus 名前空間がプロビジョニングされると、[KeyName](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) が **RootManageSharedAccessKey** に設定された [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) が既定で作成されます。
 
 ## <a name="generate-a-shared-access-signature-token"></a>Shared Access Signature (トークン) の生成
 
@@ -85,13 +105,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 SAS トークンは、`signature-string` で使用される `<resourceURI>` の下のすべてのリソースで有効です。
 
-SAS トークン内の [KeyName](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) は、トークンの生成に使用される共有アクセス承認規則の **keyName** を表します。
+SAS トークン内の [KeyName](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) は、トークンの生成に使用される共有アクセス承認規則の **keyName** を表します。
 
 *URL-encoded-resourceURI* は、署名の計算中に署名文字列で使用する URI と同じものにする必要があります。 [パーセントエンコード](https://msdn.microsoft.com/library/4fkewx0t.aspx)にする必要があります。
 
-[SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトで使用されるキーは、定期的に再生成することをお勧めします。 一般的に、アプリケーションでは、SAS トークンの生成に [PrimaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) を使用する必要があります。 キーを再生成するときには、 [SecondaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) を古いプライマリ キーに置き換え、新しいキーを新しいプライマリ キーとして生成する必要があります。 これにより、古いプライマリ キーで発行され、まだ期限が切れていないトークンを引き続き承認に使用できます。
+[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトで使用されるキーは、定期的に再生成することをお勧めします。 一般的に、アプリケーションでは、SAS トークンの生成に [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) を使用する必要があります。 キーを再生成するときには、 [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) を古いプライマリ キーに置き換え、新しいキーを新しいプライマリ キーとして生成する必要があります。 これにより、古いプライマリ キーで発行され、まだ期限が切れていないトークンを引き続き承認に使用できます。
 
-キーが侵害され、キーを取り消す必要がある場合は、[SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の [PrimaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) と [SecondaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) の両方を再生成し、それらを新しいキーに置き換えることができます。 この手順により、古いキーで署名されたすべてのトークンが無効になります。
+キーが侵害され、キーを取り消す必要がある場合は、[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) と [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) の両方を再生成し、それらを新しいキーに置き換えることができます。 この手順により、古いキーで署名されたすべてのトークンが無効になります。
 
 ## <a name="how-to-use-shared-access-signature-authentication-with-service-bus"></a>Service Bus による Shared Access Signature 認証の使用方法
 
@@ -109,7 +129,7 @@ Service Bus 名前空間の共有アクセス承認規則にアクセスする�
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/
 ```
 
-Service Bus 名前空間に [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを作成するには、JSON または XML としてシリアル化された規則情報を使用して、このエンドポイントに対して POST 操作を実行します。 次に例を示します。
+Service Bus 名前空間に [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを作成するには、JSON または XML としてシリアル化された規則情報を使用して、このエンドポイントに対して POST 操作を実行します。 次に例を示します。
 
 ```csharp
 // Base address for accessing authorization rules on a namespace
@@ -144,13 +164,13 @@ var postResult = httpClient.PostAsJsonAsync("", sendRule).Result;
 
 特定の承認規則を更新または削除するには、次のエンドポイントを使用します。
 
-```
+```http
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/{KeyName}
 ```
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 
-Service Bus のキューまたはトピックに構成された [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトへは、対応する [QueueDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [TopicDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription) の [AuthorizationRules](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.authorizationrules) コレクションを介してアクセスできます。
+Service Bus のキューまたはトピックに構成された [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトへは、対応する [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) の [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) コレクションを介してアクセスできます。
 
 次のコードでは、キューの承認規則を追加する方法を示します。
 
@@ -185,7 +205,7 @@ nsm.CreateQueue(qd);
 
 ## <a name="use-shared-access-signature-authorization"></a>Shared Access Signature 承認の使用
 
-Service Bus .NET ライブラリと Azure .NET SDK を使用するアプリケーションでは、 [SharedAccessSignatureTokenProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) クラスを介して SAS 承認を使用できます。 次のコードでは、Service Bus キューにメッセージを送信するトークン プロバイダーの使用を示しています。
+Service Bus .NET ライブラリと Azure .NET SDK を使用するアプリケーションでは、 [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) クラスを介して SAS 承認を使用できます。 次のコードでは、Service Bus キューにメッセージを送信するトークン プロバイダーの使用を示しています。
 
 ```csharp
 Uri runtimeUri = ServiceBusEnvironment.CreateServiceUri("sb",
@@ -202,7 +222,7 @@ sendClient.Send(helloMessage);
 
 アプリケーションは、接続文字列を受け入れるメソッドで SAS 接続文字列を使用することで、認証に SAS を使用することもできます。
 
-Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空間に構成されている SAS キーを使用できます。 名前空間 ([RelayDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.relaydescription) を指定した [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager)) のオブジェクトにリレーを明示的に作成する場合は、そのリレーに SAS 規則を設定するだけです。 Service Bus サブスクリプションで SAS 承認を使用するには、Service Bus 名前空間またはトピックに構成されている SAS キーを使用できます。
+Service Bus リレーで SAS 承認を使用するには、Service Bus 名前空間に構成されている SAS キーを使用できます。 名前空間 ([RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription) を指定した [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager)) のオブジェクトにリレーを明示的に作成する場合は、そのリレーに SAS 規則を設定するだけです。 Service Bus サブスクリプションで SAS 承認を使用するには、Service Bus 名前空間またはトピックに構成されている SAS キーを使用できます。
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>Shared Access Signature の使用 (HTTP レベル)
 
@@ -350,6 +370,6 @@ Service Bus メッセージングの詳細については、次のトピック�
 [Azure portal]: https://portal.azure.com
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

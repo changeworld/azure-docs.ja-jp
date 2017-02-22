@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: f6ab5e3807684abb64a18e0a4bfc732afa091143
-ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
+ms.sourcegitcommit: 0400369eb7ae3a2ebd506605b50afe08fe563d22
+ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
 
 
 ---
@@ -54,7 +54,7 @@ Azure Site Recovery へようこそ。 この記事では、System Center Virtua
 
 | **前提条件** | **詳細** |
 | --- | --- |
-| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを&1; 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-single-vmm.md)こともできます。 これを行うには、VMM サーバーに少なくとも&2; つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには&1; つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーにはインターネット アクセスが必要です。 |
+| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを&1; 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)こともできます。 これを行うには、VMM サーバーに少なくとも&2; つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには&1; つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーにはインターネット アクセスが必要です。 |
 | **Hyper-V** |Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに&1; つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。 クラスター ブローカーを手動で構成する必要があります。 詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。 |
 | **プロバイダー** |Site Recovery をデプロイする際に Azure Site Recovery プロバイダーを VMM サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> VMM サーバー上で実行されるプロバイダーでは、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可する必要があります。<br/><br/> また、VMM サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
 
@@ -74,7 +74,7 @@ VMM ネットワークの構成の詳細については、次の記事を参照�
 * [VMM での論理ネットワークの構成の概要](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [VMM での VM ネットワークとゲートウェイの構成](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[こちら](site-recovery-network-mapping.md) をご覧ください。
+[こちら](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) をご覧ください。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
 Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
@@ -322,6 +322,6 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

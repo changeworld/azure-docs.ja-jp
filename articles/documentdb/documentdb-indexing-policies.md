@@ -16,8 +16,8 @@ ms.workload: data-services
 ms.date: 12/22/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
-ms.openlocfilehash: 6941a0a5e108617ebb16354edc9917392b7cb786
+ms.sourcegitcommit: bd77eaab1dbad95a70b6d08947f11d95220b8947
+ms.openlocfilehash: 818337dfb36ee4c84fa2543f7c54558287ead0e1
 
 
 ---
@@ -119,7 +119,7 @@ DocumentDB は JSON ドキュメントとインデックスをツリーとして
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | コレクションの既定のパス。 再帰的で、ドキュメント ツリー全体に適用されます。                                                                                                                                                                                                                                   |
 | /prop/?             | 次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
-| /prop/              | 指定されたラベルの下のすべてのパスのインデックスのパス。 次のようなクエリで使用<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
+| /"prop"/*             | 指定されたラベルの下のすべてのパスのインデックスのパス。 次のようなクエリで使用<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
 | /props/[]/?         | ["a", "b", "c"] のようなスカラーの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5                                                                         |
 | /props/[]/subprop/? | [{subprop: "a"}, {subprop: "b"}] のようなオブジェクトの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。<br><br>SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value"                                  |
 | /prop/subprop/?     | 次のクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
@@ -413,6 +413,6 @@ JSON 仕様に次の変更が実装されました。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

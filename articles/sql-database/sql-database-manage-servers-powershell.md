@@ -16,8 +16,8 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 835702c8381fcd184b056c76054514348c675bbf
-ms.openlocfilehash: 9f1905f7e5aad0e43d81f7095089b9f3492a82ea
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: c22243db06c783bc4f5b311aa4d49ce12032ab02
 
 
 ---
@@ -51,7 +51,7 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
 > サンプル スクリプトについては、[PowerShell スクリプトを使用した SQL データベースの作成](sql-database-get-started-powershell.md)に関するページを参照してください。
 >
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 * 管理ツールの概要については、[管理ツールの概要](sql-database-manage-overview.md)に関するページをご覧ください。
 * Azure Portal を使用して管理タスクを実行する方法については、「[Azure ポータルを使用した Azure SQL データベースの管理](sql-database-manage-portal.md)」をご覧ください。
 * PowerShell を使用して管理タスクを実行する方法については、「[PowerShell を使用した Azure SQL Database の管理](sql-database-manage-powershell.md)」をご覧ください。
@@ -61,6 +61,6 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 
