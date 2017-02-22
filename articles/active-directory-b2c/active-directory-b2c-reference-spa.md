@@ -15,12 +15,17 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 96c9425d8f58d3b617330615573a479429f12b11
-ms.openlocfilehash: 44a7cf18afdf6a523c5f7fb03ee49f72cdd22564
+ms.sourcegitcommit: f2eb1f67c5687ac9bd8b94f6480617e6dc87ac9f
+ms.openlocfilehash: ace35adc1cd2745ea11cb60429a1e7892d1f66d3
 
 
 ---
-# <a name="azure-active-directory-b2c-sign-in-for-single-page-apps-using-auth-20-implicit-flow"></a>Azure Active Directory B2C: Auth 2.0 の暗黙的フローを使用してシングルページ アプリにサインインする
+# <a name="azure-active-directory-b2c-sign-in-for-single-page-apps-using-oauth-20-implicit-flow"></a>Azure Active Directory B2C: OAuth 2.0 暗黙的フローを使用してシングルページ アプリにサインインする
+
+> [!NOTE]
+> この機能はプレビュー段階にあります。
+> 
+
 最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 AngularJS、Ember.js、または Durandal.js などのフレームワークを使用して記述されていることも少なくありません。 シングル ページ アプリなどの主にブラウザーで実行される JavaScript アプリには、認証に関して重要な課題があります。
 
 * これらのアプリのセキュリティ特性は、従来のサーバーベースの Web アプリケーションとは大きく異なります。
@@ -285,6 +290,6 @@ p=b2c_1_sign_in
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

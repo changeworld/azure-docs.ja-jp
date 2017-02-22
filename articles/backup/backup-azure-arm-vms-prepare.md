@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備 | Microsoft Docs"
-description: "Azure で仮想マシンをバックアップするための環境を準備する方法について説明します"
+title: "Azure Backup: 仮想マシンをバックアップする準備 | Microsoft Docs"
+description: "Azure で仮想マシンをバックアップする環境が整っていることを確認します。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2017
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 2/7/2017
+ms.author: trinadhk;jimpark;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 026bfabbf53b408d0e997c0fe21845c4b53ca8b0
-ms.openlocfilehash: d8d0ade0b3088805576cfb3fdc78eb2e4fec698a
+ms.sourcegitcommit: 576442943b9c8cec42cdb19547fc4fa4e4eeff14
+ms.openlocfilehash: f6a5abfa68d1700dc263195f44bbb90419112583
 
 
 ---
@@ -74,16 +74,16 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**をクリックします。
 
-    ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    ![[参照] ボタンをクリックし、「Recovery Services」と入力します。 [Recovery Services コンテナー] というオプションが表示されたら、これをクリックして [Recovery Services コンテナー] ブレードを開きます。](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
     Recovery Services コンテナーの一覧が表示されます。
 3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
 
-    ![Create Recovery Services Vault step 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
+    ![Create Recovery Services Vault step 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
     [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
 
-    ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
+    ![Create Recovery Services vault step 5](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。 リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
@@ -93,72 +93,83 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    > VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成する必要があります。 最初の場所でコンテナーを作成してから、次の場所に移動してください。 バックアップ データを格納するストレージ アカウントを指定する必要はありません。これは、Recovery Services コンテナーと Azure Backup サービスにより自動的に処理されます。
    >
    >
-8. **[作成]**をクリックします。 Recovery Services コンテナーの作成に時間がかかることがあります。 ポータルの右上隅で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+8. **[作成]**をクリックします。 Recovery Services コンテナーの作成に時間がかかることがあります。 ポータルの右上隅で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、**[最新の情報に更新]** をクリックします。
+
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
     これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
 
 ## <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
-1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。 **[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
-2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]** > **[バックアップ構成]** をクリックして、**[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+1. **[Recovery Services コンテナー]** ブレードでコンテナーを選択します。
+    コンテナーをクリックすると、設定ブレード (*上部にコンテナー名が表示*) とコンテナーの詳細ブレードが開きます。
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+    ![choose your vault from the list of backup vaults](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
+2. **[設定]**ブレードで縦向きのスライダーを使用して、**[管理]** セクションまでスクロールします。 **[バックアップ インフラストラクチャ]** をクリックしてブレードを開きます。 **[全般]** セクションで **[構成のバックアップ]** をクリックしてブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。 既定では、コンテナーには geo 冗長ストレージがあります。 ストレージのレプリケーション タイプを変更するには、**[保存]** をクリックします。
+
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+     プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
 VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。 このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。 Azure ポータルのシナリオは、Recovery Services コンテナーに何を格納するのかを指しています。 ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。
 
-1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal でハブ メニューの **[参照]** をクリックします。
+1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 Recovery Services コンテナーが開かれていない場合は、[Azure Portal](https://portal.azure.com/) を開き、ハブ メニューの **[その他のサービス]**をクリックします。
 
    * リソース ボックスに「 **Recovery Services**」と入力します。
    * 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**が表示されたら、それをクリックします。
 
-     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+     ![Create Recovery Services Vault step 1](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
-     Recovery Services コンテナーの一覧が表示されます。
-   * Recovery Services コンテナーの一覧で、コンテナーを選択します。
+     Recovery Services コンテナーの一覧が表示されます。 サブスクリプション内にコンテナーがない場合、この一覧は空になります。
 
-     選択したコンテナーのダッシュボードが開きます。
+    ![View of the Recovery Services vaults list](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
+   * Recovery Services コンテナーの一覧で、コンテナーを選択して、そのダッシュボードを開きます。
+
+     [設定] ブレードと、選択したコンテナーのコンテナー ダッシュボードが開きます。
+
+     ![Open vault blade](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 2. コンテナーのダッシュボード メニューの **[バックアップ]** をクリックして、[バックアップ] ブレードを開きます。
 
-    ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
+    ![Open Backup blade](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-    ブレードを開くと、Backup サービスがサブスクリプション内の新しい VM を検索します。
+    [バックアップ] ブレードと [バックアップの目標] ブレードが開きます。
 
-    ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
-3. [バックアップ] ブレードで、 **[バックアップの目標]** をクリックして、[バックアップの目標] ブレードを開きます。
+    ![Open Scenario blade](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
-4. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
+3. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
 
-    [Backup Goal] \(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    これにより、VM 拡張機能がコンテナーに登録されます。 [バックアップの目標] ブレードが閉じ、**[バックアップ ポリシー]** ブレードが開きます。
 
-    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
-5. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、 **[OK]**をクリックします。
+    ![Open Scenario blade](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
+4. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択します。
 
-    ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+    ![Select backup policy](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
-    既定のポリシーの詳細が一覧表示されます。 新しいポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。 このドロップダウン メニューでは、スナップショットの作成時刻を午後 7 時などに切り替えることもできます。 バックアップ ポリシーを定義する手順については、「 [バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。 **[OK]**をクリックすると、バックアップ ポリシーがコンテナーに関連付けられます。
+    既定のポリシーの詳細がドロップダウン メニューの下に一覧表示されます。 新しいポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。 バックアップ ポリシーを定義する手順については、「 [バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。
+    **[OK]** をクリックして、バックアップ ポリシーをコンテナーに関連付けます。
 
-    次に、コンテナーに関連付ける VM を選択します。
-6. 指定したポリシーに関連付ける仮想マシンを選択し、 **[選択]**をクリックします。
+    [バックアップ ポリシー] ブレードが閉じ、**[仮想マシンの選択]** ブレードが開きます。
+5. **[仮想マシンの選択]** ブレードで、指定したポリシーに関連付ける仮想マシンを選択し、 **[OK]** をクリックします。
 
-    ![Select workload](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
+    ![Select workload](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
-7. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。 これにより、ポリシーがコンテナーと VM にデプロイされます。
+    選択した仮想マシンが検証されます。 予期していた仮想マシンが表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその仮想マシンが存在することを確認します。 Recovery Services コンテナーの場所は、コンテナーのダッシュボードに表示されます。
 
-    ![[バックアップの有効化]](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
+6. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、**[バックアップの有効化]** をクリックします。 これにより、ポリシーがコンテナーと VM にデプロイされます。 このとき、仮想マシンの最初の回復ポイントは作成されません。
 
-準備作業の次の段階は、VM エージェントのインストール、または VM エージェントがインストールされていることの確認です。
+    ![[バックアップの有効化]](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+
+バックアップが有効になると、バックアップ ポリシーがスケジュールに従って実行されます。 仮想マシンをすぐにバックアップするオンデマンド バックアップ ジョブを生成するには、「[バックアップ ジョブのトリガー](./backup-azure-arm-vms.md#triggering-the-backup-job)」をご覧ください。
+
+仮想マシンの登録に問題がある場合は、VM エージェントのインストールやネットワーク接続に関するこの後の情報を参照してください。 Azure によって作成された仮想マシンを保護している場合、次の情報はおそらく必要ないでしょう。 ただし、仮想マシンを Azure に移行した場合は、VM エージェントを正しくインストールしていることと、仮想マシンが仮想ネットワークで通信できることを確認してください。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 この情報は、使用している VM が Azure ギャラリーから作成したものでは " *なく* "、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。
@@ -307,6 +318,6 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

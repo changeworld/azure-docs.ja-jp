@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee3ba5a5dee206c2358a76aaea680b998e994f8
-ms.openlocfilehash: 732f9b135732c33364cab7200d43893d4cdda5f9
+ms.sourcegitcommit: 2e7815702f2d2f4ce935826c4769838727a83696
+ms.openlocfilehash: 7d1be1dea6ed4ecda196743f592456a5b977e9b0
 
 
 ---
@@ -73,6 +73,8 @@ Azure AD アプリケーション プロキシを使用すると、次のよう�
 ### <a name="single-sign-on"></a>シングル サインオン
 Azure AD アプリケーション プロキシは、統合 Wndows 認証 (IWA) や要求に対応するアプリケーションへのシングル サインオン (SSO) を提供します。 発行対象のアプリケーションで IWA が使用されている場合、アプリケーション プロキシが Kerberos の制約付き委任を使い、見かけ上ユーザーとして振る舞うことで、SSO を実現します。 Azure Active Directory を信頼している要求に対応するアプリケーションでは、Azure AD によってユーザーが認証済みであるために SSO が成立します。
 
+Kerberos について詳しくは、「[All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)」(Kerberos の制約付き委任 (KCD) のすべて) をご覧ください。
+
 ## <a name="how-to-get-started"></a>ファースト ステップ
 Azure AD Basic または Azure AD Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリが必要です。 ディレクトリ管理者、およびアプリにアクセスするユーザーについても、Azure AD Basic または Azure AD Premium のライセンスが必要となります。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md) 」をご覧ください。
 
@@ -95,6 +97,6 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 8301a36327fb2605eaded8f41e27e830c85e823b
-ms.openlocfilehash: d8b73128a22c4c9efb9fcd50464ef370cd1a499c
+ms.sourcegitcommit: a268907eea2862ae2d054f30accfd4d771a7d880
+ms.openlocfilehash: 0dbacc24af62f8173e4b1b30990d89f02a9d48bb
 
 ---
 
@@ -73,12 +73,12 @@ November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250
 フィルター処理の変更がすべて完了したら、忘れずにタスクの状態を **[有効]** に戻してください。
 
 ## <a name="filtering-options"></a>フィルター処理オプション
-Azure AD Connect Sync には、次のフィルター処理構成タイプが適用できます。
+ディレクトリ同期ツールには、次のフィルター処理構成タイプが適用できます。
 
+* [**グループ ベース**](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups): 単一のグループに基づくフィルター処理は、インストール ウィザードを使用して、初回インストール時にのみ構成できます。 このトピックでは詳しい説明を省略します。
 * [**ドメイン ベース**](#domain-based-filtering): どのドメインを Azure AD に同期させるかを選択できます。 また、Azure AD Connect Sync をインストールした後でオンプレミス インフラストラクチャに変更を加えた場合、同期エンジンの構成でドメインを追加または削除することができます。
 * [**組織単位ベース**](#organizational-unitbased-filtering): Azure AD との間で同期させる OU を選択できます。 選択された OU 内のすべてのオブジェクト タイプが対象となります。
 * [**属性ベース**](#attribute-based-filtering): オブジェクトの属性値に基づいてオブジェクトをフィルター処理できます。 オブジェクトの種類ごとに異なるフィルターを使用することもできます。
-* [**グループベース**](#group-based-filtering): 単一のグループに基づくフィルター処理は、インストール ウィザードを使用して、初回インストール時にのみ構成できます。 これは小規模なパイロット デプロイに使用されます。
 
 フィルター処理のオプションは、同時に複数使用することができます。 たとえば、OU ベースのフィルター処理で特定の OU 内のオブジェクトのみを対象にしたうえで、属性ベースのフィルター処理を併用してオブジェクトをさらに絞り込むことができます。 複数のフィルター処理方法を使用した場合、それらのフィルターが論理積で組み合わされます。
 
@@ -296,7 +296,7 @@ Azure AD Connect インストール ウィザードでは、常にこの構成�
 2. **[タスク スケジューラ ライブラリ]** の直下から **Azure AD Sync Scheduler** というタスクを探して右クリックし、**[有効]** を選択します。
 
 ## <a name="group-based-filtering"></a>グループベースのフィルター処理
-グループベースのフィルター処理は、初めて[カスタム インストール](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)を使用して Azure AD Connect をインストールするときに構成できます。 このフィルター処理は、同期が必要なオブジェクトがごく少数であるパイロット デプロイで使用するためのものです。 グループベースのフィルター処理は、一度無効にすると再び有効にすることができません。 カスタム同期規則を使用したカスタム構成でのグループベースのフィルター処理は、**サポートされていません**。 この機能を構成できるのは、インストール ウィザードのみです。 パイロットが完了したら、このトピックで説明されているいずれかの他のフィルター処理オプションを使用する必要があります。
+グループベースのフィルター処理は、初めてカスタム インストールを使用して Azure AD Connect をインストールするときに構成できます。 このフィルター処理は、同期が必要なオブジェクトがごく少数であるパイロット デプロイで使用するためのものです。 グループベースのフィルター処理は、一度無効にすると再び有効にすることができません。 カスタム構成でのグループベースのフィルター処理は、**サポートされていません**。 この機能を構成できるのは、インストール ウィザードのみです。 パイロットが完了したら、このトピックで説明されているいずれかの他のフィルター処理オプションを使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。

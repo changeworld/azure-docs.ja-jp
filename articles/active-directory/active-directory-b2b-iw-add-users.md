@@ -14,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: d9ffd4176e87b6b5ada882ff09f507665bda7b1d
-ms.openlocfilehash: 7bad8269c3756979fe48d130a0cdfb02ceafad86
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 5622ab215fd7fea4c24ad00ea7132d12ecabbcd5
 
 
 ---
@@ -40,15 +40,10 @@ ms.openlocfilehash: 7bad8269c3756979fe48d130a0cdfb02ceafad86
 > [!NOTE]
 B2B コラボレーション ユーザーを、動的グループ、またはオンプレミスの Active Directory と同期しているグループに追加することはできません。
 
-## <a name="add-without-invitation"></a>招待なしの追加
 
-招待元が、追加ユーザーのいるパートナー組織のディレクトリに対する列挙権限があるロールに属している場合、招待されるユーザーは招待なしで招待元組織に追加されます。
+## <a name="next-steps"></a>次のステップ
 
-これが最も役に立つのは、次のシナリオです。
-1. ホスト組織のユーザー (たとえば、WoodGrove) が、パートナー組織の&1; 人のユーザー (たとえば、ゲストとして Sam@litware.com) を招待します。
-2. ホスト組織の管理者は、パートナー組織 (Litware) の他のユーザーを特定および追加することを Sam に許可するポリシーをセットアップします。
-4. これで、Sam は Litware の他のユーザーを WoodGrove のディレクトリ、グループ、またはアプリケーションに追加できます。招待に応じる操作は必要ありません。 Sam が Litware での適切な列挙権限を持っていれば、自動的に処理されます。
-
+Azure AD B2B コラボレーションに関する他の記事を参照してください。
 
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
@@ -59,10 +54,11 @@ B2B コラボレーション ユーザーを、動的グループ、またはオ
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
+* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

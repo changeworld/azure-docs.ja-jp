@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/07/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 049f8ecec38a518276c6deea6a285a59d1401de6
-ms.openlocfilehash: 318ec4a2b807aaed5c61272016d0957d6e6f5004
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 894f94fdefe081679b1e35183bd4127be35cd33c
 
 
 ---
@@ -35,10 +35,10 @@ ms.openlocfilehash: 318ec4a2b807aaed5c61272016d0957d6e6f5004
 6. 会社 A は、MFA をサポートしている十分な数の Premium Azure AD SKU を所持している必要があります。 会社 B のユーザーは、A 社のこのライセンスを使用します。
 7. まとめると、パートナー組織自体ではなく招待側のテナントが、"*常に*" パートナー組織の B2B コラボレーション ユーザーの MFA に対する責任を持ちます (パートナー組織が MFA 機能を持っている場合でも)。 今後のリリースでは、招待側の組織が自社の MFA を使用するのではなく、特定のパートナー組織の MFA を信頼できるようになっていく予定です。
 
-## <a name="setting-up-mfa-for-b2b-users"></a>B2B ユーザーの MFA のセットアップ
+## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザー用の MFA のセットアップ
 B2B コラボレーション ユーザー用の MFA のセットアップがいかに簡単かについては、[このビデオ](https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup)を参照してください。
 
-## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B ユーザーがオファーに応じるための MFA エクスペリエンス
+## <a name="b2b-collaboration-users-mfa-experience-for-offer-redemption"></a>B2B コラボレーション ユーザーがオファーに応じるための MFA エクスペリエンス
 招待に応じるためのエクスペリエンスについては、[このビデオ](https://channel9.msdn.com/Blogs/Azure/MFA-redemption)のアニメーションを参照してください。
 
 ## <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの MFA リセット
@@ -76,13 +76,14 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-add-guest-to-role.md)
+* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
 * [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
 * [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
 * [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
+* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 

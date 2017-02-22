@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: be67973db6b757722f575f5aad41405ab70eda2c
-ms.openlocfilehash: ca376de3d0c5237b0b87f09f0915a8785ceea6fd
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
 
 
 ---
@@ -31,32 +31,44 @@ API には次の機能が用意されています。
 
 1. "*任意の*" 電子メール アドレスで外部ユーザーを招待できます。
 
-    ```"invitedUserDisplayName": "Sam"
-    "invitedUserEmailAddress": "gsamoogle@gmail.com"```
+    ```
+    "invitedUserDisplayName": "Sam"
+    "invitedUserEmailAddress": "gsamoogle@gmail.com"
+    ```
 
 2. 招待に応じたユーザーの移動先をカスタマイズできます。
 
-    ```"inviteRedirectUrl": "https://myapps.microsoft.com/"```
+    ```
+    "inviteRedirectUrl": "https://myapps.microsoft.com/"
+    ```
 
 3. Microsoft を通じて標準的な招待メールを送信することができます。
 
-    ```"sendInvitationMessage": true```
+    ```
+    "sendInvitationMessage": true
+    ```
 
   受信者へのカスタマイズ可能なメッセージを付けることができます。
 
-    ```"customizedMessageBody": "Hello Sam, let's collaborate!"```
+    ```
+    "customizedMessageBody": "Hello Sam, let's collaborate!"
+    ```
 
 4. また、このコラボレーターの招待について知らせておきたい人を cc することができます。
 
 5. または、Azure AD を通じて通知を送信しないことを選択して、招待とオンボード ワークフローを完全にカスタマイズすることができます。
 
-    ```"sendInvitationMessage": false```
+    ```
+    "sendInvitationMessage": false
+    ```
 
   この場合は、招待に応じるための URL を API から受け取り、それを電子メール テンプレート、IM、またはその他の任意の配布方法に埋め込むことができます。
 
 6. 最後に、管理者である場合は、ユーザーをメンバーとして招待することができます。
 
-    ```"invitedUserType": "Member"```
+    ```
+    "invitedUserType": "Member"
+    ```
 
 
 ## <a name="authorization-model"></a>承認モデル
@@ -73,7 +85,9 @@ API は、以下の承認モードで実行できます。
 ## <a name="powershell"></a>PowerShell
 PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できるようになりました。 コマンドレットを使用して、新しい招待を作成するだけです。
 
-```New-AzureADMSInvitation```
+```
+New-AzureADMSInvitation
+```
 
 次のオプションを使用します。
 
@@ -90,17 +104,18 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-how-it-works.md)
+* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
 * [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
 * [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
 * [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
+* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -14,11 +14,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/02/2017
+ms.date: 02/09/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: d9ffd4176e87b6b5ada882ff09f507665bda7b1d
-ms.openlocfilehash: 6dfb795d711839efb6ab8e4e21d5bb162eff83b2
+ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
+ms.openlocfilehash: 78fb1aba448ebfbba9e38deec35daf7b64b4027c
 
 
 ---
@@ -63,10 +63,11 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
+* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

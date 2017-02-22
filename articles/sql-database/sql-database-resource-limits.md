@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/11/2017
+ms.date: 02/09/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 5dfb2b4fbe4dbd74575b418257843bc2097b966b
-ms.openlocfilehash: 5ca2da0caff29244f43c162e3cd98d335fd23f23
+ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
+ms.openlocfilehash: 15fd64f21eb20ae412f4d0cf1930e99e2e9fc62b
 
 
 ---
@@ -65,7 +65,7 @@ Basic、Standard、および Premium サービス レベルの設計目標の&1;
 | サーバーあたりの DTU |45000 |データベース、エラスティック プール、データ ウェアハウスをプロビジョニングする場合、V12 サーバーではサーバーあたり&45;,000 DTU を使用できます。 |
 
 > [!IMPORTANT]
-> Azure SQL Database の自動エクスポート機能は現在プレビュー段階であり、2017 年 3 月 1 日に廃止されます。 2016 年 12 月 1 日から、SQL データベースの自動エクスポートを構成することはできなくなります。 既存のエクスポート ジョブは、引き続き 2017 年 3 月 1 日まで実行されます。 2016 年 12 月 1 日以降は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)または [Azure Automation](../automation/automation-intro.md) を使用してください。PowerShell を使用して、選択したスケジュールに従って定期的に SQL データベースをアーカイブできます。 サンプル スクリプトは [GitHub からダウンロード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)できます。 
+> Azure SQL Database の自動エクスポート機能は現在プレビュー段階であり、2017 年 3 月 1 日に廃止されます。 2016 年 12 月 1 日から、SQL データベースの自動エクスポートを構成することはできなくなります。 既存の自動エクスポート ジョブは、引き続き 2017 年 3 月 1 日まで実行されます。 2016 年 12 月 1 日以降は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)または [Azure Automation](../automation/automation-intro.md) を使用してください。PowerShell を使用して、選択したスケジュールに従って定期的に SQL データベースをアーカイブできます。 サンプル スクリプトは [GitHub からダウンロード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)できます。 
 >
 
 

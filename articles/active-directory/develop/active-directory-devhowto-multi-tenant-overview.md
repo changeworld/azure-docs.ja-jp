@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/23/2017
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: c0c94960cc0a6a00f1db19867e622cda7f66a07b
-ms.openlocfilehash: 80f7470bcaad07ff2e355a7b95155a329827e8e0
+ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
+ms.openlocfilehash: 8daad095d80b244f53b4ee94c48ae9421172f062
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: 80f7470bcaad07ff2e355a7b95155a329827e8e0
 それでは、各手順の詳細を見ていきましょう。 すぐに、[こちらのマルチテナント サンプルの一覧][AAD-Samples-MT]を参照してもかまいません。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>登録をマルチテナントに更新する
-既定では、Azure AD の Web アプリケーション/API の登録はシングル テナントです。  登録をマルチテナントにするには、[Azure クラシック ポータル][AZURE-classic-portal]のアプリケーション登録の構成ページで [アプリケーションはマルチテナントです] スイッチを見つけて、[はい] に設定します。
+既定では、Azure AD の Web アプリケーション/API の登録はシングル テナントです。  登録をマルチテナントにするには、[Azure ポータル][AZURE-portal]のアプリケーション登録のプロパティ ページで [マルチテナント] スイッチを見つけて、[はい] に設定します。
 
 Azure AD でアプリケーションをマルチテナントにするには、そのアプリケーションのアプリケーション ID URI をグローバルに一意なものにする必要もあります。 アプリケーション ID URI は、プロトコル メッセージでアプリケーションを識別する手段の&1; つです。  シングル テナント アプリケーションの場合、アプリケーション ID URI はそのテナント内で一意であれば十分です。  マルチテナント アプリケーションの場合、Azure AD ですべてのテナントからそのアプリケーションを検索できるように、アプリケーション ID URI はグローバルに一意である必要があります。  グローバルな一意性は、アプリケーション ID URI のホスト名を Azure AD テナントの検証済みドメインと一致するものに設定することで実現できます。  たとえば、テナントの名前が contoso.onmicrosoft.com である場合、有効なアプリケーション ID URI は `https://contoso.onmicrosoft.com/myapp`のようになります。  また、テナントの検証済みドメインが `contoso.com` である場合は、有効なアプリケーション ID URI は `https://contoso.com/myapp` のようになります。  アプリケーション ID URI がこうしたパターンに従っていない場合、アプリケーションをマルチテナントに設定することはできません。
 
@@ -101,7 +101,7 @@ Web アプリケーションと Web API は、Azure AD からトークンを受�
 それでは、マルチテナント アプリケーションにユーザーがサインインする場合のユーザー エクスペリエンスについて見ていきましょう。
 
 ## <a name="understanding-user-and-admin-consent"></a>ユーザーおよび管理者の同意について
-Azure AD のアプリケーションにユーザーがサインインするには、そのアプリケーションがユーザーのテナントに表示される必要があります。  このようにすることで、組織では、ユーザーがテナントからアプリケーションにサインインする場合に一意のポリシーを適用するなどの操作を行うことができます。  シングル テナント アプリケーションの場合、この登録は簡単であり、[Azure クラシック ポータル][AZURE-classic-portal]でのアプリケーションの登録時に行われます。
+Azure AD のアプリケーションにユーザーがサインインするには、そのアプリケーションがユーザーのテナントに表示される必要があります。  このようにすることで、組織では、ユーザーがテナントからアプリケーションにサインインする場合に一意のポリシーを適用するなどの操作を行うことができます。  シングル テナント アプリケーションの場合、この登録は簡単であり、[Azure ポータル][AZURE-portal]でのアプリケーションの登録時に行われます。
 
 マルチテナント アプリケーションの場合、最初のアプリケーションの登録は、開発者が使用する Azure AD テナントに保存されます。  ユーザーが初めて別のテナントからこのアプリケーションにサインインすると、Azure AD により、アプリケーションで要求されるアクセス許可に同意するかどうかを尋ねられます。  同意した場合、アプリケーションを表す " *サービス プリンシパル* " と呼ばれるものがユーザーのテナントに作成され、サインインを続行できます。 また、アプリケーションに対するユーザーの同意を記録するデリゲートが、ディレクトリに作成されます。 アプリケーションのアプリケーション オブジェクトおよびサービス プリンシパル オブジェクトの詳細と、それらの関係については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
@@ -125,7 +125,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 アプリケーションで管理者に同意が求められ、管理者がアプリケーションにサインインしたものの `prompt=admin_consent` パラメーターは送信されなかった場合、管理者はアプリケーションに対する同意を正常に行うことができますが、同意の対象はそのユーザー アカウントのみに限られます。  管理者が同意を行っても、通常のユーザーは、アプリケーションにサインインして同意を行うことはできないままになります。  この動作は、ほかのユーザーのアクセスを許可する前に、テナント管理者がアプリケーションを使用できるようにしたい場合に便利です。
 
-テナント管理者は、通常ユーザーによるアプリケーションへの同意を無効にすることができます。  通常ユーザーによる同意が無効化された場合、テナントでのアプリケーションのセットアップには常に管理者の同意が必要になります。  通常ユーザーによる同意を無効化した状態でアプリケーションのテストを行うには、[Azure クラシック ポータル][AZURE-classic-portal]の Azure AD のテナント構成セクションにある構成スイッチを設定します。
+テナント管理者は、通常ユーザーによるアプリケーションへの同意を無効にすることができます。  通常ユーザーによる同意が無効化された場合、テナントでのアプリケーションのセットアップには常に管理者の同意が必要になります。  通常ユーザーによる同意を無効化した状態でアプリケーションのテストを行うには、[Azure ポータル][AZURE-portal]の Azure AD のテナント構成セクションにある構成スイッチを設定します。
 
 > [!NOTE]
 > 一部のアプリケーションでは、初めは通常ユーザーによる同意を許可してから、その後管理者に対して、管理者の同意が必要なアクセス許可を要求する必要があります。  現時点では、Azure AD での&1; 回のアプリケーション登録でこのような処理を行う方法はありません。  現在開発中の Azure AD v2 エンドポイントでは、アプリケーションが登録時ではなく実行時にアクセス許可を要求できるようになり、こうしたシナリオへの対応が可能になる予定です。  詳細については、[Azure AD アプリ モデル v2 の開発者ガイド][AAD-V2-Dev-Guide]を参照してください。
@@ -153,7 +153,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 ユーザーおよび管理者は、次の方法により、いつでもアプリケーションに対する同意を取り消すことができます。
 
 * ユーザーは、[[アクセス パネル アプリケーション]][AAD-Access-Panel] リストから個々のアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
-* 管理者は、[Azure クラシック ポータル][AZURE-classic-portal]の Azure AD の管理セクションで Azure AD からアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
+* 管理者は、[Azure ポータル][AZURE-portal]の Azure AD の管理セクションで Azure AD からアプリケーションを削除することで、アプリケーションに対するアクセス許可を取り消すことができます。
 
 管理者が、テナント内のすべてのユーザーについてアプリケーションに対して同意した場合、ユーザーは個別にアクセス許可を取り消すことはできません。  アクセス許可を取り消すことができるのは管理者のみであり、取り消しの対象はすべてのアプリケーションのみになります。
 
@@ -173,7 +173,7 @@ Azure AD では、同意は OAuth、OpenID Connect、WS-Federation、および S
 * [Microsoft Graph API のアクセス許可スコープ][MSFT-Graph-AAD]
 * [Azure AD Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]
 
-Microsoft のコンテンツ改善のため、下部の Disqus コメント セクションよりご意見をお寄せください。
+Microsoft のコンテンツ改善のため、下部のコメント セクションよりご意見をお寄せください。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -188,7 +188,7 @@ Microsoft のコンテンツ改善のため、下部の Disqus コメント セ�
 [AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
-[AZURE-classic-portal]: https://manage.windowsazure.com
+[AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-AAD]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
 
 <!--Image references-->
@@ -211,7 +211,7 @@ Microsoft のコンテンツ改善のため、下部の Disqus コメント セ�
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
 [AAD-V2-Dev-Guide]: ../active-directory-appmodel-v2-overview.md
-[AZURE-classic-portal]: https://manage.windowsazure.com
+[AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
@@ -239,6 +239,6 @@ Microsoft のコンテンツ改善のため、下部の Disqus コメント セ�
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
