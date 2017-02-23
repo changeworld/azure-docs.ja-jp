@@ -51,7 +51,7 @@ VSTS リリース テンプレートごとに別個の API キーを取得する
 
 4. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。 
    
-    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから [Application Insights Release Annotation]\(Application Insights リリース注釈) タスクを選択します。
    
     [API アクセス] ブレードからコピーした **アプリケーション ID** を貼り付けます。
    
