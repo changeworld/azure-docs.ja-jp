@@ -6,7 +6,7 @@ services: active-directory
 keywords: "Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法"
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: curtand
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
@@ -14,8 +14,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 0628dafc9cc4cb05e678f741d913e00116013459
 ms.openlocfilehash: 435f801b254a6c423a6ec3e96037ade62e14af29

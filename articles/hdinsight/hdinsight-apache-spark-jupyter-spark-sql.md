@@ -13,7 +13,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/01/2017
+ms.date: 02/22/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
@@ -116,16 +116,16 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
         # Load the data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-
+        
         # Create the schema
         hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
-
+        
         # Parse the data in hvacText
         hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
-
+        
         # Create a data frame
         hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
-
+        
         # Register the data fram as a table to run queries against
         hvacdf.registerTempTable("hvac")
 

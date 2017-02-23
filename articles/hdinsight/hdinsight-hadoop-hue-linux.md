@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9096b87dc93e261c2810a069a95d954121822cf5
-ms.openlocfilehash: 903a8b7f143ac08b69d94aa2bc442a43ca041b64
+ms.sourcegitcommit: 7af856e32064f16e7cb1083432d4d5715cef6e3a
+ms.openlocfilehash: dbffb88020cf53eb59b98eb80e12a47bc17c5708
 
 
 ---
@@ -46,8 +46,7 @@ Hue は Hadoop クラスターとの情報のやりとりに使用される一�
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
-次のスクリプト アクションを使用して、Hue を Linux ベースの HDInsight クラスターにインストールできます。
-https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+Linux ベースの HDInsight クラスターに Hue をインストールするためのスクリプトは、https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh で入手できます。 このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
 
 このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
@@ -138,7 +137,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 2. インストール中、複数の Hadoop サービス (HDFS、YARN、MR2、Oozie) が再起動し、構成を更新します。 スクリプトが Hue のインストールを完了した後、他の Hadoop サービスが起動するまで少し時間がかかる場合があります。 最初はこれが Hue のパフォーマンスに影響を与えることがあります。 すべてのサービスが起動すると、Hue が完全に機能します。
 3. Hue は Hive の現在の既定である Tez ジョブを認識しません。 Hive 実行エンジンとして MapReduce を使用する場合、スクリプトで次のコマンドを使用するようにスクリプトを更新します。
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 4. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 
@@ -158,6 +157,6 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 94e09583ef8070a7e98fd2b30648996648ce3c41
-ms.openlocfilehash: 87d3b5ef8989984420f1d0fe7d4188698a68dd0d
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
 
 
 ---
@@ -38,6 +38,9 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 * HDInsight クラスター (Linux または Windows ベース) の Apache HBase。 これは、この例のデータ ストアです。
 
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * 開発環境での [Java](https://java.com) 1.7 以降 Java を使用して、HDInsight クラスターへの送信時にトポロジをパッケージ化します。
 
   * **JAVA_HOME** 環境変数は、Java があるディレクトリを指している必要があります。
@@ -49,7 +52,7 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 イベントを関連付けるには、イベント ソースの共通の識別子が必要です。 たとえば、ユーザー ID、セッション ID、または a) 一意で、b) Storm に送信されたすべてのデータに含まれている他のデータが必要です。 この例では、GUID 値を使用してセッション ID を表します。
 
-この例は、次の 2 つの HDInsight クラスターで構成されます。
+この例は、次の&2; つの HDInsight クラスターで構成されます。
 
 * HBase: 履歴データの永続的なデータ ストア
 * Storm: 受信データの取り込みに使用
@@ -165,16 +168,16 @@ HBase では、データは、次のスキーマと設定を使用してテー�
    
    ![[Storm に送信] メニュー項目の画像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
-6. **[トポロジの送信]** ダイアログ ボックスで、このトポロジを実行する Storm クラスターを選択します。
+6. **[トポロジの送信]** ダイアログ ボックスで、このトポロジのデプロイ先の Storm クラスターを選択します。
    
    > [!NOTE]
    > 最初にトポロジを送信するときは、HDInsight クラスターの名前を取得するのに数秒かかる場合があります。
 
-7. トポロジがアップロードされてクラスターに送信されると、 **[Storm トポロジ ビュー]** が開き、現在実行中のトポロジが表示されます。 **[CorrelationTopology]** を選択し、ページ右上にある [更新] ボタンを使用して、トポロジ情報を更新します。
+7. トポロジがアップロードされてクラスターに送信されると、**[Storm トポロジ ビュー]** が開き、現在実行中のトポロジが表示されます。 **[CorrelationTopology]** を選択し、ページ右上にある [更新] ボタンを使用して、トポロジ情報を更新します。
    
    ![トポロジ ビューの画像](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
-   トポロジがデータの生成を開始すると、 **[Emitted]** 列の値がインクリメントされます。
+   トポロジがデータの生成を開始すると、**[Emitted]** 列の値がインクリメントされます。
    
    > [!NOTE]
    > **[Storm トポロジ ビュー]** が自動的に開かない場合は、次の手順を使用して開きます。
@@ -188,7 +191,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 1. **[SessionInfo]** プロジェクトに戻ります。 実行されていない場合は、トポロジの新しいインスタンスを開始します。
 
-2. メッセージが表示されたら、**[s]** を選択して、START イベントを検索します。 時間範囲を定義するために、開始時刻および終了時刻を入力するように求められます。これら 2 つの時刻の間のイベントのみが返されます。
+2. メッセージが表示されたら、**[s]** を選択して、START イベントを検索します。 時間の範囲を定義するために、開始時刻および終了時刻を入力するように求められます。これら&2; つの時刻の間のイベントのみが返されます。
    
     開始時刻と終了時刻を入力するときには、HH:MM と 'am' または 'pm' の形式を使用します。 たとえば、11:20pm です。
    
@@ -218,6 +221,6 @@ Storm の例の詳細については、「 [HDInsight での Storm のサンプ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

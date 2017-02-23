@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 94e09583ef8070a7e98fd2b30648996648ce3c41
-ms.openlocfilehash: 1389d9e3ff9adde814782ed5ac9a2145ee8bc010
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 8da7631d2dfc51e21269d05ace737760e3be61b8
 
 
 ---
@@ -28,7 +28,9 @@ Storm ダッシュボードでは、Web ブラウザーを使用して Apache St
 Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Storm REST API に依存し、これを使用して独自の監視と管理ソリューションを作成できます。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、HDInsight クラスター上に Windows ベースの Storm が必要です。 Linux ベースのクラスターの使用の詳細については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)
+> このドキュメントの手順では、オペレーティング システムとして Windows を使用する HDInsight クラスター上の Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+>
+> Linux を使用する HDInsight クラスターを使用して Storm トポロジをデプロイおよび管理する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -192,6 +194,6 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

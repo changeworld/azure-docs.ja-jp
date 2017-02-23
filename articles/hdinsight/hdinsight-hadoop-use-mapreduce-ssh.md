@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 477c766afbfaccd70313e73e5d2ec5873c12d105
+ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
+ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
 
 
 ---
@@ -43,7 +43,7 @@ ms.openlocfilehash: 477c766afbfaccd70313e73e5d2ec5873c12d105
 
 ## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
 
-SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
+SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
 
@@ -51,23 +51,25 @@ HDInsight クラスターの作成時に **SSH 認証に証明書キーを指定
 
     ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
-**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は** 、パスワードの入力を求められます。
+**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-HDInsight での SSH の使用に関する詳細については、「 [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
+HDInsight での SSH の使用に関する詳細については、[Linux、OS X、Unix、Bash on Windows 10 から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する方法に関するページ](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
 
 ### <a name="putty-windows-clients"></a>PuTTY (Windows クライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
+以前のバージョンの Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
 
-PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
 ## <a name="a-idhadoopause-hadoop-commands"></a><a id="hadoop"></a>Hadoop コマンドの使用
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
    
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
-   
-    これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。 入力として **wasbs://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasbs:///example/data/WordCountOutput** に格納されます。
+    ```
+    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
+    ```
+
+    これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。 入力として **/example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **/example/data/WordCountOutput** に格納されます。
    
     > [!NOTE]
     > この MapReduce ジョブとサンプル データの詳細については、「 [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
@@ -81,7 +83,9 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
 
 3. ジョブが完了したら、次のコマンドを使用して、**wasbs://example/data/WordCountOutput** に格納された出力ファイルを一覧表示します。
    
-        hdfs dfs -ls wasbs:///example/data/WordCountOutput
+    ```
+    hdfs dfs -ls /example/data/WordCountOutput
+    ```
    
     ここでは、**_SUCCESS** と **part-r-00000** の&2; つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
    
@@ -90,7 +94,9 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
 
 4. 出力を表示するには、次のコマンドを使用します。
    
-        hdfs dfs -cat wasbs:///example/data/WordCountOutput/part-r-00000
+    ```
+    hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
+    ```
    
     **wasbs://example/data/gutenberg/davinci.txt** ファイルに含まれる文字の一覧と、各文字の出現回数が表示されます。 ファイルに含まれるデータの例を次に示します。
    
@@ -120,6 +126,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

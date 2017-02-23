@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/14/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: d195f4936e8adfa22972a2a518188987398928e8
+ms.sourcegitcommit: d83bfd81768722592565fe924c4d00610b149999
+ms.openlocfilehash: 16801860b78b40cc883393ca4db3ffa208b889fd
 
 
 ---
@@ -29,7 +29,7 @@ Azure HDInsight を使用して、Hadoop クラスターで MapReduce ジョブ�
 * [**ワード カウント**][hdinsight-sample-wordcount]: テキスト ファイル内の単語出現回数をカウントします。
 * [**C# ストリーミング ワード カウント**][hdinsight-sample-csharp-streaming]: Hadoop ストリーミング インターフェイスを使用して、テキスト ファイル内の単語出現回数をカウントします。
 * [**Pi 推定**][hdinsight-sample-pi-estimator]: 統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。
-* [**10 GB GraySort**][hdinsight-sample-10gb-graysort] : HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+* [**10 GB GraySort**][hdinsight-sample-10gb-graysort] : HDInsight を使用して、10 GB のファイルに対して汎用 GraySort を実行します。 実行するジョブは&3; つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
 
 > [!NOTE]
 > ソース コードは「付録」にあります。
@@ -54,10 +54,10 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
     > [!IMPORTANT]
     > Azure サービス マネージャーを使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは、2017 年 1 月 1 日までに**廃止**される予定です。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
-    > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
+    > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳しくは、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
 
 ## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは&2; つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -119,8 +119,8 @@ Java MapReduce プログラムの開発手順については、「 [HDInsight �
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    MapReduce ジョブは、単語と出現回数が記録された *part-r-00000*という名前のファイルを作成します。 スクリプトでは **findstr** コマンドを使用して、 *"there"*を含む単語をすべて表示しています。
-3. 最初の 3 つの変数を設定し、スクリプトを実行します。
+    MapReduce ジョブは、単語と出現回数が記録された *part-r-00000*という名前のファイルを作成します。 スクリプトでは **findstr** コマンドを使用して、*"there"* を含む単語をすべて表示しています。
+3. 最初の&3; つの変数を設定して、スクリプトを実行します。
 
 ## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
@@ -138,11 +138,9 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集します。 各行はキーと値のペアに変換され、reducer の出力として収集されます。 既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) が値です。
 
-Hadoop ストリーミング インターフェイスの詳細については、[Hadoop ストリーミングに関するサイト][hadoop-streaming] を参照してください。
-
 **C# ストリーミング ワード カウント ジョブを送信するには**
 
-* 「[ワード カウント - Java](#word-count-java)」の手順に従って、し、ジョブ定義を以下に置き換えます。
+* 「[ワード カウント - Java](#word-count-java)」の手順に従って、ジョブ定義を次の行に置き換えます。
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -164,7 +162,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 
 **Pi 推定ジョブを送信するには**
 
-* 「[ワード カウント - Java](#word-count-java)」の手順に従って、し、ジョブ定義を以下に置き換えます。
+* 「[ワード カウント - Java](#word-count-java)」の手順に従って、ジョブ定義を次の行に置き換えます。
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -176,15 +174,15 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 ## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
-このサンプルでは 3 組の MapReduce プログラムを使用します。
+このサンプルでは&3; 組の MapReduce プログラムを使用します。
 
 1. **TeraGen** は、ソートするデータ行を生成するのに使用できる MapReduce プログラムです。
 2. **TeraSort** は入力データをサンプリングし、MapReduce を使用してデータを合計順にソートします。 TeraSort は MapReduce 関数の標準ソートです。 特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。 このため、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
-3. **TeraValidate** は、出力がグローバルにソートされているか検証する MapReduce プログラムです。 出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。 map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。 問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
+3. **TeraValidate** は、出力がグローバルにソートされているか検証する MapReduce プログラムです。 出力ディレクトリ内のファイルごとにマップを&1; つ作成します。各マップは各キーが前のキー以下であることを保証します。 map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。 問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
 
 3 つのアプリケーションすべてで使用される入力形式と出力形式は、適切な形式のテキスト ファイルを読み書きします。 ベンチマーク コンテストでは出力データを複数のノードにレプリケーションする必要がないため、reduce の出力ではレプリケーションが既定の 3 ではなく 1 に設定されます。
 
-サンプルでは 3 つのタスクを実行する必要があります。各タスクが、先ほど説明した MapReduce プログラムに対応しています。
+サンプルでは&3; つのタスクを実行する必要があります。各タスクが、先ほど説明した MapReduce プログラムに対応しています。
 
 1. **TeraGen** MapReduce ジョブを実行して、ソート用のデータを生成します。
 2. **TeraSort** MapReduce ジョブを実行して、データをソートします。
@@ -294,7 +292,7 @@ System.exit(job.waitForCompletion(true) ? 0 : 1);
 ```
 
 ## <a name="appendix-b---the-word-count-streaming-source-code"></a>付録 B - ワード カウントのストリーミング ソース コード
-MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。 mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
+MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。 mapper と reducer はどちらも標準入力ストリーム (stdin) から&1; 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
 ```csharp
 // The source code for the cat.exe (Mapper).
@@ -615,7 +613,7 @@ FileOutputFormat.setOutputPath(jobConf, outDir);
 final FileSystem fs = FileSystem.get(jobConf);
 if (fs.exists(TMP_DIR)) {
 throw new IOException("Tmp directory " + fs.makeQualified(TMP_DIR)
-+ " already exists. Please remove it first.");
++ " already exists. Remove it first.");
 }
 if (!fs.mkdirs(inDir)) {
 throw new IOException("Cannot create input directory " + inDir);
@@ -989,6 +987,6 @@ public class TeraSort extends Configured implements Tool {
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

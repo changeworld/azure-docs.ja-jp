@@ -5,7 +5,7 @@ keywords: "Windows クラウド, Azure Active Directory 上の Windows, Azure �
 services: active-directory
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 tags: azure-classic-portal
 ms.assetid: 2cb9ab6a-55b6-4658-b7f2-6e05ae015e1b
@@ -14,8 +14,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: aa6e78feb7ffaefcb8bce9c7f2293421c4859898

@@ -4,8 +4,8 @@ description: "Windows デバイスの Enterprise State Roaming の設定につ�
 services: active-directory
 keywords: "Enterprise State Roaming とは, エンタープライズ同期, Windows クラウド"
 documentationcenter: 
-author: femila
-manager: swadhwa
+author: markvi
+manager: femila
 editor: curtand
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
 ms.service: active-directory
@@ -13,8 +13,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: ce78b996a5f45b0b074563bc50af5aaab85f2667
 ms.openlocfilehash: 56eacc48102302961132bba6d14838327a899c59
