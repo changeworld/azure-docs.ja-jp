@@ -16,17 +16,17 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
-ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
+ms.sourcegitcommit: dd09cf5f9ad4bc82d9685b656eb40d31ac13fbd2
+ms.openlocfilehash: a0f5ef966bf4de86d337a561a4b9e2ded8b55488
 
 
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
 
-テンポラル履歴のリテンション期間は、個々のテーブル レベルで構成できるため、柔軟な継続ポリシーを作成できます。 テンポラル リテンション期間は簡単に適用でき、テーブルの作成時かスキーマの変更時にパラメーターを 1 つ設定するのみで適用できます。
+テンポラル履歴のリテンション期間は、個々のテーブル レベルで構成できるため、柔軟な継続ポリシーを作成できます。 テンポラル リテンション期間は簡単に適用でき、テーブルの作成時かスキーマの変更時にパラメーターを&1; つ設定するのみで適用できます。
 
-リテンション ポリシーを定義すると、自動データ クリーンアップの対象となる履歴行があるかどうかを Azure SQL Database が定期的にチェックするようになります。 一致する行の特定と履歴テーブルからの削除は、システムによってスケジュールが設定され、実行されるバックグラウンド タスクで透過的に実行されます。 SYSTEM_TIME 期間終了を表す列に基づいて、履歴テーブルの行の有効期間の条件がチェックされます。 たとえば、リテンション期間を 6 か月間に設定すると、次の条件を満たすテーブル行がクリーンアップの対象となります。
+リテンション ポリシーを定義すると、自動データ クリーンアップの対象となる履歴行があるかどうかを Azure SQL Database が定期的にチェックするようになります。 一致する行の特定と履歴テーブルからの削除は、システムによってスケジュールが設定され、実行されるバックグラウンド タスクで透過的に実行されます。 SYSTEM_TIME 期間終了を表す列に基づいて、履歴テーブルの行の有効期間の条件がチェックされます。 たとえば、リテンション期間を&6; か月間に設定すると、次の条件を満たすテーブル行がクリーンアップの対象となります。
 
 ````
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-point-in-time-restore.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
+データベースのフラグ **is_temporal_history_retention_enabled**は既定でオンに設定されていますが、ALTER DATABASE ステートメントを使って変更できます。 また、[ポイントインタイム リストア](sql-database-recovery-using-backups.md) 操作後は、自動的にオフに設定されます。 データベースのテンポラル履歴リテンション期間のクリーンアップを有効にするには、次のステートメントを実行します。
 
 ````
 ALTER DATABASE <myDB>
@@ -158,7 +158,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 ````
 
-クエリ プランには、履歴テーブル (ハイライト表示) での「Clustered Index Scan」操作の期間終了列 (ValidTo) に適用される追加のフィルターが含まれます。 この例では、WebsiteUserInfo テーブルに 1 か月のリテンション期間が設定されていると想定しています。
+クエリ プランには、履歴テーブル (ハイライト表示) での「Clustered Index Scan」操作の期間終了列 (ValidTo) に適用される追加のフィルターが含まれます。 この例では、WebsiteUserInfo テーブルに&1; か月のリテンション期間が設定されていると想定しています。
 
 ![リテンション期間クエリ フィルター](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
@@ -169,9 +169,9 @@ SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 一貫性のない結果や予期しない結果を得ることがあるため、ビジネス ロジックが保有期間を超える履歴テーブルの読み取りに依存することのないようにしてください。 テンポラル テーブルのデータの分析には、FOR SYSTEM_TIME 句を使ったテンポラル クエリを使用することをお勧めします。
 
 ## <a name="point-in-time-restore-considerations"></a>ポイントインタイム リストアの考慮事項
-[既存のデータベースを特定の時点に復元](sql-database-point-in-time-restore.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
+[既存のデータベースを特定の時点に復元](sql-database-point-in-time-restore-portal.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
 
-テンポラル テーブルに 1 か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
+テンポラル テーブルに&1; か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
 
 テンポラル リテンション期間のクリーンアップを有効にする場合は、ポイントインタイム リストアの後に次の Transact-SQL ステートメントを実行します。
 
@@ -190,6 +190,6 @@ Channel 9 にアクセスして、[テンポラル テーブル導入による�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
