@@ -3,7 +3,7 @@ title: "Azure Active Directory でのカスタム ドメイン名の管理 | Mic
 description: "Azure Active Directory でのカスタム ドメインの管理の概念と方法"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: cf3523bd-9ee0-439e-963d-ccea038867b9

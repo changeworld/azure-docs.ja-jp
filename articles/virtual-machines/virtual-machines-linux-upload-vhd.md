@@ -100,7 +100,7 @@ myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --custom-os-disk-type linux \
+    --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
     --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
@@ -110,7 +110,7 @@ az vm create --resource-group myResourceGroup --location westus \
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --custom-os-disk-type linux \
+    --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
     --image https://mystorageaccount.blob.core.windows.net/mydisk/myDisks.vhd
 ```
@@ -250,7 +250,7 @@ myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --custom-os-disk-type linux \
+    --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
     --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
@@ -264,7 +264,7 @@ az vm create --resource-group myResourceGroup --location westus \
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --custom-os-disk-type linux \
+    --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
     --image https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
 ```

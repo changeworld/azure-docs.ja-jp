@@ -55,8 +55,8 @@ Install-Package wastorage
 Azure Storage API を使用してキューにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/queue.h"
+#include <was/storage_account.h>
+#include <was/queue.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定

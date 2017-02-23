@@ -26,7 +26,7 @@ ms.openlocfilehash: f653e69590ee15d272543dc58840b1ee6983e953
 この記事では、SAP Cloud Appliance Library 3.0 を使用して Microsoft Azure で S/4 HANA をデプロイする方法について説明します。
 スクリーン ショットでは、その手順を示します。 他の SAP HANA ベースのソリューション (BW/4 HANA など) のデプロイも同様のプロセスで機能します。 必要なのは別のソリューションを選択することだけです。
 
-SAP Cloud Appliance Library (SAP CAL) の作業は [ここ](https://cal.sap.com/)から開始できます。 新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)のブログもご覧ください。 
+SAP Cloud Appliance Library (SAP CAL) の作業は [ここ](https://cal.sap.com/)から開始できます。 新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience)のブログもご覧ください。
 
 次のスクリーンショットに、Microsoft Azure で S/4 HANA をデプロイする手順を示します。 BW/4 HANA などの他のソリューションでもプロセスは同じです。
 
@@ -46,8 +46,6 @@ SAP Cloud Appliance Library (SAP CAL) の作業は [ここ](https://cal.sap.com/
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic6b.jpg)
 
 新しい Azure ポータルの左側に "サブスクリプション" という項目が見つかります。 クリックすると、ユーザーのすべてのアクティブなサブスクリプションが表示されます。
-
-![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic7b.jpg)
 
 サブスクリプションのいずれかを選択し、[管理証明書] を選択すると、新しい Azure Resource Manager モデルの "サービス プリンシパル" を使用する新しい概念の説明が表示されます。
 SAP CAL はこの新しいモデルにはまだ対応していないため、管理証明書を操作するには "クラシック" モデルと以前の Azure ポータルが必要です。
@@ -92,7 +90,6 @@ Azure ポータルで、SAP CAL で指定したのと同じインスタンス名
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic15.jpg)
 
 別のオプションとして、クライアント Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
-
 
 
 
