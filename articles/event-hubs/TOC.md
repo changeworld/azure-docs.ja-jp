@@ -20,6 +20,7 @@
 ## 計画と設計
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
+### [可用性と一貫性](event-hubs-availability-and-consistency.md)
 ## 開発
 ### [利用可能な API](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
@@ -59,6 +60,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

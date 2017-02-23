@@ -8,6 +8,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [データの追加](search-what-is-data-import.md)
+### [Azure ポータル](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [インデックスの検索](search-query-overview.md)
@@ -25,7 +26,6 @@
 ### [サービスの制限](search-limits-quotas-capacity.md)
 ### [サービスの拡張性](search-capacity-planning.md)
 ### [マルチテナント方式の設計パターン](search-modeling-multitenant-saas-applications.md)
-
 
 ## 開発
 ### [SDK をアップグレードする](search-dotnet-sdk-migration.md)
@@ -49,15 +49,16 @@
 ### [JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 ### [Azure VM で SQL Server へのインデクサーの接続を構成する](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [インデクサーのフィールド マッピング](search-indexer-field-mappings.md)
-##  検索エクスペリエンスを設計する
+##  検索エクスペリエンス
+### [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+### [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 ### [Lucene 構文クエリの例](search-query-lucene-examples.md)
-### [スコアリング プロファイル](search-get-started-scoring-profiles.md)
-### [サジェスター](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [タグ ブースト](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [フィルター式構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### [スコア付け](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
-### [言語アナライザー](https://msdn.microsoft.com/library/azure/dn879793)
-### [カスタム アナライザー](https://msdn.microsoft.com/library/azure/mt605304)
-### [多言語検索](search-language-support.md)
+### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
+### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # リファレンス
 ## [.NET](/dotnet/api/microsoft.azure.search)
@@ -86,6 +87,6 @@
 ### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

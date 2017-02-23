@@ -10,10 +10,12 @@
 ## [トラブルシューティング](multi-factor-authentication-end-user-troubleshoot.md)
 ## [アプリ パスワードの設定](multi-factor-authentication-end-user-app-passwords.md)
 ## Microsoft Authenticator アプリの使用
-### [作業開始](microsoft-authenticator-app-how-to.md)
+### [アプリの概要](microsoft-authenticator-app-how-to.md)
+### [携帯電話を使用したサインイン](microsoft-authenticator-app-phone-signin-faq.md)
 ### [FAQ](microsoft-authenticator-app-faq.md)
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO3-->
 
 

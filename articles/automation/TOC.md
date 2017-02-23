@@ -55,6 +55,7 @@
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
+### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
 ## 監視
 ### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
 ### [Log Analytics から Azure Automation アカウントのリンクを解除する](automation-unlink-from-log-analytics.md)
@@ -82,6 +83,6 @@
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

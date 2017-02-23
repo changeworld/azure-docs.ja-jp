@@ -50,8 +50,11 @@
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
-## [アクセスおよび使用状況レポートを表示する](active-directory-view-access-usage-reports.md)
+## [アクティビティ レポートとセキュリティ レポートの表示](active-directory-view-access-usage-reports.md)
 ### [Azure AD レポート](active-directory-reporting-getting-started.md)
+### [FAQ](active-directory-reporting-faq.md)
+### [レポートの移行](active-directory-reporting-migration.md)
+
 ### [既知のネットワーク](active-directory-known-networks.md)
 
 ### [レポート ガイド](active-directory-reporting-guide.md)
@@ -212,7 +215,6 @@
 #### [B2B ユーザー トークン](active-directory-b2b-user-token.md)
 #### [B2B ユーザー要求のマッピング](active-directory-b2b-claims-mapping.md)
 #### [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-#### [B2B と B2C を比較する](active-directory-b2b-compare-b2c.md)
 #### [B2B 用に SaaS アプリを構成する](active-directory-b2b-configure-saas-apps.md)
 #### [コードと PowerShell のサンプル](active-directory-b2b-code-samples.md)
 #### [現時点での制限事項](active-directory-b2b-current-limitations.md)
@@ -230,9 +232,9 @@
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [Azure でのリソース アクセス](active-directory-understanding-resource-access.md)
 ### [ロールベースのアクセス制御](role-based-access-control-what-is.md)
-#### アクセスを管理する
-##### [Azure Portal](role-based-access-control-manage-assignments.md)
-##### [クラシック ポータル](role-based-access-control-configure.md)
+#### アクセス権の割り当てを管理する
+##### [ユーザー別](role-based-access-control-manage-assignments.md)
+##### [リソース別](role-based-access-control-configure.md)
 #### [組み込みのロール](role-based-access-built-in-roles.md)
 #### [カスタム ロール](role-based-access-control-custom-roles.md)
 #### [レポート](role-based-access-control-access-change-history-report.md)
@@ -323,6 +325,6 @@
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

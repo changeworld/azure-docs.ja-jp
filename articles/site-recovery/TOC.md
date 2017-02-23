@@ -2,7 +2,7 @@
 ## [Site Recovery とは](site-recovery-overview.md)
 ## [Site Recovery のしくみ](site-recovery-components.md)
 ## [保護できるワークロード](site-recovery-workload.md)
-## [Site Recovery のサポート マトリックス](site-recovery-support-matrix.md)
+## [Site Recovery のサポート マトリックス](site-recovery-support-matrix-to-azure.md)
 ## [FAQ](site-recovery-faq.md)
 ## [概要を見る](https://www.youtube.com/watch?v=eOOwMQPBKfM)
 
@@ -26,7 +26,14 @@
 ### [VMware のレプリケーション用にモビリティ サービスをデプロイする](site-recovery-vmware-to-azure-install-mob-svc.md)
 #### [System Center Configuration Manager を使用してモビリティ サービスをデプロイする](site-recovery-install-mobility-service-using-sccm.md)
 #### [Azure Automation DSC を使用してモビリティ サービスをデプロイする](site-recovery-automate-mobility-service-install.md)
-### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
+## フェールオーバーとフェールバック
+### [Site Recovery でのフェールオーバー](site-recovery-failover.md)
+### [復旧計画を設定する](site-recovery-create-recovery-plans.md)
+#### [復旧計画に Azure Runbook を追加する](site-recovery-runbook-automation.md)
+### [Azure へのテスト フェールオーバーの実行](site-recovery-test-failover-to-azure.md)
+### [2 つの VMM サイト間でテスト フェールオーバーを実行する](site-recovery-test-failover-vmm-to-vmm.md)
+### [VMware VM と物理サーバーをフェールバックする](site-recovery-failback-azure-to-vmware.md)
+
 ## 移行
 ### [Azure への移行](site-recovery-migrate-to-azure.md)
 ### [Azure リージョンの間で移行](site-recovery-migrate-azure-to-azure.md)
@@ -44,13 +51,9 @@
 ### [Azure への Hyper-V のレプリケーションの自動化 (VMM なし)](site-recovery-deploy-with-powershell-resource-manager.md)
 ### [Azure への Hyper-V のレプリケーションの自動化 (VMM を使用)](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 ### [セカンダリ サイトへの Hyper-V のレプリケーションの自動化 (VMM を使用)](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
-## フェールオーバーとフェールバック
-### [Site Recovery でのフェールオーバー](site-recovery-failover.md)
-### [復旧計画を設定する](site-recovery-create-recovery-plans.md)
-#### [復旧計画に Azure Runbook を追加する](site-recovery-runbook-automation.md)
-### [VMware から Azure へのテスト フェールオーバーを実行する](site-recovery-test-failover-to-azure.md)
-### [2 つの VMM サイト間でテスト フェールオーバーを実行する](site-recovery-test-failover-vmm-to-vmm.md)
-### [VMware VM と物理サーバーをフェールバックする](site-recovery-failback-azure-to-vmware.md)
+## 管理
+### [サーバーの削除と保護の無効化](site-recovery-manage-registration-and-protection.md)
+### [レプリケーション設定の編集](site-recovery-setup-replication-settings-vmware.md#edit-replication-policy)
 ## [監視とトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
 
 # リファレンス
@@ -69,6 +72,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -3,7 +3,7 @@
 ## [FAQ](container-service-faq.md)
 # 作業の開始
 ## [ACS クラスターをデプロイする](container-service-deployment.md)
-## [Azure CLI 2.0 (プレビュー) を使用して ACS にデプロイする](container-service-create-acs-cluster-cli.md)
+## [Azure CLI 2.0 を使用して ACS にデプロイする](container-service-create-acs-cluster-cli.md)
 ## [ACS クラスターに接続する](container-service-connect.md)
 ## [ACS クラスターをスケールする](container-service-scale.md)
 # 方法
@@ -23,6 +23,7 @@
 #### [Dynatrace で監視する](container-service-monitoring-dynatrace.md)
 ## Kubernetes で監視する
 ### [Kubernetes の概要](container-service-kubernetes-walkthrough.md)
+### [Kubernetes と Windows の概要](container-service-kubernetes-windows-walkthrough.md)
 ### [サービス プリンシパルの構成](container-service-kubernetes-service-principal.md)
 ### [コンテナー管理 - Kubernetes UI](container-service-kubernetes-ui.md)
 ### [Kubernetes コンテナーを負荷分散する](container-service-kubernetes-load-balancing.md)
@@ -34,7 +35,7 @@
 ### [Docker および Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 継続的インテグレーション](container-service-docker-swarm-setup-ci-cd.md)
 # リファレンス
-## [Azure CLI 2.0 (プレビュー)](/cli/azure/acs)
+## [Azure CLI 2.0](/cli/azure/acs)
 ## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
 ## [REST ()](/rest/api/compute/containerservices)
@@ -44,6 +45,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

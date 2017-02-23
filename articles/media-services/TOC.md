@@ -195,7 +195,8 @@
 #### [REST ()](media-services-rest-check-job-progress.md)
 #### [ポータル](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
-### [ジョブの通知を監視する Queue Storage](media-services-dotnet-check-job-progress-with-queues.md)
+### [Queue Storage を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-queues.md)
+### [webhook を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## トラブルシューティング
 ### [よく寄せられる質問](media-services-frequently-asked-questions.md)
@@ -216,6 +217,6 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -45,7 +45,7 @@
 ## [Azure 診断スキーマ](../monitoring-and-diagnostics/azure-diagnostics-schema.md)
 ### [診断スキーマ 1.0](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md)
 ### [診断スキーマ 1.2](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md)
-### [診断スキーマ 1.3 ～ 1.5](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5.md)
+### [診断スキーマ 1.3 ～ 1.7](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
 
 
 # リソース
@@ -54,6 +54,6 @@
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

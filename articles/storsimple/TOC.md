@@ -186,7 +186,7 @@
 
 ## リリース ノート
 ### [Update 4 - 最新](storsimple-update4-release-notes.md)
-### [Update 3 - 最新](storsimple-update3-release-notes.md)
+### [Update 3](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
 ### [Update 2](storsimple-update2-release-notes.md)
 ### [Update 1](storsimple-update1-release-notes.md)
@@ -239,6 +239,6 @@
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

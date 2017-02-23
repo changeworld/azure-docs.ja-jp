@@ -3,6 +3,7 @@
 
 # 作業の開始
 ## [ポータルでスケール セットを作成する](virtual-machine-scale-sets-portal-create.md)
+## [Azure CLI を使用してスケール セットを作成する](virtual-machine-scale-sets-linux-create-cli.md)
 
 # 方法
 ## 計画と設計
@@ -10,6 +11,7 @@
 
 ## デプロイ
 ### [ポータルを使用したスケール セット](virtual-machine-scale-sets-portal-create.md)
+### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
 ### [Visual Studio を使用したスケール セット](virtual-machine-scale-sets-vs-create.md)
 ### [PowerShell を使用したスケール セット](virtual-machine-scale-sets-windows-create.md)
 ### [Azure CLI を使用したスケール セット](virtual-machine-scale-sets-linux-create-cli.md)
@@ -19,6 +21,7 @@
 ### [スケール セットでデータ ディスクを使用する](virtual-machine-scale-sets-attached-disks.md)
 ### [大規模なスケール セットを処理する](virtual-machine-scale-sets-placement-groups.md)
 ### [スケール セット テンプレートを変換して管理ディスクを使用する](virtual-machine-scale-sets-convert-template-to-md.md)
+
 
 
 ## Manage
@@ -36,7 +39,7 @@
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [REST ()](/rest/api/compute/)
+## [REST ()](/rest/api/virtualmachinescalesets/)
 
 # リソース
 ## 価格 
@@ -45,6 +48,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

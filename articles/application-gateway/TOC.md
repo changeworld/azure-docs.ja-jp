@@ -1,5 +1,6 @@
 # 概要
 ## [Application Gateway とは](application-gateway-introduction.md)
+## [Application Gateway の FAQ](application-gateway-faq.md)
 ## [Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)
 ## [正常性の監視](application-gateway-probe-overview.md)
 ## [URL ルーティング](application-gateway-url-route-overview.md)
@@ -38,10 +39,9 @@
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (クラシック)](application-gateway-create-probe-classic-ps.md)
 ## [負荷分散サービスの結合](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
-## 管理
-### [診断](application-gateway-diagnostics.md)
-### [トラブルシューティング](application-gateway-troubleshooting-502.md)
-
+## トラブルシューティング
+### [Application Gateway のエラーのトラブルシューティング](application-gateway-troubleshooting-502.md)
+### [診断ログと指標](application-gateway-diagnostics.md)
 # リファレンス
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
 ## [Azure CLI 2.0 プレビュー](/cli/azure/network/application-gateway)
@@ -50,7 +50,7 @@
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
-## [REST ()](https://msdn.microsoft.com/library/mt684941)
+## [REST ()](https://docs.microsoft.com/rest/api/applicationgateway)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt299393)
 # 関連項目
 ## [ExpressRoute](/azure/expressroute/)
@@ -67,6 +67,6 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

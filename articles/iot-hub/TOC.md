@@ -7,11 +7,10 @@
 ## シミュレートされたデバイスの使用
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
-### [Node](iot-hub-node-node-getstarted.md)
+### [Node.JS](iot-hub-node-node-getstarted.md)
 
 ## Raspberry Pi の使用
-### Node.js
-#### [Start](iot-hub-raspberry-pi-kit-node-get-started.md)
+### [Node.JS](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
@@ -32,8 +31,7 @@
 ##### [省略可能: LED の動作を変更する](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 #### [トラブルシューティング](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 
-### C
-#### [Start](iot-hub-raspberry-pi-kit-c-get-started.md)
+### [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
@@ -55,8 +53,7 @@
 #### [トラブルシューティング](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
 
 ## Intel Edison の使用
-### Node.js
-#### [Start](iot-hub-intel-edison-kit-node-get-started.md)
+### [Node.JS](iot-hub-intel-edison-kit-node-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
@@ -77,8 +74,7 @@
 ##### [省略可能: LED の動作を変更する](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
 #### [トラブルシューティング](iot-hub-intel-edison-kit-node-troubleshooting.md)
 
-### C
-#### [Start](iot-hub-intel-edison-kit-c-get-started.md)
+### [C](iot-hub-intel-edison-kit-c-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
@@ -100,8 +96,7 @@
 #### [トラブルシューティング](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## Arduino の使用
-### Node.js
-#### [Start](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+### [Node.JS](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -127,9 +122,7 @@
 ### [Windows でのシミュレーション](iot-hub-windows-gateway-sdk-get-started.md)
 
 ## IoT Gateway Starter Kit の使用
-### シミュレートされたデバイス
-
-#### [Start](iot-hub-gateway-kit-c-sim-get-started.md)
+### [シミュレートされたデバイス](iot-hub-gateway-kit-c-sim-get-started.md)
 #### レッスン 1: NUC の構成
 ##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md)
 
@@ -149,8 +142,7 @@
 
 #### [トラブルシューティング](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
-### SensorTag デバイス
-#### [Start](iot-hub-gateway-kit-c-get-started.md)
+### [SensorTag デバイス](iot-hub-gateway-kit-c-get-started.md)
 #### レッスン 1: NUC の構成
 ##### [Intel NUC を IoT ゲートウェイとしてセットアップする](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 
@@ -170,8 +162,7 @@
 
 ##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
 
-## C 用 Azure IoT device SDK の使用
-### [はじめに](iot-hub-device-sdk-c-intro.md)
+## [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
 ### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
 ### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 
@@ -280,6 +271,6 @@
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 
