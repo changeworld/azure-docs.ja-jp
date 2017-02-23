@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/13/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6e89921509bb273d6d97f829d4867eded20c82bc
+ms.sourcegitcommit: 3868d36948342739eb78b013bb4b466df4381b4f
+ms.openlocfilehash: 7c1ca950c3ab1b8ffb754a74597d45b82777838c
 
 
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>プロパティおよびメタデータの設定と取得
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Storage のオブジェクトは、含まれるデータのほかにもシステムのプロパティとユーザー定義のメタデータをサポートします。
 
-* **システムのプロパティ。**  システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 これらは Azure ストレージ クライアント ライブラリで管理されます。
+* **システムのプロパティ。** システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 これらは Azure ストレージ クライアント ライブラリで管理されます。
 * **ユーザー定義のメタデータ。** ユーザー定義のメタデータは、名前と値のペアの形式で、特定のリソースで指定したメタデータです。 メタデータを使用すると、ストレージ リソースで追加の値を格納できます。つまり、これらの値は、自身の目的のためだけに存在するため、リソースの動作には影響しません。
 
 ストレージ リソースのプロパティとメタデータの値を取得するには、2 つの手順が必要です。 これらの値を読み取るには、 **FetchAttributes** メソッドを呼び出して値を明示的に取得しておく必要があります。
@@ -32,6 +32,7 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 > [!IMPORTANT]
 > ストレージ リソースのプロパティとメタデータの値は、いずれかの **FetchAttributes** メソッドを呼び出さない限り、設定されません。
 >
+> 名前/値ペアに非 ASCII 文字が含まれていると、`400 Bad Request` を受け取ります。 メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーを管理するすべての制約に準拠する必要があります。 このため、非 ASCII 文字を含む名前と値には URL エンコードまたは Base64 エンコードを使用することをお勧めします。
 >
 
 ## <a name="setting-and-retrieving-properties"></a>プロパティの設定と取得
@@ -64,7 +65,7 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>メタデータの設定と取得
-メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、リソースの **Metadata** コレクションに名前と値のペアを追加した後、**SetMetadata** メソッドを呼び出して値をサービスに保存します。
+メタデータは、BLOB またはコンテナーのリソースで&1; つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、リソースの **Metadata** コレクションに名前と値のペアを追加した後、**SetMetadata** メソッドを呼び出して値をサービスに保存します。
 
 > [!NOTE]
 > メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。
@@ -110,6 +111,6 @@ public static void ListContainerMetadata(CloudBlobContainer container)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

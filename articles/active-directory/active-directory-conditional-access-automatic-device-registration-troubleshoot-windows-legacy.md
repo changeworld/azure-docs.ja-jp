@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 535badb5444fd4c29211f83556c0a750ee8adf70
-ms.openlocfilehash: 0e031760b84aa59fefda2469606475b36dbc1ff7
+ms.sourcegitcommit: 1b12d8ef3bbbfd2688f7bbd47968332e83a35252
+ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
 
 
 ---
@@ -93,13 +93,14 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 およ
 
   - Azure AD のコンピューターが属する AD フォレスト内の検証済みのドメイン名を参照するサービス接続ポイント オブジェクトがない。
 
-  - ユーザーがデバイスの上限に達している。 「Azure Active Directory Device Registration の基本」をご覧ください。
+  - ユーザーがデバイスの上限に達している。 「Azure Active Directory デバイス登録の使用」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、「[デバイスの自動登録に関する FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)」をご覧ください。 
 
 
-<!--HONumber=Feb17_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: iaas-sql-server
 ms.date: 02/07/2017
 ms.author: v-shysun
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: a7d1878931ccf45e8e3192d5d03a4292c5291366
+ms.sourcegitcommit: 42b3e222f24e9b5c1bb26f7e1e36b1e11c2f48b8
+ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
 
 
 ---
@@ -49,6 +49,10 @@ ms.openlocfilehash: a7d1878931ccf45e8e3192d5d03a4292c5291366
 
     いいえ。 分単位のライセンスから、所有しているライセンスへの使用に切り替えることはできません。 いずれかの [BYOL イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)を使用して新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、データベースを新しいサーバーに移行します。
 
+7. **SQL Server フェールオーバー クラスター インスタンス (FCI) は Azure VM でサポートされますか?**
+
+   はい。 [Windows Server フェールオーバー クラスター \(WSFC\) を Windows Server 2016 上で作成](virtual-machines-windows-portal-sql-create-failover-cluster.md)し、クラスター ストレージとして Storage Spaces Direct (S2D) を使用できます。 または、[Azure 仮想マシンでの SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
+
 7. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
    
     「[Virtual Machines のライセンス FAQ](http://azure.microsoft.com/pricing/licensing-faq/)」に説明されているように、ソフトウェア アシュアランスのライセンス モビリティを使用している場合は、HA デプロイにパッシブなセカンダリ レプリカとして参加している SQL Server のライセンスに料金を支払う必要はありません。
@@ -77,6 +81,6 @@ Azure Virtual Machines 上の SQL Server の概要については、ビデオ「
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0e4eb184e353700f945f0da93aeca2187d710415
-ms.openlocfilehash: 01133742302c366e283b6fac8b1e9436fc98901f
+ms.sourcegitcommit: 28712a9898bf2449de53d21fd87f1ce53da71ff8
+ms.openlocfilehash: df60c4737954e79ff860601412dffa58d4dbb471
 
 
 ---
@@ -48,11 +48,11 @@ Azure Active Directory でのシングル サインオンをサポートする�
 > 
 > アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
 > 
-> https://manage.windowsazure.com でアプリケーションの詳細に示す、アプリケーションのクライアント ID:
+> https://portal.azure.com でアプリケーションの詳細に示す、アプリケーションのアプリケーション ID:
 > 
 > 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
 > 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、Azure Active Directory Marketplace を参照してください)。
+> アプリケーションを表示するカテゴリを最大&3; つ選択してください (使用できるカテゴリについては、Azure Active Directory Marketplace を参照してください)。
 > 
 > アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
 > 
@@ -84,7 +84,7 @@ SAML 2.0 をサポートするすべてのアプリケーションは、 [この
 > 
 > 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
 > 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、 [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)をご覧ください):
+> アプリケーションを表示するカテゴリを最大&3; つ選択してください (使用できるカテゴリについては、 [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)をご覧ください):
 > 
 > アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
 > 
@@ -97,6 +97,6 @@ SAML 2.0 をサポートするすべてのアプリケーションは、 [この
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

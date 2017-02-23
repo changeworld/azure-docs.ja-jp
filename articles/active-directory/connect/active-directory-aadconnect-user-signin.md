@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bddd581b5164b03ccba75370cd89a7831101cf37
-ms.openlocfilehash: 5b77d16c4a373936dfa5fbba35bc3dc4c9a37e78
+ms.sourcegitcommit: 4fbe7bd802e9cc32d43f019980650c4723b75d5f
+ms.openlocfilehash: 7e821117e62eda286cefb59a5ded85b2f99f3ef7
 
 
 ---
@@ -77,7 +77,7 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 
 * フェデレーション サーバー用の Windows Server 2012 R2 サーバー。
 * Web アプリケーション プロキシ用の Windows Server 2012 R2 サーバー。
-* fs.contoso.com などの目的のフェデレーション サービス名に対する SSL 証明書を 1 つ含む .pfx ファイル。
+* fs.contoso.com などの目的のフェデレーション サービス名に対する SSL 証明書を&1; つ含む .pfx ファイル。
 
 新しいファームをデプロイするか、既存のファームを使用する場合:
 
@@ -97,7 +97,7 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 ### <a name="understanding-user-principal-name"></a>ユーザー プリンシパル名について
 Active Directory では、既定の UPN サフィックスは、ユーザー アカウントが作成されたドメインの DNS 名です。 ほとんどの場合、これはインターネット上で企業ドメインとして登録したドメイン名です。 ただし、Active Directory ドメインと信頼関係を使用して、複数の UPN サフィックスを追加することができます。
 
-ユーザーの UPN の形式は、 username@domain. たとえば、"contoso.com" という名前の Active Directory に対して、ユーザー John は UPN 'john@contoso.com'. を持つ場合があります。ユーザーの UPN は RFC 822 に基づいています。 UPN と電子メールは形式が同じですが、ユーザーの UPN の値は、ユーザーの電子メール アドレスと必ずしも一致しません。
+ユーザーの UPN の形式は、username@domain です。 たとえば、"contoso.com" という名前の Active Directory ドメインでは、John という名前のユーザーの UPN は 'john@contoso.com' になります。 ユーザーの UPN は RFC 822 に基づいています。 UPN と電子メールは形式が同じですが、ユーザーの UPN の値は、ユーザーの電子メール アドレスと必ずしも一致しません。
 
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD のユーザー プリンシパル名
 Azure AD Connect ウィザードでは、userPrincipalName 属性が使用されるか、Azure AD のユーザー プリンシパル名としてオンプレミスで使用する属性を指定できます (カスタム インストールの場合)。 これは、Azure AD へのサインインに使用される値です。 ユーザー プリンシパル名の属性値が Azure AD の検証済みドメインに対応していない場合、その値は Azure AD によって既定値の .onmicrosoft.com に置き換えられます。
@@ -178,6 +178,6 @@ Azure AD の既定の .onmicrosoft.com ドメイン、または確認されて�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

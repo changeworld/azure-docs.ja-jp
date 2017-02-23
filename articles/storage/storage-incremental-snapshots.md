@@ -1,5 +1,5 @@
 ---
-title: "増分スナップショットを使用した Azure VM のバックアップと復元 | Microsoft Docs"
+title: "増分スナップショットを使用した非管理 Azure VM ディスクのバックアップと復元 | Microsoft Docs"
 description: "増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。"
 services: storage
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
-ms.openlocfilehash: 848c3fb655688dd55176cff00c728a151fd8f548
+ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
+ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
 
 
 ---
-# <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>Azure 仮想マシン ディスクを増分スナップショットでバックアップする
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
 ## <a name="overview"></a>概要
 Azure Storage には、BLOB のスナップショットを作成する機能があります。 スナップショットは、特定の時点における BLOB の状態をキャプチャします。 この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存する方法について説明します。 この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。
 
@@ -123,6 +123,6 @@ Azure VM のバックアップについて詳しくは、 [Azure での VM バ�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: b75ed253a47b5f4ad0d95ef29c30f3d5ba3cb5fb
+ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
+ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: b75ed253a47b5f4ad0d95ef29c30f3d5ba3cb5fb
 * インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。 または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
 
 > [!IMPORTANT]
-> 現在、ExpressRoute ゲートウェイ、Application Gateway は、クラシックから Resource Manager への移行には対応していません。 ExpressRoute または Application gateway が設定された従来の仮想ネットワークを移行するには、コミット操作を実行してネットワークを移動する前に、まずそのゲートウェイを削除する必要があります (準備手順は ExpressRoute または Application gateway を削除しなくても実行できます)。 移行が完了した後、Azure Resource Manager でゲートウェイに再接続します。
+> 現在、Application Gateway は、クラシックから Resource Manager への移行には対応していません。 Application Gateway が設定された従来の仮想ネットワークを移行するには、コミット操作を実行してネットワークを移動する前に、まずそのゲートウェイを削除する必要があります (準備手順は Application Gateway を削除しなくても実行できます)。 移行が完了した後、Azure Resource Manager でゲートウェイに再接続します。 ゲートウェイと ExpressRoute 回線が同じサブスクリプションにある場合に、ExpressRoute ゲートウェイを移行するにはサポートに問い合せてください。 別のサブスクリプションの ExpressRoute 回線に接続する ExpressRoute ゲートウェイは移行できません。 そのような場合は、ExpressRoute ゲートウェイを削除し、仮想ネットワークを移行してゲートウェイを再作成します。
 > 
 > 
 
@@ -274,6 +274,6 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

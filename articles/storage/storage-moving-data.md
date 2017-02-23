@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
 translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: 8b21bcbea774f7a5107da54081f75db331459b5f
+ms.sourcegitcommit: 245fb30a64c8a19f6ea0073d533419e9c3628cb5
+ms.openlocfilehash: 538a43e549f47709616dd93e7eab9c8cb7d99dc6
 
 
 ---
@@ -74,10 +74,12 @@ Azure Storage にデータをバックアップするだけの場合は、Azure 
 オンプレミスのワークロードとアプリケーションがある場合、障害が発生してもビジネスを継続できるソリューションが必要です。 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を処理します。 レプリケートされたデータは Azure Storage に格納されるので、オンサイトのセカンダリ データセンターは必要ありません。
 
 詳細については、 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) に関する記事を参照してください。
+### <a name="moving-data-faq"></a>データの移動に関してよく寄せられる質問:
+## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>VHD をコピーせずにリージョン間で移行できますか?
+リージョン間で VHD をコピーするには、各リージョンのストレージ アカウント間でデータをコピーする方法しかありません。 これには AZCopy を使用します。 詳細については、「AzCopy コマンド ライン ユーティリティを使用してデータを転送する」を参照してください。 データ容量が非常に大きい場合には、Azure Import/Export を使用することもできます。 詳細については、 [Azure Import/Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service) に関する記事を参照してください。
 
 
 
-
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

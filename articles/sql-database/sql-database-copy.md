@@ -16,26 +16,20 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 3686f262a0a3fc01abd179aef337c272e97c0b3c
-ms.openlocfilehash: b12bf1a08780c6888f518a800aea1065fd1283c5
+ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
+ms.openlocfilehash: 265adbccee6764322148fad23f31aa1e279dfc9b
 
 
 ---
 # <a name="copy-an-azure-sql-database"></a>Azure SQL Database のコピー
-> [!div class="op_single_selector"]
-> * [概要](sql-database-copy.md)
-> * [Azure ポータル](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
 Azure の[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)機能を使用して、SQL Database のコピーを作成できます。 ただし、geo レプリケーションとは異なり、シード処理の段階が完了するとレプリケーション リンクが切断されます。 そのため、データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。  
+
 同じサーバーまたは別のサーバーのいずれかで、データベースのコピーを作成できます。 データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) は、既定でコピー元のデータベースと同じになります。 API を使用している場合は、同じサービス レベル (エディション) 内のさまざまなパフォーマンス レベルを選択できます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。  
 
 データベースを同じ論理サーバーにコピーすると、両方のデータベースで同じログインを利用できます。 データベースをコピーするために使用するセキュリティ プリンシパルが、新しいデータベースのデータベース所有者 (DBO) になります。 すべてのデータベース ユーザー、アクセス許可、セキュリティ識別子 (SID) がデータベースのコピーにコピーされます。  
 
-別の論理サーバーにデータベースをコピーする場合は、新しいサーバーのセキュリティ プリンシパルが新しいデータベースのデータベース所有者になります。 データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用する場合は、プライマリとセカンダリの両方のデータベースが常に同じユーザー資格情報を持つようにします。そうすることで、コピーの完了後すぐに同じ資格情報でアクセスできるようになります。 [Azure Active Directory](../active-directory/active-directory-whatis.md) を使用すると、コピーで資格情報を管理する必要がなくなります。 ただし、新しいサーバーにデータベースをコピーする場合、ログインに基づくアクセスは通常は動作しません。これは、そのログインが新しいサーバーに存在しないためです。 別の論理サーバーにデータベースをコピーする場合のログイン管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。 
+別の論理サーバーにデータベースをコピーする場合は、新しいサーバーのセキュリティ プリンシパルが新しいデータベースのデータベース所有者になります。 データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用する場合は、プライマリとセカンダリの両方のデータベースが常に同じユーザー資格情報を持つようにします。そうすることで、コピーの完了後すぐに同じ資格情報でアクセスできるようになります。 [Azure Active Directory](../active-directory/active-directory-whatis.md) を使用すると、コピーで資格情報を管理する必要がなくなります。 ただし、新しいサーバーにデータベースをコピーする場合、ログインに基づくアクセスは動作しないことがあります。これは、そのログインが新しいサーバーに存在しないためです。 別の論理サーバーにデータベースをコピーする場合のログイン管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。 
 
 SQL Database をコピーするには、以下が必要です。
 
@@ -58,6 +52,6 @@ SQL Database をコピーするには、以下が必要です。
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

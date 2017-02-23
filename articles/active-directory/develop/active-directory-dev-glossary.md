@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 0b035ad1505e45c8c0820c825ff609df6e6100f0
-ms.openlocfilehash: bcbd421e4e8a4643695011b27482722029611a3d
+ms.sourcegitcommit: 186541bee40ada7fc9e6be31d6b989e9bd34e0d1
+ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
 
 
 ---
@@ -34,10 +34,10 @@ ms.openlocfilehash: bcbd421e4e8a4643695011b27482722029611a3d
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
 ## <a name="application-manifest"></a>アプリケーション マニフェスト
-[Azure クラシック ポータル][AZURE-classic-portal]に備わっている機能の&1; つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
+[Azure Portal][AZURE-portal]に備わっている機能の&1; つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
 
 ## <a name="application-object"></a>アプリケーション オブジェクト
-[Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
+[Azure Portal][AZURE-portal] でアプリケーションを登録/更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
 詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
@@ -109,7 +109,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 
 これらの要求は [同意](#consent) プロセス時にも出現し、管理者またはリソース所有者には、そのテナント内のリソースに対するクライアント アクセスを許可/拒否する機会が与えられます。
 
-アクセス許可要求の構成は、[Azure クラシック ポータル][AZURE-classic-portal]の [アプリケーション] タブまたは [構成] タブにある [他のアプリケーションに対するアクセス許可] で、必要な "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。 [public クライアント](#client-application)は、資格情報を維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。 クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][AAD-Graph-App-Entity]に格納します。
+アクセス許可要求の構成は、[Azure Portal][AZURE-portal] の [アプリケーション] タブまたは [設定] タブにある [必要なアクセス許可] で、必要な "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。 [public クライアント](#client-application)は、資格情報を維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。 クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][AAD-Graph-App-Entity]に格納します。
 
 ## <a name="resource-owner"></a>リソース所有者
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースへのアクセス権を付与することのできるエンティティをいいます。 リソース所有者が人である場合は、"エンド ユーザー" と呼ばれます。 たとえば[クライアント アプリケーション](#client-application)は、[Microsoft Graph API][Microsoft-Graph] を介してユーザーのメールボックスにアクセスする必要があるとき、そのメールボックスのリソース所有者に権限を要求する必要があります。
@@ -124,14 +124,14 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 ## <a name="roles"></a>roles
 ロールは、[スコープ](#scopes)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。 ロールには、"ユーザー" ロールと "アプリケーション" ロールの&2; 種類があります。ユーザー ロールでは、リソースへのアクセスを必要とするユーザー/グループに関してロールベースのアクセス制御を実装します。これに対してアプリケーション ロールで実装するのは、アクセスを要求する[クライアント アプリケーション](#client-application)の場合と同じです。
 
-ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure クラシック ポータル][AZURE-classic-portal]からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure クラシック ポータルは、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
+ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure Portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
 
 Azure AD の Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。 具体的な実装例については、「[Role based access control in cloud applications using Azure AD][Duyshant-Role-Blog]」(Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御) を参照してください。
 
 ## <a name="scopes"></a>スコープ
 スコープは、[ロール](#roles)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。 リソースへの委任されたアクセス権を所有者から付与されている[クライアント アプリケーション](#client-application)に対し、[スコープベース][OAuth2-Access-Token-Scopes]のアクセス制御を実装する目的で使用されます。
 
-スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure クラシック ポータル][AZURE-classic-portal]からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure クラシック ポータルは、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
+スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure Portal][AZURE-portal] からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][AAD-Graph-Sp-Entity]に格納されます。 Azure Portal は、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
 
 推奨される名前付け規則は、"resource.operation.constraint" 形式です。 Azure AD の Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。 Office 365 サービスによって公開されているスコープについては、[Office 365 API アクセス許可に関するリファレンス][O365-Perm-Ref]を参照してください。
 
@@ -139,7 +139,7 @@ Azure AD の Graph API によって公開されているアプリケーション
 要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。 OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID トークン](http://openid.net/specs/openid-connect-core-1_0.html#IDToken)がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
 
 ## <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
-[Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)および対応するサービス プリンシパル オブジェクトの両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
+[Azure Portal][AZURE-portal] でアプリケーションを登録/更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)および対応するサービス プリンシパル オブジェクトの両方が作成/更新されます。 アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
 詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
@@ -195,7 +195,7 @@ Microsoft のコンテンツ改善のため、次の Disqus コメント セク�
 [AAD-Multi-Tenant-Overview]: active-directory-devhowto-multi-tenant-overview.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
-[AZURE-classic-portal]: https://manage.windowsazure.com
+[AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
@@ -211,6 +211,6 @@ Microsoft のコンテンツ改善のため、次の Disqus コメント セク�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

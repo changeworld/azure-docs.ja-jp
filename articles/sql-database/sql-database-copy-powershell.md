@@ -16,25 +16,22 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: a877c17a503e58c49ae781aed61ed120d069c737
-ms.openlocfilehash: 0f2a77892b6ed6c2b1f78e5c6ccefafdca3b5ed5
+ms.sourcegitcommit: edfbc0d94d9d5b33a25788772a98173187e394b8
+ms.openlocfilehash: 031a17d179cee8d6cceb9ed3aefd993add1958b8
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-powershell"></a>PowerShell を使用した Azure SQL Database のコピー
-> [!div class="op_single_selector"]
-> * [概要](sql-database-copy.md)
-> * [Azure ポータル](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
-この記事では、PowerShell を使用して、SQL データベースを同じサーバーおよび別のサーバーにコピーする方法、またはデータベースを [エラスティック データベース プール](sql-database-elastic-pool.md)にコピーする方法について説明します。 このデータベースのコピー操作では、 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) コマンドレットを使用します。 
+この記事では、PowerShell を使用して、SQL データベースを同じサーバーおよび別のサーバーにコピーする方法、またはデータベースを [エラスティック プール](sql-database-elastic-pool.md)にコピーする方法について説明します。 このデータベースのコピー操作では、 [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) コマンドレットを使用します。 
+
+> [!NOTE]
+> [Azure Portal](sql-database-copy-portal.md) または [Transact-SQL](sql-database-copy-transact-sql.md) を使用して SQL データベースをコピーすることもできます。
+>
 
 この記事を完了するには、以下が必要です。
 
-* Azure SQL データベース (コピーするデータベース)。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
+* Azure SQL データベース (コピーするデータベース)。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って&1; つ作成してください。
 * Azure PowerShell の最新バージョン。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 SQL Database の新機能の多くは、[Azure Resource Manager デプロイ モデル](../azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。したがって、各例では、Resource Manager の [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)を使用しています。 既存のクラシック デプロイ モデルの [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723\(v=azure.300\).aspx) は下位互換性を確保するためにサポートされていますが、Resource Manager のコマンドレットの使用をお勧めします。
@@ -55,7 +52,7 @@ SQL Database の新機能の多くは、[Azure Resource Manager デプロイ モ
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -CopyServerName "server2" -CopyDatabaseName "database1_copy"
 
 
-## <a name="copy-a-sql-database-into-an-elastic-database-pool"></a>エラスティック データベース プールへの SQL データベースのコピー
+## <a name="copy-a-sql-database-into-an-elastic-pool"></a>エラスティック プールへのデータベースのコピー
 SQL データベースのコピーをプールに作成するには、 `-ElasticPoolName` パラメーターを既存のプールに設定します。
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegoup1" -ServerName "server1" -DatabaseName "database1" -CopyResourceGroupName "poolResourceGroup" -CopyServerName "poolServer1" -CopyDatabaseName "database1_copy" -ElasticPoolName "poolName"
@@ -94,7 +91,7 @@ SQL データベースのコピーをプールに作成するには、 `-Elastic
     # -------------------------------------
     New-AzureRmSqlDatabaseCopy -ResourceGroupName $sourceDbResourceGroupName -ServerName $sourceDbServerName -DatabaseName $sourceDbName -CopyResourceGroupName $copyDbResourceGroupName -CopyServerName $copyDbServerName -CopyDatabaseName $copyDbName
 
-    # Copy a database into an elastic database pool
+    # Copy a database into an elastic pool
     # ---------------------------------------------
     $poolName = "pool1"
 
@@ -105,10 +102,10 @@ SQL データベースのコピーをプールに作成するには、 `-Elastic
 
 
 ## <a name="next-steps"></a>次のステップ
-* Azure SQL Database のコピーの概要については、「 [Azure SQL Database のコピー](sql-database-copy.md) 」を参照してください。
-* Azure ポータルを使用してデータベースをコピーするには、「 [Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy-portal.md) 」を参照してください。
-* Transact-SQL を使用してデータベースをコピーするには、「 [T-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md) 」をご覧ください。
-* 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「 [障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md) 」をご覧ください。
+* 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
+* PowerShell を使用してデータベースを BACPAC ファイルにエクスポートするには、[PowerShell を使用した BACPAC へのデータベースのエクスポート](sql-database-export-powershell.md)に関する記事をご覧ください。
+* [ビジネス継続性の概要](sql-database-business-continuity.md)
+* [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
 ## <a name="additional-resources"></a>その他のリソース
 * [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx)
@@ -123,6 +120,6 @@ SQL データベースのコピーをプールに作成するには、 `-Elastic
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

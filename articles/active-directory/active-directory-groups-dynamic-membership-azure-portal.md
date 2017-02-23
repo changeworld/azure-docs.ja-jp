@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/14/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
+ms.sourcegitcommit: e5103ccd0cc9ac46a29d98c613b58eead01f5e31
+ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
 
 
 ---
@@ -38,16 +38,16 @@ Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グ
 
    ![動的メンバーシップのルールを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 6. **[動的メンバーシップ ルール]** ブレードで、**[動的メンバーシップの高度な規則の追加]** ボックスにルールを入力し、ブレードの下部にある **[作成]** をクリックします。
-7.  **[作成]** on the **[グループ]** をクリックして、グループを作成します。
+7. **[作成]** on the **[グループ]** をクリックして、グループを作成します。
 
 ## <a name="constructing-the-body-of-an-advanced-rule"></a>高度なルール本体の作成
-グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。 その 3 つの構成要素を次に示します。
+グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す&2; 項演算式です。 その&3; つの構成要素を次に示します。
 
 * 左辺のパラメーター
 * 2 項演算子
 * 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の&2; 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 
 以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 
@@ -119,6 +119,7 @@ Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グ
 | --- | --- | --- |
 | city |任意の文字列値または $null |(user.city -eq "value") |
 | country |任意の文字列値または $null |(user.country -eq "value") |
+| CompanyName | 任意の文字列値または $null | (user.CompanyName -eq "value") |
 | department |任意の文字列値または $null |(user.department -eq "value") |
 | displayName |任意の文字列値 |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |任意の文字列値または $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -194,7 +195,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | isManaged |true false null |(device.isManaged -eq "false") |
 | isCompliant |true false null |(device.isCompliant -eq "true") |
 
-## <a name="additional-information"></a>追加情報
+## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 
 * [既存のグループの表示](active-directory-groups-view-azure-portal.md)
@@ -205,6 +206,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

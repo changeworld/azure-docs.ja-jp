@@ -12,16 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 02/07/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0707a8efd91d646bf7c417f881ccb9ebb6f2a470
+ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
+ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
 
 
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
-Azure AD ドメイン サービスの管理対象ドメインには 2 つの組み込みのコンテナーが含まれており、それぞれを "AADDC Computers"、"AADDC Users" と呼びます。 "AADDC Computers" コンテナーには、管理対象ドメインに参加しているすべてのコンピューターを対象としたコンピューター オブジェクトが含まれています。 "AADDC Users" コンテナーには、Azure AD テナント内のユーザーとグループが含まれています。 場合によっては、ワークロードをデプロイするために、管理対象ドメイン上にサービス アカウントを作成しなければならないことがあります。 その場合は、管理対象ドメイン上でカスタムの組織単位 (OU) を作成し、その OU 内でサービス アカウントを作成できます。 この記事では、管理対象ドメインに OU を作成する方法を説明します。
+Azure AD ドメイン サービスの管理対象ドメインには&2; つの組み込みのコンテナーが含まれており、それぞれを "AADDC Computers"、"AADDC Users" と呼びます。 "AADDC Computers" コンテナーには、管理対象ドメインに参加しているすべてのコンピューターを対象としたコンピューター オブジェクトが含まれています。 "AADDC Users" コンテナーには、Azure AD テナント内のユーザーとグループが含まれています。 場合によっては、ワークロードをデプロイするために、管理対象ドメイン上にサービス アカウントを作成しなければならないことがあります。 その場合は、管理対象ドメイン上でカスタムの組織単位 (OU) を作成し、その OU 内でサービス アカウントを作成できます。 この記事では、管理対象ドメインに OU を作成する方法を説明します。
+
+## <a name="before-you-begin"></a>開始する前に
+この記事に記載されているタスクを実行するには、次が必要です。
+
+1. 有効な **Azure サブスクリプション**。
+2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
+3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
+4. Azure AD Domain Services の管理対象ドメインの管理に使用する、ドメインに参加している仮想マシン。 そのような仮想マシンがない場合は、「[Windows Server 仮想マシンの管理対象ドメインへの参加](active-directory-ds-admin-guide-join-windows-vm.md)」で概要が示されているすべてのタスクに従います。
+5. 管理対象ドメインでカスタム OU を作成するには、ディレクトリの **"AAD DC Administrators" グループに属するユーザー アカウント**の資格情報が必要です。
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>リモート管理のために、ドメインに参加している仮想マシンに AD 管理ツールをインストールする
 Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールでリモート管理することができます。 テナント管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。 管理対象ドメインを管理するには、管理対象ドメインに参加している仮想マシンに AD 管理ツール機能をインストールします。 手順については、「 [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md) 」をご覧ください。
@@ -69,12 +78,13 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [管理対象ドメインでグループ ポリシーを構成する](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理センター: はじめに](https://technet.microsoft.com/library/dd560651.aspx)
 * [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)
 
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

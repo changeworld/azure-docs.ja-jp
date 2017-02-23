@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7d60b453fec2ce4c78179419362eee30ab7cb2
-ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
+ms.sourcegitcommit: 3c3db5ba37844f6a77eece2f20bdce080d0ab8b7
+ms.openlocfilehash: 10466164f5454120e99ce7a2a368c9c548b46bc3
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 |名前|Description|
 |---|---|
-|adminUsername|管理者のユーザー名です。 ユーザー名は [Azure のユーザー名要件](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)に準拠する必要があります。|
+|adminUsername|管理者のユーザー名です。 ユーザー名は [Azure のユーザー名要件](../virtual-machines/virtual-machines-windows-faq.md)に準拠する必要があります。|
 |adminPassword|管理者パスワードです。パスワードは [Azure のパスワード要件](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-password-requirements-when-creating-a-vm)に準拠する必要があります。|
 |dnsLabelPrefix|PublicIPAddressName1 の DNS 名です。 DNS 名は、VM に割り当てられているパブリック IP アドレスのいずれかに解決されます。 名前は、VM を作成する Azure リージョン (場所) 内で一意である必要があります。|
 |dnsLabelPrefix1|PublicIPAddressName2 の DNS 名です。 DNS 名は、VM に割り当てられているパブリック IP アドレスのいずれかに解決されます。 名前は、VM を作成する Azure リージョン (場所) 内で一意である必要があります。|
@@ -67,9 +67,26 @@ ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
 
 Azure Portal を使用してテンプレートをデプロイするには、次の手順を実行します。
 
-1. サブスクリプション ID と使用目的を[複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)まで電子メールで連絡して、プレビューに登録します。 次の場合、残りの手順は実行しないでください。
-    - プレビューへの登録が受諾されたことを通知する電子メールを受け取っていない場合
-    - 受け取った電子メールの指示に従っていない場合 
+1. ログインして適切なサブスクリプションを選択した後で、次のコマンドを PowerShell で実行して、プレビューに登録します。
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    残りの手順を行う前に、```Get-AzureRmProviderFeature``` コマンドを実行したときに次の出力が表示されるのを確認してください。
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >これには数分かかることがあります。
+
 2. 必要に応じて、テンプレートを変更します。 テンプレートによって、この記事の「[リソース](#resources)」セクションの一覧にあるリソースと設定がデプロイされます。 テンプレートとその作成方法の詳細については、「[Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」の記事をご覧ください。
 3. 次のいずれかの方法を使用して、テンプレートをデプロイします。
     - **ポータルでテンプレートを選択する:** 「[Deploy resources from custom template (カスタム テンプレートからのリソースのデプロイ)](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)」の記事の手順を実行します。 *101-vm-multiple-ipconfig*という名前の既存のテンプレートを選択します。
@@ -114,6 +131,6 @@ Azure CLI 1.0 を使用してテンプレートをデプロイするには、次
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

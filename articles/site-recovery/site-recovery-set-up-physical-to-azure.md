@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 9dfcdeb4dc3e84089eb8031272b870f87d90b689
-ms.openlocfilehash: 9416ec83089a6892099634b0572b2c794dc74dba
+ms.sourcegitcommit: f849ea027022cc753bf818d7980170b5875221f0
+ms.openlocfilehash: 47431f934f092ea7c614599b6c8e3fe3a946a955
 
 ---
 
@@ -29,24 +29,24 @@ ms.openlocfilehash: 9416ec83089a6892099634b0572b2c794dc74dba
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、次のものが既にあることを前提としています
-1. Recovery Services コンテナー [Azure ポータル](http://portal.azure.com "Azure ポータル")。
+この記事では、次のものが既にあることを前提としています。
+1. Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
 3. 構成サーバーをインストールするための物理コンピューター。
 
 ### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-server-requirements.md)]
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
 > HTTPS ベースのプロキシ サーバーは、構成サーバーではサポートされません。
 
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
-1. Azure ポータルで、**Recovery Services** コンテナー ブレードを参照し、コンテナーを選択します。
-2. コンテナーのリソース メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
+2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/site-recovery-set-up-physical-to-azure/choose-goals.png)
-3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択します。 次に、 **[OK]**をクリックします
+3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択し、**[OK]** をクリックします。
 
     ![Choose goals](./media/site-recovery-set-up-physical-to-azure/physical-protection-goal.PNG)
 
@@ -57,20 +57,20 @@ ms.openlocfilehash: 9416ec83089a6892099634b0572b2c794dc74dba
   ![Set up source](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
 2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 **5** 日間有効です。
+5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後&5; 日間有効です。
 
     ![Set up source](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
 6. 構成サーバーとして使用するマシンで**Azure Site Recovery 統合セットアップ**を実行して、構成サーバー、プロセス サーバー、マスター ターゲット サーバーをインストールします。
 
-#### <a name="running-the-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップの実行
+#### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
 
 > [!TIP]
-> コンピューターのシステム クロックの時刻と現地時刻との差が&5; 分を超えている場合は、構成サーバーの登録が失敗します。  インストールを開始する前に、システム クロックを[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期させてください。
+> コンピューターのシステム クロックの時刻と現地時刻との差が&5; 分を超えている場合は、構成サーバーの登録が失敗します。 インストールを開始する前に、システム クロックを[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期させてください。
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンドラインを使用してインストールすることもできます。 詳しくは、「[installing Configuration Server using Command-line tools](http://aka.ms/installconfigsrv)」(コマンド ライン ツールを使用して構成サーバーをインストールする) をご覧ください。
+> 構成サーバーはコマンドラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
 
 
 ## <a name="common-issues"></a>一般的な問題
@@ -79,10 +79,12 @@ ms.openlocfilehash: 9416ec83089a6892099634b0572b2c794dc74dba
 
 
 ## <a name="next-steps"></a>次のステップ
-次のステップでは、Azure で[ターゲット環境をセットアップ](./site-recovery-vmware-to-azure.md#step-3-set-up-the-target-environment)します。
+
+次のステップでは、Azure で[ターゲット環境をセットアップ](./site-recovery-prepare-target-physical-to-azure.md)します。
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

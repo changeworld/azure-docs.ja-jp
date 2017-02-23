@@ -1,6 +1,6 @@
 ---
 title: "Azure での Linux VM のエンドポイントの概要 | Microsoft Docs"
-description: "ネットワーク セキュリティ グループおよび ACL ルールを使用して、クラシック デプロイ モデルのエンドポイントが Resource Manager でどのように実装されるかを理解する"
+description: "ネットワーク セキュリティ グループおよび ACL ルールを使用して、クラシック デプロイ モデルのエンドポイントが Resource Manager でどのように実装されるかを学ぶ"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 3079b9103f450b511d60ce3a2bf5021332149525
+ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
+ms.openlocfilehash: 890c1ea7f7039886b1d2de72ea8f4a453a7b8ce2
 
 
 ---
@@ -34,6 +34,6 @@ ms.openlocfilehash: 3079b9103f450b511d60ce3a2bf5021332149525
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

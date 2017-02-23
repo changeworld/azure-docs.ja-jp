@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 5acff25cca5d549541a8cd68f76e1736c1ed0cb0
+ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
+ms.openlocfilehash: 4e8c8539fdcab348aa91644baafae217bd5e863a
 
 
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory のコード例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Microsoft Azure Active Directory (Azure AD) を使用すると、Web アプリケーションおよび Web API に認証と承認を追加できます。 このセクションでは、その方法を示すコード サンプルへのリンクと、アプリケーションで使用できるコード スニペットを示します。 コード サンプルのページには、要件、インストール、設定に関する詳細な Readme トピックが含まれています。 また、重要なセクションの理解に役立つように、コードにはコメントが付けられています。
+Microsoft Azure Active Directory (Azure AD) を使用すると、Web アプリケーションおよび Web API に認証と承認を追加できます。 このセクションでは、その方法を示すサンプルへのリンクと、アプリケーションで使用できるコード スニペットを示します。 コード サンプルのページには、要件、インストール、設定に関する詳細な Readme トピックが含まれています。 また、重要なセクションの理解に役立つように、コードにはコメントが付けられています。
 
 各サンプル タイプの基本的なシナリオを理解するには、「Azure AD の認証シナリオ」を参照してください。
 
-GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory のサンプルおよびドキュメント](https://github.com/Azure-Samples?query=active-directory)。
+GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory のサンプルおよびドキュメント](https://github.com/Azure-Samples?page=3&query=active-directory)。
 
 ## <a name="web-browser-to-web-application"></a>Web ブラウザー対 Web アプリケーション
 次のサンプルでは、ユーザーのブラウザーに指示を出してユーザーを Azure AD にサインインさせるようにする Web アプリケーションの作成方法を示します。
@@ -114,7 +114,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 | C#/.NET |[ADAL - ネイティブ アプリ対 REST サービス - ブラウザー ダイアログを介した ACS での認証](http://code.msdn.microsoft.com/AAL-Native-App-to-REST-de57f2cc) |[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) および [Access Control Service 2.0 (ACS)](http://msdn.microsoft.com/library/azure/hh147631.aspx) を使用して、WPF クライアントにユーザー認証機能を追加します。 |
 | C#/.NET |[ADAL - サーバー対サーバー認証](http://go.microsoft.com/fwlink/?LinkId=259816) |[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) を使用して、サーバー側プロセスから MVC4 Web API REST サービスへのサービス呼び出しのセキュリティを保護します。 |
 | C#/.NET |[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |.NET アプリケーションを構成して、Azure AD エンタープライズ ディレクトリに対する Web シングル サインオンを実行します。 |
-| C#/.NET |[Azure AD でのマルチテナント Web アプリケーションの開発](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Azure AD を使用して、複数の組織で機能する 1 つの .NET アプリケーションのシングル サインオンおよびディレクトリ アクセス機能を追加します。 |
+| C#/.NET |[Azure AD でのマルチテナント Web アプリケーションの開発](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Azure AD を使用して、複数の組織で機能する&1; つの .NET アプリケーションのシングル サインオンおよびディレクトリ アクセス機能を追加します。 |
 | Java |[Azure AD Graph API 用の Java サンプル アプリ](http://go.microsoft.com/fwlink/?LinkId=263969) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |
 | PHP |[Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.microsoft.com/PHP-Sample-App-For-Windows-228c6ddb) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |
 | C#/.NET |[Azure AD Graph API 用のサンプル アプリ](http://go.microsoft.com/fwlink/?LinkID=262648) |Graph API を使用して、Azure AD からのディレクトリ データにアクセスします。 |
@@ -133,7 +133,6 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
-description: "PowerShell を使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
+title: "PowerShell: Azure SQL Database を BACPAC ファイルにエクスポートする | Microsoft Docs"
+description: "PowerShell を使って BACPAC ファイルに Azure SQL Database をエクスポートする"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -10,43 +10,26 @@ ms.assetid: 9439dd83-812f-4688-97ea-2a89a864d1f3
 ms.service: sql-database
 ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 08/15/2016
+ms.date: 02/07/2017
 ms.author: sstein
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: ebbb31eb9387d68afab7559a3827682ed2551d5a
-ms.openlocfilehash: de0b000b56ea90caeb1e2aa9a0b8c87e25c7c237
+ms.sourcegitcommit: 3d04be3d2427bc59d24bfaad227730991b61265b
+ms.openlocfilehash: 162147607baa36de0487cebc06e7ada20f3dd0c0
 
 
 ---
-# <a name="archive-an-azure-sql-database-to-a-bacpac-file-by-using-powershell"></a>PowerShell を使用して BACPAC ファイルに Azure SQL Database をアーカイブする
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-export.md)
-> * [SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-> * [SqlPackage](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md)
-> * [PowerShell](sql-database-export-powershell.md)
-> 
+# <a name="export-an-azure-sql-database-or-a-sql-server-to-a-bacpac-file-by-using-powershell"></a>PowerShell または SQL Server を使って BACPAC ファイルに Azure SQL Database をエクスポートする
 
-この記事では PowerShell を使用して (Azure Blob Storage に格納されている) [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルに Azure SQL Database をアーカイブする方法について説明します。
-
-Azure SQL Database のアーカイブを作成する必要がある場合は、BACPAC ファイルにデータベース スキーマとデータをエクスポートできます。 BACPAC ファイルは、単に .bacpac の拡張子を持つ ZIP ファイルです。 BACPAC ファイルは、後で Azure Blob Storage やオンプレミスのローカル ストレージに格納できます。 また、Azure SQL Database や オンプレミスの SQL Server インストールにインポートすることもできます。
-
-## <a name="considerations"></a>考慮事項
-
-* アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に行われないようにするか、または Azure SQL Database の [トランザクション一貫性のあるコピー](sql-database-copy.md) からエクスポートする必要があります。
-* Azure Blob Storage にアーカイブできる BACPAC ファイルの最大サイズは 200 GB です。 より大きな BACPAC ファイルをローカル ストレージにアーカイブするには、 [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンドプロンプト ユーティリティを使用します。 このユーティリティは、Visual Studio と SQL Server の両方に含まれます。 SQL Server Data Tools の最新版を [ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx) し、このユーティリティを入手することもできます。
-* BACPAC ファイルを使用した Azure Premium Storage へのアーカイブはサポートされていません。
-* エクスポート操作が 20 時間を超える場合は取り消されることがあります。 エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
-  * サービス レベルを一時的に上げる。
-  * エクスポート中のすべての読み取りアクティビティと書き込みアクティビティを中止する。
-  * すべての大きなテーブルに null 以外の値を持つ [クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx) を使用する。 クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。 これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。 テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、**DBCC SHOW_STATISTICS** を実行し、*RANGE_HI_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。 詳細については、「[DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
+この記事では PowerShell を使って (Azure Blob Storage に格納されている) BACPAC ファイルに Azure SQL Database または SQL Server データベースをエクスポートする方法について説明します。 BACPAC ファイルへのエクスポートの概要については、[BACPAC へのエクスポート](sql-database-export.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> BACPAC はバックアップおよび復元操作に使用するためのものでありません。 Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。 詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
-> 
-> 
+> また、[Azure Portal](sql-database-export-portal.md)、[SQL Server Management Studio](sql-database-export-ssms.md) または [SQLPackage](sql-database-export-sqlpackage.md) を使用して、Azure SQL データベース フィルを BACPAC ファイルにエクスポートすることもできます。
+>
+
+## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
@@ -121,6 +104,13 @@ Azure SQL Database の自動エクスポート機能は現在プレビュー段�
 
 ## <a name="next-steps"></a>次のステップ
 * Powershell を使用して Azure SQL Database をインポートする方法については、 [PowerShell を使用した BACPAC のインポート](sql-database-import-powershell.md)に関するページをご覧ください。
+* SQLPackage を使用した BACPAC のインポートについては、「[Import a BACPAC to Azure SQL Database using SqlPackage](sql-database-import-sqlpackage.md)」(SqlPackage を使用した Azure SQL Database への BACPAC のインポート) をご覧ください。
+* Azure Portal を使用した BACPAC のインポートについては、「[Import a BACPAC to Azure SQL Database using the Azure portal](sql-database-import-portal.md)」(Azure Portal を使用した Azure SQL Database への BACPAC のインポート) をご覧ください。
+* パフォーマンスの推奨事項も含む、SQL Server データベースの移行プロセス全体の詳細については、[Azure SQL Database への SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
+* データベースをアーカイブ目的でエクスポートする方法の代わりとしての、Azure SQL データベース バックアップの長期バックアップ リテンション期間については、[長期バックアップ リテンション期間](sql-database-long-term-retention.md)に関する記事をご覧ください。
+* SQL Server データベースへの BACPAC のインポートについては、 [SQL Server データベースへの BACPAC のインポート](https://msdn.microsoft.com/library/hh710052.aspx)
+
+
 
 ## <a name="additional-resources"></a>その他のリソース
 * [New-AzureRmSqlDatabaseExport](https://msdn.microsoft.com/library/azure/mt707796\(v=azure.300\).aspx)
@@ -129,6 +119,6 @@ Azure SQL Database の自動エクスポート機能は現在プレビュー段�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

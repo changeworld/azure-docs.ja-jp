@@ -1,6 +1,6 @@
 ---
-title: "複数の NIC を持つ Linux VM を作成する | Microsoft Docs"
-description: "Azure CLI または Resource Manager テンプレートを使って、複数の NIC を持つ Linux VM を作成する方法について説明します。"
+title: "Azure CLI 2.0 (プレビュー) を使用して複数の NIC を持つ Linux VM を作成する | Microsoft Docs"
+description: "Azure CLI 2.0 (プレビュー) または Resource Manager テンプレートを使って、複数の NIC を持つ Linux VM を作成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -12,130 +12,91 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/27/2016
+ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
-ms.openlocfilehash: 12da49e49782869153dcecbf6e4ca0ec24fa5960
+ms.sourcegitcommit: 368c79b001495e0fb000a4b280023b2299256435
+ms.openlocfilehash: a854a15a9119f289344a75638d1042ee6779bb46
 
 
 ---
-# <a name="creating-a-linux-vm-with-multiple-nics"></a>複数の NIC を持つ Linux VM の作成
+# <a name="create-a-linux-vm-with-multiple-nics-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して複数の NIC を持つ Linux VM を作成する
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 独自の Bash スクリプト内に複数の NIC を作成する方法など、詳しくは、「[Azure CLI を使用した複数の NIC VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)」をご覧ください。 [VM のサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
 > [!WARNING]
 > VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。 [元の仮想ディスクに基づいて VM を作成](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)し、VM をデプロイするときに複数の NIC を作成できます。
-> 
-> 
 
-## <a name="quick-commands"></a>クイック コマンド
-[Azure CLI](../xplat-cli-install.md) でログインし、Resource Manager モードを使用していることを確認します。
 
-```azurecli
-azure config mode arm
-```
+## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+- [Azure CLI 1.0](virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- [Azure CLI 2.0 (プレビュー)](#create-supporting-resources) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+
+
+## <a name="create-supporting-resources"></a>関連リソースを作成する
+最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `myVM` が含まれています。
 
-まず、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
+最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `WestUS` の場所に作成します。
 
 ```azurecli
-azure group create myResourceGroup -l WestUS
+az group create --name myResourceGroup --location westus
 ```
 
-VM を保持するストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
+[az network vnet create](/cli/azure/network/vnet#create) で仮想ネットワークを作成します。 次の例では、`myVnet` という名前の仮想ネットワークと `mySubnetFrontEnd` という名前のサブネットを作成します。
 
 ```azurecli
-azure storage account create mystorageaccount -g myResourceGroup \
-    -l WestUS --kind Storage --sku-name PLRS
+az network vnet create --resource-group myResourceGroup --name myVnet \
+  --address-prefix 192.168.0.0/16 --subnet-name mySubnetFrontEnd --subnet-prefix 192.168.1.0/24
 ```
 
-VM を接続する仮想ネットワークを作成します。 次の例では、`192.168.0.0/16` というアドレス プレフィックスで `myVnet` という名前の仮想ネットワークを作成します。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet#create) を使用してバックエンド トラフィックのサブネットを作成します。 次の例では、`mySubnetBackEnd` という名前のサブネットを作成します。
 
 ```azurecli
-azure network vnet create -g myResourceGroup -l WestUS \
-    -n myVnet -a 192.168.0.0/16
+az network vnet subnet create --resource-group myResourceGroup --vnet-name myVnet \
+    --name mySubnetBackEnd --address-prefix 192.168.2.0/24
 ```
 
-2 つの仮想ネットワーク サブネットを作成します。1 つはフロントエンド トラフィック用、もう 1 つはバックエンド トラフィック用です。 次の例では、`mySubnetFrontEnd` と `mySubnetBackEnd` という名前の 2 つのサブネットを作成します。
+## <a name="create-and-configure-multiple-nics"></a>複数の NIC を作成して構成する
+詳しくは、「[Azure CLI を使用した複数の NIC VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)」をご覧ください。ここでは、すべての NIC を作成するループ プロセスのスクリプトを作成する方法についても解説しています。
+
+通常は、VM 間でトラフィックを管理、分散するために、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)や[ロード バランサー](../load-balancer/load-balancer-overview.md)を作成します。 [az network nsg create](/cli/azure/network/nsg#create) で、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
-azure network vnet subnet create -g myResourceGroup -e myVnet \
-    -n mySubnetFrontEnd -a 192.168.1.0/24
-azure network vnet subnet create -g myResourceGroup -e myVnet \
-    -n mySubnetBackEnd -a 192.168.2.0/24
+az network nsg create --resource-group myResourceGroup \
+  --name myNetworkSecurityGroup
 ```
 
-2 つの NIC を作成します。1 つをフロントエンド サブネットに、もう 1 つをバックエンド サブネットにアタッチします。 次の例では、`myNic1` と `myNic2` という名前の 2 つの NIC を作成して、サブネットにアタッチします。
+[az network nic create](/cli/azure/network/nic#create) を使用して、2 つの NIC を作成します。 次の例では、ネットワーク セキュリティ グループに接続された、`myNic1` と `myNic2` という名前の&2; つの NIC を作成します (1 つの NIC が各サブネットに接続します)。
 
 ```azurecli
-azure network nic create -g myResourceGroup -l WestUS \
-    -n myNic1 -m myVnet -k mySubnetFrontEnd
-azure network nic create -g myResourceGroup -l WestUS \
-    -n myNic2 -m myVnet -k mySubnetBackEnd
+az network nic create --resource-group myResourceGroup --name myNic1 \
+  --vnet-name myVnet --subnet mySubnetFrontEnd \
+  --network-security-group myNetworkSecurityGroup
+az network nic create --resource-group myResourceGroup --name myNic2 \
+  --vnet-name myVnet --subnet mySubnetBackEnd \
+  --network-security-group myNetworkSecurityGroup
 ```
 
-最後に、VM を作成し、先に作成した 2 つの NIC をアタッチします。 次の例では、`myVM` という名前の VM を作成します。
+## <a name="create-a-vm-and-attach-the-nics"></a>VM を作成して NIC を接続する
+VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 
+
+[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、[Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して、`myVM` という名前の VM を作成します。
 
 ```azurecli
-azure vm create \
+az vm create \
     --resource-group myResourceGroup \
     --name myVM \
-    --location WestUS \
-    --os-type linux \
-    --nic-names myNic1,myNic2 \
-    --vm-size Standard_DS2_v2 \
-    --storage-account-name mystorageaccount \
-    --image-urn UbuntuLTS \
+    --image UbuntuLTS \
+    --size Standard_DS2_v2 \
     --admin-username azureuser \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --nics myNic1 myNic2
 ```
 
-## <a name="creating-multiple-nics-using-azure-cli"></a>Azure CLI を使用して複数の NIC を作成する
-Azure CLI を使用して VM を作成済みであれば、クイック コマンドは難しくありません。 NIC を 1 つ作成する場合も、複数作成する場合も、プロセスは同じです。 詳しくは、「[Azure CLI を使用した複数の NIC VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)」をご覧ください。ここでは、すべての NIC を作成するループ プロセスのスクリプトを作成する方法についても解説しています。
-
-次の例では、`myNic1` と `myNic2` という名前の 2 つの NIC を作成し、1 つの NIC を各サブネットに接続します。
-
-```azurecli
-azure network nic create --resource-group myResourceGroup --location WestUS \
-    -n myNic1 --subnet-vnet-name myVnet --subnet-name mySubnetFrontEnd
-azure network nic create --resource-group myResourceGroup --location WestUS \
-    -n myNic2 --subnet-vnet-name myVnet --subnet-name mySubnetBackEnd
-```
-
-通常は、VM 間でトラフィックを管理、分散するために、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)や[ロード バランサー](../load-balancer/load-balancer-overview.md)も作成します。 ここでもまた、コマンドは複数の NIC を扱う場合と同じです。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。
-
-```azurecli
-azure network nsg create --resource-group myResourceGroup --location WestUS \
-    --name myNetworkSecurityGroup
-```
-
-`azure network nic set` を使って NIC をネットワーク セキュリティ グループにバインドします。 次の例では、`myNic1` および `myNic2` を `myNetworkSecurityGroup` とバインドします。
-
-```azurecli
-azure network nic set --resource-group myResourceGroup --name myNic1 \
-    --network-security-group-name myNetworkSecurityGroup
-azure network nic set --resource-group myResourceGroup --name myNic2 \
-    --network-security-group-name myNetworkSecurityGroup
-```
-
-VM を作成するときに、複数の NIC を指定します。 `--nic-name` を使用して 1 つの NIC を指定する代わりに、`--nic-names` を使用して NIC のコンマ区切りのリストを指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 次の例は、複数の NIC を指定し、複数 NIC の使用をサポートする VM のサイズを指定する方法を示しています (`Standard_DS2_v2`)。
-
-```azurecli
-azure vm create \
-    --resource-group myResourceGroup \
-    --name myVM \
-    --location WestUS \
-    --os-type linux \
-    --nic-names myNic1,myNic2 \
-    --vm-size Standard_DS2_v2 \
-    --storage-account-name mystorageaccount \
-    --image-urn UbuntuLTS \
-    --admin-username azureuser \
-    --ssh-publickey-file ~/.ssh/id_rsa.pub
-```
-
-## <a name="creating-multiple-nics-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して複数の NIC を作成する
+## <a name="create-multiple-nics-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して複数の NIC を作成する
 Azure Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。 Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 *copy* を使用して、作成するインスタンスの数を指定します。
 
 ```json
@@ -163,6 +124,6 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

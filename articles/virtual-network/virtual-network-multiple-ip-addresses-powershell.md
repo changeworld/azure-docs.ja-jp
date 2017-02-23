@@ -1,5 +1,5 @@
 ---
-title: "仮想マシンの複数の IP アドレス - PowerShell | Microsoft Docs"
+title: "Azure 仮想マシンの複数の IP アドレス - PowerShell | Microsoft Docs"
 description: "PowerShell を使用して Resource Manager で仮想マシンに複数の IP アドレスを割り当てる方法について説明します。"
 services: virtual-network
 documentationcenter: na
@@ -16,50 +16,46 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: jdial;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 11e490ee3b2d2f216168e827154125807a61a73f
-ms.openlocfilehash: 39b45b276c50922878e9918b225f6fa399d42edf
+ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
+ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
 
 
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
-> [!div class="op_single_selector"]
-> * [ポータル](virtual-network-multiple-ip-addresses-portal.md)
-> * [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-> * [CLI](virtual-network-multiple-ip-addresses-cli.md)
->
+[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Azure 仮想マシン (VM) には、1 つ以上のネットワーク インターフェイス (NIC) を接続できます。 NIC には、1 つ以上の静的または動的パブリックおよびプライベート IP アドレスを割り当てることができます。 VM に複数の IP アドレスを割り当てると、次のことが可能になります。
-
-* 異なる IP アドレスと SSL 証明書を持つ複数のウェブサイトやサービスを、1つのサーバーでホストする。
-* ファイアウォールやロード バランサーのような、ネットワーク仮想アプライアンスとして機能する。
-* 複数の NIC いずれかの複数のプライベート IP アドレスいずれかを Azure Load Balancer のバックエンド プールに追加する。 以前は、プライマリ NIC のプライマリ IP アドレスのみをバックエンド プールに追加できました。 複数の IP 構成の負荷分散方法の詳細については、[複数の IP 構成の負荷分散](../load-balancer/load-balancer-multiple-ip.md)に関する記事を参照してください。
-
-VM に接続された各 NIC には、1 つ以上の IP 構成が関連付けられています。 各構成には、1 つの静的または動的プライベート IP アドレスが割り当てられています。 また、1 つのパブリック IP アドレス リソースが関連付けられている場合もあります。 パブリック IP アドレス リソースには、動的または静的 IP アドレスが割り当てられています。 Azure における IP アドレスの詳細については、「[Azure 内の IP アドレス](virtual-network-ip-addresses-overview-arm.md)」を参照してください。
-
-この記事では、PowerShell を使用して、Azure Resource Manager デプロイ モデルで作成された VM に複数の IP アドレスを割り当てる方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+この記事では、PowerShell を使用して Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法を説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-## <a name="scenario"></a>シナリオ
-1 つの NIC が接続された VM を作成し、仮想ネットワークに接続します。 VM には、3 つの "*プライベート*" IP アドレスと 2 つの "*パブリック*" IP アドレスが必要です。 各 IP アドレスを次の IP 構成に割り当てます。
-
-* **IPConfig-1:** "*動的*" プライベート IP アドレス (既定) と "*静的*" パブリック IP アドレスを割り当てます。
-* **IPConfig-2:** "*静的*" プライベート IP アドレスと "*静的*" パブリック IP アドレスを割り当てます。
-* **IPConfig-3:** "*動的*" プライベート IP アドレスを割り当てます。パブリック IP アドレスは割り当てません。
-  
-    ![複数の IP アドレス](./media/virtual-network-multiple-ip-addresses-powershell/OneNIC-3IP.png)
-
-NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC を VM に接続します。 シナリオで使用する IP アドレスの種類は、わかりやすく説明するためのものです。 必要な IP アドレスの種類と割り当ての種類を使用できます。
+[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="a-name--createacreate-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
 以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 変数名と IP アドレスの種類は、実際の実装に合わせて変更してください。
 
 1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) 」の手順を実行してください。
-2. サブスクリプション ID と使用目的を[複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)まで電子メールで連絡して、プレビューに登録します。 次の場合、残りの手順は実行しないでください。
-    - プレビューへの登録が受諾されたことを通知する電子メールを受け取っていない場合
-    - 受け取った電子メールの指示に従っていない場合
+2. ログインして適切なサブスクリプションを選択した後で、次のコマンドを PowerShell で実行して、プレビューに登録します。
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+    
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+    ```
+    残りの手順を行う前に、```Get-AzureRmProviderFeature``` コマンドを実行したときに次の出力が表示されるのを確認してください。
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >これには数分かかることがあります。
+
 3. [Windows VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md)に関する記事の手順 1 ～ 4 を実行します。 手順 5 (パブリック IP リソースとネットワーク インターフェイスの作成) は実行しないでください。 その記事で使用されている変数の名前を変更した場合は、残りの手順でも変数の名前を変更します。 Linux VM を作成するには、Windows ではなく Linux オペレーティング システムを選択します。
 4. 次のコマンドを入力して、Windows VM の作成に関する記事の手順 4 (VNet の作成) で作成したサブネット オブジェクトを格納する変数を作成します。
 
@@ -69,7 +65,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     ```
 5. NIC に割り当てる IP 構成を定義します。 構成は、必要に応じて追加、削除、または変更できます。 このシナリオで説明する構成は次のとおりです。
 
-    **IPConfig 1**
+    **IPConfig&1;**
 
     次のコマンドを入力して、以下を作成します。
     - 静的パブリック IP アドレスが割り当てられたパブリック IP アドレス リソース
@@ -115,7 +111,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     -Location $location -IpConfiguration $IpConfig1,$IpConfig2,$IpConfig3
     ```
     > [!NOTE]
-    > この記事では、すべての IP 構成を 1 つの NIC に割り当てていますが、複数の IP 構成を VM の任意の NIC に割り当てることもできます。 複数の NIC が接続された VM の作成方法については、[複数の NIC が接続された VM の作成](virtual-network-deploy-multinic-arm-ps.md)に関する記事をご覧ください。
+    > この記事では、すべての IP 構成を&1; つの NIC に割り当てていますが、複数の IP 構成を VM の任意の NIC に割り当てることもできます。 複数の NIC が接続された VM の作成方法については、[複数の NIC が接続された VM の作成](virtual-network-deploy-multinic-arm-ps.md)に関する記事をご覧ください。
 
 7. [VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md)に関する記事の手順 6 を実行します。 
 
@@ -133,7 +129,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
 
 ## <a name="a-nameaddaadd-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
-プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#Scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
+プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#Scenario)で説明している&3; つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
 1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) 」の手順を実行してください。
 2. サブスクリプション ID と使用目的を[複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)まで電子メールで連絡して、プレビューに登録します。 次の場合、残りの手順は実行しないでください。
@@ -206,7 +202,7 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
     -Location $location -AllocationMethod Static
     ```
 
-    動的プライベート IP アドレスと、関連付けられた *myPublicIp3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
+     動的プライベート IP アドレスと、関連付けられた *myPublicIp3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
 
     ```powershell
     Add-AzureRmNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -258,6 +254,6 @@ NIC の作成時に IP 構成を NIC に関連付け、VM の作成時に NIC �
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

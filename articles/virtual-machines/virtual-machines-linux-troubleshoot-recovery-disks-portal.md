@@ -1,6 +1,6 @@
 ---
 
-title: "ポータルでトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
+title: "Azure Portal でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
 description: "Azure Portal で OS ディスクを復旧 VM に接続して、Linux 仮想マシンの問題のトラブルシューティングを行う方法について説明します。"
 services: virtual-machines-linux
 documentationCenter: 
@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
-ms.openlocfilehash: 4edfcbfb011c2296ad499d4ff62a07f0c388432a
+ms.sourcegitcommit: 341dcec8c45b380286e2bb96c57afc7740605d16
+ms.openlocfilehash: c4ae1c80b854e84fe94a52e2872bec2c24b4580f
 
 
 ---
@@ -179,6 +179,6 @@ VM への接続の問題が発生した場合は、[Azure VM への SSH 接続�
 Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
