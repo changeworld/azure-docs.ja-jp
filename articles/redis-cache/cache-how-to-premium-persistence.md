@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 628dfc48c00e61fe5c4883f6237a44e0f1309f0e
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: bc8c54b51f9eee653fbe84351081dcef562e62d4
 
 
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache のデータ永続化の構成方法
-Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
-
-Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。 この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
+Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
 
 Premium キャッシュのその他の機能の詳細については、「 [Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
@@ -32,16 +30,9 @@ Redis の永続化を使用すると、Redis に格納されたデータを保�
 
 Azure Redis Cache の Redis 永続化では、 [RDB モデル](http://redis.io/topics/persistence)を使用してデータを Azure ストレージ アカウントに格納します。 永続化を構成すると、Azure Redis Cache は、Redis Cache のスナップショットを構成可能なバックアップ頻度に基づいて Redis バイナリ形式でディスクに保存します。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。
 
-永続化は、キャッシュの作成中に **[新規 Redis Cache]** ブレードから、また既存の Premium キャッシュ用の **[設定]** ブレードで構成できます。
+永続化は、キャッシュの作成中に **[新規 Redis Cache]** ブレードから、また既存の Premium キャッシュ用の **[リソース]** メニューで構成できます。
 
-## <a name="create-a-premium-cache"></a>Premium キャッシュの作成
-キャッシュを作成し、永続化を構成するには、[Azure Portal](https://portal.azure.com) にサインインし、**[新規]** -> **[データ + ストレージ]** > **[Redis Cache]** の順にクリックします。
-
-![Redis Cache の作成][redis-cache-new-cache-menu]
-
-永続化を構成するには、まず **[価格レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
-
-![[料金レベルの選択]][redis-cache-premium-pricing-tier]
+[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Premium 価格レベルを選択した後、 **[Redis の永続化]**をクリックします。
 
@@ -50,7 +41,7 @@ Premium 価格レベルを選択した後、 **[Redis の永続化]**をクリ�
 次のセクションの手順は、新しい Premium キャッシュに Redis の永続化を構成する方法を示します。 Redis の永続化が構成されたら、 **[作成]** をクリックして、Redis の永続化で新規 Premium キャッシュを作成します。
 
 ## <a name="configure-redis-persistence"></a>Redis の永続化を構成する
-Redis の永続化は、 **[Redis データ永続化]** ブレードで構成します。 新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。 既存のキャッシュでは、**[Redis データ永続化]** ブレードには、キャッシュの **[設定]** ブレードからアクセスします。
+Redis の永続化は、 **[Redis データ永続化]** ブレードで構成します。 新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。 既存のキャッシュでは、**[Redis データ永続化]** ブレードには、キャッシュの **[リソース]** メニューからアクセスします。
 
 ![Redis の設定][redis-cache-settings]
 
@@ -61,7 +52,7 @@ Redis の永続化を有効にするには、 **[有効]** をクリックして
 **[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ボックスの一覧から使用する**プライマリ キー**または**セカンダリ キー**を選択します。 Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。 
 
 > [!IMPORTANT]
-> 永続化アカウントのストレージ キーを再生成した場合、 **[ストレージ キー]** ドロップダウンから目的のキーを再選択する必要があります。
+> 永続化アカウントのストレージ キーを再生成した場合、**[ストレージ キー]** ドロップダウンから目的のキーを再構成する必要があります。
 > 
 > 
 
@@ -116,6 +107,6 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Premium Azure Redis Cache の Virtual Network のサポートを構成する方法 | Microsoft Docs"
+title: "Premium Azure Redis Cache 向けの Virtual Network のサポートの構成 | Microsoft Docs"
 description: "Premium レベル Azure Redis Cache インスタンスの Virtual Network のサポートを作成および管理する方法"
 services: redis-cache
 documentationcenter: 
@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: a3e1472ed737039157a4593404dce371c57906da
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: 057affeccd955245ac07fc5e174447562e81b959
 
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
-Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
-
-Azure Redis Cache の Premium レベルの機能には、クラスタリング、永続化、および仮想ネットワーク (VNet) のサポートが含まれています。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
+Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
 
 > [!NOTE]
 > Azure Redis Cache では、クラシック VNet と ARM VNet の両方がサポートされています。
@@ -46,7 +44,7 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 
 ![Virtual Network][redis-cache-vnet]
 
-**[サブネット]** ボックスの一覧で目的のサブネットを選択し、必要な**静的 IP アドレス**を指定します。 クラシック VNet を使用している場合、**[静的 IP アドレス]** フィールドは省略可能です。何も指定しないと、選択したサブネットから 1 つのアドレスが選択されます。
+**[サブネット]** ボックスの一覧で目的のサブネットを選択し、必要な**静的 IP アドレス**を指定します。 クラシック VNet を使用している場合、**[静的 IP アドレス]** フィールドは省略可能です。何も指定しないと、選択したサブネットから&1; つのアドレスが選択されます。
 
 > [!IMPORTANT]
 > Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは、Azure Redis Cache インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 ARM VNet で他のリソースが含まれるサブネットに Azure Redis Cache をデプロイしようとすると、そのデプロイは失敗します。
@@ -56,11 +54,11 @@ Premium 価格レベルを選択すると、キャッシュと同じサブスク
 ![Virtual Network][redis-cache-vnet-ip]
 
 > [!IMPORTANT]
-> サブネットの最初の 4 つのアドレスは予約済みのため、使用できません。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+> サブネットの最初の&4; つのアドレスは予約済みのため、使用できません。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 > 
 > 
 
-キャッシュが作成されたら、**[設定]** ブレードの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
+キャッシュが作成されたら、**[リソース]** メニューの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
 
 ![Virtual Network][redis-cache-vnet-info]
 
@@ -88,7 +86,7 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 * [VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 ## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
-Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。 これらのポートがブロックされている場合は、キャッシュが正しく機能しない可能性があります。 VNet で Azure Redis Cache を使用する場合、構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
+Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。 これらのポートがブロックされている場合は、キャッシュが正しく機能しない可能性があります。 VNet で Azure Redis Cache を使用する場合、構成の誤りに関する最も一般的な問題は、これらのポートのうち&1; つ以上がブロックされていることです。
 
 | ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
 | --- | --- | --- | --- | --- |
@@ -130,7 +128,7 @@ Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは�
 
 ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義しています。 このトラフィック フローでは、Azure Redis Cache を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。
 
-解決策は、Azure Redis Cache を含むサブネット上で 1 つ (以上) のユーザー定義ルート (UDR) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
+解決策は、Azure Redis Cache を含むサブネット上で&1; つ (以上) のユーザー定義ルート (UDR) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
 
 可能であれば、次の構成を使用することをお勧めします。
 
@@ -168,6 +166,6 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

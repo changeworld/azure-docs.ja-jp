@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: e062cb169782319bda14acfa4f2b7c8198f320f6
-ms.openlocfilehash: e5c0547a4fb109560dbafbf84d17e0c3d28a7188
+ms.sourcegitcommit: 2956b15e6284b529ccf4ca40c0c97b857eabcdbb
+ms.openlocfilehash: 50d90bfa5e6fb4462bd7d4719e5505d8ad144855
 
 
 ---
@@ -34,7 +34,7 @@ Linux での Web アプリの作成は、次の図のとおり [Azure Portal](ht
 1. Web アプリに名前を付けます。
 2. 既存のリソース グループを選択するか、新しいリソース グループを作成します  (「[limitations (制限)](app-service-linux-intro.md)」セクションで、使用可能なリージョンを確認してください)。
 3. 既存の Azure App Service プランを選択するか、新しいプランを作成します  (「[limitations (制限)](app-service-linux-intro.md)」セクションで、App Service プランの注意事項を確認してください)。
-4. 使用するアプリケーション スタックを選択します。 Node.js と PHP のいくつかのバージョンから選択できます。
+4. 使用するアプリケーション スタックを選択します。 Node.js、PHP、.Net Core、Ruby のいくつかのバージョンから選択できます。
 
 アプリを作成した後は、次の図のように、[アプリケーションの設定] からアプリケーション スタックを変更できます。
 
@@ -59,6 +59,6 @@ Linux での Web アプリの作成は、次の図のとおり [Azure Portal](ht
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

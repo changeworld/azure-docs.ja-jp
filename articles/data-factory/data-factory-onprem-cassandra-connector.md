@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
+ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
+ms.openlocfilehash: 7b7d3b87e1285993d744e74d01f5192732b70e77
 
 
 ---
@@ -24,6 +24,9 @@ ms.openlocfilehash: 21ec253e35b31af770cacb9747210deb4b9f5fa0
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの Cassandra データベースから、 [サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関するセクションのシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 現在のところ、Data Factory は Cassandra データベースから [サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータの移動のみに対応しており、他のデータ ストアから Cassandra データベースにデータを移動することはできません。
+
+## <a name="supported-versions"></a>サポートされているバージョン
+この Cassandra コネクタは、Cassandra バージョン 2.X をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 Azure Data Factory サービスをオンプレミスの Cassandra データベースに接続できるようにするには、次をインストールする必要があります。
@@ -202,7 +205,7 @@ RelationalSource でサポートされるプロパティの一覧については
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **OnPremisesCassandra** |はい |
-| host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
+| host |Cassandra サーバーの&1; つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
 | ポート |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |はい |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
@@ -325,6 +328,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

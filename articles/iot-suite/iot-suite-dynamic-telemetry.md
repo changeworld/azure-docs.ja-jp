@@ -1,6 +1,6 @@
 ---
 title: "動的テレメトリの使用 | Microsoft Docs"
-description: "事前構成済みのリモート監視ソリューションで動的テレメトリを使用する方法については、このチュートリアルを参照してください。"
+description: "事前構成済みの Azure IoT Suite リモート監視ソリューションで動的テレメトリを使用する方法については、このチュートリアルを参照してください。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 000bc72e5c880abdd455d50cd7ac0bb57a51391d
+ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
+ms.openlocfilehash: 7fe03bcb918997971208554d030264d67bedb1ff
 
 
 ---
@@ -29,54 +29,14 @@ ms.openlocfilehash: 000bc72e5c880abdd455d50cd7ac0bb57a51391d
 
 このチュートリアルを完了するには、以下が必要になります。
 
-* 有効な Azure サブスクリプション アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版][lnk_free_trial]のページを参照してください。
+* 有効な Azure サブスクリプション アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][lnk_free_trial]をご覧ください。
 * [Node.js][lnk-node] バージョン 0.12.x 以降。
 
 このチュートリアルに使用するオペレーティング システムは、Windows や Linux など、Node.js がインストールできれば何でもかまいません。
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-## <a name="configure-the-nodejs-simulated-device"></a>Node.js のシミュレーション対象デバイスの構成
-1. リモート監視ダッシュボードで **[+ デバイスの追加]** をクリックし、カスタム デバイスを追加します。 IoT Hub のホスト名、デバイス ID、デバイス キーをメモします。 これらの情報は、後でこのチュートリアルの中で remote_monitoring.js デバイス クライアント アプリケーションを準備するときに必要となります。
-2. 開発コンピューターに Node.js のバージョン 0.12.x 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド プロンプトまたはシェルから「 `node --version` 」を実行します。 パッケージ マネージャーを使用して Linux に Node.js をインストールする方法については、パッケージ マネージャーによる [Node.js のインストール][node-linux]に関するページを参照してください。
-3. Node.js をインストールしたら、ご使用の開発コンピューターに最新バージョンの [azure-iot-sdks][lnk-github-repo] リポジトリを複製します。 最新バージョンのライブラリとサンプルを入手するために、必ず **master** ブランチを使用してください。
-4. ローカルにコピーした [azure-iot-sdks][lnk-github-repo] リポジトリの node/device/samples フォルダーから次の 2 つのファイルを開発コンピューター上の空のフォルダーにコピーします。
-   
-   * packages.json
-   * remote_monitoring.js
-5. remote_monitoring.js ファイルを開き、次の変数の定義を探します。
-   
-    ```
-    var connectionString = "[IoT Hub device connection string]";
-    ```
-6. **[IoT Hub device connection string]** を、デバイスの接続文字列に置き換えます。 手順 1. でメモした IoT Hub のホスト名、デバイス ID、デバイス キーの値を使用してください。 デバイスの接続文字列は、次の形式にする必要があります。
-   
-    ```
-    HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
-    ```
-   
-    IoT Hub のホスト名が **contoso**、デバイス ID が **mydevice** の場合、接続文字列は以下のようになります。
-   
-    ```
-    var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
-    ```
-7. ファイルを保存します。 これらのファイルが格納されているフォルダーから、シェルまたはコマンド プロンプトで次のコマンドを実行して必要なパッケージをインストールし、サンプル アプリケーションを実行します。
-   
-    ```
-    npm install
-    node remote_monitoring.js
-    ```
-
-## <a name="observe-dynamic-telemetry-in-action"></a>作動中の動的テレメトリの観察
-ダッシュボードには、既に実行されているシミュレーション対象デバイスから取得した温度と湿度のテレメトリが表示されます。
-
-![The default dashboard][image1]
-
-前のセクションで実行した Node.js のシミュレーション対象デバイスを選択した場合は、温度、湿度、外部温度のテレメトリが表示されます。
-
-![Add external temperature to the dashboard][image2]
-
-このリモート監視ソリューションは、その他の種類の外部温度テレメトリを自動的に検出し、ダッシュボード上のグラフに追加します。
+[!INCLUDE [iot-suite-send-external-temperature](../../includes/iot-suite-send-external-temperature.md)]
 
 ## <a name="add-a-telemetry-type"></a>テレメトリ タイプの追加
 次の手順では、Node.js のシミュレーション対象デバイスによって生成されるテレメトリを、新しい値に差し替えます。
@@ -236,19 +196,15 @@ ms.openlocfilehash: 000bc72e5c880abdd455d50cd7ac0bb57a51391d
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
-[Image1]: media/iot-suite-dynamic-telemetry/image1.png
-[image2]: media/iot-suite-dynamic-telemetry/image2.png
 [image3]: media/iot-suite-dynamic-telemetry/image3.png
 [image4]: media/iot-suite-dynamic-telemetry/image4.png
 [image5]: media/iot-suite-dynamic-telemetry/image5.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-node]: http://nodejs.org
-[node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
-[lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

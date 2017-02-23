@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
-ms.openlocfilehash: 4ca6e9a70eeba688912dd1f2c840fe0289a365c9
+ms.sourcegitcommit: 6fad9ecee49eae24daf924bc292daaf42000c901
+ms.openlocfilehash: 546d7f721689d5d52adfc6149b715a0f9e1aa71e
 
 
 ---
@@ -45,7 +45,7 @@ Amazon Redshift からデータをコピーするパイプラインを作成す�
 * [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 * [RelationalSource](#copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
 
-このサンプルは Amazon Redshift データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは Amazon Redshift データベースのクエリ結果のデータを BLOB に&1; 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Amazon Redshift のリンクされたサービス**
 
@@ -248,7 +248,7 @@ Amazon Redshift からデータをコピーするパイプラインを作成す�
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### <a name="type-mapping-for-amazon-redshift"></a>Amazon Redshift の型マッピング
-[データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の&2; 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
@@ -284,6 +284,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

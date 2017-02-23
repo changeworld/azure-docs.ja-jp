@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/17/2017
+ms.date: 02/08/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: efa4a720a306aaedcd2d5857d30d34394a76f5f6
-ms.openlocfilehash: b2f8537aa58e6dc78051752a13f555331042972a
+ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
+ms.openlocfilehash: ca09ac90dfcf125291bc0b312b16e28160a18527
 
 
 ---
@@ -27,6 +27,9 @@ DocumentDB データの優れた検索エクスペリエンスを実装するこ
 これをセットアップするには、[Azure Search サービス](search-create-service-portal.md)、インデックス、インデクサー、およびデータ ソースが必要です。 これらのオブジェクトは、[ポータル](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search)、または .NET 以外のすべての言語用の [REST API](/rest/api/searchservice/) のいずれかを使用して作成できます。 
 
 ポータルを選択した場合は、[データのインポート ウィザード](search-import-data-portal.md)に従って、これらすべてのオブジェクトを作成します。 通常は、既定のインデックスを生成できます。
+
+> [!NOTE]
+> **データのインポート** ウィザードを DocumentDB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
 
 ## <a name="a-idconceptsaazure-search-indexer-concepts"></a><a id="Concepts"></a>Azure Search インデクサーの概念
 Azure Search では、データ ソース (DocumentDB を含む) とそのデータ ソースに対して動作するインデクサーの作成および管理をサポートしています。
@@ -291,6 +294,6 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 * Azure Search の詳細については、 [Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

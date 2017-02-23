@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/09/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 8e7c14d9eeeab43d596eec99cb380f06cf9c39b3
+ms.sourcegitcommit: 6c2464b2f4d16f70c2841faf18e2246c8125b60f
+ms.openlocfilehash: 9421b8545715def823a4bdafd27c261e159fbbab
 
 
 ---
@@ -74,7 +74,7 @@ Linux クラスターで実行する Service Fabric アプリケーションを 
 [最初のアプリの作成 (Java)](service-fabric-create-your-first-linux-application-with-java.md)
 
 ## <a name="core-concepts"></a>主要な概念
-より詳細な概念や説明については [Service Fabric の用語の概要](service-fabric-technical-overview.md)、[アプリケーション モデルに関する記事](service-fabric-application-model.md)、および[サポートされるプログラミング モデルに関する記事](service-fabric-choose-framework.md)で提供していますが、ここでは基本的な概念を取り上げます。
+「[Service Fabric の用語](service-fabric-technical-overview.md)」、「[アプリケーション モデル](service-fabric-application-model.md)」、および「[サポートされるプログラミング モデル](service-fabric-choose-framework.md)」では詳細な概念や説明が提供されていますが、ここでは基本的な概念について説明します。
 
 <table><tr><th>主要な概念</th><th>設計時</th><th>実行時</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
@@ -140,6 +140,7 @@ Service Fabric には、サービスの記述と管理に使用できる複数�
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 

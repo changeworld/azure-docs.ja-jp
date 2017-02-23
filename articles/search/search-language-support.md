@@ -1,6 +1,6 @@
 ---
-title: "Azure Search でドキュメントのインデックスを複数の言語で作成する | Microsoft Docs"
-description: " Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
+title: "Azure Search の複数言語 | Microsoft Docs"
+description: "Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
 services: search
 documentationcenter: 
 author: yahnoosh
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: jlembicz
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
+ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
+ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
 
 ---
 
@@ -29,17 +29,17 @@ ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 >
 >
 
-インデックス定義内で検索可能フィールドにプロパティを 1 つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。 この手順はポータルで実行できるようになりました。
+インデックス定義内で検索可能フィールドにプロパティを&1; つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。 この手順はポータルで実行できるようになりました。
 
 ユーザーがインデックス スキーマを定義できる、Azure ポータルの Azure Search 用のブレードのスクリーンショットを以下に示します。 ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
 
 > [!IMPORTANT]
-> 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。 フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。 変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
+> 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは&1; つだけです。 フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。 変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
 >
 >
 
 ## <a name="define-a-new-field-definition"></a>新しいフィールド定義を定義する
-1. [Azure ポータル](https://portal.azure.com) にサインインし、検索サービスのサービス ブレードを開きます。
+1. [Azure Portal](https://portal.azure.com) にサインインし、検索サービスのサービス ブレードを開きます。
 2. サービス ダッシュボードの上部にあるコマンド バーの **[インデックスの追加]** をクリックして新しいインデックスを開始するか、既存のインデックスを開いて、既存のインデックスに追加する新しいフィールドでアナライザーを設定します。
 3. [フィールド] ブレードが表示され、言語アナライザーの選択に使用する [アナライザー] タブなど、インデックスのスキーマを定義するためのオプションが表示されます。
 4. [フィールド] ブレードで、フィールドの定義を開始します。名前の指定、データ型の選択、および属性の設定を行い、フルテキスト検索可能、検索結果で取得可能、ファセット ナビゲーション構造で使用可能、並べ替え可能などとしてフィールドにマークします。
@@ -55,7 +55,7 @@ ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 4. 使用するアナライザーを選択します。
 
 ![][2]
-*フィールドごとにサポートされているアナライザーを 1 つ選択する*
+*フィールドごとにサポートされているアナライザーを&1; つ選択する*
 
 既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、 [Azure Search の言語サポート](https://msdn.microsoft.com/library/azure/dn879793.aspx)に関するページを参照してください。
 
@@ -94,6 +94,6 @@ ms.openlocfilehash: 1cbb5209b85d14a313da764394069f835ef29176
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 translationtype: Human Translation
-ms.sourcegitcommit: ebf876f946eceddce9c8c990d8b28fcb969bec23
-ms.openlocfilehash: 112226028c053cc91f9fb2bc0e5978f7cb2343ed
+ms.sourcegitcommit: 518d586a921926874cd959587ad2730ad346df71
+ms.openlocfilehash: cae3f0192d6b0e6204ede4c1855b731a2ffa4ae1
 
 
 ---
@@ -39,7 +39,7 @@ Storm トポロジでは、並列処理を決定する一連の設定が用意�
 * ワーカー プロセスの数: ワーカーは VM 間で均等に分散されます。
 * スパウトの Executor インスタンスの数
 * ボルトの Executor インスタンスの数
-* スパウト タスクの数
+* スパウトのタスクの数
 * ボルト タスクの数
 
 たとえば、クラスターに 4 つの VM と 4 つのワーカー プロセス、32 個のスパウトの Executor と 32 個のスパウト タスク、256 個のボルトの Executor と 512 個のボルト タスクがあるとします。
@@ -144,6 +144,6 @@ Storm におけるその他のパフォーマンスのチューニングにつ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

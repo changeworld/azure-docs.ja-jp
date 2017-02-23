@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: dba7f1ac2257246f14acf79de6e9fc714689b276
+ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
+ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
 
 
 ---
@@ -39,7 +39,7 @@ Application Insights のデータを Power BI にエクスポートする場合�
 3. Application Insights リソースの詳細を指定します。
    
     ![Application Insights データ ソースから取得する](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. データがインポートされるまで 1 ～ 2 分待ちます。
+4. データがインポートされるまで&1; ～&2; 分待ちます。
    
     ![Power BI アダプター](./media/app-insights-export-power-bi/010.png)
 
@@ -92,6 +92,6 @@ Application Insights のクエリをインポートするには、Power BI の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

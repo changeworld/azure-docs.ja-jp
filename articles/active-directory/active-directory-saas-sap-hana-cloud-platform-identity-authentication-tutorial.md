@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 18fa3fd2fc9bb68b9e68c0c5ac5663a8a8348fd7
-ms.openlocfilehash: e02cb1916c65d137dc06b1ce6a9dd9621a31b56c
+ms.sourcegitcommit: 16ec322d0c921f97819375cfe52d2c3f02a2c53b
+ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 
 ---
@@ -89,7 +89,7 @@ Azure AD への SAP HANA Cloud Platform Identity Authentication の統合を構�
 
     ![アプリケーション][2]
     
-3. ダイアログの上部にある **[追加]** ボタンをクリックします。
+3. ダイアログの上部にある **[追加]** をクリックします。
 
     ![アプリケーション][3]
 
@@ -131,11 +131,11 @@ SAP HANA Cloud Platform Identity Authentication アプリケーションは、�
 
     ![Configure Single Sign-On][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択してシングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On][5]
+    ![[シングル サインオンの構成]][5]
 
-3. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、SAP アプリケーションに "firstName" などの属性が必要な場合は、 [Saml トークン属性] ダイアログで、"firstName" 属性を追加します。
+3. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、SAP アプリケーションに "firstName" などの属性が必要な場合は、[Saml トークン属性] ダイアログで、"firstName" 属性を追加します。
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
@@ -190,7 +190,7 @@ SAP HANA Cloud Platform Identity Authentication アプリケーションは、�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png) 
 
-4. **[ユーザー]** ダイアログ ページで、次の手順に従います。
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png) 
 
@@ -239,7 +239,7 @@ SAP HANA Cloud Platform Identity Authentication との ID フェデレーショ�
 
 5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** ボタンをクリックします。
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
@@ -276,6 +276,7 @@ SAP HANA Cloud Platform Identity Authentication との ID フェデレーショ�
 [203]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_203.png
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

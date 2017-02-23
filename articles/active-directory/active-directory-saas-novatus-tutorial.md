@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 270d1a62d3522e154ba63192f11dc4394532c529
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f14f89b10145787bb2729f741ce8620238a7f246
 
 
 ---
@@ -45,12 +45,12 @@ Novatus と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから Novatus を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -117,10 +117,10 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-novatus-tutorial/tutorial_novatus_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]** をクリックします。
-2. お使いのアプリケーション用に構成された SSO を取得するために、Novatus のサポート チーム ( jvinci@novatusinc.com. Novatus チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
+    b. **[次へ]**をクリックします。
+2. お使いのアプリケーション用に構成された SSO を取得するために、Novatus のサポート チーム (jvinci@novatusinc.com) に問い合わせます。 Novatus チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 3. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -238,6 +238,6 @@ Novatus で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

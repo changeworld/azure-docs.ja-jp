@@ -1,6 +1,6 @@
 ---
-title: "ARM テンプレートと C# を使用した IoT ハブの作成 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Resource Manager テンプレートを使用して、C# プログラムで IoT Hub の作成を開始する方法について説明します。"
+title: "テンプレートを使用した Azure IoT Hub の作成 (.NET) | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して C# プログラムから IoT ハブを作成する方法。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,22 +12,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 118ab90d7886ad48e7476abd732b16b69375d214
+ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
+ms.openlocfilehash: 49c7506b35f661509346dfd8305f10c0d63422eb
 
 
 ---
-# <a name="create-an-iot-hub-using-a-c-program-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して C# プログラムで IoT Hub を作成する
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>はじめに
 Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、Azure Resource Manager テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
 > 
 > 
 
@@ -36,7 +36,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 * Microsoft Visual Studio 2015
 * アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
 * Azure Resource Manager テンプレート ファイルを保存できる [Azure Storage アカウント][lnk-storage-account]。
-* [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降。
+* [Azure PowerShell 1.0][lnk-powershell-install] 以降。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -45,7 +45,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]**をクリックします。
 3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。 **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
-5. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
+5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
    
     ```
     using System;
@@ -120,7 +120,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
     }
     ```
 5. **サーバー エクスプローラー**から Azure サブスクリプションに接続し、Azure Storage アカウントで **templates** というコンテナーを作成します。 **[プロパティ]** ウィンドウで、**[templates]** コンテナーの **[パブリック読み取りアクセス]** 権限を **[BLOB]** に設定します。
-6. **サーバー エクスプローラー**で **[templates]** コンテナーを右クリックし、**[BLOB コンテナーの表示]** をクリックします。 **[BLOB のアップロード]** ボタンをクリックして **parameters.json** と **templates.json** の 2 つのファイルを選択し、**[開く]** をクリックして、**[templates]** コンテナーに JSON ファイルをアップロードします。 JSON データを含んだ BLOB の URL は次のとおりです。
+6. **サーバー エクスプローラー**で **[templates]** コンテナーを右クリックし、**[BLOB コンテナーの表示]** をクリックします。 **[BLOB のアップロード]** ボタンをクリックして **parameters.json** と **templates.json** の&2; つのファイルを選択し、**[開く]** をクリックして、**[templates]** コンテナーに JSON ファイルをアップロードします。 JSON データを含んだ BLOB の URL は次のとおりです。
    
     ```
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
@@ -193,7 +193,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
 * Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
 
-IoT Hub の開発に関する詳細については、以下を参照してください
+IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
 * [C SDK の概要][lnk-c-sdk]
 * [Azure IoT SDK][lnk-sdks]
@@ -206,7 +206,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: ../powershell-install-configure.md
+[lnk-powershell-install]: /powershell/azureps-cmdlets-docs
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
@@ -218,6 +218,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

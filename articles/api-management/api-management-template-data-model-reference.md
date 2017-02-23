@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
+ms.sourcegitcommit: 080ac72246e62948c3defe329028f27751e8c78d
+ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
@@ -120,7 +120,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 ##  <a name="a-namecommenta-comment"></a><a name="Comment"></a> Comment  
  `API` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|説明|  
+|プロパティ|型|Description|  
 |--------------|----------|-----------------|  
 |ID|number|コメントの ID。|  
 |CommentText|string|コメントの本文。 HTML を含めることができます。|  
@@ -130,7 +130,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 ##  <a name="a-nameissuea-issue"></a><a name="Issue"></a> Issue  
  `issue` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|説明|  
+|プロパティ|型|Description|  
 |--------------|----------|-----------------|  
 |ID|string|問題の一意の識別子。|  
 |ApiID|string|この問題が報告された API の ID。|  
@@ -211,7 +211,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 ##  <a name="a-namemenuitema-operation-menu-item"></a><a name="MenuItem"></a> Operation menu item  
  `operation menu item` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|説明|  
+|プロパティ|型|Description|  
 |--------------|----------|-----------------|  
 |ID|string|操作の ID。|  
 |タイトル|string|操作の説明。|  
@@ -244,7 +244,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 ##  <a name="a-nameproducta-product"></a><a name="Product"></a> Product  
  `product` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|説明|  
+|プロパティ|型|Description|  
 |--------------|----------|-----------------|  
 |ID|string|リソース識別子。 現在の API Management サービス インスタンス内の製品を一意に識別します。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。 このプロパティは読み取り専用です。|  
 |タイトル|string|製品の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -350,7 +350,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 |電子メール|string|電子メール アドレス。 空にしないでください。値は、サービス インスタンス内で一意である必要があります。 最大長は 254 文字です。|  
 |FirstName|string|名。 空にしないでください。 最大長は 100 文字です。|  
 |LastName|string|姓。 空にしないでください。 最大長は 100 文字です。|  
-|UserData|string|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
+|UserData|string|[sign-up](api-management-page-controls.md#sign-up) コントロールで使われる値。|  
 |NameIdentifier|string|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |ProviderName|string|認証プロバイダーの名前。|
 
@@ -358,6 +358,7 @@ ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

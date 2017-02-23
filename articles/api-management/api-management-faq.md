@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
-ms.openlocfilehash: f4f3ee081d7c89fb5bc01552cb2e3ce01dd5381a
+ms.sourcegitcommit: 8d5c21f8e746a9bcddc2eb9b0294836e0de55bf2
+ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
@@ -44,6 +44,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API Management は Azure ExpressRoute と共に使用できますか。](#does-api-management-work-with-azure-expressroute)
 * [あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。](#can-i-move-an-api-management-service-from-one-subscription-to-another)
+* [API のインポートには制限事項や既知の問題はありますか。](#api-management-api-import-restrictions)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Microsoft Azure API Management チームに質問するにはどうすればよいですか。
 次の方法のいずれかを使用して、チームに問い合わせることができます。
@@ -90,7 +91,6 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
 3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して、シングル サインオン URL を取得します。
 4. この URL を使って管理ポータルにアクセスできます。
-
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>追加するポリシーがポリシー エディターで利用できないのはなぜですか。
 追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](https://msdn.microsoft.com/library/azure/dn894080.aspx)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。
 
@@ -100,7 +100,6 @@ API Management では API のバージョン管理を複数の方法で使用で
 * API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という&2; つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
 * バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
 * API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
 テスト環境と運用環境など、複数の環境を&1; つの API でセットアップする方法は&2; つあります。 そのための方法は次のとおりです。
 
@@ -148,9 +147,11 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。
 はい。 方法の詳細については、「[Move resources to a new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
+### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>API のインポートには制限事項や既知の問題はありますか。
+Open API (Swagger)、WSDL、WADL の形式についての[既知の問題と制限事項](api-management-api-import-restrictions.md)をご覧ください。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

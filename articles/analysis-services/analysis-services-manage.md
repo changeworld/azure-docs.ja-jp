@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 17df0dfc32078fc08d2e744d4e83f1a1d77a9da1
-ms.openlocfilehash: d6fbb7febc05548e1e89e12394bbb7064e5da1c9
+ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
+ms.openlocfilehash: a5db6cccf6c3dc55ee2cda59cb9e2ecd2292fcb5
 
 
 ---
@@ -30,7 +30,7 @@ Azure に Analysis Services サーバーを作成した後は、すぐに、ま�
 ![Azure でサーバー名を取得する](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Azure のサーバーへの接続は、組織内のサーバー インスタンスへの接続と同じです。 SSMS では、データの処理、処理スクリプトの作成、ロールの管理、PowerShell の使用など、多くの同じタスクを実行できます。
+Azure のサーバーへの接続は、組織内のサーバー インスタンスへの接続と同じです。 SSMS では、データの処理、処理スクリプトの作成、ロールの管理、PowerShell の使用など、多くの同じタスクを実行できます。 [最新バージョンの SSMS をダウンロードしてインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
@@ -49,7 +49,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
    
     **[Active Directory パスワード認証]**: 組織アカウントを使います。 たとえば、ドメイン参加非コンピューターから接続するときです。
    
-    注: Active Directory 認証が表示されない場合は、SSMS で [Azure Active Directory 認証を有効にする](#enable-azure-active-directory-authentication)ことが必要な場合があります。
+    注: Active Directory 認証が表示されない場合は、[最新バージョンの SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) への更新が必要な可能性があります。
    
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
@@ -58,16 +58,6 @@ SSMS を使う Azure でのサーバーの管理はオンプレミスのサー�
 ## <a name="server-administrators-and-database-users"></a>サーバー管理者とデータベース ユーザー
 Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの&2; 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 これは、Windows ドメイン ユーザー名でサーバー管理者とデータベース ユーザーをサポートする、オンプレミスの表形式モデル データベースとは異なります。 詳細については、「[Azure Analysis Services でのユーザーの管理](analysis-services-manage-users.md)」を参照してください。
 
-## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory 認証を有効にする
-レジストリで SSMS の Azure Active Directory 認証機能を有効にするには、EnableAAD.reg という名前のテキスト ファイルを作り、次のスクリプトをコピーして貼り付けます。
-
-```
-Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\Software\Microsoft\Microsoft SQL Server\Microsoft Analysis Services\Settings]
-"AS AAD Enabled"="True"
-```
-
-ファイルを保存して実行します。
 
 ## <a name="troubleshooting-connection-problems"></a>接続の問題のトラブルシューティング
 SSMS を使用してサーバーに接続するときに、(手順 3. で) 非フェデレーション アカウントまたは Azure Active Directory 以外のアカウントを使用してサインインしようとして接続できない場合は、ログイン キャッシュを消去する必要があります。 次の手順に従う前に、SSMS を閉じます。
@@ -85,6 +75,6 @@ SSMS を使用してサーバーに接続するときに、(手順 3. で) 非�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

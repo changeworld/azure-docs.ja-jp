@@ -1,7 +1,7 @@
 ---
-title: "データで回答できる質問をする - 質問の考案 | Microsoft Docs"
-description: "初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。"
-keywords: "データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問"
+title: "データが回答できる質問をする - データ サイエンスの問題 - Azure | Microsoft Docs"
+description: "初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。"
+keywords: "データ サイエンスの問題,データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問"
 services: machine-learning
 documentationcenter: na
 author: cjgronlund
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 4e6a7a47f83b0db4380fe3bbf26efd292e4c8054
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
-初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。 このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
+初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの問題を質問として考案する方法について説明します。 このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
-> 
-> 
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
@@ -100,7 +100,6 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 
 
 
-
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

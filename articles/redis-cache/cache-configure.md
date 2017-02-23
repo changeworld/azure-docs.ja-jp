@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
+ms.sourcegitcommit: 1c002b796ed926fb8b0c6cedf3e361816e50b803
+ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
 
 
 ---
@@ -31,9 +31,11 @@ ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
 ## <a name="configure-redis-cache-settings"></a>Redis Cache の設定の構成
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Redis Cache の **[リソース メニュー]** には、次の設定が用意されています。
+Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレードの **[リソース]** メニューを使って行うことができます。
 
 ![Redis Cache の設定](./media/cache-configure/redis-cache-settings.png)
+
+**[リソース]** メニューを使って、以下の設定を表示および構成できます。
 
 * [概要](#overview)
 * [アクティビティ ログ](#activity-log)
@@ -476,6 +478,6 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

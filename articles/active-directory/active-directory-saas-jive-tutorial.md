@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: 8e5af99c6c0a8ce4d1b239b3271846f39bc387be
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 304ee87e82ce5acc4479fd16d3ac1aa340e42815
 
 
 ---
@@ -45,12 +45,12 @@ Jive と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Jive の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -118,7 +118,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
    
     ![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_05.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. ページの下部にある **[次へ]**」を参照してください。
 5. Jive テナントに管理者としてサインオンします。
@@ -169,7 +169,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png) 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
@@ -207,7 +207,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
 次のスクリーン ショットは、Azure AD の関連ダイアログの例を示しています。
 
-![[ユーザー プロビジョニングの構成]](./media/active-directory-saas-jive-tutorial/IC698794.png "Configure User Provisioning")
+![ユーザー プロビジョニングの構成](./media/active-directory-saas-jive-tutorial/IC698794.png "ユーザー プロビジョニングの構成")
 
 #### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. Microsoft Azure 管理ポータルの **Jive** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
@@ -283,6 +283,6 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

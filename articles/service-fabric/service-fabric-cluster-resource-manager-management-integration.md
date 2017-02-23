@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
-ms.openlocfilehash: 53b97327e41c68fbbbe20b5bc5cf99bdae15e1f9
+ms.sourcegitcommit: b2428f93680c12c76000fa8eb1a7138f72a8efe7
+ms.openlocfilehash: 9d67f089f4aba03e846a8fe020a91b6b1ac6ea48
 
 
 ---
@@ -187,6 +187,6 @@ PreferredLocation 制約は少し異なり、この制約だけが “最適化�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

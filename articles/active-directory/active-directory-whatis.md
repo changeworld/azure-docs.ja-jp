@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 02/14/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: b247388bff35fb755c8363eb48695e47f2510574
-ms.openlocfilehash: a5f8adfa278b096914239357c675654fd9fc2908
+ms.sourcegitcommit: c28d84bf59c161cfe6a80062f13f10f44bf43f34
+ms.openlocfilehash: 09261f739d2cd3976f68c499d0e83fe25beef0b8
 
 
 ---
@@ -146,7 +146,7 @@ ACL を使用。個別にまたはグループに適用でき、次をサポー�
 
 **IT 管理者の方:**
 
-* [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日間無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分程度でデプロイできます。
+* [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日間無料試用版に今すぐサインアップすると、このリンクを使って、初めてのクラウド ソリューションを 5 分程度でデプロイできます
 
 * Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 
@@ -173,6 +173,6 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

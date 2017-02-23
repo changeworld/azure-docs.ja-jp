@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
+ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
+ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
 
 
 ---
@@ -33,7 +33,7 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 現時点では、Data Factory は、他のデータ ストアから MongoDB へのデータの移動ではなく、MongoDB から他のデータ ストアへのデータの移動のみをサポートしています。
 
 ## <a name="supported-versions"></a>サポートされているバージョン
-この MongoDB コネクタは、MongoDB バージョン 2.4 以降をサポートしています。
+この MongoDB コネクタは、MongoDB バージョン 2.4、2.6、3.0、3.2 をサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。
@@ -58,7 +58,7 @@ MongoDB データベースから、サポートされているシンク デー�
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [MongoDbSource](#copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは MongoDB データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは MongoDB データベースのクエリ結果のデータを BLOB に&1; 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 最初の手順として、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」の指示に従って Data Management Gateway を設定してください。
 
@@ -309,7 +309,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 [コピー ウィザード](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。 また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
 ### <a name="example"></a>例
-例として下に挙げる "ExampleTable" は、各セルにオブジェクトの配列が 1 つ含まれた列 Invoices と、スカラー型の配列が 1 つ含まれた列 Ratings で構成された MongoDB テーブルです。
+例として下に挙げる "ExampleTable" は、各セルにオブジェクトの配列が&1; つ含まれた列 Invoices と、スカラー型の配列が&1; つ含まれた列 Ratings で構成された MongoDB テーブルです。
 
 | _id | Customer Name | Invoices | Service Level | Ratings |
 | --- | --- | --- | --- | --- |
@@ -358,6 +358,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

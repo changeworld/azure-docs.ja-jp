@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/13/2017
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 7f63344455fafafc3a966c45742ba52d23177fa5
-ms.openlocfilehash: 8c25c33535ce942ac63b9a259aa9e61765129d0a
+ms.sourcegitcommit: 45de2422e79215ecfbacf5bd15712eb780c49016
+ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
 
 
 ---
@@ -77,7 +77,7 @@ Azure HDInsight は場所ベースの仮想ネットワークのみをサポー�
 
 ### <a name="classic-or-v2-virtual-network"></a>クラシックまたは v2 Virtual Network
 
-Windows ベースのクラスターでは、クラシック Virtual Network が必要であり、Linux ベースのクラスターでは、Azure Resource Manager Virtual Network が必要です。 ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
+Linux ベースのクラスターでは、Azure Resource Manager Virtual Network が必要です (Windows ベースのクラスターでは、クラシック Virtual Network が必要です)。 ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
 
 作成を計画しているクラスターでは使用できない Virtual Network 上にリソースがある場合、クラスターで使用できる新しい Virtual Network を作成し、それを互換性のない Virtual Network に接続できます。 その後、必要なネットワーク バージョンでクラスターを作成し、2 つは結合されているので別のネットワークのリソースにアクセスが可能となります。 従来の Virtual Network と新しい Virtual Network を接続する方法の詳細については、「 [従来の Vnet を新しい Vnet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
@@ -95,6 +95,11 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 
 > [!IMPORTANT]
 > 許可される IP アドレスは、HDInsight クラスターと Virtual Network が存在するリージョンに固有である必要があります。 次のリストを参照して、使用しているリージョンに適した IP アドレスを見つけてください。
+
+__ブラジル南部__リージョン:
+
+* 191.235.84.104
+* 191.235.87.113
 
 __カナダ東部__リージョン:
 
@@ -130,7 +135,7 @@ __その他のすべてのリージョン__:
 
 次の例では、必要なアドレスを許可し、Virtual Network内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成する方法を示します。 この例で使用されるアドレスは、前述の__その他のすべてのリージョン__用のアドレスです。 __米国中西部__などの具体的に名前が指示されているリージョンの場合は、そのリージョン用の IP アドレスを使用するようにスクリプトを変更してください。
 
-これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
+これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。 「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
 
 > [!IMPORTANT]
 > これらの例で使用する `priority` 値に注意してください。優先順位の高い順に、ネットワークに対するルールのテストが行われます。 1 つのルールがテスト条件に一致して適用されると、ルールのテストはそれ以上行われません。
@@ -221,10 +226,10 @@ __その他のすべてのリージョン__:
 
 2. ポート 443 上で Azure HDInsight の正常性と管理サービスからのインバウンド通信を許可する新しいネットワーク セキュリティ グループにルールを追加するには、次を使用します。 **RESOURCEGROUPNAME** を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。
     
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
-        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+        az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162/24" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
 
 3. ルールが作成されたら、次を使用してこのネットワーク セキュリティ グループの一意の識別子を取得します。
 
@@ -232,7 +237,9 @@ __その他のすべてのリージョン__:
 
     次のテキストのような値が返されます。
 
-        "/subscriptions/55b1016c-0f27-43d2-b908-b8c373d6d52e/resourceGroups/mygroup/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+
+    期待どおりの結果が得られない場合は、コマンド内の ID を二重引用符で囲んでください。
 
 4. 次のコマンドを使用して、ネットワーク セキュリティ グループをサブネットに適用します。 __GUID__ と __RESOURCEGROUPNAME__ の値を、前の手順で返された値に置き換えます。 __VNETNAME__ と __SUBNETNAME__ を、HDInsight クラスターの作成時に使用する仮想ネットワーク名とサブネット名に置き換えます。
    
@@ -246,7 +253,7 @@ __その他のすべてのリージョン__:
 > たとえば、インターネットからの SSH アクセスを許可するには、次のようなルールを追加する必要があります。 
 > 
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
-> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
+> * Azure CLI - ```az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"```
 
 ネットワーク セキュリティ グループの詳細については、 [ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事を参照してください。 Azure Virtual Network におけるルーティングの制御については、 [ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事を参照してください。
 
@@ -360,6 +367,6 @@ Azure のかそうネットワークの詳細については、 [Azure Virtual N
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

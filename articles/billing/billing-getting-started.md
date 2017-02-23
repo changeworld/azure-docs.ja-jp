@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 02/03/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 249d08341311e48a93db8031439f0bc35162f823
-ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
+ms.sourcegitcommit: 1b738d952685fe71e5a1eecd809afae1c9904267
+ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 
 ---
@@ -41,13 +41,13 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 ### <a name="check-your-subscription-and-access"></a>サブスクリプションとアクセスを確認する
 
-コストを表示するには、[サブスクリプション レベルのアクセス権](../active-directory/role-based-access-control-configure.md)が必要ですが、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、課金情報を変更したり、サブスクリプションを管理したりできるのはアカウント管理者だけです。 アカウント管理者は、サインアップ プロセスを完了したユーザーです。 詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」をご覧ください。
+コストを表示するには、[サブスクリプション レベルのアクセス権](../active-directory/role-based-access-control-configure.md)が必要ですが、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、課金情報を変更したり、サブスクリプションを管理したりできるのはアカウント管理者だけです。 アカウント管理者は、サインアップ プロセスを完了したユーザーです。 詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
 
 自分がアカウント管理者かどうかを確認するには、[Azure Portal の [サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、アクセスできるサブスクリプションの一覧を確認します。 **[自分の役割]** を確認します。 ここに *[アカウント管理者]* と表示されていれば問題ありません。 *[所有者]* などの他の役割が表示されている場合は、すべての権限を持っているわけではありません。
 
 ![Azure Portal の [サブスクリプション] ビューに表示された役割のスクリーンショット](./media/billing-getting-started/sub-blade-view.PNG)
 
-アカウント管理者でない場合、別のユーザーが [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md) (RBAC) 使用して部分的なアクセス権を付与していると考えられます。 サブスクリプションを管理し、課金情報を変更するには、[アカウント管理者を見つけて](../billing-subscription-transfer.md#whoisaa)、これらのタスクの実行または[サブスクリプションの転送](../billing-subscription-transfer.md)を依頼します。
+アカウント管理者でない場合、別のユーザーが [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md) (RBAC) 使用して部分的なアクセス権を付与していると考えられます。 サブスクリプションを管理し、課金情報を変更するには、[アカウント管理者を見つけて](billing-subscription-transfer.md#whoisaa)、これらのタスクの実行または[サブスクリプションの転送](billing-subscription-transfer.md)を依頼します。
 
 組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
@@ -65,7 +65,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 ### <a name="set-up-billing-alerts"></a>課金アラートのセットアップ
 
-使用料金が指定した金額を超えたときに電子メールを受け取るには、課金アラートを設定します。 毎月のクレジットがある場合は、指定した金額まで使用したときのアラートを設定します。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](../billing-set-up-alerts.md)」を参照してください。
+使用料金が指定した金額を超えたときに電子メールを受け取るには、課金アラートを設定します。 毎月のクレジットがある場合は、指定した金額まで使用したときのアラートを設定します。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](billing-set-up-alerts.md)」を参照してください。
 
 ![課金アラートの電子メールのスクリーンショット](./media/billing-getting-started/billing-alert.png)
 
@@ -154,9 +154,9 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 
 詳細については、「[Advisor のコストに関する推奨事項](../advisor/advisor-cost-recommendations.md)」を参照してください。
 
-### <a name="a-nameinvoice-and-usagea-download-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a>最初の請求期間の終了後に請求書と使用状況の詳細をダウンロードする
+### <a name="a-nameinvoice-and-usagea-get-your-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a> 最初の請求期間の終了後に請求書と使用状況の詳細を取得する
 
-最初の請求期間が終了したら、Portable Document Format (.pdf) の請求書とコンマ区切り値 (.csv) の使用状況の詳細をダウンロードできます。 これらのファイルは、課税、割引、クレジットを適用した後の最終的な請求金額を把握するのに役立ちます。 サブスクリプションに支払方法が設定されていない場合、これらのファイルを使用できないことがあります。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](../billing-download-azure-invoice-daily-usage-date.md)」および「[Microsoft Azure の課金内容の確認](/billing-understand-your-bill.md)」をご覧ください。
+最初の請求期間が終了したら、Portable Document Format (.pdf) の請求書とコンマ区切り値 (.csv) の使用状況の詳細をダウンロードできます。 請求書のメール送信を選ぶこともできます。 これらのファイルは、課税、割引、クレジットを適用した後の最終的な請求金額を把握するのに役立ちます。 サブスクリプションに支払方法が設定されていない場合、これらのファイルを使用できないことがあります。 詳細については、「[Azure の請求書と毎日の使用状況データを取得する方法](billing-download-azure-invoice-daily-usage-date.md)」および「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
 
 ![.pdf の請求書のスクリーンショット](./media/billing-getting-started/invoice.png)
 
@@ -166,7 +166,7 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 
 ### <a name="billing-api"></a>課金 API
 
-課金 API を使用すると、使用状況データをプログラムによって取得できます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](../billing-usage-rate-card-overview.md)」をご覧ください。
+課金 API を使用すると、使用状況データをプログラムによって取得できます。 課金対象の使用状況を取得するには、RateCard API と Usage API を組み合わせて使用します。 詳細については、「[Microsoft Azure リソースの消費を把握する](billing-usage-rate-card-overview.md)」をご覧ください。
 
 ## <a name="a-nameother-offersa-additional-resources-for-ea-csp-and-sponsorship"></a><a name="other-offers"></a>EA、CSP、およびスポンサー プラン向けのその他のリソース
 
@@ -174,7 +174,7 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 
 | プラン | リソース |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Enterprise Agreement (EA) | [EA ポータル](https://ea.azure.com/)と[ヘルプ ドキュメント](https://ea.azure.com/helpdocs) |
+| Enterprise Agreement (EA) | [EA ポータル](https://ea.azure.com/)、[ヘルプ ドキュメント](https://ea.azure.com/helpdocs)、および [Power BI レポート](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (CSP) | プロバイダーに連絡してください |
 | Azure スポンサー プラン | [スポンサー プラン ポータル](https://www.microsoftazuresponsorships.com/) |
 
@@ -182,6 +182,6 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

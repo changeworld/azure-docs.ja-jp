@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 52a5dc6b832fb1314ef5994e932b1fe2b5e5de0b
+ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
+ms.openlocfilehash: ec7bdf6b27cc073324d0d3a79b268e9730a6016b
 
 
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
-Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
-
-Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。 この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
+Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
 
 Premium キャッシュのその他の機能の詳細については、「 [Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
@@ -56,12 +54,18 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用でき、Redis はキャッシュのシャード全体にデータを分配します。 診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Redis Cache ブレードに[表示](cache-how-to-monitor.md)できます。 
 
+> [!NOTE]
+> 
+> クラスタリングが構成されているときは、クライアント アプリケーションに対していくつか小さな変更が必要です。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> 
+> 
+
 StackExchange.Redis クライアントを使用したクラスタリングの操作でのサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>実行中の Premium キャッシュのクラスター サイズを変更する
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[設定]** ブレードから **[(プレビュー) Redis クラスター サイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[リソース]** メニューの **[(プレビュー) Redis クラスターのサイズ]** をクリックします。
 
 > [!NOTE]
 > Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
@@ -93,7 +97,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 * [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)を使用する場合は、1.0.481 以降を使用する必要があります。 クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ [エンドポイント、ポート、キー](cache-configure.md#properties) を使用して、キャッシュに接続します。 唯一の違いは、すべての読み取りと書き込みをデータベース 0 に対して実行する必要があることです。
   
   * 他のクライアントの要件は異なる場合があります。 「 [すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)
-* アプリケーションで 1 つのコマンドにバッチ処理された複数のキー操作を使用する場合は、すべてのキーを同じシャードに配置する必要があります。 このようにする場合は、「 [クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)
+* アプリケーションで&1; つのコマンドにバッチ処理された複数のキー操作を使用する場合は、すべてのキーを同じシャードに配置する必要があります。 このようにする場合は、「 [クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)
 * Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.1 以降を使用する必要があります。 「 [Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>クラスターにはキーはどのように配布されるのですか
@@ -112,7 +116,7 @@ StackExchange.Redis クライアントを使用した同じシャードでのク
 Premium の最大キャッシュ サイズは、53 GB です。 最大 10 個のシャードを作成できるので、最大サイズは 530 GB です。 さらに大きいサイズが必要な場合は、 [追加を要求](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)できます。 詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>すべての Redis クライアントがクラスタリングをサポートしますか
-現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。 StackExchange.Redis はサポートしているものの 1 つです。 他のクライアントの詳細については、「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」の「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
+現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。 StackExchange.Redis はサポートしているものの&1; つです。 他のクライアントの詳細については、「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」の「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
 
 > [!NOTE]
 > StackExchange.Redis をクライアントとして使用する場合は、クラスタリングが正常に動作するように、 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 以降の最新バージョンを使用してください。 move 例外について問題がある場合は、 [move 例外](#move-exceptions) の詳細をご覧ください。
@@ -120,7 +124,7 @@ Premium の最大キャッシュ サイズは、53 GB です。 最大 10 個の
 > 
 
 ### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>クラスタリングが有効になっているとき、キャッシュに接続するにはどうすればよいですか
-クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ [エンドポイント、ポート、キー](cache-configure.md#properties) を使用して、キャッシュに接続できます。 Redis がバックエンドのクラスタリングを管理するので、クライアントから管理する必要はありません。
+クラスタリングが有効になっていないキャッシュに接続するときに使うものと同じ[エンドポイント](cache-configure.md#properties)、[ポート](cache-configure.md#properties)、[キー](cache-configure.md#access-keys)を使って、キャッシュに接続できます。 Redis がバックエンドのクラスタリングを管理するので、クライアントから管理する必要はありません。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>キャッシュの個々のシャードに直接接続できますか
 これは公式にはサポートされていません。 つまり、各シャードはキャッシュ インスタンスと総称して呼ばれるプライマリ/レプリカ キャッシュ ペアで構成されます。 GitHub で Redis リポジトリの [不安定な](http://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[http://redis.io](http://redis.io) の「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」で「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
@@ -136,7 +140,7 @@ SSL 以外の場合は、次のコマンドを使用します。
 SSL の場合は、`1300N` を `1500N` に置き換えます。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>以前に作成したキャッシュのクラスタリングを構成できますか。
-現在、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。 キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。 クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
+現在、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。 キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。 クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが&1; つだけ異なるものが可能です。
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Basic または Standard キャッシュのクラスタリングを構成できますか。
 クラスタリングは、Premium キャッシュでのみ使用できます。
@@ -172,6 +176,6 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

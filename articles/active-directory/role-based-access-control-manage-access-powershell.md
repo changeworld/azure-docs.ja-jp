@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 07/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d6dbbee1f977245cc16710ace3b25d6e167cbc7e
-ms.openlocfilehash: cdd7aab27943df568abfda27265ed970e6dd789c
+ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
+ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
 
 
 ---
@@ -127,7 +127,14 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ![RBAC PowerShell - Remove-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
-カスタム ロールを作成するには、 `New-AzureRmRoleDefinition` コマンドを使用します。 ロールを構成する方法は&2; つあります。PSRoleDefinitionObject を使用するか JSON テンプレートを使用します。 
+カスタム ロールを作成するには、 ```New-AzureRmRoleDefinition``` コマンドを使用します。 ロールを構成する方法は&2; つあります。PSRoleDefinitionObject を使用するか JSON テンプレートを使用します。 
+
+## <a name="get-actions-from-particular-resource-provider"></a>特定のリソース プロバイダーからアクションを取得する
+カスタム ロールを最初から作成するときは、リソース プロバイダーから可能なすべての操作を理解しておくことが重要です。
+これは、```Get-AzureRMProviderOperation``` コマンドを使って実現できます。 たとえば、仮想マシンで使用可能なすべての操作を確認する場合、コマンドは次のようになります。
+
+```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
+
 
 ### <a name="create-role-with-psroledefinitionobject"></a>PSRoleDefinitionObject を使用したロールの作成
 PowerShell を使用してカスタム ロールを作成する場合は、ゼロから始めることも、[組み込みのロール](role-based-access-built-in-roles.md)を出発点として使用することもできます。ここに示す例では、後者の方法を使用しています。 その属性を編集し、必要に応じて *Actions*、*notActions*、*スコープ*を追加して、変更内容を新しいロールとして保存します。
@@ -276,6 +283,6 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1fcec43ad50b9c78443ada116b9ca444605c4730
-ms.openlocfilehash: dc30e18b92e492137e016e7a7372bfdf3285e5fe
+ms.sourcegitcommit: 5acfbfbe7327fc28fa909e6ef7e0f9b6ce8b0e54
+ms.openlocfilehash: e0be8f4617c2fdbe1cb6fe2f904bf9ea7056c55e
 
 ---
 
@@ -45,17 +45,13 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 
   ![エンタープライズ アプリケーションの追加](./media/application-proxy-publish-azure-portal/add-app.png)
 
-3. [カテゴリ] ページで、**[Or add your own (独自のアプリケーションを追加します)]**を選択します。  
+3. [カテゴリ] ページで、**[On-premises application (オンプレミスのアプリケーション)]** を選びます。  
 
   ![独自のアプリケーションの追加](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
-4. ドロップダウン メニューから **[Deploying an existing application (既存のアプリケーションのデプロイ)]** を選択します。
-5. アプリの名前を指定し、**[追加]** を選択します。 読み込みウィンドウがポップアップします。アプリが追加されると、[クイック スタート] ブレードが開きます。
-6. [クイック スタート] ブレードで、**[Enable remote access for your on-premises application (オンプレミス アプリケーションへのリモート アクセスを有効にする]** を選択します。
+4. アプリケーションについて以下の情報を入力します。
 
-  ![オンプレミス アプリケーションへのリモート アクセスの有効化](./media/application-proxy-publish-azure-portal/enable-remote-access.png)
-
-7. アプリケーションについて以下の情報を入力します。
+   - **名前**: アクセス パネルに表示されるアプリケーションの名前。 
 
    - **内部 URL**: プライベート ネットワーク内からアプリケーションにアクセスするために、アプリケーション プロキシ コネクタで使用されるアドレス。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。
 
@@ -72,9 +68,8 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 
    ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/configure-app.png)
 
-8. [ **保存**] を選択します。
+8. **[追加]**を選択します。
 
-   ![アプリケーション プロキシの設定の保存](./media/application-proxy-publish-azure-portal/save-app-proxy.png)
 
 ## <a name="add-a-test-user"></a>テスト ユーザーの選択 
 
@@ -105,6 +100,6 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

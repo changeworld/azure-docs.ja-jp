@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 661a555c6cc8a4ca346c916f302627cf1f94cbb3
-ms.openlocfilehash: 3621acd9b341f194ab067f4c0436d1e9bd0c98f2
+ms.sourcegitcommit: fcb2c38b18e40d3ca4406810e523ae339d612bcf
+ms.openlocfilehash: b2049e2b3673ddc0455fc07c298f1054c8c8e78e
 
 
 ---
@@ -32,7 +32,7 @@ Azure サービスのログとメトリックを収集する方法は&4; 種類�
 
 | サービス                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
 | --- | --- | --- | --- | --- |
-| アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Networking Analytics (プレビュー)](log-analytics-azure-networking-analytics.md) |
+| アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Application Gateway 分析](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application Insights    |                                         | コネクタ   | コネクタ   | [Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (プレビュー) |
 | Automation アカウント     | Microsoft.Automation/AutomationAccounts | 診断 |             | [詳細情報](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Batch アカウント          | Microsoft.Batch/batchAccounts           | 診断 | 診断 | |
@@ -42,10 +42,10 @@ Azure サービスのログとメトリックを収集する方法は&4; 種類�
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 診断 |             | |
 | Event Hub 名前空間     | Microsoft.EventHub/namespaces           | 診断 | 診断 | |
 | IoT Hub                | Microsoft.Devices/IotHubs               |             | 診断 | |
-| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault Analytics (プレビュー)](log-analytics-azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault 分析](log-analytics-azure-key-vault.md) |
 | ロード バランサー          | Microsoft.Network/loadBalancers         | 診断 |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 診断 | 診断 | |
-| ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure Networking Analytics (プレビュー)](log-analytics-azure-networking-analytics.md) |
+| ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Search サービス         | Microsoft.Search/searchServices         | 診断 | 診断 | |
 | Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | |
 | Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](log-analytics-service-fabric.md) |
@@ -152,6 +152,6 @@ Azure テンプレート ギャラリーには、サービスからデータを�
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

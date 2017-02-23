@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 148ab898194fc1ab8a10d49dbb2f125f68cc2b1e
-ms.openlocfilehash: c30a69350136273bdaf010cb033dcbb7a26cd39e
+ms.sourcegitcommit: 3c18b1929a78137ff3b53b8e084dc35e0c8dcaac
+ms.openlocfilehash: 478db825a269beeaa9fbb0afef3488fc7d49d024
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: c30a69350136273bdaf010cb033dcbb7a26cd39e
 
 ## <a name="develop"></a>開発
 ### <a name="app-service-editor"></a>App Service Editor
-The App Service Editor は、Json 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Github との統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。
+App Service Editor は、Json 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Github との統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -137,6 +137,6 @@ Azure Functions では、毎日の利用量クォータを設定することで�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

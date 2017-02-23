@@ -3,7 +3,7 @@ title: "DocumentDB での複数リージョンを使用した開発 | Microsoft 
 description: "完全に管理された NoSQL データベース サービスである Azure DocumentDB で複数のリージョンにあるデータにアクセスする方法について説明します。"
 services: documentdb
 documentationcenter: 
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: d4579378-0b3a-44a5-9f5b-630f1fa4c66d
@@ -12,19 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
-ms.author: kipandya
+ms.date: 02/09/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: d7ed490157eff98e31c824daf1f9af98ae1afeaa
+ms.sourcegitcommit: 240f45383639f1eb8a4a9b7c4e4489591be23dba
+ms.openlocfilehash: aac8c26cd9af94659abc80b2ae260dc380cf38c9
 
 
 ---
 # <a name="developing-with-multi-region-documentdb-accounts"></a>複数リージョンの DocumentDB アカウントを使用した開発
-> [!NOTE]
-> DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。 弊社は既存のすべてのアカウントでグローバル分散が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル分散の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
->
->
+
+複数リージョンの DocumentDB アカウントについては、Scott Hanselman とプリンシパル エンジニアリング マネージャー Karthik Raman による次の Azure Friday ビデオをご覧ください。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+
+## <a name="introduction"></a>はじめに
 
 [グローバル配布](documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure DocumentDB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
 
@@ -158,6 +160,6 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

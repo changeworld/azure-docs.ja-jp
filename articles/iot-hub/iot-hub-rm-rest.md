@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
-ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
+ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
+ms.openlocfilehash: 0e5f420833276d23565ae0aa83f79bbbe47faf67
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 [IoT Hub リソース プロバイダー REST API][lnk-rest-api] を使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、IoT Hub Resource Provider REST API を使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
 > 
 > 
 
@@ -44,7 +44,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]**をクリックします。
 3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。 **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
-5. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
+5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
    
     ```
     using System;
@@ -84,13 +84,13 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     }
     ```
-2. 以下に示したのは、**HttpClient** オブジェクトとそのヘッダー内の認証トークンを作成するコードです。このコードを **CreateIoTHub** メソッドに追加してください。
+2. 次のコードを **CreateIoTHub** メソッドに追加します。 このコードは、ヘッダーに認証トークンが含まれる **HttpClient** オブジェクトを作成します。
    
     ```
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
-3. 次のコードを **CreateIoTHub** メソッドに追加して IoT ハブを記述し、JSON 表記を生成します。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
+3. 次のコードを **CreateIoTHub** メソッドに追加します。 このコードでは、IoT Hub が JSON 表現を作成して生成するように記述されています。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
    
     ```
     var description = new
@@ -107,7 +107,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
-4. **CreateIoTHub** メソッドに次のコードを追加します。これは、REST 要求を Azure に送信し、応答を確認して、デプロイ タスクの状態を監視するための URL を取得するコードです。
+4. 次のコードを **CreateIoTHub** メソッドに追加します。 このコードは、REST 要求を Azure に送信し、応答を確認して、デプロイ タスクの状態を監視するための URL を取得します。
    
     ```
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -122,7 +122,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
    
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
-5. 直前のステップで取得した **asyncStatusUri** アドレスを使用してデプロイの完了を待機するコードを **CreateIoTHub** メソッドの最後に追加します。
+5. 次のコードを、**CreateIoTHub** メソッドの最後に追加します。 このコードは、前の手順で取得した **asyncStatusUri** アドレスを使って、デプロイの完了を待機します。
    
     ```
     string body;
@@ -133,7 +133,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
     } while (body == "{\"status\":\"Running\"}");
     ```
-6. 次のコードを **CreateIoTHub** メソッドの最後に追加します。作成した IoT Hub のキーを取得し、それをコンソールに出力するものです。
+6. 次のコードを、**CreateIoTHub** メソッドの最後に追加します。 このコードは、作成された IoT Hub のキーを取得し、それをコンソールに出力します。
    
     ```
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -166,7 +166,7 @@ ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
 * Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
 
-IoT Hub の開発に関する詳細については、以下を参照してください
+IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
 * [C SDK の概要][lnk-c-sdk]
 * [Azure IoT SDK][lnk-sdks]
@@ -190,6 +190,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

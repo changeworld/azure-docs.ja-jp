@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 789ec6f0a230f49ecd935bc85ea4ad984e936da9
-ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: e92f8cb6e980a0552b8ff836ed521e069ba811bb
 
 
 ---
@@ -43,17 +43,17 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 ### <a name="to-enable-the-application-integration-for-fmsystems-perform-the-following-steps"></a>FM:Systems のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-fm-systems-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-fm-systems-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-fm-systems-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-fm-systems-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-fm-systems-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-fm-systems-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -74,15 +74,15 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **FM:Systems** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "Configure Single Sign-On")
 
 2. **[ユーザーの FM:Systems へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC795901.png "Configure Single Sign-On")
 
 3. **[アプリケーション URL の構成]** ページで、次の手順を実行します。
    
-    ![Configure App URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
    
     a. **[FM:Systems サインオン URL]** ボックスで、お使いの FM:Systems の **[応答 URL]** (例: *https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*) を入力します。  
       
@@ -91,11 +91,11 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
     > 
     > 
    
-    b.  **[次へ]**
+    b. **[次へ]**
 
 4. **[FM: Systems でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC795903.png "Configure Single Sign-On")
 
 5. ダウンロードしたメタデータ ファイルを FM:Systems サポート チームに送信します。
    
@@ -106,7 +106,7 @@ ms.openlocfilehash: bd2bfa1696215ded3da40d349111efa13ddbed37
     > 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
    
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -118,15 +118,15 @@ FM:Systems の場合、プロビジョニングは手動で行います。
 
 2. **[システム管理] \> [セキュリティの管理] \> [ユーザー] \> [ユーザー一覧]** の順にクリックします。
    
-    ![システム管理](./media/active-directory-saas-fm-systems-tutorial/IC795905.png "System Administration")
+    ![System Administration](./media/active-directory-saas-fm-systems-tutorial/IC795905.png "System Administration")
 
 3. **[新しいユーザーの作成]**をクリックします。
    
-    ![[新しいユーザーの作成]](./media/active-directory-saas-fm-systems-tutorial/IC795906.png "Create New User")
+    ![Create New User](./media/active-directory-saas-fm-systems-tutorial/IC795906.png "Create New User")
 
 4. **[Create User]** セクションで、次の手順に従います。
    
-    ![[Create User]](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
+    ![Create User](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
    
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントのユーザー名、パスワード、確認パスワード、電子メール アドレス、および従業員 ID を入力します。
    
@@ -140,7 +140,7 @@ FM:Systems の場合、プロビジョニングは手動で行います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **FM:Systems ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-fm-systems-tutorial/IC795908.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-fm-systems-tutorial/IC795908.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
@@ -151,6 +151,6 @@ FM:Systems の場合、プロビジョニングは手動で行います。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

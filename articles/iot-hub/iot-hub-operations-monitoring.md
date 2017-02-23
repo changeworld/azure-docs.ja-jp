@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: f6f894157a31641b1d0294e84795563c727caaac
+ms.sourcegitcommit: 8f72f2ca66a5d1394e87c7c0f8d8dff9da73732f
+ms.openlocfilehash: 612ef94efb9776ae0ce768de1b59fb208824da93
 
 
 ---
-# <a name="operations-monitoring"></a>操作の監視
+# <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
-IoT Hub では、次の 5 つのカテゴリのイベントを監視します。
+IoT Hub では、次の&6; つのカテゴリのイベントを監視します。
 
 * デバイス ID の操作
 * デバイス テレメトリ
 * クラウドからデバイスへのメッセージ
 * 接続
 * ファイルのアップロード
+* メッセージ ルーティング
 
 ## <a name="how-to-enable-operations-monitoring"></a>操作の監視を有効にする方法
 1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始][lnk-get-started]に関するガイドを参照してください。
@@ -39,6 +40,9 @@ IoT Hub では、次の 5 つのカテゴリのイベントを監視します。
 3. 監視する監視カテゴリを選択し、 **[保存]**をクリックします。 イベントは、 **[監視の設定]**に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
    
     ![][2]
+
+> [!NOTE]
+> **[接続]** カテゴリに対して **[詳細]** 監視を選ぶと、IoT Hub は追加の診断メッセージを生成します。 他のすべてのカテゴリでは、**[詳細]** 設定を選ぶと、IoT Hub が個々のエラー メッセージに含める情報の量が変わります。
 
 ## <a name="event-categories-and-how-to-use-them"></a>イベント カテゴリとその使用方法
 操作監視の各カテゴリでは、IoT Hub との各種のやり取りを追跡します。各監視カテゴリは、カテゴリ内のイベントの構成方法を定義するスキーマを備えています。
@@ -144,6 +148,22 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
          "durationMs": 1234
     }
 
+### <a name="message-routing"></a>メッセージ ルーティング
+メッセージ ルーティング カテゴリは、メッセージ ルート評価および IoT Hub によって認識されるエンドポイント正常性において発生するエラーを追跡します。 このカテゴリには、ルールが "未定義" と評価されたとき、IoT Hub がエンドポイントをデッドとしてマークしたとき、およびエンドポイントから受信したその他のすべてのエラーなどのイベントが含まれます。 このカテゴリにはメッセージ自体に関する具体的なエラーは含まれないことに注意してください (デバイス調整エラーなど)。このようなエラーは、"デバイス テレメトリ" カテゴリで報告されます。
+        
+    {
+        "messageSizeInBytes": 1234,
+        "time": "UTC timestamp",
+        "operationName": "ingress",
+        "category": "routes",
+        "level": "Error",
+        "deviceId": "device-ID",
+        "messageId": "ID of message",
+        "routeName": "myroute",
+        "endpointName": "myendpoint",
+        "details": "ExternalEndpointDisabled"
+    }
+
 ## <a name="next-steps"></a>次のステップ
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
@@ -164,6 +184,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

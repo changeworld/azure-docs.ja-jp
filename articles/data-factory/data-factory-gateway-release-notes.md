@@ -15,27 +15,48 @@ ms.date: 01/17/2017
 ms.author: spelluru
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 65c036240618f3e426707d57eeb6b194410a9084
-ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
+ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
+ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
-最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合がシームレスになります。
+最新のデータ統合の課題の&1; つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合がシームレスになります。
 
 Data Management Gateway とその使用方法の詳細については、次の記事をご覧ください。 
 
 *  [Data Management Gateway](data-factory-data-management-gateway.md)
 *  [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) 
 
-## <a name="current-version-2561641"></a>最新バージョン (2.5.6164.1)
+
+## <a name="current-version-2762192"></a>最新バージョン (2.7.6219.2)
+
+### <a name="whats-new"></a>新機能
+- サービス プリンシパルを使って Azure Data Lake Store の認証を実行できるようになりました。 以前は、OAuth のみがサポートされていました。
+- ゲートウェイで Oracle のオンプレミス データ ストアからデータを読み取るための新しいドライバーをパッケージ化しました。
+
+### <a name="enhancements-"></a>強化された機能
+- Oracle データ ソースからのデータ読み取りのパフォーマンスが向上しました。
+- 修正: OData ソースの OAuth トークンの有効期限の問題。
+- 修正: 28 ビットより大きい Oracle 10 進数を読み取ることができない問題。
+
+
+## <a name="earlier-versions"></a>以前のバージョン
+
+## <a name="2661922"></a>2.6.6192.2
+### <a name="whats-new"></a>新機能
+- お客様は、ゲートウェイ登録エクスペリエンスでフィードバックを提供できます。
+- 新しい圧縮形式 ZIP (Deflate) をサポートします。
+
+### <a name="enhancements-"></a>強化された機能
+- Oracle シンク、HDFS ソースのパフォーマンスの向上。
+- ゲートウェイ自動更新のバグの修正、ゲートウェイの並列処理能力。
+
+
+## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>強化された機能
 - 向上された、より堅牢なゲートウェイの登録エクスペリエンス: ゲートウェイの登録プロセス中に進行状況を追跡できます。これにより、登録エクスペリエンスの応答性を高めます。
 - ゲートウェイ復元プロセスの向上: この更新プログラムを使用したゲートウェイのバックアップ ファイルがない場合でも、ゲートウェイを回復できます。 これにより、ポータルでリンクされたサービスの資格情報をリセットするように要求されます。
 - バグの修正。
-
-
-
-## <a name="earlier-versions"></a>以前のバージョン
 
 ## <a name="2461511"></a>2.4.6151.1
 
@@ -75,7 +96,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  ゲートウェイで手動インストール時に使用する言語/カルチャを選択できます。
 
-*  ゲートウェイが正常に動作しない場合、問題のトラブルシューティングを支援するために、過去 7 日間にわたるゲートウェイのログを Microsoft に送信できます。 ゲートウェイがクラウド サービスに接続されていない場合は、ゲートウェイのログを保存してアーカイブするように選択できます。  
+*  ゲートウェイが正常に動作しない場合、問題のトラブルシューティングを支援するために、過去&7; 日間にわたるゲートウェイのログを Microsoft に送信できます。 ゲートウェイがクラウド サービスに接続されていない場合は、ゲートウェイのログを保存してアーカイブするように選択できます。  
 
 *  Data Management Gateway 構成マネージャーのユーザー インターフェイスが強化されています。
 
@@ -100,7 +121,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  ゲートウェイの自動更新中に再起動が必要な場合は、警告ダイアログが表示されます。 すぐに再起動することも、後で再起動することもできます。 
 
-*  自動更新が失敗した場合、ゲートウェイ インストーラーは自動更新を最大 3 回再試行します。
+*  自動更新が失敗した場合、ゲートウェイ インストーラーは自動更新を最大&3; 回再試行します。
 
 *  パフォーマンスの向上
 
@@ -185,7 +206,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  Azure Data Factory の 5 つのリレーショナル データベース (MySQL、PostgreSQL、DB2、Teradata、および Sybase) のサポート
+*  Azure Data Factory の&5; つのリレーショナル データベース (MySQL、PostgreSQL、DB2、Teradata、および Sybase) のサポート
 *  圧縮のサポート (Gzip およびデフレート)
 *  パフォーマンスの向上
 *  バグの修正
@@ -216,6 +237,6 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

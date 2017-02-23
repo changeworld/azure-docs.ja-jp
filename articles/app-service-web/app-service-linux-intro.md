@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: a3df293a056f4b06281bf8b80717529286d528b8
-ms.openlocfilehash: 48f26113d129ebfa613f1b8f2a372d0e7286aea1
+ms.sourcegitcommit: 6eb4390f8290d3036bf76a592c40253432170883
+ms.openlocfilehash: 0e5c56e62965f2cc9df0b439595223300377d084
 
 
 ---
@@ -33,6 +33,7 @@ App Service on Linux は現在、次のアプリケーション スタックを�
 * Node.js
 * PHP
 * .NET Core
+* Ruby
 
 顧客は次のものを使用してアプリケーションをデプロイすることができます。
 
@@ -66,6 +67,8 @@ Web Apps on Linux は専用 App Service プランでのみサポートされて�
 
 Web Apps on Linux は、Linux 向けでない Web アプリが同じリージョンにないリソース グループ内で作成される必要があります。
 
+Linux 上の Web Apps では、コンパイルされていないソースからの .NET Core アプリのデプロイはまだサポートされていません。 最初に .NET Core アプリをローカルで発行/コンパイルした後、発行されたサイト ビットをプッシュする必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
@@ -73,9 +76,9 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 * [App Service on Linux 向けにカスタム Docker イメージを使用する方法](app-service-linux-using-custom-docker-image.md)
 * [Web Apps on Linux での Node.js 向け PM2 構成の使用](app-service-linux-using-nodejs-pm2.md)
 * [Azure App Service Web Apps on Linux での .NET Core の使用](app-service-linux-using-dotnetcore.md)
+* [Azure App Service Web Apps on Linux のFAQ](app-service-linux-faq.md)
 
 
-
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

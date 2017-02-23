@@ -1,6 +1,6 @@
 ---
-title: "他のユーザーの成果物をコピーする - Machine Learning の例 | Microsoft Docs"
-description: "データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Cortana Analytics のギャラリーの例で、クラスタリング アルゴリズムの例などをご覧ください。"
+title: "他のユーザーのデータ サイエンスの例をコピーする - Machine Learning - Azure | Microsoft Docs"
+description: "データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。 Cortana Analytics Gallery から Machine Learning の例を取得します。"
 keywords: "データ サイエンスの例,Machine Learning の例,クラスタリング アルゴリズム,クラスタリング アルゴリズムの例"
 services: machine-learning
 documentationcenter: na
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: f0efc0b10d843c6105446b3960821609e10fd400
+ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
+ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
 
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
-データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を検索します。
+データ サイエンスの企業秘密の&1; つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Cortana Analytics Gallery で検索します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
-> 
-> 
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
 *"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
@@ -96,7 +96,6 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 
 
 
-
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

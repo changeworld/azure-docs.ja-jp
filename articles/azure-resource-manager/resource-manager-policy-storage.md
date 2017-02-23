@@ -1,5 +1,5 @@
 ---
-title: "ストレージの Azure Resource Manager ポリシー | Microsoft Docs"
+title: "ストレージ アカウントに対する Azure リソース ポリシー | Microsoft Docs"
 description: "ストレージ アカウントのデプロイを管理するための Azure Resource Manager のポリシーについて説明します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2017
+ms.date: 02/09/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: ce31bbcb96a6afe19cf6c25dd9a68d6c2d4d080c
-ms.openlocfilehash: f2141304f6db6d137065e06558e10c721b11f892
+ms.sourcegitcommit: 5ea75843bf671ad4d879c01cdd20d5bbc5e889c2
+ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
 
 
 ---
-# <a name="apply-azure-resource-policies-to-storage-accounts"></a>ストレージ アカウントへの Azure リソース ポリシーの適用
-Azure Resource Manager のポリシーを使用して、組織内のリソースをどのようにデプロイするかについて一貫性のある規則を定義します。 カスタマイズされたポリシーを作成し、組織のリソースを管理するために必要な規則に組織内のユーザーが違反するのを防ぐことができます。 このトピックでは、Azure Storage アカウントの規則を定義するいくつかのポリシーを取り上げます。 ポリシーについて詳しくは、[リソース ポリシーを使用したリソースの管理](resource-manager-policy.md)に関する記事をご覧ください。
-
-このトピックの例では、ポリシーの規則のハード コーディングされた値を示します。 ただし、パラメーターを使用して、ポリシーを割り当てるときに使用される値を渡すことができます。 詳しくは、[ポリシーのパラメーター](resource-manager-policy.md#parameters)に関する記事をご覧ください。
+# <a name="apply-resource-policies-to-storage-accounts"></a>ストレージ アカウントにリソース ポリシーを適用する
+このトピックでは、Azure ストレージ アカウントに適用できる複数の[リソース ポリシー](resource-manager-policy.md)を示します。 これらのポリシーは、組織にデプロイされているストレージ アカウントの一貫性を保証します。 
 
 ## <a name="define-permitted-storage-account-types"></a>許可されているストレージ アカウントの種類の定義
 
@@ -53,6 +51,8 @@ Azure Resource Manager のポリシーを使用して、組織内のリソース
   }
 }
 ```
+
+許可された SKU を受け入れるためのパラメーターを持つ似たポリシー規則を、組み込みのポリシー定義として利用できます。 組み込みポリシーのリソース ID は `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1` です。 
 
 ## <a name="define-permitted-access-tier"></a>許可されているアクセス層の定義
 
@@ -110,16 +110,15 @@ Azure Resource Manager のポリシーを使用して、組織内のリソース
 }
 ```
 
-## <a name="create-and-assign-policies"></a>ポリシーの作成と割り当て
-
-(上記の例で示すように) ポリシーの規則を定義した後は、ポリシーを作成し、スコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの作成および割り当て方法の例については、「[ポリシーの作成と割り当て](resource-manager-policy.md#create-and-assign-a-policy)」を参照してください。 
+このポリシー規則は、リソース ID が `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f` の組み込みポリシー定義としても使用できます。
 
 ## <a name="next-steps"></a>次のステップ
+* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの作成と割り当ての例については、「[リソース ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)」をご覧ください。 
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

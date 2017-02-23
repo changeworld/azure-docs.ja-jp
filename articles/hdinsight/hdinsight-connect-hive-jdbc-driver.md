@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 1fbf8cd4347c5a49fe7769fd8d02c2dbfddfc74e
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 41c3e20dc059ecc344cba6ca09ec04892e202d63
 
 
 ---
@@ -81,7 +81,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
             **USERNAME** をクラスターの SSH ユーザー アカウント名に置き換えます。 **CLUSTERNAME** を HDInsight クラスター名に置き換えます。
         
         > [!NOTE]
-        > Windows 環境では、scp ではなく、PSCP ユーティリティを使用する必要があります。 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードすることができます。
+        > Windows 環境には、`scp` コマンドがない場合があります。 その場合は、代わりに PSCP ユーティリティを使います。 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードすることができます。
 
     * **Windows ベースの HDInsight**の場合、次の手順を使用して、jar ファイルをダウンロードします。
      
@@ -199,6 +199,6 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

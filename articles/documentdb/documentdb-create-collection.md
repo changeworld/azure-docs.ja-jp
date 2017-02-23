@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ab863266e1462f970b7906f68be2bcf5edb0dfc3
-ms.openlocfilehash: ac64bb0de03053702a4663c9356b3f9ce332c7de
+ms.sourcegitcommit: a87b2811175193377142e391597011f48f169f11
+ms.openlocfilehash: 4c16c843ba43a9e38d73fc1fd44d06f6f72de60c
 
 
 ---
@@ -40,7 +40,7 @@ Microsoft Azure DocumentDB を使用するには、 [DocumentDB アカウント]
 
     スループット レベルが 400 ～ 10,000 要求ユニット/秒 (RU/秒) の[単一のパーティション コレクション](documentdb-partition-data.md#single-partition-and-partitioned-collections)にする場合は、[ストレージ容量] を**[10 GB]** に設定します。 1 RU は、1 KB のドキュメントに対する読み取りのスループットに対応します。 要求ユニットの詳細については、 [要求ユニット](documentdb-request-units.md)に関するページを参照してください。
 
-    複数のパーティションで無制限のストレージを処理して、スループット レベルが 10,100 RU/秒以上になるようにスケーリングできる[パーティション分割コレクション](documentdb-partition-data.md#single-partition-and-partitioned-collections)にする場合は、ストレージ容量を **[250 GB]** に設定します。
+    複数のパーティションで無制限のストレージを処理して、スループット レベルが 2,500 RU/秒以上になるようにスケーリングできる[パーティション分割コレクション](documentdb-partition-data.md#single-partition-and-partitioned-collections)にする場合は、ストレージ容量を **[250 GB]** に設定します。
 
     10 GB または 250 GB 以外の容量をプロビジョニングする場合は、[ストレージ容量] を **[カスタム]** に設定します。 DocumentDB は事実上無制限にスケーリングできるため、要求するストレージのサイズとスループットの値をサポート要求に含めてください。
 
@@ -83,6 +83,6 @@ Azure Portal で **[コレクションの追加]** が無効になっている�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

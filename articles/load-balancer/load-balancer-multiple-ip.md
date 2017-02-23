@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 02/10/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
+ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
+ms.openlocfilehash: d7df8f3271c6c92df427a840d73fdb9a0c6b54a1
 
 ---
 
@@ -29,7 +29,7 @@ ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
 
 この記事では、仮想ネットワーク インターフェイス (NIC) ごとに複数の IP アドレスを持つ Azure Load Balancer の使用方法について説明します。 単一の NIC での複数の IP アドレスのサポートは、現時点でのプレビュー リリースに用意されている機能です。 詳細については、この記事の「[制限事項](#limitations)」セクションを参照してください。 次のシナリオは、Load Balancer を使用するこの機能のしくみを示しています。
 
-このシナリオでは、それぞれ 1 つの NIC を持つ、Windows を実行する 2 つの VM があります。 それぞれの NIC には、複数の IP 構成があります。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。 それぞれの Web サイトは、NIC の IP 構成の 1 つにバインドされています。 ここで、Load Balancer を使用して、それぞれの Web サイト用に 2 つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
+このシナリオでは、それぞれ&1; つの NIC を持つ、Windows を実行する&2; つの VM があります。 それぞれの NIC には、複数の IP 構成があります。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。 それぞれの Web サイトは、NIC の IP 構成の&1; つにバインドされています。 ここで、Load Balancer を使用して、それぞれの Web サイト用に&2; つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
 
 ![LB シナリオの画像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -39,7 +39,27 @@ ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-プレビューに登録するには、 [複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) まで、メールでサブスクリプション ID と使用目的をご連絡ください。
+ログインして適切なサブスクリプションを選んだ後、PowerShell で次のコマンドを実行して、プレビューに登録します。
+
+```
+Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
+
+```Get-AzureRmProviderFeature``` コマンドを実行するときは、次の出力が表示されるまで、残りの手順を行わないでください。
+        
+```powershell
+FeatureName                            ProviderName      RegistrationState
+-----------                            ------------      -----------------      
+AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+```
+        
+>[!NOTE] 
+>これには数分かかることがあります。
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>複数の IP 構成で負荷分散を行うための手順
 
@@ -70,7 +90,7 @@ ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
 
     次に、[Windows VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関する記事の手順 6.3. ～ 6.8. を実行します。
 
-5. 各 VM に 2 番目の IP 構成を追加します。 [仮想マシンに複数の IP アドレスを割り当てる](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)操作に関する記事の手順に従います。 次の構成設定を使用します。
+5. 各 VM に&2; 番目の IP 構成を追加します。 [仮想マシンに複数の IP アドレスを割り当てる](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)操作に関する記事の手順に従います。 次の構成設定を使用します。
 
     ```powershell
     $NicName = "VM1-NIC"
@@ -150,6 +170,6 @@ ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

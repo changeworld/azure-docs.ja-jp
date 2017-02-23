@@ -1,6 +1,6 @@
 ---
-title: "ロジック アプリのシナリオ: Azure Functions Service Bus トリガーの作成 | Microsoft Docs"
-description: "Azure Functions を使用してロジック アプリの Service Bus トリガーを作成する"
+title: "シナリオ - Azure Functions と Azure Service Bus でロジック アプリをトリガーする | Microsoft Docs"
+description: "Azure Functions と Azure Service Bus を使ってロジック アプリをトリガーする関数を作成します"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,32 +15,34 @@ ms.workload: integration
 ms.date: 05/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 83e93d155ca0b51227c91cf5ceb7ec75032a7c9c
+ms.sourcegitcommit: 98c78d84f3a615fae7d6785994f0db20f7a53254
+ms.openlocfilehash: 013e3d29694a8daf1481e513c9c4dfc6b5da3384
 
 
 ---
-# <a name="logic-app-scenario-create-an-azure-service-bus-trigger-by-using-azure-functions"></a>ロジック アプリのシナリオ: Azure Functions を使用した Azure Service Bus トリガーの作成
+# <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>シナリオ: Azure Functions と Azure Service Bus でロジック アプリをトリガーする
+
 Azure Functions を使用して、実行時間の長いリスナーまたはタスクをデプロイする必要がある場合に、ロジック アプリのトリガーを作成できます。 たとえば、キューをリッスンする関数を作成し、プッシュ トリガーとしてすぐにロジック アプリを起動することができます。
 
 ## <a name="build-the-logic-app"></a>ロジック アプリを構築する
 この例では、トリガーする必要のあるロジック アプリごとに関数を実行します。 最初に、HTTP 要求トリガーのあるロジック アプリを作成します。 関数は、キュー メッセージが受信されたときに、そのエンドポイントを呼び出します。  
 
-1. 新しいロジック アプリを作成して、 **[手動 - HTTP 要求を受信したとき]** トリガーを選択します。  
-   必要に応じて、 [jsonschema.net](http://jsonschema.net)などのツールを使用して、キュー メッセージで使用する JSON スキーマを指定することができます。 スキーマをトリガーに貼り付けます。 そうすることでデザイナーがデータの形状を把握し、ワークフローを介して簡単にプロパティを流し込むことができます。
+1. ロジック アプリを作成します。
+2. **[手動 - HTTP 要求の受信時]** トリガーを選びます。
+   必要に応じて、 [jsonschema.net](http://jsonschema.net)などのツールを使用して、キュー メッセージで使用する JSON スキーマを指定することができます。 スキーマをトリガーに貼り付けます。 スキーマは、デザイナーがデータの形状を把握し、ワークフローを介して簡単にプロパティを流し込むのに役立ちます。
 2. キュー メッセージを受信した後に発生する追加の手順を追加します。 たとえば、Office 365 を使用して電子メールを送信します。  
 3. このロジック アプリを保存して、このロジック アプリのトリガーに使用するコールバック URL を生成します。 この URL がトリガー カードに表示されます。
 
 ![コールバック URL がトリガー カードに表示されます。][1]
 
 ## <a name="build-the-function"></a>関数を構築する
-次に作成するのは、トリガーとしてキューをリッスンする関数です。
+次に、トリガーとして機能し、キューをリッスンする関数を作成する必要があります。
 
 1. [Azure Functions ポータル](https://functions.azure.com/signin)で、**[新しい関数]** を選択し、次に **[ServiceBusQueueTrigger - C#]** テンプレートを選択します。
    
     ![Azure Functions ポータル][2]
-2. Service Bus キュー (Azure Service Bus SDK の `OnMessageReceive()` リスナーを使用) への接続を構成します。
-3. キュー メッセージをトリガーとしてロジック アプリのエンドポイント (先ほど作成したもの) を呼び出す単純な関数を作成します。 関数の完全な例を次に示します。 例では、 `application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて変更できます。
+2. Service Bus キューへの接続を構成します。Azure Service Bus SDK の `OnMessageReceive()` リスナーを使います。
+3. キュー メッセージをトリガーとしてロジック アプリのエンドポイント (先ほど作成したもの) を呼び出す基本的な関数を作成します。 関数の完全な例を次に示します。 例では、`application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて種類を変更できます。
    
    ```
    using System;
@@ -69,6 +71,6 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

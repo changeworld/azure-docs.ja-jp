@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
 
 
 ---
@@ -35,7 +35,7 @@ ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
-![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789512.png "Configure Single Sign-On")
+![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789512.png "Configure Single Sign-On")
 
 ## <a name="enabling-the-application-integration-for-gigya"></a>Gigya のアプリケーション統合の有効化
 このセクションでは、Gigya のアプリケーション統合を有効にする方法について説明します。
@@ -43,17 +43,17 @@ ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
 ### <a name="to-enable-the-application-integration-for-gigya-perform-the-following-steps"></a>Gigya のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-gigya-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-gigya-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-gigya-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-gigya-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-gigya-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-gigya-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -76,29 +76,29 @@ ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **Gigya** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gigya-tutorial/IC789528.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789528.png "Configure Single Sign-On")
 
 2. **[ユーザーの Gigya へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
 
 3. **[アプリ URL の構成]** ページの **[Gigya サインオン URL]** ボックスに、"*http://company.gigya.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
    
-    ![Configure App URL](./media/active-directory-saas-gigya-tutorial/IC789530.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-gigya-tutorial/IC789530.png "Configure App URL")
 
 4. **[Gigya でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gigya-tutorial/IC789531.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789531.png "Configure Single Sign-On")
 
 5. 別の Web ブラウザー ウィンドウで、Gigya 企業サイトに管理者としてログインします。
 
 6. **[設定] \> [SAML ログイン]** の順にクリックし、**[追加]** をクリックします。
    
-    ![[Public]](./media/active-directory-saas-gigya-tutorial/IC789532.png "SAML Login")
+    ![SAML ログイン](./media/active-directory-saas-gigya-tutorial/IC789532.png "SAML ログイン")
 
 7. **[SAML ログイン]** セクションで、次の手順を実行します。
    
-    ![SAML の構成](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML Configuration")
+    ![SAML の構成](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML の構成")
    
     a. **[名前]** テキスト ボックスに、構成の名前を入力します。
    
@@ -121,7 +121,7 @@ ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
 
 8. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gigya-tutorial/IC789534.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-gigya-tutorial/IC789534.png "Configure Single Sign-On")
    
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -132,11 +132,11 @@ Gigya の場合、プロビジョニングは手動で行います。
 1. **Gigya** 企業サイトに管理者としてログインします。
 2. **[管理者] \> [ユーザーの管理]** の順にクリックし、**[ユーザーの招待]** をクリックします。
    
-    ![ユーザーの管理](./media/active-directory-saas-gigya-tutorial/IC789535.png "Manage Users")
+    ![Manage Users](./media/active-directory-saas-gigya-tutorial/IC789535.png "Manage Users")
 
 3. [ユーザーの招待] ダイアログで、次の手順を実行します。
    
-    ![ユーザーの招待](./media/active-directory-saas-gigya-tutorial/IC789536.png "Invite Users")
+    ![ユーザーの招待](./media/active-directory-saas-gigya-tutorial/IC789536.png "ユーザーの招待")
    
     a. **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール エイリアスを入力します。
     
@@ -156,7 +156,7 @@ Gigya の場合、プロビジョニングは手動で行います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Gigya** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-gigya-tutorial/IC789537.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-gigya-tutorial/IC789537.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
@@ -167,6 +167,6 @@ Gigya の場合、プロビジョニングは手動で行います。
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

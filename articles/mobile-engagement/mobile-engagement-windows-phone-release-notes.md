@@ -1,39 +1,44 @@
 ---
-title: "Windows Phone Silverlight SDK リリース ノート"
+title: "Azure Mobile Engagement - Windows Phone Silverlight SDK リリース ノート | Microsoft Docs"
 description: "Azure Mobile Engagement - Windows Phone Silverlight SDK リリース ノート"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8b87045c-79c2-46da-a147-c075bf276b89
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
-ms.devlang: na
+ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 11/03/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6c054db354036c2747cd524fb62c98e4f3e47575
+ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
+ms.openlocfilehash: df754a3002750e6ba0b71b664c1df84d506808a4
 
 
 ---
 # <a name="windows-phone-silverlight-sdk-release-notes"></a>Windows Phone Silverlight SDK リリース ノート
+##<a name="331-11032016"></a>3.3.1 (11/03/2016)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.1** の一部
+
+* 安定性が向上しました。
+
 ## <a name="330-04192016"></a>3.3.0 (04/19/2016)
- *MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.0**
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.0**
 
 * SDK によって出力されるコンソール ログを有効化/無効化/フィルター処理するために "TestLogLevel" API を追加しました。
 
 ## <a name="320-01222016"></a>3.2.0 (01/22/2016)
- *MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0**
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0**
 
 * アクション url で カスタム スキームと ms appx および ms appdata を使用できるようになりました。
 * 安定性が向上しました。
 
 ## <a name="310-11202015"></a>3.1.0 (11/20/2015)
- *MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.2.0**
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.2.0**
 
 * 初期化直後にデバイス ID を要求すると発生するクラッシュを修正しました。
 * コンソールのログを改善しました。
@@ -51,6 +56,6 @@ ms.openlocfilehash: 6c054db354036c2747cd524fb62c98e4f3e47575
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

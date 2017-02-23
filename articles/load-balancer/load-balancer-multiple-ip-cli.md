@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 57df4ab0b2a1df6631eb6e67a90f69cebb1dfe75
-ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
+ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
+ms.openlocfilehash: f52a86b01e45a32315b017c2605f7caebb68b006
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
 
 この記事では、仮想ネットワーク インターフェイス (NIC) ごとに複数の IP アドレスを持つ Azure Load Balancer の使用方法について説明します。 単一の NIC での複数の IP アドレスのサポートは、現時点でのプレビュー リリースに用意されている機能です。 詳細については、この記事の「[制限事項](#limitations)」セクションを参照してください。 次のシナリオは、Azure Load Balancer を使用するこの機能のしくみを示しています。
 
-このシナリオでは、それぞれ 1 つの NIC を持つ、Windows を実行する 2 つの VM があります。 それぞれの NIC には、複数の IP 構成があります。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。 それぞれの Web サイトは、NIC の IP 構成の 1 つにバインドされています。 ここで、Load Balancer を使用して、それぞれの Web サイト用に 2 つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
+このシナリオでは、それぞれ&1; つの NIC を持つ、Windows を実行する&2; つの VM があります。 それぞれの NIC には、複数の IP 構成があります。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。 それぞれの Web サイトは、NIC の IP 構成の&1; つにバインドされています。 ここで、Load Balancer を使用して、それぞれの Web サイト用に&2; つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
 
 ![LB シナリオの画像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -38,8 +38,27 @@ ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
-プレビューに登録するには、 [複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) まで、メールでサブスクリプション ID と使用目的をご連絡ください。
+ログインして適切なサブスクリプションを選んだ後、PowerShell で次のコマンドを実行して、プレビューに登録します。
 
+```
+Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
+
+```Get-AzureRmProviderFeature``` コマンドを実行するときは、次の出力が表示されるまで、残りの手順を行わないでください。
+        
+```powershell
+FeatureName                            ProviderName      RegistrationState
+-----------                            ------------      -----------------      
+AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+```
+        
+>[!NOTE] 
+>これには数分かかることがあります。
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>複数の IP 構成で負荷分散を行うための手順
 
@@ -72,7 +91,7 @@ ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. ロード バランサーのフロントエンド IP 構成用に 2 つの動的パブリック IP アドレスを作成します。
+6. ロード バランサーのフロントエンド IP 構成用に&2; つの動的パブリック IP アドレスを作成します。
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -80,7 +99,7 @@ ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. *contosofe* と *fabrikamfe* の 2 つのフロントエンド IP 構成を作成します。
+7. *contosofe* と *fabrikamfe* の&2; つのフロントエンド IP 構成を作成します。
 
     ```azurecli
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
@@ -135,6 +154,6 @@ ms.openlocfilehash: 64748a540b20bbd4b354f0b4e1d7de4a969381c6
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

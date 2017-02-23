@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 01/20/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4dbd2c87d648f6923772b070fdfe7379de22e6c5
-ms.openlocfilehash: e1adeaca702de3bad1c2e572f89ade9eba753173
+ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
+ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: e1adeaca702de3bad1c2e572f89ade9eba753173
 
 Analysis Services では&3; つのデータ プロバイダーが利用されます。 ADOMD.NET と Analysis Services Management Objects (AMO) はマネージ データ プロバイダーです。 Analysis Services OLE DB プロバイダー (MSOLAP DLL) は、ネイティブ データ プロバイダーです。 通常、3 つのプロバイダーがすべて同時にインストールされます。 Azure Analysis Services では最新バージョンのデータ プロバイダーが必要です。 
 
-Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは&3; つのデータ プロバイダーがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたデータ プロバイダーが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、プロバイダーを手動でインストールする必要があります。 手動でインストールするためのデータ プロバイダーは、再頒布可能パッケージとして SQL Server Feature Pack に含まれます。ただし、これらは SQL Server バージョンに対応しており、最新版ではない可能性があります。  
+Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは&3; つのデータ プロバイダーがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたデータ プロバイダーが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、プロバイダーを手動でインストールする必要があります。 手動でインストールするためのデータ プロバイダーは、再頒布可能パッケージとして SQL Server Feature Pack に含まれます。ただし、これらは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
 クライアント接続用のデータ プロバイダーは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
  
@@ -40,10 +40,10 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 [ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)</br>
 
 ## <a name="next-steps"></a>次のステップ
-最新のデータ プロバイダーがインストールされていると、クライアント アプリケーションはサーバーに接続する準備ができています。 接続について詳しくは、「[Get data from Azure Analysis Services](analysis-services-connect.md)」(Azure Analysis Services からデータを取得する) をご覧ください。
+最新のデータ プロバイダーがインストールされていると、クライアント アプリケーションはサーバーに接続する準備ができています。 クライアントからの接続について詳しくは、「[Azure Analysis Services からデータを取得](analysis-services-connect.md)」をご覧ください。
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
