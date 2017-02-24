@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5

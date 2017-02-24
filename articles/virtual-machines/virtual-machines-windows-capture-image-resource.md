@@ -74,7 +74,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 2. VM の割り当てが解除されていることを確認します。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. 仮想マシンの状態を **[一般化]**に設定します。 
@@ -119,7 +119,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 2. VM を停止し、割り当てを解除します。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. VM を一般化としてマークします。
