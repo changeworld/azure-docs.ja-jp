@@ -12,33 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/01/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dcb28a67ef21728d9b21159f356ed122e0b7a1be
+ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
+ms.openlocfilehash: b3ff0e93ee144e98dec69c0678c3b467db1e0bc0
 
 
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>HDInsight の Spark を使用した Application Insights テレメトリ ログの分析
+
 [Visual Studio Application Insights](../application-insights/app-insights-overview.md) は、お使いの Web アプリケーションを監視する分析サービスです。 Application Insights で生成されたテレメトリ データは Azure Storage にエクスポート可能であり、Azure Storage で HDInsight を使用して分析することができます。
 
 このドキュメントでは、Apache Spark を使用して HDInsight により Application Insights のテレメトリ データを分析する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 * Azure サブスクリプション。
+
 * Application Insights を使用するように構成済みのアプリケーション。 
+
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 クラスターの作成に慣れていない場合は、 [HDInsight での Spark の作成](hdinsight-apache-spark-jupyter-spark-sql.md) に関する記事で詳細を確認してください。
   
-  > [!NOTE]
-  > このドキュメントでは、クラスターの新規作成のチュートリアルは行いません。 代わりとして、テレメトリ データにアクセス可能なクラスターを作成する方法の詳細が記載された別のドキュメントを紹介します。
-  > 
-  > 
+  > [!IMPORTANT]
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * Web ブラウザー。 Jupyter Notebook により分析を対話形式で実行するために使用します。
 
 このドキュメントの作成およびテストでは次のものを使用しました。
 
 * Application Insights のテレメトリ データは、 [Application Insights を使用するように構成した Node.js Web アプリ](../application-insights/app-insights-nodejs.md)により生成しました。
+
 * データの分析には、バージョン 3.4 の HDInsight クラスターにある Linux ベースの Spark を使用しました。
 
 ## <a name="architecture-and-planning"></a>アーキテクチャと計画
@@ -47,6 +51,7 @@ ms.openlocfilehash: dcb28a67ef21728d9b21159f356ed122e0b7a1be
 ![データが Application Insights から BLOB ストレージに流れ、HDInsight 上の Spark で処理される様子を示した図](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
 ### <a name="azure-storage"></a>Azure Storage
+
 HDInsight クラスターでは Azure ストレージ アカウントのブロック BLOB に直接アクセス可能であり、Application Insights は、Azure Storage の BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 ただし、守る必要のある要件がいくつかあります。
 
 * **場所**: ストレージ アカウントは、HDInsight と同じリージョンに配置する必要があります。 こうすることで、データへのアクセス時の待ち時間が抑えられるとともに、リージョン間でのデータ移動にかかる送信料金を回避することができます。
@@ -56,6 +61,7 @@ HDInsight クラスターでは Azure ストレージ アカウントのブロ�
     代わりに、HDInsight と Application Insights テレメトリのストレージ アカウントを分け、 [Shared Access Signature (SAS) を使用して HDInsight からデータへのアクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)ことをお勧めします。 SAS を使用すると、テレメトリ データへの読み取り専用アクセスを HDInsight に付与することができます。
 
 ### <a name="data-schema"></a>データ スキーマ
+
 Application Insights には、BLOB にエクスポートされるテレメトリ データ形式に関する [エクスポート データ モデル](../application-insights/app-insights-export-data-model.md) 情報があります。 このドキュメントの各手順では、データの処理に Spark SQL を使用します。 Spark SQL では、Application Insights で記録された JSON データ構造に関するスキーマを自動で生成できるため、分析の実行時にスキーマを手作業で定義する必要はありません。
 
 ## <a name="export-telemetry-data"></a>テレメトリ データをエクスポートする
@@ -71,7 +77,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
    
     ![クラスター ダッシュボード](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Jupyter のページの右上隅にある **[New]** をクリックし、**[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
-3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のコードを入力します。
+3. ページの&1; 番目のフィールド (**セル**と呼びます) に、次のコードを入力します。
    
         sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    
@@ -204,7 +210,7 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
    
     ![クラスター ダッシュボード](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、**[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
-3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のコードを入力します。
+3. ページの&1; 番目のフィールド (**セル**と呼びます) に、次のコードを入力します。
    
         sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    
@@ -349,6 +355,6 @@ Spark アプリケーションを作成および実行する方法について�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

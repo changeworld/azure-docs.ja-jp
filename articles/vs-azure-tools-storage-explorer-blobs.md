@@ -12,16 +12,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 47254ada98dffe96414d640d4661934ef5a6c554
-ms.openlocfilehash: a7dcd6f95290408e87ef0eb31d8f989de27a309e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f779106e8ca79260c8abba070586e3f03ffa61e9
 
 
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 [Azure Blob Storage](storage/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。
 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、ストレージ エクスプローラー (プレビュー) を使用して BLOB コンテナーおよび BLOB を操作する方法について説明します。
 
@@ -238,6 +238,6 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

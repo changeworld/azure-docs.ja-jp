@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7a99e82c73d446c928a821f80fc640a1994d67
-ms.openlocfilehash: 837e96e69e4855daf36e0c85e48cf68daaee8925
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: 6baceea55e9085556c5b1386de842b3e4393c721
 
 
 ---
@@ -45,12 +45,12 @@ Fieldglass と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Fieldglass の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -114,7 +114,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
    
-    - `https://<company name>.fgvms.com/<company name>`
+       - `https://<company name>.fgvms.com/<company name>`
     - `https://www.fieldglass.net/<company name>`
      
     c. **[次へ]**
@@ -192,7 +192,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
    
-    a. **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある **[完了]**」を参照してください。   
 
@@ -249,6 +249,6 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

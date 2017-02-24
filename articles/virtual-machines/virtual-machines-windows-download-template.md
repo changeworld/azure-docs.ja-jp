@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
+ms.sourcegitcommit: 349b8dc78ace79efca771efb78e453a47e51023e
+ms.openlocfilehash: 6e80064adadcc542523acb1d2478e6b8f0163acb
 
 
 ---
@@ -39,7 +39,7 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
    * parameters.json
    * template.json
 
-.json ファイルはテンプレートです。
+template.json ファイルはテンプレートです。
 
 ## <a name="download-the-template-using-powershell"></a>PowerShell を使用してテンプレートをダウンロードする
 .json 形式のテンプレート ファイルは、[Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) コマンドレットを使用してダウンロードすることもできます。 `-path` パラメーターを使用して、.json ファイルのファイル名とパスを指定できます。 この例では、**myResourceGroup** という名前のリソース グループのテンプレートをローカル コンピューターの **C:\users\public\downloads** フォルダーにダウンロードする方法を示します。
@@ -54,6 +54,6 @@ Azure でポータルまたは PowerShell を使用して VM を作成する際�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

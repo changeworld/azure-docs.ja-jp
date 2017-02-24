@@ -1,32 +1,32 @@
 ---
-title: "RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server"
+title: "RADIUS を使用した RDG と Azure MFA Server | Microsoft Docs"
 description: "これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: curtand
+editor: yossib
 ms.assetid: f2354ac4-a3a7-48e5-a86d-84a9e5682b42
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3b14925f41138904aa10a172f83dffa3c6662700
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: 4b117f03a8f769cbd2ecf1fca2653e8c343b6aa0
 
 
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
 多くの場合、リモート デスクトップ ゲートウェイは、ローカルの NPS を使用してユーザーを認証します。 このドキュメントでは、リモート デスクトップ ゲートウェイから RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。
 
-Multi-Factor Authentication Server は別個のサーバーにインストールする必要があります。これにより、RADIUS 要求を NPS に戻してリモート デスクトップ ゲートウェイ サーバーに送信します。 NPS でユーザー名とパスワードが検証されると、Multi-Factor Authentication Server に応答が返され、ゲートウェイに結果を返す前に認証の 2 つ目の要素が実行されます。
+Multi-Factor Authentication Server は別個のサーバーにインストールする必要があります。これにより、RADIUS 要求を NPS に戻してリモート デスクトップ ゲートウェイ サーバーに送信します。 NPS でユーザー名とパスワードが検証されると、Multi-Factor Authentication Server に応答が返され、ゲートウェイに結果を返す前に認証の&2; つ目の要素が実行されます。
 
 ## <a name="configure-the-rd-gateway"></a>RD ゲートウェイの構成
-RD ゲートウェイは、RADIUS 認証を Azure Multi-Factor Authentication Server に送信するように構成する必要があります。 RD ゲートウェイがインストールおよび構成されて動作を開始したら、RD ゲートウェイのプロパティに移動します。 [RD CAP ストア] タブに移動し、NPS を実行するローカル サーバーではなく、NPS を実行する中央サーバーを使用するように変更します。 RADIUS サーバーとして 1 つ以上の Azure Multi-Factor Authentication Server を追加し、共有シークレットを各サーバーに指定します。
+RD ゲートウェイは、RADIUS 認証を Azure Multi-Factor Authentication Server に送信するように構成する必要があります。 RD ゲートウェイがインストールおよび構成されて動作を開始したら、RD ゲートウェイのプロパティに移動します。 [RD CAP ストア] タブに移動し、NPS を実行するローカル サーバーではなく、NPS を実行する中央サーバーを使用するように変更します。 RADIUS サーバーとして&1; つ以上の Azure Multi-Factor Authentication Server を追加し、共有シークレットを各サーバーに指定します。
 
 ## <a name="configure-nps"></a>NPS の構成
 RD ゲートウェイは、NPS を使用して Azure Multi-Factor Authentication に RADIUS 要求を送信します。 RD ゲートウェイが多要素認証が完了する前にタイムアウトしないように、タイムアウトするまでの時間を変更する必要があります。 NPS を構成するには、次の手順に従います。
@@ -37,19 +37,24 @@ RD ゲートウェイは、NPS を使用して Azure Multi-Factor Authentication
 4. このポリシーをコピーして新しいポリシーを作成します。 新しいポリシーに、クライアントのフレンドリ名を、手順 2 の Azure Multi-Factor Authentication Server の RADIUS クライアントに設定したフレンドリ名と一致させる条件を追加します。 認証プロバイダーをローカル コンピューターに変更します。 このポリシーは、RADIUS 要求を Azure Multi-Factor Authentication Server から受信した際に、RADIUS 要求を Multi-Factor Authentication Server に戻してループ状態にするのではなく、ローカルで認証が行われるようにします。 ループ状態を回避するのには、Multi-Factor Authentication Server に要求を転送する元のポリシーの上にこの新しいポリシーを配置する必要があります。
 
 ## <a name="configure-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の構成
-- - -
+
 Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間の RADIUS プロキシとして構成されます。  これは、RD ゲートウェイ サーバーとは別個のドメインに参加しているサーバーにインストールする必要があります。 Azure Multi-Factor Authentication Server を構成するには、次の手順に従います。
 
 1. Azure Multi-Factor Authentication Server を開き、[RADIUS 認証] アイコンをクリックします。 [RADIUS 認証を有効にする] チェック ボックスをオンにします。
-2. [クライアント] タブで、ポートが NPS の構成と一致していることを確認し、[追加] ボタンをクリックします。  ボタンを選択します。 RD ゲートウェイ サーバーの IP アドレス、アプリケーション名 (省略可能)、および共有シークレットを追加します。 共有シークレットは、Azure Multi-Factor Authentication Server と RD ゲートウェイの両方で同じである必要があります。
+2. [クライアント] タブで、ポートが NPS の構成と一致していることを確認し、[追加] ボタンをクリックします。 ボタンを選択します。 RD ゲートウェイ サーバーの IP アドレス、アプリケーション名 (省略可能)、および共有シークレットを追加します。 共有シークレットは、Azure Multi-Factor Authentication Server と RD ゲートウェイの両方で同じである必要があります。
 3. [ターゲット] タブをクリックし、[RADIUS サーバー] ラジオ ボタンを選択します。
-4. [追加]  ボタンを選択します。 IP アドレス、共有シークレット、および NPS サーバーのポートを入力します。 一元的な NPS を使用していない限り、RADIUS クライアントと RADIUS ターゲットは同じになります。 共有シークレットは、NPS サーバーの RADIUS クライアント セクションの 1 つのセットアップと一致している必要があります。
+4. [追加] ボタンを選択します。 IP アドレス、共有シークレット、および NPS サーバーのポートを入力します。 一元的な NPS を使用していない限り、RADIUS クライアントと RADIUS ターゲットは同じになります。 共有シークレットは、NPS サーバーの RADIUS クライアント セクションの&1; つのセットアップと一致している必要があります。
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
+## <a name="next-steps"></a>次のステップ
+
+- Azure MFA と [IIS Web アプリ](multi-factor-authentication-get-started-server-iis.md)を統合する
+
+- 「[Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)」で回答を得る
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

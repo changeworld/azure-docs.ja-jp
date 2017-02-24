@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/20/2016
+ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: caab5d5d95200e909d0be26a0712f78e3960deb1
+ms.sourcegitcommit: ff9fb5f0b2229a470ea3f5c736622ee1e9228c93
+ms.openlocfilehash: 4120ca24bab11f21fe66d5219f06608e33b527d1
 
 
 ---
@@ -29,15 +29,15 @@ Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワーク
 ## <a name="hpc-pack-cluster-deployment-options"></a>HPC Pack クラスターのデプロイ オプション
 Microsoft HPC Pack は、追加コストなしで提供され、Windows または Linux HPC アプリケーションを実行するための HPC クラスターをオンプレミスまたは Azure で作成するために使用できます。 HPC Pack には、Microsoft が実装する Windows 用 Message Passing Interface (MS-MPI) のランタイム環境が含まれています。 サポートされている Windows Server オペレーティング システムを実行している RDMA 対応のインスタンスで使用する場合、HPC Pack は、Azure RDMA ネットワークにアクセスする Windows MPI アプリケーションを実行するための効率的なオプションとなります。 
 
-この記事では、Microsoft HPC Pack と共に Windows RDMA クラスターを設定する 2 つのシナリオと詳しいガイダンスへのリンクを紹介します。 
+この記事では、Microsoft HPC Pack と共に Windows RDMA クラスターを設定する&2; つのシナリオと詳しいガイダンスへのリンクを紹介します。 
 
 * シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 * シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
 
-Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「 [H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。
+Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「[H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
-## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
-既存の HPC Pack クラスターから、クラウド サービスで実行される Azure worker ロール インスタンス (Azure ノード) にコンピューティング リソースを追加します (PaaS)。 HPC Pack からの "Azure へのバースト" とも呼ばれるこの機能は、worker ロール インスタンスのサイズの範囲をサポートしています。 Azure ノードを追加するときは、RDMA 対応のサイズのいずれかを指定するだけです。
+## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>シナリオ 1: コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
+既存の HPC Pack クラスターから、クラウド サービスで実行される Azure worker ロール インスタンス (Azure ノード) にコンピューティング リソースを追加します (PaaS)。 HPC Pack からの "Azure へのバースト" とも呼ばれるこの機能は、worker ロール インスタンスのサイズの範囲をサポートしています。 Azure ノードを追加するときは、RDMA 対応のサイズのいずれかを指定します。
 
 既存の (通常はオンプレミスの) クラスターから RDMA 対応のインスタンスにバーストする際の考慮事項とバーストの手順を以下に示します。 Azure VM にデプロイされた HPC Pack ヘッド ノードに worker ロール インスタンスを追加する場合も、同様の手順を実行します。
 
@@ -51,7 +51,7 @@ Windows でコンピューティング集中型インスタンスを使用する
 ### <a name="steps"></a>手順
 1. **HPC Pack 2012 R2 ヘッド ノードをデプロイして構成する**
    
-    最新の HPC Pack インストール パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。 Azure のバースト デプロイの要件と手順については、[HPC Pack の概要ガイド](https://technet.microsoft.com/library/jj884144.aspx)と [Microsoft HPC Pack を使用した Azure worker インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)に関するページをご覧ください。
+    最新の HPC Pack インストール パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=49922)からダウンロードします。 Azure のバースト デプロイの要件と手順については、[Microsoft HPC Pack を使用した Azure worker インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)に関する記事をご覧ください。
 2. **Azure のサブスクリプションで管理証明書を構成する**
    
     ヘッド ノードと Azure の間の接続をセキュリティで保護するための証明書を構成します。 オプションと手順については、 [HPC Pack 用に Azure の管理証明書を構成するシナリオ](http://technet.microsoft.com/library/gg481759.aspx)に関するページを参照してください。 テスト デプロイでは、HPC Pack により、Azure サブスクリプションに迅速にアップロードできる既定の Microsoft HPC Azure 管理証明書がインストールされます。
@@ -83,8 +83,8 @@ Windows でコンピューティング集中型インスタンスを使用する
    
    ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにし、 **[停止]** 操作を使用します。
 
-## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
-このシナリオでは、Azure 仮想ネットワークの Active Directory ドメインに参加している VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、 [Azure VM でのデプロイ オプション](virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)が多数用意されています。 例として、下記の考慮事項と手順は、 [HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) を使用して、このプロセスのほとんどを自動化する方法を示しています。
+## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2: 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
+このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](virtual-machines-linux-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
 
 ![Cluster in Azure VMs][iaas]
 
@@ -97,12 +97,12 @@ Windows でコンピューティング集中型インスタンスを使用する
    
     RDMA 対応のコンピューティング ノードをデプロイする場合は、以下の追加の考慮事項に注意してください。
    
-   * **仮想ネットワーク** - 使用する RDMA 対応のインスタンス サイズが使用可能なリージョンで新しい仮想ネットワークを指定します。
-   * **Windows Server オペレーティング システム** - RDMA 接続をサポートするには、コンピューティング ノード VM 用に Windows Server 2012 R2 または Windows Server 2012 オペレーティング システムを指定します。
-   * **クラウド サービス** - ヘッド ノードとコンピューティング ノードは、それぞれ異なるクラウド サービスにデプロイすることをお勧めします。
-   * **ヘッド ノードのサイズ** - このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
-   * **HpcVmDrivers 拡張機能** - デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。
-   * **クラスター ネットワークの構成** - デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (エンタープライズ ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
+   * **仮想ネットワーク**: 使用する RDMA 対応のインスタンス サイズが使用可能なリージョンで新しい仮想ネットワークを指定します。
+   * **Windows Server オペレーティング システム**: RDMA 接続をサポートするには、計算ノード VM 用に Windows Server 2012 R2 または Windows Server 2012 オペレーティング システムを指定します。
+   * **クラウド サービス**: ヘッド ノードと計算ノードは、それぞれ異なるクラウド サービスにデプロイすることをお勧めします。
+   * **ヘッド ノードのサイズ**: このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
+   * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)」を参照してください。
+   * **クラスター ネットワークの構成**: デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (Enterprise ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
 2. **計算ノードをオンラインにしてジョブを実行できるようにする**
    
     ノードを選択し、HPC クラスター マネージャーの **[オンラインにする]** 操作を使用します。 ノードでジョブを実行する準備が整います。
@@ -124,7 +124,7 @@ RDMA 対応のインスタンスの HPC Pack デプロイを確認するには�
 1. ヘッド ノードまたは適切に構成されたクライアント コンピューターで、コマンド プロンプトを開きます。
 2. 4 ノードの Azure バースト デプロイ内のノード ペア間の待機時間を推定するために、次のコマンドを入力して、パケット サイズが小さく繰り返し数が多い設定で mpipingpong を実行するジョブを送信します。
    
-    ```
+    ```Command
     job submit /nodegroup:azurenodes /numnodes:4 mpiexec -c 1 -affinity mpipingpong -p 1:100000 -op -s nul
     ```
    
@@ -132,12 +132,12 @@ RDMA 対応のインスタンスの HPC Pack デプロイを確認するには�
    
     Azure VM にデプロイされた HPC Pack クラスターをデプロイした場合は、1 つのクラウド サービスにデプロイされた計算ノード VM を含むノード グループを指定し、 **mpiexec** コマンドを次のように変更します。
    
-    ```
+    ```Command
     job submit /nodegroup:vmcomputenodes /numnodes:4 mpiexec -c 1 -affinity -env MSMPI_DISABLE_SOCK 1 -env MSMPI_PRECONNECT all -env MPICH_NETMASK 172.16.0.0/255.255.0.0 mpipingpong -p 1:100000 -op -s nul
     ```
 3. ジョブが完了したら、出力 (この場合は、ジョブの 1 番目のタスクの出力) を表示するために次のように入力します。
    
-    ```
+    ```Command
     task view <JobID>.1
     ```
    
@@ -148,7 +148,7 @@ RDMA 対応のインスタンスの HPC Pack デプロイを確認するには�
     ![Ping pong latency][pingpong1]
 4. Azure バースト ノードのペア間のスループットを推定するために、次のコマンドを入力して、パケット サイズが大きく繰り返し数が少ない設定で **mpipingpong** を実行するジョブを送信します。
    
-    ```
+    ```Command
     job submit /nodegroup:azurenodes /numnodes:4 mpiexec -c 1 -affinity mpipingpong -p 4000000:1000 -op -s nul
     ```
    
@@ -157,7 +157,7 @@ RDMA 対応のインスタンスの HPC Pack デプロイを確認するには�
     Azure VM にデプロイされた HPC Pack クラスターで、手順 2. に示したようにコマンドを変更します。
 5. ジョブが完了したら、出力 (この場合は、ジョブの 1 番目のタスクの出力) を表示するために次のように入力します。
    
-    ```
+    ```Command
     task view <JobID>.1
     ```
    
@@ -168,7 +168,7 @@ RDMA 対応のインスタンスの HPC Pack デプロイを確認するには�
 ### <a name="mpi-application-considerations"></a>MPI アプリケーションに関する考慮事項
 Azure で HPC Pack を使用して MPI アプリケーションを実行する場合の考慮事項を次に示します。 いくつかの項目は、Azure ノード ("Azure へのバースト" 構成で追加された worker ロールのインスタンス) のデプロイにのみ適用されます。
 
-* クラウド サービスの worker ロール インスタンスは、(たとえば、システムのメンテナンスやインスタンスの障害が原因で) Azure によって通知なく定期的に再プロビジョニングされます。 インスタンスが MPI ジョブの実行中に再プロビジョニングされた場合、インスタンスのデータが失われ、インスタンスが最初にデプロイされた状態に戻り、MPI ジョブが失敗する原因となります。 1 つの MPI ジョブに使用するノードの数が多いほど、およびジョブの実行に時間がかかるほど、ジョブの実行中にいずれかのインスタンスが再プロビジョニングされる可能性が高くなります。 デプロイの 1 つのノードをファイル サーバーとして指定する場合もこの点に注意する必要があります。
+* クラウド サービスの worker ロール インスタンスは、(たとえば、システムのメンテナンスやインスタンスの障害が原因で) Azure によって通知なく定期的に再プロビジョニングされます。 インスタンスが MPI ジョブの実行中に再プロビジョニングされた場合、インスタンスのデータが失われ、インスタンスが最初にデプロイされた状態に戻り、MPI ジョブが失敗する原因となります。 1 つの MPI ジョブに使用するノードの数が多いほど、およびジョブの実行に時間がかかるほど、ジョブの実行中にいずれかのインスタンスが再プロビジョニングされる可能性が高くなります。 デプロイの&1; つのノードをファイル サーバーとして指定する場合も、この点を考慮してください。
 * Azure で MPI ジョブを実行するために RDMA 対応のインスタンスを使用する必要はありません。 HPC Pack でサポートされている任意のインスタンス サイズを使用することができます。 ただし、待機時間やノードを接続するネットワークの帯域幅に依存する比較的大規模な MPI ジョブの実行には RDMA 対応のインスタンスをお勧めします。 その他のサイズを使用して待機時間と帯域幅に依存する MPI ジョブを実行する場合は、サイズが小さなジョブを実行して、1 つのタスクが少数のノードで実行されるようにすることをお勧めします。
 * Azure インスタンスにデプロイされたアプリケーションには、アプリケーションに関連付けられているライセンス条件が適用されます。 クラウドで実行するためのライセンスまたはその他の制限事項については、商用アプリケーションのベンダーに確認してください。 すべてのベンダーが従量課金制ライセンスを提供しているとは限りません。
 * オンプレミスのノード、共有、ライセンス サーバーにアクセスするには、Azure インスタンスでさらに設定が必要になります。 たとえば、オンプレミスのライセンス サーバーにアクセスできるように Azure ノードを有効にする場合、サイト間 Azure 仮想ネットワークを構成できます。
@@ -179,7 +179,7 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
   > 
   > 
 * HPC Pack では、CCP_MPI_NETMASK クラスター環境変数を使用して、MPI 通信で許容されるアドレスの範囲を指定します。 HPC Pack 2012 R2 以降では、CCP_MPI_NETMASK クラスター環境変数は、(オンプレミスまたは Azure VM の) ドメインに参加しているクラスター計算ノード間の MPI 通信にのみ影響を与えます。 この変数は、Azure へのバースト構成で追加されたノードで無視されます。
-* MPI ジョブは、異なるクラウド サービス (たとえば、異なるノード テンプレートを使用した Azure へのバースト デプロイ、または複数のクラウド サービスにデプロイされた Azure VM 計算ノード) にデプロイされた Azure インスタンス間で実行できません。 異なるノード テンプレートを使用して開始された複数の Azure ノード デプロイの場合は、MPI ジョブを 1 つの Azure ノードのセットで実行する必要があります。
+* MPI ジョブは、異なるクラウド サービス (たとえば、異なるノード テンプレートを使用した Azure へのバースト デプロイ、または複数のクラウド サービスにデプロイされた Azure VM 計算ノード) にデプロイされた Azure インスタンス間で実行できません。 異なるノード テンプレートを使用して開始された複数の Azure ノード デプロイの場合は、MPI ジョブを&1; つの Azure ノードのセットで実行する必要があります。
 * Azure ノードをクラスターに追加してオンラインにすると、HPC ジョブ スケジューラ サービスは、すぐにノードでジョブを開始しようとします。 ワークロードの一部のみを Azure で実行できる場合は、ジョブ テンプレートを更新または作成して、Azure で実行できるジョブの種類を定義してください。 たとえば、ジョブ テンプレートを使用して送信されたジョブが Azure ノードでのみ実行されるようにするには、ジョブ テンプレートにノード グループ プロパティを追加し、必須の値として AzureNodes を選択します。 Azure ノードに対応するカスタム グループを作成するには、Add-HpcGroup HPC PowerShell コマンドレットを使用します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -194,6 +194,6 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

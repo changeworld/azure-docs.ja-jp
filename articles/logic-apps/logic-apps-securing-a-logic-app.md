@@ -1,6 +1,6 @@
 ---
-title: "Azure ロジック アプリのセキュリティ保護 | Microsoft Docs"
-description: "Azure ロジック アプリの入力、アクセス、および制御のセキュリティ保護"
+title: "Azure Logic Apps へのアクセスのセキュリティ保護 | Microsoft Docs"
+description: "Azure Logic Apps のワークフローで使用されるトリガー、入出力、アクション パラメーター、サービスへのアクセスを保護するセキュリティを追加します。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: ba109fdc2a97e99f6216aa038261e6ccc5e356d9
-ms.openlocfilehash: 88df53aed1ffcf3c53d3d5557bdd2604e44f2aef
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 2cc83c6f10272139f148b450e3c1c8cc91fd68f9
 
 
 ---
@@ -281,6 +281,6 @@ Azure API と Web アプリでは、オンプレミスとの通信にハイブ�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

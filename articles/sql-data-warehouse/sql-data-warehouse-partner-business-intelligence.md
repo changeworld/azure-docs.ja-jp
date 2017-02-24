@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
 ## <a name="next-steps"></a>次のステップ
-その他のパートナーの詳細については、[データ統合パートナー][di_partners] に関するページと [データ管理パートナー][dm_partners] に関するページを参照してください。
+その他のパートナーの詳細については、[データ統合パートナー][di_partners]に関するページと[データ管理パートナー][dm_partners]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png
@@ -153,6 +153,6 @@ ms.openlocfilehash: e2bdb05c9a99426c665c1564b916724d0c23eadc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

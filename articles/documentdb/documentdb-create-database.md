@@ -1,25 +1,9 @@
 ---
-title: "DocumentDB でデータベースを作成する方法 | Microsoft Docs"
-description: "きわめて高速なグローバル スケールの NoSQL データベースである Azure DocumentDB のオンライン サービス ポータルを使用してデータベースを作成する方法について説明します。"
-keywords: "データベースの作成方法"
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: monicar
-documentationcenter: 
-ms.assetid: 2503db56-744f-44b5-bf6a-0be821d023ea
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/17/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b5d93b218a61b325b6c7bd02a160bd2cae844341
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: c5f3881cb477c3cb90adfc53a57ff82a8d312d0f
 
 
 
@@ -40,6 +24,6 @@ Microsoft Azure DocumentDB を使用するには、 [DocumentDB アカウント]
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

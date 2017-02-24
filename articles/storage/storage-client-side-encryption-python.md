@@ -120,7 +120,7 @@ ms.openlocfilehash: 4eff4ebb948f88a93b403d6375c1342918120ac5
 
 ストレージ クライアント ライブラリでは、指定された KEK とキー リゾルバーによって、次のインターフェイスが実装されることを想定しています。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のサポートはまだ提供されていませんが、このライブラリに統合される予定です。
 
-## <a name="client-api-interface"></a>クライアント API/インターフェイス
+## <a name="client-api--interface"></a>クライアント API/インターフェイス
 ストレージ サービス オブジェクト (blockblobservice) が作成されたら、暗号化ポリシーを構成するフィールド key_encryption_key、key_resolver_function、require_encryption に値を割り当てることができます。 ユーザーは、KEK のみ、リゾルバーのみ、または KEK とリゾルバーの両方を指定できます。 key_encryption_key は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。 key_resolver_function は復号化プロセス中のキーの解決に使用します。 特定のキー識別子に有効な KEK を返します。 これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。
 
 KEK で正常にデータを暗号化するには、次のメソッドを実装する必要があります。

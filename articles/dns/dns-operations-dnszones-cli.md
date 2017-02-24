@@ -1,6 +1,6 @@
 ---
-title: "CLI を使用した DNS ゾーンの管理 | Microsoft Docs"
-description: "Azure CLI を使用して DNS ゾーンを管理できます。 Azure DNS の DNS ゾーンを更新、削除、および作成する方法"
+title: "Azure DNS での DNS ゾーンの管理 - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/07/2016
+ms.date: 12/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
-ms.openlocfilehash: 927503bb18a63db1da2c92e034dbccb7707afab4
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: 8519812977c7cc042243e47b2e80bb9605fc9ddc
 
 ---
 
-# <a name="how-to-manage-dns-zones-using-cli"></a>CLI を使用して DNS ゾーンを管理する方法
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 > * [PowerShell](dns-operations-dnszones.md)
 
-このガイドでは、クロス プラットフォームの Azure CLI を使用して、DNS ゾーンのリソースを管理する方法を説明します。
+このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
 
-以下の手順では、Microsoft Azure CLI を使用します。 Azure DNS コマンドを使用するために、必ず最新の Azure CLI に更新してください。 Windows 用、Linux 用、MAC 用の Azure CLI をインストールできます。 詳しくは、「 [Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+[!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-Azure DNS は、Azure リソース マネージャー専用のサービスです。 「クラシック」デプロイ モデルはありません。 リソース マネージャー モードを使用するように Azure CLI が構成されていることを確認する必要があります。 このような場合には、`azure config mode arm` コマンドを使用します。
+[!INCLUDE [dns-cli-setup](../../includes/dns-cli-setup-include.md)]
 
-" *エラー: 'dns' は、Azure のコマンドではありません*" というメッセージが表示される場合は、多くの場合、リソース マネージャー モードではなく、Azure Service Management モードで Azure CLI を使用していることが原因です。
+## <a name="getting-help"></a>ヘルプの表示
 
 Azure DNS に関連するすべての CLI コマンドは `azure network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  For example:
 
@@ -45,11 +45,7 @@ azure network dns zone create -h
 
 DNS ゾーンは、`azure network dns zone create` コマンドを使用して作成します。 `azure network dns zone create -h` を使用すると、ヘルプが表示されます。
 
-次の例は、[Azure Resource Manager タグ](dns-zones-records.md#tags) の有無にかかわらず DNS ゾーンを作成する方法です。
-
-### <a name="to-create-a-dns-zone"></a>DNS ゾーンを作成するには
-
-次の例では、*MyResourceGroup* というリソース グループに *contoso.com* という DNS ゾーンを作成します。 この例の値を実際の値に置き換えて、DNS ゾーンを作成できます。
+次の例では、*MyResourceGroup* というリソース グループに *contoso.com* という DNS ゾーンを作成します。
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com
@@ -57,7 +53,7 @@ azure network dns zone create MyResourceGroup contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>タグのある DNS ゾーンを作成するには
 
-次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の&2; つのタグを含む DNS ゾーンを作成する方法を示します。
+次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の&2; つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com -t "project=demo";"env=test"
@@ -71,7 +67,11 @@ DNS ゾーンを取得するには、 `azure network dns zone show`を使用し�
 
 ```azurecli
 azure network dns zone show MyResourceGroup contoso.com
+```
 
+次の例は応答です。
+
+```
 info:    Executing command network dns zone show
 + Looking up the dns zone "contoso.com"
 data:    Id                              : /subscriptions/.../contoso.com
@@ -112,7 +112,7 @@ azure network dns zone list
 
 DNS ゾーンのリソースへの変更は、 `azure network dns zone set`を使用して行うことができます。 `azure network dns zone set -h` を使用すると、ヘルプが表示されます。
 
-このコマンドによって、ゾーン内の DNS レコード セットが更新されることはありません (「 [DNS レコードの管理方法](dns-operations-recordsets.md)」を参照)。 この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。 現時点では、これらのプロパティは、ゾーンのリソースの [Azure Resource Manager の"タグ"](dns-zones-records.md#tags) に限定されています。
+このコマンドによって、ゾーン内の DNS レコード セットが更新されることはありません (「 [DNS レコードの管理方法](dns-operations-recordsets-cli.md)」を参照)。 この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。 現時点では、これらのプロパティは、ゾーンのリソースの [Azure Resource Manager の"タグ"](dns-zones-records.md#tags) に限定されています。
 
 次の例では、DNS ゾーンのタグを更新する方法を示します。 既存のタグは、指定された値に置き換えられます。
 
@@ -125,7 +125,7 @@ azure network dns zone set MyResourceGroup contoso.com -t "team=support"
 DNS ゾーンは、`azure network dns zone delete` を使用して削除できます。 `azure network dns zone delete -h` を使用すると、ヘルプが表示されます。
 
 > [!NOTE]
-> DNS ゾーンを削除すると、ゾーン内のすべての DNS レコードも削除されます。 削除操作は元に戻すことができません。 DNS ゾーンを使用している場合、ゾーンを削除すると、ゾーンを使用するサービスは機能しなくなります。
+> DNS ゾーンを削除すると、ゾーン内の DNS レコードもすべて削除されます。 削除操作は元に戻すことができません。 DNS ゾーンを使用している場合、ゾーンを削除すると、ゾーンを使用するサービスは機能しなくなります。
 >
 >ゾーンを誤って削除しないようにするには、「[DNS ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)」をご覧ください。
 
@@ -140,12 +140,12 @@ azure network dns zone delete MyResourceGroup contoso.com
 ## <a name="next-steps"></a>次のステップ
 
 DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-getstarted-create-recordset-cli.md)をご覧ください。
-<br>
+
 Azure DNS にドメインを委任する方法については[こちら](dns-domain-delegation.md)をご覧ください。
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

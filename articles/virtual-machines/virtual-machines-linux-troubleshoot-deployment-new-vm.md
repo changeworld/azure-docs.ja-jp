@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 3790c6108c151c30ca12feb4af19ad0fd4ae1f68
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 2cf2d842c2f04d56c30b3bec1b9ee8b5897f1e6b
 
 
 ---
@@ -26,12 +26,12 @@ ms.openlocfilehash: 3790c6108c151c30ca12feb4af19ad0fd4ae1f68
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>監査ログの収集
-トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
+## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
+トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
-[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
+[デプロイ操作の表示](../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[リソース マネージャーの監査操作](../resource-group-audit.md)
+[アクティビティ ログを表示して Azure リソースを管理する](../azure-resource-manager/resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -88,6 +88,6 @@ Azure で停止していた Linux VM の再起動または既存の Linux VM の
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -104,7 +104,7 @@ Visual Studio Web テスト ファイルをアップロードして実行する�
    
     ![Rerunning the test](./media/app-service-web-app-performance-test/multiple-rerun-test.png)
 
-## <a name="q-a"></a>Q & A
+## <a name="q--a"></a>Q & A
 #### <a name="q-is-there-a-limit-on-how-long-i-can-run-a-test"></a>Q: テストの実行時間に関して制限はありますか?
 **A**: はい。Azure Portal では、最長 1 時間までテストを実行できます。
 

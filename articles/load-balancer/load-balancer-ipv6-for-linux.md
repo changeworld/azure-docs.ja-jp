@@ -70,7 +70,7 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="rhel-centos-oracle-linux"></a>RHEL/CentOS/Oracle Linux
+## <a name="rhel--centos--oracle-linux"></a>RHEL/CentOS/Oracle Linux
 
 1. `/etc/sysconfig/network` ファイルを編集し、次のパラメーターを追加します。
 
@@ -87,7 +87,7 @@ Azure Marketplace の Linux 仮想マシン イメージの一部には、既定
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-11-opensuse-13"></a>SLES 11 と openSUSE 13
+## <a name="sles-11--opensuse-13"></a>SLES 11 と openSUSE 13
 
 Azure の最近の SLES と openSUSE のイメージは、DHCPv6 に対応するように事前構成されています。 これらのイメージを使用するのに追加の変更は必要ありません。 前のバージョンまたはカスタマイズされた SUSE イメージを基盤とする VM がある場合は、次の手順に従います。
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d6cee6b4d47264bb0b91d3169490af0b08c05711
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4bf0847e41b10862fdfdaa662ab7ce48a1cf747a
 
 
 ---
@@ -137,7 +137,7 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
    > 
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_51.png)
-6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+6. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
@@ -204,7 +204,7 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-an-ibm-kenexa-survey-enterprise-test-user"></a>IBM Kenexa Survey Enterprise テスト ユーザーの作成
 このセクションでは、IBM Kenexa Survey Enterprise で Britta Simon というユーザーを作成します。 IBM Kenexa サポート チームと連携して、すべてのユーザーの SSO ID をマップしてください。 この SSO ID 値は、Azure AD からの NameIdentifier 値にもマップする必要があります。 [属性] タブでこの既定の設定を変更できます。
@@ -264,6 +264,6 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

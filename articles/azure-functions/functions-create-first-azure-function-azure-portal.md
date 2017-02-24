@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal からの関数の作成 | Microsoft Docs"
-description: "初めての Azure 関数、つまりサーバー不要のアプリケーションを 2 分以内に作成します。"
+description: "初めての Azure 関数、つまりサーバー不要のアプリケーションを&2; 分以内に作成します。"
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 02/02/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 91e19b321026840a062078d7af2a55967fb3904b
-ms.openlocfilehash: 417c545e34f1d652594c8527a3c8b0a845a4e8fa
+ms.sourcegitcommit: ab0b218a99ab3ff98edfa075eabbd3eb2c2bd1d4
+ms.openlocfilehash: 996fc80ff926117dc12180efe1949b3dbeba3f91
 
 
 ---
@@ -28,9 +28,7 @@ Azure Functions は、他の Azure サービス、SaaS 製品、オンプレミ�
 このトピックでは、Azure Portal を使用して、HTTP トリガーによって呼び出される簡単な "hello world" Node.js Azure Function を作成する方法について説明します。 Azure Portal で関数を作成するには、Azure App Service で Function App を明示的に作成しておく必要があります。 Function App を自動的に作成する場合は、[こちらの Azure Functions クイック スタート チュートリアル](functions-create-first-azure-function.md)をご覧ください。このチュートリアルでは、よりシンプルなクイック スタート エクスペリエンスを提供し、ビデオも用意されています。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
-Function App は、Azure での関数の実行をホストします。 次の手順に従って、Azure Portal で Function App を作成します。
-
-関数アプリは Azure での関数の実行をホストします。 Azure アカウントがない場合は、[Functions の試用](https://functions.azure.com/try)に関するエクスペリエンスを確認するか、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)します。 
+関数アプリは Azure での関数の実行をホストします。 Azure アカウントがない場合は、[Functions の試用](https://functions.azure.com/try)に関するエクスペリエンスを確認するか、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)します。 次の手順に従って、Azure Portal で Function App を作成します。
 
 1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. **[+新規]** > **[Compute]** > **[Function App]** をクリックし、**[サブスクリプション]** を選択します。Function App を識別する一意の**アプリ名**を入力し、次の設定を指定します。
@@ -42,6 +40,8 @@ Function App は、Azure での関数の実行をホストします。 次の手
    * **[ストレージ アカウント]**: 各 Function App には、ストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
      
      ![Azure Portal での新しい Function App の作成](./media/functions-create-first-azure-function-azure-portal/function-app-create-flow.png)
+
+    有効な**アプリ名**を入力する必要があります。名前に使用できるのは文字、数字、およびハイフンだけです。 アンダースコア (**_**) は使用できません。
 
 3. **[作成]** をクリックして、新しい Function App をプロビジョニングし、デプロイします。  
 
@@ -57,35 +57,16 @@ Function App をプロビジョニングしたら、初めての関数を作成�
 2. (オプション) クイック スタートのこの時点で、ポータルの Azure Functions 機能のクイック ツアーを開始するかどうか選択することができます。    ツアーを完了するかスキップしたら、HTTP トリガーを使用して新しい関数をテストできます。
 
 ## <a name="test-the-function"></a>関数をテストする
-Azure Functions クイック スタートには機能コードが含まれているため、新しい関数をすぐにテストできます。
-
-1. **[開発]** タブで **[コード]** ウィンドウを確認すると、この Node.js コードでは、HTTP 要求で *name* 値をメッセージ本文またはクエリ文字列で渡す必要があることがわかります。 関数を実行すると、応答メッセージでこの値が返されます。
-   
-2. **[テスト]** をクリックすると、その関数について組み込みの HTTP テスト要求ウィンドウが表示されます。
- 
-    ![](./media/functions-create-first-azure-function-azure-portal/function-app-develop-tab-testing.png)
-
-2. **[要求本文]** ボックスで *name* プロパティの値を自分の名前に変更して、**[実行]** をクリックします。 テスト HTTP 要求によって実行がトリガーされ、ストリーミング ログに情報が書き込まれて、"hello" という応答が **[出力]**に表示されます。 
-
-3. 同じ関数の実行を別のブラウザー ウィンドウやタブからトリガーするには、**[開発]** タブから **[関数の URL]** の値をコピーしてブラウザーのアドレス バーに貼り付けたうえで、 そこにクエリ文字列値 `&name=yourname` を追加して Enter キーを押します。 同じ情報がログに書き込まれ、ブラウザーに "hello" という応答が前と同じように表示されます。
+[!INCLUDE [Functions quickstart test](../../includes/functions-quickstart-test.md)]
 
 ## <a name="next-steps"></a>次のステップ
-このクイック スタートでは、基本的な HTTP トリガーによる関数を簡単に実行する方法を紹介しました。 アプリで Azure Functions を使用する方法についてさらに詳しく知りたい場合には、以下のトピックを参照してください。
-
-* [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-   関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
-* [Azure Functions のテスト](functions-test-a-function.md)  
-   関数をテストするための各種ツールと手法について説明します。
-* [Azure Functions のスケーリング方法](functions-scale.md)  
-  Azure Functions で利用できるサービス プラン (使用量ベースの App Service プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/app-service-value-prop-what-is.md)  
-   Azure Functions では、デプロイ、環境変数、診断などの主要機能に Azure App Service プラットフォームを使用します。 
+[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT スタート キットに点滅アプリケーションを作成してデプロイする | Microsoft Docs"
+title: "Azure IoT への Intel Edison (Node) の接続 - レッスン 1: デバイスの構成 | Microsoft Docs"
 description: "Intel Edison の初回使用時の構成を行います。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: 4511f88bc6a3e71fe3ea9375711dade15fd4ef70
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 203d3976b9ba0960f5a3dbff4e2b1fcdf4c0dc33
 
 
 ---
@@ -145,6 +145,6 @@ ms.openlocfilehash: 4511f88bc6a3e71fe3ea9375711dade15fd4ef70
 [get-the-tools]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

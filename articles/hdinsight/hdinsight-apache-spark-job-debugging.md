@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ | Microsoft Docs"
+title: "Azure HDInsight の Apache Spark クラスターで実行されるジョブのデバッグ | Microsoft Docs"
 description: "Azure HDInsight の Spark クラスターで実行されるジョブの追跡とデバッグには、YARN UI、Spark UI、Spark History Server を使用します。"
 services: hdinsight
 documentationcenter: 
@@ -13,22 +13,23 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 849e883a707cd84564a5cfae76f31494057ab181
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: d6d7c0d112778172633fa068a119ba075c0fd900
 
 
 ---
-# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターで実行されるジョブの追跡とデバッグ
+# <a name="track-and-debug-jobs-running-on-apache-spark-cluster-in-hdinsight"></a>HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ
+
 この記事では、YARN UI と Spark UI、Spark History Server を使用して Spark ジョブの追跡とデバッグを行う方法について説明します。 この記事では、「 **Machine Learning: MLlib を使用した食品検査データの予測分析**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 他の方法 ( **spark-submit**など) で送信したアプリケーションについても、以下の手順に従って追跡することができます。
 
 ## <a name="prerequisites"></a>前提条件
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、「 [HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 * 「 **[Machine Learning: MLlib を使用した食品検査データの予測分析](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**」で使用した Spark クラスターのノートブックを使用して Spark ジョブを実行します。 このノートブックの実行方法については、リンク先のページを参照してください。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN UI でのアプリケーションの追跡
@@ -74,7 +75,7 @@ ms.openlocfilehash: 849e883a707cd84564a5cfae76f31494057ab181
    
     ![View Spark stages event timeline](./media/hdinsight-apache-spark-job-debugging/view-spark-stages-event-timeline.png)
    
-    Spark イベントがタイムラインの形式で表示されます。 タイムライン ビューには 3 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
+    Spark イベントがタイムラインの形式で表示されます。 タイムライン ビューには&3; 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
    
    > [!TIP]
    > **[Enable zooming (ズームを有効にする)]** チェック ボックスをオンにすると、タイムライン ビューを左右にスクロールすることができます。
@@ -132,6 +133,6 @@ ms.openlocfilehash: 849e883a707cd84564a5cfae76f31494057ab181
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

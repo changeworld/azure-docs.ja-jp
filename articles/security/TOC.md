@@ -23,8 +23,11 @@
 ## [ID 管理](security-identity-management-overview.md)
 ### [ID 管理セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
 ## PaaS サービス
-### [IoT セキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
+### [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)
+#### [SQL を使用して PaaS アプリケーションをセキュリティで保護する](security-paas-applications-using-sql.md)
+#### [App Services を使用して PaaS アプリケーションをセキュリティで保護する](security-paas-applications-using-app-services.md)
 ### [IoT セキュリティの概要](security-internet-of-things-overview.md)
+### [IoT セキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
 ## 各種業界
 ### [セキュリティ保護されたヘルス ソリューションの設計](security-health-care-solution.md)
 ## [セキュリティのアーキテクチャ](azure-security-architecture-overview.md)
@@ -49,8 +52,19 @@
 ## [サイバーセキュリティに関する相談](azure-security-cyber-services.md)
 ## [Virtual Academy のセキュリティ講座](security-microsoft-virtual-academy.md)
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)
+## [Threat Modeling Tool](azure-security-threat-modeling-tool.md)
+###[監査とログ記録](azure-security-threat-modeling-tool-auditing-and-logging.md)
+###[認証](azure-security-threat-modeling-tool-authentication.md)
+###[承認](azure-security-threat-modeling-tool-authorization.md)
+###[通信のセキュリティ](azure-security-threat-modeling-tool-communication-security.md)
+###[構成管理](azure-security-threat-modeling-tool-configuration-management.md)
+###[暗号化](azure-security-threat-modeling-tool-cryptography.md)
+###[例外管理](azure-security-threat-modeling-tool-exception-management.md)
+###[入力の検証](azure-security-threat-modeling-tool-input-validation.md)
+###[機微なデータ](azure-security-threat-modeling-tool-sensitive-data.md)
+###[セッションの管理](azure-security-threat-modeling-tool-session-management.md)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

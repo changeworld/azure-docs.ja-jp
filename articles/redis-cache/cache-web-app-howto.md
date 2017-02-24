@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/19/2016
+ms.date: 01/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5385e8a33466020dd89eaa843ece0ca8d1f31936
-ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
+ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
+ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 
 
 ---
@@ -59,13 +59,13 @@ ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
 Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visual Studio 2013 をダウンロード](http://go.microsoft.com/fwlink/?LinkID=324322)できます。 一部の画面は、このチュートリアルに例示されている画像と異なる場合があります。
 
 > [!NOTE]
-> マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
+> マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から&30; 分以上) かかる場合があります。
 > 
 > 
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 1. Visual Studio を開き、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
-2. **[テンプレート]** リストの **[Visual C#]** ノードを展開し、**[クラウド]** を選択して **[ASP.NET Web アプリケーション]** をクリックします。 **[.NET Framework 4.5.2]** が選択されていることを確認します。  **[名前]** ボックスに「**ContosoTeamStats**」と入力し、**[OK]** をクリックします。
+2. **[テンプレート]** リストの **[Visual C#]** ノードを展開し、**[クラウド]** を選択して **[ASP.NET Web アプリケーション]** をクリックします。 **[.NET Framework 4.5.2]** 以降が選択されていることを確認します。  **[名前]** ボックスに「**ContosoTeamStats**」と入力し、**[OK]** をクリックします。
    
     ![Create project][cache-create-project]
 3. プロジェクトの種類として、 **[MVC]** を選択します。 **[クラウド内のホスト]** チェック ボックスをオフにします。 このチュートリアルの以降の手順では、[Azure リソースをプロビジョニング](#provision-the-azure-resources)し、[アプリケーションを Azure に発行](#publish-the-application-to-azure)します。 Visual Studio から **[クラウド内のホスト]** チェック ボックスをオンにした状態で App Service Web アプリをプロビジョニングする例については、 [ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用](../app-service-web/web-sites-dotnet-get-started.md)に関する記事を参照してください。
@@ -202,7 +202,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 5. **ソリューション エクスプローラー**で **Global.asax** を展開し、**Global.asax.cs** をダブルクリックして開きます。
    
     ![Global.asax.cs][cache-global-asax]
-6. ファイルの上部に次の 2 つの `using` ステートメントを、他の `using` ステートメントに続けて追加します。
+6. ファイルの上部に次の&2; つの `using` ステートメントを、他の `using` ステートメントに続けて追加します。
 
     ```c#
     using System.Data.Entity;
@@ -272,14 +272,14 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 3. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、**TeamsController.cs** をダブルクリックして開きます。
    
     ![Teams controller][cache-teamscontroller]
-4. 次の 2 つの `using` ステートメントを **TeamsController.cs** に追加します。
+4. 次の&2; つの `using` ステートメントを **TeamsController.cs** に追加します。
 
     ```c#   
     using System.Configuration;
     using StackExchange.Redis;
     ```
 
-5. 次の 2 つのプロパティを `TeamsController` クラスに追加します。
+5. 次の&2; つのプロパティを `TeamsController` クラスに追加します。
 
     ```c#   
     // Redis Connection string info
@@ -391,7 +391,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. 以下の 3 つのメソッドを `TeamsController` クラスに追加して、前のコード スニペットで追加した switch ステートメントにある 3 種類のアクション (`playGames`、`clearCache`、`rebuildDB`) を実装します。
+1. 以下の&3; つのメソッドを `TeamsController` クラスに追加して、前のコード スニペットで追加した switch ステートメントにある&3; 種類のアクション (`playGames`、`clearCache`、`rebuildDB`) を実装します。
    
     `PlayGames` メソッドは、あるシーズンのゲームをシミュレートすることでチームの統計情報を更新し、結果をデータベースに保存して、古くなったデータをキャッシュから消去します。
 
@@ -440,7 +440,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. キャッシュやデータベースからチームの統計情報を取得する各種の方法を実装するために、以下の 4 つのメソッドを `TeamsController` クラスに追加します。 いずれのメソッドも戻り値は `List<Team>` で、それがビューに表示されます。
+1. キャッシュやデータベースからチームの統計情報を取得する各種の方法を実装するために、以下の&4; つのメソッドを `TeamsController` クラスに追加します。 いずれのメソッドも戻り値は `List<Team>` で、それがビューに表示されます。
    
     `GetFromDB` メソッドは、データベースからチームの統計情報を読み取ります。
    
@@ -552,7 +552,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 ### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する
-このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この 3 つのメソッドに変更を加えます。
+このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この&3; つのメソッドに変更を加えます。
 
 1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
 
@@ -757,7 +757,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 いくつかのアクションをクリックし、各種のソースからデータを取得してみてください。 それぞれの方法で、データベースやキャッシュからデータを取得するのにかかる時間の違いをよく観察してください。
 
 ## <a name="delete-the-resources-when-you-are-finished-with-the-application"></a>アプリケーションを使い終わったときにリソースを削除する
-チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 「 **Azure リソースのプロビジョニング** 」セクションの [[Deploy to Azure (Azure へのデプロイ)]](#provision-the-azure-resources) ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを 1 回の操作でまとめて削除できます。
+チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 「 **Azure リソースのプロビジョニング** 」セクションの [[Deploy to Azure (Azure へのデプロイ)]](#provision-the-azure-resources) ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを&1; 回の操作でまとめて削除できます。
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]**をクリックします。
 2. リソース グループの名前を **[フィルター項目]** ボックスに入力します。
@@ -852,6 +852,6 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

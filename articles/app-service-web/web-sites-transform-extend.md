@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2e10b89aecd12dd9eeb91855242421bf8d7c0a0b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: abd55399ef780df945a2d643940a71425d085692
 
 
 ---
@@ -101,7 +101,7 @@ PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーシ
 
 ディレクトリ パスを作成した後、ファイルを読み書きする通常のファイル I/O 操作を使用できます。
 
-Web アプリ拡張機能に関して注意する 1 つの点は、内部リンクの処理に関係しています。  Web アプリ上の内部リンクに対応する絶対パスを指定した HTML ファイル内で任意のリンクを使用している場合は、それらのリンクの先頭に、ルートとして拡張機能名を追加する必要があります。 拡張機能にとってルートは、"/" のみではなく、"/`[your-extension-name]`/" になったため、このような指定が必要です。したがって、すべての内部リンクも同様に更新する必要があります。 たとえば、コード内に次のリンクが含まれているとします。
+Web アプリ拡張機能に関して注意する&1; つの点は、内部リンクの処理に関係しています。  Web アプリ上の内部リンクに対応する絶対パスを指定した HTML ファイル内で任意のリンクを使用している場合は、それらのリンクの先頭に、ルートとして拡張機能名を追加する必要があります。 拡張機能にとってルートは、"/" のみではなく、"/`[your-extension-name]`/" になったため、このような指定が必要です。したがって、すべての内部リンクも同様に更新する必要があります。 たとえば、コード内に次のリンクが含まれているとします。
 
 `"<a href="/Home/Settings">PHP Settings</a>"`
 
@@ -169,7 +169,7 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 開発や調査の際に、`WEBSITE_PRIVATE_EXTENSIONS` キーと値 `0` を使用したアプリ設定を追加して、Web アプリのすべてのプライベート (プレインストールされていない) 拡張を無効にすることはできません。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -183,6 +183,6 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

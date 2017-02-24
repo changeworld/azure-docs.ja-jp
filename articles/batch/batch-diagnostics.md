@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch 診断ログ | Microsoft Docs"
+title: "Batch イベントの診断ログの有効化 - Azure | Microsoft Docs"
 description: "プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 02/01/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
+ms.sourcegitcommit: 4b8343ac07aa7b2c0771a723306cf1f875cb6147
+ms.openlocfilehash: aeba32d62458f948c7aa99294c90519979924d57
 
 
 ---
@@ -93,7 +93,7 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 * [Azure 診断ログを Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
   非常に拡張性の高いデータ イングレス サービスである Event Hubs に Batch 診断イベントをストリームします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。
-* [Log Analytics を使用した Azure 診断ログの分析](../log-analytics/log-analytics-azure-storage-json.md)
+* [Log Analytics を使用した Azure 診断ログの分析](../log-analytics/log-analytics-azure-storage.md)
   
   診断ログを Log Analytics に送信して、Operations Management Suite (OMS) ポータルで分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
@@ -108,6 +108,6 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

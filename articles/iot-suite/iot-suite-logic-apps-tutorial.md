@@ -4,7 +4,7 @@ description: "ビジネス プロセスのための Azure IoT Suite への Logic
 services: 
 suite: iot-suite
 documentationcenter: 
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2016
-ms.author: araguila
+ms.date: 02/08/2017
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
    
     ![](media/iot-suite-logic-apps-tutorial/logicappsdesigner.png)
 6. **[要求]** を選択します。 この操作によって、特定の JSON 形式のペイロードを含む受信 HTTP 要求がトリガーとして機能するようになります。
-7. 要求本文の JSON スキーマには、以下を貼り付けます。
+7. 要求本文の JSON スキーマには、以下のコードを貼り付けます。
    
     ```
     {
@@ -136,7 +136,7 @@ ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
    ビルド スクリプトを実行する場合は、ソリューションのプロビジョニング時に使用したものと同じ Azure アカウント、サブスクリプション、リージョン、および Active Directory インスタンスを必ず使用してください。
 
 ## <a name="see-your-logic-app-in-action"></a>Logic App の動作を確認する
-リモート監視構成済みソリューションには、ソリューションのプロビジョニング時に既定で 2 つのルールが設定されます。 以下のルールは両方とも **SampleDevice001** デバイスに対するものです。
+リモート監視構成済みソリューションには、ソリューションのプロビジョニング時に既定で&2; つのルールが設定されます。 以下のルールは両方とも **SampleDevice001** デバイスに対するものです。
 
 * 気温 > 38.00
 * 湿度 > 48.00
@@ -172,6 +172,6 @@ ms.openlocfilehash: a010e0dff76390020b74ada6d6144e411e304268
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

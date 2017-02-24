@@ -1,6 +1,6 @@
 ---
-title: "Web テーブルからのデータの移動 | Microsoft Docs"
-description: "Azure Data Factory を使用してオンプレミスのテーブルからデータを移動する方法を説明します。"
+title: "Azure Data Factory を使用した Web テーブルからのデータ移動 | Microsoft Docs"
+description: "Azure Data Factory を使用して Web ページのテーブルからデータを移動する方法を説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
-ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
 
 
 ---
@@ -233,7 +233,7 @@ WebSource でサポートされるプロパティの一覧については、 [We
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |データセットの型。  **データセット** |はい |
+| type |データセットの型。 **データセット** |はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
@@ -299,6 +299,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

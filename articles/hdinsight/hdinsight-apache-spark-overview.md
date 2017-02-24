@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Apache Spark の概要 | Microsoft Docs"
+title: "Azure HDInsight での Apache Spark の概要 | Microsoft Docs"
 description: "HDInsight での Apache Spark の概要およびアプリケーションで HDInsight の Spark を使用するシナリオです。"
 services: hdinsight
 documentationcenter: 
@@ -16,22 +16,23 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
-ms.openlocfilehash: fe40bc372a63735b0130bcbb115c312fa2e45fa6
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
 
 
 ---
-# <a name="overview-apache-spark-on-hdinsight-linux"></a>概要: HDInsight Linux での Apache Spark
+# <a name="overview-apache-spark-on-hdinsight"></a>概要: HDInsight での Apache Spark
+
 <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。 Spark 処理エンジンは、速度、使いやすさ、高度な分析用に作成されています。 Spark のメモリ内の計算能力により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 また、Spark は Azure BLOB ストレージ (WASB) と互換性があるので、Azure に格納されている既存データを Spark で簡単に処理できます。
 
-HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約 10 分です。 処理対象のデータは、Azure BLOB ストレージに格納されます。 [HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事を参照してください。
+HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight で Spark クラスターを作成するのにかかる時間はわずか約&10; 分です。 処理対象のデータは、Azure BLOB ストレージに格納されます。 [HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事を参照してください。
 
 ![Azure HDInsight での Apache Spark](./media/hdinsight-apache-spark-overview/hdispark.architecture.png "Azure HDInsight での Apache Spark")
 
-**Azure HDInsight での Apache Spark の概要** 「 [クイック スタート: HDInsight Linux での Spark クラスターの作成と Jupyter を使用したサンプル アプリケーションの実行](hdinsight-apache-spark-jupyter-spark-sql.md)」をご覧ください。
+**Azure HDInsight での Apache Spark の概要** [HDInsight での Spark クラスターの作成と Jupyter を使用したサンプル アプリケーションの実行](hdinsight-apache-spark-jupyter-spark-sql.md)に関するクイック スタートを参照してください。
 
 > [!NOTE]
-> 既知の問題と現在のリリースでの制限事項の一覧については、「 [Azure HDInsight の Apache Spark の既知の問題 (Linux)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+> 現在のリリースでの既知の問題と制限事項の一覧については、[Azure HDInsight における Apache Spark の既知の問題](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 > 
 > 
 
@@ -115,6 +116,6 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

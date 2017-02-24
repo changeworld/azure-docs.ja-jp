@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array の StorSimple ストレージ アカウント資格情報を管理する | Microsoft Docs"
-description: "StorSimple Manager の [構成] ページを使用して、StorSimple Virtual Array に関連付けられたストレージ アカウント資格情報を追加、編集、削除、およびセキュリティ キーのローテーションを行う方法について説明します。"
+title: "StorSimple Virtual Array ストレージ アカウントの資格情報の管理 | Microsoft Docs"
+description: "StorSimple デバイス マネージャーの [構成] ページを使用して、StorSimple Virtual Array に関連付けられたストレージ アカウント資格情報を追加、編集、削除、およびセキュリティ キーのローテーションを行う方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: fe38d4239c26f81aff0108fe6110325a5230c12b
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 6df75f229b95de99fb7f97714336fdc857e672eb
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のストレージ アカウント資格情報を管理する
@@ -47,7 +47,7 @@ StorSimple Virtual Array の StorSimple デバイス マネージャー サー�
 * ストレージ アカウントの資格情報を削除する
 
 ## <a name="types-of-storage-account-credentials"></a>ストレージ アカウントの資格情報の種類
-StorSimple デバイスで使用できるストレージ アカウント資格情報には、次の 3 つの種類があります。
+StorSimple デバイスで使用できるストレージ アカウント資格情報には、次の&3; つの種類があります。
 
 * **自動生成されたストレージ アカウント資格情報** - 名前のとおり、この種のストレージ アカウント資格情報は、サービスが最初に作成されるときに自動的に生成されます。 このストレージ アカウント資格情報の作成方法の詳細については、[新しいサービスの作成](storsimple-virtual-array-manage-service.md#create-a-service)に関するトピックをご覧ください。
 * **サービス サブスクリプションのストレージ アカウント資格情報** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウント資格情報です。 このストレージ アカウントの作成方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
@@ -154,6 +154,6 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,26 +1,27 @@
 ---
 title: "Azure Portal を使用した Azure SQL Database の管理 | Microsoft Docs"
-description: "Azure ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。"
+description: "Azure Portal を使用して、クラウド内のリレーショナル データベースを管理する方法に関するクイック リファレンスです。"
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 3a56e9de-c21a-40ba-9a35-958172cb4e5b
 ms.service: sql-database
+ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
-ms.date: 09/19/2016
-ms.author: sstein
+ms.date: 01/10/2017
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
+ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
+ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 
 
 ---
-# <a name="managing-azure-sql-databases-using-the-azure-portal"></a>Azure ポータルを使用した Azure SQL データベースの管理
+# <a name="manage-azure-sql-databases-using-the-azure-portal"></a>Azure Portal を使用した Azure SQL データベースの管理
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-database-manage-portal.md)
 > * [SSMS](sql-database-manage-azure-ssms.md)
@@ -29,6 +30,9 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 > 
 
 [Azure Portal](https://portal.azure.com/) では、Azure SQL データベースと Azure SQL サーバーを作成、監視、管理できます。 この記事では、一般的なタスクを紹介し、より詳しい情報へのリンクを示します。
+
+> [!TIP]
+> サーバーの作成、サーバーベースのファイアウォールの作成、サーバー プロパティの表示、SQL Server Management Studio を使用した接続、master データベースに対するクエリ実行、サンプル データベースと空のデータベースの作成、データベース プロパティに対するクエリ実行、SQL Server Management Studio を使用した接続、およびサンプル データベースに対するクエリ実行の方法を示すチュートリアルについては、[入門用チュートリアル](sql-database-get-started.md)を参照してください。
 
 ## <a name="view-your-azure-sql-databases-servers-and-pools"></a>Azure SQL データベース、サーバー、プールの表示
 使用可能な SQL Database サービスを表示するには、**[More services (その他のサービス)]** をクリックし、検索ボックスに「**SQL**」と入力します。
@@ -46,7 +50,7 @@ ms.openlocfilehash: bb40c67d6b355fd2fe0799c781a28657f24f825d
 ![SQL Server](./media/sql-database-manage-portal/sql-servers.png)
 
 ## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>SQL エラスティック プールを作成または表示する方法
-**[SQL 可変プール]** ブレードを開くには、**[SQL 可変プール]** をクリックし、対象のプールをクリックします。または、**[+追加]** をクリックしてプールを作成します。 詳細については、[Azure Portal を使用した Elastic Database プールの作成](sql-database-elastic-pool-create-portal.md)に関するページをご覧ください。
+**[SQL 可変プール]** ブレードを開くには、**[SQL 可変プール]** をクリックし、対象のプールをクリックします。または、**[+追加]** をクリックしてプールを作成します。 詳細については、[Azure Portal を使用したエラスティック プールの作成](sql-database-elastic-pool-create-portal.md)に関するページを参照してください。
 
 ![SQL elastic pools](./media/sql-database-manage-portal/elastic-pools.png)
 
@@ -88,8 +92,8 @@ SQL データベースのパフォーマンス特性を監視および改善す�
 ## <a name="how-do-i-configure-geo-replication"></a>geo レプリケーションを構成する方法
 SQL データベースの geo レプリケーションを設定するには、**[SQL Database]** ブレードで **[geo レプリケーション]** をクリックします。 詳細については、「 [Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)」を参照してください。
 
-## <a name="how-do-i-failover-to-a-geo-replicated-sql-database"></a>geo レプリケートされた SQL データベースにフェールオーバーする方法
-geo レプリケートされたセカンダリにフェールオーバーするには、**[SQL Database]** ブレードで **[geo レプリケーション]** をクリックし、**[フェールオーバー]** をクリックします。 詳細については、「 [Azure Portal を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)」を参照してください。
+## <a name="how-do-i-fail-over-to-a-geo-replicated-sql-database"></a>geo レプリケーション対応の SQL データベースにフェールオーバーする方法
+geo レプリケーション対応のセカンダリにフェールオーバーするには、**[SQL データベース]** ブレードで **[geo レプリケーション]** をクリックし、**[フェールオーバー]** をクリックします。 詳細については、「 [Azure Portal を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)」を参照してください。
 
 ## <a name="how-do-i-copy-a-sql-database"></a>SQL データベースをコピーする方法
 SQL データベースをコピーするには、**[SQL Database]** ブレードで **[コピー]** をクリックします。 詳細については、「 [Azure Portal を使用した Azure SQL Database のコピー](sql-database-copy-portal.md)」を参照してください。
@@ -102,7 +106,7 @@ SQL データベースの BACPAC を作成するには、**[SQL Database]** ブ�
 ![SQL database export](./media/sql-database-manage-portal/sql-database-export.png)
 
 ## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>SQL データベースを過去のある時点に復元する方法
-SQL データベースを復元するには、**[SQL Database]** ブレードで **[復元]** をクリックします。 詳細については、「 [Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)」を参照してください。
+SQL データベースを復元するには、**[SQL Database]** ブレードで **[復元]** をクリックします。 詳細については、「 [Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore.md)」を参照してください。
 
 ![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-restore.png)
 
@@ -121,11 +125,11 @@ SQL Database を削除するには、**[SQL Database]** ブレードで **[削�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [SQL Database](sql-database-technical-overview.md)
-* [Azure ポータルを使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)
+* [Azure Portal を使用したエラスティック プールの監視と管理](sql-database-elastic-pool-manage-portal.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

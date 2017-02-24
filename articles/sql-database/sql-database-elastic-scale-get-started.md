@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e54d6ac95446f10270d786af87342bbd1ac46504
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
 
 
 ---
@@ -103,6 +103,6 @@ Elastic Database ツールの詳細については、以下のページを参照
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

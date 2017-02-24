@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric の Reliable Services の構成の概要 | Microsoft Docs"
+title: "信頼性の高い Azure マイクロサービスを構成する | Microsoft Docs"
 description: "Azure Service Fabric のステートフル Reliable Services を構成する方法について説明します。"
 services: Service-Fabric
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/18/2016
+ms.date: 1/4/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3be308b94e57a52bb054c2404607ef68a4650532
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 438ecec47e35619442ed2fdad4e835a674e1a2dc
 
 
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
-Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
+Reliable Services の構成設定には&2; つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう&1; つは特定の Reliable Services に固有の設定です。
 
 ## <a name="global-configuration"></a>グローバル構成
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
@@ -178,6 +178,6 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

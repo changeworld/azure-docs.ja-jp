@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: c5df6d998812568c764ccb6914b3c81fe4e568ec
-ms.openlocfilehash: d9d9630487f9eeb381198230a20d01c1c5f6678d
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
 
 ---
 
@@ -33,14 +33,14 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 ## <a name="comparison-with-the-azure-traffic-manager-classic-api"></a>Azure Traffic Manager クラシック API との比較
 
-Azure Resource Manager による Traffic Manager のサポートでは、クラシック デプロイ モデルとは異なる用語を使用します。 次の表は、Resource Manager と従来の用語との違いを示しています。
+Azure Resource Manager による Traffic Manager のサポートでは、クラシック デプロイ モデルとは異なる用語を使用します。 次の表は、Resource Manager とクラシック モデルの用語の違いを示しています。
 
 | Resource Manager の用語 | クラシックの用語 |
 | --- | --- |
 | トラフィック ルーティング方法 |負荷分散方法 |
-| 優先順位メソッド |フェールオーバー メソッド |
-| 加重メソッド |ラウンド ロビン方式 |
-| パフォーマンス メソッド |パフォーマンス メソッド |
+| 優先順位方式 |フェールオーバー方式 |
+| 重み付け方式 |ラウンド ロビン方式 |
+| パフォーマンス方式 |パフォーマンス方式 |
 
 よくある誤解を減らし、より分かりやすくするために、お客様からのフィードバックに従って用語を変更しました。 機能に違いはありません。
 
@@ -52,7 +52,7 @@ Web アプリの 'AzureEndpoints' タイプのエンドポイントを参照す�
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+* [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -342,6 +342,6 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

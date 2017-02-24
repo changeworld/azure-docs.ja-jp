@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: c4983024e5f5902620c0be7b422bc3d1eaf4a36f
@@ -41,19 +41,19 @@ ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
 このセクションでは、Zendesk のアプリケーション統合を有効にする方法について説明します。
 
 ### <a name="to-enable-the-application-integration-for-zendesk-perform-the-following-steps"></a>Zendesk のアプリケーション統合を有効にするには、次の手順を実行します。
-1. Microsoft Azure 管理ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
+1. Azure 管理ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-zendesk-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-zendesk-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-zendesk-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-zendesk-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-zendesk-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-zendesk-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -75,23 +75,23 @@ Zendesk にシングル サインオンを構成するには、証明書から�
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順に従います。
 1. Azure AD ポータルの **[Zendesk]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773086.png "Single sign-on")
+    ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773086.png "シングル サインオン")
 
 2. **[ユーザーの Zendesk へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Configure single sign-on")
 
 3. **[アプリケーション URL の構成]** ページで、次の手順を実行します。
    
     ![アプリケーション URL の構成](./media/active-directory-saas-zendesk-tutorial/IC773088.png "Configure app URL")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Zendesk サインイン URL]** ボックスに、`https://<tenant-name>.zendesk.com` という形式で URL を入力します。
+    a. **[Zendesk サインイン URL]** ボックスに、`https://<tenant-name>.zendesk.com` という形式で URL を入力します。
    
     b. **[次へ]**をクリックします。
 
 4. **[Zendesk でのシングル サインオンの構成]** ページで **[証明書のダウンロード]** をクリックし、証明書ファイルをローカル コンピューターに保存します。
    
-    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Configure single sign-on")
 
 5. 別の Web ブラウザー ウィンドウで、Zendesk 企業サイトに管理者としてログインします。
 
@@ -99,7 +99,7 @@ Zendesk にシングル サインオンを構成するには、証明書から�
 
 7. 左側のナビゲーション ウィンドウで、**[設定]**、**[セキュリティ]** の順にクリックします。
    
-    ![セキュリティ](./media/active-directory-saas-zendesk-tutorial/IC773089.png "Security")
+    ![Security (セキュリティ)](./media/active-directory-saas-zendesk-tutorial/IC773089.png "Security")
 
 8. **[セキュリティ]** ページで、**[管理者とエージェント]** タブをクリックします。
 
@@ -109,7 +109,7 @@ Zendesk にシングル サインオンを構成するには、証明書から�
 
 11. Azure Portal で、**[Zendesk でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** テキストボックスに貼り付けます。
     
-    ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773090.png "Single sign-on")
+    ![シングル サインオン](./media/active-directory-saas-zendesk-tutorial/IC773090.png "シングル サインオン")
 
 12. エクスポートした証明書から **[拇印]** の値をコピーし、**[証明書の指紋]** ボックスに貼り付けます。
     
@@ -122,7 +122,7 @@ Zendesk にシングル サインオンを構成するには、証明書から�
 
 14. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![Configure single sign-on](./media/active-directory-saas-zendesk-tutorial/IC773093.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-zendesk-tutorial/IC773093.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが **Zendesk** にログインできるようにするには、ユーザーを **Zendesk** にプロビジョニングする必要があります。  
@@ -135,10 +135,10 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
 
 3. **[ユーザー]** タブを選択し、**[追加]** をクリックします。
    
-    ![ユーザーの追加](./media/active-directory-saas-zendesk-tutorial/IC773632.png "Add user")
+    ![ユーザーの追加](./media/active-directory-saas-zendesk-tutorial/IC773632.png "ユーザーの追加")
 4. プロビジョニングする既存の Azure AD アカウントの電子メール アドレスを入力し、 **[追加]**をクリックします。
    
-    ![新しいユーザー](./media/active-directory-saas-zendesk-tutorial/IC773633.png "New user")
+    ![New user](./media/active-directory-saas-zendesk-tutorial/IC773633.png "New user")
 
 > [!NOTE]
 > Zendesk から提供されている他の Zendesk ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -153,7 +153,7 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
 
 2. **Zendesk** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-zendesk-tutorial/IC773094.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-zendesk-tutorial/IC773094.png "Assign users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
@@ -164,6 +164,6 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

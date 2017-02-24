@@ -5,18 +5,17 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: markusvi
+ms.date: 01/10/2017
+ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 003e75d1b3576a6b882c220cded0c30dea44c78f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4b95782793956470fd147a98c17759a1a1a3a0de
 
 
 ---
@@ -43,7 +42,7 @@ ms.openlocfilehash: 003e75d1b3576a6b882c220cded0c30dea44c78f
 
 つまり、スコープ グループは OR でまとめられたもの、スコープ グループ内の句は AND でまとめられたものと考えることができます。たとえば、以下のスコープ フィルターがあるとします。
 
-![スコープ グループ名][2]  
+![スコープ グループ名][3]  
 
 このスコープ フィルターに従うと、ユーザーは、プロビジョニングされるために次の条件を満たす必要があります。
 
@@ -63,10 +62,10 @@ ms.openlocfilehash: 003e75d1b3576a6b882c220cded0c30dea44c78f
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png
 [2]: ./media/active-directory-saas-scoping-filters/ic782812.png
-[3]: ./active-directory-saas-scoping-filters/ic782813.png
+[3]: ./media/active-directory-saas-scoping-filters/ic782813.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

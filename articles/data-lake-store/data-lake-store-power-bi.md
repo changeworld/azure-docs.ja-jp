@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2cd2ef87032d1691f2c56a9da44ce29ccb4e9963
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: f965e3a5067dd8dd2ac6dc29446c7f5b50cdd450
 
 
 ---
@@ -34,64 +34,64 @@ ms.openlocfilehash: 2cd2ef87032d1691f2c56a9da44ce29ccb4e9963
 1. コンピューターで Power BI Desktop を起動します。
 2. **[ホーム]** リボンの **[データの取得]** をクリックしてから [詳細] をクリックします。 **[データの取得]** ダイアログ ボックスで、**[Azure]**、**[Azure Data Lake Store]**、**[接続]** の順にクリックします。
    
-    ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Connect to Data Lake Store")
+    ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Store に接続する")
 3. 開発段階にあるコネクタに関するダイアログ ボックスが表示された場合は、続行することを選択します。
 4. **[Microsoft Azure Data Lake Store]** ダイアログ ボックスで、Data Lake Store アカウントの URL を指定してから **[OK]** をクリックします。
    
-    ![Data Lake Store の URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL for Data Lake Store")
+    ![Data Lake Store の URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Store の URL")
 5. 次のダイアログ ボックスで、 **[サインイン]** をクリックして Data Lake Store アカウントにサインインします。 組織のサインイン ページにリダイレクトされます。 画面の指示に従ってアカウントにサインインします。
    
-    ![Data Lake Store にサインインする](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Sign into Data Lake Store")
+    ![Data Lake Store にサインインする](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Data Lake Store にサインインする")
 6. 正常にサインインしたら、 **[接続]**をクリックします。
    
-    ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Connect to Data Lake Store")
+    ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Store に接続する")
 7. 次のダイアログ ボックスに、Data Lake Store アカウントにアップロードしたファイルが表示されます。 情報を確認してから **[ロード]**をクリックします。
    
-    ![Data Lake Store からデータをダウンロードする](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Load data from Data Lake Store")
+    ![Data Lake Store からデータを読み込む](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Store からデータを読み込む")
 8. データが Power BI に正常に読み込まれたら、 **[フィールド]** タブに以下のフィールドが表示されます。
    
-    ![インポートされたフィールド](./media/data-lake-store-power-bi/imported-fields.png "Imported fields")
+    ![インポートされたフィールド](./media/data-lake-store-power-bi/imported-fields.png "インポートされたフィールド")
    
     ただし、ここではデータを視覚化して分析するために、以下のフィールドごとにデータを使用可能にします。
    
-    ![必要なフィールド](./media/data-lake-store-power-bi/desired-fields.png "Desired fields")
+    ![必要なフィールド](./media/data-lake-store-power-bi/desired-fields.png "必要なフィールド")
    
     次の手順では、必要な形式でインポートされたデータを変換するためにクエリを更新します。
 9. **[ホーム]** リボンの **[クエリの編集]** をクリックします。
    
-    ![[クエリの編集]](./media/data-lake-store-power-bi/edit-queries.png "Edit queries")
+    ![クエリの編集](./media/data-lake-store-power-bi/edit-queries.png "クエリの編集")
 10. クエリ エディターで、**[コンテンツ]** 列の下にある **[バイナリ]** をクリックします。
     
-    ![[クエリの編集]](./media/data-lake-store-power-bi/convert-query1.png "Edit queries")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query1.png "クエリの編集")
 11. アップロードした **Drivers.txt** ファイルを表すファイル アイコンが表示されます。 このファイルを右クリックしてから **[CSV]**をクリックします。    
     
-    ![[クエリの編集]](./media/data-lake-store-power-bi/convert-query2.png "Edit queries")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query2.png "クエリの編集")
 12. 出力は次のようになります。 これで、データは視覚エフェクトの作成に使用できる形式で利用できるようになりました。
     
-    ![[クエリの編集]](./media/data-lake-store-power-bi/convert-query3.png "Edit queries")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query3.png "クエリの編集")
 13. **[ホーム]** リボンで、**[閉じて適用]**、**[閉じて適用]** の順にクリックします。
     
-    ![[クエリの編集]](./media/data-lake-store-power-bi/load-edited-query.png "Edit queries")
+    ![クエリの編集](./media/data-lake-store-power-bi/load-edited-query.png "クエリの編集")
 14. クエリが更新されたら、 **[フィールド]** タブに、視覚エフェクトで使用可能な新しいフィールドが表示されます。
     
-    ![更新されたフィールド](./media/data-lake-store-power-bi/updated-query-fields.png "Updated fields")
+    ![更新されたフィールド](./media/data-lake-store-power-bi/updated-query-fields.png "更新されたフィールド")
 15. 特定の国の各都市のドライバーを示す円グラフを作成してみましょう。 これを行うには、以下のように選択します。
     
     1. [視覚エフェクト] タブで、円グラフのシンボルをクリックします。
        
-        ![円グラフを作成する](./media/data-lake-store-power-bi/create-pie-chart.png "Create pie chart")
+        ![円グラフを作成する](./media/data-lake-store-power-bi/create-pie-chart.png "円グラフを作成する")
     2. 使用する列は **Column 4** (都市名) と **Column 7** (国名) です。 以下のように、これらの列を **[フィールド]** タブから **[視覚エフェクト]** タブにドラッグします。
        
-        ![グラフを作成します](./media/data-lake-store-power-bi/create-visualizations.png "Create visualizations")
+        ![グラフの作成](./media/data-lake-store-power-bi/create-visualizations.png "グラフの作成")
     3. これで、円グラフの外観は以下のようになります。
        
-        ![円グラフ](./media/data-lake-store-power-bi/pie-chart.png "Create visualizations")
+        ![円グラフ](./media/data-lake-store-power-bi/pie-chart.png "グラフを作成する")
 16. これで、ページ レベル フィルターから特定の国を選択し、選択した国の各都市のドライバー数を確認できます。 たとえば、**[視覚エフェクト]** タブの **[ページ レベル フィルター]** で、**[ブラジル]** を選択します。
     
-    ![国を選択する](./media/data-lake-store-power-bi/select-country.png "Select a country")
+    ![国を選択する](./media/data-lake-store-power-bi/select-country.png "国を選択する")
 17. 円グラフが自動的に更新され、ブラジルの各都市のドライバーが表示されます。
     
-    ![国のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "Drivers per country")
+    ![国内のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "国ごとのドライバー")
 18. **[ファイル]** メニューの **[保存]** をクリックして、Power BI Desktop ファイルとして視覚エフェクトを保存します。
 
 ## <a name="publish-report-to-power-bi-service"></a>レポートを Power BI サービスに発行する
@@ -103,6 +103,6 @@ Power BI Desktop で視覚エフェクトを作成したら、Power BI サービ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

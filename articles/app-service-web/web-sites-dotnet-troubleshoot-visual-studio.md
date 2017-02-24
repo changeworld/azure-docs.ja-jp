@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 154d2cd9b7f4ea51d3fd4c1995b67a25816b28a2
-ms.openlocfilehash: 2f6a8a728448432678a0545acd879a4f66a28557
+ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
+ms.openlocfilehash: d22c9e2026c3efc63c5a3baa7ad4505aa269e31d
 
 
 ---
@@ -38,7 +38,7 @@ Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/f
 Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
-このチュートリアルでは、「[Azure と ASP.NET を使用する][GetStarted]」で設定した開発環境、Web プロジェクト、および Azure Web アプリケーションを使用します。 Web ジョブのセクションでは、「[Azure Web ジョブ SDK の使用][GetStartedWJ]」で作成したアプリケーションが必要です。
+このチュートリアルでは、[Azure と ASP.NET の使用][GetStarted]に関するページで設定した開発環境、Web プロジェクト、および Azure Web アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
 
@@ -60,7 +60,7 @@ Visual Studio は、 [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId
 
     Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 2. **サーバー エクスプローラー**で **[Azure]** を展開し、**[App Service]** を展開します。
-3. 「[Azure と ASP.NET を使用する][GetStarted]」で作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
+3. [Azure と ASP.NET の使用][GetStarted]に関するページで作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
 
     ![サーバー エクスプローラーの [設定の表示]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -117,9 +117,9 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
 
-このセクションでは、「[Azure Web サイトと ASP.NET を使用する][GetStarted]」」で作成したプロジェクトを使用してリモート デバッグを実行する方法を示します。
+このセクションでは、[Azure と ASP.NET の使用][GetStarted]に関するセクションで作成したプロジェクトを使用してリモート デバッグを実行する方法を示します。
 
-1. 「[Azure Web サイトと ASP.NET を使用するGetStarted][GetStarted]」で作成した Web プロジェクトを開きます。
+1. [Azure と ASP.NET の使用][GetStarted]に関するセクションで作成した Web プロジェクトを開きます。
 2. *Controllers\HomeController.cs* を開きます。
 3. `About()` メソッドを削除し、その位置に次のコードを挿入します。
 
@@ -131,7 +131,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
         }
 4. `ViewBag.Message` の行に[ブレークポイントを設定](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)します。
 5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
-6. **[プロファイル]** ボックスの一覧から、「[Azure Web サイトと ASP.NET を使用する][GetStarted]」で使用したのと同じプロファイルを選択します。
+6. **[プロファイル]** ボックスの一覧から、[Azure と ASP.NET の使用][GetStarted]に関するページで使用したものと同じプロファイルを選択します。
 7. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、**[発行]** をクリックします。
 
     ![デバッグ モードでの発行](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
@@ -165,7 +165,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 リモート デバッグは、継続的な Web ジョブでのみ動作します。 スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
 
-1. 「[Azure Web ジョブ SDK の使用][GetStartedWJ]」で作成した Web プロジェクトを開きます。
+1. [Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成した Web プロジェクトを開きます。
 2. ContosoAdsWebJob プロジェクトで、 *Functions.cs*を開きます。
 3. `GnerateThumbnail` メソッドの最初のステートメントに[ブレークポイントを設定](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)します。
 
@@ -209,7 +209,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 ## <a name="notes-about-remote-debugging"></a>リモート デバッグに関する注意
 * 運用環境におけるデバッグ モードの実行はお勧めできません。 運用環境の Web アプリケーションが複数のサーバー インスタンスにスケール アウトされていない場合、デバッグを行うと、Web サーバーが他の要求に応答できなくなります。 しかし、Web サーバーのインスタンスが複数存在する場合、デバッガーのアタッチ先となるインスタンスは無作為に決定されるため、そのインスタンスに後続のブラウザーの要求を確実に渡すことができません。 また、運用環境にデバッグ ビルドをデプロイすることも一般的ではありません。リリース ビルドに対してはコンパイラが最適化を行うため、ソース コードの状況を行レベルで把握することは不可能です。 運用環境の問題をトラブルシューティングするのに最も適しているリソースは、アプリケーション トレースと Web サーバーのログです。
 * リモート デバッグ時、ブレークポイントで長時間停止させることは避けてください。 数分以上停止しているプロセスは、応答していないプロセスと見なされ、Azure によりシャットダウンされます。
-* デバッグ中は、サーバーから Visual Studio にデータが送信されるため、帯域幅の使用料に影響が及ぶ可能性があります。 帯域幅使用料については、 [Azure 料金計算ツール](/pricing/calculator/)を参照してください。
+* デバッグ中は、サーバーから Visual Studio にデータが送信されるため、帯域幅の使用料に影響が及ぶ可能性があります。 帯域幅使用料については、 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
 * *Web.config* ファイルの `compilation` 要素の `debug` 属性が true に設定されていることを確認します。 デバッグ ビルド構成で発行するときは、true が既定値です。
 
         <system.web>
@@ -226,11 +226,11 @@ Azure の Web アプリケーションで動作する ASP.NET アプリケーシ
 * **アプリケーション トレース ログ**<br/>
   アプリケーションが [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
 * **Web サーバー ログ**<br/>
-   Web サーバーは、Web アプリに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
+  Web サーバーは、Web アプリに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
 * **詳細なエラー メッセージ ログ**<br/>
-   失敗した HTTP 要求 (状態コードコード 400 以上の要求) について、より詳しい情報を記した HTML ページが Web サーバーによって作成されます。
+  失敗した HTTP 要求 (状態コードコード 400 以上の要求) について、より詳しい情報を記した HTML ページが Web サーバーによって作成されます。
 * **失敗した要求トレース ログ**<br/>
-   失敗した HTTP 要求についての詳しいトレース情報を記録した XML ファイルが Web サーバーによって作成されます。 また、ブラウザーで XML の体裁を設定するための XSL ファイルも作成されます。
+  失敗した HTTP 要求についての詳しいトレース情報を記録した XML ファイルが Web サーバーによって作成されます。 また、ブラウザーで XML の体裁を設定するための XSL ファイルも作成されます。
 
 ログ出力は Web アプリケーションのパフォーマンスに影響を及ぼすため、Azure では、必要に応じてログの種類ごとにその有効と無効を切り替えることができるようになっています。 アプリケーション ログについては、特定の重大度レベルを超えるログだけを記録するように指定できます。 新しい Web アプリケーションを作成した時点ではすべてのログが既定で無効になります。
 
@@ -239,7 +239,7 @@ Azure の Web アプリケーションで動作する ASP.NET アプリケーシ
 ## <a name="a-nameapptracelogsacreate-and-view-application-trace-logs"></a><a name="apptracelogs"></a>アプリケーションのトレース ログの作成と表示
 このセクションでは、次のタスクを実行します。
 
-* 「[Azure Websites と ASP.NET を使用する][GetStarted]」で作成した Web プロジェクトにトレース ステートメントを追加します。
+* [Azure と ASP.NET の使用][GetStarted]に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
@@ -570,7 +570,7 @@ Azure App Service の Web アプリのトラブルシューティングの詳細
 
 * [Web アプリを監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
 * [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
-* [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
+* [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
 
@@ -584,9 +584,9 @@ Visual Studio のデバッグ モードの使い方については、MSDN のト
 ### <a name="remote-debugging-in-azure"></a>Azure でのリモート デバッグ
 Azure の Web アプリと Web ジョブのリモート デバッグの詳細については、以下のリソースを参照してください。
 
-* [Introduction to Remote Debugging Azure App Service Web Apps (Azure App Service Web Apps のリモート デバッグの概要)](/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
-* [Introduction to Remote Debugging Azure App Service Web Apps part 2 - Inside Remote debugging (Azure App Service Web Apps のリモート デバッグの概要 2 - リモート デバッグの内部処理)](/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Introduction to Remote Debugging on Azure App Service Web Apps part 3 - Multi-Instance environment and GIT (Azure App Service Web Apps のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [Introduction to Remote Debugging Azure App Service Web Apps (Azure App Service Web Apps のリモート デバッグの概要)](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
+* [Introduction to Remote Debugging Azure App Service Web Apps part 2 - Inside Remote debugging (Azure App Service Web Apps のリモート デバッグの概要 2 - リモート デバッグの内部処理)](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Introduction to Remote Debugging on Azure App Service Web Apps part 3 - Multi-Instance environment and GIT (Azure App Service Web Apps のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs Debugging (Web ジョブのデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 Web アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は [Visual Studio での .NET のデバッグに関するページ](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)を参照してください。
@@ -597,11 +597,11 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 * [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。<br>
   Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
 * [ASP.NET トレース](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
-   最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
+  最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
 * [トレース リスナー](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
   トレース リスナーについて書かれていますが、[WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
 * [チュートリアル: ASP.NET トレースと System.Diagnostics トレースの統合](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
-   これも古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
+  これも古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
 * [ASP.NET MVC Razor ビューでのトレース](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](http://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
@@ -615,9 +615,9 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
             throw;
         }
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
-   このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
+  このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
 * [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
-   Scott Hanselman と David Ebbo によるビデオ。
+  Scott Hanselman と David Ebbo によるビデオ。
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、 [ELMAH](http://nuget.org/packages/elmah/)のようなオープン ソースのログ記録フレームワークを使う方法があります。 詳細については、 [Scott Hanselman が ELMAH についてまとめたブログ記事](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を参照してください。
 
@@ -629,7 +629,7 @@ Web サーバーのログの分析の詳細については、次のリソース�
 * [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Web サーバーのログ (*.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
-   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
+  Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
 * [LogParser の使用に関して Robert McMurray が執筆したブログ記事](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP 状態コード](http://support.microsoft.com/kb/943891)
 
@@ -641,6 +641,6 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
-> * [ポータル](../articles/virtual-network/virtual-network-manage-nsg-arm-portal.md)
-> * [PowerShell](../articles/virtual-network/virtual-network-manage-nsg-arm-ps.md)
-> * [Azure CLI](../articles/virtual-network/virtual-network-manage-nsg-arm-cli.md)
-> 
-> 
+- [ポータル](../articles/virtual-network/virtual-network-manage-nsg-arm-portal.md)
+- [PowerShell](../articles/virtual-network/virtual-network-manage-nsg-arm-ps.md)
+- [Azure CLI](../articles/virtual-network/virtual-network-manage-nsg-arm-cli.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!--HONumber=Nov16_HO3-->
+
+

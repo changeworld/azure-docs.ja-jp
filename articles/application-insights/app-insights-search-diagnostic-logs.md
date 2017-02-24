@@ -1,5 +1,5 @@
 ---
-title: "Application Insights での ASP.NET のログ、例外、カスタム診断"
+title: "Azure Application Insights での ASP.NET のログと診断 | Microsoft Docs"
 description: "要求、例外、(トレース、NLog、Log4Net を使用して生成された) ログを検索することにより、ASP.NET Web Apps の問題を診断します。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 04/08/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 
 ---
@@ -41,7 +41,7 @@ ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## <a name="a-nameeventsacustom-events"></a><a name="events"></a>カスタム イベント
-カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][メトリック]の両方に表示されます。 カスタム イベントは、デバイス、Web ページ、サーバー アプリケーションから送信できます。 これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
+カスタム イベントは、[診断検索][diagnostic]と[メトリック エクスプローラー][metrics]の両方に表示されます。 カスタム イベントは、デバイス、Web ページ、サーバー アプリケーションから送信できます。 これらは、診断の目的にも、[使用状況のパターンを理解する][track]ためにも利用できます。
 
 カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理をすることができます。
 
@@ -96,9 +96,9 @@ JavaScript at client
 ![](./media/app-insights-search-diagnostic-logs/appinsights-23-customevents-4.png)
 
 ## <a name="a-namepagesa-page-views"></a><a name="pages"></a> ページ ビュー
-ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][使用状況]に含まれる trackPageView() 呼び出しによって送信されます。 その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
+ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。 その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
 
-通常は各 HTML ページで 1 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
+通常は各 HTML ページで&1; 度呼び出されますが、複数の呼び出しを挿入できます。たとえば、シングル ページ アプリで、ユーザーがデータを取得するたびに新しいページを記録できます。
 
     appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm"); 
 
@@ -149,7 +149,7 @@ log4net または NLog を使用する場合:
 ### <a name="a-nameexceptionsaexceptions"></a><a name="exceptions"></a>例外
 Application Insights で例外レポートを取得すると、特に、失敗した要求と例外間をナビゲートして例外スタックを確認できるようになるため、非常に強力なエクスペリエンスが提供されます。
 
-場合によっては、例外が自動的にキャッチされるように、 [数行のコードを挿入][exceptions] する必要があります。
+場合によっては、例外が自動的にキャッチされるように、[数行のコードを挿入][exceptions]する必要があります。
 
 例外テレメトリを送信する明示的なコードの記述もできます。
 
@@ -217,9 +217,9 @@ VB
 診断検索を直接開き、例外でフィルター処理し、表示する例外の種類を選択することもできます。
 
 ### <a name="reporting-unhandled-exceptions"></a>ハンドルされていない例外のレポート
-Application Insights は可能な場合、[Status Monitor][redfield] と [Application Insights SDK][greenbrown] のどちらでインストルメントされたかにかかわらず、デバイス、[Web ブラウザー][使用状況]、Web サーバーから送信された、ハンドルされていない例外をレポートします。 
+Application Insights は可能な場合、[Status Monitor][redfield] と [Application Insights SDK][greenbrown] のどちらでインストルメントされたかにかかわらず、デバイス、[Web ブラウザー][usage]、Web サーバーから送信された、ハンドルされていない例外をレポートします。 
 
-ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。  すべての例外を確実に表示するために、小さな例外ハンドラーを記述する必要があります。 最良の対処方法は、テクノロジによって異なります。 詳細については、 [ASP.NET の例外テレメトリ][exceptions] に関するページをご覧ください。 
+ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。  すべての例外を確実に表示するために、小さな例外ハンドラーを記述する必要があります。 最良の対処方法は、テクノロジによって異なります。 詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページをご覧ください。 
 
 ### <a name="correlating-with-a-build"></a>ビルドとの関連付け
 診断ログを参照するとき、ソース コードは、現在のコードがデプロイされた後に変更されている可能性があります。
@@ -258,14 +258,14 @@ Application Insights をインストールしないでログ アダプターの 
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
 
 ### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
-各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは 7 日間保持されます。
+各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは&7; 日間保持されます。
 
 ### <a name="some-of-my-events-or-traces-dont-appear"></a>マイ イベントまたはトレースの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
 ## <a name="a-nameaddanext-steps"></a><a name="add"></a>次のステップ
 * [可用性と応答性のテストを設定する][availability]
-* [トラブルシューティング][qna]
+* [Troubleshooting][qna]
 
 <!--Link references-->
 
@@ -273,17 +273,17 @@ Application Insights をインストールしないでログ アダプターの 
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
 [greenbrown]: app-insights-asp-net.md
-[メトリック]: app-insights-metrics-explorer.md
+[metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
-[使用状況]: app-insights-web-track-usage.md
+[usage]: app-insights-web-track-usage.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 07/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9129eda8e4b3c3865878b8ceafb95a155ba02885
+ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
+ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
 
 
 ---
@@ -127,11 +127,19 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ![RBAC PowerShell - Remove-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
-カスタム ロールを作成するには、 `New-AzureRmRoleDefinition` コマンドを使用します。
+カスタム ロールを作成するには、 ```New-AzureRmRoleDefinition``` コマンドを使用します。 ロールを構成する方法は&2; つあります。PSRoleDefinitionObject を使用するか JSON テンプレートを使用します。 
 
-PowerShell を使用してカスタム ロールを作成するときは、いずれかの [組み込みロール](role-based-access-built-in-roles.md)を土台とする必要があります。 その属性を編集し、必要に応じて *Actions*、*notActions*、*スコープ*を追加して、変更内容を新しいロールとして保存します。
+## <a name="get-actions-from-particular-resource-provider"></a>特定のリソース プロバイダーからアクションを取得する
+カスタム ロールを最初から作成するときは、リソース プロバイダーから可能なすべての操作を理解しておくことが重要です。
+これは、```Get-AzureRMProviderOperation``` コマンドを使って実現できます。 たとえば、仮想マシンで使用可能なすべての操作を確認する場合、コマンドは次のようになります。
 
-以下の例では、"*仮想マシンの共同作業者*" ロールを土台として、"*仮想マシン オペレーター*" というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
+```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
+
+
+### <a name="create-role-with-psroledefinitionobject"></a>PSRoleDefinitionObject を使用したロールの作成
+PowerShell を使用してカスタム ロールを作成する場合は、ゼロから始めることも、[組み込みのロール](role-based-access-built-in-roles.md)を出発点として使用することもできます。ここに示す例では、後者の方法を使用しています。 その属性を編集し、必要に応じて *Actions*、*notActions*、*スコープ*を追加して、変更内容を新しいロールとして保存します。
+
+以下の例では、"*仮想マシンの共同作業者*" ロールを土台として、"*仮想マシン オペレーター*" というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは&2; つのサブスクリプションで使用できます。
 
 ```
 $role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
@@ -156,7 +164,37 @@ New-AzureRmRoleDefinition -Role $role
 
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
+### <a name="create-role-with-json-template"></a>JSON テンプレートを使用したロールの作成
+カスタム ロールのソース定義として JSON テンプレートを使用できます。 次の例では、ストレージと計算リソースへの読み取りアクセス、サポートへのアクセスを許可するカスタム ロールを作成し、そのロールを&2; つのサブスクリプションに追加します。 次の内容を持つ新しいファイル `C:\CustomRoles\customrole1.json` を作成します。 新しい ID が生成されるため、最初のロール作成では Id を `null` に設定してください。 
+
+```
+{
+  "Name": "Custom Role 1",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Allows for read access to Azure storage and compute resources and access to support",
+  "Actions": [
+    "Microsoft.Compute/*/read",
+    "Microsoft.Storage/*/read",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+  ]
+}
+```
+ロールをサブスクリプションに追加するには、次の PowerShell コマンドを実行します。
+```
+New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+```
+
 ## <a name="modify-a-custom-role"></a>カスタム ロールの修正
+カスタム ロールの作成と同様に、PSRoleDefinitionObject または JSON テンプレートを使用して既存のカスタム ロールを変更できます。
+
+### <a name="modify-role-with-psroledefinitionobject"></a>PSRoleDefinitionObject を使用したロールの変更
 カスタム ロールを修正するには、まず `Get-AzureRmRoleDefinition` コマンドを使用してロール定義を取得します。 次に、必要に応じてロール定義を変更します。 最後に、 `Set-AzureRmRoleDefinition` コマンドを使用して変更したロール定義を保存します。
 
 次の例では、 `Microsoft.Insights/diagnosticSettings/*` 操作が *仮想マシン オペレーター* カスタム ロールに追加されます。
@@ -175,11 +213,40 @@ Set-AzureRmRoleDefinition -Role $role
 Get-AzureRmSubscription - SubscriptionName Production3
 
 $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-$role.AssignableScopes.Add("/subscriptions/34370e90-ac4a-4bf9-821f-85eeedead1a2"
-Set-AzureRmRoleDefinition -Role $role)
+$role.AssignableScopes.Add("/subscriptions/34370e90-ac4a-4bf9-821f-85eeedead1a2")
+Set-AzureRmRoleDefinition -Role $role
 ```
 
 ![RBAC PowerShell - Set-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
+
+### <a name="modify-role-with-json-template"></a>JSON テンプレートを使用したロールの変更
+前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 JSON テンプレートを更新し、次のようにネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されないことに注意してください。つまり、ロールは、テンプレートに指定したとおりに表れます。 さらに、Id をロールの ID に更新する必要もあります。 この値が不明な場合は、`Get-AzureRmRoleDefinition` コマンドレットを使用してこの情報を取得できます。
+
+```
+{
+  "Name": "Custom Role 1",
+  "Id": "acce7ded-2559-449d-bcd5-e9604e50bad1",
+  "IsCustom": true,
+  "Description": "Allows for read access to Azure storage and compute resources and access to support",
+  "Actions": [
+    "Microsoft.Compute/*/read",
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+  ]
+}
+```
+
+既存のロールを更新するには、次の PowerShell コマンドを実行します。
+```
+Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+```
 
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
 カスタム ロールを削除するには、 `Remove-AzureRmRoleDefinition` コマンドを使用します。
@@ -216,6 +283,6 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

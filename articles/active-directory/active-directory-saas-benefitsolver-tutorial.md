@@ -43,14 +43,14 @@ ms.openlocfilehash: eb7dce1c0664e34c4946bb08f5b412e1e01c715d
 ### <a name="to-enable-the-application-integration-for-benefitsolver-perform-the-following-steps"></a>Benefitsolver のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "Add an application from gallerry")
@@ -72,20 +72,20 @@ Benefitsolver アプリケーションでは、特定の形式の SAML アサー
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **Benefitsolver** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Configure Single Sign-On")
 2. **[ユーザーの Benefitsolver へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Configure Single Sign-On")
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
    
-   ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
+   ![アプリケーションの設定の構成](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
    
    1. **[サインオン URL]** ボックスに、「**http://azure.benefitsolver.com**」と入力します。
    2. **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。  
-   3. **[次へ]** をクリックします。
+   3. **[次へ]**をクリックします。
 4. **[Benefitsolver でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターのローカルに保存します。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Configure Single Sign-On")
 5. ダウンロードしたメタデータ ファイルを Benefitsolver サポート チームに送信します。
    
    > [!NOTE]
@@ -95,7 +95,7 @@ Benefitsolver アプリケーションでは、特定の形式の SAML アサー
    > 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Configure Single Sign-On")
 7. 上部のメニューで、 **属性** to open the **SAML Token 属性** ダイアログを開きます。
    
    ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "Attributes")
@@ -132,7 +132,7 @@ Benefitsolver の場合、従業員のデータは、人事情報システムの
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **Benefitsolver** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "Assign Users")
+   ![ユーザーの割り当て](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Yes")
@@ -142,6 +142,6 @@ Benefitsolver の場合、従業員のデータは、人事情報システムの
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO5-->
 
 

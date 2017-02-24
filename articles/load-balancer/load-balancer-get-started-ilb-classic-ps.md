@@ -1,10 +1,10 @@
 ---
-title: "クラシック デプロイメント モデルで PowerShell を使用した内部ロード バランサーの作成 | Microsoft Docs"
+title: "Azure の内部ロード バランサーの作成 - PowerShell クラシック | Microsoft Docs"
 description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: sdwheeler
-manager: carmonm
+author: kumudd
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: sewhee
+ms.date: 01/23/2017
+ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 7268ab93a131096f8ae18bff6a1550b59cb18a2b
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: f701fb3564c62cf8088cc4362a10c5e2c2301ae6
 
 ---
 
@@ -31,7 +31,7 @@ ms.openlocfilehash: 7268ab93a131096f8ae18bff6a1550b59cb18a2b
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -113,7 +113,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 この構成は次のとおりです。
 
 * 仮想マシンをホストする既存のクラウド サービスの名前は mytestcloud です。
-* 既存の 2 つのデータベース サーバーの名前は DB1 と DB2 です。
+* 既存の&2; つのデータベース サーバーの名前は DB1 と DB2 です。
 * Web 層の Web サーバーは、プライベート IP アドレスを使用してデータベース層のデータベース サーバーに接続します。 仮想ネットワークに独自の DNS を使用し、内部ロード バランサー セットの A レコードを手動で登録することもできます。
 
 次のコマンドは、 **ILBset** という名前の新しい内部ロード バランサー インスタンスを構成し、2 つのデータベース サーバーに対応する仮想マシンにエンドポイントを追加します。
@@ -193,6 +193,6 @@ Get-Help Remove-AzureInternalLoadBalancer -full
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

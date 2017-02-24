@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー | Microsoft Docs"
+title: "StorSimple Virtual Array の障害復旧とデバイス フェールオーバー | Microsoft Docs"
 description: "StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 34de93b8133649aaedc3cb89a8cd478eda92c7aa
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
 
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
@@ -76,7 +76,7 @@ DR が始まる前に、事前チェックが実行されます。 事前チェ�
   
   * 有効な ACR 名。
   * 有効な IQN (最大 220 文字)。
-  * 有効な CHAP パスワード (12 ～ 16 文字)。
+  * 有効な CHAP パスワード (12 ～&16; 文字)。
 
 前の事前チェックのいずれかに問題があった場合、DR は続行できません。 問題を解決してから DR を再試行してください。
 
@@ -182,6 +182,6 @@ DR が開始された後、デバイスの復元が完了する前にクラウ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 476af10550075cde145a9cf2153330f063ad17b3
+ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
+ms.openlocfilehash: d4d9ed8380a0e8726fe2e2835e4b10fd262e1562
 
 
 ---
@@ -70,7 +70,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 2. 次のコードを使用して、Pig Latin ジョブをクラスターに送信します。
    
-        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'wasbs:///example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="wasbs:///example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
+        curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'/example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="/example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
    
     このコマンドで使用されるパラメーターの意味は次のとおりです。
    
@@ -98,18 +98,9 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 ## <a name="a-idresultsaview-results"></a><a id="results"></a>結果の表示
 
-ジョブのステータスが **SUCCEEDED** に変わったら、Azure Blob Storage からジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasbs:///example/pigcurl** になります。 このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/pigcurl** ディレクトリに保存されます。
+ジョブのステータスが **SUCCEEDED** に変わったら、クラスターが使用する既定のストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**/example/pigcurl** になります。 
 
-これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../xplat-cli-install.md)を使用します。 たとえば、 **example/pigcurl**内のファイルを一覧表示するには、次のコマンドを使用します。
-
-    azure storage blob list <container-name> example/pigcurl
-
-ファイルをダウンロードするには、次のコマンドを使用します。
-
-    azure storage blob download <container-name> <blob-name> <destination-file>
-
-> [!NOTE]
-> `-a` と `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。
+HDInsight のバッキング ストアは Azure Storage または Azure Data Lake Store のいずれかにでき、このいずれを使用するかによってデータにアクセスする方法は異なります。 Azure Storage および Azure Data Lake Store の使用方法について詳しくは、Linux ドキュメントの HDInsight の「[HDFS、Blob Storage、および Data Lake Store](hdinsight-hadoop-linux-information.md##hdfs-blob-storage-and-data-lake-store)」をご覧ください。
 
 ## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
 
@@ -131,6 +122,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

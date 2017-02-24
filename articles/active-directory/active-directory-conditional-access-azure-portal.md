@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2016
+ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0ecbaaf030e5c87ff05228af852477b865329596
-ms.openlocfilehash: 3b06c7c32c6ec27659365ca4da6193457fff7162
+ms.sourcegitcommit: 89d32955506afdfb9c45c5b0ce3d38d40f012e72
+ms.openlocfilehash: 570a0f0a0c0932a00bbe92b1e137951ceffcd660
 
 
 ---
@@ -42,7 +42,7 @@ ms.openlocfilehash: 3b06c7c32c6ec27659365ca4da6193457fff7162
 
 ![コントロール](./media/active-directory-conditional-access-azure-portal/10.png)
 
-この 2 回出現する “*this*” を現実世界の情報に置き換えれば、次のような一般的なポリシー ステートメントの例になります。
+この&2; 回出現する “*this*” を現実世界の情報に置き換えれば、次のような一般的なポリシー ステートメントの例になります。
 
 *請負業者が信頼されていないネットワークから会社のクラウド アプリにアクセスしようとしている場合は、アクセスをブロックします。*
 
@@ -64,7 +64,7 @@ Azure Active Directory の条件付きアクセスの文脈では、
 
 条件付きアクセス ポリシーでは、条件文が満たされた場合に何をすべきであるかをコントロールが定義します。  
 コントロールを使用して、アクセスをブロックするか、追加要件付きでアクセスを許可することができます。
-アクセスを許可するポリシーを構成するときは、少なくとも 1 つの要件を選択する必要があります。   
+アクセスを許可するポリシーを構成するときは、少なくとも&1; つの要件を選択する必要があります。   
 
 Azure Active Directory の現在の実装では、次の要件を構成できます。 
 
@@ -133,9 +133,9 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>ポリシーにユーザーを割り当てる必要がありますか。
 
-条件付きアクセス ポリシーを構成するときは、少なくとも 1 つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
+条件付きアクセス ポリシーを構成するときは、少なくとも&1; つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
 
-ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを 1 つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
+ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを&1; つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
 
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。
@@ -159,18 +159,13 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
  
-条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。ただし、このシナリオのサポートには制限があります。  
-Exchange ActiveSync が含まれているポリシーには、次の制限事項が適用されます。
+いいえ。現時点では、条件付きアクセス ポリシーで Exchange ActiveSync を使用することはできません。
 
-- **クラウド アプリ**の割り当てで、**[Exchange Online]** を選択します。
 
-- **コントロール**を設定する必要がある場合は、**[準拠デバイスが必要です]** のみを選択できます。 
- 
-    ![許可](./media/active-directory-conditional-access-azure-portal/22.png)
- 
-- **条件**を設定する必要がある場合は、**クライアント アプリ**のみを構成できます。   
+### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>多要素認証または準拠デバイスが必要な場合は、どうなりますか。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+現時点では、ユーザーは、デバイスに関係なく多要素認証が求められます。
+
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
@@ -201,6 +196,6 @@ Exchange ActiveSync が含まれているポリシーには、次の制限事項
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

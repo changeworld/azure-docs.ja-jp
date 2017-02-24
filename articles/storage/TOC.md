@@ -43,6 +43,14 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
+## ディスク ストレージ 
+### [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
+### [Azure CLI 2.0 (プレビュー) を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [PowerShell を使用して Windows VM に管理ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+### [Linux VM に管理ディスクを追加する](../virtual-machines/virtual-machines-linux-add-disk.md)
+### [Windows のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
+### [Linux のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+
 # 方法
 ## [ストレージ アカウントの作成](storage-create-storage-account.md)
 ## BLOB の使用
@@ -62,13 +70,21 @@
 ### [概要](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [Azure Files のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 ### [サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-## 仮想マシン ディスクの使用
+## ディスクの使用
+### [Windows VM 用のディスクと VHD](storage-about-disks-and-vhds-windows.md)
+### [Linux VM 用のディスクと VHD](storage-about-disks-and-vhds-linux.md)
+### [Azure Managed Disks の概要](storage-managed-disks-overview.md)
+### [Azure VM を Azure Managed Disks に移行する](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
+### [AWS やその他のプラットフォームから Managed Disks に移行する](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [Azure IaaS VM ディスクについてよく寄せられる質問](storage-faq-for-disks.md)
 ### Premium Storage
-#### [VM ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)
-#### [Premium Storage への移行](storage-migration-to-premium-storage.md)
+#### [VM ディスク向けの高パフォーマンス Premium Storage](storage-premium-storage.md)
 #### [高パフォーマンス用の設計](storage-premium-storage-performance.md)
 ### Standard Storage
-#### [増分スナップショットを使用した VM ディスクのバックアップ](storage-incremental-snapshots.md)
+#### [コスト効率に優れた Standard Storage および非管理対象と管理対象の VM ディスク](storage-standard-storage.md)
+### 非管理対象ディスクの使用
+#### [Premium Storage への移行](storage-migration-to-premium-storage.md)
+#### [増分スナップショットを使用した非管理対象 VM ディスクのバックアップ](storage-incremental-snapshots.md)
 ## 計画と設計
 ### [レプリケーション](storage-redundancy.md)
 ### [スケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md)
@@ -155,12 +171,12 @@
 ### [リソース マネージャー](/dotnet/api/microsoft.azure.management.storage)
 ### [データの移動](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [BLOB、キュー、テーブル、ファイル](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-## [Java](/java/api/)
+## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.JS](http://azure.github.io/azure-storage-node)
 ## [Ruby](http://azure.github.io/azure-storage-ruby)
 ## [Python](https://azure-storage.readthedocs.io/en/latest/index.html)
 ## [C++](http://azure.github.io/azure-storage-cpp)
-## [iOS](https://github.com/Azure/azure-storage-ios)
+## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST ()
 ### [BLOB、キュー、テーブル、ファイル](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
@@ -205,6 +221,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a12d11ba5dfdb312fcfa57f665aa5fc0f471b3dd
+ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
+ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 
 
 ---
@@ -28,7 +28,7 @@ Azure 仮想マシンが既にあり、IPython Notebook サーバーをセット
 
 Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。 小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。 マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
 
-1.  <a href="https://manage.windowsazure.com" target="_blank">Azure クラシック ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。 ウィンドウがポップアップ表示されます。 **[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順に選択します。
+1. <a href="https://manage.windowsazure.com" target="_blank">Azure クラシック ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。 ウィンドウがポップアップ表示されます。 **[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順に選択します。
    
     ![ワークスペースの作成][24]
 2. 次のいずれかのイメージを選択します。
@@ -42,7 +42,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 3. 作成する仮想マシンの名前を入力し、マシンで処理するデータのサイズおよびマシンの想定機能 (メモリ サイズと CPU コア数) に基づいてマシンのサイズ (既定: A3) を選択し、マシンのユーザー名とパスワードを入力します。 その後、右向きの矢印をクリックして、次の構成ページに進みます。
    
     ![ワークスペースの作成][26]
-4. この仮想マシンに使用する予定の **[ストレージ アカウント]** を含む **[リージョン/アフィニティ グループ/仮想ネットワーク]** を選択し、そのストレージ アカウントを選択します。 下部にある **[エンドポイント]** フィールドで、エンドポイントの名前 (ここでは「IPython」) を入力してエンドポイントを追加します。 エンドポイントの **[名前]** として任意の文字列を選択し、**[パブリック ポート]** として**使用可能な** 0 から 65536 までの任意の整数を選択できます。 **[プライベート ポート]** は **9999** でなければなりません。 ユーザーは、インターネット サービスに既に割り当てられているパブリック ポートの使用を **避ける** 必要があります。 <a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">インターネット サービス用のポート</a>に関するページに、使用しないようにする必要がある割り当て済みのポートの一覧があります。
+4. この仮想マシンに使用する予定の **[ストレージ アカウント]** を含む **[リージョン/アフィニティ グループ/仮想ネットワーク]** を選択し、そのストレージ アカウントを選択します。 下部にある **[エンドポイント]** フィールドで、エンドポイントの名前 (ここでは「IPython」) を入力してエンドポイントを追加します。 エンドポイントの **[名前]** として任意の文字列を選択し、**[パブリック ポート]** として**使用可能な** 0 から 65536 までの任意の整数を選択できます。 **[プライベート ポート]** は **9999** でなければなりません。 インターネット サービスに既に割り当てられているパブリック ポートの使用は**避ける**必要があります。 <a href="http://www.chebucto.ns.ca/~rakerman/port-table.html" target="_blank">インターネット サービス用のポート</a>に関するページに、使用しないようにする必要がある割り当て済みのポートの一覧があります。
    
     ![ワークスペースの作成][27]
 5. 仮想マシンのプロビジョニング プロセスを開始するには、チェック マークをクリックします。
@@ -56,7 +56,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 ## <a name="a-nameadd-endpointastep-2-add-an-endpoint-for-ipython-notebooks-to-an-existing-virtual-machine"></a><a name="add-endpoint"></a>手順 2: IPython Notebook 用のエンドポイントを既存の仮想マシンに追加する
 「手順 1」の指示に従って仮想マシンを作成した場合、IPython Notebook 用のエンドポイントは既に作成されており、このステップを省略できます。
 
-仮想マシンが既に存在する場合、下記の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要があれば、まず Azure クラシック ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。 次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
+仮想マシンが既に存在するときに、次の「手順 3」でインストールする IPython Notebook 用のエンドポイントを追加する必要がある場合は、まず Azure クラシック ポータルにログインし、仮想マシンを選択して、IPython Notebook サーバー用のエンドポイントを追加します。 次の図は、IPython Notebook 用のエンドポイントを Windows 仮想マシンに追加した後のポータルのスクリーン ショットを示しています。
 
 ![Create workspace][17]
 
@@ -74,7 +74,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 ## <a name="a-nameaccessastep-4-access-ipython-notebooks-from-a-web-browser"></a><a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
 IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;仮想マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。 ここでは、&#60;*パブリック ポート番号*> として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
-&#60;*仮想マシンの DNS 名*> は、Microsoft Azure クラシック ポータルで確認できます。 クラシック ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
+*&#60;仮想マシンの DNS 名>* は、Azure クラシック ポータルで確認できます。 クラシック ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
 
 ![ワークスペースの作成][19]
 
@@ -90,17 +90,17 @@ IPython Notebook にログオンした後、 *DataScienceSamples* ディレク�
 ![Create workspace][18]
 
 ## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>手順 5: 既存の IPython Notebook をローカル マシンから IPython Notebook サーバーにアップロードする
-IPython Notebook を使用すると、ユーザーはローカル マシン上の既存の IPython Notebook を仮想マシン上の IPython Notebook サーバーに簡単にアップロードできます。 ユーザーは Web ブラウザーで IPython Notebook にログオンした後、IPython Notebook のアップロード先となる **ディレクトリ** にクリックして移動します。 次に、 **[ファイル エクスプローラー]**で、ローカル マシンからアップロードする IPython Notebook の .ipynb ファイルを選択し、Web ブラウザーの IPython Notebook ディレクトリにドラッグ アンド ドロップします。 **[アップロード]** ボタンをクリックすると、.ipynb ファイルが IPython Notebook サーバーにアップロードされます。 その後、他のユーザーは自分の Web ブラウザーからそれを使用できるようになります。
+IPython Notebook を使用すると、ユーザーはローカル マシン上の既存の IPython Notebook を仮想マシン上の IPython Notebook サーバーに簡単にアップロードできます。 Web ブラウザーで IPython Notebook にログオンした後、IPython Notebook のアップロード先となる**ディレクトリ**にクリックして移動します。 次に、 **[ファイル エクスプローラー]**で、ローカル マシンからアップロードする IPython Notebook の .ipynb ファイルを選択し、Web ブラウザーの IPython Notebook ディレクトリにドラッグ アンド ドロップします。 **[アップロード]** ボタンをクリックすると、.ipynb ファイルが IPython Notebook サーバーにアップロードされます。 その後、他のユーザーは自分の Web ブラウザーからそれを使用できるようになります。
 
 ![Create workspace][22]
 
-![Create workspace][23]
+![ワークスペースの作成][23]
 
-## <a name="a-nameshutdownashutdown-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
+## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>未使用時に仮想マシンをシャットダウンして割り当てを解除する
 Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
 > [!NOTE]
-> (Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。 継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。 また、Powershell で VM を停止することもできます。その際、**ShutdownRoleOperation** 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> (Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。 継続的に課金されないようにするには、常に [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。 また、Powershell で VM を停止することもできます。その際、**ShutdownRoleOperation** 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 > 
 > 
 
@@ -137,6 +137,6 @@ Team Data Science Process の次のステップは、[ラーニング パス](ht
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

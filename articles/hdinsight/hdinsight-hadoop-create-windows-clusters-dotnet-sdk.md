@@ -1,6 +1,6 @@
 ---
 title: ".NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Docs"
-description: ".NET SDK テンプレートを使用して Azure HDInsight の HDInsight クラスターを作成する方法について説明します。"
+description: ".NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成方法を説明します。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f2a14c1514c3f70787613c5f0962dc3eabd7b1
+ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
+ms.openlocfilehash: 4f597fad719637e66d64143c302334b1c62e226e
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-net-sdk"></a>.NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-.NET SDK を使用して HDInsight クラスターを作成する方法について説明します。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+.NET SDK を使用した HDInsight での Windows ベースの Hadoop クラスターの作成方法を説明します。 
+
+この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの作成の詳細については、[.NET SDK を使用した HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -163,7 +169,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 * [.NET SDK を使用して HDInsight で Pig ジョブを実行する](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 * [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 * [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
-* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation] - HDInsight SDK の検出
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation] - HDInsight SDK の検出。
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com
@@ -174,7 +180,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 
 ## <a name="appx-a-create-dependent-components"></a>付録 A 依存コンポーネントの作成
-次の Azure PowerShell スクリプトを使用して、このチュートリアルでの .NET アプリケーションで必要な依存コンポーネントを作成できます。
+次の Azure PowerShell スクリプトを使用して、このチュートリアルの .NET アプリケーションで必要な依存コンポーネントを作成できます。
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
@@ -245,6 +251,6 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

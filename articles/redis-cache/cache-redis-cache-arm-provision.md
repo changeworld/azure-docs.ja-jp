@@ -1,5 +1,5 @@
 ---
-title: "Redis Cache のプロビジョニング| Microsoft Docs"
+title: "Azure Resource Manager を使用した Redis Cache のプロビジョニング | Microsoft Docs"
 description: "Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。"
 services: app-service
 documentationcenter: 
@@ -12,18 +12,18 @@ ms.workload: web
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 8669d9526da27c3b7faebb7b4d3a9128233508f6
+ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
+ms.openlocfilehash: cce5d63e8bad2dd066cb4c28e2a8a9cb16c47953
 
 
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>テンプレートを使用して Redis Cache を作成する
 このトピックでは、Azure Redis Cache をデプロイする Azure Resource Manager のテンプレートを作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。 領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
+現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。 領域内の&1; つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
 
 テンプレートの作成の詳細については、「 [Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
@@ -135,6 +135,6 @@ Azure Redis Cache を作成します。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

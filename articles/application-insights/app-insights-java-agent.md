@@ -1,6 +1,6 @@
 ---
-title: "Java Web アプリでの依存関係、例外、および実行時間の監視"
-description: "Extended monitoring of your Java website with Application Insights (Application Insights を使用した Java Web サイトの監視の拡張)"
+title: "Azure Application Insights での Java Web アプリのパフォーマンス監視 | Microsoft Docs"
+description: "Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。"
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 16ffd2ea5be6a18f59065a20d4c801f89bf030cf
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: a481c7c62383c92a5dfab0e3f2b1b4f4f0e5ddf5
 
 
 ---
@@ -91,9 +91,9 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
 既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
 
 ## <a name="view-the-data"></a>データの表示
-Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][メトリック]に表示されます。
+Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][metrics]に表示されます。
 
-依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][ 診断] を開きます。
+依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][diagnostic] を開きます。
 
 「[依存関係の問題の診断](app-insights-asp-net-dependencies.md#diagnosis)」を参照してください。
 
@@ -105,16 +105,16 @@ Application Insights リソースでは、集計されたリモートの依存�
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
-[可用性]: app-insights-monitor-web-app-availability.md
-[診断]: app-insights-diagnostic-search.md
+[availability]: app-insights-monitor-web-app-availability.md
+[diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
-[メトリック]: app-insights-metrics-explorer.md
-[使用状況]: app-insights-web-track-usage.md
+[metrics]: app-insights-metrics-explorer.md
+[usage]: app-insights-web-track-usage.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

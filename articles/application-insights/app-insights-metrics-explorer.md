@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 6c644b124ad8c994170152006ff61c11e363e7ab
-ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
 
 
 ---
@@ -35,7 +35,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 ![Azure ポータルでアプリケーションの概要ブレードを開きます](./media/app-insights-metrics-explorer/03-range.png)
 
-想定しているデータがまだ表示されていない場合は、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、時間範囲が広い場合、更新間隔も長くなります。 リリース モードでは、データが分析パイプラインを介してグラフとして表示されるまでに時間がかかる場合があります。
+想定しているデータがまだ表示されていない場合は、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、時間範囲が広い場合、更新間隔も長くなります。 データが分析パイプラインを介してグラフとして表示されるまでに時間がかかる場合があります。
 
 グラフの一部を拡大するには、グラフ上でドラッグします。
 
@@ -115,6 +115,11 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 ![すべてのメトリックを選択解除して既定値を表示します](./media/app-insights-metrics-explorer/06-total.png)
 
+## <a name="pin-y-axis"></a>Y 軸の固定 
+既定では、グラフの Y 軸にはゼロからデータ範囲の最大値までが表示され、クォンタム値が視覚的に示されますが。 値の変化を、クォンタムを超えて視覚的に調査する必要が出てくることもあります。 このようなカスタマイズでは、Y 軸の範囲の編集機能を使用して、Y 軸の最小値または最大値を必要な場所に固定します。
+"詳細設定" のチェックボックスをオンにすると、Y 軸の範囲の設定が表示されます
+
+!["詳細設定" をクリックし、[カスタム] の範囲を選択して、最小値と最大値を指定します](./media/app-insights-metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>データのフィルター選択
 選択したプロパティ値のセットのメトリックのみを表示するには:
@@ -158,23 +163,9 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 ![メトリックス エクスプローラーの上部にあるボタン](./media/app-insights-metrics-explorer/17-reset.png)
 
-<a name="live-metrics-stream"></a>
+## <a name="live-metrics-stream"></a>Live Metrics Stream
 
-## <a name="live-metrics-stream-instant-metrics-for-close-monitoring"></a>ライブ メトリックス ストリーム: 詳細な監視のインスタント メトリック
-ライブ ストリームには、まさにこの瞬間のアプリライブ メトリックス ストリームが、ほぼリアルタイム (1 秒の待機時間) で表示されます。 これは、新しいビルドをリリースしており、すべてが正常に動作していることを確認する必要があるとき、またはリアルタイムでインシデントを調査しているときに非常に便利です。
-
-![概要ブレードで、[Live Stream (ライブ ストリーム)] をクリックします](./media/app-insights-metrics-explorer/live-stream.png)
-
-メトリックス エクスプローラーとは異なり、ライブ メトリックス ストリームにはメトリックの固定セットが表示されます。 データは、グラフが表示されている場合にのみ保持され、その後破棄されます。
-
-### <a name="live-failures"></a>ライブ エラー
-
-エラーまたは例外が記録されると、ライブ ストリームでそれらのサンプルが収集されます。 **[一時停止]** をクリックして特定のサンプルを保持し、イベントを選択すると、その詳細が表示されます。
-
-![サンプリングされたライブ エラー](./media/app-insights-metrics-explorer/live-stream-failures.png)
-
-
-ライブ メトリックス ストリームは、[Application Insights SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の最新バージョンで使用できます。
+テレメトリの他の即時ビューを見るには、[Live Stream](app-insights-live-stream.md) を開きます。 集計処理のため、ほとんどのメトリックは表示に数分かかります。 これに対し、ライブ メトリックは待ち時間が短くなるように最適化されています。 
 
 ## <a name="set-alerts"></a>アラートの設定
 すべてのメトリックの異常な値を電子メールで通知するには、アラートを追加します。 アカウント管理者または特定の電子メール アドレスのいずれかに電子メールを送信することを選択できます。
@@ -224,6 +215,6 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

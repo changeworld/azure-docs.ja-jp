@@ -1,5 +1,5 @@
 ---
-title: "Resource Manager で PowerShell を使用してインターネットに接続するロード バランサーを作成する | Microsoft Docs"
+title: "Azure のインターネットに接続するロード バランサーの作成 - PowerShell | Microsoft Docs"
 description: "Resource Manager で PowerShell を使用してインターネットに接続するロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: d489573e9a3efceb5bf8a4d6a7e0284c61bc24e9
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 5abd8365ed883831d4c85ebd14de31dbe45d815d
 
 ---
 
@@ -119,7 +119,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
 * ポート 3441 のすべての受信トラフィックをポート 3389 に転送する NAT 規則
 * ポート 3442 のすべての受信トラフィックをポート 3389 に転送する NAT 規則
-*  **HealthProbe.aspx**
+* **HealthProbe.aspx**
 * バックエンド プールのアドレスでポート 80 ～ 80 に入ってくるすべてのトラフィックを分散するロード バランサー規則
 * これらのオブジェクトをすべて使用するロード バランサー
 
@@ -133,7 +133,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
     $inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
     ```
 
-2. 正常性プローブを作成します。 プローブは次の 2 とおりの方法で構成できます。
+2. 正常性プローブを作成します。 プローブは次の&2; とおりの方法で構成できます。
 
     HTTP プローブ
 
@@ -176,7 +176,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
     $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
     ```
 
-3. **lb-nic2-be**という名前の NIC を作成し、それを 2 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
+3. **lb-nic2-be**という名前の NIC を作成し、それを&2; 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
 
     ```powershell
     $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
@@ -318,6 +318,6 @@ Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

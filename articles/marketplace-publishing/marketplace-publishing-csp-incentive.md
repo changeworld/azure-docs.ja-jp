@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2016
+ms.date: 01/25/2017
 ms.author: DavidBosland
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 97cd45563dbd2341620658e05dbbd9ff0519b1aa
 
 
 ---
@@ -26,19 +26,19 @@ ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
 「リセラー インセンティブ」の状態を表示または変更するには、次のようにします。
 
 1.  [Microsoft Azure 発行アカウント](https://publish.windowsazure.com/workspace)
-   
+
    ![プロファイル先頭画面][1]
 2.  **[パブリッシャー]**
-   
+
    ![プロファイル先頭画面 - パブリッシャー リンク][2]
 3. プロファイルで CSP に関する情報に注目してください。  「リセラー インセンティブ」の**「はい」または「いいえ」を指定するスイッチ**があります。既定の状態は [はい] です。
-   
+
    ![プロファイル - パブリッシャー][3]
 4. 「リセラー インセンティブ」の状態を変更するには、パブリッシャー プロファイルにアクセスし、状態を選択して保存します。
-   
+
    * **[はい]** を選択すると、Azure Marketplace に出品しているアプリケーションやサービスを再販している CSP に 20% の割引が提供されます。  **[いいえ]** を選択すると、このインセンティブ プログラムは適用されません。  いずれの場合も、パブリッシャーは同じ支払いを受け取ります。
    * 選択した後は、忘れずに右上隅の **[保存]** をクリックしてください。
-   
+
    ![プロファイル - パブリッシャー - ボックスの変更][4]
 
 [1]: ./media/marketplace-publishing-csp-incentive/profile-stock.png
@@ -48,6 +48,6 @@ ms.openlocfilehash: 80b6c1a1b5f5ae3f66ee2f39daf5b65ebc63fbed
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "デバイス管理の開始 | Microsoft Docs"
-description: "このチュートリアルでは Azure IoT Hub でデバイスの管理を開始する方法を示します"
+title: "Azure IoT Hub デバイス管理の開始 (Node) | Microsoft Docs"
+description: "IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 829164eaa856d824ed1f37c43799dabb8f0a0868
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: e1bb89ba369818d7ba0e92a54a4712033f648187
 
 
 ---
-# <a name="tutorial-get-started-with-device-management"></a>チュートリアル: デバイス管理の開始
+# <a name="get-started-with-device-management-node"></a>デバイス管理の開始 (Node)
 ## <a name="introduction"></a>はじめに
 IoT クラウド アプリケーションは、Azure IoT Hub のプリミティブ (デバイス ツインとダイレクト メソッド) を使用して、デバイス上でデバイス管理アクションをリモートで開始して監視できます。  この記事では、IoT クラウド アプリケーションとデバイスが、IoT Hub を使用したデバイスの再起動をリモートで開始して監視するためにどのように連携するかについて説明し、それらの操作を実行するためのコードを示します。
 
@@ -37,10 +37,10 @@ IoT クラウド アプリケーションは、Azure IoT Hub のプリミティ�
 このチュートリアルでは、次の操作方法について説明します。
 
 * Azure Portal を使用して IoT Hub を作成し、IoT Hub 内にデバイス ID を作成します。
-* クラウドから呼び出すことができ、再起動を可能にするダイレクト メソッドを持つ、シミュレートされたデバイス アプリを作成します。
-* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT ハブ経由で呼び出すコンソール アプリケーションを作成します。
+* クラウドから呼び出すことができ、再起動を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
+* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT ハブ経由で呼び出す Node.js コンソール アプリを作成します。
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 **dmpatterns_getstarted_device.js**: IoT Hub を、作成済みのデバイス ID に接続し、再起動ダイレクト メソッドを受信し、物理的な再起動をシミュレートし、最後の再起動時間を報告します。
 
@@ -59,7 +59,7 @@ IoT クラウド アプリケーションは、Azure IoT Hub のプリミティ�
 このセクションでは、次の作業を行います。
 
 * クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。
-* シミュレートされたデバイスの再起動をトリガーします。
+* シミュレート対象デバイスの再起動をトリガーします。
 * 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスとデバイスの最後の再起動時間を識別できるようにします。
 
 1. 「**manageddevice**」という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
@@ -81,7 +81,7 @@ IoT クラウド アプリケーションは、Azure IoT Hub のプリミティ�
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -232,7 +232,7 @@ IoT クラウド アプリケーションは、Azure IoT Hub のプリミティ�
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行して、リモート再起動のトリガーと最後の再起動時刻を検出するデバイス ツインのクエリを実行します。
+2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
    
     ```
     node dmpatterns_getstarted_service.js
@@ -260,7 +260,7 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [img-output]: media/iot-hub-get-started-with-dm/image6.png
 [img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
@@ -276,6 +276,6 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

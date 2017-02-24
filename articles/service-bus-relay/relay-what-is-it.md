@@ -1,5 +1,5 @@
 ---
-title: "Azure Relay とは | Microsoft Docs"
+title: "Azure Relay のしくみと利点の概要 | Microsoft Docs"
 description: "Azure Relay の概要"
 services: service-bus-relay
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 11/16/2016
-ms.author: babanisa,sethm
+ms.date: 02/14/2017
+ms.author: babanisa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 14a5c029eef714134079b960109e58d821d0a609
-ms.openlocfilehash: 34b54d54b20d9aec69486c5ef98c97beee21bd94
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 1b9423c22ff6e003a6236e01118b600a2c746db4
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 34b54d54b20d9aec69486c5ef98c97beee21bd94
 
 Relay によって実現される主な機能要素は、ネットワーク境界越しに行われるバッファーを使用しない双方向通信です。TCP と同様の帯域幅調整、エンドポイント検出、接続状態、エンドポイント セキュリティのオーバーレイを備えています。 リレー機能は、1 台のコンピューター上にある単一のアプリケーション エンドポイントに限定できるという点でネットワーク レベルの統合テクノロジ (VPN など) とは異なります。VPN テクノロジは、ネットワーク環境を変えることによって成り立っており、その意味でリレーよりも、はるかに大がかりなテクノロジと言えます。
 
-Azure Relay には、次の 2 つの機能があります。
+Azure Relay には、次の&2; つの機能があります。
 
 1. [ハイブリッド接続](#hybrid-connections) - オープン スタンダードの Web ソケットを使用することで、マルチプラットフォームの用途に対応します。
 2. [WCF リレー](#wcf-relays) - Windows Communication Foundation (WCF) を使用してリモート プロシージャ コールに対応します。 WCF リレーは従来からあるリレー サービスで、その WCF プログラミング モデルを利用したことがある方も多いと思われます。
@@ -55,7 +55,7 @@ Azure Relay には、次の 2 つの機能があります。
 WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できます。 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。
 
 ## <a name="service-history"></a>サービスの経緯
-ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。リレー サービスには当面、この 2 つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
+ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。リレー サービスには当面、この&2; つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
 
 ## <a name="next-steps"></a>次のステップ:
 * [Relay に関する FAQ](relay-faq.md)
@@ -66,6 +66,6 @@ WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できま�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

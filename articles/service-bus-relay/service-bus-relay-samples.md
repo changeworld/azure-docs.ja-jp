@@ -1,5 +1,5 @@
 ---
-title: "Service Bus Relay サンプルの概要 | Microsoft Docs"
+title: "Azure Service Bus Relay サンプルの概要 | Microsoft Docs"
 description: "Service Bus Relay サンプルを分類して説明し、各サンプルへのリンクが含まれています。"
 services: service-bus-relay
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2016
+ms.date: 02/13/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
+ms.sourcegitcommit: 6027c973f0104fff9705a70f7812f62562165c1e
+ms.openlocfilehash: d830770c49caeacf762382ce1c6113d9196a5994
 
 
 ---
@@ -24,23 +24,23 @@ ms.openlocfilehash: 0b2206fae964c55e961505b9d0e2ad71fd0b2102
 Service Bus Relay のサンプルでは、[Service Bus Relay](https://azure.microsoft.com/services/service-bus/) の主要な機能をデモンストレーションしています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 > [!NOTE]
-> Service Bus のサンプルは SDK と共にインストールされません。 サンプルを入手するには、 [Azure SDK のサンプル ページ](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)にアクセスしてください。
+> Service Bus のサンプルは Azure SDK と共にインストールされません。 サンプルを入手するには、 [Azure SDK のサンプル ページ](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)にアクセスしてください。
 > 
-> さらに、[ここ](https://github.com/Azure-Samples/azure-servicebus-relay-samples)には、Service Bus Relay のサンプルの更新されたセットがあります (この記事の執筆時点では、この記事に記述されていません)。  
+> さらに、更新された Service Bus Relay のサンプルのセットが[こちら](https://github.com/Azure-Samples/azure-servicebus-relay-samples)にあります。  
 > 
 > 
 
-メッセージングのサンプルについては、[「Service Bus messaging samples」](../service-bus-messaging/service-bus-samples.md) (Service Bus メッセージングのサンプル) を参照してください。
+Service Bus メッセージングのサンプルについては、「[Service Bus メッセージングのサンプル](../service-bus-messaging/service-bus-samples.md)」をご覧ください。
 
-## <a name="service-bus-relay"></a>Service Bus Relay
-次のサンプルでは、Service Bus Relay サービスを使用するアプリケーションの作成方法を説明しています。
+## <a name="azure-service-bus-relay"></a>Azure Service Bus Relay
+次のサンプルでは、Azure Relay サービスを使うアプリケーションの作成方法を説明します。
 
-リレーのサンプルでは、ご使用の Service Bus の名前空間にアクセスするための接続文字列が必要です。
+リレーのサンプルでは、Relay の名前空間にアクセスするための接続文字列が必要です。
 
-### <a name="to-obtain-a-connection-string-for-azure-service-bus"></a>Azure Service Bus の接続文字列を取得するには
+### <a name="to-obtain-a-connection-string-for-azure-relay"></a>Azure Relay の接続文字列を取得するには
 1. [Azure Portal](http://portal.azure.com) にログオンします。
-2. 左側の列で、 **[Service Bus]**をクリックします。
-3. 一覧から、ご使用の名前空間の名前をクリックします。
+2. **[すべてのリソース]** ウィンドウで、名前空間の一覧をクリックして展開します。
+3. 一覧で、Relay 名前空間の名前をクリックします。
 4. 名前空間ブレードで、**[共有アクセス ポリシー]** をクリックします。
 5. **[共有アクセス ポリシー]** ブレードで、**[RootManageSharedAccessKey]** をクリックします。
 6. 接続文字列をクリップボードにコピーします。
@@ -48,13 +48,13 @@ Service Bus Relay のサンプルでは、[Service Bus Relay](https://azure.micr
 ### <a name="to-obtain-a-connection-string-for-service-bus-for-windows-server"></a>Service Bus for Windows Server の接続文字列を取得するには
 1. 次の PowerShell コマンドレットを実行します。
    
-    ```
+    ```powershell
     get-sbClientConfiguration
     ```
 2. 接続文字列をサンプルの App.config ファイルに貼り付けます。
 
-## <a name="service-bus-relay"></a>Service Bus Relay
-Service Bus Relay を説明するサンプルです。
+## <a name="azure-relay"></a>Azure Relay
+Azure Relay を示すサンプルです。
 
 ### <a name="getting-started"></a>使用の開始
 | サンプル名 | Description | SDK の最小バージョン | 可用性 |
@@ -84,13 +84,13 @@ Service Bus Relay のさまざまな機能を説明するサンプルです。
 ## <a name="next-steps"></a>次のステップ
 Service Bus の概念の要約については、次のトピックを参照してください。
 
-* [Service Bus Relay の概要](service-bus-relay-overview.md)
+* [Azure Relay の概要](relay-what-is-it.md)
 * [Service Bus のアーキテクチャ](../service-bus-messaging/service-bus-architecture.md)
 * [Service Bus の基礎](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

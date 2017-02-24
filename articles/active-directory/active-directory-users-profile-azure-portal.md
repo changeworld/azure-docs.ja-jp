@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -26,14 +26,14 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 ## <a name="to-change-profile-information"></a>プロファイル情報を変更するには
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-   
+
    ![ユーザー管理を開く](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
-   
+
    ![[ユーザー] ブレードを開く](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
 4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
 5. 選択したユーザーのブレードで、 **[プロファイル]**を選択します。
-   
+
     ![勤務先情報を開く](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. プロファイル情報を追加、または変更します。 コマンド バーで、**[保存]**を選択します。
 
@@ -43,7 +43,6 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 * [Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
 * [Azure Active Directory プレビューでユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
 * [Azure Active Directory プレビューでディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
-
 
 
 

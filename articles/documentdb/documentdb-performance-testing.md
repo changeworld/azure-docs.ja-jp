@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 01/19/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f9acb44fb6b6fac41da4dc05745a68066b0477fb
+ms.sourcegitcommit: 6b82132b24fb2be3f0d8ab5112c712c27edb733e
+ms.openlocfilehash: 4d7754e73abedb704b81fa0001e1957422bde1b3
 
 
 ---
@@ -98,7 +98,7 @@ DocumentDB のパフォーマンスを向上させるためのクライアント
     DocumentDBBenchmark completed successfully.
 
 
-**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。 この手順について不明な点がある場合は、 askdocdb@microsoft.com にメールをご送信いただくか、サポート チケットを申請してください。
+**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。 そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。 クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。 この手順について不明な点がある場合は、askdocdb@microsoft.com にメールをお送りいただくか、[Azure Portal](https://portal.azure.com) からサポート チケットを申請してください。
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
@@ -116,6 +116,6 @@ DocumentDB のパフォーマンスを向上させるためのクライアント
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

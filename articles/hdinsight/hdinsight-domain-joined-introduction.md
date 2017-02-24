@@ -58,6 +58,6 @@ HDInsight クラスター リソースを未承認のユーザーから保護し
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: afa6625e4c3ebe2a408b4bd956c8d2eb9ac6a34b
 
 
 ---
@@ -25,16 +25,16 @@ ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
 
 **関連項目:**
 
-* [UI ドキュメント - Reach - 新しいプッシュ キャンペーン][リンク 27]
+* [UI ドキュメント - リーチ - 新しいのプッシュ キャンペーン][Link 27]
 
 ## <a name="audience-criteria-can-include"></a>対象ユーザーの条件には次のようなものを使用できます:
-* **テクニカル: ** [分析] セクションおよび [監視] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。 **関連項目：** [UI ドキュメント - 分析][リンク 15]、[UI ドキュメント- 監視][リンク 16]
-* **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。 "大まかなエリアの位置報告" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "大まかなエリアの位置報告" は、SDK からアクティブ化する必要があります)。 **関連項目:** [SDK ドキュメント - iOS - 統合][リンク 5]、[SDK ドキュメント - Android - 統合][リンク 5]
-* **Reach のフィードバック:** アナウンス、アンケート、データ プッシュからのリーチ フィードバックを通じて、過去のリーチ通知へのユーザーのフィードバックに基づいて対象ユーザーを設定できます。 この方法は、初めてのキャンペーンよりも数回リーチ キャンペーンを行った後に使用することでより的確な対象ユーザーを絞り込むことができます。 また、特定の過去のキャンペーンをすでに受信したユーザーにキャンペーンを送信しないよう設定すると、すでに同様のコンテンツの通知を受け取ったユーザーを除外できます。 さらに、現在アクティブな特定のキャンペーンに含まれているユーザーを新しいプッシュから除外することもできます。 **関連項目:** [UI ドキュメント - Reach - プッシュのコンテンツ][リンク 29]
-* **インストールの追跡:** ユーザーがアプリをインストールした場所に基づいて情報を追跡できます。 **関連項目:** [UI ドキュメント - 設定][リンク 20]
+* **テクニカル: ** [分析] セクションおよび [監視] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。 **関連項目:** [UI ドキュメント - 分析][Link 15]、[UI ドキュメント- 監視][Link 16]
+* **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。 "大まかなエリアの位置報告" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "大まかなエリアの位置報告" は、SDK からアクティブ化する必要があります)。 **関連項目:** [SDK ドキュメント - iOS - 統合][Link 5]、[SDK ドキュメント - Android - 統合][Link 5]
+* **Reach のフィードバック:** アナウンス、アンケート、データ プッシュからのリーチ フィードバックを通じて、過去のリーチ通知へのユーザーのフィードバックに基づいて対象ユーザーを設定できます。 この方法は、初めてのキャンペーンよりも数回リーチ キャンペーンを行った後に使用することでより的確な対象ユーザーを絞り込むことができます。 また、特定の過去のキャンペーンをすでに受信したユーザーにキャンペーンを送信しないよう設定すると、すでに同様のコンテンツの通知を受け取ったユーザーを除外できます。 さらに、現在アクティブな特定のキャンペーンに含まれているユーザーを新しいプッシュから除外することもできます。 **関連項目:** [UI ドキュメント - リーチ - プッシュのコンテンツ][Link 29]
+* **インストールの追跡:** ユーザーがアプリをインストールした場所に基づいて情報を追跡できます。 **関連項目:** [UI ドキュメント - 設定][Link 20]
 * **ユーザー プロファイル:** 標準のユーザー情報に基づいたターゲティングや、作成したカスタムのアプリ情報に基づいたターゲティングもできます。 これには、過去のキャンペーンへの反応だけでなく、現在ログインしているユーザーと、特定の質問に応答したユーザーが含まれます。 アプリで定義したすべてのアプリ情報はこの一覧に表示されます。
-* セグメント： 複数の条件を含む特定のユーザー操作に基づいて作成したセグメントから対象ユーザーを設定することもできます。 アプリで定義したすべてのセグメントはこの一覧に表示されます。 **関連項目:** [UI ドキュメント - セグメント][リンク 18]
-* **アプリ情報:** カスタムのアプリ情報タグを [Settings (設定)] で作成すると、ユーザーの挙動を追跡できます。 **関連項目:** [UI ドキュメント - 設定][リンク 20]
+* セグメント： 複数の条件を含む特定のユーザー操作に基づいて作成したセグメントから対象ユーザーを設定することもできます。 アプリで定義したすべてのセグメントはこの一覧に表示されます。 **関連項目**: [UI ドキュメント - セグメント][Link 18]
+* **アプリ情報:** カスタムのアプリ情報タグを [Settings (設定)] で作成すると、ユーザーの挙動を追跡できます。 **関連項目:** [UI ドキュメント - 設定][Link 20]
 
 ## <a name="example"></a>例:
 アプリ内購入の操作を行ったユーザーのみにアナウンスをプッシュする場合。
@@ -146,39 +146,39 @@ ms.openlocfilehash: b3d88826050bcdf272e732cb0b51ee2e2618e586
 [58]: ./media/mobile-engagement-user-interface-settings/settings13.png
 
 <!--Link references-->
-[リンク 1]: mobile-engagement-user-interface.md
-[リンク 2]: mobile-engagement-troubleshooting-guide.md
-[リンク 3]: mobile-engagement-how-tos.md
-[リンク 4]: http://go.microsoft.com/fwlink/?LinkID=525553
-[リンク 5]: http://go.microsoft.com/fwlink/?LinkID=525554
-[リンク 6]: http://go.microsoft.com/fwlink/?LinkId=525555
-[リンク 7]: https://account.windowsazure.com/PreviewFeatures
-[リンク 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
-[リンク 9]: http://azure.microsoft.com/services/mobile-engagement/
-[リンク 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[リンク 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
-[リンク 12]: mobile-engagement-user-interface-navigation.md
-[リンク 13]: mobile-engagement-user-interface-home.md
-[リンク 14]: mobile-engagement-user-interface-my-account.md
-[リンク 15]: mobile-engagement-user-interface-analytics.md
-[リンク 16]: mobile-engagement-user-interface-monitor.md
-[リンク 17]: mobile-engagement-user-interface-reach.md
-[リンク 18]: mobile-engagement-user-interface-segments.md
-[リンク 19]: mobile-engagement-user-interface-dashboard.md
-[リンク 20]: mobile-engagement-user-interface-settings.md
-[リンク 21]: mobile-engagement-troubleshooting-guide-analytics.md
-[リンク 22]: mobile-engagement-troubleshooting-guide-apis.md
-[リンク 23]: mobile-engagement-troubleshooting-guide-push-reach.md
-[リンク 24]: mobile-engagement-troubleshooting-guide-service.md
-[リンク 25]: mobile-engagement-troubleshooting-guide-sdk.md
-[リンク 26]: mobile-engagement-troubleshooting-guide-sr-info.md
-[リンク 27]: mobile-engagement-user-interface-reach-campaign.md
-[リンク 28]: mobile-engagement-user-interface-reach-criterion.md
-[リンク 29]: mobile-engagement-user-interface-reach-content.md
+[Link 1]: mobile-engagement-user-interface.md
+[Link 2]: mobile-engagement-troubleshooting-guide.md
+[Link 3]: mobile-engagement-how-tos.md
+[Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
+[Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
+[Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
+[Link 7]: https://account.windowsazure.com/PreviewFeatures
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 12]: mobile-engagement-user-interface-navigation.md
+[Link 13]: mobile-engagement-user-interface-home.md
+[Link 14]: mobile-engagement-user-interface-my-account.md
+[Link 15]: mobile-engagement-user-interface-analytics.md
+[Link 16]: mobile-engagement-user-interface-monitor.md
+[Link 17]: mobile-engagement-user-interface-reach.md
+[Link 18]: mobile-engagement-user-interface-segments.md
+[Link 19]: mobile-engagement-user-interface-dashboard.md
+[Link 20]: mobile-engagement-user-interface-settings.md
+[Link 21]: mobile-engagement-troubleshooting-guide-analytics.md
+[Link 22]: mobile-engagement-troubleshooting-guide-apis.md
+[Link 23]: mobile-engagement-troubleshooting-guide-push-reach.md
+[Link 24]: mobile-engagement-troubleshooting-guide-service.md
+[Link 25]: mobile-engagement-troubleshooting-guide-sdk.md
+[Link 26]: mobile-engagement-troubleshooting-guide-sr-info.md
+[Link 27]: mobile-engagement-user-interface-reach-campaign.md
+[Link 28]: mobile-engagement-user-interface-reach-criterion.md
+[Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

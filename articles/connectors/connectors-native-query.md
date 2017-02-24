@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: a992fa17a07d6167297c4cf5fe9fb3b58181d7df
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
 * データベースの優先度の高いすべてのレコードを対象とするタスクを作成する。
 * 電子メールのすべての PDF 添付ファイルを Azure BLOB に保存する。
 
-ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## <a name="use-the-query-action"></a>クエリ アクションの使用
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](connectors-overview.md)。  
@@ -50,14 +50,14 @@ ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
 6. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
 ## <a name="query-action"></a>クエリ アクション
-ここでは、このコネクタでサポートされているアクションの詳細について説明します。 このコネクタには、使用可能なアクションが 1 つあります。
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。 このコネクタには、使用可能なアクションが&1; つあります。
 
 | アクション | Description |
 | --- | --- |
 | [配列のフィルター処理] |配列内の各項目について条件を評価し、結果を返します。 |
 
 ## <a name="action-details"></a>アクションの詳細
-このクエリ アクションには、使用可能なアクションが 1 つ用意されています。 次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
+このクエリ アクションには、使用可能なアクションが&1; つ用意されています。 次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
 
 ### <a name="filter-array"></a>[配列のフィルター処理]
 HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
@@ -78,11 +78,11 @@ HTTP 応答の出力の詳細を次に示します。
 | Filtered array |array |フィルター処理された各結果を表すオブジェクトを含む配列 |
 
 ## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

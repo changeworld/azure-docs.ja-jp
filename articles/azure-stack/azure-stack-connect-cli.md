@@ -12,29 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 12/16/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d639a7d59ebd7f9b9d34da116f79e8bbbddcaa26
+ms.sourcegitcommit: c7c26090c34dfa30bf4f7633924bf7b630a0280c
+ms.openlocfilehash: 6ff4db6f273a10fd6616656505f2995d51b0e3d2
 
 
 ---
 # <a name="install-and-configure-azure-stack-cli"></a>Install and configure Azure Stack CLI
-In this document, we guide you through the process of using Azure Command-line Interface (CLI) to manage Azure Stack resources on Linux and Mac client platforms.  
+In this document, we guide you through the process of using Azure Command-line Interface (CLI) to manage Azure Stack resources on Linux and Mac client platforms.
+
+## <a name="install-nodejs-and-npm"></a>Install Node.js and npm
+As a prerequisite, install version 4.6.2 of Node.js. On Linux, installation can be done with the following command:
+
+```
+wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install nodejs
+```
 
 ## <a name="install-azure-stack-cli"></a>Install Azure Stack CLI
 If you’re on Mac or Linux, you can get the CLI by using the following command:
 
-    `npm install -g azure-cli@0.10.4`.
+```
+npm install -g azure-cli@0.10.4
+```
 
 
 ## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
 In the following steps, you configure Azure CLI to connect to Azure Stack. Then you sign in and retrieve subscription information.
 
 1. Retrieve the value for active-directory-resource-id by executing this PowerShell:
-   
-         (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```PowerShell
+    (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    ```
 2. Use the following CLI command to add the Azure Stack environment, making sure to update *--active-directory-resource-id* with the data URL retrieved in the previous step:
    
           azure account env add AzureStack --resource-manager-endpoint-url "https://api.azurestack.local" --management-endpoint-url "https://api.azurestack.local" --active-directory-endpoint-url  "https://login.windows.net" --portal-url "https://portal.azurestack.local" --gallery-endpoint-url "https://portal.azurestack.local" --active-directory-resource-id "https://azurestack.local-api/" --active-directory-graph-resource-id "https://graph.windows.net/"
@@ -63,6 +74,6 @@ In the following steps, you configure Azure CLI to connect to Azure Stack. Then 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

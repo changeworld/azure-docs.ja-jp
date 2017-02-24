@@ -25,7 +25,7 @@
 
 # 方法
 ## データを移動する
-### [Data Factory コピー ウィザード](data-factory-copy-wizard.md)
+### [Data Factory コピー ウィザード](data-factory-azure-copy-wizard.md)
 #### [1 TB を 15 分以内に読み込む](data-factory-load-sql-data-warehouse.md)
 ### [コピー アクティビティ](data-factory-data-movement-activities.md)
 #### [パフォーマンスとチューニングのガイド](data-factory-copy-activity-performance.md)
@@ -84,7 +84,6 @@
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
-## [Azure Data Factory の開発者用リファレンス](data-factory-sdks.md)
 ## [REST ()](/rest/api/datafactory/)
 
 # リソース
@@ -102,6 +101,6 @@
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

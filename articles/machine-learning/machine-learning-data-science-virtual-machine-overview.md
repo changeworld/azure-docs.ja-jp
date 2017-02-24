@@ -1,5 +1,5 @@
 ---
-title: "データ サイエンス仮想マシンとは  | Microsoft Docs"
+title: "データ サイエンス仮想マシンとは | Microsoft Docs"
 description: "この記事では、重要なシナリオ、機能、および分析に使用できるデータ サイエンス Virtual Machines、環境、ツールキットを使い始める方法について説明します。"
 keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
 services: machine-learning
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/01/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9d4df15fb4514817d9233ab4e5bd0eb65e5a95dc
+ms.sourcegitcommit: 6c664a055e577881d4fcccd5b0ba4047d88aa9ef
+ms.openlocfilehash: 64b413451c6ce47cc3aa14322b2aa0342e1e3ffe
 
 
 ---
@@ -50,18 +50,23 @@ ms.openlocfilehash: 9d4df15fb4514817d9233ab4e5bd0eb65e5a95dc
 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンス ツールが既にインストールおよび構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft R Server または SQL Server 2016 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
 
 | **Windows エディション** | **Linux エディション** |
-| --- | --- |
-| Microsoft R Server Developer エディション |Microsoft R Server Developer エディション |
-| Anaconda Python 2.7、3.5 |Anaconda Python 2.7、3.5 |
-| Jupyter Notebook Server (R、Python) |JupyterHub: マルチユーザー Jupyter ノートブック (R、Python、Julia) |
-| SQL Server 2016 Developer エディション: R サービスによるスケーラブルなデータベース内分析 |Postgres、SQuirreL SQL (データベース ツール)、SQL Server ドライバー、コマンド ライン (bcp、sqlcmd) |
-| Visual Studio Community エディション 2015 (IDE) </br> - Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools </br> - Node.js、Python、R tools for Visual Studio |IDE とエディター </br> - Eclipse と Azure ツールキット プラグイン </br> - Emacs (ESS、auctex 付属) gedit |
+| -- | --|
+| 人気のパッケージがプレインストールされた Microsoft R Open | 人気のパッケージがプレインストールされた Microsoft R Open |
+| MicrosoftML アルゴリズムと Microsoft R Operationalization を搭載した Microsoft R Server Developer エディション  |Microsoft R Server Developer エディション |
+| Anaconda Python 2.7、3.5 |人気のパッケージがプレインストールされた Anaconda Python 2.7、3.5|
+| 人気のパッケージがプレインストールされた JuliaPro | 人気のパッケージがプレインストールされた JuliaPro |
+| Jupyter Notebook Server (R、Python、Julia) |JupyterHub: マルチユーザー Jupyter ノートブック (R、Python、Julia、PySpark) |
+| SQL Server 2016 SP1 Developer エディション: R サービスによるスケーラブルなデータベース内分析 |PostgreSQL、SQuirreL SQL (データベース ツール)、SQL Server ドライバー、コマンド ライン (bcp、sqlcmd) |
+|-  Visual Studio Community エディション 2015 (IDE) </br> - Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools </br> - Node.js、Python、R Tools for Visual Studio (RTVS 0.5) </br>- R Studio Desktop|IDE とエディター </br> - Eclipse と Azure ツールキット プラグイン </br> - Emacs (ESS、auctex 付属) gedit </br> - IntelliJ IDEA</br> - PyCharm</br> - Atom</br> - Visual Studio Code|
 | Power BI Desktop |-- |
-| 機械学習ツール </br> - Azure Machine Learning との統合 </br> - CNTK (ディープ ラーニング/AI) </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) </br> - Mxnet (ディープ ラーニング/AI) |機械学習ツール </br> - Azure Machine Learning との統合 </br> - CNTK (ディープ ラーニング/AI) </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) |
+| 機械学習ツール </br> - Azure Machine Learning との統合 </br> - Microsoft Cognitive Toolkit (CNTK 2.0) ディープ ラーニング/AI </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) </br> - Mxnet (ディープ ラーニング/AI) </br> - Tensorflow  |機械学習ツール </br> - Azure Machine Learning との統合 </br> - CNTK (ディープ ラーニング/AI) </br> - Xgboost (データ サイエンス競技で人気の ML ツール) </br> - Vowpal Wabbit (高速オンライン学習製品) </br> - Rattle (ビジュアルなクイック スタート データおよび分析ツール) </br> - Mxnet (ディープ ラーニング/AI)|
 | Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK |Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK |
 | Azure およびビッグ データ リソースのデータの移動と管理のためのツール: Azure Storage エクスプローラー、CLI、PowerShell、AdlCopy (Azure Data Lake)、AzCopy、dtui (DocumentDB 用)、Microsoft データ管理ゲートウェイ |Azure およびビッグ データ リソースのデータの移動と管理のためのツール: Azure Storage エクスプローラー、CLI |
 | Git、Visual Studio Team Services プラグイン |Git |
 | GitBash/コマンド プロンプトからアクセスできる最も普及している Linux/Unix コマンドライン ユーティリティの Windows ポート |-- |
+| Weka | Weka |
+| Drill | Drill |
+| --| Spark ローカル |
 
 ## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Windows データ サイエンス仮想マシンを使う方法
 * [このページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)に移動し、緑の **[仮想マシンの作成]** ボタンを選んで、Windows 上に VM のインスタンスを作成します。
@@ -77,7 +82,7 @@ ms.openlocfilehash: 9d4df15fb4514817d9233ab4e5bd0eb65e5a95dc
 ## <a name="next-steps"></a>次のステップ
 ### <a name="for-the-windows-data-science-vm"></a>Windows データ サイエンス VM の場合
 * Windows バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-provision-vm.md)」をご覧ください。
-* Windows VM のデータ サイエンス プロジェクトに必要なさまざまなタスクを実行する方法について詳しくは、「[データ サイエンス仮想マシンでできる 10 のこと](machine-learning-data-science-vm-do-ten-things.md)」をご覧ください。
+* Windows VM のデータ サイエンス プロジェクトに必要なさまざまなタスクを実行する方法について詳しくは、「[データ サイエンス仮想マシンでできる&10; のこと](machine-learning-data-science-vm-do-ten-things.md)」をご覧ください。
 
 ### <a name="for-the-linux-data-science-vm"></a>Linux データ サイエンス VM の場合
 * Linux バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」をご覧ください。
@@ -86,6 +91,6 @@ ms.openlocfilehash: 9d4df15fb4514817d9233ab4e5bd0eb65e5a95dc
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

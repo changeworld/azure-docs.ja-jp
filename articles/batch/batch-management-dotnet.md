@@ -1,5 +1,5 @@
 ---
-title: "Batch Management .NET でのアカウント リソース管理 | Microsoft Docs"
+title: ".NET 用クライアント ライブラリでの Batch アカウント リソースの管理 - Azure | Microsoft Docs"
 description: "Batch Management .NET ライブラリを使用して Azure Batch アカウント リソースを作成、削除、変更します。"
 services: batch
 documentationcenter: .net
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: ce2b316c9e04c46c1b45139b2ba84c1ca8843f29
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 94d2de0d18863872510ed03a5701f4fc6d133659
 
 
 ---
@@ -228,6 +228,6 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

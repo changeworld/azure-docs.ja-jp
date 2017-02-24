@@ -11,7 +11,7 @@
 
 # 作業開始
 ## [前提条件](active-directory-aadconnect-prerequisites.md)
-## [Azure AD Connect のインストール](active-directory-aadconnect-accounts-permissions.md)
+## [Azure AD Connect のインストール](active-directory-aadconnect-select-installation.md)
 ### [簡単設定](active-directory-aadconnect-get-started-express.md)
 ### [カスタム設定](active-directory-aadconnect-get-started-custom.md)
 ### [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
@@ -33,7 +33,6 @@
 
 
 ## Azure AD Connect 同期を管理する
-### [Generic SQL コネクタのステップ バイ ステップ](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)
 ### [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -58,14 +57,11 @@
 
 
 # リファレンス
-## [Windows PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md)
-## [Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md)
-## [Generic LDAP コネクタ](active-directory-aadconnectsync-connector-genericldap.md)
-## [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md)
 ## [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [ハイブリッド ID で必要なポートとプロトコル](active-directory-aadconnect-ports.md)
 ## [プレビュー段階の機能](active-directory-aadconnect-feature-preview.md)
 ## [バージョン履歴](active-directory-aadconnect-version-history.md)
+## [アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md)
 
 ## Azure AD Connect 同期
 ### [Azure Active Directory に同期される属性](active-directory-aadconnectsync-attributes-synchronized.md)
@@ -89,6 +85,6 @@
 ##[DirSync の廃止](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "クラウド サービスと Azure CDN との統合 | Microsoft Docs"
-description: "統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル"
+title: "Azure クラウド サービスと Azure CDN との統合 | Microsoft Docs"
+description: "統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明します"
 services: cdn, cloud-services
 documentationcenter: .net
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: tysonn
 ms.assetid: b3c0108f-9ec5-43a8-8fd0-40eafbd32637
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 750488e2855546418dd27ca511b9f8b3d06aa1da
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 6355c98f5c50d03b54cb4977bff4e51b8dfa669f
 
 
 ---
@@ -126,7 +126,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 3. この CDN エンドポイントの **名前** を入力します。  この名前は、ドメイン `<EndpointName>.azureedge.net`でキャッシュされたリソースにアクセスする際に使用します。
 4. **[配信元の種類]** ドロップダウンで、 *[クラウド サービス]*を選択します。  
 5. **[配信元ホスト名]** ドロップダウンで、クラウド サービスを選択します。
-6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも 1 つのプロトコル (HTTP または HTTPS) を指定する必要があります。
+6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも&1; つのプロトコル (HTTP または HTTPS) を指定する必要があります。
 7. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
 8. エンドポイントが作成されると、プロファイルのエンドポイントの一覧に表示されます。 一覧には、キャッシュされたコンテンツへのアクセスに使用する URL と元のドメインが表示されます。
    
@@ -393,7 +393,7 @@ Azure Web ロールでこの Razor コードが実行されると、次のよう
 
     <script src="/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
 
-ただし、 `F5`キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは 1 つだけです)。
+ただし、 `F5`キーを押してこのコードを Visual Studio 内で実行した場合は、バンドル内の各スクリプト ファイルが個別にレンダリングされます (上記のケースでは、バンドルに含まれているスクリプト ファイルは&1; つだけです)。
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
 
@@ -440,7 +440,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
    
         new ScriptBundle("~/bundles/jquery", string.Format(cdnUrl, "http://<yourCDNName>.azureedge.net/bundles/jquery?v=<W.X.Y.Z>"))
    
-    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の 2 つの重要な特性に注意してください。
+    このコンストラクターは、ASP.NET のバンドルおよび縮小機能に対して、ローカルにデバッグされたときに個々のスクリプト ファイルをレンダリングする一方で、指定された CDN アドレスを使用して対象のスクリプトにアクセスすることを指定しています。 ここで、この巧妙に作成された CDN URL の&2; つの重要な特性に注意してください。
    
    * この CDN URL のオリジンは、実際にはクラウド サービスのスクリプト バンドルの仮想ディレクトリである `http://<yourCloudService>.cloudapp.net/bundles/jquery?v=<W.X.Y.Z>`です。
    * CDN コンストラクターを使用しているため、バンドルのための CDN スクリプト タグには、レンダリングされた URL 内の自動生成されたバージョン文字列が含まれません。 Azure CDN でキャッシュ ミスを強制的に発生させるには、スクリプト バンドルを変更するたびに一意のバージョン文字列を手動で生成する必要があります。 また、この一意のバージョン文字列は、バンドルがデプロイされた後の Azure CDN でのキャッシュ ヒットを最大化するために、デプロイの有効期間を通じて一定に保たれる必要があります。
@@ -603,6 +603,6 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

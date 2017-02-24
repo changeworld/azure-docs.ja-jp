@@ -1,14 +1,25 @@
 ---
+title: "Azure Mobile Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドしてホストする方法について説明します。"
+services: app-service\mobile
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: app-service\mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 9cae18a8206e2828838c8b35733eee5d25d15cb1
-
+ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
+ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
 
 ---
 # <a name="mobile-apps-documentation"></a>Mobile Apps ドキュメント
 
-Azure App Service の Mobile Apps は、エンタープライズ開発者とシステム インテグレーターを対象とした、スケーラブルなモバイル アプリ開発プラットフォームであり、モバイル開発者に豊富な機能セットを提供します。
+Azure App Service の Mobile Apps を使用して、Xamarin または Cordova でネイティブの iOS、Android、Windows アプリやクロスプラットフォーム アプリをビルドする方法について説明します。 チュートリアル、ビデオ、クライアント SDK ドキュメントなどで、モバイル アプリ用のバックエンドを構築およびホストする方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -185,8 +196,13 @@ Azure App Service の Mobile Apps は、エンタープライズ開発者とシ�
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET</a></p>
-                   </div>
+                        <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET バックエンド SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js バックエンド SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android クライアント SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-ios-client/">iOS クライアント SDK</a></p>
+                        <p><a href="https://azure.github.io/azure-mobile-apps-js-client/">JavaScript/Cordova クライアント SDK</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/azure/mt419521.aspx">Windows/Xamarin クライアント SDK</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,6 +210,7 @@ Azure App Service の Mobile Apps は、エンタープライズ開発者とシ�
 </ul>
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

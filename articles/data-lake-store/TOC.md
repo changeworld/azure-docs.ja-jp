@@ -39,9 +39,10 @@
 ## Azure サービスと統合する
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [ポータルを使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [PowerShell を使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [Data Lake Store を使用する HDInsight - ポータル](data-lake-store-hdinsight-hadoop-use-portal.md)
+### [既定のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+### [追加のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+### [Data Lake Store を使用する HDInsight - Azure テンプレート](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Data Factory で使用する](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)
@@ -71,6 +72,6 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

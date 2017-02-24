@@ -1,3 +1,4 @@
+
 # 概要
 ## [Azure Backup とは](backup-introduction-to-azure-backup.md)
 # 作業開始
@@ -13,7 +14,7 @@
 ### [クラシック ポータルでの DPM](backup-dpm-automation-classic.md)
 ### [Azure Portal での Windows Server](backup-client-automation.md)
 ### [クラシック ポータルでの Windows Server](backup-client-automation-classic.md)
-## アプリケーション ワークロードのバックアップ
+## アプリケーション ワークロードのバックアップと復元
 ### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)
 ### [クラシック ポータルでの DPM ワークロードの準備](backup-azure-dpm-introduction-classic.md)
 ### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
@@ -22,8 +23,7 @@
 ### [Backup 資格情報コンテナー内のデータを別の DPM サーバーに回復する](backup-azure-alternate-dpm-server.md)
 ### [DPM を使った SQL Server ワークロードのバックアップ](backup-azure-backup-sql.md)
 ### [DPM を使った SharePoint ファームのバックアップ](backup-azure-backup-sharepoint.md)
-### [Recovery Services コンテナー - FAQ](backup-azure-backup-ibiza-faq.md)
-## Azure VM のバックアップ
+## Azure VM のバックアップと復元
 ### [Azure 仮想マシンの準備](backup-azure-vms-prepare.md)
 ### [Resource Manager によりデプロイされた仮想マシンの準備](backup-azure-arm-vms-prepare.md)
 ### [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
@@ -33,9 +33,17 @@
 ### [クラシック ポータルでの Azure VM のバックアップの管理と監視](backup-azure-manage-vms-classic.md)
 ### [Azure Portal での Azure VM のバックアップの管理](backup-azure-manage-vms.md)
 ### [Azure Portal での Azure VM のバックアップに関するアラートの監視](backup-azure-monitor-vms.md)
+### [Azure VM のバックアップからファイルを回復する](backup-azure-restore-files-from-vm.md)
 ### [Azure での仮想マシンの復元](backup-azure-restore-vms.md)
 ### [Resource Manager でデプロイされた VM の Azure Portal での復元](backup-azure-arm-restore-vms.md)
-## Windows マシンのバックアップ
+### [Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットの復元](backup-azure-restore-key-secret.md)
+## Azure SQL Database のバックアップと復元
+### [長期のバックアップ リテンション期間の構成](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [Recovery Services コンテナー内のバックアップの表示](../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [長期のバックアップ リテンション期間からの復元](../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [長期的な Azure SQL バックアップの削除](../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json)
+
+## Windows マシンのバックアップと復元
 ### [クラシック デプロイメント モデルを使用した Windows Server](backup-configure-vault-classic.md)
 ### [Resource Manager デプロイメント モデルを使用した Windows Server](backup-configure-vault.md)
 ### [クラシック デプロイメント モデルを使用した Backup 資格情報コンテナーの管理](backup-azure-manage-windows-server-classic.md)
@@ -43,6 +51,8 @@
 ### [Resource Manager デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server.md)
 ### [クラシック デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server-classic.md)
 
+## [バックアップの管理にロールベースのアクセス制御を使用する](backup-rbac-rs-vault.md)
+## [ハイブリッド バックアップのセキュリティ機能を有効にする](backup-azure-security-feature.md)
 ## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)
@@ -58,11 +68,11 @@
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/backup/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup) 
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup) 
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=backup)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

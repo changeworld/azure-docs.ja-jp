@@ -1,5 +1,5 @@
 ---
-title: "復旧計画への Azure Automation Runbook の追加 | Microsoft Docs"
+title: "Site Recovery での復旧計画に Azure Automation Runbook を追加する | Microsoft Docs"
 description: "この記事では、Azure Site Recovery において、Azure Automation を使用して復旧計画を拡張し、Azure への復旧中に複雑なタスクを実行可能にする方法について説明します。"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 10/23/2016
+ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 9f9a71cd7c6688dfd42dcb7ce52847f2016daf58
+ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
+ms.openlocfilehash: b88974ef713211a40b52aafab1b079ed8dbfec49
 
 
 ---
@@ -25,10 +25,10 @@ ms.openlocfilehash: 9f9a71cd7c6688dfd42dcb7ce52847f2016daf58
 
 Azure Automation について聞いたことがない場合は、[こちら](https://azure.microsoft.com/services/automation/)でサインアップして、[こちら](https://azure.microsoft.com/documentation/scripts/)からサンプル スクリプトをダウンロードしてください。 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) の詳細と、復旧計画を使用した Azure への復旧の調整方法については、[こちら](https://azure.microsoft.com/blog/?p=166264)を参照してください。
 
-このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を 1 回のクリックの復旧アクションに変換する方法を説明します。 また、単純なスクリプトで問題が発生する場合に、トラブルシューティングする方法も説明します。
+このチュートリアルでは、Azure Automation Runbook を復旧計画に統合する方法を説明します。 以前は手動での介入を必要とした単純なタスクを自動化し、複数の手順の復旧を&1; 回のクリックの復旧アクションに変換する方法を説明します。 また、単純なスクリプトで問題が発生する場合に、トラブルシューティングする方法も説明します。
 
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
-1. はじめに、復旧計画のリソース ブレードを開きます。 復旧計画に、復旧用に 2 つの仮想マシンが追加されています。
+1. はじめに、復旧計画のリソース ブレードを開きます。 復旧計画に、復旧用に&2; つの仮想マシンが追加されています。
 
     ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
 - - -
@@ -146,6 +146,6 @@ NSGwithCustomScript Runbook は Public IP Addresses を復旧計画内のすべ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

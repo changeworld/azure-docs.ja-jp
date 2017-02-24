@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 06/07/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2801bc0fc645f9ed23733d1025f1cb42a5174022
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 1b2156f2768e02be8030d91352422bd935fa7543
 
 
 ---
@@ -98,7 +98,7 @@ ms.openlocfilehash: 2801bc0fc645f9ed23733d1025f1cb42a5174022
 
 StorSimple Virtual Array 上で共有を作成し、共有をバックアップして、データを復元する方法については、このビデオをご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Use-the-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Use-the-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -108,6 +108,6 @@ StorSimple Virtual Array 上で共有を作成し、共有をバックアップ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

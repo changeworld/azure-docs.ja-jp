@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 53f5c17d51622dbc27a27c750999a925c3f80bff
+ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
+ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
 
 
 ---
@@ -34,7 +34,7 @@ API アプリのプロパティでは、その API アプリの Swagger 2.0 JSON
 ![](./media/app-service-api-metadata/apidefblade.png)
 
 ### <a name="azure-resource-manager-property"></a>Azure リソース マネージャーのプロパティ
-API アプリの API 定義 URL は、[リソース エクスプローラー](https://resources.azure.com/)を使うか、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って構成することもできます。 
+API アプリの API 定義 URL は、[リソース エクスプローラー](https://resources.azure.com/)を使うか、コマンド ライン ツール ([Azure PowerShell](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って構成することもできます。 
 
 **リソース エクスプローラー**から **[サブスクリプション]、<該当するサブスクリプション>、[ResourceGroups]、<該当するリソース グループ>、[プロバイダー]、[Microsoft.Web]、[サイト]、<該当サイト>、[構成]、[Web]** の順に移動すると、`apiDefinition` プロパティが表示されます。
 
@@ -60,6 +60,6 @@ API アプリで Azure API Management を使う場合は、Swagger メタデー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

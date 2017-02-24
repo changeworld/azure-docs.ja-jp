@@ -1,5 +1,5 @@
 ---
-title: "VM への SSH 接続の問題に関するトラブルシューティング | Microsoft Docs"
+title: "Azure VM への SSH 接続の問題に関するトラブルシューティング | Microsoft Docs"
 description: "Linux を実行する Azure VM に対する &quot;SSH 接続の失敗&quot; や &quot;SSH 接続の拒否&quot; などの問題のトラブルシューティング方法。"
 keywords: "ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する"
 services: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/21/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a585aaf2d40f077a81de299c0aef41844bde7cd1
+ms.sourcegitcommit: 10419c0e76ea647c0ef9e15f4cd0e514795a858e
+ms.openlocfilehash: 0191d6d84476b367e6cad6775738305e534c96a8
 
 
 ---
@@ -48,13 +48,13 @@ Linux 仮想マシン (VM) に接続しようとしたときに、さまざま�
 ## <a name="available-methods-to-troubleshoot-ssh-connection-issues"></a>SSH 接続の問題をトラブルシューティングするために使用できる方法
 資格情報または SSH 構成は、次のいずれかの方法でリセットできます。
 
-* [Azure Portal](#using-the-azure-portal) - SSH 構成または SSH キーをすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
-* [Azure CLI コマンド](#using-the-azure-cli) - 既にコマンド ラインにいる場合は、SSH 構成または資格情報をすばやくリセットします。
-* [Azure VMAccessForLinux 拡張機能](#using-the-vmaccess-extension) - json 定義ファイルを作成して再度使用して、SSH 構成またはユーザーの資格情報をリセットします。
+* [Azure Portal](#use-the-azure-portal) - SSH 構成または SSH キーをすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
+* [Azure CLI 1.0](#use-the-azure-cli-10) - 既にコマンド ラインにいる場合は、SSH 構成または資格情報をすばやくリセットします。 [Azure CLI 2.0 (プレビュー)](#use-the-azure-cli-20-preview) も使用できます
+* [Azure VMAccessForLinux 拡張機能](#use-the-vmaccess-extension) - json 定義ファイルを作成して再度使用して、SSH 構成またはユーザーの資格情報をリセットします。
 
 トラブルシューティングの各手順を実行した後、再度 VM に接続してみてください。 それでも接続できない場合は、次の手順をお試しください。
 
-## <a name="using-the-azure-portal"></a>Azure Portal の使用
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 Azure Portal では、ローカル コンピューターへのツールのインストールなしで SSH 構成またはユーザーの資格情報を簡単にリセットできます。
 
 Azure Portal で VM を選択します。 **[サポート + トラブルシューティング]** セクションまで下へスクロールし、**[パスワードのリセット]** を選択します (次の例を参照)。
@@ -69,8 +69,8 @@ Azure Portal で VM を選択します。 **[サポート + トラブルシュ�
 
 このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、**[リセット]** ボタンをクリックします。
 
-## <a name="using-the-azure-cli"></a>Azure CLI の使用
-まだインストールしていない場合は、 [Azure CLI をインストールし、Azure サブスクリプションに接続します](../xplat-cli-install.md)。 次のコマンドを実行して、確実に Resource Manager モードを使用するようにします。
+## <a name="use-the-azure-cli-10"></a>Azure CLI 1.0 を使用する
+まだインストールしていない場合は、 [Azure CLI 1.0 をインストールし、Azure サブスクリプションに接続します](../xplat-cli-install.md)。 次のコマンドを実行して、確実に Resource Manager モードを使用するようにします。
 
 ```azurecli
 azure config mode arm
@@ -93,18 +93,38 @@ SSHD が正しく機能しているように思える場合は、特定のユー
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
-     --username myUsername --password myPassword
+     --user-name myUsername --password myPassword
 ```
 
-SSH キー認証を使用している場合は、特定のユーザーの SSH キーをリセットできます。 次の例では、`myResourceGroup` 内の `myVM`という名前の VM で、`myUsername` という名前のユーザー用に `~/.ssh/azure_id_rsa.pub` に保存された SSH キーを更新します。 実際の値を次のように使用します。
+SSH キー認証を使用している場合は、特定のユーザーの SSH キーをリセットできます。 次の例では、`myResourceGroup` 内の `myVM`という名前の VM で、`myUsername` という名前のユーザー用に `~/.ssh/id_rsa.pub` に保存された SSH キーを更新します。 実際の値を次のように使用します。
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
-    --username myUsername --ssh-key-file ~/.ssh/azure_id_rsa.pub
+    --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
+```
+
+## <a name="use-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用する
+まだインストールしていない場合は、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+
+カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
+
+### <a name="reset-ssh-credentials-for-a-user"></a>ユーザーの SSH 資格情報をリセットする
+次の例では、[az vm access set-linux-user](/cli/azure/vm/access#set-linux-user) を使用して、`myUsername` の資格情報を、`myResourceGroup` 内の `myVM` という名前の VM で `myPassword` に指定された値にリセットします。 実際の値を次のように使用します。
+
+```azurecli
+az vm access set-linux-user --resource-group myResourceGroup --name myVM \
+     --username myUsername --password myPassword
+```
+
+SSH キー認証を使用している場合は、特定のユーザーの SSH キーをリセットできます。 次の例では、**az vm access set-linux-user** を使用して、`myResourceGroup` 内の `myVM` という名前の VM で、`myUsername` という名前のユーザー用に `~/.ssh/id_rsa.pub` に保存された SSH キーを更新します。 実際の値を次のように使用します。
+
+```azurecli
+az vm access set-linux-user --resource-group myResourceGroup --name myVM \
+    --username myUsername --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
 
-## <a name="using-the-vmaccess-extension"></a>VMAccess 拡張機能の使用
+## <a name="use-the-vmaccess-extension"></a>VMAccess 拡張機能を使用する
 Linux 用の VM アクセス拡張機能は、実行するアクションを定義する json ファイルを読み取ります。 これらのアクションには、SSHD のリセット、SSH キーのリセット、またはユーザーの追加が含まれます。 Azure CLI を使用して VMAccess 拡張機能を呼び出すこともできますが、json ファイルは、必要であれば複数の VM で再利用できます。 この方法では、特定のシナリオで呼び出すことができる json ファイルのリポジトリを作成できます。
 
 ### <a name="reset-sshd"></a>SSHD のリセット
@@ -153,16 +173,23 @@ azure vm extension set myResourceGroup myVM \
 ## <a name="restart-a-vm"></a>VM の再起動
 SSH 構成とユーザーの資格情報をリセットした場合、またはその際にエラーが発生した場合は、根本的なコンピューティングの問題に対処するために VM の再起動を試すことができます。
 
-### <a name="azure-portal"></a>Azure Portaｌ
+### <a name="azure-portal"></a>Azure ポータル
 Azure Portal を使用して VM を再起動するには、VM を選択し、**[再起動]** ボタンをクリックします (次の例を参照)。
 
 ![Azure Portal で VM を再起動する](./media/virtual-machines-linux-troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli-10"></a>Azure CLI 1.0
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
 
 ```azurecli
 azure vm restart --resource-group myResourceGroup --name myVM
+```
+
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+次の例では、[az vm restart](/cli/azure/vm#restart) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
+
+```azurecli
+az vm restart --resource-group myResourceGroup --name myVM
 ```
 
 
@@ -179,11 +206,18 @@ Azure Portal を使用して VM を再デプロイするには、VM を選択し
 
 ![Azure Portal で VM を再デプロイする](./media/virtual-machines-linux-troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli-10"></a>Azure CLI 1.0
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --name myVM
+```
+
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+次の例では、[az vm redeploy](/cli/azure/vm#redeploy) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
+
+```azurecli
+az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された VM
@@ -214,6 +248,6 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

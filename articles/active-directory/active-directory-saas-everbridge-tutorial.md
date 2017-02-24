@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 5608f38de6ae78772499a40c4e2d449cd5efc79c
-ms.openlocfilehash: 511a3883cadd9bf2fe1cc39a8626c49fa19a7d8e
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: d31201fa2ad57006d5181ee808020cea80446557
 
 
 ---
@@ -45,12 +45,12 @@ Azure AD と Everbridge の統合を構成するには、次のものが必要�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Everbridge の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -114,7 +114,7 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
    
     b. **[応答 URL]** ボックスに、`https://manager.everbridge.net/saml/SSO/{<company name>}/alias/defaultAlias` のパターンを使用して URL を入力します。
    
-    c.  **[次へ]**
+    c. **[次へ]**
 4. **[Everbridge でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_05.png)
@@ -253,6 +253,6 @@ Everbridge で Azure AD のシングル サインオンを構成してテスト�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager の仮想マシンに WinRM アクセスを設定する | Microsoft Docs"
-description: "Azure Resource Manager の仮想マシンと共に使用するために WinRM アクセスを設定する方法"
+title: "Azure VM の WinRM アクセスの設定 | Microsoft Docs"
+description: "Resource Manager のデプロイ モデルに作成された Azure 仮想マシンで使用するために WinRM アクセスを設定します。"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
-ms.author: singhkay
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 84a5272844b36951bb0132b21be9913ca50ee817
+ms.sourcegitcommit: ebc2195bbb3526171359cc126ea6b59d0089f4a0
+ms.openlocfilehash: 6559b8605a311bb774f6c8b38a9298875d3a5362
 
 
 ---
@@ -157,7 +157,7 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。  `Get-Service WinRM`
+> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。 `Get-Service WinRM`
 > 
 > 
 
@@ -167,6 +167,6 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

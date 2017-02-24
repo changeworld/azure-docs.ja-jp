@@ -13,17 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: ab8e5861dd7214dab41024e7048b739c072d3f64
-ms.openlocfilehash: 52a431c2af8b670fc4e4babb0a0d077051a46f54
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
 
 
 ---
-# <a name="introduction-to-machine-learning-in-the-cloud"></a>クラウドでの機械学習の概要
+# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>クラウドでの Azure Machine Learning の概要
 ## <a name="what-is-machine-learning"></a>機械学習とは
-機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。  
+機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の&1; つ です。  
 
 機械学習からのこうした予想や予測によってアプリやデバイスの機能性を高めることができます。 オンライン ショッピングでは、ユーザーが今までに購入した製品に基づいて他の商品をお勧めするのに機械学習が役立っています。 クレジット カードが読み取られると、機械学習は、トランザクションをトランザクションのデータベースと比較し、不正の検出を支援します。 ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
 
@@ -37,8 +37,6 @@ Azure Machine Learning は、クラウドの予測分析サービスであり、
 ![機械学習とは Azure Machine Learning で予測分析を運用する場合の基本的なワークフローについて説明します。](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
 Azure Machine Learning は、モデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするための、完全に管理されたサービスを提供します。
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-predictive-analytics"></a>予測分析とは
 予測分析では、アルゴリズムと呼ばれる数式を使用して過去または最新のデータのパターンや傾向を分析し、将来のイベントを予測します。
@@ -60,7 +58,7 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 次のチュートリアルでは、予測分析モデルを運用可能な状態にする方法について説明します。
 
  * [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
- * [API を通じてモデルをトレーニング/再トレーニングする](machine-learning-retrain-models-programmatically.md)
+ * [API を通じてモデルを再トレーニングする](machine-learning-retrain-models-programmatically.md)
  * [Web サービスのエンドポイントを管理する](machine-learning-create-endpoint.md)
  * [Web サービスをスケーリングする](machine-learning-scaling-webservice.md)
  * [Web サービスを使用する](machine-learning-consume-web-services.md)
@@ -69,7 +67,10 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 機械学習の用語はわかりにくい場合があります。 ここでは、役に立つ主な用語の定義を紹介します。 これ以外にも定義をご希望の用語があれば、後のコメントを利用してお知らせください。
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>データの探索、説明的な分析、予測分析
-**データの探索** は、大規模で、多くの場合構造化されていないデータ セットに関する情報を収集するプロセスであり、焦点を絞った分析のための特性を見つけ出すために行われます。 **データ マイニング** は自動化されたデータの探索を参照します。
+
+**データの探索** は、大規模で、多くの場合構造化されていないデータ セットに関する情報を収集するプロセスであり、焦点を絞った分析のための特性を見つけ出すために行われます。
+
+**データ マイニング** は自動化されたデータの探索を参照します。
 
 **説明的な分析** は、変更内容を要約するためにデータ セットを分析するプロセスです。 売り上げレポート、Web のメトリック、ソーシャル ネットワークの分析などほとんどのビジネス分析は、説明的な分析になります。
 
@@ -114,6 +115,6 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

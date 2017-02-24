@@ -1,13 +1,25 @@
 ---
+title: "Azure Data Catalog のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "組織がデータ ソースを検索、把握、活用できるデータ カタログのセットアップ方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: data-catalog
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-catalog
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 7c2c989ca2119f7a2c14ca55a56a2bce69d94efa
+ms.sourcegitcommit: c5ada5ff9a0ba37cecff9e2d507736457cc11eb5
+ms.openlocfilehash: b04ec1a07bd1d74aa061409823c78ea814d127fc
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog のドキュメント
 
-Azure Data Catalog は、完全に管理されたクラウド サービスです。Azure Data Catalog を通じて、ユーザーは必要なデータ ソースを検出したり、見つけたデータ ソースについての知見を得たりすることができ、組織は既存の投資からさらに大きな価値を引き出すことができます。 アナリストからデータ サイエンティスト、開発者に至るまで、あらゆるユーザーが Data Catalog の機能を利用してデータ ソースを検出し、理解して利用することができます。 Data Catalog には、メタデータや注釈のクラウドソーシング モデルが組み込まれており、すべてのユーザーがその知見を持ち寄ってデータのコミュニティや文化を構築することができます。
+Data Catalog を使用して、組織やチームがデータ ソースを検出、把握、活用する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、登録されたデータ ソースをデータ コンシューマーが検索し、領域の専門家によって提供される知識を取得できるデータ リポジトリの計画とセットアップの方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -66,15 +78,10 @@ Azure Data Catalog は、完全に管理されたクラウド サービスです
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-catalog.pdf">
-        <div class="img"></div>
-        <div class="text">
-Data Catalog のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

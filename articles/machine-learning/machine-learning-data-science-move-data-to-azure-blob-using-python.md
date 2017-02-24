@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a67f2e77d3bc7da35a03b68d7f32fd3a2a42bfcd
-ms.openlocfilehash: 8ae64aa0cfe3774cfa288cc3eea18b1b2f56ad90
+ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
+ms.openlocfilehash: fb34986d947175ae4b4212e5bd0a1e90836ed170
 
 
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>Python を使用して Azure BLOB ストレージ間でデータを移動する
+# <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>Python を使用して Azure Blob Storage 間でデータを移動する
 このトピックでは、Python API を使用して BLOB の一覧表示、アップロード、ダウンロードを行う方法について説明します。 Azure SDK で提供される Python API を使用して、以下のことを行うことができます。
 
 * コンテナーを作成する
@@ -131,6 +131,6 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

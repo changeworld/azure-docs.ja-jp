@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: f1955e3e1618c6228bfa5439ca66155148ff1cb3
-ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
+ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
+ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 
 
 ---
@@ -107,7 +107,7 @@ ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="view-your-subscription-and-costs"></a>サブスクリプションとコストを表示する
-サブスクリプションの情報と、すべてのリソースの合計コストに関する情報を表示できます。 **[サブスクリプション]** を選択し、表示するサブスクリプションを選択します。 選択できるサブスクリプションが 1 つのみの場合もあります。
+サブスクリプションの情報と、すべてのリソースの合計コストに関する情報を表示できます。 **[サブスクリプション]** を選択し、表示するサブスクリプションを選択します。 選択できるサブスクリプションが&1; つのみの場合もあります。
 
 ![サブスクリプション](./media/resource-group-portal/select-subscription.png)
 
@@ -134,7 +134,7 @@ ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
 
 ## <a name="next-steps"></a>次のステップ
 * アクティビティ ログの表示については、[Resource Manager の監査操作](resource-group-audit.md)に関するページを参照してください。
-* デプロイ エラーのトラブルシューティングについては、 [Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
+* デプロイの詳細については、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * ポータルを使用したリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
 * リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
@@ -142,6 +142,6 @@ ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

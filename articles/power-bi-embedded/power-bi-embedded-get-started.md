@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Power BI Embedded の概要"
-description: "Power BI Embedded は、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加します"
+description: "Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
+ms.sourcegitcommit: fd0ddf8275ab58eb3c411123b776654fb46cae5d
+ms.openlocfilehash: 5770bbfcf700b1cefea6d22e0d5f025c1660e744
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
 ![](media/power-bi-embedded-get-started/introduction.png)
 
 ## <a name="create-a-workspace-collection"></a>ワークスペース コレクションの作成
-**ワークスペース コレクション** はトップレベルの Azure リソースであり、アプリケーションに埋め込まれるコンテンツのコンテナーです。 **ワークスペース コレクション** は、次の 2 つの方法で作成できます。
+**ワークスペース コレクション** はトップレベルの Azure リソースであり、アプリケーションに埋め込まれるコンテンツのコンテナーです。 **ワークスペース コレクション** は、次の&2; つの方法で作成できます。
 
 * Azure ポータルを使用して手動で作成する
 * Azure Resource Manager (ARM) API を使用してプログラムで作成する
@@ -41,7 +41,7 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
    
    ![](media/power-bi-embedded-get-started/create-workspace-1.png)
 3. **[データ + 分析]** の **[Power BI Embedded]** をクリックします。
-4. **作成ブレード**で、必要な情報を入力します。 **価格**については、「 [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)」を参照してください。
+4. **ワークスペース コレクション ブレード**で、必要な情報を入力します。 **価格**については、「 [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)」を参照してください。
    
    ![](media/power-bi-embedded-get-started/create-workspace-2.png)
 5. **[作成]**をクリックします。
@@ -55,7 +55,7 @@ ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
 <a name="view-access-keys"/>
 
 ## <a name="view-power-bi-api-access-keys"></a>Power BI API のアクセス キーの表示
-Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが **アクセス キー**です。 アクセス キーは、API 要求の認証に使用される **アプリ トークン** を生成するために使用します。 **アクセス キー**を表示するには、**[設定]** ブレードの **[アクセス キー]** をクリックします。 **app tokens**の詳細については、「 [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。
+Power BI REST API を呼び出すために必要な最も重要な情報の&1; つが **アクセス キー**です。 アクセス キーは、API 要求の認証に使用される **アプリ トークン** を生成するために使用します。 **アクセス キー**を表示するには、**[設定]** ブレードの **[アクセス キー]** をクリックします。 **app tokens**の詳細については、「 [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。
 
    ![](media/power-bi-embedded-get-started/access-keys.png)
 
@@ -65,9 +65,13 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 これらのキーをコピーし、アプリケーションに安全に格納します。 これらのキーを使用すると **ワークスペース コレクション**のすべての内容にアクセスできるため、これらのキーをパスワードと同じように慎重に扱うことが重要です。
 
-キーは 2 つ表示されますが、一度に使用するキーは 1 つのみです。 2 つ目のキーは、サービスへのアクセスを中断することなく定期的にキーを再生成できるようにするために提供されます。
+キーは&2; つ表示されますが、一度に使用するキーは&1; つのみです。 2 つ目のキーは、サービスへのアクセスを中断することなく定期的にキーを再生成できるようにするために提供されます。
 
 アプリケーション用の Power BI のインスタンスと **アクセス キー**が準備できたら、レポートをアプリにインポートできます。 レポートのインポート方法を説明する前に、次のセクションで、アプリに埋め込む Power BI データセットとレポートの作成について説明します。
+
+## <a name="working-with-workspaces"></a>ワークスペースの使用
+
+ワークスペース コレクションを作成したら、レポートとデータセットを格納するワークスペースを作成する必要があります。 ワークスペースを作成するには、[Post Worksapce REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx) を使用する必要があります。
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>アプリに埋め込む Power BI データセットとレポートの作成
 アプリケーション用の Power BI のインスタンスと **アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。 データセットとレポートは、**Power BI Desktop** を使用して作成できます。 [Power BI Desktop は無料で](https://go.microsoft.com/fwlink/?LinkId=521662)ダウンロードできます。 または、 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)をダウンロードしてすぐに開始できます。
@@ -109,6 +113,6 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

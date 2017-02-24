@@ -2,7 +2,7 @@
 title: "DocumentDB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs"
 description: "マスター キー、読み取り専用キー、ユーザー、アクセス許可など、DocumentDB のアクセス制御の概念について説明します。"
 services: documentdb
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -12,8 +12,8 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2016
-ms.author: kipandya
+ms.date: 02/21/2017
+ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
 ms.openlocfilehash: 4d84c11a4b91727f60c4c266a23cc5f3946898f5

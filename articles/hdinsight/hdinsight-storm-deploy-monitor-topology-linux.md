@@ -12,32 +12,39 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/07/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ca8f3ac0dd5301e1fd06abaf3a292872eb631f47
 
 
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-linux-based-hdinsight"></a>Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
-このドキュメントでは、HDInsight クラスターで Linux ベースの Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
+# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
+
+このドキュメントでは、HDInsight クラスターで Storm を実行している Storm トポロジを管理および監視する方法の基本について説明します。
 
 > [!IMPORTANT]
-> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「 [HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)
+> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 
 > 
-> 
+> Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「 [HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)
+
 
 ## <a name="prerequisites"></a>前提条件
 * **HDInsight クラスター上の Linux ベースの Storm**: クラスターの作成手順については、「 [HDInsight での Apache Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md) 」を参照してください。
+
 * **SSH と SCP を熟知していること**: HDInsight で SSH と SCP を使用する方法については、以下を参照してください。
   
   * **Linux、Unix、または OS X クライアント**: See [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)
+
   * **Windows クライアント**: [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 * **SCP クライアント**: Linux、Unix、OS X システムのすべてに付属しています。 Windows クライアントの場合は PSCP をお勧めします。PSCP は [PuTTY ダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)から入手できます。
 
 ## <a name="start-a-storm-topology"></a>Storm トポロジを開始する
+
 ### <a name="using-ssh-and-the-storm-command"></a>SSH と Storm コマンドを使用する
+
 1. SSH を使用して、HDInsight クラスターに接続します。 **USERNAME** には、SSH ログイン名を指定します。 **CLUSTERNAME** には、HDInsight クラスター名を指定します。
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
@@ -45,10 +52,12 @@ ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
     SSH を使用して HDInsight クラスターに接続する方法の詳細については、次のドキュメントを参照してください。
    
    * **Linux、Unix、または OS X クライアント**: See [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)
+
    * **Windows クライアント**: See [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 2. 次のコマンドを実行してトポロジの例を開始します。
    
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-0.9.3.2.2.4.9-1.jar storm.starter.WordCountTopology WordCount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm.starter.WordCountTopology WordCount
    
     クラスターで WordCount トポロジの例が開始されます。 文はランダムに生成され、文中の各単語の出現回数がカウントされます。
    
@@ -60,9 +69,11 @@ ms.openlocfilehash: d5c33fc7d24eb2b14db9cdf3211a06e6fcc1cb68
    > 
 
 ### <a name="programmatically"></a>プログラムを使用する
+
 クラスターでホストされている Nimbus サービスと通信することにより、プログラムを使用して HDInsight の Storm にトポロジをデプロイできます。 [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) に用意されている Java アプリケーションの例を参照してください。
 
 ## <a name="monitor-and-manage-using-the-storm-command"></a>Storm コマンドを使用して監視および管理する
+
 `storm` ユーティリティを使用すると、コマンド ラインから実行中のトポロジを操作できます。 次に、一般的に使用されるコマンドの一覧を示します。 完全なコマンド一覧を表示するには、 `storm -h` を使用してください。
 
 ### <a name="list-topologies"></a>トポロジの一覧を表示する
@@ -179,6 +190,6 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "DNS ゾーンとレコード | Microsoft Docs"
+title: "DNS ゾーンとレコードの概要 - Azure DNS | Microsoft Docs"
 description: "Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要"
 services: dns
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: f4c17d03ff637659a7bc7cde378878d8a4827b80
-ms.openlocfilehash: 38ff556271a84fbf385dab03a7551b3eb7413c81
+ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
+ms.openlocfilehash: 4950edd41f58175c675afb7a7ea9f14fe4a59b26
 
 ---
 
@@ -26,7 +26,7 @@ ms.openlocfilehash: 38ff556271a84fbf385dab03a7551b3eb7413c81
 
 ## <a name="domain-names"></a>ドメイン名
 
-ドメイン ネーム システムはドメインの階層構造です。 階層は、"**.**" という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
+ドメイン ネーム システムはドメインの階層構造です。 階層は、"**.**" という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第&2; レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
 
 "contoso.com" などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、"www.contoso.com" という名前で会社の Web サイトを表示するなど、そのドメイン名で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
 
@@ -113,7 +113,7 @@ Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager
 
 ## <a name="etags"></a>Etag
 
-たとえば、2 人のユーザーまたは 2 つのプロセスが同時に DNS レコードを変更しようとするとします。 どちらの変更が優先されるでしょうか。 また、優先された側は、他のユーザーまたはプロセスによって行われた変更を上書きしたことに気付くのでしょうか。
+たとえば、2 人のユーザーまたは&2; つのプロセスが同時に DNS レコードを変更しようとするとします。 どちらの変更が優先されるでしょうか。 また、優先された側は、他のユーザーまたはプロセスによって行われた変更を上書きしたことに気付くのでしょうか。
 
 Azure DNS は、Etag を使用して同じリソースへの同時変更を安全に処理します。 Etag と [Azure Resource Manager の 'タグ' ](#tags) は独立しています。 各 DNS リソース (ゾーンまたはレコード セット) には、関連付けられている Etag があります。 リソースが取得されるときは、常に Etag も取得されます。 リソースを更新する場合は、Azure DNS がサーバー上の Etag の一致を確認できるように Etag を返すこともできます。 リソースを更新するたびに Etag が再生成されるため、Etag の不一致は同時変更が発生していることを示します。 Etag は、既存のリソースがないことを確認するために、新しいリソースの作成時にも使用されます。
 
@@ -143,6 +143,6 @@ Azure DNS を使用する際は、次の制限が既定で適用されます。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

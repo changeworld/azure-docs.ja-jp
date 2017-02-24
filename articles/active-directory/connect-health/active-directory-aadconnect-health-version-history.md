@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: vakarand
+ms.date: 02/06/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12c14222be76ad6d31d968f0704159068c85b21c
+ms.sourcegitcommit: 2daa6c07191da7bd732cadf62b414f8027682071
+ms.openlocfilehash: 35d7ac416c35c74d38f4370ee7e34a96eb18d000
 
 
 ---
@@ -60,7 +60,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 ## <a name="november-2015"></a>2015 年 11 月
 **新機能:**
 
-*  [ロールベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)
+* [ロールベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新しいプレビュー機能:**
 
@@ -100,6 +100,6 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

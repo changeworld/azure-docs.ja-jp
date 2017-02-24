@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a233f2d3164bede0478eb106a8b766dcd5cdb13c
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b178359d2f55e9137b39f42f5562e7bb8a642c57
 
 
 ---
@@ -199,6 +199,6 @@ Azure Resource Manager と Azure リソース グループの詳細について�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

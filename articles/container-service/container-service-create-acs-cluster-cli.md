@@ -1,5 +1,5 @@
 ---
-title: "CLI を使用した Azure Container Service クラスターのデプロイ | Microsoft Docs"
+title: "Docker コンテナー クラスターのデプロイ - Azure CLI | Microsoft Docs"
 description: "Azure CLI 2.0 プレビューを使用して Azure Container Service クラスターをデプロイします"
 services: container-service
 documentationcenter: 
@@ -14,116 +14,137 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 855f0fe77bd55f6ec0dacad4bc28603ac1c6979c
-ms.openlocfilehash: c4a513686433e802f27f78de60e8b7fca21b4634
+ms.sourcegitcommit: df916670743158d6a22b3f17343630114584fa08
+ms.openlocfilehash: 65f1c812472f4a3b6d4a4e6fb7666a2c022af102
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-to-create-an-azure-container-service-cluster"></a>Azure CLI 2.0 プレビューを使用した Azure Container Service クラスターの作成
+# <a name="using-the-azure-cli-20-preview-to-create-an-azure-container-service-cluster"></a>Azure CLI 2.0 (プレビュー) を使用した Azure Container Service クラスターの作成
 
-Azure Container Service クラスターを作成するには、次が必要です。
-* Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* [Azure CLI v.2.0 (プレビュー)](https://github.com/Azure/azure-cli#installation) をインストールする
-* Azure アカウントへのログイン (下記参照)
+Azure CLI 2.0 (プレビュー) の `az acs` コマンドを使用すると、Azure Container Service のクラスターを作成および管理できます。 [Azure Portal](container-service-deployment.md) または Azure Container Service API を使用して、Azure Container Service クラスターをデプロイすることもできます。
 
-## <a name="log-in-to-your-account"></a>アカウントへのログイン
+`az acs` の各コマンドのヘルプについては、任意のコマンドで `-h` パラメーターを指定してください。 (例: `az acs create -h`)。
+
+
+
+## <a name="prerequisites"></a>前提条件
+Azure CLI 2.0 (プレビュー) を使用して Azure Container Service クラスターを作成するには、以下のものが必要です。
+* Azure アカウント ([無料試用版はこちら](https://azure.microsoft.com/pricing/free-trial/))
+* インストールして設定した [Azure CLI v.2.0 (プレビュー)](/cli/azure/install-az-cli2)
+
+## <a name="get-started"></a>作業開始 
+### <a name="log-in-to-your-account"></a>アカウントへのログイン
 ```azurecli
 az login 
 ```
-この[リンク](https://login.microsoftonline.com/common/oauth2/deviceauth)にアクセスして、CLI で取得したデバイス コードで認証を行う必要があります。
 
-![コマンドの入力](media/container-service-create-acs-cluster-cli/login.png)
+画面の指示に従って、対話形式でログインします。 その他の方法でのログインについては、「[Get started with Azure CLI 2.0 (Preview) (Azure CLI 2.0 (プレビュー) の概要)](/cli/azure/get-started-with-az-cli2)」を参照してください。
 
-![の作成](media/container-service-create-acs-cluster-cli/login-browser.png)
+### <a name="set-your-azure-subscription"></a>Azure サブスクリプションの設定
+
+複数の Azure サブスクリプションがある場合は、既定のサブスクリプションを設定します。 次に例を示します。
+
+```
+az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
+```
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループの作成
+クラスターごとにリソース グループを作成することをお勧めします。 Azure Container Service を[使用可能](https://azure.microsoft.com/en-us/regions/services/)にする Azure リージョンを指定します。 For example:
+
 ```azurecli
 az group create -n acsrg1 -l "westus"
 ```
+次のような出力になります。
 
-![リソース グループ作成の画像](media/container-service-create-acs-cluster-cli/rg-create.png)
+![リソース グループの作成](media/container-service-create-acs-cluster-cli/rg-create.png)
 
-## <a name="list-of-available-azure-container-service-cli-commands"></a>使用できる Azure Container Service CLI コマンドの一覧
-
-```azurecli
-az acs -h
-```
-
-![ACS コマンドの使用方法](media/container-service-create-acs-cluster-cli/acs-command-usage-help.png)
 
 ## <a name="create-an-azure-container-service-cluster"></a>Azure Container Service クラスターの作成
 
-"*CLI の ACS create の使用方法*"
+クラスターを作成するには、`az acs create` を使用します。
+クラスターの名前と、前の手順で作成したリソース グループの名前は、必須のパラメーターです。 
 
-```azurecli
-az acs create -h
-```
-コンテナー サービスの名前、前の手順で作成したリソース グループ、一意の DNS 名は必須です。 その他の入力は、それぞれスイッチを使用して上書きしない限り、既定値に設定されます (ヘルプのスナップショットを含む次の画像を参照)。
-![ACS create ヘルプの画像](media/container-service-create-acs-cluster-cli/acs-command-usage-help.png)
+その他の入力は、それぞれスイッチを使用して上書きしない限り、既定値に設定されます (次の画像を参照)。 たとえば、オーケストレーターは既定では DC/OS に設定されます。 指定しない場合は、クラスター名に基づいて DNS 名プレフィックスが作成されます。
 
-"*既定値を使用した簡単な ACS create。SSH キーがない場合は 2 番目のコマンドを使用します。--generate-ssh-keys スイッチを指定したこの 2 番目の create コマンドにより、SSH キーが生成されます*"
+![az acs create の使用方法](media/container-service-create-acs-cluster-cli/create-help.png)
+
+
+### <a name="quick-acs-create-using-defaults"></a>既定値を使用した簡単な `acs create`
+SSH 公開キー ファイル `id_rsa.pub` が既定の場所にある (あるいは、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 用に作成した) 場合は、次のようなコマンドを使用します。
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
 ```
+SSH 公開キーがない場合は、次の&2; つ目のコマンドを使用します。 このコマンドの `--generate-ssh-keys` スイッチで、キーが自動的に作成されます。
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys
 ```
 
-"*DNS プレフィックス (-d スイッチ) が一意であることを確認してください。エラーが発生する場合、一意の文字列を使ってもう一度やり直してください。*"
-
-上記のコマンドを入力した後、クラスターが作成されるまで約 10 分待ちます。
+コマンドを入力した後、クラスターが作成されるまで約 10 分待ちます。 コマンドの出力には、マスター ノードおよびエージェント ノードの完全修飾ドメイン名 (FQDN) と、最初のマスターに接続するための SSH コマンドが含まれています。 以下に、出力の一部を示します。
 
 ![ACS create の画像](media/container-service-create-acs-cluster-cli/cluster-create.png)
 
-## <a name="list-acs-clusters"></a>ACS クラスターの一覧表示 
+> [!TIP]
+> [Kubernetes チュートリアル](container-service-kubernetes-walkthrough.md)では、既定値で `az acs create` を使用して Kubernetes クラスターを作成する方法を示しています。
+>
 
-### <a name="under-a-subscription"></a>サブスクリプション内
+## <a name="manage-acs-clusters"></a>ACS クラスターの管理
+
+クラスターを管理するには、追加の `az acs` コマンドを使用します。 次に例をいくつか示します。
+
+### <a name="list-clusters-under-a-subscription"></a>サブスクリプションのクラスターの一覧表示
 
 ```azurecli
 az acs list --output table
 ```
 
-### <a name="in-a-specific-resource-group"></a>特定のリソース グループ内
+### <a name="list-clusters-in-a-resource-group"></a>リソース グループのクラスターの一覧表示
 
 ```azurecli
 az acs list -g acsrg1 --output table
 ```
 
-![ACS list の画像](media/container-service-create-acs-cluster-cli/acs-list.png)
+![acs list](media/container-service-create-acs-cluster-cli/acs-list.png)
 
 
-## <a name="display-details-of-a-container-service-cluster"></a>コンテナー サービス クラスターの詳細の表示
+### <a name="display-details-of-a-container-service-cluster"></a>コンテナー サービス クラスターの詳細の表示
 
 ```azurecli
 az acs show -g acsrg1 -n acs-cluster --output list
 ```
 
-![ACS list の画像](media/container-service-create-acs-cluster-cli/acs-show.png)
+![acs show](media/container-service-create-acs-cluster-cli/acs-show.png)
 
 
-## <a name="scale-the-acs-cluster"></a>ACS クラスターのスケール
-"*スケールインとスケールアウトの両方が可能です。パラメーター new-agent-count は、ACS クラスターの新しいエージェントの数です。*"
+### <a name="scale-the-cluster"></a>クラスターのスケーリング
+エージェント ノードのスケールインとスケールアウトの両方が可能です。 パラメーター `new-agent-count` は、ACS クラスター内の新しいエージェントの数です。
 
 ```azurecli
 az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
 ```
 
-![ACS scale の画像](media/container-service-create-acs-cluster-cli/acs-scale.png)
+![acs scale](media/container-service-create-acs-cluster-cli/acs-scale.png)
 
 ## <a name="delete-a-container-service-cluster"></a>コンテナー サービス クラスターの削除
 ```azurecli
 az acs delete -g acsrg1 -n acs-cluster 
 ```
-"*この delete コマンドでは、コンテナー サービスの作成中に作成されたリソース (ネットワークとストレージ) がすべて削除されるわけではないことに注意してください。すべてのリソースを削除する場合は、リソース グループごとに単一の ACS クラスターを作成してから、acs クラスターが必要なくなったときにリソース グループそのものを削除することをお勧めします。そうすることで、関連するリソースがすべて削除され、それらに対する課金を回避できます。*"
+このコマンドによって、コンテナー サービスの作成中に作成されたすべてのリソース (ネットワークおよびストレージ) が削除されるわけではありません。 すべてのリソースを簡単に削除するには、個別のリソース グループに各クラスターをデプロイすることをお勧めします。 その後、クラスターが不要になったら、リソース グループを削除します。
+
+## <a name="next-steps"></a>次のステップ
+これでクラスターが機能します。接続と管理の詳細については、次のドキュメントを参照してください。
+
+* [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
+* [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
+* [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
+* [Azure Container Service と Kubernetes の使用](container-service-kubernetes-walkthrough.md)
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

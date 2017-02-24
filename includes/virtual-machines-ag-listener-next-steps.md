@@ -5,10 +5,10 @@
 > 
 > 
 
-Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

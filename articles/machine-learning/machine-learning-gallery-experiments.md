@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ac264d48db224fb1a14c2ea4a23ddb11f767efda
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 66b61e4619518619aac644f6833c597cb9a7408e
 
 
 ---
@@ -38,17 +38,17 @@ ms.openlocfilehash: ac264d48db224fb1a14c2ea4a23ddb11f767efda
  **[実験](https://gallery.cortanaintelligence.com/experiments)**
  ページには、最近追加された、最も一般的な実験の一覧が表示されます。
 **[すべて表示]** をクリックし、すべての実験を表示します。
-このページから、ギャラリー内のすべての実験を閲覧することができます。または、ページ左側のフィルター条件を選択して上部に検索語句を入力し、検索することができます。
+このページで、ギャラリー内のすべての実験を見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
  任意の実験をクリックし、実験の詳細ページを開いて、どのような実験かに関する詳細を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 実験へのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
 
-![この項目を友人と共有する](media\\machine-learning-gallery-how-to-use-contribute-publish\\share-links.png)
+![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
-![独自のコメントを追加する](media\\machine-learning-gallery-how-to-use-contribute-publish\\comments.png)
+![独自のコメントを追加する](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>ダウンロード
 Studio ワークスペースにギャラリーから任意の実験のコピーをダウンロードし、コピーを変更して、独自のソリューションを作成することができます。
-実験のコピーを取得する方法は 2 つあります。
+実験のコピーを取得する方法は&2; つあります。
 
 * **ギャラリーから**: ギャラリーで目的の実験を見つけた場合は、簡単にコピーをダウンロードして、Machine Learning Studio ワークスペースで開くことができます。
 * **Machine Learning studio 内から**: Studio で、ギャラリー内の任意の実験をテンプレートとして使用し、新しい実験を作成することができます。
@@ -59,7 +59,7 @@ Studio ワークスペースにギャラリーから任意の実験のコピー�
 1. ギャラリーで、実験の詳細ページを開く
 2. **[Studio で開く]** をクリックする
    
-    ![ギャラリーから実験を開く](media\\machine-learning-gallery-experiments\\open-experiment-from-gallery.png)
+    ![ギャラリーから実験を開く](media/machine-learning-gallery-experiments/open-experiment-from-gallery.png)
 
 **[Studio で開く]** をクリックすると、実験が Machine Learning Studio ワークスペースに読み込まれ、開きます (Studio にサインインしていない場合は、実験がワークスペースにコピーされる前に、Microsoft アカウントを使用してサインインするよう求められます)。
 
@@ -70,11 +70,11 @@ Machine Learning Studio で作業している間は、同じサンプル実験�
 2. **実験** を選択する: Microsoft によって提供された実験をギャラリーの一覧から選択するか、検索ボックスを使用して特定の実験を見つけることができます
 3. マウスを実験でポイントし、**[Studio で開く]** を選択する: 実験はワークスペースにコピーされ、開かれる (実験に関する詳細を参照するには、**[ギャラリーで表示]** を選択し、ギャラリー内の実験についての詳細ページに移動する)
    
-    ![Machine Learning Studio 内から ギャラリー実験を開く](media\\machine-learning-gallery-experiments\\open-experiment-from-studio.png)
+    ![Machine Learning Studio 内から ギャラリー実験を開く](media/machine-learning-gallery-experiments/open-experiment-from-studio.png)
 
 Machine Learning Studio で作成した他のすべての実験のように、この実験をカスタマイズ、反復、およびデプロイすることができるようになります。
 
-![Studio で開かれている実験](media\\machine-learning-gallery-experiments\\experiment-open-in-studio.png)
+![Studio で開かれている実験](media/machine-learning-gallery-experiments/experiment-open-in-studio.png)
 
 ## <a name="contribute"></a>投稿
 ギャラリーにサインインすると、ギャラリー コミュニティのメンバーになります。 これにより、独自の実験を投稿して、ユーザーが見つけたソリューションを他のユーザーが利用できるようになります。
@@ -86,10 +86,10 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 2. 実験を作成して実行します。
 3. 実験をギャラリーに公開する準備ができたら、実験キャンバスの下にある **[ギャラリーに公開する]** をクリックします。
    
-    ![[ギャラリーに公開する] をクリックします](media\\machine-learning-gallery-experiments\\publish-experiment-to-gallery.png)
+    ![[ギャラリーに公開する] をクリックします](media/machine-learning-gallery-experiments/publish-experiment-to-gallery.png)
 4. タイトルとタグのフィールドを入力します。 「二項分類: Twitter センチメントの解析」などのように、使用している手法または解決する現実の問題を強調したわかりやすい文言にしてください。
    
-    ![公開時のタイトルとタグのフィールドの入力](media\\machine-learning-gallery-experiments\\experiment-description.png)
+    ![公開時のタイトルとタグのフィールドの入力](media/machine-learning-gallery-experiments/experiment-description.png)
 5. コンテンツの概要を記述します。 解決する問題と対処の方法について簡単に説明します。
 6. 詳細な説明のボックスを使用して、実験の個々の部分を説明します。 ここで指定する有用なトピックの例を次に示します。
    
@@ -103,7 +103,7 @@ Machine Learning Studio で作成した他のすべての実験のように、�
      </br>
      必要に応じ、マークダウンを使用して書式を設定することができます。 **[プレビュー]** アイコンをクリックし、公開されたときの外観を表示します。
      </br>
-     ![[プレビュー] をクリックし、テキストの外観を表示する](media\\machine-learning-gallery-experiments\\preview-markdown-text.png)
+     ![[プレビュー] をクリックし、テキストの外観を表示する](media/machine-learning-gallery-experiments/preview-markdown-text.png)
      
      <!-- -->
      > [!TIP]
@@ -112,10 +112,10 @@ Machine Learning Studio で作成した他のすべての実験のように、�
      > 
 7. ギャラリー項目のサムネイル イメージをアップロードします。 これは、ギャラリーを参照するときに、項目ページの上部および項目のタイルに表示されます。 コンピューターに保存されているイメージ、またはいずれかのストック イメージを選択できます。
     </br>
-    ![ギャラリーのイメージをアップロードまたは選択する](media\\machine-learning-gallery-experiments\\select-gallery-image.png)
+    ![ギャラリーのイメージをアップロードまたは選択する](media/machine-learning-gallery-experiments/select-gallery-image.png)
 8. コンテンツを一般向けに公開するのか、リンクを持つユーザーのみアクセスできるようにするのかを選択します。
    
-    ![一般向けに公開するか、または非公開にするかを選択する](media\\machine-learning-gallery-experiments\\choose-public-or-unlisted.png)
+    ![一般向けに公開するか、または非公開にするかを選択する](media/machine-learning-gallery-experiments/choose-public-or-unlisted.png)
    
     <!-- -->
    
@@ -125,7 +125,7 @@ Machine Learning Studio で作成した他のすべての実験のように、�
    > 
 9. **[OK]** チェック マークをクリックして、ギャラリーに実験を公開します。
    
-    ![[OK] チェック マークをクリックして、ギャラリーに実験を公開します](media\\machine-learning-gallery-experiments\\ok-checkmark.png)
+    ![[OK] チェック マークをクリックして、ギャラリーに実験を公開します](media/machine-learning-gallery-experiments/ok-checkmark.png)
 
 良質のギャラリー実験を公開する方法に関するヒントについては、後述の**「公開および良質なドキュメントに関する提案」**セクションを参照してください。
 
@@ -135,7 +135,7 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 
 自分の投稿の一覧を表示するには、ギャラリー ページの右上隅にある自分のイメージをクリックし、名前をクリックしてアカウント ページを開きます。
 
-![アカウント名をクリックする](media\\machine-learning-gallery-experiments\\click-account-name.png)
+![アカウント名をクリックする](media/machine-learning-gallery-experiments/click-account-name.png)
 
 ### <a name="update-your-experiment"></a>実験を更新する
 ギャラリーに発行した実験のワークフロー (モジュール、パラメーターなど) を変更する必要がある場合は、Machine Learning Studio でその実験に戻り、変更を行って、再度発行します。 既存の発行済みの実験が、変更内容に伴なって更新されます。
@@ -154,22 +154,22 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 #### <a name="from-your-experiments-details-page"></a>実験の詳細ページから
 実験の詳細ページから、[編集] をクリックし、実験の詳細を変更します。
 
-![[編集] をクリックし、実験を編集する](media\\machine-learning-gallery-experiments\\edit-button.png)
+![[編集] をクリックし、実験を編集する](media/machine-learning-gallery-experiments/edit-button.png)
 
 詳細ページが編集モードに入ると、実験名、概要、タグなどの横にある [編集] をクリックして、それらの変更を行うことができます。 変更が完了したら、[完了] をクリックします。
 
-![[編集] をクリックして詳細を編集し、完了したら [完了] をクリックする](media\\machine-learning-gallery-experiments\\edit-details-page.png)
+![[編集] をクリックして詳細を編集し、完了したら [完了] をクリックする](media/machine-learning-gallery-experiments/edit-details-page.png)
 
 [設定] アイコンを選択して、実験の可視性 (公開または非公開) を変更することもできます。あるいは、ギャラリーから実験を削除することもできます。
 
-![[設定] をクリックし、可視性の変更または実験を削除する](media\\machine-learning-gallery-experiments\\settings-button.png)
+![[設定] をクリックし、可視性の変更または実験を削除する](media/machine-learning-gallery-experiments/settings-button.png)
 
 #### <a name="from-your-profile-page"></a>プロファイル ページから
 プロファイル ページから、実験の下矢印をクリックし、[編集] を選択します。 編集モードでの実験についての詳細ページに移動します。 変更が完了したら、[完了] をクリックします。
 
 [削除] をクリックして、ギャラリーから実験を削除することもできます。
 
-![[編集] または [削除] をクリックする](media\\machine-learning-gallery-experiments\\edit-delete-buttons.png)
+![[編集] または [削除] をクリックする](media/machine-learning-gallery-experiments/edit-delete-buttons.png)
 
 ### <a name="suggestions-for-publishing-and-for-quality-documentation"></a>公開および良質なドキュメントに関する提案
 * 投稿の読者は前もってデータ サイエンスの経験を持っていると想定できますが、可能な限り平易な言葉で詳しく説明することは、やはり有用です。
@@ -202,6 +202,6 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

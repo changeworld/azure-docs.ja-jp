@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/07/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2969f307a6f0f52fc732d4e3360cfeda7784c5cf
+ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
+ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
 
 
 ---
@@ -30,7 +30,7 @@ Azure Import/Export サービスを使用すると、ハード ディスク ド�
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure ストレージ アカウント**。
-* **Azure Data Lake Analytics アカウント (オプション)**。 このアカウントの作成手順については、[Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)方法に関するページを参照してください。
+* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>データを準備する
 Import/Export サービスを使用する前に、転送するデータ ファイルを **200 GB 未満のコピーに**分割します。 これは、インポート ツールでは 200 GB を超えるファイルを扱えないためです。 このチュートリアルでは、それぞれ 100 GB のチャンクにファイルを分割します。 これは [Cygwin](https://cygwin.com/install.html) を使用して実行できます。 Cygwin では、Linux のコマンドがサポートされています。 この場合は、次のコマンドを使用します。
@@ -215,6 +215,6 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

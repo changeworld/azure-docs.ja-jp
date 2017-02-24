@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 4ebe010ab1f3d9df8bef1a6fc2ac5c24a7d1f5ee
+ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
+ms.openlocfilehash: 9071f344946999d49aee2e6bc420d35edfca96cd
 
 
 ---
@@ -27,6 +27,7 @@ DataFu は、Hadoop で使用するオープン ソース ライブラリのコ�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。
+
 * Azure HDInsight クラスター (Linux または Windows ベース)
 
   > [!IMPORTANT]
@@ -45,28 +46,34 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 
 1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。 HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントを参照してください。
    
-    * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [HDInsight 上の Linux ベースの Hadoop で Linux、Unix、OS X、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. 次のコマンドを使用して wget ユーティリティで DataFu jar ファイルをダウンロードするか、またはリンクをコピーしてブラウザーに貼り付けてダウンロードを開始します。
    
-        wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    ```
+    wget http://central.maven.org/maven2/com/linkedin/datafu/datafu/1.2.0/datafu-1.2.0.jar
+    ```
 
 3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。 これにより、クラスターのすべてのノードでファイルを使用できるようになり、クラスターを削除して再作成してもファイルはストレージに残っています。
    
-        hdfs dfs -put datafu-1.2.0.jar /example/jars
+    ```
+    hdfs dfs -put datafu-1.2.0.jar /example/jars
+    ```
    
     > [!NOTE]
-    > 上の例では jar を `wasbs:///example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。 HDInsight クラスター ストレージのどこでも使用できます。
+    > 上の例では jar を `/example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。 HDInsight クラスター ストレージのどこでも使用できます。
 
 ## <a name="use-datafu-with-pig"></a>Pig で DataFu を使用する
 
 読者は HDInsight での Pig の使用に慣れていることが前提なので、このセクションの手順では Pig Latin ステートメントのみを示し、クラスターでそれを使用する方法の手順は示しません。 HDInsight で Pig を使用する方法の詳細については、 [HDInsight での Pig の使用](hdinsight-use-pig.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に、次の Pig Latin ステートメントを使用して jar ファイルを登録する必要があります。
+> Linux ベースの HDInsight クラスター上の Pig から DataFu を使用する場合は、最初に jar ファイルを登録する必要があります。
 > 
-> ```register wasbs:///example/jars/datafu-1.2.0.jar```
+> クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用する必要があります。 たとえば、「 `register wasb:///example/jars/datafu-1.2.0.jar`」のように入力します。
+>
+> クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用する必要があります。 たとえば、「 `register adl://home/example/jars/datafu-1.2.0.jar`」のように入力します。
 > 
 > Windows ベースの HDInsight クラスターでは、DataFu は既定で登録されます。
 
@@ -97,7 +104,7 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
     Shi Liao,4,6,0
     Tjasa Zemljaric,0,2,5
 
-次のような出力が生成されます。
+これにより、次の出力が生成されます。
 
     (c1a743b0f34d349cfc2ce00ef98369bdc3dba1565fec92b4159a9cd5de186347,5,9,1)
     (713d030d621ab69aa3737c8ea37a2c7c724a01cd0657a370e103d8cdecac6f99,9,3,6)
@@ -120,6 +127,6 @@ DataFu または Pig の詳細については、次のドキュメントを参�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

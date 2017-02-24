@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 translationtype: Human Translation
-ms.sourcegitcommit: fc2f30569acc49dd383ba230271989eca8a14423
-ms.openlocfilehash: 0488d5a7ea9758c6c08cd1886e5fa2b04b4dc85e
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 076e97d1a264216d7f51914ed53dc70450aa2677
 
 ---
 
@@ -307,6 +307,6 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

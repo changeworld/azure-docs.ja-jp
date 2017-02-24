@@ -1,13 +1,25 @@
 ---
+title: "Azure Cloud Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "チュートリアルや API リファレンスなどのドキュメントでは、Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法を紹介します。"
+services: cloud-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cloud-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 4985185ad8cb4a21e05d4668458e82411cd88ee0
+ms.sourcegitcommit: c8e0cec964b7c72e45564ff776c55be1b06bfbc1
+ms.openlocfilehash: 16bbb9953db91bfe031e5e87e14aac84d32799b3
 
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
 
-Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型のサービスです。 拡張性と信頼性に優れ、運用コストの効率が高いアプリケーションをサポートするように設計されています。 Cloud Services では、仮想化のメリットを利用しつつ、ソフトウェアの構成、修正、インストールの際には仮想マシンを思いどおりに制御できます。  
+Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。  チュートリアルや API リファレンスなどのドキュメントでは、仮想マシン ホストの管理方法やソフトウェアの構成、修正、インストールの方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -115,16 +127,10 @@ Cloud Services は、サービスとしてのプラットフォーム (PaaS) 型
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cloud-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Cloud Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,8 +1,8 @@
 ---
 title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備する | Microsoft Docs"
 description: "WAImportExport ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
-ms.author: renash
+ms.date: 01/15/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 005e0ab8ec8dce52d9fc13d018f985cb0d6033a7
-ms.openlocfilehash: 80e7af5c874dca9390a2588664334b61dc57701a
+ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
+ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
 
 
 ---
@@ -32,7 +32,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 - **コンピューターの構成**
   - Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システム
   - .NET Framework 4 をインストールする必要があります。 .Net Framework がコンピューターにインストールされているかどうかを確認する方法については、「[FAQ](#faq)」を参照してください。
-- **ストレージ アカウント キー** - ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。
+- **ストレージ アカウント キー** - ストレージ アカウントのアカウント キーが少なくとも&1; つ必要です。
 
 ### <a name="preparing-disk-for-import-job"></a>インポート ジョブ用のディスクの準備
 
@@ -59,13 +59,13 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 ### <a name="what-is-dataset-csv"></a>データセット CSV とは
 
-データセット CSV ファイルは、ターゲット ドライブにコピーするディレクトリの一覧または一覧ファイルを含む CSV ファイルの /dataset フラグの値です。 インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 この場合、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブに追加されます。
+データセット CSV ファイルは、ターゲット ドライブにコピーするディレクトリの一覧または一覧ファイルを含む CSV ファイルの /dataset フラグの値です。 インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその&2; つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブに追加されます。
 
 インポートするディレクトリまたはファイルごとに、Azure BLOB service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを WAImportExport ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
 
 次の表は、BLOB ターゲットの例を示しています。
 
-| ソース ファイルまたはディレクトリ | インポート先の BLOB または仮想ディレクトリ |
+| ソースのファイルまたはディレクトリ | インポート先の BLOB または仮想ディレクトリ |
 | --- | --- |
 | H:\Video | https://mystorageaccount.blob.core.windows.net/video |
 | H:\Photo | https://mystorageaccount.blob.core.windows.net/photo |
@@ -89,13 +89,13 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | BlobType | **[省略可能]** block &#124; page<br/>現在、Import/Export サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)に関するページを参照してください。  |
 | Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( ディスクからストレージ アカウントへのデータのアップロード中) のコピー動作を指定します。使用可能なオプションは rename &#124; overwite &#124; no-overwrite です。何も指定しない場合、既定値は "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
-| PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](/rest/api/storageservices/importexport/import-export-service-metadata-and-properties-file-format)」を参照してください。 |
+| PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 
 ## <a name="prepare-initialdriveset-or-additionaldriveset-csv-file"></a>InitialDriveSet または AdditionalDriveSet CSV ファイルの準備
 
 ### <a name="what-is-driveset-csv"></a>ドライブセット CSV とは
 
-/InitialDriveSet または /AdditionalDriveSet フラグの値は、ドライブ文字のマップ先のディスクの一覧を含む CSV ファイルです。これにより、準備するディスクの一覧をツールで正しく選択できます。 データ サイズが 1 つのディスク サイズよりも大きい場合、WAImportExport ツールは最適化された方法でこの CSV ファイル内の複数のディスクにデータを分散します。
+/InitialDriveSet または /AdditionalDriveSet フラグの値は、ドライブ文字のマップ先のディスクの一覧を含む CSV ファイルです。これにより、準備するディスクの一覧をツールで正しく選択できます。 データ サイズが&1; つのディスク サイズよりも大きい場合、WAImportExport ツールは最適化された方法でこの CSV ファイル内の複数のディスクにデータを分散します。
 
 1 つのセッションでデータを書き込むことのできるディスクの数に制限はありません。 このツールはディスク サイズとフォルダー サイズに基づいてデータを分散します。 オブジェクト サイズ用に最も最適化されたディスクが選択されます。 ストレージ アカウントにアップロードされたデータは、データセット ファイルに指定されたディレクトリ構造に集約されます。 ドライブセット CSV を作成するには、次の手順に従ってください。
 
@@ -127,7 +127,7 @@ H,Format,SilentMode,Encrypt,
 
 ### <a name="first-session"></a>最初のセッション
 
-1 つまたは複数のディスクに 1 つまたは複数のディレクトリをコピーする (CSV ファイルに指定した内容によって異なります) 最初のコピー セッションでは、WAImportExport ツールの PrepImport コマンドを使用して新しいコピー セッションでディレクトリまたはファイルをコピーします。
+1 つまたは複数のディスクに&1; つまたは複数のディレクトリをコピーする (CSV ファイルに指定した内容によって異なります) 最初のコピー セッションでは、WAImportExport ツールの PrepImport コマンドを使用して新しいコピー セッションでディレクトリまたはファイルをコピーします。
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -208,7 +208,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 | parameters | 説明 |
 | --- | --- |
 |     /j:&lt;JournalFile&gt;  | **必須**<br/> ジャーナル ファイルへのパス。 ジャーナル ファイルは、一連のドライブを追跡し、それらの準備の進行状況を記録します。 ジャーナル ファイルは必ず指定してください。  |
-|     /logdir:&lt;LogDirectory&gt;  | **省略可能**。 ログ ディレクトリ。<br/> 詳細ログ ファイルと一部の一時ファイルがこのディレクトリに書き込まれます。 指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。 ログ ディレクトリは、同じジャーナル ファイルに 1 回だけ指定できます。  |
+|     /logdir:&lt;LogDirectory&gt;  | **省略可能**。 ログ ディレクトリ。<br/> 詳細ログ ファイルと一部の一時ファイルがこのディレクトリに書き込まれます。 指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。 ログ ディレクトリは、同じジャーナル ファイルに&1; 回だけ指定できます。  |
 |     /id:&lt;SessionId&gt;  | **必須**<br/> セッション ID はコピー セッションの識別に使用されます。 中断されたコピー セッションを正しく復元するために使用されます。  |
 |     /ResumeSession  | 省略可能。 最後のコピー セッションが異常終了した場合は、このパラメーターを指定してセッションを再開できます。   |
 |     /AbortSession  | 省略可能。 最後のコピー セッションが異常終了した場合は、このパラメーターを指定してセッションを中止できます。  |
@@ -216,8 +216,8 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /sk:&lt;StorageAccountKey&gt;  | **必須**<br/> ストレージ アカウントのキー。 |
 |     /InitialDriveSet:&lt;driveset.csv&gt;  | **必須**。最初のコピー セッションを実行する場合。<br/> 準備するドライブの一覧を含む CSV ファイル。  |
 |     /AdditionalDriveSet:&lt;driveset.csv&gt; | **必須**。 現在のコピー セッションにドライブを追加する場合。 <br/> 追加するドライブの一覧を含む CSV ファイル。  |
-|      /r:&lt;RepairFile&gt; | **必須**。RepairImport と RepairExport にのみ適用できます。<br/> 修復の進行状況を追跡するファイルへのパス。 各ドライブには修復ファイルが 1 つのみ必要です。  |
-|     /d:&lt;TargetDirectories&gt; | **必須**。 RepairImport と RepairExport にのみ適用できます。 RepairImport の場合は、修復する 1 つ以上のセミコロン区切りのディレクトリ。RepairExport の場合は、修復する 1 つのディレクトリ (ドライブのルート ディレクトリなど)。  |
+|      /r:&lt;RepairFile&gt; | **必須**。RepairImport と RepairExport にのみ適用できます。<br/> 修復の進行状況を追跡するファイルへのパス。 各ドライブには修復ファイルが&1; つのみ必要です。  |
+|     /d:&lt;TargetDirectories&gt; | **必須**。 RepairImport と RepairExport にのみ適用できます。 RepairImport の場合は、修復する&1; つ以上のセミコロン区切りのディレクトリ。RepairExport の場合は、修復する&1; つのディレクトリ (ドライブのルート ディレクトリなど)。  |
 |     /CopyLogFile:&lt;DriveCopyLogFile&gt; | **必須**。RepairImport と RepairExport にのみ適用できます。 ドライブ コピー ログ ファイル (詳細またはエラー) へのパス。  |
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必須**。RepairExport にのみ適用できます。<br/> ドライブ マニフェスト ファイルへのパス。  |
 |     /PathMapFile:&lt;DrivePathMapFile&gt; | **省略可能**。 RepairImport にのみ適用できます。<br/> ドライブのルートを基準としたファイルの相対パスの実際のファイルの場所へのマッピング (タブ区切り) を含むファイルへのパス。 最初に指定する場合は、空のターゲットを含むファイル パスが設定されます。つまり、TargetDirectories に見つからない、アクセスが拒否される、無効な名前を持つパスか、または複数のディレクトリに存在するパスです。 パス マップ ファイルは、正しいターゲット パスを含めるように手動で編集し、ツールでファイル パスを正しく解決するために再度指定できます。  |
@@ -315,11 +315,11 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>以前のバージョンの WAImportExport ツールはどこで入手できますか?
 
-WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 ユーザーは、WAImportExport ツールを使用して複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 ただし、SAS のサポートが必要な場合や、1 つのソースを 1 つのディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード] [http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409] し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
+WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 ユーザーは、WAImportExport ツールを使用して複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を&1; つの CSV ファイルで簡単に管理できます。 ただし、SAS のサポートが必要な場合や、1 つのソースを&1; つのディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード] [http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409] し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
 
 #### <a name="what-is-a-session-id"></a>セッション ID とは何ですか?
 
-複数のディスクにデータを分散する場合、ツールではコピー セッション (/id) パラメーターが同じであると想定します。 コピー セッションの名前を同じにすると、ユーザーは 1 つまたは複数のコピー元の場所から 1 つまたは複数のコピー先のディスク/ディレクトリにデータをコピーできます。 セッション ID を同じにすると、ツールでは前回のセッションからファイルのコピーを選択できます。
+複数のディスクにデータを分散する場合、ツールではコピー セッション (/id) パラメーターが同じであると想定します。 コピー セッションの名前を同じにすると、ユーザーは&1; つまたは複数のコピー元の場所から&1; つまたは複数のコピー先のディスク/ディレクトリにデータをコピーできます。 セッション ID を同じにすると、ツールでは前回のセッションからファイルのコピーを選択できます。
 
 ただし、同じコピー セッションを使用して、異なるストレージ アカウントにデータをインポートすることはできません。
 
@@ -333,7 +333,7 @@ WAImportExport ツールには、WAImportExport V1 ツールのすべての機�
 
 WAImportExport ツールを実行してハード ドライブにファイルをコピーするたびに、コピー セッションが作成されます。 コピー セッションの状態はジャーナル ファイルに書き込まれます。 コピー セッションが中断された場合 (システムの電源が切れた場合など) は、ツールをもう一度実行し、コマンド ラインでジャーナル ファイルを指定することで、セッションを再開できます。
 
-Azure Import/Export ツールを使用して準備する各ハード ドライブについて、ツールは "&lt;DriveID&gt;.xml" という名前の 1 つのジャーナル ファイルを作成します (ドライブ ID は、ツールがディスクから読み取るドライブに関連付けられているシリアル番号です)。 インポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
+Azure Import/Export ツールを使用して準備する各ハード ドライブについて、ツールは "&lt;DriveID&gt;.xml" という名前の&1; つのジャーナル ファイルを作成します (ドライブ ID は、ツールがディスクから読み取るドライブに関連付けられているシリアル番号です)。 インポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
 
 #### <a name="what-is-a-log-directory"></a>ログ ディレクトリとは何ですか?
 
@@ -380,7 +380,7 @@ Microsoft .NET Framework のすべてのバージョンは %windir%\Microsoft.NE
 
 #### <a name="can-i-target-more-than-one-storage-account"></a>複数のストレージ アカウントを対象とすることはできますか?
 
-1 つのコピー セッションの各ジョブで送信できるストレージ アカウントは 1 つだけです。
+1 つのコピー セッションの各ジョブで送信できるストレージ アカウントは&1; つだけです。
 
 ### <a name="capabilities"></a>機能
 
@@ -394,21 +394,22 @@ Microsoft .NET Framework のすべてのバージョンは %windir%\Microsoft.NE
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>コピーの実行中には、何台の入力ディスクでアクティブ IO が並列処理されますか?
 
-ツールでは、入力ファイルのサイズに基づいてデータを複数の入力ディスクに分散します。 しかし、並列処理されるアクティブ ディスクの数は完全に入力データの性質に依存します。 入力データセット内の個々のファイルのサイズによっては、並列処理されるアクティブ IO が 1 台以上のディスクに表示される場合があります。 詳細については、次の FAQ を参照してください。
+ツールでは、入力ファイルのサイズに基づいてデータを複数の入力ディスクに分散します。 しかし、並列処理されるアクティブ ディスクの数は完全に入力データの性質に依存します。 入力データセット内の個々のファイルのサイズによっては、並列処理されるアクティブ IO が&1; 台以上のディスクに表示される場合があります。 詳細については、次の FAQ を参照してください。
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>ツールではファイルがどのように複数のディスクに分散されますか?
 
-WAImportExport ツールはバッチ単位でファイルの読み取りと書き込みを行います。1 つのバッチには最大 100,000 個のファイルが含まれています。 つまり、最大 100,000 個のファイルを並行して書き込むことができます。 この 100,000 個のファイルが複数のドライブに分散される場合は、複数のディスクに同時に書き込まれます。 ただし、ツールが複数のディスクに同時に書き込むか 1 台のディスクに書き込むかは、バッチの合計サイズによって異なります。 たとえば、ファイルのサイズが小さく、10,0000 個すべてのファイルが 1 台のドライブに収まる場合、このバッチの処理中にツールは 1 台のディスクに書き込みます。
+WAImportExport ツールはバッチ単位でファイルの読み取りと書き込みを行います。1 つのバッチには最大 100,000 個のファイルが含まれています。 つまり、最大 100,000 個のファイルを並行して書き込むことができます。 この 100,000 個のファイルが複数のドライブに分散される場合は、複数のディスクに同時に書き込まれます。 ただし、ツールが複数のディスクに同時に書き込むか&1; 台のディスクに書き込むかは、バッチの合計サイズによって異なります。 たとえば、ファイルのサイズが小さく、10,0000 個すべてのファイルが 1 台のドライブに収まる場合、このバッチの処理中にツールは 1 台のディスクに書き込みます。
 
 ### <a name="waimportexport-output"></a>WAImportExport の出力
 
-#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>ジャーナル ファイルが 2 つあります。 どちらのファイルを Azure Portal にアップロードする必要がありますか?
+#### <a name="there-are-two-journal-files-which-one-should-i-upload-to-azure-portal"></a>ジャーナル ファイルが&2; つあります。 どちらのファイルを Azure Portal にアップロードする必要がありますか?
 
-**.xml** - WAImportExport ツールを使用して準備する各ハード ドライブについて、ツールは "&lt;DriveID&gt;.xml" という名前の 1 つのジャーナル ファイルを作成します (ドライブ ID は、ツールがディスクから読み取るドライブに関連付けられているシリアル番号です)。 Azure Portal でインポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
+**.xml** - WAImportExport ツールを使用して準備する各ハード ドライブについて、ツールは "&lt;DriveID&gt;.xml" という名前の&1; つのジャーナル ファイルを作成します (ドライブ ID は、ツールがディスクから読み取るドライブに関連付けられているシリアル番号です)。 Azure Portal でインポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
 
 **.jrn** - サフィックスが .jrn のジャーナル ファイルには、ハード ドライブのすべてのコピー セッションの状態が含まれています。 また、インポート ジョブの作成に必要な情報も含まれています。 WAImportExport ツールを実行する場合は、ジャーナル ファイルとコピー セッション ID を必ず指定してください。
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Jan17_HO3-->
 
 

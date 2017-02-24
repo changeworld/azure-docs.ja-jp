@@ -10,11 +10,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 98ace6ab2bc2a55bc0101284f5c7675fb1bbed68
-ms.openlocfilehash: 510a25415fd264eee994e16cac9ae55de8e740f6
+ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
+ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
 
 
 ---
@@ -24,11 +24,11 @@ ms.openlocfilehash: 510a25415fd264eee994e16cac9ae55de8e740f6
 
 Analytics には、独自のスキーマを使用してデータをインポートすることができます。 標準の Application Insights スキーマ (要求やトレースなど) を使用する必要はありません。
 
-現時点では、CSV (コンマ区切り) ファイルのほか、タブまたはセミコロンを区切り文字に使用した類似の形式をインポートできます。
+JSON ファイルまたは DSV ファイル (区切り値: コンマ、セミコロン、またはタブ) をインポートできます。
 
-Analytics へのインポートは、次の 3 つの状況で役に立ちます。
+Analytics へのインポートは、次の&3; つの状況で役に立ちます。
 
-* **アプリのテレメトリと結合する。** たとえば、Web サイトの URL を読みやすいページ タイトルにマップするテーブルをインポートすることもできます。 Analytics では、Web サイト内で特に人気のある上位 10 件のページを表示する、ダッシュボード チャート レポートを作成することができます。 これからは、URL の代わりにページ タイトルを 表示できるようになりました。
+* **アプリのテレメトリと結合する。** たとえば、Web サイトの URL を読みやすいページ タイトルにマップするテーブルをインポートすることもできます。 Analytics では、Web サイト内で特に人気のある上位&10; 件のページを表示する、ダッシュボード チャート レポートを作成することができます。 これからは、URL の代わりにページ タイトルを 表示できるようになりました。
 * **アプリケーションのテレメトリを、他のソース (ネットワーク トラフィック、サーバー データ、または CDN ログ ファイルなど) に関連付ける。**
 * **Analytics を個別のデータ ストリームに適用する。** Application Insights の Analytics は、タイムスタンプ付きのスパース ストリームと効果的に連携できる強力なツールです。これは多くの場合、SQL よりもはるかに効果的です。 他のソースからこの種のストリームが送られる場合は、それらを Analytics で分析できます。
 
@@ -72,12 +72,15 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 
     ![新しいデータ ソースの追加](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. 指示に従って、サンプル データ ファイルをアップロードします。
+2. サンプル データ ファイルをアップロードします  (スキーマ定義をアップロードする場合は省略可能です)。
 
- * サンプルの最初の行は、列ヘッダーにすることができます (フィールド名は次の手順で変更できます)。
- * サンプルには、少なくとも 10 行のデータを含める必要があります。
+    サンプルの最初の行は、列ヘッダーにすることができます (フィールド名は次の手順で変更できます)。
 
-3. サンプルから推論されたスキーマを確認します。 必要に応じて、推論された列のタイプを調整することもできます。
+    サンプルには、少なくとも 10 行のデータを含める必要があります。
+
+3. ウィザードに表示されるスキーマを確認します。 ウィザードでサンプルから型の推論が行われた場合は、推論された列の型の調整が必要になる場合があります。
+
+   (省略可能) スキーマ定義をアップロードします。 形式については以下を参照してください。
 
 4. タイムスタンプを選択します。 Analytics では、すべてのデータにタイムスタンプ フィールドが必要です。 タイプは `datetime` である必要がありますが、名前を 'timestamp' にする必要はありません。 データに ISO 形式の日時を含んだ列がある場合は、それをタイムスタンプ列として選択します。 それ以外の場合は、[as data arrived (データの到着時)] を選択すると、インポート プロセスによってタイムスタンプ フィールドが追加されます。
 
@@ -85,6 +88,37 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 
 5. データ ソースを作成します。
 
+### <a name="schema-definition-file-format"></a>スキーマ定義ファイルの形式
+
+UI 内でスキーマを編集する代わりに、ファイルからスキーマ定義を読み込むこともできます。 スキーマ定義の形式は次のとおりです。 
+
+区切り形式 
+```
+[ 
+    {"location": "0", "name": "RequestName", "type": "string"}, 
+    {"location": "1", "name": "timestamp", "type": "datetime"}, 
+    {"location": "2", "name": "IPAddress", "type": "string"} 
+] 
+```
+
+JSON 形式 
+```
+[ 
+    {"location": "$.name", "name": "name", "type": "string"}, 
+    {"location": "$.alias", "name": "alias", "type": "string"}, 
+    {"location": "$.room", "name": "room", "type": "long"} 
+]
+```
+ 
+各列には、場所、名前、および型を指定します。 
+
+* 場所 – 区切られたファイル形式の場合、マップする値の位置を指定します。 JSON 形式では、マップするキーの jpath を指定します。
+* Name – 列の表示名です。
+* 型 – 列のデータ型です。
+ 
+サンプル データを使用するときにファイルが区切り形式である場合、スキーマ定義ですべての列をマッピングし、末尾に新しい列を追加する必要があります。 
+
+JSON ではデータの部分的なマッピングが可能なため、JSON 形式のスキーマ定義では、サンプル データに存在するキーをすべてマッピングする必要はありません。 また、サンプル データに含まれない列をマッピングすることもできます。 
 
 ## <a name="import-data"></a>Import data
 
@@ -99,10 +133,10 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
  * BLOB のサイズは、非圧縮で 1 GB が上限となります。 パフォーマンスの観点から言うと、数百 MB の BLOB が最適なサイズです。
  * Gzip で圧縮すれば、アップロード時間が短縮されるだけでなく、データがクエリで使用できるようになるまでの時間も短縮されます。 ファイル名拡張子は `.gz` を使用してください。
  
-2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を 1 日とし、読み取りアクセスを提供する必要があります。
+2. [BLOB の Shared Access Signature キーを作成します](../storage/storage-dotnet-shared-access-signature-part-2.md)。 このキーでは、有効期限を&1; 日とし、読み取りアクセスを提供する必要があります。
 3. データが待機していることを Application Insights に通知するための REST 呼び出しを実行します。
 
- * エンドポイント: `https://eus-breeziest-in.cloudapp.net/v2/track`
+ * エンドポイント: `https://dc.services.visualstudio.com/v2/track`
  * HTTP メソッド: POST
  * ペイロード:
 
@@ -114,7 +148,7 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
             "baseData":{
                "ver":"2",
                "blobSasUri":"<Blob URI with Shared Access Key>",
-               "sourceName":"<Data source name>",
+               "sourceName":"<Schema ID>",
                "sourceVersion":"1.0"
              }
        },
@@ -128,7 +162,7 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 プレース ホルダーは次のとおりです。
 
 * `Blob URI with Shared Access Key`: これは、キーを作成するためのプロシージャから取得します。 これは BLOB に固有のものです。
-* `Data source name`: データ ソースに付けた名前です。 この BLOB 内のデータは、このソースに対して定義したスキーマに準拠している必要があります。
+* `Schema ID`: 定義済みのスキーマに対して生成されたスキーマ ID。 この BLOB 内のデータは、スキーマに準拠している必要があります。
 * `DateTime`: 要求が送信された時刻 (UTC) です。 受け付けられる形式は次のとおりです: ISO8601 ("2016-01-01 13:45:01" など)、RFC822 ("Wed, 14 Dec 16 14:57:01 +0000")、RFC850 ("Wednesday, 14-Dec-16 14:57:00 UTC")、RFC1123 ("Wed, 14 Dec 2016 14:57:00 +0000")。
 * Application Insights リソースの `Instrumentation key`。
 
@@ -249,7 +283,7 @@ namespace IngestionClient
     public class AnalyticsDataSourceClient 
     { 
         #region Members 
-        private readonly Uri breezeEndpoint = new Uri("https://eus-breeziest-in.cloudapp.net/v2/track"); 
+        private readonly Uri endpoint = new Uri("https://dc.services.visualstudio.com/v2/track"); 
         private const string RequestContentType = "application/json; charset=UTF-8"; 
         private const string RequestAccess = "application/json"; 
         #endregion Members 
@@ -258,7 +292,7 @@ namespace IngestionClient
 
         public async Task<bool> RequestBlobIngestion(AnalyticsDataSourceIngestionRequest ingestionRequest) 
         { 
-            HttpWebRequest request = WebRequest.CreateHttp(breezeEndpoint); 
+            HttpWebRequest request = WebRequest.CreateHttp(endpoint); 
             request.Method = WebRequestMethods.Http.Post; 
             request.ContentType = RequestContentType; 
             request.Accept = RequestAccess; 
@@ -271,10 +305,12 @@ namespace IngestionClient
             requestStream.Write(notificationBytes, 0, notificationBytes.Length); 
             requestStream.Close(); 
 
-            HttpWebResponse response; 
             try 
             { 
-                response = (HttpWebResponse)await request.GetResponseAsync(); 
+                using (var response = (HttpWebResponse)await request.GetResponseAsync())
+                {
+                    return response.StatusCode == HttpStatusCode.OK;
+                }
             } 
             catch (WebException e) 
             { 
@@ -285,11 +321,10 @@ namespace IngestionClient
                         "Ingestion request failed with status code: {0}. Error: {1}", 
                         httpResponse.StatusCode, 
                         httpResponse.StatusDescription); 
-                } 
-                return false; 
+                    return false; 
+                }
+                throw; 
             } 
-
-            return response.StatusCode == HttpStatusCode.OK; 
         } 
         #endregion Public 
 
@@ -332,6 +367,6 @@ namespace IngestionClient
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

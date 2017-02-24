@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
 
 
 ---
@@ -26,28 +26,13 @@ ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
 
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。 2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
-> 
-> 
+>  
 
  [Azure Portal](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、[Transact-SQL](sql-database-geo-replication-transact-sql.md)、または [REST API - データベースの作成または更新](https://msdn.microsoft.com/library/azure/mt163685.aspx)を使用して、アクティブ geo レプリケーションを構成できます。
-
-> [!div class="op_single_selector"]
-> * [構成: Azure Portal](sql-database-geo-replication-portal.md)
-> * [構成: PowerShell](sql-database-geo-replication-powershell.md)
-> * [構成: T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
 
 何らかの理由でプライマリ データベースにエラーが発生したか、単にプライマリ データベースをオフラインにする必要がある場合、任意のセカンダリ データベースに *フェールオーバー* させることができます。 セカンダリ データベースの&1; つに対してフェールオーバーがアクティブな場合、その他すべてのセカンダリ データベースは新しいプライマリ データベースに自動的にリンクします。
 
 [Azure Portal](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 計画されたフェールオーバー](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)、または[REST API - 計画されていないフェールオーバー](https://msdn.microsoft.com/library/azure/mt582027.aspx)を使用して、セカンダリにフェールオーバーできます。
-
-> [!div class="op_single_selector"]
-> * [フェールオーバー: Azure ポータル](sql-database-geo-replication-failover-portal.md)
-> * [フェールオーバー: PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [フェールオーバー: T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
@@ -149,6 +134,6 @@ ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

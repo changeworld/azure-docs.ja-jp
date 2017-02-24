@@ -1,5 +1,5 @@
 ---
-title: "Azure インフラストラクチャの名前付けガイドライン | Microsoft Docs"
+title: "Azure インフラストラクチャの名前付けガイドライン - Linux | Microsoft Docs"
 description: "Azure インフラストラクチャ サービスでの名前付けに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
-ms.openlocfilehash: 16447489a2923851a0f404c247d7b8132d68fe4c
+ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
+ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
 
 
 ---
@@ -107,6 +107,6 @@ Azure VM の名前と、基になるオペレーティング システムのコ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

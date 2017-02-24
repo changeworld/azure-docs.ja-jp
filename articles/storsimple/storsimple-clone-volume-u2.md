@@ -1,5 +1,5 @@
 ---
-title: "StorSimple ボリュームの複製 | Microsoft Docs"
+title: "StorSimple 8000 シリーズのボリュームの複製 | Microsoft Docs"
 description: "異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
 services: storsimple
 documentationcenter: NA
@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 07/27/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 024b6bceb9eb150e60f68edf916cebacd3552af2
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 0db0af490f03525f4c23c4e9a23e62a1ef9f1c7f
 
 
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume-update-2"></a>StorSimple Manager サービスを使用してボリュームを複製する (Update 2)
 [!INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
 ![[バックアップ カタログ] ページ](./media/storsimple-clone-volume-u2/backupCatalog.png)  
@@ -66,13 +66,13 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
       > 
       
         ![複製ウィザード 1](./media/storsimple-clone-volume-u2/clone1.png) 
-   3. 矢印アイコン  ![矢印アイコン](./media/storsimple-clone-volume-u2/HCS_ArrowIcon.png)  をクリックして、次のページに進みます。
+   3. 矢印アイコン  ![矢印アイコン](./media/storsimple-clone-volume-u2/HCS_ArrowIcon.png) をクリックして、次のページに進みます。
 5. **[このボリュームを使用できるホストの指定]**で、次の手順を実行します。
    
    1. 複製のアクセス制御レコード (ACR) を指定します。 新しい ACR を追加することも、既存の一覧から選択することもできます。
       
         ![複製ウィザード 2](./media/storsimple-clone-volume-u2/clone2.png) 
-   2. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-clone-volume-u2/HCS_CheckIcon.png) をクリックします。
+   2. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-clone-volume-u2/HCS_CheckIcon.png)をクリックします。
 6. 複製ジョブが開始され、ジョブが正常に作成されると通知が表示されます。 **[ジョブの表示]** をクリックすると **[ジョブ]** ページで複製ジョブを監視できます。 複製ジョブが終了すると、次のメッセージが表示されます。
    
     ![複製メッセージ](./media/storsimple-clone-volume-u2/CloneMsg.png) 
@@ -115,6 +115,6 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

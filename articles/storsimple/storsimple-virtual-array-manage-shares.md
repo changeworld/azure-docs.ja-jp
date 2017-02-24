@@ -1,5 +1,5 @@
 ---
-title: "StorSimple デバイス マネージャー - Microsoft Azure StorSimple Virtual Array で共有を管理する | Microsoft Docs"
+title: "StorSimple Virtual Array 共有を管理する | Microsoft Docs"
 description: "StorSimple デバイス マネージャーの機能について、また、StorSimple デバイス マネージャーを使用して StorSimple Virtual Array で共有を管理する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 90b932453c83d15e7e33eb0653f0f7ceaf7eeff4
+ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
+ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array で共有を管理する
@@ -74,9 +74,9 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
 
 1. StorSimple サービスの概要ブレードで、コマンド バーの **[+ 共有の追加]** をクリックします。 これにより **[共有の追加]** ブレードが開きます。
 
-![共有の追加](./media/storsimple-virtual-array-manage-shares/add-share.png)
+    ![共有の追加](./media/storsimple-virtual-array-manage-shares/add-share.png)
 
-1. **[共有の追加]** ブレードで、次の操作を行います。
+2. **[共有の追加]** ブレードで、次の操作を行います。
    
     1. **[共有名]** フィールドに、共有の一意の名前を入力します。 名前は 3 ～ 127 文字を含む文字列である必要があります。
 
@@ -87,8 +87,8 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
     4. **[容量]** フィールドで、共有のサイズを指定します。 階層化共有は 500 GB ～ 20 TB、ローカル固定共有は 50 GB ～ 2 TB の範囲内で指定する必要があります。
 
     5. **[Set default full permissions to (既定の完全なアクセス許可を設定)]** フィールドで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。 ユーザーまたはユーザー グループの名前を _john@contoso.com_ の形式で指定します。 この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
-2. 共有の構成が完了したら、**[作成]** をクリックします。 指定した設定で共有が作成され、通知が表示されます。 既定では、バックアップが共有に対して有効になります。
-3. 共有が正常に作成されたことを確認するには、**[共有]** ブレードに移動します。 共有の一覧が表示されます。
+3. 共有の構成が完了したら、**[作成]** をクリックします。 指定した設定で共有が作成され、通知が表示されます。 既定では、バックアップが共有に対して有効になります。
+4. 共有が正常に作成されたことを確認するには、**[共有]** ブレードに移動します。 共有の一覧が表示されます。
    
     ![共有の作成に成功](./media/storsimple-virtual-array-manage-shares/share-success.png)
 
@@ -146,6 +146,6 @@ StorSimple サービスの概要ブレードの **[共有]** メニューには�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

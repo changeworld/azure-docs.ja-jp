@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: cab2edc0d065dc8d5ac20ed41ccd0eed7a664895
-ms.openlocfilehash: 8d0730d50330b9093734adb1c503dd975606b7c3
+ms.sourcegitcommit: 9849b15115de5b17a50e0f46781c8aa16a53d297
+ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
 
 
 ---
@@ -57,6 +57,15 @@ Service Bus には、ブローカー メッセージングをサポートする�
   ![][2]
 
 以降のセクションでは、このアーキテクチャを実装するコードについて説明します。
+
+## <a name="set-up-the-development-environment"></a>開発環境を設定する
+Azure アプリケーションの開発を開始する前に、ツールを入手して、開発環境を設定します。
+
+1. [ツールと SDK の入手](https://azure.microsoft.com/downloads/)に関するページにある Azure SDK for .NET をインストールします。
+2. **[.NET]** 列で、使用している Visual Studio のバージョンをクリックします。 このチュートリアルの手順では、Visual Studio 2015 を使用します。
+3. インストーラーの実行や保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
+4. **Web Platform Installer** の **[インストール]** をクリックし、インストールの手順を進めます。
+5. インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。 SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。 Visual Studio がインストールされていない場合、無料の Visual Studio Express もインストールされます。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
 次の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。

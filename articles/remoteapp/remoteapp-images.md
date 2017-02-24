@@ -40,7 +40,7 @@ Azure RemoteApp サブスクリプションには、次の 3 つのテンプレ�
 
 各イメージが含んでいるものについては、詳細を参照してください。
 
-## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2 ("バニラ イメージ")
+## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2 ("バニラ イメージ")
 このイメージは Microsoft Windows Server 2012 R2 Datacenter オペレーティング システムに基づいており、Azure RemoteApp テンプレート イメージの要件を満たすために、次のようなロールと機能がインストールされています。
 
 * .NET Framework 4.5、3.5.1、3.5

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 4cc2906d19562fc420d92ea0f3097a972acc45b9
-ms.openlocfilehash: dfacb95f816c45413b292c93c13d0e37b7ce517e
+ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
+ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
 
 
 ---
@@ -156,12 +156,13 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 **cloudDataMovementUnits** プロパティに**使用できる値**は、1 (既定値)、2、4、8 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。
 
 > [!NOTE]
-> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、それぞれが 16 MB 以上の**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3 から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
+> スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、それぞれが 16 MB 以上の**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。
 >
 >
 
 これらの&2; つのプロパティをうまく利用し、データ移動のスループットを向上させるには、 [ユース ケースのサンプル](#case-study-use-parallel-copy)を参照してください。 既定の動作を活用する場合は、 **parallelCopies** を構成する必要はありません。 構成しても **parallelCopies** が小さすぎる場合は、複数のクラウド DMU が十分に活用されない可能性があります。  
 
+### <a name="billing-impact"></a>課金への影響
 **重要** なのは、コピー操作の合計時間に基づいて料金が請求されることです。 これまで 1 回のコピー ジョブに 1 クラウド単位で 1 時間かかっていたのが、4 クラウド単位で 15 分かかるようになった場合、全体的な請求金額はほぼ同じままです。 たとえば、4 クラウド単位を使用するとします。 1 回のコピー アクティビティの実行で、1 つ目のクラウド単位に 10 分、2 つ目に 10 分、3 つ目に 5 分、4 つ目に 5 分かかります。 コピー (データ移動) の合計時間は 10 + 10 + 5 + 5 で 30 分になり、その分の料金が発生します。 **parallelCopies** を使用しても、課金には影響しません。
 
 ## <a name="staged-copy"></a>ステージング コピー
@@ -410,6 +411,6 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

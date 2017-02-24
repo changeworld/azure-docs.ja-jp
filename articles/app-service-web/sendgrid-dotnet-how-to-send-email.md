@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: team-pi@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae05e89346fe6bb85408cd560505dab3c03837cc
+ms.sourcegitcommit: dc1dac6e590088b45aa7afb87cf2d41027506635
+ms.openlocfilehash: 5ad1d7f026836e90d04d493bd1c0454b83f936ef
 
 
 ---
@@ -60,7 +60,8 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 4. 「**SendGrid**」を検索し、検索結果の一覧から **SendGrid** を選択します。
    
    ![SendGrid NuGet パッケージ][SendGrid-NuGet-package]
-5. **[インストール]** をクリックしてインストールを実行した後、このダイアログを閉じます。
+5. バージョン ドロップダウンから NuGet パッケージの**バージョン 6.3.4** を選択して、この記事で説明するオブジェクト モデルと API を操作できるようにします。
+6. **[インストール]** をクリックしてインストールを実行した後、このダイアログを閉じます。
 
 SendGrid の .NET クラス ライブラリは、 **SendGridMail**という名前です。 これには次の名前空間が含まれます。
 
@@ -251,6 +252,6 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

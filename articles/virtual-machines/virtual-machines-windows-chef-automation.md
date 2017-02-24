@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 05/19/2015
 ms.author: diviso
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7ea98cd5cf63e1bd870eac93bd4200e50798578a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 38f58c0f025b51e3764c978d28acdf5abe21f255
 
 
 ---
@@ -242,6 +242,6 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

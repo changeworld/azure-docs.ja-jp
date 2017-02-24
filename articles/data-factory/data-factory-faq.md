@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0dafae2cf2c3972fc09ffc67f76f6757bcc641fa
+ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
+ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
 
 
 ---
@@ -88,7 +88,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## <a name="copy-activity---faq"></a>コピー アクティビティ - FAQ
 ### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。
-パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。 複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。 これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。 また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。 パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。 作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
+パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。 複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。 これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。 また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。 パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。 作成操作の観点では、パイプラインの&1; つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
 ### <a name="what-are-the-supported-data-stores"></a>どのようなデータ ストアがサポートされますか。
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
@@ -146,7 +146,7 @@ Data Factory サービスで作成されたオンデマンド クラスターを
 
 external プロパティが適切に設定されている場合は、入力データセットの定義で指定された場所に入力データが存在しているかどうかを確認してください。
 
-### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前 0 時以外の時刻にスライスを実行するにはどうすればよいですか。
+### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>スライスを毎日生成している場合、午前&0; 時以外の時刻にスライスを実行するにはどうすればよいですか。
 **offset** プロパティを使用して、スライスを生成する時刻を指定します。 このプロパティの詳細については、「 [データセットの可用性](data-factory-create-datasets.md#Availability) 」セクションをご覧ください。 以下に簡単な例を示します。
 
 ```json
@@ -157,12 +157,12 @@ external プロパティが適切に設定されている場合は、入力デ�
     "offset": "06:00:00"
 }
 ```
-既定の設定である真夜中ではなく、毎日 **午前 6 時** にスライスを開始する例です。     
+既定の設定である真夜中ではなく、毎日 **午前&6; 時** にスライスを開始する例です。     
 
 ### <a name="how-can-i-rerun-a-slice"></a>スライスを再実行するにはどうすればよいですか。
 スライスを再実行するには、次のどちらかの方法を使用します。
 
-* 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#performing-batch-actions) 」を参照してください。   
+* 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#perform-batch-actions) 」を参照してください。   
 * Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
 * スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
 
@@ -203,6 +203,6 @@ external プロパティが適切に設定されている場合は、入力デ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

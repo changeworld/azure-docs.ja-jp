@@ -1,5 +1,5 @@
 ---
-title: "デバイスからクラウドへのメッセージを送信するサンプル アプリケーションの実行 | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 3: サンプルの実行 | Microsoft Docs"
 description: "IoT ハブにメッセージを送信して LED を点滅させるサンプル アプリケーションを Raspberry Pi 3 にデプロイして実行します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 946e80b450fdda244a48e2c4d2aa87a7822be456
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 985ba895bfcad1611bebe80a6c2fc8ffed780da5
 
 
 ---
@@ -99,7 +99,7 @@ gulp deploy && gulp run
 ```
 
 ## <a name="verify-that-the-sample-application-works"></a>サンプル アプリケーションの動作確認
-Pi に接続された LED が 2 秒間隔で点滅していることを確認します。 LED が点滅するたびに、サンプル アプリケーションは IoT ハブにメッセージを送信し、メッセージが IoT ハブに正常に送信されていることを検証します。 さらにコンソール ウィンドウには、IoT ハブが受信した各メッセージが出力されます。 サンプル アプリケーションは、メッセージを 20 回送信した後に自動的に終了します。
+Pi に接続された LED が&2; 秒間隔で点滅していることを確認します。 LED が点滅するたびに、サンプル アプリケーションは IoT ハブにメッセージを送信し、メッセージが IoT ハブに正常に送信されていることを検証します。 さらにコンソール ウィンドウには、IoT ハブが受信した各メッセージが出力されます。 サンプル アプリケーションは、メッセージを 20 回送信した後に自動的に終了します。
 
 ![サンプル アプリケーションの実行とメッセージの送受信の出力](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run_c.png)
 
@@ -112,6 +112,6 @@ Pi に接続された LED が 2 秒間隔で点滅していることを確認し
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

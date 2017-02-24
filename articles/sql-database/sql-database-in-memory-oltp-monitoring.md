@@ -13,26 +13,26 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/19/2016
 ms.author: jodebrui
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: 475af239e4c77626d4c069f1238bc32d3b440a0e
+ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
+ms.openlocfilehash: 86b2358b045bd5bc0c9f4fc2674efd03b098212f
 
 
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
-[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベルに関する記事](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)をご覧ください。 この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベルに関する記事](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)をご覧ください。 この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
 ## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>データがインメモリ ストレージの上限に収まるかどうかを判断する
-ここでは、ストレージの上限を判断します。各種 Premium サービス階層のストレージ上限については、[SQL Database のサービス階層に関する記事](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)をご覧ください。
+ここでは、ストレージの上限を判断します。各種 Premium サービス階層のストレージ上限については、[SQL Database のサービス階層に関する記事](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)をご覧ください。
 
 メモリ最適化テーブルのメモリ必要量の推定は、Azure SQL Database で SQL Server の要件を推定する場合と同じように行います。 少し時間をとって、 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx)でメモリ最適化テーブルのメモリ必要量の推定について確認してください。
 
 テーブル行とテーブル変数行、およびインデックスは、最大ユーザー データ サイズにカウントされるので注意してください。 また、テーブル全体とそのインデックスの新しいバージョンを作成するには、ALTER TABLE に十分な領域が必要になります。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
-Azure [Portal](https://portal.azure.com/) で、インメモリ ストレージの使用量を[パフォーマンス階層のストレージ上限](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)に対するパーセンテージとして監視できます。 
+Azure [Portal](https://portal.azure.com/) で、インメモリ ストレージの使用量を[パフォーマンス階層のストレージ上限](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)に対するパーセンテージとして監視できます。 
 
 * [データベース] ブレードの [リソース使用率] ボックスで [編集] をクリックします。
 * メトリック `In-Memory OLTP Storage percentage`を選択します。
@@ -58,6 +58,6 @@ Azure [Portal](https://portal.azure.com/) で、インメモリ ストレージ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric クラスターでサポートされているセキュリティ保護された接続を構成する |Microsoft Docs"
+title: "セキュリティ保護された Azure Service Fabric クラスター接続を構成する | Microsoft Docs"
 description: "Visual Studio を使用して、Azure Service Fabric クラスターでサポートされているセキュリティで保護された接続を構成する方法について説明します。"
 services: service-fabric
 documentationcenter: na
@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/08/2015
-ms.author: cawaMS
+ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2d0009e23a9eb3a87628c8b4b70ba1d00f8a4fa2
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: b6705e14e52e98759027389758d7fa57c4e11462
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 2d0009e23a9eb3a87628c8b4b70ba1d00f8a4fa2
 アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
 
 ## <a name="cluster-connection-types"></a>クラスターの接続の種類
-Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の 2 つの種類があります  (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。クラスターの作成中に、クラスターの接続の種類を構成する必要があります。 作成した接続の種類を後で変更することはできません。
+Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の&2; つの種類があります  (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。クラスターの作成中に、クラスターの接続の種類を構成する必要があります。 作成した接続の種類を後で変更することはできません。
 
 Visual Studio Service Fabric Tools は、クラスターに接続して発行するために必要なすべての種類の認証をサポートしています。 セキュリティ保護された Service Fabric クラスターをセットアップする方法については、「 [Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md) 」を参照してください。
 
@@ -41,7 +41,7 @@ Visual Studio から Service Fabric プロジェクトを発行するには、**
 1. 接続先のクラスターによって信頼されているクライアント証明書のいずれかにアクセスできることを確認します。 証明書は通常、Personal Information Exchange (.pfx) ファイルとして共有されています。 クライアントへのアクセスを許可するようにサーバーを構成する方法については、「 [Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md) 」を参照してください。
 2. 信頼された証明書をインストールします。 そのためには、.pfx ファイルをダブルクリックするか、PowerShell スクリプト Import-PfxCertificate を使用して証明書をインポートします。 証明書を **Cert:\LocalMachine\My** にインストールします。 証明書のインポート時、すべての既定設定をそのまま使用して問題ありません。
 3. プロジェクトのショートカット メニューで **[発行]** を選択し、**[Azure アプリケーションの公開]** ダイアログ ボックスを開いて、対象のクラスターを選択します。 自動的に接続が解決され、発行プロファイルにセキュリティ保護された接続パラメーターが保存されます。
-4. [省略可能]: You can edit the publish profile to specify a secure cluster connection.
+4. [Optional]: You can edit the publish profile to specify a secure cluster connection.
    
    発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。 後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。 詳細については、「[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)」を参照してください。
    
@@ -53,7 +53,7 @@ Visual Studio から Service Fabric プロジェクトを発行するには、**
    
    次は、x509 証明書ベースのセキュリティ保護されたクラスターに接続する場合の例です。
    
-   ```
+   ```xml
    <ClusterConnectionParameters
    ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000"
    X509Credential="true"
@@ -74,6 +74,6 @@ Service Fabric クラスターにアクセスする方法の詳細について�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

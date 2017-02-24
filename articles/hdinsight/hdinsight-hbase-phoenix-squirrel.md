@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Apache Phoenix および SQuirreL の使用 | Microsoft Docs"
+title: "Windows ベースの Azure HDInsight での Apache Phoenix および SQuirreL の使用 | Microsoft Docs"
 description: "Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -12,23 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
-ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
+ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
+ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
 
 
 ---
-# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDinsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
+# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDInsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、 [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 > [!NOTE]
 > HDInsight での Phoenix のバージョンの情報については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 >
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースの HDInsight での Phoenix の使用については、「 [HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
+
+> [!IMPORTANT]
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 >
->
+
+
 
 ## <a name="use-sqlline"></a>SQLLine の使用
 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
@@ -56,7 +59,7 @@ SQLLine を使用するには、以下のものが必要です。
         cd %phoenix_home%\bin
         sqlline.py [The FQDN of one of the Zookeepers]
 
-    ![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
+    ![HDInsight HBase Phoenix SQLLine][hdinsight-hbase-phoenix-sqlline]
 
     サンプルで使用されているコマンド:
 
@@ -80,10 +83,6 @@ SQLLine を使用するには、以下のものが必要です。
 
 * DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。  方法については、「[Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]」を参照してください。
 
-  > [!IMPORTANT]
-  > 仮想ネットワークに DNS サーバーをインストールする必要があります。 方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-dns.md)」を参照してください。
-  >
-  >
 * HBase クラスターの接続固有の DNS サフィックスを取得します。 そのためには、RDP でクラスターに接続して、IPConfig を実行します。  DNS サフィックスの例を次に示します。
 
         myhbase.b7.internal.cloudapp.net
@@ -123,7 +122,7 @@ Azure 仮想ネットワークに HBase クラスターをプロビジョニン�
 
     ![Azure 仮想ネットワークのポイント対サイト仮想ダイアグラム][img-vnet-diagram]
 
-    図ではクライアント接続が 0 であることが示されています。 仮想ネットワークに接続すると、この値が 1 に更新されます。
+    図ではクライアント接続が 0 であることが示されています。 仮想ネットワークに接続すると、この値が&1; に更新されます。
 
 #### <a name="create-your-certificates"></a>証明書の作成
 X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx)に付属する証明書作成ツール (makecert.exe) を使用することです。
@@ -173,7 +172,7 @@ X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Exp
 1. 仮想ネットワークの [ダッシュボード] ページの [概要] セクションで、ワークステーションの OS のバージョンに基づいて **[64 ビットのクライアント VPN パッケージのダウンロード]** または **[32 ビットのクライアント VPN パッケージのダウンロード]** をクリックします。
 2. **[実行]** をクリックしてパッケージをインストールします。
 3. セキュリティのプロンプトでは、**[詳細]** をクリックし、次に **[実行]** をクリックします。
-4. **[はい]** を 2 回クリックします。
+4. **[はい]** を&2; 回クリックします。
 
 **VPN に接続するには**
 
@@ -197,7 +196,7 @@ X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Exp
 
 1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation)から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
 2. jar ファイルを開くか実行します。 [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
-3. **[次へ]** を 2 回クリックします。
+3. **[次へ]** を&2; 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、 **[次へ]**をクリックします。
 
   > [!NOTE]
@@ -206,7 +205,7 @@ X.509 証明書を作成する方法の 1 つは、 [Microsoft Visual Studio Exp
   >     java.exe -jar [the path of the SQuirreL jar file]
 5. **[OK]** をクリックして、ターゲット ディレクトリの作成を確認します。
 6. 既定の設定では、Base および Standard パッケージがインストールされます。  **[次へ]**をクリックします。
-7. **[次へ]** を 2 回クリックし、**[完了]** をクリックします。
+7. **[次へ]** を&2; 回クリックし、**[完了]** をクリックします。
 
 **Phoenix ドライバーをインストールするには**
 
@@ -269,7 +268,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
 * [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 * 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」:&2; つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
 * 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実行する方法について説明します。
 
 [azure-portal]: https://portal.azure.com
@@ -292,6 +291,6 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

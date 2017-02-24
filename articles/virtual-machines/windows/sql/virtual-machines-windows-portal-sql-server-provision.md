@@ -12,12 +12,12 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: iaas-sql-server
-ms.date: 09/21/2016
+ms.workload: infrastructure-services
+ms.date: 02/02/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 171566e8b1eccfafc78bd8b422189c977421592d
+ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
+ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
 
 
 ---
@@ -46,14 +46,13 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
    > Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
    > 
    > 
-2. Azure ポータルで、 **[新規]**をクリックします。 **[新規]** ブレードが開きます。 SQL Server VM のリソースが、Marketplace の **[Virtual Machines]** グループに表示されます。
-3. **[新規]** ブレードで、**[Virtual Machines]** をクリックします。
-4. 利用可能なイメージをすべて表示するには、**[Virtual Machines]** ブレードの **[すべて表示]** をクリックします。
-   
-    ![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
-5. **[データベース サーバー]** の下にある **[SQL Server]** をクリックします。 **[データベース サーバー]**を見つけるために下へスクロールする必要がある場合があります。 使用可能な SQL Server テンプレートを確認します。
-   
-    ![Virtual Machine Gallery SQL Images](./media/virtual-machines-windows-portal-sql-server-provision/virtual-machine-gallery-sql-server.png)
+2. Azure ポータルで、 **[新規]**をクリックします。 **[新規]** ブレードが開きます。 SQL Server VM リソースは、Marketplace の **[Compute]** グループにあります。
+3. **[新規]** ブレードで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
+4. **[フィルター]** ボックスに「SQL Server」と入力し、Enter キーを押します。
+
+   ![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
+
+5. 使用可能な SQL Server テンプレートを確認します。
 6. 各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。 一覧からこれらのイメージのいずれかを選択します。 次に、仮想マシン イメージの説明を提供する詳細ブレードを確認します。
    
    > [!NOTE]
@@ -65,7 +64,7 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>VM を構成する
-SQL Server 仮想マシンを構成するための 5 つのブレードがあります。
+SQL Server 仮想マシンを構成するための&5; つのブレードがあります。
 
 | 手順 | Description |
 | --- | --- |
@@ -82,7 +81,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 * VM のローカル管理者アカウントの **ユーザー名** を指定します。 このアカウントは、SQL Server の **sysadmin** 固定サーバー ロールにも追加されます。
 * 強力な **パスワード**を指定します。
 * 複数のサブスクリプションがある場合は、新しい VM に対してサブスクリプションが正しいことを確認します。
-* **[リソース グループ]** ボックスに、新しいリソース グループの名前を入力します。 または、既存のリソース グループを使用する場合は、 **[既存のものを選択]**をクリックします。 リソース グループとは、Azure の関連リソース (仮想マシン、ストレージ アカウント、仮想ネットワークなど) のコレクションです。
+* **[リソース グループ]** ボックスに、新しいリソース グループの名前を入力します。 または、既存のリソース グループを使用する場合は、**[既存のものを使用]** をクリックします。 リソース グループとは、Azure の関連リソース (仮想マシン、ストレージ アカウント、仮想ネットワークなど) のコレクションです。
   
   > [!NOTE]
   > Azure における SQL Server のデプロイについてテストまたは調査のみを実施する場合は、新しいリソース グループを使用すると便利です。 テストが完了したら、リソース グループを削除します。そうすると、そのリソース グループに関連付けられている VM とすべてのリソースが自動的に削除されます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../../../azure-resource-manager/resource-group-overview.md)」を参照してください。
@@ -216,10 +215,12 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 * バックアップのリテンション期間 (日数)
 * バックアップに使用するストレージ アカウント
 * バックアップの暗号化オプションとパスワード
+* システム データベースのバックアップ
+* バックアップ スケジュールの構成
 
 バックアップを暗号化するには、 **[有効]**をクリックします。 **パスワード**を指定します。 Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。
 
-![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
+![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup2.png)
 
  詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)」をご覧ください。
 
@@ -302,6 +303,6 @@ Azure 仮想マシン上の SQL Server の概要に関するビデオについ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

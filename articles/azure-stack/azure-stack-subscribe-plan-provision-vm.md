@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 0aee1c31876060777c32c768e0767a39de86cb2a
-ms.openlocfilehash: 27fa6ac45da171d7194d4d1658da5bd984d1f488
+ms.sourcegitcommit: ed6982ae4f2e11bc0ab718d7ad2ed3d2ee7e6f8b
+ms.openlocfilehash: 9e94eebf50cb41d33f67902ad1a22dce9ce866c2
 
 
 ---
@@ -29,9 +29,7 @@ Now that you've [created an offer](azure-stack-create-offer.md), test that your 
 2. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image02.png)
-3. To view the subscription you created, click **Browse**, click **Subscriptions**, then click your new subscription.  
-
-   ![](media/azure-stack-subscribe-plan-provision-vm/image03.png)
+3. To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.  
 
 After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
 
@@ -40,6 +38,6 @@ After you subscribe to an offer, refresh the portal to see which services are pa
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

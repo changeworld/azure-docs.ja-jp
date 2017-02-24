@@ -1,5 +1,5 @@
 ---
-title: "車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順 | Microsoft Docs"
+title: "車両の状態および運転習慣の Power BI ダッシュボード - Azure | Microsoft Docs"
 description: "Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 66a2375d7560b41f0fddef3c8c32e41917eb1649
-ms.openlocfilehash: 925222e5e11c96b1b8f851dbc3679d0f6b25b99c
+ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
+ms.openlocfilehash: 24d440049b5e889c6d4417cc16787edd42bc5848
 
 
 ---
@@ -44,7 +44,7 @@ ms.openlocfilehash: 925222e5e11c96b1b8f851dbc3679d0f6b25b99c
 
 **Power BI** このソリューションに機能豊富なダッシュボードを提供し、リアルタイムなデータおよび予測分析を視覚化します。 
 
-ソリューションは、2 つの異なるデータ ソースを使用します。**1 つはシミュレートされた車両信号と診断のデータセット**で、もう 1 つは**車両カタログ**です。
+ソリューションは、2 つの異なるデータ ソースを使用します。**1 つはシミュレートされた車両信号と診断のデータセット**で、もう&1; つは**車両カタログ**です。
 
 車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。 診断情報と信号を出力し、信号は特定の時点での車両の状態と運転パターンに対応しています。 
 
@@ -104,7 +104,7 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 ![レポート名を指定](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
 
 ## <a name="real-time-reports"></a>リアルタイム レポート
-このソリューションには、次の 3 つのリアルタイム レポートが用意されています:
+このソリューションには、次の&3; つのリアルタイム レポートが用意されています:
 
 1. Vehicles in operation
 2. Vehicles Requiring Maintenance
@@ -312,7 +312,7 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 
 ## <a name="setup-power-bi-batch-processing-dashboard"></a>Power BI バッチ処理ダッシュボードのセットアップ
 > [!NOTE]
-> エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。 したがって、次のステップに進む前に、処理が終了するまで待ってください。 
+> エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約&2; 時間かかります。 したがって、次のステップに進む前に、処理が終了するまで待ってください。 
 > 
 > 
 
@@ -348,7 +348,7 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 ![データベースの資格情報を指定](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/13-provide-database-credentials.png)
 
 * **[接続]**
-* 右側のウィンドウにある残りの 3 つのクエリに対して、上の手順を繰り返し、データ ソース接続の詳細を更新します。
+* 右側のウィンドウにある残りの&3; つのクエリに対して、上の手順を繰り返し、データ ソース接続の詳細を更新します。
 * **[閉じて読み込む]**をクリックします。 Power BI Desktop のファイル データセットは、SQL Azure Database テーブルに接続されます。
 * **閉じます** 。
 
@@ -372,7 +372,7 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 
 ![車両テレメトリ Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
 
-**レポートには、次の 6 つのページがあります。**  
+**レポートには、次の&6; つのページがあります。**  
 ページ 1: 車両の密度  
 ページ 2: リアルタイムの車両状態  
 ページ 3: アグレッシブに運転されている車両   
@@ -423,6 +423,6 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

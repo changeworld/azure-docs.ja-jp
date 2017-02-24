@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Technical Preview 2 Before You Get Started | Microsoft Docs
+title: Before you deploy App Services on Azure Stack | Microsoft Docs
 description: Steps to complete before deploying App Service on Azure Stack
 services: azure-stack
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 1/23/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: 51de66d09c504694e27e3907b393f0608d630b2a
-ms.openlocfilehash: 8343875de0e9edfc50c9ac6c0b35c7129526a5d2
+ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
+ms.openlocfilehash: 9dbbed9b4763e3a946245dda2819fe5aea90632b
 
 
 ---
@@ -113,6 +113,6 @@ By default, the App Service on Azure Stack installer is set to use the SQL Serve
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

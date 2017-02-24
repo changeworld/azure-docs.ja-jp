@@ -39,6 +39,6 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

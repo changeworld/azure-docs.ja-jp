@@ -6,18 +6,17 @@ documentationcenter:
 author: MarkusVi
 writer: markvi
 manager: femila
-editor: 
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 20f38ef90d9f3793c0bb0814e6fd5d67aa550209
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
 
 
 ---
@@ -66,7 +65,7 @@ Microsoft クラウド サービスのサブスクリプションをまだ持っ
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 * [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### <a name="manage-an-azureprovisioned-default-directory"></a>Azure によってプロビジョニングされた既定のディレクトリを管理する
+### <a name="manage-an-azure-provisioned-default-directory"></a>Azure によってプロビジョニングされた既定のディレクトリを管理する
 現在は、Azure にサインアップするとディレクトリが自動的に作成され、そのディレクトリにサブスクリプションが関連付けられます。 ただし、Azure に最初にサインアップしたのが 2013 年 10 月より前の場合、ディレクトリは自動的には作成されませんでした。 その場合、Azure がアカウントの既定のディレクトリをプロビジョニングすることによって、アカウントに対して "バックフィル" が実行された可能性があります。 サブスクリプションは、その既定のディレクトリに関連付けられています。
 
 ディレクトリのバックフィルは、Azure のセキュリティ モデルの全体的な改善の一環として、2013 年 10 月に実行されました。 バックフィルにより、組織の ID 機能をすべての Azure ユーザーに提供し、ディレクトリ内のユーザーのコンテキストですべての Azure リソースにアクセスできるようになります。 ディレクトリなしで Azure を使用することはできません。 Azure を使用できるようにするために、2013 年 7 月 7 日より前にサインアップし、ディレクトリを持っていなかったユーザーには、ディレクトリを作成してもらう必要がありました。 ディレクトリを既に作成していた場合は、そのディレクトリにサブスクリプションが関連付けられています。
@@ -150,6 +149,6 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

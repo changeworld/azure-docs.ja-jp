@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: a28aace9269bafe9158cccf9bea2dc26f77cf937
-ms.openlocfilehash: 54a763530961073655257251f0381b0b379ae73c
+ms.sourcegitcommit: 7f5e33b7f80e3c1e1e3e66b3cab879a5bc30e823
+ms.openlocfilehash: f4f04a05c1d522f43668e31db15092476b4ef6df
 
 
 ---
 # <a name="sql-query-and-sql-syntax-in-documentdb"></a>DocumentDB における SQL クエリと SQL 構文
 Microsoft Azure DocumentDB は、JSON クエリ言語として SQL (Structured Query Language) を使用するドキュメントのクエリをサポートしています。 DocumentDB は完全にスキーマフリーです。 データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。 
 
-マイクロソフトは、以下の 2 点を目標に DocumentDB 向けのクエリ言語を設計しました。
+マイクロソフトは、以下の&2; 点を目標に DocumentDB 向けのクエリ言語を設計しました。
 
-* 新しい JSON クエリ言語を開発するのではなく、SQL をサポートすることにしました。 SQL は最も幅広く普及したクエリ言語の 1 つです。 DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
+* 新しい JSON クエリ言語を開発するのではなく、SQL をサポートすることにしました。 SQL は最も幅広く普及したクエリ言語の&1; つです。 DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
 * マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてクエリ言語を開発することにしました。 DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。 これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、空間クエリ、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
 
 マイクロソフトでは、アプリケーションとデータベース間の不整合を削減し、開発者の生産性を高めるには、こうした方針が鍵になると考えています。
@@ -40,7 +40,7 @@ Microsoft Azure DocumentDB は、JSON クエリ言語として SQL (Structured Q
 その後、この記事に戻って、いくつかのシンプルな JSON ドキュメントと SQL コマンドを使用する SQL クエリのチュートリアルを開始します。
 
 ## <a name="getting-started-with-sql-commands-in-documentdb"></a>DocumentDB での SQL コマンドの概要
-DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。 これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。 DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。 必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。 以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。 ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。 
+DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。 これら&2; つの JSON ドキュメントは、2 つの家族に関するドキュメントです。 DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。 必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。 以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。 ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。 
 
 **ドキュメント**  
 
@@ -163,7 +163,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 
 これまでの例からわかる、DocumentDB クエリ言語の注目すべき特性を以下に示します。  
 
-* JSON 値を利用する DocumentDB SQL は、行と列ではなくツリー形式のエンティティを処理します。 つまり、この言語では `Node1.Node2.Node3…..Nodem` のように任意の深さのツリーのノードを参照できます。これは、リレーショナル SQL が `<table>.<column>` という 2 項目参照を実行するのと同様です。   
+* JSON 値を利用する DocumentDB SQL は、行と列ではなくツリー形式のエンティティを処理します。 つまり、この言語では `Node1.Node2.Node3…..Nodem` のように任意の深さのツリーのノードを参照できます。これは、リレーショナル SQL が `<table>.<column>` という&2; 項目参照を実行するのと同様です。   
 * 構造化照会言語ではスキーマのないデータを扱います。 このため、型システムを動的にバインドする必要があります。 同じ式でも、ドキュメントが異なれば異なる型が導出される場合があります。 このようなクエリ結果は有効な JSON 値ですが、固定スキーマの場合でも有効とは限りません。  
 * DocumentDB は厳密な JSON ドキュメントだけをサポートします。 つまり、型システムおよび式は、JSON 型のみを扱うように制限されます。 詳細については、 [JSON の仕様に関するページ](http://www.json.org/) を参照してください。  
 * DocumentDB コレクションは、スキーマフリーの JSON ドキュメントのコンテナーです。 コレクションにあるドキュメント内およびドキュメント間のデータ エンティティの関係はコンテインメントによって暗黙的にキャプチャされます。プライマリ キーと外部キーの関係ではキャプチャされません。 これは、この記事で後述するドキュメント間結合の点で注意すべき要素です。
@@ -178,7 +178,7 @@ DocumentDB SQL の構文について詳しく説明する前に、DocumentDB の
 * スキーマを必要としないインデックス ドキュメント: インデックス作成サブシステムは、スキーマ情報を一切必要とせず、ドキュメントのスキーマを想定しません。 
 * 高度な階層化に対応した、効率的なリレーショナル クエリのサポート: インデックスは DocumentDB クエリ言語を効率的にサポートします。これには、階層型かつリレーショナルなプロジェクションのサポートも含まれます。
 * 一定量かつ持続的に実行される書き込みに対する、一貫性のあるクエリのサポート: 一貫性のあるクエリで書き込みスループットの負荷が高くなる場合は、一定量の書き込みが持続的に実行されたとしても、インデックスは効率的かつ段階的にオンラインで更新されます。 ユーザーがドキュメント サービスを構成した際の一貫性レベルでクエリを処理するためには、インデックスの一貫した更新が欠かせません。
-* マルチテナントのサポート: テナント間のリソースは、予約ベースのモデルで制御されます。インデックスの更新は、これに従って、レプリカごとに割り当てられたシステム リソース (CPU、メモリ、および 1 秒あたりの入力/出力操作) 量の範囲内で実行されます。 
+* マルチテナントのサポート: テナント間のリソースは、予約ベースのモデルで制御されます。インデックスの更新は、これに従って、レプリカごとに割り当てられたシステム リソース (CPU、メモリ、および&1; 秒あたりの入力/出力操作) 量の範囲内で実行されます。 
 * ストレージの効率性: コスト効率性を実現するため、インデックスのディスク上のストレージ オーバーヘッドは、有限かつ予測可能なものにします。 これは、開発者がインデックスのオーバーヘッドとクエリのパフォーマンスを比較して、コストに基づくトレードオフを DocumentDB で実施できるようになるためには必須です。  
 
 コレクションのインデックス作成ポリシーの構成方法については、MSDN の [DocumentDB のサンプル](https://github.com/Azure/azure-documentdb-net) を参照してください。 以降は、DocumentDB SQL の構文の詳細を説明していきます。
@@ -279,7 +279,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 WHERE 句
 
 上記の例では単純な等値クエリを紹介しました。 DocumentDB SQL はさまざまなスカラー式もサポートしています。 最も多く使用されるのはバイナリ式と単項式です。 ソース JSON オブジェクトからのプロパティ参照も有効な式です。 
 
-現在サポートされている 2 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。  
+現在サポートされている&2; 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。  
 
 <table>
 <tr>
@@ -335,7 +335,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 WHERE 句
 2 項演算子と単項演算子に加えてプロパティ参照も許可されます。 たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は `isRegistered` プロパティを含む JSON ドキュメントを返し、このプロパティの値は JSON の `true` 値と等しくなります。 その他すべての値 (false、null、Undefined、`<number>`、`<string>`、`<object>`、`<array>` など) の場合、ソース ドキュメントが結果から除外されます。 
 
 ### <a name="equality-and-comparison-operators"></a>等値演算子と比較演算子
-以下の表は、DocumentDB SQL の 2 つの JSON 型で等値比較を実行した結果を示しています。
+以下の表は、DocumentDB SQL の&2; つの JSON 型で等値比較を実行した結果を示しています。
 
 <table style = "width:300px">
    <tbody>
@@ -510,7 +510,7 @@ Undefined </td>
 その他の比較演算子 (>、>=、! =、<、および <=) については、以下のようになります。   
 
 * 型の間の比較は Undefined になる。
-* 2 つのオブジェクト間または 2 つの配列間の比較は Undefined になる。   
+* 2 つのオブジェクト間または&2; つの配列間の比較は Undefined になる。   
 
 フィルター内のスカラー式が Undefined という結果になった場合、Undefined は論理上 "true" と等しくならないため、対応するドキュメントは結果に含まれません。
 
@@ -617,7 +617,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 
 
 ### <a name="nested-properties"></a>入れ子になったプロパティ
-以下の例では、`f.address.state` と `f.address.city` という 2 つの入れ子になったプロパティを表しています。
+以下の例では、 `f.address.state` and `f.address.city`の代わりに使用されている点だけが違います。
 
 **クエリ**
 
@@ -677,7 +677,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 ### <a name="aliasing"></a>エイリアス化
 ここで、値を明示的にエイリアス化することによって、上記の例を拡張します。 AS はエイリアス化に使用されるキーワードです。 例からわかるようにこれはオプションですが、2 つ目の値を `NameInfo` として表している点に注意してください。 
 
-同じ名前を持つ 2 つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションの結果でこれらを区別することができます。
+同じ名前を持つ&2; つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションの結果でこれらを区別することができます。
 
 **クエリ**
 
@@ -882,7 +882,7 @@ TOP キーワードを使用すると、クエリの値数を制限できます�
 (前述のように)、TOP には、定数、またはパラメーター化されたクエリを使用した変数を指定できます。 詳細については、後述のパラメーター化されたクエリを参照してください。
 
 ## <a name="order-by-clause"></a>ORDER BY 句
-ANSI SQL 同様、クエリ実行にオプションで Order By 句を含めることができます。 句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。 Order By の詳細については「 [DocumentDB Order By チュートリアル](documentdb-orderby.md)」を参照してください。
+ANSI SQL 同様、クエリ実行にオプションで Order By 句を含めることができます。 句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。
 
 たとえば、居住都市の名前の順序で家族を取得するクエリは次のようになります。
 
@@ -962,7 +962,7 @@ DocumentDB SQL の **IN** キーワードによる新しいコンストラクト
       ]
     ]
 
-次に、コレクションの子に対する反復を実行する別のクエリを見てみます。 出力配列の違いに注目してください。 この例では、 `children` を分割し、結果を 1 つの配列にフラット化しています。  
+次に、コレクションの子に対する反復を実行する別のクエリを見てみます。 出力配列の違いに注目してください。 この例では、 `children` を分割し、結果を&1; つの配列にフラット化しています。  
 
 **クエリ**
 
@@ -1025,7 +1025,7 @@ JOIN 句の動作を示す例をいくつか紹介します。 以下の例の�
     }]
 
 
-以下の例は、ドキュメント ルートと `children` サブルートの間の結合です。 これは 2 つの JSON オブジェクトのクロス積となります。 この JOIN には、children が配列であるという事実は影響していません。これは、扱っている単一のルートがその children 配列であるためです。 そのため、結果には 2 つの結果しか含まれません。これは、その配列を持つ各ドキュメントのクロス積によってドキュメントが 1 つだけ導出されるためです。
+以下の例は、ドキュメント ルートと `children` サブルートの間の結合です。 これは&2; つの JSON オブジェクトのクロス積となります。 この JOIN には、children が配列であるという事実は影響していません。これは、扱っている単一のルートがその children 配列であるためです。 そのため、結果には&2; つの結果しか含まれません。これは、その配列を持つ各ドキュメントのクロス積によってドキュメントが&1; つだけ導出されるためです。
 
 **クエリ**
 
@@ -1075,7 +1075,7 @@ JOIN 句の動作を示す例をいくつか紹介します。 以下の例の�
 * ドキュメント **f** のルートと、最初の手順でフラット化された各子要素 **c** とのクロス積を適用します。
 * 最後に、ルート オブジェクト **f** の name プロパティだけをプロジェクションします。 
 
-最初のドキュメント (`AndersenFamily`) には子要素が 1 つだけ含まれているため、結果セットには、このドキュメントに対応するオブジェクトが 1 つだけ含まれます。 2 つ目のドキュメント (`WakefieldFamily`) には子が 2 つ含まれています。 このため、クロス積によってそれぞれの子で個別のオブジェクトが生成されることで、オブジェクトが 2 つ (このドキュメントに対応するそれぞれの子に 1 つずつ) になります。 クロス積の段階で想定されるとおり、これらのドキュメントのルート フィールドが同じになる点に注意してください。
+最初のドキュメント (`AndersenFamily`) には子要素が&1; つだけ含まれているため、結果セットには、このドキュメントに対応するオブジェクトが&1; つだけ含まれます。 2 つ目のドキュメント (`WakefieldFamily`) には子が&2; つ含まれています。 このため、クロス積によってそれぞれの子で個別のオブジェクトが生成されることで、オブジェクトが&2; つ (このドキュメントに対応するそれぞれの子に&1; つずつ) になります。 クロス積の段階で想定されるとおり、これらのドキュメントのルート フィールドが同じになる点に注意してください。
 
 JOIN の便利な点は、クロス積からタプルを生成できる点です。これ以外の形式によるプロジェクションは簡単ではありません。 さらに、以下の例でわかるとおり、すべてのタプル全体によって満たされる条件をユーザーが選択できるようなタプルの組み合わせをフィルターすることができます。
 
@@ -1128,7 +1128,7 @@ JOIN の便利な点は、クロス積からタプルを生成できる点です
         }
     }
 
-`AndersenFamily` には 1 人の子供がいて、子供はペットを 1 匹飼っています。 このため、クロス積によってこの家族から 1 行 (1*1*1) が導出されます。 WakefieldFamily には子供が 2 人いますが、ペットを飼っているのは "Jesse" 1 人だけです。 ただしペットは 2 匹います。 したがって、この家族からのクロス積は 1*1*2 = 2 行となります。
+`AndersenFamily` には&1; 人の子供がいて、子供はペットを&1; 匹飼っています。 このため、クロス積によってこの家族から&1; 行 (1*1*1) が導出されます。 WakefieldFamily には子供が&2; 人いますが、ペットを飼っているのは "Jesse"&1; 人だけです。 ただしペットは 2 匹います。 したがって、この家族からのクロス積は 1*1*2 = 2 行となります。
 
 次の例では、 `pet`に対するフィルターを追加します。 これによって、ペットの名前が "Shadow" ではないタプルがすべて除外されます。 配列からタプルを構築し、タプルのすべての要素に対してフィルターを実行し、要素の任意の組み合わせをプロジェクションできる点に注目してください。 
 
@@ -1180,7 +1180,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
            UriFactory.CreateDocumentCollectionUri("testdb", "families"), 
            regexMatchUdf).Result;  
 
-前の例では「 `REGEX_MATCH`」という名前の UDF を作成しています。 この UDF は 2 つの JSON 文字列値 `input` and `pattern` を受け取り、JavaScript の string.match() 関数を使用して、1 つ目の文字列値が 2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
+前の例では「 `REGEX_MATCH`」という名前の UDF を作成しています。 この UDF は&2; つの JSON 文字列値 `input` and `pattern` を受け取り、JavaScript の string.match() 関数を使用して、1 つ目の文字列値が&2; つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
 
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。 UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で 修飾する必要があります。 
 
@@ -1334,11 +1334,11 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 | [FLOOR (num_expr)](#bk_floor) | 指定された数値式未満の最大の整数を返します。 |
 | [EXP (num_expr)](#bk_exp) | 指定された数値式の指数を返します。 |
 | [LOG (num_expr [,base])](#bk_log) | 指定された数値式の自然対数、または指定された基数を使用して自然対数を返します。 |
-| [LOG10 (num_expr)](#bk_log10) | 指定された数値式の底 10 の対数値を返します。 |
+| [LOG10 (num_expr)](#bk_log10) | 指定された数値式の底&10; の対数値を返します。 |
 | [ROUND (num_expr)](#bk_round) | 最も近い整数値に丸められた数値を返します。 |
 | [TRUNC (num_expr)](#bk_trunc) | 最も近い整数値に切り捨てられた数値を返します。 |
 | [SQRT (num_expr)](#bk_sqrt) | 指定された数値式の平方根を返します。 |
-| [SQUARE (num_expr)](#bk_square) | 指定された数値式の 2 乗を返します。 |
+| [SQUARE (num_expr)](#bk_square) | 指定された数値式の&2; 乗を返します。 |
 | [POWER (num_expr, num_expr)](#bk_power) | 指定された値の指定された数値式のべき乗を返します。 |
 | [SIGN (num_expr)](#bk_sign) | 指定された数値式の符号値 (-1、0、1) を返します。 |
 | [ACOS (num_expr)](#bk_acos) | コサインが指定された数値式となる角度をラジアン単位で返します。アークコサインとも呼ばれます。 |
@@ -1426,17 +1426,17 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
 | [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |指定された文字列式の文字数を返します。 |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | [SUBSTRING (str_expr, num_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |文字列式の一部を返します。 |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
-| [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |1 つ目に指定された文字列式内で 2 つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。 |
+| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |1 つ目の文字列式が&2; つ目の文字列で終了しているかどうかを示すブール値を返します。 |
+| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |1 つ目の文字列式が&2; つ目の文字列で終了しているかどうかを示すブール値を返します。 |
+| [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |1 つ目の文字列式に&2; つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
+| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |1 つ目に指定された文字列式内で&2; つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。 |
 | [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |指定された文字数分、文字列の左側の部分を返します。 |
 | [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |指定された文字数分、文字列の右側の部分を返します。 |
 | [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |文字列式の先頭の空白を削除して返します。 |
 | [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |文字列式のすべての後続の空白を切り捨てて返します。 |
 | [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |文字列式の大文字データを小文字に変換して返します。 |
 | [UPPER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |文字列式の小文字データを大文字に変換して返します。 |
-| [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。 |
+| [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |指定された文字列値のすべての出現箇所をもう&1; つの文字列値に置き換えます。 |
 | [REPLICATE (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate) |文字列値を指定された回数だけ繰り返します。 |
 | [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |文字列値の順序を逆にして返します。 |
 
@@ -1498,7 +1498,7 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
 | [ARRAY_CONTAINS (arr_expr, expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |配列に指定された値が含まれているかどうかを示すブール値を返します。 |
 | [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |配列式の一部を返します。 |
 
-配列関数を使用すると、JSON に含まれる配列を操作できます。 例として、親の 1 人が "Robin Wakefield" であるすべてのドキュメントを返すクエリを次に示します。 
+配列関数を使用すると、JSON に含まれる配列を操作できます。 例として、親の&1; 人が "Robin Wakefield" であるすべてのドキュメントを返すクエリを次に示します。 
 
 **クエリ**
 
@@ -1512,7 +1512,7 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
       "id": "WakefieldFamily"
     }]
 
-ARRAY_LENGTH を使用して家族あたりの子供の数を取得する、もう 1 つの例を次に示します。
+ARRAY_LENGTH を使用して家族あたりの子供の数を取得する、もう&1; つの例を次に示します。
 
 **クエリ**
 
@@ -1544,11 +1544,11 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
 </tr>
 <tr>
   <td>ST_WITHIN (point_expr, polygon_expr)</td>
-  <td>1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が 2 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。</td>
+  <td>1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が&2; つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>指定された 2 つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。</td>
+  <td>指定された&2; つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
@@ -1902,7 +1902,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 これらのリソースとの基本的な対話モデルでは、HTTP の動詞である GET、PUT、POST、および DELETE が標準の解釈で使用されます。 POST 動詞は、新しいリソースの作成、ストアド プロシージャの実行、または DocumentDB クエリの発行に使用されます。 クエリは常に読み取り専用の操作で、副作用はありません。
 
-以下の例では、これまでに説明した 2 つのサンプル ドキュメントを含むコレクションに対する、DocumentDB クエリの POST を示しています。 このクエリには、JSON の名前プロパティに対するシンプルなフィルターがあります。 `x-ms-documentdb-isquery` と Content-Type の使用: `application/query+json` ヘッダーは、クエリによる操作であることを示しています。
+以下の例では、これまでに説明した&2; つのサンプル ドキュメントを含むコレクションに対する、DocumentDB クエリの POST を示しています。 このクエリには、JSON の名前プロパティに対するシンプルなフィルターがあります。 `x-ms-documentdb-isquery` と Content-Type の使用: `application/query+json` ヘッダーは、クエリによる操作であることを示しています。
 
 **要求**
 
@@ -2024,9 +2024,9 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
     }
 
 
-クエリ結果を 1 つの結果ページに収めることができない場合、REST API は `x-ms-continuation-token` 応答ヘッダーを使って継続トークンを返します。 クライアントは、このヘッダーを後続の結果に含めることで、結果を改ページすることができます。 ページあたりの結果の数も、 `x-ms-max-item-count` 番号ヘッダーで制御できます。
+クエリ結果を&1; つの結果ページに収めることができない場合、REST API は `x-ms-continuation-token` 応答ヘッダーを使って継続トークンを返します。 クライアントは、このヘッダーを後続の結果に含めることで、結果を改ページすることができます。 ページあたりの結果の数も、 `x-ms-max-item-count` 番号ヘッダーで制御できます。
 
-クエリのデータ一貫性ポリシーを管理するには、すべての REST API 要求と同様に `x-ms-consistency-level` ヘッダーを使用します。 セッションの一貫性を維持するには、すべてのクエリ要求で最新の `x-ms-session-token` Cookie ヘッダーもエコーする必要があります。 クエリされたコレクションのインデックス作成ポリシーは、クエリ結果の一貫性にも影響を与える点に注意してください。 既定のインデックス作成ポリシーの設定では、インデックスはドキュメントの内容に関して常に最新の状態になり、クエリ結果はデータ用に選択された一貫性と一致します。 インデックス作成ポリシーが "遅延" に緩和されている場合、返されるクエリ結果も古いものになる可能性があります。 詳細については、「[DocumentDB の一貫性レベル][一貫性レベル]」を参照してください。
+クエリのデータ一貫性ポリシーを管理するには、すべての REST API 要求と同様に `x-ms-consistency-level` ヘッダーを使用します。 セッションの一貫性を維持するには、すべてのクエリ要求で最新の `x-ms-session-token` Cookie ヘッダーもエコーする必要があります。 クエリされたコレクションのインデックス作成ポリシーは、クエリ結果の一貫性にも影響を与える点に注意してください。 既定のインデックス作成ポリシーの設定では、インデックスはドキュメントの内容に関して常に最新の状態になり、クエリ結果はデータ用に選択された一貫性と一致します。 インデックス作成ポリシーが "遅延" に緩和されている場合、返されるクエリ結果も古いものになる可能性があります。 詳細については、[DocumentDB の一貫性レベルに関する記事][consistency-levels]を参照してください。
 
 指定されたクエリを、コレクションで構成されたインデックス作成ポリシーがサポートできない場合、DocumentDB サーバーは 400 "Bad Request" を返します。 これは、ハッシュ (等値) 検索用に構成されたパスに対する範囲クエリと、インデックス作成から明示的に除外されたパスのために返されます。 `x-ms-documentdb-query-enable-scan` ヘッダーを指定することで、インデックスを利用できない場合のクエリによるスキャン実行を許可することができます。
 
@@ -2117,7 +2117,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 上記に示したとおり、.NET クライアントは foreach ブロックのクエリ結果のすべてのページを自動で反復処理します。 REST API のセクションで説明したクエリ オプションも .NET SDK で利用可能です。これには、`FeedOptions` および `FeedResponse` クラスを CreateDocumentQuery メソッドで使用します。 ページの数は `MaxItemCount` 設定を使用して制御できます。 
 
-開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に ` ResponseContinuationToken` の値を読み取り、これらを`RequestContinuationToken` として`FeedOptions` 内で渡します。 `EnableScanInQuery` を設定することで、構成されたインデックス作成ポリシーでクエリをサポートできない場合に、スキャンを有効にすることができます。 パーティション分割コレクションの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行でき (ただし、DocumentDB はクエリ テキストからこれを自動的に抽出できます)、`EnableCrossPartitionQuery` を使用すると複数のパーティションに対して実行することが必要な場合があるクエリを実行できます。 
+開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に ` ResponseContinuationToken` の値を読み取り、これらを`RequestContinuationToken` として`FeedOptions` 内で渡します。 `EnableScanInQuery` を設定することで、構成されたインデックス作成ポリシーでクエリをサポートできない場合に、スキャンを有効にすることができます。 パーティション分割コレクションの場合は、`PartitionKey` を使用すると&1; つのパーティションに対してクエリを実行でき (ただし、DocumentDB はクエリ テキストからこれを自動的に抽出できます)、`EnableCrossPartitionQuery` を使用すると複数のパーティションに対して実行することが必要な場合があるクエリを実行できます。 
 
 クエリのその他のサンプルについては、 [DocumentDB の .NET サンプル](https://github.com/Azure/azure-documentdb-net) を参照してください。 
 
@@ -2169,10 +2169,10 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 * 一般的なパターンにはほかに、"書き込み" パスで結果を事前に集計する方法があります。 この方法は、"読み取り" 要求の量が "書き込み" 要求よりも多い場合に特に魅力的です。 事前に集計しておくと、その結果は、単一のポイントの読み取り要求と共に利用できます。  DocumentDB で事前に集計する方法でお勧めなのは、"書き込み" のたびに呼び出されるトリガーを設定して、具体化されるクエリの最新の結果を持つメタデータ ドキュメントを更新する方法です。 たとえば、[UpdateaMetadata.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/triggers/UpdateMetadata.js) のサンプルを参照してください。このサンプルでは、コレクションのメタデータ ドキュメントの minSize、maxSize、および totalSize が更新されます。 サンプルは、カウンターや集計などを更新するように拡張することができます。
 
 ## <a name="references"></a>参照
-1. [Azure DocumentDB の概要][概要]
+1. [Azure DocumentDB の概要][introduction]
 2. [DocumentDB SQL の仕様](http://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
-4. [DocumentDB の一貫性レベル][一貫性レベル]
+4. [DocumentDB の一貫性レベル][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
 7. Javascript 仕様 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
@@ -2184,12 +2184,12 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 13. G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 [1]: ./media/documentdb-sql-query/sql-query1.png
-[概要]: documentdb-introduction.md
-[一貫性レベル]: documentdb-consistency-levels.md
+[introduction]: documentdb-introduction.md
+[consistency-levels]: documentdb-consistency-levels.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

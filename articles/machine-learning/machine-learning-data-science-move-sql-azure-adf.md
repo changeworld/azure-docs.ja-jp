@@ -1,6 +1,6 @@
 ---
 title: "Azure Data Factory を使用してデータをオンプレミスの SQL Server から SQL Azure に移動する | Microsoft Docs"
-description: "オンプレミスとクラウド内のデータベース間で毎日同時にデータを移動する 2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。"
+description: "オンプレミスとクラウド内のデータベース間で毎日同時にデータを移動する&2; つのデータ移行アクティビティを構成する ADF パイプラインを設定します。"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,20 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 61176151652f9c9d79ebe07d2a4aedf8702e2d16
-ms.openlocfilehash: a329d1ef98e2ab59df2f11b5095fe87a8cc9f94a
+ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
+ms.openlocfilehash: 72daf5bdce0dfcb2e09869c159eb88ee313be575
 
 
 ---
 # <a name="move-data-from-an-on-premise-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage を経由して SQL Azure データベースにデータを移動する方法を説明します。
 
-次の **メニュー** は、Team Data Science Process でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
-
-[!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
+Azure SQL Database にデータを移動するためのさまざまなオプションをまとめた表については、「[Azure Machine Learning 用にデータを Azure SQL Database に移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
 ## <a name="a-nameintroaintroduction-what-is-adf-and-when-should-it-be-used-to-migrate-data"></a><a name="intro"></a>概要: ADF の説明とデータの移行に ADF を使用するべきタイミング
 Azure Data Factory は、データの移動や変換を調整し自動化する、完全に管理されたクラウドベースのデータ統合サービスです。 ADF モデルにおける主要な概念は、パイプラインです。 パイプラインとはアクティビティの論理グループであり、各アクティビティによって、データセットに含まれているデータに対して実行するアクションを定義します。 リンクされたサービスは、Data Factory がデータ リソースに接続するために必要な情報を定義するために使用されます。
@@ -56,7 +54,7 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * **Azure ストレージ アカウント**。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アクセス キーの管理](../storage/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
 * **Azure SQL Database**へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、 [Microsoft Azure SQL Database の概要 ](../sql-database/sql-database-get-started.md) に関するトピックをご覧ください。
-* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 > [!NOTE]
 > この手順では、 [Azure ポータル](https://portal.azure.com/)を使用します。
@@ -64,7 +62,7 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 >
 
 ## <a name="a-nameupload-dataa-upload-the-data-to-your-on-premise-sql-server"></a><a name="upload-data"></a> オンプレミスの SQL Server にデータをアップロードする
-[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/) を使用して、移行プロセスを説明します。 NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)から入手できます。 データには、乗車の詳細を含む trip_data.csv ファイルと、乗車ごとの料金の詳細を含む trip_far.csv ファイルの 2 つのファイルがあります。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」にあります。
+[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/) を使用して、移行プロセスを説明します。 NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)から入手できます。 データには、乗車の詳細を含む trip_data.csv ファイルと、乗車ごとの料金の詳細を含む trip_far.csv ファイルの&2; つのファイルがあります。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」にあります。
 
 ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「 [SQL Server データベースにデータを一括インポートする](machine-learning-data-science-process-sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
@@ -84,7 +82,7 @@ Data Management Gateway のセットアップ手順と詳細については、�
 ## <a name="a-nameadflinkedservicesacreate-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>データ リソースに接続するためにリンクされたサービスを作成する
 リンクされたサービスは、Azure Data Factory がデータ リソースに接続するために必要な情報を定義します。 リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)」を参照してください。
 
-このシナリオには、リンクされたサービスを必要とする 3 つのリソースがあります。
+このシナリオには、リンクされたサービスを必要とする&3; つのリソースがあります。
 
 1. [オンプレミスの SQL Server 用のリンクされたサービス](#adf-linked-service-onprem-sql)
 2. [Azure BLOB ストレージ用のリンクされたサービス](#adf-linked-service-blob-store)
@@ -100,7 +98,7 @@ Data Management Gateway のセットアップ手順と詳細については、�
 Azure BLOB ストレージ アカウント用にリンクされたサービスを作成するには、次の手順を実行します。
 
 * Azure クラシック ポータルで、ADF ランディング ページの **[データ ストア]** をクリックします。
-*  **Azure Storage Account**
+* **Azure Storage Account**
 * Azure BLOB ストレージのアカウント キーとコンテナー名を入力します。 リンクされたサービスに *adfds*という名前を付けます。
 
 ### <a name="a-nameadf-linked-service-azure-sqlalinked-service-for-azure-sql-database"></a><a name="adf-linked-service-azure-sql"></a>Azure SQL データベース用のリンクされたサービス
@@ -122,7 +120,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、�
 * オンプレミスの SQL サーバーでは、**テーブル名**は *nyctaxi_data* です。
 * the **コンテナー名** は *containername*  
 
-この ADF パイプラインには、次の 3 つのテーブル定義が必要です。
+この ADF パイプラインには、次の&3; つのテーブル定義が必要です。
 
 1. [オンプレミスの SQL テーブル](#adf-table-onprem-sql)
 2. [BLOB テーブル ](#adf-table-blob-store)
@@ -315,7 +313,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、�
 
 Azure クラシック ポータルで (ダイアグラムをクリックすると) ADF 上にパイプラインが次のように表示されることを確認します。
 
-![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
+![ADF パイプライン](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="a-nameadf-pipeline-startastart-the-pipeline"></a><a name="adf-pipeline-start"></a>パイプラインを開始する
 これで、次のコマンドを使用してパイプラインを実行できます。
@@ -324,12 +322,12 @@ Azure クラシック ポータルで (ダイアグラムをクリックする�
 
 *startdate* と *enddate* のパラメーター値を、パイプラインを実行する実際の開始日と終了日に置き換える必要があります。
 
-パイプラインを実行すると、BLOB に選択したコンテナー内に表示されるデータを確認することができます (1 日につき 1 ファイル)。
+パイプラインを実行すると、BLOB に選択したコンテナー内に表示されるデータを確認することができます (1 日につき&1; ファイル)。
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。 これを行う方法と ADF が提供するその他の機能の詳細については、 [ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)をご覧ください。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

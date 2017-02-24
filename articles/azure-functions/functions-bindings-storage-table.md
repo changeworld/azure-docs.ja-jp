@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 768de7b221474f9143ba8e960581893229dca051
+ms.sourcegitcommit: 0d37eb09a6c8a0bb39a331e51a8993c114202b91
+ms.openlocfilehash: 88858cffa5ddc6ba83152d3430f5400a1c66a26a
 
 
 ---
@@ -47,7 +47,7 @@ Azure Storage テーブルの入力バインドにより、関数で Storage テ
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "in"
+    "direction": "in",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to read - see below>",
     "rowKey": "<RowKey of table entity to read - see below>",
@@ -59,8 +59,8 @@ Azure Storage テーブルの入力バインドにより、関数で Storage テ
 
 以下の点に注意してください。 
 
-* 単一のエンティティを読み取るには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+* 単一のエンティティを読み取るには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#application-settings)することもできます。  
 
 <a name="inputusage"></a>
 
@@ -167,7 +167,7 @@ Azure Storage テーブルの出力バインドにより、関数で Storage テ
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "out"
+    "direction": "out",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to write - see below>",
     "rowKey": "<RowKey of table entity to write - see below>",
@@ -178,7 +178,7 @@ Azure Storage テーブルの出力バインドにより、関数で Storage テ
 以下の点に注意してください。 
 
 * 単一のエンティティを書き込むには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 関数コードでエンティティ オブジェクトを作成する際に `PartitionKey` と `RowKey` を指定することもできます。
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#application-settings)することもできます。 
 
 <a name="outputusage"></a>
 
@@ -190,6 +190,7 @@ Node.js または C# 関数でオブジェクトをシリアル化できます�
 * `ITableEntity` を実装するすべての型
 * `ICollector<T>` (複数のエンティティを出力する場合。 [サンプル](#outcsharp)を参照してください)
 * `IAsyncCollector<T>` (`ICollector<T>` の非同期バージョン)
+* `CloudTable` (Azure Storage SDK を使用する場合。 [サンプル](#readmulti)を参照してください)
 
 <a name="outputsample"></a>
 
@@ -342,6 +343,6 @@ public class Person : TableEntity
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

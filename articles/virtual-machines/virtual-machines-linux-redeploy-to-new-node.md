@@ -15,8 +15,8 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 3295120664e409440641818b13dd1abab6f2f72f
-ms.openlocfilehash: 3864148ecd09b5bc4199185bc0e5a781703f3fdb
+ms.sourcegitcommit: 13ae22245d105b32b9fc50d7dbc8a6d50ad4560a
+ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
 
 
 ---
@@ -26,14 +26,29 @@ Azure の Linux 仮想マシン (VM) への SSH またはアプリケーショ�
 > [!NOTE]
 > VM を再デプロイすると、一時ディスクが失われ、仮想ネットワーク インターフェイスに関連付けられている動的 IP アドレスが更新されます。 
 
+次のいずれかの方法を使用して VM を再デプロイできます。 VM を再デプロイする方法を&1; つだけ選択してください。
 
-## <a name="using-azure-cli"></a>Azure CLI の使用
-コンピューターに[最新の Azure CLI](../xplat-cli-install.md) がインストールされていること、および Resource Manager モード (`azure config mode arm`) であることを確認します。
+- [Azure CLI 1.0](#azure-cli-10)
+- [Azure CLI 2.0 (プレビュー)](#azure-cli-20-preview)
+- [Azure ポータル](#using-azure-portal)
+
+
+## <a name="azure-cli-10"></a>Azure CLI 1.0
+[最新の Azure CLI 1.0](../xplat-cli-install.md) をインストールし、Azure アカウントにログインし、Resource Manager モード (`azure config mode arm`) になっていることを確認します。
 
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
+```
+
+## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+
+[az vm redeploy](/cli/azure/vm#redeploy) を使用して VM を再デプロイします。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
+
+```azurecli
+az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
@@ -44,6 +59,6 @@ VM への接続に関する問題が発生した場合は、[SSH 接続のトラ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2016
+ms.date: 02/07/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: afce238686f5b35a094f0792f8197b686d317fa5
-ms.openlocfilehash: b75e80b66e00be0022102c06113eb414f5b4b6e9
+ms.sourcegitcommit: 09f0aa4ea770d23d1b581c54b636c10e59ce1d3c
+ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 
 ---
@@ -44,6 +44,10 @@ ms.openlocfilehash: b75e80b66e00be0022102c06113eb414f5b4b6e9
 * [マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する](#errorhold)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * ["ls" などのコマンドで Linux VM にランダムな遅延が発生する](#delayproblem)
+* [エラー 112 - タイムアウト エラー](#error112)
+
+**他のアプリケーションからのアクセス**
+* [Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -75,7 +79,9 @@ Linux では、次のようなエラー メッセージが表示されます。
 ## <a name="slow-performance-when-accessing-file-storage-from-windows-or-linux"></a>Windows または Linux から File Storage にアクセスしたときにパフォーマンスが低下する
 * 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MB を使用することをお勧めします。
 * 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題がない場合は、書き込みによってサイズを増やすのではなく、事前にファイル サイズを設定します。
-
+* 次のように適切なコピー方法を使用します。
+      * 2 つのファイル共有間のすべての転送には、AZCopy を使用します。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy#file-copy)」を参照してください。
+      * ファイル共有とオンプレミスのコンピューター間では、robocopy を使用します。 詳細については「[Multi-threaded robocopy for faster copies (マルチスレッドの robocopy を使用してコピーを高速化する)](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)」を参照してください。
 <a id="windowsslow"></a>
 
 ## <a name="slow-performance-when-accessing-the-file-storage-from-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 または Windows Server 2012 R2 から File Storage にアクセスしたときにパフォーマンスが低下する
@@ -103,7 +109,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 
 <a id="error53"></a>
 
-## <a name="error-53-when-you-try-to-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントしたり、マウントを解除したりしようとしたときに、"エラー 53" が発生する
+## <a name="error-53-or-error-67-when-you-try-to-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントしたり、マウントを解除したりしようとしたときに、"エラー 53" または "エラー 67" が発生する
 この問題は、次のような状況で発生する場合があります。
 
 ### <a name="cause-1"></a>原因 1
@@ -113,7 +119,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 Windows 8、Windows Server 2012、またはそれ以降というバージョンの要件を満たすクライアントから接続するか、Azure ファイル共有に使用されている Azure ストレージ アカウントと同じデータ センターにある仮想マシンから接続します。
 
 ### <a name="cause-2"></a>原因 2
-"システム エラー 53" は、Azure ファイル共有をマウントするときに、ポート 445 から Azure Files データ センターへの送信方向の通信がブロックされている場合に表示されます。 [ここ](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)をクリックして、ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認してください。
+"システム エラー 53" または "システム エラー 67" は、Azure ファイル共有をマウントするときに、ポート 445 から Azure Files データ センターへの送信方向の通信がブロックされている場合に表示されます。 [ここ](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)をクリックして、ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認してください。
 
 Comcast や一部の IT 組織ではこのポートがブロックされます。 これが "システム エラー 53" メッセージの原因であるかどうかを把握するために、Portqry を使用して、TCP:445 エンドポイントを照会できます。 TCP:445 エンドポイントがフィルター処理済みとして表示される場合、TCP ポートがブロックされています。 クエリの使用例を次に示します。
 
@@ -153,7 +159,7 @@ Azure Files では、NTLMv2 認証のみがサポートされています。 グ
 
 <a id="slashfails"></a>
 
-## <a name="my-storage-account-contains-and-the-net-use-command-fails"></a>ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する
+## <a name="my-storage-account-contains--and-the-net-use-command-fails"></a>ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する
 ### <a name="cause"></a>原因
 **net use** コマンドをコマンド プロンプト (cmd.exe) で実行する場合、コマンド ライン オプションとして "/" を追加することで解析が行われます。 これにより、ドライブのマッピングが失敗します。
 
@@ -236,12 +242,30 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 **serverino** オプションが見当たらない場合は、**serverino** オプションを選択し、Azure Files のマウントを解除したうえでもう一度マウントします。
 
+<a id="error112"></a>
+## <a name="error-112---timeout-error"></a>エラー 112 - タイムアウト エラー
+
+このエラーは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなる通信エラーです。
+
+### <a name="cause"></a>原因
+
+このエラーは、Linux の再接続の問題または、ネットワーク エラーなど再接続を妨げる他の問題によって引き起こされることがあります。 ハード マウントを指定すると、接続が確立されるまで、または明示的に中断されるまで、クライアントが強制的に待機させられます。これはネットワーク タイムアウトによるエラーを防ぐために使用できます。 ただし、ユーザーは、この方法では待機が無期限に続く可能性があることや、必要に応じて接続を一時停止すべきことを認識しなければなりません。
+
+### <a name="workaround"></a>対処法
+
+Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
+
+<a id="webjobs"></a>
+
+## <a name="accessing-from-other-applications"></a>他のアプリケーションからのアクセス
+### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?
+AppService サンドボックスで SMB 共有をマウントすることはできません。 この問題を回避するには、マップされたドライブとして Azure ファイル共有をマップし、アプリケーションがドライブ名を使用して Azure ファイル共有にアクセスできるようにします。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

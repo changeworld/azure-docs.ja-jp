@@ -1,9 +1,9 @@
 ---
-title: "Azure CDN で Azure Storage BLOB コンテンツの有効期限を管理する | Microsoft Docs"
+title: "Azure CDN での Azure Storage BLOB 有効期限の管理 | Microsoft Docs"
 description: "Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
@@ -12,25 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/15/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
 
 
 ---
-# <a name="manage-expiration-of-azure-storage-blob-content-in-azure-cdn"></a>Azure CDN で Azure Storage BLOB コンテンツの有効期限を管理する
+# <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Azure CDN での Azure Storage BLOB 有効期限の管理
 > [!div class="op_single_selector"]
 > * [Azure Web Apps/Cloud Services、ASP.NET、または IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Storage BLOB サービス](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-[Azure Storage](../storage/storage-introduction.md) の [BLOB service ](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの 1 つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
+[Azure Storage](../storage/storage-introduction.md) の [BLOB service ](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの&1; つです。  パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。  TTL は、Azure Storage からの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) によって決まります。
 
 > [!TIP]
-> BLOB に TTL を設定しないこともできます。  その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
+> BLOB に TTL を設定しないこともできます。  その場合は、Azure CDN が既定の&7; 日間の TTL を自動的に適用します。
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみの詳細については、[Azure CDN の概要](cdn-overview.md)に関するページをご覧ください。
 > 
@@ -41,7 +41,7 @@ ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
 このチュートリアルでは、Azure Storage で TTL を設定する方法のいくつかを示します。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
+[Azure PowerShell](/powershell/azureps-cmdlets-docs) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の&1; つです。  `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
 ```powershell
 # Create a storage context
@@ -100,7 +100,7 @@ class Program
 ## <a name="other-methods"></a>その他の方法
 * [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)
   
-    BLOB をアップロードするときに、`-p` スイッチを使用して *cacheControl* プロパティを設定します。  この例では、TTL を 1 時間 (3,600 秒) に設定します。
+    BLOB をアップロードするときに、`-p` スイッチを使用して *cacheControl* プロパティを設定します。  この例では、TTL を&1; 時間 (3,600 秒) に設定します。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
@@ -122,6 +122,6 @@ BLOB の TTL は簡単に確認できます。  お使いのブラウザーの [
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

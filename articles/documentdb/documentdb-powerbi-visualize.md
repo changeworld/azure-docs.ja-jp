@@ -3,7 +3,7 @@ title: "DocumentDB コネクタ用 Power BI チュートリアル | Microsoft Do
 description: "この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、DocumentDB および Power BI コネクタを使用してデータを視覚化する方法を説明します。"
 keywords: "power bi チュートリアル, データの視覚化, power bi コネクタ"
 services: documentdb
-author: h0n
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
-ms.author: hawong
+ms.date: 02/14/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35c469ce0cfb99dc6a26fbcc0734938ad6b66fd7
+ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
+ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
 
 
 ---
@@ -88,7 +88,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
     データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。  代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
    
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。  キーは、Azure ポータルの **[[読み取り専用キー]](documentdb-manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `RcEBrRI2xVnlWheejXncHId6QRcKdCGQSW6uSUEgroYBWVnujW3YWvgiG2ePZ0P0TppsrMgscoxsO7cf6mOpcA==` になります)。 アカウント キーを入力し、 **[接続]**をクリックします。
+7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。  キーは、Azure ポータルの **[[読み取り専用キー]](documentdb-manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` になります)。 アカウント キーを入力し、 **[接続]**をクリックします。
    
     レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure ポータルの [[キー]](documentdb-manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
    
@@ -150,7 +150,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 レポート ビューには以下が表示されます。
 
 1. **[フィールド]** ウィンドウ。ここには、レポートに使用できるフィールドと共にデータ モデルの一覧が表示されます。
-2. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
+2. **[視覚エフェクト]** ウィンドウ。 レポートに&1; つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
 3. **[レポート]** キャンバス。ここでは、レポート用の視覚エフェクトを作成します。
 4. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
 
@@ -191,7 +191,7 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 ダッシュボードを作成する前に、レポートをその場で変更することもできます。 ただし、変更は Power BI Desktop で実行し、変更後のレポートを PowerBI.com にもう一度発行することをお勧めします。
 
 ## <a name="refresh-data-in-powerbicom"></a>PowerBI.com でのデータの更新
-データの更新方法には、アドホック更新とスケジュールされている更新の 2 つの方法があります。
+データの更新方法には、アドホック更新とスケジュールされている更新の&2; つの方法があります。
 
 アドホック更新を実行するには、**[データセット]** (PowerBITutorial など) の近くの省略記号 (...) をクリックします。 **[Refresh Now (今すぐ更新)]** を含む操作の一覧が表示されます。 データを更新するには、**[Refresh Now (今すぐ更新)]** をクリックします。
 
@@ -216,6 +216,6 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

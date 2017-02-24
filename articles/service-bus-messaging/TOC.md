@@ -12,7 +12,7 @@
 ### [PHP](service-bus-php-how-to-use-queues.md)
 ### [Python](service-bus-python-how-to-use-queues.md)
 ### [Ruby](service-bus-ruby-how-to-use-queues.md)
-### [REST ()](service-bus-brokered-tutorial-rest.md)
+### [REST ()](/rest/api/servicebus/queues)
 ## トピックとサブスクリプションの使用
 ### [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 ### [Java](service-bus-java-how-to-use-topics-subscriptions.md)
@@ -54,7 +54,7 @@
 ## .NET
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
-## [PowerShell](service-bus-powershell-how-to-provision.md)
+## [PowerShell](/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus)
 ## [REST ()](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
@@ -75,6 +75,6 @@
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 83eb96e8e9d1d5ff31d87141fe7270c0db8867bd
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
 
 1. **Azure SQL データベース** が、シャーディング アーキテクチャを使用して Azure でホストされています。
 2. **Elastic Database クライアント ライブラリ** は、シャード セットの管理に使用します。
-3. 一部のデータベースは、**Elastic Database プール**に入っています  (「[プールとは](sql-database-elastic-pool.md)」をご覧ください)。
+3. 一部のデータベースは、**エラスティック プール**に入っています 。 (「[プールとは](sql-database-elastic-pool.md)」をご覧ください)。
 4. **Elastic Database ジョブ** は、すべてのデータベースに対して、スケジュールされた、またはアドホックの T-SQL スクリプトを実行します。
 5. 1 つのシャードから別のシャードにデータを移動するときには、 **分割/マージ ツール** を使用します。
 6. **Elastic Database クエリ** では、シャード セット内のすべてのデータベースにまたがるクエリを記述することができます。
@@ -60,7 +61,7 @@ ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
 
 垂直方向のスケーリングとは、個々のデータベースのパフォーマンス レベルを増減することを意味します。"スケールアップ" とも呼ばれます。
 
-ほとんどのクラウド規模のデータベース アプリケーションでは、この 2 つの手法を組み合わせて使用しています。 たとえば、サービス アプリケーションとしてのソフトウェアでは、水平方向のスケーリングを使用して新しいエンド ユーザーをプロビジョニングし、垂直方向のスケーリングを使用して、各エンドユーザーのデータベースがワークロードで必要される条件に応じてリソースを拡大縮小できるようにします。
+ほとんどのクラウド規模のデータベース アプリケーションでは、この&2; つの手法を組み合わせて使用しています。 たとえば、サービス アプリケーションとしてのソフトウェアでは、水平方向のスケーリングを使用して新しいエンド ユーザーをプロビジョニングし、垂直方向のスケーリングを使用して、各エンドユーザーのデータベースがワークロードで必要される条件に応じてリソースを拡大縮小できるようにします。
 
 * 水平方向のスケーリングは、 [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して管理します。
 * 垂直方向のスケーリングは、Azure PowerShell コマンドレットを使用してサービス レベルを変更するか、エラスティック プールにデータベースを配置して実行します。
@@ -69,7 +70,7 @@ ms.openlocfilehash: 95232dff95c3f2593d16719492f480b44be9f525
 *シャーディング* は、同じ構造を持つ大量のデータを数多くの独立したデータベースに分散する手法です。 この手法は、エンド ユーザーまたは企業向けにサービスとしてのソフトウェア (SAAS) 製品をサービスで作成するクラウド開発者の間でよく知られています。 これらのエンド カスタマーは、多くの場合、"テナント" と呼ばれます。 シャーディングは、次のような理由で必要になります。  
 
 * データの合計数が多すぎて、単一のデータベースの制約に適合しない
-* ワークロード全体のトランザクションのスループットが 1 つのデータベースの能力を超えている
+* ワークロード全体のトランザクションのスループットが&1; つのデータベースの能力を超えている
 * テナントを互いに物理的に独立させる必要があり、テナントごとに別個のデータベースが必要になる
 * コンプライアンス、パフォーマンス、または地理上の理由から、データベースの異なる部分を異なる地理的場所に配置することが必要になる場合がある。
 
@@ -92,7 +93,7 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 
 ツールを使用するように既存のデータベースを変換する方法については、「 [既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)」を参照してください。
 
-Elastic Database プールの詳細を確認するには、「[Elastic Database プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-create-portal.md)に従って新しいプールを作成してください。  
+エラスティック プールの詳細を確認するには、「[エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-create-portal.md)に従って新しいプールを作成してください。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -106,6 +107,6 @@ Elastic Database プールの詳細を確認するには、「[Elastic Database 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

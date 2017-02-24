@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0612949c412cf23272bf62d3c0ea424046366b36
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: ac2730935d206ddf9079395384d46a43fdd740cb
 
 
 ---
@@ -32,7 +32,7 @@ Azure AD B2C は Microsoft Office 365 と共に使用することはできませ
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
 Azure AD テナントでは、テナント内のすべてのユーザー (既存の Microsoft アカウントを持つユーザーを除く) は、`<xyz>@<tenant domain>` という形式の電子メール アドレスを使用してサインインします。`<tenant domain>` はテナント内のいずれかの有効なドメイン、または初期 `<...>.onmicrosoft.com` ドメインです。 この種類のアカウントは、職場または学校アカウントです。
 
-Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意の電子メール アドレス (joe@comcast.net,、bob@gmail.com,、sarah@contoso.com,、jim@live.com). など) を使用してサインインします。この種類のアカウントはローカル アカウントです。 現在、ローカル アカウントとして任意のユーザー名 (単なるプレーン文字列) もサポートしています (joe、bob、sarah、jim など)。 Azure AD B2C サービスでは、これらの 2 種類のローカル アカウントのいずれかを選択できます。
+Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意の電子メール アドレス (joe@comcast.net,、bob@gmail.com,、sarah@contoso.com,、jim@live.com) など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。 現在、ローカル アカウントとして任意のユーザー名 (単なるプレーン文字列) もサポートしています (joe、bob、sarah、jim など)。 Azure AD B2C サービスでは、これらの&2; 種類のローカル アカウントのいずれかを選択できます。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 現在、Facebook、Google+、LinkedIn、および Amazon をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
@@ -53,7 +53,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 Azure Portal には、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。 Azure Portal で特定のテナントの B2C 機能ブレードに移動する方法については、「 [Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) 」を参照してください。 ほとんどのブラウザーでは、Azure Portal で Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
-検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
+検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md) を使用します。 具体的には、電子メールの次の&2; つの要素をカスタマイズできます。
 
 * **バナー ロゴ**: 右下に表示されます。
 * **背景色**: 上部に表示されます。
@@ -78,6 +78,9 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
+
+### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
+いいえ。セキュリティ上の理由から、`login.microsftonline.com` ドメインで提供されている Azure AD B2C ページを iFrame 内で開くことはできません。 すべてのコンシューマー エクスペリエンスについて、常に Azure AD B2C にリダイレクトする必要があります。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
 現時点では連携しません。 これらのシステムとの統合を検討中です。
@@ -124,6 +127,6 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

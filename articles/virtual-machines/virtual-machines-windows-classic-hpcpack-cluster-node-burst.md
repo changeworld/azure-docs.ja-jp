@@ -16,17 +16,18 @@ ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 54db3b7cfa5197a738aacde87ee8ef4908fee880
+ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
+ms.openlocfilehash: e206d161665e46a7c1c4a111a3642ece844b7b64
 
 
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加
 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターを Azure に設定した場合、事前構成された一連のコンピューティング ノード VM を保持することなく、クラスターの容量を迅速にスケールアップまたはスケールダウンする方法が必要になる可能性があります。 この記事では、オンデマンドの "バースト" ノード (クラウド サービスで実行されている worker ロール インスタンス) をコンピューティング リソースとして Azure のヘッド ノードに追加する方法について説明します。 
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
-![ノードをバーストする][burst]
+![Burst nodes][burst]
 
 この記事の手順を実行すれば、テストまたは概念実証のデプロイのために、クラウドベースの HPC Pack ヘッド ノード VM に Azure ノードをすばやく追加できます。 手順は基本的にオンプレミスの HPC Pack クラスターにクラウド コンピューティング能力を追加する "Azure へのバースト" の手順と同じです。 チュートリアルが必要な場合、「 [Microsoft HPC Pack を使用したハイブリッド コンピューティング クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。 詳細なガイドと本稼働デプロイにおける考慮事項については、「 [Microsoft HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)」を参照してください。
 
@@ -79,10 +80,10 @@ Azure ノードのデプロイで問題が発生した場合は、「 [Troublesh
 * クラスターのワークロードに合わせて Azure コンピューティング リソースを自動的に拡大縮小する方法については、 [HPC Pack クラスターでの Azure コンピューティング リソースの自動的な拡大縮小](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事をご覧ください。
 
 <!--Image references-->
-[バースト]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
+[burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

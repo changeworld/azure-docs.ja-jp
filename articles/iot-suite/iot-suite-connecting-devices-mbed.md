@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f2a77ada25d7d6285c62d2f3d1330df5f192713d
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: a70eb51e7ebbc79e1aab4176d154dbef754368c1
 
 
 ---
@@ -64,10 +64,14 @@ ms.openlocfilehash: f2a77ada25d7d6285c62d2f3d1330df5f192713d
     ![][9]
 
 ### <a name="walk-through-the-code"></a>コードのウォーク スルー
-プログラムのしくみに関心があるユーザー向けに、このセクションでは、サンプル コードの重要な部分について説明します。 コードを実行するだけである場合は、「 [プログラムをビルドして実行する](#buildandrun)」に進んでください。
+プログラムのしくみに関心があるユーザー向けに、このセクションでは、サンプル コードの重要な部分について説明します。 コードを実行するだけの場合は、「[プログラムをビルドして実行する](#buildandrun)」に進んでください。
 
 #### <a name="defining-the-model"></a>モデルの定義
-次のサンプルでは、[serializer][lnk-serializer] ライブラリを使用して、デバイスが IoT Hub との間で送受信できるメッセージを指定するモデルを定義します。 このサンプルでは、**Contoso** 名前空間で、**Temperature**、**ExternalTemperature**、**Humidity** の各テレメトリ データと、デバイス ID、デバイスのプロパティ、デバイスが応答するコマンドなどのメタデータを指定する**サーモスタット** モデルを定義します。
+次のサンプルでは、[serializer][lnk-serializer] ライブラリを使用して、デバイスが IoT Hub との間で送受信できるメッセージを指定するモデルを定義します。 このサンプルでは、**Contoso** 名前空間は、以下を定義する **Thermostat** モデルを指定します。
+
+- **Temperature****ExternalTemperature**、および **Humidity** テレメトリ データ。
+- デバイス ID や デバイスのプロパティなどのメタデータ。
+- デバイスは次のコマンドに応答します。
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -137,7 +141,7 @@ EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
 
 * Contoso サーモスタット モデルのインスタンスを作成し、2 つのコマンドのメッセージのコールバックを設定します。
 * serializer ライブラリを使用して、デバイス自体に関する情報 (デバイスがサポートするコマンドなど) を IoT Hub に送信します。 ハブはこのメッセージを受信すると、ダッシュボードのデバイスの状態を **[保留中]** から **[実行中]** に変更します。
-* 温度、外部温度、湿度の値を 1 秒おきに IoT Hub に送信する **while** ループを開始します。
+* 温度、外部温度、湿度の値を&1; 秒おきに IoT Hub に送信する **while** ループを開始します。
 
 起動時に IoT Hub に送信される **DeviceInfo** メッセージの例を次に示します。
 
@@ -204,6 +208,6 @@ IoT Hub から受信する **コマンド** の例を次に示します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

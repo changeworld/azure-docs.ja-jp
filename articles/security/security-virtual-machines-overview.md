@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシンのセキュリティの概要 | Microsoft Docs"
-description: " Azure 仮想マシンは、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。  この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。 "
+title: "Azure Virtual Machines で使用される Azure のセキュリティ機能 | Microsoft Docs"
+description: " Azure Virtual Machines で使用できる Azure のコア セキュリティ機能の概要について説明します。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f504db7d67fdf196fbdaaaba2e09d989449b101
-ms.openlocfilehash: 0be0500296ad9bed302f65da9ef8de63e0ed08f6
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
 
 
 ---
@@ -105,7 +105,7 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 * [Azure Backup サービス - FAQ](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
+組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも&2; 次拠点からワークロードとアプリを利用できます。
 
 Site Recovery:
 
@@ -154,6 +154,6 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

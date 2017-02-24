@@ -4,7 +4,7 @@ description: "Azure SQL Database の一般的な接続エラーを特定して�
 services: sql-database
 documentationcenter: 
 author: dalechen
-manager: felixwu
+manager: cshepard
 editor: 
 ms.assetid: ac463d1c-aec8-443d-b66e-fa5eadcccfa8
 ms.service: sql-database
@@ -13,11 +13,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 48ccd940efb75427461c3a8018aa6b31f46a626e
+ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
+ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
 
 
 ---
@@ -61,8 +61,8 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 * ユーザー エラー: 接続パラメーター (接続文字列のサーバー名など) の入力間違いなど。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
-1. クライアントの IP アドレスを許可するには、 [ファイアウォール規則](sql-database-configure-firewall-settings.md) を設定します。
-2. クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。 その他のポインターについては、「 [SQL Server のアクセスを許可するための Windows ファイアウォールの構成](https://msdn.microsoft.com/library/cc646023.aspx) 」をご覧ください。
+1. クライアントの IP アドレスを許可するには、 [ファイアウォール規則](sql-database-configure-firewall-settings.md) を設定します。 一時的なテストのために、0.0.0.0 を IP アドレス範囲の開始アドレス、255.255.255.255 を終了アドレスとするファイアウォール規則を設定します。 これにより、サーバーがすべての IP アドレスに開かれます。 これによって接続の問題が解決する場合は、この規則を削除した後、IP アドレスまたはアドレス範囲を適切に制限するファイアウォール規則を作成します。 
+2. クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。 Azure Active Directory 認証のために追加で開く必要があるポートに関する詳しい情報は、「[Configure the Windows Firewall to Allow SQL Server Access (SQL Server のアクセスを許可するための Windows ファイアウォールの構成)](https://msdn.microsoft.com/library/cc646023.aspx)」および「[Hybrid Identity Required Ports and Protocols (ハイブリッド ID で必要なポートとプロトコル)](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports)」を参照してください。
 3. 接続文字列およびその他の接続設定を確認します。 [接続の問題に関するトピック](sql-database-connectivity-issues.md#connections-to-azure-sql-database)で、接続文字列のセクションを確認します。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を [障害からの回復](sql-database-disaster-recovery.md) のトピックで参照してください。
 
@@ -77,13 +77,11 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 | 4 |[Troubleshoot connectivity issues with Microsoft Azure SQL Database](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database) |このツールは、問題の特定と、接続エラーの解決に役立ちます。 |
 | 5 |["サーバー &lt;y&gt; のデータベース &lt;x&gt; は現在使用できません。後で接続を再試行してください」エラーのトラブルシューティング](sql-database-troubleshoot-connection.md) |40613 エラーの特定と解決の方法を説明します: 「サーバー &lt;y&gt; 上のデータベース &lt;x&gt; は現在使用できません。 後で接続を再試行してください" のトラブルシューティングを行う |
 | 6 |[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md) |よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 |
-| 7 |[スタンドアロン データベースの場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md) |お使いのアプリケーションに適したサービス レベルを判断する際に役立つガイダンスを紹介しています。 お使いの Azure SQL Database を最大限に活用するための、アプリケーションの調整に関する推奨事項も掲載しています。 |
+| 7 |[データベースが&1; 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md) |お使いのアプリケーションに適したサービス レベルを判断する際に役立つガイダンスを紹介しています。 お使いの Azure SQL Database を最大限に活用するための、アプリケーションの調整に関する推奨事項も掲載しています。 |
 | 8 |[SQL Database の開発: 概要](sql-database-develop-overview.md) |ここには、Azure SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。 |
-| 9 |Azure SQL Database V12 へのアップグレード ([Azure Portal](sql-database-upgrade-server-portal.md)、[PowerShell](sql-database-upgrade-server-powershell.md)) |既存の Azure SQL Database V11 サーバーとデータベースを、Azure ポータルまたはPowerShell を使用して、Azure SQL Database V12 にアップグレードする方法について説明します。 |
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-troubleshoot-performance.md)
-* [Azure SQL Database のアクセス許可のトラブルシューティング](sql-database-troubleshoot-permissions.md)
 * [Microsoft Azure ドキュメントの検索](http://azure.microsoft.com/search/documentation/)
 * [Azure SQL Database サービスの更新情報](http://azure.microsoft.com/updates/?service=sql-database)
 
@@ -91,12 +89,10 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md)
 * [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
-* [SQL Database トレーニング: Azure SQL Database について](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-* [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

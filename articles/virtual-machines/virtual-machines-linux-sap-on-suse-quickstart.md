@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 02/14/2017
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
-ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
+ms.sourcegitcommit: 046f58eba906980f23ce1177794b28930e3314a1
+ms.openlocfilehash: e7255c4123849f8f3fb29767308b433b5c0e511b
 
 
 ---
@@ -33,6 +33,9 @@ Azure で SAP NetWeaver を実行するには、SUSE Linux Enterprise Server SLE
 
 Azure でのすべての新しいテストとインストールには、Azure Resource Manager を使用する必要があります。 Azure PowerShell または Azure コマンドライン インターフェイス (CLI) を使用して SUSE SLES イメージおよびバージョンを検索するには、次のコマンドを使用します。 この出力は、新しい SUSE Linux VM をデプロイするために JSON テンプレートで OS イメージを定義することなどに使用できます。
 以下の PowerShell コマンドは、バージョン 1.0.1 以降の Azure PowerShell で有効です。
+
+SAP インストールで標準 SLES イメージを使用することは可能ですが、現在 Azure イメージ ギャラリーで入手できる新しい SLES for SAP イメージの使用をお勧めします。 これらのイメージの詳細については、対応する [Azure Marketplace に関するページ]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP )または [SUSE の SLES for SAP に関するよく寄せられる質問のページ]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ )をご覧ください。
+
 
 * SUSE を含む既存の発行元を検索:
   
@@ -50,13 +53,17 @@ Azure でのすべての新しいテストとインストールには、Azure Re
   
    ```
    PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
+   PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP"
    CLI : azure vm image list-skus westeurope SUSE SLES
+   CLI : azure vm image list-skus westeurope SUSE SLES-SAP
    ```
 * SLES SKU の特定のバージョンを検索:
   
    ```
-   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
-   CLI : azure vm image list westeurope SUSE SLES 12
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12-SP2"
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP" -skus "12-SP2"
+   CLI : azure vm image list westeurope SUSE SLES 12-SP2
+   CLI : azure vm image list westeurope SUSE SLES-SAP 12-SP2
    ```
 
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>SUSE VM への WALinuxAgent のインストール
@@ -79,11 +86,11 @@ UUID によるマウントに関する唯一の例外として、次のセクシ
 ## <a name="troubleshooting-a-suse-vm-that-isnt-accessible-anymore"></a>アクセスできなくなった SUSE VM のトラブルシューティング
 起動プロセス中に Azure 上の SUSE VM が停止する状況が発生することがあります (ディスクのマウントに関連するエラーなど)。 この問題は、Azure ポータルの Azure Virtual Machines v2 の起動診断機能を使用して検証できます。 詳細については、 [起動診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)に関するページをご覧ください。
 
-問題を解決するための 1 つの方法として、破損している VM から Azure 上の別の SUSE VM に OS ディスクを接続します。 その後、次のセクションで説明するように、/etc/fstab の編集やネットワーク udev 規則の削除など、適切な変更を加えます。
+問題を解決するための&1; つの方法として、破損している VM から Azure 上の別の SUSE VM に OS ディスクを接続します。 その後、次のセクションで説明するように、/etc/fstab の編集やネットワーク udev 規則の削除など、適切な変更を加えます。
 
-ここで、1 つの重要な考慮事項があります。 同じ Azure Marketplace イメージ (SLES 11 SP4 など) から複数の SUSE VM をデプロイすると、OS ディスクは常に同じ UUID でマウントされます。 したがって、その UUID を使用して、同じ Azure Marketplace イメージを使用してデプロイされた別の VM から OS ディスクを接続すると、同じ UUID が 2 つ存在することになります。 これによって、問題が発生します。つまり、トラブルシューティング用の VM は、実際には、元のディスクではなく、接続された破損している OS ディスクから起動します。
+ここで、1 つの重要な考慮事項があります。 同じ Azure Marketplace イメージ (SLES 11 SP4 など) から複数の SUSE VM をデプロイすると、OS ディスクは常に同じ UUID でマウントされます。 したがって、その UUID を使用して、同じ Azure Marketplace イメージを使用してデプロイされた別の VM から OS ディスクを接続すると、同じ UUID が&2; つ存在することになります。 これによって、問題が発生します。つまり、トラブルシューティング用の VM は、実際には、元のディスクではなく、接続された破損している OS ディスクから起動します。
 
-この回避方法は次の 2 とおりあります。
+この回避方法は次の&2; とおりあります。
 
 * トラブルシューティング用の VM に別の Azure Marketplace イメージを使用する (SLES 12 の代わりに SLES 11 SPx など)。
 * UUID を使用して別の VM から破損した OS ディスクを接続せずに、他のものを使用する。
@@ -119,7 +126,7 @@ CLI と Azure Resource Manager の詳細については、「[Azure Resource Man
 ## <a name="suse-sapconf-package--tuned-adm"></a>SUSE の sapconf パッケージ / tuned-adm
 SUSE には、一連の SAP 固有の設定を管理する、"sapconf" と呼ばれるパッケージが用意されています。 このパッケージの実行内容、インストール方法、使用方法の詳細については、「[Using sapconf to prepare a SUSE Linux Enterprise Server to run SAP systems (SAP システムを実行するために sapconf を使用して SUSE Linux Enterprise Server を準備する)](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/)」および「[What is sapconf or how to prepare a SUSE Linux Enterprise Server for running SAP systems? (sapconf の説明と SAP システムの実行用に SUSE Linux Enterprise Server を準備する方法)](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems)」を参照してください。
 
-また、sapconf に代わる新しいツール tuned-adm もあります。 このツールの詳細については、次の 2 つのリンク先をご覧ください。
+また、sapconf に代わる新しいツール tuned-adm もあります。 このツールの詳細については、次の&2; つのリンク先をご覧ください。
 
 [tuned-adm プロファイルの sap-hana に関する SLES ドキュメント](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_s4s_configure_sapconf.html) 
 
@@ -159,6 +166,6 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

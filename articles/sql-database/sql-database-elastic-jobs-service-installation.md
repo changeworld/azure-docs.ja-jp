@@ -8,7 +8,7 @@ author: ddove
 editor: 
 ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
-ms.custom: elastic
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fb40d7d98486ddd74bc6f0151a816c171efa4ba4
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
 
 
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
-既存の **Elastic Database プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
+既存の**エラスティック プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
@@ -147,11 +147,11 @@ ms.openlocfilehash: fb40d7d98486ddd74bc6f0151a816c171efa4ba4
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
-[Elastic Database プールを作成](sql-database-elastic-pool-create-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、Elastic Database プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+[エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
 
 **推定所要時間:** 10 分。
 
-1. [Azure ポータル](https://portal.azure.com/#) のエラスティック データベース プールのダッシュボード ビューで、 **[ジョブの作成]**をクリックします。
+1. [Azure Portal](https://portal.azure.com/#) のエラスティック プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
 4. [サービスのインストール] ビューで、 **[ジョブの資格情報]**をクリックします。
@@ -170,7 +170,7 @@ ms.openlocfilehash: fb40d7d98486ddd74bc6f0151a816c171efa4ba4
 アンインストールが必要な場合は、リソース グループを削除します。 「 [エラスティック データベース ジョブ コンポーネントのアンインストール方法](sql-database-elastic-jobs-uninstall.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-スクリプトを実行できる適切な権限を持つ資格情報がグループ内の各データベースに作成されていることを確認します。詳細については、「[SQL Database の保護](sql-database-security.md)」をご覧ください。
+スクリプトを実行できる適切な権限を持つ資格情報がグループ内の各データベースに作成されていることを確認します。詳細については、「[SQL Database の保護](sql-database-manage-logins.md)」をご覧ください。
 概要については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
 
 <!--Image references-->
@@ -181,6 +181,6 @@ ms.openlocfilehash: fb40d7d98486ddd74bc6f0151a816c171efa4ba4
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

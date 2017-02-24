@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/30/2016
+ms.date: 02/08/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 9a96e297711a949ac6bc464ad9154b4ad924666d
-ms.openlocfilehash: d6f56ed485eedd1e8250448c2c0794a066b11dc4
+ms.sourcegitcommit: 6c8c04e0237e2168df60ecc597754c38af167e14
+ms.openlocfilehash: 0aed3d224199b17bac748b14416a738eac342103
 
 
 ---
@@ -40,18 +40,19 @@ CDN を使用して Web サイト資産をキャッシュすると、次のよ�
 1. ユーザー (Alice) は、特殊なドメイン名 ( `<endpointname>.azureedge.net`など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。  DNS は、パフォーマンスが最高の Point-of-Presence (POP) の場所に要求をルーティングします。  通常は、ユーザーに地理的に最も近い位置にある POP です。
 2. POP のエッジ サーバーのキャッシュにファイルがない場合、エッジ サーバーは配信元にあるファイルを要求します。  配信元は、Azure Web App、Azure Cloud Service、Azure ストレージ アカウント、またはパブリックにアクセスできる Web サーバーです。
 3. 配信元からエッジ サーバーに対して、ファイルの有効期間 (TTL) を記述したオプションの HTTP ヘッダーなどのファイルが戻されます。
-4. エッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。  TTL が期限切れになるまで、ファイルはエッジ サーバーにキャッシュされた状態になります。  配信元で TTL を指定していなかった場合、既定の TTL は 7 日間です。
+4. エッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。  TTL が期限切れになるまで、ファイルはエッジ サーバーにキャッシュされた状態になります。  配信元で TTL を指定していなかった場合、既定の TTL は&7; 日間です。
 5. その他のユーザーが同じ URL を使用して同じファイルを要求し、同じ POP に転送することもできます。
 6. ファイルの TTL が期限切れになっていない場合、エッジ サーバーはキャッシュのファイルを返します。  その結果、応答時間が短縮されます。
 
 ## <a name="azure-cdn-features"></a>Azure CDN の機能
-Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 3 つがあります。  次の表に、各製品で使用できる機能を示します。
+Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の&3; つがあります。  次の表に、各製品で使用できる機能を示します。
 
 |  | Standard Akamai | Standard Verizon | Premium Verizon |
 | --- | --- | --- | --- |
 | [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、[PowerShell](cdn-manage-powershell.md) を介した管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| CDN エンドポイントでの HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| カスタム ドメイン HTTPS | |**&#x2713;** |**&#x2713;** |
 | 負荷分散 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [DDOS](https://www.us-cert.gov/ncas/tips/ST04-015) 保護 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 デュアルスタック |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -91,6 +92,6 @@ CDN の概要については、「 [Azure CDN の使用](cdn-create-new-endpoint
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

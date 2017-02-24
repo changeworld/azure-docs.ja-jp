@@ -15,13 +15,13 @@ ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9b0df6e95e465efce467b8bcc60063f0b1ead946
+ms.sourcegitcommit: 9b2d456d8dba33af224ea147f5f8ec49ba7397f9
+ms.openlocfilehash: 202134cd03bf776c1d646ae24c09a79e14fdc5d3
 
 
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>ローカルの Docker コンテナーでアプリをデバッグする
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Visual Studio Tools for Docker を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。
 コード変更のたびにコンテナーを再起動する必要はありません。
 この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET Core Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。
@@ -29,8 +29,8 @@ Visual Studio Tools for Docker を使用すると、一貫した方法でアプ�
 
 > [!NOTE]
 > Windows コンテナーのサポートは今後のリリースで開始する予定です
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>前提条件
 次のツールをインストールする必要があります。
@@ -53,19 +53,19 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 ## <a name="3-edit-your-code-and-refresh"></a>3.コードを編集して更新する
 変更をすばやく反復処理するには、コンテナー内でアプリケーションを起動して変更を行うと、IIS Express を使用する場合のように表示できます。
 
-1. ソリューション構成を `Debug` に設定して **Ctrl + F5** を押すと、Docker イメージが作成され、ローカルで実行されます。
-   
+1. ソリューション構成を `Debug` に設定して **Ctrl + F5** キーを押すと、Docker イメージが作成され、ローカルで実行されます。
+
     コンテナー イメージが作成されて Docker コンテナーで実行されると、Visual Studio は既定のブラウザーでその Web アプリを起動します。
     Microsoft Edge ブラウザーを使用している場合、またはエラーが発生している場合は、「 [トラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md) 」セクションを参照してください。
 2. [About] ページに移動して、変更を加えます。
 3. Visual Studio に戻り、 `Views\Home\About.cshtml`を開きます。
 4. ファイルの最後に次の HTML コンテンツを追加し、変更を保存します。
-   
+
     ```
     <h1>Hello from a Docker Container!</h1>
     ```
 5. 出力ウィンドウで .NET ビルドが完了したことを確認し、次の行が表示されたら、お使いのブラウザーに戻り、[About] ページを更新します。
-   
+
    ```
    Now listening on: http://*:80
    Application started. Press Ctrl+C to shut down
@@ -77,16 +77,16 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
 1. Visual Studio に戻り、`Controllers\HomeController.cs` を開きます。
 2. About() メソッドの内容を次のように置き換えます。
-   
+
    ```
-   string message = "Your application description page from wthin a Container";
+   string message = "Your application description page from within a Container";
    ViewData["Message"] = message;
    ````
 3. ブレークポイントを `string message`... 行の左側に設定します。
 4. **F5** キーを押して、デバッグを開始します。
 5. [About] ページに移動して、ブレークポイントを探します。
 6. Visual Studio に切り替えてブレークポイントを表示し、メッセージの値を検査します。
-   
+
    ![][2]
 
 ## <a name="summary"></a>概要
@@ -118,6 +118,6 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

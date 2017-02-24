@@ -1,26 +1,26 @@
 ---
-title: "チュートリアル: Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Resource Manager テンプレートを使用して、コピー アクティビティを含む Azure Data Factory パイプラインを作成します。"
+title: "チュートリアル: データを移動するパイプラインを Azure PowerShell で作成する | Microsoft Docs"
+description: "このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
 services: data-factory
 documentationcenter: 
 author: spelluru
 manager: jhubbard
 editor: monicar
-ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
+ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2016
+ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ebc5dbf790ca6012cfe9a7ea9ccee9fdacb46ffd
-ms.openlocfilehash: 1ae89bc2b58df6bcc830ded940821ab2348f55cd
+ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
+ms.openlocfilehash: a95e65db804f1c6cc2927901216ee7a287a911ee
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用してコピー アクティビティを含むパイプラインを作成する
+# <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル: データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -30,533 +30,458 @@ ms.openlocfilehash: 1ae89bc2b58df6bcc830ded940821ab2348f55cd
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+>
+>
 
+このチュートリアルでは、Azure PowerShell コマンドレットを使用して、Azure Data Factory のインスタンスを作成して監視します。 このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
 
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory を作成し、監視する方法について説明します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database にデータをコピーします。
+コピー アクティビティ機能により、Data Factory でデータ移動が実行されます。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。   
+
+> [!NOTE]
+> この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。 これらのコマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories)を参照してください。
+>
+> このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する方法に関するチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
-* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。
-* (省略可能)「[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
+- [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) のページに目を通して、チュートリアルの概要を理解し、 **前提条件** の手順を完了します。
+- Azure PowerShell をインストールします。 [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページに記載されている手順に従います。
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
-このチュートリアルでは、次の Data Factory エンティティを含むデータ ファクトリを作成します。
+次の表に、このチュートリアルの一環として実行する手順を示します。
 
-| エンティティ | Description |
+| 手順 | 説明 |
 | --- | --- |
-| Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL Database がシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
-| Azure SQL Database のリンクされたサービス |Azure SQL Database をデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL Database を指定します。 |
-| Azure BLOB の入力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、入力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
-| Azure SQL の出力データセット |Azure SQL のリンクされたサービスを参照します。 Azure SQL のリンクされたサービスは、Azure SQL サーバーを参照します。Azure SQL データセットは、出力データを保持するテーブルの名前を指定します。 |
-| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが 1 つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL Database のテーブルにデータをコピーします。 |
+| [Azure データ ファクトリを作成する](#create-data-factory) |この手順では、 **ADFTutorialDataFactoryPSH**という名前の Azure データ ファクトリを作成します。 |
+| [リンクされたサービスの作成](#create-linked-services) |この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の&2; つのリンクされたサービスを作成します。 StorageLinkedService は Azure Storage サービスを、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactoryPSH にリンクします。 |
+| [入力データセットと出力データセットを作成する](#create-datasets) |この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。 これらのデータセットは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルと出力テーブルとして使用されます。 |
+| [パイプラインを作成して実行する](#create-pipeline) |この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactoryPSH というデータ ファクトリに作成します。 このパイプラインでは、コピー アクティビティを使用して、Azure BLOB から Azure データベース出力テーブルにデータをコピーします。 |
+| [データセットとパイプラインを監視する](#monitor-pipeline) |この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。 |
 
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 2 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を 1 つ含むパイプラインを作成します。
+## <a name="create-a-data-factory"></a>Data Factory を作成する。
+この手順では、Azure PowerShell を使用して、**ADFTutorialDataFactoryPSH** という名前の Azure データ ファクトリを作成します。
 
-![Azure BLOB から Azure SQL Database へのコピー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png)
+1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 
-次のセクションでは、このチュートリアルを速やかに実行し、テンプレートをテストできるように、Data Factory エンティティを定義するための完全な Resource Manager テンプレートを提供します。 各 Data Factory エンティティを定義する方法については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」をご覧ください。
+   a. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
 
-## <a name="data-factory-json-template"></a>Data Factory JSON テンプレート
-データ ファクトリを定義するための大まかな Resource Manager テンプレートは次のとおりです。
+           Login-AzureRmAccount   
+   b. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": { ...
-    },
-    "variables": { ...
-    },
-    "resources": [
-        {
-            "name": "[parameters('dataFactoryName')]",
-            "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
-            "location": "westus",
-            "resources": [
-                { ... },
-                { ... },
-                { ... },
-                { ... }
-            ]
-        }
-    ]
-}
-```
+           Get-AzureRmSubscription
+   c. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。
 
-**C:\ADFGetStarted** フォルダーに、次の内容を記述した **ADFCopyTutorialARM.json** という名前の JSON ファイルを作成します。
+           Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+2. 次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
-```json
-{
-    "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "parameters": {
-        "storageAccountName": { "type": "string", "metadata": { "description": "Name of the Azure storage account that contains the data to be copied." } },
-        "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
-        "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
-        "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-        "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-        "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-        "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
-        "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
-        "targetSQLTable": {
-            "type": "string",
-            "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." }
-        }
-    },
-    "variables": {
-        "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]",
-        "azureSqlLinkedServiceName": "AzureSqlLinkedService",
-        "azureStorageLinkedServiceName": "AzureStorageLinkedService",
-        "blobInputDatasetName": "BlobInputDataset",
-        "sqlOutputDatasetName": "SQLOutputDataset",
-        "pipelineName": "Blob2SQLPipeline"
-    },
-    "resources": [{
-        "name": "[variables('dataFactoryName')]",
-        "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
-        "location": "West US",
-        "resources": [{
-                "type": "linkedservices",
-                "name": "[variables('azureStorageLinkedServiceName')]",
-                "dependsOn": [
-                    "[variables('dataFactoryName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                    "type": "AzureStorage",
-                    "description": "Azure Storage linked service",
-                    "typeProperties": {
-                        "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-                    }
-                }
-            },
-            {
-                "type": "linkedservices",
-                "name": "[variables('azureSqlLinkedServiceName')]",
-                "dependsOn": [
-                    "[variables('dataFactoryName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                    "type": "AzureSqlDatabase",
-                    "description": "Azure SQL linked service",
-                    "typeProperties": {
-                        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-                    }
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('blobInputDatasetName')]",
-                "dependsOn": [
-                    "[variables('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                    "type": "AzureBlob",
-                    "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-                    "structure": [{
-                            "name": "Column0",
-                            "type": "String"
-                        },
-                        {
-                            "name": "Column1",
-                            "type": "String"
-                        }
-                    ],
-                    "typeProperties": {
-                        "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
-                        "fileName": "[parameters('sourceBlobName')]",
-                        "format": {
-                            "type": "TextFormat",
-                            "columnDelimiter": ","
-                        }
-                    },
-                    "availability": {
-                        "frequency": "Day",
-                        "interval": 1
-                    },
-                    "external": true
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('sqlOutputDatasetName')]",
-                "dependsOn": [
-                    "[variables('dataFactoryName')]",
-                    "[variables('azureSqlLinkedServiceName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                    "type": "AzureSqlTable",
-                    "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
-                    "structure": [{
-                            "name": "FirstName",
-                            "type": "String"
-                        },
-                        {
-                            "name": "LastName",
-                            "type": "String"
-                        }
-                    ],
-                    "typeProperties": {
-                        "tableName": "[parameters('targetSQLTable')]"
-                    },
-                    "availability": {
-                        "frequency": "Day",
-                        "interval": 1
-                    }
-                }
-            },
-            {
-                "type": "datapipelines",
-                "name": "[variables('pipelineName')]",
-                "dependsOn": [
-                    "[variables('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]",
-                    "[variables('azureSqlLinkedServiceName')]",
-                    "[variables('blobInputDatasetName')]",
-                    "[variables('sqlOutputDatasetName')]"
-                ],
-                "apiVersion": "2015-10-01",
-                "properties": {
-                    "activities": [{
-                        "name": "CopyFromAzureBlobToAzureSQL",
-                        "description": "Copy data frm Azure blob to Azure SQL",
-                        "type": "Copy",
-                        "inputs": [{
-                            "name": "[variables('blobInputDatasetName')]"
-                        }],
-                        "outputs": [{
-                            "name": "[variables('sqlOutputDatasetName')]"
-                        }],
-                        "typeProperties": {
-                            "source": {
-                                "type": "BlobSource"
-                            },
-                            "sink": {
-                                "type": "SqlSink",
-                                "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
-                            },
-                            "translator": {
-                                "type": "TabularTranslator",
-                                "columnMappings": "Column0:FirstName,Column1:LastName"
-                            }
-                        },
-                        "Policy": {
-                            "concurrency": 1,
-                            "executionPriorityOrder": "NewestFirst",
-                            "retry": 3,
-                            "timeout": "01:00:00"
-                        }
-                    }],
-                    "start": "2016-10-02T00:00:00Z",
-                    "end": "2016-10-03T00:00:00Z"
-                }
-            }
-        ]
-    }]
-}
-```
+        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
-## <a name="parameters-json"></a>Parameters JSON
-Azure Resource Manager テンプレートのパラメーターを含む **ADFCopyTutorialARM-Parameters.json** という名前の JSON ファイルを作成します。
+    このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup**という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
+3. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。  
 
-> [!IMPORTANT]
-> **storageAccountName** パラメーターと **storageAccountKey** パラメーターに、Azure Storage アカウントの名前とキーを指定します。
+        New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
 
+以下の点に注意してください。
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountName": {    "value": "<Name of the Azure storage account>"    },
-        "storageAccountKey": {
-                    "value": "<Key for the Azure storage account>"
-        },
-        "sourceBlobContainer": { "value": "adftutorial" },
-        "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
-        "sqlServerPassword": { "value": "<password for the user>" },
-        "targetSQLTable": { "value": "emp" }
-    }
-}
-```
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが表示される場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。 このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。 Data Factory アーティファクトについては、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 
-> [!IMPORTANT]
-> 開発環境、テスト環境、運用環境用にそれぞれ別の parameter JSON ファイルを作成して、同じ Data Factory JSON テンプレートで使用できます。 PowerShell スクリプトを使用して、これらの環境への Data Factory エンティティのデプロイを自動化できます。
+        Data factory name “ADFTutorialDataFactoryPSH” is not available
+* Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
+* データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+* "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラーが表示される可能性があります。 次のいずれかを実行し、もう一度発行してみてください。
 
-## <a name="create-data-factory"></a>データ ファクトリの作成
-1. **Azure PowerShell** を起動し、次のコマンドを実行します。
-   * `Login-AzureRmAccount` を実行し、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
-   * `Get-AzureRmSubscription` を実行して、このアカウントのサブスクリプションをすべて表示します。
-   * `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` を実行して、使用するサブスクリプションを選択します。
-2. 次のコマンドを実行し、手順 1. で作成した Resource Manager テンプレートを使用して Data Factory エンティティをデプロイします。
+  * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
-    ```powershell
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
+          Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+
+      Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+
+          Get-AzureRmResourceProvider
+  * Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 Data Factory のブレードに移動するか、Azure Portal でデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
+
+## <a name="create-linked-services"></a>リンクされたサービスの作成
+リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 データ ストアには、Azure Storage サービス、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。 コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
+
+この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の&2; つのリンクされたサービスを作成します。 StorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL データベースを **ADFTutorialDataFactoryPSH** というデータ ファクトリにリンクします。 このチュートリアルの後半では、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+
+### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用にリンクされたサービスを作成する
+1. 次の内容を記述した **StorageLinkedService.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダーに作成します  (ADFGetStartedPSH フォルダーがない場合は作成します)。
+
+         {
+               "name": "StorageLinkedService",
+               "properties": {
+                 "type": "AzureStorage",
+                 "typeProperties": {
+                       "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+                 }
+               }
+         }
+
+   **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。
+2. **Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
+3. **New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、**Get-AzureRmDataFactory** を使用して DataFactory オブジェクトを取得すると、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力しなくてもオブジェクトを渡すことができます。 **Get-AzureRmDataFactory** コマンドレットの出力を変数 **$df** に割り当てるには、次のコマンドを実行します。
+
+    ```   
+    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
     ```
 
-## <a name="monitor-pipeline"></a>パイプラインを監視する
-1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
-2. 左側のメニューの **[データ ファクトリ]** をクリックするか、**[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** カテゴリの** [データ ファクトリ]** をクリックします。
+4. これで、**New-AzureRmDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービス **StorageLinkedService** を作成できます。
 
-   ![[データ ファクトリ] メニュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. **[データ ファクトリ]** ページで、使用するデータ ファクトリを検索して見つけます。
+    ```
+    New-AzureRmDataFactoryLinkedService $df -File .\StorageLinkedService.json
+    ```
 
-   ![データ ファクトリの検索](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)
-4. 使用する Azure Data Factory をクリックします。 データ ファクトリのホーム ページが表示されます。
+    **Get-AzureRmDataFactory** コマンドレットを実行して出力を **$df** 変数に割り当てていない場合、ResourceGroupName パラメーターと DataFactoryName パラメーターの値を次のように指定する必要があります。   
 
-   ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)
-5. **[ダイアグラム]** タイルをクリックすると、データ ファクトリのダイアグラム ビューが表示されます。
+    ```
+    New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactoryPSH -File .\StorageLinkedService.json
+    ```
 
-   ![データ ファクトリのダイアグラム ビュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-diagram-view.png)
-6. ダイアグラム ビューで、**SQLOutputDataset** データセットをダブルクリックします。 スライスの状態が表示されます。 コピー操作が完了すると、状態が **[準備完了]** に設定されます。
+チュートリアルの途中で Azure PowerShell を閉じた場合、次に Azure PowerShell を起動したときに、Get-AzureRmDataFactory コマンドレットを実行してチュートリアルを完了する必要があります。
 
-   ![準備完了状態の出力スライス](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/output-slice-ready.png)
-7. スライスが **[準備完了]** 状態になったら、Azure SQL Database の **emp** テーブルにデータがコピーされていることを確認します。
+### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Azure SQL データベース用にリンクされたサービスを作成する
+1. 次の内容を記述した AzureSqlLinkedService.json という名前の JSON ファイルを作成します。
 
-Azure ポータル ブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。
+         {
+             "name": "AzureSqlLinkedService",
+             "properties": {
+                 "type": "AzureSqlDatabase",
+                 "typeProperties": {
+                       "connectionString": "Server=tcp:<server>.database.windows.net,1433;Database=<databasename>;User ID=<user>@<server>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                 }
+               }
+         }
 
-データ パイプラインは、監視と管理アプリを使用して監視することもできます。 このアプリケーションの使い方の詳細については、 [監視アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md) に関する記事を参照してください。
+   **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. 次のコマンドを実行して、リンクされたサービスを作成します。
 
-## <a name="data-factory-entities-in-the-template"></a>テンプレートの Data Factory エンティティ
-### <a name="define-data-factory"></a>データ ファクトリの定義
-次のサンプルに示すように、Resource Manager テンプレートでデータ ファクトリを定義します。
+    ```
+    New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
+    ```
 
-```json
-"resources": [
-{
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
-}]
-```
+   SQL データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定がオンになっていることを確認します。 この設定を確認してオンにするには、次の手順を実行します。
 
-dataFactoryName は次のように定義されています。
+   1. 左側にある **[参照]** ハブをクリックし、**[SQL Server]** をクリックします。
+   2. お使いのサーバーを選択し、**[SQL Server]** ブレードで **[設定]** をクリックします。
+   3. **[設定]** ブレードで **[ファイアウォール]** をクリックします。
+   4. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
+   5. 左側の **[アクティブ]** ハブをクリックして、元の **[Data Factory]** ブレードに切り替えます。
 
-    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+## <a name="create-datasets"></a>データセットを作成する
+前の手順では、Azure ストレージ アカウントと Azure SQL データベースをデータ ファクトリにリンクするためのサービスを作成しました。 この手順では、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すデータセットを作成します。
 
-これは、リソース グループ ID に基づく一意の文字列です。
+テーブルとは四角形のデータセットです。 現時点でサポートされているデータセットの種類はテーブルのみです。 このチュートリアルの入力テーブルは、Azure Storage 内の BLOB コンテナーを参照します。 出力テーブルは、Azure SQL データベース内の SQL テーブルを参照します。  
 
-### <a name="defining-data-factory-entities"></a>Data Factory エンティティの定義
-JSON テンプレートには、次の Data Factory エンティティが定義されています。
+### <a name="prepare-azure-blob-storage-and-azure-sql-database-for-the-tutorial"></a>Azure Blob Storage と Azure SQL Database をチュートリアル用に準備する
+[Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事のチュートリアルを完了している方は、この手順をスキップしてください。
 
-1. [Azure Storage のリンクされたサービス](#azure-storage-linked-service)
-2. [Azure SQL のリンクされたサービス](#azure-sql-database-linked-service)
-3. [Azure BLOB データセット](#azure-blob-dataset)
-4. [Azure SQL データセット](#azure-sql-dataset)
-5. [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
+このチュートリアル用に Azure Blob Storage と SQL Database を準備するには、次の手順を実行します。
 
-#### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。
+1. **StorageLinkedService** がポイントする Blob Storage 内に **adftutorial** という名前の BLOB コンテナーを作成します。
+2. **emp.txt** という名前のテキスト ファイルを作成し、BLOB として **adftutorial** コンテナーにアップロードします。
+3. **AzureSqlLinkedService** がポイントする SQL データベース内に **emp** という名前のテーブルを作成します。
 
-```json
-{
-    "type": "linkedservices",
-    "name": "[variables('azureStorageLinkedServiceName')]",
-    "dependsOn": [
-        "[variables('dataFactoryName')]"
-    ],
-    "apiVersion": "2015-10-01",
-    "properties": {
-        "type": "AzureStorage",
-        "description": "Azure Storage linked service",
-        "typeProperties": {
-            "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-        }
-    }
-}
-```
+4. メモ帳を起動し、次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStartedPSH** フォルダーに保存します。
 
-connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStroageLinkedService、dataFactoryName の各変数も使用しています。
+        John, Doe
+        Jane, Doe
+5. [Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使用して **adftutorial** コンテナーを作成し、このコンテナーに **emp.txt** ファイルをアップロードします。
 
-#### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
-このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関するセクションをご覧ください。
+    ![Azure ストレージ エクスプローラー](media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png)
+6. 次の SQL スクリプトを使用して、**emp** テーブルを SQL データベースに作成します。  
 
-```json
-{
-    "type": "linkedservices",
-    "name": "[variables('azureSqlLinkedServiceName')]",
-    "dependsOn": [
-        "[variables('dataFactoryName')]"
-    ],
-    "apiVersion": "2015-10-01",
-    "properties": {
-            "type": "AzureSqlDatabase",
-            "description": "Azure SQL linked service",
-            "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-            }
-    }
-}
-```
+        CREATE TABLE dbo.emp
+        (
+            ID int IDENTITY(1,1) NOT NULL,
+            FirstName varchar(50),
+            LastName varchar(50),
+        )
+        GO
 
-connectionString では、sqlServerName、databaseName、sqlServerUserName、sqlServerPassword の各パラメーターを使用しています。これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートの azureSqlLinkedServiceName、dataFactoryName の各変数も使用しています。
+        CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
-#### <a name="azure-blob-dataset"></a>Azure BLOB データセット
-入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。
+    SQL Server 2014 がコンピューターにインストールされている場合は、[「SQL Server Management Studio を使用した Azure SQL データベースの管理」の手順 2. SQL データベースへの接続](../sql-database/sql-database-manage-azure-ssms.md)の手順に従い、SQL データベース サーバーに接続して SQL スクリプトを実行します。
 
-```json
-{
-    "type": "datasets",
-    "name": "[variables('blobInputDatasetName')]",
-    "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
-    ],
-    "apiVersion": "2015-10-01",
-    "properties": {
-        "type": "AzureBlob",
-            "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-        "structure": [
-        {
-                "name": "Column0",
-                "type": "String"
-        },
-        {
-                "name": "Column1",
-                "type": "String"
-        }
-            ],
-            "typeProperties": {
-            "folderPath": "[concat(parameters('sourceBlobContainer'), '/')]",
-            "fileName": "[parameters('sourceBlobName')]",
-            "format": {
-                    "type": "TextFormat",
-                    "columnDelimiter": ","
-            }
-            },
-            "availability": {
-            "frequency": "Day",
-            "interval": 1
-            },
-            "external": true
-    }
-}
-```
+    クライアントから SQL データベース サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、SQL データベース サーバーのファイアウォールを設定する必要があります。 手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)を参照してください。
 
-#### <a name="azure-sql-dataset"></a>Azure SQL データセット
-Azure Blob Storage からコピーしたデータを保持する、Azure SQL Database のテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)に関するセクションをご覧ください。
+### <a name="create-an-input-dataset"></a>入力データセットの作成
+テーブルとは四角形のデータセットで、スキーマを持っています。 この手順では、**EmpBlobTable** という名前のテーブルを作成します。 この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントします。 この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
 
-```json
-{
-    "type": "datasets",
-    "name": "[variables('sqlOutputDatasetName')]",
-    "dependsOn": [
-        "[variables('dataFactoryName')]",
-            "[variables('azureSqlLinkedServiceName')]"
-    ],
-    "apiVersion": "2015-10-01",
-    "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "[variables('azureSqlLinkedServiceName')]",
-            "structure": [
-        {
-                "name": "FirstName",
-                "type": "String"
-        },
-        {
-                "name": "LastName",
-                "type": "String"
-        }
-            ],
-            "typeProperties": {
-            "tableName": "[parameters('targetSQLTable')]"
-            },
-            "availability": {
-            "frequency": "Day",
-            "interval": 1
-            }
-    }
-}
-```
+1. 以下の内容を記述した **EmpBlobTable.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
 
-#### <a name="data-pipeline"></a>データ パイプライン
-Azure BLOB データセットから Azure SQL データセットにデータをコピーするパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](data-factory-create-pipelines.md#pipeline-json)」をご覧ください。
+         {
+           "name": "EmpTableFromBlob",
+           "properties": {
+             "structure": [
+               {
+                 "name": "FirstName",
+                 "type": "String"
+               },
+               {
+                 "name": "LastName",
+                 "type": "String"
+               }
+             ],
+             "type": "AzureBlob",
+             "linkedServiceName": "StorageLinkedService",
+             "typeProperties": {
+               "fileName": "emp.txt",
+               "folderPath": "adftutorial/",
+               "format": {
+                 "type": "TextFormat",
+                 "columnDelimiter": ","
+               }
+             },
+             "external": true,
+             "availability": {
+               "frequency": "Hour",
+               "interval": 1
+             }
+           }
+         }
 
-```json
-{
-    "type": "datapipelines",
-    "name": "[variables('pipelineName')]",
-    "dependsOn": [
-        "[variables('dataFactoryName')]",
-            "[variables('azureStorageLinkedServiceName')]",
-            "[variables('azureSqlLinkedServiceName')]",
-            "[variables('blobInputDatasetName')]",
-            "[variables('sqlOutputDatasetName')]"
-    ],
-    "apiVersion": "2015-10-01",
-    "properties": {
-            "activities": [
-        {
-                "name": "CopyFromAzureBlobToAzureSQL",
-                "description": "Copy data frm Azure blob to Azure SQL",
-                "type": "Copy",
-                "inputs": [
-            {
-                    "name": "[variables('blobInputDatasetName')]"
-            }
-                ],
-                "outputs": [
-            {
-                    "name": "[variables('sqlOutputDatasetName')]"
-            }
-                ],
-                "typeProperties": {
-                "source": {
-                        "type": "BlobSource"
-                },
-                "sink": {
-                        "type": "SqlSink",
-                        "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM {0}', 'emp')"
-                },
-                "translator": {
-                        "type": "TabularTranslator",
-                        "columnMappings": "Column0:FirstName,Column1:LastName"
-                }
-                },
-                "Policy": {
-                "concurrency": 1,
-                "executionPriorityOrder": "NewestFirst",
-                "retry": 3,
-                "timeout": "01:00:00"
-                }
-        }
-            ],
-            "start": "2016-10-02T00:00:00Z",
-            "end": "2016-10-03T00:00:00Z"
-    }
-}
-```
+   以下の点に注意してください。
 
-## <a name="reuse-the-template"></a>テンプレートの再利用
-このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 パイプラインでは、パラメーターで指定された Azure Storage アカウントから Azure SQL Database にデータをコピーします。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。
+   * データセットの **type** は **AzureBlob** に設定されています。
+   * **linkedServiceName** は **StorageLinkedService** に設定されています。
+   * **folderPath** は **adftutorial** コンテナーに設定されています。
+   * **fileName** は **emp.txt** に設定されています。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
+   * 形式の **type** は **TextFormat** に設定されています。
+   * テキスト ファイル内に&2; つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
+   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は BLOB コンテナー (**adftutorial**) のルート フォルダーで、入力データを&1; 時間ごとに検索します。
 
-例:
+   **入力テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイルまたは BLOB のみが入力と見なされます。
 
-```powershell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Dev.json
+   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid\>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Test.json
+   **folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。 次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。 たとえば、スライスが 2016-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2016/10/20 に設定され、fileName は 08.csv に設定されます。
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
-```
+         "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
+         "fileName": "{Hour}.csv",
+         "partitionedBy":
+         [
+             { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
+             { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
+             { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
+             { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
+         ],
 
-最初のコマンドでは開発環境用、2 番目のコマンドではテスト環境用、3 番目のコマンドでは運用環境用のパラメーター ファイルをそれぞれ使用していることに注意してください。
+   JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](data-factory-data-movement-activities.md)を参照してください。
+2. 次のコマンドを実行して、Data Factory データセットを作成します。
 
-テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成する必要があるとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Azure Storage アカウントと Azure SQL Database アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。
+    ```  
+    New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
+    ```
+
+### <a name="create-an-output-dataset"></a>出力データセットの作成
+この手順では、 **EmpSQLTable**という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService** で表される Azure SQL データベース内の SQL テーブル (**emp**) をポイントします。 パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
+
+1. 以下の内容を記述した **EmpSQLTable.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
+
+         {
+           "name": "EmpSQLTable",
+           "properties": {
+             "structure": [
+               {
+                 "name": "FirstName",
+                 "type": "String"
+               },
+               {
+                 "name": "LastName",
+                 "type": "String"
+               }
+             ],
+             "type": "AzureSqlTable",
+             "linkedServiceName": "AzureSqlLinkedService",
+             "typeProperties": {
+               "tableName": "emp"
+             },
+             "availability": {
+               "frequency": "Hour",
+               "interval": 1
+             }
+           }
+         }
+
+   以下の点に注意してください。
+
+   * データセットの **type** は **AzureSqlTable** に設定されています。
+   * **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
+   * **tablename** は **emp** に設定されています。
+   * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の&3; つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
+   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに&1; 時間ごとに出力データ スライスを生成します。
+2. 次のコマンドを実行して、データ ファクトリ データセットを作成します。
+
+    ```   
+    New-AzureRmDataFactoryDataset $df -File .\EmpSQLTable.json
+    ```
+
+## <a name="create-a-pipeline"></a>パイプラインを作成する。
+この手順で、**コピー アクティビティ**のあるパイプラインを作成します。 このパイプラインでは、入力として **EmpTableFromBlob**、出力として **EmpSQLTable** を使用します。
+
+1. 以下の内容を記述した **ADFTutorialPipeline.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
+
+          {
+           "name": "ADFTutorialPipeline",
+           "properties": {
+             "description": "Copy data from a blob to Azure SQL table",
+             "activities": [
+               {
+                 "name": "CopyFromBlobToSQL",
+                 "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+                 "type": "Copy",
+                 "inputs": [
+                   {
+                     "name": "EmpTableFromBlob"
+                   }
+                 ],
+                 "outputs": [
+                   {
+                     "name": "EmpSQLTable"
+                   }
+                 ],
+                 "typeProperties": {
+                   "source": {
+                     "type": "BlobSource"
+                   },
+                   "sink": {
+                     "type": "SqlSink"
+                   }
+                 },
+                 "Policy": {
+                   "concurrency": 1,
+                   "executionPriorityOrder": "NewestFirst",
+                   "style": "StartOfInterval",
+                   "retry": 0,
+                   "timeout": "01:00:00"
+                 }
+               }
+             ],
+             "start": "2016-08-09T00:00:00Z",
+             "end": "2016-08-10T00:00:00Z",
+             "isPaused": false
+           }
+         }
+
+   以下の点に注意してください。
+
+   * activities セクションに、**type** が **Copy** に設定されたアクティビティが&1; つだけあります。
+   * アクティビティの入力は **EmpTableFromBlob** に設定され、アクティビティの出力は **EmpSQLTable** に設定されています。
+   * **transformation** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
+
+   **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 たとえば、2016-10-14T16:32:41Z とします。 このチュートリアルでは **end** の時刻が使用されていますが、省略可能です。
+
+   **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
+
+   この例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
+
+   JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](data-factory-data-movement-activities.md)を参照してください。
+2. 次のコマンドを実行して、データ ファクトリ テーブルを作成します。
+
+    ```   
+    New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
+    ```
+
+ご利用ありがとうございます。 これで、Azure データ ファクトリ、リンクされたサービス、テーブル、およびパイプラインの作成が完了しました。 パイプラインのスケジュールも設定しました。
+
+## <a name="monitor-the-pipeline"></a>パイプラインの監視
+この手順では、Azure PowerShell を使用して、Azure データ ファクトリの状況を監視します。
+
+1. **Get-AzureRmDataFactory** を実行し、出力を変数 $df に割り当てます。
+
+    ```  
+    $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH
+    ```
+
+2. **Get-AzureRmDataFactorySlice** を実行し、**EmpSQLTable** のすべてのスライスの詳細を表示します。これは、パイプラインの出力テーブルです。  
+
+    ```   
+    Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
+    ```
+
+   **StartDateTime** パラメーターで、年、月、日の部分を現在の年、月、日に置き換えます。 この設定は、JSON パイプラインの **Start** の値と一致します。
+
+   現在の日付の 12 AM から次の日の 12 AM までの 1 時間ごとに 1 つずつ、合計 24 個のスライスが表示されます。
+
+   **サンプル出力:**
+
+    ```   
+     ResourceGroupName : ADFTutorialResourceGroup
+     DataFactoryName   : ADFTutorialDataFactoryPSH
+     TableName         : EmpSQLTable
+     Start             : 8/9/2016 12:00:00 AM
+     End               : 8/9/2016 1:00:00 AM
+     RetryCount        : 0
+     Status            : Waiting
+     LatencyStatus     :
+     LongRetryCount    : 0
+    ```
+3. **Get-AzureRmDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。 出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。 **StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。
+
+    ```  
+    Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
+    ```
+
+   次のサンプルのように出力が表示されます。
+
+    ```   
+     Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable
+     ResourceGroupName   : ADFTutorialResourceGroup
+     DataFactoryName     : ADFTutorialDataFactoryPSH
+     TableName           : EmpSQLTable
+     ProcessingStartTime : 8/9/2016 11:03:28 PM
+     ProcessingEndTime   : 8/9/2016 11:04:36 PM
+     PercentComplete     : 100
+     DataSliceStart      : 8/9/2016 10:00:00 PM
+     DataSliceEnd        : 8/9/2016 11:00:00 PM
+     Status              : Succeeded
+     Timestamp           : 8/9/2016 11:03:28 PM
+     RetryAttempt        : 0
+     Properties          : {}
+     ErrorMessage        :
+     ActivityName        : CopyFromBlobToSQL
+     PipelineName        : ADFTutorialPipeline
+     Type                : Copy
+    ```
+
+Data Factory コマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレット リファレンス][cmdlet-reference]を参照してください。
+
+## <a name="summary"></a>まとめ
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
+
+1. Azure **データ ファクトリ**を作成しました。
+2. 次の **リンクされたサービス**を作成しました。
+
+   a. 入力データを保持する Azure ストレージ アカウントをリンクするための、**Azure Storage** のリンクされたサービス。     
+   b. 出力データを保持する Azure SQL データベースをリンクするための、**Azure SQL** のリンクされたサービス。
+3. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
+4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。
+
+## <a name="see-also"></a>関連項目
+| トピック | 説明 |
+|:--- |:--- |
+| [Data Factory コマンドレット リファレンス](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) | このセクションでは、すべての Data Factory コマンドレットに関する情報を提供します |
+| [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
+| [datasets](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+
+[use-custom-activities]: data-factory-use-custom-activities.md
+[troubleshoot]: data-factory-troubleshoot.md
+[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
+
+[cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234.aspx
+[old-cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
+[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+
+[azure-portal]: http://portal.azure.com
+[download-azure-powershell]: ../powershell-install-configure.md
+[data-factory-introduction]: data-factory-introduction.md
+
+[image-data-factory-get-started-storage-explorer]: ./media/data-factory-copy-activity-tutorial-using-powershell/getstarted-storage-explorer.png
+
+[sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB のプログラミング: ストアド プロシージャ、データベース トリガー、UDF | Microsoft Docs"
+title: "Azure DocumentDB のサーバー側 JavaScript プログラミング | Microsoft Docs"
 description: "DocumentDB を使用して、ストアド プロシージャ、データベース トリガー、ユーザー定義関数 (UDF) を JavaScript で記述する方法について説明します。 データベース プログラミングのヒントなどが得られます。"
 keywords: "データベース トリガー, ストアド プロシージャ, ストアド プロシージャ, データベース プログラム, sproc, documentdb, azure, Microsoft azure"
 services: documentdb
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/11/2016
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: ebfed89674dc132bd5d93f34a8b5ed5ab12bd73e
-ms.openlocfilehash: 3671e9eec62720e34155f0c10054abe01f1e1f12
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 94376ba0cb7e68045e5bc44e356a91ac2ca787b2
 
 
 ---
@@ -26,7 +26,7 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
 
 まずは、次のビデオを視聴することをお勧めします。このビデオでは、Andrew Liu が、DocumentDB のサーバー側のデータベース プログラミング モデルについて簡単に紹介しています。 
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Demo-A-Quick-Intro-to-Azure-DocumentDBs-Server-Side-Javascript/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Demo-A-Quick-Intro-to-Azure-DocumentDBs-Server-Side-Javascript/player]
 > 
 > 
 
@@ -43,13 +43,13 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
 この " *今日の T-SQL としての JavaScript (JavaScript as a modern day T-SQL)* " という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。 この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
 
 * **手続き型のロジック** : JavaScript は、高水準プログラミング言語として、ビジネス ロジックを表現するためのよく知られた優れたインターフェイスを提供します。 データにより近い複雑な一連の操作を実行できます。
-* **アトミックなトランザクション**: DocumentDB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。 これにより、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、またはすべてが成功しないかのどちらかになります。 
+* **アトミックなトランザクション**: DocumentDB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。 これにより、アプリケーションは、関連する操作を&1; つのバッチに結合できます。その結果は、すべてが成功するか、またはすべてが成功しないかのどちらかになります。 
 * **パフォーマンス** : JSON は、Javascript 言語の型システムに本質的にマップされることに加え、DocumentDB のストレージの基本的な単位であるため、バッファー プール内の JSON ドキュメントの遅延実体化のようないくつかの最適化を行い、それらを必要に応じて実行コードで利用することが可能になります。 ビジネス ロジックをデータベースに配置することには、より大きなパフォーマンス上のメリットがあります。
   
   * バッチ処理 - 開発者は、挿入などの操作をグループ化してそれらを一括送信できます。 ネットワーク トラフィックの待機時間コストと、別個のトランザクションの作成に伴う格納オーバーヘッドが大幅に削減されます。 
   * プリコンパイル - DocumentDB では、ストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) をプリコンパイルして、JavaScript の呼び出しごとのコンパイル コストを回避しています。 手続き型のロジックのバイト コードのビルドに伴うオーバーヘッドは、最小値に平均化されます。
   * シーケンス処理 - 多くの操作では、1 つまたは複数のセカンダリ格納操作の実行を潜在的に伴う副作用 ("トリガー") が必要です。 アトミック性は別として、この操作では、サーバーに移行されたときにより高いパフォーマンスが実現されます。 
-* **カブセル化** : ストアド プロシージャを使用して、ビジネス ロジックを 1 か所にグループ化できます。 これには 2 つ利点があります。
+* **カブセル化** : ストアド プロシージャを使用して、ビジネス ロジックを&1; か所にグループ化できます。 これには&2; つ利点があります。
   * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
   * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
@@ -63,7 +63,7 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
 
     var helloWorldStoredProc = {
         id: "helloWorld",
-        body: function () {
+        serverScript: function () {
             var context = getContext();
             var response = context.getResponse();
 
@@ -105,7 +105,7 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
 
     var createDocumentStoredProc = {
         id: "createMyDocument",
-        body: function createMyDocument(documentToCreate) {
+        serverScript: function createMyDocument(documentToCreate) {
             var context = getContext();
             var collection = context.getCollection();
 
@@ -120,7 +120,7 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
     }
 
 
-このストアド プロシージャは、入力として documentToCreate を受け取ります。これは、現在のコレクション内に作成するドキュメントの本文を示します。 このような操作はすべて非同期に実行され、JavaScript 関数コールバックに依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と作成されたオブジェクト用の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、DocumentDB ランタイムはエラーをスローします。   
+このストアド プロシージャは、入力として documentToCreate を受け取ります。これは、現在のコレクション内に作成するドキュメントの本文を示します。 このような操作はすべて非同期に実行され、JavaScript 関数コールバックに依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と作成されたオブジェクト用の&2; つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、DocumentDB ランタイムはエラーをスローします。   
 
 上の例で操作が失敗した場合、コールバックはエラーをスローします。 それ以外の場合、コールバックは、作成されたドキュメントの ID をクライアントへの応答の本文として設定します。 入力パラメーターによってこのストアド プロシージャがどのように実行されるかを次に示します。
 
@@ -153,7 +153,7 @@ Azure DocumentDB では、統合された JavaScript 言語によるトランザ
 上の例ではストアド プロシージャの使用法について説明しました。 トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。
 
 ## <a name="database-program-transactions"></a>プログラム データベース トランザクション
-一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。 各トランザクションは、 **ACID の保証**を提供します。 ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。  
+一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。 各トランザクションは、 **ACID の保証**を提供します。 ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の&4; つの特性のよく知られた頭字語です。  
 
 簡単に説明すると、Atomicity (アトミック性) は、トランザクション内で実行されるすべての操作が単一の単位として扱われることを保証します。その結果は、そのすべてがコミットされるか、またはまったくコミットされないかのどちらかになります。 Consistency (一貫性) は、トランザクションにまたがってデータが常に適切な内部状態にあることを保証します。 Isolation (分離性) は、2 つのトランザクションが互いに干渉しないことを保証します。通常、ほとんどの商用システムは、アプリケーション ニーズに基づいて使用できる複数の分離性レベルを提供します。 Durability (持続性) は、データベース内でコミットされたすべての変更が常に保持されることを保証します。   
 
@@ -161,8 +161,8 @@ DocumentDB では、JavaScript はデータベースと同じメモリ空間で�
 
     // JavaScript source code
     var exchangeItemsSproc = {
-        name: "exchangeItems",
-        body: function (playerId1, playerId2) {
+        id: "exchangeItems",
+        serverScript: function (playerId1, playerId2) {
             var context = getContext();
             var collection = context.getCollection();
             var response = context.getResponse();
@@ -222,7 +222,7 @@ DocumentDB では、JavaScript はデータベースと同じメモリ空間で�
         }
     );
 
-このストアド プロシージャでは、ゲーム アプリ内のトランザクションを使用して、2 人のプレイヤーの間でアイテムを交換する操作を 1 つの処理で実現しています。 このストアド プロシージャは、引数として渡されたプレイヤー ID にそれぞれ対応する 2 つのドキュメントの読み取りを試行します。 2 つのプレイヤー ドキュメントが見つかると、アイテムを交換してドキュメントを更新します。 処理の途中でエラーが発生した場合は、JavaScript 例外がスローされ、トランザクションが暗黙的に中止されます。
+このストアド プロシージャでは、ゲーム アプリ内のトランザクションを使用して、2 人のプレイヤーの間でアイテムを交換する操作を&1; つの処理で実現しています。 このストアド プロシージャは、引数として渡されたプレイヤー ID にそれぞれ対応する&2; つのドキュメントの読み取りを試行します。 2 つのプレイヤー ドキュメントが見つかると、アイテムを交換してドキュメントを更新します。 処理の途中でエラーが発生した場合は、JavaScript 例外がスローされ、トランザクションが暗黙的に中止されます。
 
 ストアド プロシージャが登録されているコレクションが単一パーティション コレクションである場合、トランザクションのスコープはそのコレクション内のすべてのドキュメントになります。 コレクションがパーティション分割されている場合、ストアド プロシージャは同一のパーティション キーをトランザクション スコープとして実行されます。 このとき、各ストアド プロシージャの実行には、トランザクションを実行するスコープに対応したパーティション キー値を含める必要があります。 詳細については、 [DocumentDB のパーティション分割](documentdb-partition-data.md)に関する記事を参照してください。
 
@@ -298,8 +298,8 @@ DocumentDB では、JavaScript はデータベースと同じメモリ空間で�
 DocumentDB には、ドキュメントの操作によって実行またはトリガーされるトリガーが用意されています。 たとえば、ドキュメントを作成するときにプリトリガーを指定できます。このプリトリガーは、ドキュメントが作成される前に実行されます。 次の例に、プリトリガーを使用して、作成するドキュメントのプロパティを検証する方法を示します。
 
     var validateDocumentContentsTrigger = {
-        name: "validateDocumentContents",
-        body: function validate() {
+        id: "validateDocumentContents",
+        serverScript: function validate() {
             var context = getContext();
             var request = context.getRequest();
 
@@ -369,8 +369,8 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 次の例にポストトリガーの使い方を示します。
 
     var updateMetadataTrigger = {
-        name: "updateMetadata",
-        body: function updateMetadata() {
+        id: "updateMetadata",
+        serverScript: function updateMetadata() {
             var context = getContext();
             var collection = context.getCollection();
             var response = context.getResponse();
@@ -442,8 +442,8 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 次のサンプルでは、さまざまな所得階層の税率に基づいて所得税を計算する UDF を作成し、クエリ内でこの UDF を使用して、支払った税金が $20,000 を超える人々を検索しています。
 
     var taxUdf = {
-        name: "tax",
-        body: function tax(income) {
+        id: "tax",
+        serverScript: function tax(income) {
 
             if(income == undefined) 
                 throw 'no input';
@@ -519,7 +519,7 @@ DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の 
 <b>pluck([propertyName] [, options] [, callback])</b>
 <ul>
 <li>
-これは、各入力項目から 1 つのプロパティの値を抽出する関数で、map のショートカット版です。
+これは、各入力項目から&1; つのプロパティの値を抽出する関数で、map のショートカット版です。
 </li>
 </ul>
 </li>
@@ -645,7 +645,7 @@ SQL クエリと同様に、ドキュメント プロパティ キー ( `doc.id`
 [DocumentDB JavaScript サーバー側 SDK](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### <a name="security"></a>セキュリティ
-JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。 ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。 このため、互いの意図していない副作用に対する安全性が保証されています。
+JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても&1; つのスクリプトの効果が他のスクリプトに作用しません。 ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。 このため、互いの意図していない副作用に対する安全性が保証されています。
 
 ### <a name="pre-compilation"></a>プリコンパイル
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。 これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
@@ -814,6 +814,6 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

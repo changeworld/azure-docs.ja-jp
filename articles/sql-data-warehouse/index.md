@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Azure SQL Data Warehouse のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "SQL Data Warehouse を使用して、SQL Server に超並列処理を統合する方法について説明します。 ドキュメントでは、データの読み込み、分析、管理、エクスポートの方法を紹介します。"
+services: sql-data-warehouse
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: sql-data-warehouse
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 66f83d1e36ecafdfb3337ae03b22ba48d3ccb1b4
+ms.sourcegitcommit: e065918a1380e006253aefb4ab9c897b9148dea5
+ms.openlocfilehash: 576e12831945701b880e891394c0cbb8374d333b
 
 ---
 
@@ -106,6 +117,6 @@ SQL Server リレーショナル データベースに超並列処理を統合�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

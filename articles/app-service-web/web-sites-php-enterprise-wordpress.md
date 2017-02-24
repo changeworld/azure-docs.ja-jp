@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service のエンタープライズ クラスの WordPress | Microsoft Docs"
+title: "Azure でのエンタープライズ クラスの WordPress | Microsoft Docs"
 description: "Azure App Service にエンタープライズ クラスの WordPress サイトをホストする方法について説明します。"
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f37777eb42051921087c90a57138cb4085dd7cd
-ms.openlocfilehash: 032d5cbc19113d966b20cec1ef332eb6fdca5708
+ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
+ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
 
 
 ---
-# <a name="enterprise-class-wordpress-on-azure-app-service"></a>Azure App Service のエンタープライズ クラスの WordPress
+# <a name="enterprise-class-wordpress-on-azure"></a>Azure でのエンタープライズ クラスの WordPress
 Azure App Service は、基幹業務系の大規模な [WordPress][wordpress] サイト用に、拡張性のある、安全で使いやすい環境を提供します。 Microsoft も [Office][officeblog] ブログや [Bing][bingblog] ブログなどのエンタープライズ クラスのサイトを運営しています。 この記事では、Microsoft Azure App Service の Web Apps を使用して、大量の訪問者を処理できるエンタープライズ クラスの、クラウド ベースの WordPress サイトを確立し、維持する方法について説明しています。
 
 ## <a name="architecture-and-planning"></a>アーキテクチャと計画
@@ -191,7 +191,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 * [Tips for WordPress on Azure (Azure で WordPress を運用するヒント)](http://www.johnpapa.net/azurecleardbmysql/)
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスすると、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 試用にあたり、クレジット カードや契約は必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページにアクセスすると、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 試用にあたり、クレジット カードや契約は必要ありません。
 >
 >
 
@@ -246,6 +246,6 @@ Websites から App Service への変更ガイドについては、「[Azure App
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions を使用して Azure Stream Analytics から Azure Redis Cache に出力する | Microsoft Docs"
+title: "Stream Analytics による Azure Functions のリアルタイム処理 | Microsoft Docs"
 description: "Service Bus キューに接続した Azure 関数を使用して、Stream Analytics ジョブの出力から Azure Redis Cache にデータを格納する方法を説明します。"
 keywords: "データ ストリーム, Redis Cache, Service Bus キュー"
 services: stream-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: ryancraw
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 26808d4d73e5b6256b56dd3c5d5ae5d075eaac5a
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
 
 
 ---
@@ -34,7 +34,7 @@ ASA のチュートリアル「[リアルタイムの不正行為の検出][frau
 上の図に示すように、Stream Analytics によって、ストリーミング入力データに対してクエリが実行され、出力に送信されます。 この出力に基づいて、Azure Functions によって特定のイベントがトリガーされます。 
 
 このブログでは、パイプラインの Azure Functions の部分、つまり不正なデータをキャッシュに格納するイベントをトリガーする部分を主に取り上げます。
-「[リアルタイムの不正行為の検出][fraud-detection]」チュートリアルを完了していれば、入力 (イベント ハブ)、クエリ、および出力 (Blob ストレージ) が既に構成され、実行されています。 このブログでは、出力を変更して Service Bus キューが使用されるようにします。 その後、このキューに Azure Function を接続します。 
+「[リアルタイムの不正行為の検出][fraud-detection]」チュートリアルを完了していれば、入力 (イベント ハブ)、クエリ、および出力 (Blob Storage) が既に構成され、実行されています。 このブログでは、出力を変更して Service Bus キューが使用されるようにします。 その後、このキューに Azure Function を接続します。 
 
 ## <a name="create-and-connect-a-service-bus-queue-output"></a>Service Bus キューの出力の作成と接続
 Service Bus キューを作成するには、「[Service Bus キューの使用][servicebus-getstarted]」の .NET セクションの手順 1 と 2 を実行します。
@@ -86,7 +86,7 @@ Service Bus キューを作成するには、「[Service Bus キューの使用]
      
        ![Service Bus 接続のスクリーンショット](./media/stream-analytics-functions-redis/servicebus-connection.png)
    * **[AccessRights]**: **[管理]** を選択します。
-3.  **[作成]**
+3. **[作成]**
 
 ## <a name="writing-to-redis-cache"></a>Redis Cache への書き込み
 以上で、Service Bus キューからデータを読み取る Azure 関数が作成されました。 残りの作業は、関数を使用して、Redis Cache にこのデータを書き込むことです。 
@@ -207,6 +207,6 @@ Microsoft Azure を初めてお使いになる場合は、 [Azure 無料試用�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

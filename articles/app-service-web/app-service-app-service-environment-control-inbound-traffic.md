@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 01/11/2017
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 618f8e4b22e7ef00c6b05d26290b61638e24640c
+ms.sourcegitcommit: e7a9192a44b590335e479df143c13709c4dfa016
+ms.openlocfilehash: d3acf5352302528cdf3502e166337cbe808e71c8
 
 
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要
-App Service 環境は、**Azure Resource Manager の仮想ネットワーク**、または[クラシック デプロイメント モデルの]仮想ネットワーク[virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲と RFC1918 アドレス空間のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました (RFC1918 アドレス空間とは プライベート アドレスのことです)。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
+App Service 環境は、Azure Resource Manager 仮想ネットワーク**と**クラシック デプロイメント モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた変更で、パブリック アドレス範囲と RFC1918 アドレス空間のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました (RFC1918 アドレス空間とは プライベート アドレスのことです)。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 
 App Service 環境は常にサブネット内で作成する必要があります。これは、HTTP トラフィックと HTTPS トラフィックが特定のアップストリーム IP アドレスのみから受け取られるように、アップストリーム デバイスおよびサービスの背後で受信トラフィックをロックダウンするために使用できるネットワーク境界がサブネットによって提供されるためです。
 
@@ -32,7 +32,7 @@ App Service 環境は常にサブネット内で作成する必要がありま�
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="network-ports-used-in-an-app-service-environment"></a>App Service 環境で使用されるネットワーク ポート
+## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>App Service 環境で使用される受信ネットワーク ポート
 ネットワーク セキュリティ グループで受信ネットワーク トラフィックをロックダウンする前に、App Service 環境で使用される必須およびオプションのネットワーク ポートのセットを把握しておくことが重要です。  誤っていくつかのポートへのトラフィックを遮断すると、App Service 環境の機能が失われることがあります。
 
 App Service 環境で使用されるポートの一覧を次に示します。 特に断りのない限り、すべてのポートは **TCP** です。
@@ -43,20 +43,20 @@ App Service 環境で使用されるポートの一覧を次に示します。 �
 * 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 21: FTP 用のコントロール チャネル。  FTP が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
 * 990: FTPS 用のコントロール チャネル。  FTPS が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
-* 10001 ～ 10020: FTP 用のデータ チャネル。  コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+* 10001 ～&10020;: FTP 用のデータ チャネル。  コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
 * 4016: Visual Studio 2012 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 4018: Visual Studio 2013 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 4020: Visual Studio 2015 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>発信接続と DNS の要件
-App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
+App Service 環境が正常に機能するためには、さまざまなエンドポイントへの発信アクセスも必要です。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
 App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。  [Azure Portal][NewPortal] の App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
 また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。  App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。  同様に、VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
 ## <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-ネットワーク セキュリティ グループの動作の詳細については、次の[情報][NetworkSecurityGroups]を参照してください。  ネットワーク セキュリティ グループの構成と App Service 環境を含むサブネットへの適用に重点を置いて、ネットワーク セキュリティ グループの特徴を以下で詳しく説明します。
+ネットワーク セキュリティ グループの動作の詳細については、次の[情報][NetworkSecurityGroups]を参照してください。  下の Azure Service Management のサンプルは、ネットワーク セキュリティ グループの特徴に触れています。ここでは、App Service 環境を含むサブネットでのネットワーク セキュリティ グループの構成と適用に注目しています。
 
 **注:** ネットワーク セキュリティ グループは、 [Azure Portal](https://portal.azure.com) を利用して視覚的に構成することも、Azure PowerShell を利用して構成することもできます。
 
@@ -66,7 +66,7 @@ App Service 環境では、仮想ネットワーク用に構成された有効�
 
     New-AzureNetworkSecurityGroup -Name "testNSGexample" -Location "South Central US" -Label "Example network security group for an app service environment"
 
-ネットワーク セキュリティ グループが作成されると、それに 1 つ以上のネットワーク セキュリティ ルールが追加されます。  ルール セットは時間の経過と共に変更される可能性があるため、時間の経過に伴い追加のルールを容易に挿入できるように、ルールの優先度に使用される番号付けスキームを一定間隔で配置することをお勧めします。
+ネットワーク セキュリティ グループが作成されると、それに&1; つ以上のネットワーク セキュリティ ルールが追加されます。  ルール セットは時間の経過と共に変更される可能性があるため、時間の経過に伴い追加のルールを容易に挿入できるように、ルールの優先度に使用される番号付けスキームを一定間隔で配置することをお勧めします。
 
 次の例では、Azure インフラストラクチャで App Service 環境の管理と保守に必要とされる管理ポートへのアクセスを明示的に付与するルールを示しています。  すべての管理トラフィックが SSL 経由で流れ、クライアント証明書によってセキュリティで保護されているため、ポートが開かれている場合でも、Azure の管理インフラストラクチャ以外のどのエンティティからもアクセスできないことにご注意ください。
 
@@ -109,7 +109,7 @@ Visual Studio でのリモート デバッグが使用されている場合、�
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>明示的な IP SSL に関する特別な考慮事項
-アプリが、App Service 環境の既定の IP アドレスを使わず明示的な IP SSL アドレス (該当するのはパブリック VIP しかない ASE) で構成されている場合、HTTP と HTTPS の両方のトラフィックは、ポート 80 と 443 以外の別のポート セットを経由してサブネットにフローされます。
+アプリが、App Service 環境の既定の IP アドレスを使わず、明示的な IP SSL アドレスで構成されている場合 (パブリック VIP がある ASE に "*のみ*" あてはまります)、HTTP と HTTPS の両方のトラフィックは、ポート 80 と 443 以外の別のポート セットを経由してサブネットにフローされます。
 
 各 IP SSL アドレスで使用されるポートの個々のペアは、App Service 環境の詳細 UX ブレードから、ポータルのユーザー インターフェイスで確認できます。  [すべての設定]、[IP アドレス] の順に選択します。  [IP アドレス] ブレードには、App Service 環境に対して明示的に構成されているすべての IP SSL アドレスを示すテーブルと共に、各 IP SSL アドレスに関連付けられた HTTP および HTTPS トラフィックをルーティングするのに使用される特殊なポート ペアが表示されます。  ネットワーク セキュリティ グループの規則を構成する際に、DestinationPortRange パラメーターで使用する必要があるのはこのポート ペアです。
 
@@ -120,7 +120,7 @@ App Service 環境の使用を開始するには、「[App Service 環境の概�
 
 App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md)を参照してください。
 
-App Service 環境からバックエンド リソースへ安全に接続しているアプリの詳細については、「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnecttoBackend]」を参照してください。
+アプリの App Service 環境からバックエンド リソースへの安全な接続の詳細については、「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnecttoBackend]」を参照してください。
 
 Azure App Service プラットフォームの詳細については、「[Azure App Service とは][AzureAppService]」を参照してください。
 
@@ -142,6 +142,6 @@ Azure App Service プラットフォームの詳細については、「[Azure A
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

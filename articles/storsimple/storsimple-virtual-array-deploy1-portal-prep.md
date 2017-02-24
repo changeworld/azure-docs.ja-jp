@@ -1,10 +1,10 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array をデプロイする 1 - ポータルの準備 | Microsoft Docs"
+title: "StorSimple Virtual Array のポータルの準備 | Microsoft Docs"
 description: "StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 97e29de986ab43ee51a311dee8d2cbf66f7408e4
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: 8539540f96d1a6fbb34736eebb0a5897b4754c9f
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>StorSimple Virtual Array のデプロイ - ポータルの準備
@@ -72,8 +72,8 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 * ホスト システムで、次のリソースを仮想アレイのプロビジョニング専用に使用できること。
   
   * 最小で 4 コア。
-  * 少なくとも 8 GB の RAM。
-  * ネットワーク インターフェイス 1 つ。
+  * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
+  * ネットワーク インターフェイス&1; つ。
   * システム データ用の 500 GB の仮想ディスク。
 
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
@@ -89,7 +89,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 ## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
 
-StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+StorSimple デバイス マネージャー サービスの&1; つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -172,6 +172,6 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

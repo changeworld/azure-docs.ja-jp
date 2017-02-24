@@ -12,15 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 02/01/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
-ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
+ms.sourcegitcommit: 2fe28e7b52af579038ec145c028a6d2796d6cc6e
+ms.openlocfilehash: f47b719f7b1a78264e054ee15edacc32ca35aaf7
 
 
 ---
 # <a name="stream-analytics-release-notes"></a>Stream Analytics のリリース ノート
+## <a name="notes-for-02012017-release-of-stream-analytics"></a>Stream Analytics の 2017 年 2 月 1 日付けリリースに関するノート
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | Description |
+| --- | --- |
+| JavaScript ユーザー定義関数 (UDF) の導入 |[Java ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)を使用して、さらに柔軟にクエリを作成できるようになりました。 |
+| Visual Studio と Stream Analytics の導入 |[Tools for Visual Studio](stream-analytics-tools-for-visual-studio.md) が、デバッグとさらに優れたユーティリティで使用できるようになりました。 |
+| 診断ログの導入 |[診断ログ](stream-analytics-job-diagnostic-logs.md)が、追加のトラブルシューティング オプションで使用できるようになりました。 |
+| GeoSpatial 関数の導入 |[GeoSpatial 関数](http://msdn.microsoft.com/library/mt778980(Azure.100).aspx)が一般公開されました。 |
+
 ## <a name="notes-for-04152016-release-of-stream-analytics"></a>Stream Analytics の 2016 年 4 月 15 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
@@ -92,7 +102,7 @@ ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
 
 | タイトル | Description |
 | --- | --- |
-| Azure ID から切り離された Power BI の組織 ID |この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md) が可能になりました。 さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。 |
+| Azure ID から切り離された Power BI の組織 ID |この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md) が可能になりました。 さらに、Azure アカウントに対して&1; つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。 |
 | Service Bus キューの出力のサポート |[Service Bus キュー](stream-analytics-define-outputs.md#service-bus-queues)の出力を、Stream Analytics ジョブで使用できるようになりました。 |
 | Service Bus トピックの出力のサポート |[Service Bus トピック](stream-analytics-define-outputs.md#service-bus-topics)の出力を、Stream Analytics ジョブで使用できるようになりました。 |
 
@@ -122,7 +132,7 @@ ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
 | メモリ不足の問題 |順序が適切でないイベントや複雑なクエリに対する Streaming Analytics ジョブの許容範囲が広く、保持している状態が大量になると、ジョブのメモリ不足が発生し、ジョブが再起動されることがあります。 開始と停止の操作は、ジョブの操作ログに記録されます。 この動作を回避するには、クエリを複数のパーティションにスケール アウトしてください。 今後のリリースでは、影響を受けるジョブを再起動する代わりにパフォーマンスを低下させることで、この制限事項が解消される予定です。 |
 | ペイロード タイムスタンプのない大きな BLOB 入力によってメモリ不足の問題が発生する |TIMESTAMP BY でタイムスタンプ フィールドが指定されていない場合、BLOB ストレージから大きなファイルを使用すると、Stream Analytics ジョブがクラッシュすることがあります。 この問題を回避するには、各 BLOB のサイズを 10 MB 以下にしてください。 |
 | SQL Database イベントのボリューム制限 |出力ターゲットとして SQL Database を使用すると、大量の出力データによって Stream Analytics ジョブがタイムアウトになる場合があります。 この問題を解決するには、集計またはフィルター演算子を使用して出力の量を削減するか、出力ターゲットとして Azure BLOB ストレージまたは Event Hubs を選択してください。 |
-| PowerBI データセットにはテーブルを 1 つしか含めることができない |PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。 |
+| PowerBI データセットにはテーブルを&1; つしか含めることができない |PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。 |
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
@@ -136,6 +146,6 @@ ms.openlocfilehash: fb6dbb6da0ad2cfdfee519c8ce254d983d34fe5e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

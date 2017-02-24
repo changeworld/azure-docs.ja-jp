@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: 75f05f003b691ee6464168453fa7935f1fae166e
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
 
 ---
 
@@ -55,7 +55,7 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
     上の例では、sqlsvc1 および sqlsvc2 という 2 つの VM がクラウド サービス "Sqlsvc" で実行されます。 `DirectServerReturn` スイッチで ILB を作成したら、負荷分散されたエンドポイントを ILB に追加して、SQL が可用性グループのリスナーを構成できるようにします。
 
-SQL AlwaysOn の詳細については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../virtual-machines/virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fload-balancer%2ftoc.json)」をご覧ください。
+SQL AlwaysOn の詳細については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)」をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
@@ -68,6 +68,6 @@ SQL AlwaysOn の詳細については、「[Azure の AlwaysOn 可用性グル�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

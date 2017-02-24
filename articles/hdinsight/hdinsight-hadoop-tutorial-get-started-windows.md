@@ -17,24 +17,25 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 231044047e53b64f0d4f083ec6aec2b0687f3f2b
+ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
+ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
 
 
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight-on-windows"></a>Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する
+
 > [!div class="op_single_selector"]
 > * [Linux ベース](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [Windows ベース](hdinsight-hadoop-tutorial-get-started-windows.md)
 > 
 > 
 
+
+
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
 
-> [!NOTE]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux ベースのクラスターについては、「 [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。 Linux ベースのクラスターの作成については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
 
 大規模な非構造化データ セットがあり、このデータ セットに対して Hive クエリを実行して、意味のある情報を抽出する場合を仮定します。 これが、このチュートリアルで目的としていることです。 これを実現するには、次の手順を実行します。
 
@@ -60,17 +61,17 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-hadoop-clusters"></a>Hadoop クラスターを作成する
-クラスターを作成すると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースが作成されます。 このセクションでは、HDInsight バージョン 3.2 クラスターを作成します。 他のバージョンの Hadoop クラスターも作成できます。 手順については、[カスタム オプションを使用した HDInsight の作成][hdinsight-provision]に関するページをご覧ください。 HDInsight バージョンとその SLA については、「 [HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
+クラスターを作成すると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースが作成されます。 このセクションでは、HDInsight バージョン 3.2 クラスターを作成します。 他のバージョンの Hadoop クラスターも作成できます。 手順については、[カスタム オプションを使用した HDInsight の作成][hdinsight-provision]に関するページを参照してください。 HDInsight バージョンとその SLA については、「 [HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 **Hadoop クラスターを作成するには**
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。 ポータルで **[新しい HDInsight クラスター]** ブレードが開きます。
    
-    ![Create a new cluster in the Azure Portal](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Create a new cluster in the Azure Portal")
+    ![Azure Portal で新しいクラスターを作成する](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Azure Portal で新しいクラスターを作成する")
 3. 次の値を入力または選択します。
    
-    ![クラスターの名前と種類の入力](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.2.png "Enter cluster name and type")
+    ![クラスターの名前と種類の入力](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.2.png "クラスターの名前と種類の入力")
    
    | フィールド名 | 値 |
    | --- | --- |
@@ -79,12 +80,12 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
    | クラスターのオペレーティング システム |このチュートリアルでは **[Windows Server 2012 R2 Datacenter]** を選択します。 |
    | HDInsight のバージョン |このチュートリアルでは最新バージョンを選択します。 |
    | サブスクリプション |このクラスターに使用する Azure サブスクリプションを選択します。 |
-   | リソース グループ |既存の Azure リソース グループを選択するか、新しいリソース グループを作成します。 基本的な HDInsight クラスターには、クラスターとその既定のストレージ アカウントが含まれています。  管理を容易にするために、これら 2 つを 1 つのリソース グループにグループ化できます。 |
+   | リソース グループ |既存の Azure リソース グループを選択するか、新しいリソース グループを作成します。 基本的な HDInsight クラスターには、クラスターとその既定のストレージ アカウントが含まれています。  管理を容易にするために、これら&2; つを&1; つのリソース グループにグループ化できます。 |
    | 資格情報 |クラスターのログイン ユーザー名とパスワードを入力します。 Windows ベースのクラスターでは、2 つのユーザー アカウントを使用できます。  クラスター ユーザー (または HTTP ユーザー) は、クラスターの管理とジョブの送信に使用されます。  必要に応じて、リモート デスクトップ (RDP) ユーザー アカウントを作成し、クラスターにリモート接続することもできます。 リモート デスクトップを有効にした場合は、RDP ユーザー アカウントが作成されます。 |
    | データ ソース |新しい既定の Azure ストレージ アカウントを作成する場合は、[新規作成] をクリックします。 クラスター名を既定のコンテナー名として使用します。 すべての HDinsight クラスターでは、Azure ストレージ アカウントに既定の BLOB コンテナーがあります。  既定の Azure ストレージ アカウントの場所によって、HDInsight クラスターの場所が決まります。 |
-   | ノード料金レベル |このチュートリアルでは、既定のワーカー ノードとヘッド ノードの価格レベルで 1 つまたは 2 つのワーカー ノードを使用します。 |
+   | ノード料金レベル |このチュートリアルでは、既定の worker ノードとヘッド ノードの価格レベルで 1 つまたは 2 つの worker ノードを使用します。 |
    | オプションの構成 |この部分はスキップします。 |
-4. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。 これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。 アイコンはクラスターが作成中であることを示し、作成が完了すると、[HDInsight] アイコンを表示するように変化します。
+4. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。 これでクラスターが作成され、Azure Portal のスタート画面にクラスター用のタイルが追加されます。 アイコンはクラスターが作成中であることを示し、作成が完了すると、[HDInsight] アイコンを表示するように変化します。
    
    | 作成中 | 作成の完了時 |
    | --- | --- |
@@ -100,7 +101,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 HDInsight クラスターが作成されたら、サンプルの Hive テーブルを照会する Hive ジョブを実行します。 HDInsight クラスターに付属する *hivesampletable*を使用します。 このテーブルには、モバイル デバイスの製造元、プラットフォーム、モデルに関するデータが格納されています。 このテーブルの Hive クエリは、特定の製造元のモバイル デバイスのデータを取得します。
 
 > [!NOTE]
-> HDInsight Tools for Visual Studio は、Azure SDK for .NET バージョン 2.5 以降に付属しています。 Visual Studio からこのツールを使用すると、HDInsight クラスターに接続し、Hive テーブルを作成し、Hive クエリを実行できます。 詳細については、[HDInsight Hadoop Tools for Visual Studio の使用開始][1] に関するページをご覧ください。
+> HDInsight Tools for Visual Studio は、Azure SDK for .NET バージョン 2.5 以降に付属しています。 Visual Studio からこのツールを使用すると、HDInsight クラスターに接続し、Hive テーブルを作成し、Hive クエリを実行できます。 詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始][1]」をご覧ください。
 > 
 > 
 
@@ -165,14 +166,14 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 7. 左上隅にある **[閉じて読み込む]** をクリックして、Hive ジョブ出力を Excel にインポートします。
 
 ## <a name="run-samples"></a>サンプルの実行
-HDInsight クラスターには、ポータルからサンプルを直接実行するための概要ギャラリーを含むクエリ コンソールがあります。 サンプルを使っていくつかの基本的なシナリオを検証することで、HDInsight の操作方法を学ぶことができます。 これらのサンプルには、分析対象のデータ、データに対して実行するクエリなど、必要なものがすべて用意されています。 概要ギャラリーのサンプルの詳細については、「 [Learn Hadoop in HDInsight using the HDInsight Getting Started Gallery (HDInsight 概要ギャラリーを使用した HDInsight での Hadoop の説明)](hdinsight-learn-hadoop-use-sample-gallery.md)」をご覧ください。
+HDInsight クラスターには、ポータルからサンプルを直接実行するための概要ギャラリーを含むクエリ コンソールがあります。 サンプルを使っていくつかの基本的なシナリオを検証することで、HDInsight の操作方法を学ぶことができます。 これらのサンプルには、分析対象のデータ、データに対して実行するクエリなど、必要なものがすべて用意されています。
 
 **サンプルを実行するには**
 
-1. Azure ポータルのスタート画面で、作成したクラスターのタイルをクリックします。
+1. Azure Portal のスタート画面で、作成したクラスターのタイルをクリックします。
 2. [新しいクラスター] ブレードで、 **[ダッシュボード]**をクリックします。 プロンプトが表示されたら、クラスターの管理者のユーザー名とパスワードを入力します。
    
-    ![クラスター ダッシュボードの起動](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "Launch cluster dashboard")
+    ![クラスター ダッシュボードの起動](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "クラスター ダッシュボードの起動")
 3. 開いた Web ページの **[作業の開始に役立つギャラリー]** タブをクリックし、**[サンプル データでのソリューション]** カテゴリで、実行するサンプルをクリックします。 Web ページの指示に従ってサンプルを実行します。 次の表では、いくつかのサンプルを一覧し、各サンプルについて詳しく説明します。
 
 | サンプル | 内容 |
@@ -188,7 +189,7 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 この Hadoop のチュートリアルでは、HDInsight で Windows ベースの Hadoop クラスターを作成した後、そのデータ上で Hive クエリを実行し、結果を Excel にインポートする方法を説明しました。このデータは、ビジネス インテリジェンス ツールを使用してさらに処理し、グラフィカルに表示することができます。 詳細については、次のチュートリアルをご覧ください。
 
 * [HDInsight Hadoop Tools for Visual Studio の使用開始][1]
-* [HDInsight Emulator の使用開始][hdinsight-emulator]
+* [HDInsight Emulator の概要][hdinsight-emulator]
 * [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
 * [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -231,8 +232,8 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: powershell-install-configure.md
-[powershell-open]: powershell-install-configure.md#step-1-install
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+[powershell-open]: /powershell/azureps-cmdlets-docs#step-1-install
 
 
 [img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.png
@@ -255,6 +256,6 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

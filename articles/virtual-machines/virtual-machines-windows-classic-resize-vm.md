@@ -1,5 +1,5 @@
 ---
-title: "クラシック Windows VM のサイズ変更 | Microsoft Docs"
+title: "クラシック デプロイ モデルの Windows VM のサイズ変更 - Azure | Microsoft Docs"
 description: "クラシック デプロイメント モデルで作成された Windows 仮想マシンのサイズを Azure Powershell を使用して変更します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,19 +16,18 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: abac11a9e88918db3e5f051350a668185e04a184
+ms.sourcegitcommit: 3352e5d17777a213a91911440274419f2058940b
+ms.openlocfilehash: 381cf34b9e65a46a8033880a95e94446bd01edf1
 
 
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルで作成された Windows VM のサイズ変更
 この記事では、クラシック デプロイメント モデルで作成された Windows VM のサイズを Azure Powershell を使用して変更する方法について説明します。
 
-VM のサイズ変更機能について検討する際、仮想マシンのサイズ変更に使用可能なサイズの範囲を制御する 2 つの概念があります。 1 つ目の概念は、VM がデプロイされているリージョンです。 リージョンで使用可能な VM サイズの一覧は、Azure リージョンの Web ページの [サービス] タブにあります。 2 つ目の概念は、現在 VM をホストしている物理ハードウェアです。 VM をホストしている物理サーバーは、一般的な物理ハードウェアのクラスターにグループ化されます。 VM のサイズを変更する方法は、現在 VM をホストしているハードウェア クラスターで、新しく必要なサイズがサポートされているかどうかによって異なります。
+VM のサイズ変更機能について検討する際、仮想マシンのサイズ変更に使用可能なサイズの範囲を制御する&2; つの概念があります。 1 つ目の概念は、VM がデプロイされているリージョンです。 リージョンで使用可能な VM サイズの一覧は、Azure リージョンの Web ページの [サービス] タブにあります。 2 つ目の概念は、現在 VM をホストしている物理ハードウェアです。 VM をホストしている物理サーバーは、一般的な物理ハードウェアのクラスターにグループ化されます。 VM のサイズを変更する方法は、現在 VM をホストしているハードウェア クラスターで、新しく必要なサイズがサポートされているかどうかによって異なります。
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-[Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](virtual-machines-windows-resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。
 
 ## <a name="add-your-account"></a>アカウントの追加
 Azure クラシック リソースを操作できるように Azure PowerShell を構成する必要があります。 クラシック リソースを管理するよう Azure PowerShell を構成するには、次の手順に従います。
@@ -53,7 +52,7 @@ VM をホストしているハードウェア クラスター内で使用可能�
     ```
 
 ## <a name="resize-on-a-new-hardware-cluster"></a>新しいハードウェア クラスター上でのサイズ変更
-VM をホストしているハードウェア クラスターで使用できないサイズに VM のサイズを変更するには、クラウド サービスとクラウド サービス内のすべての VM を再作成する必要があります。 各クラウド サービスは 1 つのハードウェア クラスターでホストされるため、クラウド サービス内のすべての VM は、ハードウェア クラスターでサポートされているサイズである必要があります。 次の手順では、クラウド サービスを削除して作成し直すことで、VM のサイズを変更する方法を説明します。
+VM をホストしているハードウェア クラスターで使用できないサイズに VM のサイズを変更するには、クラウド サービスとクラウド サービス内のすべての VM を再作成する必要があります。 各クラウド サービスは&1; つのハードウェア クラスターでホストされるため、クラウド サービス内のすべての VM は、ハードウェア クラスターでサポートされているサイズである必要があります。 次の手順では、クラウド サービスを削除して作成し直すことで、VM のサイズを変更する方法を説明します。
 
 1. 次の PowerShell コマンドを実行して、リージョン内で使用可能な VM サイズの一覧を表示します。 
    
@@ -73,6 +72,6 @@ VM をホストしているハードウェア クラスターで使用できな�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

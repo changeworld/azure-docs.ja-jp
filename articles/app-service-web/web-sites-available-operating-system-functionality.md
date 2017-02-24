@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b113eb43148f9085c6e36787cb344050a438f351
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 931954e312b02c7a71acc7a3268b5ee3c0a11708
 
 
 ---
@@ -52,7 +52,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 <a id="NetworkDrives"></a>
 
 ### <a name="network-drives-aka-unc-shares"></a>ネットワーク ドライブ ("UNC 共有" とも呼ばれます)
-アプリのデプロイとメンテナンスを容易にする App Service の特長の 1 つは、すべてのユーザー コンテンツが一連の UNC 共有に保存されることです。 このモデルは、複数の負荷分散サーバーを配したオンプレミス Web ホスティング環境で使用される共通のコンテンツ ストレージ パターンに対応します。 
+アプリのデプロイとメンテナンスを容易にする App Service の特長の&1; つは、すべてのユーザー コンテンツが一連の UNC 共有に保存されることです。 このモデルは、複数の負荷分散サーバーを配したオンプレミス Web ホスティング環境で使用される共通のコンテンツ ストレージ パターンに対応します。 
 
 App Service 内には、各データ センターに作成された複数の UNC 共有があります。 データ センターごとに、すべての顧客のユーザーコンテンツの割合が各 UNC 共有に反映されます。 さらに、個々の顧客のサブスクリプションのすべてのファイル コンテンツは、必ず同じ UNC 共有に配置されます。 
 
@@ -106,20 +106,23 @@ App Service の各アプリは、"アプリケーション プール ID" と呼�
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>レジストリ アクセス
-アプリは、実行される仮想マシンの多くのレジストリ (すべてのレジストリではありません) に読み取り専用でアクセスできます。 つまり、実際には、アプリは、ローカルの Users グループへの読み取り専用アクセスを許可するレジストリ キーにアクセスできることになります。 現在、読み取りアクセスまたは書き込みアクセスがサポートされていないレジストリ領域の 1 つに、HKEY\_CURRENT\_USER ハイブがあります。
+アプリは、実行される仮想マシンの多くのレジストリ (すべてのレジストリではありません) に読み取り専用でアクセスできます。 つまり、実際には、アプリは、ローカルの Users グループへの読み取り専用アクセスを許可するレジストリ キーにアクセスできることになります。 現在、読み取りアクセスまたは書き込みアクセスがサポートされていないレジストリ領域の&1; つに、HKEY\_CURRENT\_USER ハイブがあります。
 
 レジストリへの書き込みアクセスはブロックされます。ユーザーごとのレジストリ キーにも一切アクセスできません。 Azure 環境の場合、アプリが他の仮想マシンへ移行される可能性があるので、レジストリへの書き込みアクセスを前提にしてコードを開発しないでください。 アプリで利用できる唯一の書き込み可能な永続ストレージは、App Service の UNC 共有に格納されるアプリ別のコンテンツ ディレクトリ構造です。 
 
+## <a name="more-information"></a>詳細情報
+
+[Azure Web アプリ サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - App Service の実行環境に関する最新の情報。 このページは、App Service の開発チームによって直接管理されます。
+
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
-[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

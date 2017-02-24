@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9c800007ccac453744937807f54aa003732aa6a9
-ms.openlocfilehash: 68b52e1e5b5b65a4690eedacd62806f4ee15d6df
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
 
 
 ---
@@ -40,7 +40,7 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 <tbody>
 <tr>
 <td><B>プロパティ名</B></td>
-<td><B>Description</B></td>
+<td><B>説明</B></td>
 </tr>
 <tr>
 <td>出力のエイリアス</td>
@@ -91,6 +91,6 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

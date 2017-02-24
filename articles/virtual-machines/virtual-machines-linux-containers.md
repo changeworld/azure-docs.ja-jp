@@ -1,5 +1,5 @@
 ---
-title: "Virtual Machines とコンテナー | Microsoft Docs"
+title: "Linux Azure Virtual Machines のコンテナー | Microsoft Docs"
 description: "Virtual Machines、Docker、および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するための方法と、各方法のメリットについて説明します。また、どの方法がどのようなシナリオに適しているかについても説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a523da03305224aedb9ae558846719c3a37b0b5b
+ms.sourcegitcommit: 518777dd312fc0e219dd05e44e26e2822bd9d2cf
+ms.openlocfilehash: 15eab47f914682f82d2d402b7f565adb051fd736
 
 
 ---
-# <a name="virtual-machines-and-containers-in-azure"></a>Virtual Machines とコンテナーが Azure にもたらすメリット
+# <a name="virtual-machines-vs-containers-in-azure"></a>Azure の Virtual Machines とコンテナー
 [!INCLUDE [virtual-machines-common-and-containers](../../includes/virtual-machines-common-containers.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

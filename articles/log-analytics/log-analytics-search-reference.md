@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: b7c13d4b4e205fda1e5ba44fbf5eb50a96601d2e
-ms.openlocfilehash: 113dd20f1a5ac42eb7155d693f66053adea57078
+ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
+ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
 
 
 ---
@@ -86,7 +86,7 @@ These all are string literals
 これは、"Windows Server" と完全に一致する結果のみを返します。
 
 ### <a name="numbers"></a>数値
-パーサーは、数値フィールドで 10 進数の整数と浮動小数点数をサポートします。
+パーサーは、数値フィールドで&10; 進数の整数と浮動小数点数をサポートします。
 
 次に例を示します。
 
@@ -142,7 +142,7 @@ TimeGenerated:2013-10-01T12:20
 
 ここでも、データがシステムをそれほど高速で通過することはないため、結果を得られる可能性はほとんどありません。
 
-これらの例は、相対的な日付と絶対的な日付を使用するための構成要素です。 次の 3 つのサブセクションでは、高度なフィルター内でのそれらの使用方法について、相対的な日付範囲を使用する例を用いて説明します。
+これらの例は、相対的な日付と絶対的な日付を使用するための構成要素です。 次の&3; つのサブセクションでは、高度なフィルター内でのそれらの使用方法について、相対的な日付範囲を使用する例を用いて説明します。
 
 ### <a name="datetime-math"></a>日付/時刻の計算
 日付/時刻算術演算子を使用して、単純な日付/時刻計算による日付/時刻値をオフセットするか丸めます。
@@ -159,7 +159,7 @@ datetime[+|-]count unit
 
 | 演算子 | 説明 |
 | --- | --- |
-| / |日付/時刻を指定された単位に丸めます。 例: NOW/DAY は、現在の日付/時刻を、当日の午前 0 時に丸めます。 |
+| / |日付/時刻を指定された単位に丸めます。 例: NOW/DAY は、現在の日付/時刻を、当日の午前&0; 時に丸めます。 |
 | + または - |日付/時刻を、指定された単位数でオフセットします。 例: NOW+1HOUR は、現在の日付/時刻を 1 時間後にオフセットします。2013-10-01T12:00-10DAYS は、日付の値を 10 日前にオフセットします。 |
 
 日付/時刻算術演算子は連結できます。次に例を示します。
@@ -298,7 +298,7 @@ Type:Alert AND NOT(Severity:1 OR ObjectId:"8066bbc0-9ec8-ca83-1edc-6f30d4779bcb8
 | system "Windows Server" OR Severity:1 |system AND ("Windows Server" OR Severity:1) |
 
 ### <a name="wildcarding"></a>ワイルドカード
-クエリ言語では、(*\*) 文字の使用をサポートしており、クエリ内の値として 1 つ以上の文字を表すことができます。
+クエリ言語では、(\*) 文字の使用をサポートしており、クエリ内の値として&1; つ以上の文字を表すことができます。
 
 次に例を示します。
 
@@ -356,7 +356,7 @@ Type=Event Computer=*SQL*
 
 結果 200 から始まる上位 10 個の一致する結果を返します。
 
-### <a name="select"></a>[
+### <a name="select"></a>Select
 構文:
 
     select field1, field2, ...
@@ -499,7 +499,7 @@ BY 句は省略されたが (2 番目の構文として) 期間が指定され�
 
 *説明*
 
-アラートの数が最大である上位 5 つのワークフローを取得します。
+アラートの数が最大である上位&5; つのワークフローを取得します。
 
 **例 14**
 
@@ -563,7 +563,7 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
 
 *説明*
 
-コンピューターのすべてのディスクの 1 分あたりの最大ディスク書き込み回数を計算します。
+コンピューターのすべてのディスクの&1; 分あたりの最大ディスク書き込み回数を計算します。
 
 ### <a name="where"></a>Where
 構文:
@@ -612,7 +612,7 @@ Type=Event Computer IN {Type:Update Classification="Security Updates"  UpdateSta
 
     Type=Event | Dedup EventID | sort TimeGenerated DESC
 
-上の例では、EventID ごとに 1 つのイベント (TimeGenerated で DESC を使用しているため最新のイベント) を返します。
+上の例では、EventID ごとに&1; つのイベント (TimeGenerated で DESC を使用しているため最新のイベント) を返します。
 
 ### <a name="extend"></a>Extend
 **説明** クエリ内に実行時フィールドを作成できます。 集計を実行する場合は、Extend の後に measure コマンドを使用することもできます。
@@ -644,7 +644,7 @@ Perf Counter 値に対して 50% 未満を LOW、それ以外を HIGH として�
 ```
 Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Extend product(CounterValue,60) as DWPerMin| measure max(DWPerMin) by InstanceName Interval 1HOUR
 ```
-コンピューターのすべてのディスクの 1 分あたりの最大ディスク書き込み回数を計算します。
+コンピューターのすべてのディスクの&1; 分あたりの最大ディスク書き込み回数を計算します。
 
 **サポートされている関数**
 
@@ -663,8 +663,8 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | def |def は default (既定) の略です。 "field" フィールドの値を返すか、このフィールドが存在しない場合は指定されている既定値を返し、 `exists()==true`になる最初の値を導出します。 |`def(rating,5)` - この def() 関数は評価を返します。ドキュメントで評価が指定されていない場合は 5 を返します。 <br> `def(myfield, 1.0)` は `if(exists(myfield),myfield,1.0)` と同値です。 |
 | deg |ラジアンを角度に変換します。 |`deg(x)` |
 | div |`div(x,y)` は、x を y で割ります。 |`div(1,y)` <br> `div(sum(x,100),max(y,1))` |
-| dist |2 つのベクトル (ポイント) 間の距離を n 次元空間で返します。 指数と 2 つ以上の ValueSource インスタンスを受け取り、2 つのベクトル間の距離を計算します。 各 ValueSource は数値にする必要があります。 同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が 2 番目のベクトルを表すと見なされます。 |`dist(2, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のユークリッド距離を計算します。 <br> `dist(1, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のマンハッタン (タクシー) 距離を計算します。 <br> `dist(2,,x,y,z,0,0,0)` - ドキュメントごとに (0,0,0) と (x,y,z) の間のユークリッド距離を計算します。<br>`dist(1,x,y,z,e,f,g)` - (x,y,z) と (e,f,g) の間のマンハッタン距離であり、それぞれの文字はフィールド名です。 |
-| exists |フィールドが 1 つでも存在する場合は TRUE を返します。 |`exists(author)` - いずれかのドキュメントに "author" フィールド値がある場合、TRUE を返します。<br>`exists(query(price:5.00))` - "price" が "5.00" と一致する場合、TRUE を返します。 |
+| dist |2 つのベクトル (ポイント) 間の距離を n 次元空間で返します。 指数と&2; つ以上の ValueSource インスタンスを受け取り、2 つのベクトル間の距離を計算します。 各 ValueSource は数値にする必要があります。 同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が&2; 番目のベクトルを表すと見なされます。 |`dist(2, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のユークリッド距離を計算します。 <br> `dist(1, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のマンハッタン (タクシー) 距離を計算します。 <br> `dist(2,,x,y,z,0,0,0)` - ドキュメントごとに (0,0,0) と (x,y,z) の間のユークリッド距離を計算します。<br>`dist(1,x,y,z,e,f,g)` - (x,y,z) と (e,f,g) の間のマンハッタン距離であり、それぞれの文字はフィールド名です。 |
+| exists |フィールドが&1; つでも存在する場合は TRUE を返します。 |`exists(author)` - いずれかのドキュメントに "author" フィールド値がある場合、TRUE を返します。<br>`exists(query(price:5.00))` - "price" が "5.00" と一致する場合、TRUE を返します。 |
 | exp |x 乗されたオイラー数を返します。 |`exp(x)` |
 | floor |整数に切り下げます。 |`floor(x)`  <br> `floor(5.6)` - 5 を返します。 |
 | hypo |中間のオーバーフローやアンダーフローなしに sqrt(sum(pow(x,2),pow(y,2))) を返します。 |`hypo(x,y)`  <br> ` |
@@ -755,11 +755,11 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 | から |イベント |イベントを生成したイベント ログのソース |
 | EventCategory |イベント |Windows イベント ログから直接取得されるイベントのカテゴリ |
 | UserName |イベント |Windows イベントのユーザー名 (通常は NT AUTHORITY\LOCALSYSTEM) |
-| SampleValue |PerfHourly |パフォーマンス カウンターの 1 時間ごとの集計の平均値 |
-| Min |PerfHourly |パフォーマンス カウンターの 1 時間ごとの集計の最小値 |
-| max |PerfHourly |パフォーマンス カウンターの 1 時間ごとの集計の最大値 |
+| SampleValue |PerfHourly |パフォーマンス カウンターの&1; 時間ごとの集計の平均値 |
+| Min |PerfHourly |パフォーマンス カウンターの&1; 時間ごとの集計の最小値 |
+| max |PerfHourly |パフォーマンス カウンターの&1; 時間ごとの集計の最大値 |
 | Percentile95 |PerfHourly |パフォーマンス カウンターの 1 時間ごとの集計の 95 パーセンタイル値 |
-| SampleCount |PerfHourly |この 1 時間ごとの集計レコードを生成するために使用された "生" のパフォーマンス カウンターのサンプル数 |
+| SampleCount |PerfHourly |この&1; 時間ごとの集計レコードを生成するために使用された "生" のパフォーマンス カウンターのサンプル数 |
 | Threat |ProtectionStatus |検出されたマルウェアの名前 |
 | StorageAccount |W3CIISLog |ログの読み取りが行われた Azure ストレージ アカウント |
 | AzureDeploymentID |W3CIISLog |ログが属しているクラウド サービスの Azure デプロイ ID |
@@ -813,6 +813,6 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

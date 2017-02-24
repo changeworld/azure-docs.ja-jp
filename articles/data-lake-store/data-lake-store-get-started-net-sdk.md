@@ -1,6 +1,6 @@
 ---
-title: "Data Lake Store .NET SDK を使用してアプリケーションを開発する | Microsoft Docs"
-description: "Data Lake Store .NET SDK を使用してアプリケーションを開発する"
+title: ".NET SDK を使用して Azure Data Lake Store でアプリケーションを開発する | Microsoft Docs"
+description: "Azure Data Lake Store .NET SDK を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 03faf2594c9c3d7612127d46bdaa99b937c78475
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 8ec76c597dfb59860b456e42a78239c67d289f13
 
 
 ---
@@ -115,7 +115,7 @@ ms.openlocfilehash: 03faf2594c9c3d7612127d46bdaa99b937c78475
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
 
-このスニペットに関して、以下の 2 点に留意してください。
+このスニペットに関して、以下の&2; 点に留意してください。
 
 * できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションから既定で利用できる Azure AD ドメインとクライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用**してください。
 * ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、Azure AD ドメイン、クライアント ID、リダイレクト URI を、作成したアプリケーションに使用する必要があります。 手順については、「 [Active Directory アプリケーションを作成する](data-lake-store-end-user-authenticate-using-active-directory.md) 」を参照してください。
@@ -261,6 +261,6 @@ ms.openlocfilehash: 03faf2594c9c3d7612127d46bdaa99b937c78475
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

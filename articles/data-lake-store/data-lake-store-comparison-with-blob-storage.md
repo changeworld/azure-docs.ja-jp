@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
-ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
+ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
+ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 | データ操作 - 監査 |使用可能。 詳細については、 [こちら](data-lake-store-diagnostic-logs.md) をご覧ください。 |使用可能 |
 | 保存データの暗号化 |透過的、サーバー側 <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用</li></ul> |<ul><li>透過的、サーバー側</li> <ul><li>サービスによって管理されるキーを使用</li><li>ユーザーによって Azure KeyVault で管理されるキーを使用 (近日対応予定)</li></ul><li>クライアント側暗号化</li></ul> |
 | 管理操作 (アカウントの作成など) |[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC) |[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC) |
-| Developer SDK |.NET、Java、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
+| Developer SDK |.NET、Java、Python、Node.js |.Net、Java、Python、Node.js、C++、Ruby |
 | 分析ワークロードのパフォーマンス |並列分析ワークロードに最適化されたパフォーマンス。 高スループットおよび高 IOPS。 |分析ワークロードに最適化されていません。 |
 | サイズ制限 |アカウント サイズ、ファイル サイズ、ファイル数に制限はありません。 |具体的な制限については、 [こちら](../azure-subscription-service-limits.md#storage-limits) |
 | geo 冗長 |ローカル冗長 (1 つの Azure リージョンにデータの複数のコピー) |ローカル冗長 (LRS)、geo 冗長 (GRS)、読み取りアクセス geo 冗長 (RA-GRS)。 詳細については、 [こちら](../storage/storage-redundancy.md) をご覧ください。 |
@@ -53,6 +53,6 @@ ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

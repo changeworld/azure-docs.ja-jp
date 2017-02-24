@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/17/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 58c89833330d8dbb1147b42c086ca2c86be3e94d
+ms.sourcegitcommit: 731dd999e053b98c93c374530599232d4dc5bb92
+ms.openlocfilehash: 9c7a8dc5204a799a8b79fa88b243d981bcd54c74
 
 
 ---
@@ -25,8 +25,6 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 
 > [!NOTE]
 > このトピックでは、FIM と MIM のみを取り上げています。 これらのコネクタは、Azure AD Connect ではサポートされていません。
-> 
-> 
 
 このトピックでは、リリース済みのすべてのバージョンのコネクタを一覧にまとめています。
 
@@ -43,7 +41,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 リリース日: 2016 年 3
 
 **新しいコネクタ**  
- [Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md)の初回リリース。
+[Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md)の初回リリース。
 
 **新機能:**
 
@@ -53,7 +51,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
   * csEntryChangeResult アクティビティと setImportErrorCode アクティビティが更新され、オブジェクト レベルのエラーを同期エンジンに返すことができるようになりました。
   * SAP6 テンプレートと SAP6User テンプレートが更新され、新しいオブジェクト レベルのエラー機能を利用できるようになりました。
 * Lotus Domino コネクタ:
-  * エクスポート用として、アドレス帳ごとに 1 人の証明者が必要です。 すべての証明に同じパスワードを利用できるようになり、管理が簡単になりました。
+  * エクスポート用として、アドレス帳ごとに&1; 人の証明者が必要です。 すべての証明に同じパスワードを利用できるようになり、管理が簡単になりました。
 
 **修正された問題:**
 
@@ -103,7 +101,6 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "仮想マシンで Tomcat を実行する | Microsoft Docs"
+title: "クラシック Azure VM で Java アプリケーション サーバーを実行する | Microsoft Docs"
 description: "このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。"
 services: virtual-machines-windows
 documentationcenter: java
@@ -13,17 +13,17 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 01/23/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 75388bba3084099fcea8d9ec1f3a2c1e909e914f
+ms.sourcegitcommit: 7b621733e09a1ba4e21152d7670a8936e3944521
+ms.openlocfilehash: 4503610eb8ef2e690e028667ebbf64e865af7134
 
 
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Java 8 と Tomcat を使用して Web アプリをデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Java 8 と Tomcat を使用して Web アプリをデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)をご覧ください。
 
 Azure では、仮想マシンを使用してサーバー機能を実現することができます。 たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成できます。 このガイドを完了すると、Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
 
@@ -155,6 +155,6 @@ Java アプリケーションに含めることができる他のサービス (A
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

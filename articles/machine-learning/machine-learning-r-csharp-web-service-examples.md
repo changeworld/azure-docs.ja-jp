@@ -1,6 +1,6 @@
 ---
-title: "R で構築された Machine Learning Web サービスの例 | Microsoft Docs"
-description: "R コードと Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された便利な Web サービスの例を参照できます。"
+title: "(非推奨) R で構築された Machine Learning Web サービスの例 - Azure | Microsoft Docs"
+description: "(非推奨) R コードと Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された便利な Web サービスの例を参照できます。"
 keywords: "csharp、r コード、Web サービスの例"
 services: machine-learning
 documentationcenter: 
@@ -12,16 +12,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c3e94cf69d55de9c31a48de35e86a1ae9149a63
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
 
 
 ---
-# <a name="web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>Azure Machine Learning で R コードを使用して構築され、Microsoft Azure Marketplace に発行されたサンプル Web サービス
+# <a name="deprecated-web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>(非推奨) Azure Machine Learning で R コードを使用して構築され、Microsoft Azure Marketplace に発行されたサンプル Web サービス
+
+> [!NOTE]
+> Microsoft DataMarket は間もなく提供終了となる予定です。これらの API は推奨されていません。 
+> 
+> [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、便利なサンプル実験や API が提供されています。 ギャラリーについて詳しくは、「 [Cortana Intelligence ギャラリーでリソースを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」をご覧ください。
+
 この記事では、Azure Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された Web サービスの例を参照できます。 各 Web サービスの例には、サービスをテストするためのサンプル データ セットが添付され、同様のサービスをユーザーが作成するための方法を説明した包括的なドキュメントが用意されています。 
 
 Azure Machine Learning Studio では、ユーザーが R コードを記述し、数回クリックするだけで、そのコードを Web サービスとして発行でき、世界中の他のユーザーがさまざまなアプリケーションやデバイスで使用できるようになります。 
@@ -72,6 +79,6 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

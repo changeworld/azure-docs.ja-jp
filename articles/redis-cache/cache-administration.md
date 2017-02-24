@@ -12,32 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a0c113c73c1d77a79989d9cddef90cd370fd19
+ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
+ms.openlocfilehash: 488212ad1b43d5e35bf46a334bc7ac8e1acabebc
 
 
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache を管理する方法
-このトピックでは、Azure Redis Cache インスタンスについて、再起動、更新スケジュールなどの管理タスクを実行する方法について説明します。
+このトピックでは、Azure Redis Cache インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
 
 > [!IMPORTANT]
 > この記事で説明する設定と機能は、Premium レベルのキャッシュにのみ使用できます。
 > 
 > 
 
-## <a name="administration-settings"></a>管理の設定
-Azure Redis Cache の **管理** 設定を使用すると、Premium キャッシュに対して次の管理タスクを実行できます。 管理設定にアクセスするには、[Redis Cache] ブレードで **[設定]** または **[すべての設定]** をクリックし、**[設定]** ブレードで **[管理]** セクションにスクロールします。
-
-![管理](./media/cache-administration/redis-cache-administration.png)
-
-* [Reboot](#reboot)
-* [更新のスケジュール](#schedule-updates)
-
 ## <a name="reboot"></a>Reboot
-**[再起動]** ブレードでは、キャッシュの 1 つ以上のノードを再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。
+**[再起動]** ブレードでは、キャッシュの&1; つ以上のノードを再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。
+
+![Reboot](./media/cache-administration/redis-cache-administration-reboot.png)
+
+再起動するノードを選び、**[再起動]** をクリックします。
 
 ![Reboot](./media/cache-administration/redis-cache-reboot.png)
 
@@ -52,7 +48,7 @@ Azure Redis Cache の **管理** 設定を使用すると、Premium キャッシ
 * **マスター** - マスター ノードが再起動されると、Azure Redis Cache はレプリカ ノードにフェールオーバーして、そのノードがマスターに昇格します。 このフェールオーバー中、キャッシュに接続できない短いインターバルが発生する可能性があります。
 * **スレーブ** - スレーブ ノードの再起動は、通常、キャッシュ クライアントに何の影響も及ぼしません。
 * **マスターとスレーブの両方** - 両方のキャッシュ ノードが再起動されると、キャッシュのデータすべてが失われ、プライマリ ノードがオンラインに戻るまでキャッシュに接続できません。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合は、キャッシュがオンラインに戻ったときに、最新のバックアップが復元されます。 最新のバックアップの後に生じたキャッシュの書き込みはすべて失われることに注意してください。
-* **クラスタリングが有効になっている Premium キャッシュのノード** - クラスタリングが有効になっている Premium キャッシュのノードを再起動したときの動作は、非クラスター化キャッシュのノードを再起動する場合と同じです。
+* **クラスタリングが有効になっている Premium キャッシュのノード** - クラスタリングが有効になっている Premium キャッシュのノードを再起動したときの、選んだノードの動作は、非クラスター化キャッシュのノードを再起動する場合と同じです。
 
 > [!IMPORTANT]
 > 再起動は、Premium レベルのキャッシュにのみ使用できます。
@@ -80,7 +76,7 @@ Azure Redis Cache の **管理** 設定を使用すると、Premium キャッシ
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>再起動すると、キャッシュのデータは失われますか。
 **マスター** ノードと**スレーブ** ノードの両方を再起動すると、キャッシュまたはそのシャード (クラスタリングが有効になっている Premium キャッシュを使用している場合) のすべてのデータが失われます。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合は、キャッシュがオンラインに戻ったときに、最新のバックアップが復元されます。 そのバックアップの作成後に発生したキャッシュ書き込みは失われるので注意してください。
 
-ノードのいずれかを 1 つだけ再起動しても、通常、データが失われることはありませんが、失われる可能性もあります。 たとえば、マスター ノードが再起動されたときに、キャッシュの書き込みが実行中だと、そのキャッシュの書き込みのデータは失われます。 また、一方のノードを再起動した場合に、もう一方のノードが偶然同じタイミングで故障しダウンした場合もやはりデータが失われます。 データが失われるさまざまな原因について詳しくは、「 [What happened to my data in Redis? (Redis からデータが消えた)](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)」を参照してください。
+ノードのいずれかを&1; つだけ再起動しても、通常、データが失われることはありませんが、失われる可能性もあります。 たとえば、マスター ノードが再起動されたときに、キャッシュの書き込みが実行中だと、そのキャッシュの書き込みのデータは失われます。 また、一方のノードを再起動した場合に、もう一方のノードが偶然同じタイミングで故障しダウンした場合もやはりデータが失われます。 データが失われるさまざまな原因について詳しくは、「[Redis のデータが正常ではない](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)」をご覧ください。
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。
 PowerShell での手順については、「 [To reboot a Redis cache (Redis Cache を再起動するには)](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)」をご覧ください。
@@ -96,7 +92,7 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]**をクリックします。 メンテナンス時間の時刻は UTC 時間で指定します。 
 
 > [!NOTE]
-> 更新の既定のメンテナンス時間は 5 時間です。 この値は、Azure ポータルからは構成できませんが、PowerShell で [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳細については、「 [PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
+> 更新の既定のメンテナンス時間は 5 時間です。 この値は、Azure ポータルからは構成できませんが、PowerShell で [New-AzureRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳しくは、「[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)」をご覧ください。
 > 
 > 
 
@@ -115,10 +111,10 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。
 はい、次の PowerShell コマンドレットを使用して、スケジュールされている更新を管理できます。
 
-* [Get-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763835.aspx)
-* [New-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763834.aspx)
-* [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx)
-* [Remove-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763837.aspx)
+* [Get-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/get-azurermrediscachepatchschedule)
+* [New-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachepatchschedule)
+* [New-AzureRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/new-azurermrediscachescheduleentry)
+* [Remove-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/remove-azurermrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>どの価格レベルで更新スケジュール機能を使用できますか。
 更新のスケジュールは Premium 価格レベルでのみ使用できます。
@@ -129,6 +125,6 @@ PowerShell での手順については、「 [To reboot a Redis cache (Redis Cac
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

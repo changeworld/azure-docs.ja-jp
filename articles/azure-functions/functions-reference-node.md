@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions NodeJS 開発者向けリファレンス | Microsoft Docs"
-description: "NodeJS を使用して Azure Functions を開発する方法について説明します。"
+title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
+description: "JavaScript を使用して Azure Functions を開発する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -15,27 +15,27 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/13/2016
-ms.author: chrande
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 4544629c47326d448cd99b5d96d79666a56f0274
-ms.openlocfilehash: 116b0fd67701e69a81b7f736bbd241427eb33e34
+ms.sourcegitcommit: e660f3313ba6805356eef30b3a17ac609fc9043e
+ms.openlocfilehash: 880fdbd6fc51f16add2f2497402d8b01047d0847
 
 
 ---
-# <a name="azure-functions-nodejs-developer-reference"></a>Azure Functions NodeJS 開発者向けリファレンス
+# <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 > [!div class="op_single_selector"]
 > * [C# スクリプト](functions-reference-csharp.md)
 > * [F# スクリプト](functions-reference-fsharp.md)
-> * [Node.JS](functions-reference-node.md)
+> * [JavaScript](functions-reference-node.md)
 > 
 > 
 
-Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
+Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
 
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
-すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
+すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を&1; つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -138,8 +138,8 @@ if(context.req.body.emoji === ':pizza:') context.log('Yay!');
 context.res = { status: 202, body: 'You successfully ordered more coffee!' };   
 ```
 
-## <a name="node-version-package-management"></a>Node のバージョンとパッケージの管理
-Node のバージョンは、現在、 `5.9.1`にロックされています。 現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
+## <a name="node-version--package-management"></a>Node のバージョンとパッケージの管理
+Node のバージョンは、現在、 `6.5.0`にロックされています。 現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
 関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。 ファイルをアップロードする方法については、「 **Azure Functions developer reference (Azure Functions 開発者向けリファレンス)** 」の「 [関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」セクションを参照してください。 
 
@@ -155,7 +155,7 @@ Node のバージョンは、現在、 `5.9.1`にロックされています。 
 ```javascript
 // Import the underscore.js library
 var _ = require('underscore');
-var version = process.version; // version === 'v5.9.1'
+var version = process.version; // version === 'v6.5.0'
 
 module.exports = function(context) {
     // Using our imported underscore.js library
@@ -198,6 +198,6 @@ function GetEnvironmentVariable(name)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

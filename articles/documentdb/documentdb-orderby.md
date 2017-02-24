@@ -1,24 +1,9 @@
 ---
-title: "Order By を使用した DocumentDB データの並べ替え | Microsoft Docs"
-description: "LINQ および SQL の DocumentDB クエリで ORDER BY を使用する方法、ORDER BY クエリにインデックス作成ポリシーを指定する方法について説明します。"
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: cgronlun
-documentationcenter: 
-ms.assetid: e55c1e42-a3be-45c1-8a3a-232ed847d925
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/03/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 150dcb72f3e7295e1910506b85c06bb7023dcc7c
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: c5fc68fb25a4cb2166e0c0a72871d16c71397852
 
 
 ---
@@ -66,7 +51,7 @@ Books.ShippingDetails.Weight などのドキュメント内の入れ子になっ
 DocumentDB では、クエリあたり、1 つの数値プロパティ、文字列プロパティ、またはブール プロパティでの順序付けがサポートされています。これに近日公開予定のクエリの種類が加わります。 詳細については、「[今後予定された機能](#Whats_coming_next)」を参照してください。
 
 ## <a name="configure-an-indexing-policy-for-order-by"></a>Order By のインデックス作成ポリシーの構成
-DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この 2 つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。 DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。 
+DocumentDB では&2; 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この&2; つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。 DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。 
 
 > [!NOTE]
 > 文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。 文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
@@ -92,7 +77,7 @@ DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサ�
 > 
 
 ### <a name="indexing-for-order-by-for-a-single-property"></a>1 つのプロパティに対する Order By のインデックス作成
-Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。 2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう 1 つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。                    
+Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。 2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう&1; つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。                    
 
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
@@ -149,6 +134,6 @@ Order By がサポートされていないというエラー メッセージが�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

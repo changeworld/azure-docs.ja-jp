@@ -1,14 +1,26 @@
 ---
+title: "Azure Active Directory B2C のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "クラウドで包括的なコンシューマーの ID 管理をデプロイする方法について説明します。 ドキュメントでは、コンシューマー向けの Web アプリとモバイル アプリを保護する方法を紹介します。"
+services: active-directory-b2c
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: active-directory-b2c
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3cee8c74ed77a27c8a2006dcd28729f9c077aea9
-ms.openlocfilehash: 330f2c0efed16ae587c6f069d3feae1bb80f3097
+ms.sourcegitcommit: 51e27c26873f6caad5df19ff8f2b57f6cd03e219
+ms.openlocfilehash: d12fce2cf25cd7602564e4aa464a14959625073f
 
 ---
 
 #<a name="active-directory-b2c-documentation"></a>Active Directory B2C のドキュメント
 
-Azure Active Directory B2C は、コンシューマー向け Web アプリケーションおよびモバイル アプリケーション用の包括的なクラウド ID 管理ソリューションです。 億単位のコンシューマー ID まで拡張可能な高可用性のグローバル サービスです。 エンタープライズ レベルのセキュリティ保護されたプラットフォームに構築された Azure Active Directory B2C は、アプリケーション、ビジネス、およびコンシューマーを保護された状態に保ちます。
+Active Directory B2C を使って、クラウド内の包括的なコンシューマーの ID 管理を設定および管理する方法について説明します。 チュートリアルやリファレンスなどのドキュメントでは、セキュリティで保護されたサインインで、コンシューマー向けの Web アプリケーションやモバイル アプリケーションを保護する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -175,18 +187,9 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/active-directory-b2c.pdf">
-        <div class="img"></div>
-        <div class="text">
-Active Directory B2C のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

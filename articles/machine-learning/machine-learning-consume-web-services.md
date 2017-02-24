@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
+ms.sourcegitcommit: ecb2ab00b56476b4373fa06cb766384cb2fcd514
+ms.openlocfilehash: fceb4254461bd91fd2da8603af4fefa47def72e8
 
 
 ---
@@ -24,31 +24,26 @@ ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
 ## <a name="introduction"></a>はじめに
 Azure Machine Learning の実験は、Web サービスとしてデプロイされると、さまざまなデバイスやプラットフォームが使用できる REST API と JSON 形式のメッセージを提供します。 Azure Machine Learning ポータルは、R、C#、および Python で Web サービスを呼び出すために使用できるコードを提供します。 
 
-これらのサービスは、次の 3 つの条件を満たす任意のプログラミング言語とデバイスから呼び出すことができます。
+これらのサービスは、次の&3; つの条件を満たす任意のプログラミング言語とデバイスから呼び出すことができます。
 
 * ネットワークに接続している
 * HTTPS 要求を実行する SSL の機能がある
-* (手動またはサポート ライブラリによって) JSON を解析できる
+* JSON を解析できる (直接またはサポート ライブラリを使用)
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Azure Machine Learning Web サービスは、要求応答サービスまたはバッチ実行サービスの 2 つの方法で使用できます。 各シナリオでは、実験をデプロイしてから使用できる RESTFul Web サービスを通じて機能が提供されます。
+Azure Machine Learning Web サービスは、要求応答サービスまたはバッチ実行サービスの&2; つの方法で使用できます。 各シナリオでは、実験をデプロイしてから使用できる RESTFul Web サービスを通じて機能が提供されます。
 
 > [!TIP]
 > 予測 Web サービスにアクセスする Web アプリケーションを作成する簡単な方法については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](machine-learning-consume-web-service-with-web-app-template.md)」をご覧ください。
 > 
 > 
-
-<!-- When this article gets published, fix the link and uncomment
-For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
--->
-
-Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][発行]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル]」をご覧ください。
+> Azure Machine Learning Web サービスの作成とデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」をご覧ください。 Machine Learning の実験の作成とデプロイに関する詳しい手順については、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する][walkthrough]」を参照してください。
 
 ## <a name="request-response-service-rrs"></a>要求応答サービス (RRS)
 要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスであり、Azure Machine Learning Studio の実験で作成およびデプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。 このサービスを使用すると、使用側アプリケーションがリアルタイムでの応答を期待するシナリオに対応できます。
 
-RRS は、1 行または複数行の入力パラメーターを受け取り、出力として 1 行または複数行を生成できます。 出力行には複数の列を含めることができます。
+RRS は、1 行または複数行の入力パラメーターを受け取り、出力として&1; 行または複数行を生成できます。 出力行には複数の列を含めることができます。
 
 RRS の例では、アプリケーションの信頼性を検証しています。 この例では、数百万のアプリケーションのインストールが予想されます。 アプリケーションの開始時に、関連する入力を使用して RRS サービスを呼び出します。 次にアプリケーションは、アプリケーションの実行を許可またはブロックするサービスからの検証応答を受信します。
 
@@ -58,9 +53,9 @@ RRS の例では、アプリケーションの信頼性を検証しています�
 BES は、個人やモノのインターネット (IOT) の定期的にスケジュールされたスコア付けなど、応答がすぐには必要でない場合に役立ちます。
 
 ## <a name="examples"></a>例
-RRS と BES の両方の動作方法を示すために、Azure Web サービスの例を使用します。 このサービスは、IOT (モノのインターネット) のシナリオで使用されます。 ここではシンプルにするために、デバイスは、 `cog_speed`という値を 1 つのみ送信し、1 つの応答を取得します。
+RRS と BES の両方の動作方法を示すために、Azure Web サービスの例を使用します。 このサービスは、IOT (モノのインターネット) のシナリオで使用されます。 ここではシンプルにするために、デバイスは、 `cog_speed`という値を&1; つのみ送信し、1 つの応答を取得します。
 
-実験がデプロイされた後、RR または BES のいずれかのサービスを呼び出すために必要な情報が 4 つあります。
+実験がデプロイされた後、RR または BES のいずれかのサービスを呼び出すために必要な情報が&4; つあります。
 
 * サービスの **API キー**または**主キー**
 * サービスの**要求 URI**
@@ -72,7 +67,7 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 ### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルでの情報の場所
 必要な情報を入手するには、次のようにします。
 
-1. [Azure Machine Learning Web サービス][webservicesportal] ポータルにサインインします。
+1. [Azure Machine Learning Web サービス ポータル][webservicesportal]にサインインします。
 2. **[Web サービス]** または **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 3. 使用する Web サービスをクリックします。 
 4. クラシック Web サービスを使用する場合は、[Classic Web Services (クラシック Web サービス)]をクリックします。
@@ -84,7 +79,7 @@ RRS と BES の両方の動作方法を示すために、Azure Web サービス�
 * 予想される API の**要求ヘッダー**、**応答ヘッダー**、および**本文**は **[Swagger API]** ページにあります
 
 ### <a name="information-locations-in-machine-learning-studio-classic-web-service-only"></a>Machine Learning Studioでの情報の場所 (クラシック Web サービスのみ)
-必要な情報は 2 つの場所から入手できます。Machine Learning Studio または Azure Machine Learning Web サービス ポータルです。
+必要な情報は&2; つの場所から入手できます。Machine Learning Studio または Azure Machine Learning Web サービス ポータルです。
 
 必要な情報を Machine Learning Studio で入手するには、次のようにします。
 
@@ -102,7 +97,7 @@ API ヘルプ ページにアクセスするには、タスクに応じた **[�
 
 必要な情報を Azure Machine Learning Web サービス ポータルで入手するには、次のようにします。
 
-1. [Azure Machine Learning Web サービス][webservicesportal] ポータルにサインインします。
+1. [Azure Machine Learning Web サービス ポータル][webservicesportal]にサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 3. 使用する Web サービスをクリックします。 
 4. 使用するエンドポイントをクリックします。
@@ -113,7 +108,7 @@ API ヘルプ ページにアクセスするには、タスクに応じた **[�
 * **要求の URI** は **[Consume (使用)]** ページにあります 
 * 予想される API の**要求ヘッダー**、**応答ヘッダー**、および**本文**は **[Swagger API]** ページにあります
 
-次の 2 つの例では、必要なコードを説明するために C# 言語が使用されています。
+次の&2; つの例では、必要なコードを説明するために C# 言語が使用されています。
 
 ### <a name="rrs-example"></a>RRS の例
 次の要求のサンプルは、サンプル サービスの API 呼び出しに対するペイロードの API 入力を示しています。 クラシック Web サービスのペイロードのサンプルは、Machine Learning Web サービス ポータルの **API ヘルプ ページ**または **Swagger API** ページにあります。 新しい Web サービスのペイロードのサンプルは、Machine Learning Web サービス ポータルの **Swagger API** ページにあります。
@@ -308,7 +303,7 @@ Azure Machine Learning サービスのバッチ ジョブを作成する際に�
 
 * **Input**: バッチ ジョブの入力が保存される BLOB 参照を表します。
 * **GlobalParameters**: 実験用に定義できる一連のグローバル パラメーターを表します。 Azure Machine Learning の実験では、サービスの実行をカスタマイズする必須パラメーターとオプション パラメーターを使用できます。該当する場合、呼び出し元は必要なすべての必須パラメーターを指定する必要があります。 これらのパラメーターは、キーと値のペアのコレクションとして指定します。
-* **Outputs**: サービスによって 1 つ以上の出力が定義されている場合、呼び出し元は Azure BLOB の場所にそれらをリダイレクトできます。 このパラメーターの設定により、サービスの出力を目的の場所に、予測可能な名前で保存できます。これを設定しなければ、出力 BLOB 名はランダムに生成されます。 
+* **Outputs**: サービスによって&1; つ以上の出力が定義されている場合、呼び出し元は Azure BLOB の場所にそれらをリダイレクトできます。 このパラメーターの設定により、サービスの出力を目的の場所に、予測可能な名前で保存できます。これを設定しなければ、出力 BLOB 名はランダムに生成されます。 
   
     サービスでは、出力コンテンツのタイプに基づいて、サポートされる次の形式で出力コンテンツを保存する必要があります。
   
@@ -363,7 +358,7 @@ Azure Machine Learning サービスのバッチ ジョブを作成する際に�
 * Canceled
 * Finished
 
-*Results* プロパティには、ジョブが正常に完了した場合にデータが取り込まれます (それ以外は、**null** になります)。ジョブが完了し、サービスで少なくとも 1 つの出力ノードが定義されている場合、結果は *[出力名, BLOB 参照]* ペアのコレクションとして返されます。BLOB 参照は、結果が格納されている BLOB への SAS 読み取り専用参照です。
+*Results* プロパティには、ジョブが正常に完了した場合にデータが取り込まれます (それ以外は、**null** になります)。ジョブが完了し、サービスで少なくとも&1; つの出力ノードが定義されている場合、結果は *[出力名, BLOB 参照]* ペアのコレクションとして返されます。BLOB 参照は、結果が格納されている BLOB への SAS 読み取り専用参照です。
 
 **応答のサンプル**
 
@@ -687,7 +682,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 これですべての swagger ツールを使用できます。 Java クライアント コードを生成する手順は次のとおりです。 
 
 * Azure ML API ヘルプ ページに移動する (たとえば、 [こちら](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs)から)
-* Azure ML REST API 用の swagger.json の URL を見つける (API ヘルプ ページの上部の最後から 2 番目の箇条書き)
+* Azure ML REST API 用の swagger.json の URL を見つける (API ヘルプ ページの上部の最後から&2; 番目の箇条書き)
 * swagger ドキュメント リンクをクリックする (たとえば、 [こちら](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)から)
 * [swagger の Read Me ファイル](https://github.com/swagger-api/swagger-codegen/blob/master/README.md) に示されている次のコマンドを使用して、クライアント コードを生成する
 
@@ -729,8 +724,8 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 
 <!-- Relative Links -->
 
-[発行]: machine-learning-publish-a-machine-learning-web-service.md
-[チュートリアル]: machine-learning-walkthrough-develop-predictive-solution.md
+[publish]: machine-learning-publish-a-machine-learning-web-service.md
+[walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- External Links -->
 [webservicesportal]: https://services.azureml.net/
@@ -738,6 +733,6 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

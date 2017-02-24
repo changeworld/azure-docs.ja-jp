@@ -1,5 +1,5 @@
 ---
-title: "開発者向け Azure Batch 機能の概要 | Microsoft Docs"
+title: "開発者向け Azure Batch の概要 | Microsoft Docs"
 description: "開発の観点から、Batch サービスとその API の機能について説明します。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 4bd60ab3b1be1fa590b20fbe292da69f6a2dac8e
-ms.openlocfilehash: 0b63ea1e6308732f6993357466d7e372ec53a78f
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: 984d1afe93b19ebea7add524091ed64aa276da0c
 
 
 ---
@@ -111,7 +111,7 @@ Azure Batch プールは、コア Azure コンピューティング プラット
     同じプール内のノードはすべて同じサイズとなります。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
 * **ターゲット ノード数**
 
-    これは、プールにデプロイしたいと考えるコンピューティング ノードの数です。 " *ターゲット* " (目標) と呼ばれているのは、状況によってはプールのノード数がその目標に達しない可能性もあるためです。 目標とするノード数をプールが下回る原因としては、Batch アカウントの [コア クォータ](batch-quota-limit.md#batch-account-quotas) に達していたり、そのプールに適用した自動スケール式によって最大ノード数が制限されていたりすることが考えられます (以下の「スケーリング ポリシー」セクションを参照)。
+    これは、プールにデプロイしたいと考えるコンピューティング ノードの数です。 " *ターゲット* " (目標) と呼ばれているのは、状況によってはプールのノード数がその目標に達しない可能性もあるためです。 目標とするノード数をプールが下回る原因としては、Batch アカウントの [コア クォータ](batch-quota-limit.md) に達していたり、そのプールに適用した自動スケール式によって最大ノード数が制限されていたりすることが考えられます (以下の「スケーリング ポリシー」セクションを参照)。
 * **スケーリング ポリシー**
 
     動的ワークロードの場合には、プールに[自動スケール式](#scaling-compute-resources)を作成して適用できます。 Batch サービスが、その式を定期的に評価し、プール、ジョブ、タスクに関して指定されている各種パラメーターに基づいてプール内のノード数を調整します。
@@ -489,6 +489,6 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5ec30d3a0c00adef585e3cf22c682830a7d5cce4
+ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
+ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: 5ec30d3a0c00adef585e3cf22c682830a7d5cce4
 ## <a name="a-purchase-store-and-assign-an-ssl-certificate-for-your-custom-domain-a"></a><a>カスタム ドメイン用の SSL 証明書を購入、保存、および割り当てる</a>
 contoso.comなどのカスタム ドメインに対して HTTPS を有効にするには、まず **[Azure App Service でカスタム ドメイン名を構成する](web-sites-custom-domain-name.md)**必要があります。
 
-SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。 この結果、どのような種類の証明書を取得する必要があるかが決まります。 contoso.com または www.contoso.com のように、ただ 1 つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。 contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
+SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。 この結果、どのような種類の証明書を取得する必要があるかが決まります。 contoso.com または www.contoso.com のように、ただ&1; つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。 contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
 
 ## <a name="a-namebkmkpurchasecertastep-0-place-an-ssl-certificate-order"></a><a name="bkmk_purchasecert"></a>手順 0: SSL 証明書を注文する
 この手順では、選択した SSL 証明書を注文する方法を説明します。
@@ -59,7 +59,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 3. SSL 証明書の **[ホスト名]**
    
    > [!NOTE]
-   > これは、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 たとえば、カスタム ドメイン名が www.contoso.com の場合、[ホスト名] には contoso.com だけを入力します。購入した証明書では、www ドメインとルート ドメインの両方が保護されます。 
+   > これは、購入プロセスの最も重要な部分の&1; つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 たとえば、カスタム ドメイン名が www.contoso.com の場合、[ホスト名] には contoso.com だけを入力します。購入した証明書では、www ドメインとルート ドメインの両方が保護されます。 
    > 
    > 
 4. **サブスクリプション**を選択します。 
@@ -67,10 +67,10 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
    複数のサブスクリプションがある場合は、対象のカスタム ドメインまたは Web アプリに使用したものと同じサブスクリプションで、SSL 証明書を作成してください。
 5. **リソース グループ**を選択または作成します。
    
-   リソース グループを使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用にロール ベースのアクセス制御 (RBAC) 規則を作成する際に便利です。 詳細については、Azure リソースの管理に関するページを参照してください。
-6.  **[証明書 SKU]** 
+   リソース グループを使用すると、関連する Azure リソースを&1; つの単位として管理でき、アプリ用にロール ベースのアクセス制御 (RBAC) 規則を作成する際に便利です。 詳細については、Azure リソースの管理に関するページを参照してください。
+6. **[証明書 SKU]** 
    
-   最後に、ニーズに合った証明書 SKU を選択し、[作成] をクリックします。 今日では、Azure App Service を使用すると 2 つの異なる Sku を購入するには
+   最後に、ニーズに合った証明書 SKU を選択し、[作成] をクリックします。 今日では、Azure App Service を使用すると&2; つの異なる Sku を購入するには
    
         •    S1 – Standard Certificate with 1-year validity and auto renewal  
         •    W1 – Wild card Certificate with 1-year validity and auto renewal      
@@ -107,18 +107,8 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 ## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>手順 2: ドメインの所有権を検証する
 この手順では、注文した SSL 証明書のドメイン所有権を検証する方法を説明します。 
 
-1. **[証明書の構成]** ブレードで **[ステップ 2: 検証]** をクリックします。 App Service 証明書では 4 種類のドメイン検証がサポートされています。
+1. **[証明書の構成]** ブレードで **[ステップ 2: 検証]** をクリックします。 App Service 証明書では 3 種類のドメイン検証がサポートされています。
    
-   * **App Service 検証** 
-     
-     * これは、既に **App Service アプリにカスタム ドメインを割り当ててある**場合に、最も簡単なプロセスです。 この方法では、この条件を満たすすべての App Service アプリが一覧表示されます。 
-        たとえば、この例では、**contosocertdemo.com** は "**ContosoCertDemo**" という名前の App Service アプリに割り当てられているカスタム ドメインであり、ここで表示される唯一の App Service アプリです。 複数リージョンのデプロイがあった場合、すべてのリージョンのアプリが一覧表示されます。
-       
-        この検証方法は、Standard (基本) 証明書購入にのみ使用できます。 ワイルドカード証明書の場合は、以下で説明する他の 3 つのオプションを使用してください。
-     * **[検証]** ボタンをクリックして、この手順を実行します。
-     * 検証が完了した後、 **[更新]** をクリックして証明書の状態を更新します。 検証が完了するまで数分かかる場合があります。
-     
-     ![App Service 検証のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)     
    * **ドメイン検証** 
      
      * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
@@ -131,15 +121,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
      * 検証メールを再送信する必要がある場合は、 **[電子メールを再送信]** ボタンをクリックします。
    * **手動検証**    
      
-     1. **HTML Web ページ検証**
-        
-        * **{ドメイン検証トークン}**.html という名前の HTML ファイルを作成します (トークンは [ドメイン検証の状態] ブレードからコピーできます)。
-        * このファイルの内容は、 **ドメイン検証トークン**の名前と正確に同じにする必要があります。
-        * ドメインをホストする Web サーバーのルートに、このファイルをアップロードします。
-        * 検証が完了した後、 **[更新]** をクリックして証明書の状態を更新します。 検証が完了するまで数分かかる場合があります。
-          
-          たとえば、**‘cAGgQrKc’** というドメイン検証トークンで contosocertdemo.com の Standard 証明書を購入した場合、**‘http://contosocertdemo.com/cAGgQrKc.html**’ に対する Web 要求からは **cAGgQrKc** が返ります。
-     2. **DNS TXT レコード検証**
+      **DNS TXT レコード検証**
         
         * DNS マネージャーを使用して、**‘DZC’** サブドメインに、**ドメイン検証トークン**と同じ値の TXT レコードを作成します。
         * 検証が完了した後、 **[更新]** をクリックして証明書の状態を更新します。 検証が完了するまで数分かかる場合があります。
@@ -200,13 +182,13 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 * [Azure 管理ポータル](https://manage.windowsazure.com)
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

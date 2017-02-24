@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: オンプレミス ID と Azure Active Directory の統合。 | Microsoft Docs"
+title: "Active Directory を Azure Active Directory と接続する | Microsoft Docs"
 description: "Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。"
 keywords: "Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール"
 services: active-directory
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/13/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c4eef02a10cbb646e3d96ed444a0b3d957e0361d
-ms.openlocfilehash: 1d79c703133ce568c3d87821364af2fac7686bff
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: fe52867519aa65cabb62a876d5bfe57310b90fd6
 
 
 ---
-# <a name="integrating-your-on-premises-identities-with-azure-active-directory"></a>オンプレミス ID と Azure Active Directory の統合
+# <a name="connect-active-directory-with-azure-active-directory"></a>Active Directory を Azure Active Directory と接続する
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
 
 > [!IMPORTANT]
@@ -39,7 +39,7 @@ Azure AD Connect は、オンプレミスのディレクトリと Azure Active D
 * それぞれのシナリオに適した最新の機能が手に入ります。 Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。 詳細については、「 [ハイブリッド ID ディレクトリ統合ツールの比較](../active-directory-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
 
 ### <a name="how-azure-ad-connect-works"></a>Azure AD Connect の動作
-Azure Active Directory Connect は、同期サービスと Active Directory フェデレーション サービス コンポーネント (オプション)、監視コンポーネント ( [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)) という主に 3 つのコンポーネントで構成されています。
+Azure Active Directory Connect は、同期サービスと Active Directory フェデレーション サービス コンポーネント (オプション)、監視コンポーネント ( [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)) という主に&3; つのコンポーネントで構成されています。
 
 <center>![Azure AD Connect Stack](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png)
 </center>
@@ -86,7 +86,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [フィルター処理](active-directory-aadconnectsync-configure-filtering.md) は、Azure AD に同期するオブジェクトを制限する場合に使用します。 既定では、すべてのユーザー、連絡先、グループ、Windows 10 コンピューターが同期の対象となります。 フィルター処理は、ドメインや OU、属性に基づいて変更することができます。
 
-[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md) は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
+[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md) は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを&1; か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
 
 [パスワード ライトバック](../active-directory-passwords-getting-started.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
@@ -159,6 +159,6 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

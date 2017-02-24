@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 6e3ac58188b4b3c27880770d4b2f0116f83d30dc
+ms.sourcegitcommit: 032d32be1719d4b459c88b13616bbef8d2d7be09
+ms.openlocfilehash: d5d6065aa2958ebb858d421ea7c3eb2a198b2a80
 
 
 ---
@@ -33,7 +33,7 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 | 目的 | URL | IP | ポート |
 | --- | --- | --- | --- |
 | テレメトリ |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221 |443 |
-| ライブ メトリック ストリーム |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |可変 |443 |
+| ライブ メトリック ストリーム |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
 Status Monitor の構成 - 変更を加える場合にのみ必要です。
@@ -193,6 +193,6 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

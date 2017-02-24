@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
-ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: 9e54ee2d67a8dfb5b480db01219e128607e26f51
 
 
 ---
-# <a name="how-do-i-in-application-insights"></a>Application Insights での作業
+# <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
 ### <a name="email-if-my-site-goes-down"></a>サイトがダウンした場合の電子メール
 [可用性 Web テスト](app-insights-monitor-web-app-availability.md)を設定します。
@@ -40,7 +40,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 ### <a name="email-on-an-event-in-my-app"></a>アプリのイベントでの電子メール
 特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](app-insights-alerts.md)できます。
 
-アラートは [カスタム メトリック](app-insights-api-custom-events-metrics.md#track-metric)には設定できますが、カスタム イベントには設定できません。 イベントが発生したときにメトリックを増やすコードを記述します。
+アラートは [カスタム メトリック](app-insights-api-custom-events-metrics.md#trackmetric)には設定できますが、カスタム イベントには設定できません。 イベントが発生したときにメトリックを増やすコードを記述します。
 
     telemetry.TrackMetric("Alarm", 10);
 
@@ -50,7 +50,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
     measurements ["Alarm"] = 10;
     telemetry.TrackEvent("status", null, measurements);
 
-アラートには 2 つの状態があるため、アラートを終了するときは低い値を送信する必要があります。
+アラートには&2; つの状態があるため、アラートを終了するときは低い値を送信する必要があります。
 
     telemetry.TrackMetric("Alarm", 0.5);
 
@@ -68,10 +68,10 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 
 考慮すべき点:
 
-* アラートには、"警告" と "正常" の 2 つの状態があります。 状態はメトリックを受信した場合にのみ評価されます。
+* アラートには、"警告" と "正常" の&2; つの状態があります。 状態はメトリックを受信した場合にのみ評価されます。
 * 電子メールは状態が変化したときにのみ送信されます。 これは、高い値と低い値の両方のメトリックを送信する必要がある理由です。
 * アラートを評価するため、前の期間に受け取った値の平均が計算されます。 これはメトリックを受信するたびに行われるので、設定した期間より頻繁に電子メールが送信される可能性があります。
-* 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
+* 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを&2; つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
 ### <a name="set-up-alerts-automatically"></a>アラートの自動設定
 [Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts.md#automation)
@@ -174,7 +174,7 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 * [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)で不要なモジュール (パフォーマンス カウンター コレクターなど) を無効にします。
 * SDK で、 [サンプリングとフィルター処理](app-insights-api-filtering-sampling.md) を使用します。
 * Web ページで、各ページ ビューで報告される AJAX 呼び出しの数を制限します。 `instrumentationKey:...` の後のスクリプト スニペットに、`,maxAjaxCallsPerView:3` (または適切な数値) を挿入します。
-* [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric)を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。 これに対して提供される TrackMetric() のオーバーロードを考慮します。
+* [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric)を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。 これに対して提供される TrackMetric() のオーバーロードを考慮します。
 
 詳細については、 [価格とクォータ](app-insights-pricing.md)に関するページを参照してください。
 
@@ -208,6 +208,6 @@ ms.openlocfilehash: fdd41039fdb59597e3a0a2903fadbbc73eb85654
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub を使用してジョブのスケジュールを設定する方法 | Microsoft Docs"
-description: "このチュートリアルでは、ジョブのスケジュールを設定する方法について説明します"
+title: "Azure IoT Hub を使用してジョブのスケジュールを設定する (.NET/Node) | Microsoft Docs"
+description: "複数のデバイスでダイレクト メソッドを呼び出すように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Node.js を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ジョブを実行するサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: ebda1823464d6148e5ab9f0276a72ed0f716f757
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fd53e73d6a686581ea2b807ae66716fc36a99ad4
 
 
 ---
-# <a name="tutorial-schedule-and-broadcast-jobs"></a>チュートリアル: ジョブのスケジュールとブロードキャスト
+# <a name="schedule-and-broadcast-jobs"></a>ジョブのスケジュールとブロードキャスト
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
 ## <a name="introduction"></a>はじめに
@@ -35,12 +35,12 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 これらの各機能について詳しくは、次の記事をご覧ください。
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル][lnk-twin-props]
-* ダイレクト メソッド: [ダイレクト メソッドに関する開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドに関するチュートリアル][lnk-c2d-methods]
+* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドの使用に関するチュートリアル][lnk-c2d-methods]
 
 このチュートリアルでは、次の操作方法について説明します。
 
 * バックエンド アプリから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
-* ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新するコンソール アプリケーションを作成します。
+* ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新する .NET コンソール アプリを作成します。
 
 このチュートリアルが終わると、次の Node.js コンソール デバイス アプリと .NET (C#) コンソール バックエンド アプリが完成しています。
 
@@ -66,14 +66,14 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     ![New Visual C# Windows Classic Desktop project][img-createapp]
 
 2. ソリューション エクスプローラーで **ScheduleJob** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
 
-    ![Nuget Package Manager window][img-servicenuget]
+    ![NuGet Package Manager window][img-servicenuget]
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
         
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成した IoT Hub の接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーは、前のセクションで作成したハブの IoT Hub 接続文字列に置き換えてください。
    
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
@@ -147,7 +147,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 10. ソリューションをビルドします。
 
 ## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
-このセクションでは、クラウドで呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリによってシミュレート対象デバイスの再起動が開始され、報告されるプロパティを使用してデバイスおよび最後の再起動時間をデバイス ツインのクエリで識別できるようになります。
+このセクションでは、クラウドで呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリによってシミュレートされたデバイスの再起動が開始され、報告されるプロパティを使用してデバイスと最後の再起動時間をデバイス ツインのクエリで識別できるようになります。
 
 1. **simDevice** という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**simDevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
    
@@ -168,7 +168,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。  
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
@@ -198,7 +198,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
         if (err) {
             console.error('Could not connect to IotHub client.');
         }  else {
-            console.log('Client connected to IoT Hub.  Waiting for reboot direct method.');
+            console.log('Client connected to IoT Hub.  Waiting for lockDoor direct method.');
             client.onDeviceMethod('lockDoor', onLockDoor);
         }
     });
@@ -241,12 +241,13 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-fwupdate]: iot-hub-node-node-firmware-update.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Apache Spark を使用した HDInsight での Machine Learning アプリケーションの作成 | Microsoft Docs"
+title: "Apache Spark を使用した Azure HDInsight での Machine Learning アプリケーションの作成 | Microsoft Docs"
 description: "Apache Spark で Notebook を使用して Machine Learning アプリケーションを作成する手順を説明します"
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 59775fc056285b72b1c6e6d5d45f6a9c0ede2d3f
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 94c7aca175543b94742ad57af6949b3fcdda6356
 
 
 ---
-# <a name="build-machine-learning-applications-to-run-on-apache-spark-clusters-on-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターで実行する Machine Learning アプリケーションの構築
+# <a name="build-machine-learning-applications-to-run-on-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターで実行する Machine Learning アプリケーションの構築
+
 HDInsight の Apache Spark クラスターを使用して Machine Learning アプリケーションを作成する方法を説明します。 この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。 このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
 
 **前提条件:**
@@ -29,14 +30,14 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、「 [HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。 
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。 
 
 ## <a name="a-namedataashow-me-the-data"></a><a name="data"></a>データ
 アプリケーションの作成を始める前に、データの構造およびデータに対して実行する分析の種類を説明します。 
 
 この記事では、HDInsight クラスターに関連付けた Azure Storage アカウントで使用できる、サンプルの **HVAC.csv** データ ファイルを使用します。 このファイルは、ストレージ アカウントの **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。 CSV ファイルをダウンロードして開き、データのスナップショットを取得します。  
 
-![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "Snapshot of the HVAC data")
+![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "HVAC データのスナップショット")
 
 データは、HVAC システムがインストールされているビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。
 
@@ -56,10 +57,10 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
    > 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
    
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
    
-    ![Notebook の名前を指定します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
 5. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
    
         from pyspark.ml import Pipeline
@@ -78,7 +79,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
    
     次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
 
-        # List the structure of data for better understanding. Becuase the data will be
+        # List the structure of data for better understanding. Because the data will be
         # loaded as an array, this structure makes it easy to understand what each element
         # in the array corresponds to
 
@@ -112,7 +113,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
         training = documents.toDF()
 
 
-1. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。 パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
+1. トークナイザー、hashingTF、lr という&3; つのステージで構成される Spark 機械学習パイプラインを構成します。 パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
    
     次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
    
@@ -156,7 +157,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
     戻り、生の CSV ファイルに対して出力を確認します。 たとえば、CSV ファイルの最初の行のデータは次のとおりです。
 
-    ![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.first.row.png "Snapshot of the HVAC data")
+    ![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.first.row.png "HVAC データのスナップショット")
 
     実際の温度は目標温度より低く、ビルが寒いことを示します。 そのため、トレーニングの出力では、最初の行の **label** の値は **0.0** であり、ビルが暑くないことを意味します。
 
@@ -235,6 +236,6 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

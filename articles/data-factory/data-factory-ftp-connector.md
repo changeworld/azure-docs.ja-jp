@@ -1,5 +1,5 @@
 ---
-title: "FTP サーバーからのデータの移動 | Microsoft Docs"
+title: "Azure Data Factory を使用した FTP サーバーからのデータ移動 | Microsoft Docs"
 description: "Azure Data Factory を使用して FTP サーバーからデータを移動する方法を説明します。"
 services: data-factory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 01/24/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: f27d978eab3aba52ee9a51a5f284b592e3edd6af
+ms.sourcegitcommit: 5e7abf7b5cd6042ce64e6e09683b259bac82d6df
+ms.openlocfilehash: 492c383865e86a19e56af816a77e02922adbc790
 
 
 ---
@@ -323,6 +323,6 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

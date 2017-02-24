@@ -1,6 +1,6 @@
 ---
-title: "HDInsight の Apache Spark の既知の問題 | Microsoft Docs"
-description: "HDInsight の Apache Spark の既知の問題"
+title: "Azure HDInsight における Apache Spark クラスターの既知の問題 | Microsoft Docs"
+description: "Azure HDInsight における Apache Spark クラスターの既知の問題"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 01/18/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 6c81d978e470754f5c0a737aba0437e105949099
 
 
 ---
-# <a name="known-issues-for-apache-spark-cluster-on-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターの既知の問題
+# <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
+
 このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy が対話型セッションをリークする
@@ -31,7 +32,7 @@ ms.openlocfilehash: f36307d77bce1f0d6805a225477a61b95865545f
 
 この問題を回避するには、以下の手順を実行します。
 
-1. ヘッドノードに Ssh します。 
+1. ヘッドノードに Ssh します。 Windows クライアントの場合は、[PuTTY を使用した Windows からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。Linux、Unix、OS X の場合は、[Linux、Unix、OS X からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。 
 2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。 
    
         yarn application –list
@@ -71,7 +72,9 @@ Spark HDInsight クラスターで使用できる Jupyter Notebook では、フ�
 
 **対応策:**
 
-このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。  Notebook はディスク上の `/var/lib/jupyter`に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。 バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。 ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。  そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
+このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。  Notebook はディスク上の `/var/lib/jupyter`に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。 Windows クライアントの場合は、[PuTTY を使用した Windows からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。Linux、Unix、OS X の場合は、[Linux、Unix、OS X からの HDInsight (Hadoop) での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+
+SSH を使用してクラスターに接続したら、バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。 ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。  そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
 
 今後このエラーが発生しないようにするには、次のベスト プラクティスを実行する必要があります。
 
@@ -125,6 +128,6 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

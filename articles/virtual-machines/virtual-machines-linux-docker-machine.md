@@ -1,5 +1,5 @@
 ---
-title: "Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Docs"
+title: "Docker マシンを使用して Azure で Linux ホストを作成する | Microsoft Docs"
 description: "Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 8fe34e543d8860d80016d35d27159298c17e486e
+ms.sourcegitcommit: b64bafe1a8572369aa7a7e6f0d8b924fc182cd53
+ms.openlocfilehash: 9440474db7eb7e3ae082505f8c95cbcf8c285cdf
 
 
 ---
 # <a name="use-docker-machine-with-the-azure-driver"></a>Docker マシンと Azure ドライバーを使用する
-[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく Linux コンテナーを使用します。 このトピックでは、Linux コンテナーの Docker ホストとして有効な新しい Linux VM を Azure で作成するために [Docker マシン](https://docs.docker.com/machine/) (`docker-machine` コマンド) をいつどのように使用するかについて説明します。
+[Docker](https://www.docker.com/) では、VM ではなく Linux コンテナーを使用する仮想化が提供され、共有リソース上でアプリケーション データとコンピューティングを分離します。 このトピックでは、[Docker マシン](https://docs.docker.com/machine/)をいつどのように使用するかを説明します。 `docker-machine` コマンドでは、新しい Linux VM が Azure に作成され、Linux コンテナーの docker ホストとして有効化されます。
 
 ## <a name="create-vms-with-docker-machine"></a>Docker マシンで VM を作成する
 ドライバー オプション (`-d`) の `azure` ドライバー引数とその他の引数を利用し、`docker-machine create` コマンドで Azure に Docker ホスト VM を作成します。 
@@ -38,7 +38,7 @@ docker-machine create -d azure \
   machine
 ```
 
-アカウントに 2 要素認証を設定しているかどうかにもよりますが、出力は次のようになります。
+アカウントに&2; 要素認証を設定しているかどうかにもよりますが、出力は次のようになります。
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
@@ -132,6 +132,6 @@ Docker を使用した作業の例については、[HealthClinic.biz](https://g
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

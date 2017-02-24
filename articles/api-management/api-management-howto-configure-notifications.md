@@ -1,5 +1,5 @@
 ---
-title: "Azure API Management で通知と電子メール テンプレートを構成する方法"
+title: "Azure API Management での通知と電子メール テンプレートの構成 | Microsoft Docs"
 description: "Azure API Management で通知と電子メール テンプレートを構成する方法について説明します。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: d99e2d885d56e3752a3b1caf51e52c801acaab52
-ms.openlocfilehash: 8e3c98108672dcd2ae48da7b2a9eeb174cee76e1
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 3d8b74e32059cfc1a4c3a8fc7d3bd04676ee80c8
 
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management で通知と電子メール テンプレートを構成する方法
@@ -29,7 +28,7 @@ API Management には、特定のイベントの通知を構成する機能と�
 ![パブリッシャー ポータル][api-management-management-console]
 
 > [!NOTE] 
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management インスタンスの作成][API Management インスタンスの作成]に関するチュートリアルの [API Management サービス インスタンスの作成][API Management サービス インスタンスの作成]に関するセクションをご覧ください。
+> まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 
 左側の **[API Management]** メニューの **[通知]** をクリックして、使用可能な通知を表示します。
 
@@ -111,17 +110,17 @@ API Management インスタンスの電子メール テンプレートを表示�
 [api-management-email-template]: ./media/api-management-howto-configure-notifications/api-management-email-template.png
 
 
-[発行者通知の構成]: #publisher-notifications
-[電子メール テンプレートの構成]: #email-templates
+[Configure publisher notifications]: #publisher-notifications
+[Configure email templates]: #email-templates
 
-[How to create and use groups (グループを作成して使用する方法) (グループを作成して使用する方法)]: api-management-howto-create-groups.md
-[グループと開発者の関連付け]: api-management-howto-create-groups.md#associate-group-developer
+[How to create and use groups]: api-management-howto-create-groups.md
+[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
-[API Management インスタンスの作成]: api-management-get-started.md
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

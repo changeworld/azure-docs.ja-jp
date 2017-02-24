@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric で作成されたサービスをローカルで監視および診断する | Microsoft Docs"
+title: "Linux で Azure マイクロサービスをデバッグする | Microsoft Docs"
 description: "ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/14/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
-ms.openlocfilehash: 03f1dde722025624997adb7c1258b2f24c481209
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: a8f077168dbc8660625371a2b988926c69491337
 
 
 ---
@@ -58,7 +58,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
  
  
-この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 **%u** と **%g** を指定することにより、mysfapp0.log や mysfapp1.log のようなファイル名で複数のファイルを作成できます。 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
+この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 **%u** と **%g** を指定することにより、mysfapp0.log や mysfapp1.log などのファイル名でファイルを作成できます。 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
  
 詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。  
 
@@ -143,6 +143,6 @@ public static TextWriter Out = Console.Out;
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

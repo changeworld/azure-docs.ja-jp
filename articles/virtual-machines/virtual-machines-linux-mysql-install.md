@@ -1,5 +1,5 @@
 ---
-title: "MySQL を Linux VM にセットアップする | Microsoft Docs"
+title: "Azure で MySQL を Linux VM にセットアップする | Microsoft Docs"
 description: "Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: d75d1541671fac02e6373ae880137b76f15ec7ae
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 84722fffc5419f866250d4093250839066c54c46
 
 
 ---
@@ -38,7 +38,7 @@ putty を使用して作成した Linux VM に接続します。 初めて Azure
 
 この記事では、例として MySQL5.6 のインストールにパッケージのリポジトリを使用します。 実際、MySQL5.6 は、MySQL5.5 よりもパフォーマンスが向上しています。  詳細情報は [こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)です。
 
-### <a name="how-to-install-mysql56-on-ubuntu"></a>Ubuntu で MySQL 5.6 をインストールする方法
+### <a name="how-to-install-mysql56-on-ubuntu"></a>Ubuntu で MySQL&5;.6 をインストールする方法
 ここでは、Azure の Ubuntu Linux VM を使用します。
 
 * 手順 1. MySQL Server 5.6 をインストールし、ユーザー `root` に切り替える
@@ -181,6 +181,6 @@ MySQL の使用法などの情報は [こちら](https://www.mysql.com/)です�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

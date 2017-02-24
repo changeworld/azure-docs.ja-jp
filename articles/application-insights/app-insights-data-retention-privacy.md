@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: be100e88e5d10c317be10aa829124a9be30e28b4
+ms.sourcegitcommit: 3dc6373c9aaa01000a7da282e48557f175f040e7
+ms.openlocfilehash: a6588718fdc0b561a70f25ac4d674c5edf08d8cb
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: be100e88e5d10c317be10aa829124a9be30e28b4
 まず、手短に言えば次のようになります。
 
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。 製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。 診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
-* 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに強力なレビュー プロセスを適用してください。
+* 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
 * アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
 * データは米国またはヨーロッパの [Microsoft Azure](http://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
 
@@ -48,7 +48,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 ### <a name="how-is-the-data-is-collected"></a>データはどのような方法で収集されますか。
-データ ソースは 3 つあります。
+データ ソースは&3; つあります。
 
 * SDK は[開発時](app-insights-asp-net.md)または[実行時](app-insights-monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](app-insights-javascript.md) もあります。ページと共にエンドユーザーのブラウザーに読み込まれます。
   
@@ -88,7 +88,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 ## <a name="how-long-is-the-data-kept"></a>データはどれだけの期間保持されますか。
 生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 90 日間保持されます。 それ以上長くデータを保持する必要がある場合は、 [連続エクスポート](app-insights-export-telemetry.md) を使用してストレージ アカウントにコピーすることができます。
 
-集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 30 日、(種類に応じて) 1 時間または 1 日の詳細度であれば少なくとも 90 日の期間にわたって保持されます。
+集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
@@ -153,7 +153,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 Application Insights がデータをフィルター処理したり、削除したりすることはありません。 データを適切に管理して、そのようなデータが Application Insights に送信されないように注意してください。
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights によって送信されるデータ
-SDK はプラットフォームごとに異なり、インストールできるコンポーネントも複数あります  (「[Application Insights - 概要][start]」を参照してください)。各コンポーネントは、それぞれ異なるデータを送信します。
+SDK はプラットフォームごとに異なり、インストールできるコンポーネントも複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 | 操作 | 収集されるデータのクラス (次の表を参照) |
@@ -163,9 +163,9 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>要求<br/>Session<br/>users |
 | [JavaScript SDK を Web ページに追加する][client] |ClientContext  <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
 | [既定のプロパティを定義する][apiproperties] |**Properties** (すべての標準イベントおよびカスタム イベント) |
-| [Call TrackMetric][api] |数値<br/>**プロパティ** |
-| [Call Track*][api] |イベント名<br/>**プロパティ** |
-| [Call TrackException][api] |**例外**<br/>Stack dump<br/>**プロパティ** |
+| [TrackMetric を呼び出す][api] |数値<br/>**プロパティ** |
+| [Track* を呼び出す][api] |イベント名<br/>**プロパティ** |
+| [TrackException を呼び出す][api] |**例外**<br/>Stack dump<br/>**プロパティ** |
 | SDK はデータを収集できません。 次に例を示します。 <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
 
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
@@ -193,7 +193,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | 可用性 |Web テストの応答コード、各テスト ステップの期間、テスト名、タイムスタンプ、成功、応答時間、テストの場所 |
 | SDK diagnostics |トレース メッセージまたは例外 |
 
-[ApplicationInsights.config を編集して、データの一部を無効にできます][config]
+[ApplicationInsights.config を編集して、データの一部を無効化][config]できます
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [http://www.maxmind.com](http://www.maxmind.com) から入手できます。
@@ -225,6 +225,6 @@ SDK はプラットフォームごとに異なり、インストールできる�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

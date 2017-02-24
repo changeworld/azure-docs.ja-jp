@@ -4,6 +4,12 @@
 # 作業開始
 ## [アカウントの作成と管理](media-services-portal-create-account.md)
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
+###[.NET](media-services-dotnet-how-to-use.md)
+###[REST ()](media-services-rest-how-to-use.md)  
+## プログラムによる接続
+### [.NET](media-services-dotnet-connect-programmatically.md)
+### [REST ()](media-services-rest-connect-programmatically.md)
+
 ## ビデオ オン デマンドの配信
 ### [ポータル](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
@@ -14,20 +20,19 @@
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 方法
-## 管理
-### アカウントの管理
+## Manage
+### アカウント
 #### [PowerShell](media-services-manage-with-powershell.md)
 #### [REST ()](/rest/api/media/mediaservice)
-### エンティティを管理する
+### エンティティ
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST ()](media-services-rest-manage-entities.md)
-### プログラムによる接続
-#### [.NET](media-services-dotnet-connect-programmatically.md)
-#### [REST ()](media-services-rest-connect-programmatically.md)
-### [ストリーミング エンドポイントの管理](media-services-streaming-endpoints-overview.md)
+### [ストリーミング エンドポイント](media-services-streaming-endpoints-overview.md)
 #### [ポータル](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
-### [方法: ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
+### Storage
+#### [ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
+#### [複数のストレージ アカウントで資産を管理する](meda-services-managing-multiple-storage-accounts.md)
 ### [クォータと制限](media-services-quotas-and-limitations.md)
 
 ## コンテンツをアップロードする
@@ -35,6 +40,7 @@
 #### [ポータル](media-services-portal-upload-files.md)
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST ()](media-services-rest-upload-files.md)
+### [Aspera を使用した大きなファイルのアップロード](media-services-upload-files-with-aspera.md)
 ### [既存の BLOB のコピー](media-services-copying-existing-blob.md)
 
 ## [コンテンツのエンコード](media-services-encode-asset.md)
@@ -98,7 +104,6 @@
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 #### [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
-### クラウド エンコーダーのチュートリアル
 #### [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成](media-services-live-encoders-overview.md)
@@ -114,11 +119,14 @@
 ### [ストリームの AES-128 クリア キーを構成する](media-services-protect-with-aes128.md)
 ### [AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化](media-services-rest-storage-encryption.md)
 ### [Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)
+### [Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)
 ### [DRM ライセンス配信](media-services-deliver-keys-and-licenses.md)
 ### [パートナーを使用して Azure Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
 ### [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 ### [Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)
 ### [CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
+### [Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
+### [castLabs を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
 
 ### 資産の配信
 #### 資産配信ポリシーを構成する
@@ -152,16 +160,16 @@
 ### [メディア処理](media-services-scale-media-processing-overview.md)
 #### [ポータル](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### ストリーミング エンドポイント
 #### [ポータル](media-services-portal-scale-streaming-endpoints.md)
 
 ## [コンテンツの配信](media-services-deliver-content-overview.md)
 ### [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)
 ### [フィルターと動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
-### フィルターの作成
-#### [.NET](media-services-dotnet-dynamic-manifest.md)
-#### [REST ()](media-services-rest-dynamic-manifest.md)
+#### [.NET を使用したフィルターの作成](media-services-dotnet-dynamic-manifest.md)
+#### [REST を使用したフィルターの作成](media-services-rest-dynamic-manifest.md)
+### [Media Services Extension での CDN キャッシュ ポリシー](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### コンテンツを発行する
 #### [ポータル](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
@@ -177,21 +185,18 @@
 #### [DASH.js を使用した HTML5 アプリケーション](media-services-embed-mpeg-dash-in-html5.md)
 #### [Adobe Open Source Media Framework プレーヤー](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [クライアント側での広告の挿入](media-services-inserting-ads-on-client-side.md)
+### [Microsoft Smooth Streaming Client Porting Kit のライセンス](media-services-sspk.md)
 
 ## 統合
-### [Media Services Extension での CDN キャッシュ ポリシー](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
-### [Licensing Microsoft†" Smooth Streaming Client Porting Kit](media-services-sspk.md)
-### [複数のストレージ アカウントで資産を管理する](meda-services-managing-multiple-storage-accounts.md)
-### [Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
-### [castLabs を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
-### [Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)
+### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
 
 ## 監視
 ### ジョブの進行状況をチェックする
 #### [REST ()](media-services-rest-check-job-progress.md)
 #### [ポータル](media-services-portal-check-job-progress.md)
 #### [.NET](media-services-check-job-progress.md)
-### [ジョブの通知を監視する Queue Storage](media-services-dotnet-check-job-progress-with-queues.md)
+### [Queue Storage を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-queues.md)
+### [webhook を使用したジョブ通知の監視](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## トラブルシューティング
 ### [よく寄せられる質問](media-services-frequently-asked-questions.md)
@@ -212,6 +217,6 @@
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

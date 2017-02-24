@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b1099d742e555bcc7b7730409c85c10778967678
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 0c288989a2b1662bcbec6fd2c74dffaefedc82b8
 
 
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
 HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez ビューは、実行エンジンとして Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
-> [!NOTE]
-> このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。 Windows ベースの HDInsight を使用した Tez ジョブのデバッグの詳細については、「[Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)」を参照してください。
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Linux ベースの HDInsight クラスター。 新しいクラスターの作成手順については、「[Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
@@ -77,7 +75,7 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
 2. Tez ビューが読み込まれると、クラスターで現在実行されている DAG や実行されていた DAG の一覧が表示されます。 既定のビューには、DAG 名、ID、送信者、状態、開始時刻、終了時刻、期間、アプリケーション ID、キューが表示されます。 ページの右側にある歯車アイコンを使用すると、列をさらに追加できます。
    
     ![All DAGS](./media/hdinsight-debug-ambari-tez-view/alldags.png)
-3. エントリが 1 つしかない場合、それは、前のセクションで実行したクエリのエントリになります。 エントリが複数ある場合は、**[Application ID]** フィールドにアプリケーション ID を入力して検索してから、Enter キーを押します。
+3. エントリが&1; つしかない場合、それは、前のセクションで実行したクエリのエントリになります。 エントリが複数ある場合は、**[Application ID]** フィールドにアプリケーション ID を入力して検索してから、Enter キーを押します。
 4. **DAG 名**を選択します。 選択すると、その DAG に関する情報のほか、DAG に関する情報が含まれる JSON ファイルの zip ファイルをダウンロードするオプションが表示されます。
    
     ![DAG Details](./media/hdinsight-debug-ambari-tez-view/dagdetails.png)
@@ -133,6 +131,6 @@ HDInsight での Ambari の使用の詳細については、「[Ambari Web UI �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

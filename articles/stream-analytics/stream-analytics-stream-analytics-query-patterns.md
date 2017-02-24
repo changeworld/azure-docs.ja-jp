@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da6ac042a55c7c145895d15a735f77fb2e82d394
+ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
+ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
 
 
 ---
@@ -120,7 +120,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 **説明**: CASE 句を使用すると、条件に基づいて異なる計算を適用できます (この例では、集計ウィンドウでの車の台数)。
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>クエリ例: 複数の出力にデータを送信する
-**説明**: 1 つのジョブから複数の出力ターゲットにデータを送信します。
+**説明**:&1; つのジョブから複数の出力ターゲットにデータを送信します。
 たとえば、しきい値に基づくアラートのデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
 
 **入力**:
@@ -133,7 +133,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**出力 1**:
+**出力&1;**:
 
 | 保存する | Time |
 | --- | --- |
@@ -143,7 +143,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 | Toyota |2015-01-01T00:00:02.0000000Z |
 | Toyota |2015-01-01T00:00:03.0000000Z |
 
-**出力 2**:
+**出力&2;**:
 
 | 保存する | Time | カウント |
 | --- | --- | --- |
@@ -212,27 +212,17 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **解決策:**
 
-    WITH Makes AS (
-        SELECT
-            Make,
-            COUNT(*) AS CountMake
-        FROM
-            Input TIMESTAMP BY Time
-        GROUP BY
-              Make,
-              TumblingWindow(second, 2)
-    )
-    SELECT
-        COUNT(*) AS Count,
-        System.TimeStamp AS Time
-    FROM
-        Makes
-    GROUP BY
-        TumblingWindow(second, 1)
+````
+SELECT
+     COUNT(DISTINCT Make) AS CountMake,
+     System.TIMESTAMP AS TIME
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+````
 
 
-**説明**: 初期集計を行って、ユニークなメーカーと期間内のその数を取得します。
-その後、得られたメーカーの数を集計します。期間内のすべてのユニークな値を渡して同じタイムスタンプを取得した後、最初のステップの2 つの期間を集計しないように 2 番目の集計期間を最小化する必要があります。
+**説明:** COUNT(DISTINCT Make) は、特定の時間枠内での、"Make" 列の個別の値の数を返します。
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>クエリ例: 値が変化したかどうかを判定する
 **説明**: 前の値を見て、現在の値と異なるかどうかを判定します (例: 有料道路上の前の自動車は、現在の自動車と同じメーカーか)。
@@ -260,7 +250,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 
-**説明**: LAG を使用して入力ストリームで 1 つ前のイベントを調べて、Make の値を取得します。 次に、現在のイベントの Make と比較し、異なる場合はイベントを出力します。
+**説明**: LAG を使用して入力ストリームで&1; つ前のイベントを調べて、Make の値を取得します。 次に、現在のイベントの Make と比較し、異なる場合はイベントを出力します。
 
 ## <a name="query-example-find-first-event-in-a-window"></a>クエリ例: 期間内の最初のイベントを検索する
 **説明**: 10 分間隔で最初の自動車を検索します。
@@ -359,7 +349,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
 
-**説明**: クエリには 2 つのステップがあります。第 1 のステップで、10 分の期間内の最後のタイムスタンプを検索します。 第 2 のステップで、第 1 のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。 
+**説明**: クエリには 2 つのステップがあります。第 1 のステップで、10 分の期間内の最後のタイムスタンプを検索します。 第&2; のステップで、第&1; のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。 
 
 ## <a name="query-example-detect-the-absence-of-events"></a>クエリ例: イベントがないことを検出する
 **説明**: 特定の条件と一致する値がストリームに存在しないことを確認します。
@@ -393,7 +383,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 
-**説明**: LAG を使用して入力ストリームで 1 つ前のイベントを調べて、Make の値を取得します。 次にそれを現在のイベントの Make と比較して、それらが同じ場合はイベントを出力し、LAG を使用して前の自動車についてのデータを取得します。
+**説明**: LAG を使用して入力ストリームで&1; つ前のイベントを調べて、Make の値を取得します。 次にそれを現在のイベントの Make と比較して、それらが同じ場合はイベントを出力し、LAG を使用して前の自動車についてのデータを取得します。
 
 ## <a name="query-example-detect-duration-between-events"></a>クエリ例: イベントの間隔を検出する
 **説明**: 特定のイベントの間隔を検出します。 たとえば、Web クリック ストリームから、特定の機能に費やされた時間を調べます。
@@ -509,7 +499,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**説明**: このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ - Azure Stream Analytics") 期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
+**説明**: このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ - Azure Stream Analytics") 期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では&300; 秒) を指定します。
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
@@ -524,6 +514,6 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

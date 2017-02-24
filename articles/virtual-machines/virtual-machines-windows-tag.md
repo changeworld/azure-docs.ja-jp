@@ -1,5 +1,5 @@
 ---
-title: "VM にタグ付けする方法 |Microsoft Docs"
+title: "Azure で Windows VM リソースにタグを付ける方法 | Microsoft Docs"
 description: "リソース マネージャー デプロイ モデルを使用して Azure で作成した Windows 仮想マシンのタグ付けについて説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 97efb86f31f75d2214e4169d88b792ab189354ed
+ms.sourcegitcommit: 6b80fa78fea505cd22bae2925ce1affbc1e48ab9
+ms.openlocfilehash: 57b88baeeb5c27cfdf142c77aef37b66bb6640d6
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 97efb86f31f75d2214e4169d88b792ab189354ed
 [!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-powershell"></a>PowerShell を使用したタグ付け
-PowerShell でタグの作成、追加、および削除を行うには、まず [Azure リソース マネージャーで PowerShell 環境] [Azure リソース マネージャーで PowerShell 環境]を設定する必要があります。 設定を完了したら、PowerShell で Compute、Network、および Storage リソースを作成するとき、またはリソースを作成した後にタグを追加できます。 この記事では、Virtual Machines で設定したタグを表示または編集する方法を中心に説明します。
+PowerShell でタグの作成、追加、および削除を行うには、まず [Azure Resource Manager で PowerShell 環境][PowerShell environment with Azure Resource Manager]を設定する必要があります。 設定を完了したら、PowerShell で Compute、Network、および Storage リソースを作成するとき、またはリソースを作成した後にタグを追加できます。 この記事では、Virtual Machines で設定したタグを表示または編集する方法を中心に説明します。
 
 まず `Get-AzureRmVM` コマンドレットで仮想マシンを表示します。
 
@@ -42,7 +42,7 @@ PowerShell でタグの作成、追加、および削除を行うには、まず
                 "Environment": "Production"
                }
 
-PowerShell でタグを追加する場合、 `Set-AzureRmResource` コマンドを使用できます。 PowerShell でタグを更新すると、タグ全体が更新されます。 そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。 次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
+PowerShell でタグを追加する場合、 `Set-AzureRmResource` コマンドを使用できます。 PowerShell でタグを更新すると、タグ全体が更新されます。 そのため、既にタグが設定されているリソースに&1; つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。 次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
 
 この最初のコマンドレットでは、`Get-AzureRmResource` と `Tags` プロパティを使用して、*MyTestVM* に追加されているすべてのタグを *$tags* 変数に設定します。
 
@@ -88,23 +88,23 @@ PowerShell でタグを追加する場合、 `Set-AzureRmResource` コマンド�
         Value        MyLocation
         Name        Location
 
-PowerShell でタグを付ける方法については、「[Azure リソース コマンドレット]」「[Azure リソース コマンドレット]」をご覧ください。
+PowerShell でタグを付ける方法については、「[Azure リソース コマンドレット][Azure Resource Cmdlets]」をご覧ください。
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* Azure リソースへのタグ付けについて詳しくは、「[Azure Resource Manager の概要]」「[Azure Resource Manager の概要]」と「[タグを使用した Azure リソースの整理]」「[タグを使用した Azure リソースの整理]」をご覧ください。
-* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認][Azure の課金内容の確認]に関するページと「[Microsoft Azure リソースの消費を把握する]」「[Microsoft Azure リソースの消費を把握する]」をご覧ください。
+* Azure リソースへのタグ付けの詳細については、「[Azure Resource Manager の概要][Azure Resource Manager Overview]」と「[Using tags to organize your Azure resources (タグを使用した Azure リソースの整理)][Using Tags to organize your Azure Resources]」を参照してください。
+* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認][Understanding your Azure Bill]に関するページと「[Microsoft Azure リソースの消費を把握する][Gain insights into your Microsoft Azure resource consumption]」を参照してください。
 
-[Azure リソース マネージャーで PowerShell 環境]: ../powershell-azure-resource-manager.md
-[Azure リソース コマンドレット]: https://msdn.microsoft.com/library/azure/dn757692.aspx
-[Azure Resource Manager の概要]: ../azure-resource-manager/resource-group-overview.md
-[タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
-[Azure の課金内容の確認]: ../billing/billing-understand-your-bill.md
-[Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
+[PowerShell environment with Azure Resource Manager]: ../powershell-azure-resource-manager.md
+[Azure Resource Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx
+[Azure Resource Manager Overview]: ../azure-resource-manager/resource-group-overview.md
+[Using Tags to organize your Azure Resources]: ../azure-resource-manager/resource-group-using-tags.md
+[Understanding your Azure Bill]: ../billing/billing-understand-your-bill.md
+[Gain insights into your Microsoft Azure resource consumption]: ../billing/billing-usage-rate-card-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

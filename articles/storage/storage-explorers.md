@@ -1,9 +1,9 @@
 ---
-title: "Azure Storage クライアント ツール | Microsoft Docs"
+title: "Azure Storage 向けのツール | Microsoft Docs"
 description: "Azure Storage のデータの表示/操作を可能にするツールの一覧。"
 services: storage
 documentationcenter: 
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: e4748642-98c4-437e-b0ed-4f9641c2e894
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6d2c365a271428a55e484939a2cce5ce5f7348d8
+ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
+ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
 
 
 ---
@@ -46,7 +46,7 @@ Azure Storage のユーザーのご要望に多いのが、Azure Storage クラ�
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure ポータル:</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
     <td>○</td>
     <td>○</td>
     <td>○</td>
@@ -154,7 +154,7 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure ストレージ エクスプローラー</a></td>
+    <td><a href="http://azurestorageexplorer.codeplex.com/">Azure Storage Explorer</a></td>
     <td>○</td>
     <td>○</td>
     <td></td>
@@ -255,6 +255,6 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

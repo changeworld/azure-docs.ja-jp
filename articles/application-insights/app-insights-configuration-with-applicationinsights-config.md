@@ -1,6 +1,6 @@
 ---
-title: "ApplicationInsights.config または .xml を使った Application Insights SDK の構成 | Microsoft Docs"
-description: "データ コレクション モジュールを有効または無効にし、パフォーマンス カウンターとその他のパラメーターを追加します"
+title: "ApplicationInsights.config リファレンス - Azure | Microsoft Docs"
+description: "データ コレクション モジュールを有効または無効にし、パフォーマンス カウンターとその他のパラメーターを追加します。"
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 03/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: 24b8ede9268fb4d821913cfab313c3c7050d8ddb
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
 
 
 ---
@@ -37,7 +37,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 ### <a name="dependency-tracking"></a>依存関係の追跡
 [依存関係の追跡](app-insights-asp-net-dependencies.md) により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。 このモジュールを IIS サーバーで機能させるには、[Status Monitor をインストール][redfield]する必要があります。 これを Azure Web アプリまたは VM で使用するには、 [Application Insights 拡張を選択します](app-insights-azure-web-apps.md)。
 
-[TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency)を使用して、独自の依存関係追跡コードを記述することもできます。
+[TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency)を使用して、独自の依存関係追跡コードを記述することもできます。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet パッケージ
@@ -55,7 +55,7 @@ CPU、メモリ、IIS インストールのネットワーク負荷など、[シ
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージ このパッケージのみをインストールする場合、ApplicationInsights.config ファイルは自動作成されません。
 
 ### <a name="developer-mode"></a>開発者モード
-`DeveloperModeWithDebuggerAttachedTelemetryModule` は、デバッガーがアプリケーション プロセスに接続されているときに、Application Insights の `TelemetryChannel` にデータを即座に、一度に 1 つのテレメトリ項目を送信するよう強制します。 これにより、アプリケーションによるテレメトリの追跡時や、アプリケーションが Application Insights ポータルに表示されるときの時間間隔が削減されます。 ここでは、CPU とネットワーク帯域幅のオーバーヘッドが著しく費やされます。
+`DeveloperModeWithDebuggerAttachedTelemetryModule` は、デバッガーがアプリケーション プロセスに接続されているときに、Application Insights の `TelemetryChannel` にデータを即座に、一度に&1; つのテレメトリ項目を送信するよう強制します。 これにより、アプリケーションによるテレメトリの追跡時や、アプリケーションが Application Insights ポータルに表示されるときの時間間隔が削減されます。 ここでは、CPU とネットワーク帯域幅のオーバーヘッドが著しく費やされます。
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
 * [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet パッケージ
@@ -246,7 +246,7 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 
 ```
 
-新しいキーを取得するには、[Application Insights ポータルで新しいリソースを作成][新規]します。
+新しいキーを取得するには、[Application Insights ポータルで新しいリソースを作成][new]します。
 
 ## <a name="next-steps"></a>次のステップ
 API の詳細については、[こちら][api]をご覧ください。
@@ -258,12 +258,12 @@ API の詳細については、[こちら][api]をご覧ください。
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[新規]: app-insights-create-new-resource.md
+[new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

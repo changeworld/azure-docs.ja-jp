@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f2e5bbd2516c0f697084a802d6963c3d1023914
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 6187106a9aa98107d89e65fe4c7a0e8a27befa87
 
 
 ---
@@ -31,7 +31,11 @@ Shared Access Signature (SAS) は、データへのアクセスを制限でき�
   
   * Visual Studio は、バージョン 2013 または 2015 である必要があります
   * Python は、バージョン 2.7 以上である必要があります
-* Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Ambari を使用して、クラスターに Shared Access Signature を追加できます。 ない場合は、Azure PowerShell を使用して新しいクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
+* Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Ambari を使用して、クラスターに Shared Access Signature を追加することができます。 ない場合は、Azure PowerShell を使用して新しいクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
+
+    > [!IMPORTANT]
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * サンプル ファイルは、 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)にあります。 このリポジトリには、次が含まれます。
   
   * HDInsight で使用するストレージ コンテナー、保存済みのポリシーおよび SAS を作成できる Visual Studio プロジェクト
@@ -39,16 +43,16 @@ Shared Access Signature (SAS) は、データへのアクセスを制限でき�
   * 新しい HDInsight クラスターを作成して、SAS を使用するように構成できる PowerShell スクリプト
 
 ## <a name="shared-access-signatures"></a>Shared Access Signature
-Shared Access Signature には、次の 2 つのフォームがあります。
+Shared Access Signature には、次の&2; つのフォームがあります。
 
 * アドホック: 開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。
 * 保存されているアクセス ポリシー: 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、キュー、ファイル共有) で定義されており、これを使用して、1 つ以上の Shared Access Signature のコンテナーを管理できます。 保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
 
-1 つの重要なシナリオ、失効では、この 2 つの形式の相違点が重要です。 SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。 SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。 配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
+1 つの重要なシナリオ、失効では、この&2; つの形式の相違点が重要です。 SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。 SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。 配布された SAS は、次の&4; つの状況のいずれかになるまで有効です。
 
 1. SAS に指定された有効期限に達した。
-2. 保存されているアクセス ポリシーに指定された、SAS が参照する有効期限に達した (保存されているアクセス ポリシーが参照される場合、かつ有効期限が指定されている場合)。 これは、期間が経過したため、または保存されているアクセス ポリシーの有効期限を過去の日時に変更したために発生します。このような有効期限の変更は、SAS を失効させる方法の 1 つです。
-3. SAS の参照先である保存されているアクセス ポリシーが削除されている。これは、SAS を失効させる、もう 1 つの方法です。 保存されているアクセス ポリシーを、完全に同じ名前で再作成すると、そのアクセス ポリシーに関連付けられたアクセス許可に従って、すべての既存の SAS トークンが再び有効になります (SAS の有効期限が過ぎていないことが前提です)。 SAS を失効させるつもりで、将来の時間を有効期限に指定してアクセス ポリシーを再作成する場合は必ず、異なる名前を使用してください。
+2. 保存されているアクセス ポリシーに指定された、SAS が参照する有効期限に達した (保存されているアクセス ポリシーが参照される場合、かつ有効期限が指定されている場合)。 これは、期間が経過したため、または保存されているアクセス ポリシーの有効期限を過去の日時に変更したために発生します。このような有効期限の変更は、SAS を失効させる方法の&1; つです。
+3. SAS の参照先である保存されているアクセス ポリシーが削除されている。これは、SAS を失効させる、もう&1; つの方法です。 保存されているアクセス ポリシーを、完全に同じ名前で再作成すると、そのアクセス ポリシーに関連付けられたアクセス許可に従って、すべての既存の SAS トークンが再び有効になります (SAS の有効期限が過ぎていないことが前提です)。 SAS を失効させるつもりで、将来の時間を有効期限に指定してアクセス ポリシーを再作成する場合は必ず、異なる名前を使用してください。
 4. SAS の作成に使用したアカウント キーが再度生成された。 これを行うと、そのアカウント キーを使用するすべてのアプリケーション コンポーネントが、別の有効なアカウント キー、または新しく再生成されたアカウント キーを使用するよう更新されるまで、認証に失敗します。
 
 > [!IMPORTANT]
@@ -127,7 +131,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
     たとえば、 `'mycluster'` を作成するクラスターの名前に変更します。 ストレージ アカウントと SAS トークンを作成するときに、SAS の値は、前の手順の値と一致する必要があります。
    
     値を変更したら、ファイルを保存します。
-2. 新しい Azure PowerShell プロンプトを開きます。 Azure PowerShell に慣れていない場合、またはインストールしていない場合は、「[Azure PowerShell のインストールと構成][powershell]」をご覧ください。
+2. 新しい Azure PowerShell プロンプトを開きます。 Azure PowerShell に慣れていない場合、またはインストールしていない場合は、「[Azure PowerShell のインストールと構成][powershell]」を参照してください。
 3. プロンプトから次を使用して、Azure サブスクリプションを認証します。
    
         Login-AzureRmAccount
@@ -147,9 +151,9 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
    > HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
    > 
    > * 10 文字以上にする
-   > * 数字を 1 つ以上含める
-   > * 英数字以外を 1 文字以上含める
-   > * 大文字または小文字を 1 文字以上含める
+   > * 数字を&1; つ以上含める
+   > * 英数字以外を&1; 文字以上含める
+   > * 大文字または小文字を&1; 文字以上含める
    > 
    > 
 
@@ -238,9 +242,9 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 **解決方法**: 次の条件を満たすパスワードを使用します。
 
 * 10 文字以上にする
-* 数字を 1 つ以上含める
-* 英数字以外を 1 文字以上含める
-* 大文字または小文字を 1 文字以上含める
+* 数字を&1; つ以上含める
+* 英数字以外を&1; 文字以上含める
+* 大文字または小文字を&1; 文字以上含める
 
 ## <a name="next-steps"></a>次のステップ
 HDInsight クラスターにアクセスが制限されたストレージを追加する方法を学習しました。クラスターのデータと連携するその他の方法を確認してください。
@@ -249,10 +253,10 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-[powershell]: ../powershell-install-configure.md
+[powershell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

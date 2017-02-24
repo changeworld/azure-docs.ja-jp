@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/05/2016
+ms.date: 01/04/2017
 ms.author: abhisram
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: c9f62c97dfa4941feaee5960497ba6d727e1e2b3
+ms.sourcegitcommit: 3ed67788fbbe0c4fb820cfd1525d8c9ee5154446
+ms.openlocfilehash: 1a8a36d3b6f14c75965afca970be808015059dbb
 
 
 ---
@@ -171,9 +171,10 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
 * [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

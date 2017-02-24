@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager テンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Docs"
+title: "テンプレートを使用して Web アプリをデプロイする - Azure DocumentDB | Microsoft Docs"
 description: "Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。"
 services: documentdb, app-service\web
 author: h0n
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 08b101f42558280d8ffa690829570257d8d6deca
-ms.openlocfilehash: 6f519ac78d28fac69171b083f18d783cf1d9b24a
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
 
 
 ---
@@ -148,6 +148,6 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

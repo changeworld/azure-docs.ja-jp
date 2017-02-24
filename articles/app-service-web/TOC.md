@@ -3,6 +3,7 @@
 ## [App Service とは](../app-service/app-service-value-prop-what-is.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
 ## [Linux での App Service](app-service-linux-intro.md)
+## [App Service on Linux の FAQ](app-service-linux-faq.md)
 
 # 作業開始
 
@@ -13,7 +14,7 @@
 ### [Python](app-service-web-get-started-python.md)
 ### [Java](app-service-web-get-started-java.md)
 ### [Marketplace アプリ](web-sites-php-web-site-gallery.md)
-### [PHP](app-service-web-get-started-php.md)   
+### [PHP](app-service-web-get-started-php.md)    
 
 ## API Apps
 ### [.NET](../app-service-api/app-service-api-dotnet-get-started.md)
@@ -60,10 +61,13 @@
 ### [Azure Portal](app-service-web-app-azure-portal.md)
 ### [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md)
 
+
 ### ASP.NET アプリ
 #### [Visual Studio を使用して Azure で ASP.NET アプリを作成する](web-sites-dotnet-get-started.md)
 #### [ASP.NET Web API を使用して REST サービスを作成する](web-sites-dotnet-rest-service-aspnet-api-sql-database.md)
 #### [Visual Studio Code を使用した ASP.NET 5 Web アプリの作成](web-sites-create-web-app-using-vscode.md)
+#### [Web Apps on Linux での .NET Core の使用](app-service-linux-using-dotnetcore.md)
+
 
 ### Node.js アプリ
 #### [App Service 用の Node.js を開発する](app-service-web-nodejs-get-started.md)
@@ -74,7 +78,7 @@
 #### [WebMatrix を使用して構築およびデプロイする](web-sites-nodejs-use-webmatrix.md)
 
 ### PHP アプリ
-#### [App Service 用の PHP アプリを開発する](app-service-web-php-get-started.md) 
+#### [App Service 用の PHP アプリを開発する](app-service-web-php-get-started.md)    
 #### [PHP-SQL Web アプリを作成して Git でデプロイする](web-sites-php-sql-database-deploy-use-git.md)
 #### [Azure App Service での WordPress Web アプリの作成](web-sites-php-web-site-gallery.md)
 #### [Azure で MySQL データベースを作成して接続する](../store-php-create-mysql-database.md?toc=%2fazure%2fapp-service-web%2ftoc.json)
@@ -98,6 +102,9 @@
 #### [Python Tools 2.2 for Visual Studio を使用した Flask と Table Storage](web-sites-python-ptvs-flask-table-storage.md)
 #### [Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と MySQL](web-sites-python-ptvs-django-mysql.md)
 #### [Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と SQL Database](web-sites-python-ptvs-django-sql.md)
+
+### Ruby アプリ
+#### [Web Apps on Linux での Ruby の使用](app-service-linux-using-ruby.md)
 
 ### [初めての基本的な Web アプリを Azure に&5; 分でデプロイする](app-service-web-get-started-html.md)
 ### [Web Apps の運用環境におけるテストの基本](app-service-web-test-in-production-get-start.md)
@@ -144,9 +151,11 @@
 #### [Python の構成](web-sites-python-configure.md)
 #### [Linux での Node.js スタートアップの構成](app-service-linux-using-nodejs-pm2.md)
 
+
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](custom-dns-web-site-buydomains-web-app.md)
 #### [独自のカスタム ドメインをマップする](web-sites-custom-domain-name.md)
+#### [アクティブなカスタム ドメインを移行する](app-service-custom-domain-name-migrate.md)
 #### [GoDaddy ドメインを構成する](web-sites-godaddy-custom-domain-name.md)
 #### [Traffic Manager でのカスタム ドメイン](web-sites-traffic-manager-custom-domain-name.md)
 
@@ -267,6 +276,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

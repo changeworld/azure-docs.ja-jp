@@ -70,14 +70,14 @@ Azure RemoteApp は、Microsoft アカウントと Azure Active Directory アカ
 | サード パーティの Azure サポート ID プロバイダー (Ping など) |はい |あり |はい | |
 | Multi-Factor Authentication | |はい |あり |はい |
 
-### <a name="cloud-and-cloud-vnet"></a>クラウドとクラウド + VNET 間
+### <a name="cloud-and-cloud--vnet"></a>クラウドとクラウド + VNET 間
 クラウドのコレクションでは、Microsoft アカウント、Azure AD アカウント、または 2 つの組み合わせを使用できます。 ユーザーに対して最も効果的なアカウントを使用します。
 
 Microsoft アカウントを使用するための特定の要件はありません。 
 
 Azure AD アカウントを使用する場合は、Azure AD テナントがサブスクリプションに関連付けられているテナントと一致するかどうかを確認する必要があります。 Azure RemoteApp サブスクリプションを作成したときに、使用していた Azure AD テナントがサブスクリプションに自動的に関連付けられていました。 権限を与えるすべての Azure AD ユーザーが、その同じテナントになる必要があります。 必要に応じて、サブスクリプションに関連付けられた [Azure AD テナントを変更](remoteapp-changetenant.md) することができます。
 
-### <a name="hybrid-or-cloud-azure-ad-ad"></a>ハイブリッド (またはクラウド + Azure AD + AD)
+### <a name="hybrid-or-cloud--azure-ad--ad"></a>ハイブリッド (またはクラウド + Azure AD + AD)
 ハイブリッドのコレクションには、Azure AD とオンプレミスの Active Directory を使用する必要があります。 AD Connect を使用して、2 つのディレクトリを統合する必要があります。 ただし、AD Connect を構成する方法に関してはいくつかの選択肢があります。 
 
 AD Connect には、パスワード同期を使用する場合と、AD フェデレーションを使用する場合の 2 つのシナリオがあります。 どちらが最適かについては、 [AD Connect の情報](../active-directory/active-directory-aadconnect.md) を確認してください。

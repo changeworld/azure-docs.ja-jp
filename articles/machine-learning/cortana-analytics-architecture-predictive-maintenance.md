@@ -1,5 +1,5 @@
 ---
-title: "予測メンテナンスのアーキテクチャ | Microsoft Docs"
+title: "航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution アーキテクチャ | Microsoft Docs"
 description: "航空宇宙、公益事業、輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図"
 services: cortana-analytics
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: 9a514c6894ca0b0e212922a72188c57be038504d
+ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
+ms.openlocfilehash: 0b79b908537e94af62b59a6135dfc16e2b33fee8
 
 
 ---
@@ -31,6 +31,6 @@ ms.openlocfilehash: 9a514c6894ca0b0e212922a72188c57be038504d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

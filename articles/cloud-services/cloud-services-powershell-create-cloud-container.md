@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e86afaa9813a45c31d7c1d8725995ba5fc73f574
+ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
+ms.openlocfilehash: 89e517a17417475f975dbaa0cee8517145a7c6c3
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: e86afaa9813a45c31d7c1d8725995ba5fc73f574
 3. [Add-AzureAccount](https://msdn.microsoft.com/library/dn495128.aspx) を使用してサインインします。
 
    > [!NOTE]
-   > Azure PowerShell コマンドレットをインストールして、Azure サブスクリプションに接続する手順の詳細については、「 [Azure PowerShell をインストールして構成する方法](../powershell-install-configure.md)」を参照してください。
+   > Azure PowerShell コマンドレットをインストールして、Azure サブスクリプションに接続する手順の詳細については、「 [Azure PowerShell をインストールして構成する方法](/powershell/azureps-cmdlets-docs)」を参照してください。
    >
    >
 4. **New-AzureService** コマンドレットを使用し、空の Azure クラウド サービス コンテナーを作成します。
@@ -55,6 +55,6 @@ Get-help New-AzureService
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 98a83c735a79cdba080dd74af8e2677788c075e3
+ms.sourcegitcommit: b759e9936a45f989088de5e89a59371c5ea64e1c
+ms.openlocfilehash: 079a05d16ccebb705f410e25f0ed5762db20ae22
 
 
 ---
@@ -89,7 +89,7 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 ## <a name="more-information"></a>詳細情報
 * Azure エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 * データベース ツールおよびエラスティック スケーリングの詳細については、 [エラスティック データベース ツールおよびエラスティック スケーリング](sql-database-elastic-scale-get-started.md)に関する記事をご覧ください。
-* SQL Server データベースの移行について、詳しくは、 [Azure SQL 移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)に関する記事をご覧ください。
+* SQL Server データベースの移行について、詳しくは、[SQL Server データベースの Azure への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 * アクティブ geo レプリケーションの詳細については、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください。
 * Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
@@ -98,6 +98,6 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

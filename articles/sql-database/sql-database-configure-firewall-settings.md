@@ -12,23 +12,16 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 11/28/2016
-ms.author: rickbyh;carlrab
+ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: a866b757c9c6946cdff4fe636e81bedbdfa29322
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 1939b69ee806d9091a21f3b21a276175d5a19a62
 
 
 ---
 # <a name="create-and-manage-azure-sql-database-server-level-firewall-rules-using-the-azure-portal"></a>Azure Portal を使用した Azure SQL Database のサーバーレベルのファイアウォール規則の作成と管理
-> [!div class="op_single_selector"]
-> * [概要](sql-database-firewall-configure.md)
-> * [Azure ポータル](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
 
 サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から SQL Database サーバーにアクセスできます。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの構成に時間を費やしたくない場合は、ユーザーにサーバーレベルのファイアウォール規則を使用することもできます。 ただし、セキュリティを強化しデータベースの移植性を高めるため、可能な限りデータベースレベルのファイアウォール規則を使用することをお勧めします。 SQL Database ファイアウォールの概要については、[SQL Database ファイアウォール規則の概要](sql-database-firewall-configure.md)に関する記事を参照してください。
 
@@ -50,8 +43,8 @@ ms.openlocfilehash: a866b757c9c6946cdff4fe636e81bedbdfa29322
 
 ## <a name="next-steps"></a>次のステップ
 
-- 概要チュートリアルについては、[サーバー、サーバーレベルのファイアウォール規則、サンプル データベース、データベースレベルのファイアウォール規則の作成と SQL Server への接続に関する SQL Database のチュートリアル](sql-database-get-started.md)を参照してください。
-- セキュリティの概要チュートリアルについては、[セキュリティの概要](sql-database-get-started-security.md)に関する記事を参照してください。
+- サーバーレベルのファイアウォールを使用したサーバーのプロビジョニングと接続のチュートリアルについては、「[チュートリアル: Azure Portal と SQL Server Management Studio を使用した Azure SQL データベースのプロビジョニングとアクセス](sql-database-get-started.md)」を参照してください。
+- SQL Server 認証とデータベースレベルのファイアウォールのチュートリアルについては、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
 - オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
 - データベースに接続可能な追加ユーザーの作成方法については、「[SQL Database 認証および承認： アクセス権を付与する](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
@@ -64,6 +57,6 @@ ms.openlocfilehash: a866b757c9c6946cdff4fe636e81bedbdfa29322
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

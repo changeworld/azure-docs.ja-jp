@@ -1,6 +1,6 @@
 ---
-title: "SQL Azure からデータを処理する | Microsoft Docs"
-description: "SQL Azure からのデータを処理する"
+title: "Azure の SQL Server 仮想マシンに保存されたデータを探索する | Microsoft Docs"
+description: "Azure の SQL Server 仮想マシンに保存されたデータを探索し、特徴を生成します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 01/23/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
-ms.openlocfilehash: 3e565090d751344a8ad3efd6ebdc3f26d5ee55ec
+ms.sourcegitcommit: 0813611f581a68efb8f09a1e041cfbe429bf0c5c
+ms.openlocfilehash: 16fabb29bdc8ec770efd843e18e9016e338a8f4e
 
 
 ---
@@ -68,7 +68,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 > 
 
 ### <a name="a-namesql-countfeatureacount-based-feature-generation"></a><a name="sql-countfeature"></a>カウント ベースの特徴の生成
-次の例では、カウント特徴を生成する 2 つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
+次の例では、カウント特徴を生成する&2; つの方法を示します。 最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。 これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,12 +82,12 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 
 
 ### <a name="a-namesql-featurerolloutarolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>1 つの列からの特徴の展開
-このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
+このセクションでは、テーブル内の&1; つの列を展開して追加の特徴を生成する方法を示します。 この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
 緯度と経度の位置データ (リソースは stackoverflow の「 [How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。 これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
 
 * 記号は、私たちが地球の北半球か南半球、東半球か西半球、それぞれどちらにいるかを示します。
-* 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
+* 100 の位が&0; でなければ、それは経度を使用していることを示します。緯度ではありません。
 * 10 の位は、最大で約 1,000 キロメートル単位で位置を示します。 これは、私たちがどの大陸または海洋にいるかに関する役立つ情報になります。
 * 1 の位 (1 つの 10 進数の角度) は、最大 111 キロメートル (60 海里、約 69 マイル) 単位で位置を示します。 これは、私たちが大まかにどの大きい州または国にいるかを示します。
 * 小数第 1 位は最大 11.1 km: になります。この位で、大都市と隣接する大都市の位置を識別できます。
@@ -113,7 +113,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 これらの位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。 
 
 > [!TIP]
-> お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」(SQL Server に python でアクセスするための HelloWorld サンプル) で pyodbc を使用した実行方法の例を確認してください。 もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」(SQL Server に python でアクセスするための HelloWorld サンプル) で pyodbc を使用した実行方法の例を確認してください。 もう&1; つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 > 
 > 
 
@@ -150,6 +150,6 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/) には、Python �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

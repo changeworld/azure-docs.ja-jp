@@ -14,103 +14,86 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/10/2016
+ms.date: 02/02/2017
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 7e9534afa8ecd224b4e3c1df2f4465b70d961d2c
-ms.openlocfilehash: b3b0251436497cfdfb36369a05e01519c631e351
+ms.sourcegitcommit: 3603f58a9df1f0222a75b863ad2c1ab1b6e13fb2
+ms.openlocfilehash: c6868566e513c5cd2c76be3305ca6c9035d58acd
 
 
 ---
 # <a name="testing-azure-functions"></a>Azure Functions のテスト
-## <a name="overview"></a>Overview
-このチュートリアルでは、関数をテストするさまざまな方法について説明します。 この記事では、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数を定義します。 既定の **HttpTrigger Node.js Function** テンプレート コードでは、`name` クエリ文字列パラメーターがサポートされています。 このパラメーターを、要求本文内のユーザーの `address` 情報と共にサポートするコードも追加します。
+## <a name="overview"></a>概要
+このトピックでは、関数をテストするさまざまな方法について説明します。一般的には次のようなアプローチがあります。
+
++ HTTP ベースのツール。cURL、Postman、Web ベースのトリガーを対象とした Web ブラウザーなど。 
++ Azure Storage ベースのトリガーをテストするためのストレージ エクスプローラー。
++ Functions ポータルの [テスト] タブ。
++ タイマーによってトリガーされる関数。
++ テスト アプリケーションまたはフレームワーク。  
+
+ここで紹介するすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで作成します。
 
 ## <a name="create-a-function-for-testing"></a>テスト用の関数を作成する
-このチュートリアルの大部分で、**HttpTrigger Nodejs 関数**テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。  新しい関数の作成に関する詳細については、チュートリアル「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。  [Azure ポータル] でテスト関数を作成する際に、**HttpTrigger Nodejs 関数**テンプレートを選択します。
+このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。  新しい関数の作成に関する詳細については、チュートリアル「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。  [Azure ポータル] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
 
 この既定の関数テンプレートは、本質的には hello world 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>`から名前を取得して返します。  記事では、要求本文で JSON コンテンツとして名前と住所を指定できるようにするためのコードの更新も行います。 これにより、関数は、これらが取得可能であれば、クライアントに返すようになります。   
 
 テストに使用する次のコードで関数を更新します。
 
 ```javascript
-module.exports = function(context, req) {
-    context.log("Node.js HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
-    context.log("Request Headers = " + JSON.stringify(req.headers));    
+module.exports = function (context, req) {
+    context.log("HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
+    context.log("Request Headers = " + JSON.stringify(req.headers));
+    var res;
 
     if (req.query.name || (req.body && req.body.name)) {
         if (typeof req.query.name != "undefined") {
             context.log("Name was provided as a query string param...");
-            ProcessNewUserInformation(context, req.query.name);
+            res = ProcessNewUserInformation(context, req.query.name);
         }
         else {
             context.log("Processing user info from request body...");
-            ProcessNewUserInformation(context, req.body.name, req.body.address);
+            res = ProcessNewUserInformation(context, req.body.name, req.body.address);
         }
     }
     else {
-        context.res = {
+        res = {
             status: 400,
             body: "Please pass a name on the query string or in the request body"
         };
     }
-    context.done();
+    context.done(null, res);
 };
+function ProcessNewUserInformation(context, name, address) {
+    context.log("Processing user information...");
+    context.log("name = " + name);
+    var echoString = "Hello " + name;
+    var res;
 
-function ProcessNewUserInformation(context, name, address)
-{    
-    context.log("Processing User Information...");            
-    context.log("name = " + name);            
-    echoString = "Hello " + name;
-
-    if (typeof address != "undefined")
-    {
+    if (typeof address != "undefined") {
         echoString += "\n" + "The address you provided is " + address;
-        context.log("address = " + address);            
+        context.log("address = " + address);
     }
-
-    context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: echoString
-        };
+    res = {
+        // status: 200, /* Defaults to 200 */
+        body: echoString
+    };
+    return res;
 }
 ```
 
 ## <a name="test-a-function-with-tools"></a>ツールを使用した関数のテスト
-### <a name="test-with-curl"></a>cURL を使用してテストする
-ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありませんが、これは関数の場合も同じです。
-
-上記の関数をテストするには、ポータルから **関数の URL** をコピーします。 関数の URL の形式は次のとおりです。
-
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
-
-これは、関数をトリガーするための URL です。関数をテストするには、次のように、コマンド ラインで cURL コマンドを使用して、関数に対して Get (`-G` または `--get`) 要求を実行します。
-
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
-
-上記の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
-
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
-
-Enter キーを押すと、コマンド ラインに関数の出力が表示されます。
-
-![](./media/functions-test-a-function/curl-test.png)
-
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
-
-    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
-    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
-    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
-    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+Azure Portal の外部にも、テスト用に関数をトリガーできるツールにはさまざまなものがあります。 たとえば、HTTP テスト ツール (UI ベースとコマンド ライン)、Azure ストレージ アクセス ツール、シンプルな Web ブラウザーを使用して、関数をトリガーできます。
 
 ### <a name="test-with-a-browser"></a>ブラウザーを使用してテストする
-パラメーターを必要としない関数、またはクエリ文字列パラメーターのみを必要とする関数は、ブラウザーを使用してテストできます。
+Web ブラウザーを使用すると、関数を HTTP 経由で簡単にトリガーできます。 本文のペイロードを必要としない GET 要求で、クエリ文字列パラメーターのみを使用するものに対してブラウザーを使用できます。
 
 上で定義した関数をテストするには、ポータルから **関数の URL** をコピーします。 関数の URL の形式は次のとおりです。
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-次のように `name` クエリ文字列パラメーターを追加します。`<Enter a name here>` プレースホルダーには実際の名前を使用します。
+`name` パラメーターをクエリ文字列に追加します。`<Enter a name here>` プレースホルダーには実際の名前を使用します。 
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
@@ -118,21 +101,23 @@ Enter キーを押すと、コマンド ラインに関数の出力が表示さ�
 
 ![](./media/functions-test-a-function/browser-test.png)
 
+これは Chrome ブラウザーの例で、XML で返された文字列をラップします。 その他のブラウザーには、文字列の値だけが表示されます。
+
 関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
     2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Wes from a browser
+    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Glenn from a browser
     2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T07:35:10.338 Name was provided as a query string param.
     2016-03-23T07:35:10.338 Processing User Information...
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
 ### <a name="test-with-postman"></a>Postman を使用してテストする
-Postman は、ほとんどの関数でテスト用に推奨されるツールです。 Postman をインストールする方法については、 [Postman の取得](https://www.getpostman.com/)に関するサイトを参照してください。 Postman を使用すると、HTTP 要求の多くの属性を制御できます。
+Postman は、ほとんどの関数でテスト用に推奨されるツールで、Chrome ブラウザーに統合されています。 Postman をインストールする方法については、 [Postman の取得](https://www.getpostman.com/)に関するサイトを参照してください。 Postman を使用すると、HTTP 要求の多くの属性を制御できます。
 
 > [!TIP]
-> 使い慣れた REST クライアントを使用できます。 次のクライアントが Postman の代わりに使用できます。  
+> 最も使い慣れている HTTP テスト ツールを使用してください。 次のクライアントが Postman の代わりに使用できます。  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
 > * [Paw](https://luckymarmot.com/paw)  
@@ -162,7 +147,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
 
     2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
-    2016-03-23T08:04:57.763 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
+    2016-03-23T08:04:57.763 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
     2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T08:04:57.763 Processing user info from request body...
     2016-03-23T08:04:57.763 Processing User Information...
@@ -170,13 +155,39 @@ Postman で要求本文を使用して関数をテストするには、次の手
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
+### <a name="test-with-curl-from-the-command-line"></a>コマンドラインで cURL を使用してテストする 
+ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありませんが、これは関数の場合も同じです。 Linux ベースのシステムでは既定で cURL を使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。 
+
+上記の関数をテストするには、ポータルから**関数の URL** をコピーします。 関数の URL の形式は次のとおりです。
+
+    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+
+これは、関数をトリガーするための URL です。関数をテストするには、次のように、コマンド ラインで cURL コマンドを使用して、関数に対して GET (`-G` または `--get`) 要求を実行します。
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+
+上記の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
+
+    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
+
+コマンドを実行すると、コマンド ラインに次の関数出力が表示されます。
+
+![](./media/functions-test-a-function/curl-test.png)
+
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
+
+    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
+    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
+    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+
 ### <a name="test-a-blob-trigger-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して BLOB トリガー関数をテストできます。
 
-1. 関数アプリの [Azure ポータル] で、C#、F#、または Node の BLOB トリガー関数を新規作成します。 監視するパスを BLOB コンテナーの名前に設定します。 次に例を示します。
+1. 関数アプリの [Azure ポータル] で、C#、F#、または JavaScript の BLOB トリガー関数を新規作成します。 監視するパスを BLOB コンテナーの名前に設定します。 次に例を示します。
 
         files
-2.  **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
+2. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
 3. 次のテキストが含まれたテキスト ファイルを作成して保存します。
 
         A text file for blob trigger function testing.
@@ -193,6 +204,8 @@ Postman で要求本文を使用して関数をテストするには、次の手
         2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>関数内での関数のテスト
+Azure Functions ポータルは、HTTP 関数およびタイマーによってトリガーされる関数をテストするように設計されています。 関数を作成して、テストする他の関数をトリガーすることもできます。
+
 ### <a name="test-with-the-functions-portal-run-button"></a>関数ポータルの実行ボタンを使用してテストする
 ポータルにある **[実行]** ボタンをクリックすると、限定的なテストを実施できます。 [実行] ボタンを使用する場合、要求本文は指定できますが、クエリ文字列パラメーターを指定したり、要求ヘッダーを更新したりすることはできません。
 
@@ -209,7 +222,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
 
     2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
-    2016-03-23T08:03:18.697 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
+    2016-03-23T08:03:18.697 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
     2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
     2016-03-23T08:03:18.697 Processing user info from request body...
     2016-03-23T08:03:18.697 Processing User Information...
@@ -237,7 +250,7 @@ Azure Functions でのバインドの使用に関する詳細については、�
 2. キュー関数で監視するキューの名前を入力します。
 
         queue-newusers
-3.  **+** (追加) ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
+3. **+** (追加) ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
 4. 既定のキュー関数テンプレート コードのログ エントリを監視できるように、このポータルのブラウザー ウィンドウを開いたままにします。
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>キューにメッセージをドロップするタイマー トリガーの作成
@@ -253,9 +266,9 @@ Azure Functions でのバインドの使用に関する詳細については、�
 6. メッセージの送信先キューの名前を入力します。
 
         queue-newusers
-7.  **+** (追加) ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。 その後、 **[保存]**をクリックします。
+7. **+** (追加) ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。 その後、 **[保存]**をクリックします。
 8. タイマー トリガーの **[開発]** タブをクリックします。
-9. 上に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。  **[保存]**
+9. 上に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。 **[保存]**
 
     ```cs
     using System;
@@ -288,9 +301,10 @@ Azure Functions でのバインドの使用に関する詳細については、�
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>コードを使用した関数のテスト
-### <a name="test-a-http-trigger-function-with-code-nodejs"></a>コードを使用して HTTP トリガー関数をテストする: Node.js
-Node.js コードを使用して、Azure Functions をテストする HTTP 要求を実行できます。
+場合によっては、関数をテストするために外部アプリケーションまたはフレームワークを作成しなければならないことがあります。
 
+### <a name="test-a-http-trigger-function-with-code-nodejs"></a>コードを使用して HTTP トリガー関数をテストする: Node.js
+Node.js アプリを使用して HTTP 要求を実行し、関数をテストできます。
 次のように設定します。
 
 * 要求オプションの `host` を関数アプリのホストに設定する。
@@ -352,7 +366,7 @@ req.end(bodyString);
 
     2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    2016-03-23T08:09:01.153 Node.js HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
+    2016-03-23T08:09:01.153 HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
     2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
     2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
     2016-03-23T08:09:01.153 Request Body Type = object
@@ -431,6 +445,6 @@ static void Main(string[] args)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

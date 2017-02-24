@@ -1,14 +1,15 @@
 # 概要
 ## [ExpressRoute とは](expressroute-introduction.md)
 ## [ExpressRoute の FAQ](expressroute-faqs.md)
+## [接続モデル](expressroute-connectivity-models.md)
 ## [場所とパートナー](expressroute-locations.md)
 ### [場所別のプロバイダー](expressroute-locations-providers.md)
 ### [プロバイダー別の場所](expressroute-locations.md)
 
 # 作業の開始
-## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
 ## [ワークフロー](expressroute-workflows.md)
 ## [前提条件](expressroute-prerequisites.md)
+## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
 ## [ルーティングの要件](expressroute-routing.md)
 ## [ルーティングを最適化する](expressroute-optimize-routing.md)
 ## [NAT の要件](expressroute-nat.md)
@@ -80,6 +81,6 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

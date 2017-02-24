@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 6e0efe18c1170ef3b5a9b894888e926b31432e07
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
  **[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)**
  ページには、最も人気のあるモジュールの一覧が表示されます。
 **[すべて表示]** をクリックし、すべてのカスタム モジュールを表示します。
-このページから、ギャラリー内のすべてのカスタム モジュールを閲覧することができます。あるいは、ページ左側のフィルター条件を選択して上部に検索語句を入力し、検索することができます。
+このページで、ギャラリー内のすべてのカスタム モジュールを見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
 ### <a name="comment-and-share"></a>コメントと共有
  任意のカスタム モジュールをクリックし、モジュールの詳細ページを開いて、モジュールの機能とその使用方法に関する詳細を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 カスタム モジュールへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。
@@ -45,7 +45,7 @@ ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
 
 ## <a name="download"></a>ダウンロード
 独自の実験において、ギャラリーで任意のカスタム モジュールを使用できます。
-モジュールのコピーを取得する方法は 2 つあります。
+モジュールのコピーを取得する方法は&2; つあります。
 
 * **ギャラリーから**: ギャラリーからモジュールをダウンロードする場合は、モジュールがワークスペースのモジュールのパレットに追加されます。 また、モジュールの使用方法の例を示すサンプル実験も取得します。
 * **Machine Learning Studio 内から**: Studio で作業する間、任意のカスタム モジュールをインポートすることができ、そのモジュールはワークスペースのモジュール パレットに追加されます。
@@ -88,6 +88,6 @@ Machine Learning Studio で作業している間は、ギャラリーから同�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

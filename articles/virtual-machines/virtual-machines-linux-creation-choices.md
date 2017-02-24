@@ -16,52 +16,53 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 44c46fff9ccf9c7dba9ee380faf5f8213b58e3c3
-ms.openlocfilehash: 4397d84ef4d97bdee387777a193ec0b969f2d5e1
+ms.sourcegitcommit: 42ee74ac250e6594616652157fe85a9088f4021a
+ms.openlocfilehash: 23862762fcf0939ce84859fdae0274421c0bb5fe
 
 
 ---
-# <a name="different-ways-to-create-a-linux-vm-including-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) など、Linux VM を作成するさまざまな方法
+# <a name="different-ways-to-create-a-linux-vm-including-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) など、Linux VM を作成するさまざまな方法
 Azure では、使いやすいツールとワークフローを使用して Linux 仮想マシン (VM) を柔軟に作成できます。 この記事は、それらの違いと、Linux VM を作成する例をまとめたものです。
 
 ## <a name="azure-cli"></a>Azure CLI
+次のいずれかの CLI バージョンを使用して、Azure で VM を作成できます。
 
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
+- [Azure CLI 1.0](virtual-machines-linux-creation-choices-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- Azure CLI 2.0 (プレビュー) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
 
-- Azure CLI 1.0 - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](../xplat-cli-install.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) はさまざまなプラットフォームで利用できます。利用時には、npm パッケージ、ディストリビューション提供のパッケージ、Docker コンテナーのいずれかを使用します。 環境に最適なビルドをインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
 
-Azure CLI 2.0 (プレビュー) はさまざまなプラットフォームで利用できます。その際は、npm パッケージ、ディストリビューション提供のパッケージ、Docker コンテナーのいずれかを使用します。 必ず **az login** を使用してログインしてください。
-
-Azure CLI 2.0 (プレビュー) の使用例については、次のチュートリアルを参照してください。 次に示すコマンドの詳細については、各記事を参照してください。
+次の例では、Azure CLI 2.0 (プレビュー) を使用します。 示されているコマンドの詳細については、各記事を参照してください。 [Azure CLI 1.0](virtual-machines-linux-creation-choices-nodejs.md) を使用する Linux 作成の選択肢の例もあります。
 
 * [Azure CLI 2.0 (プレビュー) を使用して Linux VM を作成する](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   
-  * 次の例では、myResourceGroup という名前のリソース グループを作成します。 
+  * この例では、[az group create](/cli/azure/group#create) を使用して、`myResourceGroup` というリソース グループを作成します。 
     
     ```azurecli
-    az group create -n myResourceGroup -l westus
+    az group create --name myResourceGroup --location westus
     ```
-
-  * 次の例では、最新の Debian イメージと `id_rsa.pub` という名前の公開キーを使用して、新しいリソース グループに VM を作成します。
+    
+  * この例では、[az vm create](/cli/azure/vm#create) を使用して、`myVM` という VM を作成します。その際に、Azure Managed Disks で最新の Debian イメージと、`id_rsa.pub` という公開キーを使用します。
 
     ```azurecli
     az vm create \
     --image credativ:Debian:8:latest \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --public-ip-address-dns-name mydns \
+    --public-ip-address-dns-name myPublicDNS \
     --resource-group myResourceGroup \
     --location westus \
     --name myVM
     ```
 
+    * 非管理対象ディスクを使用する場合は、`--use-unmanaged-disks` フラグを上記のコマンドに追加します。 ストレージ アカウントが作成されます。 詳しくは、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」(Azure Managed Disks の概要) をご覧ください。
+
 * [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   
-  * 次の例では、GitHub に格納されているテンプレートを使用して VM を作成します。
+  * 次の例では、[az group deployment create](/cli/azure/group/deployment#create) を使用し、GitHub に格納されているテンプレートを使って VM を作成します。
     
     ```azurecli
-    az group deployment create -g myResourceGroup \ 
+    az group deployment create --resource-group myResourceGroup \ 
       --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json \
       --parameters @myparameters.json
     ```
@@ -72,11 +73,11 @@ Azure CLI 2.0 (プレビュー) の使用例については、次のチュート
 
 * [Linux VM へのディスクの追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   
-  * 次の例では、 `myVM`という名前の既存の VM に 5 Gb のディスクを追加します。
-    
+  * 次の例では、[az vm disk attach-new](/cli/azure/vm/disk#attach-new) を使用して、`myVM` という既存の VM に `myDataDisk.vhd` という 5 GB の非管理対象ディスクを追加します。
+  
     ```azurecli
     az vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
-      --disk-size 5 --vhd https://myStorage.blob.core.windows.net/vhds/myDataDisk1.vhd
+      --disk-size 5 --vhd https://mystorageaccount.blob.core.windows.net/vhds/myDataDisk.vhd
     ```
 
 ## <a name="azure-portal"></a>Azure ポータル
@@ -89,35 +90,35 @@ Azure CLI 2.0 (プレビュー) の使用例については、次のチュート
 VM を作成するときは、実行するオペレーティング システムに基づいてイメージを選択します。 Azure とそのパートナーから多数のイメージが提供されており、中にはアプリケーションやツールがプレインストールされているイメージもあります。 または、独自のイメージのいずれかをアップロードすることができます ( [次のセクションで](#use-your-own-image)を参照してください)。
 
 ### <a name="azure-images"></a>Azure のイメージ
-`az vm image` CLI コマンドを使用して、発行元、ディストリビューション リリース、ビルドごとに利用可能な内容を確認します。
+[az vm image](/cli/azure/vm/image) コマンドを使用して、発行元、ディストリビューション リリース、ビルドごとに利用可能な内容を確認します。
 
 利用可能な発行元を一覧表示する場合:
 
 ```azurecli
-az vm image list-publishers -l WestUS
+az vm image list-publishers --location WestUS
 ```
 
 特定の発行元の利用可能な製品 (プラン) を一覧表示する場合:
 
 ```azurecli
-az vm image list-offers --publisher-name Canonical -l WestUS
+az vm image list-offers --publisher-name Canonical --location WestUS
 ```
 
 特定のプランの利用可能な SKU (ディストリビューション リリース) を一覧表示する場合:
 
 ```azurecli
-az vm image list-skus --publisher-name Canonical --offer UbuntuServer -l WestUS
+az vm image list-skus --publisher-name Canonical --offer UbuntuServer --location WestUS
 ```
 
 特定のリリースの利用可能なすべてのイメージを一覧表示する場合:
 
 ```azurecli
-az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS -l WestUS
+az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location WestUS
 ```
 
 提供されているイメージの探し方と使い方の例については、 [Azure CLI を使用した Azure 仮想マシン イメージの検索と選択](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
-`az vm create` コマンドにはエイリアスがあり、より一般的なディストリビューションとその最新リリースにすばやくアクセスするために使用できます。 一般的に、エイリアスを使う方が、VM を作成するたびに発行元、プラン、SKU、バージョンを指定するよりも簡単です。
+**az vm create** コマンドにはエイリアスがあり、より一般的なディストリビューションとその最新リリースにすばやくアクセスするために使用できます。 一般的に、エイリアスを使う方が、VM を作成するたびに発行元、プラン、SKU、バージョンを指定するよりも簡単です。
 
 | エイリアス | 発行元 | プラン | SKU | バージョン |
 |:--- |:--- |:--- |:--- |:--- |
@@ -136,22 +137,21 @@ az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS -l
 * [動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   
-  * 既存の VM をキャプチャするクイック スタート コマンドの例:
+  * 非管理対象ディスクを使用して既存の VM をキャプチャするクイックスタート **az vm** コマンドの例:
     
     ```azurecli
-    az vm deallocate -g myResourceGroup -n myVM
-    az vm generalize -g myResourceGroup -n myVM
-    az vm capture -g myResourceGroup -n myVM --vhd-name-prefix myCapturedVM
+    az vm deallocate --resource-group myResourceGroup --name myVM
+    az vm generalize --resource-group myResourceGroup --name myVM
+    az vm capture --resource-group myResourceGroup --name myVM --vhd-name-prefix myCapturedVM
     ```
 
 ## <a name="next-steps"></a>次のステップ
 * [ポータル](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[CLI](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure Resource Manager テンプレート](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれかの方法で Linux VM を作成します。
 * Linux VM の作成後、 [データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)します。
-*  [パスワードや SSH キーをリセットしたり、ユーザーを管理したりする](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [パスワードや SSH キーをリセットしたり、ユーザーを管理したりする](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

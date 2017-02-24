@@ -1,6 +1,6 @@
 ---
-title: "Hadoop ストリーミング アクティビティ"
-description: "Azure Data Factory で Hadoop ストリーミング アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hadoop ストリーミング プログラミングを実行する方法について説明します。"
+title: "Hadoop ストリーミング アクティビティを使用したデータ変換 - Azure | Microsoft Docs"
+description: "Azure Data Factory で Hadoop ストリーミング アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hadoop ストリーミング プログラミングを実行し、データを変換する方法について説明します。"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: 58c0e0cfd862bc421c3b4a9ad042283a22656460
+ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
+ms.openlocfilehash: 56754bde961708f04477be74e1ae80acddf2c0cd
 
 
 ---
-# <a name="hadoop-streaming-activity"></a>Hadoop ストリーミング アクティビティ
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -166,7 +166,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが 1 つだけあります。 
+この例のパイプラインには、 **HDInsightStreaming**という種類のアクティビティが&1; つだけあります。 
 
 HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。 既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。 たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。  
 
@@ -224,6 +224,6 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

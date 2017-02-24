@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル - Azure Batch .NET ライブラリの概要 | Microsoft Docs"
+title: "チュートリアル - .NET 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs"
 description: "Azure Batch の基本的な概念と、単純なシナリオで Batch サービスを開発する方法について説明します。"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 01/13/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 75fecce3e8b755d250e7d01170368c63d74fd56a
-ms.openlocfilehash: c752187cb5cd83d06d93d51987d2d869c4567cd6
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 5af894b60180d32593ed19c13aecf2732645120a
 
 
 ---
@@ -48,7 +48,7 @@ ms.openlocfilehash: c752187cb5cd83d06d93d51987d2d869c4567cd6
 サンプル プロジェクトをビルドするには、 **Visual Studio 2015** が必要です。 Visual Studio の無料試用版については、[Visual Studio 2015 製品の概要][visual_studio]に関するページを参照してください。
 
 ### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* コード サンプル
-[DotNetTutorial][github_dotnettutorial] サンプルは、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、次のフォルダーでソリューションを見つけられます。
+[DotNetTutorial][github_dotnettutorial] サンプルは、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの&1; つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、次のフォルダーでソリューションを見つけられます。
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
@@ -59,7 +59,7 @@ ms.openlocfilehash: c752187cb5cd83d06d93d51987d2d869c4567cd6
 *DotNetTutorial* コード サンプルは、**DotNetTutorial** と **TaskApplication** という 2 つのプロジェクトから構成される Visual Studio 2015 ソリューションです。
 
 * **DotNetTutorial** は、Batch サービスおよび Storage サービスとやり取りして、コンピューティング ノード (仮想マシン) で並列ワークロードを実行するクライアント アプリケーションです。 DotNetTutorial はローカル ワークステーションで実行されます。
-* **TaskApplication** は、Azure のコンピューティング ノードで実際の作業を行うために実行されるプログラムです。 このサンプルの `TaskApplication.exe` では、Azure Storage からダウンロードされたファイル (入力ファイル) のテキストを解析します。 次に、入力ファイル内で出現回数が多い上位 3 つの単語の一覧を含むテキスト ファイル (出力ファイル) を生成します。 出力ファイルを作成した後で、TaskApplication はそのファイルを Azure Storage にアップロードします。 これで、ファイルをクライアント アプリケーションがダウンロードできるようになります。 TaskApplication は、Batch サービスの複数のコンピューティング ノードで並列で実行されます。
+* **TaskApplication** は、Azure のコンピューティング ノードで実際の作業を行うために実行されるプログラムです。 このサンプルの `TaskApplication.exe` では、Azure Storage からダウンロードされたファイル (入力ファイル) のテキストを解析します。 次に、入力ファイル内で出現回数が多い上位&3; つの単語の一覧を含むテキスト ファイル (出力ファイル) を生成します。 出力ファイルを作成した後で、TaskApplication はそのファイルを Azure Storage にアップロードします。 これで、ファイルをクライアント アプリケーションがダウンロードできるようになります。 TaskApplication は、Batch サービスの複数のコンピューティング ノードで並列で実行されます。
 
 次の図は、クライアント アプリケーション *DotNetTutorial* と、タスクによって実行されるアプリケーション *TaskApplication* から実行される主な処理を示します。 この基本ワークフローは、Batch で作成する多くのコンピューティング ソリューションの中でも一般的なものです。 Batch サービスで使用できるすべての機能を網羅しているわけではありませんが、同様のワークフローは、ほぼすべての Batch シナリオに含まれます。
 
@@ -124,7 +124,7 @@ private const string StorageAccountKey  = "";
 ![Azure Storage でコンテナーを作成する][1]
 <br/>
 
-Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、 [Azure Blob Storage](../storage/storage-introduction.md)で 3 つのコンテナーを作成することです。
+Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、 [Azure Blob Storage](../storage/storage-introduction.md)で&3; つのコンテナーを作成することです。
 
 * **application**: このコンテナーには、タスクによって実行されるアプリケーションと、DLL などの依存するファイルが格納されます。
 * **input**: タスクで、 *input* コンテナーから処理対象のデータ ファイルをダウンロードします。
@@ -228,7 +228,7 @@ List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
     inputFilePaths);
 ```
 
-アップロード プロセスで使用される `Program.cs` には 2 つのメソッドがあります。
+アップロード プロセスで使用される `Program.cs` には&2; つのメソッドがあります。
 
 * `UploadFilesToContainerAsync`: このメソッドは、[ResourceFile][net_resourcefile] オブジェクト (後述) のコレクションを返し、内部的に `UploadFileToContainerAsync` を呼び出して、*filePaths* パラメーターで渡される各ファイルをアップロードします。
 * `UploadFileToContainerAsync`: 実際にファイルのアップロードを実行し、[ResourceFile][net_resourcefile] オブジェクトを作成するメソッドです。 ファイルをアップロードすると、ファイルの Shared Access Signature (SAS) が取得され、それを表す ResourceFile オブジェクトが返されます。 ここでは、Shared Access Signature についても説明します。
@@ -370,11 +370,11 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 このサンプル アプリケーションでは、StartTask が、StartTask 作業ディレクトリの Storage からダウンロードするファイル ([StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] プロパティを使用して指定します) を、ノードで実行される "*すべて*" のタスクからアクセスできる共有ディレクトリにコピーします。 基本的に、これはノードがプールに参加するときに各ノードの共有ディレクトリに `TaskApplication.exe` およびその依存関係をコピーし、ノードで実行するすべてのタスクがアクセスできるようにします。
 
 > [!TIP]
-> Azure Batch の **アプリケーション パッケージ** 機能では、プール内のコンピューティング ノードにアプリケーションをデプロイするもう 1 つの方法が提供されています。 詳細については、「 [Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md) 」を参照してください。
+> Azure Batch の **アプリケーション パッケージ** 機能では、プール内のコンピューティング ノードにアプリケーションをデプロイするもう&1; つの方法が提供されています。 詳細については、「 [Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md) 」を参照してください。
 >
 >
 
-また、上記のコード スニペットでは、StartTask の *CommandLine* プロパティで `%AZ_BATCH_TASK_WORKING_DIR%` と `%AZ_BATCH_NODE_SHARED_DIR%` という 2 つの環境変数を使用している点についても注目してください。 Batch プールの各コンピューティング ノードには、Batch に固有の環境変数がいくつか自動的に構成されます。 また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
+また、上記のコード スニペットでは、StartTask の *CommandLine* プロパティで `%AZ_BATCH_TASK_WORKING_DIR%` と `%AZ_BATCH_NODE_SHARED_DIR%` という&2; つの環境変数を使用している点についても注目してください。 Batch プールの各コンピューティング ノードには、Batch に固有の環境変数がいくつか自動的に構成されます。 また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
 
 > [!TIP]
 > Batch プールのコンピューティング ノードで使用できる環境変数と、タスクの作業ディレクトリの詳細については、「[開発者向け Batch 機能の概要](batch-api-basics.md)」の「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」と「[ファイルとディレクトリ](batch-api-basics.md#files-and-directories)」のセクションを参照してください。
@@ -414,7 +414,7 @@ private static async Task CreateJobAsync(
 
 Batch の **タスク** は、コンピューティング ノードで実行される独立した作業単位です。 タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。 コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。 *DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。 したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。 コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。 *DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは&1; つだけです。 したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```csharp
 private static async Task<List<CloudTask>> AddTasksAsync(
@@ -461,7 +461,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 上記のコード スニペットの `foreach` ループ内には、3 つのコマンド ライン引数が *TaskApplication.exe*に渡されるようにタスクのコマンド ラインが構成されています。
 
 1. **1 つ目の引数** は処理するファイルのパスです。 これは、ノードに存在するファイルのローカル パスです。 上記で `UploadFileToContainerAsync` の ResourceFile オブジェクトを初めて作成したときに、ファイル名がこのプロパティに (ResourceFile コンストラクターのパラメーターとして) 使用されています。 そのため、ファイルが *TaskApplication.exe*と同じディレクトリにあることがわかります。
-2. **2 つ目の引数** は、上位 *N* 個の単語を出力ファイルに書き出すように指定するものです。 このサンプルでは、上位 3 個の単語が出力ファイルに書き出されるようにハードコーディングされています。
+2. **2 つ目の引数** は、上位 *N* 個の単語を出力ファイルに書き出すように指定するものです。 このサンプルでは、上位&3; 個の単語が出力ファイルに書き出されるようにハードコーディングされています。
 3. **3 つ目の引数**は、Azure Storage の **output** コンテナーに対する書き込みアクセス権を提供する Shared Access Signature (SAS) です。 *TaskApplication.exe* は、出力ファイルを Azure Storage にアップロードするときにこの Shared Access Signature URL を使用します。 そのコードは TaskApplication プロジェクトの `Program.cs` ファイル内の `UploadFileToContainer` メソッドにあります。
 
 ```csharp
@@ -505,7 +505,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 タスクをジョブに追加すると、そのジョブに関連付けられたプール内のコンピューティング ノードに実行待ちとして自動的にキューに追加され、スケジュールされます。 指定した設定に基づき、Batch は、すべてのタスクのキュー、スケジュール、再試行など、タスク管理作業を処理します。
 
-タスクの実行を監視する方法は多数ありますが、 DotNetTutorial では、完了と、タスクの失敗または成功の状態のみをレポートする簡単な例を説明します。 DotNetTutorial の `Program.cs` 内の `MonitorTasks` メソッド内には、Batch .NET の重要な 3 つの概念があります。 その概念を出現順に以下に示します。
+タスクの実行を監視する方法は多数ありますが、 DotNetTutorial では、完了と、タスクの失敗または成功の状態のみをレポートする簡単な例を説明します。 DotNetTutorial の `Program.cs` 内の `MonitorTasks` メソッド内には、Batch .NET の重要な&3; つの概念があります。 その概念を出現順に以下に示します。
 
 1. **ODATADetailLevel**: Batch アプリケーションのパフォーマンスを確保するうえで、リスト操作 (ジョブのタスク リストの取得など) で [ODATADetailLevel][net_odatadetaillevel] を指定することが重要です。 Batch アプリケーション内でなんらかの状態監視を実行する予定がある場合は、「 [効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md) 」を参考にしてください。
 2. **TaskStateMonitor**: [TaskStateMonitor][net_taskstatemonitor] は、Batch .NET アプリケーションにタスクの状態を監視するためのヘルパー ユーティリティを提供します。 `MonitorTasks` で、*DotNetTutorial* はすべてのタスクが制限時間内に [TaskState.Completed][net_taskstate] に達するまで待ちます。 その後でジョブを終了します。
@@ -641,7 +641,7 @@ private static async Task DownloadBlobsFromContainerAsync(
 >
 
 ## <a name="step-8-delete-containers"></a>手順 8: コンテナーを削除する
-Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 DotNetTutorial の `Program.cs` では、ヘルパー メソッド `DeleteContainerAsync` の 3 回の呼び出しで削除を実行します。
+Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 DotNetTutorial の `Program.cs` では、ヘルパー メソッド `DeleteContainerAsync` の&3; 回の呼び出しで削除を実行します。
 
 ```csharp
 // Clean up Storage resources
@@ -805,6 +805,6 @@ Batch ソリューションの基本的なワークフローを理解したと�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

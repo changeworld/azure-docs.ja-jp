@@ -1,21 +1,21 @@
 ---
-title: Using SQL databases on Azure Stack | Microsoft Docs
+title: Offer SQL Services on Azure Stack | Microsoft Docs
 description: Learn how you can deploy SQL databases as a service on Azure Stack and the quick steps to deploy the SQL Server resource provider adapter
 services: azure-stack
 documentationCenter: 
 author: JeffGoldner
-manager: byronr
+manager: darmour
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 1/23/2017
 ms.author: JeffGo
 translationtype: Human Translation
-ms.sourcegitcommit: f02c7b7c0dd371624520ead18ec89be243a34117
-ms.openlocfilehash: 2885dad5e119b72a0c4c9f44ee5e44eb11ff5af3
+ms.sourcegitcommit: af27c5ffb225df42f96f62350ad75c884db8cafd
+ms.openlocfilehash: f5f44b96cfd92bf0cf553c56102059e67d76c2ab
 
 
 ---
@@ -68,19 +68,35 @@ The script does all of the following:
 
 Use “sa” for username and the password that you used when you deployed the resource provider VM.
 
-### <a name="parameters"></a>Parameters
-The script prompts for required parameters:
+Either specify at least the required parameters on the command line, or, if you run without any parameters, you will be prompted to enter them. 
 
-| Parameter Name | Description | Comment |
+Here's an example you can run from the PowerShell prompt:
+
+```
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
+
+$AADAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AADAdminCreds = New-Object System.Management.Automation.PSCredential ("admin@mydomain.onmicrosoft.com", $AADAdminPass)
+
+.\DeploySQLProvider.ps1 -AadTenantDirectoryName "mydomain.onmicrosoft.com" -AzCredential $AADAdminCreds -VMLocalCredential $vmLocalAdminCreds -ResourceGroupName "System.Sql" -VmName "SystemSqlRP"
+ ```
+
+### <a name="parameters"></a>Parameters
+
+| Parameter Name | Description | Comment or Default Value |
 | --- | --- | --- |
 | **AadTenantDirectoryName** | The Azure Active Directory Name | _required_ |
 | **AzCredential** | Azure Stack Service Admin account credential (use the same account as you used for deploying Azure Stack) | _required_ |
-| **LocalCredential** | This is used for the local administrator account of the SQL resource provider VM; the password is also be used for the SQL **sa** account | _required_ |
-| **ResourceGroupName** | Resource Group for the items created by this script | Default: Microsoft-SQL-RP1 |
-| **VmName** | Name of the VM holding the resource provider | Default: sqlrp |
+| **VMLocalCredential** | This is used for the local administrator account of the SQL resource provider VM; this password will also be used for the SQL **sa** account | _required_ |
+| **ResourceGroupName** | Resource Group for the items created by this script | Microsoft-SQL-RP1 |
+| **VmName** | Name of the VM holding the resource provider | sqlrp |
 | **DependencyFilesLocalPath** | Path to a local share containing the SQL ISO if you did an offline deployment. You can download [SQL 2014 SP1 Enterprise Evaluation ISO](http://care.dlservice.microsoft.com/dl/download/2/F/8/2F8F7165-BB21-4D1E-B5D8-3BD3CE73C77D/SQLServer2014SP1-FullSlipstream-x64-ENU.iso) from the Microsoft Download Center. | _leave blank to download from the internet_ |
-| **MaxRetryCount** | Each operation will be retried if there is a failure | 5 |
-| **RetryDuration** | Timeout between retries, in seconds | 300 |
+| **MaxRetryCount** | Each operation will be retried if there is a failure | 2 |
+| **RetryDuration** | Timeout between retries, in seconds | 120 |
+| **CleanupMode** | Cleanup the resource provider | No |
+| **DebugMode** | Prevents automatic cleanup on failure | No |
+
 
 
 This should get your SQL Server resource provider up and running in about 45 minutes (depending on your hardware and download speed). Make sure you reopen your browser before proceeding with the following steps.
@@ -153,6 +169,6 @@ Try other [PaaS services](azure-stack-tools-paas-services.md) like the [MySQL Se
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: "DocumentDB コミュニティとニュース | Microsoft Docs"
+title: "Azure DocumentDB コミュニティ、ニュース、およびイベント | Microsoft Docs"
 description: "Azure DocumentDB コミュニティに参加して、リレーションシップを構築し、作業内容を紹介して、スキルを高めましょう。"
 services: documentdb
 documentationcenter: 
 author: aliuy
-manager: johnmac
+manager: jhubbard
 editor: mimig
 ms.assetid: cfdf15da-3ddc-43a1-af64-789eea5f6ddd
 ms.service: documentdb
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/21/2016
+ms.date: 01/23/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 3ab93acf3088b6c93c8ec231dc606f50de108fea
-ms.openlocfilehash: 5620a19c64913e0754c5433a8cc3f21ef01f1fb2
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: da69b0e91cd945502ef3631755712772d546227f
 
 
 ---
@@ -96,7 +96,7 @@ DocumentDB の最新のニュースと機能については、 [弊社のブロ�
 ### <a name="recent-and-upcoming-events"></a>直近および今後のイベント
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | --- | --- | --- | --- | --- |
-| [Wintellect ウェビナー: Azure DocumentDB 入門](http://www.wintellect.com/software-development-training/register/webinar/30)| [Josh Lane](https://twitter.com/jplane)|オンライン|2016 年 12 月 15 日 午後 1 時 (東部標準時)|該当なし|
+| [Wintellect ウェビナー: Azure DocumentDB 入門](http://www.wintellect.com/software-development-training/register/webinar/30)| [Josh Lane](https://twitter.com/jplane)|オンライン|2017 年 1 月 12 日 午後 1 時 (東部標準時)|該当なし|
 
 *イベントで講演を行ったり、イベントを主催していますか。お手伝いできることがあれば、[ぜひお知らせください](mailto:askdocdb@microsoft.com)!*
 
@@ -131,7 +131,7 @@ DocumentDB の最新のニュースと機能については、 [弊社のブロ�
 | [SQL Saturday #444 - Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) |Jeff Renz |ミズーリ州カンザスシティ |2015 年 10 月 3 日 |該当なし |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) |Leonard Lobel |オポルト (ポルトガル) |2015 年 10 月 3 日 |該当なし |
 | [AzureCon](https://azure.microsoft.com/azurecon/) |David Makogon、Ryan Crawcour、John Macintyre |仮想イベント |2015 年 9 月 29 日 |[Azure data and analytics platform (Azure データ/分析プラットフォーム)](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207) [Working with NoSQL Data in DocumentDB (DocumentDB での NoSQL データの使用)](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
-| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonard Lobel |ユトレヒト (オランダ) |2015 年 9 月 26 日 |[Azure DocumentDB の概要](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
+| [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) |Leonard Lobel |ユトレヒト (オランダ) |2015 年 9 月 26 日 |[Azure DocumentDB の概要](https://channel9.msdn.com/Blogs/Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [SQL Saturday #441 - Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) |Jeff Renz |コロラド州デンバー |2015 年 9 月 19 日 |該当なし |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) |Andrew Liu |カリフォルニア州サンフランシスコ |2015 年 9 月 15 日 |該当なし |
 | [Belarus Azure User Group Meet-Up](https://www.facebook.com/events/786540124800276/) |Alex Zyl |ミンスク、ベラルーシ |2015 年 9 月 9 日 |[Introduction to DocumentDB concept overview, consistency levels, sharding strategies](https://www.youtube.com/watch?v=Uc_qwWzJKH8) |
@@ -184,7 +184,7 @@ DocumentDB の最新のニュースと機能については、 [弊社のブロ�
 ### <a name="online-classes"></a>オンライン クラス
 | ラーニング パートナー | 説明 |
 | --- | --- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/en-US/training-courses/deploying-web-apps-to-azure-app-service-16629) |[**Microsoft Virtual Academy**](https://mva.microsoft.com/en-US/training-courses/deploying-web-apps-to-azure-app-service-16629) では、Azure DocumentDB の構築に貢献した人々によるトレーニングが提供されています。 |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) |[**Microsoft Virtual Academy**](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) では、Azure DocumentDB の構築に貢献した人々によるトレーニングが提供されています。 |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) |[**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) は Azure トレーニングを提供する主要な Microsoft パートナーです。 MSDN サブスクライバーの場合、特典を使って Microsoft Azure トレーニングにアクセスしてください。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) |[**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) は Microsoft Azure の詳細なテクニカル トレーニングを提供します。 業界で定評のあるトレーナーによるインストラクター主導のトレーニングを、オンサイトまたはリモート クラスルームで受けることができます。 |
 
@@ -196,12 +196,11 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 | フォーラム プロバイダー | 説明 |
 | --- | --- |
 | [![StackOverflow](./media/documentdb-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-documentdb) |言語に依存しない、プログラマのための共同編集の質問と回答のサイトです。 弊社のタグ [azure-documentdb](http://stackoverflow.com/questions/tagged/azure-documentdb) |
-| [![MSDN](./media/documentdb-community/msdn.png)](http://go.microsoft.com/fwlink/?LinkId=631655) |Web Sites、DocumentDB など、Microsoft Azure の機能とサービスのサポートおよびフィードバックを得る際にお勧めです。 |
 
 ## <a name="contact-the-team"></a>チームへのお問い合わせ
 ![チーム](./media/documentdb-community/documentdb-team.png)
 
-技術的なサポートが必要ですか? ご不明な点がありますか? NoSQL が適合するかどうか不安に感じていますか? [DocumentDB エンジニアリング チームとの 1:1 の直接のチャットをスケジュール](http://www.askdocdb.com/)することができます。 [電子メール](mailto:askdocdb@microsoft.com)で問い合わせることや、[@DocumentDB](https://twitter.com/DocumentDB) 宛てにツイートすることもできます。 
+技術的なサポートが必要ですか? ご不明な点がありますか? NoSQL が適合するかどうか不安に感じていますか? [電子メール](mailto:askdocdb@microsoft.com)や [@DocumentDB](https://twitter.com/DocumentDB) でのツイートにより、DocumentDB エンジニアリング チームとの 1 対 1 の直接のチャットをスケジュールできます。
 
 ## <a name="open-source-projects"></a>オープン ソース プロジェクト
 以下のプロジェクトは、Azure DocumentDB チームによって、オープン ソース コミュニティと共同で自発的に開発されています。
@@ -239,6 +238,6 @@ DocumentDB ウィザードになりたいですか。 DocumentDB ウィザード
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

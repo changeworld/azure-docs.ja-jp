@@ -366,6 +366,6 @@ Azure Data Catalog では、個々の資産を削除することも、複数の�
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4bbd6f0033fd148832e56d0e0abef50c84a8422f
+ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
+ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
 
 
 ---
@@ -26,10 +26,10 @@ ms.openlocfilehash: 4bbd6f0033fd148832e56d0e0abef50c84a8422f
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
 
-> [!NOTE]
-> この記事の情報は、Linux ベースの HDInsight にのみ適用されます。 Windows ベースの HDInsight については、 [Windows ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dumps.md)
-> 
-> 
+
+
+> [!IMPORTANT]
+> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="a-namewhichservicesaservices"></a><a name="whichServices"></a>サービス
 次のサービスのヒープ ダンプを有効にできます。
@@ -47,7 +47,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 各スクリプトには、JVM に渡されるオプションを含む **\*\_OPTS** のエクスポートが含まれています。 たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
 
-これらが MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、これらの JVM オプションを含む 2 つのエントリがあります。 どちらも **mapred-site.xml**に含まれています。
+これらが MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。 マップや削減のプロセスはそれぞれ子コンテナーで実行され、これらの JVM オプションを含む&2; つのエントリがあります。 どちらも **mapred-site.xml**に含まれています。
 
 * **mapreduce.admin.map.child.java.opts**
 * **mapreduce.admin.reduce.child.java.opts**
@@ -62,7 +62,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     -XX:+HeapDumpOnOutOfMemoryError
 
- **+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
+**+** は、このオプションが有効になっていることを示します。 既定では無効になっています。
 
 > [!WARNING]
 > ヒープ ダンプは、ダンプ ファイルが大きくなる可能性があるため、既定では HDInsight の Hadoop サービスで無効になっています。 トラブルシューティングのために有効にした場合は、問題を再現してダンプ ファイルを収集したら、忘れずに無効にしてください。
@@ -96,7 +96,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
     メッセージが表示されたら、HTTP のアカウント名 (既定値: admin) とクラスターのパスワードを使用してサイトを認証します。
    
    > [!NOTE]
-   > Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。 その場合は、同じアカウント名とパスワードを再入力してください。
+   > Ambari によって、ユーザー名とパスワードの入力が&2; 回求められる場合があります。 その場合は、同じアカウント名とパスワードを再入力してください。
    > 
    > 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]**です。 中央の領域で、 **[Configs]** タブを選択します。
@@ -115,7 +115,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > 
    
     **[保存]** ボタンを押して、変更を保存します。 変更を説明する短いメモを入力できます。
-5. 変更が適用されると、 **再起動が必要** であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
+5. 変更が適用されると、 **再起動が必要** であることを示すアイコンが&1; つ以上のサービスの横に表示されます。
    
     ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 6. 再起動が必要な各サービスを選択し、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 これは、再起動したときに、このサービスからアラートが生成されないようにします。
@@ -134,6 +134,6 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
-ms.date: 09/26/2016
+ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 38480e52de891a3432eefadff16a057a864817de
+ms.sourcegitcommit: 7d153f1f45eb5cb06d7b960e7449450b4c74747a
+ms.openlocfilehash: e6c1fcea6ba7f6865cab97be9e3431bec2184064
 
 
 ---
@@ -28,6 +28,7 @@ ms.openlocfilehash: 38480e52de891a3432eefadff16a057a864817de
 
 ## <a name="run-an-hpc-pack-cluster-in-azure-vms"></a>Azure VM での HPC Pack クラスターの実行
 ### <a name="azure-templates"></a>Azure テンプレート
+* (GitHub) [HPC Pack 2016 クラスター テンプレート](https://github.com/MsHpcPack/HPCPack2016)
 * (Marketplace) [HPC Pack cluster for Linux workloads (Linux ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
 * (クイックスタート) [Create an HPC cluster with Linux compute nodes (Linux コンピューティング ノードがある HPC クラスターを作成する)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-linux-cn)
 
@@ -51,6 +52,6 @@ ms.openlocfilehash: 38480e52de891a3432eefadff16a057a864817de
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

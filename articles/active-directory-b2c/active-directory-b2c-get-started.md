@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 8838617f9b7281878ac3561a80bbba5e4506f410
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 77b8e707b5743ce2d0b3eb52f75828c9ab0337d9
 
 
 ---
 # <a name="azure-active-directory-b2c-create-an-azure-ad-b2c-tenant"></a>Azure Active Directory B2C: Azure AD B2C テナントを作成する
-Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以下に示す 3 つの手順を実行します。
+Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以下に示す&3; つの手順を実行します。
 
 ## <a name="step-1-sign-up-for-an-azure-subscription"></a>手順 1: Azure サブスクリプションにサインアップする
 既に Azure サブスクリプションがある場合は、この手順を省略できます。 ない場合は、 [Azure サブスクリプション](../active-directory/sign-up-organization.md) にサインアップし、Azure AD B2C にアクセスできるようにします。
@@ -67,6 +67,14 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
    > 
    > 
 
+## <a name="step-4-link-your-azure-ad-b2c-tenant-to-your-azure-subscription"></a>手順 4: Azure AD B2C テナントを Azure サブスクリプションにリンクする
+運用アプリで B2C テナントを使用する場合、利用料金を支払うために、Azure AD B2C テナントを Azure サブスクリプションにリンクする必要があります。 この方法については、[こちらの記事](active-directory-b2c-how-to-enable-billing.md)をご覧ください。
+
+   > [!IMPORTANT]
+   > Azure AD B2C テナントを Azure サブスクリプションにリンクしていない場合、Azure Portal の B2C 機能ブレードに警告メッセージ ("No Subscription linked to this B2C tenant or the Subscription needs your attention. (この B2C テナントにはサブスクリプションがリンクされていません。または、このサブスクリプションには注意が必要です。)") が表示されます。 アプリを運用環境に移行する前に、この手順を実行することが重要です。
+   > 
+   > 
+
 ## <a name="easy-access-to-the-b2c-features-blade-on-the-azure-portal"></a>Azure Portal の B2C 機能ブレードへの簡単アクセス
 Azure Portal の B2C 機能ブレードへのショートカットを追加し、アクセスしやすくしました。
 
@@ -82,6 +90,6 @@ Azure Portal の B2C 機能ブレードへのショートカットを追加し�
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

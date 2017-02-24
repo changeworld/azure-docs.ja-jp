@@ -1,10 +1,10 @@
 ---
-title: "仮想ネットワーク ゲートウェイの VPN Gateway 設定について | Microsoft Docs"
-description: "Azure Virtual Network の VPN Gateway 設定について説明します。"
+title: "クロスプレミス Azure 接続用の VPN Gateway の設定 | Microsoft Docs"
+description: "Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 02/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc3c8469657b50e4e09a1849d9c63f4ef1e0c414
+ms.sourcegitcommit: b902d2e79633959a6f76ddd45b1193177b0e8465
+ms.openlocfilehash: 1ac5a78c8d9419e4c641bf66f8dac7aa8cbcd179
 
 
 ---
-# <a name="about-vpn-gateway-settings"></a>VPN Gateway の設定について
-VPN Gateway 接続ソリューションは、複数のリソースの構成を使用して、仮想ネットワークとオンプレミスの間でネットワーク トラフィックを送信します。 各リソースには、構成可能な設定が含まれています。 どのように接続されるかは、リソースと設定の組み合わせによって決まります。
+# <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
+VPN ゲートウェイは、仮想ネットワークとオンプレミスの場所の間でパブリック接続を使って暗号化されたトラフィックを送信する仮想ネットワーク ゲートウェイの一種です。 VPN ゲートウェイを使用して、Azure バックボーン経由で仮想ネットワーク間にトラフィックを送信できます。
 
-この記事の各セクションでは、 **Resource Manager** デプロイメント モデルの VPN Gateway に関連するリソースと設定について説明します。 接続トポロジ ダイアグラムを使用すると、利用可能な構成の表示に役立つ場合があります。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照してください。 
+VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 このセクションでは、Resource Manager デプロイメント モデル に作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。  
 
 ## <a name="a-namegwtypeagateway-types"></a><a name="gwtype"></a>ゲートウェイの種類
-各仮想ネットワークに配置できる各種類の仮想ネットワーク ゲートウェイは 1 つに限られています。 仮想ネットワーク ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。
+各仮想ネットワークに配置できる各種類の仮想ネットワーク ゲートウェイは&1; つに限られています。 仮想ネットワーク ゲートウェイを作成するときは、ゲートウェイの種類が構成に対して適切であることを確認する必要があります。
 
 -GatewayType に使用できる値は次のとおりです。 
 
@@ -47,13 +47,13 @@ VPN Gateway では、 `-GatewayType` *Vpn*にする必要があります。
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ### <a name="configuring-the-gateway-sku"></a>ゲートウェイの SKU を構成する
-**Azure Portal でゲートウェイの SKU を指定する**
+####<a name="specifying-the-gateway-sku-in-the-azure-portal"></a>Azure Portal でゲートウェイの SKU を指定する
 
-Azure ポータルを使用して Resource Manager の仮想ネットワーク ゲートウェイを作成する場合、ドロップダウンを使用してワーク ゲートウェイ SKU を選択できます。 表示されるオプションは、選択したゲートウェイの種類と VPN の種類に対応します。
+Azure Portal を使用して Resource Manager の仮想ネットワーク ゲートウェイを作成する場合、ドロップダウンを使用してワーク ゲートウェイ SKU を選択できます。 表示されるオプションは、選択したゲートウェイの種類と VPN の種類に対応します。
 
 たとえば、ゲートウェイの種類で "VPN" を選択し、VPN の種類で "Policy-based" を選択した場合、PolicyBased の VPN では、"Basic" SKU のみが使用可能なため、"Basic" SKU のみが表示されます。 "Route-based" を選択する場合は、Basic、Standard、および HighPerformance SKU から選択できます。 
 
-**PowerShell を使用してゲートウェイの SKU を指定する**
+####<a name="specifying-the-gateway-sku-using-powershell"></a>PowerShell を使用してゲートウェイの SKU を指定する
 
 次の PowerShell の例では、 `-GatewaySku` が *Standard*として指定されています。
 
@@ -61,7 +61,7 @@ Azure ポータルを使用して Resource Manager の仮想ネットワーク �
     -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
     -GatewayType Vpn -VpnType RouteBased
 
-**ゲートウェイの SKU を変更する**
+####<a name="changing-a-gateway-sku"></a>ゲートウェイの SKU を変更する
 
 ゲートウェイ SKU をより強力な SKU にアップグレードする場合 (Basic/Standard から HighPerformance)、`Resize-AzureRmVirtualNetworkGateway` PowerShell コマンドレットを使用できます。 このコマンドレットを使用してゲートウェイ SKU のサイズをダウングレードすることもできます。
 
@@ -93,7 +93,7 @@ VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作�
 
 選択した VPN の種類は、作成するソリューションのすべての接続要件を満たす必要があります。 たとえば、同じ仮想ネットワークに対して、S2S VPN ゲートウェイ接続と P2S VPN ゲートウェイ接続を作成する必要がある場合は、VPN の種類として *RouteBased* を使用します。P2S では、VPN の種類が RouteBased である必要があるためです。 VPN デバイスで RouteBased VPN 接続がサポートされていることも、確認する必要があります。 
 
-一度作成された仮想ネットワーク ゲートウェイの VPN の種類を変更することはできません。 仮想ネットワーク ゲートウェイを削除し、新しいものを作成する必要があります。 次の 2 つの種類の VPN があります。
+一度作成された仮想ネットワーク ゲートウェイの VPN の種類を変更することはできません。 仮想ネットワーク ゲートウェイを削除し、新しいものを作成する必要があります。 次の&2; つの種類の VPN があります。
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
@@ -107,11 +107,9 @@ VPN Gateway 構成に対して仮想ネットワーク ゲートウェイを作�
 [!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
 ## <a name="a-namegwsubagateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
-仮想ネットワーク ゲートウェイを構成するには、まず VNet のゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットを正常に動作させるには、 *GatewaySubnet* という名前を付ける必要があります。 この名前により、Azure はこのサブネットをゲートウェイに使用することを認識できます。
+VNet の仮想ネットワーク ゲートウェイを構成するために、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する IP アドレスが含まれます。 ゲートウェイ サブネットを正常に動作させるには、 *GatewaySubnet* という名前を付ける必要があります。 この名前により、Azure はこのサブネットをゲートウェイに使用することを認識できます。
 
-ゲートウェイ サブネットの最小サイズは、作成する構成に完全に依存します。 /29 のような小さいゲートウェイ サブネットを作成できますが、/28 以上 (/28、/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。 
-
-ゲートウェイのサイズを大きめに作成しておくと、ゲートウェイ サイズの制限に達するのを防ぐことができます。 たとえば、S2S 接続用の、サイズが /29 のゲートウェイ サブネットの仮想ネットワーク ゲートウェイを作成済みだとします。 S2S と ExpressRoute が共存する構成を作成するには、 最小サイズが /28 のゲートウェイ サブネットが必要になります。 その構成を作成するには、ゲートウェイ サブネットを接続の最小要件となる /28 に変更しなければなりません。
+ゲートウェイ サブネットを作成する際、サブネットに含まれる IP アドレスの数を指定します。 ゲートウェイ サブネット内の IP アドレスは、ゲートウェイ サービスに割り当てられます。 一部の構成では、他の構成よりも多くの IP アドレスをゲートウェイ サービスに割り当てる必要があります。 ゲートウェイ サブネットには、将来の拡大や新しい接続構成の追加に対応できる十分な IP アドレスが含まれるようにしてください。 そのため、/29 のような小さいゲートウェイ サブネットを作成できますが、/28 以上 (/28、/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。 作成する構成の要件を調べて、ゲートウェイ サブネットがその要件を満たしていることを確認してください。
 
 次の Resource Manager PowerShell の例では、GatewaySubnet という名前のゲートウェイ サブネットを示しています。 CIDR 表記で /27 を指定しています。これで既存のほとんどの構成で IP アドレスに十分対応できます。
 
@@ -145,6 +143,6 @@ VPN Gateway 構成に対して REST API および PowerShell コマンドレッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

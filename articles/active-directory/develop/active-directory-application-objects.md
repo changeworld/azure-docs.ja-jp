@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/29/2016
 ms.author: bryanla;mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 6d2b0d0c28963693f8fa5607200e73572ea748a0
+ms.sourcegitcommit: 8f70d9aeb0a407cdb76a5ce25eb620be58bb2659
+ms.openlocfilehash: f453dcafe629c871dc29742208e4864454f4c57e
 
 
 ---
@@ -24,10 +24,10 @@ ms.openlocfilehash: 6d2b0d0c28963693f8fa5607200e73572ea748a0
 Azure Active Directory (Azure AD) の "アプリケーション" という用語の意味は誤解されやいものであり、裏付けとなるコンテキストが不足している場合は特にその可能性が高まります。 この記事の目的は、Azure AD アプリケーションの統合について概念的な側面と具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録および同意の例を示しながら明らかにして、この用語の意味をよりわかりやすくすることです。
 
 ## <a name="overview"></a>概要
-Azure AD アプリケーションとは、単なるソフトウェアのことではありません。 これは、アプリケーション ソフトウェアだけでなく、その Azure AD への登録 (ID 構成とも呼ばれる) も意味する概念的な用語です。Azure AD に登録することで、そのアプリケーション ソフトウェアは、実行時に認証および承認の "対話" に参加できるようになります。 定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。 対話プロトコルは [OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)によって定義されており、その目的は、クライアントとリソースがそれぞれリソースのデータに対してアクセス/保護を実行できるようにすることです。 次はもう 1 段階掘り下げ、Azure AD アプリケーション モデルにおいて、アプリケーションが内部的にはどのように表されるのかを見てみましょう。 
+Azure AD アプリケーションとは、単なるソフトウェアのことではありません。 これは、アプリケーション ソフトウェアだけでなく、その Azure AD への登録 (ID 構成とも呼ばれる) も意味する概念的な用語です。Azure AD に登録することで、そのアプリケーション ソフトウェアは、実行時に認証および承認の "対話" に参加できるようになります。 定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。 対話プロトコルは [OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)によって定義されており、その目的は、クライアントとリソースがそれぞれリソースのデータに対してアクセス/保護を実行できるようにすることです。 次はもう&1; 段階掘り下げ、Azure AD アプリケーション モデルにおいて、アプリケーションが内部的にはどのように表されるのかを見てみましょう。 
 
 ## <a name="application-registration"></a>アプリケーションの登録
-[Azure クラシック ポータル][AZURE-Classic-Portal]でアプリケーションを登録すると、Azure AD テナントに、アプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトが作成されます。
+[Azure portal][AZURE-Portal] でアプリケーションを登録すると、Azure AD テナントに、アプリケーション オブジェクトとサービス プリンシパル オブジェクトという&2; つのオブジェクトが作成されます。
 
 #### <a name="application-object"></a>アプリケーション オブジェクト
 Azure AD アプリケーションは、その唯一のアプリケーション オブジェクトによって*定義*されます。アプリケーション オブジェクトは、アプリケーションの登録先である Azure AD テナント (アプリケーションの "ホーム" テナントと呼ばれます) 内にあります。 アプリケーション オブジェクトは、ID に関連するアプリケーションの情報を提供するオブジェクトであり、対応するサービス プリンシパル オブジェクトを*派生*させて実行時に使用するためのテンプレートでもあります。 
@@ -37,7 +37,7 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 #### <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 サービス プリンシパル オブジェクトは、アプリケーション用のポリシーとアクセス許可を定義しており、実行時のリソースへのアクセスの際にアプリケーションを表す、セキュリティ プリンシパルの基となる情報を提供します。 サービス プリンシパル オブジェクトのスキーマは、Azure AD Graph [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって定義されています。 
 
-Azure AD テナントで、テナントの保護対象のリソースに対してアプリケーションがアクセスできるようにするには、このテナントにサービス プリンシパルを作成する必要があります。 サービス プリンシパルは、このテナントのユーザーの所有リソースに対してのアプリケーションのアクセスを Azure AD で保護するための基盤となっています。 シングルテナント アプリケーションは、サービス プリンシパルが 1 つのみ (ホーム テナント内に) 存在します。 また、マルチテナント [Web アプリケーション](active-directory-dev-glossary.md#web-client)は各テナントにサービス プリンシパルがあります。そのテナントからの管理者やユーザーにはリソースにアクセスできるように同意が与えられています。 同意を得た後、サービス プリンシパル オブジェクトは将来の承認要求のために参照されることになります。 
+Azure AD テナントで、テナントの保護対象のリソースに対してアプリケーションがアクセスできるようにするには、このテナントにサービス プリンシパルを作成する必要があります。 サービス プリンシパルは、このテナントのユーザーの所有リソースに対してのアプリケーションのアクセスを Azure AD で保護するための基盤となっています。 シングルテナント アプリケーションは、サービス プリンシパルが&1; つのみ (ホーム テナント内に) 存在します。 また、マルチテナント [Web アプリケーション](active-directory-dev-glossary.md#web-client)は各テナントにサービス プリンシパルがあります。そのテナントからの管理者やユーザーにはリソースにアクセスできるように同意が与えられています。 同意を得た後、サービス プリンシパル オブジェクトは将来の承認要求のために参照されることになります。 
 
 > [!NOTE]
 > アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。 マルチテナント アプリケーションの場合は、コンシューマー テナントでアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
@@ -45,7 +45,7 @@ Azure AD テナントで、テナントの保護対象のリソースに対し�
 > 
 
 ## <a name="example"></a>例
-次の図は、 **HR アプリ**という名前のサンプル マルチテナント アプリケーションを基に、アプリケーションのアプリケーション オブジェクトと、対応するサービス プリンシパル オブジェクトの間のリレーションシップを表しています。 このシナリオには、次の 3 つの Azure AD テナントがあります。 
+次の図は、 **HR アプリ**という名前のサンプル マルチテナント アプリケーションを基に、アプリケーションのアプリケーション オブジェクトと、対応するサービス プリンシパル オブジェクトの間のリレーションシップを表しています。 このシナリオには、次の&3; つの Azure AD テナントがあります。 
 
 * **Adatum** - **HR アプリ**を開発した会社が使用するテナント
 * **Contoso** - **HR アプリ**のコンシューマーである Contoso という組織が使用するテナント
@@ -69,10 +69,10 @@ Azure AD Graph API を通じて、OData [ServicePrincipal エンティティ][AA
 <!--Reference style links -->
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AZURE-Classic-Portal]: https://manage.windowsazure.com
+[AZURE-Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 39ebfe20f957b6e211eb5caebe4e064432876d20
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 72f69e334172ad69bedb9c8fc4d270a607d1598f
 
 
 ---
@@ -116,7 +116,7 @@ EngagementReach オブジェクトは、オプトイン / オプトアウト、`
 
 Engagement 構成 \<windows-phone-sdk-reach-configuration\> で MPNS を非アクティブ化することもできます。
 
-> 2.9.1) アプリケーションは、最初に提供される通知について説明し、**ユーザーの明確な許可 (オプトイン)を取得**し、また、**ユーザーがプッシュ通知をオプトアウトできるメカニズムを提供する必要があります**。 Microsoft プッシュ通知サービスを使用して提供されるすべての通知は、ユーザーに提供される説明に従っている必要があり、適用可能なすべての[アプリケーション ポリシー][コンテンツ ポリシー]と[特定のアプリケーションの種類の追加要件]に準拠している必要があります。
+> 2.9.1) アプリケーションは、最初に提供される通知について説明し、**ユーザーの明確な許可 (オプトイン)を取得**し、また、**ユーザーがプッシュ通知をオプトアウトできるメカニズムを提供する必要があります**。 Microsoft プッシュ通知サービスを使用して提供されるすべての通知は、ユーザーに提供される説明に従っている必要があり、適用可能なすべての[アプリケーション ポリシー][Content Policies]と[特定のアプリケーションの種類の追加要件]に準拠している必要があります。
 > 
 > 
 
@@ -280,12 +280,12 @@ Reach UI をカスタマイズできるようにします。
 > 
 
 [アプリケーション ポリシー]:http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
-[コンテンツ ポリシー]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
+[Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [特定のアプリケーションの種類の追加要件]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

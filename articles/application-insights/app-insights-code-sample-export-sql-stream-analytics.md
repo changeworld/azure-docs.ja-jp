@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート"
+title: "Azure Application Insights から SQL へのエクスポート | Microsoft Docs"
 description: "Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。"
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 03/06/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
+ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
+ms.openlocfilehash: fa9b09833f61e372738ff74022ac9fd6a288847f
 
 
 ---
@@ -79,7 +79,7 @@ ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。 それにより、興味深い多くのクエリを実行しやすくなります。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに&1; つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。 それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database の作成
 再び、[Azure Portal][portal] 内のサブスクリプションから、データを書き込むデータベース (および、まだ存在しない場合は新しいサーバー) を作成します。
@@ -232,7 +232,7 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ```
 
-最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。  [プロパティの種類と値についての詳細なデータ モデル リファレンス](app-insights-export-data-model.md)
+最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。 [プロパティの種類と値についての詳細なデータ モデル リファレンス](app-insights-export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>データベースへの出力のセットアップ
 SQL を出力として選択します。
@@ -269,15 +269,15 @@ SQL データベースを指定します。
 
 <!--Link references-->
 
-[診断]: app-insights-diagnostic-search.md
+[diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
-[メトリック]: app-insights-metrics-explorer.md
+[metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [start]: app-insights-overview.md
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

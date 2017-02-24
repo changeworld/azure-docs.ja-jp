@@ -1,6 +1,6 @@
 ---
-title: "IoT ソリューションの徹底的なセキュリティ保護 | Microsoft Docs"
-description: "この記事では、Microsoft Azure IoT Suite に組み込まれているセキュリティ機能について説明します"
+title: "Azure IoT ソリューションの徹底的なセキュリティ保護 | Microsoft Docs"
+description: "Microsoft Azure IoT Hub および Suite に組み込まれているセキュリティ機能を使用する方法"
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/16/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 896cec2befa3f8f681ecb4e14687300a90b5fc24
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: a4452dee2beec650f84dff4083e91684fe61d8b6
 
 
 ---
@@ -41,6 +41,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,13 +15,13 @@ ms.workload: tbd
 ms.date: 11/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
 
 
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
-[Microsoft Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Application Insights][start] で監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Microsoft Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、および使用状況を [Application Insights][start] で監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-cloudservices/sample.png)
 
@@ -56,7 +56,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 ## <a name="plan-resources-and-resource-groups"></a>リソースとリソース グループを計画する
 アプリからのテレメトリは、Application Insights 型の Azure リソースで保存、分析、表示されます。 
 
-各リソースはリソース グループに属しています。 リソース グループは、コストの管理、チーム メンバーへのアクセスの許可、単一の調整されたトランザクションでの更新のデプロイに使用します。 たとえば、1 回の操作で Azure クラウド サービスと Application Insights 監視リソースを[デプロイするスクリプトを記述](../resource-group-template-deploy.md)できます。
+各リソースはリソース グループに属しています。 リソース グループは、コストの管理、チーム メンバーへのアクセスの許可、単一の調整されたトランザクションでの更新のデプロイに使用します。 たとえば、1 回の操作で Azure クラウド サービスと Application Insights 監視リソースを[デプロイするスクリプトを記述](../azure-resource-manager/resource-group-template-deploy.md)できます。
 
 ### <a name="resources-for-components"></a>コンポーネント用のリソース
 推奨されているスキームは、アプリケーションの各コンポーネント (それぞれの Web ロールと worker ロール) 用に個別のリソースを作成することです。 各コンポーネントを別個に分析できますが、すべてのコンポーネントから重要なグラフをまとめる[ダッシュボード](app-insights-dashboards.md)を作成し、まとめて監視することもできます。 
@@ -65,7 +65,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 通常、ブラウザーのテレメトリはサーバー側の Web ロールと同じリソースに含まれています。
 
-さまざまなコンポーネント用の Application Insights リソースを 1 つのリソース グループに配置します。 これにより、まとめて管理することが簡単になります。 
+さまざまなコンポーネント用の Application Insights リソースを&1; つのリソース グループに配置します。 これにより、まとめて管理することが簡単になります。 
 
 ### <a name="separating-development-test-and-production"></a>開発、テスト、および運用の分離
 前のバージョンがライブである間に次の機能用のカスタム イベントを開発する場合、開発に関するテレメトリを別の Application Insights リソースに送信する必要があります。 そうしないと、ライブ サイトからのすべてのトラフィックの中からテストに関するテレメトリを見つけることは難しくなります。
@@ -135,7 +135,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 さらにテレメトリを追加し (後のセクションを参照)、アプリを発行して、ライブの診断と使用状況のフィードバックを取得します。 
 
 #### <a name="no-data"></a>データが表示されない場合
-* [[検索][diagnostic]] タイルを開き、個々のイベントを表示します。
+* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 * 数秒待機してから [最新の情報に更新] をクリックします。
 * [トラブルシューティング][qna]に関するページを参照してください。
@@ -163,7 +163,7 @@ Web ロールでは、HTTP 要求に関するデータが要求モジュール�
 
 HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。 Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。 SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
 
-要求を報告するためにインストルメント化された 2 つのサンプル worker ロール ([WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) と [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)) を参照してください。
+要求を報告するためにインストルメント化された&2; つのサンプル worker ロール ([WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) と [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)) を参照してください。
 
 ## <a name="exceptions"></a>例外
 各種 Web アプリケーションから未処理の例外を収集する方法の詳細については、 [Application Insights での例外の監視](app-insights-asp-net-exceptions.md) に関するページをご覧ください。
@@ -173,7 +173,7 @@ HTTP 要求の場合と同じ方法で追跡することで、worker ロール�
 * MVC5 コントローラー向けの [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) セットアップ ([こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12)を参照)
 * Web API 2 コントローラー向けの [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) セットアップ ([こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25)を参照)
 
-woker ロールの場合、例外を追跡する方法は 2 つあります。
+woker ロールの場合、例外を追跡する方法は&2; つあります。
 
 * TrackException(ex)
 * Application Insights トレース リスナー NuGet パッケージを追加した場合は、System.Diagnostics.Trace を使用して例外を記録できます。 [コード例はこちらです。](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
@@ -194,7 +194,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
- [こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)
+[こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)
 
   ![パフォーマンス カウンター](./media/app-insights-cloudservices/OLfMo2f.png)
 
@@ -212,10 +212,10 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 ![相関関係を持つテレメトリ](./media/app-insights-cloudservices/bHxuUhd.png)
 
 ## <a name="client-telemetry"></a>クライアント テレメトリ
-[Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタム テレメトリを記述することができます。
+[Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述できます。
 
 ## <a name="availability-tests"></a>可用性テスト
-[Web テストを設定][可用性]して、アプリケーションが動作していて応答することを確認します。
+[Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
 
 ## <a name="display-everything-together"></a>すべてをまとめて表示する
 システムの全体像を把握するため、主要な監視グラフを[ダッシュ ボード](app-insights-dashboards.md)でまとめることができます。 たとえば、各ロールの要求と失敗のカウントをピン留めできます。 
@@ -225,7 +225,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 クライアント モバイル アプリがある場合は、主要なユーザー操作の際にカスタム イベントを送信するコードを挿入してから、[HockeyApp ブリッジ](app-insights-hockeyapp-bridge-app.md)を作成します。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
-[この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
+[この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと&2; つの worker ロールが含まれたサービスを監視します。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
 .NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。 アプリを実行する前に、[各ロールに 4.6 をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)してください。
@@ -236,7 +236,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 * [Azure 診断の自動化](app-insights-powershell-azure-diagnostics.md)
 
 [api]: app-insights-api-custom-events-metrics.md
-[可用性]: app-insights-monitor-web-app-availability.md
+[availability]: app-insights-monitor-web-app-availability.md
 [azure]: app-insights-azure.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
@@ -248,6 +248,6 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

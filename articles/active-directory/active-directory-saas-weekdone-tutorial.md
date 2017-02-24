@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
+ms.sourcegitcommit: e1c9957f64e9a0a17823a881b060543a9346f457
+ms.openlocfilehash: 8e69d4efe14e29d9f009a4b65416207bb39faa8b
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: b7609a6353b32b9e4fbf05429d5d2ac22fd03f2c
 Weekdone と Azure AD の統合には、次の利点があります。
 
 * Weekdone にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に Weekdone にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に Weekdone にサインオン (シングル サインオン) できます。
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,7 +35,7 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Azure AD と Weekdone の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Weekdone でのシングル サインオンが有効なサブスクリプション
+* Weekdone シングル サインオン (SSO) が有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -45,12 +45,12 @@ Azure AD と Weekdone の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Weekdone の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -108,31 +108,31 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
     ![[シングル サインオンの構成]](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_03.png) 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_04.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_04.png) 
 
-    a. **[応答 URL]** ボックスに、**"https://weekdone.com/a/azure"** の形式で URL を入力します。
+   1. **[応答 URL]** ボックスに、**"https://weekdone.com/a/azure"** の形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
+   2. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
 
-    c. **[次へ]**をクリックします。
+   3. **[次へ]**をクリックします。
 
 1. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** を選択し、**[サインオン URL]** と **[識別子]** を入力して **[次へ]** をクリックします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_06.png) 
    
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Weekdone アプリケーションへのサインオンに使用する URL を入力します。**"https://weekdone.com/a/azure"**
+   1. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Weekdone アプリケーションへのサインオンに使用する URL を入力します。**"https://weekdone.com/a/azure"**
    
-    b. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
+   2. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
    
-    c. **[次へ]**をクリックします。
+   3. **[次へ]**をクリックします。
 2. **[Weekdone でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_05.png) 
    
-    a. **[証明書のダウンロード]**をクリックし、コンピューターに証明書ファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
-3. お使いのアプリケーション用に構成された SSO を取得するために、Weekdone のサポート チーム ( hello@weekdone.com. Weekdone チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (ISSUER URL、SAML SSO URL、および SINGLE SIGN-OUT SERVICE URL) をチームと共有してください。
+   1. **[証明書のダウンロード]**をクリックし、コンピューターに証明書ファイルを保存します。
+   2. **[次へ]**をクリックします。
+    
+3. お使いのアプリケーション用に構成された SSO を取得するには、Weekdone のサポート チーム (hello@weekdone.com) にお問い合わせください。 Weekdone チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (ISSUER URL、SAML SSO URL、および SINGLE SIGN-OUT SERVICE URL) をチームと共有してください。
 4. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -149,39 +149,45 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+    
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
-   
+4.    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_03.png) 
+    
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
+    
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+    3. **[次へ]**をクリックします。
+    
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
    
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+   1. **[名]** ボックスに「**Britta**」と入力します。  
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
+  
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_07.png) 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
+    
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
    
-    a. **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+   1. **[新しいパスワード]** の値を書き留めます。 
+   2. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-weekdone-test-user"></a>Weekdone テスト ユーザーの作成
 このセクションの目的は、Weekdone で Britta Simon というユーザーを作成することです。 Weekdone では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
@@ -243,6 +249,6 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

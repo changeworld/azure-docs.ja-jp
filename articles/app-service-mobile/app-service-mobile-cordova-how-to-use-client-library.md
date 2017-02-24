@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 314170f8d1ef228817543a80b99f4c2ff282866f
-ms.openlocfilehash: 8c783fc8e789ec31f0b8f4db90b5fa67334d95ab
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 8c783fc8e789ec31f0b8f4db90b5fa67334d95ab
 
 このガイドでは、最新の [Azure Mobile Apps 向け Apache Cordova プラグイン]を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの Apache Cordova プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の Apache Cordova プラグインに重点を置いています。
 
-## <a name="supported-platforms"></a>サポートされているプラットフォーム
+## <a name="supported-platforms"></a>サポートされるプラットフォーム
 この SDK は、iOS、Android、Windows の各デバイスで Apache Cordova v6.0.0 以降をサポートしています。  プラットフォームのサポートは次のとおりです。
 
 * Android API 19 ～ 24 (KitKat から Nougat)
@@ -42,6 +42,32 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 Apache Cordova アプリを初めて作成する場合は、 [こちら]のドキュメントを参照してください。
 
+## <a name="a-nameionicasetting-up-an-ionic-v2-app"></a><a name="ionic"></a>Ionic v2 アプリのセットアップ
+
+Ionic v2 プロジェクトを適切に構成するには、最初に基本的なアプリを作成してから、Cordova プラグインを追加します。
+
+```
+ionic start projectName --v2
+cd projectName
+ionic plugin add cordova-plugin-ms-azure-mobile-apps
+```
+
+次の行を `app.component.ts` に追加してクライアント オブジェクトを作成します。
+
+```
+declare var WindowsAzure: any;
+var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
+```
+
+これで、ブラウザーでプロジェクトを構築して実行できます。
+
+```
+ionic platform add browser
+ionic run browser
+```
+
+Azure Mobile Apps の Cordova プラグインは、Ionic v1 アプリと Ionic v2 アプリの両方をサポートしています。  Ionic v2 アプリの場合のみ、追加で `WindowsAzure` オブジェクトの宣言が必要です。
+
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
 ## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>方法: ユーザーを認証する
@@ -52,11 +78,11 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 * [cordova-plugin-device]
 * [cordova-plugin-inappbrowser]
 
-サーバー フローとクライアント フローの 2 つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
+サーバー フローとクライアント フローの&2; つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>方法: 外部リダイレクト URL 用に Mobile App Service を構成する
+### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の Apache Cordova アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  既定では認証サービスで認識されるのはサービスの利用方法だけであるため、localhost 上の OAuth UI フローによって問題が発生します。  問題のある OAuth UI フローの例は次のとおりです。
 
 * Ripple エミュレーター
@@ -158,6 +184,6 @@ API の詳細については、[API に関するドキュメント](http://azure
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
 
 
 ---
@@ -24,21 +24,20 @@ ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
 Hive は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。 Hive では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。 このドキュメントでは、Hive から Java UDF を使用する方法を説明します。
 
 ## <a name="requirements"></a>必要条件
-* Azure サブスクリプション
+
 * HDInsight クラスター (Windows ベースまたは Linux ベース)
   
-  > [!NOTE]
-  > このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
-  > 
-  > 
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+  
+  このドキュメントのほとんどの手順が、両方の種類のクラスターで機能します。ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
+
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 以降 (または同等の OpenJDK など)
 * [Apache Maven](http://maven.apache.org/)
 * テキスト エディターまたは Java IDE
   
   > [!IMPORTANT]
   > Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
-  > 
-  > 
 
 ## <a name="create-an-example-udf"></a>UDF のサンプルを作成する
 1. コマンド ラインで、次の手順を使用して新しい Maven プロジェクトを作成します。
@@ -216,6 +215,6 @@ Hive のユーザー定義関数の詳細について、apache.org で Hive wiki
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

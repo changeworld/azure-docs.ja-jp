@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2.0 プロトコル | Microsoft Docs"
+title: "Azure AD v2.0 でサポートされる認証プロトコルについて | Microsoft Docs"
 description: "Azure AD v2.0 エンドポイントでサポートされるプロトコルについて説明します。"
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 05a9fbab63ae19ee48eb88951dfdc4dc9beaabbd
+ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
+ms.openlocfilehash: 02bf4191e60bfe7a49a37eed10f7571e08502150
 
 
 ---
@@ -30,7 +30,7 @@ v2.0 エンドポイントは、業界標準のプロトコルである OpenID C
 > 
 
 ## <a name="the-basics"></a>基本操作
-OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
+OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに&4; つの当事者が関係します。
 
 ![OAuth 2.0 Roles](../../media/active-directory-v2-flows/protocols_roles.png)
 
@@ -56,7 +56,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-ここで、 `{tenant}` は次の 4 つの値のいずれかになります。
+ここで、 `{tenant}` は次の&4; つの値のいずれかになります。
 
 | 値 | Description |
 | --- | --- |
@@ -85,6 +85,6 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

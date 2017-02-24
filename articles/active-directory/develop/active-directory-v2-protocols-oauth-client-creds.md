@@ -1,6 +1,6 @@
 
 ---
-title: "Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー | Microsoft Docs"
+title: "Azure AD v2.0 を使用して、セキュリティで保護されたリソースにユーザーの介入なしでアクセスする | Microsoft Docs"
 description: "Azure AD で導入された OAuth 2.0 認証プロトコルを利用し、Web アプリケーションを構築します。"
 services: active-directory
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: d619f6e98563448859e54ecbb0605df1365246ce
+ms.sourcegitcommit: 08e2e561b6b939de4d829c816c1948361e16f6c4
+ms.openlocfilehash: 2bbfed6e14a77964a32b84ae3f78f3529f13043c
 
 
 ---
@@ -37,7 +37,7 @@ ms.openlocfilehash: d619f6e98563448859e54ecbb0605df1365246ce
 ![クライアントの資格情報フロー](../../media/active-directory-v2-flows/convergence_scenarios_client_creds.png)
 
 ## <a name="get-direct-authorization"></a>直接承認を取得する
-通常、次の 2 つのうちのいずれかの方法で、アプリはリソースにアクセスするための直接承認を受けます。1 つはリソースのアクセス制御リスト (ACL) を介する方法、もう 1 つは Azure Active Directory (Azure AD) でのアプリケーション アクセス許可の割り当てを介する方法です。 これらの 2 つの方法は、Azure AD で最も一般的であり、クライアント資格情報フローを実行するクライアントとリソースに対して推奨されています。 ただし、リソースは、他の方法でもそのクライアントを承認することができます。 各リソース サーバーでは、そのアプリケーションに最も適した方法を選択できます。
+通常、次の&2; つのうちのいずれかの方法で、アプリはリソースにアクセスするための直接承認を受けます。1 つはリソースのアクセス制御リスト (ACL) を介する方法、もう&1; つは Azure Active Directory (Azure AD) でのアプリケーション アクセス許可の割り当てを介する方法です。 これらの&2; つの方法は、Azure AD で最も一般的であり、クライアント資格情報フローを実行するクライアントとリソースに対して推奨されています。 ただし、リソースは、他の方法でもそのクライアントを承認することができます。 各リソース サーバーでは、そのアプリケーションに最も適した方法を選択できます。
 
 ### <a name="access-control-lists"></a>アクセス制御リスト
 リソース プロバイダーは、アプリケーション ID 一覧に基づいて承認チェックを適用する場合があります。この一覧はリソース プロバイダーによって認識され、一定レベルのアクセス許可が付与されます。 リソースが v2.0 エンドポイントからトークンを受け取るときに、トークンをデコードし、`appid` と `iss` の要求からクライアント アプリケーション ID を抽出できます。 その後、リソースは、保持している ACL とアプリケーションを比較します。 ACL の粒度と方法は、リソース間で大幅に異なる場合があります。
@@ -59,7 +59,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 アプリケーションのアクセス許可をアプリで使用するには、以降のセクションで説明する手順を行います。
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
-1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)でアプリケーションに移動するか、アプリを作成していない場合は[アプリを作成](active-directory-v2-app-registration.md)します。 アプリを作成するときに、少なくとも 1 つのアプリケーション シークレットを使用する必要があります。
+1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)でアプリケーションに移動するか、アプリを作成していない場合は[アプリを作成](active-directory-v2-app-registration.md)します。 アプリを作成するときに、少なくとも&1; つのアプリケーション シークレットを使用する必要があります。
 2. **アプリケーションの直接アクセス許可**セクションを検索し、アプリに必要なアクセス許可を追加します。
 3. アプリの登録を**保存**します。
 
@@ -211,6 +211,6 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

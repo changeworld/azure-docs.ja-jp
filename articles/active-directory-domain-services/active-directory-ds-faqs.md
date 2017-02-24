@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 01/13/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a681699c081422e5ea0da34ca56e17e786c221d1
+ms.sourcegitcommit: 5e6bab265b2b6eabd1a878492588c4eb39d1b332
+ms.openlocfilehash: 89dfabb8feafffee2ed8143c372b53d02033d582
 
 
 ---
@@ -28,13 +28,13 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 
 ### <a name="configuration"></a>構成
 #### <a name="can-i-create-multiple-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数のドメインを作成することはできますか。
-いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。  
+いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは&1; つだけ作成できます。  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
 いいえ。 Azure AD Domain Services は、クラシック Azure 仮想ネットワークでのみ有効にすることができます。 仮想ネットワーク ピアリングを使用してクラシック仮想ネットワークを Resource Manager 仮想ネットワークに接続すると、Resource Manager 仮想ネットワークで管理対象ドメインを使用することができます。
 
 #### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services をサブスクリプション内の複数の仮想ネットワークで利用できますか。
-このサービスそのものが、そのようなシナリオを直接サポートすることはありません。 Azure AD Domain Services は一度に 1 つの仮想ネットワークでのみ利用できます。 ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。 記事「 [Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」の説明に従って、これを実行できます。
+このサービスそのものが、そのようなシナリオを直接サポートすることはありません。 Azure AD Domain Services は一度に&1; つの仮想ネットワークでのみ利用できます。 ただし、Azure AD Domain Services を他の仮想ネットワークに公開するために複数の仮想ネットワーク間の接続を構成できます。 記事「 [Azure で仮想ネットワークに接続する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」の説明に従って、これを実行できます。
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD ドメイン サービスを有効にできますか。
 PowerShell/Azure AD Domain Services の自動デプロイは、現時点では利用できません。
@@ -58,6 +58,9 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 #### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-domains-provided-by-azure-ad-domain-services"></a>LDAP または他の AD 管理ツールを使用して、Azure AD Domain Services によって用意されるドメインのグループ メンバーシップを変更できますか。
 いいえ。 Azure AD Domain Services によってサービスされるドメインのグループ メンバーシップは変更できません。 ユーザー属性に対しても同様です。 ただし、Azure AD またはオンプレミスのドメインのいずれかで、グループ メンバーシップまたはユーザー属性を変更できます。 このような変更は、Azure AD Domain Services に自動的に同期されます。
 
+#### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更が管理対象ドメインに反映されるまで、どのくらいの時間がかかりますか。
+Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、管理対象ドメインに同期されます。 この同期プロセスはバック グラウンドで実行されます。 1 回のみ実行されるディレクトリの初期同期が完了した後は、Azure AD で行われた変更が管理対象ドメインに反映されるまで、通常は約 20 分かかります。
+
 #### <a name="can-i-extend-the-schema-of-the-domain-provided-by-azure-ad-domain-services"></a>Azure AD ドメイン サービスによって提供されるドメインのスキーマは拡張できますか。
 いいえ。 スキーマは、Microsoft が管理対象ドメインを管理することで管理されます。 Azure AD ドメイン サービスでは、スキーマの拡張機能はサポートされていません。
 
@@ -71,16 +74,14 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 #### <a name="is-there-a-free-trial-for-the-service"></a>サービスの無料試用版はありますか。
 このサービスは、Azure の無料試用版に含まれています。 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-#### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。
-#### <a name="do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
-いいえ。 Azure AD Domain Services は従量課金の Azure サービスであり、EMS には含まれていません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free、Basic、Premium) で利用でき、使用状況に応じて 1 時間単位で課金されます。
+#### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
+いいえ。 Azure AD Domain Services は従量課金の Azure サービスであり、EMS には含まれていません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free、Basic、および Premium) で使用できます 。 使用状況に応じて、時間単位で課金されます。
 
 #### <a name="what-azure-regions-is-the-service-available-in"></a>このサービスは、どの Azure のリージョンで利用できますか。
 Azure AD Domain Services を使用できる Azure リージョンの一覧については、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。
 
 
 
-
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

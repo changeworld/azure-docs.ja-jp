@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する | Microsoft Docs"
+title: "Azure 上の Spark にある Jupyter Notebook でのカスタム Maven パッケージの使用 | Microsoft Docs"
 description: "HDInsight Spark クラスター内の Jupyter Notebook で外部の Spark パッケージを使用するための構成手順を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 53753790b63d783a284aa0db39841c4bd6a8a0aa
-ms.openlocfilehash: 11bcf7f4f51d105f6693545669a2f17af196bf57
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2dd0d456d0c6b1c83a409fead63dacff26c03198
 
 
 ---
-# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
+# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
+> [!div class="op_single_selector"]
+> * [cell magic の使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+> * [スクリプト アクションの使用](hdinsight-apache-spark-python-package-installation.md)
+>
+>
 
-HDInsight (Linux) 上の Apache Spark クラスターにある Jupyter Notebook を、そのクラスターの標準では搭載されていない外部のコミュニティから提供されている **Maven** パッケージを使用するように構成する方法について説明します。 
+HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、そのクラスターの標準では搭載されていない外部のコミュニティから提供されている **Maven** パッケージを使用するように構成する方法について説明します。 
 
 利用できるすべてのパッケージは、 [Maven リポジトリ](http://search.maven.org/) で検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、コミュニティから提供されている全パッケージの一覧を [Spark Packages](http://spark-packages.org/)で入手できます。
 
@@ -35,27 +40,27 @@ HDInsight (Linux) 上の Apache Spark クラスターにある Jupyter Notebook 
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter Notebook で外部のパッケージを使用する
 1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-   
-   > [!NOTE]
-   > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
-   > 
-   > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
+    > [!NOTE]
+    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
+    > 
+    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
+    > 
 
+   
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[Spark]** をクリックします。
    
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
 
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
    
-    ![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
 
 5. 外部のパッケージを使用するようにノートブックを構成するには `%%configure` マジックを使用します。 外部のパッケージを使用するノートブックでは必ず、最初のコード セルで `%%configure` マジックを呼び出すようにしてください。 そうすることでセッションが開始される前に、指定のパッケージを使用するようにカーネルが構成されます。
 
@@ -73,7 +78,7 @@ HDInsight (Linux) 上の Apache Spark クラスターにある Jupyter Notebook 
    
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。
    
-    ![Use external packages with Jupyter notebook](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Use external packages with Jupyter notebook")
+    ![Jupyter Notebook で外部パッケージを使用する](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook で外部パッケージを使用する")
    
     c. 3 つの値をコロン (**:**) で区切って連結します。
    
@@ -122,6 +127,6 @@ HDInsight (Linux) 上の Apache Spark クラスターにある Jupyter Notebook 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

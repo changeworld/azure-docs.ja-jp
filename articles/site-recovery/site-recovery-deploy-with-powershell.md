@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery と PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンをレプリケートする | Microsoft Docs"
-description: "Azure Site Recovery と PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンのレプリケートを自動化する方法を説明します。"
+title: "PowerShell を使用してクラシック ポータルで Azure に VMware VM をレプリケートする | Microsoft Docs"
+description: "クラシック ポータルで Site Recovery と PowerShell を使用して VMM クラウド内の Hyper-V 仮想マシンのレプリケートを自動化する"
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,15 +12,15 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7ccf60c1f83a50b948b9855f2fedefeb75a0393b
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
 
 
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell---classic"></a>PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする - クラシック
+# <a name="replicate-hyper-v-vms-to-azure-with-powershell-in-the-classic-portal"></a>クラシック ポータルで PowerShell を使用して Azure に VMware VM をレプリケートする
 > [!div class="op_single_selector"]
 > * [Azure ポータル](site-recovery-vmm-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
@@ -39,7 +39,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 このシナリオの設定時に問題が発生した場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
 >
 >
 
@@ -49,14 +49,14 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### <a name="azure-prerequisites"></a>Azure の前提条件
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 * レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
-* 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。
+* 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認する必要があります。
 
 ### <a name="vmm-prerequisites"></a>VMM の前提条件
 * System Center 2012 R2 で実行される VMM サーバーが必要です。
-* 保護する VMM サーバーにクラウドが少なくとも 1 つ必要です。 このクラウドには以下のものが含まれている必要があります。
+* 保護する VMM サーバーにクラウドが少なくとも&1; つ必要です。 このクラウドには以下のものが含まれている必要があります。
   * 1 つ以上の VMM ホスト グループ。
-  * 各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。
-  * ソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。
+  * 各ホスト グループ内に&1; つ以上の Hyper-V ホスト サーバーまたはクラスター。
+  * ソース Hyper-V サーバー上に配置された&1; つ以上の仮想マシン。
 
 ### <a name="hyper-v-prerequisites"></a>Hyper-V の前提条件
 * ホスト Hyper-V サーバーは、Hyper-V ロールを持つ **Windows Server 2012** 以降か、**Microsoft Hyper-V Server 2012** が実行され、最新の更新プログラムがインストールされている必要があります。
@@ -74,7 +74,6 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 * ソース VMM サーバー上の保護する仮想マシンが VM ネットワークに接続している。 そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
 * レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。 フェールオーバー時にこのネットワークを選択します。 ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
-* [参照する](site-recovery-network-mapping.md) 。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
 Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定方法の詳細については、 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
@@ -269,7 +268,7 @@ marsagentinstaller.exe /q /nu
 操作の完了を確認するには、 [アクティビティを監視する](#monitor)の手順に従います。
 
 ## <a name="step-8-configure-network-mapping"></a>ステップ 8: ネットワーク マッピングを構成する
-ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。 さらに、1 つまたは複数の Azure 仮想ネットワークを作成します。 複数の VM ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。
+ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。 さらに、1 つまたは複数の Azure 仮想ネットワークを作成します。 複数の VM ネットワークを&1; つの Azure ネットワークにマップできることに注意してください。
 
 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続することに注意してください。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
@@ -302,7 +301,7 @@ marsagentinstaller.exe /q /nu
 ## <a name="step-9-enable-protection-for-virtual-machines"></a>ステップ 9: 仮想マシンの保護を有効化する
 サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。 以下の点に注意してください。
 
-仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
+仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしている必要があります。
 
 オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンにプロパティを設定する必要があります。 仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。 また、仮想マシンのプロパティの **[全般]** タブと **[ハードウェア構成]** タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。 VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
@@ -408,6 +407,6 @@ Azure Site Recovery PowerShell コマンドレットの詳細を[確認します
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

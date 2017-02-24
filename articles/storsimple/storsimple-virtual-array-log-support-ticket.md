@@ -1,5 +1,5 @@
 ---
-title: "StorSimple デバイス マネージャー - Microsoft Azure StorSimple Virtual Array のサポート チケットを記録する | Microsoft Docs"
+title: "StorSimple デバイス マネージャーを使用してサポート チケットを記録する | Microsoft Docs"
 description: "StorSimple デバイス マネージャーの診断機能と、その診断機能を使用して StorSimple Virtual Array のトラブルシューティングを行う方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: adf6454fef9cfdea60241909453266c79416ac4e
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のサポート要求を記録します
@@ -41,7 +41,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
     
     2. 現在の**サブスクリプション**、**サービス**の種類、および**リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
 
-    3. 問題が発生しているサービスに登録されている 1 台以上のデバイスを指定します。
+    3. 問題が発生しているサービスに登録されている&1; 台以上のデバイスを指定します。
 
     4. 複数の**サポート プラン**がサブスクリプションに関連付けられている場合は、適切なプランを選択します。 テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
 
@@ -70,6 +70,6 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

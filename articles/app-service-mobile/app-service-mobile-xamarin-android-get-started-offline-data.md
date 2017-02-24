@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 39741a7a9efccd0d1f63727e4d13b424804398bc
+ms.sourcegitcommit: 29cd1d3583dfcba5c1057ae1e81376930f52f887
+ms.openlocfilehash: 1152fcf551aa02264d626f87e97bc3f69b4f6778
 
 
 ---
@@ -63,7 +63,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
    `CheckItem` は `SyncAsync` を呼び出し、完了した各項目をモバイル アプリ バックエンドと同期します。 `SyncAsync` はプッシュとプルの両方を呼び出します。 **クライアントが変更したテーブルに対してプルを実行するたびに、プッシュが常に自動的に実行されます**。 これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。 この動作によって、予期しないプッシュが行われることがあります。 この動作については、「 [増分同期]」を参照してください。
 
 ## <a name="review-the-client-sync-code"></a>クライアント同期コードの確認
-チュートリアル「 [Create a Xamarin Android app (Xamarin Android アプリの作成)] 」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。 ここでは、チュートリアルのコードに既に含まれているものの概要を示します。 機能の概念的な概要については、「 [増分同期]」をご覧ください。
+チュートリアル「 [Create a Xamarin Android app (Xamarin Android アプリの作成)] 」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。 チュートリアルのコードにすでに含まれているものの概要を示します。 機能の概念的な概要については、「 [増分同期]」をご覧ください。
 
 * テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 `ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。 このメソッドにより、Azure Mobile Apps クライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、ローカルの SQLite データベースが作成されます。
   
@@ -124,12 +124,12 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Create a Xamarin Android app (Xamarin Android アプリの作成)]: app-service-mobile-xamarin-android-get-started.md
 [Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [Xamarin Studio]: http://xamarin.com/download
-[Xamarin 拡張機能]: http://xamarin.com/visual-studio
+[Xamarin extension]: http://xamarin.com/visual-studio
 [SyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.synccontext(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

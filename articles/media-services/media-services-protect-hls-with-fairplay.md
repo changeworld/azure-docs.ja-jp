@@ -1,5 +1,5 @@
 ---
-title: "Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護 | Microsoft Docs"
+title: "Microsoft PlayReady または Apple FairPlay を使用した HLS コンテンツの保護 - Azure | Microsoft Docs"
 description: "このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 09c4c9d43d6e29872ed6484b27334c8e9aa428b5
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 61ac849c20fa21181bd41289da896b4d53e0b9c3
 
 
 ---
@@ -95,7 +95,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
    * FairPlay ポリシー オプションの構成 FairPlay を構成する方法の詳細については、以下のサンプルの ConfigureFairPlayPolicyOptions() メソッドをご覧ください。
 
      > [!NOTE]
-     > 通常、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
+     > 通常、証明書と ASK は&1; 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは&1; 回のみです。
      >
      >
    * 制限 (オープンまたはトークン)
@@ -110,7 +110,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
      > FairPlay と他の DRM で暗号化されたストリームを配信する場合は、別々の配信ポリシーを構成する必要があります。
      >
      > * 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy
-     > * もう 1 つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
+     > * もう&1; つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
      >
      >
 6. ストリーミング URL を取得するために、OnDemand ロケーターを作成します。
@@ -130,7 +130,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 次の考慮事項が適用されます。
 
-* 指定できるのは、ゼロまたは 1 つの暗号化タイプのみです。
+* 指定できるのは、ゼロまたは&1; つの暗号化タイプのみです。
 * 1 つの暗号化のみが資産に適用された場合は、暗号化タイプを URL で指定する必要はありません。
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。  
@@ -566,6 +566,6 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

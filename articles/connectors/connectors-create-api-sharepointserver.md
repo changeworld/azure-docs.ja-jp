@@ -1,10 +1,10 @@
 ---
 title: "ロジック アプリで SharePoint Online コネクタを使用する | Microsoft Docs"
-description: "ロジック アプリで Azure App Service SharePoint Online コネクタを使用する方法の概要について説明します。"
+description: "ロジック アプリで SharePoint Online コネクタを使用する方法の概要について説明します"
 services: 
 documentationcenter: 
 author: msftman
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 0238a060-d592-4719-b7a2-26064c437a1a
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 76b6f627efdf189b873d9a6bdd722e73e837077d
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: c462c98e2ecef1afe62ef921265b8842b6ae717d
 
 
 ---
@@ -29,7 +29,7 @@ SharePoint コネクタを使用すると、SharePoint リストを操作でき�
 > 
 > 
 
-ロジック アプリに操作を追加する方法については、 [ロジック アプリの作成に関するページ](../app-service-logic/app-service-logic-create-a-logic-app.md)を参照してください。
+ロジック アプリに操作を追加する方法については、 [ロジック アプリの作成に関するページ](../logic-apps/logic-apps-create-a-logic-app.md)を参照してください。
 
 ## <a name="lets-talk-about-triggers-and-actions"></a>トリガーとアクション
 SharePoint コネクタは、アクションとして使用できます。SharePoint コネクタにはトリガーがあります。 すべてのコネクタは、JSON および XML 形式のデータに対応します。 
@@ -51,9 +51,9 @@ SharePoint コネクタでは、次のアクションやトリガーを使用で
 | CopyFile |ドキュメント ライブラリのファイルをコピーするために使用されます |
 | ExtractFolderV2 |ドキュメント ライブラリのフォルダーを抽出するために使用されます |
 | PostItem |SharePoint リストに新しい項目を作成します |
-| GetItem |SharePoint リストから 1 つの項目を取得します |
+| GetItem |SharePoint リストから&1; つの項目を取得します |
 | DeleteItem |SharePoint リストから項目を削除します |
-| PatchItem |SharePoint リストの 1 つの項目を更新します |
+| PatchItem |SharePoint リストの&1; つの項目を更新します |
 
 ### <a name="sharepoint-triggers"></a>SharePoint のトリガー
 次のイベントをリッスンできます。
@@ -78,7 +78,7 @@ SharePoint コネクタを使用するには、まず **接続** を作成して
 
 1. 検索ボックスに「SharePoint」と入力し、名前に SharePoint が含まれるすべてのエントリが返されるまで待ちます。   
    ![SharePoint の構成][1]  
-2.  **[SharePoint Online - ファイルの作成時]**   
+2. **[SharePoint Online - ファイルの作成時]**   
 3. **[Sign in to SharePoint Online (SharePoint Online にサインイン)]** をクリックします。   
    ![SharePoint の構成][2]    
 4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。   
@@ -316,7 +316,7 @@ SharePoint コネクタを使用するには、まず **接続** を作成して
 | default |操作に失敗しました。 |
 
 - - -
-### <a name="retrieves-a-single-item-from-a-sharepoint-list"></a>SharePoint リストから 1 つの項目を取得します
+### <a name="retrieves-a-single-item-from-a-sharepoint-list"></a>SharePoint リストから&1; つの項目を取得します
 **```GET: /datasets/{dataset}/tables/{table}/items/{id}```** 
 
 | 名前 | データ型 | 必須 | 場所 | 既定値 | 説明 |
@@ -348,7 +348,7 @@ SharePoint コネクタを使用するには、まず **接続** を作成して
 | default |操作に失敗しました。 |
 
 - - -
-### <a name="updates-an-item-in-a-sharepoint-list"></a>SharePoint リストの 1 つの項目を更新します
+### <a name="updates-an-item-in-a-sharepoint-list"></a>SharePoint リストの&1; つの項目を更新します
 **```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```** 
 
 | 名前 | データ型 | 必須 | 場所 | 既定値 | 説明 |
@@ -532,7 +532,7 @@ TablesList の必須プロパティ:
 | 値 |array |
 
 ## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+[ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)  
 
 [1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
 [2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 
@@ -542,6 +542,6 @@ TablesList の必須プロパティ:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

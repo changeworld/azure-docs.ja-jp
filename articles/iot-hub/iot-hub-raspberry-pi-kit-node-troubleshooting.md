@@ -1,5 +1,5 @@
 ---
-title: "トラブルシューティング | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (C) の接続 - トラブルシューティング | Microsoft Docs"
 description: "Raspberry Pi の Node.js エクスペリエンスに関するトラブルシューティング ページ"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: c0ddd7e68accf28ee65ba70ea992acd413da6f5b
-ms.openlocfilehash: 6a617da5135a362a0d6a0670c55242d64b1bdd85
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 2c5e2955584b165ca0ca95ce424a2050fb3f6ccd
 
 
 ---
@@ -121,7 +121,8 @@ Azure コマンド ライン インターフェイス (Azure CLI) は、プレ�
 Azure CLI で Azure IoT ハブを正常にプロビジョニングでき、IoT ハブに接続するデバイスを管理するためのツールが必要な場合には、以下をお試しください。
 
 ### <a name="device-explorer"></a>デバイス エクスプローラー
-[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) ツールは、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](iot-hub-devguide.md) と通信します。
+[デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ツールは、Windows ローカル コンピューターで実行され、Azure の IoT Hub に接続するツールです。 このツールでは、以下の [IoT Hub エンドポイント](iot-hub-devguide.md) と通信します。
+
 
 * "*デバイス ID 管理*": IoT Hub に登録されているデバイスのプロビジョニングと管理ができます。
 * "*デバイスからクラウドへのメッセージ受信*": デバイスから IoT ハブに送信されるメッセージを監視できます。
@@ -130,7 +131,7 @@ Azure CLI で Azure IoT ハブを正常にプロビジョニングでき、IoT �
 このツールで IoT ハブ接続文字列を構成すると、その機能を余すところなく使用できます。
 
 ### <a name="iothub-explorer"></a>iothub-explorer
-[iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) は、デバイスを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのメッセージの送信が可能になります。
+[iothub-explorer](https://github.com/Azure/iothub-explorer) は、デバイスを管理するためのサンプル マルチプラットフォーム CLI ツールです。 このツールを使うと、ID レジストリにあるデバイスの管理、デバイスからクラウドへのメッセージの監視、クラウドからデバイスへのメッセージの送信が可能になります。
 
 iothub-explorer ツールの最新版 (プレリリース版) をインストールするには、コマンド ライン環境で以下のコマンドを実行します。
 
@@ -153,6 +154,6 @@ iothub-explorer help
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

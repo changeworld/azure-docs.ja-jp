@@ -27,7 +27,7 @@ ms.openlocfilehash: 540ef8379145b764d0926649095db57fddb27329
 
 キー値の新しい範囲が既に既存のマッピングの一部になっていない場合は、新しいシャードの追加と、そのシャードへの新しいキーまたは範囲の関連付けはとてもシンプルな作業です。 
 
-### <a name="example-adding-a-shard-and-its-range-to-an-existing-shard-map"></a>例: シャードとその範囲を既存のシャード マップに追加する
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>例: シャードとその範囲を既存のシャード マップに追加する
 このサンプルでは、[TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx)、[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)、[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) の各メソッドを使用して、[ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) クラスのインスタンスを作成します。 次の例では、範囲 [300, 400) を保持する、**sample_shard_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。  
 
     // sm is a RangeShardMap object.

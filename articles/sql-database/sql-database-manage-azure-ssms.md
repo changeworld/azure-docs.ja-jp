@@ -12,22 +12,16 @@ ms.custom: overview
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/29/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: d9ff74a49742fa77f5989b8b05e0567e3ca81dc5
-ms.openlocfilehash: 89cb8827745b31b3a77b64d5cafd586957d60d30
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: c5f1ab504bcb639260b2500d462a56ea30cab9aa
 
 
 ---
-# <a name="managing-azure-sql-database-using-sql-server-management-studio"></a>SQL Server Management Studio を使用した Azure SQL データベースの管理
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-manage-portal.md)
-> * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
+# <a name="managing-azure-sql-database-using-sql-server-management-studio"></a>SQL Server Management Studio を使用した Azure SQL Database の管理
 
 SQL Server Management Studio (SSMS) を使用して Azure SQL Database のサーバーとデータベースを管理できます。 このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。 始める前に、Azure SQL Database にサーバーとデータベースを作成しておく必要があります。 詳細については、「[SQL Database チュートリアル: Azure Portal を使用して数分で SQL Database を作成する](sql-database-get-started.md)」と「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 
@@ -126,7 +120,7 @@ SQL データベースでは、個々のデータベースを監視するのに�
           sys.dm_exec_sessions s
           INNER JOIN sys.dm_exec_connections e
             ON s.session_id = e.session_id;
-* キャッシュされたクエリ プランの集計パフォーマンス統計を取得するには、**sys.dm\_exec\_query\_stats** ビューを使用します。 次のクエリは、平均 CPU 時間の上位 5 クエリに関する情報を返します。
+* キャッシュされたクエリ プランの集計パフォーマンス統計を取得するには、**sys.dm\_exec\_query\_stats** ビューを使用します。 次のクエリは、平均 CPU 時間の上位&5; クエリに関する情報を返します。
   
       SELECT TOP 5 query_stats.query_hash AS "Query Hash",
           SUM(query_stats.total_worker_time), SUM(query_stats.execution_count) AS "Avg CPU Time",
@@ -146,6 +140,6 @@ SQL データベースでは、個々のデータベースを監視するのに�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

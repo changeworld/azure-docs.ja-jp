@@ -1,5 +1,5 @@
 ---
-title: "ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する"
+title: "ASP.NET と SQL DB を使用する Azure で REST API を作成する | Microsoft Docs"
 description: "Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。"
 services: app-service\web
 documentationcenter: .net
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2188a56fee942cd58b20b92fb77891708ab62d24
+ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
+ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
 
 
 ---
@@ -59,7 +59,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 Azure にまだサインしていない場合は、サインインするように求められます。
 
-1. 構成ウィザードでは *ContactManager* に基づいて一意の名前が提示されます (下図を参照)。 近くのリージョンを選択します。  [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") を使用すると、最も待機時間が短いデータ センターを検索することができます。 
+1. 構成ウィザードでは *ContactManager* に基づいて一意の名前が提示されます (下図を参照)。 近くのリージョンを選択します。 [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") を使用すると、最も待機時間が短いデータ センターを検索することができます。 
 2. データベース サーバーをまだ作成していない場合は、 **[新しいサーバーの作成]**を選択して、データベース ユーザー名とパスワードを入力します。
    
     ![Configure Azure Website](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configAz.PNG)
@@ -493,7 +493,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
     ![Web API の保存確認のダイアログ ボックス][addwebapi007]
 
-    **セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。 このチュートリアルの後半では、この脆弱性を排除します。 詳細については、「[Preventing Cross-Site Request Forgery (CSRF) Attacks (クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止)][prevent-csrf-attacks]」を参照してください。
+    **セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。 このチュートリアルの後半では、この脆弱性を排除します。 詳しくは、「[クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][prevent-csrf-attacks]」をご覧ください。
 ## <a name="add-xsrf-protection"></a>XSRF 保護を追加する
 クロスサイト リクエスト フォージェリ (XSRF または CSRF) は、Web でホストされるアプリケーションに対する攻撃であり、それによって悪意のある Web サイトが、クライアント ブラウザーとそのブラウザーが信頼する Web サイトの間のやり取りに影響を及ぼす可能性があります。 これらの攻撃が可能になるのは、要求ごとに Web ブラウザーが自動的に認証トークンを Web サイトに送信するからです。 標準的な例は、ASP.NET のフォーム認証チケットなどの認証クッキーです。 ただし、永続的な認証メカニズム (Windows 認証や基本認証など) を使用する Web サイトも、これらの攻撃の対象になることがあります。
 
@@ -663,7 +663,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。 フィッシン�
 これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。 Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。 アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -672,7 +672,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。 フィッシン�
 
 Azure アプリケーションにデータを保存するには、Azure Storage を使用する方法もあります。Azure Storage には、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。 Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
 
-* [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
+* [MVC を使った Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
 * [ASP.NET MVC 5 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [ASP.NET Web API の入門ページ](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
 * [Debugging WAWS (WAWS のデバッグ)](web-sites-dotnet-troubleshoot-visual-studio.md)
@@ -685,10 +685,10 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
-[OAuth プロバイダーを追加する]: #addOauth
-[メンバーシップ データベースにロールを追加する]:#mbrDB
-[データ デプロイ スクリプトを作成する]:#ppd
-[メンバーシップ データベースを更新する]:#ppd2
+[Add an OAuth Provider]: #addOauth
+[Add Roles to the Membership Database]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -742,9 +742,9 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[XSRF 保護を追加する]: #xsrf
+[Add XSRF Protection]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
-[XSRF 保護を追加する]: #xsrf
+[Add XSRF Protection]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/PublishVSSolution.png
@@ -755,6 +755,6 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

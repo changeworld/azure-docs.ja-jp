@@ -1,122 +1,124 @@
 ---
-title: "AD FS での Azure AD Connect Health の使用 | Microsoft Docs"
-description: "オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。"
+title: "同期での Azure AD Connect Health の使用 | Microsoft Docs"
+description: "Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。"
 services: active-directory
 documentationcenter: 
 author: karavar
 manager: samueld
 editor: curtand
-ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
+ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
-ms.author: billmath
+ms.date: 02/12/2017
+ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 00ce8ecfed0516dd9423e6be15f6defbe886c598
+ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
+ms.openlocfilehash: fcea61a09654f41af57969a79fab3aabdba4e19c
 
 
 ---
-# <a name="using-azure-ad-connect-health-with-ad-fs"></a>AD FS での Azure AD Connect Health の使用
-次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。 また、Azure AD Connect Health での Active Directory ドメイン サービスの監視については、「 [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
+# <a name="using-azure-ad-connect-health-for-sync"></a>Azure AD Connect Health for Sync の使用
+次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory ドメイン サービスの監視については、「 [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
 
-## <a name="alerts-for-ad-fs"></a>AD FS のアラート
-Azure AD Connect Health アラート セクションには、アクティブなアラートの一覧が表示されます。 各アラートには、関連情報、解決の手順、関連ドキュメントのリンクが含まれます。
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/sync-blade.png)
 
-アクティブまたは解決済みのアラートをダブルクリックすると、新しいブレードが開かれ、追加情報、アラートを解決するための手順、関連ドキュメントへのリンクなどが表示されます。 過去に解決されたアラートの履歴データも表示できます。
+## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Azure AD Connect Health for Sync のアラート
+Azure AD Connect Health for Sync アラート セクションには、アクティブなアラートの一覧が表示されます。 各アラートには、関連情報、解決の手順、関連ドキュメントのリンクが含まれます。 アクティブまたは解決済みのアラートを選択すると、新しいブレードが開き、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。 過去に解決されたアラートの履歴データも表示できます。
 
-![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/alert2.png)
+アラートを選択すると、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。
 
-## <a name="usage-analytics-for-ad-fs"></a>AD FS の利用状況分析
-Azure AD Connect Health 利用状況分析では、フェデレーション サーバーの認証トラフィックを分析できます。 [利用状況分析] ボックスをダブルクリックすると、[利用状況分析] ブレードが開き、いくつかのメトリックとグループ分けが表示されます。
+![Azure AD Connect sync error](./media/active-directory-aadconnect-health-sync/alert.png)
 
-> [!NOTE]
-> AD FS で利用状況分析を使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。
-> 
-> 
+### <a name="limited-evaluation-of-alerts"></a>アラートの評価が限定される状況
+Azure AD Connect で既定の構成が使用されていない場合 (たとえば、属性フィルターが既定の構成からカスタム構成に変更されている場合)、Azure AD Connect Health エージェントは Azure AD Connect に関連するエラー イベントをアップロードしません。
 
-![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/report1.png)
+その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが Azure Portal の該当するサービスの下に表示されます。
 
-追加のメトリックの選択、時間範囲の指定、グループ分けの変更を行うには、利用状況の分析グラフを右クリックし、[グラフの編集] を選択します。 これで、時間範囲の指定、別のメトリックの選択、グループ分けの変更を行うことができます。 さまざまな "メトリック" に基づいて認証トラフィックの分布を確認し、次の表に示す "グループ化" という関連パラメーターを使用して各メトリックをグループ化できます。
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner.png)
 
-| メトリック | グループ化 | グループ化の意味と役立つ理由 |
-| --- | --- | --- |
-| 合計要求数: フェデレーション サービスによって処理された要求の合計数 |すべて |グループ化されていない要求の合計数が表示されます。 |
-| アプリケーション |対象となる証明書利用者に基づいて、要求の合計をグループ化します。 このグループ化は、どのアプリケーションがトラフィック全体のどの程度の割合を受信しているかを把握するのに役立ちます。 | |
-| サーバー |要求を処理したサーバーに基づいて、要求の合計をグループ化します。 このグループ化は、トラフィック全体の負荷分散を把握するのに役立ちます。 | |
-| 社内参加 |社内参加している (既知の) デバイスから要求が行われたかどうかに基づいて、要求の合計をグループ化します。 このグループ化は、ID インフラストラクチャに対して未知のデバイスを使用してリソースがアクセスされているかどうかを把握するのに役立ちます。 | |
-| 認証方法 |認証に使用された認証方法に基づいて、要求の合計をグループ化します。 このグループ化は、認証に使用される共通の認証方法を把握するのに役立ちます。 次の認証方法が考えられます。 <ol> <li>Windows 統合認証 (Windows)</li> <li>フォーム ベース認証 (フォーム)</li> <li>SSO (シングル サインオン)</li> <li>X509 証明書認証 (証明書)</li> <br>フェデレーション サーバーが SSO Cookie で要求を受け取る場合、その要求は SSO (シングル サインオン) と見なされます。 このような場合、Cookie が有効であれば、ユーザーは資格情報の提供を要求されずに、シームレスにアプリケーションにアクセスできます。 この動作は、フェデレーション サーバーによって保護される証明書利用者が複数ある場合でも共通です。 | |
-| ネットワークの場所 |ユーザーのネットワークの場所に基づいて、要求の合計をグループ化します。 イントラネットまたはエクストラネットを指定できます。 このグループ化は、イントラネットからのトラフィックとエクストラネットからのトラフィックの割合を把握するのに役立ちます。 | |
-| 失敗した要求の合計数: フェデレーション サービスによって処理され、失敗した要求の合計数。 <br> (このメトリックは、Windows Server 2012 R2 の AD FS でのみ使用できます) |エラーの種類 |あらかじめ定義されたエラーの種類に基づいて、エラーの数を表示します。 このグループ化は、一般的なエラーの種類を把握するのに役立ちます。 <ul><li>"ユーザー名またはパスワードが正しくない": 正しくないユーザー名またはパスワードによるエラー。</li> <li>"エクストラネット ロックアウト": エクストラネットからロックアウトされたユーザーから受信した要求によるエラー。 </li><li> "パスワードの有効期限が切れている": ユーザーが期限切れのパスワードを使用してログインしたことによるエラー。</li><li>"無効なアカウント": ユーザーが無効なアカウントを使用してログインしたことによるエラー。</li><li>"デバイス認証": ユーザーがデバイス認証を使用した認証に失敗したことによるエラー。</li><li>"ユーザー証明書の認証": ユーザーが無効な証明書が原因で認証に失敗したことによるエラー。</li><li>"MFA": ユーザーが Multi-Factor Authentication を使用した認証に失敗したことによるエラー。</li><li>"その他の資格情報": "発行承認": 承認の失敗によるエラー。</li><li>"発行委任": 発行委任エラーによるエラー。</li><li>"トークンの承認": サード パーティの ID プロバイダーからのトークンを ADFS が拒否したことによるエラー。</li><li>"プロトコル": プロトコル エラーによるエラー。</li><li>"不明": あらゆるものに対応します。 定義済みのカテゴリに分類されない、その他すべてのエラー。</li> |
-| サーバー |サーバーに基づいて、エラーをグループ化します。 このグループ分けは、サーバー間でのエラー分布を把握するのに役立ちます。 分布が均等でない場合は、サーバーが障害のある状態であることを示す可能性があります。 | |
-| ネットワークの場所 |要求のネットワークの場所 (イントラネットまたはエクストラネット) に基づいて、エラーをグループ化します。 このグループ分けは、エラーになる要求の種類を把握するのに役立ちます。 | |
-| アプリケーション |ターゲット アプリケーション (証明書利用者) に基づいて、エラーをグループ化します。 このグループ分けは、エラーの数が最も多いターゲット アプリケーションを把握するのに役立ちます。 | |
-| ユーザー数: システムでアクティブな一意のユーザー数の平均 |すべて |このメトリックは、選択したタイム スライスにフェデレーション サービスを使用するユーザー数の平均を示します。 ユーザーはグループ化されません。 <br>平均は、選択したタイム スライスによって異なります。 |
-| アプリケーション |ターゲット アプリケーション (証明書利用者) に基づいて、ユーザー数の平均をグループ化します。 このグループ分けは、どのアプリケーションを何人のユーザーが使用しているかを把握するのに役立ちます。 | |
+この状況を変更するには、[設定] をクリックし、Azure AD Connect Health エージェントがすべてのエラー ログをアップロードできるようにします。
 
-## <a name="performance-monitoring-for-ad-fs"></a>AD FS のパフォーマンスの監視
-Azure AD Connect Health のパフォーマンスの監視は、メトリックに関する監視情報を提供します。 [監視] ボックスを選択すると、新しいブレードが開かれ、メトリックに関する詳細情報が表示されます。
+![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner2.png)
 
-![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/perf1.png)
+## <a name="sync-insight"></a>同期に関する洞察
+管理者は、Azure AD に対する変更の同期にかかった時間と発生する変更の量を日常的に把握する必要があります。 この機能を利用すると、以下のグラフを使用してこれを簡単に視覚化できます。   
 
-ブレードの上部にある [フィルター] を選択すると、サーバーごとにフィルター処理して個々のサーバーのメトリックを表示することができます。 メトリックを変更するには、監視ブレードの監視グラフを右クリックし、[グラフの編集] を選択します。 次に、開いた新しいブレードのドロップダウンから追加のメトリックを選択し、パフォーマンス データを表示する時間範囲を指定します。
+* 同期処理の遅延
+* オブジェクト変更傾向
 
-## <a name="reports-for-ad-fs"></a>AD FS のレポート
-Azure AD Connect Health には、AD FS のアクティビティとパフォーマンスに関するレポートが用意されています。 管理者は、これらのレポートを使用して、AD FS サーバー上のアクティビティを詳細に把握することができます。
+### <a name="sync-latency"></a>同期の遅延
+この機能は、コネクタの同期処理 (インポート、エクスポートなど) に伴う遅延の傾向をグラフィカルに表示します。  処理の遅延をすばやく簡単に把握できることに加え (変更が大量に発生している場合などに有効)、待機時間が異常に長く調査が必要なケースを検出することができます。
 
-### <a name="top-50-users-with-failed-usernamepassword-logins"></a>ユーザー名とパスワードを使用したログインに失敗したユーザー上位 50 名
-AD FS サーバーで認証要求が失敗する一般的な理由の&1; つは、無効な資格情報、つまり、間違ったユーザー名かパスワードが要求に使用されていることです。 通常は、パスワードが複雑である場合、パスワードを忘れた場合、または入力ミスがあった場合に発生します。
+![同期の遅延](./media/active-directory-aadconnect-health-sync/synclatency02.png)
 
-しかし、AD FS サーバーによって処理される要求の数が想定以上に増える原因は、他にもあります。たとえば、アプリケーションでキャッシュされているユーザー資格情報の有効期限が切れた、悪意のあるユーザーが一連のよく知られたパスワードでアカウントにサインインしようとした、などです。 これらの&2; つの例は、要求の増加につながる可能性が高い理由です。
+既定では、Azure AD コネクタの "エクスポート" 処理の遅延のみ表示されます。  コネクタに関してそれ以外の処理を確認したり、他のコネクタからの処理を確認したりするには、グラフを右クリックし、[グラフの編集] を選択するか、[遅延グラフの編集] ボタンをクリックして具体的な処理とコネクタを選択してください。
 
-Azure AD Connect Health for AD FS では、無効なユーザー名またはパスワードでログインが失敗した上位 50 名のユーザーに関するレポートを表示できます。 このレポートは、ファーム内のすべての AD FS サーバーによって生成される監査イベントに基づいて作成されます。
+### <a name="sync-object-changes"></a>同期オブジェクトの変更
+評価後 Azure AD にエクスポートされている変更の数の傾向は、この機能によってグラフィカルに表示することができます。  現在、同期ログからこの情報を収集することは困難です。  このグラフを見れば、ご利用の環境内で生じている変更の数を簡単に監視できるだけでなく、発生しているエラーを視覚的に確認することができます。
 
-![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report1a.png)
+![同期の遅延](./media/active-directory-aadconnect-health-sync/syncobjectchanges02.png)
 
-このレポートから、次の情報を簡単に確認することができます。
+## <a name="object-level-synchronization-error-report-preview"></a>オブジェクト レベルの同期エラー レポート (プレビュー)
+Windows Server AD と Azure AD との間で Azure AD Connect を使って ID データを同期するときに発生する同期エラーについてのレポートは、この機能で入手できます。
 
-* 過去 30 日間に間違ったユーザー名/パスワードが原因で失敗した要求の合計数
-* 無効なユーザー名/パスワードでログインに失敗したユーザーの日単位の平均数
+* このレポートには、同期クライアント (Azure AD Connect Version 1.1.281.0 以降) によって記録されたエラーが含まれます。
+* 同期エンジンにおける直近の同期操作で発生したエラーが対象となります  (Azure AD Connector の "エクスポート")。
+* レポートに最新のデータを取り込むには、Azure AD Connect Health の同期エージェントに、適切なエンド ポイントへの送信接続が必要です。
+* このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新**されます。
+  その主な機能を示します。
 
-この部分をクリックすると、詳細な情報が記載されたメイン レポート ブレードが表示されます。 このブレードにはグラフがあり、ユーザー名またはパスワードが間違っている要求に関する基準を確立するために役立つトレンド情報が示されます。 さらに、失敗した試行回数における上位 50 人のユーザーの一覧が表示されます。
+  * エラー カテゴリの分類
+  * オブジェクトとエラー (カテゴリごと) の一覧表示
+  * エラーについてのすべてのデータを一元化
+  * 競合エラーのあるオブジェクトを並べて比較
+  * エラー レポートを CVS としてダウンロード (近日公開予定)
 
-このグラフには、次の情報が表示されます。
+### <a name="categorization-of-errors"></a>エラー カテゴリの分類
+レポートでは、既存の同期エラーが次のカテゴリで分類されます。
 
-* 無効なユーザー名/パスワードが原因で失敗したログインの日単位の合計数
-* ログインが失敗した一意のユーザーの日単位の合計数
-* 前回の要求のクライアント IP アドレス
-
-![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report3a.png)
-
-このレポートには、次の情報が表示されます。
-
-| レポート アイテム | Description |
+| カテゴリ | Description |
 | --- | --- |
-| ユーザー ID |使用されたユーザー ID を示しています。 この値はユーザーが入力した内容です。ときどき、間違ったユーザー ID が使用されていることがあります。 |
-| 失敗した試行の回数 |そのユーザー ID で試行が失敗した回数の合計を示しています。 この表は、失敗した試行の回数が多いものから降順に並べ替えられています。 |
-| 最後の失敗 |最後に失敗したときのタイム スタンプを示しています。 |
-| 最後のエラー IP |直近の無効な要求のクライアント IP アドレスを示します。 |
+| 重複する属性 |Azure AD において本来テナントごとに一意であるべき属性 (proxyAddresses、UserPrincipalName など) の値に重複があるオブジェクトを Azure AD Connect が作成または更新しようとしたときに発生するエラー。 |
+| 一致しないデータ |あいまいな一致の処理で、同期エラーを引き起こしたオブジェクトの突き合わせに失敗したときのエラー。 |
+| データ検証の失敗 |無効なデータに起因するエラー。たとえばサポート対象外の文字が重要な属性 (UserPrincipalName など) に使用されていたり、データの形式に誤りがあるために Azure AD への書き込み前の検証に失敗したりしたケースが対象となります。 |
+| 大きい属性 |許可されているサイズや長さ、数を超える属性がある場合に発生するエラー。 |
+| その他 |上記のカテゴリに該当しないその他すべてのエラー。 このカテゴリは、フィードバックに基づいてさらに細かく分類されます。 |
 
-> [!NOTE]
-> このレポートは&2; 時間ごとに自動的に更新され、その間に収集された新しい情報が反映されます。 そのため、直近の&2; 時間に行われたログインの試行は、レポートに反映されていない可能性があります。
-> 
-> 
+![同期エラー レポートの概要](./media/active-directory-aadconnect-health-sync/errorreport01.png)
+![同期エラー レポートのカテゴリ](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+
+### <a name="list-of-objects-with-error-per-category"></a>オブジェクトとエラー (カテゴリごと) の一覧表示
+それぞれのカテゴリを掘り下げていくと、そのカテゴリのエラーに該当する一連のオブジェクトが表示されます。
+![同期エラー レポートの一覧](./media/active-directory-aadconnect-health-sync/errorreport03.png)
+
+### <a name="error-details"></a>Error Details
+エラーごとの詳しい画面で以下のデータを確認できます。
+
+* 関連する "*AD オブジェクト*" の識別子
+* 関連する "*Azure AD オブジェクト*" の識別子 (該当する場合)
+* エラーの説明と解決方法
+* 関連記事
+
+![同期エラー レポートの詳細](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+
+### <a name="download-the-error-report-as-csv"></a>エラー レポートを CSV としてダウンロード
+[エクスポート] ボタンを選択すると、すべてのエラーに関する詳細情報を含んだ CSV ファイルをダウンロードできます。
 
 ## <a name="related-links"></a>関連リンク
+* [同期中のエラーのトラブルシューティング](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)
+* [重複属性の回復性](../connect/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
-* [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
 
-
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

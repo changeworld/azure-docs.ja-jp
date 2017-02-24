@@ -38,10 +38,10 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
 2. Application Insights リソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
-   
+
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
 3. 新しいリソースのインストルメンテーション キーを見つけます。 このキーは、後でコード プロジェクトに貼り付けます。
-   
+
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
@@ -107,11 +107,11 @@ SDK を手動で追加する:
 
 ### <a name="questions"></a>疑問がある場合...
 * *zip 内の `-core` コンポーネントと `-web` コンポーネントの関係について*
-  
+
   * `applicationinsights-core` は最小限の API を提供します。 このコンポーネントは常に必要です。
   * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。 このテレメトリを自動的に収集しない場合、このコンポーネントは省略できます。 たとえば、独自に記述する場合です。
 * *変更が発行されたときに SDK を更新するには*
-  
+
   * 最新の [Application Insights SDK for Java](https://aka.ms/qqkaq6) をダウンロードして、古いものと置き換えます。
   * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
@@ -239,11 +239,11 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
 > Application Insights では、MVC アプリケーションの HTTP 要求の形式として、 `VERB controller/action`が想定されます。 たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。 このグループ化により、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
-> 
-> 
+>
+>
 
 ### <a name="instance-data"></a>インスタンス データ
-個々のインスタンスを表示するには、特定の要求の種類をクリックします。 
+個々のインスタンスを表示するには、特定の要求の種類をクリックします。
 
 Application Insights には、2 種類のデータが表示されます。1 つは、格納され、平均、カウント、合計として表示される集計データです。もう 1 つは、HTTP 要求、例外、ページ ビュー、またはカスタム イベントの個々のレポートであるインスタンス データです。
 
@@ -260,16 +260,16 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
 
 * アプリケーションがこれらのポートにテレメトリを送信できるようにファイアウォールが設定されていることを確認します。
-  
+
   * dc.services.visualstudio.com:443
   * f5.services.visualstudio.com:443
 
-* 送信トラフィックをファイアウォール経由でルーティングする必要がある場合は、システム プロパティの `http.proxyHost` と `http.proxyPort` を定義します。 
+* 送信トラフィックをファイアウォール経由でルーティングする必要がある場合は、システム プロパティの `http.proxyHost` と `http.proxyPort` を定義します。
 
 * Windows サーバーに次のものをインストールします。
-  
+
   * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
-    
+
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
 
@@ -280,7 +280,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [TrackException への呼び出しをコードに挿入します][apiexceptions]。 
+* [TrackException への呼び出しをコードに挿入します][apiexceptions]。
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。 監視するメソッドを指定します。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>メソッドの呼び出しと外部依存関係の監視
@@ -370,7 +370,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 ![Web テストの例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
-可用性 Web テストの詳細については、[こちら][availability]をご覧ください。 
+可用性 Web テストの詳細については、[こちら][availability]をご覧ください。
 
 ## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
 [Java のトラブルシューティング](app-insights-java-troubleshoot.md)
@@ -387,7 +387,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[apiexceptions]: app-insights-api-custom-events-metrics.md#track-exception
+[apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md

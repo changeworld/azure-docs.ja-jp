@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Service への複数コンテナー Docker アプリケーションの継続的インテグレーションと継続的デプロイ | Microsoft Docs"
+title: "Azure Container Service と DC/OS を使用した CI/CD | Microsoft Docs"
 description: "DC/OS が実行されている Azure Container Service クラスターへの複数コンテナー Docker アプリのビルドとデプロイを完全に自動化する方法。"
 services: container-service
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 71fdc7b13fd3b42b136b4907c3d747887fde1a19
-ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
+ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
+ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
 
 
 ---
@@ -47,15 +47,18 @@ ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
 ## <a name="create-an-azure-container-service-cluster-configured-with-dcos"></a>DC/OS を使用して構成された Azure Container Service クラスターを作成する
 
 >[!IMPORTANT]
-> セキュリティで保護されたクラスターを作成するには、`az acs create` を呼び出す際に渡す SSH 公開キー ファイルを渡します。 `--generate-ssh-keys` オプションを使用して Azure CLI 2.0 でキーを生成すると同時にそれらを渡すことも、`--ssh-key-value` オプションを使用してパスをキーに渡すこともできます (既定の場所は、Linux では `~/.ssh/id_rsa.pub`、Windows では `%HOMEPATH%\.ssh\id_rsa.pub` ですが、変更できます)。 Linux で SSH 公開キー ファイルと秘密キー ファイルを作成するにはに、[Linux と Mac での SSH キーの作成](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 Windows で SSH 公開キー ファイルと秘密キー ファイルを作成するには、[Windows での SSH キーの作成](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
+> セキュリティで保護されたクラスターを作成するには、`az acs create` を呼び出す際に渡す SSH 公開キー ファイルを渡します。 `--generate-ssh-keys` オプションを使用して Azure CLI 2.0 でキーを生成すると同時にそれらを渡すことも、`--ssh-key-value` オプションを使用してパスをキーに渡すこともできます (既定の場所は、Linux では `~/.ssh/id_rsa.pub`、Windows では `%HOMEPATH%\.ssh\id_rsa.pub` ですが、変更できます)。
+<!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
+> Linux で SSH 公開キー ファイルと秘密キー ファイルを作成するにはに、[Linux と Mac での SSH キーの作成](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
+> Windows で SSH 公開キー ファイルと秘密キー ファイルを作成するには、[Windows での SSH キーの作成](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json)に関するページを参照してください。 
 
 1. 最初に、ターミナル ウィンドウに [as login](/cli/azure/#login) コマンドを入力して、Azure CLI で Azure サブスクリプションにログインします。 
 
     `az login`
 
-1. [az resource group create](/cli/azure/resource/group#create) を使用して、クラスターを配置するリソース グループを作成します。
+1. [az group create](/cli/azure/group#create) を使用して、クラスターを配置するリソース グループを作成します。
     
-    `az resource group create --name myacs-rg --location westus`
+    `az group create --name myacs-rg --location westus`
 
     最も近い [Azure データセンター リージョン](https://azure.microsoft.com/regions)を指定することをお勧めします。 
 
@@ -87,7 +90,7 @@ ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
 * `/service-b` は .NET Core サービスであり、`service-a` によって REST 経由で呼び出されます。
 * `service-a` と `service-b` の両方で、それぞれ Node.js ベースと .NET Core ベースのコンテナー イメージを表す各ディレクトリに `Dockerfile` が含まれています。 
 * `docker-compose.yml` は、ビルドしてデプロイするサービスのセットを宣言します。
-* `service-a` と `service-b` のほか、`cache` という名前の 3 番目のサービスによって、`service-a` で使用できる Redis Cache が実行されます。 `cache` は、ソース リポジトリにコードがないという点で、最初の 2 つのサービスと異なります。 その代わり、事前に作成された `redis:alpine` イメージを Docker Hub から取得して ACS にデプロイします。
+* `service-a` と `service-b` のほか、`cache` という名前の&3; 番目のサービスによって、`service-a` で使用できる Redis Cache が実行されます。 `cache` は、ソース リポジトリにコードがないという点で、最初の&2; つのサービスと異なります。 その代わり、事前に作成された `redis:alpine` イメージを Docker Hub から取得して ACS にデプロイします。
 * `/service-a/server.js` には、`service-a` が `service-b` と `cache` の両方を呼び出すコードが含まれています。 `docker-compose.yml` で付けられた名前で、`service-a` コードが `service-b` と `cache` を参照することに注意してください。 `docker-compose` を使ってローカル コンピューター上でこれらのサービスを実行すると、Docker によって、すべてのサービスが適切にネットワーク接続され、名前で互いを検出します。 負荷分散されたネットワークを使用してクラスター環境でサービスを実行すると、通常、ローカルで実行するよりもかなり複雑になります。 さいわい、CI/CD フローを設定する Azure CLI コマンドを使用すると、この簡単なサービス検出コードが ACS でそのまま実行されます。 
 
     ![複数コンテナー サンプル アプリの概要](media/container-service-setup-ci-cd/multi-container-sample-app-overview.PNG)
@@ -115,7 +118,7 @@ ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
 * `vstsProject`: [Visual Studio Team Services](https://www.visualstudio.com/team-services/) (VSTS) は、ワークフローを "*進める*" ように構成されています (実際のビルド タスクとデプロイ タスクは ACS のコンテナー内で実行されます)。 特定の VSTS アカウントとプロジェクトを使用したい場合は、`--vsts-account-name` パラメーターと `--vsts-project-name` パラメーターを使用して定義できます。
 * `buildDefinition`: 各ビルドで実行されるタスクを定義します。 コンテナー イメージは、docker-compose.yml で定義されているサービスごとに生成され、Docker コンテナー レジストリにプッシュされます。 
 * `containerRegistry`: Azure Container Registry は、Docker コンテナー レジストリを実行する管理されたサービスです。 新しい Azure コンテナー レジストリは、既定の名前で作成されます。代わりに、`--registry-name` パラメーターを使用して Azure コンテナー レジストリの名前を指定することもできます。
-* `releaseDefinition`: 各デプロイで実行されるタスクを定義します。 docker-compose.yml で定義されているサービスのコンテナー イメージは、コンテナー レジストリからプルされ、ACS クラスターにデプロイされます。 既定では、"*開発*"、"*テスト*"、"*運用*" の 3 つの環境が作成されます。 リリース定義は、ビルドが正常に完了するたびに "*開発*" に自動的にデプロイされるよう既定で構成されています。 リリースは、ビルドし直すことなく "*テスト*" または "*運用*" に手動で昇格できます。 既定のフローは VSTS でカスタマイズできます。 
+* `releaseDefinition`: 各デプロイで実行されるタスクを定義します。 docker-compose.yml で定義されているサービスのコンテナー イメージは、コンテナー レジストリからプルされ、ACS クラスターにデプロイされます。 既定では、"*開発*"、"*テスト*"、"*運用*" の&3; つの環境が作成されます。 リリース定義は、ビルドが正常に完了するたびに "*開発*" に自動的にデプロイされるよう既定で構成されています。 リリースは、ビルドし直すことなく "*テスト*" または "*運用*" に手動で昇格できます。 既定のフローは VSTS でカスタマイズできます。 
 * `containerService`: ターゲット ACS クラスター (DC/OS 1.8 を実行している必要があります)。
 
 
@@ -228,7 +231,7 @@ DC/OS ダッシュボードを表示している間に、サービスをスケ�
 1. 実行中の Web アプリに戻り、*[Say It Again]* ボタンを繰り返しクリックします。 `service-b` の呼び出しが、ホスト名のコレクションでラウンドロビンを開始することがわかります。一方、`service-a` の単一インスタンスは同じホストを報告し続けます。   
 
 ## <a name="promote-a-release-to-downstream-environments-without-rebuilding-container-images"></a>コンテナー イメージをビルドし直すことなく下流の環境にリリースを昇格する
-既定では、VSTS リリース パイプラインによって "*開発*"、"*テスト*"、"*運用*" の 3 つの環境が設定されます。 ここまで、"*開発*" へのデプロイを行いました。 コンテナー イメージをビルドし直すことなく、次の下流の環境である "*テスト*" にリリースを昇格する方法について見ていきます。 このワークフローを実行することで、前の環境でテストしたのとまったく同じイメージをデプロイできます。この概念は "*不変のサービス*" と呼ばれ、未検出のエラーが運用環境に入り込む可能性を低くします。
+既定では、VSTS リリース パイプラインによって "*開発*"、"*テスト*"、"*運用*" の&3; つの環境が設定されます。 ここまで、"*開発*" へのデプロイを行いました。 コンテナー イメージをビルドし直すことなく、次の下流の環境である "*テスト*" にリリースを昇格する方法について見ていきます。 このワークフローを実行することで、前の環境でテストしたのとまったく同じイメージをデプロイできます。この概念は "*不変のサービス*" と呼ばれ、未検出のエラーが運用環境に入り込む可能性を低くします。
 
 1. VSTS Web UI で **[Releases (リリース)]** に移動します。
 
@@ -325,26 +328,26 @@ ACS クラスターを削除します。
 1. ACS クラスターが含まれているリソース グループを検索します。
 1. リソース グループのブレード UI を開き、ブレードのコマンド バーにある **[削除]** をクリックします。
 
-Azure コンテナー レジストリを削除します。
-1. Azure Portal で、Azure コンテナー レジストリを検索して削除します。 
+Azure コンテナー レジストリを削除します。Azure Portal で、Azure コンテナー レジストリを検索して削除します。 
 
-[Visual Studio Team Services アカウントには、最初の 5 ユーザーを無料で使用できる Basic アクセス レベルが用意されています](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/)が、ビルドとリリースの定義を削除できます。
-1. VSTS ビルド定義を削除します。
+[Visual Studio Team Services アカウントには、最初の&5; ユーザーを無料で使用できる Basic アクセス レベルが用意されています](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/)が、ビルドとリリースの定義を削除できます。
+
+VSTS ビルド定義を削除します。
         
-    * ブラウザーでビルド定義 URL を開き、(現在表示されているビルド定義の名前の横にある) **[ビルド定義]** リンクをクリックします。
-    * 削除したいビルド定義の横にあるアクション メニューをクリックし、**[定義の削除]** を選択します。
+1. ブラウザーでビルド定義 URL を開き、(現在表示されているビルド定義の名前の横にある) **[ビルド定義]** リンクをクリックします。
+2. 削除したいビルド定義の横にあるアクション メニューをクリックし、**[定義の削除]** を選択します。
 
-    ![VSTS ビルド定義の削除](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
+`![VSTS ビルド定義の削除](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
 
-1. VSTS リリース定義を削除します。
+VSTS リリース定義を削除します。
 
-    * ブラウザーでリリース定義 URL を開きます。
-    * 左側の [リリース定義] リストで、削除するリリース定義の横にあるドロップダウンをクリックし、**[削除]** を選択します。
+1. ブラウザーでリリース定義 URL を開きます。
+2. 左側の [リリース定義] リストで、削除するリリース定義の横にあるドロップダウンをクリックし、**[削除]** を選択します。
 
-    ![VSTS リリース定義の削除](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
+`![VSTS リリース定義の削除](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

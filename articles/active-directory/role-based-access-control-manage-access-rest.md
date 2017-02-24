@@ -1,5 +1,5 @@
 ---
-title: "REST API を使用したロールベースの Access Control の管理"
+title: "REST を使用したロールベースのアクセス制御 - Azure AD | Microsoft Docs"
 description: "REST API を使用したロールベースの Access Control の管理"
 services: active-directory
 documentationcenter: na
@@ -12,21 +12,19 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d50031941be34d1e543d901747018ba0635be4d8
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: f63381e3349063ba9dd4ceb67d644c1d71d73369
 
 
 ---
-# <a name="managing-role-based-access-control-with-the-rest-api"></a>REST API を使用したロールベースの Access Control の管理
+# <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
-> 
-> 
 
 Azure ポータルと Azure Resource Manager API のロールベースの Access Control (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。 この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
@@ -43,13 +41,13 @@ Azure ポータルと Azure Resource Manager API のロールベースの Access
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. *{api-version}* は 2015-07-01 に置き換えます。
 3. *{filter}* には、ロールの割り当て一覧をフィルター処理するために適用する条件を指定します。
-   
+
    * (サブスコープのロールの割り当ては含めずに) 指定したスコープのみを対象にロールの割り当てを一覧表示する: `atScope()`    
    * 特定のユーザー、グループ、またはアプリケーションを対象にロールの割り当てを一覧表示する: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * (グループから継承されたものも含む) 特定のユーザーを対象にロールの割り当てを一覧表示する: `assignedTo('{objectId of user}')`
@@ -93,7 +91,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -134,7 +132,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。 親スコープでロールの割り当てを作成すると、同じロールの割り当てが、すべての子スコープに継承されます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -192,7 +190,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -233,13 +231,13 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールを一覧表示する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. *{api-version}* は 2015-07-01 に置き換えます。
 3. *{filter}* には、ロールの一覧をフィルター処理するために適用する条件を指定します。
-   
+
    * 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示する: `atScopeAndBelow()`
    * 完全な表示名を使用してロールを検索する: `roleName%20eq%20'{role-display-name}'` ロールの完全な表示名の URL エンコード形式を使用します。 例: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
@@ -316,7 +314,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -395,8 +393,8 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+1. *{scope}* は、カスタム ロールの&1; つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -443,7 +441,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 | properties.description |いいえ |文字列 |カスタム ロールの説明。 最大 1,024 文字です。 |
 | properties.type |はい |文字列 |"CustomRole" に設定します。 |
 | properties.permissions.actions |あり |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作を指定します。 |
-| properties.permissions.notActions |いいえ |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作から除外する操作を指定します。 |
+| properties.permissions.notActions |なし |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作から除外する操作を指定します。 |
 | properties.assignableScopes |はい |String[] |カスタム ロールを使うことができるスコープの配列。 |
 
 ### <a name="response"></a>応答
@@ -498,8 +496,8 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+1. *{scope}* は、カスタム ロールの&1; つ目の *AssignableScope* に置き換えます。 各種レベルのスコープを指定する例を次に示します。
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -602,7 +600,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 URI 内の次の項目を置換して要求をカスタマイズします。
 
 1. *{scope}* は、ロールの定義を削除する対象のスコープに置き換えます。 各種レベルのスコープを指定する例を次に示します。
-   
+
    * サブスクリプション: /subscriptions/{subscription-id}  
    * リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -649,12 +647,12 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

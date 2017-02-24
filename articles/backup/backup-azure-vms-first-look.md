@@ -4,7 +4,7 @@ description: "バックアップ コンテナーを使用して Azure VM を保�
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 722820dc-b65f-425c-a9e5-c1946e896a87
 ms.service: backup
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/15/2016
+ms.date: 1/10/2017
 ms.author: markgal; jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: 9eddde0df61ac7dde9b24f973e7eec786cd48f24
-ms.openlocfilehash: b8f62d1fab4b9132f35e2fab632968cf001c832d
+ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
+ms.openlocfilehash: 895eeb27b6050897575c5d6f20f16ea3f99fdcf3
 
 
 ---
@@ -43,7 +43,7 @@ VM をバックアップする手順は、主に次の 5 つです。
 ![High-level view of VM backup process](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。 このチュートリアルは、Azure クラシック ポータルで作成できる VM 向けです。 Azure Backup サービスでは、Resource Manager ベースの VM がサポートされています。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、「[最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)」を参照してください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 このチュートリアルは、Azure クラシック ポータルで作成できる VM 向けです。 Azure Backup サービスでは、Resource Manager ベースの VM がサポートされています。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、「[最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)」を参照してください。
 >
 >
 
@@ -211,6 +211,6 @@ VM をバックアップする手順は、主に次の 5 つです。
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO4-->
 
 

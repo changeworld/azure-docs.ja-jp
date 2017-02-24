@@ -1,5 +1,5 @@
 ---
-title: "Datadog を使用した Azure Container Service クラスターの監視 | Microsoft Docs"
+title: "Azure DC/OS クラスターの監視 - Datadog | Microsoft Docs"
 description: "Datadog を使用して Azure コンテナー サービス クラスターを監視します。 DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。"
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eeb257e00f89948c9623ac05303d46209454a615
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 8dfd53346b6198bf5ecab4b4b73bfed93fa46b18
 
 
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>Datadog を使用した Azure コンテナー サービス クラスターの監視
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Datadog を使用した Azure Container Service DC/OS クラスターの監視
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Datadog エージェントをデプロイする方法について説明します。 この構成を行うには、Datadog のアカウントが必要です。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,7 +40,7 @@ Datadog は監視サービスです。Azure コンテナー サービス クラ�
 
 ![Datadog package within the DC/OS Universe](./media/container-service-monitoring/datadog1.png)
 
-この構成作業には、Datadog アカウントまたは無料試用版アカウントが必要です。 Datadog Web サイトにログインしたら、左側の [Integrations (統合)]、[API's (API)] の順にクリックします。 
+この構成作業には、Datadog アカウントまたは無料試用版アカウントが必要です。 Datadog Web サイトにログインしたら、左側の [Integrations (統合)]、[[APIs (API)]](https://app.datadoghq.com/account/settings#api) の順にクリックします。 
 
 ![Datadog API key](./media/container-service-monitoring/datadog2.png)
 
@@ -48,11 +48,11 @@ Datadog は監視サービスです。Azure コンテナー サービス クラ�
 
 ![Datadog configuration in the DC/OS Universe](./media/container-service-monitoring/datadog3.png) 
 
-上記の構成で、インスタンス数を「10000000」に設定します。これでクラスターに新しいノードが追加されると、そのノードに対して自動的にエージェントがデプロイされます。 これは暫定的な措置です。 パッケージをインストールしたら、Datadog Web サイトに戻り、[Dashboards (ダッシュ ボード)] を見つけます。 ここには、カスタム ダッシュボードと統合ダッシュボードが表示されます。 Docker 統合ダッシュボードには、クラスターの監視に必要なすべてのコンテナー メトリックが表示されます。 
+上記の構成で、インスタンス数を「10000000」に設定します。これでクラスターに新しいノードが追加されると、そのノードに対して自動的にエージェントがデプロイされます。 これは暫定的な措置です。 パッケージをインストールしたら、Datadog Web サイトに戻り、[[Dashboards (ダッシュ ボード)]](https://app.datadoghq.com/dash/list) を見つけます。 ここには、カスタム ダッシュボードと統合ダッシュボードが表示されます。 [Docker ダッシュボード](https://app.datadoghq.com/screen/integration/docker)には、クラスターの監視に必要なすべてのコンテナー メトリックが表示されます。 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

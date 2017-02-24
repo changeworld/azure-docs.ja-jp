@@ -1,5 +1,5 @@
 ---
-title: "データ サイエンス用のデータの準備はお済みですか? データの評価 | Microsoft Docs"
+title: "データ サイエンス用のデータの準備はお済みですか? データの評価 - Azure | Microsoft Docs"
 description: "データ サイエンス用にデータを準備するための 4 つの条件について説明します。 初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。"
 keywords: "関連性のあるデータ,データの評価,データの準備,データの条件,データの準備"
 services: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
-ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
 
 
 ---
@@ -32,7 +32,7 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 >
 
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
-*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した&5; 本の短いビデオです。
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
@@ -41,7 +41,7 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの 2 番目のビデオです。  
+"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの&2; 番目のビデオです。  
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。 ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
 
@@ -60,7 +60,7 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 
 ![関連性のあるデータと関連性のないデータの比較 - データの評価](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-relevant-and-irrelevant-data.png)
 
-左側の表をご覧ください。 私たちはボストンのバーの外で 7 人の人々と会い、血中のアルコール レベル、最近のレッド ソックスの試合の打率、最寄りのコンビニエンス ストアの牛乳の価格を測定しました。
+左側の表をご覧ください。 私たちはボストンのバーの外で&7; 人の人々と会い、血中のアルコール レベル、最近のレッド ソックスの試合の打率、最寄りのコンビニエンス ストアの牛乳の価格を測定しました。
 
 これは申し分なく正当なデータです。 唯一の問題は、関連性がないことです。 これらの数値の間に明確な関係はありません。 現在の牛乳の価格とレッド ソックスの打率を与えられても、血中アルコール濃度を推測することはできません。
 
@@ -80,7 +80,7 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 一方、右側の表は、すべて揃っている、連続したデータの例です。
 
 ## <a name="is-your-data-accurate"></a>データは正確ですか?
-次に必要な材料が正確さです。 ここに、矢で撃ちたくなるような的が 4 つあります。
+次に必要な材料が正確さです。 ここに、矢で撃ちたくなるような的が&4; つあります。
 
 ![正確なデータと不正確なデータの比較 - データの条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-inaccurate-vs-accurate-data.png)
 
@@ -101,11 +101,11 @@ ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
 
 ある程度塗られると、大まかな判断をするのに十分なだけ絵画が見えるようになります。 私が訪問したいと思っている場所でしょうか? 明るく、水もきれいですね。そう、ここは私が休暇を過ごす場所です。
 
-データを追加すると、画像が明確になり、より緻密に判断することができます。 左側の岸にホテルが 3 軒あります。 私は手前にあるホテルの建築上の特徴が大好きです。 このホテルの 3 階に宿泊します。
+データを追加すると、画像が明確になり、より緻密に判断することができます。 左側の岸にホテルが&3; 軒あります。 私は手前にあるホテルの建築上の特徴が大好きです。 このホテルの&3; 階に宿泊します。
 
 関連性があり、連続していて、正確で、十分な量のデータがあれば、高品質なデータ サイエンスを実行するために必要な材料がすべて揃います。
 
-Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
+Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の&4; つのビデオも必ずご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
@@ -113,6 +113,6 @@ Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

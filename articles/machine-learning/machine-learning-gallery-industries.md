@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3b14e3c9513d9e5ef022e3a2db0ab9e95598c0d7
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: ebee9b7d45cae0259968313b0908be148f47d6b3
 
 
 ---
@@ -38,7 +38,7 @@ ms.openlocfilehash: 3b14e3c9513d9e5ef022e3a2db0ab9e95598c0d7
 
  各業界のページには、その業界に関連付けられている最も人気のあるギャラリー項目の一覧が表示されます。
 **[すべて表示]** をクリックして、ギャラリー内の業界固有のすべてのリソースを表示します。
-このページから、ギャラリー内のすべてのリソースを閲覧することができます。あるいは、ページ左側のフィルター条件を選択して上部に検索語句を入力し、検索することができます。
+このページで、ギャラリー内のすべてのリソースを見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
 ![この項目を友人と共有する](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
@@ -53,6 +53,6 @@ ms.openlocfilehash: 3b14e3c9513d9e5ef022e3a2db0ab9e95598c0d7
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

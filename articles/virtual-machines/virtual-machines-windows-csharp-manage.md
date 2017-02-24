@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d0c334a0b1e047208f6f61e5181864b1c2e3a6a
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 81706c6c95199b25a07589780d2a27fc0f8dffa7
 
 
 ---
-# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>Azure Resource Manager と C を使用した Azure 仮想マシンの管理
+# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>Azure Resource Manager と C を使用した Azure 仮想マシンの管理# #
 この記事にあるタスクでは、開始、停止、および更新など、仮想マシンを管理する方法について説明します。 この記事のタスクを完了するには、リソース グループに仮想マシンが存在している必要があります。
 
 この記事のタスクを完了するには、以下が必要です。
 
 * [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-* [認証トークン](../resource-group-authenticate-service-principal.md)
+* [認証トークン](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="create-a-visual-studio-project-and-install-packages"></a>Visual Studio プロジェクトの作成とパッケージのインストール
 NuGet パッケージを使用すると、この記事のタスクを完了するために必要なライブラリを簡単にインストールできます。 この記事でインストールする必要があるライブラリは、Azure Active Directory 認証ライブラリと Compute リソース プロバイダー ライブラリです。 Visual Studio でこれらのライブラリを入手するには、次の手順を実行します。
@@ -435,11 +435,11 @@ NuGet パッケージを使用すると、この記事のタスクを完了す�
 5. Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
-デプロイに問題がある場合は、[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+デプロイに問題がある場合は、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

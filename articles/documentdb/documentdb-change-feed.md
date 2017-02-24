@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 12/13/2016
-ms.author: b-hoedid
+ms.date: 01/25/2017
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: b22e75264345bc9d155bd1abc1fdb6e978dfad04
-ms.openlocfilehash: bafc50750381616ecf30c4e41090f342d82007f9
+ms.sourcegitcommit: f2586eae5ef0437b7665f9e229b0cc2749bff659
+ms.openlocfilehash: 894856c6386b26610ca5078238a88adcdd2d9a03
 
 
 ---
@@ -47,7 +47,7 @@ Change Feed を使用すると、データセット全体に対してクエリ�
 
 ![取り込みとクエリ向け Azure DocumentDB ベースのラムダ パイプライン](./media/documentdb-change-feed/lambda.png)
 
-DocumentDB を使用して、デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信し、格納したり、こうしたイベントを [Azure Stream Analytics](documentdb-search-indexer.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md)、[Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) でリアルタイムに処理できます。 
+DocumentDB を使用して、デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信し、格納したり、こうしたイベントを [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md)、[Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) でリアルタイムに処理できます。 
 
 Web やモバイル アプリ内で、お客様のプロファイル、設定、または場所への変更などのイベントを追跡し、[Azure Functions](../azure-functions/functions-bindings-documentdb.md) や [App Services](https://azure.microsoft.com/services/app-service/) を使用して各デバイスにプッシュ通知を送信するなど特定のアクションをトリガーできます。 たとえば DocumentDB を使用してゲームを作成している場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
@@ -74,7 +74,7 @@ DocumentDB では、**コレクション**と呼ばれるストレージとス�
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed API
 ReadDocumentFeed のしくみを簡単に説明します。 DocumentDB は、`ReadDocumentFeed` API を通じてコレクション内でドキュメントのフィードの読み取りをサポートします。 たとえば、次の要求は、`serverlogs` コレクション内でドキュメントのページを返します。 
 
-    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/smallcoll HTTP/1.1
+    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/serverlogs HTTP/1.1
     x-ms-date: Tue, 22 Nov 2016 17:05:14 GMT
     authorization: type%3dmaster%26ver%3d1.0%26sig%3dgo7JEogZDn6ritWhwc5hX%2fNTV4wwM1u9V2Is1H4%2bDRg%3d
     Cache-Control: no-cache
@@ -172,20 +172,24 @@ ReadDocumentFeed のしくみを簡単に説明します。 DocumentDB は、`Re
     <tr>
         <td>minInclusive</td>
         <td>パーティション キー範囲のパーティション キー ハッシュ最小値です。 内部使用のみ。</td>
-    </tr>       
+    </tr>        
 </table>
 
 サポートされる [DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかを使用してこれを実行できます。 たとえば次のスニペットは、.NET でパーティション キー範囲を取得する方法を示します。
 
+    string pkRangesResponseContinuation = null;
     List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-    FeedResponse<PartitionKeyRange> response;
 
     do
     {
-        response = await client.ReadPartitionKeyRangeFeedAsync(collection);
-        partitionKeyRanges.AddRange(response);
+        FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+            collectionUri, 
+            new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
+        partitionKeyRanges.AddRange(pkRangesResponse);
+        pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     }
-    while (response.ResponseContinuation != null);
+    while (pkRangesResponseContinuation != null);
 
 DocumentDB では、任意の `x-ms-documentdb-partitionkeyrangeid` ヘッダーを設定することにより、パーティション キー範囲あたりのドキュメントを取得できます。 
 
@@ -254,24 +258,31 @@ ReadDocumentFeed は、DocumentDB コレクションの変更の増分処理で�
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-変更は、パーティション キー範囲に含まれる各パーティション キー値内の時間に基づいて並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。 結果が&1; ページに収まりきらない場合、前回の応答から `etag` に等しい価値の `If-None-Match` ヘッダーで要求を再送信すると、結果の次のページを読み取ることができます。 複数のドキュメントがストアド プロシージャやトリガー内においてトランザクション全体で更新された場合、すべて同じ応答ページ内で返されます。
+変更は、パーティション キー範囲に含まれる各パーティション キー値内の時間に基づいて並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。 結果が&1; ページに収まりきらない場合、前回の応答から `etag` に等しい価値の `If-None-Match` ヘッダーで要求を再送信すると、結果の次のページを読み取ることができます。 ストアド プロシージャまたはトリガー内でトランザクションを使用して複数のドキュメントが挿入または更新された場合、それらのドキュメントはすべて同じ応答ページ内で返されます。
 
-.NET SDK では、コレクションに加えられた変更にアクセスするために `CreateDocumentChangeFeedQuery` と `ChangeFeedOptions` ヘルパー クラスが提供されます。 次のスニペットは、単一のクライアントから .NET SDK を使用して開始からのすべての変更を取得する方法を示します。
+> [!NOTE]
+> Change Feed を使用すると、ストアド プロシージャまたはトリガー内で複数のドキュメントが挿入または更新された場合に、`x-ms-max-item-count` で指定した数よりも多くの項目が&1; ページで返される場合があります。 
+
+.NET SDK には、コレクションに加えられた変更にアクセスする、[CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) および [ChangeFeedOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.changefeedoptions.aspx) ヘルパー クラスが用意されています。 次のスニペットは、単一のクライアントから .NET SDK を使用して開始からのすべての変更を取得する方法を示します。
 
     private async Task<Dictionary<string, string>> GetChanges(
         DocumentClient client,
         string collection,
         Dictionary<string, string> checkpoints)
     {
+        string pkRangesResponseContinuation = null;
         List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-        FeedResponse<PartitionKeyRange> pkRangesResponse;
 
         do
         {
-            pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(collection);
+            FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+                collectionUri, 
+                new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
             partitionKeyRanges.AddRange(pkRangesResponse);
+            pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
         }
-        while (pkRangesResponse.ResponseContinuation != null);
+        while (pkRangesResponseContinuation != null);
 
         foreach (PartitionKeyRange pkRange in partitionKeyRanges)
         {
@@ -334,6 +345,7 @@ ReadDocumentFeed は、DocumentDB コレクションの変更の増分処理で�
 * [DocumentDB SDK](documentdb-sdk-dotnet.md) や [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) でコーディングを開始する
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

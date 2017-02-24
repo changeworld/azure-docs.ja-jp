@@ -1,5 +1,5 @@
 ---
-title: "SQL Data Warehouse と Parallel Data Warehouse の超並列処理 (MPP) のための分散データ オプションと分散テーブル オプション | Microsoft Docs"
+title: "Azure SQL Data Warehouse での分散データの概要 | Microsoft Docs"
 description: "超並列処理 (MPP) でのデータ分散方法および Azure SQL Data Warehouse と Parallel Data Warehouse でのテーブル分散オプションについて説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
 
 
 ---
@@ -31,17 +31,17 @@ Azure SQL Data Warehouse および Parallel Data Warehouse でのユーザー �
 ## <a name="what-is-distributed-data"></a>分散データとは
 SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MPP システムの複数の場所に格納されているユーザー データのことです。 これらの各場所は、独立した記憶域およびその場所にあるデータの部分に対するクエリを実行する処理単位として機能します。 分散データは、クエリを並列実行して高いクエリ パフォーマンスを実現するための基礎です。
 
-データを分散させるため、データ ウェアハウスはユーザー テーブルの各行を 1 つの分散場所に割り当てます。  テーブルの分散方法としては、ハッシュ分散方式とラウンドロビン方式があります。 分散方式は、CREATE TABLE ステートメントで指定します。 
+データを分散させるため、データ ウェアハウスはユーザー テーブルの各行を&1; つの分散場所に割り当てます。  テーブルの分散方法としては、ハッシュ分散方式とラウンドロビン方式があります。 分散方式は、CREATE TABLE ステートメントで指定します。 
 
 ## <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
-次の図は、完全な (分散していない) テーブルがハッシュ分散テーブルとして保存されるしくみを示したものです。 確定関数が、各行を 1 つのディストリビューションに割り当てます。 テーブルの定義では、1 つの列をディストリビューション列として指定します。 ハッシュ関数は、ディストリビューション列の値を使用してディストリビューションに各行を割り当てます。
+次の図は、完全な (分散していない) テーブルがハッシュ分散テーブルとして保存されるしくみを示したものです。 確定関数が、各行を&1; つのディストリビューションに割り当てます。 テーブルの定義では、1 つの列をディストリビューション列として指定します。 ハッシュ関数は、ディストリビューション列の値を使用してディストリビューションに各行を割り当てます。
 
 ディストリビューション列の選択については、差異性、データ スキュー、およびシステムで実行されるクエリの種類など、パフォーマンスに関する考慮事項があります。
 
-![分散テーブル](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distributed table")  
+![分散テーブル](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分散テーブル")  
 
 * 各行は、1 つのディストリビューションに属しています。  
-* 確定ハッシュ アルゴリズムが、各行を 1 つのディストリビューションに割り当てます。  
+* 確定ハッシュ アルゴリズムが、各行を&1; つのディストリビューションに割り当てます。  
 * ディストリビューションごとのテーブル行の数は、異なるテーブル サイズによって示されるように異なります。
 
 ## <a name="round-robin-distributed-tables"></a>ラウンドロビン分散テーブル
@@ -56,7 +56,7 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 ## <a name="difference-between-a-distribution-and-a-compute-node"></a>ディストリビューションとコンピューティング ノードの違い
 ディストリビューションは、分散データの格納および並列クエリの処理に関する基本的な単位です。 ディストリビューションをグループ化したものがコンピューティング ノードです。 各コンピューティング ノードは、1 つまたは複数のディストリビューションを追跡します。  
 
-* Analytics Platform System は、ハードウェア アーキテクチャおよびスケールアウト機能の中心的なコンポーネントとしてコンピューティング ノードを使用します。 ハッシュ分散テーブルの図で示されているように、常に、コンピューティング ノードあたり 8 個のディストリビューションを使用します。 コンピューティング ノードの数、したがってディストリビューションの数は、アプライアンスに対して購入するコンピューティング ノードの数によって決まります。 たとえば、8 個のコンピューティング ノードを購入した場合、ディストリビューションは 64 個です (8 コンピューティング ノード x 8 ディストリビューション/ノード)。 
+* Analytics Platform System は、ハードウェア アーキテクチャおよびスケールアウト機能の中心的なコンポーネントとしてコンピューティング ノードを使用します。 ハッシュ分散テーブルの図で示されているように、常に、コンピューティング ノードあたり&8; 個のディストリビューションを使用します。 コンピューティング ノードの数、したがってディストリビューションの数は、アプライアンスに対して購入するコンピューティング ノードの数によって決まります。 たとえば、8 個のコンピューティング ノードを購入した場合、ディストリビューションは 64 個です (8 コンピューティング ノード x 8 ディストリビューション/ノード)。 
 * SQL Data Warehouse では、ディストリビューションは 60 個に固定されており、コンピューティング ノードの数は可変です。 コンピューティング ノードは、Azure のコンピューティングおよびストレージ リソースで実装されます。 コンピューティング ノードの数は、バックエンド サービスの作業負荷と、ユーザーがデータ ウェアハウスに対して指定する計算能力 (DWU) に従って変化します。 コンピューティング ノードの数が変わると、コンピューティング ノードあたりのディストリビューションの数も変更されます。 
 
 ### <a name="can-i-view-the-compute-nodes"></a>コンピューティング ノードを見ることはできますか?
@@ -69,7 +69,7 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 
 次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。 このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
 
-![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "Replicated table") 
+![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 
 ## <a name="next-steps"></a>次のステップ
 分散テーブルを効果的に使用する方法については、「[SQL Data Warehouse のテーブルの分散](sql-data-warehouse-tables-distribute.md)」を参照してください。  
@@ -77,6 +77,6 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Event Hubs のよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Event Hubs の FAQ。"
+description: "Event Hubs の FAQ"
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2016
+ms.date: 12/07/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
+ms.sourcegitcommit: fceb8f6c8f28e84eb8926586257cf39dc0cd14d4
+ms.openlocfilehash: 4977daeecd9e206906c2e0b3b95b63d4d55cb859
 
 
 ---
@@ -53,16 +53,16 @@ Event Hubs のスループット単位は、特定の時間に選択された単
 名前空間ごとに 20 というスループット単位の既定のクォータがあります。 サポート チケットを送信することで、スループット単位の大きなクォータを要求できます。 20 というスループット単位の制限を超える 20 ～ 100 スループット単位のバンドルを使用できます。 20 を超えるスループット単位を使用すると、サポート チケットの送信なしでスループット単位の数を変更する機能は無効になることに注意してください
 
 ## <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保持する場合に料金はかかりますか。
-Event Hubs Standard レベルでは、24 時間を超えて最大 30 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり 84 GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
+Event Hubs Standard レベルでは、24 時間を超えて最大 30 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり&84; GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ## <a name="what-is-the-maximum-retention-period"></a>最大リテンション期間とは何ですか。
 Event Hubs Standard レベルでは、現在最大 7 日間のリテンション期間をサポートしています。 Event Hubs は永続的なデータ ストアになることを目的としていません。 24 時間を超える保持期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。
 
 ## <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
-保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。 合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
+保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。 合計サイズが計算された&1; 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
 
 ## <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-event-hubs-and-service-bus-queuestopics"></a>単一の AMQP 接続を使用して、Event Hubs と Service Bus のキュー/トピック間で送受信を実行できますか。
-はい。すべての Event Hubs、キュー、トピックが同じ名前空間にある限り可能です。 このため、遅延時間が 1 秒未満の双方向の仲介型接続を、費用効率が良くスケーラブルな方法で多数のデバイスに実装できます。
+はい。すべての Event Hubs、キュー、トピックが同じ名前空間にある限り可能です。 このため、遅延時間が&1; 秒未満の双方向の仲介型接続を、費用効率が良くスケーラブルな方法で多数のデバイスに実装できます。
 
 ## <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>仲介型接続料金は Event Hubs に適用されますか。
 送信側では、接続料金は AMQP プロトコルが使用される場合にのみ適用されます。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、「 [Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/) 」ページの仲介型接続の構成とその測定方法に関する情報を参照してください。
@@ -71,33 +71,30 @@ Event Hubs Standard レベルでは、現在最大 7 日間のリテンション
 Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。 これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。 機能の一覧については、 [Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)を参照してください。
 
 ## <a name="geographic-availability"></a>ご利用可能な地域
-Event Hubs は、次のリージョンで利用できます。
 
-| ジオ (主要地域)  | 地域 |
-| --- | --- |
-| 米国 |米国中部、米国東部、米国東部 2、米国中南部、米国西部 |
-| ヨーロッパ |北ヨーロッパ、西ヨーロッパ |
-| アジア太平洋 |東アジア、東南アジア |
-| 日本 |東日本、西日本 |
-| ブラジル |ブラジル南部 |
-| オーストラリア |オーストラリア東部、オーストラリア南東部 |
+Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン][]」ページを参照してください。  
 
 ## <a name="support-and-sla"></a>サポートと SLA
 Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 
+## <a name="diagnostic-logs"></a>診断ログ
+
+Event Hubs では、アーカイブ エラー ログと運用ログの&2; 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
+
 ## <a name="next-steps"></a>次のステップ
-Event Hubs の詳細については、次の記事を参照してください。
+Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要][Event Hubs の概要]
-* [Event Hub を使用する完全なサンプル アプリケーション][Event Hub を使用する完全なサンプル アプリケーション]。
+* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
+* [Event Hub を作成する](event-hubs-create.md)
 
-[Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Azure リージョン]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
 
 
 ---
@@ -31,23 +31,32 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを有効にする
 1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. Data Lake Store アカウントを開き、Data Lake Store アカウントのブレードで **[設定]**、**[診断設定]** の順にクリックします。
+2. Data Lake Store アカウントを開き、Data Lake Store アカウントのブレードで **[設定]**、**[診断ログ]** の順にクリックします。
+3. **[診断ログ]** ブレードで、**[診断を有効にする]** をクリックします。
+
+    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "診断ログの有効化")
+
 3. **[診断]** ブレードで、診断ログの構成を次のように変更します。
    
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
+    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "診断ログの有効化")
    
    * **[状態]** を **[オン]** に設定して診断ログを有効にします。
-   * 2 種類の方法でデータを格納および処理することができます。
-     * **[Export to Event Hub (Event Hub へのエクスポート)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
-     * **[Export to Storage Account (ストレージ アカウントへのエクスポート)]** オプションを選択して、Azure ストレージ アカウントにログを保存します。 後日バッチ処理するデータをアーカイブする場合は、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
+   * さまざまな方法でデータを格納および処理することができます。
+     
+        * **[Archive to a storage account (ストレージ アカウントへのアーカイブ)]** オプションを選択して、Azure ストレージ アカウントにログを保存します。 後日バッチ処理するデータをアーカイブする場合は、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
+        
+        * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
+
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Operations Management Suite ワークスペースの詳細情報を指定する必要があります。
+     
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
-   * データを保持する日数を指定します。
-   * [ **Save**] をクリックします。
+   * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
+   * **[保存]**をクリックします。
 
 診断設定を有効にしたら、 **[診断ログ]** タブでログを確認できます。
 
 ## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを表示する
-Data Lake Store アカウントのログ データを確認する方法は 2 つあります。
+Data Lake Store アカウントのログ データを確認する方法は&2; つあります。
 
 * Data Lake Store アカウントの [設定] ビューから
 * データが格納されている Azure Storage アカウントから
@@ -55,7 +64,7 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
 ### <a name="using-the-data-lake-store-settings-view"></a>Data Lake Store [設定] ビューの使用
 1. Data Lake Store アカウントの **[設定]** ブレードで、**[診断ログ]** をクリックします。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
+    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "診断ログの表示") 
 2. **[診断ログ]** ブレードに、**監査ログ**と**要求ログ**によって分類されたログが表示されます。
    
    * 要求ログは、Data Lake Store アカウントで行われるすべての API 要求をキャプチャします。
@@ -63,15 +72,15 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
 3. 各ログ エントリに対する **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
-1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
+1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[BLOB サービス]** ブレードに&2; つのコンテナーが一覧表示されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
+    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
    
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
 2. これらのコンテナー内で、ログは次の構造の下に格納されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "View diagnostic logs")
+    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログの表示")
    
     たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -81,7 +90,7 @@ Data Lake Store アカウントのログ データを確認する方法は 2 つ
 監査ログと要求ログは JSON 形式で作成されます。 このセクションでは、要求ログと監査ログの JSON 構造を確認します。
 
 ### <a name="request-logs"></a>要求ログ
-JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
+JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
 
     {
     "records": 
@@ -128,7 +137,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | EndTime |文字列 |サーバーが応答を送信した時間 |
 
 ### <a name="audit-logs"></a>監査ログ
-JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
+JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが&1; つあります。
 
     {
     "records": 
@@ -177,6 +186,6 @@ Azure Data Lake Store では、ログ データの処理と分析方法のサン
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

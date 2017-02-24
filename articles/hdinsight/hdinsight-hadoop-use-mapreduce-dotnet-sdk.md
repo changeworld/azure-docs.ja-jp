@@ -13,18 +13,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dd507b6be4aa9853940adbf80baa3ec4997ce3c7
-ms.openlocfilehash: 05c5def02a5bee18f26bc8b96b9aa1c8f3fdff70
+ms.sourcegitcommit: fcc47e3e054d88fe40c13a0fd9949c315dbfce9b
+ms.openlocfilehash: 1617aebffeec5b385b47a7425f6c849267da68a6
 
 
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../includes/hdinsight-selector-use-mapreduce.md)]
 
-この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは */example/jars/hadoop-mapreduce-examples.jar* に格納されています。  そのサンプルの 1 つに、*wordcount* があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブでは、*/example/data/gutenberg/davinci.txt* ファイルを読み取り、結果を */example/data/davinciwordcount* に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
+この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは */example/jars/hadoop-mapreduce-examples.jar* に格納されています。  そのサンプルの&1; つに、*wordcount* があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブでは、*/example/data/gutenberg/davinci.txt* ファイルを読み取り、結果を */example/data/davinciwordcount* に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
 
 > [!NOTE]
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
@@ -67,7 +67,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
    
-                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
+                private const string DefaultStorageAccountName = "<Default Storage Account Name>"; //<StorageAccountName>.blob.core.windows.net
                 private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
                 private const string DefaultStorageContainerName = "<Default Blob Container Name>";
    
@@ -96,7 +96,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                     };
    
                     System.Console.WriteLine("Submitting the MR job to the cluster...");
-                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
+                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitMapReduceJob(paras);
                     var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                     System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                     System.Console.WriteLine("JobId is " + jobId);
@@ -130,18 +130,22 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
         }
 4. **F5** キーを押してアプリケーションを実行します。
 
+ジョブを再実行するには、ジョブの出力フォルダー名を変更する必要があります (サンプルでは "/example/data/davinciwordcount" になっています)。
+
+ジョブが正常に完了すると、出力は空白になります。 MapReduce ジョブの結果を確認するには、Azure Portal で Blob ストレージの既定のストレージ コンテナーを調べます。  ファイル名は "part-r-00000" です。
+
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
 
-* クラスターの作成と Hive ジョブの送信の方法については、[Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* Hive ジョブの送信については、「[HDInsight .NET SDK を使用した Hive クエリの実行](hdinsight-hadoop-use-hive-dotnet-sdk.md)」を参照してください。
 * HDInsight クラスターの作成については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
-* HDInsight クラスターの管理については、[HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)に関するページを参照してください。
+* HDInsight クラスターの管理については、[HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
 * HDInsight .NET SDK の詳細については、[HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を参照してください。
 * 非対話型認証については、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」を参照してください。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

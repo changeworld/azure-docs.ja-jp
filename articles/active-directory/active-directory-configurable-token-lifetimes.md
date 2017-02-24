@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2016
+ms.date: 01/17/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
+ms.sourcegitcommit: b520b4672dd403981d218c9855c3beb09ef55021
+ms.openlocfilehash: 6da28e6273d92445e4b14ea22752a6e59b1dd93a
 
 
 ---
@@ -27,11 +27,11 @@ ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
 > 
 
 ## <a name="introduction"></a>はじめに
-この機能は、管理者や開発者が、Azure AD によって発行されたトークンの有効期間を指定するために使用します。 テナントのすべてのアプリ、任意のマルチテナント アプリケーション、またはテナントの特定のサービス プリンシパルに対して、トークンの有効期間を構成できます。
+この機能は、管理者や開発者が、Azure AD によって発行されたトークンの有効期間を指定するために使用します。 組織のすべてのアプリ、任意のマルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を構成できます。
 
-Azure AD では、ポリシー オブジェクトは、テナントの個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。  それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
+Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。  それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
-ポリシーは、テナントの既定値として指定できます。 このポリシーは、より優先度が高いポリシーによって上書きされない限り、テナント内に存在するアプリケーションに対して有効です。 ポリシーは、特定のアプリケーションにも割り当てることができます。 優先順位の順序は、ポリシーの種類によって異なります。
+ポリシーは、組織の既定値として指定できます。 このポリシーは、より優先度が高いポリシーによって上書きされない限り、その組織内に存在するアプリケーションに対して有効です。 ポリシーは、特定のアプリケーションにも割り当てることができます。 優先順位の順序は、ポリシーの種類によって異なります。
 
 更新トークン、アクセス トークン、セッション トークン、および ID トークンのトークンの有効期間ポリシーを構成できます。
 
@@ -41,9 +41,14 @@ Azure AD では、ポリシー オブジェクトは、テナントの個々の�
 ### <a name="refresh-tokens"></a>更新トークン
 クライアントは、保護されたリソースにアクセスするアクセス トークンを取得するときに、更新トークンおよびアクセス トークンの両方を受け取ります。 更新トークンを使用して、現在のアクセス トークンの有効期限が切れたときに、新しいアクセス トークンと更新トークンのペアを取得します。 更新トークンは、ユーザーとクライアントの組み合わせにバインドされます。 この組み合わせは失効させることができ、使用時に必ず有効性がチェックされます。
 
-Confidential クライアントとパブリック クライアントを区別することは重要です。 Confidential クライアントは、クライアントのパスワードを安全に格納できるアプリケーションで、要求が悪意のあるアクターからではなく、クライアント アプリケーションから送信されていることを証明できます。 これらのフローは安全性をより高めているため、フローに対して発行される更新トークンの既定の有効期間は長く、ポリシーを使用して変更することはできません。
+Confidential クライアントとパブリック クライアントを区別することは重要です。 さまざまな種類のクライアントの詳細については、[RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1) を参照してください。
 
-アプリケーションを実行する環境の制限により、パブリック クライアントでは、クライアントのパスワードを安全に格納できません。 リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます (Refresh Token Max Inactive Time)。  さらに、ポリシーを使用すると、更新トークンが受け入れられなくなる時点以降に期間を設定することもできます (Refresh Token Max Age)。  更新トークンの有効期間を調整すると、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証するのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
+#### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Confidential クライアントの更新トークンの有効期間
+Confidential クライアントは、クライアントのパスワード (シークレット) を安全に格納できるアプリケーションで、要求が悪意のあるアクターからではなく、クライアント アプリケーションから送信されていることを証明できます。 たとえば、Web アプリは、Web サーバーにクライアント シークレットを格納でき、公開されません。したがって、Confidential クライアントです。 これらのフローは安全性をより高めているため、フローに対して発行される更新トークンの既定の有効期間は長く、ポリシーを使用して変更することはできません。
+
+#### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>パブリック クライアントの更新トークンの有効期間 
+
+パブリック クライアントは、クライアントのパスワード (シークレット) を安全に格納できません。 たとえば、iOS や Android アプリは、リソース所有者のシークレットを難読化できないため、パブリック クライアントと見なされます。  リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます (Refresh Token Max Inactive Time)。  さらに、ポリシーを使用すると、更新トークンが受け入れられなくなる時点以降に期間を設定することもできます (Refresh Token Max Age)。  更新トークンの有効期間を調整すると、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証するのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
 
 ### <a name="id-tokens"></a>ID トークン
 ID トークンは、Web サイトとネイティブ クライアントに渡され、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、有効期限まで有効とみなされます。  通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。  ID トークンの有効期間を調整すると、Web アプリケーションがアプリケーション セッションを期限切れにし、(自動的か対話形式で) Azure AD でユーザーを再認証するように要求する頻度を制御できます。
@@ -51,7 +56,7 @@ ID トークンは、Web サイトとネイティブ クライアントに渡さ
 ### <a name="single-sign-on-session-token"></a>シングル サインオン セッション トークン
 ユーザーが Azure AD に対して認証し、[サインインしたままにする] チェックボックスをオンにすると、ユーザーのブラウザーと Azure AD でシングル サインオン セッションが確立されます。  シングル サインオン セッション トークンは、Cookie の形式でこのセッションを表します。 SSO セッション トークンは特定のリソース/クライアント アプリケーションにバインドされていないことに注意してください。 SSO セッション トークンは失効させることができ、使用時に必ず有効性がチェックされます。
 
-SSO セッション トークンには 2 つの種類があります。 永続的なセッション トークンはブラウザーによって永続的な Cookie として格納され、非永続的なセッション トークンはセッション Cookie として格納されます (これらはブラウザーを閉じると破棄されます)。
+SSO セッション トークンには&2; つの種類があります。 永続的なセッション トークンはブラウザーによって永続的な Cookie として格納され、非永続的なセッション トークンはセッション Cookie として格納されます (これらはブラウザーを閉じると破棄されます)。
 
 非永続的なセッション トークンには 24 時間の有効期間があり、永続的なトークンには 180 日間の有効期間があります。 有効期間内に SSO セッション トークンを使用した時点で、有効期間はさらに 24 時間または 180 日間延長されます。 SSO セッション トークンが有効期間内に使用されない場合は、期限切れとみなされ、受け入れられなくなります。 
 
@@ -70,7 +75,7 @@ SSO セッション トークンには 2 つの種類があります。 永続�
 | Single-Factor Session Token Max Age |MaxAgeSessionSingleFactor** |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked* |
 | Multi-Factor Session Token Max Age |MaxAgeSessionMultiFactor*** |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked* |
 
-* * これらの属性に対して明示的に設定できる最大期間は 365 日です。
+* * これらの属性に対して明示的に設定できる最大期間は&365; 日です。
 * ** MaxAgeSessionSingleFactor が設定されていない場合、この値には MaxAgeSingleFactor 値が使用されます。 どちらのパラメーターも設定されていない場合、このプロパティは既定値 (Until-revoked) を使用します。
 * *** MaxAgeSessionMultiFactor が設定されていない場合、この値には MaxAgeMultiFactor 値が使用されます。 どちらのパラメーターも設定されていない場合、このプロパティは既定値 (Until-revoked) を使用します。
 
@@ -82,12 +87,12 @@ SSO セッション トークンには 2 つの種類があります。 永続�
 | Refresh token Max Age (Confidential クライアントに発行) |更新トークン (Confidential クライアントに発行) |Until-revoked |
 
 ### <a name="priority-and-evaluation-of-policies"></a>ポリシーの優先順位と評価
-トークンの有効期間ポリシーを作成し、特定のアプリケーション、テナント、およびサービス プリンシパルに割り当てることができます。 つまり、複数のポリシーを特定のアプリケーションに適用できます。 有効になるトークンの有効期間ポリシーは、次の規則に従います。
+トークンの有効期間ポリシーを作成し、特定のアプリケーション、組織、およびサービス プリンシパルに割り当てることができます。 つまり、複数のポリシーを特定のアプリケーションに適用できます。 有効になるトークンの有効期間ポリシーは、次の規則に従います。
 
 * ポリシーが明示的にサービス プリンシパルに割り当てられている場合は、そのポリシーが適用されます。 
-* 明示的にサービス プリンシパルに割り当てられているポリシーがない場合は、サービス プリンシパルの親テナントに明示的に割り当てられているポリシーが適用されます。 
-* サービス プリンシパルまたはテナントに明示的に割り当てられているポリシーがない場合、アプリケーションに割り当てられているポリシーが適用されます。 
-* サービス プリンシパル、テナント、またはアプリケーション オブジェクトに割り当てられているポリシーがない場合は、既定値が適用されます (上記の表を参照してください)。
+* 明示的にサービス プリンシパルに割り当てられているポリシーがない場合は、サービス プリンシパルの親組織に明示的に割り当てられているポリシーが適用されます。 
+* サービス プリンシパルまたは組織に明示的に割り当てられているポリシーがない場合、アプリケーションに割り当てられているポリシーが適用されます。 
+* サービス プリンシパル、組織、またはアプリケーション オブジェクトに割り当てられているポリシーがない場合は、既定値が適用されます (上記の表を参照してください)。
 
 Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)」を参照してください。
 
@@ -98,16 +103,16 @@ Azure AD のアプリケーション オブジェクトとサービス プリン
 > 
 > ユーザーは、A と B という 2 つの Web アプリケーションにアクセスしようとしています。 
 > 
-> * 両方のアプリケーションとも、同じ親テナントにあります。 
-> * Session Token Max Age を 8 時間に設定したトークンの有効期間ポリシー 1 が、親テナントの既定値として設定されています。
+> * 両方のアプリケーションとも、同じ親組織にあります。 
+> * Session Token Max Age を 8 時間に設定したトークンの有効期間ポリシー 1 が、親組織の既定値として設定されています。
 > * Web アプリケーション A は、日常的に使用する Web アプリケーションで、どのポリシーにもリンクされていません。 
 > * Web アプリケーション B は、機密性の高い処理に使用され、そのサービス プリンシパルは、Session Token Max Age が 30 分間に設定されているトークンの有効期間ポリシー 2 にリンクされています。
 > 
 > 正午に、ユーザーは新しいブラウザー セッションを開き、Web アプリケーション A へのアクセスを試みます。ユーザーは Azure AD にリダイレクトされ、サインインするよう指示されます。 これによって、セッション トークンを含む Cookie がブラウザーに保存されます。 ユーザーは、Web アプリケーション A にアクセスするための ID トークンによって、Web アプリケーション A にリダイレクトされます。
 > 
-> 午後 0 時 15 分に、ユーザーは Web アプリケーション B へのアクセスを試みます。ブラウザーは Azure AD にリダイレクトされ、そこでセッション Cookie が検出されます。 Web アプリケーション B のサービス プリンシパルは、ポリシー 2 にリンクされているだけでなく、既定のポリシー 1 が設定されている親テナントの一部にもなっています。 サービス プリンシパルにリンクされているポリシーは、テナントの既定のポリシーより優先順位が高いため、ポリシー 2 が有効になります。 セッション トークンが最初に発行されたのは、過去 30 分以内であるため、このトークンは有効とみなされます。 ユーザーは、アクセス権限を与える ID トークンによって Web アプリケーション B にリダイレクトされます。
+> 午後 0 時 15 分に、ユーザーは Web アプリケーション B へのアクセスを試みます。ブラウザーは Azure AD にリダイレクトされ、そこでセッション Cookie が検出されます。 Web アプリケーション B のサービス プリンシパルは、ポリシー 2 にリンクされているだけでなく、既定のポリシー 1 が設定されている親組織の一部にもなっています。 サービス プリンシパルにリンクされているポリシーは、組織の既定のポリシーより優先順位が高いため、ポリシー 2 が有効になります。 セッション トークンが最初に発行されたのは、過去 30 分以内であるため、このトークンは有効とみなされます。 ユーザーは、アクセス権限を与える ID トークンによって Web アプリケーション B にリダイレクトされます。
 > 
-> 午後 1 時に、ユーザーは Web アプリケーション A への移動を試みます。ユーザーは、Azure AD にリダイレクトされます。 Web アプリケーション A は、どのポリシーにもリンクされていませんが、既定のポリシー 1 が設定されたテナントにあるため、このポリシーが有効になります。 過去 8 時間以内に最初に発行されたセッション Cookie が検出され、ユーザーは新しい ID トークンによって、自動的に Web アプリケーション A にリダイレクトされます。このとき、認証の必要はありません。
+> 午後 1 時に、ユーザーは Web アプリケーション A への移動を試みます。ユーザーは、Azure AD にリダイレクトされます。 Web アプリケーション A は、どのポリシーにもリンクされていませんが、既定のポリシー 1 が設定された組織にあるため、このポリシーが有効になります。 過去 8 時間以内に最初に発行されたセッション Cookie が検出され、ユーザーは新しい ID トークンによって、自動的に Web アプリケーション A にリダイレクトされます。このとき、認証の必要はありません。
 > 
 > ユーザーは、直ちに Web アプリケーション B へのアクセスを試みます。ユーザーは、Azure AD にリダイレクトされます。 以前と同様に、ポリシー 2 が有効になります。 トークンが発行されてからの時間が 30 分を超えたため、ユーザーは資格情報を再入力するように求められ、まったく新しいセッションと ID トークンが発行されます。 これで、ユーザーは Web アプリケーション B にアクセスできます。
 > 
@@ -169,7 +174,7 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このポリシーは、Single-Factor Session Token Max Age ポリシー以上の値に設定することをお勧めします。
 
 ## <a name="sample-token-lifetime-policies"></a>トークンの有効期間ポリシーのサンプル
-アプリ、サービス プリンシパル、およびテナント全体のトークンの有効期間を作成および管理できる場合は、Azure AD で利用できるすべての種類の新しいシナリオを実行可能です。  以下では新しい規則を適用するのに役立つ、いくつかの一般的なポリシー シナリオについて説明します。
+アプリ、サービス プリンシパル、および組織全体のトークンの有効期間を作成および管理できる場合は、Azure AD で利用できるすべての種類の新しいシナリオを実行可能です。  以下では新しい規則を適用するのに役立つ、いくつかの一般的なポリシー シナリオについて説明します。
 
 * トークンの有効期間
 * トークンの最大非アクティブ時間
@@ -177,26 +182,26 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 次を含む、いくつかのシナリオについて説明します。
 
-* テナントの既定のポリシーの管理
+* 組織の既定のポリシーの管理
 * Web サインインのポリシーの作成
 * Web API を呼び出すネイティブ アプリのポリシーの作成
 * 詳細なポリシーの管理 
 
 ### <a name="prerequisites"></a>前提条件
-このサンプル シナリオでは、アプリ、サービス プリンシパル、およびテナント全体に対するポリシーの作成、更新、リンク、削除を行います。  初めて Azure AD を使用する場合は、これらのサンプルを続行する前に[この記事](active-directory-howto-tenant.md)を確認して準備してください。  
+このサンプル シナリオでは、アプリ、サービス プリンシパル、および組織全体に対するポリシーの作成、更新、リンク、削除を行います。  初めて Azure AD を使用する場合は、これらのサンプルを続行する前に[この記事](active-directory-howto-tenant.md)を確認して準備してください。  
 
 1. まず、最新版の [Azure AD PowerShell コマンドレットのプレビュー](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。 
 2. Azure AD PowerShell コマンドレットを入手したら、Azure AD 管理者アカウントにサインインする Connect コマンドを実行します。 新しいセッションを開始するたびに、これを実行する必要があります。
    
      Connect-AzureAD -Confirm
-3. テナントに作成されているすべてのポリシーを表示するには、次のコマンドを実行します。  このコマンドは、次のシナリオでのほとんどの操作の後に使用する必要があります。  これは、ポリシーの**オブジェクト ID** を取得する場合にも役立ちます。 
+3. 組織に作成されているすべてのポリシーを表示するには、次のコマンドを実行します。  このコマンドは、次のシナリオでのほとんどの操作の後に使用する必要があります。  これは、ポリシーの**オブジェクト ID** を取得する場合にも役立ちます。 
    
      Get-AzureADPolicy
 
-### <a name="sample-managing-a-tenants-default-policy"></a>サンプル: テナントの既定のポリシーの管理
-このサンプルでは、テナント全体でユーザーがサインインする頻度を低くするポリシーを作成します。 
+### <a name="sample-managing-a-organizations-default-policy"></a>サンプル: 組織の既定のポリシーの管理
+このサンプルでは、組織全体でユーザーがサインインする頻度を低くするポリシーを作成します。 
 
-そのためには、テナント全体に適用される単一要素の更新トークンに対してトークンの有効期間ポリシーを作成します。 このポリシーは、テナント内のすべてのアプリケーションと、ポリシーがまだ設定されていない各サービス プリンシパルに適用されます。 
+そのためには、組織全体に適用される単一要素の更新トークンに対してトークンの有効期間ポリシーを作成します。 このポリシーは、組織内のすべてのアプリケーションと、ポリシーがまだ設定されていない各サービス プリンシパルに適用されます。 
 
 1. **トークンの有効期間ポリシーを作成します。** 
 
@@ -212,7 +217,7 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 その後、次のコマンドを実行してポリシーを作成します。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName TenantDefaultPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName OrganizationDefaultPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 新しいポリシーを表示し、その ObjectID を取得するには、次のコマンドを実行します。
 
@@ -221,7 +226,7 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 最初のポリシーはサービスで要求されるほど厳格にはしないで、単一要素の更新トークンを 2 日で期限切れにするとします。 次のコマンドを実行します。 
 
-    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName TenantDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
+    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName OrganizationDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
 
 &nbsp;&nbsp;3.**これで完了です。** 
 
@@ -232,14 +237,14 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 この Web サインイン用のポリシーでは、アクセス トークンと ID トークンの有効期間と、多要素セッション トークンの最長有効期間を 2 時間に設定します。
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 新しいポリシーを表示し、その ObjectID を取得するには、次のコマンドを実行します。
 
     Get-AzureADPolicy
 &nbsp;&nbsp;2.  **サービス プリンシパルにポリシーを割り当てます。**
 
-この新しいポリシーをサービス プリンシパルにリンクします。  サービス プリンシパルの **ObjectId** にアクセスする方法も必要です。 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) に対してクエリを実行するか、[Graph エクスプローラー ツール](https://graphexplorer.cloudapp.net/)に移動して Azure AD アカウントにサインインし、テナントのすべてのサービス プリンシパルを表示できます。 
+この新しいポリシーをサービス プリンシパルにリンクします。  サービス プリンシパルの **ObjectId** にアクセスする方法も必要です。 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) に対してクエリを実行するか、[Graph エクスプローラー ツール](https://graphexplorer.cloudapp.net/)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示できます。 
 
 **ObjectId** を取得したら、次のコマンドを実行します。
 
@@ -249,18 +254,13 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
  
 
 ### <a name="sample-creating-a-policy-for-native-apps-calling-a-web-api"></a>サンプル: Web API を呼び出すネイティブ アプリのポリシーの作成
-> [!NOTE]
-> アプリケーションへのポリシーのリンクは、現在無効になっています。  できるだけ早くこの機能を提供できるように取り組んでいます。  このページは、機能が使用可能になった時点で、直ちに更新されます。
-> 
-> 
-
 このサンプルでは、ユーザーの認証の頻度を低くし、再認証が不要な非アクティブな時間を長くするポリシーを作成します。 ポリシーは Web API に適用されるため、ネイティブ アプリがリソースとして Web API を要求すると、このポリシーが適用されます。
 
 1. **トークンの有効期間ポリシーを作成します。** 
 
 このコマンドでは、Web API の厳格なポリシーが作成されます。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 新しいポリシーを表示し、その ObjectID を取得するには、次のコマンドを実行します。
 
@@ -281,33 +281,33 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 1. **トークンの有効期間ポリシーを作成します。**
 
-ここまでは、非常に簡単です。 既に、単一要素の更新トークンの有効期間を 30 日間に設定するテナントの既定のポリシーを作成しました。 
+ここまでは、非常に簡単です。 既に、単一要素の更新トークンの有効期間を 30 日間に設定する組織の既定のポリシーを作成しました。 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 新しいポリシーを表示し、その ObjectID を取得するには、次のコマンドを実行します。
 
     Get-AzureADPolicy
 
 &nbsp;&nbsp;2.  **サービス プリンシパルにポリシーを割り当てます。**
 
-これで、テナント全体にポリシーが設定されました。  ここで、特定のサービス プリンシパルに対してはこの 30 日間のポリシーを保持しますが、テナントの既定のポリシーを "until-revoked" の上限となるよう変更するとします。 
+これで、組織全体にポリシーが設定されました。  ここで、特定のサービス プリンシパルに対してはこの 30 日間のポリシーを保持しますが、組織の既定のポリシーを "until-revoked" の上限となるよう変更するとします。 
 
-最初に、この新しいポリシーをサービス プリンシパルにリンクします。  サービス プリンシパルの **ObjectId** にアクセスする方法も必要です。 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) に対してクエリを実行するか、[Graph エクスプローラー ツール](https://graphexplorer.cloudapp.net/)に移動して Azure AD アカウントにサインインし、テナントのすべてのサービス プリンシパルを表示できます。 
+最初に、この新しいポリシーをサービス プリンシパルにリンクします。  サービス プリンシパルの **ObjectId** にアクセスする方法も必要です。 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) に対してクエリを実行するか、[Graph エクスプローラー ツール](https://graphexplorer.cloudapp.net/)に移動して Azure AD アカウントにサインインし、組織のすべてのサービス プリンシパルを表示できます。 
 
 **ObjectId** を取得したら、次のコマンドを実行します。
 
     Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 
-&nbsp;&nbsp;3.  **次のコマンドを使用して IsTenantDefault フラグを false に設定します**。 
+&nbsp;&nbsp;3.  **次のコマンドを使用して IsOrganizationDefault フラグを false に設定します**。 
 
-    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsTenantDefault $false
-&nbsp;&nbsp;4.  **新しいテナントの既定のポリシーを作成します。**
+    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsOrganizationDefault $false
+&nbsp;&nbsp;4.  **新しい組織の既定のポリシーを作成します**。
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 &nbsp;&nbsp;5.   **これで完了です。** 
 
-これで、元のポリシーがサービス プリンシパルにリンクされ、新しいポリシーがテナントの既定のポリシーとして設定されました。  サービス プリンシパルに適用されるポリシーが、テナントの既定のポリシーよりも優先されることに注意してください。 
+これで、元のポリシーがサービス プリンシパルにリンクされ、新しいポリシーが組織の既定のポリシーとして設定されました。  サービス プリンシパルに適用されるポリシーが、組織の既定のポリシーよりも優先されることに注意してください。 
 
 ## <a name="cmdlet-reference"></a>コマンドレット リファレンス
 ### <a name="manage-policies"></a>ポリシーの管理
@@ -316,13 +316,13 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 新しいポリシーを作成します。
 
-    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsTenantDefault <boolean> -Type <Policy Type> 
+    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type> 
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
 | -Definition |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
 | -DisplayName |ポリシー名の文字列 |-DisplayName MyTokenPolicy |
-| -IsTenantDefault |true の場合はテナントの既定のポリシーとしてポリシーを設定し、false の場合は何もしません。 |-IsTenantDefault $true |
+| -IsOrganizationDefault |true の場合は組織の既定のポリシーとしてポリシーを設定し、false の場合は何もしません。 |-IsOrganizationDefault $true |
 | -Type |ポリシーの種類。トークンの有効期間に対しては、常に "TokenLifetimePolicy" を使用します。 |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [省略可能] |ポリシーに代替の ID を設定します。 |-AlternativeIdentifier myAltId |
 
@@ -360,7 +360,7 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 | -ObjectId |取得するポリシーのオブジェクト ID。 |-ObjectId &lt;ポリシーの ObjectID&gt; |
 | -DisplayName |ポリシー名の文字列 |-DisplayName MyTokenPolicy |
 | -Definition [省略可能] |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -IsTenantDefault [省略可能] |true の場合はテナントの既定のポリシーとしてポリシーを設定し、false の場合は何もしません。 |-IsTenantDefault $true |
+| -IsOrganizationDefault [省略可能] |true の場合は組織の既定のポリシーとしてポリシーを設定し、false の場合は何もしません。 |-IsOrganizationDefault $true |
 | -Type [省略可能] |ポリシーの種類。トークンの有効期間に対しては、常に "TokenLifetimePolicy" を使用します。 |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [省略可能] |ポリシーに代替の ID を設定します。 |-AlternativeIdentifier myAltId |
 
@@ -454,6 +454,6 @@ Refresh Token Max Inactive Time は Single-Factor Token Max Age および Multi-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

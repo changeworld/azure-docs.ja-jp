@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: d76491683d08bf9afd505eebfdede5812e87f458
+ms.sourcegitcommit: a63996ad3661b43bea83870c1fa88fa6d64c6c6a
+ms.openlocfilehash: bc2bb9916baa08b14dc5cfeb0e6d712b1c0522ef
 
 
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>iOS で ADAL を使用してクロス アプリ SSO を有効にする方法
-シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
+シングル サインオン (SSO) を提供すると、ユーザーが資格情報を&1; 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
 
 さらに、Microsoft アカウント、Office365 の職場アカウントなど、他のアプリケーションでも使用できる ID プラットフォームを利用している場合、ユーザーはこれらの資格情報が、ベンダーを問わず、すべてのアプリケーションで使用できることを期待します。
 
@@ -45,7 +45,7 @@ Microsoft は、すべてのモバイル プラットフォーム用に、異な
 これらのブローカーをどのように使用するかと、Microsoft Identity プラットフォームのログイン フローでユーザーにどのように表示されるかを理解するには、この後の詳細をお読みください。
 
 ### <a name="patterns-for-logging-in-on-mobile-devices"></a>モバイル デバイスでのログインのパターン
-デバイスでの資格情報へのアクセスは、Microsoft Identity プラットフォームの 2 つの基本的なパターンに従います。
+デバイスでの資格情報へのアクセスは、Microsoft Identity プラットフォームの&2; つの基本的なパターンに従います。
 
 * 非ブローカーの支援によるログイン
 * ブローカーの支援によるログイン
@@ -277,10 +277,10 @@ Microsoft Identity プラットフォームは、URL を使用してブローカ
 
 例: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-このリダイレクト URI は、 [Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
+このリダイレクト URI は、[Azure Portal](https://portal.azure.com/) を使って、アプリの登録で指定する必要があります。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>手順 3a: 証明書ベースの認証をサポートするために、アプリと開発者ポータルでリダイレクト URI を追加する
-証明書ベースの認証をアプリケーションに追加してサポートする場合は、証明書認証を処理するために、アプリケーションと [Azure クラシック ポータル](https://manage.windowsazure.com/)で 2 番目の "msauth" を登録する必要があります。
+証明書ベースの認証をアプリケーションに追加してサポートする場合は、証明書認証を処理するために、アプリケーションと [Azure Portal](https://portal.azure.com/) で&2; 番目の "msauth" を登録する必要があります。
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
@@ -301,6 +301,6 @@ ADAL は、ブローカーがデバイスにインストールされているか
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

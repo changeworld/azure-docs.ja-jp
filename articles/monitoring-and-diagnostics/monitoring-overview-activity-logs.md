@@ -12,22 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 2/2/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 5a73ee6865a09af68a9ab55f17c85136608c4d84
-ms.openlocfilehash: cfe10bc9c86835d228b09550cc98a846ee1a78ad
+ms.sourcegitcommit: 97edd5eaa3cfa4a122556583dff28c4a9b6f5adc
+ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
 
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Azure アクティビティ ログの概要
-**Azure アクティビティ ログ** では、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作は含まれません。
+**Azure アクティビティ ログ** では、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
 アクティビティ ログは、リソースによって出力されるログである [診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログでは、そのリソースに対する操作ではなく、そのリソースの特定の操作に関するデータが提供されます。
 
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 詳細については、[アクティビティ ログを紹介したビデオ](https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz)を参照してください。  
+
+> [!WARNING]
+> Azure のアクティビティ ログでは、主に、クラシック/RDFE モデルを使用するアクティビティではなく、Azure Resource Manager で発生したアクティビティを記録します。 一部のクラシック リソース タイプには、Azure Resource Manager にプロキシ リソース プロバイダー (例:  Microsoft.ClassicCompute) があることに注意してください。 ユーザーがこれらのプロキシ リソース プロバイダーを使用して Azure Resource Manager 経由でクラシック リソース タイプを操作すると、これらの操作はアクティビティ ログに表示されます。 ユーザーがクラシック ポータルまたは Azure Resource Manager プロキシの外部でクラシック リソース タイプを操作すると、ユーザー アクションは操作ログに記録されます。この記録には、クラシック ポータルからのみアクセスできます。
+>
+>
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>アクティビティ ログで実行できること
 アクティビティ ログでは次のことを実行できます。
@@ -45,11 +50,11 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
 
 * アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
-* 送信するイベント カテゴリ (Write、Delete、Action)
+* 送信するイベント カテゴリ (Write、Delete、Action)。 *ログ プロファイルでの "カテゴリ" の意味は、アクティビティ ログ イベントの "category" プロパティの意味とは異なることに注意してください。ログ プロファイルの "カテゴリ" は操作の種類 (Write、Delete、Action) を表しますが、アクティビティ ログ イベントの "category" プロパティはイベントのソースまたは種類 (Administration、ServiceHealth、Alert など) を表します。*
 * エクスポートするリージョン (場所)
-* アクティビティ ログをストレージ アカウントに保持する期間。 リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+* アクティビティ ログをストレージ アカウントに保持する期間。 リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
-ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
+ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは&1; つだけです。
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure ポータルを使用したログ プロファイルの構成
 Azure ポータルの [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
@@ -87,7 +92,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
 | 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が&0; の場合、ログは無期限に (いつまでも) 保存されます。 |
 | カテゴリ |なし |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
@@ -116,7 +121,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 | storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
 | 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が&0; の場合、ログは無期限に (いつまでも) 保存されます。 |
 | categories |なし |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
@@ -233,12 +238,12 @@ azure insights logprofile delete --name my_log_profile
 | nextLink |結果セットが複数の応答に分けられているときに、次の結果セットを取得するための継続トークン。 通常、レコードの件数が 200 件を超える場合に必要です。 |
 
 ## <a name="next-steps"></a>次のステップ
-* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
+* [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

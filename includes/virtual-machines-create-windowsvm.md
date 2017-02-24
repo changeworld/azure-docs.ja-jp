@@ -8,7 +8,7 @@
    
    * **[仮想マシン名]** には、文字、数字、ハイフンのみを使用できます。 また、仮想マシン名は、文字で始まり、文字または数字で終わる必要があります。
    * **[新しいユーザー名]** とは、サーバーの管理に使用する管理アカウントの名前です。 パスワードは、8 ～ 123 文字で指定する必要があります。また、小文字、大文字、数字、特殊文字のうち、少なくとも 3 つを含める必要があります。 **仮想マシンに接続してログオンする際に、このユーザー名とパスワードが必要になります。**
-   * 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+   * 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。 詳細については、 [仮想マシンのサイズ](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 6. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。 いくつかのヒントを次に示します。
    
    * **[クラウド サービス DNS 名]** は、仮想マシンへの接続に使用する URI の一部となるグルーバル DNS 名です。 クラウド サービス名は Azure 上で一意な名前にする必要があるため、独自のクラウド サービス名を考えてください。 クラウド サービスは、[複数の仮想マシン](../articles/virtual-machines/virtual-machines-windows-classic-connect-vms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を使用するシナリオで重要となります。
@@ -27,6 +27,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

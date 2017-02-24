@@ -1,5 +1,5 @@
 ---
-title: "プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細 | Microsoft Docs"
+title: "Azure における Windows VM のデプロイメント モデル間での移行 | Microsoft Docs"
 description: "この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について技術的に詳しく説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 1/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 63d8270811797db5283870e4b4d3482271b97793
+ms.sourcegitcommit: d835d5825268a4ec0fa5b761f9b5714e3236b0ce
+ms.openlocfilehash: 2dd35a65d1b5b6db1401cdf5737b5355aa6d564b
 
 
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
-Azure クラシック デプロイメント モデルから、Azure Resource Manager デプロイメント モデルへの移行を詳しく見ていきましょう。 Azure Platform 上の 2 つのデプロイメント モデルの間で、どのようにリソースが移行されるかを理解できるように、リソースと機能レベルでリソースについて説明していきます。 詳細については、サービス告知記事の「 [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。
+Azure クラシック デプロイメント モデルから、Azure Resource Manager デプロイメント モデルへの移行を詳しく見ていきましょう。 Azure Platform 上の&2; つのデプロイメント モデルの間で、どのようにリソースが移行されるかを理解できるように、リソースと機能レベルでリソースについて説明していきます。 詳細については、サービス告知記事の「 [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。
 
 ## <a name="detailed-guidance-on-migration"></a>移行に関する詳細なガイダンス
 次の表では、リソースはクラシックと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
@@ -35,7 +35,7 @@ Azure クラシック デプロイメント モデルから、Azure Resource Man
 | VM 拡張機能 |VM 拡張機能 |XML 拡張機能を除くすべてのリソース拡張機能が、クラシック デプロイメント モデルから移行されます。 |
 | 仮想マシン証明書 |Azure Key Vault の証明書 |クラウド サービスにサービス証明書が含まれている場合は、クラウド サービスごとに新しい Azure Key Vault が作成され、証明書はそこに移動されます。 VM は、Key Vault の証明書を参照するように更新されます。 <br><br> **メモ:** Key Vault を削除すると、VM で障害が発生する可能性があります。そのため、Key Vault を削除しないでください。 Microsoft では、Key Vault を安全に削除したり、VM と共に新しいサブスクリプションに移動したりできるように、バックエンドでの処理の改善に取り組んでいます。 |
 | WinRM 構成 |osProfile の WinRM 構成 |Windows リモート管理の構成は、移行の一環として、そのまま移動されます。 |
-| 可用性セットのプロパティ |可用性セットのリソース |クラシック デプロイメント モデルでは、可用性セット仕様は VM のプロパティでした。 可用性セットは、移行の一環として、上位のリソースになります。 1 つのクラウド サービスに対して複数の可用性セット、または 1 つ以上の可用性セットとクラウド サービスの可用性セットにない VM という構成はサポートされていません。 |
+| 可用性セットのプロパティ |可用性セットのリソース |クラシック デプロイメント モデルでは、可用性セット仕様は VM のプロパティでした。 可用性セットは、移行の一環として、上位のリソースになります。 1 つのクラウド サービスに対して複数の可用性セット、または&1; つ以上の可用性セットとクラウド サービスの可用性セットにない VM という構成はサポートされていません。 |
 | VM のネットワーク構成 |プライマリ ネットワーク インターフェイス |移行後、VM のネットワーク構成がプライマリ ネットワーク インターフェイス リソースとして表示されます。 仮想ネットワークにない VM の場合は、内部 IP アドレスが移行中に変わります。 |
 | VM の複数のネットワーク インターフェイス |ネットワーク インターフェイス |VM に複数のネットワーク インターフェイスが関連付けられている場合は、Resource Manager デプロイメント モデルの移行の一環として、各ネットワーク インターフェイスが、すべてのプロパティとともに上位のリソースになります。 |
 | 負荷分散エンドポイント セット |Load Balancer |クラシック デプロイメント モデルでは、クラウド サービスごとに暗黙的なロード バランサーが割り当てられました。 移行中に、新しいロード バランサー リソースが作成され、そのロード バランサー エンドポイント セットはロード バランサー ルールになります。 |
@@ -52,7 +52,7 @@ Azure クラシック デプロイメント モデルから、Azure Resource Man
 | VM の内部 DNS 名 |NIC の内部 DNS 名 |移行中、VM の内部 DNS サフィックスは、NIC の "InternalDomainNameSuffix" という名前の読み取り専用プロパティに移行されます。 サフィックス名は移行後もそのままで、VM 解決は前と同じように動作し続けます。 |
 | Virtual Network ゲートウェイ |Virtual Network ゲートウェイ |Virtual Network ゲートウェイのプロパティはそのまま移行されます。 ゲートウェイに関連付けられている VIP も変更されません。 |
 | ローカル ネットワーク サイト |ローカル ネットワーク ゲートウェイ |ローカル ネットワーク サイトのプロパティは、ローカル ネットワーク ゲートウェイと呼ばれる新しいリソースにそのまま移行されます。 これは、オンプレミス アドレス プレフィックスおよびリモート ゲートウェイ IP を表します。 |
-| 接続の参照 |接続 |移行後の Resource Manager では、ネットワーク構成におけるゲートウェイとローカル ネットワーク サイト間の接続の参照は、"接続" と呼ばれる新しく作成されたリソースによって表されます。 ネットワーク構成ファイル内の接続の参照のすべてのプロパティは、新しく作成された "接続" リソースにそのままコピーされます。 クラシックにおける VNet 間の接続は、VNet を表すローカル ネットワーク サイトへの 2 つの IPsec トンネルを作成することで実現されます。 Resource Manager モデルでは、これが Vnet2Vnet 接続に変更され、ローカル ネットワーク ゲートウェイは不要になります。 |
+| 接続の参照 |接続 |移行後の Resource Manager では、ネットワーク構成におけるゲートウェイとローカル ネットワーク サイト間の接続の参照は、"接続" と呼ばれる新しく作成されたリソースによって表されます。 ネットワーク構成ファイル内の接続の参照のすべてのプロパティは、新しく作成された "接続" リソースにそのままコピーされます。 クラシックにおける VNet 間の接続は、VNet を表すローカル ネットワーク サイトへの&2; つの IPsec トンネルを作成することで実現されます。 Resource Manager モデルでは、これが Vnet2Vnet 接続に変更され、ローカル ネットワーク ゲートウェイは不要になります。 |
 
 ## <a name="illustration-of-a-simple-migration-walkthrough"></a>シンプルな移行手順の図
 以下のスクリーン ショットでは、準備段階後の既存のクラウド サービスと VM (仮想ネットワーク外) を確認できます。
@@ -73,6 +73,6 @@ Azure クラシック デプロイメント モデルから、Azure Resource Man
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions のトリガーとバインド | Microsoft Docs"
-description: "Azure Functions でトリガーとバインドを使用する方法を説明します。"
+title: "Azure Functions でのトリガーとバインドの使用 | Microsoft Docs"
+description: "Azure Functions で、トリガーとバインドを使用してコード実行をオンライン イベントおよびクラウドベース サービスに接続する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -14,25 +14,31 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/08/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: d809636cae48dd0ccca4c99370f41996430d89e4
-ms.openlocfilehash: b5d8d38f03514d89bf6c0b5e36adf0379f1bef1a
+ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
+ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
 
 
 ---
-# <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Azure Functions のトリガーとバインドの開発者用リファレンス
-このトピックでは、トリガーとバインドの全般的な参照情報を提供します。 ここには、すべてのバインド タイプでサポートされる高度なバインド機能と構文の一部が含まれています。  
 
-特定のタイプのトリガーまたはバインドの構成およびコーディングに関する詳細情報が必要な場合は、以下のリストでいずれかのトリガーまたはバインドをクリックしてください。
+# <a name="learn-how-to-work-with-triggers-and-bindings-in-azure-functions"></a>Azure Functions でのトリガーとバインドの使用方法 
+このトピックでは、Azure Functions でトリガーおよびバインドを使用して、さまざまなトリガーや Azure サービス、その他のクラウドベース サービスにコードを接続する方法を示します。 主に、すべてのバインド タイプでサポートされる高度なバインド機能と構文について説明します。  
 
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+特定の種類のトリガーまたはバインドを使用する方法の詳細については、次の参照トピックのいずれかを参照してください。
+
+| | | | |  
+| --- | --- | --- | --- |  
+| [HTTP/webhook](functions-bindings-http-webhook.md) | [Timer](functions-bindings-timer.md) | [Mobile Apps](functions-bindings-mobile-apps.md) | [Service Bus](functions-bindings-service-bus.md)  |  
+| [DocumentDB](functions-bindings-documentdb.md) |  [Storage Blob](functions-bindings-storage-blob.md) | [ストレージ キュー](functions-bindings-storage-queue.md) |  [ストレージ テーブル](functions-bindings-storage-table.md) |  
+| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| | | | |  
 
 これらの記事は、「[Azure Functions developer reference (Azure Functions 開発者用リファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md)、または [Node.js](functions-reference-node.md) の開発者用リファレンスを既に読んでいることを前提としています。
 
 ## <a name="overview"></a>概要
-トリガーは、カスタム コードをトリガーするために使用されるイベント応答です。 これにより、Azure プラットフォーム全体またはオンプレミスのイベントに応答できます。 バインドは、コードを目的のトリガーや関連する入出力データに接続するために使用される必要なメタデータを表します。 各関数の *function.json* ファイルには、すべての関連バインドが含まれます。 関数の入力バインドと出力バインドの数に制限はありません。 ただし、各関数でサポートされるトリガーのバインドは 1 つのみです。  
+トリガーは、カスタム コードをトリガーするために使用されるイベント応答です。 これにより、Azure プラットフォーム全体またはオンプレミスのイベントに応答できます。 バインドは、コードを目的のトリガーや関連する入出力データに接続するために使用される必要なメタデータを表します。 各関数の *function.json* ファイルには、すべての関連バインドが含まれます。 関数の入力バインドと出力バインドの数に制限はありません。 ただし、各関数でサポートされるトリガーのバインドは&1; つのみです。  
 
 Azure Function アプリに統合できるさまざまなバインドの詳細については、以下の表を参照してください。
 
@@ -61,7 +67,7 @@ Azure Function アプリに統合できるさまざまなバインドの詳細�
 }
 ```
 
-コードでは、新しいキュー項目の処理方法に応じてさまざまなタイプの出力を送信できます。 たとえば、Azure Storage テーブルに新しいレコードを書き込む必要があるとします。  これを行うには、Azure Storage テーブルに出力バインドを設定します。 キュー トリガーに使用できるストレージ テーブルの出力バインドを含んでいる *function.json* の例を次に示します。 
+コードでは、新しいキュー項目の処理方法に応じてさまざまなタイプの出力を送信できます。 たとえば、Azure Storage テーブルに新しいレコードを書き込む必要があるとします。  これを行うには、Azure Storage テーブルへの出力バインドを作成します。 キュー トリガーに使用できるストレージ テーブルの出力バインドを含んでいる *function.json* の例を次に示します。 
 
 ```json
 {
@@ -125,7 +131,7 @@ public class Person
 より高度なバインド機能を Azure Portal で使用するには、関数の **[統合]** タブにある **[詳細エディター]** オプションをクリックします。 詳細エディターを使用すると、*function.json* を Portal で直接編集できます。
 
 ## <a name="random-guids"></a>ランダム GUID
-Azure Functions には、バインドでランダム GUID を生成するための構文が用意されています。 次のバインド構文は、Azure Storage コンテナー内の一意の名前を持つ新しい BLOB に出力を書き込みます。 
+Azure Functions には、バインドでランダム GUID を生成するための構文が用意されています。 次のバインド構文は、Storage コンテナー内の一意の名前を持つ新しい BLOB に出力を書き込みます。 
 
 ```json
 {
@@ -229,7 +235,7 @@ Azure Functions ランタイムは、`%your app setting%` のようにアプリ�
 ```json
 {
   "name" : "Customer Name",
-  "address" : "Customer's Address".
+  "address" : "Customer's Address",
   "mobileNumber" : "Customer's mobile number in the format - +1XXXYYYZZZZ."
 }
 ```
@@ -305,53 +311,61 @@ module.exports = function (context, myNewOrderItem) {
 *function.json* を使用した標準的な入出力バインドのパターンは "[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)" のバインドと呼ばれます。バインドは JSON 宣言によって定義されます。 ただし、[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインドも使用できます。 このパターンを使用すると、サポートされている任意の数の入力バインドと出力バインドに関数コード内でバインドできます。
 関数の設計時ではなく、関数の実行時にバインド パスまたは他の入力の計算が必要になった場合に、命令型のバインドが必要になることがあります。 
 
-命令型のバインドを実行するには、以下の手順を実行します。
+次のように命令型のバインドを定義します。
 
 - 必要な命令型のバインドの *function.json* にエントリを**含めないで**ください。
 - 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。 
 - 次の C# パターンを使用してデータ バインドを実行します。
 
-        using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
-        {
-                ...
-        }
+```cs
+using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+{
+    ...
+}
+```
 
 ここで、`BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` も `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、`T` に使用できるのは [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) のみです。
     
 次のコード例は、実行時に BLOB パスが定義された [Storage Blob の出力バインド](functions-bindings-storage-blob.md#storage-blob-output-binding)を作成し、この BLOB に文字列を書き込みます。
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
-                {
-                        writer.Write("Hello World!!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
+    {
+        writer.Write("Hello World!!");
+    }
+}
+```
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
 このコードは、ストレージ アカウントの接続文字列 (`AzureWebJobsStorage`) の既定のアプリケーション設定を取得します。 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡すことで、使用するカスタムなアプリケーション設定を指定できます。 たとえば、次のように入力します。
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                var attributes = new Attribute[]
-                {
-                        new BlobAttribute("samples-output/path"),
-                        new StorageAccountAttribute("MyStorageAccount")
-                };
-                using (var writer = await binder.BindAsync<TextWriter>(attributes))
-                {
-                        writer.Write("Hello World!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    var attributes = new Attribute[]
+    {    
+        new BlobAttribute("samples-output/path"),
+        new StorageAccountAttribute("MyStorageAccount")
+    };
+
+    using (var writer = await binder.BindAsync<TextWriter>(attributes))
+    {
+        writer.Write("Hello World!");
+    }
+}
+```
 
 以下の表に、それぞれのバインドの種類で使われる対応する .NET 属性と参照するパッケージを示します。
 
+> [!div class="mx-codeBreakAll"]
 | バインド | Attribute | 参照の追加 |
 |------|------|------|
 | DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
@@ -362,7 +376,7 @@ module.exports = function (context, myNewOrderItem) {
 | ストレージ キュー | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Storage Blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | ストレージ テーブル | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)、[`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions"` |
+| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 
 
@@ -375,6 +389,6 @@ module.exports = function (context, myNewOrderItem) {
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

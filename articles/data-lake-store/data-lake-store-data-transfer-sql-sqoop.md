@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: bedd1c58e6493c8f0c6bb183ffc1bc296c56f46b
+ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
+ms.openlocfilehash: d536ba2bd44941d036a00a74243cb37b8ae69abb
 
 
 ---
@@ -32,7 +32,7 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure サブスクリプションを有効にする** 。 [手順](data-lake-store-get-started-portal.md)を参照してください。 
+* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 この記事では、Data Lake Store にアクセスできる HDInsight Linux クラスターがあることを前提とします。
 * **Azure SQL データベース**。 Azure SQL Database の作成方法については、 [Azure SQL Database の作成](../sql-database/sql-database-get-started.md)
 
@@ -75,7 +75,7 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-store"></a>Data Lake Store にアクセスできる HDInsight クラスターから Sqoop を使用する
 HDInsight クラスターには、使用可能な Sqoop パッケージが既に存在します。 追加のストレージとして Data Lake Store を使用するように HDInsight クラスターを構成した場合は、Sqoop を使用して (構成の変更なしに)、リレーショナル データベース (この例では、Azure SQL Database) と、Data Lake Store アカウントとの間でインポートまたはエクスポートを行うことができます。
 
-1. このチュートリアルでは、Linux クラスターが作成されていて、SSH を使用してクラスターに接続する必要があることを前提とします。 「 [Linux ベースの HDInsight クラスターへの接続](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
+1. このチュートリアルでは、Linux クラスターが作成されていて、SSH を使用してクラスターに接続する必要があることを前提とします。 「 [Linux ベースの HDInsight クラスターへの接続](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)」を参照してください。
 2. クラスターから Data Lake Store アカウントにアクセスできるかどうかを確認します。 SSH プロンプトで、次のコマンドを実行します。
 
         hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net/
@@ -134,6 +134,10 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
         3    Erna    Myers
         4    Annette    Simpson
 
+## <a name="performance-considerations-while-using-sqoop"></a>Sqoop を使用するときのパフォーマンスに関する考慮事項
+
+Data Lake Store にデータをコピーするときの Sqoop ジョブのパフォーマンス調整については、[Sqoop パフォーマンス ドキュメント](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)をご覧ください。
+
 ## <a name="see-also"></a>関連項目
 * [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
@@ -142,6 +146,6 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,9 +1,9 @@
 ---
-title: "ストレージ アカウントと CDN の統合 | Microsoft Docs"
+title: "Azure ストレージ アカウントと Azure CDN との統合 | Microsoft Docs"
 description: "Azure Content Delivery Network (CDN) を使用して、Azure Storage から BLOB をキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52937c2abe3752dea02467c106167bfe4675fd4d
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 3a0db75612531ebf947c011e9e4545f7d9590e20
 
 
 ---
-# <a name="integrate-a-storage-account-with-cdn"></a>ストレージ アカウントと CDN の統合
+# <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure ストレージ アカウントと Azure CDN との統合
 CDN を使用して、Azure ストレージのコンテンツをキャッシュできます。 CDN は、米国、ヨーロッパ、アジア、オーストラリア、および南米にある物理ノードで、コンピューティング インスタンスの BLOB と静的コンテンツをキャッシュすることで、高帯域幅コンテンツを配信するグローバル ソリューションを開発者に提供します。
 
 ## <a name="step-1-create-a-storage-account"></a>ステップ 1: ストレージ アカウントを作成する
@@ -84,10 +84,10 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 3. この CDN エンドポイントの **名前** を入力します。  この名前は、ドメイン `<endpointname>.azureedge.net`でキャッシュされたリソースにアクセスする際に使用します。
 4. **[配信元の種類]** ドロップダウンで、 *[ストレージ]*を選択します。  
 5. **[配信元ホスト名]** ドロップダウンで、ストレージ アカウントを選択します。
-6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも 1 つのプロトコル (HTTP または HTTPS) を指定する必要があります。
+6. **[元のパス]**、**[配信元のホスト ヘッダー]**、および **[プロトコル/配信元ポート]** の既定値はそのまま使用します。  少なくとも&1; つのプロトコル (HTTP または HTTPS) を指定する必要があります。
    
    > [!NOTE]
-   > この構成により、ストレージ アカウントで公開されているすべてのコンテナーの CDN でのキャッシュが可能になります。  範囲を 1 つのコンテナーに限定する場合は、 **配信元パス**を使用します。  コンテナーの表示設定は公開に指定されている必要があります。
+   > この構成により、ストレージ アカウントで公開されているすべてのコンテナーの CDN でのキャッシュが可能になります。  範囲を&1; つのコンテナーに限定する場合は、 **配信元パス**を使用します。  コンテナーの表示設定は公開に指定されている必要があります。
    > 
    > 
 7. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
@@ -131,6 +131,6 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

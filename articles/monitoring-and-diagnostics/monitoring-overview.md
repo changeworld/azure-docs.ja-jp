@@ -1,6 +1,6 @@
 ---
-title: "Azure 監視の概要 | Microsoft Docs"
-description: "アラート、webhook、自動スケールなど、Microsoft Azure における Azure Monitor 機能の最上位レベルの概要。"
+title: "Azure Monitor の概要 | Microsoft Docs"
+description: "Azure Monitor は、アラート、webhook、自動スケール、およびオートメーションで使用するための統計を収集します。 この記事では、その他の Microsoft 監視オプションも示します。"
 author: rboucher
 manager: carmonm
 editor: 
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2f8ff117966b11e7415abaa5e7a0735742d7ef99
+ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
+ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 
 
 ---
 
-# <a name="overview-of-monitoring-in-microsoft-azure"></a>Microsoft Azure での監視の概要
+# <a name="overview-of-azure-monitor"></a>Azure Monitor の概要
 この記事では、Azure リソースの監視の概念の概要を説明します。 特定の種類に該当するリソースについては、詳しい情報のある場所も紹介しています。  Azure 以外の観点からアプリケーションを監視する場合の概要については、「[監視と診断のガイダンス](../best-practices-monitoring.md)」をご覧ください。
 
 Azure Monitor のビデオ チュートリアルは、  
@@ -130,11 +130,11 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * [.NET SDK](https://msdn.microsoft.com/library/dn802153.aspx)
 
 ## <a name="azures-monitoring-offerings"></a>Azure の監視ソリューション
-Azure では、ベアメタル インフラストラクチャからアプリケーション テレメトリに至るまで、サービスを監視するためのソリューションをいくつか用意しています。 最善の監視戦略は、サービスの正常性に関して包括的かつ詳細な洞察を得るために、以下の 3 つをすべて使用することです。
+Azure では、ベアメタル インフラストラクチャからアプリケーション テレメトリに至るまで、サービスを監視するためのソリューションをいくつか用意しています。 最善の監視戦略は、サービスの正常性に関して包括的かつ詳細な洞察を得るために、以下の&3; つをすべて使用することです。
 
 * [Azure Monitor](http://aka.ms/azmondocs) – Azure インフラストラクチャ (アクティビティ ログ) と個々の Azure リソース (診断ログ) から得られたデータを基に視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 この記事は、Azure Monitor ドキュメントの一部です。 Azure Monitor という名前は、9 月 25 日に開催された Ignite 2016 で発表されたものです。  以前の名前は、"Azure Insights" でした。  
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) – Azure の監視により得られたデータを活用して、サービスのアプリケーション レイヤーの問題を検出および診断するものです。 App Service Web Apps では、これが既定の診断プラットフォームとなっています。  データは他のサービスからルーティングできます。  
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) の一部) – Azure リソースだけでなく、オンプレミスのインフラストラクチャやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える総合的 IT 管理ソリューションです。  Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 箇所で確認できます。     
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/oms/) の一部) – Azure リソースだけでなく、オンプレミスのインフラストラクチャやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える総合的 IT 管理ソリューションです。  Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを&1; 箇所で確認できます。     
 
 ## <a name="next-steps"></a>次のステップ
 項目ごとに詳しい情報を確認できます。
@@ -144,10 +144,10 @@ Azure では、ベアメタル インフラストラクチャからアプリケ�
 * [Azure 診断](../azure-diagnostics.md) Cloud Services、Virtual Machines、または Service Fabric のアプリケーションに発生した問題を診断する場合には、こちらをご覧ください。
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) App Service Web アプリの問題を診断する場合には、こちらをご覧ください。
 * [Azure Storage のトラブルシューティング](../storage/storage-e2e-troubleshooting.md) Storage Blobs、テーブル、またはキューを使用している場合には、こちらをご覧ください。
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) と [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) と [Operations Management Suite](https://www.microsoft.com/oms/)
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

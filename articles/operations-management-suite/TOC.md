@@ -19,10 +19,6 @@
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [監視製品の比較](operations-management-suite-monitoring-product-comparison.md)
 ### [アラートの管理](operations-management-suite-monitoring-alerts.md)
-## [管理]
-### [計画とデプロイ](operations-management-suite-solutions-creating.md)
-### [Automation リソース](operations-management-suite-solutions-resources-automation.md)
-### [ビュー](operations-management-suite-solutions-resources-views.md)
 ## 自動化
 ### [Azure Automation の概要](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## バックアップ
@@ -35,6 +31,11 @@
 ### [マルウェアの評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [システムの更新の評価](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [セキュリティ製品の接続](oms-security-connect-products.md)
+## ソリューションを作成する
+### [管理ソリューション](operations-management-suite-solutions-creating.md)
+### [Automation リソース](operations-management-suite-solutions-resources-automation.md)
+### [ログ検索とアラート](operations-management-suite-solutions-resources-searches-alerts.md)
+### [ビュー](operations-management-suite-solutions-resources-views.md)
 ## [OMS との統合](operations-management-suite-integration.md)
 
 
@@ -65,6 +66,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

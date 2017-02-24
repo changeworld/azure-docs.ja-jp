@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 15b22d577343667c9232b3394cf64bc307ccd777
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 64427583dba57716c23e1a01df820a263c5e7298
 
 
 ---
-# <a name="use-u-sql-catalog"></a>U-SQL カタログの使用
+# <a name="use-azure-data-lake-analytics-u-sql-catalog"></a>Azure Data Lake Analytics (U-SQL) カタログの使用
 U-SQL カタログを使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。 カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。
 
 各 Azure Data Lake Analytics アカウントには、必ず 1 つの U-SQL カタログが関連付けられています。 U-SQL カタログを削除することはできません。 現在、U-SQL カタログを Data Lake Store アカウント間で共有することはできません。
@@ -51,9 +51,9 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
 
     - 新しいデータベースを追加するには、**[データベース]** を右クリックしてから **[データベースの作成]** をクリックします。
     - 新しいアセンブリを追加するには、**[アセンブリ]** を右クリックしてから **[アセンブリの登録]** をクリックします。
-    - 新しいスキーマを追加するには、 **[スキーマ]**を右クリックしてから [スキーマの作成] をクリックします。
-    - 新しいテーブルを追加するには、 **[テーブル]**を右クリックしてから [テーブルの作成] をクリックします。
-    - 新しいテーブル値関数を追加するには、「 [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」を参照してください。
+    - 新しいスキーマを追加するには、**[スキーマ]** を右クリックし、**[スキーマの作成]** をクリックします。
+    - 新しいテーブルを追加するには、**[テーブル]** を右クリックし、**[テーブルの作成]** をクリックします。
+    - 新しいテーブル値関数を追加するには、「[Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)」を参照してください。
 
 
 ![U-SQL Visual Studio カタログの参照](./media/data-lake-analytics-use-u-sql-catalog/data-lake-analytics-browse-catalogs.png)
@@ -84,6 +84,6 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

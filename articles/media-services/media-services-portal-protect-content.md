@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 4256201f2fd505ed86734e900496eb7364c9a575
 
 
 ---
@@ -26,12 +26,13 @@ ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Microsoft Azure Media Services (AMS) を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady、Widevine DRM、Apple FairPlay を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。 
 
-AMS は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure ポータルでは、すべてのタイプの暗号化に対して 1 つの **キー/ライセンス承認ポリシー** を作成できます。
+AMS は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure ポータルでは、すべてのタイプの暗号化に対して&1; つの **キー/ライセンス承認ポリシー** を作成できます。
 
 この記事では、Azure ポータルでコンテンツ保護ポリシーを構成する方法を説明します。 また、動的な暗号化を資産に適用する方法についても説明します。
+
 
 > [!NOTE]
 > コンテンツ保護ポリシーの作成に Azure クラシック ポータルを使用した場合、ポリシーが [Azure Portal](https://portal.azure.com/) に表示されない場合があります。 すべての以前のポリシーが存在しています。 これを調べるには、Azure Media Services .NET SDK または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases) ツールを使用します (ポリシーを表示するには、資産を右クリックし、情報を表示し (F4)、[コンテンツ キー] タグをクリックして、キーをクリックします)。 
@@ -51,7 +52,7 @@ AMS は、承認されたクライアントに DRM ライセンスと AES クリ
 ## <a name="keylicense-authorization-policy"></a>キー/ライセンス承認ポリシー
 AMS では、キーまたはライセンスを要求するユーザーを承認する複数の方法がサポートされています。 キー/ライセンスがクライアントに配信されるには、自身で、またはクライアントがこのコンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。
 
-Azure ポータルでは、すべてのタイプの暗号化に対して 1 つの **キー/ライセンス承認ポリシー** を作成できます。
+Azure ポータルでは、すべてのタイプの暗号化に対して&1; つの **キー/ライセンス承認ポリシー** を作成できます。
 
 ### <a name="open"></a>オープン
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。 
@@ -93,10 +94,7 @@ FairPlay 暗号化を有効にするには、FairPlay 構成オプションを�
 ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
 ## <a name="apply-dynamic-encryption-to-your-asset"></a>資産への動的な暗号化の適用
-動的な暗号化機能を利用するには、次の作業が必要になります。
-
-* 一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-* コンテンツ配信元となるストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。 詳細については、「 [オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+動的暗号化を利用するには、ソース ファイルを、一連のアダプティブ ビットレート MP4 ファイルにエンコードする必要があります。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>暗号化する資産を選択する
 すべての資産を表示するには、**[設定]**  >  **[資産]** の順にクリックします。
@@ -104,7 +102,7 @@ FairPlay 暗号化を有効にするには、FairPlay 構成オプションを�
 ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-資産で **[暗号化]** を押すと、**AES** または **DRM** の 2 つの選択肢が表示されます。 
+資産で **[暗号化]** を押すと、**AES** または **DRM** の&2; つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
 AES クリア キーによる暗号化はすべてのストリーミング プロトコル (Smooth Streaming、HLS、MPEG-DASH) で有効になります。
@@ -137,6 +135,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

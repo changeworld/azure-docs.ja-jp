@@ -82,6 +82,6 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

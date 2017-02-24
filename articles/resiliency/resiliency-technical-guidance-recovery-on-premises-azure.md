@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c3a6df9f91af5227526e06fe7e9ebb3006bd6948
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: 9af589d4a899702c7c2dd2e2bcf13d783d715380
 
 
 ---
@@ -32,7 +32,7 @@ Azure は、高可用性と障害復旧の目的で、オンプレミスのデ�
 Azure Virtual Network を使用すると、論理的に切り離されたセクションを Azure 内に作成し、IPsec 接続を使用してオンプレミス データセンターまたは単一のクライアント コンピューターに安全に接続できます。 Virtual Network を使用すると、Windows Server、メインフレーム、UNIX で実行中のシステムを含むオンプレミス システムにあるデータおよびアプリケーションへの接続性を保ちながら、Azure のスケーラブルなオンデマンドのインフラストラクチャを活用できます。 詳細については、 [Azure Network のドキュメント](../virtual-network/virtual-networks-overview.md) を参照してください。
 
 ## <a name="compute"></a>計算
-Hyper-V をオンプレミスで使用している場合は、"リフトとシフト" によって既存の仮想マシンを Azure、および Windows Server 2012 (またはそれ以降) を実行するサービス プロバイダーに移行できます。VM に変更を加えたり、VM 形式を変換したりする必要はありません。 詳細については、「[Azure 仮想マシン用のディスクと VHD について](../virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+Hyper-V をオンプレミスで使用している場合は、"リフトとシフト" によって既存の仮想マシンを Azure、および Windows Server 2012 (またはそれ以降) を実行するサービス プロバイダーに移行できます。VM に変更を加えたり、VM 形式を変換したりする必要はありません。 詳細については、「[Azure 仮想マシン用のディスクと VHD について](../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 サービスとしての障害復旧 (DRaaS) を希望する場合は、 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)を利用できます。 Azure Site Recovery は、VMware、Hyper-V、および物理サーバーの包括的な保護を提供します。 Azure Site Recovery では、別のオンプレミス サーバーまたは Azure を復旧サイトとして使用することができます。 Azure Site Recovery の詳細については、 [Azure Site Recovery のドキュメント](https://azure.microsoft.com/documentation/services/site-recovery/)を参照してください。
@@ -99,6 +99,6 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

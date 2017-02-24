@@ -1,5 +1,5 @@
 ---
-title: "Maven を使用した HBase アプリケーションのビルドと、Windows ベースの HDInsight へのデプロイ |Microsoft Docs"
+title: "Windows ベースの Azure HDInsight での Java HBase アプリケーションのビルド | Microsoft Docs"
 description: "Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Windows ベースの Azure HDInsight クラスターにデプロイする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/05/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 24d9c1d185eef811a37924be184e4e5894dcdb01
+ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
+ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
 
 
 ---
@@ -26,17 +26,16 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 [Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。 この記事では、このツールを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
-> [!NOTE]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターを使用することを前提としています。 Linux ベースの HDInsight クラスターを使用する方法の詳細については、「 [Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven-linux.md)
-> 
-> 
+> [!IMPORTANT]
+> このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
 * [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
 * [Maven](http://maven.apache.org/)
 * [Windows ベースの HDInsight クラスターと HBase](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
 
-    > [AZURE.NOTE] このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。 例で指定される既定値は、HDInsight 3.3 クラスターに対応しています。
+    > [!NOTE] 
+    > このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。 例で指定される既定値は、HDInsight 3.3 クラスターに対応しています。
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します(例: `cd code\hdinsight`)。
@@ -181,8 +180,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
    
    > [!NOTE]
    > これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。
-   > 
-   > 
+
 6. **hbase-site.xml** ファイルを保存します。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
@@ -366,8 +364,6 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
    
    > [!NOTE]
    > **hbaseapp-1.0-SNAPSHOT.jar** ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uber jar (fat jar とも呼ばれる) です。
-   > 
-   > 
 
 ## <a name="upload-the-jar-file-and-start-a-job"></a>JAR ファイルをアップロードしてジョブを開始する
 「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。 次の手順では、Azure PowerShell を使用します。
@@ -423,10 +419,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         FindAzure
    
         # Get the login for the HDInsight cluster
-        $creds = Get-Credential
-   
-        # Get storage information
-        $storage = GetStorage -clusterName $clusterName
+        $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
    
         # The JAR
         $jarFile = "wasbs:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
@@ -453,9 +446,6 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         Get-AzureRmHDInsightJobOutput `
                     -Clustername $clusterName `
                     -JobId $job.JobId `
-                    -DefaultContainer $storage.container `
-                    -DefaultStorageAccountName $storage.storageAccount `
-                    -DefaultStorageAccountKey $storage.storageAccountKey `
                     -HttpCredential $creds `
                     -DisplayOutputType StandardError
         }
@@ -463,9 +453,6 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         Get-AzureRmHDInsightJobOutput `
                     -Clustername $clusterName `
                     -JobId $job.JobId `
-                    -DefaultContainer $storage.container `
-                    -DefaultStorageAccountName $storage.storageAccount `
-                    -DefaultStorageAccountKey $storage.storageAccountKey `
                     -HttpCredential $creds
         }
    
@@ -580,7 +567,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         # Only export the verb-phrase things
         export-modulemember *-*
    
-    このファイルには 2 つのモジュールが含まれます。
+    このファイルには&2; つのモジュールが含まれます。
    
    * **Add-HDInsightFile** - HDInsight へのファイルのアップロードに使用されます
    * **Start-HBaseExample** - 前に作成されたクラスの実行に使用されます
@@ -633,6 +620,6 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

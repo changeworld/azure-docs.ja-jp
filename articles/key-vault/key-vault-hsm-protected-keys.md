@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3de8751c58870fceee2575608982a5b36eca7478
+ms.sourcegitcommit: 593fdde402845fa062dbceafa533a1efc1f7af9c
+ms.openlocfilehash: b189106be19b95366ba0e6d248c69b34b219b8a1
 
 
 ---
@@ -60,10 +60,10 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 | Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM で保護されたキーをサポートする Azure Key Vault Premium サービス レベル |Azure Key Vault のサービス層と機能に関する詳細については、 [Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。 |
 | Thales HSM、スマート カード、サポート ソフトウェア |Thales ハードウェア セキュリティ モジュールにアクセスできることと Thales HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、「 [Thales ハードウェア セキュリティ モジュール](https://www.thales-esecurity.com/msrms/buy) 」を参照してください。 |
-| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の Thales nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降の Windows オペレーティング システムを搭載したワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを「未接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、このワークステーションを「インターネット接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/> |
+| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の Thales nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降の Windows オペレーティング システムを搭載したワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを「未接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の&2; 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、このワークステーションを「インターネット接続ワークステーション」と呼んでいることにご注意ください。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>キーを生成し、Azure Key Vault HSM に転送する
-次の 5 つの手順でキーを生成し、Azure Key Vault HSM に転送します。
+次の&5; つの手順でキーを生成し、Azure Key Vault HSM に転送します。
 
 * [手順 1: インターネット接続ワークステーションを準備する](#step-1-prepare-your-internet-connected-workstation)
 * [手順 2: 未接続ワークステーションを準備する](#step-2-prepare-your-disconnected-workstation)
@@ -187,7 +187,7 @@ ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
 USB ドライブまたはその他のポータブル ストレージにパッケージをコピーします。
 
 ## <a name="step-2-prepare-your-disconnected-workstation"></a>手順 2: 未接続ワークステーションを準備する
-この 2 つ目の手順では、ネットワーク (インターネットまたは内部ネットワーク) に接続されていないワークステーションで次の手順を実行します。
+この&2; つ目の手順では、ネットワーク (インターネットまたは内部ネットワーク) に接続されていないワークステーションで次の手順を実行します。
 
 ### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>手順 2.1: Thales HSM で未接続ワークステーションを準備する
 Windows コンピューターに nCipher (Thales) サポート コンピューターをインストールし、そのコンピューターに Thales HSM をアタッチします。
@@ -206,14 +206,14 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 3. 指示に従い、Visual Studio 2013 用の Visual C++ ランタイム コンポーネントをインストールします。
 
 ## <a name="step-3-generate-your-key"></a>手順 3: キーを生成する
-この 3 つ目の手順では、未接続ワークステーションで次の手順を実行します。
+この&3; つ目の手順では、未接続ワークステーションで次の手順を実行します。
 
 ### <a name="step-31-create-a-security-world"></a>手順 3.1: セキュリティ ワールドを作成する
 コマンド プロンプトを起動し、Thales new-world プログラムを実行します。
 
     new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 
-このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。 クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。 いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。 その 2 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
+このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。 クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。 いずれかの&2; 枚のカードがセキュリティ ワールドに完全アクセスを与えます。 その&2; 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
 
 次に、次を実行します。
 
@@ -233,7 +233,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 ダウンロードしたパッケージを検証するには:
 
-1. 地域リージョンまたは Azure のインスタンスによっては、次のいずれかを入力して、verifykeypackage.py スクリプトを実行します。
+1. 地域リージョンまたは Azure のインスタンスに応じて、次のいずれかを入力して、verifykeypackage.py スクリプトを実行します。
    
    * 北米:
      
@@ -300,7 +300,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 これで Azure Key Vault にキーを転送する準備ができました。
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>手順 4: キーの転送準備をする
-この 4 つ目の手順では、未接続ワークステーションで次の手順を実行します。
+この&4; つ目の手順では、未接続ワークステーションで次の手順を実行します。
 
 ### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>手順 4.1: アクセス権が制限されたキーのコピーを作成します。
 キーのアクセス権を制限するには、地域リージョンまたは Azure のインスタンスによって、コマンド プロンプトから次のいずれかを実行します。
@@ -411,6 +411,6 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

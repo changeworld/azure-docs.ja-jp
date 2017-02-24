@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 06/22/2015
 ms.author: rashimg
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a79029fef54dc8beaaa9daea690a67ae1940c44
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 89618f7549d8589d5ac684772832748ab9765d1a
 
 
 ---
@@ -100,7 +100,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * GET\_JSON\_OBJECT UDF (ユーザー定義関数) を使用する
 * JSON_TUPLE UDF を使用する
 * カスタム SerDe を使用する
-* Python またはその他の言語を使用して独自の UDF を作成する 独自の Python コードの実行については、[この記事][hdinsight-python] をご覧ください。
+* Python またはその他の言語を使用して独自の UDF を作成する Hive を使用した独自の Python コードの実行については、[この記事][hdinsight-python]をご覧ください。
 
 ### <a name="use-the-getjsonobject-udf"></a>GET\_JSON_OBJECT UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドは 2 つの引数を取ります。テーブル名とメソッド名で、解析することが必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
@@ -156,7 +156,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
    3. 新しい **JAVA_HOME** 環境変数を追加します。これは、**C:\Program Files\Java\jdk1.7.0_55** または JDK がインストールされている場所を指します。
       
       ![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
-2.  [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip)
+2. [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip)
    
     [コントロール パネル] からご使用のアカウントの環境変数の [システム環境変数の編集] に移動して、パスに bin フォルダーを追加します。 次のスクリーンショットに、この方法を示します。
    
@@ -220,8 +220,8 @@ Hive コンソールの出力を次に示します。
 
 ![SerDe クエリ 2][image-hdi-hivejson-serde_query2]
 
-特定の学生のスコアが 80 点を超えている科目を検索するには、次のようにします。SELECT  
-       jt.StudentClassCollection.ClassId FROM json_table jt lateral view explode(jt.StudentClassCollection.Score) collection as score where score > 80;
+特定の学生のスコアが 80 点を超えている科目を検索するには、次を選択します。  
+      jt.StudentClassCollection.ClassId FROM json_table jt lateral view explode(jt.StudentClassCollection.Score) collection as score  where score > 80;
 
 上記のクエリにより、Hive 配列が戻ります。文字列が返される get\_json\_object とは異なります。
 
@@ -260,6 +260,6 @@ Hive コンソールの出力を次に示します。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

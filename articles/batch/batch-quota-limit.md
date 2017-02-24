@@ -1,5 +1,5 @@
 ---
-title: "Batch サービスのクォータと制限 | Microsoft Docs"
+title: "Azure Batch 用のサービスのクォータと制限 | Microsoft Docs"
 description: "既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/09/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 1a530bf6e9afca9a7cdc1f68e8eefdbf077dc516
+ms.sourcegitcommit: 683ff9f9a829468d9852ce7e9699c766cab53f8b
+ms.openlocfilehash: 163f9f19dfed86e1280135b653086e018f85592b
 
 
 ---
@@ -30,12 +30,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 > 
 > 
 
-## <a name="subscription-quotas"></a>サブスクリプションのクォータ
-| **リソース** | **既定の制限** | **上限** |
-| --- | --- | --- |
-| サブスクリプションあたりのリージョンごとの Batch アカウント数 |1 |50 |
-
-## <a name="batch-account-quotas"></a>Batch アカウントのクォータ
+## <a name="resource-quotas"></a>リソース クォータ
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ## <a name="other-limits"></a>その他の制限
@@ -103,6 +98,6 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

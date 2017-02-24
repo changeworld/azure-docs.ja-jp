@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/7/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: a2b3761a2f927b4f0df06f000482a77685e7c5ca
-ms.openlocfilehash: 936107c4a66d9399309bda66b40966c17ccecd25
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 8e0b4da748217eb34a3b571a487a535f0e20096f
 
 
 ---
 # <a name="what-is-azure-stack-technical-preview-2"></a>What is Azure Stack Technical Preview 2?
->[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/What-is-Microsoft-Azure-Stack/player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Microsoft-Azure-Stack/player]
 
 
 Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliver Azure services from your organization’s datacenter. Microsoft Azure Stack Technical Preview 2 is being made available through a Proof of Concept (POC). The POC is an environment for learning and demonstrating Azure Stack features. It lets you deploy all required components on a single physical machine to create an environment for evaluating key concepts and capabilities, and validating the extensibility model for APIs.
@@ -40,6 +40,6 @@ Microsoft Azure Stack is a new hybrid cloud platform product that lets you deliv
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "SQL Database の XEvent イベント ファイル コード | Microsoft Docs"
-description: "Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す 2 段階コード サンプルの PowerShell と Transact-SQL を提供します。 Azure Storage はこのシナリオの必須の部分です。"
+description: "Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す&2; 段階コード サンプルの PowerShell と Transact-SQL を提供します。 Azure Storage はこのシナリオの必須の部分です。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -9,19 +9,21 @@ editor:
 tags: 
 ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1569bdf8ad8a073808b83b08fa3fdae8f843805f
+ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
+ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
 
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 拡張イベントに関する情報を確かな方法で取得し、レポートするための完全なコード サンプルが必要です。
@@ -37,6 +39,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
   * イベント セッションを作成し、開始するなどを行います。
 
 ## <a name="prerequisites"></a>前提条件
+
 * Azure アカウントとサブスクリプション。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * テーブルを作成できるデータベース。
   
@@ -51,6 +54,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
   * このモジュールから **New-AzureStorageAccount**などのコマンドが提供されます。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>フェーズ 1: Azure Storage コンテナーの PowerShell コード
+
 この PowerShell は 2 段階のコード サンプルの第 1 段階です。
 
 このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
@@ -65,9 +69,10 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 ![Azure モジュールがインストールされ、スクリプトの実行準備が整っている PowerShell ISE。][30_powershell_ise]
 
-&nbsp;
 
-```
+### <a name="powershell-code"></a>PowerShell コード
+
+```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
 
 #--------------- 1 -----------------------
@@ -238,11 +243,10 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 ```
 
 
-&nbsp;
-
 PowerShell スクリプトが終了したら、出力された名前付きの値を書き留めます。 後続の第 2 段階で、これらの値を使用するように Transact-SQL スクリプトを編集する必要があります。
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>フェーズ 2: Azure Storage コンテナーを使用する Trasact-SQL コード
+
 * このコード サンプルの第 1 段階で、PowerShell スクリプトを実行し、Azure ストレージ コンテナーを作成しました。
 * 次の第 2 段階では、次の Transact-SQL スクリプトでそのコンテナーを使用する必要があります。
 
@@ -257,16 +261,14 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 5. スクリプトにある **TODO** をすべて探し、適宜編集します。
 6. 保存し、スクリプトを実行します。
 
-&nbsp;
 
 > [!WARNING]
 > 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。 次の T-SQL スクリプトで SAS キーを使用する場合は、 *先頭の "?" を削除*する必要があります。 削除しないと、セキュリティによって操作がブロックされる可能性があります。
-> 
-> 
 
-&nbsp;
 
-```
+### <a name="transact-sql-code"></a>Transact-SQL コード
+
+```tsql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -460,11 +462,9 @@ GO
 ```
 
 
-&nbsp;
-
 実行時にターゲットがアタッチできなかった場合、イベント セッションを停止し、再起動する必要があります。
 
-```
+```tsql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
@@ -472,16 +472,14 @@ GO
 ```
 
 
-&nbsp;
-
 ## <a name="output"></a>出力
-Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
-ここに、テスト中に生成された **<event>** 要素が 1 つあります。
+Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **<event>** 要素が&1; つ表示されます。これに UPDATE ステートメントが&1; つ表示されます。
 
-&nbsp;
+ここに、テスト中に生成された **<event>** 要素が&1; つあります。
 
-```
+
+```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
   <data name="state">
     <value>0</value>
@@ -520,7 +518,6 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
-&nbsp;
 
 前述のTransact-SQL スクリプトでは、event_file の読み取りに次のシステム関数を使用します。
 
@@ -530,9 +527,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 * [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](http://msdn.microsoft.com/library/mt752502.aspx)
 
-&nbsp;
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>SQL Server で実行できるようにコード サンプルを変換する
+
 先の Transact-SQL サンプルを Microsoft SQL Server で実行するとします。
 
 * わかりやすくするために、Azure Storage コンテナーの使用を「**C:\myeventdata.xel**」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
@@ -542,6 +539,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
   * Azure ストレージ アカウントは必要ありません。
 
 ## <a name="more-information"></a>詳細情報
+
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
 * [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
@@ -559,6 +557,6 @@ Image references.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

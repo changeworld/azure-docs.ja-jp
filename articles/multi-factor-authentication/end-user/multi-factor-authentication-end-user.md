@@ -1,5 +1,5 @@
 ---
-title: "Azure Multi-Factor Authentication とは何ですか"
+title: "2 段階認証の概要 |Microsoft Docs"
 description: "この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。"
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 12/15/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da55d4adaf00277a303a53a2b807ca3a28d2dbe0
+ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
+ms.openlocfilehash: dd9b0692dbc044e4bed26cfe7e9e4be11450a595
 
 
 ---
@@ -32,26 +32,24 @@ ms.openlocfilehash: da55d4adaf00277a303a53a2b807ca3a28d2dbe0
 * **モバイル アプリでの通知または確認コードの使用** - モバイル アプリを使用する場合、応答を行う通知を受信するのか、確認コードを受信するのかを選びます。
 
 > [!NOTE]
-> IT 部門が前述の 1 つ以上のオプションを無効にしている場合がありますので、ご注意ください。  その場合、登録プロセスでそうしたオプションは利用できません。
-> 
-> 
+> IT 部門が前述の&1; つ以上のオプションを無効にしている場合がありますので、ご注意ください。  その場合、登録プロセスでそうしたオプションは利用できません。  
 
-これで、確認方法が決まり、登録を行えます。  [セットアップ エクスペリエンス](../multi-factor-authentication-end-user-first-time.md) リンクを使用して、登録プロセスのチュートリアルを開始してください。
+これで、確認方法が決まり、登録を行えます。  [セットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md) リンクを使用して、登録プロセスのチュートリアルを開始してください。
 
 ## <a name="how-to-get-going-with-multi-factor-authentication"></a>多要素認証を開始する方法
 以下のいずれかのトピックを選択して開始してください。
 
 | トピック | Description |
 |:--- |:--- |
-| [セットアップ エクスペリエンス](../multi-factor-authentication-end-user-first-time.md) |初めて多要素認証をセットアップする際のプロセスについて説明します。 |
-| [サインイン エクスペリエンス](../multi-factor-authentication-end-user-signin.md) |電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。 |
-| [設定の変更](../multi-factor-authentication-end-user-manage-settings.md) |電話番号や優先登録方法など、設定の変更方法を示します。 |
-| [アプリ パスワードに関するヘルプ](../multi-factor-authentication-end-user-app-passwords.md) |アプリ パスワードの作成と使用に関する情報があります。 |
-| [モバイル アプリの使用](../multi-factor-authentication-microsoft-authenticator.md) |Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
+| [セットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md) |初めて多要素認証をセットアップする際のプロセスについて説明します。 |
+| [サインイン エクスペリエンス](multi-factor-authentication-end-user-signin.md) |電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。 |
+| [設定の変更](multi-factor-authentication-end-user-manage-settings.md) |電話番号や優先登録方法など、設定の変更方法を示します。 |
+| [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md) |アプリ パスワードの作成と使用に関する情報があります。 |
+| [モバイル アプリの使用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

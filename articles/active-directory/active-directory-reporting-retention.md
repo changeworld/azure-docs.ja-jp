@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/30/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 8a7d1bd1db8abdac5b741d79b10c9b363afecd24
-ms.openlocfilehash: 9f8d9c845c391ec24aa3b265aa3078840fe3240a
+ms.sourcegitcommit: 47594d1d435ee92d57150a01a99765bab0e87846
+ms.openlocfilehash: 2ac62c2c04975167b243b49bf2c536900e77df73
 
 
 ---
@@ -30,8 +30,8 @@ ms.openlocfilehash: 9f8d9c845c391ec24aa3b265aa3078840fe3240a
 
 | Azure AD のエディション | コレクションの開始 |
 | :--              | :--   |
-|Premium および Premium 2 | ライセンスにサインアップしたとき |
-| Free | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | サブスクリプションにサインアップしたとき |
+| Azure AD Free | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
 
 
 Azure Portal でアクティビティ データを使用できるようになるのはいつか
@@ -46,14 +46,14 @@ Azure Portal でアクティビティ データを使用できるようになる
 
 **アクティビティ レポート**    
 
-| レポート | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| レポート | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--    | :--           | :--                | :--                |
 | ディレクトリ監査 | 7 日 | 30 日 | 30 日 |
 | サインイン アクティビティ |    7 日 | 30 日 | 30 日 |
 
 **セキュリティ シグナル**
 
-| レポート | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| レポート | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--    | :--           | :--                | :--                |
 | リスクの高いサインイン | 7 日 | 30 日 | 90 日間 |
 
@@ -61,6 +61,6 @@ Azure Portal でアクティビティ データを使用できるようになる
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

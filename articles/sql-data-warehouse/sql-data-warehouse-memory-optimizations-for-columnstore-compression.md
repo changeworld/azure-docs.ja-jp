@@ -1,5 +1,5 @@
 ---
-title: "メモリの最適化 - Azure SQL Data Warehouse の列ストア インデックス | Microsoft Docs"
+title: "Azure SQL で列ストア インデックスのパフォーマンスを上げる | Microsoft Docs"
 description: "メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 11/18/2016
 ms.author: shigu;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 4884813a8ea73fe1104dea0b7423420d20a6a743
-ms.openlocfilehash: 847dfe2d32c199cb4e55a8025f903111d87b9c68
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 966d353dd8de46946ff2cdcd1d9cac7cd3e09579
 
 
 ---
@@ -56,7 +56,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。 
 
-長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ*を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
+長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ*を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに&1; つだけです。
 
 列ストアのメモリ要件の詳細については、ビデオ「[Azure SQL Data Warehouse scaling: configuration and guidance (Azure SQL Data Warehouse のスケーリング: 構成とガイダンス)](https://myignite.microsoft.com/videos/14822)」をご覧ください。 
 
@@ -78,7 +78,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>過剰なパーティション分割の回避
 
-列ストア インデックスは、パーティションごとに 1 つまたは複数の行グループを作成します。 SQL Data Warehouse では、データが分散されており、それぞれのディストリビューションがパーティション分割されているため、パーティションの数が急速に増加します。 テーブルに多数のパーティションがある場合は、行グループを入力するのに十分な行がない可能性があります。 行の欠如によって、圧縮時にメモリの負荷が発生することはありませんが、行グループの最適な列ストア クエリ パフォーマンスが実現しなくなります。
+列ストア インデックスは、パーティションごとに&1; つまたは複数の行グループを作成します。 SQL Data Warehouse では、データが分散されており、それぞれのディストリビューションがパーティション分割されているため、パーティションの数が急速に増加します。 テーブルに多数のパーティションがある場合は、行グループを入力するのに十分な行がない可能性があります。 行の欠如によって、圧縮時にメモリの負荷が発生することはありませんが、行グループの最適な列ストア クエリ パフォーマンスが実現しなくなります。
 
 過剰なパーティション分割を回避する別の理由として、パーティション テーブルには、列ストア インデックスに行を読み込むためのメモリ オーバーヘッドがあります。 読み込み中、各パーティションに圧縮するのに十分な行が格納されるまでメモリで保持されていた行を、多数のパーティションが受信する可能性があります。 パーティションが多すぎると、追加のメモリ負荷が発生します。 
 
@@ -131,6 +131,6 @@ SQL Data Warehouse でのパフォーマンスを向上させるその他の方�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "開発者分析"
+title: "Web 開発者向けのパフォーマンスと使用状況の分析 - Azure Application Insights | Microsoft Docs"
 description: "Visual Studio、Application Insights、HockeyApp を使用した DevOps"
 author: alancameronwills
 services: application-insights
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: c19e0837ccff447ebcd4319aaebfdc763b71233c
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 06d01f6fb044c4ad3b3a4d95a11a101ef01ca121
 
 
 ---
@@ -48,7 +48,7 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 * 次の開発サイクルには、ライブ テレメトリの分析から通知されます。
 
 ### <a name="device-and-desktop-apps"></a>デバイス アプリとデスクトップ アプリ
-デバイス アプリとデスクトップ アプリでは、サイクルの配布部分が若干異なります。これは、アップロード先のサーバーが 1 つや 2 つではないためです。 代わりに、ビルドと単体テストが成功すると、[HockeyApp へのアップロードをトリガー](https://support.hockeyapp.net/kb/third-party-bug-trackers-services-and-webhooks/how-to-use-hockeyapp-with-visual-studio-team-services-vsts-or-team-foundation-server-tfs)できます。 HockeyApp は、テスト ユーザーのチーム (または必要に応じて一般ユーザー) への配布を管理します。 
+デバイス アプリとデスクトップ アプリでは、サイクルの配布部分が若干異なります。これは、アップロード先のサーバーが&1; つや&2; つではないためです。 代わりに、ビルドと単体テストが成功すると、[HockeyApp へのアップロードをトリガー](https://support.hockeyapp.net/kb/third-party-bug-trackers-services-and-webhooks/how-to-use-hockeyapp-with-visual-studio-team-services-vsts-or-team-foundation-server-tfs)できます。 HockeyApp は、テスト ユーザーのチーム (または必要に応じて一般ユーザー) への配布を管理します。 
 
 ![Device devops cycle](./media/app-insights-developer-analytics/030.png)
 
@@ -89,6 +89,6 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

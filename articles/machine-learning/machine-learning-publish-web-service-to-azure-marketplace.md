@@ -1,6 +1,6 @@
 ---
-title: "Azure Marketplace に Machine Learning Web サービスを発行する | Microsoft Docs"
-description: "Azure Marketplace に Azure Machine Learning Web サービスを発行する方法"
+title: "(非推奨) Azure Marketplace に Machine Learning Web サービスを発行する | Microsoft Docs"
+description: "(非推奨) Azure Marketplace に Azure Machine Learning Web サービスを発行する方法"
 services: machine-learning
 documentationcenter: 
 author: BharathS
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/08/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 24b131d3a9a17ce9a2daf349518873871c9d1019
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 2d62966f130f6778c9561393cc7fc338f8903f1e
 
 
 ---
-# <a name="publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>Azure Marketplace への Azure Machine Learning Web サービスの発行
+# <a name="deprecated-publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>(非推奨) Azure Marketplace への Azure Machine Learning Web サービスの発行
+
+> [!NOTE]
+> DataMarket および Data Services は間もなく提供終了となる予定です。既存のサブスクリプションは、2017 年 3 月 31 日付けで提供終了となり、取り消されます。 その結果、この記事は非推奨となる予定です。 
+> 
+> 代わりに、Machine Learning 実験を [Cortana Intelligence Gallery ギャラリー](https://gallery.cortanaintelligence.com/)に発行して、データ サイエンス コミュニティのために役立てることができます。 詳しくは、「[Cortana Intelligence ギャラリーでリソースを共有および発見する](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish)」をご覧ください。
+
 Azure Marketplace は、外部の顧客が使用する有料または無料のサービスとして Azure Machine Learning Web サービスを発行する機能を提供します。 この記事では、プロセスの概要と使用開始のためのガイドラインへのリンクを示します。 このプロセスを使用することで、他の開発者が Web サービスをアプリケーション内で使用できるようになります。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -54,8 +61,8 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 サービスを運用環境にデプロイします。
 
 ### <a name="step-3-use-the-url-of-the-published-web-service-to-publish-to-azure-marketplace-datamarket"></a>手順 3: 発行済みの Web サービスの URL を使用して、Azure Marketplace (データ マーケット) に発行する
-1.  [Azure Marketplace (データ マーケット)](http://datamarket.azure.com/home) 
-2. ページの上部にある **[発行]** リンクをクリックします。  [[Microsoft Azure 発行ポータル]](https://publish.windowsazure.com)
+1. [Azure Marketplace (データ マーケット)](http://datamarket.azure.com/home) 
+2. ページの上部にある **[発行]** リンクをクリックします。 [[Microsoft Azure 発行ポータル]](https://publish.windowsazure.com)
 3. **[発行者]** セクションをクリックし、発行者として登録します。
 4. 新しいプランを作成するには、**[Data Services]** を選択し、**[新しいデータ サービスの作成]** をクリックします。 
    
@@ -80,7 +87,7 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 13. プランに関するメタデータをすべて入力したら、**[発行]** をクリックし、**[Push to Staging]** をクリックします。 この時点で、修正する必要のある問題が残っている場合は通知されます。
 14. すべての問題が解決されたことを確認したら、 **[Request approval to push to Production]**をクリックします。 発行プロセスには数営業日かかります。 
 
-[Image1]:./media/machine-learning-publish-web-service-to-azure-marketplace/image1.png
+[image1]:./media/machine-learning-publish-web-service-to-azure-marketplace/image1.png
 [image2]:./media/machine-learning-publish-web-service-to-azure-marketplace/image2.png
 [workspace]:./media/machine-learning-publish-web-service-to-azure-marketplace/selectworkspace.png
 [apikey]:./media/machine-learning-publish-web-service-to-azure-marketplace/apikey.png
@@ -89,6 +96,6 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

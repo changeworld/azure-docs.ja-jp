@@ -1,6 +1,6 @@
 ---
-title: "ダイレクト メソッドの使用 | Microsoft Docs"
-description: "このチュートリアルでは、ダイレクト メソッドの使用方法について説明します。"
+title: "Azure IoT Hub のダイレクト メソッド (Node) | Microsoft Docs"
+description: "Azure IoT Hub のダイレクト メソッドの使用方法 Azure IoT SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 52eb502054120af4c03c649dee810366f99d326b
 
 
 ---
-# <a name="tutorial-use-direct-methods"></a>チュートリアル: ダイレクト メソッドの使用
+# <a name="use-direct-methods-node"></a>ダイレクト メソッドを使用する (Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリケーションが完成します。
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 * **CallMethodOnDevice.js**。シミュレートされたデバイス アプリでメソッドを呼び出し、応答を表示します。
 * **SimulatedDevice.js**。前もって作成してあるデバイス ID を使用して IoT Hub に接続し、クラウドによって呼び出されたメソッドに応答をします。
@@ -45,7 +45,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 ## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
 このセクションでは、クラウドによって呼び出されたメソッドに応答する Node.js コンソール アプリを作成します。
 
-1. **simulateddevice**という名前の新しい空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、 **simulateddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
+1. **simulateddevice**という名前の新しい空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、**simulateddevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
     ```
     npm init
@@ -64,7 +64,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。 **{device connection string}** を「*デバイス ID の作成*」セクションで生成した接続文字列に置き換えます。
+5. **connectionString** 変数を追加し、それを使用して **DeviceClient** インスタンスを作成します。 **{device connection string}** を "*デバイス ID の作成*" セクションで生成したデバイス接続文字列で置き換えます。
    
     ```
     var connectionString = '{device connection string}';
@@ -125,7 +125,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
    
     var Client = require('azure-iothub').Client;
     ```
-5. 次の変数宣言を追加し、プレースホルダーの値を IoT Hub の接続文字列に置き換えます。
+5. 次の変数宣言を追加し、プレースホルダーの値をハブの IoT Hub 接続文字列に置き換えます。
    
     ```
     var connectionString = '{iothub connection string}';
@@ -167,7 +167,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
     ```
    
     ![][7]
-2. **callmethodondevice** フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub の監視を開始します。
+2. コマンド プロンプトで、**callmethodondevice** フォルダーに移動し、次のコマンドを実行して IoT Hub の監視を開始します。
    
     ```
     node CallMethodOnDevice.js 
@@ -184,7 +184,7 @@ ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 
 * [IoT Hub の使用]
-* [Schedule jobs on multiple devices (複数デバイスで実行されるジョブのスケジュール設定)][lnk-devguide-jobs]
+* [複数デバイスで実行されるジョブのスケジュール設定][lnk-devguide-jobs]
 
 IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、「[ジョブのスケジュールとブロードキャスト][lnk-tutorial-jobs]」チュートリアルを参照してください。
 
@@ -196,7 +196,7 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -213,6 +213,6 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

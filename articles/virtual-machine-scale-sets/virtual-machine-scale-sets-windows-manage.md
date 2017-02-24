@@ -3,7 +3,7 @@ title: "仮想マシン スケール セットの VM を管理する | Microsoft
 description: "Azure PowerShell を利用し、仮想マシン スケール セットで仮想マシンを管理する"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: davidmu1
+author: Thraka
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
-ms.author: davidmu
+ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 812d5c977ace7176e81e3e875daaf8e643c95a46
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 96560927bd9dd93c9313be7392e0cea427a50980
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 812d5c977ace7176e81e3e875daaf8e643c95a46
 
 スケール セットで仮想マシンを管理するためのほとんどの作業で、管理するマシンのインスタンス ID が必要になります。 [Azure リソース エクスプローラー](https://resources.azure.com) を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。 リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
 
-最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 ## <a name="display-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
 スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。 あるいは、スケール セットのリソースに関する情報など、より具体的な情報を取得できます。
@@ -207,13 +207,15 @@ ms.openlocfilehash: 812d5c977ace7176e81e3e875daaf8e643c95a46
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
 セットの容量を変更することで、仮想マシンを追加または削除できます。 変更するスケール セットを取得し、必要な容量を設定してから、新しい容量でスケール セットを更新します。 次のコマンドでは、引用符で囲まれた値をリソース グループおよびスケール セットの名前に置き換えます。
 
-  $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" $vmss.sku.capacity = 5 Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
+    $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+    $vmss.sku.capacity = 5
+    Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
 スケール セットから仮想マシンを削除する場合は、ID が最も大きい仮想マシンから順に削除されます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

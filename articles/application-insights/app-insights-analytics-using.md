@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: f9c02c11c6f0143f8da7a329f23033120f31ba59
+ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
+ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
 
 
 ---
@@ -80,7 +80,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 ![Arrange columns](./media/app-insights-analytics-using/030.png)
 
 ### <a name="sort-and-filter-items"></a>項目の並べ替えとフィルター処理を行う
-結果を並べ替えるには、列のヘッダーをクリックします。 もう一度クリックすると、もう 1 つの方法で並べ替えられ、3 回目のクリックで、クエリから返された元の順序に戻ります。
+結果を並べ替えるには、列のヘッダーをクリックします。 もう一度クリックすると、もう&1; つの方法で並べ替えられ、3 回目のクリックで、クエリから返された元の順序に戻ります。
 
 検索を絞り込むには、フィルター アイコンを使用します。
 
@@ -130,10 +130,10 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
 つまり、Web サービスのパフォーマンスや使用状況の監視に利用するダッシュボードを構成するときに、複雑な分析を他のメトリックに一緒に組み込むことができます。 
 
-列の数が 4 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。 最初の 7 行のみが表示されます。
+列の数が&4; 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。 最初の&7; 行のみが表示されます。
 
 ### <a name="dashboard-refresh"></a>ダッシュボードの更新
-ダッシュボードにピン留めされているグラフは、約 2 時間おきにクエリが再実行されるときに自動的に更新されます。
+ダッシュボードにピン留めされているグラフは、約&2; 時間おきにクエリが再実行されるときに自動的に更新されます。
 
 ### <a name="automatic-simplifications"></a>自動簡略化
 
@@ -154,10 +154,10 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 ![ビンが制限されたグラフ](./media/app-insights-analytics-using/pin-08.png)
 
 ## <a name="export-to-excel"></a>Excel へのエクスポート
-クエリを実行したら、.csv ファイルをダウンロードできます。 **[エクスポート]**をクリックしてから Excel を選択します。
+クエリを実行したら、.csv ファイルをダウンロードできます。 **[エクスポート]、[Excel]** の順にクリックします。
 
 ## <a name="export-to-power-bi"></a>Power BI へのエクスポート
-クエリにカーソルを置いて、 **[エクスポート]**を選択してから Power BI を選択します。
+クエリにカーソルを置いて、**[エクスポート]、[Power BI]** の順に選択します。
 
 ![Analytics から Power BI へのエクスポート](./media/app-insights-analytics-using/240.png)
 
@@ -167,14 +167,26 @@ Power BI では、さまざまなソースのデータをまとめるダッシ�
 
 Power BI へのエクスポートの詳細については、[こちら](app-insights-export-power-bi.md)をご覧ください。
 
+## <a name="deep-link"></a>ディープ リンク
+
+**[エクスポート]、[リンクの共有]** の順に選択して、別のユーザーに送信できるリンクを取得します。 ユーザーが[リソース グループへのアクセス権](app-insights-resources-roles-access-control.md)を所有していれば、クエリが Analytics UI で開きます。
+
+(リンクでは、クエリ テキストは "?q=" の後ろに gzip 方式で圧縮され、Base-64 でエンコードされて表示されます。 ユーザーに提供するディープ リンクを生成するコードを記述できます。 ただし、Analytics をコードから実行するための推奨する方法は、[REST API](https://dev.applicationinsights.io/) を使用することです。)
+
 
 ## <a name="automation"></a>Automation
 
-Analytics クエリは、[データ アクセス REST API](https://dev.applicationinsights.io/) によって (たとえば PowerShell を使用して) 実行できます。
+Analytics クエリを実行するには、[データ アクセス REST API](https://dev.applicationinsights.io/) を使用します。 [例](https://dev.applicationinsights.io/apiexplorer/query?appId=DEMO_APP&apiKey=DEMO_KEY&query=requests%0A%7C%20where%20timestamp%20%3E%3D%20ago%2824h%29%0A%7C%20count) (PowerShell 使用):
+
+```PS
+curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests%7C%20where%20timestamp%20%3E%3D%20ago(24h)%7C%20count" -H "x-api-key: DEMO_KEY"
+```
+
+Analytics UI とは異なり、REST API は、タイムスタンプ制限をクエリに自動的に追加しません。 大量の応答を回避するために、独自の where 句を必ず追加してください。
 
 
 
-## <a name="import-data"></a>Import data
+## <a name="import-data"></a>データのインポート
 
 CSV ファイルからデータをインポートすることができます。 一般的な使用方法は、テーブルと結合できる静的データをテレメトリからインポートすることです。 
 
@@ -183,7 +195,7 @@ CSV ファイルからデータをインポートすることができます。 
 ### <a name="define-your-data-schema"></a>データ スキーマを定義する
 
 1. **[設定]** (左上にある) に続けて **[データ ソース]** をクリックします。 
-2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも 10 行が含まれる必要がある) を提供するよう要求されます。 その後でスキーマを修正します。
+2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも&10; 行が含まれる必要がある) を提供するよう要求されます。 その後でスキーマを修正します。
 
 これにより、個々 のテーブルをインポートするために使用できるデータ ソースが定義されます。
 
@@ -196,7 +208,7 @@ CSV ファイルからデータをインポートすることができます。 
 
 ### <a name="use-the-table"></a>テーブルを使用する
 
-データ ソース定義の名前が `usermap` で、`realName` および `user_AuthenticatedId` の 2 つのフィールドが含まれているとします。 `requests` テーブルにも `user_AuthenticatedId` という名前のフィールドがあるため、簡単に結合を実行できます。
+データ ソース定義の名前が `usermap` で、`realName` および `user_AuthenticatedId` の&2; つのフィールドが含まれているとします。 `requests` テーブルにも `user_AuthenticatedId` という名前のフィールドがあるため、簡単に結合を実行できます。
 
 ```AIQL
 
@@ -217,6 +229,6 @@ CSV ファイルからデータをインポートすることができます。 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

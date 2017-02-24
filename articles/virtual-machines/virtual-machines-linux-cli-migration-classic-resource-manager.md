@@ -1,9 +1,9 @@
 ---
-title: "Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する | Microsoft Docs"
+title: "Azure CLI を使用して Resource Manager に VM を移行する | Microsoft Docs"
 description: "この記事では、Azure CLI を使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
-author: cynthn
+author: singhkays
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2016
-ms.author: cynthn
+ms.date: 02/21/2017
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fa3dacd0b5e2ad97cd751395d58ef3afe92aee3
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
 
 
 ---
@@ -47,7 +47,7 @@ ms.openlocfilehash: 3fa3dacd0b5e2ad97cd751395d58ef3afe92aee3
     azure account set "<azure-subscription-name>"
 
 > [!NOTE]
-> 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます 
+> 登録は&1; 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます 
 > 
 > "*BadRequest : 移行の対象サブスクリプションが登録されていません。*" 
 > 
@@ -57,7 +57,7 @@ ms.openlocfilehash: 3fa3dacd0b5e2ad97cd751395d58ef3afe92aee3
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-登録が完了するまで 5 分間お待ちください。 承認の状態を確認するには、次のコマンドを使用します。 RegistrationState が `Registered` であることを確認してから続行してください。
+登録が完了するまで&5; 分間お待ちください。 承認の状態を確認するには、次のコマンドを使用します。 RegistrationState が `Registered` であることを確認してから続行してください。
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
@@ -116,7 +116,7 @@ CLI または Azure ポータルを使用して、準備したリソースの構
 
 
 
-## <a name="step-4-option-2---migrate-virtual-machines-in-a-virtual-network"></a>手順 4. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>手順 4. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 移行する仮想ネットワークを選択します。 仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
 次のコマンドを使用して、サブスクリプションのすべての仮想ネットワークを取得します。
@@ -163,6 +163,6 @@ CLI または Azure ポータルを使用して、準備したストレージ �
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

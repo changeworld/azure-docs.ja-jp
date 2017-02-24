@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 02/03/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
+ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
+ms.openlocfilehash: ee1668dce71a1f5d7b91e839670b69c9527c4892
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 Azure ポータルでの、グローバルな整合性の設定、キーの操作、DocumentDB アカウントの削除の方法について説明します。
 
 ## <a name="a-idconsistencyamanage-documentdb-consistency-settings"></a><a id="consistency"></a>DocumentDB 整合性の設定を管理する
-アプリケーションのセマンティクスに応じて、適切な整合性レベルを選択します。 [一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化][一貫性]に関するページを参考にして、DocumentDB で利用できる一貫性レベルについて把握してください。 DocumentDB の整合性、可用性、パフォーマンスは、お使いのデータベース アカウントで利用できるすべての整合性レベルで保証されます。 データベース アカウントに高い整合性レベルを設定するには、データを 1 つの Azure リージョンに限定し、グローバルで使用できないようにする必要があります。 一方で、低い整合性レベル (制限のある陳腐化、セッション、または最終的) に設定した場合、任意の数の Azure リージョンをデータベース アカウントに関連付けることができます。 次に、データベース アカウントの既定の整合性レベルを選択するための簡単な手順を説明します。 
+アプリケーションのセマンティクスに応じて、適切な整合性レベルを選択します。 [整合性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化][consistency]に関するページを参考にして、DocumentDB で利用できる整合性レベルについて把握してください。 DocumentDB の整合性、可用性、パフォーマンスは、お使いのデータベース アカウントで利用できるすべての整合性レベルで保証されます。 データベース アカウントに高い整合性レベルを設定するには、データを&1; つの Azure リージョンに限定し、グローバルで使用できないようにする必要があります。 一方で、低い整合性レベル (制限のある陳腐化、セッション、または最終的) に設定した場合、任意の数の Azure リージョンをデータベース アカウントに関連付けることができます。 次に、データベース アカウントの既定の整合性レベルを選択するための簡単な手順を説明します。 
 
 ### <a name="to-specify-the-default-consistency-for-a-documentdb-account"></a>DocumentDB アカウントの既定の整合性を指定するには
 1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
@@ -53,7 +53,7 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 ![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
-接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
+接続のセキュリティを高めるために、DocumentDB アカウントのアクセス キーは定期的に変更する必要があります。 片方のアクセス キーで DocumentDB アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは&2; つ割り当てられます。
 
 > [!WARNING]
 > アクセス キーを再生成すると、現在のキーに依存するすべてのアプリケーションが影響を受けます。 アクセス キーを使用して DocumentDB アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
@@ -87,12 +87,12 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 [DocumentDB データベース移行ツール](documentdb-import-data.md)で接続文字列を使用する場合は、接続文字列の末尾にデータベース名を追加します。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
 ## <a name="a-iddeletea-delete-a-documentdb-account"></a><a id="delete"></a> DocumentDB アカウントを削除する
-使用しなくなった DocumentDB アカウントを Azure Portal で削除するには、**[DocumentDB アカウント]** ブレードの **[アカウントの削除]** コマンドを使用します。
+使用しなくなった DocumentDB アカウントを Azure Portal で削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。
 
 ![Azure ポータルで DocumentDB アカウントを削除する方法](./media/documentdb-manage-account/deleteaccount.png)
 
 1. [Azure ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。
-2. **[DocumentDB アカウント]** ブレードで、**[さらに表示]**、**[アカウントの削除]** の順にクリックします。 または、データベースの名前を右クリックしてから、 **[アカウントの削除]**をクリックします。
+2. **[DocumentDB アカウント]** ブレードで、アカウントを右クリックし、**[アカウントの削除]** をクリックします。 
 3. 確認ブレードで、DocumentDB アカウント名を入力して、そのアカウントを削除することを確認します。
 4. **[削除]** ボタンをクリックします。
 
@@ -100,8 +100,6 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
 [DocumentDB アカウントの使用方法](http://go.microsoft.com/fwlink/p/?LinkId=402364)について取り上げます。
-
-DocumentDB の詳細については、 [azure.com](http://go.microsoft.com/fwlink/?LinkID=402319&clcid=0x409)で Azure DocumentDB に関するドキュメントを参照してください。
 
 <!--Image references-->
 [1]: ./media/documentdb-manage-account/documentdb_add_region-1.png
@@ -112,13 +110,13 @@ DocumentDB の詳細については、 [azure.com](http://go.microsoft.com/fwlin
 [6]: ./media/documentdb-manage-account/chooseandsaveconsistency.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[BCDR]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
-[一貫性]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
+[bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
+[consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
 [azureregions]: https://azure.microsoft.com/en-us/regions/#services
-[プラン]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
+[offers]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

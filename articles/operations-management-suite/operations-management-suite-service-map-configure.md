@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cbed591d15daf8060f13d0e9b009d65c85d256aa
-ms.openlocfilehash: ad8666b46a5b404ab1caf85c32549a1a01de3b73
+ms.sourcegitcommit: 496e00c2b9a0b374450f9a6f9dff5d41c805261c
+ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
 
 
 ---
 # <a name="configuring-service-map-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) のサービス マップ ソリューションの構成
-![Alert Management icon](media/oms-service-map/icon.png) サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。  サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
+サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。  サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
 この記事では、サービス マップの構成とエージェントのオンボードの詳細について説明します。  サービス マップの使用方法については、「[Operations Management Suite (OMS) のサービス マップ ソリューションの使用](operations-management-suite-service-map.md)」をご覧ください。
 
@@ -54,7 +54,7 @@ OMS ダイレクト エージェントを使用している場合は、OMS エ�
 
 ### <a name="avoiding-duplicate-data"></a>重複データの回避
 
-SCOM ユーザーの場合、SCOM エージェントを OMS と直接通信するように構成しないでください。データが 2 回報告される可能性があります。  この結果、サービス マップではコンピューター一覧にコンピューターが 2 回表示されます。
+SCOM ユーザーの場合、SCOM エージェントを OMS と直接通信するように構成しないでください。データが&2; 回報告される可能性があります。  この結果、サービス マップではコンピューター一覧にコンピューターが&2; 回表示されます。
 
 OMS の構成は、次の場所のいずれか一方で行ってください。
 
@@ -75,7 +75,7 @@ OMS の構成は、次の場所のいずれか一方で行ってください。
 
 
 ## <a name="configuration"></a>構成
-Windows コンピューターと Linux コンピューターにエージェントをインストールした上で OMS に接続する場合は、Dependency Agent インストーラーをサービス マップソリューションからダウンロードし、root または Admin として各管理対象サーバーにインストールする必要があります。  サービス マップ エージェントが OMS にレポートするサーバーにインストールされると、サービス マップの依存関係マップが 10 分以内に表示されます。  何か問題がある場合は、メール ([oms-adm-support@microsoft.com](mailto:oms-adm-support@microsoft.com)) でお問い合わせください。
+Windows コンピューターと Linux コンピューターにエージェントをインストールした上で OMS に接続する場合は、Dependency Agent インストーラーをサービス マップソリューションからダウンロードし、root または Admin として各管理対象サーバーにインストールする必要があります。  サービス マップ エージェントが OMS にレポートするサーバーにインストールされると、サービス マップの依存関係マップが 10 分以内に表示されます。
 
 
 ### <a name="migrating-from-bluestripe-factfinder"></a>BlueStripe FactFinder からの移行
@@ -93,12 +93,12 @@ Dependency Agent をダウンロードするには、**[サービス マップ]*
 #### <a name="microsoft-windows"></a>Microsoft Windows
 エージェントをインストールまたはアンインストールするには、管理者特権が必要です。
 
-Dependency Agent は、Dependency-Agent-Windows.exe によって Windows コンピューターにインストールされます。 オプションを指定せずにこの実行可能ファイルを実行すると、ウィザードが起動します。指示に従って対話形式でインストールを実行できます。  
+Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows コンピューターにインストールされます。 オプションを指定せずにこの実行可能ファイルを実行すると、ウィザードが起動します。指示に従って対話形式でインストールを実行できます。  
 
 各 Windows コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
 1.  OMS エージェントが Connect コンピューターで手順に従って OMS に直接インストールされていることを確認します。
-2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>*Dependency-Agent-Windows.exe*
+2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>*InstallDependencyAgent-Windows.exe*
 3.  ウィザードに従ってエージェントをインストールします。
 4.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、*C:\Program Files\Microsoft Dependency Agent\logs* にあります。 
 
@@ -108,27 +108,27 @@ Dependency Agent for Windows は、管理者によってコントロール パ�
 #### <a name="linux"></a>Linux
 エージェントをインストールまたは構成するには、ルート アクセスが必要です。
 
-Dependency Agent は、Dependency-Agent-Linux64.bin (自己解凍バイナリ ファイルを含むシェル スクリプト) によって Linux コンピューターにインストールされます。 sh を使用してファイルを実行するか、実行アクセス許可をファイルに追加します。
+Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナリ ファイルを含むシェル スクリプト) によって Linux コンピューターにインストールされます。 sh を使用してファイルを実行するか、実行アクセス許可をファイルに追加します。
  
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
 1.  OMS エージェントが [Linux コンピューターからのデータを分析して収集する手順に従ってインストールされていることを確認します。OMS エージェントは、Linux Dependency Agent の前にインストールされている必要があります](https://technet.microsoft.com/library/mt622052.aspx)。
-2.  次のコマンドを使用して、Linux Dependency Agent をルートとしてインストールします。<br>*sh Dependency-Agent-Linux64.bin*.
+2.  次のコマンドを使用して、Linux Dependency Agent をルートとしてインストールします。<br>*sh InstallDependencyAgent-Linux64.bin*。
 3.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、*/var/opt/microsoft/dependency-agent/log* にあります。
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>Linux の Dependency Agent をアンインストールする
-Linux から Dependency Agent を完全にアンインストールするには、エージェント自体と、自動的にエージェントにインストールされたプロキシを削除する必要があります。  次の 1 つのコマンドで、両方ともアンインストールできます。
+Linux から Dependency Agent を完全にアンインストールするには、エージェント自体と、自動的にエージェントにインストールされたコネクタを削除する必要があります。  次の&1; つのコマンドで、両方ともアンインストールできます。
 
     rpm -e dependency-agent dependency-agent-connector
 
 
-### <a name="installing-from-a-command-line"></a>コマンドラインからインストールする
+### <a name="installing-from-a-command-line"></a>コマンド ラインからインストールする
 前のセクションでは、規定のオプションを使用して Dependency Monitor Agent をインストールする方法について説明しました。  次のセクションでは、カスタム オプションを使用してコマンド ラインからエージェントをインストールする方法について説明します。
 
 #### <a name="windows"></a>Windows
 次の表のオプションを使用して、コマンドラインからインストールします。 インストール フラグの一覧を表示するには、 次のように /? フラグを使ってインストーラーを実行します。
 
-    Dependency-Agent-Windows.exe /?
+    InstallDependencyAgent-Windows.exe /?
 
 | フラグ | 説明 |
 |:--|:--|
@@ -140,7 +140,7 @@ Windows Dependency Agent のファイルは、既定で *C:\Program Files\Micros
 #### <a name="linux"></a>Linux
 次の表のオプションを使用してインストールします。 インストール フラグの一覧を表示するには、次のように -help フラグを使ってインストール プログラムを実行します。
 
-    Dependency-Agent-Linux64.bin -help
+    InstallDependencyAgent-Linux64.bin -help
 
 | フラグ  説明
 |:--|:--|
@@ -167,7 +167,7 @@ Dependency Agent のファイルは、次のディレクトリに保存されま
 #### <a name="microsoft-dependency-agent"></a>Microsoft Dependency Agent
 Dependency Agent からトラブルシューティング データを生成するには、管理者としてコマンド プロンプトを開き、次のコマンドを使用して CollectDependencyAgentData.vbs スクリプトを実行します。  --help フラグを追加すると、追加のオプションを表示できます。
 
-    cd C:\Program Files\Bluestripe\Collector\scripts
+    cd C:\Program Files\Microsoft Dependency Agent\scripts
     cscript CollectDependencyData.vbs
 
 サポート データ パッケージが現在のユーザーの %USERPROFILE% ディレクトリに保存されます。  --file <filename> オプションを使用すると、これを別の場所に保存できます。
@@ -205,7 +205,7 @@ Dependency Agent からトラブルシューティング データを生成す�
 #### <a name="microsoft-dependency-agent-fluentd-plug-in-for-linux"></a>Linux 用の Microsoftt Dependency Agent Fluentd プラグイン
 Dependency Agent Fluentd プラグインは、OMS Linux Agent 内で実行します。  Dependency Agent からデータを受信し、サービス マップクラウド サービスに転送します。  
 
-次の 2 つのファイルにログが書き込まれます。
+次の&2; つのファイルにログが書き込まれます。
 
 - /var/opt/microsoft/omsagent/log/omsagent.log
 - /var/log/messages
@@ -316,7 +316,7 @@ Dependency Agent は、通常、システム メモリの 0.1% とシステム C
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 マイクロソフトは、お客様によるサービス マップ サービスの使用を通して、使用状況とパフォーマンス データを自動的に収集します。 Microsoft はこのデータを使用して、提供するサービス マップサービスの品質、セキュリティ、および整合性の向上に努めています。 データには、オペレーティング システムとバージョンのような、ソフトウェアの構成に関する情報が含まれています。また、正確で効果的なトラブルシューティングの機能を提供するために、IP アドレス、DNS 名、およびワークステーション名も含まれています。 名前や住所などの連絡先情報は収集されません。
 
-データの収集と使用状況の詳細については、[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)をご覧ください。
+データの収集と使用状況の詳細については、[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)を参照してください。
 
 
 
@@ -325,6 +325,6 @@ Dependency Agent は、通常、システム メモリの 0.1% とシステム C
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Azure CDN のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Content Delivery Network (CDN) を使用して、グローバル データ センターから任意のデバイスにコンテンツを配信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+services: cdn
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: cdn
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 511d15cc48b17bd65bedc2c1cd9602d868ffa724
-ms.openlocfilehash: 79a8dc0dc2e81d0b159b07bbb496f04e06e5d28a
+ms.sourcegitcommit: 642f9469722dfe701db8e353f4aa2b17edc00081
+ms.openlocfilehash: 67fdc8b9b4db5d311a8247995d7f8f626b90e5c5
 
 ---
 # <a name="cdn-documentation"></a>CDN のドキュメント
 
-Azure Content Delivery Network (CDN) は、Azure または他の任意の場所でホストされている高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。  CDN を使用すると、Azure Blob Storage、Web アプリケーション、仮想マシン、アプリケーション フォルダー、またはその他の HTTP/HTTPS の場所から読み込んだ一般公開されているオブジェクトをキャッシュすることができます。  CDN は、通常、イメージ、スタイル シート、ドキュメント、ファイル、クライアント側スクリプト、HTML ページなどの静的コンテンツの配信に使用されます。
+Content Delivery Network (CDN) を使用して、Azure やその他の場所でホストされている高帯域幅コンテンツを配信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、CDN を使用して、グローバル データ センターから任意のデバイスにコンテンツを配信する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -109,16 +121,10 @@ Azure Content Delivery Network (CDN) は、Azure または他の任意の場所�
 </ul>
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/cdn.pdf">
-        <div class="img"></div>
-        <div class="text">
-Azure CDN のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

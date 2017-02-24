@@ -1,9 +1,9 @@
 ---
-title: "カスタム ドメインに Azure Content Delivery Network (CDN) コンテンツをマップする方法 | Microsoft Docs"
-description: "このトピックでは、CDN コンテンツをカスタム ドメインにマップする方法を示します。"
+title: "カスタム ドメインへの Azure CDN コンテンツのマッピング | Microsoft Docs"
+description: "Azure CDN コンテンツをカスタム ドメインにマッピングする方法について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 36099a7c52508cd5115a527f5ef6e40fbfd6c323
 
 
 ---
-# <a name="how-to-map-custom-domain-to-content-delivery-network-cdn-endpoint"></a>Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法
+# <a name="map-azure-cdn-content-to-a-custom-domain"></a>カスタム ドメインへの Azure CDN コンテンツのマッピング
 カスタム ドメインを CDN エンドポイントにマッピングすると、azureedge.net のサブドメインを使用せずに、キャッシュ済みコンテンツへの URL に独自のドメイン名を使用することができます。
 
-カスタム ドメインを CDN エンドポイントにマッピングするには、次の 2 つの方法があります。
+カスタム ドメインを CDN エンドポイントにマッピングするには、次の&2; つの方法があります。
 
 1. [ドメイン レジストラーで CNAME レコードを作成し、カスタム ドメインおよびサブドメインを CDN エンドポイントにマップする](#register-a-custom-domain-for-an-azure-cdn-endpoint)
    
@@ -39,7 +39,7 @@ ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
 > [!NOTE]
 > ドメインを CDN エンドポイントにマッピングするには、ドメイン レジストラーで CNAME レコードを作成する必要があります。 CNAME レコードは、`www.contoso.com` や `cdn.contoso.com` などの特定のサブドメインをマッピングします。 CNAME レコードを `contoso.com`などのルート ドメインにマップすることはできません。
 > 
-> サブドメインは 1 つの CDN エンドポイントのみに関連付けできます。 CNAME レコードを作成することで、サブドメイン宛てのすべてのトラフィックが指定されたエンドポイントにルーティングされます。  たとえば、 `www.contoso.com` を CDN エンドポイントに関連付けた場合、ストレージ アカウント エンドポイントやクラウド サービス エンドポイントなど、他の Azure エンドポイントに関連付けることはできません。 ただし、同じドメインの別のサブドメインを別のサービス エンドポイントに使用することはできます。 また、複数のサブドメインを同じ CDN エンドポイントにマップすることもできます。
+> サブドメインは&1; つの CDN エンドポイントのみに関連付けできます。 CNAME レコードを作成することで、サブドメイン宛てのすべてのトラフィックが指定されたエンドポイントにルーティングされます。  たとえば、 `www.contoso.com` を CDN エンドポイントに関連付けた場合、ストレージ アカウント エンドポイントやクラウド サービス エンドポイントなど、他の Azure エンドポイントに関連付けることはできません。 ただし、同じドメインの別のサブドメインを別のサービス エンドポイントに使用することはできます。 また、複数のサブドメインを同じ CDN エンドポイントにマップすることもできます。
 > 
 > **Azure CDN from Verizon** (Standard と Premium) エンドポイントの場合、カスタム ドメインの変更が CDN エッジ ノードに反映されるまでに最大 **90 分**かかります。
 > 
@@ -75,7 +75,7 @@ ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
 
 ## <a name="verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>カスタム サブドメインが CDN エンドポイントを参照することを確認する
 * 使用するカスタム ドメインの登録が完了したら、そのカスタム ドメインを使用して、CDN エンドポイントにキャッシュされているコンテンツにアクセスできます。
-  まず、エンドポイントにキャッシュされているパブリック コンテンツがあることを確認します。 たとえば、CDN エンドポイントがストレージ アカウントに関連付けられている場合は、CDN はパブリック BLOB コンテナーにコンテンツをキャッシュします。 カスタム ドメインをテストするには、コンテナーでパブリック アクセスが許可され、少なくとも 1 つの BLOB がコンテナーに格納されていることを確認します。
+  まず、エンドポイントにキャッシュされているパブリック コンテンツがあることを確認します。 たとえば、CDN エンドポイントがストレージ アカウントに関連付けられている場合は、CDN はパブリック BLOB コンテナーにコンテンツをキャッシュします。 カスタム ドメインをテストするには、コンテナーでパブリック アクセスが許可され、少なくとも&1; つの BLOB がコンテナーに格納されていることを確認します。
 * ブラウザーでカスタム ドメインを使用して BLOB のアドレスに移動します。 カスタム ドメインが `cdn.contoso.com` の場合は、キャッシュされた BLOB の URL は http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg のようになります
 
 ## <a name="see-also"></a>関連項目
@@ -84,6 +84,6 @@ ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

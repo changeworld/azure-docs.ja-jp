@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 20195cb0d653cf0b1dc87af0fedbf9e49f259737
+ms.sourcegitcommit: 4fbe7bd802e9cc32d43f019980650c4723b75d5f
+ms.openlocfilehash: 9c138ac7031c4cd01542dac137123fb53fcf8c06
 
 
 ---
@@ -77,6 +77,6 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

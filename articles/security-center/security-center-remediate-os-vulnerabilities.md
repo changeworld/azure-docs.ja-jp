@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center での OS の脆弱性の修復 | Microsoft Docs"
-description: "このドキュメントでは、&quot;OS の脆弱性の修復&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、**OS の脆弱性の修復**という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 455b841af8d736c273ddac4a90e024cfa7771c43
+ms.sourcegitcommit: 522496ddcd3cc21501f2390e8cdc158798b6289d
+ms.openlocfilehash: 35d33625badeb0b32079f0487b8bf2a3dd97e141
 
 
 ---
@@ -25,42 +25,42 @@ Azure Security Center では、仮想マシン (VM) のオペレーティング 
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[OS の脆弱性の修復]** を選択します。
    ![OS の脆弱性の修復][1]
-   
+
     **[OS の脆弱性の修復]** ブレードが開き、OS 構成が推奨される構成規則に適合していない VM の一覧が表示されます。  ブレードには、各 VM について次の項目が示されます。
-   
+
    * **[失敗した規則]** -- VM の OS 構成が失敗した規則の数。
    * **[最終スキャン時刻]** -- Security Center で VM の OS 構成が最後にスキャンされた日時。
    * **[状態]** -- 脆弱性の現在の状態。
-     
+
      * [オープン]: 脆弱性にまだ対処していません。
      * [処理中]: 現在、脆弱性への対処を進めており、ユーザーのアクションは不要です。
      * [解決済み]: 脆弱性への対処は既に完了しています (問題が解決されると、エントリは淡色表示になります)。
    * **[重大度]** -- すべての脆弱性の重大度が [低] に設定されています。これは、脆弱性に対処する必要はあっても、早急な注意は必要としないことを意味します。
 
-VM を選択します。 その VM のブレードが開き、失敗した規則が表示されます。
+2. VM を選択します。 その VM のブレードが開き、失敗した規則が表示されます。
    ![失敗した構成規則][2]
 
-規則を選択します。 この例では、 **[Password must meet complexity requirements (パスワードは複雑さの要件を満たす必要がある)]**を選択します。 失敗した規則と影響について説明するブレードが開きます。 詳細を確認し、オペレーティング システムの構成を適用する方法を検討します。
+3. 規則を選択します。 この例では、 **[Password must meet complexity requirements (パスワードは複雑さの要件を満たす必要がある)]**を選択します。 失敗した規則と影響について説明するブレードが開きます。 詳細を確認し、オペレーティング システムの構成を適用する方法を検討します。
   ![失敗した規則の説明][3]
 
   Security Center では、Common Configuration Enumeration (CCE) を使用して構成規則に一意の識別子を割り当てます。 このブレードでは次の情報が提供されます。
 
-* [名前] -- 規則の名前
-* [重大度] -- CCE の重大度の値 (重大、重要、または警告)
-* [CCIED] -- 規則の一意の CCE 識別子
-* [説明] -- 規則の説明
-* [脆弱性] -- 脆弱性、または規則が適用されていない場合のリスクの説明
-* [影響] -- 規則を適用したときのビジネスへの影響
-* [期待される値] -- Security Center が規則と照らし合わせて VM の OS 構成を分析したときに求められる値
-* [規則の操作] -- 規則と照らし合わせた VM の OS 構成の分析中に Security Center で使用された規則の操作
-* [実際の値] -- 規則と照らし合わせた VM の OS 構成の分析後に返された値
-* [評価の結果] -- 分析の結果 (合格、不合格)
+  - [名前] -- 規則の名前
+  - [重大度] -- CCE の重大度の値 (重大、重要、または警告)
+  - [CCIED] -- 規則の一意の CCE 識別子
+  - [説明] -- 規則の説明
+  - [脆弱性] -- 脆弱性、または規則が適用されていない場合のリスクの説明
+  - [影響] -- 規則を適用したときのビジネスへの影響
+  - [期待される値] -- Security Center が規則と照らし合わせて VM の OS 構成を分析したときに求められる値
+  - [規則の操作] -- 規則と照らし合わせた VM の OS 構成の分析中に Security Center で使用された規則の操作
+  - [実際の値] -- 規則と照らし合わせた VM の OS 構成の分析後に返された値
+  - [評価の結果] -- 分析の結果 (合格、不合格)
 
 ## <a name="see-also"></a>関連項目
 この記事では、"OS の脆弱性の修復" という Security Center の推奨事項を実装する方法について説明しました。 構成規則のセットは [こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認できます。 Security Center では、CCE (Common Configuration Enumeration) を使用して構成規則に一意の識別子を割り当てます。 詳細については、 [CCE](http://cce.mitre.org) サイトをご覧ください。
@@ -82,6 +82,6 @@ VM を選択します。 その VM のブレードが開き、失敗した規則
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

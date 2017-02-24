@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2318fd7676e0d2cf2a897024ef1bcb28e7511bae
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 
 
 ---
@@ -113,7 +113,7 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 2. Keylight で SSO を有効にするには、次の手順に従います。
@@ -286,6 +286,6 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

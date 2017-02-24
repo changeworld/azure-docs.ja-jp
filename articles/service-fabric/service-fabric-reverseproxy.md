@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/04/2016
-ms.author: vturecek
+ms.date: 01/04/2017
+ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: dbc03f9951a5a76da98f4e3097c16cf373aaf146
-ms.openlocfilehash: b3fc83b83655f270be6bad08a99a99503aa14042
+ms.sourcegitcommit: c738b9d6461da032f216b8a51c69204066d5cfd3
+ms.openlocfilehash: 9487209a8e5d976d56da50b8c70e69950d0ad129
 
 
 ---
@@ -100,7 +100,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## <a name="special-handling-for-port-sharing-services"></a>ポートを共有するサービスの特別な処理
-サービスに到達できない場合、Application Gateway はサービス アドレスの再解決を試み、要求を再試行します。 クライアント コードで独自のサービス解決と解決ループを実装する必要がないため、これはゲートウェイの主な利点の 1 つです。
+サービスに到達できない場合、Application Gateway はサービス アドレスの再解決を試み、要求を再試行します。 クライアント コードで独自のサービス解決と解決ループを実装する必要がないため、これはゲートウェイの主な利点の&1; つです。
 
 一般に、サービスに到達できないときは、サービス インスタンスまたはレプリカが通常のライフサイクルの一環として別のノードに移動していることを意味します。 この場合、ゲートウェイは、エンドポイントが解決された元のアドレスではもう開いていないことを示すネットワーク接続エラーを受信する可能性があります。
 
@@ -131,7 +131,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 (サンプル テンプレートを使用するか、カスタムの Resource Manager テンプレートを作成して) デプロイするクラスター用テンプレートを用意したら、次の手順に従って、テンプレートでリバース プロキシを有効にすることができます。
 
-1. テンプレートの [Parameters セクション](../resource-group-authoring-templates.md) で、リバース プロキシのポートを定義します。
+1. テンプレートの [Parameters セクション](../azure-resource-manager/resource-group-authoring-templates.md) で、リバース プロキシのポートを定義します。
    
     ```json
     "SFReverseProxyPort": {
@@ -142,7 +142,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     },
     ```
-2. **クラスター** [resources の type](../resource-group-authoring-templates.md)
+2. **クラスター** [resources の type](../azure-resource-manager/resource-group-authoring-templates.md)
    
     "2016-09-01" より前の apiVersion の場合、ポートは、***httpApplicationGatewayEndpointPort*** という名前のパラメーターによって識別されます。
    
@@ -229,7 +229,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. リバース プロキシのポートで SSL 証明書を構成するには、 **クラスター** [resources の type](../resource-group-authoring-templates.md)
+4. リバース プロキシのポートで SSL 証明書を構成するには、 **クラスター** [resources の type](../azure-resource-manager/resource-group-authoring-templates.md)
    
     "2016-09-01" より前の apiVersion の場合、証明書は、***httpApplicationGatewayCertificate*** という名前のパラメーターによって識別されます。
    
@@ -287,6 +287,6 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

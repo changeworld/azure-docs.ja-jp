@@ -1,28 +1,28 @@
 ---
-title: "Azure Functions 開発者向けリファレンス | Microsoft Docs"
-description: "すべての言語とバインドに共通する Azure Functions の概念とコンポーネントについて説明します。"
+title: "Azure Functions の開発に関するガイダンス | Microsoft Docs"
+description: "プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
 manager: erikre
 editor: 
 tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+keywords: "開発者向けガイド, Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ"
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/20/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 635cc1300f25b7820a0abe4d6f3a6f9e4a2ce8c8
-ms.openlocfilehash: 44a14988119cc121b111718e1c03a788e819dbbe
+ms.sourcegitcommit: 0d75654e00e033eab7de97779157c43ee4493a9f
+ms.openlocfilehash: 2032426e473cb859ad60b48684bcf620e314ed6c
 
 
 ---
-# <a name="azure-functions-developer-reference"></a>Azure Functions developer reference (Azure Functions 開発者向けリファレンス)
+# <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
 
 この記事は、「[Azure Functions の概要](functions-overview.md)」を既に読んでいて、[トリガー、バインド、JobHost ランタイムなどの WebJobs SDK の概念](../app-service-web/websites-dotnet-webjobs-sdk.md)を熟知していることを前提として書かれています。 Azure Functions は WebJobs SDK が基になっています。 
@@ -58,12 +58,12 @@ function.json ファイルは、関数バインドとその他の構成設定を
 | `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
-関数アプリは、Azure App Service でまとめて管理される 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
+関数アプリは、Azure App Service でまとめて管理される&1; つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
 
 ## <a name="runtime-script-host-and-web-host"></a>ランタイム (スクリプト ホストおよび Web ホスト)
 ランタイム (つまりスクリプト ホスト) は基になる WebJobs SDK ホストであり、イベントをリッスンし、データを収集して送信して、最終的にはコードを実行します。 
 
-HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。 ホストを 2 つ持つことで、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストを分離できます。
+HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。 ホストを&2; つ持つことで、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストを分離できます。
 
 ## <a name="folder-structure"></a>フォルダー構造
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
@@ -93,7 +93,7 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 1. `https://<function_app_name>.scm.azurewebsites.net`に移動します。
 2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 3. `D:\home\site\wwwroot\` に移動し、*host.json* または `D:\home\site\wwwroot\<function_name>` を更新し、関数のファイルを更新します。
-4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。 ファイルをドロップできるファイル グリッドには 2 つの領域があります。 *.zip* ファイルの場合は、[Drag here to upload and unzip (アップロードして解凍するにはここにドラッグしてください)] というラベルの付いたボックスが表示されます。 他の種類のファイルの場合は、ファイル グリッド内の [unzip (ファイルの解凍)] ボックスの外側にドロップします。
+4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。 ファイルをドロップできるファイル グリッドには&2; つの領域があります。 *.zip* ファイルの場合は、[Drag here to upload and unzip (アップロードして解凍するにはここにドラッグしてください)] というラベルの付いたボックスが表示されます。 他の種類のファイルの場合は、ファイル グリッド内の [unzip (ファイルの解凍)] ボックスの外側にドロップします。
 
 #### <a name="to-use-ftp"></a>FTP を使用するには
 1. [こちら](../app-service-web/web-sites-deploy.md#ftp) の指示に従って、FTP を構成します。
@@ -138,6 +138,6 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

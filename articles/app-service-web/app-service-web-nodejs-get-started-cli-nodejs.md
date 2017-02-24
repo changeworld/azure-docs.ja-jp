@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: dc41ae217547fea45326cb146a59bc2888e1f44b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 55c349f19055e4e4d17f5c7290a2ee82d2d3d19d
 
 
 ---
@@ -45,7 +45,7 @@ ms.openlocfilehash: dc41ae217547fea45326cb146a59bc2888e1f44b
 * Microsoft Azure アカウント。 アカウントを持っていない場合は、[無料試用版にサインアップ]するか [Visual Studio サブスクライバー特典を有効]にしてください。
 
 > [!NOTE]
-> Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+> Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
 
@@ -183,12 +183,12 @@ iisnode ログを読み取るには、次の手順を実行します。
 > 
 
 1. Azure CLI に用意されている iisnode.yml ファイルを開きます。
-2. 次の 2 つのパラメーターを設定します。 
+2. 次の&2; つのパラメーターを設定します。 
    
         loggingEnabled: true
         logDirectory: iisnode
    
-    この 2 つのパラメーターを組み合わせることで、stdout と stderror の出力先が D:\home\site\wwwroot\**iisnode** ディレクトリとなるよう、App Service 内の iisnode に伝えられます。
+    この&2; つのパラメーターを組み合わせることで、stdout と stderror の出力先が D:\home\site\wwwroot\**iisnode** ディレクトリとなるよう、App Service 内の iisnode に伝えられます。
 3. 次の Git コマンドで変更内容を保存し、Azure にプッシュします。
    
         git add .
@@ -273,6 +273,6 @@ Node-Inspector を有効にするには、次の手順を実行します。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "スケジュールに従って Azure Resource Manager 仮想マシ
 services: automation
 documentationCenter: 
 authors: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 02/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: adb787b4ff1b4164bcf7ac08e7b6a227acfce423
-ms.openlocfilehash: 1f29554cce2ba5fe7b02c546c705cce3d9e13019
+ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
+ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
 
 ---
 
 # <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>ピーク時間外 VM 起動/停止 [プレビュー] ソリューション (Automation)
 
-ピーク時間外 VM 起動/停止 (プレビュー) は、ユーザー定義のスケジュールに従って Azure Resource Manager 仮想マシンおよびクラシック仮想マシンを起動/停止することによって、それらの仮想マシンを起動/停止する Automation ジョブが正常に実行されているかどうかを OMS Log Analytics で分析するソリューションです。  
+ピーク時間外 VM 起動/停止 (プレビュー) は、ユーザー定義のスケジュールに従って Azure Resource Manager 仮想マシンを起動/停止することによって、それらの仮想マシンを起動/停止する Automation ジョブが正常に実行されているかどうかを OMS Log Analytics で分析するソリューションです。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,8 +79,8 @@ StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | このソリューショ�
 
 スケジュール | Description|
 ---------|------------|
-StartByResourceGroup-Schedule-MS-Mgmt | このソリューションによって管理される VM の開始を実行する、StartByResourceGroup Runbook のスケジュール。|
-StopByResourceGroup-Schedule-MS-Mgmt | このソリューションによって管理される VM の停止を実行する、StopByResourceGroup Runbook のスケジュール。|
+StartByResourceGroup-Schedule-MS-Mgmt | このソリューションによって管理される VM の開始を実行する、StartByResourceGroup Runbook のスケジュール。 作成時の既定値は UTC タイム ゾーンです。|
+StopByResourceGroup-Schedule-MS-Mgmt | このソリューションによって管理される VM の停止を実行する、StopByResourceGroup Runbook のスケジュール。 作成時の既定値は UTC タイム ゾーンです。|
 
 ### <a name="credentials"></a>資格情報
 
@@ -116,7 +116,7 @@ O365Credential | 電子メールを送信する有効な Office 365 ユーザー
 
 8. 最後に、**[ソリューションの追加]** ブレードで **[構成]** を選択すると、**[パラメーター]** ブレードが表示されます。  **[パラメーター]** ブレードでは、次の作業が求められます。  
    - **[Target ResourceGroup Names (ターゲット リソース グループ名)]** に、このソリューションで管理する VM を含んだリソース グループの名前を指定します。  複数の名前を入力する場合は、それぞれセミコロンで区切って入力してください (値は大文字と小文字が区別されます)。  ワイルドカードを使用して、サブスクリプション内の全リソース グループの VM を対象にすることもできます。
-   - ターゲット リソース グループ内の VM を定期的に起動/停止する日時を **[スケジュール]** で選択します。  
+   - ターゲット リソース グループ内の VM を定期的に起動/停止する日時を **[スケジュール]** で選択します。  スケジュールは既定で UTC タイム ゾーンに構成され、別のリージョンを選ぶことはできません。  ソリューション構成後にスケジュールを特定のタイム ゾーンに構成したい場合は、後の「[開始と停止のスケジュールの変更](#modifying-the-startup-and-shutdown-schedule)」をご覧ください。    
 
 10. ソリューションに必要な初期設定が完了したら、**[作成]** を選択します。  すべての設定が検証された後、ご利用のサブスクリプションへのソリューションのデプロイが試行されます。  このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。 
 
@@ -159,7 +159,7 @@ VM の起動/停止 Runbook が完了したときの電子メール通知を有�
 
 ### <a name="modifying-the-startup-and-shutdown-schedule"></a>開始と停止のスケジュールの変更
 
-このソリューションの開始と停止のスケジュールを管理する際には、「[Azure Automation の Runbook をスケジュール設定する](automation-scheduling-a-runbook.md)」で説明されている手順に従います。  ただし、スケジュールの構成を変更することはできません。  既存のスケジュールを無効にしてから新しいものを作成し、スケジュールを適用する **StartByResourceGroup-MS-Mgmt-VM** または **StopByResourceGroup-MS-Mgmt-VM** Runbook に関連付ける必要があります。   
+このソリューションの開始と停止のスケジュールを管理する際には、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。  ただし、スケジュールの構成を変更することはできません。  既存のスケジュールを無効にしてから新しいものを作成し、スケジュールを適用する **StartByResourceGroup-MS-Mgmt-VM** または **StopByResourceGroup-MS-Mgmt-VM** Runbook に関連付ける必要があります。   
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
@@ -247,6 +247,6 @@ Automation アカウントと OMS ワークスペースは、このプロセス�
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

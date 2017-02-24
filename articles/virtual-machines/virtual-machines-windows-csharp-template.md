@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: aeea0c65a3332197efcd823e29c8f0c4fe0426b3
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 8424fb5d107935833e9652ef86e03933ea14c26e
 
 
 ---
@@ -26,10 +26,10 @@ ms.openlocfilehash: aeea0c65a3332197efcd823e29c8f0c4fe0426b3
 
 まず、以下の設定手順を行っているかどうかを確認する必要があります。
 
-*  [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
+* [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 * [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のインストールの検証
-*  [認証トークン](../resource-group-authenticate-service-principal.md)
-* [Azure PowerShell](../resource-group-template-deploy.md)、[Azure CLI](../resource-group-template-deploy-cli.md)、または [Azure ポータル](../resource-group-template-deploy-portal.md)を使用してリソース グループを作成します。
+* [認証トークン](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)、または [Azure ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md)を使用してリソース グループを作成します。
 
 これらの手順を実行するには約 30 分かかります。
 
@@ -225,17 +225,19 @@ Azure Active Directory アプリケーションが作成され、認証ライブ
         using System.IO;
 2. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
 
-     private static async Task<AuthenticationResult> GetAccessTokenAsync()   {
-
-       var cc = new ClientCredential("{client-id}", "{client-secret}");
-       var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-       var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
-       if (token == null)
-       {
-         throw new InvalidOperationException("Could not get the token.");
-       }
-       return token;
+   ```
+   private static async Task<AuthenticationResult> GetAccessTokenAsync()
+   {
+     var cc = new ClientCredential("{client-id}", "{client-secret}");
+     var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
+     var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
+     if (token == null)
+     {
+       throw new InvalidOperationException("Could not get the token.");
      }
+     return token;
+   }
+   ```
 
    {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。 テナント ID は Get-AzureRmSubscription を実行して確認できます。 アクセス キーは、Azure ポータルで確認できます。
 3. 資格情報を作成するには、Program.cs ファイルの Main メソッドに次のコードを追加します。
@@ -294,42 +296,44 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1. リソース グループを削除するために、次のメソッドを Program クラスに追加します。
 
-     public static async void DeleteResourceGroupAsync(
+   ```
+   public static async void DeleteResourceGroupAsync(
+     TokenCredentials credential,
+     string groupName,
+     string subscriptionId)
+   {
+     Console.WriteLine("Deleting resource group...");
+     var resourceManagementClient = new ResourceManagementClient(credential)
+       { SubscriptionId = subscriptionId };
+     await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
+   }
+   ```
 
-       TokenCredentials credential,
-       string groupName,
-       string subscriptionId)
-     {
-
-       Console.WriteLine("Deleting resource group...");
-       var resourceManagementClient = new ResourceManagementClient(credential)
-         { SubscriptionId = subscriptionId };
-       await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
-     }
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-     DeleteResourceGroupAsync(
-
-       credential,
-       groupName,
-       subscriptionId);
-     Console.ReadLine();
+   ```
+   DeleteResourceGroupAsync(
+     credential,
+     groupName,
+     subscriptionId);
+   Console.ReadLine();
+   ```
 
 ## <a name="step-6-run-the-console-application"></a>手順 6. コンソール アプリケーションを実行する
 1. コンソール アプリケーションを実行するために、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じ資格情報を使用して Azure AD にサインインします。
 2. 承認されたことを示す状態が表示されたら、 **Enter** キーを押します。
 
-   このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 Enter キーを押してリソースの削除を開始する前に、Azure ポータルでリソースの作成状況を確認することもできます。
+   このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約&5; 分かかります。 Enter キーを押してリソースの削除を開始する前に、Azure ポータルでリソースの作成状況を確認することもできます。
 3. リソースの状況を確認するには、Azure ポータルで監査ログを参照します。
 
     ![Azure ポータルでの監査ログの参照](./media/virtual-machines-windows-csharp-template/crpportal.png)
 
 ## <a name="next-steps"></a>次のステップ
-* デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
+* デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

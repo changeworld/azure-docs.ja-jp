@@ -1,7 +1,7 @@
 ---
-title: "MongoDB のプロトコル対応の Azure DocumentDB アカウントでデータを移行する | Microsoft Docs"
+title: "Azure DocumentDB で mongoimport と mongorestore を使用する | Microsoft Docs"
 description: "mongoimport と mongorestore を使用して、現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントにデータをインポートする方法について説明します。"
-keywords: migrate
+keywords: mongoimport, mongorestore
 services: documentdb
 author: AndrewHoh
 manager: jhubbard
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2dc98400ed4eaa2263d73f0718f5eaee260d48f5
-ms.openlocfilehash: 80665bc84948696b05b04536a066ebebb5a81e89
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
 
 
 ---
-# <a name="migrate-data-to-documentdb-with-protocol-support-for-mongodb"></a>MongoDB のプロトコル対応 DocumentDB にデータを移行する
+# <a name="migrate-data-to-documentdb-by-using-mongoimport-and-mongorestore"></a>mongoimport と mongorestore を使用して DocumentDB にデータを移行する
 MongoDB のプロトコル対応の Azure DocumentDB アカウントにデータを移行するには、以下を実行する必要があります。
 
 * *mongoimport.exe* または *mongorestore.exe* のいずれかを [MongoDB Download Center](https://www.mongodb.com/download-center) からダウンロードします。
@@ -71,6 +71,6 @@ DocumentDB アカウントにデータを復元するには、次のテンプレ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

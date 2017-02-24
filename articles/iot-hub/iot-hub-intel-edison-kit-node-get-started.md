@@ -1,5 +1,5 @@
 ---
-title: "Intel Edison Azure IoT スタート キットの概要 | Microsoft Docs"
+title: "Azure IoT への Intel Edison (Node) の接続 - 作業開始 | Microsoft Docs"
 description: "Intel Edison を使用し、Azure IoT ハブを作成して、その IoT ハブに Edison を接続します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: cb18052f74528e245264bb2f400b625fe550ed85
-ms.openlocfilehash: 61f14728d5b985815b64b2c13c7f0df42e4de485
+ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
+ms.openlocfilehash: 66748b2d59396689a5a20ac77f6d0cc5ad7b0b03
 
 
 ---
@@ -142,6 +142,6 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

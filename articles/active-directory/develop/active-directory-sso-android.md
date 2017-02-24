@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 4d436776069bd950dd9ab240aeefd986822ee869
+ms.sourcegitcommit: 7e53a249e6a7ea87d7d5855d041db97b5df7053c
+ms.openlocfilehash: 1276506d77695f284c49d0e2f7d57a9162b38bd6
 
 
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Android で ADAL を使用してクロス アプリ SSO を有効にする方法
-シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
+シングル サインオン (SSO) を提供すると、ユーザーが資格情報を&1; 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
 
 さらに、Microsoft アカウント、Office365 の職場アカウントなど、他のアプリケーションでも使用できる ID プラットフォームを利用している場合、ユーザーはこれらの資格情報が、ベンダーを問わず、すべてのアプリケーションで使用できることを期待します。
 
@@ -45,7 +45,7 @@ Microsoft は、すべてのモバイル プラットフォーム用に、異な
 これらのブローカーをどのように使用するかと、Microsoft Identity プラットフォームのログイン フローでユーザーにどのように表示されるかを理解するには、この後の詳細をお読みください。
 
 ### <a name="patterns-for-logging-in-on-mobile-devices"></a>モバイル デバイスでのログインのパターン
-デバイスでの資格情報へのアクセスは、Microsoft Identity プラットフォームの 2 つの基本的なパターンに従います。
+デバイスでの資格情報へのアクセスは、Microsoft Identity プラットフォームの&2; つの基本的なパターンに従います。
 
 * 非ブローカーの支援によるログイン
 * ブローカーの支援によるログイン
@@ -229,7 +229,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 例: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-このリダイレクト URI は、 [Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
+このリダイレクト URI は、[Azure Portal](https://portal.azure.com/) を使って、アプリの登録で指定する必要があります。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
 
 #### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>手順 3: アプリケーションで適切なアクセス許可をセットアップする
 Android のブローカー アプリケーションは、Android OS のアカウント マネージャー機能を使用して、複数のアプリケーションにわたって資格情報を管理します。 Android でブローカーを使用するには、アプリ マニフェストが AccountManager アカウントを使用するためのアクセス許可を持っている必要があります。 この詳細については、 [アカウント マネージャーについての Google ドキュメント](http://developer.android.com/reference/android/accounts/AccountManager.html)
@@ -248,6 +248,6 @@ MANAGE_ACCOUNTS
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

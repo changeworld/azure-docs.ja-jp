@@ -23,7 +23,7 @@ ms.openlocfilehash: d1ab1ab2132d12bf06dbe2504b7d7111ef2ae851
 ---
 # <a name="how-app-service-works"></a>App Service の特長
 Azure App Service は、今日エンジニアが直面している現実的な問題を解決することを目的としたクラウド サービスです。
-アプリケーションをクラウドで提供するニーズに関して妥協することなく、開発者の生産性を高めるのが App Service のねらいです。
+アプリケーションをクラウドで提供するニーズに関して妥協することなく、開発者の生産性を高めるのが App Service のねらいです。 
 
 また、App Service は、企業の基幹業務アプリケーションの構築に必要な機能とフレームワークを提供すると同時に、広く普及している開発言語 (Microsoft .NET、Java、PHP、Node.js、Python など) への対応によって開発者を支援します。
 App Service を使用すると、開発者は次のことができます。

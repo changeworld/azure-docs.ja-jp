@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager Virtual Machines にポリシーを適用する | Microsoft Docs"
+title: "Azure の Linux VM にセキュリティとポリシーを適用する | Microsoft Docs"
 description: "Azure Resource Manager Linux 仮想マシンにポリシーを適用する方法"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: f06747c35f12802f54b44774dff7f92280ba0dc9
-ms.openlocfilehash: b1c66c14fbf5b0361831bb987df3dc01131abc88
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Azure Resource Manager 仮想マシンにポリシーを適用する
+# <a name="apply-security-and-policies-to-linux-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Linux VM にセキュリティとポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の仮想マシンの望ましい行動を定義する方法について説明します。
 
 これを実現するための手順の概要を、以下に示します
@@ -82,7 +82,7 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 ```
 
 #### <a name="virtual-machine-property-fields"></a>仮想マシンのプロパティ フィールド
-次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。 ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md#fields)」をご覧ください。
+次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。 ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](../azure-resource-manager/resource-manager-policy.md#conditions)」をご覧ください。
 
 | フィールド名 | Description |
 | --- | --- |
@@ -92,13 +92,13 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 | imageVersion |選択した SKU のイメージのバージョンを指定します |
 
 ## <a name="create-the-policy"></a>ポリシーの作成
-ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
+ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
 
 ## <a name="apply-the-policy"></a>ポリシーの適用
-ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

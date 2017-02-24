@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3cacf9edde4ed2cabf996e390bb1e00113bc47cb
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b
 
 
 ---
@@ -25,11 +25,11 @@ Azure Active Directory (Azure AD) では、専用グループ機能によって 
 
 > [!NOTE]
 > 専用グループを使用するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
-> 
+>
 > * グループに対するルールを管理する管理者
 > * ルールによってグループのメンバーとして選択されるすべてのユーザー
-> 
-> 
+>
+>
 
 **専用グループを有効にするには**
 
@@ -51,13 +51,13 @@ All Users 専用グループには、ゲストや外部ユーザーを含む、�
 
 動的グループのメンバーシップ管理を目的とした *高度* なルール (複数の比較を伴うルール) を作成する方法については、「 [属性を使用した高度なルールの作成](active-directory-accessmanagement-groups-with-advanced-rules.md)」を参照してください。
 
+### <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 
 
 

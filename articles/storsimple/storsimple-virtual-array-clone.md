@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array のバックアップから複製する | Microsoft Docs"
+title: "StorSimple Virtual Array のバックアップを複製する | Microsoft Docs"
 description: "バックアップから複製し、StorSimple Virtual Array からファイルを回復する方法について説明します。"
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: ae076d52b532f5181868b2ab24ee8f2ffa887af7
-ms.openlocfilehash: f1c050c499484b612d2f9dcae395f36524397008
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
 
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
@@ -120,7 +120,7 @@ ms.openlocfilehash: f1c050c499484b612d2f9dcae395f36524397008
 
 1. ILR を実行するときは、ファイル エクスプローラーを使用してバックアップを表示できます。 バックアップを調べる共有をクリックします。 共有の下で *.backups* フォルダーが作成されていることを確認できます。このフォルダーにすべてのバックアップが保存されています。 *.backups* フォルダーを展開してバックアップを表示します。 このフォルダーには、バックアップ階層全体の展開ビューが表示されます。 このビューはオンデマンドで作成されます。通常、作成には数秒しかかかりません。
    
-   最後の 5 つのバックアップは、この方法で表示され、項目レベルの回復を実行するために使用できます。 これには、既定のスケジュールされたバックアップと手動バックアップの両方が含まれます。
+   最後の&5; つのバックアップは、この方法で表示され、項目レベルの回復を実行するために使用できます。 これには、既定のスケジュールされたバックアップと手動バックアップの両方が含まれます。
    
    * **スケジュールされたバックアップ**には、&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
    * **手動バックアップ** には、Ad-hoc-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
@@ -140,6 +140,6 @@ ms.openlocfilehash: f1c050c499484b612d2f9dcae395f36524397008
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

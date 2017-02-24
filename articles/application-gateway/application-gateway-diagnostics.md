@@ -1,5 +1,5 @@
 ---
-title: "Application Gateway のアクセス ログおよびパフォーマンス ログとメトリックの監視 | Microsoft Docs"
+title: "Application Gateway のアクセス ログ、パフォーマンス ログ、バッグエンドの正常性、およびメトリックの監視 | Microsoft Docs"
 description: "Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します。"
 services: application-gateway
 documentationcenter: na
@@ -13,39 +13,94 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 01/17/2017
 ms.author: amitsriva
 translationtype: Human Translation
-ms.sourcegitcommit: aaf13418331f29287399621cb911e4b9f5b33dc0
-ms.openlocfilehash: ae1ad86d78d4989607d7f6b68941902f5b2820c0
+ms.sourcegitcommit: d65b354bc972c8268f1b4f072843b5bf4977a7c4
+ms.openlocfilehash: 2b37bf92ce8945996eb64477c28bea845b7df516
 
 
 ---
-# <a name="diagnostics-logging-and-metrics-for-application-gateway"></a>Application Gateway の診断ログとメトリック
+# <a name="backend-health-diagnostics-logging-and-metrics-for-application-gateway"></a>Application Gateway のバッグエンドの正常性、診断ログ、およびメトリック
 
-Azure は、ログとメトリックを使用してリソースを監視する機能を提供しています。
+Azure は、ログとメトリックを使用してリソースを監視する機能を提供しています。 Application Gateway は、バックエンドの正常性、ログ、およびメトリックを使用して、このような機能を提供しています。
+
+[**バックエンドの正常性**](#backend-health) - Application Gateway は、ポータルと PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
 
 [**ログ**](#enable-logging-with-powershell) - リソースのパフォーマンス、アクセス、その他を記録したログは、監視のために保存し使用することができます。
 
-[**メトリック**](#metrics) - アプリケーション ゲートウェイが持つメトリックは現在 1 つです。 このメトリックは、アプリケーション ゲートウェイの 1 秒あたりのスループットをバイト単位で測定したものです。
+[**メトリック**](#metrics) - アプリケーション ゲートウェイが持つメトリックは現在&1; つです。 このメトリックは、アプリケーション ゲートウェイの&1; 秒あたりのスループットをバイト単位で測定したものです。
+
+## <a name="backend-health"></a>バックエンドの正常性
+
+Application Gateway は、ポータル、PowerShell、および CLI を介して、バックエンド プールの各メンバーの正常性を監視する機能を提供します。 バックエンド プールの正常性の集計された概要は、パフォーマンスの診断ログでも確認できます。 バックエンドの正常性レポートには、バックエンドのインスタンスへの Application Gateway の正常性プローブの出力が反映されます。 プローブが正常に完了し、バックエンドにトラフィックを送信できる場合は、正常と見なされます。それ以外の場合は異常と見なされます。
+
+> [!important]
+> Application Gateway サブネット上に NSG がある場合、Application Gateway のインスタンスで 65503 ～ 65534 のポート範囲を開いておく必要があります。
+
+### <a name="view-backend-health-through-the-portal"></a>ポータルを介したバックエンドの正常性の表示
+
+バックエンドの正常性を表示するために必要なものはありません。 既存の Application Gateway で、**[監視]** > **[Backend health (バックエンドの正常性)]** の順に移動します。 バックエンド プール内の各メンバーはこのページに表示されます (NIC、IP、FQDN のいずれであっても)。 バックエンド プール名、ポート、バックエンドの http 設定名、および正常性の状態が表示されます。 正常性の状態を表す有効値は、"正常"、"異常"、および "不明" です。
+
+> [!WARNING]
+> バックエンドの正常性状態として **[不明]** が表示される場合、バックエンドへのアクセスが、ネットワーク セキュリティ グループ (NSG) のルールまたは VNet 内のカスタム DNS によって、ブロックされていないことを確認します。
+
+![バックエンドの正常性][10]
+
+### <a name="view-backend-health-with-powershell"></a>PowerShell を使用してバックエンドの正常性を表示する
+
+バックエンドの正常性は、PowerShell 経由でも取得できます。 次の PowerShell コードは、`Get-AzureRmApplicationGatewayBackendHealth` コマンドレットを使用してバックエンドの正常性を取得する方法を示します。
+
+```powershell
+Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
+```
+
+結果が返されます。次のスニペットが応答の一例です。
+
+```json
+{
+"BackendAddressPool": {
+    "Id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/appGatewayBackendPool"
+},
+"BackendHttpSettingsCollection": [
+    {
+    "BackendHttpSettings": {
+        "Id": "/00000000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings"
+    },
+    "Servers": [
+        {
+        "Address": "hostname.westus.cloudapp.azure.com",
+        "Health": "Healthy"
+        },
+        {
+        "Address": "hostname.westus.cloudapp.azure.com",
+        "Health": "Healthy"
+        }
+    ]
+    }
+]
+}
+```
+
+## <a name="diagnostic-logging"></a>診断ログの記録
 
 Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 これらのログの一部はポータルからアクセスできます。また、すべてのログは、Azure Blob Storage から抽出して、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Excel、PowerBI などのさまざまなツールで表示することができます。 各種ログの詳細については、以下の一覧を参照してください。
 
 * **アクティビティ ログ:** [Azure アクティビティ ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の "操作ログ" と "監査ログ") を使用すると、Azure サブスクリプションに送信されているすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、また Azure ポータルで表示できます。
-* **アクセス ログ:** このログを使用すると、アプリケーション ゲートウェイのアクセス パターンを確認し、重要な情報 (呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイト数など) を分析できます。 アクセス ログは 300 秒ごとに収集されます。 このログには、アプリケーション ゲートウェイのインスタンスごとに 1 つのレコードが含まれます。 アプリケーション ゲートウェイのインスタンスは、"instanceId" プロパティで識別できます。
+* **アクセス ログ:** このログを使用すると、アプリケーション ゲートウェイのアクセス パターンを確認し、重要な情報 (呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイト数など) を分析できます。 アクセス ログは 300 秒ごとに収集されます。 このログには、アプリケーション ゲートウェイのインスタンスごとに&1; つのレコードが含まれます。 アプリケーション ゲートウェイのインスタンスは、"instanceId" プロパティで識別できます。
 * **パフォーマンス ログ:** このログを使用すると、アプリケーション ゲートウェイのインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。
 * **ファイアウォール ログ:** このログを使用すると、Web アプリケーション ファイアウォールが構成されたアプリケーション ゲートウェイの、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!WARNING]
 > ログは、リソース マネージャーのデプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイメント モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「 [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md) 」を参照してください。
 
-ログについては、ログの保存方法を選択するための 3 つのオプションがあります。
+ログについては、ログの保存方法を選択するための&3; つのオプションがあります。
 
 * ストレージ アカウント - ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
 * イベント ハブ - イベント ハブは、他の SEIM ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです
 * ログ分析 - ログ分析は、アプリケーションをリアルタイムに監視したり、傾向を見たりする一般的な用途に最適です。
 
-## <a name="enable-logging-with-powershell"></a>PowerShell を使用したログの有効化
+### <a name="enable-logging-with-powershell"></a>PowerShell を使用したログの有効化
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 アクセス ログとパフォーマンス ログで使用可能なデータの収集を開始するには、これらのログを有効にする必要があります。 ログ記録を有効にするには、次の手順に従って操作します。
 
@@ -66,9 +121,9 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 > [!TIP] 
 >アクティビティ ログでは別のストレージ アカウントは必要ありません。 アクセス ログとパフォーマンス ログにストレージを使用すると、サービス料金が発生します。
 
-## <a name="enable-logging-with-azure-portal"></a>Azure ポータルを使用したログの有効化
+### <a name="enable-logging-with-azure-portal"></a>Azure ポータルを使用したログの有効化
 
-### <a name="step-1"></a>手順 1
+#### <a name="step-1"></a>手順 1
 
 Azure ポータルで、リソースに移動します。 **[診断ログ]**をクリックします。 初めて診断を構成する場合、ブレードは次の図のようになります。
 
@@ -82,29 +137,29 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 
 ![[診断設定] ブレード][1]
 
-### <a name="step-2"></a>手順 2.
+#### <a name="step-2"></a>手順 2.
 
 **[診断設定]** ブレードで、診断ログの収集方法を設定します。 この例では、Log Analytics を使用してログを保存します。 **[Log Analytics]** の下にある **[構成]** をクリックして、ワークスペースを構成します。 Event Hubs とストレージ アカウントを使用して診断ログを保存することもできます。
 
 ![[診断] ブレード][2]
 
-### <a name="step-3"></a>手順 3.
+#### <a name="step-3"></a>手順 3.
 
 既存の OMS ワークスペースを選択するか、新しい OMS ワークスペースを作成します。 この例では、既存のものを使用します。
 
 ![OMS ワークスペース][3]
 
-### <a name="step-4"></a>手順 4.
+#### <a name="step-4"></a>手順 4.
 
 完了したら、設定を確認し、 **[保存]** をクリックして設定を保存します。
 
 ![選択内容の確認][4]
 
-## <a name="activity-log"></a>アクティビティ ログ
+### <a name="activity-log"></a>アクティビティ ログ
 
 監査ログ (以前の "操作ログ") は、既定では Azure によって生成されます。  ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」を参照してください。
 
-## <a name="access-log"></a>アクセス ログ
+### <a name="access-log"></a>アクセス ログ
 
 このログは、前の手順で示したように、Application Gateway ごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
 
@@ -132,7 +187,7 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 }
 ```
 
-## <a name="performance-log"></a>パフォーマンス ログ
+### <a name="performance-log"></a>パフォーマンス ログ
 
 このログは、前の手順で示したように、Application Gateway ごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次のデータがログに記録されます。
 
@@ -155,7 +210,10 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 }
 ```
 
-## <a name="firewall-log"></a>ファイアウォール ログ
+> [!NOTE]
+> 待機時間は、HTTP 要求の最初のバイトが受信されたときから、HTTP 応答の最後のバイトが送信されたときまでで計算されます。 これは、Application Gateway の処理時間、バックエンドへのネットワーク コスト、およびバックエンドが要求の処理に要した時間を加えたものです。
+
+### <a name="firewall-log"></a>ファイアウォール ログ
 
 このログは、前の手順で示したように、Application Gateway ごとにログを有効にした場合にのみ生成されます。 このログを使用するには、アプリケーション ゲートウェイで Web アプリケーション ファイアウォールを構成する必要もあります。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次のデータがログに記録されます。
 
@@ -179,7 +237,7 @@ Azure ポータルで、リソースに移動します。 **[診断ログ]**を�
 }
 ```
 
-## <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
+### <a name="view-and-analyze-the-activity-log"></a>アクティビティ ログの表示と分析
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
@@ -199,25 +257,25 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 ## <a name="metrics"></a>メトリック
 
-メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Application Gateway では、この記事の執筆時に使用できるメトリックは 1 つです。 そのメトリックとはスループットのことで、ポータルで確認することができます。 アプリケーション ゲートウェイに移動して **[メトリック]**をクリックします。 値を表示するには、**[Available metrics (使用可能なメトリック)]** セクションでスループットを選択します。 次の図は、さまざまな時間範囲のデータの表示に使用できるフィルターの例を示しています。
+メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Application Gateway では、この記事の執筆時に使用できるメトリックは&1; つです。 そのメトリックとはスループットのことで、ポータルで確認することができます。 アプリケーション ゲートウェイに移動して **[メトリック]**をクリックします。 値を表示するには、**[Available metrics (使用可能なメトリック)]** セクションでスループットを選択します。 次の図は、さまざまな時間範囲のデータの表示に使用できるフィルターの例を示しています。
 
 現在サポートされているメトリックの一覧を表示するには、「 [Supported metrics with Azure Monitor (Azure Monitor でサポートされているメトリック)](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
 ![メトリック ビュー][5]
 
-## <a name="alert-rules"></a>アラート ルール
+### <a name="alert-rules"></a>アラート ルール
 
 アラート ルールは、リソースのメトリックに基づいて開始することができます。 つまり、アプリケーション ゲートウェイのスループットが指定した期間にしきい値を上回るか下回る場合、またはしきい値に等しい場合、アラートで webhook を呼び出したり、管理者に電子メールを送信したりできます。
 
 次の例では、スループットのしきい値を超えた後に管理者に電子メールを送信するアラート ルールの作成手順を説明します。
 
-### <a name="step-1"></a>手順 1
+#### <a name="step-1"></a>手順 1
 
 **[Add metric alert (メトリック アラートの追加)]** をクリックして開始します。 このブレードには、メトリック ブレードからもアクセスできます。
 
 ![[アラート ルール] ブレード][6]
 
-### <a name="step-2"></a>手順 2.
+#### <a name="step-2"></a>手順 2.
 
 **[ルールの追加]** ブレードで、名前、条件、通知セクションを入力し、完了したら **[OK]** をクリックします。
 
@@ -256,9 +314,9 @@ webhook と、webhook とアラートを使用する方法の詳細について�
 [7]: ./media/application-gateway-diagnostics/figure7.png
 [8]: ./media/application-gateway-diagnostics/figure8.png
 [9]: ./media/application-gateway-diagnostics/figure9.png
+[10]: ./media/application-gateway-diagnostics/figure10.png
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

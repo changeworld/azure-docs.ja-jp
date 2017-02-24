@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス | Microsoft Docs"
-description: "この記事では、Microsoft Azure IaaS 環境でのソフトウェアの更新に関するさまざまなベスト プラクティスについて説明します。  組織のセキュリティ担当者やコンプライアンス担当者など、日常的に変更管理、ソフトウェアの更新、および資産管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
+title: "Azure IaaS でのソフトウェア更新のベスト プラクティス | Microsoft Docs"
+description: "この記事では、Microsoft Azure IaaS 環境でのソフトウェア更新に関するさまざまなベスト プラクティスについて説明します。  組織のセキュリティ担当者やコンプライアンス担当者など、日常的に変更管理、ソフトウェアの更新、および資産管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
 services: security
 documentationcenter: na
 author: YuriDio
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c52a2d6be31b1a8f581313932c0af87120ccd9fe
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 43d760ffcc108a70212e47ee8eab9ec2aca02a17
 
 
 ---
@@ -25,16 +25,16 @@ Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) 環境のベス
 
 ![クラウド モデルと義務](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack-new.png)
 
-一番左の列は、組織で検討する必要がある 7 つの役割 (後のセクションで定義しています) を示しています。これらはすべて、コンピューティング環境のセキュリティとプライバシーに関与します。
+一番左の列は、組織で検討する必要がある&7; つの役割 (後のセクションで定義しています) を示しています。これらはすべて、コンピューティング環境のセキュリティとプライバシーに関与します。
 
-データの分類と説明責任、およびクライアントとエンドポイントの保護の全責任は、お客様にあります。物理的なセキュリティ、ホスト、およびネットワークについては、PaaS および SaaS モデルではクラウド サービス プロバイダーの責任となります。 
+データの分類と説明責任、およびクライアントとエンドポイントの保護の全責任は、お客様にあります。物理的なセキュリティ、ホスト、およびネットワークについては、PaaS および SaaS モデルではクラウド サービス プロバイダーの責任となります。
 
 残りの項目については、お客様とクラウド サービス プロバイダーとで分担します。 一部の役割については、ドメインの監査も含めて、クラウド サービス プロバイダーとお客様とで管理を行う必要があります。 たとえば、Azure Active Directory サービスを使用する場合の ID とアクセスの管理を例に取ると、多要素認証などのサービスの構成はお客様の責任になりますが、機能の有効性の確保については Microsoft Azure がその役目を果たします。
 
 > [!NOTE]
-> クラウド内の役割分担の詳細については、「[Shared Responsibilities for Cloud Computing (クラウド コンピューティングの役割分担)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)」をお読みください。 
-> 
-> 
+> クラウド内の役割分担の詳細については、「[Shared Responsibilities for Cloud Computing (クラウド コンピューティングの役割分担)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)」をお読みください。
+>
+>
 
 次の図に示すように、Azure IaaS VM を使用してオンプレミスのリソースと通信するハイブリッド シナリオに関して、これらの同じ原則が適用されます。
 
@@ -110,7 +110,6 @@ Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) 環境のベス
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

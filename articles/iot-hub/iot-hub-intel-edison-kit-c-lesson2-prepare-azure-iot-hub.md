@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT ハブの作成と Intel Edison の登録 | Microsoft Docs"
+title: "Azure IoT への Intel Edison (C) の接続 - レッスン 2: デバイスの登録 | Microsoft Docs"
 description: "Azure CLI を使用して、リソース グループと Azure IoT ハブを作成し、その Azure IoT ハブに Edison を登録します。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: eed6c2b652df689732138fc9ce792728d7752f23
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 9eebae32bf469e0744855ed9f98306bd36eb9671
 
 
 ---
@@ -105,6 +105,6 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Edison �
 [process-and-store-iot-hub-messages]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

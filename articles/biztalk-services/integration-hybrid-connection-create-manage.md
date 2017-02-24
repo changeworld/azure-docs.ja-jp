@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e92668550c00111eaa733c474298370eb7803713
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ad6e548b5998d5ee0b66e3d33da9fa97efb7c97c
 
 
 ---
@@ -154,6 +154,6 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

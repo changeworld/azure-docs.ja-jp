@@ -97,9 +97,10 @@
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
 ## 構成
-### Accelerated Networking
-#### [Azure Portal](virtual-network-accelerated-networking-portal.md)
+### VM の Accelerated Networking
+#### [Azure ポータル](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [VM のネットワーク スループットを最適化する](virtual-network-optimize-network-bandwidth.md)
 ### アクセス制御リスト
 #### [クラシック ポータル](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
@@ -147,6 +148,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

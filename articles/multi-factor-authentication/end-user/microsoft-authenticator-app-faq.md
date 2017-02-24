@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 02/10/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 45358e89561ef2265ca5d8ae522b823c4629b3fc
-ms.openlocfilehash: f869e456ef40d04f7dd085d4ce7c3d654cdf2091
+ms.sourcegitcommit: 28846f2effd26c5b7ca7a79fba52d8ba1cb4ea91
+ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
 
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
+
+この記事では、Microsoft Authenticator アプリに関する一般的な質問にお答えします。 質問に対する回答がここで見つからない場合は、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)をご覧ください。 アプリの特定の機能については、[携帯電話でのサインインに関する FAQ](microsoft-authenticator-app-phone-signin-faq.md) もご覧ください。
+
 Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 このアプリは、Windows Phone、Android、iOS で利用できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -40,7 +43,7 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 残念ですが、プッシュ通知は、Microsoft アカウントと Azure Active Directory アカウントでのみ機能します。 職場または学校で Azure AD アカウントを使用している場合は、この機能を無効にしている可能性があります。  
 
 ### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>デバイスをバックアップから復元しましたが、アカウント コードが見つからないか、機能していません。 なぜでしょうか?
-セキュリティのため、アプリのバックアップからアカウントは復元されません。 iOS アプリをバックアップから復元した場合、アカウントは引き続き表示されますが、サインインの検証を受け取ることも、セキュリティ コードを生成することもできません。 アプリケーションを復元したら、アカウントを削除し、もう一度追加してください。
+セキュリティのため、アプリのバックアップからアカウントは復元されません。  アプリケーションを復元したら、アカウントを削除し、もう一度追加してください。
 
 ### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>新しいデバイスを取得しました。 古いデバイスから Microsoft Authenticator アプリを削除して新しいデバイスに移すにはどうすればよいですか。
 新しいデバイスに Microsoft Authenticator アプリを追加しても、他のデバイスからそのアプリが自動的に削除されることはありません。 アカウントで構成されるデバイスを管理するには、2 段階認証を管理するために使用するのと同じ Web サイトにアクセスして、古いアプリの削除を選択してください。
@@ -52,10 +55,10 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 * Windows Phone: メイン画面で、メニュー ボタンを選択し、**[アカウントの編集]** を選択します。 アカウント名の横にある **[X]** をタップします。
 * Android: メイン画面で、メニュー ボタンを選択し、**[アカウントの編集]** を選択します。 アカウント名の横にある **[X]** をタップします。
 
-所属している組織に登録されている Android デバイスの場合、自分のアカウントを削除するには、追加手順の完了が必要な可能性があります。 これらのデバイスでは、Microsoft Authenticator アプリがデバイスの管理者として自動的に登録されます。 アプリを完全にアンインストールする場合は、その前にアプリ設定でアプリの登録を解除する必要があります。
+所属している組織に登録されているデバイスの場合、自分のアカウントを削除するには、追加手順の完了が必要な可能性があります。 これらのデバイスでは、Microsoft Authenticator アプリがデバイスの管理者として自動的に登録されます。 アプリを完全にアンインストールする場合は、その前にアプリ設定でアプリの登録を解除する必要があります。
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>アプリで多くのアクセス許可が要求されるのはなぜですか。
-要求されるアクセス許可の完全な一覧と、アプリでの用途を次に示します。
+要求されるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、電話の種類によって異なります。
 
 * **カメラ**: 職場のアカウント、学校のアカウント、または Microsoft 以外のアカウントを追加すると、カメラを使用して QR コードがスキャンされます。
 * **連絡先と電話番号**: 個人の Microsoft アカウントでサインインすると、電話で使用されている既存のアカウントを検索することでプロセスの簡略化が図られます。
@@ -77,16 +80,17 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 ## <a name="next-steps"></a>次のステップ
 
 ### <a name="contact-us"></a>お問い合わせ
-疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残すか、または[サポートにお問い合わせ](https://support.microsoft.com/contactus)ください。できるかぎり迅速に対応させていただきます。
+疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残してください。
 
 
 ### <a name="related-topics"></a>関連トピック
 * Microsoft アカウントの [2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 職場または学校のアカウントの [2 段階認証で問題が発生した場合](multi-factor-authentication-end-user-troubleshoot.md)
+* [Microsoft Authenticator を使って携帯電話からサインインする](microsoft-authenticator-app-phone-signin-faq.md)
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

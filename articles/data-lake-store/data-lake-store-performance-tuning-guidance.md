@@ -1,6 +1,6 @@
 ---
-title: "Data Lake Store のパフォーマンス チューニング ガイドライン | Microsoft Docs"
-description: "Data Lake Store のパフォーマンス チューニング ガイドライン"
+title: "Azure Data Lake Store のパフォーマンス チューニング ガイドライン | Microsoft Docs"
+description: "Azure Data Lake Store のパフォーマンス チューニング ガイドライン"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 12/02/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 30e6dd65fa2643fdf7ec65601d6391891d48566c
-ms.openlocfilehash: 1238f834edc9452a6a9791d9f3db8d8d50a975a7
+ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
+ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7
 
 
 ---
@@ -86,10 +86,10 @@ Azure Data Lake Store は、同時実行性が高い場合に最高のパフォ�
 
     | ワークロード               | タスク数を設定するパラメーター                                                         |
     |--------------------|------------------------------------------------------------------------------------|
-    | HDInsight の Spark       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
-    | HDInsight の Hive    | hive.tez.container.size         |
-    | HDInsight の MapReduce            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-    | HDInsight の Storm| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
+    | [HDInsight の Spark](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+    | [HDInsight の Hive](data-lake-store-performance-tuning-hive.md)    | hive.tez.container.size         |
+    | [HDInsight の MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+    | [HDInsight の Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
@@ -97,6 +97,6 @@ Azure Data Lake Store は、同時実行性が高い場合に最高のパフォ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

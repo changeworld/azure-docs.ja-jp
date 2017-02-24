@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: acb1cd18cf6e4fa9504d76fcac48dbe85579eab0
+ms.sourcegitcommit: 52316e90cd2207ee20033cd96f981692b20b5ece
+ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 
 
 ---
@@ -213,6 +213,6 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

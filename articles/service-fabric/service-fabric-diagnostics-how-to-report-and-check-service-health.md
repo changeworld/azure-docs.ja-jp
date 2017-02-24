@@ -15,20 +15,21 @@ ms.workload: NA
 ms.date: 01/04/2017
 ms.author: toddabel
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e3c63c8f92c860ed28bfc4dac395c1d5abf131ae
+ms.sourcegitcommit: bb93d4dac1853a317bbd6ac70946753f35be264e
+ms.openlocfilehash: bc1dd1d2c378e628094fe717d9c89298aca1f7b4
 
 
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
 
-サービスから正常性をレポートできる 2 つの方法があります。
+サービスから正常性をレポートできる&3; つの方法があります。
 
 * [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx) オブジェクトまたは [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx) オブジェクトを使用します。  
   `Partition` と `CodePackageActivationContext` オブジェクトを使用し、現在のコンテキストに含まれる要素の正常性をレポートできます。 たとえば、レプリカの一部として実行されるコードでは、そのレプリカ、所属パーティション、含まれるアプリケーションのみの正常性をレポートできます。
 * `FabricClient`を使用します。   
   クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合やサービスが管理者特権で実行されている場合、`FabricClient` を使用し、サービス コードから正常性をレポートできます。 これは、ほとんどの現実のシナリオには当てはまりません。 `FabricClient`では、クラスターの一部であるすべてのエンティティの正常性をレポートできます。 ただし、サービス コードで独自の正常性に関するレポートのみを送信するのが理想的です。
+* クラスター、アプリケーション、デプロイされたアプリケーション、サービス、サービス パッケージ、パーティション、レプリカ、またはノード レベルで、REST API を使用します。 これは、コンテナー内から正常性レポートを取得するために使用できます。
 
 この記事では、サービス コードから正常性をレポートするサンプルを紹介します。 このサンプルでは、Service Fabric が提供するツールで正常性を確認する方法についても紹介します。 この記事は、Service Fabric の正常性状態を監視する機能を簡単に説明することを目的としています。 詳細については、この記事の最後にあるリンクから始まる、正常性に関する一連の解説記事を参照してください。
 
@@ -106,8 +107,8 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     if (!result.HasValue)
     {
        var replicaHealthReport = new StatefulServiceReplicaHealthReport(
-            this.ServiceInitializationParameters.PartitionId,
-            this.ServiceInitializationParameters.ReplicaId,
+            this.Context.PartitionId,
+            this.Context.ReplicaId,
             new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error));
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
@@ -147,11 +148,13 @@ activationContext.ReportApplicationHealth(healthInformation);
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
+* [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
+* [サービスの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
+* [アプリケーションの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

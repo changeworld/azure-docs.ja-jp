@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2e650a5f6e2e69b11d7acbc7628e6ce6f29e5e1c
-ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
 
 
 ---
@@ -47,10 +47,10 @@ ServiceNow および ServiceNow Express と Azure AD の統合を構成するに
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの ServiceNow の追加
 2. ServiceNow または ServiceNow Express 向けの Azure AD シングル サインオンの構成とテスト
@@ -101,11 +101,11 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow"></a>ServiceNow 向け Azure AD シングル サインオンの構成
 1. Azure AD クラシック ポータルの **ServiceNow** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
 
 2. **[ユーザーの ServiceNow へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
 
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
    
@@ -123,7 +123,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 5. **[ServiceNow でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをローカル コンピューターに保存します。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
 
 6. ServiceNow アプリケーションに管理者としてサインオンします。
 
@@ -131,11 +131,11 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     a. 左側のナビゲーション ウィンドウで **[System Definition (システム定義)]** セクションに移動し、**[Plugins (プラグイン)]** をクリックします。
    
-    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "Activate plugin")
+    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "プラグインのアクティブ化")
    
     b. "*Integration - Multiple Provider Single Sign-On Installer*" を検索します。
    
-    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "Activate plugin")
+    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "プラグインのアクティブ化")
    
     c. プラグインを選択します。 右クリックして **[Activate/Upgrade (アクティブ化/アップグレード)]** を選択します。
    
@@ -149,7 +149,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "Configure app URL")
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[Enable multiple provider SSO]** で **[Yes]** を選択します。
+    a. **[Enable multiple provider SSO]** で **[Yes]** を選択します。
    
     b. **[Enable debug logging got the multiple provider SSO integration]** で **[Yes]** を選択します。
    
@@ -159,15 +159,15 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 10. 左側のナビゲーション ウィンドウで、 **[x509 Certificates]**をクリックします。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "Configure single sign-on")
 
 11. **[x509 Certificates]** ダイアログで、**[New]** をクリックします。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
 
 12. **[X.509 Certificates]** ダイアログで、次の手順を実行します。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
     
      a. **[新規]**をクリックします。
     
@@ -185,21 +185,21 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 13. 左側のナビゲーション ウィンドウで、 **[Identity Providers]**をクリックします。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
 
 14. **[Identity Providers]** で、**[New]** をクリックします。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
 
 15. **[Identity Providers]** ダイアログで、**[SAML2 Update1?]** をクリックします。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
 
 16. [SAML2 Update1 Properties] ダイアログで、次の手順を実行します。
     
-     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
+     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
     b. ServiceNow デプロイメントでユーザーを一意に識別するために使用するフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。 
 
@@ -239,20 +239,20 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 1. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
 2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
 
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow-express"></a>ServiceNow Express 向け Azure AD シングル サインオンの構成
 1. Azure AD クラシック ポータルの **ServiceNow** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
 
 2. **[ユーザーの ServiceNow へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
 
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
    
@@ -270,7 +270,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 5. **[ServiceNow でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターのローカルに保存し、**[次へ]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
 
 6. ServiceNow Express アプリケーションに管理者としてサインオンします。
 
@@ -289,10 +289,10 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
     c. **[The field on the user table that...]** ボックスに、「**user_name**」と入力します。
 9. **[Single Sign-On (シングル サインオン)]** ダイアログで、**[Add New Certificate (新しい証明書の追加)]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "Configure single sign-on")
 10. **[X.509 Certificates]** ダイアログで、次の手順を実行します。
     
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
     
     a. **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
     
@@ -314,10 +314,10 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
     g. **[Update]**をクリックします。
 11. **[Single Sign-On (シングル サインオン)]** ダイアログで、**[Add New IdP (新しい IdP の追加)]** をクリックします。
     
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "Configure single sign-on")
 12. **[Add New Identity Provider (新しい ID プロバイダーの追加)]** ダイアログの **[Configure Identity Provider (ID プロバイダーの構成)]** で、次の手順に従います。
     
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
 
     a. **[Name (名前)]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
@@ -332,7 +332,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 1. **[Advanced Settings (詳細設定)]** をクリックし、**[Additional Identity Provider Properties (追加の ID プロバイダーのプロパティ)]** で、次の手順に従います。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
    
     a. **[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
    
@@ -344,7 +344,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 2. **[Additional Service Provider Properties (追加のサービス プロバイダーのプロパティ)]** で、次の手順に従います。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
    
     a. **[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
    
@@ -370,11 +370,11 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 3. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、 **[次へ]**をクリックします。 
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
 4. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを ServiceNow に対して有効にする方法について説明します。
@@ -382,7 +382,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. Azure 管理クラシック ポータルの **ServiceNow** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックします。 
    
-    ![ユーザー プロビジョニング](./media/active-directory-saas-servicenow-tutorial/IC769498.png "User provisioning")
+    ![ユーザー プロビジョニング](./media/active-directory-saas-servicenow-tutorial/IC769498.png "ユーザー プロビジョニング")
 
 2. **[自動ユーザー プロビジョニングを有効にするための ServiceNow の資格情報を入力してください]** ページで、以下の構成設定を入力します。
    
@@ -398,7 +398,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
      f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 このアプリケーションにすべてのユーザーをプロビジョニングする場合は、**[ディレクトリ内のすべてのユーザー アカウントをこのアプリケーションに自動的にプロビジョニングする]** をオンにします。 
    
-    ![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Next Steps")
+    ![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "次のステップ")
    
      g. **[次のステップ]** ページで、**[完了]** をクリックして構成を保存します。
 
@@ -455,9 +455,9 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-servicenow-tutorial/create_aaduser_08.png) 
    
-    a. **[新しいパスワード]** の値を書き留めます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. **[完了]** をクリックします。   
 
 ### <a name="creating-a-servicenow-test-user"></a>ServiceNow のテスト ユーザーの作成
 このセクションでは、ServiceNow で Britta Simon というユーザーを作成します。 このセクションでは、ServiceNow で Britta Simon というユーザーを作成します。 ServiceNow または ServiceNow Express アカウントにユーザーを追加する方法がわからない場合は、ServiceNow サポート チームに問い合わせてください。
@@ -519,6 +519,6 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 12/20/2016
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 15997f889228ca1668f4aa4752ba6f6b0f157873
-ms.openlocfilehash: ee99c3ef9ac5ce4716214736c782cede30e2c662
+ms.sourcegitcommit: 1c002b796ed926fb8b0c6cedf3e361816e50b803
+ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
 
 
 ---
@@ -31,9 +31,11 @@ ms.openlocfilehash: ee99c3ef9ac5ce4716214736c782cede30e2c662
 ## <a name="configure-redis-cache-settings"></a>Redis Cache の設定の構成
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Redis Cache の **[リソース メニュー]** には、次の設定が用意されています。
+Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレードの **[リソース]** メニューを使って行うことができます。
 
 ![Redis Cache の設定](./media/cache-configure/redis-cache-settings.png)
+
+**[リソース]** メニューを使って、以下の設定を表示および構成できます。
 
 * [概要](#overview)
 * [アクティビティ ログ](#activity-log)
@@ -71,7 +73,7 @@ Azure Redis Cache の **[リソース メニュー]** には、次の設定が�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
+キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
@@ -79,7 +81,7 @@ Azure Redis Cache の **[リソース メニュー]** には、次の設定が�
 
 ### <a name="tags"></a>タグ
 
-**[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../resource-group-using-tags.md)に関するページを参照してください。
+**[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)に関するページを参照してください。
 
 
 ### <a name="diagnose-and-solve-problems"></a>問題の診断と解決
@@ -265,11 +267,11 @@ Redis の永続化を有効にするには、 **[有効]** をクリックして
 ![Redis Cache のプロパティ](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>ロック
-**[ロック]** セクションでは、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、「 [Azure リソース マネージャーによるリソースのロック](../resource-group-lock-resources.md)」を参照してください。
+**[ロック]** セクションでは、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、「 [Azure リソース マネージャーによるリソースのロック](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
 
 ### <a name="automation-script"></a>Automation スクリプト
 
-**[Automation スクリプト]** をクリックして、将来のデプロイのために、デプロイ済みのリソースのテンプレートをビルドおよびエクスポートします。 テンプレートを操作する方法の詳細については、 [Azure Resource Manager のテンプレートを使用したリソースのデプロイ](../resource-group-template-deploy.md)に関するページをご覧ください。
+**[Automation スクリプト]** をクリックして、将来のデプロイのために、デプロイ済みのリソースのテンプレートをビルドおよびエクスポートします。 テンプレートを操作する方法の詳細については、 [Azure Resource Manager のテンプレートを使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関するページをご覧ください。
 
 ## <a name="administration-settings"></a>管理の設定
 **[管理]** セクションの設定では、Premium キャッシュに対して次の管理タスクを実行できます。 
@@ -299,7 +301,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 > 
 
 ### <a name="reboot"></a>Reboot
-**[再起動]** ブレードでは、キャッシュの 1 つ以上のノードを再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。
+**[再起動]** ブレードでは、キャッシュの&1; つ以上のノードを再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。
 
 ![Reboot](./media/cache-configure/redis-cache-reboot.png)
 
@@ -378,7 +380,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 | databases |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。dbid が `0` ～ `databases - 1` の数値の `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | maxclients |価格レベルによって異なります。<sup>2</sup> |これは、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。 |
 | maxmemory-policy |volatile-lru |Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。 Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。 この設定は、Azure ポータルで構成できます。 詳細については、「 [maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。 |
-| maxmemory-samples |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。 既定の Redis インスタンスの場合、キーを 3 つ確認し、直近の使用頻度が比較的低い ものを 1 つ選択します。 |
+| maxmemory-samples |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。 既定の Redis インスタンスの場合、キーを&3; つ確認し、直近の使用頻度が比較的低い ものを&1; つ選択します。 |
 | lua-time-limit |5,000 |Lua スクリプトの最大実行時間 (ミリ秒)。 最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。 |
 | lua-event-limit |500 |これは、スクリプト イベント キューの最大サイズです。 |
 | client-output-buffer-limit normalclient-output-buffer-limit pubsub |0 0 032mb 8mb 60 |このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。 詳細については、 [http://redis.io/topics/clients](http://redis.io/topics/clients)を参照してください。 |
@@ -468,7 +470,7 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 
 ![Redis Cache の移動](./media/cache-configure/redis-cache-move.png)
 
-リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../resource-group-move-resources.md)」をご覧ください。
+リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * Redis コマンドの使用の詳細については、 [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
@@ -476,6 +478,6 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

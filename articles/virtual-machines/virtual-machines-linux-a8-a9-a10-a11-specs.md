@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 11/18/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: e42736725bb3636115a6c81aea1f929612a351fe
+ms.sourcegitcommit: f73cbfec2ce2e41589b84997891ff0b60266c9b2
+ms.openlocfilehash: 10a10e138c9c8ed8c15136bf1d6565edc57758b5
 
 
 ---
 # <a name="about-h-series-and-compute-intensive-a-series-vms"></a>H シリーズとコンピューティング集中型 A シリーズの VM について
-この記事では、新しい Azure H シリーズとそれ以前の A8、A9、A10、A11 サイズ (*コンピューティング集中型*インスタンスとも呼ばれます) の背景情報と使用上の考慮事項を示します。 この記事は、Linux VM のこれらのサイズの使用方法について説明していますが、 [Windows VM](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) にも適用されます。
+この記事では、新しい Azure H シリーズとそれ以前の A8、A9、A10、A11 サイズ (*コンピューティング集中型*インスタンスとも呼ばれます) の背景情報と使用上の考慮事項を示します。 この記事は、Linux VM のこれらのサイズの使用方法について説明していますが、 [Windows VM](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) にも適用されます。 
+
+基本的な仕様、ストレージの容量、ディスクの詳細については、[仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
@@ -49,7 +51,7 @@ Azure RDMA ネットワークを活用するために、次のサポートされ
   * **SLES 12 SP1 for HPC イメージ** - 次のコマンドを実行して、VM に配布された Intel MPI パッケージをインストールします。
     
           sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-  * **SLES 12 for HPC イメージ** - Intel MPI のダウンロードおよびインストールを行うには、個別に登録する必要があります。 [MPI ライブラリ インストール ガイド](https://software.intel.com/sites/default/files/managed/7c/2c/intelmpi-2017-installguide-linux.pdf)を参照してください。
+  * **SLES 12 for HPC イメージ** - Intel MPI のダウンロードおよびインストールを行うには、個別に登録する必要があります。 手順については、[Intel MPI Library のドキュメント](https://software.intel.com/en-us/intel-mpi-library/documentation)を参照してください。
   * **CentOS ベースの HPC イメージ** - Intel MPI 5.1 は既にインストール済みです。  
     
     クラスター化された VM で MPI ジョブを実行するには、追加のシステム構成が必要です。 たとえば、VM のクラスターでは、コンピューティング ノード間で信頼関係を確立する必要があります。 標準的な設定については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
@@ -130,6 +132,6 @@ done
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

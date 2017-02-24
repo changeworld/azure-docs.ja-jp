@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0c74663599e8f74ce80948abc3b9e1677bb86de0
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: d6b2b28a7e01d5a70cd08f4cd2d8cccff7d918cf
 
 
 ---
@@ -32,24 +32,24 @@ ms.openlocfilehash: 0c74663599e8f74ce80948abc3b9e1677bb86de0
 
 ローカル リソースの*名前*として **DEPLOYROOT** を使用し、自動的に生成される環境変数 (この場合は **DEPLOYROOT_PATH** に設定されます) を変更しないという操作でも、アプリケーションは問題なく動作します。
 
-ローカル ストレージ リソースの作成に関する追加情報については、「[ローカル ストレージのプロパティ][ローカル ストレージのプロパティ]」を参照してください。
+ローカル ストレージ リソースの作成に関する追加情報については、「[ローカル ストレージのプロパティ][Local storage properties]」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][Azure 向け Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[ローカル ストレージのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#local_storage_properties
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Local storage properties]: http://go.microsoft.com/fwlink/?LinkID=699525#local_storage_properties
 
 <!-- IMG List -->
 
@@ -59,6 +59,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

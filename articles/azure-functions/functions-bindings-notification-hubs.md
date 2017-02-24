@@ -3,7 +3,7 @@ title: "Azure Functions における通知ハブのバインド | Microsoft Docs
 description: "Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: ggailey777
 manager: erikre
 editor: 
 tags: 
@@ -15,10 +15,10 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: wesmc
+ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 7e9534afa8ecd224b4e3c1df2f4465b70d961d2c
-ms.openlocfilehash: 1e03a54956a9fd035cf40aa953a2c368d91b766b
+ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
+ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
 
 
 ---
@@ -76,8 +76,8 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 1. Azure Portal の **[Function App]** ブレードで、**[Function App の設定]、[App Service の設定に移動]** の順にクリックします。
 2. **[設定]** ブレードで、**[アプリケーションの設定]** をクリックします。
-3. **[接続文字列]** セクションまでスクロールして、通知ハブの *DefaultFullSharedAccessSignature* 値の名前付きエントリを追加します。 種類を **[カスタム]**に変更します。
-4. 出力バインドの接続文字列名を参照します。 上の例で使用した **MyHubConnectionString** と同様です。
+3. **[アプリケーション設定]** セクションまでスクロールして、通知ハブの *DefaultFullSharedAccessSignature* 値の名前付きエントリを追加します。
+4. 出力バインドのアプリケーション設定文字列名を参照します。 上の例で使用した **MyHubConnectionString** と同様です。
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>C# キュー トリガーを使用した APNS ネイティブ通知
 次の例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)に定義されたタイプを使用してネイティブの APNS 通知を送信する方法を示します。 
@@ -298,6 +298,6 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

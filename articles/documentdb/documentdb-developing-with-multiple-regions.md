@@ -3,7 +3,7 @@ title: "DocumentDB での複数リージョンを使用した開発 | Microsoft 
 description: "完全に管理された NoSQL データベース サービスである Azure DocumentDB で複数のリージョンにあるデータにアクセスする方法について説明します。"
 services: documentdb
 documentationcenter: 
-author: kiratp
+author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: d4579378-0b3a-44a5-9f5b-630f1fa4c66d
@@ -12,19 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
-ms.author: kipandya
+ms.date: 02/09/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a0b1418168d493ce0e669a9eb0594d37e741df7d
+ms.sourcegitcommit: 240f45383639f1eb8a4a9b7c4e4489591be23dba
+ms.openlocfilehash: aac8c26cd9af94659abc80b2ae260dc380cf38c9
 
 
 ---
 # <a name="developing-with-multi-region-documentdb-accounts"></a>複数リージョンの DocumentDB アカウントを使用した開発
-> [!NOTE]
-> DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。 弊社は既存のすべてのアカウントでグローバル分散が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル分散の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
->
->
+
+複数リージョンの DocumentDB アカウントについては、Scott Hanselman とプリンシパル エンジニアリング マネージャー Karthik Raman による次の Azure Friday ビデオをご覧ください。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+
+## <a name="introduction"></a>はじめに
 
 [グローバル配布](documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure DocumentDB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
 
@@ -34,7 +36,7 @@ SDK は、すべての書き込みを現在の書き込みリージョンに自�
 
 すべての読み取りは、PreferredLocations リストの最初の利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。これが繰り返されます。
 
-クライアント SDK は、PreferredLocations で指定されたリージョンからの読み取りのみを試みます。 このため、3 つのリージョンでデータベース アカウントが利用できるものの、クライアントが PreferredLocations の非書き込みリージョンを 2 つだけ指定している場合などには、書き込みリージョンの外で読み取りが処理されません。これはフェールオーバーの場合にもあてはまります。
+クライアント SDK は、PreferredLocations で指定されたリージョンからの読み取りのみを試みます。 このため、3 つのリージョンでデータベース アカウントが利用できるものの、クライアントが PreferredLocations の非書き込みリージョンを&2; つだけ指定している場合などには、書き込みリージョンの外で読み取りが処理されません。これはフェールオーバーの場合にもあてはまります。
 
 アプリケーションは、WriteEndpoint と ReadEndpoint の 2 つのプロパティをチェックすることで、SDK によって選択された現在の書き込みエンドポイントと読み取りエンドポイントを確認できます。これらのプロパティは SDK バージョン 1.8 以上で利用可能です。
 
@@ -152,13 +154,12 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 
 * [DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)
 * [一貫性レベル](documentdb-consistency-levels.md)
-* [スループットと処理される複数のリージョンの関係](documentdb-manage.md)
 * [Azure ポータルを使用したリージョンの追加](documentdb-portal-global-replication.md)
 
 [regions]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

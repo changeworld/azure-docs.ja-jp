@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限 | Microsoft Docs"
-description: "このドキュメントでは、&quot;インターネットに接続するエンドポイント経由のアクセスの制限&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、**インターネットに接続するエンドポイント経由のアクセスを制限する**という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,38 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5f73681c402d66b52a93863bbade3aafec1ae78f
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
 
 
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限
-Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 "あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
+Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する&1; つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 "あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
 
 この推奨事項は、ソースとして "任意" が指定された Web 以外のすべてのポートに対して生成されます。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。 ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[インターネットに接続するエンドポイント経由のアクセスを制限する]** を選択します。
-   ![[[Restrict access through Internet facing endpoint (インターネットに接続するエンドポイント経由のアクセスの制限)] (インターネットに接続するエンドポイント経由のアクセスの制限)]][1]
+
+   ![インターネットに接続するエンドポイント経由のアクセスの制限][1]
 2. **[Restrict access through Internet facing endpoint (インターネットに接続するエンドポイント経由のアクセスの制限)]**ブレードが開きます。 このブレードには、セキュリティの問題が発生する可能性のある受信規則が適用された仮想マシン (VM) の一覧が表示されます。 VM を選択します。
+
    ![Select a VM][2]
 3. **[NSG]** ブレードに、ネットワーク セキュリティ グループの情報、関連する受信規則、関連する VM が表示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。
+
    ![ネットワーク セキュリティ グループ ブレード][3]
 4. **[受信セキュリティ規則]** ブレードで編集する受信規則を選択します。 この例では、 **[AllowWeb]**を選択します。
-   ![[受信セキュリティ規則]][4]
-   
+
+   ![受信セキュリティ規則][4]
+
    **[既定の規則]** を選択して、すべての NSG に含まれる既定の規則のセットを確認することもできます。 既定の規則は削除できませんが、割り当てられている優先順位が低いため、作成した規則を優先させることができます。 既定の規則の詳細については[こちら](../virtual-network/virtual-networks-nsg.md#default-rules)を参照してください。
-   ![[既定の規則]][5]
+
+   ![既定のルール][5]
 5. **[AllowWeb]** ブレードで、受信規則のプロパティを編集して、**[ソース]** を IP アドレスまたは IP アドレスのブロックにします。 受信規則のプロパティの詳細については、「 [NSG ルール](../virtual-network/virtual-networks-nsg.md#nsg-rules)」をご覧ください。
-   
+
    ![受信規則の編集][6]
 
 ## <a name="see-also"></a>関連項目
@@ -72,6 +77,6 @@ Azure Security Center では、ネットワーク セキュリティ グルー�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

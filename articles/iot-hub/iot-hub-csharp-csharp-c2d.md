@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub を使用したクラウドからデバイスへのメッセージの送信 | Microsoft Docs"
-description: "このチュートリアルに従って、C# を使用して Azure IoT Hub でクラウドからデバイスへのメッセージを送信する方法を学習します。"
+title: "Azure IoT Hub (.NET) を使用したクラウドからデバイスへのメッセージ | Microsoft Docs"
+description: "Azure IoT SDK for .NET を使用して、クラウドからデバイスへのメッセージを Azure IoT Hub からデバイスへ送信する方法。 クラウドからデバイスへのメッセージを受信するためにシミュレートされたデバイス アプリを変更し、クラウドからデバイスへのメッセージを送信するためにバックエンド アプリを変更します。"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: 873043eefc33603bd472c6d4e0e8c10d1ad400ee
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 6af64c0f4049e2597b7a101a0e0f735623fc18a0
 
 
 ---
-# <a name="tutorial-how-to-send-cloud-to-device-messages-with-iot-hub-and-net"></a>チュートリアル: IoT Hub と .Net でクラウドからデバイスへのメッセージを送信する方法
+# <a name="send-cloud-to-device-messages-with-iot-hub-net"></a>IoT Hub (.NET) を使用したクラウドからデバイスへのメッセージの送信
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [Azure IoT Hub for .NET の使用]チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレート対象デバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [Azure IoT Hub for .NET の使用]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 このチュートリアルは、[Azure IoT Hub for .NET の使用]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
 
-* アプリケーションのクラウド バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
+* ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 * クラウドからデバイスへのメッセージをデバイスで受信する。
-* IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、アプリケーションのクラウド バックエンドから要求する。
+* IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、ソリューション バックエンドから要求する。
 
-クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
+クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]を参照してください。
 
-このチュートリアルの最後には、次の 2 つの Windows コンソール アプリケーションを実行します。
+このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
 
 * **SimulatedDevice**。「[Azure IoT Hub for .NET の使用]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **SendCloudToDevice**: クラウドからデバイスへのメッセージを IoT Hub を介してシミュレート対象デバイス アプリに送信し、その配信確認を受け取ります。
@@ -72,10 +72,10 @@ Azure IoT Hub は、何百万ものデバイスとアプリケーション バ�
    
     `ReceiveAsync` メソッドは、受信したメッセージを、そのメッセージがデバイスによって受信されたとき非同期で返します。 指定可能なタイムアウト期間が経過したら、*null* が返されます (ここでは、既定の 1 分が使用されます)。 アプリは、*null* を受信したら、新しいメッセージを受信するために待機を続ける必要があります。 `if (receivedMessage == null) continue` 行があるのは、この要件があるためです。
    
-    `CompleteAsync()` への呼び出しにより、メッセージが正常に処理されたことが IoT Hub に通知されます。 メッセージはデバイスのキューから安全に削除することができます。 デバイスのアプリケーションがメッセージの処理を完了できなくなる何らかの事態が生じると、IoT Hub はそれをもう一度送信します。 そのため、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを*べき等*にすることが重要です。 アプリケーションはメッセージを一時的に破棄することもできます。この場合、IoT Hub は将来の使用に備えてメッセージをキュー内に保持します。 または、メッセージを拒否することもできます。この場合、メッセージはキューから永久に削除されます。 クラウドからデバイスへのメッセージのライフサイクルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
+    `CompleteAsync()` への呼び出しにより、メッセージが正常に処理されたことが IoT Hub に通知されます。 メッセージはデバイスのキューから安全に削除することができます。 デバイスのアプリケーションがメッセージの処理を完了できなくなる何らかの事態が生じると、IoT Hub はそれをもう一度送信します。 そのため、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを*べき等*にすることが重要です。 アプリケーションはメッセージを一時的に破棄することもできます。この場合、IoT Hub は将来の使用に備えてメッセージをキュー内に保持します。 または、メッセージを拒否することもできます。この場合、メッセージはキューから永久に削除されます。 クラウドからデバイスへのメッセージのライフサイクルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]」を参照してください。
    
    > [!NOTE]
-   > トランスポートとして MQTT や AMQP ではなく HTTP を使用している場合、`ReceiveAsync` メソッドは即時に返されます。 HTTP を使用するクラウドからデバイスへのメッセージに関してサポートされているパターンは、メッセージを低頻度 (25 分未満の間隔) でチェックするデバイスに断続的に接続されます。 HTTP 受信の発行が多くなれば、IoT Hub で要求が調整されます。 AMQP、AMQP、および HTTP のサポートの相違点と、IoT Hub スロットルの詳細については、[開発者ガイド][IoT Hub Developer Guide - C2D]のページを参照してください。
+   > トランスポートとして MQTT や AMQP ではなく HTTP を使用している場合、`ReceiveAsync` メソッドは即時に返されます。 HTTP を使用するクラウドからデバイスへのメッセージに関してサポートされているパターンは、メッセージを低頻度 (25 分未満の間隔) でチェックするデバイスに断続的に接続されます。 HTTP 受信の発行が多くなれば、IoT Hub で要求が調整されます。 MQTT、AMQP、および HTTP のサポートの相違点と、IoT Hub スロットルの詳細については、[IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]を参照してください。
    > 
    > 
 2. **Main** メソッドの `Console.ReadLine()` 行の直前に次のメソッドを追加します。
@@ -88,7 +88,7 @@ Azure IoT Hub は、何百万ものデバイスとアプリケーション バ�
 > 
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
-このセクションでは、デバイスからクラウドへのメッセージを、シミュレート対象デバイス アプリに送信する Windows コンソール アプリを作成します。
+このセクションでは、デバイスからクラウドへのメッセージを、シミュレート対象デバイス アプリに送信する .NET コンソール アプリを作成します。
 
 1. 現在の Visual Studio ソリューションで、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# デスクトップ アプリ プロジェクトを作成します。 プロジェクトに **SendCloudToDevice**という名前を付けます。
    
@@ -98,7 +98,8 @@ Azure IoT Hub は、何百万ものデバイスとアプリケーション バ�
     この操作によって、**[NuGet パッケージの管理]** ウィンドウが開きます。
 3. `Microsoft Azure Devices`を検索し、 **[インストール]**をクリックして、使用条件に同意します。 
    
-    この操作によってパッケージのダウンロードとインストールが実行され、[Azure IoT - サービス SDK NuGet パッケージ]への参照が追加されます。
+    これによりパッケージのダウンロードとインストールが実行され、[Azure IoT - サービス SDK NuGet パッケージ]への参照が追加されます。
+
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
         using Microsoft.Azure.Devices;
@@ -130,7 +131,7 @@ Azure IoT Hub は、何百万ものデバイスとアプリケーション バ�
    ![アプリによるメッセージの受信][21]
 
 ## <a name="receive-delivery-feedback"></a>配信フィードバックの受信
-クラウドからデバイスへの各メッセージに対して IoT Hub からの配信 (または有効期限) 確認を要求できます。 このオプションによって、クラウド バックエンドで再試行または補正ロジックを簡単に通知できるようになります。 クラウドからデバイスへのメッセージに対するフィードバックの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
+クラウドからデバイスへの各メッセージに対して IoT Hub からの配信 (または有効期限) 確認を要求できます。 このオプションによって、ソリューション バックエンドで再試行または補正ロジックを簡単に通知できるようになります。 クラウドからデバイスへのメッセージに対するフィードバックの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]」を参照してください。
 
 このセクションでは、フィードバックを要求し、それを IoT Hub から受信するように、**SendCloudToDevice** アプリを変更します。
 
@@ -175,7 +176,7 @@ Azure IoT Hub は、何百万ものデバイスとアプリケーション バ�
 
 IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT Suite]に関するドキュメントをご覧ください。
 
-IoT Hub を使用したソリューションの開発に関する詳細については、 [IoT Hub 開発者ガイド]をご覧ください。
+IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
 <!-- Images -->
 [20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
@@ -187,7 +188,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [Azure IoT - サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide-messaging.md
+[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [Azure IoT Hub for .NET の使用]: iot-hub-csharp-csharp-getstarted.md
@@ -197,6 +198,6 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

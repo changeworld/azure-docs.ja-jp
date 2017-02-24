@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 08/30/2016
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: 0f91e59a72b033c0a0dc52b4f127478b73c66ff1
+ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
+ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
 
 
 ---
@@ -76,6 +76,11 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 このストアド プロシージャの詳細については、[sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) に関するページと [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) に関するページをご覧ください。
 
+> [!NOTE]
+> データベースレベルのファイアウォールの使用について説明するチュートリアルについては、「[SQL Database チュートリアル: SQL Server 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」を参照してください。
+>
+
+
 ## <a name="next-steps"></a>次のステップ
 他の方法でサーバー レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。 
 
@@ -94,6 +99,6 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

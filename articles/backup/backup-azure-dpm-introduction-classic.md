@@ -1,5 +1,5 @@
 ---
-title: "Azure DPM バックアップの概要 | Microsoft Docs"
+title: "Azure クラシック ポータルへの DPM ワークロードのバックアップ | Microsoft Docs"
 description: "Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2016
-ms.author: trinadhk;giridham;jimpark;markgal
+ms.author: nkolli;giridham;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: f4a5412615e23cc90acc54a9c7430b01fe77dbcf
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。 この記事を読むと次のことが理解できます。
 
@@ -55,8 +55,8 @@ DPM サーバーのバックアップに Azure Backup を使用するビジネ�
 
 > [!NOTE]
 > Linux 仮想マシンでは、ファイル整合性のバックアップのみが可能です。
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>前提条件
 DPM データをバックアップするために Azure Backup を準備するには、次のようにします。
@@ -100,12 +100,11 @@ Azure へのバックアップがサポートされているファイルの種�
 
 > [!NOTE]
 > System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

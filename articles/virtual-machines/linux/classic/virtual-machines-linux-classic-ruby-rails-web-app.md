@@ -13,11 +13,11 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 4233cd55218c59e7998c7dd6de27086c492635a8
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 4233cd55218c59e7998c7dd6de27086c492635a8
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。 他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 > 
 > 
 
@@ -37,7 +37,7 @@ ms.openlocfilehash: 4233cd55218c59e7998c7dd6de27086c492635a8
 VM を作成するには、Azure クラシック ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
 
 ### <a name="azure-management-portal"></a>Microsoft Azure 管理ポータル
-1.  [Azure クラシック ポータル](http://manage.windowsazure.com)
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)
 2. **[新規]** > **[Compute]** > **[仮想マシン]** > **[簡易作成]** の順にクリックします。 Linux イメージを選択します。
 3. パスワードを入力します。
 
@@ -90,7 +90,7 @@ SSH を使用してログインしている状態で、次のコマンドを実�
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>エンドポイントの追加
-1. [Azure クラシック ポータル][management-portal] に移動し、目的の VM を選択します。
+1. [Azure クラシック ポータル][management-portal]に移動し、目的の VM を選択します。
    
     ![仮想マシンの一覧][vmlist]
 2. ページの上部で **[エンドポイント]** を選択し、ページ下部で **[+ エンドポイントの追加]** をクリックします。
@@ -117,13 +117,13 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ほとんどの手順を手作業で行いました。 通常、運用環境では、開発用コンピューターで作成したアプリを Azure VM にデプロイします。 また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。 詳細については、http://rubyonrails.org/deploy/ をご覧ください。
 
-Ruby on Rails の詳細については、[Ruby on Rails のガイド][rails-guides]をご覧ください。
+Ruby on Rails について詳しくは、[Ruby on Rails のガイド][rails-guides]をご覧ください。
 
 Ruby アプリケーションから Azure のサービスを使用する方法については、次のトピックを参照してください。
 
 * [BLOB を使用して非構造化データを保存する][blobs]
 * [テーブルを使用してキー/値のペアを保存する][tables]
-* [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][cdn-howto]
+* [Content Delivery Network を使用して高帯域幅コンテンツを配信する][cdn-howto]
 
 <!-- WA.com links -->
 [blobs]: ../../../storage/storage-ruby-how-to-use-blob-storage.md
@@ -146,6 +146,6 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

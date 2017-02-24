@@ -1,13 +1,25 @@
 ---
+title: "Azure Data Factory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "分析用のデータを移動して処理するために、Data Factory を使用してオンプレミスやクラウドのソースとの間で自動化データ パイプラインを設定する方法について説明します。"
+services: data-factory
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-factory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
+ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
+ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory のドキュメント
 
-Azure Data Factory は、データの移動や変換を自動化するクラウドベースのデータ統合サービスです。 Data Factory サービスによって、さまざまなストアからデータを取り込み、データを変換し処理して、結果データをデータ ストアに発行できるデータ統合ソリューションを作成できます。
+クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理に加え、分析用のデータの移動と変換の方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -107,7 +119,6 @@ Azure Data Factory は、データの移動や変換を自動化するクラウ�
                     <div class="cardText">
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
-                        <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory の開発者用リファレンス</a></p>
                    </div>
                 </div>
             </div>
@@ -127,18 +138,9 @@ Azure Data Factory は、データの移動や変換を自動化するクラウ�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
-        <div class="img"></div>
-        <div class="text">
-Data Factory のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 | Microsoft Docs"
+title: "Stretch Database TSQL に対する Transparent Data Encryption の有効化 - Azure | Microsoft Docs"
 description: "Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
-ms.author: douglasl
+ms.date: 01/23/2017
+ms.author: anvang
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fa035f87c257458c3784c7746fd0df8600b5ca0
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: fe6a6bfb02dc5d83bd67fdfe59ed87660c364835
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: 7fa035f87c257458c3784c7746fd0df8600b5ca0
 > [!div class="op_single_selector"]
 > * [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
-> 
-> 
+>
+>
 
 Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
@@ -77,6 +77,6 @@ FROM
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Relay に関する FAQ | Microsoft Docs"
+title: "Azure Relay のよく寄せられる質問 (FAQ) | Microsoft Docs"
 description: "Azure Relay についてよく寄せられる質問 (FAQ) とその回答を紹介します。"
 services: service-bus-relay
 documentationcenter: na
@@ -12,35 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/02/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 12702f585605a88ed6e753a0ff301095e8629e05
+ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
+ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 
 
 ---
 # <a name="relay-faq"></a>Relay に関する FAQ
-この記事では、Microsoft Azure Relay についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) 」も参照してください。
+
+この記事では、[Microsoft Azure Relay](https://azure.microsoft.com/services/service-bus/) についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) 」も参照してください。
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-relay"></a>Azure Relay とは
-ハイブリッド アプリケーションに Azure [Relay サービス](relay-what-is-it.md)を使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にあるサービスを安全にパブリック クラウドに公開することができます。
+ハイブリッド アプリケーションに [Azure Relay サービス](relay-what-is-it.md)を使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にあるサービスを安全にパブリック クラウドに公開することができます。
 
 ### <a name="what-is-a-relay-namespace"></a>Relay 名前空間とは何ですか?
-[名前空間](relay-create-namespace-portal.md)は、アプリケーション内で Relay リソースをアドレス指定するためのスコープ コンテナーを提供します。 Relay を使用するには、名前空間を作成する必要があります。これは、最初に実行する手順の 1 つです。
+[名前空間](relay-create-namespace-portal.md)は、アプリケーション内で Relay リソースをアドレス指定するためのスコープ コンテナーを提供します。 Relay を使用するには、名前空間を作成する必要があります。これは、最初に実行する手順の&1; つです。
 
 ### <a name="what-happened-to-the-previously-named-relay-service"></a>以前の名前付き Relay サービスはどうなったのですか?
-以前の名前付き **Relay** サービスは、*WCF リレー*と呼ばれるようになっています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続は、BizTalk から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらも、今後もサポートされます。
+以前の名前付き Service Bus **Relay** サービスは、"*WCF リレー*" と呼ばれるようになっています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続は、BizTalk から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらも、今後もサポートされます。
 
 ## <a name="pricing"></a>価格
 このセクションでは、Relay の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Microsoft Azure の全般的な価格情報については、 [Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。 Relay の価格の詳細については、 [Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>ハイブリッド接続と WCF リレーの課金方法を教えてください。
-Relay の価格の詳細については、[Service Bus の価格の詳細][料金の概要]に関するページを参照してください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。
+Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページをご覧ください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>ハイブリッド接続はどのように課金されますか?
-次の 3 つのシナリオの例を示します。
+次の&3; つのシナリオの例を示します。
 
 1. インストールされた Hybrid Connections Manager のインスタンスなどのリスナー 1 つを 1 か月間継続的に稼働させて、その接続で 1 か月で 3 GB のデータを送信した場合、合計料金は 5 ドルになります。
 2. インストールされた Hybrid Connections Manager のインスタンスなどのリスナー 1 つを 1 か月間継続的に稼働させて、その接続で 1 か月で 10 GB のデータを送信した場合、合計料金は 7.50 ドルで、その内訳は 5 ドル (接続および最初の 5 GB) + 2.50 ドル (追加のデータ 5 GB 分) になります。
@@ -52,7 +53,7 @@ Relay の価格の詳細については、[Service Bus の価格の詳細][料�
 リレー時間は、それぞれの Service Bus Relay が "開いている" 状態の累積時間に対して課金されます。 リレー対応の WCF サービス (リレー リスナー) が特定の Service Bus アドレス (サービスの名前空間の URL) に初めて接続すると、そのアドレスでリレーが暗黙的にインスタンス化されて開かれます。 リレーは、最後のリスナーがそのアドレスから切断したときにのみ閉じられます。 したがって、課金の目的上、最初のリレー リスナーが接続した時刻から最後のリレー リスナーがそのリレーの Service Bus アドレスから切断された時刻まで、リレーは "開いている" と見なされます。
 
 ### <a name="what-if-i-have-more-than-one-listener-connected-to-a-given-relay"></a>特定の Relay に複数のリスナーを接続した場合はどうなりますか?
-場合によっては、1 つの Relay に複数のリスナーが接続されていることも考えられます。 Relay は、接続されている Relay リスナーが 1 つでもあれば、"開いている" と見なされます。 開いている Relay にリスナーを追加すると、Relay 時間が追加で発生します。 また、Relay に接続された Relay センダー (Relay に対するメッセージの呼び出しまたは送信を実行するクライアント) の数が Relay 時間の計算に影響することもありません。
+場合によっては、1 つの Relay に複数のリスナーが接続されていることも考えられます。 Relay は、接続されている Relay リスナーが&1; つでもあれば、"開いている" と見なされます。 開いている Relay にリスナーを追加すると、Relay 時間が追加で発生します。 また、Relay に接続された Relay センダー (Relay に対するメッセージの呼び出しまたは送信を実行するクライアント) の数が Relay 時間の計算に影響することもありません。
 
 ### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>WCF Relay の場合、メッセージ数のメーターはどのようにして計算されますか?
 **これは WCF Relay にのみ適用されます。ハイブリッド接続のコストではありません。**
@@ -61,7 +62,7 @@ Relay の価格の詳細については、[Service Bus の価格の詳細][料�
 
 Service Bus Relay へのメッセージ送信は、Service Bus Relay への送信とその後の Relay リスナーへの配信としてではなく、そのメッセージを受信する Relay リスナーに対する "直接の" 送信として扱われます。 したがって、Relay リスナーに対する (最大 64 KB の) 要求/応答形式のサービス呼び出しの場合、課金対象のメッセージは、要求のメッセージと応答のメッセージ (応答も \<64 KB 以下を想定) の 2 つになります。 クライアントとサービス間の仲介にキューを使用した場合は、この点が異なります。 後者の場合、同じ要求/応答パターンでも、キューに対する要求の送信、そのキューからサービスへのデキュー/配信、別のキューへの応答の送信、そのキューからクライアントへのデキュー/配信の順番で実行することが必要になります。 メッセージのサイズが最初から最後まで同じ (\<64 KB 以下) であると仮定した場合、仲介型キュー パターンでは課金対象のメッセージが 4 つとなり、Relay を使って同じパターンを実装した場合の 2 倍の料金が課金されることになります。 もちろん、キューを使用してこのパターンを実現すれば、持続性や負荷平準化などの利点が生まれます。 これらは追加費用に見合った利点です。
 
-netTCPRelay WCF バインドを使って開いたリレーは、メッセージを個別ではなく、システムを流れるデータのストリームとして扱います。 つまり、このバインドを使って送受信された個々のメッセージを 1 つのまとまりとして認識できるのは、センダーとリスナーだけです。 したがって、netTCPRelay バインドを使った Relay の場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々の Relay を介して 5 分間に送受信されたデータの総量を計算し、その総量を 64 KB で割ることで、その期間における当該 Relay の課金対象のメッセージ数を特定します。
+netTCPRelay WCF バインドを使って開いたリレーは、メッセージを個別ではなく、システムを流れるデータのストリームとして扱います。 つまり、このバインドを使って送受信された個々のメッセージを&1; つのまとまりとして認識できるのは、センダーとリスナーだけです。 したがって、netTCPRelay バインドを使った Relay の場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々の Relay を介して 5 分間に送受信されたデータの総量を計算し、その総量を 64 KB で割ることで、その期間における当該 Relay の課金対象のメッセージ数を特定します。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 | クォータ名 | スコープ | 型 | 超過したときの動作 | 値 |
@@ -86,18 +87,21 @@ Relay 名前空間の名前は 6 ～ 50 文字にする必要があります。
 
 ## <a name="subscription-and-namespace-management"></a>サブスクリプションと名前空間の管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>別の Azure サブスクリプションに名前空間を移行する方法を教えてください
-PowerShell コマンドを使用して、Azure サブスクリプションを別の名前空間に移行できます ([このページ](../service-bus-messaging/service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription)を参照してください)。 操作を実行するには、名前空間が既にアクティブになっている必要があります。 また、コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
+PowerShell コマンドを使用して、Azure サブスクリプションを別の名前空間に移行できます ([このページ](../service-bus-messaging/service-bus-powershell-how-to-provision.md)を参照してください)。 操作を実行するには、名前空間が既にアクティブになっている必要があります。 また、コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者である必要があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-their-suggested-actions"></a>Azure Relay API によって生成される例外とその推奨されるアクションをいくつか教えてください。
-「[Relay の例外][Relay の例外]」に、いくつかの例外と推奨されるアクションが説明されています。
+「[Relay の例外][Relay exceptions]」では、例外と推奨されるアクションがいくつか説明されています。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Shared Access Signature とは何ですか。どの言語で署名の生成がサポートされますか。
-Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、および C\# で独自の署名を生成する方法については、[「Shared Access Signatures」][Shared Access Signatures]を参照してください。
+Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、および C\# で独自の署名を生成する方法については、「[Shared Access Signature][Shared Access Signatures]」を参照してください。
 
-[料金の概要]: https://azure.microsoft.com/pricing/details/service-bus/
-[Relay の例外]: relay-exceptions.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Relay exceptions]: relay-exceptions.md
 [Shared Access Signatures]: ../service-bus-messaging/service-bus-sas-overview.md
+
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか。
+はい。 Relay クライアントは、完全修飾ドメイン名を使用して Relay サービスへの接続を確立します。 これにより、DNS ホワイトリスト登録をサポートするファイアウォールで、お客様が `*.servicebus.windows.net` のエントリを追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [名前空間を作成する](relay-create-namespace-portal.md)
@@ -106,6 +110,6 @@ Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,7 +1,6 @@
 ---
-
-title: "OMS コンテナー ソリューション | Microsoft Docs"
-description: "OMS コンテナー ソリューションは OMS Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズの多いコンテナーを検索することができます。"
+title: "Azure DC/OS クラスターの監視 - Operations Management | Microsoft Docs"
+description: "Microsoft Operations Management Suite を使用して Azure Container Service DC/OS クラスターを監視します。"
 services: container-service
 documentationcenter: 
 author: keikhara
@@ -18,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
 translationtype: Human Translation
-ms.sourcegitcommit: 10770c96900737e1894405a6aedaa7fe2a55fd3d
-ms.openlocfilehash: 9697a4c23b50b5ed2435a00a31fa2ee239c56c48
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: f10236ab89339234a32abf42c42083e233ab3a52
 
 
 ---
 
-# <a name="using-oms-to-monitor-container-applications-on-acs-dcos"></a>OMS を使用した ACS DC/OS 上のコンテナー アプリケーションの監視
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視
 
-Microsoft Operations Management (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
+Microsoft Operations Management Suite (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の&1; つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを&1; つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -61,7 +60,7 @@ Microsoft Operations Management (OMS) は、Microsoft のクラウドベース�
 
 ## <a name="setting-up-a-simple-oms-dashboard"></a>単純な OMS ダッシュボードの設定
 
-OMS Agent for Linux を VM にインストールしたら、次に OMS ダッシュボードを設定します。 これを行うには、OMS ポータルを使う方法と Azure Portal を使う方法の 2 つがあります。
+OMS Agent for Linux を VM にインストールしたら、次に OMS ダッシュボードを設定します。 これを行うには、OMS ポータルを使う方法と Azure Portal を使う方法の&2; つがあります。
 
 ### <a name="oms-portal"></a>OMS ポータル 
 
@@ -120,6 +119,6 @@ $ dcos package uninstall msoms
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "クラシック デプロイメント モデルで Azure CLI を使用してルーティングを制御し、仮想アプライアンスを使用する | Microsoft Docs"
+title: "Azure Virtual Network でのルーティングの制御 - CLI - クラシック | Microsoft Docs"
 description: "クラシック デプロイメント モデルで Azure CLI を使用して VNet でのルーティングを制御する方法を説明する"
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 80b452bd96e3a328899ed455b71cf68da8bfde54
-ms.openlocfilehash: b7508d1ee01c1a5b7773360cabde075553b55ac1
+ms.sourcegitcommit: 71153e46d1695611c8286d2e57b109db9e7ad9df
+ms.openlocfilehash: 4a610a65b33f91f46d011e07c6cb11523d3dae0d
 
 
 ---
@@ -141,6 +141,6 @@ ms.openlocfilehash: b7508d1ee01c1a5b7773360cabde075553b55ac1
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

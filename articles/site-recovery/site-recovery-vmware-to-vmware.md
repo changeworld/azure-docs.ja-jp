@@ -1,5 +1,5 @@
 ---
-title: "オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする | Microsoft Docs"
+title: "VMVware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
 description: "VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
 services: site-recovery
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: d325ce41e79ec85e08fbf4bb86e0cd7e0edf1c8f
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
 
 
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
-## <a name="overview"></a>Overview
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Azure クラシック ポータルでオンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
+
+## <a name="overview"></a>概要
 Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -83,7 +84,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ## <a name="updates"></a>更新プログラム
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 4
-Scout 更新プログラム 4 は累積的な更新プログラムです。 更新プログラム 1 から 3 までのすべての修正に加え、以下の新しいバグ修正と機能強化が含まれています。
+Scout 更新プログラム 4 は累積的な更新プログラムです。 更新プログラム&1; から&3; までのすべての修正に加え、以下の新しいバグ修正と機能強化が含まれています。
 
 **新しいプラットフォームのサポート**
 
@@ -115,7 +116,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 * cxps トランスポート サーバーが範囲外の例外のためクラッシュします。
 * vContinuum ウィザードのプッシュ インストール ページで、サーバー名と IP 列のサイズを変更できるようになりました。
 * RX API の機能強化
-  * 利用可能な最新 5 つの共通の整合性ポイントが提供されます (保証済みタグのみ)。
+  * 利用可能な最新&5; つの共通の整合性ポイントが提供されます (保証済みタグのみ)。
   * 保護されているすべてのデバイスの容量と空き領域の詳細が提供されます。
   * ソース サーバーの Scout ドライバーの状態が提供されます。
 
@@ -153,7 +154,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 | **問題の説明** | **実装手順** |
 | --- | --- |
 | パラメーターの改ざんによる承認のバイパス |未承認ユーザーのアクセスを制限。 |
-| クロスサイト リクエスト フォージェリ |ページごとにランダムに生成されるページ トークンの概念を導入。 <br/>その結果: <li> 1 人のユーザーに対して 1 つのサインイン インスタンスのみが存在。</li><li>ページ更新が機能しなくなり、ダッシュボードにリダイレクトされる。</li> |
+| クロスサイト リクエスト フォージェリ |ページごとにランダムに生成されるページ トークンの概念を導入。 <br/>その結果: <li> 1 人のユーザーに対して&1; つのサインイン インスタンスのみが存在。</li><li>ページ更新が機能しなくなり、ダッシュボードにリダイレクトされる。</li> |
 | 安全でないファイルのアップロード |特定の拡張子にファイルを限定。 許可される拡張子: 7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml、zip |
 | 永続的なクロスサイト スクリプティング |入力検証を追加。 |
 
@@ -172,7 +173,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 1
 更新プログラム 1 には、以下のバグの修正と新機能が含まれています。
 
-* 各サーバー インスタンスについて 31 日間の無料保護が提供されます。 これにより、機能をテストしたり、概念実証を設定したりすることができます。
+* 各サーバー インスタンスについて&31; 日間の無料保護が提供されます。 これにより、機能をテストしたり、概念実証を設定したりすることができます。
   * Site Recovery Scout によるサーバーの保護が初めて開始された時点から 31 日間、フェールオーバーとフェールバックを含むサーバーへのすべての操作が無料となります。
   * 32 日目以降は、お客様が所有するサイトに対する Azure Site Recovery 保護について、各保護対象サーバーに Standard インスタンスの料金が請求されます。
   * 現在課金されている保護対象サーバーの数は、いつでも Azure Site Recovery コンテナーのダッシュボード ページで確認できます。
@@ -199,6 +200,6 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

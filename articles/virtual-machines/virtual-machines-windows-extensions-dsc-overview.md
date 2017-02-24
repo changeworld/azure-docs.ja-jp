@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 09/15/2016
+ms.date: 01/09/2017
 ms.author: zachal
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: d2668d6dcdc7e7af45f2fdfa317565e541e035ba
+ms.sourcegitcommit: c2ce603e80243584fdc302c545e520b4503f5555
+ms.openlocfilehash: ca2d8d4b277f48ec46156293f73b18b6c2967c51
 
 
 ---
@@ -32,7 +32,7 @@ Azure VM エージェントとそれに関連付けられた拡張機能は、Mi
 ## <a name="prerequisites"></a>前提条件
 **ローカル コンピューター** : Azure VM 拡張機能と対話するには、Azure Portal または Azure PowerShell SDK のいずれかを使用する必要があります。 
 
-**ゲスト エージェント** : DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
+**ゲスト エージェント**: DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
 
 ## <a name="terms-and-concepts"></a>用語と概念
 このガイドでは、読者が次の概念を理解していることを想定しています。
@@ -55,13 +55,13 @@ Azure DSC 拡張機能は、Azure VM エージェント フレームワークを
 WMF をインストールした場合は再起動が必要になります。 再起動後、 `modulesUrl` プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます。 その場所が Azure BLOB ストレージ内の場合は、 `sasToken` プロパティに SAS トークンを指定すると、ファイルにアクセスできます。 .zip がダウンロードされて展開された後、 `configurationFunction` で定義されている構成関数が実行され、MOF ファイルが生成されます。 その後、拡張機能によって、生成された MOF ファイルに対して `Start-DscConfiguration -Force` が実行されます。 拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。 これ以降は、DSC LCM が通常どおり監視と修正に対処します。 
 
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
-ARM または ASM と共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。 以下に示すコマンドレットは ASM モジュールですが、"Azure" を "AzureRm" に置き換えると ARM モデルを使用できます。 たとえば、`Publish-AzureVMDscConfiguration` では ASM が使用されますが、`Publish-AzureRmVMDscConfiguration` では ARM が使用されます。 
+Azure Resource Manager またはクラシック デプロイメント モデルと共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。 以下に示すコマンドレットはクラシック デプロイメント モジュールですが、"Azure" を "AzureRm" に置き換えると Azure Resource Manager モデルを使用できます。 たとえば、`Publish-AzureVMDscConfiguration` ではクラシック デプロイメント モデルが使用されますが、`Publish-AzureRmVMDscConfiguration` では Azure Resource Manager が使用されます。 
 
 `Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。 また、 `-ConfigurationArchivePath` パラメーターを使用して、パッケージをローカルに作成することもできます。 それ以外の場合は、Azure BLOB ストレージに .zip ファイルを発行し、SAS トークンを使用して保護します。
 
 このコマンドレットによって作成された .zip ファイルでは、アーカイブ フォルダーのルートに .ps1 構成スクリプトがあります。 リソースのモジュール フォルダーは、アーカイブ フォルダーに配置されます。 
 
-`Set-AzureVMDscExtension` は、PowerShell DSC 拡張機能に必要な設定を VM 構成オブジェクトに挿入します。このオブジェクトは、その後、`Update-AzureVM` を使用して Azure VM に適用できます。
+`Set-AzureVMDscExtension` は、PowerShell DSC 拡張機能に必要な設定を VM 構成オブジェクトに挿入します。 クラシック デプロイメント モデルでは、`Update-AzureVM` を使用して VM の変更を Azure VM に適用する必要があります。 
 
 `Get-AzureVMDscExtension` は、特定の VM の DSC 拡張機能の状態を取得します。 
 
@@ -69,18 +69,18 @@ ARM または ASM と共に PowerShell コマンドレットを使用すると�
 
 `Remove-AzureVMDscExtension` は、特定の仮想マシンから拡張機能ハンドラーを削除します。 このコマンドレットによって、構成の削除、WMF のアンインストール、または仮想マシンに適用されている設定の変更が **行われることはありません** 。 拡張機能ハンドラーが削除されるだけです。 
 
-**ASM コマンドレットと ARM コマンドレットの主な違い**
+**ASM コマンドレットと Azure Resource Manager コマンドレットの主な違い**
 
-* ARM コマンドレットは同期的ですが、 ASM コマンドレットは非同期的です。
-* ResourceGroupName、VMName、ArchiveStorageAccountName、Version、および Location はすべて、新しい必須パラメーターです。
-* ArchiveResourceGroupName は、ARM 用の新しい省略可能なパラメーターです。 このパラメーターを指定できるのは、仮想マシンが作成されたリソース グループとは別のリソース グループにストレージ アカウントが属している場合です。
-* ConfigurationArchive は、ARM では ArchiveBlobName と呼ばれます。
-* ContainerName は、ARM では ArchiveContainerName と呼ばれます。
-* StorageEndpointSuffix は、ARM では ArchiveStorageEndpointSuffix と呼ばれます。
-* AutoUpdate スイッチが ARM に追加されました。これにより、最新バージョンが利用可能になると、拡張機能ハンドラーが自動的に更新されるようにできます。 WMF の新しいバージョンがリリースされると、このパラメーターによって VM で再起動が生じる可能性があることに注意してください。 
+* Azure Resource Manager コマンドレットは動機的です。 ASM コマンドレットは非同期的です。
+* ResourceGroupName、VMName、ArchiveStorageAccountName、Version、および Location はすべて、Azure Resource Manager の必須パラメーターです。
+* ArchiveResourceGroupName は、Azure Resource Manager の新しい省略可能なパラメーターです。 このパラメーターを指定できるのは、仮想マシンが作成されたリソース グループとは別のリソース グループにストレージ アカウントが属している場合です。
+* ConfigurationArchive は、Azure Resource Manager では ArchiveBlobName と呼ばれます。
+* ContainerName は、Azure Resource Manager では ArchiveContainerName と呼ばれます。
+* StorageEndpointSuffix は、Azure Resource Manager では ArchiveStorageEndpointSuffix と呼ばれます。
+* AutoUpdate スイッチが Azure Resource Manager に追加されました。これにより、最新バージョンが利用可能になると、拡張機能ハンドラーが自動的に更新されるようにできます。 WMF の新しいバージョンがリリースされると、このパラメーターによって VM で再起動が生じる可能性があることに注意してください。 
 
 ## <a name="azure-portal-functionality"></a>Azure ポータルの機能
-クラシック VM を参照します。 [設定]、[全般] の順に移動し、[拡張機能] をクリックします。 新しいウィンドウが作成されます。 [追加] をクリックし、[PowerShell DSC] を選択します。
+VM に移動します。 [設定]、[全般] の順に移動し、[拡張機能] をクリックします。 新しいウィンドウが作成されます。 [追加] をクリックし、[PowerShell DSC] を選択します。
 
 ポータルでは、入力が必要になります。
 **[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です。 構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。 これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。 zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。 
@@ -109,7 +109,7 @@ configuration IISInstall
 ```
 
 次の手順では、指定した VM に IisInstall.ps1 スクリプトを配置し、構成を実行した後、その状態に関するレポートを返します。
-
+###<a name="classic-model"></a>クラシック モデル
 ```powershell
 #Azure PowerShell cmdlets are required
 Import-Module Azure
@@ -121,13 +121,26 @@ $demoVM = Get-AzureVM DscDemo1
 Publish-AzureVMDscConfiguration -ConfigurationPath ".\IisInstall.ps1" -StorageContext $storageContext -Verbose -Force
 
 #Set the VM to run the DSC configuration
-Set-AzureVMDscExtension -VM $demoVM -ConfigurationArchive "demo.ps1.zip" -StorageContext $storageContext -ConfigurationName "runScript" -Verbose
+Set-AzureVMDscExtension -VM $demoVM -ConfigurationArchive "IisInstall.ps1.zip" -StorageContext $storageContext -ConfigurationName "IisInstall" -Verbose
 
 #Update the configuration of an Azure Virtual Machine
 $demoVM | Update-AzureVM -Verbose
 
 #check on status
 Get-AzureVMDscExtensionStatus -VM $demovm -Verbose
+```
+###<a name="azure-resource-manager-model"></a>Azure Resource Manager モデル
+
+```powershell
+$resourceGroup = "dscVmDemo"
+$location = "westus"
+$vmName = "myVM"
+$storageName = "demostorage"
+#Publish the configuration script into user storage
+Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
+#Set the VM to run the DSC configuration
+Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName iisInstall.ps1.zip -AutoUpdate:$true -ConfigurationName "IISInstall"
+
 ```
 
 ## <a name="logging"></a>ログの記録
@@ -147,6 +160,6 @@ PowerShell DSC で管理できる追加機能については、 [PowerShell ギ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -8,6 +8,7 @@ manager: jhubbard
 author: tmullaney
 ms.assetid: e72d3cfe-e9be-4326-b776-9c6d96c0a18e
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 137808a62539e79c756752489981495b09066aa5
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
 
 
 ---
@@ -39,9 +40,9 @@ ms.openlocfilehash: 137808a62539e79c756752489981495b09066aa5
 * Visual Studio (2012 以降) を使用します。 
 * 3 つの Azure SQL データベースを作成します。 
 * サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
-  *  **Program.cs** 
+  * **Program.cs** 
 
-このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 上の図に示すように、4 つのテナントと 2 つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
+このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 上の図に示すように、4 つのテナントと&2; つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
 
 アプリケーションをビルドし、実行します。 弾力性データベース ツールのシャード マップ マネージャーが起動され、次のテストが実行されます。 
 
@@ -49,7 +50,7 @@ ms.openlocfilehash: 137808a62539e79c756752489981495b09066aa5
 2. ADO.NET SqlClient を使用して、テナントのすべてのブログを表示します。
 3. 不適切なテナントへのブログの挿入を試みて、エラーがスローされることを確認します。  
 
-RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の 2 つの手順が含まれます。 
+RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。 この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。 次の&2; つの手順が含まれます。 
 
 1. **アプリケーション層**: アプリケーション コードを変更し、接続を開いた後で、常に現在の TenantId を SESSION_CONTEXT に設定します。 サンプル プロジェクトでは、この手順は既に完了しています。 
 2. **データ層**: 各シャード データベースで、SESSION_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
@@ -58,7 +59,7 @@ RLS はシャード データベースでまだ有効になっていないため
 弾力性データベース クライアント ライブラリのデータ依存型ルーティング API を使用してシャード データベースに接続した後、アプリケーションは、RLS セキュリティ ポリシーを使って他のテナントに属している行を除外できるように、その接続を使用している TenantId をデータベースに通知する必要があります。 この情報を渡すために推奨される方法は、[SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806.aspx) に対象の接続の現在の TenantId を格納することです。 (注: 代わりに [CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125.aspx) を使用することもできます、使用方法が簡単、既定で NULL を返す、キーと値のペアをサポートするなどの理由で、SESSION_CONTEXT の方が優れています。)
 
 ### <a name="entity-framework"></a>Entity Framework
-Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION_CONTEXT を設定する方法です。 データ依存型ルーティングで仲介された接続を返す前に、SESSION_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。 この方法では、SESSION_CONTEXT を設定するコードを 1 回記述するだけで済みます。 
+Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION_CONTEXT を設定する方法です。 データ依存型ルーティングで仲介された接続を返す前に、SESSION_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。 この方法では、SESSION_CONTEXT を設定するコードを&1; 回記述するだけで済みます。 
 
 ```
 // ElasticScaleContext.cs 
@@ -303,7 +304,7 @@ GO
 弾力性データベース ツールと行レベルのセキュリティを組み合わせると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。 マルチテナントのシャードは、データをより効率的に格納するために使用できます (特に、少数のデータ行を保持するテナントが多数ある場合)。一方、単一テナントのシャードは、より厳密なパフォーマンス要件と分離要件を持つ "プレミアム" テナントをサポートするために使用できます。  詳細については、「[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)」をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure エラスティック データベース プールの概要](sql-database-elastic-pool.md)
+* [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
 * [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
@@ -320,6 +321,6 @@ GO
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

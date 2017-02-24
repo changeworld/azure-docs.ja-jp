@@ -14,8 +14,8 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: mrys
 translationtype: Human Translation
-ms.sourcegitcommit: 8da474fbc9eae750bbd2e1f6908046d2e7e7be55
-ms.openlocfilehash: 42e1d0cdde66f4bf4a6f3b23421e137716d05beb
+ms.sourcegitcommit: cd2aafd80db337cadaa2217a6638d93186975b68
+ms.openlocfilehash: 563a6821b4a3736ef1233aa67d86b9ba06565788
 
 
 ---
@@ -29,7 +29,7 @@ Azure Data Lake では、以下のサービスが一体となってクラウド�
 - Azure Data Lake Store
 - Azure Data Lake Analytics
 
-U-SQL は、ビッグ データに該当するワークロードの処理を目的として設計されたクエリ言語です。 U-SQL 独自の特徴の 1 つに、SQL によく似た宣言型言語でありながら、C# の拡張性とプログラミング機能をも兼ね備えていることが挙げられます。 このほか、スキーマ メタデータにアクセスして操作したり、データ プロセッサやレジューサ－などのカスタム コンポーネントを作成したりすることもできます。
+U-SQL は、ビッグ データに該当するワークロードの処理を目的として設計されたクエリ言語です。 U-SQL 独自の特徴の&1; つに、SQL によく似た宣言型言語でありながら、C# の拡張性とプログラミング機能をも兼ね備えていることが挙げられます。 このほか、スキーマ メタデータにアクセスして操作したり、データ プロセッサやレジューサ－などのカスタム コンポーネントを作成したりすることもできます。
 
 このガイドでは、U-SQL 言語の特徴のうち、C# による拡張性とプログラミング機能について説明します。
 
@@ -65,7 +65,7 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-上の例では、**入力ファイル** (file input_file.tsv) が、**ローカル 変数** @input_file. で定義されています。
+上の例では、**入力ファイル** (input_file.tsv ファイル) が、**ローカル変数** @input_file で定義されています。
 
 上の U-SQL スクリプトを実行すると、以下のアクションが実行されます。
 
@@ -76,7 +76,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 それではまず、U-SQL スクリプトで直接 C# の式を使用するためのオプションをいくつか見ていきましょう。
 
 ## <a name="c-types-and-expressions-in-u-sql-script"></a>U-SQL スクリプトで C# の型と式を使用する
-一般的な C# と同じく、U-SQL で使用する C# の式も、評価結果が 1 つの値、オブジェクト、メソッド、または名前空間となる演算子がいくつか並んだ構造をしています。 式はリテラル値、メソッドの呼び出し、演算子、または簡易名で構成できます。 簡易名には変数名、型メンバー、メソッドのパラメーター、名前空間、または型を使用できます。
+一般的な C# と同じく、U-SQL で使用する C# の式も、評価結果が&1; つの値、オブジェクト、メソッド、または名前空間となる演算子がいくつか並んだ構造をしています。 式はリテラル値、メソッドの呼び出し、演算子、または簡易名で構成できます。 簡易名には変数名、型メンバー、メソッドのパラメーター、名前空間、または型を使用できます。
 
 U-SQL の C# 式と言った場合、具体的には U-SQL のベース スクリプトで使われている C# の式を指しています。 このほか、このドキュメントで後ほど紹介する C# のコード ビハインドのセクションにも、通常の C# コードベースの要素と同じ C# の式を含めることができます。
 
@@ -289,7 +289,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ### <a name="using-code-behind"></a>コード ビハインドを使用する
 ここでは、U-SQL プログラムのコード ビハインドのセクションでも同じ機能を使用するため、C# 関数 ToDateTime を定義します。
 
-以下は、上に示した U-SQL ベース スクリプトの一部のセクションに対して必要な変更を済ませたコードです。
+基本の U-SQL スクリプトのセクションを次に示します。これは必要な変更を加えたものです。
 
 ```sql
      @rs1 =
@@ -320,7 +320,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ## <a name="using-code-behind"></a>コード ビハインドを使用する
 コード ビハインドとは、U-SQL プロジェクトにあって C# によるプログラミングが可能なセクションです。 概念的に言うと、U-SQL スクリプトで参照されるコンパイル済みアセンブリ (DLL) がコード ビハインドです。 Visual Studio Tools を使えば、U-SQL プロジェクトの C# によるプログラミングが可能なセクションを管理およびデバッグできます。
 
-Visual Studio で典型的な U-SQL プロジェクトを作成した場合、そのプロジェクトは 2 つの部分から成ります。 1 つがベース スクリプトで、拡張子が **.usql** のファイルです。
+Visual Studio で典型的な U-SQL プロジェクトを作成した場合、そのプロジェクトは&2; つの部分から成ります。 1 つがベース スクリプトで、拡張子が **.usql** のファイルです。
 
 ![a](./media/data-lake-analytics-u-sql-programmability-guide/base-script-file.png)
 
@@ -329,7 +329,7 @@ Visual Studio で典型的な U-SQL プロジェクトを作成した場合、�
 ![typical-solution-project](./media/data-lake-analytics-u-sql-programmability-guide/typical-solution-project.png)
 
 
-もう 1 つの部分が、いわゆるコード ビハインドです。これは、Script.usql.cs というファイルになっています。  
+もう&1; つの部分が、いわゆるコード ビハインドです。これは、Script.usql.cs というファイルになっています。  
 ![code-behind](./media/data-lake-analytics-u-sql-programmability-guide/code-behind.png)
 
 このファイルには、プログラミング オブジェクトの名前空間の既定の定義に関する情報が入っています。
@@ -392,7 +392,8 @@ U-SQL の拡張モデルは、カスタム コードをどの程度追加でき�
 生成されたプロローグとエピローグは、スクリプトを開いたときに表示されます。
 
 ![generated-prologue](./media/data-lake-analytics-u-sql-programmability-guide/generated-prologue.png)
-**図 2**: コードスクリプトに自動で追加されたプロローグとエピローグ
+
+**図 2**: コードビハインドに自動で追加されたプロローグとエピローグ
 <br />
 
 コードビハインドの欠点としては、以下が挙げられます。
@@ -414,15 +415,15 @@ U-SQL の拡張モデルは、カスタム コードをどの程度追加でき�
 **図 5**: U-SQL 用の C# コード プロジェクトの登録方法
 <br />
 
-登録用のダイアログ ボックス (図 5 の手順 2 参照) では、オプションでアセンブリの登録先 (Data Lake Analytics アカウント、データベース) のほか、アセンブリの名前 (ローカル アセンブリのパスはツールが自動で入力します) を指定できます。 このほか、既に登録されているアセンブリを再登録するオプションや、依存関係を追加するための 2 つのオプションが用意されています。
+登録用のダイアログ ボックス (図 5 の手順 2 参照) では、オプションでアセンブリの登録先 (Data Lake Analytics アカウント、データベース) のほか、アセンブリの名前 (ローカル アセンブリのパスはツールが自動で入力します) を指定できます。 このほか、既に登録されているアセンブリを再登録するオプションや、依存関係を追加するための&2; つのオプションが用意されています。
 
 * "*Managed Dependencies (管理対象の依存関係)*": ほかに必要な管理対象のアセンブリが表示されます。 選択したアセンブリはそれぞれ個別に登録され、スクリプトで参照できるようになります。 他の .Net アセンブリについては、このオプションを使用します。
 
 * "*追加のファイル*": アセンブリに必要なリソース ファイルを追加できます。 指定したファイルはアセンブリと一緒に登録され、アセンブリが参照されると自動で読み込まれます。 構成ファイル、ネイティブ アセンブリ、他の言語のランタイム、およびそれらのリソースなどについては、このオプションを使用します。
 
-以下の例では、ここに挙げたオプションを両方とも使用しています。 [画像の処理に関する最近のブログ記事](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/18/introducing-image-processing-in-u-sql/)では、事前に定義されているアセンブリに対して登録時にこの 2 つのオプションを使った例をもう 1 つ紹介しています。
+以下の例では、ここに挙げたオプションを両方とも使用しています。 [画像の処理に関する最近のブログ記事](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/18/introducing-image-processing-in-u-sql/)では、事前に定義されているアセンブリに対して登録時にこの&2; つのオプションを使った例をもう&1; つ紹介しています。
 
-これで、登録が終わったアセンブリのデータベースに対するアクセス許可を備えた U-SQL スクリプトであれば、そのアセンブリを参照できるようになりました (図 4 の U-SQL スクリプトのコードを参照してください)。 別個に登録されたアセンブリのそれぞれについて、参照を追加する必要があります。 追加したリソース ファイルは、自動的にデプロイされます。 スクリプトには今後、そのスクリプトが参照しているアセンブリのコードを内容とするコードビハインド ファイルは必要ありませんが、コード ビハインドに別のコードを指定することはできます。
+これで、登録が終わったアセンブリのデータベースに対するアクセス許可を備えた U-SQL スクリプトであれば、そのアセンブリを参照できるようになりました (図 4 の U-SQL スクリプトのコードを参照してください)。 別個に登録されたアセンブリのそれぞれについて、参照を追加する必要があります。 追加したリソース ファイルは、自動的にデプロイされます。 スクリプトには今後、そのスクリプトが参照しているアセンブリのコードを内容とするコードビハインド ファイルは必要ありませんが、コードビハインド ファイルに別のコードを指定することはできます。
 
 ### <a name="registering-assemblies-via-adl-tools-in-visual-studio-and-in-u-sql-scripts"></a>Visual Studio の ADL ツールと U-SQL スクリプトを使ってアセンブリを登録する
 Visual Studio の ADL ツールを使えばアセンブリを簡単に登録できるものの、別のプラットフォームを使って開発している場合や、アップロードおよび登録するアセンブリのコンパイルが既に終わっている場合には、スクリプトを使ってアセンブリを登録することもできます (流れとしては、ADL ツールが自動で実行する処理と同じです)。 基本的な手順は、以下のとおりです。
@@ -434,15 +435,16 @@ Visual Studio の ADL ツールを使えばアセンブリを簡単に登録で�
 後で紹介する空間型の例では、この方法を使用しています。
 
 ### <a name="registering-assemblies-that-use-other-net-assemblies-based-on-the-json-and-xml-sample-library"></a>(JSON および XML のサンプル ライブラリに基づく) 他の .Net アセンブリを使用するアセンブリを登録する
-[U-SQL に関する Github サイト](https://github.com/Azure/usql/) では、自由に利用できるアセンブリ例をいくつか用意しています。 そのうちの 1 つ、[Microsoft.Analytics.Samples.Formats](https://github.com/Azure/usql/tree/master/Examples/DataFormats) は、JSON と XML のどちらのドキュメントも処理できるエクストラクター、関数、アウトプッターを備えたアセンブリです。 この Microsoft.Analytics.Samples.Formats は、JSON と XML の処理にそれぞれ、既存のドメイン固有アセンブリを使用しています。 具体的には、JSON の処理には [Newtonsoft Json.Net](http://www.newtonsoft.com/) ライブラリ、XML の処理には [System.Xml](https://msdn.microsoft.com/data/bb291078.aspx) アセンブリを、それぞれ使用しています。 ここでは Microsoft.Analytics.Samples.Formats アセンブリを例に、アセンブリの登録方法と、登録したアセンブリをスクリプトで使用する方法を紹介しましょう。
+[U-SQL に関する Github サイト](https://github.com/Azure/usql/) では、自由に利用できるアセンブリ例をいくつか用意しています。 そのうちの&1; つ、[Microsoft.Analytics.Samples.Formats](https://github.com/Azure/usql/tree/master/Examples/DataFormats) は、JSON と XML のどちらのドキュメントも処理できるエクストラクター、関数、アウトプッターを備えたアセンブリです。 この Microsoft.Analytics.Samples.Formats は、JSON と XML の処理にそれぞれ、既存のドメイン固有アセンブリを使用しています。 具体的には、JSON の処理には [Newtonsoft Json.Net](http://www.newtonsoft.com/) ライブラリ、XML の処理には [System.Xml](https://msdn.microsoft.com/data/bb291078.aspx) アセンブリを、それぞれ使用しています。 ここでは Microsoft.Analytics.Samples.Formats アセンブリを例に、アセンブリの登録方法と、登録したアセンブリをスクリプトで使用する方法を紹介しましょう。
 
-まず、(Windows 用 GitHub ツールを使ってローカル コピーを作成するなどして) ローカル環境に [Visual Studio プロジェクト](https://github.com/Azure/usql/tree/master/Examples/DataFormats) をダウンロードします。 ダウンロードしたソリューションを Visual Studio で開いたら、プロジェクトを右クリックし、上で説明した手順に従ってアセンブリを登録します。 このアセンブリには依存関係が 2 つ存在しますが、System.Xml は (明示的に参照する必要こそあるものの) Azure Data Lake で既に利用できる状態になっているため、Newtonsoft の方だけを登録します。 図 6 は、アセンブリ名に名前を付けたうえで (ドットを使わずに別の名前を付けることもできます)、Newtonsoft dll を追加したところを示しています。 これで、指定したデータベース (ここでは JSONBlog) に 2 つのアセンブリが個別に登録されます。
+まず、(Windows 用 GitHub ツールを使ってローカル コピーを作成するなどして) ローカル環境に [Visual Studio プロジェクト](https://github.com/Azure/usql/tree/master/Examples/DataFormats) をダウンロードします。 ダウンロードしたソリューションを Visual Studio で開いたら、プロジェクトを右クリックし、上で説明した手順に従ってアセンブリを登録します。 このアセンブリには依存関係が&2; つ存在しますが、System.Xml は (明示的に参照する必要こそあるものの) Azure Data Lake で既に利用できる状態になっているため、Newtonsoft の方だけを登録します。 図 6 は、アセンブリ名に名前を付けたうえで (ドットを使わずに別の名前を付けることもできます)、Newtonsoft dll を追加したところを示しています。 これで、指定したデータベース (ここでは JSONBlog) に&2; つのアセンブリが個別に登録されます。
 
 ![register-assembly](./media/data-lake-analytics-u-sql-programmability-guide/register-assembly.png)
+
 **図 6**: Visual Studio から Microsoft.Analytics.Samples.Formats アセンブリを登録する方法
 <br />
 
-自分または (登録先のデータベースに対する読み取りアクセス許可を付与することによって登録済みのアセンブリを共有した) 他のユーザーがスクリプトで JSON 機能を使用する場合には、スクリプトに以下の 2 つの参照を追加します。
+自分または (登録先のデータベースに対する読み取りアクセス許可を付与することによって登録済みのアセンブリを共有した) 他のユーザーがスクリプトで JSON 機能を使用する場合には、スクリプトに以下の&2; つの参照を追加します。
 
 ```
 REFERENCE ASSEMBLY JSONBlog.[NewtonSoft.Json];
@@ -471,7 +473,7 @@ JSON の機能を使用する方法の詳細については、[こちらのブ�
 
 "*ユーザーの式による内部例外: 間違ったフォーマットのプログラムを読み込もうとしました。(HRESULT からの例外: 0x8007000B)*"
 
-アセンブリ ファイルを 2 つともアップロードしたら、以下のスクリプトを使ってデータベース SQLSpatial にアセンブリを登録します。
+アセンブリ ファイルを&2; つともアップロードしたら、以下のスクリプトを使ってデータベース SQLSpatial にアセンブリを登録します。
 
 ```sql
 DECLARE @ASSEMBLY_PATH string = "/upload/asm/spatial/";
@@ -490,7 +492,7 @@ WITH ADDITIONAL_FILES =
      );
 ```
 
-ここでは、U-SQL アセンブリを 1 つだけ登録し、ネイティブ アセンブリは U-SQL アセンブリに対する文字列依存関係とします。 空間アセンブリを使用するうえで必要になるのは、U-SQL アセンブリに対する参照のみです。追加のファイルについては、自動的にそのアセンブリで利用可能になります。 以下は、空間アセンブリを使用する簡単なサンプル スクリプトです。
+ここでは、U-SQL アセンブリを&1; つだけ登録し、ネイティブ アセンブリは U-SQL アセンブリに対する文字列依存関係とします。 空間アセンブリを使用するうえで必要になるのは、U-SQL アセンブリに対する参照のみです。追加のファイルについては、自動的にそのアセンブリで利用可能になります。 以下は、空間アセンブリを使用する簡単なサンプル スクリプトです。
 
 ```sql
 REFERENCE SYSTEM ASSEMBLY [System.Xml];
@@ -523,7 +525,7 @@ U-SQL では現在、.Net Framework 4.5 を使用しています。 このため
 
 アセンブリ dll、リソース ファイル (別のランタイムなど)、ネイティブ アセンブリ、構成ファイルなどは、それぞれ最大 400 MB までアップロードできます。また、DEPLOY RESOURCE または参照によりデプロイしたリソース、アセンブリ、およびその追加ファイルのサイズは、合計 3 GB を超えることはできません。
 
-最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.Net ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ dll のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
+最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは&1; つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.Net ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ dll のバージョンも&1; つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
 
 
 ## <a name="user-defined-functions---udf"></a>ユーザー定義関数 (UDF)
@@ -540,7 +542,7 @@ U-SQL のユーザー定義関数は、public と **static** で初期化する�
 
 まずは、簡単な UDF を作成する例を見てみましょう。
 
-このユース ケース シナリオでは、特定のユーザーが初めてログインした会計期間 (会計上の四半期と月) を特定する必要があります。 このシナリオでは、会計年度の最初の月を 6 月とします。
+このユース ケース シナリオでは、特定のユーザーが初めてログインした会計期間 (会計上の四半期と月) を特定する必要があります。 このシナリオでは、会計年度の最初の月を&6; 月とします。
 
 会計期間を計算するにあたっては、以下の C# の関数を導入します。
 
@@ -579,7 +581,7 @@ U-SQL のユーザー定義関数は、public と **static** で初期化する�
         }
 ```
 
-この関数は会計上の四半期と月を計算し、文字列の値として返します。 6 月であれば、第 1 四半期の第 1 月に当たりますので、"Q1:P1" となります。同様に 7 月は "Q1:P2" となります。
+この関数は会計上の四半期と月を計算し、文字列の値として返します。 6 月であれば、第&1; 四半期の第&1; 月に当たりますので、"Q1:P1" となります。同様に&7; 月は "Q1:P2" となります。
 
 これが、U-SQL プロジェクトで使用する通常の C# 関数です。
 
@@ -766,9 +768,9 @@ LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC) AS 
            string.IsNullOrEmpty(LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)) AS Flag,           
            USQLApplication21.UserSession.StampUserSession
            (
-            EventDateTime,
-            LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
-            LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
+               EventDateTime,
+               LAG(EventDateTime, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC),
+               LAG(UserSessionTimestamp, 1) OVER(PARTITION BY UserName ORDER BY EventDateTime ASC)
            )
            AS UserSessionTimestamp
     FROM @records;
@@ -820,9 +822,12 @@ USING Outputters.Csv();
 この例では一段階複雑なユース ケース シナリオとして、コード ビハインド セクションにメモリ行セット全体に適用されるグローバル変数を使用するというシナリオを紹介しました。
 
 ## <a name="using-user-defined-types---udt"></a>ユーザー定義型 (UDT)
-ユーザー定義型 (UDT) は、U-SQL に用意されているもう 1 つのプログラミング機能です。 U-SQL の UDT の動作は、C# の一般的なユーザー定義型とよく似ています。 C# は、組み込みの型と独自のユーザー定義型のどちらも使用できる型付けの強固な言語です。
+ユーザー定義型 (UDT) は、U-SQL に用意されているもう&1; つのプログラミング機能です。 U-SQL の UDT の動作は、C# の一般的なユーザー定義型とよく似ています。 C# は、組み込みの型と独自のユーザー定義型のどちらも使用できる型付けの強固な言語です。
 
-U-SQL では現在、外部ファイルとの間で暗黙的に UDT データをシリアル化または逆シリアル化することができません。 このため、UDT の定義の一環としてシリアル化と逆シリアル化のためのメソッドを備えた IFormatter インターフェイスを定義する必要があります。 ADLA V1 では、中間シリアル化のみサポートしています。 つまり、IFormatter は UDT 内部の処理では重要であるものの、エクストラクターまたはアウトプッターで永続的なシリアル化に使用することはできないということです。 アウトプッターを使ってファイルにデータを書き込むときや、エクストラクターでデータを読み取るときには、UDT の実装の ToString() メソッドを使用し、UDT を文字列にシリアル化する必要があります。 UDT を扱うときにはほかにも、エクストラクターまたはアウトプッターをカスタマイズして使用することもできます。  
+U-SQL では、UDT が行セットの頂点間で渡されるときに、任意の UDT を暗黙的にシリアル化または逆シリアル化することができません。 このため、ユーザーは IFormatter インターフェイスを使用して明示的なフォーマッタを指定する必要があります。 これにより、U-SQL に UDT のシリアル化および逆シリアル化メソッドが提供されます。 
+
+> [!NOTE]
+> U-SQL の組み込みのエクストラクターおよびアウトプッターは現在、IFormatter セットを使用してもファイルとの間で UDT データをシリアル化または逆シリアル化することができません。  このため、OUTPUT ステートメントで UDT データをファイルに書き込む場合、またはエクストラクターでデータを読み取る場合に、これを文字列またはバイト配列として渡して、シリアル化および逆シリアル化コード (UDT の ToString() メソッドなど) を明示的に呼び出す必要があります。 一方、ユーザー定義のエクストラクターおよびアウトプッターでは、UDT の読み取り/書き込みを行えます。
 
 エクストラクターまたはアウトプッター (前の SELECT の外部) で UDT を使用する場合のコードは、以下のとおりです。
 
@@ -837,7 +842,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 このコードでは、以下のエラーが発生します。
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
+    Error    1    E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
     MyNameSpace.Myfunction_Returning_UDT.
 
     Description:
@@ -847,8 +852,8 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
     Resolution:
 
     Implement a custom outputter that knows how to serialize this type or call a serialization method on the type in
-    the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
-    USQL-Programmability\Types.usql 52  1   USQL-Programmability
+    the preceding SELECT.    C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\
+    USQL-Programmability\Types.usql    52    1    USQL-Programmability
 ```
 
 アウトプッターで UDT を使用するには、ToString() メソッドを使って UDT をシリアル化するか、カスタム アウトプッターを作成する必要があります。
@@ -856,7 +861,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 現時点では、GROUP BY で UDT を使用することはできません。 GROUP BY で UDT を使用した場合には、以下のエラーが表示されます。
 
 ```
-    Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
+    Error    1    E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
     for column myfield
 
     Description:
@@ -867,7 +872,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
     Add a SELECT statement where you can project a scalar column that you want to use with GROUP BY.
     C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQL-Programmability\Types.usql
-    62  5   USQL-Programmability
+    62    5    USQL-Programmability
 ```
 
 UDT を定義する手順は、以下のとおりです。
@@ -896,7 +901,7 @@ SqlUserDefinedType は、UDT を定義するうえで必須の属性です。
 ```c#
     [SqlUserDefinedType(typeof(MyTypeFormatter))]
       public class MyType
-           {
+              {
              …
            }
 ```
@@ -932,9 +937,9 @@ SqlUserDefinedType は、UDT を定義するうえで必須の属性です。
 `IColumnWriter` writer / `IColumnReader` reader – 基になる列ストリームです。  
 `ISerializationContext` context – シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。 
  
-    * "*中間*" - ソースまたは宛先に関するコンテキストが永続的なストアでないことを指定します。
+   * "*中間*" - ソースまたは宛先に関するコンテキストが永続的なストアでないことを指定します。
 
-    * "*永続化*" - ソースまたは宛先に関するコンテキストが永続的なストアであることを指定します。
+   * "*永続化*" - ソースまたは宛先に関するコンテキストが永続的なストアであることを指定します。
 
 U-SQL の UDT の定義には、C# の通常の型として +、==、!= などの演算子のオーバーライドを含めることができます。また、静的メソッドなどを含めることもできます。 たとえば、この UDT を U-SQL の MIN 集計関数のパラメーターとして使用する場合には、< 演算子のオーバーライドを定義する必要があります。
 
@@ -1041,7 +1046,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
         }
 ```
 
-新たに定義された型には、Quarter と Month の 2 つの数字が含まれています。 演算子 ==、!=、>、< と静的メソッド ToString() も、ここで定義しています。
+新たに定義された型には、Quarter と Month の&2; つの数字が含まれています。 演算子 ==、!=、>、< と静的メソッド ToString() も、ここで定義しています。
 
 既に説明したとおり、SELECT 式なら特別な処理をしなくても UDT を使用できるのに対して、アプトプッターとエクストラクターで UDT を使用する場合には、カスタム シリアル化が必要になります。 このため、UDT は ToString() を使って文字列としてシリアル化するか、カスタマイズしたアウトプッターまたはエクストラクターで使用する必要があります。
 
@@ -1116,6 +1121,8 @@ DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.
            fiscalquarter,
            fiscalmonth,
            USQL_Programmability.CustomFunctions.GetFiscalPeriodWithCustomType(dt).ToString() AS fiscalperiod,
+       
+       // This user-defined type was created in the prior SELECT.  Passing the UDT to this subsequent SELECT would have failed if the UDT was not annotated with an IFormatter.
            fiscalperiod_adjusted.ToString() AS fiscalperiod_adjusted,
            user,
            des
@@ -1285,10 +1292,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-### <a name="udts-from-built-in-types"></a>組み込み型を使った UDT
-近日対応予定
-
-## <a name="user-defined-aggregates-udagg"></a>ユーザー定義集計 (UDAGG)
+## <a name="user-defined-aggregates--udagg"></a>ユーザー定義集計 (UDAGG)
 ユーザー定義集計とは、U-SQL であらかじめ用意されていない集計関連の関数のことを指します。 たとえば、カスタムの算術計算、文字列の連結、文字列の操作などを実行する集計関数が、ユーザー定義集計に該当します。
 
 ユーザー定義集計の基底クラスの定義は、以下のとおりです。
@@ -1310,7 +1314,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 SqlUserDefinedType 属性は、UDAGG の定義では**省略可能**です。
 
 
-この基底クラスでは、抽象パラメーターを入力に 2 つ、結果に 1 つの計 3 つ渡すことができるようになっています。 データ型は変数であり、クラスの継承時に定義する必要があります。
+この基底クラスでは、抽象パラメーターを入力に&2; つ、結果に&1; つの計&3; つ渡すことができるようになっています。 データ型は変数であり、クラスの継承時に定義する必要があります。
 
 ```c#
     public class GuidAggregate : IAggregate<string, string, string>
@@ -1335,9 +1339,9 @@ SqlUserDefinedType 属性は、UDAGG の定義では**省略可能**です。
     }
 ```
 
-* Init は、各集計グループの初期化ルーチンを提供するものです。 これは、計算中にグループ 1 つにつき 1 回呼び出されます。
-* Accumulate は、各値に対して 1 回ずつ実行されます。 これが、集計アルゴリズムのメインの機能です。 クラスの継承中にさまざまなデータ型が定義された値を集計する際に使用するものであり、 データ型が変数のパラメーターを 2 つ受け取ることができます。
-* Terminate は、処理の最後に各集計グループに対して 1 回ずつ実行され、各グループの結果を出力します。
+* Init は、各集計グループの初期化ルーチンを提供するものです。 これは、計算中にグループ&1; つにつき&1; 回呼び出されます。
+* Accumulate は、各値に対して&1; 回ずつ実行されます。 これが、集計アルゴリズムのメインの機能です。 クラスの継承中にさまざまなデータ型が定義された値を集計する際に使用するものであり、 データ型が変数のパラメーターを&2; つ受け取ることができます。
+* Terminate は、処理の最後に各集計グループに対して&1; 回ずつ実行され、各グループの結果を出力します。
 
 入力と出力の正しいデータ型を宣言するには、クラス定義を使用します。
 
@@ -1345,8 +1349,8 @@ SqlUserDefinedType 属性は、UDAGG の定義では**省略可能**です。
     public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1 – Accumulate の 1 つ目のパラメーター
-* T2 – Accumulate の 2 つ目のパラメーター
+* T1 – Accumulate の&1; つ目のパラメーター
+* T2 – Accumulate の&2; つ目のパラメーター
 * TResult – Terminate の戻り値の型
 
 以下に例を示します。
@@ -1424,7 +1428,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 このユース ケース シナリオでは、特定のユーザーのクラスの GUID を連結しています。
 
-## <a name="user-defined-objects-udo"></a>ユーザー定義オブジェクト (UDO)
+## <a name="user-defined-objects--udo"></a>ユーザー定義オブジェクト (UDO)
 U-SQL にはカスタム プログラミング オブジェクトを定義できる機能が用意されており、そのようなオブジェクトをユーザー定義オブジェクト (UDO) と呼びます。
 
 以下は、U-SQL の UDO の一覧です。
@@ -1523,7 +1527,7 @@ SqlUserDefinedExtractor は、UDE の定義のオプション属性です。 こ
     {
     …
         string[] parts = line.Split(my_column_delimiter);
-            foreach (string part in parts)
+               foreach (string part in parts)
         {
         …
         }
@@ -1620,7 +1624,7 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
 ## <a name="user-defined-outputter"></a>ユーザー定義アウトプッター
-ユーザー定義アウトプッターは、U-SQL の組み込み機能を拡張するもう 1 つの U-SQL UDO です。 エクストラクターと同じく、アウトプッターも組み込みのものがいくつか用意されています。
+ユーザー定義アウトプッターは、U-SQL の組み込み機能を拡張するもう&1; つの U-SQL UDO です。 エクストラクターと同じく、アウトプッターも組み込みのものがいくつか用意されています。
 
 * *Outputters.Text()*: エンコーディングがさまざまに異なる区切りテキスト ファイルにデータを書き込みます。
 * *Outputters.Csv()*: エンコーディングがさまざまに異なるコンマ区切り値 (CSV) ファイルにデータを書き込みます。
@@ -1685,7 +1689,7 @@ SqlUserDefinedOutputter は、ユーザー定義アウトプッターの定義�
 
 主なプログラミング オブジェクトは、*row* と *output* です。 *row* オブジェクトは、出力データを `IRow` インターフェイスとして列挙するために使用するものです。これに対して、*output* はターゲット ファイルに対する出力データを設定するために使用します。
 
-出力データには、`IRow` インターフェイスを使ってアクセスできます。 また、出力データには行が一度に 1 つずつ渡されます。
+出力データには、`IRow` インターフェイスを使ってアクセスできます。 また、出力データには行が一度に&1; つずつ渡されます。
 
 個々の値は、IRow インターフェイスの Get メソッドを呼び出すと列挙されます。
 
@@ -1705,7 +1709,7 @@ SqlUserDefinedOutputter は、ユーザー定義アウトプッターの定義�
 
 出力データは、`IUnstructuredWriter output` で `System.IO.StreamWriter` を使ってファイルに書き込みます。このとき、ストリームのパラメーターを `output.BaseStrea` に設定します。
 
-重要: 行の反復処理が 1 回終わるごとにデータ バッファーをファイルにフラッシュするには、*using* キーワードを使用し、かつ Disposable 属性を有効にした状態 (既定の設定) で、`StreamWriter` オブジェクトを使用する必要があります。
+重要: 行の反復処理が&1; 回終わるごとにデータ バッファーをファイルにフラッシュするには、*using* キーワードを使用し、かつ Disposable 属性を有効にした状態 (既定の設定) で、`StreamWriter` オブジェクトを使用する必要があります。
 
 ```c#
     using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -2174,9 +2178,9 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 このユース ケース シナリオでは、ユーザー定義アプライヤーが車のプロパティのコンマ区切り値のパーサーとしての役割を果たしています。 入力ファイルの行は、以下のようになります。
 
 ```
-103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
-210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
+103    Z1AB2CD123XY45889    Ford,Explorer,2005,SUV,152345
+303    Y0AB2CD34XY458890    Shevrolet,Cruise,2010,4Dr,32455
+210    X5AB2CD45XY458893    Nissan,Altima,2011,4Dr,74000
 ```
 
 これは、典型的なタブ区切り (TSV) ファイルです。プロパティ列には製造元、モデルなど、車のプロパティが格納されています。これらのプロパティは解析のうえ、テーブルの列の形に並べられます。 このほか、ここに示したアプライヤーでは、渡されるパラメーターに基づいて結果の行セットに生成するプロパティの数を動的に変えることができるようになっています。つまり、プロパティを全部返すことも、一部のプロパティのみを返すこともできます。
@@ -2273,7 +2277,7 @@ CombinerMode 列挙型は、以下の値を取ることができます。
         IUpdatableRow output
 ```
 
-入力行セットは、*left* および *right* の 2 つの `IRowset` 型インターフェイスとして渡されます。 行セットはどちらも、処理のために列挙される必要があります。 列挙は各インターフェイスにつき 1 回のみ許可されています。このため、列挙およびキャッシュは必要なときに実施する必要があります。
+入力行セットは、*left* および *right* の&2; つの `IRowset` 型インターフェイスとして渡されます。 行セットはどちらも、処理のために列挙される必要があります。 列挙は各インターフェイスにつき&1; 回のみ許可されています。このため、列挙およびキャッシュは必要なときに実施する必要があります。
 
 キャッシュのため、LINQ クエリの実行の結果として List\<T\> 型のメモリ構造体を作成できます。 具体的には、List<`IRow`> となります。 列挙では、匿名データ型も使用できます。
 
@@ -2608,6 +2612,6 @@ OUTPUT @rs2 TO @output_file USING Outputters.Text();
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure VM に RDP 接続できない | Microsoft Docs"
+title: "RDP を使って Azure の Windows VM に接続できない | Microsoft Docs"
 description: "リモート デスクトップを使用して Azure で Windows 仮想マシンに接続できない場合の問題のトラブルシューティング"
 keywords: "リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング"
 services: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 10/26/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 592d6b0168b9ebb47ed841f7e2b55d55a07500aa
+ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
+ms.openlocfilehash: b6b9540f4120ef87d819605579df4ab0c9657e45
 
 
 ---
@@ -40,7 +40,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 6. VM を再起動する。
 7. アプリケーションを再デプロイする。
 
-詳しい手順と説明が必要な場合は、この後の説明をお読みください。
+詳しい手順と説明が必要な場合は、この後の説明をお読みください。 ルーターやファイアウォールなどのローカル ネットワーク機器が、送信 TCP ポート 3389 をブロックしていないことを確認します。この方法については、[Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順](virtual-machines-windows-detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 > [!TIP]
 > ポータルで **[接続]** ボタンが淡色表示され、[Express Route](../expressroute/expressroute-introduction.md) や[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。 [Azure におけるパブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
@@ -256,6 +256,6 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

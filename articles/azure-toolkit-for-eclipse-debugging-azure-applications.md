@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06b33c09f5c316f974efde1116cae699d8df1065
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 04e6a43e478484d90478e4aa90d489ea4eb0cc68
 
 
 ---
@@ -27,7 +27,7 @@ Azure Toolkit for Eclipse を使用すると、Azure で実行しているアプ
 
 このチュートリアルでは、アプリケーションが正常に作成されていて、コンピューティング エミュレーターおよび Azure へのデプロイを理解しているものとします。
 
-このトピックでは、[JSP で Azure サービス ランタイム ライブラリを使用する][JSP で Azure サービス ランタイム ライブラリを使用する]方法に関するチュートリアルで作成したアプリケーションから始めます。 アプリケーションをまだ作成していない場合は、先に進む前に作成してください。
+このトピックでは、「[JSP で Azure サービス ランタイム ライブラリを使用する][Using the Azure Service Runtime Library in JSP]」チュートリアルで作成したアプリケーションから始めます。 アプリケーションをまだ作成していない場合は、先に進む前に作成してください。
 
 ## <a name="to-debug-your-application-while-running-in-azure"></a>Azure で実行しながらアプリケーションをデバッグするには
 > [!WARNING]
@@ -39,11 +39,11 @@ Azure Toolkit for Eclipse を使用すると、Azure で実行しているアプ
 2. プロジェクトをビルドし直します。Eclipse メニューから、**[Project (プロジェクト)]**、**[Build All (すべてビルド)]** の順にクリックします。
 3. アプリケーションを Azure の *ステージング* にデプロイします。
     >[AZURE.IMPORTANT] 前述のように、ほとんどの場合はコンピューティング エミュレーターでデバッグし、追加のデバッグが必要な場合にのみステージング環境でデバッグすることを、強くお勧めします。 運用環境ではデバッグしないことをお勧めします。
-4. Azure でデプロイメントの準備ができたら、[Azure 管理ポータル][Azure 管理ポータル]からデプロイメントの DNS 名を取得します。 ステージング デプロイメントの DNS 名の形式は http://*&lt;guid&gt;*.cloudapp.net であり、*&lt;guid&gt;* は Azure によって割り当てられる GUID の値です。
+4. Azure でデプロイメントの準備ができたら、[Microsoft Azure 管理ポータル][Azure Management Portal]からデプロイメントの DNS 名を取得します。 ステージング デプロイメントの DNS 名の形式は http://*&lt;guid&gt;*.cloudapp.net であり、*&lt;guid&gt;* は Azure によって割り当てられる GUID の値です。
 5. Eclipse の [Project Explorer (プロジェクト エクスプローラー)] で、**[WorkerRole1]** を右クリックし、**[Azure]** をクリックしてから **[Debugging (デバッグ)]** をクリックします。
 6. **[WorkerRole1 デバッグのプロパティ]** ダイアログで次のようにします。
-   1.  **[このロールのリモート デバッグを有効にする]**
-   2. **[Input endpoint to use (使用する入力エンドポイント)]** では、**[Debugging (public:8090, private:8090) (デバッグ (パブリック: 8090、プライベート: 8090))]** を使用します。
+   1. **[このロールのリモート デバッグを有効にする]**
+   2. **[Input endpoint to use (使用する入力エンドポイント)]** では、**[Debugging (public:8090, private:8090) (デバッグ (パブリック:&8090;、プライベート:&8090;))]** を使用します。
    3. **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** がオフになっていることを確認します。
        >[AZURE.IMPORTANT] **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションは、コンピューティング エミュレーターのみでの高度なデバッグ シナリオ用です (クラウド デプロイメント用ではありません)。 **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションを使用する場合は、Eclipse デバッガーが JVM に接続されるまで、サーバーのスタートアップ プロセスは中断されます。 コンピューティング エミュレーターを使用するデバッグ セッションにこのオプションを使用している間は、クラウド デプロイメントでのデバッグ セッションに使用しないでください。 Azure のスタートアップ タスクでサーバーの初期化が行われ、スタートアップ タスクが完了するまで、Azure クラウドはパブリック エンドポイントを利用できるようにしません。 したがって、クラウド デプロイメントでこのオプションを有効にした場合、外部 Eclipse クライアントからの接続を受けられないため、スタートアップ プロセスが正常に完了しません。
    4. **[デバッグ構成の作成]**をクリックします。
@@ -89,8 +89,8 @@ Azure Toolkit for Eclipse を使用すると、Azure で実行しているアプ
 2. プロジェクトをビルドし直します。Eclipse メニューから、**[Project (プロジェクト)]**、**[Build All (すべてビルド)]** の順にクリックします。
 3. Eclipse の [Project Explorer (プロジェクト エクスプローラー)] で、**[WorkerRole1]** を右クリックし、**[Azure]** をクリックしてから **[Debugging (デバッグ)]** をクリックします。
 4. **[WorkerRole1 デバッグのプロパティ]** ダイアログで次のようにします。
-   1.  **[このロールのリモート デバッグを有効にする]**
-   2. **[Input endpoint to use (使用する入力エンドポイント)]** では、Toolkit によって自動的に生成される既定のエンドポイントを使用します (一覧では **[Debugging (public:8090, private:8090) (デバッグ (パブリック: 8090、プライベート: 8090))]** と表示されます)。
+   1. **[このロールのリモート デバッグを有効にする]**
+   2. **[Input endpoint to use (使用する入力エンドポイント)]** では、Toolkit によって自動的に生成される既定のエンドポイントを使用します (一覧では **[Debugging (public:8090, private:8090) (デバッグ (パブリック:&8090;、プライベート:&8090;))]** と表示されます)。
    3. **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションがオフになっていることを確認します。
        >[AZURE.IMPORTANT] **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションは、コンピューティング エミュレーターのみでの高度なデバッグ シナリオ用です (クラウド デプロイメント用ではありません)。 **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションを使用する場合は、Eclipse デバッガーが JVM に接続されるまで、サーバーのスタートアップ プロセスは中断されます。 コンピューティング エミュレーターを使用するデバッグ セッションにこのオプションを使用している間は、クラウド デプロイメントでのデバッグ セッションに使用しないでください。 Azure のスタートアップ タスクでサーバーの初期化が行われ、スタートアップ タスクが完了するまで、Azure クラウドはパブリック エンドポイントを利用できるようにしません。 したがって、クラウド デプロイメントでこのオプションを有効にした場合、外部 Eclipse クライアントからの接続を受けられないため、スタートアップ プロセスが正常に完了しません。
    4. **[デバッグ構成の作成]**をクリックします。
@@ -121,20 +121,20 @@ Azure Toolkit for Eclipse を使用すると、Azure で実行しているアプ
 ## <a name="see-also"></a>関連項目
 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する][Azure 向け Hello World アプリケーションを Eclipse で作成する]
+[Azure 向け Hello World アプリケーションを Eclipse で作成する][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure Toolkit for Eclipse のインストール][Azure Toolkit for Eclipse のインストール] 
+[Azure Toolkit for Eclipse のインストール][Installing the Azure Toolkit for Eclipse] 
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][Azure Java Developer Center]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[JSP で Azure サービス ランタイム ライブラリを使用する]: http://go.microsoft.com/fwlink/?LinkID=699551
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551
 
 <!-- IMG List -->
 
@@ -145,6 +145,6 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

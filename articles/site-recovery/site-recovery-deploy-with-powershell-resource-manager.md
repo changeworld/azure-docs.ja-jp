@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell と Azure Resource Manager を使用して Azure にサーバーを保護する | Microsoft Docs"
-description: "PowerShell と Azure Resource Manager を使用して Azure に対するサーバーの保護を Azure Site Recovery で自動化します。"
+title: "PowerShell と Azure Resource Manager を使用して Hyper-V VM をレプリケートする | Microsoft Docs"
+description: "PowerShell とAzure Resource Manager を使用して、Azure に対する Hyper-V VM レプリケーションを Azure Site Recovery で自動化します。"
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
 ## <a name="overview"></a>Overview
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧戦略に貢献します。 デプロイ シナリオのすべての一覧については、「 [Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
-Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 これを 2 種類のモジュール (Azure Profile モジュールまたは Azure Resource Manager モジュール) と共に使用できます。
+Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。 これを&2; 種類のモジュール (Azure Profile モジュールまたは Azure Resource Manager モジュール) と共に使用できます。
 
 Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Azure Resource Manager に用意されている Site Recovery の PowerShell コマンドレットを使って行うことができます。
 
@@ -62,7 +62,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 * 1 つ以上の仮想マシンを含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。
 * 直接、またはプロキシを経由して、インターネットに接続するHyper-V サーバー。
-* 保護する仮想マシンは、 [仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に従う必要があります。
+* 保護する仮想マシンは、 [仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に従う必要があります。
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
 1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、アカウントの資格情報を入力するように求められます。
@@ -247,6 +247,6 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Sqoop の使用 | Microsoft Docs"
+title: ".NET と Azure HDInsight を使用して Sqoop ジョブを実行する | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、Hadoop クラスターと Azure SQL Database 間で Sqoop のインポートおよびエクスポートを実行する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 027ac136d4c4f242c75e8a25605ace646624d64d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
 
 
 ---
@@ -124,6 +124,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

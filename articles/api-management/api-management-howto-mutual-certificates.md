@@ -1,5 +1,5 @@
 ---
-title: "Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法"
+title: "クライアント証明書認証を使用してバックエンド サービスを保護する - Azure API Management | Microsoft Docs"
 description: "Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法を説明します。"
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: de47ff52eac40c4b4c57eef89763b71fd525ffa4
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
 
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -61,7 +60,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![アップロードされた証明書][api-management-certificate-uploaded]
 
-証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。 複数の証明書がある場合は、以下の「[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の 4 文字を参照します。
+証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。 複数の証明書がある場合は、以下の「[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の&4; 文字を参照します。
 
 > 自己署名証明書などを使用するときに証明書チェーンの検証をオフにするには、この FAQ の[項目](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)に記載されている手順に従ってください。
 > 
@@ -89,7 +88,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![[クライアント証明書]][api-management-mutual-certificates]
 
-**[クライアント証明書]** ドロップダウン リストから必要な証明書を選択します。 複数の証明書がある場合は、以前のセクションに記載されているとおり、件名または拇印の最後の 4 文字に注目して対象となる証明書を判別できます。
+**[クライアント証明書]** ドロップダウン リストから必要な証明書を選択します。 複数の証明書がある場合は、以前のセクションに記載されているとおり、件名または拇印の最後の&4; 文字に注目して対象となる証明書を判別できます。
 
 ![証明書の選択][api-management-select-certificate]
 
@@ -156,6 +155,6 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

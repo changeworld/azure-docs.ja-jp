@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 714045750ab16364ecd1095f1f346d3da1d4c4a5
-ms.openlocfilehash: 4bfcf719cb071a28421c64dbb4d6c132f45ba9f9
+ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
+ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
 
 ---
 
@@ -34,7 +34,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 
 1. データ ソースを作成する
    * `type` パラメーターを `azuretable` に設定します。
-   * ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。 この接続文字列は、ストレージ アカウント ブレードに移動し、**[設定]**  >  **[キー]** (クラシック ストレージ アカウントの場合) を選択するか、**[設定]**  >  **[アクセス キー]** を選択する (ARM ストレージ アカウントの場合) ことで Azure ポータルから取得できます。 Azure Search では、現在、Shared Access Signature 資格情報をサポートしていません。 SAS の使用を希望する場合は、[こちらの UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/12368244-support-shared-access-signature-for-blob-datasourc)にご投票ください。
+   * ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。 詳しくは、後述の「[資格情報を指定する方法](#Credentials)」をご覧ください。
    * `container.name` パラメーターを使用して、テーブル名を指定します。
    * 必要に応じて `container.query` パラメーターを使用して、クエリを指定します。 可能な場合は、PartitionKey でフィルターを使用して、パフォーマンスを最大限に高めます。他のクエリを実行すると、フル テーブル スキャンが発生し、大きなテーブルの場合はパフォーマンスが低下する可能性があります。
 2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。
@@ -53,6 +53,20 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
     }   
 
 データ ソース作成 API の詳細については、「 [データ ソースの作成](https://msdn.microsoft.com/library/azure/dn946876.aspx)」をご覧ください。
+
+<a name="Credentials"></a>
+#### <a name="how-to-specify-credentials"></a>資格情報を指定する方法 ####
+
+次のいずれかの方法でテーブルに対して資格情報を指定できます。 
+
+- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+- **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS にはコンテナー (この場合はテーブル) 上およびオブジェクト (テーブル行) にリストおよび読み取りアクセス許可が必要です。
+-  **テーブルの Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS にはテーブル上にリストおよび読み取りアクセス許可が必要です。
+
+Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+
+> [!NOTE]
+> SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
 
 ### <a name="create-index"></a>インデックスの作成
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
@@ -91,7 +105,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。 テーブルのプロパティ名は、 **フィールド マッピング** を使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「 [データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
 
 ## <a name="handling-document-keys"></a>ドキュメント キーの処理
-Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です (実際のところ、これは唯一の必須フィールドです)。
+Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが&1; つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です (実際のところ、これは唯一の必須フィールドです)。
 
 テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` になります。
 
@@ -123,6 +137,6 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

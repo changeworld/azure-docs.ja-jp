@@ -17,8 +17,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 80c7a8584dac9537ddaf1d97a561388c3c22ec1b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f6ef85e0c05911bb3ad13a8ffb029bf9fadd8bfd
 
 
 ---
@@ -88,7 +88,7 @@ Web Apps には、HTTP ログ、イベント ログ、処理ダンプなどを�
 
 そのデータをダウンロードすることもできます。D:\home\data\DaaS フォルダーが既定の保存先となります。
 
-Azure App Service サポート ポータルの詳細については、 [Azure Websites のサポート サイト拡張機能で新たに行われた更新](/blog/new-updates-to-support-site-extension-for-azure-websites)に関するページを参照してください。
+Azure App Service サポート ポータルの詳細については、 [Azure Websites のサポート サイト拡張機能で新たに行われた更新](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)に関するページを参照してください。
 
 #### <a name="use-the-kudu-debug-console"></a>Kudu デバッグ コンソールを使用する
 Web Apps には、ファイルのデバッグ、調査、アップロード用のデバッグ コンソールのほか、ご利用の環境についての情報を入手するための JSON エンドポイントが用意されています。 このコンソールは、Web アプリの *Kudu コンソール*または *SCM ダッシュボード*と呼ばれます。
@@ -104,7 +104,7 @@ Kudu には次のような機能があります。
 
 Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。 このメモリ ダンプはプロセスのスナップショットです。Web アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
 
-Kudu で利用できる機能の詳細については、 [知っておくべき Azure Websites のオンライン ツール](/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
+Kudu で利用できる機能の詳細については、 [知っておくべき Azure Websites のオンライン ツール](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
 
 <a name="mitigate" />
 
@@ -121,7 +121,7 @@ Azure App Service では、アプリケーションが実行されるスケー�
 #### <a name="use-autoheal"></a>AutoHeal を使用する
 AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。 ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。 Web アプリはいつでも、Azure ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。 必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。 .Net アプリケーション以外でも、これらの設定は同じように作用します。
 
-詳細については、 [Azure Web Sites の自動復旧](/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
+詳細については、 [Azure Web Sites の自動復旧](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 
 #### <a name="restart-the-web-app"></a>Web アプリを再起動する
 1 回限りの問題であれば、通常これが最も簡単な復旧方法です。 アプリを停止または再起動するためのオプションは、 [Azure ポータル](https://portal.azure.com/)の Web アプリ ブレードにあります。
@@ -133,6 +133,6 @@ Web アプリの管理には、Azure PowerShell を使用することもでき�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

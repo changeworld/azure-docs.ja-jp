@@ -1,13 +1,25 @@
 ---
+title: "Azure DNS のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+description: "Azure ドメイン ネーム システムを使用して、DNS レコードを管理する方法について説明します。 ドキュメントでは、ドメイン名の DNS ゾーンとレコードをセットアップして管理する方法を紹介します。"
+services: dns
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: dns
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
+ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 
 ---
 # <a name="dns-documentation"></a>DNS のドキュメント
 
-Azure DNS (Domain Name System) は、DNS ドメインのためのサービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+ホスティング サービスである Azure ドメイン ネーム システムを使用して、DNS レコードを管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ドメイン名の DNS ゾーンとレコードをセットアップして管理する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -109,7 +121,7 @@ Azure DNS (Domain Name System) は、DNS ドメインのためのサービスで
                     <h3>言語</h3>
                     <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p>
                     <p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p>
-                    <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p>
+                    <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.JS</a></p>
                     <p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p>
                     <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html">Python</a></p>
                 </div>
@@ -131,16 +143,10 @@ Azure DNS (Domain Name System) は、DNS ドメインのためのサービスで
 </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/dns.pdf">
-        <div class="img"></div>
-        <div class="text">
-DNS のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

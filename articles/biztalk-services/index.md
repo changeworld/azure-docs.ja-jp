@@ -1,13 +1,25 @@
 ---
+title: "Azure Biztalk Services のドキュメント - チュートリアル | Microsoft Docs"
+description: "BizTalk Services を使用して、クラウドからオンプレミスに接続し、SAP、Oracle EBS、SQL Server、PeopleSoft の基幹業務アプリケーションを統合する方法について説明します。"
+services: biztalk-services
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: biztalk-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 329bf8f57270c901d54f27a2159287e08e4c355a
-ms.openlocfilehash: dfde406339068f9261fccb87039d18a0dfdedeff
+ms.sourcegitcommit: 8c09bee7be24d8ba18fa67f3aef1c951dfde1434
+ms.openlocfilehash: 80b381d59e95297cf8d7616e6a2eb3186ab26a05
 
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services のドキュメント
 
-BizTalk Services には、SAP、Oracle EBS、SQL Server、PeopleSoft に関して、クラウドからオンプレミスまで対応した、基幹業務アプリケーションの統合機能が用意されています。 任意の HTTP、FTP、SFTP、または REST データ ソースと接続できます。 Service Bus キュー、トピック、SQL Database、BLOB Storage などのさまざまな Azure アーティファクトを使用して、メッセージをルーティングできます。   
+BizTalk Services を使用して、クラウドからオンプレミスに接続し、SAP、Oracle EBS、SQL Server、PeopleSoft の基幹業務アプリケーションを統合する方法について説明します。 チュートリアルなどのドキュメントでは、企業環境とクラウドを統合する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -66,17 +78,10 @@ BizTalk Services には、SAP、Oracle EBS、SQL Server、PeopleSoft に関し�
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/biztalk-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-BizTalk Services のドキュメントのダウンロード </div>
-    </a>
-</div>
 
 
-<!--HONumber=Nov16_HO4-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

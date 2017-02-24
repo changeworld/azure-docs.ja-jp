@@ -1,5 +1,5 @@
 ---
-title: H264 Single Bitrate 1080p | Microsoft Docs
+title: "H264 Single Bitrate 1080p Media Encoder Standard プリセット - Azure | Microsoft Docs"
 description: "このトピックでは、**H264 Single Bitrate 1080p** タスク プリセットの概要を説明します。"
 author: Juliako
 manager: erikre
@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: 119122adbdda2ae59cf7e4b4cfe3520d52e91954
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 0ed50475d2ba34643f9e6d62491a8ec7ac40769b
 
 
 ---
 
 # <a name="h264-single-bitrate-1080p"></a>H264 Single Bitrate 1080p
-`Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name` を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
+`Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
   
  このトピックでは、`H264 Single Bitrate 1080p` を XML 形式と JSON 形式で示します。  
   
@@ -118,6 +118,6 @@ ms.openlocfilehash: 119122adbdda2ae59cf7e4b4cfe3520d52e91954
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

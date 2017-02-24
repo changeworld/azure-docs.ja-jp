@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
@@ -43,17 +43,17 @@ ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
 ### <a name="to-enable-the-application-integration-for-topdesk---public-perform-the-following-steps"></a>TOPdesk - Public のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -76,19 +76,19 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 2. **[TOPdesk]** メニューで **[Settings]** をクリックします。
    
-    ![[設定]](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
+    ![設定](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
 
 3. **[Login Settings]**をクリックします。
    
-    ![[Login Settings]](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
+    ![Login Settings](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
 
 4. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
    
-    ![全般](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
+    ![General](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
 
 5. **[SAML login]** 構成セクションの **[Public]** で、次の手順に従います。
    
-    ![技術設定](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
+    ![Technical Settings](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
    
     a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
    
@@ -106,17 +106,17 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 7. **TOPdesk - Public** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
 
 8. **[ユーザーの TOPdesk - Public へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
 
 9. **[アプリケーション URL の構成]** ページで、次の手順を実行します。
    
-    ![Configure App URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[TOPdesk - Public サインオン URL]** テキストボックスに、ユーザーが TOPdesk - Public アプリケーションへのサインインに使用する URL (例: "*https://qssolutions.topdesk.net*") を入力します。
+    a. **[TOPdesk - Public サインオン URL]** テキストボックスに、ユーザーが TOPdesk - Public アプリケーションへのサインインに使用する URL (例: "*https://qssolutions.topdesk.net*") を入力します。
    
     b. **[TOPdesk – Public 応答 URL]** テキストボックスに、**TOPdesk - Public AssertionConsumerService URL** (例: "*https://qssolutions.topdesk.net/tas/public/login/saml*") を貼り付けます。
    
@@ -124,11 +124,11 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 10. **[TOPdesk - Public でのシングル サインオンの構成]** ページで、メタデータ ファイルをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターのローカルに保存します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-topdesk-public-tutorial/IC790623.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-topdesk-public-tutorial/IC790623.png "Configure Single Sign-On")
 
 11. 証明書ファイルを作成するには、次の手順を実行します。
     
-    ![証明書](./media/active-directory-saas-topdesk-public-tutorial/IC790606.png "Certificate")
+    ![Certificate](./media/active-directory-saas-topdesk-public-tutorial/IC790606.png "Certificate")
     
     1. ダウンロードしたメタデータ ファイルを開きます。
     2. **fed:ApplicationServiceType** の **xsi:type** を持つ **RoleDescriptor** ノードを展開します。
@@ -136,21 +136,21 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
     4. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 12. TOPdesk - Public 企業サイトの **[TOPdesk]** メニューで、**[Settings]** をクリックします。
     
-    ![[設定]](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
+    ![設定](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
 13. **[Login Settings]**をクリックします。
     
-    ![[Login Settings]](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
+    ![Login Settings](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
 14. **[Login Settings]** メニューを展開し、**[General]** をクリックします。
     
-    ![全般](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
+    ![General](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
 15. **[Public]** セクションで、**[Add]** をクリックします。
     
-    ![[Public]](./media/active-directory-saas-topdesk-public-tutorial/IC790625.png "SAML Login")
+    ![SAML ログイン](./media/active-directory-saas-topdesk-public-tutorial/IC790625.png "SAML ログイン")
 16. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
     
-    ![[SAML configuration assistant]](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
+    ![SAML Configuration Assistant](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
     
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 ダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
+    a. ダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
 
     b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
 
@@ -164,7 +164,7 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 17. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-topdesk-public-tutorial/IC790627.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-topdesk-public-tutorial/IC790627.png "Configure Single Sign-On")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが TOPdesk - Public にログインできるようにするには、そのユーザーを TOPdesk - Public にプロビジョニングする必要があります。  
@@ -179,7 +179,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
 3. [New Person] ダイアログで、次の手順を実行します。
    
-    ![新しいユーザー](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "New Person")
+    ![New Person](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "New Person")
    
     a. [General] タブをクリックします。
 
@@ -202,7 +202,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
 2. **TOPdesk - Public** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
@@ -213,6 +213,6 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

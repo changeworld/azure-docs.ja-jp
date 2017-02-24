@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
-ms.openlocfilehash: 8df936a03868412adf34672108f40829c41f33ab
+ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
+ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
 
 ---
 
@@ -62,7 +62,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 #### <a name="connector-and-published-server-in-the-same-domain"></a>同じドメインにあるコネクタと公開されたサーバー
 1. Active Directory で、**[ツール]** > **[ユーザーとコンピューター]** の順に移動します。
 2. コネクタを実行しているサーバーを選択します。
-3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
+.3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
 4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** をクリックします。 **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。
 5. これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
 
@@ -105,6 +105,8 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 
 ![Windows 以外の SSO の図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
+Kerberos について詳しくは、「[All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd)」(Kerberos の制約付き委任 (KCD) のすべて) をご覧ください。
+
 ### <a name="delegated-login-identity"></a>委任されたログイン ID
 委任されたログイン ID を使用すると、2 つの異なるログイン シナリオに対応できるようになります。
 
@@ -115,14 +117,14 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 
 ![委任されたログイン ID パラメーターのスクリーンショット](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
 
-委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。 異なる 2 つのコネクタ グループを使用してこれらのアプリケーションを 2 回発行することで、この問題を回避できます。 これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
+委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。 異なる&2; つのコネクタ グループを使用してこれらのアプリケーションを&2; 回発行することで、この問題を回避できます。 これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
 
 ## <a name="working-with-sso-when-on-premises-and-cloud-identities-are-not-identical"></a>オンプレミス ID とクラウド ID が同一でない場合の SSO の操作
 他に構成されていない限り、アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 アプリケーションごとに、シングル サインオンを実行するときに使用する ID を構成できます。  
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
-* 内部に複数のドメインがあり (joe@us.contoso.com, joe@eu.contoso.com)、クラウドに 1 つのドメインがある (joe@contoso.com)。
+* 内部に複数のドメインがあり (joe@us.contoso.com, joe@eu.contoso.com)、クラウドに&1; つのドメインがある (joe@contoso.com)。
 * 内部にルーティングできないドメイン名があり (joe@contoso.usa)、クラウドに法的なドメイン名がある。
 * 内部でドメイン名を使用していない (joe)。
 * オンプレミスとクラウドで異なるエイリアスを使用している。 例: joe-johns@contoso.com vs. joej@contoso.com  
@@ -160,6 +162,6 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 
 
 
-<!--HONumber=Dec16_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

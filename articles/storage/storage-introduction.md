@@ -1,5 +1,5 @@
 ---
-title: "Storage の概要 | Microsoft Docs"
+title: "Azure Storage の概要 | Microsoft Docs"
 description: "Microsoft がクラウドで提供するオンライン データ ストレージ、Azure Storage の概要を紹介。 アプリケーションで可用性に最も優れたクラウド ストレージ ソリューションを使用する方法について説明します。"
 services: storage
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/02/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
+ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
+ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
 
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
+
 ## <a name="overview"></a>概要
 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。 この記事では、開発者、IT 技術者、およびビジネスの意思決定者が下記の内容について学習できます。
 
@@ -191,7 +192,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [PowerShell 1.0 用 Storage Resource Provider コマンドレット](https://msdn.microsoft.com/library/azure/mt607151.aspx)
 * [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
-### <a name="azure-storage-data-movement-services"></a>Azure Storage データ管理サービス
+### <a name="azure-storage-data-movement-services"></a>Azure Storage データ移動サービス
 * [Storage Import/Export Service REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
 * [.NET 用 Storage Data Movement クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
@@ -208,6 +209,8 @@ Azure Storage についてさらに学習するには、次のリソースを参
 
 ### <a name="documentation"></a>ドキュメント
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
+* [ストレージ アカウントの作成](storage-create-storage-account.md)
+* [Azure Storage を&5; 分で使い始める](storage-getting-started-guide.md)
 
 ### <a name="for-administrators"></a>管理者向け
 * [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
@@ -246,12 +249,8 @@ Azure Storage についてさらに学習するには、次のリソースを参
 * [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 * [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>次のステップ
-
-* [ストレージ アカウントの作成](storage-create-storage-account.md)
-* [Azure Storage を&5; 分で使い始める](storage-getting-started-guide.md)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

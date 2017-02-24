@@ -26,6 +26,7 @@
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
+### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ## 構成管理のデプロイ (DSC)
 ### [望ましい状態への構成 (DSC)](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
@@ -43,6 +44,7 @@
 ### [統合モジュール](automation-integration-modules.md)
 ### [スケジュール](automation-schedules.md)
 ### [変数](automation-variables.md)
+### [Azure PowerShell モジュールの更新](automation-update-azure-modules.md)
 ## シナリオの自動化
 ### [Runbook ギャラリー](automation-runbook-gallery.md)
 ### [仮想マシンの起動/停止](automation-solution-startstopvm-graphical.md)
@@ -53,7 +55,10 @@
 ### [リソース グループを削除する](automation-scenario-remove-resourcegroup.md)
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
-## [監視](automation-manage-send-joblogs-log-analytics.md)
+### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
+## 監視
+### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
+### [Log Analytics から Azure Automation アカウントのリンクを解除する](automation-unlink-from-log-analytics.md)
 ## 移行
 ### [Orchestrator から移行する](automation-orchestrator-migration.md)
 ### [Automation アカウントを移動する](automation-migrate-account-subscription.md)
@@ -78,6 +83,6 @@
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO4-->
 
 

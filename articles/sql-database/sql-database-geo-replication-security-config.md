@@ -1,9 +1,9 @@
 ---
-title: "データベースを新しいサーバーに復元した後、またはセカンダリ データベースのコピーにデータベースをフェールオーバーした後にセキュリティを管理する方法 | Microsoft Docs"
-description: "このトピックでは、データベースの復元またはフェールオーバー後にセキュリティを管理する際のセキュリティに関する考慮事項について説明します。"
+title: "Azure SQL Database セキュリティを障害復旧用に構成する | Microsoft Docs"
+description: "このトピックでは、データ センターの停電やその他の障害が発生した際に、データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します"
 services: sql-database
 documentationcenter: na
-author: CarlRabeler
+author: anosov1960
 manager: jhubbard
 editor: monicar
 ms.assetid: c7c898c9-69d4-4e16-8b7e-720bbb3353dd
@@ -14,26 +14,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
-ms.author: carlrab
+ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3c8a05cb86522253bbbf85da2d29ba38f114120b
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
 
 
 ---
-# <a name="how-to-manage-azure-sql-database-security-after-disaster-recovery"></a>障害復旧後にセキュリティを管理する方法
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する 
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースで[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用できるようになりました。
-> 
-> 
+>  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>障害復旧の認証要件の概要
 このトピックでは、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。 また、 [geo リストア](sql-database-recovery-using-backups.md#geo-restore)使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。 復旧オプションの詳細については、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 
 ## <a name="disaster-recovery-with-contained-users"></a>包含ユーザーによる障害復旧
-従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 
+従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには&2; つ利点があります。 障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 
 
-主なトレードオフは、大規模な障害復旧プロセスの管理が困難になることです。 同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。 たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。 このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。 
+主なトレードオフは、大規模な障害復旧プロセスの管理が困難になることです。 同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。 たとえば、パスワード ローテーション ポリシーでは、マスター データベースで&1; 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。 このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。 
 
 ## <a name="how-to-configure-logins-and-users"></a>ログインとユーザーを構成する方法
 包含ユーザーではなくログインとユーザーを使用している場合は、追加の手順を実行して、マスター データベースに同じログインが存在することを確認する必要があります。 次のセクションでは、関連する手順とその他の考慮事項について概要を説明します。
@@ -50,10 +49,10 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 > 
 > 
 
-ターゲット サーバーでのログインの設定には、以下に示す 3 つの手順が含まれます。
+ターゲット サーバーでのログインの設定には、以下に示す&3; つの手順が含まれます。
 
 #### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1.プライマリ データベースにアクセスできるログインを特定する:
-このプロセスの最初の手順は、ターゲット サーバー上に複製するログインを特定することです。 そのために、ソース サーバーの論理 master データベースとプライマリ データベースでそれぞれ 1 回ずつ SELECT ステートメントを実行します。
+このプロセスの最初の手順は、ターゲット サーバー上に複製するログインを特定することです。 そのために、ソース サーバーの論理 master データベースとプライマリ データベースでそれぞれ&1; 回ずつ SELECT ステートメントを実行します。
 
 サーバー管理者または **LoginManager** サーバー ロールのメンバーのみが、次の SELECT ステートメントを使用してソース サーバーのログインを特定できます。 
 
@@ -81,7 +80,7 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 > 
 > 
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>手順 3.ターゲット サーバーへのログインを作成する:
+#### <a name="3-create-the-logins-on-the-target-server"></a>手順&3;.ターゲット サーバーへのログインを作成する:
 最後の手順では、1 つ以上のターゲット サーバーにアクセスし、適切な SID を使用してログインを生成します。 基本的な構文は次のとおりです。
 
     CREATE LOGIN [<login name>]
@@ -103,10 +102,9 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 * アクティブ geo レプリケーションの使用および構成の方法については、「 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 * geo リストアの使用方法については、「 [Geo-Restore](sql-database-recovery-using-backups.md#geo-restore)
 
-## <a name="additional-resources"></a>その他のリソース
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

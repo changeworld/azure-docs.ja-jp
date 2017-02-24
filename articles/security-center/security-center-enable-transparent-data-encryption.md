@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center での Transparent Data Encryption の有効化 | Microsoft Docs"
-description: "このドキュメントでは、&quot;Transparent Data Encryption を有効にする&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
+description: "このドキュメントでは、&quot;**Transparent Data Encryption を有効にする**&quot; という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
+ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
+ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
 
 
 ---
@@ -27,8 +27,8 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[Transparent Data Encryption を有効にする]** を選択します。
@@ -37,9 +37,9 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
    ![TDE を有効にする SQL DB の選択][2]
 3. **[Transparent Data Encryption]** ブレードで、[データ暗号化] の **[オン]** を選択し、ブレードの上部のリボンにある **[保存]** をクリックします。
    ![TDE の有効化][3]
-   
+
    選択した SQL Database で TDE が有効になると、**[暗号化の状態]** が **[暗号化済み]** に変わります。    
-   
+
    ![暗号化の状態][4]
 
 ## <a name="see-also"></a>関連項目
@@ -66,6 +66,6 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

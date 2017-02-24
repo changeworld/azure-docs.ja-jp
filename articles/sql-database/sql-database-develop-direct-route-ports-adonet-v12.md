@@ -16,25 +16,16 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fa3f1215c809fe2b45293c56cdca4496fa352afb
+ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
+ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
 
 
 ---
-# <a name="ports-beyond-1433-for-adonet-45-and-sql-database-v12"></a>Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)
-このトピックでは、Azure SQL Database V12 によってもたらされる ADO.NET 4.5 以降のバージョンを使用するクライアントの接続動作の変化について説明します。
+# <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
+このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
 
-## <a name="v11-of-sql-database-port-1433"></a>SQL Database V11: ポート 1433
-クライアント プログラムで ADO.NET 4.5 を使用して、SQL Database V11 に接続し、クエリを実行する場合、内部での実行順序は次のようになります。
-
-1. ADO.NET が SQL Database への接続を試行します。
-2. ADO.NET は、ポート 1433 を使用して、ミドルウェア モジュールを呼び出し、ミドルウェアが SQL Database に接続します。
-3. SQL Database は、ミドルウェアへ応答を送信し、ミドルウェアが ADO.NET のポート 1433 へ応答を転送します。
-
-**用語:** 前述の実行順序の説明では、ADO.NET は *プロキシ ルート*を使用して SQL Database とやり取りしていることを表現しています。 ミドルウェアが関与していない場合は、 *ダイレクト ルート* を使用するというように表現します。
-
-## <a name="v12-of-sql-database-outside-vs-inside"></a>SQL Database V12: 外部と内部
-V12 への接続については、クライアント プログラムが Azure クラウド境界の*内部*で実行されているか、または*外部*で実行されているかを確認する必要があります。 サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
+## <a name="outside-vs-inside"></a>外部と内部
+Azure SQL Database への接続では、まずクライアント プログラムが Azure クラウドの境界の*外部*と*内部*のどちらで実行されているかを確認する必要があります。 サブセクションでは、次の&2; つの一般的なシナリオについて説明します。
 
 #### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部:* クライアントをデスクトップ コンピューターで実行
 ポート 1433 が、SQL Database クライアント アプリケーションをホストするデスクトップ コンピューターで開く必要がある唯一のポートです。
@@ -64,11 +55,6 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * ADO.NET 4.0 は TDS 7.3 プロトコルをサポートしますが、7.4 はサポートされません。
 * ADO.NET 4.5 以降は、TDS 7.4 プロトコルをサポートします。
 
-#### <a name="sql-database-v11-and-v12"></a>SQL Database V11 と V12
-このトピックでは、SQL Database V11 と V12 でのクライアント接続の差異について説明します。
-
-*注:* TRANSACT-SQL ステートメント `SELECT @@version;` は「11」などの数字で始まる値を返します この数値は、SQL Database のバージョン名 (V11 と V12) と一致します。
-
 ## <a name="related-links"></a>関連リンク
 * ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。 .NET チームのブログのお知らせは [こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
 * ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。 .NET チームのブログのお知らせは [こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。
@@ -82,6 +68,6 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

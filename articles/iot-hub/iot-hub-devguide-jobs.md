@@ -1,6 +1,6 @@
 ---
-title: "開発者ガイド - ジョブ | Microsoft Docs"
-description: "Azure IoT Hub 開発者ガイド - ハブに接続されている複数のデバイスで実行するジョブのスケジュール設定"
+title: "Azure IoT Hub ジョブについて | Microsoft Docs"
+description: "開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。"
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
+ms.sourcegitcommit: 8245c9d86d7a37bfb12c06b1cb2cbe9dae01d653
+ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
 
 
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 ## <a name="overview"></a>Overview
-前の記事の説明のとおり、Azure IoT Hub では、多数の構成要素 ([デバイス ツインのプロパティとタグ][lnk-twin-devguide]および[ダイレクト メソッド][lnk-dev-methods]) を使用できます。  通常、デバイス管理者とオペレーターは、IoT バックエンド アプリケーションを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻にデバイスに対して実行されるデバイス ツインの更新とダイレクト メソッドの実行をカプセル化します。  たとえば、オペレーターは、ビル 43 の 3 階にあるデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリケーションを使用できます。
+前の記事の説明のとおり、Azure IoT Hub では、多数の構成要素 ([デバイス ツインのプロパティとタグ][lnk-twin-devguide]および[ダイレクト メソッド][lnk-dev-methods]) を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻にデバイスに対して実行されるデバイス ツインの更新とダイレクト メソッドの実行をカプセル化します。  たとえば、オペレーターは、ビル 43 の 3 階にあるデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用できます。
 
-### <a name="when-to-use"></a>いつ使用するか
+### <a name="when-to-use"></a>使用時の注意
 ジョブは、ソリューションのバックエンドで、一連のデバイスで実行される次のアクティビティのスケジュールを設定し、その進行状況を追跡する必要があるときに使用を検討します。
 
 * 必要なプロパティを更新する
@@ -32,7 +32,7 @@ ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
 * ダイレクト メソッドを呼び出す
 
 ## <a name="job-lifecycle"></a>ジョブのライフサイクル
-ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-09-30-preview`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-09-30-preview`) を通して照会できます。  ジョブの開始後、バックエンド アプリケーションは、ジョブを照会することで、実行中のジョブの状態を更新できます。
+ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) を通して照会できます。  ジョブの開始後、バックエンド アプリは、ジョブを照会することで、実行中のジョブの状態を更新できます。
 
 > [!NOTE]
 > ジョブを呼び出すとき、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
@@ -46,7 +46,7 @@ ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
 ジョブを使用してデバイス上で[ダイレクト メソッド][lnk-dev-methods]を実行するための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -72,7 +72,7 @@ ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
 ジョブを使用してデバイス ツインのプロパティを更新するための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
     Request-Id: <guid>
@@ -93,7 +93,7 @@ ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
 [ジョブを照会する][lnk-query]ための HTTP 1.1 要求の詳細を次に示します。
 
     ```
-    GET /jobs/v2/query?api-version=2016-09-30-preview[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
+    GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -123,7 +123,7 @@ ContinuationToken は、応答から提供されます。
 | **completed**: ジョブは完了しています。 | |
 | **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
 
-プレビュー中は、deviceJobStatistics オブジェクトは、ジョブが完了した後でのみ使用できます。
+**deviceJobStatistics** プロパティ。
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -134,11 +134,11 @@ ContinuationToken は、応答から提供されます。
 | **deviceJobStatistics.pendingCount** |現在ジョブの実行が保留されているデバイスの数。 |
 
 ### <a name="additional-reference-material"></a>参考資料
-開発者ガイド内の他の参照トピックは次のとおりです。
+IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
-* [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリケーションの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
+* [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
 * [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
@@ -162,6 +162,6 @@ ContinuationToken は、応答から提供されます。
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

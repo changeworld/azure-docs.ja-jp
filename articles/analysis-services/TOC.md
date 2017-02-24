@@ -16,9 +16,10 @@
 
 # リソース
 ##[データ ソースの接続](analysis-services-datasource.md)
-##[データ プロバイダー](analysis-services-data-providers.md) 
+##[データ プロバイダー](analysis-services-data-providers.md)
+##[.odc ファイルの作成](analysis-services-odc.md)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

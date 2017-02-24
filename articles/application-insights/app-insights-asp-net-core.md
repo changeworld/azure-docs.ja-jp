@@ -1,5 +1,5 @@
 ---
-title: Application Insights for ASP.NET Core | Microsoft Docs
+title: Azure Application Insights for ASP.NET Core | Microsoft Docs
 description: "Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。"
 services: application-insights
 documentationcenter: .net
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a881d9484089748bffed3713d06e43157dd405c
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 4c97ec97d9d12d86796e995c71d8c9bd6c6a3df2
 
 
 ---
@@ -36,7 +36,7 @@ ms.openlocfilehash: 4a881d9484089748bffed3713d06e43157dd405c
 
 [概要] ページには、最も関心が高いと考えられる、サーバーの応答時間、ページの読み込み時間、失敗した要求の数を示すパフォーマンス グラフが表示されます。 グラフの詳細とデータを表示するには、グラフをクリックします。
 
-ポータルのビューは、次の 2 つの主なカテゴリに分類されます。
+ポータルのビューは、次の&2; つの主なカテゴリに分類されます。
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md): 応答時間、失敗率、[API](app-insights-api-custom-events-metrics.md) を使用して作成したメトリックスなど、メトリックスと数値のグラフとテーブルを表示します。 アプリとそのユーザーの理解を深めるには、プロパティ値によってデータをフィルター処理してセグメント化します。
 * [検索エクスプローラー](app-insights-diagnostic-search.md): 特定の要求、例外、ログ トレース、[API](app-insights-api-custom-events-metrics.md) を使用して作成したイベントなど、個々のイベントを一覧表示します。 イベントのフィルター処理と検索、問題を調査するための関連イベント間の移動を行います。
@@ -59,6 +59,6 @@ ms.openlocfilehash: 4a881d9484089748bffed3713d06e43157dd405c
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT スタート キットに点滅アプリケーションをデプロイする | Microsoft Docs"
+title: "Azure IoT への Intel Edison (C) の接続 - レッスン 1: アプリケーションのデプロイ | Microsoft Docs"
 description: "GitHub のサンプル C アプリケーションを複製し、gulp を実行してこのアプリケーションを Intel Edison ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 604ab48856f3fbc09ca6b566ef3f7e1d18e912c6
-ms.openlocfilehash: 6c911297be4fa2c7ce6bd817233e8a8012634f42
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c0589d488be5ec62686551b97d8949e5fed2f0a3
 
 
 ---
@@ -127,6 +127,6 @@ Edison を操作するために必要なツールをインストールし、Edis
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

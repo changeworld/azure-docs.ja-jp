@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
+ms.sourcegitcommit: c6c716c4dce810f190ed66d633524472ba665256
+ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 
 
 ---
@@ -31,7 +31,7 @@ ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
 このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
 
 ## <a name="connection-scenarios"></a>接続のシナリオ
 クライアントから仮想マシンで実行されている SQL Server に接続する方法は、クライアントの場所と、マシンやネットワークの構成によって異なります。 これらのシナリオは、次のとおりです。
@@ -55,7 +55,7 @@ ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
 ### <a name="connect-to-sql-server-over-the-internet"></a>インターネット経由で SQL Server に接続する方法
 インターネットから、SQL Server データベース エンジンに接続する場合は、着信 TCP 通信用の仮想マシンのエンドポイントを作成する必要があります。 この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
 
-インターネット経由で接続するには、VM の DNS 名と VM エンドポイント ポート番号 (この記事の後半で構成します) を使用する必要があります。 DNS 名を確認するには、Azure ポータルに移動し、 **[仮想マシン (クラシック)]**を選択します。 その後、仮想マシンを選択します。 **DNS 名**は、**[概要]** セクションに表示されます。
+インターネット経由で接続するには、VM の DNS 名と VM エンドポイント ポート番号 (この記事の後半で構成します) を使用する必要があります。 DNS 名を確認するには、Azure Portal に移動し、**[仮想マシン (クラシック)]** を選択します。 その後、仮想マシンを選択します。 **DNS 名**は、**[概要]** セクションに表示されます。
 
 たとえば、DNS 名が **mysqlvm7777.cloudapp.net** であり、VM エンドポイントが **57500** である **mysqlvm** という名前のクラシック仮想マシンがあるとします。 適切に構成された接続がある場合は、次の接続文字列を使用して、インターネット上の任意の場所から仮想マシンにアクセスできます。
 
@@ -101,7 +101,7 @@ ms.openlocfilehash: 98165704fe2699f8ff8a90edb7af8ad10b4d296c
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## <a name="next-steps"></a>次のステップ
-高可用性と障害復旧のために AlwaysOn 可用性グループを使用する予定もある場合、リスナーの実装を検討してください。 データベース クライアントは、SQL Server インスタンスの 1 つに直接接続せずに、リスナーに接続します。 その上でリスナーがクライアントを可用性グループのプライマリ レプリカにルーティングします。 詳細については、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」を参照してください。
+高可用性と障害復旧のために AlwaysOn 可用性グループを使用する予定もある場合、リスナーの実装を検討してください。 データベース クライアントは、SQL Server インスタンスの&1; つに直接接続せずに、リスナーに接続します。 その上でリスナーがクライアントを可用性グループのプライマリ レプリカにルーティングします。 詳細については、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」を参照してください。
 
 Azure の仮想マシンで実行されている SQL Server のセキュリティに関するベスト プラクティスをすべて確認することが重要です。 詳細については、「 [Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](../sql/virtual-machines-windows-sql-security.md)」をご覧ください。
 
@@ -112,6 +112,6 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

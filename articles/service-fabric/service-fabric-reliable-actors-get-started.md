@@ -1,5 +1,5 @@
 ---
-title: "Service Fabric Reliable Actors の使用 | Microsoft Docs"
+title: "C# でアクター ベースの Azure マイクロサービスを初めて作成する | Microsoft Docs"
 description: "このチュートリアルでは、Service Fabric Reliable Actors を使用して簡単なアクターベースのサービスを作成、デバッグ、デプロイする手順について説明します。"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2304a9433bb382c0c7ddcf36733838ac769b9584
-ms.openlocfilehash: 98e519df244e9ae934b8100ea9820a7f765b1ee3
+ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
+ms.openlocfilehash: 25b24e6d267ac14147f426fce46d609954b7dfc9
 
 
 ---
@@ -39,7 +39,7 @@ ms.openlocfilehash: 98e519df244e9ae934b8100ea9820a7f765b1ee3
 * **アクター サービス**。 Reliable Actors は、Service Fabric インフラストラクチャにデプロイできる Reliable Services にパッケージ化されます。 Actor インスタンスは、名前付きのサービス インスタンス内でアクティブ化されます。
 * **アクター登録**。 Reliable Services と同様に、Reliable Actor サービスは Service Fabric ランタイムに登録する必要があります。 さらに、アクターの型を Actor ランタイムに登録する必要があります。
 * **アクター インターフェイス**。 アクター インターフェイスは、アクターの厳密に型指定されたパブリック インターフェイスを定義するために使用されます。 Reliable Actor モデルの用語では、アクター インターフェイスに、アクターが理解し、処理できるメッセージの種類が定義されています。 アクター インターフェイスは、他のアクターとクライアント アプリケーションがメッセージをアクターに (非同期に) "送信" するために使用されます。 Reliable Actors は複数のインターフェイスを実装できます。
-* **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の 2 つの重要な機能を提供します。
+* **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の&2; つの重要な機能を提供します。
   
   * 名前解決: クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
   * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置する必要があるエラーが発生した後に、メソッドの呼び出しを再試行し、アクターの場所を再解決することができます。
@@ -66,7 +66,7 @@ HelloWorld プロジェクトで、Service Fabric Reliable Actors サービス�
 ![Service Fabric プロジェクトの構造][2]
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors の基本的な構成要素
-通常の Reliable Actors ソリューションは、次の 3 つのプロジェクトで構成されます。
+通常の Reliable Actors ソリューションは、次の&3; つのプロジェクトで構成されます。
 
 * **アプリケーション プロジェクト (MyActorApplication)**。 デプロイメントのためにすべてのサービスを一緒にパッケージ化するプロジェクトです。 アプリケーションを管理するための *ApplicationManifest.xml* と PowerShell スクリプトが含まれています。
 * **インターフェイス プロジェクト (MyActor.Interfaces)**。 アクターのインターフェイス定義が含まれているプロジェクトです。 MyActor.Interfaces プロジェクトでは、ソリューションでアクターによって使用されるインターフェイスを定義できます。 アクター インターフェイスは、任意の名前でどのプロジェクトでも定義できます。ただし、このインターフェイスは、アクター実装とアクターを呼び出すクライアントが共有するアクター コントラクトを定義するため、通常は、他の複数のプロジェクトで共有できる、アクター実装とは別のアセンブリで定義します。
@@ -120,7 +120,7 @@ internal static class Program
 
 ```
 
-Visual Studio で新しいプロジェクトから開始する場合に、アクター定義が 1 つだけであれば、Visual Studio によって生成されるコードには既定で登録が含まれます。 サービスで他のアクターを定義する場合は、次のコードを使用してアクター登録を追加する必要があります。
+Visual Studio で新しいプロジェクトから開始する場合に、アクター定義が&1; つだけであれば、Visual Studio によって生成されるコードには既定で登録が含まれます。 サービスで他のアクターを定義する場合は、次のコードを使用してアクター登録を追加する必要があります。
 
 ```csharp
  ActorRuntime.RegisterActorAsync<MyOtherActor>();
@@ -155,6 +155,6 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

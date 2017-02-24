@@ -1,5 +1,5 @@
 ---
-title: "IoT ゲートウェイとしての Intel NUC のセットアップ | Microsoft Docs"
+title: "SensorTag デバイスと Azure IoT Gateway - レッスン 1: NUC の設定 | Microsoft Docs"
 description: "センサー情報を収集して IoT Hub に送信するために、Intel NUC をセンサーと Azure IoT Hub 間の IoT ゲートウェイとして機能するようにセットアップします。"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: ef479f503ac4e911f3a9d311d0f436d95396eedd
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 53e709c5134eec29d71be1d75353d606aa651273
 
 
 ---
@@ -131,13 +131,13 @@ cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 
 ## <a name="summary"></a>まとめ
 
-お疲れさまでした。 Intel NUC をゲートウェイとしてセットアップする操作が完了しました。 これで、次のレッスンに進んで、ホスト コンピューターをセットアップし、Azure IoT ハブを作成し、Azure IoT ハブの論理デバイスを登録することができます。
+ご利用ありがとうございます。 Intel NUC をゲートウェイとしてセットアップする操作が完了しました。 これで、次のレッスンに進んで、ホスト コンピューターをセットアップし、Azure IoT ハブを作成し、Azure IoT ハブの論理デバイスを登録することができます。
 
 ## <a name="next-steps"></a>次のステップ
 [ホスト コンピューターと Azure IoT ハブの準備](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

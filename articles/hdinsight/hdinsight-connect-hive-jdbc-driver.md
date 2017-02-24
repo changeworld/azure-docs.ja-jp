@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cf0baa0bb9dab87a3ac0376a0aa115dca198f790
-ms.openlocfilehash: 82a7dc272d101e6c608209121f3edf1062ad1b5f
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 41c3e20dc059ecc344cba6ca09ec04892e202d63
 
 
 ---
@@ -34,6 +34,10 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Hadoop。 Linux または Windows ベースのクラスターが動作します。
+
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL は、JDBC クライアント アプリケーションです。
 
 この記事からリンクされている Java アプリケーションの例をビルドおよび実行するには、以下が必要です。
@@ -77,7 +81,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
             **USERNAME** をクラスターの SSH ユーザー アカウント名に置き換えます。 **CLUSTERNAME** を HDInsight クラスター名に置き換えます。
         
         > [!NOTE]
-        > Windows 環境では、scp ではなく、PSCP ユーティリティを使用する必要があります。 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードすることができます。
+        > Windows 環境には、`scp` コマンドがない場合があります。 その場合は、代わりに PSCP ユーティリティを使います。 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)からダウンロードすることができます。
 
     * **Windows ベースの HDInsight**の場合、次の手順を使用して、jar ファイルをダウンロードします。
      
@@ -195,6 +199,6 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

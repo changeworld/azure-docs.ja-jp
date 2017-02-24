@@ -4,7 +4,7 @@ description: "Windows 10 デバイスで Azure AD Join を使用して Azure Act
 services: active-directory
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 tags: azure-classic-portal
 ms.assetid: 0cd4942f-7d54-474e-bd12-8e6764b0d42a
@@ -13,8 +13,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/22/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 31574a82d190b9b157f8df3308fac298924eada5

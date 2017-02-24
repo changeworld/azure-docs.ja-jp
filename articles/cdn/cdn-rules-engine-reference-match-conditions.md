@@ -1,6 +1,6 @@
 ---
-title: "Azure Content Delivery Network ルール エンジンの一致条件 | Microsoft Docs"
-description: "このトピックでは、ルール エンジンの一致条件と機能について説明します"
+title: "Azure CDN ルール エンジンの一致条件 | Microsoft Docs"
+description: "Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。"
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,19 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: f96e977c777e4ecd007d6cd863054addb465489d
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
 
 
 ---
 
-#<a name="match-conditions-for-azure-content-delivery-network-cdn-rules-engine"></a>Azure Content Delivery Network (CDN) ルール エンジンの一致条件
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件について詳しく説明します。
 
-ルールの 2 番目の部分は、一致条件です。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して一連の機能が実行されます。
+ルールの&2; 番目の部分は、一致条件です。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して一連の機能が実行されます。
 
 たとえば、特定の場所のコンテンツの要求、特定の IP アドレスまたは国から生成された要求、あるいはヘッダー情報をフィルター処理するために使用されます。
 
@@ -128,6 +128,6 @@ URL Query Wildcard (URL クエリ ワイルドカード) | 指定値を要求の
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

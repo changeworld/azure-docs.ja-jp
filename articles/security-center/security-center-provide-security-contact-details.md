@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9921bce954186ba5d3fa21312aa596dcddfe827f
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: f4ae3395c44f175603556711bfe2f90f0f987c94
 
 
 ---
@@ -27,8 +27,8 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[セキュリティ連絡先の詳細情報の指定]** を選択します。
@@ -36,7 +36,7 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 2. これにより、 **[セキュリティ連絡先の詳細情報の指定]**ブレードが開きます。 連絡先情報を指定する Azure サブスクリプションを選択します。
    ![[セキュリティ連絡先の詳細情報の指定]][2]
 3. 2 つ目の **[セキュリティ連絡先の詳細情報の指定]** ブレードが開きます。
-   
+
    * セキュリティ連絡先の電子メール アドレスを (複数の場合はコンマで区切って) 入力します。 入力できる電子メール アドレスの数に制限はありません。
    * セキュリティ連絡先の国際電話番号を 1 件入力します。
    * 重大度が高い警告に関する電子メールを受信するには、 **[Send me emails about alerts (警告に関する電子メールを受け取る)]**オプションをオンにします。
@@ -60,6 +60,6 @@ Azure Security Center では、Azure サブスクリプションに対してセ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

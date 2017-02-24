@@ -26,7 +26,6 @@
 ### [SharePoint サイト](app-insights-sharepoint.md)
 ### [その他のプラットフォーム](app-insights-platforms.md)
 
-## [ASP.NET に関する FAQ](app-insights-troubleshoot-faq.md)
 
 # 方法
 ## 計画と設計
@@ -36,14 +35,11 @@
 ### [Application Insights による利用状況分析](app-insights-overview-usage.md)
 ### [Application Insights リソースの分離](app-insights-separate-resources.md)
 ### [Application Insights での作業](app-insights-how-do-i.md)
-## 移行
-### [Azure エンドポイント監視から Application Insights 可用性テストへの移行](app-insights-migrate-azure-endpoint-tests.md)
+
 
 ## 構成
-### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
 ### Azure
 #### [診断](app-insights-azure-diagnostics.md)
-## [IP アドレス](app-insights-ip-addresses.md)
 
 ### ASP.NET
 #### [その他のテレメトリの収集](app-insights-asp-net-more.md)
@@ -52,12 +48,15 @@
 #### [パフォーマンス カウンター](app-insights-performance-counters.md)
 #### [依存関係](app-insights-asp-net-dependencies.md)
 #### [リリース注釈](app-insights-annotations.md)
+#### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
+#### [FAQ](app-insights-troubleshoot-faq.md)
 
 
 ### J2EE
 #### [ログ トレース](app-insights-java-trace-logs.md)
 #### [Unix メトリック](app-insights-java-collectd.md)
 #### [依存関係](app-insights-java-agent.md)
+#### [テレメトリのフィルター処理](app-insights-java-filter-telemetry.md)
 
 ### アラート
 
@@ -68,6 +67,8 @@
 #### [失敗の異常](app-insights-proactive-failure-diagnostics.md)
 #### [パフォーマンスの異常](app-insights-proactive-performance-diagnostics.md)
 
+### [リソースの作成](app-insights-create-new-resource.md)
+
 ## 分析
 
 ### Application Insights ポータル
@@ -75,21 +76,22 @@
 #### [ダッシュボード](app-insights-dashboards.md)
 #### [Search](app-insights-diagnostic-search.md)
 #### [メトリック](app-insights-metrics-explorer.md)
-#### [分析]
-
-##### [Analytics](app-insights-analytics.md)
-##### [Analytics について](app-insights-analytics-tour.md)
-##### [Analytics の使用](app-insights-analytics-using.md)
 
 #### [アプリケーション マップ](app-insights-app-map.md)
 #### [HockeyApp データ](app-insights-hockeyapp-bridge-app.md)
-#### [リソースの作成](app-insights-create-new-resource.md)
 
 ### Visual Studio
 
 #### [F5 による洞察](app-insights-visual-studio.md)
 #### [傾向](app-insights-visual-studio-trends.md)
 #### [CodeLens](app-insights-visual-studio-codelens.md)
+
+### 分析
+
+#### [概要](app-insights-analytics.md)
+#### [ツアー](app-insights-analytics-tour.md)
+#### [キューにメッセージがないときに](app-insights-analytics-using.md)
+#### [インポート](app-insights-analytics-import.md)
 
 ## 自動化
 
@@ -98,61 +100,69 @@
 ### [アラートを設定する](app-insights-powershell-alerts.md)
 ### [Azure 診断の実行](app-insights-powershell-azure-diagnostics.md)
 
-
-## 統合
-
-### [連続エクスポート](app-insights-export-telemetry.md)
-### [Power BI へのエクスポート](app-insights-export-power-bi.md)
-
 ## 開発
 
 ### [カスタム イベントとメトリックの API](app-insights-api-custom-events-metrics.md)
 ### [テレメトリのフィルター処理および前処理](app-insights-api-filtering-sampling.md)
+### [サンプリング](app-insights-sampling.md)
 ### [ASP.NET Core](app-insights-asp-net-core.md)
-
 
 ## 管理
 ### [価格とクォータの管理](app-insights-pricing.md)
 ### [SCOM での Application Insights を使用したアプリケーション パフォーマンス監視](app-insights-scom.md)
 
 ##エクスポート
-## [データのエクスポート モデル](app-insights-export-data-model.md)
+### [連続エクスポート](app-insights-export-telemetry.md)
+### [データのエクスポート モデル](app-insights-export-data-model.md)
+### [Power BI へのエクスポート](app-insights-export-power-bi.md)
 
 ## セキュリティ保護
 ### [データの収集、保持、保存](app-insights-data-retention-privacy.md)
 ### [リソース、役割、およびアクセス制御](app-insights-resources-roles-access-control.md)
+### [IP アドレス](app-insights-ip-addresses.md)
+
 ## トラブルシューティング
 ### [.NET のデータがない](app-insights-asp-net-troubleshoot-no-data.md)
 ### [Analytics](app-insights-analytics-troubleshooting.md)
 ### [Java](app-insights-java-troubleshoot.md)
 
 # リファレンス
+## [Analytics](app-insights-analytics-reference.md)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
+## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [REST ()](https://dev.applicationinsights.io/)
 
 # リソース
-## [Analytics リファレンス](app-insights-analytics-reference.md)
-## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [開発者分析: 言語、プラットフォーム、統合](app-insights-platforms.md)
-### [サンプリング](app-insights-sampling.md)
-### [サンプルとチュートリアル](app-insights-code-samples.md)
-#### [チュートリアル: Microsoft Dynamics CRM Online のテレメトリの有効化](app-insights-sample-mscrm.md)
-#### [チュートリアル: Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
-#### [コード サンプル: エクスポートされたデータを解析する](app-insights-code-sample-export-telemetry-sql-database.md)
-## [Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート](app-insights-release-notes-windows.md)
-## [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
-## [SDK リリース ノート - Application Insights](app-insights-release-notes.md)
+
+## [言語とプラットフォーム](app-insights-platforms.md)
+
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=application-insights) 
-## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
-## [サポート](app-insights-get-dev-support.md)
+
+## [サンプルとチュートリアル](app-insights-code-samples.md)
+### [チュートリアル: Microsoft Dynamics CRM Online のテレメトリを有効にする](app-insights-sample-mscrm.md)
+### [チュートリアル: Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
+### [コード サンプル: エクスポートされたデータを解析する](app-insights-code-sample-export-telemetry-sql-database.md)
+
+## ニュース
+
+### [ブログ](https://azure.microsoft.com/blog/tag/application-insights/)
+### [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
+### [SDK リリース ノート](app-insights-release-notes.md)
+### [Developer Analytics Tools のリリース ノート](app-insights-release-notes-vsix.md)
+
+
+## [ヘルプ]
+### [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
+### [ユーザーの声](https://visualstudio.uservoice.com/forums/357324-application-insights)
+### [サポート](app-insights-get-dev-support.md)
+
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

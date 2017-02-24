@@ -3,7 +3,7 @@ title: "CORS を利用した Azure CDN の使用 | Microsoft Docs"
 description: "クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。"
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
@@ -12,33 +12,47 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e4f7e947ab3e9ee67224edc9cad07d82524af2b7
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
 
 
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
-CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるドメイン (オリジン ドメイン) から他のドメイン内の API を安全に呼び出すことができます。
+CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
 ## <a name="how-it-works"></a>動作のしくみ
-1. ブラウザーが **Origin** HTTP ヘッダーを含んだ OPTIONS 要求を送信します。 このヘッダーの値は、親ページを提供したドメインです。 https://www.contoso.com のページが fabrikam.com ドメイン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。 
-   
+CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の&2; 種類があります。
+
+### <a name="for-simple-requests"></a>単純な要求の場合:
+
+1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https://www.contoso.com のページが fabrikam.com オリジン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
+
    `Origin: https://www.contoso.com`
-2. サーバーからは次のような応答が返される場合があります。
-   
+
+2. サーバーからは次のいずれかの応答が返される場合があります。
+
    * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 次に例を示します。
-     
+
      `Access-Control-Allow-Origin: https://www.contoso.com`
-   * エラー ページ (サーバーによってクロス オリジン要求が許可されなかった場合)
-   * すべてのドメインを許可するワイルドカードが含まれた **Access-Control-Allow-Origin** ヘッダー。
-     
+
+   * 403 などの HTTP エラー コード (Origin ヘッダーの確認後、サーバーによってクロス オリジン要求が許可されなかった場合)
+
+   * すべてのオリジンを許可するワイルドカードが含まれる **Access-Control-Allow-Origin** ヘッダー。
+
      `Access-Control-Allow-Origin: *`
 
-HTTP 要求が複雑な場合、完全な要求を送信する前に、アクセス許可が付与されているかどうかを判断するために、まず "プレフライト" 要求が行われます。
+### <a name="for-complex-requests"></a>複雑な要求:
+
+複雑な要求は CORS 要求です。この要求で、ブラウザーは実際の CORS 要求を送信する前に、"*プレフライト要求*" (準備プローブ) を送信します。 プレフライト要求は、サーバーのアクセス許可に対して、元の CORS 要求が処理を実行できるかどうかと、その要求が、同じ URL への `OPTIONS` 要求かどうかを尋ねます。
+
+> [!TIP]
+> CORS フローおよびよくある落とし穴の詳細については、[CORS for REST API ガイド](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)を参照してください。
+>
+>
 
 ## <a name="wildcard-or-single-origin-scenarios"></a>ワイルドカードまたは単一のオリジンのシナリオ
 Azure CDN の CORS は、 **Access-Control-Allow-Origin** ヘッダーがワイルドカード (*) または単一のオリジンに設定されている場合、そのままの構成で自動的に動作します。  最初の応答が CDN によってキャッシュされ、後続の要求で同じヘッダーが使用されます。
@@ -53,9 +67,9 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
 
-ルール エンジンを使用してこれを行う方法は 2 つあります。  どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは完全に無視されます。CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
+ルール エンジンを使用してこれを行う方法は&2; つあります。  どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは完全に無視されます。CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
 
-#### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる 1 つの正規表現
+#### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる&1; つの正規表現
 この場合、許可するオリジンがすべて含まれた正規表現を作成します。 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
@@ -85,6 +99,6 @@ Azure CDN Standard プロファイルでは、ワイルドカード オリジン
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

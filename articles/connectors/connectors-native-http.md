@@ -4,7 +4,7 @@ description: "HTTP アクションとプロパティの概要"
 services: 
 documentationcenter: 
 author: jeffhollan
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 522624ccb14d295359ff5585e1b46b618b45c305
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
 
 
 ---
@@ -29,7 +29,7 @@ HTTP アクションを使用すると、組織のワークフローを拡張し
 * 管理対象の Web サイトがダウンしたときにアクティブ化する (トリガーする) ロジック アプリ ワークフローを作成します。
 * HTTP 経由で任意のエンドポイントと通信して、ワークフローを他のサービスに拡張します。
 
-ロジック アプリで HTTP アクションの使用を開始する方法については、 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリで HTTP アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## <a name="use-the-http-trigger"></a>HTTP トリガーの使用
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
@@ -85,14 +85,14 @@ HTTP トリガーのパラメーターの詳細については、 [MSDN](https:/
 5. ツール バーの左上隅をクリックして、保存します。 ロジック アプリが保存されて発行 (アクティブ化) されます。
 
 ## <a name="http-trigger"></a>HTTP トリガー
-ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 HTTP コネクタにはトリガーが 1 つあります。
+ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 HTTP コネクタにはトリガーが&1; つあります。
 
 | トリガー | Description |
 | --- | --- |
 | HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
 
 ## <a name="http-action"></a>HTTP アクション
-ここでは、このコネクタでサポートされているアクションの詳細について説明します。 HTTP コネクタには、使用可能なアクションが 1 つあります。
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。 HTTP コネクタには、使用可能なアクションが&1; つあります。
 
 | アクション | Description |
 | --- | --- |
@@ -125,7 +125,7 @@ HTTP 応答の出力の詳細を次に示します。
 | 状態コード |int |HTTP 状態コード |
 
 ## <a name="authentication"></a>認証
-Azure App Service の Logic Apps 機能では、HTTP エンドポイントに対してさまざまな種類の認証を使用できます。 この認証は、**HTTP**、**[HTTP + Swagger](connectors-native-http-swagger.md)**、**[HTTP Webhook](connectors-native-webhook.md)** の各コネクタで使用できます。 次の種類の認証を構成できます。
+Logic Apps 機能では、HTTP エンドポイントに対してさまざまな種類の認証を使用できます。 この認証は、**HTTP**、**[HTTP + Swagger](connectors-native-http-swagger.md)**、**[HTTP Webhook](connectors-native-webhook.md)** の各コネクタで使用できます。 次の種類の認証を構成できます。
 
 * [基本認証](#basic-authentication)
 * [クライアント証明書認証](#client-certificate-authentication)
@@ -187,7 +187,7 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 *
 | --- | --- | --- |
 | Type* |type |認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります) |
 | Tenant* |テナント |Azure AD テナントのテナント識別子。 |
-| Audience* |対象となる読者 | `https://management.core.windows.net/` |
+| Audience* |対象となる読者 |`https://management.core.windows.net/` |
 | Client ID* |clientId |Azure AD アプリケーションのクライアント識別子 |
 | Secret* |secret |トークンを要求しているクライアントのシークレット |
 
@@ -209,11 +209,11 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 *
 ```
 
 ## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

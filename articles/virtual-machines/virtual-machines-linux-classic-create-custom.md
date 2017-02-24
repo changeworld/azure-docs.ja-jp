@@ -1,6 +1,6 @@
 ---
-title: "CLI を使用したクラシック Linux VM の作成 | Microsoft Docs"
-description: "クラシック デプロイ モデルを使用して Azure CLI で Linux 仮想マシンを作成する方法について説明します。"
+title: "Azure CLI 1.0 を使用したクラシック Linux VM の作成 | Microsoft Docs"
+description: "クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシンを作成する方法について説明する"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,20 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f556fd0318accc19f0fa56fa7f2a8716ee6f1c02
-ms.openlocfilehash: cfb86b803e2c74dfff567b0a9920735ddb9e69f4
+ms.sourcegitcommit: 35f75c6feba187b15857c8e01df02bf918662fae
+ms.openlocfilehash: 0c667a20ba813ac37e49805c339cccb52832fdf0
 
 
 ---
-# <a name="how-to-create-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM を作成する方法
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用してクラシック Linux VM を作成する方法
+> [!IMPORTANT] 
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager バージョンについては、[こちら](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
-Resource Manager バージョンについては、[こちら](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
-
-このトピックでは、クラシック デプロイ モデルを使用して Azure CLI で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure CLI コマンドでは、次のような構成を選択できます。
+このトピックでは、クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure CLI 1.0 コマンドでは、次のような構成を選択できます。
 
 * 仮想ネットワークと VM との接続
 * 既存のクラウド サービスへの VM の追加
@@ -44,6 +43,6 @@ Resource Manager バージョンについては、[こちら](virtual-machines-l
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

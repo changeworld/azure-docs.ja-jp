@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c2f2665b217b2de1656e77dae0d9b6c2b439ff5
+ms.sourcegitcommit: 66b1c7769f1141aa2853f77fdb82ad16f5b4e6d3
+ms.openlocfilehash: ec2f9618c4cd4a2944eec8efec83d325da058bb1
 
 
 ---
@@ -45,12 +45,12 @@ Azure AD と Namely の統合を構成するには、次のものが必要です
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから Namely を追加する 
 2. Azure AD シングル サインオンの構成とテスト
@@ -117,7 +117,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure Single Sign-On](./media/active-directory-saas-namely-tutorial/tutorial_namely_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     b. **[次へ]**をクリックします。
 5. Web ブラウザーの別のウィンドウで、Namely の企業サイトに管理者としてサインオンします。
@@ -195,7 +195,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. **[完了]** をクリックします。   
 
 ### <a name="creating-a-namely-test-user"></a>Namely のテスト ユーザーの作成
 このセクションの目的は、Namely で Britta Simon というユーザーを作成することです。
@@ -276,6 +276,6 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

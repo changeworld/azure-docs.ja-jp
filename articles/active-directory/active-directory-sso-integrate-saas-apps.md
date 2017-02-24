@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
 
 
 ---
@@ -25,12 +25,12 @@ ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-enterprise-apps-manage-sso.md)
 > * [Azure クラシック ポータル](active-directory-sso-integrate-saas-apps.md)
-> 
-> 
+>
+>
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
-組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。 Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。 これらのうち 2 つ以上を所有している場合は、「 [Azure AD ディレクトリの管理](active-directory-administer.md) 」を参照して、どれを使用するかを判断してください。
+組織に展開するアプリのためのシングル サインオンのセットアップ作業では、Azure Active Directory (Azure AD) 内にある既存のディレクトリを使用します。 Microsoft Azure、Office 365、または Windows Intune を通じて取得した Azure AD ディレクトリを使用できます。 これらのうち&2; つ以上を所有している場合は、「 [Azure AD ディレクトリの管理](active-directory-administer.md) 」を参照して、どれを使用するかを判断してください。
 
 ## <a name="authentication"></a>認証
 プロトコル SAML 2.0、Ws-federation、または OpenID Connect をサポートしているアプリケーションは、Azure Active Directory を使用して署名証明書を信頼関係を確立できます。 詳細については、「 [フェデレーション シングル サインオンのための証明書の管理](active-directory-sso-certs.md)」を参照してください。
@@ -50,8 +50,8 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 > [!NOTE]
 > 既存のアプリケーションの SSO を設定するには、Azure AD と SaaS アプリケーションの両方でグローバル管理者権限が必要です。
-> 
-> 
+>
+>
 
 ### <a name="mapping-user-accounts"></a>ユーザー アカウントのマップ
 ユーザー ID には、通常、一意の識別子が含まれます。それには電子メール アドレスまたはユーザー プリンシパル名 (UPN) が使用可能です。 ユーザーの各アプリケーション ID は、ユーザーの各 Azure AD ID にリンク (マップ) する必要があります。 アプリケーション認証の要件に応じて、これを実現する方法はいくつかあります。
@@ -72,12 +72,11 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 Azure.com ライブラリには、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をはじめとして、ここで紹介した問題に関する詳細情報があります。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

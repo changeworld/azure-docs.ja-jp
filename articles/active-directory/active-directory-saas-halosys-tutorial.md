@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
@@ -124,7 +124,7 @@ Halosys で Azure AD のシングル サインオンを構成してテストす�
 
     a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[サインオン URL]** ボックスに、`https://<company-name>.Halosys.com/client-api/api` の形式で、Halosys アプリケーションにサインオンする際にユーザーが使用する URL を入力します。
 
-    b.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company-name>.Halosys.com`   
+    b.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company-name>.Halosys.com`    
          
 4. **[Halosys でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 

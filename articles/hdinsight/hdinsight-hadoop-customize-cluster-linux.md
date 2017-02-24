@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
-ms.openlocfilehash: a7febd4af48a28daace9f267c8ddd1440cbedabf
+ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
+ms.openlocfilehash: 49bec6125bcd76c3bb52f1237b0f0e0ceff85ffb
 
 
 ---
@@ -25,8 +25,10 @@ ms.openlocfilehash: a7febd4af48a28daace9f267c8ddd1440cbedabf
 
 HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す **スクリプト アクション** という構成オプションがあります。 こうしたスクリプトは、クラスターの作成時、または既に実行されているクラスターで使用できるほか、その他のコンポーネントのインストールや構成設定の変更にも使用されます。
 
-> [!NOTE]
-> 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。 Windows ベースのクラスターでスクリプト アクションを使用する方法の詳細については、「 [スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
+> [!IMPORTANT]
+> 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。
+>
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 
 スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 このドキュメントの例では、PowerShell と .NET SDK からスクリプト アクション コマンドを使用して HDInsight アプリケーションをインストールする方法を示します。 HDInsight のアプリケーションの詳細については、「 [Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」を参照してください。
@@ -78,7 +80,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * **保存**することも、**アドホック**に使うこともできます。
 
-    **保存した**スクリプトは、ワーカー ノードに適用されるスクリプトとなり、クラスターのスケールアップ時に作成された新しいノードで自動的に実行されます。
+    **保存済み**スクリプトは、worker ノードに適用されるスクリプトで、クラスターのスケールアップ時に作成された新しいノードで自動的に実行されます。
 
     保存済みスクリプトによって、ヘッド ノードなどの別のタイプのノードに変更が適用されることもありますが、機能の観点から見た場合、スクリプトを保存する唯一の理由は、クラスターのスケールアウト時に作成された新しい worker ノードに適用されるようにすることです。
 
@@ -95,8 +97,6 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 * 実行中にスクリプトによって使用される**パラメーター**を受け取ることができます。
 * クラスター ノードで**ルート レベルの権限**を使用して実行されます。
 * **Azure Portal**、**Azure PowerShell**、**Azure CLI**、または **HDInsight .NET SDK** で使用できます。
-
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
 クラスターに適用されているスクリプトを把握しやすいように、また、昇格または降格対象のスクリプトの ID を確認しやすいように、クラスターには、実行されたすべてのスクリプトの履歴が保持されます。
 
@@ -138,7 +138,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 >
 > スクリプト アクションはルート権限で実行されるため、スクリプトをクラスターに適用する前に、そのスクリプトによる処理を必ず理解しておく必要があります。
 
-スクリプトをクラスターに適用すると、スクリプトが適切であれば、クラスターの状態は **[実行中]** から **[承諾済み]**、**[HDInsight 構成]** の順に変わり、最後に **[実行中]** に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。そのログを使用して、スクリプトが成功したか失敗したかを確認できます。 たとえば、`Get-AzureRmHDInsightScriptActionHistory` PowerShell コマンドレットを使用して、スクリプトの状態を表示できます。 このコマンドレットは、次のような情報を返します。
+スクリプトをクラスターに適用すると、スクリプトが適切であれば、クラスターの状態は **[実行中]** から **[承諾済み]**、**[HDInsight 構成]** の順に変わり、最後に **[実行中]** に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。そのログを使用して、スクリプトが成功したか失敗したかを確認できます。 たとえば、`Get-AzureRmHDInsightScriptActionHistory` PowerShell コマンドレットを使用して、スクリプトの状態を表示できます。 次のような情報が返されます。
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 2/23/2016 7:40:55 PM
@@ -418,7 +418,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
         $containerName = $clusterName
         $location = "<MicrosoftDataCenter>"                # Location of the HDInsight cluster. It must be in the same data center as the storage account.
         $clusterNodes = <ClusterSizeInNumbers>            # The number of nodes in the HDInsight cluster.
-        $resourceGroupName = "<ResourceGroupName>"      # The resource group that the HDInsight cluster will be created in
+        $resourceGroupName = "<ResourceGroupName>"      # The resource group that the HDInsight cluster is created in
 
 2. クラスター内のノードや使用する既定のストレージなどの構成値を指定します。
 
@@ -503,7 +503,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
        このスクリーン ショットでは `contosodata` は既存の Azure ストレージ アカウントで、2 行目は、ストレージ アカウント キーです。
 
-   * **[保存済み]**: クラスターをスケールアップするときに、新しいワーカー ノードに適用されるようにスクリプトを保存する場合は、このエントリをオンにします。
+   * **[保存済み]**: クラスターをスケールアップするときに、新しい worker ノードに適用されるようにスクリプトを保存する場合は、このエントリをオンにします。
 
 5. 最後に、**[作成]** ボタンを使用して、スクリプトをクラスターに適用します。
 
@@ -628,7 +628,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
     # Promote this to a persisted script
     # Note: the script must have a unique name to be promoted
-    # if the name is not unique, you will receive an error
+    # if the name is not unique, you receive an error
     Set-AzureRmHDInsightPersistedScriptAction -ClusterName mycluster -ScriptExecutionId 635920937765978529
 
     # Demote the script back to ad hoc
@@ -736,6 +736,31 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 > [!WARNING]
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 このアカウントのパスワードを変更すると、HDInsight クラスターで新しいスクリプト アクションを実行できなくなります。
 
+### <a name="cannot-import-name-blobservice"></a>名前 BlobService をインポートできない
+
+__症状__: スクリプト アクションが失敗し、Ambari で操作を表示するときに次のようなエラーが表示されます。
+
+```
+Traceback (most recent call list):
+  File "/var/lib/ambari-agent/cache/custom_actions/scripts/run_customscriptaction.py", line 21, in <module>
+    from azure.storage.blob import BlobService
+ImportError: cannot import name BlobService
+```
+
+__原因__: このエラーは、HDInsight クラスターに含まれている Python Azure Storage クライアントをアップグレードする場合に発生します。 HDInsight は、Azure Storage クライアント 0.20.0 を予期しています。
+
+__解決策__: このエラーを解決するには、`ssh` を使用して各クラスター ノードを手動で接続し、次のコマンドを使用して、正しいストレージ クライアントのバージョンを再インストールします。
+
+```
+sudo pip install azure-storage==0.20.0
+```
+
+SSH を使用してクラスターに接続する方法の詳細については、次のドキュメントを参照してください。
+
+* [Linux、Unix、OS X、Windows から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+* [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>クラスターの作成時に使用されたスクリプトが履歴に表示されません
 
 クラスターが 2016 年 3 月 15 日より前に作成された場合、クラスターの作成時に使用されたスクリプトのスクリプト アクション履歴にエントリが表示されない可能性があります。 ただし、2016 年 3 月 15 日より後にそのクラスターのサイズを変更すると、スクリプトはサイズ変更操作の一部としてクラスター内の新しいノードに適用されるため、クラスター作成時のスクリプトの使用は履歴に表示されます。
@@ -761,6 +786,6 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
-ms.author: chrande
+ms.date: 01/18/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 36cf563a8318acb9371c48ba7d29e24694446e45
+ms.sourcegitcommit: 770cac8809ab9f3d6261140333ec789ee1390daf
+ms.openlocfilehash: bf9bd2a1b5acdf5a4a4f862bef693f8c60c63a33
 
 
 ---
@@ -46,14 +46,14 @@ Azure Storage キュー トリガーを使用すると、ストレージ キュ�
 }
 ```
 
-`connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。
+`connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントを作成するか、既存のストレージ アカウントを選択するときに、**[統合]** タブでこのアプリ設定を構成できます。 このアプリ設定を手動で作成するには、[App Service 設定の管理](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)に関するページをご覧ください。
 
 [その他の設定](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)は host.json ファイルで指定でき、ストレージ キュー トリガーをさらに微調整することができます。  
 
 ### <a name="handling-poison-queue-messages"></a>有害キュー メッセージの処理
-キュー トリガー関数が失敗すると、Azure Functions はその関数を特定のキュー メッセージに対して既定で最大 5 回再試行します (これは最初の試行を含む数字です)。 試行が 5 回とも失敗した場合、Functions は *&lt;originalqueuename>-poison* という名前の Storage キューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。 
+キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大&5; 回再試行します。 試行が&5; 回とも失敗した場合、Functions は、*&lt;originalqueuename>-poison* という名前の Storage キューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。 
 
-有害メッセージを手動で処理する場合は、処理のためにメッセージが取得された回数を、`dequeueCount` を確認することで取得できます (「[キュー トリガー メタデータ](#meta)」を参照してください)。
+有害メッセージを手動で処理するには、処理のためにメッセージが取得された回数を、`dequeueCount` を確認することで取得できます (「[キュー トリガー メタデータ](#meta)」を参照してください)。
 
 <a name="triggerusage"></a>
 
@@ -63,11 +63,10 @@ C# 関数の場合、入力メッセージにバインドするには、関数�
 
 キュー メッセージを、次のいずれかの型に逆シリアル化できます。
 
-* 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でシリアル化されたメッセージに有効です。
-  カスタム入力型を宣言した場合 (例: `FooType`)、Azure Functions は、指定した型に JSON データを逆シリアル化しようとします。
+* [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でシリアル化されたメッセージに使用されます。 カスタム入力型を宣言した場合、ランタイムは、JSON オブジェクトを逆シリアル化しようとします。 
 * String
-* Byte array 
-* `CloudQueueMessage` (C#) 
+* Byte array
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx) (C# のみ)
 
 <a name="meta"></a>
 
@@ -148,7 +147,7 @@ public static void Run(string myQueueItem,
 
 ```javascript
 module.exports = function (context) {
-    context.log('Node.js queue trigger function processed work item' context.bindings.myQueueItem);
+    context.log('Node.js queue trigger function processed work item', context.bindings.myQueueItem);
     context.log('queueTrigger =', context.bindingData.queueTrigger);
     context.log('expirationTime =', context.bindingData.expirationTime);
     context.log('insertionTime =', context.bindingData.insertionTime);
@@ -177,45 +176,46 @@ Azure Storage キューの出力バインドにより、関数で Storage キュ
 }
 ```
 
-`connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。
+`connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[App Service 設定の管理](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)に関するページをご覧ください。
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>出力の使用方法
-C# 関数の場合、キュー メッセージを書き込むには、関数のシグネチャで `out <T> <name>` などの名前付き `out` パラメーターを使用します。`T` はデータのシリアル化先のデータ型です。`paramName` は[出力バインド](#output)で指定した名前です。 Node.js 関数の場合、`context.bindings.<name>` を使用して出力にアクセスします。
+C# 関数の場合、キュー メッセージを書き込むには、関数のシグネチャで `out <T> <name>` などの名前付き `out` パラメーターを使用します。 この場合、`T` は、メッセージのシリアル化先のデータ型です。`paramName` は、[出力バインド](#output)で指定した名前です。 Node.js 関数の場合、`context.bindings.<name>` を使用して出力にアクセスします。
 
 キュー メッセージを、次のいずれかのデータ型を使用してコードで出力できます。
 
-* 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でのシリアル化に有効です。
-  カスタム出力型を宣言した場合 (例: `out FooType paramName`)、Azure Functions は、オブジェクトを JSON にシリアル化しようとします。 関数の終了時に出力パラメーターが null の場合、Functions ランタイムはキュー メッセージを null オブジェクトとして作成します。
-* 文字列 - (`out string paramName`) テスト メッセージに有効です。 Functions ランタイムは、関数の終了時に文字列パラメーターが null でない場合にのみメッセージを作成します。
-* バイト配列 - (`out byte[]`) 
-* `out CloudQueueMessage` - C# のみ 
+* 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx): `out MyCustomType paramName`  
+JSON のシリアル化に使用されます。  カスタム出力型を宣言した場合、ランタイムは、オブジェクトを JSON にシリアル化しようとします。 関数の終了時に出力パラメーターが null の場合、ランタイムはキュー メッセージを null オブジェクトとして作成します。
+* String: `out string paramName`  
+テスト メッセージで使用されます。 ランタイムは、関数の終了時に文字列パラメーターが null でない場合にのみメッセージを作成します。
+* Byte array: `out byte[]` 
 
-C# では、`ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。`T` はサポートされているいずれかの型です。
+この追加の出力型は C# 関数でサポートされます。
+
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx): `out CloudQueueMessage` 
+* `ICollector<T>` または `IAsyncCollector<T>`。ここで、`T` は、サポートされている型の&1; つです。
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>出力サンプル
 [Storage キュー トリガー](functions-bindings-storage-queue.md)、Storage BLOB 入力、Storage BLOB 出力を定義する、次の function.json があるとします。
 
-キュー トリガーを使用してキュー メッセージを書き込むストレージ キュー出力バインドの *function.json* の例を次に示します。
+手動トリガーを使用して、入力をキュー メッセージに書き込むストレージ キュー出力バインドの *function.json* の例を次に示します。
 
 ```json
 {
   "bindings": [
     {
-      "name": "myQueueItem",
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "type": "queueTrigger",
-      "direction": "in"
+      "type": "manualTrigger",
+      "direction": "in",
+      "name": "input"
     },
     {
-      "name": "myQueue",
-      "queueName": "samples-workitems-out",
-      "connection": "MyStorageConnection",
       "type": "queue",
+      "name": "myQueueItem",
+      "queueName": "myqueue",
+      "connection": "my_storage_connection",
       "direction": "out"
     }
   ],
@@ -233,19 +233,19 @@ C# では、`ICollector<T>` または `IAsyncCollector<T>` にバインドする
 ### <a name="output-sample-in-c"></a>C での出力サンプル# #
 
 ```cs
-public static void Run(string myQueueItem, out string myQueue, TraceWriter log)
+public static void Run(string input, out string myQueueItem, TraceWriter log)
 {
-    myQueue = myQueueItem + "(next step)";
+    myQueueItem = "New message: " + input;
 }
 ```
 
 複数のメッセージを送信する場合は、次のようになります。
 
 ```cs
-public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
+public static void Run(string input, ICollector<string> myQueueItem, TraceWriter log)
 {
-    myQueue.Add(myQueueItem + "(step 1)");
-    myQueue.Add(myQueueItem + "(step 2)");
+    myQueueItem.Add("Message 1: " + input);
+    myQueueItem.Add("Message 2: " + "Some other message.");
 }
 ```
 
@@ -263,7 +263,8 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = context.bindings.myQueueItem + "(next step)";
+    // Define a new message for the myQueueItem output binding.
+    context.bindings.myQueueItem = "new message";
     context.done();
 };
 ```
@@ -272,20 +273,21 @@ module.exports = function(context) {
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = [];
-
-    context.bindings.myQueueItem.push("(step 1)");
-    context.bindings.myQueueItem.push("(step 2)");
+    // Define a message array for the myQueueItem output binding. 
+    context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
+ストレージ キューのトリガーとバインドを使用する関数の例については、「[Azure サービスにバインドする Azure Function を作成する](functions-create-an-azure-connected-function.md)」を参照してください。
+
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

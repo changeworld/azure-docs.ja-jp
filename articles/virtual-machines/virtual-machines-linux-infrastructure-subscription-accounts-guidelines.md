@@ -1,5 +1,5 @@
 ---
-title: "Azure サブスクリプションとアカウントのガイドライン | Microsoft Docs"
+title: "Azure の Linux VM 向けサブスクリプションとアカウント | Microsoft Docs"
 description: "Azure サブスクリプションとアカウントに関する主要な設計と実装のガイドラインについて説明します。"
 documentationcenter: 
 services: virtual-machines-linux
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
-ms.openlocfilehash: df7291a93af5185d3bd18259a37233f7910fcabf
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0a4ddfa550913df1c987d1782bcd4bc3c41eb048
 
 
 ---
@@ -43,9 +43,9 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 * 企業のお客様は、通常、エンタープライズ加入契約を使用します。これは、階層内の最上位のリソースであり、1 つまたは複数のアカウントに関連付けられています。
 * エンタープライズ加入契約を持たないコンシューマーおよび顧客の最上位のリソースはアカウントです。
-* サブスクリプションはアカウントに関連付けられており、アカウントごとに 1 つまたは複数のサブスクリプションを使用できます。 Azure はサブスクリプション レベルで課金情報を記録します。
+* サブスクリプションはアカウントに関連付けられており、アカウントごとに&1; つまたは複数のサブスクリプションを使用できます。 Azure はサブスクリプション レベルで課金情報を記録します。
 
-アカウント/サブスクリプションの関係での 2 つの階層レベルの制限のため、アカウントとサブスクリプションの名前付け規則を課金のニーズに合わせることが重要です。 たとえば、世界規模の企業が Azure を使用する場合、リージョンごとに 1 つのアカウントを使用し、リージョン レベルでサブスクリプションを管理できます。
+アカウント/サブスクリプションの関係での&2; つの階層レベルの制限のため、アカウントとサブスクリプションの名前付け規則を課金のニーズに合わせることが重要です。 たとえば、世界規模の企業が Azure を使用する場合、リージョンごとに&1; つのアカウントを使用し、リージョン レベルでサブスクリプションを管理できます。
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
@@ -69,6 +69,6 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

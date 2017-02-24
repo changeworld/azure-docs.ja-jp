@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/11/2016
 ms.author: willzhan;kilroyh;yanmf;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: 32c792c097e44d46fef9d161ef8d361e97167224
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: 1ea286a04c84d031fcefa8dc771cbdef9d8a9b72
 
 
 ---
@@ -296,15 +296,15 @@ AAD が JWT トークンを生成した後、プレイヤーが検証のため�
 キーはいつでもロールオーバーされる可能性があるため、フェデレーション メタデータ ドキュメントでは常に複数の有効な公開キーを使用できます。 Azure Media Services ライセンス配信は、ドキュメントで指定されているどのキーでも使用できます。あるキーがすぐにロールオーバーしても、別のキーを代わりに使用できます。
 
 ### <a name="where-is-the-access-token"></a>アクセス トークンの場所
-Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「 [アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../active-directory/active-directory-authentication-scenarios.md#web-application-to-web-api)」を参照)。
+Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「 [アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../active-directory/develop/active-directory-authentication-scenarios.md#web-application-to-web-api)」を参照)。
 
-1. ユーザーは、Web アプリケーションで Azure AD にサインインします (「 [Web ブラウザー対 Web アプリケーション](../active-directory/active-directory-authentication-scenarios.md#web-browser-to-web-application)」を参照)。
+1. ユーザーは、Web アプリケーションで Azure AD にサインインします (「 [Web ブラウザー対 Web アプリケーション](../active-directory/develop/active-directory-authentication-scenarios.md#web-browser-to-web-application)」を参照)。
 2. Azure AD 認証エンドポイントは、承認コードを付けてクライアント アプリケーションにユーザー エージェントをリダイレクトします。 ユーザー エージェントは、クライアント アプリケーションのリダイレクト URI に承認コードを返します。
 3. Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、資格情報、クライアント ID、Web API のアプリケーション ID の URI を提供して、Azure AD のトークン エンドポイントに要求を送信します。 Web アプリケーションは、承認コードを示してユーザーが同意したことを証明します。
 4. Azure AD がアプリケーションを認証し、Web API の呼び出しに使用する JWT アクセス トークンを返します。
 5. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
-この「アプリケーション ID」フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。 そのため、このパターンは信頼されたサブシステムと呼ばれます。 [このページの図](http://msdn.microsoft.com/library/azure/dn645542.aspx/) では、承認コード付与フローがどのように動作するかが説明されています。
+この「アプリケーション ID」フローでは、Web API は Web アプリケーションがユーザーを認証済みであることを信頼します。 そのため、このパターンは信頼されたサブシステムと呼ばれます。 [このページの図](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) では、承認コード付与フローがどのように動作するかが説明されています。
 
 トークン制限のあるライセンス取得でも、同じ信頼されたサブシステムのパターンに従っています。 Azure Media Services のライセンス配信サービスは、Web アプリケーションがアクセスする必要のある Web API リソース (バックエンド リソース) です。 それでは、アクセス トークンはどこにあるのでしょうか。
 
@@ -458,6 +458,6 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
  
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

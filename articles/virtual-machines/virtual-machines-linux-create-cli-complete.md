@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI 2.0 プレビューを使用した完全な Linux 環境の作成 | Microsoft Docs"
+title: "Azure CLI 2.0 を使用した Linux 環境の作成 | Microsoft Docs"
 description: "Azure CLI 2.0 (プレビュー) を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 6e12a41a9e08fe132526fb3ba517c4c6aa13ffff
-ms.openlocfilehash: b4afa8c4a86b9a8ab0df6918443e18f2a758c928
+ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
+ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 
 ---
@@ -28,7 +28,7 @@ ms.openlocfilehash: b4afa8c4a86b9a8ab0df6918443e18f2a758c928
 
 環境には以下を含みます。
 
-* 可用性セット内の 2 つの VM
+* 可用性セット内の&2; つの VM
 * ポート 80 の負荷分散規則が構成されたロード バランサー
 * 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
@@ -53,7 +53,7 @@ ms.openlocfilehash: b4afa8c4a86b9a8ab0df6918443e18f2a758c928
 az group create --name myResourceGroup --location westeurope
 ```
 
-[az storage account create](/cli/azure/storage/account#create) でストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
+この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -127,7 +127,7 @@ az network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#create) で、ネットワーク セキュリティ グループの 2 つの受信規則を追加します。 次の例では、2 つの規則 `myNetworkSecurityGroupRuleSSH` と `myNetworkSecurityGroupRuleHTTP` を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#create) で、ネットワーク セキュリティ グループの&2; つの受信規則を追加します。 次の例では、2 つの規則 `myNetworkSecurityGroupRuleSSH` と `myNetworkSecurityGroupRuleHTTP` を作成します。
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup \
@@ -164,10 +164,11 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-[az vm create](/cli/azure/vm#create) で、最初の Linux VM を作成します。 次の例では、`myVM1` という名前の VM を作成します。
+[az vm create](/cli/azure/vm#create) で、最初の Linux VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
 
 ```azurecli
 az vm create \
@@ -176,13 +177,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 **az vm create** で、2 つ目の Linux VM を作成します。 次の例では、`myVM2` という名前の VM を作成します。
@@ -194,14 +198,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 [az vm show](/cli/azure/vm#show) で、すべて正しく構築されたことを確認します。
 
@@ -210,10 +217,10 @@ az vm show --resource-group myResourceGroup --name myVM1
 az vm show --resource-group myResourceGroup --name myVM2
 ```
 
-新しいインスタンスを簡単に再作成するため、[az resource group export](/cli/azure/resource/group#export) でテンプレートに新しい環境をエクスポートします。
+新しいインスタンスを簡単に再作成するため、[az group export](/cli/azure/group#export) でテンプレートに新しい環境をエクスポートします。
 
 ```azurecli
-az resource group export --name myResourceGroup > myResourceGroup.json
+az group export --name myResourceGroup > myResourceGroup.json
 ```
 
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
@@ -230,7 +237,7 @@ Azure リソース グループは、リソース デプロイの論理的な管
 az group create --name myResourceGroup --location westeurope
 ```
 
-既定では、出力は、JSON (JavaScript Object Notation) にあります。 たとえば、一覧またはテーブルとして出力するには [az configure --output](/cli/azure/#configure) を使います。 出力形式で 1 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例では、**az resource group create** コマンドからの JSON の出力を示します。
+既定では、出力は、JSON (JavaScript Object Notation) にあります。 たとえば、一覧またはテーブルとして出力するには [az configure --output](/cli/azure/#configure) を使います。 出力形式で&1; 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例では、**az group create** コマンドからの JSON の出力を示します。
 
 ```json                       
 {
@@ -245,7 +252,9 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。 リソース グループを作成したら、そのほぼ直後にストレージ アカウントを作成します。
+この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
+
+非管理対象ディスクを使用する場合は、VM ディスクおよび追加するすべてのデータ ディスク用に、ストレージ アカウントを作成する必要があります。
 
 ここでは、[az storage account create](/cli/azure/storage/account#create) コマンドを使い、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
 
@@ -522,7 +531,7 @@ az network lb inbound-nat-rule create --resource-group myResourceGroup \
 }
 ```
 
-SSH に対する 2 つ目の NAT 規則について、手順を繰り返します。 次の例では、`myLoadBalancerRuleSSH2` という名前の規則を作成して、TCP ポート 4223 をポート 22 にマップします。
+SSH に対する&2; つ目の NAT 規則について、手順を繰り返します。 次の例では、`myLoadBalancerRuleSSH2` という名前の規則を作成して、TCP ポート 4223 をポート 22 にマップします。
 
 ```azurecli
 az network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -983,22 +992,23 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大 3 つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
+障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大&3; つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
 
-アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。 また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
+アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは&1; つのみです。 また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
 
 詳細については、「 [VMの可用性管理](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 
 ## <a name="create-the-linux-vms"></a>Linux VM の作成
-これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。 ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使ってそのイメージの情報を見つけます。
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使ってそのイメージの情報を見つけます。
 
 認証に使う SSH キーも指定します。 SSH キーがない場合は、[こちらの手順](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に従って作成できます。 または、VM を作成した後で、`--admin-password` メソッドを使って SSH 接続を認証できます。 この方法は通常安全性が低いです。
 
-[az vm create](/cli/azure/vm#create) コマンドにすべてのリソースと情報を指定して、VM を作成します。
+[az vm create](/cli/azure/vm#create) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
 
 ```azurecli
 az vm create \
@@ -1007,13 +1017,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 出力:
@@ -1029,7 +1042,7 @@ az vm create \
 }
 ```
 
-すぐに、既定の SSH キーを使用して VM に接続できるようになります。 ロード バランサー経由で渡されるため、適切なポートを指定することを確認します。 (最初の VM では、ポート 4222 を VM に転送する NAT 規則を設定します。)
+すぐに、既定の SSH キーを使用して VM に接続できるようになります。 ロード バランサー経由で渡されるため、適切なポートを指定することを確認します。 (最初の VM では、ポート 4222 を VM に転送する NAT 規則を設定します)
 
 ```bash
 ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222 -i ~/.ssh/id_rsa.pub
@@ -1066,41 +1079,44 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 この時点では、Azure のロード バランサーの背後で Ubuntu VM が実行中です。この VM には、所有する SSH キー ペアのみを使用してサインインできます (パスワードは無効になっているため)。 nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
 
 
 ## <a name="export-the-environment-as-a-template"></a>環境をテンプレートとしてエクスポートします。
-これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az resource group export](/cli/azure/resource/group#export) を使って、リソース グループを次のようにエクスポートします。
+これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#export) を使って、リソース グループを次のようにエクスポートします。
 
 ```azurecli
-az resource group export --name myResourceGroup > myResourceGroup.json
+az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、または VM を含むリソース名が表示されます。 前に示した **az resource group export** コマンドに `--include-parameter-default-value` パラメーターを追加するとテンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
+このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、または VM を含むリソース名が表示されます。 前に示した **az group export** コマンドに `--include-parameter-default-value` パラメーターを追加するとテンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
 
-テンプレートから環境を作成するには、次のように [az resource group deployment create](/cli/azure/resource/group/deployment#create) を使います。
+テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment#create) を使います。
 
 ```azurecli
-az resource group deployment create --resource-group myNewResourceGroup \
+az group deployment create --resource-group myNewResourceGroup \
   --template-file myResourceGroup.json
 ```
 
-[テンプレートからデプロイする方法に関する詳細](../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
+[テンプレートからデプロイする方法に関する詳細](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

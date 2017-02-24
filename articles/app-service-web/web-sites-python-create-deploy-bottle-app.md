@@ -360,6 +360,6 @@ Azure Table Storage と MongoDB の使用方法については、次のリンク
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

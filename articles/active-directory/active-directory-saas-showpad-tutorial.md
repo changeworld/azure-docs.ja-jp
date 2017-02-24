@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f073ae70ad3b398a29f874fda35aa4e6299394d1
+ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
+ms.openlocfilehash: 6912357da797a72f8e9cb9ebf700f56d9cfcc696
 
 
 ---
@@ -45,12 +45,12 @@ Showpad と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Showpad の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -122,7 +122,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
     b. **[識別子]** ボックスに、`https://<company name>.showpad.biz` のパターンを使用して URL を入力します。
 
-    c.  **[次へ]**
+    c. **[次へ]**
 
 
 1. **[Showpad シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
@@ -192,7 +192,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
    
     a. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
    
-    b. ページの下部にある **[次へ]**」を参照してください。
+    b. **[次へ]**をクリックします。
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
@@ -277,6 +277,6 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 79948e3ec83dc8d56f0fa38998a48ee3518f8962
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e9e8dfa79ac0b902b8ecbcf9911e38ef49f754ec
 
 
 ---
@@ -36,7 +36,7 @@ Azure Machine Learning には、主に次の 4 種類の機械学習モデルが
 
 * [モデルのスコア付け][score-model]モジュールは分類と回帰に使用します。
 * [クラスターへの割り当て][assign-to-clusters]モジュールはクラスタリングに使用します。
-* [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]は推奨システムに使用します。
+* [スコア マッチ ボックス レコメンダー][score-matchbox-recommender]は推奨システムに使用します。
 
 このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモデルの概要については、[Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法](machine-learning-algorithm-parameters-optimize.md)に関するページをご覧ください。
 
@@ -147,7 +147,7 @@ Web サービスを発行して実行し、一部の入力特徴値を入力し�
 
 回帰の例として、自動車価格の予測を使用します。 製造、燃料の種類、車体タイプ、駆動輪などの特徴に基づいて、自動車価格を予測します。 図 11 に実験を示します。
 
-![自動車価格の回帰実験](./media/machine-learning-interpret-model-results/11.png)
+![自動車価格の回帰問題の実験](./media/machine-learning-interpret-model-results/11.png)
 
 図 11: 自動車価格の回帰問題の実験
 
@@ -229,7 +229,7 @@ Web サービスを実行して返された結果は、図 19 のようになり
 * 顧客の特徴データ
 * レストラン特徴データ
 
-Azure Machine Learning の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用して、次のようなことを処理できます。
+Azure Machine Learning の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用し、次のようなことを処理できます。
 
 * 特定のユーザーと項目の評価を予測する
 * 特定のユーザーに項目を推奨する
@@ -240,7 +240,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 ![マッチボックス レコメンダー](./media/machine-learning-interpret-model-results/19_1.png)
 
-レコメンダー システム用の一般的な Azure Machine Learning の実験は、図 20 のようになります。 これらのレコメンダー システム モジュールの使用方法については、「[Train Matchbox Recommender (マッチボックス レコメンダーのトレーニング)][train-matchbox-recommender]」と「[Score Matchbox Recommender (マッチボックス レコメンダーのスコア付け)][score-matchbox-recommender]」をご覧ください。
+レコメンダー システム用の一般的な Azure Machine Learning の実験は、図 20 のようになります。 これらのレコメンダー システム モジュールの使用方法については、「[Train Matchbox Recommender (マッチボックス レコメンダーのトレーニング)][train-matchbox-recommender]」と「[Score Matchbox Recommender (スコア マッチボックス レコメンダーのスコア付け)][score-matchbox-recommender]」をご覧ください。
 
 ![レコメンダー システムの実験](./media/machine-learning-interpret-model-results/20.png)
 
@@ -250,7 +250,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 **特定のユーザーと項目の評価を予測する**
 
-**[Recommender prediction kind]** で **[Rating Prediction]** を選択し、レコメンダー システムで特定のユーザーと項目に対する評価を予測するよう指定します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は、図 21 のようになります。
+**[Recommender prediction kind]** で **[Rating Prediction]** を選択し、レコメンダー システムで特定のユーザーと項目に対する評価を予測するよう指定します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 21 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 評価予測](./media/machine-learning-interpret-model-results/21.png)
 
@@ -260,7 +260,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 **特定のユーザーに項目を推奨する**
 
-**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]**を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は、図 22 のようになります。
+**[Recommender prediction kind]** メニューで **[Item Recommendation]** を選択し、レコメンダー システムで特定のユーザーに対して項目を勧めるよう指定します。 このシナリオでは、最後に *Recommended item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]**を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 22 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 項目の推奨](./media/machine-learning-interpret-model-results/22.png)
 
@@ -270,7 +270,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 **特定のユーザーに関連するユーザーを検索する**
 
-**[Recommender prediction kind]** メニューで **[Related Users]** を選択し、レコメンダー システムで特定のユーザーに関連するユーザーを検索するよう指定します。 関連するユーザーとは、類似する嗜好を持つユーザーのことです。 このシナリオでは、最後に *Related user selection* パラメーターも選ぶ必要があります。 オプション **[From Users That Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、**[From All Users]** を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は、図 23 のようになります。
+**[Recommender prediction kind]** メニューで **[Related Users]** を選択し、レコメンダー システムで特定のユーザーに関連するユーザーを検索するよう指定します。 関連するユーザーとは、類似する嗜好を持つユーザーのことです。 このシナリオでは、最後に *Related user selection* パラメーターも選ぶ必要があります。 オプション **[From Users That Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、**[From All Users]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 23 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 関連ユーザー](./media/machine-learning-interpret-model-results/23.png)
 
@@ -280,7 +280,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 **特定のユーザーに関連する項目を検索する**
 
-**[Recommender prediction kind]** で **[Related Items]** を選択し、レコメンダー システムで特定の項目に関連する項目を検索するよう指定します。 関連アイテムとは、同じユーザーが満足する可能性が最も高い項目です。 このシナリオでは、最後に *Related item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]の出力の視覚化は、図 24 のようになります。
+**[Recommender prediction kind]** で **[Related Items]** を選択し、レコメンダー システムで特定の項目に関連する項目を検索するよう指定します。 関連アイテムとは、同じユーザーが満足する可能性が最も高い項目です。 このシナリオでは、最後に *Related item selection* パラメーターも選ぶ必要があります。 オプション **[From Rated Items (for model evaluation)]** は主に、トレーニング プロセス中のモデルの評価で使用します。 この予測ステージでは、 **[From All Items]** を選択します。 [スコア マッチボックス レコメンダー][score-matchbox-recommender]出力の視覚化は、図 24 のようになります。
 
 ![レコメンダー システムのスコア付け結果 - 関連項目](./media/machine-learning-interpret-model-results/24.png)
 
@@ -317,6 +317,6 @@ Web サービスを実行して返された結果は、図 26 のようになり
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

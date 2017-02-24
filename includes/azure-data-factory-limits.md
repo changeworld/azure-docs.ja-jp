@@ -8,7 +8,7 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 | データセットあたりの同時実行のスライス数 |10 |10 |
 | オブジェクトのパイプライン オブジェクトあたりのバイト数<sup>1</sup> |200 KB |200 KB |
 | データセットとリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> |100 KB |2,000 KB |
-| サブスクリプション内 HDInsight オンデマンドのクラスター コア数<sup>2</sup> |48 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| サブスクリプション内 HDInsight オンデマンドのクラスター コア数<sup>2</sup> |60 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | クラウド データ移動単位<sup>3</sup> |8 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインのアクティビティ実行の再試行カウント |1,000 |MaxInt (32 ビット) |
 
@@ -29,6 +29,6 @@ Azure Resource Manager では、API 呼び出しの制限があります。 API 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

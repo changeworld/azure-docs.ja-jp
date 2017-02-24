@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch プール内の Linux ノード | Microsoft Docs"
+title: "プールの Linux コンピューティング ノードのプロビジョニング - Azure Batch | Microsoft Docs"
 description: "Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。"
 services: batch
 documentationcenter: python
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: eb041d3ee7e097a05bcaeb57f170e26652fa5551
-ms.openlocfilehash: 251c454b0502746817ad5c97f1b3367eba98ac92
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 85aa18c7eab56c390dc9a9f7865a3468a43739f2
 
 
 ---
@@ -29,7 +29,7 @@ Azure Batch を使用すると、Linux と Windows の両方の仮想マシン�
 >
 
 ## <a name="virtual-machine-configuration"></a>仮想マシンの構成
-Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という 2 つのオプションから、ノード サイズとオペレーティング システムを選択できます。
+Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という&2; つのオプションから、ノード サイズとオペレーティング システムを選択できます。
 
 **Cloud Services の構成** では、Windows コンピューティング ノード *のみ*が提供されます。 使用可能なコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。使用可能なオペレーティング システムについては、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」を参照してください。 Azure Cloud Services ノードを含むプールを作成する場合は、前に示した記事に記載されているノード サイズとその "OS ファミリ" のみを指定する必要があります。 Windows コンピューティング ノードのプールの場合は、Cloud Services が最もよく使用されます。
 
@@ -313,7 +313,7 @@ Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジ�
 
 ## <a name="next-steps"></a>次のステップ
 ### <a name="batch-python-tutorial"></a>Batch Python のチュートリアル
-Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「 [Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。 ヘルパー関数 `get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
+Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「 [Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。 ヘルパー関数 `get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう&1; つの方法を紹介しています。
 
 ### <a name="batch-python-code-samples"></a>Batch Python コード サンプル
 プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すさまざまなスクリプトについては、GitHub の [azure-batch-samples][github_samples] リポジトリにあるその他の [Python コード サンプル][github_samples_py]を参照してください。 Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
@@ -351,6 +351,6 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

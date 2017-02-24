@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートの作成 | Microsoft Docs"
-description: "宣言型 JSON 構文を使用して Azure にアプリケーションをデプロイする Azure リソース マネージャーのテンプレートを作成します。"
+title: "Azure デプロイ用テンプレートの作成 | Microsoft Docs"
+description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a3a1fc856dc4fb39e3d3b765e943662799c75398
-ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 
 
 ---
@@ -57,7 +57,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 
 ## <a name="expressions-and-functions"></a>式と関数
 
-テンプレートの基本的な構文は JSON です。 ただし、式や関数により、テンプレートで使用できる JSON が拡張されます。 式を使用すると、厳密なリテラル値以外の値を作成できます。 式は角かっこ ([ と ]) で囲まれ、テンプレートがデプロイされるときに評価されます。 式は、JSON 文字列値内の任意の場所に配置でき、常に別の JSON 値を返します。 角かっこ [ で始まるリテラル文字列を使用する必要がある場合は、2 つの角かっこ [[ を使用する必要があります。
+テンプレートの基本的な構文は JSON です。 ただし、式や関数により、テンプレートで使用できる JSON が拡張されます。 式を使用すると、厳密なリテラル値以外の値を作成できます。 式は角かっこ (`[` と `]`) で囲まれ、テンプレートがデプロイされるときに評価されます。 式は、JSON 文字列値内の任意の場所に配置でき、常に別の JSON 値を返します。 角かっこ `[` で始まるリテラル文字列を使用する必要がある場合は、2 つの角かっこ `[[` を使用する必要があります。
 
 通常、関数と式を使用してデプロイを構成する操作を実行します。 JavaScript の場合と同様に、関数呼び出しは **functionName(arg1,arg2,arg3)**という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
 
@@ -66,7 +66,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 ```json
 "variables": {
    "location": "[resourceGroup().location]",
-   "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
+   "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
    "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
 }
 ```
@@ -101,7 +101,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
  | 必須 | Description |
 |:--- |:--- |:--- |
 | parameterName |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |パラメーター値の型。 使用できる型については、下にある一覧を参照してください。 |
+| type |はい |パラメーター値の型。 この表の後に示す使用できる型を参照してください。 |
 | defaultValue |いいえ |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ |int 型パラメーターの最小値。 |
@@ -122,7 +122,7 @@ ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
 
 パラメーターを省略可能に指定するには、defaultValue を設定します (空の文字列を指定できます)。 
 
-テンプレートをデプロイするためのコマンドのパラメーターのいずれかと同じ名前のパラメーターを指定した場合、接尾辞 **FromTemplate** が付いたそのパラメーターに値を指定するように求められます。 たとえば、[New-AzureRmResourceGroupDeployment][deployment2cmdlet] コマンドレットの **ResourceGroupName** パラメーターと同じ名前の **ResourceGroupName** というパラメーターをテンプレートに含めた場合、**ResourceGroupNameFromTemplate** の値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+コマンドのパラメーターと同じ名前のパラメーターをテンプレートで指定して、そのテンプレートをデプロイすると、指定する値があいまいになる可能性があります。 Resource Manager では、接尾辞 **FromTemplate** をテンプレート パラメーターに追加することで、このような混乱を防ぎます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment][deployment2cmdlet] コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 > [!NOTE]
 > すべてのパスワード、キー、およびその他のシークレットでは、 **secureString** 型を使用する必要があります。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 secureString 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
@@ -244,7 +244,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
      "copy": {
        "name": "<name-of-copy-loop>",
        "count": "<number-of-iterations>"
-     }
+     },
      "resources": [
        "<array-of-child-resources>"
      ]
@@ -261,10 +261,10 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 |
 | tags |いいえ |リソースに関連付けられたタグ。 |
 | コメント |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 |
-| dependsOn |なし |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 詳細については、「 [Azure リソース マネージャーのテンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。 |
-| プロパティ |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 リソース スキーマのドキュメントまたは REST API へのリンクについては、「 [リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。 |
+| dependsOn |なし |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 詳細については、[Azure Resource Manager テンプレートの依存関係の定義](resource-group-define-dependencies.md)に関するページをご覧ください。 |
+| properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 リソース スキーマのドキュメントまたは REST API へのリンクについては、[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)に関するページをご覧ください。 |
 | copy |いいえ |複数のインスタンスが必要な場合に作成するリソースの数。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
-| resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定することができます。 子リソースの種類の完全修飾名には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は暗黙的に示されないため、明示的に定義する必要があります。 |
+| resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 子リソースの完全修飾型には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 |
 
 **apiVersion**、**type**、**location** に指定する値は、すぐには分かりません。 さいわいなことに、Azure PowerShell または Azure CLI からこれらの値を特定できます。
 
@@ -294,17 +294,23 @@ Get-AzureRmResourceProvider -ListAvailable
 
 **Azure CLI** ですべてのリソース プロバイダーを取得するには、次を使用します。
 
-    azure provider list
+```azurecli
+azure provider list
+```
 
 返された一覧から、目的のリソース プロバイダーを見つけます。 リソース プロバイダー (ストレージなど) のリソースの種類を取得するには、次を使用します。
 
-    azure provider show Microsoft.Storage
+```azurecli
+azure provider show Microsoft.Storage
+```
 
 サポートされている場所と API のバージョンを取得するには、次を使用します。
 
-    azure provider show Microsoft.Storage --details --json
+```azurecli
+azure provider show Microsoft.Storage --details --json
+```
 
-リソース プロバイダーについては、「[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」をご覧ください。
+リソース プロバイダーの詳細については、[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)に関するページをご覧ください。
 
 resources セクションには、デプロイの対象となる一連のリソースが記述されます。 また、リソースごとに子リソースを複数定義することができます。 その場合、resources セクションは次のような構造となります。
 
@@ -434,6 +440,6 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

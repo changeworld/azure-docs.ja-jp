@@ -13,8 +13,8 @@
 ## 開発
 ### [関数アプリを開発する](functions-reference.md)
 #### [C#](functions-reference-csharp.md)
-#### [Node.JS](functions-reference-node.md)
 #### [F#](functions-reference-fsharp.md)
+#### [JavaScript](functions-reference-node.md)
 ### [トリガーとバインドを処理する](functions-triggers-bindings.md)
 #### [DocumentDB のバインド](functions-bindings-documentdb.md)
 #### [Event Hub のバインド](functions-bindings-event-hubs.md)
@@ -28,7 +28,7 @@
 ##### [テーブル バインド](functions-bindings-storage-table.md)
 #### [タイマー トリガー](functions-bindings-timer.md)
 #### [Twilio 出力バインド](functions-bindings-twilio.md)
-### [Azure Portal からの関数の作成](functions-create-first-azure-function-azure-portal.md)
+### [Azure Portal からの関数の作成](functions-create-first-azure-function-azure-portal.md) 
 ### [Azure Functions のテスト](functions-test-a-function.md)
 ### [開発とローカル デバッグ](functions-run-local.md)
 ### [Azure Functions のベスト プラクティス](functions-best-practices.md)
@@ -39,6 +39,7 @@
 
 ## デプロイ
 ### [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
+### [コードとしてのインフラストラクチャを使用した関数のデプロイ](functions-infrastructure-as-code.md)
 
 ## 監視
 ### [Azure Functions の監視](functions-monitoring.md)
@@ -47,9 +48,10 @@
 ## [料金](https://azure.microsoft.com/pricing/details/functions/)  
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+## [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) 
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

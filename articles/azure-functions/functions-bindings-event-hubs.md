@@ -17,19 +17,20 @@ ms.workload: na
 ms.date: 11/02/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 593f97bf0fc855e2d122e093961013f923e2e053
-ms.openlocfilehash: b7b6dc01c996527c4ada974cc28b774b30e6b853
+ms.sourcegitcommit: c8e9f9709d13295c9414e525f1f60abf0d0accb7
+ms.openlocfilehash: 0bfbfd3828aacdee0b6630ced034f2c1e0451abd
 
 
 ---
 # <a name="azure-functions-event-hub-bindings"></a>Azure Functions における Event Hub のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で [Azure Event Hub](../event-hubs/event-hubs-overview.md) のバインドを構成およびコーディングする方法について説明します。 Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。
+この記事では、Azure Functions で [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) のバインドを構成およびコーディングする方法について説明します。
+Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Azure Event Hubs を初めて使用する場合は、「[Azure Event Hub の概要](../event-hubs/event-hubs-overview.md)」を参照してください。
+Azure Event Hubs を初めて使用する場合は、「[Azure Event Hub の概要](../event-hubs/event-hubs-what-is-event-hubs.md)」を参照してください。
 
 <a name="trigger"></a>
 
@@ -44,13 +45,14 @@ Azure Event Hubs を初めて使用する場合は、「[Azure Event Hub の概�
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
     "path": "<Name of the Event Hub>",
-    "consumerGroup": "Consumer group to use - see below", 
+    "consumerGroup": "Consumer group to use - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
 ```
 
-`consumerGroup` は、ハブのイベントにサブスクライブするための[コンシューマー グループ](../event-hubs/event-hubs-overview.md#consumer-groups)の設定に使用される、省略可能なプロパティです。 省略した場合は、`$Default` コンシューマー グループが使用されます。  
-`connection` は、イベント ハブの名前空間への接続文字列を含むアプリ設定の名前である必要があります。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。
+`consumerGroup` は、ハブのイベントにサブスクライブするための[コンシューマー グループ](../event-hubs/event-hubs-what-is-event-hubs.md#event-consumers)の設定に使用される、省略可能なプロパティです。 省略した場合は、`$Default` コンシューマー グループが使用されます。  
+`connection` は、イベント ハブの名前空間への接続文字列を含むアプリ設定の名前である必要があります。
+この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。
 
 [その他の設定](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)を host.json ファイルで指定して、イベント ハブ トリガーをさらに微調整することができます。  
 
@@ -116,9 +118,9 @@ module.exports = function (context, myEventHubMessage) {
 <a name="output"></a>
 
 ## <a name="event-hub-output-binding"></a>イベント ハブ出力バインド
-イベント ハブ出力バインドを使用して、イベント ハブのイベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。 
+イベント ハブ出力バインドを使用して、イベント ハブのイベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
-出力バインドでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。 
+出力バインドでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
 
 ```json
 {
@@ -130,12 +132,13 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-`connection` は、イベント ハブの名前空間への接続文字列を含むアプリ設定の名前である必要があります。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。
+`connection` は、イベント ハブの名前空間への接続文字列を含むアプリ設定の名前である必要があります。
+この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。
 
 ## <a name="output-usage"></a>出力の使用方法
 このセクションでは、Event Hub 出力バインドを関数のコードで使用する方法について説明します。
 
-次のパラメーターの種類で構成済みイベント ハブにメッセージを出力できます。 
+次のパラメーターの種類で構成済みイベント ハブにメッセージを出力できます。
 
 * `out string`
 * `ICollector<string>` (複数のメッセージを出力する場合)
@@ -183,7 +186,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
 {
     string message = $"Event Hub message created at: {DateTime.Now}";
-    log.Info(message); 
+    log.Info(message);
     outputEventHubMessage.Add("1 " + message);
     outputEventHubMessage.Add("2 " + message);
 }
@@ -233,7 +236,6 @@ module.exports = function(context) {
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

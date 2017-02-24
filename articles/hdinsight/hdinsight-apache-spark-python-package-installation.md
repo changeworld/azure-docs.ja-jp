@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージを使用する | Microsoft Docs"
+title: "スクリプト アクション: Azure HDInsight の Jupyter Notebook で Python パッケージをインストールする | Microsoft Docs"
 description: "HDInsight Spark クラスター内の Jupyter Notebook で外部の Python パッケージを使用するための構成手順を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,14 +16,24 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f782920ca8aeafa745e6588a71a3428a01676db3
-ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: b0d6e509c5bacd828e9a9938edb860bbf0c0a8f3
 
 
 ---
-# <a name="use-external-python-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight-linux"></a>HDInsight Linux の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージを使用する
+# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>スクリプト アクションを使用して HDInsight の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージをインストールする
+> [!div class="op_single_selector"]
+> * [cell magic の使用](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+> * [スクリプト アクションの使用](hdinsight-apache-spark-python-package-installation.md)
+>
+>
 
 スクリプト アクションを使用して、HDInsight (Linux) 上の Apache Spark クラスターを、そのクラスターの標準では搭載されていない外部のコミュニティから提供されている **Python** パッケージを使用するよう構成する方法について説明します。
+
+> [!NOTE]
+> `%%configure` マジックを使用して Jupyter Notebook を構成して外部パッケージを使用することもできます。 手順については、「[HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)」を参照してください。
+> 
+> 
 
 [パッケージ インデックス](https://pypi.python.org/pypi)で、利用できるすべてのパッケージを検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、[Anaconda](https://docs.continuum.io/anaconda/pkg-docs) または [conda-forge](https://conda-forge.github.io/feedstocks.html) で使用できるパッケージをインストールできます。
 
@@ -33,7 +43,7 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 次のものが必要です。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* HDInsight Linux での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
    > [!NOTE]
    > HDInsight Linux に Spark クラスターがない場合は、クラスターの作成時にスクリプト アクションを実行できます。 [カスタム スクリプト アクションの使用方法](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)に関するドキュメントを参照してください。
@@ -47,17 +57,17 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 2. Spark クラスター ブレードで、**[Usage (使用法)]** の **[スクリプト アクション]** をクリックします。 ヘッド ノードと worker ノードに TensorFlow をインストールするカスタム アクションを実行します。 Bash スクリプトは https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh から参照できます。[カスタム スクリプト アクションの使用方法](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)に関するドキュメントを参照してください。
 
    > [!NOTE]
-   > クラスターには 2 つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用されます。 そのインストールは、`/usr/bin/anaconda/bin/pip` および `/usr/bin/anaconda/bin/conda` を介してカスタム アクションで参照してください。
+   > クラスターには&2; つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用されます。 そのインストールは、`/usr/bin/anaconda/bin/pip` および `/usr/bin/anaconda/bin/conda` を介してカスタム アクションで参照してください。
    > 
    > 
 
 3. PySpark Jupyter Notebook を開きます
 
-    ![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "Create a new Jupyter notebook")
+    ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-python-package-installation/hdispark.note.jupyter.createpysparknotebook.png "新しい Jupyter Notebook の作成")
 
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Provide a name for the notebook")
+    ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-notebook-use-external-packages/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
 
 5. 次に `import tensorflow` によって、hello world の例を実行します。 
 
@@ -70,7 +80,7 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 
     結果は次のようになります。
     
-    ![TensorFlow コード実行](./media/hdinsight-apache-spark-python-package-installation/execution.png "Execute TensorFlow code")
+    ![TensorFlow コード実行](./media/hdinsight-apache-spark-python-package-installation/execution.png "TensorFlow コードの実行")
 
 
 
@@ -102,6 +112,6 @@ ms.openlocfilehash: 288474a8fbd4ca41adb8a2525f3c9ffe970580ea
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

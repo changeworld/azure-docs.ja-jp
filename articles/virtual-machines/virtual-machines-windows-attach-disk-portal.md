@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: e7ec8715087abaf5c96a6327d4bcde0ad3fd547a
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
 
 
 ---
@@ -25,14 +25,32 @@ ms.openlocfilehash: e7ec8715087abaf5c96a6327d4bcde0ad3fd547a
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Windows 仮想マシンに接続する方法について示します。 [Azure ポータルで Linux VM にデータ ディスクを接続する](virtual-machines-linux-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。 接続する前に、次のヒントを確認してください。
 
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。
 * 既存のディスクの場合、Azure ストレージ アカウントで .vhd ファイルを使用できる必要があります。 別の仮想マシンに接続されていない場合は既存の .vhd を使用できます。そうでなければ、独自の .vhd ファイルをストレージ アカウントにアップロードできます。
 
-[Powershell を使用してデータ ディスクを接続する](virtual-machines-windows-ps-manage.md#add-a-data-disk-to-a-virtual-machine)こともできます。
+[Powershell を使用してデータ ディスクを接続する](virtual-machines-windows-attach-disk-ps.md)こともできます。
 
-[!INCLUDE [virtual-machines-common-attach-disk-portal](../../includes/virtual-machines-common-attach-disk-portal.md)]
 
-## <a name="a-idinitializeinwsahow-to-initialize-a-new-data-disk-in-windows-server"></a><a id="initializeinWS"></a>方法: Windows Server で新しいデータ ディスクを初期化する
+## <a name="find-the-virtual-machine"></a>仮想マシンの検索
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. ハブ メニューで **[Virtual Machines]**をクリックします。
+3. 一覧から仮想マシンを選択します。
+4. [仮想マシン] ブレードにアクセスし、**[要点]** で、**[ディスク]** の順にクリックします。
+   
+    ![ディスク設定を開く](./media/virtual-machines-windows-attach-disk-portal/find-disk-settings.png)
+
+次の手順に従って、[新しいディスク](#option-1-attach-a-new-disk)または[既存のディスク](#option-2-attach-an-existing-disk)を接続します。
+
+## <a name="option-1-attach-and-initialize-a-new-disk"></a>オプション 1: 新しいディスクを接続し、初期化する
+1. **[ディスク]** ブレードの **[新しいディスクの接続]** をクリックします。
+2. 既定の設定を確認し、必要に応じて更新して、 **[OK]**をクリックします。
+   
+   ![ディスク設定を確認する](./media/virtual-machines-windows-attach-disk-portal/attach-new.png)
+3. Azure でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]**に新しいディスクが表示されます。
+
+### <a name="initialize-a-new-data-disk"></a>新しいデータ ディスクの初期化
+
 1. 仮想マシンへの接続 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 2. 仮想マシンにログオンした後、 **サーバー マネージャー**を開きます。 左側のウィンドウで、 **[ファイル サービスと記憶域サービス]**を選択します。
    
@@ -44,10 +62,35 @@ ms.openlocfilehash: e7ec8715087abaf5c96a6327d4bcde0ad3fd547a
 
     ![ボリュームの初期化に成功](./media/virtual-machines-windows-classic-attach-disk/newvolumecreated.png)
 
-> [!NOTE]
-> VM のサイズによって、アタッチできるディスクの数が決まります。 詳細については、「 [仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-> 
-> 
+
+## <a name="option-2-attach-an-existing-disk"></a>オプション 2: 既存のディスクを接続する
+1. **[ディスク]** ブレードの **[既存のディスクの接続]** をクリックします。
+2. **[既存のディスクの接続]** の **[VHD ファイル]** をクリックします。
+   
+   ![既存のディスクを接続する](./media/virtual-machines-windows-attach-disk-portal/attach-existing.png)
+3. **[ストレージ アカウント]**で、アカウントと、.vhd ファイルが格納されているコンテナーを選択します。
+   
+   ![VHD の場所を検索する](./media/virtual-machines-windows-attach-disk-portal/find-storage-container.png)
+4. .vhd ファイルを選択します。
+5. **[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。 **[OK]**をクリックします。
+6. Azure で仮想マシンにディスクが接続されると、仮想マシンのディスク設定の **[データ ディスク]**にそのディスクが表示されます。
+
+
+
+## <a name="use-trim-with-standard-storage"></a>Standard Storage での TRIM の使用
+
+Standard Storage (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
+
+次のコマンドを実行すると、TRIM の設定を確認できます。 Windows VM 上でコマンド プロンプトを開いて、次のように入力します。
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+このコマンドが 0 を返す場合、TRIM は適切に有効化されています。 1 が返される場合は、次のコマンドを実行して TRIM を有効にします。
+```
+fsutil behavior set DisableDeleteNotify 0
+```
 
 ## <a name="next-steps"></a>次のステップ
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、 [Windows 一時ディスクのドライブ文字を変更](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。
@@ -55,6 +98,6 @@ ms.openlocfilehash: e7ec8715087abaf5c96a6327d4bcde0ad3fd547a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

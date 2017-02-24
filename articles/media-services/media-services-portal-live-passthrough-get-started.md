@@ -1,5 +1,5 @@
 ---
-title: "Azure Portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法 | Microsoft Docs"
+title: "Azure Portal を使用したオンプレミス エンコーダーでのライブ ストリーミング | Microsoft Docs"
 description: "このチュートリアルでは、パススルー配信用に構成されたチャネルを作成する手順を紹介します。"
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: 0818c3124815b53119a5b2d43f16e3154afbc225
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
@@ -85,7 +85,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 各イベントは資産に関連付けられています。 イベントを発行するには、関連付けられた資産の OnDemand ロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
-チャネルは、最大 3 つの同時実行イベントをサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
+チャネルは、最大&3; つの同時実行イベントをサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
 既存のライブ イベントの再利用はしないでください。 代わりに、イベントごとに新しいイベントを作成し、開始します。
 
@@ -157,6 +157,6 @@ Media Services のラーニング パスを確認します。
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

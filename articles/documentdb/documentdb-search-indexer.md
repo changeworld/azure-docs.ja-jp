@@ -3,20 +3,22 @@ title: "インデクサーを使用した DocumentDB と Azure Search の接続 
 description: "この記事では、Azure Search インデクサーとデータ ソースとして DocumentDB を使用する方法を説明します。"
 services: documentdb
 documentationcenter: 
-author: dennyglee
+author: mimig1
 manager: jhubbard
-editor: mimig
+editor: 
 ms.assetid: fdef3d1d-b814-4161-bdb8-e47d29da596f
 ms.service: documentdb
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 07/08/2016
-ms.author: denlee
+ms.date: 01/10/2017
+ms.author: mimig
+redirect_url: https://docs.microsoft.com/azure/search/search-howto-index-documentdb
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 81dce18eb33dcb31808e41848e543d1488e8cfb7
+ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
+ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
 
 
 ---
@@ -32,7 +34,7 @@ Azure Search では、データ ソース (DocumentDB を含む) とそのデー
 
 **データ ソース** により、インデックスを作成する必要があるデータ、データにアクセスするための資格情報、および Azure Search でのデータの変更 (コレクション内のドキュメントの変更や削除など) を効率的に識別するためのポリシーを指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
 
-**インデクサー** は、データ ソースからターゲットの検索インデックスにデータが流れるしくみを説明します。 ターゲット インデックスとデータ ソースの組み合わせごとにインデクサーを 1 つ作成するように設計する必要があります。 複数のインデクサーから同じインデックスへ書き込むことができますが、1 つのインデクサーから書き込むことができるのは 1 つのインデックスのみです。 インデクサーは次の目的で使用します。
+**インデクサー** は、データ ソースからターゲットの検索インデックスにデータが流れるしくみを説明します。 ターゲット インデックスとデータ ソースの組み合わせごとにインデクサーを&1; つ作成するように設計する必要があります。 複数のインデクサーから同じインデックスへ書き込むことができますが、1 つのインデクサーから書き込むことができるのは&1; つのインデックスのみです。 インデクサーは次の目的で使用します。
 
 * 1 回限りのデータのコピーを実行して、インデックスを作成する。
 * スケジュールに従ってデータ ソースの変更とインデックスを同期する。 スケジュールは、インデクサーの定義の一部です。
@@ -75,7 +77,6 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
     SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts >= @HighWaterMark
 
-
 ### <a name="a-iddatadeletiondetectionpolicyacapturing-deleted-documents"></a><a id="DataDeletionDetectionPolicy"></a>ドキュメントの削除のキャプチャ
 ソース テーブルから行が削除されると、検索インデックスからも同様に行を削除する必要があります。 データ削除の検出ポリシーの目的は、削除されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、`Soft Delete` ポリシー (削除されると何らかのフラグでマークされる) のみです。このポリシーは、次のように指定します。
 
@@ -89,6 +90,42 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 > カスタムのプロジェクションを使用している場合は、SELECT 句に softDeleteColumnName プロパティを含める必要があります。
 > 
 > 
+
+### <a name="a-idleveagingqueriesaleveraging-queries"></a><a id="LeveagingQueries"></a>クエリの活用
+DocumentDB クエリの指定を使用すると、変更されたドキュメントや削除されたドキュメントのキャプチャに加えて、入れ子になったプロパティの平坦化、配列のアンワインド、json プロパティのプロジェクション、インデックス作成するデータのフィルター処理を行うことができます。 インデックスの作成に使用するデータを処理すると、Azure Search Indexer のパフォーマンスを向上させることができます。
+
+ドキュメントのサンプル:
+
+    {
+        "userId": 10001,
+        "contact": {
+            "firstName": "andy",
+            "lastName": "hoh"
+        },
+        "company": "microsoft",
+        "tags": ["azure", "documentdb", "search"]
+    }
+
+
+平坦化のクエリ:
+
+    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark
+    
+    
+プロジェクションのクエリ:
+
+    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark
+
+
+配列をアンワインドするクエリ:
+
+    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark
+    
+    
+フィルター処理のクエリ:
+
+    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark
+
 
 ### <a name="a-idcreatedatasourceexamplearequest-body-example"></a><a id="CreateDataSourceExample"></a>要求本文の例
 次の例では、カスタム クエリとポリシーのヒントと一緒にデータ ソースを作成します。
@@ -257,6 +294,6 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

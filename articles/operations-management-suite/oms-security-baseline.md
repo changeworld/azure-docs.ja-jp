@@ -8,15 +8,16 @@ manager: swadhwa
 editor: 
 ms.assetid: 17837c8b-3e79-47c0-9b83-a51c6ca44ca6
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 12/05/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c3e2cf86a33f9bbe6b34f4f52b82a078b91661f
+ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
+ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
 
 
 ---
@@ -75,7 +76,7 @@ OMS のセキュリティと監査で監視されているすべてのコンピ�
 > 
 
 ### <a name="accessing-computers-missing-baseline-assessment"></a>ベースライン アセスメントがないコンピューターの評価
-OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 まででドメイン メンバーのベースライン プロファイルをサポートします。 Windows Server 2016 のベースラインはまだ確定していませんが、発行されるとすぐに追加される予定です。 OMS のセキュリティと監視のベースラインの評価でスキャンされたその他すべてのオペレーティング システムは、**[ベースライン アセスメントがないコンピューター]** セクションに表示されます。
+OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 までのドメイン メンバーとドメイン コントローラーのベースライン プロファイルをサポートします。 Windows Server 2016 のベースラインはまだ確定していませんが、発行されるとすぐに追加される予定です。 OMS のセキュリティと監視のベースラインの評価でスキャンされたその他すべてのオペレーティング システムは、**[ベースライン アセスメントがないコンピューター]** セクションに表示されます。
 
 ## <a name="see-also"></a>関連項目
 このドキュメントでは、OMS のセキュリティと監査のベースラインの評価について説明しました。 OMS セキュリティの詳細については、次の記事を参照してください。
@@ -87,6 +88,6 @@ OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 まででドメ�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法"
+title: "Azure Active Directory を使用して開発者アカウントを認証する - Azure API Management | Microsoft Docs"
 description: "API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。"
 services: api-management
 documentationcenter: API Management
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 44d51c80dd7db16d16fa3aa44d6179bc539bb50a
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
@@ -239,6 +238,6 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

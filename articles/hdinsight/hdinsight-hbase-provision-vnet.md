@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/18/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
+ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
+ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
 
 
 ---
@@ -37,33 +37,33 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 * **Azure PowerShell を実行できるワークステーション**。 [Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
 
 ## <a name="create-hbase-cluster-into-virtual-network"></a>仮想ネットワークに HBase クラスターを作成する
-このセクションでは、[Azure Resource Manager テンプレート](../resource-group-template-deploy.md)を使用して Azure Virtual Network 内の依存する Azure ストレージ アカウントで Linux ベースの HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、「[Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)」をご覧ください。
+このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure Virtual Network 内の依存する Azure ストレージ アカウントで Linux ベースの HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、「[Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)」をご覧ください。
 
 > [!NOTE]
-> 一部のプロパティは、テンプレートにハードコーディングされています。 For example:
+> 一部のプロパティは、テンプレートにハードコーディングされています。 次に例を示します。
 >
 > * **場所**: 米国東部 2
 > * __クラスターのバージョン: 3.4
 > * **クラスターのワーカー ノードの数**: 4
-> * **既定のストレージ アカウント**: &lt;クラスター名>store
+> * **既定のストレージ アカウント**: 一意の文字列
 > * **仮想ネットワーク名**: &lt;クラスター名>-vnet
 > * **仮想ネットワークのアドレス空間**: 10.0.0.0/16
-> * **サブネット名**: 既定
+> * **サブネット名**: subnet1
 > * **サブネットのアドレス範囲**: 10.0.0.0/24
 >
 > &lt;クラスター名> は、テンプレートを使用する際に指定するクラスター名に置き換えられます。
 >
 >
 
-1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは、パブリック BLOB コンテナー内にあります。
+1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. **[カスタム デプロイ]** ブレードで以下を入力します。
 
    * **サブスクリプション**: HDInsight クラスター、依存するストレージ アカウント、Azure Virtual Network の作成に使用した Azure サブスクリプションを選択します。
    * **[リソース グループ]**: **[新規作成]** を選択し、新しいリソース グループの名前を指定します。
    * **場所**: リソース グループの場所を選択します。
-   * **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
+   * **ClusterName**: 作成される Hadoop クラスターの名前を入力します。
    * **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
    * **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。  この名前は変更できます。
    * **[上記の使用条件に同意する]**: (選択)
@@ -74,17 +74,18 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
 新しい HBase クラスターの使用を開始する場合は、「 [HDInsight の Hadoop 環境で HBase を使用する](hdinsight-hbase-tutorial-get-started.md)」に記載されている手順を使用できます。
 
 ## <a name="connect-to-the-hbase-cluster-using-hbase-java-rpc-apis"></a>HBase Java RPC API を使用して HBase クラスターに接続する
-1. サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。 新しい IaaS 仮想マシンの作成手順については、「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 このドキュメントの手順に従う場合は、以下のネットワーク構成を使用する必要があります。
+1. サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。 新しい IaaS 仮想マシンの作成手順については、「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」をご覧ください。 このドキュメントの手順に従う場合は、以下のネットワーク構成を使用する必要があります。
 
    * **仮想ネットワーク**: &lt;クラスター名>-vnet
-   * **サブネット**: 既定
+   * **サブネット**: subnet1
 
    > [!IMPORTANT]
    > &lt;クラスター名> を、前の HDInsight クラスターの作成手順で使用した名前に置き換えます。
    >
    >
 
-   これらの値を使用すると、HDInsight クラスターと同じ仮想ネットワークとサブネットを使用するように仮想マシンが構成されます。 こうすることによって、互いに直接通信できます。
+   これらの値を使用すると、仮想マシンは、構HDInsight クラスターと同じ仮想ネットワークとサブネットに配置されます。 この構成によって、互いに直接通信することができます。 空のエッジ ノードがある HDInsight クラスターを作成する方法があります。 このエッジ ノードを使用して、クラスターを管理できます。  詳細については、「 [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md)」(HDInsight で空のエッジ ノードを使用する) を参照してください。
+
 2. Java アプリケーションを使用して HBase にリモートで接続する場合は、完全修飾ドメイン名 (FQDN) を使用する必要があります。 これを確認するには、HBase クラスターの接続固有の DNS サフィックスを取得する必要があります。 そのためには、次のいずれかの方法を実行します。
 
    * Web ブラウザーを使用した Ambari の呼び出し:
@@ -206,7 +207,7 @@ ms.openlocfilehash: 41e6338b8f8fce150e77a277c163bf71d42fb0c7
      これは、DNS サフィックスを返します。 たとえば、 **yourclustername.b4.internal.cloudapp.net**です。
    * RDP の使用
 
-     リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。 RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
+     リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。 RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
 
      ![hdinsight.hbase.dns.surffix][img-dns-surffix]
 
@@ -243,11 +244,12 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 このチュートリアルでは、HBase クラスターの作成方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
-* [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
+* [HDInsight での空のエッジ ノードの使用](hdinsight-apps-use-edge-node.md)
+* [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 * [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md)
 * [HDInsight の Hadoop 環境での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
 * [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する](hdinsight-hbase-analyze-twitter-sentiment.md)
-* [仮想ネットワークの概要][vnet-overview]
+* [Virtual Network の概要][vnet-overview]
 
 [1]: http://azure.microsoft.com/services/virtual-network/
 [2]: http://technet.microsoft.com/library/ee176961.aspx
@@ -274,7 +276,7 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
 
-[powershell-install]: powershell-install-configure.md
+[powershell-install]: /powershell/azureps-cmdlets-docs
 
 
 [hdinsight-customize-cluster]: hdinsight-hadoop-customize-cluster.md
@@ -290,13 +292,13 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 
 [img-dns-surffix]: ./media/hdinsight-hbase-provision-vnet/DNSSuffix.png
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
-[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Provision details for the new HBase cluster"
-[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Use Script Action to customize an HBase cluster"
+[img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "新しい HBase クラスターのプロビジョニングの詳細"
+[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
 [azure-preview-portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

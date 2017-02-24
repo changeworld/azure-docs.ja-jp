@@ -16,15 +16,15 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
+ms.sourcegitcommit: 40dd75832302d7d88e852e2ea93821750675607e
+ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
 
 
 ---
 # <a name="what-is-azure-app-service"></a>Azure App Service とは
 *App Service* は、Microsoft Azure が提供する [サービスとしてのプラットフォーム](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) です。 任意のプラットフォームまたはデバイスを対象として Web アプリとモバイル アプリを作成できます。 作成したアプリと SaaS ソリューションの統合、オンプレミス アプリケーションへの接続、ビジネス プロセスの自動化を実行できます。 Azure では、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、完全に管理された VM 上で、アプリが実行されます。
 
-App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service では、さまざまなコンポーネント (Web サイト、モバイル アプリのバック エンド、RESTful API、ビジネス プロセス) を 1 つのソリューションにまとめることができます。
+App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。 さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。 単一の統合サービスである App Service では、さまざまなコンポーネント (Web サイト、モバイル アプリのバック エンド、RESTful API、ビジネス プロセス) を&1; つのソリューションにまとめることができます。
 
 次の 4 分間のビデオでは、App Service と以前の Azure サービスとの関連と App Service の新機能について簡単に説明しています。
 
@@ -49,7 +49,7 @@ App Service には、*アプリの種類*が複数用意されており、それ
 * [**Web Apps**](../app-service-web/app-service-web-overview.md) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
 * [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - モバイル アプリのバックエンドをホストするためのアプリの種類。
 * [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - RESTful API をホストするためのアプリの種類。
-* [**Logic Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - コードを記述せずに、ビジネス プロセスを自動化し、クラウド全体でシステムとデータを統合するためののアクセスと使用を自動化するためのアプリの種類。
+* [**Logic Apps**](../logic-apps/logic-apps-what-are-logic-apps.md) - コードを記述せずに、ビジネス プロセスを自動化し、クラウド全体でシステムとデータを統合するためののアクセスと使用を自動化するためのアプリの種類。
 
 ここで言う "*アプリ*" とは、ワークロードの実行専用のホスティング リソースを指しています。 "Web アプリ" を例にとると、Web アプリをコンピューティング リソースとアプリケーション コードの両方の観点から捉えることに皆さんおそらく慣れていることでしょう。この両者が合わさって、ブラウザーに機能が提供されます。 しかし、App Service の "*Web アプリ*" とは、アプリケーション コードをホストするために Azure が提供するコンピューティング リソースです。 
 
@@ -66,7 +66,7 @@ App Service には、*アプリの種類*が複数用意されており、それ
 App Service プランには、次の定義があります。
 
 - **リージョン** (米国西部、米国東部など)
-- **スケール カウント** (インスタンス数 1、2、3 など)
+- **スケール カウント** (インスタンス数&1;、2、3 など)
 - **インスタンス サイズ** (Small、Medium、Large)
 - **SKU** (Free、Shared、Basic、Standard、Premium)
 
@@ -82,18 +82,18 @@ App Service プランの **SKU** と**スケール**によってコストが決�
 App Service の価格の詳細については、「 [App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
 ## <a name="test-drive-app-service"></a>App Service のテスト使用
-[サンプル Web アプリ、モバイル アプリ、またはロジック アプリ](http://go.microsoft.com/fwlink/?LinkId=523751)を作成して、1 時間お試しいただくことができます。クレジット カードや契約は不要で、手間もかかりません。
+[サンプル Web アプリ、モバイル アプリ、またはロジック アプリ](https://azure.microsoft.com/try/app-service/)を作成して、1 時間お試しいただくことができます。クレジット カードや契約は不要で、手間もかかりません。
 
 または、 [無料 Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成し、次のいずれかの入門チュートリアルを試すこともできます。
 
 * [チュートリアル: Web アプリの作成](../app-service-web/app-service-web-get-started.md)
 * [チュートリアル: モバイル アプリの作成](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [チュートリアル: API アプリの作成](../app-service-api/app-service-api-dotnet-get-started.md)
-* [チュートリアル: ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [チュートリアル: ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

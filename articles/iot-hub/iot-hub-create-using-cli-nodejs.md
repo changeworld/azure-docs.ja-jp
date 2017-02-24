@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 01/04/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
-ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
 
 
 ---
@@ -34,7 +34,7 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure CLI 0.10.4][lnk-CLI-install] 以降。 既に Azure CLI がある場合は、コマンド プロンプトで次のコマンドを使用して、現在のバージョンを確認できます。
+* [Azure CLI 0.10.4][lnk-CLI-install] 以降。 既に Azure CLI がインストールされている場合は、コマンド プロンプトで次のコマンドを使用して、現在のバージョンを確認できます。
   ```
     azure --version
   ```
@@ -55,7 +55,7 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
     azure login
    ```
    認証には、推奨される Web ブラウザーとコードを使用します。
-2. 複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドを使用すると、すべての Azure サブスクリプションを表示でき、既定のサブスクリプションも確認できます。
+2. 複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドを使用すると、すべての Azure サブスクリプションを表示でき、既定のサブスクリプションも識別できます。
    
    ```
     azure account list 
@@ -67,13 +67,13 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
     azure account set <subscription name>
    ```
 
-3. リソース グループがない場合は、**exampleResourceGroup** という名前のリソース グループを作成できます。 
+3. リソース グループがない場合は、**exampleResourceGroup** という名前のリソース グループを作成できます。
    ```
     azure group create -n exampleResourceGroup -l westus
    ```
 
 > [!TIP]
-> 「[Azure CLI を使用して Azure のリソースとリソース グループを管理する][lnk-CLI-arm]」の記事には、Azure CLI を使用して Azure リソースを管理する方法の詳細が記載されています。 
+> 「[Azure CLI を使用して Azure のリソースとリソース グループを管理する][lnk-CLI-arm]」の記事に、Azure CLI を使用して Azure リソースを管理する方法の詳細が記載されています。 
 > 
 > 
 
@@ -88,7 +88,7 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
     - <sku-name> (The name of the sku, one of: [F1, S1, S2, S3] etc. For the latest full list refer to the pricing page for IoT Hub.
     - <units> (The number of provisioned units. Range : F1 [1-1] : S1, S2 [1-200] : S3 [1-10]. IoT Hub units are based on your total message count and the number of devices you want to connect.)
 ```
-作成に使用できるすべてのパラメーターを表示するには、コマンド プロンプトでヘルプ コマンドを使用します。
+作成に使用できるすべてのパラメーターを表示するには、コマンド プロンプトで help コマンドを使用します。
 
 ```
     azure iothub create -h 
@@ -102,7 +102,7 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
 ```
 
 > [!NOTE]
-> この Azure CLI コマンドでは、課金の対象とする S1 Standard IoT Hub を作成します。 次のコマンドを使用すると、IoT Hub **exampleIoTHubName** を削除できます。 
+> この Azure CLI コマンドでは、課金の対象とする S1 Standard IoT Hub を作成します。 次のコマンドを使用すると、IoT Hub **exampleIoTHubName** を削除できます。
 > 
 > ```
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
@@ -133,6 +133,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

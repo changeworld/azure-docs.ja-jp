@@ -1,6 +1,6 @@
 ---
-title: "Azure VM での AlwaysOn 可用性グループの自動構成 - Resource Manager"
-description: "Azure Virtual Machines を使用して Azure Resource Manager モードで AlwaysOn 可用性グループを作成します。 このチュートリアルでは、ソリューション全体の自動作成に、主にユーザー インターフェイスを使用します。"
+title: "Azure Resource Manager VM の高可用性を設定する | Microsoft Docs"
+description: "このチュートリアルでは、Azure Resource Manager モードの Azure 仮想マシンで Always On 可用性グループを作成する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/20/2016
-ms.author: MikeRayMSFT
+ms.workload: iaas-sql-server
+ms.date: 1/23/2017
+ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 27967ee372c379de08ae0c4740638cbeaabc4e55
+ms.sourcegitcommit: d0910bd4e0bf50591ac83991eb2eb679bdc3cadf
+ms.openlocfilehash: 4cbe4f189f5d562edbe5d5cbb524581aa4cb66f2
 
 
 ---
@@ -37,10 +37,10 @@ ms.openlocfilehash: 27967ee372c379de08ae0c4740638cbeaabc4e55
 チュートリアルの最後には、次の要素で構成された SQL Server 可用性グループ ソリューションが Azure で完成します。
 
 * 複数のサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
-* Active Directory (AD) ドメインを持つ 2 つのドメイン コントローラー
-* バックエンド サブネットにデプロイされ、AD ドメインに参加している 2 つの SQL Server VM
+* Active Directory (AD) ドメインを持つ&2; つのドメイン コントローラー
+* バックエンド サブネットにデプロイされ、AD ドメインに参加している&2; つの SQL Server VM
 * 3 ノードの WSFC クラスター (ノード マジョリティ クォーラム モデル)
-* 可用性データベースの 2 つの同期コミット レプリカを含む可用性グループ
+* 可用性データベースの&2; つの同期コミット レプリカを含む可用性グループ
 
 このソリューションをグラフィカルに表すと、次の図のようになります。
 
@@ -95,7 +95,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 * **[OK]**をクリックします。
 
 ### <a name="domain-and-network-settings"></a>ドメインおよびネットワークの設定
-この Azure ギャラリー テンプレートでは、新しいドメイン コントローラーを持つ新しいドメインを作成します。 また、新しいネットワークと 2 つのサブネットも作成します。 このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。 次の手順では、ドメインおよびネットワーク設定を構成します。
+この Azure ギャラリー テンプレートでは、新しいドメイン コントローラーを持つ新しいドメインを作成します。 また、新しいネットワークと&2; つのサブネットも作成します。 このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。 次の手順では、ドメインおよびネットワーク設定を構成します。
 
 **[Domain and network settings (ドメインおよびネットワークの設定)]** ブレードで、ドメインとネットワークの設定の既定値を確認します。
 
@@ -130,7 +130,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 ### <a name="vm-size-storage-settings"></a>VM サイズおよび記憶域の設定
 **[VM size, storage settings (VM サイズおよび記憶域の設定)]** では、SQL Server の仮想マシンのサイズを選択し、その他の設定を確認します。
 
-* **[SQL Server virtual machine size (SQL Server 仮想マシンのサイズ)]** は、両方の SQL Server の Azure 仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2**を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。 多くの実稼働ワークロードでは、 **DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+* **[SQL Server virtual machine size (SQL Server 仮想マシンのサイズ)]** は、両方の SQL Server の Azure 仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2**を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。 多くの実稼働ワークロードでは、 **DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを&2; つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 > [!NOTE]
 > Azure によって、SQL Server Enterprise Edition がインストールされます。 価格は、エディションと仮想マシンのサイズによって異なります。 現在の価格の詳細については、「 [Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」をご覧ください。
@@ -142,7 +142,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 * **[SQL Storage account (SQL ストレージ アカウント)]** は、SQL Server のデータとオペレーティング システム ディスクを保持するストレージ アカウントの名前です。 このチュートリアルでは **alwaysonsql01**を使用します。
 * **[DC Storage account (DC ストレージ アカウント)]** は、ドメイン コントローラーのストレージ アカウントの名前です。 このチュートリアルでは **alwaysondc01**を使用します。
 * **[SQL Server data disk size in TB (SQL Server のデータ ディスク サイズ (TB))]** は、SQL Server のデータ ディスクの TB 単位でのサイズです。 1 から 4 までの数字を指定します。 これは各 SQL Server に接続するデータ ディスクのサイズです。 このチュートリアルでは **1**を使用します。
-* **[Storage optimization (記憶域の最適化)]** では、ワークロードの種類に基づいて SQL Server の仮想マシンの特定の記憶域の構成を設定します。 このシナリオのすべての SQL Server では、Azure ディスクのホスト キャッシュが読み取り専用に設定された Premium ストレージを使用します。 また、次の 3 つのいずれかの設定を選択すると、ワークロード用に SQL Server の設定を最適化できます。
+* **[Storage optimization (記憶域の最適化)]** では、ワークロードの種類に基づいて SQL Server の仮想マシンの特定の記憶域の構成を設定します。 このシナリオのすべての SQL Server では、Azure ディスクのホスト キャッシュが読み取り専用に設定された Premium ストレージを使用します。 また、次の&3; つのいずれかの設定を選択すると、ワークロード用に SQL Server の設定を最適化できます。
   
   * **[General workload (一般的なワークロード)]** では、特定の構成は設定しません
   * **[Transactional processing (トランザクション処理)]** では、トレース フラグ 1117 と 1118 を設定します
@@ -155,13 +155,13 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 * 設定を確認し、 **[OK]**をクリックします。
 
 #### <a name="a-note-about-storage"></a>記憶域に関する注意点
-さらなる最適化には、SQL Server のデータ ディスクのサイズが関係します。 Azure は、データ ディスクにテラバイトごとに、Premium ストレージ(SSD) を 1 TB 追加します。 サーバーに 2 TB 以上が必要な場合、テンプレートは、各 SQL Server に記憶域プールを作成します。 記憶域プールとは、容量を増やし、回復性、およびパフォーマンスを向上させるために複数のディスクが構成された仮想化された記憶域の形式です。  その後、テンプレートは、記憶域プールに記憶域スペースを作成し、これをオペレーティング システムに 1 つのデータとして表示します。 テンプレートは、このディスクを SQL Server のデータ ディスクとして指定します。 テンプレートは、次の設定で SQL Server の記憶域プールを調整します。
+さらなる最適化には、SQL Server のデータ ディスクのサイズが関係します。 Azure は、データ ディスクにテラバイトごとに、Premium ストレージ(SSD) を 1 TB 追加します。 サーバーに 2 TB 以上が必要な場合、テンプレートは、各 SQL Server に記憶域プールを作成します。 記憶域プールとは、容量を増やし、回復性、およびパフォーマンスを向上させるために複数のディスクが構成された仮想化された記憶域の形式です。  その後、テンプレートは、記憶域プールに記憶域スペースを作成し、これをオペレーティング システムに&1; つのデータとして表示します。 テンプレートは、このディスクを SQL Server のデータ ディスクとして指定します。 テンプレートは、次の設定で SQL Server の記憶域プールを調整します。
 
 * ストライプ サイズは、仮想ディスクのインターリーブ設定です。 これは、トランザクション ワークロードの場合、64 KB に設定されます。 データ ウェアハウス ワークロードの場合、256 KB に設定されます。
 * 回復性については単純です (回復性はありません)。
 
 > [!NOTE]
-> Azure Premium ストレージは、1 つのリージョンに 3 つのデータのコピーを保持するローカル冗長であるため、記憶域プールに追加の回復性は不要です。
+> Azure Premium ストレージは、1 つのリージョンに&3; つのデータのコピーを保持するローカル冗長であるため、記憶域プールに追加の回復性は不要です。
 > 
 > 
 
@@ -185,7 +185,7 @@ SQL Server の構成のベスト プラクティスについては、「 [Azure 
 * **[SQL Auto Patching maintenance start hour (SQL 自動修正メンテナンスの開始時間)]** は、Azure リージョンに自動修正が開始される時間です。
 
 > [!NOTE]
-> 各 VM の修正時間は 1 時間に調整されています。 一度に 1 つの仮想マシンにのみ修正が適用され、サービスの中断を防いでいます。
+> 各 VM の修正時間は&1; 時間に調整されています。 一度に&1; つの仮想マシンにのみ修正が適用され、サービスの中断を防いでいます。
 > 
 > 
 
@@ -207,7 +207,7 @@ Azure ポータルでデプロイの進捗状況を監視できます。 デプ�
 ![Azure ダッシュ ボード](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>SQL Server への接続
-SQL Server の新しいインスタンスは、インターネットに接続されていない仮想マシンで実行されます。 ただし、ドメイン コントローラーにはインターネット接続があります。 リモート デスクトップを使用して SQL サーバーに接続するには、まずドメイン コントローラーのいずれかに RDP 接続を実行します。 ドメイン コントローラーで SQL Server に 2 つ目の RDP 接続を開きます。
+SQL Server の新しいインスタンスは、インターネットに接続されていない仮想マシンで実行されます。 ただし、ドメイン コントローラーにはインターネット接続があります。 リモート デスクトップを使用して SQL サーバーに接続するには、まずドメイン コントローラーのいずれかに RDP 接続を実行します。 ドメイン コントローラーで SQL Server に&2; つ目の RDP 接続を開きます。
 
 プライマリ ドメイン コントローラーに RDP 接続するには、次の手順に従います。
 
@@ -231,6 +231,6 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

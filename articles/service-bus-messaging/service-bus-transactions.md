@@ -1,5 +1,5 @@
 ---
-title: "Service Bus トランザクション |Microsoft Docs"
+title: "Azure Service Bus で処理されるトランザクションの概要 | Microsoft Docs"
 description: "Azure Service Bus のアトミック トランザクションと経由送信の概要"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
+ms.date: 02/02/2017
 ms.author: clemensv;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 926eeec8186b8136f41355030e5382911bfc0322
+ms.sourcegitcommit: c39abad6c5e2a9e2ae7add9ecda48783f61bc736
+ms.openlocfilehash: 8d0f3818831a22550fb0eea9bcbc1f62b133003a
 
 
 ---
@@ -24,19 +24,19 @@ ms.openlocfilehash: 926eeec8186b8136f41355030e5382911bfc0322
 この記事では、Azure Service Bus のトランザクション機能について説明します。 説明の多くは、[Service Bus を使用したアトミック トランザクションのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions)に示されています。 この記事はトランザクション処理の概要と Service Bus の "*経由送信*" 機能に限定されていますが、アトミック トランザクションのサンプルの範囲はこれよりも広く複雑です。
 
 ## <a name="transactions-in-service-bus"></a>Service Bus でのトランザクション
-[トランザクション](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions#what-are-transactions)により、2 つ以上の操作が 1 つの*実行スコープ*にグループ化されます。 性質上、このようなトランザクションによって、操作の特定のグループに属する操作がすべて成功するか、すべて失敗するかのいずれかになる必要があります。 この点において、トランザクションは 1 つの単位として動作します。このことは、多くの場合 "*原子性* "と呼ばれます。 
+[トランザクション](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions#what-are-transactions)により、2 つ以上の操作が&1; つの*実行スコープ*にグループ化されます。 性質上、このようなトランザクションによって、操作の特定のグループに属する操作がすべて成功するか、すべて失敗するかのいずれかになる必要があります。 この点において、トランザクションは&1; つの単位として動作します。このことは、多くの場合 "*原子性* "と呼ばれます。 
 
 Service Bus はトランザクション メッセージ ブローカーであり、そのメッセージ ストアに対するすべての内部操作のトランザクション整合性を確保します。 [配信不能キュー](service-bus-dead-letter-queues.md)へのメッセージの移動や、エンティティ間のメッセージの [自動転送](service-bus-auto-forwarding.md) などの、すべての Service Bus 内部のメッセージ転送は、トランザクショナルです。 そのため、Service Bus がメッセージを受け入れる場合、メッセージは既に格納されて、シーケンス番号のラベルが付けられています。 それ以降、Service Bus 内のメッセージの転送はエンティティ間で連動する操作となり、メッセージが失われる (ソースが成功し、ターゲットが失敗する) ことも、重複する (ソースが失敗し、ターゲットが成功する) こともありません。
 
-Service Bus は、トランザクションのスコープ内の単一メッセージング エンティティ (キュー、トピック、サブスクリプション) に対するグループ化操作をサポートしています。 たとえば、トランザクション スコープ内から 1 つのキューにいくつかのメッセージを送信できます。また、トランザクションが正常に完了したときにのみ、メッセージがキューのログにコミットされます。
+Service Bus は、トランザクションのスコープ内の単一メッセージング エンティティ (キュー、トピック、サブスクリプション) に対するグループ化操作をサポートしています。 たとえば、トランザクション スコープ内から&1; つのキューにいくつかのメッセージを送信できます。また、トランザクションが正常に完了したときにのみ、メッセージがキューのログにコミットされます。
 
 ## <a name="operations-within-a-transaction-scope"></a>トランザクション スコープ内での操作
 トランザクション スコープ内で実行できる操作は次のとおりです。
 
-* **[QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx)、[MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx)、[TopicClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx)**: Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)**: Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)、[MessageSender](/dotnet/api/microsoft.servicebus.messaging.messagesender)、[TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)**: Send、SendAsync、SendBatch、SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
 
-一部の受信ループ内、または [OnMessage](https://msdn.microsoft.com/library/azure/dn369601.aspx) コールバックで、[ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
+一部の受信ループ内、または [OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) コールバックで、[ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
 
 その後、メッセージの処理 (完了、破棄、配信不能、延期) がトランザクションのスコープ内で発生します。この処理の発生は、トランザクションの全体的な結果に依存します。
 
@@ -48,14 +48,14 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 ### <a name="see-it-in-code"></a>コードでの確認
 このような転送を設定するには、転送キューを経由して送信先キューを対象とするメッセージの送信者を作成します。 同じキューからメッセージをプルする受信者も必要です。 次に例を示します。
 
-```
+```csharp
 var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
 var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
 ```
 
 その後、単純なトランザクションで、次の例のように、これらの要素を使用します。
 
-```
+```csharp
 var msg = receiver.Receive();
 
 using (scope = new TransactionScope())
@@ -72,6 +72,7 @@ using (scope = new TransactionScope())
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 Service Bus キューの詳細については、次の記事を参照してください。
 
 * [自動転送を使用した Service Bus エンティティのチェーン](service-bus-auto-forwarding.md)
@@ -83,6 +84,6 @@ Service Bus キューの詳細については、次の記事を参照してく�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

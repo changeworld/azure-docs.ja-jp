@@ -1,5 +1,5 @@
 ---
-title: "Adafruit Feather M0 WiFi Azure IoT スタート キットの概要 | Microsoft Docs"
+title: "Azure IoT への Arduino (C) の接続 - 作業開始 | Microsoft Docs"
 description: "Adafruit Feather M0 WiFi の概要、Azure IoT Hub の作成、Adafruit Feather M0 WiFi の IoT Hub への接続"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: 8689ee35e880b1aa774b09bb194b43f280b2af79
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 6789e6f1c094f8809163e29349c8ea54e1e97683
 
 
 ---
@@ -143,6 +143,6 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 [troubleshooting]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

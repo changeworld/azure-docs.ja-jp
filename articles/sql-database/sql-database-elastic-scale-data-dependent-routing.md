@@ -1,6 +1,6 @@
 ---
-title: "データ依存ルーティング | Microsoft Docs"
-description: "データ依存ルーティング (Azure SQL Database のElastic Database の機能) のために .NET アプリで ShardMapManager クラスを使用する方法について説明します。"
+title: "Azure SQL Database でのデータ依存ルーティング | Microsoft Docs"
+description: "データ依存ルーティング (Azure SQL Database のシャード化されたデータベースの機能) のために .NET アプリで ShardMapManager クラスを使う方法について説明します。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c77996b8dfa0c2ad9785e42758278a621a52c93c
+ms.sourcegitcommit: 5024e5edbfaaf9b070f66e6b009bc6085de3fa7e
+ms.openlocfilehash: b0f700bd742e1a69245711ff7f87d7f35535b3ab
 
 
 ---
 # <a name="data-dependent-routing"></a>データ依存ルーティング
-**データ依存ルーティング** は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 これは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは ADO.NET アプリケーションの **[ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**で実行します。
+**データ依存ルーティング** は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 これは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに&1; つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは ADO.NET アプリケーションの **[ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**で実行します。
 
 アプリケーションは、シャード化された環境の各種データ スライスに関連付けられた、さまざまな接続文字列または DB の場所を追跡する必要はありません。 代わりに [Shard Map Manager](sql-database-elastic-scale-shard-map-management.md) が正しいデータベースへの接続処理を必要に応じて管理します。 (通常、このキーは、データベース要求の基本的なパラメーターである、*customer_id*、*tenant_id*、*date_key*、または他の特定の識別子です)。 
 
@@ -81,7 +81,7 @@ ms.openlocfilehash: c77996b8dfa0c2ad9785e42758278a621a52c93c
         cmd.ExecuteNonQuery(); 
     }  
 
-**OpenConnectionForKey** メソッドは、正しいデータベースに対し、既に開いている接続を新たに返します。 この方法で接続した場合も引き続き ADO.Net 接続プールの利点を最大限に活用できます。 トランザクションと要求を満たすことができるのが 1 回に 1 つのシャードである限り、ADO.Net を既に使用しているアプリケーションで必要な変更はこれだけです。 
+**OpenConnectionForKey** メソッドは、正しいデータベースに対し、既に開いている接続を新たに返します。 この方法で接続した場合も引き続き ADO.Net 接続プールの利点を最大限に活用できます。 トランザクションと要求を満たすことができるのが&1; 回に&1; つのシャードである限り、ADO.Net を既に使用しているアプリケーションで必要な変更はこれだけです。 
 
 アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**も使用できます。 その動作は、ADO.Net の **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688\(v=vs.110\).aspx)** メソッドと同等のデータ依存型ルーティングです。
 
@@ -90,7 +90,7 @@ ms.openlocfilehash: c77996b8dfa0c2ad9785e42758278a621a52c93c
 
 一時的な障害処理は、データ依存ルーティングのパターンと自然に共存できます。 そのための主な要件は、データ依存ルーティング接続を取得した **using** ブロックを含めたデータ アクセス要求全体をリトライすることです。 上記の例は、次のように書き換えることができます (変更箇所が強調表示されています)。 
 
-### <a name="example-data-dependent-routing-with-transient-fault-handling"></a>例 – 一時的な障害処理機能を伴うデータ依存ルーティング
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>例 - 一時的な障害処理機能を伴うデータ依存ルーティング
 <pre><code>int customerId = 12345; 
 int newPersonId = 4321; 
 
@@ -120,7 +120,7 @@ int newPersonId = 4321;
 一時的な障害処理の実装に必要なパッケージは、エラスティック データベースのサンプル アプリケーションのビルド時に自動的にダウンロードされます。 パッケージは、「 [Enterprise Library - Transient Fault Handling Application Block (エンタープライズ ライブラリ - 一時的な障害処理アプリケーション ブロック)](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)」からも個別に入手することができます。 バージョン 6.0 以降を使用してください。 
 
 ## <a name="transactional-consistency"></a>トランザクションの整合性
-トランザクションのプロパティは、シャードにとってローカルなすべての操作で保証されています。 たとえば、データ依存ルーティングを通じて送信されるトランザクションは、接続するターゲット シャードの範囲内で実行されます。 現時点では、複数の接続を 1 つのトランザクションに登録するために提供された機能はありません。したがって、複数のシャードにまたがる操作にもトランザクション上の保証はありません。
+トランザクションのプロパティは、シャードにとってローカルなすべての操作で保証されています。 たとえば、データ依存ルーティングを通じて送信されるトランザクションは、接続するターゲット シャードの範囲内で実行されます。 現時点では、複数の接続を&1; つのトランザクションに登録するために提供された機能はありません。したがって、複数のシャードにまたがる操作にもトランザクション上の保証はありません。
 
 ## <a name="next-steps"></a>次のステップ
 シャードをデタッチまたは再アタッチする方法については、「 [RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)
@@ -130,6 +130,6 @@ int newPersonId = 4321;
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

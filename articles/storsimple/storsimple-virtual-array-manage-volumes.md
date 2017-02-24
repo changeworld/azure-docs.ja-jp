@@ -1,5 +1,5 @@
 ---
-title: "StorSimple デバイス マネージャーを使用して Microsoft Azure StorSimple Virtual Array でボリューム管理する | Microsoft Docs"
+title: "StorSimple Virtual Array でのボリュームの管理 | Microsoft Docs"
 description: "StorSimple デバイス マネージャーの機能について、また、StorSimple デバイス マネージャーを使用して StorSimple Virtual Array でボリュームを管理する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 3aca09cad7551ee89a1bf06999e33618ab8fab79
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: a507bf1866952cb79fa6334fed80c88cd207cd0a
 
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array でボリュームを管理する
@@ -142,6 +142,6 @@ StorSimple サービスの概要ブレードの **[ボリューム]** メニュ�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

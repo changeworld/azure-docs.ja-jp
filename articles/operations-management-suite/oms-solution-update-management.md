@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/14/2016
+ms.date: 12/06/2016
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4bd1e84fd9af1273f95f70d941c3a4535984c8a9
+ms.sourcegitcommit: 705bbd78970c6e3c20ef7214704194f722da09a6
+ms.openlocfilehash: 0f00d5a3b8116864d9e66c18d535f319b31b9f9c
 
 
 ---
-# <a name="update-management-solution-in-omsmediaomssolutionupdatemanagementupdatemanagementsolutioniconpng-update-management-solution-in-oms"></a>![OMS の更新管理ソリューション](./media/oms-solution-update-management/update-management-solution-icon.png) OMS の更新管理ソリューション
+# <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,7 +33,10 @@ OMS の更新管理ソリューションを使用すると、Windows コンピ�
 * Linux エージェントは、更新リポジトリへのアクセスが必要です。  OMS Agent for Linux は [GitHub](https://github.com/microsoft/oms-agent-for-linux) からダウンロードできます。 
 
 ## <a name="configuration"></a>構成
-OMS ワークスペースに更新管理ソリューションを追加し、Linux エージェントを追加するには、次の手順を実行します。  Windows エージェントは、そのままの構成で自動的に追加されます。
+OMS ワークスペースに更新管理ソリューションを追加し、Linux エージェントを追加するには、次の手順を実行します。 Windows エージェントは、そのままの構成で自動的に追加されます。
+
+> [!NOTE]
+> 現時点では、このソリューションを有効にすると、OMS ワークスペースに接続された Windows コンピューターは自動的に Hybrid Runbook Worker として構成されます。これは、このソリューションに含まれる Runbook をサポートするための措置です。  ただし、Automation アカウントに作成されている ハイブリッド worker グループには登録されません。また、ハイブリッド worker グループに追加して独自の Runbook を実行することもできません。  Windows コンピューターが既に Hybrid Runbook Worker に指定されていて、OMS ワークスペースに接続されている場合は、Runbook が予期したとおりに機能するように、ソリューションを追加する前に OMS ワークスペースから削除する必要があります。  
 
 1. ソリューション ギャラリーからの [OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、更新管理ソリューションを OMS ワークスペースに追加します。  
 2. OMS ポータルで、**[設定]** を選択し、**[接続されたソース]** を選択します。  **ワークスペース ID** と、**主キー**または **2 次キー**をメモしておきます。
@@ -41,11 +44,13 @@ OMS ワークスペースに更新管理ソリューションを追加し、Linu
    
    a.    次のコマンドを実行して、OMS Agent for Linux の最新バージョンをインストールします。  <Workspace ID> を実際のワークスペース ID、<Key> を実際の主キーまたは 2 次キーに置き換えてください。
    
-     cd ~   wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh   sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
-   
+        cd ~
+        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+
    b. エージェントを削除するには、次のコマンドを実行します。
    
-     sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
 
 ## <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックに伴う構成や保守は不要です。 
@@ -242,6 +247,6 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO1-->
 
 
