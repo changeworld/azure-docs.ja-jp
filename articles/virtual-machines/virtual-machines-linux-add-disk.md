@@ -14,11 +14,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.date: 09/06/2016
-ms.author: rclaus
+ms.date: 02/02/2017
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 17ddda372f3a232be62e565b700bb1be967fb8e3
-ms.openlocfilehash: 5e9fb48fdf0da9a1c75f4d08ab7d97976859340c
+ms.sourcegitcommit: 50a71382982256e98ec821fd63c95fbe5a767963
+ms.openlocfilehash: 91f4ada749c3f37903a8757843b10060b73d95a2
 
 
 ---
@@ -28,12 +28,72 @@ ms.openlocfilehash: 5e9fb48fdf0da9a1c75f4d08ab7d97976859340c
 ## <a name="quick-commands"></a>クイック コマンド
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM に `50` GB のディスクを接続します。
 
+管理ディスクを使用する場合:
+
+```azurecli
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+```
+
+非管理対象ディスクを使用する場合:
+
 ```azurecli
 azure vm disk attach-new myResourceGroup myVM 50
 ```
 
-## <a name="attach-a-disk"></a>ディスクの接続
-新しいディスクには簡単に接続できます。 「 `azure vm disk attach-new myResourceGroup myVM sizeInGB` 」と入力して、VM 用に新しい GB ディスクを作成し、接続します。 ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM に `50` GB のディスクを接続します。
+## <a name="attach-a-managed-disk"></a>管理ディスクの接続
+
+管理ディスクを使用すると、Azure Storage アカウントについて心配することなく、VM およびそれらのディスクに注力できます。 同じ Azure リソース グループを使用して、管理ディスクを迅速に作成して VM に接続したり、任意の数のディスクを作成して VM に接続したりできます。
+
+
+### <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
+
+VM に新しいディスクが必要な場合は、`az vm disk attach` コマンドを使用できます。
+
+```azurecli
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+```
+
+### <a name="attach-an-existing-disk"></a>既存のディスクの接続 
+
+多くの場合は、既に作成されているディスクを接続します。 まずディスク ID を探し、`az vm disk attach-disk` コマンドに渡します。 次のコードは、`az disk create -g myResourceGroup -n myDataDisk --size-gb 50` で作成されたディスクを使用しています。
+
+```azurecli
+# find the disk id
+diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+az vm disk attach-disk -g myResourceGroup --vm-name myVM --disk $diskId
+```
+
+出力は次のようになります (どのコマンドにも `-o table` オプションを使用して、出力の形式を設定できます)。
+
+```json
+{
+  "accountType": "Standard_LRS",
+  "creationData": {
+    "createOption": "Empty",
+    "imageReference": null,
+    "sourceResourceId": null,
+    "sourceUri": null,
+    "storageAccountId": null
+  },
+  "diskSizeGb": 50,
+  "encryptionSettings": null,
+  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
+  "location": "westus",
+  "name": "myDataDisk",
+  "osType": null,
+  "ownerId": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "tags": null,
+  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
+  "type": "Microsoft.Compute/disks"
+}
+```
+
+
+## <a name="attach-an-unmanaged-disk"></a>非管理対象ディスクの接続
+
+VM と同じストレージ アカウントにディスクを作成しても問題ない場合は、新しいディスクの接続は簡単です。 「`azure vm disk attach-new`」と入力して、VM 用に新しい GB ディスクを作成し、接続します。 ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM に `50` GB のディスクを接続します。
 
 ```azurecli
 azure vm disk attach-new myResourceGroup myVM 50
@@ -258,7 +318,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure における Linux の TRIM/UNMAP サポート
 一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。 これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
 
-Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+Linux VM で TRIM のサポートを有効にする方法は&2; 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
 * 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
 
@@ -292,6 +352,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

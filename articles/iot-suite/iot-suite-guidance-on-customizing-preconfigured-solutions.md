@@ -4,7 +4,7 @@ description: "Azure IoT Suite の構成済みソリューションのカスタ�
 services: 
 suite: iot-suite
 documentationcenter: .net
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
@@ -13,16 +13,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/11/2016
-ms.author: araguila
+ms.date: 02/08/2017
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 45fd461defc00c5dc018496b85b8bf85614f03dd
-ms.openlocfilehash: 0037b9e28b20c9a85f810cba45aa5b4cbcf6ab6b
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: bbec0c01e8760c975222768e694e57b8b447bb3b
 
 
 ---
 # <a name="customize-a-preconfigured-solution"></a>構成済みソリューションのカスタマイズ
-Azure IoT Suite で提供される構成済みソリューションを利用すれば、スイート内のサービスを連動させ、エンド ツー エンド ソリューションを提供できます。 ここから出発し、いくつかのポイントで特定のシナリオのためにソリューションを拡張したり、カスタマイズしたりできます。 次のセクションでは、これらの一般的なカスタマイズ ポイントの概要を示します。
+Azure IoT Suite で提供される構成済みソリューションを利用すれば、スイート内のサービスを連動させ、エンド ツー エンド ソリューションを提供できます。 これを出発点として、いくつかのポイントで特定のシナリオに合わせてソリューションを拡張したり、カスタマイズしたりできます。 次のセクションでは、これらの一般的なカスタマイズ ポイントの概要を示します。
 
 ## <a name="finding-the-source-code"></a>ソース コードの検索
 構成済みソリューションのソース コードは、次のリポジトリの Github で入手できます。
@@ -33,19 +33,19 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 構成済みソリューションのソース コードは、Azure IoT Suite を使用して IoT ソリューションのエンド ツー エンド機能を実装する際に使用されるパターンとプラクティスを示すために提供されています。 ソリューションをビルドしてデプロイする方法の詳細については、GitHub リポジトリを参照してください。
 
 ## <a name="changing-the-preconfigured-rules"></a>構成済みルールの変更
-リモート監視ソリューションには、ソリューションに表示されるデバイス情報、テレメトリ、およびルールのロジックを実装するための&3; つの [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブが含まれています。
+リモート監視ソリューションには、ソリューション内でデバイス情報、テレメトリ、およびルールのロジックを処理するための&3; つの [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブが含まれています。
 
-この&3; つの Stream Analytics ジョブとその構文については、「 [リモート監視の事前構成済みソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)」で詳しく説明しています。 
+この&3; つの Stream Analytics ジョブとその構文については、「[リモート監視の事前構成済みソリューションのチュートリアル](iot-suite-remote-monitoring-sample-walkthrough.md)」で詳しく説明しています。 
 
 これらのジョブを直接編集し、ロジックを変更したり、シナリオに固有のロジックを追加したりすることができます。 Stream Analytics ジョブを見つけるには、次の手順を実行します。
 
 1. [Azure ポータル](https://portal.azure.com)に移動します。
 2. IoT ソリューションと同じ名前のリソース グループに移動します。 
 3. 変更を加える Azure Stream Analytics ジョブを選択します。 
-4. コマンドのセットで **Stop**を選択してジョブを停止します。 
+4. コマンド セットから **[停止]** を選択してジョブを停止します。 
 5. 入力、クエリ、および出力を編集します。
    
-    変更を簡単に加えるには、**Rules** ジョブのクエリを、**">"** の代わりに **"<"** を使用するように変更します。 ルールを編集してもソリューション ポータルには引き続き **">"** が表示されますが、基になるジョブを変更したため、動作は反転されます。
+    変更を簡単に加えるには、**Rules** ジョブのクエリを、**">"** の代わりに **"<"** を使用するように変更します。 ルールを編集してもソリューション ポータルには引き続き **">"** が表示されますが、基になるジョブを変更したため動作は反転されます。
 6. ジョブの開始
 
 > [!NOTE]
@@ -59,12 +59,12 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 ## <a name="customizing-devices"></a>デバイスのカスタマイズ
 最も一般的な拡張アクティビティの&1; つは、シナリオに固有のデバイスの操作です。 デバイスを操作するためのいくつかの方法があります。 これらの方法には、シナリオに合わせたシミュレーション対象デバイスの変更や、[IoT デバイス SDK][IoT Device SDK] を使用したソリューションへの物理デバイスの接続が含まれます。
 
-リモート監視の構成済みソリューションにデバイスを追加するための詳細な手順については、[Iot Suite 接続デバイス](iot-suite-connecting-devices.md)に関するページと、リモート監視の構成済みソリューションと連携するように設計された[リモート監視 C SDK サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring)を参照してください。
+デバイス追加の詳細な手順については、[Iot Suite 接続デバイス](iot-suite-connecting-devices.md)に関するページと、リモート監視の構成済みソリューションと連携するように設計された[リモート監視 C SDK サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring)を参照してください。
 
 ### <a name="creating-your-own-simulated-device"></a>独自のシミュレーション対象デバイスの作成
-リモート監視ソリューション ソース コード (上記を参照) には .NET シミュレーターが含まれます。 このシミュレーターはソリューションの一部としてプロビジョニングされるものであり、さまざまなメタデータやテレメトリを送信したり、さまざまなコマンドに応答したりするために変更できます。
+[リモート監視ソリューションのソース コード](https://github.com/Azure/azure-iot-remote-monitoring) には .NET シミュレーターが含まれています。 このシミュレーターはソリューションの一部としてプロビジョニングされたものであり、異なるメタデータやテレメトリを送信したり、別のコマンドに応答したりするように変更できます。
 
-リモート監視の構成済みソリューションの構成済みシミュレーターは、温度と湿度のテレメトリを生成する冷却デバイスです。GitHub リポジトリをフォークしたら、[Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) プロジェクトでシミュレーターに変更を加えることができます。
+リモート監視の事前構成済みソリューションに含まれるこの事前構成済みシミュレーターでは、温度と湿度に関するテレメトリを出力する冷却デバイスをシミュレートしています。 GitHub リポジトリをフォークしている場合、[Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) プロジェクトに含まれるシミュレーターを変更できます。
 
 ### <a name="available-locations-for-simulated-devices"></a>シミュレーション対象デバイスで利用可能な場所
 既定の場所のセットでは、米国ワシントン州のシアトル/レドモンドとなっています。 これらの場所は [SampleDeviceFactory.cs][lnk-sample-device-factory] で変更できます。
@@ -80,7 +80,7 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 既定では 200 です。 この数は [TelemetryApiController.cs][lnk-telemetry-api-controller-01] で変更できます。
 
 ### <a name="time-period-of-telemetry-graph"></a>テレメトリ グラフの期間
-既定では 10 分です。 これは [TelemetryApiController.cs][lnk-telemetry-api-controller-02] で変更できます。
+既定では 10 分です。 この値は、[TelemetryApiController.cs][lnk-telemetry-api-controller-02] で変更できます。
 
 ## <a name="manually-setting-up-application-roles"></a>アプリケーション ロールの手動設定
 以下の手順では、**Admin** および **ReadOnly** アプリケーション ロールを構成済みソリューションに追加する方法を説明しています。 azureiotsuite.com サイトからプロビジョニングされた構成済みのソリューションには既に **Admin** ロールと **ReadOnly** ロールが含まれています。
@@ -94,12 +94,12 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 5. 構成済みソリューション名と一致するアプリケーションの名前をクリックします。 一覧にアプリケーションが表示されない場合は、**[表示]** ボックスの一覧で **[自分の会社が所有するアプリケーション]** を選択し、チェック マークをクリックします。
 6. ページ下部の **[マニフェストの管理]**、**[マニフェストのダウンロード]** の順にクリックします。
 7. これにより、.json ファイルがローカル コンピューターにダウンロードされます。  このファイルを好みのテキスト エディターで開いて編集します。
-8. .json ファイルの&3; 行目は以下のようになります。
+8. .json ファイルの&3; 行目には次のように記載されています。
    
    ```
    "appRoles" : [],
    ```
-   これを次のコードに置き換えます。
+   この行を次のコードに置き換えます。
    
    ```
    "appRoles": [
@@ -125,12 +125,12 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
    } ],
    ```
 9. 更新された .json ファイルを保存します (既存のファイルを上書きできます)。
-10. Azure 管理ポータルのページ下部で **[マニフェストの管理]**、 **[マニフェストのアップロード]** の順に選択し、前の手順で保存した .json ファイルをアップロードします。
+10. Azure クラシック ポータルのページ下部で **[マニフェストの管理]**、**[マニフェストのアップロード]** の順に選択し、前の手順で保存した .json ファイルをアップロードします。
 11. これで、**Admin** ロールと **ReadOnly** ロールがアプリケーションに追加されました。
 12. これらのロールのいずれかをディレクトリ内のユーザーに割り当てるには、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」をご覧ください。
 
 ## <a name="feedback"></a>フィードバック
-このドキュメントでの説明をご希望のカスタマイズがある場合は、 「[ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)」に機能の提案を投稿するか、この記事の下部でコメントしてください。 
+このドキュメントでの説明をご希望のカスタマイズがある場合は、 [ユーザーの意見募集](https://feedback.azure.com/forums/321918-azure-iot)のページで機能の提案を投稿するか、この記事の下部でコメントしてください。 
 
 ## <a name="next-steps"></a>次のステップ
 構成済みのソリューションをカスタマイズするためのオプションの詳細については、次のリンク先をご覧ください。
@@ -153,6 +153,6 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

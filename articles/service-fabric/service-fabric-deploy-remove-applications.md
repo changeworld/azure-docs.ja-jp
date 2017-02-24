@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2016
+ms.date: 12/16/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 286a4f46e19b9ed38f9920e169bdadd013186ef6
+ms.sourcegitcommit: 6626747c501b01aa5e53657309ec79c75213483c
+ms.openlocfilehash: 2e96e978c56ef2b9c901c952a6e96055a6ab91cf
 
 
 ---
@@ -29,14 +29,14 @@ ms.openlocfilehash: 286a4f46e19b9ed38f9920e169bdadd013186ef6
 
 <br/>
 
-[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の 3 つの手順が含まれます。
+[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の&3; つの手順が含まれます。
 
 1. アプリケーション パッケージをアップロードする
 2. アプリケーションの種類を登録する
 3. アプリケーション インスタンスを作成する
 
 > [!NOTE]
-> Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、以下のすべての手順は、アプリケーション プロジェクトのスクリプト フォルダーにある PowerShell スクリプトによって自動的に処理されます。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。
+> Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、以下のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの Scripts フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。
 > 
 > 
 
@@ -51,7 +51,7 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 
 アプリケーション パッケージを *C:\users\ryanwi\Documents\Visual Studio 2015\Projects\MyApplication\myapplication\pkg\debug* から *c:\temp\MyApplicationType* にコピーできます ("debug" ディレクトリの名前を "MyApplicationType" に変更します)。 次の例では、パッケージをアップロードします。
 
-~~~
+```powershell
 PS C:\temp> dir
 
     Directory: c:\temp
@@ -96,12 +96,14 @@ PS C:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath MyAppli
 Copy application package succeeded
 
 PS D:\temp>
-~~~
+```
+
+イメージ ストアと ImageStoreConnectionString に関する補足情報は、「[ImageStoreConnectionString 設定を理解する](service-fabric-image-store-connection-string.md)」を参照してください。
 
 ## <a name="register-the-application-package"></a>アプリケーション パッケージを登録する
-アプリケーション パッケージを登録すると、アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンを利用できるようになります。 システムは、前の手順でアップロードされたパッケージの読み取り、パッケージの検証 ( [Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) をローカルで実行することに相当)、パッケージのコンテンツの処理、および内部システムの場所への処理済みのパッケージのコピーを実行します。
+アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンは、アプリケーション パッケージを登録すると、利用できるようになります。 システムは、前の手順でアップロードされたパッケージを読み取り、パッケージを検証し、パッケージのコンテンツを処理し、処理済みのパッケージを内部システムの場所にコピーします。  アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。
 
-~~~
+```powershell
 PS D:\temp> Register-ServiceFabricApplicationType MyApplicationType
 Register application type succeeded
 
@@ -112,16 +114,16 @@ ApplicationTypeVersion : AppManifestVersion1
 DefaultParameters      : {}
 
 PS D:\temp>
-~~~
+```
 
-[Register-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドは、アプリケーション パッケージがシステムによって正常にコピーされた場合にのみ戻ります。 この所要時間は、アプリケーション パッケージの内容によって異なります。 必要に応じて **-TimeoutSec** パラメーターを使用してタイムアウトを長く設定できます  (既定のタイムアウトは 60 秒です)。
+[Register-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドは、アプリケーション パッケージがシステムによって正常にコピーされた場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。  アプリケーション パッケージが大規模でタイムアウトが発生する場合、**-Async** パラメーターを使用します。
 
 [Get-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) コマンドは、正常に登録されたアプリケーションの種類の全バージョンを一覧表示します。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-[New-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricapplication) コマンドを使用して、正常に登録されたアプリケーションの種類のバージョンでアプリケーションをインスタンス化できます。 各アプリケーションの名前は、 *fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも同時に作成されます。
+[New-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/new-servicefabricapplication) コマンドを使用して、正常に登録されたアプリケーションの種類のバージョンでアプリケーションをインスタンス化できます。 各アプリケーションの名前は、 *fabric:* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
 
-~~~
+```powershell
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
 
 ApplicationName        : fabric:/MyApp
@@ -149,7 +151,7 @@ ServiceStatus          : Active
 HealthState            : Ok
 
 PS D:\temp>
-~~~
+```
 
 [Get-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricapplication) コマンドは、正常に作成されたすべてのアプリケーション インスタンスとその全体的な状態を一覧表示します。
 
@@ -160,7 +162,7 @@ PS D:\temp>
 ## <a name="remove-an-application"></a>アプリケーションの削除
 アプリケーション インスタンスが不要になった場合、[Remove-ServiceFabricApplication](https://docs.microsoft.com/powershell/servicefabric/vlatest/remove-servicefabricapplication) コマンドを使用して完全に削除できます。 このコマンドを使用すると、アプリケーションに属するすべてのサービスも自動的に削除されます。その結果、すべてのサービスの状態が完全に削除されます。 この操作は元に戻せません。また、アプリケーションの状態を復元できません。
 
-~~~
+```powershell
 PS D:\temp> Remove-ServiceFabricApplication fabric:/MyApp
 
 Confirm
@@ -170,11 +172,11 @@ Remove application instance succeeded
 
 PS D:\temp> Get-ServiceFabricApplication
 PS D:\temp>
-~~~
+```
 
 アプリケーションの種類の特定のバージョンが不要になった場合は、[Unregister-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) コマンドを使用して登録を解除する必要があります。 未使用の種類の登録を解除すると、イメージ ストアでその種類のアプリケーション パッケージのコンテンツによって使用されている記憶域が解放されます。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
 
-~~~
+```powershell
 PS D:\temp> Get-ServiceFabricApplicationType
 
 ApplicationTypeName    : DemoAppType
@@ -203,20 +205,19 @@ ApplicationTypeVersion : v2
 DefaultParameters      : {}
 
 PS D:\temp>
-~~~
+```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
-Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この値は [Get-ServiceFabricClusterManifest](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest) コマンドで取得したクラスター マニフェストで確認できます。
+Service Fabric SDK 環境には、適切な既定値を事前に設定しておく必要があります。 ただし、すべてのコマンドの ImageStoreConnectionString が、Service Fabric クラスターによって使用されている値に一致していなければならない場合もあります。 この ImageStoreConnectionString は [Get-ServiceFabricClusterManifest](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest) コマンドで取得したクラスター マニフェストで確認できます。
 
-~~~
-PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType
-
-cmdlet Copy-ServiceFabricApplicationPackage at command pipeline position 1
-Supply values for the following parameters:
-ImageStoreConnectionString:
-
+```powershell
 PS D:\temp> Get-ServiceFabricClusterManifest
+```
+
+ImageStoreConnectionString は、クラスター マニフェスト内にあります。
+
+```xml
 <ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
 
     [...]
@@ -226,12 +227,7 @@ PS D:\temp> Get-ServiceFabricClusterManifest
     </Section>
 
     [...]
-
-PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType -ImageStoreConnectionString file:D:\ServiceFabric\Data\ImageStore
-Copy application package succeeded
-
-PS D:\temp>
-~~~
+```
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
@@ -248,6 +244,6 @@ PS D:\temp>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

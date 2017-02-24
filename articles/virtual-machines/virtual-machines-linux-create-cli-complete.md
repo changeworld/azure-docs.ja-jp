@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI 2.0 プレビューを使用した完全な Linux 環境の作成 | Microsoft Docs"
+title: "Azure CLI 2.0 を使用した Linux 環境の作成 | Microsoft Docs"
 description: "Azure CLI 2.0 (プレビュー) を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
-ms.openlocfilehash: b02be35b0a3e97dbab32467eb8f654ea9609e7aa
+ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
+ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 
 ---
@@ -53,7 +53,7 @@ ms.openlocfilehash: b02be35b0a3e97dbab32467eb8f654ea9609e7aa
 az group create --name myResourceGroup --location westeurope
 ```
 
-[az storage account create](/cli/azure/storage/account#create) でストレージ アカウントを作成します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
+この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -164,10 +164,11 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-[az vm create](/cli/azure/vm#create) で、最初の Linux VM を作成します。 次の例では、`myVM1` という名前の VM を作成します。
+[az vm create](/cli/azure/vm#create) で、最初の Linux VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
 
 ```azurecli
 az vm create \
@@ -176,13 +177,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 **az vm create** で、2 つ目の Linux VM を作成します。 次の例では、`myVM2` という名前の VM を作成します。
@@ -194,14 +198,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 [az vm show](/cli/azure/vm#show) で、すべて正しく構築されたことを確認します。
 
@@ -245,7 +252,9 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。 リソース グループを作成したら、そのほぼ直後にストレージ アカウントを作成します。
+この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
+
+非管理対象ディスクを使用する場合は、VM ディスクおよび追加するすべてのデータ ディスク用に、ストレージ アカウントを作成する必要があります。
 
 ここでは、[az storage account create](/cli/azure/storage/account#create) コマンドを使い、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
 
@@ -983,7 +992,8 @@ az network nic create --resource-group myResourceGroup --location westeurope --n
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
 障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大&3; つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
@@ -994,11 +1004,11 @@ az vm availability-set create --resource-group myResourceGroup --location westeu
 
 
 ## <a name="create-the-linux-vms"></a>Linux VM の作成
-これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。 ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使ってそのイメージの情報を見つけます。
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使ってそのイメージの情報を見つけます。
 
 認証に使う SSH キーも指定します。 SSH キーがない場合は、[こちらの手順](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に従って作成できます。 または、VM を作成した後で、`--admin-password` メソッドを使って SSH 接続を認証できます。 この方法は通常安全性が低いです。
 
-[az vm create](/cli/azure/vm#create) コマンドにすべてのリソースと情報を指定して、VM を作成します。
+[az vm create](/cli/azure/vm#create) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、Azure Managed Disks を使用して、`myVM1` という名前の VM を作成します。 非管理対象ディスクを使用する場合は、下記の追加の注意事項を参照してください。
 
 ```azurecli
 az vm create \
@@ -1007,13 +1017,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 出力:
@@ -1066,14 +1079,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+ここでも、既定の Azure Managed Disks を使用しない場合は、この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 この時点では、Azure のロード バランサーの背後で Ubuntu VM が実行中です。この VM には、所有する SSH キー ペアのみを使用してサインインできます (パスワードは無効になっているため)。 nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
 
@@ -1101,6 +1117,6 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

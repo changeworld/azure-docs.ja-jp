@@ -10,11 +10,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
+ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
+ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
 
 Analytics には、独自のスキーマを使用してデータをインポートすることができます。 標準の Application Insights スキーマ (要求やトレースなど) を使用する必要はありません。
 
-現時点では、CSV (コンマ区切り) ファイルのほか、タブまたはセミコロンを区切り文字に使用した類似の形式をインポートできます。
+JSON ファイルまたは DSV ファイル (区切り値: コンマ、セミコロン、またはタブ) をインポートできます。
 
 Analytics へのインポートは、次の&3; つの状況で役に立ちます。
 
@@ -72,12 +72,15 @@ Analytics へのインポートは、次の&3; つの状況で役に立ちます
 
     ![新しいデータ ソースの追加](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. 指示に従って、サンプル データ ファイルをアップロードします。
+2. サンプル データ ファイルをアップロードします  (スキーマ定義をアップロードする場合は省略可能です)。
 
- * サンプルの最初の行は、列ヘッダーにすることができます (フィールド名は次の手順で変更できます)。
- * サンプルには、少なくとも 10 行のデータを含める必要があります。
+    サンプルの最初の行は、列ヘッダーにすることができます (フィールド名は次の手順で変更できます)。
 
-3. サンプルから推論されたスキーマを確認します。 必要に応じて、推論された列のタイプを調整することもできます。
+    サンプルには、少なくとも 10 行のデータを含める必要があります。
+
+3. ウィザードに表示されるスキーマを確認します。 ウィザードでサンプルから型の推論が行われた場合は、推論された列の型の調整が必要になる場合があります。
+
+   (省略可能) スキーマ定義をアップロードします。 形式については以下を参照してください。
 
 4. タイムスタンプを選択します。 Analytics では、すべてのデータにタイムスタンプ フィールドが必要です。 タイプは `datetime` である必要がありますが、名前を 'timestamp' にする必要はありません。 データに ISO 形式の日時を含んだ列がある場合は、それをタイムスタンプ列として選択します。 それ以外の場合は、[as data arrived (データの到着時)] を選択すると、インポート プロセスによってタイムスタンプ フィールドが追加されます。
 
@@ -85,6 +88,37 @@ Analytics へのインポートは、次の&3; つの状況で役に立ちます
 
 5. データ ソースを作成します。
 
+### <a name="schema-definition-file-format"></a>スキーマ定義ファイルの形式
+
+UI 内でスキーマを編集する代わりに、ファイルからスキーマ定義を読み込むこともできます。 スキーマ定義の形式は次のとおりです。 
+
+区切り形式 
+```
+[ 
+    {"location": "0", "name": "RequestName", "type": "string"}, 
+    {"location": "1", "name": "timestamp", "type": "datetime"}, 
+    {"location": "2", "name": "IPAddress", "type": "string"} 
+] 
+```
+
+JSON 形式 
+```
+[ 
+    {"location": "$.name", "name": "name", "type": "string"}, 
+    {"location": "$.alias", "name": "alias", "type": "string"}, 
+    {"location": "$.room", "name": "room", "type": "long"} 
+]
+```
+ 
+各列には、場所、名前、および型を指定します。 
+
+* 場所 – 区切られたファイル形式の場合、マップする値の位置を指定します。 JSON 形式では、マップするキーの jpath を指定します。
+* Name – 列の表示名です。
+* 型 – 列のデータ型です。
+ 
+サンプル データを使用するときにファイルが区切り形式である場合、スキーマ定義ですべての列をマッピングし、末尾に新しい列を追加する必要があります。 
+
+JSON ではデータの部分的なマッピングが可能なため、JSON 形式のスキーマ定義では、サンプル データに存在するキーをすべてマッピングする必要はありません。 また、サンプル データに含まれない列をマッピングすることもできます。 
 
 ## <a name="import-data"></a>Import data
 
@@ -271,7 +305,6 @@ namespace IngestionClient
             requestStream.Write(notificationBytes, 0, notificationBytes.Length); 
             requestStream.Close(); 
 
-            HttpWebResponse response; 
             try 
             { 
                 using (var response = (HttpWebResponse)await request.GetResponseAsync())
@@ -334,6 +367,6 @@ namespace IngestionClient
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

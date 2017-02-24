@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成する | Microsoft Docs"
+title: "PowerShell を使用して Azure HDInsight と Data Lake Store を作成する | Microsoft Docs"
 description: "Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight クラスターを作成します"
 services: data-lake-store,hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/09/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: 0b635129a7f3b96b062a7005225a634de98e9ac9
+ms.sourcegitcommit: 0fed9cff7a357c596d7e178ec756be449cd1dff0
+ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
 
 
 ---
@@ -117,10 +117,8 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
-        $startDate = (Get-Date).ToString('MM/dd/yyyy')
-        $endDate = (Get-Date).AddDays(365).ToString('MM/dd/yyyy')
-
-        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -b $startDate -e $endDate -r -len 2048
+        
+        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     秘密キーのパスワードを入力するよう求められます。 コマンドが正常に実行されると、指定した証明書ディレクトリに **CertFile.cer** と **mykey.pvk** が表示されます。
 2. [Pvk2Pfx][pvk2pfx] ユーティリティを使用して、MakeCert によって作成された .pvk ファイルと .cer ファイルを .pfx ファイルに変換します。 次のコマンドを実行します。
@@ -145,14 +143,12 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
         $application = New-AzureRmADApplication `
-                    -DisplayName "HDIADL" `
-                    -HomePage "https://contoso.com" `
-                    -IdentifierUris "https://mycontoso.com" `
-                    -KeyValue $credential  `
-                    -KeyType "AsymmetricX509Cert"  `
-                    -KeyUsage "Verify"  `
-                    -StartDate $startDate  `
-                    -EndDate $endDate
+            -DisplayName "HDIADL" `
+            -HomePage "https://contoso.com" `
+            -IdentifierUris "https://mycontoso.com" `
+            -CertValue $credential  `
+            -StartDate $certificatePFX.NotBefore  `
+            -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
 2. アプリケーション ID を使用してサービス プリンシパルを作成します。
@@ -160,14 +156,13 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. HDInsight クラスターからアクセスする Data Lake Store ファイル/フォルダーに、サービス プリンシパル アクセスを付与します。 次のスニペットにより、Data Lake Store アカウントのルートへのアクセスが得られます。
+3. Data Lake Store フォルダーおよび HDInsight クラスターからアクセスするファイルに、サービス プリンシパル アクセスを付与します。 次のスニペットは、Data Lake Store アカウントのルート (サンプル データ ファイルをコピーした場所) およびファイル自体へのアクセスを提供します。
 
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
-    プロンプトで、 **Y** を入力して確定します。
-
-## <a name="create-an-hdinsight-cluster-with-authentication-to-data-lake-store"></a>Data Lake Store への認証を使用して HDInsight クラスターを作成する
-このセクションでは、HDInsight Hadoop クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Store は同じ場所 (米国東部 2) にある必要があります。
+## <a name="create-an-hdinsight-linux-cluster-with-authentication-to-data-lake-store"></a>Data Lake Store への認証を使用して HDInsight Linux クラスターを作成する
+このセクションでは、HDInsight Hadoop Linux クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Store は同じ場所にある必要があります。
 
 1. 最初に、サブスクリプションのテナント ID を取得します。 この情報は後で必要になります。
 
@@ -182,7 +177,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
 
         # Create an Azure Blob Storage container
         $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName | %{ $_.Key1 }
+        $storageAccountKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
         $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
         New-AzureStorageContainer -Name $containerName -Context $destContext
 3. HDInsight クラスターを作成します。 次のコマンドレットを使用します。
@@ -191,35 +186,20 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
         $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
         $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
         $httpCredentials = Get-Credential
-        $rdpCredentials = Get-Credential
+        $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.2" -RdpCredential $rdpCredentials -RdpAccessExpiry (Get-Date).AddDays(14) -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
-    コマンドレットが正常に完了すると、次のような出力が表示されます。
+    コマンドレットが正常に完了すると、クラスターの詳細を一覧表示する出力が表示されます。
 
-        Name                      : hdiadlcluster
-        Id                        : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/hdiadlgroup/providers/Mi
-                                    crosoft.HDInsight/clusters/hdiadlcluster
-        Location                  : East US 2
-        ClusterVersion            : 3.2.7.707
-        OperatingSystemType       : Windows
-        ClusterState              : Running
-        ClusterType               : Hadoop
-        CoresUsed                 : 16
-        HttpEndpoint              : hdiadlcluster.azurehdinsight.net
-        Error                     :
-        DefaultStorageAccount     :
-        DefaultStorageContainer   :
-        ResourceGroup             : hdiadlgroup
-        AdditionalStorageAccounts :
-
+        
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する
 HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Store にアクセス可能であるかどうかをテストできます。 これを行うには、前に Data Lake Store にアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
-### <a name="for-a-linux-cluster"></a>Linux クラスターの場合
-このセクションでは、クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。 Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
+このセクションでは、作成した HDInsight Linux クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。
 
-PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+* クラスターへの SSH アクセスに Windows クライアントを使用する場合は、「[Windows での PuTTY から HDInsight (Hadoop) で SSH を使用します](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+* クラスターへの SSH アクセスに Linux クライアントを使用する場合は、「[Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
 1. 接続したら、次のコマンドを使用して Hive CLI を起動します。
 
@@ -243,55 +223,13 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
         1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
         1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
 
-### <a name="for-a-windows-cluster"></a>Windows クラスターの場合
-Hive クエリを実行するには、次のコマンドレットを使用します。 このクエリでは、Data Lake Store 内のデータからテーブルを作成し、作成されたテーブルに対して SELECT クエリを実行します。
-
-    $queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
-
-    $hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
-
-    $hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
-
-    Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
-
-これによる出力は次のとおりです。 **ExitValue** が 0 の場合は、ジョブが正常に完了したことを示します。
-
-    Cluster         : hdiadlcluster.
-    HttpEndpoint    : hdiadlcluster.azurehdinsight.net
-    State           : SUCCEEDED
-    JobId           : job_1445386885331_0012
-    ParentId        :
-    PercentComplete :
-    ExitValue       : 0
-    User            : admin
-    Callback        :
-    Completed       : done
-
-次のコマンドレットを使用して、ジョブから出力を取得します。
-
-    Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $hiveJob.JobId -DefaultContainer $containerName -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -ClusterCredential $httpCredentials
-
-ジョブの出力は次のようになります。
-
-    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
-    1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
-    1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
-    1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
-    1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
-    1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
-    1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
-    1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
-    1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
-    1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
-
-
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>HDFS コマンドを使用して Data Lake Store にアクセスする
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
-### <a name="for-a-linux-cluster"></a>Linux クラスターの場合
-このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。 Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
+このセクションでは、作成した HDInsight Linux クラスターに SSH でアクセスし、HDFS コマンドを実行します。 
 
-PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+* クラスターへの SSH アクセスに Windows クライアントを使用する場合は、「[Windows での PuTTY から HDInsight (Hadoop) で SSH を使用します](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+* クラスターへの SSH アクセスに Linux クライアントを使用する場合は、「[Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
 接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
 
@@ -305,26 +243,6 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
 
 `hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
-### <a name="for-a-windows-cluster"></a>Windows クラスターの場合
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
-3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
-
-    ![HDI クラスターへのリモート接続](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループの作成")
-
-    メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
-4. リモート セッションで、Windows PowerShell を起動し、HDFS ファイル システムのコマンドを使用して、Azure Data Lake Store のファイルを一覧表示します。
-
-         hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
-
-    これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
-
-        15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-        Found 1 items
-        -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
-
-    `hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
-
 ## <a name="see-also"></a>関連項目
 * [ポータル: Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
@@ -333,6 +251,6 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 
