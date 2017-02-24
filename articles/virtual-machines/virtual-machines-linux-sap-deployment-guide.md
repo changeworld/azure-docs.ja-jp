@@ -1,6 +1,6 @@
 ---
-title: "Linux 仮想マシン (VM) への SAP NetWeaver の導入 – デプロイ ガイド | Microsoft Docs"
-description: "Linux 仮想マシン (VM) 上の SAP NetWeaver – デプロイ ガイド"
+title: "Linux 上の SAP のための Azure Virtual Machines のデプロイ | Microsoft Docs"
+description: "Azure の Linux 仮想マシンに SAP ソフトウェアをデプロイする方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: MSSedusch
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 83ab4f79031eb34e3be6bfb65c9d0ebfa00bc6db
-ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
+ms.sourcegitcommit: 4a9c9b35b1b1740152214193eb5bb5ef951de781
+ms.openlocfilehash: cc75cfa43cd60628d9a4d51827bd14f72715d2b4
 
 
 ---
-# <a name="sap-netweaver-on-azure-virtual-machines-vms--deployment-guide"></a>Azure Virtual Machines (VM) 上の SAP NetWeaver – デプロイ ガイド
+# <a name="azure-virtual-machines-deployment-for-sap-on-linux"></a>Linux 上の SAP のための Azure Virtual Machines のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -77,7 +77,22 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 [azure-subscription-service-limits]:../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../azure-subscription-service-limits.md#subscription-limits
 
-[dbms-guide]:virtual-machines-linux-sap-dbms-guide.md (Linux 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド) [dbms-guide-2.1]:virtual-machines-linux-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (VM と VHD のキャッシング) [dbms-guide-2.2]:virtual-machines-linux-sap-dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91 (ソフトウェア RAID) [dbms-guide-2.3]:virtual-machines-linux-sap-dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 (Microsoft Azure Storage) [dbms-guide-2]:virtual-machines-linux-sap-dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64 (RDBMS デプロイの構造) [dbms-guide-3]:virtual-machines-linux-sap-dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 (Azure VM の高可用性と障害復旧) [dbms-guide-5.5.1]:virtual-machines-linux-sap-dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 (SQL Server 2012 SP1 CU4 以降) [dbms-guide-5.5.2]:virtual-machines-linux-sap-dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b (SQL Server 2012 SP1 CU3 以前のリリース) [dbms-guide-5.6]:virtual-machines-linux-sap-dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (Microsoft Azure Marketplace からの SQL Server イメージの使用) [dbms-guide-5.8]:virtual-machines-linux-sap-dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 (Azure での一般的な SAP 用 SQL Server の概要) [dbms-guide-5]:virtual-machines-linux-sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 (SQL Server RDBMS の詳細) [dbms-guide-8.4.1]:virtual-machines-linux-sap-dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 (ストレージの構成) [dbms-guide-8.4.2]:virtual-machines-linux-sap-dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d (バックアップと復元) [dbms-guide-8.4.3]:virtual-machines-linux-sap-dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c (バックアップと復元のパフォーマンスに関する考慮事項) [dbms-guide-8.4.4]:virtual-machines-linux-sap-dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 (その他) [dbms-guide-900-sap-cache-server-on-premises]:virtual-machines-linux-sap-dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
+[dbms-guide]:virtual-machines-linux-sap-dbms-guide.md (Azure Virtual Machines DBMS deployment for SAP on Linux)
+[dbms-guide-2.1]:virtual-machines-linux-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (Caching for VMs and VHDs)
+[dbms-guide-2.2]:virtual-machines-linux-sap-dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91 (Software RAID)
+[dbms-guide-2.3]:virtual-machines-linux-sap-dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 (Microsoft Azure Storage)
+[dbms-guide-2]:virtual-machines-linux-sap-dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64 (Structure of a RDBMS deployment)
+[dbms-guide-3]:virtual-machines-linux-sap-dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 (High availability and disaster recovery with Azure VMs)
+[dbms-guide-5.5.1]:virtual-machines-linux-sap-dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 (SQL Server 2012 SP1 CU4 and later)
+[dbms-guide-5.5.2]:virtual-machines-linux-sap-dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b (SQL Server 2012 SP1 CU3 and earlier releases)
+[dbms-guide-5.6]:virtual-machines-linux-sap-dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 (Using a SQL Server image from the Azure Marketplace)
+[dbms-guide-5.8]:virtual-machines-linux-sap-dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 (General SQL Server for SAP on Azure summary)
+[dbms-guide-5]:virtual-machines-linux-sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 (Specifics to SQL Server RDBMS)
+[dbms-guide-8.4.1]:virtual-machines-linux-sap-dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 (Storage configuration)
+[dbms-guide-8.4.2]:virtual-machines-linux-sap-dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d (Backup and restore)
+[dbms-guide-8.4.3]:virtual-machines-linux-sap-dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c (Performance considerations for backup and restore)
+[dbms-guide-8.4.4]:virtual-machines-linux-sap-dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 (Other)
+[dbms-guide-900-sap-cache-server-on-premises]:virtual-machines-linux-sap-dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
 
 [dbms-guide-figure-100]:./media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
 [dbms-guide-figure-200]:./media/virtual-machines-shared-sap-dbms-guide/200-ha-set-for-dbms-ha.png
@@ -89,10 +104,27 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 [dbms-guide-figure-800]:./media/virtual-machines-shared-sap-dbms-guide/800-azure-vm-sap-content-server.png
 [dbms-guide-figure-900]:./media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
 
-[deployment-guide]:virtual-machines-linux-sap-deployment-guide.md (Linux 仮想マシン (VM) 上の SAP NetWeaver – デプロイ ガイド) [deployment-guide-2.2]:virtual-machines-linux-sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP リソース) [deployment-guide-3.1.2]:virtual-machines-linux-sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (カスタム イメージを使用して VM をデプロイする) [deployment-guide-3.2]:virtual-machines-linux-sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (シナリオ 1: SAP 用 Azure Marketplace から VM をデプロイする) [deployment-guide-3.3]:virtual-machines-linux-sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする) [deployment-guide-3.4]:virtual-machines-linux-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (シナリオ 3: SAP を含む汎用化されていない Azure VHD を使用してオンプレミスから VM を移動する) [deployment-guide-3]:virtual-machines-linux-sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Microsoft Azure 上の SAP 用 VM のデプロイ シナリオ) [deployment-guide-4.1]:virtual-machines-linux-sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Azure PowerShell コマンドレットのデプロイ) [deployment-guide-4.2]:virtual-machines-linux-sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (SAP 関連の PowerShell コマンドレットのダウンロードとインポート) [deployment-guide-4.3]:virtual-machines-linux-sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (オンプレミス ドメインへの VM の参加 (Windows のみ)) [deployment-guide-4.4.2]:virtual-machines-linux-sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux) [deployment-guide-4.4]:virtual-machines-linux-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Azure VM エージェントのダウンロード、インストール、有効化) [deployment-guide-4.5.1]:virtual-machines-linux-sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell) [deployment-guide-4.5.2]:virtual-machines-linux-sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI) [deployment-guide-4.5]:virtual-machines-linux-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Azure Enhanced Monitoring Extension for SAP の構成) [deployment-guide-5.1]:virtual-machines-linux-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Azure Enhanced Monitoring for SAP の適合性チェック) [deployment-guide-5.2]:virtual-machines-linux-sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Azure 監視インフラストラクチャ構成のヘルス チェック) [deployment-guide-5.3]:virtual-machines-linux-sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (SAP 用 Azure 監視インフラストラクチャのトラブルシューティング)
+[deployment-guide]:virtual-machines-linux-sap-deployment-guide.md (Azure Virtual Machines deployment for SAP on Linux)
+[deployment-guide-2.2]:virtual-machines-linux-sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 (SAP resources)
+[deployment-guide-3.1.2]:virtual-machines-linux-sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab (Deploying a VM by using a custom image)
+[deployment-guide-3.2]:virtual-machines-linux-sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 (Scenario 1: Deploying a VM from the Azure Marketplace for SAP)
+[deployment-guide-3.3]:virtual-machines-linux-sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 (Scenario 2: Deploying a VM with a custom image for SAP)
+[deployment-guide-3.4]:virtual-machines-linux-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 (Scenario 3: Moving a VM from on-premises using a non-generalized Azure VHD with SAP)
+[deployment-guide-3]:virtual-machines-linux-sap-deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e (Deployment scenarios of VMs for SAP on Microsoft Azure)
+[deployment-guide-4.1]:virtual-machines-linux-sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Deploying Azure PowerShell cmdlets)
+[deployment-guide-4.2]:virtual-machines-linux-sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (Download and import SAP-relevant PowerShell cmdlets)
+[deployment-guide-4.3]:virtual-machines-linux-sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Join a VM to an on-premises domain - Windows only)
+[deployment-guide-4.4.2]:virtual-machines-linux-sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
+[deployment-guide-4.4]:virtual-machines-linux-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Download, install, and enable the Azure VM Agent)
+[deployment-guide-4.5.1]:virtual-machines-linux-sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
+[deployment-guide-4.5.2]:virtual-machines-linux-sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
+[deployment-guide-4.5]:virtual-machines-linux-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Configure the Azure Enhanced Monitoring Extension for SAP)
+[deployment-guide-5.1]:virtual-machines-linux-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Readiness check for Azure Enhanced Monitoring for SAP)
+[deployment-guide-5.2]:virtual-machines-linux-sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Health check for the Azure monitoring infrastructure)
+[deployment-guide-5.3]:virtual-machines-linux-sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Troubleshooting Azure monitoring for SAP)
 
-[deployment-guide-configure-monitoring-scenario-1]:virtual-machines-linux-sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Configure Monitoring)
-[deployment-guide-configure-proxy]:virtual-machines-linux-sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Configure Proxy)
+[deployment-guide-configure-monitoring-scenario-1]:virtual-machines-linux-sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Configure monitoring)
+[deployment-guide-configure-proxy]:virtual-machines-linux-sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (Configure the proxy)
 [deployment-guide-figure-100]:./media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
 [deployment-guide-figure-1000]:./media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
 [deployment-guide-figure-11]:virtual-machines-linux-sap-deployment-guide.md#figure-11
@@ -115,7 +147,7 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 [deployment-guide-figure-azure-cli-installed]:virtual-machines-linux-sap-deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:virtual-machines-linux-sap-deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:virtual-machines-linux-sap-deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:virtual-machines-linux-sap-deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Checks and Troubleshooting for End-to-End Monitoring Setup for SAP on Azure)
+[deployment-guide-troubleshooting-chapter]:virtual-machines-linux-sap-deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Checks and troubleshooting for setting up end-to-end monitoring)
 
 [deploy-template-cli]:../azure-resource-manager/resource-group-template-deploy-cli.md
 [deploy-template-portal]:../azure-resource-manager/resource-group-template-deploy-portal.md
@@ -144,7 +176,33 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 
 [msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
-[planning-guide]:virtual-machines-linux-sap-planning-guide.md (Linux 仮想マシン (VM) 上の SAP NetWeaver – 計画および実装ガイド) [planning-guide-1.2]:virtual-machines-linux-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (リソース) [planning-guide-11]:virtual-machines-linux-sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (Azure Virtual Machines で実行する SAP NetWeaver の高可用性 (HA) と障害復旧 (DR)) [planning-guide-11.4.1]:virtual-machines-linux-sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (SAP アプリケーション サーバーの高可用性) [planning-guide-11.5]:virtual-machines-linux-sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (SAP インスタンスでの自動開始の使用) [planning-guide-2.1]:virtual-machines-linux-sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ) [planning-guide-2.2]:virtual-machines-linux-sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする&1; つまたは複数の SAP VM の Azure へのデプロイ) [planning-guide-3.1]:virtual-machines-linux-sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure リージョン) [planning-guide-3.2.1]:virtual-machines-linux-sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (障害ドメイン) [planning-guide-3.2.2]:virtual-machines-linux-sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (アップグレード ドメイン) [planning-guide-3.2.3]:virtual-machines-linux-sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure の可用性セット) [planning-guide-3.2]:virtual-machines-linux-sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure Virtual Machine の概念) [planning-guide-3.3.2]:virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage) [planning-guide-5.1.1]:virtual-machines-linux-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (汎用化されていないディスクを使用してオンプレミスから Microsoft Azure に VM を移動する) [planning-guide-5.1.2]:virtual-machines-linux-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (顧客固有のイメージを使用する VM のデプロイ) [planning-guide-5.2.1]:virtual-machines-linux-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (オンプレミスから汎用でないディスクを使用する Azure に VM を移動する準備) [planning-guide-5.2.2]:virtual-machines-linux-sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (SAP 用の顧客固有のイメージを使用する VM のデプロイの準備) [planning-guide-5.2]:virtual-machines-linux-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (Azure 用の VM と SAP の準備) [planning-guide-5.3.1]:virtual-machines-linux-sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Azure ディスクと Azure イメージの違い) [planning-guide-5.3.2]:virtual-machines-linux-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (オンプレミスから Azure への VHD のアップロード) [planning-guide-5.4.2]:virtual-machines-linux-sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Azure Storage アカウント間でのディスクのコピー) [planning-guide-5.5.1]:virtual-machines-linux-sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP デプロイ用の VM/VHD 構造) [planning-guide-5.5.3]:virtual-machines-linux-sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (アタッチされたディスクに対する自動マウントの設定) [planning-guide-7.1]:virtual-machines-linux-sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (単一の VM と SAP NetWeaver のデモ/トレーニング シナリオ) [planning-guide-7]:virtual-machines-linux-sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP インスタンスのクラウド専用のデプロイの概念) [planning-guide-9.1]:virtual-machines-linux-sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure Monitoring Solution for SAP) [planning-guide-azure-premium-storage]:virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
+[planning-guide]:virtual-machines-linux-sap-planning-guide.md (Azure Virtual Machines planning and implementation for SAP on Linux)
+[planning-guide-1.2]:virtual-machines-linux-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Resources)
+[planning-guide-11]:virtual-machines-linux-sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 (High availability and disaster recovery for SAP NetWeaver running on Azure Virtual Machines)
+[planning-guide-11.4.1]:virtual-machines-linux-sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 (High availability for SAP Application Servers)
+[planning-guide-11.5]:virtual-machines-linux-sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f (Using Autostart for SAP instances)
+[planning-guide-2.1]:virtual-machines-linux-sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 (Cloud-only - Virtual Machine deployments in Azure without dependencies on the on-premises customer network)
+[planning-guide-2.2]:virtual-machines-linux-sap-planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 (Cross-premises - Deployment of single or multiple SAP VMs in Azure fully integrated with the on-premises network)
+[planning-guide-3.1]:virtual-machines-linux-sap-planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a (Azure regions)
+[planning-guide-3.2.1]:virtual-machines-linux-sap-planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 (Fault domains)
+[planning-guide-3.2.2]:virtual-machines-linux-sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Upgrade domains)
+[planning-guide-3.2.3]:virtual-machines-linux-sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure availability sets)
+[planning-guide-3.2]:virtual-machines-linux-sap-planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure virtual machines concept)
+[planning-guide-3.3.2]:virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
+[planning-guide-5.1.1]:virtual-machines-linux-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Moving a VM from on-premises to Azure with a non-generalized disk)
+[planning-guide-5.1.2]:virtual-machines-linux-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Deploying a VM with a customer specific image)
+[planning-guide-5.2.1]:virtual-machines-linux-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Preparation for moving a VM from on-premises to Azure with a non-generalized disk)
+[planning-guide-5.2.2]:virtual-machines-linux-sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 (Preparation for deploying a VM with a customer specific image for SAP)
+[planning-guide-5.2]:virtual-machines-linux-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 (Preparing VMs with SAP for Azure)
+[planning-guide-5.3.1]:virtual-machines-linux-sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 (Difference between an Azure disk and an Azure image)
+[planning-guide-5.3.2]:virtual-machines-linux-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a (Uploading a VHD from on-premises to Azure)
+[planning-guide-5.4.2]:virtual-machines-linux-sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Copying disks between Azure Storage accounts)
+[planning-guide-5.5.1]:virtual-machines-linux-sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM/VHD structure for SAP deployments)
+[planning-guide-5.5.3]:virtual-machines-linux-sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Setting automount for attached disks)
+[planning-guide-7.1]:virtual-machines-linux-sap-planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Single VM with SAP NetWeaver demo/training scenario)
+[planning-guide-7]:virtual-machines-linux-sap-planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Concepts of Cloud-Only deployment of SAP instances)
+[planning-guide-9.1]:virtual-machines-linux-sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure Monitoring Solution for SAP)
+[planning-guide-azure-premium-storage]:virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
 
 [planning-guide-figure-100]:./media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:./media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -169,8 +227,8 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 [planning-guide-figure-600]:./media/virtual-machines-shared-sap-planning-guide/600-s2s-details.png
 [planning-guide-figure-700]:./media/virtual-machines-shared-sap-planning-guide/700-decision-tree-deploy-to-azure.png
 [planning-guide-figure-800]:./media/virtual-machines-shared-sap-planning-guide/800-portal-vm-overview.png
-[planning-guide-microsoft-azure-networking]:virtual-machines-linux-sap-planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Microsoft Azure Networking)
-[planning-guide-storage-microsoft-azure-storage-and-data-disks]:virtual-machines-linux-sap-planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Storage: Microsoft Azure Storage and Data Disks)
+[planning-guide-microsoft-azure-networking]:virtual-machines-linux-sap-planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Microsoft Azure networking)
+[planning-guide-storage-microsoft-azure-storage-and-data-disks]:virtual-machines-linux-sap-planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Storage: Microsoft Azure Storage and data disks)
 
 [powershell-install-configure]:/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../azure-resource-manager/resource-group-authoring-templates.md
@@ -198,7 +256,7 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 [virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:virtual-machines-linux-cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI)
-[virtual-machines-deploy-rmtemplates-powershell]:virtual-machines-windows-ps-manage.md (Manage virtual machines using Azure Resource Manager and PowerShell)
+[virtual-machines-deploy-rmtemplates-powershell]:virtual-machines-windows-ps-manage.md (Manage virtual machines by using Azure Resource Manager and PowerShell)
 [virtual-machines-linux-agent-user-guide]:virtual-machines-linux-agent-user-guide.md
 [virtual-machines-linux-agent-user-guide-command-line-options]:virtual-machines-linux-agent-user-guide.md#command-line-options
 [virtual-machines-linux-capture-image]:virtual-machines-linux-capture-image.md
@@ -245,722 +303,780 @@ ms.openlocfilehash: 609e7ec6949b341c42b2e3b793a46dc1264cfd06
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Microsoft Azure を使用すると、企業は時間のかかる調達サイクルを省略し、最短時間でコンピューティングとストレージのリソースを取得することができます。 Azure Virtual Machines により、企業は SAP NetWeaver ベースのアプリケーションのような従来のアプリケーションを Azure にデプロイし、追加のオンプレミスのリソースを必要とせずに信頼性と可用性を高めることができます。 また、Microsoft Azure ではクロス プレミス接続もサポートしており、これにより企業は Azure Virtual Machines を自社のオンプレミス ドメイン、プライベート クラウド、および SAP システム ランドス ケープに積極的に統合できます。
+Azure Virtual Machines は、時間のかかる調達サイクルなしに、最短時間でコンピューティング リソースとストレージ リソースを必要とする組織向けのソリューションです。 Azure Virtual Machines を使用して、SAP NetWeaver ベースのアプリケーションなど、従来のアプリケーションを Azure にデプロイできます。 オンプレミスのリソースを追加せずに、アプリケーションの信頼性と可用性を高めます。 Azure Virtual Machines はクロスプレミス接続をサポートしているので、Azure Virtual Machines を組織のオンプレミスのドメイン、プライベート クラウド、SAP システム ランドスケープに統合できます。
 
-このホワイト ペーパーでは、SAP NetWeaver ベースのアプリケーションのデプロイに向けて Azure 仮想マシンを準備する手順について説明します。 [計画/導入ガイド][planning-guide]に記載されている情報を理解していることを前提とします。 理解していない場合は、まずその個別ドキュメントを参照してください。
+この記事では、代替のデプロイ方法やトラブルシューティングも含め、Azure の Linux 仮想マシン (VM) に SAP アプリケーションをデプロイする手順について説明します。 この記事は、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事の情報に基づいています。 また、この記事は、SAP ソフトウェアをインストールしてデプロイするときの主要リソースである SAP インストール ドキュメントと SAP Note を補完するものです。
 
-特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
+## <a name="prerequisites"></a>前提条件
+SAP ソフトウェアのデプロイ用の Azure 仮想マシンをセットアップするには、複数の手順とリソースが必要となります。 作業を開始する前に、Azure の Linux 仮想マシンにSAP ソフトウェアをインストールするための前提条件を満たしていることを確認してください。
 
-## <a name="introduction"></a>はじめに
-世界中の多くの企業が、最も著名な SAP Business Suite、SAP NetWeaver をベースとするアプリケーションを使用して、ミッション クリティカルなビジネス プロセスを実行しています。 したがって、システム正常性は重要な資産であり、パフォーマンスの問題などの誤作動が発生した場合に企業サポートを提供できることが重要な要件になります。
-Microsoft Azure では、すべてのビジネス クリティカルなアプリケーションのサポート要件に対応する優れたプラットフォームの実装を提供します。 このガイドは、Azure Marketplace から取得したか、または顧客固有のイメージを使用しているかなどの仮想マシンの作成方法を問わずに企業サポートを提供できるように、SAP ソフトウェアのデプロイを対象とした Microsoft Azure 仮想マシンを構成できるようにします。
-次に、必要なすべての設定手順について詳しく説明します。
+### <a name="local-computer"></a>ローカル コンピューター
+Windows VM または Linux VM を管理するには、PowerShell スクリプトと Azure Portal を使用します。 どちらのツールも、Windows 7 以降のバージョンの Windows を実行しているローカル コンピューターが必要です。 Linux VM だけを管理し、この作業に Linux コンピューターを使用する場合は、Azure CLI を使用できます。
 
-## <a name="prerequisites-and-resources"></a>前提条件とリソース
-### <a name="prerequisites"></a>前提条件
-開始する前に、次の章で説明されている前提条件が満たされていることをご確認ください。
+### <a name="internet-connection"></a>インターネット接続
+SAP ソフトウェアのデプロイに必要なツールとスクリプトをダウンロードして実行するには、インターネットに接続している必要があります。 また、Azure Enhanced Monitoring Extension for SAP を実行している Azure VM でもインターネットへのアクセスが必要です。 Azure VM が Azure 仮想ネットワークまたはオンプレミス ドメインに属している場合は、「[プロキシの構成][deployment-guide-configure-proxy]」の説明に従って関連するプロキシ設定が構成されていることを確認してください。
 
-#### <a name="local-personal-computer"></a>ローカル パーソナル コンピューター
-SAP ソフトウェアのデプロイ用の Azure の仮想マシンの設定は、いくつかの手順から構成されます。 Windows VM または Linux VM を管理するには、PowerShell スクリプトと Microsoft Azure ポータルを使用する必要があります。 そのため、Windows 7 以降を実行しているローカル パーソナル コンピューターが必要です。 Linux VM を管理し、このタスク用でのみ Linux コンピューターを使用する場合は、Azure コマンド ライン インターフェイス (Azure CLI) を使用することもできます。
+### <a name="microsoft-azure-subscription"></a>Microsoft Azure サブスクリプション
+アクティブな Azure アカウントが必要です。
 
-#### <a name="internet-connection"></a>インターネット接続
-必要なツールとスクリプトをダウンロードして実行するには、インターネット接続が必要です。 また、Azure Enhanced Monitoring Extension for SAP を実行している Microsoft Azure 仮想マシンには、インターネットへのアクセスが必要です。 この Azure VM が Azure Virtual Network またはオンプレミス ドメインの一部である場合、本ドキュメントの「[プロキシの構成][deployment-guide-configure-proxy]」の章の説明に従って、関連するプロキシ設定が構成されていることをご確認ください。
+### <a name="topology-and-networking"></a>トポロジとネットワーク
+Azure における SAP デプロイのトポロジとアーキテクチャを定義する必要があります。
 
-#### <a name="microsoft-azure-subscription"></a>Microsoft Azure サブスクリプション
-Azure アカウントが既に存在しており、対応するログオン資格情報が認識されていることを確認します。
-
-#### <a name="topology-consideration-and-networking"></a>トポロジに関する考慮事項とネットワーク
-Azure における SAP デプロイのトポロジとアーキテクチャを定義する必要があります。 関連するアーキテクチャは次のとおりです。
-
-* 使用する Microsoft Azure Storage アカウント
+* 使用する Azure ストレージ アカウント
 * SAP システムをデプロイする仮想ネットワーク
 * SAP システムをデプロイするリソース グループ
 * SAP システムをデプロイする Azure リージョン
-* SAP 構成 (2 層または 3 層)
-* VM のサイズ、VM にマウントする追加の VHD の数
-* SAP Transport and Correction システムの構成
+* SAP 構成 (2 層または&3; 層)
+* VM サイズと、VM にマウントする追加の仮想ハード ディスク (VHD) の数
+* SAP 移送/修正システム (CTS) 構成
 
-Azure Storage アカウントまたは Azure 仮想ネットワークを別個に作成および構成しておく必要があります。 作成および構成の方法は、[計画/導入ガイド][planning-guide]で説明されています。
+SAP ソフトウェア デプロイ プロセスを開始する前に、Azure ストレージ アカウントまたは Azure 仮想ネットワークを作成し、構成します。 これらのリソースを作成し、構成する方法については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事をご覧ください。
 
-#### <a name="sap-sizing"></a>SAP のサイズ設定
-* SAP Quicksizer を使用するなどして、予想される SAP ワークロードを決定し、SAPS 番号を把握します。 
-* SAP システムの必要な CPU リソースとメモリ使用量を把握する必要があります。
-* 1 秒あたりの必要な I/O 操作を把握する必要があります。
-* Azure での異なる VM 間で結果として生じる通信で必要なネットワーク帯域幅を把握します。
-* オンプレミス資産と、Azure によってデプロイされた SAP システムの間で必要なネットワーク帯域幅を把握します。
+### <a name="sap-sizing"></a>SAP のサイズ設定
+SAP のサイズ設定を行うために、次の情報を把握しておきます。
 
-#### <a name="resource-groups"></a>リソース グループ
-リソース グループは、新しいデプロイ概念の一部です。 リソース グループのすべてのリソースのライフサイクルは同じです (作成と削除が同時に行われるなど)。 リソース グループについて詳しくは、[この記事][resource-group-overview]をご覧ください。 
+* 予想される SAP ワークロード (たとえば、SAP Quick Sizer ツールを使用して予想) と SAPS (SAP Application Performance Standard) 番号
+* SAP システムの必要な CPU リソースとメモリ使用量
+* 1 秒あたりの必要な入出力 (I/O) 操作
+* Azure の VM 間での最終的な通信に必要なネットワーク帯域幅
+* オンプレミス資産と Azure にデプロイされた SAP システム間に必要なネットワーク帯域幅
+
+### <a name="resource-groups"></a>リソース グループ
+Azure Resource Manager では、リソース グループを使用して Azure サブスクリプション内のすべてのアプリケーション リソースを管理できます。 詳細については、「[Azure Resource Manager の概要][resource-group-overview]」をご覧ください。
+
+## <a name="resources"></a>リソース
 
 ### <a name="a-name42ee2bdb-1efc-4ec7-ab31-fe4c22769b94asap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP リソース
-構成作業では、次のリソースが必要です。
+SAP ソフトウェア デプロイをセットアップするときには、次の SAP リソースが必要です。
 
-* 次の情報が記載された SAP ノート [1928533]:
-  * SAP ソフトウェアのデプロイでサポートされる Azure 仮想マシン サイズの一覧 
-  * Azure 仮想マシン サイズごとの容量に関する重要な情報
-  * サポートされる SAP ソフトウェアと OS および DB の組み合わせ
+* SAP Note [1928533]: 次の情報が含まれています。
+  * SAP ソフトウェアのデプロイでサポートされる Azure VM サイズの一覧
+  * Azure VM サイズの容量に関する重要な情報
+  * サポートされる SAP ソフトウェア、およびオペレーティング システム (OS) とデータベースの組み合わせ
   * Microsoft Azure 上の Windows と Linux に必要な SAP カーネル バージョン
-  
-* Microsoft Azure に SAP ソフトウェアをデプロイする場合に SAP でサポートされる前提条件の一覧が記載されている SAP ノート [2015553]
-* Microsoft Azure 上の SAP でレポートされたすべての監視メトリックに関する詳細情報が記載されている SAP ノート [2178632] 
-* Microsoft Azure 上の Windows に必要な SAP Host Agent のバージョンが記載されている SAP ノート [1409604]
-* Microsoft Azure 上の Linux に必要な SAP Host Agent のバージョンが記載されている SAP ノート [2191498]
-* Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されている SAP ノート [2243692]
-* SUSE LINUX Enterprise Server 12 に関する一般情報が記載されている SAP ノート [1984787]
-* Red Hat Enterprise Linux 7.x に関する一般情報が記載されている SAP ノート [2002167]
-* Enhanced Azure Monitoring for SAP に関するその他のトラブルシューティング情報が記載されている SAP ノート [1999351]
-* Linux 用のすべての必要な SAP ノートが記載されている [SAP WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)
-* [Azure PowerShell][azure-ps] の一部である SAP 固有の PowerShell コマンドレット
-* [Azure CLI][azure-cli] の一部である SAP 固有の Azure CLI
-* [Microsoft Azure Portal][azure-portal]
+
+* SAP Note [2015553]: SAP でサポートされる Azure 上の SAP ソフトウェア デプロイの前提条件が記載されています。
+* SAP Note [2178632]: Azure 上の SAP について報告されるすべての監視メトリックに関する詳細情報が記載されています。
+* SAP Note [1409604]: Azure 上の Windows に必要な SAP Host Agent のバージョンが記載されています。
+* SAP Note [2191498]: Azure 上の Linux に必要な SAP Host Agent のバージョンが記載されています。
+* SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
+* SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
+* SAP Note [2002167]: Red Hat Enterprise Linux 7.x に関する一般情報が記載されています。
+* SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
+* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
+* [Azure PowerShell][azure-ps] の一部である SAP 固有の PowerShell コマンドレット。
+* [Azure CLI][azure-cli] の一部である SAP 固有の Azure CLI コマンド。
 
 [comment]: <> (MSSedusch TODO SAP ノート 1409604 の SAP Host Agent の ARM パッチ レベルを追加してください)
 
-次のガイドでは、Microsoft Azure 上の SAP のトピックについて説明します。
+### <a name="a-name42ee2bdb-1efc-4ec7-ab31-fe4c22769b94awindows-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Windows リソース
+Microsoft の次の記事では、Azure 上の SAP デプロイについて説明しています。
 
-* [Azure Virtual Machines (VM) 上の SAP NetWeaver – 計画および実装ガイド][planning-guide]
-* [Azure Virtual Machines (VM) 上の SAP NetWeaver – デプロイ ガイド (本書)][deployment-guide]
-* [Azure Virtual Machines (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド][dbms-guide]
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [Azure Portal][azure-portal]
 
-## <a name="a-nameb3253ee3-d63b-4d74-a49b-185e76c4088eadeployment-scenarios-of-vms-for-sap-on-microsoft-azure"></a><a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Microsoft Azure 上の SAP 用 VM のデプロイ シナリオ
-この章では、さまざまなデプロイ方法と、各デプロイ タイプの手順を学習します。
+## <a name="a-nameb3253ee3-d63b-4d74-a49b-185e76c4088eadeployment-scenarios-for-sap-software-on-azure-vms"></a><a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure VM での SAP ソフトウェアのデプロイ シナリオ
+VM および関連付けられているディスクを Azure にデプロイする方法が複数用意されています。 選択したデプロイの種類によって、デプロイする VM を準備する手順が異なる場合があるため、デプロイ方法の違いを理解しておくことが重要です。
 
-### <a name="deployment-of-vms-for-sap"></a>SAP 用 VM をデプロイする
-Microsoft Azure では、VM および関連付けられているディスクをデプロイする方法が複数用意されています。 したがって、VM の準備はデプロイの方法によって異なる場合があるため、その違いを理解しておくことが非常に重要です。 通常は、次のシナリオを検討します。
+### <a name="a-namedb477013-9060-4602-9ad4-b0316f8bb281ascenario-1-deploying-a-vm-from-the-azure-marketplace-for-sap"></a><a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>シナリオ 1: SAP 用 Azure Marketplace から VM をデプロイする
+Azure Marketplace で Microsoft またはサード パーティが提供するイメージを使用して VM をデプロイできます。 Marketplace には、Windows Server とさまざまな Linux ディストリビューションの標準 OS イメージが用意されています。 Microsoft SQL Server などのデータベース管理システム (DBMS) SKU を含むイメージをデプロイすることもできます。 DBMS SKU を含むイメージの使用方法の詳細については、[Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事をご覧ください。
 
-#### <a name="deploying-a-vm-out-of-the-azure-marketplace"></a>Azure Marketplace から VM をデプロイする
-Microsoft またはサード パーティが提供するイメージを Azure Marketplace から取得して VM をデプロイします。 Microsoft Azure で VM をデプロイした後は、オンプレミス環境の場合と同じガイドラインおよびツールに従って VM 内に SAP ソフトウェアをインストールします。 Azure VM 内に SAP ソフトウェアをインストールする場合、SAP と Microsoft は、SAP インストール メディアを Azure VHD にアップロードして保存するか、すべての必要な SAP インストール メディアを格納した「ファイル サーバー」として機能する Azure VM を作成することをお勧めします。
+次のフローチャートは、Azure Marketplace から VM をデプロイする際の SAP 固有の一連の手順を示しています。
 
-[comment]: <> (MSSedusch TODO ファイル サーバーまたは VHD などのファイル管理を推奨する必要があるのはなぜですか。オンプレミスとそれほど異なりますか。)
+![Azure Marketplace の VM イメージを使用した SAP システム用 VM のデプロイのフローチャート][deployment-guide-figure-100]
 
-詳細については、「シナリオ 1: SAP 用 Azure Marketplace から VM をデプロイする[deployment-guide-3.2]」の章を参照してください。
+#### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Azure Portal を使用した仮想マシンの作成
+Azure Marketplace のイメージを使用して新しい仮想マシンを作成する最も簡単な方法は、Azure Portal を使用することです。
 
-#### <a name="a-name3688666f-281f-425b-a312-a77e7db2dfabadeploying-a-vm-with-a-custom-image"></a><a name="3688666f-281f-425b-a312-a77e7db2dfab"></a>カスタム イメージを使用して VM をデプロイする
-OS または DBMS のバージョンに関連する固有のパッチ要件により、Azure Marketplace で提供されるイメージは、ニーズに適さない場合があります。 そのため、後で繰り返しデプロイできる、独自の「プライベート」OS/DB の VM イメージを使用して VM を作成しなければならない場合があります。
-プライベート イメージを作成する手順は、Windows イメージと Linux イメージによって異なります。
+1.  <https://portal.azure.com/#create> に移動します。  または、Azure Portal のメニューの **[+ 新規]** をクリックします。
+2.  **[コンピューティング]** を選択し、デプロイするオペレーティング システムの種類  (Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) など) を選択します。 既定のリスト ビューには、サポートされているオペレーティング システムがすべて表示されるわけではありません。 完全な一覧を表示するには、**[すべて表示]** を選択します。 SAP ソフトウェア デプロイのサポートされているオペレーティング システムの詳細については、SAP Note [1928533] を参照してください。
+3.  次のページで使用条件を確認します。
+4.  **[デプロイ モデルの選択]** で **[Resource Manager]** を選択します。
+5.  **[作成]**を選択します。
 
-- - -
-> ![Windows][Logo_Windows] Windows
-> 
-> 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、Windows 設定 (Windows SID やホスト名など) をオンプレミス VM で抽象化/汎用化する必要があります。 これを行うには、<https://msdn.microsoft.com/library/hh825084.aspx> に説明されているように、sysprep を使用します。
-> 
-> ![Linux][Logo_Linux] Linux
-> 
-> 複数の仮想マシンをデプロイするために使用できる Linux イメージを準備するには、一部の Linux 設定をオンプレミス VM で抽象化/汎用化する必要があります。 これを行うには、[この記事][virtual-machines-linux-capture-image]または[この記事][virtual-machines-linux-agent-user-guide-command-line-options]で説明されている waagent -deprovision を使用します。
-> 
-> 
+ウィザードの指示に従って、必要なすべてのリソース (ネットワーク インターフェイスやストレージ アカウントなど) だけでなく、仮想マシンを作成するために必要なパラメーターも設定します。 次のようなパラメーターがあります。
 
-- - -
-SAP Software Provision Manager を使用して新しい SAP システムをインストールし、仮想マシンに関連付けられている VHD からデータベース バックアップを復元するか、DBMS でサポートされている場合は Azure Storage からデータベース バックアップを直接復元してデータベースのコンテンツを設定できます  ([DBMS デプロイ ガイド][dbms-guide]を参照してください)。 使用しているオンプレミス VM (特に 2 層システム) に SAP システムを既にインストールしている場合、SAP Software Provisioning Manager でサポートされているシステム名の変更手順に従って、Azure VM のデプロイ後に SAP システムの設定を調整できます (SAP ノート [1619720])。 インストールしていない場合は、Azure VM のデプロイ後に SAP ソフトウェアをインストールできます。
+1. **[基本]**:
+  * **名前**: リソースの名前 (仮想マシン名)。
+ * **ユーザー名とパスワード**または **SSH 公開キー**: プロビジョニング時に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、マシンへのサインインに使用する Secure Shell (SSH) 公開キーを入力できます。
+ * **サブスクリプション**: 新しい仮想マシンのプロビジョニングに使用するサブスクリプションを選択します。
+ * **リソース グループ**: VM のリソース グループの名前。 新しいリソース グループの名前を入力することも、既存のリソース グループの名前を入力することもできます。
+ * **場所**: 新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳細については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
+2. **[サイズ]**:
 
-詳細については、「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」の章を参照してください。
+     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事の「[ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」をご覧ください。
 
-#### <a name="moving-a-vm-from-on-premises-to-microsoft-azure-with-a-non-generalized-disk"></a>汎用化されていないディスクを使用してオンプレミスから Microsoft Azure に VM を移動する
-オンプレミスから Microsoft Azure に特定の SAP システムを移動することを計画します。 これは、OS、SAP バイナリ、最終的な DBMS バイナリを格納している VHD と、Microsoft Azure への DBMS のデータおよびログ ファイルを格納している VHD をアップロードすることで行うことができます。 「[カスタム イメージを使用して VM をデプロイする][deployment-guide-3.1.2]」の章で説明したシナリオとは対照的に、ホスト名、SAP SID、および SAP ユーザー アカウントがオンプレミス環境で構成されているため、Azure VM でそれらを保持します。 そのため、オペレーティング システムを汎用化する必要はありません。 これは、オンプレミスで実行される SAP ランドス ケープと Microsoft Azure で実行される SAP ランドスケープが存在するクロス プレミスのシナリオではほとんどの場合適用されます。
+3. **設定**:
+   * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類の詳細については、[Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事の「[Microsoft Azure Storage][dbms-guide-2.3]」をご覧ください。
+   * **仮想ネットワーク**と**サブネット**: 仮想マシンをイントラネットと統合するには、オンプレミス ネットワークに接続されている仮想ネットワークを選択します。
+   * **パブリック IP アドレス**: 使用するパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
+   * **ネットワーク セキュリティ グループ**: 詳細については、「[ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御][virtual-networks-nsg]」をご覧ください。
+   * **可用性**: 可用性セットを選択するか、新しい可用性セットを作成するためのパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」をご覧ください。
+   * **監視**: 監視診断を**無効**にすることができます。 「[監視の構成][deployment-guide-configure-monitoring-scenario-1]」で説明するように、Azure Enhanced Monitoring Extension を有効にするコマンドを実行すると、監視診断が自動的に有効になります。
 
-詳しくは、「[シナリオ 3: SAP を含む汎用化されていない Azure VHD を使用してオンプレミスから VM を移動する][deployment-guide-3.4]」の章をご覧ください。
+4. **概要**:
 
-### <a name="a-namedb477013-9060-4602-9ad4-b0316f8bb281ascenario-1-deploying-a-vm-out-of-the-azure-marketplace-for-sap"></a><a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>シナリオ 1: SAP 用 Azure Marketplace から VM をデプロイする
-Microsoft Azure では、Windows Server とさまざまな Linux ディストリビューションの標準的な OS イメージを提供する Azure Marketplace から VM インスタンスをデプロイすることができます。 MS SQL Server などの DBMS SKU を含むイメージもデプロイできます。 DMBS SKU を含むイメージの使用について詳しくは、[DBMS デプロイ ガイド][dbms-guide]を参照してください。
+  選択内容を確認し、**[OK]** をクリックします。
 
-Azure Marketplace から VM をデプロイするための SAP 固有の手順は次のようになります。
+選択したリソース グループに仮想マシンがデプロイされます。
 
-![Azure Marketplace の VM イメージを使用した SAP システムの VM デプロイのフローチャート][deployment-guide-figure-100]
+#### <a name="create-a-virtual-machine-by-using-a-template"></a>テンプレートを使用した仮想マシンの作成
+[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートのいずれかを使用して仮想マシンを作成できます。 また、[Azure Portal][virtual-machines-windows-tutorial]、[PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]、または [Azure CLI][virtual-machines-linux-tutorial] を使用して、仮想マシンを手動で作成することもできます。
 
-フローチャートに従って、次の手順を実行する必要があります。
+* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image]
 
-#### <a name="create-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用した仮想マシンの作成
-Azure Marketplace のイメージを使用して新しい仮想マシンを作成する最も簡単な方法は、Azure ポータルを使用することです。 <https://portal.azure.com/#create> に移動するか、Azure Portal の左側にある「+」をクリックします。 デプロイするオペレーティング システムの種類 (Windows、SUSE、RHEL など) を検索フィールド入力し、バージョンを選択します。 デプロイメント モデルとして [Resource Manager] を選び、[作成] クリックします。
+  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+* [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-marketplace-image)][sap-templates-3-tier-marketplace-image]
 
-ウィザードでは、仮想マシンの作成で必要なパラメーターと、ネットワーク インターフェイスやストレージ アカウントなどのすべての必要なリソースが案内されます。 次のようなパラメーターがあります。
+  複数の仮想マシンを使用して&3; 層システムを作成する場合は、このテンプレートを使用します。
 
-1. 基本
-   1. 名前: リソースの名前 (仮想マシン名など)
-   1. ユーザー名とパスワード、SSH 公開キー: プロビジョニング時に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、SSH を使用してコンピューターにログインする場合に使用する SSH 公開キーも入力します。
-   1. サブスクリプション: 新しい仮想マシンのプロビジョニングに使用するサブスクリプションを選択します。
-   1. リソース グループ: リソース グループの名前です。 新しいグループまたは既に存在するリソース グループの名前を挿入できます。
-   1. 場所: 新しい仮想マシンをデプロイする場所を選択します。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を選択してください。 詳しくは、[計画ガイド][planning-guide]の「[Microsoft Azure ネットワーク][planning-guide-microsoft-azure-networking]」の章をご覧ください。
-1. サイズ
+Azure Portal で、テンプレートの次のパラメーターを入力します。
 
-    サポートされている VM の種類の一覧については、SAP ノート [1928533] をご覧ください。 Premium Storage を使用する場合は、適切な種類を選択していることを確認してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、[計画ガイド][planning-guide]の「[ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」の章を参照してください。
-    
-1. Settings
-   1. ストレージ アカウント: 既存のストレージ アカウントを選ぶか、新しいストレージ アカウントを作成します。 さまざまなストレージ タイプの詳細については、[DBMS デプロイ ガイド][dbms-guide]の「[Microsoft Azure Storage][dbms-guide-2.3]」の章を参照してください。 すべてのストレージ タイプが SAP アプリケーションの実行でサポートされるわけではない点に注意してください。
-   1. 仮想ネットワークとサブネット: 仮想マシンをイントラネットに統合する場合、オンプレミス ネットワークに接続する仮想マシンを選択します。
-   1. パブリック IP アドレス: 使用するパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスすることができます。 仮想マシンへのアクセスをフィルター処理するには、ネットワーク セキュリティ グループも作成してください。
-   1. ネットワーク セキュリティ グループ: 詳しくは、「[ネットワーク セキュリティ グループ (NSG) について][virtual-networks-nsg]」をご覧ください。
-   1. 可用性: 可用性セットを選択するか、新しい可用性セットを作成するパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」の章を参照してください。
-   1. 監視: 診断設定を無効にできます。 「[監視の構成][deployment-guide-configure-monitoring-scenario-1]」の章の説明に従って、Azure Enhanced Monitoring を有効にするコマンドを実行すると、監視が自動的に有効になります。
-   
-1. 概要: [概要] ページに表示される情報を検証し、[OK] をクリックします。
+1. **[基本]**:
+  * **サブスクリプション**: テンプレートのデプロイに使用するサブスクリプション。
+  * **リソース グループ**: テンプレートのデプロイに使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+  * **場所**: テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
 
-ウィザードを完了すると、選んだリソース グループに仮想マシンがデプロイされます。
+2. **設定**:
+  * **SAP System ID (SAP システム ID)**: SAP システム ID (SID)。
+  * **OS の種類**: デプロイするオペレーティング システム (Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2) など) を選択します。
 
-#### <a name="create-virtual-machine-using-a-template"></a>テンプレートを使用した仮想マシンの作成
-[azure-quickstart-templates github リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートを使用してデプロイを作成することもできます。 また、[Azure Portal][virtual-machines-windows-tutorial]、[PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]、[Azure CLI][virtual-machines-linux-tutorial] を使用して手動で仮想マシンを作成することもできます。
+    既定のリスト ビューには、サポートされているオペレーティング システムがすべて表示されるわけではありません。 完全な一覧を表示するには、**[すべて表示]** を選択します。 SAP ソフトウェア デプロイのサポートされているオペレーティング システムの詳細については、SAP Note [1928533] を参照してください。
+  * **SAP system size (SAP システムのサイズ)**: SAP システムのサイズ。
 
-* [2 層構成 (仮想マシン 1 台のみ) のテンプレート (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image] 1 台のみの仮想マシンを使用して 2 層システムを作成する場合に使用します。
-* [3 層構成 (複数の仮想マシン) のテンプレート (sap-3-tier-marketplace-image)][sap-templates-3-tier-marketplace-image] 複数の仮想マシンを使用して 3 層システムを作成する場合に使用します。
+    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+  * **システムの可用性** (3 層テンプレートのみ): システムの可用性。
 
-上記のいずれかのテンプレートを開くと、Azure Portal にテンプレートのパラメーターを入力するための画面が表示されます。 次の情報を入力します。
+    高可用性インストールに適した構成用の **HA** を選択します。 ABAP SAP Central Services (ASCS) 用の&2; つのデータベース サーバーと&2; つのサーバーが作成されます。
+  * **ストレージの種類** (2 層テンプレートのみ): 使用するストレージの種類。
 
-1. 基本
-  * **サブスクリプション**: テンプレートのデプロイ先のサブスクリプション
-  * **リソース グループ**: テンプレートのデプロイ先のリソース グループ。 新しいリソース グループを作成するか、選択したサブスクリプションに既にあるリソース グループを選択することができます。
-  * **場所**: テンプレートのデプロイ先の場所。 既存のリソース グループを選択した場合は、リソース グループの場所が使用されます。
-1. Settings
-  * **Sap System Id (SAP システム ID)**: SAP システム ID
-  * **OS の種類**: Windows Server 2012 R2、SLES 12 または RHEL 7.2 などのデプロイするオペレーティング システム
-    * 一覧には、サポートされている一部のオペレーティング システムしか含まれていません。たとえば、SAP でサポートされている Windows Server 2008 R2 は一覧には含まれていません。 サポートされているすべてのオペレーティング システムの一覧については、SAP ノート [1928533] をご覧ください。
-  * **SAP システム サイズ**: SAP システムのサイズ
-    * 新しいシステムで提供する SAPS の量。 システムで必要な SAPS の量が不明な場合、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **システムの可用性**: (3 層テンプレートのみ) システムの可用性
-    * HA インストールに適した構成の HA を選択します。 ASCS 用の2 つのデータベース サーバーと&2; つのサーバーが作成されます。
-  * **ストレージの種類**: (2 層テンプレートのみ) 使用するストレージの種類
-    * 大規模なシステムの場合、Premium Storage の使用を強くお勧めします。 さまざまなストレージの種類の詳細については、
+    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
-      * [DBMS デプロイ ガイド][dbms-guide]の「[Microsoft Azure Storage][dbms-guide-2.3]」
+      * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事の「[Microsoft Azure Storage][dbms-guide-2.3]」
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
-  * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード
-    * コンピューターへのログオンで使用できる新しいユーザーが作成されます。
-  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークまたはサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、既存のものを選択します。
-  * **サブネット ID**: 仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
+  * **管理ユーザー名**と**管理パスワード**: ユーザー名とパスワード。
+    仮想マシンへのサインインに使用する新しいユーザーが作成されます。
+  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、仮想プライベート ネットワーク (VPN) または Azure ExpressRoute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
-1. ご契約条件  
+3. **使用条件**:   
     法律条項を確認し、同意します。
 
-すべてのパラメーターを入力した後で、[購入] をクリックして、画面を確認します。 
+4.  **[購入]** を選択します。
 
-Azure Marketplace のイメージを使用する場合、既定では Azure VM エージェントがデプロイされることに注意してください。
+Azure Marketplace のイメージを使用すると、Azure VM エージェントが既定でデプロイされます。
 
 #### <a name="configure-proxy-settings"></a>プロキシ設定の構成
-オンプレミス ネットワークの構成によっては、仮想マシンが VPN または Expressroute を介してオンプレミス ネットワークに接続している場合、仮想マシンでプロキシを構成しなければならない場合があります。 構成しないと、仮想マシンがインターネットにアクセスできない場合があり、必要な拡張機能のダウンロードや監視データの収集ができません。 このドキュメントの「[プロキシの構成][deployment-guide-configure-proxy]」の章をご覧ください。
+オンプレミス ネットワークの構成方法によっては、VM でプロキシを設定することが必要な場合があります。 VM が VPN または ExpressRoute 経由でオンプレミス ネットワークに接続されている場合、インターネットにアクセスできないことがあります。この場合、VM は必要な拡張機能をダウンロードしたり、監視データを収集したりすることができません。 詳細については、「[プロキシの構成][deployment-guide-configure-proxy]」をご覧ください。
 
-#### <a name="join-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
-Azure でのデプロイが Azure サイト間または Expressroute を介してオンプレミスの AD または DNS に接続している場合 ([計画/導入ガイド][planning-guide]ではクロス プレミスとも呼ばれる)、オンプレミス ドメインに VM を参加させる必要があります。 この手順に関する考慮事項については、このドキュメントの「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」を参照してください。
+#### <a name="join-a-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
+Azure デプロイが Azure サイト間 VPN 接続または ExpressRoute 経由でオンプレミスの Active Directory または DNS インスタンスに接続されている場合 ([Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事では、これを "*クロスプレミス*" と呼んでいます)、VM がオンプレミス ドメインに参加している必要があります。 この作業に関する考慮事項の詳細については、「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」をご覧ください。
 
 #### <a name="a-nameec323ac3-1de9-4c3a-b770-4ff701def65baconfigure-monitoring"></a><a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>監視の構成
-環境が SAP で確実にサポートされるようにするために、このドキュメントの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、Azure Enhanced Monitoring Extension for SAP を構成します。
-
-このドキュメントの「[SAP リソース][deployment-guide-2.2]」の章で示されているリソースで、SAP カーネルおよび SAP Host Agent の必要な最小バージョンについて SAP Monitoring の前提条件を確認してください。
+現在の環境で SAP をサポートできるようにするために、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って Azure Enhanced Monitoring Extension for SAP をセットアップします。 「[SAP リソース][deployment-guide-2.2]」に示すリソースで、SAP Monitoring の前提条件と、SAP カーネルおよび SAP Host Agent の必要最小バージョンを確認してください。
 
 #### <a name="monitoring-check"></a>監視の確認
-「[Azure 上の SAP のエンド ツー エンド監視設定の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」で説明されているとおりに監視が機能しているかどうかを確認します。
+「[エンド ツー エンド監視の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」の説明に従って、監視が機能しているかどうかを確認します。
 
 #### <a name="post-deployment-steps"></a>デプロイ後の手順
-VM を作成してデプロイした後、すべての必要なソフトウェア コンポーネントを VM にインストールする必要があります。 この種類の VM のデプロイでは、他の VM 内の Microsoft Azure で既に利用可能か、または接続可能なディスクとしてな利用可能なインストール対象のソフトウェアが必要です。 または、オンプレミスの資産への接続 (共有のインストール) を指定するクロス プレミスのシナリオを検討します。
+VM を作成してデプロイしたら、必要なソフトウェア コンポーネントを VM にインストールする必要があります。 VM のこの種のデプロイでは、デプロイ後にソフトウェアをインストールすることになるため、インストールするソフトウェアが Azure 内または別の VM 上で既に使用可能であるか、接続可能なディスクとして提供できる必要があります。 または、オンプレミスの資産 (インストール共有) への接続を提供するクロスプレミス シナリオを使用することを検討します。
 
-### <a name="a-name54a1fc6d-24fd-4feb-9c57-ac588a55dff2ascenario-2-deploying-a-vm-with-a-custom-image-for-sap"></a><a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする
-[計画および実装ガイド][planning-guide]で説明されているように、カスタム イメージを準備して作成し、そのイメージを使用して複数の新しい VM を作成することができます。 フローチャートでの手順は次のようになります。
+Azure に VM をデプロイしたら、オンプレミス環境の場合と同じガイドラインとツールに従って VM に SAP ソフトウェアをインストールします。 Azure VM に SAP ソフトウェアをインストールする場合、SAP と Microsoft では、SAP インストール メディアを Azure VHD にアップロードして保存するか、必要なすべての SAP インストール メディアを格納したファイル サーバーとして機能する Azure VM を作成することを推奨しています。
 
-![Private Marketplace の VM イメージを使用した SAP システムの VM デプロイのフローチャート][deployment-guide-figure-300]
+[comment]: <> (MSSedusch TODO ファイル サーバーや VHD などのファイル管理を推奨する必要があるのはなぜですか。オンプレミスとそれほど異なりますか。)
 
-フローチャートに従って、次の手順を実行する必要があります。
-
-#### <a name="create-the-virtual-machine"></a>仮想マシンの作成
-Azure Portal からプライベート OS イメージを使用してデプロイを作成するには、次に示す SAP テンプレートのうちの&1; つを使用します。 これらのテンプレートは、[azure-quickstart-templates github リポジトリ][azure-quickstart-templates-github]で公開されています。
-[PowerShell][virtual-machines-upload-image-windows-resource-manager] を使用して、手動で仮想マシンを作成することもできます。 
-
-* [2 層構成 (仮想マシン 1 台のみ) のテンプレート (sap-2-tier-user-image)][sap-templates-2-tier-user-image]: 1 台のみの仮想マシンと固有の OS イメージを使用して 2 層システムを作成する場合に使用します。
-* [3 層構成 (複数の仮想マシン) のテンプレート (sap-3-tier-user-image)][sap-templates-3-tier-user-image]: 複数の仮想マシンと固有の OS イメージを使用して 3 層システムを作成する場合に使用します。
-
-上記のいずれかのテンプレートを開くと、Azure Portal にテンプレートのパラメーターを入力するための画面が表示されます。 次の情報を入力します。
-
-1. 基本
-  * **サブスクリプション**: テンプレートのデプロイ先のサブスクリプション
-  * **リソース グループ**: テンプレートのデプロイ先のリソース グループ。 新しいリソース グループを作成するか、選択したサブスクリプションに既にあるリソース グループを選択することができます。
-  * **場所**: テンプレートのデプロイ先の場所。 既存のリソース グループを選択した場合は、リソース グループの場所が使用されます。
-1. Settings
-  * **Sap System Id (SAP システム ID)**: SAP システム ID
-  * **OS の種類**: デプロイするオペレーティング システムの種類 (Windows または Linux)
-  * **SAP システム サイズ**: SAP システムのサイズ
-    * 新しいシステムで提供する SAPS の量。 システムで必要な SAPS の量が不明な場合、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **システムの可用性**: (3 層テンプレートのみ) システムの可用性 
-    * HA インストールに適した構成の HA を選択します。 ASCS 用の2 つのデータベース サーバーと&2; つのサーバーが作成されます。
-  * **ストレージの種類**: (2 層テンプレートのみ) 使用するストレージの種類 
-    * 大規模なシステムの場合、Premium Storage の使用を強くお勧めします。 さまざまなストレージの種類の詳細については、 
-      * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
-      * [DBMS デプロイ ガイド][dbms-guide]の「[Microsoft Azure Storage][dbms-guide-2.3]」
-      * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
-      * [Microsoft Azure Storage の概要][storage-introduction]
-  * **User Image Vhd Uri (ユーザー イメージ VHD の URI)**: プライベート OS イメージ VHD の URI (例: https://`<accountname`>.blob.core.windows.net/vhds/userimage.vhd)
-  * **User Image Storage Account (ユーザー イメージのストレージ アカウント)**: プライベート OS イメージを保存するストレージ アカウントの名前 (例: 上記の URI の例の `<accountname`>)
-  * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード
-    * コンピューターへのログオンで使用できる新しいユーザーが作成されます。
-  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークまたはサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、既存のものを選択します。
-  * **サブネット ID**: 仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
-
-1. ご契約条件  
-    法律条項を確認し、同意します。
-
-すべてのパラメーターを入力した後で、[購入] をクリックして、画面を確認します。
-
-#### <a name="install-vm-agent-linux-only"></a>VM エージェントのインストール (Linux のみ)
-上記のテンプレートを使用する場合、Linux エージェントをユーザー イメージにインストールしておく必要があります。 17 以下の場合、デプロイは失敗します。 このドキュメントの「[Azure VM エージェントのダウンロード、インストール、有効化][deployment-guide-4.4]」の章の説明に従って、VM エージェントをユーザー イメージにダウンロードしてインストールします。
-上記のテンプレートを使用しない場合、後で VM エージェントをインストールすることもできます。
-
-#### <a name="join-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
-Azure でのデプロイが Azure サイト間または Expressroute を介してオンプレミスの AD または DNS に接続している場合 ([計画/導入ガイド][planning-guide]ではクロス プレミスとも呼ばれる)、オンプレミス ドメインに VM を参加させる必要があります。 この手順に関する考慮事項については、このドキュメントの「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」をご覧ください。
-
-#### <a name="configure-proxy-settings"></a>プロキシ設定の構成
-オンプレミス ネットワークの構成によっては、仮想マシンが VPN または Expressroute を介してオンプレミス ネットワークに接続している場合、仮想マシンでプロキシを構成しなければならない場合があります。 構成しないと、仮想マシンがインターネットにアクセスできない場合があり、必要な拡張機能のダウンロードや監視データの収集ができません。 このドキュメントの「[プロキシの構成][deployment-guide-configure-proxy]」の章をご覧ください。
-
-#### <a name="configure-monitoring"></a>監視の構成
-環境が SAP で確実にサポートされるようにするために、このドキュメントの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、Azure Monitoring Extension for SAP を構成します。
-このドキュメントの「[SAP リソース][deployment-guide-2.2]」の章で示されているリソースで、SAP カーネルおよび SAP Host Agent の必要な最小バージョンについて SAP Monitoring の前提条件を確認してください。
-
-#### <a name="monitoring-check"></a>監視の確認
-「[Azure 上の SAP のエンド ツー エンド監視設定の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」で説明されているとおりに監視が機能しているかどうかを確認します。
-
-### <a name="a-namea9a60133-a763-4de8-8986-ac0fa33aa8c1ascenario-3-moving-a-vm-from-on-premises-using-a-non-generalized-azure-vhd-with-sap"></a><a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>シナリオ 3: SAP を含む汎用化されていない Azure VHD を使用してオンプレミスから VM を移動する
-SAP システムを現在の形式と形状 (同じホスト名と SAP SID) でオンプレミスから Azure に移行する予定の場合、VHD は OS ディスクとして直接使用され、デプロイ中にイメージとして参照されません。 この場合、VM エージェントはデプロイ中に自動的にインストールされません。 VM エージェントと、Azure Enhanced Monitoring Extension for SAP は SAP サポートの前提条件であるため、仮想マシンの作成後に両方のコンポーネントを手動でダウンロードしてインストールし、有効にする必要があります。 
-
-Azure VM エージェントについて詳しくは、次の記事をご覧ください。
-
-[comment]: <> (MSSedusch TODO 以下の Windows リンクを更新してください) 
+### <a name="a-name54a1fc6d-24fd-4feb-9c57-ac588a55dff2ascenario-2-deploying-a-vm-with-a-custom-image-for-sap"></a><a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>シナリオ 2:  SAP のカスタム イメージを使用して VM をデプロイする
+オペレーティング システムまたは DBMS のバージョンによってパッチ要件がそれぞれ異なるため、Azure Marketplace で提供されるイメージがニーズに合わない場合があります。 このような場合、後で再度デプロイできるように、独自の OS/DBMS の VM イメージを使用して VM を作成できます。
+プライベート イメージを作成する手順は、Windows と Linux で異なります。
 
 - - -
 > ![Windows][Logo_Windows] Windows
-> 
-> <http://blogs.msdn.com/b/wats/archive/2014/02/17/bginfo-guest-agent-extension-for-azure-vms.aspx>
-> 
+>
+> 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](https://msdn.microsoft.com/library/hh825084.aspx) を使用します。
+>
 > ![Linux][Logo_Linux] Linux
-> 
-> [Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide]
-> 
-> 
+>
+> 複数の仮想マシンをデプロイするために使用できる Linux イメージを準備するには、オンプレミス VM で一部の Linux 設定を抽象化または汎用化する必要があります。 これを行うには、`waagent -deprovision` を使用します。 詳細については、[Azure で実行されている Linux 仮想マシンのキャプチャ][virtual-machines-linux-capture-image]に関する記事、および「[Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide-command-line-options]」をご覧ください。
+>
+>
 
 - - -
-さまざまな手順のワークフローは次のようになります。
+カスタム イメージを作成し、そのイメージを使用して複数の新しい VM を作成できます。 方法については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事をご覧ください。 SAP Software Provision Manager を使用して新しい SAP システムをインストールし、仮想マシンに接続されている VHD からデータベース バックアップを復元するか、Azure Storage からデータベース バックアップを直接復元して (DBMS でサポートされている場合)、データベース コンテンツを設定します。 詳細については、[Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事をご覧ください。 オンプレミス VM (特に&2; 層システム) に SAP システムが既にインストールされている場合は、SAP Software Provisioning Manager でサポートされているシステムの名前変更手順に従って、Azure VM のデプロイ後に SAP システム設定を調整できます (SAP Note [1619720])。 それ以外の場合は、Azure VM のデプロイ後に SAP ソフトウェアをインストールできます。
 
-![VM ディスクを使用した SAP システムの VM デプロイのフローチャート][deployment-guide-figure-400]
+次のフローチャートは、カスタム イメージから VM をデプロイする際の SAP 固有の一連の手順を示しています。
 
-ディスクを既にアップロードし、Azure で定義していると仮定して ([計画および実装ガイド][planning-guide]を参照)、次の手順に従います。
+![Private Marketplace の VM イメージを使用した SAP システム用 VM のデプロイのフローチャート][deployment-guide-figure-300]
 
-#### <a name="create-virtual-machine"></a>仮想マシンの作成
-Azure Portal からプライベート OS ディスクを使用してデプロイを作成する場合、[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートを使用します。 [PowerShell][virtual-machines-windows-create-vm-specialized] を使用して、手動で仮想マシンを作成することもできます。
+#### <a name="create-the-virtual-machine"></a>仮想マシンの作成
+Azure Portal からプライベート OS イメージを使用してデプロイを作成するには、次のいずれかの SAP テンプレートを使用します。 これらのテンプレートは、[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されています。 また、[PowerShell][virtual-machines-upload-image-windows-resource-manager] を使用して、仮想マシンを手動で作成することもできます。
 
-* [2 層構成 (仮想マシン&1; 台のみ) のテンプレート (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
-  * を使用します。
+* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-user-image)][sap-templates-2-tier-user-image]
 
-上記のいずれかのテンプレートを開くと、Azure Portal にテンプレートのパラメーターを入力するための画面が表示されます。 次の情報を入力します。
+  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+* [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-user-image)][sap-templates-3-tier-user-image]
 
-1. 基本
-  * **サブスクリプション**: テンプレートのデプロイ先のサブスクリプション
-  * **リソース グループ**: テンプレートのデプロイ先のリソース グループ。 新しいリソース グループを作成するか、選択したサブスクリプションに既にあるリソース グループを選択することができます。
-  * **場所**: テンプレートのデプロイ先の場所。 既存のリソース グループを選択した場合は、リソース グループの場所が使用されます。
-1. Settings
-  * **Sap System Id (SAP システム ID)**: SAP システム ID
-  * **OS の種類**: デプロイするオペレーティング システムの種類 (Windows または Linux)
-  * **SAP システム サイズ**: SAP システムのサイズ
-    * 新しいシステムで提供する SAPS の量。 システムで必要な SAPS の量が不明な場合、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **ストレージの種類**: (2 層テンプレートのみ) 使用するストレージの種類 
-    * 大規模なシステムの場合、Premium Storage の使用を強くお勧めします。 さまざまなストレージの種類の詳細については、
-      * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用) 
-      * [DBMS デプロイ ガイド][dbms-guide]の「[Microsoft Azure Storage][dbms-guide-2.3]」
+  複数の仮想マシンまたは独自の OS イメージを使用して&3; 層システムを作成する場合は、このテンプレートを使用します。
+
+Azure Portal で、テンプレートの次のパラメーターを入力します。
+
+1. **[基本]**:
+  * **サブスクリプション**: テンプレートのデプロイに使用するサブスクリプション。
+  * **リソース グループ**: テンプレートのデプロイに使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+  * **場所**: テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
+2. **設定**:
+  * **SAP System ID (SAP システム ID)**: SAP システム ID。
+  * **OS の種類**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
+  * **SAP system size (SAP システムのサイズ)**: SAP システムのサイズ。
+
+    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+  * **システムの可用性** (3 層テンプレートのみ): システムの可用性。
+
+    高可用性インストールに適した構成用の **HA** を選択します。 ASCS 用の&2; つのデータベース サーバーと&2; つのサーバーが作成されます。
+  * **ストレージの種類** (2 層テンプレートのみ): 使用するストレージの種類。
+
+    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
+      * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
+      * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事の「[Microsoft Azure Storage][dbms-guide-2.3]」
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
-  * **Os Disk Vhd Uri (OS ディスク VHD の URI)**: プライベート OS ディスクの URI (例: https://`<accountname`>.blob.core.windows.net/vhds/osdisk.vhd)
-  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークまたはサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、既存のものを選択します。
-  * **サブネット ID**: 仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
+  * **User Image VHD URI (ユーザー イメージ VHD の URI)**: プライベート OS イメージ VHD の URI (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd)。
+  * **User Image Storage Account (ユーザー イメージのストレージ アカウント)**: プライベート OS イメージを保存するストレージ アカウントの名前 (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd の &lt;アカウント名>)。
+  * **管理ユーザー名**と**管理パスワード**: ユーザー名とパスワード。
 
-1. ご契約条件  
+    仮想マシンへのサインインに使用する新しいユーザーが作成されます。
+  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、VPN または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
+
+    /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名>
+
+3. **使用条件**:   
     法律条項を確認し、同意します。
 
-すべてのパラメーターを入力した後で、[購入] をクリックして、画面を確認します。
+4.  **[購入]** を選択します。
 
-#### <a name="install-vm-agent"></a>VM エージェントのインストール
-上記のテンプレートを使用する場合、VM エージェントを OS ディスクにインストールしておく必要があります。 17 以下の場合、デプロイは失敗します。 このドキュメントの「[Azure VM エージェントのダウンロード、インストール、有効化][deployment-guide-4.4]」の章の説明に従って、VM エージェントを VM にダウンロードしてインストールします。
+#### <a name="install-the-vm-agent-linux-only"></a>VM エージェントのインストール (Linux のみ)
+前のセクションで説明したテンプレートを使用するには、ユーザー イメージに Linux エージェントが既にインストールされている必要があります。インストールされていない場合、デプロイは失敗します。 「[Azure VM エージェントのダウンロード、インストール、有効化][deployment-guide-4.4]」の説明に従って、VM エージェントをダウンロードし、ユーザー イメージにインストールします。 テンプレートを使用しない場合は、VM エージェントを後でインストールすることもできます。
 
-上記のテンプレートを使用しない場合、後で VM エージェントをインストールすることもできます。
-
-#### <a name="join-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
-Azure でのデプロイが Azure サイト間または Expressroute を介してオンプレミスの AD または DNS に接続している場合 ([計画/導入ガイド][planning-guide]ではクロス プレミスとも呼ばれる)、オンプレミス ドメインに VM を参加させる必要があります。 この手順に関する考慮事項については、このドキュメントの「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」を参照してください。
+#### <a name="join-a-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
+Azure デプロイが Azure サイト間 VPN 接続または Azure ExpressRoute 経由でオンプレミスの Active Directory または DNS インスタンスに接続されている場合 ([Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事では、これを "*クロスプレミス*" と呼んでいます)、VM がオンプレミス ドメインに参加している必要があります。 この手順に関する考慮事項の詳細については、「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」をご覧ください。
 
 #### <a name="configure-proxy-settings"></a>プロキシ設定の構成
-オンプレミス ネットワークの構成によっては、仮想マシンが VPN または Expressroute を介してオンプレミス ネットワークに接続している場合、仮想マシンでプロキシを構成しなければならない場合があります。 構成しないと、仮想マシンがインターネットにアクセスできない場合があり、必要な拡張機能のダウンロードや監視データの収集ができません。 このドキュメントの「[プロキシの構成][deployment-guide-configure-proxy]」の章をご覧ください。
+オンプレミス ネットワークの構成方法によっては、VM でプロキシを設定することが必要な場合があります。 VM が VPN または ExpressRoute 経由でオンプレミス ネットワークに接続されている場合、インターネットにアクセスできないことがあります。この場合、VM は必要な拡張機能をダウンロードしたり、監視データを収集したりすることができません。 詳細については、「[プロキシの構成][deployment-guide-configure-proxy]」をご覧ください。
 
 #### <a name="configure-monitoring"></a>監視の構成
-環境が SAP で確実にサポートされるようにするために、このドキュメントの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、Azure Enhanced Monitoring Extension for SAP を構成します。
-
-このドキュメントの「[SAP リソース][deployment-guide-2.2]」の章で示されているリソースで、SAP カーネルおよび SAP Host Agent の必要な最小バージョンについて SAP Monitoring の前提条件を確認してください。
+現在の環境で SAP をサポートできるようにするために、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って Azure Enhanced Monitoring Extension for SAP をセットアップします。 「[SAP リソース][deployment-guide-2.2]」に示すリソースで、SAP Monitoring の前提条件と、SAP カーネルおよび SAP Host Agent の必要最小バージョンを確認してください。
 
 #### <a name="monitoring-check"></a>監視の確認
-「[Azure 上の SAP のエンド ツー エンド監視設定の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」で説明されているとおりに監視が機能しているかどうかを確認します。
+「[エンド ツー エンド監視の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」の説明に従って、監視が機能しているかどうかを確認します。
 
-### <a name="scenario-4-updating-the-monitoring-configuration-for-sap"></a>シナリオ 4: SAP の監視の構成を更新する
-次の場合は、SAP の監視の構成を更新する必要があります。
 
-* MS と SAP の共同チームは、監視機能を拡張し、カウンターの増減を要求しています。 
-* Microsoft では、監視データを提供する、基になる Azure インフラストラクチャの新しいバージョンを提供しており、Azure Enhanced Monitoring Extension for SAP はこれらの変更に対応する必要があります。
-* Azure VM に追加の VHD をマウントするか、VHD を削除します。 この場合、ストレージ関連データのコレクションを更新する必要があります。 エンドポイントの追加または削除、または VM への IP アドレスの割り当てによって構成を変更する場合、この変更は監視の構成には影響しません。
-* A5 から別の VM のサイズなど、Azure VM のサイズを変更します。
-* Azure VM に新しいネットワーク インターフェイスを追加します。
 
-監視の構成を更新には、次の手順に従います。
 
-* このドキュメントの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の手順に従って、監視インフラストラクチャを更新します。 この章で説明されるスクリプトを再実行すると、監視の構成をデプロイすることが検出されて、必要な変更が監視の構成に対して実行されます。 
+### <a name="a-namea9a60133-a763-4de8-8986-ac0fa33aa8c1ascenario-3-moving-an-on-premises-vm-by-using-a-non-generalized-azure-vhd-with-sap"></a><a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>シナリオ 3: SAP を含む汎用化されていない Azure VHD を使用してオンプレミス VM を移行する
+このシナリオでは、特定の SAP システムをオンプレミス環境から Azure に移行します。 これを行うには、OS、SAP バイナリ、最終的な DBMS バイナリを格納している VHD と、DBMS のデータ ファイルとログ ファイルを格納している VHD を Azure にアップロードします。 「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」で説明したシナリオとは異なり、このシナリオでは、ホスト名、SAP SID、SAP ユーザー アカウントがオンプレミス環境で構成されているため、Azure VM でこれらを保持します。 OS を汎用化する必要はありません。 ほとんどの場合、このシナリオは、SAP ランドスケープの一部がオンプレミスで実行され、一部が Azure で実行されるクロスプレミス シナリオに適用されます。
 
-## <a name="detailed-single-deployment-steps"></a>単一のデプロイの詳細手順
-### <a name="a-name604bcec2-8b6e-48d2-a944-61b0f5dee2f7adeploying-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
-* <https://azure.microsoft.com/downloads/> に移動します。
-* 「コマンド ライン ツール」セクションには「PowerShell」というセクションがあります。 [Windows のインストール] リンクをクリックします。
-* Microsoft ダウンロード マネージャーで、.exe で終わる行項目がポップアップで表示されます。 [実行] オプションを選択します。
-* Microsoft Web プラットフォーム インストーラーを実行するかどうかを確認するポップアップが表示されます。 [はい] を押します。
-* 次のような画面が表示されます。
+このシナリオでは、VM エージェントはデプロイ時に自動的にインストールされません。 SAP を実行するには VM エージェントと Azure Enhanced Monitoring Extension for SAP が必要であるため、仮想マシンの作成後に両方のコンポーネントを手動でダウンロードしてインストールし、有効にする必要があります。
 
-![Azure PowerShell コマンドレットのインストール画面][deployment-guide-figure-500]
-<a name="figure-5"></a>
+Azure VM エージェントの詳細については、次のリソースを参照してください。
 
-* [インストール] を押して、使用許諾契約書に同意します。
+[comment]: <> (MSSedusch TODO 以下の Windows リンクを更新してください)
 
-PowerShell コマンドレットが更新されているかどうかをこまめに確認してください。 通常、毎月の更新プログラムがあります。 これを行う最も簡単な方法は、[この][deployment-guide-figure-5]図のインストール画面まで、上記のインストール手順を実行することです。 この画面には、実際のリリース番号と、コマンドレットのリリース日が表示されます。 SAP ノート [1928533] または [2015553] に明記されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
+- - -
+> ![Windows][Logo_Windows] Windows
+>
+> <http://blogs.msdn.com/b/wats/archive/2014/02/17/bginfo-guest-agent-extension-for-azure-vms.aspx>
+>
+> ![Linux][Logo_Linux] Linux
+>
+> [Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide]
+>
+>
 
-PS コマンドを使用して、デスクトップ/ラップトップに現在インストールされている Azure コマンドレットのバージョンを確認することができます。
+- - -
 
+次のフローチャートは、汎用化されていない Azure VHD を使用してオンプレミス VM を移行する際の一連の手順を示しています。
+
+![VM ディスクを使用した SAP システム用 VM のデプロイのフローチャート][deployment-guide-figure-400]
+
+ディスクが既にアップロードされ、Azure で定義されているという前提で ([Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事を参照)、以下のセクションで説明する作業を行います。
+
+#### <a name="create-a-virtual-machine"></a>仮想マシンの作成
+Azure Portal からプライベート OS ディスクを使用してデプロイを作成する場合、[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートを使用します。 また、PowerShell を使用して仮想マシンを手動で作成することもできます。
+
+* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
+
+  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+
+Azure Portal で、テンプレートの次のパラメーターを入力します。
+
+1. **[基本]**:
+  * **サブスクリプション**: テンプレートのデプロイに使用するサブスクリプション。
+  * **リソース グループ**: テンプレートのデプロイに使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+  * **場所**: テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
+2. **設定**:
+  * **SAP System ID (SAP システム ID)**: SAP システム ID。
+  * **OS の種類**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
+  * **SAP system size (SAP システムのサイズ)**: SAP システムのサイズ。
+
+    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+  * **ストレージの種類** (2 層テンプレートのみ): 使用するストレージの種類。
+
+    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
+      * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
+      * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事の「[Microsoft Azure Storage][dbms-guide-2.3]」
+      * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
+      * [Microsoft Azure Storage の概要][storage-introduction]
+  * **OS disk VHD URI (OS ディスク VHD の URI)**: プライベート OS ディスクの URI (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/osdisk.vhd)。
+  * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、VPN または Azure ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
+
+    /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名>
+
+3. **使用条件**:   
+    法律条項を確認し、同意します。
+
+4.  **[購入]** を選択します。
+
+#### <a name="install-the-vm-agent"></a>[VM エージェントのインストール]
+前のセクションで説明したテンプレートを使用するには、VM エージェントを OS ディスクにインストールする必要があります。インストールしていない場合、デプロイは失敗します。 「[Azure VM エージェントのダウンロード、インストール、有効化][deployment-guide-4.4]」の説明に従って、VM エージェントをダウンロードし、VM にインストールします。
+
+前のセクションで説明したテンプレートを使用しない場合は、VM エージェントを後でインストールすることもできます。
+
+#### <a name="join-a-domain-windows-only"></a>ドメインへの参加 (Windows のみ)
+Azure デプロイが Azure サイト間 VPN 接続または ExpressRoute 経由でオンプレミスの Active Directory または DNS インスタンスに接続されている場合 ([Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事では、これを "*クロスプレミス*" と呼んでいます)、VM がオンプレミス ドメインに参加している必要があります。 この作業に関する考慮事項の詳細については、「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」をご覧ください。
+
+#### <a name="configure-proxy-settings"></a>プロキシ設定の構成
+オンプレミス ネットワークの構成方法によっては、VM でプロキシを設定することが必要な場合があります。 VM が VPN または ExpressRoute 経由でオンプレミス ネットワークに接続されている場合、インターネットにアクセスできないことがあります。この場合、VM は必要な拡張機能をダウンロードしたり、監視データを収集したりすることができません。 詳細については、「[プロキシの構成][deployment-guide-configure-proxy]」をご覧ください。
+
+#### <a name="configure-monitoring"></a>監視の構成
+現在の環境で SAP をサポートできるようにするために、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って Azure Enhanced Monitoring Extension for SAP をセットアップします。 「[SAP リソース][deployment-guide-2.2]」に示すリソースで、SAP Monitoring の前提条件と、SAP カーネルおよび SAP Host Agent の必要最小バージョンを確認してください。
+
+#### <a name="monitoring-check"></a>監視の確認
+「[エンド ツー エンド監視の確認とトラブルシューティング][deployment-guide-troubleshooting-chapter]」の説明に従って、監視が機能しているかどうかを確認します。
+
+## <a name="update-the-monitoring-configuration-for-sap"></a>SAP の監視構成の更新
+次のような場合に SAP の監視構成を更新します。
+* Microsoft と SAP の共同チームが監視機能を拡張し、カウンターの増減を要求している場合。
+* Microsoft が、監視データを提供する基になる Azure インフラストラクチャの新しいバージョンを導入したため、Azure Enhanced Monitoring Extension for SAP を変更に適応させる必要がある場合。
+* Azure VM に追加の VHD をマウントするか、VHD を削除します。 このシナリオでは、ストレージ関連のデータのコレクションを更新します。 エンドポイントを追加または削除するか、VM に IP アドレスを割り当てることで構成を変更しても、監視構成には影響しません。
+* A5 から他の VM サイズへの変更など、Azure VM のサイズを変更した場合。
+* Azure VM に新しいネットワーク インターフェイスを追加した場合。
+
+監視設定を更新するには、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の手順に従って、監視インフラストラクチャを更新します。
+
+## <a name="detailed-tasks-for-sap-software-deployment-on-a-linux-vm"></a>Linux VM に SAP ソフトウェアをデプロイするための作業の詳細
+このセクションでは、構成およびデプロイ プロセスで個々の作業を実行する手順について詳しく説明します。
+
+### <a name="a-name604bcec2-8b6e-48d2-a944-61b0f5dee2f7adeploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
+1.  [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
+2.  「**コマンドライン ツール**」で、「**PowerShell**」の「**Windows のインストール**」をクリックします。
+3.  [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzurePowershellGet.3f.3f.3fnew.exe) の **[実行]** を選択します。
+4.  Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
+5.  次のようなページが表示されます。
+
+  ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
+
+6.  **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
+7.  PowerShell がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
+
+PowerShell コマンドレットの更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。 手順 5. で表示されるページには、コマンドレットのリリース日とリリース番号が記載されています。 SAP Note [1928533] または [2015553] に特に記載されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
+
+コンピューターにインストールされている Azure PowerShell コマンドレットのバージョンを確認するには、次の PowerShell コマンドを実行します。
 ```powershell
 Import-Module Azure
 (Get-Module Azure).Version
 ```
+結果は次のようになります。
 
-結果は[この][deployment-guide-figure-6]図のように表示されます。
-
-![Azure PS コマンドレットのバージョン チェックの結果][deployment-guide-figure-600]
+![Azure PowerShell コマンドレットのバージョン チェックの結果][deployment-guide-figure-600]
 <a name="figure-6"></a>
 
-デスクトップ/ラップトップにインストールされている Azure コマンドレットのバージョンが最新のバージョンの場合、Microsoft Web Platform Installer を起動した後の最初の画面は、[この][deployment-guide-figure-5]図で示される画面とは外観が若干異なります。
+コンピューターにインストールされている Azure コマンドレットのバージョンが最新バージョンの場合、インストール ウィザードの最初のページに示される製品タイトルの後に "**(インストール済み)**" と表示されます。 Azure PowerShell コマンドレットは最新の状態です。 インストール ウィザードを閉じるには、**[終了]** をクリックします。
 
-次の[図][deployment-guide-figure-7]の赤い円の部分に注意してください。
-
-![Azure PS コマンドレットの最新版がインストールされていることを示す Azure PowerShell コマンドレットのインストール画面][deployment-guide-figure-700]
+![Azure PowerShell コマンドレットの最新バージョンがインストールされていることを示す Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-700]
 <a name="figure-7"></a>
 
-画面が[上記][deployment-guide-figure-7]のように、最新版の Azure コマンドレットが既にインストールされていることを示す場合、インストールを続行する必要はありません。 この場合、この段階でインストールを「終了」することができます。
+### <a name="a-name1ded9453-1330-442a-86ea-e0fd8ae8cab3adeploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
+1.  [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
+2.  「**コマンドライン ツール**」の「**Azure コマンド ライン インターフェイス**」で、使用しているオペレーティング システムの**インストール** リンクをクリックします。
+3.  [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzureXPlatCLI.3f.3f.3fnew.exe) の **[実行]** を選択します。
+4.  Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
+5.  次のようなページが表示されます。
 
-### <a name="a-name1ded9453-1330-442a-86ea-e0fd8ae8cab3adeploying-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
-* <https://azure.microsoft.com/downloads/> に移動します。
-* 「コマンド ライン ツール」セクションには「Azure コマンド ライン インターフェイス」というセクションがあります。 使用しているオペレーティング システムのインストール リンクをクリックします。
+  ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
 
-Azure CLI が更新されているかどうかをこまめに確認してください。 通常、毎月の更新プログラムがあります。 これを行う最も簡単な方法は、前述のインストール手順を実行することです。
+6.  **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
+7.  Azure CLI がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
 
-次のコマンドを使用して、デスクトップ/ラップトップに現在インストールされている Azure CLI のバージョンを確認することができます。
+Azure CLI の更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。
 
+コンピューターにインストールされている Azure CLI のバージョンを確認するには、次のコマンドを実行します。
 ```
 azure --version
 ```
 
-結果は[この][deployment-guide-figure-azure-cli-version]図のように表示されます。
+結果は次のようになります。
 
 ![Azure CLI のバージョン チェックの結果][deployment-guide-figure-760]
 <a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
-### <a name="a-name31d9ecd6-b136-4c73-b61e-da4a29bbc9ccajoin-vm-into-on-premises-domain-windows-only"></a><a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>オンプレミス ドメインへの VM の参加 (Windows のみ)
-オンプレミスの AD および DNS が Azure に拡張されるクロスプレミス シナリオに SAP VM をデプロイする場合、VM がオンプレミス ドメインに参加している必要があります。 オンプレミス ドメインに VM を参加させるための詳細な手順と、オンプレミス ドメインのメンバーになるために必要な追加ソフトウェアは、ユーザーによって異なります。 通常、オンプレミス ドメインに VM を参加させるということは、マルウェア対策ソフトウェアや、バックアップまたは監視ソフトウェアのさまざまなエージェントなどの追加ソフトウェアをインストールすることを意味します。
+### <a name="a-name31d9ecd6-b136-4c73-b61e-da4a29bbc9ccajoin-a-vm-to-an-on-premises-domain-windows-only"></a><a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>オンプレミス ドメインへの VM の参加 (Windows のみ)
+オンプレミスの Active Directory と DNS が Azure に拡張されるクロスプレミス シナリオで SAP VM をデプロイする場合、VM がオンプレミス ドメインに参加している必要があります。 オンプレミス ドメインに VM を参加させるための詳細な手順と、オンプレミス ドメインのメンバーになるために必要な追加ソフトウェアは、お客様によって異なります。 通常、オンプレミス ドメインに VM を参加させるには、マルウェア対策ソフトウェアや、バックアップまたは監視ソフトウェアなどの追加ソフトウェアをインストールする必要があります。
 
-さらに、ゲスト VM の Windows ローカル システム アカウント (S-1-5-18) にもプロキシ設定が存在するドメインに参加すると、インターネット プロキシ設定が強制されるケースも確認する必要があります。 最も簡単なのは、ドメイン内のシステムに適用されるドメイン グループ ポリシーを使用してプロキシを強制することです。
+このシナリオでは、VM が環境内のドメインに参加したときにインターネット プロキシ設定が適用されている場合に、ゲスト VM の Windows ローカル システム アカウント (S-1-5-18) にも同じプロキシ設定が適用されていることを確認する必要があります。 最も簡単な方法は、ドメイン内のシステムに適用されるドメイン グループ ポリシーを使用してプロキシを適用することです。
 
-### <a name="a-namec7cbb0dc-52a4-49db-8e03-83e7edc2927dadownload-install-and-enable-azure-vm-agent"></a><a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Azure VM エージェントのダウンロード、インストール、有効化
-一般化されていない (たとえば、Windows に対して sysprep が実行されていない) OS イメージからデプロイされる仮想マシンの場合は、Azure VM エージェントを手動でダウンロードしてインストールし、有効にする必要があります。 
+### <a name="a-namec7cbb0dc-52a4-49db-8e03-83e7edc2927dadownload-install-and-enable-the-azure-vm-agent"></a><a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Azure VM エージェントのダウンロード、インストール、有効化
+汎用化されていない OS イメージ (Windows System Preparation (sysprep ) ツールで作成されていないイメージなど) からデプロイされた仮想マシンの場合、Azure VM エージェントを手動でダウンロードしてインストールし、有効にする必要があります。
 
-Azure Marketplace からデプロイされた仮想マシンの場合は、これらのイメージに Azure VM エージェントが既に含まれているため、この手順は必要ありません。
+Azure Marketplace から VM をデプロイした場合には、この手順は不要です。 Azure Marketplace のイメージには、Azure VM エージェントが既に含まれています。
 
 #### <a name="a-nameb2db5c9a-a076-42c6-9835-16945868e866awindows"></a><a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
-* Azure VM エージェントのダウンロード:
-  * Azure VM エージェント インストーラー パッケージを <https://go.microsoft.com/fwlink/?LinkId=394789> からダウンロードします。
-  * ラップトップまたはサーバーのローカルに VM エージェント MSI パッケージを保存します。
-* Azure VM エージェントのインストール:
-  * リモート デスクトップ (RDP) を使用して、デプロイした Azure VM に接続します。
-  * VM で Windows エクスプローラー ウィンドウを開き、VM エージェントの MSI ファイルがあるディレクトリを選びます。
-  * Azure VM エージェント インストーラー MSI ファイルをローカルのラップトップ/サーバーから、VM 内の VM エージェントのターゲット ディレクトリにドラッグ アンド ドロップします。
-  * VM 内で MSI ファイルをダブルクリックします。
-  * オンプレミス ドメインに参加している VM の場合、「[プロキシの構成][deployment-guide-configure-proxy]」の章の記載だけでなく、最終的なインターネット プロキシ設定を VM 内の Windows ローカル システム アカウント (S-1-5-18) に適用してください。 VM エージェントはこのコンテキストで実行されて、Azure に接続できる必要があります。
+1.  Azure VM エージェントのダウンロード:
+  1.  [Azure VM エージェント インストーラー パッケージ](https://go.microsoft.com/fwlink/?LinkId=394789)をダウンロードします。
+  2.  パーソナル コンピューターまたはサーバーで、VM エージェント MSI パッケージをローカルに保存します。
+2.  Azure VM エージェントのインストール:
+  1.  リモート デスクトップ プロトコル (RDP) を使用して、デプロイした Azure VM に接続します。
+  2.  VM で Windows エクスプローラー ウィンドウを開き、VM エージェントの MSI ファイルのターゲット ディレクトリを選択します。
+  3.  Azure VM エージェント インストーラー MSI ファイルを、ローカル コンピューター/サーバーから VM 上の VM エージェントのターゲット ディレクトリにドラッグします。
+  4.  VM 上の MSI ファイルをダブルクリックします。
+3.  オンプレミス ドメインに参加している VM の場合、「[プロキシの構成][deployment-guide-configure-proxy]」で説明するように、最終的なインターネット プロキシ設定が VM の Windows ローカル システム アカウント (S-1-5-18) にも適用されていることを確認します。 VM エージェントはこのコンテキストで実行されるので、Azure に接続できる必要があります。
 
-Azure VM エージェントの更新では、ユーザーが操作を行う必要はありません。 VM エージェントは自動的にそれ自体を更新し、VM の再起動を必要としません。
+Azure VM エージェントを更新する際にユーザーの操作は不要です。 VM エージェントは自動的に更新され、VM の再起動を必要としません。
 
 #### <a name="a-name6889ff12-eaaf-4f3c-97e1-7c9edc7f7542alinux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
-次のコマンドを使用して Linux の VM エージェントをインストールしてください。
+次のコマンドを使用して、Linux の VM エージェントをインストールします。
+
+* **SUSE Linux Enterprise Server (SLES)**
+
+  ```
+  sudo zypper install WALinuxAgent
+  ```
+
+* **Red Hat Enterprise Linux (RHEL)**
+
+  ```
+  sudo yum install WALinuxAgent
+  ```
+
+エージェントが既にインストールされている場合、Azure Linux エージェントを更新するには、[VM 上の Azure Linux エージェントを GitHub で最新バージョンに更新する方法][virtual-machines-linux-update-agent]に関する記事に記載されている手順を実行します。
+
+### <a name="a-namebaccae00-6f79-4307-ade4-40292ce4e02daconfigure-the-proxy"></a><a name="baccae00-6f79-4307-ade4-40292ce4e02d">プロキシの構成</a>
+プロキシを構成する手順は、Windows と Linux で異なります。
+
+#### <a name="windows"></a>Windows
+インターネットにアクセスするには、ローカル システム アカウントのプロキシ設定を適切に設定する必要があります。 プロキシ設定がグループ ポリシーで設定されていない場合は、ローカル システム アカウントのプロキシ設定を構成できます。
+
+1. **[スタート]** メニューで「**gpedit.msc**」と入力し、**Enter** キーを押します。
+2. **[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** を選択します。 **[コンピューター別にプロキシを設定する (ユーザー別ではなく)]** が無効になっているか、構成されていないことを確認します。
+3. **コントロール パネル**で、**[ネットワークと共有センター]** > **[インターネット オプション]** に移動します。
+4. **[接続]** タブの **[LAN の設定]** をクリックします。
+5. **[設定を自動的に検出する]** チェック ボックスをオフにします。
+6. **[LAN にプロキシ サーバーを使用する]** チェック ボックスをオンにし、プロキシのアドレストとポートを入力します。
+7. **[Advanced] (詳細設定) ** ボタンを選択します。
+8. **[例外]** ボックスに、IP アドレスとして「**168.63.129.16**」と入力します。 **[OK]**を選択します。
+
+#### <a name="linux"></a>Linux
+Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagent.conf) で適切なプロキシを構成します。
+
+次のパラメーターを設定します。
+
+1.  **HTTP プロキシ ホスト**。 たとえば、**proxy.corp.local** に設定します。
+  ```
+  HttpProxy.Host=<proxy host>
+
+  ```
+2.  **HTTP プロキシ ポート**。 たとえば、**80** に設定します。
+  ```
+  HttpProxy.Port=<port of the proxy host>
+
+  ```
+3.  エージェントを再起動します。
+
+  ```
+  sudo service waagent restart
+  ```
+
+\\etc\\waagent.conf のプロキシ設定は、必要な VM 拡張機能にも適用されます。 Azure リポジトリを使用する場合は、これらのリポジトリへのトラフィックがオンプレミスのイントラネットを経由しないようにしてください。 強制トンネリングを有効にするためにユーザー定義ルートを作成した場合は、サイト間 VPN 接続を介さずに、リポジトリへのトラフィックをインターネットに直接ルーティングするルートを追加する必要があります。
 
 * **SLES**
 
-```
-sudo zypper install WALinuxAgent
-```
+  \\etc\\regionserverclnt.cfg に示されている IP アドレスのルートも追加する必要があります。 次の図は例を示しています。
+
+  ![強制トンネリング][deployment-guide-figure-50]
+
+
 * **RHEL**
 
-```
-sudo yum install WALinuxAgent
-```
+  \\etc\\yum.repos.d\\rhui-load-balancers に示されているホストの IP アドレスのルートも追加する必要があります。 例については、前の図を参照してください。
 
-既にインストールされている Azure Linux エージェントを更新するには、[この記事][virtual-machines-linux-update-agent]の手順に従ってください。 
+ユーザー定義ルートの詳細については、[ユーザー定義ルートと IP 転送][virtual-networks-udr-overview]に関する記事をご覧ください。
 
-### <a name="a-namebaccae00-6f79-4307-ade4-40292ce4e02daconfigure-proxy"></a><a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>プロキシの構成
-プロキシを構成する手順は、Windows と Linux 間で異なります。
+### <a name="a-named98edcd3-f2a1-49f7-b26a-07448ceb60caaconfigure-the-azure-enhanced-monitoring-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Enhanced Monitoring Extension for SAP の構成
+[Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの説明に従って VM を準備すると、Azure VM エージェントが仮想マシンにインストールされます。 次に、Azure グローバル データセンターの Azure 拡張リポジトリで入手できる Azure Enhanced Monitoring Extension for SAP をデプロイします。 詳細については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide-9.1]に関する記事をご覧ください。
 
-#### <a name="windows"></a>Windows
-インターネットにアクセスするには、これらの設定がローカル システム アカウントでも有効である必要があります。 プロキシ設定がグループ ポリシーで設定されていない場合は、LocalSystem アカウントのプロキシ設定を構成できます。 次の手順に従います。
-
-1. gpedit.msc を開きます。
-2. [コンピューターの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer] の順に移動します。 ポリシー設定 [コンピューター別にプロキシを設定する (ユーザー別ではなく)] が [有効] に設定されていることを確認します。
-3. コントロール パネルを開き、[ネットワークとインターネット]、[インターネット オプション] の順にクリックします。
-4. [接続] タブを開き、[LAN の設定] をクリックします。
-5. [設定を自動的に検出する] を無効にします。
-6. [LAN にプロキシ サーバーを使用する] を有効にして、プロキシのアドレストとポートを入力します。
-7. [詳細設定] をクリックします
-8. IP アドレス 168.63.129.16 を例外の一覧に追加します
-
-#### <a name="linux"></a>Linux
-Microsoft Azure ゲスト エージェントの構成ファイル /etc/waagent.conf で適切なプロキシを構成します。 次のパラメーターを設定する必要があります。
-
-```
-HttpProxy.Host=<proxy host e.g. proxy.corp.local>
-HttpProxy.Port=<port of the proxy host e.g. 80>
-```
-
-構成を変更したら、次のコマンドを使用してエージェントを再起動します。
-
-```
-sudo service waagent restart
-```
-
-/etc/waagent.conf のプロキシ設定は、必要な VM 拡張機能にも適用されます。 Azure リポジトリを使用する場合は、これらのリポジトリへのトラフィックがオンプレミスのイントラネットを経由しないようにしてください。 ユーザー定義のルートを作成して強制トンネリングを有効にする場合は、サイト間接続を経由せず、直接インターネットにリポジトリへのトラフィックをルーティングするルートを追加してください。
-
-* **SLES** : /etc/regionserverclnt.cfg にリストされている IP アドレスのルートも追加する必要があります。 下記のスクリーンショットは例を示します。 
-* **RHEL** : /etc/yum.repos.d/rhui-load-balancers のリストにあるホストの IP アドレスのルートも追加する必要があります。 下記のスクリーンショットは例を示します。
-
-ユーザー定義のルートについて詳しくは、[この記事][virtual-networks-udr-overview]をご覧ください。
-
-![強制トンネリング][deployment-guide-figure-50]
-
-### <a name="a-named98edcd3-f2a1-49f7-b26a-07448ceb60caaconfigure-azure-enhanced-monitoring-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Enhanced Monitoring Extension for SAP の構成
-「[Microsoft Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]」の章の説明に従って VM を準備すると、Azure VM エージェントが仮想マシンにインストールされます。 次の重要な手順として、Microsoft Azure のグローバル データセンターの Azure 拡張リポジトリで入手できる Azure Enhanced Monitoring Extension for SAP をデプロイします。 詳細については、[計画/導入ガイド][planning-guide-9.1]を参照してください。 
-
-Azure PowerShell または Azure CLI を使用して、Azure Enhanced Monitoring Extension for SAP のインストールおよび構成を行うことができます。 Windows コンピューターを使用して Windows VM または Linux VM に拡張機能をインストールする場合、「[Azure PowerShell][deployment-guide-4.5.1]」の章を参照してください。 Linux デスクトップを使用して Linux VM に拡張機能をインストールする場合、[Azure CLI][deployment-guide-4.5.2] に関する章を参照してください。
+PowerShell または Azure CLI を使用して、Azure Enhanced Monitoring Extension for SAP のインストールと構成を行うことができます。 Windows コンピューターを使用して Windows VM または Linux VM に拡張機能をインストールする場合は、[Azure PowerShell][deployment-guide-4.5.1] に関するセクションをご覧ください。 Linux デスクトップを使用して Linux VM に拡張機能をインストールする場合は、[Azure CLI][deployment-guide-4.5.2] に関するセクションをご覧ください。
 
 #### <a name="a-name987cf279-d713-4b4c-8143-6b11589bb9d4aazure-powershell-for-linux-and-windows-vms"></a><a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Linux VM および Windows VM の Azure PowerShell
-Azure Enhanced Monitoring Extension for SAP をインストールするタスクを実行するには、次の手順を実行します。
+PowerShell を使用して Azure Enhanced Monitoring Extension for SAP をインストールするには、次の手順に従います。
 
-* 最新バージョンの Microsoft Azure PowerShell コマンドレットをインストールしていることを確認します。 このドキュメントの「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」の章を参照してください。  
-* 次の PowerShell コマンドレットを実行します。
-    使用可能な環境の一覧を表示するには、Get AzureRmEnvironment コマンドレットを実行します。 パブリック Azure を使用する場合、環境は AzureCloud を選択します。 中国で Azure を使用する場合、AzureChinaCloud を選択します。
+1. 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認します。 詳細については、「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」をご覧ください。  
+2. 次の PowerShell コマンドレットを実行します。
+    使用可能な環境の一覧を表示するには、`commandlet Get-AzureRmEnvironment` を実行します。 パブリック Azure を使用する場合、環境は **AzureCloud** になります。 中国での Azure を使用する場合は、**AzureChinaCloud** を選択します。
 
-```powershell
+    ```powershell
     $env = Get-AzureRmEnvironment -Name <name of the environment>
     Login-AzureRmAccount -Environment $env
     Set-AzureRmContext -SubscriptionName <subscription name>
 
     Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
-```
+    ```
 
-アカウント データと Azure の仮想マシンを指定すると、スクリプトによって必要な拡張機能をデプロイされて、必要な機能が有効になります。 これには数分かかる場合があります。
-Set-AzureRmVMAEMExtension について詳しくは、[この MSDN の記事][msdn-set-azurermvmaemextension]をお読みください。
+アカウント データを入力し、Azure 仮想マシンを特定すると、スクリプトによって必要な拡張機能がデプロイされ、必要な機能が有効化されます。 これには数分かかる場合があります。
+`Set-AzureRmVMAEMExtension` の詳細については、「[Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension]」をご覧ください。
 
-![SAP 固有の Azure のコマンドレット Set-AzureRmVMAEMExtension の正常実行の結果画面][deployment-guide-figure-900]
+![SAP 固有の Azure コマンドレット Set-AzureRmVMAEMExtension の正常な実行][deployment-guide-figure-900]
 
-Set-AzureRmVMAEMExtension の実行が成功すると、SAP のホスト監視機能の構成に必要なすべての手順が実行されます。 
+`Set-AzureRmVMAEMExtension` 構成スクリプトにより、SAP のホスト監視を構成するためのすべての手順が実行されます。
 
-スクリプトの出力は次のようになります。
+スクリプトの出力には次の情報が含まれています。
 
-* ベース VHD (オペレーティング システムを含む) と、VM にマウントされているその他のすべての VHD の監視構成が構成されたことの確認。
-* 次の&2; つのメッセージで、特定のストレージ アカウントのストレージ メトリックの構成が確認されます。 
-* 出力の&1; つの行には、監視構成の実際の更新状態が表示されます。
-* 別のメッセージでは、構成がデプロイまたは更新されたことが確認されます。
-* 出力の最後の行は、監視構成のテストが可能かどうかを示す情報です。
-* Azure Enhanced Monitoring のすべての手順が正常に実行されたこと、および Azure インフラストラクチャが必要なデータを提供することを確認するには、このドキュメントの「[Azure Enhanced Monitoring for SAP の適合性チェック][deployment-guide-5.1]」の章の説明に従って、Azure Enhanced Monitoring Extension for SAP の適合性チェックを実行してください。
-* この作業を続行する場合、Azure 診断が関連データを収集するまで 15 ~ 30 分かかります。
+* (OS を含む) ベース VHD と VM にマウントされているその他のすべての VHD の監視が構成されたことが確認されます。
+* 次の&2; つのメッセージで、特定のストレージ アカウントのストレージ メトリックの構成が確認されます。
+* 出力の&1; つの行に、監視構成の実際の更新の状態が示されます。
+* 出力の別の行で、構成がデプロイまたは更新されたことが確認されます。
+* 出力の最後の行は情報提供です。 この行には、監視構成をテストするためのオプションが示されます。
+* Azure Enhanced Monitoring のすべての手順が正常に実行されたことと、Azure インフラストラクチャから必要なデータが提供されていることを確認するには、「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」の説明に従って、Azure Enhanced Monitoring Extension for SAP の適合性チェックを実行します。
+* Azure 診断が関連データを収集するまで 15 ～ 30 分待ちます。
 
 #### <a name="a-name408f3779-f422-4413-82f8-c57a23b4fc2faazure-cli-for-linux-vms"></a><a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux VM 向け Azure CLI
-Azure Enhanced Monitoring Extension for SAP をインストールするタスクを実行するには、次の手順を実行します。
+Azure CLI を使用して Azure Enhanced Monitoring Extension for SAP をインストールするには、次の手順に従います。
 
-1. [こちらの記事][azure-cli]の説明に従って Azure CLI をインストールします。
-2. Azure のアカウントを使用してログインします。
-   
-    ```
-    azure login
-    ```
+1. 「[Azure CLI のインストール][azure-cli]」の説明に従って、Azure CLI をインストールします。
+2. Azure アカウントでサインインします。
+
+  ```
+  azure login
+  ```
+
 3. Azure Resource Manager モードに切り替えます。
-   
-    ```
-    azure config mode arm
-    ```
+
+  ```
+  azure config mode arm
+  ```
+
 4. Azure Enhanced Monitoring を有効にします。
-   
-    ```
-    azure vm enable-aem <resource-group-name> <vm-name>
-    ```  
-5. Azure Enhanced Monitoring が Azure Linux VM 上で有効になっていることを確認します。 /var/lib/AzureEnhancedMonitor/PerfCounters ファイルが存在することを確認します。 このファイルが存在する場合、次のコマンドを使用して、AEM により収集された情報を表示します。
-   
-    ```
-    cat /var/lib/AzureEnhancedMonitor/PerfCounters
-    ```
-    次のような出力が表示されます。
-   
-    ```
-    2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-    2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-    …
-    …
-    ```
 
-## <a name="a-name564adb4f-5c95-4041-9616-6635e83a810bachecks-and-troubleshooting-for-end-to-end-monitoring-setup-for-sap-on-azure"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Azure 上の SAP のエンド ツー エンド監視設定の確認とトラブルシューティング
-Azure VM を配置し、関連する Azure 監視インフラストラクチャを設定した後は、Azure Enhanced Monitoring のすべてのコンポーネントが適切に機能しているかどうかを確認します。 
+  ```
+  azure vm enable-aem <resource-group-name> <vm-name>
+  ```
 
-したがって、「[Azure Enhanced Monitoring for SAP の適合性チェック][deployment-guide-5.1]」の章の説明に従って、Azure Enhanced Monitoring Extension for SAP の適合性チェックを実行します。 このチェックの結果が良好で、すべての関連するパフォーマンス カウンターを取得する場合、Azure の監視が正常に設定されています。 この場合は、このドキュメントの「[SAP リソース][deployment-guide-2.2]」の章に示されている SAP ノートの説明に従って、SAP Host Agent のインストールに進みます。 適合性チェックの結果が、カウンターが見つからないことを示す場合、「[Azure 監視インフラストラクチャ構成のヘルス チェック][deployment-guide-5.2]」の章の説明に従って、Azure 監視インフラストラクチャのヘルス チェックを実行します。 Azure 監視設定に問題が発生した場合、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」の章で、トラブルシューティングに関するヘルプを参照します。
+5. Azure Linux VM 上で Azure Enhanced Monitoring Extension がアクティブであることを確認します。 \\var\\lib\\AzureEnhancedMonitor\\PerfCounters ファイルが存在するかどうかを確認します。 このファイルが存在する場合は、コマンド プロンプトで次のコマンドを実行して、Azure Enhanced Monitor によって収集された情報を表示します。
+```
+cat /var/lib/AzureEnhancedMonitor/PerfCounters
+```
 
-### <a name="a-namebb61ce92-8c5c-461f-8c53-39f5e5ed91f2areadiness-check-for-azure-enhanced-monitoring-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Azure Enhanced Monitoring for SAP の適合性チェック
-このチェックを実行して、SAP アプリケーション内に表示されるメトリックが、基になる Azure 監視インフラストラクチャによって完全に指定されていることを確認します。 
+出力は次のようになります。
+```
+2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+…
+…
+```
 
-#### <a name="execute-the-readiness-check-on-a-windows-vm"></a>Windows VM での適合性チェックの実行
-適合性チェックを実行するには、Azure 仮想マシンにログオンし (管理者アカウントは必要ありません)、次の手順を実行します。
+## <a name="a-name564adb4f-5c95-4041-9616-6635e83a810bachecks-and-troubleshooting-for-end-to-end-monitoring"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>エンド ツー エンド監視の確認とトラブルシューティング
+Azure VM をデプロイし、関連する Azure 監視インフラストラクチャを設定したら、Azure Enhanced Monitoring Extension のすべてのコンポーネントが予想どおりに機能しているかどうかを確認します。
 
-* Windows コマンド プロンプトを開き、Azure Monitoring Extension for SAP のインストール フォルダー C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\`<version`>\drop に移動します。
+「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」の説明に従って、Azure Enhanced Monitoring Extension for SAP の適合性チェックを実行します。 適合性チェックのすべての結果が良好であり、関連するすべてのパフォーマンス カウンターに "OK" と表示されていれば、Azure 監視が正常に設定されています。 この場合、「[SAP リソース][deployment-guide-2.2]」に示されている SAP Note に記載された SAP Host Agent のインストールに進むことができます。 適合性チェックの結果に、カウンターが見つからないことが示されている場合は、「[Azure 監視インフラストラクチャ構成の正常性チェック][deployment-guide-5.2]」の説明に従って、Azure 監視インフラストラクチャの正常性チェックを実行します。 トラブルシューティングの方法については、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
-上記の監視の拡張機能のパスに含まれるバージョン部分は異なる場合があります。 インストール フォルダーに監視の拡張機能のバージョンのフォルダーが複数表示される場合、Windows サービス「AzureEnhancedMonitoring」の構成を確認し、「実行ファイルのパス」に表示されているフォルダーに切り替えます。
+### <a name="a-namebb61ce92-8c5c-461f-8c53-39f5e5ed91f2areadiness-check-for-the-azure-enhanced-monitoring-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Azure Enhanced Monitoring Extension for SAP の適合性チェック
+このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure 監視インフラストラクチャによって提供されていることを確認します。
 
-![Azure Enhanced Monitoring Extension for SAP を実行しているサービスのプロパティ][deployment-guide-figure-1000]
+#### <a name="run-the-readiness-check-on-a-windows-vm"></a>Windows VM での適合性チェックの実行
 
-* パラメーターを指定せずにコマンド ウィンドウで azperflib.exe を実行します。
+1.  Azure 仮想マシンにサインインします (管理者アカウントを使用する必要はありません)。
+2.  コマンド プロンプト ウィンドウを開きます。
+3.  コマンド プロンプトで、ディレクトリを Azure Enhanced Monitoring Extension for SAP のインストール フォルダー (C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;バージョン>\\drop) に変更します。
 
-> [!NOTE]
-> azperflib.exe はループで実行されて、収集したカウンターを 60 秒ごとに更新します。 ループを終了するには、コマンド ウィンドウを閉じます。
-> 
-> 
+  監視の拡張機能のパスに含まれる "*バージョン*" が異なる場合があります。 インストール フォルダーに監視の拡張機能の複数のバージョンのフォルダーがある場合は、AzureEnhancedMonitoring Windows サービスの構成を確認し、*[実行可能ファイルへのパス]* に示されているフォルダーに切り替えます。
 
-Azure Enhanced Monitoring Extension がインストールされていない場合、または「AzureEnhancedMonitoring」サービスが実行されていない場合は、拡張機能が正しく構成されていません。 この場合は、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」の章で説明されている拡張機能を再デプロイするための詳しい手順に従ってください。
+  ![Azure Enhanced Monitoring Extension for SAP を実行しているサービスのプロパティ][deployment-guide-figure-1000]
+
+4.  コマンド プロンプトで、パラメーターを指定せずに **azperflib.exe** を実行します。
+
+  > [!NOTE]
+  > azperflib.exe はループで実行され、収集したカウンターを 60 秒ごとに更新します。 ループを終了するには、コマンド プロンプト ウィンドウを閉じます。
+  >
+  >
+
+Azure Enhanced Monitoring Extension がインストールされていない場合や、AzureEnhancedMonitoring サービスが実行されていない場合は、拡張機能が正しく構成されていません。 拡張機能をデプロイする方法の詳細については、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
 ##### <a name="check-the-output-of-azperflibexe"></a>azperflib.exe の出力の確認
-azperflib.exe の出力では、SAP 用に設定されたすべての Azure パフォーマンス カウンターが表示されます。 収集されたカウンターの一覧の下部には、Azure 監視の状態を示すヘルス インジケーターと概要が表示されます。 
+azperflib.exe の出力には、SAP 用に設定されたすべての Azure パフォーマンス カウンターが表示されます。 収集されたカウンターのリストの下部に表示される概要と正常性インジケーターは、Azure 監視の状態を示しています。
 
-![azperflib.exe の実行によるヘルス チェックの、問題がないことを示す出力][deployment-guide-figure-1100]
+![azperflib.exe の実行による正常性チェックの、問題がないことを示す出力][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
-空としてレポートされる「カウンター合計」の数の出力に返された結果と、[上記][deployment-guide-figure-11]の図の上部に示される「ヘルス チェック」の結果を確認します。
+上記の図に示されている **Counters total** の返された結果 ("empty" と報告されているもの) と、**Health status** の返された結果を確認します。
 
-結果の値は次のように解釈できます。
+結果の値は次のように解釈します。
 
 | azperflib.exe の結果の値 | Azure 監視の正常性状態 |
 | --- | --- |
-| **API Calls - not available (API 呼び出し － 使用不可)** | 利用できないカウンターは、仮想マシンの構成やエラーに適用できません - 正常性状態を参照 | 
-| **カウンター合計: 空** |次の 2 つの Azure ストレージ カウンターは空である場合があります:  <ul><li>Storage Read Op Latency Server msec</li><li>Storage Read Op Latency E2E msec</li></ul>他のすべてのカウンターには値が含まれている必要があります。 |
-| **ヘルス チェック** |返されたステータスが [OK] の場合のみ、[OK] と表示されます。 |
-| **診断** |正常性状態に関する詳細情報 |
+| **API Calls - not available (API 呼び出し － 使用不可)** | "not available" であるカウンターは、仮想マシン構成に適用できないか、エラーであると考えられます。 「**Health status**」を参照してください。 |
+| **Counters total - empty** |次の&2; つの Azure Storage カウンターは空の場合があります。 <ul><li>Storage Read Op Latency Server msec</li><li>Storage Read Op Latency E2E msec</li></ul>他のすべてのカウンターには値が含まれている必要があります。 |
+| **Health status** |リターン状態が **OK** の場合にのみ、"OK" と表示されます。 |
+| **診断** |正常性状態に関する詳細情報。 |
 
-ヘルス チェックの値が [OK] でない場合は、「[Azure 監視インフラストラクチャ構成のヘルス チェック][deployment-guide-5.2]」の章で説明されている Azure 監視インフラストラクチャ構成のヘルス チェックの手順に従います。
+**Health status** の値が **OK** でない場合は、「[Azure 監視インフラストラクチャ構成の正常性チェック][deployment-guide-5.2]」の手順に従います。
 
-#### <a name="execute-the-readiness-check-on-a-linux-vm"></a>Linux VM での適合性チェックの実行
-適合性チェックを実行するには、SSH を使用して Azure 仮想マシンにログオンし、次の手順を実行します。
+#### <a name="run-the-readiness-check-on-a-linux-vm"></a>Linux VM での適合性チェックの実行
 
-* Azure Enhanced Monitoring Extension の出力を確認します。
-  * more /var/lib/AzureEnhancedMonitor/PerfCounters
-    * パフォーマンス カウンターの一覧が表示されます。 ファイルが空であってはなりません。
-  * cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error
-    * エラーがない 1 行が返されます (例: 3;config;Error;;0;0;**none**;0;1456416792;tst-servercs;)。
-  * more /var/lib/AzureEnhancedMonitor/LatestErrorRecord
-    * 空であるか、存在しない必要があります。
-* 上記の最初のチェックが正常に実行されなかった場合は、次の追加テストを実行します。
-  * waagent がインストールおよび開始されていることを確認します。
-    * sudo ls -al /var/lib/waagent/
-      * waagent ディレクトリの内容が一覧表示されます。
-    * ps -ax | grep waagent
-      * 「python /usr/sbin/waagent -daemon」のようなエントリが&1; つ表示されます。
-  * Linux Diagnostic Extension がインストールおよび開始されていることを確認します。
-    * sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-*'
-      * Linux Diagnostic Extension ディレクトリの内容が一覧表示されます。
-    * ps -ax | grep diagnostic
-      * 「python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon」のようなエントリが&1; つ表示されます。
-  * Azure Enhanced Monitoring Extension がインストールおよび開始されていることを確認します。
-    * sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'
-      * Azure Enhanced Monitoring Extension ディレクトリの内容が一覧表示されます。
-    * ps -ax | grep AzureEnhanced
-      * 「python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon」のようなエントリが&1; つ表示されます。
-* SAP ノート [1031096] の説明に従って SAP Host Agent をインストールし、saposcol の出力を確認します。
-  * /usr/sap/hostctrl/exe/saposcol -d を実行します。
-  * dump ccm を実行します。
-  * メトリック「Virtualization_Configuration\Enhanced Monitoring Access」が true であるかどうかを確認します。
-* 既にインストールされている SAP NetWeaver ABAP アプリケーション サーバーがある場合は、トランザクション ST06 を開き、Enhanced Monitoring が有効になっているかどうかを確認します。
+1.  SSH を使用して Azure 仮想マシンに接続します。
 
-上記のチェックのいずれかが失敗した場合は、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」の章で説明されている拡張機能を再デプロイするための詳細な手順に従ってください。
+2.  Azure Enhanced Monitoring Extension の出力を確認します。
 
-### <a name="a-namee2d592ff-b4ea-4a53-a91a-e5521edb6cd1ahealth-check-for-azure-monitoring-infrastructure-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure 監視インフラストラクチャ構成のヘルス チェック
-一部の監視データが前述の「[Azure Enhanced Monitoring for SAP の適合性チェック][deployment-guide-5.1]」のテストで示されるとおりに正しく配信されない場合、Test-AzureRmVMAEMExtension コマンドレットを実行し、Azure 監視インフラストラクチャおよび Monitoring Extension for SAP の現在の構成が正しいかどうかをテストします。
+  a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
 
-監視構成をテストするには、次のシーケンスを実行します。
+   **予想される結果**: パフォーマンス カウンターのリストが返されます。 ファイルを空にすることはできません。
 
-* このドキュメントの「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」の章の説明に従って Microsoft Azure PowerShell の最新バージョンをインストールしていることを確認します。
-* 次の PowerShell コマンドレットを実行します。 使用可能な環境の一覧を表示するには、Get AzureRmEnvironment コマンドレットを実行します。 パブリック Azure を使用する場合、環境は AzureCloud を選択します。 中国で Azure を使用する場合、AzureChinaCloud を選択します。
+ b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` を実行します。
 
-```powershell
-$env = Get-AzureRmEnvironment -Name <name of the environment>
-Login-AzureRmAccount -Environment $env
-Set-AzureRmContext -SubscriptionName <subscription name>
-Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
-```
+   **予想される結果**: エラーが **none** である&1; 行が返されます (例: **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**)。
 
-* アカウント データと Azure 仮想マシンを指定すると、選択した仮想マシンの構成がスクリプトによってテストされます。
+  c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` を実行します。
 
-![SAP 固有の Azure コマンドレット Test-VMConfigForSAP_GUI の入力画面][deployment-guide-figure-1200]
+    **予想される結果**: 空または存在しないことを示す結果が返されます。
 
-アカウントと Azure 仮想マシンの情報を入力すると、選択した仮想マシンの構成がスクリプトによってテストされます。
+前のチェックが失敗した場合は、次の追加チェックを実行します。
 
-![SAP 用 Azure 監視インフラストラクチャのテスト成功の出力][deployment-guide-figure-1300]
+1.  waagent がインストールされ、有効になっていることを確認します。
 
-すべてのチェックが OK とマークされていることを確認します。 一部のチェックが OK でない場合、このドキュメントの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章で説明されている更新コマンドレットを実行してください。 15 分間待ってから、「[Azure Enhanced Monitoring for SAP の適合性チェック][deployment-guide-5.1]」と「[Azure 監視インフラストラクチャ構成のヘルス チェック][deployment-guide-5.2]」の章の説明に従って、もう一度チェックを実行します。 チェックで一部またはすべてのカウンターの問題が見つかった場合、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」の章に進みます。
+  a.  `sudo ls -al /var/lib/waagent/` を実行します。
 
-### <a name="a-namefe25a7da-4e4e-4388-8907-8abc2d33cfd8afurther-troubleshooting-of-azure-monitoring-infrastructure-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>SAP 用 Azure 監視インフラストラクチャのトラブルシューティング
-#### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターがまったく表示されない
-Azure のパフォーマンス メトリックの収集は、Windows サービス「AzureEnhancedMonitoring」によって行われます。 サービスが正しくインストールされていない場合、または VM で実行されていない場合は、パフォーマンス メトリックをまったく収集できません。
+      **予想される結果**: waagent ディレクトリの内容が表示されます。
+
+  b.  `ps -ax | grep waagent` を実行します。
+
+   **予想される結果**: `python /usr/sbin/waagent -daemon` のようなエントリが&1; つ表示されます。
+
+2. Linux Diagnostic Extension がインストールされ、有効になっていることを確認します。
+
+  a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-'` を実行します。
+
+   **予想される結果**: Linux Diagnostic Extension ディレクトリの内容が表示されます。
+
+ b. `ps -ax | grep diagnostic` を実行します。
+
+   **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon` のようなエントリが&1; つ表示されます。
+
+3.   Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
+
+  a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-/'` を実行します。
+
+    **予想される結果**: Azure Enhanced Monitoring Extension ディレクトリの内容が表示されます。
+
+  b. `ps -ax | grep AzureEnhanced` を実行します。
+
+     **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon` のようなエントリが&1; つ表示されます。
+
+3. SAP Note [1031096] の説明に従って SAP Host Agent をインストールし、`saposcol` の出力を確認します。
+
+  a.  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
+
+  b.  `dump ccm` を実行します。
+
+  c.  **Virtualization_Configuration\Enhanced Monitoring Access** メトリックが **true** であるかどうかを確認します。
+
+SAP NetWeaver ABAP アプリケーション サーバーが既にインストールされている場合は、トランザクション ST06 を開き、Enhanced Monitoring が有効になっているかどうかを確認します。
+
+上記のチェックのいずれかが失敗した場合、拡張機能を再デプロイする方法の詳細については、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
+
+### <a name="a-namee2d592ff-b4ea-4a53-a91a-e5521edb6cd1ahealth-check-for-the-azure-monitoring-infrastructure-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure 監視インフラストラクチャ構成の正常性チェック
+一部の監視データが「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzureRmVMAEMExtension` コマンドレットを実行して、Azure 監視インフラストラクチャと Monitoring Extension for SAP が正しく構成されているかどうかを確認します。
+
+1.  「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
+2.  次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzureRmEnvironment` コマンドレットを実行します。 パブリック Azure を使用する場合は、**AzureCloud** 環境を選択します。 中国での Azure を使用する場合は、**AzureChinaCloud** を選択します。
+  ```powershell
+  $env = Get-AzureRmEnvironment -Name <name of the environment>
+  Login-AzureRmAccount -Environment $env
+  Set-AzureRmContext -SubscriptionName <subscription name>
+  Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+  ```
+
+3.  アカウント データを入力し、Azure 仮想マシンを特定します。
+
+  ![SAP 固有の Azure コマンドレット Test-VMConfigForSAP_GUI の入力ページ][deployment-guide-figure-1200]
+
+4. 選択した仮想マシンの構成がスクリプトによってテストされます。
+
+  ![SAP 用 Azure 監視インフラストラクチャの成功したテストの出力][deployment-guide-figure-1300]
+
+正常性チェックのすべての結果が **OK** であることを確認します。 一部のチェックで **OK** と表示されていない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」で説明した更新コマンドレットを実行します。 15 分待ってから、「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」と「[Azure 監視インフラストラクチャ構成の正常性チェック][deployment-guide-5.2]」で説明したチェックをもう一度実行します。 チェックで一部またはすべてのカウンターの問題が引き続き見つかった場合は、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
+
+### <a name="a-namefe25a7da-4e4e-4388-8907-8abc2d33cfd8atroubleshooting-the-azure-monitoring-infrastructure-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>SAP 用 Azure 監視インフラストラクチャのトラブルシューティング
+
+#### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
+Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 サービスが正しくインストールされていない場合、または VM で実行されていない場合は、パフォーマンス メトリックを収集できません。
 
 ##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Azure Enhanced Monitoring Extension のインストール ディレクトリが空である
+
 ###### <a name="issue"></a>問題
-インストール ディレクトリ C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\`<version`>\drop が空です。
+インストール ディレクトリ C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;バージョン>\\drop が空です。
 
 ###### <a name="solution"></a>解決策
-拡張機能がインストールされていません。 プロキシの問題 (前述) かどうかを確認してください。 コンピューターの再起動か構成スクリプト Set-AzureRmVMAEMExtension の再実行またはその両方を実行する必要があります。
+拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Azure Enhanced Monitoring のサービスが存在しない
+
 ###### <a name="issue"></a>問題
-Windows サービス「AzureEnhancedMonitoring」が存在しません。 azperflib.exe: azperlib.exe の出力には、[次の図][deployment-guide-figure-14]のようなエラーが返されます。
+AzureEnhancedMonitoring Windows サービスが存在しません。
+
+azperflib.exe の出力で次のエラーがスローされます。
 
 ![Azure Enhanced Monitoring Extension for SAP のサービスが実行されていないことを示す azperflib.exe の実行][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>解決策
-[上の図][deployment-guide-figure-14]で示されるようにサービスが存在しない場合、Azure Monitoring Extension for SAP が正しくインストールされていません。 「[Microsoft Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]」の章のデプロイ シナリオで説明されている手順に従って、拡張機能を再デプロイします。 
+サービスが存在しない場合、Azure Enhanced Monitoring Extension for SAP が正しくインストールされていません。 [Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの該当するデプロイ シナリオの手順に従って、拡張機能を再デプロイします。
 
-拡張機能のデプロイ後、Azure パフォーマンス カウンターが 1 時間後に Azure VM 内で提供されるかどうかをもう一度確認します。
+拡張機能をデプロイしたら、Azure VM 内で Azure パフォーマンス カウンターが提供されているかどうかを&1; 時間後にもう一度確認します。
 
 ##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Azure Enhanced Monitoring のサービスは存在するが、起動に失敗する
+
 ###### <a name="issue"></a>問題
-Windows サービス「AzureEnhancedMonitoring」が存在し、有効になっていても、起動に失敗します。 詳細については、アプリケーション イベント ログを確認します。
+AzureEnhancedMonitoring Windows サービスが存在し、有効になっていますが、起動に失敗します。 詳細については、アプリケーション イベント ログを確認してください。
 
 ###### <a name="solution"></a>解決策
-構成が不適切です。 「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、VM の監視の拡張機能を再度有効にします。
+構成が正しくありません。 「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って、VM の監視の拡張機能を再起動します。
 
 #### <a name="windowslogowindows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
-Azure のパフォーマンス メトリックの収集は、複数のソースからデータを取得するWindows サービス「AzureEnhancedMonitoring」によって行われます。 構成データの一部がローカルで収集されて、パフォーマンス メトリックが Azure 診断から読み取られ、ストレージ カウンターがストレージ サブスクリプション レベルでログ記録から使用されます。
+Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 このサービスは、複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure 診断から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログ記録から使用されます。
 
-SAP ノート [1999351] を使用したトラブルシューティングで問題が解決しない場合、構成スクリプト Set-AzureRmVMAEMExtension を再実行してください。 ストレージ分析または診断カウンターは、有効になった直後には作成されない場合があるため、1 時間待機しなくてはならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
+SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターがまったく表示されない
-Azure のパフォーマンス メトリックの収集は、デーモンによって行われます。 デーモンが実行されていない場合、パフォーマンス メトリックがまったく収集されません。
+#### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
+Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
 ##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>Azure Enhanced Monitoring Extension のインストール ディレクトリが空である
+
 ###### <a name="issue"></a>問題
-ディレクトリ /var/lib/waagent/ に Azure Enhanced Monitoring Extension のサブディレクトリがありません。
+\\var\\lib\\waagent\\ ディレクトリに Azure Enhanced Monitoring Extension のサブディレクトリがありません。
 
 ###### <a name="solution"></a>解決策
-拡張機能がインストールされていません。 プロキシの問題 (前述) かどうかを確認してください。 コンピューターの再起動か構成スクリプト Set-AzureRmVMAEMExtension の再実行またはその両方を実行する必要があります。
+拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
-Azure のパフォーマンス メトリックの収集は、複数のソースからデータを取得するデーモンによって行われます。 構成データの一部がローカルで収集されて、パフォーマンス メトリックが Azure 診断から読み取られ、ストレージ カウンターがストレージ サブスクリプション レベルでログ記録から使用されます。
+Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure 診断から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログから使用されます。
 
-既知の問題に関する完全な最新の一覧については、Enhanced Azure Monitoring for SAP に関するその他のトラブルシューティング情報が記載されている SAP ノート [1999351] を参照してください。
+既知の問題の最新のリストについては、SAP Note [1999351] を参照してください。この SAP Note には、Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 
-SAP ノート [1999351] を使用したトラブルシューティングで問題が解決しない場合、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、構成スクリプト Set-AzureRmVMAEMExtension を再実行してください。 ストレージ分析または診断カウンターは、有効になった直後には作成されない場合があるため、1 時間待機しなくてはならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
-
-
+SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO3-->
 
 
