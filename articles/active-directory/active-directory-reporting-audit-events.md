@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6950072b8970dfc1b80674efe0be6cb7496fd5ce
 ms.openlocfilehash: 2dda60160bbcaa729bc8e5cec4f47efc10d120cf
