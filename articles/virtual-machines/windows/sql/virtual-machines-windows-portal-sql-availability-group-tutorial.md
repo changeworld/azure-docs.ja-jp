@@ -14,7 +14,7 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2016
+ms.date: 01/10/2017
 ms.author: mikeray
 translationtype: Human Translation
 ms.sourcegitcommit: 5e41a20f563eab6b236eaa6eaf0ce1d20ebfa493

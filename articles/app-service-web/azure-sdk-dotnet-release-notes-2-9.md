@@ -3,8 +3,7 @@ title: "Azure SDK for .NET 2.9 リリース ノート"
 description: "Azure SDK for .NET 2.9 リリース ノート"
 services: app-service\web
 documentationcenter: .net
-author: Juliako
-manager: erikre
+author: chrissfanos
 editor: 
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
@@ -12,7 +11,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 11/16/2016
+ms.date: 02/24/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
 ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
