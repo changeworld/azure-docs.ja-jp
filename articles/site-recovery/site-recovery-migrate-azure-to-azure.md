@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 892c42cf28ef1861f9422c8bcabcbc229c6033b0
-ms.openlocfilehash: 794cfa21f46981c031217687f591c35a4706ae8b
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 501e5e8501c6106ba2e51b3523332fd224a5a142
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -46,13 +47,8 @@ Azure Site Recovery へようこそ。 この記事は、Azure VM を Azure リ�
 4. [レプリケーション設定をセットアップします](site-recovery-vmware-to-azure.md#set-up-replication-settings)。 レプリケーション ポリシーを作成し、構成サーバーに割り当てます。
 5. [モビリティ サービスをインストールします](site-recovery-vmware-to-azure.md#prepare-vms-for-replication)。 保護する各 VM には、モビリティ サービスがインストールされている必要があります。 このサービスは、プロセス サーバーにデータを送信します。 モビリティ サービスは、手動でインストールまたはプッシュすることができ、VM の保護が有効になっている場合はプロセス サーバーによって自動的にインストールされます。 移行する VM のファイアウォール規則を、このサービスのプッシュ インストールを許可するように構成する必要があります。
 6. [レプリケーションを有効にします](site-recovery-vmware-to-azure.md#enable-replication)。 移行する VM のレプリケーションを有効にします。 仮想マシンのプライベート IP アドレスを使用して、Azure に移行する IaaS 仮想マシンを検出できます。 このアドレスは、Azure の仮想マシン ダッシュボードにあります。 レプリケーションを有効にするときに、VM のマシンの種類を物理コンピューターとして設定します。
-7. [ 計画されていないフェールオーバーを実行します](site-recovery-failover.md#run-an-unplanned-failover)。 初期レプリケーションが完了したら、Azure リージョン間で計画されていないフェールオーバーを実行できます。 必要に応じて、復旧計画を作成し、計画されていないフェールオーバーを実行して、複数の仮想マシンをリージョン間で移行できます。 [こちら](site-recovery-create-recovery-plans.md) をご覧ください。
+7. [ 計画されていないフェールオーバーを実行します](site-recovery-failover.md)。 初期レプリケーションが完了したら、Azure リージョン間で計画されていないフェールオーバーを実行できます。 必要に応じて、復旧計画を作成し、計画されていないフェールオーバーを実行して、複数の仮想マシンをリージョン間で移行できます。 [こちら](site-recovery-create-recovery-plans.md) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 その他のレプリケーション シナリオの詳細については、 [Azure Site Recovery の概要](site-recovery-overview.md)
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

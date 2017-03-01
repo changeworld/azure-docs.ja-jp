@@ -4,7 +4,7 @@ description: "名前などのユーザー プロファイル情報を通知に�
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 51007089-156a-4bac-bb1b-a590633bf2a2
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6debaa3a27cfc2a24d23a9c586fce9962bd9605
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: f27ed36eddddfab1de424574b0cf8e9ef04a162d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -78,10 +79,5 @@ ms.openlocfilehash: b6debaa3a27cfc2a24d23a9c586fce9962bd9605
 [3]: ./media/mobile-engagement-send-personalized-notifications/app-info-user-name.png
 [4]: ./media/mobile-engagement-send-personalized-notifications/personal-notification.png
 [5]: ./media/mobile-engagement-send-personalized-notifications/notification.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

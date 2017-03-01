@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/31/2017
+ms.date: 2/23/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 47d5a9173d8791124a3071b090d6db027dba9448
-ms.openlocfilehash: c070fa326688d94ce2cbf4e0471c4afc9d78c93c
+ms.sourcegitcommit: 244471c5e90a0e2d89c34b255f2da077a94f91cf
+ms.openlocfilehash: 1e87486dc7a186c0ab7147719ac47177c87be148
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -50,35 +51,6 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ###### <a name="october-23-2016"></a>**2016 年 10 月 23 日**
 Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付きで OS ファミリ 5 としてリリースされる予定です。
 
-###### <a name="september-13-2016"></a>**2016 年 9 月 13 日**
-9 月のゲスト OS ロールアウトは、2016 年 9 月 13 日に開始し、2016 年 10 月 13 日にリリースされる予定です。
-
-###### <a name="august-9-2016"></a>**2016 年 8 月 9 日**
-8 月のゲスト OS ロールアウトは、2016 年 8 月 9 日に開始し、2016 年 9 月 8 日にリリースされる予定です。 
-
-###### <a name="july-13-2016"></a>**2016 年 7 月 13 日**
-7 月のゲスト OS ロールアウトは、2016 年 7 月 13 日に開始し、2016 年 8 月 12 日にリリースされる予定です。 
-
-###### <a name="june-15-2016"></a>**2016 年 6 月 15 日**
-6 月のゲスト OS ロールアウトは、2016 年 6 月 15 日に開始し、2016 年 7 月 14 日にリリースされる予定です。 
-
-###### <a name="may-17-2016"></a>**2016 年 5 月 17 日**
-5 月のゲスト OS ロールアウトは、2016 年 5 月 17 日に開始され、2016 年 6 月 10 日にリリースされる予定です。 
-
-###### <a name="april-18-2016"></a>**2016 年 4 月 18 日**
-4 月のゲスト OS ロールアウトは、2016 年 4 月 18 日に開始し、2016 年 5 月 12 日にリリースされる予定です。 
-
-###### <a name="march-14-2016"></a>**2016 年 3 月 14 日**
-3 月のゲスト OS ロールアウトは、2016 年 3 月 14 日に開始し、2016 年 4 月 8 日にリリースされる予定です。 
-
-###### <a name="february-22-2016"></a>**2016 年 2 月 22 日**
-2 月のゲスト OS ロールアウトは、2016 年 2 月 22 日に開始し、2016 年 3 月 9 日にリリースされる予定です。
-
-###### <a name="january-18-2016"></a>**2016 年 1 月 18 日**
-1 月のゲスト OS ロールアウトは、2016 年 1 月 18 日に開始し、2016 年 2 月 12 日にリリースされる予定です。
-
-###### <a name="january-4-2016"></a>**2016 年 1 月 4 日**
-2016 年 1 月 4 日に、11 月の 201511-02 ゲスト OS がデプロイ用にリリースされました。 この OS バージョンは自動更新の既定 OS には設定されていないため、11 月の 201511-02 OS バージョンへのゲスト OS のデプロイのプロビジョニングには、若干時間がかかる可能性があります。 
 
 ## <a name="releases"></a>リリース
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
@@ -251,10 +223,5 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

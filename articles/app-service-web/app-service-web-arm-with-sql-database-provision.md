@@ -4,7 +4,7 @@ description: "SQL Database を含む Web アプリをデプロイするには、
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb9648e1-9bf2-4537-bc4a-ab8d4953168c
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 198670eed5c45a81ab6f7e943701c361ab29bd1f
-ms.openlocfilehash: 138cf43bf72844c7b36cd9d220ea741f299e4891
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -457,7 +458,7 @@ ms.openlocfilehash: 138cf43bf72844c7b36cd9d220ea741f299e4891
     azure config mode arm
     azure group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
@@ -465,9 +466,4 @@ ms.openlocfilehash: 138cf43bf72844c7b36cd9d220ea741f299e4891
 > パラメーター JSON ファイルの内容については、[azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json) をご覧ください。
 >
 >
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

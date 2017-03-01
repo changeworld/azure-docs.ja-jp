@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 1887b777fbe113d59cffb6ba5409e33ca1380880
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -92,13 +93,8 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 | imageVersion |選択した SKU のイメージのバージョンを指定します |
 
 ## <a name="create-the-policy"></a>ポリシーの作成
-ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
+ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md)の詳細を参照できます。
 
 ## <a name="apply-the-policy"></a>ポリシーの適用
-ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)の詳細を参照できます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 [ポリシーの作成と割り当て](../azure-resource-manager/resource-manager-policy.md)の詳細を参照できます。
 

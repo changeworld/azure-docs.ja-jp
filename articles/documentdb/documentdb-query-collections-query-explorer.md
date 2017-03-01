@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
-ms.openlocfilehash: dcf61a8875793bb9e5ed4eda51f9da14366a4fba
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: c4c2cd8ddcb541b2619f7e1b140222899f15f87c
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/15/2017
 ![クエリ エクスプローラーのクエリ エラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
 ## <a name="run-documentdb-sql-queries-outside-the-portal"></a>ポータル以外で DocumentDB SQL クエリを実行する
-Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための&1; つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。 他の方法の詳細については、「 [SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)
+Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための&1; つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。 他の方法の詳細については、「 [SQL クエリの実行](documentdb-sql-query.md#ExecutingSqlQueries)
 
 ## <a name="next-steps"></a>次のステップ
 クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。

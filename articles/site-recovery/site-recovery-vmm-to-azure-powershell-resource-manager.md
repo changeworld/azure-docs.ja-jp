@@ -1,5 +1,5 @@
 ---
-title: "Azure Site Recovery と PowerShell (Resource Manager) を使用して VMM 内の Hyper-V 仮想マシンをレプリケートする | Microsoft Docs"
+title: "Azure Site Recovery と PowerShell (Resource Manager) を使用して VMM クラウドの Hyper-V 仮想マシンをレプリケートする | Microsoft Docs"
 description: "Azure Site Recovery と PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンをレプリケートする"
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 19/01/2017
+ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
-ms.openlocfilehash: 7159ea10e05dd6cc9ffd170719fecdb87421515c
+ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
+ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -58,7 +59,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 * [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/free)を使用できます。 また、「 [Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」もご覧ください。
 * CSP サブスクリプションにレプリケートするシナリオを試す場合は、CSP サブスクリプションが必要です。 CSP プログラムの詳細については、「 [CSP プログラムに登録する](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)」をご覧ください。
 * Azure にレプリケートしたデータを格納するために Azure v2 ストレージ (Resource Manager) アカウントが必要になります。 アカウントでは geo レプリケーションを有効にする必要があります。 アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションまたは CSP サブスクリプションに関連付けられている必要があります。 Azure Storage のセットアップの詳細については、「 [Microsoft Azure Storage の概要](../storage/storage-introduction.md) 」をご覧ください。
-* 保護対象の仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。
+* 保護対象の仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認する必要があります。
 
 > [!NOTE]
 > 現時点では、PowerShell を使用して実行できるのは VM レベルの操作のみです。 復旧計画レベルの操作もすぐにサポートされる予定です。  現時点では、フェールオーバーの実行は、復旧計画レベルではなく、"保護された VM" レベルのみに制限されています。
@@ -132,7 +133,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>ステップ 3: Recovery Services コンテナーのコンテキストを設定する
 
 次のコマンドを実行して、コンテナーのコンテキストを設定します。
-   
+
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## <a name="step-4-install-the-azure-site-recovery-provider"></a>ステップ 4: Azure Site Recovery プロバイダーをインストールする
@@ -166,7 +167,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 ## <a name="step-5-create-an-azure-storage-account"></a>ステップ 5: Azure のストレージ アカウントを作成する
 
 Azure ストレージ アカウントを持っていない場合、次のコマンドを実行して、コンテナーと同じ geo 内に geo レプリケーションが有効になっているアカウントを作成します。
-   
+
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     
         $ResourceGroupName =  “myRG”             #ResourceGroupName
@@ -243,7 +244,7 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
  以下の点に注意してください。
 
-* 仮想マシンは Azure 要件を満たしている必要があります。 計画ガイドの [前提条件とサポート](site-recovery-best-practices.md) に関するページで確認してください。
+* 仮想マシンは Azure 要件を満たしている必要があります。 計画ガイドの [前提条件とサポート](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) に関するページで確認してください。
 * オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンのプロパティを設定する必要があります。 仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。 また、仮想マシンのプロパティの **[全般]** タブと **[ハードウェア構成]** タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。 VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
 1. 保護を有効にするには、次のコマンドを実行して保護コンテナーを取得します。
@@ -307,9 +308,4 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 ## <a name="next-steps"></a>次のステップ
 [詳細を確認](https://msdn.microsoft.com/library/azure/mt637930.aspx) します。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

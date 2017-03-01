@@ -4,7 +4,7 @@ description: "SharePoint バックエンドに Azure Mobile Engagement を接続
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
 このチュートリアルで扱うシナリオでは、まず SharePoint のビジネス ユーザーが SharePoint リストにマーケティング データを入力します。そして、自動化されたプロセスが利用可能な REST API を使用してこのリストから項目を取得し、Mobile Engagement システムと通信して、SharePoint のデータからマーケティング キャンペーンを作成します。 
 
 > [!IMPORTANT]
-> おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する 2 つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。 
+> おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する&2; つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。 
 > 
 > 
 
@@ -38,7 +39,7 @@ ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
 1. サンプルの SharePoint リストは次のようなものです。 **Title**、**Category**、**NotificationTitle**、**Message**、**URL** はアナウンスの作成に使用されます。 **IsProcessed** という名前の列がありますが、これはコンソール プログラム形式のサンプル自動化プロセスで使用されます。 このコンソール プログラムを Azure WebJob として実行しスケジュールを設定することも、SharePoint ワークフローを直接使用して、この SharePoint リストに項目が挿入された場合にアナウンスが作成およびアクティブ化されるように設定することもできます。 このサンプルで使用するコンソール プログラムは、SharePoint リスト内の項目を調べ、項目ごとに Azure Mobile Engagement でアナウンスを作成してから、最後にアナウンスの作成が成功した場合に **IsProcessed** フラグを true にマークします。
    
     ![][1]
-2.  *こちら* [Remote Authentication in SharePoint Online Using the Client Object Model](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) (クライアント オブジェクト モデルを使用した SharePoint Online のリモート認証) サンプルのコードを使用して、SharePoint リストの認証を行っています。
+2. *こちら* [Remote Authentication in SharePoint Online Using the Client Object Model](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) (クライアント オブジェクト モデルを使用した SharePoint Online のリモート認証) サンプルのコードを使用して、SharePoint リストの認証を行っています。
 3. 認証後に、リスト項目内をループして新規に作成された項目 ( **IsProcessed** が false となっています) を検索します。 
    
          static async void CreateCampaignFromSharepoint()
@@ -202,10 +203,5 @@ ms.openlocfilehash: 4774f33c821410fb8fbed8d64b94fede36cb0a90
 [5]: ./media/mobile-engagement-sample-backend-integration-sharepoint/diagram.png
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

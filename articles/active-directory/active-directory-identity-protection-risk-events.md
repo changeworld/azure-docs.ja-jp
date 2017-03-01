@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dfd9690f2e3e017ca308649f79a84466d49d844
-ms.openlocfilehash: 91ee5da0885fc0b044150e524757eac659a003a4
+ms.sourcegitcommit: e37f1716b459ea8eb0f2d0a5a12e7a3a8ab2c083
+ms.openlocfilehash: e2ec0cefb6e009f22c3406ccd1570748dc467ed0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -135,7 +136,7 @@ Azure クラシック ポータルでは、リスク イベントの一部を、
 | 匿名の IP アドレスからのサインイン |不明なソースからのサインイン |
 | 不審なアクティビティのある IP アドレスからのサインイン |不審なアクティビティのある IP アドレスからのサインイン |
 | 未知の場所からのサインイン |- |
-| ロックアウト イベント |- |
+
 
 以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。 これらのレポートは Azure クラシック ポータルでまだ使用できますが、 Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
@@ -149,10 +150,5 @@ Azure クラシック ポータルでは、リスク イベントの一部を、
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

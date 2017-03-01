@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 0d75654e00e033eab7de97779157c43ee4493a9f
-ms.openlocfilehash: 2032426e473cb859ad60b48684bcf620e314ed6c
+ms.sourcegitcommit: bc96edb44dc8bbbbe4687806117990c9d3470fdc
+ms.openlocfilehash: adb70fc58321c11c0b57efc9810a44d0ab2c8a20
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -103,7 +104,7 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 「 [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」のトピックの手順に従ってください。
 
 ## <a name="parallel-execution"></a>並列実行
-シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。  関数アプリが[従量課金ホスティング プラン](functions-scale.md#consumption-service-plan)を使用している場合、関数アプリは自動的にスケールアウトできます。  アプリが従量課金ホスティング プランと標準の [App Service ホスティング プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理します。  各関数アプリ インスタンスでの同時関数呼び出しの最大数は、使用されるトリガーの種類と、関数アプリ内の他の関数によって使用されるリソースに応じて異なります。
+シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。  関数アプリが[従量課金ホスティング プラン](functions-scale.md#how-the-consumption-plan-works)を使用している場合、関数アプリは自動的にスケールアウトできます。  アプリが従量課金ホスティング プランと標準の [App Service ホスティング プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理します。  各関数アプリ インスタンスでの同時関数呼び出しの最大数は、使用されるトリガーの種類と、関数アプリ内の他の関数によって使用されるリソースに応じて異なります。
 
 ## <a name="azure-functions-pulse"></a>Azure Functions パルス
 パルスは、関数の実行頻度と成功または失敗を示すライブ イベント ストリームです。 また、平均実行時間を監視することができます。 今後、さらに機能とカスタマイズが追加される予定です。 **[パルス]** ページには **[監視]** タブからアクセスできます。
@@ -134,10 +135,5 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Azure Functions: The Journey (Azure Functions への道のり) (Azure Functions への道のり)](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) 」。 Azure Functions の開発の歴史。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

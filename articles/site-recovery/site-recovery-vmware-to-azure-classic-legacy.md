@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: aeaf8d06749d63d19e02573b5bf66ceac644cb3e
+ms.sourcegitcommit: 858ed6ca4355c36c728ae88bf9488f362d487646
+ms.openlocfilehash: 7ffef4a8dcd10fa6608d200b4ca34fb3517c0cc6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -147,9 +148,9 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 | **データの変更率** | **CPU** | **メモリ** | **キャッシュ ディスク サイズ** | **キャッシュ ディスク スループット** | **帯域幅の受信/送信** |
 | --- | --- | --- | --- | --- | --- |
-| < 300 GB |4 vCPU (2 ソケット * 2 コア @ 2.5GHz) |4 GB |600 GB |7 ～ 10 MB/秒 |30 Mbps/21 Mbps |
-| 300 ～ 600 GB |8 vCPU (2 ソケット * 4 コア @ 2.5GHz) |6 GB |600 GB |11 ～ 15 MB/秒 |60 Mbps/42 Mbps |
-| 600 GB ～ 1 TB |12 vCPU (2 ソケット * 6 コア @ 2.5GHz) |8 GB |600 GB |16 ～ 20 MB/秒 |100 Mbps/70 Mbps |
+| < 300 GB |4 vCPU (2 ソケット * 2 コア @ 2.5 GHz) |4 GB |600 GB |7 ～ 10 MB/秒 |30 Mbps/21 Mbps |
+| 300 ～ 600 GB |8 vCPU (2 ソケット * 4 コア @ 2.5 GHz) |6 GB |600 GB |11 ～ 15 MB/秒 |60 Mbps/42 Mbps |
+| 600 GB ～ 1 TB |12 vCPU (2 ソケット * 6 コア @ 2.5 GHz) |8 GB |600 GB |16 ～ 20 MB/秒 |100 Mbps/70 Mbps |
 | > 1 TB |別のプロセス サーバーをデプロイします | | | | |
 
 **表 2**
@@ -201,7 +202,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 | **Azure Storage** |レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。<br/><br/> アカウントは [Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。<br/><br/> アカウントは Azure Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 [新しい Azure ポータル](../storage/storage-create-storage-account.md) を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。<br/><br/> 詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。 | |
 | **Azure Virtual Network** |構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。 Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。 ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。 | |
 | **Azure リソース** |すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。 詳細については、「 [Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。 | |
-| **Azure Virtual Machines** |保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。<br/><br/> **ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。<br/><br/> **ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。<br/><br/> **クラスタリング** — クラスター化されたサーバーはサポートされません。<br/><br/> **ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。<br/><br/> **ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。<br/><br/> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 マシンが保護された後で、Azure の名前を変更することができます。 | |
+| **Azure Virtual Machines** |保護する仮想マシンは、[Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に従う必要があります。<br/><br/> **ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。<br/><br/> **ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。<br/><br/> **クラスタリング** — クラスター化されたサーバーはサポートされません。<br/><br/> **ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。<br/><br/> **ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。<br/><br/> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。 文字または数字で始まり、文字または数字で終わる必要があります。 マシンが保護された後で、Azure の名前を変更することができます。 | |
 | **構成サーバー** |Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。 新しいクラウド サービスの最初のインスタンスとして作成されます。 構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約済みのパブリック IP アドレスでクラウド サービスが作成されます。<br/><br/> インストール パスは英語文字のみで構成される必要があります。 | |
 | **マスター ターゲット サーバー** |Azure Virtual Machines、Standard A4、D14 または DS4。<br/><br/> インストール パスは英語文字のみで構成される必要があります。 たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。 | |
 | **プロセス サーバー** |プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。 C:/ にインストールしてください。<br/><br/> プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。<br/><br/> VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。 vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。<br/><br/> インストール パスは英語文字のみで構成される必要があります。<br/><br/> ReFS ファイル システムはサポートされていません。 | |
@@ -739,9 +740,4 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -4,7 +4,7 @@ description: "Mobile Services アプリケーションを App Service モバイ�
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 029a2b03d29fa581373328489678ad5039daba47
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: d5bceb8dd53850f0f11be05be2d5e5d3fbd01c5d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -69,7 +70,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
 ### <a name="a-nameupdate-app-service-tieraselect-an-appropriate-app-service-pricing-tier"></a><a name="update-app-service-tier"></a>適切な App Service 価格レベルを選択する
 Azure App Service に移行した後は、価格設定がより自由になります。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [設定] メニューの **[App Service プラン]** をクリックします。
@@ -95,7 +96,7 @@ Azure App Service に移行した後は、価格設定がより自由になり�
 Scheduler Jobs は移行後約 30 分経過するまで表示されません。  スケジュールされたジョブは、引き続きバックグラウンドで実行されます。
 再度表示できるようになった後で、スケジュールされたジョブを表示するには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[参照]** を選択し、*[フィルター]* ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
 
 移行後に利用できる無料スケジューラ ジョブの数は限られています。  使用状況と [Azure Scheduler プラン]を確認してください。
@@ -105,22 +106,22 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。 
 
 移行した CORS 設定は **MS_CrossDomainWhitelist** アプリ設定として利用できます。  App Service の CORS 機能をサイトに移行するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. API メニューの **[CORS]** をクリックします。
-5. 許可されたオリジンをボックスに 1 つずつ入力し、Enter を押します。
+5. 許可されたオリジンをボックスに&1; つずつ入力し、Enter を押します。
 6. 許可されたオリジンの一覧が正しければ、[保存] ボタンをクリックします。
 
 > [!TIP]
-> Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。  詳細については、「[次のステップ](#next-steps)」を参照してください。
+> Azure App Service を使用する利点の&1; つは、同じサイトで Web サイトとモバイル サービスを実行できることです。  詳細については、「[次のステップ](#next-steps)」を参照してください。
 > 
 > 
 
 ### <a name="a-namedownload-publish-profileadownload-a-new-publishing-profile"></a><a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 Azure App Service に移行すると、サイトの発行プロファイルが変更されます。  Visual Studio 内からサイトを発行する場合、新しい発行プロファイルが必要になります。  新しい発行プロファイルをダウンロードするには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. **[発行プロファイルの取得]** をクリックします。
 
@@ -129,17 +130,17 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 1. Visual Studio を開き、Azure Mobile Service プロジェクトを開きます。
 2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** を選択します。
 3. **[インポート]**をクリックします。
-4. **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。   **[OK]**
+4. **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。  **[OK]**
 5. **[接続の検証]** をクリックして、発行設定が機能していることを確認します。
 6. **[発行]** をクリックして、サイトを発行します。
 
 ## <a name="a-nameworking-with-your-siteaworking-with-your-site-post-migration"></a><a name="working-with-your-site"></a>サイトの移行後の操作
-移行後に [Azure ポータル] で新しい App Service を操作します。  以下は、 [Azure クラシック ポータル]で実行していた特定の操作とそれに対応する App Service 操作に関する注記です。
+移行後に [Azure Portal] で新しい App Service を操作します。  以下は、 [Azure クラシック ポータル]で実行していた特定の操作とそれに対応する App Service 操作に関する注記です。
 
 ### <a name="a-namepublishing-your-siteadownloading-and-publishing-your-migrated-site"></a><a name="publishing-your-site"></a>移行したサイトをダウンロードし、公開する
 サイトは git または ftp 経由で利用可能であり、WebDeploy、TFS、Mercurial、GitHub、FTP など、さまざまなメカニズムで再公開できます。  デプロイメント資格情報はサイトの残りの部分で移行されます。  デプロイメント資格情報を設定しなかった場合、または資格情報を覚えていない場合はリセットできます。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [公開] メニューの **[デプロイメント資格情報]** をクリックします。
@@ -148,10 +149,10 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 これらの資格情報を利用し、git でサイトの複製を作成したり、GitHub、TFS、Mercurial から自動化デプロイを設定したりできます。  詳細については、「 [Azure App Service のデプロイに関するドキュメント]」を参照してください。
 
 ### <a name="a-nameappsettingsaapplication-settings"></a><a name="appsettings"></a>アプリケーションの設定
-移行したモバイル サービスのほとんどの設定は [アプリケーション設定] から利用できます。  アプリ設定の一覧は [Azure ポータル] から取得できます。
+移行したモバイル サービスのほとんどの設定は [アプリケーション設定] から利用できます。  アプリ設定の一覧は [Azure Portal] から取得できます。
 アプリケーションの設定を表示または変更するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [全般] メニューの **[アプリケーション設定]** をクリックします。
@@ -161,7 +162,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 複数のアプリ設定を同時に更新できます。
 
 > [!TIP]
-> 同じ値を含むアプリケーション設定が 2 つあります。  たとえば、*ApplicationKey* と *MS\_ApplicationKey* の 2 つがあります。  両方のアプリケーション設定を同時に更新します。
+> 同じ値を含むアプリケーション設定が&2; つあります。  たとえば、*ApplicationKey* と *MS\_ApplicationKey* の&2; つがあります。  両方のアプリケーション設定を同時に更新します。
 > 
 > 
 
@@ -188,7 +189,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 ### <a name="a-nameeasytablesadata"></a><a name="easytables"></a>データ
 Mobile Services の *[データ]* タブは Azure Portal では *[テーブルの簡単操作]* に取って代わられました。  テーブルの簡単操作にアクセスするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [モバイル] メニューの **[テーブルの簡単操作]** をクリックします。
@@ -205,7 +206,7 @@ Mobile Services の *[データ]* タブは Azure Portal では *[テーブル�
 ### <a name="a-nameeasyapisaapi"></a><a name="easyapis"></a>API
 Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]* に取って代わられました。  API の簡単操作にアクセスするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [モバイル] メニューの **[API の簡単操作]** をクリックします。
@@ -216,7 +217,7 @@ Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]
 ### <a name="a-nameon-demand-jobsascheduler-jobs"></a><a name="on-demand-jobs"></a>スケジューラ ジョブ
 スケジューラ ジョブはすべて、[スケジューラ ジョブ コレクション] セクションから利用できます。  スケジューラ ジョブにアクセスするには、次の手順に従います。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[参照]** を選択し、*[フィルター]* ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
 3. サイトのジョブ コレクションを選択します。  <*サイト名*>-Jobs という名前が付けられます。
 4. **[設定]**をクリックします。
@@ -241,21 +242,21 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 | **MS\_NotificationHubConnectionString** |通知ハブの接続文字列 |
 | **MS\_NamespaceName** |MS_PushEntityNamespace のエイリアス |
 
-通知ハブは [Azure ポータル] 経由で管理されます。  Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
+通知ハブは [Azure Portal] 経由で管理されます。  Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[参照]****[通知ハブ]** の順に選択します。
 3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [!NOTE]
-> 通知ハブが "Mixed" 型の場合は表示されません。  「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。  [Mixed 名前空間を変換]してから、次に進みます。  変換が完了すると、通知ハブが [Azure ポータル] に表示されます。
+> 通知ハブが "Mixed" 型の場合は表示されません。  「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。  [Mixed 名前空間を変換]してから、次に進みます。  変換が完了すると、通知ハブが [Azure Portal] に表示されます。
 > 
 > 
 
 詳細については、 [Notification Hubs] ドキュメントを確認してください。
 
 > [!TIP]
-> [Azure ポータル] の Notification Hubs 管理機能はまだプレビュー段階です。  [Azure クラシック ポータル] で引き続きすべての Notification Hubs を管理できます。
+> [Azure Portal] の Notification Hubs 管理機能はまだプレビュー段階です。  [Azure クラシック ポータル] で引き続きすべての Notification Hubs を管理できます。
 > 
 > 
 
@@ -306,17 +307,17 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 ### <a name="a-namediagnosticsadiagnostics-and-logging"></a><a name="diagnostics"></a>診断とログ
 通常、診断ログは Azure App Service で無効になっています。  診断ログを有効にするには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [機能] メニューで **[診断ログ]** を選択します。
 5. **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** のログの **[オン]** をクリックします。
 6. Web サーバーのログの **[ファイル システム]** をクリックします。
-7.  **[保存]**
+7. **[保存]**
 
 ログを表示するには:
 
-1. [Azure ポータル]にログインします。
+1. [Azure Portal]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. **[ツール]** ボタンをクリックします。
 4. [監視] メニューの **[ログ ストリーム]** を選択します。
@@ -379,8 +380,8 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
-[Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/en-us/regions/
+[Azure Portal]: https://portal.azure.com
+[Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service-web/app-service-continuous-deployment.md
 [Mixed 名前空間を変換]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
@@ -400,9 +401,4 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [関数]: ../azure-functions/functions-overview.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

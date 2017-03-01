@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 92d61ff08b70e89b5e5310cf4b0f7fb88abf3ef9
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: 59939dd678452fc29b1861b70073e6f79c230196
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,11 +45,11 @@ HPE SaaS と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーから HPE SaaS を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -109,7 +110,7 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 
     a. **[サインオン URL]** ボックスに、**“https://login.saas.hpe.com/msg”** の形式で、HPE SaaS アプリケーションにサインオンする際にユーザーが使用する URL を入力します。 お客様がこれをアプリケーションに固有の URL に変更することもできます。
 
-    b. ページの下部にある **[次へ]** を参照してください。
+    b. **[次へ]**をクリックします。
 
 
 1. **[HPE SaaS でのシングル サインオンの構成]** ページで、次の手順を実行します。
@@ -232,9 +233,4 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 [203]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

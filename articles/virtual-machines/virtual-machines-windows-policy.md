@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 54afb2f55ef9ff48448c63bc8ee8e745765f61e6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -96,15 +97,10 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 ## <a name="create-the-policy"></a>ポリシーの作成
 ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。 ポリシーの作成については、以下の記事を参照してください。
 
-* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
+* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md)
 
 ## <a name="apply-the-policy"></a>ポリシーの適用
 ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーの適用については、以下の記事を参照してください。
 
-* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [ポリシーの作成](../azure-resource-manager/resource-manager-policy.md)
 

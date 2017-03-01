@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/17/2017
 ms.author: asgang
 translationtype: Human Translation
-ms.sourcegitcommit: 8f9df48eb93a003f67ad79cc937f41db1531e94d
-ms.openlocfilehash: be280f8de4d2b1316ff6e9e69a4eb93870e8e187
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 54cf67bf630a9de30d4ccafdb09a3f8986c04145
+ms.openlocfilehash: 4415af41cfaf7230f398016e37b8a8cde453fa54
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,10 +29,10 @@ ms.lasthandoff: 02/17/2017
 この記事では、VMware 上で実行されている仮想マシンの Azure へのレプリケーションを設定する方法について説明します。
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、既に以下の操作を行っていることを前提としています。 
+この記事は、既に以下の操作を行っていることを前提としています。
 
 1.  [オンプレミスのソース環境のセットアップ](site-recovery-set-up-vmware-to-azure.md)
-2.  [Azure でのターゲット環境のセットアップ](site-recovery-prepare-target-vmware-to-azure.md) 
+2.  [Azure でのターゲット環境のセットアップ](site-recovery-prepare-target-vmware-to-azure.md)
 
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
@@ -63,7 +63,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
    * Premium または Standard ストレージ アカウントを選択できます。 Premium アカウントを選択した場合は、継続的なレプリケーション ログ用に追加の Standard ストレージ アカウントを指定する必要があります。 アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
    * 自分が所有しているアカウント以外のストレージ アカウントを使用する場合は、*概要で説明されている、Resource Manager を使用してストレージ アカウントを作成するためのプレースホルダー リンク*を作成できます。 Resource Manager を使用してストレージ アカウントを作成する場合は、**[新規作成]** をクリックします。 クラシック モデルを使用してストレージ アカウントを作成する場合は、 [Azure Portal](../storage/storage-create-storage-account-classic-portal.md) で作成できます。
- 
+
 
 8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 クラシック モデルを使用してネットワークを作成する場合は、[Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) で作成できます。 該当する場合は、サブネットを選択します。 次に、 **[OK]**をクリックします
 
@@ -89,7 +89,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 >
 
 ## <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
-ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。
+ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。
 
 1. **[設定]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択します。 **[要点]** ブレードにマシンの設定と状態に関する情報が表示されます。
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
@@ -115,5 +115,6 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 * 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB 未満である必要があります。
 
 ## <a name="next-steps"></a>次のステップ
- 
-保護を完了したら、テスト フェールオーバーを実行して、アプリケーションが Azure で動作するかどうかを確認できます。    
+
+保護を完了したら、テスト フェールオーバーを実行して、アプリケーションが Azure で動作するかどうかを確認できます。
+

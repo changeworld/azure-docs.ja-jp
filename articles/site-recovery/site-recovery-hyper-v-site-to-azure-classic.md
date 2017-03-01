@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
-ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2bd4b44bea641bcfcb576f0ba5d53564277dfe34
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -242,7 +242,7 @@ Azure へのテスト フェールオーバーを実行する方法は&2; つあ
 
 Azure ネットワークを指定せずにテスト フェールオーバーを実行する場合、何も用意する必要がありません。
 
-ターゲット Azure ネットワークを指定してテスト フェールオーバーを実行するには、Azure 運用ネットワークから独立した新しい Azure ネットワークを作成する必要があります (Azure で新しいネットワークを作成する場合の既定の動作)。 詳細については、 [テスト フェールオーバーの実行に関するページ](site-recovery-failover.md#run-a-test-failover) を参照してください。
+ターゲット Azure ネットワークを指定してテスト フェールオーバーを実行するには、Azure 運用ネットワークから独立した新しい Azure ネットワークを作成する必要があります (Azure で新しいネットワークを作成する場合の既定の動作)。 詳細については、 [テスト フェールオーバーの実行に関するページ](site-recovery-failover.md) を参照してください。
 
 レプリケーションとネットワークのデプロイを完全にテストするには、複製された仮想マシンが予想どおり機能するようにインフラストラクチャを設定する必要があります。 これを行うには、たとえば、DNS を利用し、仮想マシンをドメイン コントローラーとして設定し、それを Site Recovery を利用して Azure に複製し、テスト フェールオーバーを実行してテスト ネットワークでそれを作成します。  [こちら](site-recovery-active-directory.md#test-failover-considerations) を参照してください。
 

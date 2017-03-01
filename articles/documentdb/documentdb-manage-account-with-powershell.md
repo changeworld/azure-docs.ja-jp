@@ -13,19 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/27/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 7e10f4d051a484965c7d58de6351dd357aa64c0f
-ms.openlocfilehash: 0c0e682c79a6a25ac29760f649a832f22f39e8b5
+ms.sourcegitcommit: 8078f9822b392af09e00e9bf1e448e0a51994e11
+ms.openlocfilehash: 15707a71500424e4776adc80491af95b57bea222
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="automate-azure-documentdb-account-management-using-azure-powershell"></a>Azure PowerShell を使用した Azure DocumentDB アカウントの管理の自動化
 > [!div class="op_single_selector"]
-> * [Azure Portal](documentdb-create-account.md)
-> * [Azure CLI と ARM](documentdb-automation-resource-manager-cli.md)
-> * [Azure Powershell](documentdb-manage-account-with-powershell.md)
+> * [Azure ポータル](documentdb-create-account.md)
+> * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
+> * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+> * [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 
 次のガイドでは、Azure PowerShell を使用して DocumentDB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][scaling-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 DocumentDB データベース アカウントのクロスプラットフォーム管理には、[Azure CLI](documentdb-automation-resource-manager-cli.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](documentdb-create-account.md) のどれもが使用可能です。
 
@@ -190,8 +192,3 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 [azure-resource-groups]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags
 [rp-rest-api]: https://docs.microsoft.com/en-us/rest/api/documentdbresourceprovider/
-
-
-<!--HONumber=Dec16_HO3-->
-
-

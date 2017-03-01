@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: 266b9d0e36aa5e3bef9b689e7602449fbe86b3cd
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: c4129d5b5ebd0295035e81760b2a39f3caf16499
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -385,7 +385,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 各種のフェールオーバーについて、またそれらを実行するタイミングや方法について詳しくは、[こちら](site-recovery-failover.md)をご覧ください。
 
 > [!NOTE]
-> 目的が Azure への仮想マシンの移行である場合は、[計画されたフェールオーバー操作](site-recovery-failover.md#run-a-planned-failover-primary-to-secondary)を使用して Azure に仮想マシンを移行することをお勧めします。 移行済みのアプリケーションをテスト フェールオーバーを使用して Azure で検証したら、[移行の完了](#Complete-migration-of-your-virtual-machines-to-Azure)に関するセクションの手順に従って、仮想マシンの移行を完了します。 [コミット] または [削除] を実行する必要はありません。 移行の完了では、移行を完了し、仮想マシンの保護を削除し、マシンの Azure Site Recovery の課金を停止します。
+> 目的が Azure への仮想マシンの移行である場合は、[計画されたフェールオーバー操作](site-recovery-failover.md)を使用して Azure に仮想マシンを移行することをお勧めします。 移行済みのアプリケーションをテスト フェールオーバーを使用して Azure で検証したら、[移行の完了](#Complete-migration-of-your-virtual-machines-to-Azure)に関するセクションの手順に従って、仮想マシンの移行を完了します。 [コミット] または [削除] を実行する必要はありません。 移行の完了では、移行を完了し、仮想マシンの保護を削除し、マシンの Azure Site Recovery の課金を停止します。
 
 
 ### <a name="run-a-planned-failover"></a>計画されたフェールオーバーの実行
@@ -408,7 +408,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 4. **[仮想マシンをシャットダウンして最新のデータを同期 (Shut down virtual machines and synchronize the latest data)]** を選択し、Site Recovery が保護された仮想マシンをシャットダウンしてデータを同期するように指定することで、最新バージョンのデータをフェールオーバーします。
 5. フェールオーバーの後、仮想マシンはコミット保留中の状態です。  **[コミット]** をクリックして、フェールオーバーをコミットします。
 
-[詳細情報](site-recovery-failover.md#run-an-unplanned-failover)
+[詳細情報](site-recovery-failover.md)
 
 ## <a name="complete-migration-of-your-virtual-machines-to-azure"></a>仮想マシンの Azure への移行の完了
 > [!NOTE]

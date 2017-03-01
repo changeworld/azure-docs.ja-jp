@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 02/22/2017
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: f7dd06f1fc789a74ec7ce2182824ff759dcf7a9f
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>Password Management のデプロイとユーザー トレーニング
 > [!IMPORTANT]
 > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-> 
-> 
+>
+>
 
 パスワードのリセットを有効にした後、次に実行する必要がある手順は、組織内のユーザーにサービスを使用してもらうことです。 そのためには、ユーザーがサービスを使用できるように適切に構成されていることを確認すると共に、ユーザーが自分のパスワードを問題なく管理するために必要なトレーニングを受けてもらう必要があります。 この記事では、次の概念を説明します。
 
@@ -50,7 +51,7 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
    * オンプレミスのユーザー (フェデレーション ユーザーまたはハッシュ同期ユーザー) の場合は、 **AAD Premium ライセンスが割り当てられていること**。
 3. ユーザーが現在のパスワード リセット ポリシーに従って、 **認証データの最小セットを定義していること** 。
    * 認証データは、ディレクトリ内の対応するフィールドに適切な形式のデータが含まれている場合に定義されたとみなされます。
-   * 認証データの最小セットは、ワン ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも 1 つ**が、ツー ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも 2 つ**が構成されたときに定義されます。
+   * 認証データの最小セットは、ワン ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも&1; つ**が、ツー ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも&2; つ**が構成されたときに定義されます。
 4. ユーザーがオンプレミスのアカウントを使用している場合は、 [Password Writeback](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) が有効化され、オンになっていること。
 
 ### <a name="ways-to-populate-authentication-data"></a>認証データを設定する方法
@@ -86,9 +87,9 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 電子メール テンプレートを [ここ](http://1drv.ms/1xWFtQM)からダウンロードできます。
 
 ### <a name="creating-your-own-password-portal"></a>独自のパスワードのポータルを作成する
-パスワード管理機能をデプロイする多くの顧客にとって有効な 1 つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。  
+パスワード管理機能をデプロイする多くの顧客にとって有効な&1; つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。  
 
-最大規模のお客様の多くは、Azure AD パスワード リセット ポータル、パスワード リセット登録ポータル、およびパスワード変更ページへのリンクを使用して、https://passwords.contoso.com のようなルート DNS エントリを作成する方法を選択します。  この方法では、ユーザーがサービスの使用を開始するまでに少し時間がある場合にアクセス可能な覚えやすい URL を 1 つ、送信する任意の電子メールまたは広告に含めることができます。
+最大規模のお客様の多くは、Azure AD パスワード リセット ポータル、パスワード リセット登録ポータル、およびパスワード変更ページへのリンクを使用して、https://passwords.contoso.com のようなルート DNS エントリを作成する方法を選択します。  この方法では、ユーザーがサービスの使用を開始するまでに少し時間がある場合にアクセス可能な覚えやすい URL を&1; つ、送信する任意の電子メールまたは広告に含めることができます。
 
 ここでは、最新の応答性の高い UI 設計パラダイムを使用する単純なページを作成してあります。これは、すべてのブラウザーおよびモバイル デバイスで動作します。
 
@@ -99,7 +100,7 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 ### <a name="using-enforced-registration"></a>強制登録の使用
 ユーザー自身にパスワード リセットの登録を行ってもらう場合は、ユーザーがアクセス パネル ( [http://myapps.microsoft.com](http://myapps.microsoft.com)) にサインインしたときに、登録を強制することもできます。  このオプションは、ディレクトリの **[構成]** タブで **[ユーザーが初めてアクセス パネルにサインインするときに登録を要求しますか?]** オプションを有効にすることで、有効にできます。  
 
-必要に応じて、 **[ユーザーによる連絡先データの確認が必要になるまでの日数]** オプションを 0 以外の値に変更することで、構成可能な期間の後でユーザーに再登録を求めるかどうかを定義することもできます。 詳細については、「 [User Password Management の動作のカスタマイズ](active-directory-passwords-customize.md#password-management-behavior) 」を参照してください。
+必要に応じて、 **[ユーザーによる連絡先データの確認が必要になるまでの日数]** オプションを&0; 以外の値に変更することで、構成可能な期間の後でユーザーに再登録を求めるかどうかを定義することもできます。 詳細については、「 [User Password Management の動作のカスタマイズ](active-directory-passwords-customize.md#password-management-behavior) 」を参照してください。
 
   ![][002]
 
@@ -114,7 +115,7 @@ ms.openlocfilehash: 59f4cd3de4524a5ed51b7ef434b7b21c151dd2e0
 ### <a name="uploading-data-yourself"></a>管理者によるデータのアップロード
 管理者が認証データをアップロードする場合、パスワードをリセットする前にユーザーがパスワード リセットの登録を行う必要はありません。  ユーザーは、定義されたパスワード リセット ポリシーに従って認証データをアカウントに定義している限り、自分のパスワードをリセットできます。
 
-AAD Connect または Windows PowerShell を使用して設定できるプロパティについては、「 [パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)] を参照してください。
+AAD Connect または Windows PowerShell を使用して設定できるプロパティについては、「 [パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) を参照してください。
 
 認証データは、次の手順に従って、 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) でアップロードできます。
 
@@ -122,11 +123,11 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 2. **[ユーザー]** タブをクリックします。
 3. 対象のユーザーを一覧から選択します。
 4. 最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]**が表示されます。
-   
+
    ![][005]
 5. **[勤務先の情報]** タブをクリックします。
 6. ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。  これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。
-   
+
    ![][006]
 
 これらのプロパティの使用方法については、「 [パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) 」を参照してください。
@@ -140,11 +141,11 @@ PowerShell でこのデータの参照と設定を行う方法については、
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
@@ -159,9 +160,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

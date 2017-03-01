@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: a7771c2cee3f2820db014a4e5e8620442eea3dd1
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
+ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -82,7 +82,6 @@ ms.lasthandoff: 02/21/2017
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Cognitive Services
-* Container Service
 * Content Moderator
 * Data Catalog
 * Data Factory
@@ -129,6 +128,7 @@ ms.lasthandoff: 02/21/2017
 * Application Gateway
 * Application Insights
 * BizTalk Services
+* Container Service
 * ExpressRoute
 * DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS

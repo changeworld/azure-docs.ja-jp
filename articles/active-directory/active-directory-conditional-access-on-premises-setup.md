@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
+ms.sourcegitcommit: f42e31c99bf43e8f034c8d6f4f98d777661c3d81
+ms.openlocfilehash: 204ec83dc1000bb1e10df6fecc303b6ac7795739
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
 > 
 > 
 
-オンプレミスの条件付きアクセス シナリオの詳細については、「 [任意のデバイスからの職場への参加による業務用アプリケーション間の SSO とシームレスな 2 要素認証](https://technet.microsoft.com/library/dn280945.aspx)」をご覧ください。
+オンプレミスの条件付きアクセス シナリオの詳細については、「 [任意のデバイスからの職場への参加による業務用アプリケーション間の SSO とシームレスな&2; 要素認証](https://technet.microsoft.com/library/dn280945.aspx)」をご覧ください。
 
 これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
 
@@ -129,13 +130,13 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 
 ## <a name="prepare-your-active-directory-to-support-devices"></a>デバイスをサポートするために Active Directory の準備を行う
 > [!NOTE]
-> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある&1; 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 > 
 > 
 
 ## <a name="prepare-your-active-directory-forest-to-support-devices"></a>デバイスをサポートするために Active Directory フォレストの準備を行う
 > [!NOTE]
-> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある 1 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
+> これは、デバイスをサポートするために Active Directory フォレストを準備する際に実行する必要のある&1; 回限りの操作です。 この手順を完了するには、エンタープライズ管理者権限を使用してログオンする必要があり、Active Directory フォレストに Windows Server 2012 R2 スキーマが組み込まれている必要があります。
 > 
 > 
 
@@ -165,7 +166,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
-この URL は、さまざまな方法ユーザーに伝えることができます。 その 1 つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。 これについては、以降の「 [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
+この URL は、さまざまな方法ユーザーに伝えることができます。 その&1; つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。 これについては、以降の「 [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
 
 ### <a name="join-a-windows-81-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
 1. Windows 8.1 デバイスで、**[PC 設定]**  >  **[ネットワーク]**  >  **[社内]** の順に移動します。
@@ -175,9 +176,6 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
 ### <a name="join-a-windows-7-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Windows 7 デバイスを参加させる
 デバイス登録ソフトウェア パッケージのデプロイに必要な Windows 7 ドメイン参加済みデバイスを登録するには このソフトウェア パッケージは Windows 7 向け社内参加と呼ばれ、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。 パッケージの使用方法については、「[Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)」を参照してください。
-
-### <a name="join-an-android-device-using-azure-active-directory-device-registration"></a>Azure Active Directory Device Registration を使用して Android デバイスを参加させる
-「 [Android 用の Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md) 」トピックに、Android デバイスに Azure 認証アプリをインストールして、仕事用アカウントを追加するための手順が説明されています。 Android デバイスで仕事用アカウントが正常に作成されると、そのデバイスを組織に社内参加させることができます。
 
 ## <a name="verify-registered-devices-are-written-back-to-active-directory"></a>登録済みのデバイスが Active Directory に書き戻されていること確認する
 LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが Active Directory に書き戻されたことを表示し、確認することができます。 どちらも、Active Directory 管理ツールで利用できます。
@@ -234,10 +232,5 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

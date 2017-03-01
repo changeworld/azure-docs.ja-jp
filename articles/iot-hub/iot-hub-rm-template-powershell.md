@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2016
+ms.date: 02/24/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
-ms.openlocfilehash: b884fe128b8414ae1692df92e89a41f7ba1c0447
+ms.sourcegitcommit: dc9f9c39a8eb644229887f76b5c441d4211af059
+ms.openlocfilehash: 6f9c36239f8485313066a594eea74bfcd168536e
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: b884fe128b8414ae1692df92e89a41f7ba1c0447
 Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。 このチュートリアルでは、Azure Resource Manager テンプレートを使用して PowerShell で IoT Hub を作成する方法を説明します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Azure Resource Manager デプロイメント モデルの使用について説明します。
 > 
 > 
 
@@ -64,7 +65,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ## <a name="submit-an-azure-resource-manager-template-to-create-an-iot-hub"></a>Azure Resource Manager テンプレートの送信による IoT Hub の作成
 JSON テンプレートを使用して、リソース グループに IoT Hub を作成します。 Azure Resource Manager テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
 
-1. テキスト エディターを使用して、**template.json** という Azure Resource Manager テンプレートを作成し、標準的な IoT Hub を新規作成するリソース定義 (以下) を記述します。 この例では、IoT Hub を**米国東部**リージョンに追加し、Event Hub と互換性のあるエンドポイントに 2 つのコンシューマー グループ (**cg1** と **cg2**) を作成し、**2016-02-03** API バージョンを使用します。 また、このテンプレートでは、 **hubName**というパラメーターに IoT Hub の名前を指定する必要があります。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
+1. テキスト エディターを使用して、**template.json** という Azure Resource Manager テンプレートを作成し、標準的な IoT Hub を新規作成するリソース定義 (以下) を記述します。 この例では、IoT Hub を**米国東部**リージョンに追加し、Event Hub と互換性のあるエンドポイントに&2; つのコンシューマー グループ (**cg1** と **cg2**) を作成し、**2016-02-03** API バージョンを使用します。 また、このテンプレートでは、 **hubName**というパラメーターに IoT Hub の名前を指定する必要があります。 IoT Hub をサポートする場所の最新のリストについては、「[Azure の状態][lnk-status]」を参照してください。
    
     ```
     {
@@ -135,7 +136,7 @@ JSON テンプレートを使用して、リソース グループに IoT Hub �
 * [IoT Hub リソース プロバイダー REST API][lnk-rest-api] の機能の詳細をご確認ください。
 * Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要][lnk-azure-rm-overview]」を参照してください。
 
-IoT Hub の開発に関する詳細については、以下を参照してください
+IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
 * [C SDK の概要][lnk-c-sdk]
 * [Azure IoT SDK][lnk-sdks]
@@ -157,9 +158,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

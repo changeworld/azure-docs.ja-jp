@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
+ms.sourcegitcommit: 51901a28878f25292ba3d09848bc45a04f867345
+ms.openlocfilehash: 75fb695ea2ce9d859119445ae42eb170a9493876
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -111,7 +112,7 @@ ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
 
 1. JSON エディターのインストール - アーティファクト定義ファイルを操作するには、JSON エディターが必要です。 Windows、Linux、および OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/)を使用することをお勧めします。
 2. サンプルの artifactfile.json の取得 - [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、Azure DevTest Labs チームが作成したアーティファクトを確認します。このリポジトリには、独自のアーティファクトの作成に役立つ豊富なアーティファクト ライブラリが用意されています。 アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
-3. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、 **targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という 2 つの選択肢が表示されます。
+3. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、 **targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という&2; つの選択肢が表示されます。
 4. Git リポジトリへのアーティファクトの格納
    
    1. アーティファクトごとに個別のディレクトリを作成します。ディレクトリ名は、アーティファクト名と同じにします。
@@ -131,10 +132,5 @@ ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
 
 ## <a name="next-steps"></a>次のステップ
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

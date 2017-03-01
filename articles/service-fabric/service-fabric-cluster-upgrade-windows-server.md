@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
-ms.openlocfilehash: 217715ad1657582eb35008b765de6d19bd2a8b0b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 3d7e28c1cd221d704cf9cfec66da535e079fb472
+ms.openlocfilehash: 30044abc0d7d42b11ddd210dfb9ea3eadb94dda6
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -125,14 +125,8 @@ Service Fabric の最新バージョンまたはサポートされているバ�
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>クラスター アップグレード ワークフロー。
-1. クラスター内のいずれかのノードから Get-ServiceFabricClusterUpgrade を実行し、TargetCodeVersion を書き留めます。
-2. インターネットに接続されているコンピューターから次のスクリプトを実行して、現在のバージョンとアップグレードの互換性があるすべてのバージョンを一覧表示し、関連付けられたダウンロード リンクから対応するパッケージをダウンロードします。
-   ```powershell
-   
-    ###### Get list of all upgrade compatible packages
-    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1>
-    ```
-3. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。 
+1. [Create service fabric cluster for windows server](service-fabric-cluster-creation-for-windows-server.md) (Windows Server の Service Fabric クラスターを作成する) ドキュメントから最新バージョンのパッケージをダウンロードします。
+2. クラスターにノードとして列挙されているすべてのマシンに管理者アクセスできるマシンからクラスターに接続します。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。 
    
     ```powershell
    
@@ -147,7 +141,7 @@ Service Fabric の最新バージョンまたはサポートされているバ�
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-4. ダウンロードしたパッケージをクラスター イメージ ストアにコピーします。
+3. ダウンロードしたパッケージをクラスター イメージ ストアにコピーします。
    
     ```powershell
    
@@ -159,7 +153,7 @@ Service Fabric の最新バージョンまたはサポートされているバ�
 
     ```
 
-5. コピーしたパッケージを登録します。 
+4. コピーしたパッケージを登録します。 
    
     ```powershell
    
@@ -170,7 +164,7 @@ Service Fabric の最新バージョンまたはサポートされているバ�
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
    
      ```
-6. 入手できるバージョンの&1; つにクラスターをアップグレードします。 
+5. 入手できるバージョンの&1; つにクラスターをアップグレードします。 
    
     ```Powershell
    
@@ -200,13 +194,6 @@ Service Fabric の最新バージョンまたはサポートされているバ�
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File> 
 
 ```
-
-### <a name="cluster-certificate-config-upgrade-pls-hold-on-till-v55-is-released-because-cluster-cert-upgrade-doesnt-work-till-v55"></a>クラスター証明書の構成のアップグレード (クラスター証明書のアップグレードは v5.5 にならないと機能しないため、v5.5 がリリースされるまでお待ちください)
-クラスター証明書はクラスター ノード間での認証で使用されるため、証明書のロール オーバーは特に注意して実行する必要があります。失敗するとクラスター ノード間の通信がブロックされます。
-技術的には、次の&2; つのオプションがサポートされます。
-
-1. 証明書のシングル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ...' です。 
-2. 証明書のダブル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ...' です。
 
 
 ## <a name="next-steps"></a>次のステップ

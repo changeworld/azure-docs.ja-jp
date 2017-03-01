@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: e4ce651be6e708f284b7ca4dc32bb906ec0f14a9
-ms.openlocfilehash: bba2c3fc1c96f5f8a4bb7f23db8ddab052042539
+ms.sourcegitcommit: 3aa72480898e00cab8ee48e646ea63ade01f347f
+ms.openlocfilehash: 31c7337bdf9dd302ea2f7c5dd0af9d668b23acb2
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: bba2c3fc1c96f5f8a4bb7f23db8ddab052042539
 ## <a name="before-you-begin"></a>開始する前に
 このチュートリアルを実行するには、次のものが必要です。
 
-* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)に関するページを参照してください。
 
 >[!NOTE] 
 > SQL Data Warehouse から Azure Data Lake に接続するには、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。
@@ -231,9 +232,4 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
