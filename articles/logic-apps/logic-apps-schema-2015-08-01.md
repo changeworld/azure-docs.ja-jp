@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 05/31/2016
 ms.author: stepsic
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: a7e1bbb8d670b20a530ea488f44ff56dc721609b
+ms.sourcegitcommit: 061b68ec5fc9c14fd0c3f00cc0be9f09717fc1ad
+ms.openlocfilehash: 8f1e2680aff5c1d5c9b90654a334cae2245db5fb
+ms.lasthandoff: 02/15/2017
 
 
 ---
 # <a name="new-schema-version-2015-08-01-preview"></a>新しいスキーマ バージョン 2015-08-01-preview
-ロジック アプリの新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。 主な相違点は次の 4 つです。
+Azure Logic Apps の新しいスキーマと API バージョンでは、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。 次の&4; つの主な違いがあります。
 
 1. アクションの種類 **APIApp** が更新され、新しいアクションの種類 **APIConnection** になりました。
 2. **Repeat** の名前が **Foreach** に変更されました。
@@ -37,11 +38,11 @@ ms.openlocfilehash: a7e1bbb8d670b20a530ea488f44ff56dc721609b
 これらの API は、管理モデルとホスティング モデルが異なることから、それぞれの処理方法も若干異なります。 このモデルのメリットの&1; つは、リソース グループにデプロイされたリソース以外にも、リソースを使用できるようになったことです。 
 
 ### <a name="managed-apis"></a>マネージ API
-Microsoft は、Office 365、Salesforce、Twitter、FTP などの数多くの API をユーザーに代わって管理しています。 このようなマネージ API には、Bing 翻訳のようにそのまま使用できる API もあれば、構成が必要な API もあります。 このような構成は "*接続*" と呼ばれています。
+Microsoft では、Office 365、Salesforce、Twitter、FTP などの API の一部を代わりに管理しています。 このようなマネージ API には、Bing 翻訳のようにそのまま使用できる API もあれば、構成が必要な API もあります。 このような構成は "*接続*" と呼ばれています。
 
 たとえば、Office 365 を使用するときは、Office 365 のサインイン トークンを含む接続を作成する必要があります。 このトークンは、ロジック アプリでいつでも Office 365 API を呼び出すことができるように、セキュリティで保護された状態で保存と更新が行われます。 また、SQL サーバーや FTP サーバーに接続する場合は、接続文字列を含む接続を作成する必要があります。 
 
-これらのアクションは、定義内では `APIConnection`と呼ばれます。 電子メールを送信するために Office 365 を呼び出す接続の例を次に示します。
+これらのアクションは、定義では `APIConnection` と呼ばれます。 電子メールを送信するために Office 365 を呼び出す接続の例を次に示します。
 
 ```
 {
@@ -70,11 +71,11 @@ Microsoft は、Office 365、Salesforce、Twitter、FTP などの数多くの AP
 }
 ```
 
-API 接続に固有の入力部分は `host` オブジェクトです。 これは、`api` と `connection` の&2; つの部分で構成されています。
+`host` オブジェクトは、API 接続固有の入力部分であり、`api` と `connection` の&2; つのパートが含まれています。
 
-`api` には、マネージ API がホストされる場所のランタイム URL が含まれています。 `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`を呼び出すと、利用可能なマネージ API すべてを表示することができます。
+`api` には、マネージ API がホストされる場所のランタイム URL が含まれています。 `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview` を呼び出すと、利用可能なマネージ API すべてを表示することができます。
 
-API を使用する場合、その API には **接続パラメーター** が定義されている場合と定義されていない場合があります。 定義されていない場合、 **接続** は必要ありません。 定義されている場合は、接続を作成する必要があります。 その接続を作成すると、選択した名前が接続に設定され、その後、`host` オブジェクト内の `connection` オブジェクトでその名前を参照します。 リソース グループ内に接続を作成するには、次の行を呼び出します。
+API を使用する場合、その API には**接続パラメーター**が定義されている場合と定義されていない場合があります。 定義されていない場合、**接続**は必要ありません。 定義されている場合は、接続を作成する必要があります。 接続を作成する際に、選択した名前が設定されます。 そして、`host` オブジェクト内の `connection` オブジェクトの名前を参照することになります。 リソース グループ内に接続を作成するには、次の行を呼び出します。
 
 ```
 PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.Web/connections/{name}?api-version=2015-08-01-preview
@@ -88,16 +89,17 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
     "api": {
       "id": "/subscriptions/{subid}/providers/Microsoft.Web/managedApis/azureblob"
     },
-    "parameterValues" : {
-        "accountName" : "{The name of the storage account -- the set of parameters is different for each API}"
+    "parameterValues": {
+        "accountName": "{The name of the storage account -- the set of parameters is different for each API}"
     }
   },
-  "location" : "{Logic app's location}"
+  "location": "{Logic app's location}"
 }
 ```
 
 ### <a name="deploying-managed-apis-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでマネージ API をデプロイする
-作成するアプリケーションに対話型サインインが必要ない場合、そのアプリケーション全体を ARM テンプレートで作成できます。 サインインが必要な場合は、ARM テンプレートですべて設定できますが、さらにポータルにアクセスして接続を承認する必要があります。 
+作成するアプリケーションに対話型サインインが必要ない場合、そのアプリケーション全体を Azure Resource Manager テンプレートで作成できます。
+対話型サインインが必要な場合は、Azure Resource Manager テンプレートですべて設定できますが、さらにポータルにアクセスして接続を承認する必要があります。 
 
 ```
     "resources": [{
@@ -119,8 +121,7 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
         "apiVersion": "2015-08-01-preview",
         "name": "[parameters('logicAppName')]",
         "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Web/connections', 'azureblob')]"
+        "dependsOn": ["[resourceId('Microsoft.Web/connections', 'azureblob')]"
         ],
         "properties": {
             "sku": {
@@ -145,10 +146,10 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
                             },
                             "method": "post",
                             "queries": {
-                                "folderPath": "[concat('/',parameters('containerName'))]",
+                                "folderPath": "[concat('/', parameters('containerName'))]",
                                 "name": "helloworld.txt"
                             },
-                            "body": "@decodeDataUri('data:,Hello+world!')",
+                            "body": "@decodeDataUri('data:, Hello+world!')",
                             "path": "/datasets/default/files"
                         },
                         "conditions": []
@@ -188,10 +189,10 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
     }]
 ```
 
-この例では、接続が、リソース グループ内に存在するごく普通のリソースであることがわかります。 これらの接続は、ユーザーのサブスクリプション内で利用可能なマネージ API を参照しています。
+この例では、接続がリソース グループ内に存在する単なるリソースであることがわかります。 これらの接続は、ユーザーのサブスクリプション内で利用可能なマネージ API を参照しています。
 
 ### <a name="your-custom-web-apis"></a>カスタム Web API
-独自の API (特に、Microsoft によって管理されていない API) を使用している場合、それを呼び出すには組み込みの **HTTP** アクションを使用する必要があります。 最適なユーザー エクスペリエンスを確保するためには、API の swagger エンドポイントを公開する必要があります。 これにより、ロジック アプリ デザイナーでは API の入出力を表示できるようになります。 swagger がないと、デザイナーでは入出力を不透明な JSON オブジェクトとしてしか表示できません。
+独自の API (特に、Microsoft によって管理されていない API) を使用している場合、それを呼び出すには組み込みの **HTTP** アクションを使用する必要があります。 最適なユーザー エクスペリエンスを確保するためには、API の Swagger エンドポイントを公開する必要があります。 これにより、ロジック アプリ デザイナーで API の入出力を表示できるようになります。 Swagger がないと、デザイナーでは入出力を不透明な JSON オブジェクトとしてしか表示できません。
 
 新しい `metadata.apiDefinitionUrl` プロパティを次の例に示します。
 
@@ -200,24 +201,24 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
    "actions": {
         "mycustomAPI": {
             "type": "http",
-            "metadata" : {
-              "apiDefinitionUrl" : "https://mysite.azurewebsites.net/api/apidef/"  
+            "metadata": {
+              "apiDefinitionUrl": "https://mysite.azurewebsites.net/api/apidef/"  
             },
             "inputs": {
                 "uri": "https://mysite.azurewebsites.net/api/getsomedata",
-                "method" : "GET"
+                "method": "GET"
             }
         }
     }
 }
 ```
 
-Web API を **App Service** でホストした場合、デザイナーで利用可能なアクションの一覧にその Web API が自動的に表示されます。 ホストしていない場合は、URL 内に直接貼り付ける必要があります。 swagger エンドポイントは、ロジック アプリ デザイナー内で使用できるように、認証しない必要があります (ただし、Swagger でサポートされているいずれかの方法で API 自体をセキュリティで保護することはできます)。
+Web API を **App Service** でホストした場合、デザイナーで利用可能なアクションの一覧にその Web API が自動的に表示されます。 ホストしていない場合は、URL 内に直接貼り付ける必要があります。 Swagger エンドポイントは、ロジック アプリ デザイナー内で使用できるように、認証しない必要があります (ただし、Swagger でサポートされているいずれかの方法で API 自体をセキュリティで保護することはできます)。
 
 ### <a name="using-your-already-deployed-api-apps-with-2015-08-01-preview"></a>既にデプロイ済みの API アプリを 2015-08-01-preview で使用する
 API アプリを事前にデプロイしてある場合、 **HTTP** アクションによってそのアプリを呼び出すことができます。
 
-たとえば、Dropbox を使用してファイルを一覧表示する場合、 **2014-12-01-preview** のスキーマ バージョン定義の内容は次のようになっていることがあります。
+たとえば、Dropbox を使用してファイルを一覧表示する場合、**2014-12-01-preview** のスキーマ バージョン定義の内容は次のようになっていることがあります。
 
 ```
 {
@@ -265,12 +266,12 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
     "actions": {
         "dropboxconnector": {
             "type": "Http",
-            "metadata" : {
-              "apiDefinitionUrl" : "https://avdemo.azurewebsites.net/api/service/apidef/dropboxconnector/?api-version=2015-01-14&format=swagger-2.0-standard"  
+            "metadata": {
+              "apiDefinitionUrl": "https://avdemo.azurewebsites.net/api/service/apidef/dropboxconnector/?api-version=2015-01-14&format=swagger-2.0-standard"  
             },
             "inputs": {
                 "uri": "https://avdemo.azurewebsites.net/api/service/invoke/dropboxconnector/ListFiles?api-version=2015-01-14",
-                "method" : "POST",
+                "method": "POST",
                 "body": {
                     "FolderPath": "/myfolder"
                 },
@@ -290,8 +291,8 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 | アクション プロパティ | 説明 |
 | --- | --- |
 | `type` |`APIapp` の代わりに `Http` を使用します |
-| `metadata.apiDefinitionUrl` |ロジック アプリ デザイナーでこのアクションを使用する場合は、メタデータ エンドポイントを含める必要があります。 次の内容で構成されています: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` |次の内容で構成されています: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `metadata.apiDefinitionUrl` |ロジック アプリ デザイナーでこのアクションを使用する場合は、次の内容で構成されたメタデータ エンドポイントを含める必要があります。`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` |次の内容で構成されています。`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` |常に `POST` |
 | `inputs.body` |API アプリのパラメーターと同じです |
 | `inputs.authentication` |API アプリの認証と同じです |
@@ -299,7 +300,8 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 この方法は、API アプリのアクションすべてに対して有効です。 ただし、このような以前の API アプリはもうサポートされていないため、前述した&2; つの方法のいずれか (マネージ API、またはカスタム Web API のホスト) に移行する必要があります。
 
 ## <a name="2-repeat-renamed-to-foreach"></a>2.Repeat から Foreach への名前変更
-以前のスキーマ バージョンについては、 **Repeat** が理解しづらく、実際には for each ループであることを正しく把握できないというフィードバックがお客様から数多く寄せられました。 その結果、名前を **Foreach**に変更しました。 次に例を示します。
+
+以前のスキーマ バージョンについては **Repeat** が理解しづらく、また **Repeat** は実際には for-each ループであることを正しく把握できないというフィードバックがお客様から数多く寄せられました。 そのため、名前を **Repeat** から **Foreach** に変更しました。 たとえば、これまでは次のように記述していました。
 
 ```
 {
@@ -316,7 +318,7 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 }
 ```
 
-これは、今後は次のように記述します。
+これからは次のように記述します。
 
 ```
 {
@@ -333,10 +335,10 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 }
 ```
 
-これまで、 `@repeatItem()` 関数は、反復処理中のアイテムを参照するために使用されていました。 この関数は簡略化され、単純に `@item()`となりました。 
+これまで、`@repeatItem()` 関数は、反復処理中のアイテムを参照するために使用されていました。 これからは、この関数は簡略化されて `@item()` となります。 
 
 ### <a name="referencing-the-outputs-of-the-foreach"></a>Foreach の出力を参照する
-さらに簡略化するために、**Foreach** アクションの出力は **repeatItems** というオブジェクトでラップされなくなります。 前述の repeat の出力は次のように記述されていました。
+さらに簡略化するために、**Foreach** アクションの出力は **repeatItems** というオブジェクトでラップされなくなります。 前述の repeat の出力は次のように記述していました。
 
 ```
 {
@@ -357,7 +359,7 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 }
 ```
 
-これに対して、今後は次のようになります。
+これからは次のように記述します。
 
 ```
 [
@@ -381,13 +383,13 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 ```
 {
     "actions": {
-        "secondAction" : {
-            "type" : "Http",
-            "repeat" : "@outputs('pingBing').repeatItems",
-            "inputs" : {
-                "method" : "POST",
-                "uri" : "http://www.example.com",
-                "body" : "@repeatItem().outputs.body"
+        "secondAction": {
+            "type": "Http",
+            "repeat": "@outputs('pingBing').repeatItems",
+            "inputs": {
+                "method": "POST",
+                "uri": "http://www.example.com",
+                "body": "@repeatItem().outputs.body"
             }
         }
     }
@@ -399,70 +401,65 @@ API アプリを事前にデプロイしてある場合、 **HTTP** アクショ
 ```
 {
     "actions": {
-        "secondAction" : {
-            "type" : "Http",
-            "foreach" : "@outputs('pingBing')",
-            "inputs" : {
-                "method" : "POST",
-                "uri" : "http://www.example.com",
-                "body" : "@item().outputs.body"
+        "secondAction": {
+            "type": "Http",
+            "foreach": "@outputs('pingBing')",
+            "inputs": {
+                "method": "POST",
+                "uri": "http://www.example.com",
+                "body": "@item().outputs.body"
             }
         }
     }
 }
 ```
 
-このような変更により、`@repeatItem()`、`@repeatBody()`、および `@repeatOutputs()` 関数が削除されています。
+このような変更により、`@repeatItem()`、`@repeatBody()`、`@repeatOutputs()` 関数が削除されています。
 
 ## <a name="3-native-http-listener"></a>3.ネイティブ HTTP リスナー
 現在、HTTP リスナーは組み込みの機能になっているため、HTTP リスナー API アプリをデプロイする必要はなくなりました。 ロジック アプリのエンドポイントを呼び出し可能にする方法の詳細については、 [こちら](../logic-apps/logic-apps-http-endpoint.md)を参照してください。 
 
-この変更によって `@accessKeys()` 関数が削除され、代わりにエンドポイントの取得用として (必要な場合)、`@listCallbackURL()` 関数が用意されています。 また、現在はロジック アプリに少なくとも&1; つのトリガーを定義する必要があります。 ワークフローに対して `/run` を実行する場合は、`manual`、`apiConnectionWebhook`、`httpWebhook` のいずれかのトリガーが必要になります。 
+この変更によって `@accessKeys()` 関数が削除され、代わりにエンドポイントの取得用として (必要な場合)、`@listCallbackURL()` 関数が用意されています。 また、現在はロジック アプリに少なくとも&1; つのトリガーを定義する必要があります。 ワークフローに対して `/run` を実行する場合は、`manual`、`apiConnectionWebhook`、`httpWebhook` のいずれかのトリガーが必要になります。
 
 ## <a name="4-calling-child-workflows"></a>4.子ワークフローの呼び出し
-これまで、子ワークフローを呼び出すには、そのワークフローでアクセス トークンを取得し、呼び出し元とするロジック アプリの定義内にそのトークンを貼り付ける必要がありました。 新しいスキーマ バージョンを使用すると、ロジック アプリ エンジンにより、子ワークフローに対して実行時に SAS が自動生成されます。つまり、定義内にシークレットを貼り付ける必要はありません。  たとえば次のようになります。
+これまで、子ワークフローを呼び出すには、そのワークフローでアクセス トークンを取得し、呼び出し元とするロジック アプリの定義内にそのトークンを貼り付ける必要がありました。 新しいスキーマ バージョンを使用すると、Logic Apps エンジンにより、子ワークフローに対して実行時に SAS が自動生成されます。つまり、定義内にシークレットを貼り付ける必要はありません。  たとえば次のようになります。
 
 ```
-"mynestedwf" : {
-    "type" : "workflow",
-    "inputs" : {
-        "host" : {
-            "id" : "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Logic/mywf001",
-            "triggerName" : "myendpointtrigger"
+"mynestedwf": {
+    "type": "workflow",
+    "inputs": {
+        "host": {
+            "id": "/subscriptions/xxxxyyyyzzz/resourceGroups/rg001/providers/Microsoft.Logic/mywf001",
+            "triggerName": "myendpointtrigger"
         },
-        "queries" : {
-            "extrafield" : "specialValue"
+        "queries": {
+            "extrafield": "specialValue"
         },
-        "headers" : {
-            "x-ms-date" : "@utcnow()",
-            "Content-type" : "application/json"
+        "headers": {
+            "x-ms-date": "@utcnow()",
+            "Content-type": "application/json"
         },
-        "body" : {
-            "contentFieldOne" : "value100",
-            "anotherField" : 10.001
+        "body": {
+            "contentFieldOne": "value100",
+            "anotherField": 10.001
         }
     },
-    "conditions" : []
+    "conditions": []
 }
 ```
 
 2 つ目の改善点は、受信要求へのフル アクセスが子ワークフローに付与されるようになったことです。 つまり、*queries* セクションと *headers* オブジェクトでパラメーターを渡すことができ、本体全体を自由に定義できるということになります。
 
-最後に、子ワークフローに対して必要な変更があります。 これまでは子ワークフローを直接呼び出すことができましたが、今後は、親から呼び出すためにワークフロー内にトリガー エンドポイントを定義する必要があります。 つまり、通常は **manual** 型のトリガーを追加して、それを親の定義内で使用することになります。 `host` プロパティには特別に `triggerName` が含まれていることに注意してください。これは、どのトリガーを呼び出すかを常に指定する必要があるためです。
+最後に、子ワークフローに対して必要な変更があります。 これまでは子ワークフローを直接呼び出すことができましたが、これからは親から呼び出すためにワークフロー内にトリガー エンドポイントを定義する必要があります。 つまり、通常は **manual** 型のトリガーを追加して、それを親の定義内で使用することになります。 `host` プロパティには特別に `triggerName` が含まれていることに注意してください。これは、どのトリガーを呼び出すかを常に指定する必要があるためです。
 
 ## <a name="other-changes"></a>その他の変更点
 ### <a name="new-queries-property"></a>新しい queries プロパティ
-現時点では、すべての種類のアクションで **queries**という新しい入力がサポートされています。 これは構造化オブジェクトにすることが可能で、文字列を手動で組み合わせる必要がありません。
+現時点では、すべての種類のアクションで **queries**という新しい入力がサポートされています。 この入力は構造化オブジェクトにすることが可能で、文字列を手動で組み合わせる必要がありません。
 
 ### <a name="parse-function-renamed"></a>parse() 関数の名前変更
-さらに多くのコンテンツの種類が間もなく追加される予定なので、`parse()` 関数の名前が `json()` に変更されました。
+近日中にコンテンツの種類を追加するため、`parse()` 関数の名前を `json()` に変更しました。
 
 ## <a name="coming-soon-enterprise-integration-apis"></a>近日提供予定: Enterprise Integration API
-現時点では、まだ Enterprise Integration API の管理されたバージョン (AS2 など) は用意できていません。 [ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)に記載されているとおり、この API は近日提供予定です。 それまでは、前述の「既にデプロイ済みの API アプリを&2015;-08-01-preview で使用する」で説明したように、HTTP アクションを通じてデプロイ済みの BizTalk API を使用してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+Enterprise Integration API のマネージ バージョン (AS2 など) はまだ用意されていません。 [ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)に記載されているとおり、これらの API は近日提供予定です。 それまでは、既にデプロイ済みの API アプリの使用について上記で説明したように、HTTP アクションを通じて、デプロイ済みの既存の BizTalk API を使用してください。
 
 
