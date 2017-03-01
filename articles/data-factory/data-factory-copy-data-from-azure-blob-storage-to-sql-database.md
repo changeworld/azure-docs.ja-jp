@@ -1,5 +1,5 @@
 ---
-title: "Blob Storage から SQL Database へのデータのコピー | Microsoft Docs"
+title: "Blob Storage から SQL Database へのデータのコピー - Azure | Microsoft Docs"
 description: "このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Blob Storage から SQL Database にデータをコピーする方法を示します。"
 keywords: "BLOB SQL, Blob Storage, データのコピー"
 services: data-factory
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 70c38f155874c5d9254260c684fea23e22dd59fd
+ms.sourcegitcommit: 2dcba235353f2b1bd2b42d93066a91071f0ea1a1
+ms.openlocfilehash: 8b9afcd62ad318e181e2d210af58dcb412eefaaf
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -127,8 +128,3 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 > このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、「[チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)」を参照してください。
 > 
 > 2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 詳細については、[Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

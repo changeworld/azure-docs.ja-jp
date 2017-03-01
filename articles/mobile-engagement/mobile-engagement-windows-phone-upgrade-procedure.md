@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメント向け Windows Phone Si
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 87130026-9759-4659-9184-788a3627a165
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 06b2a8b5e12d33c3ade469491b2694dd4a342cf1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -110,7 +111,7 @@ Capptain リソースをカスタマイズした場合、古いファイルの�
         </engagement:EngagementPage>
 4. Capptain 画像のようなその他のリソースも名前が変更されて、「Engagement」を使用しますので注意してください。
 
-### <a name="application-id-sdk-key"></a>アプリケーション ID / SDK キー
+### <a name="application-id--sdk-key"></a>アプリケーション ID / SDK キー
 Engagement は、接続文字列を使用します。 Mobile Engagement でアプリケーション ID と SDK キーを指定する必要はありません。指定する必要があるのは接続文字列のみです。 接続文字列は、EngagementConfiguration ファイルで設定できます。
 
 Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで設定できます。
@@ -142,10 +143,5 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 * GetCapptainPageName は GetEngagementPageName という名前になりました
 
 名前の変更はオーバーライドされたメソッドにも影響することにご注意ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

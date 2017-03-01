@@ -4,7 +4,7 @@ description: "Azure App Service でホストされている Web アプリで発�
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: top-support-issue
 keywords: "502 無効なゲートウェイ, 503 サービス利用不可, 503 エラー, 502 エラー"
@@ -19,6 +19,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f6ef85e0c05911bb3ad13a8ffb029bf9fadd8bfd
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -129,10 +130,5 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
  ![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

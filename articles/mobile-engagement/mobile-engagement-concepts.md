@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement の概念"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8d19abd1-0a6c-4772-9fa5-5e99980ac5da
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 2db8af1badf908ec69e4d994755bad87e8653dee
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -86,10 +87,5 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 * [Azure モバイル エンゲージメントの Windows Phone Silverlight SDK 概要](mobile-engagement-windows-phone-sdk-overview.md)
 * [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
 * [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

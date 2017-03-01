@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメントを使用して、プ�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: d5110a33e13802fd6e5e0f075c7d3ddd521a1ef9
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -266,10 +267,5 @@ UI の [Reach (リーチ)] セクションを使用して、プッシュ通知�
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

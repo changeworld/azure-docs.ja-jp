@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 2ea87726b06a0e8ab20515031424bf4e93f45a80
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD と Proofpoint on Demand の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Proofpoint on Demand でのシングル サインオン サブスクリプション
+* Proofpoint on Demand でのシングル サインオン (SSO) サブスクリプション
 
 このチュートリアルの手順をテストするには、次の推奨事項に従います。
 
@@ -45,10 +46,10 @@ Azure AD と Proofpoint on Demand の統合を構成するには、次のもの�
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-1. ギャラリーからの Proofpoint on Demand の追加。
-2. Azure AD シングル サインオンの構成とテスト。
+* ギャラリーからの Proofpoint on Demand の追加。
+* Azure AD シングル サインオンの構成とテスト。
 
 ## <a name="add-proofpoint-on-demand-from-the-gallery"></a>ギャラリーからの Proofpoint on Demand の追加
 Azure AD への Proofpoint on Demand の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Proofpoint on Demand を追加する必要があります。
@@ -98,28 +99,19 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
    
     ![ボックスに情報が入力された [アプリケーション設定の構成] ページ](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_04.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが Proofpoint on Demand アプリケーションへのサインオンに使用する URL を入力します。 **https://\<ホスト名\>.pphosted.com/ppssamlsp_hostname** というパターンを使用します。
-   
-    b. **[識別子]** ボックスに、**https://\<ホスト名/>.pphosted.com/ppssamlsp** というパターンで URL を入力します。
-   
-    c. **[応答 URL]** ボックスに、**https://\<ホスト名/>.pphosted.com:portnumber/v1/samlauth/samlconsumer** というパターンで URL を入力します。
-   
-    d. **[次へ]**をクリックします。
+   1. **[サインオン URL]** ボックスに、ユーザーが Proofpoint on Demand アプリケーションへのサインオンに使用する URL を入力します。 **https://\<ホスト名\>.pphosted.com/ppssamlsp_hostname** というパターンを使用します。
+   2. **[識別子]** ボックスに、**https://\<ホスト名/>.pphosted.com/ppssamlsp** というパターンで URL を入力します。
+   3. **[応答 URL]** ボックスに、**https://\<ホスト名/>.pphosted.com:portnumber/v1/samlauth/samlconsumer** というパターンで URL を入力します。  
+   4. **[次へ]**をクリックします。
 4. **[Proofpoint on Demand でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![[Proofpoint on Demand でのシングル サインオンの構成] ページと [証明書のダウンロード] ボタン](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
+   1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。   
+   2. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するために、Proofpoint on Demand サポート チームに連絡し、次のものを情報として提供します。
-   
-    • ダウンロードした証明書
-   
-    • エンティティ ID
-   
-    • SAML SSO URL
+   * ダウンロードした証明書
+   * エンティティ ID
+   * SAML SSO URL
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![シングル サインオンの構成確認のチェック ボックス][10]
@@ -142,34 +134,28 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![[ユーザーの追加] ボタン](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png)
-5. **[このユーザーに関する情報の入力]** ページで、次の手順を実行します。 ![ボックスに情報が入力された [このユーザーに関する情報の入力] ページ](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーの種類]** で **[組織内の新しいユーザー]** を選択します。
-   
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
-6. **[ユーザー プロファイル]** ページで、次の手順を実行します。![ボックスに情報が入力された [ユーザー プロファイル] ページ](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)
-   
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** ボックスの一覧の **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+5. **[このユーザーに関する情報の入力]** ページで、次の手順に従います。
+
+    ![[このユーザーに関する情報の入力] ページ (各ボックスに情報を入力済み)](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)   
+   1. **[ユーザーの種類]** で **[組織内の新しいユーザー]** を選択します。
+   2. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+   3. **[次へ]**をクリックします。
+6. **[ユーザー プロファイル]** ページで、次の手順に従います。
+
+  ![[ユーザー プロファイル] ページ (各ボックスに情報を入力済み)](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)   
+   1. **[名]** ボックスに「**Britta**」と入力します。  
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** ボックスの一覧の **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ページで、**[作成]** をクリックします。
    
-    ![一時パスワードの作成ボタン](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
+   ![一時パスワードの作成ボタン](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
 8. **[一時パスワードの取得]** ページで、次の手順に従います。
    
-    ![[一時パスワードの取得] ページとパスワード情報](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** ボックスの値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+   ![[一時パスワードの取得] ページとパスワード情報](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)  
+   1. **[新しいパスワード]** ボックスの値を書き留めます。
+   2. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="create-a-proofpoint-on-demand-test-user"></a>Proofpoint on Demand のテスト ユーザーの作成
 このセクションでは、Proofpoint on Demand で Britta Simon というユーザーを作成します。 Proofpoint on Demand サポート チームと連携し、Proofpoint on Demand プラットフォームにユーザーを追加してください。
@@ -219,9 +205,4 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 [203]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

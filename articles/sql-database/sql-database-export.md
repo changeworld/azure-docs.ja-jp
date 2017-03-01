@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 3f0af43c103e34535fd114e33c40da010ea69d69
-ms.openlocfilehash: b8a2a33909f77dd1bbe0a7b454e15df7432164a8
+ms.sourcegitcommit: 2461f706f8fc1150e69312098640c0676206a531
+ms.openlocfilehash: 4edd728fe4798450106a4991b353b9dac9de0d88
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -60,9 +61,4 @@ ms.openlocfilehash: b8a2a33909f77dd1bbe0a7b454e15df7432164a8
 * SQL Server データベースの移行プロセス全体の詳細については、[Azure SQL Database への SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 * Azure でのデータベースのコピーに関する概要については、[Azure SQL Database のコピー](sql-database-copy.md)に関するページを参照してください。
 * [Azure Portal](sql-database-copy-portal.md)、[PowerShell](sql-database-copy-powershell.md)、または [Transact-SQL](sql-database-copy-transact-sql.md) を使用して、Azure 内で Azure SQL Database をコピーできます。 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

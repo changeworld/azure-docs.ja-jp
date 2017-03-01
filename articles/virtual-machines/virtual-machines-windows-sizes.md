@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 02/23/2017
 ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 0e1cd22feed61bd41a8f002dc58e2fb0ade1e22e
 ms.openlocfilehash: 3b42be10257440abcb41178592a9d81feed69b11
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -33,10 +34,5 @@ ms.openlocfilehash: 3b42be10257440abcb41178592a9d81feed69b11
 > 
 
 [!INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

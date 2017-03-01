@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 02/23/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 48fc6d16c2a9c0a5e617f5c0fd9d5e6aebe6ce05
-ms.openlocfilehash: 2c45857dea0d9962b724d5c890cd7d5595cf89dc
+ms.sourcegitcommit: ca6774310d97cb1c3e72ed43a3340e3bb3d9c70a
+ms.openlocfilehash: 9900183d8207a664b47426209ab3b3b0f6154b2a
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="list-of-tutorials-on-how-to-integrate-saas-apps-with-azure-active-directory"></a>SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧
 すべてのクラウド [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションを Azure Active Directory と統合できるように、必要な構成手順を個別に示す一連のチュートリアルを作成しました。
 
-Azure AD に事前に統合されている SaaS アプリの包括的な一覧については、 [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)のページを参照してください。
+Azure AD に事前に統合されている SaaS アプリの包括的な一覧については、 [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)のページを参照してください。
 
 ## <a name="list-of-tutorials"></a>チュートリアルの一覧
 
@@ -323,10 +324,5 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

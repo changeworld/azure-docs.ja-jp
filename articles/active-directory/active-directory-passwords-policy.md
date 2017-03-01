@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 5cb86ac4694d8b763fa693954a8bb1383739497c
+ms.sourcegitcommit: fc73b667112fe35473872c33bc98423a424c5c65
+ms.openlocfilehash: d6bee5afea6afcd756b53f41baef5dd984423c0a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -48,8 +49,8 @@ Azure AD 認証システムにサインインする必要があるすべての�
 | パスワードの有効期間 |<ul><li>規定値: **90** 日 </li><li>値を構成するには、Windows PowerShell の Azure Active Directory モジュールから Set-MsolPasswordPolicy コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 |<ul><li>既定値: **14** 日 (パスワードの有効期限が切れる前)</li><li>値は Set-MsolPasswordPolicy コマンドレットを使用して構成できます。</li></ul> |
 | パスワードの期限切れ |<ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します) </li><li>各ユーザー アカウントの値を構成するには、Set-MsolUser コマンドレットを使用します。 </li></ul> |
-| パスワードの履歴 |前回のパスワードは再使用できません。 |
-| パスワード履歴の期間 |無期限 |
+| パスワード**変更**履歴 |パスワードを**変更する**ときに、前回のパスワードをもう一度使用することは**できません**。 |
+| パスワード **リセット**履歴 | 忘れたパスワードを**リセット**するときに、前回のパスワードをもう一度使用することが**できます**。 |
 | アカウントのロックアウト |正しくないパスワードを入力してサインイン試行に 10 回失敗したユーザーを、1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 |
 
 ## <a name="next-steps"></a>次のステップ
@@ -63,9 +64,4 @@ Azure AD 認証システムにサインインする必要があるすべての�
 * [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
 * [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
 * [詳細情報](active-directory-passwords-learn-more.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

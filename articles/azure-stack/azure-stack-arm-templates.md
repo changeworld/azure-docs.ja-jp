@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/1/2017
 ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: 37db6d05e6db6a31c21959c2c229c856fbcc8d6b
 ms.openlocfilehash: 0a14de34b56ad758e098a000092d894d2ec2df35
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -73,10 +74,5 @@ To cancel a running template deployment, use the `Stop-AzureRmResourceGroupDeplo
 [Deploy templates with the portal](azure-stack-deploy-template-portal.md)
 
 [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/09/2017
+ms.date: 02/24/2017
 ms.author: janeng
 translationtype: Human Translation
 ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6

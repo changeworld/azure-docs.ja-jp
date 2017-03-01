@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 2/17/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: e64b544d8785b7453f4d77333fd0eb6673d32504
-ms.openlocfilehash: f5a6ee866891fdfb27ed00a22cbd784484ae5e5f
+ms.sourcegitcommit: 354bf45625c209c22118804d3835ca71e3128580
+ms.openlocfilehash: deda64fb779e176bb00c3256fa3028e7e3567eb4
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -34,10 +35,27 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|
 |qpu_metric|QPU|カウント|平均|QPU。 範囲は S1 で 0 ～ 100、S2 で 0 ～ 200、S4 で 0 ～ 400|
 |memory_metric|メモリ|バイト|平均|メモリ。 範囲は S1 で 0 ～ 25 GB、S2 で 0 ～ 50 GB、S4 で 0 ～ 100 GB|
+|TotalConnectionRequests|合計接続要求数|カウント|平均|合計接続要求数。 これらは到着した接続要求です。|
+|SuccessfullConnectionsPerSec|成功した接続数 (秒単位)|CountPerSecond|平均|接続が正常に完了した割合。|
+|TotalConnectionFailures|合計接続失敗数|カウント|平均|失敗した接続試行数の合計。|
+|CurrentUserSessions|現在のユーザー セッション|カウント|平均|確立された現在のユーザー セッションの数。|
+|QueryPoolBusyThreads|クエリ プール ビジー スレッド|カウント|平均|クエリ スレッド プールのビジー スレッドの数。|
+|CommandPoolJobQueueLength|コマンド プールのジョブ キューの長さ|カウント|平均|コマンド スレッド プールのキュー内のジョブの数。|
+|ProcessingPoolJobQueueLength|処理プール ジョブ キューの長さ|カウント|平均|処理スレッド プールのキュー内の非 I/O ジョブの数。|
+
+## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
+
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
+|---|---|---|---|---|
+|TotalRequests|ゲートウェイ要求の合計|カウント|合計|ゲートウェイ要求の数|
+|SuccessfulRequests|成功したゲートウェイ要求|カウント|合計|成功したゲートウェイ要求の数|
+|UnauthorizedRequests|未承認ゲートウェイ要求|カウント|合計|未承認ゲートウェイ要求の数|
+|FailedRequests|失敗したゲートウェイ要求|カウント|合計|ゲートウェイ要求における失敗の数|
+|OtherRequests|その他のゲートウェイ要求|カウント|合計|その他のゲートウェイ要求の数|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
 |---|---|---|---|---|
 |CoreCount|コア数|カウント|合計|Batch アカウントの合計コア数|
 |TotalNodeCount|ノード数|カウント|合計|Batch アカウントの合計ノード数|
@@ -282,29 +300,66 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
-| メトリック | メトリックの表示名 | 単位 | 集計の種類 | Description |
-| --- | --- | --- | --- | --- |
-| d2c.telemetry.ingress.allProtocol |テレメトリ メッセージ送信試行 |カウント |合計 |IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数 |
-| d2c.telemetry.ingress.success |送信済みテレメトリ メッセージ |カウント |合計 |IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数 |
-| d2c.telemetry.egress.success | 配信されたテレメトリ メッセージ | カウント | 合計 | 成功したエンドポイントへの全書き込みの回数 |
-| d2c.telemetry.egress.invalid | 無効なテレメトリ メッセージ配信の試行 | カウント | 合計 | エンドポイントとの互換性がないために配信されなかったメッセージの数 |
-| d2c.telemetry.egress.dropped | 破棄されたテレメトリ メッセージ | カウント | 合計 | エンドポイントが異常な状態であるために破棄されたメッセージの数 |
-| d2c.telemetry.egress.fallback | フォールバックの条件に一致するテレメトリ メッセージ | カウント | 合計 | フォールバック ルートに一致するメッセージの数 |
-| d2c.telemetry.egress.orphaned | 孤立したテレメトリ メッセージ | カウント | 合計 | フォールバック ルートを含め、すべてのルートと一致しないメッセージの数 |
-| d2c.endpoints.latency.eventHubs | イベント ハブ エンドポイントのメッセージの待機時間 | ミリ秒 | 平均 | IoT ハブの受信メッセージとイベント ハブ エンドポイントの受信メッセージの間の平均、最小、最大待機時間 (ミリ秒) |
-| d2c.endpoints.latency.serviceBusQueues | Service Bus キュー エンドポイントのメッセージの待機時間 | ミリ秒 | 平均 | IoT ハブの受信メッセージと Service Bus キュー エンドポイントの受信メッセージの間の平均、最小、最大待機時間 (ミリ秒) |
-| d2c.endpoints.latency.serviceBusTopics | Service Bus トピック エンドポイントのメッセージの待機時間 | ミリ秒 | 平均 | IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均、最小、最大待機時間 (ミリ秒) |
-| c2d.commands.egress.complete.success |完了したコマンド |カウント |合計 |デバイスで正常に完了した Cloud to Device コマンドの数 |
-| c2d.commands.egress.abandon.success |中止したコマンド |カウント |合計 |デバイスで中止された Cloud to Device コマンドの数 |
-| c2d.commands.egress.reject.success |拒否されたコマンド |カウント |合計 |デバイスで拒否された Cloud to Device コマンドの数 |
-| devices.totalDevices |合計デバイス |カウント |合計 |IoT Hub に登録されたデバイスの数 |
-| devices.connectedDevices.allProtocol |接続されているデバイス |カウント |合計 |IoT Hub に接続されているデバイスの数 |
+
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
+|---|---|---|---|---|
+|d2c.telemetry.ingress.allProtocol|テレメトリ メッセージ送信試行|カウント|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|
+|d2c.telemetry.ingress.success|送信済みテレメトリ メッセージ|カウント|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|
+|c2d.commands.egress.complete.success|完了したコマンド|カウント|合計|デバイスで正常に完了した Cloud to Device コマンドの数|
+|c2d.commands.egress.abandon.success|中止したコマンド|カウント|合計|デバイスで中止された Cloud to Device コマンドの数|
+|c2d.commands.egress.reject.success|拒否されたコマンド|カウント|合計|デバイスで拒否された Cloud to Device コマンドの数|
+|devices.totalDevices|合計デバイス|カウント|合計|IoT Hub に登録されたデバイスの数|
+|devices.connectedDevices.allProtocol|接続されているデバイス|カウント|合計|IoT Hub に接続されているデバイスの数|
+|d2c.telemetry.egress.success|配信されたテレメトリ メッセージ|カウント|合計|メッセージがエンドポイントに正常に書き込まれた回数 (合計)|
+|d2c.telemetry.egress.dropped|破棄されたメッセージ|カウント|合計|ルートが一致せず、フォールバック ルートが無効になったために破棄されたメッセージの数|
+|d2c.telemetry.egress.orphaned|孤立したメッセージ|カウント|合計|フォールバック ルートを含め、すべてのルートと一致しないメッセージの数|
+|d2c.telemetry.egress.invalid|無効なメッセージ|カウント|合計|エンドポイントとの互換性がないために配信されなかったメッセージの数|
+|d2c.telemetry.egress.fallback|フォールバック条件に一致するメッセージ|カウント|合計|フォールバック エンドポイントに書き込まれたメッセージの数|
+|d2c.endpoints.egress.eventHubs|Event Hub エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Event Hub エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.eventHubs|イベント ハブ エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージとイベント ハブ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.serviceBusQueues|Service Bus キュー エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Service Bus キュー エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.serviceBusQueues|Service Bus キュー エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus キュー エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.serviceBusTopics|Service Bus トピック エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Service Bus トピック エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.serviceBusTopics|Service Bus トピック エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.builtIn.events|組み込みエンドポイント (イベント/メッセージ) に配信されたメッセージ|カウント|合計|メッセージが組み込みエンドポイント (イベント/メッセージ) に正常に書き込まれた回数|
+|d2c.endpoints.latency.builtIn.events|組み込みエンドポイント (イベント/メッセージ) のメッセージ待機時間|ミリ秒|平均|IoT ハブの受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信メッセージの間の平均待機時間 (ミリ秒) |
+|d2c.twin.read.success|成功したデバイスからのツイン読み取り|カウント|合計|デバイスが開始して成功したツイン読み取りの数。|
+|d2c.twin.read.failure|失敗したデバイスからのツイン読み取り|カウント|合計|デバイスが開始したツイン読み取りの失敗数。|
+|d2c.twin.read.size|デバイスからのツイン読み取りの応答サイズ|バイト|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|
+|d2c.twin.update.success|成功したデバイスからのツイン更新|カウント|合計|デバイスが開始して成功したツイン更新の数。|
+|d2c.twin.update.failure|失敗したデバイスからのツイン更新|カウント|合計|デバイスが開始して失敗したツイン更新の数。|
+|d2c.twin.update.size|デバイスからのツイン更新のサイズ|バイト|平均|デバイスが開始して成功したツイン更新の平均、最小、および最大サイズ。|
+|c2d.methods.success|成功したダイレクト メソッドの呼び出し|カウント|合計|成功したダイレクト メソッドの呼び出しの数。|
+|c2d.methods.failure|失敗したダイレクト メソッドの呼び出し|カウント|合計|失敗したダイレクト メソッドの呼び出しの数。|
+|c2d.methods.requestSize|ダイレクト メソッドの呼び出しの要求サイズ|バイト|平均|成功したダイレクト メソッド要求の平均、最小、および最大サイズ。|
+|c2d.methods.responseSize|ダイレクト メソッドの呼び出しの応答サイズ|バイト|平均|成功したダイレクト メソッド応答の平均、最小、および最大サイズ。|
+|c2d.twin.read.success|成功したバック エンドからのツイン読み取り|カウント|合計|バックエンドが開始して成功したツイン読み取りの数。|
+|c2d.twin.read.failure|失敗したバックエンドからのツイン読み取り|カウント|合計|バックエンドが開始して失敗したツイン読み取りの数。|
+|c2d.twin.read.size|バック エンドからのツイン読み取りの応答サイズ|バイト|平均|バックエンドが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|
+|c2d.twin.update.success|成功したバックエンドからのツイン更新|カウント|合計|バックエンドが開始して成功したツイン更新の数。|
+|c2d.twin.update.failure|失敗したバック エンドからのツイン更新|カウント|合計|バックエンドが開始して失敗したツイン更新の数。|
+|c2d.twin.update.size|バックエンドからのツイン更新のサイズ|バイト|平均|バックエンドが開始して成功したツイン更新の平均、最小、および最大サイズ。|
+|twinQueries.success|成功したツイン クエリ|カウント|合計|成功したツイン クエリの数。|
+|twinQueries.failure|失敗したツイン クエリ|カウント|合計|失敗したツイン クエリの数。|
+|twinQueries.resultSize|ツイン クエリの結果のサイズ|バイト|平均|成功したツイン クエリの結果の平均、最小、および最大サイズ。|
+|jobs.createTwinUpdateJob.success|成功したツイン更新ジョブの作成|カウント|合計|正常に作成されたツイン更新ジョブの数。|
+|jobs.createTwinUpdateJob.failure|失敗したツイン更新ジョブの作成|カウント|合計|作成に失敗したツイン更新ジョブの数。|
+|jobs.createDirectMethodJob.success|成功したメソッド呼び出しジョブの作成|カウント|合計|正常に作成されたダイレクト メソッド呼び出しジョブの数。|
+|jobs.createDirectMethodJob.failure|失敗したメソッド呼び出しジョブの作成|カウント|合計|作成に失敗したダイレクト メソッド呼び出しジョブの数。|
+|jobs.listJobs.success|成功したジョブ一覧の呼び出し|カウント|合計|正常に実行されたジョブ一覧の呼び出しの数。|
+|jobs.listJobs.failure|失敗したジョブ一覧の呼び出し|カウント|合計|失敗したジョブ一覧の呼び出しの数。|
+|jobs.cancelJob.success|成功したジョブの取り消し|カウント|合計|正常に実行されたジョブ取り消しの呼び出し。|
+|jobs.cancelJob.failure|失敗したジョブの取り消し|カウント|合計|失敗したジョブ取り消しの呼び出し。|
+|jobs.queryJobs.success|成功したジョブ クエリ|カウント|合計|正常に実行されたクエリ ジョブの呼び出しの数。|
+|jobs.queryJobs.failure|失敗したジョブ クエリ|カウント|合計|失敗したジョブ クエリの呼び出しの数。|
+|jobs.completed|完了したジョブ|カウント|合計|完了したジョブの数。|
+|jobs.failed|失敗したジョブ|カウント|合計|失敗したジョブの数。|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|INREQS|受信要求|カウント|合計|名前空間のEvent Hub 受信メッセージのスループット|
+|INREQS|受信要求|カウント|合計|名前空間の受信要求の総数|
 |SUCCREQ|成功した要求|カウント|合計|名前空間の成功した要求の総数|
 |FAILREQ|失敗した要求|カウント|合計|名前空間の失敗した要求の総数|
 |SVRBSY|サーバー ビジー エラー|カウント|合計|名前空間のサーバー ビジー エラーの総数|
@@ -312,8 +367,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MISCERR|その他のエラー|カウント|合計|名前空間の失敗した要求の総数|
 |INMSGS|受信メッセージ|カウント|合計|名前空間の受信メッセージの総数|
 |OUTMSGS|送信メッセージ|カウント|合計|名前空間の送信メッセージの総数|
-|EHINMBS|1 秒あたりの受信バイト数|BytesPerSecond|合計|名前空間のEvent Hub 受信メッセージのスループット|
-|EHOUTMBS|1 秒あたりの送信バイト数|BytesPerSecond|合計|名前空間の送信メッセージの総数|
+|EHINMBS|着信バイト数|BytesPerSecond|合計|名前空間のEvent Hub 受信メッセージのスループット|
+|EHOUTMBS|発信バイト数|BytesPerSecond|合計|名前空間の送信メッセージの総数|
 |EHABL|アーカイブ バックログ メッセージ|カウント|合計|名前空間のバックログ内の Event Hub アーカイブ メッセージ|
 |EHAMSGS|アーカイブ メッセージ|カウント|合計|名前空間内の Event Hub アーカイブ メッセージ|
 |EHAMBS|アーカイブ メッセージ スループット|BytesPerSecond|合計|名前空間内の HubEvent アーカイブ メッセージのスループット|
@@ -359,6 +414,70 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|
 |スループット|スループット|BytesPerSecond|平均||
 
+## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
+
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
+|---|---|---|---|---|
+|registration.all|登録操作|カウント|合計|成功した登録操作の数 (作成、更新、クエリ、および削除)。 |
+|registration.create|登録作成操作|カウント|合計|成功した登録作成の数。|
+|registration.update|登録更新操作|カウント|合計|成功した登録更新の数。|
+|registration.get|登録読み取り操作|カウント|合計|成功した登録クエリの数。|
+|registration.delete|登録削除操作|カウント|合計|成功した登録削除の数。|
+|incoming|受信メッセージ|カウント|合計|成功した送信 API 呼び出しの数。 |
+|incoming.scheduled|予定されていたプッシュ通知の送信|カウント|合計|予定されていたプッシュ通知が取り消されました|
+|incoming.scheduled.cancel|予定されていたプッシュ通知の取り消し|カウント|合計|予定されていたプッシュ通知の取り消し|
+|scheduled.pending|予定されていた通知の保留|カウント|合計|予定されていた通知の保留|
+|installation.all|インストール管理操作|カウント|合計|インストール管理操作|
+|installation.get|インストール操作の取得|カウント|合計|インストール操作の取得|
+|installation.upsert|インストール操作の作成または更新|カウント|合計|インストール操作を作成または更新します|
+|installation.patch|インストール操作のパッチ|カウント|合計|インストール操作をパッチします|
+|installation.delete|インストール操作の削除|カウント|合計|インストール操作を削除します|
+|outgoing.allpns.success|正常な通知|カウント|合計|成功した通知の数。|
+|outgoing.allpns.invalidpayload|ペイロード エラー|カウント|合計|PNS が不良ペイロード エラーを返しために失敗したプッシュの数。|
+|outgoing.allpns.pnserror|外部通知システム エラー|カウント|合計|PNS との通信に問題があったために失敗したプッシュの数 (認証の問題は除きます)。|
+|outgoing.allpns.channelerror|チャネル エラー|カウント|合計|チャネルが適切に調整されていないアプリまたは有効期限が切れたアプリに関連付けられていたために失敗したプッシュの数。|
+|outgoing.allpns.badorexpiredchannel|適切または期限切れのチャネル エラー|カウント|合計|登録内のチャネル/トークン/登録 ID が期限切れまたは無効なために失敗したプッシュの数。|
+|outgoing.wns.success|WNS 正常通知|カウント|合計|成功した通知の数。|
+|outgoing.wns.invalidcredentials|WNS 承認エラー (無効な資格情報)|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数  (Windows Live は資格情報を認識しません)。|
+|outgoing.wns.badchannel|WNS 不良チャネル エラー|カウント|合計|登録の ChannelURI が認識されなかったために失敗したプッシュの数 (WNS ステータス: 404 - 見つかりません)。|
+|outgoing.wns.expiredchannel|WNS 期限切れチャネル エラー|カウント|合計|ChannelURI の有効期限が切れているために失敗したプッシュの数 (WNS ステータス: 410 - 削除)。|
+|outgoing.wns.throttled|WNS 調整済み通知|カウント|合計|WNS がこのアプリを調整しているために失敗したプッシュの数 (WNS ステータス: 406 - 受信不可)。|
+|outgoing.wns.tokenproviderunreachable|WNS 承認エラー (到達不可)|カウント|合計|Windows Live に到達できません。|
+|outgoing.wns.invalidtoken|WNS 承認エラー (無効なトークン)|カウント|合計|WNS に提供されたトークンは無効です (WNS ステータス: 401 - 許可されていません)。|
+|outgoing.wns.wrongtoken|WNS 承認エラー (間違ったトークン)|カウント|合計|WNS に提供されたトークンは有効ですが、別のアプリケーション用です (WNS ステータス: 403 - 禁止されています)。 これは、登録の ChannelURI が別のアプリケーションに関連付けられている場合に発生します。 クライアント アプリに関連付けられているアプリの資格情報が通知ハブ内にあることを確認します。|
+|outgoing.wns.invalidnotificationformat|WNS 無効通知形式|カウント|合計|通知形式が無効です (WNS ステータス: 400)。 WNS ではすべての無効なペイロードを拒否するわけではないことに注意してください。|
+|outgoing.wns.invalidnotificationsize|WNS 無効通知サイズ エラー|カウント|合計|通知ペイロードが大きすぎます (WNS ステータス: 413)。|
+|outgoing.wns.channelthrottled|WNS 調整済みチャネル|カウント|合計|登録の ChannelURI が調整されているため、通知は破棄されました (WNS 応答ヘッダー: X-WNS-NotificationStatus:channelThrottled)。|
+|outgoing.wns.channeldisconnected|WNS チャネル切断|カウント|合計|登録の ChannelURI が調整されているため、通知は破棄されました (WNS 応答ヘッダー: X-WNS-DeviceConnectionStatus: disconnected)。|
+|outgoing.wns.dropped|WNS ドロップ通知|カウント|合計|登録の ChannelURI が調整されているため、通知は破棄されました (X-WNS-NotificationStatus: dropped but not X-WNS-DeviceConnectionStatus: disconnected)。|
+|outgoing.wns.pnserror|WNS エラー|カウント|合計|WNS との通信エラーにより、通知が配信されません。|
+|outgoing.wns.authenticationerror|WNS 認証エラー|カウント|合計|資格情報無効または間違ったトークンによる Windows Live との通信エラーのため、通知が配信されません。|
+|outgoing.apns.success|APNS 正常通知|カウント|合計|成功した通知の数。|
+|outgoing.apns.invalidcredentials|APNS 認証エラー|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数 |
+|outgoing.apns.badchannel|APNS 不良チャネル エラー|カウント|合計|トークンが無効なために失敗したプッシュの数 (APNS 状態コード: 8)。|
+|outgoing.apns.expiredchannel|APNS 期限切れチャネル エラー|カウント|合計|APNS フィードバック チャネルによって無効化されたトークンの数。|
+|outgoing.apns.invalidnotificationsize|APNS 無効通知サイズ エラー|カウント|合計|ペイロードが長すぎたために失敗したプッシュの数 (APNS 状態コード: 7)。|
+|outgoing.apns.pnserror|APNS エラー|カウント|合計|APNS との通信エラーにより失敗したプッシュの数。|
+|outgoing.gcm.success|GCM 正常通知|カウント|合計|成功した通知の数。|
+|outgoing.gcm.invalidcredentials|GCM 承認エラー (無効な資格情報)|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数 |
+|outgoing.gcm.badchannel|GCM 不良チャネル エラー|カウント|合計|登録内の registrationId が認識されなかったために失敗したプッシュの数 (GCM 結果: 無効な登録)。|
+|outgoing.gcm.expiredchannel|GCM 期限切れチャネル エラー|カウント|合計|登録内の registrationId が有効期限切れだったために失敗したプッシュの数 (GCM 結果: NotRegistered)。|
+|outgoing.gcm.throttled|GCM 調整済み通知|カウント|合計|GCM がこのアプリを調整したために失敗したプッシュの数 (GCM 状態コード: 501-599、または結果: 利用不可)。|
+|outgoing.gcm.invalidnotificationformat|GCM 無効通知形式|カウント|合計|ペイロードの形式が正しくなかったために失敗したプッシュの数 (GCM 結果: InvalidDataKey または InvalidTtl)。|
+|outgoing.gcm.invalidnotificationsize|GCM 無効通知サイズ エラー|カウント|合計|ペイロードが長すぎたために失敗したプッシュの数 (GCM 結果: MessageTooBig)。|
+|outgoing.gcm.wrongchannel|GCM 誤チャネル エラー|カウント|合計|登録内の registrationId が現在のアプリに関連付けられていないために失敗したプッシュの数 (GCM 結果: InvalidPackageName)。|
+|outgoing.gcm.pnserror|GCM エラー|カウント|合計|GCM との通信エラーにより失敗したプッシュの数。|
+|outgoing.gcm.authenticationerror|GCM 認証エラー|カウント|合計|PNS が提供された資格情報を受け入れなかったかったために失敗したプッシュの数。資格情報がブロックされているか、アプリでSenderId が正しく構成されていません (GCM 結果: MismatchedSenderId)。|
+|outgoing.mpns.success|MPNS 正常通知|カウント|合計|成功した通知の数。|
+|outgoing.mpns.invalidcredentials|MPNS 無効な資格情報|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数 |
+|outgoing.mpns.badchannel|MPNS 不良チャネル エラー|カウント|合計|登録の ChannelURI が認識されなかったために失敗したプッシュの数 (MPNS ステータス: 404 - 見つかりません)。|
+|outgoing.mpns.throttled|MPNS 調整済み通知|カウント|合計|MPNS がこのアプリを調整しているために失敗したプッシュの数 (WNS MPNS: 406 - 受信不可)。|
+|outgoing.mpns.invalidnotificationformat|MPNS 無効通知形式|カウント|合計|通知のペイロードが長すぎたために失敗したプッシュの数。|
+|outgoing.mpns.channeldisconnected|MPNS チャネル切断|カウント|合計|登録の ChannelURI が切断されたために失敗したプッシュの数 (MPNS ステータス: 412 - 見つかりません)。|
+|outgoing.mpns.dropped|MPNS ドロップ通知|カウント|合計|MPNS によって破棄されたプッシュの数 (MPNS 応答ヘッダー: X-NotificationStatus: QueueFull または Suppressed)。|
+|outgoing.mpns.pnserror|MPNS エラー|カウント|合計|MPNS との通信エラーにより失敗したプッシュの数。|
+|outgoing.mpns.authenticationerror|MPNS 認証エラー|カウント|合計|PNS が提供された資格情報を受け取らなかったか、資格情報がブロックされたために失敗したプッシュの数 |
+
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|
@@ -388,7 +507,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |blocked_by_firewall|ファイアウォールによってブロックされる|カウント|合計|ファイアウォールによってブロックされる|
 |deadlock|デッドロック|カウント|合計|デッドロック|
 |storage_percent|データベース サイズの割合|Percent|最大値|データベース サイズの割合|
-|xtp_storage_percent|インメモリ OLTP ストレージの割合 (プレビュー)|Percent|平均|インメモリ OLTP ストレージの割合 (プレビュー)|
+|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|
 |workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合|
 |dtu_limit|DTU の上限|カウント|平均|DTU の上限|
@@ -413,6 +532,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_limit|ストレージの制限|バイト|平均|ストレージの制限|
 |eDTU_used|使用済み eDTU|カウント|平均|使用済み eDTU|
 |storage_used|使用済みストレージ|バイト|平均|使用済みストレージ|
+|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -441,9 +561,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |BytesReceived|受信データ|Bytes|合計|受信データ|
 |BytesSent|送信データ|Bytes|合計|送信データ|
 
-## <a name="microsoftwebsites-including-azure-functions"></a>Microsoft.Web/sites (Azure Functions を含む)
+## <a name="microsoftwebsites-including-functions"></a>Microsoft.Web/sites (Functions を含みます)
 
-|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
 |---|---|---|---|---|
 |CpuTime|CPU 時間|Seconds|合計|CPU 時間|
 |要求数|要求数|カウント|合計|要求数|
@@ -458,8 +578,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Http406|HTTP 406|カウント|合計|HTTP 406|
 |Http4xx|HTTP 4xx|カウント|合計|HTTP 4xx|
 |Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
-|MemoryWorkingSet|メモリ ワーキング セット|Bytes|合計|メモリ ワーキング セット|
-|AverageMemoryWorkingSet|平均メモリ ワーキング セット|バイト|合計|平均メモリ ワーキング セット|
+|MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
+|AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
 |AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
 |FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
 |FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
@@ -481,8 +601,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Http406|HTTP 406|カウント|合計|HTTP 406|
 |Http4xx|HTTP 4xx|カウント|合計|HTTP 4xx|
 |Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
-|MemoryWorkingSet|メモリ ワーキング セット|Bytes|合計|メモリ ワーキング セット|
-|AverageMemoryWorkingSet|平均メモリ ワーキング セット|バイト|合計|平均メモリ ワーキング セット|
+|MemoryWorkingSet|メモリ ワーキング セット|バイト|平均|メモリ ワーキング セット|
+|AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|
 |AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
 |FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
 |FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
@@ -491,10 +611,5 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 * [Azure Monitor のメトリックを確認します](monitoring-overview.md#monitoring-sources)
 * [メトリックでアラートを作成します](insights-receive-alert-notifications.md)
 * [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](monitoring-overview-of-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

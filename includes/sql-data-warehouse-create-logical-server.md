@@ -38,15 +38,10 @@
     ![サーバーの場所](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > このブレードの **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスは変更できません。 この設定は、サーバー ファイアウォールのブレードで変更できます。 詳細については、[セキュリティの概要](../articles/sql-database/sql-database-get-started-security.md)に関する記事を参照してください。
+    > このブレードの **[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスは変更できません。 この設定は、サーバー ファイアウォールのブレードで変更できます。 詳細については、[セキュリティの概要](../articles/sql-database/sql-database-manage-servers-portal.md)に関する記事を参照してください。
     >
     
 9. **[作成]**をクリックします。
 
     ![[作成] ボタン](./media/sql-data-warehouse-create-logical-server/create.png)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

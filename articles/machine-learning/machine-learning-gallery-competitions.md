@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
-ms.openlocfilehash: 0e7f5b3ed4e9a23b2d2fe1acdf35450f36ef1ad4
+ms.sourcegitcommit: 6c76311b8ba36ea5dba1c2cd63ee05e1048ca9de
+ms.openlocfilehash: 6ceb50b05075ea9d056a873cf70b13ff85dc6094
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -25,6 +26,8 @@ ms.openlocfilehash: 0e7f5b3ed4e9a23b2d2fe1acdf35450f36ef1ad4
 
 ## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence コンペティション
 **[コンペティション](https://gallery.cortanaintelligence.com/competitions)** では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う、絶好の機会を提供します。
+
+コンペティションについてよく寄せられる質問とその回答については、「[Microsoft Cortana Intelligence コンペティションの FAQ](machine-learning-competition-faq.md)」をご覧ください。
 
 ## <a name="discover"></a>発見
   ギャラリーでコンペティションを閲覧するには、[[ギャラリー]](http://gallery.cortanaintelligence.com) を開き、ギャラリー ホーム ページの上部にある **[詳細]** をマウスでポイントし、**[コンペティション]** を選択します。
@@ -54,10 +57,5 @@ ms.openlocfilehash: 0e7f5b3ed4e9a23b2d2fe1acdf35450f36ef1ad4
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

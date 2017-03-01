@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 3/1/2016
 ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: 5145869c8fac90a9415f658bf541ba95ac33c213
 ms.openlocfilehash: b0d60bc1c66002614179b828efd5d1ae0214b439
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -113,10 +114,5 @@ The downloaded files include a default AzureStackCapabilities_TP2.json file, whi
 ## <a name="next-steps"></a>Next steps
  - [Deploy templates to Azure Stack](azure-stack-arm-templates.md)
  - [Develop templates for Azure Stack] (azure-stack-develop-templates.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

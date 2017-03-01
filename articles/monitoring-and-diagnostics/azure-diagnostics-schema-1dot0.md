@@ -1,22 +1,23 @@
 ---
 title: "Azure 診断 1.0 構成スキーマ | Microsoft Docs"
 description: "この記事は、Azure SDK 2.4 以前を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。"
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 92bb7ca3414962f18da8505b87ca23f0b704e811
+ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
+ms.openlocfilehash: c749a0929d292913e03fa7340bbbebad411fb44d
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 92bb7ca3414962f18da8505b87ca23f0b704e811
 > Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と組み合わせて使用します。
+Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
 Azure 診断構成ファイルは、診断モニターを初期化するときに使用される値を定義します。 このファイルは、診断モニターの開始時に、診断構成設定を初期化するときに使用されます。  
 
@@ -274,9 +275,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Attribute|型|Description|  
 |---------------|----------|-----------------|  
 |**name**|string|必須。 収集するログを指定するための XPath 式。|  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -150,7 +150,6 @@
 ### [インフラストラクチャの例](../virtual-machines-windows-infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Azure の定期的なメンテナンス](../virtual-machines-windows-planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [スケジュール](../virtual-machines-windows-planned-maintenance-schedule.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-### [スケジュールされたイベント](../virtual-machines-scheduled-events.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## ワークロードの管理
 ### [ハイパフォーマンス コンピューティング (HPC)](../virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -184,7 +183,7 @@
 
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
-## [Azure CLI 2.0 (プレビュー)](/cli/azure/vm)
+## [Azure CLI 2.0](/cli/azure/vm)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Java](/java/api)
 ## [Node.JS](https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk)
@@ -199,8 +198,3 @@
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

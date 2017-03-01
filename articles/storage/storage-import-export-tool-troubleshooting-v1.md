@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: a6e5253f9242ce5d9e1be06e24ab2e1a70d1b321
-ms.openlocfilehash: 4cc9e33c63d3fdf4a7d9368b11e802063c67bec7
+ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
+ms.openlocfilehash: 53755e0048cfd80d9f930419a105893e5b34dc41
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -43,9 +44,4 @@ Microsoft Azure Import/Export ツールでは、問題が発生するとエラ�
  [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
  [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
  [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

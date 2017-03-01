@@ -166,7 +166,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_05.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
@@ -175,7 +175,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_06.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
+    a. **[名]** ボックスに「**Britta**」と入力します。  
    
     b. **[姓]** ボックスに「**Simon**」と入力します。
    
@@ -192,7 +192,7 @@ Fieldglass で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fieldglass-tutorial/create_aaduser_08.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
+    a. **[新しいパスワード]** の値を書き留めます。
    
     b. ページの下部にある **[完了]**」を参照してください。   
 

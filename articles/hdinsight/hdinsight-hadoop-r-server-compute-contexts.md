@@ -12,11 +12,12 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 841e70fa3a80bbeb7e2281246bac2f99c0de899f
 ms.openlocfilehash: 169743012b1f50d67d5eafdb279e706719752eb8
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -74,10 +75,5 @@ ScaleR コンピューティング コンテキストの詳細と例について
 * [R Server for Hadoop の使用](hdinsight-hadoop-r-server-get-started.md)
 * [HDInsight へ RStudio Server を追加する (クラスター作成時に追加されていない場合)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

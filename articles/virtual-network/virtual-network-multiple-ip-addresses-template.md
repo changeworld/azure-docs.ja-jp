@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3eda8b459b5f095a40c6ea1ed355472daf23a6e3
-ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 080404a7b4fde0e2fd8b8be407090190d07c6f2a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -122,7 +123,7 @@ PowerShell を使用してテンプレートをデプロイするには、次の
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`-TemplateParameterFile` パラメーターの値として使用します。
     
-    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#powershell)」の記事の手順を実行します。
+    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)」の記事の手順を実行します。
 
     >[!TIP]
     >dnslabelprefix を使用できるかどうかわからない場合は、`Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` コマンドを入力して確認します。 使用できる場合は、コマンドが `True` を返します。
@@ -157,14 +158,9 @@ Azure CLI 1.0 を使用してテンプレートをデプロイするには、次
 
     テンプレートのデプロイに使用するオプションに関係なく、この記事の「[パラメーター](#parameters)」セクションの一覧にあるパラメーター値を指定する必要があります。 パラメーター ファイルを使用してパラメーターを指定する場合は、GitHub の[パラメーター ファイル](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json)の内容を自分のコンピューター上の新しいファイルにコピーします。 ファイル内の値を変更します。 作成したファイルを、`--parameters-file` (-e) パラメーターの値として使用します。
     
-    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli-10)」の記事の手順を実行します。
+    OSVersion、ImagePublisher、imageOffer のパラメーターの有効な値を取得するには、「[Navigate and select Windows VM images (Windows VM イメージの検索と選択)](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)」の記事の手順を実行します。
 
 3. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

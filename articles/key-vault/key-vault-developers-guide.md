@@ -33,6 +33,7 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 ## <a name="videos"></a>ビデオ
 このビデオでは、独自の Key Vault を作成して 「Hello Key Vault」 サンプル アプリケーションからそれを使用する方法について説明します。
 
+
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player]
 
 

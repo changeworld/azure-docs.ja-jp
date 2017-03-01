@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2017
+ms.date: 02/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 0821ec479f21ddcc6dc370070d9a40221054877f
-ms.openlocfilehash: fe1f39df8cafeea4d518a5ee1400652bb499cde1
+ms.sourcegitcommit: e3d01fadc5597efa7beb5ee690470f428ee12b62
+ms.openlocfilehash: 216146ffaa0f2732b2f2369107e80de0bbc4e466
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -31,6 +32,7 @@ ms.openlocfilehash: fe1f39df8cafeea4d518a5ee1400652bb499cde1
 * [Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス](azure-security-best-practices-software-updates-iaas.md)
 * [Azure の境界セキュリティに関するベスト プラクティス](../best-practices-network-security.md)
 * [Azure における安全なハイブリッド ネットワーク アーキテクチャの実装](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
+* [Azure PaaS のベスト プラクティス] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
 
 Azure には、ソリューションを構築できるセキュリティで保護されたプラットフォームが用意されています。 また、Azure 上のソリューションをより高いセキュリティで保護するためのサービスとテクノロジも提供しています。 多数のオプションを利用できるため、多くのお客様から、セキュリティを向上させるために Microsoft がベスト プラクティスやパターンとして推奨する内容について興味があるとのご意見をいただいています。
 
@@ -47,9 +49,4 @@ Azure には、ソリューションを構築できるセキュリティで保�
 * そのベスト プラクティスを実践する方法
 
 マイクロソフトでは、Azure のセキュリティ アーキテクチャとベスト プラクティスに関する記事を今後さらに拡充させていく予定です。 ご希望のテーマがあればぜひ、このページの一番下にあるコメント欄でお知らせください。
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

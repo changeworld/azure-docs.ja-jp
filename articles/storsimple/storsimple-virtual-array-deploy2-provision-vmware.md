@@ -12,17 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
-ms.openlocfilehash: 655c00e3042cca78872df052cb89bab43fbc35a4
+ms.sourcegitcommit: f0ccf2706b5ce514613712fb866dc2d0120b0ad3
+ms.openlocfilehash: fe420fc0d4e5e2b7c625bf3a3d87005fdbcff200
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする
+# <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、VMware ESXi 5.5 以降を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
@@ -241,9 +243,4 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

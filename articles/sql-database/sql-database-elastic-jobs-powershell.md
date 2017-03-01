@@ -15,17 +15,13 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: 5dc7bd506060ec04691abae3054fa3514893e953
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 225896e724717a00057be4c708ce485c8b785d45
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-elastic-jobs-create-and-manage.md)
-> * [PowerShell](sql-database-elastic-jobs-powershell.md)
-> 
-> 
 
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
 
@@ -72,7 +68,7 @@ ms.openlocfilehash: 5dc7bd506060ec04691abae3054fa3514893e953
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">データベース全体に適用されるデータ層アプリケーション </a>パッケージ。
+    <td>データベース全体に適用される<a href="https://msdn.microsoft.com/library/ee210546.aspx">データ層アプリケーション</a> パッケージ。
 
     </td>
     <td>
@@ -649,9 +645,4 @@ DACPAC の作成については、 [データ層アプリケーション](https:
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

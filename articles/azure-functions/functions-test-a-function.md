@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions のテスト | Microsoft Docs"
-description: "Postman、cURL、Node.js を使用して Azure Functions をテストします。"
+title: "Azure 関数のテスト | Microsoft Docs"
+description: "Postman、cURL、Node.js を使用して Azure 関数をテストします。"
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -17,29 +17,30 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3603f58a9df1f0222a75b863ad2c1ab1b6e13fb2
-ms.openlocfilehash: c6868566e513c5cd2c76be3305ca6c9035d58acd
+ms.sourcegitcommit: 811d39a10cee3a602a43b6733d6743959cd02f45
+ms.openlocfilehash: 3795bfa395409fe3850f19cd351371cf07e42b58
+ms.lasthandoff: 02/21/2017
 
 
 ---
-# <a name="testing-azure-functions"></a>Azure Functions のテスト
-## <a name="overview"></a>概要
-このトピックでは、関数をテストするさまざまな方法について説明します。一般的には次のようなアプローチがあります。
+# <a name="testing-azure-functions"></a>Azure 関数のテスト
 
-+ HTTP ベースのツール。cURL、Postman、Web ベースのトリガーを対象とした Web ブラウザーなど。 
-+ Azure Storage ベースのトリガーをテストするためのストレージ エクスプローラー。
-+ Functions ポータルの [テスト] タブ。
-+ タイマーによってトリガーされる関数。
-+ テスト アプリケーションまたはフレームワーク。  
+このトピックでは、関数をテストするさまざまな方法について説明します。一般的には次のようなアプローチを使用します。
 
-ここで紹介するすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで作成します。
++ HTTP ベースのツール。cURL、Postman、Web ベースのトリガーを対象とした Web ブラウザーなど
++ Azure Storage ベースのトリガーをテストするための Azure ストレージ エクスプローラー
++ Azure Functions ポータルの [テスト] タブ
++ タイマーによってトリガーされる関数
++ テスト アプリケーションまたはフレームワーク
+
+これらのすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで作成します。
 
 ## <a name="create-a-function-for-testing"></a>テスト用の関数を作成する
-このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。  新しい関数の作成に関する詳細については、チュートリアル「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。  [Azure ポータル] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
+このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。 関数の作成に関する支援が必要な場合は、この[チュートリアル](functions-create-first-azure-function.md)を参照してください。 [Azure Portal] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
 
-この既定の関数テンプレートは、本質的には hello world 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>`から名前を取得して返します。  記事では、要求本文で JSON コンテンツとして名前と住所を指定できるようにするためのコードの更新も行います。 これにより、関数は、これらが取得可能であれば、クライアントに返すようになります。   
+この既定の関数テンプレートは、本質的には "hello world" 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。  このコードを更新して、要求本文で JSON コンテンツとして名前と住所を指定できるようにします。 関数は、これらが取得可能であれば、クライアントに返すようになります。   
 
-テストに使用する次のコードで関数を更新します。
+次のコードで関数を更新します。これをテストに使用します。
 
 ```javascript
 module.exports = function (context, req) {
@@ -84,22 +85,22 @@ function ProcessNewUserInformation(context, name, address) {
 ```
 
 ## <a name="test-a-function-with-tools"></a>ツールを使用した関数のテスト
-Azure Portal の外部にも、テスト用に関数をトリガーできるツールにはさまざまなものがあります。 たとえば、HTTP テスト ツール (UI ベースとコマンド ライン)、Azure ストレージ アクセス ツール、シンプルな Web ブラウザーを使用して、関数をトリガーできます。
+Azure Portal の他にも、テスト用に関数をトリガーできるツールにはさまざまなものがあります。 たとえば、HTTP テスト ツール (UI ベースとコマンド ライン)、Azure Storage アクセス ツール、シンプルな Web ブラウザーを使用して、関数をトリガーできます。
 
 ### <a name="test-with-a-browser"></a>ブラウザーを使用してテストする
-Web ブラウザーを使用すると、関数を HTTP 経由で簡単にトリガーできます。 本文のペイロードを必要としない GET 要求で、クエリ文字列パラメーターのみを使用するものに対してブラウザーを使用できます。
+Web ブラウザーを使用すると、関数を HTTP 経由で簡単にトリガーできます。 本文のペイロードを必要とせず、クエリ文字列パラメーターのみを使用する GET 要求に対して、ブラウザーを使用できます。
 
-上で定義した関数をテストするには、ポータルから **関数の URL** をコピーします。 関数の URL の形式は次のとおりです。
+上で定義した関数をテストするには、ポータルから**関数の URL** をコピーします。 その形式は、次のとおりです。
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-`name` パラメーターをクエリ文字列に追加します。`<Enter a name here>` プレースホルダーには実際の名前を使用します。 
+クエリ文字列に `name` パラメーターを追加します。 `<Enter a name here>` プレースホルダーに、実際の名前を使用します。
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
 ブラウザーに URL を貼り付けると、次のような応答が取得されます。
 
-![](./media/functions-test-a-function/browser-test.png)
+![テストの応答が表示されている Chrome ブラウザーのタブのスクリーン ショット](./media/functions-test-a-function/browser-test.png)
 
 これは Chrome ブラウザーの例で、XML で返された文字列をラップします。 その他のブラウザーには、文字列の値だけが表示されます。
 
@@ -130,18 +131,18 @@ Postman で要求本文を使用して関数をテストするには、次の手
 2. **関数の URL** をコピーして Postman に貼り付けます。 URL には、アクセス コード クエリ文字列パラメーターが含まれています。
 3. HTTP メソッドを **POST**に変更します。
 4. **[Body (本文)]** > **[raw (未加工)]** の順にクリックし、次のような JSON 要求の本文を追加します。
-    
+
     ```json
     {
         "name" : "Wes testing with Postman",
-        "address" : "Seattle, W.A. 98101"
+        "address" : "Seattle, WA 98101"
     }
     ```
 5. [ **送信**] をクリックします。
 
 次の図は、このチュートリアルの単純なサンプル echo 関数のテストを示しています。
 
-![](./media/functions-test-a-function/postman-test.png)
+![Postman ユーザー インターフェイスのスクリーン ショット](./media/functions-test-a-function/postman-test.png)
 
 関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
@@ -155,24 +156,24 @@ Postman で要求本文を使用して関数をテストするには、次の手
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
-### <a name="test-with-curl-from-the-command-line"></a>コマンドラインで cURL を使用してテストする 
-ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありませんが、これは関数の場合も同じです。 Linux ベースのシステムでは既定で cURL を使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。 
+### <a name="test-with-curl-from-the-command-line"></a>コマンドラインで cURL を使用してテストする
+ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありません。 これは関数のテストの場合も同じです。 Linux ベースのシステムでは既定で cURL を使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。
 
-上記の関数をテストするには、ポータルから**関数の URL** をコピーします。 関数の URL の形式は次のとおりです。
+上で定義した関数をテストするには、ポータルから**関数の URL** をコピーします。 その形式は、次のとおりです。
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-これは、関数をトリガーするための URL です。関数をテストするには、次のように、コマンド ラインで cURL コマンドを使用して、関数に対して GET (`-G` または `--get`) 要求を実行します。
+これは、関数をトリガーするための URL です。 次のように、コマンド ラインで cURL コマンドを使用して、関数に対して GET (`-G` または `--get`) 要求を実行し、テストします。
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-上記の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
+この特定の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
 コマンドを実行すると、コマンド ラインに次の関数出力が表示されます。
 
-![](./media/functions-test-a-function/curl-test.png)
+![コマンド プロンプトの出力のスクリーンショット](./media/functions-test-a-function/curl-test.png)
 
 関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
@@ -181,35 +182,35 @@ Postman で要求本文を使用して関数をテストするには、次の手
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
-[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して BLOB トリガー関数をテストできます。
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
+[Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して、BLOB トリガー関数をテストできます。
 
-1. 関数アプリの [Azure ポータル] で、C#、F#、または JavaScript の BLOB トリガー関数を新規作成します。 監視するパスを BLOB コンテナーの名前に設定します。 次に例を示します。
+1. 関数アプリの [Azure Portal] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 次に例を示します。
 
         files
 2. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
 3. 次のテキストが含まれたテキスト ファイルを作成して保存します。
 
         A text file for blob trigger function testing.
-4. [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/) を実行し、監視対象のストレージ アカウントの BLOB コンテナーに接続します。
-5. **[アップロード]** ボタンをクリックし、テキスト ファイルをアップロードします。
+4. [Azure ストレージ エクスプローラー](http://storageexplorer.com/)を実行し、監視対象のストレージ アカウントの BLOB コンテナーに接続します。
+5. **[アップロード]** をクリックして、テキスト ファイルをアップロードします。
 
-    ![](./media/functions-test-a-function/azure-storage-explorer-test.png)
+    ![ストレージ エクスプローラーのスクリーンショット](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-    既定の BLOB トリガー関数コードによって、ログに BLOB の処理がレポートされます。
+既定の BLOB トリガー関数コードによって、ログに BLOB の処理がレポートされます。
 
-        2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
-        2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-        2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
-        2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+    2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
+    2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+    2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
+    2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>関数内での関数のテスト
 Azure Functions ポータルは、HTTP 関数およびタイマーによってトリガーされる関数をテストするように設計されています。 関数を作成して、テストする他の関数をトリガーすることもできます。
 
-### <a name="test-with-the-functions-portal-run-button"></a>関数ポータルの実行ボタンを使用してテストする
-ポータルにある **[実行]** ボタンをクリックすると、限定的なテストを実施できます。 [実行] ボタンを使用する場合、要求本文は指定できますが、クエリ文字列パラメーターを指定したり、要求ヘッダーを更新したりすることはできません。
+### <a name="test-with-the-functions-portal-run-button"></a>関数ポータルの [実行] ボタンを使用してテストする
+ポータルにある **[実行]** ボタンを使用すると、一部の限定的なテストを実施できます。 [実行] ボタンを使用する場合、要求本文は指定できますが、クエリ文字列パラメーターを指定したり、要求ヘッダーを更新したりすることはできません。
 
-前に作成した HTTP トリガー関数をテストするには、次のような JSON 文字列を **[要求本文]** フィールドに追加し、**[実行]** ボタンをクリックします。
+前に作成した HTTP トリガー関数をテストするには、次のような JSON 文字列を **[要求本文]** フィールドに追加します。 その後、**[実行]** ボタンをクリックします。
 
 ```json
 {
@@ -232,43 +233,43 @@ Azure Functions ポータルは、HTTP 関数およびタイマーによって�
 
 
 ### <a name="test-with-a-timer-trigger"></a>タイマー トリガーを使用してテストする
-機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。 たとえば、メッセージが [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) にドロップされたときに実行されるキュー トリガー関数などがこれにあたります。 キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおけるこの例を下に示します。 ただし、関数で直接テストするための別の方法もあります。  
+機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。 たとえば、メッセージが [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) にドロップされたときに実行されるキュー トリガー関数があるとします。 キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおける例を、この記事の後の方で示します。 しかし、関数を直接テストするための別の方法もあります。  
 
-キュー出力バインドを用いて構成されたタイマー トリガーを使用できます。 このタイマー トリガー コードで、テスト メッセージをキューに書き込むことができます。 このセクションでは、例を用いて説明します。
+キュー出力バインドを用いて構成されたタイマー トリガーを使用できます。 このタイマー トリガー コードで、テスト メッセージをキューに書き込むことができます。 このセクションでは、例を具体的に説明します。
 
 Azure Functions でのバインドの使用に関する詳細については、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を参照してください。
 
-#### <a name="create-queue-trigger-for-testing"></a>テスト用のキュー トリガーの作成
-この方法を実演するために、まず、 `queue-newusers`という名前のキューに対してテストするキュー トリガー関数を作成します。 この関数は、Azure Queue Storage にドロップされた新しいユーザーの名前と住所の情報を処理します。
+#### <a name="create-a-queue-trigger-for-testing"></a>テスト用のキュー トリガーの作成
+この方法を実演するために、まず、`queue-newusers` という名前のキューに対してテストするキュー トリガー関数を作成します。 この関数は、Queue ストレージにドロップされた新しいユーザーの名前と住所の情報を処理します。
 
 > [!NOTE]
-> 別のキュー名を使用する場合は、必ず、 [キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx) の規則に準拠した名前を使用してください。  準拠していない場合、"HTTP 状態コード 400: 正しくない要求" が表示されます。
+> 別のキュー名を使用する場合は、必ず、 [キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx) の規則に準拠した名前を使用してください。 そうしないと、エラーが発生します。
 >
 >
 
-1. Functions App の [Azure ポータル] で、**[新しい関数]** > **[QueueTrigger - C#]** の順にクリックします。
+1. 関数アプリの [Azure Portal] で、**[新しい関数]** > **[QueueTrigger - C#]** の順にクリックします。
 2. キュー関数で監視するキューの名前を入力します。
 
         queue-newusers
-3. **+** (追加) ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
+3. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]**をクリックします。
 4. 既定のキュー関数テンプレート コードのログ エントリを監視できるように、このポータルのブラウザー ウィンドウを開いたままにします。
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>キューにメッセージをドロップするタイマー トリガーの作成
-1. 新しいブラウザー ウィンドウで [Azure ポータル] を開き、関数アプリに移動します。
-2. **[新しい関数]** > **[TimerTrigger - C#]** の順にクリックします。 タイマー コードがキュー関数のテストを実行する頻度を設定する CRON 式を入力します。 **[Create]**をクリックします。 テストを 30 秒ごとに実行する場合は、次の [CRON 式](https://wikipedia.org/wiki/Cron#CRON_expression)を使用できます。
+1. 新しいブラウザー ウィンドウで [Azure Portal] を開き、関数アプリに移動します。
+2. **[新しい関数]** > **[TimerTrigger - C#]** の順にクリックします。 タイマー コードでキュー関数をテストする頻度を設定する CRON 式を入力します。 **[Create]**をクリックします。 テストを 30 秒ごとに実行する場合は、次の [CRON 式](https://wikipedia.org/wiki/Cron#CRON_expression)を使用できます。
 
         */30 * * * * *
 3. 新しいタイマー トリガーの **[統合]** タブをクリックします。
-4. **[出力]** の **[+ New Output (+ 新しい出力)]** ボタンをクリックします。 **[キュー]**、**[選択]** ボタンの順にクリックします。
-5. **キュー メッセージ オブジェクト**に使用している名前をメモします。この名前は、タイマー関数コードで使用します。
+4. **[出力]** の **[+ New Output (+ 新しい出力)]** をクリックします。 **[キュー]**、**[選択]** の順にクリックします。
+5. **キュー メッセージ オブジェクト**に使用する名前をメモしておきます。 これをタイマー関数のコードで使用します。
 
         myQueue
 6. メッセージの送信先キューの名前を入力します。
 
         queue-newusers
-7. **+** (追加) ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。 その後、 **[保存]**をクリックします。
+7. **[+]** ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。 その後、 **[保存]**をクリックします。
 8. タイマー トリガーの **[開発]** タブをクリックします。
-9. 上に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。 **[保存]**
+9. 前に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。 その後、 **[保存]**をクリックします。
 
     ```cs
     using System;
@@ -301,9 +302,9 @@ Azure Functions でのバインドの使用に関する詳細については、�
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>コードを使用した関数のテスト
-場合によっては、関数をテストするために外部アプリケーションまたはフレームワークを作成しなければならないことがあります。
+関数をテストするために外部アプリケーションまたはフレームワークを作成しなければならないことがあります。
 
-### <a name="test-a-http-trigger-function-with-code-nodejs"></a>コードを使用して HTTP トリガー関数をテストする: Node.js
+### <a name="test-an-http-trigger-function-with-code-nodejs"></a>コードを使用して HTTP トリガー関数をテストする: Node.js
 Node.js アプリを使用して HTTP 要求を実行し、関数をテストできます。
 次のように設定します。
 
@@ -376,12 +377,12 @@ req.end(bodyString);
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>コードを使用してキュー トリガー関数をテストする: C# #
-キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。 次のコード例は、 [Azure Queue Storage の概要](../storage/storage-dotnet-how-to-use-queues.md) に関するチュートリアルに記載されている C# コードをベースにしています。 他の言語のコードも、こちらのリンク先から入手できます。
+キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。 次のコード例は、[Azure Queue Storage の概要](../storage/storage-dotnet-how-to-use-queues.md)に関するチュートリアルに記載されている C# コードをベースにしています。 他の言語のコードも、こちらのリンク先から入手できます。
 
 コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
 
 * [app.config ファイルにストレージ接続文字列を構成します](../storage/storage-dotnet-how-to-use-queues.md)。
-* このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。 `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、`C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"` のように指定します。
+* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「 `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
 
 C# のコード例:
 
@@ -441,10 +442,5 @@ static void Main(string[] args)
 
 <!-- URLs. -->
 
-[Azure ポータル]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+[Azure Portal]: https://portal.azure.com
 

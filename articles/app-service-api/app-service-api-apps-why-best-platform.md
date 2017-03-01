@@ -4,7 +4,7 @@ description: "Azure App Service を利用して、RESTful API を開発、ホス
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 60049a16-8159-47aa-a34b-110be0d8dab6
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
 ms.openlocfilehash: 62b1541414543fc947886374424dadee09759323
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -58,10 +59,5 @@ API Management と API Apps の一部の機能には同じような働きがあ�
 * [Java](app-service-api-java-api-app.md) 
 
 API アプリに関する質問がある場合は、 [API Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAPIApps)でスレッドを開始します。 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,6 +1,5 @@
 ---
-title: "PowerShell を使用して Azure HDInsight と Data Lake Store を作成する | Microsoft Docs"
-description: "Azure PowerShell を使用して、Azure Data Lake を使用する HDInsight クラスターを作成します"
+title: "PowerShell: Data Lake Store をアドオン ストレージとして使用する Azure HDInsight クラスター | Microsoft Docs"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -12,34 +11,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2017
+ms.date: 02/14/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0fed9cff7a357c596d7e178ec756be449cd1dff0
-ms.openlocfilehash: aada6f72a3b20233fdeeb7adabf6545ce831d563
+ms.sourcegitcommit: d8100903d78a9ca8d88d2649ad5245ce3f456518
+ms.openlocfilehash: c21f244408ed6f6ca3168ee193bcba4d3b26cd40
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-powershell"></a>Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
+# <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Azure PowerShell を使用して、Data Lake Store を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
 > * [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [PowerShell の使用](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Resource Manager の使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
-Azure PowerShell を使用して、Azure Data Lake Store にアクセスできる HDInsight クラスターを構成する方法について説明します。 サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用します。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
+Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。 既定のストレージとして Azure Data Lake Store を使用する HDInsight クラスターの作成方法については、[既定のストレージとして Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)に関する記事をご覧ください。
 
-重要な考慮事項をいくつか以下に示します。
+サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを既定のストレージとして作成するオプションは、HDInsight バージョン 3.5 で使用できます。
+## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>HDInsight クラスター ストレージで Data Lake Store を使用する
+
+HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
 
 * Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5 で使用できます。
 
 * HBase クラスター (Windows および Linux) の場合、Data Lake Store は、既定のストレージとしても追加のストレージとしても**使用できません**。
 
-
-この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。 既定のストレージとして Data Lake Store を使用する Hadoop クラスターの作成方法については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 
 PowerShell を使用して、Data Lake Store を使用するように HDInsight を構成するには、次の手順が必要です。
 
@@ -161,8 +162,9 @@ Azure Data Lake の Active Directory 認証を設定するには、次のタス�
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-authentication-to-data-lake-store"></a>Data Lake Store への認証を使用して HDInsight Linux クラスターを作成する
-このセクションでは、HDInsight Hadoop Linux クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Store は同じ場所にある必要があります。
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-additional-storage"></a>Data Lake Store を追加のストレージとして使用する HDInsight Linux クラスターを作成する
+
+ここでは、Data Lake Store を追加のストレージとして使用する HDInsight Hadoop Linux クラスターを作成します。 このリリースでは、HDInsight クラスターと Data Lake Store は同じ場所にある必要があります。
 
 1. 最初に、サブスクリプションのテナント ID を取得します。 この情報は後で必要になります。
 
@@ -248,9 +250,4 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

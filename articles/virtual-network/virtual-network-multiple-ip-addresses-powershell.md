@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: jdial;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
-ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
+ms.sourcegitcommit: f179a19dd3a126d23c33520a428a8c3a644f4171
+ms.openlocfilehash: 08a1399e702dbf9222b8412950ee62509b53ef76
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -89,7 +90,7 @@ ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
     
     ```powershell
     $IpConfigName2 = "IPConfig-2"
-    $IPAddress     = 10.0.0.5
+    $IPAddress     = "10.0.0.5"
     $myPublicIp2   = New-AzureRmPublicIpAddress -Name "myPublicIp2" -ResourceGroupName $myResourceGroup `
     -Location $location -AllocationMethod Static
     $IpConfig2     = New-AzureRmNetworkInterfaceIpConfig -Name $IpConfigName2 `
@@ -132,9 +133,7 @@ ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
 プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#Scenario)で説明している&3; つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
 1. PowerShell コマンド プロンプトを開き、1 つの PowerShell セッション内で、このセクションの残りの手順を完了します。 まだ PowerShell をインストール、構成していない場合は、「 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) 」の手順を実行してください。
-2. サブスクリプション ID と使用目的を[複数の IP 係](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e)まで電子メールで連絡して、プレビューに登録します。 次の場合、残りの手順は実行しないでください。
-    - プレビューへの登録が受諾されたことを通知する電子メールを受け取っていない場合
-    - 受け取った電子メールの指示に従っていない場合
+2. 「**複数の IP アドレスを持つ VM を作成する**」セクションの手順 2. に従って、パブリック プレビューに登録します。
 3. 次の $ 変数の "値" を、IP アドレスを追加する NIC の名前、NIC が属するリソース グループ、NIC の場所に変更します。
 
     ```powershell
@@ -252,8 +251,4 @@ ms.openlocfilehash: 2a384c1a9af076205d4d0ae12e0a5f9e63b076d1
 9. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載された、お使いのオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -14,8 +14,9 @@ ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 032747ffb7a603c54e8913c0d82edbc8e11b73c3
-ms.openlocfilehash: 0b808dd6bcf0a0d1f8e459927a4010dc1887ca60
+ms.sourcegitcommit: 146fe63ba2c9efd8b734eb8cc8cb5dee82a94f2a
+ms.openlocfilehash: 97757f2cc78dc02f4efdcb3c09cee7741504448b
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -44,7 +45,7 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Azure プレビューを使用した DSC 構成のコンパイル
 
-1. Automation アカウントから、 **[構成]**をクリックします。
+1. Automation アカウントから、**[DSC 構成]**をクリックします。
 2. 構成をクリックし、ブレードを開きます。
 3. **[コンパイル]**をクリックします。
 4. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、以下の「 [**基本パラメーター**](#basic-parameters) 」セクションを参照してください。
@@ -240,8 +241,39 @@ $ConfigData = @{
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 ```
 
+## <a name="importing-node-configurations"></a>ノード構成のインポート
+
+Azure の外部でコンパイルしたノード構成 (MOF) をインポートすることもできます。 この処理の利点の&1; つは、ノード構成に署名できることです。
+署名済みのノード構成は DSC エージェントの管理ノードでローカルに検証され、ノードに適用されている構成が承認済みのソースから取得されたことを確認します。
+
+> [!NOTE]
+> 署名済みの構成を Azure Automation アカウントにインポートできますが、現時点で、Azure Automation は署名済みの構成のコンパイルをサポートしていません。
+
+> [!NOTE]
+> ノード構成ファイルを Azure Automation にインポートするには、ファイル サイズを 1 MB 以下にする必要があります。
+
+ノード構成に署名する方法については、https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module を参照してください。
+
+### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Azure Portal でのノード構成のインポート
+
+1. Automation アカウントから、**[DSC ノード構成]** をクリックします。
+
+    ![DSC ノード構成](./media/automation-dsc-compile/node-config.png)
+2. **[DSC ノード構成]** ブレードで、**[Add a NodeConfiguration (ノード構成を追加)]** をクリックします。
+3. **[インポート]** ブレードで、**[Node Configuration File (ノード構成ファイル)]** テキスト ボックスの横にあるフォルダー アイコンをクリックして、ローカル コンピューター上のノード構成ファイル (MOF) を参照します。
+
+    ![ローカル ファイルの参照](./media/automation-dsc-compile/import-browse.png)
+4. **[構成名]** テキスト ボックスに名前を入力します。 この名前は、ノード構成のコンパイル元の構成の名前と一致する必要があります。
+5. **[OK]**をクリックします。
+
+### <a name="importing-a-node-configuration-with-powershell"></a>PowerShell でのノード構成のインポート
+
+[Import-AzureRmAutomationDscNodeConfiguration](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.automation/v1.0.12/import-azurermautomationdscnodeconfiguration) コマンドレットを使用して、ノード構成を Automation アカウントにインポートできます。
+
+```powershell
+Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"
+```
 
 
-<!--HONumber=Feb17_HO2-->
 
 

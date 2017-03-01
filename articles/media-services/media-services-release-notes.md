@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ccf8374064b6fd5f8d78a082543977072bfb30ee
-ms.openlocfilehash: 3c529328002ad96fb48a9ce96b3918493f88b41f
+ms.sourcegitcommit: 83881cda043fc9f1ef48281e8160a882c1f9bced
+ms.openlocfilehash: 5aa7353e681a16d2032fecaf8a2de50e241ac4ad
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -103,6 +104,12 @@ Azure Media Services では、Apple FairPlay を使用して HTTP ライブ ス�
 Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は Azure ポータル (と請求書) に S1 というラベルが表示され、Standard と Premium をご利用の場合はそれぞれ S2 と S3 が表示されます。 
 
 ## <a name="a-iddecchanges15adecember-2015-release"></a><a id="dec_changes_15"></a>2015 年 12 月のリリース
+
+### <a name="azure-media-encoder-deprecation-announcement"></a>Azure Media Encoder 廃止のお知らせ
+
+Azure Media Encoder は、1 年以内に廃止される予定です。 [Media Encoder Standard](media-services-media-encoder-standard-formats.md) エンコーダーの使用を開始してください。
+
+### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) パッケージの新しいリリースを公開しました。これには Microsoft Azure Media Services の更新プログラムと新機能が含まれています。 具体的には、Azure Media Services SDK for PHP で、最新の[コンテンツ保護](media-services-content-protection-overview.md)機能である AES と DRM (PlayReady と Widevine) による動的暗号化 (トークン制限あり/なし) がサポートされるようになりました。 また、[エンコーディング ユニット](media-services-dotnet-encoding-units.md)のスケーリングにも対応しています。
 
 詳細については、次を参照してください。
@@ -535,10 +542,5 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [複数のストレージ アカウントでの Media Services アセットの管理]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

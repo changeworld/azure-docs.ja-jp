@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement でプッシュ通知を利用してアプ
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0f09a4118c3cfbd014e1c53fd22da06eb7ede260
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -174,10 +175,5 @@ UI の Reach (リーチ) セクションは、プッシュ キャンペーン管
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

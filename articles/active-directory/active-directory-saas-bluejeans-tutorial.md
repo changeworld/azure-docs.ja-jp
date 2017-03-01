@@ -11,36 +11,39 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 00f00d91e54d35fb9009a3e927dfc8833cd7571e
+ms.sourcegitcommit: e8df27b17ac0e839efdd302ffa40fafe688a22b4
+ms.openlocfilehash: aaa1c06da8b53a45a1e675f175dd3adcee20e910
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="tutorial-azure-ad-integration-with-bluejeans"></a>チュートリアル: Azure AD と BlueJeans の統合
 このチュートリアルでは、Azure と BlueJeans の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* BlueJeans でのシングル サインオンが有効なサブスクリプション
+* BlueJeans でのシングル サインオン (SSO) が有効なサブスクリプション
 
 このチュートリアルを完了すると、BlueJeans に割り当てた Azure AD ユーザーは、BlueJeans 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1. BlueJeans のアプリケーション統合の有効化
-2. シングル サインオンの構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+* BlueJeans のアプリケーション統合の有効化
+* シングル サインオン (SSO) の構成
+* ユーザー プロビジョニングの構成
+* ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-bluejeans-tutorial/IC785860.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-bluejeans"></a>BlueJeans のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-bluejeans"></a>BlueJeans のアプリケーション統合の有効化
 このセクションでは、BlueJeans のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-bluejeans-perform-the-following-steps"></a>BlueJeans のアプリケーション統合を有効にするには、次の手順を実行します。
+**BlueJeans のアプリケーション統合を有効にするには、次の手順を実行します。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![Active Directory](./media/active-directory-saas-bluejeans-tutorial/IC700993.png "Active Directory")
@@ -61,11 +64,12 @@ ms.openlocfilehash: 00f00d91e54d35fb9009a3e927dfc8833cd7571e
    
    ![BlueJeans](./media/active-directory-saas-bluejeans-tutorial/IC785862.png "BlueJeans")
    
-   ## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで BlueJeans に対する認証を行えるようにする方法を説明します。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **BlueJeans** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "Configure single sign-on")
@@ -84,8 +88,7 @@ ms.openlocfilehash: 00f00d91e54d35fb9009a3e927dfc8833cd7571e
    ![管理](./media/active-directory-saas-bluejeans-tutorial/IC785868.png "Admin")
 7. **[セキュリティ]** セクションで、次の手順を実行します。
    
-   ![SAML シングル サインオン](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "SAML Single Sign On")
-   
+   ![SAML シングル サインオン](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "SAML Single Sign On")   
    1. **[SAML シングル サインオン]**を選択します。
    2. **[自動プロビジョニングの有効化]**を選択します。
 8. 次の手順を実行します。
@@ -99,45 +102,45 @@ ms.openlocfilehash: 00f00d91e54d35fb9009a3e927dfc8833cd7571e
 9. 次の手順を実行します。
    
    ![変更を保存](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "Save Changes")
-   
    1. **[User ID]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** と入力します。
    2. **[メール]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** と入力します。
    3. **[変更を保存]**をクリックします。
 10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![シングル サインオンの構成](./media/active-directory-saas-bluejeans-tutorial/IC785876.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-bluejeans-tutorial/IC785876.png "Configure Single Sign-On")
     
-    ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
 Azure AD ユーザーが BlueJeans にログインできるようにするには、ユーザーを BlueJeans にプロビジョニングする必要があります。  
-BlueJeans の場合、プロビジョニングは手動で行います。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+* BlueJeans の場合、プロビジョニングは手動で行います。
+
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+
 1. **BlueJeans** 企業サイトに管理者としてログインします。
 2. **[管理] \> [ユーザーの管理] \> [ユーザーの追加]** の順にクリックします。
    
    ![管理](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "Admin")
    
-   > [!IMPORTANT]
-   > **[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
-   > 
+   >[!IMPORTANT]
+   >**[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。 
    > 
 3. **[ユーザーの追加]** セクションで、次の手順を実行します。
    
-   ![ユーザーの追加](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "Add User")
+  ![ユーザーの追加](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "Add User")
    
-   1. 対応するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
-   2. **[ユーザーの追加]**をクリックします。
+  1. 対応するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
+  2. **[ユーザーの追加]**をクリックします。
 
-> [!NOTE]
-> BlueJeans から提供されている他の BlueJeans ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>BlueJeans から提供されている他の BlueJeans ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-bluejeans-perform-the-following-steps"></a>ユーザーを BlueJeans に割り当てるには、次の手順を実行します。
+**ユーザーを BlueJeans に割り当てるには、次の手順を実行します。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **BlueJeans** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -147,10 +150,5 @@ BlueJeans の場合、プロビジョニングは手動で行います。
    ![はい](./media/active-directory-saas-bluejeans-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

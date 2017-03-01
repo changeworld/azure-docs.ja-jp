@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
 ms.openlocfilehash: 2275daf25fd916932dbf54a7b069ecbfcf3e68cf
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -322,9 +323,4 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 [203]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "App Service Web のユーザー エクスペリエンスについ�
 services: app-service
 documentationcenter: 
 author: jaime-espinosa
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 0cc6a3cc-bd89-4a96-9177-d25f6fb737bb
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: jaime-espinosa
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 00617f4d508c843000d69c02464a1bef36320a8e
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -84,10 +85,5 @@ Web アプリを作成するときは、クラシック ポータルの場合と
 
 ## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

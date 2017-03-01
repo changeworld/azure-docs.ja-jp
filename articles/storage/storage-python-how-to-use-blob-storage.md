@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 2/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 963bf66d71a5c3eb2bf4ec8449e342ff1da782a8
-ms.openlocfilehash: d54a3d812051869e70102c19674292fe9edbf248
+ms.sourcegitcommit: f0875344b05b7eb8c6f9f6e39c3b864c202e2931
+ms.openlocfilehash: 968814db9496fd410162d482191592c8a56101f0
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: d54a3d812051869e70102c19674292fe9edbf248
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
 この記事では、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。
@@ -136,16 +137,11 @@ append_blob = append_blob_service.get_blob_to_text('mycontainer', 'myappendblob'
 ## <a name="next-steps"></a>次のステップ
 これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* [Python デベロッパー センター](/develop/python/)
+* [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure Storage チーム ブログ]
 * [Microsoft Azure Storage SDK for Python]
 
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

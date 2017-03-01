@@ -2,7 +2,7 @@
 title: "ストリーミング ログとコンソール"
 description: "ストリーミング ログとコンソールの概要"
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 services: app-service\web
 documentationcenter: 
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7704270d7bba54577f61f3f349dc69dc6ddf08c6
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 120ce6b115820728b9f853e9ff349beb0ef29c9d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -87,9 +88,4 @@ cd
 [BrowseSitesScreenshot]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

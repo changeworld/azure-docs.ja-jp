@@ -4,7 +4,7 @@ description: "この記事は、Azure App Service での Web アプリのパフ�
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: top-support-issue
 keywords: "Web アプリのパフォーマンス、低速なアプリ、アプリが低速"
@@ -19,6 +19,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
 ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -171,9 +172,4 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
  ![パフォーマンスの問題を解決するために Web アプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

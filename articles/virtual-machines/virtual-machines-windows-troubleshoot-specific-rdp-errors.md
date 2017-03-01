@@ -17,8 +17,9 @@ ms.topic: support-article
 ms.date: 01/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 5398d262bf1f54c40663d6ee76e8dfb48aa3226b
+ms.sourcegitcommit: 3a4516d267dbedc6fc0a4afda93e052d9798434a
+ms.openlocfilehash: cf1d80f52ac61845083e9c28c0ad3e88a029fc4f
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -28,7 +29,7 @@ Azure の Windows 仮想マシン (VM) に対してリモート デスクトッ�
 特定のエラー メッセージについては、次を参照してください。
 
 * [ライセンスを提供するためのリモート デスクトップ ライセンス サーバーがないため、リモート セッションは切断されました](#rdplicense)。
-* [リモート デスクトップがコンピューター "name" を見つけることができません](#rdpname)。
+* [リモート デスクトップは、コンピューター "name" を見つけることができません](#rdpname)。
 * [認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](#rdpauth)
 * [Windows セキュリティ エラー: 資格情報が正しくありません](#wincred)。
 * [このコンピューターはリモート コンピューターに接続できません](#rdpconnect)。
@@ -42,7 +43,7 @@ Azure の Windows 仮想マシン (VM) に対してリモート デスクトッ�
 
         mstsc <File name>.RDP /admin
 
-VM に対して 2 つ以上のリモート デスクトップ接続が同時に必要でない場合、サーバー マネージャーを使用して、リモート デスクトップ サーバーのロールを削除することができます。
+VM に対して&2; つ以上のリモート デスクトップ接続が同時に必要でない場合、サーバー マネージャーを使用して、リモート デスクトップ サーバーのロールを削除することができます。
 
 詳細については、 ["使用できるリモート デスクトップ ライセンス サーバーがありません" で失敗する Azure VM](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)に関するブログ投稿をご覧ください。
 
@@ -107,13 +108,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 ## <a name="next-steps"></a>次のステップ
 上記のエラーのいずれも発生せず、RDP を使用した接続で不明な問題が発生している場合は、[リモート デスクトップのトラブルシューティング ガイド](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 
-* [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 * VM で実行されているアプリケーションへのアクセスにおけるトラブルシューティング手順については、[Azure VM で実行されているアプリケーションへのアクセスのトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 * Secure Shell (SSH) を使用した Azure の Linux VM への接続で問題が発生している場合は、[Azure の Linux VM への SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

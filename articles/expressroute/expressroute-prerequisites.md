@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 1/6/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
-ms.openlocfilehash: c38e324c68d382f74a6140952b7900afd509d319
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 304acc7d2bfdefffde700ecd469b6335b08b85e6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -30,7 +31,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 * アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の [Office 365 固有の要件](#office-365-specific-requirements)に関するセクションを参照してください。
 
 ## <a name="connectivity-provider"></a>接続プロバイダー
-* [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md#howtoconnect)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
+* [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
 * プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#nonpartners)を通じて Microsoft Cloud に接続できます。
 
 ## <a name="network-requirements"></a>ネットワークの要件
@@ -64,10 +65,5 @@ ExpressRoute で CRM Online を有効にする予定がある場合は、以下�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

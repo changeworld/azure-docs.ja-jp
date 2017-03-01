@@ -15,7 +15,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2016
-ms.author: ankshah; kraman
+ms.author: ankshah
 translationtype: Human Translation
 ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
 ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988

@@ -3,7 +3,7 @@ title: "C++ から BLOB ストレージ (オブジェクト ストレージ) を
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: .net
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 53844120-1c48-4e2f-8f77-5359ed0147a4
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 1f87e40edc8b6ad8567f2409e6df435ed66f2bbc
 ms.openlocfilehash: 8571011cac1182a5bfdfe722c194fcd681712a02
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -55,8 +56,8 @@ C++ 用 Azure ストレージ クライアント ライブラリをインスト�
 Azure Storage API を使用して BLOB にアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/blob.h"
+include <was/storage_account.h>
+include <was/blob.h>
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure のストレージ接続文字列の設定
@@ -272,10 +273,5 @@ blockBlob.delete_blob();
 * [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

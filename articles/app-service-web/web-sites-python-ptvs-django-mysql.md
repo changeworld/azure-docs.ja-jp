@@ -4,7 +4,7 @@ description: "Python Tools for Visual Studio を使用して、MySQL データ�
 services: app-service\web
 documentationcenter: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c60a50b5-8b5e-4818-a442-16362273dabb
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: huvalo
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1c29cfc0a5b6361a7f526c37d5421ee4be3fe2c1
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -176,9 +177,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [Django のドキュメント]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
 [video]: http://youtu.be/oKCApIrS0Lo
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

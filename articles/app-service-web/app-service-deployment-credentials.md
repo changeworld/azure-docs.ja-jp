@@ -4,7 +4,7 @@ description: "Azure App Service のデプロイ資格情報を使用する方法
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.service: app-service
 ms.workload: na
@@ -16,6 +16,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: 0ab2e30165fe3dca0e00109e9b4e22a9a1433de5
 ms.openlocfilehash: 43cf4dad58ee0e12a233125049ab4e62411459fe
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -88,8 +89,3 @@ App Service 内のアプリごとに、アプリ レベルの資格情報が XML
 ## <a name="next-steps"></a>次のステップ
 
 これらの資格情報を使用して、[ローカル Git](app-service-deploy-local-git.md) から、または [FTP/S](app-service-deploy-ftp.md) を使用してアプリをデプロイする方法を確認します。
-
-
-<!--HONumber=Jan17_HO1-->
-
-

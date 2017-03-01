@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/31/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 31b86898552ef9eb6708c83968736f14597223b1
+ms.sourcegitcommit: 57175ddc53d5856cd3492d4c631a92d4bf9247c4
+ms.openlocfilehash: 859f87356448041a320c2e126478aabf1efa0d44
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -49,9 +50,9 @@ ms.openlocfilehash: 31b86898552ef9eb6708c83968736f14597223b1
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-
-2. **[参照]** タブをクリックし、"Microsoft Azure イベント プロセッサ ホスト" を検索して、**Microsoft Azure イベント プロセッサ ホスト**の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+* 次の Nuget パッケージをプロジェクトに追加します。
+  * [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
+  * [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
 
 ### <a name="implement-the-ieventprocessor-interface"></a>IEventProcessor インターフェイスの実装
 
@@ -220,8 +221,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hub を作成する](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

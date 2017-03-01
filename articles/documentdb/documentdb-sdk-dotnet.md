@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB .NET API と SDK | Microsoft Docs"
+title: ".NET API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB .NET SDK の各バージョン間の変更など、.NET API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 02/15/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: efd154811ebbcf2170ffb001344a954be72b1d92
-ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
+ms.sourcegitcommit: de2b914ddb7238c9939066570d8fba78aa5c231e
+ms.openlocfilehash: 73e9c8491520d47bbc60b1556b97918977d29d7f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -50,6 +51,25 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
+* パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
+
+### <a name="a-name11141114httpswwwnugetorgpackagesmicrosoftazuredocumentdb1114"></a><a name="1.11.4"/>[1.11.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.4)
+* 32 ビット ホスト プロセスでクロス パーティション クエリの一部が失敗する問題を修正しました。
+* ゲートウェイ モード中に失敗した要求のトークンでセッション コンテナーが更新されない問題を修正しました。
+* プロジェクションでの UDF 呼び出しによるクエリが場合によっては失敗する問題を修正しました。
+* クライアント側のパフォーマンスを修正し、要求の読み取りと書き込みのスループットを向上させました。
+
+### <a name="a-name11131113httpswwwnugetorgpackagesmicrosoftazuredocumentdb1113"></a><a name="1.11.3"/>[1.11.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.3)
+* 失敗した要求のトークンでセッション コンテナーが更新されない問題を修正しました。
+* 32 ビット ホスト プロセスで動作する SDK のサポートが追加されました。 クロス パーティション クエリを使用する場合は、パフォーマンスを向上させるために 64 ビット ホスト処理をお勧めします。
+* IN 式で大量のパーティション キー値を使用するクエリを含むシナリオのパフォーマンスを改善しました。
+* PopulateQuotaInfo 要求オプションが設定されている場合、ドキュメント コレクションの読み取り要求の ResourceResponse に、リソース クォータのさまざまな統計情報が含まれるようになりました。
+
+### <a name="a-name11111111httpswwwnugetorgpackagesmicrosoftazuredocumentdb1111"></a><a name="1.11.1"/>[1.11.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.1)
+* 1.11.0 で導入された CreateDocumentCollectionIfNotExistsAsync API のパフォーマンスが少し改善されました。
+* 高度な同時要求を伴うシナリオのために、SDK のパフォーマンスが改善されました。
 
 ### <a name="a-name11101110httpswwwnugetorgpackagesmicrosoftazuredocumentdb1110"></a><a name="1.11.0"/>[1.11.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.0)
 * コレクションに含まれるドキュメントの [Change Feed](documentdb-change-feed.md) を処理する新しいクラスと方法をサポートしました。
@@ -161,9 +181,9 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
   * LINQ プロバイダーによる OrderBy() または OrderByDescending() のサポート
   * Order By をサポートするための IndexingPolicy 
     
-        **NB: Possible breaking change** 
+    **NB: 考えられる重大な変更** 
     
-        If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
+    カスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングする既存のコードがある場合、新しい IndexingPolicy クラスをサポートするために既存のコードを更新する必要があります。 カスタム インデックス作成ポリシーがない場合は、この変更による影響はありません。
 
 ### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdb110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 * 新しい HashPartitionResolver クラス、RangePartitionResolver クラス、IPartitionResolver を使用し、データをパーティショニング
@@ -174,15 +194,6 @@ ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 ### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdb100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.0.0)
 * GA SDK
 
-> [!NOTE]
-> プレビューと GA の間で NuGet パッケージ名の変更がありました。 **Microsoft.Azure.Documents.Client** が **Microsoft.Azure.DocumentDB**
->  になりました。<br/>
-> 
-> 
-
-### <a name="a-name09x-preview09x-previewhttpswwwnugetorgpackagesmicrosoftazuredocumentsclient"></a><a name="0.9.x-preview"/>[0.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
-* プレビュー SDK [廃止]
-
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
@@ -190,23 +201,20 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
 
-> [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for .NET は **2016 年 2 月 29 日**で提供が終了します。 
-> 
-> 
-
 <br/>
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |
+| [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
+| [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |
+| [1.11.1](#1.11.1) |2016 年 12 月 21 日 |--- |
 | [1.11.0](#1.11.0) |2016 年 12 月 08 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 9 月 27 日 |--- |
 | [1.9.5](#1.9.5) |2016 年 9 月 1 日 |--- |
 | [1.9.4](#1.9.4) |2016 年 8 月 24 日 |--- |
 | [1.9.3](#1.9.3) |2016 年 8 月 15 日 |--- |
 | [1.9.2](#1.9.2) |2016 年 7 月 23 日 |--- |
-| 1.9.1 |非推奨 |--- |
-| 1.9.0 |非推奨 |--- |
 | [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
 | [1.7.1](#1.7.1) |2016 年 5 月 6 日 |--- |
 | [1.7.0](#1.7.0) |2016 年 4 月 26 日 |--- |
@@ -222,20 +230,12 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.2.0](#1.2.0) |2015 年 7 月 6 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 4 月 30 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
-| [0.9.3-prelease](#0.9.x-preview) |2015 年 3 月 12 日 |2016 年 2 月 29 日 |
-| [0.9.2-prelease](#0.9.x-preview) |2015 年 1 月 |2016 年 2 月 29 日 |
-| [.9.1-prelease](#0.9.x-preview) |2014 年 10 月 13 日 |2016 年 2 月 29 日 |
-| [0.9.0-prelease](#0.9.x-preview) |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
+
 
 ## <a name="faq"></a>FAQ
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
 DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

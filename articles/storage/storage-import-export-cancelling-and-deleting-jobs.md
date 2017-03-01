@@ -1,5 +1,5 @@
 ---
-title: "Azure Import/Export サービス ジョブの取り消しと削除 | Microsoft Docs"
+title: "Azure Import/Export ジョブの取り消し/削除 | Microsoft Docs"
 description: "Microsoft Azure Import/Export サービスのジョブを取り消したり削除する方法について説明します"
 author: muralikk
 manager: syadav
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 640b814e4280f5cce029bea7324881bbfef4b1a4
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 26e06529cb9354030da32c235d3c4819d46d669d
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="cancelling-and-deleting-jobs"></a>ジョブの取り消しと削除
+# <a name="canceling-and-deleting-azure-importexport-jobs"></a>Azure Import/Export ジョブの取り消しと削除
 ジョブが `Packaging` 状態になる前に、[Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出して `CancelRequested` 要素を `true` に設定することで、ジョブの取り消しを要求できます。 ジョブの取り消しはベストエフォートで実行されます。 ドライブでデータ転送が実行中である場合は、取り消しが要求された後でも、データの転送が継続されることがあります。
 
  取り消されたジョブは `Completed` 状態に移行され、90 日間維持されます (その後、削除されます)。
@@ -30,9 +31,4 @@ ms.openlocfilehash: 640b814e4280f5cce029bea7324881bbfef4b1a4
 
 ## <a name="see-also"></a>関連項目
  [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs"
+title: "Azure Import ジョブ用にハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs"
 description: "Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。"
 author: muralikk
 manager: syadav
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: 763ad16242da2d895686934422e345555d5b0e05
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: ebed1f1d4cb6cca96e02322d2f76abd6e9810ecc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -135,9 +136,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 * [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import.md)
 * [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

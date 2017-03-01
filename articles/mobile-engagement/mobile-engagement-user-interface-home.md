@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement を利用し、既存のアプリケーシ
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: aff578d2-40f6-43e4-b0ea-7d2674cb28a1
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 1e3e4825d06486e6e8dfa874271ec82d203f7a7b
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -164,9 +165,4 @@ ms.openlocfilehash: 1e3e4825d06486e6e8dfa874271ec82d203f7a7b
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

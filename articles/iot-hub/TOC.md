@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# 作業の開始
+# [作業の開始](iot-hub-get-started.md)
 ## シミュレートされたデバイスの使用
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
@@ -23,7 +23,7 @@
 ##### [Azure ツールを入手する (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### レッスン 3: デバイスからクラウドへのメッセージの送信
-##### [Azure Function App とストレージ アカウントを作成する]#(iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Azure Function App とストレージ アカウントを作成する](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
 ##### [ストレージに保持されたメッセージを読み取る](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
 #### レッスン 4: クラウドからデバイスへのメッセージの送信
@@ -66,7 +66,7 @@
 ##### [Azure ツールを入手する (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### レッスン 3: デバイスからクラウドへのメッセージの送信
-##### [Azure Function App とストレージ アカウントを作成する]#(iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Azure Function App とストレージ アカウントを作成する](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
 ##### [ストレージに保持されたメッセージを読み取る](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
 #### レッスン 4: クラウドからデバイスへのメッセージの送信
@@ -107,13 +107,13 @@
 ##### [Azure ツールを入手する (Windows 7+)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
 ##### [Azure ツールを入手する (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
 ##### [Azure ツールを入手する (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [IoT ハブを作成して Raspberry Pi を登録する]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+##### [IoT Hub を作成して Raspberry Pi を登録する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
 #### レッスン 3: デバイスからクラウドへのメッセージの送信
-##### [Azure Function App とストレージ アカウントを作成する]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+##### [Azure Function App とストレージ アカウントを作成する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
 ##### [サンプル アプリケーションを実行してメッセージを送信する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
 ##### [ストレージに保持されたメッセージを読み取る](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
 #### レッスン 4: クラウドからデバイスへのメッセージの送信
-##### [サンプル アプリケーションを実行してメッセージを受信する]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+##### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [省略可能: LED の動作を変更する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [トラブルシューティング](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
 
@@ -172,7 +172,7 @@
 ### [ソリューションをスケール調整する](iot-hub-scaling.md)
 ### [高可用性と障害復旧](iot-hub-ha-dr.md)
 ### [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
-## 開発
+## [開発](iot-hub-how-to.md)
 ### [開発者ガイド](iot-hub-devguide.md)
 #### [メッセージを送受信する](iot-hub-devguide-messaging.md)
 #### [デバイスからクラウドの機能ガイド](iot-hub-devguide-d2c-guidance.md)
@@ -269,8 +269,3 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot/)
 ## [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsuite.com/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

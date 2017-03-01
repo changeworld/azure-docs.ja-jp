@@ -12,11 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
-ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: 2f56314769d90a1f0f9ebb5ece9c8e54b23b8936
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -28,6 +29,10 @@ ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 > 
 > 
 
+## <a name="ensure-tag-consistency-with-policies"></a>ポリシーを使用してタグの一貫性を確保する
+
+リソース ポリシーを使用して、組織の標準的なルールを作成することができます。 リソースが適切な値でタグ付けされることを保証するポリシーを作成することができます。 詳細については、「[タグに関するリソース ポリシーを適用する](resource-manager-policy-tags.md)」を参照してください。
+
 ## <a name="templates"></a>テンプレート
 
 [!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
@@ -38,9 +43,9 @@ ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 ## <a name="powershell"></a>PowerShell
 [!INCLUDE [resource-manager-tag-resources-powershell](../../includes/resource-manager-tag-resources-powershell.md)]
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
+## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Azure CLI 2.0 (プレビュー) では、リソースとリソース グループにタグを追加し、タグの値を使用してリソースをクエリすることができます。
+Azure CLI 2.0 では、リソースとリソース グループにタグを追加し、タグの値を使用してリソースをクエリすることができます。
 
 リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに保持する必要がある既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。 その方法を次に示します。
 
@@ -110,10 +115,5 @@ az resource list --tag Dept=Finance
 * リソースのデプロイ時に Azure CLI を使用する方法の概要については、「 [Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」をご覧ください。
 * ポータルの使用方法の概要については、「 [Azure ポータルを使用した Azure リソースの管理](resource-group-portal.md)  
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

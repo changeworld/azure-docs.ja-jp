@@ -12,18 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
+ms.sourcegitcommit: 935246ad590af0dcdb6d52257a94169f94dd66e5
+ms.openlocfilehash: 3ff7256578cffd30ae9b75ead2dd7f08babca171
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
 
-![Azure AD Connect とは](./media/active-directory-aadconnect-ports/required2.png)
+![Azure AD Connect とは](./media/active-directory-aadconnect-ports/required3.png)
 
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>表 1 - Azure AD Connect とオンプレミスの AD
 この表は、Azure AD Connect サーバーとオンプレミスの AD 間の通信に必要なポートとプロトコルについて説明しています。
@@ -71,10 +72,11 @@ ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
 | HTTPS |443 (TCP/UDP) |デバイスの認証で使用されます。 |
 | TCP |49443 (TCP) |証明書の認証で使用されます。 |
 
-## <a name="table-6---pass-through-authentication"></a>表 6 - パススルー認証
-この表は、コネクタと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
+## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>表 6a および 6b - シングル サインオン (SSO) でのパススルー認証およびシングル サインオン (SSO) でのパスワード ハッシュ同期
+次の表は、Azure AD Connect と Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
-|プロトコル|ポート番号|Description
+### <a name="table-6a---pass-through-authentication-with-sso"></a>表 6a - SSO でのパススルー認証のトラブルシューティング
+|プロトコル|ポート番号|説明
 | --- | --- | ---
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。
 |HTTPS|443|    Azure AD に対するユーザー認証に使用されます。
@@ -84,6 +86,12 @@ ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
 |HTTPS|8080/443|    コネクタのブートストラップ シーケンスのほか、コネクタの自動更新に使用されます。
 |HTTPS|9090|    コネクタの登録に使用されます (コネクタ登録プロセスでのみ必要)。
 |HTTPS|9091|    コネクタの信頼証明書の自動更新に使用されます。
+
+### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - SSO でのパスワード ハッシュ同期
+
+|プロトコル|ポート番号|説明
+| --- | --- | ---
+|HTTPS|9090|    SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
 
 ## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a & 7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD
 次の表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要なエンドポイント、ポート、プロトコルについて説明しています。
@@ -98,10 +106,5 @@ ms.openlocfilehash: c727e19c1fd8decadfd27c97d25834a9c17c1f73
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、 [Azure AD Connect Health エージェントの「必要条件」セクション](../connect-health/active-directory-aadconnect-health-agent-install.md#requirements)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

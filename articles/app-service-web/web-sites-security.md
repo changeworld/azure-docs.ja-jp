@@ -4,7 +4,7 @@ description: "Azure App Service で Web アプリ、モバイル アプリ バ�
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 5ce560b4-42d7-4b20-935c-0445fd539e39
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
 ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -116,10 +117,5 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 
 ## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

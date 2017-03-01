@@ -17,22 +17,23 @@ ms.workload: data-management
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: 23d4c00f9e4c719e2124ad3c8733269712a796f0
+ms.sourcegitcommit: 9b09383350284c8f1cd3e384c802c25c962b1226
+ms.openlocfilehash: 1fe15e7ad3667d42995cd487c793fae496216fca
+ms.lasthandoff: 02/16/2017
 
         
 ---
  
 # <a name="explore-azure-sql-database-tutorials"></a>Azure SQL Database チュートリアルの確認
-次の表のリンクで、記載されている各機能領域の概要とその領域のクイック スタート チュートリアルを提供します。 実世界のシナリオに基づく、完全なソリューションで SQL Database の利用方法を実演するソリューション中心のクイック スタートについては、「 [Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md)」 (Azure SQL Database ソリューション クイック スタート) を参照してください。
+次の表のリンクで、記載されている各機能領域の概要とその領域のクイック スタート チュートリアルを提供します。 
 
 ## <a name="create-servers-databases-and-server-level-firewall-rules"></a>サーバー、データベース、サーバーレベルのファイアウォール規則を作成する
 以下のチュートリアルでは、サーバー、データベース、サーバーレベルのファイアウォール規則を作成します。また、サーバーやデータベースへの接続とクエリの実行について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 | --- | --- | 
-| [クイック スタート チュートリアル: 初めての Azure SQL Database](sql-database-get-started.md) | このクイック スタート チュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、2 つのサーバーレベルのファイアウォール規則もあり、サーバーレベルのプリンシパルが指定の&2; つの IP アドレスからサーバーにログインできるように構成されます。 最後に、Azure Portal でデータベースをクエリし、SQL Server Management Studio を使用して接続、クエリする方法を学習します。 |
-| [チュートリアル: PowerShell を使用した Azure SQL データベースのプロビジョニングとアクセス](sql-database-get-started-powershell.md) | このチュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、サーバーレベルのプリンシパルが指定の IP アドレス (または IP アドレス範囲) からサーバーにログインできるようにサーバーレベルのファイアウォール規則が構成されます。 |
+| [初めての Azure SQL Database](sql-database-get-started.md) | このクイック スタート チュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、2 つのサーバーレベルのファイアウォール規則もあり、サーバーレベルのプリンシパルが指定の&2; つの IP アドレスからサーバーにログインできるように構成されます。 最後に、Azure Portal でデータベースをクエリし、SQL Server Management Studio を使用して接続、クエリする方法を学習します。 |
+| [PowerShell を使用した Azure SQL データベースのプロビジョニングとアクセス](sql-database-get-started-powershell.md) | このチュートリアルを完了すると、サンプル データベースと空のデータベースが Azure リソース グループで実行され、論理サーバーに接続された状態になります。 また、サーバーレベルのプリンシパルが指定の IP アドレス (または IP アドレス範囲) からサーバーにログインできるようにサーバーレベルのファイアウォール規則が構成されます。 |
 | [Use C# to create a SQL database with the SQL Database Library for .NET (C# を使用して SQL Database Library for .NET で SQL データベースを作成する)](sql-database-get-started-csharp.md)| このチュートリアルでは、C# を使用して、SQL Database サーバー、ファイアウォール規則、SQL データベースを作成します。 また、Active Directory (AD) アプリケーションと、C# アプリの認証に必要なサービス プリンシパルも作成します。 |
 |  | |
 
@@ -41,7 +42,7 @@ ms.openlocfilehash: 23d4c00f9e4c719e2124ad3c8733269712a796f0
 
 | チュートリアル | Description |
 | --- | --- | 
-| [Azure Portal を使用したバックアップおよび復元](sql-database-get-started-backup-recovery.md) | このチュートリアルでは、Azure Portal を使用して、バックアップの表示、特定の時点への復旧、長期的なバックアップ リテンション期間の構成、Azure Recovery Services コンテナー内のバックアップからの復旧を実行する方法を学習します
+| [Azure Portal を使用したバックアップおよび復元](sql-database-get-started-backup-recovery-portal.md) | このチュートリアルでは、Azure Portal を使用して、バックアップの表示、特定の時点への復旧、長期的なバックアップ リテンション期間の構成、Azure Recovery Services コンテナー内のバックアップからの復旧を実行する方法を学習します
 | [PowerShell を使用したバックアップおよび復元](sql-database-get-started-backup-recovery-powershell.md) | このチュートリアルでは、PowerShell を使用して、バックアップの表示、特定の時点への復旧、長期的なバックアップ リテンション期間の構成、Azure Recovery Services コンテナー内のバックアップからの復旧を実行する方法を学習します
 |  | |
 
@@ -97,8 +98,12 @@ ms.openlocfilehash: 23d4c00f9e4c719e2124ad3c8733269712a796f0
 | --- | --- | 
 | [Excel を使用してレポートを作成する](sql-database-connect-excel.md) |このチュートリアルでは、Excel をクラウドの SQL Database に接続し、データをインポートして、データベース内の値に基づいてテーブルおよびグラフを作成できるようにする方法を学習します。 |
 | [SQL Server を使用してアプリを構築する](https://www.microsoft.com/sql-server/developer-get-started/) |このチュートリアルでは、SQL Server を使用してアプリケーションを構築する方法を学習します |
+| [テンポラル テーブル](sql-database-temporal-tables.md) | このチュートリアルでは、テンポラル テーブルについて学習します。
 | [エラスティック ツールでエンティティ フレームワークを使用する](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) |このチュートリアルは、Elastic Database ツールと統合するために Entity Framework アプリケーションに加える必要がある変更について学習します。 |
 | [インメモリ OLTP を導入する](sql-database-in-memory-oltp-migration.md) | このチュートリアルでは、[インメモリ OLTP](sql-database-in-memory.md) を使用してトランザクション処理のパフォーマンスを向上させる方法を学習します。 |
+| [新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542.aspx) | このチュートリアルでは、Code First の開発について学習します。
+| [Tailspin Surveys サンプル アプリケーション](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md) | このチュートリアルでは、Tailspon Surveys サンプル アプリケーションを操作します。 |
+| [Contoso クリニック デモ アプリケーション](https://github.com/Microsoft/azure-sql-security-sample) | このチュートリアルでは、Contoso クリニック デモ アプリケーションを操作します。 |
 |  | |
 
 ## <a name="data-sync"></a>データ同期
@@ -109,11 +114,15 @@ ms.openlocfilehash: 23d4c00f9e4c719e2124ad3c8733269712a796f0
 | [Azure SQL データ同期の概要 (プレビュー)](sql-database-get-started-sql-data-sync.md) |このチュートリアルでは、Azure クラシック ポータルを使用して、Azure SQL データ同期の基礎を学習します。 |
 |  | |
 
-## <a name="next-steps"></a>次のステップ
-[Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
+## <a name="monitor-and-tune"></a>監視と調整
+以下のチュートリアルでは、監視と調整について学習します。
+| チュートリアル | Description |
+| --- | --- | 
+| [PowerShell を使ったエラスティック プール テレメトリ](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)| このチュートリアルでは、PowerShell を使ったエラスティック プールのテレメトリの収集について学習します。 |
+| [SaaS のためのエラスティック プール カスタム ダッシュボード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) | このチュートリアルでは、エラスティック プールを監視するためのカスタム ダッシュボードの作成について学習します。 |
+| [SQL Database の拡張イベントのためのイベント ファイル ターゲット コード](sql-database-xevent-code-event-file.md)| このチュートリアルでは、イベント ターゲット ファイルへの拡張イベントのキャプチャについて説明します。|
+| [SQL Database での拡張イベント向けリング バッファー ターゲット コード](sql-database-xevent-code-ring-buffer.md)| このチュートリアルでは、コード リング バッファーへの拡張イベントのキャプチャについて説明します。|
+|  | |
 
-
-
-<!--HONumber=Feb17_HO2-->
 
 

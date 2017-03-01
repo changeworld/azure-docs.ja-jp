@@ -14,22 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 02/21/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: cb3fd28659eb09dfb74496d2aa526736d223631a
-ms.openlocfilehash: d1571aa6191111c46c43b3a424cea415091adfc9
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 773eba80715cb990b23ecec548a18c112ba73a42
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Azure Container Service クラスターのスケーリング
 [Azure Container Service クラスターのデプロイ](container-service-deployment.md)を行った後、エージェントノード数の変更が必要になることがあります。 たとえば、もっと多くのコンテナー アプリケーションまたはインスタンスを実行できるように、より多くのエージェントが必要になることがあります。 
 
-クラスター内のエージェントノードの数は、Azure Portal または Azure CLI 2.0 (プレビュー) を使用して変更できます。 Azure CLI 2.0 (プレビュー) は、Resource Manager デプロイ モデル用の[次世代の CLI](/cli/azure/old-and-new-clis) です。
-
-> [!NOTE]
-> 現時点では、コンテナー サービス Kubernetes クラスター内のエージェント ノードのスケーリングはサポートされません。
-
+DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェントノードの数は、Azure Portal または Azure CLI 2.0 を使って変更できます。 Azure CLI 2.0 は、Resource Manager デプロイ モデル用の[次世代の CLI](/cli/azure/old-and-new-clis) です。
 
 ## <a name="scale-with-the-azure-portal"></a>Azure Portal を使用したスケーリング
 
@@ -43,9 +40,9 @@ ms.openlocfilehash: d1571aa6191111c46c43b3a424cea415091adfc9
 
 
 
-## <a name="scale-with-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用したスケーリング
+## <a name="scale-with-the-azure-cli-20"></a>Azure CLI 2.0 を使ったスケーリング
 
-Azure CLI 2.0 (プレビュー) の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+Azure CLI 2.0 の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
 
 
 ### <a name="see-the-current-agent-count"></a>現在のエージェント数の表示
@@ -67,7 +64,7 @@ az acs show -g myResourceGroup -n containerservice-myACSName
 azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Azure CLI 2.0 (プレビュー) は、新しいエージェント数を含む、コンテナー サービスの新しい構成を表す JSON 文字列を返します。
+Azure CLI 2.0 は、新しいエージェント数を含む、コンテナー サービスの新しい構成を表す JSON 文字列を返します。
 
 その他のコマンド オプションについては、`az acs scale --help` を実行します。
 
@@ -90,12 +87,7 @@ Azure CLI 2.0 (プレビュー) は、新しいエージェント数を含む、
 
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Container Service での Azure CLI 2.0 (プレビュー) のコマンドの[他の使用例](container-service-create-acs-cluster-cli.md)を参照します。
+* Azure Container Service での Azure CLI 2.0 のコマンドの[他の使用例](container-service-create-acs-cluster-cli.md)を参照します。
 * Azure Container Service の [DC/OS エージェント プール](container-service-dcos-agents.md)の詳細を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

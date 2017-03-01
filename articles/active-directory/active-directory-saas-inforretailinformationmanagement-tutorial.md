@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/06/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9ab2950715850d0c2ee0f398cd44399a5974c1a9
-ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
+ms.sourcegitcommit: ad9c78483af88a85a1b790269231683155760d76
+ms.openlocfilehash: aef560c2b05a80c59743c4cc6d68d6d2c14bdc3f
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -46,7 +47,7 @@ Infor Retail - Information Management と Azure AD の統合を構成するに�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -93,7 +94,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
-3. **[Infor Retail - Information Management テスト ユーザーの作成](#creating-an-infor-retail---information-management-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Infor Retail - Information Management で作成します。
+3. **[Infor Retail - Information Management テスト ユーザーの作成](#creating-an-infor-retail---information-management-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Infor Retail - Information Management で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -115,42 +116,42 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_02.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`http://<company name>.mingle.infor.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.mingle.infor.com` の形式で URL を入力します。
     
-    b. **[応答 URL]** ボックスに、`http://<company name>.mingle.infor.com:443/sp/ACS.saml2` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<company name>.mingle.infor.com/sp/ACS.saml2` のパターンを使用して URL を入力します。
     
 4. **SP 開始モード**でアプリケーションを構成する場合は、**[Infor Retail - Information Management のドメインと URL]** セクションで、次の手順を実行します。
     
     ![Configure Single Sign-On](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_03.png)
 
-    a. **[詳細な URL 設定の表示]** オプションをクリックします。
+    a. **[詳細な URL 設定の表示]** をクリックします。
 
-    b. **[サインオン URL]** ボックスに、`https://<company name>.mingle.infor.com/<company code>` という形式で URL を入力します。
+    b. **[サインオン URL]** ボックスに、`https://<company name>.mingle.infor.com/<company code>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではないので注意してください。 実際のサインオン URL、識別子、応答 URL で値を更新する必要があります。[Infor Retail - Information Management サポート チーム](http://www.infor.com/contact/)に問い合わせて、これらの値を入手してください。
+    > これは実際の値ではないので注意してください。 実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。 [Infor Retail – Information Management サポート チーム](mailto:innovate@infor.com)に問い合わせて、これらの値を入手してください。
 
-5. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
+5. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)   
+    ![[シングル サインオンの構成]](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)     
 
-6. **[新しい証明書の作成]**ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
+6. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_300.png)
 
 7. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_05.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_05.png)
 
 8. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_400.png)
 
-9. **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+9. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_06.png) 
 
-10. アプリケーション用に構成された SSO を入手するには、[Infor Retail - Information Management サポート チーム](http://www.infor.com/contact/)に連絡して、ダウンロードした**メタデータ**を提供してください。
+10. アプリケーション用に構成された SSO を入手するには、[Infor Retail - Information Management サポート チーム](mailto:innovate@infor.com)に連絡して、ダウンロードした**メタデータ**を提供してください。
   
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -188,7 +189,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
 ### <a name="creating-an-infor-retail--information-management-test-user"></a>Infor Retail - Information Management テスト ユーザーの作成
 
-このセクションでは、Infor Retail - Information Management で Britta Simon というユーザーを作成します。 [Infor Retail - Information Management サポート チーム](http://www.infor.com/contact/)と連携し、Infor Retail - Information Management プラットフォームにユーザーを追加してください。
+このセクションでは、Infor Retail - Information Management で Britta Simon というユーザーを作成します。 [Infor Retail - Information Management サポート チーム](mailto:innovate@infor.com)と連携し、Infor Retail - Information Management プラットフォームにユーザーを追加してください。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -211,7 +212,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
     ![ユーザーの割り当て][202] 
 
-4. **[追加]** をクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
@@ -219,7 +220,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 
 6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
 
 
@@ -250,8 +251,3 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 [201]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

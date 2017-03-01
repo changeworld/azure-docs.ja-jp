@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/23/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c28d84bf59c161cfe6a80062f13f10f44bf43f34
-ms.openlocfilehash: 09261f739d2cd3976f68c499d0e83fe25beef0b8
+ms.sourcegitcommit: b40ae90ea313638cbd0b60792dc4803d3d08aa0a
+ms.openlocfilehash: 03c1442daf07f57476af64491229f1f38f6ffeff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウド ベースのディレクトリと ID の管理サービスです。
 
-IT 管理者は、Azure AD により、Office365、Salesforce.com、DropBox、Concur など、 [さまざまなクラウド型 SaaS アプリケーション](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx) へのシングル サインオン (SSO) アクセスを従業員やビジネス パートナーに提供する使いやすいソリューションを手軽な価格で手に入れることができます。
+IT 管理者は、Azure AD により、Office365、Salesforce.com、DropBox、Concur など、 [さまざまなクラウド型 SaaS アプリケーション](active-directory-saas-tutorial-list.md) へのシングル サインオン (SSO) アクセスを従業員やビジネス パートナーに提供する使いやすいソリューションを手軽な価格で手に入れることができます。
 
 また Azure AD は、世界中の数多くの組織が使用する卓越した ID 管理ソリューションとすばやく簡単に統合できるため、アプリケーション開発者がアプリケーションの構築に集中することを可能にします。
 
 また Azure AD には、Multi-Factor Authentication、デバイスの登録、セルフサービスのパスワード管理、セルフサービスのグループ管理、特権を持つアカウントの管理、ロール ベースのアクセス制御、アプリケーション使用状況の監視、機能豊富な監査とセキュリティの監視、アラートなど、一連の ID 管理機能も用意されています。 これらの機能により、クラウド ベース アプリケーションのセキュリティ保護、IT プロセスの効率化、コストの削減を実現し、企業のコンプライアンス目標を確実に満たします。
 
-さらに、わずか [4 回のクリック](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)で Azure AD を既存の Windows Server Active Directory と統合できるため、組織は既存のオンプレミス ID への投資を活用して、クラウド ベースの SaaS アプリケーションへのアクセスを管理できます。
+さらに、わずか [4 回のクリック](./connect/active-directory-aadconnect-get-started-express.md)で Azure AD を既存の Windows Server Active Directory と統合できるため、組織は既存のオンプレミス ID への投資を活用して、クラウド ベースの SaaS アプリケーションへのアクセスを管理できます。
 
 Office365、Azure、Dynamics CRM Online をご利用の方は、既に Azure AD を使用していることを認識していない可能性もあります。 実際に、Office365、Azure、Dynamics CRM のテナントは、いずれも既に Azure AD テナントとなっています。 必要なときはいつでも、そのテナントを使用して、Azure AD と統合するその他さまざまなクラウド アプリケーションへのアクセスを管理できます。
 
@@ -58,86 +59,6 @@ Azure Active Directory (Azure AD) とオンプレミスの Active Directory (Act
 AD DS は、Windows Server 上のサーバー ロールであり、物理または仮想マシンに展開できます。 X.500 に基づく階層構造になっています。 オブジェクトの検索では DNS を使用し、LDAP を使用して対話でき、認証では主に Kerberos を使用します。 Active Directory では、ドメインにマシンを参加させるだけでなく、組織単位 (OU) とグループ ポリシー オブジェクト (GPO) を使用できます。ドメイン間に信頼関係が作成されます。
 
 Azure AD は、複数の顧客向けのパブリック ディレクトリ サービスであり、クラウド サーバーのテナントと Office 365 などのアプリケーションを Azure AD 内に作成できます。 ユーザーとグループは、OU も GPO もないフラットな構造で作成されます。 認証は、SAML、WS-Federation、OAuth などのプロトコルを通して実行されます。 Azure AD のクエリを実行できますが、LDAP を使用する代わりに、AD Graph API と呼ばれる REST API を使用する必要があります。 これらのすべてが、HTTP と HTTPS 経由で機能します。
-
-Azure AD Connect を使用して、オンプレミス ID を Azure Active Directory と同期させることができます。
-
----
-
-### <a name="authentication-and-authorization-details"></a>認証と承認の詳細
-
-#### <a name="azure-ad"></a>Azure AD
-`SAML`、`WS-Federation`、サポートされている資格情報で対話、OAuth 2.0、OpenID Connect 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-`SAML`、`WS-Federation`、NTLM、Kerberos、MD5、Basic
-
----
-
-### <a name="object-repository-details"></a>オブジェクト リポジトリの詳細
-
-#### <a name="azure-ad"></a>Azure AD
-Azure AD Graph および Graph 経由でアクセス 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-X.500 LDAP  
-
----
-
-
-### <a name="programmatic-access-details"></a>プログラムによるアクセスの詳細
-
-#### <a name="azure-ad"></a>Azure AD
-MS/Azure AD Graph REST API 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-LDAP 
-
----
-
-### <a name="sso-to-applications-details"></a>アプリケーションへの SSO の詳細
-
-#### <a name="azure-ad"></a>Azure AD
-`OpenID Connect`、`SAML` 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-`Open-ID Connect`、`SAML`、WS-Fed 
-
----
-
-### <a name="access-management-details"></a>アクセス管理の詳細
-
-#### <a name="azure-ad"></a>Azure AD
-リソースによって定義されたスコープとロール ベースのアクセス制御、クライアントによって定義された委任とアプリケーションのアクセス許可、同意フレームワーク (ソース/クライアントによる定義/要求に従って、適切なユーザー/管理者の同意を求めます) 
-
-アプリ ロールを使用。個別にまたはグループに適用でき、次をサポートします: 管理者の管理、セルフ サービスアプリケーションのアクセス、ユーザーの同意
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-ACL を使用。個別にまたはグループに適用でき、次をサポートします: 管理者の管理 
-
----
-
-### <a name="group-management-details"></a>グループ管理の詳細
-
-#### <a name="azure-ad"></a>Azure AD
-`Admin managed`、ルール/動的管理、セルフサービスのグループ管理 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-`Admin managed`、次のために必要な外部システム (FIM など): ルール/動的管理 |
-
----
-
-### <a name="supported-credentials-details"></a>サポートされている資格情報の詳細
-
-#### <a name="azure-ad"></a>Azure AD
-`Username + password`、`Smartcard` 
-
-#### <a name="on-premises-ad-ds"></a>オンプレミスの AD DS
-`Username + password`、`Smartcard` 
- 
----
-
-
-
 
 
 
@@ -170,9 +91,4 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 * [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-what-is.md)
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

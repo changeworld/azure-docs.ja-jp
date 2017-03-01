@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB クエリ エクスプローラー: SQL クエリ エディター |Microsoft Docs"
+title: "Azure DocumentDB ポータル ツール: クエリ エクスプローラー | Microsoft Docs"
 description: "DocumentDB クエリ エクスプローラーについて説明します。これは、SQL クエリを作成して NoSQL DocumentDB コレクションに対して実行するための、Azure ポータルの SQL クエリ エディターです。"
 keywords: "SQL クエリの記述, SQL クエリ エディター"
 services: documentdb
@@ -13,18 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a4e66ff9022b153fe09fba004ff50aed053b392
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: c4c2cd8ddcb541b2619f7e1b140222899f15f87c
+ms.lasthandoff: 02/23/2017
 
 
 ---
-# <a name="write-edit-and-run-sql-queries-for-documentdb-using-query-explorer"></a>クエリ エクスプローラーを使用して DocumentDB に対する SQL クエリを作成、編集、実行する
+# <a name="write-edit-and-run-sql-queries-for-documentdb-using-query-explorer-in-the-azure-portal"></a>Azure Portal でクエリ エクスプローラーを使用して DocumentDB に対する SQL クエリを作成、編集、実行する
 この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) クエリ エクスプローラーの概要について説明します。これは、[DocumentDB コレクション](documentdb-create-collection.md)に対する SQL クエリを作成、編集、実行できる Azure Portal のツールです。
 
-1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]**をクリックします。 **[DocumentDB (NoSQL)]** が表示されない場合は、**[その他のサービス]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。 
+
+    **[NoSQL (DocumentDB)]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。
 2. リソース メニューの **[クエリ エクスプローラー]**をクリックします。 
    
     ![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
@@ -66,15 +69,10 @@ ms.openlocfilehash: 4a4e66ff9022b153fe09fba004ff50aed053b392
 ![クエリ エクスプローラーのクエリ エラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
 ## <a name="run-documentdb-sql-queries-outside-the-portal"></a>ポータル以外で DocumentDB SQL クエリを実行する
-Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための 1 つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。 他の方法の詳細については、「 [SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)
+Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための&1; つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。 他の方法の詳細については、「 [SQL クエリの実行](documentdb-sql-query.md#ExecutingSqlQueries)
 
 ## <a name="next-steps"></a>次のステップ
 クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
 また、[Query Playground](https://www.documentdb.com/sql/demo) で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

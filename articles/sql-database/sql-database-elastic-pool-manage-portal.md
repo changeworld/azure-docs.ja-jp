@@ -17,13 +17,14 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 637171b775d01e16cec1a7e9ef6fad73875eac69
-ms.openlocfilehash: 40f04d92acce3096baec251824cb23a70b52ff83
+ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
+ms.openlocfilehash: 52cc3c74e05dc3934e0536dea02b4870f6ed86c2
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-and-manage-an-elastic-pool-with-the-azure-portal"></a>Azure Portal を使用したエラスティック プールの作成と管理
-このトピックでは、[Azure Portal](https://portal.azure.com/) を使用してスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を作成および管理する方法について説明します。 Azure エラスティック プールは、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API、または [C#][C# を使用したエラスティック プールの作成と管理](sql-database-elastic-pool-manage-csharp.md) を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
+このトピックでは、Azure Portal を使ってスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を作成および管理する方法について説明します。 Azure エラスティック プールは、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API、または [C#][C# を使用したエラスティック プールの作成と管理](sql-database-elastic-pool-manage-csharp.md) を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
 
 ## <a name="create-an-elastic-pool"></a>エラスティック プールの作成 
 
@@ -296,9 +297,4 @@ Azure Portal を使用すると、プール内のエラスティック プール
 [7]: ./media/sql-database-elastic-pool-manage-portal/select-dbs.png
 [8]: ./media/sql-database-elastic-pool-manage-portal/db-utilization.png
 [9]: ./media/sql-database-elastic-pool-manage-portal/metric.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

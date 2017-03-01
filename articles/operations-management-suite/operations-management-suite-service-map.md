@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cf3e083f17bf8b2245373bced5823afd21fe1af9
-ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
+ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
+ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -91,7 +92,10 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 ### <a name="showhide-self-links"></a>自己リンクを表示/非表示
 [Show Self Links (自己リンクを表示)] を選択すると、自己リンクを含むサーバー ノードが再描画されます。これは、サーバー内のプロセスを開始および終了する TCP 接続です。  自己リンクが表示されている場合、このメニューは [Hide Self Links (自己リンクを非表示)] に変わります。これにより、ユーザーが自己リンクの描画を切り替えることができます。
 
+## <a name="computer-summary"></a>コンピューターの概要
+[マシンの概要] パネルには、サーバーのオペレーティング システムの概要と依存関係の数に加え、他の OMS ソリューションからのさまざまなデータ (パフォーマンス メトリック、変更の追跡、セキュリティ、更新プログラムなど) が含まれます。
 
+![マシンの概要](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>コンピューターとプロセスのプロパティ
 サービス マップを見るときは、コンピューターとプロセスを選択して、それらのプロパティに関する追加情報を得ることができます。  コンピューターは、DNS 名、IPv4 アドレス、CPU とメモリ容量、VM の種類、オペレーティング システムのバージョン、最後の再起動時刻、OMS と When navigating aサービス マップエージェントの ID に関する情報を提供します。
@@ -106,10 +110,22 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 
 ![プロセスの概要](media/oms-service-map/process-summary.png)
 
-## <a name="computer-summary"></a>コンピューターの概要
-[マシンの概要] パネルには、サーバーのオペレーティング システムの概要と依存関係の数に加え、他の OMS ソリューションからのさまざまなデータ (パフォーマンス メトリック、変更の追跡、セキュリティ、更新プログラムなど) が含まれます。
+## <a name="oms-alerts-integration"></a>OMS のアラートの統合
+サービス マップは、選択されたサーバーで選択された時間範囲中に発生したアラートを表示するために、OMS のアラートと統合されます。  サーバーに進行中のアラートがある場合は、アイコンが表示され、コンピューターのアラート パネルにアラートが一覧表示されます。
 
-![マシンの概要](media/oms-service-map/machine-summary.png)
+![コンピューターのアラート パネル](media/oms-service-map/machine-alerts.png)
+
+関連するアラートをサービス マップで表示するには、アラート ルールを作成して特定のコンピューターで使用されるようにする必要があります。  適切なアラートを作成するには:
+- コンピューター別にグループ化する句を含めます ("by Computer interval 1minute")
+- メトリックの測定に基づいてアラートを生成することを選択します
+
+![アラートの構成](media/oms-service-map/alert-configuration.png)
+
+
+## <a name="oms-log-events-integration"></a>OMS のログ イベントとの統合
+サービス マップは、ログ検索と統合して、選択したサーバーで選択した時間の範囲中に発生したすべてのログ イベントの数を表示します。  イベント数の一覧の任意の行をクリックしてログ検索に移動し、個別のログ イベントを表示することができます。
+
+![ログ イベント](media/oms-service-map/log-events.png)
 
 ## <a name="oms-change-tracking-integration"></a>OMS の変更の追跡との統合
 サービス マップと変更の追跡との統合は、両方のソリューションが有効であり、OMS ワークスペースに構成されているときは自動的に行われます。
@@ -138,19 +154,6 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 
 コンピューターの更新パネルには、選択したサーバーの OMS のセキュリティと監査ソリューションからのデータが表示されます。  パネルには、選択した時間範囲のサーバーに不足している更新プログラムの概要が一覧表示されます。
 ![[Machine Change Tracking] (コンピューター変更の追跡) パネル](media/oms-service-map/machine-updates.png)
-
-
-## <a name="oms-alerts-integration"></a>OMS のアラートの統合
-サービス マップは、選択されたサーバーで選択された時間範囲中に発生したアラートを表示するために、OMS のアラートと統合されます。  サーバーに進行中のアラートがある場合は、アイコンが表示され、コンピューターのアラート パネルにアラートが一覧表示されます。
-
-![コンピューターのアラート パネル](media/oms-service-map/machine-alerts.png)
-
-関連するアラートをサービス マップで表示するには、アラート ルールを作成して特定のコンピューターで使用されるようにする必要があります。  適切なアラートを作成するには:
-- コンピューター別にグループ化する句を含めます ("by Computer interval 1minute")
-- メトリックの測定に基づいてアラートを生成することを選択します
-
-![アラートの構成](media/oms-service-map/alert-configuration.png)
-
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 サイト マップのコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-analytics/log-analytics-log-searches.md)できます。  これは、移行計画、容量の分析、探索、暫定的なパフォーマンスのトラブルシューティングといった作業に適用できます。
@@ -251,10 +254,14 @@ Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
 Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
 
 
+## <a name="rest-api"></a>REST API
+サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](https://docs.microsoft.com/en-us/rest/api/servicemap/) を使用して取得できます。
+
+
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 マイクロソフトは、お客様によるサービス マップ サービスの使用を通して、使用状況とパフォーマンス データを自動的に収集します。 Microsoft はこのデータを使用して、提供するサービス マップサービスの品質、セキュリティ、および整合性の向上に努めています。 データには、オペレーティング システムとバージョンのような、ソフトウェアの構成に関する情報が含まれています。また、正確で効果的なトラブルシューティングの機能を提供するために、IP アドレス、DNS 名、およびワークステーション名も含まれています。 名前や住所などの連絡先情報は収集されません。
 
-データの収集と使用状況の詳細については、[Microsoft オンライン サービスのプライバシーに関する声明](hhttps://go.microsoft.com/fwlink/?LinkId=512132)を参照してください。
+データの収集と使用状況の詳細については、[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -263,9 +270,4 @@ Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct Com
 
 ## <a name="feedback"></a>フィードバック
 サービス マップやこのドキュメントについてフィードバックはありますか。  [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)では、機能を提案したり、既存の提案に投票することができます。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

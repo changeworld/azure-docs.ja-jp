@@ -4,7 +4,7 @@ description: "認証されたユーザーのみがアクセスできるよう Az
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 3896760d-46ff-4b67-b98a-edd233f24758
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 16a2c6f8e704528c38054bba394e3d11098077e0
 ms.openlocfilehash: c39e7bca6f339a1797a9344778e6a01ffa8adecc
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -280,10 +281,5 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。 次のチュートリアルでは、 [サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: バージョンのリリース履歴 | Microsoft Docs"
-description: "このトピックは、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧です"
+description: "この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,55 +15,56 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 60f41890912eee3be364f5b3a47ded71991ee342
-ms.openlocfilehash: 780fb6d69dab0b27e13f1e358be048f834dfc185
+ms.sourcegitcommit: 0966b1332ee6d831a1f24ee817aa8022538a5558
+ms.openlocfilehash: f8cd2b907bd6b20ec778dc6257e2a30113dd4909
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
-Azure Active Directory チームは、Azure AD Connect を新機能で定期的に更新しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
+Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
 
 以下は、関連トピックの一覧です。
 
 
-トピック |  
+トピック |  詳細
 --------- | --------- |
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
-ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
 ## <a name="113800"></a>1.1.380.0
-リリース日: 2016 年 12 月
+リリース: 2016 年 12 月
 
 **修正された問題:**
 
-* このビルドでの ADFS 用の issuerid 要求規則が欠落しているという問題を解決しました。
+* このビルドでの Active Directory Federation Services (AD FS) 用の issuerid 要求規則が欠落しているという問題を解決しました。
 
 >[!NOTE]
->このビルドは、Azure AD Connect の自動アップグレード機能を経由したお客様は使用できません。
+>このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113710"></a>1.1.371.0
-リリース日: 2016 年 12 月
+リリース: 2016 年 12 月
 
 **既知の問題:**
 
-* このビルドには ADFS 用の issuerid 要求規則が欠落しています。 Azure AD で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの ADFS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が ADFS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、この記事の「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
+* このビルドには AD FS 用の issuerid 要求規則が欠落しています。 Azure Active Directory (Azure AD) で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの AD FS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が AD FS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
 
 **修正された問題:**
 
-* Azure AD Connect のインストールまたはアップグレードが、ポート 9090 が送信接続に開かれていない場合に失敗します。
+* ポート 9090 が送信接続に開かれていない場合、Azure AD Connect のインストールまたはアップグレードは失敗します。
 
 >[!NOTE]
->このビルドは、Azure AD Connect の自動アップグレード機能を経由したお客様は使用できません。
+>このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113700"></a>1.1.370.0
-リリース日: 2016 年 12 月
+リリース: 2016 年 12 月
 
 **既知の問題:**
 
-* このビルドには ADFS 用の issuerid 要求規則が欠落しています。 Azure AD で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの ADFS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が ADFS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、この記事の「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
+* このビルドには AD FS 用の issuerid 要求規則が欠落しています。 Azure AD で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの AD FS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が AD FS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
 * インストールを完了するには、ポート 9090 が送信に対して開かれている必要があります。
 
 **新機能:**
@@ -71,33 +72,33 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * パススルー認証 (プレビュー)。
 
 >[!NOTE]
->このビルドは、Azure AD Connect の自動アップグレード機能を経由したお客様は使用できません。
+>このビルドは、Azure AD Connect の自動アップグレード機能では提供されません。
 
 ## <a name="113430"></a>1.1.343.0
 リリース: 2016 年 11 月
 
 **既知の問題:**
 
-* このビルドには ADFS 用の issuerid 要求規則が欠落しています。 Azure AD で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの ADFS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が ADFS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、この記事の「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
+* このビルドには AD FS 用の issuerid 要求規則が欠落しています。 Azure AD で複数のドメインのフェデレーションを行っている場合は issuerid 要求規則が必要です。 Azure AD Connect を使用してオンプレミスの AD FS デプロイを管理している場合は、このビルドにアップグレードすると、既存の issuerid 要求規則が AD FS 構成から削除されます。 この問題は、インストール/アップグレード後に issuerid 要求規則を追加することで回避できます。 issuerid 要求規則の追加の詳細については、「[Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)」を参照してください。
 
 **修正された問題:**
 
 * 組織のパスワード ポリシーで指定された複雑さのレベルを満たしているパスワードを持つローカル サービス アカウントを作成することができないため、Azure AD Connect のインストールが失敗することがあります。
-* コネクタ スペースのオブジェクトが同時に&1; つの結合規則ではスコープ外になり、別の結合規則ではスコープ内になった場合に、結合規則が再評価されない問題が修正されました。 この問題は、結合条件が相互に排他的になっている&2; つ以上の結合規則がある場合に発生することがあります。
+* コネクタ スペースのオブジェクトが、1 つの結合規則ではスコープ外になり、別の結合規則ではスコープ内になった場合に、結合規則が再評価されない問題が修正されました。 この問題は、結合条件が相互に排他的になっている&2; つ以上の結合規則がある場合に発生することがあります。
 * 結合規則のない (Azure AD からの) 受信同期規則の優先順位の値が、結合規則のある受信同期規則よりも低い場合、結合規則のない受信同期規則が処理されないという問題が修正されました。
 
 **機能強化:**
 
-* Windows Server 2016 Standard 以上に Azure AD Connect をインストールするためのサポートが追加されました。
+* Windows Server 2016 Standard 以降に Azure AD Connect をインストールするためのサポートが追加されました。
 * Azure AD Connect のリモートのデータベースとしての SQL Server 2016 の使用がサポートされるようになりました。
 
 ## <a name="112810"></a>1.1.281.0
-リリース日: 2016 年 8 月
+リリース: 2016 年 8 月
 
 **修正された問題:**
 
 * 同期間隔の変更が、次の同期サイクルの完了後まで反映されません。
-* Azure AD Connect ウィザードでは、アンダースコア (\_) で始まるユーザー名を持つ Azure AD アカウントを使用できません。
+* Azure AD Connect ウィザードで、アンダースコア (\_) で始まるユーザー名を持つ Azure AD アカウントを使用できません。
 * Azure AD Connect ウィザードで、アカウントのパスワードに含まれる特殊文字の数が多すぎると、指定した Azure AD アカウントの認証が失敗します。 "資格情報を検証できません。 予期しないエラーが発生しました" というエラー メッセージが 返されます。
 * ステージング サーバーをアンインストールすると、Azure AD テナントでパスワード同期が無効になり、アクティブなサーバーでのパスワード同期が失敗します。
 * ユーザーに対してパスワードのハッシュが格納されていない場合、例外的な状況でパスワード同期が失敗します。
@@ -110,19 +111,19 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * Start-ADSyncSyncCycle コマンドレットが更新され、新しい同期サイクルを正常に開始できるかどうかを示すようになりました。
 * Stop-ADSyncSyncCycle コマンドレットが追加され、現在実行中の同期サイクルと操作を終了できるようになりました。
 * Stop-ADSyncScheduler コマンドレットが更新され、現在実行中の同期サイクルと操作を終了できるようになりました。
-* Azure AD Connect ウィザードで [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) を構成するときに、"Teletex 文字列" タイプの AD 属性を選択できるようになりました。
+* Azure AD Connect ウィザードで[ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)を構成するときに、"Teletex 文字列" 型の Azure AD 属性を選択できるようになりました。
 
 ## <a name="111890"></a>1.1.189.0
-リリース日: 2016 年 6 月
+リリース: 2016 年 6 月
 
 **修正された問題と機能強化:**
 
-* Azure AD Connect を FIPS 準拠のサーバーにインストールできます。
-  * パスワードの同期については、「 [パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)
+* Azure AD Connect を FIPS 準拠のサーバーにインストールできるようになりました。
+  * パスワードの同期については、「[パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)」を参照してください。
 * Active Directory コネクタで、NetBIOS を FQDN に名前解決できないという問題が修正されました。
 
 ## <a name="111800"></a>1.1.180.0
-リリース日: 2016 年 5 月
+リリース: 2016 年 5 月
 
 **新機能:**
 
@@ -135,10 +136,10 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * 同期規則を探しやすくするフィルターが同期規則エディターに追加されました。
 * コネクタ スペースを削除するときのパフォーマンスが改善されました。
 * 同じオブジェクトに対して削除と追加の両方が同一の実行で行われた場合 (削除/追加) の問題が修正されました。
-* 無効にした同期規則で、含まれるオブジェクトや属性が、アップグレードまたはディレクトリ スキーマの更新時に再び有効になることはありません。
+* 無効にした同期規則で、含まれるオブジェクトや属性が、アップグレードまたはディレクトリ スキーマの更新時に再び有効にされることがなくなりました。
 
 ## <a name="111300"></a>1.1.130.0
-リリース日: 2016 年 4 月
+リリース: 2016 年 4 月
 
 **新機能:**
 
@@ -147,36 +148,36 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * [カスタム スケジューラ](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler)にコマンドレットがいくつか追加されました。
 
 ## <a name="111190"></a>1.1.119.0
-リリース日: 2016 年 3
+リリース: 2016 年 3 月
 
 **修正された問題:**
 
-* このオペレーティング システムではパスワード同期がサポートされないため、Windows Server 2008 (R2 より前のバージョン) で高速インストールは使用できなくなりました。
+* Windows Server 2008 (R2 より前のバージョン) ではパスワード同期がサポートされないため、このオペレーティング システムでは高速インストールが使用できなくなりました。
 * カスタム フィルター構成での DirSync からのアップグレードが予期したとおりに動作しません。
 * 新しいリリースへのアップグレード時に構成に変更がない場合は、フル インポート/同期をスケジュールすることはできません。
 
 ## <a name="111100"></a>1.1.110.0
-リリース日: 2016 年 2 月
+リリース: 2016 年 2 月
 
 **修正された問題:**
 
-* インストールが既定の **C:\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しません。
-* インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効になりません。
+* インストールが既定の C:\Program Files フォルダーにない場合、以前のリリースからのアップグレードが機能しません。
+* インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、2 回目にインストール ウィザードを実行したときにスケジューラが有効になりません。
 * 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。 また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
-* サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
+* サインイン オプションおよびアップグレードとして AD FS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## <a name="111050"></a>1.1.105.0
-リリース日: 2016 年 2 月
+リリース: 2016 年 2 月
 
 **新機能:**
 
 * [Automatic upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) 機能。
-* インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
-  * MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するように、プロキシを設定する必要があります。
-  * MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
+* インストール ウィザードで Azure Multi-Factor Authentication および Privileged Identity Management を使用して全体管理者をサポート。
+  * Multi-Factor Authentication を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するように、プロキシを設定する必要があります。
+  * Multi-Factor Authentication を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
 * 初期インストール後のユーザーのサインイン方法の変更を許可。
 * インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。 これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
-* [スケジューラ](active-directory-aadconnectsync-feature-scheduler.md) 。
+* 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
 
 **プレビューから GA に昇格した機能:**
 
@@ -190,25 +191,25 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 **修正された問題:**
 
 * DNS ドメインの検証ページが、ドメインを認識できない場合がありました。
-* ADFS を構成するときに、ドメイン管理者の資格情報を求めるメッセージが表示されます。
+* AD FS を構成するときに、ドメイン管理者の資格情報を求めるメッセージが表示されます。
 * オンプレミス AD アカウントが、ルート ドメインとは異なる DNS ツリーを持つドメイン内にある場合、インストール ウィザードがそのアカウントを認識できません。
 
 ## <a name="1091310"></a>1.0.9131.0
-リリース日: 2015 年 12 月
+リリース: 2015 年 12 月
 
 **修正された問題:**
 
-* AD DS でパスワードを変更するときにはパスワードの同期が機能しない場合があるが、パスワードの設定時には機能する。
-* プロキシ サーバーがある場合、Azure AD に対する認証が、構成ページ上でのインストールまたはアップグレード中に失敗する場合がある。
-* SQL の SA でない場合、完全な SQL Server で以前のリリースの Azure AD Connect から更新すると失敗する。
-* リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、「ADSync SQL データベースにアクセスできません」というエラーが表示される。
+* Active Directory Domain Services (AD DS) でパスワードを変更するときにパスワードの同期が機能しない場合がありますが、パスワードの設定時には機能します。
+* プロキシ サーバーがある場合、Azure AD に対する認証が、インストール中または構成ページでアップグレードが取り消された場合に失敗することがあります。
+* SQL Server のシステム管理者 (SA) でない場合、完全な SQL Server インスタンスで以前のリリースの Azure AD Connect から更新すると失敗します。
+* リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、"ADSync SQL データベースにアクセスできません" というエラーが表示されます。
 
 ## <a name="1091250"></a>1.0.9125.0
 リリース: 2015 年 11 月
 
 **新機能:**
 
-* ADFS から Azure AD に対する信頼を再構成できるようになりました。
+* AD FS から Azure AD に対する信頼を再構成できるようになりました。
 * Active Directory スキーマを更新し、同期規則を再生成できるようになりました。
 * 同期規則を無効にできるようになりました。
 * 同期規則の新しいリテラルとして "AuthoritativeNull" を定義できるようになりました。
@@ -220,7 +221,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 **新しくサポートされたシナリオ:**
 
-* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「 [複数の Active Directory フォレストを伴うハイブリッド デプロイメント](https://technet.microsoft.com/library/jj873754.aspx) 」を参照してください。
+* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
 
 **修正された問題:**
 
@@ -232,12 +233,12 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
   * [トラブルシューティングが改善されました](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)。
 * Windows Server 2016 フォレスト機能レベルを使用して Active Directory に接続することはできなくなりました。
 * 最初のインストール後にグループ フィルターに使用したグループを変更できなくなりました。
-* パスワード ライトバックを有効にした状態でパスワードを変更して、各ユーザーの Azure AD Connect の新しいユーザー プロファイルを作成することはできなくなりました。
+* パスワード ライトバックを有効にしてパスワードを変更した各ユーザーについては、Azure AD Connect の新しいユーザー プロファイルを作成しなくなりました。
 * 同期規則スコープに Long Integer 値を使用できなくなりました。
-* 到達不能なドメイン コントローラーがある場合、[デバイスの書き戻し] チェックボックスは無効なままです。
+* 到達不能なドメイン コントローラーがある場合、[デバイスの書き戻し] チェック ボックスは無効なままです。
 
 ## <a name="1086670"></a>1.0.8667.0
-リリース日: 2015 年 8 月
+リリース: 2015 年 8 月
 
 **新機能:**
 
@@ -254,7 +255,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * ドメイン コントローラーで、Azure AD Connect のインストールが失敗することがあります。
 * 拡張属性が追加されている場合、"ステージング モード" の有効化や無効化ができません。
 * Active Directory Connector での正しくないパスワードのために、一部の構成ではパスワード ライトバックが失敗します。
-* 属性フィルターで dn が使用されている場合、DirSync をアップグレードできません。
+* 属性フィルターで識別名 (DN) が使用されている場合、DirSync をアップグレードできません。
 * パスワード リセットの使用時に CPU 使用量が過剰になります。
 
 **削除されたプレビュー機能:**
@@ -262,7 +263,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback) プレビュー機能は、プレビューを利用されているお客様からのフィードバックに基づいて一時的に削除されました。 このプレビュー機能は、提供されたフィードバックに対処した後で、再度追加されます。
 
 ## <a name="1086410"></a>1.0.8641.0
-リリース日: 2015 年 6 月
+リリース: 2015 年 6 月
 
 **Azure AD Connect の最初のリリースです。**
 
@@ -271,7 +272,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 **新機能:**
 
 * [簡単設定](active-directory-aadconnect-get-started-express.md)を使用したインストール
-* [ADFS の構成](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
+* [AD FS の構成](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
 * [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 * [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 * [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)
@@ -284,26 +285,26 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * [ディレクトリ拡張機能](active-directory-aadconnect-feature-preview.md)
 
 ## <a name="104940501"></a>1.0.494.0501
-リリース日: 2015 年 5 月
+リリース: 2015 年 5 月
 
 **新しい要件:**
 
-* Azure AD Sync のインストールに .Net framework 4.5.1 が必要になりました。
+* Azure AD Sync のインストールに .NET Framework 4.5.1 が必要になりました。
 
 **修正された問題:**
 
-* Azure AD からのパスワード ライトバックが、servicebus 接続のエラーで失敗します。
+* Azure AD からのパスワード ライトバックが、Azure Service Bus 接続のエラーで失敗します。
 
 ## <a name="104910413"></a>1.0.491.0413
-リリース日: 2015 年 4 月
+リリース: 2015 年 4 月
 
 **修正された問題と機能強化:**
 
 * ごみ箱が有効になっていて、フォレスト内に複数のドメインがある場合、Active Directory Connector が削除を正しく処理しません。
 * Azure Active Directory Connector で、インポート操作のパフォーマンスが改善されました。
-* グループがメンバーシップの制限を超えた場合 (既定では、制限は 50 k オブジェクトに設定)、Azure Active Directory でグループが削除されます。 新しい動作では、グループは残り、エラーがスローされ、新しいメンバーシップの変更はエクスポートされません。
+* グループがメンバーシップの制限を超えた場合 (既定では、制限は 50,000 オブジェクトに設定)、Azure Active Directory でグループが削除されます。 新しい動作では、グループは削除されません。エラーがスローされ、新しいメンバーシップの変更はエクスポートされません。
 * 同じ DN のステージングされた削除がコネクタ スペース内に既に存在する場合、新しいオブジェクトをプロビジョニングすることはできません。
-* オブジェクトでステージングされている変更はありませんが、一部のオブジェクトが差分同期中に同期中としてマークされます。
+* オブジェクトでステージングされている変更がなくても、差分同期中に一部のオブジェクトが同期のためにマークされます。
 * パスワード同期を強制すると、優先 DC リストも削除されます。
 * CSExportAnalyzer には、一部のオブジェクトの状態に関する問題があります。
 
@@ -312,7 +313,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * 結合で、MV の "任意" のオブジェクト型に接続できるようになりました。
 
 ## <a name="104850222"></a>1.0.485.0222
-リリース日: 2015 年 2 月
+リリース: 2015 年 2 月
 
 **機能強化:**
 
@@ -321,17 +322,17 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 **修正された問題:**
 
 * パスワード同期が、属性フィルターで使用される cloudFiltered 属性を受け取ります。 フィルター処理されたオブジェクトが、パスワード同期のスコープに含まれなくなります。
-* トポロジが非常に多くのドメイン コントローラーを持つまれな状況では、パスワード同期が機能しません。
+* トポロジが多くのドメイン コントローラーを持つまれな状況では、パスワード同期が機能しません。
 * Azure AD/Intune でデバイス管理が有効化された後、Azure AD Connector からのインポート時に、"サーバーが停止" します。
 * 同じフォレスト内の複数のドメインの外部セキュリティ プリンシパル (FSP) を結合すると、あいまい結合のエラーが発生します。
 
 ## <a name="104751202"></a>1.0.475.1202
-リリース日: 2014 年 12 月
+リリース: 2014 年 12 月
 
 **新機能:**
 
-* 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。 詳細については、 [フィルターによるパスワード同期](active-directory-aadconnectsync-configure-filtering.md)に関するページを参照してください。
-* 属性 msDS-ExternalDirectoryObjectID が AD に書き戻されます。 これによって、ハイブリッド Exchange デプロイでオンラインとオンプレミスの両方のメールボックスにアクセスするために OAuth2 を使用する Office 365 アプリケーションのサポートが追加されます。
+* 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。 詳細については、[フィルターによるパスワード同期](active-directory-aadconnectsync-configure-filtering.md)に関するページを参照してください。
+* msDS-ExternalDirectoryObjectID 属性が Active Directory に書き戻されます。 この機能により、Office 365 アプリケーションのサポートが追加されます。 OAuth2 を使用して、ハイブリッド Exchange デプロイのオンラインとオンプレミスのメールボックスへのアクセスが行われます。
 
 **修正されたアップグレードの問題:**
 
@@ -347,36 +348,30 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * パスワード同期の ETW トレースの問題が修正されました。
 
 ## <a name="104701023"></a>1.0.470.1023
-リリース日: 2014 年 10 月
+リリース: 2014 年 10 月
 
 **新機能:**
 
-* 複数のオンプレミス AD から Azure AD へのパスワードの同期。
+* 複数のオンプレミス Active Directory から Azure AD へのパスワードの同期。
 * すべての Windows Server 言語にローカライズされたインストール UI。
 
 **AADSync 1.0 GA からのアップグレード**
 
 Azure AD Sync が既にインストールされている場合、標準の同期規則を変更したのであれば、追加の手順が&1; つ必要になります。 1.0.470.1023 リリースにアップグレードした後で、変更した同期規則は複製されます。 変更された各同期規則で、次の操作を行ってください。
 
-* 変更した同期規則を探して、変更内容をメモしておきます。
+1.  変更した同期規則を探して、変更内容をメモしておきます。
 * 同期規則を削除します。
 * Azure AD Sync によって作成された新しい同期規則を探して、変更を再適用します。
 
-**AD アカウントのアクセス許可**
+**Active Directory アカウントのアクセス許可**
 
-AD アカウントには、AD からのパスワード ハッシュを読み取ることができるように、追加のアクセス許可を与える必要があります。 付与するアクセス許可の名前は、[ディレクトリの変更のレプリケート] と [ディレクトリの変更をすべてにレプリケート] です。 パスワード ハッシュを読み取るためには、両方のアクセス許可が必要です。
+Active Directory アカウントには、Active Directory からのパスワード ハッシュを読み取ることができるように、追加のアクセス許可を与える必要があります。 付与するアクセス許可の名前は、[ディレクトリの変更のレプリケート] と [ディレクトリの変更をすべてにレプリケート] です。 パスワード ハッシュを読み取るためには、両方のアクセス許可が必要です。
 
 ## <a name="104190911"></a>1.0.419.0911
-リリース日: 2014 年 9 月
+リリース: 2014 年 9 月
 
 **Azure AD Sync の最初のリリースです。**
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

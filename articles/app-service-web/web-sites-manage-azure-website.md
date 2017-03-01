@@ -4,7 +4,7 @@ description: "Azure App Service で Web アプリを管理するためのリソ�
 services: app-service\web
 documentationcenter: 
 author: erikre
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: d5e2887a-84f9-4747-a573-867635cb8b39
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
 ms.openlocfilehash: 50630084a3df9bc1fed27efb41bc557d0e03916f
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -87,10 +88,5 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 [While your website is running]: #while-your-website-is-running
 [When you update your website]: #when-you-update-your-website
 
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

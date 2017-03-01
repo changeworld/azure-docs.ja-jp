@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
-ms.openlocfilehash: 31fd217e46bbc79bac9e09045677edbc12bcf6c2
+ms.sourcegitcommit: 8284fa063d8ffa0d9951b77eb06be14159fc2561
+ms.openlocfilehash: 5b40d5476d85a4eeba65f01320e0ea03ed4debaa
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="automating-application-deployments-to-azure-virtual-machines"></a>Azure Virtual Machines へのアプリケーションのデプロイを自動化する
-この&4; 部構成のシリーズでは、Azure Resource Manage テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。
+この&4; 部構成のシリーズでは、Azure Resource Manager テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。
 
 ## <a name="music-store-application"></a>ミュージック ストア アプリケーション
 このシリーズで使うサンプルは、ミュージック ストアのショッピング体験をシミュレートする .Net Core アプリケーションです。 このアプリケーションは、Linux または Windows の仮想システムにデプロイできます。両方のサンプルのデプロイを作成しています。 このアプリケーションには、Web アプリケーションと SQL データベースが含まれています。 このシリーズの記事を読む前に、このページにあるデプロイ ボタンを使って、アプリケーションをデプロイしてください。 完全にデプロイすると、アプリケーション/Azure のアーキテクチャは次の図のようになります。 
@@ -68,10 +69,5 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 [手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [手順 4 - Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ](virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

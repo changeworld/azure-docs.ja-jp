@@ -4,7 +4,7 @@ description: "プッシュ通知内で絵文字を使用する方法"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 663317d7-3c93-4e8f-b13d-c6fb342124ee
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26d46c25fe7bbdcdb1ab8245b9b4c0642fe27289
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -46,10 +47,5 @@ ms.openlocfilehash: 26d46c25fe7bbdcdb1ab8245b9b4c0642fe27289
 [5]: ./media/mobile-engagement-use-emoji-with-push/WindowsPhone_Emoji.png
 [6]: ./media/mobile-engagement-use-emoji-with-push/Mac_SelectEmoji.png
 [7]: ./media/mobile-engagement-use-emoji-with-push/Windows_SelectEmoji.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 6eb84236ff7814ab7dfade718693060d7e7383b9
-ms.openlocfilehash: a060970a2f2870a40d4925b8eeccf4fec4af1aa4
+ms.sourcegitcommit: 8a169425aa6e99b1a710f5ca56a76445fb1e09bc
+ms.openlocfilehash: 0d06677f6f3815e8ebb35d13f906481350069d4c
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -89,7 +90,7 @@ ExpressRoute を使用して、オンプレミス インフラストラクチャ
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
+                        <p><a href="/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -110,10 +111,5 @@ ExpressRoute を使用して、オンプレミス インフラストラクチャ
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

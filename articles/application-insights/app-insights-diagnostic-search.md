@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e8daf6f37cbbdf1c33d8b66a2b8719458e8bd9f9
-ms.openlocfilehash: 7886f7e7fcf22d38c45e369761730c076ad96d75
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: 1ef09170f9d5dd28005f70913df2c945f8e4ac12
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -137,7 +138,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 
 ## <a name="create-work-item"></a>作業項目を作成する
-任意のテレメトリ項目の詳細を使用して、Visual Studio Team Services でバグを作成できます。 
+任意のテレメトリ項目の詳細を使用して、GitHub または Visual Studio Team Services でバグを作成できます。 
 
 ![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/42.png)
 
@@ -145,7 +146,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 ![Team Services サーバーとプロジェクト名の URL を入力し、[承認] をクリックします](./media/app-insights-diagnostic-search/41.png)
 
-([設定] > [作業項目] から構成ブレードに移動することもできます。)
+([作業項目] ブレードでリンクを構成することもできます)。
 
 ## <a name="save-your-search"></a>検索条件の保存
 必要なフィルターをすべて設定した後、この検索条件をお気に入りとして保存できます。 組織のアカウントで作業している場合は、これを他のチーム メンバーと共有するかどうかを選択できます。
@@ -168,7 +169,8 @@ Application Insights SDK によって送信される標準のテレメトリに�
 
 ## <a name="a-namequestionsaq--a"></a><a name="questions"></a>Q & A
 ### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
-各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは 7 日間保持されます。
+
+「[制限の概要](app-insights-pricing.md#limits-summary)」を参照してください。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>サーバーの要求の POST データを表示するにはどうしたらよいですか
 POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](app-insights-search-diagnostic-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
@@ -178,9 +180,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Application Insights にログとカスタム テレメトリを送信する](app-insights-search-diagnostic-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

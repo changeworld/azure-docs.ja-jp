@@ -1,6 +1,6 @@
 ---
 
-title: "インポート/エクスポート サービスのログ ファイルの形式 | Microsoft Docs"
+title: "Azure Import/Export のログ ファイルの形式 | Microsoft Docs"
 description: "インポート/エクスポート サービス ジョブの手順を実行したときに作成されるログ ファイルの形式について説明します"
 author: muralikk
 manager: syadav
@@ -13,22 +13,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: fab36b750ec4ba518fad8392f611cd46d8155985
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="import-export-service-log-file-format"></a>インポート/エクスポート サービスのログ ファイルの形式
+# <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
   
 Import/Export サービスによって書き込まれるログは&2; 種類あります。  
   
 -   エラー ログは、エラーが発生したときに常に生成されます。  
   
--   詳細ログは既定では無効になっていますが、[Put Job](/rest/api/storageservices/importexport/Put-Job) または [Update Job Properties](/rest/api/storageservices/importexport/Update-Job-Properties) 操作で `EnableVerboseLog` プロパティを設定すると有効にできます。  
+-   詳細ログは既定では無効になっていますが、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) または [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作で `EnableVerboseLog` プロパティを設定すると有効にできます。  
   
 ## <a name="log-file-location"></a>ログ ファイルの場所  
 ログは、`Put Job` 操作で設定できる `ImportExportStatesPath` 設定で指定されるコンテナーまたは仮想ディレクトリでブロック BLOB に書き込まれます。 ログの書き込み先となる場所は、ジョブに認証を指定する方法と `ImportExportStatesPath` で指定される値と共によって異なります。 ジョブの認証はストレージ アカウント キーまたはコンテナーの SAS (共有アクセス署名) を通じて指定できます。  
@@ -44,7 +45,7 @@ Import/Export サービスによって書き込まれるログは&2; 種類あ�
 |コンテナー SAS|既定値|`waimportexport` という名前の仮想ディレクトリ。これは SAS で指定されたコンテナーの下にある既定の名前です。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport` になります。|  
 |コンテナー SAS|ユーザーが指定した値|SAS で指定されたコンテナーの下にあるユーザーが指定した仮想ディレクトリ。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` で、指定された仮想ディレクトリの名前が `mylogblobs` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs` になります。|  
   
-[Get Job](/rest/api/storageservices/importexport/Get-Job3) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
+[Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
   
 ## <a name="log-file-format"></a>ログ ファイル形式  
 両方のログの形式は同じで、ハード ドライブとお客様のアカウント間で BLOB をコピーする間に発生したイベントの XML の説明が格納される BLOB です。  
@@ -358,10 +359,5 @@ properties-status ::=
 ```
   
 ## <a name="see-also"></a>関連項目  
-[ストレージの Import/Export REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[ストレージの Import/Export REST](/rest/api/storageimportexport/)
 

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/20/2016
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: cbd7e36c5ef5c78b38a2cc7791b442cac1711b95
-ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f
+ms.sourcegitcommit: f517a649a6c6aa65b350767bc66cf4d60c7988b5
+ms.openlocfilehash: 9a114e954d59dcecaf3310e024428770bc4a2349
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -84,7 +85,7 @@ Azure 仮想マシン (VM) をバックアップするには、事前に&3; つ�
 6. **[資格情報コンテナーの作成]**をクリックします。 バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。 ポータルの下部にある状態通知を監視します。
 
     ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-prepare/creating-vault.png)
-7. コンテナーが正常に作成されたことを確認するメッセージが表示されています。 **[Recovery Services]** ページに、コンテナーが **[アクティブ]** と表示されます。 コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。 詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#step-1-create-a-recovery-services-vault)」をご覧ください。
+7. コンテナーが正常に作成されたことを確認するメッセージが表示されています。 **[Recovery Services]** ページに、コンテナーが **[アクティブ]** と表示されます。 コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。 詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#create-a-recovery-services-vault)」をご覧ください。
 
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 8. バックアップ資格情報コンテナーをクリックして **[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。
@@ -231,9 +232,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 * [仮想マシンのバックアップ](backup-azure-vms.md)
 * [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 * [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -5,7 +5,7 @@ services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
 writer: Rick-Anderson
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f4916fc0-ea08-41f7-846b-73e41bc88149
 ms.service: app-service-web
@@ -18,6 +18,7 @@ ms.author: riande
 translationtype: Human Translation
 ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
 ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -751,10 +752,5 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [ValidateConnection]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ValidateConnection.png
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

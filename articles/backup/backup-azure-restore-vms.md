@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 5e22f3b395a2c8d62caa6ae0abf5f81833b00780
-ms.openlocfilehash: 2018f37b3b3426ba6a066310ddfd65fc31b7eb25
+ms.sourcegitcommit: 7de8d98f24ea01012b8fa3a326e1d4ad3f04099a
+ms.openlocfilehash: 186929c1193f63ecda6fd4851bb66c8430ab99ab
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -100,7 +101,7 @@ Ubuntu など cloud-init ベースの Linux ディストリビューションを
 最初にバックアップされた VM と同じ名前で同じクラウド サービスに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。 別のクラウド サービスに VM を復元した場合、または復元された VM に別の名前を指定した場合、この VM は新しい VM として扱われるので、復元された VM に対してバックアップをセットアップする必要があります。
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>Azure データ センターにおける障害発生時の VM の復元
-VM が稼働しているプライマリ データ センターが被災した場合、Backup コンテナーが geo 冗長に構成されていると、Azure Backup ではバックアップされた VM をペアのデータセンターに復元することができます。 このようなシナリオでは、ペアのデータセンター内に存在するストレージ アカウントを選択する必要があります。これ以外の復元処理は同じとなります。 Azure Backup では、ペアの geo からコンピューティング サービスを使って、復元された仮想マシンを作成します。 
+VM が稼働しているプライマリ データ センターが被災した場合、Backup コンテナーが geo 冗長に構成されていると、Azure Backup ではバックアップされた VM をペアのデータセンターに復元することができます。 このようなシナリオでは、ペアのデータセンター内に存在するストレージ アカウントを選択する必要があります。これ以外の復元処理は同じとなります。 Azure Backup では、ペアの geo からコンピューティング サービスを使って、復元された仮想マシンを作成します。 詳しくは、[Azure データ センターの回復性に関するページ](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)をご覧ください。
 
 ## <a name="restoring-domain-controller-vms"></a>ドメイン コントローラー の VM の復元
 ドメイン コントローラー (DC) の仮想マシンのバックアップは、Azure Backup でサポートされているシナリオです。 ただし、この復元プロセスではいくつか注意が必要です。 復元操作は、シングル DC 構成でのドメイン コントローラーの VM と、マルチ DC 構成でのドメイン コントローラーの VM とで大きく異なります。
@@ -153,10 +154,5 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 ## <a name="next-steps"></a>次のステップ
 * [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 * [仮想マシンの管理](backup-azure-manage-vms.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

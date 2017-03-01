@@ -4,7 +4,7 @@ description: "Traffic Manager および App Service 環境による geo 分散�
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: stefsch
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e7f816713cc74ca27dd7718e8071f48dd653e213
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -131,9 +132,4 @@ PowerShell を使用した [Azure Resource Manager による Traffic Manager の
 [CNAMEforCustomDomain]:  ./media/app-service-app-service-environment-geo-distributed-scale/CNAMECustomDomain-1.png
 [DNSLookup]:  ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]:  ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

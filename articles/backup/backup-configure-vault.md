@@ -1,10 +1,10 @@
 ---
-title: "Resource Manager デプロイメント モデルで Azure Backup を使用して Windows Server または Windows クライアントを Azure にバックアップする | Microsoft Docs"
+title: "Windows Server を Azure にバックアップする (Resource Manager) | Microsoft Docs"
 description: "バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"
 ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: jimpark; trinadhk; markgal
+ms.date: 2/16/2017
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 738b8e29fbc139753ea59f1a20416386383f942d
-ms.openlocfilehash: c6b662883919d81a4895c85deed8f50f9e578444
+ms.sourcegitcommit: 1a87af9efeb6c00f3c67f2c2d8d8f2e0491d248d
+ms.openlocfilehash: 018a1bde8163eda660fd50a41839b6c1ec622d79
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -145,7 +146,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 サーバーが一覧に示されている場合は、エージェントは正しくインストールおよび登録されています。
 
 ## <a name="step-4-complete-the-initial-backup"></a>手順 4: 初回バックアップを完了する
-初回バックアップには、次の 2 つの主要なタスクが含まれています。
+初回バックアップには、次の&2; つの主要なタスクが含まれています。
 
 * バックアップのスケジュール
 * 初回のファイルとフォルダーのバックアップ
@@ -162,10 +163,10 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
 5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
-6. ページの下部にある [次へ]」を参照してください。
+6. ページの下部にある **[次へ]**」を参照してください。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
-    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
+    毎日 (1 日に最大&3; 回) または毎週のバックアップをスケジュールすることができます。
 
     ![Windows Server のバックアップ項目](./media/backup-configure-vault/specify-backup-schedule-close.png)
 
@@ -222,9 +223,4 @@ VM や他のワークロードのバックアップの詳細については、�
 
 * ファイルとフォルダーをバックアップしたので、 [コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

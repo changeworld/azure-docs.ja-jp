@@ -17,6 +17,7 @@ ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: c7c26090c34dfa30bf4f7633924bf7b630a0280c
 ms.openlocfilehash: 6ff4db6f273a10fd6616656505f2995d51b0e3d2
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -44,11 +45,11 @@ In the following steps, you configure Azure CLI to connect to Azure Stack. Then 
 
 1. Retrieve the value for active-directory-resource-id by executing this PowerShell:
     ```PowerShell
-    (Invoke-RestMethod -Uri https://api.azurestack.local/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
+    (Invoke-RestMethod -Uri https://api.local.azurestack.global/metadata/endpoints?api-version=1.0 -Method Get).authentication.audiences[0]
     ```
 2. Use the following CLI command to add the Azure Stack environment, making sure to update *--active-directory-resource-id* with the data URL retrieved in the previous step:
    
-          azure account env add AzureStack --resource-manager-endpoint-url "https://api.azurestack.local" --management-endpoint-url "https://api.azurestack.local" --active-directory-endpoint-url  "https://login.windows.net" --portal-url "https://portal.azurestack.local" --gallery-endpoint-url "https://portal.azurestack.local" --active-directory-resource-id "https://azurestack.local-api/" --active-directory-graph-resource-id "https://graph.windows.net/"
+          azure account env add AzureStack --resource-manager-endpoint-url "https://api.local.azurestack.global" --management-endpoint-url "https://api.local.azurestack.global" --active-directory-endpoint-url  "https://login.windows.net" --portal-url "https://publicportal.local.azurestack.global" --gallery-endpoint-url "https://publicportal.local.azurestack.global" --active-directory-resource-id "https://local.azurestack.global-api/" --active-directory-graph-resource-id "https://graph.windows.net/"
 3. Sign in by using the following command (replace *username* with your user name):
    
        azure login -e AzureStack -u “<username>”
@@ -70,10 +71,5 @@ In the following steps, you configure Azure CLI to connect to Azure Stack. Then 
 [Connect with PowerShell](azure-stack-connect-powershell.md)
 
 [Manage user permissions](azure-stack-manage-permissions.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

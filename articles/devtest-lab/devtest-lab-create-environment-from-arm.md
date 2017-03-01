@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 9bc03ee35436180e7c8639233ca80fb7e7e200f6
-ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
+ms.sourcegitcommit: bd280fabf22d569f3c4dae9f00f44b08700c8fc4
+ms.openlocfilehash: f034f028b0b1e0011e152b88d304dd54cfbc8320
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -68,7 +69,7 @@ ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
 1. **[追加+]** を選択し、Azure Resource Manager テンプレートのリポジトリを追加します。
 1. 2 つ目の **[リポジトリ]** ブレードが開いたら、必要な情報を次のように入力します。
     - **名前** - ラボで使用するリポジトリ名を入力します。
-    - **Git クローン URI** - GitHub または Visual Studio Team Services の GIT HTTPS クローン URL を入力します。  
+    - **Git クローン URL** - GitHub または Visual Studio Team Services の GIT HTTPS クローン URL を入力します。  
     - **分岐** - Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。 
     - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Visual Studio Team Services からトークンを取得するには、**&lt;自分の名前>、[マイ プロファイル]、[セキュリティ]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、**[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
     - **フォルダー パス** -&2; つの入力フィールドのいずれかを使用して、アーティファクトの定義 (最初の入力フィールド) または Azure Resource Manager テンプレートの定義に、フォワード スラッシュ (/) で始まり、Git クローン URI に対して相対的なフォルダー パスを入力します。   
@@ -115,8 +116,4 @@ ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
 ## <a name="next-steps"></a>次のステップ
 * VM が作成されたら、その VM のブレードで **[接続]** を選択して VM に接続できます。
 * [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。
-
-
-<!--HONumber=Feb17_HO1-->
-
 

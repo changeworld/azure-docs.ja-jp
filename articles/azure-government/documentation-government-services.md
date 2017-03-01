@@ -1,10 +1,10 @@
 ---
-title: "Azure Government の各種サービス | Microsoft Docs"
+title: "Azure Government で利用可能なサービス | Microsoft Docs"
 description: "Azure Government で利用可能なサービスの概要を紹介します"
 services: azure-government
 cloud: gov
 documentationcenter: 
-author: zakramer
+author: smichelotti
 manager: liki
 ms.assetid: a453a23c-bc0f-4203-9075-0f579dea7e23
 ms.service: azure-government
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 01/29/2017
-ms.author: zakramer
+ms.date: 02/13/2017
+ms.author: stemi
 translationtype: Human Translation
-ms.sourcegitcommit: 157e1d2b39e3990daa8001279b0dcc5bd14f0de8
-ms.openlocfilehash: eac5f44f3e6f0953bff57e362d327b738e6b50f9
+ms.sourcegitcommit: ffe3991f68bbd255ff6f4ffedbd6638f32897d1a
+ms.openlocfilehash: 914870f59b488716bb283162078535849f732018
+ms.lasthandoff: 02/21/2017
 
 
 ---
-# <a name="azure-government-services"></a>Azure Government の各種サービス
-Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、主に以下の&2; 種類の情報を記載しています。
+# <a name="available-services-on-azure-government"></a>Azure Government で利用可能なサービス
+Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、Azure Government で現在ご利用いただけるサービスについて、次の&2; つの主要な情報と共に説明します。
 
 * **バリエーション:** 現時点ではまだデプロイされていない機能、または政府機関向けの環境に固有のプロパティ (URL など) によるバリエーションです。  
 * **考慮事項:** データをコンプライアンスの管理境界内にとどめるために必要な政府機関特有の実装の詳細です。
@@ -30,73 +31,125 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 サービスの最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。 
 
+以下の表で「リソース マネージャーが有効」が「はい」になっている場合、そのサービスにはリソース プロバイダーがあり、PowerShell を使って管理することができます。 Resource Manager のプロバイダー、API のバージョン、およびスキーマの詳細については、[こちら](../azure-resource-manager/resource-manager-supported-services.md)を参照してください。 ポータルでの利用が可能なサービスは、[Azure Government ポータル](https://portal.azure.us/)で管理できます。 
+
+
 ## <a name="computedocumentation-government-computemd"></a>[Compute](documentation-government-compute.md)
-* [Windows 仮想マシン](documentation-government-compute.md#virtual-machines)
-* [Linux 仮想マシン](documentation-government-compute.md#virtual-machines)
-* Cloud Services
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [Virtual Machines](documentation-government-compute.md#virtual-machines) | はい | はい |
+| Batch
+ | はい | はい |
+| Cloud Services | はい | はい |
+| Service Fabric | はい | はい |
+| VM スケール セット | はい | はい |
+
 
 ## <a name="networkingdocumentation-government-networkingmd"></a>[ネットワーク](documentation-government-networking.md)
-* [ExpressRoute](documentation-government-networking.md#expressroute-private-connectivity)
-* [BGP コミュニティのサポート](documentation-government-networking.md#support-for-bgp-communities)
-* 仮想ネットワーク
-* [Load Balancer](documentation-government-networking.md#support-for-load-balancer)
-* Application Gateway
-* [Traffic Manager](documentation-government-networking.md#support-for-traffic-manger)
-* [VPN Gateway](documentation-government-networking.md#support-for-vpn-gateway)
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [ExpressRoute](documentation-government-networking.md#expressroute-private-connectivity) | はい | はい |
+| 仮想ネットワーク | はい | はい |
+| [Load Balancer](documentation-government-networking.md#support-for-load-balancer) | はい | はい |
+| [Traffic Manager](documentation-government-networking.md#support-for-traffic-manger) | はい | はい |
+| [VPN Gateway](documentation-government-networking.md#support-for-vpn-gateway) | はい | はい |
+| Application Gateway | はい | はい |
+| ExpressRoute | はい | はい |
+
+
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[Storage](documentation-government-services-storage.md)
-* [Azure Storage](documentation-government-services-storage.md#azure-storage)
-* [Blob Storage](documentation-government-services-storage.md#azure-storage)
-* [テーブル ストレージ](documentation-government-services-storage.md#azure-storage)
-* [Queue Storage](documentation-government-services-storage.md#azure-storage)
-* [File Storage](documentation-government-services-storage.md#azure-storage)
-* [ホット/クール ストレージ](documentation-government-services-storage.md#azure-storage)
-* [ストレージ サービスの暗号化](documentation-government-services-storage.md#azure-storage)
-* [Premium Storage](documentation-government-services-storage.md#azure-storage)
-* [BLOB のインポート /エクスポート](documentation-government-services-storage.md#azure-storage)
-* [StorSimple](documentation-government-services-storage.md)
-* [Backup](documentation-government-services-backup.md)
-* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
-* Import/Export
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [Storage - BLOB](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Storage - テーブル](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Storage - キュー](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Storage - ファイル](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Storage - ディスク](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [StorSimple](documentation-government-services-storage.md) | はい | はい |
+| [Backup](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Site Recovery](documentation-government-services-storage.md#azure-storage) | はい | はい |
+| [Import/Export](documentation-government-services-storage.md#azure-storage) | はい | なし |
+
+
 
 ## <a name="web--mobiledocumentation-government-services-webandmobilemd"></a>[Web + モバイル](documentation-government-services-webandmobile.md)
-* [App Services](documentation-government-services-webandmobile.md#app-services)
-* Media Services
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [App Service - Web Apps](documentation-government-services-webandmobile.md#app-services) | はい | はい |
+| [App Service - API Apps](documentation-government-services-webandmobile.md#app-services) | はい | はい |
+| [App Service - Mobile Apps](documentation-government-services-webandmobile.md#app-services) | はい | はい |
+| Media Services | はい | はい |
+
 
 ## <a name="databasesdocumentation-government-services-databasemd"></a>[データベース](documentation-government-services-database.md)
-* [SQL Database](documentation-government-services-database.md#sql-database)
-* SQL Server Stretch Database
-* [Redis Cache](documentation-government-services-database.md#azure-redis-cache)
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [SQL Database](documentation-government-services-database.md#sql-database) | はい | はい |
+| SQL Data Warehouse | はい | はい |
+| SQL Server Stretch Database | はい | はい |
+| [Redis Cache](documentation-government-services-database.md#azure-redis-cache) | はい | はい |
+
+
+
 
 ## <a name="internet-of-things-iot"></a>モノのインターネット(IoT)
-* Event Hubs
-* Notification Hubs
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| Event Hubs | はい | はい |
+| Notification Hubs | いいえ | いいえ ([以前のポータル](https://manage.windowsazure.us/)に移動) |
+
 
 ## <a name="enterprise-integration"></a>エンタープライズ統合
-* Service Bus
-* [StorSimple](documentation-government-services-storage.md)
-* SQL Server Stretch Database
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| Service Bus | はい | はい |
+| [StorSimple](documentation-government-services-storage.md) | はい | はい |
+| SQL Server Stretch Database | はい | はい |
+
+
 
 ## <a name="security--identitydocumentation-government-services-securityandidentitymd"></a>[セキュリティ + ID](documentation-government-services-securityandidentity.md)
-* [Key Vault](documentation-government-services-securityandidentity.md#key-vault)
-* Azure Active Directory
-* Multi-Factor Authentication
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| Azure Active Directory | はい | はい |
+| [Key Vault](documentation-government-services-securityandidentity.md#key-vault) | はい | なし (近日対応予定) |
+| Multi-Factor Authentication | はい | はい |
+| InTune | はい | いいえ |
+
+
+## <a name="intelligence--analytics"></a>インテリジェンス + 分析
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| Power BI | はい | いいえ |
+| HDInsight | はい | はい |
+
+
 
 ## <a name="monitoring--managementdocumentation-government-services-monitoringandmanagementmd"></a>[監視 + 管理](documentation-government-services-monitoringandmanagement.md)
-* [Automation](documentation-government-services-monitoringandmanagement.md#automation)
-* [Backup](documentation-government-services-backup.md) 
-* [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
-* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
-* Scheduler
-* [Traffic Manager](documentation-government-networking.md#support-for-traffic-manger)
-* Monitoring and Diagnostics
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [Automation](documentation-government-services-monitoringandmanagement.md#automation) | はい | はい |
+| [Backup](documentation-government-services-backup.md) | はい | はい |
+| [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics) | はい | はい |
+| [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery) | はい | はい |
+| Scheduler | はい | なし |
+| Monitoring and Diagnostics | はい | はい |
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、[Microsoft Azure Government ブログ](https://blogs.msdn.microsoft.com/azuregov/)を講読してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

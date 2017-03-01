@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
+ms.date: 02/15/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 2f4911d012b0e63f90ad1567a6fc3ff429516d75
-ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
+ms.sourcegitcommit: 1b2e22150f9cea004af4892cd7fa2fb2b59c8787
+ms.openlocfilehash: 16e53dbdb4ce6de02a9c8acb2fb1d8a3ac265b8f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -44,7 +45,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 ### <a name="section-name-traceetw"></a>セクション名: Trace/Etw
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| Level |int、既定値は 4 |トレースの ETW レベル。 |
+| Level |int、既定値は 4 |Trace/Etw のレベルには、1、2、3、4 の値を指定できます。 サポート対象となるために、トレース レベルは 4 のままにする必要があります。 |
 
 ### <a name="section-name-performancecounterlocalstore"></a>セクション名: PerformanceCounterLocalStore
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -58,11 +59,11 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 ### <a name="section-name-setup"></a>セクション名: Setup
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| FabricDataRoot |String |Windows Fabric のデータ ルート ディレクトリ。 |
-| FabricLogRoot |string |Windows Fabric のログ ルート ディレクトリ。 |
+| FabricDataRoot |string |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
+| FabricLogRoot |string |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
 | ServiceRunAsAccountName |String |Fabric ホスト サービスを実行するアカウント名。 |
 | ServiceStartupType |String |Fabric ホスト サービスのスタートアップの種類。 |
-| SkipFirewallConfiguration |ブール値、既定値は false |ファイアウォール設定をスキップするかどうかを示します。 |
+| SkipFirewallConfiguration |ブール値、既定値は false |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |
 
 ### <a name="section-name-transactionalreplicator"></a>セクション名: TransactionalReplicator
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -91,7 +92,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 ### <a name="section-name-fabricclient"></a>セクション名: FabricClient
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| NodeAddresses |wstring、既定値は L"" |ネーム サービスとの通信に使用できるさまざまなノード上のアドレス (接続文字列) のコレクション。 最初に、クライアントはアドレスのいずれかをランダムに選択して接続します。 複数の接続文字列が指定されている場合、通信エラーやタイムアウト エラーによって接続が失敗すると、クライアントは次のアドレスに順次切り替えて使用します。 再試行セマンティクスの詳細については、ネーム サービス アドレスの再試行のセクションを参照してください。 |
+| NodeAddresses |wstring、既定値は "" |ネーム サービスとの通信に使用できるさまざまなノード上のアドレス (接続文字列) のコレクション。 最初に、クライアントはアドレスのいずれかをランダムに選択して接続します。 複数の接続文字列が指定されている場合、通信エラーやタイムアウト エラーによって接続が失敗すると、クライアントは次のアドレスに順次切り替えて使用します。 再試行セマンティクスの詳細については、ネーム サービス アドレスの再試行のセクションを参照してください。 |
 | ConnectionInitializationTimeout |時間 (秒単位)、既定値は 2 |timespan を秒単位で指定します。 クライアントがゲートウェイへの接続を開こうとするときの接続タイムアウト間隔。 |
 | PartitionLocationCacheLimit |int、既定値は 100000 |サービスの解決用にキャッシュされるパーティションの数 (無制限にするには、0 に設定します)。 |
 | ServiceChangePollInterval |時間 (秒単位)、既定値は 120 |timespan を秒単位で指定します。 クライアントからゲートウェイに登録済みのサービス変更通知をコールバックするための、サービスの変更の連続するポーリングの間隔。 |
@@ -120,7 +121,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 ### <a name="section-name-nodedomainids"></a>セクション名: NodeDomainIds
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| UpgradeDomainId |wstring、既定値は L"" |ノードが属するアップグレード ドメインを示します。 |
+| UpgradeDomainId |wstring、既定値は "" |ノードが属するアップグレード ドメインを示します。 |
 | PropertyGroup |NodeFaultDomainIdCollection |ノードが属する障害ドメインを示します。 障害ドメインは、データセンター内のノードの場所を示す URI によって定義されます。  障害ドメインの URI は、fd:/fd/ の後に URI パス セグメントが続く形式になります。|
 
 ### <a name="section-name-nodeproperties"></a>セクション名: NodeProperties
@@ -138,27 +139,27 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | --- | --- | --- |
 | StartApplicationPortRange |int、既定値は 0 |ホスティング サブシステムによって管理されるアプリケーション ポートの開始。 Hosting で EndpointFilteringEnabled が true の場合は必須です。 |
 | EndApplicationPortRange |int、既定値は 0 |ホスティング サブシステムによって管理されるアプリケーション ポートの終了 (この値を含まない)。 Hosting で EndpointFilteringEnabled が true の場合は必須です。 |
-| ClusterX509StoreName |wstring、既定値は L"My" |クラスター内通信をセキュリティで保護するためのクラスター証明書を格納する X.509 証明書ストアの名前。 |
-| ClusterX509FindType |wstring、既定値は L"FindByThumbprint" |ClusterX509StoreName で指定されたストア内でのクラスター証明書の検索方法を示します。サポートされる値は "FindByThumbprint" と "FindBySubjectName" です。"FindBySubjectName" を指定すると、一致するものが複数ある場合に、有効期限が最も長いものが使用されます。 |
-| ClusterX509FindValue |wstring、既定値は L"" |クラスター証明書の検索に使用する検索フィルター値。 |
-| ClusterX509FindValueSecondary |wstring、既定値は L"" |クラスター証明書の検索に使用する検索フィルター値。 |
-| ServerAuthX509StoreName |wstring、既定値は L"My" |エントリ サービスのサーバー証明書を格納する X.509 証明書ストアの名前。 |
-| ServerAuthX509FindType |wstring、既定値は L"FindByThumbprint" |ServerAuthX509StoreName で指定されたストア内でのサーバー証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
-| ServerAuthX509FindValue |wstring、既定値は L"" |サーバー証明書の検索に使用する検索フィルター値。 |
-| ServerAuthX509FindValueSecondary |wstring、既定値は L"" |サーバー証明書の検索に使用する検索フィルター値。 |
-| ClientAuthX509StoreName |wstring、既定値は L"My" |既定の管理者ロールの FabricClient の証明書を格納する X.509 証明書ストアの名前。 |
-| ClientAuthX509FindType |wstring、既定値は L"FindByThumbprint" |ClientAuthX509StoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
-| ClientAuthX509FindValue |wstring、既定値は L"" | 既定の管理者ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
-| ClientAuthX509FindValueSecondary |wstring、既定値は L"" |既定の管理者ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
-| UserRoleClientX509StoreName |wstring、既定値は L"My" |既定のユーザー ロールの FabricClient の証明書を格納する X.509 証明書ストアの名前。 |
-| UserRoleClientX509FindType |wstring、既定値は L"FindByThumbprint" |UserRoleClientX509StoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
-| UserRoleClientX509FindValue |wstring、既定値は L"" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
-| UserRoleClientX509FindValueSecondary |wstring、既定値は L"" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
+| ClusterX509StoreName |wstring、既定値は "My" |クラスター内通信をセキュリティで保護するためのクラスター証明書を格納する X.509 証明書ストアの名前。 |
+| ClusterX509FindType |wstring、既定値は "FindByThumbprint" |ClusterX509StoreName で指定されたストア内でのクラスター証明書の検索方法を示します。サポートされる値は "FindByThumbprint" と "FindBySubjectName" です。"FindBySubjectName" を指定すると、一致するものが複数ある場合に、有効期限が最も長いものが使用されます。 |
+| ClusterX509FindValue |wstring、既定値は "" |クラスター証明書の検索に使用する検索フィルター値。 |
+| ClusterX509FindValueSecondary |wstring、既定値は "" |クラスター証明書の検索に使用する検索フィルター値。 |
+| ServerAuthX509StoreName |wstring、既定値は "My" |エントリ サービスのサーバー証明書を格納する X.509 証明書ストアの名前。 |
+| ServerAuthX509FindType |wstring、既定値は "FindByThumbprint" |ServerAuthX509StoreName で指定されたストア内でのサーバー証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
+| ServerAuthX509FindValue |wstring、既定値は "" |サーバー証明書の検索に使用する検索フィルター値。 |
+| ServerAuthX509FindValueSecondary |wstring、既定値は "" |サーバー証明書の検索に使用する検索フィルター値。 |
+| ClientAuthX509StoreName |wstring、既定値は "My" |既定の管理者ロールの FabricClient の証明書を格納する X.509 証明書ストアの名前。 |
+| ClientAuthX509FindType |wstring、既定値は "FindByThumbprint" |ClientAuthX509StoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
+| ClientAuthX509FindValue |wstring、既定値は "" | 既定の管理者ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
+| ClientAuthX509FindValueSecondary |wstring、既定値は "" |既定の管理者ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
+| UserRoleClientX509StoreName |wstring、既定値は "My" |既定のユーザー ロールの FabricClient の証明書を格納する X.509 証明書ストアの名前。 |
+| UserRoleClientX509FindType |wstring、既定値は "FindByThumbprint" |UserRoleClientX509StoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
+| UserRoleClientX509FindValue |wstring、既定値は "" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
+| UserRoleClientX509FindValueSecondary |wstring、既定値は "" |既定のユーザー ロールの FabricClient の証明書を検索する際に使用する検索フィルター値。 |
 
 ### <a name="section-name-paas"></a>セクション名: Paas
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| ClusterId |wstring、既定値は L"" |ファブリックで構成の保護に使用される X509 証明書ストア。 |
+| ClusterId |wstring、既定値は "" |ファブリックで構成の保護に使用される X509 証明書ストア。 |
 
 ### <a name="section-name-fabrichost"></a>セクション名: FabricHost
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -172,10 +173,6 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | EnableServiceFabricBaseUpgrade |ブール値、既定値は false |サーバーの基本的な更新を有効にします。 |
 | EnableRestartManagement |ブール値、既定値は false |サーバーの再起動を有効します。 |
 
-### <a name="section-name-votes"></a>セクション名: Votes
-| **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
-| --- | --- | --- |
-| PropertyGroup |VoteConfig |投票権は&1; 票としてクラスターのクォーラムに反映されます。 投票権は、投票機関によって投票権所有者 (ノード) に割り当てられます。 通常、投票機関はクラスター内のノード (シード ノード) です。 クラスターが正常で稼働状態を維持できることを保証するには、クォーラムの投票が存在する必要があります。  クォーラムの投票が失われると、クラスターはダウンします。 シード ノードに代わるものが SQL 投票です。SQL 投票では、投票機関はクラスター内のノードではなく、SQL Server インスタンスになります。 この場合、SQL 投票 ID に最も近い ID を持つノードがプロキシとして機能します。 構成によって選択された投票数はすべてのノードで同じである必要があります。 ID は長整数に解析される文字列であり、クラスター内での投票の ID を表します。 クラスターで使用される投票機関に応じて、型には SeedNode または SqlServer のいずれかを指定できます。 接続文字列の形式は型によって異なります。 SeedNode の接続文字列は、同じ NodeID を持つノードの NodeEndpoint です。 型が SqlServer の場合、SQL Server 2008 以降への接続文字列になります。 SeedNode の例: '0 = SeedNode;10.0.0.1:10000'。 SQL 投票の例: 'sqlvote1 = SqlServer;Provider=SQLNCLI10;Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI'。 |
 
 ### <a name="section-name-failovermanager"></a>セクション名: FailoverManager
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -189,36 +186,51 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
 | TargetReplicaSetSize |int、既定値は 7 |ネーム サービス ストアのパーティションごとのレプリカ セットの数。 レプリカ セットの数が増えると、ノードの障害によって情報が失われる可能性が低減されるため、ネーム サービス ストア内の情報の信頼性レベルが高まります。ただし、その代償として Windows Fabric の負荷が増加し、名前付けデータの更新の実行に時間がかかるようになります。|
-
-|MinReplicaSetSize | int、既定値は 3 | 更新を完了するために書き込みを行う必要があるネーム サービスのレプリカの最小数。 システム内のアクティブなレプリカがこの数よりも少ない場合、信頼性システムはレプリカが復元されるまでネーム サービス ストアの更新を拒否します。 この値は、TargetReplicaSetSize の値を超えることはできません。 | |ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は (60.0 * 30) | timespan を秒単位で指定します。ネーム サービスのレプリカがダウンすると、このタイマーが開始されます。タイマーの有効期限が切れると、FM はダウンしているレプリカの置き換えを開始します (ダウンしているレプリカは、まだ失われたとは見なされません)。 | |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue | timespan を秒単位で指定します。ネーム サービスがクォーラム損失の状態になると、このタイマーが開始されます。タイマーの有効期限が切れると、FM はダウンしたレプリカを失われたと見なし、クォーラムの回復を試みます。この場合、データ損失が発生する可能性があります。 | |StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 * 2 | timespan を秒単位で指定します。 ネーム サービスのレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。  このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 | |PlacementConstraints | wstring、既定値は L"" | ネーム サービスの配置の制約。 | |ServiceDescriptionCacheLimit | int、既定値は 0 | ネーム ストア サービスの LRU サービス記述のキャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 | |RepairInterval | 時間 (秒単位)、既定値は 5 | timespan を秒単位で指定します。 機関所有者と名前所有者間での名前付けの不一致の修復が開始される間隔。 | |MaxNamingServiceHealthReports | int、既定値は 10 | ネーム ストア サービスが異常として一度に報告する低速の操作の最大数。 0 の場合、低速の操作がすべて送信されます。 | | MaxMessageSize |int、既定値は 4*1024*1024 |名前付け使用時のクライアント ノードの通信の最大メッセージ サイズ。 DOS 攻撃を軽減します。既定値は 4 MB です。 | |MaxFileOperationTimeout |時間 (秒単位)、既定値は 30 |timespan を秒単位で指定します。 ファイル ストア サービス操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 | |MaxOperationTimeout |時間 (秒単位)、既定値は 600 |timespan を秒単位で指定します。 クライアント操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 | | MaxClientConnections |int、既定値は 1000 |ゲートウェイごとのクライアント接続の最大許容数。 | |ServiceNotificationTimeout |時間 (秒単位)、既定値は 30 |timespan を秒単位で指定します。 サービス通知をクライアントに配信するときに使用されるタイムアウト。 | | MaxOutstandingNotificationsPerClient |int、既定値は 1000 |クライアント登録がゲートウェイによって強制終了されるまでの未処理の通知の最大数。 | | MaxIndexedEmptyPartitions |int、既定値は 1000 |再接続するクライアントを同期するために、インデックスが設定された状態で通知キャッシュ内に残される空のパーティションの最大数。 空のパーティションがこの数を超えた場合、参照バージョンの昇順でインデックスから削除されます。 再接続するクライアントは引き続き同期され、欠落した空のパーティションの最新情報を受け取ることができますが、同期プロトコルのコストが高くなります。 | |GatewayServiceDescriptionCacheLimit | int、既定値は 0 | Naming Gateway の LRU サービス記述のキャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 | |PartitionCount |int、既定値は 3 |作成するネーム サービス ストアのパーティションの数。 各パーティションは、インデックスに対応する&1; つのパーティション キーを所有します。そのため、パーティション キー [0; PartitionCount) が存在します。 ネーム サービスのパーティション数が増えると、バックアップ レプリカ セットで保持される平均データ量が減るため、ネーム サービスが実行できるスケールが増加します。ただし、その代償として (PartitionCount*ReplicaSetSize のサービス レプリカを保持する必要があるため) リソース使用率が増加します。
+|MinReplicaSetSize | int、既定値は 3 | 更新の完了のために書き込みを行う必要があるネーム サービス レプリカの最小数。 システム内のアクティブなレプリカがこの数よりも少ない場合、信頼性システムはレプリカが復元されるまでネーム サービス ストアの更新を拒否します。 この値は、TargetReplicaSetSize の値を超えることはできません。 |
+|ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は (60.0 * 30)| timespan を秒単位で指定します。 ネーム サービスのレプリカがダウンすると、このタイマーが開始されます。  タイマーの期限が切れると、FM により、ダウンしたレプリカの置き換えが開始されます (この場合でも、レプリカが失われたとはみなされません)。 |
+|QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue | timespan を秒単位で指定します。 ネーム サービスがクォーラム損失の状態になると、このタイマーが開始されます。  タイマーの有効期限が切れると、FM はダウンしたレプリカを失われたと見なし、クォーラムの回復を試みます。 この回復によりデータが失われる可能性があることに注意してください。 |
+|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 * 2 | timespan を秒単位で指定します。 ネーム サービスのレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。  このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
+|PlacementConstraints | wstring、既定値は "" | ネーム サービスの配置制約。 |
+|ServiceDescriptionCacheLimit | int、既定値は 0 | ネーム ストア サービスの LRU サービス記述キャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 |
+|RepairInterval | 時間 (秒単位)、既定値は 5 | timespan を秒単位で指定します。 機関所有者と名前所有者間での名前付けの不一致の修復が開始される間隔。 |
+|MaxNamingServiceHealthReports | int、既定値は 10 | ネーム ストア サービスが異常として一度に報告する低速操作の最大数。 0 の場合、低速の操作がすべて送信されます。 |
+| MaxMessageSize |int、既定値は 4*1024*1024 |名前付け使用時のクライアント ノード通信の最大メッセージ サイズ。 DOS 攻撃を軽減します。既定値は 4 MB です。 |
+| MaxFileOperationTimeout |秒単位。既定値は 30 |timespan を秒単位で指定します。 ファイル ストア サービス操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 |
+| MaxOperationTimeout |時間 (秒単位)、既定値は 600 |timespan を秒単位で指定します。 クライアント操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 |
+| MaxClientConnections |int、既定値は 1000 |ゲートウェイごとのクライアント接続の最大許容数。 |
+| ServiceNotificationTimeout |秒単位。既定値は 30 |timespan を秒単位で指定します。 サービス通知をクライアントに配信するときに使用されるタイムアウト。 |
+| MaxOutstandingNotificationsPerClient |int、既定値は 1000 |クライアント登録がゲートウェイによって強制終了されるまでの未処理の通知の最大数。 |
+| MaxIndexedEmptyPartitions |int、既定値は 1000 |再接続するクライアントを同期するために、インデックスが設定された状態で通知キャッシュ内に残される空のパーティションの最大数。 空のパーティションがこの数を超えた場合、参照バージョンの昇順でインデックスから削除されます。 再接続するクライアントは引き続き同期され、欠落した空のパーティションの最新情報を受け取ることができますが、同期プロトコルのコストが高くなります。 |
+| GatewayServiceDescriptionCacheLimit |int、既定値は 0 |Naming Gateway の LRU サービス記述キャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 |
+| PartitionCount |int、既定値は 3 |作成するネーム サービス ストアのパーティションの数。 各パーティションは、インデックスに対応する&1; つのパーティション キーを所有します。そのため、パーティション キー [0; PartitionCount) が存在します。 ネーム サービスのパーティション数が増えると、バックアップ レプリカ セットで保持される平均データ量が減るため、ネーム サービスが実行できるスケールが増加します。ただし、その代償として (PartitionCount*ReplicaSetSize のサービス レプリカを保持する必要があるため) リソース使用率が増加します。|
 
 ### <a name="section-name-runas"></a>セクション名: RunAs
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| RunAsAccountName |wstring、既定値は L"" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
-|RunAsAccountType|wstring、既定値は L"" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。|
-|RunAsPassword|wstring、既定値は L"" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
+| RunAsAccountName |wstring、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
+|RunAsAccountType|wstring、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。|
+|RunAsPassword|wstring、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ### <a name="section-name-runasfabric"></a>セクション名: RunAs_Fabric
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| RunAsAccountName |wstring、既定値は L"" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
-|RunAsAccountType|wstring、既定値は L"" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
-|RunAsPassword|wstring、既定値は L"" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
+| RunAsAccountName |wstring、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
+|RunAsAccountType|wstring、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
+|RunAsPassword|wstring、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ### <a name="section-name-runashttpgateway"></a>セクション名: RunAs_HttpGateway
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| RunAsAccountName |wstring、既定値は L"" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
-|RunAsAccountType|wstring、既定値は L"" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
-|RunAsPassword|wstring、既定値は L"" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
+| RunAsAccountName |wstring、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
+|RunAsAccountType|wstring、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
+|RunAsPassword|wstring、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ### <a name="section-name-runasdca"></a>セクション名: RunAs_DCA
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| RunAsAccountName |wstring、既定値は L"" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
-|RunAsAccountType|wstring、既定値は L"" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
-|RunAsPassword|wstring、既定値は L"" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
+| RunAsAccountName |wstring、既定値は "" |RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
+|RunAsAccountType|wstring、既定値は "" |RunAs アカウントの種類を示します。 これはすべての RunAs セクションに必要です。有効な値は、"LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem" です。 |
+|RunAsPassword|wstring、既定値は "" |RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ### <a name="section-name-httpgateway"></a>セクション名: HttpGateway
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -234,8 +246,8 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 |WriteBufferMemoryPoolMinimumInKB |int、既定値は 8388608 |書き込みバッファー メモリ プールに最初に割り当てる KB 数。 無制限であることを示すには 0 を使用します。既定値は、後述の SharedLogSizeInMB と一致する必要があります。 |
 |WriteBufferMemoryPoolMaximumInKB | int、既定値は 0 |書き込みバッファー メモリ プールを拡張できる最大 KB 数。 無制限であることを示すには 0 を使用します。 |
 |MaximumDestagingWriteOutstandingInKB | int、既定値は 0 | 専用ログの前に共有ログを使用できる KB 数。 無制限であることを示すには 0 を使用します。
-|SharedLogPath |wstring、既定値は L"" | 共有ログ コンテナーを配置する場所のパスとファイル名。 ファブリック データ ルート下の既定のパスを使用する場合は、L"" を使用します。 |
-|SharedLogId |wstring、既定値は L"" |共有ログ コンテナーの一意の GUID。 ファブリック データ ルート下の既定のパスを使用する場合は、L"" を使用します。 |
+|SharedLogPath |wstring、既定値は "" | 共有ログ コンテナーを配置する場所のパスとファイル名。 ファブリック データ ルート下の既定のパスを使用する場合は、"" を使用します。 |
+|SharedLogId |wstring、既定値は "" |共有ログ コンテナーの一意の GUID。 ファブリック データ ルート下の既定のパスを使用する場合は、"" を使用します。 |
 |SharedLogSizeInMB |int、既定値は 8192 | 共有ログ コンテナーに割り当てる MB 数。 |
 
 ### <a name="section-name-applicationgatewayhttp"></a>セクション名: ApplicationGateway/Http
@@ -246,11 +258,11 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 |DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 60 |timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
 |ResolveServiceBackoffInterval |時間 (秒単位)、既定値は 5 |timespan を秒単位で指定します。  失敗したサービス解決操作を再試行するまでの既定のバックオフ間隔を指定します。 |
 |BodyChunkSize |uint、既定値は 4096 |  本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
-|GatewayAuthCredentialType |wstring、既定値は L"None" | HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は "None/X509 です。 |
-|GatewayX509CertificateStoreName |wstring、既定値は L"My" | HTTP アプリケーション ゲートウェイの証明書を格納する X.509 証明書ストアの名前。 |
-|GatewayX509CertificateFindType |wstring、既定値は L"FindByThumbprint" | GatewayX509CertificateStoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
-|GatewayX509CertificateFindValue | wstring、既定値は L"" | HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。 |
-|GatewayX509CertificateFindValueSecondary | wstring、既定値は L"" |HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。|
+|GatewayAuthCredentialType |wstring、既定値は "None" | HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は "None/X509 です。 |
+|GatewayX509CertificateStoreName |wstring、既定値は "My" | HTTP アプリケーション ゲートウェイの証明書を格納する X.509 証明書ストアの名前。 |
+|GatewayX509CertificateFindType |wstring、既定値は "FindByThumbprint" | GatewayX509CertificateStoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値は、FindByThumbprint と FindBySubjectName です。 |
+|GatewayX509CertificateFindValue | wstring、既定値は "" | HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。 |
+|GatewayX509CertificateFindValueSecondary | wstring、既定値は "" |HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、FindValue が存在しない場合は、FindValueSecondary が検索されます。|
 
 ### <a name="section-name-management"></a>セクション名: Management
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -281,7 +293,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | ReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60 分|timespan を秒単位で指定します。 FaultAnalysisService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |timespan を秒単位で指定します。 FaultAnalysisService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60*24*7) 分 |timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
-| PlacementConstraints | wstring、既定値は L""| FaultAnalysisService の PlacementConstraints。 |
+| PlacementConstraints | wstring、既定値は ""| FaultAnalysisService の PlacementConstraints。 |
 | StoredActionCleanupIntervalInSeconds | int、既定値は 3600 |ストアをクリーンアップする頻度。  終了状態のアクションと、少なくとも CompletedActionKeepDurationInSeconds で指定された期間よりも前に完了したアクションだけが削除されます。 |
 | CompletedActionKeepDurationInSeconds | int、既定値は 604800 | 終了状態のアクションを保持するおおよその期間。  クリーンアップの処理は StoredActionCleanupIntervalInSeconds で指定された間隔でのみ実行されるため、このパラメーターは StoredActionCleanupIntervalInSeconds にも左右されます。 604800 は 7 日間です。 |
 | StoredChaosEventCleanupIntervalInSeconds | int、既定値は 3600 |クリーンアップのためにストアを監査する頻度。イベント数が 30000 を超えると、クリーンアップが開始されます。 |
@@ -297,20 +309,20 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | MaxRequestProcessingThreads | uint、既定値は 200 |プライマリで要求を処理する際に使用できる並列スレッドの最大数。 '0' == コア数です。 |
 | MaxSecondaryFileCopyFailureThreshold | uint、既定値は 25| セカンダリでのファイル コピーの再試行の最大回数。この回数に達すると、再試行が停止されます。 |
 | AnonymousAccessEnabled | ブール値、既定値は true |FileStoreService 共有への匿名アクセスを有効または無効にします。 |
-| PrimaryAccountType | wstring、既定値は L"" |FileStoreService 共有の ACL の、プリンシパルのプライマリ AccountType。 |
-| PrimaryAccountUserName | wstring、既定値は L"" |FileStoreService 共有の ACL の、プリンシパルのプライマリ アカウントの Username。 |
+| PrimaryAccountType | wstring、既定値は "" |FileStoreService 共有の ACL の、プリンシパルのプライマリ AccountType。 |
+| PrimaryAccountUserName | wstring、既定値は "" |FileStoreService 共有の ACL の、プリンシパルのプライマリ アカウントの Username。 |
 | PrimaryAccountUserPassword | SecureString、既定値は空 |FileStoreService 共有の ACL の、プリンシパルのプライマリ アカウントのパスワード。 |
 | FileStoreService | PrimaryAccountNTLMPasswordSecret | SecureString、既定値は空 | NTLM 認証を使用するときに、生成された同じパスワードに対するシードとして使用するパスワード シークレット。 |
-| PrimaryAccountNTLMX509StoreLocation | wstring、既定値は L"LocalMachine"| NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所。 |
-| PrimaryAccountNTLMX509StoreName | wstring、既定値は L"MY"| NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前。 |
-| PrimaryAccountNTLMX509Thumbprint | wstring、既定値は L""|NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書の拇印。 |
-| SecondaryAccountType | wstring、既定値は L""| FileStoreService 共有の ACL の、プリンシパルのセカンダリ AccountType。 |
-| SecondaryAccountUserName | wstring、既定値は L""| FileStoreService 共有の ACL の、プリンシパルのセカンダリ アカウントの Username。 |
+| PrimaryAccountNTLMX509StoreLocation | wstring、既定値は "LocalMachine"| NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所。 |
+| PrimaryAccountNTLMX509StoreName | wstring、既定値は "MY"| NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前。 |
+| PrimaryAccountNTLMX509Thumbprint | wstring、既定値は ""|NTLM 認証を使用するときに、PrimaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書の拇印。 |
+| SecondaryAccountType | wstring、既定値は ""| FileStoreService 共有の ACL の、プリンシパルのセカンダリ AccountType。 |
+| SecondaryAccountUserName | wstring、既定値は ""| FileStoreService 共有の ACL の、プリンシパルのセカンダリ アカウントの Username。 |
 | SecondaryAccountUserPassword | SecureString、既定値は空 |FileStoreService 共有の ACL の、プリンシパルのセカンダリ アカウントのパスワード。  |
 | SecondaryAccountNTLMPasswordSecret | SecureString、既定値は空 | NTLM 認証を使用するときに、生成された同じパスワードに対するシードとして使用するパスワード シークレット。 |
-| SecondaryAccountNTLMX509StoreLocation | wstring、既定値は L"LocalMachine" |NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所。 |
-| SecondaryAccountNTLMX509StoreName | wstring、既定値は L"MY" |NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前。 |
-| SecondaryAccountNTLMX509Thumbprint | wstring、既定値は L""| NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書の拇印。 |
+| SecondaryAccountNTLMX509StoreLocation | wstring、既定値は "LocalMachine" |NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所。 |
+| SecondaryAccountNTLMX509StoreName | wstring、既定値は "MY" |NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前。 |
+| SecondaryAccountNTLMX509Thumbprint | wstring、既定値は ""| NTLM 認証を使用するときに、SecondaryAccountNTLMPasswordSecret で HMAC を生成するために使用する X509 証明書の拇印。 |
 
 ### <a name="section-name-imagestoreservice"></a>セクション名: ImageStoreService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -321,7 +333,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60.0 * 30 | timespan を秒単位で指定します。 ImageStoreService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue | timespan を秒単位で指定します。 ImageStoreService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 * 2 | timespan を秒単位で指定します。 ImageStoreService の StandByReplicaKeepDuration。 |
-| PlacementConstraints | wstring、既定値は L"" | ImageStoreService の PlacementConstraints。 |
+| PlacementConstraints | wstring、既定値は "" | ImageStoreService の PlacementConstraints。 |
 | ClientUploadTimeout | 時間 (秒単位)、既定値は 1800 |timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのアップロード要求のタイムアウト値。 |
 | ClientCopyTimeout | 時間 (秒単位)、既定値は 1800 | timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのコピー要求のタイムアウト値。 |
 | ClientDownloadTimeout | 時間 (秒単位)、既定値は 1800 | timespan を秒単位で指定します。 イメージ ストア サービスに対するトップレベルのダウンロード要求のタイムアウト値。 |
@@ -340,11 +352,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 ### <a name="section-name-tokenvalidationservice"></a>セクション名: TokenValidationService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| プロバイダー |wstring、既定値は L"DSTS" |有効にするトークン検証プロバイダーのコンマ区切りリスト (有効なプロバイダー: DSTS、AAD)。 現時点では、1 つのプロバイダーだけをいつでも有効にすることができます。 |
-
-### <a name="section-name-dststokenvalidationservice"></a>セクション名: DSTSTokenValidationService
-| **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
-| DSTSDnsName | wstring、既定値は L"" | DSTS サーバーの DNS 名。 | | DSTSRealm | wstring、既定値は L"" | DSTS サーバーの領域名。 | | CloudServiceDnsName | wstring、既定値は L"" | DSTS セキュリティ トークンが要求されるクラウド サービスの DNS 名。 | | CloudServiceName | wstring、既定値は L"" | DSTS セキュリティ トークンが要求されるクラウド サービスの名前。 | | PublicCertificateFindValue | wstring、既定値は L"" | DSTS 公開証明書の X509 証明書の検索値。 | | PublicCertificateFindType | wstring、既定値は L"" | DSTS 公開証明書の X509 証明書の検索の種類 (例:  FindByThumbprint)。 | |PublicCertificateStoreName | wstring、既定値は L"My"| DSTS サーバーの公開証明書が格納されているストアの名前。 |
+| プロバイダー |wstring、既定値は "DSTS" |有効にするトークン検証プロバイダーのコンマ区切りリスト (有効なプロバイダー: DSTS、AAD)。 現時点では、1 つのプロバイダーだけをいつでも有効にすることができます。 |
 
 ### <a name="section-name-upgradeorchestrationservice"></a>セクション名: UpgradeOrchestrationService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -354,113 +362,113 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 | ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60 分| timespan を秒単位で指定します。 UpgradeOrchestrationService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue | timespan を秒単位で指定します。 UpgradeOrchestrationService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60*24*7 分 | timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |
-| PlacementConstraints | wstring、既定値は L"" | UpgradeOrchestrationService の PlacementConstraints。 |
+| PlacementConstraints | wstring、既定値は "" | UpgradeOrchestrationService の PlacementConstraints。 |
 | AutoupgradeEnabled | ブール値、既定値は true | 目標状態ファイルに基づく自動ポーリングとアップグレード アクション。 |
 | UpgradeApprovalRequired | ブール値、既定値は false | コードのアップグレードを続行する前に管理者の承認を必須にするための設定。 |
 
 ### <a name="section-name-upgradeservice"></a>セクション名: UpgradeService
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| PlacementConstraints |wstring、既定値は L"" |アップグレード サービスの PlacementConstraints。 |
+| PlacementConstraints |wstring、既定値は "" |アップグレード サービスの PlacementConstraints。 |
 | TargetReplicaSetSize | int、既定値は 3 | UpgradeService の TargetReplicaSetSize。 |
 | MinReplicaSetSize | int、既定値は 2 | UpgradeService の MinReplicaSetSize。 |
-| CoordinatorType | wstring、既定値は L"WUTest"| UpgradeService の CoordinatorType。 |
-| BaseUrl | wstring、既定値は L"" |UpgradeService の BaseUrl。 |
-| ClusterId | wstring、既定値は L"" | UpgradeService の ClusterId。 |
-| X509StoreName | wstring、既定値は L"My"| UpgradeService の X509StoreName。 |
-| X509StoreLocation | wstring、既定値は L"" | UpgradeService の X509StoreLocation。 |
-| X509FindType | wstring、既定値は L""| UpgradeService の X509FindType。 |
-| X509FindValue | wstring、既定値は L"" | UpgradeService の X509FindValue。 |
-| X509SecondaryFindValue | wstring、既定値は L"" | UpgradeService の X509SecondaryFindValue。 |
+| CoordinatorType | wstring、既定値は "WUTest"| UpgradeService の CoordinatorType。 |
+| BaseUrl | wstring、既定値は "" |UpgradeService の BaseUrl。 |
+| ClusterId | wstring、既定値は "" | UpgradeService の ClusterId。 |
+| X509StoreName | wstring、既定値は "My"| UpgradeService の X509StoreName。 |
+| X509StoreLocation | wstring、既定値は "" | UpgradeService の X509StoreLocation。 |
+| X509FindType | wstring、既定値は ""| UpgradeService の X509FindType。 |
+| X509FindValue | wstring、既定値は "" | UpgradeService の X509FindValue。 |
+| X509SecondaryFindValue | wstring、既定値は "" | UpgradeService の X509SecondaryFindValue。 |
 | OnlyBaseUpgrade | ブール値、既定値は false | UpgradeService の OnlyBaseUpgrade。 |
-| TestCabFolder | wstring、既定値は L"" | UpgradeService の TestCabFolder。 |
+| TestCabFolder | wstring、既定値は "" | UpgradeService の TestCabFolder。 |
 
 ### <a name="section-name-securityclientaccess"></a>セクション名: Security/ClientAccess
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- |
-| CreateName |wstring、既定値は L"Admin" |名前付け URI を作成するためのセキュリティ構成。 |
-| DeleteName |wstring、既定値は L"Admin" |名前付け URI を削除するためのセキュリティ構成。 |
-| PropertyWriteBatch |wstring、既定値は L"Admin" |名前付けプロパティの書き込み操作のセキュリティ構成。 |
-| CreateService |wstring、既定値は L"Admin" | サービスを作成するためのセキュリティ構成。 |
-| CreateServiceFromTemplate |wstring、既定値は L"Admin" |テンプレートからサービスを作成するためのセキュリティ構成。 |
-| UpdateService |wstring、既定値は L"Admin" |サービス更新のセキュリティ構成。 |
-| DeleteService  |wstring、既定値は L"Admin" |サービスを削除するためのセキュリティ構成。 |
-| ProvisionApplicationType |wstring、既定値は L"Admin" | アプリケーションの種類をプロビジョニングするためのセキュリティ構成。 |
-| CreateApplication |wstring、既定値は L"Admin" | アプリケーションを作成するためのセキュリティ構成。 |
-| DeleteApplication |wstring、既定値は L"Admin" | アプリケーションを削除するためのセキュリティ構成。 |
-| UpgradeApplication |wstring、既定値は L"Admin" | アプリケーションのアップグレードを開始または中断するためのセキュリティ構成。 |
-| RollbackApplicationUpgrade |wstring、既定値は L"Admin" | アプリケーションのアップグレードをロールバックするためのセキュリティ構成。 |
-| UnprovisionApplicationType |wstring、既定値は L"Admin" | アプリケーションの種類のプロビジョニングを解除するためのセキュリティ構成。 |
-| MoveNextUpgradeDomain |wstring、既定値は L"Admin" | 明示的なアップグレード ドメインでアプリケーションのアップグレードを再開するためのセキュリティ構成。 |
-| ReportUpgradeHealth |wstring、既定値は L"Admin" | 現在のアップグレードの進行状況でアプリケーションのアップグレードを再開するためのセキュリティ構成。 |
-| ReportHealth |wstring、既定値は L"Admin" | 正常性を報告するためのセキュリティ構成。 |
-| ProvisionFabric |wstring、既定値は L"Admin" | MSI またはクラスター マニフェストをプロビジョニングするためのセキュリティ構成。 |
-| UpgradeFabric |wstring、既定値は L"Admin" | クラスターのアップグレードを開始するためのセキュリティ構成。 |
-| RollbackFabricUpgrade |wstring、既定値は L"Admin" | クラスターのアップグレードをロールバックするためのセキュリティ構成。 |
-| UnprovisionFabric |wstring、既定値は L"Admin" | MSI またはクラスター マニフェストのプロビジョニングを解除するためのセキュリティ構成。 |
-| MoveNextFabricUpgradeDomain |wstring、既定値は L"Admin" | 明示的なアップグレード ドメインでクラスターのアップグレードを再開するためのセキュリティ構成。 |
-| ReportFabricUpgradeHealth |wstring、既定値は L"Admin" | 現在のアップグレードの進行状況でクラスターのアップグレードを再開するためのセキュリティ構成。 |
-| StartInfrastructureTask |wstring、既定値は L"Admin" | インフラストラクチャ タスクを開始するためのセキュリティ構成。 |
-| FinishInfrastructureTask |wstring、既定値は L"Admin" | インフラストラクチャ タスクを終了するためのセキュリティ構成。 |
-| ActivateNode |wstring、既定値は L"Admin" | ノードをアクティブ化するためのセキュリティ構成。 |
-| DeactivateNode |wstring、既定値は L"Admin" | ノードを非アクティブ化するためのセキュリティ構成。 |
-| DeactivateNodesBatch |wstring、既定値は L"Admin" | 複数のノードを非アクティブ化するためのセキュリティ構成。 |
-| RemoveNodeDeactivations |wstring、既定値は L"Admin" | 複数のノードの非アクティブ化を取り消すためのセキュリティ構成。 |
-| GetNodeDeactivationStatus |wstring、既定値は L"Admin" | 非アクティブ化の状態を確認するためのセキュリティ構成。 |
-| NodeStateRemoved |wstring、既定値は L"Admin" | 削除されたノードの状態を報告するためのセキュリティ構成。 |
-| RecoverPartition |wstring、既定値は L"Admin" | パーティションを復旧するためのセキュリティ構成。 |
-| RecoverPartitions |wstring、既定値は L"Admin" | 複数のパーティションを復旧するためのセキュリティ構成。 |
-| RecoverServicePartitions |wstring、既定値は L"Admin" | サービス パーティションを復旧するためのセキュリティ構成。 |
-| RecoverSystemPartitions |wstring、既定値は L"Admin" | システム サービス パーティションを復旧するためのセキュリティ構成。 |
-| ReportFault |wstring、既定値は L"Admin" | 障害を報告するためのセキュリティ構成。 |
-| InvokeInfrastructureCommand |wstring、既定値は L"Admin" | インフラストラクチャ タスクの管理コマンドのセキュリティ構成。 |
-| FileContent |wstring、既定値は L"Admin" | イメージ ストア クライアント ファイルの転送 (クラスターの外部) のセキュリティ構成。 |
-| FileDownload |wstring、既定値は L"Admin" | イメージ ストア クライアント ファイルのダウンロードの開始 (クラスターの外部) のセキュリティ構成。 |
-| InternalList |wstring、既定値は L"Admin" | イメージ ストア クライアント ファイルのリスト操作 (内部) のセキュリティ構成。 |
-| 削除 |wstring、既定値は L"Admin" | イメージ ストア クライアントの削除操作のセキュリティ構成。 |
-| アップロード |wstring、既定値は L"Admin" | イメージ ストア クライアントのアップロード操作のセキュリティ構成。 |
-| GetStagingLocation |wstring、既定値は L"Admin" | イメージ ストア クライアントのステージングの場所を取得するためのセキュリティ構成。 |
-| GetStoreLocation |wstring、既定値は L"Admin" | イメージ ストア クライアントのストアの場所を取得するためのセキュリティ構成。 |
-| NodeControl |wstring、既定値は L"Admin" | ノードを起動、停止、再起動するためのセキュリティ構成。 |
-| CodePackageControl |wstring、既定値は L"Admin" | コード パッケージを再開するためのセキュリティ構成。 |
-| UnreliableTransportControl |wstring、既定値は L"Admin" | 追加および削除動作の信頼性のないトランスポート。 |
-| MoveReplicaControl |wstring、既定値は L"Admin" | レプリカを移動します。 |
-| PredeployPackageToNode |wstring、既定値は L"Admin" | デプロイメント前の API。 |
-| StartPartitionDataLoss |wstring、既定値は L"Admin" | パーティションでデータ損失を誘発します。 |
-| StartPartitionQuorumLoss |wstring、既定値は L"Admin" | パーティションでクォーラム損失を誘発します。 |
-| StartPartitionRestart |wstring、既定値は L"Admin" | パーティションのレプリカの一部またはすべてを同時に再起動します。 |
-| CancelTestCommand |wstring、既定値は L"Admin" | 実行中の特定の TestCommand を取り消します。 |
-| StartChaos |wstring、既定値は L"Admin" | 混乱を開始します (まだ開始されていない場合)。 |
-| StopChaos |wstring、既定値は L"Admin" | 混乱を停止します (開始されている場合)。 |
-| StartNodeTransition |wstring、既定値は L"Admin" | ノードの切り替えを開始するためのセキュリティ構成。 |
-| StartClusterConfigurationUpgrade |wstring、既定値は L"Admin" | パーティションで StartClusterConfigurationUpgrade を誘発します。 |
-| GetUpgradesPendingApproval |wstring、既定値は L"Admin" | パーティションで GetUpgradesPendingApproval を誘発します。 |
-| StartApprovedUpgrades |wstring、既定値は L"Admin" | パーティションで StartApprovedUpgrades を誘発します。 |
-| ping |wstring、既定値は L"Admin\|\|User" | クライアントの ping のセキュリティ構成。 |
-| クエリ |wstring、既定値は L"Admin\|\|User" | クエリのセキュリティ構成。 |
-| NameExists |wstring、既定値は L"Admin\|\|User" | 名前付け URI の存在確認のセキュリティ構成。 |
-| EnumerateSubnames |wstring、既定値は L"Admin\|\|User" | 名前付け URI を列挙するためのセキュリティ構成。 |
-| EnumerateProperties |wstring、既定値は L"Admin\|\|User" | 名前付けプロパティを列挙するためのセキュリティ構成。 |
-| PropertyReadBatch |wstring、既定値は L"Admin\|\|User" | 名前付けプロパティの読み取り操作のセキュリティ構成。 |
-| GetServiceDescription |wstring、既定値は L"Admin\|\|User" | 長いポーリングのサービス通知と読み取りサービスの説明のセキュリティ構成。 |
-| ResolveService |wstring、既定値は L"Admin\|\|User" | クレーム ベースのサービス解決のセキュリティ構成。 |
-| ResolveNameOwner |wstring、既定値は L"Admin\|\|User" | 名前付け URI の所有者を解決するためのセキュリティ構成。 |
-| ResolvePartition |wstring、既定値は L"Admin\|\|User" | システム サービスを解決するためのセキュリティ構成。 |
-| ServiceNotifications |wstring、既定値は L"Admin\|\|User" | イベント ベースのサービス通知のセキュリティ構成。 |
-| PrefixResolveService |wstring、既定値は L"Admin\|\|User" | クレーム ベースのサービス プレフィックス解決のセキュリティ構成。 |
-| GetUpgradeStatus |wstring、既定値は L"Admin\|\|User" | アプリケーションのアップグレード状態をポーリングするためのセキュリティ構成。 |
-| GetFabricUpgradeStatus |wstring、既定値は L"Admin\|\|User" | クラスターのアップグレード状態をポーリングするためのセキュリティ構成。 |
-| InvokeInfrastructureQuery |wstring、既定値は L"Admin\|\|User" | インフラストラクチャ タスクを照会するためのセキュリティ構成。 |
-| 一覧表示 |wstring、既定値は L"Admin\|\|User" | イメージ ストア クライアント ファイルのリスト操作のセキュリティ構成。 |
-| ResetPartitionLoad |wstring、既定値は L"Admin\|\|User" | failoverUnit の負荷をリセットするためのセキュリティ構成。 |
-| ToggleVerboseServicePlacementHealthReporting | wstring、既定値は L"Admin\|\|User" | 詳細な ServicePlacement HealthReporting を切り替えるためのセキュリティ構成。 |
-| GetPartitionDataLossProgress | wstring、既定値は L"Admin\|\|User" | データ損失を発生させる API 呼び出しの進行状況を取得します。 |
-| GetPartitionQuorumLossProgress | wstring、既定値は L"Admin\|\|User" | クォーラム損失を発生させる API 呼び出しの進行状況を取得します。 |
-| GetPartitionRestartProgress | wstring、既定値は L"Admin\|\|User" | パーティションを再起動する API 呼び出しの進行状況を取得します。 |
-| GetChaosReport | wstring、既定値は L"Admin\|\|User" | 指定された時間範囲内の混乱の状態を取得します。 |
-| GetNodeTransitionProgress | wstring、既定値は L"Admin\|\|User" | ノード切り替えコマンドの進行状況を取得するためのセキュリティ構成。 |
-| GetClusterConfigurationUpgradeStatus | wstring、既定値は L"Admin\|\|User" | パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
-| GetClusterConfiguration | wstring、既定値は L"Admin\|\|User" | パーティションで GetClusterConfiguration を誘発します。 |
+| CreateName |wstring、既定値は "Admin" |名前付け URI を作成するためのセキュリティ構成。 |
+| DeleteName |wstring、既定値は "Admin" |名前付け URI を削除するためのセキュリティ構成。 |
+| PropertyWriteBatch |wstring、既定値は "Admin" |名前付けプロパティの書き込み操作のセキュリティ構成。 |
+| CreateService |wstring、既定値は "Admin" | サービスを作成するためのセキュリティ構成。 |
+| CreateServiceFromTemplate |wstring、既定値は "Admin" |テンプレートからサービスを作成するためのセキュリティ構成。 |
+| UpdateService |wstring、既定値は "Admin" |サービス更新のセキュリティ構成。 |
+| DeleteService  |wstring、既定値は "Admin" |サービスを削除するためのセキュリティ構成。 |
+| ProvisionApplicationType |wstring、既定値は "Admin" | アプリケーションの種類をプロビジョニングするためのセキュリティ構成。 |
+| CreateApplication |wstring、既定値は "Admin" | アプリケーションを作成するためのセキュリティ構成。 |
+| DeleteApplication |wstring、既定値は "Admin" | アプリケーションを削除するためのセキュリティ構成。 |
+| UpgradeApplication |wstring、既定値は "Admin" | アプリケーションのアップグレードを開始または中断するためのセキュリティ構成。 |
+| RollbackApplicationUpgrade |wstring、既定値は "Admin" | アプリケーションのアップグレードをロールバックするためのセキュリティ構成。 |
+| UnprovisionApplicationType |wstring、既定値は "Admin" | アプリケーションの種類のプロビジョニングを解除するためのセキュリティ構成。 |
+| MoveNextUpgradeDomain |wstring、既定値は "Admin" | 明示的なアップグレード ドメインでアプリケーションのアップグレードを再開するためのセキュリティ構成。 |
+| ReportUpgradeHealth |wstring、既定値は "Admin" | 現在のアップグレードの進行状況でアプリケーションのアップグレードを再開するためのセキュリティ構成。 |
+| ReportHealth |wstring、既定値は "Admin" | 正常性を報告するためのセキュリティ構成。 |
+| ProvisionFabric |wstring、既定値は "Admin" | MSI またはクラスター マニフェストをプロビジョニングするためのセキュリティ構成。 |
+| UpgradeFabric |wstring、既定値は "Admin" | クラスターのアップグレードを開始するためのセキュリティ構成。 |
+| RollbackFabricUpgrade |wstring、既定値は "Admin" | クラスターのアップグレードをロールバックするためのセキュリティ構成。 |
+| UnprovisionFabric |wstring、既定値は "Admin" | MSI またはクラスター マニフェストのプロビジョニングを解除するためのセキュリティ構成。 |
+| MoveNextFabricUpgradeDomain |wstring、既定値は "Admin" | 明示的なアップグレード ドメインでクラスターのアップグレードを再開するためのセキュリティ構成。 |
+| ReportFabricUpgradeHealth |wstring、既定値は "Admin" | 現在のアップグレードの進行状況でクラスターのアップグレードを再開するためのセキュリティ構成。 |
+| StartInfrastructureTask |wstring、既定値は "Admin" | インフラストラクチャ タスクを開始するためのセキュリティ構成。 |
+| FinishInfrastructureTask |wstring、既定値は "Admin" | インフラストラクチャ タスクを終了するためのセキュリティ構成。 |
+| ActivateNode |wstring、既定値は "Admin" | ノードをアクティブ化するためのセキュリティ構成。 |
+| DeactivateNode |wstring、既定値は "Admin" | ノードを非アクティブ化するためのセキュリティ構成。 |
+| DeactivateNodesBatch |wstring、既定値は "Admin" | 複数のノードを非アクティブ化するためのセキュリティ構成。 |
+| RemoveNodeDeactivations |wstring、既定値は "Admin" | 複数のノードの非アクティブ化を取り消すためのセキュリティ構成。 |
+| GetNodeDeactivationStatus |wstring、既定値は "Admin" | 非アクティブ化の状態を確認するためのセキュリティ構成。 |
+| NodeStateRemoved |wstring、既定値は "Admin" | 削除されたノードの状態を報告するためのセキュリティ構成。 |
+| RecoverPartition |wstring、既定値は "Admin" | パーティションを復旧するためのセキュリティ構成。 |
+| RecoverPartitions |wstring、既定値は "Admin" | 複数のパーティションを復旧するためのセキュリティ構成。 |
+| RecoverServicePartitions |wstring、既定値は "Admin" | サービス パーティションを復旧するためのセキュリティ構成。 |
+| RecoverSystemPartitions |wstring、既定値は "Admin" | システム サービス パーティションを復旧するためのセキュリティ構成。 |
+| ReportFault |wstring、既定値は "Admin" | 障害を報告するためのセキュリティ構成。 |
+| InvokeInfrastructureCommand |wstring、既定値は "Admin" | インフラストラクチャ タスクの管理コマンドのセキュリティ構成。 |
+| FileContent |wstring、既定値は "Admin" | イメージ ストア クライアント ファイルの転送 (クラスターの外部) のセキュリティ構成。 |
+| FileDownload |wstring、既定値は "Admin" | イメージ ストア クライアント ファイルのダウンロードの開始 (クラスターの外部) のセキュリティ構成。 |
+| InternalList |wstring、既定値は "Admin" | イメージ ストア クライアント ファイルのリスト操作 (内部) のセキュリティ構成。 |
+| 削除 |wstring、既定値は "Admin" | イメージ ストア クライアントの削除操作のセキュリティ構成。 |
+| アップロード |wstring、既定値は "Admin" | イメージ ストア クライアントのアップロード操作のセキュリティ構成。 |
+| GetStagingLocation |wstring、既定値は "Admin" | イメージ ストア クライアントのステージングの場所を取得するためのセキュリティ構成。 |
+| GetStoreLocation |wstring、既定値は "Admin" | イメージ ストア クライアントのストアの場所を取得するためのセキュリティ構成。 |
+| NodeControl |wstring、既定値は "Admin" | ノードを起動、停止、再起動するためのセキュリティ構成。 |
+| CodePackageControl |wstring、既定値は "Admin" | コード パッケージを再開するためのセキュリティ構成。 |
+| UnreliableTransportControl |wstring、既定値は "Admin" | 追加および削除動作の信頼性のないトランスポート。 |
+| MoveReplicaControl |wstring、既定値は "Admin" | レプリカを移動します。 |
+| PredeployPackageToNode |wstring、既定値は "Admin" | デプロイメント前の API。 |
+| StartPartitionDataLoss |wstring、既定値は "Admin" | パーティションでデータ損失を誘発します。 |
+| StartPartitionQuorumLoss |wstring、既定値は "Admin" | パーティションでクォーラム損失を誘発します。 |
+| StartPartitionRestart |wstring、既定値は "Admin" | パーティションのレプリカの一部またはすべてを同時に再起動します。 |
+| CancelTestCommand |wstring、既定値は "Admin" | 実行中の特定の TestCommand を取り消します。 |
+| StartChaos |wstring、既定値は "Admin" | 混乱を開始します (まだ開始されていない場合)。 |
+| StopChaos |wstring、既定値は "Admin" | 混乱を停止します (開始されている場合)。 |
+| StartNodeTransition |wstring、既定値は "Admin" | ノードの切り替えを開始するためのセキュリティ構成。 |
+| StartClusterConfigurationUpgrade |wstring、既定値は "Admin" | パーティションで StartClusterConfigurationUpgrade を誘発します。 |
+| GetUpgradesPendingApproval |wstring、既定値は "Admin" | パーティションで GetUpgradesPendingApproval を誘発します。 |
+| StartApprovedUpgrades |wstring、既定値は "Admin" | パーティションで StartApprovedUpgrades を誘発します。 |
+| ping |wstring、既定値は "Admin\"|\|User" | クライアントの ping のセキュリティ構成。 |
+| クエリ |wstring、既定値は "Admin\"|\|User" | クエリのセキュリティ構成。 |
+| NameExists |wstring、既定値は "Admin\"|\|User" | 名前付け URI の存在確認のセキュリティ構成。 |
+| EnumerateSubnames |wstring、既定値は "Admin\"|\|User" | 名前付け URI を列挙するためのセキュリティ構成。 |
+| EnumerateProperties |wstring、既定値は "Admin\"|\|User" | 名前付けプロパティを列挙するためのセキュリティ構成。 |
+| PropertyReadBatch |wstring、既定値は "Admin\"|\|User" | 名前付けプロパティの読み取り操作のセキュリティ構成。 |
+| GetServiceDescription |wstring、既定値は "Admin\"|\|User" | 長いポーリングのサービス通知と読み取りサービスの説明のセキュリティ構成。 |
+| ResolveService |wstring、既定値は "Admin\"|\|User" | クレーム ベースのサービス解決のセキュリティ構成。 |
+| ResolveNameOwner |wstring、既定値は "Admin\"|\|User" | 名前付け URI の所有者を解決するためのセキュリティ構成。 |
+| ResolvePartition |wstring、既定値は "Admin\"|\|User" | システム サービスを解決するためのセキュリティ構成。 |
+| ServiceNotifications |wstring、既定値は "Admin\"|\|User" | イベント ベースのサービス通知のセキュリティ構成。 |
+| PrefixResolveService |wstring、既定値は "Admin\"|\|User" | クレーム ベースのサービス プレフィックス解決のセキュリティ構成。 |
+| GetUpgradeStatus |wstring、既定値は "Admin\"|\|User" | アプリケーションのアップグレード状態をポーリングするためのセキュリティ構成。 |
+| GetFabricUpgradeStatus |wstring、既定値は "Admin\"|\|User" | クラスターのアップグレード状態をポーリングするためのセキュリティ構成。 |
+| InvokeInfrastructureQuery |wstring、既定値は "Admin\"|\|User" | インフラストラクチャ タスクを照会するためのセキュリティ構成。 |
+| 一覧表示 |wstring、既定値は "Admin\"|\|User" | イメージ ストア クライアント ファイルのリスト操作のセキュリティ構成。 |
+| ResetPartitionLoad |wstring、既定値は "Admin\"|\|User" | failoverUnit の負荷をリセットするためのセキュリティ構成。 |
+| ToggleVerboseServicePlacementHealthReporting | wstring、既定値は "Admin\"|\|User" | 詳細な ServicePlacement HealthReporting を切り替えるためのセキュリティ構成。 |
+| GetPartitionDataLossProgress | wstring、既定値は "Admin\"|\|User" | データ損失を発生させる API 呼び出しの進行状況を取得します。 |
+| GetPartitionQuorumLossProgress | wstring、既定値は "Admin\"|\|User" | クォーラム損失を発生させる API 呼び出しの進行状況を取得します。 |
+| GetPartitionRestartProgress | wstring、既定値は "Admin\"|\|User" | パーティションを再起動する API 呼び出しの進行状況を取得します。 |
+| GetChaosReport | wstring、既定値は "Admin\"|\|User" | 指定された時間範囲内の混乱の状態を取得します。 |
+| GetNodeTransitionProgress | wstring、既定値は "Admin\"|\|User" | ノード切り替えコマンドの進行状況を取得するためのセキュリティ構成。 |
+| GetClusterConfigurationUpgradeStatus | wstring、既定値は "Admin\"|\|User" | パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
+| GetClusterConfiguration | wstring、既定値は "Admin\"|\|User" | パーティションで GetClusterConfiguration を誘発します。 |
 
 ### <a name="section-name-reconfigurationagent"></a>セクション名: ReconfigurationAgent
 | **パラメーター** | **使用できる値** | **ガイダンスまたは簡単な説明** |
@@ -505,10 +513,10 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 |UseMoveCostReports | ブール値、既定値は false | よりバランスの取れた配置を実現するために多数の移動が発生する可能性のある、スコア付け関数のコスト要素を無視するよう LB に指示します。 |
 |PreventTransientOvercommit | ブール値、既定値は false | 開始された移動によって解放されるリソースを PLB が即座に利用するかどうかを指定します。 既定では、PLB は同じノード上で移動を開始できるので、一時的なオーバーコミットが発生する可能性があります。 このパラメーターを true に設定すると、このようなオーバーコミットを防ぐことができ、オンデマンドのデフラグ (placementWithMove) が無効になります。 |
 |InBuildThrottlingEnabled | ブール値、既定値は false | 組み込みの調整を有効にするかどうかを指定します。 |
-|InBuildThrottlingAssociatedMetric | wstring、既定値は L"" | この調整に関連付けられたメトリックの名前。 |
+|InBuildThrottlingAssociatedMetric | wstring、既定値は "" | この調整に関連付けられたメトリックの名前。 |
 |InBuildThrottlingGlobalMaxValue | int、既定値は 0 |グローバルに使用できる組み込みレプリカの最大数。 |
 |SwapPrimaryThrottlingEnabled | ブール値、既定値は false| スワップ プライマリ調整を有効にするかどうかを指定します。 |
-|SwapPrimaryThrottlingAssociatedMetric | wstring、既定値は L""| この調整に関連付けられたメトリックの名前。 |
+|SwapPrimaryThrottlingAssociatedMetric | wstring、既定値は ""| この調整に関連付けられたメトリックの名前。 |
 |SwapPrimaryThrottlingGlobalMaxValue | int、既定値は 0 | グローバルに使用できるスワップ プライマリ レプリカの最大数。 |
 |PlacementConstraintPriority | int、既定値は 0 | 配置の制約の優先順位 (0: ハード、1: ソフト、負の値: 無視) を指定します。 |
 |PreferredLocationConstraintPriority | int、既定値は 2| 優先される場所の制約の優先順位 (0: ハード、1: ソフト、2: 最適化、負の値: 無視) を指定します。 |
@@ -563,7 +571,7 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 |ReplicaRestartWaitDuration |時間 (秒単位)、既定値は (60.0 * 30)|timespan を秒単位で指定します。 ClusterManager の ReplicaRestartWaitDuration。 |
 |QuorumLossWaitDuration |時間 (秒単位)、既定値は MaxValue | timespan を秒単位で指定します。 ClusterManager の QuorumLossWaitDuration。 |
 |StandByReplicaKeepDuration | 時間 (秒単位)、既定値は (3600.0 * 2)|timespan を秒単位で指定します。 ClusterManager の StandByReplicaKeepDuration。 |
-|PlacementConstraints | wstring、既定値は L"" |ClusterManager の PlacementConstraints。 |
+|PlacementConstraints | wstring、既定値は "" |ClusterManager の PlacementConstraints。 |
 |SkipRollbackUpdateDefaultService | ブール値、既定値は false |CM は、アプリケーションのアップグレードのロールバック時に、更新された既定のサービスを元に戻す操作をスキップします。 |
 |EnableDefaultServicesUpgrade | ブール値、既定値は false |アプリケーションのアップグレード時に既定のサービスのアップグレードを有効にします。 アップグレード後、既定のサービスの記述が上書きされます。 |
 |InfrastructureTaskHealthCheckWaitDuration |時間 (秒単位)、既定値は 0| timespan を秒単位で指定します。 インフラストラクチャ タスクの後処理の後、正常性チェックを開始するまでの待機時間。 |
@@ -583,10 +591,5 @@ ms.openlocfilehash: 8981d9149f925e003652a16d308c14b7e105a8d5
 クラスター管理の詳細については、次の記事を参照してください。
 
 [Azure クラスターの証明書の追加、ロール オーバー、削除 ](service-fabric-cluster-security-update-certs-azure.md) 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

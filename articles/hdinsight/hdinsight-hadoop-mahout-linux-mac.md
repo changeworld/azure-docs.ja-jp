@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
-ms.openlocfilehash: be8146ae3dd34f4c8d5e02b06fd1b1f8d5d63dc1
+ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
+ms.openlocfilehash: 163bf5b8d2884f678f7fea2207055eeb78b4e8ba
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -42,9 +43,9 @@ HDInsight に含まれる Mahout のバージョンについては、[HDInsight 
 
 ## <a name="a-namerecommendationsaunderstanding-recommendations"></a><a name="recommendations"></a>リコメンデーションについて
 
-Mahout で提供される機能の&1; つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
+Mahout で提供される機能の&1; つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対する嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
-映画のデータを使用した非常にシンプルなワークフローの例を次に示します。
+映画のデータを使用したシンプルなワークフローの例を次に示します。
 
 * **共起**: Joe、Alice、Bob は全員、好きな映画として「*Star Wars (スター ウォーズ)*」、「*The Empire Strikes Back (帝国の逆襲)*」、「*Return of the Jedi (ジェダイの帰還)*」を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の&2; 作品も好きであると判断します。
 
@@ -56,7 +57,7 @@ Mahout で提供される機能の&1; つが、リコメンデーション エ�
 
 [GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples/HdiSamples/MahoutMovieData`) にあります。
 
-2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。 user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示するときに、わかりやすいテキスト情報を提供するために使用されます。
+`moviedb.txt` と `user-ratings.txt` という&2; つのファイルがあります。 user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示するときに、わかりやすいテキスト情報を提供するために使用されます。
 
 user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。 次にデータの例を示します。
 
@@ -94,88 +95,88 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
    
     最初の列は `userID`です。 "[" と "]" に含まれる値は `movieId`:`recommendationScore` です。
 
-2. 出力を moviedb.txt と共に使用して、よりわかりやすく情報を表示できます。 最初に、次のコマンドを使用して、ファイルをローカルにコピーする必要があります。
-    
-    ```bash
-    hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
-    hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
-    ```
+2. 出力を moviedb.txt と共に使用して、よりわかりやすくリコメンデーションを表示できます。 最初に、次のコマンドを使用して、ファイルをローカルにコピーする必要があります。
+
+   ```bash
+   hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
+   hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
+   ```
 
     これにより、出力データが、現在のディレクトリの **recommendations.txt** という名前のファイルにコピーされます。また、映画データ ファイルもコピーされます。
 
-3. 次のコマンドを使用し、リコメンデーション出力のデータの映画の名前を検索する新しい Python スクリプトを作成します。
-   
-    ```bash
-    nano show_recommendations.py
-    ```
+3. 次のコマンドを使用し、リコメンデーション出力のデータの映画の名前を検索する Python スクリプトを作成します。
+
+   ```bash
+   nano show_recommendations.py
+   ```
 
     エディターが開いたら、ファイルの内容として次のテキストを使用します。
-    
-    ```python
-    #!/usr/bin/env python
 
-    import sys
+   ```python
+   #!/usr/bin/env python
 
-    if len(sys.argv) != 5:
-            print "Arguments: userId userDataFilename movieFilename recommendationFilename"
-            sys.exit(1)
+   import sys
 
-    userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
+   if len(sys.argv) != 5:
+        print "Arguments: userId userDataFilename movieFilename recommendationFilename"
+        sys.exit(1)
 
-    print "Reading Movies Descriptions"
-    movieFile = open(movieFilename)
-    movieById = {}
-    for line in movieFile:
-            tokens = line.split("|")
-            movieById[tokens[0]] = tokens[1:]
-    movieFile.close()
+   userId, userDataFilename, movieFilename, recommendationFilename = sys.argv[1:]
 
-    print "Reading Rated Movies"
-    userDataFile = open(userDataFilename)
-    ratedMovieIds = []
-    for line in userDataFile:
-            tokens = line.split("\t")
-            if tokens[0] == userId:
-                    ratedMovieIds.append((tokens[1],tokens[2]))
-    userDataFile.close()
+   print "Reading Movies Descriptions"
+   movieFile = open(movieFilename)
+   movieById = {}
+   for line in movieFile:
+       tokens = line.split("|")
+       movieById[tokens[0]] = tokens[1:]
+   movieFile.close()
 
-    print "Reading Recommendations"
-    recommendationFile = open(recommendationFilename)
-    recommendations = []
-    for line in recommendationFile:
-            tokens = line.split("\t")
-            if tokens[0] == userId:
-                    movieIdAndScores = tokens[1].strip("[]\n").split(",")
-                    recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
-                    break
-    recommendationFile.close()
+   print "Reading Rated Movies"
+   userDataFile = open(userDataFilename)
+   ratedMovieIds = []
+   for line in userDataFile:
+       tokens = line.split("\t")
+       if tokens[0] == userId:
+           ratedMovieIds.append((tokens[1],tokens[2]))
+   userDataFile.close()
 
-    print "Rated Movies"
-    print "------------------------"
-    for movieId, rating in ratedMovieIds:
-            print "%s, rating=%s" % (movieById[movieId][0], rating)
-    print "------------------------"
+   print "Reading Recommendations"
+   recommendationFile = open(recommendationFilename)
+   recommendations = []
+   for line in recommendationFile:
+       tokens = line.split("\t")
+       if tokens[0] == userId:
+           movieIdAndScores = tokens[1].strip("[]\n").split(",")
+           recommendations = [ movieIdAndScore.split(":") for movieIdAndScore in movieIdAndScores ]
+           break
+   recommendationFile.close()
 
-    print "Recommended Movies"
-    print "------------------------"
-    for movieId, score in recommendations:
-            print "%s, score=%s" % (movieById[movieId][0], score)
-    print "------------------------"
-    ```
+   print "Rated Movies"
+   print "------------------------"
+   for movieId, rating in ratedMovieIds:
+       print "%s, rating=%s" % (movieById[movieId][0], rating)
+   print "------------------------"
+
+   print "Recommended Movies"
+   print "------------------------"
+   for movieId, score in recommendations:
+       print "%s, score=%s" % (movieById[movieId][0], score)
+   print "------------------------"
+   ```
    
     **Ctrl-X**、**Y**、**Enter** の順に押して、データを保存します。
-    
+
 4. 次のコマンドを使用し、実行可能ファイルを作成します。
    
-    ```bash
-    chmod +x show_recommendations.py
-    ```
+   ```bash
+   chmod +x show_recommendations.py
+   ```
 
 5. Python スクリプトを実行します。 次のコマンドは、すべてのファイルがダウンロードされているディレクトリにいることが前提となっています。
    
-    ```bash
-    ./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
-    ```
+   ```bash
+   ./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
+   ```
     
     このコマンドは、ユーザー ID 4 に対して生成されたリコメンデーションを表示します。
    
@@ -266,10 +267,5 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
 [tools]: https://github.com/Blackmist/hdinsight-tools
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

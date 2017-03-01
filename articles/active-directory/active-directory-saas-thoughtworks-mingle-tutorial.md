@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
 ms.openlocfilehash: 6a9a1cf616531de1d0b8194bc0e6c186acc27008
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -153,10 +154,5 @@ Thoughtworks Mingle の場合、プロビジョニングは手動で行います
     ![はい](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

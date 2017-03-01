@@ -1,22 +1,23 @@
 ---
 title: "Azure 診断 1.2 構成スキーマ | Microsoft Docs"
 description: "この記事は、Azure SDK 2.5 を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。"
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 8cfb5116d06532b132d5ae9fe54dff1345d6948a
+ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
+ms.openlocfilehash: b76ef954d8a00e190817e3d7f8e2b064210d0357
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,14 +26,14 @@ ms.openlocfilehash: 8cfb5116d06532b132d5ae9fe54dff1345d6948a
 > Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と組み合わせて使用します。
+Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
 このスキーマは、診断モニターの開始時に、診断構成設定を初期化するために使用できる値を定義します。  
 
 
  次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。  
 
-```  
+```PowerShell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
@@ -205,9 +206,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |要素名|Description|  
 |------------------|-----------------|  
 |**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 For example:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

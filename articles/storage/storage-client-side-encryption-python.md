@@ -3,7 +3,7 @@ title: "Python による Microsoft Azure Storage のクライアント側の暗�
 description: "Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
 services: storage
 documentationcenter: python
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: f9bf7981-9948-4f83-8931-b15679a09b8a
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 4eff4ebb948f88a93b403d6375c1342918120ac5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -241,8 +242,3 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ## <a name="next-steps"></a>次のステップ
 *  [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
 *  [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)
-
-
-<!--HONumber=Nov16_HO3-->
-
-

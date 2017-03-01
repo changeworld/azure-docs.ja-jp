@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b0c89d0839402130bc2badc5f33cd633a1e5b7da
+ms.sourcegitcommit: f5640d84774898e1c51c5dcfa52aab781cddf044
+ms.openlocfilehash: a94f88271d7b51a5cc78f9cd611dd824ee125227
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,11 +45,11 @@ Cloud Management Portal for Microsoft Azure と Azure AD の統合を構成す�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Cloud Management Portal for Microsoft Azure の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -114,9 +115,9 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. ページの下部にある [次へ]」を参照してください。
+    b. **[次へ]**をクリックします。
 5. お使いのアプリケーション用に構成された SSO を取得するには、ダウンロードした証明書ファイルを電子メールに添付して、Cloud Management Portal for Microsoft Azure のサポート チーム ([jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com)) に問い合わせます。 発行元 URL、SAML SSO URL、シングル サインアウト サービス URL もお知らせください。サポート チームが SSO 統合で設定します。
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
@@ -229,9 +230,4 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 [203]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

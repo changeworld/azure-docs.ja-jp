@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c19ad7c0c466d178e97e83bb2d46b9905130d00e
-ms.openlocfilehash: a97aff9cb7071edc0b7fd1046bdd10d440d75eab
+ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
+ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -120,7 +121,7 @@ VNet ピアリングの各リンクには、上記のプロパティ セット�
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. "*同じ*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、手順 3. に進んでください。 "*異なる*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間に VNet ピアリングを作成する機能は、**プレビュー** リリースに用意されています。 プレビュー リリースの機能は、一般向けリリースの機能と同等レベルの信頼性とサービス レベル アグリーメントを備えていません。 異なるサブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、最初に次のタスクを完了する必要があります。
-    - PowerShell から次のコマンドを入力して、Azure サブスクリプションにプレビュー機能を登録します: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`。ポータルでは、この手順を実行できません。
+    - PowerShell から次のコマンドを入力して、Azure サブスクリプションにプレビュー機能を登録します: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` および `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`。ポータルでは、この手順を実行できません。
     - この記事の「[Peering across subscriptions (サブスクリプション間のピアリング)](#x-sub)」の手順 1. ～ 6. を実行します。
 3. このシナリオで VNET ピアリングを確立するには、Azure Resource Manager 仮想ネットワークからクラシック仮想ネットワークにリンクを&1; つだけ作成する必要があります。 この例では、**VNET1** から **VNET2** に作成します。 ポータルで **[参照]** をクリックし、**[仮想ネットワーク]** を選択します。
 4. [仮想ネットワーク] ブレードで **[VNET1]**を選択します。 **[ピアリング]**、**[追加]** の順にクリックします。
@@ -141,10 +142,5 @@ VNet ピアリングの各リンクには、上記のプロパティ セット�
 
     ![Delete2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 4. この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。 両方のリンクを削除してから、VNet ピアリングを作成し直すことをお勧めします。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2016
+ms.date: 02/13/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3e6982023a40d0794ab1285302f48047e68c499d
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 603505ed07f7ab38470b669295acf08a35d9f38e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -35,25 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Pacific Timesheet と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* **Pacific Timesheet** でのシングル サインオンが有効なサブスクリプション
+* Pacific Timesheet でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>  
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 
 
-1. ギャラリーからの Pacific Timesheet の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-## <a name="adding-pacific-timesheet-from-the-gallery"></a>ギャラリーからの Pacific Timesheet の追加
+* ギャラリーからの Pacific Timesheet の追加
+* Azure AD シングル サインオンの構成とテスト
+
+## <a name="add-pacific-timesheet-from-the-gallery"></a>ギャラリーからの Pacific Timesheet の追加
 Azure AD への Pacific Timesheet の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Pacific Timesheet を追加する必要があります。
 
 **ギャラリーから Pacific Timesheet を追加するには、次の手順に従います。**
@@ -78,20 +80,21 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Pacific Timesheet で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Pacific Timesheet ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Pacific Timesheet の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Pacific Timesheet ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Pacific Timesheet の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Pacific Timesheet の **[Username (ユーザー名)]** の値として割り当てます。 Pacific Timesheet で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Pacific Timesheet テスト ユーザーの作成](#creating-a-pacific-timesheet-test-user)** - Pacific Timesheet で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Pacific Timesheet アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD の SSO を有効にすることと、Pacific Timesheet アプリケーションで SSO を構成することです。
 
 **Pacific Timesheet で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -107,25 +110,23 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
 4. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_07.png)
+  1. [識別子] ボックスに、`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do` の形式で URL を入力します。
+  2. [応答 URL] ボックスに、次の形式で URL を入力します: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+  3. **[次へ]**をクリックします。
 
-    a. [識別子] ボックスに、`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do` の形式で URL を入力します。
-
-    b. [応答 URL] ボックスに、次の形式で URL を入力します: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
-
-    b. **[次へ]**をクリックします。
-
-1. **[Pacific Timesheet でのシングル サインオンの構成]** ページで、 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+5. **[Pacific Timesheet でのシングル サインオンの構成]** ページで、 **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_09.png)
-2. アプリケーション用に構成された SSO を入手するために、Pacific Timesheet のサポート チームに問い合わせます。 送信する電子メールには、**[Pacific Timesheet でのシングル サインオンの構成]** ページの [発行者の URL] と [SAML SSO URL] の値を含め、ダウンロードした証明書を添付する必要があります。
-3. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+6. アプリケーション用に構成された SSO を入手するために、Pacific Timesheet のサポート チームに問い合わせます。 送信する電子メールには、**[Pacific Timesheet でのシングル サインオンの構成]** ページの [発行者の URL] と [SAML SSO URL] の値を含め、ダウンロードした証明書を添付する必要があります。
+
+7. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 4. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
 ![Azure AD ユーザーの作成][20]
@@ -145,40 +146,30 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_05.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。   
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-pacific-timesheet-test-user"></a>Pacific Timesheet テスト ユーザーの作成
+### <a name="create-a-pacific-timesheet-test-user"></a>Pacific Timesheet テスト ユーザーの作成
 このセクションでは、Pacific Timesheet で Britta Simon というユーザーを作成します。 Pacific Timesheet サポート チームと協力して、このアプリケーションでユーザーを作成してください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションでは、Britta Simon に Pacific Timesheet へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザーの割り当て][200] 
@@ -199,7 +190,7 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
 アクセス パネルで [Pacific Timesheet] タイルをクリックすると、自動的に Pacific Timesheet アプリケーションにサインオンします。
@@ -228,9 +219,4 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
 [203]: ./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

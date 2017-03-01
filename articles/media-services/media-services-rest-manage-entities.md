@@ -2,7 +2,7 @@
 title: "REST による Media Services エンティティの管理 | Microsoft Docs"
 description: "REST API を使用して Media Services エンティティを管理する方法について説明します。"
 author: juliako
-manager: dwrede
+manager: erikre
 editor: 
 services: media-services
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
 ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -179,10 +180,5 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

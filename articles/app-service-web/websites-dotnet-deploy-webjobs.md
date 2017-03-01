@@ -4,7 +4,7 @@ description: "Visual Studio を使用して Azure Web ジョブを Azure App Ser
 services: app-service
 documentationcenter: 
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 9f792f6ea082461f3304516fc9b4c3273e2f50b8
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -175,10 +176,5 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 
 ## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
 この記事では、Visual Studio を使用して Web ジョブを展開する方法について説明しました。 Azure WebJobs をデプロイする方法の詳細については、「 [Azure WebJobs のドキュメント リソース](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying)」をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

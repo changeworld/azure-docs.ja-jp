@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 09f0aa4ea770d23d1b581c54b636c10e59ce1d3c
-ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
+ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
+ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -28,11 +29,13 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 
 * [ファイルを開こうとしたときに、クォータ エラーが発生する](#quotaerror)
 * [Windows または Linux から Azure File Storage にアクセスしたときにパフォーマンスが低下する](#slowboth)
+* [Azure File Storage で読み取りおよび書き込み操作をトレースする方法](#traceop)
 
 **Windows クライアントの問題**
 
 * [Windows 8.1 または Windows Server 2012 R2 から Azure File Storage にアクセスしたときにパフォーマンスが低下する](#windowsslow)
 * [Azure ファイル共有をマウントしようとしたときに、エラー 53 が発生する](#error53)
+* [エラー 87: Azure ファイル共有をマウントしようとしたときにパラメーターが正しくない](#error87)
 * [net use は成功したが、エクスプローラーで、マウントされた Azure ファイル共有が表示されない](#netuse)
 * [ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する](#slashfails)
 * [アプリケーション/サービスがマウントされた Azure Files ドライブにアクセスできない](#accessfiledrive)
@@ -41,12 +44,13 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 **Linux クライアントの問題**
 
 * [Azure Files にファイルをアップロードまたはコピーしようとしたときに、"暗号化をサポートしていない宛先に、ファイルをコピーします" というエラーが発生する](#encryption)
-* [マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する](#errorhold)
+* [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する](#errorhold)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * ["ls" などのコマンドで Linux VM にランダムな遅延が発生する](#delayproblem)
 * [エラー 112 - タイムアウト エラー](#error112)
 
 **他のアプリケーションからのアクセス**
+
 * [Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?](#webjobs)
 
 <a id="quotaerror"></a>
@@ -54,19 +58,15 @@ ms.openlocfilehash: d5768c44022fc251aa0741d91b575ff604032e18
 ## <a name="quota-error-when-trying-to-open-a-file"></a>ファイルを開こうとしたときに、クォータ エラーが発生する
 Windows では、次のようなエラー メッセージが表示されます。
 
-**1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044**
-
-**STATUS_QUOTA_EXCEEDED**
-
-**このコマンドを実行するのに十分なクォータがありません**
-
-**Invalid handle value GetLastError: 53 (無効なハンドル値 GetLastError: 53)**
+`1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044`
+`STATUS_QUOTA_EXCEEDED`
+`Not enough quota is available to process this command`
+`Invalid handle value GetLastError: 53`
 
 Linux では、次のようなエラー メッセージが表示されます。
 
-**<filename> [permission denied] ([アクセスは拒否されました])**
-
-**Disk quota exceeded (ディスク クォータを超えました)**
+`<filename> [permission denied]`
+`Disk quota exceeded`
 
 ### <a name="cause"></a>原因
 この問題は、ファイルで許容される、同時に開くことのできるハンドルの上限に達したことが原因で発生します。
@@ -93,14 +93,21 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 
 修正プログラムがインストールされている場合、次のような出力が表示されます。
 
-**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies**
-
-**{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1**
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies`
+`{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1`
 
 > [!NOTE]
 > Azure Marketplace の Windows Server 2012 R2 イメージには、2015 12 月以降、既定で修正プログラム KB3114025 がインストールされています。
 >
 >
+
+<a id="traceop"></a>
+
+### <a name="how-to-trace-the-read-and-write-operations-in-azure-file-storage"></a>Azure File Storage で読み取りおよび書き込み操作をトレースする方法
+
+[Microsoft Message Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=44226) ではクライアントの要求をクリア テキストで表示でき、ネットワーク要求とトランザクションの間にとてもよい関係があります (SMB が REST ではない場合)。  欠点は、各クライアントでこれを実行する必要があることで、多くの IaaS VM ワーカーがある場合は時間がかかります。
+
+ProcMon で Message Analyze を使った場合、トランザクションの基になっているアプリ コードがよくわかります。
 
 <a id="additional"></a>
 
@@ -134,8 +141,9 @@ Portqry の使用の詳細については、「[Portqry.exe コマンド ライ�
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 IT 組織と連携して、ポート 445 の送信方向の通信を [Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に解放します。
 
+<a id="error87"></a>
 ### <a name="cause-3"></a>原因 3
-"システム エラー 53" は、NTLMv1 通信がクライアント側で有効になっている場合にも発生することがあります。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure Files に対する通信がブロックされます。 これがエラーの原因であるかどうかを確認するには、次のレジストリ サブキーに 3 の値が設定されていることを確認します。
+"システム エラー 53 またはシステム エラー 87" は、NTLMv1 通信がクライアント側で有効になっている場合にも発生することがあります。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure Files に対する通信がブロックされます。 これがエラーの原因であるかどうかを確認するには、次のレジストリ サブキーに 3 の値が設定されていることを確認します。
 
 HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel.
 
@@ -238,7 +246,11 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 ### <a name="solution"></a>解決策
 "/etc/fstab" エントリで **serverino** を確認します。
 
-//azureuser.file.core.windows.net/wms/comer on /home/sampledir type cifs (rw,nodev,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X, file_mode=0755,dir_mode=0755,serverino,rsize=65536,wsize=65536,actimeo=1)
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+
+**sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、そのオプションが使われているかどうかも確認できます。
+
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 **serverino** オプションが見当たらない場合は、**serverino** オプションを選択し、Azure Files のマウントを解除したうえでもう一度マウントします。
 
@@ -253,7 +265,7 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 ### <a name="workaround"></a>対処法
 
-Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
+Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
 
 <a id="webjobs"></a>
 
@@ -263,9 +275,4 @@ AppService サンドボックスで SMB 共有をマウントすることはで�
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

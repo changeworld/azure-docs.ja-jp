@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: df0ab8e6828033b783449e9478a5884355a7f1fe
-ms.openlocfilehash: 453aa0e98e639872184b697ad8ed91d9545e152f
+ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
+ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -98,7 +99,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ## <a name="data-rate"></a>データ速度
 送信するデータ ボリュームを制限するには、3 つの方法があります。
 
-* **1 日あたりの上限**。 既定では、これは 500 GB/日に設定されています。 アプリが上限に達すると、電子メールが届き、その日の終わりまでデータが破棄されます。 これを変更するには、[Data Volume Management] (データ ボリューム管理) ブレードを使用します。
+* **1 日あたりの上限**。 最大容量は 500 GB/日です。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 Azure Portal から Application Insights リソースを作成する場合は、最大容量に設定されます。 上限に達すると、その日の残りのデータが失われるため、この値を変更する場合は注意が必要です。 値を変更するには、[データ管理] ブレードからリンクされている [日次ボリューム上限] ブレードを使用します。
 * **[サンプリング](app-insights-sampling.md)。** このメカニズムでは、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。
 * **スロットル**により、データ速度は 1 分間で平均して 1 秒あたり 32000 イベントに制限されます。 
 
@@ -117,12 +118,14 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ## <a name="to-reduce-your-data-rate"></a>データ レートを削減するには
 データ ボリュームを減らすために、以下のことを実行できます。
 
-* 毎日のボリューム上限を減らします。 既定では 500 GB/日です。
 * [サンプリング](app-insights-sampling.md)の使用。 このテクノロジは、メトリックや、検索で関連するアイテム間を移動する機能を損なうことなく、データ レートを削減します。 サーバー アプリケーションで自動的に操作されます。
 * [報告できる AJAX 呼び出しの数を制限する](app-insights-javascript.md#detailed-configuration) か、AJAX レポートを無効にします。
 * [ApplicationInsights.config を編集](app-insights-configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 * テレメトリを分割して、インストルメンテーション キーを分割します。 
-* 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 また、 [事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。 
+* 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 また、 [事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
+* 最後に、日次ボリューム上限を減らして収集するデータを制限できますが、そうするとその日の残りのデータが失われます。 上限を変更するには、**[機能と価格設定]**、**[データ管理]** の順に開きます。
+
+    ![テレメトリの日次ボリューム上限の調整](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>サンプリング
 [サンプリング](app-insights-sampling.md) は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持すると共に、正しいイベント数を保持する方法です。 
@@ -172,10 +175,5 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

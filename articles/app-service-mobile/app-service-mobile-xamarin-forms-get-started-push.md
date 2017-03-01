@@ -4,7 +4,7 @@ description: "Azure サービスを使用して Xamarin.Forms アプリにマル
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: f6989f65f80027be7803a889c0a87f6afbae150d
 ms.openlocfilehash: 703ab64e96894df6c974fd441b737568fb905004
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -434,9 +435,4 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -17,8 +17,9 @@ ms.topic: support-article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
-ms.openlocfilehash: b6b9540f4120ef87d819605579df4ab0c9657e45
+ms.sourcegitcommit: 9ca20f34d812e15a7f1e6f5dd032ec05c464046d
+ms.openlocfilehash: 53920a551e24f29274133315b463c6c69605da10
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -248,14 +249,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 
 ## <a name="additional-resources"></a>その他のリソース
 上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、 [リモート デスクトップのトラブルシューティング](virtual-machines-windows-detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
-
-* [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 * VM で実行されているアプリケーションへのアクセスにおけるトラブルシューティング手順については、[Azure VM で実行されているアプリケーションへのアクセスのトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 * Secure Shell (SSH) を使用した Azure の Linux VM への接続で問題が発生している場合は、[Azure の Linux VM への SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "Azure App Service 上の Web アプリ、モバイル アプリ �
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 931954e312b02c7a71acc7a3268b5ee3c0a11708
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -119,10 +120,5 @@ App Service の各アプリは、"アプリケーション プール ID" と呼�
 > 
 > 
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement でのユーザーとの対話と通知の
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -99,10 +100,5 @@ ms.openlocfilehash: d59fcba3467e1739c1782a896fc9b5542422e884
 * 2 つ以上のキャンペーンを同時に開始すると、ユーザー ベースのスキャンに時間がかかる場合があります (一度に 1 つのキャンペーンのみを最大で 4 回開始してみます。また、アクティブなユーザーのみを対象にすると、古いユーザーをスキャンする必要がありません)。
 * リーチ キャンペーンの [Campaign (キャンペーン)] セクションで [Ignore Audience, push will be sent to users via the API (対象ユーザーを無視して API 経由でユーザーにプッシュを送信する)] オプションを使用すると、キャンペーンは自動的に送信されず、Reach API 経由で手動で送信する必要があります。
 * リーチのカスタム カテゴリを使用してアプリ内通知を表示する場合は、通知の正しいライフサイクルに従う必要があります。そうしないと、ユーザーが通知を閉じたときに、通知が消去されないことがあります。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

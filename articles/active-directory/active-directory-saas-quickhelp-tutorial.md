@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5e67654ceaa7420615c63fae288da4fa048110c7
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: f84a5a9e40f6dd1c98fd73ba38a1b5cae9d9cba4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,11 +45,11 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの QuickHelp の追加 
 2. Azure AD シングル サインオンの構成とテスト
@@ -273,10 +274,5 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

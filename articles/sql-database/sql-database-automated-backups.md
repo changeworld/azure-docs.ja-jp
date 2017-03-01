@@ -1,5 +1,5 @@
 ---
-title: "SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs"
+title: "Azure SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs"
 description: "SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。"
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,9 @@ ms.workload: NA
 ms.date: 11/02/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2a51e12d16795204b2ec68d66755b020ab6a6490
-ms.openlocfilehash: 10c70d478d638a4938b7978d9b2188617b7f61e9
+ms.sourcegitcommit: f234e50d194c1b8b8deed8282a6ab1250b53d075
+ms.openlocfilehash: 3fd8bda40daa09d1b5d4294382b523d41173b8cb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -39,7 +40,7 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 * 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 
 > [!TIP]
-> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery.md)」を参照してください。
+> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
 >
 
 
@@ -81,18 +82,14 @@ Basic サービス レベルから Standard または Premium にデータベー
 Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが自動的にユーザー独自の Azure Backup サービス コンテナーにコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。  期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、サービス コンテナーによって自動的に削除されます。  そのため、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 復元の API は、資格情報コンテナーが SQL Database と同じサブスクリプションにある限り、資格情報コンテナーに格納されているバックアップをサポートします。 Azure Portal または PowerShell を使用してこれらのバックアップにアクセスできます。
 
 > [!TIP]
-> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery.md)」を参照してください。
+> チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」を参照してください。
 >
 
 ## <a name="next-steps"></a>次のステップ
 
 - データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 その他の Azure SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- 特定の時点に復元するには、[データベースの特定の時点への復元](sql-database-point-in-time-restore.md)に関する記事を参照してください。
-- サービスによって生成されたデータベース バックアップから最も古い復元ポイントを確認するには、[最も古い復元ポイントの表示](sql-database-view-oldest-restore-point.md)に関する記事を参照してください。
-- Azure Recovery Services コンテナーの自動バックアップの長期的な保有期間を構成するには、[長期的なバックアップ保有期間の構成](sql-database-configure-long-term-retention.md)に関する記事を参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+- Azure Portal を使用して特定の時点に復元する方法については、[Azure Portal を使用したデータベースのポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)に関するページをご覧ください。
+- PowerShell を使用して特定の時点に復元する方法については、[PowerShell を使用したデータベースのポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)に関するページをご覧ください。
+- Azure Portal を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[Azure Portal を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-portal.md)に関する記事を参照してください。
+- PowerShell を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復元する方法については、[PowerShell を使用した長期バックアップ保存の管理](sql-database-manage-long-term-backup-retention-powershell.md)に関する記事を参照してください。
 

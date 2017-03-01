@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: d2a324dac6c90791c0aca4aa819082515aa479f2
-ms.openlocfilehash: 98ff8af15be112c0ed3f699ddf8344cb81352114
+ms.sourcegitcommit: b44e02d3e22722c05adce10c3b527adf9be20f00
+ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -24,7 +25,7 @@ Operations Management Suite の Log Analytics を使用して、クラウド環�
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/log-analytics/log-analytics-overview">
+      <a href="/azure/log-analytics/log-analytics-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -95,12 +96,19 @@ Operations Management Suite の Log Analytics を使用して、クラウド環�
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/loganalytics">REST API リファレンスに関するページ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li> 
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

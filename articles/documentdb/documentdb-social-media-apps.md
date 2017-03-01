@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 19e8c9de137e10abb563fcd60cf89502dbf94cfd
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -102,7 +103,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#where-clause)を使用して DocumentDB に対して&1; つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して DocumentDB に対して&1; つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Services](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service-web/web-sites-create-web-jobs.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。 
 
@@ -230,10 +231,5 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 データのモデル化の詳細については、「 [DocumentDB のデータのモデル化](documentdb-modeling-data.md) 」をご覧ください。 DocumentDB の他のユース ケースに関心がある場合は、「 [DocumentDB の一般的なユース ケース](documentdb-use-cases.md)」をご覧ください。
 
 または、 [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

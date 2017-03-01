@@ -12,18 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/22/2016
+ms.date: 2/17/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: dfc2af63c7acb1fef47abb329a385cd7448d2186
-ms.openlocfilehash: 6bbffcfd8acc531fd70c9db90a9f57d8db942002
+ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
+ms.openlocfilehash: feeba5c8e663b9ea571e4410a2d3ad3505394127
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
 Azure Service Fabric はさまざまな種類のビジネス アプリケーションやサービスを作成し実行できる信頼性の高い柔軟なプラットフォームを提供します。 これらのアプリケーションとマイクロサービスはステートレスまたはステートフルが考えられますが、最大限に効率化するために仮想マシン間でリソース分散されます。 Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、アプリケーションを簡単にスケール アップまたはスケール ダウン (実際にはスケール インまたはスケール アウト) できます。
 
-Azure の Service Fabric プラットフォームは、次のカテゴリのアプリケーションやサービスに最適です。
+Azure の Service Fabric プラットフォームは、次のカテゴリのアプリケーションに最適です。
 
 * **高可用性サービス**: Service Fabric のサービスは、複数のセカンダリ サービス レプリカを作成することによって、高速のフェールオーバーを実現します。 ハードウェアまたはその他の障害によってノード、プロセス、または個々のサービスがダウンした場合、セカンダリ レプリカの&1; つが最小限のサービス中断でプライマリ レプリカに昇格されます。
 * **スケーラブルなサービス**: クラスター間でスケールアウトの状態になれるよう個々のサービスをパーティション分割できます。 さらに、動作中に個々のサービスの作成および削除を行うことができます。 サービスはリソースのニーズに応じて、迅速かつ簡単に、2 ～&3; 個のノード上の&2; ～&3; 個のインスタンスから、多数のノード上の数千ものインスタンスにスケールアウトし、その後再びスケールインすることができます。 Service Fabric を使用することで、このようなサービスを構築し、その完全なライフサイクルを管理することができます。
@@ -31,9 +32,11 @@ Azure の Service Fabric プラットフォームは、次のカテゴリのア�
 * **セッション ベースの対話型アプリケーション**: Service Fabric は、オンライン ゲームやインスタント メッセージングなどのアプリケーションで低待機時間の読み取りと書き込みが必要な場合に便利です。 Service Fabric では、ステートレスなアプリに必要な専用ストアやキャッシュを作成することなく、対話型のステートフルなアプリケーションを構築できます。 (待機時間が増加し、一貫性の問題が発生する可能性があります。)
 * **グラフの処理を分散**: ソーシャル ネットワークの拡大が大幅に増えると、大規模なグラフを分析する必要性も増します。 高速のスケーリングと並列するロード処理により、Service Fabric は大規模なグラフを処理する自然なプラットフォームになります。 ソーシャル ネットワー キング、ビジネス インテリジェンス、研究などのグループにとって非常にスケーラブルなサービスを構築できます。
 * **データ分析とワークフロー**: Service Fabric の高速な読み取りや書き込みにより、イベントやデータのストリームを正しく処理する必要のあるアプリケーションを実現できます。 Service Fabric では、処理パイプラインを表すアプリケーションも可能です。処理パイプラインでは、信頼できる結果を、損失なく、次の処理ステージに渡す必要があります。 たとえば、取引システムや金融システムです。データの一貫性と確実な計算が重要となります。
+* **データの収集、処理、IoT**: Service Fabric では大規模な処理が行われ、そのステートフル サービスにより待機時間が短くなるため、デバイスのデータと計算用のデータが併置されている多数のデバイスでのデータ処理に最適です。
+[BMW](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/24/service-fabric-customer-profile-bmw-technology-corporation/)、[Schneider Electric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/05/service-fabric-customer-profile-schneider-electric/)、[Mesh Systems](https://blogs.msdn.microsoft.com/azureservicefabric/2016/06/20/service-fabric-customer-profile-mesh-systems/) など、Service Fabric を使用して IoT システムを構築した顧客がいくつか確認されました。
 
 ## <a name="application-design-case-studies"></a>アプリケーション設計のケース スタディ
-アプリケーション設計における Service Fabric の使用方法を紹介するケース スタディが、[マイクロサービス ソリューション サイト](https://azure.microsoft.com/solutions/microservice-applications/)で多数公開されています。
+アプリケーション設計における Service Fabric の使用方法を紹介するケース スタディが、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/tag/customer-profile/)と[マイクロサービス ソリューション サイト](https://azure.microsoft.com/solutions/microservice-applications/)で多数公開されています。
 
 ## <a name="design-applications-composed-of-stateless-and-stateful-microservices"></a>ステートレスとステートフルなマイクロサービスから成るアプリケーションを設計する
 Azure Cloud Service worker ロールでのアプリケーションの構築は、ステートレス サービスの一例です。 対照的に、ステートフルなマイクロサービスは、要求とその応答を超える権限のある状態を維持します。 正しい処理をレプリケーションでバックアップするシンプルな API 経由で状態の高可用性と一貫性が実現します。 Service Fabric のステートフルなサービスでは、高可用性を平等に実現可能にすることで、データベースなどのデータ ストアだけでなく、すべての種類のアプリケーションに高可用性をもたらします。 これは自然な進展です。 アプリケーションは既に、高可用性のための純粋なリレーショナル データベースから NoSQL データベースに移っています。 アプリケーション自体を「ホット」な状態にして、データを中で管理し、信頼性、一貫性、可用性を犠牲にすることなく、パフォーマンスを上げることができるようになりました。
@@ -63,9 +66,4 @@ Azure Cloud Service worker ロールでのアプリケーションの構築は�
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

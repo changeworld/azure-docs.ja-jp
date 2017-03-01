@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1b01c8a16c217350e82db1bc7a6cc54b84888b9e
 ms.openlocfilehash: 17898ff5a2a98383a9956346d7932c31587386a7
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -277,9 +278,4 @@ Bridge で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-bridge-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

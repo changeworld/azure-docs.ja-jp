@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
-ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
+ms.sourcegitcommit: 6489f013f72a8d283ad5c0723d0a46ea4e66a2d9
+ms.openlocfilehash: f4fa7b12afe0002d5b7e5267c8f670cae8d253da
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -41,17 +42,21 @@ ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
 3. 次のように cd tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 以下の tools サブディレクトリに移動します。
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+
 4. .\InstallElasticDatabaseJobsCmdlets.ps1 スクリプトを実行して、ElasticDatabaseJobs ディレクトリを $home\Documents\WindowsPowerShell\Modules にコピーします。 この処理で、次のように使用するモジュールも自動的にインポートされます。
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
 ## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>PowerShell を使用して Elastic Database ジョブ コンポーネントをインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、cd \tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の \tools サブディレクトリに移動します。
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+
 2. .\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。 このスクリプトで、 [Elastic Database ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview.md#components-and-pricing) のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
-   
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
+
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
 コマンドを実行すると、**[ユーザー名]** と **[パスワード]** の入力を求めるウィンドウが表示されます。 ここで入力するユーザー名とパスワードは Azure の資格情報ではなく、新しいサーバーの管理者の資格情報となります
 
@@ -178,9 +183,4 @@ ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
 [2]: ./media/sql-database-elastic-jobs-service-installation/credentials.png
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
