@@ -1,5 +1,5 @@
 ---
-title: "アクセス変更履歴レポートの作成 | Microsoft Docs"
+title: "アクセス レポート - Azure RBAC | Microsoft Docs"
 description: "ロールベースのアクセス制御を使用した Azure サブスクリプションへのアクセス権の変更について、過去 90 日間分をすべて一覧表示するレポートを生成します。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2016
+ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 44295ff647cbfd2d63ffe08d101da66b83a924f6
+ms.sourcegitcommit: bb894c38de63d0eac4066eeabaed7ba791021cc4
+ms.openlocfilehash: bb15538a37fd610207c77fe2cf89fbfa16bbba11
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -43,7 +44,7 @@ PowerShell でアクセス変更履歴レポートを作成するには、 `Get-
 | **SubscriptionId** |Azure サブスクリプションの GUID |
 | **SubscriptionName** |Azure サブスクリプションの名前 |
 
-このコマンド例を実行すると、サブスクリプションにおける過去 7 日間のすべてのアクセス変更が一覧表示されます。
+このコマンド例を実行すると、サブスクリプションにおける過去&7; 日間のすべてのアクセス変更が一覧表示されます。
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
@@ -59,13 +60,8 @@ Azure コマンド ライン インターフェイス (CLI) でアクセス変�
 
 ![スプレッドシートとして表示した Changelog - スクリーンショット](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
-## <a name="see-also"></a>関連項目
-*  [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)
-*  [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+## <a name="next-steps"></a>次のステップ
+* [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)
+* [PowerShell を使用して RBAC を管理する](role-based-access-control-manage-access-powershell.md)方法を確認します。
 
 

@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
-ms.openlocfilehash: 60c8296e1287419dedf5b5f01f2ddb7ab86b5d11
+ms.sourcegitcommit: 05fc8ff05f8e2f20215f6683a125c1a506b4ccdc
+ms.openlocfilehash: 23ed2e066cc6751ebabb57c8077f95b0cb074850
+ms.lasthandoff: 02/18/2017
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
-この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。 
+この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
 
 ## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
@@ -53,7 +54,7 @@ Azure Blob Storage インデクサーを設定するには、以下を使用し�
 >
 >
 
-ここでは、REST API を使用したフローについて説明します。 
+ここでは、REST API を使用したフローについて説明します。
 
 ### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
 データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは、同じ Search サービス内の複数のインデクサーで使用できます。
@@ -83,7 +84,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>資格情報を指定する方法 ####
 
-次のいずれかの方法で BLOB コンテナーに対して資格情報を指定できます。 
+次のいずれかの方法で BLOB コンテナーに対して資格情報を指定できます。
 
 - **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
 - **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
@@ -114,7 +115,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
-インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
+インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 
@@ -135,11 +136,11 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 ## <a name="how-azure-search-indexes-blobs"></a>Azure Search で BLOB のインデックスを作成する方法
 
-[インデクサー構成](#PartsOfBlobToIndex)に応じて、BLOB インデクサーでは、ストレージ メタデータのみ (メタデータのみに注意すればよく、BLOB のコンテンツにインデックスを作成する必要がないときに便利です)、ストレージとコンテンツ メタデータ、またはメタデータとテキスト コンテンツの両方にインデックスを作成することができます。 インデクサーは、既定では、メタデータとコンテンツの両方を抽出します。 
+[インデクサー構成](#PartsOfBlobToIndex)に応じて、BLOB インデクサーでは、ストレージ メタデータのみ (メタデータのみに注意すればよく、BLOB のコンテンツにインデックスを作成する必要がないときに便利です)、ストレージとコンテンツ メタデータ、またはメタデータとテキスト コンテンツの両方にインデックスを作成することができます。 インデクサーは、既定では、メタデータとコンテンツの両方を抽出します。
 
 > [!NOTE]
 > 既定では、JSON、CSV、XML などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 構造化された方法で JSON および CSV の BLOB のインデックスを作成する場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)と [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照してください。 現在、XML コンテンツの解析はサポートされていません。サポートが必要な場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) にご要望をお寄せください。
-> 
+>
 > 複合ドキュメントや埋め込みドキュメント (ファイルが添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
 * ドキュメントのテキスト コンテンツ全体が、`content` という名前の文字列フィールドに抽出されます。
@@ -236,7 +237,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 ### <a name="dealing-with-unsupported-content-types"></a>サポートされていないコンテンツの種類の処理
 
-既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 もちろん、`excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップすることもできますが、 存在する可能性のあるすべてのコンテンツの種類が事前にわからないまま BLOB のインデックスを作成する必要がある場合もあります。 サポートされていないコンテンツの種類が検出されたときにインデックス作成を続行するには、`failOnUnsupportedContentType` 構成パラメーターを `false` に設定します。 
+既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 もちろん、`excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップすることもできますが、 存在する可能性のあるすべてのコンテンツの種類が事前にわからないまま BLOB のインデックスを作成する必要がある場合もあります。 サポートされていないコンテンツの種類が検出されたときにインデックス作成を続行するには、`failOnUnsupportedContentType` 構成パラメーターを `false` に設定します。
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
     Content-Type: application/json
@@ -245,27 +246,27 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    } 
+    }
 
 ### <a name="ignoring-parsing-errors"></a>解析エラーの無視
 
-Azure Search のドキュメント抽出ロジックは完璧ではないため、.DOCX や .PDF などのサポートされているコンテンツの種類のドキュメントの解析に失敗する場合があります。 そのような場合にインデックス作成が中断されないようにするために、`maxFailedItems` と `maxFailedItemsPerBatch` の各構成パラメーターを妥当な値に設定します。 次に例を示します。 
+Azure Search のドキュメント抽出ロジックは完璧ではないため、.DOCX や .PDF などのサポートされているコンテンツの種類のドキュメントの解析に失敗する場合があります。 そのような場合にインデックス作成が中断されないようにするために、`maxFailedItems` と `maxFailedItemsPerBatch` の各構成パラメーターを妥当な値に設定します。 次に例を示します。
 
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    } 
+    }
 
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>インデックスが作成される BLOB の部分の制御
 
-BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。 
+BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。
 
 * `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
 * `allMetadata` - ストレージ メタデータと、BLOB コンテンツから抽出された[コンテンツの種類固有のメタデータ](#ContentSpecificMetadata)にインデックスを作成するように指定します。
 * `contentAndMetadata` - すべてのメタデータと、BLOB から抽出されたテキスト コンテンツにインデックスを作成するように指定します。 これが既定値です。
 
-たとえば、ストレージ メタデータのみにインデックスを作成するには、次のように使用します。 
+たとえば、ストレージ メタデータのみにインデックスを作成するには、次のように使用します。
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
     Content-Type: application/json
@@ -317,10 +318,10 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 
 ## <a name="indexing-large-datasets"></a>大規模なデータセットのインデックス作成
 
-BLOB のインデックス作成プロセスは、時間がかかる場合があります。 インデックスを作成する BLOB が数百万ある場合は、データをパーティション分割し、複数のインデクサーを使用してデータを並列で処理することで、インデックス作成を高速に処理できます。 設定方法は次のとおりです。 
+BLOB のインデックス作成プロセスは、時間がかかる場合があります。 インデックスを作成する BLOB が数百万ある場合は、データをパーティション分割し、複数のインデクサーを使用してデータを並列で処理することで、インデックス作成を高速に処理できます。 設定方法は次のとおりです。
 
-- 複数の BLOB コンテナーまたは仮想フォルダーにデータをパーティション分割します。 
-- コンテナーまたはフォルダーごとに&1; つずつ、Azure Search データ ソースを設定します。 BLOB フォルダーをポイントするには、`query` パラメーターを使用します。 
+- 複数の BLOB コンテナーまたは仮想フォルダーにデータをパーティション分割します。
+- コンテナーまたはフォルダーごとに&1; つずつ、Azure Search データ ソースを設定します。 BLOB フォルダーをポイントするには、`query` パラメーターを使用します。
 
     ```
     {
@@ -332,6 +333,14 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
     ```
 
 - データ ソースごとに対応するインデクサーを作成します。 すべてのインデクサーから、同じターゲット検索インデックスをポイントできます。  
+
+## <a name="indexing-documents-along-with-related-data"></a>ドキュメントと関連データを併せたインデックスを作成する
+
+ドキュメントには、次のいずれかの場所に構造化データとして格納されているメタデータ (ドキュメントを作成した部門など) が関連付けられている場合があります。
+-   SQL Database や DocumentDB などの別のデータ ストア。
+-   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
+
+各ドキュメントとそのメタデータに同じ一意のキー値を割り当て、各インデクサーに `mergeOrUpload` アクションを指定することで、ドキュメントとメタデータを併せたインデックスを作成することができます。 このソリューションの詳細については、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」を参照してください。
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>コンテンツの種類ごとのメタデータのプロパティ
@@ -356,9 +365,4 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)までお寄せください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
