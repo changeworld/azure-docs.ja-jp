@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/17/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9a8d41dcfd51d298784b932184fc8d68a9877a65
-ms.openlocfilehash: 2406a3ba5576635e801f6218e03dd74352d15368
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: a0a101c34ffd4adb6816d9db8313d10b0ffbb3ae
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,12 +45,12 @@ SuccessFactors と Azure AD の統合を構成するには、次のものが必�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの SuccessFactors の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -128,7 +129,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
     | `https://<company name>.sapsf.eu` |
     | `https://<company name>.sapsf.eu/<company name>` |
    
-    c. ページの下部にある [次へ]」を参照してください。 
+    c. **[次へ]**をクリックします。 
 
     > [!NOTE]
     > これは実際の値ではないので注意してください。 実際のサインオン URL および応答 URL で値を更新する必要があります。 これらの値を取得するには、 [SuccessFactors サポート チーム](https://www.successfactors.com/en_us/support.html)に問い合わせてください。
@@ -329,9 +330,4 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 [27]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_09.png
 [28]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_10.png
 [29]: ./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_10.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
