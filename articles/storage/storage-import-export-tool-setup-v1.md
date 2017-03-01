@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export ツールの設定 | Microsoft Docs"
-description: "ドライブの準備および修復用のツール (Azure Import/Export ツール) を設定する方法について説明します"
+title: "Azure Import/Export ツール v1 の設定 | Microsoft Docs"
+description: "Azure Import/Export 用のドライブ準備および修復ツールを設定する方法について説明します"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: fbcc295284d060b9a8bc5cf1cb9f8b2fca566db4
-ms.openlocfilehash: 78151092d8987b7513b69e54f9dacb540c5c3278
+ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
+ms.openlocfilehash: 2d30d0da6055a66b60ed5a836dd897a87d564237
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="setting-up-the-azure-import-export-tool"></a>Azure Import/Export ツールの設定
+# <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 Microsoft Azure Import/Export ツールは、ドライブの準備および修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
   
 -   インポート ジョブを作成する前に、このツールを使用して、Microsoft Azure データ センターに発送するハード ドライブにデータをコピーできます。  
@@ -37,7 +38,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備および修�
   
 -   インポートするファイルを保存するための十分な空き領域を持つストレージ アカウントがサブスクリプションに含まれている必要があります。  
   
--   ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。  
+-   ストレージ アカウントのアカウント キーが少なくとも&1; つ必要です。  
   
 -   Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システムがインストールされているコンピューター ("コピー用コンピューター") が必要です。  
   
@@ -260,9 +261,4 @@ Examples:
  [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
  [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)   
  [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

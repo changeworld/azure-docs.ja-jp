@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約"
+title: "Azure サブスクリプションの制限とクォータ | Microsoft Docs"
 description: "一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。"
 services: 
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 02/17/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 18c8997d8ee77c9c3005aa765a64ae82dce8c70c
-ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
+ms.sourcegitcommit: 4e37d976ab7616674ff4b41111bfe7000444ca54
+ms.openlocfilehash: 2ff41f4a93b0cc7f104fe4703f5b031cfb3252e1
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -33,9 +34,9 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 > 
 
 ## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure リソース マネージャー
-複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
+複数の Azure リソースを&1; つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
+次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が&2; つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
 
 > [!NOTE]
 > Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。 コア クォータを例に説明します。 コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。 したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。 この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
@@ -60,11 +61,13 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Cloud Services](#cloud-services-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
+* [Data Lake Store](#data-lake-store-limits)
 * [DNS](#dns-limits)
 * [DocumentDB](#documentdb-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Key Vault](#key-vault-limits)
+* [Log Analytics / Operational Insights](#log-analytics-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -72,7 +75,6 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [ネットワーク](#networking-limits)
 * [Notification Hub Service](#notification-hub-service-limits)
-* [Operational Insights](#operational-insights-limits)
 * [リソース グループ](#resource-group-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
@@ -130,20 +132,23 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 ### <a name="storage-limits"></a>ストレージの制限
 ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)」を参照してください。
-
+<!--like # storage accts --> 
 #### <a name="storage-service-limits"></a>ストレージ サービスの制限
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-#### <a name="virtual-machine-disk-limits"></a>仮想マシン ディスクの制限
+<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+#### <a name="virtual-machine-disk-limits"></a>仮想マシン ディスクの制限 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
 その他の詳細については、「 [仮想マシンのサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
 
-**Standard Storage アカウント**
+#### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
+
+[!INCLUDE [azure-storage-limits-vm-disks-managed](../includes/azure-storage-limits-vm-disks-managed.md)]
+
+#### <a name="unmanaged-virtual-machine-disks"></a>非管理対象の仮想マシン ディスク
 
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
-
-**Premium Storage アカウント**
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
@@ -170,7 +175,7 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="documentdb-limits"></a>DocumentDB の制限
-DocumentDB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについてご質問がある場合は、askdocdb@microsoft.com に電子メールをお送りください。
+DocumentDB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 DocumentDB が提供するスケールについて質問がある場合は、askdocdb@microsoft.com に電子メールをお送りください。
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement の制限
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -179,7 +184,7 @@ DocumentDB は世界規模のデータベースであり、アプリケーショ
 価格レベルによって、容量と検索サービスの制限が決定されます。 レベルは次のとおりです。
 
 * *Free* : 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
-* *Basic*: 小規模環境で運用ワークロードに対して専用コンピューティング リソースを提供します。高可用性のクエリ ワークロード用に最大 3 つのレプリカを備えています。
+* *Basic*: 小規模環境で運用ワークロードに対して専用コンピューティング リソースを提供します。高可用性のクエリ ワークロード用に最大&3; つのレプリカを備えています。
 * *Standard (S1、S2、S3、S3 High Density)* : 大規模な運用ワークロード向けです。 Standard レベルは、ワークロード プロファイルに最適なリソース構成を選択できるように、複数のレベルに分かれています。
 
 **サブスクリプションあたりの制限**
@@ -222,6 +227,9 @@ DocumentDB は世界規模のデータベースであり、アプリケーショ
 ### <a name="data-lake-analytics-limits"></a>Data Lake Analytics の制限
 [!INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
+### <a name="data-lake-store-limits"></a>Data Lake Store の制限
+[!INCLUDE [azure-data-lake-store-limits](../includes/azure-data-lake-store-limits.md)]
+
 ### <a name="stream-analytics-limits"></a>Stream Analytics の制限
 [!INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
@@ -234,7 +242,7 @@ DocumentDB は世界規模のデータベースであり、アプリケーショ
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
-### <a name="operational-insights-limits"></a>Operational Insights の制限
+### <a name="log-analytics-limits"></a>Log Analytics の制限
 [!INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
 ### <a name="backup-limits"></a>Backup の制限
@@ -270,10 +278,5 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 [Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

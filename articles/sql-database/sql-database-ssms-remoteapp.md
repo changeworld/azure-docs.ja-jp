@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: d0edcf7f7e927f817caae1cb7f4519596a09f140
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: a8540a541d05d1d8a0afeb2aeb42c77951ebf8c2
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -114,7 +115,7 @@ Azure AD Premium がない場合は、ディレクトリの [ライセンス] �
 Azure Active Directory でユーザーに移動すると、[アクティビティ] タブに移動して Azure RemoteApp へのログイン情報を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
-以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。 アプリケーションの 1 つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
+以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。 アプリケーションの&1; つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
 
 SQL Database に接続する方法の詳細については、「 [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 
@@ -127,8 +128,3 @@ SQL Database に接続する方法の詳細については、「 [SQL Server Man
 [4]: ./media/sql-database-ssms-remoteapp/allowazure.png
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
-
-
-<!--HONumber=Dec16_HO1-->
-
-

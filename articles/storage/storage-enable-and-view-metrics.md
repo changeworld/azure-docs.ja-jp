@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: c3519943bf60aebc8510b7a7ac577bbe04587bd8
-ms.openlocfilehash: 05f4d8d6e9155f163ef44ef189067427ac606f46
+ms.sourcegitcommit: d7a08bb0f4128eb3915658b41843b35613108a98
+ms.openlocfilehash: d544695654ff136ee25856cb4a0309f882057ebb
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,9 +25,9 @@ ms.openlocfilehash: 05f4d8d6e9155f163ef44ef189067427ac606f46
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>概要
-既定では、Storage サービスに対してストレージ メトリックは有効になっていません。 [Azure Portal](https://portal.azure.com) または Windows PowerShell を使用して監視を有効にできます。また、ストレージ クライアント ライブラリを使用したプログラムで監視を有効にすることもできます。
+新しいストレージ アカウントを作成すると、ストレージ メトリックが既定で有効になります。 [Azure Portal](https://portal.azure.com) または Windows PowerShell を使って監視を構成できます。または、ストレージ クライアント ライブラリの&1; つを使ってプログラムで監視を有効にすることもできます。
 
-ストレージ メトリックを有効にするとき、データのリテンション期間を選択する必要があります。この期間により、ストレージ サービスがメトリックを保有する期間が決まり、メトリックを保存するために必要な領域に対して課金されます。 一般的には、分単位メトリックには時間単位メトリックより短いリテンション期間を使用してください。分単位メトリックにはかなりの追加領域が必要になるためです。 データを分析し、保存するメトリックをダウンロードし、オフライン分析やレポートを行うために十分な時間が確保されるようにリテンション期間を選択してください。 ストレージ アカウントからメトリック データをダウンロードした場合にも課金されることにご注意ください。
+メトリック データのリテンション期間を構成できます。この期間により、ストレージ サービスがメトリックを保有する期間が決まり、メトリックを保存するために必要な領域に対して課金されます。 一般的には、分単位メトリックには時間単位メトリックより短いリテンション期間を使用してください。分単位メトリックにはかなりの追加領域が必要になるためです。 データを分析し、保存するメトリックをダウンロードし、オフライン分析やレポートを行うために十分な時間が確保されるようにリテンション期間を選択してください。 ストレージ アカウントからメトリック データをダウンロードした場合にも課金されることにご注意ください。
 
 ## <a name="how-to-enable-metrics-using-the-azure-portal"></a>Azure Portal を使用してメトリックを有効にする方法
 [Azure Portal](https://portal.azure.com) でメトリックを有効にするには、次の手順に従います。
@@ -111,10 +112,10 @@ blobClient.SetServiceProperties(properties);
 * テーブルの読み取りと格納を行うためのカスタム アプリケーションやスクリプトを記述します。
 
 多くのサード パーティ製ストレージ閲覧ツールは、これらのテーブルを認識し、テーブルを直接表示できます。
-利用できるツールの一覧については、「 [Azure ストレージ エクスプローラー](storage-explorers.md) 」を参照してください。
+利用できるツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。
 
 > [!NOTE]
-> [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のバージョン 0.8.0 以降では、分析メトリック テーブルの表示とダウンロードができるようになりました。
+> [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のバージョン 0.8.0 以降では、分析メトリック テーブルの表示とダウンロードができます。
 > 
 > 
 
@@ -149,7 +150,12 @@ blobClient.SetServiceProperties(properties);
 
 上記のサンプル データは、1 つの分単位 (午前 11 時から始まる) に対するすべてのレコードを示します。つまり、QueryEntities 要求の数に QueryEntity 要求の数と UpdateEntity 要求の数を足すと 7 になり、これが user:All 行に表示される合計です。 同様に、((143.8 * 5) + 3 + 9)/7 を計算し、端末間の平均待機時間 104.4286 を user:All 行で導くことができます。
 
-ストレージ サービスの動作の重要な変更がストレージ メトリックによって自動的に通知されるように、[Azure Portal](https://portal.azure.com) の [監視] ページでアラートを設定することを検討してください。 ストレージ エクスプローラー ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 使用できるストレージ エクスプローラー ツールの一覧については、[Microsoft Azure ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)に関するブログ記事をご覧ください。
+## <a name="metrics-alerts"></a>メトリック アラート
+ストレージ サービスの動作の重要な変更がストレージ メトリックによって自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することを検討してください。 ストレージ エクスプローラー ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 利用できるストレージ エクスプローラー ツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。 アラートの構成は、ストレージ アカウント メニュー ブレードの **[監視]** からアクセスできる **[アラート ルール]** で行うことができます。
+
+> [!IMPORTANT]
+> ストレージ イベントが発生してから、対応する時間または分単位のメトリック データが記録されるまでに、遅延が生じる場合があります。 分単位のメトリックの場合は、数分間のデータが一度に書き込まれることがあります。 そのため、前の数分のトランザクションが現在の分のトランザクションに集計される可能性があります。 その場合、アラート サービスが構成されているアラート間隔のすべての利用可能なメトリック データを取得できず、アラートが予期せず発生する場合があります。
+>
 
 ## <a name="accessing-metrics-data-programmatically"></a>メトリック データにプログラミングでアクセスする
 次の一覧は、一定の分単位範囲で分単位メトリックにアクセスして結果をコンソール ウィンドウに表示するサンプル C# コードを示しています。 Azure Storage ライブラリのバージョン 4 を使用しますが、これに入っている CloudAnalyticsClient クラスは、Storage のメトリック テーブルにアクセスするプロセスを簡素化します。
@@ -208,9 +214,4 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 * BLOB の容量テーブルには、毎日、2 つの行が追加されます (ユーザーがログを選択している場合)。つまり、このテーブルのサイズは、毎日、最大約 300 バイト増えることになります。
 
 ## <a name="next-steps"></a>次のステップ
-[ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+[ストレージ ログの有効化とログ データへのアクセス](/rest/api/storageservices/fileservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

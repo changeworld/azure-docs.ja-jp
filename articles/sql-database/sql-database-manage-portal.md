@@ -11,23 +11,18 @@ ms.service: sql-database
 ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
-ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 130f2341eca570a982ab5c22ba429f6b48006f90
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="manage-azure-sql-databases-using-the-azure-portal"></a>Azure Portal を使用した Azure SQL データベースの管理
-> [!div class="op_single_selector"]
-> * [Azure ポータル](sql-database-manage-portal.md)
-> * [SSMS](sql-database-manage-azure-ssms.md)
-> * [PowerShell](sql-database-manage-powershell.md)
-> 
-> 
 
 [Azure Portal](https://portal.azure.com/) では、Azure SQL データベースと Azure SQL サーバーを作成、監視、管理できます。 この記事では、一般的なタスクを紹介し、より詳しい情報へのリンクを示します。
 
@@ -40,17 +35,17 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ![SQL Database](./media/sql-database-manage-portal/sql-services.png)
 
 ## <a name="how-do-i-create-or-view-azure-sql-databases"></a>Azure SQL データベースを作成または表示する方法
-**[SQL Database]** ブレードを開くには、**[SQL Database]** をクリックし、対象のデータベースをクリックします。または、**[+追加]** をクリックして SQL Database を作成します。 詳細については、「[Azure Portal を使用して数分で SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
+**[SQL Database]** ブレードを開くには、**[SQL Database]** をクリックし、対象のデータベースをクリックします。または、**[+追加]** をクリックして SQL Database を作成します。 詳しくは、「[クイック スタート チュートリアル: 初めての Azure SQL Database](sql-database-get-started.md)」をご覧ください。
 
 ![SQL データベース](./media/sql-database-manage-portal/sql-databases.png)
 
 ## <a name="how-do-i-create-or-view-azure-sql-servers"></a>Azure SQL サーバーを作成または表示する方法
-**[SQL Server]** ブレードを開くには、**[SQL Server]** をクリックし、対象のサーバーをクリックします。または、**[+追加]** をクリックして SQL サーバーを作成します。 詳細については、「[Azure Portal を使用して数分で SQL Database を作成する](sql-database-get-started.md)」をご覧ください。
+**[SQL Server]** ブレードを開くには、**[SQL Server]** をクリックし、対象のサーバーをクリックします。または、**[+追加]** をクリックして SQL サーバーを作成します。 詳しくは、「[クイック スタート チュートリアル: 初めての Azure SQL Database](sql-database-get-started.md)」をご覧ください。
 
 ![SQL Server](./media/sql-database-manage-portal/sql-servers.png)
 
 ## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>SQL エラスティック プールを作成または表示する方法
-**[SQL 可変プール]** ブレードを開くには、**[SQL 可変プール]** をクリックし、対象のプールをクリックします。または、**[+追加]** をクリックしてプールを作成します。 詳細については、[Azure Portal を使用したエラスティック プールの作成](sql-database-elastic-pool-create-portal.md)に関するページを参照してください。
+**[SQL 可変プール]** ブレードを開くには、**[SQL 可変プール]** をクリックし、対象のプールをクリックします。または、**[+追加]** をクリックしてプールを作成します。 詳細については、[Azure Portal を使用したエラスティック プールの作成](sql-database-elastic-pool-manage-portal.md)に関するページを参照してください。
 
 ![SQL elastic pools](./media/sql-database-manage-portal/elastic-pools.png)
 
@@ -70,12 +65,12 @@ ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 ![firewall rules](./media/sql-database-manage-portal/sql-database-firewall.png)
 
 ## <a name="how-do-i-change-my-sql-database-service-tier-or-performance-level"></a>SQL データベースのサービス レベルまたはパフォーマンス レベルを変更する方法
-SQL データベースのサービス レベルまたはパフォーマンス レベルを更新するには、**[SQL Database]** ブレードで **[価格レベル (DTU のスケール)]** をクリックします。 詳細については、「 [SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)」を参照してください。
+SQL データベースのサービス レベルまたはパフォーマンス レベルを更新するには、**[SQL Database]** ブレードで **[価格レベル (DTU のスケール)]** をクリックします。 詳細については、「 [SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-service-tiers.md)」を参照してください。
 
 ![pricing tiers](./media/sql-database-manage-portal/pricing-tier.png)
 
 ## <a name="how-do-i-configure-auditing-and-threat-detection-for-a-sql-database"></a>SQL データベースの監査と脅威の検出を構成する方法
-SQL データベースの監査と脅威の検出を構成するには、**[SQL Database]** ブレードで **[Auditing and Threat detection (監査と脅威の検出)]** をクリックします。 詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」と「[SQL Database 脅威の検出の概要](sql-database-threat-detection-get-started.md)」をご覧ください。
+SQL データベースの監査と脅威の検出を構成するには、**[SQL Database]** ブレードで **[Auditing and Threat detection (監査と脅威の検出)]** をクリックします。 詳しくは、[データベースの監査に関する記事](sql-database-auditing.md)および[SQL Database 脅威の検出の概要に関する記事](sql-database-threat-detection.md)をご覧ください。
 
 ## <a name="how-do-i-configure-dynamic-data-masking-for-a-sql-database"></a>SQL データベースの動的データ マスクを構成する方法
 SQL データベースの動的データ マスクを構成するには、**[SQL Database]** ブレードで **[動的データ マスク]** をクリックします。 詳細については、 [SQL Database 動的データ マスクの使用](sql-database-dynamic-data-masking-get-started.md)に関するページを参照してください。
@@ -84,7 +79,7 @@ SQL データベースの動的データ マスクを構成するには、**[SQL
 SQL データベースの Transparent Data Encryption を構成するには、**[SQL Database]** ブレードで **[透過的なデータ暗号化]** をクリックします。 詳細については、「 [ポータルを使用してデータベースで TDE を有効にする](https://msdn.microsoft.com/library/dn948096#Anchor_1)」を参照してください。
 
 ## <a name="how-do-i-view-or-change-the-max-size-of-a-sql-database"></a>SQL データベースの最大サイズを表示または変更する方法
-SQL データベースのサイズを表示または変更するには、**[SQL Database]** ブレードで **[データベース サイズ]** をクリックします。 サービス レベルまたはパフォーマンス レベルを変更して、データベースの最大サイズを更新します。 詳細については、「 [SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)」を参照してください。
+SQL データベースのサイズを表示または変更するには、**[SQL Database]** ブレードで **[データベース サイズ]** をクリックします。 サービス レベルまたはパフォーマンス レベルを変更して、データベースの最大サイズを更新します。 詳細については、「 [SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-service-tiers.md)」を参照してください。
 
 ## <a name="how-do-i-monitor-and-improve-the-performance-of-a-sql-database"></a>SQL データベースのパフォーマンスを監視および改善する方法
 SQL データベースのパフォーマンス特性を監視および改善するには、**[SQL Database]** ブレードの **[Performance overview (パフォーマンス概要)]** をクリックします。 詳細については、「 [SQL Database Performance Insight](sql-database-performance.md)」を参照してください。
@@ -106,12 +101,12 @@ SQL データベースの BACPAC を作成するには、**[SQL Database]** ブ�
 ![SQL database export](./media/sql-database-manage-portal/sql-database-export.png)
 
 ## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>SQL データベースを過去のある時点に復元する方法
-SQL データベースを復元するには、**[SQL Database]** ブレードで **[復元]** をクリックします。 詳細については、「 [Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore.md)」を参照してください。
+SQL データベースを復元するには、**[SQL Database]** ブレードで **[復元]** をクリックします。 詳細については、「 [Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)」を参照してください。
 
 ![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-restore.png)
 
 ## <a name="how-do-i-create-an-azure-sql-database-from-a-bacpac-file"></a>BACPAC ファイルから Azure SQL データベースを作成する方法
-BACPAC ファイルから SQL Database を作成するには、**[SQL Server]** ブレードで **[データベースのインポート]** をクリックします。 詳細については、「 [BACPAC ファイルをインポートして新しい Azure SQL Database を作成する](sql-database-import.md)」を参照してください。
+BACPAC ファイルから SQL Database を作成するには、**[SQL Server]** ブレードで **[データベースのインポート]** をクリックします。 詳細については、「 [BACPAC ファイルをインポートして新しい Azure SQL Database を作成する](sql-database-import-portal.md)」を参照してください。
 
 ![[データベースのインポート]](./media/sql-database-manage-portal/server-commands.png)
 
@@ -126,10 +121,5 @@ SQL Database を削除するには、**[SQL Database]** ブレードで **[削�
 ## <a name="additional-resources"></a>その他のリソース
 * [SQL Database](sql-database-technical-overview.md)
 * [Azure Portal を使用したエラスティック プールの監視と管理](sql-database-elastic-pool-manage-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

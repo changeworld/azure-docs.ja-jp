@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/06/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ff3ea3564d3cde5369f87d5f5102176229686acb
-ms.openlocfilehash: 6b828f7256c27aab567428706cd38c38b2f896eb
+ms.sourcegitcommit: 20183f482b7c7ec10c2b1f2d759b160434c9174c
+ms.openlocfilehash: 208a38aea6b4673f93c4c1fe4252c788e1f3425b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -92,12 +93,10 @@ V12 データベースでは、サービス階層 (Basic、Standard、および 
 頻度に制限はありません。必要なだけ調整できます。
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Single Database のサービス階層またはパフォーマンス レベルの変更や、エラスティック プールからのデータベースの出し入れには、どれくらいの時間がかかりますか。
-データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-scale-up.md)」を参照してください。 
+データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-service-tiers.md)」を参照してください。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Single Database と Elastic Database はどのように使い分けできますか。
-一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに&1; つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 
-
-使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。 詳細については、「 [SQL Database の価格レベルの提案](sql-database-service-tier-advisor.md)」を参照してください。 Single Database と Elastic Database を選択する際の詳細なガイダンスについては、[エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)を参照してください。
+一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに&1; つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。 詳しくは、「[エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)」をご覧ください。
 
 ## <a name="what-does-it-mean-to-have-up-to-200-of-your-maximum-provisioned-database-storage-for-backup-storage"></a>バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までが提供されるというのはどういう意味ですか。
 バックアップ ストレージは、[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)と [geo リストア](sql-database-recovery-using-backups.md#geo-restore)に使用される自動化されたデータベース バックアップに関連付けられたストレージです。 Microsoft Azure SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージが追加のコストなしで提供されます。 提供されるバックアップ ストレージをデータベースが超過している場合は、Azure サポートに連絡して保有期間を短縮するか、または読み取りアクセスのジオ (主要地域) 冗長ストレージ (RA-GRS) の標準料金をお支払いいただいてバックアップ ストレージを追加することができます。 RA-GRS の請求の詳細については、「Storage の料金詳細」を参照してください。
@@ -119,10 +118,5 @@ geo セカンダリは非同期レプリカであり、プライマリとの完�
 
 ## <a name="what-tools-are-available-to-monitor-the-replication-lag-between-the-primary-database-and-geo-secondary"></a>プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するために、どのツールを使用できますか。
 DMV を使ってプライマリ データベースと geo セカンダリの間のリアルタイムのレプリケーションの遅延を公開しています。 詳細については、[sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx) に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

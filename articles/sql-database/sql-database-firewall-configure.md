@@ -12,26 +12,19 @@ ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 5b94c884c585824ab580f307f3a04e27c8536947
-ms.openlocfilehash: 05c6580bd0cd7af55325361e85cce9654e0169d6
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 09bc875449ecdf48c2570f1029df68d28ae5e798
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="overview-of-azure-sql-database-firewall-rules"></a>Azure SQL Database ファイアウォール規則の概要 
-> [!div class="op_single_selector"]
-> * [概要](sql-database-firewall-configure.md)
-> * [Azure ポータル](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
-> 
 
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
 
@@ -41,7 +34,7 @@ Microsoft Azure SQL Database は、Azure およびその他のインターネッ
 * **データベース レベルのファイアウォール規則:** これらの規則により、クライアントは、Azure SQL Database サーバー内の個々のデータベースにアクセスできるようになります。 これらの規則は、データベースごとに作成され、個々のデータベースに格納されます  (**master** データベースに対して、データベース レベルのファイアウォール規則を作成できます)。これらの規則は、同じ論理サーバー内の特定の (セキュリティで保護された) データベースへのアクセスを制限する場合に便利です。 データベース レベルのファイアウォール規則は、Transact-SQL ステートメントでのみ構成できます。
 
    > [!NOTE]
-   > データベースレベルのファイアウォールの使用について説明するチュートリアルについては、「[SQL Database チュートリアル: SQL Server 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」を参照してください。
+   > データベース レベルのファイアウォールの使い方がわかるチュートリアルについては、[SQL の認証と承認に関するページ](sql-database-control-access-sql-authentication-get-started.md)をご覧ください。
    >
 
 **推奨事項:** セキュリティとデータベースの移植性を高めるため、可能な限り、データベース レベルのファイアウォール規則を使用することをお勧めします。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用します。
@@ -135,14 +128,14 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
   * 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
 ## <a name="next-steps"></a>次のステップ
-サーバー レベルおよびデータベース レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。
+サーバー レベルおよびデータベース レベルのファイアウォール規則の作成については、次の記事をご覧ください。
 
 * [Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings.md)
 * [TSQL を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-tsql.md)
 * [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
 * [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
 
-データベース作成のチュートリアルについては、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
+データベース作成のチュートリアルについては、「[初めての Azure SQL Database](sql-database-get-started.md)」をご覧ください。
 オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
 データベースに移動する方法については、 [データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関する記事をご覧ください。
 
@@ -152,9 +145,4 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

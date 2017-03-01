@@ -16,8 +16,9 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8b898e56a9f7f76d7a342c102fb6912408116c5a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 164f3affdf0622653a0a7dcc2a5e886ab855ced1
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -32,7 +33,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 ### <a name="prepare-for-the-event-of-an-outage"></a>障害に備える
 アクティブ geo レプリケーションまたは geo 冗長バックアップのいずれかを使用して、他のデータリージョンに適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
-* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも 1 つで、ほとんどの場合、各セカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
+* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 アクティブ geo レプリケーションを使用する場合、これは少なくとも&1; つで、ほとんどの場合、各セカンダリ サーバーになります。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。
 * ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
 * 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 * 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
@@ -98,16 +99,11 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 データベースのアラート ルールの詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](../monitoring-and-diagnostics/insights-service-health.md)」を参照してください。
 
 ### <a name="enable-auditing"></a>監査を有効にする
-データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。 詳細については、「 [SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
+データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。 詳しくは、「[SQL Database の監査](sql-database-auditing.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 * ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

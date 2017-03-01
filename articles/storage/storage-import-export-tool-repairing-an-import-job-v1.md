@@ -1,5 +1,5 @@
 ---
-title: "インポート ジョブの修復 | Microsoft Docs"
+title: "Azure Import ジョブの修復 | Microsoft Docs"
 description: "Import/Export サービスを使用して作成したインポート ジョブを修復し、実行する方法について説明します。"
 author: muralikk
 manager: syadav
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 5d75bdb5ff39934e02d9af721b51e0aca24026bb
-ms.openlocfilehash: 9278256edd5c117de9b0e6b5b12f0ca37c612661
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: a47b0da43a84bb77fb8de16c37811a4b87fe3fbf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="repairing-an-import-job"></a>インポート ジョブの修復
+# <a name="repairing-an-import-job"></a>Import ジョブの修復
 Microsoft Azure Import/Export サービスでは、ファイルの全部または一部の Windows Azure Blob サービスへのコピーに失敗する場合があります。 失敗の原因には次のものが挙げられます。  
   
 -   ファイルが破損している  
@@ -107,9 +108,4 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
 [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)   
 [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

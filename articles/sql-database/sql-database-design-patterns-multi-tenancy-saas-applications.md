@@ -4,7 +4,7 @@ description: "この記事では、クラウド環境で実行されるマルチ
 keywords: 
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: srinia
 manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 02/01/2017
+ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 63f94dc3b648486fe7c2e14661b5f5f02a147149
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -90,7 +91,7 @@ ms.openlocfilehash: 63f94dc3b648486fe7c2e14661b5f5f02a147149
 
 図 2: 一般的なマルチテナント データ モデル
 
-図 2 の第 4 象限は、大規模である可能性のある共有のスタンドアロン データベースと、共有テーブル (または個別のスキーマ) アプローチを使用するアプリケーション パターンを示しています。 このパターンは、すべてのテナントが単一のデータベースで同じデータベース リソース (CPU、メモリ、入出力) を使用するため、リソースの共有に適しています。 ただし、テナントの分離は限られます。 アプリケーション層で、テナントを相互から保護するための追加手順を実行する必要があります。 この追加の手順により、アプリケーションの開発と管理の DevOps コストが大幅に増加する可能性があります。 スケーラビリティは、データベースをホストするハードウェアのスケールによって制限されます。
+図 2 の右下のクアドラントは、大規模である可能性がある単一の共有データベースと、共有テーブル (または個別のスキーマ) アプローチを使用するアプリケーション パターンを示しています。 このパターンは、すべてのテナントが単一のデータベースで同じデータベース リソース (CPU、メモリ、入出力) を使用するため、リソースの共有に適しています。 ただし、テナントの分離は限られます。 アプリケーション層で、テナントを相互から保護するための追加手順を実行する必要があります。 この追加の手順により、アプリケーションの開発と管理の DevOps コストが大幅に増加する可能性があります。 スケーラビリティは、データベースをホストするハードウェアのスケールによって制限されます。
 
 図 2 の左下のクアドラントは、(通常はハードウェア スケール ユニットが異なる) 複数のデータベースにシャーディングされた複数のテナントを示しています。 各データベースがテナントのサブセットをホストし、他のパターンのスケーラビリティの問題に対処します。 より多くのテナントに対応するためにさらに多くの容量が必要になった場合は、新しいハードウェア スケール ユニットに割り当てられた新しいデータベースにテナントを簡単に配置できます。 ただし、リソースの共有の量は減少します。 同じスケール ユニットに配置されたテナントだけがリソースを共有します。 このアプローチでは、多数のテナントが相互の操作から自動的には保護されずに引き続き併置されるため、テナントの分離はほとんど向上しません。 アプリケーションの複雑性が高いままです。
 
@@ -124,7 +125,7 @@ SQL Database のエラスティック プールは、テナントの分離とテ
 | [エラスティック クライアント ライブラリ](sql-database-elastic-database-client-library.md): データの分散を管理し、テナントをデータベースにマップします。 | |
 
 ## <a name="shared-models"></a>共有モデル
-前述のように、ほとんどの SaaS プロバイダーで、共有モデル アプローチは、テナントの分離の問題とアプリケーションの開発およびメンテナンスの複雑さに関する問題を引き起こすと考えられます。 ただし、顧客に直接サービスを提供するマルチテナント アプリケーションでは、テナント分離要件は、コストを最小限に抑えることほど優先度が高くない場合があります。 これらのアプリケーションでは、テナントを&1; つ以上のデータベースに高密度でまとめることで、コストを削減できます。 スタンドアロン データベースまたは複数のシャード データベースを使用する共有データベース モデルでは、リソースの共有がさらに効率化され、全体的なコストが削減される場合があります。 Azure SQL Database には、データ層でのセキュリティと大規模な管理を強化するための分離の構築に役立つ機能が用意されています。
+前述のように、ほとんどの SaaS プロバイダーで、共有モデル アプローチは、テナントの分離の問題とアプリケーションの開発およびメンテナンスの複雑さに関する問題を引き起こすと考えられます。 ただし、顧客に直接サービスを提供するマルチテナント アプリケーションでは、テナント分離要件は、コストを最小限に抑えることほど優先度が高くない場合があります。 これらのアプリケーションでは、テナントを&1; つ以上のデータベースに高密度でまとめることで、コストを削減できます。 単一のデータベースまたは複数のシャード データベースを使用する共有データベース モデルでは、リソースの共有がさらに効率化され、全体的なコストが削減されます。 Azure SQL Database には、データ層でのセキュリティと大規模な管理を強化するための分離の構築に役立つ機能が用意されています。
 
 | アプリケーションの要件 | SQL Database の機能 |
 | --- | --- |
@@ -150,7 +151,7 @@ SQL Database のエラスティック プールは、テナントの分離とテ
 
 Azure SQL Database ツールを使用して、 [既存のデータベースを移行し、スケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)します。
 
-[エラスティック プールの作成](sql-database-elastic-pool-create-portal.md)方法に関するチュートリアルを確認します。  
+Azure Portal を使ってエラスティック プールを作成するには、「[エラスティック プールの作成](sql-database-elastic-pool-manage-portal.md)」をご覧ください。  
 
 [エラスティック プールを監視および管理する](sql-database-elastic-pool-manage-portal.md)方法を確認します。
 
@@ -160,14 +161,9 @@ Azure SQL Database ツールを使用して、 [既存のデータベースを�
 * [エラスティック データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 * [Azure Active Directory と OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin Surveys アプリケーション](../guidance/guidance-multitenant-identity-tailspin.md)
-* [ソリューション クイック スタート](sql-database-solution-quick-starts.md)
+
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 ご質問がある場合は、 [SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。 機能に関するご要望は、 [SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

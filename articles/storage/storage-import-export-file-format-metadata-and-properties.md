@@ -1,5 +1,5 @@
 ---
-title: "インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式 | Microsoft Docs"
+title: "Azure Import/Export のメタデータとプロパティ ファイルの形式 | Microsoft Docs"
 description: "インポートまたはエクスポート ジョブの一部となる&1; つ以上の BLOB のメタデータとプロパティを指定する方法について説明します"
 author: muralikk
 manager: syadav
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: 8c8800682a0ce2c52962a41c1c09fbc59595dee2
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 0cac5419d4b481a5b783b4b9fbd4ad2d4d637042
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="import-export-service-metadata-and-properties-file-format"></a>インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式
+# <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export サービスのメタデータとプロパティ ファイルの形式
 インポートまたはエクスポート ジョブの一部として&1; つ以上の BLOB のメタデータとプロパティを指定できます。 インポート ジョブの一部として作成されている BLOB のメタデータまたはプロパティを設定するには、インポートするデータを含むハード ドライブでメタデータまたはプロパティ ファイルを提供します。 エクスポート ジョブの場合、メタデータとプロパティは返されるハード ドライブに含まれるメタデータまたはプロパティ ファイルに書き込まれます。  
   
 ## <a name="metadata-file-format"></a>メタデータ ファイルの形式  
@@ -35,7 +36,7 @@ ms.openlocfilehash: 8c8800682a0ce2c52962a41c1c09fbc59595dee2
 </Metadata>  
 ```
   
-|XML 要素|型|Description|  
+|XML 要素|型|説明|  
 |-----------------|----------|-----------------|  
 |`Metadata`|ルート要素|メタデータ ファイルのルート要素です。|  
 |`metadata-name`|String|省略可能。 XML 要素は、BLOB のメタデータの名前を指定し、その値はメタデータの設定の値を指定します。|  
@@ -70,9 +71,4 @@ ms.openlocfilehash: 8c8800682a0ce2c52962a41c1c09fbc59595dee2
 |`Cache-Control`|String|省略可能。 BLOB のキャッシュ制御文字列。|  
   
  BLOB のメタデータとプロパティの設定についての詳細な規則については、「[Set Blob Properties](/rest/api/storageservices/fileservices/set-blob-properties)」 (BLOB プロパティの設定)、「[Set Blob Metadata](/rest/api/storageservices/fileservices/set-blob-metadata)」 (BLOB メタデータの設定)、「[Setting and Retrieving Properties and Metadata for Blob Resources](/rest/api/storageservices/fileservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」 (BLOB リソースのプロパティとメタデータの設定と取得) をご覧ください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

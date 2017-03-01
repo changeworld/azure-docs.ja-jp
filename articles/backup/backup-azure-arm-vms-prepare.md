@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/7/2017
-ms.author: trinadhk;jimpark;markgal;
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 576442943b9c8cec42cdb19547fc4fa4e4eeff14
-ms.openlocfilehash: f6a5abfa68d1700dc263195f44bbb90419112583
+ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
+ms.openlocfilehash: 5d68b7f1f57da07685c27d592620c1785269f9d8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -55,6 +56,7 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 
 * 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
 * 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
+* BEK だけを使って暗号化された VM のバックアップはサポートされません。 LUKS 暗号化を使って暗号化された Linux VM のバックアップはサポートされません。
 * Docker 拡張機能を持つ Linux 仮想マシンのバックアップはサポートされません。
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
 * 復元中に既存の仮想マシンを置き換えることはサポートされません。 VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
@@ -144,12 +146,12 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Open Scenario blade](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
+3. [バックアップの目標] ブレードで、**[Where is your workload running (ワークロードの実行場所)]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
 
     これにより、VM 拡張機能がコンテナーに登録されます。 [バックアップの目標] ブレードが閉じ、**[バックアップ ポリシー]** ブレードが開きます。
 
     ![Open Scenario blade](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
-4. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択します。
+4. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選びます。
 
     ![Select backup policy](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
@@ -161,7 +163,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Select workload](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    選択した仮想マシンが検証されます。 予期していた仮想マシンが表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその仮想マシンが存在することを確認します。 Recovery Services コンテナーの場所は、コンテナーのダッシュボードに表示されます。
+    選択した仮想マシンが検証されます。 予期していた仮想マシンが表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその仮想マシンが存在すること、および別のコンテナーで既に保護されていないことを確認します。 Recovery Services コンテナーの場所は、コンテナーのダッシュボードに表示されます。
 
 6. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、**[バックアップの有効化]** をクリックします。 これにより、ポリシーがコンテナーと VM にデプロイされます。 このとき、仮想マシンの最初の回復ポイントは作成されません。
 
@@ -172,18 +174,14 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 仮想マシンの登録に問題がある場合は、VM エージェントのインストールやネットワーク接続に関するこの後の情報を参照してください。 Azure によって作成された仮想マシンを保護している場合、次の情報はおそらく必要ないでしょう。 ただし、仮想マシンを Azure に移行した場合は、VM エージェントを正しくインストールしていることと、仮想マシンが仮想ネットワークで通信できることを確認してください。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 この情報は、使用している VM が Azure ギャラリーから作成したものでは " *なく* "、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。
+バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 この情報は、使用している VM が Azure ギャラリーから作成したものでは " *なく* "、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。 詳しくは、「[Windows および Linux 用 Azure VM エージェント](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)」をご覧ください。
 
-詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)と [VM エージェントのインストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
-
-Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。 カスタム VM を作成した場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)してください。
-
-次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
+Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール |<li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 <li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |<li> GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。 インストールを実行するには、管理者特権が必要です。 <li> [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/virtual-machines-linux-agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 github から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 github から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
@@ -315,9 +313,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 * [仮想マシンのバックアップ](backup-azure-vms.md)
 * [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 * [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

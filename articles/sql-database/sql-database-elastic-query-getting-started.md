@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: bee6dbf8910534b07a77e7fd7dd84edf07cf3dd5
-ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
+ms.sourcegitcommit: cbd1c7e7d915e8a10d69c7a2f1679835dcee23b7
+ms.openlocfilehash: b64129b77385685b41aac55c52a34e9d0495124e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -37,7 +38,7 @@ ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
 
     ![コマンド プロンプト][1]
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を&4; 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の&3; つの新しいデータベースが表示されるはずです。
+3. [Azure Portal](https://portal.azure.com) に、v12 サーバーにある次の&3; つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認][2]
 
@@ -46,7 +47,7 @@ ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
    次のセクションでは、複数のシャードにまたがって実行されるデータの高度なクエリをサポートするサンプル データベース エンドポイントを作成します。
 
 ## <a name="create-an-elastic-query-database"></a>エラスティック クエリ データベースを作成する
-1. [Azure ポータル](https://portal.azure.com) を開き、ログインします。
+1. [Azure Portal](https://portal.azure.com) を開き、ログインします。
 2. シャード セットアップと同じサーバーに新しい Azure SQL Database を作成します。 このデータベースに "ElasticDBQuery" という名前を付けます。
 
     ![Azure ポータルと価格レベル][3]
@@ -129,7 +130,16 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 
 料金情報については、「 [SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次のステップ
+
+* エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
+* 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。
+* 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](sql-database-elastic-query-vertical-partitioning.md)」をご覧ください。
+* 行方向にパーティション分割されたデータの構文とサンプル クエリについては、「[スケールアウトされたクラウド データベース全体をレポートする (プレビュー)](sql-database-elastic-query-horizontal-partitioning.md)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-getting-started/cmd-prompt.png
@@ -138,9 +148,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
