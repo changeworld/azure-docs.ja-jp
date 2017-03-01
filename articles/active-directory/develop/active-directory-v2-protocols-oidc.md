@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Active Directory v2.0 と OpenID Connect プロトコル | Microsoft Docs"
 description: "Azure AD の v2.0 で導入された OpenID Connect 認証プロトコルを利用し、Web アプリケーションを構築します。"
@@ -13,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 1d81be4ba596f7bc0ed7d16cb8bb9b375bd1e223
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 4e43304c108fceb7df70fc37898ffcf989beb922
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -199,6 +199,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
+## <a name="single-sign-out"></a>シングル サインアウト
+v2.0 エンドポイントでは、Cookie を使用してユーザーのセッションを識別します。 ユーザーがアプリケーションに初めてサインインすると、v2.0 エンドポイントはユーザーのブラウザーに Cookie を設定します。 ユーザーが後で別のアプリケーションにサインインすると、Azure AD はユーザーを再認証する代わりに、まず Cookie を確認して、ユーザーが Azure AD v2.0 エンドポイントとの有効なサインオン セッションを持つかどうかを判断します。
+
+同様に、ユーザーがアプリケーションから初めてサインアウトするときに、v2.0 エンドポイントはブラウザーから Cookie を消去します。 ただし、ユーザーは認証に Azure AD v2.0 エンドポイントを使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがすべてのアプリケーションからサインアウトするように、v2.0 エンドポイントは、ユーザーが現在サインインしているすべてのアプリケーションの `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーのセッションを識別するすべての Cookie を消去して、この要求に応答する必要があります。 `LogoutUrl` は Azure Portal から設定できます。
+
+1. [Azure Portal](https://portal.azure.com) に移動します。
+2. ページの右上隅のアカウントをクリックして、Active Directory を選択します。
+3. 左側のナビゲーション パネルで **[Azure Active Directory]** を選択し、**[アプリの登録]** を選択してアプリケーションを選択します。
+4. **[プロパティ]** をクリックし、**[ログアウト URL]** テキスト ボックスを探します。 
+
 ## <a name="protocol-diagram-token-acquisition"></a>プロトコルのダイアグラム: トークンの取得
 多くの Web アプリは、ユーザーをサインインさせるだけでなく、OAuth を使用してユーザーの代わりに Web サービスにアクセスする必要もあります。 このセクションでは、OpenID Connect を使ってユーザー認証を行うと同時に、OAuth 承認コード フローを使用している場合はアクセス トークンを取得するために使用する承認コードを取得します。
 
@@ -268,10 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 想定されるエラー コードと推奨されるクライアントの応答については、「[承認エンドポイント エラーのエラー コード](#error-codes-for-authorization-endpoint-errors)」を参照してください。
 
 承認コードと ID トークンがある場合は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。 ユーザーをサインインさせるには、[説明したとおり](#validate-the-id-token)に ID トークンを検証する必要があります。 アクセス トークンは、[OAuth プロトコルのドキュメント](active-directory-v2-protocols-oauth-code.md#request-an-access-token)に記載されている手順に従って取得できます。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

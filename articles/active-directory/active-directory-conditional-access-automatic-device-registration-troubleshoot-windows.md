@@ -11,30 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: fe9fad2de3fbb63e51fa14215c6f240977c56c7b
-ms.openlocfilehash: c72cebd04216b4e2bba26dd306354a7cd4e6c49a
+ms.sourcegitcommit: d3688b6a71dcd9964839da3cda35413d00f362d1
+ms.openlocfilehash: 836d43b17515beb565748f28603069c7c6a52fbf
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="troubleshooting-the-auto-registration-of-azure-ad-domain-joined-computers-for-windows-10-and-windows-server-2016"></a>Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング
 
 このトピックは、次のクライアントに適用されます。
 
--   Windows 10
--   Windows Server 2016
+-    Windows 10
+-    Windows Server 2016
 
 その他の Windows クライアントについては、「[Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)」をご覧ください。
 
 このトピックは、次のシナリオをサポートするために、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-get-started.md)」の説明に従って、ドメイン参加済みデバイスの自動登録を構成済みであることを前提としています。
 
-1.  [デバイス ベースの条件付きアクセス](active-directory-conditional-access-automatic-device-registration-setup.md)
+1.    [デバイス ベースの条件付きアクセス](active-directory-conditional-access-automatic-device-registration-setup.md)
 
-2.  [設定のエンタープライズ ローミング](active-directory-windows-enterprise-state-roaming-overview.md)
+2.    [設定のエンタープライズ ローミング](active-directory-windows-enterprise-state-roaming-overview.md)
 
-3.  [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
+3.    [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 
 
 このドキュメントでは、考えられる問題の解決方法について、トラブルシューティングのガイダンスを示します。 
@@ -80,23 +81,23 @@ ms.openlocfilehash: c72cebd04216b4e2bba26dd306354a7cd4e6c49a
 
 **考えられる原因**
 
-1.  登録の際にコンピューターの認証に失敗した。
+1.    登録の際にコンピューターの認証に失敗した。
 
-2.  コンピューターで検出できない HTTP プロキシが組織に存在する。
+2.    コンピューターで検出できない HTTP プロキシが組織に存在する。
 
-3.  コンピューターが認証する際に Azure AD に到達できないか、登録する際に Azure DRS に到達できない。
+3.    コンピューターが認証する際に Azure AD に到達できないか、登録する際に Azure DRS に到達できない。
 
-4.  コンピューターが、組織の内部ネットワーク上、またはオンプレミスの AD ドメイン コントローラーが認識できる VPN 上に存在しない可能性がある。
+4.    コンピューターが、組織の内部ネットワーク上、またはオンプレミスの AD ドメイン コントローラーが認識できる VPN 上に存在しない可能性がある。
 
-5.  コンピューターに TPM が存在する場合、TPM が正常な状態ではない可能性がある。
+5.    コンピューターに TPM が存在する場合、TPM が正常な状態ではない可能性がある。
 
-6.  サービスが正しく構成されていない可能性がある。この場合、前述のドキュメントで構成をもう一度確認する必要があります。 一般的な例を次に示します。
+6.    サービスが正しく構成されていない可能性がある。この場合、前述のドキュメントで構成をもう一度確認する必要があります。 一般的な例を次に示します。
 
-    1.  フェデレーション サーバーで WS-Trust エンドポイントが有効になっていない。
+    1.    フェデレーション サーバーで WS-Trust エンドポイントが有効になっていない。
 
-    2.  フェデレーション サーバーで、統合 Windows 認証を使用したネットワーク内のコンピューターからの受信認証が許可されていない可能性がある。
+    2.    フェデレーション サーバーで、統合 Windows 認証を使用したネットワーク内のコンピューターからの受信認証が許可されていない可能性がある。
 
-    3.  Azure AD のコンピューターが属する AD フォレスト内の検証済みのドメイン名を参照するサービス接続ポイント オブジェクトがない。
+    3.    Azure AD のコンピューターが属する AD フォレスト内の検証済みのドメイン名を参照するサービス接続ポイント オブジェクトがない。
 
 ---
 
@@ -116,17 +117,12 @@ ms.openlocfilehash: c72cebd04216b4e2bba26dd306354a7cd4e6c49a
   
 これらのフィールドは、ユーザーがデバイスへのサインイン時に Azure AD に対して正常に認証されたことを示します。 これらの値が "NO" の場合、考えられる原因は次のとおりです。
 
-1.  登録時にデバイスに関連付けられた TPM のストレージ キー (STK) に問題がある (管理者特権での実行時に KeySignTest を確認)
+1.    登録時にデバイスに関連付けられた TPM のストレージ キー (STK) に問題がある (管理者特権での実行時に KeySignTest を確認)
 
-2.  代替ログイン ID
+2.    代替ログイン ID
 
-3.  HTTP プロキシが見つからない
+3.    HTTP プロキシが見つからない
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、「[デバイスの自動登録に関する FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)」をご覧ください。 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

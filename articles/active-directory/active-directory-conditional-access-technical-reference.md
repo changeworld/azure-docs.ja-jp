@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
+ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
+ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -53,8 +54,8 @@ ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 "職場" ネットワークを指定するためのオプション
 
 1. [多要素認証の構成ページ](../multi-factor-authentication/multi-factor-authentication-whats-next.md)で、信頼済み IP 範囲を構成します。 条件付きアクセス ポリシーは、各認証要求とトークン発行に対して、構成済みの範囲を使用して規則を評価します。 
-2. 企業ネットワーク内要求の使用を構成します。このオプションは、AD FS を使用して、フェデレーション ディレクトリで使用できます。 [企業ネットワーク内要求の詳細についてはこちらをご覧ください。](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)
-3. パブリック IP アドレス範囲を構成します。 ディレクトリの [構成] タブで、パブリック IP アドレスを設定できます。 条件付きアクセスは、これらの IP アドレスを "職場" の IP アドレスとして使用します。これにより、MFA の設定ページで適用される 50 の IP アドレス制限を超えて、追加の範囲を構成することができます。
+2. 企業ネットワーク内要求の使用を構成します。このオプションは、AD FS を使用して、フェデレーション ディレクトリで使用できます。 企業ネットワーク内要求について詳しくは、「[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)」をご覧ください。
+
 
 ## <a name="rules-based-on-application-sensitivity"></a>アプリケーションの秘密度に基づく規則
 規則は、アプリケーションごとに構成します。そうすることで、価値の高いサービスをセキュリティで保護し、その他のサービスへのアクセスには影響を与えないようにすることができます。 条件付きアクセス規則は、アプリケーションの **[構成]** タブで構成できます。 
@@ -63,10 +64,10 @@ ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 
 * **多要素認証が必要です**
   
-  * このポリシーが適用されるユーザーはすべて、多要素認証によって少なくとも 1 回は認証されなければなりません。
+  * このポリシーが適用されるユーザーはすべて、多要素認証によって少なくとも&1; 回は認証されなければなりません。
 * **作業中でない場合、多要素認証が必要です**
   
-  * このポリシーが適用されている場合、職場以外のリモートの場所からサービスにアクセスするすべてのユーザーが、多要素認証を少なくとも 1 回実行している必要があります。 職場からリモートの場所に移動した場合は、サービスにアクセスするときに、多要素認証を実行する必要があります。
+  * このポリシーが適用されている場合、職場以外のリモートの場所からサービスにアクセスするすべてのユーザーが、多要素認証を少なくとも&1; 回実行している必要があります。 職場からリモートの場所に移動した場合は、サービスにアクセスするときに、多要素認証を実行する必要があります。
 * **作業中でない場合、アクセスをブロック** 
   
   * ユーザーが職場からリモートの場所に移動した場合、"作業中でない場合、アクセスをブロック" ポリシーが適用されていると、そのユーザーはブロックされます。  職場に戻ると、アクセスは再度許可されます。
@@ -74,10 +75,5 @@ ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
 ## <a name="related-topics"></a>関連トピック
 * [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

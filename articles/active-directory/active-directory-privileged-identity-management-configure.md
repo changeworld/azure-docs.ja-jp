@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
-ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
+ms.sourcegitcommit: b52a475008c9d15912c0b363d76118df74112107
+ms.openlocfilehash: b289b9befc67d01689fa87db955b1a10c210a724
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,7 +36,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 * 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する
 * 特権ロールへのアクセスに関するアラートを受け取る
 
-Azure AD Privileged Identity Management では、次のような組み込みの Azure AD 組織ロールを管理できます。  
+Azure AD Privileged Identity Management では、次のような組み込みの Azure AD 組織ロールを管理できます (ただし、これらに限定されません)。  
 
 * グローバル管理者
 * 課金管理者
@@ -50,9 +51,9 @@ Azure AD Privileged Identity Management では、次のような組み込みの 
 Azure AD Privileged Identity Management の使用は、 [Azure Portal](https://portal.azure.com/) で開始できます。
 
 > [!NOTE]
-> ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウント (例: @yourdomain.com),) ではなく組織アカウント (例: @outlook.com),) を持つグローバル管理者が行う必要があります。
+> ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウント (例: @outlook.com) ではなく組織アカウント (例: @yourdomain.com) を持つグローバル管理者が行う必要があります。
 
-1. ディレクトリのグローバル管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/) にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure Portal の右上隅に表示されているユーザー名を選択し、 Azure AD Privileged Identity Management を使用するディレクトリを選択します。
 3. **[その他のサービス]** を選択し、[フィルター] ボックスを使用して "**Azure AD Privileged Identity Management**" を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
@@ -117,9 +118,4 @@ Azure AD PIM は一般公開前のプレビュー段階にあり、テナント�
 [4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

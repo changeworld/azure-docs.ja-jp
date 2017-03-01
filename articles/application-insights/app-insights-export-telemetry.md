@@ -11,18 +11,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/21/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
+ms.sourcegitcommit: 4df32e7e03f17ec46e46a3f2718d24783424ab9e
+ms.openlocfilehash: fc1f3c7160a4956ed7372a2797c03c2892fbfb65
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
 
-連続エクスポートは[エンタープライズ料金モデル](http://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
+連続エクスポートを使用すると追加料金が発生する場合があります。 [価格モデル](http://azure.microsoft.com/pricing/details/application-insights/)を確認してください。
 
 連続エクスポートをセットアップする前に、次の代替手段を検討してください。
 
@@ -61,7 +62,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 エクスポートが作成されると、処理が開始されます  (エクスポートを作成した後に到着したデータのみが取得されます)。 
 
-BLOB でデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
+BLOB でデータが表示されるまで、約&1; 時間の遅延が発生する可能性があります。
 
 後でイベントの種類を変更する場合は、単にエクスポートを編集します。
 
@@ -72,7 +73,7 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 ストリームを完全に停止するには、エクスポートを削除します。 エクスポートを削除しても、ストレージのデータは削除されません。
 
 #### <a name="cant-add-or-change-an-export"></a>エクスポートを追加または変更できない
-* エクスポートを追加または変更するには、所有者、共同作成者、または Application Insights 共同作成者のアクセス権が必要になります。 ロールについては、[こちら][roles]をご覧ください。
+* エクスポートを追加または変更するには、所有者、共同作成者、または Application Insights 共同作成者のアクセス権が必要になります。 [ロールの詳細については、こちらを参照してください][roles]。
 
 ## <a name="a-nameanalyzea-what-events-do-you-get"></a><a name="analyze"></a> 取得されるイベント
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。 
@@ -84,7 +85,7 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 データには、セットアップ済みのすべての [利用可能な Web テスト](app-insights-monitor-web-app-availability.md) の結果も含まれます。 
 
 > [!NOTE]
-> **サンプリング。**  アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+> **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 > 
 > 
 
@@ -109,7 +110,7 @@ Where
 * `blobDeliveryTimeUtc` は、BLOB がエクスポート先のストレージにコピーされた日時です。
 
 ## <a name="a-nameformata-data-format"></a><a name="format"></a> データ形式
-* それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。 約 30 秒の間に処理されたテレメトリが含まれています。
+* それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。 約&30; 秒の間に処理されたテレメトリが含まれています。
 * 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。 詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
 
@@ -124,7 +125,7 @@ Where
 [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 
 ## <a name="processing-the-data"></a>データの処理
-小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 For example:
+小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 次に例を示します。
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -143,7 +144,7 @@ Where
       }
     }
 
-大規模なコード サンプルについては、[worker ロールの使用][exportasa]に関する記事をご覧ください。
+大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 
 ## <a name="a-namedeleteadelete-your-old-data"></a><a name="delete"></a>古いデータの削除
 必要に応じて古いデータを削除するなどしてストレージ容量を管理する責任があることに注意してください。 
@@ -165,7 +166,7 @@ Where
 大規模な処理の場合は、 [HDInsight](https://azure.microsoft.com/services/hdinsight/) (クラウドの Hadoop クラスター) を検討してください。 HDInsight はビッグ データの管理と分析を行うためのさまざまなテクノロジを備えており、Application Insights からエクスポートされたデータの処理に使用できます。
 
 ## <a name="q--a"></a>Q & A
-* *グラフを 1 回だけダウンロードしたいのですが。*  
+* *グラフを&1; 回だけダウンロードしたいのですが。*  
   
     はい、できます。 ブレードの上部にある、 [[データのエクスポート]](app-insights-metrics-explorer.md#export-to-excel)をクリックします。
 * *エクスポートを設定したのにストアにデータがありません。*
@@ -182,8 +183,8 @@ Where
     いいえ。 データのプッシュ配信は、エクスポートが削除されるまで続行されます。 Blob Storage の制限に達した場合は配信が停止されますが、その制限には非常に大きな値が設定されています。 使用するストレージの量を管理するのはお客様です。  
 * *ストレージに表示される BLOB の数を教えてください。*
   
-  * エクスポートに選択した各データの種類ごとに、1 つの新しい BLOB が 1 分ごとに作成されます (データを使用できる場合)。 
-  * さらに、トラフィック負荷の高いアプリケーションでは、追加のパーティション単位が割り当てられます。 この場合、各単位で 1 分ごとに 1 つの BLOB が作成されます。
+  * エクスポートに選択した各データの種類ごとに、1 つの新しい BLOB が&1; 分ごとに作成されます (データを使用できる場合)。 
+  * さらに、トラフィック負荷の高いアプリケーションでは、追加のパーティション単位が割り当てられます。 この場合、各単位で&1; 分ごとに&1; つの BLOB が作成されます。
 * *ストレージのキーを再生成した後、またはコンテナーの名前を変更した後、エクスポートが動作しません。*
   
     エクスポートを編集し、[エクスポート先] ブレードを開きます。 以前と同じストレージが選択されていることを確認し、[OK] をクリックして確定します。 エクスポートが再開されます。 変更を加えたのが数日前のことであれば、データは失われません。
@@ -203,10 +204,5 @@ Where
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

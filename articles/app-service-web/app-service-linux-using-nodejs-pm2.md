@@ -5,7 +5,7 @@ keywords: "Azure App Service, Web アプリ, Node.js, PM2, Linux, OSS"
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb420f32-6d74-49c7-992f-0ed5616e66e7
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a46f52198e956406c2384c45ed4323aff27259a0
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ Web Apps on Linux 向けにアプリケーション スタックを Node.js に�
 
 ![Node.js スタートアップ ファイルの設定][1]
 
-これを使用して、次のタスクのいずれかを実行できます。
+このオプションを使用して、次のタスクのいずれかを実行できます。
 
 * Node.js アプリのスタートアップ スクリプトの指定 (例: /bin/server.js)。
 * Node.js アプリに使用する PM2 構成ファイルの指定 (例: /foo/process.json)。
@@ -61,12 +62,8 @@ Node.js の[プロセス ファイルのドキュメント](http://pm2.keymetric
 
 ## <a name="next-steps"></a>次のステップ
 * [App Service on Linux とは](app-service-linux-intro.md)
+* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

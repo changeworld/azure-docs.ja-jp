@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/18/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 51a736c051bef8550662060fdde89fc50e32928a
+ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
+ms.openlocfilehash: 2a204ffbb915370328e574dc3cba6a617e97c87a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -44,12 +45,12 @@ MCM と Azure AD の統合を構成するには、次のものが必要です。
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの MCM の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -61,16 +62,16 @@ Azure AD への MCM の統合を構成するには、ギャラリーから管理
 
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-mcm-tutorial/tutorial_general_01.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-mcm-tutorial/tutorial_general_01.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-mcm-tutorial/tutorial_general_02.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-mcm-tutorial/tutorial_general_02.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-mcm-tutorial/tutorial_general_03.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-mcm-tutorial/tutorial_general_03.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -78,7 +79,7 @@ Azure AD への MCM の統合を構成するには、ギャラリーから管理
 
 6. **検索ボックス**に「**MCM**」と入力します。
    
-    ![アプリケーション ギャラリー](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_01.png "Application gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_01.png "Application Gallery")
 
 7. 結果ウィンドウで **[MCM]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
@@ -106,15 +107,15 @@ MCM で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure クラシック ポータルの **MCM** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure single sign-on](./media/active-directory-saas-mcm-tutorial/tutorial_general_05.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-mcm-tutorial/tutorial_general_05.png "Configure single sign-on")
 
 2. **[ユーザーの MCM へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_03.png "Microsoft Azure AD Single Sign-On")
+    ![Microsoft Azure AD Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_03.png "Microsoft Azure AD Single Sign-On")
 
 3. [アプリケーション設定の構成] ダイアログ ページで、次の手順に従います。
    
-    ![Configure App URL](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_04.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_04.png "Configure App URL")
    
     a. **[サインオン URL]** ボックスに、「`https://myaba.co.uk/client-access/<company name>/saml.php`」と入力します。
    
@@ -122,17 +123,17 @@ MCM で Azure AD のシングル サインオンを構成してテストする�
 
 4. **[MCM でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックして証明書ファイルをダウンロードし、コンピューターに保存します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_05.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_05.png "Configure Single Sign-On")
 
 5. アプリケーション用に構成された SSO を入手するために、MCM のサポート チームに問い合わせます。 MCM チーム側で SSO を設定する必要があるため、ダウンロードしたメタデータ ファイルを添付して、チームと共有してください。
 
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_06.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_06.png "Configure Single Sign-On")
 
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_07.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-mcm-tutorial/tutorial_mcm_07.png "Configure Single Sign-On")
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -232,10 +233,5 @@ MCM で Azure AD のシングル サインオンを構成してテストする�
 ## <a name="additional-resources"></a>その他のリソース
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

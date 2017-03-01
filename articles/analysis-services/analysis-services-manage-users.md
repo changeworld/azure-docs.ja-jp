@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 01/18/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 8725687a5700df72026f9154659758b9280872f4
-ms.openlocfilehash: 35247a68588ab8593c40ed0d62f37062350f9aec
+ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
+ms.openlocfilehash: 039ed6f4be9f3e0f6b92e5a9f11e12392912df9d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -79,14 +80,17 @@ Azure Analysis Services のモデル データベースのユーザーは、"*Az
 }
 ```
 
+## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+
+サブスクリプション管理者は、コントロール ブレードの **[アクセス制御 (IAM)]** を使用してロールを構成できます。 これは、上記の説明でサーバー レベルまたはデータベース レベルで構成されたサーバー管理者またはデータベース ユーザーとは異なります。 
+
+![Azure Portal の [アクセス制御 (IAM)]](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
+
+ロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使用して完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)」をご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 サーバーに表形式モデルをまだデプロイしていない場合は、ここで行うことをお勧めします。 詳しくは、「[Azure Analysis Services にデプロイする](analysis-services-deploy.md)」をご覧ください。
 
 モデルをサーバーにデプロイしてある場合は、クライアントまたはブラウザーを使って接続できる状態になっています。 詳しくは、「[Get data from Azure Analysis Services server](analysis-services-connect.md)」(Azure Analysis Services サーバーからデータを取得する) をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

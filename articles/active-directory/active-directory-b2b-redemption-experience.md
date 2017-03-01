@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 44cfe1c86abaea19ce48255902b2b9611560d695
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 92bf625a9e62a24287b752bc1cbe061f1ef83a03
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -32,9 +33,7 @@ ms.openlocfilehash: 44cfe1c86abaea19ce48255902b2b9611560d695
 ## <a name="social-id-user-first-time-redemption"></a>ソーシャル ID ユーザーの初めての利用
 Azure AD B2B コラボレーションでは、利用のために、どの電子メール アドレスも簡単に使用できます。 B2B コラボレーションに Microsoft 以外の電子メール アドレスが使用される場合の利用エクスペリエンスをご覧ください。 これは、利用時にアカウントを作成する必要がある場合があるため、より複雑な利用フローです。 次のビデオを参照してください。
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group]
-
-このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group)からアクセスできます。
+>[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -51,9 +50,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

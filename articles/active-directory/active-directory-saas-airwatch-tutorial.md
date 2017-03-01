@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
+ms.sourcegitcommit: 8bb5433fb8d81635185d8bfc765ea240461e8a33
+ms.openlocfilehash: 4659531575e21823441eb75905b79d79592fa695
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -24,23 +25,24 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* AirWatch でのシングル サインオンが有効なサブスクリプション
+* AirWatch でのシングル サインオン (SSO) が有効なサブスクリプション
 
 このチュートリアルを完了すると、AirWatch に割り当てた Azure AD ユーザーは、AirWatch 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1. AirWatch のアプリケーション統合の有効化
-2. シングル サインオンの構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+* AirWatch のアプリケーション統合の有効化
+* シングル サインオン (SSO) の構成
+* ユーザー プロビジョニングの構成
+* ユーザーの割り当て
 
 ![AirWatch](./media/active-directory-saas-airwatch-tutorial/IC791913.png "AirWatch")
 
-## <a name="enabling-the-application-integration-for-airwatch"></a>AirWatch のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-airwatch"></a>AirWatch のアプリケーション統合の有効化
 このセクションでは、AirWatch のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-airwatch-perform-the-following-steps"></a>AirWatch のアプリケーション統合を有効にするには、次の手順に従います。
+**AirWatch のアプリケーション統合を有効にするには、次の手順に従います。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![Active Directory](./media/active-directory-saas-airwatch-tutorial/IC700993.png "Active Directory")
@@ -61,13 +63,14 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
    
    ![AirWatch](./media/active-directory-saas-airwatch-tutorial/IC791915.png "AirWatch")
    
-   ## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで AirWatch に対する認証を行えるようにする方法を説明します。  
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
-この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **[AirWatch]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791916.png "Configure Single Sign-On")
@@ -95,15 +98,13 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
    ![サーバー](./media/active-directory-saas-airwatch-tutorial/IC791923.png "Server")
 10. 次の手順に従います。
     
-    ![アップロード](./media/active-directory-saas-airwatch-tutorial/IC791924.png "Upload")
-    
+   ![アップロード](./media/active-directory-saas-airwatch-tutorial/IC791924.png "Upload")    
     1. **[Directory Type]** として **[None]** を選択します。
     2. [ **Use SAML For Authentication**] を選択します。
     3. ダウンロードした証明書をアップロードするには、[ **Upload**] をクリックします。
 11. [ **Request** ] セクションで、次の手順に従います。
     
-    ![要求](./media/active-directory-saas-airwatch-tutorial/IC791925.png "Request")
-    
+    ![要求](./media/active-directory-saas-airwatch-tutorial/IC791925.png "Request")  
     1. **[Request Binding Type]** として **[POST]** を選択します。
     2. Azure クラシック ポータルの **[Airwatch でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[ID プロバイダー シングル サインオン URL]** テキスト ボックスに貼り付けます。
     3. **[NameID Format]** として **[Email Address]** を選択します。
@@ -114,7 +115,6 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
 13. [ **Attribute** ] セクションで、次の手順に従います。
     
     ![属性](./media/active-directory-saas-airwatch-tutorial/IC791927.png "Attribute")
-    
     1. **[Object Identifier]** ボックスに、**http://schemas.microsoft.com/identity/claims/objectidentifier** と入力します。
     2. **[Username]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。
     3. **[Display Name]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** と入力します。
@@ -124,14 +124,16 @@ ms.openlocfilehash: 5f2030abf8b6c2d5884f4c5c2cb29d89ff329227
     7. **[Save]**をクリックします。
 14. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
-    ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791928.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-airwatch-tutorial/IC791928.png "Configure Single Sign-On")
     
-    ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
-Azure AD ユーザーが AirWatch にログインできるようにするには、そのユーザーを AirWatch にプロビジョニングする必要があります。  
-AirWatch の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが AirWatch にログインできるようにするには、そのユーザーを AirWatch にプロビジョニングする必要があります。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+* AirWatch の場合、プロビジョニングは手動で行います。
+
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+
 1. **AirWatch** 企業サイトに管理者としてログインします。
 2. 左側のナビゲーション ウィンドウで、**[Accounts]**、**[Users]** の順にクリックします。
    
@@ -141,20 +143,19 @@ AirWatch の場合、プロビジョニングは手動で行います。
    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791930.png "Add User")
 4. [ **Add / Edit User** ] ダイアログで、次の手順を実行します。
    
-   ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791931.png "Add User")
-   
+   ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791931.png "Add User")   
    1. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[Username]**、**[Password]**、**[Confirm Password]**、**[First Name]**、**[Last Name]**、**[Email Address]** を入力します。
    2. **[Save]**をクリックします。
 
-> [!NOTE]
-> 他の AirWatch ユーザー アカウントの作成ツールまたは AirWatch から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
-> 
+>[!NOTE]
+>他の AirWatch ユーザー アカウントの作成ツールまたは AirWatch から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>  
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-airwatch-perform-the-following-steps"></a>ユーザーを AirWatch に割り当てるには、次の手順に従います。
+**ユーザーを AirWatch に割り当てるには、次の手順に従います。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **AirWatch** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
@@ -164,10 +165,5 @@ AirWatch の場合、プロビジョニングは手動で行います。
    ![はい](./media/active-directory-saas-airwatch-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

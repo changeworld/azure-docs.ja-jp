@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
+ms.sourcegitcommit: 7bd403bb8569950a5bf4da3bd84905604753cda7
+ms.openlocfilehash: f29128dd156576276014e159afa9050364169c46
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -51,6 +52,8 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
   >
   >
+* **Power BI サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳しくは、「[Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/)」(Power BI の管理を簡単にする) をご覧ください。
+* **特権ロール管理者**: このロールが割り当てられたユーザーは、Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) を管理し、他のユーザーに対するロールの割り当てを更新することができます。
 * **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
 * **[サービス管理者](#service-administrator)**: サービス要求の管理とサービス正常性の監視を行います。
 
@@ -114,6 +117,17 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 6. **[利用場所]** ボックスの一覧で場所を指定します。
 7. 操作が完了したら、 **[保存]**をクリックします。
 
+## <a name="deprecated-roles"></a>非推奨のロール
+
+次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
+
+* アドホック ライセンス管理者
+* メールで確認済みのユーザー作成者
+* デバイスの参加
+* デバイス マネージャー
+* デバイス ユーザー
+* デバイスの社内参加
+
 ## <a name="next-steps"></a>次のステップ
 * Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)
@@ -121,9 +135,4 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 * [ユーザーの管理](active-directory-create-users.md)
 * [パスワードの管理](active-directory-manage-passwords.md)
 * [グループの管理](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
