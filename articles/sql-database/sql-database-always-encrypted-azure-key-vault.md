@@ -1,6 +1,6 @@
 ---
-title: "Always Encrypted: データベース暗号化を使用して Azure SQL Database で機密データを保護する | Microsoft Docs"
-description: "SQL Database の機密データをわずか数分で保護します。"
+title: 'Always Encrypted: SQL Database - Azure Key Vault | Microsoft Docs'
+description: "この記事では、SQL Server Management Studio の Always Encrypted ウィザードでデータ暗号化を使って SQL Database の機密データを保護する方法について説明します。 さらに、Azure Key Vault に各暗号化キーを格納する方法を示す手順についても説明します。"
 keywords: "データの暗号化, 暗号化キー, クラウドの暗号化"
 services: sql-database
 documentationcenter: 
@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
-> [!div class="op_single_selector"]
-> * [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows 証明書ストア](sql-database-always-encrypted.md)
-> 
-> 
 
 この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)でデータ暗号化を使用して SQL Database の機密データを保護する方法について説明します。 さらに、Azure Key Vault に各暗号化キーを格納する方法を示す手順についても説明します。
 
@@ -62,7 +58,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 5. **[サインオン URL]** と **[アプリケーション ID/URI]** には、有効な URL (*http://myClientApp* など) を入力し、続行できます。
 6. **[構成]**をクリックします。
 7. **クライアント ID**をコピーします。 (この値は、後でコードで必要になります)。
-8. **[キー]** セクションの **[時間の選択]** ドロップダウン リストで **[1 年間]** を選択します (手順 14 で保存した後、キーをコピーします)。
+8. **[キー]** セクションの **[時間の選択]** ドロップダウン リストで **[1 年間]** を選択します (手順 13 で保存した後、キーをコピーします)。
 9. スクロール ダウンし、 **[アプリケーションの追加]**をクリックします。
 10. **[表示]** を **[Microsoft アプリ]** の設定のままにし、**[Microsoft Azure Service Management]** を選択します。 チェックマークをクリックして続行します。
 11. **[デリゲートされたアクセス許可]** ドロップダウン リストから、**[Azure Service 管理へのアクセス]** を選択します。
@@ -86,7 +82,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
     $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).SubscriptionId
     Set-AzureRmContext -SubscriptionId $subscriptionId
 
-    New-AzureRmResourceGroup –Name $resourceGroupName –Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
@@ -98,7 +94,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順に移動します。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure ポータルでデータベースを作成する方法に関する詳しい手順については、 [数分で SQL データベースを作成する方法](sql-database-get-started.md)に関するページを参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
@@ -144,7 +140,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 ## <a name="encrypt-columns-configure-always-encrypted"></a>列を暗号化する (Always Encrypted を構成する)
 SSMS に用意されているウィザードを使用すると、列マスター キー、列暗号化キー、および暗号化する列を設定するだけで簡単に Always Encrypted を構成できます。
 
-1.  **[データベース]** > **空の** > **[テーブル]**を使用して、SQL データベース内の機密データを保護する方法について説明します。
+1. **[データベース]** > **空の** > **[テーブル]**を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
    
     ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
@@ -201,7 +197,7 @@ Always Encrypted を設定したので、暗号化された列に対して、*in
    ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/console-app.png)
 3. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に進んで、次の NuGet のパッケージをインストールします。
 
-パッケージ マネージャー コンソールで、次の 2 行のコードを実行します。
+パッケージ マネージャー コンソールで、次の&2; 行のコードを実行します。
 
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -646,10 +642,5 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

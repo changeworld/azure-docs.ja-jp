@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/4/2017
+ms.date: 2/17/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
-ms.openlocfilehash: 438ecec47e35619442ed2fdad4e835a674e1a2dc
+ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
+ms.openlocfilehash: 101b4e6a7bd5ded44334a4c3c9efee69669d9bcf
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,14 +36,26 @@ Reliable Services のグローバル構成は、クラスターのクラスタ�
 | SharedLogPath |完全修飾パス名 |"" |クラスター内のすべてのノードの Reliable Services のうち、サービス固有の構成で SharedLogPath が指定されていないすべてのサービスによって使用される共有ログ ファイルの完全修飾パスを指定します。 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 | SharedLogSizeInMB |メガバイト |8192 |共有ログ用に静的に割り当てるディスク領域の MB 数を指定します。 2048 以上の値を指定する必要があります。 |
 
-### <a name="sample-cluster-manifest-section"></a>クラスター マニフェストのセクションの例
+Azure ARM またはオンプレミスの JSON テンプレートでは、次の例は、ステートフル サービスの信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
+### <a name="sample-local-developer-cluster-manifest-section"></a>開発者のローカル クラスター マニフェスト セクションのサンプル
+ローカル開発環境でこれを変更する場合は、ローカル clustermanifest.xml ファイルを編集する必要があります。
+
 ```xml
    <Section Name="KtlLogger">
+     <Parameter Name="SharedLogSizeInMB" Value="4096"/>
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
      <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
      <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
      <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
-     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
    </Section>
 ```
 
@@ -174,10 +187,5 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
 ## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 * [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

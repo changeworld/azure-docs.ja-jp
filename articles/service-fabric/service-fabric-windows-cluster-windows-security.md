@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/09/2016
+ms.date: 01/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 08024aedb0889c91909f12aa1e38c91b11d3090f
-ms.openlocfilehash: 142b76f053adc273e2e071f169f8f647fbd1c241
+ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
+ms.openlocfilehash: 03aabfd3c86ba80a5af42ffa06cfbd2007f4927c
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,8 +29,56 @@ Service Fabric クラスターは、特に運用ワークロードが実行さ�
 > 
 > 
 
-## <a name="configure-windows-security"></a>Windows セキュリティの構成
-[Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。
+## <a name="configure-windows-security-using-gmsa"></a>gMSA を使用して Windows セキュリティを構成する
+[Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.gMSA.Windows.MultiMachine.JSON* には、[グループ管理サービス アカウント (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) を使用して Windows セキュリティを構成するためのテンプレートが含まれています。
+
+```
+"security": {
+            "ServerCredentialType": "Windows",
+            "WindowsIdentities": {
+                "ClustergMSAIdentity": "accountname@fqdn"
+                "ClusterSPN": "fqdn"
+                "ClientIdentities": [
+                    {
+                        "Identity": "domain\\username",
+                        "IsAdmin": true
+                    }
+                ]
+            }
+        }
+```
+
+| **構成設定** | **説明** |
+| --- | --- |
+| WindowsIdentities |クラスターとクライアントの ID が含まれます。 |
+| ClustergMSAIdentity |ノード間のセキュリティを構成します。 グループ管理サービス アカウント。 |
+| ClusterSPN |gMSA アカウントの完全修飾ドメイン SPN。|
+| ClientIdentities |クライアントとノードの間のセキュリティを構成します。 クライアントのユーザー アカウントの配列です。 |
+| ID |ドメイン ユーザーであるクライアントの ID。 |
+| IsAdmin |true の場合は、ドメイン ユーザーが管理者クライアント アクセスを持つことを示し、false の場合は、ユーザー クライアント アクセスを持つことを示します。 |
+
+[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)は、Service Fabric が gMSA で実行する必要があるときに、**ClustergMSAIdentity** を設定することによって構成されます。 ノード間の信頼関係を構築するには、各ノードが互いを認識する必要があります。 これを行うには&2; つの方法があります。クラスター内のすべてのノードを含むグループ管理サービス アカウントを指定する方法と、クラスター内のすべてのノードのドメイン コンピューター グループを指定する方法です。 強くお勧めするのは、[グループ管理サービス アカウント (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) を使用する方法です。特に、クラスターが大きい場合 (ノードが 10 個以上) またはクラスターの拡大と縮小が予想される場合には、この方法が推奨されます。
+この方法なら、メンバーの追加と削除に必要なアクセス権がクラスター管理者から付与されたドメイン グループを作成する必要がありません。 これらのアカウントは、パスワードの自動管理でも役立ちます。 詳細については、「[グループ管理サービス アカウントの概要](http://technet.microsoft.com/library/jj128431.aspx)」を参照してください。
+
+[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)は **ClientIdentities** を使用して構成します。 クライアントとクラスターの間の信頼を確立するためには、どのクライアントの ID なら信頼できるのかを認識できるようにクラスターを構成する必要があります。 これを行うには&2; つの方法があります。接続可能なドメイン グループ ユーザーを指定する方法と、接続可能なドメイン ノード ユーザーを指定する方法です。 Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の&2; つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定の種類のクラスター操作へのアクセスを制限し、クラスターのセキュリティを強化できます。  管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。 ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。 アクセス コントロールの詳細については、「[ロールベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
+
+次の **security** セクションの例では、gMSA を使用して Windows セキュリティを構成し、*ServiceFabric.clusterA.contoso.com* 内のコンピューターがクラスターに属することと、*CONTOSO\usera* が管理者クライアント アクセスを持つことを指定しています。
+
+```
+"security": {
+    "WindowsIdentities": {
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",
+        "ClusterSPN" : "clusterA.contoso.com",
+        "ClientIdentities": [{
+            "Identity": "CONTOSO\\usera",
+            "IsAdmin": true
+        }]
+    }
+}
+```
+
+## <a name="configure-windows-security-using-a-machine-group"></a>コンピューター グループを使用して Windows セキュリティを構成する
+[Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.MultiMachine.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。
 
 ```
 "security": {
@@ -47,33 +96,32 @@ Service Fabric クラスターは、特に運用ワークロードが実行さ�
 
 | **構成設定** | **説明** |
 | --- | --- |
-| ClusterCredentialType |**ClusterCredentialType** パラメーターを *Windows*に設定すると、Windows セキュリティが有効になります。 |
+| ClusterCredentialType |ClusterIdentity が Active Directory コンピューター グループ名を指定している場合、**ClusterCredentialType** は*Windows* に設定されます。 |
 | ServerCredentialType |**ServerCredentialType** パラメーターを *Windows*に設定すると、クライアントの Windows セキュリティが有効になります。 これは、クラスターのクライアントおよびクラスター自体が Active Directory ドメイン内で実行されていることを示します。 |
-| WindowsIdentities |クラスターとクライアントの ID が含まれます。 |
-| ClusterIdentity |ノード間のセキュリティを構成します。 コンピューターのグループ名。 |
-| ClientIdentities |クライアントとノードの間のセキュリティを構成します。 クライアントのユーザー アカウントの配列です。 |
-| ID |ドメイン ユーザーであるクライアントの ID。 |
-| IsAdmin |true の場合は、ドメイン ユーザーが管理者クライアント アクセスを持つことを示し、false の場合は、ユーザー クライアント アクセスを持つことを示します。 |
+| ClusterIdentity |ノード間のセキュリティを構成します。 コンピューター グループ名。 |
 
-[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)は **ClusterIdentity** を使って構成します。 ノード間の信頼関係を構築するには、各ノードが互いを認識する必要があります。 これは、クラスター内のすべてのノードを含むドメイン グループを作成することで実現できます。 このグループの名前は **ClusterIdentity** で指定する必要があります。 詳細については、[Create a Group in Active Directory (Active Directory でのグループの作成)](https://msdn.microsoft.com/en-us/library/aa545347(v=cs.70).aspx) に関する記事をご覧ください。
+Active Directory ドメイン内のコンピューター グループを使用する場合、[ノード間セキュリティ](service-fabric-cluster-security.md#node-to-node-security)は、**ClusterIdentity** を設定することで構成されます。 詳細については、[Active Directory でのグループの作成](https://msdn.microsoft.com/en-us/library/aa545347(v=cs.70).aspx)に関する記事を参照してください。
 
-[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)は **ClientIdentities** を使用して構成します。 クライアントとクラスターの間の信頼を確立するためには、どのクライアントの ID なら信頼できるのかを認識できるようにクラスターを構成する必要があります。 これを行うには 2 つの方法があります。接続可能なドメイン グループ ユーザーを指定する方法と、接続可能なドメイン ノード ユーザーを指定する方法です。 Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定の種類のクラスター操作へのアクセスを制限し、クラスターのセキュリティを強化できます。  管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。 ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。
-
-次の **security** セクションの例では、Windows セキュリティを構成し、コンピューター グループ *ServiceFabric\\ClusterNodes* 内のコンピューターがクラスターに属することと、*CONTOSO\usera* が管理者クライアント アクセスを持つことを指定しています。
+次の **security** セクションの例では、Windows セキュリティを構成し、*ServiceFabric/clusterA.contoso.com* 内のコンピューターがクラスターに属することと、*CONTOSO\usera* が管理者クライアント アクセスを持つことを指定しています。
 
 ```
 "security": {
     "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
     "WindowsIdentities": {
-        "ClusterIdentity" : "ServiceFabric\\ClusterNodes",
+        "ClusterIdentity" : "ServiceFabric/clusterA.contoso.com",
         "ClientIdentities": [{
             "Identity": "CONTOSO\\usera",
-        "IsAdmin": true
+            "IsAdmin": true
         }]
     }
 },
 ```
+
+> [!NOTE]
+> Service Fabric は、ドメイン コントローラー上にデプロイしないでください。 コンピューター グループまたは gMSA を使用する場合は、ClusterConfig.json にドメイン コントローラーの IP アドレスが含まれていないことを確認します。
+> 
+> 
 
 ## <a name="next-steps"></a>次のステップ
 *ClusterConfig.JSON* ファイルで Windows セキュリティを構成したら、 [Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事で説明されているクラスター作成処理を再開します。
@@ -81,10 +129,5 @@ Service Fabric クラスターは、特に運用ワークロードが実行さ�
 ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御の詳細については、 [クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
 PowerShell または FabricClient を使用した接続の例については、「 [セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

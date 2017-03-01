@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: cffa8955cf044398e526b1ad6158eefebbf91b3b
-ms.openlocfilehash: 9cd3d1b2da7f941673003b566cd92b0eb9acf6f4
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 02ea369d76c1fe7266e9dc0cad2c75e4b5eada6a
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
-> [!div class="op_single_selector"]
-> * [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows 証明書ストア](sql-database-always-encrypted.md)
-> 
-> 
 
 この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)を使用して、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
 
@@ -54,7 +50,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順にクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure ポータルでデータベースを作成する詳しい手順については、 [数分で SQL データベースを作成する方法](sql-database-get-started.md)に関するページを参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 
@@ -522,10 +518,5 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

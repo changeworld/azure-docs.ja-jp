@@ -12,24 +12,17 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: d80bd1fbb5cdb0492e521a4d600f657fac0e3325
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: a88c38f01b62dee9454f612e795b6722db2547e8
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="configure-azure-sql-database-server-level-firewall-rules-by-using-powershell"></a>PowerShell を使用して Azure SQL Database のサーバーレベルのファイアウォール規則を構成する
-> [!div class="op_single_selector"]
-> * [概要](sql-database-firewall-configure.md)
-> * [Azure ポータル](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
-> 
 
 Azure SQL Database では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。 データベースへのアクセスを選択的に許可するには、SQL Database サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
 
@@ -72,7 +65,7 @@ Transact-SQL を使用して、サーバーレベルおよびデータベース�
 * [Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings.md)
 * [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
 
-データベース作成のチュートリアルについては、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。
+データベース作成のチュートリアルについては、「[初めての Azure SQL Database](sql-database-get-started.md)」をご覧ください。
 オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイックスタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページをご覧ください。
 データベースに移動する方法については、 [データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
 
@@ -84,9 +77,4 @@ Transact-SQL を使用して、サーバーレベルおよびデータベース�
 [1]: ./media/sql-database-configure-firewall-settings/AzurePortalBrowseForFirewall.png
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

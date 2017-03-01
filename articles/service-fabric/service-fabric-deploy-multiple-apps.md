@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/22/2016
-ms.author: mfussell;mikhegn
+ms.date: 02/17/2017
+ms.author: msfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 72fcad2957d6fc5466719c1d275ae0f86f7fa302
-ms.openlocfilehash: bf2e34a27806ca79f88db9a9f8d052cd7bfcc94d
+ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
+ms.openlocfilehash: 8ff5933239521f8ed986da5a12aced3110085376
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -26,6 +27,10 @@ ms.openlocfilehash: bf2e34a27806ca79f88db9a9f8d052cd7bfcc94d
 このチュートリアルは、データ ストアとして MongoDB を使用する Node.js フロントエンドを使用したアプリケーションをデプロイする方法を示していますが、この手順は、別のアプリケーションへの依存関係があるすべてのアプリケーションに適用できます。   
 
 Visual Studio を使用して、複数のゲスト実行可能ファイルを含むアプリケーション パッケージを生成することができます。 [Visual Studio を使用した既存のアプリケーションのパッケージ化](service-fabric-deploy-existing-app.md#use-visual-studio-to-package-an-existing-executable)に関するセクションを参照してください。 最初のゲスト実行可能ファイルを追加した後は、アプリケーション プロジェクトを右クリックし、**[追加] -> [新しい Service Fabric サービス]** を選択して、2 つ目のゲスト実行可能ファイル プロジェクトをソリューションに追加します。 注: Visual Studio プロジェクトでソースをリンクしている場合、Visual Studio ソリューションをビルドすることで、アプリケーション パッケージをソースの変更に応じて常に最新の状態にできます。 
+
+## <a name="samples"></a>サンプル
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [REST を使用してネーム サービス経由で通信する&2; つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>複数のゲスト実行可能アプリケーションを手動でパッケージ化する
 別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 この記事では、手動のパッケージ化に、[http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) にある Service Fabric パッケージ化ツールを使用します。
@@ -201,7 +206,7 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 アプリケーションがローカル クラスターに正常に発行されると、Node.js アプリケーションのサービス マニフェストに入力したポート (たとえば http://localhost:3000) で Node.js アプリケーションにアクセスできます。
 
-このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。 また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
+このチュートリアルでは、2 つの既存のアプリケーションを&1; つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。 また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
 
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Linux で Yeoman を使用した既存のアプリケーションへのゲスト実行可能ファイルの追加
@@ -210,13 +215,8 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfguest:AddService` を実行し、必要な詳細を指定します。
 
-
-
 ## <a name="next-steps"></a>次のステップ
 * コンテナーのデプロイについて、[Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)に関する記事で確認してください
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [REST を使用してネーム サービス経由で通信する&2; つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

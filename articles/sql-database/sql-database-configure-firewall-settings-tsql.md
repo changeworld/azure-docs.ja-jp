@@ -12,24 +12,17 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.topic: article
+ms.date: 02/07/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2f24c1c43300a3c5035fbb4e90c3d13f73c1bc74
-ms.openlocfilehash: ef51f63984d342422ee5f2a93acfee6357df57ca
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 84efba61fbb0248edef3036de702e3a1aa8ae903
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="configure-azure-sql-database-server-level-and-database-level-firewall-rules-using-t-sql"></a>TSQL を使用して Azure SQL Database ファイアウォールを構成する
-> [!div class="op_single_selector"]
-> * [概要](sql-database-firewall-configure.md)
-> * [Azure ポータル](sql-database-configure-firewall-settings.md)
-> * [TSQL](sql-database-configure-firewall-settings-tsql.md)
-> * [PowerShell](sql-database-configure-firewall-settings-powershell.md)
-> * [REST API](sql-database-configure-firewall-settings-rest.md)
-> 
-> 
 
 Microsoft Azure SQL Database では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。 データベースへのアクセスを選択的に許可するには、Azure SQL Database サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
 
@@ -39,7 +32,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 > 
 
 ## <a name="server-level-firewall-rules"></a>サーバーレベルのファイアウォール規則
-サーバー レベルのプリンシパル ログインまたは Azure Active Directory 管理者のみが、Transact-SQL を使用して、サーバー レベルのファイアウォール ルールを作成できます。
+Transact-SQL を使用してサーバーレベルのファイアウォール規則を作成できるのは、Azure SQL サーバー管理者ログインまたは Azure Active Directory 管理者のみです。
 
 1. クエリ ウィンドウを起動し、仮想マスター データベースに接続するには、SQL Server Management Studio を使用します。
 2. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから選択、作成、更新、または削除することができます。
@@ -61,7 +54,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 ## <a name="database-level-firewall-rules"></a>データベース レベルのファイアウォール規則
 データベース レベルのファイアウォール規則を作成できるのは、 **CONTROL** 権限が付与されているデータベース ユーザー (データベース所有者など) のみです。
 
-1. IP アドレスに対してサーバーレベルのファイアウォールを作成した後、クラシック ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
+1. IP アドレスに対してサーバーレベルのファイアウォールを作成した後、Azure Portal または SQL Server Management Studio からクエリ ウィンドウを起動します。
 2. データベースレベルのファイアウォール規則を作成するデータベースに接続します。
    
     データベースレベルのファイアウォール規則を新規作成するか、既存のものを更新するには、 `sp_set_database_firewall_rule` ストアド プロシージャを実行します。 次の例では ContosoFirewallRule という名前の新しいファイアウォール規則を作成します。
@@ -77,7 +70,7 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 このストアド プロシージャの詳細については、[sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) に関するページと [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) に関するページをご覧ください。
 
 > [!NOTE]
-> データベースレベルのファイアウォールの使用について説明するチュートリアルについては、「[SQL Database チュートリアル: SQL Server 認証、ログインとユーザー アカウント、データベース ロール、アクセス許可、サーバーレベルのファイアウォール規則、データベースレベルのファイアウォール規則](sql-database-control-access-sql-authentication-get-started.md)」を参照してください。
+> データベース レベルのファイアウォールの使い方がわかるチュートリアルについては、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページをご覧ください。
 >
 
 
@@ -88,17 +81,12 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 * [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
 * [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
 
-データベース作成のチュートリアルについては、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
+データベース作成のチュートリアルについては、「[初めての Azure SQL Database](sql-database-get-started.md)」をご覧ください。
 オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
 データベースに移動する方法については、 [データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [データベースの保護](sql-database-security-overview.md)
 * [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: ba82512e830032172c8a0d78029605935d1417f9
+ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
+ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -71,7 +72,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 ![セカンダリの結果](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
 ### <a name="effect-of-replication-on-network-utilization"></a>ネットワーク使用率に対するレプリケーションの影響
-プライマリ ノードおよび復旧ノード間で、既存の 1 秒あたり 5 GB の帯域幅に対して、1 秒あたり平均 275MB のネットワーク帯域幅が使用されました (圧縮有効時)。
+プライマリ ノードおよび復旧ノード間で、既存の 1 秒あたり 5 Gb の帯域幅に対して、1 秒あたり平均 275 Mb のネットワーク帯域幅が使用されました (圧縮有効時)。
 
 ![結果のネットワーク使用率](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
@@ -170,9 +171,4 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ## <a name="next-steps"></a>次のステップ
 * [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

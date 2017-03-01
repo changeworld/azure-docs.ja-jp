@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/01/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 94d085ac026a309a457891944931901e9dc2564f
+ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
+ms.openlocfilehash: e628143db9ceba5e159022d2eefe3e6dd9f4bf22
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -76,6 +77,8 @@ Service Fabric は、拡張性と信頼性に優れたマイクロサービス�
 
 **イメージ ストア サービス**: 各 Service Fabric クラスターには、デプロイおよびバージョン管理されたアプリケーション パッケージが保持されるイメージ ストア サービスがあります。 アプリケーション パッケージをイメージ ストアにコピーした後、そのアプリケーション パッケージに含まれているアプリケーションの種類を登録します。 アプリケーションの種類をプロビジョニングした後、そのアプリケーションの種類から名前付きアプリケーションを作成します。 アプリケーションの種類は、そのアプリケーションの種類から作成されているすべての名前付きアプリケーションを削除した後、イメージ ストア サービスからの登録を解除できます。
 
+Image Store サービスの詳細については、「[ImageStoreConnectionString 設定を理解する](service-fabric-image-store-connection-string.md)」をご覧ください。
+
 イメージ ストア サービスへのアプリケーションのデプロイの詳細については、「 [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md) 」をご覧ください。
 
 ## <a name="built-in-programming-models"></a>組み込みのプログラミング モデル
@@ -94,10 +97,5 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 * [Service Fabric の概要](service-fabric-overview.md)
 * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 * [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

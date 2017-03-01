@@ -1,6 +1,6 @@
 ---
 title: "クラシック ポータルで Azure に VMware VM をレプリケートする | Microsoft Docs"
-description: "この記事では、マシンが VMM クラウドで管理されていない場合に Azure Site Recovery を使用して Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。"
+description: "この記事では、コンピューターが VMM クラウドで管理されていない場合に Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2016
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,16 +29,9 @@ ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
 >
 >
 
-Azure Site Recovery サービスへようこそ。
-
-Site Recovery は、ビジネス継続性と障害復旧 (BCDR) の戦略に貢献する Azure サービスです。 Site Recovery では、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーと仮想マシンのレプリケーションを調整します。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。 詳細については、「 [Azure Site Recovery とは](site-recovery-overview.md)
-
-この記事では、オンプレミスの Hyper-V 仮想マシンを、Azure Portal の Azure Site Recovery を使用して Azure にレプリケートする方法について説明します。 このシナリオでは、Hyper-V サーバーは VMM クラウドで管理されていません。
+この記事では、Azure Portal で [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、オンプレミスの Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。 このシナリオでは、Hyper-V サーバーは VMM クラウドで管理されていません。
 
 コメントはこの記事の末尾に投稿し、技術的な質問は [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
-
-
-
 
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Azure ポータルの Site Recovery
@@ -67,7 +61,7 @@ Azure には、リソースの作成と操作に関して、[Azure Resource Mana
 * サポート技術情報 [2961977](https://support.microsoft.com/en-us/kb/2961977 "KB2961977") に説明が記載されている修正プログラムを実行しています。
 
 ## <a name="virtual-machine-prerequisites"></a>仮想マシンの前提条件
-保護対象の仮想マシンは、 [Azure 仮想マシンの要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。
+保護対象の仮想マシンは、 [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。
 
 ## <a name="provider-and-agent-prerequisites"></a>プロバイダーとエージェントの前提条件
 Azure Site Recovery のデプロイの一部として、各 Hyper-V サーバーで Azure Site Recovery プロバイダーと Azure Recovery Services エージェントをインストールします。 以下の点に注意してください。
@@ -283,9 +277,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 ## <a name="next-steps"></a>次のステップ
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、 [こちら](site-recovery-failover.md) を参照してください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

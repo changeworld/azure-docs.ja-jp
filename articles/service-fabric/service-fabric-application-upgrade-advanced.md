@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/05/2017
-ms.author: subramar
+ms.date: 02/02/2017
+ms.author: subramar;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: f1e035b50b415f68ce567fe1db3a3fe93c2a1394
-ms.openlocfilehash: 63d7ca0224c1989618c474181b02fa79eb69c966
+ms.sourcegitcommit: c83c4db0ada77998354b3fca4e2297335899a9bd
+ms.openlocfilehash: 20a3277370583ccf93b36191a70149ed7d814238
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -99,9 +100,4 @@ app1/
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
 「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

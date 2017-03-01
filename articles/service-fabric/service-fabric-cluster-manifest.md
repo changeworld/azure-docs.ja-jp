@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
-ms.openlocfilehash: 977de9160be63a91b5926daa45528e5ee205e448
+ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
+ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -156,7 +157,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 * *applicationPorts* は、Service Fabric のアプリケーションで使用するポートです。 これらは、アプリケーションのエンドポイント要求に対応できるように *ephemeralPorts* のサブセットにする必要があります。 Service Fabric は、新しいポートが必要なときにこれらを使用するだけでなく、これらのポートに対してファイアウォールを開く処理も行います。 
 * *reverseProxyEndpointPort* は、省略可能なリバース プロキシ エンドポイントです。 詳細については、「[Service Fabric Reverse Proxy](service-fabric-reverseproxy.md)」(Service Fabric リバース プロキシ) を参照してください。 
 
-### <a name="other-settings"></a>その他の設定
+### <a name="log-settings"></a>ログの設定
 **fabricSettings** セクションでは、Service Fabric のデータとログのルート ディレクトリを設定できます。 これらのディレクトリは、クラスターの最初の作成時にのみカスタマイズできます。 このセクションのサンプル スニペットを次に示します。
 
     "fabricSettings": [{
@@ -171,12 +172,19 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 
 非 OS ドライブは OS のクラッシュに対する信頼性が高いため、FabricDataRoot および FabricLogRoot として使用することをお勧めします。 データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの&1; つ下のレベルに配置されます。
 
+### <a name="stateful-reliable-service-settings"></a>ステートフル Reliable Services の設定
+**KtlLogger** セクションでは、Reliable Services のグローバル構成の設定を行うことができます。 これらの設定の詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」を参照してください。
+次の例は、ステートフル サービスの信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
 ## <a name="next-steps"></a>次のステップ
 スタンドアロン クラスターのセットアップに従って ClusterConfig.JSON ファイルの構成が完了したら、[スタンドアロンの Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事に従ってクラスターをデプロイした後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進むことができます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
