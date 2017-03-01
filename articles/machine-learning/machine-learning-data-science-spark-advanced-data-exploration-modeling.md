@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 304323601a7fb2c9b46cf0e1eea9429cf099a111
-ms.openlocfilehash: 853f3c9b2a4781b683b03b5c7ec93f0197c78cdc
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: e6bf6bd3c905f077841ef166540337a251b91ad1
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -50,8 +51,16 @@ CV とハイパーパラメーター スイープを使用するモデリング�
 > 
 > 
 
-## <a name="prerequisites"></a>前提条件
-このチュートリアルを実行するには、Azure アカウントと、Spark 1.6 または Spark 2.0 の HDInsight クラスターが必要です。 これらの要件を満たすための方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」をご覧ください。 このトピックには、ここで使用する 2013 年 NYC タクシー データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法の説明も含まれています。 このトピックのコード サンプルが含まれた **pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb** ノートブックは、[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
+## <a name="setup-spark-clusters-and-notebooks"></a>セットアップ: Spark クラスターと Notebook
+このチュートリアルで示すセットアップ手順とコードは HDInsight Spark 1.6 向けですが、 Jupyter Notebook は HDInsight Spark 1.6 と Spark 2.0 の両方のクラスター向けに提供されています。 ノートブックの説明およびノートブックへのリンクは、ノートブックが含まれる GitHub リポジトリの [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 内にあります。 また、このページとリンク先のノートブックに記載しているコードは汎用性があり、どの Spark クラスターでも動作します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。 ご参考までに、Jupyter Notebook サーバーの pyspark カーネルで実行される Spark 1.6 および 2.0 向け Jupyter Notebook へのリンクを以下に示します。
+
+### <a name="spark-16-notebooks"></a>Spark 1.6 向け Notebook
+
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Notebook #1 のトピックと、ハイパーパラメーター チューニングとクロス検証を使用したモデル開発が含まれます。
+
+### <a name="spark-20-notebooks"></a>Spark 2.0 向け Notebook
+
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): このファイルでは、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法について説明します。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -1434,10 +1443,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

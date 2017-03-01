@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: f8ce1215861da2db49f5148400195c4fefb9a01d
+ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
+ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -53,6 +54,31 @@ Azure ポータルでこのエンドポイントを取得することもでき�
 ``` text
 POST https://management.azure.com/{resourceID of your logic app}/triggers/myendpointtrigger/listCallbackURL?api-version=2015-08-01-preview
 ```
+
+### <a name="changing-http-method-of-the-trigger"></a>トリガーの HTTP メソッドの変更
+既定では、Logic Apps の要求トリガーは HTTP POST 要求を想定していますが、 `Show advanced options` で HTTP メソッドを構成することができます。
+
+ > [!NOTE]
+ > 使用できるメソッドの種類は&1; つだけです。
+
+### <a name="relative-trigger-url"></a>トリガーの相対 URL
+パラメーターを受け取れるよう要求 URL の相対パスをカスタマイズすることもできます。
+
+1. **Request** トリガーの `Show advanced options` を展開します。
+ - `Relative path` に、`customer/{customerId}` と入力します。
+
+  ![トリガーの相対 URL](./media/logic-apps-http-endpoint/relativeurl.png)
+
+2. パラメーターを使用できるよう **Respond** アクションを更新します。
+ - トークン ピッカーに `customerId` が表示されます。
+ - `Hello {customerId}` が返されるように応答の本文を更新します。
+
+  ![応答の相対 URL](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+
+3. ロジック アプリを保存します。要求 URL が更新され、相対パスが含まれていることがわかります。
+
+4. 新しい要求 URL をコピーし、新しいブラウザー ウィンドウに貼り付けます。 `{customerId}` を `123` に置き換え、Enter キーを押します。
+ - `Your customer Id is 123` が返されます。
 
 ### <a name="security-for-the-trigger-url"></a>トリガー URL のセキュリティ
 ロジック アプリのコールバック URL は、Shared Access Signature を使用して安全に生成されます。  この署名はクエリ パラメーターとして渡され、ロジック アプリが起動する前に検証される必要があります。  署名は、ロジック アプリごとの秘密キー、トリガー名、および実行される操作の一意の組み合わせによって生成されます。  ロジック アプリの秘密キーにアクセスできなければ、有効な署名を生成することはできません。
@@ -154,9 +180,4 @@ Logic Apps には直接アクセス エンドポイントのサポートが組�
 [1]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [2]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

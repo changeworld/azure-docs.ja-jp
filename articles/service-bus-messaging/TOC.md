@@ -39,6 +39,7 @@
 ### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
 ### [配達不能キュー](service-bus-dead-letter-queues.md)
 ### [トランザクション処理](service-bus-transactions.md)
+### [診断ログ](service-bus-diagnostic-logs.md)
 ### AMQP
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
@@ -71,10 +72,5 @@
 ## [Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

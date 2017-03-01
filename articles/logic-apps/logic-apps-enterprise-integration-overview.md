@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: estfan
 translationtype: Human Translation
-ms.sourcegitcommit: 03cd3f4edd7bb7895efa02475411d813ef44b8b3
-ms.openlocfilehash: 538ba17e2b90ca1b30aee79c1f1835f3c4cdfb3c
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: 514942b2552564f669d73b997a2d355ddb477b22
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -36,7 +37,7 @@ Enterprise Integration Pack のアーキテクチャは、"統合アカウント
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Enterprise Integration の使用を開始する方法
 
-**Azure Portal** の Logic Apps デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 Logic Apps の管理に [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "Logic Apps PowerShell 関連トピック") を使用することもできます。
+**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 Logic Apps の管理に [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "Logic Apps PowerShell 関連トピック") を使用することもできます。
 
 Azure Portal でアプリを作成する前に必要な手順の概要は、次のとおりです。
 
@@ -74,10 +75,5 @@ Azure Logic Apps の B2B 機能を使用する、[完全に動作する AS2 送�
 * [統合アカウント メタデータ](../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウントのメタデータについての詳細情報")
 * [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md "B2B メッセージの監視方法についての詳細情報")
 * [OMS ポータルでの B2B メッセージの追跡](logic-apps-track-b2b-messages-omsportal.md "OMS ポータルでの B2B メッセージの追跡についての詳細情報")
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

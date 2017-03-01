@@ -15,19 +15,47 @@ ms.workload: azure-government
 ms.date: 12/06/2016
 ms.author: MeganYount
 translationtype: Human Translation
-ms.sourcegitcommit: 82e1c47bff67cf681553fe2ae8863e4383c3f6af
-ms.openlocfilehash: 465cf61ee575d920b8f8aca07b1b2642ba806fd1
+ms.sourcegitcommit: 14fb62669e15873770ef9b8470e34db70f1ca2ca
+ms.openlocfilehash: 2b89d78e20cccee81c9581e762e4c61bacd84fd4
+ms.lasthandoff: 02/15/2017
 
 
 ---
 # <a name="azure-government-intelligence--analytics"></a>Azure Government のインテリジェンスと分析
 この記事では、Azure Government 環境でのインテリジェンスと分析に関するサービスのバリエーションと、考慮事項の概要を紹介します。
 
+## <a name="azure-hdinsight"></a>Azure HDInsight
+Linux Standard 版の HDInsight は Azure Government で一般提供されています。 HDInsight を使用して Azure Government でデータ中心のソリューションを構築する方法を、<a href=https://channel9.msdn.com/Blogs/Azure/Cognitive-Services-HDInsight-and-Power-BI-on-Azure-Government/>こちら</a>のデモでご覧いただけます。
+
+Linux Premium 版の HDInsight は間もなく提供されます。
+
+### <a name="variations"></a>バリエーション
+HDInsight の次の機能は、Azure Government では現在使用できません。
+
+* HDInsight は Windows では利用できません。
+* Azure Data Lake Store は、Azure Government で現在使用できません。 Azure Blob Storage は、現時点で使用できる唯一のストレージ オプションです。
+
+Azure Government では、Log Analytics の URL が異なります。
+
+| サービスの種類 | Azure Public | Azure Government |
+| --- | --- | --- |
+| HDInsight Cluster | \*.azurehdinsight.net | \*.azurehdinsight.us |
+
+詳細については、[Azure HDInsight のパブリック ドキュメント](../hdinsight/hdinsight-hadoop-introduction.md)を参照してください。
+
+## <a name="power-bi"></a>Power BI
+Power BI US Government は、Office 365 US Government Community サブスクリプションの一部として一般提供されています。 Power BI US Government については、<a href=https://powerbi.microsoft.com/en-us/documentation/powerbi-service-govus-overview/>こちら</a>をご覧ください。 Power BI を使用して Azure Government でデータ中心のソリューションを構築する方法を、<a href=https://channel9.msdn.com/Blogs/Azure/Cognitive-Services-HDInsight-and-Power-BI-on-Azure-Government/>こちら</a>のデモでご覧いただけます。
+
+Power BI Embedded は間もなく提供されます。
+
+### <a name="variations"></a>バリエーション
+
+US Government では、Power BI の URL が異なります。
+
+| サービスの種類 | Power BI Commercial | Power BI US Government |
+| --- | --- | --- |
+| Power BI URL | app.powerbi.com | app.powerbigov.us |
+
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

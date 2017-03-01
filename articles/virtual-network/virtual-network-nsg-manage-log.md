@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
-ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
+ms.sourcegitcommit: e657e901900b4879d649ac82d8de026957a409c2
+ms.openlocfilehash: 36a872e3e5bd3230dcfe2abdab9b4dbf25212cdb
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -31,7 +32,14 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 > [!NOTE]
 > 診断ログは、Azure Resource Manager デプロイメント モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイメント モデルでデプロイされた NSG については診断ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイメント モデルの理解](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
-どちらの Azure デプロイメント モデルで作成された NSG に対しても、アクティビティ ログ (以前の監査ログまたは操作ログ) が既定で有効になります。 NSG に対して行われた操作をアクティビティ ログで調べるには、リソースの種類 Microsoft.ClassicNetwork/networkSecurityGroups、Microsoft.ClassicNetwork/networkSecurityGroups/securityRules、Microsoft.Network/networkSecurityGroups、および Microsoft.Network/networkSecurityGroups/securityRules が含まれるエントリを探します。 アクティビティ ログの詳細については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。 
+どちらの Azure デプロイメント モデルで作成された NSG に対しても、アクティビティ ログ (以前の監査ログまたは操作ログ) が既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。 
+
+- Microsoft.ClassicNetwork/networkSecurityGroups 
+- Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+- Microsoft.Network/networkSecurityGroups
+- Microsoft.Network/networkSecurityGroups/securityRules 
+
+アクティビティ ログの詳細については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。 
 
 ## <a name="enable-diagnostic-logging"></a>診断ログの有効化
 
@@ -116,9 +124,4 @@ CLI を使用してログを有効にするには、[CLI での診断ログの�
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
 アクティビティ ログ データの表示方法については、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断ログ データの表示方法については、「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をご覧ください。 診断データを Log Analytics に送信すると、[Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) (プレビュー) 管理ソリューションを使用してより深い洞察を得ることができます。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
