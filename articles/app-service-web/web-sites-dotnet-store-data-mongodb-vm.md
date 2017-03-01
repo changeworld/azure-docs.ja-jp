@@ -5,7 +5,7 @@ tags: azure-portal
 services: app-service\web, virtual-machines
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: adf7a472-ae00-45a8-aec4-06247e21318b
 ms.service: app-service-web
@@ -18,6 +18,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5ce82ddd2f58fed338bd061fa963978aa63e5fdc
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -486,9 +487,4 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [Create and run the My Task List ASP.NET application on your development computer]: #createapp
 [Create an Azure web site]: #createwebsite
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

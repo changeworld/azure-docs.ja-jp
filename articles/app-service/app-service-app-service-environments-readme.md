@@ -5,7 +5,7 @@ keywords: "azure app service environment, 仮想ネットワーク, ネットワ
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 1db5c057-3c56-4537-b580-cdd21fe3f3a7
 ms.service: app-service
@@ -18,6 +18,7 @@ ms.author: stefsch
 translationtype: Human Translation
 ms.sourcegitcommit: df2fa1d0790f8942a0350f9734232cc4b25cadc1
 ms.openlocfilehash: a54f559801e1a4f4b752bc2268ea8d6cb20b1267
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -63,9 +64,4 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

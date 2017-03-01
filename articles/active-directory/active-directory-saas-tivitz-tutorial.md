@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 67c859ca7cb88c4b03b605330391856a150323dd
 ms.openlocfilehash: 6f60c803ae0f6d32f79611aced40bef3ea87173b
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -274,9 +275,4 @@ TiViTz で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tivitz-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

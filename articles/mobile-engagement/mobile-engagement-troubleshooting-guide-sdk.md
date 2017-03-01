@@ -4,7 +4,7 @@ description: "Azure のモバイル サービスで SDK の統合に関する問
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: de265cf1-2f88-43ef-8616-156ada5be7b6
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 46a86bf99c1afd09ae3921a205d27532246171c9
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -134,10 +135,5 @@ ms.openlocfilehash: 46a86bf99c1afd09ae3921a205d27532246171c9
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

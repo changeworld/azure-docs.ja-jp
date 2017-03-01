@@ -4,7 +4,7 @@ description: "Azure App Service でサービス間シナリオで API アプリ�
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 7ca0bab2-1d29-4d51-b779-dce0edd34f8b
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: 232446806309148f7958609608d4afc28ffea98d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -348,10 +349,5 @@ Azure Active Directory の詳細については、次のリソースを参照し
     [WebApp-WebAPI-OAuth2-AppIdentity-DotNet](http://github.com/AzureADSamples/WebApp-WebAPI-OAuth2-AppIdentity-DotNet) サンプルは、このチュートリアルで紹介した内容と似ていますが、App Service 認証は使用しません。
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、[Azure App Service アプリのデプロイ](../app-service-web/web-sites-deploy.md)に関する記事を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

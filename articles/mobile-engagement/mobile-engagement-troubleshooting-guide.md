@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement 関連のトラブルシューティング
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 31134a29-a513-4e5e-b626-f6cf6fe04769
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 1947600f6167dff6ec4fa104b0f98200bcf2a2e1
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -114,10 +115,5 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
    * Device ID
    * Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
    * 表示されるエラー メッセージとシナリオを含むエラーの詳細
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

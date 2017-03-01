@@ -3,7 +3,7 @@ title: "Azure モバイル アプリでのオフライン データ同期 | Micr
 description: "Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
 documentationcenter: windows
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 15a3f9f40bdb84b939b30e33e5f2033411adc3cc
 ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -102,9 +103,4 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [ユニバーサル Windows プラットフォームでオフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

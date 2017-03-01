@@ -4,7 +4,7 @@ description: "Azure App Service へのローカル Git デプロイを有効に�
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5842188b5d0a66436db7ab0f6b85bf14b4759c50
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -162,9 +163,4 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

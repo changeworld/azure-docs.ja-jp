@@ -4,7 +4,7 @@ description: "Azure App Service を使用して Xamarin iOS アプリにプッ�
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 185a32376dd1c40fd480e16d3ac7607ac798afae
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -137,10 +138,5 @@ ms.openlocfilehash: 185a32376dd1c40fd480e16d3ac7607ac798afae
 <!-- URLs. -->
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

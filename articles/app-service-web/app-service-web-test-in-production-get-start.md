@@ -4,7 +4,7 @@ description: "Azure App Service Web Apps を運用環境でテストする Test 
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 4623468d-886e-4203-8012-8f86deb2790b
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: f9d423e87938e55daeb07268b11c930fb62755b6
 ms.openlocfilehash: 8fa7ca18fd2ea3a3f672854a0b2e0397cfdbb2bc
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -84,10 +85,5 @@ App Service は自動トラフィック ルーティングだけでなく、特�
 * [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 * [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 * [Web アプリに対して DevOps 環境を効果的に使用する](app-service-web-staged-publishing-realworld-scenarios.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -5,7 +5,7 @@ keywords: push notification,push notifications,node.js push,ios push
 services: notification-hubs
 documentationcenter: nodejs
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
@@ -18,6 +18,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 88e8ead2b22bf53510c9c6008e34647272326690
 ms.openlocfilehash: 32d93f1ff6cf4ae78051b7208e38b6915509210f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -212,9 +213,4 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure ポータル]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

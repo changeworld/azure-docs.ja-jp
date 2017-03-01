@@ -4,7 +4,7 @@ description: "Azure App Service の基幹業務アプリでオンプレミスの
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: dde6b7e6-bf6a-4fa5-8390-3a18155d21bd
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f989ea86c76706af9413b2bb945956b1c6432e1d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -41,10 +42,5 @@ Active Directory フェデレーション サービス (AD FS) などのオン�
 * オンプレミスの AD のデータにアクセスするためには、企業のファイアウォールを経由する別個のソリューションが必要です。
 
 オンプレミスの STS を使用して認証を行う基幹業務 Azure アプリを作成する方法については、「 [Create a line-of-business Azure app with AD FS authentication (AD FS 認証を使用した基幹業務 Azure アプリの作成)](web-sites-dotnet-lob-application-adfs.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

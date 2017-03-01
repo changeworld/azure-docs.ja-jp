@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 02/23/2017
 ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4debaeaf879b0c79c05420fdbbd8735da1d015
 ms.openlocfilehash: d1b6b5b46b3329471388e178c3ea06f881003c48
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -35,10 +36,5 @@ ms.openlocfilehash: d1b6b5b46b3329471388e178c3ea06f881003c48
 
 
 [!INCLUDE [virtual-machines-common-sizes](../../includes/virtual-machines-common-sizes.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

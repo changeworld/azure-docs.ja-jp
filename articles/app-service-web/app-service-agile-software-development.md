@@ -4,7 +4,7 @@ description: "アジャイル ソフトウェア開発をサポートする方�
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c0fdb676-36a6-4738-925f-65b4835d187f
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c214e37fb4211e8a2686a2beb18cf84ee77d5783
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -272,10 +273,5 @@ Git Shell で、次のコマンドを実行します。
 * [Azure クロスプラットフォーム コマンド ライン ツール](../xplat-cli-install.md)
 * [Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 * [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "Web ジョブを作成し、バックグラウンドでのテス�
 services: app-service
 documentationcenter: 
 author: christopheranderson
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 85975432-04c9-4b83-b937-b30c082d52a1
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: chrande
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 45016e09e981bab6e4413048838c66f1108dc663
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -30,10 +31,5 @@ Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツ�
 Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内の個々の関数を呼び出す機能など、強力な管理機能を提供して Web ジョブの実行をきめ細かく制御できます。 また、ダッシュボードでは、関数の実行時間とログ出力も表示されます。
 
 [!INCLUDE [app-service-blueprint-webjobs](../../includes/app-service-blueprint-webjobs.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "Azure App Service Web Apps を使用してビジネス用のエン
 services: app-service\web
 documentationcenter: 
 author: apwestgarth
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: cf9ac3b2-0493-4461-8b64-251d3a5cd5b5
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: anwestg
 translationtype: Human Translation
 ms.sourcegitcommit: 4d3b3096e42736fddd3bb5b9f39376271d193c58
 ms.openlocfilehash: 980eb9ff0990d532a77614be571e3f6d24a1dfee
+ms.lasthandoff: 12/07/2016
 
 ---
 
@@ -145,9 +146,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -4,7 +4,7 @@ description: "Azure App Service の API Apps で Swagger メタデータを使�
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c7f8e33a-61cc-486f-89df-4a97dc3c71d4
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: a0580f8d303c7ce33a65f0ce6faecf2492f851b0
 ms.openlocfilehash: 3b41340f30239dc0102808b5e492ee7300dcd12b
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -56,10 +57,5 @@ API アプリのクライアント コードは、Visual Studio を使用して�
 API アプリの作成、デプロイ、使用の手順を説明するステップ バイ ステップ チュートリアルについては、 [Azure App Service での API アプリの使用](app-service-api-dotnet-get-started.md)に関するページを参照してください。
 
 API アプリで Azure API Management を使う場合は、Swagger メタデータを使用して API を API Management にインポートできます。 詳細については、「 [Azure API Management で API の定義を操作と共にインポートする方法](../api-management/api-management-howto-import-api.md)」を参照してください。 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

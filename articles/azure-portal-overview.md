@@ -4,7 +4,7 @@ description: "Microsoft Azure ポータルの使用方法を説明します。"
 services: 
 documentationcenter: 
 author: davidwrede
-manager: dwrede
+manager: erikre
 editor: jimbe
 ms.assetid: 53cb9df1-c96a-4f4e-b022-18336cd3d697
 ms.service: na
@@ -17,6 +17,7 @@ ms.author: dwrede
 translationtype: Human Translation
 ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
 ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -84,9 +85,4 @@ Microsoft Azure ポータルならクラウドでのアプリケーションの�
 [ManageResource]: ./media/azure-portal-how-to-use/azure_portal_4.png
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

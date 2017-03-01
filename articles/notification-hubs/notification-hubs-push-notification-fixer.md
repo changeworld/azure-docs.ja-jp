@@ -4,7 +4,7 @@ description: "Azure Notification Hubs に関する一般的な問題を診断す
 services: notification-hubs
 documentationcenter: Mobile
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b0b067f02f02f722534238891f7412153635df80
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -239,10 +240,5 @@ Notification Hubs を使用して通知を送信する場合、通知はまず�
 [EnableTestSend feature]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx
 [プログラムによる統計情報へのアクセス]: http://msdn.microsoft.com/library/azure/dn458823.aspx
 [API サンプルを使用した統計情報へのアクセス]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

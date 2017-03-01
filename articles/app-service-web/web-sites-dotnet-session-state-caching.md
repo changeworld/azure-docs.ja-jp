@@ -4,7 +4,7 @@ description: "Azure Cache Service を使用して ASP.NET のセッション状�
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
-manager: wpickett
+manager: erikre
 editor: none
 ms.assetid: 4f98d289-2698-464d-85cd-99ec40fad1f2
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: riande
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: a682e51bfaed9056b170c3e9473180ca210557b9
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -109,10 +110,5 @@ ASP.NET セッション状態の使用方法の詳細については、「[ASP.N
 [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
 [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
 [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

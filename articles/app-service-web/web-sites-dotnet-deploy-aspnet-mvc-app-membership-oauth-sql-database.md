@@ -5,7 +5,7 @@ services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
 writer: Rick-Anderson
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: c0de419d-db6f-4157-94ca-f75d0ba6c0e3
 ms.service: app-service-web
@@ -18,6 +18,7 @@ ms.author: riande
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 11d9869e656014fe7106f9c66975792c5faa357d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -659,10 +660,5 @@ Entity Framework の使用方法に関する詳しいチュートリアルにつ
 [Next steps]: #nextsteps
 
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

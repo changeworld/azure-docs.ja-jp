@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
 ms.openlocfilehash: 8b74f2e4169ac97e09da12d5ed85e0e24b50e150
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -111,9 +112,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
