@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 4612c1f516dca51aea925343f79649761448c05d
+ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc
+ms.openlocfilehash: 46702abb229ba0a6512f336cb0aa4e4a75b51771
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -74,18 +75,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `ver` |バージョン |トークンのバージョン番号が格納されます。 <br><br> **JWT 値の例**: <br> `"ver": "1.0"` |
 
 ## <a name="access-tokens"></a>アクセス トークン
+認証が成功すると、Azure AD はアクセス トークンを返します。アクセス トークンを使用すると、保護されたリソースにアクセスできます。 アクセス トークンは Base64 でエンコードされた JSON Web トークン (JWT) であり、デコーダーを使用して実行することでその内容を検査できます。
 
 アプリがアクセス トークンのみを "*使用して*" API へのアクセスを取得する場合は、アクセス トークンを完全に不透明として処理できます (そうする必要があります)。アクセス トークンは、アプリが HTTP 要求内のリソースに渡すことができる単なる文字列です。
 
 アクセス トークンを要求すると、Azure AD はアプリで使用できるようにアクセス トークンに関するメタデータも返します。  この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。  これにより、アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
 
-アプリが Azure AD によって保護される APIであり、HTTP 要求内のアクセス トークンを予期している場合は、受信するトークンの検証と検査を実行する必要があります。 これを .NET で実行する方法の詳細については、「[Azure AD からのベアラー トークンの使用による Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)」を参照してください。
+アプリが Azure AD によって保護される APIであり、HTTP 要求内のアクセス トークンを予期している場合は、受信するトークンの検証と検査を実行する必要があります。 アプリでは、アクセス トークンを使用してリソースにアクセスする前にアクセス トークンの検証を実行する必要があります。 検証の詳細については、「[トークンの検証](#validating-tokens)」をご覧ください。  
+これを .NET で実行する方法の詳細については、「[Azure AD からのベアラー トークンの使用による Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)」を参照してください。
 
 ## <a name="refresh-tokens"></a>更新トークン
 
 更新トークンは、OAuth 2.0 のフローで新しいアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。  ユーザーが介入しなくても、アプリはユーザーに代わってリソースへの長期的なアクセスを実現できます。
 
-更新トークンはマルチ リソースですので、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。 マルチ リソースを指定するには、要求内の `resource` パラメーターを対象のリソースに設定します。
+更新トークンはマルチリソースです。  つまり、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。 このために、要求内の `resource` パラメーターを対象のリソースに設定します。
 
 更新トークンは、アプリに対して完全に非透過的です。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。  更新トークンは、いつでもさまざまな理由で無効になる可能性があります。  アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
 
@@ -93,9 +96,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 ## <a name="validating-tokens"></a>トークンの検証
 
-id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。
+id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.windows.net/common/.well-known/openid-configuration](https://login.windows.net/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。  
 
-基になるプロセスを理解したい場合は、トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほぼすべてのプラットフォームと言語に対して少なくとも&1; つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
+トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも&1; つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
 
 #### <a name="validating-the-signature"></a>署名の検証
 
@@ -300,10 +303,4 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ## <a name="related-content"></a>関連コンテンツ
 * Azure AD Graph API を使用したトークンの有効期間ポリシーの管理の詳細については、Azure AD Graph の[ポリシー操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)および[ポリシー エンティティ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)を参照してください。
 * PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../active-directory-configurable-token-lifetimes.md) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

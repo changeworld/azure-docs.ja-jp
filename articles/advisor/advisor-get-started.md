@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
 translationtype: Human Translation
-ms.sourcegitcommit: 14e9e494d6e824964b9164ff36d9938341e244be
-ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 8ed18f6f62b6d2895e2470df1c3bdd448ea98210
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -35,7 +36,7 @@ Azure Portal を使用して Advisor にアクセスする方法、推奨事項�
 4. 特定のカテゴリの推奨事項を取得するには、次のタブのいずれかをクリックします: **[高可用性]**、**[セキュリティ]**、**[パフォーマンス]**、または **[コスト]**。
  
 > [!NOTE]
-> Azure Advisor は、**所有者**、**共同作成者**、または**閲覧者**の役割が割り当てられているサブスクリプション向けの推奨事項を生成します。
+> Advisor の推奨事項にアクセスするには、最初にサブスクリプションを Advisor に**登録**する必要があります。 **サブスクリプションの所有者**が Advisor ダッシュボードを起動して **[推奨の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは **1 回限りの操作**です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、特定のリソースの**所有者**、**共同作成者**、または**閲覧者**が Advisor の推奨事項にアクセスできます。
 
   ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-all-tab.png)
 
@@ -63,7 +64,7 @@ Advisor の **[推奨事項]** ブレードには、Advisor の推奨事項の�
 ## <a name="snooze-advisor-recommendations"></a>Advisor の推奨事項を再通知する
 
 1. Azure Portal にサインインし、Azure Advisor を起動します。
-2. **[推奨事項の取得]** をクリックし、推奨事項の一覧から 1 つの推奨事項をクリックします。
+2. **[推奨事項の取得]** をクリックし、推奨事項の一覧から&1; つの推奨事項をクリックします。
 3. **[推奨事項]** ブレードで、**[再通知]** をクリックします。  再通知期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
 
   ![Advisor が推奨するアクションの例](./media/advisor-get-started/advisor-snooze.png)
@@ -78,9 +79,4 @@ Advisor の詳細については、次のリソースをご覧ください。
 -  [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 -  [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 -  [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

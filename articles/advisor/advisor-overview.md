@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: f67ca5996fdde0f0939ac46c2f6280f9d89af3d0
-ms.openlocfilehash: a39a5555ce3af59b509a0522725addbb382ff7af
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 3c4f6d13dd43ae557b177883e14044e637bd803b
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -28,9 +29,9 @@ Azure Advisor の主な機能とよく寄せられる質問について説明し
 Azure Advisor は、ベスト プラクティスに従って Azure のデプロイを最適化できるようにする、個人用に設定されたクラウド コンサルタントです。 Azure のリソースの構成と使用率テレメトリを分析し、リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
 
 Azure advisor では、以下を実行できます。
--   先を見越したすぐに実施可能な個人向けのベスト プラクティスの推奨事項を取得する 
--   リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する
--   インライン アクション付きの推奨事項を取得する
+-    先を見越したすぐに実施可能な個人向けのベスト プラクティスの推奨事項を取得する 
+-    リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する
+-    インライン アクション付きの推奨事項を取得する
 
 Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、**[参照]** を選択し、**[Azure Advisor]** までスクロールします。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 推奨事項は、4 つのカテゴリに分割されています。 
 
@@ -45,7 +46,7 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
   ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-all-tab-examples.png)
 
 > [!NOTE]
-> Azure Advisor は、**所有者**、**共同作成者**、または**閲覧者**の役割が割り当てられているサブスクリプション向けの推奨事項を生成します。
+> Advisor の推奨事項にアクセスするには、最初にサブスクリプションを Advisor に**登録**する必要があります。 **サブスクリプションの所有者**が Advisor ダッシュボードを起動して **[推奨の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは **1 回限りの操作**です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、特定のリソースの**所有者**、**共同作成者**、または**閲覧者**が Advisor の推奨事項にアクセスできます。
 
 推奨事項をクリックすることで、追加情報を確認できます。 機会を活用したり、問題を解決したりするために実行できるアクションを確認することもできます。 Advisor は、推奨事項をインライン アクションまたはドキュメント リンク付きで提示します。 インライン アクションをクリックすると、“ガイド付きの手順” に従ってアクションを実装できます。 ドキュメント リンクをクリックすると、アクションを手動で実装する方法について説明するドキュメントが表示されます。 
 
@@ -58,7 +59,7 @@ Advisor は、Azure Portal を通してアクセスできます。 ポータル�
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor にアクセスするために必要なアクセス許可は?
 
-Advisor の推奨事項を表示するには、少なくとも 1 つのサブスクリプションへのアクセス権が必要です。 サブスクリプションの役割は、**所有者**、**共同作成者**、または**閲覧者**のいずれかである必要があります。 推奨事項は、サブスクリプションの所有者と共同作成者が計算/生成できます。 役割が**閲覧者**の場合は、Advisor の推奨事項の表示のみを実行できます。 
+Advisor の推奨事項にアクセスするには、最初にサブスクリプションを Advisor に**登録**する必要があります。 サブスクリプションの所有者が Advisor ダッシュボードを起動して **[推奨の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは **1 回限りの操作**です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、特定のリソースの**所有者**、**共同作成者**、または**閲覧者**が Advisor の推奨事項にアクセスできます。
 
 ### <a name="how-often-are-advisor-recommendations-updated"></a>Advisor の推奨事項が更新される頻度は?
 
@@ -66,7 +67,7 @@ Advisor の推奨事項は、1 時間ごとに更新されます。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor は、仮想マシン、可用性セット、App Services、SQL Server、SQL Database、および Redis Cache に関する推奨事項を提供します。
+Advisor は、仮想マシン、可用性セット、Application Gateway、App Services、SQL Server、SQL Database、および Redis Cache に関する推奨事項を提供します。
 
 ### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>推奨事項は再通知したり無視したりできるか?
 
@@ -81,9 +82,4 @@ Advisor の推奨事項の詳細については、次のリソースをご覧く
 -  [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 -  [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 -  [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

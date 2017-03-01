@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 09/01/2016
 ms.author: stepsic
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff72e6b0465f25be94c6852f3cdd3417817b8056
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: d230450535613e85c607ef120929ea61bc2085bc
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -33,9 +34,9 @@ Azure リソース コネクタ API アプリを使用するにはまず、そ�
 
 インスタンスを構成するには、Azure での作業に必要な権限を持ったサービス プリンシパルを設定する必要があります。 すべての呼び出しは、ここで設定したサービス プリンシパルの下で実行されます。 これによってコネクタの動作を作業上必要な範囲内に限定することができます。
 
-David Ebbo の [ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-principal.html) に、この設定方法が詳しく解説されています。 解説されている手順に従って、**テナント ID**、**クライアント ID**、**シークレット**を入手してください。 その 3 つのフィールドと **サブスクリプション ID**が、コネクタを構成するうえで必要となります。
+David Ebbo の [ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-principal.html) に、この設定方法が詳しく解説されています。 解説されている手順に従って、**テナント ID**、**クライアント ID**、**シークレット**を入手してください。 その&3; つのフィールドと **サブスクリプション ID**が、コネクタを構成するうえで必要となります。
 
-## <a name="using-the-azure-resource-connector-in-logic-apps-designer"></a>ロジック アプリ デザイナーでの Azure リソース コネクタの使用
+## <a name="using-the-azure-resource-connector-in-logic-app-designer"></a>ロジック アプリ デザイナーでの Azure リソース コネクタの使用
 ### <a name="trigger"></a>トリガー
 Azure リソース コネクタでは、2 つのトリガーがサポートされています。
 
@@ -93,10 +94,10 @@ Azure リソース コネクタでは、2 つのトリガーがサポートさ�
 | Get metrics |リソース ID のメトリックを取得します。 |
 
 ## <a name="do-more-with-your-connector"></a>コネクタでできること
-これでコネクタが作成されたため、ロジック アプリを使用してこのコネクタをビジネス フローに追加することができます。 「 [Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+これでコネクタが作成されたため、ロジック アプリを使用してこのコネクタをビジネス フローに追加することができます。 「 [Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」を参照してください。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、[ロジック アプリの試用](https://tryappservice.azure.com/?appservice=logic)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、[ロジック アプリの試用](https://azure.microsoft.com/try/app-service/logic/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -105,10 +106,5 @@ Azure リソース コネクタでは、2 つのトリガーがサポートさ�
 <!--References -->
 
 <!--Links -->
-[ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
