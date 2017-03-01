@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 81ac6de576614050d972d6fae384f91cc8bf6841
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: a7771c2cee3f2820db014a4e5e8620442eea3dd1
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -320,7 +321,7 @@ Are you sure you want to move these resources to the resource group
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-## <a name="use-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) の使用
+## <a name="use-azure-cli-20"></a>Azure CLI 2.0 の使用
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、`az resource move` コマンドを使用します。 移動するリソースのリソース ID を指定します。 リソース ID は次のコマンドを使用して取得できます。
 
 ```azurecli
@@ -383,10 +384,5 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 * サブスクリプションを管理するための Azure CLI コマンドについては、「 [リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 * サブスクリプションを管理するためのポータル機能については、 [Azure Portal を使用したリソースの管理](resource-group-portal.md)に関するページをご覧ください。
 * リソースを論理的に整理する方法については、「 [タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

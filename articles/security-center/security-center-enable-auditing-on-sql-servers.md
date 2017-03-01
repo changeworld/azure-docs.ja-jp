@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
-ms.openlocfilehash: 7aab37882e3f831627281bcd197fb6098dc50cc6
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 10206327b628358151ad4585b1d962538ea17bcd
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -42,13 +43,13 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 3. **[監査設定]** ブレードで、**[監査]** の **[オン]** を選択します。
 
    ![監査設定の有効化][3]
-4. 「 [SQL Database 監査の使用](../sql-database/sql-database-auditing-get-started.md) 」の手順に従って、監査ログを保存するストレージを構成します。 データ収集のためのサブスクリプションのストレージ アカウントは既定のストレージ アカウントです。
-5. 「 [SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection-get-started.md) 」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
+4. [Azure Portal での SQL Database の監査](../sql-database/sql-database-auditing-portal.md)に関するページの手順に従って、監査ログを保存するストレージを構成します。 データ収集のためのサブスクリプションのストレージ アカウントは既定のストレージ アカウントです。
+5. 「 [SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection.md) 」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
 
 ## <a name="see-also"></a>関連項目
 この記事では、"SQL Server の監査の有効化" という Security Center の推奨事項を実装する方法について説明しました。 SQL Database のセキュリティ保護の詳細については、次の記事をご覧ください。
 
-* [SQL Database の保護](../sql-database/sql-database-security.md)
+* [SQL Database の保護](../sql-database/sql-database-security-overview.md)
 
 セキュリティ センターの詳細については、次を参照してください。
 
@@ -64,9 +65,4 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png
 [2]:./media/security-center-enable-auditing-on-sql-server/enable-auditing.png
 [3]: ./media/security-center-enable-auditing-on-sql-server/auditing-settings-blade.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
