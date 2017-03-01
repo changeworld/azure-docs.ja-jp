@@ -3,7 +3,7 @@ title: "Java による Microsoft Azure Storage のクライアント側の暗号
 description: "Java 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 3df49907-554c-404a-9b0c-b3e3269ad04f
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 7e182ee18e3c2c12eb29f864dd875d764ca5d534
 ms.openlocfilehash: 116693fdb8a8fa0e332b74459f7827bbf44c9ed7
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -254,8 +255,3 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
   * [コア](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) パッケージ
   * [クライアント](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) パッケージ
 * [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)
-
-
-<!--HONumber=Nov16_HO4-->
-
-

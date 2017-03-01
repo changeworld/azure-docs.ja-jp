@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2016
+ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
 ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -41,9 +42,4 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
 ## <a name="next-steps"></a>次のステップ
 最新のデータ プロバイダーがインストールされていると、クライアント アプリケーションはサーバーに接続する準備ができています。 クライアントからの接続について詳しくは、「[Azure Analysis Services からデータを取得](analysis-services-connect.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

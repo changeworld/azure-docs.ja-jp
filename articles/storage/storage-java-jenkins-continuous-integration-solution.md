@@ -3,7 +3,7 @@ title: "Jenkins 継続的インテグレーション ソリューションでの
 description: "このチュートリアルでは、Jenkins 継続的インテグレーション ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。"
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: f4e5ca75-f6cb-4f74-981b-2aa06bb8de45
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 317b8d537465daf77c6feeb8fed927c72bdd7190
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -155,8 +156,3 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、 [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
-
-
-<!--HONumber=Nov16_HO3-->
-
-

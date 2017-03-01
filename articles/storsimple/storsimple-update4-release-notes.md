@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/10/2017
+ms.date: 02/16/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 1d9b020c6175ba8f47cde5cba0f69a1c8c228479
-ms.openlocfilehash: 48d2274fff2fb1300406f48c8d3e772aefa9933f
+ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
+ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,7 +32,7 @@ Update 4 は、Release (GA) または Update 0.1 から Update 3.1 までを実�
 StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。
 
 > [!IMPORTANT]
-> * Update 4 には、デバイス ソフトウェア、USM ファームウェア、LSI ドライバーおよびファームウェア、ディスク ファームウェア、Storport および Spaceport、セキュリティ、その他の OS 更新プログラムが含まれています。 この更新プログラムのインストールには 1.5 ～ 2 時間程度かかります。 この更新プログラムを適用してデバイスを最新の状態に保つことをお勧めします。 
+> * Update 4 には、デバイス ソフトウェア、USM ファームウェア、LSI ドライバーおよびファームウェア、ディスク ファームウェア、Storport および Spaceport、セキュリティ、その他の OS 更新プログラムが含まれています。 この更新プログラムのインストールには 4 時間程度かかります。 この更新プログラムを適用してデバイスを最新の状態に保つことをお勧めします。 
 > * 新しいリリースについては、更新プログラムの公開を段階的に行うため、更新プログラムが即座に表示されない場合があります。 これらの更新プログラムは間もなく利用可能になるため、数日待ってから、もう一度、更新プログラムの有無を確認してください。
 
 ## <a name="whats-new-in-update-4"></a>Update 4 の新機能
@@ -91,10 +92,5 @@ Update 4 では、新しい問題は見つかっていません。 以前のリ�
 ## <a name="next-step"></a>次のステップ
 
 StorSimple デバイスに [Update 4 をインストールする](storsimple-install-update-4.md)方法を確認します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

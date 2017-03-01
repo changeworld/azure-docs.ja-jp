@@ -15,8 +15,9 @@ ms.workload: backup-recovery
 ms.date: 02/12/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5031f64ffcd34b6287a3ecd87dd027c2bc7c716f
-ms.openlocfilehash: 9d0d0ba4ca5966b39ce62ea8296d48e5930c9782
+ms.sourcegitcommit: 3396818cd177330b7123f3a346b1591a4bcb1e4e
+ms.openlocfilehash: 14cc104bb755a0893c00963636e210b656b270b5
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 9d0d0ba4ca5966b39ce62ea8296d48e5930c9782
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、AWS Windows インスタンスを Azure 仮想マシンに移行する方法を説明します。
 
-移行は事実上 AWS から Azure へのフェールオーバーです。 マシンをフェールバックすることはできませんし、レプリケーションは一切継続しません。 この記事は Azure Portal での移行手順を説明しており、[物理マシンを Azure にレプリケートする](site-recovery-vmware-to-azure.md)手順に基づいています。
+移行は事実上 AWS から Azure へのフェールオーバーです。 マシンを AWS にフェールバックすることはできず、進行中のレプリケーションはありません。 この記事は Azure Portal での移行手順を説明しており、[物理マシンを Azure にレプリケートする](site-recovery-vmware-to-azure.md)手順に基づいています。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)
 
@@ -41,25 +42,32 @@ Site Recovery を使用すると、次のどのオペレーティング シス�
 
 このデプロイで必要なものを次に示します。
 
-* **構成サーバー**: Windows Server 2012 R2 を実行するオンプレミス VM が、構成サーバーとしてデプロイされている。 既定では、構成サーバーを展開するときに、他の Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバー) がインストールされます。 [詳細情報](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)
-* **EC2 インスタンス**: 移行対象の、EC2 仮想マシンのインスタンス。
+* **構成サーバー**: Windows Server 2012 R2 を実行する Amazon EC2 VM が構成サーバーとしてデプロイされています。 既定では、構成サーバーをデプロイするときに、他の Azure Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバー) がインストールされます。 この記事では、Azure Portal での移行手順を説明しています。基となる手順の詳細については、[こちら](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)を参照してください。
+
+* **EC2 インスタンス**: 移行対象の Amazon EC2 仮想マシンのインスタンス。
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
-1. コンテナーの作成
-2. 構成サーバーのデプロイ
-3. 構成サーバーをデプロイしたら、移行する VM と通信できることを検証します。
-4. レプリケーション設定をセットアップします。
-5. モビリティ サービスをインストールします。 保護する各 VM には、モビリティ サービスがインストールされている必要があります。 このサービスは、プロセス サーバーにデータを送信します。 モビリティ サービスは、手動でインストールまたはプッシュすることができ、VM の保護が有効になっている場合はプロセス サーバーによって自動的にインストールされます。 移行する EC2 インスタンスのファイアウォール規則で、このサービスのプッシュ インストールを許可するように構成する必要があります。 EC2 インスタンスのセキュリティ グループには、次の規則を適用する必要があります。
+1. Recovery Services コンテナーを作成する
 
-    ![firewall rules](./media/site-recovery-migrate-aws-to-azure/migrate-firewall.png)
-6. レプリケーションを有効にします。 移行する VM のレプリケーションを有効にします。 EC2 コンソールから取得できるプライベート IP アドレスを使用して、EC2 インスタンスを検出できます。
-7. 計画されていないフェールオーバーを実行します。 初期レプリケーションが完了したら、各 VM に対して、AWS から Azure への計画されていないフェールオーバーを実行できます。 必要に応じて、復旧計画を作成し、計画されていないフェールオーバーを実行して、複数の仮想マシンを AWS から Azure に移行できます。 [こちら](site-recovery-create-recovery-plans.md) をご覧ください。
+2. EC2 インスタンスのセキュリティ グループでは、次の規則を構成しておく必要があります。![規則](./media/site-recovery-migrate-aws-to-azure/migration_pic1.png)
 
-詳細については、[デプロイの手順](site-recovery-vmware-to-azure.md)および[計画されていないフェールオーバー](site-recovery-failover.md#run-an-unplanned-failover)の実行に関するページを参照してください。
+3. EC2 インスタンスと同じ Amazon Virtual Private Cloud に、ASR 構成サーバーをデプロイします。 構成サーバーのデプロイの要件については、VMware/物理サーバーから Azure の前提条件を参照してください。![DeployCS](./media/site-recovery-migrate-aws-to-azure/migration_pic2.png)
 
+4.    構成サーバーが AWS にデプロイされ、Recovery Services コンテナーに登録されると、次に示すように Site Recovery インフラストラクチャの下に構成サーバーとプロセス サーバーが表示されます。![CSinVault](./media/site-recovery-migrate-aws-to-azure/migration_pic3.png)
+  >[!NOTE]
+  >構成サーバーとプロセス サーバーが表示されるまでに最大 15 分かかる場合があります。
+  >
 
+5. 構成サーバーをデプロイしたら、移行する VM と通信できることを検証します。
 
-<!--HONumber=Feb17_HO2-->
+6. [レプリケーション設定をセットアップします](site-recovery-setup-replication-settings-vmware.md)。
 
+7. レプリケーションを有効にします。移行する VM のレプリケーションを有効にします。 EC2 コンソールから取得できるプライベート IP アドレスを使用して、EC2 インスタンスを検出できます。
+![SelectVM](./media/site-recovery-migrate-aws-to-azure/migration_pic4.png)
+8. EC2 インスタンスが保護され、Azure へのレプリケーションが完了したら、[テスト フェールオーバーを実行して](site-recovery-test-failover-to-azure.md)、Azure におけるアプリケーションのパフォーマンスを検証します。![TFI](./media/site-recovery-migrate-aws-to-azure/migration_pic5.png)
+
+9. VM ごとに、AWS から Azure へのフェールオーバーを実行します。 必要に応じて、復旧計画を作成してフェールオーバーを実行すると、複数の仮想マシンを AWS から Azure に移行することができます。 [こちら](site-recovery-create-recovery-plans.md) をご覧ください。
+
+10. 移行の場合、フェールオーバーをコミットする必要はありません。 代わりに、移行する各マシンの [移行の完了] オプションを選択します。 [移行の完了] アクションにより、移行プロセスが完了し、マシンのレプリケーションが削除され、マシンの Site Recovery の課金が停止されます。![移行](./media/site-recovery-migrate-aws-to-azure/migration_pic6.png)
 

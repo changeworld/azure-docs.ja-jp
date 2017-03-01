@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 11/28/2016
+ms.date: 02/28/2017
 ms.author: jahogg
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: daff0744d20996014b065b9d4f5fd6b196af923c
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -1543,10 +1544,5 @@ Azure チームの功績の次のメンバーに感謝いたします。Dominic 
 [27]: ./media/storage-table-design-guide/storage-table-design-IMAGE27.png
 [28]: ./media/storage-table-design-guide/storage-table-design-IMAGE28.png
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

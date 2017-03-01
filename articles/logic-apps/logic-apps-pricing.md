@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 17b33d3296ffbc65a22bf9a5077282fffdb7b3de
-ms.openlocfilehash: 4a0af9f3f9fab9ff459450eb8658273d4a1bc5dc
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: e14d55ad96187dc8ec6e6aac04463b58280783aa
+ms.lasthandoff: 02/15/2017
 
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps の料金モデル
@@ -27,7 +28,7 @@ Azure Logic Apps を使用すると、クラウドにおける統合ワークフ
 ### <a name="what-are-action-executions"></a>アクションの実行とは
 ロジック アプリ定義内のすべてのステップはアクションです。これには、トリガーや制御フローのステップ (条件、スコープ、for each ループ、do until ループなど)、コネクタの呼び出し、ネイティブ アクションの呼び出しが含まれます。
 トリガーは、特定のイベントが発生したときにロジック アプリの新しいインスタンスを作成する特殊なアクションと考えることができます。  トリガーには複数の動作が存在し、それによってロジック アプリの課金方法が変わる場合があります。
-* **ポーリング トリガー** – ロジック アプリのインスタンスを作成するうえでの基準を満たしたメッセージを受け取るまで絶えずエンドポイントをポーリングするトリガーです。  ポーリング間隔は、Logic Apps デザイナーでトリガーの設定を変えることで調整できます。  ロジック アプリのインスタンスが作成されたかどうかに関係なく、個々のポーリング要求がアクションの実行としてカウントされます。
+* **ポーリング トリガー** – ロジック アプリのインスタンスを作成するうえでの基準を満たしたメッセージを受け取るまで絶えずエンドポイントをポーリングするトリガーです。  ポーリング間隔は、ロジック アプリ デザイナーのトリガーで構成できます。  ロジック アプリのインスタンスが作成されたかどうかに関係なく、個々のポーリング要求がアクションの実行としてカウントされます。
 * **Webhook トリガー** – クライアントから送信される要求を特定のエンドポイントで待機するトリガーです。  Webhook のエンドポイントに送信された個々の要求がアクションの実行としてカウントされます。 Request と HTTP Webhook トリガーはどちらも Webhook トリガーです。
 * **定期実行のトリガー** – トリガーに対して構成された繰り返しの間隔に基づいてロジック アプリのインスタンスを作成するトリガーです。  たとえば、3 日に&1; 回や&1; 分間に&1; 回の頻度で実行するように定期実行のトリガーを構成することができます。
 
@@ -58,10 +59,5 @@ App Service プランが関連付けられているロジック アプリを従�
 ## <a name="next-steps"></a>次のステップ
 * [Logic Apps の概要][whatis]
 * [最初のロジック アプリの作成][create] [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/ [whatis]: logic-apps-what-are-logic-apps.md [create]: logic-apps-create-a-logic-app.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2017
+ms.date: 02/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6c2464b2f4d16f70c2841faf18e2246c8125b60f
-ms.openlocfilehash: 9421b8545715def823a4bdafd27c261e159fbbab
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 9742523c0a1743ff5982e746aa3c99aed8934499
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -42,7 +43,7 @@ Service Fabric はさまざまな種類のビジネス アプリケーション�
 </a></center>
 
 ## <a name="get-started-and-create-your-first-app"></a>導入および最初のアプリの作成 
-Service Fabric SDK とツールを使用して Windows、Linux、または MacOS の各環境でアプリを開発し、それらのアプリを Windows または Linux で実行されているクラスターにデプロイできます。  次のガイドに従ってアプリをデプロイします。デプロイにかかる時間は数分です。  最初のアプリケーションを実行後、既製の[サンプル アプリ](http://aka.ms/servicefabricsamples)をいくつかダウンロードして実行します。
+Service Fabric SDK とツールを使用して Windows、Linux、または MacOS の各環境でアプリを開発し、それらのアプリを Windows または Linux で実行されているクラスターにデプロイできます。  次のガイドに従ってアプリをデプロイします。デプロイにかかる時間は数分です。  最初のアプリケーションを実行後、既製の[サンプル アプリ](http://aka.ms/servicefabricsamples)をいくつかダウンロードして実行します。 具体的には、[入門サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)から始めてください。
 
 ### <a name="on-windows"></a>Windows の場合
 Service Fabric SDK には、Service Fabric アプリケーションの作成、デプロイ、およびデバッグのためのテンプレートとツールを提供する Visual Studio 用アドインが含まれます。 これらのトピックでは、Visual Studio で最初のアプリケーションを作成し、それをお使いの開発用コンピューターで実行するプロセスについて説明します。
@@ -50,7 +51,9 @@ Service Fabric SDK には、Service Fabric アプリケーションの作成、�
 [開発環境のセットアップ](service-fabric-get-started.md)
 [最初のアプリの作成 (C#)](service-fabric-create-your-first-application-in-visual-studio.md)
 
-この拡張可能な[ハンズオン ラボ](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)で Service Fabric のエンド ツー エンドの開発フローに慣れることができます。  ステートレス サービスの作成、監視と正常性レポートの構成、アプリケーションのアップグレードを実行する方法を学習します。 
+#### <a name="practical-hands-on-labs"></a>実践的なハンズオン ラボ
+この広範な[ハンズオン ラボ (パート 1)](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) で Service Fabric のエンド ツー エンドの開発フローに慣れることができます。  ステートレス サービスの作成、監視と正常性レポートの構成、アプリケーションのアップグレードを実行する方法を学習します。 その後、[ハンズオン ラボ (パート 2)](http://aka.ms/sflab2) を実行すると、ステートフル サービスについて学習できます。
+
 
 次の Channel9 のビデオでは、Visual Studio で C# アプリケーションを作成するプロセスについて説明します。  
 <center><a target="_blank" href="https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio">  
@@ -138,9 +141,4 @@ Service Fabric には、サービスの記述と管理に使用できる複数�
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

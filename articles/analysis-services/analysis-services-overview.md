@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 653c9a04016c0157b2107710e170ba63b3a499f7
 ms.openlocfilehash: 38f68d6df19d24492a234933e10d5d5cf34d1b23
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -119,10 +120,5 @@ Azure Analysis Services サーバーへのライブ接続を含み、OneDrive �
 
 ## <a name="next-steps"></a>次のステップ
 Azure Analysis Services について理解できたら、実際に始めてみてください。 Azure で[サーバーを作成する](analysis-services-create-server.md)方法およびサーバーに[表形式モデルをデプロイする](analysis-services-deploy.md)方法を学習してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

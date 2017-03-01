@@ -18,6 +18,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -47,7 +48,7 @@ ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
 定期実行のトリガーには、構成可能な次のプロパティがあります。
 
 指定された期間の後にロジック アプリを起動します。
-* は、必須フィールドであることを示しています。
+A * は、必須フィールドであることを示しています。
 
 | 表示名 | プロパティ名 | Description |
 | --- | --- | --- |
@@ -60,10 +61,5 @@ ms.openlocfilehash: fe558958c316c8dba42163e277ae01451f712e5a
 
 ## <a name="next-steps"></a>次のステップ
 プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

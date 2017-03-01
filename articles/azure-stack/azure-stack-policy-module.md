@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2016
+ms.date: 3/1/2016
 ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: ab3d1ffaeddf6f0422d1cc45f0057e5b8c60b0d1
 ms.openlocfilehash: 05e6a89b00db023300e74fa5fac25d6d5cb0676b
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -83,10 +84,5 @@ Once you've deployed the Azure policy, you receive an error when you try to depl
 [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
 
 [Deploy Templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

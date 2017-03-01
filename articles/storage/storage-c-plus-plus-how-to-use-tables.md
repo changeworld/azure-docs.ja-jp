@@ -3,7 +3,7 @@ title: "Table Storage を使用する方法 (C++) | Microsoft Docs"
 description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: .net
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: f191f308-e4b2-4de9-85cb-551b82b1ea7c
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 3047ba6bb363e087bfdf767a32c92a503000f11e
 ms.openlocfilehash: c97343008b5af378ed9d441e242018849e2ab69a
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -51,8 +52,8 @@ C++ 用 Azure ストレージ クライアント ライブラリをインスト�
 Azure Storage API を使用してテーブルにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/table.h"
+#include <was/storage_account.h>
+#include <was/table.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
@@ -456,10 +457,5 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 * [C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
 * [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
-ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
+ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
+ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -201,10 +202,10 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 
     a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
-    b. ServiceNow デプロイメントでユーザーを一意に識別するために使用するフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。 
+    b. ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。 
 
     > [!NOTE] 
-    > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure クラシック ポータルで **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_id など) の値が一致している必要があります。
+    > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure クラシック ポータルで **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
 
     c. Azure AD クラシック ポータルで、**[プロバイダー ID の識別]** の値をコピーし、**[Identity Provider URL]** ボックスに貼り付けます。
 
@@ -359,10 +360,10 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     d. **[Clock Skew]** ボックスに「**60**」と入力します。
    
-    e. ServiceNow デプロイメントでユーザーを一意に識別するために使用するフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
+    e. ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
    
     > [!NOTE]
-    > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure クラシック ポータルで **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_id など) の値が一致している必要があります。
+    > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure クラシック ポータルで **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
     > 
     > 
    
@@ -516,9 +517,4 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

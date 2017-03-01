@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/20/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 002d5651c7848a9c8fa2d049e334639a58bd9f6b
-ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
+ms.sourcegitcommit: 9eb2d7f4b431c01983620cb0cfcffd63a9f4d4e2
+ms.openlocfilehash: f7251dffc3dd922a6abeba0faca90843de64430f
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,13 +30,13 @@ ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
 
 この記事では、オンプレミスの VMware 仮想マシンを、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure にレプリケートする方法について説明します。
 
- 完全なレプリケーション (レプリケート、フェールオーバー、フェールバック) を行うことなく、単純なフェールオーバーのみで VMware VM を移行する場合は、[この記事](site-recovery-migrate-to-azure.md)を参照してください。
+ 目的が VMware VM を Azure に移行することである場合は、先に進む前に、[こちらの記事](site-recovery-migrate-to-azure.md)を読んで詳細を確認してください。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 ## <a name="steps"></a>手順
 
-ここでは、次の手順を実行します。
+次の手順を実行する必要があります。
 
 1. 前提条件と制限事項を確認します。
 2. Azure ネットワークおよびストレージ アカウントを設定します。
@@ -52,11 +53,12 @@ ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
 **サポート要件** | **詳細**
 --- | ---
 **Azure** | [Azure の要件](site-recovery-prereq.md#azure-requirements)を参照してください。
-**オンプレミスの構成サーバー** | Windows Server 2012 R2 以降が実行されている VMware VM が必要です。 このサーバーは、Site Recovery のデプロイの際に設定します。<br/><br/> 既定では、プロセス サーバーとマスター対象サーバーもこの VM にインストールされます。 スケールアップする場合は、別のプロセス サーバーが必要になります。 その場合の要件は構成サーバーと同じです。<br/><br/> これらのコンポーネントについては、[詳細を確認してください](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)。
+**オンプレミスの構成サーバー** | Windows Server 2012 R2 以降が実行されている VMware VM が必要です。 このサーバーは、Site Recovery のデプロイの際に設定します。<br/><br/> 既定では、プロセス サーバーとマスター対象サーバーもこの VM にインストールされます。 スケールアップする場合は、別のプロセス サーバーが必要になる可能性があります。この場合も、要件は構成サーバーと同じです。<br/><br/> これらのコンポーネントの詳細については、[こちら](site-recovery-set-up-vmware-to-azure.md#configuration-server-minimum-requirements)を参照してください。
 **オンプレミスの VMware サーバー** | 1 台以上の VMware vSphere サーバー (6.0、5.5、または 5.1 を実行し、最新の更新プログラムがインストール済みであること)。 サーバーは、構成サーバー (または別のプロセス サーバー) と同じネットワークに配置する必要があります。<br/><br/> vCenter サーバー (6.0 または 5.5 を実行し、最新の更新プログラムがインストール済みであること) を使用してホストを管理することをお勧めします。 バージョン 6.0 をデプロイする場合は、5.5 で利用できる機能のみがサポートされます。
 **オンプレミスの VM** | レプリケートする VM では、[サポートされるオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)を実行し、[Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠する必要があります。 VM では VMware ツールを実行する必要があります。
 **URL** | 構成サーバーは以下の URL にアクセスできる必要があります。<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> IP アドレスベースのファイアウォール規則を使用している場合、その規則で Azure との通信が許可されていることを確認します。<br/></br> [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。<br/></br> ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。<br/><br/> MySQL をダウンロードするために、http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi を許可します。
 **モビリティ サービス** | レプリケートされた VM すべてにインストールします。
+
 
 
 
@@ -65,20 +67,17 @@ ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
 **制限事項** | **詳細**
 --- | ---
 **Azure** | ストレージ アカウントとネットワーク アカウントは、コンテナーと同じリージョンに存在する必要があります。<br/><br/> Premium Storage アカウントを使用する場合は、レプリケーション ログを格納するために Standard ストア アカウントも必要になります。<br/><br/> インド中部およびインド南部では Premium アカウントにレプリケートすることはできません。
-**オンプレミスの構成サーバー** | VMware VM アダプターの種類は、VMXNET3 である必要があります。 そうでない場合は、[この更新プログラムをインストールしてください](https://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&docType=kc&externalId=2110245&sliceId=1&docTypeID=DT_KB_1_1&dialogID=26228401&stateId=1)。<br/><br/> vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br> このマシンは、ドメイン コントローラーであってはなりません。また、静的 IP アドレスを使用しないでください。<br/><br/> ホスト名は 15 文字以下で指定し、オペレーティング システムを英語にする必要があります。
+**オンプレミスの構成サーバー** | VMware VM アダプターの種類は、VMXNET3 である必要があります。 そうでない場合は、[この更新プログラムをインストールしてください](https://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&docType=kc&externalId=2110245&sliceId=1&docTypeID=DT_KB_1_1&dialogID=26228401&stateId=1)。<br/><br/> vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br> このマシンをドメイン コントローラーにすることはできません。 このマシンには、静的 IP アドレスが必要です。<br/><br/> ホスト名は 15 文字以下で指定し、オペレーティング システムを英語にする必要があります。
 **VMware** | vCenter 6.0 では 5.5 の機能のみがサポートされます。 Site Recovery は、クロス vCenter vMotion、仮想ボリューム、ストレージ DRS などの vCenter および vSphere 6.0 の新しい機能をサポートしていません。
 **VM** | [Azure VM の制限事項](site-recovery-prereq.md#azure-requirements)を確認してください。<br/><br/> 暗号化されたディスクを使用した VM または UEFI/EFI ブートを使用した VM をレプリケートすることはできません。<br/><br> 共有ディスク クラスターはサポートされていません。 ソース VM で NIC チーミングを使用している場合、フェールオーバー後に単一の NIC に変換されます。<br/><br/> iSCSI ディスクが VM で使用されている場合は、フェールオーバー後に、Site Recovery によって VHD ファイルに変換されます。 Azure VM から iSCSI ターゲットにアクセスできる場合は、Azure VM から iSCSI ターゲットに接続され、iSCSI ターゲットと VHD の両方が確認されます。 このような場合は、iSCSI ターゲットを切断します。<br/><br/> 同じワークロードを実行する VM を整合性データ ポイントに同時に復旧できるようにマルチ VM の整合性を有効にする場合は、VM のポート 20004 を開いてください。<br/><br/> Windows は C ドライブにインストールする必要があります。 OS ディスクは、ダイナミックではなく、ベーシックである必要があります。 データ ディスクはダイナミックでもかまいません。<br/><br/> VM 上の Linux/etc/hosts ファイルには、ローカル ホスト名をすべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。 ホスト名、マウント ポイント、デバイス名、システム パス、およびファイル名 (/etc; /usr) には英語のみを使用できます。<br/><br/> 特定の種類の [Linux ストレージ](site-recovery-support-matrix-to-azure.md#support-for-storage)がサポートされています。<br/><br/>VM の設定で **disk.enableUUID=true** を作成または設定します。 これによって、正常にマウントできるように、一貫性のある UUID が VMDK に提供され、完全なレプリケーションを行うことなく、フェールバック中に差分の変更のみがオンプレミスに転送されて戻されるようになります。
-
 
 ## <a name="set-up-azure"></a>Azure をセットアップする
 
 1. [Azure ネットワークをセットアップ](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)します。
-
     - Azure VM は、フェールオーバー後に作成されたときに、このネットワークに配置されます。
     - [Resource Manager](../resource-manager-deployment-model.md) またはクラシック モードでネットワークをセットアップすることができます。
 
 2. レプリケートされるデータ用に [Azure ストレージ アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)をセットアップします。
-
     - このアカウントには、Standard または [Premium](../storage/storage-premium-storage.md) を使用できます。
     - Resource Manager またはクラシック モードでアカウントをセットアップすることができます。
 
@@ -102,22 +101,10 @@ ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
 
     - Windows の場合、ドメイン アカウントを使用していなければ、ローカル マシンでリモート ユーザー アクセス コントロールを無効にする必要があります。 無効にするには、レジスタで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、値 1 を指定した DWORD エントリの **LocalAccountTokenFilterPolicy** を追加します。
     - CLI から Windows 用のレジストリ エントリを追加する場合は、次のように入力します。  ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
-    - Linux の場合、アカウントは、ソース Linux サーバーの root ユーザーである必要があります。
+    - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
 
-
-
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
-1. サインインして [[Azure Portal]](https://portal.azure.com) > **[Site Recovery]** の順に移動します。
-2. **[新規]** > **[管理]** > の順にクリックします。
-3. **[名前]**に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、いずれかを選択します。
-4. [リソース グループを作成](../azure-resource-manager/resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択します。 Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページで利用可能地域をご覧ください。
-5. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** をクリックしてから **[作成]** をクリックします。
-
-    ![新しいコンテナー](./media/site-recovery-vmware-to-azure/new-vault-settings.png)
-
-新しいコンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ブレードに表示されます。
-
+[!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
 
 ## <a name="select-the-protection-goal"></a>保護の目標を選択する
 
@@ -156,56 +143,15 @@ ms.openlocfilehash: 95a0f8b8bb7d9448dc7ce0c9ec786a182c85328b
 
 構成サーバーで統合セットアップのインストール ファイルを実行します。
 
-1. [統合セットアップ] > **[開始する前に]** で **[構成サーバーとプロセス サーバーをインストールする]** を選択します。
 
-   ![開始する前に](./media/site-recovery-vmware-to-azure/combined-wiz1.png)
-2. **[Third-Party Software License (サードパーティ製ソフトウェア ライセンス)]** で、**[I Accept the third party license agreement (サード パーティの使用許諾契約書に同意する)]** をクリックして MySQL をダウンロードし、インストールします。
+[!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-    ![サード パーティ製ソフトウェア](./media/site-recovery-vmware-to-azure/combined-wiz105.PNG)
-3. **[登録]** で、コンテナーからダウンロードした登録キーを参照して選択します。
-
-    ![登録](./media/site-recovery-vmware-to-azure/combined-wiz3.png)
-4. **[インターネット設定]** で、構成サーバーで実行されているプロバイダーがインターネット (443) 経由で Site Recovery に接続する方法を指定します。
-
-   * プロバイダーから直接接続するように指定する場合は、**[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
-   * プロキシを使用する場合は、**[プロキシ サーバーを使用して Azure Site Recovery に接続する]** を選択し、設定を指定します。
-
-     ![ファイアウォール](./media/site-recovery-vmware-to-azure/combined-wiz4.png)
-5. **[前提条件の確認]** で、セットアップによって設定が確認されます。  時刻の警告が表示されたら、**[日付と時刻]** の設定内の時刻がタイム ゾーンと同じであることを確認します。
-
-    ![前提条件](./media/site-recovery-vmware-to-azure/combined-wiz5.png)
-6. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスへのログオンに使用する資格情報を指定します。
-
-    ![MySQL](./media/site-recovery-vmware-to-azure/combined-wiz6.png)
-7. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 レプリケートする場合、PowerCLI 6.0 がインストールされているかどうかがチェックされます。
-
-    ![MySQL](./media/site-recovery-vmware-to-azure/combined-wiz7.png)
-8. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 使用可能な記憶域が 5 GB ある任意のドライブを選択できますが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
-
-    ![インストール場所](./media/site-recovery-vmware-to-azure/combined-wiz8.png)
-9. **[ネットワークの選択]** で、構成サーバーがレプリケーション データを送受信するリスナー (ネットワーク アダプターと SSL ポート) を指定します。 既定のポート (9443) は変更できます。 このポートに加えて、ポート 443 がレプリケーションを調整するために使用されます。 レプリケーション トラフィック用に 443 を使用しないでください。
-
-    ![[ネットワークの選択]](./media/site-recovery-vmware-to-azure/combined-wiz9.png)
-
-
-10. **[概要]** で情報を確認し、**[インストール]** をクリックします。 インストールが完了すると、パスフレーズが生成されます。 このパスフレーズはレプリケーションを有効にするときに必要になるので、コピーしてセキュリティで保護された場所に保管してください。 登録が完了すると、コンテナーの **[サーバー]** に、サーバーが表示されます。
-
-   ![概要](./media/site-recovery-vmware-to-azure/combined-wiz10.png)
-
-
-
+> [!NOTE]
+> 構成サーバーはコマンド ラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
 
 ### <a name="add-the-account-for-automatic-discovery"></a>自動検出用のアカウントを追加する
 
- VMware VM の自動検出用に作成したアカウントを追加します。
-
-1. 構成サーバーで、**CSPSConfigtool.exe** を実行します。 これはデスクトップのショートカットとして、または **[インストール場所]\home\svsystems\bin** フォルダー内で使用できます。
-2. **[アカウントの管理]** > **[アカウントの追加]** の順にクリックします。
-
-    ![[アカウントの追加]](./media/site-recovery-vmware-to-azure/credentials1.png)
-3. **[アカウントの詳細]** で、自動検出に使用するアカウントを追加します。 アカウント名がポータルに表示されるまでに 15 分以上かかることがあります。 すぐに更新するには、**[構成サーバー]**、サーバー名、**[サーバーを最新の情報に更新する]** の順にクリックします。
-
-    ![詳細](./media/site-recovery-vmware-to-azure/credentials2.png)
+[!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
 ### <a name="connect-to-vmware-servers"></a>VMware サーバーに接続する
 
@@ -215,18 +161,15 @@ VMware VM を検出するには、vSphere ESXi ホストまたは vCenter サー
     - データセンター、データストア、フォルダー、ホスト、ネットワーク、リソース、仮想マシン、vSphere Distributed Switch。
     - vCenter サーバーは Storage ビューの権限が必要です。
 - VMware サーバーを追加するとき、VMware サーバーがポータルに表示されるまで 15 分以上かかることがあります。
+オンプレミス環境で実行されている仮想マシンを Azure Site Recovery で検出できるようにするには、VMware vCenter サーバーまたは vSphere ESXi ホストを Site Recovery に接続する必要があります。
 
+**[+vCenter]** を選択して、VMware vCenter サーバーまたは VMware vSphere ESXi ホストの接続を開始します。
 
-1. 構成サーバーが vSphere ホストと vCenter サーバーにネットワーク アクセスできることを確認します。
-2. **[インフラストラクチャの準備]** > **[ソース]** の順にクリックします。 **[ソースの準備]** で、構成サーバーを選択します。 **[+ vCenter]** をクリックして vSphere ホストまたは vCenter サーバーを追加します。
-3. **[vCenter の追加]** で、サーバーのフレンドリ名、IP アドレスまたは FQDN を指定します。 別のポートで要求をリッスンするように VMware サーバーが構成されている場合を除き、ポートは 443 の設定のままにしておきます。 次に、自動検出用に作成したアカウントを選択し、**[OK]** をクリックします。
-
-    ![VMware](./media/site-recovery-vmware-to-azure/vmware-server.png)
+[!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
 Site Recovery は指定された設定を使用して VMware サーバーに接続し、VM を検出します。
 
 ## <a name="set-up-the-target"></a>ターゲットをセットアップする
-
 
 ターゲット環境をセットアップする前に、[Azure ストレージ アカウントとネットワーク](#set-up-azure)が存在することを確認します。
 
@@ -324,11 +267,9 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
 VM プロパティを確認し、必要な変更を加えることをお勧めします。
 
 1. **[レプリケートされたアイテム]** をクリックし、マシンを選択します。 **[要点]** ブレードにマシンの設定と状態に関する情報が表示されます。
-1. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
-
-    ![Enable replication](./media/site-recovery-vmware-to-azure/test-failover2.png)
-1. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、 [Azure の要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) に準拠するように名前を変更します。
-2. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスの設定を変更することができます。
+2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
+3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、 [Azure の要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) に準拠するように名前を変更します。
+4. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスの設定を変更することができます。
 
    - ターゲット IP アドレスを設定できます。
 
@@ -343,16 +284,30 @@ VM プロパティを確認し、必要な変更を加えることをお勧め�
      - たとえば、ソース マシンに&2; つのネットワーク アダプターがあり、ターゲット マシンのサイズが&4; つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。 ソース マシンに&2; つのアダプターがあるが、サポートされているターゲット サイズで&1; つしかサポートしていない場合、ターゲット マシンのアダプターの数は&1; つだけになります。     
    - 仮想マシンにネットワーク アダプターが複数ある場合、これらのアダプターはすべて同じネットワークに接続されます。
    - 仮想マシンにネットワーク アダプターが複数ある場合は、一覧で最初に表示されるアダプターが、Azure 仮想マシンの*既定*のネットワーク アダプターとなります。
-
-     ![Enable replication](./media/site-recovery-vmware-to-azure/test-failover4.png)
-1. **[ディスク]** で、VM のオペレーティング システム ディスクと、レプリケートされるデータ ディスクを確認できます。
+5. **[ディスク]** で、VM のオペレーティング システム ディスクと、レプリケートされるデータ ディスクを確認できます。
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 
-すべてのセットアップが完了したら、[テスト フェールオーバーを実行](site-recovery-test-failover-to-azure.md)して、すべて想定どおりに動作していることを確認します。
+すべてのセットアップが完了したら、テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。
 
 
+1. 1 つの仮想マシンをフェールオーバーする場合は、**[設定]** > **[レプリケートされたアイテム]** で、その VM をクリックし、**[+ テスト フェールオーバー]** をクリックします。
 
+    ![[テスト フェールオーバー]](./media/site-recovery-vmware-to-azure/TestFailover.png)
+
+1. 復旧計画をフェールオーバーする場合は、**[設定]** > **[復旧計画]** で、計画を右クリックし、**[テスト フェールオーバー]** をクリックします。 復旧計画を作成する場合は、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)。  
+
+1. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続する Azure ネットワークを選択します。
+
+1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名、**[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** で **[テスト フェールオーバー]** ジョブをクリックします。
+
+1. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
+
+1. [フェールオーバー後の接続の準備](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)が完了したら、Azure VM に接続できるようになります。
+
+1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
+
+詳しくは、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」をご覧ください。
 ## <a name="vmware-account-permissions"></a>VMware アカウントのアクセス許可
 
 Site Recovery は、プロセス サーバーで VM を自動検出するためと VM のフェールオーバーおよびフェールバックのために、VMware にアクセスできる必要があります。
@@ -375,7 +330,7 @@ Site Recovery は、プロセス サーバーで VM を自動検出するため�
 
 - さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
 - レプリケートやフェールバックではなく、マシンを移行する場合は、[詳細](site-recovery-migrate-to-azure.md#migrate-on-premises-vms-and-physical-servers)を確認してください。
-- [フェールバックの詳細を確認して](site-recovery-failback-azure-to-vmware.md)、Azure からの Azure VM のフェールバックおよびレプリケーションと、オンプレミスのプライマリ サイトへフェールバックを実行します。
+- [フェールバックの詳細を確認して](site-recovery-failback-azure-to-vmware.md)、Azure VM をオンプレミスのプライマリ サイトにフェールバックし、再度レプリケートします。
 
 ## <a name="third-party-software-notices-and-information"></a>サード パーティ製ソフトウェアに関する通知および情報
 Do Not Translate or Localize
@@ -387,9 +342,4 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

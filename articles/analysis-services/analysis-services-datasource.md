@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: a287ebd634a9305229424d0efea266146f88a952
 ms.openlocfilehash: 234032630cb3911deb7c7d32cfc4963ad6aee43f
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -76,10 +77,5 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 
 ## <a name="next-steps"></a>次のステップ
 オンプレミスのデータ ソースがある場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。 SSDT または SSMS でのサーバーの管理について詳しくは、[サーバーの管理に関する記事](analysis-services-manage.md)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

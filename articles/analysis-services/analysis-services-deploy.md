@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/27/2017
 ms.author: owend
 translationtype: Human Translation
 ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
 ms.openlocfilehash: 18d64f1ad4ef0dd41ae9302d08e02e94d1c608f5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -66,10 +67,5 @@ SSDT からデプロイする場合は、2016 年 9 月 30 日以降に更新さ
 
 ## <a name="next-steps"></a>次のステップ
 サーバーに表形式モデルをデプロイしたので、モデルに接続できます。 [SSMS で接続](analysis-services-manage.md)して管理できます。 また、Power BI、Power BI Desktop、Excel などの[クライアント ツールを使って接続](analysis-services-connect.md)し、レポートの作成を始めることができます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
