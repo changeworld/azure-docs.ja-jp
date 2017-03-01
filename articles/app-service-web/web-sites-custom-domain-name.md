@@ -4,7 +4,7 @@ description: "Azure App Service でカスタム ドメイン名 (バニティ �
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 tags: top-support-issue
 ms.assetid: 48644a39-107c-45fb-9cd3-c741974ff590
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2016
+ms.date: 01/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
+ms.sourcegitcommit: 59565c22ecd42985e8a6b81c4983fc2e87637e36
+ms.openlocfilehash: 589701270770494e4ec4d127a252712249da9f3a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -26,22 +27,12 @@ ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
 
 この記事では、 [Azure App Service](../app-service/app-service-value-prop-what-is.md)でカスタム ドメイン名を Web アプリ、モバイル アプリ バックエンド、または API アプリに手動でマップする方法について説明します。 
 
-アプリには、azurewebsites.net という固有のサブドメインが既に設定されています。 たとえば、アプリの名前が **contoso** の場合、ドメイン名は **contoso.azurewebsites.net** になります。 ただし、カスタム ドメイン名をアプリにマップして、URL に `www.contoso.com`のようにブランドが反映されるように設定できます。
+> [!NOTE] 
+> [Azure から直接カスタム ドメイン名を購入](custom-dns-web-site-buydomains-web-app.md)することもできます。
+>
+>
 
-> [!NOTE]
-> [Azure フォーラム](https://azure.microsoft.com/support/forums/)では、Azure の専門家からアドバイスを得ることができます。 より高いレベルのサポートを得るには、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) で **[サポートの要求]**をクリックします。
-> 
-> 
-
-[!INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
-
-## <a name="buy-a-new-custom-domain-in-azure-portal"></a>Azure ポータルで新しいカスタム ドメインを購入する
-カスタム ドメイン名をまだ購入していない場合は、 [Azure ポータル](https://portal.azure.com)のアプリの設定でカスタム ドメイン名を購入し、直接管理することができます。 この方法なら、アプリで [Azure Traffic Manager](web-sites-traffic-manager-custom-domain-name.md) を使用するかどうかに関係なく、カスタム ドメインをアプリに簡単にマップできます。 
-
-手順については、 [App Service でカスタム ドメイン名を購入する方法](custom-dns-web-site-buydomains-web-app.md)に関するページを参照してください。
-
-## <a name="map-a-custom-domain-you-purchased-externally"></a>外部で購入したカスタム ドメインをマップする
-既に [Azure DNS](https://azure.microsoft.com/services/dns/) またはサード パーティ プロバイダーからカスタム ドメインを購入している場合に、カスタム ドメインをアプリにマップするには、3 つの主要な手順を実行します。
+アプリにカスタム ドメインをマップする主な手順は&3; つです。
 
 1. [*(A レコードのみ)* アプリの IP アドレスを取得します](#vip)。
 2. [ドメインをアプリにマップする DNS レコードを作成します](#createdns)。 
@@ -52,7 +43,7 @@ ms.openlocfilehash: ebd86b236e5f49d9139732f8922f9929081677cc
    * **理由**: カスタム ドメイン名に対する要求にアプリが応答するように設定する。
 4. [DNS への反映を確認します](#verify)。
 
-### <a name="types-of-domains-you-can-map"></a>マップできるドメインの種類
+## <a name="types-of-domains-you-can-map"></a>マップできるドメインの種類
 Azure App Service では、次のカテゴリのカスタム ドメインをアプリにマップできます。
 
 * **ルート ドメイン** - ドメイン レジストラーに予約したドメイン名 (通常、`@` ホスト レコードによって表されます)。 
@@ -60,7 +51,7 @@ Azure App Service では、次のカテゴリのカスタム ドメインをア�
 * **サブドメイン** - ルート ドメインの下にある任意のドメイン。 たとえば、**www.contoso.com** (`www` ホスト レコードによって表されます)。  同じルート ドメインの異なるサブドメインを Azure の異なるアプリにマップできます。
 * **ワイルドカード ドメイン**  -  [左端の DNS ラベルが `*`](https://en.wikipedia.org/wiki/Wildcard_DNS_record) の任意のサブドメイン (たとえば、ホスト レコード `*`、`*.blogs`)。 **\*.contoso.com** などです。
 
-### <a name="types-of-dns-records-you-can-use"></a>使用できる DNS レコードの種類
+## <a name="types-of-dns-records-you-can-use"></a>使用できる DNS レコードの種類
 必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。 
 
 * [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。 
@@ -116,17 +107,17 @@ A レコードを次のように構成します ((@ は通常、ルート ドメ
   <tr>
     <td>contoso.com (ルート)</td>
     <td>@</td>
-    <td><a href="#vip">手順 1. で取得した IP アドレス</a></td>
+    <td><a href="#vip">手順 1</a> で取得した IP アドレス</td>
   </tr>
   <tr>
     <td>www.contoso.com (サブ)</td>
     <td>www</td>
-    <td><a href="#vip">手順 1. で取得した IP アドレス</a></td>
+    <td><a href="#vip">手順 1</a> で取得した IP アドレス</td>
   </tr>
   <tr>
-    <td>*.contoso.com (ワイルドカード)</td>
-    <td>*</td>
-    <td><a href="#vip">手順 1. で取得した IP アドレス</a></td>
+    <td>\*.contoso.com (ワイルドカード)</td>
+    <td>\*</td>
+    <td><a href="#vip">手順 1</a> で取得した IP アドレス</td>
   </tr>
 </table>
 
@@ -149,8 +140,8 @@ A レコードを次のように構成します ((@ は通常、ルート ドメ
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
-    <td>*.contoso.com (ワイルドカード)</td>
-    <td>*</td>
+    <td>\*.contoso.com (ワイルドカード)</td>
+    <td>\*</td>
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
 </table>
@@ -180,8 +171,8 @@ CNAME レコードを次のように構成します ((@ は通常、ルート �
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
-    <td>*.contoso.com (ワイルドカード)</td>
-    <td>*</td>
+    <td>\*.contoso.com (ワイルドカード)</td>
+    <td>\*</td>
     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
 </table>
@@ -207,50 +198,9 @@ Azure ポータルの **[カスタム ドメイン]** ブレードに戻り ( [�
 7. 検証が成功すると、 **[Add hostname (ホスト名の追加)]** ボタンがアクティブになり、ホスト名を割り当てることができます。 
 8. Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。 ブラウザーに Azure アプリが表示されます。これは、カスタム ドメイン名が正しく構成されていることを意味します。
 
-> [!NOTE]
-> DNS レコードが既に使用されており (アクティブ ドメインによってトラフィックが処理されているシナリオ)、ドメイン検証のために Web アプリを事前にバインドする必要がある場合は、次の表に示す例のように TXT レコードを作成します。 追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*appname*>.azurewebsites.net にマップする規則が適用されます。 
-> 
-> <table cellspacing="0" border="1">
-> 
-> <tr>
-> 
-> <th>FQDN の例</th>
-> 
-> <th>TXT ホスト</th>
-> 
-> <th>TXT 値</th>
-> </tr>
-> 
-> <tr>
-> 
-> <td>contoso.com (ルート)</td>
-> 
-> <td>awverify.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> 
-> <tr>
-> 
-> <td>www.contoso.com (サブ)</td>
-> 
-> <td>awverify.www.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> 
-> <tr>
-> 
-> <td>*.contoso.com (サブ)</td>
-> 
-> <td>awverify.*.contoso.com</td>
-> 
-> <td>&lt;<i>appname</i>>.azurewebsites.net</td>
-> </tr>
-> </table>
-> この DNS レコードを作成したら、Azure Portal に戻ってカスタム ドメイン名を対象の Web アプリに追加します。
-> 
-> 
+## <a name="migrate-an-active-domain-name"></a>アクティブなドメインの名前を移行する
+
+マップするドメインの名前が既存の Web サイトで使用されている場合、ダウンタイムを避ける方法については、「[Migrate an active custom domain to App Service (App Service へのアクティブなカスタム ドメインの移行)](app-service-custom-domain-name-migrate.md)」をご覧ください。
 
 <a name="verify"></a>
 
@@ -268,7 +218,7 @@ Azure ポータルの **[カスタム ドメイン]** ブレードに戻り ( [�
 HTTPS でカスタム ドメイン名をセキュリティ保護する方法を確認します。そのためには、[Azure で SSL 証明書を購入](web-sites-purchase-ssl-web-site.md)するか、[別の場所からの SSL 証明書を使用](web-sites-configure-ssl-certificate.md)します。
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 
@@ -278,9 +228,4 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

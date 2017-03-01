@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメントにおける分析、�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 04a7020a-ad74-4491-be69-0bd574890029
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c407e8f0beb110844ba2ae4ca1a065a122d0fdbd
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -59,10 +60,5 @@ ms.openlocfilehash: c407e8f0beb110844ba2ae4ca1a065a122d0fdbd
 ### <a name="causes"></a>原因
 * 分析、監視、ダッシュ ボードに表示されるアプリケーションのクラッシュをトラブルシューティングするには、以前のバージョンの SDK に関する既知の問題についてのリリース ノートをご確認ください。
 * アプリケーションのクラッシュをさらにトラブルシューティングするには、インストールされているアプリケーションを使用してテスト デバイスからイベントを実行し、Azure モバイル エンゲージメント UI の [Monitor – Events (監視 - イベント)] セクションでデバイス ID を検索します。 次に、アプリケーションをクラッシュさせたイベントを実行し、Azure Mobile Engagement UI の [監視 - クラッシュ] セクションで追加情報を検索します。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

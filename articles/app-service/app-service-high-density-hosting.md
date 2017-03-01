@@ -2,7 +2,7 @@
 title: "Azure App Service での高密度ホスティング | Microsoft Docs"
 description: "Azure App Service での高密度ホスティング"
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 services: app-service\web
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: 0c2677b388f7a88ff88715a05212633565393cc2
 ms.openlocfilehash: 2d5d1d5123ca718b2e7dcdf426b77f91969dc9dc
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -152,10 +153,5 @@ App Service プランは、**PerSiteScaling** プロパティを true に設定�
 3. App Service プランの PerSiteScaling フラグを true に設定します。
 4. 新しいアプリが作成され、その App Service プランに **1** に設定された **numberOfWorkers** プロパティが割り当てられます。 この構成を使用すると、このワーカー プールで可能な最高の密度になります。
 5. ワーカーの数はアプリごとに個別に構成でき、必要に応じて追加リソースを許可できます。 たとえば、使用率が高いアプリでは **numberOfWorkers** を **3** に設定してそのアプリの処理能力を上げることができ、使用率の低いアプリでは **numberOfWorkers** を **1** に設定できます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

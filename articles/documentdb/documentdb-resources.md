@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2017
+ms.date: 02/15/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a42e04b6a8b09078986ba0d12c6d07305e8068c6
-ms.openlocfilehash: 15d1a9d819fdf9565e85ccea39a922c608aba917
+ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
+ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -406,14 +407,14 @@ UDF は、既存の UDF のリソースに HTTP DELETE を発行するだけで�
 上記のスニペットでは、[DocumentDB JavaScript SDK](https://github.com/Azure/azure-documentdb-js) を使用した登録 (POST)、登録解除 (PUT)、読み取りと一覧表示 (GET)、実行 (POST) を示していますが、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) や他の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) も使用できます。 
 
 ## <a name="documents"></a>ドキュメント
-コレクションでは、任意の JSON ドキュメントを挿入、置換、削除、読み取り、列挙、照会することができます。 DocumentDB では、スキーマやセカンダリ インデックスを必要とせずに、コレクションのドキュメントへのクエリをサポートできます。   
+コレクションでは、任意の JSON ドキュメントを挿入、置換、削除、読み取り、列挙、照会することができます。 DocumentDB では、スキーマやセカンダリ インデックスを必要とせずに、コレクションのドキュメントへのクエリをサポートできます。 既定では、ドキュメントの最大サイズは 2 MB です。   
 
 真にオープンなデータベース サービスである DocumentDB では、JSON ドキュメントのために特殊なデータ型 (日時など) や固有のエンコードなどを開発することはしません。 DocumentDB は、多様なドキュメント間の関係を記述するために特殊な JSON の規則を必要としません。DocumentDB の SQL 構文は、非常に強力な階層型のリレーショナル クエリ演算子をドキュメントの照会とプロジェクションのために提供します。ドキュメント間の関係を記述するために特殊な注釈や特別なプロパティを使用する必要はありません。  
 
 他のすべてのリソースと同様に、ドキュメントも REST API または任意の [クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)を使用して作成、置換、削除、読み取り、列挙、照会が簡単にできます。 ドキュメントを削除すると、入れ子になったすべての添付ファイルに該当するクォータがすぐに解放されます。 ドキュメントの読み取りの一貫性レベルは、データベース アカウントの一貫性ポリシーに従います。 このポリシーは、使用するアプリケーションのデータの一貫性の要件に合わせて、要求ごとにオーバーライドできます。 ドキュメント照会時の読み取りの一貫性は、コレクションに設定されたインデックス作成モードに従います。 "一貫性" に関しては、アカウントの一貫性ポリシーに従います。 
 
 ## <a name="attachments-and-media"></a>添付ファイルとメディア
-バイナリの BLOB やメディアは DocumentDB に格納することも、リモート メディア ストアに格納することもできます。 さらに、メディアのメタデータを、添付ファイルと呼ばれる特殊なドキュメントで表すこともできます。 DocumentDB の添付ファイルは、別の場所に格納されたメディアや BLOB を参照する特殊な (JSON) ドキュメントです。 添付ファイルは、リモート メディア ストレージに格納されたメディアのメタデータ (場所や著者など) をキャプチャする特殊なドキュメントにすぎません。 
+バイナリの BLOB やメディアは DocumentDB に格納することも (アカウントにつき最大 2 GB)、リモート メディア ストアに格納することもできます。 さらに、メディアのメタデータを、添付ファイルと呼ばれる特殊なドキュメントで表すこともできます。 DocumentDB の添付ファイルは、別の場所に格納されたメディアや BLOB を参照する特殊な (JSON) ドキュメントです。 添付ファイルは、リモート メディア ストレージに格納されたメディアのメタデータ (場所や著者など) をキャプチャする特殊なドキュメントにすぎません。 
 
 DocumentDB を使用して、指定のユーザーの e ブックに関連したインク注釈、コメントなどのメタデータ、ハイライト、ブックマーク、評価、嗜好などを格納するソーシャル読み取りアプリケーションを考えてください。   
 
@@ -460,10 +461,5 @@ HTTP コマンドを使用したリソースの操作の詳細については、
 [1]: media/documentdb-resources/resources1.png
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

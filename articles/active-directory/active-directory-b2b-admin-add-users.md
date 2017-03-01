@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 78fb1aba448ebfbba9e38deec35daf7b64b4027c
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 6a854486060c77d743cbdd42b7a341860ab77361
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,24 +32,21 @@ ms.openlocfilehash: 78fb1aba448ebfbba9e38deec35daf7b64b4027c
 ## <a name="admins-adding-guest-users-to-the-directory"></a>ゲスト ユーザーをディレクトリに追加する管理者
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをディレクトリに追加します。
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant]
+>[!ビデオ https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
 
-  このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant)からアクセスできます。
 
 ## <a name="admins-adding-guest-users-to-a-group"></a>ゲスト ユーザーをグループに追加する管理者
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをグループに追加します。
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group]
+>[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
 
-  このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group)からアクセスできます。
 
 ## <a name="admins-adding-guest-users-to-an-application"></a>ゲスト ユーザーをアプリケーションに追加する管理者
 
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをアプリケーションに追加します。
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps]
+>[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
 
-  このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps)からアクセスできます。
 
 ## <a name="related-articles"></a>関連記事
 
@@ -65,9 +63,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

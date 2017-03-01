@@ -4,7 +4,7 @@ description: "Azure App Service が API Apps 向けに提供している認証�
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: d620b53a-5a6f-41c9-84c7-f7ef5ff02ae7
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -108,10 +109,5 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。 入門シリーズの次のチュートリアルでは、 [App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 496e00c2b9a0b374450f9a6f9dff5d41c805261c
-ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
+ms.sourcegitcommit: 1ce47043f85e30f616c8b22e1107b192d4962d8a
+ms.openlocfilehash: 73c35da427f1e2080ab6fdd086d3168dad495415
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -27,14 +28,14 @@ ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
 
 
 ## <a name="connected-sources"></a>接続先ソース
-次の表は、サービス マップソリューションの接続先としてサポートされているソースとその説明です。
+サービス マップは、Microsoft Dependency Agent からデータを取得します。  Dependency Agent は、OMS への接続に関して OMS エージェントに依存しています。  つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。  次の表は、サービス マップソリューションの接続先としてサポートされているソースとその説明です。
 
 | 接続先ソース | サポートの有無 | 説明 |
 |:--|:--|:--|
-| [Windows エージェント](../log-analytics/log-analytics-windows-agents.md) | あり | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。  <br><br>OMS エージェントに加えて、Windows エージェントには Microsoft Dependency Agent が必要です。  サポートされる OS バージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
-| [Linux エージェント](../log-analytics/log-analytics-linux-agents.md) | はい | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。  <br><br>OMS エージェントに加えて、Linux エージェントには Microsoft Dependency Agent が必要です。  サポートされる OS バージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
-| [SCOM 管理グループ](../log-analytics/log-analytics-om-agents.md) | はい | サービス マップは、接続された System Center Operations Manager (SCOM) 管理グループ内の Windows と Linux のエージェントからのデータを分析して収集します。 <br><br>SCOM エージェント コンピューターを OMS に直接接続する必要はありません。 データは管理グループから OMS リポジトリに直接送信されます。|
-| [Azure Storage アカウント](../log-analytics/log-analytics-azure-storage.md) | いいえ | サービス マップはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
+| Windows エージェント | はい | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。  <br><br>[OMS エージェント](../log-analytics/log-analytics-windows-agents.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。  サポートされる OS バージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| Linux エージェント | はい | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。  <br><br>[OMS エージェント](../log-analytics/log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。  サポートされる OS バージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| SCOM 管理グループ | はい | サービス マップは、接続された [System Center Operations Manager (SCOM) 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>SCOM エージェント コンピューターを OMS に直接接続する必要はありません。 データは管理グループから OMS リポジトリに直接送信されます。|
+| Azure ストレージ アカウント | なし | サービス マップはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 サービス マップは 64 ビット プラットフォームのみをサポートします。
 
@@ -97,10 +98,10 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 各 Windows コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1.  OMS エージェントが Connect コンピューターで手順に従って OMS に直接インストールされていることを確認します。
-2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>*InstallDependencyAgent-Windows.exe*
-3.  ウィザードに従ってエージェントをインストールします。
-4.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、*C:\Program Files\Microsoft Dependency Agent\logs* にあります。 
+1.    OMS エージェントが Connect コンピューターで手順に従って OMS に直接インストールされていることを確認します。
+2.    Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>*InstallDependencyAgent-Windows.exe*
+3.    ウィザードに従ってエージェントをインストールします。
+4.    Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、*C:\Program Files\Microsoft Dependency Agent\logs* にあります。 
 
 Dependency Agent for Windows は、管理者によってコントロール パネルからアンインストールできます。
 
@@ -112,9 +113,9 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
  
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1.  OMS エージェントが [Linux コンピューターからのデータを分析して収集する手順に従ってインストールされていることを確認します。OMS エージェントは、Linux Dependency Agent の前にインストールされている必要があります](https://technet.microsoft.com/library/mt622052.aspx)。
-2.  次のコマンドを使用して、Linux Dependency Agent をルートとしてインストールします。<br>*sh InstallDependencyAgent-Linux64.bin*。
-3.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、*/var/opt/microsoft/dependency-agent/log* にあります。
+1.    OMS エージェントが [Linux コンピューターからのデータを分析して収集する手順に従ってインストールされていることを確認します。OMS エージェントは、Linux Dependency Agent の前にインストールされている必要があります](https://technet.microsoft.com/library/mt622052.aspx)。
+2.    次のコマンドを使用して、Linux Dependency Agent をルートとしてインストールします。<br>*sh InstallDependencyAgent-Linux64.bin*。
+3.    Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、*/var/opt/microsoft/dependency-agent/log* にあります。
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>Linux の Dependency Agent をアンインストールする
 Linux から Dependency Agent を完全にアンインストールするには、エージェント自体と、自動的にエージェントにインストールされたコネクタを削除する必要があります。  次の&1; つのコマンドで、両方ともアンインストールできます。
@@ -142,7 +143,7 @@ Windows Dependency Agent のファイルは、既定で *C:\Program Files\Micros
 
     InstallDependencyAgent-Linux64.bin -help
 
-| フラグ  説明
+| フラグ    説明
 |:--|:--|
 | -s | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
 | --check | アクセス許可とオペレーティング システムを確認しますが、エージェントはインストールされません。 |
@@ -177,8 +178,8 @@ Dependency Agent 管理パックは、Microsoft Management Agent 内で実行し
   
 管理パックがダウンロードされたことを確認するには、次の手順を実行します。
 
-1.  C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs で、Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp という名前のファイルを探します。  
-2.  ファイルが見つからず、エージェントが SCOM 管理グループに接続されている場合は、オペレーション コンソールの [管理] ワークスペースで管理パックをチェックし、SCOM にファイルがインポートされていることを確認します。
+1.    C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs で、Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp という名前のファイルを探します。  
+2.    ファイルが見つからず、エージェントが SCOM 管理グループに接続されている場合は、オペレーション コンソールの [管理] ワークスペースで管理パックをチェックし、SCOM にファイルがインポートされていることを確認します。
 
 サービス マップ は、Operations Manager Windows イベント ログにイベントを書き込みます。  このログはシステム ログ ソリューション経由で [OMS 内で検索](../log-analytics/log-analytics-log-searches.md)でき、どのログ ファイルをアップロードするかを構成できます。  デバッグ イベントが有効になっている場合は、イベント ソース *ADMConnector* とともにアプリケーション イベント ログに書き込まれます。
 
@@ -198,7 +199,7 @@ Dependency Agent 管理パックは、Microsoft Management Agent 内で実行し
 #### <a name="microsoft-dependency-agent"></a>Microsoft Dependency Agent
 Dependency Agent からトラブルシューティング データを生成するには、sudo または root 権限を持つアカウントでログインし、次のコマンドを実行します。  --help フラグを追加すると、追加のオプションを表示できます。
 
-    /opt/microsoft/dependency-agent/scripts/collect-dependency-agent-data.sh
+    /opt/microsoft/dependency-agent/lib/scripts/collect-dependency-agent-data.sh
 
 サポート データ パッケージがエージェントのインストール ディレクトリの下の /var/opt/microsoft/dependency-agent/log (ルートの場合)、またはスクリプトを実行しているユーザーのホーム ディレクトリ (ルート以外の場合) に保存されます。  --file <filename> オプションを使用すると、これを別の場所に保存できます。
 
@@ -322,9 +323,4 @@ Dependency Agent は、通常、システム メモリの 0.1% とシステム C
 
 ## <a name="next-steps"></a>次のステップ
 - サービス マップをデプロイして構成したら、[サービス マップを使用する](operations-management-suite-service-map.md)方法を確認します。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

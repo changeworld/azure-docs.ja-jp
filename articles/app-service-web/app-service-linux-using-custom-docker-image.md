@@ -5,7 +5,7 @@ keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 54b38c7f8cf685387ac639653d208a00cefbc3fa
-ms.openlocfilehash: f2a03c58ab09ef09ea2fc482a978bf0d9c23f212
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: 7e4aab65feac187b48ccca65b35bb94185323506
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.openlocfilehash: f2a03c58ab09ef09ea2fc482a978bf0d9c23f212
 App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 App Service on Linux では、これらの構成済みのアプリケーション スタックをホストするために Docker コンテナーを使用します。 まだ Azure で定義されていないアプリケーション スタックに Web アプリをデプロイする場合にも、カスタム Docker イメージを使用できます。 カスタム Docker イメージは、パブリック Docker リポジトリとプライベート Docker リポジトリのどちらでもホストできます。
 
 
-## <a name="how-to-set-a-custom-docker-image-for-a-new-web-app"></a>新しい Web アプリのカスタム Docker イメージを設定する方法
-カスタム Docker イメージは、新規の Web アプリと既存の Web アプリのどちらにでも設定できます。 [Azure Portal](https://portal.azure.com) を使用して Linux で新しい Web アプリを作成する場合、**[コンテナーの構成]** をクリックしてカスタム Docker イメージを設定します。
+## <a name="how-to-set-a-custom-docker-image-for-a-web-app"></a>Web アプリのカスタム Docker イメージを設定する方法
+カスタム Docker イメージは、新規の Web アプリと既存の Web アプリのどちらにでも設定できます。 [Azure Portal](https://portal.azure.com) を使用して Linux で Web アプリを作成する場合、**[コンテナーの構成]** をクリックしてカスタム Docker イメージを設定します。
 
 ![Linux の新しい Web アプリのカスタム Docker イメージ][1]
 
@@ -53,7 +54,7 @@ Docker Hub からカスタム Docker イメージを使用するには、次の�
 
 1. [Azure Portal](https://portal.azure.com) で Linux の Web アプリを特定し、**[設定]** で **[Docker コンテナー]** をクリックします。
 
-2.  **[イメージのソース]** で **[プライベート レジストリ]** を選択し、**イメージとオプションのタグ名**、プライベート レジストリの **[サーバー URL]**、資格情報としての **[ログイン ユーザー名]** と **[パスワード]** を入力して、**[保存]** をクリックします。
+2.  **[イメージのソース]** として **[プライベート レジストリ]** をクリックします。 資格情報 (**[ログイン ユーザー名]** および **[パスワード]**) と共に、**[イメージとオプションのタグ]** とプライベート レジストリの **[サーバー URL]** を入力します。 **[保存]**をクリックします。
 
     ![プライベート レジストリからの Docker イメージの構成][4]
 
@@ -71,9 +72,7 @@ Web アプリ向けにカスタム Docker イメージを使用する場合、Do
 
 コマンドの最後の行で、実行時に PORT 環境変数が渡されることが確認できます。 コマンドでは大文字小文字の区別が重要ですので注意してください。
 
-他のユーザーによって作成された既存の Docker イメージを使用する場合は、アプリケーション用のポート 80 以外のポートを指定する必要がある場合があります。 
-
-そのためには、次の図の値で `PORT` のアプリケーション設定を追加します。
+他のユーザーによって作成された既存の Docker イメージを使用する場合は、アプリケーション用のポート 80 以外のポートを指定する必要がある場合があります。 ポートを構成するには、次に示す値を使用して、`PORT` というアプリケーション設定を追加します。
 
 ![カスタム Docker イメージの PORT アプリ設定の構成][6]
 
@@ -104,6 +103,7 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 * [App Service on Linux の概要](./app-service-linux-intro.md)
 * [App Service on Linux での Web Apps の作成](./app-service-linux-how-to-create-a-web-app.md)
 * [Web Apps on Linux での Node.js 向け PM2 構成の使用](./app-service-linux-using-nodejs-pm2.md)
+* [Azure App Service Web Apps on Linux の FAQ](app-service-linux-faq.md)
 
 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿してください。
 
@@ -116,9 +116,4 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 [5]: ./media/app-service-linux-using-custom-docker-image/existingapp-configure-builtin.png
 [6]: ./media/app-service-linux-using-custom-docker-image/setting-port.png
 [7]: ./media/app-service-linux-using-custom-docker-image/kudu-docker-logs.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

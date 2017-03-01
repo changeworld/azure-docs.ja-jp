@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: ronitr
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: d225a6156ea3672ed214f8308d7e944e6ff08576
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
-[SQL Database テーブル監査](sql-database-auditing-get-started.md)は、TDS リダイレクトをサポートしている SQL クライアントと自動的に連携します。 なお、Blob 監査メソッドを使用している場合、リダイレクトは適用されません。
+[データベース監査](sql-database-auditing.md) は TDS リダイレクションに対応する SQL クライアントと自動的に連動します。 なお、Blob 監査メソッドを使用している場合、リダイレクトは適用されません。
 
 ## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>ダウンレベル クライアントのサポート
 TDS 7.4 を実装するクライアントもリダイレクトをサポートします。 この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
@@ -77,9 +78,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 | カナダ東部 |40.86.227.82, 40.86.225.194 |
 | 英国北部 |13.87.101.18, 13.87.100.232 |
 | 英国南部 2 |13.87.32.202, 13.87.32.226 |
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

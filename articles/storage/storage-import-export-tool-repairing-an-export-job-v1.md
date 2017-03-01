@@ -1,8 +1,8 @@
 ---
-title: "エクスポート ジョブの修正 | Microsoft Docs"
+title: "Azure Export ジョブの修復 | Microsoft Docs"
 description: "Azure Import/Export サービスを使用して作成したエクスポート ジョブを修復し、実行する方法について説明します。"
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/23/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: 61bcbe23f9c747aeb486414fca6c1eb394098d11
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="repairing-an-export-job"></a>エクスポート ジョブの修復
+# <a name="repairing-an-export-job"></a>Export ジョブの修復
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  
   
 1.  Azure Import/Export サービスでエクスポートできなかったファイルをダウンロードする。  
@@ -82,7 +83,7 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 ## <a name="using-repairexport-to-validate-drive-contents"></a>RepairExport を使用してドライブの内容を検証する  
 Azure Import/Export を **RepairExport** オプションと一緒に使用して、ドライブの内容が正しいことを検証することもできます。 各エクスポート ドライブのマニフェスト ファイルには、ドライブの内容に関する MD5 が含まれています。  
   
-また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageservices/importexport/Get-Job3) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、「[インポート/エクスポート サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。  
+また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、「[インポート/エクスポート サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。  
   
 次の例では、**/ManifestFile** と**/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
   
@@ -155,8 +156,4 @@ G:\pictures\wild\canyon.jpg.properties
 [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
 [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
 [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
 

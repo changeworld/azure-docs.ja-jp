@@ -5,7 +5,7 @@ keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS"
 services: app-service
 documentationCenter: 
 authors: aelnably
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 
 ms.service: app-service
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: d4a5260dde1994bbf4ef4467eddd2fb80a2199b0
-ms.openlocfilehash: 22c6c22ba3123555d279fac087a6be2f99bde8d7
+ms.sourcegitcommit: 831ef097027721146531e8d699fe3f67417a57ea
+ms.openlocfilehash: b88aa3d0ae89aec81c2b9144fb5de3210a0b8d1e
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -43,19 +44,25 @@ Azure App Service on Linux (現在プレビュー段階) のリリースでは�
 
 **Q:** VM への SSH 接続は可能ですか。
 
-**A:** いいえ。近い将来、アプリ コンテナーに SSH 接続する方法を提供する予定です。
+**A:** いいえ。今後のリリースで、アプリ コンテナーに SSH 接続する方法を提供する予定です。
 
-## <a name="continous-integration--deployment"></a>継続的な統合/デプロイ ##
+## <a name="continuous-integration--deployment"></a>継続的な統合/デプロイ ##
 
 **Q:** 自分の Web アプリでは、DockerHub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。 カスタム コンテナーの継続的な統合/デプロイはサポートしていますか。
 
-**A:** コンテナーの更新は、Web アプリを停止して起動するか、ダミーのアプリケーション設定を変更/追加してコンテナーを強制的に更新することで実行できますが、近い将来、カスタム コンテナー用の CI/CD 機能が提供される予定です。
+**A:** コンテナーの更新は、Web アプリを停止して起動するか、ダミーのアプリケーション設定を変更/追加してコンテナーを強制的に更新することで実行できますが、今後のリリースで、カスタム コンテナー用の CI/CD 機能が提供される予定です。
 
 ## <a name="language-support"></a>言語のサポート ##
 
 **Q:** コンパイルされていない .net core アプリはサポートされていますか。
 
-**A:** いいえ。コンパイル済みの .net コア アプリとすべての依存関係をデプロイする必要があります。フル デプロイとビルド エクスペリエンスは、近い将来提供される予定です。
+**A:** いいえ。コンパイル済みの .net コア アプリとすべての依存関係をデプロイする必要があります。フル デプロイとビルド エクスペリエンスは、今後のリリースで提供される予定です。
+
+## <a name="built-in-images"></a>組み込まれているイメージ ##
+
+**Q:** ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。
+
+**A:** Node.Js の場合、PM2 構成ファイルまたはスクリプト ファイルを指定できます。 .Net Core の場合、コンパイル済みの dll 名を指定する必要があります。 Ruby の場合、アプリの初期化に使用する Ruby スクリプトを指定できます。
 
 ## <a name="custom-containers"></a>カスタム コンテナー ##
 
@@ -69,11 +76,15 @@ Azure App Service on Linux (現在プレビュー段階) のリリースでは�
 
 **Q:** 自分が所有するストレージを持ち込むことはできますか?
 
-**A:**現時点ではサポートされていませんが、近い将来のサポートが計画されています。
+**A:** 現時点では、それはサポートされていません。
 
 **Q:** SCM サイトからカスタム コンテナーのファイル システムや実行中のプロセスを参照できません。 なぜですか?
 
 **A:** SCM サイトは別のコンテナーで実行されています。アプリ コンテナーのファイル システムや実行中のプロセスをチェックすることはできません。
+
+**Q:** カスタム コンテナーがポート 80 以外のポートをリッスンしています。 そのポートに要求をルーティングするようにアプリを構成するにはどうすればよいですか。
+
+**A:** **PORT** というアプリケーション設定を指定して、必要なポート番号の値を設定できます。
 
 ## <a name="pricing-and-sla"></a>料金と SLA ##
 
@@ -92,12 +103,6 @@ Azure App Service on Linux (現在プレビュー段階) のリリースでは�
 **A:**: https://aka.ms/webapps-uservoice にアイデアを送ることができます。 アイデアのタイトルに [Linux] を追加してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [App Service on Linux の概要](./app-service-linux-intro.md) 
 * [App Service on Linux とは](app-service-linux-intro.md)
-* [App Service on Linux での Web Apps の作成](./app-service-linux-how-to-create-a-web-app.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+* [App Service on Linux での Web Apps の作成](app-service-linux-how-to-create-a-web-app.md)
 

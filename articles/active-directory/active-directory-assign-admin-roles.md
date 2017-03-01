@@ -12,28 +12,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/23/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
+ms.sourcegitcommit: 6f2db3b411069b31424627f50336f1ba9750a9f5
+ms.openlocfilehash: 060f684cee6a8f98e5e8fb4a49f0bab92bd4df9c
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
+> [!div class="op_single_selector"]
+> * [Azure ポータル](active-directory-assign-admin-roles-azure-portal.md)
+> * [Azure クラシック ポータル](active-directory-assign-admin-roles.md)
+>
+>
+
 Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
 
 次の管理者ロールを使用できます。
 
-* **[課金管理者](#billing-administrator)**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
-* **[全体管理者/会社の管理者](#global-administrator)**: すべての管理機能にアクセスできます。 Azure アカウントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。
+* **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
+* **全体管理者/会社の管理者**: すべての管理機能にアクセスできます。 Azure アカウントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
   >
   >
-* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、[Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1?ui=en-US&rs=en-US&ad=US&fromAR=1)および [Exchange 管理センター](https://technet.microsoft.com/en-us/library/jj657489(v=exchg.150).aspx)内で管理アクセス許可が付与されており、Office 365 管理センターにアクセスしてレポートを読むことができます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
+* **コンプライアンス管理者**:
 * **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
+* **カスタマー ロックボックス アクセスの承認者**: ロックボックス サービスが有効になっている場合、このロールが割り当てられたユーザーは、Microsoft のエンジニアによる会社情報へのアクセス要求を承認できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
 * **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスで管理者になります。
 * **ディレクトリ リーダー**: これは、 [同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 * **ディレクトリ同期アカウント**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
@@ -42,25 +50,24 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 * **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
 * **Skype for Business サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。 このロールは、以前は **Lync サービス管理者** ロールと呼ばれていました。
 * **ゲストの招待元**: このロールが割り当てられたユーザーは、ゲストの招待を管理することができます。 その他の権限は含まれません。
-* **メールボックス管理者**: このロールは、RIM Blackberry デバイスの Exchange Online 電子メール サポートの一部としてのみ使用されます。 組織が RIM Blackberry デバイスの Exchange Online 電子メールを使用していない場合、このロールは使用しません。
-* **Partner Tier 1 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
-* **Partner Tier 2 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
-* **[パスワード管理者/ヘルプデスク管理者](#password-administrator)**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。 パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
+* **パスワード管理者/ヘルプデスク管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。 パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
   >
   >
+* **Power BI サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳しくは、「[Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/)」(Power BI の管理を簡単にする) をご覧ください。
+* **特権ロール管理者**: このロールが割り当てられたユーザーは、Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) を管理し、他のユーザーに対するロールの割り当てを更新することができます。
 * **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US)」をご覧ください。
-* **[サービス管理者](#service-administrator)**: サービス要求の管理とサービス正常性の監視を行います。
+* **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
   > [!NOTE]
   > サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
   >
   >
-* **[ユーザー アカウント管理者](#user-administrator)**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。 ユーザー管理の管理者の権限には、いくつかの制限が適用されます。 たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。 また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
-* **[セキュリティ リーダー](#security-reader)**: Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/ コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
-* **[セキュリティ管理者](#security-administrator)**: 同じサービス (Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 セキュリティ/コンプライアンス センター) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、さまざまな管理権限を持ちます。
+* **ユーザー アカウント管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。 ユーザー管理の管理者の権限には、いくつかの制限が適用されます。 たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。 また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
+* **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/ コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
+* **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 セキュリティ/コンプライアンス センター) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、さまざまな管理権限を持ちます。
 
 ## <a name="administrator-permissions"></a>管理者の権限
 ### <a name="billing-administrator"></a>課金管理者
@@ -114,16 +121,22 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 6. **[利用場所]** ボックスの一覧で場所を指定します。
 7. 操作が完了したら、 **[保存]**をクリックします。
 
+## <a name="deprecated-roles"></a>非推奨のロール
+
+次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
+
+* アドホック ライセンス管理者
+* メールで確認済みのユーザー作成者
+* デバイスの参加
+* デバイス マネージャー
+* デバイス ユーザー
+* デバイスの社内参加
+
 ## <a name="next-steps"></a>次のステップ
-* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)
+* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 * [ユーザーの管理](active-directory-create-users.md)
 * [パスワードの管理](active-directory-manage-passwords.md)
 * [グループの管理](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

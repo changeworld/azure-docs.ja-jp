@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB ドキュメント エクスプローラーでの JSON の表示 | Microsoft Docs"
+title: "Azure DocumentDB ポータル ツール: ドキュメント エクスプローラー | Microsoft Docs"
 description: "NoSQL ドキュメント データベースである DocumentDB で JSON の表示と JSON ドキュメントの編集、作成、アップロードを実行するための Azure ポータルのツールである、DocumentDB ドキュメント エクスプローラーについて説明します。"
 keywords: "json の表示"
 services: documentdb
@@ -13,21 +13,27 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
+ms.sourcegitcommit: 81c569c5130869e6d8c9dc79feca592aecc44e61
+ms.openlocfilehash: edccbbb72649c5a443fefd7f1d97a8c01a4daff2
+ms.lasthandoff: 02/15/2017
 
 
 ---
 # <a name="view-edit-create-and-upload-json-documents-using-documentdb-document-explorer"></a>DocumentDB ドキュメント エクスプローラーを使用して JSON ドキュメントを表示、編集、作成、アップロードする
 この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ドキュメント エクスプローラーの概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、アップロード、およびフィルター処理する Azure Portal のツールです。 
 
-ドキュメント エクスプローラーは、MongoDB のプロトコル対応の DocumentDB アカウントでは有効になっていません。 この機能が有効になった場合は、このページも更新されます。
+> [!NOTE]
+> ドキュメント エクスプローラーは、MongoDB のプロトコル対応の DocumentDB アカウントでは有効になっていません。 この機能が有効になった場合は、このページも更新されます。
 
-## <a name="launch-document-explorer"></a>ドキュメント エクスプローラーの起動
-1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]**をクリックします。 **[DocumentDB (NoSQL)]** が表示されない場合は、**[その他のサービス]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
+<a id="launch-document-explorer"></a>
+
+## <a name="launch-document-explorer-in-the-azure-portal"></a>Azure Portal でドキュメント エクスプローラーを起動する
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。 
+
+    **[NoSQL (DocumentDB)]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。
 2. アカウント名を選択します。 
 3. リソース メニューの **[ドキュメント エクスプローラー]**をクリックします。 
    
@@ -35,7 +41,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     **[ドキュメント エクスプローラー]** ブレードの **[データベース]** と **[コレクション]** の各ドロップダウン リストには、ドキュメント エクスプローラーを起動したコンテキストに応じて値が設定されます。 
 
-## <a name="create-a-document"></a>ドキュメントの作成
+## <a name="create-a-json-document"></a>JSON ドキュメントを作成する
 1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
 2. **[ドキュメント エクスプローラー]** ブレードの **[ドキュメントの作成]** をクリックします。 
    
@@ -53,7 +59,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の [データ移行ツール](documentdb-import-data.md) を使用して、データをすばやくインポートできます。
 
-## <a name="edit-a-document"></a>ドキュメントの編集
+## <a name="edit-a-json-document"></a>JSON ドキュメントを編集する
 1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
 2. 既存のドキュメントを編集するには、**[ドキュメント エクスプローラー]** ブレードでドキュメントを選択し、**[ドキュメント]** ブレードで編集して、**[保存]** をクリックします。
    
@@ -63,7 +69,7 @@ ms.openlocfilehash: 281a24005f076379fefe859386fdf84065c5cfe7
    
     ![Document Explorer の [破棄] コマンドのスクリーンショット](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## <a name="delete-a-document"></a>ドキュメントの削除
+## <a name="delete-a-document-from-documentdb"></a>DocumentDB からドキュメントを削除する
 1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
 2. **ドキュメント エクスプローラー**でドキュメントを選択し、**[削除]** をクリックして、削除を確定します。 確定後、そのドキュメントはドキュメント エクスプローラーの一覧から即座に削除されます。
    
@@ -129,7 +135,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
     ![Document Explorer の一括取り込み機能のスクリーンショット](./media/documentdb-view-JSON-document-explorer/uploaddocument1.png)
    
     **[ドキュメントのアップロード]** ブレードが開きます。 
-3. [参照] をクリックしてエクスプローラー ウィンドウを開き、アップロードする JSON ドキュメントを 1 つ以上選択して、 **[開く]**をクリックします。
+3. [参照] をクリックしてエクスプローラー ウィンドウを開き、アップロードする JSON ドキュメントを&1; つ以上選択して、 **[開く]**をクリックします。
    
     ![Document Explorer の一括取り込みプロセスのスクリーンショット](./media/documentdb-view-JSON-document-explorer/uploaddocument2.png)
    
@@ -143,7 +149,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 5. この操作が完了すると、アップロードするドキュメントをさらに最大 100 個選択することができます。
 
 ## <a name="work-with-json-documents-outside-the-portal"></a>ポータル外での JSON ドキュメントの操作
-Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。 コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
+Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための&1; つの手段にすぎません。 [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。 コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
 
 他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、DocumentDB の [データ移行ツール](documentdb-import-data.md) を使用すると、データを DocumentDB にすばやくインポートできます。
 
@@ -156,12 +162,5 @@ Azure ポータルのドキュメント エクスプローラーは、DocumentDB
 
 ## <a name="next-steps"></a>次のステップ
 ドキュメント エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関する記事を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
-
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/) も、DocumentDB の詳細を理解する際に便利なリソースです。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

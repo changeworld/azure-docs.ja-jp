@@ -5,7 +5,7 @@ services: app-service\web
 documentationcenter: python
 tags: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 84f043b8-9d05-479f-a9d0-d0d9a32a0bb9
 ms.service: app-service-web
@@ -18,6 +18,7 @@ ms.author: huvalo
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: f7b54a1a6266d6728ac81e0b709febb1d6f00f9f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -356,10 +357,5 @@ Azure Table Storage と MongoDB の使用方法については、次のリンク
 [Visual Studio]: http://www.visualstudio.com/
 [Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs 
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

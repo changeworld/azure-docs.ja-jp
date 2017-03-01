@@ -4,7 +4,7 @@ description: "Azure Web ジョブ SDK の紹介です。 この SDK の特徴、
 services: app-service\web, storage
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 8281267b-572b-4b14-a328-6704493ea682
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2d21cd34427921ad789b4c95212c07caddd5a966
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -166,10 +167,5 @@ Web ジョブ SDK には、トリガーやバインダーを使用しない場�
 Web ジョブ SDK の詳細については、「 [Azure WebJobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
 Web ジョブ SDK の最新の機能強化については、「 [リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "PowerShell を使って仮想ネットワークに接続し、そ�
 services: app-service
 documentationcenter: 
 author: ccompy
-manager: wpickett
+manager: erikre
 editor: cephalin
 ms.assetid: a5c76e77-972a-431c-b14b-3611dae1631b
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: ccompy
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: e8763f1ab7e51e10ae59cf2b6b2c609f0f45dcd3
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -703,9 +704,4 @@ Resource Manager デプロイ モデルを使用する仮想ネットワーク�
 <!--Links-->
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/
 [azureportal]: http://portal.azure.com
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

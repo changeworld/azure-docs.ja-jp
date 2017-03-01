@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: be2752f46ebedf35a28277ad853207ae8038e345
-ms.openlocfilehash: 16d18b375ba91338aafa0eaef106fdb9107bb872
+ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
+ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -39,17 +40,17 @@ Resource Manager デプロイメント モデルで作成された非管理対�
 
 **データ ディスク**:
 1.    データ ディスクを仮想マシンからデタッチします。
-2.    SSE が有効化されたことのないストレージ アカウントに VHD をコピーします。 ディスクを別のストレージ アカウントにコピーするには、[AzCopy](../storage/storage-use-azcopy.md) を使用します。`https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    SSE が有効化されたことのないストレージ アカウントに VHD をコピーします。 ディスクを別のストレージ アカウントにコピーするには、[AzCopy](../storage/storage-use-azcopy.md) を使用します。`AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myDataDisk.vhd`
 3.    コピーされたディスクを VM に接続し、VM を変換します。
 
 **OS ディスク**:
 1.    割り当てが解除された VM を停止します。 必要に応じて、VM 構成を保存します。
-2.    SSE が有効化されたことのないストレージ アカウントに OS VHD をコピーします。 ディスクを別のストレージ アカウントにコピーするには、[AzCopy](../storage/storage-use-azcopy.md) を使用します。`https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    SSE が有効化されたことのないストレージ アカウントに OS VHD をコピーします。 ディスクを別のストレージ アカウントにコピーするには、[AzCopy](../storage/storage-use-azcopy.md) を使用します。`AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    管理ディスクを使用する VM を作成します。作成時にその VHD ファイルを OS ディスクとしてアタッチします。
 
 
 ## <a name="before-you-begin"></a>開始する前に
-PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることをご確認ください。 インストールするには次のコマンドを実行します。
+PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -176,10 +177,5 @@ Standard Storage を使用するディスクと Premium Storage を使用する�
 ## <a name="next-steps"></a>次のステップ
 
 [スナップショット](virtual-machines-windows-snapshot-copy-managed-disk.md)を使用して、VM の読み取り専用コピーを取得します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

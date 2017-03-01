@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメント向け Windows Phone Si
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 4820d010-2bdd-4b17-88b0-9583bf0b95fb
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,10 +33,5 @@ ms.openlocfilehash: ff04a56d377725d344cf75c7b84af1cb211d4723
 * `EngagementIconCloseLight.png` : モバイル エンゲージメントのリーチ通知のWindows Phone ライト テーマ用 [終了] アイコンです。
 * `EngagementIconCloseDark.png` : モバイル エンゲージメントのリーチ通知のWindows Phone ダーク テーマ用 [終了] アイコンです。
 * `EngagementConfiguration.xml` : モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

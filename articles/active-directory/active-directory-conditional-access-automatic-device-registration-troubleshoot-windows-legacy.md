@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1b12d8ef3bbbfd2688f7bbd47968332e83a35252
-ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
+ms.sourcegitcommit: d0d213e2cc52f43c11efd49c51270aa42f8fad36
+ms.openlocfilehash: 6c373adaee553e9eca94a978afc62d453f7db0f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="troubleshooting-the-auto-registration-of-azure-ad-domain-joined-computers-for-windows-down-level-clients"></a>Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング 
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad-for-windows-down-level-clients"></a>Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング 
 
 このトピックは、次のクライアントにのみ適用されます。 
 
@@ -30,7 +31,7 @@ ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
 - Windows Server 2012 R2 
  
 
-Windows 10 または Windows Server 2016 については、「[Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)」をご覧ください。
+Windows 10 または Windows Server 2016 については、「[Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)」を参照してください。
 
 このトピックは、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-get-started.md)」の説明に従って、ドメイン参加済みデバイスの自動登録を構成済みであることを前提としています。
  
@@ -98,9 +99,4 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 およ
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、「[デバイスの自動登録に関する FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)」をご覧ください。 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

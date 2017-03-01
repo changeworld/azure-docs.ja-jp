@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
-ms.openlocfilehash: ba8fd7ea8979c8c2afbace60a5675b411438d6b4
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: ba8fd7ea8979c8c2afbace60a5675b411438d6b4
 * SQL Database の暗号化と監査のポリシーを定義する。
 * 利用しているすべてのサブスクリプションを対象に SQL Database リソースのセキュリティを監視する。
 * セキュリティの問題をすばやく特定して修復する。
-* [Azure SQL Database 脅威検出](../sql-database/sql-database-threat-detection-get-started.md)からのアラートを統合する。
+* [Azure SQL Database 脅威検出](../sql-database/sql-database-threat-detection.md)からのアラートを統合する。
 
 Security Center の機能は、SQL Database のリソースを保護することだけではありません。Azure Virtual Machines、Cloud Services、App Services、Virtual Network などのセキュリティを監視し、必要な対応を行うことができます。 Security Center の詳細については、[こちら](security-center-intro.md)を参照してください。
 
@@ -79,7 +80,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 監査と脅威検出が有効になっていない SQL サーバーが、下図のように Security Center によって示されます。 監査を有効にしたら、脅威の検出設定と、セキュリティの警告を受信する電子メールの設定を構成できます。 脅威の検出機能を使用すると、データベースのセキュリティを脅かす可能性のある異常なデータベース アクティビティが検出されたときに警告を受けることができます。 この警告は、Security Center ダッシュボードに表示されます。
 ![監査と脅威の検出][5]
 
-「[SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection-get-started.md)」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
+[Azure Portal での SQL Database の脅威の検出](../sql-database/sql-database-threat-detection-portal.md)に関するページの手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
 
 推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
 
@@ -90,7 +91,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 詳細については、[セキュリティ ヘルスの監視](security-center-monitoring.md)に関するページを参照してください。
 
 ## <a name="manage-and-respond-to-security-alerts"></a>セキュリティの警告の管理と対応
-Security Center は、真の脅威を検出し、偽陽性の検出を減らすために、[Azure SQL 脅威検出](../sql-database/sql-database-threat-detection-get-started.md)などの Azure リソースからログ データを自動的に収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
+Security Center は、真の脅威を検出し、偽陽性の検出を減らすために、[Azure SQL 脅威検出](../sql-database/sql-database-threat-detection.md)などの Azure リソースからログ データを自動的に収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
 
 警告を確認するには、[セキュリティ センター] ブレードの **[セキュリティ警告]** タイルを選択します。 **[セキュリティ警告]** ブレードで警告を選択すると、その原因となったイベントの詳細が表示されます。攻撃に対処するために必要な手順があれば、その情報も表示されます。 この例では、**[Potential SQL injection (SQL インジェクションの可能性)]** を選択してみましょう。
 ![セキュリティ警告][7]
@@ -115,9 +116,4 @@ Security Center は、真の脅威を検出し、偽陽性の検出を減らす�
 [6]: ./media/security-center-sql-database/monitor-health.png
 [7]: ./media/security-center-sql-database/alert.png
 [8]: ./media/security-center-sql-database/sql-injection.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

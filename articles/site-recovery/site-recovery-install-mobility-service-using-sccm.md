@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: da682645640d74485a1caaff82fd0483a0e3f149
-ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
+ms.sourcegitcommit: 93ac6629df82b1a5b8d14a1ad289e1e462b49b17
+ms.openlocfilehash: 8883b2d15592ea5e0c286bd6e6fc7c38134326a7
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="automate-mobility-service-installation-using-software-deployment-tools"></a>ソフトウェア展開ツールを使用して Mobility Service インストールを自動化する
@@ -83,8 +84,10 @@ ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
 | コマンド ライン | install.bat |
 | プログラムの実行条件 | ユーザーがログオンしているかどうか |
 9. 次のページで、ターゲットのオペレーティング システムを選択します。 Mobility Service は、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 のみにインストールできます。
-  ![sccm パッケージ プロパティ ページ&2;](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)   
+
+  ![sccm-package-properties-page2](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)   
 10. ウィザードを完了するには、[次へ] を&2; 回クリックします。
+
 > [!NOTE]
 > スクリプトでは、Mobility Service エージェントの新規インストールとインストール済みエージェントのアップグレードまたは更新の両方をサポートします。
 
@@ -199,9 +202,4 @@ Mobility Service をインストールする他の方法の詳細についてお
 
 ## <a name="next-steps"></a>次のステップ
 仮想マシンの[保護を有効にする](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications)準備をします。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

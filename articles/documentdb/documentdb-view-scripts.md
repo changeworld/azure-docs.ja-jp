@@ -1,6 +1,6 @@
 ---
-title: "DocumentDB スクリプト エクスプローラーという JavaScript エディター | Microsoft Docs"
-description: "DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) を管理するための Azure ポータル ツール、DocumentDB スクリプト エクスプローラーについて説明します。"
+title: "Azure DocumentDB ポータル ツール: スクリプト エクスプローラー | Microsoft Docs"
+description: "DocumentDB のサーバー側プログラミング アーティファクト (JavaScript ストアド プロシージャ、トリガー、ユーザー定義関数など) を管理するための Azure Portal のツール、DocumentDB スクリプト エクスプローラーについて説明します。"
 keywords: "javascript エディター"
 services: documentdb
 author: kirillg
@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/14/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
+ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
+ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -25,7 +26,9 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
 この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示と実行を可能にする Azure ポータルの JavaScript エディター、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。 DocumentDB のサーバー側プログラミングの詳細については、「 [ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md) 」という記事を参照してください。
 
 ## <a name="launch-script-explorer"></a>スクリプト エクスプローラーを起動する
-1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]**をクリックします。 **[DocumentDB アカウント]** が表示されない場合は、**[その他のサービス]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーションで、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。 
+
+    **[NoSQL (DocumentDB)]** が表示されない場合は、下にある **[その他のサービス]** をクリックしてから、![Azure DocumentDB アイコン](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png) **[NoSQL (DocumentDB)]** をクリックします。
 2. リソース メニューの **[スクリプト エクスプローラー]**をクリックします。
    
     ![スクリプト エクスプローラー コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -36,7 +39,8 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
    
     ![フィルターの結果が表示されたスクリプト エクスプローラーのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
-    > [AZURE.IMPORTANT] スクリプト エクスプローラーのフィルター機能では、"***現在***" 読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してスクリプトが自動的に更新されることはありません。
+    > [!IMPORTANT] 
+    > スクリプト エクスプローラーのフィルター機能では、"***現在***" 読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してスクリプトが自動的に更新されることはありません。
 
 1. スクリプト エクスプローラーに読み込まれたスクリプトトの一覧を更新するには、ブレードの上部にある **[更新]** をクリックするだけです。
    
@@ -100,16 +104,11 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
     ![スクリプト エクスプローラーのスクリプト プロパティのスクリーンショット ストアド プロシージャの実行とエラー](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
 
 ## <a name="work-with-scripts-outside-the-portal"></a>ポータルの外部のスクリプトを使用する
-Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の 1 つです。 REST API と [クライアント SDK](documentdb-sdk-dotnet.md)を使用してスクリプトを操作することもできます。 REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。 [C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
+Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の&1; つです。 REST API と [クライアント SDK](documentdb-sdk-dotnet.md)を使用してスクリプトを操作することもできます。 REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。 [C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
 
 ## <a name="next-steps"></a>次のステップ
 DocumentDB のサーバー側プログラミングの詳細については、 [ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md) に関する記事をご覧ください。
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/) も、DocumentDB の詳細を理解する際に便利なリソースです。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

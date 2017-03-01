@@ -4,7 +4,7 @@ description: "Mobile Apps を使用して、AAD、Google、Facebook、Twitter、
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4c0ba82ca010f1ee571424fa3d650718e5acdd8b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -104,9 +105,4 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
 
 <!-- URLs. -->
 [Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

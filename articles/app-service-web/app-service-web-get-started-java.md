@@ -4,7 +4,7 @@ description: "サンプル アプリをデプロイして、App Service での W
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: af27369b0ae8de0ece6da38a78b434e595fbfc4e
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 82accfbfa92dfe77d17da05425c2e05af33e5a31
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>初めての Java Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー)
-
-> [!div class="op_single_selector"]
-> * [初めての HTML サイト](app-service-web-get-started-html-cli-nodejs.md)
-> * [初めての .NET アプリ](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [初めての PHP アプリ](app-service-web-get-started-php-cli-nodejs.md)
-> * [初めての Node.js アプリ](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [初めての Python アプリ](app-service-web-get-started-python-cli-nodejs.md)
-> * [初めての Java アプリ](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
 このチュートリアルでは、シンプルな Java Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
 App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
@@ -127,10 +119,5 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 
 * [Azure にコードをデプロイする他の方法](web-sites-deploy.md)を試してみます。 
 * Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。 「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

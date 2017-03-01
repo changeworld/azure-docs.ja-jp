@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan; annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5240bfc66ce15f845a511b7f09a5cd6209c8d539
-ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
+ms.sourcegitcommit: 3fcd6583b415cea6b2151651297c55c93e59c796
+ms.openlocfilehash: b0375a99f5ea3d6af2d3ead382f9a43f1fd285f0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -155,7 +156,7 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         RemoteGateways        : null
         RemoteVirtualNetworkAddressSpace : null
 
-    ピアリングが確立されると、VM は両方の VNet を介して互いに通信できるようになります。 既定では `AllowVirtualNetworkAccess` が *True* に設定され、VNet 間の通信を許可する適切な ACL が VNet ピアリングによってプロビジョニングされます。 ただし、ネットワーク セキュリティ グループ (NSG) ルールを適用して接続をブロックすることはできます。特定のサブネット間や仮想マシン間の接続をブロックすることで、2 つの VNet 間のアクセスを細かく制御することができます。 NSG の詳細については、[ネットワーク セキュリティ グループ](virtual-networks-create-nsg-arm-ps.md)に関する記事を参照してください。
+    ピアリングが確立されると、VM は両方の VNet を介して互いに通信できるようになります。 既定では `AllowVirtualNetworkAccess` が *True* に設定され、VNet 間の通信を許可する適切な ACL が VNet ピアリングによってプロビジョニングされます。 ただし、ネットワーク セキュリティ グループ (NSG) ルールを適用して接続をブロックすることはできます。特定のサブネット間や仮想マシン間の接続をブロックすることで、2 つの VNet 間のアクセスを細かく制御することができます。 NSG の詳細については、[ネットワーク セキュリティ グループ](virtual-networks-create-nsg-arm-ps.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
@@ -225,7 +226,7 @@ PowerShell を使用してサブスクリプション間の VNet ピアリング
 [!INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
 1. "*同じ*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、手順 2. に進んでください。 "*異なる*" サブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間に VNet ピアリングを作成する機能は、**プレビュー** リリースに用意されています。 プレビュー リリースの機能は、一般向けリリースの機能と同等レベルの信頼性とサービス レベル アグリーメントを備えていません。 異なるサブスクリプション内の異なるデプロイメント モデルを使用してデプロイされた VNet 間にピアリングを作成している場合は、最初に次のタスクを完了する必要があります。
-    - PowerShell から次のコマンドを入力して、Azure サブスクリプションにプレビュー機能を登録します: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`。
+    - PowerShell から次のコマンドを入力して、Azure サブスクリプションにプレビュー機能を登録します: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` および `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`
     - この記事の「[Peering across subscriptions (サブスクリプション間のピアリング)](#x-sub)」の手順 1. ～ 2. を実行します。
 2. 次のコマンドを入力して、**VNET1** (Azure Resource Manager 仮想ネットワーク) の仮想ネットワーク オブジェクトを読み取ります。
 
@@ -235,7 +236,7 @@ PowerShell を使用してサブスクリプション間の VNet ピアリング
 
 3. このシナリオで VNet ピアリングを確立するには、リンクを&1; つだけ作成します。具体的には、**VNET1** から **VNET2** にリンクを作成します。 この手順では、クラシック VNet のリソース ID を知っておく必要があります。 リソース グループ ID の形式は、次の例のようになります。
 
-        subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
+           subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
 
     SubscriptionID、ResourceGroupName、および VirtualNetworkName は適切な名前に置き換えてください。
 
@@ -279,10 +280,5 @@ PowerShell を使用してサブスクリプション間の VNet ピアリング
     ```
 
 2. VNET ピアリングのいずれかのリンクを削除すると、ピアのリンク状態が "*切断*" に変わります。 この状態になると、ピア リンク状態が "*Initiated (開始済み)*" に変化するまではリンクを再作成できません。 両方のリンクを削除してから、VNET ピアリングを作成し直すことをお勧めします。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

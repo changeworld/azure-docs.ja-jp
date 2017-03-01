@@ -3,8 +3,7 @@ title: "Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
 description: "Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
 services: app-service\web
 documentationcenter: .net
-author: Juliako
-manager: erikre
+author: chrissfanos
 editor: 
 ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
 ms.service: app-service
@@ -12,7 +11,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/17/2016
+ms.date: 02/24/2017
 ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d

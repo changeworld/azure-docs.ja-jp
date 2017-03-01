@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
-ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
 ## <a name="get-started"></a>作業開始
 このチュートリアルは、OS X、Windows、または Linux で実行できます。
 - Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、[アカウントにサインアップ](https://azure.microsoft.com/)できます。
-- [Azure コマンドライン ツール](https://github.com/Azure/azure-cli#microsoft-azure-cli-20---preview)をインストールします。
+- [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールします。
 
 ## <a name="what-well-create"></a>作成内容
 これから設定するアプリとそのデプロイ フローのいくつかの重要な点について、手短に説明します。
@@ -319,7 +320,7 @@ VSTS でビルド定義を開くと、次のように表示されます。
 ## <a name="clean-up"></a>クリーンアップ
 このチュートリアルに関連するコンピューティング料金を抑えるには、次のコマンドを実行して ACS クラスターに関連するデプロイ パイプライン リソースをメモします。
 
-```azurecli 
+```azurecli    
 az container release list --resource-name myacs --resource-group myacs-rg
 ```
 
@@ -345,9 +346,4 @@ VSTS リリース定義を削除します。
 2. 左側の [リリース定義] リストで、削除するリリース定義の横にあるドロップダウンをクリックし、**[削除]** を選択します。
 
 `![VSTS リリース定義の削除](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

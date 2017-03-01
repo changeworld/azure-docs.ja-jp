@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2017
+ms.date: 02/16/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: da69b0e91cd945502ef3631755712772d546227f
+ms.sourcegitcommit: cf163b2809f50daf0273398d6fec50dfc6fd69a2
+ms.openlocfilehash: 96dbc1f5a84f52ab39a3515511c7851bba5fa9a9
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -96,15 +97,20 @@ DocumentDB の最新のニュースと機能については、 [弊社のブロ�
 ### <a name="recent-and-upcoming-events"></a>直近および今後のイベント
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | --- | --- | --- | --- | --- |
-| [Wintellect ウェビナー: Azure DocumentDB 入門](http://www.wintellect.com/software-development-training/register/webinar/30)| [Josh Lane](https://twitter.com/jplane)|オンライン|2017 年 1 月 12 日 午後 1 時 (東部標準時)|該当なし|
+|[South Florida Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB (南フロリダ コードキャンプ: Azure DocumentDB を使って 10 分以下でできる .NET 開発者向け NoSQL)](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|デイビー (フロリダ州)|2017 年 3 月 11 日|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
+|[Orlando Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB (オーランド コードキャンプ: Azure DocumentDB を使って 10 分以下でできる .NET 開発者向け NoSQL)](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|サンフォード (フロリダ州)|2017 年 4 月 8 日|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
+|[Global Azure Bootcamp: Serverless computing in Azure with Azure Functions and DocumentDB (グローバル Azure ブートキャンプ: Azure Functions と DocumentDB を使用した Azure でのサーバーレス コンピューティング)](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|アトランタ (ジョージア州)|2017 年 4 月 22 日|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
 
 *イベントで講演を行ったり、イベントを主催していますか。お手伝いできることがあれば、[ぜひお知らせください](mailto:askdocdb@microsoft.com)!*
 
 ### <a name="previous-events-and-recordings"></a>過去のイベントと記録
 | イベント名 | 講演者 | 場所 | 日付 | 記録 |
 | --- | --- | --- | --- | --- |
-| [Connect(); // 2016](https://connectevent.microsoft.com/) |Kirill Gavrylyuk |ニューヨーク州ニューヨーク |2016 年 11 月 16 ～ 18 日 |[Channel 9 Connect(); のビデオ](https://channel9.msdn.com/Events/Connect) |
-| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) |Santosh Hari |タラハッシー (フロリダ州) |2016 年 11 月 3 日 |該当なし |
+|[Ignite Australia: Hello DocumentDB: Azure’s blazing fast, planet-scale NoSQL database (イグナイト オーストラリア: Hello DocumentDB: Azure の高い処理能力、世界規模の NoSQL データベース)](https://msftignite.com.au/sessions/session-details/2115/hello-documentdb-azures-blazing-fast-planetscale-nosql-database-da224) | [Andrew Liu](https://twitter.com/aliuy8)|クイーンズランド (オーストラリア)|2017 年 2 月 15 日 (水)|近日公開予定|
+|[Ignite Australia: A Deep-Dive with Azure DocumentDB: Partitioning, Data Modelling, and Geo Replication (イグナイト オーストラリア: Azure DocumentDB ディープダイブ: パーティション分割、データ モデリング、geo レプリケーション)](https://msftignite.com.au/sessions/session-details/2116/a-deepdive-with-azure-documentdb-partitioning-data-modelling-and-geo-replication-da335b) | [Andrew Liu](https://twitter.com/aliuy8)|クイーンズランド (オーストラリア)|2017 年 2 月 16 日|近日公開予定|
+| Wintellect ウェビナー: Azure DocumentDB 入門| [Josh Lane](https://twitter.com/jplane)|オンライン|2017 年 1 月 12 日 午後 1 時 (東部標準時)|[Azure DocumentDB: Your Cloud-powered, Geo-scaled, NoSQL Superweapon...Hiding in Plain Sight (Azure DocumentDB: クラウドを活用し、geo スケールに対応した NoSQL の秘密兵器)](https://www.youtube.com/watch?v=uVcWgIYtBoc)|
+| [Connect(); // 2016](https://connectevent.microsoft.com/) |[Kirill Gavrylyuk](https://twitter.com/kirillg_msft) |ニューヨーク州ニューヨーク |2016 年 11 月 16 ～ 18 日 |[Channel 9 Connect(); のビデオ](https://channel9.msdn.com/Events/Connect) |
+| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) |[Santosh Hari](https://twitter.com/_s_hari)|タラハッシー (フロリダ州) |2016 年 11 月 3 日 |該当なし |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) |DocumentDB チーム |アトランタ (ジョージア州) |2016 年 9 月 26 ～ 30 日 |[SlideDeck](http://www.slideshare.net/aliuy/pass-summit-2016-azure-documentdb-a-deep-dive-into-advanced-features) |
 | [DevTeach](http://devteach.com/) |Ken Cenerelli |モントリオール (カナダ) |2016 年 7 月 4 ～ 8 日 |[NoSQL, No Problem, Using Azure DocumentDB (Azure DocumentDB を使用すれば NoSQL は問題なし)](http://www.slideshare.net/KenCenerelli) |
 | [Integration and IoT (統合と IoT) ](http://www.btug.be/events) |Eldert Grootenboer |コンティフ (ベルギー) |2016 年 6 月 30 日 |該当なし |
@@ -234,10 +240,5 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/documentdb-community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。 [電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

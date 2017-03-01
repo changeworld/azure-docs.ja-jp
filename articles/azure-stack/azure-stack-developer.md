@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/1/2017
 ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: 9c3d9ee502cef88ed00434a9ebfcd388f90b4af5
 ms.openlocfilehash: 2675c063e8d3d821fd560480c562c2780f2895fb
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -26,10 +27,5 @@ You can get started developing applications today, even if you don't have access
 * In Azure, you can create Azure Resource Manager templates that are also deployable to Azure Stack.  See [template considerations](azure-stack-develop-templates.md) for guidance on developing your templates to ensure portability.
 * There is a delta in service availability and service versioning between Azure and Azure Stack. You can use the [Azure Stack policy module](azure-stack-policy-module.md) to restrict Azure service availability and resource types to what's available in Azure Stack. Constraining available services will help your application rely on services available to Azure Stack.
 * The [Azure Stack Quickstart Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) are common scenario examples of how to develop your templates so they can be deployed to both Azure and Azure Stack.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

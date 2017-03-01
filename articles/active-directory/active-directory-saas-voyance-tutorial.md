@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: d316178b9d3451eaefe88a8245538aef42b57a85
 ms.openlocfilehash: 466b16cf391f6de101b6d212ad51d296d77cc804
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -310,9 +311,4 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-voyance-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-voyance-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-voyance-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

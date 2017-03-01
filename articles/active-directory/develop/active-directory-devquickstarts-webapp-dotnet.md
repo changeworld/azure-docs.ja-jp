@@ -1,6 +1,6 @@
 ---
 title: "Azure AD .NET Web アプリの概要 | Microsoft Docs"
-description: "サインインのために Azure AD と連携する .NET MVC Web アプリを構築する方法"
+description: "サインインのために Azure AD と連携する .NET MVC Web アプリを構築します。"
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,176 +15,173 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 60e11448dc83cba1f9bed8dbe49509232c064325
+ms.sourcegitcommit: 4094759caba015b9d609b616d5099a6e109bf1d4
+ms.openlocfilehash: 6ac0c3b2893b96f93bf2aeadd61b263654957477
+ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="aspnet-web-app-sign-in--sign-out-with-azure-ad"></a>Azure AD を使用した ASP.NET Web アプリのサインインおよびサインアウト
+# <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した ASP.NET Web アプリへのサインインおよびサインアウト
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure AD を使用すると、数行のコードを追加するだけで、Web アプリの ID 管理を外部委託し、シングル サインインおよびサインアウトを提供することが、簡単に実現できます。  ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニティ駆動の OWIN ミドルウェアの Microsoft 実装を使用することにより、これを達成できます。  ここでは、OWIN を使用して次のことを行います。
+Azure Active Directory (Azure AD) では、数行のコードを追加するだけでシングル サインイン/サインアウトを搭載できるため、Web アプリの ID 管理の外部委託を簡単に実現できます。 ユーザーは、Microsoft が実装する Open Web Interface for .NET (OWIN) ミドルウェアを使用して ASP.NET Web アプリへのサインインおよびサインアウトを行うことができます。 コミュニティ主導型の OWIN ミドルウェアは、.NET Framework 4.5 に含まれています。 この記事では、OWIN を使用して次を行う方法について説明します。
 
-* ID プロバイダーとして Azure AD を使用して、ユーザーをアプリにサインインします。
-* ユーザーについての情報を表示します。
-* ユーザーをアプリからサインアウトします。
+* Azure AD を ID プロバイダーとして使用して Web アプリにサインインする。
+* いくつかのユーザー情報を表示する。
+* アプリからサインアウトする。
 
-これを行うには、次の手順を実行する必要があります。
+## <a name="before-you-get-started"></a>開始する前に
+* [アプリのスケルトンをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)するか、[完全なサンプルをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)します。
+* アプリの登録先となる Azure AD テナントも必要です。 Azure AD テナントがない場合は、[テナントの取得方法](active-directory-howto-tenant.md)に関するページを参照して取得してください。
 
-1. アプリケーションを Azure AD に登録する
-2. OWIN 認証パイプラインを使用するようにアプリをセットアップする
-3. OWIN を使用して、サインイン要求およびサインアウト要求を Azure AD に発行する
-4. ユーザーに関するデータを印刷する
+準備ができたら、次の&4; つのセクションの手順を実行します。
 
-最初に、[アプリのスケルトンをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)するか、[完全なサンプルをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)します。  アプリケーションの登録先となる Azure AD テナントも必要です。  テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
+## <a name="step-1-register-the-new-app-with-azure-ad"></a>手順 1: Azure AD に新しいアプリを登録する
+ユーザー認証を行うようにアプリを設定するには、まず次の手順でテナントにアプリを登録する必要があります。
 
-## <a name="1-register-an-application-with-azure-ad"></a>1.アプリケーションを Azure AD に登録する
-アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
+1. [Azure Portal](https://portal.azure.com)にサインインします。
+2. 上部のバーで、自分のアカウント名をクリックします。 **[ディレクトリ]** リストから、アプリを登録する Active Directory テナントを選択します。
+3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
+4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
+5. 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI** (またはその両方) を作成します。
+  * **[名前]** は、ユーザーに対して表示されるアプリ名です。
+  * **[サインオン URL]** は、アプリのベース URL です。 スケルトンの既定の URL は https://localhost:44320/ です。
+  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 名前は、`https://<tenant-domain>/<app-name>` のように付けます (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
+6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 次のセクションで使用するために、アプリのページからこの値をコピーします。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 上部のバーにある自分のアカウントをクリックし、**[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
-3. 左側のナビゲーションで **[More Services (その他のサービス)]**をクリックし、**[Azure Active Directory]** を選択します。
-4. **[アプリの登録]** をクリックして、**[追加]** を選択します。
-5. 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI**を作成します。
-  * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-  * **[サインオン URL]** は、アプリのベース URL です。  スケルトンの既定値は、 `https://localhost:44320/`です。
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
-6. 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。  この値は次のセクションで必要になるので、アプリケーション ページからコピーします。
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2: OWIN 認証パイプラインを使用するようにアプリを設定する
+この手順では、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。 OWIN は、サインイン要求およびサインアウト要求の発行、ユーザー セッションの管理、ユーザー情報の取得などに使用します。
 
-## <a name="2-set-up-your-app-to-use-the-owin-authentication-pipeline"></a>2.アプリで OWIN 認証パイプラインを使用するよう設定します。
-ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+1. まず、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージをプロジェクトに追加します。
 
-* まず、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージをプロジェクトに追加します。
+     ```
+     PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
+     PM> Install-Package Microsoft.Owin.Security.Cookies
+     PM> Install-Package Microsoft.Owin.Host.SystemWeb
+     ```
 
-```
-PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
-PM> Install-Package Microsoft.Owin.Security.Cookies
-PM> Install-Package Microsoft.Owin.Host.SystemWeb
-```
+2. `Startup.cs` という名前のプロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順に選択して**OWIN** を検索し、OWIN Startup クラスをプロジェクトに追加します。 アプリの起動時に、OWIN ミドルウェアによって **Configuration(...)** メソッドが呼び出されます。
+3. クラスの宣言を `public partial class Startup` に変更します。 このクラスの部分は、別のファイルに実装済みです。 **Configuration(...)** メソッドで **ConfgureAuth(...)** を呼び出して、アプリの認証をセットアップします。  
 
-* OWIN Startup クラスを `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**  -->  **[新しいアイテム]** の順にクリックし、"OWIN" を検索します。  アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
-* クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。  `Configuration(...)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。  
+     ```C#
+     public partial class Startup
+     {
+         public void Configuration(IAppBuilder app)
+         {
+             ConfigureAuth(app);
+         }
+     }
+     ```
 
-```C#
-public partial class Startup
-{
-    public void Configuration(IAppBuilder app)
+4. App_Start\Startup.Auth.cs ファイルを開いて、**ConfigureAuth(...)** メソッドを実装します。 *OpenIDConnectAuthenticationOptions* で指定したパラメーターは、アプリが Azure AD と通信するための調整役として機能します。 OpenID Connect ミドルウェアはバックグラウンドで Cookie を使用するため、Cookie 認証も設定する必要があります。
+
+     ```C#
+     public void ConfigureAuth(IAppBuilder app)
+     {
+         app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+
+         app.UseCookieAuthentication(new CookieAuthenticationOptions());
+
+         app.UseOpenIdConnectAuthentication(
+             new OpenIdConnectAuthenticationOptions
+             {
+                 ClientId = clientId,
+                 Authority = authority,
+                 PostLogoutRedirectUri = postLogoutRedirectUri,
+             });
+     }
+     ```
+
+5. プロジェクトのルートにある web.config ファイルを開いて、`<appSettings>` セクションに構成値を入力します。
+  * `ida:ClientId`: 「手順 1: Azure AD に新しいアプリを登録する」で Azure Portal からコピーした GUID。
+  * `ida:Tenant`: Azure AD テナントの名前 (contoso.onmicrosoft.com など)。
+  * `ida:PostLogoutRedirectUri`: Azure AD に、サインアウト要求が正常に完了した後のユーザーのリダイレクト先を指示するインジケーター。
+
+## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>手順 3: OWIN を使用して Azure AD にサインインおよびサインアウト要求を発行する
+これで、OpenID Connect 認証プロトコルを使用して Azure AD と通信するように、アプリを適切に構成できました。 OWIN により、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持のすべてが処理されます。 OWIN により処理されないのは、ユーザーにサインインおよびサインアウトの方法を提供する処理のみです。
+
+1. コントローラーで承認タグを使用することにより、特定のページには、サインインしてからでないとアクセスできないようにすることができます。 これを行うには、Controllers\HomeController.cs を開いて、About コントローラーに `[Authorize]` タグを追加します。
+
+     ```C#
+     [Authorize]
+     public ActionResult About()
+     {
+       ...
+     ```
+
+2. OWIN を使用することにより、コード内から認証要求を直接発行することもできます。 これを行うには、 Controllers\AccountController.cs を開きます。 次に、SignIn() アクションおよび SignOut() アクションで、OpenID Connect チャレンジとサインアウト要求を発行します。
+
+     ```C#
+     public void SignIn()
+     {
+         // Send an OpenID Connect sign-in request.
+         if (!Request.IsAuthenticated)
+         {
+             HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+         }
+     }
+     public void SignOut()
+     {
+         // Send an OpenID Connect sign-out request.
+         HttpContext.GetOwinContext().Authentication.SignOut(
+              OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
+     }
+     ```
+
+3. Views\Shared\_LoginPartial.cshtml を開き、アプリのサインインとサインアウトのリンクをユーザーに表示するとともに、ビューにユーザー名を出力します。
+
+    ```HTML
+    @if (Request.IsAuthenticated)
     {
-        ConfigureAuth(app);
+     <text>
+         <ul class="nav navbar-nav navbar-right">
+             <li class="navbar-text">
+                 Hello, @User.Identity.Name!
+             </li>
+             <li>
+                 @Html.ActionLink("Sign out", "SignOut", "Account")
+             </li>
+         </ul>
+     </text>
     }
-}
-```
-
-* ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。  `OpenIDConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。  OpenID Connect ミドルウェアは、ユーザーに意識されない Cookie を使用するため、Cookie 認証もセットアップする必要があります。
-
-```C#
-public void ConfigureAuth(IAppBuilder app)
-{
-    app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
-
-    app.UseCookieAuthentication(new CookieAuthenticationOptions());
-
-    app.UseOpenIdConnectAuthentication(
-        new OpenIdConnectAuthenticationOptions
-        {
-            ClientId = clientId,
-            Authority = authority,
-            PostLogoutRedirectUri = postLogoutRedirectUri,
-        });
-}
-```
-
-* 最後に、プロジェクトのルートにある `web.config` ファイルを開いて、構成値を `<appSettings>` セクションで入力します。
-  * アプリの `ida:ClientId` は、手順 1. で Azure ポータルからコピーした GUID です。
-  * `ida:Tenant` は、Azure AD テナントの名前 (たとえば、"contoso.onmicrosoft.com") です。
-  * `ida:PostLogoutRedirectUri` は、サインアウト要求が正常に完了した後に、ユーザーがリダイレクトされる Azure AD を示します。
-
-## <a name="3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>3.OWIN を使用して、サインイン要求およびサインアウト要求を Azure AD に発行する
-これまでに、アプリは、OpenID Connect 認証プロトコルを使用して Azure AD と適切に通信するように構成されています。  OWIN は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての煩わしい処理を実行します。  OWIN により処理されないのは、ユーザーにサインインおよびサインアウトの方法を提供する処理のみです。
-
-* コントローラーで承認タグを使用することにより、特定のページでは、サインインしてからでないとアクセスできないようにすることができます。  `Controllers\HomeController.cs` を開いて、`[Authorize]` タグを About コントローラーに追加します。
-
-```C#
-[Authorize]
-public ActionResult About()
-{
-  ...
-```
-
-* OWIN を使用することにより、コード内から認証要求を直接発行することもできます。  `Controllers\AccountController.cs`を開きます。  SignIn() アクションおよび SignOut() アクションで、それぞれ OpenID Connect チャレンジおよびサインアウト要求を発行します。
-
-```C#
-public void SignIn()
-{
-    // Send an OpenID Connect sign-in request.
-    if (!Request.IsAuthenticated)
+    else
     {
-        HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+     <ul class="nav navbar-nav navbar-right">
+         <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+     </ul>
     }
-}
-public void SignOut()
-{
-    // Send an OpenID Connect sign-out request.
-    HttpContext.GetOwinContext().Authentication.SignOut(
-        OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
-}
-```
+    ```
 
-* ここで、 `Views\Shared\_LoginPartial.cshtml`を開きます。  ここは、ユーザーに、アプリのサインイン リンクおよびサインアウト リンクを表示し、ユーザーの名前をビュー内に表示する場所です。
+## <a name="step-4-display-user-information"></a>手順 4: ユーザー情報を表示する
+Azure AD で OpenID Connect を使用してユーザーを認証すると、"要求" (ユーザーに関するアサーション) を含む id_token がアプリに返されます。 以下の手順により、これらの要求を使用してアプリをカスタマイズできます。
 
-```HTML
-@if (Request.IsAuthenticated)
-{
-    <text>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-text">
-                Hello, @User.Identity.Name!
-            </li>
-            <li>
-                @Html.ActionLink("Sign out", "SignOut", "Account")
-            </li>
-        </ul>
-    </text>
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
-```
+1. Controllers\HomeController.cs ファイルを開きます。 `ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
 
-## <a name="4-display-user-information"></a>4.ユーザー情報を表示する
-OpenID Connect を使用してユーザーの認証処理を実行すると、Azure AD は id_token をアプリケーションに返します。id_token には、"クレーム"、またはユーザーに関する "アサーション" を含みます。  これらのクレームを使用して、アプリを個人向けにカスタマイズすることができます。
+ ```C#
+ public ActionResult About()
+ {
+     ViewBag.Name = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value;
+     ViewBag.ObjectId = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
+     ViewBag.GivenName = ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value;
+     ViewBag.Surname = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Surname).Value;
+     ViewBag.UPN = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Upn).Value;
 
-* `Controllers\HomeController.cs` ファイルを開きます。  `ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
+     return View();
+ }
+ ```
 
-```C#
-public ActionResult About()
-{
-    ViewBag.Name = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Name).Value;
-    ViewBag.ObjectId = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
-    ViewBag.GivenName = ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value;
-    ViewBag.Surname = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Surname).Value;
-    ViewBag.UPN = ClaimsPrincipal.Current.FindFirst(ClaimTypes.Upn).Value;
+2. アプリケーションをビルドし、実行します。 テナントでドメインが onmicrosoft.com である新規ユーザーを作成していない場合は、この時点で作成します。 その方法は次のとおりです。
 
-    return View();
-}
-```
+  a. そのユーザーとしてサインインし、ユーザーの ID が上部のバーにどのように表示されるかを確認します。
 
-最後に、アプリを構築して実行します。  *.onmicrosoft.com ドメインを使用して、テナントに新しいユーザーを作成します (作成していない場合)。  そのユーザーとしてサインインすると、ユーザーの ID が上部のナビゲーション バーにどのように反映されるかがわかります。  サインアウトし、テナント内の別のユーザーとして、再びサインインします。  状況が許す場合は、このアプリケーションの別のインスタンス (独自のクライアント ID を使用) を登録して実行し、シングル サインオンの実際の動作を確認します。
+  b. サインアウトしてから、テナント内の別のユーザーとして再びサインインします。
 
-参照用の完全なサンプル (構成値を除く) が、 [ここ](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)で提供されています。  
+  c. 状況が許す場合は、このアプリケーションの別のインスタンス (独自のクライアント ID を使用) を登録して実行し、シングル サインインの動作を確認します。
 
-これ以降は、さらに高度なトピックに進むことができます。  次のチュートリアルを試してみてください。
+## <a name="next-steps"></a>次のステップ
+リファレンスについては、[完全なサンプル](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip) (環境に応じた構成値を除く) をご覧ください。
 
-[Azure AD を使用することによる Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)
+これで、さらに高度なトピックに進む準備ができました。 たとえば、[Azure AD を使用して Web API を保護](active-directory-devquickstarts-webapi-dotnet.md)してみましょう。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

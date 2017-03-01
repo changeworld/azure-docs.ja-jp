@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
-ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -179,21 +180,21 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [Storage サービス REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [.NET、Windows Phone、Windows ランタイム用ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
-* [Java/Android 用ストレージ クライアント ライブラリ](/develop/java/)
+* [Java/Android 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/java/)
 * [Node.js 用ストレージ クライアント ライブラリ](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [PHP 用ストレージ クライアント ライブラリ](/develop/php/)
-* [Ruby 用ストレージ クライアント ライブラリ](/develop/ruby/)
-* [Python 用ストレージ クライアント ライブラリ](/develop/python/)
+* [PHP 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/php/)
+* [Ruby 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/ruby/)
+* [Python 用ストレージ クライアント ライブラリ](https://azure.microsoft.com/develop/python/)
 * [PowerShell 1.0 用ストレージ コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage 管理サービス
-* [Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [.NET 用 Storage Resource Provider クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+* [Storage Resource Provider REST API リファレンス](/rest/api/storagerp/)
+* [.NET 用 Storage Resource Provider クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)
+* [PowerShell 1.0 用 Storage Resource Provider コマンドレット](/powershell/storage/)
 * [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage データ移動サービス
-* [Storage Import/Export Service REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+* [Storage Import/Export Service REST API](storage-import-export-service.md)
 * [.NET 用 Storage Data Movement クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
@@ -248,9 +249,4 @@ Azure Storage についてさらに学習するには、次のリソースを参
 * [Python から Table ストレージを使用する方法](storage-python-how-to-use-table-storage.md)
 * [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 * [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

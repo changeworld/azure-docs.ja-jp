@@ -44,8 +44,9 @@
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
 ### [S1、S2、S3 の廃止](documentdb-performance-levels.md)
 ### [要求ユニット](documentdb-request-units.md)
-### Azure CLI
-#### [アカウントの作成](documentdb-automation-resource-manager-cli.md)
+### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+### Azure CLI 1.0
+#### [アカウントの作成](documentdb-automation-resource-manager-cli-nodejs.md)
 #### [リージョンの追加または削除](documentdb-automation-region-management.md)
 ### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [ファイアウォールのサポート](documentdb-firewall-support.md)
@@ -124,8 +125,3 @@
 ## [野球で説明するデータ整合性](http://research.microsoft.com/apps/pubs/default.aspx?id=206913)
 ## [書籍: Node.js アプリケーションでの Microsoft Azure DocumentDB の使用](https://go.microsoft.com/fwlink/?LinkId=828428&clcid=0x409)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

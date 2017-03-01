@@ -1,22 +1,23 @@
 ---
 title: "Azure 診断構成スキーマのバージョンの一覧 |Microsoft Docs"
 description: "Azure Virtual Machines、VM Scale Sets、Service Fabric、および Cloud Services のパフォーマンス カウンターの収集を構成するために使用します。"
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 2e1bc45b55cd79af8579a5ddaf43cf0db019c92f
+ms.sourcegitcommit: ac1ae46a165baad675c6b2445f91e05694eae6f9
+ms.openlocfilehash: 5d0894430dc915fc46d753a0b672de3b51ce3888
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 2e1bc45b55cd79af8579a5ddaf43cf0db019c92f
 > Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と組み合わせて使用します。
+Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK 診断バージョン配布グラフ  
 
@@ -39,6 +40,10 @@ Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、
 |2.6               |1.3                         |"|  
 |2.7               |1.4                         |"|  
 |2.8               |1.5                         |"|  
+|2.9               |1.6                         |"|
+|2.96              |1.7                         |"|
+
+
 
  Azure 診断バージョン 1.0 は最初はプラグイン モデルに付属しており、Azure SDK をインストールすると、その SDK に付属する Azure 診断バージョンを入手できました。  
 
@@ -51,10 +56,5 @@ Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、
 
 [診断 1.2 構成スキーマ](azure-diagnostics-schema-1dot2.md)  
 
-[診断 1.3 ～ 1.5 構成スキーマ](azure-diagnostics-schema-1dot3-to-1dot5.md)  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+[診断 1.3 およびそれ以降の構成スキーマ](azure-diagnostics-schema-1dot3-and-later.md)  
 

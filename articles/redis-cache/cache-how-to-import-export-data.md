@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: a2cf3abae986d2ab2243a4b2a9123e4c164d2ef1
+ms.sourcegitcommit: 9447ccf45cfee74df66b46bd20d872f64ee06efd
+ms.openlocfilehash: 79280958305ba135d23ab9c5c37d83f8b5eaf8f2
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,14 +32,14 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 >
 
 ## <a name="import"></a>インポート
-インポートは、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Redis Cache は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
+Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使うことができます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Redis Cache は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
 
 > [!NOTE]
 > インポート操作を開始する前に、Redis データベース (RDB) ファイルが、Azure Redis Cache インスタンスと同じリージョンとサブスクリプションにある Azure Storage 内のページ BLOB にアップロードされる設定になっていることを確認してください。 詳細については、 [Azure Blob Storage の使用](../storage/storage-dotnet-how-to-use-blobs.md)に関するページをご覧ください。 [Azure Redis Cache の Export](#export) 機能を使って RDB ファイルをエクスポートした場合、そのファイルは既にページ BLOB に格納されており、インポートの準備ができています。
 >
 >
 
-1. エクスポートされた 1 つ以上のキャッシュ BLOB をインポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、キャッシュ インスタンスの **[設定]** ブレードで **[データのインポート]** をクリックします。
+1. エクスポートされた&1; つ以上のキャッシュ BLOB をインポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[リソース]** メニューの **[データのインポート]** をクリックします。
 
     ![Import data][cache-import-data]
 2. **[BLOB の選択]** をクリックして、インポートするデータを含むストレージ アカウントを選択します。
@@ -47,7 +48,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 3. インポートするデータが含まれているコンテナーをクリックします。
 
     ![Choose container][cache-import-choose-container]
-4. BLOB 名の左側の領域をクリックして、インポートする 1 つ以上の BLOB を選択し、 **[選択]**をクリックします。
+4. BLOB 名の左側の領域をクリックして、インポートする&1; つ以上の BLOB を選択し、 **[選択]**をクリックします。
 
     ![Choose blobs][cache-import-choose-blobs]
 5. **[インポート]** をクリックしてインポート処理を開始します。
@@ -66,13 +67,13 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 ## <a name="export"></a>エクスポート
 エクスポート機能では、Azure Redis Cache に格納されたデータを Redis と互換性のある RDB ファイルにエクスポートできます。 この機能を使えば、Azure Redis Cache インスタンス間でデータを移動したり、Azure Redis Cache インスタンスから別の Redis サーバーにデータを移動したりできます。 エクスポート処理中に、Azure Redis Cache サーバー インスタンスをホストする VM 上に一時ファイルが作成され、それが指定されたストレージ アカウントにアップロードされます。 エクスポート操作が完了したら、操作の成否にかかわらず、この一時ファイルは削除されます。
 
-1. キャッシュの現在の内容をストレージにエクスポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、キャッシュ インスタンスの **[設定]** ブレードで **[データのエクスポート]** をクリックします。
+1. キャッシュの現在の内容をストレージにエクスポートするには、Azure Portal で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[リソース]** メニューの **[データのエクスポート]** をクリックします。
 
     ![[ストレージ コンテナーの選択]][cache-export-data-choose-storage-container]
 2. **[ストレージ コンテナーの選択]** をクリックし、目的のストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
 
    > [!IMPORTANT]
-   > Import/Export が機能するページ BLOB はクラシック ストレージ アカウントと ARM ストレージ アカウントの両方でサポートされていますが、現時点では [Blob Storage アカウント](../storage/storage-blob-storage-tiers.md#blob-storage-accounts) ではサポートされていません。
+   > Import/Export が機能するページ BLOB はクラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされていますが、現時点では [Blob Storage アカウント](../storage/storage-blob-storage-tiers.md#blob-storage-accounts) ではサポートされていません。
    >
    >
 
@@ -95,7 +96,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 
 * [Import/Export はどの価格レベルで使用できますか?](#what-pricing-tiers-can-use-importexport)
 * [どの Redis サーバーからでもデータをインポートできるのでしょうか?](#can-i-import-data-from-any-redis-server)
-* [Import/Export 操作中にキャッシュを使用することはできますか?](#will-my-cache-be-available-during-an-importexport-operation)
+* [Import/Export 操作中にキャッシュを使うことはできますか?](#is-my-cache-available-during-an-importexport-operation)
 * [Redis クラスターで Import/Export を使うことはできますか?](#can-i-use-importexport-with-redis-cluster)
 * [Import/Export がカスタム データベース設定を操作する方法](#how-does-importexport-work-with-a-custom-databases-setting)
 * [Import/Export と Redis の永続化にはどのような違いがありますか?](#how-is-importexport-different-from-redis-persistence)
@@ -109,7 +110,7 @@ Import/Export は Premium 価格レベルでのみ使用できます。
 ### <a name="can-i-import-data-from-any-redis-server"></a>どの Redis サーバーからでもデータをインポートできるのでしょうか?
 はい。インポートできるのは Azure Redis Cache インスタンスからエクスポートされたデータだけではありません。任意のクラウドや環境 (Linux や Windows のほか、アマゾン ウェブ サービスなどの各種クラウド プロバイダー) で稼働している任意の Redis サーバーから RDB ファイルをインポートできます。 これを行うには、RDB ファイルを目的の Redis サーバーから Azure ストレージ アカウント内のページ BLOB にアップロードし、さらに Premium Azure Redis Cache インスタンスにインポートします。 具体的には、運用環境のキャッシュからデータをエクスポートし、テストまたは移行のためのステージング環境の一部として使用するキャッシュにインポートする場合が考えられます。
 
-### <a name="will-my-cache-be-available-during-an-importexport-operation"></a>Import/Export 操作中にキャッシュを使用することはできますか?
+### <a name="is-my-cache-available-during-an-importexport-operation"></a>Import/Export 操作中にキャッシュを使うことはできますか?
 * **エクスポート** - キャッシュは使用可能な状態のままです。エクスポート操作中もキャッシュの使用を続行できます。
 * **インポート** - インポート処理が開始されると、キャッシュは使用できなくなります。インポート処理が終了すると、キャッシュは使用可能になります。
 
@@ -120,7 +121,7 @@ Import/Export は Premium 価格レベルでのみ使用できます。
 価格レベルによってさまざまな[データベースの制限](cache-configure.md#databases)があるため、キャッシュの作成中に `databases` の設定にカスタム値を設定する場合、インポート時の考慮事項がいくつかあります。
 
 * エクスポートしたレベルより低い `databases` の制限の価格レベルにインポートする場合:
-  * すべての価格レベルが 16 の `databases` の既定の数を使用している場合、データは失われません。
+  * すべての価格レベルが 16 の `databases` の既定の数を使っている場合、データは失われません。
   * インポートしているレベルの制限範囲に含まれるユーザー設定の数値の `databases` を使用している場合、データは失われません。
   * エクスポートしたデータが新しいレベルの制限を超えるデータベースのデータを含む場合、レベルの高いデータベースのデータはインポートされません。
 
@@ -133,7 +134,7 @@ Import/Export では、Azure Redis Cache へのデータの取り込みと Azure
 はい。PowerShell での手順については、「[Redis Cache にインポートする方法](cache-howto-manage-redis-cache-powershell.md#to-import-a-redis-cache)」および「[Redis Cache からエクスポートする方法](cache-howto-manage-redis-cache-powershell.md#to-export-a-redis-cache)」を参照してください。
 
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Import/Export 操作中にタイムアウト エラーが発生しました。 これはどういうことですか?
-**[データのインポート]** ブレードまたは **[データのエクスポート]** ブレードに操作を開始しないまま留まっている時間が 15 分を超えると、次のようなエラーが発生します。
+**[データのインポート]** ブレードまたは **[データのエクスポート]** ブレードに操作を開始しないまま留まっている時間が 15 分を超えると、次の例のようなエラー メッセージのエラーが発生します。
 
     The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 
@@ -160,9 +161,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 [cache-import-choose-blobs]: ./media/cache-how-to-import-export-data/cache-import-choose-blobs.png
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

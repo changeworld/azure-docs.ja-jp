@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8714d6b06a08428835ed1b2d955b8e97fc42f4b3
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: c43b34124fd0ccdbe03ce3d336388cbd3b77ad9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -149,7 +150,7 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 外部データ ソースと外部テーブルを定義すると、外部テーブルに対して完全に T-SQL を使用できるようになります。
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>例: 行方向にパーティション分割されたデータベースのクエリ
-次のクエリでは、倉庫、注文、および注文明細行の間で 3 方向結合を実行し、いくつかの集計と選択的フィルターを使用します。 ここでは、(1) 行方向のパーティション分割 (シャーディング) のほか、(2) 倉庫、注文、および注文明細行が倉庫の ID 列でシャード化されること、エラスティック クエリがシャード上の結合を併置できること、クエリの負荷の高い部分をシャード上で並列に処理できることを想定しています。 
+次のクエリでは、倉庫、注文、および注文明細行の間で&3; 方向結合を実行し、いくつかの集計と選択的フィルターを使用します。 ここでは、(1) 行方向のパーティション分割 (シャーディング) のほか、(2) 倉庫、注文、および注文明細行が倉庫の ID 列でシャード化されること、エラスティック クエリがシャード上の結合を併置できること、クエリの負荷の高い部分をシャード上で並列に処理できることを想定しています。 
 
     select  
          w_id as warehouse,
@@ -191,14 +192,16 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 * シャーディング キーによる述語で特定のシャードを処理から安全に除外できる場合、エラスティック クエリでは、現在のところ、シャードの除去を実行しません。
 * エラスティック クエリは、計算の大部分をシャード上で実行できるクエリに最適です。 通常、最適なクエリ パフォーマンスが得られるのは、シャード上で評価可能な選択的なフィルター述語を使用した場合、またはすべてのシャード上でパーティション分割方法により実行可能な、パーティション分割キーによる結合を使用した場合となります。 その他のクエリ パターンでは、シャードからヘッド ノードに大量のデータを読み込むことが必要になる場合があり、パフォーマンスが低下する可能性があります。
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## <a name="next-steps"></a>次のステップ
+
+* エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
+* 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。
+* 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](sql-database-elastic-query-vertical-partitioning.md)」をご覧ください。
+* 行方向のパーティション分割 (シャード化) のチュートリアルについては、「[スケールアウトされたクラウド データベース全体のレポート (プレビュー)](sql-database-elastic-query-getting-started.md)」をご覧ください。
+* 行方向のパーティション分割方式でシャードとして機能する単一のリモート Azure SQL Database またはデータベースのセットに対して Transact-SQL ステートメントを実行するストアド プロシージャについては、「[sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)」をご覧ください。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

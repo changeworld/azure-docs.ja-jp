@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: d86c39ca96633fc84311a4843deee997df9305a6
-ms.openlocfilehash: 692ee9272224369b8d5f892160bc92d5a30c346c
+ms.sourcegitcommit: 1dd5be3ba3a0fbbb4657a2c0b2ca6757a94cc76a
+ms.openlocfilehash: 1c6b4b45b9e0b018a7cb3f28f7868c89ad0fda61
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -46,20 +47,20 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 
 * Azure Key Vault との統合
 * Standard レベルの VM: [A、D、DS、G、GS などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Windows および Linux IaaS VM での暗号化を有効にする
-* Windows IaaS VM での OS およびデータ ドライブの暗号化を無効にする
-* Linux IaaS VM でのデータ ドライブの暗号化を無効にする
-* Windows クライアント OS を実行している IaaS VM での暗号化を有効にする
-* ボリュームのマウント パスでの暗号化を有効にする
-* mdadm を使用してディスク ストライピング (RAID) で構成されている Linux VM での暗号化を有効にする
-* データ ディスクの LVM を使用して Linux VM での暗号化を有効にする
-* ストレージ スペースを使用して構成されている Windows VM 上で暗号化を有効にする
+* Windows および Linux IaaS VM の暗号化を有効にする
+* Windows IaaS VM の OS およびデータ ドライブの暗号化を無効にする
+* Linux IaaS VM のデータ ドライブの暗号化を無効にする
+* Windows クライアント OS を実行している IaaS VM の暗号化を有効にする
+* ボリュームのマウント パスの暗号化を有効にする
+* mdadm を使用してディスク ストライピング (RAID) が構成されている Linux VM の暗号化を有効にする
+* データ ディスクの LVM を使用して Linux VM の暗号化を有効にする
+* ストレージ スペースを使用して構成されている Windows VM の暗号化を有効にする
 * Azure のすべてのパブリック リージョンがサポートされる
 
-このソリューションでは、このリリースの以下のシナリオ、機能、およびテクノロジはサポートされません。
+このソリューションの現在のリリースでは、以下のシナリオ、機能、およびテクノロジはサポートされていません。
 
 * Basic レベルの IaaS VM
-* Linux IaaS VM での OS ドライブの暗号化を無効にする
+* Linux IaaS VM の OS ドライブの暗号化を無効にする
 * 従来の VM の作成方法を使用して作成された IaaS VM
 * オンプレミス キー管理サービスとの統合
 * Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
@@ -348,7 +349,7 @@ Azure Disk Encryption は、Key Vault のディスク暗号化キーとシーク
 #### <a name="create-a-key-vault"></a>Key Vault を作成します
 Key Vault を作成するには、次のオプションのいずれかを使用します。
 
-* ["101-Create-KeyVault" Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)
+* ["101-Key-Vault-Create" Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 * [Azure PowerShell の Key Vault コマンドレット](https://msdn.microsoft.com/library/dn868052.aspx)
 * Azure リソース マネージャー
 
@@ -1227,9 +1228,4 @@ OS ディスクをアタッチする際に、`$KeyEncryptionKey` と `$secretUrl
 ## <a name="for-more-information"></a>BLOB の詳細
 [Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)  
 [Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

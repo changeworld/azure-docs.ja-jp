@@ -5,7 +5,7 @@ keywords: "app service, azure app service, wordpress の拡張, 拡張可能な 
 services: app-service
 documentationcenter: 
 author: sunbuild
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 9e0a5e14-bba8-4ba4-9709-8f6a7bc17730
 ms.service: app-service
@@ -18,15 +18,11 @@ ms.author: sunbuild
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 43b3ea61c62c9142920ef36a517ce10724ad460d
+ms.lasthandoff: 11/17/2016
 
 
 ---
 # <a name="developing-wordpress-on-azure-app-service"></a>Azure App Service での WordPress の開発
 [!INCLUDE [app-service-blueprint-guide-for-wordpress](../../includes/app-service-blueprint-guide-for-wordpress.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

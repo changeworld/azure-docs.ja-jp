@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 83eb96e8e9d1d5ff31d87141fe7270c0db8867bd
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: f1f963c1401b785b3d4ee007b6ea61f221f9ec4d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -93,7 +94,7 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 
 ツールを使用するように既存のデータベースを変換する方法については、「 [既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)」を参照してください。
 
-エラスティック プールの詳細を確認するには、「[エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-create-portal.md)に従って新しいプールを作成してください。  
+エラスティック プールの詳細を確認するには、「[エラスティック プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[エラスティック プール](sql-database-elastic-pool-manage-portal.md)で新しいプールを作成してください。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -103,10 +104,5 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 [2]:./media/sql-database-elastic-scale-introduction/h_versus_vert.png
 [3]:./media/sql-database-elastic-scale-introduction/overview.png
 [4]:./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

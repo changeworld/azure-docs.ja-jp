@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/15/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c65c4021f5d0beda8005abdd375ac51729acf0a8
-ms.openlocfilehash: 8ff246ab7d70bd00ce989d3049e016d692722d18
+ms.sourcegitcommit: abdf0af8a85db19c68a0d74c0477d798c0fd03fc
+ms.openlocfilehash: 8ff2fc6106438e35b93112a6dc97814ba79b06fc
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -78,11 +79,13 @@ offer = new OfferV2(offer, 12000);
 await client.ReplaceOfferAsync(offer);
 ```
 
+## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
+
+**スループットを 400 RU/秒未満に設定することはできますか?**
+
+DocumentDB のシングル パーティション コレクションで使用できる最小スループットは&400; RU/秒です (パーティション分割コレクションの最小スループットは&2;,500 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて DocumentDB の開発とテストを行いたい場合は、無料の [DocumentDB Emulator](documentdb-nosql-local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
+
 ## <a name="next-steps"></a>次のステップ
 
 DocumentDB を使用したプロビジョニングと地球規模での使用の詳細については、[DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。
-
-
-<!--HONumber=Feb17_HO2-->
-
 

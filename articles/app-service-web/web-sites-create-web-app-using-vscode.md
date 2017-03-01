@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Visual Studio Code を使用�
 services: app-service\web
 documentationcenter: .net
 author: erikre
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 877bff08-9ef7-405a-a1ca-1194f33c55f2
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 4f1bf0f15a373dfe60d923f017a96784424d6563
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -240,10 +241,5 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 ## <a name="summary"></a>概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。 VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

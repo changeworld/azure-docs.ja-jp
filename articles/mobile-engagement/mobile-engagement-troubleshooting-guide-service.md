@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメント関連のトラブル�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8b4275da-c0b4-4690-824a-48e9d7a1fc6e
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -88,10 +89,5 @@ ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
   * 区切り文字としてコンマ「,」を使用します (サービス要求を開いて、.csv の区切り文字をコンマ「,」からセミコロン「;」などの別の文字に変更するように要求できます)。
   * ブール値の「TRUE」と「FALSE」には、すべて小文字を使用します。
   * 最大ファイル サイズの 35 MB よりも小さいファイルを使用します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

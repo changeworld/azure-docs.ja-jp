@@ -1,5 +1,5 @@
 
-ディスクの詳細については、[仮想マシン用のディスクと VHD](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関するページを参照してください。
+ディスクの詳細については、[仮想マシン用のディスクと VHD](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関するページを参照してください。
 
 <a id="attachempty"></a>
 
@@ -114,9 +114,4 @@
 > データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります (ディスクを初期化する方法の詳細については次の手順を参照)。
 > 
 > 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

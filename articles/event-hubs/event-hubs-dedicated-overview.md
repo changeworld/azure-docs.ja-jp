@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/21/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
+ms.sourcegitcommit: 9c1756d2c2c4dd73c60a71b24bfb4606cab289ed
+ms.openlocfilehash: 8e718e74443e3d51dc54edaf667e34875bc67c5d
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,11 +36,11 @@ ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
 | パブリッシャー ポリシー | 該当なし | はい | はい |     
 | コンシューマー グループ | 1 - 既定 | 20 | 20 |
 | メッセージ リプレイ | はい | あり | はい |
-| 最大スループット ユニット | 20 | 20 (～ 100)  | 1 CU≈200 |
+| 最大スループット ユニット | 20 | 20 (～ 100)    | 1 CU≈200 |
 | 仲介型接続 | 100 (付属) | 1,000 (付属) | 100,000 (付属) |
 | 追加の仲介型接続 | 該当なし | はい | はい |
 | メッセージのリテンション期間 | 1 日分が含まれます | 1 日分が含まれます | 最大 7 日分が含まれます |
-| アーカイブ (プレビュー) | 該当なし   | 1 時間ごとの課金 | あり |
+| アーカイブ (プレビュー) | 該当なし    | 1 時間ごとの課金 | あり |
 
 ## <a name="benefits-of-event-hubs-dedicated-capacity"></a>Event Hubs Dedicated 容量の利点
 
@@ -60,7 +61,7 @@ Event Hubs Dedicated では、Standard プランのスループットの制限�
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-Event Hubs Dedicated プラットフォームは、さまざまなサイズの CU でエンタープライズ契約を通じて一般に提供されます。 CU ごとに約 200 スループット単位が提供され、1 時間あたり 31 ドルで課金されます。 CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
+Event Hubs Dedicated プラットフォームは、さまざまなサイズの CU でエンタープライズ契約を通じて一般に提供されます。 CU ごとに約 200 スループット ユニットが提供されます。 CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs Dedicated 容量の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、Event Hubs の詳細を確認することもできます。
@@ -69,9 +70,4 @@ Event Hubs Dedicated 容量の詳細については、Microsoft の営業担当�
 
 - [Event Hubs Dedicated の価格](https://azure.microsoft.com/pricing/details/event-hubs/)。 Microsoft の営業担当者または Microsoft サポートに連絡して、Event Hubs Dedicated 容量の詳細を確認することもできます。
 - 「[Event Hubs の FAQ](event-hubs-faq.md)」では、Event Hubs の価格の情報について説明し、よく寄せられる質問のいくつかに回答します。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

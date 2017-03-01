@@ -4,7 +4,7 @@ description: "Android SDK for Azure Mobile Engagement の最新の更新情報�
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 6e71afc6-b3ed-4b39-8cf1-c8024454d579
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7f47772a16dc38c5b9b4751b22b99938e26cc1e0
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -50,10 +51,5 @@ ms.openlocfilehash: 7f47772a16dc38c5b9b4751b22b99938e26cc1e0
 > 
 
 その他のファイルはソフトウェア ライセンスのコピーです。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

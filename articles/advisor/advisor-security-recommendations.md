@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: a560aa9cc6c70fd3827f649627466c9071b8ab8b
-ms.openlocfilehash: 4345e544d2e2bcc90ee2e3caf5bf6dfc19f01ca3
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: dbdbae0f87d8d115407026b263c65c3b387fa178
+ms.lasthandoff: 02/21/2017
 
 ---
 # <a name="advisor-security-recommendations"></a>Advisor のセキュリティに関する推奨事項
@@ -38,7 +39,7 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 3. Advisor ダッシュボードで、**[セキュリティ]** タブをクリックし、推奨事項を受け入れるサブスクリプションを選択します。
 
 > [!NOTE]
-> Advisor は、**所有者、共同作成者、または閲覧者**の役割が割り当てられているサブスクリプション向けの推奨事項を生成します。  
+> Advisor の推奨事項にアクセスするには、最初にサブスクリプションを Advisor に**登録**する必要があります。 **サブスクリプションの所有者**が Advisor ダッシュボードを起動して **[推奨の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは **1 回限りの操作**です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、特定のリソースの**所有者**、**共同作成者**、または**閲覧者**が Advisor の推奨事項にアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -47,9 +48,4 @@ Advisor の推奨事項の詳細については、次のリソースをご覧く
 -  [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 -  [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

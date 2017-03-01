@@ -13,55 +13,57 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
+ms.date: 02/17/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: f8fb116f14f771947f321f59d9880df4cdfe6859
+ms.sourcegitcommit: 3c542d2fb8b644ead469272c628b64de72a371ad
+ms.openlocfilehash: 3051eba69dcba7162ba026f7720c9f8d873c9ea2
+ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-classic-portal"></a>Azure クラシック ポータルを使用して Windows 仮想マシンにログオンする
-Azure クラシック ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始し、Windows VM にログオンします。
+# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Azure ポータルを使用して Windows 仮想マシンにログオンする
+Azure ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始し、Windows VM にログオンします。
 
 Linux VM に接続する場合は、 「[Linux が実行されている仮想マシンにログオンする方法](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-[これらの手順は、新しい Azure Portal で学習することができます](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+<!--
+Deleting, but not 100% sure
+Learn how to [perform these steps using new Azure portal](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+-->
 
-> [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した VM へのログオン方法については、[こちら](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
-
-## <a name="video-walkthrough"></a>ビデオ チュートリアル
-以下は、このチュートリアルのステップのビデオです。 Azure で Windows VM に接続するために使用する、エンドポイント、パブリック ポート、およびプライベート ポートについても説明します。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Logging-On-To-VM-Running-Windows-Server-on-Azure/player]
-
-
+> [!IMPORTANT]
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した VM へのログオン方法については、[こちら](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
-1. Azure クラシック ポータルにサインインします。
-2. **[Virtual Machines]**をクリックし、仮想マシンを選択します。
-3. ページの下部にあるコマンド バーで、 **[接続]**をクリックします。
-   
-    ![仮想マシンへのログオン](./media/virtual-machines-windows-classic-connect-logon/connectwindows.png)
+1. Azure ポータルにサインインします。
+2. アクセスする仮想マシンをクリックします。 名前は **[すべてのリソース]** ウィンドウに一覧表示されます。
 
+    ![Virtual-machine-locations](./media/virtual-machines-windows-classic-connect-logon/azureportaldashboard.png)
+
+3. 仮想マシンのダッシュボードの一番上にあるコマンド バーで、**[接続]** をクリックします。
+
+    ![仮想マシンへの接続アイコン](./media/virtual-machines-windows-classic-connect-logon/virtualmachine_dashboard_connect.png)
+
+<!-- Don't know if this still applies
+     I think we can zap this.
 > [!TIP]
-> **[接続]** ボタンを使用できない場合は、この記事の最後にあるトラブルシューティングのヒントを参照してください。
-> 
-> 
+> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
+>
+>
+-->
 
 ## <a name="log-on-to-the-virtual-machine"></a>仮想マシンへのログオン
 [!INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
 
 ## <a name="next-steps"></a>次のステップ
-* **[接続]** ボタンが非アクティブである場合、またはリモート デスクトップ接続に関するその他の問題が発生している場合は、構成をリセットします。 仮想マシンのダッシュボードで、**[概要]** の **[リモート構成のリセット]** をクリックします。
-* パスワードに問題がある場合は、パスワードをリセットしてください。 仮想マシンのダッシュボードで、**[概要]** の **[パスワードのリセット]** をクリックします。
+* **[接続]** ボタンが非アクティブである場合、またはリモート デスクトップ接続に関するその他の問題が発生している場合は、構成をリセットします。 仮想マシンのダッシュボードで、**[リモート アクセスのリセット]** をクリックします。
+
+    ![Reset-remote-access](./media/virtual-machines-windows-classic-connect-logon/virtualmachine_dashboard_reset_remote_access.png)
+
+* パスワードに問題がある場合は、パスワードをリセットしてください。 仮想マシンのダッシュボードの左側のウィンドウで、**[サポートとトラブルシューティング]** の下にある **[パスワードのリセット]** をクリックします。
+
+    ![Reset-password](./media/virtual-machines-windows-classic-connect-logon/virtualmachine_dashboard_reset_password.png)
 
 これらのトピックで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 この記事では、一般的な問題の診断と解決の手順について説明します。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

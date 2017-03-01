@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
+ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
+ms.openlocfilehash: f58c0967890ee99c574957f0cdfe1bb412f7f9e8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 2e8346695d4f9e0b2d7016455d20e2f843047eed
 Keylight と Azure AD の統合には、次の利点があります。
 
 * Keylight にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に Keylight にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に Keylight にシングル サインオン (SSO) できるようにします。
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -37,25 +38,24 @@ Keylight と Azure AD の統合を構成するには、次のものが必要で�
 * Azure サブスクリプション
 * Keylight でのシングル サインオンが有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Keylight の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-keylight-from-the-gallery"></a>ギャラリーからの Keylight の追加
+## <a name="add-keylight-from-the-gallery"></a>ギャラリーからの Keylight の追加
 Azure AD への Keylight の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Keylight を追加する必要があります。
 
 **ギャラリーから Keylight を追加するには、次の手順に従います。**
@@ -80,7 +80,7 @@ Azure AD への Keylight の統合を構成するには、ギャラリーから�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Keylight で Azure AD のシングル サインオンを構成し、テストします。
 
 Keylight で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -88,10 +88,10 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Keylight テスト ユーザーの作成](#creating-a-keylight-test-user)** - Keylight で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 このセクションでは、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にして、Keylight アプリケーションでシングル サインオンを構成します。
 
 **Keylight で Azure AD シングル サインオンを構成するには、次の手順に従います。**
@@ -106,78 +106,58 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_04.png) 
 
-    a. [サインオン URL] ボックスに、ユーザーが Keylight アプリケーションへのサインオンに使用する URL を **"https://\<企業名\>.keylightgrc.com/Login.aspx?saml=1"** の形式で入力します。
+    * [サインオン URL] ボックスに、ユーザーが Keylight アプリケーションへのサインオンに使用する URL を **"https://\<企業名\>.keylightgrc.com/Login.aspx?saml=1"** の形式で入力します。
 
-
-1. **[Keylight でのシングル サインオンの構成]** ページで、次の手順に従います。
+4. **[Keylight でのシングル サインオンの構成]** ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_05.png) 
    
-    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    2. **[次へ]**をクリックします。
+5. Keylight で SSO を有効にするには、次の手順に従います。
    
-    b. **[次へ]**をクリックします。
-2. Keylight で SSO を有効にするには、次の手順に従います。
+    1. 管理者として Keylight アカウントにサインオンします。
+    2. 上部のメニューで **[人]** をクリックして **[Keylight セットアップ]** を選択します。
    
-    a. 管理者として Keylight アカウントにサインオンします。
-   
-    b. 上部のメニューで **[人]** をクリックして **[Keylight セットアップ]** を選択します。
-   
-    ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/401.png) 
-   
-    c. 左側のツリー ビューで **[SAML]** をクリックします。
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/401.png) 
+    3. 左側のツリー ビューで **[SAML]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/402.png) 
-   
-    d. **[SAML 設定]** ダイアログで **[編集]** をクリックします。
+    4. **[SAML 設定]** ダイアログで **[編集]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-keylight-tutorial/404.png) 
-3. **[SAML 設定の編集]** ダイアログ ページで、次の手順を実行します。
+6. **[SAML 設定の編集]** ダイアログ ページで、次の手順を実行します。
    
     ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/405.png) 
    
-    a. **[SAML 認証]** を **[アクティブ]** に設定します。
+    1. **[SAML 認証]** を **[アクティブ]** に設定します。
+    2. Azure AD クラシック ポータルで、**[SAML SSO URL]** 値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
+    3. Azure AD クラシック ポータルで、**[シングル サインアウト サービス URL]** 値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
+    4. **[ファイルの選択]** をクリックし、ダウンロードした Keylight 証明書を選択して、**[開く]** をクリックして証明書をアップロードします。
+    5. **[SAML ユーザー ID の場所]** を **[Subject ステートメントの NameIdentifier 要素]** に設定します。
+    6. **Keylight サービス プロバイダーを **https://&lt;会社名&gt;.keylightgrc.com** の形式で指定します。
+    7. 次のように設定します。
+     * **[ユーザーの自動プロビジョニング]** を **[アクティブ]** に設定します。
+     * **[アカウント タイプの自動プロビジョニング]** を **[すべてのユーザー]** に設定します。
+     * **[セキュリティ ロールの自動プロビジョニング]** として**[SAML を使用する標準ユーザー]**を選択します。
+     * **[セキュリティ構成の自動プロビジョニング]** として**[標準ユーザー構成]** を選択します。
+    8. 次のように入力します。    
+     * [メール属性] ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。
+     * **[First name attribute]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** と入力します。
+     * **[Last name attribute]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** と入力します。
+    9. **[保存]**をクリックします。
 
-    b. Azure AD クラシック ポータルで、**[SAML SSO URL]** 値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-
-    c. Azure AD クラシック ポータルで、**[シングル サインアウト サービス URL]** 値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
-
-    d. **[ファイルの選択]** をクリックし、ダウンロードした Keylight 証明書を選択して、**[開く]** をクリックして証明書をアップロードします。
-
-
-    e. **[SAML ユーザー ID の場所]** を **[Subject ステートメントの NameIdentifier 要素]** に設定します。
-
-    f. **Keylight サービス プロバイダーを **https://&lt;会社名&gt;.keylightgrc.com** の形式で指定します。
-
-    g. **[ユーザーの自動プロビジョニング]** を **[アクティブ]** に設定します。
-
-    h. **[アカウント タイプの自動プロビジョニング]** を **[すべてのユーザー]** に設定します。
-
-    i. **[セキュリティ ロールの自動プロビジョニング]** として**[SAML を使用する標準ユーザー]** を選択します。
-
-    j. **[セキュリティ構成の自動プロビジョニング]** として**[標準ユーザー構成]** を選択します。
-
-    k. [メール属性] ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。
-
-    l. **[First name attribute]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** と入力します。
-
-    m. **[Last name attribute]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** と入力します。
-
-    n. **[Save]**をクリックします。
-
-
-
-
-1. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+7. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
-2. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
+8. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
-ユーザーの一覧で **[Britta Simon]**を選択します。
+* ユーザーの一覧で **[Britta Simon]**を選択します。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -197,24 +177,18 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/create_aaduser_05.png) 
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+   1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+   2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+   3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/create_aaduser_06.png) 
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+   1. **[名]** ボックスに「**Britta**」と入力します。    
+   2. **[姓]** ボックスに「**Simon**」と入力します。
+   3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+   4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+   5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/create_aaduser_07.png) 
@@ -222,21 +196,19 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/create_aaduser_08.png) 
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+    1. **[新しいパスワード]** の値を書き留めます。
+    2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-keylight-test-user"></a>Keylight テスト ユーザーの作成
+### <a name="create-a-keylight-test-user"></a>Keylight テスト ユーザーの作成
 このセクションでは、Keylight で Britta Simon というユーザーを作成します。 Keylight では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合は、Keylight へのアクセス時に新しいユーザーが作成されます。 
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Keylight のサポート チームにお問い合わせください。
-> 
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、Keylight のサポート チームにお問い合わせください。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションでは、Britta Simon に Keylight へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
 ![ユーザーの割り当て][200] 
@@ -257,7 +229,7 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Keylight] タイルをクリックすると、自動的に Keylight アプリケーションにサインオンします。
@@ -283,9 +255,4 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 [203]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

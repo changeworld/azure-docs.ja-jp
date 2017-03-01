@@ -1,6 +1,6 @@
 ---
-title: "Azure 上の Linux VM に MongoDB をインストールする | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルを使って Azure の Linux 仮想マシンに MongoDB をインストールして構成する方法について説明します。"
+title: "Azure CLI 2.0 (プレビュー) を使用して Linux VM に MongoDB をインストールする | Microsoft Docs"
+description: "Azure CLI 2.0 (プレビュー) を使用して Linux 仮想マシンに MongoDB をインストールして構成する方法について説明します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -12,39 +12,61 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/20/2016
+ms.date: 02/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
-ms.openlocfilehash: fd323a828ee879d6093e2473accbea883f861420
+ms.sourcegitcommit: 16e6a02e9b40643aaa1393f5736d5a28049a086f
+ms.openlocfilehash: 9e4b5b8aa877b8a2197d402957028c2bb7b5cf49
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="install-and-configure-mongodb-on-a-linux-vm-in-azure"></a>Azure の Linux VM に MongoDB をインストールして構成する
+# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して Linux VM に MongoDB をインストールして構成する方法
 [MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Resource Manager デプロイメント モデルを使って Azure の Linux VM に MongoDB をインストールして構成する方法を説明します。 次の方法が詳しくわかる例を示します。
 
 * [基本的な MongoDB インスタンスを手動でインストールして構成する](#manually-install-and-configure-mongodb-on-a-vm)
 * [Resource Manager テンプレートを使って基本的な MongoDB インスタンスを作成する](#create-basic-mongodb-instance-on-centos-using-a-template)
 * [Resource Manager テンプレートを使ってレプリカ セットを含む複雑な MongoDB シャード化クラスターを作成する](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
-## <a name="prerequisites"></a>前提条件
-この記事には、次のものが必要です。
 
-* Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* `azure login` でログインした [Azure CLI](../xplat-cli-install.md)。
-* Azure CLI は、`azure config mode arm` を使う Azure Resource Manager モードである "*必要があります*"。
+## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
+次のいずれかの CLI バージョンを使用してタスクを完了できます。
+
+- [Azure CLI 1.0](virtual-machines-linux-install-mongodb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- Azure CLI 2.0 (プレビュー) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>VM に MongoDB を手動でインストールして構成する
-MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、`~/.ssh/id_rsa.pub` に格納されている SSH キーを使って `CentOS` VM を作成します。 メッセージに従ってストレージ アカウント名、DNS 名、および管理者の資格情報を入力します。
+MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、`~/.ssh/id_rsa.pub` に格納されている SSH キーを使って `CentOS` VM を作成します。 この環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+
+[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
 
 ```azurecli
-azure vm quick-create --ssh-publickey-file ~/.ssh/id_rsa.pub --image-urn CentOS
+ az group create --name myResourceGroup --location westus
 ```
 
-前の VM 作成手順の最後に表示されるパブリック IP アドレスを使って VM にログオンします。
+[az vm create](/cli/azure/vm#create) を実行して VM を作成します。 次の例では、SSH 公開キー認証を使用して `myVM` という名前の VM に `azureuser` という名前のユーザーを作成し、パブリック DNS エントリ `mypublicdns` を作成します。
+
+```azurecli
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image CentOS \
+    --admin-username azureuser \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --public-ip-address-dns-name mypublicdns
+```
+
+VM のパブリック DNS アドレスを使用して VM にログオンします。 パブリック DNS アドレスを確認するには、[az vm show](/cli/azure/vm#show) を実行します。
+
+```azurecli
+az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+```
+
+独自のユーザー名とパブリック DNS アドレスを使用して、VM に SSH でアクセスします。
 
 ```bash
-ssh ops@40.78.23.145
+ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
 MongoDB のインストール ソースを追加するには、次のように `yum` リポジトリ ファイルを作成します。
@@ -112,28 +134,38 @@ Github にある次の Azure クイックスタート テンプレートを使�
 
 * [CentOS 上の基本的な MongoDB インスタンス](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-次の例では、`WestUS` リージョンに `myResourceGroup` という名前のリソース グループを作成します。 実際の値を次のように入力します。
+この環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。 最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
 
 ```azurecli
-azure group create --name myResourceGroup --location WestUS \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
+az group create --name myResourceGroup --location westus
 ```
 
-> [!NOTE]
-> デプロイを作成して数秒で Azure CLI はプロンプトに戻りますが、インストールと構成が完了するには数分かかります。 デプロイの状態は `azure group deployment show myResourceGroup` で確認します。リソース グループの名前を入力します。 `ProvisioningState` に "Succeeded" と表示されるまで待ってから、VM への SSH 接続を試みます。
-> 
-> 
-
-デプロイが完了したら、VM に SSH 接続します。 次の例のように、`azure vm show` コマンドを使って VM の IP アドレスを取得します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を実行して MongoDB テンプレートをデプロイします。 必要に応じて、独自のリソース名とサイズを定義します (例: `newStorageAccountName`、`virtualNetworkName`、`vmSize`)。
 
 ```azurecli
-azure vm show --resource-group myResourceGroup --name myLinuxVM
+az group deployment create --resource-group myResourceGroup \
+  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
+    "adminUsername": {"value": "azureuser"},
+    "adminPassword": {"value": "P@ssw0rd!"},
+    "dnsNameForPublicIP": {"value": "mypublicdns"},
+    "virtualNetworkName": {"value": "myVnet"},
+    "vmSize": {"value": "Standard_DS1_v2"},
+    "vmName": {"value": "myVM"},
+    "publicIPAddressName": {"value": "myPublicIP"},
+    "nicName": {"value": "myNic"}}' \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
-出力の末尾近くに、`Public IP address` が表示されます。 VM の IP アドレスを使って VM に SSH 接続します。
+VM のパブリック DNS アドレスを使用して VM にログオンします。 パブリック DNS アドレスを確認するには、[az vm show](/cli/azure/vm#show) を実行します。
+
+```azurecli
+az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+```
+
+独自のユーザー名とパブリック DNS アドレスを使用して、VM に SSH でアクセスします。
 
 ```bash
-ssh ops@138.91.149.74
+ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
 ローカル `mongo` クライアントを使って接続することにより、MongoDB のインストールを確認します。
@@ -155,26 +187,46 @@ test
 
 
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>テンプレートを使って CentOS に複雑な MongoDB シャード化クラスターを作成する
-Github にある次の Azure クイックスタート テンプレートを使って、複雑な MongoDB シャード化クラスターを作成できます。 このテンプレートは、[MongoDB シャード化クラスターのベスト プラクティス](https://docs.mongodb.com/manual/core/sharded-cluster-components/)に従って、冗長性と高可用性を提供します。 このテンプレートは、2 つのシャードと、各レプリカ セット内に 3 つのノードを作成します。 3 つのノードを含む 1 つの構成サーバー レプリカ セットも作成され、さらに 2 つの `mongos` ルーター サーバーが作成されてシャード全体のアプリケーションの一貫性が提供されます。
+Github にある次の Azure クイックスタート テンプレートを使って、複雑な MongoDB シャード化クラスターを作成できます。 このテンプレートは、[MongoDB シャード化クラスターのベスト プラクティス](https://docs.mongodb.com/manual/core/sharded-cluster-components/)に従って、冗長性と高可用性を提供します。 このテンプレートは、2 つのシャードと、各レプリカ セット内に&3; つのノードを作成します。 3 つのノードを含む&1; つの構成サーバー レプリカ セットも作成され、さらに&2; つの `mongos` ルーター サーバーが作成されてシャード全体のアプリケーションの一貫性が提供されます。
 
 * [CentOS 上の MongoDB シャード化クラスター](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
 > この複雑な MongoDB シャード化クラスターをデプロイするには、20 個より多くのコアが必要です。サブスクリプションに対するリージョンごとの既定のコア数は、通常 20 個です。 コア数を増やすには、Azure サポート要求を提出してください。
-> 
-> 
 
-次の例では、`WestUS` リージョンに `myResourceGroup` という名前のリソース グループを作成します。 実際の値を次のように入力します。
+この環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。 最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
 
 ```azurecli
-azure group create --name myResourceGroup --location WestUS \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
+az group create --name myResourceGroup --location westus
 ```
 
-> [!NOTE]
-> デプロイを作成して数秒で Azure CLI はプロンプトに戻りますが、インストールと構成が完了するには 1 時間以上かかることがあります。 デプロイの状態は `azure group deployment show myResourceGroup` で確認します。リソース グループの名前を入力します。 `ProvisioningState` に "Succeeded" と表示されるまで待ってから、VM に接続します。
-> 
-> 
+次に、[az group deployment create](/cli/azure/group/deployment#create) を実行して MongoDB テンプレートをデプロイします。 必要に応じて、独自のリソース名とサイズを定義します (例: `mongoAdminUsername`、`sizeOfDataDiskInGB`、`configNodeVmSize`)。
+
+```azurecli
+az group deployment create --resource-group myResourceGroup \
+  --parameters '{"adminUsername": {"value": "azureuser"},
+    "adminPassword": {"value": "P@ssw0rd!"},
+    "mongoAdminUsername": {"value": "mongoadmin"},
+    "mongoAdminPassword": {"value": "P@ssw0rd!"},
+    "dnsNamePrefix": {"value": "mypublicdns"},
+    "environment": {"value": "AzureCloud"},
+    "numDataDisks": {"value": "4"},
+    "sizeOfDataDiskInGB": {"value": 20},
+    "centOsVersion": {"value": "7.0"},
+    "routerNodeVmSize": {"value": "Standard_DS3_v2"},
+    "configNodeVmSize": {"value": "Standard_DS3_v2"},
+    "replicaNodeVmSize": {"value": "Standard_DS3_v2"},
+    "zabbixServerIPAddress": {"value": "Null"}}' \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json \
+  --name myMongoDBCluster --no-wait
+```
+
+すべての VM インスタンスのデプロイと構成には&1; 時間以上かかることがあります。 前のコマンドの最後で `--no-wait` フラグを使用しているので、Azure プラットフォームでテンプレートのデプロイが受け入れられたら、コマンド プロンプトの制御権が戻ります。 そこで [az group deployment show](/cli/azure/group/deployment#show) を実行してデプロイの状態を確認できます。 次の例では、`myResourceGroup` リソース グループの `myMongoDBCluster` デプロイメントの状態を表示します。
+
+```azurecli
+az group deployment show --resource-group myResourceGroup --name myMongoDBCluster \
+    --query [properties.provisioningState] --output tsv
+```
 
 ## <a name="next-steps"></a>次のステップ
 この記事の例では、VM からローカルに MongoDB インスタンスに接続しました。 別の VM またはネットワークから MongoDB インスタンスに接続する場合は、適切な[ネットワーク セキュリティ グループ規則を作成する](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)必要があります。
@@ -182,10 +234,5 @@ azure group create --name myResourceGroup --location WestUS \
 テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
 Azure Resource Manager テンプレートは、カスタム スクリプト拡張機能を使って、スクリプトをダウンロードして VM で実行します。 詳しくは、「[Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

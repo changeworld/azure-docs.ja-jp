@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
-ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -25,12 +26,37 @@ ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
 
 OpenID Connect は、サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築している場合に推奨されます。
 
-[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
+
+[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
 ## <a name="authentication-flow-using-openid-connect"></a>OpenID Connect を使用する認証フロー
 最も基本的なサインイン フローには次の手順が含まれています。各手順についてはこの後詳しく説明します。
 
 ![OpenID Connect 認証フロー](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
+
+## <a name="openid-connect-metadata-document"></a>OpenID Connect のメタデータ ドキュメント
+
+OpenID Connect はメタデータ ドキュメントについて説明するものです。メタデータ ドキュメントは、アプリがサインインを実行するために必要な情報の大半を含んでいます。 これには、使用する URL、サービスの公開署名キーの場所などの情報が含まれます。 OpenID Connect のメタデータ ドキュメントは、次の場所にあります。
+
+```
+https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
+```
+メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。
+
+```
+{
+    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "token_endpoint_auth_methods_supported":
+    [
+        "client_secret_post",
+        "private_key_jwt"
+    ],
+    "jwks_uri": "https://login.microsoftonline.com/common/discovery/keys"
+    
+    ...
+}
+```
 
 ## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
 Web アプリケーションでユーザーを認証する必要がある場合、ユーザーを `/authorize` エンドポイントにリダイレクトさせる必要があります。 この要求は、 [OAuth 2.0 承認コード フロー](active-directory-protocols-oauth-code.md)の最初の部分に似ていますが、いくつかの重要な違いがあります。
@@ -57,7 +83,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター |  | Description |
 | --- | --- | --- |
 | テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
-| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 値は Azure クラシック ポータルにあります。 **[Active Directory]** をクリックしてディレクトリを選択し、アプリケーションを選択して **[構成]** をクリックします。 |
+| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選び、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  `code` などの他の response_types が含まれていてもかまいません。 |
 | scope |必須 |スコープのスペース区切りリスト。  OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。  同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | nonce |必須 |アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。  アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。  通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
@@ -142,6 +168,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | --- | --- | --- |
 | post_logout_redirect_uri |推奨 |ログアウトの正常終了後にユーザーをリダイレクトする URL。  指定しない場合、ユーザーに汎用メッセージが表示されます。 |
 
+## <a name="single-sign-out"></a>シングル サインアウト
+Azure AD では、Cookie を使用してユーザーのセッションを識別します。 Web アプリケーションも、アプリケーション内でセッションを管理するために Cookie を設定することがあります。 ユーザーがアプリケーションに初めてサインインすると、Azure AD はユーザーのブラウザーに Cookie を設定します。 ユーザーが後で別のアプリケーションにサインインすると、Azure AD はユーザーを再認証する代わりに、まず Cookie を確認して、ユーザーが Azure AD エンドポイントとの有効なサインオン セッションを持つかどうかを判断します。
+
+同様に、ユーザーがアプリケーションから初めてサインアウトするときに、Azure AD はブラウザーから Cookie を消去します。 ただし、ユーザーは認証に Azure AD を使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがすべてのアプリケーションからサインアウトするようにするために、Azure AD は、ユーザーが現在サインインしているすべてのアプリケーションの `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーのセッションを識別するすべての Cookie を消去して、この要求に応答する必要があります。 `LogoutUrl` は Azure Portal から設定できます。
+
+1. [Azure Portal](https://portal.azure.com) に移動します。
+2. ページの右上隅のアカウントをクリックして、Active Directory を選択します。
+3. 左側のナビゲーション パネルで **[Azure Active Directory]**、**[アプリの登録]** の順に選択し、アプリケーションを選択します。
+4. **[プロパティ]** をクリックし、**[ログアウト URL]** テキスト ボックスを探します。 
+
 ## <a name="token-acquisition"></a>トークンの取得
 多くの Web アプリは、ユーザーをサインインさせるだけでなく、OAuth を使用してそのユーザーの代わりに Web サービスにアクセスする必要もあります。 このシナリオでは、OpenID Connect を使ってユーザー認証を行うと同時に、OAuth 承認コード フローを使って、`access_tokens` を取得するための `authorization_code` を取得します。
 
@@ -200,8 +236,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 想定されるエラー コードとクライアントに推奨される対処法については、「[承認エンドポイント エラーのエラー コード](#error-codes-for-authorization-endpoint-errors)」を参照してください。
 
 承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。  ユーザーをサインインさせるには、前に説明したように `id_token` を厳密に検証する必要があります。 アクセス トークンを取得するには、[OAuth プロトコルのドキュメント](active-directory-protocols-oauth-code.md)の「承認コードを使用してアクセス トークンを要求する」セクションで説明されているステップに従ってください。
-
-
-<!--HONumber=Feb17_HO2-->
-
 

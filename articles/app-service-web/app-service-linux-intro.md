@@ -5,7 +5,7 @@ keywords: Azure App Service, Linux, OSS
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6eb4390f8290d3036bf76a592c40253432170883
-ms.openlocfilehash: 0e5c56e62965f2cc9df0b439595223300377d084
+ms.sourcegitcommit: 78fbef5aa26c52f5dd264581fd1525ada763d4c6
+ms.openlocfilehash: fa5d210c5e73074803d5cfb874ad7891563aefd0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,12 +40,12 @@ App Service on Linux は現在、次のアプリケーション スタックを�
 
 * FTP
 * ローカル Git
-* GitHub または Bitbucket
+* GitHub
 
 アプリケーションのスケーリング方法は次のとおりです。
 
-* 顧客は、App Service プランでレベルを変更することで、Web アプリのスケールアップとスケールダウンを行えます。
-* 顧客は、アプリケーションをスケールアウトして、SKU の範囲内で複数のインスタンスでアプリを実行することができます。
+* 顧客は、App Service プランのレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
+* 顧客は、SKU の範囲内で、アプリケーションをスケールアウトして、複数のアプリ インスタンスを実行することができます。
 
 Kudu の場合、基本的な機能の一部を次のもので使用できます。
 
@@ -53,9 +54,9 @@ Kudu の場合、基本的な機能の一部を次のもので使用できます
 * 基本的なコンソール
 
 ## <a name="limitations"></a>制限事項
-Azure Portal では、App Service on Linux で現在使用できる機能のみが表示され、残りは非表示となります。 今後、他の機能も有効になると、Portal に反映されます。
+Azure Portal では、App Service on Linux で現在使用できる機能のみが表示され、残りは非表示となります。 さらに機能を有効にすると、その機能がポータルに表示されます。
 
-仮想ネットワーク統合、Azure Active Directory または サード パーティの認証、Kudu サイト拡張機能などの一部の機能は、現在動作しません。 今後、これらが動作するようになった際は、ドキュメントとブログを更新し、変更についてお知らせします。
+仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの一部の機能は、完成していません。 これらの機能が完成したら、ドキュメントとブログを更新し、変更についてお知らせします。
 
 このパブリック プレビューは現在、次のリージョンでのみご利用いただけます。
 
@@ -67,7 +68,7 @@ Web Apps on Linux は専用 App Service プランでのみサポートされて�
 
 Web Apps on Linux は、Linux 向けでない Web アプリが同じリージョンにないリソース グループ内で作成される必要があります。
 
-Linux 上の Web Apps では、コンパイルされていないソースからの .NET Core アプリのデプロイはまだサポートされていません。 最初に .NET Core アプリをローカルで発行/コンパイルした後、発行されたサイト ビットをプッシュする必要があります。
+Linux 上の Web Apps では、コンパイルされていないソースからの .NET Core アプリのデプロイはまだサポートされていません。 最初に .NET Core アプリをローカルで発行/コンパイルした後、発行されたサイト ビットをアプリにプッシュする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
@@ -76,9 +77,7 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 * [App Service on Linux 向けにカスタム Docker イメージを使用する方法](app-service-linux-using-custom-docker-image.md)
 * [Web Apps on Linux での Node.js 向け PM2 構成の使用](app-service-linux-using-nodejs-pm2.md)
 * [Azure App Service Web Apps on Linux での .NET Core の使用](app-service-linux-using-dotnetcore.md)
+* [Azure App Service Web Apps on Linux での Ruby の使用](app-service-linux-using-ruby.md)
 * [Azure App Service Web Apps on Linux のFAQ](app-service-linux-faq.md)
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f336058fd743b4dfec17eb301a3b28d035ca8d0f
-ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
+ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
+ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -33,7 +34,7 @@ ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
 
-**クエリと演算子** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**クエリと演算子** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **集計** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -43,9 +44,9 @@ ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
 
 **日付と時刻** [日付と時刻の式](#date-and-time-expressions) | [日付と時刻のリテラル](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**文字列** [GUID](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**文字列** [GUIDs](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [in, !in](#in) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
-**配列、オブジェクト、動的** [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+**配列、オブジェクト、動的** [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [in、!in](#in) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
 ## <a name="let"></a>let
 ### <a name="let-clause"></a>let 句
@@ -439,7 +440,10 @@ traces
 
 ### <a name="find-operator"></a>find 演算子
 
-    find in (Table1, Table2, Table3) where id=='42'
+    find in (Table1, Table2, Table3) where id=="a string"
+    find in (Table1, Table2, Table3) where id=="a string" project column1, column2
+    find in (Table1, Table2, Table3) where * has "a string"
+    find in (Table1, Table2, Table3) where appName in ("string 1", "string 2", "string 3")
 
 テーブルのセットで述語が一致する行を検索します。
 
@@ -453,6 +457,7 @@ traces
 
 * *Table1* テーブル名またはクエリ。 let-defined テーブルを指定できますが、関数は指定できません。 テーブル名は、クエリよりもパフォーマンスに優れています。
 * *Predicate* 指定したテーブルのすべての行について評価されるブール式。
+ * 文字列の比較では、列名の代わりに "*" を使用できます。
 * *Column1* `project` オプションを使用すると、出力に常に表示する列を指定できます。 
 
 **結果**
@@ -1140,7 +1145,7 @@ Traces
 代わりに [join 演算子](#join-operator)を検討してください。
 
 ### <a name="where-operator"></a>where 演算子
-     requests | where resultCode==200
+     requests | where resultCode=="200"
 
 述語の条件を満たす行のサブセットにテーブルをフィルター処理します。
 
@@ -1183,61 +1188,7 @@ traces
 
 2 つの列の比較を最後に配置していることに注目してください。これは、インデックスを使用できず、スキャンを強制するためです。
 
-### <a name="where-in-operator"></a>where-in 演算子
-    requests | where resultCode !in (200, 201)
 
-    requests | where resultCode in (403, 404)
-
-**構文**
-
-    T | where col in (listExpression)
-    T | where col !in (listExpression)
-
-**引数**
-
-* `col`: テーブルの列。
-* `listExpression`...: スカラー式のリスト、またはリストに評価される式。 
-
-入れ子になった配列は、1 つのリストにフラット化されます。たとえば、`where x in (dynamic([1,[2,3]]))` は `where x in (1,2,3)` になります。
-
-`in` は、`col` が式 `expr1...` のいずれかに等しい行のみを含めるために使用します。
-
-`!in` は、`col` が式 `expr1...` のいずれにも等しくない行のみを含めるために使用します。  
-
-**例**
-
-```AIQL
-let cities = dynamic(['Dublin','Redmond','Amsterdam']);
-requests | where client_City in (cities) 
-|  summarize count() by client_City
-```
-
-計算されるリスト:
-
-```AIQL
-let topCities =  toscalar ( // convert single column to value
-   requests
-   | summarize count() by client_City 
-   | top 4 by count_ 
-   | summarize makeset(client_City)) ;
-requests
-| where client_City in (topCities) 
-| summarize count() by client_City;
-```
-
-リストの式として関数呼び出しを使用:
-
-```AIQL
-let topCities =  (n:int) {toscalar (
-   requests
-   | summarize count() by client_City 
-   | top n by count_ 
-   | summarize makeset(client_City)) };
-requests
-| where client_City in (topCities(3)) 
-| summarize count() by client_City;
-```
- 
 
 ## <a name="aggregations"></a>集計
 集計とは、 [summarize 演算](#summarize-operator)で作成されたグループの値を結合するための関数です。 たとえば、次のクエリでは、dcount() が集計関数です。
@@ -2239,8 +2190,8 @@ h"hello"
 | `endswith` |RHS が LHS の末尾の部分文字列である |いいえ |`"Fabrikam" endswith "kam"` |
 | `!endswith` |RHS が LHS の末尾の部分文字列ではない |いいえ |`"Fabrikam" !endswith "ka"` |
 | `matches regex` |LHS には RHS との一致が含まれている |はい |`"Fabrikam" matches regex "b.*k"` |
-| `in` |要素のいずれかに等しい |はい |`"abc" in ("123", "345", "abc")` |
-| `!in` |要素のいずれとも等しくない |はい |`"bc" !in ("123", "345", "abc")` |
+| [`in`](#in) |要素のいずれかに等しい |はい |`"abc" in ("123", "345", "abc")` |
+| [`!in`](#in) |要素のいずれとも等しくない |はい |`"bc" !in ("123", "345", "abc")` |
 
 語彙全体があるかどうかをテストする場合は、`has` または `in` を使用します。語彙全体とは、非英数字またはフィールドの先頭か末尾によって囲まれた、記号または英数字から成る単語を意味します。 `has` は、`contains`、`startswith`、または `endswith` より速く動作します。 以下のクエリでは、最初の方が処理速度は速くなります。
 
@@ -2323,6 +2274,8 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="notempty"></a>
 <a name="isnotempty"></a>
 <a name="isempty"></a>
+
+
 
 ### <a name="isempty-isnotempty-notempty"></a>isempty、isnotempty、notempty
     isempty("") == true
@@ -2611,8 +2564,8 @@ T
 ### <a name="dynamic-object-functions"></a>動的オブジェクトの関数
 |  |  |
 | --- | --- |
-| *value* `in` *array* |*array* に *value* と等しい要素がある場合は true。<br/>`where City in ('London', 'Paris', 'Rome')` |
-| *value* `!in` *array* |*array* に *value* と等しい要素がない場合は true。 |
+| [*value* `in` *array*](#in) |*array* に *value* が含まれています。 |
+| [*value* `!in` *array*](#in) |*array* に *value* が含まれていません。 |
 | [`arraylength(`array`)`](#arraylength) |配列でない場合は null。 |
 | [`extractjson(`path,object`)`](#extractjson) |オブジェクトに移動するためのパスを使用します。 |
 | [`parsejson(`source`)`](#parsejson) |JSON 文字列を動的オブジェクトに変換します。 |
@@ -2631,7 +2584,57 @@ T
     T | project parsejson(list1).a, parsejson(list2).a
 
 
+### <a name="in"></a>という名前で、
+    value in (listExpression)
+    value !in (listExpression)
 
+値に等しい項目がリストにあるかどうかを判断します。 大文字と小文字が区別されます。値は文字列です。
+
+**引数**
+
+* `value`: スカラー式。
+* `listExpression`...: スカラー式のリスト、またはリストに評価される式。 
+
+入れ子になった配列は、1 つのリストにフラット化されます。たとえば、`where x in (dynamic([1,[2,3]]))` は `where x in (1,2,3)` になります。  
+
+**例**
+
+```AIQL
+    requests | where client_City in ("London", "Paris", "Rome")
+```
+
+```AIQL
+let cities = dynamic(['Dublin','Redmond','Amsterdam']);
+requests | where client_City in (cities) 
+|  summarize count() by client_City
+```
+
+計算されるリスト:
+
+```AIQL
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
+
+リストの式として関数呼び出しを使用:
+
+```AIQL
+let topCities =  (n:int) {toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City)) };
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+ 
 
 ### <a name="arraylength"></a>arraylength
 動的配列内の要素数。
@@ -2833,10 +2836,5 @@ range(1, 8, 3)
 | [where] |名前として言語キーワードを使用します。 |
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
+ms.sourcegitcommit: e0971ca8064a6e4de272a8d890a6fdc88c0f8cc2
+ms.openlocfilehash: 24e3da0ed3aa04e000a4c88fb7b0745d5b880d0d
+ms.lasthandoff: 02/22/2017
 
 
 ---
 # <a name="optimize-your-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションによる環境を最適化する
 Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用するために役立ちます。
 
-このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 4 つの対象領域に分類されているので、すばやくリスクを把握し、アクションを実行できます。
+このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は&4; つの対象領域に分類されているので、すばやくリスクを把握し、アクションを実行できます。
 
 推奨事項は、マイクロソフトのエンジニアによる数多くの顧客訪問によって得られた知識と経験に基づいています。 各推奨事項では、問題が重要である理由と推奨される変更を実装する方法に関するガイダンスが提供されます。
 
@@ -39,7 +40,7 @@ Active Directory 評価ソリューションを使用して、サーバー環境
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * エージェントは、評価されるドメインのメンバーであるドメイン コントローラーにインストールする必要があります。
-* Active Directory 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている .NET Framework 4 が必要です。
+* Active Directory 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている、サポートされているバージョンの .NET Framework 4 (4.5.2 以降) が必要です。
 * 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って、Active Directory 評価ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
 
   > [!NOTE]
@@ -57,10 +58,10 @@ Active Directory 評価では、有効になっているエージェントを使
 | Windows |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![なし](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![いいえ](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 日 |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
-提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
+提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な&10; 個の推奨事項のみが表示されます。
 
 ### <a name="how-weights-are-calculated"></a>重み付けの計算方法
-重み付けは、次の 3 つの重要な要因に基づく集計値です。
+重み付けは、次の&3; つの重要な要因に基づく集計値です。
 
 * 識別された注意点によって問題が発生する *確率* 。 確率が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
 * 問題が発生する原因となった場合の注意点の組織への *影響度* 。 影響度が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
@@ -170,9 +171,4 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 * 「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を参照し、詳細な AD 評価データと推奨事項を確認してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

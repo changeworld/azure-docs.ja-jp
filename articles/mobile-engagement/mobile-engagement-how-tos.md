@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメントのユーザー イン�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 3a423e42441c6b3b2f1917ba02f80078c759ec69
 ms.openlocfilehash: 4c114f470631ae6b06968c3cc8601bc1c76bc1da
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -310,10 +311,5 @@ Web ビューでは、エンドユーザーとの対話を増やすことがで�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

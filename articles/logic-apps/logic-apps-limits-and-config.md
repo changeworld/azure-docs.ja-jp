@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: fa27b0399d98f13ee3c4f4059067fb78e087befd
-ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
+ms.sourcegitcommit: 084919e9dbe3647c45cf67e6836a8c9de6a5cd70
+ms.openlocfilehash: 307a70b5efb22642e54212d8d3517bf5d9070505
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -81,7 +82,8 @@ ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
 
 |名前|制限|メモ|
 |----|----|----|
-|1 秒間のアクション実行数|100|必要に応じて複数のアプリにワークフローを分散させることができます。|
+|1 秒間のアクション実行数 (増加)|1,000|必要に応じて複数のアプリにワークロードを分散することができます。|
+|1 秒間のアクション実行数 (一定量)|1,000,000|必要に応じて複数のアプリにワークロードを分散することができます。|
 
 ### <a name="definition-limits"></a>定義の制限
 
@@ -180,9 +182,4 @@ B2B プロトコルには、以下の制限があります。
 - [一般的な例とシナリオを確認する](../logic-apps/logic-apps-examples-and-scenarios.md)
 - [Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694) 
 - [Logic Apps を使用してシステムを統合する方法を説明する](http://channel9.msdn.com/Events/Build/2016/P462)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

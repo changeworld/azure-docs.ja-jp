@@ -4,7 +4,7 @@ description: "Android SDK for Azure Mobile Engagement の最新の更新情報�
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: fd8ba95ee1fb2703926fb35cdb49e6a503637a7d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -638,9 +639,4 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [こちら]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

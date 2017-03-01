@@ -1,5 +1,5 @@
 ---
-title: "Import/Export サービスのマニフェスト ファイルの形式 | Microsoft Docs"
+title: "Azure Import/Export のマニフェスト ファイルの形式 | Microsoft Docs"
 description: "Azure Blob Storage の BLOB と Import/Export サービスのインポートまたはエクスポート ジョブにおけるドライブ上のファイル間のマッピングを表すドライブ マニフェスト ファイルの形式について説明します"
 author: muralikk
 manager: syadav
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 54b2d4d50cda5c2cdb602bd8d471a8c75f88cd3b
-ms.openlocfilehash: db684f836d5a28c7c6ba188c22029ab84f031bb7
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="import-export-service-manifest-file-format"></a>Import/Export サービスのマニフェスト ファイル形式
+# <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export サービスのマニフェスト ファイルの形式
 ドライブ マニフェスト ファイルは、Azure Blob Storage の BLOB とインポートまたはエクスポート ジョブを構成するドライブ上のファイル間のマッピングを表します。 インポート操作の場合、マニフェスト ファイルはドライブの準備プロセスの一部として作成され、ドライブが Azure データ センターに送信される前にそのドライブに格納されます。 エクスポート操作の場合、マニフェストは Azure Import/Export サービスによって作成され、ドライブに保存されます。  
   
 ドライブ マニフェスト ファイルはインポート ジョブとエクスポート ジョブの両方で、インポートまたはエクスポート ドライブに格納されます。API 操作を介してサービスに送信されることはありません。  
@@ -132,9 +133,4 @@ block-list ::=
   
 ## <a name="see-also"></a>関連項目  
 [ストレージの Import/Export REST](/rest/api/storageimportexport/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

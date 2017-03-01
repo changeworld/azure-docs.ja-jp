@@ -4,7 +4,7 @@ description: "Android SDK for Azure Mobile Engagement の最新の更新情報�
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 928c3d85f98f0bd073a5aaadf0ae4495840c5da6
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -108,9 +109,4 @@ Engagement ポータルで OAuth Credentials (クライアント ID とクライ
 [ADM クライアント ライブラリ]:https://developer.amazon.com/sdk/adm/setup.html
 [統合 ADM]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/13/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
-ms.openlocfilehash: 9624d31165f927c442c6dd0cfd646bc3dfd20ec7
+ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
+ms.openlocfilehash: 118ea84abb0de095ac515ee98a643718ca54c043
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -66,6 +67,13 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 
 Excel での Azure Analysis Services サーバーへの接続は、Excel 2016 の Get Data または以前のバージョンの Power Query を使用してサポートされます。 [MSOLAP.7 プロバイダー](analysis-services-data-providers.md)が必要です。 Power Pivot での [テーブルのインポート] ウィザードを使用した接続はサポートされません。
 
+> [!NOTE]
+> 一部の会社は、段階的提供チャネルで Office 365 の更新プログラムをデプロイします。つまり、現在のバージョンからの更新が最長で 4 か月遅れることになります。 Excel 2016 ビルド 1609.7369.2115 以前または Excel 2013 の場合は、Office データ接続 (.odc) ファイルを作成して、Azure Analysis Services サーバーに接続するための MSOLAP.7 プロバイダーを手動で更新できます。 詳細については、「[.odc ファイルの作成](analysis-services-odc.md)」をご覧ください。
+> 
+> 
+
+**Excel 2016 から接続するには**
+
 1. Excel 2016 では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[From Analysis Services (Analysis Services)]** をクリックします。
 2. データ接続ウィザードで、**[サーバー名]** にクリップボードのサーバー名を貼り付けます。 その後、**[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、会社でのユーザー名 (たとえば nancy@adventureworks.com,) とパスワードを入力します。
 
@@ -94,10 +102,5 @@ Excel での Azure Analysis Services サーバーへの接続は、Excel 2016 �
 ## <a name="next-steps"></a>次のステップ
 
 [サーバーの管理](analysis-services-manage.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

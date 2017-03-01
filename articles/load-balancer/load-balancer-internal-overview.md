@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 177b01989ab2f3475cd853d89789b88e02d04be4
-ms.openlocfilehash: 0194ffe54462e1a432ea10e69608e158f9cc54dc
+ms.sourcegitcommit: 47869775365ea517b94cbd5a2eb83c93f4d2b4df
+ms.openlocfilehash: 17b7337ddcfa2671bb3a035de8462e31bfa0c85f
+ms.lasthandoff: 02/15/2017
 
 ---
 
@@ -44,11 +45,11 @@ Web 層はインターネット クライアント用のインターネットに
 
 次の図は、同じクラウド サービス内にある、インターネットに接続する多層アプリケーションを示しています。
 
-![内部負荷分散の 1 つのクラウド サービス](./media/load-balancer-internal-overview/IC736321.png)
+![内部負荷分散の&1; つのクラウド サービス](./media/load-balancer-internal-overview/IC736321.png)
 
 図 1 - インターネットに接続する多層アプリケーション
 
-多層アプリケーションの考えられるもう 1 つのシナリオは、ILB が ILB のサービスを使用するクラウド サービスとは異なるクラウド サービスにデプロイされている場合です。
+多層アプリケーションの考えられるもう&1; つのシナリオは、ILB が ILB のサービスを使用するクラウド サービスとは異なるクラウド サービスにデプロイされている場合です。
 
 同じ仮想ネットワークを使用するクラウド サービスは、ILB エンドポイントにアクセスできます。 次の図は、フロントエンド Web サーバーがデータベース バックエンドとは異なるクラウド サービス内にあり、同じ仮想ネットワーク内の ILB エンドポイントを使用していることを示しています。
 
@@ -66,7 +67,7 @@ Web 層はインターネット クライアント用のインターネットに
 
 図 3 - ILB エンドポイントの背後でホストされている LOB アプリケーション
 
-LOB のもう 1 つのシナリオは、ILB エンドポイントが構成されている仮想ネットワークにサイト間 VPN を設定することです。 これにより、オンプレミス ネットワーク トラフィックを ILB エンドポイントにルーティングできます。
+LOB のもう&1; つのシナリオは、ILB エンドポイントが構成されている仮想ネットワークにサイト間 VPN を設定することです。 これにより、オンプレミス ネットワーク トラフィックを ILB エンドポイントにルーティングできます。
 
 ![サイト間 VPN を使用した内部負荷分散](./media/load-balancer-internal-overview/IC744150.png)
 
@@ -83,9 +84,4 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

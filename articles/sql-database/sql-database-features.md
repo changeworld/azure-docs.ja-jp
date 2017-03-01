@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
-ms.openlocfilehash: 50a465f314909c10bc3c3f95be2d9dc377d433a7
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -57,12 +58,12 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 | AlwaysOn 可用性グループ | [サポートされています](https://msdn.microsoft.com/library/hh510230.aspx) | サポートされていません - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください |
 | データベースの接続 | [サポートされています](https://msdn.microsoft.com/library/ms190209.aspx) | サポートされていません |
 | アプリケーション ロール | [サポートされています](https://msdn.microsoft.com/library/ms190998.aspx) | [サポートされています](https://msdn.microsoft.com/library/ms190998.aspx) |
-| 自動スケール | サポートされていません | [サポートされています](sql-database-scale-up.md) |
+| 自動スケール | サポートされていません | [サポートされています](sql-database-service-tiers.md) |
 | Azure Active Directory | サポートされていません | [サポートされています](sql-database-aad-authentication.md) |
 | Azure Data Factory | サポートされていません - [SQL Server Integration Services (SSIS)](https://msdn.microsoft.com/library/ms141026.aspx) に関する記事を参照してください | [サポートされています](https://azure.microsoft.com/services/data-factory/) |
-| 監査 | [サポートされています](https://msdn.microsoft.com/library/cc280386.aspx) | [サポートされています](sql-database-auditing-get-started.md) |
+| 監査 | [サポートされています](https://msdn.microsoft.com/library/cc280386.aspx) | [サポートされています](sql-database-auditing.md) |
 | BACPAC ファイル (エクスポート) | [サポートされています](https://msdn.microsoft.com/library/hh213241.aspx) | [サポートされています](sql-database-export.md) |
-| BACPAC ファイル (インポート) | [サポートされています](https://msdn.microsoft.com/library/hh710052.aspx) | [サポートされています](sql-database-import.md) |
+| BACPAC ファイル (インポート) | [サポートされています](https://msdn.microsoft.com/library/hh710052.aspx) | [サポートされています](sql-database-import-portal.md) |
 | BACKUP および RESTORE ステートメント | [サポートされています](https://msdn.microsoft.com/library/ff848768.aspx) | サポートされていません |
 | 組み込み関数 | [サポートされています](https://msdn.microsoft.com/library/ms174318.aspx) | [ほとんど](https://msdn.microsoft.com/library/ms174318.aspx) |
 | 変更データのキャプチャ | [サポートされています](https://msdn.microsoft.com/library/cc645937.aspx) | サポートされていません |
@@ -132,7 +133,7 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 | SQL Server Integration Services (SSIS) | [サポートされています](https://msdn.microsoft.com/library/ms141026.aspx) | サポートされていません - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) に関するページを参照してください |
 | SQL Server PowerShell | [サポートされています](https://msdn.microsoft.com/library/hh245198.aspx) | [サポートされています](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server プロファイラー | [サポートされています](https://msdn.microsoft.com/library/ms181091.aspx) | サポートされていません - [拡張イベント](https://msdn.microsoft.com/library/ms181091.aspx)に関する記事を参照してください |
-| SQL Server レプリケーション | [サポートされています](https://msdn.microsoft.com/library/ms151198.aspx) | [トランザクション レプリケーションとスナップショット レプリケーションのサブスクライバーのみ](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server レプリケーション | [サポートされています](https://msdn.microsoft.com/library/ms151198.aspx) | [トランザクション レプリケーションとスナップショット レプリケーションのサブスクライバーのみ](sql-database-cloud-migrate.md) |
 | SQL Server Reporting Services (SSRS) | [サポートされています](https://msdn.microsoft.com/library/ms159106.aspx) | サポートされていません |
 | ストアド プロシージャ | [サポートされています](https://msdn.microsoft.com/library/ms190782.aspx) | [サポートされています](https://msdn.microsoft.com/library/ms190782.aspx) |
 | システム ストアド関数 | [サポートされています](https://msdn.microsoft.com/library/ff848780.aspx) | [一部](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -158,9 +159,4 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 - サービス階層に基づく特定のリソース クォータと制限については、**サービス階層**に関する記事を参照してください。 サービス レベルの概要については、「 [SQL Database のサービス階層](sql-database-service-tiers.md)」を参照してください。
 - セキュリティの概要については、[Azure SQL Database のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。
 - SQL Database の利用可能なドライバーとサポートの詳細については、「 [SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

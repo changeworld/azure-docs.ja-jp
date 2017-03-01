@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: e8cac4af4b971320429cc4c76b8d806e314e1143
+ms.sourcegitcommit: 3f3ff3d196e9c640e9bd7cf01f9f1218c774ec6b
+ms.openlocfilehash: c06c43d430760a56d08dc0c2f9d158f4124db6d3
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -37,24 +38,59 @@ IoT Hub メトリックは、Azure サブスクリプション内の Azure IoT �
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>IoT Hub メトリックとその使用方法
 IoT Hub には、ハブの正常性の概要と、ハブに接続されているデバイスの総数を示すいくつかのメトリックが用意されています。 複数のメトリックから得た情報を組み合わせることで、IoT Hub の状態をより大局的に把握することができます。 次の表では、各 IoT Hub で追跡されるメトリックを示すと共に、各メトリックが IoT Hub の全体的な状態にどのように関連するかを説明します。
 
-| メトリック | メトリックの説明 | メトリックによって提供される情報 |
-| --- | --- | --- |
-| d2c.telemetry.ingress.allProtocol | すべてのデバイスで、送信されたメッセージの数 | メッセージ送信に関する概要データ |
-| d2c.telemetry.ingress.success | ハブへの取り込みに成功したメッセージの総数 | ハブへの正常なメッセージ取り込みの概要 |
-| d2c.telemetry.egress.success | 成功したエンドポイントへの全書き込みの回数 | ユーザーのルートに基づいたメッセージ ファンアウトの概要 |
-| d2c.telemetry.egress.invalid | エンドポイントとの互換性がないために配信されなかったメッセージの数 | エンドポイントのユーザーのセットに書き込まれた失敗の数の概要。 値が大きい場合は、不適切に構成されたエンドポイントを示す可能性があります。 |
-| d2c.telemetry.egress.dropped | エンドポイントが異常な状態であるために破棄されたメッセージの数 | IoT Hub が現在の構成の場合に、破棄されたメッセージの数の概要 |
-| d2c.telemetry.egress.fallback | フォールバック ルートに一致するメッセージの数 | 組み込みエンドポイント以外の他のエンドポイントに、すべてのメッセージをパイプするユーザーの場合、このメトリックにはルーティング セットアップのギャップが表示されます |
-| d2c.telemetry.egress.orphaned | フォールバック ルートを含め、すべてのルートと一致しないメッセージの数 | IoT Hub が現在の構成の場合に、孤立したメッセージの数の概要 |
-| d2c.endpoints.latency.eventHubs | IoT ハブの受信メッセージとイベント ハブ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒) | 分散させることで、ユーザーが不適切なエンドポイント構成を特定する際に役立ちます |
-| d2c.endpoints.latency.serviceBusQueues | IoT ハブの受信メッセージと Service Bus キュー エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒) | 分散させることで、ユーザーが不適切なエンドポイント構成を特定する際に役立ちます |
-| d2c.endpoints.latency.serviceBusTopic | IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒) | 分散させることで、ユーザーが不適切なエンドポイント構成を特定する際に役立ちます |
-| d2c.endpoints.latency.builtIn.events | IoT ハブの受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信メッセージの間の平均待機時間 (ミリ秒) | 分散させることで、ユーザーが不適切なエンドポイント構成を特定する際に役立ちます |
-| c2d.commands.egress.complete.success | すべてのデバイスで、受信側のデバイスが完了したコマンド メッセージの総数 |破棄および拒否に関するメトリックと共に、全体的なクラウドからデバイスへのコマンドの成功率の概要を示す |
-| c2d.commands.egress.abandon.success | すべてのデバイスで、受信側のデバイスが正常に破棄したメッセージの総数 |メッセージの破棄される頻度が想定よりも高い場合は、潜在的な問題を強調表示する |
-| c2d.commands.egress.reject.success | すべてのデバイスで、受信側のデバイスが正常に拒否したメッセージの総数 |メッセージの拒否される頻度が想定よりも高い場合は、潜在的な問題を強調表示する |
-| devices.totalDevices | IoT ハブに登録されたデバイスの数のカウント |ハブに登録されたデバイスの数 |
-| devices.connectedDevices.allProtocol | 同時に接続されたデバイス数のカウント |ハブに接続されたデバイス数の概要 |
+|メトリック|メトリックの表示名|単位|集計の種類|説明|
+|---|---|---|---|---|
+|d2c.telemetry.ingress.allProtocol|テレメトリ メッセージ送信試行|カウント|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|
+|d2c.telemetry.ingress.success|送信済みテレメトリ メッセージ|カウント|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|
+|c2d.commands.egress.complete.success|完了したコマンド|カウント|合計|デバイスで正常に完了した Cloud to Device コマンドの数|
+|c2d.commands.egress.abandon.success|中止したコマンド|カウント|合計|デバイスで中止された Cloud to Device コマンドの数|
+|c2d.commands.egress.reject.success|拒否されたコマンド|カウント|合計|デバイスで拒否された Cloud to Device コマンドの数|
+|devices.totalDevices|合計デバイス|カウント|合計|IoT Hub に登録されたデバイスの数|
+|devices.connectedDevices.allProtocol|接続されているデバイス|カウント|合計|IoT Hub に接続されているデバイスの数|
+|d2c.telemetry.egress.success|配信されたテレメトリ メッセージ|カウント|合計|メッセージがエンドポイントに正常に書き込まれた回数 (合計)|
+|d2c.telemetry.egress.dropped|破棄されたメッセージ|カウント|合計|ルートが一致せず、フォールバック ルートが無効になったために破棄されたメッセージの数|
+|d2c.telemetry.egress.orphaned|孤立したメッセージ|カウント|合計|フォールバック ルートを含め、すべてのルートと一致しないメッセージの数|
+|d2c.telemetry.egress.invalid|無効なメッセージ|カウント|合計|エンドポイントとの互換性がないために配信されなかったメッセージの数|
+|d2c.telemetry.egress.fallback|フォールバック条件に一致するメッセージ|カウント|合計|フォールバック エンドポイントに書き込まれたメッセージの数|
+|d2c.endpoints.egress.eventHubs|Event Hub エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Event Hub エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.eventHubs|イベント ハブ エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージとイベント ハブ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.serviceBusQueues|Service Bus キュー エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Service Bus キュー エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.serviceBusQueues|Service Bus キュー エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus キュー エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.serviceBusTopics|Service Bus トピック エンドポイントに配信されたメッセージ|カウント|合計|メッセージが Service Bus トピック エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.serviceBusTopics|Service Bus トピック エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.builtIn.events|組み込みエンドポイント (イベント/メッセージ) に配信されたメッセージ|カウント|合計|メッセージが組み込みエンドポイント (イベント/メッセージ) に正常に書き込まれた回数|
+|d2c.endpoints.latency.builtIn.events|組み込みエンドポイント (イベント/メッセージ) のメッセージ待機時間|ミリ秒|平均|IoT ハブの受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信メッセージの間の平均待機時間 (ミリ秒) |
+|d2c.twin.read.success|成功したデバイスからのツイン読み取り|カウント|合計|デバイスが開始して成功したツイン読み取りの数。|
+|d2c.twin.read.failure|失敗したデバイスからのツイン読み取り|カウント|合計|デバイスが開始したツイン読み取りの失敗数。|
+|d2c.twin.read.size|デバイスからのツイン読み取りの応答サイズ|バイト|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|
+|d2c.twin.update.success|成功したデバイスからのツイン更新|カウント|合計|デバイスが開始して成功したツイン更新の数。|
+|d2c.twin.update.failure|失敗したデバイスからのツイン更新|カウント|合計|デバイスが開始して失敗したツイン更新の数。|
+|d2c.twin.update.size|デバイスからのツイン更新のサイズ|バイト|平均|デバイスが開始して成功したツイン更新の平均、最小、および最大サイズ。|
+|c2d.methods.success|成功したダイレクト メソッドの呼び出し|カウント|合計|成功したダイレクト メソッドの呼び出しの数。|
+|c2d.methods.failure|失敗したダイレクト メソッドの呼び出し|カウント|合計|失敗したダイレクト メソッドの呼び出しの数。|
+|c2d.methods.requestSize|ダイレクト メソッドの呼び出しの要求サイズ|バイト|平均|成功したダイレクト メソッド要求の平均、最小、および最大サイズ。|
+|c2d.methods.responseSize|ダイレクト メソッドの呼び出しの応答サイズ|バイト|平均|成功したダイレクト メソッド応答の平均、最小、および最大サイズ。|
+|c2d.twin.read.success|成功したバック エンドからのツイン読み取り|カウント|合計|バックエンドが開始して成功したツイン読み取りの数。|
+|c2d.twin.read.failure|失敗したバックエンドからのツイン読み取り|カウント|合計|バックエンドが開始して失敗したツイン読み取りの数。|
+|c2d.twin.read.size|バック エンドからのツイン読み取りの応答サイズ|バイト|平均|バックエンドが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|
+|c2d.twin.update.success|成功したバックエンドからのツイン更新|カウント|合計|バックエンドが開始して成功したツイン更新の数。|
+|c2d.twin.update.failure|失敗したバック エンドからのツイン更新|カウント|合計|バックエンドが開始して失敗したツイン更新の数。|
+|c2d.twin.update.size|バックエンドからのツイン更新のサイズ|バイト|平均|バックエンドが開始して成功したツイン更新の平均、最小、および最大サイズ。|
+|twinQueries.success|成功したツイン クエリ|カウント|合計|成功したツイン クエリの数。|
+|twinQueries.failure|失敗したツイン クエリ|カウント|合計|失敗したツイン クエリの数。|
+|twinQueries.resultSize|ツイン クエリの結果のサイズ|バイト|平均|成功したツイン クエリの結果の平均、最小、および最大サイズ。|
+|jobs.createTwinUpdateJob.success|成功したツイン更新ジョブの作成|カウント|合計|正常に作成されたツイン更新ジョブの数。|
+|jobs.createTwinUpdateJob.failure|失敗したツイン更新ジョブの作成|カウント|合計|作成に失敗したツイン更新ジョブの数。|
+|jobs.createDirectMethodJob.success|成功したメソッド呼び出しジョブの作成|カウント|合計|正常に作成されたダイレクト メソッド呼び出しジョブの数。|
+|jobs.createDirectMethodJob.failure|失敗したメソッド呼び出しジョブの作成|カウント|合計|作成に失敗したダイレクト メソッド呼び出しジョブの数。|
+|jobs.listJobs.success|成功したジョブ一覧の呼び出し|カウント|合計|正常に実行されたジョブ一覧の呼び出しの数。|
+|jobs.listJobs.failure|失敗したジョブ一覧の呼び出し|カウント|合計|失敗したジョブ一覧の呼び出しの数。|
+|jobs.cancelJob.success|成功したジョブの取り消し|カウント|合計|正常に実行されたジョブ取り消しの呼び出し。|
+|jobs.cancelJob.failure|失敗したジョブの取り消し|カウント|合計|失敗したジョブ取り消しの呼び出し。|
+|jobs.queryJobs.success|成功したジョブ クエリ|カウント|合計|正常に実行されたクエリ ジョブの呼び出しの数。|
+|jobs.queryJobs.failure|失敗したジョブ クエリ|カウント|合計|失敗したジョブ クエリの呼び出しの数。|
+|jobs.completed|完了したジョブ|カウント|合計|完了したジョブの数。|
+|jobs.failed|失敗したジョブ|カウント|合計|失敗したジョブの数。|
 
 ## <a name="next-steps"></a>次のステップ
 IoT Hub メトリックの概要については以上です。Azure IoT Hub の管理に関する詳細については、次のリンク先にアクセスしてください。
@@ -79,9 +115,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

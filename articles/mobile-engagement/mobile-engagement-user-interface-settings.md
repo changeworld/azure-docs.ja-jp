@@ -4,7 +4,7 @@ description: "Azure モバイル エンゲージメントを使用してアプ�
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f3c20ee0d5abb40d7650eeaa722e87142275448d
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -188,10 +189,5 @@ ADM を使用してネイティブのプッシュを有効にするには、ク�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

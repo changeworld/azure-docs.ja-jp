@@ -4,7 +4,7 @@ description: "PHP バックエンドから Azure Notification Hubs を使用す�
 services: notification-hubs
 documentationcenter: 
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: c81ab9004bf71007395d2545c4e44b07c865aa9d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -253,10 +254,5 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

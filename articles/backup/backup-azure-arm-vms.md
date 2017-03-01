@@ -1,10 +1,10 @@
 ---
-title: "Recovery Services コンテナーへの Azure VM のバックアップ | Microsoft Docs"
-description: "Azure 仮想マシン バックアップの手順で Azure 仮想マシンを検出および登録して Recovery Services コンテナーにバックアップします。"
+title: "Azure VM をバックアップする | Microsoft Docs"
+description: "Azure 仮想マシンを検出し、Recovery Services コンテナーに登録およびバックアップします。"
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "仮想マシンのバックアップ; バックアップ、仮想マシン; バックアップと障害復旧; ARM VM のバックアップ"
 ms.assetid: 5c68481d-7be3-4e68-b87c-0961c267053e
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 2/15/2017
+ms.author: trinadhk;jimpark;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: ac8df40db8ddcc84a0a6221dddd0f17fecbe6586
-ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 981c8652629e96f482d9a62b70b0f0992517019f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
 >
 >
 
-この記事では、Azure VM (Resource Manager デプロイとクラシック デプロイの両方) を Recovery Services コンテナーにバックアップする手順について説明します。 VM をバックアップするための作業のほとんどがその準備です。 VM をバックアップまたは保護する前に、 [前提条件](backup-azure-arm-vms-prepare.md) の作業を行って、VM を保護するために環境を準備する必要があります。 前提条件の作業が完了したら、バックアップ操作を開始して VM のスナップショットを作成できます。
+この記事では、Azure VM (Resource Manager デプロイとクラシック デプロイの両方) を Recovery Services コンテナーにバックアップする方法について説明します。 VM をバックアップするための作業のほとんどがその準備です。 VM をバックアップまたは保護する前に、 [前提条件](backup-azure-arm-vms-prepare.md) の作業を行って、VM を保護するために環境を準備する必要があります。 前提条件の作業が完了したら、バックアップ操作を開始して VM のスナップショットを作成できます。
 
 
 [!INCLUDE [learn about backup deployment models](../../includes/backup-deployment-models.md)]
@@ -44,32 +45,57 @@ Recovery Services コンテナーに関連付けられているバックアッ�
 
 最初のバックアップ ジョブを実行するには:
 
-1. コンテナー ダッシュボードの **[バックアップ]** タイルで、**[Azure Virtual Machines]** をクリックします。 <br/>
-    ![[設定] アイコン](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. コンテナー ダッシュボードで、**[バックアップ項目]** の下の番号をクリックするか、**[バックアップ項目]** タイルをクリックします。 <br/>
+  ![[設定] アイコン](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    **[バックアップ項目]** ブレードが開きます。
-2. **[バックアップ項目]** ブレードで、バックアップするコンテナーを右クリックし、**[今すぐバックアップ]** をクリックします。
+  **[バックアップ項目]** ブレードが開きます。
 
-    ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![項目をバックアップする](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    バックアップ ジョブがトリガーされます。 <br/>
+2. **[バックアップ項目]** ブレードで、項目を選びます。
 
-    ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
+  ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  **[バックアップ項目]** の一覧が開きます。 <br/>
 
-    [バックアップ ジョブ] ブレードが開きます。
-4. **[バックアップ ジョブ]** ブレードでは、すべてのジョブの状態を確認できます。
+  ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. **[バックアップ項目]** の一覧で、省略記号 **[...]** をクリックしてコンテキスト メニューを開きます。
 
-   > [!NOTE]
-   > バックアップ操作中に、各仮想マシンのバックアップ拡張機能ですべての書き込みがフラッシュされ、一貫性のあるスナップショットが取得されます。
-   >
-   >
+  ![コンテキスト メニュー](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    バックアップ ジョブが完了すると、状態は *[完了]*になります。
+  コンテキスト メニューが表示されます。
+
+  ![コンテキスト メニュー](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. コンテキスト メニューで、**[今すぐバックアップ]** をクリックします。
+
+  ![コンテキスト メニュー](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  [今すぐバックアップ] ブレードが開きます。
+
+  ![[今すぐバックアップ] ブレードを表示する](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. [今すぐバックアップ] ブレードでカレンダー アイコンをクリックし、カレンダー コントロールを使ってこの回復ポイントを保持する最終日を選び、**[バックアップ]** をクリックします。
+
+  ![今すぐバックアップ回復ポイントを保持する最後の日を設定する](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  デプロイ通知で、バックアップ ジョブがトリガーされたこと、および [バックアップ ジョブ] ページでジョブの進行状況を監視できることが示されます。 VM のサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
+
+6. 初期バックアップの状態を表示または追跡するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[進行中]** をクリックします。
+
+  ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  [バックアップ ジョブ] ブレードが開きます。
+
+  ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  **[バックアップ ジョブ]** ブレードでは、すべてのジョブの状態を確認できます。 VM のバックアップ ジョブがまだ進行中か、または終了したかを確認します。 バックアップ ジョブが完了すると、状態は *[完了]* になります。
+
+  > [!NOTE]
+  > Azure Backup サービスは、バックアップ操作の一部として、各 VM のバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
+  >
+  >
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 仮想マシンのバックアップ中に問題が発生した場合は、[仮想マシンのトラブルシューティングに関する記事](backup-azure-vms-troubleshoot.md)を参照してください。
@@ -79,9 +105,4 @@ VM を保護したので、VM の管理タスクおよび VM の復元方法の�
 
 * [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 * [仮想マシンの復元](backup-azure-arm-restore-vms.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

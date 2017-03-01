@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 4fdd8de3a24bf521b8ea13416900e69d24e1b62d
+ms.sourcegitcommit: 5b80d471c78973f8c2f6b1ad4e1240c66f0505ef
+ms.openlocfilehash: 3e34b8202794bc969bf41765ce519d083037ab46
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -80,6 +81,9 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 > [!NOTE]
 > Raspberry が正常に動作するために必要な電力が確実に供給されるように、キットに付属している 2A 以上の AC アダプターを使うことが重要です。
 
+## <a name="enable-ssh"></a>SSH を有効にする
+2016 年 11 月のリリース時点では、Raspbian の既定で SSH サーバーが無効になっています。 そのため、SSH を手動で有効にする必要があります。 [公式の手順](https://www.raspberrypi.org/documentation/remote-access/ssh/)を参照するか、モニターを接続して **[Preferences] -> [Raspberry Pi Configuration]** に移動して、SSH を有効にします。
+
 ## <a name="connect-raspberry-pi-3-to-the-network"></a>ネットワークへの Raspberry Pi 3 の接続
 Pi は、ワイヤード (有線) ネットワークまたはワイヤレス ネットワークに接続できます。 必ず Pi をコンピューターと同じネットワークに接続してください。 たとえば、コンピューターが接続しているのと同じスイッチに Pi を接続します。
 
@@ -113,10 +117,5 @@ LED の極性が重要であることに注意してください。 この極性
 
 ## <a name="next-steps"></a>次のステップ
 [ツールの入手](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

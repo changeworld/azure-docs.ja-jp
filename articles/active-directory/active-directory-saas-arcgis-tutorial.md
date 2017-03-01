@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3a373d1b8ae73f5b978414718dc93906ac5b16b7
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: 9867af8c5f18e2412e73c2ae5fa95825e367e275
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -23,23 +24,24 @@ ms.openlocfilehash: 3a373d1b8ae73f5b978414718dc93906ac5b16b7
 このチュートリアルでは、Azure と ArcGIS の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
-* ArcGIS でのシングル サインオンが有効なサブスクリプション
+* ArcGIS でのシングル サインオン (SSO) が有効なサブスクリプション
 
 このチュートリアルを完了すると、ArcGIS に割り当てた Azure AD ユーザーは、ArcGIS 企業サイト (サービス プロバイダーが開始したサインオン) で、または [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を使用して、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1. ArcGIS のアプリケーション統合の有効化
-2. シングル サインオンの構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+* ArcGIS のアプリケーション統合の有効化
+* シングル サインオン (SSO) の構成
+* ユーザー プロビジョニングの構成
+* ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-arcgis-tutorial/IC784735.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-arcgis"></a>ArcGIS のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-arcgis"></a>ArcGIS のアプリケーション統合の有効化
 このセクションでは、ArcGIS のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-arcgis-perform-the-following-steps"></a>ArcGIS のアプリケーション統合を有効にするには、次の手順に従います。
+**ArcGIS のアプリケーション統合を有効にするには、次の手順に従います。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
    ![Active Directory](./media/active-directory-saas-arcgis-tutorial/IC700993.png "Active Directory")
@@ -60,11 +62,12 @@ ms.openlocfilehash: 3a373d1b8ae73f5b978414718dc93906ac5b16b7
    
    ![ArcGIS](./media/active-directory-saas-arcgis-tutorial/IC784737.png "ArcGIS")
    
-   ## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで ArcGIS に対する認証を行えるようにする方法を説明します。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **ArcGIS** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-arcgis-tutorial/IC784738.png "Configure Single Sign-On")
@@ -99,12 +102,14 @@ ms.openlocfilehash: 3a373d1b8ae73f5b978414718dc93906ac5b16b7
     
     ![シングル サインオンの構成](./media/active-directory-saas-arcgis-tutorial/IC784746.png "Configure Single Sign-On")
     
-    ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 
-Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。  
-ArcGIS の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+* ArcGIS の場合、プロビジョニングは手動で行います。
+
+**ユーザー プロビジョニングを構成するには、次の手順に従います。**
+
 1. **ArcGIS** テナントにログインします。
 2. **[Invite Members]**をクリックします。
    
@@ -115,35 +120,28 @@ ArcGIS の場合、プロビジョニングは手動で行います。
 4. **[Members]** ダイアログ ページで、次の手順に従います。
    
    ![追加とレビュー](./media/active-directory-saas-arcgis-tutorial/IC784749.png "Add and review")
-   
    1. プロビジョニングする有効な AAD アカウントの **[First Name]**、**[Last Name]**、**[Email]** を入力します。
    2. **[Add And Review]**をクリックします。
 5. 入力したデータを確認してから、 **[Add Members]**をクリックします。
    
    ![メンバーの追加](./media/active-directory-saas-arcgis-tutorial/IC784750.png "Add member")
 
-> [!NOTE]
-> 他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-arcgis-perform-the-following-steps"></a>ユーザーを ArcGIS に割り当てるには、次の手順に従います。
+**ユーザーを ArcGIS に割り当てるには、次の手順に従います。**
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **ArcGIS** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![ユーザーの割り当て](./media/active-directory-saas-arcgis-tutorial/IC784751.png "Assign Users")
+  ![ユーザーの割り当て](./media/active-directory-saas-arcgis-tutorial/IC784751.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
-   ![はい](./media/active-directory-saas-arcgis-tutorial/IC767830.png "Yes")
+  ![はい](./media/active-directory-saas-arcgis-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

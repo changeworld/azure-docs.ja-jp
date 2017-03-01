@@ -1,5 +1,5 @@
 ---
-title: "Azure Automation DSC による管理のための物理および仮想マシンのオンボード |Microsoft Docs"
+title: "Azure Automation DSC による管理のためのマシンのオンボード | Microsoft Docs"
 description: "Azure Automation DSC による管理のためのマシンの設定方法"
 services: automation
 documentationcenter: dev-center-name
@@ -14,8 +14,9 @@ ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 0832b5866b49800cc0aecda8f4e473f89b12139b
+ms.sourcegitcommit: e2257730f0c62dbc0313ce7953fc5f953dae8ac3
+ms.openlocfilehash: f81536322ad1bb16e4af326e0b053da47690619c
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -196,7 +197,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 
 ## <a name="generating-dsc-metaconfigurations"></a>DSC メタ構成の生成
 
-マシンを包括的に Azure Automation DSC にオンボードするために、DSC メタ構成を生成できます。これを適用すると、Azure Automation DSC とデータをやり取りするようにマシン上の DSC エージェントに指示します。 Azure Automation DSC の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
+マシンを包括的に Azure Automation DSC にオンボードするために、[DSC メタ構成](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig)を生成できます。これを適用すると、Azure Automation DSC とデータをやり取りするようにマシン上の DSC エージェントに指示します。 Azure Automation DSC の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
 
 > [!NOTE]
 > DSC メタ構成には Automation アカウントにマシンをオンボードするために必要な管理用の機密データが含まれています。 作成した DSC メタ構成は適切に保護し、使用後は削除してください。
@@ -319,7 +320,11 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 
 3. お使いの Automation アカウントの登録キーと URL のほか、オンボードするマシンの名前を入力します。 その他のパラメーターはすべて省略可能です。 Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「 [**セキュリティで保護された登録**](#secure-registration) 」を参照してください。
 4. マシンが Azure Automation DSC に DSC のステータス情報を送信する一方で、構成や PowerShell モジュールを取得しないようにするには、 **ReportOnly** パラメーターを true に設定します。
-5. スクリプトを実行します。 作業ディレクトリに、マシンをオンボードするための PowerShell DSC メタ構成が含まれる **DscMetaConfigs** という名前のフォルダーが作成されます。
+5. スクリプトを実行します。 作業ディレクトリに、(管理者として) マシンをオンボードするための PowerShell DSC メタ構成が含まれる **DscMetaConfigs** という名前のフォルダーが作成されます。
+
+    ```powershell
+    Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
+    ```
 
 ### <a name="using-the-azure-automation-cmdlets"></a>Azure Automation コマンドレットの使用
 
@@ -338,13 +343,16 @@ PowerShell DSC Local Configuration Manager の既定値がユース ケースに
         ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
         OutputFolder = "$env:UserProfile\Desktop\";
     }
-
     # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     Get-AzureRmAutomationDscOnboardingMetaconfig @Params
-     ```
-
-    作業ディレクトリに、マシンをオンボードするための PowerShell DSC メタ構成が含まれる ***DscMetaConfigs***という名前のフォルダーが作成されます。
+    ```
+    
+4. (管理者として) マシンをオンボードするための PowerShell DSC メタ構成が含まれる ***DscMetaConfigs*** という名前のフォルダーが作成されます。
+    
+    ```powershell
+    Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
+    ```
 
 ## <a name="secure-registration"></a>セキュリティで保護された登録
 
@@ -384,9 +392,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC の概要](automation-dsc-overview.md)
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

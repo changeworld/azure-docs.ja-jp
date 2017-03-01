@@ -1,6 +1,6 @@
 ---
 title: "Log Analytics で SQL 評価ソリューションによる環境を最適化する | Microsoft Docs"
-description: "SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。"
+description: "Azure Log Analytics では、SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 0b0c739f1d89b83c43314d8ace794d26abf10054
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションによる環境を最適化する
 SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールするために役立ちます。
 
-このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 6 つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。
+このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は&6; つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。
 
 推奨事項は、マイクロソフトのエンジニアによる数多くの顧客訪問によって得られた知識と経験に基づいています。 各推奨事項では、問題が重要である理由と推奨される変更を実装する方法に関するガイダンスが提供されます。
 
@@ -41,7 +42,8 @@ SQL 評価は、Standard、Developer、Enterprise の各エディションの、
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * エージェントは、SQL Server がインストールされているサーバーにインストールする必要があります。
-* SQL 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている .NET Framework 4 が必要です。
+* SQL 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている、サポートされているバージョンの .NET Framework 4 が必要です。
+* ソリューションをインストールするには、Azure Portal で Azure サブスクリプションの管理者か共同作業者になっている必要があります。 さらに、OMS ポータルで OMS ワークスペースの作成者または管理者ロールのメンバーになっている必要もあります。
 * Operations Manager エージェントを SQL の評価に使用する場合は、Operations Manager の実行アカウントを使用する必要があります。 詳細については、「 [OMS で使用される Operations Manager の実行アカウント](#operations-manager-run-as-accounts-for-oms) 」を参照してください。
 
   > [!NOTE]
@@ -52,8 +54,6 @@ SQL 評価は、Standard、Developer、Enterprise の各エディションの、
 
 > [!NOTE]
 > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
->
->
 
 ## <a name="sql-assessment-data-collection-details"></a>SQL 評価データ収集の詳細
 SQL 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データ、SQL Server の動的管理の表示結果を収集します。
@@ -122,10 +122,10 @@ PowerShell ウィンドウを開き、次のスクリプトに自分の情報を
 ```
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
-提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
+提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な&10; 個の推奨事項のみが表示されます。
 
 ### <a name="how-weights-are-calculated"></a>重み付けの計算方法
-重み付けは、次の 3 つの重要な要因に基づく集計値です。
+重み付けは、次の&3; つの重要な要因に基づく集計値です。
 
 * 識別された注意点によって問題が発生する *確率* 。 確率が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
 * 問題が発生する原因となった場合の注意点の組織への *影響度* 。 影響度が高いほど、推奨事項に割り当てられる総合スコアが大きくなります。
@@ -243,9 +243,4 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) を実行して、詳細な SQL 評価データと推奨事項を表示します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 09/15/2016
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8c4248077626cba2f1ace3c119d301b99247e19f
+ms.sourcegitcommit: 35d4c8593dd9698017df85675395430f345f4e86
+ms.openlocfilehash: 17054073e921708cc0c9392ed1b94e9579a9f940
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -32,26 +33,28 @@ Portal では、CentOS、CoreOS、Debian、Open Suse、Red Hat Enterprise Linux�
 
 ![ScaleSetPortalOverview](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalOverview.PNG)
 
-## <a name="create-the-linux-virtual-machine"></a>Linux 仮想マシンの作成
-既定の設定を使用して仮想マシンをすぐに作成できます。
+## <a name="create-the-scale-set"></a>スケール セットを作成する
+既定の設定を使って、スケール セットをすぐに作成できます。
 
 * [`Basics`] ブレードで、スケール セットの名前を入力します。 この名前は、スケール セットの前に設置されるロード バランサーの FQDN のベースになります。そのため、Azure 全体で一意の名前にする必要があります。
 * 任意の OS の種類を選択し、目的のユーザー名を入力して、任意の認証の種類を選択します。 パスワードを選択する場合、パスワードは 12 文字以上にする必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。 [ユーザー名とパスワードの要件](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。 [`SSH public key`] を選択した場合、秘密キーではなく、公開キーのみを貼り付けます。
 
 ![ScaleSetPortalBasics](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalBasics.PNG)
 
+* スケール セットを&1; つの配置グループに制限するか、または複数の配置グループにまたがるかを選びます。 複数の配置グループにまたがるスケール セットを許可すると、制限はありますが、スケール セットの容量は 100 VM を超える (最大 1,000) ことができます。 詳しくは、[こちらのドキュメント](./virtual-machine-scale-sets-placement-groups.md)をご覧ください。
 * 目的のリソース グループ名と場所を入力し、[`OK`] をクリックします。
 * [ `Virtual machine scale set service settings` ] ブレードで、目的のドメイン名のラベル (スケール セットの前に設置されたロード バランサーの FQDN のベース) を入力します。 このラベルは、Azure 全体で一意の名前にする必要があります。
 * 目的のオペレーティング システム ディスク イメージ、インスタンス数、マシンのサイズを選択します。
+* 目的のディスクの種類を、管理または非管理対象から選びます。 詳しくは、[こちらのドキュメント](./virtual-machine-scale-sets-managed-disks.md)をご覧ください。 複数の配置グループにまたがるスケール セットを指定した場合は、スケール セットが複数の配置グループにまたがるには管理ディスクが必要であるため、このオプションは変更できません。
 * 自動スケールを有効または無効にします。有効にした場合は、次のように構成します。
 
 ![ScaleSetPortalService](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalService.PNG)
 
-* [`Summary`] ブレードで、検証が完了したら、[`OK`] をクリックします。
-* 最後に、[`Purchase`] ブレードで、[`Purchase`] をクリックしてスケール セットのデプロイを開始します。
+* 検証が終了したら、[`Summary`] ブレードで [`OK`] をクリックしてスケール セットのデプロイを開始します。
+
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>スケール セットの VM に接続する
-スケール セットをデプロイしたら、スケール セットのロード バランサーの [ `Inbound NAT Rules` ] タブに移動します。
+スケール セットを&1; つの配置グループに制限することを選んだ場合は、スケール セットに簡単に接続できるように構成された NAT 規則と共に、スケール セットがデプロイされます (この規則がない場合は、スケール セットの仮想マシンに接続するには、スケール セットと同じ仮想ネットワークにジャンプボックス作成する必要があります)。 これらの NAT 規則を表示するには、スケール セットのロード バランサーの [`Inbound NAT Rules`] タブに移動します。
 
 ![ScaleSetPortalNatRules](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalNatRules.PNG)
 
@@ -67,10 +70,5 @@ Visual Studio を使用してスケール セットをデプロイする方法�
 全般的なドキュメントについては、 [スケール セットの概要に関するページ](virtual-machine-scale-sets-overview.md)をご覧ください。
 
 全般的な情報については、 [スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

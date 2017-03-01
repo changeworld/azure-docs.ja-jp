@@ -4,7 +4,7 @@ description: "負荷分散のための Traffic Manager を含む Azure App Servi
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -80,9 +81,4 @@ ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
 <!-- URL List -->
 
 [CREATEDNS]: ../dns/dns-web-sites-custom-domain.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

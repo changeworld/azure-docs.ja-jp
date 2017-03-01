@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: a268907eea2862ae2d054f30accfd4d771a7d880
-ms.openlocfilehash: ae97e66b8fb0992550c5a4f1f8418c5cb7e496b5
+ms.sourcegitcommit: e208b2bf861d698901b287458a3969e833540e44
+ms.openlocfilehash: f8f67af3cb6adb333924714bd758609b950845af
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -68,6 +69,17 @@ Azure AD Connect でシングル サインオンを有効にすると、オン�
 5.    Azure AD は、以前の共有キーを使用して Kerberos チケットを復号化します。 その後、ユーザーにトークンを返すか、リソースに必要な多要素認証などの他の認証情報を提供するようユーザーに要求します。
 
 シングル サインオンは便宜的な機能であり、何らかの理由で失敗した場合には、通常どおりサインイン ページでパスワードを入力する必要があります。
+
+## <a name="single-sign-on-sso-prerequisites"></a>シングル サインオン (SSO) の前提条件
+"パススルー認証" を使用して "シングル サインオン" を有効にする場合、"パススルー認証" に必要なこと以外に追加の前提条件はありません。
+
+"パスワード同期" を使用して "シングル サインオン" を有効にする場合、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
+- Azure AD Connect サーバーが *.msappproxy.net と通信できる
+- Azure AD Connect が、次のポートで Azure AD に対する HTTPS 要求を実行できる
+
+|プロトコル|ポート番号|説明
+| --- | --- | ---
+|HTTPS|9090|    SSO の登録を有効にします (SSO登録プロセスのみで必要)。
 
 ## <a name="enabling-sso-with-pass-through-authentication-or-password-sync"></a>パススルー認証またはパスワード同期による SSO の有効化
 Azure AD Connect では、パススルー認証またはパスワード同期を使用して、シングル サインオンを簡単に有効にすることができます。 コンピューター アカウントで Kerberos サービス プリンシパル名 (SPN) の構成を許可するために、同期する各フォレスト内のいずれかのドメインに対するドメイン管理者権限があることを確認します。 ユーザー名とパスワードは Azure AD Connect にも Azure AD にも保存されず、この操作のみに使用されます。
@@ -132,9 +144,4 @@ Azure AD でのシングル サインオンに使用する URL にはピリオ�
       </Query>
     </QueryList>
 ```
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

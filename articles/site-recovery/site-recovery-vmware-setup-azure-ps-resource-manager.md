@@ -15,8 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/2/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: bb24e1c79f6a77ec157fa05a8a212109ce8ae7ad
-ms.openlocfilehash: 8ea724c49664ca4803b1c91aefb94b490bd3d283
+ms.sourcegitcommit: edf190031e87cc5a433eaa8fb86187b41fc1dd4e
+ms.openlocfilehash: 61db9c89ff84db89323b55990dc1049d636958f7
+ms.lasthandoff: 02/22/2017
 
 ---
 
@@ -28,7 +29,7 @@ ms.openlocfilehash: 8ea724c49664ca4803b1c91aefb94b490bd3d283
 フェールバック中の Azure Virtual Network とオンプレミス ネットワークの間の待ち時間が大きい場合は、Azure にプロセス サーバーをデプロイすることをお勧めします。 この記事では、Azure で実行されるプロセス サーバーを設定、構成、管理する方法について説明します。
 
 > [!NOTE]
-> この記事では、フェールオーバー時の仮想マシンのデプロイメント モデルとして **[Resource Manager]** を使用していることを前提としています。 デプロイメント モデルとして **[クラシック]** を使用している場合は、[フェールバック プロセス サーバー (クラシック) を設定および構成する方法](./site-recovery-vmware-setup-azure-ps-classic.md)に関するページの手順に従ってください。
+> この記事では、フェールオーバー時の仮想マシンのデプロイメント モデルとして **[Resource Manager]** を使用していることを前提としています。 デプロイメント モデルとして **[クラシック]** を使用している場合は、[フェールバック プロセス サーバーを設定および構成する方法 (クラシック)](./site-recovery-vmware-setup-azure-ps-classic.md) に関するページの手順に従ってください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -76,10 +77,5 @@ ms.openlocfilehash: 8ea724c49664ca4803b1c91aefb94b490bd3d283
 
 ## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>(Azure で実行されている) プロセス サーバーを (オンプレミスで実行されている) 構成サーバーから登録解除する
 
-[!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+[!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 

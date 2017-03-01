@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/22/2016
-ms.author: mfussell;mikhegn
+ms.date: 02/17/2016
+ms.author: msfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
-ms.openlocfilehash: 70d13fd05aeedc9aa6e9f87a9a0223a2e20ef88b
+ms.sourcegitcommit: d1939e316efb00fb4980c57cbec28920a7475a47
+ms.openlocfilehash: bc9a62eb41a4ccb1ffb17b89e3bee9d40f2e7b54
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -34,12 +35,16 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 * アプリケーション ライフサイクル管理: Service Fabric を使用すると、ダウンタイムなしでアップグレードを実行できるだけでなく、アップグレード中に正常性に問題が発生したことが報告された場合は前のバージョンに自動的にロールバックされます。    
 * 密度: 各アプリケーションを専用のハードウェアで実行する必要がないクラスターで複数のアプリケーションを実行できます。
 
+## <a name="samples"></a>サンプル
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)
+* [REST を使用してネーム サービス経由で通信する&2; つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+
 ## <a name="overview-of-application-and-service-manifest-files"></a>アプリケーション マニフェスト ファイルとサービス マニフェスト ファイルの概要
-ゲスト実行可能ファイルのデプロイの一環として、[アプリケーション モデル](service-fabric-application-model.md)に関するページに目を通し、Service Fabric のパッケージ化とデプロイのモデルについて理解しておくと役立ちます。 Service Fabric パッケージ化モデルでは、アプリケーション マニフェストとサービス マニフェストの 2 つの XML ファイルを使用します。 ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルのスキーマ定義が、Service Fabric SDK と共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされています。
+ゲスト実行可能ファイルのデプロイの一環として、[アプリケーション モデル](service-fabric-application-model.md)に関するページに目を通し、Service Fabric のパッケージ化とデプロイのモデルについて理解しておくと役立ちます。 Service Fabric パッケージ化モデルでは、アプリケーション マニフェストとサービス マニフェストの&2; つの XML ファイルを使用します。 ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルのスキーマ定義が、Service Fabric SDK と共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされています。
 
 * **アプリケーション マニフェスト**: アプリケーション マニフェストは、アプリケーションについて記述するために使用されます。 このファイルには、アプリケーションを構成する複数のサービスとその他のパラメーター (インスタンス数など) が列挙されています。パラメーターは、個々のサービスや複数のサービスをデプロイする方法を定義するために使用されます。
   
-  Service Fabric では、デプロイとアップグレードを行う際に 1 つのアプリケーションをユニットとして扱います。 アプリケーションは 1 つのユニットとしてアップグレードすることができ、エラー (およびロールバック) が発生した場合も 1 つのユニットとして管理されます。 Service Fabric は、アップグレード プロセスが正常完了した場合だけでなく、失敗した場合でも、アプリケーションが不明または不安定な状態にならないことを保証します。
+  Service Fabric では、デプロイとアップグレードを行う際に&1; つのアプリケーションをユニットとして扱います。 アプリケーションは&1; つのユニットとしてアップグレードすることができ、エラー (およびロールバック) が発生した場合も&1; つのユニットとして管理されます。 Service Fabric は、アップグレード プロセスが正常完了した場合だけでなく、失敗した場合でも、アプリケーションが不明または不安定な状態にならないことを保証します。
 * **サービス マニフェスト** : サービス マニフェストは、サービスのコンポーネントを記述するために使用されます。 このファイルには、サービスの名前と種類、そのコード、構成などの情報が記載されています。 また、サービスのデプロイ後の構成に使用できるその他のパラメーターも含まれます。
 
 ## <a name="application-package-file-structure"></a>アプリケーション パッケージ ファイルの構造
@@ -85,7 +90,7 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
    * *Code Package Behavior* - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成する際に、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
    * *Program* - サービスを開始するために実行する必要がある実行可能ファイルを指定します。
    * *Arguments* - 実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
-   * *WorkingFolder* - 開始するプロセスの作業ディレクトリを指定します。 次の 3 つの値のいずれかを指定できます。
+   * *WorkingFolder* - 開始するプロセスの作業ディレクトリを指定します。 次の&3; つの値のいずれかを指定できます。
      * `CodeBase` は、作業ディレクトリをアプリケーション パッケージ内のコード ディレクトリ (前述のファイル構造内に見られる `Code` ディレクトリ) に設定するよう指定します。
      * `CodePackage` は、作業ディレクトリをアプリケーション パッケージのルート (前述のファイル構造内に見られる `GuestService1Pkg`) に設定するよう指定します。
      * `Work` は、work という名前のサブディレクトリにファイルを配置するよう指定します。
@@ -189,7 +194,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 ```
 SetupEntryPoint 要素を使用して、サービスのコードが起動される前に実行する必要がある実行可能ファイルまたはバッチ ファイルを指定します。 これはオプションの手順なので、必要な初期化が存在しない場合は追加する必要はありません。 SetupEntryPoint は、サービスを再起動するたびに実行されます。
 
-SetupEntryPoint は 1 つしかないため、アプリケーションのセットアップに複数のスクリプトが必要な場合は、セットアップ スクリプトを 1 つのバッチ ファイルにグループ化する必要があります。 SetupEntryPoint は、あらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。 詳細については、 [SetupEntryPoint の構成](service-fabric-application-runas-security.md)に関するページをご覧ください。
+SetupEntryPoint は&1; つしかないため、アプリケーションのセットアップに複数のスクリプトが必要な場合は、セットアップ スクリプトを&1; つのバッチ ファイルにグループ化する必要があります。 SetupEntryPoint は、あらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。 詳細については、 [SetupEntryPoint の構成](service-fabric-application-runas-security.md)に関するページをご覧ください。
 
 上の例では、SetupEntryPoint は code ディレクトリの `scripts` サブディレクトリにある `LaunchConfig.cmd` という名前のバッチ ファイルを実行します (WorkingFolder 要素が CodeBase に設定されている場合)。
 
@@ -208,7 +213,7 @@ SetupEntryPoint は 1 つしかないため、アプリケーションのセッ�
 
 * `Program` には、サービスを開始する必要がある実行可能ファイルの名前を指定します。
 * `Arguments` には、実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
-* `WorkingFolder` には、開始するプロセスの作業ディレクトリを指定します。 次の 3 つの値のいずれかを指定できます。
+* `WorkingFolder` には、開始するプロセスの作業ディレクトリを指定します。 次の&3; つの値のいずれかを指定できます。
   * `CodeBase` は、作業ディレクトリをアプリケーション パッケージ内のコード ディレクトリ (前述のファイル構造内の `Code` ディレクトリ) に設定するよう指定します。
   * `CodePackage` は、作業ディレクトリをアプリケーション パッケージのルート (前述のファイル構造内の `GuestService1Pkg`) に設定するよう指定します。
     * `Work` は、work という名前のサブディレクトリにファイルを配置するよう指定します。
@@ -249,7 +254,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
-`ServiceManifestImport` 要素では、アプリに追加する 1 つ以上のサービスを指定できます。 サービスは、`ServiceManifest.xml` ファイルが配置されているディレクトリの名前を指定する `ServiceManifestName` で参照されます。
+`ServiceManifestImport` 要素では、アプリに追加する&1; つ以上のサービスを指定できます。 サービスは、`ServiceManifest.xml` ファイルが配置されているディレクトリの名前を指定する `ServiceManifestName` で参照されます。
 
 ```xml
 <ServiceManifestImport>
@@ -298,9 +303,9 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/nodeapp' -ApplicationType
 New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric:/nodeapp/nodeappservice' -ServiceTypeName 'NodeApp' -Stateless -PartitionSchemeSingleton -InstanceCount 1
 
 ```
-Service Fabric サービスは、さまざまな "構成" にデプロイできます。 たとえば、単一または複数のインスタンスとしてデプロイしたり、Service Fabric クラスターの各ノードに 1 つのサービス インスタンスが配置されるようにデプロイしたりできます。
+Service Fabric サービスは、さまざまな "構成" にデプロイできます。 たとえば、単一または複数のインスタンスとしてデプロイしたり、Service Fabric クラスターの各ノードに&1; つのサービス インスタンスが配置されるようにデプロイしたりできます。
 
-`New-ServiceFabricService` コマンドレットの `InstanceCount` パラメーターは、Service Fabric クラスターで開始するサービス インスタンスの数を指定するために使用します。 `InstanceCount` 値は、デプロイするアプリケーションの種類に応じて設定できます。 よく使用されるシナリオは 2 つあります。
+`New-ServiceFabricService` コマンドレットの `InstanceCount` パラメーターは、Service Fabric クラスターで開始するサービス インスタンスの数を指定するために使用します。 `InstanceCount` 値は、デプロイするアプリケーションの種類に応じて設定できます。 よく使用されるシナリオは&2; つあります。
 
 * `InstanceCount = "1"` 1 つのサービス インスタンスのみがクラスターにデプロイされます。 サービスがデプロイされるノードは、Service Fabric スケジューラによって決まります。
 * `InstanceCount ="-1"` 1 つのサービス インスタンスが、Service Fabric クラスターのすべてのノードにデプロイされます。 結果として、1 つ (のみ) のサービス インスタンスがクラスターの各ノードに存在することになります。
@@ -333,13 +338,9 @@ Yeoman により、インストールおよびアンインストール スクリ
 ## <a name="next-steps"></a>次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
 
-* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプルを GitHub で入手する。](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+* [REST を使用してネーム サービス経由で通信する&2; つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Import/Export サービス内のジョブの列挙 |MicrosoftDocs"
+title: "すべての Azure Import/Export ジョブを列挙する | MicrosoftDocs"
 description: "サブスクリプションに含まれるすべての Azure Import/Export サービス ジョブを列挙する方法について説明します。"
 author: muralikk
 manager: syadav
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 65d8912c4eced92206ee1262f3e3307b3162cbd6
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: 5bbe99110b86cb15d23eadc48c1ea45bbab13daf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="enumerating-jobs"></a>ジョブの列挙
+# <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Azure Import/Export サービス内のジョブの列挙
 サブスクリプション内のすべてのジョブを列挙するには、[List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) 操作を呼び出します。 `List Jobs` は、ジョブの一覧と次の属性を返します。
 
 -   ジョブのタイプ (インポートまたはエクスポート)
@@ -32,9 +33,4 @@ ms.openlocfilehash: 65d8912c4eced92206ee1262f3e3307b3162cbd6
 
 ## <a name="see-also"></a>関連項目
  [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

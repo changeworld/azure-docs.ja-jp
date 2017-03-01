@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 44bf5ae5df09b564b4b3ade495ed3aa4e52676e7
 ms.openlocfilehash: 7dcb70766c132ec00ee9199ea0152cd07aa50c8f
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -272,9 +273,4 @@ Splunk Enterprise and Splunk Cloud で Azure AD のシングル サインオン�
 [203]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
