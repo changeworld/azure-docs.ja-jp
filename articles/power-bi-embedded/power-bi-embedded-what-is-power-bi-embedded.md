@@ -18,6 +18,7 @@ ms.author: asaxton
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 81215430b5731a53d4f4700499c1d9af963e712c
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -37,7 +38,7 @@ ms.openlocfilehash: 81215430b5731a53d4f4700499c1d9af963e712c
 Azure の他のサービスと同様に、[Azure Resource Manager API](https://msdn.microsoft.com/library/mt712306.aspx) を使用して Power BI Embedded のリソースがプロビジョニングされます。 この場合、プロビジョニング対象のリソースは **Power BI ワークスペース コレクション**です。
 
 ## <a name="workspace-collection"></a>ワークスペース コレクション
-**ワークスペース コレクション**は、0 個以上の**ワークスペース**が含まれた、リソースの最上位 Azure コンテナーです。  **ワークスペース** **コレクション** has all of the standard zure properties, as well as the following:
+**ワークスペース コレクション**は、0 個以上の**ワークスペース**が含まれた、リソースの最上位 Azure コンテナーです。  **ワークスペース ****コレクション**には、すべての標準 Azure プロパティだけでなく、次の要素があります。
 
 * **アクセス キー** – Power BI API を安全に呼び出すときに使用されるキーです (後述)。
 * **ユーザー** – Azure Portal または Azure Resource Manager API を使用して Power BI ワークスペース コレクションを管理する管理者権限を持つ Azure Active Directory (AAD) ユーザーです。
@@ -57,7 +58,7 @@ Azure の他のサービスと同様に、[Azure Resource Manager API](https://m
 
 ![](media/powerbi-embedded-whats-is/app-tokens.png)
 
-**アプリケーション認証トークン (アプリ トークン)** は、**Microsoft Power BI Embedded** に対する認証に使用されます。  **アプリ トークン**には、次の 3 種類があります。
+**アプリケーション認証トークン (アプリ トークン)** は、**Microsoft Power BI Embedded** に対する認証に使用されます。  **アプリ トークン**には、次の&3; 種類があります。
 
 1. プロビジョニング用トークン - **ワークスペース コレクション**に新しい**ワークスペース**をプロビジョニングするときに使用されます。
 2. 開発用トークン - **Power BI REST API**
@@ -68,9 +69,4 @@ Azure の他のサービスと同様に、[Azure Resource Manager API](https://m
 ## <a name="see-also"></a>関連項目
 * [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 * [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

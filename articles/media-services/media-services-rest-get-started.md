@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/01/2017
 ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: f1b8c68639fd2b778e7e56a6826e91d5bffd4ae8
 ms.openlocfilehash: c6f843e452353edc7c4c7e9bacf653c555145afe
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -622,7 +623,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
        ],
        "Tasks":[  
           {  
-             "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
+             "Configuration":"Adaptive Streaming",
              "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
              "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset>
                 <outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
@@ -1061,9 +1062,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

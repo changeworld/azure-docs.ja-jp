@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 34b166d63e539883a110dc96f7333a2379bc4963
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -230,7 +231,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
         IJob job = _context.Jobs.CreateWithSingleTask(
             "Media Encoder Standard",
-            "H264 Multiple Bitrate 720p",
+            "Adaptive Streaming",
             asset,
             "Adaptive Bitrate MP4",
             options);
@@ -417,9 +418,4 @@ MPEG DASH
 <!-- URLs. -->
 [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
 [Portal]: http://manage.windowsazure.com/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

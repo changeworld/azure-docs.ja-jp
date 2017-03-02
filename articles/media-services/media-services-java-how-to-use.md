@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -84,7 +85,7 @@ ms.openlocfilehash: 55ecdb72c85276cbc8bb5c9ce67978e648ebddb1
 
         // Encoder configuration
         private static String preferedEncoder = "Media Encoder Standard";
-        private static String encodingPreset = "H264 Multiple Bitrate 720p";
+        private static String encodingPreset = "Adaptive Streaming";
 
         public static void main(String[] args)
         {
@@ -271,9 +272,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
 [Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
 [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

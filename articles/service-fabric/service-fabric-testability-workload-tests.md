@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/17/2016
+ms.date: 03/01/2017
 ms.author: anmola
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: eefc05c85d07f397261f2230373ad93e07675159
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -158,9 +159,4 @@ class Test
     }
 }
 ```
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
