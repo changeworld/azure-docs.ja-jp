@@ -105,6 +105,7 @@
 #### Azure でのクラスターの作成
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
+##### [Visual Studio と Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
 #### [ノードの種類と VM Scale Sets](service-fabric-cluster-nodetypes.md)
 #### [クラスターを拡張する](service-fabric-cluster-scale-up-down.md)
 #### [クラスターのアップグレード](service-fabric-cluster-upgrade.md)
@@ -116,6 +117,8 @@
 #### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
 ### スタンドアロンのクラスター
+#### [デプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)
+#### [Service Fabric スタンドアロン パッケージの内容](service-fabric-cluster-standalone-package-contents.md)
 #### [スタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 #### [Azure Virtual Machines でのスタンドアロン クラスターの作成](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [クラスターを拡張する](service-fabric-cluster-windows-server-add-remove-nodes.md)
@@ -211,8 +214,3 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

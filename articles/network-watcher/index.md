@@ -1,41 +1,29 @@
 ---
-title: "Azure Logic Apps のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "オンプレミスとクラウドにまたがるビジネス ワークフローを自動化および簡略化するロジック アプリを開発する方法について説明します。 チュートリアル、テンプレート、および API リファレンスを提供します。"
-services: logic-apps
-author: carolz
-manager: carolz
 layout: LandingPage
-ms.assetid: 
-ms.service: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
+description: "Network Watcher を使用して、ネットワーク レベルで状態を監視して診断する方法について説明します。"
 translationtype: Human Translation
-ms.sourcegitcommit: a0bb42ad612c47111c946afe280e5ed0b3acc2a7
-ms.openlocfilehash: 02ea87d181ede4a0a2d5934b7875f335a25d6ce3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 7b51e3df9aa449bb3fdabd28ce80ac9d4fd7a951
+ms.openlocfilehash: 3c390494f5e86eb82a3011b962217798feff5ca2
+ms.lasthandoff: 02/22/2017
 
 ---
+# <a name="azure-network-watcher-documentation"></a>Azure Network Watcher のドキュメント
 
-# <a name="logic-apps-documentation"></a>Logic Apps ドキュメント
-
-クラウド内のスケーラブルなワークフローを簡略化および統合するロジック アプリを開発する方法について説明します。 チュートリアル、テンプレート、API リファレンスは、オンプレミスとクラウドにまたがる自動化されたビジネス ワークフローを設計してデプロイする際に役立ちます。
+ネットワーク シナリオ レベルで状態を監視して診断できるサービス Network Watcher の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、パケット キャプチャ、トポロジなどのツールを使用して Azure ネットワークを把握する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
-        <a href="/azure/logic-apps/logic-apps-what-are-logic-apps">
+        <a href="/azure/network-watcher/network-watcher-monitoring-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/logic-apps.svg" alt="" />
+                            <img src="media/index/network-watcher.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Logic Apps について</h3>
+                        <h3>Network Watcher について</h3>
                     </div>
                 </div>
             </div>
@@ -43,7 +31,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=app-service">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=network-watcher">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -53,7 +41,7 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>App Service のビデオ ライブラリ</h3>
+                        <h3>Network Watcher のビデオ ライブラリ</h3>
                     </div>
                 </div>
             </div>
@@ -61,7 +49,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="/azure/logic-apps/logic-apps-create-a-logic-app">
+        <a href="/azure/network-watcher/network-watcher-packet-capture-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -71,15 +59,15 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>SaaS サービスを接続する新しいロジック アプリの作成</h3>
+                        <h3>パケット キャプチャの概要</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
-    </li>
-    <li>
-        <a href="/azure/logic-apps/logic-apps-arm-provision">
+    </li> 
+     <li>
+        <a href="/azure/network-watcher/network-watcher-security-group-view-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -89,7 +77,7 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>テンプレートを使用したロジック アプリの作成</h3>
+                        <h3>セキュリティ グループ ビューの概要</h3>
                     </div>
                 </div>
             </div>
@@ -97,7 +85,7 @@ ms.lasthandoff: 02/24/2017
         </a>
     </li>
     <li>
-        <a href="/azure/logic-apps/logic-apps-create-api-app">
+        <a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -107,13 +95,51 @@ ms.lasthandoff: 02/24/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Logic Apps で使用するカスタム API の作成</h3>
+                        <h3>IP flow verify の概要</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
+    <li>
+        <a href="/azure/network-watcher/network-watcher-next-hop-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>次ホップの概要</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
+     <li>
+        <a href="/azure/network-watcher/network-watcher-topology-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>トポロジの概要</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+   
 </ul>
 
 ---
@@ -126,7 +152,7 @@ ms.lasthandoff: 02/24/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp">PowerShell</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs/">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -137,10 +163,9 @@ ms.lasthandoff: 02/24/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>スキーマの履歴</h3>
-                        <p><a href="/azure/logic-apps/logic-apps-schema-2016-04-01">一般公開</a></p>
-                        <p><a href="/azure/logic-apps/logic-apps-schema-2015-08-01">プレビュー</a></p>
-                   </div>
+                        <h3>言語</h3>
+                        <p><a href="/dotnet/api">.NET</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,9 +176,7 @@ ms.lasthandoff: 02/24/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/logic/definition-language">ワークフロー定義言語</a></p>
-                        <p><a href="/rest/api/logic/actions-and-triggers">ワークフローのアクションとトリガー</a></p>
-                        <p><a href="/rest/api/logic/">REST API リファレンスに関するページ</a></p>
+                        <p><a href="/rest/api/networkwatcher">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>

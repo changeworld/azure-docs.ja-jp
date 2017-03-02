@@ -15,6 +15,7 @@
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
 ### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
 ### [内部仮想ネットワークに接続する](api-management-using-with-internal-vnet.md)
+### [内部 VNET で Application Gateway を統合する](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [相互証明書認証](api-management-howto-mutual-certificates.md)
 ## ポリシーを構成する
 ### [カスタム キャッシュ](api-management-sample-cache-by-key.md)
@@ -24,13 +25,16 @@
 ### [ポリシー リファレンスのインデックス](api-management-policy-reference.md)
 ### [ポリシーの概要](api-management-howto-policies.md)
 ### [プロパティを使用してシークレットを管理する](api-management-howto-properties.md)
+### [クライアント証明書認証を使用して API を保護する](api-management-howto-mutual-certificates-for-clients.md)
 ## 開発者エクスペリエンスをカスタマイズする
-### [開発者ポータルをカスタマイズする](api-management-customize-portal.md)
+### [ページのコンテンツとレイアウトを変更する](api-management-modify-content-layout.md)
+### [ページ要素のスタイルをカスタマイズする](api-management-customize-styles.md)
+### [テンプレートを使用してシステム ページをカスタマイズする](api-management-developer-portal-templates.md)
 ### [AAD による認証](api-management-howto-aad.md)
+### [AAD B2C による認証](api-management-howto-aad-b2c.md)
 ### [委任された認証](api-management-howto-setup-delegation.md)
 ### [電子メール通知とテンプレート](api-management-howto-configure-notifications.md)
 ### [コンソール OAuth サポートを有効にする](api-management-howto-oauth2.md)
-### [テンプレートを使用してカスタマイズする](api-management-developer-portal-templates.md)
 ## 運用環境でテストする
 ### [グループの管理](api-management-howto-create-groups.md)
 ### [複数の Azure リージョンにデプロイする](api-management-howto-deploy-multi-region.md)
@@ -80,9 +84,4 @@
 ## [REST API を使用して RBAC ライクなアクセスを提供する](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [API Management API を呼び出すために PostMan を設定する](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [API Management plugin for SmartBear Ready!API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

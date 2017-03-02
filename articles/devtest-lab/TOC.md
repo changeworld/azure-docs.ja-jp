@@ -4,8 +4,8 @@
 ## [DevTest ラボの概念](devtest-lab-concepts.md)
 
 # 作業の開始
-## [ラボを作成する](devtest-lab-create-lab.md)
-## [VM アーティファクトを作成する](devtest-lab-add-vm-with-artifacts.md)
+## [ラボの作成](devtest-lab-create-lab.md)
+## [VM の作成](devtest-lab-add-vm.md)
 ## [トレーニング用ラボの作成](devtest-lab-training-lab.md)
 ## [FAQ](devtest-lab-faq.md)
 
@@ -20,6 +20,7 @@
 ## アーティファクトの管理
 ### [アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)
 ### [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
+### [アーティファクトの管理](devtest-lab-add-vm-with-artifacts.md)
 
 ## VM のベースとテンプレートの管理
 ### [Azure Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)
@@ -41,8 +42,3 @@
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

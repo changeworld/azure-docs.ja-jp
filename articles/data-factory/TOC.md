@@ -63,6 +63,7 @@
 ### [HDInsight MapReduce アクティビティ](data-factory-map-reduce.md)
 ### [HDInsight Streaming アクティビティ](data-factory-hadoop-streaming-activity.md)
 ### [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+### [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 ### [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 ### [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -99,8 +100,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

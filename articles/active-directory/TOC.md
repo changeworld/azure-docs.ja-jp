@@ -9,12 +9,31 @@
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)
-## [AD ライセンスの管理](active-directory-licensing-what-is.md)
+## Azure AD ライセンスの管理
+### [Azure ポータル](active-directory-licensing-get-started-azure-portal.md)
+### [クラシック ポータル](active-directory-licensing-what-is.md)
 ## [組織で Azure を導入する](sign-up-organization.md)
 ## [FAQ](active-directory-faq.md)
 ## [SaaS アプリのチュートリアル](active-directory-saas-tutorial-list.md)
 
 # 方法
+## 計画と設計
+### [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
+#### 要件を確認する
+##### [ID](active-directory-hybrid-identity-design-considerations-business-needs.md)
+##### [ディレクトリ同期](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [多要素認証](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [ID のライフサイクル戦略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [データ セキュリティを計画する](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [データ保護](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [コンテンツ管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [アクセス制御](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [インシデント対応](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+#### ID ライフサイクルを計画する
+##### [タスク](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [採用戦略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [次のステップ](active-directory-hybrid-identity-design-considerations-nextsteps.md)
+#### [ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 ## ユーザーの管理
 ### Add users
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
@@ -47,17 +66,26 @@
 ### 高度なルールの作成
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 #### [クラシック ポータル](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [グループベースのライセンス](active-directory-licensing-whatis-azure-portal.md)
+#### [グループへのライセンスの割り当て](active-directory-licensing-group-assignment-azure-portal.md)
+#### [グループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
+#### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
-## [アクティビティ レポートとセキュリティ レポートの表示](active-directory-view-access-usage-reports.md)
-### [Azure AD レポート](active-directory-reporting-getting-started.md)
+## [アクティビティ レポートの表示](active-directory-view-access-usage-reports.md)
+### [サインイン](active-directory-reporting-activity-sign-ins.md)
+### [監査ログ](active-directory-reporting-activity-audit-logs.md)
+### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
+### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [FAQ](active-directory-reporting-faq.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
-
 ### [既知のネットワーク](active-directory-known-networks.md)
 
-### [レポート ガイド](active-directory-reporting-guide.md)
+### クラシック ポータル
+#### [Azure AD レポート](active-directory-reporting-getting-started.md)
+#### [レポート ガイド](active-directory-reporting-guide.md)
 #### [プレビュー](active-directory-reporting-azure-portal.md)
 #### [API](active-directory-reporting-api-getting-started.md)
 ##### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
@@ -65,20 +93,18 @@
 ##### [前提条件](active-directory-reporting-api-prerequisites.md)
 ##### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
 ##### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
-
-
 #### [イベントを監査する](active-directory-reporting-audit-events.md)
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
-### レポートについて
-#### [不規則なサインイン](active-directory-reporting-irregular-sign-in-activity.md)
-#### [複数のエラー](active-directory-reporting-sign-ins-after-multiple-failures.md)
-#### [疑わしい IP アドレス](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
-#### [複数の地域](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-#### [感染している可能性があるデバイス](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
-#### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
-#### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
+#### レポートについて
+##### [不規則なサインイン](active-directory-reporting-irregular-sign-in-activity.md)
+##### [複数のエラー](active-directory-reporting-sign-ins-after-multiple-failures.md)
+##### [疑わしい IP アドレス](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
+##### [複数の地域](active-directory-reporting-sign-ins-from-multiple-geographies.md)
+##### [感染している可能性があるデバイス](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
+##### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
+##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [パスワードの管理](active-directory-manage-passwords.md)
 ### [自分のパスワードを更新する](active-directory-passwords-update-your-own-password.md)
@@ -99,9 +125,11 @@
 #### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
 
 ## デバイスを管理する
+### [デバイスを登録する](active-directory-conditional-access-device-registration-overview.md)
+#### [自動登録の管理](active-directory-conditional-access-automatic-device-registration.md)
+#### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
 ### [デバイスを登録する](active-directory-azureadjoin-personal-device.md)
 ### [Windows 10 デバイスを登録する](active-directory-azureadjoin-user-upgrade.md)
-
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [プラン](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
@@ -176,6 +204,7 @@
 ### [ドキュメント ライブラリ](active-directory-apps-index.md)
 
 ## ディレクトリの管理
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### カスタム ドメイン名
 #### [概要](active-directory-add-domain-concepts.md)
 #### ドメイン名を追加する
@@ -249,10 +278,6 @@
 ### [条件付きアクセス](active-directory-conditional-access.md)
 #### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
 #### [サポート対象アプリ](active-directory-conditional-access-supported-apps.md)
-#### [デバイスを登録する](active-directory-conditional-access-device-registration-overview.md)
-#### [自動登録の管理](active-directory-conditional-access-automatic-device-registration.md)
-##### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [認証アプリの管理](active-directory-conditional-access-azure-authenticator-app.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
 #### [オンプレミスにデプロイする](active-directory-conditional-access-on-premises-setup.md)
@@ -274,27 +299,12 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Azure VM にデプロイする](virtual-networks-windows-server-active-directory-virtual-machines.md)
+## [Azure VM に AD DS をデプロイする](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Azure VM 上の Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)
 ### [Azure 仮想ネットワークのレプリカ ドメイン コントローラー](active-directory-install-replica-active-directory-domain-controller.md)
 ### [Azure 仮想ネットワークの新しいフォレスト](active-directory-new-forest-virtual-machine.md)
 
-## [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
-### 要件を確認する
-#### [ID](active-directory-hybrid-identity-design-considerations-business-needs.md)
-#### [ディレクトリ同期](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-#### [多要素認証](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-#### [ID のライフサイクル戦略](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-### [データ セキュリティを計画する](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-#### [データ保護](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-#### [コンテンツ管理](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-#### [アクセス制御](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-#### [インシデント対応](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
-### ID ライフサイクルを計画する
-#### [タスク](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-#### [採用戦略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-### [次のステップ](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-### [ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 
 ## [Azure に AD FS をデプロイする](active-directory-aadconnect-azure-adfs.md)
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
@@ -323,8 +333,3 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
