@@ -94,8 +94,3 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
 
 SQL Server のログインの詳細については、「 [ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
 ms.openlocfilehash: 6623bb9a4f3845676574f6335dd662dd5bcf7be9
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -327,9 +328,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

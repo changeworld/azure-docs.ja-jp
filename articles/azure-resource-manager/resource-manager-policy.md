@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
 ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -328,10 +329,5 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 * ポリシー規則を定義した後で、スコープに割り当てます。 ポリシー割り当てについては、[ポリシーの割り当てと管理](resource-manager-policy-create-assign.md)に関するページを参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 * [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でポリシー スキーマが公開されています。 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

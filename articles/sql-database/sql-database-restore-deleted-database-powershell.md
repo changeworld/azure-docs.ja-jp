@@ -18,6 +18,7 @@ ms.tgt_pltfrm: NA
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 19a83f8206f589d1fb2bf76c5ad0cca04f281c3f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -67,10 +68,5 @@ Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -DeletionDate $DeletedData
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
 * より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)  
 * 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

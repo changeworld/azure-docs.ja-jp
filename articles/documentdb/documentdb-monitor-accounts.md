@@ -17,6 +17,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
 ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -123,10 +124,5 @@ Azure ポータルでは、サイド バイ サイドのメトリック チャ�
 
 ## <a name="next-steps"></a>次のステップ
 DocumentDB の容量計画の詳細については、「[DocumentDB capacity planner calculator](https://www.documentdb.com/capacityplanner)」(DocumentDB Capacity Planner の計算機能) を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: marsma
 translationtype: Human Translation
 ms.sourcegitcommit: 3868d36948342739eb78b013bb4b466df4381b4f
 ms.openlocfilehash: 7c1ca950c3ab1b8ffb754a74597d45b82777838c
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -107,10 +108,5 @@ public static void ListContainerMetadata(CloudBlobContainer container)
 ## <a name="see-also"></a>関連項目
 * [.NET 用 Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 * [.NET 用 Azure Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

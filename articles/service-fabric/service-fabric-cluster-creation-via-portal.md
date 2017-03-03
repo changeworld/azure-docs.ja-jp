@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/21/2016
+ms.date: 02/21/2017
 ms.author: chackdan
 translationtype: Human Translation
 ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
 ms.openlocfilehash: c413f415cb056f079ed30cf444af4edbe20364ea
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -324,9 +325,4 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

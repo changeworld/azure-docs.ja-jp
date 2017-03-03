@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: 35c1dfb5aaee4427f40e72a2293c756ae4fcb76c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -114,10 +115,5 @@ OverDrive へのユーザー プロビジョニングの構成にあたって必
    ![はい](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

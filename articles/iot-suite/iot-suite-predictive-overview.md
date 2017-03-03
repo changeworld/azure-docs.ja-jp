@@ -18,6 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: caecd0d6e546d4ddef71ebeee6fad3a5c7ba6451
 ms.openlocfilehash: 5447dff1ff9aea1b90f7e18499f795e7c173e2b9
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -150,8 +151,3 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

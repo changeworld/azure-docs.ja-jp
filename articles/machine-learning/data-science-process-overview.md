@@ -17,6 +17,7 @@ ms.author: bradsev;hangzh;gokuma
 translationtype: Human Translation
 ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
 ms.openlocfilehash: 995ba0dc3ffd2bc78625db7d1176ca0d5e1611a0
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -196,10 +197,5 @@ Microsoft では、複数のアルゴリズムとパラメーター スイープ
 
 ## <a name="next-steps"></a>次のステップ
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」に、これらのチュートリアルが簡単な説明と共にリンク付きで紹介されています。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

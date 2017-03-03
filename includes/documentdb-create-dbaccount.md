@@ -25,8 +25,3 @@
 [How to: Create a DocumentDB account]: #Howto
 [Next steps]: #NextSteps
 [documentdb-manage]:../articles/documentdb/documentdb-manage.md
-
-
-<!--HONumber=Jan17_HO1-->
-
-

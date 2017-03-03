@@ -18,6 +18,7 @@ ms.author: andrela
 translationtype: Human Translation
 ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
 ms.openlocfilehash: cbd13711911b67ace7ef43676b4c52aa93744bcb
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -45,10 +46,5 @@ ms.openlocfilehash: cbd13711911b67ace7ef43676b4c52aa93744bcb
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

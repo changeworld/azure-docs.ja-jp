@@ -19,6 +19,7 @@ ms.author: jhubbard
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: d70c0350809325234db366acc676e381ff042c13
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -79,10 +80,5 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。
 * [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 * [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法を学習します。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

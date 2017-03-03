@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
 ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -593,9 +594,4 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 Azure Data Factory には、大量の履歴データまたは増分運用データのロードで初期データ移動が計画されているかどうかに応じて、こうしたタスクのパフォーマンスを向上させるオプションが用意されています。 **コピー アクティビティ**に含まれる同時実行パラメーターは、さまざまなアクティビティ ウィンドウがどのように並行処理されるかを定義します。 **parallelCopies** パラメーターでは、1 つのアクティビティ実行の並列処理が定義されます。 最適なスループットを得られるように、Azure Data Factory でデータ移動パイプラインを設計するときに、こうしたパラメーターの使用を検討することが重要です。
 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

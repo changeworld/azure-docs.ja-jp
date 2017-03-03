@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: cfc58b84ccd671b3a34a399bad11d15c9bc3b713
 ms.openlocfilehash: f338a124537090894773bb6fce1052fc7f590a33
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -131,9 +132,4 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
         <td>iloveyou! </td>
     </tr>
 </table>
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

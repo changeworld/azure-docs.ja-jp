@@ -17,6 +17,7 @@ ms.author: jlembicz
 translationtype: Human Translation
 ms.sourcegitcommit: 6feadcc02aa0047dc2028d016687d3ad2859eb44
 ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -91,9 +92,4 @@ ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
 [1]: ./media/search-language-support/AnalyzerTab.png
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
 ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -355,9 +356,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 ## <a name="next-steps"></a>次のステップ
 オンプレミスのデータ ストアから Azure データ ストアにデータを移動するデータ パイプラインを作成するための詳しい手順については、 [オンプレミスとクラウドの間でデータを移動する方法](data-factory-move-data-between-onprem-and-cloud.md) に関する記事をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

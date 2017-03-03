@@ -17,6 +17,7 @@ ms.author: dhanyahk;markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 47594d1d435ee92d57150a01a99765bab0e87846
 ms.openlocfilehash: 2ac62c2c04975167b243b49bf2c536900e77df73
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -57,10 +58,5 @@ Azure Portal でアクティビティ データを使用できるようになる
 | :--    | :--           | :--                | :--                |
 | リスクの高いサインイン | 7 日 | 30 日 | 90 日間 |
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

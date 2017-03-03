@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: ebdd4df0bd990ee37cb173da8c1f38b60d203158
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -114,9 +115,4 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

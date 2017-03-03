@@ -17,6 +17,7 @@ ms.author: magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: ea2ad80f348c80856c525218aad45a8fcf47bcb8
 ms.openlocfilehash: aeb06276a52e5472667ae0a741fb3007a91910fe
+ms.lasthandoff: 01/14/2017
 
 ---
 
@@ -211,10 +212,5 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
 
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * PowerShell モジュールの作成の詳細については、「 [Writing a Windows PowerShell Module (Windows PowerShell モジュールの作成)](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

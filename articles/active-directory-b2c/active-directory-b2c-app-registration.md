@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: fd22e9596feecbc12e577a4abfb47552e1b6e520
 ms.openlocfilehash: da8f083cb7bca59501df080036e789a0fb75731e
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -59,10 +60,5 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 アプリケーションを Azure AD B2C に登録したので、いずれかのクイック スタート チュートリアルを実行して使い始めることができます。 以下に、推奨事項をいくつか示します。
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

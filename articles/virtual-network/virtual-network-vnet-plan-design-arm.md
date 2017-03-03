@@ -17,6 +17,7 @@ ms.author: jdial
 translationtype: Human Translation
 ms.sourcegitcommit: ac0d7d9aaf1208c97e0ae797ac7c2b0ffecb88ae
 ms.openlocfilehash: daa0d0a7a0816f16f62904dc0e407105eb25c4ec
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -250,9 +251,4 @@ VNet ごとにアドレス空間を指定する必要もあります。 オン�
 * IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
 * [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md) について詳しく学習します。
 * [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)について詳しく学習します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

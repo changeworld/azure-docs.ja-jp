@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
 ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -243,10 +244,10 @@ ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
                                                     "Media Encoder Standard");
    
             // Create a task with the encoding details, using a string preset.
-            // In this case "H264 Multiple Bitrate 720p" preset is used.
+            // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
-                "H264 Multiple Bitrate 720p",
+                "Adaptive Streaming",
                 TaskOptions.ProtectedConfiguration);
    
             // Specify the input asset to be encoded.
@@ -945,10 +946,5 @@ ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

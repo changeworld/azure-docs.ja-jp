@@ -17,6 +17,7 @@ ms.author: juanpere
 translationtype: Human Translation
 ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
 ms.openlocfilehash: 30a707ec15d592c8a10905e13a75ea2f6e52cccc
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -153,9 +154,4 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

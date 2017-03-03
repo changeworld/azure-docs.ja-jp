@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 3c18b1929a78137ff3b53b8e084dc35e0c8dcaac
 ms.openlocfilehash: 478db825a269beeaa9fbb0afef3488fc7d49d024
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -133,10 +134,5 @@ Azure Functions では、毎日の利用量クォータを設定することで�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

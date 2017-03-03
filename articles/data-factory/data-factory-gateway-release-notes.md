@@ -17,6 +17,7 @@ published: true
 translationtype: Human Translation
 ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
 ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
+ms.lasthandoff: 02/13/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
@@ -234,9 +235,4 @@ Data Management Gateway とその使用方法の詳細については、次の�
 ### <a name="1051442"></a>1.0.5144.2
 
 *  Azure Data Factory のシナリオに影響する変更なし
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

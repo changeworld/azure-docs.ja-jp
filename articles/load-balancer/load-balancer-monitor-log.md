@@ -17,6 +17,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: ca52a8cfdc4262f55a1fed439f29631966211a00
 ms.openlocfilehash: c605b2f0b49fcc26955e73c931192ada5e407525
+ms.lasthandoff: 01/31/2017
 
 ---
 
@@ -145,9 +146,4 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 ## <a name="next-steps"></a>次のステップ
 
 [Load Balancer プローブを理解する](load-balancer-custom-probe-overview.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

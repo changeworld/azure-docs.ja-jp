@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
 ms.openlocfilehash: c01b8c174567f745e2803a1498ec0b9a762e94ae
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -437,10 +438,5 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 * サービス レベルの詳細については、 [SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)
 * エラスティック プールの詳細については、「[Azure エラスティック プールの概要](sql-database-elastic-pool.md)」を参照してください。
 * パフォーマンスとエラスティック プールの詳細については、[エラスティック プールの使用を検討する場合](sql-database-elastic-pool-guidance.md)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

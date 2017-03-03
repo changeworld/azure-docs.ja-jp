@@ -17,6 +17,7 @@ ms.author: elioda
 translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 2075c7a1b8f3393e100ab92ae7d497c56965f887
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -65,9 +66,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

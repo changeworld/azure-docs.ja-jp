@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 341dcec8c45b380286e2bb96c57afc7740605d16
 ms.openlocfilehash: c4ae1c80b854e84fe94a52e2872bec2c24b4580f
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -177,8 +178,3 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: c29f539d25df3f7b005eb0fa98009d26549fa32b
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -218,9 +219,4 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: /powershell/azureps-cmdlets-docs
 [azure-cli]: ../xplat-cli-install.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

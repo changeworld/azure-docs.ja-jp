@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 9e75c5af6cb6d2f2a25f18269ec6822aa86459fc
 ms.openlocfilehash: 95ea1a9bc8fe80c39ca9f0683855cc3a4e7a77c4
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -533,8 +534,3 @@ CORS と CORS を有効にする方法については、次のリソースを参
 * [“System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing” security settings effects in Windows XP and in later versions of Windows (Windows XP 以降のバージョンの Windows での [システム暗号化: 暗号化、ハッシュ、署名に FIPS 準拠アルゴリズムを使う] セキュリティ設定の効果)](https://support.microsoft.com/kb/811833)
   
   この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
-
-
-<!--HONumber=Feb17_HO1-->
-
-

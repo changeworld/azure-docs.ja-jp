@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 45011050a6d2f8e4d9d92f4124d6dc9a9eec4cf7
 ms.openlocfilehash: 88032b3855c2f89b935064abe496a8455dcff88b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -197,9 +198,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ## <a name="next-steps"></a>次のステップ
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
 * 高性能コンピューティング (HPC) などのワークロードに対する [H シリーズとコンピューティング集中型 A シリーズ VM](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) について学習してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

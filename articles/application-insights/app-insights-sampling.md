@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
 ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -351,10 +352,5 @@ Application Insights では、精度が問題のあるレベルまで低下す�
 
 ## <a name="next-steps"></a>次のステップ
 * [フィルター](app-insights-api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

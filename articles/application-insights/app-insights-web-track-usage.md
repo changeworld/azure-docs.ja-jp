@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: f86986fea6fc48a4a6ed09022e8026e0645dfc56
 ms.openlocfilehash: 971558d287191c6b7b5ea9d135e6fe37c904aa76
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -334,10 +335,5 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 [portal]: http://portal.azure.com/
 [windows]: app-insights-windows-get-started.md
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

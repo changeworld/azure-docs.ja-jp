@@ -19,6 +19,7 @@ ms.author: rclaus
 translationtype: Human Translation
 ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
 ms.openlocfilehash: 21b7bf78e70b7d4534220913987cdac5f04cb462
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -355,10 +356,5 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 最終更新日: 2016 年 3 月
 
 [ガイドはこちら][dbms ガイド]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

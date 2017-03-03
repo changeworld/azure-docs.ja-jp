@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: alfredop
 translationtype: Human Translation
-ms.sourcegitcommit: 3b3c8841c709e22464d89ed9508177397d89e7e9
-ms.openlocfilehash: d11dd1a0bd42345d29a5f56e65c2eb76318744c1
+ms.sourcegitcommit: 096b752a9a934f6c629ad6e753b482a904ce26c4
+ms.openlocfilehash: d937374aa9b2e24663aa27c753d0740426c8f3f8
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -28,7 +29,7 @@ Currently, usage is reported for the network, storage, and compute resource prov
 
 | **Resource provider** | **Meter ID** | **Meter name** | **Unit** | **Additional info** |
 | --- | --- | --- | --- | --- |
-| **Network** |f114cb19-ea64-40b5-bcd7-aee474b62853 |Public IP Address Usage |IP address | |
+| **Network** |f114cb19-ea64-40b5-bcd7-aee474b62853 |Public IP Address Usage |IP address |Count of IP addresses used |
 | **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*hours |Total capacity consumed by tables |
 | | B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*hours |Total capacity consumed by page blobs |
 | | B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*hours |Total capacity consumed by queue |
@@ -76,10 +77,5 @@ Currently, you can query *only by Reported Time*.
 [Provider Resource Usage API](azure-stack-provider-resource-api.md)
 
 [Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

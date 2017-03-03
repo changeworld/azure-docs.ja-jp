@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
 ms.openlocfilehash: 304ee87e82ce5acc4479fd16d3ac1aa340e42815
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -280,9 +281,4 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 [203]: ./media/active-directory-saas-jive-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-jive-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-jive-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

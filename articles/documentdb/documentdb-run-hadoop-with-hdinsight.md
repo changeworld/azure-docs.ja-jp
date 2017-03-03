@@ -17,6 +17,7 @@ ms.author: denlee
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: f7b508071e76deb47bfbaf397ce168ebc78aa068
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -433,9 +434,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [image-pig-query-results]: ./media/documentdb-run-hadoop-with-hdinsight/pigqueryresults.PNG
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

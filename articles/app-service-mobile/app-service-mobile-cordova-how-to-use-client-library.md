@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
 ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -181,9 +182,4 @@ API の詳細については、[API に関するドキュメント](http://azure
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

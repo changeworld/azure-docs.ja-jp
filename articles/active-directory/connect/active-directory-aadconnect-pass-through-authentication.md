@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 67b832253619afe789a4dfdb95893e8c0ae62bee
 ms.openlocfilehash: 17890fddf948ddc0e89a9107ac5fe65223cd05e1
+ms.lasthandoff: 01/30/2017
 
 ---
 
@@ -40,6 +41,7 @@ Azure AD パススルー認証は、このようなお客様にシンプルな�
 >フォレスト間に信頼関係があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境をサポートできます。
 
 ## <a name="supported-clients-in-the-preview"></a>プレビューでサポートされているクライアント
+
 パススルー認証は、Web ブラウザー ベースのクライアントと、[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。 従来の Office クライアントや Exchange Active Sync (モバイル デバイス上のネイティブ電子メール クライアント) など、サポートされていないクライアントの場合、同等の最新の認証手段を使用することをお勧めします。 そうすることで、これらのクライアントでパススルー認証が可能になるだけでなく、多要素認証などの条件付きアクセスを適用することもできます。
 
 現在のところ、Azure AD に参加している Windows 10 を使用している場合は、パススルー認証がサポートされません。 ただし、レガシ クライアントに加え、Windows 10 でもパスワード同期を自動フォールバックとして利用できます。
@@ -154,9 +156,4 @@ Azure AD のサインイン画面に表示されるその他のエラーと適�
 |AADSTS80004|The username passed to the connector was not valid (コネクタに渡されたユーザー名が無効です)|サインインしようとしているユーザーのユーザー名が正しいことを確認してください。
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|このエラーは一時的な問題です。 要求をやり直してください。 引き続き失敗する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the connector logs for more information and verify that Active Directory is operating as expected. (コネクタ ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

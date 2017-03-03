@@ -17,6 +17,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: a43eca9878881731f54dc1ec3bc8a9cd15bf2c5e
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -261,9 +262,4 @@ API の詳細については、[こちら][api]をご覧ください。
 [new]: app-insights-create-new-resource.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

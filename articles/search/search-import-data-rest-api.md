@@ -18,6 +18,7 @@ ms.author: ashmaka
 translationtype: Human Translation
 ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
 ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -179,9 +180,4 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

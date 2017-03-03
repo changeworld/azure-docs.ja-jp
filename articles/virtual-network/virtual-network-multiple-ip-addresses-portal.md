@@ -18,6 +18,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
 ms.openlocfilehash: 6e7eac6ae505c627ffa1d63aace76b9006d92c74
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -151,9 +152,4 @@ ms.openlocfilehash: 6e7eac6ae505c627ffa1d63aace76b9006d92c74
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

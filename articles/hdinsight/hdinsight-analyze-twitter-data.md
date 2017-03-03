@@ -17,6 +17,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
 ms.openlocfilehash: a90c412d2d66834cd0df3f348fa488b6ce10c898
+ms.lasthandoff: 02/07/2017
 
 ---
 
@@ -569,9 +570,4 @@ Write-Host "==================================" -ForegroundColor Green
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-odbc-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -17,6 +17,7 @@ ms.author: mithal;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 86f8b18e06fdc5a24797b0c90f09f0e053e4569c
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -42,10 +43,5 @@ ms.openlocfilehash: 86f8b18e06fdc5a24797b0c90f09f0e053e4569c
 * スコアリング Web サービスを使用する方法については、「 [Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

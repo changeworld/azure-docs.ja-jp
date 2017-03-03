@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -151,10 +152,5 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 [Next steps]: #next-steps
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

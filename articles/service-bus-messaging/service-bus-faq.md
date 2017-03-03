@@ -17,6 +17,7 @@ ms.author: sethm;jotaub
 translationtype: Human Translation
 ms.sourcegitcommit: da7f8e3e61705cf07ff65c9dd1d8f292f4fb9f62
 ms.openlocfilehash: 9061829e42ed5563d64860774aa7d80f2ab011bd
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -141,9 +142,4 @@ Service Bus の詳細については、次のトピックをご覧ください�
 [Quotas overview]: service-bus-quotas.md
 [Exceptions overview]: service-bus-messaging-exceptions.md
 [Shared Access Signatures]: service-bus-sas-overview.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

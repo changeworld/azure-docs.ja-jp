@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: b1c18ac614e17cbd25691dc92dbd14a781e4d8ab
 ms.openlocfilehash: ee656180676450834940b996bccf93c26190f9d6
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -182,10 +183,5 @@ Onit の場合、プロビジョニングは手動で行います。
    ![はい](./media/active-directory-saas-onit-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

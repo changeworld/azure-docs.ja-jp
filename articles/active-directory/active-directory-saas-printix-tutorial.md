@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
 ms.openlocfilehash: 877b7b98757bed9fe9123c8fb5e17f891ef7cbda
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -278,9 +279,4 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-printix-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-printix-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-printix-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

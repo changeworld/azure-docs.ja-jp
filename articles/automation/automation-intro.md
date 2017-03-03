@@ -18,6 +18,7 @@ ms.author: magoedte;bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
 ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -83,10 +84,5 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 ## <a name="can-i-provide-feedback"></a>フィードバックを提供できますか。
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。 Azure Automation に関するフィードバックや機能に関するご要望は、 [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback)にお寄せください。 よろしくお願いいたします。 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

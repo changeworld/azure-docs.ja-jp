@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 4232c27926c2d48adb91eedd15884e44cc004ac2
 ms.openlocfilehash: 2fad0a4e7c4ac282802c2bc0dd10c7d86b651e08
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -395,9 +396,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
 * [Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法](active-directory-identityprotection-unblock-howto.md)
 
 * [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

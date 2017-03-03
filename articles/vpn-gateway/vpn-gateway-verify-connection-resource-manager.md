@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: b5bad71095e4b7e3b26df15780467526200ffa10
 ms.openlocfilehash: 68d94a6402b1497f65c4d03fb987ba800e86c2a3
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -73,10 +74,5 @@ PowerShell を使用して確認を行うには、Azure PowerShell コマンド�
 
 ## <a name="next-steps"></a>次のステップ
 * 仮想ネットワークに仮想マシンを追加できます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
 ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -209,10 +210,5 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

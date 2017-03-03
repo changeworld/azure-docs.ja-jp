@@ -17,6 +17,7 @@ ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
 ms.openlocfilehash: bc8c54b51f9eee653fbe84351081dcef562e62d4
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -104,9 +105,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 [redis-cache-persistence-selected]: ./media/cache-how-to-premium-persistence/redis-cache-persistence-selected.png
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

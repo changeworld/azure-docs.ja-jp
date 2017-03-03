@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 0849c77c66ac8617e217a69696b5c404be3b5eb4
 ms.openlocfilehash: 3aefb8188880fac5c1fcbe237a1e133584089e6a
+ms.lasthandoff: 02/03/2017
 
 ---
 
@@ -262,9 +263,4 @@ h
 [203]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

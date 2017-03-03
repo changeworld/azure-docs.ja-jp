@@ -12,6 +12,7 @@ ms.author: sethm; babanisa
 translationtype: Human Translation
 ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
 ms.openlocfilehash: 62eefb7a4591c712c5389d3ed7e5ff9675a80042
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -156,9 +157,4 @@ Azure サポートに連絡すれば、20 ブロック単位で最大 100 まで
 [Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
 [Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Azure portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

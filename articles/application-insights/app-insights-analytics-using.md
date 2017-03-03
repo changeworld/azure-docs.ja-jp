@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
 ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -165,7 +166,7 @@ Power BI でクエリを実行します。 スケジュールに従って更新�
 
 Power BI では、さまざまなソースのデータをまとめるダッシュボードを作成できます。
 
-Power BI へのエクスポートの詳細については、[こちら](app-insights-export-power-bi.md)をご覧ください。
+[Power BI へのエクスポートの詳細については、こちら をご覧ください。](app-insights-export-power-bi.md)
 
 ## <a name="deep-link"></a>ディープ リンク
 
@@ -225,10 +226,5 @@ CSV ファイルからデータをインポートすることができます。 
 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

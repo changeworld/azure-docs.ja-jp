@@ -17,6 +17,7 @@ ms.author: asmalser
 translationtype: Human Translation
 ms.sourcegitcommit: fb33a0b01b7d9806c92dfc66303b0dd2ca1044d9
 ms.openlocfilehash: 04276fc2da32b27dc9e0a4601ab45b9f1e95959a
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -74,10 +75,5 @@ ms.openlocfilehash: 04276fc2da32b27dc9e0a4601ab45b9f1e95959a
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

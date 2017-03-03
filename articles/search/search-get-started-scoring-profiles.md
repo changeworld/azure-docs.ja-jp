@@ -17,6 +17,7 @@ ms.author: heidist
 translationtype: Human Translation
 ms.sourcegitcommit: 7a633460f249f7c7b6675a5ab23b1724549cccba
 ms.openlocfilehash: ca07067b73b72b5ff8b93a72fa7eef55e9d47cc2
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -122,9 +123,4 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 [11]: ./media/search-get-started-scoring-profiles/AzureSearch_Scoring_AppConfig.PNG
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

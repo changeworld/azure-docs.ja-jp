@@ -19,6 +19,7 @@ ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: e869b06935736fae72bd3b5407ebab7c3830098d
 ms.openlocfilehash: de3687a1bf36bf49db400a5660ac631f20b629d0
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -56,10 +57,5 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 (自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure Managed Disks で構成した場合に最大 100 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
 VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

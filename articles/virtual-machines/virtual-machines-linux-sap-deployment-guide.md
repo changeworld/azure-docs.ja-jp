@@ -19,6 +19,7 @@ ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: 4a9c9b35b1b1740152214193eb5bb5ef951de781
 ms.openlocfilehash: cc75cfa43cd60628d9a4d51827bd14f72715d2b4
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -1074,9 +1075,4 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 既知の問題の最新のリストについては、SAP Note [1999351] を参照してください。この SAP Note には、Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 
 SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の説明に従って、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

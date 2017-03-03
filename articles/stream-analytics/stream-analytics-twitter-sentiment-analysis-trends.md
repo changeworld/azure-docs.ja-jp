@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 110bf7df8753ec83a5a8b4219891700b462d4eb1
 ms.openlocfilehash: 339301772b1ee3bf22e543d4d4183adda5b54c2e
+ms.lasthandoff: 02/04/2017
 
 ---
 
@@ -245,10 +246,5 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

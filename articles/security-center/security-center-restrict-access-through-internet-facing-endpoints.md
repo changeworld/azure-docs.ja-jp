@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
 ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -74,9 +75,4 @@ Azure Security Center では、ネットワーク セキュリティ グルー�
 [4]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/inbound-security-rules.png
 [5]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/default-rules.png
 [6]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/edit-inbound-rule.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

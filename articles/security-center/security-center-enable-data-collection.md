@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: 57c0228c398ba4ba3fd18a1088472749bed3ac69
 ms.openlocfilehash: 9ebbed56bdbc8385bb651c7aa1e77f369da1d727
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -85,9 +86,4 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 [4]: ./media/security-center-enable-data-collection/storage-account.png
 [5]: ./media/security-center-enable-data-collection/policy.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
 ms.openlocfilehash: 8da7631d2dfc51e21269d05ace737760e3be61b8
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -191,9 +192,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [hdinsight-dashboard]: ./media/hdinsight-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

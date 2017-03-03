@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 0d5b68d26d708a28edee13ff3d9a57588ce83e12
 ms.openlocfilehash: 856d75c58cd911c641ec74b78f5c6133e605b2ec
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -219,9 +220,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 * [Windows クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-windows.md)
 * [Linux、Unix、または Mac クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -18,6 +18,7 @@ ms.author: smalone
 translationtype: Human Translation
 ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
 ms.openlocfilehash: 399cfcad5c17cdb12a4063e11e1ff353e88e56a7
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -71,10 +72,5 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 [!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
 [!INCLUDE [FAQ2](../../includes/dns-reverse-dns-record-operations-faq-asm-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

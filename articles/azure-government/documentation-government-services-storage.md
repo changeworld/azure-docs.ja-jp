@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: 831334f2b835d00aa3fd22292764b69e85d735a6
 ms.openlocfilehash: a6b61df5884031eb5b53f983b834357bd23a622e
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -82,9 +83,4 @@ API の詳細については、<a href="https://msdn.microsoft.com/en-us/library
 
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 9cd4fa1c5927fb85a406a99bf5d2dacbb0fcbb2f
 ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -314,10 +315,5 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサを取得する方法][How to Get a Media Processor]に関するトピックに進んでください。
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

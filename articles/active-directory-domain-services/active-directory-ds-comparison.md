@@ -17,6 +17,7 @@ ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
 ms.openlocfilehash: 3d83a919d8e7bc59bd51e226c56ff2bb42c87955
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -118,10 +119,5 @@ Azure AD Domain Services の管理対象ドメインは、Azure の&1; つの仮
 * [機能 - Azure AD Domain Services](active-directory-ds-features.md)
 * [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

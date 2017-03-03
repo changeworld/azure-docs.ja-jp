@@ -18,6 +18,7 @@ ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: d835d5825268a4ec0fa5b761f9b5714e3236b0ce
 ms.openlocfilehash: 2dd35a65d1b5b6db1401cdf5737b5355aa6d564b
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -69,10 +70,5 @@ Azure クラシック デプロイメント モデルから、Azure Resource Man
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 * [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [移行の一般的なエラーを確認する](virtual-machines-migration-errors.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: c93d0d47721546f25e72d97f4e019886ef801eba
 ms.openlocfilehash: a7ffc5e2547ca7ac52a56ec82b493b14acd7aaaa
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -433,9 +434,4 @@ IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -18,6 +18,7 @@ ms.author: garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: fa3de6226b59c4f80e71c55a0aad20c19693642d
 ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -41,9 +42,4 @@ ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
 データがアップロードされると、データセット モジュールに格納され、ワークスペース内のすべての実験で使用できるようになります。
 
 実験を編集するときは、モジュール パレットの **[保存されたデータセット]** 一覧の **[マイ データセット]** 一覧に、作成済みのデータセットが表示されます。 データセットを別の分析と機械学習に使用する場合は、データセットを実験キャンバスにドラッグ アンド ドロップします。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

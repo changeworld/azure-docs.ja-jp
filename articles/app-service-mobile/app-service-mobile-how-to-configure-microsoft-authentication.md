@@ -17,6 +17,7 @@ ms.author: mahender
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5f9926b09c8d2bb802b1e1a86695e76fd7a54209
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -67,9 +68,4 @@ ms.openlocfilehash: 5f9926b09c8d2bb802b1e1a86695e76fd7a54209
 
 [[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure Portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

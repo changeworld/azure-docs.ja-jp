@@ -17,6 +17,7 @@ ms.author: adigan;giridham;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 14cc190a7d1cde1181a6f26ef83095bc601f7fbb
 ms.openlocfilehash: 36c4e1865c99dd1c55be798e1d310a02f2af0864
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -105,9 +106,4 @@ ms.openlocfilehash: 36c4e1865c99dd1c55be798e1d310a02f2af0864
 
 ## <a name="next-steps"></a>次のステップ:
 •   [Azure Backup の FAQ](backup-azure-backup-faq.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

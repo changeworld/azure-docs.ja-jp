@@ -17,6 +17,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
 ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -744,9 +745,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [image-hdi-flightdelays-avgdelays-dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

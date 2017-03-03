@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -114,9 +115,4 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 [Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

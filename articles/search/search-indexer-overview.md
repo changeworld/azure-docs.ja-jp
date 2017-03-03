@@ -18,6 +18,7 @@ ms.author: heidist
 translationtype: Human Translation
 ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
 ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
+ms.lasthandoff: 01/19/2017
 
 ---
 
@@ -74,9 +75,4 @@ Azure SQL や DocumentDB のように広く提供されているインデクサ�
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Search BLOB インデクサー (プレビュー) を使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
 * [Azure Search BLOB インデクサー (プレビュー) を使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

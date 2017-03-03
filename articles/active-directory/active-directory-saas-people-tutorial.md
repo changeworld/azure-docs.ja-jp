@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -224,9 +225,4 @@ People で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-people-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-people-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-people-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

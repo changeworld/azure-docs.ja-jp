@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 12868706693a076ead3cfc13ce5901bbc56d588b
 ms.openlocfilehash: 961aef8496a7de264c5d57c7a990c69996c1527e
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -144,10 +145,5 @@ Panorama9 の場合、プロビジョニングは手動で行います。
    ![はい](./media/active-directory-saas-panorama9-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

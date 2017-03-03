@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
 ms.openlocfilehash: 21df6d8ff572295e27c9aaed83c3af189c700aee
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -31,10 +32,5 @@ ms.openlocfilehash: 21df6d8ff572295e27c9aaed83c3af189c700aee
 * [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)  
 * [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)  
 * [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md) 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

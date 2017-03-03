@@ -18,6 +18,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 3db8a2b4618c05430a7e0cd7664514abc582078b
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -160,10 +161,5 @@ ms.openlocfilehash: 3db8a2b4618c05430a7e0cd7664514abc582078b
 * [ビデオ: Linux 用 Powershell DSC を実行する方法](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
 * [GitHub: Docker クライアント DSC](https://github.com/anweiss/DockerClientDSC)
 * [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

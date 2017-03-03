@@ -86,8 +86,3 @@ azure group list -t Dept=Finance
 ```azurecli
 azure tag list
 ```
-
-
-<!--HONumber=Jan17_HO2-->
-
-

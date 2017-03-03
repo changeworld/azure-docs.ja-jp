@@ -54,6 +54,7 @@
 ### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
 ## メモリ内の処理への Spark の使用
+### [ディープ ラーニングに Caffe を使用する](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)
 ### [スタンドアロン アプリ](hdinsight-apache-spark-create-standalone-application.md)
@@ -223,8 +224,3 @@
 # リソース
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

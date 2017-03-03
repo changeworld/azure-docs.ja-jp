@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: b621a1716b731c99f9ad54d2e29006fb7bddadbb
 ms.openlocfilehash: 50ba1caa406ab168acf08506a92c67250397a1e9
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -123,9 +124,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
