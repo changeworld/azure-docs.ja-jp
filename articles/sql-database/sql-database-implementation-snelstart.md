@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 0c37a035cfc782e05dd72da7323fe244eadc4ce9
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -107,10 +108,5 @@ SnelStart の目下の目標は、顧客満足度をさらに高めていくこ�
 * Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure SQL Data Warehouse の詳細については、 [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * SnelStart の詳細については、 [SnelStart](http://www.snelstart.nl)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

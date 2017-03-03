@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 096d67dc4880f4c0a50e3981485dbe2d8f4c22a7
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -89,10 +90,5 @@ Media Services のラーニング パスを確認します。
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: anhoh
 translationtype: Human Translation
 ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
 ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -83,9 +84,4 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
 ## <a name="next-steps"></a>次のステップ
 * MongoDB のプロトコル対応の DocumentDB アカウントで [MongoChef を使用](documentdb-mongodb-mongochef.md) する方法を確認します。
 * MongoDB のプロトコル対応 DocumentDB の [サンプル](documentdb-mongodb-samples.md)を体験します。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

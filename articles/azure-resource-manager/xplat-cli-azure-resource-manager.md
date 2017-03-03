@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
 ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -151,10 +152,5 @@ Azure CLI を使用して、リソース グループの現在の状態を表す
 * Azure CLI を使用したデプロイ操作とデプロイ エラーのトラブルシューティングの詳細については、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関する記事を参照してください。
 * CLI を使用してリソースにアクセスするアプリケーションやスクリプトを設定する場合は、「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

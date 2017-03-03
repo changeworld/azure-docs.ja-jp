@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 774d5ac6f3d5d9d97120ab895157677e4a92bb05
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -129,10 +130,5 @@ Mikkel Madsen 氏は次のように締めくくっています。「私たちは
 * バックアップと復旧の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関する記事を参照してください。    
 * プールの監視の詳細については、 [プールの監視](sql-database-elastic-pool-manage-portal.md)に関する記事を参照してください。    
 * サービスとしての Umbraco について、詳しくは、 [Umbraco](https://umbraco.com/cloud)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 6aecea32361166d363a412b4e8f2b01d421da5cf
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -95,9 +96,4 @@ Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=61
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
