@@ -19,6 +19,7 @@ ms.author: stevelas
 translationtype: Human Translation
 ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
 ms.openlocfilehash: 44bfd57feecc45e037717a35b64dd8e4bfb6a1b3
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="what-is-azure-container-registry"></a>Azure Container Registry とは
@@ -68,9 +69,4 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 * [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
 * Visual Studio Team Services、Azure Container Service、Azure Container Registry を使用して継続的な統合とデプロイ ワークフローを構築する場合は、[こちらのチュートリアル](../container-service/container-service-setup-ci-cd.md)を参照してください。
 * Azure で (パブリック エンドポイントなしの) 独自の Docker プライベート レジストリを設定したい場合は、「[Azure への独自のプライベート Docker Registry のデプロイ](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

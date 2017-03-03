@@ -17,6 +17,7 @@ ms.author: douglasl
 translationtype: Human Translation
 ms.sourcegitcommit: cfa45dbb2d6e7579ed151c0213d394581cb73c4d
 ms.openlocfilehash: 0c4355eb424f169238f274241747acff4532d589
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -81,9 +82,4 @@ SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor �
 [StretchOverviewImage1]: ./media/sql-server-stretch-database-overview/StretchDBOverview.png
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

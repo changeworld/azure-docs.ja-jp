@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
 ms.openlocfilehash: cd0e53955495752cd91323b9926f9494a70c5797
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -54,10 +55,5 @@ Service Bus アーキテクチャの概要を確認しました。詳細につ�
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

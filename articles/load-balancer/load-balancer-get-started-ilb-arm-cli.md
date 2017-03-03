@@ -17,6 +17,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -214,10 +215,5 @@ azure network lb delete --resource-group nrprg --name ilbset
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

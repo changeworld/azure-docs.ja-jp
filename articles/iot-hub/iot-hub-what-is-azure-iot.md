@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: e95d02e706b87eaa355951a34bbaa3abf2ac2370
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -46,9 +47,4 @@ Azure IoT Hub では、標準ベースのデバイス管理が可能となって
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

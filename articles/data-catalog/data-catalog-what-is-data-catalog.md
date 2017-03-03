@@ -18,6 +18,7 @@ ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
 ms.openlocfilehash: 19d4c3990c88f82f60cd253ffdcbd2005d00ad79
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -72,9 +73,4 @@ Data Catalog の機能の詳細については、以下のページを参照し�
 * [データ資産を管理する方法](data-catalog-how-to-manage.md)
 * [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
 * [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

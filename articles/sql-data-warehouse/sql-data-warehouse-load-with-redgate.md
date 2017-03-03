@@ -17,6 +17,7 @@ ms.author: mausher;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -151,9 +152,4 @@ Redgate の Data Platform Studio についてさらに詳しい情報を得る�
 [Migrate your solution to SQL Data Warehouse]: ./sql-data-warehouse-overview-migrate.md
 [Load data into Azure SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
 [SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

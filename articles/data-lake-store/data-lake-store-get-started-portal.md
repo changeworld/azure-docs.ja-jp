@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -133,10 +134,5 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

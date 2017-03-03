@@ -17,6 +17,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 4c29a3d17161a38f9aee9337e27feb36306cf329
 ms.openlocfilehash: b889208da300f301ee5c418bfa461a21cd8c07ee
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -73,9 +74,4 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 [内部ロード バランサーの作成を開始](load-balancer-get-started-ilb-classic-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
 
 アプリケーションでロード バランサーの背後にあるサーバーの接続を維持する必要がある場合は、 [ロード バランサーの TCP アイドル タイムアウトの設定](load-balancer-tcp-idle-timeout.md)に関する詳細を確認してください。 Azure Load Balancer 使用時にアイドル接続動作について理解するのに役立ちます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

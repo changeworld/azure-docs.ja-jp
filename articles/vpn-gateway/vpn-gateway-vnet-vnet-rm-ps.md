@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
 ms.openlocfilehash: eb21e6cc47da18d2e6fa5cbb00c3b71bf36173c6
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -430,10 +431,5 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
 ms.openlocfilehash: eb9e9ca5082559ee0e30ea67bf53229d38f81589
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -158,10 +159,5 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 * [Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 * [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
