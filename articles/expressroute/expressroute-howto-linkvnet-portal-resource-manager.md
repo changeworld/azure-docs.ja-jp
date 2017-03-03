@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: b3c0cca9a6d5171b1248b0f463cbbb26641fc5f2
 ms.openlocfilehash: a1a689dbfc35107b52f9b84f74ac8bfac0727a0e
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -148,9 +149,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

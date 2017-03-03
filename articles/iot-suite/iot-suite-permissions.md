@@ -18,6 +18,7 @@ ms.author: corywink
 translationtype: Human Translation
 ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
 ms.openlocfilehash: c6db7f36acf93d319fcbc93244867460a2270979
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -128,9 +129,4 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 [lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

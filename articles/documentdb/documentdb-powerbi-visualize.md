@@ -18,6 +18,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
 ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -212,10 +213,5 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 ## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * DocumentDB の詳細については、「 [DocumentDB のドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)」ランディング ページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

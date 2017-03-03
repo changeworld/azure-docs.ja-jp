@@ -17,6 +17,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
 ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -288,9 +289,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 [img-squirrel-alias]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-alias.png
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

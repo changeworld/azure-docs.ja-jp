@@ -17,6 +17,7 @@ ms.author: richrund
 translationtype: Human Translation
 ms.sourcegitcommit: abea89ceab4c606a574ad739e9feca5b5dafacf0
 ms.openlocfilehash: bc87bafd1ce6926d787915fae2f72727940bb90e
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -150,10 +151,5 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Key Vault データを確認してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

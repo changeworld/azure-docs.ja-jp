@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: d58462cbd6578093e00c93c7e2753efc1493441d
 ms.openlocfilehash: 8f17399846eafcac8b86a9b7d7baa7a029005c8c
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -519,10 +520,5 @@ ContentKey は、HTTP POST 要求を送信することによって&1; つ以上�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
