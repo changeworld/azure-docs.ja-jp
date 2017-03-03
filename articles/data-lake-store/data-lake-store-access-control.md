@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 756d51e41c43be2e80f8fce1c3965e1723f7cec8
 ms.openlocfilehash: 7cd0c60b3eaaf6c2fd702d4e4b580299cb71c5fc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -339,9 +340,4 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 ## <a name="see-also"></a>関連項目
 
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

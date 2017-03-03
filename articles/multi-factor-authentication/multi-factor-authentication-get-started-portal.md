@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 1222223f8c45249402bfdd04c8754074f877e132
 ms.openlocfilehash: 1236489212b2a9c421972599a12511d5bc42efdf
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -175,10 +176,5 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 ![ユーザー ポータルのセキュリティの質問](./media/multi-factor-authentication-get-started-portal/secq.png)  
 
 これで、ユーザーの自己登録が完了し、ユーザーはユーザー ポータルにサインインします。  管理者によって許可されている場合、ユーザーは、今後いつでもユーザー ポータルに戻って、電話番号、PIN、認証方法、セキュリティの質問を変更できます。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
