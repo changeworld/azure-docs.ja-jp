@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: bea5eac4e895508727ae60e6fa246fb67eeed2f9
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -104,9 +105,4 @@ Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountN
 
 ## <a name="next-steps"></a>次のステップ
 アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できるようになりました。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

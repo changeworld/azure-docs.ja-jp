@@ -18,6 +18,7 @@ ms.author: daleche
 translationtype: Human Translation
 ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
 ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -89,10 +90,5 @@ Azure SQL Database との接続に失敗すると、[エラー メッセージ](
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md)
 * [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -18,6 +18,7 @@ ms.author: arramac
 translationtype: Human Translation
 ms.sourcegitcommit: bd77eaab1dbad95a70b6d08947f11d95220b8947
 ms.openlocfilehash: 818337dfb36ee4c84fa2543f7c54558287ead0e1
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -409,10 +410,5 @@ JSON 仕様に次の変更が実装されました。
 1. [DocumentDB .NET のインデックス管理のコード サンプル](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
 2. [DocumentDB ドキュメント コレクションに対する操作](https://msdn.microsoft.com/library/azure/dn782195.aspx)
 3. [DocumentDB SQL を使用したクエリ](documentdb-sql-query.md)
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

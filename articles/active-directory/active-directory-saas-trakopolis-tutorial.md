@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: b2eb87a88721a3fd1ecdfa573c6a6d49ed02d344
 ms.openlocfilehash: 6d324312f0e2d70a60b7028e77844d50a177191c
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -248,9 +249,4 @@ Trakopolis サポート チームと連携し、Trakopolis にユーザーを追
 [203]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

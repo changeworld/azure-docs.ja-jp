@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
 ms.openlocfilehash: 32d8c5f13d95c3de8b06782f4f6541866389be5b
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -169,10 +170,5 @@ PowerShell を使用したエラスティック プールの管理の詳細に�
 ## <a name="related-information"></a>関連情報
 * [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084\(v=azure.300\).aspx)
 * [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn708514\(v=azure.300\).aspx)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -19,6 +19,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -77,10 +78,5 @@ Visual Studio を使用して SQL データベースに接続するには、以�
 ## <a name="next-steps"></a>次のステップ
 * Visual Studio で SQL データベースを開くには、SQL Server Data Tools を使用します。 詳細については、「 [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx)」を参照してください。
 * コードを使用して SQL データベースに接続するには、「 [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

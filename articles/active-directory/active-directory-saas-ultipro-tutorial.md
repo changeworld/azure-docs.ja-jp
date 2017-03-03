@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
 ms.openlocfilehash: 464ae3be0f937cefc7d1c9f437de21f1fe5a32af
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -236,9 +237,4 @@ UltiPro で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

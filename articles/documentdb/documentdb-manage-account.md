@@ -18,6 +18,7 @@ ms.author: kirillg
 translationtype: Human Translation
 ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
 ms.openlocfilehash: ee1668dce71a1f5d7b91e839670b69c9527c4892
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -114,9 +115,4 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
 [azureregions]: https://azure.microsoft.com/en-us/regions/#services
 [offers]: https://azure.microsoft.com/en-us/pricing/details/documentdb/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

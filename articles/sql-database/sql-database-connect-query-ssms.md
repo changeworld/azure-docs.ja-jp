@@ -20,6 +20,7 @@ ms.author: sstein;carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -65,10 +66,5 @@ ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
 - SQL Server 認証のチュートリアルを開始するには、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
 - Azure Active Directory 認証のチュートリアルを開始するには、[Azure AD の認証と承認](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
 - SSMS の詳細については、「 [SQL Server Management Studio の使用](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
