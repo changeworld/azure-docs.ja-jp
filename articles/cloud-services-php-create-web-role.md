@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
 ms.openlocfilehash: b6b802092165926cdfeab67849df26167ad96ebf
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -213,9 +214,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

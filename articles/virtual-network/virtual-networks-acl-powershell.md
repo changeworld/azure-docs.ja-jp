@@ -17,6 +17,7 @@ ms.author: jdial
 translationtype: Human Translation
 ms.sourcegitcommit: 18d33244603cff921f1282ba41f3aeb6e42ae542
 ms.openlocfilehash: 60ed242b78576d4673e41801a8687a354d09bf9c
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -88,10 +89,5 @@ ACL PowerShell コマンドレットの完全な一覧を取得するには、�
 
 ## <a name="next-steps"></a>次のステップ
 [ネットワーク アクセス制御リスト (ACL) とは](virtual-networks-acl.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
 ms.openlocfilehash: e89e5769701f00c6f403bd54cb2b29bcce53bf15
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -32,10 +33,5 @@ Resource Manager デプロイメント モデルを使用して [Azure ポータ
 これで、VM にパブリック IP と DNS 名が設定されたため、IIS、SQL、SharePoint などの一般的なアプリケーション フレームワークやサービスをデプロイできるようになりました。
 
 Azure デプロイの構築に関するヒントについては、[Resource Manager の使用](../azure-resource-manager/resource-group-overview.md)に関する記事から確認することもできます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

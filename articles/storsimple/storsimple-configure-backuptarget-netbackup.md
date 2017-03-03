@@ -17,6 +17,7 @@ ms.author: hkanna
 translationtype: Human Translation
 ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 2ac7c119e0706f0c5d479aa04a3afc34cc55cf22
+ms.lasthandoff: 01/26/2017
 
 ---
 
@@ -579,9 +580,4 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 - [バックアップ セットから復元する](storsimple-restore-from-backup-set-u2.md)方法について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

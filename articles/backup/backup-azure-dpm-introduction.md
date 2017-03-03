@@ -18,6 +18,7 @@ ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -197,9 +198,4 @@ Azure へのバックアップがサポートされているファイルの種�
 > System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 >
 >
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

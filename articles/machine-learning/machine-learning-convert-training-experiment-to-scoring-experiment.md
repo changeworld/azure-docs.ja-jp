@@ -17,6 +17,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 1ed2ee17e6b4d0256707bc63ac450b33ad9ef162
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -128,9 +129,4 @@ Web サービスのパラメーターの詳細については、「[Azure Machin
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

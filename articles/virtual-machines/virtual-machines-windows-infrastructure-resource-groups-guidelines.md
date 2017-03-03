@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: ec2392cb926df7c375c1c7c58766ef3b6ca2ff2d
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -53,10 +54,5 @@ Azure では、ストレージ アカウント、仮想ネットワーク、仮�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

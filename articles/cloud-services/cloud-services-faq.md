@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
 ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -67,10 +68,5 @@ Azure サブスクリプションには、使用できるコアの数に制限�
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>マルチ VIP クラウド サービスの IP アドレスを予約できません
 まず、IP アドレスを予約しようとしている仮想マシン インスタンスが有効であることを確認してください。 次に、ステージング デプロイメントと運用環境デプロイメントの両方で予約済みの IP を使っていることを確認します。 **変更しない** でください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

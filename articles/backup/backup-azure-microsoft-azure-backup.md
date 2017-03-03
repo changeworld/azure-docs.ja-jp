@@ -19,6 +19,7 @@ ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
 ms.openlocfilehash: 1462ee0e247fb5d590a70d23ece5723a065b4140
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -275,9 +276,4 @@ Microsoft Azure Backup Server がセットアップ段階 (またはバックア
 * [SQL Server のバックアップ](backup-azure-backup-sql.md)
 * [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 * [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -19,6 +19,7 @@ ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: d835d5825268a4ec0fa5b761f9b5714e3236b0ce
 ms.openlocfilehash: 1177321875aa41bc5604b587c4b99fbf81f8637a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -1927,9 +1928,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP DBMS 層の Backup の目的については、[DBMS ガイド][dbms-guide]をご覧ください。
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。 Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

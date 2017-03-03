@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -446,10 +447,5 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 ## <a name="next-steps"></a>次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
