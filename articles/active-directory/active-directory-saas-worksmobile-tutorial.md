@@ -1,6 +1,6 @@
 ---
 title: "チュートリアル: Azure Active Directory と WORKS MOBILE の統合 | Microsoft Docs"
-description: "Azure Active Directory と WORKS MOBILE の間でシングル サインオンを構成する方法について説明します。"
+description: "Azure Active Directory と LINE WORKS の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -19,24 +19,24 @@ ms.openlocfilehash: 4bd654821dfde2a59d9c9fd85166c7e9681791ab
 
 
 ---
-# <a name="tutorial-azure-active-directory-integration-with-works-mobile"></a>チュートリアル: Azure Active Directory と WORKS MOBILE の統合
+# <a name="tutorial-azure-active-directory-integration-with-works-mobile"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合
 
-このチュートリアルでは、WORKS MOBILE と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、LINE WORKS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-WORKS MOBILE と Azure AD の統合には、次の利点があります。
+LINE WORKS と Azure AD の統合には、次の利点があります。
 
-- WORKS MOBILE にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが各自の Azure AD アカウントで WORKS MOBILE に自動的にサインオン (シングル サインオン) できるようにすることが可能です。
+- LINE WORKS にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが各自の Azure AD アカウントで LINE WORKS に自動的にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure 管理ポータル) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と WORKS MOBILE の統合を構成するには、次のものが必要です。
+Azure AD と LINE WORKS の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- WORKS MOBILE でのシングル サインオンが有効なサブスクリプション
+- LINE WORKS でのシングル サインオンが有効なサブスクリプション
 
 
 > [!NOTE]
@@ -52,14 +52,14 @@ Azure AD と WORKS MOBILE の統合を構成するには、次のものが必要
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
-1. ギャラリーからの WORKS MOBILE の追加
+1. ギャラリーからの LINE WORKS の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
-## <a name="adding-works-mobile-from-the-gallery"></a>ギャラリーからの WORKS MOBILE の追加
-Azure AD への WORKS MOBILE の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に WORKS MOBILE を追加する必要があります。
+## <a name="adding-works-mobile-from-the-gallery"></a>ギャラリーからの LINE WORKS の追加
+Azure AD への LINE WORKS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に LINE WORKS を追加する必要があります。
 
-**ギャラリーから WORKS MOBILE を追加するには、次の手順を実行します。**
+**ギャラリーから LINE WORKS を追加するには、次の手順を実行します。**
 
 1. **[Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
@@ -83,27 +83,27 @@ Azure AD への WORKS MOBILE の統合を構成するには、ギャラリーか
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、WORKS MOBILE で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、LINE WORKS で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する WORKS MOBILE ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと WORKS MOBILE の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する LINE WORKS ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと LINE WORKS の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このリンク関係は、Azure AD の **[ユーザー名]** の値を、WORKS MOBILE の **[Username]** の値として割り当てることで確立されます。
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、LINE WORKS の **[Username]** の値として割り当てることで確立されます。
 
-WORKS MOBILE で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+LINE WORKS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
-3. **[WORKS MOBILE のテスト ユーザーの作成](#creating-a-works-mobile-test-user)** - WORKS MOBILE で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[LINE WORKS のテスト ユーザーの作成](#creating-a-works-mobile-test-user)** - LINE WORKS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure 管理ポータルで Azure AD のシングル サインオンを有効にし、WORKS MOBILE アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure 管理ポータルで Azure AD のシングル サインオンを有効にし、LINE WORKS アプリケーションでシングル サインオンを構成します。
 
-**WORKS MOBILE で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+**LINE WORKS で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure 管理ポータルの **WORKS MOBILE** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure 管理ポータルの **LINE WORKS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![Configure Single Sign-On][4]
 
@@ -111,7 +111,7 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_01.png)
 
-3. **[WORKS MOBILE のドメインと URL]** セクションで、次の手順を実行します。
+3. **[LINE WORKS のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_02.png)
 
@@ -120,7 +120,7 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
     b. **[識別子]** ボックスに、値として「`worksmobile.com`」と入力します。
 
     > [!NOTE] 
-    > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[WORKS MOBILE サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡してください。 
+    > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、https://developers.worksmobile.com/jp/document/1001003?openCategories=1 を参照してください。 
 
 4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
@@ -148,10 +148,9 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure Single Sign-On](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_07.png)
 
-10. アプリケーション用に構成された SSO を入手するには、[WORKS MOBILE サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡し、次のものを情報として提供してください。 
-
-    •  ダウンロードした**証明書ファイル**
-
+10. アプリケーション用に構成された SSO を入手するには、https://developers.worksmobile.com/jp/document/1001003?openCategories=1 を参照してください。
+    •  ダウンロードした**証明書ファイル**　（拡張子を .pem に変更してください。）
+    
     •  **SAML シングル サインオン サービス URL**
 
     •  **SAML エンティティ ID**
@@ -192,18 +191,17 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
 
 
-### <a name="creating-a-works-mobile-test-user"></a>WORKS MOBILE のテスト ユーザーの作成
+### <a name="creating-a-works-mobile-test-user"></a>LINE WORKS のテスト ユーザーの作成
 
-このセクションでは、WORKS MOBILE で Britta Simon というユーザーを作成します。 [WORKS MOBILE サポート チーム](mailto:dl_ssoinfo@worksmobile.com)と連携して、WORKS MOBILE プラットフォームにユーザーを追加してください。
-
+このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 LINE WORKS の管理画面からユーザーを作成してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に WORKS MOBILE へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
+このセクションでは、Britta Simon に LINE WORKS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
 ![ユーザーの割り当て][200] 
 
-**Britta Simon を WORKS MOBILE に割り当てるには、次の手順を実行します。**
+**Britta Simon を LINE WORKS に割り当てるには、次の手順を実行します。**
 
 1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
@@ -233,7 +231,7 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [WORKS MOBILE] タイルをクリックすると、WORKS MOBILE アプリケーションに自動的にサインオンします。
+アクセス パネルで [WORKS MOBILE] タイルをクリックすると、LINE WORKS アプリケーションに自動的にサインオンします。
 
 
 ## <a name="additional-resources"></a>その他のリソース
