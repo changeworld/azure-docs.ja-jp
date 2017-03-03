@@ -17,6 +17,7 @@ ms.author: inhenk
 translationtype: Human Translation
 ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
 ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -35,9 +36,4 @@ ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

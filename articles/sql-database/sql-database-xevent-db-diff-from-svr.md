@@ -19,6 +19,7 @@ ms.author: genemi
 translationtype: Human Translation
 ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
 ms.openlocfilehash: 6766242bef4e6f976a621547941e8e34a4915c6c
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -215,9 +216,4 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

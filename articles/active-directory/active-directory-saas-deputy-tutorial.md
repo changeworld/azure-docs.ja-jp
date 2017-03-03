@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: c853d61257493d73cd0f8a51a15f0389e1e83cf4
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -263,9 +264,4 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
 [203]: ./media/active-directory-saas-deputy-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-deputy-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-deputy-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

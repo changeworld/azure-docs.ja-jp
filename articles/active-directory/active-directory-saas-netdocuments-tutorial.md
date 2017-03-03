@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: bd503bb141b5686f149c5fb46ba069db070d5fae
 ms.openlocfilehash: 99dbb3deefb066b619b839aa709fe5e9b804eb27
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -149,10 +150,5 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
    ![はい](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

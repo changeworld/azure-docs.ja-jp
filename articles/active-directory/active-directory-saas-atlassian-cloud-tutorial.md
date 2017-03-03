@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 6d53de158a44116058ab8241d5182414f8f306fb
 ms.openlocfilehash: 243e81ecd1e1648bfd6b2ca6e6268ea1a18d2036
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -332,9 +333,4 @@ Atlassian Cloud での Azure AD シングル サインオンを構成してテ�
 [203]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

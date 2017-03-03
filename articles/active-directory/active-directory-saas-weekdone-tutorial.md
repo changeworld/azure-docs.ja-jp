@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: e1c9957f64e9a0a17823a881b060543a9346f457
 ms.openlocfilehash: 8e69d4efe14e29d9f009a4b65416207bb39faa8b
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -246,9 +247,4 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 [203]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
 ms.openlocfilehash: 4f0519865bf41d045791905ff4eb7bbf92981dcc
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -170,10 +171,5 @@ Replicon の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-replicon-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

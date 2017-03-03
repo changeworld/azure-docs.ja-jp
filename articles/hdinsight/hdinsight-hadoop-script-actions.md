@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 6c468c8ed0d817a32c343d55cac780b904ee8668
 ms.openlocfilehash: 6cedd18c22bcd97f7fb2b6926bdf637fe9f04ab4
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -312,9 +313,4 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

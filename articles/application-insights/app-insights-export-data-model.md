@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -351,9 +352,4 @@ TrackMetric() によって生成されます。
 * [Application Insights](app-insights-overview.md)
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

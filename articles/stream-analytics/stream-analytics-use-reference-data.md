@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: eec8c82857ef9e2806c953ae996f9e7970e64392
 ms.openlocfilehash: 4d6bfebd9faa4e37de148539e7248f88e711bf43
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -115,9 +116,4 @@ Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

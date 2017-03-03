@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 2fbbfd3d221ef2f6bce302ed169eddf5a8b0d73e
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -84,10 +85,5 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [maximum-applications]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://hive.apache.org/javadocs/hcat-r0.5.0/configuration.html
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

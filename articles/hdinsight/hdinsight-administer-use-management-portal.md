@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 58011fe25a96edfe2744990180b2f2866537bd37
 ms.openlocfilehash: ec35e177d1bb94671b1703020c9aa863a3805af1
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -376,9 +377,4 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

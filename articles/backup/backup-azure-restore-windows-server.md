@@ -17,6 +17,7 @@ ms.author: saurse;trinadhk;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: d8a85da4c929180c7ca52a19724d2be702fe3e9c
 ms.openlocfilehash: db71f7ea9561542fe9b579bf471cf2b81f5997cd
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -228,9 +229,4 @@ ms.openlocfilehash: db71f7ea9561542fe9b579bf471cf2b81f5997cd
 
 ## <a name="next-steps"></a>次のステップ
 * ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

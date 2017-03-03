@@ -18,6 +18,7 @@ ms.author: arramac
 translationtype: Human Translation
 ms.sourcegitcommit: 1ad5307054dbd860f9c65db4b82ea5f560a554c8
 ms.openlocfilehash: 14a06dd20547f2910b2321372b27d9f777e54cc7
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -173,10 +174,5 @@ TTL はドキュメント全体に適用されます。 ドキュメントの一
 
 ## <a name="next-steps"></a>次のステップ
 Azure DocumentDB の詳細については、サービスの[*ドキュメント*](https://azure.microsoft.com/documentation/services/documentdb/)のページを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

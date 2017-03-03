@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
 ms.openlocfilehash: dd28e295df7acead773f9076d790e0e96b66adb9
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -103,9 +104,4 @@ SDK でも、同じような方法を使用します。 SDK を使用したク�
 * [Apache ZooKeeper](http://zookeeper.apache.org/)
 * [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 * [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -19,6 +19,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
 ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -290,10 +291,5 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 * Azure DocumentDB の詳細については、 [DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
 * Azure Search の詳細については、 [Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

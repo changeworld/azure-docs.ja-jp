@@ -17,6 +17,7 @@ ms.author: bradsev;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 46c624608773fcd55e7ee3548aaa32fbbc630056
 ms.openlocfilehash: b6d0c877e0f0515dd82c0615850009910aa0b0be
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -187,10 +188,5 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

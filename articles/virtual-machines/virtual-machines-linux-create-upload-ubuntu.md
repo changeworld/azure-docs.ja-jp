@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 7e77858b36d07049333422d4454c29a9e1acb748
 ms.openlocfilehash: bdec7eb0b32cd8853dc01791466abf48c61a5fe8
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -138,10 +139,5 @@ Ubuntu HardWare Enablement (HWE) カーネル:
 
 * [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 * [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

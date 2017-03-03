@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 9d20050dada974c0c2a54399e2db7b9a289f7e89
 ms.openlocfilehash: 48cc9c7181d83d2fe851b454eaf887b0483d3a01
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -787,9 +788,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

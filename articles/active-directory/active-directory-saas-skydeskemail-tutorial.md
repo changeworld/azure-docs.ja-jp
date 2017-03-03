@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: fcea07a412de7b35931ff95b01fbe1276302f1ea
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -264,9 +265,4 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 [203]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

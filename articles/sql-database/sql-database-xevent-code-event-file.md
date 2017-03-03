@@ -19,6 +19,7 @@ ms.author: genemi
 translationtype: Human Translation
 ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
 ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -553,10 +554,5 @@ Image references.
 -->
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
