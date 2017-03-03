@@ -19,8 +19,3 @@
    
       ![Azure ポータル - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
