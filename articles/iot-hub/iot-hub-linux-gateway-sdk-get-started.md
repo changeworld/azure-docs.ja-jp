@@ -17,6 +17,7 @@ ms.author: andbuc
 translationtype: Human Translation
 ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
 ms.openlocfilehash: 28984e14f5afc27b608ab37daf19d454eb7c3201
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -89,9 +90,4 @@ ms.openlocfilehash: 28984e14f5afc27b608ab37daf19d454eb7c3201
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
