@@ -18,6 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 719f9810abb12cbe8645651d35cbff936cecd158
 ms.openlocfilehash: 57531b609b095359c8bf0ea3685af40124f46311
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -83,8 +84,3 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

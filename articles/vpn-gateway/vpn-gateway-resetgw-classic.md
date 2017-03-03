@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 1c93a8900ea5fae8abe0d2d47f632a067736ac56
 ms.openlocfilehash: 7aef9360ab341dd7d4932a6e9c2d8ed1d7bf1163
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -80,10 +81,5 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
     RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
     StatusCode     : OK
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

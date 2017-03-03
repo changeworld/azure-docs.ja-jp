@@ -17,6 +17,7 @@ ms.author: yuemlu
 translationtype: Human Translation
 ms.sourcegitcommit: 4582049fa1d369ea63395514336d26a524dbfdbe
 ms.openlocfilehash: b3f1b2b4e257fea0dd9324b02ea9aad3e1a645e4
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -773,9 +774,4 @@ Update-AzureVM  -VM $vm
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 [4]: http://technet.microsoft.com/library/hh831739.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: b759e9936a45f989088de5e89a59371c5ea64e1c
 ms.openlocfilehash: 079a05d16ccebb705f410e25f0ed5762db20ae22
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -94,10 +95,5 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 * Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
 * 自動スケールの詳細については、 [クラウド サービスのスケーリング](../cloud-services/cloud-services-how-to-scale.md)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

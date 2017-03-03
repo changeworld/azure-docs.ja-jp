@@ -17,6 +17,7 @@ ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
 ms.openlocfilehash: 0093beda6af6d3b2400185fcd63bc73b2c8c9ba9
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -91,9 +92,4 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

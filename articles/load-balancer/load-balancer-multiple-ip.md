@@ -17,6 +17,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
 ms.openlocfilehash: d7df8f3271c6c92df427a840d73fdb9a0c6b54a1
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -167,9 +168,4 @@ AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered
     ```
 
 13. 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成する必要があります。 ドメインを Azure DNS でホストする場合もあります。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

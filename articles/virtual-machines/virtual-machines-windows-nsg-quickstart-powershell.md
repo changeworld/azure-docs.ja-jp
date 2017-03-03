@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 91c2e6f53f8ba490d2943a60c7ad519d856707b9
 ms.openlocfilehash: 0d57a27c0862b09e2628520a1e50a0cc56a55881
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -87,10 +88,5 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 * [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)
 * [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 * [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

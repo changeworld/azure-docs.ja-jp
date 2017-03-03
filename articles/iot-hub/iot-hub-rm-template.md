@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
 ms.openlocfilehash: 49c7506b35f661509346dfd8305f10c0d63422eb
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -215,9 +216,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

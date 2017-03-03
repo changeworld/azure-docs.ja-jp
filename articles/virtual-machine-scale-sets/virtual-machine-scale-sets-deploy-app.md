@@ -18,6 +18,7 @@ ms.author: guybo
 translationtype: Human Translation
 ms.sourcegitcommit: f13545d753690534e0e645af67efcf1b524837eb
 ms.openlocfilehash: dad27b11b5f02ed41826b82882cc5089eb69cb04
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -57,10 +58,5 @@ Packer および Terraform Azure でも Azure Resource Manager がサポート�
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>OS の更新プログラムはどのように更新ドメインに展開するのでしょうか。
 VM スケール セットを実行しながら、OS イメージを更新する必要があるとします。 これを行う&1; つの方法が、VM イメージを&1; つの VM ごとに更新することです。 それには、PowerShell または Azure CLI を使用します。 VM スケール セット モデル (その構成の定義方法) を更新して、個別の VM で "手動アップグレード" 呼び出しを発行するコマンドも別にあります。 Azure のドキュメント「[仮想マシン スケール セットのアップグレード](./virtual-machine-scale-sets-upgrade-scale-set.md)」でも、VM スケール セット全体で OS をアップグレードするときに利用できるオプションについて詳しく説明しています。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

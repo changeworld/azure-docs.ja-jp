@@ -18,6 +18,7 @@ ms.author: smalone
 translationtype: Human Translation
 ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
 ms.openlocfilehash: 78de3b8dd2d8bd0992bfbacb1079825dca486442
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -91,10 +92,5 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 [!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
 [!INCLUDE [FAQ2](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

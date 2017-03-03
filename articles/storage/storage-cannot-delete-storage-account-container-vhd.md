@@ -18,6 +18,7 @@ ms.author: genli
 translationtype: Human Translation
 ms.sourcegitcommit: d3d59e19ff654a953be43706dce926c4450c6179
 ms.openlocfilehash: 6493230295dbfc939df3daf8504a7d8662083f51
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -137,9 +138,4 @@ VM を削除してから、関連する VHD の BLOB を削除しようと、次
 ## <a name="next-steps"></a>次のステップ
 * [ストレージ アカウントの削除](storage-create-storage-account.md#delete-a-storage-account)
 * [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (Microsoft Azure (PowerShell) で BLOB ストレージのロックされているリースを解除する方法)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

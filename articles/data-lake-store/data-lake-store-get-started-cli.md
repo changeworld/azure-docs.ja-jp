@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
 ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -179,9 +180,4 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [azure-command-line-tools]: ../xplat-cli-install.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

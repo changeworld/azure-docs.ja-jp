@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 4f9d586a140b27f672f8cff463ba0607e2bd844f
 ms.openlocfilehash: 6f2a184242f3f69bdc4a15ac02c095a45c723565
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -35,10 +36,5 @@ ms.openlocfilehash: 6f2a184242f3f69bdc4a15ac02c095a45c723565
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

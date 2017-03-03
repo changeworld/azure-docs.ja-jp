@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2c41c2df135caaead328d8fe05407cfa75cbcb91
 ms.openlocfilehash: a486fbe46f9892f6f70dcdcf27edbac63728af6e
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -663,9 +664,4 @@ Outputs
 また、関連するリソース (データ ファクトリに関連付けられたアラートなど) もデータ ファクトリと併せて移動することができます。
 
 ![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

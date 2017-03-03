@@ -17,6 +17,7 @@ ms.author: matp
 translationtype: Human Translation
 ms.sourcegitcommit: fa426f474f4efd4023da5dfd9954dacf96f635ab
 ms.openlocfilehash: 99d5379ad1e6965dd9ed88de456cc850d7e40d5a
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -309,9 +310,4 @@ ItemsList
 
 ## <a name="next-steps"></a>次のステップ
 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
 ms.openlocfilehash: bd042908fec2dcf499dd1cb5230f62ec4be9fdea
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -150,9 +151,4 @@ WCF リレーは、Standard 階層の名前空間でのみ使用できます。 
 * Service Bus の価格および課金に関してよく寄せられる質問については、[「Service Bus に関する FAQ」](service-bus-faq.md#pricing)を参照してください。
 
 [Azure classic portal]: http://manage.windowsazure.com
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

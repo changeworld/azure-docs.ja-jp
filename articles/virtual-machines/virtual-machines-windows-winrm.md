@@ -18,6 +18,7 @@ ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: ebc2195bbb3526171359cc126ea6b59d0089f4a0
 ms.openlocfilehash: 6559b8605a311bb774f6c8b38a9298875d3a5362
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -164,9 +165,4 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
 設定が完了すると、次のコマンドを使用して VM に接続することができます。
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

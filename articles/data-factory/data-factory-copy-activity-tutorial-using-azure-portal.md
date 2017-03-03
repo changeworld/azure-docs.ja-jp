@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
 ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -412,9 +413,4 @@ ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

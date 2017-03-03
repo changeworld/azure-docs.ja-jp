@@ -18,6 +18,7 @@ ms.tgt_pltfrm: NA
 translationtype: Human Translation
 ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
 ms.openlocfilehash: 3ade1f2850b2a67f68e8a4a7f519b7dc7ba1de10
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -79,9 +80,4 @@ sys.databases ビューと sys.dm_database_copies ビューを照会して、コ
 * 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 * [ビジネス継続性の概要](sql-database-business-continuity.md)
 * [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -18,6 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
 ms.openlocfilehash: 7fe03bcb918997971208554d030264d67bedb1ff
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -202,9 +203,4 @@ ms.openlocfilehash: 7fe03bcb918997971208554d030264d67bedb1ff
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-node]: http://nodejs.org
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

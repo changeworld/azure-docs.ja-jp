@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: b902d2e79633959a6f76ddd45b1193177b0e8465
 ms.openlocfilehash: 1ac5a78c8d9419e4c641bf66f8dac7aa8cbcd179
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -139,10 +140,5 @@ VPN Gateway 構成に対して REST API および PowerShell コマンドレッ�
 
 ## <a name="next-steps"></a>次のステップ
 使用可能な接続構成の詳細については、「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照してください。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: ramankum
 translationtype: Human Translation
 ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
 ms.openlocfilehash: c9e43df37784999036c6cf250f27a808f79ebe2f
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -277,8 +278,3 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 ### <a name="blog-posts"></a>ブログ記事
 * [Azure Premium Storage を一般に提供](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 * [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
-
-
-<!--HONumber=Feb17_HO2-->
-
-
