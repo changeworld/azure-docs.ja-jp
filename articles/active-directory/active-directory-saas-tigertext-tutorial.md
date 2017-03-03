@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1b5527090a41c274b590ed9d1ac7b561b6f4ed14
 ms.openlocfilehash: c9f2b62ddc0deda4eadd47c0d63db51bd2b36286
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -227,9 +228,4 @@ TigerText で Azure AD のシングル サインオンを構成してテスト�
 [203]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tigertext-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

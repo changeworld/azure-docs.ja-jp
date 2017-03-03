@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: e6f0d661465c813ec310b8c69ab1ee06e4f95401
 ms.openlocfilehash: 45ec817e62e7967549602adfd2c9d2d3f2484987
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -97,10 +98,5 @@ BLOB 名は、データベースの作成元の、既存の BACPAC ファイル�
 * BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。
 * パフォーマンスの推奨事項も含む、SQL Server データベースの移行プロセス全体の詳細については、[Azure SQL Database への SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: 82ac3feb64c688a372d2b6d41a259d7126df44c1
 ms.openlocfilehash: 68968f3300ff783a526469274d07ba524b7d3569
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -42,10 +43,5 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 
 ## <a name="release-notes"></a>リリース ノート
 TOP を含めるために 2016 年 7 月 29 日に更新されました。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

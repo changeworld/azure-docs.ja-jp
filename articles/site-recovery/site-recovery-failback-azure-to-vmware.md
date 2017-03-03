@@ -17,6 +17,7 @@ ms.author: ruturajd
 translationtype: Human Translation
 ms.sourcegitcommit: 7688df2aac74d10de7c188ad46f8ab2ec38bbe86
 ms.openlocfilehash: 34c335d17641e9df9b64a7882448afc268e4da7c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -243,9 +244,4 @@ VPN 接続または ExpressRoute 接続を使用してフェールバックで�
 
 * ExpressRoute 接続が、ソース コンピューターのフェールオーバー先であり、フェールオーバーの発生後に Azure VM が配置される Azure 仮想ネットワーク上に設定されている必要があります。
 * データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。 ExpressRoute 接続を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

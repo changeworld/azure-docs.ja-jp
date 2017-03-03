@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: 31d7f4620420839ade1ca58391fad78e94d4e929
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -99,9 +100,4 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 ## <a name="next-steps"></a>次のステップ
 ディスクを追加した後、使用できるように準備する必要があります。 詳細については、「[方法: Linux での新しいデータ ディスクの初期化](virtual-machines-linux-classic-attach-disk.md#initialize-a-new-data-disk-in-linux)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

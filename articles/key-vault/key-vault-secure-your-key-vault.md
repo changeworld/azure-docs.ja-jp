@@ -17,6 +17,7 @@ ms.author: ambapat
 translationtype: Human Translation
 ms.sourcegitcommit: 36e0a52013b8d12c7e66c5955756a61a2c72b7dc
 ms.openlocfilehash: c3507aed3cc44d6360b8ba3ddf172e1437c1227a
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -249,10 +250,5 @@ Key Vault の使用状況に関するログ記録の詳細については、「[
 Azure Key Vault でキーとシークレットを使用する方法の詳細については、[キーとシークレット](https://msdn.microsoft.com/library/azure/dn903623.aspx)に関する記事をご覧ください。
 
 Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

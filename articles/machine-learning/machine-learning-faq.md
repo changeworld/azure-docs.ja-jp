@@ -18,6 +18,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 31157645006b24e9ed6ee9187c355310356615a7
 ms.openlocfilehash: 7d9dbf3af8e7d84d470bf6f42e2d2be01c5cb27d
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -546,9 +547,4 @@ Machine Learning サービスはマルチテナント サービスです。 バ�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

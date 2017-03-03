@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 4fa0cdc2ee71d4e499dfc45bac7b690d728b626a
 ms.openlocfilehash: 2649edd4af67e25ce49bf0ced858b7c7e4633290
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -595,10 +596,5 @@ Azure で使用されるリソースに対して課金されるため、不要�
 * Azure Monitor の監視機能の例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
 * 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法についてご確認ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

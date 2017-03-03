@@ -17,6 +17,7 @@ ms.author: nisoneji
 translationtype: Human Translation
 ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
 ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -197,9 +198,4 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 
 ## <a name="next-steps"></a>次のステップ
 疑問点がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿して質問してください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

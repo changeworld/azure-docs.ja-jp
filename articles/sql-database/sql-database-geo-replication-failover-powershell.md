@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: ac575284544819c6bed7ef84669b2793085a3dc6
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -77,10 +78,5 @@ ms.openlocfilehash: ac575284544819c6bed7ef84669b2793085a3dc6
 * アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、 [geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * エラスティック プールでのアクティブ geo レプリケーションの使用については、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページを参照してください。
 * ビジネス継続性の概要については、 [ビジネス継続性の概要](sql-database-business-continuity.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

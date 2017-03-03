@@ -17,6 +17,7 @@ ms.author: adigan;anuragm;trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 14c848b4740a0fc49a8ba20f119846892bc8ca22
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -373,9 +374,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Backup と DPM の詳細については、 [DPM バックアップの概要](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

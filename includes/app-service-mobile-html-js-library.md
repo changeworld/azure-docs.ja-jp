@@ -165,8 +165,3 @@ table
         // Record is now deleted - update your cache
     }, failure);
 ```
-
-
-<!--HONumber=Feb17_HO1-->
-
-

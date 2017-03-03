@@ -17,6 +17,7 @@ ms.author: priyamo
 translationtype: Human Translation
 ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 53e9fd58e72d83db32fa1fab937b4618cd4cd159
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -34,9 +35,4 @@ Azure Active Directory は、テナント固有および共通 (テナント独�
 * テナント独立のエンドポイントは `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` にあります。このエンドポイント アドレスの **common** は、テナントのドメイン名または ID の代わりに表示されます。
 
 Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「 [フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

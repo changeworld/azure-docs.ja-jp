@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 9585494ebff68891d374a29e8e3e4b7756914bcc
 ms.openlocfilehash: d8a654340df56002e503f2f61e910facb51696c5
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -328,8 +329,3 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 [201]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Feb17_HO1-->
-
-

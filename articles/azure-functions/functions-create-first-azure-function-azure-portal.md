@@ -18,6 +18,7 @@ ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: ab0b218a99ab3ff98edfa075eabbd3eb2c2bd1d4
 ms.openlocfilehash: 996fc80ff926117dc12180efe1949b3dbeba3f91
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -63,10 +64,5 @@ Function App をプロビジョニングしたら、初めての関数を作成�
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

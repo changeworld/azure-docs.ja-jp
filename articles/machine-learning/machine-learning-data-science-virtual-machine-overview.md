@@ -18,6 +18,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 6c664a055e577881d4fcccd5b0ba4047d88aa9ef
 ms.openlocfilehash: 64b413451c6ce47cc3aa14322b2aa0342e1e3ffe
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -87,10 +88,5 @@ ms.openlocfilehash: 64b413451c6ce47cc3aa14322b2aa0342e1e3ffe
 ### <a name="for-the-linux-data-science-vm"></a>Linux データ サイエンス VM の場合
 * Linux バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Linux データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-linux-dsvm-intro.md)」をご覧ください。
 * Linux VM で一般的なデータ サイエンス タスクを実行する方法がわかるチュートリアルについては、「[Linux データ サイエンス仮想マシンでのデータ サイエンス](machine-learning-data-science-linux-dsvm-walkthrough.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

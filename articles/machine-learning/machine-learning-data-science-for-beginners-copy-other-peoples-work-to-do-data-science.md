@@ -18,6 +18,7 @@ ms.author: cgronlun;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
 ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -93,9 +94,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

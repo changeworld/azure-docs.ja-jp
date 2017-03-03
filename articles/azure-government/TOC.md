@@ -42,8 +42,3 @@
 ## [試用版](https://azuregov.microsoft.com/trial/azuregovtrial)
 ## [ブログ](https://blogs.msdn.microsoft.com/azuregov/)
 ## [Azure Government の Web サイト](https://azure.microsoft.com/overview/clouds/government/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

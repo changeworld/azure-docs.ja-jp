@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: cb06c5bd74816777ec7c5836d362d509a265bd9c
 ms.openlocfilehash: 9e16fd3112b093f22ed99829c223a3a80e008f28
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -344,10 +345,5 @@ Sailpoint IdentityNow は、広く使用されている WS-Federation/WS-Trust I
 
 詳細については、「[Sailpoint IdentityNow](https://www.sailpoint.com/idaas-identity-as-a-service-identitynow/)」を参照してください。
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

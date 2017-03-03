@@ -18,6 +18,7 @@ ms.author: saurinsh
 translationtype: Human Translation
 ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
 ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -55,9 +56,4 @@ HDInsight クラスター リソースを未承認のユーザーから保護し
 * ドメイン参加済み HDInsight クラスターの管理については、[ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)に関する記事をご覧ください。
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
 * ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

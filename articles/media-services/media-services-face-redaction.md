@@ -17,6 +17,7 @@ ms.author: juliako;
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
 ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -304,10 +305,5 @@ Media Services のラーニング パスを確認します。
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

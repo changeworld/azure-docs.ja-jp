@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b7dd50ea4075bdd82ef671a3dcd05460444d2312
-ms.openlocfilehash: 53111017309665d9e2e1ca499f5b77e0424e47da
+ms.sourcegitcommit: b7084081381aa9c4211f8bc0d0685541246a5ddb
+ms.openlocfilehash: 7adb6fcb0c9a673523feaad494e6bc8af5c7fe77
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -162,12 +163,38 @@ Microsoft SQL Server エンジンをベースに構築された、クラウド�
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server Tools</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p>
+                        <p><a href="https://msdn.microsoft.com/hh550080.aspx">SqlPackage</a></p>
+                        <p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL Database の管理ライブラリ パッケージ</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server ドライバー</a></h3>
+                        <p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

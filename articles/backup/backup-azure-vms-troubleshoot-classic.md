@@ -17,6 +17,7 @@ ms.author: trinadhk;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 2149407ff4e04f6a52a45c419382617810a63633
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -114,9 +115,4 @@ Windows VM 上で VM エージェントのバージョンを確認する方法:
 
 1. Azure 仮想マシンにログオンし、フォルダー *C:\WindowsAzure\Packages* に移動します。 WaAppAgent.exe ファイルを探します。
 2. このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

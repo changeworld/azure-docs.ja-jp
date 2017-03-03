@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 0b93e0cd71add8bad86c2b3c0023b524bc4f621a
 ms.openlocfilehash: 1e44ae2341257df6ac367db83947178918016430
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -1114,10 +1115,5 @@ Patient BLOB ファイル情報が次のように表示されます。
 [Github](https://github.com/HEDIDIN/DocDbNotifications)で提供されているロジック アプリのコードをダウンロードして使用してみてください。 このアプリケーションをベースとして活用し、変更を加えたコードをぜひリポジトリに投稿してください。 
 
 DocumentDB をさらに詳しく知りたい場合は、こちらの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

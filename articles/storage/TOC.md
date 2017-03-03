@@ -45,7 +45,7 @@
 
 ## ディスク ストレージ 
 ### [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
-### [Azure CLI 2.0 (プレビュー) を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 ### [PowerShell を使用して Windows VM に管理ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 ### [Linux VM に管理ディスクを追加する](../virtual-machines/virtual-machines-linux-add-disk.md)
 ### [Windows のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
@@ -100,7 +100,7 @@
 ### [プロパティおよびメタデータを設定および取得する](storage-properties-metadata.md)
 ## 管理
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI 2.0 (プレビュー)](storage-azure-cli.md)
+### [Azure CLI 2.0](storage-azure-cli.md)
 ### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure Automation](automation-manage-storage.md)
 ## セキュリティ保護
@@ -219,8 +219,3 @@
 ### [Ruby](https://github.com/Azure/azure-storage-ruby)
 ### [Python](https://github.com/Azure/azure-storage-python)
 ### [iOS](https://github.com/Azure/azure-storage-ios)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -18,6 +18,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: cc3cc2dce324942f184b6a520dc4db28518a3091
 ms.openlocfilehash: 08f0fe132858bf4629cadc53fbfc6c203592e3a7
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -134,9 +135,4 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 [linux-installer]: http://aka.ms/linux-azure-cli
 [cliasm]: /cli/azure/get-started-with-az-cli2
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

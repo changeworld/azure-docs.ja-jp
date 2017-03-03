@@ -18,6 +18,7 @@ ms.author: anandy
 translationtype: Human Translation
 ms.sourcegitcommit: e1b909f419c8c04a9332a29669148321ab3dbd2d
 ms.openlocfilehash: 2afd8e04ac325f1c9f2dee8aed867b0d0a6b558d
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -45,10 +46,5 @@ Active Directory フェデレーション サービス (AD FS) から Microsoft 
 
 ## <a name="also-read"></a>追加情報
 * [Azure AD Connect を使用して Office 365 信頼を修復する](connect/active-directory-aadconnect-federation-management.md#repairthetrust)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

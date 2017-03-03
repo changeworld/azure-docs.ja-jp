@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: b2428f93680c12c76000fa8eb1a7138f72a8efe7
 ms.openlocfilehash: 9d67f089f4aba03e846a8fe020a91b6b1ac6ea48
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -184,9 +185,4 @@ PreferredLocation 制約は少し異なり、この制約だけが “最適化�
 
 ## <a name="next-steps"></a>次のステップ
 * 最初から開始して、 [Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

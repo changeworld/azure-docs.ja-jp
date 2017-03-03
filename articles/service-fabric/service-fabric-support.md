@@ -17,6 +17,7 @@ ms.author: chackdan
 translationtype: Human Translation
 ms.sourcegitcommit: 05e433b028762016759637b2afa8c741b04f31ff
 ms.openlocfilehash: a31a297f909ffb1c6da748623b0050415c43486b
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -95,9 +96,4 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: http://aka.ms/servicefabricdocs
 [sample-repos]: http://aka.ms/servicefabricsamples
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

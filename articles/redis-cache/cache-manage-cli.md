@@ -17,6 +17,7 @@ ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
 ms.openlocfilehash: 940210325c28252de2f38cfe56e56d4c3ecd28ed
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -266,9 +267,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
     help:      -s, --subscription <subscription>      the subscription identifier
     help:
     help:    Current Mode: arm (Azure Resource Management)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

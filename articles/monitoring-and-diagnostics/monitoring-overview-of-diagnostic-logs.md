@@ -17,6 +17,7 @@ ms.author: johnkem; magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: fbc96a248de20b67a72e6a0150fe4b9b754ec4fe
 ms.openlocfilehash: d61ec29026ae5bbbdf33d7810e2e35c4d6bee1e7
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -213,9 +214,4 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 * [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

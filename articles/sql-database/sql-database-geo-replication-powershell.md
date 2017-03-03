@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 85efdb2a5b9571d76338aeb0871b729693b63dcb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -130,10 +131,5 @@ sys.geo_replication_links のカタログ ビューに表示される順方向�
 ## <a name="next-steps"></a>次のステップ
 * アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

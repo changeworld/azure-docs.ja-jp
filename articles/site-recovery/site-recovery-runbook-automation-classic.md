@@ -17,6 +17,7 @@ ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
 ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
 ms.openlocfilehash: b4105e98323b5161a22fa65707d376a7155611d6
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -278,9 +279,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 [Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要) (Azure Automation の概要)](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation Overview (Azure Automation の概要) (Azure Automation の概要)")
 
 [Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト)](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト) (サンプルの Azure Automation スクリプト)")
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

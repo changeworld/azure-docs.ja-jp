@@ -17,6 +17,7 @@ ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
 ms.openlocfilehash: edcf34610e7517f9ca16f8c239e4080c475933f4
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -110,10 +111,5 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 ## <a name="next-steps"></a>次のステップ
 * 最新情報については、[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)と[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

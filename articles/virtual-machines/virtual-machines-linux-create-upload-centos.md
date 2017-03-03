@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 1d4d27812b1c7cadbc70c3ede8fb10dfdc86b0ea
 ms.openlocfilehash: c8a5bfcb253300488e6bbd1cb89b23cabb181ca9
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -332,10 +333,5 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 ## <a name="next-steps"></a>次のステップ
 これで、CentOS Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

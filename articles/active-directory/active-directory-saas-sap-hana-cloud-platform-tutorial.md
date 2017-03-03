@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
 ms.openlocfilehash: c58d2c68b6b95d7020e03333e36b281ad7d0f9f9
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -221,10 +222,5 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
    ![はい](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

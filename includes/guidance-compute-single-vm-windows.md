@@ -209,8 +209,3 @@ azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure での単一 Windows VM アーキテクチャ"
 [readme]: https://github.com/mspnp/reference-architectures/blob/master/guidance-compute-single-vm
 [blocks]: https://github.com/mspnp/template-building-blocks
-
-
-<!--HONumber=Jan17_HO2-->
-
-

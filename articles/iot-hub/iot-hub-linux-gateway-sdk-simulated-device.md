@@ -17,6 +17,7 @@ ms.author: andbuc
 translationtype: Human Translation
 ms.sourcegitcommit: 5edf2f4c7d9d2e8e8ceb2e8de9ae7cef4c9fd02e
 ms.openlocfilehash: f6e3d0bfd45cb5cd133d77bcb23113c3f419450c
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -183,9 +184,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-securing]: iot-hub-security-ground-up.md
 [lnk-create-hub]: iot-hub-create-through-portal.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

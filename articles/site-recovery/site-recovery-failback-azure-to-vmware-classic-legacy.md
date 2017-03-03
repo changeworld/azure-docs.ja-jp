@@ -17,6 +17,7 @@ ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
 ms.sourcegitcommit: 6e6d0539c35d403c24ddd5e0b5d49f4d6116eead
 ms.openlocfilehash: 86f7e0565fe30af613f06764a494cbb996abcabe
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -354,9 +355,4 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 ## <a name="next-steps"></a>次のステップ
 * [強化されたデプロイを使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md) 方法についての記事をお読みください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

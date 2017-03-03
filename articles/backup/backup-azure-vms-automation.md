@@ -17,6 +17,7 @@ ms.author: markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: 9b5cdc89985c43250e082518087d2ef209ff0217
 ms.openlocfilehash: 9574d30b228c9254ef57d0d3253cd5fc841efad4
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -398,9 +399,4 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
 
 ## <a name="next-steps"></a>次のステップ
 PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](backup-client-automation.md)に関する PowerShell の記事をご覧ください。 [DPM のバックアップのデプロイと管理](backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。 両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

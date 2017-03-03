@@ -96,8 +96,3 @@ Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を
 
 この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。 実行していない場合、[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。 Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-

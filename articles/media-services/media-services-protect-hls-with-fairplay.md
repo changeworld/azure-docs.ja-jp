@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: 61ac849c20fa21181bd41289da896b4d53e0b9c3
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -296,11 +297,9 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
                 static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
                 {
-                    var encodingPreset = "H264 Multiple Bitrate 720p";
+                    var encodingPreset = "Adaptive Streaming";
 
-                    IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
-                                            inputAsset.Name,
-                                            encodingPreset));
+                    IJob job = _context.Jobs.Create(String.Format("Encoding {0}", inputAsset.Name));
 
                     var mediaProcessors =
                         _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder Standard")).ToList();
@@ -563,9 +562,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

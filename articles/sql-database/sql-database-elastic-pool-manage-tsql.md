@@ -18,6 +18,7 @@ ms.author: srinia
 translationtype: Human Translation
 ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
 ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -76,10 +77,5 @@ ALTER DATABASE コマンドを使用し、SERVICE_OBJECTIVE をいずれかの�
 エラスティック プールを作成した後、弾力性ジョブを作成してプールの弾力性データベースを管理できます。 エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。 詳細については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。 
 
 エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

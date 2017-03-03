@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
 ms.openlocfilehash: afecb15f36525c53a66f30047dffe8a3e8f36107
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -138,9 +139,4 @@ API Management でロガーを構成したら、必要なイベントを記録�
 [sending-policy]: ./media/api-management-howto-log-event-hubs/sending-policy.png
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

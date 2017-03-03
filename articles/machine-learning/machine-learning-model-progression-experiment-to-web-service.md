@@ -17,6 +17,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -118,10 +119,5 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 * [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](machine-learning-create-experiment.md)
 * [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](machine-learning-walkthrough-develop-predictive-solution.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

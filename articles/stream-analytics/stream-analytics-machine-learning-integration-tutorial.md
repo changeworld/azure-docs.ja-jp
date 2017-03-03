@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: d1ffb9aba0eb1e17d1efd913f536f6f3997fccbb
 ms.openlocfilehash: 7b635b1810536f5b3eb1371d687e9c355e604e41
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -152,10 +153,5 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  
   
     ![Stream Analytics Machine Learning, Machine Learning モニター ビュー](./media/stream-analytics-machine-learning-integration-tutorial/job-monitor.png)  
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: b3c56871ec23c7595d18006943be19c38d2fb5c9
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -226,9 +227,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

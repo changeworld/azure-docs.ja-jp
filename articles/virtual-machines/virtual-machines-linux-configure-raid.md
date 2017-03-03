@@ -18,6 +18,7 @@ ms.author: rclaus
 translationtype: Human Translation
 ms.sourcegitcommit: 6d1f26e462e011a2226ac5a14c7dc3360d0c6f36
 ms.openlocfilehash: f06703d4082e55d571367fe61221d657b3e30a58
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -238,9 +239,4 @@ Linux VM で TRIM のサポートを有効にする方法は&2; 通りありま�
     # sudo yum install util-linux
     # sudo fstrim /data
     ```
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

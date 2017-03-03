@@ -18,6 +18,7 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
 ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -130,10 +131,5 @@ ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 * 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 * 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

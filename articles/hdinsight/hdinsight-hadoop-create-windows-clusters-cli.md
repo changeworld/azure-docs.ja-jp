@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
 ms.openlocfilehash: 393b7e44b21fe510e07b4048ddd3bdbcc31d90a9
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -139,10 +140,5 @@ CLI を使用して、Azure Resource Manager テンプレートを呼び出す�
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 * [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
 * [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

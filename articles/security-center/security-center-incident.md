@@ -17,6 +17,7 @@ ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
 ms.openlocfilehash: a688c392434be5a27f5691c2d89ad934e435a3c9
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -61,9 +62,4 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)-- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

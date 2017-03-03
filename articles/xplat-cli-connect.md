@@ -19,6 +19,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -165,9 +166,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 * Azure CLI コマンドを使用するには、「[Resource Manager モードでの Azure CLI コマンド](virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、 [GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli)のページを参照してください。
 * Azure CLI、または Azure を利用していて問題が発生した場合は、 [Azure のフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: b110b2e3041cf7839d1bf1c4d384b28b243efbd8
 ms.openlocfilehash: c1653c769a6b42d18ffb0da71220ce06c6556587
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -52,9 +53,4 @@ Office 365 グループは、オンプレミスの AD DS では配布グルー�
 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」に進んでください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

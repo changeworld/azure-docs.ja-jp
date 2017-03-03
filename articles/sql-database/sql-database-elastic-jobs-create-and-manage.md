@@ -18,6 +18,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 7058139814a0a20d6fb6305e1e469946bb6b7d77
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -106,10 +107,5 @@ ms.openlocfilehash: 7058139814a0a20d6fb6305e1e469946bb6b7d77
 [4]: ./media/sql-database-elastic-jobs-create-and-manage/failed.png
 [5]: ./media/sql-database-elastic-jobs-create-and-manage/screen-2.png
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

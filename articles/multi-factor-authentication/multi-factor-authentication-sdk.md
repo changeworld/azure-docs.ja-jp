@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: e793478028cee273a07e3665d409a669bdadc758
 ms.openlocfilehash: 4f9456c479b76588adf5f5aecbdd6379ec0e9704
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -184,9 +185,4 @@ SDK には、次のアイテムが含まれています。
 
         }
     }
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 07593e7f1d92a9a5943714f662568fec10a8886a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -160,10 +161,5 @@ geo レプリケートされたセカンダリを geo レプリケーション �
 ## <a name="next-steps"></a>次のステップ
 * アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

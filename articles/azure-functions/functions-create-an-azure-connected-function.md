@@ -19,6 +19,7 @@ ms.author: rachelap@microsoft.com
 translationtype: Human Translation
 ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
 ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -190,10 +191,5 @@ Azure Functions の詳細については、次のトピックを参照してく�
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

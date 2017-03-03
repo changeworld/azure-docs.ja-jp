@@ -18,6 +18,7 @@ ms.tgt_pltfrm: NA
 translationtype: Human Translation
 ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
 ms.openlocfilehash: 5da07683a4ca9fe1751debc163a0a5a595b6f82b
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -73,10 +74,5 @@ SQL データベースをコピーするには、以下の項目が必要です�
 [2]: ./media/sql-database-copy-portal/copy-ok.png
 [3]: ./media/sql-database-copy-portal/copy-notification.png
 [4]: ./media/sql-database-copy-portal/monitor-copy.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

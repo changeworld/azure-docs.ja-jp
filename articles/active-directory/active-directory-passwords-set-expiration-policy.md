@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
 ms.openlocfilehash: f744a29e12fb693dd422f359d0faacaae004351b
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -63,9 +64,4 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 
 ## <a name="next-steps"></a>次のステップ
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

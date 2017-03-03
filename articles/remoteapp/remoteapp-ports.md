@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: 114ed651f914060818f10efac849e7f85a3da981
 ms.openlocfilehash: f41396e4aa0c7b6cc2f1768e0c2ba3b95ee31cd3
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -48,10 +49,5 @@ Azure RemoteApp クラウドまたはハイブリッド コレクションを仮
 * https://*.core.windows.net  
 * 送信: TCP: 443  
 * オプション - UDP: 3391 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 80e2ac4235492d727e2034f37f9a85eb2873625c
 ms.openlocfilehash: f479ae38e446c3404592901c416990ab6e39126b
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -139,9 +140,4 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 * [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
 * [Microsoft Azure 診断の Application Insights への結合を自動化する](app-insights-powershell-azure-diagnostics.md)
 * [アラートへの対応を自動化する](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: eb364084e5f5155399c8a052b036ec0316616366
 ms.openlocfilehash: 36b9070260b334f1713cf575eb94007ce1b556f5
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -167,10 +168,5 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

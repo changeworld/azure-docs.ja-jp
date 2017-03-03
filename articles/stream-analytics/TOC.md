@@ -30,7 +30,8 @@
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
 ### [ウィンドウ関数](stream-analytics-window-functions.md)
 
-## 管理
+## Manage
+### [ジョブの信頼性](stream-analytics-job-reliability.md)
 ### [ジョブの監視](stream-analytics-monitoring.md)
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 ### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
@@ -59,8 +60,3 @@
 ## [フィードバック フォーラム](http://feedback.azure.com/forums/270577-azure-stream-analytics)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

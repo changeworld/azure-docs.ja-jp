@@ -17,6 +17,7 @@ ms.author: magoedte;eslesar
 translationtype: Human Translation
 ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
 ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
+ms.lasthandoff: 02/03/2017
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
@@ -118,10 +119,5 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 * [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

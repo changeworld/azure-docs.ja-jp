@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
 ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -279,10 +280,5 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 ## <a name="see-also"></a>関連項目
 * [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
   [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

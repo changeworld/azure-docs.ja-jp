@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
 ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -151,9 +152,4 @@ API Management サービス インスタンスが VNET でホストされてい�
 [Different topologies to connect to Vpn Gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
 [Network Security Group]: ../virtual-network/virtual-networks-nsg.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

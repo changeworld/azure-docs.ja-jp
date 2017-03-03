@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 3c00742d9686b986841d676872cc93b58827a8e8
 ms.openlocfilehash: b87b507118244f0f275f54cd65cea13a92cdaec6
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -591,10 +592,5 @@ azure group delete vmsstestrg1
 * 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法についてご確認ください。
 * 仮想マシン スケール セットの自動スケール機能を使うための LAMP スタックをセットアップする [Ubuntu/Apache/PHP アプリを実行する VM スケール セットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートを確認します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

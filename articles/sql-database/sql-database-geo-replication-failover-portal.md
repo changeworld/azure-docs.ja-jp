@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: b0180a9f32e1176667fe8e33a4151b2b70956adc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -55,9 +56,4 @@ ms.openlocfilehash: b0180a9f32e1176667fe8e33a4151b2b70956adc
 <!--Image references-->
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

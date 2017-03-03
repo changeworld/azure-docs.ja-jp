@@ -21,6 +21,7 @@
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
 ### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
+### [リージョン間で Azure Data Lake Store を移行する](data-lake-store-migration-cross-region.md)
 
 ## データをセキュリティで保護する
 ### [セキュリティの概要](data-lake-store-security-overview.md)
@@ -70,8 +71,3 @@
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

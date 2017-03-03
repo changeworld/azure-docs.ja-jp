@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
 ms.openlocfilehash: c0349b5890a75c6ffaa6b7eca93baa3101912cf6
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -288,10 +289,5 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [SCP プログラミング ガイド](hdinsight-storm-scp-programming-guide.md)
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

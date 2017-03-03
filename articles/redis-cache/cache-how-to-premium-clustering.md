@@ -17,6 +17,7 @@ ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
 ms.openlocfilehash: ec7bdf6b27cc073324d0d3a79b268e9730a6016b
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -172,10 +173,5 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
 ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -178,10 +179,5 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 * [HDInsight Hadoop クラスターに R をインストールする](hdinsight-hadoop-r-scripts-linux.md)。HDInsight Hadoop クラスターに R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。 R は、統計計算用のオープン ソースの言語および環境です。 R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。 また、広範なグラフィカル機能も提供します。
 
 * [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。 Solr は、格納されたデータに対して強力な検索操作を実行することができます。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

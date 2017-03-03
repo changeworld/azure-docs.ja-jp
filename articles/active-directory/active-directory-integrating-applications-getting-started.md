@@ -17,6 +17,7 @@ ms.author: inhenk
 translationtype: Human Translation
 ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
 ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -91,10 +92,5 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 ## <a name="see-also"></a>関連項目
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

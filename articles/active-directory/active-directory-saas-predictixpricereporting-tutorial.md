@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 400793331aa2d56358a83a51ce64c67f59bbf3b7
 ms.openlocfilehash: dfb5859a08234d034fe6b0d87910b9dd92e4ac47
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -257,9 +258,4 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 [203]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

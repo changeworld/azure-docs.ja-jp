@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 8e209d70a0bdcac4d3d1f7fefe265bf4824520e3
 ms.openlocfilehash: 20c198577349a2173d5b7bafd1b84fd4c24fa711
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -108,10 +109,5 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
    ![はい](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

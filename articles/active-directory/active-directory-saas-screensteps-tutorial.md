@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: dd50971e16da2cec046dd6dbe2f94dd58d01fb09
 ms.openlocfilehash: c2f0e5b1348a25f4cb4c92b2a837fd22207e5dad
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -175,10 +176,5 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
    
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -52,10 +53,5 @@ SDK によって生成されるコンソール ログを有効化/無効化/フ�
 
 ### <a name="upgrade-from-older-versions"></a>古いバージョンからのアップグレード
 [Upgrade Procedures](mobile-engagement-windows-phone-upgrade-procedure.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

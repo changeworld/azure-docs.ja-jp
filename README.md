@@ -84,8 +84,3 @@ GitBash をインストールしてローカルで作業する場合は、[記�
 ## <a name="more-resources"></a>その他のリソース
 すべてのガイダンス トピックについては、[こちらの共同作成者ガイドのインデックス](contributor-guide/contributor-guide-index.md)をご覧ください。
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

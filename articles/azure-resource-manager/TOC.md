@@ -17,6 +17,7 @@
 ### [テンプレートの作成](resource-group-authoring-templates.md)
 ### [テンプレート関数](resource-group-template-functions.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
+### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
 ### [リソースの種類の複数インスタンスを作成する](resource-group-create-multiple.md)
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
@@ -71,8 +72,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

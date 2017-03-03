@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 9fe4e1356064d62d1a373ecbabf4f9cf276524f6
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -36,10 +37,5 @@ Azure クラシック ポータルで Linux 仮想マシンを作成すると、
 ## <a name="next-steps"></a>次のステップ
 * VM エンドポイントは、 [Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)を使用して作成することもできます。 **azure vm endpoint create** コマンドを実行します。
 * Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Resource Manager モードで Azure CLI を使用して、VM へのトラフィックを制御する [ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-cli.md) できます。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

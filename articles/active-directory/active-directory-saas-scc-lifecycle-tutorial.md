@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 86228225275c4486852c17803a99a194458196b7
 ms.openlocfilehash: b2cf981e6a655f5c7f0d429714e0efb8e88e178c
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -126,10 +127,5 @@ SCC LifeCycle へのユーザー プロビジョニングの構成にあたっ�
     ![はい](./media/active-directory-saas-scc-lifecycle-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

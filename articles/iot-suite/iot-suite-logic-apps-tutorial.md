@@ -18,6 +18,7 @@ ms.author: corywink
 translationtype: Human Translation
 ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
 ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -169,9 +170,4 @@ ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
 [lnk-devsetup]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/dev-setup.md
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

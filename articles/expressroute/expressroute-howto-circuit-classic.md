@@ -18,6 +18,7 @@ ms.author: ganesr;cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: fe0bff84a5316628d9e465da0d4e62162f1ea4f2
 ms.openlocfilehash: cb67631dbbfb53a0de9b07bc3918bd70751ec41b
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -338,10 +339,5 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-classic.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

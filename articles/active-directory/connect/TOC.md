@@ -22,8 +22,10 @@
 ## 計画と設計
 ### [設計概念](active-directory-aadconnect-design-concepts.md)
 ### [Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md)
+### [シングル サインオン](active-directory-aadconnect-sso.md)
+### [Azure の Active Directory フェデレーション サービス](active-directory-aadconnect-azure-adfs.md)
 ### [インスタンスに関する特別な考慮事項](active-directory-aadconnect-instances.md)
-
+### [Azure AD を既に使用している場合](active-directory-aadconnect-existing-tenant.md)
 ## [MAzure AD Connect の管理](active-directory-aadconnect-whats-next.md)
 ### [O365 と Azure AD の証明書を更新する](active-directory-aadconnect-o365-certs.md)
 ### [デバイスの書き戻しを有効にする](active-directory-aadconnect-feature-device-writeback.md)
@@ -32,20 +34,24 @@
 ### [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
 
 
+
 ## Azure AD Connect 同期を管理する
 ### [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [パススルー認証](active-directory-aadconnect-pass-through-authentication.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [インストール ウィザード](active-directory-aadconnectsync-installation-wizard.md)
 ### [既定の構成の変更](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
+
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
-#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md?toc=%2fazure%2factive-directory%2faad-connect%2ftoc.json)
+#### [操作](active-directory-aadconnectsync-service-manager-ui-operations.md)
 #### [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md)
 #### [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)
 #### [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+
 
 ## フェデレーション サービスを管理する
 ### [管理およびカスタマイズする](active-directory-aadconnect-federation-management.md)
@@ -83,8 +89,3 @@
 # リソース
 ##[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md)
 ##[DirSync の廃止](active-directory-aadconnect-dirsync-deprecated.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

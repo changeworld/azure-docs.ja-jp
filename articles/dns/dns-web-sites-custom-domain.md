@@ -16,6 +16,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
 ms.openlocfilehash: a2a429873c30f526a0de05d4018f53f3a83bbe28
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -201,9 +202,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 ## <a name="next-steps"></a>次のステップ
 
 [App Service のカスタム ドメイン名の構成](../app-service-web/web-sites-custom-domain-name.md) に関するページの手順に進み、カスタム ドメインを使用するように Web アプリを構成します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: c4983024e5f5902620c0be7b422bc3d1eaf4a36f
 ms.openlocfilehash: ac22518bb36cc9d4c7a581dab8aca22ffde986e5
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -160,10 +161,5 @@ Azure AD ユーザーが **Zendesk** にログインできるようにするに�
     ![はい](./media/active-directory-saas-zendesk-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

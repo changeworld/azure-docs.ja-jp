@@ -18,6 +18,7 @@ ms.author: asaxton
 translationtype: Human Translation
 ms.sourcegitcommit: 89e16687f858708cdfd1432114c39bd9109dc6ac
 ms.openlocfilehash: 31624b9d15772a4f08cf013ac713b3aa636acfca
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -466,10 +467,5 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 * [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 
 ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
