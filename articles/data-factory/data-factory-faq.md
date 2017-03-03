@@ -17,6 +17,7 @@ ms.author: shlo
 translationtype: Human Translation
 ms.sourcegitcommit: 02d810db5433370802b866424c24464d64171ef0
 ms.openlocfilehash: 6921965c3286209e024ba59637da0c485b4a0c71
+ms.lasthandoff: 02/01/2017
 
 
 ---
@@ -200,9 +201,4 @@ external プロパティが適切に設定されている場合は、入力デ�
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

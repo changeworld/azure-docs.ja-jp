@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: f355ea88f4d14e48d9523a0ac7aff965171bed4b
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -344,10 +345,5 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -53,8 +53,3 @@
 [Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

@@ -17,6 +17,7 @@ ms.author: juliako;anilmur
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -209,9 +210,4 @@ Standard ストリーミング エンドポイントはほとんどのストリ�
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 [live-overview1]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

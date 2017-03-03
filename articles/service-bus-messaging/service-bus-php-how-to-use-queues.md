@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 23be0f9cbfb37fe3f5b30ec67595d67f0568a527
 ms.openlocfilehash: c5db806969a6e018596c1ff0a0861423df19b61c
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -222,10 +223,5 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

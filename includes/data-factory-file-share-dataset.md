@@ -48,8 +48,3 @@
 ],
 ```
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
-
-
-<!--HONumber=Jan17_HO3-->
-
-
