@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -103,10 +104,10 @@ ms.openlocfilehash: 3451e6d13119bacc66e9ccd861862edea5a5b4fe
 5. 検索結果で、Java アプリケーション サーバーをクリックします。
    
     ![Web Mobile Jetty][webmobilejetty]
-6. 最初の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[作成]** をクリックします。
+6. 最初の **[Apache Tomcat]** ブレードまたは **Jetty** ブレードで、**[作成]** をクリックします。
    
     ![Jetty Portal Blade][jettyblade]
-7. 次の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
+7. 次の **[Apache Tomcat]** ブレードまたは **Jetty** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
    
     Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。 入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 8. **リソース グループ** を選択するか、新しく作成します。
@@ -166,9 +167,4 @@ Azure での Java アプリケーションの開発の詳細については、 [
 [jettyurl]: ./media/web-sites-java-get-started/jettyurl.png
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
