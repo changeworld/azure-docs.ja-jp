@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: 4e6c6571be85cd5fe374c7df644741ae017ccd19
 ms.openlocfilehash: 6db4cf048147cb9559ca1a2e6921c679fe6ec9e5
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -51,10 +52,5 @@ Azure RemoteApp でホストされるアプリケーションは、さまざま�
 これは一般的なエラー メッセージです。Azure サポートに問い合わせてください。調査を行います。 
 
 ![Azure RemoteApp の一般的なエラー メッセージ](./media/remoteapp-apptrouble/ra-apptrouble4.png) 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

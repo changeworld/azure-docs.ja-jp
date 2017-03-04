@@ -17,6 +17,7 @@ ms.author: roopalik;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
 ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -71,10 +72,5 @@ Notebook は、Studio の **[Notebooks]** ページ ([Studio ホーム ページ
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

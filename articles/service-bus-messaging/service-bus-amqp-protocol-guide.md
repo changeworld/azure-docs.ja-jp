@@ -17,6 +17,7 @@ ms.author: clemensv;jotaub;hillaryc;sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
 ms.openlocfilehash: 72bfbc4c3cc4a3941d842f4fc688df5d6fb46ba8
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -310,9 +311,4 @@ AMQP の詳細については、次のリンクを参照してください。
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

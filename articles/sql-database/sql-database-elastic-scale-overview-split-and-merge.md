@@ -17,6 +17,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: b2e45a77b900092390a2ca66a8d1286193023f29
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -215,10 +216,5 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 [1]:./media/sql-database-elastic-scale-overview-split-and-merge/split-merge-overview.png
 [2]:./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics.png
 [3]:./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

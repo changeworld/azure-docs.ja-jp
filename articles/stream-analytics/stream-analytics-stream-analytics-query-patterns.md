@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
 ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -510,10 +511,5 @@ GROUP BY
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

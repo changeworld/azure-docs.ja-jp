@@ -19,6 +19,7 @@ ms.author: zachal
 translationtype: Human Translation
 ms.sourcegitcommit: c2ce603e80243584fdc302c545e520b4503f5555
 ms.openlocfilehash: ca2d8d4b277f48ec46156293f73b18b6c2967c51
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -156,10 +157,5 @@ PowerShell DSC の詳細については、 [PowerShell ドキュメント セン
 PowerShell DSC で管理できる追加機能については、 [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) で DSC リソースを検索してください。
 
 機微なパラメーターを構成に渡す方法について詳しくは、[資格情報を Azure DSC 拡張機能ハンドラーに渡す方法](virtual-machines-windows-extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

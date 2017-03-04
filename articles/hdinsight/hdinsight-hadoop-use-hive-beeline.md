@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: c4fb98946a41ee37d8676eca52ff26f81d0ff56a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -245,10 +246,5 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

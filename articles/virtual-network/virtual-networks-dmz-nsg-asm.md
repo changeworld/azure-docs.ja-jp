@@ -17,6 +17,7 @@ ms.author: jonor
 translationtype: Human Translation
 ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -589,10 +590,5 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

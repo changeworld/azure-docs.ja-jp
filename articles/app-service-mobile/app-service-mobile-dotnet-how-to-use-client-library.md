@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: a02b817ecc45594f55de9a94b67dd35e34386735
 ms.openlocfilehash: 1f0dfe06bbcd22727d12b651cd708b208350831a
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -1142,9 +1143,4 @@ public class MyHandler : DelegatingHandler
 [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

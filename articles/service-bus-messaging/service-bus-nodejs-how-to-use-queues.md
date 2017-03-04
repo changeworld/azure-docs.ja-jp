@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
 ms.openlocfilehash: d993ba4bdff690ee6f0867cdbf0a8059fb5847ee
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -192,9 +193,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [Node.js Cloud Service with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
 [Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
 [Service Bus quotas]: service-bus-quotas.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

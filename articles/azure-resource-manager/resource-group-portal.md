@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
 ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -138,10 +139,5 @@ ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 * ポータルを使用したリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
 * リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

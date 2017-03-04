@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 56094202673416320e5a8801ee2275881ccfc8fb
 ms.openlocfilehash: 4e28b47a1ce1a3bf69a57382a5ec6c2a8a161efe
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -328,9 +329,4 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Node.js Web Application with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

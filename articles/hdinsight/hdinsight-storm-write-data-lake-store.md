@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0342c13e48d3f3605dcc169523d7d8d2d7aedba8
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -259,10 +260,5 @@ Storm トポロジは、停止されるか、クラスターが削除される�
 ## <a name="next-steps"></a>次のステップ
 
 ここでは、Storm を使用して Azure Data Lake Store に書き込む方法を学習しました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

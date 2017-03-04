@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 96cf60b5ba67b7027f6527b03d8f522c73a70802
 ms.openlocfilehash: 88b6ad23aa57498bbfbc0ae92fc290e8e7affa4a
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -108,9 +109,4 @@ Azure IoT デバイス、サービス、およびゲートウェイ ライブラ
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

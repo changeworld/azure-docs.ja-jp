@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -623,10 +624,5 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。 しかしこれは、全体的な戦略の中の一要素にすぎません。 パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが&1; 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

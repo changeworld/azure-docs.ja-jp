@@ -17,6 +17,7 @@ ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
 ms.openlocfilehash: 9f4f0ce9e389fa560345c77502db8e225827f054
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -250,10 +251,5 @@ Azure が最初にリリースされたときには、サブスクリプショ�
 
 ## <a name="next-steps"></a>次のステップ
 * ここでは、サブスクリプション ガバナンスについて説明しました。次に、これらの推奨事項を実際に確認してください。 [Azure サブスクリプション ガバナンスの実装例](resource-manager-subscription-examples.md)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

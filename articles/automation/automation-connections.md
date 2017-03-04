@@ -17,6 +17,7 @@ ms.author: magoedte; bwren
 translationtype: Human Translation
 ms.sourcegitcommit: c86ec1d328d3cbf62c1a563766574a006299b232
 ms.openlocfilehash: 8bbd077108ba6ca6df67b64ab3fa24c81bf0ab00
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -107,8 +108,3 @@ Automation の [Run As アカウント](automation-sec-configure-azure-runas-acc
 - [グラフィカル オーサリング内のリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関する記事を参照して、Runbook のロジック フローを制御する方法を理解します。  
 
 - Azure Automation での PowerShell モジュールの使用方法と Azure Automation 内で統合モジュールとして動作する独自の PowerShell モジュールを作成するためのベスト プラクティスについては、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -17,6 +17,7 @@ ms.author: BernardoAMunoz
 translationtype: Human Translation
 ms.sourcegitcommit: d777bc6bd477c5b6645fc8bd7b6d57a5d2f89e22
 ms.openlocfilehash: e465e2c1503add186a4b134e85bd9aab61d5c0ad
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -106,10 +107,5 @@ Resource Health から報告されるのは、SQL Server のステータスで�
 
 ## <a name="feedback"></a>フィードバック
 ご意見とご提案をお待ちしております。 あなたの [提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。 また、[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でマイクロソフトの最新情報をご覧いただけます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

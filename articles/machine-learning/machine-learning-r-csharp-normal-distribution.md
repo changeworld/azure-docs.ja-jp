@@ -18,6 +18,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
 ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -272,10 +273,5 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [2]: ./media/machine-learning-r-csharp-normal-distribution/normal-img2.png
 [3]: ./media/machine-learning-r-csharp-normal-distribution/normal-img3.png
 [4]: ./media/machine-learning-r-csharp-normal-distribution/normal-img4.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

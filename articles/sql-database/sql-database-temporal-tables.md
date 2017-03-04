@@ -18,6 +18,7 @@ ms.author: bonova
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -197,10 +198,5 @@ ALTER TABLE dbo.WebsiteUserInfo
 ## <a name="next-steps"></a>次のステップ
 テンポラル テーブルの詳細については、 [MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。
 Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

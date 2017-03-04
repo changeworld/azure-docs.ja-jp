@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 5ef6381f7d182c818171eca3e3d32a00bc30268e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -88,9 +89,4 @@ ClusterManifest.xml:
 * メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)をご覧ください
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

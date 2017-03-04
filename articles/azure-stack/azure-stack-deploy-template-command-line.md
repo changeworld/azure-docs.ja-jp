@@ -17,6 +17,7 @@ ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: 82a2475fd4f57a8a2f37dd45ad3870598465f789
 ms.openlocfilehash: 030e5ec3dea1ae498daf1936a9d92e9d11001704
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -43,10 +44,5 @@ To see this resource group and storage account, use the following commands:
 
 ## <a name="next-steps"></a>Next steps
 [Manage user permissions](azure-stack-manage-permissions.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

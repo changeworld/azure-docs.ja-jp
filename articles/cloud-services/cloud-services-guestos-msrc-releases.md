@@ -17,6 +17,7 @@ ms.author: raiye
 translationtype: Human Translation
 ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
 ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -718,9 +719,4 @@ ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

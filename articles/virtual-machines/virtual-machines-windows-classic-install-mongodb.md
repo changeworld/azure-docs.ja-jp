@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
 ms.openlocfilehash: e070a2eac2bb356ad8544ec107cab230f8e3637c
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -53,9 +54,4 @@ ms.openlocfilehash: e070a2eac2bb356ad8544ec107cab230f8e3637c
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
 [AzurePortal]: http://manage.windowsazure.com
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: mlearned
 translationtype: Human Translation
 ms.sourcegitcommit: c327fc0f8175f3fe62f9a0975b7fbad1437bbbe0
 ms.openlocfilehash: 4309d2dffacb9baf2563c8a4fcd1984beabdeef0
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -120,10 +121,5 @@ docker-machine を使用して、個々の Docker ホストの検証のために
 コンテナーの運用ホスティングについては、「 [Azure Container Service の概要](http://aka.ms/AzureContainerService)
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「 [Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

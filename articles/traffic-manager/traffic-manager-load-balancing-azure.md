@@ -17,6 +17,7 @@ ms.author: limichel
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -210,9 +211,4 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 * [Traffic Manager の概要](traffic-manager-overview.md)
 * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
 * [Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

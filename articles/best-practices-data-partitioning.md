@@ -18,6 +18,7 @@ ms.author: masashin
 translationtype: Human Translation
 ms.sourcegitcommit: 5f62eef58c8a334013b000176f74cc8f7652f688
 ms.openlocfilehash: 312d1f417df612eee46bb078d784576a438ba0ab
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -573,9 +574,4 @@ Azure Redis Cache でデータをパーティション分割する方法を決�
 [Transactions (トランザクション)]: http://redis.io/topics/transactions
 [Azure Search とは]: search/search-what-is-azure-search.md
 [SQL Database とは]: sql-database/sql-database-technical-overview.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

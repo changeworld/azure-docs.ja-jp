@@ -17,15 +17,11 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
 ms.openlocfilehash: d46634e12ca241e756d9aa2a7fedd476e095762a
+ms.lasthandoff: 01/12/2017
 
 
 ---
 
 [!INCLUDE [virtual-machines-common-regions-and-availability](../../includes/virtual-machines-common-regions-and-availability.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

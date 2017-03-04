@@ -17,6 +17,7 @@ ms.author: torsteng
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 01369360fa10ae39e2f9b435d877de0171574286
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -167,9 +168,4 @@ Dapper と DapperExtensions を使用するアプリケーションは、Azure S
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

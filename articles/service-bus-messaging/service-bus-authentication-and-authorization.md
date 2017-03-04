@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 2c1a1f3b73466526b13bcfeb4580335390506c23
 ms.openlocfilehash: 14dfe58f6296a4ec516845bace456ffd59fa608a
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -69,9 +70,4 @@ Service Bus の ACS 認証サポートは、Azure .NET SDK バージョン 2.0 �
 SAS の詳細については、「 [Service Bus による Shared Access Signature 認証](service-bus-shared-access-signature-authentication.md) 」を引き続きお読みください。
 
 Service Bus における SAS の概要については、「 [Shared Access Signature](service-bus-sas-overview.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

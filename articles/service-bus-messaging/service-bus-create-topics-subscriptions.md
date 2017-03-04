@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
 ms.openlocfilehash: 799ef33c924a0067bb5e8da9d1b4e50091dbabf6
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -142,10 +143,5 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 ## <a name="next-steps"></a>次のステップ
 POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

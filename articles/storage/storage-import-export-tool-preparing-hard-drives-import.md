@@ -17,6 +17,7 @@ ms.author: muralikk
 translationtype: Human Translation
 ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
 ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -407,9 +408,4 @@ WAImportExport ツールはバッチ単位でファイルの読み取りと書�
 **.xml** - WAImportExport ツールを使用して準備する各ハード ドライブについて、ツールは "&lt;DriveID&gt;.xml" という名前の&1; つのジャーナル ファイルを作成します (ドライブ ID は、ツールがディスクから読み取るドライブに関連付けられているシリアル番号です)。 Azure Portal でインポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
 
 **.jrn** - サフィックスが .jrn のジャーナル ファイルには、ハード ドライブのすべてのコピー セッションの状態が含まれています。 また、インポート ジョブの作成に必要な情報も含まれています。 WAImportExport ツールを実行する場合は、ジャーナル ファイルとコピー セッション ID を必ず指定してください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

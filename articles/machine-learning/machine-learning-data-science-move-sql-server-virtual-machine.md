@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 7ce5ba3c1a844104b4c14c73e05843becd69eb5f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -213,9 +214,4 @@ SQL Server Management Studio のデータベースのバックアップ/復元�
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

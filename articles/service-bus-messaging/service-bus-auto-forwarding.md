@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 994a379129bffd7457912bc349f240a970aed253
 ms.openlocfilehash: cbbd416a065b3284e85957cc024955d11524d3da
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -69,9 +70,4 @@ Service Bus のパフォーマンスの向上について詳しくは、「[パ�
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif
 [Partitioned messaging entities]: service-bus-partitioning.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

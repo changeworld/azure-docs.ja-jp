@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -1003,9 +1004,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

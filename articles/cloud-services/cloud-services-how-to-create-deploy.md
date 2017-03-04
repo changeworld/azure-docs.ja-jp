@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
 ms.openlocfilehash: 71863e52dca951b1fc3847e1bba47977a6e49c7c
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -127,10 +128,5 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

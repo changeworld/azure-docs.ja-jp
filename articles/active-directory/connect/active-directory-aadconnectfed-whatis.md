@@ -17,6 +17,7 @@ ms.author: anandy
 translationtype: Human Translation
 ms.sourcegitcommit: fd3699e4ce423ae9490d5bf788729c43eaa623eb
 ms.openlocfilehash: 19ebfae5de8576402348e3163f99a54b9308a078
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -47,9 +48,4 @@ Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェ�
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)
 * [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

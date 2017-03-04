@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: d0714870a0b01eca5e07c171c5ca8d0c0c1d6df1
 ms.openlocfilehash: 69f8807d509c31ae4aadeb16731fc481039a7e20
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -182,9 +183,4 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
 [Service Bus quotas]: service-bus-quotas.md 
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

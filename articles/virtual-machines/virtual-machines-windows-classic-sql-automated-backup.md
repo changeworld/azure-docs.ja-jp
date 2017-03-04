@@ -3,10 +3,6 @@ redirect_url: /azure/virtual-machines/windows/sqlclassic/virtual-machines-window
 translationtype: Human Translation
 ms.sourcegitcommit: 0e3948b2907ab178d39c898610106df33b4533aa
 ms.openlocfilehash: c65ef241afd8589d10acf8a3c00bda0703e2862c
+ms.lasthandoff: 02/16/2017
 
 ---
-
-
-<!--HONumber=Feb17_HO3-->
-
-

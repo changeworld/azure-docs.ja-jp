@@ -17,6 +17,7 @@ ms.author: masnider;
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 0bf0755d1c3155ce0203e8070995c298f50bd4db
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -113,9 +114,4 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 * [Reliable Services のクイック スタート](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Actors プログラミング モデル](service-fabric-reliable-actors-introduction.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

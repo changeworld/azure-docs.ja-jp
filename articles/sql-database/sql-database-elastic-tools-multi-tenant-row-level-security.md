@@ -18,6 +18,7 @@ ms.author: thmullan;torsteng
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 19afc13a1715890316b34ed1128b594105c53c69
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -317,10 +318,5 @@ GO
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

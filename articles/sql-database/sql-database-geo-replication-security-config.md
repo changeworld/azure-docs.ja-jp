@@ -18,10 +18,12 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
 ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
+ms.lasthandoff: 01/07/2017
 
 
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する 
+
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースで[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用できるようになりました。
 >  
@@ -101,10 +103,5 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 * 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 * アクティブ geo レプリケーションの使用および構成の方法については、「 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 * geo リストアの使用方法については、「 [Geo-Restore](sql-database-recovery-using-backups.md#geo-restore)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

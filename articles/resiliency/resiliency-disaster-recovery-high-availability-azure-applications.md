@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ee3e7103bd647c2d8651ec912fbb764a342781e2
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -120,10 +121,5 @@ Azure はさまざまな障害を検出し、処理しますが、アプリケ�
 
 ## <a name="next-steps"></a>次のステップ
 この記事は、Azure アプリケーションの障害復旧と高可用性に関する一連の記事に属しています。 このシリーズの次の記事は、「 [Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」です。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

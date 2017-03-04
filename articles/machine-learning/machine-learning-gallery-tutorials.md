@@ -17,6 +17,7 @@ ms.author: roopalik;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
 ms.openlocfilehash: 6ab17943e3ce21fc309a2b8986e99823b316384f
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -82,10 +83,5 @@ Machine Learning のテクノロジと概念を紹介するか、Machine Learnin
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

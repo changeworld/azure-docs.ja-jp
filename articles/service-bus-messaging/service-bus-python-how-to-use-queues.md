@@ -17,6 +17,7 @@ ms.author: sethm;lmazuel
 translationtype: Human Translation
 ms.sourcegitcommit: 0f9f732d6998a6ee50b0aea4edfc615ac61025ce
 ms.openlocfilehash: 775959d93105ca9fb28ce72e4ee4adf6b956e815
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -115,10 +116,5 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Service Bus quotas]: service-bus-quotas.md
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: yanacai
 translationtype: Human Translation
 ms.sourcegitcommit: 4ed240c0e636bb0b482c103bbe8462d86769ecc3
 ms.openlocfilehash: 13fa1bc8278460c1195ec553c32ff79d11240be3
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -189,9 +190,4 @@ SKEWFACTOR に加えて、特定の傾斜キー結合については、結合さ
         //Your combiner code goes here.
         }
     }
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

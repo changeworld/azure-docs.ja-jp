@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
 ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -31,9 +32,4 @@ Azure への移行を検討している医療業界のスタートアップ、�
 3. 重要な原則をユース ケースに適用する事例。ソリューションの要件が情報セキュリティ管理標準に準拠している状況でソリューション アーキテクトの観点から準拠方法を示します。
 
 [安全な医療ソリューションを設計するための実用ガイド](https://aka.ms/azureindustrysecurity)が役立つよう願っています。ご質問やご意見がある場合は、下にコメントを残してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

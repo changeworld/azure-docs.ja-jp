@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 8b924f29594a9f0c8c161661b216a12ff65b42a9
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -142,10 +143,5 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

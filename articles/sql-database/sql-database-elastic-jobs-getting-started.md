@@ -17,6 +17,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
 ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -478,9 +479,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

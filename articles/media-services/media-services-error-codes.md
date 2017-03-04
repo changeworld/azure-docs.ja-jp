@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: eae360dd3e627a82986cef32ef39860f60ffe51f
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -123,10 +124,5 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

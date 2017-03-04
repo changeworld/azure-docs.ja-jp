@@ -18,6 +18,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
 ms.openlocfilehash: 4d4a343be86909acf054eaaf9cc4a1b0df5a4209
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -292,10 +293,5 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [5]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_5.png
 
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
