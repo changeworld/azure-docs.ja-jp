@@ -99,8 +99,3 @@
 ## [シングル サインオン](active-directory-single-sign-on-protocol-reference.md)
 ## [シングル サインアウト](active-directory-single-sign-out-protocol-reference.md)
 ## [トークンと要求](active-directory-token-and-claims.md)
-
-
-<!--HONumber=Jan17_HO3-->
-
-
