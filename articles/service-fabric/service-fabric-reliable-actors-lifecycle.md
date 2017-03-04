@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2016
+ms.date: 03/02/2017
 ms.author: amanbha
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: 22f906de37ad7ae2a48acf26be26f2af1e3bde7a
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -134,9 +135,4 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

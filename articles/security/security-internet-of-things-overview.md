@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: 3793f5453b74b6c06d9e58b426d89099298e1288
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -67,9 +68,4 @@ IoT インフラストラクチャを保護するには、緻密なセキュリ�
 * [IoT ソリューション開発者](../iot-suite/iot-security-best-practices.md#iot-solution-developer)
 * [IoT ソリューションのデプロイ担当者](../iot-suite/iot-security-best-practices.md#iot-solution-deployer)
 * [IoT ソリューションのオペレーター](../iot-suite/iot-security-best-practices.md#iot-solution-operator)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

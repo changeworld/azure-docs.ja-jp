@@ -18,6 +18,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
 ms.openlocfilehash: ce3a622db8667df8b3f1d1391c2aa0d7e1e012a5
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -220,10 +221,5 @@ SQL テーブルの既存の行を更新します。
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

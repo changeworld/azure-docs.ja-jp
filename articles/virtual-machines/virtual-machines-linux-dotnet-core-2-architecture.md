@@ -18,6 +18,7 @@ ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
 ms.openlocfilehash: e3840e6f688d586650d877a854ee81035ce39b48
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -270,10 +271,5 @@ Azure SQL Database のデプロイについて詳しくは、 [Azure SQL Databas
 <hr>
 
 [手順 2 - Azure Resource Manager テンプレートでのアクセスとセキュリティ](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

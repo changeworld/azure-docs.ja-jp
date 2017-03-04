@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -107,8 +108,3 @@ Azure Table Storage に書き込まれるゲートウェイからクラウドへ
 
 ## <a name="explore-more"></a>さらに詳しく
 詳細については、[Intel IoT Gateway Kit developer zone](http://software.intel.com/iot/microsoft-azure) (Intel IoT Gateway Kit デベロッパー ゾーン) を参照してください。
-
-
-<!--HONumber=Jan17_HO4-->
-
-

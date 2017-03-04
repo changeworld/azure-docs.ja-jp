@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: 24d440049b5e889c6d4417cc16787edd42bc5848
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -419,10 +420,5 @@ Power BI では、新しいデータセットが生成されます。 **Connecte
 ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
 
 お疲れさまでした。 レポートとダッシュボードが正常に作成され、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を一括して把握できるようになりました。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

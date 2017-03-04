@@ -17,6 +17,7 @@ ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -85,8 +86,3 @@ ms.openlocfilehash: abfe283476206b181018d187675b47112dc5ad2f
 * [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [Azure Friday: Azure CDN に新しく追加された強力な Premium 機能](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (ビデオ)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

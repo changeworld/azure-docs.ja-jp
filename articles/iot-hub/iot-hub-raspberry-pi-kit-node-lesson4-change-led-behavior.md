@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 53c9408bedc6c61cdb0e755b46b3090e8723e271
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -100,10 +101,5 @@ LED が&2; 秒間点灯した後、2 秒間消灯します。 最後の "stop" �
 
 ### <a name="summary"></a>概要
 このオプションのセクションでは、サンプル アプリケーションが LED のオンとオフの動作を通常とは異なる方法で制御できるようにメッセージをカスタマイズする方法を紹介しました。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

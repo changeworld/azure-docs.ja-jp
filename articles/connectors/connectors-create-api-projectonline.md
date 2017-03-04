@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 77e106d9170fc49d66d322bd9c92bf0e14869259
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -445,10 +446,5 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: 3467c5549381f1354987fead424646afe847739c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -57,10 +58,5 @@ Microsoft の Cortana Intelligence は、データをインテリジェントな
 
 * **シミュレートされた車両の信号と診断**: 車両テレマティックス シミュレーターは診断情報、車両の状態に対応する信号、特定の時間における運転のパターンを出力します。 
 * **車両カタログ**: モデルのマッピングに対する VIN を含む参照データセット。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

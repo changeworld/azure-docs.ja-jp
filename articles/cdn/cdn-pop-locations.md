@@ -17,6 +17,7 @@ ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
 ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -45,10 +46,5 @@ ms.openlocfilehash: 6d4c9dda6ccf6011d2b2ff5951b9fe42c158e216
 
 ## <a name="see-also"></a>関連項目
 * [最新 IP アドレスを取得してホワイトリストに登録するための Azure CDN Edge Nodes API](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

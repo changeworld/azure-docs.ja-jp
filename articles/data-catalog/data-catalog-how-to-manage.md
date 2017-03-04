@@ -18,6 +18,7 @@ ms.author: maroche
 translationtype: Human Translation
 ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
 ms.openlocfilehash: 45a7b2df88a2edf2bccdfc9d2aaea932f2096f24
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -73,9 +74,4 @@ Data Catalog の管理者は、暗黙的にカタログ内の全資産の共同�
 
 ## <a name="summary"></a>概要
 メタデータとデータ資産の検出に関して Data Catalog にはクラウドソーシング型のモデルが採用されており、すべてのカタログ ユーザーがデータに寄与し、またデータを検出することができます。 特定のデータ資産の使用や可視性を制限する所有権機能と管理機能は、Data Catalog の Standard Edition で利用できます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

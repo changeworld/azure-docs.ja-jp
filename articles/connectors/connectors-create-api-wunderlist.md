@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 084ac505003e926e9c4b75352ec96a77f8c3584a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -759,10 +760,5 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

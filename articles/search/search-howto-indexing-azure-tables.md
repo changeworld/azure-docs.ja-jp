@@ -17,6 +17,7 @@ ms.author: eugenesh
 translationtype: Human Translation
 ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
 ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
+ms.lasthandoff: 01/19/2017
 
 ---
 
@@ -134,9 +135,4 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

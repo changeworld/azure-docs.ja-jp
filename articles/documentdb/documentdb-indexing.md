@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
 ms.openlocfilehash: 4c7b8965b7fe5de7a8ff839be2b9e555bd8d502c
+ms.lasthandoff: 01/21/2017
 
 
 
@@ -56,10 +57,5 @@ DocumentDB のインデックス作成は、ストレージの効率性とマル
 * 2015 年 8 月 31 日から 9 月 4 日の 41st Internal Conference on Very Large Databases (第 41 回 VLDB 社内会議) で発表される論文「 [Schema-Agnostic Indexing with Azure DocumentDB (Azure DocumentDB を使用したスキーマに依存しないインデックス作成)](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)」をダウンロードします。
 * [DocumentDB SQL を使用したクエリ](documentdb-sql-query.md)
 * DocumentDB のインデックスをカスタマイズする方法については、 [こちら](documentdb-indexing-policies.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

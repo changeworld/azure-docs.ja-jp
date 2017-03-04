@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
 ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
 ms.openlocfilehash: a8f077168dbc8660625371a2b988926c69491337
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -113,7 +114,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
             using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
         {  
                  // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+          Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
                 if (eventData.Message != null)              
             Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
             else             
@@ -140,9 +141,4 @@ public static TextWriter Out = Console.Out;
 ## <a name="next-steps"></a>次のステップ
 アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

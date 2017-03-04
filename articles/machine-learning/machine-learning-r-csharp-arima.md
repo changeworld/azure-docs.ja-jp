@@ -18,6 +18,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
 ms.openlocfilehash: 169331fc08c8d378fbb0c9869e69a9eb132224ba
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -146,10 +147,5 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -17,6 +17,7 @@ ms.author: rli
 translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: 6703247aa8b4a6d53ff22ea2d4f22eb4a746e370
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -1018,9 +1019,4 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
 * [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [Azure CDN の概要](cdn-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

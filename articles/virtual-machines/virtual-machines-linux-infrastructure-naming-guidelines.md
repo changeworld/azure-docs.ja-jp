@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
 ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -103,10 +104,5 @@ Azure VM の名前と、基になるオペレーティング システムのコ�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

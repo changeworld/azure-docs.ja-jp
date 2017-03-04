@@ -18,6 +18,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -94,9 +95,4 @@ Azure Application Gateway で SSL オフロードを構成する方法を学習�
 [3]: ./media/application-gateway-create-probe-portal/figure3.png
 [4]: ./media/application-gateway-create-probe-portal/figure4.png
 [5]: ./media/application-gateway-create-probe-portal/figure5.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

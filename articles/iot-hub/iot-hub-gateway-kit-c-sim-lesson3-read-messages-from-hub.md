@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 08ccd35c6e6a8e77f0fd4637f14a1f27730560d6
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -97,10 +98,5 @@ gulp run --iot-hub
 ## <a name="next-steps"></a>次のステップ
 [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

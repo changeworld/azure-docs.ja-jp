@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -106,8 +107,3 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに論理デ�
 
 ## <a name="next-steps"></a>次のステップ
 [シミュレート デバイスからクラウドへのアップロードを実行するサンプル アプリケーションの構成と実行](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

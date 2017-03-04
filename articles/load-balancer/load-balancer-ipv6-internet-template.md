@@ -19,6 +19,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 752793ed481b0b69203fa13b214add32e9129dfd
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -132,9 +133,4 @@ Azure Resource Manager のテンプレートには複数の変数とパラメー
 | lbName |ロード バランサーの名前を指定します。 この名前はポータルに表示されるか、CLI または PowerShell コマンドを使用して参照するときに使用されます。 |
 
 テンプレート内の残りの変数には、Azure がリソースを作成するときに割り当てられている派生値が含まれます。 これらの変数は変更しないでください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

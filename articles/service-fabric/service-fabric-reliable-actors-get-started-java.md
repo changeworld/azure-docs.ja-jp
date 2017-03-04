@@ -17,6 +17,7 @@ ms.author: vturecek
 translationtype: Human Translation
 ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
 ms.openlocfilehash: 8ecc5208237d846d0e81914eee8874ea97744bc3
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -188,9 +189,4 @@ $ gradle
 ```bask
 $ ./install.sh
 ```
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

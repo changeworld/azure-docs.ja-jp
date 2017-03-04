@@ -17,6 +17,7 @@ ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: 102be620e8812cc551aebafe7c8df4e4eac0ae90
 ms.openlocfilehash: 2ad3bd7b846693c637fd843383802651a619b128
+ms.lasthandoff: 01/20/2017
 
 ---
 
@@ -118,9 +119,4 @@ Reliable Services および Reliable Actors フレームワークを GitHub で�
 ## <a name="next-steps"></a>次のステップ
 
 - [Service Fabric の中心概念とベスト プラクティスを学習する](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

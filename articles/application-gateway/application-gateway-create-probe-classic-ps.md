@@ -18,6 +18,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 4787a382b837b71a28c45211a26aa512e8fb177e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -221,10 +222,5 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 Secure Sockets Layer (SSL) オフロードを構成する場合は、 [SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 
 内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「 [内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

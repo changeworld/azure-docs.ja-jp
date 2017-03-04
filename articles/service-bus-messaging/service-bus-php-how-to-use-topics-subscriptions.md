@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: add228c8a24fbd36ab05f55570abf1374f519822
 ms.openlocfilehash: 28b6a2432219b1de7751b6311339ae0ec4c9e018
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -339,9 +340,4 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 [sqlfilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
 [require-once]: http://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

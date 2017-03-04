@@ -17,6 +17,7 @@ ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
 ms.openlocfilehash: 07edc26f62fada8b5e32693a172cb23b48d36e1f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -342,10 +343,5 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 
 ## <a name="next-steps"></a>次のステップ
 * 視覚エフェクト パーツのクエリをサポートする[ログ検索](log-analytics-log-searches.md)について学びます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

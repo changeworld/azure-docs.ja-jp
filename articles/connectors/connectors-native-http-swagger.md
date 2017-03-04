@@ -19,6 +19,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
 ms.openlocfilehash: ade380b7fc6adfb929f42c0e6c75b3fa613c45b1
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -118,10 +119,5 @@ HTTP 応答
 - - -
 ## <a name="next-steps"></a>次のステップ
 プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md) してください。 [API のリスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
