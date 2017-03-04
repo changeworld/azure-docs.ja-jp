@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 249f2dcd852c771d0c48aa223a4596992e5ce3d7
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -124,9 +125,4 @@ IoT Hub では、標準ベースのデバイス管理が可能となっており
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

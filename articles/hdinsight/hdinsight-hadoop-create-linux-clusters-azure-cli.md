@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 777168c5d48cc589c54a12265bd54e87c4b64274
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -132,10 +133,5 @@ Azure CLI を使用して HDInsight クラスターを作成したら、クラ�
 * [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

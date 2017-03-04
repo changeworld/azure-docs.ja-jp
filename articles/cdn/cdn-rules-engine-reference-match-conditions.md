@@ -17,6 +17,7 @@ ms.author: rli
 translationtype: Human Translation
 ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
 ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -124,10 +125,5 @@ URL Query Wildcard (URL クエリ ワイルドカード) | 指定値を要求の
 * [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
 * [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

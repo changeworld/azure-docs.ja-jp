@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 6789e6f1c094f8809163e29349c8ea54e1e97683
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -141,8 +142,3 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 [receive-cloud-to-device-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md
 [change-the-on-and-off-behavior-of-the-led]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md
 [troubleshooting]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

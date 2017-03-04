@@ -102,8 +102,3 @@ Azure Marketplace のイメージから VM を作成するときは、実際に�
 ## <a name="next-steps"></a>次のステップ
 可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](../articles/best-practices-availability-checklist.md)に関するページをご覧ください。
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

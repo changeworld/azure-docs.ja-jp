@@ -18,6 +18,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
 ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -210,10 +211,5 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 *
 
 ## <a name="next-steps"></a>次のステップ
 プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
 ms.openlocfilehash: 2b69ebe544d663ee0b9d25bae482342726b6ffa8
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -181,9 +182,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

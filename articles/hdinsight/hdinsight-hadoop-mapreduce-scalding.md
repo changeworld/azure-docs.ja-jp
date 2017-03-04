@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
 ms.openlocfilehash: 166ff7f3586932494984e87fc0df7d3d3d914c82
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -357,10 +358,5 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

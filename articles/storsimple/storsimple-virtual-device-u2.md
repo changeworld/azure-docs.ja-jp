@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
 ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -256,9 +257,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

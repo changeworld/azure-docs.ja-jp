@@ -17,6 +17,7 @@ ms.author: abnarain
 translationtype: Human Translation
 ms.sourcegitcommit: 3d66640481d8e1f96d3061077f0c97da5fa6bf4e
 ms.openlocfilehash: a0ccdffa5347c4f3cda16ec75b75da3eb3199539
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -448,9 +449,4 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 
 ## <a name="next-steps"></a>次のステップ
 * [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) に関するページを参照してください。 チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。  
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: cd5ab90167501d5876381e0575042e19a23e702c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -381,10 +382,5 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [.NET SDK を使用して HDInsight で Pig ジョブを実行する](hdinsight-hadoop-use-pig-dotnet-sdk.md)
 * [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 * [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

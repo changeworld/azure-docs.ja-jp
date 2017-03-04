@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
 ms.openlocfilehash: 404776283ee10aa9410d002597e054757516bcab
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -408,9 +409,4 @@ MessageItem の必須のプロパティ:
 [4]: ./media/connectors-create-api-slack/connectionconfig4.png
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

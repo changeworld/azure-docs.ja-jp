@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 47358c6c209488d7a12e8afbf7a2d9b3f872f0de
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="what-is-api-management"></a>API Management とは
@@ -127,10 +128,5 @@ API Management の詳細については、Microsoft Ignite 2015 カンファレ�
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

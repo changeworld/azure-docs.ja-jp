@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 60e8bf883a09668100df8fb51572f9ce0856ccb3
 ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -94,9 +95,4 @@ ms.openlocfilehash: 9eb32ac7936ad54d487dc15d3ef320ec279ce0bc
 8. 更新が適用されたら、**[閉じる]** をクリックします。
 
 これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

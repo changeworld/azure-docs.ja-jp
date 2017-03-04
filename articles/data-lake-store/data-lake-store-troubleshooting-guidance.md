@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a3629845014cb401df96d2d8bf7b9801a0664150
 ms.openlocfilehash: 2f184f5289b9394572023fe9d1aec2d28a73c4f7
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -48,10 +49,5 @@ Azure Data Lake Store は自動レプリカによるデータの回復性を備�
 ## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

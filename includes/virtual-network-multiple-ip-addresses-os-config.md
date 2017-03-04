@@ -176,8 +176,3 @@ ip route add default via 10.0.0.1 dev eth2 table custom
     - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
     - **10.0.0.1** をデフォルト ゲートウェイに
     - **eth2** をセカンダリ NIC の名前に
-
-
-<!--HONumber=Feb17_HO2-->
-
-

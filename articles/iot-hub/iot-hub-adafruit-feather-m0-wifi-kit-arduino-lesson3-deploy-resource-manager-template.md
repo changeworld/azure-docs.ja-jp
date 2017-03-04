@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: cf666d17406a49036082a6a4dd15bad89c04aa8f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -86,8 +87,3 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 [arm-template-params]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson3/arm_para_arduino.png
 [created-iot-hub-and-registered-arduino-board]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md
 [send-device-to-cloud-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

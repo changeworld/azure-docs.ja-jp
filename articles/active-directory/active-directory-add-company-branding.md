@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
 ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -221,9 +222,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

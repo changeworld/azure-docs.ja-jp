@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
 ms.openlocfilehash: c462c98e2ecef1afe62ef921265b8842b6ae717d
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -539,9 +540,4 @@ TablesList の必須プロパティ:
 [3]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig3.png
 [4]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig5.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

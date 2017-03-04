@@ -17,6 +17,7 @@ ms.author: scottnap
 translationtype: Human Translation
 ms.sourcegitcommit: 5104c7996de9dc0597e65be31c28a9aaa1243a90
 ms.openlocfilehash: d324290caf5b5a085a2daf67e541c295dffda732
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -347,10 +348,5 @@ POC は設計上自己完結型で、物理ホストがデプロイされるネ�
 4. [接続] ブレードで、**[受信データ]** と **[送信データ]** の統計情報を確認できます。 次のスクリーンショットでは、ping で発生するよりも数値が大きいことがわかります。 これは他にもファイル転送が行われていることが原因です。 ここには&0; 以外の値が表示されます。
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -16,6 +16,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
 ms.openlocfilehash: 5145418159aa457be6d1fc9ed5bb1a43a955791c
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -222,10 +223,5 @@ partners.contoso.com
 [DNS ゾーンの管理](dns-operations-dnszones.md)
 
 [DNS レコードの管理](dns-operations-recordsets.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

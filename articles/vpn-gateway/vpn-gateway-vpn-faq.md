@@ -17,6 +17,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 15ac382f72cab455246ffcc05f08c8aba5876c8f
 ms.openlocfilehash: c90bb4f41661aedec2bde53abe035fe9bcc80320
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -170,8 +171,3 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 * VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 * VPN Gateway の構成設定の詳細については、「[VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」をご覧ください。
-
-
-<!--HONumber=Feb17_HO3-->
-
-

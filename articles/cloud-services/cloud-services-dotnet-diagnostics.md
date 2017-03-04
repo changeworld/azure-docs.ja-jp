@@ -17,6 +17,7 @@ ms.author: robb
 translationtype: Human Translation
 ms.sourcegitcommit: c3540d86a12935cea100248f7f6669df34ae2209
 ms.openlocfilehash: cedc52b514eacb6cf7bc32634819573f5ee154c3
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -204,9 +205,4 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 [Collect Logging Data by Using Azure Diagnostics]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: http://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

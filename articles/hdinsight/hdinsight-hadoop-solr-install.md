@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
 ms.openlocfilehash: 010a8a377150292fcb533a1af99adcc7c782bceb
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -185,9 +186,4 @@ ms.openlocfilehash: 010a8a377150292fcb533a1af99adcc7c782bceb
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

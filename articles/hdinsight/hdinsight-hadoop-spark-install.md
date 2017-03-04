@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
 ms.openlocfilehash: 4fa808b50b56122976cc176c55937f9443f31097
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -295,9 +296,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

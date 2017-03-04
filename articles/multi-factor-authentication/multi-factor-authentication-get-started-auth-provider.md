@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
 ms.openlocfilehash: be4361af8f3f3024ab7f12114760f6f58e77deaf
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -56,10 +57,5 @@ Azure Multi-Factor Auth プロバイダーを作成するには、次の手順�
         ![MFA プロバイダーの作成](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)
 8. [作成] をクリックすると、Multi-Factor Authentication プロバイダーが作成され、 **"Multi-Factor Authentication プロバイダーが正常に作成されました"**というメッセージが表示されます。 **[OK]**をクリックします。
    ![Creating an MFA Provider](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

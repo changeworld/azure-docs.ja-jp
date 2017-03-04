@@ -54,8 +54,3 @@
 ## <a name="next-steps"></a>次のステップ
 これらすべての Azure CLI 1.0 仮想マシン コマンドについて詳しくは、[クラシック デプロイメント API での Azure CLI 1.0 コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関する記事をご覧ください。
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

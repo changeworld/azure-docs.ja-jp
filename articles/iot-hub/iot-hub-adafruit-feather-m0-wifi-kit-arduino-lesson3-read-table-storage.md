@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 7a49a15b00bf25c9416235f41da8cc86e54d0062
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -84,8 +85,3 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
 [run-blink-application]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md
 [gulp-run]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson3/gulp_read_message_arduino.png
 [send-cloud-to-device-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

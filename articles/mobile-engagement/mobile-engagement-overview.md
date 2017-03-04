@@ -17,6 +17,7 @@ ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -50,10 +51,5 @@ Mobile Engagement はアプリ内メッセージング機能を提供し、Googl
 [作業の開始](/index.md)
 
 [ソース コード付きのデモ アプリのダウンロード](https://aka.ms/azmedemoapps)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
