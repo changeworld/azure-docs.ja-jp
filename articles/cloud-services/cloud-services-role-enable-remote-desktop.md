@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: eb34bf45fde1fdaa1d7938967e659a13515a0f56
 ms.openlocfilehash: 914d391fa314de5893da462af3e9b59e6f8ce185
+ms.lasthandoff: 02/11/2017
 
 ---
 
@@ -39,7 +40,7 @@ Azure クラシック ポータルでは、アプリケーションのデプロ�
     ![クラウド サービス リモート](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
 
    > [!WARNING]
-   > 初めてリモート デスクトップを有効にして [OK] (チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
+   > 初めてリモート デスクトップを有効にして [OK]\(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
 
 3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
 4. 必要に応じて次の変更を行います。
@@ -68,7 +69,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 1. **Azure** > **Cloud Services** > **<クラウド サービスの名前>** ノードを展開します。
 2. **[ステージング]** と **[運用]** のいずれかを展開します。
 3. 個々のロールを展開します。
-4. ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]**をクリックし、ユーザー名とパスワードを入力します。
+4. ロール インスタンスの&1; つを右クリックして **[リモート デスクトップを使用して接続]**をクリックし、ユーザー名とパスワードを入力します。
 
 ![サーバー エクスプローラーとリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
 
@@ -134,9 +135,4 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 ## <a name="additional-resources"></a>その他のリソース
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
