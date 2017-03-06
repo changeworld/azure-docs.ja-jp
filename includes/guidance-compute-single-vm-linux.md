@@ -1,7 +1,7 @@
 この記事では、スケーラビリティ、可用性、管理容易性、およびセキュリティに注目しながら、Azure で Linux 仮想マシン (VM) を実行するための実績のある一連の手法について説明します。 Azure は、CentOS、Debian、Red Hat Enterprise、Ubuntu、FreeBSD など、現在普及しているさまざまな Linux ディストリビューションに対応します。 詳細については、「[Azure と Linux][azure-linux]」を参照してください。
 
 > [!NOTE]
-> Azure には、[Resource Manager][resource-manager-overview] とクラシックという 2 種類のデプロイメント モデルがあります。 この記事では、新しいデプロイ用に Microsoft から推奨されている Resource Manager を使います。
+> Azure には、[Resource Manager][resource-manager-overview] とクラシックという&2; 種類のデプロイメント モデルがあります。 この記事では、新しいデプロイ用に Microsoft から推奨されている Resource Manager を使います。
 > 
 > 
 
@@ -35,7 +35,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 Azure にはさまざまな仮想マシン サイズが用意されていますが、DS シリーズと GS シリーズをお勧めします。これらのマシン サイズでは [Premium Storage][premium-storage] がサポートされるためです。 ハイパフォーマンス コンピューティングなどの特殊なワークロードがない限り、これらのマシン サイズのいずれかを選択してください。 詳細については、[仮想マシンのサイズ][virtual-machine-sizes]に関するページをご覧ください。
 
-既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。 次に、CPU、メモリ、およびディスクの 1 秒あたりの入力/出力操作 (IOPS) について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。 VM 用に複数の NIC が必要な場合は、NIC の最大数が [VM のサイズ][vm-size-tables]と関係することに注意してください。
+既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。 次に、CPU、メモリ、およびディスクの&1; 秒あたりの入力/出力操作 (IOPS) について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。 VM 用に複数の NIC が必要な場合は、NIC の最大数が [VM のサイズ][vm-size-tables]と関係することに注意してください。
 
 VM および他のリソースをプロビジョニングする際は、リージョンを指定する必要があります。 一般的に、内部ユーザーや顧客に最も近いリージョンを選択します。 ただし、すべてのリージョンですべての VM サイズを利用できるとは限りません。 詳細については、[リージョン別のサービス][services-by-region]に関するページを参照してください。 指定したリージョンで利用できる VM サイズを一覧表示するには、次の Azure コマンド ライン インターフェイス (CLI) コマンドを実行します。
 
@@ -88,7 +88,7 @@ SSH を有効にするには、TCP ポート 22 への着信トラフィック�
 
 スケールアップまたはスケールダウンするには、[VM サイズを変更します][vm-resize]。 
 
-水平方向にスケール アウトするには、ロード バランサーの内側の可用性セットに 2 つ以上の VM を配置します。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページを参照してください。
+水平方向にスケール アウトするには、ロード バランサーの内側の可用性セットに&2; つ以上の VM を配置します。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページを参照してください。
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
@@ -136,7 +136,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 
 ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
 
-> [!NOTE]
+d> [!NOTE]
 > RBAC では、VM にログインしているユーザーが実行できる操作は制限されません。 これらのアクセス許可は、ゲスト OS のアカウントの種類によって決まります。   
 > 
 > 
@@ -146,8 +146,7 @@ Azure Portal の **[停止]** ボタンを使用すると、VM の割り当て�
 OS ディスクとデータ ディスクを暗号化する必要がある場合は、[Azure Disk Encryption][disk-encryption] を検討します。 
 
 ## <a name="solution-deployment"></a>ソリューションのデプロイ
-
-このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 このアーキテクチャには、VNet、NSG、および 1 つの VM が含まれています。 このアーキテクチャをデプロイするには、次の手順を実行します。 
+このリファレンス アーキテクチャのデプロイについては、[GitHub][github-folder] を参照してください。 このアーキテクチャには、VNet、NSG、および&1; つの VM が含まれています。 このアーキテクチャをデプロイするには、次の手順を実行します。 
 
 1. 下のボタンを右クリックし、[リンクを新しいタブで開く] または [リンクを新しいウィンドウで開く] を選択します。
    [![Azure へのデプロイ](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
@@ -156,14 +155,14 @@ OS ディスクとデータ ディスクを暗号化する必要がある場合�
    * **リソース グループ**の名前はパラメーター ファイルで既に定義されているため、**[新規作成]** を選択し、テキスト ボックスに「`ra-single-vm-rg`」と入力します。
    * **[場所]** ボックスの一覧でリージョンを選択します。
    * **[Template Root Uri (テンプレート ルート URI)]** または **[Parameter Root Uri (パラメーター ルート URI)]** ボックスは編集しないでください。
-   * **[Os Type (OS の種類)]** ボックスの一覧の **[linux (Linux)]** を選択します。
+に関するページを参照してください。   * **[OS の種類]** ボックスの一覧から **Linux** を選択します。
    * 使用条件を確認し、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
    * **[購入]** をクリックします。
 3. デプロイが完了するまで待ちます。
 4. パラメーター ファイルには、ハードコーディングされた管理者のユーザー名とパスワードが含まれているため、この両方をすぐに変更することを強くお勧めします。 Azure Portal で `ra-single-vm0 ` という名前の VM をクリックします。 次に、**[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** をクリックします。 **[モード]** ボックスの一覧の **[パスワードのリセット]** を選択し、新しい**ユーザー名**と**パスワード**を選択します。 **[更新]** をクリックして、新しいユーザー名とパスワードを保持します。
 
 ## <a name="next-steps"></a>次のステップ
-高可用性を実現するために、ロード バランサーの背後に VM を 2 つ以上デプロイします。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページをご覧ください。
+高可用性を実現するために、ロード バランサーの背後に VM を&2; つ以上デプロイします。 詳細については、[Azure での複数の VM の実行][multi-vm]に関するページをご覧ください。
 
 <!-- links -->
 
@@ -176,7 +175,7 @@ OS ディスクとデータ ディスクを暗号化する必要がある場合�
 [blob-storage]: ../articles/storage/storage-introduction.md
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
-[data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
+[data-disk]: ../articles/storage/storage-about-disks-and-vhds-linux.md
 [disk-encryption]: ../articles/security/azure-security-disk-encryption.md
 [enable-monitoring]: ../articles/monitoring-and-diagnostics/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-linux-portal-create-fqdn.md
@@ -215,9 +214,4 @@ OS ディスクとデータ ディスクを暗号化する必要がある場合�
 [components]: #Solution-components
 [blocks]: https://github.com/mspnp/template-building-blocks
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure における単一の Linux VM アーキテクチャ"
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
