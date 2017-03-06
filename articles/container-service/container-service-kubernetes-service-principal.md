@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 02/21/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 5af9b5fdaf228edd54900855d0eac5d90ea3db38
-ms.openlocfilehash: 0121896aa27677080d6b240fdafff3c7e19683d9
+ms.sourcegitcommit: 71c6c5ffacf49b907e3e9f488789f31928b25823
+ms.openlocfilehash: e01a9ef7d223e7a5a06475cf419b73959baa803f
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,17 +30,15 @@ ms.openlocfilehash: 0121896aa27677080d6b240fdafff3c7e19683d9
 
 Azure Container Service で Kubernetes を使用するには、Azure API と対話するためのサービス アカウントとして [Azure Active Directory サービス プリンシパル](../active-directory/active-directory-application-objects.md)が必要です。 サービス プリンシパルは、ユーザー定義のルートやレイヤー 4 の Azure Load Balancer などのリソースを動的に管理するために必要です。
 
-この記事では、Kubernetes クラスターのサービス プリンシパルを指定するためのさまざまなオプションを紹介します。 たとえば、[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
+この記事では、Kubernetes クラスターのサービス プリンシパルを指定するためのさまざまなオプションを紹介します。 たとえば、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
 
-> [!NOTE]
-> Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
 
 
 ## <a name="requirements-for-the-service-principal"></a>サービス プリンシパルの要件
 
 Azure Container Service の Kubernetes クラスターの Azure Active Directory サービス プリンシパルに対する要件は次のとおりです。 
 
-* **スコープ**: クラスターがデプロイされる Azure サブスクリプション
+* **スコープ**: クラスターがデプロイされる リソース グループ
 
 * **ロール**: **共同作成者**
 
@@ -54,15 +53,15 @@ Azure Container Service の Kubernetes クラスターの Azure Active Directory
 
 ### <a name="option-1-pass-the-service-principal-client-id-and-client-secret"></a>オプション 1: サービス プリンシパルのクライアント ID とクライアント シークレットを渡す
 
-Kubernetes クラスターを作成するときに、既存のサービス プリンシパルの**クライアント ID** (アプリケーション ID を意味する `appId` とよく呼ばれます) と**クライアント シークレット** (`password`) をパラメーターとして指定します。 既存のサービス プリンシパルを使用する場合は、前のセクションの要件を満たしていることを確認してください。 サービス プリンシパルを作成する必要がある場合は、この記事の後半の「[サービス プリンシパルの作成](#create-a-service-principal-in-azure-active-directory)」を参照してください。
+Kubernetes クラスターを作成するときに、既存のサービス プリンシパルの**クライアント ID** (アプリケーション ID の場合は `appId` とも呼ばれます) と**クライアント シークレット** (`password`) をパラメーターとして指定します。 既存のサービス プリンシパルを使用する場合は、前のセクションの要件を満たしていることを確認してください。 サービス プリンシパルを作成する必要がある場合は、この記事の後半の「[サービス プリンシパルの作成](#create-a-service-principal-in-azure-active-directory)」を参照してください。
 
-これらのパラメーターは、ポータル、Azure コマンド ライン インターフェイス (CLI) 2.0 (プレビュー)、Azure PowerShell、またはその他の方法を使用して [Kubernetes クラスターをデプロイする](./container-service-deployment.md)ときに指定できます。
+これらのパラメーターは、ポータル、Azure コマンド ライン インターフェイス (CLI) 2.0、Azure PowerShell、またはその他の方法を使用して [Kubernetes クラスターをデプロイする](./container-service-deployment.md)ときに指定できます。
 
 >[!TIP] 
 >**クライアント ID** を指定するときは、サービス プリンシパルの `ObjectId` ではなく `appId` を使用してください。
 >
 
-次の例では、Azure CLI 2.0 プレビューでパラメーターを渡す 1 つの方法を示しています ([インストールとセットアップの手順](/cli/azure/install-az-cli2)を参照してください)。 この例では、[Kubernetes クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)を使用します。
+次の例では、Azure CLI 2.0 でパラメーターを渡す 1 つの方法を示しています ([インストールとセットアップの手順](/cli/azure/install-az-cli2)を参照してください)。 この例では、[Kubernetes クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)を使用します。
 
 1. テンプレート パラメーター ファイル `azuredeploy.parameters.json` を GitHub から[ダウンロード](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)します。
 
@@ -83,9 +82,9 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
     ```
 
 
-### <a name="option-2-generate-the-service-principal-when-creating-the-cluster-with-the-azure-cli-20-preview"></a>オプション 2: Azure CLI 2.0 (プレビュー) でクラスターを作成するときにサービス プリンシパルを生成する
+### <a name="option-2-generate-the-service-principal-when-creating-the-cluster-with-the-azure-cli-20"></a>オプション 2: Azure CLI 2.0 でクラスターを作成するときにサービス プリンシパルを生成する
 
-[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) コマンドを実行して、[クラスターを作成](./container-service-create-acs-cluster-cli.md)できます。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](https://docs.microsoft.com/en-us/cli/azure/acs#create) コマンドを実行して、[クラスターを作成](./container-service-create-acs-cluster-cli.md)できます。
 
 他の Kubernetes クラスター作成オプションと同様に、`az acs create` を実行するときに、既存のサービス プリンシパルのパラメーターを指定できます。 ただし、これらのパラメーターを省略すると、Azure Container Service によってサービス プリンシパルが自動的に作成されます。 これは、デプロイ中に透過的に行われます。 
 
@@ -99,7 +98,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Kubernetes クラスターで使用するために Azure Active Directory にサービス プリンシパルを作成する場合、Azure にはいくつかの方法が用意されています。 
 
-以下のコマンド例では、[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/install-az-cli2) でこの操作を行う方法を示しています。 代わりに、[Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)、[クラシック ポータル](../azure-resource-manager/resource-group-create-service-principal-portal.md)、またはその他の方法を使用して、サービス プリンシパルを作成することもできます。
+以下のコマンド例では、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) でこの操作を行う方法を示しています。 代わりに、[Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)、[クラシック ポータル](../azure-resource-manager/resource-group-create-service-principal-portal.md)、またはその他の方法を使用して、サービス プリンシパルを作成することもできます。
 
 > [!IMPORTANT]
 > この記事で前に説明したサービス プリンシパルの要件を必ず確認してください。
@@ -140,9 +139,4 @@ az vm list-sizes --location westus
 ## <a name="next-steps"></a>次のステップ
 
 * コンテナー サービス クラスターで [Kubernetes を使ってみます](container-service-kubernetes-walkthrough.md)。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

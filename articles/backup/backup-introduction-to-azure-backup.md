@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup とは | Microsoft Docs"
-description: "Azure Backup と Recovery Services を利用すると、Windows Server、Windows コンピューター、System Center DPM サーバー、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
+description: "Azure Backup と Recovery Services を利用すると、Windows Server とワークステーション、System Center DPM サーバーとワークロード、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 2/23/2017
 ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
-ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
+ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
+ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 **アプリケーションの整合性のバックアップ** - ファイル サーバー、仮想マシン、SQL データベースのどれをバックアップする場合でも、バックアップ コピーの復元に必要なすべてのデータが、回復ポイントにあることを把握しておく必要があります。 Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
 
-**長期保存** - バックアップ コピーをディスクからテープに切り替えて、長期ストレージ用のオフサイトの場所にテープを移動するのではなく、短期および長期の保存に Azure を使用できます。 Azure では、バックアップ コンテナーまたは Recovery Services コンテナーでデータを保持する時間の長さは制限されません。 任意の期間、コンテナーにデータを保持することができます。 Azure Backup では、保護されているインスタンスごとの復旧ポイントが 9,999 個に制限されます。 この制限によるバックアップのニーズへの影響の説明については、この記事の「[バックアップと保持](backup-introduction-to-azure-backup.md#backup-and-retention)」セクションを参照してください。  
+**長期保存** - バックアップ コピーをディスクからテープに切り替え、テープをオフサイトの場所に移動するのではなく、短期および長期の保存に Azure を使用できます。 Azure では、バックアップ コンテナーまたは Recovery Services コンテナーにデータを保持する時間に制限はありません。 任意の期間、コンテナーにデータを保持することができます。 Azure Backup では、保護されているインスタンスごとの復旧ポイントが 9,999 個に制限されます。 この制限によるバックアップのニーズへの影響の説明については、この記事の「[バックアップと保持](backup-introduction-to-azure-backup.md#backup-and-retention)」セクションを参照してください。  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>使用する Azure Backup コンポーネント
 ご自身のニーズに合った Azure Backup コンポーネントがわからない場合は、次の表で、各コンポーネントの保護対象に関する情報を確認してください。 Azure Portal にはウィザードが組み込まれており、コンポーネントを選択して、ダウンロードおよびデプロイするお手伝いをします。 このウィザードは、Recovery Services コンテナーの作成に含まれており、バックアップの目的と、保護対象のデータやアプリケーションを選択する手順を説明します。
@@ -96,7 +97,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください
 
 ### <a name="back-up-premium-storage-vms"></a>Premium Storage VM のバックアップ
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。 "AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。 ストレージ アカウント上の一時的なステージング場所に十分な空き領域があるかどうかを確認します。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)に関する記事を参照してください。
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。 "AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。 ストレージ アカウント上の一時的なステージング場所に十分な空き領域があるかどうかを確認します。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)に関する記事をご覧ください。
 
 > [!NOTE]
 > ステージングの場所は変更または編集できません。
@@ -112,10 +113,10 @@ Premium Storage VM は、Premium Storage と通常のストレージのどちら
 Azure Backup は、管理ディスク VM を保護します。 管理ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
 
 ### <a name="back-up-managed-disk-vms"></a>管理ディスク VM のバックアップ
-管理ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 VM ビューまたは Recovery Services コンテナー ビューから直接バックアップできます。 管理ディスク上の VM のバックアップは、管理ディスク上に構築された RestorePoint コレクションを通じてサポートされます。 現在、Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化された管理ディスク VM のバックアップをサポートしていません。
+管理ディスク上の VM のバックアップは、Resource Manager VM のバックアップと同じです。 Azure Portal では、仮想マシン ビューまたは Recovery Services コンテナー ビューから直接バックアップ ジョブを構成できます。 管理ディスクに VM をバックアップするには、管理ディスク上に構築された RestorePoint コレクションを使用します。 現在、Azure Backup は、Azure Disk Encryption (ADE) を使用して暗号化された管理ディスク VM のバックアップをサポートしていません。
 
 ### <a name="restore-managed-disk-vms"></a>管理ディスク VM の復元
-Azure Backup では、管理ディスクまたは復元中の管理ディスクで Resource Manager のストレージ アカウントに完全な VM を復元できます。 復元処理中に作成されたディスクは Azure によって管理されますが、復元プロセスの一環として作成されたストレージ アカウントは他の Resource Manager ストレージ アカウントと同様で、顧客による管理が必要です。
+Azure Backup では、完全な管理ディスク VM を復元するか、管理ディスクを Resource Manager ストレージ アカウントに復元できます。 管理ディスクは、復元処理中に Azure によって管理されます。 復元プロセスの一環として作成されたストレージ アカウントは、ご自身 (または顧客) が管理します。
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>各 Backup コンポーネントの機能
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
@@ -137,8 +138,6 @@ Azure Backup では、管理ディスクまたは復元中の管理ディスク�
 #### <a name="compression"></a>圧縮
 必要となるストレージ使用量を削減するために、バックアップが圧縮されます。 VM 拡張機能は、圧縮が行われない唯一のコンポーネントです。 VM 拡張機能では、すべてのバックアップ データがストレージ アカウントから、同じリージョンにあるバックアップ コンテナーにコピーされます。 データの転送時に圧縮は使用されません。 圧縮せずにデータを格納することで、使用されるストレージは若干増えますが、 その復旧ポイントが必要な場合に、復元時間が短縮されます。
 
-#### <a name="incremental-backup"></a>増分バックアップ
-ターゲット ストレージ (ディスク、テープ、バックアップ コンテナー) がどれであるかにかかわらず、すべてのコンポーネントが増分バックアップをサポートします。 増分バックアップは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 #### <a name="disk-deduplication"></a>ディスクの重複除去
 System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)にデプロイすると、重複除去を利用できます。 Windows Server では、重複除去は、バックアップ ストレージとして仮想マシンに接続されている仮想ハード ディスク (VHD) 上で (ホスト レベルで) 実行されます。
@@ -147,6 +146,21 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 > Azure では、どの Backup コンポーネントについても重複除去を使用できません。 System Center DPM と Backup Server が Azure にデプロイされている場合は、VM に接続されているストレージ ディスクを重複除去できません。
 >
 >
+
+### <a name="incremental-backup-explained"></a>増分バックアップの説明
+ターゲット ストレージ (ディスク、テープ、バックアップ コンテナー) がどれであるかにかかわらず、すべての Azure Backup コンポーネントが増分バックアップをサポートします。 増分バックアップは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
+
+#### <a name="comparing-full-differential-and-incremental-backup"></a>完全バックアップ、差分バックアップ、増分バックアップの比較
+
+バックアップ方法の種類によって、ストレージの使用量、目標復旧時間 (RTO)、およびネットワークの使量が異なります。 バックアップの総保有コスト (TCO) を抑えるには、最適なバックアップ ソリューションを選択する方法を理解する必要があります。 次の図は、完全バックアップ、差分バックアップ、および増分バックアップを比較しています。 この図のデータ ソース A は A1 ～ A10 の 10 個の記憶域ブロックで構成され、毎月バックアップが作成されます。 ブロック A2、A3、A4、および A9 は最初の月に変更され、ブロック A5 はその翌月に変更されます。
+
+![バックアップ方法の比較を示す図](./media/backup-introduction-to-azure-backup/backup-method-comparison.png)
+
+**完全バックアップ**では、各バックアップのコピーにデータ ソース全体が含まれています。 完全バックアップでは、バックアップ コピーを転送するたびに、大量のネットワーク帯域幅と記憶域が消費されます。
+
+**差分バックアップ**によって格納されるのは、最初の完全バックアップ後に変更されたブロックだけです。このため、ネットワークおよび記憶域の消費量が少なくなります。 差分バックアップでは、変更されていないデータの冗長コピーは保持されませんが、 変更されていないデータ ブロックが以降のバックアップに転送されたうえで、格納されるため、効率的ではありません。 この例では&2; か月目に、変更されたブロック A2、A3、A4、および A9 がバックアップされます。 3 か月目は、既にバックアップ済みのブロックが再度バックアップされたうえで、変更された A5 がバックアップされます。 変更されたブロックは、次回完全バックアップが行われるまでバックアップされ続けます。
+
+**増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、2 か月目に変更された A2、A3、A4、および A9 が変更済みとしてマークされ、転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。   
 
 ### <a name="security"></a>セキュリティ
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
@@ -203,8 +217,8 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 保護されているインスタンスの一般的な例には、仮想マシン、アプリケーション サーバー、データベースのほか、Windows オペレーティング システムを実行しているパーソナル コンピューターがあります。 For example:
 
 * Hyper-V または Azure IaaS ハイパーバイザー ファブリックを実行している仮想マシン。 仮想マシンのゲスト オペレーティング システムには、Windows Server または Linux を指定できます。
-* アプリケーション サーバー。アプリケーション サーバーには、Windows Server と、バックアップする必要があるデータを含むワークロードを実行している物理マシンまたは仮想マシンを指定できます。 一般的なワークロードには、Microsoft SQL Server、Microsoft Exchange Server、Microsoft SharePoint Server、Microsoft Dynamics、Windows Server のファイル サーバー ロールがあります。 これらのワークロードをバックアップするには、System Center Data Protection Manager (DPM) または Azure Backup Server が必要です。
-* Windows オペレーティング システムを実行しているパーソナル コンピューターまたはノート PC。
+* アプリケーション サーバー。アプリケーション サーバーには、Windows Server と、バックアップする必要があるデータを含むワークロードを実行している物理マシンまたは仮想マシンを指定できます。 一般的なワークロードには、Microsoft SQL Server、Microsoft Exchange Server、Microsoft SharePoint Server、Windows Server のファイル サーバー ロールがあります。 これらのワークロードをバックアップするには、System Center Data Protection Manager (DPM) または Azure Backup Server が必要です。
+* Windows オペレーティング システムを実行しているパーソナル コンピューター、ワークステーション、またはノートパソコン。
 
 
 ## <a name="what-is-the-vault-credential-file"></a>資格情報コンテナーの資格情報ファイルとは
@@ -213,7 +227,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 コンテナー資格情報を使って、サーバーまたはコンピューターを登録できるのは本人だけです。 それでも、このコンテナー資格情報の扱いには十分に気を付けてください。紛失したり、他の人に手にわたってしまうと、そのコンテナー資格情報を使って、コンテナーに対して他のコンピューターが登録されてしまう可能性があります。 バックアップ データはパスフレーズを使用して暗号化されており、アクセスできるのは本人のみであるため、既存のバックアップ データが漏えいすることはありません。 コンテナー資格情報は 48 時間後に有効期限が切れます。 バックアップ コンテナーの資格情報は何回でもダウンロードできますが、登録に使用できるのは最新の資格情報のみです。
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure Backup と Azure Site Recovery はどのように違いますか
-Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、中心となる価値提案は異なります。
+Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 中心となる価値提案は異なります。
 
 Azure Backup は、オンプレミスのデータとクラウドのデータを保護します。 Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。 障害復旧ソリューションでは、データの安全性と復元可能性を維持し (Backup)、" *さらに* "、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
 
@@ -240,9 +254,4 @@ Windows Server でのデータ保護の詳細な段階的手順、または Azur
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

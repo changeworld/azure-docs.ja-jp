@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 02/28/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed200529f8f21f15d9b77a403f9ef07582d449
-ms.openlocfilehash: 975c8fbc9afdc7b01da85f56a075aa44dade9dde
+ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
+ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,7 +36,7 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 * 業界標準プロトコル (BGP) でのネットワークと Microsoft 間の動的ルーティング。
 * あらゆるピアリングの場所に冗長性を組み込むという高い信頼性。
 * 接続アップタイム [SLA](https://azure.microsoft.com/support/legal/sla/)。
-* QoS と、Skype for Business など、特別なアプリケーションのためのサービスの複数のクラス。
+* Skype for Business の QoS サポート。
 
 詳しくは、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
@@ -108,8 +109,4 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-portal-resource-manager.md)
   * [ルーティングの構成](expressroute-howto-routing-portal-resource-manager.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
 

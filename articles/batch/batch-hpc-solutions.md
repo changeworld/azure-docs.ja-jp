@@ -1,5 +1,5 @@
 ---
-title: "クラウドでの Batch ソリューションと HPC ソリューション | Microsoft Docs"
+title: "クラウドでの Batch ソリューションと HPC ソリューション - Azure | Microsoft Docs"
 description: "Azure での Batch とハイ パフォーマンス コンピューティング (HPC とビッグ コンピューティング) のシナリオとソリューションのオプションについて説明します。"
 services: batch, virtual-machines, cloud-services
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: c3e80bc18e4d1007146d9d3c80c2618400480046
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 288bd4dc0bde4cb610efc4a6d015e5b9499eb0ee
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="batch-and-hpc-solutions-in-the-azure-cloud"></a>Azure クラウドでの Batch ソリューションと HPC ソリューション
+# <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>大規模コンピューティング ワークロード用の Batch および HPC ソリューション
+
 Azure では、Batch とハイ パフォーマンス コンピューティング (HPC) ("*ビッグ コンピューティング*" とも呼ばれます) 用の効率的でスケーラブルなクラウド ソリューションを提供しています。 ここでは、大規模な計算ワークロードとそれらをサポートする Azure のサービスについて説明します。説明を飛ばして、記事の後半に示されている[ソリューション シナリオ](#scenarios)を直接参照することもできます。 この記事の主な対象者は技術に関する意思決定者、IT 管理者、および独立系ソフトウェア ベンダーですが、その他の IT 担当者および開発者もこの記事を読むことでこれらのソリューションを理解できます。
 
 組織が大規模コンピューティングに関する問題を抱えている分野としては、エンジニアリング設計と分析、イメージ レンダリング、複雑なモデリング、モンテカルロ シミュレーション、財務リスク計算などがあります。 Azure は、必要なリソース、スケール、スケジュールに関するこれらの問題を組織が解決するのを支援します。 Azure を使用すると以下のことが可能です。
@@ -134,9 +137,4 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 [iaas_cluster]: ./media/batch-hpc-solutions/iaas_cluster.png
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

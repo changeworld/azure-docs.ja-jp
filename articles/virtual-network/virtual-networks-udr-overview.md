@@ -1,10 +1,10 @@
 ---
-title: "ユーザー定義のルートおよび IP 転送とは"
-description: "ユーザー定義のルート (UDR) と IP 転送を使用して、Azure のネットワーク仮想アプライアンスにトラフィックを転送する方法について説明します。"
+title: "Azure でのユーザー定義のルートと IP 転送 | Microsoft Docs"
+description: "ユーザー定義ルート (UDR) と IP 転送を構成して、Azure のネットワーク仮想アプライアンスにトラフィックを転送する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: c39076c4-11b7-4b46-a904-817503c4b486
 ms.service: virtual-network
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
-ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
+ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
+ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-are-user-defined-routes-and-ip-forwarding"></a>ユーザー定義のルートおよび IP 転送とは
+# <a name="user-defined-routes-and-ip-forwarding"></a>ユーザー定義のルートと IP 転送
+
 Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加すると、VM どうしがネットワークを介して自動的に通信できることがわかります。 VM が異なるサブネットにあったとしても、ゲートウェイを指定する必要はありません。 VM からパブリック インターネットへの通信も同様であり、Azure からユーザー独自のデータセンターにハイブリッド接続が存在する場合は、オンプレミスのネットワークへの通信でも同様です。
 
 このような通信フローが可能であるのは、Azure が一連のシステム ルートを使用して IP トラフィックのフロー方法を定義するためです。 システム ルートは、以下のシナリオでの通信フローを制御します。
@@ -53,8 +56,8 @@ Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加する
 | プロパティ | Description | 制約 | 考慮事項 |
 | --- | --- | --- | --- |
 | アドレス プレフィックス |ルートの適用対象となる宛先の CIDR 表記 (例: 10.1.0.0/16)。 |パブリック インターネット、Azure Virtual Network、オンプレミス データセンターのいずれかのアドレスを表す有効な CIDR 範囲である必要があります。 |**アドレス プレフィックス**に、**次ホップ アドレス**のアドレスが含まれていないことを確認してください。このアドレスが含まれていると、パケットが発信元と次ホップとの間でループ状態となり宛先に到達しません。 |
-| 次ホップの種類 |パケットの送信先となる Azure ホップの種類。 |次のいずれかの値を指定する必要があります。 <br/> **仮想ネットワーク**。 ローカルの仮想ネットワークを表します。 たとえば、同じ仮想ネットワークに 10.1.0.0/16 と 10.2.0.0/16 の 2 つのサブネットがある場合、ルート テーブル内の各サブネットのルートは、次ホップの値が *Virtual Network* になります。 <br/> **Virtual Network Gateway**。 Azure S2S VPN Gateway を表します。 <br/> **Internet**。 Azure インフラストラクチャによって提供される既定のインターネット ゲートウェイを表します。 <br/> **Virtual Appliance**であるルートに限られます。 Azure Virtual Network に追加した仮想アプライアンスを表します。 <br/> **なし**。 ブラック ホールを表します。 ブラック ホールに転送されたパケットはまったく転送されません。 |特定の宛先にパケットを流さないようにするには、 **None** タイプの使用を検討してください。 |
-| 次ホップ アドレス |次ホップ アドレスには、パケットの転送先となる IP アドレスが格納されます。 次ホップの値が使用できるのは、次ホップの種類が *Virtual Appliance*であるルートに限られます。 |ユーザー定義ルートの適用先となる Virtual Network 内の到達可能な IP アドレスを指定する必要があります。 |IP アドレスが VM を表している場合、その VM の [IP 転送](#IP-forwarding) が Azure で有効になっていることを確認してください。 |
+| 次ホップの種類 |パケットの送信先となる Azure ホップの種類。 |次のいずれかの値を指定する必要があります。 <br/> **仮想ネットワーク**。 ローカルの仮想ネットワークを表します。 たとえば、同じ仮想ネットワークに 10.1.0.0/16 と 10.2.0.0/16 の 2 つのサブネットがある場合、ルート テーブル内の各サブネットのルートは、次ホップの値が *Virtual Network* になります。 <br/> **Virtual Network Gateway**。 Azure S2S VPN Gateway を表します。 <br/> **Internet**。 Azure インフラストラクチャによって提供される既定のインターネット ゲートウェイを表します。 <br/> **Virtual Appliance**であるルートに限られます。 Azure Virtual Network に追加した仮想アプライアンスを表します。 <br/> **なし**。 ブラック ホールを表します。 ブラック ホールに転送されたパケットはまったく転送されません。 |VM または Azure Load Balancer の内部 IP アドレスにトラフィックを転送するために、**仮想アプライアンス**の使用を検討してください。  このタイプを使用すると、以下に示すように IP アドレスを指定することができます。 特定の宛先にパケットを流さないようにするには、 **None** タイプの使用を検討してください。 |
+| 次ホップ アドレス |次ホップ アドレスには、パケットの転送先となる IP アドレスが格納されます。 次ホップの値が使用できるのは、次ホップの種類が *Virtual Appliance*であるルートに限られます。 |ユーザー定義ルートの適用先となる Virtual Network 内の到達可能な IP アドレスを指定する必要があります。 |IP アドレスが VM を表している場合、その VM の [IP 転送](#IP-forwarding) が Azure で有効になっていることを確認してください。 IP アドレスが Azure Load Balancer の内部 IP アドレスを表している場合は、一致する負荷分散規則が負荷分散対象のポートごとにあることを確認してください。|
 
 Azure PowerShell では、次のように、一部の "NextHopType" 値が異なる名前を持っています。
 
@@ -108,10 +111,5 @@ Azure PowerShell では、次のように、一部の "NextHopType" 値が異な
 ## <a name="next-steps"></a>次のステップ
 * [リソース マネージャーのデプロイ モデルでルートを作成](virtual-network-create-udr-arm-template.md) し、サブネットに関連付ける方法について説明します。 
 * [クラシック デプロイ モデルでルートを作成](virtual-network-create-udr-classic-ps.md) し、サブネットに関連付ける方法について説明します。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

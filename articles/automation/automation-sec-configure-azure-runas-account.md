@@ -13,16 +13,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 02/24/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
-ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
+ms.sourcegitcommit: 6966befa56dc6a0feff4b8a821bde4e423a2b53a
+ms.openlocfilehash: 97853ce9f78078cc6bbccdfb5c5a06cae49e218c
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>Azure 実行アカウントを使用した Runbook の認証
-このトピックでは、Azure Portal から実行アカウント機能を使用して Automation アカウントを構成し、Azure Resource Manager または Azure サービス管理のリソースを管理するための Runbook を認証する方法について説明します。
+このトピックでは、Azure ポータルから実行アカウント機能を使用して Automation アカウントを構成し、Azure Resource Manager または Azure サービス管理のリソースを管理するための Runbook を認証する方法について説明します。
 
 Azure ポータルで新しい Automation アカウントを作成すると、次のものが自動的に作成されます。
 
@@ -38,27 +39,25 @@ Azure ポータルで新しい Automation アカウントを作成すると、�
 
 > [!NOTE]
 > Azure [アラート統合機能](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) と Automation Global Runbook の連携には、実行アカウントとクラシック実行アカウントを使って構成された Automation アカウントが必要です。 既に実行アカウントとクラシック実行アカウントが定義されている Automation アカウントを選んで利用できるほか、Automation アカウントを新たに作成することもできます。
-> 
-> 
+>  
 
-Azure ポータルからの Automation アカウントの作成方法を紹介すると共に、PowerShell を使用して Automation アカウントを更新する方法と、Runbook 内で認証を行う方法について説明します。
+Azure Portal からの Automation アカウントの作成方法を紹介すると共に、PowerShell を使用して Automation アカウントを更新する方法、アカウント構成を管理する方法、Runbook 内で認証を行う方法について説明します。
 
 次に進む前に、いくつかの注意事項と考慮事項があります。
 
 1. これは、クラシック デプロイメント モデルまたは Resource Manager デプロイメント モデルで既に作成した既存の Automation アカウントには影響しません。  
 2. これは、Azure ポータルで作成した Automation アカウントに対してのみ有効です。  クラシック ポータルからアカウントを作成しようとしても、実行アカウントの構成はレプリケートされません。
-3. 現時点で、クラシック リソースを管理するために以前作成された Runbook と資産 (スケジュールや変数など) を所有しており、かつその Runbook を新しいクラシック実行アカウントで認証する場合は、Runbook を新しい Automation アカウントに移行するか、次の PowerShell スクリプトを使用して既存のアカウントを更新する必要があります。  
+3. 現時点で、クラシック リソースを管理するために以前作成された Runbook と資産 (スケジュールや変数など) を所有しており、かつその Runbook を新しいクラシック実行アカウントで認証する場合は、実行アカウント管理を使用してクラシック実行アカウントを作成するか、次の PowerShell スクリプトを使用して既存のアカウントを更新する必要があります。  
 4. 新しい実行アカウントまたはクラシック実行 Automation アカウントを使って認証を行うには、次のサンプル コードを使用して既存の Runbook を変更する必要があります。  **注意してください** 。     
 
-## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Azure ポータルから新しい Automation アカウントを作成する
+## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Azure Portal から新しい Automation アカウントを作成する
 このセクションでは、以下の手順に従って、Azure Portal から新しい Azure Automation アカウントを作成します。  実行アカウントとクラシック実行アカウントの両方を作成します。  
 
 > [!NOTE]
 > この手順を実行するユーザーは、サービス管理者ロールのメンバーであるか、ユーザーにサブスクリプションへのアクセスを付与できるサブスクリプションの共同管理者である必要があります。 さらにこのユーザーは、そのサブスクリプションの既定の Active Directory にユーザーとして追加される必要があります。アカウントを特権ロールに割り当てる必要はありません。 サブスクリプションの共同管理者ロールに追加されるまでサブスクリプションの Active Directory のメンバーではなかったユーザーは、Active Directory にゲストとして追加され、作成するためのアクセス許可がないことを示す 警告が **[Add Automation Account (Automation アカウントの追加)]** ブレードに表示されます。 先に共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory から削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。  ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。  
 > 
-> 
 
-1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure ポータルにログインします。
+1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
 2. **[Automation アカウント]**を選択します。
 3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br>![[Automation アカウントの追加]](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
    
@@ -67,16 +66,16 @@ Azure ポータルからの Automation アカウントの作成方法を紹介�
    > 
    > 
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
-5. 複数のサブスクリプションがある場合は、新しいアカウントに対して 1 つのサブスクリプションを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**を指定します。
+5. 複数のサブスクリプションがある場合は、新しいアカウントに対して&1; つのサブスクリプションを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**を指定します。
 6. **[Azure 実行アカウントの作成]** オプションで **[はい]** が選択されていることを確認し、**[作成]** ボタンをクリックします。  
    
    > [!NOTE]
    > 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。  Azure ポータルでアカウントを作成している間は、クラシック サブスクリプションまたは Resource Manager サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。  そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
    > 
    > ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/create-account-decline-create-runas-msg.png)<br>
-   >  サービス プリンシパルが作成されていない場合、Contributor ロールは割り当てられません。
+   > サービス プリンシパルが作成されていない場合、Contributor ロールは割り当てられません。
    > 
-   > 
+
 7. Azure によって Automation アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 ### <a name="resources-included"></a>含まれるリソース
@@ -84,7 +83,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 | リソース | Description |
 | --- | --- |
-| AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
+| AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
 | AzureRunAsCertificate |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、証明書資産。  これにより、Azure を使用して認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。  この証明書には、1 年の有効期間があります。 |
 | AzureRunAsConnection |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、接続資産。 |
@@ -93,15 +92,15 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 | リソース | Description |
 | --- | --- |
-| AzureClassicAutomationTutorial Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの Runbook。 |
-| AzureClassicAutomationTutorial Script Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの Runbook。 |
+| AzureClassicAutomationTutorial Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルのグラフィカルな Runbook。 |
+| AzureClassicAutomationTutorial Script Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの PowerShell Runbook。 |
 | AzureClassicRunAsCertificate |Runbook から Azure のクラシック リソースを管理できるように、Azure を使用した認証に使用される、自動的に作成される証明書資産。  この証明書には、1 年の有効期間があります。 |
 | AzureClassicRunAsConnection |Runbook から Azure のクラシック リソースを管理できるように、Azure を使用した認証に使用される、自動的に作成される接続資産。 |
 
 ## <a name="verify-run-as-authentication"></a>実行アカウントの認証を検証する
 次に、新しい実行アカウントを使用して正しく認証できることを確認するために小さなテストを実施します。     
 
-1. 先ほど作成した Automation アカウントを Azure ポータルで開きます。  
+1. 先ほど作成した Automation アカウントを Azure Portal で開きます。  
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **AzureAutomationTutorialScript** Runbook を選択し、**[開始]** をクリックして、Runbook を開始します。  Runbook を開始することを確認するプロンプトが表示されます。
 4. [Runbook ジョブ](automation-runbook-execution.md) が作成されると、[ジョブ] ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。  
@@ -115,7 +114,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 ## <a name="verify-classic-run-as-authentication"></a>クラシック実行認証を検証する
 次に、新しいクラシック実行アカウントを使用して正しく認証できることを確認するために小さなテストを実施します。     
 
-1. 先ほど作成した Automation アカウントを Azure ポータルで開きます。  
+1. 先ほど作成した Automation アカウントを Azure Portal で開きます。  
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **AzureClassicAutomationTutorialScript** Runbook を選択し、**[開始]** をクリックして、Runbook を開始します。  Runbook を開始することを確認するプロンプトが表示されます。
 4. [Runbook ジョブ](automation-runbook-execution.md) が作成されると、[ジョブ] ブレードが表示され、ジョブの状態が **[ジョブの概要]** タイルに表示されます。  
@@ -126,21 +125,51 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 9. **[出力]** ブレードを閉じて、**[ジョブの概要]** ブレードに戻ります。
 10. **[ジョブの概要]** と、対応する **[AzureClassicAutomationTutorialScript]** Runbook ブレードを閉じます。
 
+## <a name="managing-azure-run-as-account"></a>Azure 実行アカウントの管理
+Automation アカウントの有効期間中、期限切れになる前に証明書を書き換える必要があります。また、アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。  このセクションでは、これを行う方法について説明します。  
+
+### <a name="certificate-renewal"></a>証明書の書き換え
+Azure 実行アカウント用に作成された証明書は、作成日から&1; 年後の期限日までいつでも書き換えることができます。  証明書を書き換えるとき、古い有効な証明書は、キューに登録された、または実行中の Runbook が影響を受けないように保持されます。この Runbook は実行アカウントで認証が行われるためです。  証明書は、期限が切れるまで存在し続けます。     
+
+1. Azure Portal で Automation アカウントを開きます。  
+2. [Automation アカウント] ブレードのアカウントのプロパティ ウィンドウで、**[アカウント設定]** セクションの **[実行アカウント]** をクリックします。<br><br> ![[Automation アカウント] プロパティ ウィンドウ](media/automation-sec-configure-azure-runas-account/automation-account-properties-pane.png)<br><br>
+3. **[実行アカウント]** プロパティ ブレードで、証明書を更新する実行アカウントまたはクラシック実行アカウントを選択し、選択したアカウントのプロパティ ブレードで **[証明書の書き換え]** をクリックします。<br><br> ![実行アカウントの証明書を書き換える](media/automation-sec-configure-azure-runas-account/automation-account-renew-runas-certificate.png)<br><br> 続行するかどうかを確認するプロンプトが表示されます。  
+4. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
+
+### <a name="delete-run-as-account"></a>Azure 実行アカウントを削除する
+次の手順では、Azure 実行アカウントまたはクラシック実行アカウントを削除して、再作成する方法について説明します。  この操作を実行するとき、Automation アカウントが保持されます。  削除した実行アカウントまたはクラシック実行アカウントは、ポータルで再作成できます。  
+
+1. Azure Portal で Automation アカウントを開きます。  
+2. [Automation アカウント] ブレードのアカウントのプロパティ ウィンドウで、**[アカウント設定]** セクションの **[実行アカウント]** をクリックします。
+3. **[実行アカウント]** プロパティ ブレードで、削除する実行アカウントまたはクラシック実行アカウントを選択し、選択したアカウントのプロパティ ブレードで **[削除]** をクリックします。<br><br> ![実行アカウントを削除する](media/automation-sec-configure-azure-runas-account/automation-account-delete-runas.png)<br><br>  続行するかどうかを確認するプロンプトが表示されます。
+4. アカウントが削除されている間、メニューの **[通知]** で進行状況を追跡できます。  削除が完了したら、**[実行アカウント]** プロパティ ブレードでそのアカウントを再作成できます。作成オプションとして **[Azure 実行アカウント]** を選択します。<br><br> ![Automation 実行アカウントを再作成する](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
+
+### <a name="misconfiguration"></a>誤った構成
+実行アカウントまたはクラシック実行アカウントが正しく機能するうえで必要な構成項目が削除されたり、初期セットアップ中に適切に作成されなかったりすることがあります。たとえば、次のような項目です。
+
+* 証明書資産 
+* 接続資産 
+* 共同作業者ロールからの実行アカウントの削除
+* Azure AD のサービス プリンシパルまたはアプリケーション
+
+Automation ではこうした変更が検出され、アカウントの **[実行アカウント]** プロパティ ブレードで **[不完全]** 状態として通知されます。<br><br> ![実行構成が不完全であることを示すステータス メッセージ](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config.png)<br><br>[実行アカウント] を選択すると、アカウントのプロパティ ウィンドウで次の警告が表示されます。<br><br> ![実行構成が不完全であることを示す警告メッセージ](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config-msg.png)。<br>  
+実行アカウントが正しく構成されていない場合、これを迅速に解決するには、実行アカウントを削除して再作成します。   
+
 ## <a name="update-an-automation-account-using-powershell"></a>PowerShell を使用して Automation アカウントを更新する
 次に示す場合に、PowerShell を使用して既存の Automation アカウントを更新できます。
 
 1. Automation アカウントは作成済みであるものの、実行アカウントの作成を拒否した場合
-2. Resource Manager リソースを管理するための Automation アカウントを既に所有しており、それを更新して Runbook 認証用の実行アカウントを含める場合
-3. クラシック リソースを管理するための Automation アカウントを既に所有しており、それを、新しいアカウントを作成する代わりにクラシック実行アカウントを使用するように更新し、Runbook と資産をそのアカウントに移行する場合   
+2. Azure Government クラウドで Automation アカウントを作成する必要があります
+3. Resource Manager リソースを管理するための Automation アカウントを既に所有しており、それを更新して Runbook 認証用の実行アカウントを含める場合
+4. クラシック リソースを管理するための Automation アカウントを既に所有しており、それを、新しいアカウントを作成する代わりにクラシック実行アカウントを使用するように更新し、Runbook と資産をそのアカウントに移行する場合   
 
 以降の手順に進む前に、次のことを確認してください。
 
-1. Windows 7 を実行している場合は、 [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をダウンロードしてインストール済みであること。   
-    Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1、および Windows 7 SP1 を実行している場合は、 [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) をインストールできます。
-2. Azure PowerShell 1.0 このリリースとそのインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+1. このスクリプトは、Azure Resource Manager モジュール 2.01 以降がインストールされた Windows 10 および Windows Server 2016 でのみ実行できます。  前のバージョンの Windows ではサポートされません。  
+2. Azure PowerShell 1.0 以降。 このリリースとそのインストール方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 3. Automation アカウントが作成済みであること。  このアカウントは、以下の両方のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
 
-スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、Azure Portal の **[Automation アカウント]** ブレードからお使いの Automation アカウントを選択し、**[すべての設定]** を選択します。  **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。  **[プロパティ]** ブレードで、値をメモすることができます。<br> ![Automation Account properties](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、Azure Portal の **[Automation アカウント]** ブレードからお使いの Automation アカウントを選択し、**[すべての設定]** を選択します。  **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。  **[プロパティ]** ブレードで、値をメモすることができます。<br><br> ![Automation Account properties](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-run-as-account-powershell-script"></a>実行アカウント用の PowerShell スクリプトを作成する
 下の PowerShell スクリプトで構成の対象となる要素は次のとおりです。
@@ -172,9 +201,18 @@ Automation アカウントが正常に作成されると、いくつかのリソ
    
         [Parameter(Mandatory=$false)]
         [int] $NoOfMonthsUntilExpired = 12
+
+        [Parameter(Mandatory=$True)]
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
         )
    
-        Login-AzureRmAccount
+        #Check to see which cloud environment to sign into.
+        Switch ($Environment)
+        {
+          "AzureCloud" {Login-AzureRmAccount}
+          "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+        }
         Import-Module AzureRM.Resources
         Select-AzureRmSubscription -SubscriptionId $SubscriptionId
    
@@ -195,9 +233,9 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         $KeyCredential.StartDate = $CurrentDate
         $KeyCredential.EndDate= $EndDate
         $KeyCredential.KeyId = $KeyId
-        $KeyCredential.Type = "AsymmetricX509Cert"
-        $KeyCredential.Usage = "Verify"
-        $KeyCredential.Value = $KeyValue
+        #$KeyCredential.Type = "AsymmetricX509Cert"
+        #$KeyCredential.Usage = "Verify"
+        $KeyCredential.CertValue = $KeyValue
    
         # Use Key credentials
         $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
@@ -229,8 +267,9 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         Remove-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -Force -ErrorAction SilentlyContinue
         $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
         New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
+
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
-3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
+3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId*、*-CertPlainPassword*、*-Environment* の各パラメーターの値は適宜変更してください。<br>
    
    > [!NOTE]
    > スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してログインする必要があります。
@@ -241,7 +280,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         -AutomationAccountName <NameofAutomationAccount> `
         -ApplicationDisplayName <DisplayNameofAutomationAccount> `
         -SubscriptionId <SubscriptionId> `
-        -CertPlainPassword "<StrongPassword>"  
+        -CertPlainPassword "<StrongPassword>" -Environment <valid values are AzureCloud or AzureUSGovernment>  
    <br>
 
 スクリプトが正常に完了したら、次の [サンプル コード](#sample-code-to-authenticate-with-resource-manager-resources) を参照し、Resource Manager リソースでの認証と、資格情報の構成の検証を行います。
@@ -307,6 +346,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
         Write-Host -ForegroundColor red "Please upload the cert $CertPathCer to the Management store by following the steps below."
         Write-Host -ForegroundColor red "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates."
         Write-Host -ForegroundColor red "Then click Upload and upload the certificate $CertPathCer"
+
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。  
 3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
    
@@ -333,7 +373,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
        # Get the connection "AzureRunAsConnection "
        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-       "Logging in to Azure..."
+       "Signing in to Azure..."
        Add-AzureRmAccount `
          -ServicePrincipal `
          -TenantId $servicePrincipalConnection.TenantId `
@@ -354,7 +394,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
     }
 
 
-スクリプトには、サブスクリプション コンテキストの参照をサポートする 2 つのコード行が追加されているため、複数のサブスクリプション間での作業がしやすくなっています。 SubscriptionId という名前の変数資産にはサブスクリプションの ID が格納されており、Add-AzureRmAccount コマンドレットのステートメントの後に、 [-SubscriptionId](https://msdn.microsoft.com/library/mt619263.aspx) パラメーター セットを使用して *Set-AzureRmContext コマンドレット*が宣言されます。 変数名が一般的すぎる場合は、目的に沿った特定しやすい名前になるよう、プレフィックスやその他の名前付け規則を含むように変数名を変更できます。 また、-SubscriptionId の代わりに、-SubscriptionName パラメーター セットを対応する変数資産と共に使用することもできます。  
+スクリプトには、サブスクリプション コンテキストの参照をサポートする&2; つのコード行が追加されているため、複数のサブスクリプション間での作業がしやすくなっています。 SubscriptionId という名前の変数資産にはサブスクリプションの ID が格納されており、Add-AzureRmAccount コマンドレットのステートメントの後に、 [-SubscriptionId](https://msdn.microsoft.com/library/mt619263.aspx) パラメーター セットを使用して *Set-AzureRmContext コマンドレット*が宣言されます。 変数名が一般的すぎる場合は、目的に沿った特定しやすい名前になるよう、プレフィックスやその他の名前付け規則を含むように変数名を変更できます。 また、-SubscriptionId の代わりに、-SubscriptionName パラメーター セットを対応する変数資産と共に使用することもできます。    
 
 Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccount**) は、 *ServicePrincipalCertificate* パラメーター セットを使用することに注意してください。  認証に使用するのはサービス プリンシパル証明書であり、資格情報ではありません。  
 
@@ -390,10 +430,5 @@ Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccou
 * サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
 * Azure Automation におけるロールベースのアクセス制御の詳細については、「 [Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 * 証明書と Azure サービスの詳細については、「 [Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

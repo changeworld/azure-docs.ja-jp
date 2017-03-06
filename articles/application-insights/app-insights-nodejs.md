@@ -1,21 +1,22 @@
 ---
-title: "Application Insights SDK を追加して Node.js アプリを監視する | Microsoft Docs"
-description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
+title: "Azure Application Insights SDK を使用して Node.js アプリを監視する | Microsoft Docs"
+description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights を使用して分析します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: d84ab993b1d9489ca9d2edaa1cb9672d9bced899
-ms.openlocfilehash: fd089f0cc5c23dcddb392df55c65907519f59248
+ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
+ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -31,15 +32,14 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 #### <a name="before-you-start"></a>開始する前に
 必要なもの:
 
-* Visual Studio 2013 以降 より新しいバージョンが適しています。
 * [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 
 ## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights リソースの作成
-[Azure Portal][portal] にサインインし、Application Insights の新しいリソースを作成します。 Azure の[リソース][roles]は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+[Azure Portal][portal] にサインインし、Application Insights の新しいリソースを作成します。 Azure の [リソース][roles] は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-nodejs/01-new-asp.png)
 
-アプリケーションの種類として [その他] を選択します。 アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
+アプリケーションの種類として [全般] を選択します。 アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと [メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
 
 #### <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
 これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
@@ -70,11 +70,11 @@ appInsights.setup("<instrumentation_key>").start();
 ## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> 利用統計情報を表示する
 [Azure ポータル](https://portal.azure.com) に戻り、Application Insights のリソースを参照します。
 
-[概要] ページでデータを探します。 最初、1 つまたは 2 つのポイントだけが表示されます。 次に例を示します。
+[概要] ページでデータを探します。 最初、1 つまたは&2; つのポイントだけが表示されます。 次に例を示します。
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-nodejs/12-first-perf.png)
 
-任意のグラフをクリックして、より詳細なメトリックを表示します。 メトリックの詳細については、[こちら][perf]をご覧ください。
+任意のグラフをクリックして、より詳細なメトリックを表示します。 [メトリックの詳細についてはこちらをご覧ください。][perf]
 
 #### <a name="no-data"></a>データが表示されない場合
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
@@ -197,9 +197,4 @@ server.on("listening", () => {
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

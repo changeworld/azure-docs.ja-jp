@@ -1,23 +1,25 @@
 ---
-title: "Azure Portal を使用した仮想ネットワークの作成 | Microsoft Docs"
-description: "Resource Manager で Azure Portal を使用して仮想ネットワークを作成する方法を説明します。"
+title: "仮想ネットワークの作成 - Azure Portal | Microsoft Docs"
+description: "Azure ポータルを使用して仮想ネットワークを作成する方法を説明します。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 4ad679a4-a959-4e48-a317-d9f5655a442b
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/8/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: c7257faad9a41174fb1d65e04c99cd96a8af3ea9
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 54094c18dcbb751835bfa56d53358ce19e08387d
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -25,7 +27,7 @@ ms.openlocfilehash: c7257faad9a41174fb1d65e04c99cd96a8af3ea9
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure には、Azure Resource Manager とクラシックという 2 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
+Azure には、Azure Resource Manager とクラシックという&2; 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
  
 この記事では、Azure Portal を使用して Resource Manager デプロイメント モデルで VNet を作成する方法について説明します。 他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
@@ -60,7 +62,7 @@ Azure Portal を使用して仮想ネットワークを作成するには、次�
 
     既存のリソース グループを選択することもできます。 リソース グループについて詳しくは、[リソース グループの概要](../azure-resource-manager/resource-group-overview.md#resource-groups)に関する記事をご覧ください。 別の場所を選択することもできます。 Azure の場所とリージョンについて詳しくは、「[Azure リージョン](https://azure.microsoft.com/regions)」をご覧ください。
 
-5. ポータルでは、VNet を作成するときに、サブネットを 1 つだけ作成できます。 このシナリオでは、VNet を作成した後に 2 つ目のサブネットを作成する必要があります。 2 つ目のサブネットを作成するには、次の図に示すように、**[すべてのリソース]** をクリックし、**[すべてのリソース]** ブレードで **[TestVNet]** をクリックします。
+5. ポータルでは、VNet を作成するときに、サブネットを&1; つだけ作成できます。 このシナリオでは、VNet を作成した後に&2; つ目のサブネットを作成する必要があります。 2 つ目のサブネットを作成するには、次の図に示すように、**[すべてのリソース]** をクリックし、**[すべてのリソース]** ブレードで **[TestVNet]** をクリックします。
 
     ![作成された VNet](./media/virtual-network-create-vnet-arm-pportal/4.png)
 
@@ -72,7 +74,7 @@ Azure Portal を使用して仮想ネットワークを作成するには、次�
     
     ![VNet 内のサブネットの一覧](./media/virtual-network-create-vnet-arm-pportal/6.png)
 
-この記事では、テスト用の 2 つのサブネットを持つ仮想ネットワークを作成する方法について説明します。 運用環境で使用する仮想ネットワークを作成する前に、[仮想ネットワークの概要](virtual-networks-overview.md)に関する記事と[仮想ネットワークの計画と設計](virtual-network-vnet-plan-design-arm.md)に関する記事を読んで、仮想ネットワークとすべての設定を完全に理解することをお勧めします。 
+この記事では、テスト用の&2; つのサブネットを持つ仮想ネットワークを作成する方法について説明します。 運用環境で使用する仮想ネットワークを作成する前に、[仮想ネットワークの概要](virtual-networks-overview.md)に関する記事と[仮想ネットワークの計画と設計](virtual-network-vnet-plan-design-arm.md)に関する記事を読んで、仮想ネットワークとすべての設定を完全に理解することをお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -81,8 +83,3 @@ Azure Portal を使用して仮想ネットワークを作成するには、次�
 - 仮想マシン (VM) を仮想ネットワークに接続する方法。[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関する記事または [Linux VM の作成](../virtual-machines/virtual-machines-linux-quick-create-portal.md)に関する記事をご覧ください。 この記事の手順で VNet とサブネットを作成する代わりに、VM を接続する既存の VNet とサブネットを選択できます。
 - 仮想ネットワークを他の仮想ネットワークに接続する方法。[VNet の接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関する記事をご覧ください。
 - サイト間の仮想プライベート ネットワーク (VPN) または ExpressRoute 回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続する方法。 詳しくは、[サイト間 VPN を使用したオンプレミスのネットワークへの VNet の接続](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関する記事と「[ExpressRoute 回線への VNet のリンク](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)」をご覧ください。
-
-
-<!--HONumber=Jan17_HO1-->
-
-

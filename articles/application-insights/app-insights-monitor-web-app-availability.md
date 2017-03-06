@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -29,7 +30,7 @@ Web テストは、パブリック インターネットからアクセスでき
 Web テストには次の&2; 種類があります。
 
 * [URL の Ping テスト](#create): Azure ポータルで作成できる簡単なテストです。
-* [複数手順の Web テスト](#multi-step-web-tests): Visual Studio Ultimate または Visual Studio Enterprise で作成してポータルにアップロードします。
+* [複数ステップ Web テスト](#multi-step-web-tests): Visual Studio Enterprise で作成してポータルにアップロードします。
 
 アプリケーション リソースごとに最大 10 個の Web テストを作成できます。
 
@@ -81,39 +82,20 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 ## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>エラーが発生する場合
 赤い点をクリックします。
 
-![赤い点をクリックします](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![赤い点をクリックします](./media/app-insights-monitor-web-app-availability/open-instance.png)
 
-または、下にスクロールし、成功が 100% に満たないテストをクリックします。
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+Web テスト結果から次の操作を実行できます。
 
-テストの結果が表示されます。
+* サーバーから受信した応答を調べる。
+* 失敗した要求インスタンスの処理中に、サーバー アプリによって送信されたテレメトリを開く。
+* 懸案や作業の項目を Git または VSTS に記録して問題を追跡する。 バグには、このイベントへのリンクが含まれます。
+* Visual Studio で Web テスト結果を開く。
 
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/16-1test.png)
-
-複数の場所からテストが実行されています&#151;結果が 100% 未満のいずれかの場所を選択します。
-
-![Click a specific webtest](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
-
-**失敗したテスト** まで下へスクロールし、結果を選択します。
-
-その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
-
-![Web テスト実行結果
-](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
-
-代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
 
 *問題がないように見えるのに、エラーとして報告されました。* イメージ、スクリプト、スタイル シート、およびページによって読み込まれるその他のファイルすべてを確認してください。 これらのいずれかにエラーがある場合、メインの html ページの読み込みに問題がない場合でも、テストはエラーとして報告されます。
 
-### <a name="open-the-server-request-and-exceptions"></a>サーバーの要求と例外を開く
-
-特定のテストの詳細なプロパティから、サーバー側のレポートを開き、要求と、例外などのイベントに関する情報を確認できます。
-
-![Web テスト実行結果
-](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
-
-関連項目が表示されない場合は、[サンプリング](app-insights-sampling.md)が実行中である可能性があります。
+"*関連項目がない*" 場合は、 [サンプリング](app-insights-sampling.md)が操作中の可能性があります。
 
 ## <a name="multi-step-web-tests"></a>複数手順の Web テスト
 URL の順序に関連するシナリオを監視することができます。 たとえば、販売 Web サイトを監視している場合は、ショッピング カートに商品を正しく追加できるかどうかをテストできます。
@@ -127,7 +109,7 @@ URL の順序に関連するシナリオを監視することができます。 
 コード化された機能をテストで使用できないことに注意してください。シナリオの手順は、.webtest ファイルにスクリプトとして含まれる必要があります。
 
 #### <a name="1-record-a-scenario"></a>1.シナリオを記録する
-Web セッションを記録するには、Visual Studio Enterprise または Ultimate を使用します。
+Web セッションを記録するには、Visual Studio Enterprise を使用します。
 
 1. Web パフォーマンス テストのプロジェクトを作成します。
 
@@ -245,7 +227,7 @@ Web サイトに対してロード テストを実行できます。 可用性�
 テストが完了すると、応答時間と成功率が表示されます。
 
 ## <a name="automation"></a>Automation
-* [PowerShell スクリプトにより、Web テストを自動的に設定](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/) する。
+* [PowerShell スクリプトにより、Web テストを自動的に設定](app-insights-powershell.md#add-an-availability-test) する。
 * アラートが発生したときに呼び出される [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) を設定する。
 
 ## <a name="questions-problems"></a>疑問がある場合は、 問題が発生した場合
@@ -297,9 +279,4 @@ Web サイトに対してロード テストを実行できます。 可用性�
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

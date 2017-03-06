@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI を使用した Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI for Node.js を使用して Azure に Linux VM を作成します。"
+title: "Azure CLI 1.0 を使用した Linux VM の作成 | Microsoft Docs"
+description: "Azure CLI 1.0 を使用した Azure での Linux VM の作成"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -9,23 +9,24 @@ editor:
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
 ms.devlang: NA
-ms.topic: hero-article
+ms.topic: 
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 2c37d5186e169789881a4b29597cb37cd6f7ede9
-ms.openlocfilehash: dc5c575873ceb2acc8321b949031276d9a8f8cc8
+ms.sourcegitcommit: a0d80ae5a4fe5af6f46e97a8f5d9a0c0715361b8
+ms.openlocfilehash: 5643a7f792cdfd1a445e69ac18b149a736951991
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-linux-vm-using-the-azure-cli"></a>Azure CLI を使用して新しく Linux VM を作成する
+# <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM を作成する
 
 この記事では、Azure コマンド ライン インターフェイス (CLI) で `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。 `quick-create` コマンドは、プロトタイプの作成や概念のテストを迅速に行うことができる、セキュリティで保護された基本的なインフラストラクチャ内に VM をデプロイします。
 
 > [!NOTE]
-Azure CLI 2.0 (プレビュー) を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+Azure CLI 2.0 を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
 
 この記事では以下が必要です。
 
@@ -211,9 +212,4 @@ myAdminUser@myVM:~$
 * [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [さまざまなコマンドで `docker-machine` Azure ドライバーを使用すると、Linux VM を Docker ホストとしてもすばやく作成](virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
