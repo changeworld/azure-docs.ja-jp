@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: d00ba4e6d1abd62e5a0d5a9d5bb229d3fa64b473
 ms.openlocfilehash: fb12fb78d4257fc8264bd476de70671eb8264323
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -67,9 +68,4 @@ Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure �
 * [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md)の基礎を確認する
 * [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
 * 独自の [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

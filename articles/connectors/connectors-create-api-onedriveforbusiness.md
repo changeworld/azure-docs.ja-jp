@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 992b4b7bab8878355cbe936b75768e67b086286e
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -320,10 +321,5 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 ### <a name="object"></a>オブジェクト
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

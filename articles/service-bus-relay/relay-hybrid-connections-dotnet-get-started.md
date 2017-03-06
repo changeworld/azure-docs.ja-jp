@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 1ee1e7d0c6f239abfda474d51c8d02d5338dabc7
-ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: ec8d7cf64786a3347998f243fc7e4f9550fd9f08
 4. メッセージを送信するクライアント (送信側) コンソール アプリケーションの作成
 
 ## <a name="prerequisites"></a>前提条件
-1. [Visual Studio 2013 または Visual Studio 2015](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2015 を使用します。
+1. [Visual Studio 2015 以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2015 を使用します。
 2. Azure サブスクリプション。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -72,10 +73,5 @@ Relay にメッセージを送信するために、Visual Studio を使って C#
 * [Relay に関する FAQ](relay-faq.md)
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

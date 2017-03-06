@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: e81ff09443b8d4930f20d0bbeb100c4a90f92a7f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -103,8 +104,3 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Arduino �
 
 [troubleshoot]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md
 [process-and-store-iot-hub-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -16,6 +16,7 @@ ms.author: markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: fa00142a9e89c5ad2630f688ea9771a1a542c052
 ms.openlocfilehash: e5f89f845302ecb890caa50dd8f86503b29f1154
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -93,9 +94,4 @@ Azure Backup Server は、System Center Data Protection Manager (DPM) と同様�
 どこから手を付ければよいかわからない場合は、こちらの「[クラシック デプロイメント モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする](../backup/backup-configure-vault-classic.md)」からご覧ください。 このチュートリアルでは、Windows Server またはコンピューターでのバックアップ プロジェクトのを設定手順について説明しています。
 
 Azure Backup の使い方は知っているものの料金が気になる場合は、[Backup の価格ページ](http://azure.microsoft.com/pricing/details/backup/)をご覧ください。 このページにはよく寄せられる質問のリストも記載されており、役立つ情報を得ることができます。 また、**[リージョン]** ドロップダウン メニューに Azure Government リージョンは&2; つ含まれています。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

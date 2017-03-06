@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
 ms.openlocfilehash: 3a0fdef111fbd4a9f7491e247f2236cf70b89dca
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -117,10 +118,5 @@ SMTP には次のアクションがあります。
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

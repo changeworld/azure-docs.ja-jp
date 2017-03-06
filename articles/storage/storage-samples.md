@@ -17,6 +17,7 @@ ms.author: marsma
 translationtype: Human Translation
 ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
 ms.openlocfilehash: dc466ed5dbd7ad14dd1c84760d9205b940acf504
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -76,10 +77,5 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 ### <a name="c-resources"></a>C++ のリソース
 * [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 * [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

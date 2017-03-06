@@ -1306,8 +1306,3 @@ azure vm disk attach <resource-group> <vm-name> [vhd-url]
 **arm** モードでの Azure CLI のその他の使用例については、「 [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。 Azure リソースとその概念の詳細については、「[Azure Resource Manager の概要](../articles/azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
-
-
-<!--HONumber=Jan17_HO4-->
-
-

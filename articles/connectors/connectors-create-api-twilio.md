@@ -18,6 +18,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 6770aa8387fe3d381fd9c566ca0c38c88a4b1e55
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -239,10 +240,5 @@ Twilio コネクタには、次のアクションがあります。 トリガー
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

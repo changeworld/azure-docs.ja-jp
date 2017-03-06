@@ -18,6 +18,7 @@ ms.author: glimoli;genli
 translationtype: Human Translation
 ms.sourcegitcommit: 5d8274f61c3de178c9d418adb9be1efe0fe62bc1
 ms.openlocfilehash: 6fbfc74cb1cce744b51345c0732b40b95be21c94
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -299,10 +300,5 @@ Windows の最新の更新プログラムをインストールします。 こ�
 
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

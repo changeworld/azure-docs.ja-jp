@@ -17,6 +17,7 @@ ms.author: cgronlun;olgali
 translationtype: Human Translation
 ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
 ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -67,9 +68,4 @@ ms.openlocfilehash: 7b2bca108770a79a693a408a628ccc6370c36b7c
 * [さまざまなソースからデータをインポートする](machine-learning-data-science-import-data.md)
 * [Machine Learning 向け R 言語のクイックスタート チュートリアル](machine-learning-r-quickstart.md)
 * [Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

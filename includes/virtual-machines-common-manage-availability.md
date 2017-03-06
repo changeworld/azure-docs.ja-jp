@@ -57,8 +57,3 @@ Azure Managed Disks を使用する場合は、次のガイダンスを省略で
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [各可用性セットに複数のストレージ アカウントを使用する]: #use-multiple-storage-accounts-for-each-availability-set
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

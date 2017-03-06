@@ -19,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 18131c083a0dc24eaa6f58445aa61d5872210417
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -213,9 +214,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

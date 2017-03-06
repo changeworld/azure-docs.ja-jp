@@ -18,6 +18,7 @@ ms.author: asaxton
 translationtype: Human Translation
 ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
 ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -50,10 +51,5 @@ ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
 * Power BI Embedded で Azure SDK、PowerShell、CLI がサポートされます。
 * 視覚化データを **.csv**にエクスポートできるようになりました。
 * Microsoft Azure と同じすべての言語/ロケールで Power BI Embedded がサポートされるようになりました。 詳細については、[Azure の言語](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

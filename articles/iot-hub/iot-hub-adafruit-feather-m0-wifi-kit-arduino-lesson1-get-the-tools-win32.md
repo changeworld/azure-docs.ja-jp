@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: dbf4be49bf806415c7a7817acb37c7e33be6267d
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -91,8 +92,3 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 [macos]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-mac.md
 [troubleshooting]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md
 [create-and-deploy-the-blink-sample-application]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-deploy-blink-app.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

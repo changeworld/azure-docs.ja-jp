@@ -19,6 +19,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: add307420b9e16a60b0e57b0ba08188b2509978e
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -132,9 +133,4 @@ Microsoft Translator がサポートするすべての言語を取得します�
 <!--References-->
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/connectors-create-api-microsofttranslator/register-your-application.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

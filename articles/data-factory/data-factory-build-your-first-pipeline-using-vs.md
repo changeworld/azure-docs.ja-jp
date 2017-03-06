@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 0a4eb02e50c90f41bdc4f2db2af87e2b194da25a
 ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -525,9 +526,4 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 | [データ変換のアクティビティ](data-factory-data-transformation-activities.md) |この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

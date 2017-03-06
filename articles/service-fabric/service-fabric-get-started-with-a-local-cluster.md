@@ -17,6 +17,7 @@ ms.author: ryanwi;mikhegn
 translationtype: Human Translation
 ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
 ms.openlocfilehash: d1320daaf4b0bd8c1a7b7c8e37fa8b81c4a53e64
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -240,9 +241,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 [switch-cluster-mode]: ./media/service-fabric-get-started-with-a-local-cluster/switch-cluster-mode.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

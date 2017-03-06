@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 0a5dd7e010ba46b724bb6a2526dc2a2730acc10f
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -97,10 +98,5 @@ IoT hub からメッセージを読み取るサンプル コードを実行し�
 ## <a name="next-steps"></a>次のステップ
 [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "開発環境のセットアップ | Microsoft Docs"
+title: "Azure マイクロサービスの開発環境のセットアップ | Microsoft Docs"
 description: "ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを終えれば、アプリケーションを構築する準備は完了です。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2016
-ms.author: ryanwi
+ms.date: 02/14/2017
+ms.author: ryanwi, mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 04092b735fa77c72ffe6c492a3fc975eac2e99fd
-ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
+ms.sourcegitcommit: a3367bc4eb66a97263abc2e057eda41770e3face
+ms.openlocfilehash: c461706167728361576f42f8ac7f9b4a2d120609
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -37,6 +38,7 @@ ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
 * Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
+* Windows Server 2016
 * Windows 10
 
 > [!NOTE]
@@ -44,29 +46,33 @@ ms.openlocfilehash: a71b77a320e9321eaa857acfcfae8822de0ac9e5
 > 
 > 
 
-## <a name="install-the-runtime-sdk-and-tools"></a>ランタイム、SDK、およびツールのインストール
-Web Platform Installer には、Service Fabric 開発用に、次の&2; つの構成が用意されています。
+## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
+### <a name="to-use-visual-studio-2017-rc"></a>Visual Studio 2017 RC を使用するには
+Service Fabric ツールは、Visual Studio 2017 RC の Azure 開発および管理ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
+さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK をインストールする必要があります。
 
-Visual Studio 2017 (Azure 開発および管理ワークロードをインストールする必要があります):
+* [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
-* [Service Fabric ランタイムと SDK をインストールする (Visual Studio Tools はインストールしない)][core-sdk]
+### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015 を使用するには (Visual Studio 2015 Update 2 以降が必要)
+Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK と共にインストールされます。
 
-Visual Studio 2015 (Visual Studio 2015 Update 2 以降が必要):
+* [Microsoft Azure Service Fabric SDK およびツールのインストール][full-bundle-vs2015]
 
-* [Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
-* [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)][core-sdk]
+### <a name="sdk-installation-only"></a>SDK のみのインストール
+SDK のみが必要な場合は、次のパッケージをインストールすることができます。
+* [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 > [!WARNING]
-> これらの起動リンクを使用した場合、または Chrome ブラウザーでこれらのリンクを使用した場合、インストール中にエラーが発生することが報告されています。 これらは Web Platform Installer の既知の問題であり、現在対処中です。  この問題を回避するには、次のことをお試しください。
->- Internet Explorer または Edge ブラウザーで上記のリンクを開く
+> これらの起動リンクを使用した場合、または Chrome ブラウザーでこれらのリンクを使用した場合、インストール中にエラーが発生することが報告されています。 これらのエラーは Web Platform Installer の既知の問題であり、現在対処中です。  次の回避策をお試しください。
+>- Internet Explorer または Edge ブラウザーで前のリンクを開く
 >- [スタート] メニューから Web Platform Installer を起動し、"Service Fabric" を検索して、SDK をインストールする
 > 
 > ご不便をおかけして申し訳ありません。 
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK 2.4.145
-* Service Fabric ランタイム 5.4.145
-* Visual Studio 2015 Tools 1.4.41209
+* Service Fabric SDK 2.4.164
+* Service Fabric ランタイム 5.4.164
+* Visual Studio 2015 Tools 1.4.50124
 
 サポートされているバージョンの一覧については、[Service Fabric のサポート](service-fabric-support.md)に関するページを参照してください。
 
@@ -94,9 +100,4 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-dev15]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
 [core-sdk]:http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI のリンク"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
 ms.openlocfilehash: b4b60c9134fd491184b02593c32659d2dcdfed8a
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -283,9 +284,4 @@ Sybase では、T-SQL と T-SQL 型をサポートします。 sql 型から .NE
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -18,6 +18,7 @@ ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: 64ad540536dcf3f4d4a73f49d99fb6142b33ea9c
 ms.openlocfilehash: d761bd2cb01d121a3abdd91b59737bece567aba5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -69,10 +70,5 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 [手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [手順 4 - Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ](virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

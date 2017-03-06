@@ -17,6 +17,7 @@ ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: bebfd5e0cc209d8c1fc28d2300c57e3519410954
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -132,9 +133,4 @@ Azure クラスターの場合、完全な URL は Azure Portal の [Cluster Ess
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

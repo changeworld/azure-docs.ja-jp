@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: 8a3f3d8bfe670f2a4d1a4642b2380764aa6daeb4
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -242,9 +243,4 @@ Azure リソース グループを作成するには、次のコード スニペ
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
 - [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

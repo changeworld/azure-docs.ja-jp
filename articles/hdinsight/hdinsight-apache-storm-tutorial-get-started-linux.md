@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4950dbe528290c7d839c97cc8770db4ae0ec08c6
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="apache-storm-tutorial-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要
+#<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Storm Starter サンプルを使用した Linux ベースの HDInsight でのビッグ データ分析の概要
 
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
@@ -32,15 +33,13 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Apache Storm チュートリアルを正常に完了するには、次の条件を満たす必要があります。
-
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* **SSH と SCP を熟知していること**。 HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
+* **SSH と SCP を熟知していること**。 HDInsight での SSH と SCP の使用方法の詳細については、次のドキュメントを参照してください。
   
-    * **Linux、Unix、または OS X クライアント**: [HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [HDInsight の Linux ベースの Hadoop で Windows 10、Linux、Unix、または OS X の Bash から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
     
-    * **Windows クライアント**: [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 
@@ -48,55 +47,61 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
 
 ## <a name="create-a-storm-cluster"></a>Storm クラスターを作成する
 
-このセクションでは、Azure Resource Manager テンプレートを使用して HDInsight バージョン 3.5 クラスター (Storm バージョン 1.0.1) を作成します。 HDInsight バージョンとその SLA については、「 [HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+HDInsight で Storm クラスターを作成するには、次の手順に従います。
 
-1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。         
+1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選択します。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight-35.json" target="_blank"><img src="./media/hdinsight-apache-storm-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    ![HDInsight クラスターの作成](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
+
+2. **[基本]** ブレードで、次の情報を入力します。
+
+    * **[クラスター名]**: HDInsight クラスターの名前。
+    * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
+    * **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]**: HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Ambari Web UI や REST API などのサービスにアクセスします。
+    * **[Secure Shell (SSH) username (Secure Shell (SSH) ユーザー名)]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
+    * **[リソース グループ]**: クラスターが作成されるリソース グループ。
+    * **[場所]**: クラスターが作成される Azure リージョン。
    
-    テンプレートはパブリック BLOB コンテナー (*https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*) 内にあります。 
+    ![サブスクリプションを選択します。](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-2. __[カスタム デプロイ]__ ブレードで以下を入力します。
+3. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードで次の値を設定します。
    
-    * __[リソース グループ]__: クラスターが作成されるリソース グループ。
+    * **[クラスターの種類]**: Storm
 
-    * **[クラスター名]**: Hadoop クラスターの名前。
+    * **[オペレーティング システム]**: Linux
 
-    * __[Cluster login name (クラスター ログイン名)]__ と __[パスワード]__: 既定のログイン名は admin です。
-    
-    * __[SSH ユーザー名]__ と __[パスワード]__: SSH を使用してクラスターに接続するためのユーザーとパスワード。
+    * **[バージョン]**: Storm 1.0.1 (HDI 3.5)
 
-    * __[場所]__: クラスターの地理的な場所。
+    * **[クラスター レベル]**: Standard
      
-     これらの値を書き留めておいてください。  この情報は後で必要になります。
+    最後に、**[選択]** ボタンをクリックして設定を保存します。
      
-     > [!NOTE]
-     > SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。 ここで使用するユーザー名とパスワードは、SSH でクラスターに接続するときに使用されます。 また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。 次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
-     > 
-     > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
-     > 
-     > HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
-     > 
-     > * [HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-     > * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    ![クラスターの種類の選択](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
-3. __[上記の使用条件に同意する]__ を選択し、**[OK]** をクリックして、__[ダッシュボードにピン留めする]__ を選択します。
+4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
-6. **[購入]** をクリックします。 "Submitting deployment for Template deployment" という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
+5. **[ストレージ]** ブレードで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このブレードの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+
+    ![HDInsight のストレージ アカウント設定](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
+
+6. **[概要]** ブレードで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
+   
+    ![クラスター構成の概要](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
+   
+    > [!NOTE]
+    > クラスターの作成には最大で 20 分かかります。
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>HDInsight での Storm Starter サンプルの実行
-
-[storm-starter](https://github.com/apache/storm/tree/master/examples/storm-starter) の例は、HDInsight クラスターに含まれています。 次の手順では、WordCount の例を実行します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、 `-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+    SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
    
-    Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
+    Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
    
-    * [HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [HDInsight の Linux ベースの Hadoop で Windows 10、Linux、Unix、または OS X の Bash から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
     * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
@@ -107,10 +112,10 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
     > [!NOTE]
     > 以前のバージョンの HDInsight では、トポロジのクラス名は `org.apache.storm.starter.WordCountTopology` ではなく `storm.starter.WordCountTopology` です。
    
-    クラスター上で、’wordcount’ というフレンドリ名の WordCount トポロジの例が開始されます。 文はランダムに生成され、文中の各単語の出現回数がカウントされます。
+    このコマンドにより、クラスター上で、"wordcount" というフレンドリ名の WordCount トポロジの例が開始されます。 文はランダムに生成され、文中の各単語の出現回数がカウントされます。
    
     > [!NOTE]
-    > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 この場合、ファイルが保存されているクライアントから `scp` コマンドを実行します。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+    > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     > 
     > WordCount の例と他の Storm スターターの例は、 `/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
@@ -122,12 +127,12 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 次の手順により、Storm UI を使用してトポロジを監視します。
 
-1. Web ブラウザーを開いて https://CLUSTERNAME.azurehdinsight.net/stormui を参照します。**CLUSTERNAME** は実際のクラスターの名前です。 Storm UI が表示されます。
+1. Storm UI を表示するには、Web ブラウザーを開いて、https://CLUSTERNAME.azurehdinsight.net/stormui を参照します。 **CLUSTERNAME** をクラスターの名前に置き換えます。
     
     > [!NOTE]
     > ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
-2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 これにより、トポロジの詳細が表示されます。
+2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
     
     ![Storm Starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/hdinsight-apache-storm-tutorial-get-started-linux/topology-summary.png)
     
@@ -150,7 +155,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
     
     * **アクティブ化の解除** - 実行中のトポロジを一時停止します
     
-    * **再調整** - トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。 詳細については、「 [Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」を参照してください。
+    * **再調整** - トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 再調整によって、並列処理が、クラスター内のノード数の増減に合わせて調整されます。 詳細については、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
     
     * **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
@@ -184,7 +189,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
         2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
    
-    このデータでは、 **seven** という単語が 1493957 回発生したことを確認できます。 これは、このトポロジが開始されてから発生した回数です。
+    この例では、**seven** という単語が 1493957 回発生しました。 この数値は、このトポロジが開始されてから、この単語が発生した回数です。
 
 ## <a name="stop-the-topology"></a>トポロジを停止する
 
@@ -196,7 +201,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
 
-この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジをデプロイ、監視、管理する方法について説明しました。 次は、 [Maven を使用して Java ベースのトポロジを開発](hdinsight-storm-develop-java-topology.md)する方法について説明します。
+この Apache Storm チュートリアルでは、HDInsight での Storm の操作の基本ついて説明しました。 次は、 [Maven を使用して Java ベースのトポロジを開発](hdinsight-storm-develop-java-topology.md)する方法について説明します。
 
 既に Java ベースのトポロジの開発経験があり、既存のトポロジを HDInsight にデプロイする方法をお探しの方は、 [HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)に関するページを参照してください。
 
@@ -213,9 +218,4 @@ HDInsight 上の Storm で使用できるトポロジの例については、以
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

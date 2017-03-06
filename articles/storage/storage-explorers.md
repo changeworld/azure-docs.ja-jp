@@ -17,6 +17,7 @@ ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
 ms.openlocfilehash: eb7e798120ea9075dba92da76826ff621882c32a
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -252,9 +253,4 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
     <td></td>
   </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

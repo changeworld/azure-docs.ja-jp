@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 5730556f4d5af04481c771c8a70f003d6cd2917c
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -103,10 +104,5 @@ SMART by GEP が日々生成する数千ものトランザクション メール
 * GEP アーキテクト アソシエイト ディレクター Huzaifa Matawala
 * GEP エンジニアリング マネージャー Sathyan Narasingh
 * GEP データベース アーキテクト Deepa Velukutty
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

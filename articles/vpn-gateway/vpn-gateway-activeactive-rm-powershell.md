@@ -18,6 +18,7 @@ ms.author: yushwang
 translationtype: Human Translation
 ms.sourcegitcommit: b8b663d802fde83f3435f2d97ceb51d5b5c802bb
 ms.openlocfilehash: ef17c0226528fef35c0317cebbaa14b7bbe28b1d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -378,10 +379,5 @@ AS 番号と "EnableActiveActiveFeature" フラグを使用して、VPN ゲー�
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

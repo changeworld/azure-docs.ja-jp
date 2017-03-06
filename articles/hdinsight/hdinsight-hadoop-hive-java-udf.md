@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -211,10 +212,5 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

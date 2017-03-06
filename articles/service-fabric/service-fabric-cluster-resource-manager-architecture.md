@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 67f07bad8f6f89d9e5e68326f0cc194d920e841b
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -53,9 +54,4 @@ Service Fabric クラスター リソース マネージャーには、クラス
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

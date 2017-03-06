@@ -22,8 +22,3 @@
 7. ピン留めしたタグをダッシュボードから選択すると、そのタグを持つリソースが表示されます。
 
      ![ダッシュボードにタグをピン留めする](./media/resource-manager-tag-resources/show-pinned-tag.png)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

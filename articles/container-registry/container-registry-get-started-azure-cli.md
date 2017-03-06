@@ -1,6 +1,6 @@
 ---
 title: "Azure コンテナー レジストリの作成 - CLI | Microsoft Docs"
-description: "Azure CLI 2.0 プレビューを使用した Azure コンテナー レジストリの作成と管理の概要"
+description: "Azure CLI 2.0 を使用した Azure コンテナー レジストリの作成と管理の概要"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,12 +17,13 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: bd2f3f5331eb83f09f5d187699a39c74be6282d5
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 1d5e16952cbc56a381ead23843515cf6ed1d74a9
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
-Linux、Mac、または Windows コンピューターから [Azure CLI 2.0 プレビュー](https://github.com/Azure/azure-cli)のコマンドを使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure Portal](container-registry-get-started-portal.md) を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+Linux、Mac、または Windows コンピューターから [Azure CLI 2.0](https://github.com/Azure/azure-cli) のコマンドを使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure Portal](container-registry-get-started-portal.md) を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
 
 
 * 背景情報と概念については、「[Azure Container Registry とは](container-registry-intro.md)」を参照してください。
@@ -34,9 +35,9 @@ Linux、Mac、または Windows コンピューターから [Azure CLI 2.0 プ�
 > 
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure CLI 2.0 プレビュー** - CLI 2.0 プレビューをインストールし、利用を開始するには、[インストール手順](https://github.com/Azure/azure-cli/blob/master/README.rst)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。
-* **リソース グループ** - コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 プレビューを使用してリソース グループを作成するには、[CLI 2.0 プレビューのサンプル](https://github.com/Azure/azure-cli-samples/tree/master/arm)を参照してください。 
-* **ストレージ アカウント** (省略可能) - 同じ場所にコンテナー レジストリをバックアップするには、Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 プレビューを使用してストレージ アカウントを作成するには、[CLI 2.0 プレビューのサンプル](https://github.com/Azure/azure-cli-samples/tree/master/storage)を参照してください。
+* **Azure CLI 2.0** - CLI 2.0 をインストールし、利用を開始するには、[インストール手順](https://github.com/Azure/azure-cli/blob/master/README.rst)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。
+* **リソース グループ** - コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 を使用してリソース グループを作成するには、[CLI 2.0 のサンプル](https://github.com/Azure/azure-cli-samples/tree/master/arm)を参照してください。 
+* **ストレージ アカウント** (省略可能) - 同じ場所にコンテナー レジストリをバックアップするには、Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のサンプル](https://github.com/Azure/azure-cli-samples/tree/master/storage)を参照してください。
 * **サービス プリンシパル** (省略可能) - CLI を使用してレジストリを作成する場合、既定でアクセス権は設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てる (または新しく作成して割り当てる) か、レジストリの管理者ユーザー アカウントを有効にします。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
@@ -66,7 +67,7 @@ az acr create -n myRegistry -g myResourceGroup -l southcentralus
 * `loginServer` - [レジストリにログイン](container-registry-authentication.md)するために指定する完全修飾名。 この例では、`myregistry-contoso.exp.azurecr.io` です (すべて小文字)。
 
 ## <a name="assign-a-service-principal"></a>サービス プリンシパルの割り当て
-CLI 2.0 プレビュー コマンドを使用して、Azure Active Directory サービス プリンシパルをレジストリに割り当てます。 これらの例のサービス プリンシパルでは所有者ロールが割り当てられますが、必要に応じて[他のロール](../active-directory/role-based-access-control-configure.md)を割り当てることができます。
+CLI 2.0 コマンドを使用して、Azure Active Directory サービス プリンシパルをレジストリに割り当てます。 これらの例のサービス プリンシパルでは所有者ロールが割り当てられますが、必要に応じて[他のロール](../active-directory/role-based-access-control-configure.md)を割り当てることができます。
 
 ### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>サービス プリンシパルを作成し、レジストリにアクセス権を割り当てる
 次のコマンドでは、`--scopes` パラメーターで渡したレジストリ ID に新しいサービス プリンシパルで所有者ロールのアクセス権を割り当てます。 `--password` パラメーターで強力なパスワードを指定します。
@@ -127,10 +128,5 @@ az acr repository show-tags -n myRegistry --repository samples/nginx -o json
 
 ## <a name="next-steps"></a>次のステップ
 * [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

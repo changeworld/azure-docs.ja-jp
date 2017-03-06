@@ -18,6 +18,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 7a702354de137e1bca033146626dad1ca53fd3ed
 ms.openlocfilehash: b644ef0a8da726b2b23a4bfc81516c112be2de2e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -342,10 +343,5 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [3]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/staging.png
 [4]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/upload.png
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

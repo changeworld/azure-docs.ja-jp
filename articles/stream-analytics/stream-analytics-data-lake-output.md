@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
 ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -87,10 +88,5 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 この問題を解決するには、実行中のジョブを停止し、Data Lake Store 出力に移動します。 [承認の更新] リンクをクリックすると、"承認にリダイレクトしています..." というページが短時間表示されます。 処理が成功すると、このページは自動的に閉じられ、"承認が正常に更新されました" と表示されます。 ページの下部にある [保存] をクリックする必要があります。[最後に停止した時刻] からジョブを再開して継続することで、データの損失を防ぐことができます。
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

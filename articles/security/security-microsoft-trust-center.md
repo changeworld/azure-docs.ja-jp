@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -39,9 +40,4 @@ Microsoft セキュリティ センターでは、次のような情報を提供
 * [リソース](https://aka.ms/tcresources) – Microsoft セキュリティ センターにあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
 
 [Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

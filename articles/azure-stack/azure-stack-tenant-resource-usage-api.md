@@ -17,6 +17,7 @@ ms.author: alfredop
 translationtype: Human Translation
 ms.sourcegitcommit: 83975425a3af878d07a1d9af4011a8331da72e9c
 ms.openlocfilehash: b1d7a843415009e25ad54cf33472b9df52a944d7
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -96,10 +97,5 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 [Provider resource usage API](azure-stack-provider-resource-api.md)
 
 [Usage-related FAQ](azure-stack-usage-related-faq.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

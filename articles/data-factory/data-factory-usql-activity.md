@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
 ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -299,10 +300,5 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 ```
 
 この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

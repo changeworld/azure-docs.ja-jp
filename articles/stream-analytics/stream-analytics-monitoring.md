@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: e9ea21be1fabb5846c4f3b7b05f3a93298830e57
 ms.openlocfilehash: 5119d1d6c02b8e080a9e0905ae21a2bddefab03a
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -63,10 +64,5 @@ Azure ポータルは、クエリとジョブ パフォーマンスの監視と�
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

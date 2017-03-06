@@ -1,5 +1,5 @@
 ---
-title: "Azure PowerShell を使用したデータの保護と回復のための Azure SQL データベースのバックアップと復元の概要 | Microsoft Docs"
+title: "PowerShell: Azure SQL データベースのバックアップと復元 | Microsoft Docs"
 description: "このチュートリアルでは、PowerShell を使用して自動バックアップから特定の時点に復元する方法、自動バックアップを Azure Recovery Services コンテナーに保存する方法、Azure Recovery Services コンテナーから復元する方法について説明します。"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
@@ -17,16 +17,17 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 68a4ed7aad946dda644a0f085c48fd33f453e018
-ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
+ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
+ms.openlocfilehash: 8a3ede8af471e656e830e38e0cf2f3a909fdaadb
+ms.lasthandoff: 02/18/2017
 
 
 ---
 
 
-# <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery-using-powershell"></a>PowerShell を使用したデータの保護と回復のためのバックアップと復元の概要
+# <a name="tutorial-back-up-and-restore-an-azure-sql-database-using-powershell"></a>チュートリアル: PowerShell を使用した Azure SQL データベースのバックアップと復元
 
-この入門用チュートリアルでは、Azure PowerShell を使用して次のことを行う方法を学習します。
+このチュートリアルでは、Azure PowerShell を使用して次のことを行う方法を説明します。
 
 - データベースの既存のバックアップを表示する
 - データベースを以前の状態に復元する
@@ -38,7 +39,7 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
+* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://azure.microsoft.com/free/)か、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)ことができます。 
 
 * サブスクリプションの所有者または共同作成者ロールのメンバーであるアカウントを使用して Azure に接続する必要があります。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 
@@ -47,7 +48,7 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 * 「[Azure Portal と SQL Server Management Studio を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる](sql-database-get-started.md)」またはこれと同等の [PowerShell バージョン](sql-database-get-started-powershell.md)のチュートリアルを完了している必要があります。 完了していない場合は、次に進む前に、この前提条件のチュートリアルを完了するか、[PowerShell バージョン](sql-database-get-started-powershell.md)の最後にある PowerShell スクリプトを実行してください。
 
 > [!TIP]
-> これらのタスクは、入門用チュートリアルで [Azure Portal](sql-database-get-started-backup-recovery.md) を使用して実行することができます。
+> これらのタスクは、入門用チュートリアルで [Azure Portal](sql-database-get-started-backup-recovery-portal.md) を使用して実行することができます。
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -55,9 +56,9 @@ ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
 
 チュートリアルのこのセクションでは、データベースの[サービスによって生成された自動バックアップ](sql-database-automated-backups.md)から最も古い復元ポイントに関する情報を確認します。 
 
-データベースは、最初の復元ポイントと最新の利用可能なバックアップ (現在時刻から 6 分前) の間の任意の時点に復元できます。 
+データベースは、最初の復元ポイントと最新の利用可能なバックアップ (現在時刻から&6; 分前) の間の任意の時点に復元できます。 
 
-次のスニペットでは、[Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabase) コマンドレットを使用して、復元するデータベースの最初の復元ポイントを取得します。 時刻は UTC で返されますが、次のスニペットでは、ローカル時刻で処理する方法を示します。 ライブ データベースの最新の利用可能な復元ポイントは通常、約 6 分前となるため、最新の復元ポイントは単純に現在時刻から 6 分前に設定されます。 
+次のスニペットでは、[Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabase) コマンドレットを使用して、復元するデータベースの最初の復元ポイントを取得します。 時刻は UTC で返されますが、次のスニペットでは、ローカル時刻で処理する方法を示します。 ライブ データベースの最新の利用可能な復元ポイントは通常、約&6; 分前となるため、最新の復元ポイントは単純に現在時刻から&6; 分前に設定されます。 
 
 ```
 # Get available restore points
@@ -114,7 +115,7 @@ $restoredDb
 
 
 > [!TIP]
-> 長期的な保有期間のバックアップを削除するには、「[Delete long-term retention backups (長期的な保有期間のバックアップの削除)](sql-database-long-term-retention-delete.md)」を参照してください。
+> 長期的なリテンション期間のバックアップを削除するには、[PowerShell を使った長期的なバックアップ リテンション期間の管理](sql-database-manage-long-term-backup-retention-powershell.md)に関する記事をご覧ください。
 
 
 ### <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
@@ -183,7 +184,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 ```
 
 > [!IMPORTANT]
-> 構成が完了すると、その後 7 日以内に、コンテナーにバックアップが表示されます。 バックアップがコンテナーに表示されたら、このチュートリアルを先に進めてください。
+> 構成が完了すると、その後&7; 日以内に、コンテナーにバックアップが表示されます。 バックアップがコンテナーに表示されたら、このチュートリアルを先に進めてください。
 
 ## <a name="view-backup-info-and-backups-in-long-term-retention"></a>バックアップ情報と、長期的な保有期間内のバックアップを確認する
 
@@ -378,8 +379,4 @@ $restoredDbFromLtr
 - サービスによって生成された自動バックアップについては、[自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 - バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 - バックアップからの復元については、[バックアップからの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-
-
-<!--HONumber=Dec16_HO4-->
-
 

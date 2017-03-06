@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
 ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
+ms.lasthandoff: 01/21/2017
 
 
 
@@ -21,10 +22,5 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
   * Azure NoSQL テクノロジ (DocumentDB、テーブル ストレージ、HBase、HDInsight) の紹介。
   * NoSQL テクノロジと Azure SQL Database の比較。 
   * Azure DocumentDB、テーブル ストレージ、HBase、HDInsight、およびSQL Database。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

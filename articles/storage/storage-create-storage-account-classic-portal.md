@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
 ms.openlocfilehash: 599d509d00e8366a5095cac7503b11cf818e6a34
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -171,10 +172,5 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 * Azure Storage の詳細については、 [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)に関するページを参照してください。
 * [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

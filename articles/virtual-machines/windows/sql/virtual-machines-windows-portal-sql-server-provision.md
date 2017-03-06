@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/02/2017
+ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 55a4b22c3bb097c688446a5ec22f60baecf44ffe
-ms.openlocfilehash: 0dea81ef42d9225ee3780ffd2ad67a37c8a4a2ed
+ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
+ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,11 +53,14 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 
    ![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 使用可能な SQL Server テンプレートを確認します。
-6. 各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。 一覧からこれらのイメージのいずれかを選択します。 次に、仮想マシン イメージの説明を提供する詳細ブレードを確認します。
+5. 使用可能な SQL Server テンプレートを確認します。 各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。 
+6. Windows Server 2016 で、SQL Server 2016 SP1 Developer のテンプレートを選択します。
+
+   > [!TIP]
+   > このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。
    
    > [!NOTE]
-   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 このオプションの詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
+   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます (Developer エディションおよび Express エディションを除く)。 SQL Server Developer は、無料で開発/テストできる (運用ではなく) エディションで、SQL Express は、無料で軽量のワークロード (1 GB 未満のメモリ、10 GB 未満のストレージ) を利用できるエディションです。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 このオプションの詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
    > 
    > 
 7. **[デプロイ モデルの選択]** で **[Resource Manager]** が選択されていることを確認します。 Resource Manager が、新しい仮想マシンに推奨されるデプロイ モデルです。 **[作成]**をクリックします。
@@ -243,14 +247,10 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 SQL Server の設定の構成が完了したら、 **[OK]**をクリックします。
 
 ### <a name="r-services"></a>R Services
-SQL Server 2016 Enterprise エディションには、 [SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx)を有効にするオプションがあります。 これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。 **[有効]** on the **SQL Server Settings** ブレードが開きます。
+[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) を有効にするオプションがあります。 これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。 **[有効]** on the **SQL Server Settings** ブレードが開きます。
 
 ![Enable SQL Server R Services](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
-> [!NOTE]
-> 2016 Enterprise エディションではない SQL Server イメージでは、R Services を有効にするオプションは使用できません。
-> 
-> 
 
 ## <a name="5-review-the-summary"></a>5.概要を確認する
 **[概要]** ブレードで概要を確認し、**[OK]** をクリックして、この VM に対して指定した SQL Server、リソース グループ、リソースを作成します。
@@ -299,10 +299,5 @@ Azure での SQL Server の使用に関するその他の情報については�
 Azure 仮想マシン上の SQL Server の概要に関するビデオについては、「 [Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
 
 [ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

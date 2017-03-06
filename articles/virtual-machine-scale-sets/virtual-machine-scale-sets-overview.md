@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/25/2017
 ms.author: guybo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 868d65642ab9ca3e1c35d33a7cb9e9dd8c31c430
-ms.openlocfilehash: f945ac0357c11c70780dea8e62f094457a213d96
+ms.sourcegitcommit: 54673cbc69e418bdbe7cb5791dfb5d20e7ebcb9f
+ms.openlocfilehash: 2294587fd3f978a3f8383112ece329b47307db7a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="virtual-machine-scale-sets-overview"></a>仮想マシン スケール セットの概要
+# <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure の仮想マシン スケール セットとは
 仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するために使用できる Azure 計算リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
 
 コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。 VM スケール セットの概要については、 [Azure ブログでの発表](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)を参照してください。
@@ -127,9 +129,4 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 **Q.** VM スケール セットは、Azure 可用性セットと連携できますか?
 
 **A.** はい。 VM スケール セットは、5 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。 virtualMachineProfile の下のものは、何も構成する必要はありません。 100 を超える VM を備えた VM スケール セットは、複数の可用性セットに相当する複数の "配置グループ" にまたがります。 VM の可用性セットは、VM のスケール セットと同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードをスケール セットに配置します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

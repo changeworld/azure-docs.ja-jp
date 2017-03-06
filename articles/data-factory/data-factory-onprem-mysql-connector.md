@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
 ms.openlocfilehash: e44228a28a248f64da55590f8d3c0f292a9a0291
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -329,9 +330,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

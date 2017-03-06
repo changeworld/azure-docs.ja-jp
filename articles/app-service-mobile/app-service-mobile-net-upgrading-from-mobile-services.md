@@ -54,7 +54,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK の間に互換性は **ありません** 。 アプリ用にサービスを接続する場合は、発行されたクライアントを現在使用しているサイトに変更を発行しないでください。 代わりに、複製として機能する新しいモバイル アプリを作成する必要があります。 このアプリケーションを同じ App Service プランに指定することで、追加の財務費用が発生しないようにすることができます。
 
-アプリケーションには 2 つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう 1 つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。 自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。 必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。
+アプリケーションには&2; つのバージョンがあります。1 つは変わらず、発行されたアプリとしてそのままの状態で機能し、もう&1; つはユーザーがアップグレードし、新しいクライアント リリースのターゲットにすることができます。 自分のペースでコードを移動し、テストできますが、バグの修正が両方に適用されることを確認する必要があります。 必要な数の (そのままの状態の) クライアント アプリを最新バージョンに更新したら、必要に応じて、元の移行されたアプリを削除することができます。
 
 このアップグレード プロセスの全概要は、次のとおりです。
 
@@ -68,7 +68,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 
 次に、 [.NET バックエンドの作成手順](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)に従って、2 番目のアプリケーション インスタンスを作成します。 App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
 
-Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。 [Azure Portal] を開き、元のアプリケーションに移動してから、**[設定]** > **[アプリケーションの設定]** の順にクリックして、これらの値をコピーできます。 **[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。 新しいアップグレード サイトに移動し、接続文字列を貼り付けて既存の値を上書きします。 アプリに必要な他のアプリケーション設定について、このプロセスを繰り返します。 移行したサービスを使用しない場合は、 **Azure クラシック ポータル** の [Mobile Services] セクションにある [[構成]]タブで接続文字列とアプリ設定を参照できます。
+Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。 [Azure Portal] を開き、元のアプリケーションに移動してから、**[設定]** > **[アプリケーションの設定]** の順にクリックして、これらの値をコピーできます。 **[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。 新しいアップグレード サイトに移動し、接続文字列を貼り付けて既存の値を上書きします。 アプリに必要な他のアプリケーション設定について、このプロセスを繰り返します。 移行したサービスを使用しない場合は、[Azure クラシック ポータル] の [Mobile Services] セクションにある **構成** タブで接続文字列とアプリ設定を参照できます。
 
 アプリケーションの ASP.NET プロジェクトのコピーを作成し、新しいサイトに発行します。 新しい URL で更新されたクライアント アプリケーションのコピーを使用して、すべて予期したとおりに機能することを検証します。
 
@@ -126,7 +126,7 @@ Mobile Services では、モバイル アプリ名が Entity Framework セット
 
 ### <a name="system-properties"></a>システム プロパティ
 #### <a name="naming"></a>名前を付ける
-Azure Mobile Services サーバー SDK の場合、システム プロパティには必ず、次のようにプレフィックスとして下線を 2 つ (`__`) 含めるようにしてください。
+Azure Mobile Services サーバー SDK の場合、システム プロパティには必ず、次のようにプレフィックスとして下線を&2; つ (`__`) 含めるようにしてください。
 
 * __createdAt
 * __updatedAt
@@ -241,7 +241,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 ## <a name="a-nameupdating-clientsaupdating-clients"></a><a name="updating-clients"></a>クライアントの更新
 モバイル アプリ バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。 Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
 
-バージョン間での主な変更の 1 つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
+バージョン間での主な変更の&1; つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://contoso.azurewebsites.net", // URL of the Mobile App
@@ -259,7 +259,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[[構成]]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Mobile App サーバー SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server

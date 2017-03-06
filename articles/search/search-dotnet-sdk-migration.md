@@ -17,6 +17,7 @@ ms.author: brjohnst
 translationtype: Human Translation
 ms.sourcegitcommit: 3e2ad6b466ba4885ae14576b83d4c0f3010bab67
 ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -482,10 +483,5 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 このため、ベスト プラクティスとして、モデル クラスではまだ null 許容型を使用することをお勧めします。
 
 このバグの詳細と修正については、 [GitHub でのこの問題の解説](https://github.com/Azure/azure-sdk-for-net/issues/1063)を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

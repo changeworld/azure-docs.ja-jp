@@ -1,5 +1,5 @@
 ---
-title: "Azure ポータルを使用して Relay 名前空間を作成する | Microsoft Docs"
+title: "Azure Portal を使用して Relay タイプの名前空間を作成する | Microsoft Docs"
 description: "Azure Portal を使用して Relay 名前空間を作成する方法。"
 services: service-bus-relay
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/13/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 97c793abc9935707115c166a97f6f7bdfee1a8c5
-ms.openlocfilehash: d6ef2e0c75a27b294ee653bf9a0219c2233d272c
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: 927c01ff4cfa7de6e1e9eb2917848a4450e9f597
+ms.lasthandoff: 02/28/2017
 
 ---
 
@@ -35,10 +36,5 @@ ms.openlocfilehash: d6ef2e0c75a27b294ee653bf9a0219c2233d272c
 * [Relay に関する FAQ](relay-faq.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

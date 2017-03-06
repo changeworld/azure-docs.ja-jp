@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用した仮想マシン スケール セットの作成 | Microsoft Docs"
-description: "PowerShell を使用した仮想マシン スケール セットの作成"
+title: "PowerShell を使用して Azure 仮想マシン スケール セットを作成する | Microsoft Docs"
+description: "PowerShell を使用して Azure 仮想マシン スケール セットを作成する"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 02/21/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
+ms.sourcegitcommit: 1f8e66fac5b82698525794f0486dd0432c7421a7
+ms.openlocfilehash: 7286fed39839675eb960b749f3235f83e36c5e9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -56,47 +57,7 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
         Tags              :
         ResourceId        : /subscriptions/########-####-####-####-############/resourceGroups/myrg1
 
-### <a name="storage-account"></a>ストレージ アカウント
-ストレージ アカウントは、オペレーティング システム ディスクとスケーリングに使用する診断データを格納する目的で、仮想マシンによって使用されます。 可能であれば、スケール セットに作成した仮想マシンごとにストレージ アカウントを所有することをお勧めします。 不可能な場合は、ストレージ アカウントあたりの VM を 20 個以下で計画します。 この記事では、3 つの仮想マシンに 3 つのストレージ アカウントを作成する例を説明します。
-
-1. **$saName** の値を、ストレージ アカウントの名前に置き換えます。 名前の一意性をテストします。 
-   
-        $saName = "storage account name"
-        Get-AzureRmStorageAccountNameAvailability $saName
-   
-    **True**が返された場合、提案した名前は一意です。
-2. **$saType** の値をストレージ アカウントの種類に置き換えた後、変数を作成します。  
-   
-        $saType = "storage account type"
-   
-    指定できる値は、Standard_LRS、Standard_GRS、Standard_RAGRS、Premium_LRS です。
-3. アカウントを作成します。
-   
-        New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
-   
-    次のような結果が表示されます。
-   
-        ResourceGroupName   : myrg1
-        StorageAccountName  : myst1
-        Id                  : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft
-                              .Storage/storageAccounts/myst1
-        Location            : centralus
-        AccountType         : StandardLRS
-        CreationTime        : 3/15/2016 4:51:52 PM
-        CustomDomain        :
-        LastGeoFailoverTime :
-        PrimaryEndpoints    : Microsoft.Azure.Management.Storage.Models.Endpoints
-        PrimaryLocation     : centralus
-        ProvisioningState   : Succeeded
-        SecondaryEndpoints  :
-        SecondaryLocation   :
-        StatusOfPrimary     : Available
-        StatusOfSecondary   :
-        Tags                : {}
-        Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
-4. 手順 1. から 4. を繰り返して、たとえば myst1、myst2、myst3 の 3 つのストレージ アカウントを作成します。
-
-### <a name="virtual-network"></a>仮想ネットワーク
+### <a name="virtual-network"></a>Virtual Network
 仮想ネットワークは、スケール セット内の仮想マシンのために必要です。
 
 1. **$subnetName** の値を、仮想ネットワーク内のサブネットに使用する名前に置き換えた後、変数を作成します。 
@@ -173,12 +134,10 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
         $imageSku = "2012-R2-Datacenter"
    
     使用する他のイメージについて詳しくは、「[PowerShell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-3. **$vhdContainers** の値を、仮想ハード ディスクが格納されているパス (https://mystorage.blob.core.windows.net/vhds など) を含むリストに置き換えた後、変数を作成します。
+
+3. ストレージ プロファイルを作成します。
    
-        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
-4. ストレージ プロファイルを作成します。
-   
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### <a name="virtual-machine-scale-set"></a>仮想マシン スケール セット
 ここでようやく、スケール セットを作成できます。
@@ -221,10 +180,5 @@ ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
 * 「 [仮想マシン スケール セットで仮想マシンを管理する](virtual-machine-scale-sets-windows-manage.md)
 * 「 [自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)
 * 「 [仮想マシン スケール セットを使用した垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

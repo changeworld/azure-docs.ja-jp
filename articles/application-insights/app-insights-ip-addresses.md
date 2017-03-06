@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 032d32be1719d4b459c88b13616bbef8d2d7be09
 ms.openlocfilehash: d5d6065aa2958ebb858d421ea7c3eb2a198b2a80
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -189,10 +190,5 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80,443 |
 | API ドキュメント |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80,443 |
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

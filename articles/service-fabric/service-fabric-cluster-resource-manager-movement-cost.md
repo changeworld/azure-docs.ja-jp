@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: f85365a36aea39b4179805e728c7ddafa140f08b
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -57,9 +58,4 @@ MoveCost には、Zero、Low、Medium、High の&4; つのレベルがありま�
 * クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「 [Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

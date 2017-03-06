@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: e7ccc71f222d4af9a52cbf55bb6bb446f211e819
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -55,9 +56,4 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 * [トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo) する
 * [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)
 * 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](../architecture-overview.md#drawing-symbol-and-icon-sets) をダウンロードする
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

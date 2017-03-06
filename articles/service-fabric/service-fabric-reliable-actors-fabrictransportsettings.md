@@ -17,6 +17,7 @@ ms.author: suchia
 translationtype: Human Translation
 ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
 ms.openlocfilehash: 6041541903d4d90710817149be50e05e31fd88f1
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -85,9 +86,4 @@ ms.openlocfilehash: 6041541903d4d90710817149be50e05e31fd88f1
     </Section>
   </Settings>
    ```
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

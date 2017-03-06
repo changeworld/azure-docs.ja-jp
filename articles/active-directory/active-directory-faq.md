@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
 ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -202,9 +203,4 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 **Q: Azure AD で Secure LDAP 接続をセットアップできますか?**
 
 **A:** いいえ。  Azure AD では、LDAP プロトコルがサポートされていません。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

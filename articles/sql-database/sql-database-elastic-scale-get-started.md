@@ -18,6 +18,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
 ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -99,10 +100,5 @@ Elastic Database ツールの詳細については、以下のページを参照
 [2]: ./media/sql-database-elastic-scale-get-started/click-online.png
 [3]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

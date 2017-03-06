@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 (プレビュー) を使用した Linux VM の作成 | Microsoft Azure"
-description: "Azure CLI 2.0 (プレビュー) を使用して新しく Linux VM を作成します。"
+title: "Azure CLI 2.0 を使用した Linux VM の作成 | Microsoft Azure"
+description: "Azure CLI 2.0 を使用して Linux VM を作成します。"
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -12,27 +12,23 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/13/2016
+ms.date: 01/13/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 42ee74ac250e6594616652157fe85a9088f4021a
-ms.openlocfilehash: 0fd7aa8f941adaeb9961fd0e4724161b9fe2eeee
+ms.sourcegitcommit: 892e3c62a2ad4dc4fd0691874d46bb296e379524
+ms.openlocfilehash: cc51b04c31c02aabf25c9efb1e9cd975077811a4
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Azure CLI 2.0 プレビュー (az.py) を使用した Linux VM の作成
-この記事では、Azure CLI 2.0 (プレビュー) で [az vm create](/cli/azure/vm#create) コマンドを使用して、Managed Disks を使用する Linux 仮想マシン (VM) とネイティブ ストレージ アカウント内の非管理対象ディスクを使用する Linux 仮想マシン (VM) の両方を Azure にすばやくデプロイする方法を説明します。
-
-> [!NOTE] 
-> Azure CLI 2.0 プレビューは、次世代マルチプラットフォーム CLI です。 [実際に使ってみてください。](https://docs.microsoft.com/cli/azure/install-az-cli2)
->
-> Azure CLI 2.0 プレビューではなく、既存の Azure CLI 1.0 を使用して VM を作成するには、[Azure CLI を使用した VM の作成](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事を参照してください。
+# <a name="create-a-linux-vm-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Linux VM を作成する
+この記事では、Azure CLI 2.0 で [az vm create](/cli/azure/vm#create) コマンドを使用して、管理ディスクを使用する Linux 仮想マシン (VM) とネイティブ ストレージ アカウント内の非管理対象ディスクを使用する Linux 仮想マシン (VM) の両方を Azure にすばやくデプロイする方法を説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 VM を作成するには、以下が必要です。 
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* [Azure CLI v.2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールする
+* [Azure CLI 2.0](/cli/azure/install-az-cli2) のインストール
 * Azure アカウントにログインする (「[az login](/cli/azure/#login)」と入力します)
 
 ([Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Linux VM をデプロイすることもできます。)
@@ -119,7 +115,7 @@ Managed Disks を使用する新しい VM で実行できるその他の作業�
 
 ## <a name="using-unmanaged-disks"></a>非管理対象ディスクの使用 
 
-非管理対象ディスクを使用する VM は、非管理対象ストレージ アカウントを持ちます。まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたソースをすべて含むリソース グループを作成します。
+非管理対象ストレージ ディスクを使用する VM は、非管理対象ストレージ アカウントを持ちます。 まず、「[az group create](/cli/azure/group#create)」と入力して、デプロイされたリソースをすべて含むリソース グループを作成します。
 
 ```azurecli
 az group create --name nativedisks --location westus
@@ -142,7 +138,7 @@ az group create --name nativedisks --location westus
 
 ### <a name="create-your-vm"></a>VM の作成 
 
-これで、VM とその環境を作成できます。 必ず `--public-ip-address-dns-name` の値を一意の値に置き換えます。以下の値は既に使用されている可能性があります。
+これで、VM とその環境を作成できます。 `--use-unmanaged-disk` フラグを使用して、非管理対象ディスクを使用して VM を作成します。 非管理対象ストレージ アカウントも作成されます。 必ず `--public-ip-address-dns-name` の値を一意の値に置き換えます。以下の値は既に使用されている可能性があります。
 
 ```azurecli
 az vm create \
@@ -153,7 +149,7 @@ az vm create \
 --resource-group nativedisks \
 --location westus \
 --name myVM \
---use-native-disk
+--use-unmanaged-disk
 ```
 
 出力は次のようになります。 VM に **SSH** 接続するために、`publicIpAddress` または `fqdn` の値をメモします。
@@ -202,10 +198,5 @@ bin  boot  dev  etc  home  initrd.img  lib  lib64  lost+found  media  mnt  opt  
 * [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [さまざまなコマンドで `docker-machine` Azure ドライバーを使用すると、Linux VM を Docker ホストとしてもすばやく作成](virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。Java を使用している場合、[create()](/java/api/com.microsoft.azure.management.compute._virtual_machine) メソッドを試してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

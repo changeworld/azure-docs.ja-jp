@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 7ef0383ae88dcb8beb4b30792eaf60dec2911507
 ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -99,10 +100,5 @@ Media Services アカウントにプログラムからアクセスするには�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

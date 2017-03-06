@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: e4bb75b0a45dd922479cbd40ad94190c30b4333f
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -154,9 +155,4 @@ Media Services においてライブ ストリーミング コンテンツの処
 [クォータと制限](media-services-quotas-and-limitations.md)。  
 
 [Media Services の概念](media-services-concepts.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

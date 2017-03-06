@@ -17,6 +17,7 @@ ms.author: mattrow
 translationtype: Human Translation
 ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
 ms.openlocfilehash: c920a206d6f3288f6cba0d2658d556749fc4d574
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -51,10 +52,5 @@ Service Fabric によって提供される次の既存の診断について説�
 
 * [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 * [Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

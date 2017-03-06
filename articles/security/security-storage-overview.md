@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
 ms.openlocfilehash: 2db6effdaf2e23d00eefdde82d074dd5d47857d7
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -98,9 +99,4 @@ Azure Disk Encryption では [Azure Key Vault](https://azure.microsoft.com/servi
 
 * [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
 * [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

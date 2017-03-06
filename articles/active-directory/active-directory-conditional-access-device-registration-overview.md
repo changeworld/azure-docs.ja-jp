@@ -5,7 +5,7 @@ services: active-directory
 keywords: "デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 ms.assetid: 1e92c1a2-01b8-4225-950b-373cd601b035
 ms.service: active-directory
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 02/22/2017
 ms.author: Markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98f1b1856a6c457349decefeb277208a3b483bad
+ms.sourcegitcommit: 8df5889bfe2757ef68d0895d140dd44a765a89d0
+ms.openlocfilehash: 06fb59f627ea6aff3916787e321069c6b58c3e10
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -55,9 +56,9 @@ Azure Active Directory の管理者ポータルを使用して、登録されて
 > 
 > 
 
-既定では、サービスに対する 2 要素認証は有効になっていません。 ただし、デバイスを登録するときに 2 要素認証を使用することをお勧めします。
+既定では、サービスに対する&2; 要素認証は有効になっていません。 ただし、デバイスを登録するときに&2; 要素認証を使用することをお勧めします。
 
-* このサービスに対して 2 要素認証を要求するには、Azure Active Directory で 2 要素認証プロバイダーを構成し、Multi-Factor Authentication 用のユーザー アカウントを構成しておく必要があります。[Azure Active Directory への Multi-Factor Authentication の追加](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関する記事をご覧ください。
+* このサービスに対して&2; 要素認証を要求するには、Azure Active Directory で&2; 要素認証プロバイダーを構成し、Multi-Factor Authentication 用のユーザー アカウントを構成しておく必要があります。[Azure Active Directory への Multi-Factor Authentication の追加](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関する記事をご覧ください。
 * Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。[Active Directory フェデレーション サービスでの Multi-Factor Authentication の使用](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)に関する記事をご覧ください。
 
 ## <a name="configure-azure-active-directory-device-registration-discovery"></a>Azure Active Directory Device Registration の検出を構成する
@@ -65,7 +66,7 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 Azure Active Directory Device Registration サービスに関連付けられた A レコードを参照する DNS CNAME レコードを作成する必要があります。 CNAME レコードでは、既知のプレフィックス enterpriseregistration の後に、組織のユーザー アカウントで使用されている UPN サフィックスを使用する必要があります。 組織で複数の UPN サフィックスを使用している場合は、DNS に複数の CNAME レコードを作成する必要があります。
 
-たとえば、組織で @contoso.com と @region.contoso.com, の 2 つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
+たとえば、組織で @contoso.com と @region.contoso.com の&2; つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
 
 | エントリ | 型 | Address |
 | --- | --- | --- |
@@ -89,10 +90,5 @@ Azure AD Device Registration を使用して、ドメイン参加済みの Windo
 * [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

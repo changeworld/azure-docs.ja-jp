@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
 ms.sourcegitcommit: b4637922e7b280b0e9954c9e51788202e784b4f9
 ms.openlocfilehash: 743223f78f279fedf33f73ff52b56f4a7358cd51
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -75,9 +76,4 @@ Service Fabric アプリケーション内の既定のサービスは、アプ�
 「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

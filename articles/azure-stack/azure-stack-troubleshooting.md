@@ -17,6 +17,7 @@ ms.author: helaw
 translationtype: Human Translation
 ms.sourcegitcommit: 54cafb97766d102b05567a8c6bcdfc2a5819b025
 ms.openlocfilehash: 31ae8baefc41d12077abe3daae34454dc1d337cf
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -178,10 +179,5 @@ The following information about Azure Stack installation steps may be useful for
 
 ## <a name="next-steps"></a>Next steps
 [Frequently asked questions](azure-stack-faq.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

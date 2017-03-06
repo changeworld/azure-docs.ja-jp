@@ -12,11 +12,12 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2016
+ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: c810f3e86ba582943e88f3085f6d9cff2496031c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -99,9 +100,4 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-csharp/sfx-primary.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

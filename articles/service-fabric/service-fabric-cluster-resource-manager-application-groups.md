@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: eef9cbca0479801cbac53ae1ae5713d4dac6a4bf
 ms.openlocfilehash: 57525cd41d518b12f3f465d5dea7247659e3c8b6
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -164,9 +165,4 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

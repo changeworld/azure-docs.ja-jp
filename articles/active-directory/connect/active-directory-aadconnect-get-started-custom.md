@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
-ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
+ms.sourcegitcommit: 6c26fdd11031ab482d12611ca338df5c90a14193
+ms.openlocfilehash: a482e20bdbf60889f93f4532ed042b41ec51b81e
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 | --- | --- |
 | 既存の SQL Server を使用する |SQL Server 名とインスタンス名を指定することができます。 使用するデータベース サーバーが既にある場合は、このオプションを選択します。 SQL Server で参照が有効になっていない場合は、 **[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。 |
 | 既存のサービス アカウントを使用する |既定では、同期サービスで使用するローカル サービス アカウントが Azure AD Connect によって作成されます。 パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。 リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のサービス アカウントとパスワードが必要です。 このような場合は、使用するサービス アカウントを入力します。 サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。 「 [Azure AD Connect: アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation) |
-| カスタム同期グループを指定する |既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな 4 つのグループが作成されます。 これらのグループは。管理者グループ、オペレーター グループ、参照グループ、およびパスワード再設定グループです。 ここでは独自のグループを指定できます。 グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。 |
+| カスタム同期グループを指定する |既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな&4; つのグループが作成されます。 これらのグループは。管理者グループ、オペレーター グループ、参照グループ、およびパスワード再設定グループです。 ここでは独自のグループを指定できます。 グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。 |
 
 ### <a name="user-sign-in"></a>ユーザーのサインイン
 必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。 次の表に、指定できるオプションの簡単な説明を示します。 サインイン方法の詳細については、[ユーザーのサインイン](active-directory-aadconnect-user-signin.md)に関するページを参照してください。
@@ -86,7 +87,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
 
 >[!NOTE]
-> パススルー認証を有効にする場合、ウィザードを続行するために少なくとも 1 つの検証済みドメインが必要になります。
+> パススルー認証を有効にする場合、ウィザードを続行するために少なくとも&1; つの検証済みドメインが必要になります。
 
 > [!WARNING]
 > 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。 詳細については、「 [Configuring Alternate Login ID (代替ログイン ID の構成)](https://technet.microsoft.com/library/dn659436.aspx)」を参照してください。
@@ -95,7 +96,10 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ### <a name="domain-and-ou-filtering"></a>ドメインと OU のフィルター処理
 既定では、すべてのドメインと OU が同期されます。 Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。  
-![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメインベースおよび OU ベースのフィルター処理を構成します。 詳細については、[ドメインベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)に関するページと [OU ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)に関するページを参照してください。 OU ベースのフィルター処理を使用している場合、後で追加された新しい OU は、既定で同期されます。 新しい OU が同期されないようにする場合は、ウィザードの完了後に [OU ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で構成できます。
+![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
+ウィザード内のこのページでは、ドメイン ベースおよび OU ベースのフィルター処理を構成します。 変更を予定している場合は、変更を行う前に、[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)に関するトピックと [OU ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)に関するトピックを参照してください。 一部の OU はこの機能に不可欠であるため、選択解除しないでください。
+
+OU ベースのフィルター処理を使用している場合、後で追加された新しい OU は、既定で同期されます。 新しい OU が同期されないようにする場合は、ウィザードの完了後に [OU ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で構成できます。
 
 [グループベースのフィルター処理](#sync-filtering-based-on-groups)を使用する予定の場合は、そのグループが属する OU が含まれており、OU ベースのフィルター処理によって除外されないようにしてください。 OU ベースのフィルター処理は、グループベースのフィルター処理の前に評価されます。
 
@@ -104,13 +108,13 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
 
 ### <a name="uniquely-identifying-your-users"></a>ユーザーを一意に識別
-[フォレスト全体で一致] 機能を使用すると、AD DS フォレストのユーザーを Azure AD でどう表すかを定義することができます。 ユーザーは、すべてのフォレストで 1 回だけ表すか、有効アカウントと無効アカウントを組み合わせることができます。 一部のフォレストでは、ユーザーを連絡先として表すこともできます。
+[フォレスト全体で一致] 機能を使用すると、AD DS フォレストのユーザーを Azure AD でどう表すかを定義することができます。 ユーザーは、すべてのフォレストで&1; 回だけ表すか、有効アカウントと無効アカウントを組み合わせることができます。 一部のフォレストでは、ユーザーを連絡先として表すこともできます。
 
 ![一意](./media/active-directory-aadconnect-get-started-custom/unique.png)
 
 | Setting | Description |
 | --- | --- |
-| [ユーザーはフォレスト全体で 1 回だけ表されます](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。 オブジェクトは、メタバースに結合されません。 |
+| [ユーザーはフォレスト全体で&1; 回だけ表されます](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。 オブジェクトは、メタバースに結合されません。 |
 | [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。 連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。 |
 | [ObjectSID と msExchangeMasterAccountSID/msRTCSIP-OriginatorSid](active-directory-aadconnect-topologies.md#multiple-forests-single-azure-ad-tenant) |このオプションでは、アカウント フォレスト内の有効なユーザーと、リソース フォレスト内の無効なユーザーが結合されます。 Exchange では、この構成はリンクされたメールボックスと呼ばれています。 このオプションは、Lync のみを使用し、Exchange がリソース フォレスト内にない場合にも使用できます。 |
 | sAMAccountName および MailNickName |このオプションは、ユーザーのサインイン ID を見つけるために必要な属性同士を結合します。 |
@@ -172,10 +176,10 @@ Azure AD のスキーマは、組織によって追加されたカスタム属�
 詳細については、[ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に関するページを参照してください。
 
 ### <a name="enabling-single-sign-on-sso"></a>シングル サインオン (SSO) の有効化
-パスワード同期またはパススルー認証で使用するシングル サインオンを構成するのは簡単です。Azure AD に同期されているフォレストごとに一度プロセスを完了するだけでかまいません。 構成には次の 2 つの手順が含まれます。
+パスワード同期またはパススルー認証で使用するシングル サインオンを構成するのは簡単です。Azure AD に同期されているフォレストごとに一度プロセスを完了するだけでかまいません。 構成には次の&2; つの手順が含まれます。
 
-1.  オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
-2.  シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
+1.    オンプレミスの Active Directory での必要なコンピューター アカウントの作成。
+2.    シングル サインオンをサポートするクライアント コンピューターのイントラネット ゾーンの構成。
 
 #### <a name="create-the-computer-account-in-active-directory"></a>Active Directory でのコンピューター アカウントの作成
 Azure AD Connect で追加されたフォレストごとに、ドメイン管理者の資格情報を入力する必要があります。そうすることで、フォレストごとにコンピューター アカウントを作成できます。 資格情報はアカウントの作成にのみ使用され、他の操作のために保存されたり使用されたりすることはありません。 次に示す Azure AD Connect ウィザードの **[シングル サインオンを有効にする]** ページで、資格情報を入力します。
@@ -189,20 +193,20 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 クライアントがイントラネット ゾーンに自動的にサインインするように、2 つの URL はイントラネット ゾーンに含まれるものにする必要があります。 これを行うことで、ドメインに参加しているコンピューターが、企業ネットワークに接続された際に Kerberos チケットを Azure AD に自動的に送信するようになります。
 グループ ポリシー管理ツールがあるコンピューターで次の手順を実行します。
 
-1.  グループ ポリシー管理ツールを開きます。
-2.  すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
-3.  **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
-4.  ポリシーを有効にして、ダイアログ ボックスで次の 2 つの項目を入力します。
+1.    グループ ポリシー管理ツールを開きます。
+2.    すべてのユーザーに適用されるグループ ポリシーを編集します。 既定のドメイン ポリシーなどです。
+3.    **[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、[Internet Explorer]、[インターネット コントロール パネル]、[セキュリティ]** の順に移動して、下の図のように **[サイトとゾーンの割り当て一覧]** を選択します。
+4.    ポリシーを有効にして、ダイアログ ボックスで次の&2; つの項目を入力します。
 
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+        値: `https://autologon.microsoftazuread-sso.com`  
+        Data 1  
+        値: `https://aadg.windows.net.nsatc.net`  
+        Data 1
 
-5.  次のようになります。  
+5.    次のようになります。  
 ![イントラネット ゾーン](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.  **[OK]** を 2 回クリックします。
+6.    **[OK]** を&2; 回クリックします。
 
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS とのフェデレーションの構成
 Azure AD Connect との AD FS の構成は、わずか数クリックで簡単です。 構成の前に、以下のものを用意する必要があります。
@@ -222,17 +226,17 @@ Azure AD Connect を使用して AD FS ファームを構成するには、リ�
 既存の AD FS ファームを使用する場合は、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
 
 ### <a name="specify-the-ad-fs-servers"></a>AD FS サーバーの指定
-AD FS をインストールするサーバーを入力します。 容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。 この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。 テスト デプロイとパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。 初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
+AD FS をインストールするサーバーを入力します。 容量計画のニーズに基づいて&1; つまたは複数のサーバーを追加することができます。 この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。 テスト デプロイとパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。 初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
 
 > [!NOTE]
-> この構成を実行する前に、すべてのサーバーが 1 つの AD ドメインに参加していることを確認してください。
+> この構成を実行する前に、すべてのサーバーが&1; つの AD ドメインに参加していることを確認してください。
 >
 >
 
 ![AD FS サーバー](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
 ### <a name="specify-the-web-application-proxy-servers"></a>Web アプリケーション プロキシ サーバーの指定
-Web アプリケーション プロキシ サーバーとするサーバーを入力します。 Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。 容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。 テスト デプロイとパイロット デプロイ用に単一の Web アプリケーション プロキシ サーバーをインストールすることをお勧めします。 初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。 イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
+Web アプリケーション プロキシ サーバーとするサーバーを入力します。 Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。 容量計画のニーズに基づいて&1; つまたは複数のサーバーを追加することができます。 テスト デプロイとパイロット デプロイ用に単一の Web アプリケーション プロキシ サーバーをインストールすることをお勧めします。 初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。 イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
 
 > [!NOTE]
 > <li> 使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、管理者の資格情報を入力するように求められます。</li>
@@ -247,7 +251,7 @@ Web アプリケーション サーバーが AD FS サーバーとの間にセ�
 ![プロキシ](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
 
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>AD FS サービスのサービス アカウントを指定します。
-AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。 次の 2 種類のサービス アカウントがサポートされます。
+AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。 次の&2; 種類のサービス アカウントがサポートされます。
 
 * **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory ドメイン サービスに導入されました。 この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
 * **ドメイン ユーザー アカウント** - この種類のアカウントではパスワードの入力が求められ、パスワードの変更や期限切れの際に、定期的に更新する必要があります。 このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
@@ -257,7 +261,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ![AD FS サービス アカウント](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
 
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>フェデレーションする Azure AD ドメインの選択
-この構成を使用して、AD FS と Azure AD のフェデレーション関係をセットアップします。 Azure AD にセキュリティ トークンを発行するように AD FS を構成し、この特定の AD FS インスタンスからのトークンを信頼するように Azure AD を構成します。 初期インストールでは、このページで 1 つのドメインしか構成できません。 後で Azure AD Connect をもう一度実行すると、追加のドメインを構成できます。
+この構成を使用して、AD FS と Azure AD のフェデレーション関係をセットアップします。 Azure AD にセキュリティ トークンを発行するように AD FS を構成し、この特定の AD FS インスタンスからのトークンを信頼するように Azure AD を構成します。 初期インストールでは、このページで&1; つのドメインしか構成できません。 後で Azure AD Connect をもう一度実行すると、追加のドメインを構成できます。
 
 ![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/adfs6.png)
 
@@ -282,7 +286,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ![構成の準備完了](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>ステージング モード
-ステージング モードと並行して新しい同期サーバーをセットアップすることができます。 クラウド内で 1 つのディレクトリにエクスポートする 1 台の同期サーバーの設置のみがサポートされます。 ただし、別のサーバー (DirSync を実行するサーバーなど) から移動する場合は、ステージング モードで Azure AD Connect を有効にすることができます。 有効にすると、同期エンジンは通常どおりにデータをインポートおよび同期しますが、Azure AD または AD には何もエクスポートしません。 ステージング モード中は、パスワード同期機能とパスワード ライトバック機能が無効になります。
+ステージング モードと並行して新しい同期サーバーをセットアップすることができます。 クラウド内で&1; つのディレクトリにエクスポートする&1; 台の同期サーバーの設置のみがサポートされます。 ただし、別のサーバー (DirSync を実行するサーバーなど) から移動する場合は、ステージング モードで Azure AD Connect を有効にすることができます。 有効にすると、同期エンジンは通常どおりにデータをインポートおよび同期しますが、Azure AD または AD には何もエクスポートしません。 ステージング モード中は、パスワード同期機能とパスワード ライトバック機能が無効になります。
 
 ![ステージング モード](./media/active-directory-aadconnect-get-started-custom/stagingmode.png)
 
@@ -313,9 +317,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "Node.js アプリケーションを Azure App Service の Web ア�
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb2b90c8-02b6-4700-929b-5de9a35d67cc
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 55c349f19055e4e4d17f5c7290a2ee82d2d3d19d
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 9482315aba089f3f00e114b835963c247a4f5007
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 55c349f19055e4e4d17f5c7290a2ee82d2d3d19d
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](app-service-web-nodejs-get-started-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](app-service-web-nodejs-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](app-service-web-nodejs-get-started.md) - Resource Manager デプロイ モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Node.js]
@@ -270,9 +271,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [iislog-kudu-console-find]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

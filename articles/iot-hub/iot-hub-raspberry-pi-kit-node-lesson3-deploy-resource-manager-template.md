@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: a3a7ec4c81556e4cb530f32c9997d8701db68b2c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -74,10 +75,5 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 
 ## <a name="next-steps"></a>次のステップ
 [Raspberry Pi 3 での、デバイスからクラウドへのメッセージを送信するサンプル アプリケーションの実行](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

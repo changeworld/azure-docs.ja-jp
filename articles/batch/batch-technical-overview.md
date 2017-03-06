@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch サービスの概要 | Microsoft Docs"
+title: "クラウドでの Azure Batch による大規模な並列コンピューティング ソリューションの実行 | Microsoft Docs"
 description: "大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。"
 services: batch
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 3a01764b6a0e777e947cf8648606cdd568d118ff
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: e204a3c79768ddbd433f3b00a3db456ef3258173
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="basics-of-azure-batch"></a>Azure Batch の基礎
+# <a name="run-intrinsically-parallel-workloads-with-batch"></a>Batch で並列ワークロードを本質的に実行する
+
 Azure Batch は、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行するためのプラットフォーム サービスです。 多くのコンピューティング処理を要する作業を管理された仮想マシンの集合で実行するようにスケジュール設定し、ジョブのニーズに合わせてコンピューティング リソースを自動的に拡大/縮小できます。
 
 Azure Batch では、複数のアプリケーションを並列で大規模に実行するための Azure コンピューティング リソースを簡単に定義できます。 HPC クラスター、個々の仮想マシン、仮想ネットワークや、複雑なジョブとタスクのスケジュール インフラストラクチャを手動で作成、構成、管理する必要がありません。 Azure Batch によって、これらのタスクが自動化または簡略化されます。
@@ -156,9 +159,4 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

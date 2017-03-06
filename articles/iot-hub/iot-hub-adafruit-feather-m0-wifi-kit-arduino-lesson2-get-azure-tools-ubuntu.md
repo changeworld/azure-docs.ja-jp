@@ -18,6 +18,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: e29f43af1ab46ad9f80137924632b6a975375c1a
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -79,8 +80,3 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 [macos]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md
 [output]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson2/az_iot_help_ubuntu.png
 [create-your-iot-hub-and-register-your-arduino-board]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

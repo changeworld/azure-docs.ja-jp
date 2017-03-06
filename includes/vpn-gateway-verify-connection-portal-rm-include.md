@@ -6,8 +6,3 @@ Azure Portal で目的の接続に移動することで、Resource Manager VPN �
    
     ![Azure Portal を使用した VPN Gateway 接続の確認](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)
 
-
-
-<!--HONumber=Jan17_HO5-->
-
-

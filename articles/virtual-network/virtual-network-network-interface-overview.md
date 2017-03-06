@@ -1,6 +1,6 @@
 ---
 title: "Azure のネットワーク インターフェイス | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルでの Azure ネットワーク インターフェイスについて説明します。"
+description: "Azure のネットワーク インターフェイス、および仮想マシンでの使用方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2016
+ms.date: 02/24/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3244d5b52785d820698bf26f9bf189de93ef64e4
-ms.openlocfilehash: 691b79d7739246dad7191195fa049fd58340c8ff
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 395cff80b3f97b6340e15f370c13f783e2f5dde3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="network-interfaces-in-azure"></a>Azure のネットワーク インターフェイス
+# <a name="what-are-network-interfaces"></a>ネットワーク インターフェイスとは
+
 ネットワーク インターフェイス (NIC) とは、仮想マシン (VM) と基礎となるソフトウェア ネットワーク間の相互接続です。 この記事では、ネットワーク インターフェイスとはなにか、Azure Resource Manager デプロイメント モデルでどのように使用されているかについて説明します。
 
 Microsoft では、新しいリソースのデプロイには Resource Manager デプロイメント モデルを使用することをお勧めしますが、 [クラシック](virtual-network-ip-addresses-overview-classic.md) のデプロイメント モデルでネットワーク接続を使用して VM をデプロイすることもできます。 クラシック モデルに使い慣れている場合は、Resource Manager デプロイメント モデルの VM ネットワークには大きな違いがあることにご注意ください。 相違点について詳しくは、「 [仮想マシンのネットワーク- クラシック](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments) 」の記事をご覧ください。
@@ -34,7 +37,7 @@ Azure のネットワーク インターフェイスとは:
 4. VM にアタッチできますが、NIC と同じ場所にある&1; 台の VM にしかアタッチできません。
 5. MAC アドレスを持ちます。これは、VM にアタッチされている限り、NIC の MAC アドレスとして保持されます。 MAC アドレスは、VM が再起動 (オペレーティング システム内で) された、停止 (割り当て解除) された、Azureポータル、Azure PowerShell、Azureコマンドライン インターフェイスを使って開始された場合でも保持されます。 1 つのVM からデタッチされて、別の VM にアタッチされると、NIC には別の MAC アドレスが付与されます。 NIC が削除されると、MAC アドレスは他の NIC に割り当てられます。
 6. 1 つのプライマリ **プライベート** *IPv4* 静的 IP アドレスまたは動的 IP アドレスが割り当てられている必要があります。
-7. 1 つのパブリック IP アドレス リソースを関連付けられます。
+7. パブリック IP アドレス リソースが&1; つ以上関連付けられている可能性がある場合、詳細については、[NIC ごとの複数の IP アドレス](virtual-network-multiple-ip-addresses-portal.md)に関するページを参照してください。
 8. Microsoft Windows Server オペレーティング システムの特定のバージョンを実行している特定のサイズの VM で、シングル ルート I/O 仮想化 (SR-IOV) を使った Accelerated Networking をサポートします。 このプレビュー機能の詳細については、「 [Accelerated Networking for a virtual machine (仮想マシンの Accelerated Networking)](virtual-network-accelerated-networking-powershell.md) 」の記事をご覧ください。
 9. NIC で IP 転送が有効になっている場合は、割り当てられたプライベート IPアドレス宛てではないトラフィックを受信できます。 VM でファイアウォール ソフトウェアなどを実行している場合は、独自の IP アドレス宛てではないパケットをルーティングします。 VM ではトラフィックをルーティングまたは転送できるソフトウェアを実行する必要がありますが、これを行うには NIC で IP 転送を有効にする必要があります。
 10. ほとんどの場合、アタッチ先の VM と同じリソース グループか、接続先と同じ VNet に作成されますが、別の場所に作成することもできます。
@@ -52,10 +55,5 @@ VM に複数の NIC をアタッチできますが、これを行う場合、次
 * 1 つの NIC を持つ VM の作成方法については、「 [VM を作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 」の記事をご覧ください。
 * 複数の NIC を持つ VM の作成方法については、「 [複数の NIC VM のデプロイ](virtual-network-deploy-multinic-arm-ps.md) 」の記事をご覧ください。
 * 複数の IP 構成を持つ NIC の作成方法については、「 [Azure 仮想マシンの複数の IP アドレス](virtual-network-multiple-ip-addresses-powershell.md) 」の記事をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

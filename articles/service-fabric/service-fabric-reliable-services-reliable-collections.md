@@ -17,6 +17,7 @@ ms.author: mcoskun
 translationtype: Human Translation
 ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
 ms.openlocfilehash: 287707d528d2327637ad3d17633ef830657c04f8
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -167,10 +168,5 @@ Reliable Collection がチェックポイントを完了すると、Reliable Sta
 * [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

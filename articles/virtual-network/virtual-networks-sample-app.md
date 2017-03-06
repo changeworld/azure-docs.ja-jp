@@ -17,6 +17,7 @@ ms.author: jonor
 translationtype: Human Translation
 ms.sourcegitcommit: cb2e480a45871ad0c956dc976de955ca48ecdfd0
 ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -202,9 +203,4 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

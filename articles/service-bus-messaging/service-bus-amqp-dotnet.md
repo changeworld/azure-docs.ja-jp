@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 220b0f6212268a44226edefa4afc5671306ff295
 ms.openlocfilehash: 9d2ff3ff50aebc3e25f553a86ca13d8a9fe7400c
+ms.lasthandoff: 01/14/2017
 
 
 ---
@@ -129,9 +130,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

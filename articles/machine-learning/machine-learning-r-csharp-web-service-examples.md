@@ -19,6 +19,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
 ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -75,10 +76,5 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 [1]: ./media/machine-learning-r-csharp-web-service-examples/machine-learning-r-code-options-for-using-and-sharing-cloud.png
 
 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

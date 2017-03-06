@@ -17,6 +17,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
 ms.openlocfilehash: 42d64d58fab19fc564fbcbf19f464bce8cf46eb7
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -91,9 +92,4 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 [img-squirrel-alias]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-alias.png
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

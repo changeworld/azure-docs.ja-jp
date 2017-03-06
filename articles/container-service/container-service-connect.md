@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
-ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
+ms.sourcegitcommit: 320285d97b3ef723ec2b5715fd02580d058cbbcf
+ms.openlocfilehash: 2304c85177cefa6505d92679ec7f791cb87e69e4
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,14 +30,11 @@ Kubernetes クラスター、DC/OS クラスター、Docker Swarm クラスタ�
 
 DC/OS と Docker Swarm では、内部システムに対する Secure Shell (SSH) トンネルを作成する必要があります。 トンネルが確立されたら、HTTP エンドポイントを使用してローカル システムからクラスターの Web インターフェイスを表示するコマンドを実行できます。 
 
-> [!NOTE]
-> Azure Container Service での Kubernetes のサポートは、現在はプレビューの段階です。
->
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure Container Service にデプロイされている](container-service-deployment.md) Kubernetes、DC/OS、または Swarm クラスター。
-* SSH 秘密キー ファイル (デプロイ時にクラスターに追加された公開キーに対応)。 これらのコマンドは、SSH 秘密キーがコンピューター上の `$HOME/.ssh/id_rsa` に存在することを想定しています。 詳細については、[OS X と Linux 用](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)または [Windows 用](../virtual-machines/virtual-machines-linux-ssh-from-windows.md)の手順を参照してください。 SSH 接続が動作していない場合は、[SSH キーのリセット](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)が必要になることがあります。
+* SSH RSA 秘密キー ファイル (デプロイ時にクラスターに追加された公開キーに対応)。 これらのコマンドは、SSH 秘密キーがコンピューター上の `$HOME/.ssh/id_rsa` に存在することを想定しています。 詳細については、[OS X と Linux 用](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)または [Windows 用](../virtual-machines/virtual-machines-linux-ssh-from-windows.md)の手順を参照してください。 SSH 接続が動作していない場合は、[SSH キーのリセット](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)が必要になることがあります。
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Kubernetes クラスターへの接続
 
@@ -47,7 +45,7 @@ DC/OS と Docker Swarm では、内部システムに対する Secure Shell (SSH
 > 
 
 ### <a name="install-kubectl"></a>kubectl のインストール
-このツールをインストールする 1 つの方法は、`az acs kubernetes install-cli` Azure CLI 2.0 (プレビュー) コマンドを使用することです。 このコマンドを実行するには、Azure CLI 2.0 (プレビュー) の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+このツールをインストールする 1 つの方法は、`az acs kubernetes install-cli` Azure CLI 2.0 コマンドを使用することです。 このコマンドを実行するには、Azure CLI 2.0 の最新版が[インストール済み](/cli/azure/install-az-cli2)であることと、Azure アカウントにログインしていること (`az login`) を確認してください。
 
 ```azurecli
 # Linux or OS X
@@ -57,7 +55,7 @@ az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
 az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-または、[リリース ページ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146)から直接クライアントをダウンロードすることもできます。
+または、[Kubernetes リリース ページ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md)から最新のクライアントを直接ダウンロードすることもできます。 詳細については、「[Installing and Setting up kubectl (kubectl のインストールとセットアップ)](https://kubernetes.io/docs/user-guide/prereqs/)」を参照してください。
 
 ### <a name="download-cluster-credentials"></a>クラスターの資格情報のダウンロード
 `kubectl` をインストールしたら、クラスターの資格情報をコンピューターにコピーする必要があります。 資格情報を取得する&1; つの方法は、`az acs kubernetes get-credentials` コマンドを使用することです。 リソース グループの名前とコンテナー サービス リソースの名前を渡します。
@@ -128,7 +126,7 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
     **PATH_TO_PRIVATE_KEY** (省略可能) は、クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。 このオプションは、`-i` フラグと共に使用します。
 
     ```bash
-    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
+    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
     > SSH 接続ポートは、標準ポート 22 ではなく、2200 です。 複数のマスター VM を含むクラスターでは、これが最初のマスター VM への接続ポートです。
@@ -217,10 +215,5 @@ Docker Swarm のトンネルを構成したら、Windows の設定を開き、`D
 * [Azure Container Service と Kubernetes の使用](container-service-kubernetes-ui.md)
 * [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 * [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -4,7 +4,7 @@ description: "サンプル PHP アプリをデプロイして、App Service で�
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
@@ -12,25 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/04/2017
+ms.date: 02/27/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: f739bf6101936ff6bb25738e4888476e3b33a38f
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 68298208d2e2cc1fe7ab4050afecb25ca7d619cd
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-your-first-php-web-app-to-azure-in-five-minutes-cli-20-preview"></a>初めての PHP Web アプリを Azure に 5 分でデプロイする (CLI 2.0 プレビュー)
-
-> [!div class="op_single_selector"]
-> * [初めての HTML サイト](app-service-web-get-started-html.md)
-> * [初めての .NET アプリ](app-service-web-get-started-dotnet.md)
-> * [初めての PHP アプリ](app-service-web-get-started-php.md)
-> * [初めての Node.js アプリ](app-service-web-get-started-nodejs.md)
-> * [初めての Python アプリ](app-service-web-get-started-python.md)
-> * [初めての Java アプリ](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)]
 
 このチュートリアルでは、初めての PHP Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
 App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
@@ -49,7 +41,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](app-service-web-get-started-php-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](app-service-web-get-started-php.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](app-service-web-get-started-php.md) - Resource Manager デプロイ モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -62,7 +54,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 > 
 
 ## <a name="deploy-a-php-web-app"></a>PHP Web アプリをデプロイする
-1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `azure --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
+1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。 `git --version` と `az --version` を実行し、Git と Azure CLI がコンピューターにインストールされていることを確認します。
    
     ![Test installation of CLI tools for your first web app in Azure](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
    
@@ -77,7 +69,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 
 3. App Service のデプロイ ユーザーを設定します。 後で、これらの資格情報を使用してコードをデプロイします。
    
-        az appservice web deployment user set --user-name <username> --password <password>
+        az appservice web deployment user set --user-name <unique-username> --password <8-char-or-longer-password-letters-and-numbers>
 
 3. 新しい[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 この最初の App Service のチュートリアルでは、実際にその内容を把握している必要はありません。
 
@@ -128,7 +120,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 ## <a name="see-your-app-running-live"></a>アプリがライブ実行されるのを確認する
 Azure で実稼働しているアプリを確認するには、リポジトリ内の任意のディレクトリから次のコマンドを実行します。
 
-    azure site browse
+    az appservice web browse --name <app_name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>アプリを更新する
 Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。 これは、初めてコードをデプロイしたときと同様に行います。 たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
@@ -151,10 +143,5 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 * [Azure にコードをデプロイする他の方法](web-sites-deploy.md)を試してみます。 たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 * Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。 「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -18,6 +18,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
 ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -76,10 +77,5 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 **6.データ発行者になる方法や、発行時に発生した問題について質問がある場合は、どこに問い合わせればよいでしょうか。**
 
 詳細については、<mailto:datamarketbd@microsoft.com> の Azure Marketplace チームにお問い合わせください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

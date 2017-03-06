@@ -11,8 +11,3 @@ Premium 機能を構成するには、まず **[料金レベルの選択]** ブ�
 
 ![[料金レベルの選択]](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

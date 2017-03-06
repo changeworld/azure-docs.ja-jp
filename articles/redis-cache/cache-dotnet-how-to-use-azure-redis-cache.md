@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/06/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: aeac4f6ae98ec453127459f9af467458ef2dbd98
+ms.sourcegitcommit: a3fc1a6bf552ed8c6511c432c0d74b76247ce877
+ms.openlocfilehash: c08d863ef8913b9bad766c6232faaaa0a6cfa950
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: aeac4f6ae98ec453127459f9af467458ef2dbd98
 Microsoft Azure Redis Cache には、次のレベルがあります。
 
 * **Basic** – 単一ノード。 複数のサイズ、最大 53 GB
-* **Standard** – 2 ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
+* **Standard** –&2; ノード (プライマリ/レプリカ)。 複数のサイズ、最大 53 GB 99.9% の SLA。
 * **Premium** – 最大 10 個のシャードがある 2 ノード (プライマリ/レプリカ)。 6 GB から 530 GB までの複数のサイズ (詳細はお問い合わせください)。 Standard レベルのすべての機能と、[Redis クラスター](cache-how-to-premium-clustering.md)、[Redis の永続化](cache-how-to-premium-persistence.md)、[Azure Virtual Network](cache-how-to-premium-vnet.md) のサポートを含むその他の機能。 99.9% の SLA。
 
 各レベルは、機能と価格ごとに異なります。 価格の詳細については、[Cache の価格詳細][Cache Pricing Details]に関するページをご覧ください。
@@ -88,9 +89,9 @@ Azure Redis Cache の導入は簡単です。 使い始めるには、キャッ�
 > 
 > 
 
-Azure Redis Cache への接続には、 `ConnectionMultiplexer` クラスを使用します。 このクラスはクライアント アプリケーションの開始から終了まで共有、再利用する前提で設計されており、操作単位で作成する必要はありません。 
+Azure Redis Cache への接続には、 `ConnectionMultiplexer` クラスを使用します。 このクラスは、クライアント アプリケーションの開始から終了まで共有および再利用します。操作単位で作成する必要はありません。 
 
-Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` インスタンスを取得するには、次の例のように、静的 `Connect` メソッドを呼び出して、キャッシュのエンドポイントとキーを渡します。 password パラメーターには、Azure ポータルから生成されたキーを使用してください。
+Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` インスタンスを取得するには、静的 `Connect` メソッドを呼び出して、キャッシュのエンドポイントとキーを渡します。 password パラメーターには、Azure Portal から生成されたキーを使用してください。
 
     ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
@@ -102,11 +103,11 @@ Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` イ�
 SSL を使用しない場合は、`ssl=false` を設定するか、`ssl` パラメーターを省略します。
 
 > [!NOTE]
-> 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 非 SSL ポートを有効にする手順については、「 [アクセス ポート](cache-configure.md#access-ports)」を参照してください。
+> 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 非 SSL ポートを有効にする手順については、「[アクセス ポート](cache-configure.md#access-ports)」を参照してください。
 > 
 > 
 
-アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つは、次の例のように、接続されたインスタンスを返す静的プロパティの設定です。 これにより、接続された `ConnectionMultiplexer` インスタンス 1 つのみがスレッド セーフな方法で初期化されます。 これらの例では、 `abortConnect` が false に設定されており、Azure Redis Cache への接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
+アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の&1; つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 このアプローチにより、接続された&1; つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。 これらの例では、`abortConnect` が false に設定されており、Azure Redis Cache への接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の&1; つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -152,9 +153,9 @@ SSL を使用しない場合は、`ssl=false` を設定するか、`ssl` パラ�
 
     string value = cache.StringGet("key1");
 
-Redis では、ほとんどのデータが Redis 文字列として保存されますが、これらの文字列には、さまざまなデータ型を格納することができます。シリアル化したバイナリ データもその 1 つで、.NET のオブジェクトをキャッシュに保存する際に使用することができます。
+Redis では、ほとんどのデータが Redis 文字列として保存されますが、これらの文字列には、さまざまなデータ型を格納することができます。シリアル化したバイナリ データもその&1; つで、.NET のオブジェクトをキャッシュに保存する際に使用することができます。
 
-`StringGet` を呼び出すと、オブジェクトが存在する場合はそのオブジェクトが返され、存在しない場合は `null` が返されます。 その場合、目的のデータ ソースから値を取得してキャッシュに格納しておき、後で使用することができます。 これを "キャッシュ アサイド パターン" といいます。
+`StringGet` を呼び出すと、オブジェクトが存在する場合はそのオブジェクトが返され、存在しない場合は `null` が返されます。 `null` が返された場合、目的のデータ ソースから値を取得してキャッシュに格納しておき、後で使用することができます。 この使用パターンは "キャッシュ アサイド パターン" といいます。
 
     string value = cache.StringGet("key1");
     if (value == null)
@@ -171,9 +172,9 @@ Redis では、ほとんどのデータが Redis 文字列として保存され�
     cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 
 ## <a name="work-with-net-objects-in-the-cache"></a>キャッシュ内で .NET オブジェクトを使用する
-Azure Redis Cache はプリミティブ データ型に加え、.NET オブジェクトをキャッシュできますが、.NET オブジェクトをキャッシュするためには、あらかじめシリアル化しておく必要があります。 この処理はアプリケーション開発者が行わなければなりません。逆にそのことでシリアライザーの選択に幅が生まれ、開発者にとってのメリットとなっています。
+Azure Redis Cache は .NET オブジェクトとプリミティブ データ型の両方をキャッシュできますが、.NET オブジェクトをキャッシュするためには、あらかじめシリアル化しておく必要があります。 この .NET オブジェクトのシリアル化はアプリケーション開発者が行わなければなりません。逆にそのことでシリアライザーの選択に幅が生まれ、開発者にとってのメリットとなっています。
 
-オブジェクトをシリアル化する簡単な方法の 1 つは、[Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) の `JsonConvert` シリアル化方法を使用して、JSON へおよび JSON からシリアル化する方法です。 次の例では、 `Employee` オブジェクト インスタンスを使用した get および set を示しています。
+オブジェクトをシリアル化する簡単な方法の&1; つは、[Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) の `JsonConvert` シリアル化方法を使用して、JSON へおよび JSON からシリアル化する方法です。 次の例では、 `Employee` オブジェクト インスタンスを使用した get および set を示しています。
 
     class Employee
     {
@@ -201,7 +202,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 * Azure Redis Cache の ASP.NET プロバイダーを参照してください。
   * [Azure Redis セッション状態プロバイダー](cache-aspnet-session-state-provider.md)
   * [Azure Redis Cache ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
-* [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。 Azure ポータルでメトリックを表示できますが、お好みのツールを使用して、メトリックを [ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) することも可能です。
+* [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。 Azure ポータルでメトリックを表示できますが、任意のツールを使用して、メトリックを [ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) することも可能です。
 * [StackExchange.Redis キャッシュ クライアントのドキュメント][StackExchange.Redis cache client documentation]を参照してください。
   * Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。 詳細については、[http://redis.io/clients][http://redis.io/clients] を参照してください。
 * Azure Redis Cache は、Redsmin や Redis Desktop Manager などのサードパーティのサービスやツールと共に使用することもできます。
@@ -277,7 +278,7 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
 [Cache Pricing Details]: http://www.windowsazure.com/pricing/details/cache/
-[Azure Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 
 [Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
@@ -295,10 +296,5 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Backup と Resource Manager デプロイメント モデルを使用した、Windows から Azure へのファイルとフォルダーのバックアップ | Microsoft Docs"
-description: "Resource Manager デプロイメントで Windows のファイルとフォルダーを Azure にバックアップする方法について説明します。"
+title: "Windows ファイルとフォルダ―を Azure にバックアップする (Resource Manager) | Microsoft Docs"
+description: "Resource Manager デプロイで Windows のファイルとフォルダーを Azure にバックアップする方法について説明します。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/10/2017
+ms.date: 2/23/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: cdccfe1215bb8f62381c73becdc9d90f45800966
-ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
+ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
+ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -26,17 +27,6 @@ ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
 
 Azure Backup の詳細については、こちらの [概要記事](backup-introduction-to-azure-backup.md)を参照してください。
 
-ファイルとフォルダーを Azure にバックアップするには、以下のアクティビティが必要です。
-
-![手順 1](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure サブスクリプションを入手します (まだない場合)。<br>
-![手順 2](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services コンテナーを作成します。<br>
-![手順 3](./media/backup-try-azure-backup-in-10-mins/step-3.png) 必要なファイルをダウンロードします。<br>
-![手順 4](./media/backup-try-azure-backup-in-10-mins/step-4.png) Recovery Services エージェントをインストールして登録します。<br>
-![手順 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) ファイルとフォルダーをバックアップします。
-
-![How to back up your Windows machine with Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
-
-## <a name="get-an-azure-subscription"></a>Azure サブスクリプションを取得する
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
@@ -70,6 +60,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
   リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。 この選択により、バックアップ データの送信先となるリージョンが決まります。
+
 8. [Recovery Services コンテナー] ブレードの下部にある **[作成]** をクリックします。
 
     Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、**[最新の情報に更新]** をクリックしてください。
@@ -229,9 +220,4 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 * [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
 * ファイルとフォルダーをバックアップしたので、 [コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

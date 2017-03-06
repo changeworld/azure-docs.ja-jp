@@ -17,6 +17,7 @@ ms.author: terrylan
 translationtype: Human Translation
 ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
 ms.openlocfilehash: 9c5af888ec0130ec8506602ab805221f0a83ea47
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -153,9 +154,4 @@ Microsoft の ID 管理はオンプレミスとクラウドにまたがり、場
 * [ハイブリッド ID ホワイト ペーパー](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Active Directory チームのブログ](https://blogs.technet.microsoft.com/ad/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

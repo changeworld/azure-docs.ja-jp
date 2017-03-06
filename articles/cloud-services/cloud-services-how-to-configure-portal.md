@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: bb66627b170c9010414b24266fdae608e67f5c61
 ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -109,9 +110,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

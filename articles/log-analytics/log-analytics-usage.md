@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 668cde23cb717fcad52fd7823561d10735e6df1b
+ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
+ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -47,6 +48,12 @@ Log Analytics は、データを収集して OMS サービスに定期的に送�
     - データの収集とインデックス作成に要した時間
 - クエリのリスト
 
+## <a name="understanding-nodes-for-oms-offers"></a>OMS プランのノードについて
+
+"*ノード単位 (OMS)*" の価格レベルを使用している場合は、有効にしたノードとソリューションの数に基づいて料金が発生します。 使用されている各プランのノード数は、使用量ダッシュボードの "*オファリング*" セクションで確認できます。
+
+![[使用量] ダッシュボード](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+
 ## <a name="to-work-with-usage-data"></a>使用量データを扱うには
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
 2. **ハブ** メニューで **[その他のサービス]** をクリックし、リソースの一覧で「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
@@ -63,9 +70,4 @@ Log Analytics は、データを収集して OMS サービスに定期的に送�
 
 ## <a name="next-steps"></a>次のステップ
 * 「[Log Analytics におけるログの検索](log-analytics-log-searches.md)」を参照し、各種機能およびソリューションによって収集され、OMS 似送信された詳細情報を確認します。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

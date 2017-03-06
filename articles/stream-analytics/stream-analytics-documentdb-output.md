@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 20880eccbf28cabfb594bb8129cb0a5a3beeb224
 ms.openlocfilehash: e62e4f6c208f5506108b2ef5f6c1aabe43f086a2
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -70,9 +71,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
   2\) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。  
 * **パーティション キー** – 省略可能。 コレクション名のパターンに {partition} トークンを使用している場合のみ必要です。 コレクション全体で出力をパーティション分割するためのキーを指定するために使用される、出力イベント内のフィールドの名前。 コレクションの出力が&1; つの場合は、PartitionId など、任意の出力列を使用できます。  
 * **Document ID** – 省略可能です。 挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

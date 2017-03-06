@@ -211,7 +211,7 @@ Visual Studio で、ToDoListAPI プロジェクトを次のように変更しま
    
    | **キー** | ida:Authority |
    | --- | --- |
-   | **値** |https://login.microsoftonline.com/<Azure AD テナント名> |
+   | **値** |https://login.microsoftonline.com/\<Azure AD テナント名> |
    | **例** |https://login.microsoftonline.com/contoso.onmicrosoft.com |
    
    | **キー** | ida:ClientId |

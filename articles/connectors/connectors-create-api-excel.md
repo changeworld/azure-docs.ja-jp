@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: 5c585b988cc1989288e1e5953d1bdab6b5281707
 ms.openlocfilehash: aa8b95bd92d6bed60ba20ffd28e53d26930d7a31
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -216,9 +217,4 @@ Applies to version: 1.0.
 
 
 -->
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

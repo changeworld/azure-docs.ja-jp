@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal を使用して Service Bus 名前空間を作成する | Microsoft Docs"
-description: "Service Bus の使用を開始するには、名前空間が必要です。 Azure ポータルを使用して名前空間を作成する方法を次に示します。"
+title: "Azure Portal で Service Bus 名前空間を作成する | Microsoft Docs"
+description: "Azure Portal を使用して Service Bus 名前空間を作成する方法。"
 services: service-bus-messaging
 documentationcenter: .net
 author: jtaubensee
@@ -15,13 +15,14 @@ ms.workload: na
 ms.date: 11/30/2016
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 0b1f6f7ec47e47f39407cdbfd5efef2a18944ecc
-ms.openlocfilehash: 89610512c264cef4bd52728240ddc0a34091edea
+ms.sourcegitcommit: 4a972b9b8b52a90f27afda98d8bdc661016d1fe1
+ms.openlocfilehash: ba7093f8a2c06ab4cecf11207174a4871435ae64
+ms.lasthandoff: 02/28/2017
 
 
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure Portal を使用して Service Bus 名前空間を作成する
-名前空間は、すべてのメッセージング コンポーネントの共通コンテナーです。 複数のキューとトピックを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 現在、Service Bus 名前空間の作成には 2 つの方法があります。
+名前空間は、すべてのメッセージング コンポーネントの共通コンテナーです。 複数のキューとトピックを&1; つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 現在、Service Bus 名前空間の作成には&2; つの方法があります。
 
 1. Azure ポータル (この記事)
 2. [リソース マネージャーのテンプレート][create-namespace-using-arm]
@@ -36,9 +37,4 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

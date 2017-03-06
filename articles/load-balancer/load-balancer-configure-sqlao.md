@@ -16,6 +16,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
+ms.lasthandoff: 01/11/2017
 
 ---
 
@@ -65,9 +66,4 @@ SQL AlwaysOn の詳細については、「[Azure の AlwaysOn 可用性グル�
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

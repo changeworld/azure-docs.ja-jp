@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 12ce6b6bccf3ea2aa2945ddd775716f29cf01e1f
-ms.openlocfilehash: 47b2623eb3b83220ef8e3cfafde06dab3ac3d22e
+ms.sourcegitcommit: a8e5d36d31aabc9226206f52d8543566c5218494
+ms.openlocfilehash: 6c833cd40439fef1fe9cca2591d36a6c49630579
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -24,13 +25,13 @@ ms.openlocfilehash: 47b2623eb3b83220ef8e3cfafde06dab3ac3d22e
 ## <a name="overview"></a>Overview
 Azure Storage を使用した開発は簡単です。 このチュートリアルでは、Azure Storage アプリケーションを短時間で稼動させる方法について説明します。 Azure SDK for .NET に付属するクイック スタート テンプレートを使用します。 これらのクイック スタートには、すぐに実行できるコードが含まれています。今回はそのコードを使って、Azure Storage の基本的なプログラミング シナリオのデモをいくつか実行します。
 
-コードの説明に入る前に Azure Storage の詳細について学習するには、「 [次のステップ](#next-steps)」をご覧ください。
+コードの説明に入る前に Azure Storage の詳細について学習するには、「[次のステップ](#next-steps)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 開始する前に、次の前提条件を満たす必要があります。
 
-1. アプリケーションをコンパイルし、ビルドするには、コンピューターに [Visual Studio](https://www.visualstudio.com/) をインストールしておく必要があります。
-2. 最新バージョンの [Azure SDK for .NET](https://azure.microsoft.com/downloads/)をインストールします。 SDK には、Azure QuickStart サンプル プロジェクト、Azure ストレージ エミュレーター、および [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)が含まれます。
+1. アプリケーションをコンパイルし、ビルドするには、コンピューターに [Visual Studio 2015](https://www.visualstudio.com/) 以降をインストールしておく必要があります。
+2. 最新バージョンの [Azure SDK for .NET](https://azure.microsoft.com/downloads/) をインストールします。 SDK には、Azure QuickStart サンプル プロジェクト、Azure ストレージ エミュレーター、および [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)が含まれます。
 3. [.NET Framework 4.5](http://www.microsoft.com/download/details.aspx?id=30653) がコンピューターにインストールされていることを確認します。このチュートリアルで使用する Azure QuickStart サンプル プロジェクトで必要です。
 
     コンピューターにどのバージョンの .NET Framework がインストールされているか不明な場合、「 [方法: インストールされている .NET Framework バージョンを確認する](https://msdn.microsoft.com/vstudio/hh925568.aspx)」を参照してください。 または、**[スタート]** をクリックするか Windows キーを押し、「**コントロール パネル**」と入力します。 次に、**[プログラム]** > **[プログラムと機能]** をクリックして、インストールされているプログラムの一覧に .NET Framework 4.5 が含まれることを確認します。
@@ -45,9 +46,12 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[クラウド]** > **[クイック スタート]** > **[Data Services]** をクリックします。
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **Azure Storage: Blobs**、**Azure Storage: Files**、**Azure Storage: Queues**、**Azure Storage: Tables** のいずれかのテンプレートを選択します。
-    b. ターゲット フレームワークとして **[.NET Framework 4.5]** が選択されていることを確認します。
-    c. プロジェクトの名前を指定し、次のように新しい Visual Studio ソリューションを作成します。
+   
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **Azure Storage: Blobs**、**Azure Storage: Files**、**Azure Storage: Queues**、**Azure Storage: Tables** のいずれかのテンプレートを選択します。
+   
+   b. ターゲット フレームワークとして **[.NET Framework 4.5]** が選択されていることを確認します。
+   
+   c. プロジェクトの名前を指定し、次のように新しい Visual Studio ソリューションを作成します。
 
     ![Azure Quick Starts][Image1]
 
@@ -55,11 +59,11 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
 
 次に、サンプル アプリケーションを実行します。
 
-1. Visual Studio で、**[表示]** メニューにある **[ソリューション エクスプローラー]** を選択します。 App.config ファイルを開き、次の Azure ストレージ エミュレーターの接続文字列をコメントアウトします。
+1. Visual Studio で、**[表示]** メニューにある **[ソリューション エクスプローラー]** を選択します。 **App.config** ファイルを開き、次の Azure ストレージ エミュレーターの接続文字列をコメントアウトします。
 
    `<!--<add key="StorageConnectionString" value = "UseDevelopmentStorage=true;"/>-->`
 
-2. Azure Storage サービスの接続文字列をコメント解除し、次のようにストレージ アカウント名とアクセス キーを App.config ファイルに入力します。
+2. App.config ファイルの Azure Storage サービスの接続文字列をコメント解除し、`[AccountName]` と `[AccountKey]` をご利用のアカウントの資格情報で置き換えてください。
 
    `<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]"`
 
@@ -76,8 +80,11 @@ Azure Storage を使用した開発は簡単です。 このチュートリア�
 1. Visual Studio を起動します。
 2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[クラウド]** > **[クイック スタート]** > **[Data Services]** をクリックします。
+    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **Azure Storage: Blobs**、**Azure Storage: Files**、**Azure Storage: Queues**、**Azure Storage: Tables** のいずれかのテンプレートを選択します。
+    
     b. ターゲット フレームワークとして **[.NET Framework 4.5]** が選択されていることを確認します。
+    
     c. プロジェクトの名前を指定し、次のように新しい Visual Studio ソリューションを作成します。
 
     ![Azure Quick Starts][Image1]
@@ -109,9 +116,4 @@ Azure Storage の詳細については、次のリソースをご覧ください
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

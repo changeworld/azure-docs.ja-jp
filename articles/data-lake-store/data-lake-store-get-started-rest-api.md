@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -260,10 +261,5 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

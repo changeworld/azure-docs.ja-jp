@@ -4,7 +4,7 @@ description: "サンプル アプリをデプロイして、App Service での W
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 27c50be7-421a-47c9-8279-506519e404a4
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 5e532c130910e292d8b742353dfe7e24f1bf865e
-ms.openlocfilehash: 37c364ab2a3948acd20b016639887a46ee18c470
+ms.sourcegitcommit: d24e78a826de9fb72e0eedc48877c83e867f70ca
+ms.openlocfilehash: 93b9ec270ffc69fcfde56bcc56c8953024133fcd
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-your-first-html-web-app-to-azure-in-five-minutes"></a>初めての HTML Web アプリを Azure に&5; 分でデプロイする
-
-> [!div class="op_single_selector"]
-> * [初めての HTML サイト](app-service-web-get-started-html-cli-nodejs.md)
-> * [初めての .NET アプリ](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [初めての PHP アプリ](app-service-web-get-started-php-cli-nodejs.md)
-> * [初めての Node.js アプリ](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [初めての Python アプリ](app-service-web-get-started-python-cli-nodejs.md)
-> * [初めての Java アプリ](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started-nodejs-cli](../../includes/app-service-web-selector-get-started-nodejs-cli.md)]  
 
 このチュートリアルでは、シンプルな HTML+CSS Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md)にデプロイします。
 App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
@@ -49,7 +41,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](app-service-web-get-started-html-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](app-service-web-get-started-html.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](app-service-web-get-started-html.md) - Resource Manager デプロイ モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -131,10 +123,5 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 * [Azure にコードをデプロイする他の方法](web-sites-deploy.md)を試してみます。 たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 * Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。 「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

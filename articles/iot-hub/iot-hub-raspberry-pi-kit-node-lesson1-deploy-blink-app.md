@@ -20,6 +20,7 @@ ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 90ceb432bd9506dc40e340af21a3cae4e21a20b0
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -151,10 +152,5 @@ Pi を操作するために必要なツールをインストールし、Pi に�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure ツールの入手](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

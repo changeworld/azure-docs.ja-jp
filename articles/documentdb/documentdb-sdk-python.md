@@ -17,6 +17,7 @@ ms.author: rnagpal
 translationtype: Human Translation
 ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
 ms.openlocfilehash: 377b1c5a5f1a3425f255d227c6d2800b9ec61a33
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -138,10 +139,5 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 ## <a name="see-also"></a>関連項目
 DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

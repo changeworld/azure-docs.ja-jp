@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
+ms.sourcegitcommit: 30b30513d5563cf64679e29c4858bf15f65d3a44
+ms.openlocfilehash: 015c997135eae9c936af1a1ec0b0064912baaa04
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -40,8 +41,6 @@ Key Vault の操作を行ってから、遅くとも 10 分後には、ログ情
 > 
 > 
 
-収集したログは、Operations Management Suite から Log Analytics を使って視覚化することができます。 詳細については、「 [Azure Key Vault (Preview) solution in Log Analytics (Log Analytics の Azure Key Vault (プレビュー) ソリューション)](../log-analytics/log-analytics-azure-key-vault.md)」を参照してください。
-
 Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -58,7 +57,7 @@ Azure PowerShell セッションを開始し、次のコマンドで Azure ア�
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
 
-複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の 1 つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
+複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の&1; つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
 
     Get-AzureRmSubscription
 
@@ -154,7 +153,7 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
     $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
+この&2; 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
 BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 For example:
 
@@ -168,7 +167,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
   
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
-これで、ログの内容を検討する準備が整いました。 ただし、ログの内容の検討に入る前に、Get-AzureRmDiagnosticSetting 用のさらに 2 つのパラメーターを把握しておく必要があります。
+これで、ログの内容を検討する準備が整いました。 ただし、ログの内容の検討に入る前に、Get-AzureRmDiagnosticSetting 用のさらに&2; つのパラメーターを把握しておく必要があります。
 
 * Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 * Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
@@ -254,6 +253,10 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | SecretList |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
+## <a name="a-idloganalyticsause-log-analytics"></a><a id="loganalytics"></a>Log Analytics を使用する
+
+Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault の AuditEvent ログを調査することができます。 詳細については、[Log Analytics の Azure Key Vault ソリューション](../log-analytics/log-analytics-azure-key-vault.md)に関するページをご覧ください。 この記事では、Log Analytics プレビューで提供された以前の Key Vault ソリューションから移行する必要がある場合の手順について説明しました。つまり、最初にログを Azure ストレージ アカウントにルーティングし、そこから読み取ることができるよう Log Analytics を構成しました。
+
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
 Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「 [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」を参照してください。
 
@@ -262,10 +265,5 @@ Web アプリケーションでの Azure Key Vault の使用方法に関する�
 Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「 [Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」を参照してください。
 
 Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、「 [エンド ツー エンドのキーのローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

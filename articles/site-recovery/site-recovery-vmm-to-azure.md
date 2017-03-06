@@ -1,6 +1,6 @@
 ---
 title: "VMM クラウドの Hyper-V VM を Azure にレプリケートする | Microsoft Docs"
-description: "Site Recovery をデプロイし、VMM クラウド内の Hyper-V VM の Azure へのレプリケーション、フェールオーバー、復旧を調整する方法を説明します。"
+description: "System Center VMM クラウドで管理されている Hyper-V VM の Azure へのレプリケーション、フェールオーバー、復旧を調整します。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,62 +12,29 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/23/2017
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
-ms.openlocfilehash: bdf9ce3d4ac359aa4150bc8912ce8b8302828343
+ms.sourcegitcommit: dcd7836f1ef84bbf7f45f1a70da1e177d9913a36
+ms.openlocfilehash: 345e5516be0c4de56c0cb104b1a598cd964b41d2
+ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-the-azure-portal"></a>Azure Portal を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする
-
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Azure Portal の Site Recovery を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-azure.md)
+> * [Azure ポータル](site-recovery-vmm-to-azure.md)
 > * [Azure クラシック](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [PowerShell クラシック](site-recovery-deploy-with-powershell.md)
 
 
-Azure Site Recovery サービスへようこそ。
+この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center VMM クラウドで管理されているオンプレミスの Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。
 
-Site Recovery は、ビジネス継続性と障害復旧 (BCDR) の戦略に貢献する Azure サービスです。 Site Recovery では、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーと仮想マシンのレプリケーションを調整します。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。 詳細については、「 [Azure Site Recovery とは](site-recovery-overview.md)
-
-この記事では、System Center VMM クラウドで管理されているオンプレミスの Hyper-V 仮想マシンを、Azure Portal の Azure Site Recovery を使用して Azure にレプリケートする方法について説明します。
-
-この記事に関するコメントがありましたら、下から投稿してください。 技術的な質問については、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
-
-## <a name="quick-reference"></a>クイック リファレンス
-完全なデプロイを行う場合、この記事のすべての手順を実行することをお勧めします。 ただし、時間が足りない場合のために、簡単な概要を示します。
-
-| **領域** | **詳細** |
-| --- | --- |
-| **デプロイ シナリオ** |Azure Portal を使用して、VMM クラウドの Hyper-V VM を Azure にレプリケートする |
-| **オンプレミスの要件** |1 つ以上のクラウドを使用して System Center 2012 R2 で実行されている、1 つ以上の VMM サーバー。<br/><br/> クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/> Hyper-V ロールを持つ Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 が実行されており、最新の更新プログラムがインストールされている、クラウド上にある少なくとも 1 つの Hyper-V サーバー。<br/><br/> VMM サーバーと Hyper-V ホストにはインターネット接続が必要です。また、直接またはプロキシ経由で特定の URL にアクセスできる必要があります。 [詳細については、こちらをご覧ください](#on-premises-prerequisites)。 |
-| **オンプレミスの制限事項** |HTTPS ベースのプロキシはサポートされていません |
-| **プロバイダー/エージェント** |レプリケートする VM には Azure Site Recovery プロバイダーが必要です。<br/><br/> Hyper-V ホストには Recovery Services エージェントが必要です。<br/><br/> これらはデプロイ中にインストールします。 |
-|  **Azure の要件** |Azure アカウント<br/><br/> Recovery Services コンテナー<br/><br/> コンテナー リージョンの LRS または GRS ストレージ アカウント<br/><br/> Standard ストレージ アカウント<br/><br/> コンテナー リージョンの Azure 仮想ネットワーク。 [詳細については、こちらをご覧ください](#azure-prerequisites)。 |
-|  **Azure の制限事項** |GRS を使用する場合、ログ記録には別の LRS アカウントが必要になります。<br/><br/> Azure Portal で作成されたストレージ アカウントは、同じまたは異なるサブスクリプションのリソース グループ間で移動できません。 <br/><br/> Premium Storage はサポートされていません。<br/><br/> Site Recovery に使用されている Azure ネットワークは、同じまたは異なるサブスクリプションのリソース グループ間で移動できません。
-|  **VM レプリケーション** |[VM は Azure の前提条件に準拠している必要があります](site-recovery-best-practices.md#azure-virtual-machine-requirements)。<br/><br/>
-|  **レプリケーションの制限事項** |静的 IP アドレスを使用して Linux を実行している VM はレプリケートできません。<br/><br/> 特定のディスクをレプリケーションから除外することはできますが、OS ディスクを除外することはできません。
-| **デプロイの手順** |1. Azure の準備 (サブスクリプション、ストレージ、ネットワーク)、2. オンプレミスの準備 (VMM とネットワーク マッピング)、3. Recovery Services コンテナーの作成、4. VMM と Hyper-V ホストの設定、5. レプリケーション設定の構成、6. レプリケーションの有効化、7. レプリケーションとフェールオーバーのテスト。 |
-
-## <a name="site-recovery-in-the-azure-portal"></a>Azure ポータルの Site Recovery
-
-Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 Azure のポータルも、Azure クラシック ポータルと Azure Portal の&2; 種類があります。 この記事では、Azure Portal でデプロイする方法について説明します。
+この記事に関するコメントは、この記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
-この記事では、合理的なデプロイ操作を実現する Azure Portal でデプロイする方法について説明します。 既存のコンテナーを保持する場合は、クラシック ポータルを使用できます。 クラシック ポータルを使用して、新しいコンテナーを作成することはできません。
 
-
-## <a name="site-recovery-in-your-business"></a>ビジネス用途の Site Recovery
-
-組織には、予定されたダウンタイムと予定外のダウンタイムの間にアプリとデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。 Site Recovery でできることを次に示します。
-
-* Hyper-V VM で実行されているビジネス アプリのオフサイト保護。
-* レプリケーション、フェールオーバー、復旧の一元的な設定、管理、監視。
-* Azure への簡単なフェールオーバーと、Azure からオンプレミス サイトの Hyper-V ホスト サーバーへのフェールバック (復元)。
-* 階層化されたアプリケーション ワークロードをまとめてフェールオーバーできるように複数の VM が含まれた復旧計画。
 
 ## <a name="scenario-architecture"></a>シナリオのアーキテクチャ
 シナリオの構成要素を次に示します。
@@ -100,7 +67,7 @@ Azure で必要なものを次に示します。
 ## <a name="protected-machine-prerequisites"></a>保護対象のマシンの前提条件
 | **前提条件** | **詳細** |
 | --- | --- |
-| **保護対象の VM** |VM をフェールオーバーする前に、Azure VM に割り当てられる名前が [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認してください。 名前は、VM のレプリケーションを有効にした後で変更できます。 <br/><br/> 保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。 VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。<br/><br/> 共有ディスク ゲスト クラスターはサポートされていません。<br/><br/> Unified Extensible Firmware Interface (UEFI) ブート/拡張ファームウェア インターフェイス (EFI) ブートはサポートされていません。<br/><br/> ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>静的 IP アドレスを持ち、Linux を実行している Hyper-V VM は保護できません。 |
+| **保護対象の VM** |VM をフェールオーバーする前に、Azure VM に割り当てられる名前が [Azure の前提条件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認してください。 名前は、VM のレプリケーションを有効にした後で変更できます。 <br/><br/> 保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。 VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。<br/><br/> 共有ディスク ゲスト クラスターはサポートされていません。<br/><br/> Unified Extensible Firmware Interface (UEFI) ブート/拡張ファームウェア インターフェイス (EFI) ブートはサポートされていません。<br/><br/> ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>静的 IP アドレスを持ち、Linux を実行している Hyper-V VM は保護できません。 |
 
 ## <a name="prepare-for-deployment"></a>デプロイの準備をする
 デプロイを準備するには、次の手順に従います。
@@ -108,7 +75,7 @@ Azure で必要なものを次に示します。
 1. [Azure ネットワークをセットアップする](#set-up-an-azure-network) 。
 2. [Azure Storage アカウントを設定](#set-up-an-azure-storage-account) します。
 3. [VMM サーバーを準備する](#prepare-the-vmm-server) 。
-4. [ネットワーク マッピングを準備する](#prepare-for-network-mapping)。 Site Recovery のデプロイ時にネットワーク マッピングを構成できるように、ネットワークをセットアップする。
+4. ネットワーク マッピングを準備する。 Site Recovery のデプロイ時にネットワーク マッピングを構成できるように、ネットワークをセットアップする。
 
 ### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップする
 フェールオーバー後に作成された Azure VM の接続先となる Azure ネットワークが必要です。
@@ -137,7 +104,6 @@ Site Recovery のデプロイ中にネットワーク マッピングをセッ�
 
   * ソース Hyper-V ホスト サーバー上の VM が VMM VM ネットワークに接続されていることを確認します。 そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
   * [前述](#set-up-an-azure-network)
-* [ネットワーク マッピングのしくみ](site-recovery-network-mapping.md) を理解します。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
@@ -177,14 +143,17 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 1. **[手順 2: インフラストラクチャを準備する]** > **[ソース]** の順にクリックします。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source1.png)
+    
 2. **[ソースの準備]** で **[+ VMM]** をクリックして、VMM サーバーを追加します。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source2.png)
+    
 3. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **System Center VMM サーバー**が表示され、その VMM サーバーが[前提条件と URL 要件](#on-premises-prerequisites)を満たしていることを確認します。
 4. Azure Site Recovery プロバイダーのインストール ファイルをダウンロードします。
 5. 登録キーをダウンロードします。 セットアップを実行する際に、これが必要になります。 キーは生成後&5; 日間有効です。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source3.png)
+    
 6. VMM サーバーに Azure Site Recovery プロバイダーをインストールします。
 
 ### <a name="set-up-the-azure-site-recovery-provider"></a>Azure Site Recovery プロバイダーのセットアップ
@@ -274,7 +243,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
     ![Storage](./media/site-recovery-vmm-to-azure/enablerep3.png)
 
 2. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが&1; つ以上あるかどうかが確認されます。
-    ![Storage](./media/site-recovery-vmm-to-azure/compatible-storage.png)
+      ![Storage](./media/site-recovery-vmm-to-azure/compatible-storage.png)
 
 4. まだストレージ アカウントを作成しておらず、Resource Manager を使用して作成する場合は、**[+ ストレージ アカウント]** をクリックしてインラインで作成します。  **[ストレージ アカウントの作成]** ブレードで、アカウント名、種類、サブスクリプション、場所を指定します。 アカウントは、Recovery Services コンテナーと同じ場所にある必要があります。
 
@@ -291,7 +260,8 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
    クラシック モデルを使用してネットワークを作成する場合は、Azure Portal で作成できます。 [詳細情報](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。
 
 ### <a name="configure-network-mapping"></a>ネットワーク マッピングの構成
-* [こちら](#prepare-for-network-mapping) をご覧ください。 [こちら](site-recovery-network-mapping.md) をご覧ください。
+
+* [こちら](#prepare-for-network-mapping) をご覧ください。
 * VMM サーバー上の仮想マシンが VM ネットワークに接続されており、1 つ以上の Azure 仮想ネットワークが作成されていることを確認してください。 1 つの Azure ネットワークに対して複数の VM ネットワークをマップできます。
 
 マッピングは次のように構成します。
@@ -390,13 +360,14 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 6. **[仮想マシン]** > **[仮想マシンの選択]** で、レプリケートする各マシンをクリックして選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]**をクリックします
 
     ![Enable replication](./media/site-recovery-vmm-to-azure/enable-replication5.png)
-7. **[プロパティ]** > **[プロパティの構成]** で、選択した VM のオペレーティング システムと OS ディスクを選択します。 既定では、VM のすべてのディスクがレプリケーションの対象として選択されています。 レプリケーションからディスクを除外して、不要なデータを Azure にレプリケートする際の帯域幅使用量を削減することもできます。 たとえば、一時的なデータや、マシンまたはアプリケーションを再起動するたびに更新されるデータ (pagefile.sys や Microsoft SQL Server tempdb など) が保存されたディスクをレプリケーションから除外できます。 ディスクをレプリケーションから除外するには、ディスクの選択を解除します。 Azure VM の名前 (ターゲット名) が [Azure 仮想マシンの要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認し、必要に応じて変更します。 次に、 **[OK]**をクリックします 後で追加のプロパティを設定できます。
+
+7. **[プロパティ]** > **[プロパティの構成]** で、選択した VM のオペレーティング システムと OS ディスクを選択します。 既定では、VM のすべてのディスクがレプリケーションの対象として選択されています。 レプリケーションからディスクを除外して、不要なデータを Azure にレプリケートする際の帯域幅使用量を削減することもできます。 たとえば、一時的なデータや、マシンまたはアプリケーションを再起動するたびに更新されるデータ (pagefile.sys や Microsoft SQL Server tempdb など) が保存されたディスクをレプリケーションから除外できます。 ディスクをレプリケーションから除外するには、ディスクの選択を解除します。 Azure VM の名前 (ターゲット名) が [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認し、必要に応じて変更します。 次に、 **[OK]**をクリックします 後で追加のプロパティを設定できます。
 
     ![Enable replication](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
     >[!NOTE]
     >
-    > * レプリケーションから除外できるのは、ベーシック ディスクだけです。 OS ディスクを除外することはできないため、ダイナミック ディスクの除外はお勧めしません。 ASR は、ゲスト VM 内でどの VHD ディスクがベーシック ディスクまたはダイナミック ディスクであるかを特定できません。  依存するダイナミック ボリューム ディスクすべてが除外されていない場合、フェールオーバー VM 上の障害が発生したディスクとそのディスク上のデータにアクセスできないため、保護されたダイナミック ディスクになります。
+    > * レプリケーションから除外できるのは、ベーシック ディスクだけです。 OS ディスクを除外することはできないため、ダイナミック ディスクの除外はお勧めしません。 Site Recovery は、ゲスト VM 内の VHD ディスクがベーシック ディスクであるかダイナミック ディスクであるかを識別できません。  依存するダイナミック ボリューム ディスクの一部が除外されていない場合、保護されたダイナミック ディスクは VM のフェールオーバー時に障害が発生したディスクとなり、そのディスク上のデータにアクセスできなくなります。
     > * レプリケーションが有効になった後で、レプリケーション用のディスクを追加または削除することはできません。 ディスクを追加または除外する場合は、VM の保護を無効にし、再度有効にする必要があります。
     > * アプリケーションが動作するために必要なディスクを除外した場合、Azure へのフェールオーバー後、レプリケートされたアプリケーションを実行できるように、Azure でディスクを手動で作成する必要があります。 別の方法として、Azure Automation を復旧計画に組み込んで、マシンのフェールオーバー時にディスクを作成することもできます。
     > * Azure で手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure VM に直接&2; つのディスクを作成した場合、フェールオーバーされた&3; つのディスクだけが Azure から Hyper-V にフェールバックされます。 Hyper-V から Azure へのフェールバックまたはレプリケーションの反転に、手動で作成されたディスクを含めることはできません。
@@ -411,7 +382,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 ### <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
-ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。
+ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。
 
 1. **[設定]** > **[保護されたアイテム]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択すると、その詳細が表示されます。
 
@@ -419,7 +390,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
 
     ![Enable replication](./media/site-recovery-vmm-to-azure/test-failover2.png)
-3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、 [Azure の要件](site-recovery-best-practices.md#azure-virtual-machine-requirements) に準拠するように名前を変更します。 Azure VM に割り当てられているターゲット ネットワーク、サブネット、IP アドレスに関する情報を表示し、変更することもできます。
+3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、 [Azure の要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) に準拠するように名前を変更します。 Azure VM に割り当てられているターゲット ネットワーク、サブネット、IP アドレスに関する情報を表示し、変更することもできます。
 以下の点に注意してください。
 
    * ターゲット IP アドレスを設定できます。 アドレスを指定しなかった場合、フェールオーバーされたマシンで DHCP が使用されます。 フェールオーバーで使用できないアドレスが設定された場合、フェールオーバーは失敗します。 テスト フェールオーバー ネットワークのアドレスを利用できる場合、テスト フェールオーバーに同じターゲット IP アドレスを使用できます。
@@ -473,7 +444,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてプロパティを開くか、**[設定]** > **[Site Recovery jobs (Site Recovery ジョブ)]** で **[テスト フェールオーバー]** をクリックします。
 1. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
 1. [フェールオーバー後の接続の準備](#prepare-to-connect-to-Azure-VMs-after-failover)が完了したら、Azure VM に接続できるようになります。
-1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。 
+1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
 詳細については、[Azure へのテスト フェールオーバー](site-recovery-test-failover-to-azure.md)に関するドキュメントを参照してください。
 
@@ -483,14 +454,9 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 1. コンテナー名をクリックして、 **[要点]** ダッシュボードにアクセスします。 このダッシュボードで、Site Recovery ジョブ、レプリケーションの状態、復旧計画、サーバーの状態、およびイベントを確認できます。  **[要点]** ダッシュボードをカスタマイズして、他の Site Recovery コンテナーや Backup コンテナーの状態など、ニーズに最適なタイルとレイアウトを表示できます。
 
     ![[要点]](./media/site-recovery-vmm-to-azure/essentials.png)
-2. **[正常性]** タイルで、サイト サーバー (VMM または構成サーバー) の問題と、Site Recovery によって過去 24 時間以内に発生したイベントを監視できます。
+2. *[正常性]** で、オンプレミス サーバー (VMM または構成サーバー) の問題と、Site Recovery によって過去 24 時間以内に発生したイベントを監視できます。
 3. **[レプリケートされたアイテム]**、**[復旧計画]**、**[Site Recovery Jobs (Site Recovery ジョブ)]** の各タイルで、レプリケーションの管理と監視を実行できます。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックすると、ジョブの詳細を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](site-recovery-failover.md) します。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

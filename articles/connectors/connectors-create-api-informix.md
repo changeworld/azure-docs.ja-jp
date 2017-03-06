@@ -18,6 +18,7 @@ ms.author: plarsen
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 614400a8787fdd2081fa8e981c0fc6b6dd794a58
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -405,10 +406,5 @@ Informix テーブルの既存の行を更新します。
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

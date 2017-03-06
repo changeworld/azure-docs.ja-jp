@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: ec470466f006265af5c4ccfddeeba975e6e648b5
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -65,9 +66,4 @@ Service Fabric クラスターでのオーケストレーターのジョブは�
 * メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、 [この記事](service-fabric-cluster-resource-manager-metrics.md)
 * クラスター リソース マネージャーは Service Fabric の管理機能と連動します。 その統合の詳細については、 [この記事](service-fabric-cluster-resource-manager-management-integration.md)
 * クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

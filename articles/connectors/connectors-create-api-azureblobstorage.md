@@ -18,6 +18,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
 ms.openlocfilehash: 6b7c73576e09af3d1b3c886efa88044846e91494
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -302,10 +303,5 @@ BlobMetadata
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: v-livech
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: ea1274dd53a93f00fa251ed03684b17b58b009c2
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: bd0c9fd0044ce8a5de9004c68b1267b8b66df80a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-linux-vm-using-an-azure-template"></a>Azure テンプレートを使用して Linux VM を作成する
+# <a name="how-to-create-a-linux-vm-using-an-azure-resourec-manager-template"></a>Azure Resource Manager テンプレートを使用して Linux VM を作成する方法
 この記事では、Azure テンプレートを使用してすばやく Linux 仮想マシンを Azure にデプロイする方法を紹介します。  この記事では以下が必要です。
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
@@ -41,7 +43,7 @@ azure group create \
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
 テンプレートを使用すると、ユーザー名やホスト名など、起動時にカスタマイズされる設定で VM を Azure に作成できます。 この記事では、Ubuntu VM とネットワーク セキュリティ グループ (NSG) を使用する Azure テンプレートを紹介します。このテンプレートでは、ポート 22 が SSH 用に開かれています。
 
-Azure Resource Manager テンプレートは、この記事で行う Ubuntu VM の起動のような、単純で 1 回限りのタスクに使用できる JSON ファイルです。  Azure テンプレートは、テスト、開発、または運用デプロイ スタックのような、環境全体の複雑な Azure 構成の構築にも使用できます。
+Azure Resource Manager テンプレートは、この記事で行う Ubuntu VM の起動のような、単純で&1; 回限りのタスクに使用できる JSON ファイルです。  Azure テンプレートは、テスト、開発、または運用デプロイ スタックのような、環境全体の複雑な Azure 構成の構築にも使用できます。
 
 ## <a name="create-the-linux-vm"></a>Linux VM の作成
 次のコードは、`azure group create` を呼び出してリソース グループを作成すると同時に、SSH で保護された Linux VM をデプロイする例です。[こちらの Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)を使用しています。 この例で使われている各種の名前は、実際の環境に合わせて調整する必要があります。 この例では、リソース グループ名として `myResourceGroup` を、VM 名として `myVM` を使用しています。
@@ -78,10 +80,5 @@ info:    group create command OK
 
 ## <a name="next-steps"></a>次のステップ
 次にデプロイするアプリ フレームワークを見つけるには、 [テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/) を検索します。
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

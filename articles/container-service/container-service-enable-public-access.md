@@ -19,6 +19,7 @@ ms.author: saudas
 translationtype: Human Translation
 ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
 ms.openlocfilehash: b432755bdae235228a9b677783a8cad94142b6ca
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -87,10 +88,5 @@ ACS [パブリック エージェント プール](container-service-mesos-marat
 [パブリックとプライベートの DC/OS エージェント](container-service-dcos-agents.md)の違いについて学習します。
 
 [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)の詳細をお読みください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

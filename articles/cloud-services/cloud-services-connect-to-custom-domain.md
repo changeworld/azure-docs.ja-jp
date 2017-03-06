@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
 ms.openlocfilehash: 39ee9cc1027958d85b2af2781adab0fe06c9a433
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -155,9 +156,4 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

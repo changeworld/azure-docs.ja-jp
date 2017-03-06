@@ -18,6 +18,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: 8fbe9d5d04d745de51e0e41516d6c12683c98637
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -103,10 +104,5 @@ Azure Portal で内部ロード バランサーを作成するには、次の手
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

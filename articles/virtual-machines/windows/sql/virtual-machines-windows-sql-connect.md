@@ -17,6 +17,7 @@ ms.author: jroth
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
 ### <a name="connect-to-sql-server-over-the-internet"></a>インターネット経由で SQL Server に接続する方法
 インターネットから SQL Server データベース エンジンに接続する場合は、ファイアウォールの構成、SQL 認証の有効化、ポート 1433 で TCP トラフィックを許可するネットワーク セキュリティ グループ規則の構成など、いくつかの手順が必要です。
 
-ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合は、[SQL Connectivity ] (SQL 接続) オプションで **[パブリック]** を選ぶとこれらの手順は自動的に行われます。
+ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合は、[SQL Connectivity ]\(SQL 接続) オプションで **[パブリック]** を選ぶとこれらの手順は自動的に行われます。
 
 ![プロビジョニング中のパブリック SQL 接続オプション](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity.png)
 
@@ -112,10 +113,5 @@ Resource Manager を使用してポータルで SQL Server 仮想マシン イ�
 [ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

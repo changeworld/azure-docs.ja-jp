@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
 ms.openlocfilehash: be84686351255585c3484f5ab8dad37b92462e2b
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -49,9 +50,4 @@ ms.openlocfilehash: be84686351255585c3484f5ab8dad37b92462e2b
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

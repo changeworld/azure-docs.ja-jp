@@ -17,6 +17,7 @@ ms.author: bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
 ms.openlocfilehash: 6e92a79c0b7ea35f110c779922255d6ddc93ed7c
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -178,10 +179,5 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 * [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -14,16 +14,17 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 12/09/2016
+ms.date: 02/23/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
+ms.sourcegitcommit: 78d9194f50bcdc4b0db7871f2480f59b26cfa8f6
+ms.openlocfilehash: 7b7273edfa33f297cb5dc30ef380b6a737787b33
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-powershell"></a>SQL Database チュートリアル: PowerShell を使用して Azure SQL Database のサーバー、データベース、ファイアウォール規則を使ってみる
+# <a name="tutorial-provision-and-access-an-azure-sql-database-using-powershell"></a>チュートリアル: PowerShell を使用した Azure SQL データベースのプロビジョニングとアクセス
 
 この入門用チュートリアルでは、PowerShell を使用して次のことを行う方法を学習します。
 
@@ -54,24 +55,9 @@ ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。 
+* Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://azure.microsoft.com/free/)か、[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)ことができます。 
 
 * サブスクリプションの所有者または共同作成者ロールのメンバーであるアカウントを使用してサインインしていることが必要です。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Portal でのアクセス管理の概要](../active-directory/role-based-access-control-what-is.md)」を参照してください。
-
-* Azure Blob Storage に AdventureWorksLT サンプル データベースの .bacpac ファイルが必要です。
-
-### <a name="download-the-adventureworkslt-sample-database-bacpac-file-and-save-it-in-azure-blob-storage"></a>AdventureWorksLT サンプル データベースの .bacpac ファイルをダウンロードして Azure Blob Storage に保存する
-
-このチュートリアルでは、Azure Storage から .bacpac ファイルをインポートして新しい AdventureWorksLT データベースを作成します。 最初の手順では、AdventureWorksLT.bacpac のコピーを取得し、Blob Storage にアップロードします。
-それ以降の手順で、サンプル データベースをインポートする準備をします。
-
-1. [AdventureWorksLT.bacpac をダウンロード](https://sqldbbacpacs.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac)し、.bacpac というファイル拡張子で保存します。
-2. [ストレージ アカウントを作成します](../storage/storage-create-storage-account.md#create-a-storage-account)。このストレージ アカウントは、既定の設定を使用して作成できます。
-3. ストレージ アカウントを参照し、**[BLOB]** を選択して、**[+コンテナー]** をクリックすることで、新しい**コンテナー**を作成します。
-4. ストレージ アカウントの BLOB コンテナーに .bacpac ファイルをアップロードします。 コンテナー ページの上部にある **[アップロード]** ボタンを使用するか、[AzCopy を使用する](../storage/storage-use-azcopy.md#blob-upload)ことができます。 
-5. AdventureWorksLT.bacpac を保存した後、このチュートリアルの後半にあるインポート用コード スニペットのために URL とストレージ アカウント キーが必要になります。 
-   * bacpac ファイルを選択し、URL をコピーします。 これは、https://{storage-account-name}.blob.core.windows.net/{container-name}/AdventureWorksLT.bacpac のようになります。 [ストレージ アカウント] ページで、**[アクセス キー]** をクリックし、**key1** をコピーします。
-
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -79,6 +65,8 @@ ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
 ## <a name="create-a-new-logical-sql-server-using-azure-powershell"></a>Azure PowerShell を使用して新しい論理 SQL サーバーを作成する
 
 サーバーを含めるためのリソース グループが必要です。そのため、最初に、新しいリソース グループとサーバーを作成する ([New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup)、[New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserver)) か、既存のリソース グループとサーバーへの参照を取得します ([Get-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/get-azurermresourcegroup)、[Get-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqlserver))。
+
+
 次のスニペットでは、リソース グループと Azure SQL サーバーがまだ存在しない場合に作成します。
 
 有効な Azure の場所と文字列形式の一覧については、以下の「[ヘルパーのスニペット](#helper-snippets)」セクションを参照してください。
@@ -178,6 +166,25 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allow Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
+
 ```
 
 
@@ -217,8 +224,8 @@ $connection.Close()
 
 ## <a name="create-new-adventureworkslt-sample-database-using-azure-powershell"></a>Azure PowerShell を使用して新しい AdventureWorksLT サンプル データベースを作成する
 
-次のスニペットでは、[New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) コマンドレットを使用して、AdventureWorksLT サンプル データベースの bacpac をインポートします。 bacpac は Azure Blob Storage にあります。 インポートのコマンドレットを実行した後、[Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) コマンドレットを使用してインポート操作の進行状況を監視できます。
-$storageUri は、前にポータルにアップロードした bacpac ファイルの URL プロパティです。これは、https://{storage-account}.blob.core.windows.net/{container}/AdventureWorksLT.bacpac のようになります。
+次のスニペットでは、[New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) コマンドレットを使用して、AdventureWorksLT サンプル データベースの bacpac をインポートします。 bacpac は、公開されている読み取り専用の Azure BLOB ストレージ アカウントにあります。 インポートのコマンドレットを実行した後、[Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) コマンドレットを使用してインポート操作の進行状況を監視できます。
+
 
 ```
 #$resourceGroupName = "{resource-group-name}"
@@ -228,9 +235,9 @@ $databaseName = "AdventureWorksLT"
 $databaseEdition = "Basic"
 $databaseServiceLevel = "Basic"
 
-$storageKeyType = "StorageAccessKey"
-$storageUri = "{storage-uri}" # URL of bacpac file you uploaded to your storage account
-$storageKey = "{storage-key}" # key1 in the Access keys setting of your storage account
+$storageKeyType = "SharedAccessKey"
+$storageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$storageKey = "?"
 
 $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -StorageKeytype $storageKeyType -StorageKey $storageKey -StorageUri $storageUri -AdministratorLogin $serverAdmin -AdministratorLoginPassword $securePassword -Edition $databaseEdition -ServiceObjectiveName $databaseServiceLevel -DatabaseMaxSizeBytes 5000000
 
@@ -348,10 +355,14 @@ $myDatabaseName = "AdventureWorksLT"
 $myDatabaseEdition = "Basic"
 $myDatabaseServiceLevel = "Basic"
 
-$myStorageKeyType = "StorageAccessKey"
-# Get these values from your Azure storage account:
-$myStorageUri = "{http://your-storage-account.blob.core.windows.net/your-container/AdventureWorksLT.bacpac}"
-$myStorageKey = "{your-storage-key}"
+
+# Storage account details for locating
+# and accessing the sample .bacpac 
+# Do Not Edit for this tutorial
+$myStorageKeyType = "SharedAccessKey"
+$myStorageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$myStorageKey = "?"
+
 
 
 # Create new, or get existing resource group
@@ -415,9 +426,8 @@ Write-Host "Server location: " $myServer.Location
 Write-Host "Server version: " $myServer.ServerVersion
 Write-Host "Server administrator login: " $myServer.SqlAdministratorLogin
 
-
-# Create or update server firewall rule
-#######################################
+# Create or update server firewall rules
+########################################
 
 $serverFirewallRuleName = $myServerFirewallRuleName
 $serverFirewallStartIp = $myServerFirewallStartIp
@@ -435,6 +445,24 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allows Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
 
 
 # Connect to the server and master database
@@ -566,7 +594,9 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 ## <a name="next-steps"></a>次のステップ
 これで、この最初の入門用チュートリアルは完了です。サンプル データを含むデータベースを作成しました。このチュートリアルで学習した内容に基づいたチュートリアルが多数あるため、探してみてください。 
 
-* Azure SQL Database のセキュリティについて調べる場合は、[セキュリティの概要](sql-database-control-access-sql-authentication-get-started.md)に関する記事を参照してください。
+- SQL Server 認証のチュートリアルを開始するには、[SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)に関するページを参照してください。
+- Azure Active Directory 認証のチュートリアルを開始するには、[Azure AD の認証と承認](sql-database-control-access-aad-authentication-get-started.md)に関するページを参照してください。
+* Azure Portal でサンプル データベースに対してクエリを実行する場合は、「[Public preview: Interactive query experience for SQL databases (パブリック プレビュー: SQL データベース用の対話型クエリ機能)](https://azure.microsoft.com/en-us/updates/azure-sql-database-public-preview-t-sql-editor/)」を参照してください。
 * Excel に詳しい場合は、 [Excel を使用した Azure SQL データベースへの接続](sql-database-connect-excel.md)方法を参照してください。
 * コーディングを開始する準備ができている場合、「 [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」でプログラミング言語を選択します。
 * オンプレミスの SQL Server データベースを Azure に移行する場合は、[SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関する記事を参照してください。
@@ -575,9 +605,4 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 
 ## <a name="additional-resources"></a>その他のリソース
 [SQL Database とは](sql-database-technical-overview.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

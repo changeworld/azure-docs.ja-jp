@@ -13,8 +13,3 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

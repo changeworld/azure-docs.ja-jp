@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: ab40eb8b53e2e685be52d24ecf2c32b193b12b85
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -193,9 +194,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

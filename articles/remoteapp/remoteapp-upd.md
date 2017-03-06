@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: dd281ead7d2c06af98ea0baea31d897b5be0d9d7
 ms.openlocfilehash: 04d8031a4c5f06d56afc1d08d4a4fa5fb50f8a25
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -145,10 +146,5 @@ UPD を無効にする必要があるのは、次のような場合です。
 
 
 これにより、New-PSDrive コマンドレットの -Credential パラメーターを省略できます。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

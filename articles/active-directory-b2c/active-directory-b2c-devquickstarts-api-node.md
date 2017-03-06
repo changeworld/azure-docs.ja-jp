@@ -17,6 +17,7 @@ ms.author: brandwe
 translationtype: Human Translation
 ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
 ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -760,9 +761,4 @@ Restify と OAuth を使用して REST API を実装しました。 既に十分
 これ以降は、次のような、さらに高度なトピックに進むことができます。
 
 [B2C で iOS を使用して Web API に接続する](active-directory-b2c-devquickstarts-ios.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

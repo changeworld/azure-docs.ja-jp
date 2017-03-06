@@ -17,6 +17,7 @@ ms.author: hascipio; v-divte
 translationtype: Human Translation
 ms.sourcegitcommit: 27f49a7c0c2736423d73930a1865f7b542f54da4
 ms.openlocfilehash: 63c1591db91a2ffeaced8ac775525291f0fd033f
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -567,9 +568,4 @@ SKU の詳細について入力が完了したら、[Azure Marketplace のマー
 [link-openssl]:https://www.openssl.org/
 [link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]:https://www.python.org/
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

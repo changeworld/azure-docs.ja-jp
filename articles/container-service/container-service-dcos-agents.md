@@ -19,6 +19,7 @@ ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: be10411e735c5b96702ee8dcb893f1a48e479f6f
 ms.openlocfilehash: cffc65e25ae8eab90a9879a0030b78b3b77890b7
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -49,10 +50,5 @@ Azure Container Service の DC/OS エージェント プールは、次のよう
 * [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)で詳細を確認します。
 
 * DC/OS コンテナーへのパブリック アクセスが可能になるように Azure によって提供される[ファイアウォールを開く](container-service-enable-public-access.md)方法を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

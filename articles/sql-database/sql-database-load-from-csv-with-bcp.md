@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 36748312506a08ed7932a6bb355a5dc7393bb002
 ms.openlocfilehash: 5e15f8a0ebb8cab5dce5b3c1cf6b62dee362a8d0
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -118,9 +119,4 @@ SQL Server データベースを移行するには、 [SQL Server データベ�
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

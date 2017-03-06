@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 9870b61eb00cee169973ae7c09b0c4886cd2db53
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -158,9 +159,4 @@ Azure PowerShell を使用して、HDInsight クラスターを作成する Azur
 [ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 [ssisclustercreate]: http://msdn.microsoft.com/library/mt146774(v=sql.120).aspx
 [ssisclusterdelete]: http://msdn.microsoft.com/library/mt146778(v=sql.120).aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

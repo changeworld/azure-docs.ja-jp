@@ -17,6 +17,7 @@ ms.author: manuaery
 translationtype: Human Translation
 ms.sourcegitcommit: a437ef2ba20970e2dd9a06fbc9e39fff2bb82da7
 ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -214,10 +215,5 @@ StorSimple 8000 シリーズ Update 2.x を実行しているデバイスでは�
 **Q.** ローカル固定ボリュームを含むボリューム コンテナーをクラウド アプライアンスにフェールオーバーできますか。
 
 **A.** はい、できます。 ローカル固定ボリュームは階層化ボリュームとしてフェールオーバーされます。 ローカル固定ボリュームに関連するアラートの詳細については、 [こちら](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

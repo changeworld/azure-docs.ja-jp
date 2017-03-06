@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 2616db980cb37c1c3759096ec3c05b98d687e047
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -547,10 +548,5 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

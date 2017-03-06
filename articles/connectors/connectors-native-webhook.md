@@ -18,6 +18,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
 ms.openlocfilehash: 2c24699f6253fc7952b331ebcce4b937f1c83603
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -151,9 +152,4 @@ Webhook 要求
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md) してください。 [API リスト](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタについて確認できます。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

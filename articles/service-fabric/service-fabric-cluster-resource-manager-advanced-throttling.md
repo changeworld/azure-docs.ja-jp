@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 8a8419497bda3f1df523d6aff28028548abc155a
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -76,9 +77,4 @@ ms.openlocfilehash: 8a8419497bda3f1df523d6aff28028548abc155a
 ## <a name="next-steps"></a>次のステップ
 * クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
 * クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションについて詳しくは、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事をご覧ください
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

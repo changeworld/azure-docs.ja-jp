@@ -19,6 +19,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
 ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -119,10 +120,5 @@ ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
 * 移行後に UTC 時間で作業する方法については、[ローカル タイム ゾーンの既定のタイム ゾーンの変更](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/)に関する記事を参照してください。
 * 移行後にデータベースの既定の言語を変更する方法については、[Azure SQL Database の既定の言語を変更する方法](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/)に関する記事を参照してください。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

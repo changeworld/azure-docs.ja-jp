@@ -17,6 +17,7 @@ ms.author: kumud
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: da1a0bb7982b02daa89144c3f5c3f257f14c06c9
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -81,10 +82,5 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

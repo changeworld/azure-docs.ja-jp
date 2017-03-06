@@ -16,6 +16,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
 ms.openlocfilehash: 8568978a558b09220eff14a13ccefb3e60c18e87
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -196,9 +197,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

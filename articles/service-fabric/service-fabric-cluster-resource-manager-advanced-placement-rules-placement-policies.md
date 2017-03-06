@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 7fa35de8b99132ad1c10229a9bb2231f11fdbaa0
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -127,9 +128,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

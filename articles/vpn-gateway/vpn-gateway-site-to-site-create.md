@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
 ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -98,10 +99,5 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 
 ## <a name="next-steps"></a>次のステップ
  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

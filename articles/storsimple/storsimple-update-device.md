@@ -17,6 +17,7 @@ ms.author: v-sharos
 translationtype: Human Translation
 ms.sourcegitcommit: 9c0a113e50fdb78307b8030f9b0d95b696f3f234
 ms.openlocfilehash: 8490110942741b049b6d44ac93697303cef40e8a
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -118,10 +119,5 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
 ms.openlocfilehash: 2dfcdf2207d1437a917c493075e3245bd58381ac
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -123,10 +124,5 @@ Machine Learning Web サービスに接続するには、ScoreData を渡す **u
 1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験をデプロイします。
 2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の冒頭の「**Azure Machine Learning の承認キーを取得する**」セクションをご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

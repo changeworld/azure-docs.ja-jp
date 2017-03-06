@@ -17,6 +17,7 @@ ms.author: juliako;cenkd;anilmur
 translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: 4c1a50e26e5cde606d0ef34889fb1c9db80e8ee0
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -164,9 +165,4 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -13,18 +13,26 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c1262b7708918cbdc8ce35f3e65a47a04797f195
-ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
+ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
+ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
+ms.lasthandoff: 02/23/2017
 
 ---
 
 # <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Resource Manager と PowerShell を使用して Windows VM を作成する
 
-この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Resource Manager](../azure-resource-manager/resource-group-overview.md) と PowerShell を使用してすばやく作成する方法を紹介します。 仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。 コマンド内のサンプルのパラメーター値は、ご自分の環境に適した名前に置き換えてください。
+この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Resource Manager](../azure-resource-manager/resource-group-overview.md) と Azure PowerShell を使用してすばやく作成する方法を紹介します。  
+
+仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。 コマンド内のサンプルのパラメーター値は、ご自分の環境に適した名前に置き換えてください。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
 
 最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+
+> [!NOTE]
+> この記事では、機能を使用するために Azure PowerShell の再インストールが必要になる場合があります。 Managed Disks 機能は、バージョン 3.5 以降でご利用いただけます。
+> 
+> 
 
 ## <a name="step-2-create-a-resource-group"></a>手順 2: リソース グループを作成する
 
@@ -175,10 +183,5 @@ ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
 * デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
 * テンプレートを使用して仮想マシンを作成する方法については、「 [Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

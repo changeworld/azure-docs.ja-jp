@@ -17,6 +17,7 @@ ms.author: luisca
 translationtype: Human Translation
 ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
 ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -136,10 +137,5 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 **使用条件はどこで入手できますか。**
 
 「[Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

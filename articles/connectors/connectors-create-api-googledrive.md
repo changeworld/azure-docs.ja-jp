@@ -19,6 +19,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 497f963870d24a335379a7f015a515c425737a73
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -334,9 +335,4 @@ Google シート内の行を更新します。
 [12]: ./media/connectors-create-api-googledrive/googledrive-api-credentials-add.png
 [13]: ./media/connectors-create-api-googledrive/configure-consent-screen.png
 [14]: ./media/connectors-create-api-googledrive/create-client-id.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

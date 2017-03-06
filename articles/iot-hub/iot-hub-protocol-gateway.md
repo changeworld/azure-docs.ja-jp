@@ -17,6 +17,7 @@ ms.author: kdotchko
 translationtype: Human Translation
 ms.sourcegitcommit: 1a8dd3d024fbe1e85a43c5b4f98901ab59c5797f
 ms.openlocfilehash: e0a7c813da53bc6ab49a456f13227b62725c5fc4
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -49,9 +50,4 @@ IoT Hub のデプロイの計画に関する詳細については、以下をご
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -1,3 +1,14 @@
+### <a name="disk-persistence"></a>ディスクの永続化 
+
+次の表では、Azure VM 内にある各種ディスクのさまざまな状態と、各状態においてデータを保持できるかどうかを示しています。
+
+| ディスク | 開始 | 停止/<br>割り当て解除 | 一時停止 | 再<br>boot | シャット<br>ダウン | 削除 | 失敗 | サイズ変更 | 
+| ---- | ----- | ---- | ---- | ---- | ----  | ------ | ------- | ------ | 
+| OS ディスク | はい | あり  | あり | あり | あり  | なし | いいえ  | はい | 
+| RAM  | はい | あり | あり | あり | なし   | いいえ | いいえ | いいえ | 
+| ローカル一時ディスク | はい | なし | あり | なし | いいえ  | いいえ | いいえ | いいえ | 
+| 接続されたデータ ディスク | はい | あり | あり | あり | あり  | あり | あり | はい | 
+
 ## <a name="about-vhds"></a>VHD について
 
 Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/storage/storage-premium-storage.md) に関する記事を参照してください。
@@ -52,9 +63,3 @@ Managed Disks の多くの機能を活用するために、新しい VM には M
 | ディスク サイズ | P10: 128 GB<br>P20: 512 GB<br>P30: 1,024 GB | 非管理対象ディスク: 1 GB – 1 TB <br><br>管理ディスク:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1,024 GB |
 | ディスクあたりの最大スループット | 200 MB/s | 60 MB/s |
 | ディスクあたりの最大 IOPS | 5,000 IOPS | 500 IOPS |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-

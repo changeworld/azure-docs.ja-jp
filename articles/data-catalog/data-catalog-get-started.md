@@ -18,6 +18,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
 ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -362,10 +363,5 @@ Azure Data Catalog では、個々の資産を削除することも、複数の�
 * [データ資産を文書化する方法](data-catalog-how-to-documentation.md)
 * [データ資産への接続方法](data-catalog-how-to-connect.md)
 * [データ資産を管理する方法](data-catalog-how-to-manage.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

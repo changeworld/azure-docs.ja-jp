@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
 ms.openlocfilehash: a0d86046b471dec473fd707eedae061f9d1b9902
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -171,10 +172,5 @@ ms.openlocfilehash: a0d86046b471dec473fd707eedae061f9d1b9902
 ## <a name="additional-resources"></a>その他のリソース
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

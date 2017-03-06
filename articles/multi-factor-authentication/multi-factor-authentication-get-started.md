@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
 ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -84,9 +85,4 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 
 [![クラウド](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </center>
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

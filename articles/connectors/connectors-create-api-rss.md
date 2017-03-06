@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 5e13e126fecda66a453b4ced619016121af98b2c
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -120,10 +121,5 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

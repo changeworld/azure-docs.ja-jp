@@ -17,6 +17,7 @@ ms.author: sethm
 translationtype: Human Translation
 ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
 ms.openlocfilehash: c083d8ac0d16de40de4a2a9908cdcf2e02ed3d6a
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -189,9 +190,4 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 * GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ。
 
 [Azure portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

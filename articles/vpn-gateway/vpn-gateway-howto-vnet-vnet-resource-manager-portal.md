@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
 ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -196,9 +197,4 @@ VNet 間接続に関するその他の情報についてよく寄せられる質
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

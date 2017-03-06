@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: 9af9f95e9638eda71fbc4508bea8e35ce5191734
 ms.openlocfilehash: 3caabe366db4def4f8332c64d08f86f271c31bb2
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -44,10 +45,5 @@ ms.openlocfilehash: 3caabe366db4def4f8332c64d08f86f271c31bb2
   * オンプレミスのファイル共有または OneDrive などのサービス外の保存先に共有データを格納します。
   * サービスの個々の仮想マシンではなく、テンプレート イメージにシステム全体のすべての設定を構成します。
   * 発行済みのアプリケーションのソフトウェアの自動更新を無効にします - 代わりにそれらをテンプレート イメージに手動で適用し、テンプレートからデプロイする前にテストします。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

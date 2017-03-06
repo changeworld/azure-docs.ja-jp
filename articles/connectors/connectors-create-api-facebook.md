@@ -18,6 +18,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: b8a66308c4f4f1df610cdacd092ef133bd605665
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -416,10 +417,5 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 
 ## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

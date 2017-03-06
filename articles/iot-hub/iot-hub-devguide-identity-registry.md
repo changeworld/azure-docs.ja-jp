@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
 ms.openlocfilehash: 08ebf8f6f5a2adab90c7de1084bfb5e4aed77fd3
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -165,9 +166,4 @@ IoT Hub の ID レジストリの使用方法を理解できたら、次の IoT 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -15,19 +15,20 @@ ms.workload: na
 ms.date: 02/14/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
-ms.openlocfilehash: 5bfbe4cfac202592ddd745c5f959cb791fe17ba8
+ms.sourcegitcommit: c2b0c6b125ededd30e9db8e7f42796bdf6b413d4
+ms.openlocfilehash: 559ecab373adf6441635f2ed0d572ab02159f50c
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="get-started-with-azure-iot-hub-java"></a>Azure IoT Hub の使用 (Java)
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-このチュートリアルの最後には、次の 3 つの Java コンソール アプリが完成します。
+このチュートリアルの最後には、次の&3; つの Java コンソール アプリが完成します。
 
 * **create-device-identity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
 * **read-d2c-messages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
-* **simulated-device**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **simulated-device**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して&1; 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリの作成とソリューションのバックエンドで動作するアプリの開発に利用できる各種 Azure IoT SDK については、[Azure IoT SDK][lnk-hub-sdks] に関する記事を参照してください。
@@ -37,12 +38,12 @@ ms.openlocfilehash: 5bfbe4cfac202592ddd745c5f959cb791fe17ba8
 このチュートリアルを完了するには、以下が必要です。
 
 * Java SE 8。 <br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Java を Windows または Linux にインストールする方法が説明されています。
-* Maven 3。  <br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Maven を Windows または Linux にインストールする方法が説明されています。
+* Maven 3。  <br/> [開発環境の準備][lnk-dev-setup]に関するページでは、このチュートリアル用に [Maven][lnk-maven] を Windows または Linux にインストールする方法が説明されています。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最後に、**主キー**の値をメモします。 次に、**[エンドポイント]** をクリックし、組み込みの **[イベント]** エンドポイントをクリックします。 **[プロパティ]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント** アドレスをメモします。 これら 3 つの値は、**read-d2c-messages** アプリを作成するときに必要になります。
+最後に、**主キー**の値をメモします。 次に、**[エンドポイント]** をクリックし、組み込みの **[イベント]** エンドポイントをクリックします。 **[プロパティ]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント** アドレスをメモします。 これら&3; つの値は、**read-d2c-messages** アプリを作成するときに必要になります。
 
 ![Azure portal IoT Hub Messaging blade][6]
 
@@ -238,7 +239,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     ```
     public static void main( String[] args ) throws IOException
     ```
-10. **App** クラスの **main** メソッドに次のコードを追加します。 このコードは 2 つのインスタンス **EventHubClient** と **PartitionReceiver** を作成し、メッセージの処理が完了したときにアプリを終了できるようにします。
+10. **App** クラスの **main** メソッドに次のコードを追加します。 このコードは&2; つのインスタンス **EventHubClient** と **PartitionReceiver** を作成し、メッセージの処理が完了したときにアプリを終了できるようにします。
     
     ```
     EventHubClient client0 = receiveMessages("0");
@@ -385,7 +386,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     }
     ```
     
-    このメソッドは、IoT Hub が前のメッセージを確認してから 1 秒後に新しい「デバイスからクラウドへの」メッセージを送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
+    このメソッドは、IoT Hub が前のメッセージを確認してから&1; 秒後に新しい「デバイスからクラウドへの」メッセージを送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 11. 「デバイスからクラウドへの」メッセージを IoT Hub に送信するスレッドを作成する次のコードで **main** メソッドを置換します。
     
     ```
@@ -471,9 +472,4 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-
+[lnk-maven]: https://maven.apache.org/what-is-maven.html

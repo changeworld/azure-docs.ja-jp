@@ -18,6 +18,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
 ms.openlocfilehash: c99788aded849933289555dd133b8146d6b2bdf2
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -126,10 +127,5 @@ VPN 接続の確認はポータルで行えるほか、PowerShell を使って�
 ## <a name="next-steps"></a>次のステップ
 *  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 *  BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

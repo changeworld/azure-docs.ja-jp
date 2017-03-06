@@ -11,20 +11,22 @@ ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: cb2b7bc626294e12c6e19647c1e787e1f671595b
-ms.openlocfilehash: a49a93b11ab3e965ac1ddaec919bfcbf43381dee
+ms.sourcegitcommit: 5009b13cec57e6974f71610c84fdaad837085df0
+ms.openlocfilehash: 5f81d8146f8000e73a2eb578ff2371a62c8875e9
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="enabling-ssl-policy-and-end-to-end-ssl-on-application-gateway"></a>Application Gateway での SSL ポリシーとエンド ツー エンド SSL の有効化
+# <a name="overview-of-end-to-end-ssl-and-ssl-policy-on-application-gateway"></a>Application Gateway でのエンド ツー エンド SSL と SSL ポリシーの概要
 
 アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化/復号化のオーバーヘッドから開放されます。 ただし、暗号化されていない通信をバックエンド サーバーで受け入れていない顧客もいます。 このように暗号化されていない通信が発生する原因としては、セキュリティとコンプライアンスの要件が考えられます。また、アプリケーションでセキュリティで保護された接続以外は受け入れられないこともあります。 このようなアプリケーションのために、アプリケーション ゲートウェイでは、現在、エンド ツー エンド SSL 暗号化がサポートされています。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 エンド ツー エンド SSL により、暗号化されたバックエンドに機密データを安全に送信しながら、アプリケーション ゲートウェイが提供するレイヤー 7 の負荷分散機能の利点を引き続き利用できます  (レイヤー&7; の負荷分散機能には、Cookie のアフィニティ、URL ベースのルーティング、サイトに基づくルーティングのサポート、X-Forwarded-* ヘッダーを挿入する機能などがあります)。
 
@@ -53,9 +55,4 @@ Application Gateway では、ユーザーが構成できる SSL ネゴシエー�
 <!--Image references-->
 
 [1]: ./media/application-gateway-backend-ssl/scenario.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 64650bf7baf46b0f5473deb1a9b4ec329979d153
 ms.openlocfilehash: 0fc78521abb0fce2a38b14d1411dad42b3580df2
+ms.lasthandoff: 01/21/2017
 
 
 ---
@@ -70,10 +71,5 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 * ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
 RA-GRS の機能を最大限に活用したアプリケーションを設計する方法の詳細については、「[RA-GRS ストレージを使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

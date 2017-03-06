@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: 2cb69f253e1a6d01b412775bbfc37de3423bde0b
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -113,9 +114,4 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

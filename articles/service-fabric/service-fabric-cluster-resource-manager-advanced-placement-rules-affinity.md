@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 16863217eddf0a4bbd85c52f8481c03e50dd9108
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -74,9 +75,4 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

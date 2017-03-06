@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
 ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -616,10 +617,5 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Start-HBaseExample を使用したときに、結果が表示されないか、予期しない結果が表示される
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

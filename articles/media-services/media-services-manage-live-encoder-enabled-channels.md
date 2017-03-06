@@ -17,6 +17,7 @@ ms.author: juliako;anilmur
 translationtype: Human Translation
 ms.sourcegitcommit: ef9c1d5511889cf78421d24f9c5902bf188890c7
 ms.openlocfilehash: 35db86988cf3d62401d6caecc7214411ddc2c498
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -428,10 +429,5 @@ Media Services のラーニング パスを確認します。
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
