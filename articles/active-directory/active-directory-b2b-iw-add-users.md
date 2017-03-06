@@ -31,7 +31,7 @@ ms.lasthandoff: 02/17/2017
 ## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>B2B コラボレーション ユーザーをアプリケーションに追加するインフォメーション ワーカー
 次のビデオで示すように、B2B コラボレーション ユーザーをパートナー組織のインフォメーション ワーカーとしてアプリに割り当てます。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
 
 ## <a name="information-workers-adding-b2b-collaboration-users-to-a-group"></a>B2B コラボレーション ユーザーをグループに追加するインフォメーション ワーカー
 
