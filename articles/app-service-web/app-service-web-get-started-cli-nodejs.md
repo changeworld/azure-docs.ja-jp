@@ -4,7 +4,7 @@ description: "サンプル アプリをデプロイして、App Service での W
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 65c9bdd9-8763-4c56-8e15-f790992e951e
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 2c750583212d7ed13e3bb5f4d0770d52aa9610b2
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: d8f3c95852361fd92eada1e6a50d735cc305279d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,7 +39,7 @@ App Service を使用すると、Web アプリ、[モバイル アプリ バッ�
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](app-service-web-get-started-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](app-service-web-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](app-service-web-get-started.md) - Resource Manager デプロイ モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [Git](http://www.git-scm.com/downloads)。
@@ -136,10 +137,5 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 
 * [Azure にコードをデプロイする他の方法](web-sites-deploy.md)を試してみます。 たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 * Azure アプリを次のレベルに進めます。 ユーザーを認証します。 必要に応じてスケールを変更したり、 パフォーマンスのアラートを設定したりできます。 いずれも、数回のクリックで実現できます。 「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

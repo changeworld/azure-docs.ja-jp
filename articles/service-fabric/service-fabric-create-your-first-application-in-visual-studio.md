@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio で最初の Service Fabric アプリケーションを作成する | Microsoft Docs"
+title: "初めての Azure マイクロサービス アプリケーションの作成 | Microsoft Docs"
 description: "Visual Studio を使用して Service Fabric アプリケーションを作成、デプロイ、デバッグする"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
-ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
+ms.sourcegitcommit: 45411dcfd2dc221de9566b382a1b1c62da914208
+ms.openlocfilehash: 21f2e6e9b422d497882a2414fd24974d60ea685e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -36,12 +37,12 @@ Service Fabric SDK には、Service Fabric アプリケーションの作成、�
 ## <a name="video-walkthrough"></a>ビデオ チュートリアル
 次のビデオでは、このチュートリアルの手順について説明します。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
 > 
 > 
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 新しいプロジェクト ウィザードを使用して、アプリケーション プロジェクトと共に最初のサービス プロジェクトを作成します。 後で必要に応じてサービスを追加することもできます。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを&1; つ以上含めることができます。 新しいプロジェクト ウィザードを使用して、アプリケーション プロジェクトと共に最初のサービス プロジェクトを作成します。 後で必要に応じてサービスを追加することもできます。
 
 1. Visual Studio を管理者として起動します。
 2. **[ファイル]、[新しいプロジェクト]、[クラウド]、[Service Fabric アプリケーション]** の順にクリックします。
@@ -61,7 +62,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
    
     ![アプリケーションとステートフル サービスの作成後に表示されるソリューション エクスプ ローラー][3]
    
-    アプリケーション プロジェクトでは、コードは直接含まれません。 代わりに、一連のサービス プロジェクトが参照されます。 さらに、アプリケーション プロジェクトには、他に次の 3 つの種類のコンテンツが含まれます。
+    アプリケーション プロジェクトでは、コードは直接含まれません。 代わりに、一連のサービス プロジェクトが参照されます。 さらに、アプリケーション プロジェクトには、他に次の&3; つの種類のコンテンツが含まれます。
    
    * **発行プロファイル**: さまざまな環境に合わせてツールの基本設定を管理するために使用します。
    * **スクリプト**: アプリケーションをデプロイ/アップグレードするための PowerShell スクリプトが含まれます。 このスクリプトが Visual Studio によってバックグラウンドで使用されます。 このスクリプトをコマンド ラインから直接呼び出すこともできます。
@@ -75,7 +76,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 1. Visual Studio で F5 キーを押して、デバッグ用にアプリケーションをデプロイします。
    
    > [!NOTE]
-   > デプロイにはしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。 ローカル クラスターでは、複数のコンピューターから成るクラスターで使用するのと同じプラットフォーム コードを 1 台のコンピューター上でのみ実行します。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
+   > デプロイにはしばらく時間がかかります。初めての場合、Visual Studio によって開発用のローカル クラスターが作成されるためです。 ローカル クラスターでは、複数のコンピューターから成るクラスターで使用するのと同じプラットフォーム コードを&1; 台のコンピューター上でのみ実行します。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
    > 
    > 
    
@@ -91,7 +92,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
    
     ![診断イベント ビューアーの詳細][6]
    
-    ローカル クラスターには、1 台のコンピューターでホストされている 5 つのノードが含まれています。 ノードがそれぞれ異なるコンピューター上にある 5 ノード クラスターを模倣します。 Visual Studio デバッガーの実行中にコンピューターの損失が発生するケースをシミュレートするために、ローカル クラスター上のノードのいずれかをダウンさせてみましょう。
+    ローカル クラスターには、1 台のコンピューターでホストされている&5; つのノードが含まれています。 ノードがそれぞれ異なるコンピューター上にある&5; ノード クラスターを模倣します。 Visual Studio デバッガーの実行中にコンピューターの損失が発生するケースをシミュレートするために、ローカル クラスター上のノードのいずれかをダウンさせてみましょう。
    
    > [!NOTE]
    > プロジェクト テンプレートによって生成されたアプリケーション診断イベントでは、付属の `ServiceEventSource` クラスを使用します。 詳細については、 [サービスをローカルで監視および診断する方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)に関するページを参照してください。
@@ -116,11 +117,24 @@ Service Fabric のアプリケーションには、アプリケーションの�
     ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="switch-cluster-mode"></a>クラスター モードを切り替える
-既定では、ローカル開発クラスターは 5 ノード クラスターとして実行するように構成されています。これは、複数のノードにデプロイされているサービスをデバッグする場合に便利です。 ただし、アプリケーションを 5 ノードの開発クラスターにデプロイするには、少し時間がかかる場合があります。 アプリを 5 ノードでは実行せず、コードの変更をすばやく繰り返したい場合は、開発クラスターを 1 ノード モードに切り替えます。 ノードが 1 つのクラスターでコードを実行するには、システム トレイでローカル クラスター マネージャーを右クリックし、**[Switch Cluster Mode (クラスター モードの切り替え)]、[1 Node (1 ノード)]** の順に選択します。  
+既定では、ローカル開発クラスターは&5; ノード クラスターとして実行するように構成されています。これは、複数のノードにデプロイされているサービスをデバッグする場合に便利です。 ただし、アプリケーションを&5; ノードの開発クラスターにデプロイするには、少し時間がかかる場合があります。 アプリを&5; ノードでは実行せず、コードの変更をすばやく繰り返したい場合は、開発クラスターを&1; ノード モードに切り替えます。 ノードが 1 つのクラスターでコードを実行するには、システム トレイでローカル クラスター マネージャーを右クリックし、**[Switch Cluster Mode (クラスター モードの切り替え)]、[1 Node (1 ノード)]** の順に選択します。  
 
 ![クラスター モードを切り替える][switch-cluster-mode]
 
 クラスター モードを変更すると、開発クラスターがリセットされ、そのクラスターでプロビジョニングまたは実行されているすべてのアプリケーションが削除されます。
+
+また、PowerShell を使用してクラスター モードを変更することもできます。
+
+1. 管理者として、新しい PowerShell ウィンドウを起動します。
+2. SDK フォルダーからクラスター セットアップ スクリプトを実行します。
+   
+    ```powershell
+    & "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster
+    ```
+   
+    クラスターのセットアップには、しばらく時間がかかります。 セットアップが完了すると、次のような出力が表示されます。
+   
+    ![クラスターのセットアップに関する出力][cluster-setup-success-1-node]
 
 ## <a name="cleaning-up"></a>クリーンアップしています
 まとめに入る前に、ローカル クラスターが現実のものであることを思い出してください。 デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。 ただし、クラスターは引き続きバックグラウンドで実行されます。 クラスターは、いくつかの方法で管理することができます。
@@ -150,9 +164,5 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 

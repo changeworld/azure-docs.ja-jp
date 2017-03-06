@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 02/27/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4cde035f75bfa3c448f12e9ebf2896b9a54a6873
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>Windows、Linux、Unix、または OS X から HDInsight (Hadoop) で SSH を使用する
+# <a name="use-ssh-with-hdinsight-hadoop-from-bash-on-windows-10-linux-unix-or-os-x"></a>Windows 10、Linux、Unix、または OS X の Bash から HDInsight (Hadoop) で SSH を使用する
 
 > [!div class="op_single_selector"]
 > * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -42,13 +43,11 @@ SSH は、セキュリティで保護されていないネットワーク経由�
 * __ssh__: リモート コマンド ライン セッションの確立とトンネルの作成に使用できる一般的な SSH クライアント。
 * __scp__: SSH プロトコルを使用してローカル システムとリモート システムの間でファイルをコピーするユーティリティ。
 
-Windows では、Windows 10 Anniversary Edition までは SSH クライアントが提供されていませんでした。 このバージョンの Windows には、`ssh`、`scp`、およびその他の Linux コマンドを提供する、開発者向けの Bash on Windows 10 機能が含まれています。 Bash on Windows 10 の使用の詳細については、「[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)」を参照してください。
+Windows 10 Anniversary Edition には、Bash が開発者向け機能として用意されています。 また、`ssh`、`scp` などの Linux コマンドも使用できます。 Bash on Windows 10 の使用の詳細については、「[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)」を参照してください。
 
 Windows を使用しており、Bash on Windows 10 にアクセスできない場合は、次の SSH クライアントをお勧めします。
 
 * [Git For Windows](https://git-for-windows.github.io/): `ssh` および `scp` コマンド ライン ユーティリティを提供します。
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/): グラフィカル SSH クライアントを提供します。
-* [MobaXterm](http://mobaxterm.mobatek.net/): グラフィカル SSH クライアントを提供します。
 * [Cygwin](https://cygwin.com/): `ssh` および `scp` コマンド ライン ユーティリティを提供します。
 
 > [!NOTE]
@@ -64,7 +63,7 @@ SSH 接続は、パスワードまたは[公開キー暗号化 (https://en.wikip
 
 * **秘密キー**は、SSH クライアントを使用してログインするときに HDInsight クラスターに提示するものであり、自分の身元を検証に使用されます。 このキーは安全に保管してください。 このキーは共有しないようにしてください。
 
-    秘密キーのパスフレーズを作成して、セキュリティを追加することができます。 キーを使用するには、事前にこのパスフレーズを指定しておく必要があります。
+    秘密キーのパスフレーズを作成して、セキュリティを追加することができます。 パスフレーズを使用するには、SSH を使用して認証するときに、このパスフレーズを指定する必要があります。
 
 ### <a name="create-a-public-and-private-key"></a>公開キーと秘密キーの作成
 
@@ -91,7 +90,7 @@ SSH 接続は、パスワードまたは[公開キー暗号化 (https://en.wikip
 * __id\_rsa__: このファイルには秘密キーが含まれています。
 
     > [!WARNING]
-    > 公開キーによって保護されたサービスへの不正アクセスを防止するには、このファイルへのアクセスを制限する必要があります。
+    > 公開キーによって保護されたサービスへの不正アクセスを防止するには、このファイルへのアクセスを制限します。
 
 * __id\_rsa.pub__: このファイルには公開キーが含まれています。 このファイルは、HDInsght クラスターを作成するときに使用します。
 
@@ -115,7 +114,7 @@ Linux ベースの HDInsight クラスターを作成する場合は、"_SSH ユ
 
 作成したクラスターには SSH ユーザーを追加できますが、お勧めしません。
 
-* 新しい SSH ユーザーは、クラスター内の各ノードに手動で追加する必要があります。
+* 新しい SSH ユーザーは、クラスター内の各ノードに追加する必要があります。
 
 * 新しい SSH ユーザーには、HDInsight に対し、既定のユーザーと同じアクセスが付与されます。 SSH ユーザー アカウントに基づいて HDInsight のデータまたはジョブへのアクセスを制限することはできません。
 
@@ -147,7 +146,7 @@ SSH アカウントをセキュリティ保護するためにパスワードを�
 
 ### <a name="connect-to-other-nodes"></a>その他のノードへの接続
 
-ワーカー ノードと Zookeeper ノードには、クラスターの外部からは直接アクセスできませんが、クラスター ヘッド ノードまたはエッジ ノードからはアクセスできます。 そのための一般的な手順は次のとおりです。
+ワーカー ノードと Zookeeper ノードには、クラスターの外部からは直接アクセスできませんが、クラスター ヘッド ノードまたはエッジ ノードからはアクセスできます。 他のノードに接続するための一般的な手順は次のとおりです。
 
 1. SSH を使用してヘッド ノードまたはエッジ ノードに接続します。
 
@@ -183,7 +182,7 @@ SSH アカウントがパスワードを使用してセキュリティ保護さ�
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    何も返されない場合は、`ssh-agent` が実行されていないことを示します。 「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」(http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
+    何も返されない場合は、`ssh-agent` が実行されていません。 「[Using ssh-agent with ssh (ssh での ssh-agent の使用)](http://mah.everybody.org/docs/ssh)」(http://mah.everybody.org/docs/ssh) でエージェントのスタートアップ スクリプト情報を参照するか、お使いの SSH クライアントのドキュメントで `ssh-agent` をインストールして構成する手順を確認してください。
 
 4. **ssh-agent** が実行していることを確認したら、次のコマンドを使用して SSH 秘密キーをエージェントに追加します。
 
@@ -196,7 +195,7 @@ SSH アカウントがパスワードを使用してセキュリティ保護さ�
 
 [ドメインに参加している HDInsight](hdinsight-domain-joined-introduction.md) は、Kerberos を HDInsight の Hadoop と統合します。 SSH ユーザーは Active Directory ドメイン ユーザーではないため、Active Directory で認証されるまで Hadoop コマンドを実行することはできません。 次の手順を使用して、Active Directory で SSH セッションを認証してください。
 
-1. 「[HDInsight への接続](#connect)」セクションの説明のとおり、SSH を使用してドメイン参加済み HDInsight クラスターに接続します。 たとえば、次のコマンドを実行すると、__sshuser__ という SSH アカウントを使用して __myhdi__ という名前の HDInsight クラスターに接続します。
+1. SSH を使用して、ドメイン参加済み HDInsight クラスターに接続します。 たとえば、次のコマンドを実行すると、__sshuser__ という SSH アカウントを使用して __myhdi__ という名前の HDInsight クラスターに接続します。
 
         ssh sshuser@myhdi-ssh.azurehdinsight.net
 
@@ -212,7 +211,7 @@ SSH アカウントがパスワードを使用してセキュリティ保護さ�
 
 ## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH トンネリング
 
-SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。 ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求されたリソースにルーティングされます。
+SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。 要求はクラスターに転送され、クラスター内で解決されます。
 
 > [!IMPORTANT]
 > SSH トンネルは、Hadoop サービス用の Web UI にアクセスするための要件です。 たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
@@ -228,9 +227,4 @@ SSH トンネルの作成と使用の詳細については、「[SSH トンネ�
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
-ms.openlocfilehash: 7b1510ccfed939e27bad4fc0e5fafd4383db4a35
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 6945529b8189c270ca6e5c41be0cd0d9caa37cb4
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="get-started-with-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management の使用
+# <a name="start-using-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management の使用開始
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 この記事では、Azure AD PIM アプリを Azure ポータル ダッシュボードに追加する方法を説明します。
@@ -52,9 +53,4 @@ Azure AD Privileged Identity Management を設定すると、アプリケーシ�
 <!--Image references-->
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

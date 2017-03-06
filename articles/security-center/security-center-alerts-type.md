@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 9ee2d2ef7b21fab8cfc4a70561d612be7367d366
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -54,7 +55,7 @@ Azure Security Center では、サイバー キル チェーンの各段階に�
 * 既知の悪意のある IP との通信 (データの搾取、遠隔操作)
 * セキュリティの侵害されたリソースを使用した追加の攻撃の開始 (送信ポート スキャン RDP/SSH ブルート フォース攻撃、スパム)
 
-さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。 これらの段階の攻撃に対処するために、Security Center では警告に 3 つのカテゴリを設けています。
+さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。 これらの段階の攻撃に対処するために、Security Center では警告に&3; つのカテゴリを設けています。
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
@@ -182,7 +183,7 @@ Azure Security Center は、悪意のある IP アドレス (多くの場合、�
 ![Outgoing DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
 ## <a name="resource-analysis"></a>リソース分析
-Security Center リソース分析は、 [Azure SQL Db 脅威の検出](../sql-database/sql-database-threat-detection-get-started.md) の機能との統合など、PaaS サービスに重点を置いています。 これらの領域の分析結果に基づいて、Security Center は警告に関連するリソースをトリガーします。
+Security Center リソース分析は、[Azure SQL Database の脅威の検出](../sql-database/sql-database-threat-detection.md)機能との統合など、PaaS サービスに重点を置いています。 これらの領域の分析結果に基づいて、Security Center は警告に関連するリソースをトリガーします。
 
 ### <a name="potential-sql-injection"></a>SQL インジェクションの可能性
 SQL インジェクションとは、後で SQL Server のインスタンスに渡して解析と実行の対象とする文字列に、悪意のあるコードが挿入される攻撃です。 SQL ステートメントを構成するすべてのプロシージャにおいて、挿入に対する脆弱性を確認する必要があります。SQL Server は、受け取った有効な構文のクエリをすべて実行してしまうからです。 SQL 脅威の検出では、機械学習、動作分析、異常検出を使用して、Azure SQL データベースで発生しているおそれのある疑わしいイベントを特定します。 次に例を示します。
@@ -213,9 +214,4 @@ SQL インジェクションとは、後で SQL Server のインスタンスに�
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

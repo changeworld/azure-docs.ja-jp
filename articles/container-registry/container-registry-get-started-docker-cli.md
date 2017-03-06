@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: df15eebf0052aa4713263a810df605fa1016c306
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 1e70f41dd15b0243fb8edd137710ac555821434e
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>Docker CLI を使用したコンテナー レジストリへの最初のイメージのプッシュ
@@ -33,7 +34,7 @@ ms.openlocfilehash: df15eebf0052aa4713263a810df605fa1016c306
 > 
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI 2.0 プレビュー](container-registry-get-started-azure-cli.md)を使用します。
+* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI 2.0](container-registry-get-started-azure-cli.md) を使用します。
 * **Docker CLI** - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker エンジン](https://docs.docker.com/engine/installation/)をインストールします。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
@@ -114,10 +115,5 @@ docker rmi myregistry-contoso.azurecr.io/samples/nginx
 基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、[Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) クラスターへのコンテナー イメージのデプロイを開始できます。
 
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

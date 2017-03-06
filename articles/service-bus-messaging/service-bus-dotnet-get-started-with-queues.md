@@ -1,5 +1,5 @@
 ---
-title: "Service Bus キューの使用 | Microsoft Docs"
+title: "Azure Service Bus キューを使用するプログラムを作成する | Microsoft Docs"
 description: "Service Bus メッセージング用の C# コンソール アプリケーションを記述する方法"
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/30/2016
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 560e73eb7129e665d254c3e93b08f29cfb6b1aa9
-ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 83649bdad1d369cdfe4edf3c2bdaa67180db8668
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -32,7 +33,7 @@ ms.openlocfilehash: d80bedba1909de671ef96ac5372d9ff15a90764e
 4. メッセージを受信するコンソール アプリケーションを記述する。
 
 ## <a name="prerequisites"></a>前提条件
-1. [Visual Studio 2013 または Visual Studio 2015](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2015 を使用します。
+1. [Visual Studio 2015 以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2015 を使用します。
 2. Azure サブスクリプション。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -175,9 +176,4 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

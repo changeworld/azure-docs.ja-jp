@@ -3,7 +3,7 @@
     ![開始する前に](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 3. **[Third-Party Software License (サードパーティ製ソフトウェア ライセンス)]** で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
 
-    ![サード パーティ製ソフトウェア](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)
+    ![サードパーティ製ソフトウェア](./media/site-recovery-add-configuration-server/combined-wiz2.png)
 4. **[登録]** で、コンテナーからダウンロードした登録キーを選択します。
 
     ![登録](./media/site-recovery-add-configuration-server/combined-wiz3.png)
@@ -14,7 +14,7 @@
    * 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 
      * カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
-     * プロキシを使用している場合は、[前提条件](#configuration-server-prerequisites)に記載されている URL をあらかじめ許可しておく必要があります。
+     * プロキシを使用している場合は、[前提条件](#prerequisites)に記載されている URL をあらかじめ許可しておく必要があります。
 
      ![ファイアウォール](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック**に関する警告が表示された場合は、システム クロックの時刻 (**[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
@@ -40,8 +40,3 @@
     ![概要](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
 登録が完了すると、コンテナーの **[設定]** > **[サーバー]** ブレードに、サーバーが表示されます。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

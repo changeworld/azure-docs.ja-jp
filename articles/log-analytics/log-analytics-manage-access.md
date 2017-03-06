@@ -1,6 +1,6 @@
 ---
 title: "ワークスペースを管理する | Microsoft Docs"
-description: "ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Log Analytics のワークスペースを管理します。"
+description: "ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Azure Log Analytics のワークスペースを管理します。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/03/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 96a971c31f9088b3aa409a85f0679fd3bd5945d1
-ms.openlocfilehash: 4dc1bfa1e385e945c47bbfc5faa776e577ee84b2
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -97,10 +98,13 @@ Azure Portal に関して留意が必要ないくつかの点:
 
   URL は、`https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12` のようになります。
 
+たとえば、管理ソリューションを追加または削除するには、ユーザーは Azure Portal で Azure サブスクリプションの管理者か共同作業者である必要があります。 さらに、OMS ポータルで OMS ワークスペースの作成者または管理者ロールのメンバーになっている必要もあります。
+
 ### <a name="managing-users-in-the-oms-portal"></a>OMS ポータルでのユーザーの管理
 [設定] ページの **[アカウント]** タブにある **[ユーザーの管理]** タブでユーザーとグループを管理します。   
 
 ![ユーザーの管理](./media/log-analytics-manage-access/setup-workspace-manage-users.png)
+
 
 #### <a name="add-a-user-to-an-existing-workspace"></a>既存のワークスペースへのユーザーの追加
 次の手順でワークスペースにユーザーやグループを追加します。
@@ -295,9 +299,4 @@ Log Analytics ワークスペースを削除すると、そのワークスペー
 * エージェントを追加し、データを収集する方法については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md) 」を参照してください。
 * [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md) 」を参照してください。
 * [Configure proxy and firewall settings in Log Analytics (Log Analytics のプロキシとファイアウォールの設定を構成する) (Log Analytics のプロキシとファイアウォールの設定を構成する)](log-analytics-proxy-firewall.md) 」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

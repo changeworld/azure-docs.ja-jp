@@ -13,20 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/17/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: b922127076a8cb29ffb89c7fd184d4b8fa2d7e13
+ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
+ms.openlocfilehash: 086c87c52adf972307003ff78fd0c07f3035321c
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="how-to-create-a-documentdb-nosql-account-using-the-azure-portal"></a>Azure Portal を使用して DocumentDB NoSQL アカウントを作成する方法
 > [!div class="op_single_selector"]
 > * [Azure ポータル](documentdb-create-account.md)
-> * [Azure CLI と Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
->
->
+> * [Azure CLI 1.0](documentdb-automation-resource-manager-cli-nodejs.md)
+> * [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+> * [Azure Powershell](documentdb-manage-account-with-powershell.md)
 
 Microsoft Azure DocumentDB でデータベースを作成するには、次の条件を満たす必要があります。
 
@@ -35,12 +36,12 @@ Microsoft Azure DocumentDB でデータベースを作成するには、次の�
 
 DocumentDB アカウントは、Azure Portal、Azure Resource Manager テンプレート、Azure CLI (コマンド ライン インターフェイス) のいずれかを使用して作成できます。 この記事では、Azure Portal を使用して DocumentDB アカウントを作成する方法について説明します。 Azure Resource Manager または Azure CLI を使用してアカウントを作成する方法については、 [DocumentDB データベース アカウントの自動作成](documentdb-automation-resource-manager-cli.md)に関する記事をご覧ください。
 
-DocumentDB を初めて使用する場合は、 Scott Hansleman による[こちら](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)の 4 分間のビデオを視聴して、オンライン ポータルで最も一般的なタスクを実行する方法を確認してください。
+DocumentDB を初めて使用する場合は、 Scott Hansleman による[こちら](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)の&4; 分間のビデオを視聴して、オンライン ポータルで最も一般的なタスクを実行する方法を確認してください。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. ジャンプバーで **[新規]**、**[データベース]**、**[DocumentDB (NoSQL)]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. 左側のナビゲーションで **[新規]**、**[データベース]**、**[NoSQL (DocumentDB)]** の順にクリックします。
 
-   ![Screen shot of the Azure portal, highlighting More Services, and DocumentDB (NoSQL)](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
+   ![その他のサービスと NoSQL (DocumentDB) が強調表示された Azure Portal のスクリーンショット](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
 3. **[新しいアカウント]** ブレードで、DocumentDB アカウントに必要な構成を指定します。
 
     ![新しい [DocumentDB] ブレードのスクリーンショット](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-2.png)
@@ -50,7 +51,7 @@ DocumentDB を初めて使用する場合は、 Scott Hansleman による[こち
 
      * **[DocumentDB]**: DocumentDB API は、HTTP [REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) だけでなく、.NET、Java、Node.js、Python、JavaScript の各 [SDK](documentdb-sdk-dotnet.md) でも使用することができ、DocumentDB のすべての機能にプログラムによってアクセスできます。
      * **[MongoDB]**: DocumentDB では、**MongoDB** API の[プロトコル レベルのサポート](documentdb-protocol-mongodb.md)も提供します。 MongoDB API オプションを選択した場合は、既存の MongoDB SDK と [ツール](documentdb-mongodb-mongochef.md) を使用して DocumentDB を操作できます。 DocumentDB を使用するために、[コードの変更を必要とせずに](documentdb-connect-mongodb-account.md)、既存の MongoDB アプリを[移行](documentdb-import-data.md)し、完全に管理されたデータベースを、無制限のスケーリングやグローバル レプリケーションなどの機能を備えたサービスとして利用できます。
-   * **[サブスクリプション]**で、DocumentDB アカウントに使用する Azure サブスクリプションを選択します。 アカウントにサブスクリプションが 1 つしかない場合は、そのアカウントが既定で選択されます。
+   * **[サブスクリプション]**で、DocumentDB アカウントに使用する Azure サブスクリプションを選択します。 アカウントにサブスクリプションが&1; つしかない場合は、そのアカウントが既定で選択されます。
    * **[リソース グループ]**で、DocumentDB アカウントのリソース グループを選択または作成します。  既定では、新しいリソース グループが作成されます。 詳細については、 [Azure Portal を使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)に関する記事をご覧ください。
    * **[場所]** を使用して、DocumentDB アカウントをホストする地理的な場所を指定します。
 4. 新しい DocumentDB アカウントのオプションを構成したら、 **[作成]**をクリックします。 デプロイの状態を通知ハブで確認します。  
@@ -80,16 +81,11 @@ DocumentDB アカウントを作成したら、次の手順として DocumentDB 
 
 データベースとコレクションを作成したら、コレクションに[ドキュメントを追加](documentdb-view-json-document-explorer.md)する必要があります。
 
-ドキュメントをコレクションに追加したら、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-sql-queries)できます。 クエリは、ポータル、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) で[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)を使用して実行できます。
+ドキュメントをコレクションに追加したら、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#ExecutingSqlQueries)できます。 クエリは、ポータル、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) で[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)を使用して実行できます。
 
 ### <a name="learn-more"></a>詳細情報
 DocumentDB の詳細については、以下のリソースを参照してください。
 
 * [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 * [DocumentDB 階層型リソース モデルと概念](documentdb-resources.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

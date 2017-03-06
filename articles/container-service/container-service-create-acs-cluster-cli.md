@@ -1,6 +1,6 @@
 ---
 title: "Docker コンテナー クラスターのデプロイ - Azure CLI | Microsoft Docs"
-description: "Azure CLI 2.0 プレビューを使用して Azure Container Service クラスターをデプロイします"
+description: "Azure CLI 2.0 を使用して Azure Container Service クラスターをデプロイします"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -17,23 +17,24 @@ ms.workload: na
 ms.date: 02/03/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: df916670743158d6a22b3f17343630114584fa08
-ms.openlocfilehash: 65f1c812472f4a3b6d4a4e6fb7666a2c022af102
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 792150afa1c4f91c4bf6175037c7708d8f7bfabe
+ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-to-create-an-azure-container-service-cluster"></a>Azure CLI 2.0 (プレビュー) を使用した Azure Container Service クラスターの作成
+# <a name="use-the-azure-cli-20-to-create-an-azure-container-service-cluster"></a>Azure CLI 2.0 を使用して Azure Container Service クラスターを作成する
 
-Azure CLI 2.0 (プレビュー) の `az acs` コマンドを使用すると、Azure Container Service のクラスターを作成および管理できます。 [Azure Portal](container-service-deployment.md) または Azure Container Service API を使用して、Azure Container Service クラスターをデプロイすることもできます。
+Azure CLI 2.0 の `az acs` コマンドを使用すると、Azure Container Service のクラスターを作成および管理できます。 [Azure Portal](container-service-deployment.md) または Azure Container Service API を使用して、Azure Container Service クラスターをデプロイすることもできます。
 
 `az acs` の各コマンドのヘルプについては、任意のコマンドで `-h` パラメーターを指定してください。 (例: `az acs create -h`)。
 
 
 
 ## <a name="prerequisites"></a>前提条件
-Azure CLI 2.0 (プレビュー) を使用して Azure Container Service クラスターを作成するには、以下のものが必要です。
+Azure CLI 2.0 を使用して Azure Container Service クラスターを作成するには、以下のものが必要です。
 * Azure アカウント ([無料試用版はこちら](https://azure.microsoft.com/pricing/free-trial/))
-* インストールして設定した [Azure CLI v.2.0 (プレビュー)](/cli/azure/install-az-cli2)
+* インストールして設定した [Azure CLI 2.0](/cli/azure/install-az-cli2)
 
 ## <a name="get-started"></a>作業開始 
 ### <a name="log-in-to-your-account"></a>アカウントへのログイン
@@ -41,7 +42,7 @@ Azure CLI 2.0 (プレビュー) を使用して Azure Container Service クラ�
 az login 
 ```
 
-画面の指示に従って、対話形式でログインします。 その他の方法でのログインについては、「[Get started with Azure CLI 2.0 (Preview) (Azure CLI 2.0 (プレビュー) の概要)](/cli/azure/get-started-with-az-cli2)」を参照してください。
+画面の指示に従って、対話形式でログインします。 その他の方法でのログインについては、「[Get started with Azure CLI 2.0 (Azure CLI 2.0 の概要)](/cli/azure/get-started-with-az-cli2)」を参照してください。
 
 ### <a name="set-your-azure-subscription"></a>Azure サブスクリプションの設定
 
@@ -74,7 +75,7 @@ az group create -n acsrg1 -l "westus"
 
 
 ### <a name="quick-acs-create-using-defaults"></a>既定値を使用した簡単な `acs create`
-SSH 公開キー ファイル `id_rsa.pub` が既定の場所にある (あるいは、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 用に作成した) 場合は、次のようなコマンドを使用します。
+SSH RSA 公開キー ファイル `id_rsa.pub` が既定の場所にある (あるいは、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 用に作成した) 場合は、次のようなコマンドを使用します。
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
@@ -143,8 +144,3 @@ az acs delete -g acsrg1 -n acs-cluster
 * [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 * [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 * [Azure Container Service と Kubernetes の使用](container-service-kubernetes-walkthrough.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
