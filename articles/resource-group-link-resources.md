@@ -1,12 +1,8 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-group-link-resources
+redirect_url: /rest/api/resources/resourcelinks
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: b61ee9dde6e59351f1f4681c1c518a2719fd85c2
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 3400527ca98de470b5df076125d30c6f20e4618d
+ms.lasthandoff: 03/06/2017
 
 ---
-
-
-<!--HONumber=Nov16_HO4-->
-
-
