@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
 ms.openlocfilehash: 34f84de82cbd6c15bd62abedd05e0eff6ce2dc2f
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -39,9 +40,4 @@ Azure AD Domain Services 管理対象ドメインでは、次の機能を使用�
 * **複数の Azure リージョンで使用可能:** Azure AD ドメイン サービスを使用できる Azure リージョンについては、 [リージョンごとの Azure サービス](https://azure.microsoft.com/regions/#services/) に関するページを参照してください。
 * **高可用性:** Azure AD ドメイン サービスを使用して、ドメインの高可用性を実現できます。 この機能により、サービスの稼働時間とエラーに対する復元性が確実に向上します。 また、組み込みの正常性監視では、インスタンスに障害が発生したときに新しいインスタンスを作成することで障害を自動的に修正し、ドメインに継続的なサービスを提供します。
 * **使い慣れた管理ツールの使用:** Active Directory 管理センターや Active Directory PowerShell などの使い慣れた Windows Server Active Directory 管理ツールを使用して、管理対象ドメインを管理できます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

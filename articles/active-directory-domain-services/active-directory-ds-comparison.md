@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
@@ -110,8 +110,8 @@ Azure AD Domain Services の管理対象ドメインは、Azure の&1; つの仮
 
 > [!NOTE]
 > 自作オプションがデプロイ ユースケースに適していることを確認できます。 どの機能によってユーザーが将来 Azure AD Domain Services を選択するかを理解するために、 [フィードバックの共有](active-directory-ds-contact-us.md) を検討してください。 このフィードバックは、デプロイのニーズとユースケースに合わせたサービスの拡張に活用させていただきます。
-> 
-> 
+>
+>
 
 「 [Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx) 」は発行済みであり、自作インストールを容易にします。
 
@@ -119,5 +119,4 @@ Azure AD Domain Services の管理対象ドメインは、Azure の&1; つの仮
 * [機能 - Azure AD Domain Services](active-directory-ds-features.md)
 * [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-
 
