@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 03/03/2017
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: ecc008469ba754af12583d350706f626ec6690b5
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 73f10984b7fe2636f5b9f664b831adc910e7ac7a
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -57,7 +58,6 @@ ms.openlocfilehash: ecc008469ba754af12583d350706f626ec6690b5
 ## <a name="polybase"></a>PolyBase
 | 問題 | 解決策 |
 |:--- |:--- |
-| UTF-8 エラー |現在、PolyBase では、UTF-8 でエンコードされたデータ ファイルの読み込みのみをサポートしています。  この制限を回避する方法については、「[PolyBase UTF-8 要件に対処する][Working around the PolyBase UTF-8 requirement]」をご覧ください。 |
 | サイズの大きい行を原因とする読み込みの失敗 |サイズの大きい行は、現在 PolyBase でサポートされていません。  つまり、テーブルに VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) が含まれる場合は、データの読み込みに外部テーブルを使用できません。  サイズの大きい行の読み込みは現在、Azure Data Factory (BCP を使用)、Azure Stream Analytics、SSIS、BCP、.NET の SQLBulkCopy クラスのみでサポートされています。 PolyBase でのサイズの大きい行のサポートは、将来のリリースで追加されます。 |
 | MAX データ型を持つテーブルの bcp 読み込みの失敗 |VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) は、既知の問題により、一部のシナリオでテーブルの最後に配置する必要があります。  データ型が MAX の列をテーブルの末尾に移動してみてください。 |
 
@@ -93,7 +93,7 @@ ms.openlocfilehash: ecc008469ba754af12583d350706f626ec6690b5
 [Connect to Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 [request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
 [Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md
@@ -133,9 +133,4 @@ ms.openlocfilehash: ecc008469ba754af12583d350706f626ec6690b5
 [Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

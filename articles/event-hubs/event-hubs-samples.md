@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/01/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 5b02054546ebf25766be6bb2837aebc502b67a67
-ms.openlocfilehash: 9c50b7caefe06bceac8035a0d274e13a96547fea
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 32b57664fcf15daed75fe7050b672383e79c50cf
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -43,9 +44,9 @@ Event Hubs サンプルは、[Azure Event Hubs](/azure/event-hubs/) の主な機
 
 ### <a name="receive-events"></a>イベントの受信 
 
-[イベント プロセッサ ホストでの受信開始](https://github.com/Azure/azure-event-hubs-dotnet/tree/master/samples/SampleEphReceiver)のサンプルは、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用して、Event Hub からメッセージを受け取る .NET Core コンソール アプリケーションです。 
+[イベント プロセッサ ホストでの受信開始](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver)のサンプルは、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用して、Event Hub からメッセージを受け取る .NET Core コンソール アプリケーションです。 
 
-## <a name="net-framework"></a>.NET Framework   
+## <a name="net-framework"></a>.NET Framework    
 
 このサンプルは、[.NET Framework ライブラリ](https://msdn.microsoft.com/library/w0x726c2.aspx)を対象とする、Azure Event Hubs のその他のさまざまな機能を示しています。
  
@@ -81,8 +82,3 @@ Event Hubs の詳細については、次の記事を参照してください。
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 - [Event Hub を作成する](event-hubs-create.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
