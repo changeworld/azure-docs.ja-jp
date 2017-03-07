@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage での Azure CLI 2.0 (プレビュー) の使用 | Microsoft Docs"
-description: "Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) 2.0 (プレビュー) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI 2.0 はクロスプラットフォーム ツールです。"
+title: "Azure Storage での Azure CLI 2.0 の使用 | Microsoft Docs"
+description: "Azure Storage で Azure コマンドライン インターフェイス (Azure CLI) 2.0 を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI 2.0 は、Python で作成されたクロスプラットフォーム ツールです。"
 services: storage
 documentationcenter: na
 author: mmacy
@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 5008bb0292bc7513a6264ff1768976fd5ba11bfa
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="using-the-azure-cli-20-preview-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 (プレビュー) の使用
+# <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
 
 ## <a name="overview"></a>概要
 
-オープン ソースでクロスプラットフォームの Azure CLI 2.0 (プレビュー) では、Azure Platform で使用できるコマンド群が提供されます。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
+オープンソースであるクロスプラットフォーム Azure CLI 2.0 には、Azure Platform で使用できるさまざまなコマンドが用意されています。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
 
-このガイドでは、[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱うタスクを実行する方法をいくつかご紹介します。 このガイドを使用する前に、最新バージョンの CLI 2.0 をダウンロードしてインストールするか、最新バージョンの CLI 2.0 にアップグレードすることをお勧めします。
+このガイドでは、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱うタスクを実行する方法をいくつかご紹介します。 このガイドを使用する前に、最新バージョンの CLI 2.0 をダウンロードしてインストールするか、最新バージョンの CLI 2.0 にアップグレードすることをお勧めします。
 
 ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。 
 
@@ -39,9 +40,9 @@ ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成](https://azure.microsoft.com/free/)します。
 * **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
-### <a name="install-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) のインストール
+### <a name="install-the-azure-cli-20"></a>Azure CLI 2.0 のインストール
 
-[Azure CLI 2.0 (プレビュー) のインストール](/cli/azure/install-az-cli2)に関するページに記載されている手順に従って、Azure CLI 2.0 (プレビュー) をダウンロードしてインストールします。
+「[Install the Azure CLI 2.0](/cli/azure/install-az-cli2)」(Azure CLI 2.0 のインストール) に記載されている手順に従って、Azure CLI 2.0 をダウンロードしてインストールします。
 
 > [!TIP]
 > インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2#installation-troubleshooting)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
@@ -70,21 +71,24 @@ Here are the base commands:
                 resources.
     appservice: Commands to manage your Azure web apps and App Service plans.
     cloud     : Manage the Azure clouds registered.
-    component : Commands to manage and update Azure CLI 2.0 (Preview) components.
-    configure : Configure Azure CLI 2.0 Preview or view your configuration. The command is
+    component : Commands to manage and update Azure CLI 2.0 components.
+    configure : Configure Azure CLI 2.0 or view your configuration. The command is
                 interactive, so just type `az configure` and respond to the prompts.
     container : Set up automated builds and deployments for multi-container Docker applications.
-    context   : Manage contexts.
+    disk      : Commands to manage 'Managed Disks'.
     feature   : Commands to manage resource provider features, such as previews.
     feedback  : Loving or hating the CLI?  Let us know!
     group     : Commands to manage resource groups.
+    image     : Commands to manage custom virtual machine images based on managed disks/snapshots.
+    lock
     login     : Log in to access Azure subscriptions.
-    logout    : Log out to remove accesses to Azure subscriptions.
+    logout    : Log out to remove access to Azure subscriptions.
     network   : Manages Network resources.
     policy    : Commands to manage resource policies.
     provider  : Manage resource providers.
     resource  : Generic commands to manage Azure resources.
     role      : Use role assignments to manage access to your Azure resources.
+    snapshot  : Commands to manage snapshots.
     storage   : Durable, highly available, and massively scalable cloud storage.
     tag       : Manage resource tags.
     vm        : Provision Linux and Windows virtual machines in minutes.
@@ -191,7 +195,7 @@ test_blob.txt
 Done
 ```
 
-> [!NOTE]
+> [!TIP]
 > 上記の出力は**テーブル**形式です。 CLI コマンドで `--output` 引数を指定するか、`az configure` でグローバルに設定することにより、使用する出力形式を指定することができます。
 >
 
@@ -344,32 +348,19 @@ az storage file list -s myshare/myDir
 az storage file list -s myshare -p myDir/mySubDir/MySubDir2
 ```
 
-### <a name="copy-files"></a>ファイルのコピー      
+### <a name="copy-files"></a>ファイルのコピー        
 ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 たとえば、別の共有にあるディレクトリにファイルをコピーします。        
         
 ```azurecli
-# Get the URL for the source file you want to copy
-az storage file url -s myshare -p /mydir/image.png
-
-# Copy the file to another share
 az storage file copy start \
-    --source-uri https://mystorageaccount.file.core.windows.net/myshare/mydir/image.png \   
-    --destination-share myshare2 --destination-path mydir2/image.png        
+--source-share share1 --source-path dir1/file.txt \
+--destination-share share2 --destination-path dir2/file.txt        
 ```
 
-> [!NOTE]
-> CLI 2.0 (プレビュー) では、`--source-share` および `--source-path` の使用ができないという既知の問題があります。 この問題が解決されるまでは、回避策として `--source-uri` 引数をお使いください。
->
-
 ## <a name="next-steps"></a>次のステップ
-下記の資料で、Azure CLI 2.0 (プレビュー) の使用に関する詳細をさらにご覧いただけます。
+下記の資料で、Azure CLI 2.0 の使用に関する詳細をさらにご覧いただけます。
 
-* [Azure CLI 2.0 (Preview) の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Azure CLI 2.0 (Preview) コマンド リファレンス](/cli/azure)
-* [GitHub の Azure CLI 2.0 (Preview)](https://github.com/Azure/azure-cli)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+* [Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Azure CLI 2.0 コマンド リファレンス](/cli/azure)
+* [GitHub の Azure CLI 2.0](https://github.com/Azure/azure-cli)
 

@@ -15,20 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/15/2017
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dc0797927d75a06117d72f52d7065927e65678b4
-ms.openlocfilehash: 76d6288832b50d187c729afaee9118923517eb94
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: e9be064425ae6b9048098333cc664310e7128314
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="select-linux-vm-images-with-the-azure-cli"></a>Azure CLI を使用した Linux VM イメージの選択
+# <a name="how-to-find-linux-vm-images-with-the-azure-cli"></a>Azure CLI を使用して Linux VM イメージを探す方法
 このトピックでは、デプロイする可能性のある場所ごとに、発行元、プラン、SKU、およびバージョンを検索する方法について説明します。 
 
 
-## <a name="use-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) の使用
+## <a name="use-azure-cli-20"></a>Azure CLI 2.0 の使用
 
-[Azure CLI 2.0 (プレビュー) をインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)すると、`az vm image list` コマンドを使用して、一般的な VM イメージのキャッシュ リストを確認できます。 たとえば、コマンド `az vm image list -o table` の例は次のようになります。
+[Azure CLI 2.0 をインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)すると、`az vm image list` コマンドを使用して、一般的な VM イメージのキャッシュ リストを確認できます。 たとえば、コマンド `az vm image list -o table` の例は次のようになります。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list

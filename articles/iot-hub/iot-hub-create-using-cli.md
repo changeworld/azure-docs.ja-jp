@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI (az.py) を使用して IoT ハブを作成する | Microsoft Docs"
-description: "クロスプラットフォームの Azure CLI 2.0 (プレビュー) (az.py) を使用して Azure IoT Hub を作成する方法。"
+description: "クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して Azure IoT ハブを作成する方法。"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,31 +12,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
-ms.openlocfilehash: c52d9a5fadf494cc066bee773543c9d67bb8334b
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 4f512601cebcfce7bfac47ed440c96fcb2c91b5f
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-an-iot-hub-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して IoT ハブを作成する
+# <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して IoT ハブを作成する
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>はじめに
 
-Azure CLI 2.0 (プレビュー) (az.py) を使用して、Azure IoT Hub をプログラムで作成、管理できます。 この記事では、Azure CLI 2.0 (プレビュー) (az.py) を使用して IoT ハブを作成する方法を説明します。
+Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub をプログラムで作成、管理できます。 この記事では、Azure CLI 2.0 (az.py) を使用して IoT Hub を作成する方法を説明します。
 
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 * [Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-* Azure CLI 2.0 (プレビュー) (az.py) - この記事で説明している、Resource Manager デプロイメント モデル用の次世代 CLI
+* Azure CLI 2.0 (az.py) - この記事で説明している、Resource Manager デプロイメント モデル用の次世代 CLI
 
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
-* [Azure CLI 2.0 (プレビュー)][lnk-CLI-install]。
+* [Azure CLI 2.0][lnk-CLI-install]。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
 
@@ -62,16 +63,16 @@ Azure アカウントにサインインし、IoT Hub リソースを操作する
     az account set --subscription {your subscription name or id}
     ```
 
-3. IoT リソースをデプロイする前に、IoT プロバイダーを登録する必要があります。 以下の、[IoT プロバイダーを登録するコマンド][lnk-az-register-command]を実行します。
-    
-    ```azurecli
-    az provider register -namespace "Microsoft.Devices"
-    ```
-
-4. 場合によっては、Azure CLI _IoT コンポーネント_をインストールする必要があります。 以下の、[IoT コンポーネントを追加するコマンド][lnk-az-addcomponent-command]を実行します。
+3. Azure CLI _IoT コンポーネント_をインストールします。 以下の、[IoT コンポーネントを追加するコマンド][lnk-az-addcomponent-command]を実行します。
     
     ```azurecli
     az component update --add iot
+    ```
+
+4. IoT リソースをデプロイする前に、IoT プロバイダーを登録します。 以下の、[IoT プロバイダーを登録するコマンド][lnk-az-register-command]を実行します。
+    
+    ```azurecli
+    az provider register -namespace Microsoft.Devices
     ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -81,7 +82,7 @@ Azure CLI を使用してリソース グループを作成してから、IoT �
 1. IoT ハブを作成するときは、リソース グループの中に作成する必要があります。 既存のリソース グループを使用するか、以下の、[リソース グループを作成するコマンド][lnk-az-resource-command]を実行します。
     
     ```azurecli
-     az resource group create --name {your resource group name} --location westus
+     az group create --name {your resource group name} --location westus
     ```
 
     > [!TIP]
@@ -96,7 +97,7 @@ Azure CLI を使用してリソース グループを作成してから、IoT �
     ```
 
 > [!NOTE]
-> IoT ハブの名前は、グローバルに一意である必要があります。 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」をご覧ください。
+> IoT ハブの名前は、グローバルに一意である必要があります。 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」を参照してください。
 >
 >
 
@@ -113,13 +114,13 @@ az resource delete --name {your iot hub name} --resource-group {your resource gr
 リソース グループとそのすべてのリソースを削除するには、次のコマンドを実行します。
 
 ```azurecli
-az resource group delete --name {your resource group name}
+az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>次のステップ
-IoT Hub の開発に関する詳細については、以下を参照してください
+IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
-* [IoT Hub 開発者向けガイド][lnk-devguide]
+* [IoT Hub 開発者ガイド][lnk-devguide]
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
@@ -137,9 +138,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-portal]: iot-hub-create-through-portal.md 
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

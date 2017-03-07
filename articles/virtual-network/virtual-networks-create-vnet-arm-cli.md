@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI 2.0 を使用した仮想ネットワークの作成 | Microsoft Docs"
-description: "Resource Manager で Azure CLI 2.0 を使用して仮想ネットワークを作成する方法を説明します。"
+title: "仮想ネットワークの作成 - Azure CLI 2.0 | Microsoft Docs"
+description: "Azure CLI 2.0 を使用して仮想ネットワークを作成する方法を説明します。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 75966bcc-0056-4667-8482-6f08ca38e77a
@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 617ac4672b24d339c5d4c0b671de7fb19cd9af91
-ms.openlocfilehash: 3cbb679048a0cc1121b221bda8fc1e3df0e307c3
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 4f59512d83e6d000dd60b3fba46e483be8466292
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
+# <a name="create-a-virtual-network-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想ネットワークの作成
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
@@ -31,8 +32,8 @@ Azure には、Azure Resource Manager とクラシックという&2; 種類の�
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
-- [Azure CLI 1.0](virtual-networks-create-vnet-arm-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#create-a-virtual-network) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+- [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
+- [Azure CLI 2.0](#create-a-virtual-network) - リソース管理デプロイ モデル用の次世代 CLI (この記事)
  
     他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
@@ -52,12 +53,12 @@ Azure には、Azure Resource Manager とクラシックという&2; 種類の�
 
 Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次の手順を実行します。
 
-1. 最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+1. 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
 
 2. [az group create](/cli/azure/group#create) コマンドに引数 `--name` および `--location` を指定して、VNet 用のリソース グループを作成します。
 
     ```azurecli
-    az group create --name myVNet --location centralus
+    az group create --name TestRG --location centralus
     ```
 
 3. VNet とサブネットを作成します。
@@ -65,7 +66,7 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     ```azurecli
     az network vnet create \
         --name TestVNet \
-        --resource-group myVNet \
+        --resource-group TestRG \
         --location centralus \
         --address-prefix 192.168.0.0/16 \
         --subnet-name FrontEnd \
@@ -90,13 +91,13 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
             "subnets": [
             {
                 "etag": "W/\"<guid>\"",
-                "id": "/subscriptions/<guid>/resourceGroups/myVNet/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
+                "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
                 "name": "FrontEnd",
                 "properties": {
                 "addressPrefix": "192.168.1.0/24",
                 "provisioningState": "Succeeded"
                 },
-                "resourceGroup": "myVNet"
+                "resourceGroup": "TestRG"
             }
             ]
         }
@@ -106,7 +107,7 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     使用されるパラメーター:
 
     - `--name TestVNet`: 作成する VNet の名前です。
-    - `--resource-group myVNet`: リソースを制御するリソース グループの名前です。 
+    - `--resource-group TestRG`: リソースを制御するリソース グループの名前です。 
     - `--location centralus`: デプロイ先の場所です。
     - `--address-prefix 192.168.0.0/16`: アドレスのプレフィックスとブロックです。  
     - `--subnet-name FrontEnd`: サブネットの名前です。
@@ -120,9 +121,9 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
 
     次の出力が生成されます。
 
-        Where      Name      Group
-        ---------  --------  -------
-        centralus  TestVNet  myVNet
+            Where      Name      Group
+            ---------  --------  -------
+            centralus  TestVNet  TestRG
 
 4. サブネットを作成します。
 
@@ -130,7 +131,7 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     az network vnet subnet create \
         --address-prefix 192.168.2.0/24 \
         --name BackEnd \
-        --resource-group myVNet \
+        --resource-group TestRG \
         --vnet-name TestVNet
     ```
    
@@ -140,12 +141,12 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     {
     "addressPrefix": "192.168.2.0/24",
     "etag": "W/\"<guid> \"",
-    "id": "/subscriptions/<guid>/resourceGroups/myVNet/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
+    "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
     "ipConfigurations": null,
     "name": "BackEnd",
     "networkSecurityGroup": null,
     "provisioningState": "Succeeded",
-    "resourceGroup": "myVNet",
+    "resourceGroup": "TestRG",
     "resourceNavigationLinks": null,
     "routeTable": null
     }
@@ -155,14 +156,14 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
 
     - `--address-prefix 192.168.2.0/24`: サブネットの CIDR ブロックです。
     - `--name BackEnd`: 新しいサブネットの名前です。
-    - `--resource-group myVNet`: リソース グループです。
+    - `--resource-group TestRG`: リソース グループです。
     - `--vnet-name TestVNet`: 所有している VNet の名前です。
 
 5. 新しい VNet のプロパティを照会します。
 
     ```azurecli
     az network vnet show \
-    -g myVNET \
+    -g TestRG \
     -n TestVNet \
     --query '{Name:name,Where:location,Group:resourceGroup,Status:provisioningState,SubnetCount:subnets | length(@)}' \
     -o table
@@ -172,13 +173,13 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
    
         Name      Where      Group    Status       SubnetCount
         --------  ---------  -------  ---------  -------------
-        TestVNet  centralus  myVNet   Succeeded              2
+        TestVNet  centralus  TestRG   Succeeded              2
 
 6. サブネットのプロパティを照会します。
 
     ```azurecli
     az network vnet subnet list \
-    -g myvnet \
+    -g TestRG \
     --vnet-name testvnet \
     --query '[].{Name:name,CIDR:addressPrefix,Status:provisioningState}' \
     -o table

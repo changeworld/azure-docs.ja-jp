@@ -4,7 +4,7 @@ description: "Azure App Service で動作する PHP (Laravel) Web アプリの�
 services: app-service\web
 documentationcenter: php
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: mysql
 ms.assetid: cb73859d-48aa-470a-b486-d984746d6d26
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 4e1c3e8fa45f4ef4ee7df7e6bc9ea4aa4fe1b1aa
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 7877662f43b83d6d60c3ef836d14b291245d8d42
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -43,7 +44,7 @@ PHP 開発者の方は、お気に入りの PHP フレームワークを Azure �
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](app-service-web-php-get-started-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](app-service-web-php-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](app-service-web-php-get-started.md) - Resource Manager デプロイメント モデル用の次世代 CLI
 
 ## <a name="prerequisites"></a>前提条件
 * [PHP 5.6.29](http://php.net/downloads.php)
@@ -250,10 +251,5 @@ Web アプリを正しく Azure にデプロイしたにもかかわらず、Azu
 * [Azure App Service Web Apps での PHP の構成方法](web-sites-php-configure.md)
 * [Azure App Service での WordPress から Multisite への変換](web-sites-php-convert-wordpress-multisite.md)
 * [Azure App Service のエンタープライズ クラスの WordPress](web-sites-php-enterprise-wordpress.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
