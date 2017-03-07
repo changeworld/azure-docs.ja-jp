@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 33e6b9ba880f56d967b49d0b89e61d1b531e8376
 ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -721,7 +722,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
         }
      },
      "variables": {
-         "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]
+         "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]"
      }
 
 
@@ -1217,10 +1218,5 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 * 複数のテンプレートをマージするには、 [Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
 * 作成したテンプレートをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 
