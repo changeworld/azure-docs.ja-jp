@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2016
 ms.author: mwasson
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e7ca3b709bf2f09227b1607e4956ce021eab414a
-ms.openlocfilehash: ab52f1a4f568a7ef3c281e16636f61a063cda519
-
+ms.sourcegitcommit: b93844d55cf1c41e1e388d7bbaa3fedf88113423
+ms.openlocfilehash: bf28993330619a25fcf0bc79055be0d7453c2be4
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="how-to-resize-a-linux-vm"></a>Linux VM のサイズを変更する方法
+# <a name="resize-a-linux-vm-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM のサイズを変更する
+
 ## <a name="overview"></a>概要
 仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 これは、VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
 
@@ -33,7 +35,7 @@ ms.openlocfilehash: ab52f1a4f568a7ef3c281e16636f61a063cda519
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](#resize-a-linux-vm) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="resize-a-linux-vm"></a>Linux VM のサイズを変更する
@@ -79,9 +81,4 @@ VM のサイズを変更するには、次の手順を実行します。
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

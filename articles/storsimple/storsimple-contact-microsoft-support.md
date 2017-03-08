@@ -4,7 +4,7 @@ description: "サポート要求を作成する方法と StorSimple デバイス
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 2ebc20fe-f490-4749-8e43-c9fac86f1676
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli;anbacker
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ce19be3454c08bbc041b5f6929c4ad56ffe9b7ea
-ms.openlocfilehash: 5f8124371391f7e2e59bbea474bef1da77686e0c
+ms.sourcegitcommit: 6b0e763769564eaa191c78df05c008150c9a363f
+ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
+# <a name="contact-microsoft-support-for-your-storsimple"></a>StorSimple の Microsoft サポートに問い合わせる
 Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。 この記事で説明する内容は次のとおりです。
 
 * サポート要求を作成する方法
@@ -35,7 +37,7 @@ Microsoft Azure StorSimple ソリューションで問題が発生した場合�
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)の右上隅でアカウント名をクリックし、 **[Microsoft サポートに問い合わせる]**をクリックします。
    
     ![クラシック ポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza1.png)
-2. 新しい Azure ポータル (portal.azure.com) にリダイレクトされます。 **[新しいサポート要求]** タイルをクリックします。
+2. 新しい Azure Portal (portal.azure.com) にリダイレクトされます。 **[新しいサポート要求]** タイルをクリックします。
    
     ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza2.png)
    
@@ -91,10 +93,5 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 > サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。 また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。 サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

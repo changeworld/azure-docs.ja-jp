@@ -65,12 +65,12 @@ ms.lasthandoff: 01/14/2017
             "properties": {
               "templateLink": {
                 "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
-                "contentVersion": "1.0.0.0",
+                "contentVersion": "1.0.0.0"
               },
               "mode": "Incremental",
               "parametersLink": {
                 "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
-                "contentVersion": "1.0.0.0",
+                "contentVersion": "1.0.0.0"
               }
             }
           }

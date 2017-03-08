@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: cedc76bc46137a5d53fd76c0fdb6ff2db79566a4
-ms.openlocfilehash: 05e999d62d3ffdde708c9898807e79fabcff992e
+ms.sourcegitcommit: a8b570cfbab594e1a21417e081eaf6d34a4659d0
+ms.openlocfilehash: 40f10b1cb860ca0c018cc3589417c54588269b0c
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -36,6 +37,10 @@ BLOB に対するスナップショットの数に制限はありません。 �
 BLOB のスナップショットを作成すると、BLOB のシステム プロパティが同じ値でスナップショットにコピーされます。 また、スナップショットの作成時に別のメタデータを指定しない限り、ベース BLOB のメタデータもスナップショットにコピーされます。
 
 ベース BLOB に関連付けられているリースはスナップショットにコピーされません。 スナップショットはリースを取得することはできません。
+
+VHD ファイルは、VM ディスクの現時点の情報と状態の格納に使用します。 ディスクを VM 内から切断するか、VM をシャットダウンしてから、その VHD ファイルのスナップショットを撮ることができます。 このスナップショットを後に使用して、その時点での VHD ファイルを取得して VM を再作成することができます。
+
+BLOB が存在するストレージ アカウントで Storage Service Encryption (SSE) が 有効になっている場合、その BLOB について撮られたスナップショットは暗号化されて保存されます。
 
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 次のコード例は、.NET でスナップショットを作成する方法を示しています。 この例では、スナップショットの作成時に別のメタデータを指定しています。
@@ -163,10 +168,5 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 ## <a name="next-steps"></a>次のステップ
 BLOB ストレージのその他の使用例については、「 [Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。 サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

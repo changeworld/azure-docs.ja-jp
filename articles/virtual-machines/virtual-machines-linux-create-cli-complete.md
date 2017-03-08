@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI 2.0 を使用した Linux 環境の作成 | Microsoft Docs"
-description: "Azure CLI 2.0 (プレビュー) を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
+description: "Azure CLI 2.0 を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/8/2016
+ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
-ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
+ms.sourcegitcommit: d4cff286de1abd492ce7276c300b50d71f06345b
+ms.openlocfilehash: f07a326aa2fcd659f69265001293c9ed332bb842
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-complete-linux-environment-by-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して、完全な Linux 環境を作成する
-この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して完全な Linux 環境を作成する
+この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。 この記事では、Azure CLI 2.0 を使用して前述の環境を構築する方法について説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。 システムがどのように構築されているかをいったん理解すると、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、より短時間でシステムを再構築することができます。 環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
@@ -34,18 +35,12 @@ ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 ![基本的な環境の概要](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
-
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。
 
 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
 
-このカスタム環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+このカスタム環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
 最初に、[az group create](/cli/azure/group#create) でリソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `westeurope` の場所に作成します。
 
@@ -53,7 +48,7 @@ ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 az group create --name myResourceGroup --location westeurope
 ```
 
-この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
+この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -226,7 +221,7 @@ az group export --name myResourceGroup > myResourceGroup.json
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
 次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。 これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
-[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) の最新版がインストールされていることを確認し、[az login](/cli/azure/#login) で Azure アカウントにログインします。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/#login) で Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
 
@@ -252,7 +247,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-この手順は省略可能です。 Azure CLI 2.0 (プレビュー) で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
+この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
 
 非管理対象ディスクを使用する場合は、VM ディスクおよび追加するすべてのデータ ディスク用に、ストレージ アカウントを作成する必要があります。
 
@@ -1114,9 +1109,4 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>次のステップ
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

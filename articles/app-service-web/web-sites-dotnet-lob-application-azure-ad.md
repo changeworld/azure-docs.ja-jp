@@ -4,7 +4,7 @@ description: "Azure Active Directory の認証を使用して Azure App Service 
 services: app-service\web, active-directory
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: ad947bdb-4463-43ff-a5e3-91d9b2169b60
 ms.service: app-service-web
@@ -15,8 +15,9 @@ ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 85fcb08be0f1443232919ddfe5e69ff0ef1a47a2
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: a00e3c5ed41aff48a6845c2f07ea3e43580045ee
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 85fcb08be0f1443232919ddfe5e69ff0ef1a47a2
 次の機能を備え、作業項目を追跡する、単純な LOB の "作成、読み取り、更新、削除" (CRUD) アプリケーションを App Service Web Apps に作成します。
 
 * Azure Active Directory に対してユーザーを認証する
-*  [Azure Active Directory Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
+* [Azure Active Directory Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx)
 * ASP.NET MVC *No Authentication* テンプレートを使用する
 
 基幹業務 Azure アプリにロールベースのアクセス制御 (RBAC) が必要な場合は、「 [次のステップ](#next)」を参照してください。
@@ -87,7 +88,7 @@ ms.openlocfilehash: 85fcb08be0f1443232919ddfe5e69ff0ef1a47a2
    
     認証設定が正常に保存されたら、ブラウザーでもう一度アプリに移動します。 既定の設定により、アプリ全体で認証が強制されます。 まだログインしていない場合は、ログイン画面にリダイレクトされます。 ログインすると、アプリが HTTPS によって保護されていることを確認できます。 次に、ディレクトリ データへのアクセスを有効にする必要があります。 
 5. [クラシック ポータル](https://manage.windowsazure.com)に移動します。
-6. 左側のメニューで、**[Active Directory]**  >  **[既定のディレクトリ]**  >  **[アプリケーション]**  >  **&lt;*アプリ名*>]** をクリックします。
+6. 左側のメニューで、**Active Directory**  >  **既定のディレクトリ**  >  **アプリケーション**  >  **&lt;*アプリ名*>** をクリックします。
    
     ![](./media/web-sites-dotnet-lob-application-azure-ad/8-find-aad-application.png)
    
@@ -131,7 +132,7 @@ ms.openlocfilehash: 85fcb08be0f1443232919ddfe5e69ff0ef1a47a2
     `~/.auth/me` URL パスは App Service の認証/承認によって管理されており、認証済みセッションに関する情報がすべて取得できます。 詳細については、「 [Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」を参照してください。
     
     > [!NOTE]
-    >  `access_token` には有効期限があります。 ただし、App Service の認証/承認には、 `~/.auth/refresh`を使用したトークン更新機能が用意されています。 この機能の使用方法の詳細については、「 [App Service Token Store (App Service トークン ストア)](https://cgillum.tech/2016/03/07/app-service-token-store/)」を参照してください。
+    > `access_token` には有効期限があります。 ただし、App Service の認証/承認には、 `~/.auth/refresh`を使用したトークン更新機能が用意されています。 この機能の使用方法の詳細については、「 [App Service Token Store (App Service トークン ストア)](https://cgillum.tech/2016/03/07/app-service-token-store/)」を参照してください。
     > 
     > 
 
@@ -328,10 +329,5 @@ ms.openlocfilehash: 85fcb08be0f1443232919ddfe5e69ff0ef1a47a2
 * [Microsoft Azure Active Directory のサンプルとドキュメント](https://github.com/AzureADSamples)
 * [Azure Active Directory がサポートしているトークンと要求の種類](http://msdn.microsoft.com/library/azure/dn195587.aspx)
 
-[SSL と Authorize 属性を使用してアプリケーションを保護する]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 

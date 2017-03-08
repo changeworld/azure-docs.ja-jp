@@ -12,15 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/23/2017
+ms.date: 3/1/2017
 ms.author: anwestg
 translationtype: Human Translation
-ms.sourcegitcommit: 6a06d35eeda2662de89a94c274848c827dc24bfa
-ms.openlocfilehash: 9dbbed9b4763e3a946245dda2819fe5aea90632b
+ms.sourcegitcommit: cf55a0b4f61c971cedee602575f73d39c70f9edb
+ms.openlocfilehash: f9870f12c7d47cb47cf7b67cb1cc1683d1ac091e
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Before you get started with App Service on Azure Stack
+
+> [!IMPORTANT] 
+> This topic applies only to Azure Stack Technical Preview 2.
+>
 
 You need a few items to install App Service on Azure Stack:
 
@@ -37,18 +42,18 @@ To deploy a resource provider, you must run the PowerShell Integrated Scripting 
 
 ## <a name="turn-off-internet-explorer-enhanced-security"></a>Turn off Internet Explorer enhanced security
 
-1.  Sign in to the Azure Stack proof-of-concept (POC) computer as **AzureStack/administrator**, and then open **Server Manager**.
-2.  Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
-3.  Sign in to the MAS-CON01.AzureStack.local virtual machine as an administrator, and then open **Server Manager**.
-4.  Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
+1.    Sign in to the Azure Stack proof-of-concept (POC) computer as **AzureStack/administrator**, and then open **Server Manager**.
+2.    Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
+3.    Sign in to the MAS-CON01.AzureStack.local virtual machine as an administrator, and then open **Server Manager**.
+4.    Turn off **Internet Explorer Enhanced Security Configuration** for both admins and users.
 
 ## <a name="enable-cookies"></a>Enable cookies
 
-1.  Select **Start**, > **All apps**, > **Windows accessories**. Right-click **Internet Explorer** > **More** > **Run as an administrator**.
-2.  If you are prompted, select **Use recommended security**, and then select **OK**.
-3.  In Internet Explorer, select **Tools** (the gear icon), > **Internet Options** > **Privacy** > **Advanced**.
-4.  Select **Advanced**. Make sure that both of the **Accept** check boxes are selected, and then select **OK** and **OK** again.
-5.  Close Internet Explorer, and restart PowerShell ISE as an administrator.
+1.    Select **Start**, > **All apps**, > **Windows accessories**. Right-click **Internet Explorer** > **More** > **Run as an administrator**.
+2.    If you are prompted, select **Use recommended security**, and then select **OK**.
+3.    In Internet Explorer, select **Tools** (the gear icon), > **Internet Options** > **Privacy** > **Advanced**.
+4.    Select **Advanced**. Make sure that both of the **Accept** check boxes are selected, and then select **OK** and **OK** again.
+5.    Close Internet Explorer, and restart PowerShell ISE as an administrator.
 
 ## <a name="use-psgallery-to-install-azurerm-powershell"></a>Use PSGallery to Install AzureRM PowerShell
 
@@ -67,8 +72,8 @@ Perform the following steps from the MAS-CON01 VM, PowerShell console:
 
         Install-Module -Name AzureRM -RequiredVersion 1.2.6 -Scope CurrentUser
 
-    -   `-Scope CurrentUser` is optional
-    -   If you want everyone to have access to the modules, use an elevated command prompt and leave off the `Scope` parameter
+    -    `-Scope CurrentUser` is optional
+    -    If you want everyone to have access to the modules, use an elevated command prompt and leave off the `Scope` parameter
 5.  This command will start, run for a bit, and install the AzureRM modules from the PSGallery.
 6.  To confirm the installation of the AzureRM modules, run the following commands:
     ```
@@ -97,7 +102,7 @@ The following steps provide guidance on how to install Visual Studio Community 2
 8.  Open Visual Studio and validate you can connect to the Azure Stack environment / get templates / etc.
 
 
-## <a name="a-namesql-serverasql-server"></a><a name="SQL-Server"></a>SQL Server
+## <a name="SQL-Server"></a>SQL Server
 
 By default, the App Service on Azure Stack installer is set to use the SQL Server that is installed along with the Azure Stack SQL Resource Provider. When you install the SQL Server Resource Provider (SQL RP), ensure you take note of the database administrator username and password. You need both when you install App Service on Azure Stack.
 >[!NOTE]
@@ -110,9 +115,4 @@ By default, the App Service on Azure Stack installer is set to use the SQL Serve
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-before-you-get-started/PSGallery.png
 [2]: ./media/azure-stack-app-service-before-you-get-started/WebPI_InstalledProducts.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

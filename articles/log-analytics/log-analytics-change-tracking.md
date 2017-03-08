@@ -1,7 +1,7 @@
 ---
-title: "Log Analytics の変更の追跡ソリューション | Microsoft Docs"
-description: "環境内のソフトウェアや Windows サービスに対して行われた変更は、Log Analytics の構成変更の追跡ソリューションを使用して容易に特定できます。こうした構成の変更を特定することによって、運用上の問題点をピンポイントで突き止めることができます。"
-services: operations-management-suite
+title: "Azure Log Analytics で変更を追跡する | Microsoft Docs"
+description: "Log Analytics の変更の追跡ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。"
+services: log-analytics
 documentationcenter: 
 author: bandersmsft
 manager: carmonm
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a66cdb9825cfc3935d534afaf3f6f0cf5d5fb5a
-ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="change-tracking-solution-in-log-analytics"></a>Log Analytics の変更の追跡ソリューション
+# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
+
 この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイル、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
 このソリューションをインストールすると、インストールしたエージェントの種類が更新されます。 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Linux デーモンの変更が読み取られた後、そのデータがクラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
@@ -90,9 +93,4 @@ ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

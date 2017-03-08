@@ -3,8 +3,8 @@ title: "Azure Premium および Standard 管理ディスクの概要 | Microsoft
 description: "Azure VM を使用するときにストレージ アカウントを管理する Azure Managed Disks の概要"
 services: storage
 documentationcenter: na
-author: ramankumarlive
-manager: tadb
+author: robinsh
+manager: timlt
 editor: tysonn
 ms.assetid: 272250b3-fd4e-41d2-8e34-fd8cc341ec87
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: ramankum
+ms.date: 02/23/2017
+ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 58c395a45115c9db0027cffe96d20863c928a63d
-ms.openlocfilehash: 74ec73388af06dbf5682c5aa1c84b153dfc4a744
+ms.sourcegitcommit: 388e4c8f46662200a0e05db06d417f086ad41b11
+ms.openlocfilehash: b53feeb08d469363a52303cad4577b752a570900
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -26,7 +27,8 @@ ms.openlocfilehash: 74ec73388af06dbf5682c5aa1c84b153dfc4a744
 Azure Managed Disks は、VM ディスクに関連付けられている[ストレージ アカウント](storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](storage-premium-storage.md) または [Standard](storage-standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
 
 >[!NOTE]
-> Managed Disks を使用するには、ポート 8443 が使用可能である必要があります。このポートをブロックする場合は、非管理対象ディスクを使用する必要があります。
+>Managed Disks を使用する VM では、インストール済みの [VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md)の状態を Azure プラットフォームにレポートするためにポート 8443 上の送信トラフィックを必要とします。 このポートを利用できない場合、拡張機能を含む VM のプロビジョニングは失敗します。 また、実行中の VM にインストールされている場合、拡張機能のデプロイ ステータスは不明になります。 ポート 8443 をブロック解除できない場合は、非管理対象ディスクを使用する必要があります。 現在、この問題の解決に積極的に取り組んでいます。 詳細については、[IaaS VM ディスクに関する FAQ](storage-faq-for-disks.md#managed-disks-and-port-8443)に関するページを参照してください。 
+>
 >
 
 ## <a name="benefits-of-managed-disks"></a>管理ディスクの利点
@@ -102,7 +104,7 @@ Managed Disks では、管理対象カスタム イメージの作成もサポ�
 
 イメージの作成方法については、次の記事をご覧ください。
 * [Azure の汎用化された VM の管理対象イメージをキャプチャする方法](../virtual-machines/virtual-machines-windows-capture-image-resource.md)
-* [Azure CLI 2.0 を使用して Linux 仮想マシンを汎用化およびキャプチャする方法 (プレビュー)](../virtual-machines/virtual-machines-linux-capture-image.md)
+* [Azure CLI 2.0 を使用して Linux 仮想マシンを一般化してキャプチャする方法](../virtual-machines/virtual-machines-linux-capture-image.md)
 
 ## <a name="images-versus-snapshots"></a>イメージとスナップショット
 
@@ -134,7 +136,7 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [Azure CLI 2.0 (プレビュー) を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
 * [PowerShell を使用して Windows VM に管理データ ディスクを接続する](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 
@@ -151,9 +153,4 @@ Managed Disks の詳細については、次の記事をご覧ください。
 * [AWS やその他のプラットフォームから Azure の Managed Disks に移行する](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
 
 * [Azure VM を Azure Managed Disks に移行する](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

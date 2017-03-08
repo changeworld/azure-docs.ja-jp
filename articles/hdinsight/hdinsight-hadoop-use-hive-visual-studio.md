@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/23/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
+ms.sourcegitcommit: 8b35b5c49141ba90e65b4e07b1e67ae5315a087a
+ms.openlocfilehash: 18447962966eca67e914d0bd8cd6c25c5f2ccc3b
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -25,12 +26,9 @@ ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
 
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-この記事では、Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターに送信する方法を説明します。
+Visual Studio の HDInsight ツールを使用して、Hive クエリを HDInsight クラスターに送信する方法を説明します。
 
-> [!NOTE]
-> このドキュメントには、例で使用される HiveQL ステートメントで何が実行されるかに関する詳細は含まれていません。 この例で使用される HiveQL については、「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
-
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -47,70 +45,78 @@ ms.openlocfilehash: 067725ee5f303fc21baa3204509e8facd6f216fc
 
 * HDInsight Tools for Visual Studio または Azure Data Lake Tools for Visual Studio ツールのインストールおよび構成については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md) に関するページをご覧ください。
 
-## <a name="a-idruna-run-hive-queries-using-the-visual-studio"></a><a id="run"></a>Visual Studio を使用して Hive クエリを実行
+## <a id="run"></a>Visual Studio を使用して Hive クエリを実行
 
 1. **Visual Studio** を開き、**[新規]** > 、**[プロジェクト]** > 、**[Azure Data Lake]** > 、**[Hive]** > 、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
 
 2. このプロジェクトで作成した **Script.hql** ファイルを開き、次の HiveQL ステートメントを貼り付けます。
-   
-        set hive.execution.engine=tez;
-        DROP TABLE log4jLogs;
-        CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-        SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+
+   ```hiveql
+   set hive.execution.engine=tez;
+   DROP TABLE log4jLogs;
+   CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+   STORED AS TEXTFILE LOCATION '/example/data/';
+   SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+   ```
    
     これらのステートメントは次のアクションを実行します。
    
-   * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+   * `DROP TABLE`: テーブルが存在する場合、そのテーブルを削除します。
 
-   * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+   * `CREATE EXTERNAL TABLE`: Hive に新しい "外部" テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
      
      > [!NOTE]
      > 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
      > 
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-   * **ROW FORMAT**: Hive にデータの形式を示します。 ここでは、各ログのフィールドは、スペースで区切られています。
+   * `ROW FORMAT`: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-   * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
+   * `STORED AS TEXTFILE LOCATION`: データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
 
-   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 ここでは、この値を含む行が 3 行あるため、 **3** という値が返されています。
+   * `SELECT`: `t4` 列の値が `[ERROR]` であるすべての行の数を選択します。 この値を含む行が&3; 行あるため、このステートメントでは値 `3` が返されます。
 
-   * **INPUT__FILE__NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。 これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
+   * `INPUT__FILE__NAME LIKE '%.log'`: .log で終わるファイルのデータだけを返す必要があることを Hive に伝えます。 この句により、データを含む sample.log ファイルに検索が制限されます。
 
-3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[Submit to WebHCat (WebHCat に送信)]** を選択して、WebHCat を使用して Hive ジョブとしてステートメントを実行します。 HiveServer2 をクラスター バージョンで使用できる場合は、**[Execute via HiveServer2 (HiveServer2 経由で実行)]** ボタンを使用してジョブを送信することもできます。 **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
+3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択します。 **[送信]** を選択して、ステートメントを Hive ジョブとして実行します。
 
-4. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 SELECT ステートメントによって返された値「 `[ERROR] 3`」が表示されます。
+   ![[送信] バー](./media/hdinsight-hadoop-use-hive-visual-studio/toolbar.png)
 
-5. プロジェクトを作成せずに Hive クエリを実行することもできます。 **サーバー エクスプローラー**を使用して **[Azure]** > **[HDInsight]** の順に展開し、HDInsight サーバーを右クリックして、**[Hive クエリを記述]** を選択します。
+4. **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
 
-6. 表示された **temp.hql** ドキュメントに次の HiveQL ステートメントを追加します。
+   ![完了したジョブが表示されたジョブの概要](./media/hdinsight-hadoop-use-hive-visual-studio/jobsummary.png)
+
+5. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 このクエリによって返された値である `[ERROR] 3` が表示されます。
+
+6. プロジェクトを作成せずに Hive クエリを実行することもできます。 **サーバー エクスプローラー**を使用して **[Azure]** > **[HDInsight]** の順に展開し、HDInsight サーバーを右クリックして、**[Hive クエリを記述]** を選択します。
+
+7. 表示された **temp.hql** ドキュメントに次の HiveQL ステートメントを追加します。
    
-        set hive.execution.engine=tez;
-        CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-        INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
-   
+   ```hiveql
+   set hive.execution.engine=tez;
+   CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+   INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+   ```
+
     これらのステートメントは次のアクションを実行します。
    
-   * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合、テーブルを作成します。 **EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+   * `CREATE TABLE IF NOT EXISTS`: テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
      
      > [!NOTE]
-     > **EXTERNAL** テーブルとは異なり、内部デーブルを削除すると、基盤となるデータは削除されます。
+     > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
 
-   * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。 この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+   * `STORED AS ORC`: Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-   * **INSERT OVERWRITE ...SELECT**: **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+   * `INSERT OVERWRITE ... SELECT`: `[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
 
-7. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
+8. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
 
-8. ジョブが完了し、新しいテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で **[Azure]** > **[HDInsight]** > HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** および **log4jLogs** テーブルが表示されます。
+9. ジョブによって新しいテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で、**[Azure]** > **[HDInsight]** > HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="nextsteps"></a>次のステップ
 
-このように、Visual Studio の HDInsight ツールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
-
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+おわかりのように、Visual Studio の HDInsight ツールを使用すると、HDInsight で Hive クエリを簡単に操作できます。
 
 HDInsight での Hive に関する全般的な情報
 
@@ -156,9 +162,4 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

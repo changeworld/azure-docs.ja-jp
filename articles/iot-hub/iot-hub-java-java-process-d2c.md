@@ -12,11 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/07/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 616bca96eaff12fa1929605f3480098bd8b867c2
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -56,25 +57,27 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    
     ```
     private static class MessageSender implements Runnable {
-        public volatile boolean stopThread = false;
 
         public void run()  {
             try {
                 double avgWindSpeed = 10; // m/s
                 Random rand = new Random();
 
-                while (!stopThread) {
-                    double currentWindSpeed = avgWindSpeed + rand.nextDouble() * 4 - 2;
-                    TelemetryDataPoint telemetryDataPoint = new TelemetryDataPoint();
-                    telemetryDataPoint.deviceId = deviceId;
-                    telemetryDataPoint.windSpeed = currentWindSpeed;
-
-                    String msgStr = telemetryDataPoint.serialize();
-                    if (new Random() > 0.7) {
-                        Message msg = new Message("This is a critical message.");
+                while (true) {
+                    String msgStr;
+                    Message msg;
+                    if (new Random().nextDouble() > 0.7) {
+                        msgStr = "This is a critical message.";
+                        msg = new Message(msgStr);
                         msg.setProperty("level", "critical");
                     } else {
-                        Message msg = new Message(msgStr);
+                        double currentWindSpeed = avgWindSpeed + rand.nextDouble() * 4 - 2;
+                        TelemetryDataPoint telemetryDataPoint = new TelemetryDataPoint();
+                        telemetryDataPoint.deviceId = deviceId;
+                        telemetryDataPoint.windSpeed = currentWindSpeed;
+
+                        msgStr = telemetryDataPoint.serialize();
+                        msg = new Message(msgStr);
                     }
                     
                     System.out.println("Sending: " + msgStr);
@@ -227,9 +230,4 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [lnk-create-an-iot-hub]: iot-hub-java-java-getstarted.md#create-an-iot-hub
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

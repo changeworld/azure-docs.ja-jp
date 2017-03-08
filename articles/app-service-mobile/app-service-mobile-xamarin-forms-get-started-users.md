@@ -4,7 +4,7 @@ description: "Mobile Apps を使用して、AAD、Google、Facebook、Twitter、
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 30fac48cbacb26b03ce430987997c38c68368385
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。 このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、Xamarin Forms クイック スタート プロジェクトに認証を追加します。 モバイル アプリによって正常に認証、承認されると、ユーザー ID 値が表示され、制限付きのテーブル データにアクセスできます。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルで最善の結果が得られるように、最初にチュートリアル「[Xamarin Forms アプリの作成][1]」を完了しておくことをお勧めします。 このチュートリアルを完了すると、マルチプラットフォーム TodoList アプリである Xamarin Forms プロジェクトを作成できます。
+このチュートリアルで最善の結果が得られるように、最初にチュートリアル「[Xamarin.Forms アプリの作成][1]」を完了しておくことをお勧めします。 このチュートリアルを完了すると、マルチプラットフォーム TodoList アプリである Xamarin Forms プロジェクトを作成できます。
 
 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][2]」を参照してください。
 
@@ -307,7 +308,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
 * [アプリへのプッシュ通知の追加](app-service-mobile-xamarin-forms-get-started-push.md)
   
-   アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
+  アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md)
   
   モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
@@ -322,9 +323,4 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 [5]: app-service-mobile-dotnet-how-to-use-client-library.md#serverflow
 [6]: app-service-mobile-dotnet-how-to-use-client-library.md#clientflow
 [7]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

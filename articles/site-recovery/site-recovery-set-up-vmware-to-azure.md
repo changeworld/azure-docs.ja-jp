@@ -17,6 +17,7 @@ ms.author: anoopkv
 translationtype: Human Translation
 ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
 ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
 - [自動検出](./site-recovery-vmware-to-azure.md#vmware-account-permissions)に使用できる、VMware vCenter 内の専用アカウント。
 - 構成サーバーをインストールする仮想マシン。
 
-### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
+## <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 構成サーバー ソフトウェアは、可用性の高い VMware 仮想マシン上にデプロイする必要があります。 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -97,9 +98,4 @@ ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
 
 ## <a name="next-steps"></a>次のステップ
 Azure で[ターゲット環境を設定](./site-recovery-prepare-target-vmware-to-azure.md)します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

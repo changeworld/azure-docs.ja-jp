@@ -73,7 +73,7 @@ B2B コラボレーション ユーザーは、制限付き管理者ロールま
 2. ゲスト ユーザーを含む動的グループを作成します。![](media/active-directory-b2b-faq/group-with-guest-users.png)
 3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。
 
-  >[!ビデオ https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
+  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
 
   このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user)からアクセスできます。
 

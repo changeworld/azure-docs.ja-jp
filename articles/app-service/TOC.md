@@ -1,4 +1,4 @@
-# 概要
+# Overview
 ## [App Service とは](app-service-value-prop-what-is.md)
 ## [動作のしくみ](app-service-how-works-readme.md)
 ## [App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)
@@ -27,20 +27,6 @@
 ### [Java](../app-service-web/web-sites-java-get-started.md)
 ### [Marketplace アプリ](../app-service-web/web-sites-php-web-site-gallery.md)
 ### [PHP](../app-service-web/app-service-web-php-get-started.md)    
-
-# 一般的な例
-## CLI の例
-### [Web アプリを作成して GitHub からコードをデプロイする](./scripts/app-service-cli-deploy-github.md)
-### [GitHub からの継続的なデプロイで Web アプリを作成する](./scripts/app-service-cli-continuous-deployment-github.md)
-### [Web アプリを作成してローカル Git リポジトリからコードをデプロイする](./scripts/app-service-cli-deploy-local-git.md)
-### [Web アプリを作成してステージング環境にコードをデプロイする](./scripts/app-service-cli-deploy-staging-environment.md)
-### [Docker コンテナーに ASP.NET Core Web アプリを作成する](./scripts/app-service-cli-linux-docker-aspnetcore.md)
-### [カスタム ドメインを Web アプリにマップする](./scripts/app-service-cli-configure-custom-domain.md)
-### [Web アプリを手動でスケールする](./scripts/app-service-cli-scale-manual.md)
-### [高可用性アーキテクチャを使用して世界規模で Web アプリをスケールする](./scripts/app-service-cli-scale-high-availability.md)
-### [Web アプリを SQL データベースに接続する](./scripts/app-service-cli-app-service-sql.md)
-### [Web アプリをストレージ アカウントに接続する](./scripts/app-service-cli-app-service-storage.md)
-### [Web サーバー ログで Web アプリを監視する](./scripts/app-service-cli-monitor.md)
 
 # 方法
 

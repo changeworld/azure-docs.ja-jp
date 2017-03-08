@@ -15,20 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9d20050dada974c0c2a54399e2db7b9a289f7e89
-ms.openlocfilehash: 8ca2e34fef825bbc50dd367642bc82d8ba00b6b0
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4531aeb00cff7eee12ab0ab9c7466446fc50d5b1
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
+# <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
+
 Linux ベースの HDInsight で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **HDInsight クラスター**。 新しい Linux ベースの HDInsight クラスターを作成する手順については、「 [Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md) 」をご覧ください。
 
@@ -61,7 +62,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     **FILENAME** を zip ファイルの名前に置き換えます。 **USERNAME** を HDInsight クラスターの SSH ログインに置き換えます。 CLUSTERNAME を HDInsight クラスターの名前に置き換えます。
    
    > [!NOTE]
-   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合、 `-i` パラメーターを使用し、対応する秘密キーのパスを指定することが必要な場合があります。 たとえば、「 `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように指定します。
+   > パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。 公開キーを使用している場合、 `-i` パラメーターを使用し、対応する秘密キーのパスを指定することが必要な場合があります。 たとえば、「 `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。
    
@@ -78,9 +79,9 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     unzip FILENAME.zip
     ```
    
-    約 60 MB の .csv ファイルが抽出されます。
+    このコマンドで、約 60 MB の .csv ファイルが抽出されます。
 
-4. 次のコマンドを使用して、WASB (HDInsight で使用される分散データ ストア) に新しいディレクトリを作成し、ファイルをコピーします。
+4. 次のコマンドを使用して HDInsight のストレージにディレクトリを作成し、そのディレクトリにファイルをコピーします。
    
     ```
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -88,15 +89,16 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     ```
 
 ## <a name="create-and-run-the-hiveql"></a>HiveQL の作成と実行
+
 次の手順に従って、CSV ファイルから **Delays**という名前の Hive テーブルにデータをインポートします。
 
-1. 次のコマンドを使用して、 **flightdelays.hql**という名前の新しいファイルを作成し、編集します。
+1. 次のコマンドを使用して、 **flightdelays.hql** という名前の新しいファイルを作成し、編集します。
    
     ```
     nano flightdelays.hql
     ```
    
-    このファイルの内容として以下を使用します。
+    このファイルの内容として、次のテキストを使用します。
    
     ```hiveql
     DROP TABLE delays_raw;
@@ -175,7 +177,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-5. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のコードを使用してインポートされたフライト遅延データからデータを取得します。
+5. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のクエリを使用してインポートされたフライト遅延データからデータを取得します。
    
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -187,13 +189,13 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
     GROUP BY origin_city_name;
     ```
    
-    悪天候による遅延が発生した都市と平均遅延時間のリストが取得され、`/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
+    このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
 
 6. Beeline を終了するには、プロンプトで「 `!quit` 」と入力します。
 
 ## <a name="create-a-sql-database"></a>SQL Database の作成
 
-SQL Database が既にある場合は、サーバー名を取得していることになります。 サーバー名を確認するには、 [Azure ポータル](https://portal.azure.com) で **[SQL データベース]**を選択し、使用するデータベースの名前でフィルターをかけます。 サーバー名は **[サーバー]** 列に表示されます。
+SQL Database が既にある場合は、サーバー名を取得していることになります。 サーバー名を確認するには、[Azure Portal](https://portal.azure.com) で **[SQL データベース]** を選択し、使用するデータベースの名前でフィルターをかけます。 サーバー名は **[サーバー]** 列に表示されます。
 
 SQL Database がまだない場合は、「 [SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](../sql-database/sql-database-get-started.md) 」の説明に従って作成してください。 データベースに使用したサーバー名は保存しておく必要があります。
 
@@ -217,7 +219,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
    
-    次のような出力が返されます。
+    次のテキストのような出力が返されます。
    
     ```
     locale is "en_US.UTF-8"
@@ -238,7 +240,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     GO
     ```
    
-    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これにより、クラスター化インデックス付きの、**delays** という名前の新しいテーブルが作成されます (SQL Database で必要)。
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。 これにより、クラスター化インデックス付きの、**delays** という名前のテーブルが作成されます。
    
     次を使用して、テーブルが作成されたことを確認します。
    
@@ -264,7 +266,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
    
-    これにより、先ほど delays テーブルを作成したデータベースを含むデータベースの一覧が返されます。
+    このコマンドにより、先ほど delays テーブルを作成したデータベースを含むデータベースの一覧が返されます。
 
 2. 次のコマンドを使用して、hivesampletable から mobiledata テーブルにデータをエクスポートします。
    
@@ -272,7 +274,7 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
    
-    このコマンドは、Sqoop に対して、SQL Database (delays テーブルが含まれているデータベース) に接続して `/tutorials/flightdelays/output` ディレクトリ (Hive クエリの出力を保存しておいた場所) から delays テーブルにデータをエクスポートするよう指示します。
+    Sqoop は delays テーブルを含んでいるデータベースに接続して、`/tutorials/flightdelays/output` ディレクトリから delays テーブルにデータをエクスポートします。
 
 3. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
    
@@ -289,11 +291,10 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
     
     テーブル内のデータの一覧が表示されます。 「 `exit` 」と入力して、tsql ユーティリティを終了します。
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 
-ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。 詳細については、次の記事を参照してください。
+HDInsight でのデータ操作の詳細については、次のドキュメントを参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
@@ -325,10 +326,5 @@ SQL Database がまだない場合は、「 [SQL Database チュートリアル:
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

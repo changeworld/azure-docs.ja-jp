@@ -3,8 +3,8 @@ title: "Azure Data Lake Store のパフォーマンス チューニング ガイ
 description: "Azure Data Lake Store のパフォーマンス チューニング ガイドライン"
 services: data-lake-store
 documentationcenter: 
-author: nitinme
-manager: jhubbard
+author: stewu
+manager: amitkul
 editor: cgronlun
 ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
@@ -12,8 +12,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
-ms.author: nitinme
+ms.date: 03/06/2017
+ms.author: stewu
 translationtype: Human Translation
 ms.sourcegitcommit: af11866fc812cd8a375557b7bf9df5cdc9bba610
 ms.openlocfilehash: f0d0c05c08ce198e2702c76ad35b348107c664c7

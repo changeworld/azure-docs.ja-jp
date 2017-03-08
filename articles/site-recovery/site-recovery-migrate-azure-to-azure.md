@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 501e5e8501c6106ba2e51b3523332fd224a5a142
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: c33b69dbdccd2a894b494175dec2bd423af478b1
+ms.openlocfilehash: 0019b64ba545d91cf32ed2945c5c0d4844e264e1
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -28,14 +28,14 @@ Azure Site Recovery へようこそ。 この記事は、Azure VM を Azure リ�
 * Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの&2; 種類のデプロイメント モデルがあります。 また、Azure にも&2; つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 Site Recovery を Resource Manager とクラシックのどちらで構成するかに関係なく、移行の基本的な手順は同じです。 ただし、この記事の UI の説明とスクリーンショットは、Azure ポータルに適用されます。
 * **現時点では、リージョン間の一方向の移行だけが可能です。VM を Azure リージョン間でフェールオーバーできますが、フェールバックすることはできません。**
 * この記事で説明する移行の手順は、物理マシンを Azure にレプリケートする手順に基づいています。 各手順には、Azure ポータルで物理サーバーをレプリケートする方法を説明する、 [VMware VM または物理サーバーの Azure へのレプリケート](site-recovery-vmware-to-azure.md)に関する記事の手順へのリンクが含まれています。
-* Site Recovery をクラシック ポータルでセットアップする場合は、 [こちらの記事](site-recovery-vmware-to-azure-classic.md)に記載された詳細な手順に従ってください。 
+* Site Recovery をクラシック ポータルでセットアップする場合は、 [こちらの記事](site-recovery-vmware-to-azure-classic.md)に記載された詳細な手順に従ってください。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 ## <a name="prerequisites"></a>前提条件
 このデプロイで必要なものを次に示します。
 
-* **構成サーバー**: 構成サーバーとして機能する、Windows Server 2012 R2 を実行するオンプレミス VM。 この VM にも他の Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバーを含む) をインストールします。 詳細については、「[シナリオのアーキテクチャ](site-recovery-components.md#replicate-vmware-vmsphysical-servers-to-azure)」および「[構成サーバーの前提条件](site-recovery-vmware-to-azure.md#prerequisites)」をご覧ください。
+* **構成サーバー**: 構成サーバーとして機能する、Windows Server 2012 R2 を実行するオンプレミス VM。 この VM にも他の Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバーを含む) をインストールします。 詳細については、「[シナリオのアーキテクチャ](site-recovery-components.md#vmware-replication-to-azure)」および「[構成サーバーの前提条件](site-recovery-vmware-to-azure.md#prerequisites)」をご覧ください。
 * **IaaS 仮想マシン**: 移行する VM。 これらの VM を物理コンピューターとして扱って移行します。
 
 ## <a name="deployment-steps"></a>デプロイメントの手順

@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 8651566079a0875e1a3a549d4bf1dbbc6ac7ce21
-ms.openlocfilehash: 410159ad7b5abc5eb3cb1a212895eda7ac225323
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: fb670dd7296f329fc280cf9f2c2adba2df44c07c
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -36,7 +37,7 @@ Managed Disks の価格は、非管理対象ディスクと異なります。 �
 [az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
 
 - [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに[仮想ハード ディスク (VHD) をコピー](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks)します。
-- 管理ディスクを使用する VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。または
+- Managed Disks を使う VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。
 - [az vm disk attach](/cli/azure/vm/disk#attach) を使用して、コピーした VHD を管理ディスクで実行中の VM に接続します。
 
 
@@ -47,7 +48,7 @@ Azure VM は、Managed Disks と非管理対象ディスクのどちらを使用
 
 ## <a name="creating-a-vm-with-a-managed-disk"></a>Managed Disk での VM の作成
 
-次の例では、[ここでインストール] できる Azure CLI 2.0 (プレビュー) が必要です。
+次の例では、[ここでインストール] できる Azure CLI 2.0 が必要です。
 
 まず、リソースを管理するリソース グループを作成します。
 
@@ -238,10 +239,5 @@ Storage Service Encryption (SSE) と、ストレージ アカウントで Storag
 
 ## <a name="storage-limits"></a>ストレージの制限
 * [ストレージ Service の制限](../azure-subscription-service-limits.md#storage-limits)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

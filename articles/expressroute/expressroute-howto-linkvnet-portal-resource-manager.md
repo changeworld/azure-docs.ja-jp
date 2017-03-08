@@ -98,7 +98,7 @@ ms.lasthandoff: 02/10/2017
 
 回線所有者は、承認を作成します。 その結果、回線ユーザーが各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続するために使用できる承認キーが作成されます。 承認は、1 つの接続に対してのみ有効です。
 
-1. [ExpressRoute] ブレードで **[Authorizations] (承認)** をクリックし、承認の**名前**を入力して **[保存]** をクリックします。
+1. [ExpressRoute] ブレードで **[Authorizations] \(承認)** をクリックし、承認の**名前**を入力して **[保存]** をクリックします。
 
     ![[Authorizations]](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 

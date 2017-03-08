@@ -1,5 +1,5 @@
 ---
-title: "Windows 用の仮想マシン拡張機能とその機能 | Microsoft Docs"
+title: "Azure での Windows 用の仮想マシン拡張機能とその機能 | Microsoft Docs"
 description: "Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1493bf0a545cd605b80404413894bd56e1ced735
-ms.openlocfilehash: ebd8734ad2de6f5e528e941f90098de079966f48
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: 88ccd06cf3098c3df014422e5f4dc54ceb955d3c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
+# <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能 
 
 Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使って、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、Azure Portal を使って実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
 
@@ -113,7 +115,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 `Set-AzureRmVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳しくは、[Set-AzureRmVMExtension のリファレンス](https://msdn.microsoft.com/en-us/library/mt603745.aspx)に関する記事をご覧ください。
 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure Portal
 
 VM 拡張機能は、Azure Portal から既存の仮想マシンに適用できます。 そのためには、使う仮想マシンを選び、**[拡張機能]** を選択して **[追加]** をクリックします。 これで、使用可能な拡張機能の一覧が表示されます。 必要な拡張機能を選び、ウィザードの手順に従います。
 
@@ -285,9 +287,4 @@ Azure Portalを使って拡張機能を削除することもできます。 そ�
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](virtual-machines-windows-extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

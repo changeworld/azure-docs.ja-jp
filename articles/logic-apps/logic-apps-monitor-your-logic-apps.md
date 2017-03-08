@@ -1,6 +1,6 @@
 ---
-title: "Azure でロジック アプリを監視する | Microsoft Docs"
-description: "ロジック アプリの作業内容を表示する方法"
+title: "ログ記録とアラートの有効化、実行履歴の確認、入出力の追跡 - Azure Logic Apps | Microsoft Docs"
+description: "履歴と診断をログ記録、追跡、表示することにより、ロジック アプリ ワークフローの状態を監視する"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: db3684fc5cc4ae7933454a02d8440d1eb4948828
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="monitor-your-logic-apps"></a>ロジック アプリを監視する
-[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)したら、Azure ポータルでそのすべての実行履歴を表示できます。  また、Azure 診断や Azure アラートなどのサービスを設定することで、リアルタイムにイベントを監視し、"1 時間あたりの失敗の回数が 5 回を超えたとき" など、さまざまなイベントに応じてアラートを発生させることもできます。
+# <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>パフォーマンスを確認し、ロジック アプリでワークフローの診断ログとアラートを開始する
+[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)したら、Azure Portal でそのすべての実行履歴を表示できます。  また、Azure 診断や Azure アラートなどのサービスを設定することで、リアルタイムにイベントを監視し、"1 時間あたりの失敗の回数が 5 回を超えたとき" など、さまざまなイベントに応じてアラートを発生させることもできます。
 
 ## <a name="monitor-in-the-azure-portal"></a>Azure ポータルでの監視
 履歴を表示するには、**[参照]** を選択し、**[Logic Apps]** を選択します。 サブスクリプション内のすべてのロジックアプリの一覧が表示されます。  監視するロジック アプリを選択します。  このロジック アプリで発生したすべてのアクションとトリガーが一覧表示されます。
@@ -137,10 +139,5 @@ REST API で必要となる実行の**関連付け ID** など、さらに詳し
 * [ロジック アプリの接続の例とシナリオ](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ロジック アプリ デプロイ テンプレートの作成](../logic-apps/logic-apps-create-deploy-template.md)
 * [エンタープライズ統合機能](../logic-apps/logic-apps-enterprise-integration-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

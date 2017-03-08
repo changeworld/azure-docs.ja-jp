@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 553111d37543a0d5d6d3c89afab118b209704fec
 ms.openlocfilehash: b6ed4bd6898d54f6f9ef3206de38e2be6d2900be
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -41,9 +42,4 @@ One Identity Authentication Services は、Unix、Linux、および Mac OS X シ
 Red Hat Enterprise Linuxは、世界をリードするエンタープライズ向け Linux プラットフォームであり、今日の現代企業のニーズを満たすように構築されています。 Red Hat Enterprise Linux は、Microsoft Azure でのエンタープライズ向け Linux 仮想マシン (VM) のワークロードに適しています。 Red Hat Enterprise Linux は、ビジネスに不可欠なワークロード (データセンターから Azure クラウドまで) を柔軟にデプロイすることを望んでいる顧客向けに設計された、オープンで信頼できるセキュリティで保護されたプラットフォームであり、Red Hat と Microsoft による緊密に統合されたエンタープライズ クラスのサポートが提供されます。
 
 [Red Hat Enterprise Linux 7.2 VM の Azure AD Domain Services への参加](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

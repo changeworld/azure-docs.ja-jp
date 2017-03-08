@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI 2.0 を使用した Linux VM へのポートの開放 | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルと Azure CLI 2.0 (プレビュー) を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
+description: "Azure Resource Manager デプロイメント モデルと Azure CLI 2.0 を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明する"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,24 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: aae141307a0ea68f0d9e481cf22a9055216c98c0
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: bb5065d0b541c7f8a51cd4c508b2d5455cc82957
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Azure の Linux VM へのポートとエンドポイントの開放
-サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 2.0 (プレビュー) を使用して VM へのポートを開く方法を説明します。
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Azure の Linux VM へのポートとエンドポイントの開放
+サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 2.0 を使用して VM へのポートを開く方法を説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="quick-commands"></a>クイック コマンド
-ネットワーク セキュリティ グループとルールを作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+ネットワーク セキュリティ グループとルールを作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myNetworkSecurityGroup`、`myVnet` などは、例として使われているパラメーター名です。
 
@@ -80,10 +74,5 @@ az network vnet subnet update --resource-group myResourceGroup \
 * [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)
 * [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 * [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

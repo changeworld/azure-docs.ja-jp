@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: b8a54b6ca0b13c161a35595af7f09e6c5ab203c0
 ms.openlocfilehash: 21190b985860a79e4bebf7bf4845e5954c657b9f
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -896,9 +897,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

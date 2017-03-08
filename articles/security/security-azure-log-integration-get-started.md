@@ -15,8 +15,9 @@ ums.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: aaa69e2e4fed314e8bc363f60e7538b12bb3a56d
-ms.openlocfilehash: ca7f05534113752f3607268c15a9fe3e0e2982e0
+ms.sourcegitcommit: 9c27ea02ae341197a70d2b399cf8d534d79c9e4c
+ms.openlocfilehash: 001cc873960733bfe3e37fad95dbac29872ba00a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -62,11 +63,9 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
        Replace the Cloud with any of the following
        AzureCloud
-       AzureChinaCloud
        AzureUSGovernment
-       AzureGermanCloud
 
-       Note that at this time, an Azlog integrator only supports integrating logs from one cloud that you choose to integrate.
+       Note that at this time, an Azlog integrator only supports integrating logs from a cloud that you choose to integrate.
 
 ## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Azure 診断ストレージ アカウントからの Azure VM ログの統合
 1. 上記の前提条件をチェックして、Azure ログ統合を続行する前に、WAD ストレージ アカウントがログを収集していることを確認します。 WAD ストレージ アカウントがログを収集していない場合は、以下の手順を実行しないでください。
@@ -99,7 +98,7 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 2. **azlog source add**コマンドに追加されたストレージ アカウントに接続します。
 3. Microsoft Azure Storage Explorer で **WADWindowsEventLogsTable** テーブルに移動して、データがあるかどうかを確認します。 データがない場合は、VM で診断が正しく構成されていません。
 
-## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Azure 監査ログと Security Center の警告の統合
+## <a name="integrate-azure-activity-logs-and-security-center-alerts"></a>Azure アクティビティ ログと Security Center の警告の統合
 1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\Program Files\Microsoft Azure Log Integration** に変更します。
 2. コマンドを実行します
 
@@ -128,7 +127,19 @@ Azure ログ統合サービスは、インストール先のマシンから利�
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
 6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
 
-Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+## <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory と監査ログの統合
+1. コマンド プロンプトと **cd** を **c:\Program Files\Microsoft Azure Log Integration** に開きます。
+2. 次のコマンドを実行します。.\AZLOG.exe authorizedirectoryreader <TenantID> サンプル - 
+
+.\AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+
+3. 次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。 
+* **C:\Users\azlog\AzureActiveDirectoryJson**   
+* **C:\Users\azlog\AzureActiveDirectoryJsonLD**
+
+4. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
+
+インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして 'Log Integration' を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージからログを統合する方法について説明しました。 詳細については、次の記事を参照してください。
@@ -139,9 +150,4 @@ Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.
 * [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
 * [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
 * [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – このブログ投稿では、Azure 監査ログと、Azure リソースの操作の洞察を得るのに役立つその他の機能を紹介します。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

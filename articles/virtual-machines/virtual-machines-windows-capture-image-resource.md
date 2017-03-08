@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: 12b2d12c5152c6e9b8f2e8c78fbbd6663cb24e45
+ms.sourcegitcommit: 0f6bd85668533ee79700caead2edc6bc6c7d70de
+ms.openlocfilehash: 45383cb3b8238d72bf9ba398a22fe0a005941c3f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="how-to-capture-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージをキャプチャする方法
+# <a name="capture-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージをキャプチャする
 
 ストレージ アカウントに管理対象ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 その後、イメージを使って、記憶域として管理対象ディスクを使う複数の VM を作成することができます。 
 
@@ -39,13 +40,14 @@ ms.openlocfilehash: 12b2d12c5152c6e9b8f2e8c78fbbd6663cb24e45
 4. 結果で "**イメージ**" を選びます。
 5. **[イメージ]** ブレードで、**[作成]** をクリックします。
 6. **[名前]** に、イメージの名前を入力します。
+7. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ドロップダウンから正しいサブスクリプションを選択します。
 7. **[リソース グループ]** で、**[新規作成]** を選んで名前を入力するか、または **[From existing (既存から)]** を選び、ドロップダウン リストから使うリソース グループを選びます。
 8. **[場所]** で、リソース グループの場所を選びます。
 9. **[OS の種類]** で、オペレーティング システムの種類を選びます (Windows または Linux)。
-11. **[ストレージ BLOB]** で、**[参照]** をクリックして Azure Storage で VHD を探します。
+11. **[ストレージ BLOB]** で、**[参照]** をクリックしてご使用の Azure Storage で VHD を探します。
 12. **[アカウントの種類]** で、Standard_LRS または Premium_LRS を選びます。 Standard はハード ディスク ドライブを使い、Premium はソリッド ステート ドライブを使います。 どちらもローカル冗長ストレージを使います。
 13. **[Disk caching (ディスク キャッシュ)]** で、適切なディスク キャッシュ オプションを選びます。 オプションは、**[なし]**、**[読み取り専用]**、**[Read\write (読み取り\書き込み)]** です。
-14. 省略可能: 既存のデータ ディスクをイメージに追加してもかまいません。  
+14. 省略可能: **[+ Add data disk (+ データ ディスクの追加)]** をクリックして既存のデータ ディスクをイメージに追加してもかまいません。  
 15. 選択が終了したら、**[作成]** をクリックします。
 16. 作成したイメージは、選んだリソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
 
@@ -171,10 +173,5 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 ## <a name="next-steps"></a>次のステップ
 - これで、[一般化された管理対象イメージから VM を作成する](virtual-machines-windows-create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができるようになりました。    
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 786ffe97c794aa44dc5d2b8e1a9597387752409c
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: d5171cdc9048837385bfb99d553e496a9f56846e
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,12 +45,12 @@ ClickTime と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの ClickTime の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -60,20 +61,20 @@ ClickTime と Azure AD の統合を構成するには、次のものが必要で
 ### <a name="to-enable-the-application-integration-for-clicktime-perform-the-following-steps"></a>ClickTime のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-clicktime-tutorial/tic700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-clicktime-tutorial/tic700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-clicktime-tutorial/tic700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-clicktime-tutorial/tic700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-clicktime-tutorial/tic749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-clicktime-tutorial/tic749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-clicktime-tutorial/tic749322.png "Add an application from gallerry")
 6. **検索ボックス**に、「**ClickTime**」と入力します。
    
-   ![アプリケーション ギャラリー](./media/active-directory-saas-clicktime-tutorial/tic777275.png "Application gallery")
+   ![アプリケーション ギャラリー](./media/active-directory-saas-clicktime-tutorial/tic777275.png "Application Gallery")
 7. 結果ウィンドウで **[ClickTime]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
    ![ClickTime](./media/active-directory-saas-clicktime-tutorial/tic777276.png "ClickTime")
@@ -105,10 +106,10 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure クラシック ポータルの **ClickTime** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![シングル サインオンの有効化](./media/active-directory-saas-clicktime-tutorial/tic777277.png "Enable single sign-on")
+   ![シングル サインオンの有効化](./media/active-directory-saas-clicktime-tutorial/tic777277.png "シングル サインオンの有効化")
 2. **[ユーザーの ClickTime へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/tic777278.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/tic777278.png "Configure single sign-on")
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-clicktime-tutorial/tic777286.png) 
@@ -120,12 +121,12 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
     c. click **[次へ]**
 4. **[ClickTime でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
    
-   ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/tic777279.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/tic777279.png "Configure single sign-on")
 5. 別の Web ブラウザー ウィンドウで、ClickTime 企業サイトに管理者としてログインします。
 6. 上部にあるツールバーで **[Preferences]**、**[Security Settings]** の順にクリックします。
 7. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
    
-   ![[Security Settings]](./media/active-directory-saas-clicktime-tutorial/tic777280.png "Security Settings")
+   ![Security Settings](./media/active-directory-saas-clicktime-tutorial/tic777280.png "Security Settings")
    
    a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
    
@@ -136,7 +137,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
    d.  **[Save]**をクリックします。
 8. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-   ![Configure single sign-on](./media/active-directory-saas-clicktime-tutorial/tic777281.png "Configure single sign-on")
+   ![シングル サインオンの構成](./media/active-directory-saas-clicktime-tutorial/tic777281.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが ClickTime にログインできるようにするには、そのユーザーを ClickTime にプロビジョニングする必要があります。  
@@ -149,7 +150,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
    ![ユーザー](./media/active-directory-saas-clicktime-tutorial/tic777282.png "People")
 3. **[Add Person]**をクリックします。
    
-   ![[Add Person]](./media/active-directory-saas-clicktime-tutorial/tic777283.png "Add Person")
+   ![Add Person](./media/active-directory-saas-clicktime-tutorial/tic777283.png "Add Person")
 4. [New Person] セクションで、次の手順を実行します。
    
    ![ユーザー](./media/active-directory-saas-clicktime-tutorial/tic777284.png "People")
@@ -208,9 +209,4 @@ ClickTime の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_201.png
 [203]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_203.png
 [205]: ./media/active-directory-saas-clicktime-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

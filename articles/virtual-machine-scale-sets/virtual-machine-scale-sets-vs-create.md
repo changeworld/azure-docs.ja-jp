@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: guybo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 038259ad4e1c7c6623426f9476ea96d02043fbf9
+ms.sourcegitcommit: 657a249af1840e7bf0711d5ebbe6169258f085b1
+ms.openlocfilehash: 91553d6d3dad76ed256efed7182f0855f0ad10e5
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="deploy-virtual-machine-scale-set-using-visual-studio"></a>Visual Studio を利用して仮想マシン スケールをデプロイする
+# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
 
 [Azure 仮想マシン スケール セット](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) は、自動スケールと負荷分散のためのオプションを簡単に組み込んで、同様の仮想マシンを一元的にデプロイし、管理するための Azure コンピューティング リソースです。 VM スケール セットのプロビジョニングとデプロイは、 [Azure リソース マネージャー (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates)を使って行うことができます。 ARM テンプレートは、Azure CLI、PowerShell、REST を使ってデプロイできるほか、Visual Studio から直接デプロイすることもできます。 Visual Studio には、"Azure リソース グループの配置" プロジェクトの一環としてデプロイできるサンプル テンプレート一式が用意されています。
@@ -95,9 +97,4 @@ Visual Studio を使って VM スケール セットを正常にデプロイし�
 [edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

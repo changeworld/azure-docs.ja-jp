@@ -36,8 +36,6 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
-### [関連リソースをリンクする](resource-group-link-resources.md)
-### [Azure リソース エクスプローラー](resource-manager-resource-explorer.md)
 ## アクセスを制御する
 ### [PowerShell でサービス プリンシパルを作成する](resource-group-authenticate-service-principal.md)
 ### [Azure CLI でサービス プリンシパルを作成する](resource-group-authenticate-service-principal-cli.md)

@@ -4,7 +4,7 @@ description: "ポータルと修正プログラムを使用して更新プログ
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 9997a97b-9382-43ed-b56e-61369335c987
 ms.service: storsimple
@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: c192397de12d72a0430f89594d4d18d9c1c71719
+ms.sourcegitcommit: 978dde5857344704ce14e2dd090895f1fe541863
+ms.openlocfilehash: c2d081604c0ca01f47c3ff2aab7477859d280963
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="install-updates-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に更新プログラムをインストールします
+# <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Virtual Array に更新プログラムをインストールする - Azure Portal
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 この記事では、ローカル Web UI および Azure Portal を使用して、StorSimple Virtual Array に更新プログラムをインストールする手順について説明します。 StorSimple Virtual Array を最新の状態に保つために、ソフトウェアの更新プログラムまたは修正プログラムを適用することが必要な場合があります。 
 
@@ -95,7 +97,7 @@ ms.openlocfilehash: c192397de12d72a0430f89594d4d18d9c1c71719
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update6m.png)
 
-## <a name="use-the-azure-portal"></a>Azure ポータルの使用
+## <a name="use-the-azure-portal"></a>Azure Portal の使用
 
 Update 0.2 を実行している場合は、Azure Portal から更新プログラムをインストールすることをお勧めします。 ポータルの手順では、ユーザーは更新プログラムをスキャン、ダウンロード、およびインストールする必要があります。 この手順の所要時間は約 7 分です。 次の手順を実行して、更新プログラムまたは修正プログラムをインストールします。
 
@@ -107,10 +109,5 @@ Update 0.2 を実行している場合は、Azure Portal から更新プログ�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

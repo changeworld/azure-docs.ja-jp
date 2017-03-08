@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 5121a810badcaa9c66a9f5d85bd83b9f522b9665
 ms.openlocfilehash: 449499ebed1b455af012ec97976d04604a320941
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -104,7 +105,7 @@ Azure AD アプリケーション プロキシを設定し、Azure AD Domain Ser
 
 
 ### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタでリソースベースの Kerberos の制約付き委任を有効にする
-Azure アプリケーション プロキシ コネクタで Kerberos の制約付き委任 (KCD) を構成し、管理対象ドメインでユーザーに偽装できるようにする必要があります。 Azure AD Domain Services の管理対象ドメインでは、ドメイン管理者特権がありません。 したがって、**管理対象ドメインで従来のアカウント レベルの KCD を構成することはできません**。 
+Azure アプリケーション プロキシ コネクタで Kerberos の制約付き委任 (KCD) を構成し、管理対象ドメインでユーザーに偽装できるようにする必要があります。 Azure AD Domain Services の管理対象ドメインでは、ドメイン管理者特権がありません。 したがって、**管理対象ドメインで従来のアカウント レベルの KCD を構成することはできません**。
 
 この[記事](active-directory-ds-enable-kcd.md)で説明されているように、リソースベースの KCD を使用します。
 
@@ -130,9 +131,4 @@ Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateTo
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [管理対象ドメインで Kerberos の制約付き委任を構成する](active-directory-ds-enable-kcd.md)
 * [Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

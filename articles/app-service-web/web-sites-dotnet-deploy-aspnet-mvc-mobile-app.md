@@ -4,7 +4,7 @@ description: "ASP.NET MVC 5 Web アプリケーションのモバイル機能を
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 0752c802-8609-4956-a755-686116913645
 ms.service: app-service
@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin;riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 68764f29fde48631727371de05372a47e336a919
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: b23dfdcf99cab46bb4cedc690e00d29d37b3a044
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-an-aspnet-mvc-5-mobile-web-app-in-azure-app-service"></a>ASP.NET MVC 5 モバイル Web アプリケーションを Azure App Service に展開する
-このチュートリアルでは、モバイル対応である ASP.NET MVC 5 Web アプリケーションをビルドして Azure App Service に展開する方法の基本を説明します。 このチュートリアルを実行するには、[Visual Studio Express 2013 for Web][Visual Studio Express 2013] が必要です。または Visual Studio のプロフェッショナル エディションを既にお持ちの場合はそれを使用することもできます。 [Visual Studio 2015] も使用できますが、スクリーン ショットが異なり、ASP.NET 4.x テンプレートを使用する必要があります。
+このチュートリアルでは、モバイル対応である ASP.NET MVC 5 Web アプリケーションをビルドして Azure App Service に展開する方法の基本を説明します。 このチュートリアルを実行するには、[Visual Studio Express 2013 for Web][Visual Studio Express 2013] が必要です。Visual Studio のプロフェッショナル エディションを既にお持ちの場合は、それを使用することもできます。 [Visual Studio 2015] も使用できますが、スクリーン ショットが異なり、ASP.NET 4.x テンプレートを使用する必要があります。
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -30,7 +31,7 @@ ms.openlocfilehash: 68764f29fde48631727371de05372a47e336a919
 
 ![][FixedSessionsByTag]
 
-Internet Explorer 11 F12 開発者ツールおよび [Fiddler ツール][Fiddler]を使用してアプリケーションのデバッグに役立てることができます。 
+Internet Explorer 11 F12 開発者ツールと [Fiddler ツール][Fiddler]を使用してアプリケーションをデバッグできます。 
 
 ## <a name="skills-youll-learn"></a>学習内容
 ここでは次の内容について学習します。
@@ -48,16 +49,16 @@ Azure SDK for .NET 2.5.1 以降をインストールして、開発環境を設�
 
 モバイル ブラウザー エミュレーターも必要です。 次のいずれでも動作します。
 
-* [Internet Explorer 11 F12 開発者ツール][EmulatorIE11]のブラウザー エミュレーター (このチュートリアルではすべてのスクリーンショットでこのエミュレーターを使用しています)。 Windows Phone 8、Windows Phone 7、Apple iPad のエージェント文字列のプリセットが搭載されています。
+* [Internet Explorer 11 F12 開発者ツール][EmulatorIE11]のブラウザー エミュレーター (このチュートリアルではすべてのモバイル ブラウザーのスクリーンショットでこのエミュレーターを使用しています)。 Windows Phone 8、Windows Phone 7、Apple iPad のエージェント文字列のプリセットが搭載されています。
 * [Google Chrome DevTools][EmulatorChrome] のブラウザー エミュレーター。 多数の Android デバイスに加え、Apple iPhone、Apple iPad、Amazon Kindle Fire 用のプリセットが含まれています。 タッチイベントのエミュレーションにも対応します
 * [Opera Mobile Emulator][EmulatorOpera]
 
 次のトピック用に、C\# のソース コードを使用した Visual Studio プロジェクトが用意されています。
 
-* [スタート プロジェクトのダウンロー][StarterProject]
+* [スタート プロジェクトのダウンロード][StarterProject]
 * [完成したプロジェクトのダウンロード][CompletedProject]
 
-## <a name="a-namebkmkdeploystarterprojectadeploy-the-starter-project-to-an-azure-web-app"></a><a name="bkmk_DeployStarterProject"></a>Azure Web アプリにスタート プロジェクトをデプロイする
+## <a name="bkmk_DeployStarterProject"></a>Azure Web アプリにスタート プロジェクトをデプロイする
 1. 会議一覧アプリケーションの[スタート プロジェクト][StarterProject]をダウンロードします。
 2. Windows エクスプローラーで、ダウンロードした ZIP ファイルを右クリックし、 *[プロパティ]*をクリックします。
 3. **[プロパティ]** ダイアログ ボックスで、**[ブロックの解除]** をクリックします  (ブロックを解除すると、Web からダウンロードした *.zip* ファイルを使おうとしたときに表示されるセキュリティに関する警告を回避できます)。
@@ -106,10 +107,10 @@ Azure SDK for .NET 2.5.1 以降をインストールして、開発環境を設�
 
 ASP.NET タグ ビューは、画面に合わせてズームされています。この処理は、ブートストラップによって自動的に実行されます。 ただし、モバイル ブラウザーに合わせて、このビューをさらに調整することもできます。 たとえば、**[Date]** 列は読みにくくなっています。 このチュートリアルでは、後ほど、*AllTags* ビューをモバイル対応に変更します。
 
-## <a name="a-namebkmkbootstrapa-bootstrap-css-framework"></a><a name="bkmk_bootstrap"></a> ブートストラップ CSS フレームワーク
+## <a name="bkmk_bootstrap"></a> ブートストラップ CSS フレームワーク
 MVC 5 の新機能の 1 つに、ブートストラップの標準サポートがあります。 ブートストラップによって、さまざまなビューの表示品質が瞬時に向上することは先ほど確認したとおりです。 たとえば、ブラウザーの幅が小さくなったときに、上部のナビゲーション バーを自動的に折りたたむことができます。 デスクトップ ブラウザーで、ブラウザー ウィンドウのサイズを変更して、ナビゲーション バーの外観と操作性がどのように変わるかを確認してください。 これが、ブートストラップに組み込まれたレスポンシブ Web デザインです。
 
-ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\_Start\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。 次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
+ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\_Start\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。 次のコードは、変更後の `RegisterBundles` メソッドにある最後の&2; つのステートメントを示しています。
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -134,7 +135,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 次のセクションでは、モバイル ブラウザー専用ビューを作成する方法について説明します。
 
-## <a name="a-namebkmkoverrideviewsa-override-the-views-layouts-and-partial-views"></a><a name="bkmk_overrideviews"></a> ビュー、レイアウト、および部分ビューをオーバーライドする
+## <a name="bkmk_overrideviews"></a> ビュー、レイアウト、および部分ビューをオーバーライドする
 モバイル ブラウザー全般、個々のモバイル ブラウザー、または特定のブラウザーの (レイアウトと部分ビューを含む) 任意のビューをオーバーライドできます。 モバイル専用ビューを用意するには、ビュー ファイルをコピーして *.Mobile* をファイル名に追加します。 たとえば、モバイル *インデックス* ビューを作成するには、*Views\\Home\\Index.cshtml* をコピーして名前を *Views\\Home\\Index.Mobile.cshtml* に変更します。
 
 このセクションでは、モバイル専用のレイアウト ファイルを作成します。
@@ -154,7 +155,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
     <h2>Tags (M)</h2>
 
-デスクトップ ブラウザー、および、モバイル ブラウザー エミュレーターを使用してタグ ページに移動します。 モバイル ブラウザー エミュレーターでは、先ほど変更した 2 か所 (*\_Layout.Mobile.cshtml* と *AllTags.Mobile.cshtml* の各タイトル) が変更されていることがわかります。
+デスクトップ ブラウザー、および、モバイル ブラウザー エミュレーターを使用してタグ ページに移動します。 モバイル ブラウザー エミュレーターでは、先ほど変更した&2; か所 (*\_Layout.Mobile.cshtml* と *AllTags.Mobile.cshtml* の各タイトル) が変更されていることがわかります。
 
 ![][AllTagsMobile_LayoutMobile]
 
@@ -162,7 +163,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllTagsMobile_LayoutMobileDesktop]
 
-## <a name="a-namebkmkbrowserviewsa-create-browser-specific-views"></a><a name="bkmk_browserviews"></a> ブラウザー専用のビューを作成する
+## <a name="bkmk_browserviews"></a> ブラウザー専用のビューを作成する
 モバイル専用のビューやデスクトップ専用のビューに加え、個別のブラウザーに対してビューを作成できます。 たとえば、iPhone ブラウザーや Android ブラウザー専用のビューを作成できます。 このセクションでは、iPhone ブラウザーと iPhone バージョンの *AllTags* ビュー用のレイアウトを作成します。
 
 *Global.asax* ファイルを開き、`Application_Start` メソッドの最終行として次のコードを追加します。
@@ -229,10 +230,10 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 このセクションでは、モバイル レイアウトとビューの作成方法および iPhone などの特定のデバイス専用のレイアウトとビューの作成方法を説明しました。
 しかし、ブートストラップ CSS フレームワークの最大の利点は、レスポンシブ レイアウトの使用により、単一のスタイルシートをデスクトップ、携帯電話、タブレットの各ブラウザーに適用し、一貫した外観と操作性を実現できることです。 次のセクションでは、ブートストラップを利用したモバイル対応ビューの作成方法を説明します。
 
-## <a name="a-namebkmkimprovespeakerslista-improve-the-speakers-list"></a><a name="bkmk_Improvespeakerslist"></a> スピーカー一覧を強化する
+## <a name="bkmk_Improvespeakerslist"></a> スピーカー一覧を強化する
 いま見たように、 *Speakers* ビューは読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。 このセクションでは、 *AllSpeakers* ビューをモバイル対応に設定し、大きくてタップしやすいリンクが表示され、スピーカーをすばやく見つけることのできる検索ボックスを表示します。
 
-ブートストラップの[リンクされたリスト グループ][リンクされたリスト グループ]のスタイリングを使用して、*Speakers* ビューを強化します。 *Views\\Home\\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
+ブートストラップの [リンクされたリスト グループ][linked list group]のスタイリングを使用して、*Speakers* ビューを強化します。 *Views\\Home\\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
 
      @model IEnumerable<string>
 
@@ -255,7 +256,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixed]
 
-ブートストラップの[リンクされたリスト グループ][リンクされたリスト グループ]のスタイリングを使用すると、各リンクのボックス全体がクリック可能になり、ユーザー エクスペリエンスが大幅に向上します。 デスクトップ ビューに切り替えると、外観と操作性が一貫していることがわかります。
+ブートストラップの[リンクされたリスト グループ][linked list group]のスタイリングを使用すると、各リンクのボックス全体がクリック可能になり、ユーザー エクスペリエンスが大幅に向上します。 デスクトップ ビューに切り替えると、外観と操作性が一貫していることがわかります。
 
 ![][AllSpeakersFixedDesktop]
 
@@ -326,7 +327,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixedSearchBySC]
 
-## <a name="a-namebkmkimprovetagsa-improve-the-tags-list"></a><a name="bkmk_improvetags"></a> タグ一覧を強化する
+## <a name="bkmk_improvetags"></a> タグ一覧を強化する
 *Speakers* ビューと同様に、*Tags* ビューも読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。 *Tags* ビューも *Speakers* ビューと同じように修正できます。上記のコードの変更を使用している場合、*Views\\Home\\AllTags.cshtml* で次の `Html.ActionLink` メソッド構文を使用することを除き、手順は同じです。
 
     @Html.ActionLink(tag, 
@@ -347,7 +348,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 > 
 > 
 
-## <a name="a-namebkmkimprovedatesa-improve-the-dates-list"></a><a name="bkmk_improvedates"></a> 日付一覧を強化する
+## <a name="bkmk_improvedates"></a> 日付一覧を強化する
 *Speakers* ビューおよび *Tags* ビューと同じように *Dates* ビューもモバイル デバイスで使いやすいように強化できます。上記のコードの変更を使用している場合、*Views\\Home\\AllDates.cshtml* で `Html.ActionLink` メソッドの構文を使用することを除き、手順は同じです。
 
     @Html.ActionLink(date.ToString("ddd, MMM dd, h:mm tt"), 
@@ -359,7 +360,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllDatesFixed]
 
-*Dates* ビューはさらに、date-time 値を date ごとに整理して表示品質を高めることができます。 これには、ブートストラップの[パネル][パネル] スタイリングを使用します。 *Views\\Home\\AllDates.cshtml* ファイルの内容を、次のコードに置き換えます。
+*Dates* ビューはさらに、date-time 値を date ごとに整理して表示品質を高めることができます。 これには、ブートストラップの[パネル][panels] スタイリングを使用します。 *Views\\Home\\AllDates.cshtml* ファイルの内容を、次のコードに置き換えます。
 
     @model IEnumerable<DateTime>
 
@@ -387,7 +388,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
         </div>
     }
 
-このコードでは、一覧の日付ごとに別個の `<div class="panel panel-primary">` タグを作成し、これまでと同じそれぞれのリンクに対して[リンクされたリスト グループ][リンクされたリスト グループ]を使用します。 このコードを実行すると、モバイル ブラウザーの表示は次のようになります。
+このコードでは、一覧の日付ごとに別個の `<div class="panel panel-primary">` タグを作成し、これまでと同じそれぞれのリンクに対して[リンクされたリスト グループ][linked list group]を使用します。 このコードを実行すると、モバイル ブラウザーの表示は次のようになります。
 
 ![][AllDatesFixed2]
 
@@ -395,7 +396,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllDatesFixed2Desktop]
 
-## <a name="a-namebkmkimprovesessionstablea-improve-the-sessionstable-view"></a><a name="bkmk_improvesessionstable"></a> SessionsTable ビューを強化する
+## <a name="bkmk_improvesessionstable"></a> SessionsTable ビューを強化する
 このセクションでは、 *SessionsTable* ビューがより適切にモバイルに対応するように調整します。 変更箇所は、これまでに作成した他のビューよりも広範囲にわたります。
 
 モバイル ブラウザーで **[Tags]** をタップし、検索ボックスに「`asp`」と入力します。
@@ -441,9 +442,9 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 このコードでは、次の 3 つの処理を行います。
 
-* ブートストラップの[カスタムのリンクされたリスト グループ][カスタムのリンクされたリスト グループ]を使用して、セッション情報を縦 1 列に並べ、すべての情報をモバイル ブラウザーで読み取れるようにします (list-group-item-text などのクラスを使用します)。
-* レイアウトに[グリッド システム][グリッド システム]を適用して、デスクトップ ブラウザーではセッション項目を横並びに表示し、モバイル ブラウザーでは縦に表示します (col-md-4 クラスを使用します)。
-* [レスポンシブ ユーティリティ][レスポンシブ ユーティリティ]を使用して、モバイル ブラウザーで表示したときに、セッション タグを非表示にします (hidden-xs クラスを使用します)。
+* ブートストラップの[カスタムのリンクされたリスト グループ][custom linked list group]を使用して、セッション情報を縦&1; 列に並べ、すべての情報をモバイル ブラウザーで読み取れるようにします (list-group-item-text などのクラスを使用します)。
+* レイアウトに[グリッド システム][grid system]を適用して、デスクトップ ブラウザーではセッション項目を横並びに表示し、モバイル ブラウザーでは縦に表示します (col-md-4 クラスを使用します)。
+* [レスポンシブ ユーティリティ][responsive utilities]を使用して、モバイル ブラウザーで表示したときに、セッション タグを非表示にします (hidden-xs クラスを使用します)。
 
 タイトル リンクをタップして、それぞれのセッションに移動することもできます。 次の図にはコードの変更が反映されています。
 
@@ -453,9 +454,9 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][SessionsTableFixedTagASP.NETDesktop]
 
-デスクトップ ブラウザーでは、タグが表示されています。 また、適用したブートストラップのグリッド システムによって、セッション項目が 2 列に表示されています。 ブラウザーを広げると、配置が 3 列表示に変わります。
+デスクトップ ブラウザーでは、タグが表示されています。 また、適用したブートストラップのグリッド システムによって、セッション項目が&2; 列に表示されています。 ブラウザーを広げると、配置が&3; 列表示に変わります。
 
-## <a name="a-namebkmkimprovesessionbycodea-improve-the-sessionbycode-view"></a><a name="bkmk_improvesessionbycode"></a> SessionByCode ビューを強化する
+## <a name="bkmk_improvesessionbycode"></a> SessionByCode ビューを強化する
 最後に、 *SessionByCode* ビューをモバイル対応に修正します。
 
 モバイル ブラウザーで **[Tags]** をタップし、検索ボックスに「`asp`」と入力します。
@@ -529,27 +530,27 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 * Razor コードでのブートストラップのスタイリングの適用
 
 ## <a name="see-also"></a>関連項目
-* [レスポンシブ Web デザインの 9 つの基本原則](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
+* [レスポンシブ Web デザインの&9; つの基本原則](http://blog.froont.com/9-basic-principles-of-responsive-web-design/)
 * [ブートストラップ][BootstrapSite]
-* [ブートストラップの公式ブログ][ブートストラップの公式ブログ]
-* [Tutorial Republic による Twitter Bootstrap Tutorial][Tutorial Republic による Twitter Bootstrap Tutorial]
+* [ブートストラップの公式ブログ][Official Bootstrap Blog]
+* [Tutorial Republic による Twitter Bootstrap Tutorial][Twitter Bootstrap Tutorial from Tutorial Republic]
 * [The Bootstrap Playground][The Bootstrap Playground]
-* [W3C 勧告: モバイル Web アプリケーションのベスト プラクティス][W3C 勧告: モバイル Web アプリケーションのベスト プラクティス]
-* [W3C のメディア クエリに関する勧告候補][W3C のメディア クエリに関する勧告候補]
+* [W3C 勧告: モバイル Web アプリケーションのベスト プラクティス][W3C Recommendation Mobile Web Application Best Practices]
+* [W3C のメディア クエリに関する勧告候補][W3C Candidate Recommendation for media queries]
 
 ## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- Internal Links -->
-[Azure Web アプリにスタート プロジェクトをデプロイする]: #bkmk_DeployStarterProject
-[ブートストラップ CSS フレームワーク]: #bkmk_bootstrap
-[ビュー、レイアウト、および部分ビューをオーバーライドする]: #bkmk_overrideviews
-[ブラウザー専用のビューを作成する]:#bkmk_browserviews
-[スピーカー一覧を強化する]: #bkmk_Improvespeakerslist
-[タグ一覧を強化する]: #bkmk_improvetags
-[日付一覧を強化する]: #bkmk_improvedates
-[SessionsTable ビューを強化する]: #bkmk_improvesessionstable
-[SessionByCode ビューを強化する]: #bkmk_improvesessionbycode
+[Deploy the starter project to an Azure web app]: #bkmk_DeployStarterProject
+[Bootstrap CSS Framework]: #bkmk_bootstrap
+[Override the Views, Layouts, and Partial Views]: #bkmk_overrideviews
+[Create Browser-Specific Views]:#bkmk_browserviews
+[Improve the Speakers List]: #bkmk_Improvespeakerslist
+[Improve the Tags List]: #bkmk_improvetags
+[Improve the Dates List]: #bkmk_improvedates
+[Improve the SessionsTable View]: #bkmk_improvesessionstable
+[Improve the SessionByCode View]: #bkmk_improvesessionbycode
 
 <!-- External Links -->
 [Visual Studio Express 2013]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
@@ -563,17 +564,17 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [CompletedProject]: http://go.microsoft.com/fwlink/?LinkID=398781&clcid=0x409
 [BootstrapSite]: http://getbootstrap.com/
 [WebPIAzureSdk23NetVS13]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/WebPIAzureSdk23NetVS13.png
-[リンクされたリスト グループ]: http://getbootstrap.com/components/#list-group-linked
+[linked list group]: http://getbootstrap.com/components/#list-group-linked
 [glyphicon]: http://getbootstrap.com/components/#glyphicons
-[パネル]: http://getbootstrap.com/components/#panels
-[カスタムのリンクされたリスト グループ]: http://getbootstrap.com/components/#list-group-custom-content
-[グリッド システム]: http://getbootstrap.com/css/#grid
-[レスポンシブ ユーティリティ]: http://getbootstrap.com/css/#responsive-utilities
-[ブートストラップの公式ブログ]: http://blog.getbootstrap.com/
-[Tutorial Republic による Twitter Bootstrap Tutorial]: http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
+[panels]: http://getbootstrap.com/components/#panels
+[custom linked list group]: http://getbootstrap.com/components/#list-group-custom-content
+[grid system]: http://getbootstrap.com/css/#grid
+[responsive utilities]: http://getbootstrap.com/css/#responsive-utilities
+[Official Bootstrap Blog]: http://blog.getbootstrap.com/
+[Twitter Bootstrap Tutorial from Tutorial Republic]: http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/
 [The Bootstrap Playground]: http://www.bootply.com/
-[W3C 勧告: モバイル Web アプリケーションのベスト プラクティス]: http://www.w3.org/TR/mwabp/
-[W3C のメディア クエリに関する勧告候補]: http://www.w3.org/TR/css3-mediaqueries/
+[W3C Recommendation Mobile Web Application Best Practices]: http://www.w3.org/TR/mwabp/
+[W3C Candidate Recommendation for media queries]: http://www.w3.org/TR/css3-mediaqueries/
 
 <!-- Images -->
 [DeployClickPublish]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/deploy-to-azure-website-1.png
@@ -608,10 +609,5 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [SessionsTableFixedTagASP.NETDesktop]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionsTable-Fixed-Tag-ASP.NET-Desktop.png
 [SessionByCode3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-3-644.png
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

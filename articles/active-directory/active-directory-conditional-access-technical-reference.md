@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 03/01/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
-ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
+ms.openlocfilehash: 450f3e001a0bc4a45fea4c4f0a81e676e9a80cc4
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -24,16 +24,19 @@ ms.lasthandoff: 02/17/2017
 ## <a name="services-enabled-with-conditional-access"></a>条件付きアクセスで有効になっているサービス
 条件付きアクセス規則は、さまざまな Azure AD アプリケーションの種類でサポートされています。 たとえば、次のような種類です。
 
-* Azure AD アプリケーション ギャラリーのフェデレーション アプリケーション
-* Azure AD アプリケーション ギャラリーのパスワード SSO アプリケーション
+
 * Azure アプリケーション プロキシに登録されているアプリケーション
-* Azure AD に登録されている、開発された基幹業務およびマルチ テナント アプリケーション
-* Visual Studio Online
 * Azure Remote App
+* Azure AD に登録されている、開発された基幹業務およびマルチ テナント アプリケーション
 * Dynamics CRM
+* Azure AD アプリケーション ギャラリーのフェデレーション アプリケーション
 * Microsoft Office 365 Yammer
 * Microsoft Office 365 Exchange Online
 * Microsoft Office 365 SharePoint Online (OneDrive for Business を含む)
+* Microsoft Power BI 
+* Azure AD アプリケーション ギャラリーのパスワード SSO アプリケーション
+* Visual Studio Online
+
 
 ## <a name="enable-access-rules"></a>アクセス規則の有効化
 各規則は、アプリケーションごとに有効または無効にすることができます。 規則が **オン** の場合、その規則は有効になり、アプリケーションにアクセスするユーザーに適用されます。 **オフ** の場合、規則は使用されず、ユーザーのサインイン エクスペリエンスに影響しません。

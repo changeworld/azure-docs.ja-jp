@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 13ae22245d105b32b9fc50d7dbc8a6d50ad4560a
-ms.openlocfilehash: 85fcc919b97d4cc06f89fc1ea5dc701ff61c2b27
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: f421ebdc81ce413d69f62a3b86563ab4a09b747a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -28,10 +29,18 @@ Azure の Linux 仮想マシン (VM) への SSH またはアプリケーショ�
 
 次のいずれかの方法を使用して VM を再デプロイできます。 VM を再デプロイする方法を&1; つだけ選択してください。
 
+- [Azure CLI 2.0](#azure-cli-20)
 - [Azure CLI 1.0](#azure-cli-10)
-- [Azure CLI 2.0 (プレビュー)](#azure-cli-20-preview)
 - [Azure ポータル](#using-azure-portal)
 
+## <a name="azure-cli-20"></a>Azure CLI 2.0
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+
+[az vm redeploy](/cli/azure/vm#redeploy) を使用して VM を再デプロイします。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
+
+```azurecli
+az vm redeploy --resource-group myResourceGroup --name myVM 
+```
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
 [最新の Azure CLI 1.0](../xplat-cli-install.md) をインストールし、Azure アカウントにログインし、Resource Manager モード (`azure config mode arm`) になっていることを確認します。
@@ -42,23 +51,9 @@ Azure の Linux 仮想マシン (VM) への SSH またはアプリケーショ�
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
 ```
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
-最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
-
-[az vm redeploy](/cli/azure/vm#redeploy) を使用して VM を再デプロイします。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
-
-```azurecli
-az vm redeploy --resource-group myResourceGroup --name myVM 
-```
-
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>次のステップ
 VM への接続に関する問題が発生した場合は、[SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページまたは「[SSH の詳細なトラブルシューティング手順](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 VM で実行されるアプリケーションにアクセスできない場合は、[アプリケーションの問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページもご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

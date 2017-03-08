@@ -4,7 +4,7 @@ description: "App Service 環境からバックエンド リソースに安全�
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2783e9c84684a52fb9b85074eabc490c24b6eb9a
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 0b6d3a47dc429c469b37c2c74f546cfeca580358
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースへの安全な接続
-## <a name="overview"></a>Overview
-App Service Environment は常に Azure Resource Manager 仮想ネットワーク**と**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]**のいずれか**に作成されるため、仮想ネットワーク経由でのみ、App Service Environment から他のバックエンド リソースへの送信接続を行うことができます。  また、2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲と RFC1918 アドレス空間のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました (RFC1918 アドレス空間とは プライベート アドレスのことです)。  
+## <a name="overview"></a>概要
+App Service 環境は常に Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**いずれか**に作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。  また、2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲と RFC1918 アドレス空間のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました (RFC1918 アドレス空間とは プライベート アドレスのことです)。  
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。  このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。  
 
@@ -30,7 +31,7 @@ App Service Environment は常に Azure Resource Manager 仮想ネットワー�
 
 これらのすべてのシナリオで、App Service 環境で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。  App Service 環境で実行されているアプリから同じ仮想ネットワーク内の (または同じ仮想ネットワークに接続されている) プライベート エンドポイントへの送信トラフィックは、仮想ネットワーク経由でのみ行われます。  プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
 
-App Service 環境から仮想ネットワーク内のエンドポイントへの送信トラフィックには、注意すべき点が 1 つあります。  App Service 環境から、App Service 環境と **同じ** サブネットにある仮想マシンのエンドポイントに到達することはできません。  App Service 環境が、App Service 環境専用として予約されているサブネットにデプロイされていれば、通常、これは問題にはなりません。
+App Service 環境から仮想ネットワーク内のエンドポイントへの送信トラフィックには、注意すべき点が&1; つあります。  App Service 環境から、App Service 環境と **同じ** サブネットにある仮想マシンのエンドポイントに到達することはできません。  App Service 環境が、App Service 環境専用として予約されているサブネットにデプロイされていれば、通常、これは問題にはなりません。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -46,7 +47,7 @@ SQL Server の構成には一般的に、ポート 1433 でリッスンしてい
 
 ![SQL Server エンドポイント][SqlServerEndpoint]
 
-このエンドポイントへのトラフィックを制限する方法は 2 つあります。
+このエンドポイントへのトラフィックを制限する方法は&2; つあります。
 
 * [ネットワーク アクセス制御リスト][NetworkAccessControlLists] (ネットワーク ACL)
 * [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
@@ -88,7 +89,7 @@ App Service 環境に関するすべての記事と作業方法は [App Service 
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
-App Service Environment への受信トラフィックを制御する方法の詳細については、[App Service Environment への受信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
+App Service 環境への着信トラフィックを制御する方法の詳細については、[App Service 環境への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
 
 Azure App Service プラットフォームの詳細については、「[Azure App Service とは][AzureAppService]」を参照してください。
 
@@ -111,9 +112,4 @@ Azure App Service プラットフォームの詳細については、「[Azure A
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

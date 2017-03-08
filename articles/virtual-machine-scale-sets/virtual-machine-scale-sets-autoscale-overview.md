@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: adegeo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
-ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
+ms.sourcegitcommit: 3f1fdddcf382026e25ac6bca0b835e560152be9f
+ms.openlocfilehash: 98b302c26867d2fb2ade296e6983306266fa6f63
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>自動スケールと仮想マシン スケール セット
+# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>自動スケールと仮想マシン スケール セットの使用方法
 スケール セット内の仮想マシンの自動スケールとは、パフォーマンス要件を満たすために、必要に応じてセット内の仮想マシンを作成または削除することを意味します。 作業の量が多くなると、アプリケーションで効率よく作業を実行できるようにするために、追加リソースが必要になる場合があります。
 
 自動スケールは、管理オーバーヘッドを軽減するための自動化されたプロセスです。 オーバーヘッドを減らすことで、システム パフォーマンスを継続的に監視する必要がなくなるだけでなく、リソースの管理方法を決める必要性もなくなります。 スケールはエラスティック プロセスです。 負荷が増加したときにはより多くのリソースを追加できます。一方、需要が減ったときには、リソースを削除してコストを軽減しながらも、適切なパフォーマンスを維持できます。
 
-スケール セットに対する自動スケールは、Azure Resource Manager テンプレート、Azure PowerShell、Azure CLI、Azure ポータルを使用して設定します。
+スケール セットに対する自動スケールは、Azure Resource Manager テンプレート、Azure PowerShell、Azure CLI、Azure Portal を使用して設定します。
 
 ## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用したスケール設定
 アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイするテンプレートを使用します。 このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
@@ -157,7 +159,7 @@ autoscaleSettings リソースは、スケール セット内の仮想マシン�
       }
     }
 
-この例では、自動スケール アクションを定義するために 2 つの規則を作成しています。 最初の規則でスケールアウト アクションを定義し、2 番目の規則でスケールイン アクションを定義します。 この 2 つの規則では次の値が指定されています。
+この例では、自動スケール アクションを定義するために&2; つの規則を作成しています。 最初の規則でスケールアウト アクションを定義し、2 番目の規則でスケールイン アクションを定義します。 この&2; つの規則では次の値が指定されています。
 
 * **metricName** - この値は、診断拡張機能の wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。 この例では、Thread Count カウンターが使用されます。  
 * **metricResourceUri** - この値は、仮想マシン スケール セットのリソース識別子です。 この識別子には、リソース グループの名前、リソースプロバイダーの名前、スケールするスケール セットの名前が含まれます。
@@ -170,7 +172,7 @@ autoscaleSettings リソースは、スケール セット内の仮想マシン�
 * **direction** – この値は、しきい値に達したときに実行するアクションを指定します。 指定できる値は Increase または Decrease です。
 * **type** – この値は、発生させるアクションの種類です。これは ChangeCount に設定する必要があります。
 * **value** – この値は、スケール セットに追加する仮想マシンの数またはスケール セットから削除する仮想マシンの数です。 1 以上の値を設定する必要があります。
-* **cooldown** – この値は、前回のスケール アクションから次回のスケール アクションまでの待機時間です。 この値は 1 分から 1 週間の範囲で指定する必要があります。
+* **cooldown** – この値は、前回のスケール アクションから次回のスケール アクションまでの待機時間です。 この値は&1; 分から&1; 週間の範囲で指定する必要があります。
 
 使用するパフォーマンス カウンターによっては、このテンプレート構成の一部の要素を別の方法で使用します。 上の例では、パフォーマンス カウンターを Thread Count に、スケールアウト アクションのしきい値を 650 に、スケールイン アクションのしきい値を 550 に設定しています。 %Processor Time などのカウンターを使用する場合は、スケール アクションを決定する CPU 使用率をしきい値として設定します。
 
@@ -182,7 +184,7 @@ autoscaleSettings リソースは、スケール セット内の仮想マシン�
 
 ![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountAfter.png)
 
-スケールアウト アクションがトリガーされ、セットの容量が 1 ずつ増加します。
+スケールアウト アクションがトリガーされ、セットの容量が&1; ずつ増加します。
 
     "sku": {
       "name": "Standard_A0",
@@ -202,8 +204,8 @@ PowerShell を使用して自動スケールを設定する例については、
 ## <a name="set-up-scaling-using-azure-cli"></a>Azure CLI を使用したスケール設定
 Azure CLI を使用して自動スケールを設定する例については、「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」をご覧ください。
 
-## <a name="set-up-scaling-using-the-azure-portal"></a>Azure ポータルを使用したスケール設定
-Azure ポータルを使用して自動スケーリングを設定する例については、「[Azure ポータルを使用して仮想マシン スケール セットを作成する](virtual-machine-scale-sets-portal-create.md)」をご覧ください。
+## <a name="set-up-scaling-using-the-azure-portal"></a>Azure Portal を使用したスケール設定
+Azure Portal を使用して自動スケーリングを設定する例については、「[Azure Portal を使用して仮想マシン スケール セットを作成する](virtual-machine-scale-sets-portal-create.md)」をご覧ください。
 
 ## <a name="investigate-scaling-actions"></a>スケール操作に関する情報
 * Azure Portal - 現在、ポータルを使用して入手できる情報の量は限られています。
@@ -220,10 +222,5 @@ Azure ポータルを使用して自動スケーリングを設定する例に�
 * 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法をご確認ください。
 * [高度な自動スケールのシナリオ](virtual-machine-scale-sets-advanced-autoscale.md)を紹介します。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

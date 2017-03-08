@@ -12,18 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/25/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: d94b3c59ba23220f7cb377ada8fa2231eaa9838b
+ms.sourcegitcommit: 672d1518e22c5ab5595fb5c7c708f584e80b68e9
+ms.openlocfilehash: c6117296c8bd12e3bb8f276709bc4d4c2aa81719
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
-## <a name="a-idassetsaassets-and-storage"></a><a id="assets"></a>資産とストレージ
+## <a id="assets"></a>資産とストレージ
 ### <a name="assets"></a>資産
 [資産](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルが資産にアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
@@ -67,7 +68,7 @@ BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB �
 > 
 > 
 
-### <a name="a-idlocatorsalocators"></a><a id="locators"></a>ロケーター
+### <a id="locators"></a>ロケーター
 [ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対&1; の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
@@ -82,7 +83,7 @@ Azure のストレージにアクセスする場合には必ず、ストレー�
 
 ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](https://docs.microsoft.com/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
-## <a name="a-idencodingaencoding"></a><a id="encoding"></a>エンコード
+## <a id="encoding"></a>エンコード
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
 Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。
@@ -112,13 +113,13 @@ Media Services においてライブ ストリーミング コンテンツの処
 
 各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを&1; つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
 
-### <a name="program"></a>プログラム
-ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://docs.microsoft.com/rest/api/media/operations/program)を使用して制御します。 プログラムはチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
+### <a name="program-event"></a>プログラム (イベント)
+ライブ ストリームでのセグメントの公開と保存は、[プログラム (イベント)](https://docs.microsoft.com/rest/api/media/operations/program) を使用して制御します。 プログラム (イベント) はチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。
 録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
 クライアントが現在のライブ位置からさかのぼってシークできる最長時間も ArchiveWindowLength によって決まります。 プログラムの放送は、指定された期間継続しますが、ArchiveWindowLength を過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
 
-各プログラムは資産に関連付けられています。 プログラムを公開するには、関連付けられた資産のロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
+各プログラム (イベント) は資産に関連付けられています。 プログラムを公開するには、関連付けられた資産のロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
 チャネルは、最大&3; つの同時実行プログラムをサポートするため、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
@@ -152,7 +153,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 [DRM での保護](media-services-protect-with-drm.md)
 
 ## <a name="delivering"></a>配信
-### <a name="a-iddynamicpackagingadynamic-packaging"></a><a id="dynamic_packaging"></a>動的パッケージ
+### <a id="dynamic_packaging"></a>動的パッケージ
 Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、 [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
@@ -223,10 +224,5 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

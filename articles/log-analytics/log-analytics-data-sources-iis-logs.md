@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 02/24/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 920b5feee8e94af5b98e8dffc127da4085bac597
+ms.sourcegitcommit: c6e2ecebf6cd1b246c155c158d12d4d83bd1feda
+ms.openlocfilehash: bda2da933accb769bae4c9b420ae330014fc2ba0
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -68,10 +69,10 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## <a name="log-searches-with-iis-logs"></a>IIS ログのログ検索
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| クエリ | Description |
 |:--- |:--- |
-| Type=IISLog |IIS ログのすべてのレコード。 |
-| Type=IISLog EventLevelName=error |重大度が「エラー」のすべての Windows イベント。 |
+| Type=W3CIISLog |IIS ログのすべてのレコード。 |
+| Type=W3CIISLog scStatus=500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
 | Type=W3CIISLog &#124; Measure count() by cIP |クライアントの IP アドレス別の IIS ログ エントリの数。 |
 | Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
 | Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
@@ -80,10 +81,5 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 * 分析のために別の [データ ソース](log-analytics-data-sources.md) を収集するように Log Analytics を構成します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * IIS ログで検出された重要な状態を事前に通知するように、Log Analytics のアラートを構成します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

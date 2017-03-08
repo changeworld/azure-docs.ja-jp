@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 45de2422e79215ecfbacf5bd15712eb780c49016
-ms.openlocfilehash: c0a99dadc1d588942ade14267bd45eff09080315
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: b28eec9a01c45468e0cc323514d9c2e91ec88bf5
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -25,14 +26,14 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI 2.0 (プレビュー): 詳細については、[Azure CLI 2.0 のインストールおよび構成](https://docs.microsoft.com/cli/azure/install-az-cli2)に関するページをご覧ください。
+* Azure CLI 2.0: 詳細については、[Azure CLI 2.0 のインストールおよび構成](https://docs.microsoft.com/cli/azure/install-az-cli2)に関するページをご覧ください。
 
 * Azure PowerShell: 詳細については、「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」を参照してください。
 
 > [!NOTE]
 > このドキュメントには、Azure CLI および Azure PowerShell の最新バージョンが必要です。 以前のバージョンを使用している場合は、コマンドが異なる場合があります。 適切に実行するためには、前のリンクを使用して最新バージョンをインストールします。
 
-## <a name="a-idwhatisawhat-is-azure-virtual-network"></a><a id="whatis"></a>Azure Virtual Network とは
+## <a id="whatis"></a>Azure Virtual Network とは
 
 [Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。 仮想ネットワークでは、次のことが可能になります。
 
@@ -257,7 +258,7 @@ __その他のすべてのリージョン__:
 
 ネットワーク セキュリティ グループの詳細については、 [ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事を参照してください。 Azure Virtual Network におけるルーティングの制御については、 [ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事を参照してください。
 
-## <a name="a-idtasksatasks-and-information"></a><a id="tasks"></a>タスクと情報
+## <a id="tasks"></a>タスクと情報
 
 このセクションでは、仮想ネットワークで HDInsight を使用する場合の一般的なタスクに関する情報と、必要になる可能性がある情報を記載しています。
 
@@ -354,7 +355,7 @@ SQL Server などの一部のサービスでは、着信ネットワーク接続
 
 HDInsight からサービスへのアクセスで問題が発生した場合は、サービスのドキュメントを参照して、ネットワーク アクセスが有効になっていることを確認してください。 ネットワーク アクセスを確認するもう&1; つの方法では、同じ仮想ネットワーク上に Azure の仮想マシンを作成し、クライアント ユーティリティを使用して、VM から仮想ネットワーク経由でサービスに接続できることを確認します。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 次の例は、Azure Virtual Network で HDInsight を使用する方法を示しています。
 
@@ -363,10 +364,5 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 * [HDInsight での Hadoop と Sqoop の使用](hdinsight-use-sqoop-mac-linux.md) - SQL Server と Sqoop を使用した仮想ネットワーク経由のデータ転送に関する情報を提供します。
 
 Azure のかそうネットワークの詳細については、 [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

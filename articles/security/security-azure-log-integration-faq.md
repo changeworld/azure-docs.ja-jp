@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
-ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
+ms.sourcegitcommit: d31d4c390d5e03c8b206284c3ae75defed2a38af
+ms.openlocfilehash: 83bedb42e8e685f5ea65e160ab7bfe128236ef82
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,7 +50,6 @@ ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
 ソースを追加しているときに、 **subscriptionid** を表示名に追加します。
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
-
 イベント XML には、次に示すサブスクリプション ID などのメタデータが含まれます。
 
 ![イベント XML][1]
@@ -104,13 +104,9 @@ Windows の Azure 診断 [(WAD)](../virtual-machines/virtual-machines-windows-ps
 
 変更後、ストレージ アカウントをチェックして、適切なイベントが収集されていることを確認します。
 
-Azure ログ統合に関する質問がある場合は、 [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして 'Log Integration' を選択します。
+
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

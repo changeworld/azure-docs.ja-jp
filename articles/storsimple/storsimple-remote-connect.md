@@ -4,7 +4,7 @@ description: "リモート管理用にデバイスを構成する方法と、HTT
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 923377aa-f451-4656-87de-5e95a34a6a2a
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64f6f245b86d9194a52e40ed226de9960a36f3f9
-ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
+ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
+ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-remotely-to-your-storsimple-device"></a>StorSimple デバイスにリモート接続する
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
+
 ## <a name="overview"></a>概要
 Windows PowerShell リモート処理を使用して StorSimple デバイスに接続できます。 この方法で接続すると、メニューは表示されません  (メニューは、デバイスのシリアル コンソールを使用して接続する場合のみ表示されます)。Windows PowerShell リモート処理を使用して、特定の実行空間に接続します。 表示言語を指定することもできます。 
 
@@ -52,7 +55,7 @@ Azure クラシック ポータルまたはシリアル コンソールを使用
 Azure クラシック ポータルで、次の手順に従って、HTTP 経由でのリモート管理を有効にします。
 
 #### <a name="to-enable-remote-management-through-the-azure-classic-portal"></a>Azure クラシック ポータル経由でリモート管理を有効にするには
-1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
+1. デバイスに対応する **[デバイス]** > **[構成]** を選択します。
 2. 下へスクロールして **[リモート管理]** セクションに移動します。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTP を使用した接続を選択できるようになります。 (既定の設定は HTTPS 経由での接続です)。HTTP が選択されていることを確認します。
@@ -127,7 +130,7 @@ Azure クラシック ポータルまたはシリアル コンソールを使用
 Azure クラシック ポータルで、次の手順に従って、HTTPS 経由でのリモート管理を有効にします。
 
 #### <a name="to-enable-remote-management-over-https-from-the-azure-classic-portal"></a>Azure クラシック ポータル経由で HTTPS 経由でリモート管理を有効にするには
-1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
+1. デバイスに対応する **[デバイス]** > **[構成]** を選択します。
 2. 下へスクロールして **[リモート管理]** セクションに移動します。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTPS を使用した接続を選択できるようになります  (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。 
@@ -233,10 +236,5 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 ## <a name="next-steps"></a>次のステップ
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-windows-powershell-administration.md)の詳細を確認する。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

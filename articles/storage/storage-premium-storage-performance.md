@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: d72a191cceaa90f9dae69b5c2698fae1a9fb95a7
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 69fbac5acdc812917d1e022d19768a8d72955783
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: d72a191cceaa90f9dae69b5c2698fae1a9fb95a7
 
 Premium Storage で実行されるワークロードは高パフォーマンスに依存するため、Premium Storage 専用のガイドラインを用意しました。 必要に応じて例も示しています。 これらのガイドラインの一部は、Standard Storage ディスクを使用する IaaS VM で実行されるアプリケーションにも適用できます。
 
-Premium Storage の知識がない場合は、作業を始める前に、まず、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」と、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md#premium-storage-accounts)」をお読みください。
+Premium Storage の知識がない場合は、作業を始める前にまず、「[高パフォーマンスの Premium Storage および Azure VM の非管理対象ディスクと管理ディスク](storage-premium-storage.md)」と「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をお読みください。
 
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 アプリケーションがユーザー要求を処理する速度、アプリケーションが要求ごとに処理するデータの量、アプリケーションが一定時間内に処理する要求の数、要求の送信後、応答が返されるまでのユーザーの待機時間などのパフォーマンス指標を使用して、アプリケーションが問題なく実行されているかどうかを評価します。 これらのパフォーマンス指標は、IOPS、スループットまたは帯域幅、待機時間という専門用語で表されます。
@@ -593,9 +594,4 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
 * [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

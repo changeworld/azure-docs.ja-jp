@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -65,28 +66,28 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 ドメインに参加している仮想マシンに Active Directory 管理ツールをインストールするには、次の手順を実行します。 [リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
 
 1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。 タスク 1 で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
-   
+
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 2. クラシック ポータルでは、仮想マシンへの接続に使用される ".rdp" という拡張子のファイルを開くか保存するように求められます。 ダウンロードが完了したら、ファイルをクリックして開きます。
 3. ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。
 4. スタート画面で、 **[サーバー マネージャー]**を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
-   
+
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
-   
+
     ![ページを開始する前に](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 6. **[インストールの種類]** ページで、**[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** をクリックします。
-   
+
     ![インストールの種類のページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 7. **[サーバーの選択]** ページで、サーバー プールから現在の仮想マシンを選択して **[次へ]** をクリックします。
-   
+
     ![サーバー選択ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 8. **[サーバーの役割]** ページで、**[次へ]** をクリックします。 サーバーに役割をインストールしないため、このページはスキップします。
 9. **[機能]** ページで、**[リモート サーバー管理ツール]** ノードをクリックして展開し、次に **[役割管理ツール]** ノードをクリックして展開します。 役割管理ツールの一覧から、 **[AD DS および AD LDS ツール]** 機能を選択します。
-   
+
     ![機能ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
 10. **[確認]** ページで、**[インストール]** をクリックして仮想マシンに AD および AD LDS ツールの機能をインストールします。 機能のインストールが正常に完了したら、**[閉じる]** をクリックして **[役割と機能の追加]** ウィザードを終了します。
-    
+
     ![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>タスク 3 - 管理対象ドメインへの接続と確認
@@ -94,23 +95,23 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 
 > [!NOTE]
 > 管理対象ドメインを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
-> 
-> 
+>
+>
 
 1. スタート画面で **[管理ツール]**をクリックします。 仮想マシンにインストールされた AD 管理ツールを確認できます。
-   
+
     ![Administrative Tools installed on server](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. **[Active Directory 管理センター]**をクリックします。
-   
+
     ![[Active Directory 管理センター]](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. ドメインを確認するには、左ウィンドウのドメイン名 ("contoso100.com" など) をクリックします。 'AADDC Computers' と 'AADDC Users' という名前の 2 つのコンテナーがあります。
-   
+
     ![ADAC: ドメインの表示](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
 4. **AADDC Users** というコンテナーをクリックすると、管理対象ドメインに属しているすべてのユーザーとグループが表示されます。 ユーザー アカウントと Azure AD テナントからのグループがこのコンテナー内にあります。 この例では、"bob" という名前のユーザーのユーザー アカウントおよび "AAD DC Administrators" という名前のグループがこのコンテナーで利用できます。
-   
+
     ![ADAC: ドメイン ユーザー](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
 5. **AADDC Computers** という名前のコンテナーをクリックすると、この管理対象ドメインに参加しているコンピューターが表示されます。 ドメインに参加している現在の仮想マシンのエントリが表示されます。 Azure AD Domain Services の管理対象ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この "AADDC Computers" コンテナーに格納されます。
-   
+
     ![ADAC: ドメインに参加しているコンピューター](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
 
 <br>
@@ -119,10 +120,4 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [リモート サーバー管理ツールのデプロイ](https://technet.microsoft.com/library/hh831501.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

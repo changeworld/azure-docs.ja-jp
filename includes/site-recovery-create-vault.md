@@ -1,4 +1,4 @@
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+
 1. サインインして [[Azure Portal]](https://portal.azure.com) > **[Site Recovery]** の順に移動します。
 2. **[新規]** > **[管理]** > の順にクリックします。
 3. **[名前]**に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、いずれかを選択します。

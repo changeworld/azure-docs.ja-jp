@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 83881cda043fc9f1ef48281e8160a882c1f9bced
-ms.openlocfilehash: 5aa7353e681a16d2032fecaf8a2de50e241ac4ad
+ms.sourcegitcommit: f76277ab93c58098648ee65ea5aba0757495da68
+ms.openlocfilehash: 1222a670a1bf530871a19c79b7da441c03f8df51
 ms.lasthandoff: 02/22/2017
 
 
@@ -29,8 +29,8 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="a-idissuesacurrently-known-issues"></a><a id="issues"></a>現在の既知の問題
-### <a name="a-idgeneralissuesamedia-services-general-issues"></a><a id="general_issues"></a>Media Services の全般的な問題
+## <a id="issues"></a>現在の既知の問題
+### <a id="general_issues"></a>Media Services の全般的な問題
 | 問題 | Description |
 | --- | --- |
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/22/2017
 | Azure Media Services .NET SDK オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しません。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。 |
 | エンコード ジョブが、メッセージ文字列 "段階: DownloadFile. コード: System.NullReferenceException" で失敗します。 |一般的なエンコード ワークフローでは、入力ビデオ ファイルを入力資産にアップロードし、その入力資産の&1; つまたは複数のエンコード ジョブを送信します。その入力資産がさらに変更されることはありません。 ただし、(たとえば、資産内のファイルの追加/削除/名前変更のために) 入力資産を変更した場合は、これ以降のジョブが DownloadFile エラーで失敗する可能性があります。 これを回避するには、入力資産を削除して、新しい資産に入力ファイルを再度アップロードしてください。 |
 
-## <a name="a-idrestversionhistoryarest-api-version-history"></a><a id="rest_version_history"></a>REST API バージョン履歴
+## <a id="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
 
 ## <a name="febuary-2017-release"></a>2017 年 2 月のリリース
@@ -59,7 +59,7 @@ Microsoft Azure Media Services (AMS) では、**ストリーミング エンド�
 
 Azure Media Services を使用して、サービスのテレメトリ/メトリック データにアクセスできるようになりました。 現在のバージョンの AMS では、ライブ チャネル エンティティ、ストリーミング ポイント エンティ、およびライブ アーカイブ エンティティのテレメトリ データを取得できます。 詳細については、 [こちらの](media-services-telemetry-overview.md) トピックを参照してください。
 
-## <a name="a-idjulychanges16ajuly-2016-release"></a><a id="july_changes16"></a>2016 年 7 月のリリース
+## <a id="july_changes16"></a>2016 年 7 月のリリース
 ### <a name="updates-to-manifest-file-ism-generated-by-encoding-tasks"></a>エンコード タスクによって生成されたマニフェスト ファイル (* ISM) への更新
 エンコード タスクが Media Encoder Standard または Azure Media Encoder に送信されると、そのエンコード タスクによって、 [ストリーミング マニフェスト ファイル](media-services-deliver-content-overview.md) (* .ism) が出力アセットに生成されます。 最新のサービス リリースでは、このストリーミング マニフェスト ファイルの構文が更新されました。
 
@@ -81,14 +81,14 @@ Azure Media Services を使用して、サービスのテレメトリ/メトリ�
 ### <a name="known-issues"></a>既知の問題
 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 詳細については、 [こちらの](media-services-deliver-content-overview.md#known-issues) セクションを参照してください。
 
-## <a name="a-idaprchanges16aapril-2016-release"></a><a id="apr_changes16"></a>2016 年 4 月のリリース
+## <a id="apr_changes16"></a>2016 年 4 月のリリース
 ### <a name="azure-media-analytics"></a>Azure Media Analytics
 Azure Media Services に強力なビデオ インテリジェンスとして Azure Media Analytics が導入されました。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」をご覧ください。
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (プレビュー)
 Azure Media Services では、Apple FairPlay を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化できるようになりました。 また、AMS ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信することもできます。 詳細については、「 [Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする ](media-services-protect-hls-with-fairplay.md)」をご覧ください。
 
-## <a name="a-idfebchanges16afebruary-2016-release"></a><a id="feb_changes16"></a>2016 年 2 月のリリース
+## <a id="feb_changes16"></a>2016 年 2 月のリリース
 最新バージョンの Azure Media Services SDK for .NET (3.5.3) には、Widevine 関連のバグ修正が含まれています。 Widevine で暗号化された複数の資産で AssetDeliveryPolicy を再利用できないという問題がありました。 このバグ修正の一環として、 **WidevineBaseLicenseAcquisitionUrl**プロパティが SDK に追加されました。
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
@@ -98,16 +98,16 @@ Azure Media Services では、Apple FairPlay を使用して HTTP ライブ ス�
 
     };
 
-## <a name="a-idjanchanges16ajanuary-2016-release"></a><a id="jan_changes_16"></a>2016 年 1 月のリリース
+## <a id="jan_changes_16"></a>2016 年 1 月のリリース
 エンコード予約ユニットは、エンコーダー名と混同しないように名前を変更されました。
 
 Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は Azure ポータル (と請求書) に S1 というラベルが表示され、Standard と Premium をご利用の場合はそれぞれ S2 と S3 が表示されます。 
 
-## <a name="a-iddecchanges15adecember-2015-release"></a><a id="dec_changes_15"></a>2015 年 12 月のリリース
+## <a id="dec_changes_15"></a>2015 年 12 月のリリース
 
 ### <a name="azure-media-encoder-deprecation-announcement"></a>Azure Media Encoder 廃止のお知らせ
 
-Azure Media Encoder は、1 年以内に廃止される予定です。 [Media Encoder Standard](media-services-media-encoder-standard-formats.md) エンコーダーの使用を開始してください。
+Azure Media Encoder は Media Encoder Standard のリリースから 12 か月ほどが経った時点で廃止される予定です。
 
 ### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) パッケージの新しいリリースを公開しました。これには Microsoft Azure Media Services の更新プログラムと新機能が含まれています。 具体的には、Azure Media Services SDK for PHP で、最新の[コンテンツ保護](media-services-content-protection-overview.md)機能である AES と DRM (PlayReady と Widevine) による動的暗号化 (トークン制限あり/なし) がサポートされるようになりました。 また、[エンコーディング ユニット](media-services-dotnet-encoding-units.md)のスケーリングにも対応しています。
@@ -120,18 +120,18 @@ Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for
   * **vodworkflow_aes.php**: これは PHP ファイルであり、PlayReady 動的暗号化とライセンス配信サービスの使用方法を示します。 [この](media-services-protect-with-drm.md) 記事で説明されている .NET サンプルに基づきます。
   * **scale_encoding_units.php**: これはエンコード予約ユニットのスケーリング方法を示す PHP ファイルです。
 
-## <a name="a-idnovchanges15anovember-2015-release"></a><a id="nov_changes_15"></a>2015 年 11 月のリリース
+## <a id="nov_changes_15"></a>2015 年 11 月のリリース
 Azure Media Services は、クラウドで Google Widevine ライセンス配信サービスを提供するようになりました。 詳しくは、 [こちらの案内ブログ](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)をお読みください。 また、[こちらのチュートリアル](media-services-protect-with-drm.md)および [GitHub リポジトリ](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)もご覧ください。 
 
 Azure Media Services によって提供される Widevine ライセンス配信サービスはプレビュー期間中であることに注意してください。 詳細については、 [この投稿](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
 
-## <a name="a-idoctchanges15aoctober-2015-release"></a><a id="oct_changes_15"></a>2015 年 10 月のリリース
+## <a id="oct_changes_15"></a>2015 年 10 月のリリース
 Azure Media Services (AMS) は、現在、ブラジル南部、インド西部、インド南部およびインド中部のデータ センターで利用可能です。 Azure Portal を使用して [Media Services アカウントを作成](media-services-portal-create-account.md)し、[ここ](https://azure.microsoft.com/documentation/services/media-services/)で示すさまざまなタスクを実行できるようになりました。 ただし、これらのデータ センターでは Live Encoding は有効ではありません。 また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
 
 * ブラジル南部: Standard および Basic エンコード予約ユニットのみ使用可能
 * インド西部、インド南部およびインド中部: Basic エンコード予約ユニットのみ使用可能
 
-## <a name="a-idseptemberchanges15aseptember-2015-release"></a><a id="september_changes_15"></a>2015 年 9 月のリリース
+## <a id="september_changes_15"></a>2015 年 9 月のリリース
 * AMS で、Widevine Modular DRM テクノロジを使用してビデオ オン デマンド (VOD) とライブ ストリーミングの両方を保護できるようになりました。 次の配信サービス パートナーを通して Widevine ライセンスを提供できます: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)をご覧ください。
   
     [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。  
@@ -147,7 +147,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
   
     詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) をご覧ください。
 
-## <a name="a-idaugustchanges15aaugust-2015-release"></a><a id="august_changes_15"></a>2015 年 8 月のリリース
+## <a id="august_changes_15"></a>2015 年 8 月のリリース
 * Azure Media Services SDK for Java V0.8.0 リリースと新しいサンプルをご利用いただけるようになりました。 詳細については、次を参照してください。
   
   * [ブログの投稿](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
@@ -155,7 +155,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 * 複数のオーディオ ストリームのサポートを含む Azure Media Player の更新。 詳細については、次を参照してください。
   * [ブログの投稿](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)
 
-## <a name="a-idjulychanges15ajuly-2015-release"></a><a id="july_changes_15"></a>2015 年 7 月のリリース
+## <a id="july_changes_15"></a>2015 年 7 月のリリース
 * Media Encoder Standard の一般公開の発表。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
   
     Media Encoder Standard では、 [このセクション](http://go.microsoft.com/fwlink/?LinkId=618336) で説明されているプリセットを使用しています。 4k エンコードのプリセットを使用する場合は、 **Premium** 予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](media-services-scale-media-processing-overview.md)」を参照してください。
@@ -170,7 +170,7 @@ Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしまし�
 * チャネルの再試行ポリシーに関連するバグが修正されました。
 * **Media Encoder Premium Workflow** が有効になりました。
 
-## <a name="a-idjunechanges15ajune-2015-release"></a><a id="june_changes_15"></a>2015 年 6 月のリリース
+## <a id="june_changes_15"></a>2015 年 6 月のリリース
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK の更新
 Azure Media Services .NET SDK が 3.3.0.0 にバージョン アップされました。 今回のリリースでは、次の機能が追加されました。  
 
@@ -181,14 +181,14 @@ OpenID Connect 検出ドキュメントを公開する ID プロバイダー (�
 
 詳細については、 [Azure Media Services での OpenID Connect Discovery 仕様の Json Web キーを使用した JWT トークン認証の操作に関するページ](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)を参照してください。
 
-## <a name="a-idmaychanges15amay-2015-release"></a><a id="may_changes_15"></a>2015 年 5 月のリリース
+## <a id="may_changes_15"></a>2015 年 5 月のリリース
 以下の新しい機能が発表されています。
 
 * [Media Services による Live Encoding のプレビュー](media-services-manage-live-encoder-enabled-channels.md)
 * [動的マニフェスト](media-services-dynamic-manifest-overview.md)
 * [Azure Media Hyperlapse メディア プロセッサのプレビュー](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
-## <a name="a-idaprilchanges15aapril-2015-release"></a><a id="april_changes_15"></a>2015 年 4 月のリリース
+## <a id="april_changes_15"></a>2015 年 4 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新
 * [Azure Media Player の発表](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)。
 * Media Services REST 2.10 以降、RTMP プロトコルをインジェストするように構成されたチャネルは、プライマリとセカンダリのインジェスト URL を使用して作成されます。 詳細については、 [チャネル入力 (インジェスト) の構成](media-services-live-streaming-with-onprem-encoders.md#channel_input)
@@ -208,16 +208,16 @@ Azure Media Services .NET SDK が 3.2.0.0 にバージョン アップしまし�
 * ファイルのアップロード/ダウンロードに関連するバグの修正。
 * **MediaServicesCredentials** クラスが認証するためのプライマリとセカンダリのアクセス制御エンドポイントを受け入れるようになりました。
 
-## <a name="a-idmarchchanges15amarch-2015-release"></a><a id="march_changes_15"></a>2015 年 3 月のリリース
+## <a id="march_changes_15"></a>2015 年 3 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新
 * Media Services で、シームレスな Azure CDN 統合が提供されるようになりました。 統合をサポートするために、**CdnEnabled** プロパティが **StreamingEndpoint** に追加されました。  **CdnEnabled** はバージョン 2.9 以降の REST API で使用できます (詳細については「 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)」をご覧ください)。  **CdnEnabled** はバージョン 3.1.0.2 以降の .NET SDK で使用できます (詳細については、[StreamingEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx) に関するページをご覧ください)。
 * **Media Encoder Premium Workflow**の発表。 詳細については、 [Azure Media Services へのプレミアム エンコードの導入に関するページ](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)をご覧ください。
 
-## <a name="a-idfebruarychanges15afebruary-2015-release"></a><a id="february_changes_15"></a>2015 年 2 月のリリース
+## <a id="february_changes_15"></a>2015 年 2 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新
 Media Services REST API は、現在、バージョン 2.9 です。 このバージョンより、Azure CDN をストリーミング エンドポイントと統合できます。 詳細については、「 [StreamingEndpoint」](https://msdn.microsoft.com/library/dn783468.aspx)をご覧ください。
 
-## <a name="a-idjanuarychanges15ajanuary-2015-release"></a><a id="january_changes_15"></a>2015 年 1 月のリリース
+## <a id="january_changes_15"></a>2015 年 1 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新
 動的な暗号化による Content Protection の General Availability (GA) についてのお知らせ。 詳細については、 [Azure Media Services での DRM テクノロジの一般的な可用性によるストリーミング セキュリティの強化に関するページ](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)をご覧ください。
 
@@ -229,7 +229,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
     TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 
-## <a name="a-iddecemberchanges14adecember-2014-release"></a><a id="december_changes_14"></a>2014 年 12 月のリリース
+## <a id="december_changes_14"></a>2014 年 12 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新
 * Azure Indexer メディア プロセッサに、いくつかの更新と新機能が追加されています。 詳細については、「 [Azure Media Indexer Version 1.1.6.7 のリリース ノート](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)」をご覧ください。
 * エンコード占有ユニットを更新できる新しい REST API が追加されました ( [EncodingReservedUnitType](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype))。
@@ -245,16 +245,16 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 * トークン認証に JWT (JSON Web Token) が新たにサポートされています。 詳細については、「[JWT token Authentication in Azure Media Services and Dynamic Encryption (Azure Media Services と動的暗号化における JWT トークン認証)](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」をご覧ください。
 * PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
-## <a name="a-idnovemberchanges14anovember-2014-release"></a><a id="november_changes_14"></a>2014 年 11 月のリリース
+## <a id="november_changes_14"></a>2014 年 11 月のリリース
 * ライブ スムーズ ストリーミング (FMP4) コンテンツの SSL 接続での取り込みに Media Services が対応しました。 SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。  なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  ライブ ストリーミングの詳細については、[Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]に関するページをご覧ください。
 * RTMP ライブ ストリームについては現在、SSL 接続で取り込むことはできません。
 * SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、[新しいストリーミング エンドポイントを作成](media-services-portal-manage-streaming-endpoints.md)してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
 
-## <a name="a-idoctoberchanges14aoctober-2014-release"></a><a id="october_changes_14"></a>2014 年 10 月のリリース
-### <a name="a-idnewencoderreleaseamedia-services-encoder-release"></a><a id="new_encoder_release"></a>Media Services Encoder のリリース
+## <a id="october_changes_14"></a>2014 年 10 月のリリース
+### <a id="new_encoder_release"></a>Media Services Encoder のリリース
 Media Services Azure Media Encoder の新規リリースが発表されています。 最新の Azure Media Encoder では、出力 GB 分のみ課金されます。それ以外は、新しいエンコーダーの機能は前のエンコーダーと互換性があります。 詳細については、[Media Services の価格詳細]のページをご覧ください。
 
-### <a name="a-idoctsdkamedia-services-net-sdk"></a><a id="oct_sdk"></a>Media Services .NET SDK
+### <a id="oct_sdk"></a>Media Services .NET SDK
 Media Services SDK for .NET Extensions は、現在、バージョン 2.0.0.3 です。
 
 Media Services SDK for .NET は、現在、バージョン 3.0.0.8 です。
@@ -270,12 +270,12 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.8 です。
 ### <a name="new-github-repository-to-host-media-services-samples"></a>Media Services のサンプルをホストする新しい GitHub リポジトリ
 サンプルは、 [Azure Media Services のサンプル GitHub リポジトリ](https://github.com/Azure/Azure-Media-Services-Samples)に置かれています。
 
-## <a name="a-idseptemberchanges14aseptember-2014-release"></a><a id="september_changes_14"></a>2014 年 9 月のリリース
+## <a id="september_changes_14"></a>2014 年 9 月のリリース
 Media Services REST メタデータは、現在、バージョン 2.7 です。 最新の REST 更新プログラムの詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
 
 Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
-### <a name="a-idsept14breakingchangesabreaking-changes"></a><a id="sept_14_breaking_changes"></a>互換性に影響する変更
+### <a id="sept_14_breaking_changes"></a>互換性に影響する変更
 * **オリジン** の名前が [ストリーミング エンドポイント]に変更されました。
 * **Azure ポータル**で MP4 ファイルをエンコードし、その後、発行する際の既定の動作が変更されました。
 
@@ -286,7 +286,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * ストリーミング ユニットを有効にし、動的パッケージを使用して、.mp4 資産を Smooth Streaming プレゼンテーションとしてストリーミングします。
 * .mp4 をダウンロード (または、漸次的に再生) するための SAS url を作成します。 SAS ロケーターの作成方法の詳細については、「 [コンテンツの配信]」を参照してください。
 
-### <a name="a-idsept14gachangesanew-featuresscenarios-that-are-part-of-ga-release"></a><a id="sept_14_GA_changes"></a>GA リリースに含まれる新機能/シナリオ
+### <a id="sept_14_GA_changes"></a>GA リリースに含まれる新機能/シナリオ
 * **インデクサー メディア プロセッサ**。 詳細については、「 [Azure Media Indexer によるメディア ファイルのインデックス作成]」を参照してください。
 * 現在、 [ストリーミング エンドポイント] エンティティを使用して、カスタム ドメイン (ホスト) 名を追加できます。
   
@@ -300,7 +300,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
     詳細については、「 **StreamingEndpoint** 」の [ストリーミング エンドポイント] プロパティを参照してください。
 
-### <a name="a-idsept14previewchangesanew-featuresscenarios-that-are-part-of-the-public-preview-release"></a><a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
+### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
 * ライブ ストリーミングのプレビュー。 詳細については、「 [Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]」を参照してください。
 * キー配信サービス。 詳細については、「 [AES-128 動的暗号化とキー配信サービスの使用]」を参照してください。
 * AES 動的暗号化。 詳細については、「 [AES-128 動的暗号化とキー配信サービスの使用]」を参照してください。
@@ -309,22 +309,22 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * Media Services PlayReady ライセンス テンプレート。 詳細については、「 [Media Services PlayReady ライセンス テンプレートの概要]」を参照してください。
 * ストリーミング ストレージ暗号化資産。 詳細については、「 [Streaming Storage Encrypted Content (ストリーミング ストレージ暗号化コンテンツ)]」を参照してください。
 
-## <a name="a-idaugustchanges14aaugust-2014-release"></a><a id="august_changes_14"></a>2014 年 8 月のリリース
+## <a id="august_changes_14"></a>2014 年 8 月のリリース
 資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。 このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。 このリリースから、エンコーダーは入力資産に関するメタデータも生成します。 詳細については、「[Input Metadata (入力のメタデータ)]」および「[Output Metadata (出力のメタデータ)]」を参照してください。
 
-## <a name="a-idjulychanges14ajuly-2014-release"></a><a id="july_changes_14"></a>2014 年 7 月のリリース
+## <a id="july_changes_14"></a>2014 年 7 月のリリース
 Azure Media Services パッケージおよび暗号化機能で次のバグが修正されました。
 
 * ライブ アーカイブ資産を HTTP ライブ ストリーミングに変換するとオーディオしか再生されない – これは修正され、現在はオーディオとビデオの両方が再生されます。
 * 資産を HTTP ライブ ストリーミングおよび AES 128 ビット エンベロープ暗号化にパッケージ化すると、パッケージ化されたストリームが Android デバイス上で再生されない – このバグは修正され、パッケージ化されたストリームは HTTP ライブ ストリーミングをサポートする Android デバイス上で再生されます。
 
-## <a name="a-idmaychanges14amay-2014-release"></a><a id="may_changes_14"></a>2014 年 5 月のリリース
-### <a name="a-idmay14changesageneral-media-services-updates"></a><a id="may_14_changes"></a>Media Services の全般的な更新
+## <a id="may_changes_14"></a>2014 年 5 月のリリース
+### <a id="may_14_changes"></a>Media Services の全般的な更新
 現在は、[ダイナミック パッケージ]を使用して、HTTP ライブ ストリーミング (HLS) v3 をストリーミングできます。 HLS v3 をストリーミングするには、次のフォーマットをオリジン ロケーター パスに追加します。*.ism/manifest(format=m3u8-aapl-v3)。 詳細については、「[Nick Drouin's Blog (Nick Drouin のブログ)]」を参照してください。
 
 現在、動的パッケージは、PlayReady によるスムーズ ストリーミング静的暗号化に基づく、PlayReady による HLS (v3 と v4) 暗号化の配信もサポートしています。 PlayReady によるスムーズ ストリーミングの暗号化方法の詳細については、「 [PlayReady によるスムーズ ストリーミングおよび MPEG DASH の保護]」を参照してください。
 
-### <a name="a-namemay14donnetchangesamedia-services-net-sdk-updates"></a><a name="may_14_donnet_changes"></a>Media Services .NET SDK の更新
+### <a name="may_14_donnet_changes"></a>Media Services .NET SDK の更新
 Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられました。
 
 * メディア資産のアップロードおよびダウンロードの迅速化と復元性の向上。
@@ -335,16 +335,16 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 詳細については、「 [RMedia Services SDK for .NET の再試行ロジック]」を参照してください。
 
-## <a name="a-idaprilchanges14aapril-2014-encoder-release"></a><a id="april_changes_14"></a>2014 年 4 月のエンコーダーのリリース
-### <a name="a-nameapril14enocerchangesamedia-services-encoder-updates"></a><a name="april_14_enocer_changes"></a>Media Services Encoder の更新
+## <a id="april_changes_14"></a>2014 年 4 月のエンコーダーのリリース
+### <a name="april_14_enocer_changes"></a>Media Services Encoder の更新
 * Grass Valley HQ/HQX コーデックを使用してビデオをすばやく圧縮する Grass Valley EDIUS 非線形エディターを使用して作成された AVI ファイルの取り込みがサポートされるようになりました。 詳細については、「 [Grass Valley Announces EDIUS 7 Streaming Through the Cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]」を参照してください。
 * Media Encoder によって生成されたファイルの名前付け規則を指定できるようになりました。 詳細については、「 [Media Services Encoder の出力ファイル名の制御]」を参照してください。
 * ビデオ オーバーレイおよびオーディオ オーバーレイのサポートが追加されました。 詳細については、「 [オーバーレイの作成]」を参照してください。
 * 複数のビデオ セグメントを結合できるようになりました。 詳細については、「 [ビデオのセグメントの結合]」を参照してください。
 * オーディオが MPEG-1 Audio layer 3 (MP3) でエンコードされるという、MP4 のコード変換に関するバグが修正されました。
 
-## <a name="a-idjanfebchanges14ajanuaryfebruary-2014-releases"></a><a id="jan_feb_changes_14"></a>2014 年 1 月と 2 月のリリース
-### <a name="a-namejanfab14donnetchangesaazure-media-services-net-sdk-3001-3002-and-3003"></a><a name="jan_fab_14_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
+## <a id="jan_feb_changes_14"></a>2014 年 1 月と 2 月のリリース
+### <a name="jan_fab_14_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
 3.0.0.1 および 3.0.0.2 における変更:
 
 * OrderBy ステートメントでの LINQ クエリの使用に関する問題が修正されました。
@@ -357,8 +357,8 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。 
 * 3(REST) を使用する必要があります。0(REST) を使用する必要があります。*(REST) を使用する必要があります。* リリースの下位互換性の問題が修正されました。 
 
-## <a name="a-iddecemberchanges13adecember-2013-release"></a><a id="december_changes_13"></a>2013 年 12 月のリリース
-### <a name="a-namedec13donnetchangesaazure-media-services-net-sdk-3000"></a><a name="dec_13_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.0
+## <a id="december_changes_13"></a>2013 年 12 月のリリース
+### <a name="dec_13_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.0
 > [!NOTE]
 > 3.0.x.x リリースには、2.4.x.x リリースとの下位互換性がありません。
 > 
@@ -368,15 +368,15 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 Media Services SDK Version 3.0.0.0 から、 [Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。 詳細については、「 [Media Services SDK for .NET を使用した Media Services アカウントへの接続] 」の「Access Control Service トークンの再利用」を参照してください。
 
-### <a name="a-namedec13donnetextchangesaazure-media-services-net-sdk-extensions-2000"></a><a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
+### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure Media Services による開発を容易にする一連の拡張機能メソッドおよびヘルパー機能です。 [Azure Media Services .NET SDK Extensions]から最新のビットを取得できます。
 
-## <a name="a-idnovemberchanges13anovember-2013-release"></a><a id="november_changes_13"></a>2013 年 11 月のリリース
-### <a name="a-namenov13donnetchangesaazure-media-services-net-sdk-changes"></a><a name="nov_13_donnet_changes"></a>Azure Media Services .NET SDK の変更点
+## <a id="november_changes_13"></a>2013 年 11 月のリリース
+### <a name="nov_13_donnet_changes"></a>Azure Media Services .NET SDK の変更点
 このバージョンから、Media Services SDK for .NET は、Media Services REST API レイヤーの呼び出し時発生することのある一時的な障害エラーを処理します。
 
-## <a name="a-idaugustchanges13aaugust-2013-release"></a><a id="august_changes_13"></a>2013 年 8 月のリリース
-### <a name="a-nameaug13powershellchangesamedia-services-powershell-cmdlets-included-in-azure-sdk-tools"></a><a name="aug_13_powershell_changes"></a>Azure SDK ツールに含まれる Media Services PowerShell コマンドレット
+## <a id="august_changes_13"></a>2013 年 8 月のリリース
+### <a name="aug_13_powershell_changes"></a>Azure SDK ツールに含まれる Media Services PowerShell コマンドレット
 現在、次の Media Services PowerShell コマンドレットが [azure-sdk-tools]に含まれています。
 
 * Get-AzureMediaServices 
@@ -392,8 +392,8 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
   
     たとえば、「 `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`」のように入力します。
 
-## <a name="a-idjunechanges13ajune-2013-release"></a><a id="june_changes_13"></a>2013 年 6 月のリリース
-### <a name="a-namejune13generalchangesaazure-media-services-changes"></a><a name="june_13_general_changes"></a>Azure Media Services の変更点
+## <a id="june_changes_13"></a>2013 年 6 月のリリース
+### <a name="june_13_general_changes"></a>Azure Media Services の変更点
 ここで説明する変更点は、2013 年 6 月の Media Services リリースに含まれている更新内容です。
 
 * 複数のストレージ アカウントを Media Service アカウントにリンクする機能。 
@@ -412,7 +412,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 * Asset.Uri 
 * Locator.Name 
 
-### <a name="a-namejune13dotnetchangesaazure-media-services-net-sdk-changes"></a><a name="june_13_dotnet_changes"></a>Azure Media Services .NET SDK の変更点
+### <a name="june_13_dotnet_changes"></a>Azure Media Services .NET SDK の変更点
 2013 年 6 月の Media Services SDK リリースには、次の変更点が加えられました。 最新の Media Services SDK は、GitHub から入手可能です。
 
 * Media Services SDK Version 2.3.0.0 から、複数のストレージ アカウントの Media Services アカウントへのリンクがサポートされています。 次の API がこの機能をサポートしています。
@@ -442,8 +442,8 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 * Azure Storage クライアント SDK 2.0 への依存関係 (Microsoft.WindowsAzure.StorageClient.dll)
 * OData 5.5 への依存関係 (Microsoft.Data.OData.dll)。
 
-## <a name="a-iddecemberchanges12adecember-2012-release"></a><a id="december_changes_12"></a>2012 年 12 月のリリース
-### <a name="a-namedec12dotnetchangesaazure-media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>Azure Media Services .NET SDK の変更点
+## <a id="december_changes_12"></a>2012 年 12 月のリリース
+### <a name="dec_12_dotnet_changes"></a>Azure Media Services .NET SDK の変更点
 * Intellisense : 多くの型で不足していた Intellisense ドキュメントが追加されました。
 * Microsoft.Practices.TransientFaultHandling.Core : SDK がこのアセンブリの旧バージョンに依存していた問題が修正されました。 現在、SDK はこのアセンブリのバージョン 5.1.1209.1 を参照しています。
 
@@ -461,7 +461,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 * Jobs : ジョブ テンプレートを使用して ”MP4 から Smooth Streaming へのタスク” と ”PlayReady 保護タスク” を連結してもまったくタスクが作成されないという問題が修正されました。
 * EncryptionUtils.GetCertificateFromStore() : このメソッドは、証明書構成の問題に基づく証明書検出エラーを原因とするヌル参照例外をスローしなくなりました。
 
-## <a name="a-idnovemberchanges12anovember-2012-release"></a><a id="november_changes_12"></a>2012 年 11 月のリリース
+## <a id="november_changes_12"></a>2012 年 11 月のリリース
 ここで説明する変更点は、2012 年 11 月 (バージョン 2.0.0.0) SDK に含まれている更新内容です。 これらの変更では、2012 年 6 月のプレビュー SDK リリース向けに記述されたコードの変更または書き換えが必要です。
 
 * 資産
@@ -485,7 +485,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
   
     オリジン固有のバージョンは削除されました。 SAS 固有の context.Locators.CreateSasLocator(asset, accessPolicy) は非推奨化されます。つまり、GA までに廃止されます。 更新後の動作については、新機能について説明するページの Locators のセクションをご覧ください。
 
-## <a name="a-idjunechanges12ajune-2012-preview-release"></a><a id="june_changes_12"></a>2012 年 6 月のプレビュー リリース
+## <a id="june_changes_12"></a>2012 年 6 月のプレビュー リリース
 以下は、SDK の&11; 月のリリースでの新機能です。
 
 * エンティティの削除

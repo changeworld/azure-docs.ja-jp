@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array をフェールオーバーする方法�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
+ms.sourcegitcommit: 01acc0a5a6db7695d04d3adbf843826da5288025
+ms.openlocfilehash: 30b0aaa27be46ed581f56176fa3385273ff101c0
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 この記事では、Microsoft Azure StorSimple Virtual Array の障害復旧、たとえば、他の仮想アレイへの詳細なフェールオーバー手順について説明します。 フェールオーバーにより、データを、データセンターの "*ソース*" デバイスから "*ターゲット*" デバイスに移動することができます。 ターゲット デバイスは、地理的に同じ場所または別の場所に配置できます。 デバイスのフェールオーバーは、デバイス全体に対して行われます。 フェールオーバーの間、ソース デバイスのクラウド データの所有権はターゲット デバイスに移ります。
 
 この記事は、StorSimple Virtual Array にのみ適用されます。 8000 シリーズのデバイスのフェールオーバーについては、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
@@ -178,10 +180,5 @@ DR が開始された後、デバイスの復元が完了する前にクラウ�
 ## <a name="next-steps"></a>次のステップ
 
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

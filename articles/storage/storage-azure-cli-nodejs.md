@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
-ms.openlocfilehash: bc90832422a8643afda292d6897a275280cfe690
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 289bf7ab1ba91bd9edc6288af93e06170d8f2def
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -240,12 +241,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 * [Resource Manager モードでの Azure CLI コマンド](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
 * [Azure サービス管理モードでの Azure CLI コマンド](../xplat-cli-install.md)
 
-必要に応じて、[Azure CLI 2.0 (プレビュー)](storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルで使用できます。
+必要に応じて、[Azure CLI 2.0](storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルで使用できます。
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

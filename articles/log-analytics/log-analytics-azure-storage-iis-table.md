@@ -1,5 +1,5 @@
 ---
-title: "IIS の Blob Storage とイベントの Table Storage の使用 | Microsoft Docs"
+title: "Azure Log Analytics での IIS 用 Blob Storage とイベント用 Table Storage の使用 | Microsoft Docs"
 description: "Log Analytics は、Table Storage に診断情報を出力する Azure サービスのログと Blob Storage に出力された IIS のログを読み取ることができます。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
-ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="using-blob-storage-for-iis-and-table-storage-for-events"></a>IIS の Blob Storage とイベントの Table Storage の使用
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
+
 Log Analytics は、Table Storage に診断情報を出力する以下のサービスのログと Blob Storage に出力された IIS のログを読み取ることができます。
 
 * Service Fabric クラスター (プレビュー)
@@ -193,9 +196,4 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 * サポートされている Azure サービスの[ログとメトリックを収集](log-analytics-azure-storage.md)します。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

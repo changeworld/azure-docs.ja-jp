@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array アラートの状態と重大度につ�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ae076d52b532f5181868b2ab24ee8f2ffa887af7
-ms.openlocfilehash: 33b14d56b8d3622ba4e7bfb553e86055e57362fb
+ms.sourcegitcommit: b870974efdde2ebdf339013ca86b772b665151a4
+ms.openlocfilehash: 8cfdad48524c24b3ad69c01ae0330e90ce197b3a
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のアラートを表示して管理する
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 StorSimple デバイス マネージャー サービスのアラート機能では、StorSimple Virtual Array 関連のアラートをリアルタイムで確認およびクリアできます。 **[サービスの概要]** ブレードのアラートを使用すると、StorSimple Virtual Arrays と Microsoft Azure StorSimple ソリューション全体の正常性の問題を一元的に監視できます。
 
@@ -70,7 +72,7 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
 
 StorSimple Virtual Array では、さまざまな状態に応じてアラートを生成します。 最も一般的な種類のアラート状態を次に示します。
 
-* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
+* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の&1; つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
 * **パフォーマンスの問題** – これらのアラートは、システムの負荷が高い場合など、システムが最適に実行されていない場合に発生します。
 
 さらに、セキュリティ、更新、ジョブの失敗に関連するアラートが表示される場合もあります。
@@ -150,7 +152,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | アラートのテキスト | イベント | 追加情報 / 推奨される対処法 |
 |:--- |:--- |:--- |
 | データ転送で予期しない遅延が発生します。 |データ転送の速度が低い。 |Storage サービスのスケーラビリティ ターゲットを超えると、調整エラーが生じます。 このようにして Storage サービスは、1 つのクライアントやテナントがサービスを占有してしまうことがないようにします。 Azure ストレージ アカウントのトラブルシューティングの詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage/storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。 |
-| <*デバイス名*> のローカルの予約ディスク領域が不足しています。 |低応答時間 |<<*デバイス名*>> の総プロビジョニング済みサイズの 10% がローカル デバイスで予約されていますが、現在予約領域が不足しています。 <<*デバイス名*>> のワークロードがチャーン率を高くしています。または最近大量のデータが移行された可能性があります。 これはパフォーマンスの低下を招く場合があります。 この問題を解決するには、次の方法のいずれかを考慮してください。<ul><li>このデバイスに対するクラウド帯域幅を増やします。</li><li>ワークロードを減らすか、別のボリュームまたは共有に移動します。</li></ul> |
+| <*デバイス名*> のローカルの予約ディスク領域が不足しています。 |低応答時間 |<<*デバイス名*>> の総プロビジョニング済みサイズの&10;% がローカル デバイスで予約されていますが、現在予約領域が不足しています。 <<*デバイス名*>> のワークロードがチャーン率を高くしています。または最近大量のデータが移行された可能性があります。 これはパフォーマンスの低下を招く場合があります。 この問題を解決するには、次の方法のいずれかを考慮してください。<ul><li>このデバイスに対するクラウド帯域幅を増やします。</li><li>ワークロードを減らすか、別のボリュームまたは共有に移動します。</li></ul> |
 
 ### <a name="security-alerts"></a>セキュリティのアラート
 
@@ -168,10 +170,5 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 ## <a name="next-steps"></a>次のステップ
 
 * [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

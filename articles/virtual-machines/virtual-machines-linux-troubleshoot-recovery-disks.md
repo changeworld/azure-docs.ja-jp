@@ -1,7 +1,7 @@
 ---
 
-title: "Azure CLI 2.0 (プレビュー) でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
-description: "Azure CLI 1.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明する"
+title: "Azure CLI 2.0 でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
+description: "Azure CLI 2.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明します"
 services: virtual-machines-linux
 documentationCenter: 
 authors: iainfoulds
@@ -15,22 +15,15 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: c4dd7f0cc0a5f7ca42554da95ef215a5a6ae0dbc
-ms.openlocfilehash: 8157e6fd3c4e01d0f99acedfc119fd65879c4979
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 3a3086ed1509bb9e72896b0e4e1bcc89a56b8e03
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
-Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 (プレビュー) を使用して仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#recovery-process-overview) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
+Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="recovery-process-overview"></a>回復プロセスの概要
@@ -42,7 +35,7 @@ Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが�
 4. 仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
 5. 元の仮想ハード ディスクを使用して VM を作成します。
 
-上記のトラブルシューティング手順を実行するには、[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしておく必要があります。
+上記のトラブルシューティング手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしておく必要があります。
 
 以下の例では、パラメーター名を独自の値に置き換えてください。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
 

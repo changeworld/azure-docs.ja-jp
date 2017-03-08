@@ -12,19 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/03/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
-ms.openlocfilehash: 8539540f96d1a6fbb34736eebb0a5897b4754c9f
+ms.sourcegitcommit: d8acfd6e0206e8e97b7d49e280a7e72e0acadb6d
+ms.openlocfilehash: 9ce5278e66afb81c5cbfe3662c6654d39bbc9a54
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>StorSimple Virtual Array のデプロイ - ポータルの準備
+# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
-これは、Resource Manager モデルを使用して、仮想アレイを、ファイル サーバーまたは iSCSI サーバーとして完全にデプロイするためのチュートリアル シリーズの最初の記事で、 仮想アレイをプロビジョニングする前に、StorSimple Manager サービスを作成して構成するために必要な準備について説明します。 デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
+これは、Resource Manager モデルを使用して、仮想アレイを、ファイル サーバーまたは iSCSI サーバーとして完全にデプロイするためのチュートリアル シリーズの最初の記事で、 仮想アレイをプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成するために必要な準備について説明します。 デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 開始する前に、デプロイ構成チェックリストを確認することをお勧めします。 ポータルの準備は 10 分ほどで完了します。
 
@@ -127,7 +129,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 #### <a name="to-get-the-virtual-array-image"></a>仮想アレイのイメージを取得するには
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。 
+1. [Azure Portal](https://portal.azure.com/)にサインインします。 
 2. Azure Portal で、**[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
 3. 既存の StorSimple デバイス マネージャー サービスを選択します。 **[StorSimple デバイス マネージャー]** ブレードで **[クイック スタート]** をクリックします。 
 4. Microsoft ダウンロード センターからダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
@@ -168,10 +170,5 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 * [Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5a46b53f42fce7577485517e9d345cf2ad3f0926
-ms.openlocfilehash: d4d0a221d531c4f6eda7bb6410fbc4dcebf5074b
+ms.sourcegitcommit: 58e8474a9cafdad06c2968a7317e0c30474b5069
+ms.openlocfilehash: 5021a0aa554978fbb5543024400986715227de0b
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="about-h-series-and-compute-intensive-a-series-vms"></a>H シリーズとコンピューティング集中型 A シリーズの VM について
+# <a name="about-h-series-and-compute-intensive-a-series-vms-for-windows"></a>Windows 用の H シリーズとコンピューティング集中型 A シリーズの VM について
 この記事では、*コンピューティング集中型*インスタンスとも呼ばれる新しい Azure H シリーズとそれ以前の A8、A9、A10、A11 インスタンスの背景情報と使用上の考慮事項を示します。 この記事は、Windows VM のこれらのインスタンスの使用方法について説明していますが、 [Linux VM](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) にも適用されます。
 
 基本的な仕様、ストレージの容量、ディスクの詳細については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
@@ -63,10 +65,5 @@ Windows Server で HPC Pack を使って、多くのコンピューティング�
 * ストレージの容量とディスクの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 * Windows 上の HPC Pack によりコンピューティング集中型インスタンスのデプロイと使用を開始する方法については、「[PC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 * コンピューティング集中型インスタンスを使用して Azure Batch で MPI アプリケーションを実行する方法については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

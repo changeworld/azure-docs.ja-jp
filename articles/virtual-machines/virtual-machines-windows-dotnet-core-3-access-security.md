@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 62d1a275252b17ae2b9870b281e1dd91239cae5f
-
+ms.sourcegitcommit: 8eeeef0bb33b5b8ed265532d160829c076190fc4
+ms.openlocfilehash: 91c4550f9caadc790d1b6aea8f037e2089ebec3c
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのアクセスとセキュリティ
+# <a name="access-and-security-in-azure-resource-manager-templates-for-windows-vms"></a>Windows VM の Azure Resource Manager テンプレートでのアクセスとセキュリティ
+
 Azure でホストされるアプリケーションには、インターネットまたは Azure を使った VPN/ExpressRoute 接続経由でアクセスできることが必要になる場合があります。 ミュージック ストア アプリケーション サンプルでは、パブリック IP アドレスを使ってインターネットで Web サイトを利用できます。 アクセスを確立したら、アプリケーションへの接続と仮想マシン リソース自体へのアクセスをセキュリティで保護する必要があります。 このアクセス セキュリティは、ネットワーク セキュリティ グループで設定します。 
 
 このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストア アプリケーションをどのようにセキュリティで保護しているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ([Windows のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)) にあります。
@@ -139,10 +141,5 @@ Azure Portal では、ネットワーク セキュリティ グループは次�
 <hr>
 
 [手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

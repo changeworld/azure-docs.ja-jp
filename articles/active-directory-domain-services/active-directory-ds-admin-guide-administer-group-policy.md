@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
 ms.openlocfilehash: 9245eb870f592ee0a1f1d6956ce3d573f4902485
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -126,9 +127,4 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 * [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Linux VM のコピーの作成 | Microsoft Docs"
-description: "Resource Manager デプロイ モデルで Azure Linux 仮想マシンのコピーを作成する方法を説明します"
+title: "Azure CLI 1.0 を使用して Linux VM のコピーを作成する | Microsoft Docs"
+description: "Azure CLI 1.0 を使用して Resource Manager デプロイメント モデルに Azure Linux 仮想マシンのコピーを作成する方法を説明します"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: fc5d84768213f1c9358bfcffd77868c25b6c24a4
-ms.openlocfilehash: 9920e86a00793928bdfae5bc4e9dac161ed56ad0
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: e85094fbb63b5cf0c5f3b080e047dbc3b8561a26
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure"></a>Azure で実行されている Linux 仮想マシンのコピーを作成する
+# <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Azure で実行されている Linux 仮想マシンのコピーを作成する
 この記事では、Resource Manager デプロイ モデルを使用して、Linux を実行する Azure 仮想マシン (VM) のコピーを 作成する方法について説明します。 はじめにオペレーティング システムとデータ ディスクを新しいコンテナーにコピーし、次にネットワーク リソースをセットアップして、新しい仮想マシンを作成します。
 
 [カスタム ディスク イメージをアップロードして VM を作成する](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
@@ -29,7 +30,7 @@ ms.openlocfilehash: 9920e86a00793928bdfae5bc4e9dac161ed56ad0
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - Azure CLI 1.0 - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 ## <a name="before-you-begin"></a>開始する前に
 手順を開始する前に、次の前提条件が満たされていることを確認します。
@@ -112,10 +113,5 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 ## <a name="next-steps"></a>次のステップ
 Azure CLI を使用して新しい仮想マシンを管理する方法については、 [Azure Resource Manager の Azure CLI コマンド](azure-cli-arm-commands.md)に関する記事をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

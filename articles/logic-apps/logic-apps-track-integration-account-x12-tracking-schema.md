@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: 2470a8e7d82c6c01e9f32b062bc09f5a2f6ed1cd
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: c8c7642a28f1dc386a73d014abe13ec36c6cbe69
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="x12-tracking-schemas"></a>X12 追跡スキーマ
+# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>X12 メッセージの追跡を開始または有効にして、成功、失敗、メッセージのプロパティを監視する
 Azure 統合アカウントでは、次の X12 追跡スキーマを使用して企業間 (B2B) 取引の監視に役立てることができます。
 
 * X12 トランザクション セット追跡スキーマ
@@ -355,9 +357,4 @@ Azure 統合アカウントでは、次の X12 追跡スキーマを使用して
 * [B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)についての詳細情報。
 * [Operations Management Suite ポータルでの B2B メッセージ追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。  
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

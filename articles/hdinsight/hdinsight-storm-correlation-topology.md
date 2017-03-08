@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: 2f2792c409b579ba721195e5749a38c6396f339d
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="correlate-events-over-time-with-storm-and-hbase-on-hdinsight"></a>HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
+# <a name="correlate-events-that-arrive-at-differnet-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
 
 Apache Storm の永続的なデータ ストアを使用して、別々の時刻に到着するデータのエントリを関連付けることができます。 たとえば、ユーザー セッションのログイン イベントとログアウト イベントをリンクして、セッションの継続期間を計算します。
 
@@ -217,10 +218,5 @@ START イベントと同じ方法で END イベントを検索できます。 �
 ## <a name="next-steps"></a>次のステップ
 
 Storm の例の詳細については、「 [HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

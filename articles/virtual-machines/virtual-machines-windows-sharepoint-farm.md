@@ -1,6 +1,6 @@
 ---
-title: "SharePoint サーバー ファームの作成 | Microsoft Docs"
-description: "Azure で SharePoint 2013 または SharePoint 2016 の新しいファームを短時間で作成します。"
+title: "Azure での SharePoint サーバー ファームの作成 | Microsoft Docs"
+description: "Azure Portal Marketplace を使用して Azure で SharePoint 2013 または SharePoint 2016 の新しいファームを短時間で作成します。"
 services: virtual-machines-windows
 documentationcenter: 
 author: JoeDavies-MSFT
@@ -15,25 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2016
 ms.author: josephd
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 7c0746840dd45229dac491b03925349e6d9a44de
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: b668e32bf00ec32c7ffa77594bd1fb07440cf1ac
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-sharepoint-server-farms"></a>SharePoint サーバー ファームの作成
+# <a name="create-sharepoint-server-farms-using-the-azure-portal-marketplace"></a>Azure Portal Marketplace を使用して、SharePoint サーバー ファームを作成する
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="sharepoint-2013-farms"></a>SharePoint 2013 ファーム
-Microsoft Azure ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。 これにより、開発テスト環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
+Microsoft Azure Portal Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。 これにより、開発テスト環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
 > [!NOTE]
-> Azure ポータルの Azure Marketplace の **SharePoint サーバー ファーム** 項目は削除されました。 これは、**SharePoint 2013 非 HA ファーム**項目および **SharePoint 2013 HA ファーム**項目に置き換えられました。
+> Azure Portal の Azure Marketplace の **SharePoint サーバー ファーム** 項目は削除されました。 これは、**SharePoint 2013 非 HA ファーム**項目および **SharePoint 2013 HA ファーム**項目に置き換えられました。
 >
 >
 
-この構成では、次の 3 つの仮想マシンの基本的な SharePoint ファームで構成されます。
+この構成では、次の&3; つの仮想マシンの基本的な SharePoint ファームで構成されます。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/Non-HAFarm.png)
 
@@ -46,7 +48,7 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 3. **[SharePoint 2013 非 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
 4. **[SharePoint 2013 非 HA ファームの作成]** ウィンドウの手順で設定を指定して、**[作成]** をクリックします。
 
-高可用性 SharePoint ファームは、次に示す構成の 9 台の仮想マシンで構成されます。
+高可用性 SharePoint ファームは、次に示す構成の&9; 台の仮想マシンで構成されます。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
 
@@ -64,7 +66,7 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 >
 >
 
-Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。 組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
+Azure Portal は、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。 組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
 
 > [!NOTE]
 > Azure Portal を使用して可用性が基本レベルか高い SharePoint ファームを作成する場合、既存のリソース グループを指定することはできません。 この制限を回避するには、Azure PowerShell を使用してこれらのファームを作成します。 詳細については、[Azure PowerShell を使った SharePoint 2013 開発/テスト ファームの作成](https://technet.microsoft.com/library/mt743093.aspx#powershell)をご覧ください。
@@ -83,9 +85,4 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 ## <a name="next-steps"></a>次のステップ
 * Azure インフラストラクチャ サービスで、追加の [SharePoint の構成](https://technet.microsoft.com/library/dn635309.aspx) を検出します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

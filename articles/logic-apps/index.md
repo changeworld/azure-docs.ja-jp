@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a0bb42ad612c47111c946afe280e5ed0b3acc2a7
-ms.openlocfilehash: 02ea87d181ede4a0a2d5934b7875f335a25d6ce3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 80047e6da5a09b4e7856fff9faf85740d86e6de7
+ms.openlocfilehash: 278662adc5bc9a5bf77956f5362ccaec39764fc3
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -137,6 +137,19 @@ ms.lasthandoff: 02/24/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
+                        <h3>スキーマ</h3>
+                        <p><a href="/rest/api/logic/definition-language">ワークフロー定義言語</a></p>
+                        <p><a href="/rest/api/logic/actions-and-triggers">ワークフローのアクションとトリガー</a></p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
                         <h3>スキーマの履歴</h3>
                         <p><a href="/azure/logic-apps/logic-apps-schema-2016-04-01">一般公開</a></p>
                         <p><a href="/azure/logic-apps/logic-apps-schema-2015-08-01">プレビュー</a></p>
@@ -151,8 +164,6 @@ ms.lasthandoff: 02/24/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="/rest/api/logic/definition-language">ワークフロー定義言語</a></p>
-                        <p><a href="/rest/api/logic/actions-and-triggers">ワークフローのアクションとトリガー</a></p>
                         <p><a href="/rest/api/logic/">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>

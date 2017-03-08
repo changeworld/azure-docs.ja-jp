@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: JeffGo
 translationtype: Human Translation
-ms.sourcegitcommit: af27c5ffb225df42f96f62350ad75c884db8cafd
-ms.openlocfilehash: f5f44b96cfd92bf0cf553c56102059e67d76c2ab
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: f7cbb52f41ee3b704968321ab6dc38bd7e02fd48
+ms.lasthandoff: 03/03/2017
 
 
 ---
 
 # <a name="use-sql-databases-on-azure-stack"></a>Use SQL databases on Azure Stack
 
-> [!NOTE]
-> The following information only applies to Azure Stack TP2 deployments. There have been many changes since the TP1 release, so read this page carefully. Deployment now uses a single script.
+> [!IMPORTANT] 
+> This topic applies only to Azure Stack Technical Preview 2.
 >
 
 Use the SQL Server resource provider adapter to expose SQL databases as a service of Azure Stack. After you install the resource provider and connect it to a SQL Server instance, you and your users can create databases for cloud-native apps, websites that are based on SQL, and workloads that are based on SQL without having to provision a virtual machine (VM) that hosts SQL Server each time.
@@ -166,9 +167,4 @@ Create plans and offers to make SQL databases available for tenants. You will ne
     ![Create plans and offers to include databases](./media/azure-stack-sql-rp-deploy/12.png)
 
 Try other [PaaS services](azure-stack-tools-paas-services.md) like the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) and the [App Services resource provider](azure-stack-app-service-overview.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

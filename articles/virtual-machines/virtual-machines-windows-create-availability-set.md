@@ -16,13 +16,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: f7562c2bb6ad354ece3aa3c51fdaabad8e878fa9
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: a221f3bc9e058a46e46edf8f7177d21151ae3595
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="create-an-availability-set"></a>可用性セットの作成
+# <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Azure 可用性セットを作成することによる VM の可用性の向上 
 可用性セットにより、アプリケーションに冗長性が得られます。 1 つの可用性セット内に&2; つ以上の仮想マシンをグループ化することをお勧めします。 このような構成により、計画済み、または計画外メンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
@@ -94,10 +95,5 @@ VM でストレージ アカウントを使用する場合は次のように入�
 
 ## <a name="next-steps"></a>次のステップ
 [データ ディスク](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を追加して、記憶域を VM にさらに追加します。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -35,7 +35,7 @@ ms.lasthandoff: 11/17/2016
 このチュートリアルの前提条件は次のとおりです。
 
 * Windows 8.1 以降で実行されている Visual Studio 2013。
-* 「 [Create a Windows app (Windows アプリの作成) (Windows アプリの作成)][create a windows app]」を参照してください。
+* 「 [Create a Windows app (Windows アプリの作成)][Create a Windows app (Windows アプリの作成)]」を参照してください。
 * [Azure Mobile Services SQLite Store][sqlite store nuget]
 * [ユニバーサル Windows プラットフォーム開発用 SQLite](http://www.sqlite.org/downloads)
 
@@ -108,7 +108,7 @@ Mobile Apps のオフライン同期機能の詳しい背景情報について�
 
 <!-- URLs. -->
 [Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
-[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
+[Create a Windows app (Windows アプリの作成)]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921

@@ -18,6 +18,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 3d24c0c29da8c97e5fcff524dc88746982fda77c
 ms.openlocfilehash: a34a30a301e213ad227c21196a0b6299dbc4d357
+ms.lasthandoff: 12/15/2016
 
 
 ---
@@ -228,11 +229,6 @@ RemoteMonitoring Visual Studio ソリューションを変更して、シミュ�
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-node]: http://nodejs.org
-[lnk-builtin-rule]: iot-suite-getstarted-preconfigured-solutions.md#add-a-rule-for-the-new-device
+[lnk-builtin-rule]: iot-suite-getstarted-preconfigured-solutions.md#view-alarms
 [lnk-dynamic-telemetry]: iot-suite-dynamic-telemetry.md
 [lnk-logic-app]: iot-suite-logic-apps-tutorial.md
-
-
-<!--HONumber=Dec16_HO3-->
-
-

@@ -3,8 +3,8 @@ title: "Azure IaaS VM ディスクについてよく寄せられる質問 (FAQ) 
 description: "Azure IaaS VM ディスクと Premium ディスク (管理および非管理) についてよく寄せられる質問"
 services: storage
 documentationcenter: 
-author: ramankumarlive
-manager: aungoo-msft
+author: robinsh
+manager: timlt
 editor: tysonn
 ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: ramankum
+ms.date: 02/23/2017
+ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 0746c954e669bd739b8ecfcddaf287cb5172877f
-ms.openlocfilehash: 95b627738726f3c108fff38bfeda413303b2c718
+ms.sourcegitcommit: 61610078ad5cefd513fdb758aec45d7489704817
+ms.openlocfilehash: b4cb40d81613c16558be1e0e2c10dbfa0265a6b7
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -120,6 +121,48 @@ Managed Disks では&3; つの重要な既定のロールがサポートされ�
 
 現在、Azure Managed Disks ではローカル冗長ストレージ (LRS) しかサポートされていません。
 
+## <a name="managed-disks-and-port-8443"></a>Managed Disks とポート 8443
+
+**Azure Managed Disks を使用している VM のポート 8443 で送信トラフィックのブロックを解除しなければならないのはなぜですか?**
+
+Azure VM エージェントは、各 VM 拡張機能の状態を Azure プラットフォームに報告するためにポート 8443 を使用します。 このポートのブロックが解除されていない場合は、VM エージェントから VM 拡張機能の状態を報告することができません。 VM エージェントの詳細については、「[Azure 仮想マシン エージェントの概要](../virtual-machines/virtual-machines-windows-agent-user-guide.md)」を参照してください。
+
+**VM を拡張機能と共にデプロイするときに、このポートがブロックされている場合はどうなりますか?**
+
+デプロイがエラーになります。 
+
+**VM を拡張機能なしでデプロイするときに、このポートがブロックされている場合はどうなりますか?**
+
+デプロイへの影響はありません。 
+
+**既にプロビジョニング済みで実行中の VM に拡張機能をインストールする場合、ポート 8443 がブロックされているとどうなりますか?**
+
+拡張機能は正常にデプロイされません。 拡張機能の状態がどうなるかは不明です。 
+
+**ARM テンプレートを使用して、ポート 8443 をブロックした状態で複数の VM をプロビジョニングする場合、1 つ目の VM に拡張機能がインストールされており、2 つ目の VM が 1 つ目の VM に依存しているとどうなりますか?**
+
+1 つ目の VM は、拡張機能が正常にデプロイされないため、失敗したデプロイとして表示されます。 2 つ目の VM はデプロイされません。 
+
+**このポートのブロック解除の要件は、VM のすべての拡張機能に適用されますか?**
+
+はい。
+
+**ポート 8443 では受信と送信の両方の接続をブロック解除する必要がありますか?**
+
+いいえ。 ポート 8443 では、送信接続のみをブロック解除する必要があります。 
+
+**ポート 8443 の送信接続は、VM の有効期間にわたってブロック解除する必要がありますか?**
+
+はい。
+
+**このようにポートをブロック解除すると、VM のパフォーマンスは影響を受けますか?**
+
+いいえ。
+
+**この問題が解決されてポート 8443 のブロック解除が不要になるのは、いつ頃の予定ですか?**
+
+2017 年 5 月末までに解決する予定です。
+
 ## <a name="premium-disks--both-managed-and-unmanaged"></a>Premium ディスク – 管理ディスクと非管理ディスク
 
 **VM が使用するサイズ シリーズが Premium ストレージ (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方を接続できますか?** 
@@ -151,8 +194,3 @@ DS シリーズのキャッシュとローカル SSD の制限の合計は、コ
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。 この記事に関する質問は、この記事の末尾のコメント欄、または MSDN [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)に投稿して、Azure Storage チームや他のコミュニティ メンバーと意見を交わすことができます。
 
 機能についてのご要望がある場合は、ご要望やアイデアを [Azure Storage フィードバック フォーラム](https://feedback.azure.com/forums/217298-storage)までお送りください。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

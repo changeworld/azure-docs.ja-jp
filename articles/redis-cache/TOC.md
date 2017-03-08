@@ -58,8 +58,3 @@
 ## [Redis Cache のサンプル](cache-redis-samples.md)
 ## [料金](https://azure.microsoft.com/pricing/details/cache/)
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

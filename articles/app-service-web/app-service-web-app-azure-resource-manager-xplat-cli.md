@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 6f75781af24d1ad4cb6460f0dfd528684aaad57f
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 7a03e1417617453c43edcc3787da10d171359757
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ Microsoft Azure クロスプラットフォーム コマンドライン ツー�
 リソース グループの管理の詳細については、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../azure-resource-manager/xplat-cli-azure-resource-manager.md)」を参照してください。 
 
 > [!NOTE] 
-> また、[Azure CLI 2.0 (プレビュー)](https://github.com/Azure/azure-cli) もお試しいただけます。これは、Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルに使用できます。
+> また、[Azure CLI 2.0](https://github.com/Azure/azure-cli) もお試しいただけます。これは、Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルに使用できます。
 >
 >
 
@@ -178,9 +179,4 @@ Web アプリを作成するには、**azure webapp create** コマンドを使�
 * Azure Resource Manager の CLI のサポートについては、「[Use the Azure CLI to manage Azure resources and resource groups (Azure CLI を使用して Azure のリソースとリソース グループを管理する)](../azure-resource-manager/xplat-cli-azure-resource-manager.md)」を参照してください。
 * PowerShell を使用した App Service の管理については、「[Azure Resource Manager ベースの PowerShell を使用して Azure Web アプリを管理する](app-service-web-app-azure-resource-manager-powershell.md)」を参照してください。
 * Linux での Azure App Service の詳細については、「[Introduction to App Service on Linux (App Service on Linux の概要)](app-service-linux-intro.md)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

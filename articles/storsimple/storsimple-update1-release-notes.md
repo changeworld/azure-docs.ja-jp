@@ -4,7 +4,7 @@ description: "StorSimple 8000 シリーズ Update 1.2 における新機能、�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6c9aae87-6f77-44b8-b7fa-ebbdc9d8517c
 ms.service: storsimple
@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2cc83aec80acceff64774a10d9542183fb0308b9
+ms.sourcegitcommit: 148f3920b92892781ed09380644b05b5bef7c952
+ms.openlocfilehash: 325c688e4da81fd9e6b73bd350a739ac43a480c0
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-8000-series-update-12-release-notes"></a>StorSimple 8000 シリーズ Update 1.2 リリース ノート
-## <a name="overview"></a>Overview
+# <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイス Update 1.2 リリース ノート
+
+## <a name="overview"></a>概要
 次のリリース ノートでは、StorSimple 8000 シリーズの Update 1.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムの一覧も含まれています。 
 
 Update 1.2 は、Release (GA)、Update 0.1、Update 0.2、または Update 0.3 ソフトウェアを搭載するすべての StorSimple デバイスに適用できます。 Update 1 または Update 1.1 を搭載するデバイスには Update 1.2 を使用できません。 デバイスが Release (GA) を搭載している場合のこの更新プログラムのインストールについては、 [Microsoft のサポートに問い合わせ](storsimple-contact-microsoft-support.md) てください。
@@ -46,7 +49,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 ## <a name="whats-new-in-update-12"></a>Update 1.2 の新機能
 これらの機能は、限定されたユーザーだけが使用できる Update 1 で最初にリリースされました。 Update 1.2 リリースでは、StorSimple のほとんどのユーザーが次の新機能と機能強化を利用できます。
 
-* **5000/7000 シリーズから 8000 シリーズ デバイスへの移行** – 今回のリリースでは、StorSimple 5000/7000 シリーズ アプライアンスのユーザーが、データを StorSimple 8000 シリーズの物理アプライアンスまたは仮想アプライアンスに移行できる、新しい移行機能が導入されています。 この移行機能では、次の 2 つの重要な価値提案が行われています。                                                                  
+* **5000/7000 シリーズから 8000 シリーズ デバイスへの移行** – 今回のリリースでは、StorSimple 5000/7000 シリーズ アプライアンスのユーザーが、データを StorSimple 8000 シリーズの物理アプライアンスまたは仮想アプライアンスに移行できる、新しい移行機能が導入されています。 この移行機能では、次の&2; つの重要な価値提案が行われています。                                                                  
   
   * **ビジネス継続性**。5000/7000 シリーズ アプライアンスから 8000 シリーズ アプライアンスへの既存データの移行を可能にすることで実現します。
   * **8000 シリーズ アプライアンスの機能強化**。StorSimple Manager サービスを通じた複数のアプライアンスの効率的な一元管理、高性能のハードウェアと最新のファームウェア、仮想アプライアンス、データ モビリティ、将来的なロードマップの機能などがあります。
@@ -54,7 +57,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
     StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、 [移行ガイド](http://www.microsoft.com/download/details.aspx?id=47322) を参照してください。 
 * **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。 [Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページをご覧ください。
 * **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
-* **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に記載のとおり、これらの API は 2016 年 8 月 1 日で廃止されます。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update 1.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
+* **最新の Storage API への更新** – 今回のリリースでは、StorSimple が最新の Azure Storage サービス API に更新されています。 Update 1 より前のソフトウェア バージョン (Release、0.1、0.2、0.3) を実行している StorSimple 8000 シリーズ デバイスには、2009 年 7 月 17 日よりも古い Azure Storage サービス API のバージョンが使用されます。 更新された [Storage サービスのバージョンの削除に関するお知らせ](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)に記載のとおり、これらの API は 2016 年 8 月 1 日で廃止されます。 つまり、2016 年 8 月 1 日までに、StorSimple 8000 シリーズ Update 1 を適用する必要があります。 期日までに Update&1;.0 を適用しないと、StorSimple デバイスが正常に機能しなくなります。
 * **ゾーン冗長ストレージ (ZRS) のサポート** – Storage API を最新バージョンにアップグレードすると、StorSimple 8000 シリーズで、ローカル冗長ストレージ (LRS) と地理冗長ストレージ (GRS) に加えて、ゾーン冗長ストレージ (ZRS) もサポートできるようになります。 ZRS の詳細については、 [Azure Storage の冗長オプションに関する記事](../storage/storage-redundancy.md) を参照してください。
 * **初回デプロイと更新プログラムのエクスペリエンスの強化** – 今回のリリースでは、インストールと更新プログラムのプロセスが強化されています。 セットアップ ウィザードからのインストールが強化され、ネットワーク構成とファイアウォール設定が正しくない場合、ユーザーにフィードバックが提供されます。 デバイスのネットワークのトラブルシューティングに役立つ、診断用のコマンドレットが追加されています。 トラブルシューティングに使用する新しい診断用コマンドレットの詳細については、 [デプロイのトラブルシューティングに関する記事](storsimple-troubleshoot-deployment.md) を参照してください。
 
@@ -90,7 +93,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 | 7 |Web プロキシ |登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | |はい |なし |
 | 8 |クラウドの長い待機時間と高い I/O ワークロード |StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 |デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 |はい |なし |
 | 9 |Azure PowerShell |新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 |次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |はい |はい |
-| 10 |移行 |複数のボリューム コンテナーを渡して移行する場合、最新のバックアップの ETA は、最初のボリューム コンテナーに対してのみ正確です。 さらに、最初のボリューム コンテナー内の最初の 4 つのバックアップが移行された後に、移行が並列で開始されます。 |一度に 1 つのボリューム コンテナーを移行することをお勧めします。 |はい |なし |
+| 10 |移行 |複数のボリューム コンテナーを渡して移行する場合、最新のバックアップの ETA は、最初のボリューム コンテナーに対してのみ正確です。 さらに、最初のボリューム コンテナー内の最初の 4 つのバックアップが移行された後に、移行が並列で開始されます。 |一度に&1; つのボリューム コンテナーを移行することをお勧めします。 |はい |なし |
 | 11 |移行 |復元後、ボリュームはバックアップ ポリシーや仮想ディスク グループに追加されません。 |バックアップを作成するために、バックアップ ポリシーにこれらのボリュームを追加する必要があります。 |はい |はい |
 | 12 |移行 |移行の完了後は、5000/7000 シリーズのデバイスから移行後のデータ コンテナーにアクセスできなくなります。 |移行が完了しコミットした後、移行後のデータ コンテナーを削除することをお勧めします。 |はい |なし |
 | 13 |複製と障害復旧 |Update 1 を実行する StorSimple デバイスでは、Update 1 よりも前のソフトウェアを実行するデバイスへの複製と障害復旧は実行できません。 |これらの操作を実行できるようにするには、ターゲット デバイスを Update 1 に更新する必要があります。 |はい |はい |
@@ -110,10 +113,5 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 
 ## <a name="next-steps"></a>次のステップ
 * [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
