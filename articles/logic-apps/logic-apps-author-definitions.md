@@ -1,6 +1,6 @@
 ---
-title: "ロジック アプリの定義の作成 | Microsoft Docs"
-description: "ロジック アプリの JSON 定義を記述する方法について説明します。"
+title: "JSON でワークフローを定義する - Azure Logic Apps | Microsoft Docs"
+description: "JSON でロジック アプリのワークフロー定義を記述する方法"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,22 +12,27 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
+ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
+ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="author-logic-app-definitions"></a>ロジック アプリの定義の作成
-このトピックでは、単純な宣言型の JSON 言語である、 [Azure Logic Apps](logic-apps-what-are-logic-apps.md) 定義の使用方法を示します。 まだ使用したことがない場合は、まず [新しいロジック アプリの作成方法](logic-apps-create-a-logic-app.md) に関するページを参照してください。 また、 [MSDN の定義言語の完全リファレンス マテリアル](http://aka.ms/logicappsdocs)を参照することもできます。
+# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>JSON を使用してロジック アプリのワークフロー定義を作成する
 
-## <a name="several-steps-that-repeat-over-a-list"></a>リストに対して繰り返す複数のステップ
-最大 10,000 件の配列の要素を反復処理しながら、それぞれにアクションを実行する場合は、 [foreach タイプ](logic-apps-loops-and-scopes.md) を利用できます。
+単純な宣言型の JSON 言語を使用して、[Azure Logic Apps](logic-apps-what-are-logic-apps.md) のワークフロー定義を作成できます。 まだ作成したことがない場合は、最初に、[ロジック アプリ デザイナーで初めてのロジック アプリを作成する方法](logic-apps-create-a-logic-app.md)に関する記事を確認してください。 また、[ワークフロー定義言語の詳細](http://aka.ms/logicappsdocs)に関する記事も参照してください。
 
-## <a name="a-failure-handling-step-if-something-goes-wrong"></a>問題が発生した場合のエラー処理ステップ
-一般的に、"*修復ステップ*" を作成できるようにする必要があります。これは、1 つ以上の呼び出しが失敗した**場合に限り**実行されるいくつかのロジックです。 この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。  
+## <a name="repeat-steps-over-a-list"></a>リストに対してステップを繰り返す
+
+最大 10,000 個の項目を含む配列に対して反復処理を行い、各項目に対してアクションを実行するには、[foreach タイプ](logic-apps-loops-and-scopes.md)を使用します。
+
+## <a name="handle-failures-if-something-goes-wrong"></a>問題が発生した場合にエラーを処理する
+
+一般的には、"*修復ステップ*" を含めます。これは、1 つ以上の呼び出しが失敗した "*場合に限り*" 実行されるいくつかのロジックです。 この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。  
 
 ```
 {
@@ -60,11 +65,12 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-`readData` が **Failed** になった後でのみ `postToErrorMessageQueue` を実行するよう指定するには、`runAfter` プロパティを利用できます。  ここには、想定される複数の値を指定することもできます。つまり、`runAfter` を `["Succeeded", "Failed"]` のように指定することもできます。
+`readData` が `Failed` になった後のみに `postToErrorMessageQueue` が実行されるよう指定するには、`runAfter` プロパティを使用します。たとえば、指定できる値のリストを指定するには、`runAfter` は `["Succeeded", "Failed"]` になります。
 
-最後に、エラーの処理が完了したので、実行は **"失敗"**としてマークされなくなります。 ご覧のとおり、この実行は、1 つのステップは失敗しましたが、このエラーを処理するステップを記述したため、 **"成功"** となっています。
+最後に、この例ではエラーが処理されるため、実行は `Failed` としてマークされなくなります。 この例ではこのエラーを処理するステップを追加したため、1 つのステップは `Failed` となりましたが、実行は `Succeeded` となっています。
 
-## <a name="two-or-more-steps-that-execute-in-parallel"></a>並列実行される&2; つ (以上) のステップ
+## <a name="execute-two-or-more-steps-in-parallel"></a>複数のステップを並列実行する
+
 複数のアクションを並列実行するには、その `runAfter` プロパティが実行時に統一されている必要があります。 
 
 ```
@@ -104,14 +110,13 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-上の例を見るとわかるように、`branch1` と `branch2` はどちらも、`readData` の後で実行するように設定されています。 その結果、これらの分岐 (branch) の両方が並列実行されます。
+この例では、`branch1` と `branch2` の両方が `readData` の後で実行されるように設定されています。 その結果、この&2; つの分岐は並列実行されます。 両方の分岐のタイムスタンプが一致します。
 
 ![並列](media/logic-apps-author-definitions/parallel.png)
 
-両方の分岐のタイムスタンプが一致していることを確認できます。 
-
 ## <a name="join-two-parallel-branches"></a>2 つの並列分岐の結合
-並列実行するように設定された&2; つのアクションは、先ほどの例と同様、 `runAfter` プロパティに項目を追加することで結合することができます。
+
+並列実行するように設定された&2; つのアクションは、前の例のように、`runAfter` プロパティに項目を追加することで結合できます。
 
 ```
 {
@@ -182,8 +187,9 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 
 ![並列](media/logic-apps-author-definitions/join.png)
 
-## <a name="mapping-items-in-a-list-to-some-different-configuration"></a>リスト内のアイテムをいくつかの異なる構成にマップする
-次に、プロパティの値によってまったく異なるコンテンツを取得する必要があるとします。 取得先に対する値のマップをパラメーターとして作成できます。  
+## <a name="map-list-items-to-a-different-configuration"></a>リスト項目を別の構成にマップする
+
+次に、プロパティの値に基づいて異なるコンテンツを取得する必要があるとします。 取得先に対する値のマップをパラメーターとして作成できます。  
 
 ```
 {
@@ -234,14 +240,19 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-この場合、最初に記事のリストを取得した後、2 番目のステップでは、マップ内で、パラメーターとして定義されたカテゴリに基づいて、コンテンツの取得元である URL を検索します。 
+この場合、最初に記事のリストを取得します。 2 番目のステップでは、パラメーターとして定義されたカテゴリに基づき、マップを使用して、コンテンツの取得元である URL を検索します。
 
-ここで注意する点が&2; つあります。1 つは、カテゴリが定義済みの既知のカテゴリの&1; つと一致するかどうかを確認するために [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数が使用されている点です。 もう&1; つは、カテゴリを取得した後は、`parameters[...]` のように、角かっこを使用してマップのアイテムを取り出すことができる点です。 
+ここでは、次のことに注意してください。 
 
-## <a name="working-with-strings"></a>文字列の操作
-文字列の操作に使用できる関数には、さまざまな種類があります。 ある文字列をシステムに渡す必要はあっても、文字エンコードが正しく処理されるかどうか確信を持てない例を考えてみます。 1 つのオプションとして、この文字列に Base64 エンコードを使用します。 ただし、URL 内のエスケープを回避するために、いくつかの文字を置き換えます。 
+*    [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数は、定義済みの既知のカテゴリのいずれかとそのカテゴリが一致するかどうかを確認します。
 
-また、最初の 5 文字は使用されないため、注文の名前の部分文字列も必要になります。
+*    カテゴリを取得したら、`parameters[...]` のように、角かっこを使用してマップの項目を取り出すことができます。
+
+## <a name="process-strings"></a>文字列を処理する
+
+文字列の操作には、さまざまな関数を使用できます。 たとえば、システムに渡す必要がある文字列があっても、文字エンコードが正しく処理されるかどうかについて確信を持てない場合があるとします。 1 つのオプションとして、この文字列に Base64 エンコードを使用します。 ただし、URL 内のエスケープを回避するために、いくつかの文字を置き換えます。 
+
+また、最初の&5; 文字は使用されないため、注文の名前の部分文字列も必要になります。
 
 ```
 {
@@ -275,17 +286,23 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-次に、操作を詳しく説明します。
+次のように、内側から外側に向かって処理が行われます。
 
-1. 注文の名前の [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) を取得します。これにより、文字数の合計が返されます。
-2. 5 を引きます (文字列を短くする必要があるため)
-3. 実際に [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring) を使用します。 ここでは、インデックス `5` から開始し、文字列の残りの部分を取得します。
-4. この部分文字列を、 [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 文字列に変換します。
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `+` 文字を `-` に置き換えます。
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `/` 文字を `_` に置き換えます。
+1. 注文者の名前の [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) を取得します。これにより、文字数の合計が返されます。
 
-## <a name="working-with-date-times"></a>日付と時刻の操作
-日付と時刻は、特に、 **トリガー**を本来サポートしていないデータ ソースからデータを取り出すときに、役立つ場合があります。  また、日付と時刻を使用すると、さまざまなステップにかかる時間を計算することもできます。 
+2. 文字列を短くする必要があるため、5 を引きます。
+
+3. 実際には [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring) を使用します。 ここでは、インデックス `5` から開始し、文字列の残りの部分を取得します。
+
+4. この部分文字列を [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 文字列に変換します。
+
+5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `+` 文字を `-` 文字に置き換えます。
+
+6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `/` 文字を `_` 文字に置き換えます。
+
+## <a name="work-with-date-times"></a>日付と時刻を処理する
+
+日付と時刻は、特に、"*トリガー*" を本来サポートしていないデータ ソースからデータを取り出すときに、役立つ場合があります。 また、日付と時刻を使用すると、さまざまなステップにかかる時間を確認することもできます。
 
 ```
 {
@@ -337,16 +354,20 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-この例では、前のステップの `startTime` を抽出しています。 次に、現在の時刻を取得して、[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) で&1; 秒引いています (`minutes` や `hours` のように他の時間単位も使用できます)。 最後に、この&2; つの値を比較できます。 最初の値が&2; 番目の値より小さい場合は、最初に注文が実行されてから&2; 秒以上経過していることを意味します。 
+この例では、前のステップから `startTime` を抽出しています。 その後、現在の時刻を取得し、1 秒引いています。
 
-また、文字列フォーマッタを使用して日付の書式を設定できることにも注意してください。ここでは、RFC1123 を取得するためにクエリ文字列で [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) を使用しています。 すべての日付の書式設定については、[MSDN のドキュメント](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)に記載されています。 
+[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-## <a name="using-deployment-time-parameters-for-different-environments"></a>さまざまな環境でデプロイ時のパラメーターを使用する
-一般に、デプロイのライフサイクルには、開発環境、ステージング環境、および運用環境があります。 たとえば、これらすべての環境で同じ定義を使用しながら、異なるデータベースを使用することが必要な場合があります。 同様に、高可用性を確保するため、さまざまなリージョン間で同じ定義を使用する一方で、各ロジック アプリのインスタンスではそのリージョンのデータベースと通信することが必要な場合もあります。 
+このとき、`minutes` や `hours` のような他の時間単位も使用できます。 最後に、この&2; つの値を比較できます。 最初の値が&2; 番目の値より小さい場合、最初に注文が実行されてから&2; 秒以上経過しています。
 
-これは、上の例で説明したように `trigger()` 関数を使用する必要があるため、"*実行時*" に異なるパラメーターを受け取る方法とは違います。 
+日付の書式を設定するには、文字列フォーマッタを使用できます。 たとえば、RFC1123 を取得するには、[`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) を使用します。 日付の書式設定については、「[Workflow Definition Language (ワークフロー定義言語)](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)」を参照してください。
 
-次のような、きわめて単純な定義から始めることができます。
+## <a name="deployment-parameters-for-different-environments"></a>さまざまな環境のデプロイ パラメーター
+
+一般に、デプロイのライフサイクルには、開発環境、ステージング環境、運用環境があります。 たとえば、これらすべての環境で同じ定義を使用する一方で、異なるデータベースを使用する場合があります。 同様に、高可用性を確保するためにさまざまなリージョン間で同じ定義を使用する一方で、各ロジック アプリのインスタンスではそのリージョンのデータベースと通信することが必要な場合もあります。
+このシナリオは、前の例で説明したように `trigger()` 関数を使用する必要があるため、"*実行時*" にパラメーターを受け取る方法とは違います。
+
+次の例のように、基本的な定義から始めることができます。
 
 ```
 {
@@ -375,7 +396,7 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ```
 
-その後、ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。 既定値はもう存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
+ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。 既定値は存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
 
 ```
 {
@@ -393,13 +414,7 @@ ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
 }
 ``` 
 
-それぞれの環境で、 `connection` パラメーターに異なる値を指定できます。 
+それぞれの環境で、`connection` パラメーターに異なる値を指定できます。 
 
-ロジック アプリの作成と管理用に用意したすべてのオプションについては、 [REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx) を参照してください。 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+ロジック アプリの作成と管理用に用意されているすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx)を参照してください。 
 
