@@ -12,11 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 02/24/2017
 ms.author: juanpere
 translationtype: Human Translation
 ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
 ms.openlocfilehash: fd53e73d6a686581ea2b807ae66716fc36a99ad4
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -99,7 +100,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
             CloudToDeviceMethod directMethod = new CloudToDeviceMethod("lockDoor", TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
 
             JobResponse result = await jobClient.ScheduleDeviceMethodAsync(jobId,
-                "SELECT * from DEVICES",
+                "deviceId='myDeviceId'",
                 directMethod,
                 DateTime.Now,
                 10);
@@ -117,7 +118,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
             twin.ETag = "*";
 
             JobResponse result = await jobClient.ScheduleTwinUpdateAsync(jobId,
-                "SELECT * from DEVICES", 
+                "deviceId='myDeviceId'",
                 twin,
                 DateTime.Now,
                 10);
@@ -245,9 +246,4 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

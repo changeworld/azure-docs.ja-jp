@@ -58,7 +58,7 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
 
    * **[クラスターの種類]**: R Server
    * **[バージョン]**: クラスターにインストールする R Server のバージョンを選択します。 最新の機能を使用するには最新バージョンを選択します。 その他のバージョンは、互換性のために必要な場合に選択できます。 使用可能な各バージョンのリリース ノートは、[こちら](https://msdn.microsoft.com/en-us/microsoft-r/notes/r-server-notes)にあります。
-   * **[R Studio community edition for R Server] (R Server 向けの R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。  この IDE をインストールしない場合は、チェックボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターの [アプリケーション] ブレードに RStudio Server へのアクセス用の URL が表示されます。
+   * **[R Studio community edition for R Server] \(R Server 向けの R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。  この IDE をインストールしない場合は、チェックボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、ポータルでクラスターの [アプリケーション] ブレードに RStudio Server へのアクセス用の URL が表示されます。
 
    その他のオプションは既定値のままにして、**[選択]** ボタンをクリックし、クラスターの種類を保存します。
    
@@ -489,7 +489,7 @@ rxSparkDisconnect(myHadoopCluster)
    
    * **[パラメーター]**: インストールする R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
    
-   * **[Persist this script...] (このスクリプトの保持…)**: **オンに設定**します  
+   * **[Persist this script...] \(このスクリプトの保持…)**: **オンに設定**します  
    
    > [!NOTE]
    > 1. 既定では、R パッケージはすべて、インストールされている R Server のバージョンと一貫性のある Microsoft MRAN リポジトリのスナップショットからインストールされます。  非互換性の問題が発生するリスクはありますが、パッケージ一覧の最初の要素として `useCRAN` を指定して (例: `useCRAN bitops, stringr, arules`)、パッケージの新しいバージョンをインストールすることもできます。  
