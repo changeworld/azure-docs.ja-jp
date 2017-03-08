@@ -2,6 +2,7 @@
 # 概要
 ## [Cognitive Services とは](https://azure.microsoft.com/services/cognitive-services/)
 # 作業の開始
+## [アカウントの作成](cognitive-services-apis-create-account.md)
 ## [Text Analytics クイック スタート](cognitive-services-text-analytics-quick-start.md)
 ## [Recommendations クイック スタート](cognitive-services-recommendations-quick-start.md)
 
