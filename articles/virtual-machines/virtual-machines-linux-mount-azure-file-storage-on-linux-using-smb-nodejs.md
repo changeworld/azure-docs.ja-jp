@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI 1.0 で SMB を使用して Linux VM に Azure File Storage をマウントする | Microsoft Docs"
-description: "SMB を使用して Linux VM に Azure File Storage をマウントする方法です。"
+description: "SMB を使用して Linux VM に Azure File Storage をマウントする方法"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -15,48 +15,56 @@ ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 4d547f854df5d4801779e37ac5f22fb9551bd6bb
-ms.openlocfilehash: 73151dba33e2c05a66176ef6b895339bce167128
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 892e3c62a2ad4dc4fd0691874d46bb296e379524
+ms.openlocfilehash: ac0623a32fd1fb4a3dd9e1dd06f457da6ce56199
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="mount-azure-file-storage-on-linux-vms-using-smb-using-the-azure-cli-10"></a>Azure CLI 1.0 で SMB を使用して Linux VM に Azure File Storage をマウントする
+# <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Azure CLI 1.0 で SMB を使用して Linux VM に Azure File Storage をマウントする
 
-この記事では、SMB マウントを使用して Linux VM で Azure File Storage サービスを利用する方法を説明します。  Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。  要件は次のとおりです。
+この記事では、サーバー メッセージ ブロック (SMB) プロトコルを使用して、Linux VM に Azure File Storage をマウントする方法を説明します。 File Storage では、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 要件は次のとおりです。
 
-- [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+* [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+* [Secure Shell (SSH) パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md)
 
-- [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md)
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
+## <a name="cli-versions-to-use"></a>使用する CLI バージョン
+次のコマンド ライン インターフェイス (CLI) バージョンのいずれかを使用してタスクを実行できます。
 
 - [Azure CLI 1.0](#quick-commands) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
 
 
 ## <a name="quick-commands"></a>クイック コマンド
+タスクをすばやく実行するには、このセクションの手順に従ってください。 詳細情報とコンテキストを確認する場合は、「[詳細なチュートリアル](virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb.md#detailed-walkthrough)」から始めてください。
 
-タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](virtual-machines-linux-mount-azure-file-storage-on-linux-using-smb.md#detailed-walkthrough)。
+### <a name="prerequisites"></a>前提条件
+* リソース グループ
+* Azure 仮想ネットワーク
+* SSH 受信が設定されたネットワーク セキュリティ グループ
+* サブネット
+* Azure ストレージ アカウント
+* Azure ストレージ アカウント キー
+* Azure File Storage 共有
+* Linux VM
 
-前提条件: リソース グループ、VNet、SSH 受信を使用した NSG、サブネット、Azure Storage Account、Azure Storage Account キー、Azure Storage Account 共有、Linux VM。 各例を独自の設定に置き換えてください。
+各例を独自の設定に置き換えてください。
 
-ローカル マウント用のディレクトリを作成します。
+### <a name="create-a-directory-for-the-local-mount"></a>ローカル マウント用のディレクトリを作成します。
 
 ```bash
 mkdir -p /mnt/mymountpoint
 ```
 
-Azure Storage Account 共有をマウント ポイントにマウントします。
+### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>File Storage SMB 共有をマウント ポイントにマウントする
 
 ```bash
 sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
-再起動後もマウントを維持するには、`/etc/fstab` に行を追加します
+### <a name="persist-the-mount-after-a-reboot"></a>再起動後もマウントを維持する
+`/etc/fstab` に次の行を追加します。
 
 ```bash
 //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
@@ -64,63 +72,62 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
 
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。  また、File Storage の最新のリリースでは、SMB 3.0 をサポートしている OS からファイル共有をマウントできます。  Linux で SMB マウントを使用すると、SLA でサポートされる信頼性の高い、永続的なアーカイブ格納場所に簡単にバックアップできるようになります。  
+File Storage では、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 File Storage の最新のリリースでは、SMB 3.0 をサポートしている OS からファイル共有をマウントすることもできます。 Linux で SMB マウントを使用すると、SLA でサポートされる信頼性の高い永続的なアーカイブ格納場所に簡単にバックアップできます。
 
-Azure File Storage でホストされている SMB マウントに VM からファイルを移動する方法では、同じ SMB 共有をお使いの Mac、Linux、Windows ワークステーションにローカルでマウントすることができるため、ログをデバッグする際に便利です。  SMB プロトコルは大量のログ記録を行うように構築されていないため、SMB は Linux やアプリケーションのログをリアル タイムにストリーミングするソリューションには適していません。  Linux やアプリケーションのログ記録の出力を収集する場合は、Fluentd のような統合された専用のログ記録レイヤー ツールの方が、SMB よりも優れています。
+File Storage でホストされている SMB マウントに VM からファイルを移動すると、ログをデバッグする際に役立ちます。 同じ SMB 共有を、Mac、Linux、または Windows ワークステーションにローカルでマウントできるためです。 SMB プロトコルは大量のログ記録を処理するように構築されていないため、Linux やアプリケーションのログをリアルタイムでストリーミングする場合、SMB は最適なソリューションではありません。 Linux やアプリケーションのログ出力を収集する場合は、Fluentd などの統合された専用のログ記録レイヤー ツールの方が SMB よりも適しています。
 
-この詳細なチュートリアルでは、まず Azure File Storage 共有を作成するために必要な前提条件の作成し、次に SMB 経由で Linux VM にマウントします。
+この詳細なチュートリアルでは、まず File Storage 共有を作成するために必要な前提条件を作成し、次に SMB 経由で Linux VM にマウントします。
 
-## <a name="create-the-azure-storage-account"></a>Azure ストレージ アカウントの作成
+1. 次のコードを使用して、Azure ストレージ アカウントを作成します。
 
-```azurecli
-azure storage account create myStorageAccount \
---sku-name lrs \
---kind storage \
--l westus \
--g myResourceGroup
-```
+    ```azurecli
+    azure storage account create myStorageAccount \
+    --sku-name lrs \
+    --kind storage \
+    -l westus \
+    -g myResourceGroup
+    ```
 
-## <a name="show-the-storage-account-keys"></a>ストレージ アカウント キーの表示
+2. ストレージ アカウント キーを表示します。
 
-Azure ストレージ アカウント キーは、ストレージ アカウントの作成時にペアで作成されます。  ストレージ アカウント キーは、サービスを中断させることなく交互に使用できるように、ペアで作成されます。  ペアの&2; つ目のキーを使用したら、新しいキーのペアを作成します。  新しいストレージ アカウント キーは必ずペアで作成されるため、常に未使用のストレージ キーが&1; つ以上用意されていることになり、すぐに切り換えることができます。
+    ストレージ アカウントを作成すると、サービスを中断させることなく交互に使用できるように、アカウント キーがペアで作成されます。 ペアの&2; つ目のキーに切り替えたら、新しいキー ペアを作成します。 新しいストレージ アカウント キーは必ずペアで作成されるので、すぐに切り換えることができる未使用のストレージ キーを常に&1; つ以上確保できます。 ストレージ アカウント キーを表示するには、次のコードを使用します。
 
-```azurecli
-azure storage account keys list myStorageAccount \
---resource-group myResourceGroup
-```
+    ```azurecli
+    azure storage account keys list myStorageAccount \
+    --resource-group myResourceGroup
+    ```
+3. File Storage 共有を作成します。
 
-## <a name="create-the-azure-file-storage-share"></a>Azure File Storage 共有の作成
+    File Storage 共有に SMB 共有が含まれます。 クォータは常にギガバイト (GB) 単位で表されます。 File Storage 共有を作成するには、次のコードを使用します。
 
-SMB 共有が含まれる File Storage 共有を作成します。  クォータは常にギガバイト (GB) で表されます。
+    ```azurecli
+    azure storage share create mystorageshare \
+    --quota 10 \
+    --account-name myStorageAccount \
+    --account-key nPOgPR<--snip-->4Q==
+    ```
 
-```azurecli
-azure storage share create mystorageshare \
---quota 10 \
---account-name myStorageAccount \
---account-key nPOgPR<--snip-->4Q==
-```
+4. マウント ポイント ディレクトリを作成します。
 
-## <a name="create-the-mount-point-directory"></a>マウント ポイントのディレクトリを作成します。
+    SMB 共有のマウント先となる、Linux ファイル システムのローカル ディレクトリを作成する必要があります。 ローカル マウント ディレクトリに書き込まれるファイルや読み取られるファイルは、File Storage でホストされる SMB 共有に転送されます。 ディレクトリを作成するには、次のコードを使用します。
 
-SMB 共有のマウント先となるローカルのディレクトリが Linux ファイル システム上に必要です。  ローカル マウント ディレクトリに書き込まれるファイルや読み取られるファイルは、Azure File Storage にホストされる SMB に転送されます。
+    ```bash
+    sudo mkdir -p /mnt/mymountdirectory
+    ```
 
-```bash
-sudo mkdir -p /mnt/mymountdirectory
-```
+5. 次のコードを使用して SMB 共有をマウントします。
 
-## <a name="mount-the-smb-share"></a>SMB 共有のマウント
+    ```azurecli
+    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=myStorageAccount,password=myStorageAccountkey,dir_mode=0777,file_mode=0777
+    ```
 
-```azurecli
-sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=myStorageAccount,password=myStorageAccountkey,dir_mode=0777,file_mode=0777
-```
+6. 再起動中に SMB マウントを維持します。
 
-## <a name="persist-the-smb-mount-through-reboots"></a>再起動後の SMB のマウントの維持
+    Linux VM を再起動すると、マウントされた SMB 共有はシャットダウン中にマウント解除されます。 起動時に SMB 共有を再マウントするには、Linux の /etc/fstab に行を追加する必要があります。 Linux では、fstab ファイルを使用して、起動プロセスでマウントする必要があるファイル システムを示します。 SMB 共有を追加することによって、File Storage 共有は Linux VM に永続的にマウントされるファイル システムとして設定されます。 File Storage SMB 共有を新しい VM に追加するには、cloud-init を使用します。
 
-Linux VM を再起動すると、マウントされた SMB 共有はシャットダウン中にアンマウントされます。  起動時に SMB 共有を再マウントするは、Linux の `/etc/fstab` に行を追加する必要があります。  Linux は `fstab` ファイルを使用して、起動中にマウントする必要があるファイル システムを認識します。  SMB 共有を追加することによって、Azure File Storage 共有は Linux VM に永続的にマウントされるファイル システムとして設定されます。  Azure File Storage SMB 共有を新しい VM に追加するには、`cloud-init` を使用します。
-
-```bash
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
-```
+    ```bash
+    //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 

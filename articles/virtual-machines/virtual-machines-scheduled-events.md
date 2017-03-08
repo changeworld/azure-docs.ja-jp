@@ -16,44 +16,38 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 translationtype: Human Translation
-ms.sourcegitcommit: c7f552825f3230a924da6e5e7285e8fa7fa42842
-ms.openlocfilehash: 541709ca17b96f8334e67dbdbbd9a10eefffa06b
+ms.sourcegitcommit: bb4f7c4977de290e6e148bbb1ae8b28791360f96
+ms.openlocfilehash: 1a385de3c00b9288d9e1245f04969a9099bf5b45
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-metadata-service---scheduled-events"></a>Azure Metadata Service: スケジュールされたイベント
+# <a name="azure-metadata-service---scheduled-events-preview"></a>Azure Metadata Service: スケジュールされたイベント (プレビュー)
 
-Azure Metadata Service では、Azure でホストされている Virtual Machine に関する情報を発見することができます。 公開されているカテゴリの&1; つであるスケジュールされたイベントによって、今後のイベント (再起動など) に関する情報が表示されるため、アプリケーションはそのイベントに対して準備をして、中断を最小限に抑えることができます。 これは、PaaS および IaaS を含むすべての Azure Virtual Machine の種類に対応しています。 このサービスにより、Virtual Machine が予防的タスクを実行する時間が確保され、イベントの影響を最小限に抑えることができます。 たとえば、インスタンスの再起動がスケジュールされていることが確認された場合、中断を回避するために、サービスはセッションの排出、新しいリーダーの選択、またはデータのコピーを行う可能性があります。
+> [!NOTE] 
+> プレビューは、使用条件に同意することを条件に使用することができます。 詳細については、[Microsoft Azure プレビューの追加使用条件] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) をご覧ください。
+>
 
+Azure Metadata Service のサブサービスの&1; つであるスケジュールされたイベントにより、今後のイベント (再起動など) に関する情報が表示されるため、アプリケーションはそれらのイベントに向けて準備し、中断を抑えることができます。 このサービスは、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 スケジュールされたイベントにより、Virtual Machine が予防的タスクを実行する時間が確保され、イベントの影響を最小限に抑えることができます。 
 
 
 ## <a name="introduction---why-scheduled-events"></a>はじめに - スケジュールされたイベントが使用される理由
 
-スケジュールされたイベントを使用することにより、Virtual Machine の可用性に影響をおよぼす可能性のある今後のイベントを確認 (発見) でき、予防的操作を行うことによって、サービスへの影響を最小限に抑えることができます。
-状態を維持するためにレプリケーションの手法を使用するマルチ インスタンスのワークロードでは、複数のインスタンスで頻繁に機能停止が発生する可能性があります。 このような機能停止により、負荷の高いタスク (インデックスの再構築など) や、レプリカの損失が発生することがあります。
-その他の多くの場合では、グレースフル シャット ダウン シーケンスを使用すると、全体的なサービスの利用可能性が向上します。 たとえば、実行中のトランザクションの完了 (またはキャンセル)、クラスター内の他の VM へのタスクの再割り当て (手動フェールオーバー)、ロード バランサー プールからの Virtual Machine の削除などです。
-今後のイベントについて管理者に通知したり、単にそのようなイベントのログ記録をつけたりすることで、クラウドでホストされているアプリケーションのサービスの向上につながる場合があります。
-
-Azure Metadata Service では、以下のユース ケース内のスケジュールされたイベントが表示されます。
--   "影響力の強い" メンテナンス (ホスト OS ロールアウトなど) を開始したプラットフォーム
--   "影響力の弱い" メンテナンス (インプレース VM 移行など) を開始したプラットフォーム
--   対話型の呼び出し (ユーザーの再起動や VM の再デプロイなど)
-
+スケジュールされたイベントを使用すると、サービスへの影響を抑えるための対策を講じることができます。 状態を維持するためにレプリケーションの手法を使用するマルチ インスタンスのワークロードでは、複数のインスタンスで頻繁に機能停止が発生する可能性があります。 このような機能停止により、負荷の高いタスク (インデックスの再構築など) や、レプリカの損失が発生することがあります。 その他の多くの場合では、グレースフル シャット ダウン シーケンスを使用すると、全体的なサービスの利用可能性が向上します。 たとえば、実行中のトランザクションの完了 (またはキャンセル)、クラスター内の他の VM へのタスクの再割り当て (手動フェールオーバー)、ロード バランサー プールからの Virtual Machine の削除などです。 今後のイベントについて管理者に通知したり、単にそのようなイベントのログ記録をつけたりすることで、クラウドでホストされているアプリケーションのサービスの向上につながる場合があります。
+Azure Metadata Service では、次のユース ケースでスケジュールされたイベントを表示します。
+-    プラットフォームによって開始されたメンテナンス (ホスト OS ロールアウトなど)
+-    ユーザーが開始した呼び出し (ユーザーによる再起動や VM の再デプロイなど)
 
 
 ## <a name="scheduled-events---the-basics"></a>スケジュールされたイベントの基本  
 
 Azure Metadata Service によって、VM 内部からの REST エンドポイントを使用した Virtual Machine の実行に関する情報が表示されます。 情報は、VM の外部に公開されないように、ルーティングできない IP 経由で提供されます。
 
-### <a name="scope"></a>Scope 
-スケジュールされたイベントは、クラウド サービス内のすべての Virtual Machine または可用性セット内のすべての Virtual Machine に表示されます。 そのため、イベント内の **[リソース]** フィールドをチェックして、影響を受ける VM を特定する必要があります。
+### <a name="scope"></a>Scope
+スケジュールされたイベントは、クラウド サービス内のすべての Virtual Machine または可用性セット内のすべての Virtual Machine に表示されます。 そのため、イベント内の **[リソース]** フィールドをチェックして、影響を受ける VM を特定する必要があります。 
 
 ### <a name="discover-the-endpoint"></a>エンドポイントの検出
-Virtual Machine が Virtual Network (VNet) 内で作成されている場合、メタデータ サービスはルーティングできない IP (169.254.169.254) 経由で提供されます。
-
-Cloud Services (PaaS) に Virtual Machine が使用されている場合、メタデータ サービスのエンドポイントはレジストリを使用して検出される可能性があります。
-
-    {HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure\DeploymentManagement}
+Virtual Machine が Virtual Network (VNet) 内で作成されている場合、メタデータ サービスはルーティング不可能な IP (169.254.169.254) 経由で提供されます。それ以外の場合は、クラウド サービスとクラシック VM の既定の設定として、使用するエンドポイントを検出するための追加のロジックが必要となります。 ホスト エンドポイントを検出する方法については、[こちらのサンプル] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm) を参照してください。
 
 ### <a name="versioning"></a>バージョン管理 
 メタデータ サービスでは、http://{ip}/metadata/{version}/scheduledevents の形式でバージョン管理された API が使用されます。サービスが、http://{ip}/metadata/latest/scheduledevents で提供されている最新のバージョンを使用するようにすることをお勧めします。
@@ -62,8 +56,11 @@ Cloud Services (PaaS) に Virtual Machine が使用されている場合、メ�
 メタデータ サービスのクエリを実行するときは、ヘッダー *Metadata: true* を指定する必要があります。 
 
 ### <a name="enable-scheduled-events"></a>スケジュールされたイベントの有効化
-スケジュールされたイベントを初めて呼び出すときに、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しには最大で&1; 分間の遅延が生じる可能性があります。 
+スケジュールされたイベントを初めて呼び出すときに、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しでは最大&2; 分の応答遅延が発生すると予想されます。
 
+### <a name="testing-your-logic-with-user-initiated-operations"></a>ユーザーが開始した操作でのロジックのテスト
+ロジックをテストするには、Azure Portal、API、CLI、または PowerShell を使用して、スケジュールされたイベントが発生する操作を開始します。 仮想マシンを再起動すると、イベントの種類が "Reboot" であるスケジュールされたイベントが発生します。 仮想マシンを再デプロイすると、イベントの種類が "Redeploy" であるスケジュールされたイベントが発生します。
+どちらの場合も、スケジュールされたイベントにより、アプリケーションは時間をかけて正常にシャットダウンすることが可能になるため、ユーザーが開始した操作の完了に時間がかかります。 
 
 ## <a name="using-the-api"></a>API を使用する
 
@@ -76,10 +73,11 @@ Cloud Services (PaaS) に Virtual Machine が使用されている場合、メ�
 スケジュールされたイベントがある場合は、応答にイベントの配列が含まれます。 
 
     {
+     "DocumentIncarnation":{IncarnationID},
      "Events":[
           {
                 "EventId":{eventID},
-                "EventType":"Reboot" | "Redeploy" | "Pause",
+                "EventType":"Reboot" | "Redeploy" | "Freeze",
                 "ResourceType":"VirtualMachine",
                 "Resources":[{resourceName}],
                 "EventStatus":"Scheduled" | "Started",
@@ -89,7 +87,7 @@ Cloud Services (PaaS) に Virtual Machine が使用されている場合、メ�
     }
 
 EventType は、以下の場合に Virtual Machine が受けると想定される影響をキャプチャします。
-- 一時停止: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。
+- Freeze: Virtual Machine は数秒間の一時停止がスケジュールされています。 メモリ、開いているファイル、ネットワーク接続への影響はありません。
 - 再起動: Virtual Machine は再起動がスケジュールされています (メモリをワイプします)。
 - 再デプロイ: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 
 
@@ -102,7 +100,7 @@ EventType は、以下の場合に Virtual Machine が受けると想定され�
 
 ## <a name="powershell-sample"></a>PowerShell のサンプル 
 
-次のサンプルでは、スケジュールされたイベントのメタデータ サーバーを読み取り、受信確認を行う前に、アプリケーション イベント ログに記録します。
+次のサンプルでは、スケジュールされたイベントのメタデータ サーバーを読み取り、受信確認を行う前にアプリケーション イベント ログに記録します。
 
 ```PowerShell
 $localHostIP = "169.254.169.254"
@@ -136,7 +134,7 @@ for ($eventIdx=0; $eventIdx -lt $scheduledEventsResponse.Events.Length ; $eventI
 
 
 ## <a name="c-sample"></a>C\# のサンプル 
-次のコードは、メタデータ サービスと通信するための API を表示するクライアントのものです
+Metadata Service と通信する API を表示するクライアントのサンプルを次に示します。
 ```csharp
    public class ScheduledEventsClient
     {
@@ -304,9 +302,4 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>次のステップ 
 [Azure での仮想マシンに対する計画的なメンテナンス](./virtual-machines-linux-planned-maintenance.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 
