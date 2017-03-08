@@ -4,7 +4,7 @@ description: "ACR (アクセス制御レコード) を管理して、StorSimple 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 11252938-5b97-4178-8c37-f58eaa3d00b1
 ms.service: storsimple
@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 037da7a5647f5b3d2b0cf1364fab050406be3b62
+ms.sourcegitcommit: f45d8e2b848e930a790e7bf38c2b09fbdaaf2fab
+ms.openlocfilehash: 30b6aedd9b4b7913f6862b34582f3ae96c9eae5f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>StorSimple Manager サービスを使用して、StorSimple Virtual Array のアクセス制御レコードを管理する
-## <a name="overview"></a>Overview
+# <a name="use-storsimple-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Manager を使用して StorSimple Virtual Array のアクセス制御レコードを管理する
+
+## <a name="overview"></a>概要
 ACR (アクセス制御レコード) を使用すると、StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれる) 上のボリュームに接続できるホストを指定できます。 ACR は特定のボリュームに設定され、ホストの iSCSI 修飾名 (IQN) を含みます。 ホストがボリュームに接続しようとすると、デバイスは、そのボリュームに関連付けられている ACR を確認し、該当する IQN 名を探します。一致するものがある場合は、接続が確立されます。 **[構成]** ページの**アクセス制御レコード** セクションには、すべてのアクセス制御レコードとそれに対応するホストの IQN が表示されます。
 
 このチュートリアルでは、次の一般的な ACR に関連するタスクについて説明します。
@@ -43,7 +46,7 @@ Windows Server 2012 を実行する Windows ホストの IQN を取得するに�
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 ## <a name="add-an-acr"></a>ACR の追加
-StorSimple Manager サービスの **[構成]** ページを使用して ACR を追加します。 通常は、1 つの ACR を 1 つのボリュームに関連付けます。
+StorSimple Manager サービスの **[構成]** ページを使用して ACR を追加します。 通常は、1 つの ACR を&1; つのボリュームに関連付けます。
 
 ボリュームへの ACR の関連付けについては、 [ボリュームの追加](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関するセクションをご覧ください。
 
@@ -102,11 +105,6 @@ ACR を削除するには、Azure クラシック ポータルの **[構成]** �
 4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-manage-acrs/check-icon.png)に関するセクションをご覧ください。 表形式の一覧が更新され、削除が反映されます。
 
 ## <a name="next-steps"></a>次のステップ
-* [ボリュームの追加と ACR の構成](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* [ボリュームの追加と ACR の構成](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細を確認します。
 
 

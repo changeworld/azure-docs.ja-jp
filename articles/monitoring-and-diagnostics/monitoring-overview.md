@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
-ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
+ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
+ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 この記事では、Azure リソースの監視の概念の概要を説明します。 特定の種類に該当するリソースについては、詳しい情報のある場所も紹介しています。  Azure 以外の観点からアプリケーションを監視する場合の概要については、「[監視と診断のガイダンス](../best-practices-monitoring.md)」をご覧ください。
 
 Azure Monitor のビデオ チュートリアルは、  
-[Microsoft Azure 監視と診断の詳細](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)に関するページから確認できます。 この [Microsoft Azure 監視と診断の詳細](https://channel9.msdn.com/events/Ignite/2016/BRK2234)に関するページには、Azure Monitor の使用シナリオについて説明する追加ビデオもあります。  
+「[Get Started with Azure Monitor](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)」 (Azure Monitor を使ってみる) をご覧ください。 Azure Monitor の使用シナリオについて説明する追加ビデオ「[Explore Microsoft Azure monitoring and diagnostics](https://channel9.msdn.com/events/Ignite/2016/BRK2234)」 (Microsoft Azure 監視と診断の詳細) もあります。  
 
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 そのような知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
@@ -113,7 +114,7 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * データを Event Hubs に送り、リアルタイム分析を実行するサードパーティ製ツールにルーティングする
 
 ### <a name="automate"></a>自動化
-イベントはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。以下に例を示します。
+アラートはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。 たとえば、次のようになります。
 
 * データを使用し、アプリケーションの負荷に応じてコンピューティング インスタンスを自動でスケールアップまたはスケールダウンする
 * メトリックが事前に定義されているしきい値に達したときにメールを送信する
@@ -145,9 +146,4 @@ Azure では、ベアメタル インフラストラクチャからアプリケ�
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) App Service Web アプリの問題を診断する場合には、こちらをご覧ください。
 * [Azure Storage のトラブルシューティング](../storage/storage-e2e-troubleshooting.md) Storage Blobs、テーブル、またはキューを使用している場合には、こちらをご覧ください。
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) と [Operations Management Suite](https://www.microsoft.com/oms/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

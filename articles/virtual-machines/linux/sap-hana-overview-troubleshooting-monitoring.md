@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 195ee1537df6ed8c0afe245f414061a7af6fed73
-ms.openlocfilehash: 036dc46cd3a2944500b068038a3d15a2cccaaf40
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: da712db02fe91f7d075e5203b627a12f341fac78
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="troubleshooting-and-monitoring-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視
+# <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視の方法
 
 
 ## <a name="monitoring-in-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) での監視
@@ -187,10 +189,5 @@ SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\
 SAP HANA パラメーターをチェックする **HANA\_Configuration\_Parameters\_Rev70+**。
 
 ![SAP HANA パラメーターをチェックする HANA\_Configuration\_Parameters\_Rev70+](./media/sap-hana-overview-troubleshooting-monitoring/image15-configuration-parameters.png)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

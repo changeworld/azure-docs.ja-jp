@@ -12,16 +12,17 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/23/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: b8c5e53ed5fe86ed099e37644d405080477f8c27
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="add-additional-azure-storage-accounts-to-hdinsight"></a>HDInsight に Azure ストレージ アカウントを追加する
+# <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
 Linux をオペレーティング システムとして使用する既存の HDInsight クラスターに Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。
 
@@ -32,7 +33,7 @@ Linux をオペレーティング システムとして使用する既存の HDI
 
 このスクリプトは、次のパラメーターを受け取ります。
 
-* __Azure ストレージ アカウント名__: HDInsight クラスターに追加するストレージ カウントの名前。 スクリプトの実行後、HDInsight は、このストレージ アカウントに格納されているデータを読み書きできるようになります。
+* __Azure ストレージ アカウント名__: HDInsight クラスターに追加するストレージ カウントの名前。 スクリプトの実行後は、HDInsight は、このストレージ アカウントに格納されているデータの読み書きができます。
 
 * __Azure ストレージ アカウント キー__: ストレージ アカウントへのアクセスを許可するキー。
 
@@ -44,7 +45,7 @@ Linux をオペレーティング システムとして使用する既存の HDI
 
 * ストレージ アカウントが存在し、キーを使用してアクセスできることを確認します。
 
-* クラスターの資格情報を使用して、キーを暗号化します。 そうすることで、HDInsight ユーザーが Ambari からストレージ アカウント キーを簡単に抽出して使用することができないようにします。
+* クラスターの資格情報を使用して、キーを暗号化します。
 
 * core-site.xml ファイルにストレージ アカウントを追加します。
 
@@ -74,9 +75,9 @@ Azure Portal、Azure PowerShell、および Azure CLI を通じてスクリプ�
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 
-Azure Portal で HDInsight クラスターを表示しているときに、__[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントが表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントが表示されません。
+Azure Portal で HDInsight クラスターを表示しているときに、__[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
 
-この問題は、スクリプトがクラスターの core-site.xml 構成のみを変更するために発生します。 この情報は、現在、Azure 管理 API を使用してクラスター情報を取得するときに使用されません。
+ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
 このスクリプトを使用してクラスターに追加されたストレージ アカウント情報を表示するには、Ambari REST API を使用します。 次のコマンドは、Ambari の JSON データを取得および解析するために [cURL (http://curl.haxx.se/)](http://curl.haxx.se/) および [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) を使用する方法を示しています。
 
@@ -96,13 +97,11 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>キーの変更後にストレージにアクセスできない
 
-ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。
+ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-この問題は、クラスターの core-site.xml に格納されているキーが古いキーであるために発生します。
+スクリプト アクションを再実行しても、キーは__更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
 
-スクリプト アクションを再実行しても、キーは__更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認し、 存在する場合は何も変更しないためです。
-
-この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 そのためには、次の手順に従ってください。
+この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
 
 1. Web ブラウザーで、HDInsight クラスターの Ambari Web UI を開きます。 URI は https://CLUSTERNAME.azurehdinsight.net です。 __CLUSTERNAME__ をクラスターの名前に置き換えます。
 
@@ -131,9 +130,4 @@ Azure Portal で HDInsight クラスターを表示しているときに、__[�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、既存の HDInsight クラスターにストレージ アカウントを追加する方法について説明しました。 スクリプト アクションの詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+既存の HDInsight クラスターにストレージ アカウントを追加する方法について説明しました。 スクリプト アクションの詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。

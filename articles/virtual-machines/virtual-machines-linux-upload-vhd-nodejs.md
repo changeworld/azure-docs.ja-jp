@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 34123faec2efc85ff6e6686c79eadc04f7f08a52
-ms.openlocfilehash: aa8161e2ae96ce67a20e87fc1e4b27b6ff24d439
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 60e4ee8ff7e9252e3116d15e19ae378570e37196
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: aa8161e2ae96ce67a20e87fc1e4b27b6ff24d439
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](#quick-commands) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="quick-commands"></a>クイック コマンド
@@ -246,10 +247,5 @@ azure group deployment create --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: saurabh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e9258143cae9d9f8ba1f357617e2c45cf8487ab9
-ms.openlocfilehash: 2bd7efaaf45267ccdad390354ea98fafff1a6cb5
+ms.sourcegitcommit: 855ecb73854e20eb52f343e5d190cbcbaa9ad080
+ms.openlocfilehash: 85adb953254496e969fb8d459a0c79592708c835
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-windows-virtual-machine-with-monitoring-and-diagnostics-using-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する
+# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
 Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure リソース マネージャー テンプレートの一部として拡張機能を含めることによって、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure 診断の拡張機能を追加する
@@ -122,7 +124,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 上記の構成のメトリック定義の xml ノードは、xml の *PerformanceCounter* で先に定義されているパフォーマンス カウンターを集計して格納する方法を定義するため、重要な構成要素です。 
 
 > [!IMPORTANT]
-> これらのメトリックは、Azure ポータルでのグラフやアラートの監視を促進します。  Azure ポータルで VM 監視データを表示するには、*resourceID* および **MetricAggregation** のある **Metrics** ノードを VM の診断構成に含める必要があります。 
+> これらのメトリックは、Azure Portal でのグラフやアラートの監視を促進します。  Azure Portal で VM 監視データを表示するには、*resourceID* および **MetricAggregation** のある **Metrics** ノードを VM の診断構成に含める必要があります。 
 > 
 > 
 
@@ -167,10 +169,5 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、リソ
 * 診断の拡張機能を含む Windows 仮想マシンの完全なサンプル テンプレートは、「 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
 * [Azure PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) または [Azure コマンド ライン](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用してリソース マネージャー テンプレートをデプロイします
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

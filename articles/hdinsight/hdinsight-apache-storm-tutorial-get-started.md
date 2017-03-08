@@ -14,15 +14,17 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 02/28/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: 4b70f30bf8d5a0545bb85a791cb63f514be0ba74
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: e505d02895abd011661b3e4f66c7f4f7ea042358
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="apache-storm-tutorial-get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要
+# <a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-hdinsight"></a>Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要
+
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Microsoft Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。 
 
 > [!IMPORTANT]
@@ -41,62 +43,60 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-a-storm-cluster"></a>Storm クラスターを作成する
-HDInsight の Storm では、ログ ファイルとクラスターに送信されるトポロジを格納する Azure Blob Storage を使用します。 次の手順を使用して、クラスターに使用する Azure ストレージ アカウントを作成します。
 
-1. [Azure Portal][preview-portal] にサインインします。
-2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
+HDInsight で Storm クラスターを作成するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選択します。
    
-    ![Create a new cluster in the Azure Portal](./media/hdinsight-apache-storm-tutorial-get-started/new-cluster.png)
-3. **クラスター名**を入力します。 クラスターを使用できる場合は、**クラスター名**の横に緑色のチェック マークが表示されます。
-4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリを選択し、クラスターで使用する Azure サブスクリプションを選択します。
-5. **[クラスターの種類の選択]** を使用して **Storm** クラスターを選択します。 **[オペレーティング システム]** で [Windows] を選択します。 **[Cluster Tier (クラスター階層)]** に [STANDARD (標準)] を選択します。 最後に、選択ボタンを使用してこれらの設定を保存します。
+    ![HDInsight クラスターの作成](./media/hdinsight-apache-storm-tutorial-get-started/create-hdinsight.png)
+
+2. **[基本]** ブレードで、次の情報を入力します。
+
+    * **[クラスター名]**: HDInsight クラスターの名前。
+    * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
+    * **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]**: HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Ambari Web UI や REST API などのサービスにアクセスします。
+    * **Secure Shell (SSH) のユーザー名**: これらのフィールドは既定値のままにします。 Windows ベースの HDInsight クラスターには使用されません。
+    * **[リソース グループ]**: クラスターが作成されるリソース グループ。
+    * **[場所]**: クラスターが作成される Azure リージョン。
    
-   ![クラスター名、クラスターの種類、および OS の種類](./media/hdinsight-apache-storm-tutorial-get-started/clustertype.png)
-6. **[リソース グループ]**では、ドロップダウン リストを使用して既存のリソース グループの一覧を表示し、クラスターを作成するグループを選択できます。 または、**[新規]** をクリックし、新しいリソース グループの名前を入力します。 新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
-7. **[資格情報]** を選択し、**[クラスターのログイン ユーザー名]** と **[クラスターのログイン パスワード]** を入力します。 最後に、**[選択]** をクリックして資格情報を設定します。 このドキュメントではリモート デスクトップは使用しないため、無効にしておくことができます。
+    ![サブスクリプションを選択します。](./media/hdinsight-apache-storm-tutorial-get-started/hdinsight-basic-configuration.png)
+
+3. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードで次の値を設定します。
    
-    ![[クラスターの資格情報] ブレード](./media/hdinsight-apache-storm-tutorial-get-started/clustercredentials.png)
-8. **[データ ソース]** では、エントリを選択して既存のデータ ソースを選択するか、新しいデータ ソースを作成できます。
-   
-    ![[データ ソース] ブレード](./media/hdinsight-apache-storm-tutorial-get-started/datasource.png)
-   
-    現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。 次の説明を参照して、 **[データ ソース]** ブレードのエントリを理解してください。
-   
-   * **[選択方法]**: サブスクリプションのストレージ アカウントを参照可能にする場合は、**[すべてのサブスクリプションから]** を設定します。 既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
-   * **[新規作成]**: これを使用して、新しいストレージ アカウントを作成します。 表示されたフィールドに、ストレージ アカウントの名前を入力します。 名前を使用できる場合は、緑色のチェック マークが表示されます。
-   * **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。 任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
-   * **[場所]**: ストレージ アカウントが存在するリージョン、またはストレージ アカウントの作成先のリージョン。
+    * **[クラスターの種類]**: Storm
+
+    * **[オペレーティング システム]**: Windows
+
+    * **[バージョン]**: Storm 0.10.0 (HDI 3.3)
+
+        > [!NOTE]
+        > Linux オペレーティング システムでは、HDInsight バージョン 3.4 以降のみ利用可能です。
+
+    * **[クラスター レベル]**: Standard
      
-     > [!IMPORTANT]
-     > 既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。 クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
-     > 
-     > 
-   * **[選択]**: これを使用してデータ ソースの構成を保存します。
-9. **[ノード価格レベル]** を選択して、このクラスターのために作成されるノードに関する情報を表示します。 既定では、worker ノードの数は **4** に設定されています。 これを **1** に設定します。このチュートリアルではこの数で十分であり、クラスターのコストが削減されます。 クラスターの推定コストがブレードの下部に表示されます。
+    最後に、**[選択]** ボタンをクリックして設定を保存します。
+     
+    ![クラスターの種類の選択](./media/hdinsight-apache-storm-tutorial-get-started/set-hdinsight-cluster-type.png)
+
+4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
+
+5. **[ストレージ]** ブレードで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このブレードの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+
+    ![HDInsight のストレージ アカウント設定](./media/hdinsight-apache-storm-tutorial-get-started/set-hdinsight-storage-account.png)
+
+6. **[概要]** ブレードで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
    
-    ![[ノード価格レベル] ブレード](./media/hdinsight-apache-storm-tutorial-get-started/nodepricingtiers.png)
+    ![クラスター構成の概要](./media/hdinsight-apache-storm-tutorial-get-started/hdinsight-configuration-summary.png)
    
-    **[選択]** をクリックして、**[ノード価格レベル]** 情報を保存します。
-10. **[オプションの構成]**を選択します。 このブレードでは、クラスターのバージョンを選択し、その他のオプションの設定 (**Virtual Network** への参加など) を構成できます。
-    
-     ![[オプションの構成] ブレード](./media/hdinsight-apache-storm-tutorial-get-started/optionalconfiguration.png)
-11. **[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。 これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。 アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
-    
-    | プロビジョニング中 | プロビジョニング完了 |
-    | --- | --- |
-    | ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-apache-storm-tutorial-get-started/provisioning.png) |![プロビジョニングされたクラスターのタイル](./media/hdinsight-apache-storm-tutorial-get-started/provisioned.png) |
-    
     > [!NOTE]
-    > クラスターが作成されるまで、通常は約 15 分かかります。 プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
-    > 
-    > 
+    > クラスターの作成には最大で 20 分かかります。
 
 ## <a name="run-a-storm-starter-sample-on-hdinsight"></a>HDInsight での Storm Starter サンプルの実行
 この Apache Storm チュートリアルでは、GitHub で Storm Starter サンプルを使用したビッグ データ分析の概要について説明します。
 
 HDInsight クラスターの各 Storm には、クラスターで Storm トポロジをアップロードし実行するために使用する Storm ダッシュボードが付属しています。 各クラスターには、Storm ダッシュボードから直接実行できるトポロジのサンプルも付属しています。
 
-### <a name="a-idconnectaconnect-to-the-dashboard"></a><a id="connect"></a>ダッシュボードへの接続
+### <a id="connect"></a>ダッシュボードへの接続
 ダッシュボードは、**clustername** がクラスターの名前である **https://&lt;clustername>.azurehdinsight.net//** にあります。 スタート画面でクラスターを選択し、ブレードの上部にある **[ダッシュボード]** リンクを選択することで、ダッシュボードへのリンクを見つけることもできます。
 
 ![Storm ダッシュボードのリンクを使用した Azure ポータル](./media/hdinsight-apache-storm-tutorial-get-started/dashboard.png)
@@ -112,7 +112,7 @@ Storm ダッシュボードが読み込まれると、 **[トポロジの送信]
 
 **[トポロジの送信]** フォームを使用して、Storm トポロジが含まれている .jar ファイルをアップロードし、実行できます。 また、これにはクラスターに付属しているいくつかの基本的なサンプルも含まれています。
 
-### <a name="a-idrunarun-the-word-count-sample-from-the-storm-starter-project-in-github"></a><a id="run"></a>GitHub の Storm Starter プロジェクトからワードカウント サンプルを実行する
+### <a id="run"></a>GitHub の Storm Starter プロジェクトからワードカウント サンプルを実行する
 クラスターに付属しているサンプルには、ワードカウント トポロジのいくつかのバリエーションが含まれます。 これらのサンプルには、センテンスをランダムに出力する**スパウト**と各センテンスを個別の単語に分割し、各単語が発生した回数をカウントする**ボルト**が含まれています。 これらのサンプルは、Apache Storm の一部である [Storm Starter サンプル](https://github.com/apache/storm/tree/master/examples/storm-starter)で提供されています。
 
 次の手順に従って、Storm Starter サンプルを実行します。
@@ -132,7 +132,7 @@ Storm ダッシュボードが読み込まれると、 **[トポロジの送信]
    > 
    > 
 
-### <a name="a-idmonitoramonitor-the-topology"></a><a id="monitor"></a>トポロジの監視
+### <a id="monitor"></a>トポロジの監視
 Storm UI を使用してトポロジを監視できます。
 
 1. Storm ダッシュボードの上部で、 **[Storm UI]** を選択します。 クラスターの情報と実行中のすべてのトポロジに関する概要情報が表示されます。
@@ -204,7 +204,7 @@ Storm UI を使用してトポロジを監視できます。
 ## <a name="summary"></a>概要
 この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジをデプロイ、監視、管理する方法について説明しました。
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 * **HDInsight Tools for Visual Studio** - HDInsight ツールでは、前述の Storm ダッシュボードのように、Visual Studio を使用して Storm トポロジを送信、監視、管理できます。 また HDInsight ツールは、C# Storm のトポロジを作成する機能を提供しており、クラスター上にデプロイし、実行できるトポロジ サンプルを含んでいます。
   
     詳細については、「 [HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
@@ -233,9 +233,4 @@ Storm UI を使用してトポロジを監視できます。
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

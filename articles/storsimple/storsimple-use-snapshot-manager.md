@@ -4,7 +4,7 @@ description: "StorSimple Snapshot Manager のユーザー インターフェイ�
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/25/2016
+ms.date: 02/27/2017
 ms.author: v-sharos
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 88abde99af417f325c12aa2f8790d711fd7fd533
+ms.sourcegitcommit: 7651a2ba6c206bb39d7cf8839f6f0f828fb3bc16
+ms.openlocfilehash: 25265349cb8cb47e93b7bea7103f1d06878a6158
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-snapshot-manager-user-interface"></a>StorSimple Snapshot Manager のユーザー インターフェイス
+# <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>StorSimple Snapshot Manager ユーザー インターフェイスを使用してバックアップ ジョブとバックアップ カタログを管理する
+
 ## <a name="overview"></a>概要
 StorSimple Snapshot Manager の直感的なユーザー インターフェイスを使用して、バックアップを作成および管理できます。 このチュートリアルでは、ユーザー インターフェイスの概要と各コンポーネントの使用方法について説明します。 StorSimple Snapshot Manager の詳細については、「 [StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)
 
@@ -110,7 +113,7 @@ StorSimple Snapshot Manager の操作を次の表に示します。
 | 複製 |**[バックアップ カタログ]**、**[クラウド スナップショット]** の順に展開し、日付のあるバックアップをクリックして、**結果**ウィンドウでボリュームを選択します。 |クラウド スナップショットのコピーを作成し、指定した場所に保存するには、 **[複製]** をクリックします。 |
 | デバイスの構成 |**[デバイス]** ノードを右クリックします。 |1 つのデバイスまたは複数のデバイスを、Windows ホストに接続するように構成するには、 **[デバイスの構成]** をクリックします。 |
 | バックアップ ポリシーの作成 |次のいずれかを実行します。<ul><li>**[バックアップ ポリシー]** を右クリックします。</li><li>**[ボリューム グループ]** をクリックまたは展開し、ボリューム グループを右クリックします。</li><li>**[バックアップ カタログ]** をクリックまたは展開し、ボリューム グループを右クリックします。</li></ul> |ボリューム グループのスケジュールされたバックアップを構成するには、 **[バックアップ ポリシーの作成]** をクリックします。 |
-| ボリューム グループの作成 |次のいずれかを実行します。<ul><li>**[ボリューム]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。</li><li> **[ボリューム グループ]** ノードを右クリックします。</li></ul> |ボリューム グループにボリュームを割り当てるには、 **[ボリューム グループの作成]** をクリックします。 |
+| ボリューム グループの作成 |次のいずれかを実行します。<ul><li>**[ボリューム]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。</li><li>**[ボリューム グループ]** ノードを右クリックします。</li></ul> |ボリューム グループにボリュームを割り当てるには、 **[ボリューム グループの作成]** をクリックします。 |
 | 削除 |ノードまたは結果をクリックします (この項目は、多くの **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 |選択したノードまたは結果を削除するには、 **[削除]** をクリックします。 確認のダイアログ ボックスが表示されたら、削除を実行するか取り消します。 |
 | 詳細 |**[デバイス]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。 |デバイスの構成の詳細を表示するには、 **[詳細]** をクリックします。 |
 | 編集 |**[バックアップ ポリシー]** をクリックし、**結果**ウィンドウでポリシーを右クリックします。 |ボリューム グループのバックアップ スケジュールを変更するには、 **[編集]** をクリックします。 |
@@ -205,7 +208,7 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 |:--- |:--- |
 | ![左矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |前のページに戻るには、左矢印アイコンをクリックします。 |
 | ![右矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |次のページに移動するには、右矢印アイコンをクリックします (矢印がグレーの場合、この操作は使用できません)。 |
-| ![1 つ上のレベル アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |コンソール ツリー ( **スコープ** ウィンドウ) で 1 レベル上に移動するには、"1 つ上のレベル" アイコンをクリックします。 |
+| ![1 つ上のレベル アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |コンソール ツリー ( **スコープ** ウィンドウ) で&1; レベル上に移動するには、"1 つ上のレベル" アイコンをクリックします。 |
 | ![コンソール ツリーの表示/非表示](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) |**スコープ** ウィンドウの表示/非表示を切り替えるには、"コンソール ツリーの表示/非表示" アイコンをクリックします。 |
 | ![リストのエクスポート](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) |指定した CSV ファイルにリストをエクスポートするには、"リストのエクスポート" アイコンをクリックします。 |
 | ![ヘルプ アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png) |MMC のオンライン ヘルプ トピックを開くには、"ヘルプ" アイコンをクリックします。 |
@@ -448,10 +451,5 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 * [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

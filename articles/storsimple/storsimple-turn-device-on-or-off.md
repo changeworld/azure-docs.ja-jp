@@ -4,7 +4,7 @@ description: "新しい StorSimple デバイスの電源を入れる方法、シ
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/23/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5943276236d239e8ee2eba302f52e9445203564d
+ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
+ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="turn-your-storsimple-device-on-or-off"></a>StorSimple デバイスのオンとオフ
-## <a name="overview"></a>Overview
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのオンとオフ
+## <a name="overview"></a>概要
 Microsoft Azure StorSimple デバイスを通常のシステム運用の一環としてシャットダウンする必要はありません。 ただし、やむを得ずシャットダウンしたデバイスや新しいデバイスの電源をオンにしなければならないケースはあります。 一般にシャットダウンは、故障したハードウェアを交換するときや、物理的に装置を移動するとき、デバイスを廃棄するときに必要となります。 このチュートリアルでは、さまざまな状況で StorSimple デバイスの電源をオンにしたりシャットダウンしたりするために必要な手順を説明します。
 
 次の表は、StorSimple デバイスの電源オンとシャットダウンの各種シナリオの一覧です。必要な手順へのリンクも記載しています。
@@ -84,7 +86,7 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
    2. 両方のコントローラーのステータス LED が緑色で点灯していること。
    3. 一方のコントローラーの青い LED が点滅していること。これは、コントローラーがアクティブであることを示します。
       
-      これらの条件のいずれか 1 つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+      これらの条件のいずれか&1; つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 ### <a name="device-with-ebod-enclosure"></a>EBOD エンクロージャを備えるデバイス
 主エンクロージャと EBOD エンクロージャを備える StorSimple デバイスで、シャットダウン後に電源を入れるには、以下の手順を実行します。 説明されているとおりに各手順を正しく順に実行してください。 正しく実行しないとデータが失われる可能性があります。
@@ -109,7 +111,7 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
 
 ### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD エンクロージャを備えるデバイス <a name="8600">
 #### <a name="power-loss-on-one-power-supply"></a>1 つの電源で電力喪失が発生
-主エンクロージャまたは EBOD エンクロージャの 1 つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
+主エンクロージャまたは EBOD エンクロージャの&1; つの電源で電力喪失が発生しても通常の操作を継続することができます。 ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
 #### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>プライマリ エンクロージャおよび EBOD エンクロージャ上の両方の電源で電力喪失が発生
 両方の電源で停止や瞬停が発生すると、EBOD エンクロージャは直ちにシャットダウンされ、主エンクロージャは所定の制御手順でシャットダウンされます。 電源が復旧すると、アプライアンスは自動的に起動します。
@@ -144,7 +146,7 @@ EBOD エンクロージャだけ両方の電源で異常が発生した場合は
 7. 緑の LED がオンになっていることをチェックすることで EBOD エンクロージャがオンになっていることを確認します。
 8. 主エンクロージャをオンにします。
 9. コントローラーの緑の LED がオンになっていることをチェックすることで主エンクロージャがオンになっていることを確認します。
-10. SAS レーン LED (EBOD コントローラーあたり 4 つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
+10. SAS レーン LED (EBOD コントローラーあたり&4; つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
 
 > [!IMPORTANT]
 > システムをオンにしたときに、SAS ケーブルに欠陥がある場合、または EBOD エンクロージャと主エンクロージャ間の接続が正常でない場合、回復モードになります。 このような場合は、 [Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md) 。
@@ -187,10 +189,5 @@ Windows PowerShell for StorSimple または Azure クラシック ポータル�
 
 ## <a name="next-steps"></a>次のステップ
 [Contact Microsoft Support](storsimple-contact-microsoft-support.md) 。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "Azure Mobile Engagement でさまざまな種類のプッシュ通
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * タイル (Windows Phone のみ)
 
 ## <a name="content-of-announcements"></a>アナウンスのコンテンツ
- ![リーチ - コンテンツ 1][30] 
+ ![リーチ - コンテンツ&1;][30] 
 
 ### <a name="choose-the-type-of-your-announcement"></a>アナウンスの種類を選択します:
 * 通知のみ: シンプルな標準的な通知です。 ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
@@ -42,7 +43,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 
 ### <a name="about-web-view-announcements"></a>Web ビューのアナウンスについて:
 ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。 この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。
-全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます: 
+全画面表示の Web ビューを作成する場合は (既定の Action (アクション) と Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます: 
 
 * アナウンスの操作を実行する: ReachContent.actionContent()
 * アナウンスを終了する: ReachContent.actionContent()
@@ -113,7 +114,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-polls"></a>アンケートのコンテンツ
-![リーチ - コンテンツ 2][31] 
+![リーチ - コンテンツ&2;][31] 
 
 アナウンスの件名、説明、ボタンのテキストを入力します。 次に、質問と質問への回答の選択肢を追加します。
 このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。 対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。 また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
@@ -122,7 +123,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-data-pushes"></a>データ プッシュのコンテンツ
-![リーチ - コンテンツ 3][32] 
+![リーチ - コンテンツ&3;][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>データの種類を選択します：
 * テキスト
@@ -138,7 +139,7 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 * [UI ドキュメント - リーチ - 新しいプッシュの条件][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>タイルのコンテンツ (Windows Phone のみ)
-![リーチ - コンテンツ 4][33]
+![リーチ - コンテンツ&4;][33]
 
 ### <a name="define-the-content-of-your-tile"></a>タイルのコンテンツを定義します
 タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。
@@ -237,10 +238,5 @@ ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/06/2017
+ms.date: 02/28/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 71476ae63d2394e7edefa10b8c71d15c04190290
-ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
+ms.sourcegitcommit: 02b905b12344f23e0eb3b8d0a1969bf7c491119e
+ms.openlocfilehash: 0f7412d9ed3cacb043a5cf3f21d6109eeeeb074c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
 
 先に進む前に、次のリソースを保存することができます。 これらのリソースは、サンプル アプリや独自のアプリに Power BI レポートを統合する際に役立ちます。
 
-* [Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [サンプル ワークスペース Web アプリ](http://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI Embedded API reference](https://msdn.microsoft.com/en-US/library/azure/mt711507.aspx)
 * [Power BI Embedded .NET SDK (NuGet から入手可能) ](http://go.microsoft.com/fwlink/?LinkId=746472)
 * [JavaScript レポート埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo)
@@ -68,7 +69,7 @@ Checking import state... Succeeded
 これで、Power BI PBIX レポートを**ワークスペース**にインポートできました。 次に、**Power BI Embedded** の使用を開始するためのサンプル Web アプリを実行する方法を説明します。
 
 ## <a name="run-the-sample-web-app"></a>サンプル Web アプリの実行
-サンプル Web アプリは、**ワークスペース**にインポートしたレポートを表示するサンプル ダッシュボードです。 サンプル Web アプリを構成する方法は以下のとおりです。
+サンプル Web アプリは、**ワークスペース**にインポートされたレポートを表示するサンプル アプリケーションです。 サンプル Web アプリを構成する方法は以下のとおりです。
 
 1. **PowerBI-embedded** Visual Studio ソリューションで **EmbedSample** Web アプリケーションを右クリックして、**[スタートアップ プロジェクトに設定]** を選択します。
 2. **EmbedSample** Web アプリケーションの **web.config** で、**[appSettings]** の **[AccessKey]**、**[WorkspaceCollection]** の名前、および **[WorkspaceId]** を編集します。
@@ -93,7 +94,7 @@ Checking import state... Succeeded
 
 ## <a name="explore-the-sample-code"></a>サンプル コードの検証
 
-**Microsoft Power BI Embedded** のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル ダッシュボード Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという&3; つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](http://www.asp.net/mvc)に関するページをご覧ください。
+**Microsoft Power BI Embedded** のサンプルは、アプリへの **Power BI** レポートの統合方法を示すサンプル Web アプリです。 このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。 このセクションでは、サンプル コードのうち、**PowerBI-embedded** Web アプリ ソリューション内で検証できる部分について説明します。 モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという&3; つの個別クラスに分割します。 MVC の詳細については、[ASP.NET の詳細](http://www.asp.net/mvc)に関するページをご覧ください。
 
 **Microsoft Power BI Embedded** のサンプル コードは以下のように区切られています。 サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
 
@@ -241,13 +242,8 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > {tableName/fieldName} には、スペースや特殊文字を含めることはできません。 {fieldValue} は単一のカテゴリ値を受け入れます。  
 
 ## <a name="see-also"></a>関連項目
-* [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
-* [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 
+[Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)  
+[Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)  
 ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -15,18 +15,19 @@ ms.devlang: python
 ms.topic: article
 ms.date: 11/10/2015
 ms.author: crwilcox
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e33a3314fc127673a8bf7659b72bd91e1a2d1712
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: ad53cb9bb58064aeed49cb05fdcb936e408346d2
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="jupyter-notebook-on-azure"></a>Azure での Jupyter Notebook
+# <a name="creating-an-azure-vm-installing-jupyter-and-running-a-jupyter-notebook-on-azure"></a>Azure 上で Azure VM を作成し、Jupyter をインストールして、Jupyter Notebook を実行する
 [Jupyter プロジェクト](http://jupyter.org) (旧 [IPython プロジェクト](http://ipython.org)) は、コードの実行と計算ドキュメントのライブ作成を組み合わせた強力な対話型シェルを使用する科学計算用ツールのコレクションを提供します。 作成されるノートブック ファイルには、任意のテキスト、数式、入力コード、結果、グラフィックス、ビデオ、その他の種類のメディアなど、最新の Web ブラウザーで表示できるデータを含めることができます。 Python を初めて利用し、対話形式の環境で楽しく Python を学習する場合でも、本格的な並列計算や技術計算をする場合でも、Jupyter Notebook はお勧めの選択肢です。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/ipy-notebook-spectral.png)SciPy パッケージと Matplotlib パッケージを使用した録音の構造分析。
 
-## <a name="jupyter-two-ways-azure-notebooks-or-custom-deployment"></a>Jupyter を利用する 2 つの方法: Azure Notebook またはカスタム デプロイ
+## <a name="jupyter-two-ways-azure-notebooks-or-custom-deployment"></a>Jupyter を利用する&2; つの方法: Azure Notebook またはカスタム デプロイ
 Azure には、 [Jupyter の使用をすぐに開始する ](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)ために使用できるサービスが用意されています。  Azure Notebook サービスを使用すると、Web でアクセスできる Jupyter のインターフェイスにアクセスして、スケーラブルなコンピューティング リソース、Jupyter のすべての機能、および多数のライブラリを簡単に利用できます。  インストールはサービスによって処理されるため、ユーザーは、自分で構成や管理を実行することなく、これらのリソースにアクセスできます。
 
 Notebook サービスが自分のシナリオに合っていない場合でも、この記事を読み進めてください。仮想マシン (VM) を使用して Jupyter Notebook を Microsoft Azure にデプロイする方法の説明があります。
@@ -40,7 +41,7 @@ Notebook サービスが自分のシナリオに合っていない場合でも�
 ### <a name="create-a-linux-vm-and-open-a-port-for-jupyter"></a>Linux VM を作成し、Jupyter 用のポートを開く
 [ここ][portal-vm-linux]に記載されている手順に従って、*Ubuntu* ディストリビューションの仮想マシンを作成します。 このチュートリアルでは、Ubuntu Server 14.04 LTS を使用します。 ユーザー名は *azureuser*を想定しています。
 
-仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。  Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。 次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: **\***、および宛先 (プライベート) ポート: **9999**。
+仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。  Azure Portal から **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。 次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: **\***、および宛先 (プライベート) ポート: **9999**。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/azure-add-endpoint.png)
 
@@ -172,7 +173,7 @@ Python に関連する多数の優れた科学技術計算用ライブラリを�
 * 直ちに再現したり、検証したり、他のユーザーが拡張したりできる方法で調査結果を示す "実行可能な用紙" を提供するために使用。
 * コラボレーション コンピューティング用のプラットフォームとして使用。複数のユーザーが 同じ Notebook サーバーにログインして、ライブのコンピューティング セッションを共有できます。
 
-IPython のソース コード [リポジトリ][リポジトリ]にアクセスすると、ノートブックのサンプルが保存されているディレクトリ全体を確認できます。これらのサンプルをダウンロードして、ユーザー独自の Azure Jupyter VM で試用することができます。  このサイトから `.ipynb` ファイルをダウンロードし、それらのファイルをユーザーのノートブックに関する Azure VM のダッシュボードにアップロードしてください (直接 VM にダウンロードしてもかまいません)。
+IPython のソース コード [リポジトリ][repository]にアクセスすると、ノートブックのサンプルが保存されているディレクトリ全体を確認できます。これらのサンプルをダウンロードして、ユーザー独自の Azure Jupyter VM で試用することができます。  このサイトから `.ipynb` ファイルをダウンロードし、それらのファイルをユーザーのノートブックに関する Azure VM のダッシュボードにアップロードしてください (直接 VM にダウンロードしてもかまいません)。
 
 ## <a name="conclusion"></a>まとめ
 Jupyter Notebook には、Azure 上で Python エコシステムの機能に対話的にアクセスするための強力なインターフェイスが用意されています。  このインターフェイスは幅広い用途 (簡単な調査、Python の学習、データの分析と表示、シミュレーション、並列コンピューティングなど) に対応しています。 作成される Notebook のドキュメントには実行された計算処理の完全な記録が含まれており、このドキュメントは他の Jupyter ユーザーと共有できます。  Jupyter Notebook はローカル アプリケーションとして使用できますが、Azure でのクラウドのデプロイに最適です。
@@ -183,11 +184,6 @@ Jupyter の主要機能は、[Python Tools for Visual Studio][Python Tools for V
 詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
 
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
-[リポジトリ]: https://github.com/ipython/ipython
+[repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

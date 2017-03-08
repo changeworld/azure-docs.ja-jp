@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 7c75fd870efb93bcf6c69ccf8a8ea9b56288c749
-ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
+ms.sourcegitcommit: 801eef31e4a06fd1b89ddf504d643d9dcfcdcbdc
+ms.openlocfilehash: 99e6f4c1be6fa73db05fc4635fa5c34a579af588
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,6 +62,21 @@ Azure VM 上の RDS のデプロイは、デプロイ テンプレートと修�
 ### <a name="citrix-service-provider-program"></a>**Citrix サービス プロバイダー プログラム**
 Citrix サービス プロバイダー プログラムを利用すると、サービス プロバイダーは簡便な仮想クラウド コンピューティングを SMB に提供し、必要なサービスを従量課金制モデルで簡単に提供することができます。 Citrix サービス プロバイダーは、Microsoft SPLA ビジネスを発展させ、任意のデバイス、任意の場所、広範なアプリケーション サポート、豊富な機能、追加のセキュリティおよび拡張性によって RDS プラットフォームへの投資を拡張しています。 さらに、Citrix サービス プロバイダーは顧客満足度を高め、運用コストを削減するので、多くのサブスクライバーを引き付けます。 [詳細を参照](http://www.citrix.com/products/service-providers.html)するか、[パートナーを見つけ](https://www.citrix.com/buy/partnerlocator.html)てください。
 
+### <a name="frame"></a>Frame
+
+Frame は、クラウド上のセキュリティ保護された、ソフトウェア定義のワークスペースの作成および管理のために、エンタープライズおよび政府の IT 組織、管理されたサービス プロバイダー、主要ソフトウェア ベンダーによって選ばれています。 小規模組織から大規模組織まで、Frame を使用するとどのデバイスのどのブラウザーからでも、ユーザーはとても簡単に Windows アプリケーションにアクセスできるようになります。 Frame のプラットフォームには、Azure インフラストラクチャおよび RDS ライセンスなど、クラウドからアプリケーションをデプロイする際に管理者に必要なものがすべて含まれています (ユーザー自身の Azure アカウントとライセンスを持ち込むかどうかは任意です)。 
+
+[Frame on Azure の詳細](https://www.fra.me/ara) 
+
+主な拠点: サン マテオ (米国カリフォルニア州)
+
+営業地域: 世界中
+
+Frame は Microsoft Partner です。
+
+1-480-269-4668
+
+
 ### <a name="microsoft-hosted-service-provider"></a>**Microsoft ホステッド サービス プロバイダー**
 ホスティング パートナーは、通常、ホストされた完全管理型 Windows デスクトップおよびアプリケーション サービスを提供します。これには、Azure リソース、オペレーティング システム、アプリケーション、およびヘルプデスクの管理が含まれます。このために、パートナーは、マイクロソフトやその他のソフトウェア プロバイダーとのライセンス契約、およびサブスクライバー アクセス ライセンス (SAL) の再販を許可するサービス プロバイダー ライセンス契約を使用します。 次の情報で、Azure RemoteApp から移行する顧客のサポートに特化したホスティング パートナーに関する詳細と連絡先を入手できます。 [ホストされるサービスのプロバイダーの最新の一覧](http://aka.ms/rdsonazurecertified)で、IaaS 上の RDS のラーニング パスおよび評価に関する詳細情報を確認してください。  
 
@@ -86,7 +102,7 @@ Azure RemoteApp の移行ソリューション: はい ([詳細情報](https://w
 * Web: [http://cloud.aspex.be/contact-ara-0](http://cloud.aspex.be/contact-ara-0)
 
 #### <a name="conexlink-platform-name-mycloudit"></a>**Conexlink (プラットフォーム名: MyCloudIT)**
-[MyCloudIT](http://www.mycloudit.com) は、IT 企業が Microsoft Azure クラウドでのリモート デスクトップ、リモート アプリケーション、およびインフラストラクチャの移行と提供を簡略化、最適化、およびスケーリングするための自動化プラットフォームです。 
+[MyCloudIT](https://mycloudit.com) は、IT 企業が Microsoft Azure クラウドでのリモート デスクトップ、リモート アプリケーション、およびインフラストラクチャの移行と提供を簡略化、最適化、およびスケーリングするための自動化プラットフォームです。 
 
 MyCloudIT プラットフォームを利用すると、わずかなキー入力のみで顧客の IT インフラストラクチャ全体をクラウドに移動でき、デプロイの時間が 95%、Azure のコストが 30% 削減されます。 パートナーは、1 つのグローバル ダッシュボードから顧客を管理し、サービスの対象をかつてないほど世界中のエンドユーザーに広げて、オーバーヘッドや広範な Azure のトレーニングを増やすことなく増収できるようになりました。  
 
@@ -208,10 +224,5 @@ Microsoft クラウド サービス プロバイダー: はい
 1. [arainfo@microsoft.com](mailto:arainfo@microsoft.com) に電子メールを送信する。
 2. [Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせる。 まず [Azure サポート ケース](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を開きます。
 3. 電話で問い合わせる。 [地元の営業所の電話番号を調べてください](https://azure.microsoft.com/overview/sales-number/)。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

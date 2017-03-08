@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 8b1fbc541b3123961d092c63441b804109865f60
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: fbb561f4bfda27c74ffdc08c1b07f4adb83286ab
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="how-to-delete-an-hdinsight-cluster"></a>HDInsight クラスターを削除する方法
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
 
 HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 このドキュメントでは、Azure Portal、Azure PowerShell、および Azure CLI を使ってクラスターを削除する方法について説明します。
 
@@ -52,10 +53,5 @@ HDInsight クラスターの課金は、クラスターが作成されると開�
     azure hdinsight cluster delete CLUSTERNAME
 
 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array のバックアップを復元する方�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4d0deb8c-e3c7-4bc4-b89d-9881041960cb
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 1b2156f2768e02be8030d91352422bd935fa7543
+ms.sourcegitcommit: 840deacac773846a9c57d9437cb6f331cd8fcecb
+ms.openlocfilehash: 5ec5cab591907ccc5d9139da2ba149325daf8422
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="restore-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから復元する
+# <a name="restore-from-a-backup-set-of-shares-and-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有とボリュームのバックアップ セットから復元する
+
 ## <a name="overview"></a>概要
 この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。 この記事では、StorSimple Virtual Array の共有またはボリュームのバックアップ セットから復元する方法について手順を追って説明します。 また、ファイル サーバーとして構成された StorSimple Virtual Array での項目レベルの回復のしくみについても詳しく説明します。
 
@@ -104,10 +107,5 @@ StorSimple Virtual Array 上で共有を作成し、共有をバックアップ�
 
 ## <a name="next-steps"></a>次のステップ
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

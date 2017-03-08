@@ -4,7 +4,7 @@ description: "Web アプリでバックグラウンド タスクを実行する�
 services: app-service
 documentationcenter: 
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
-ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 5d0d46447c3e0a3a1047e2bbedd44bbd46dd7f1b
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>Web ジョブでバックグラウンド タスクを実行する
 ## <a name="overview"></a>概要
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の 3 とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリの Web ジョブでプログラムまたはスクリプトを実行するときには、オンデマンドで実行、連続的に実行、スケジュールに従って実行の&3; とおりの方法があります。 Web ジョブの使用に追加コストはかかりません。
 
 この記事では、 [Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法について説明します。 Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、 [Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 
@@ -32,7 +33,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-nameacceptablefilesaacceptable-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>スクリプトやプログラムで許容可能なファイルの種類
+## <a name="acceptablefiles"></a>スクリプトやプログラムで許容可能なファイルの種類
 次のファイルの種類を指定できます。
 
 * .cmd、.bat、.exe (windows cmd を使用)
@@ -43,7 +44,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 * .js (node を使用)
 * .jar (java を使用)
 
-## <a name="a-namecreateondemandacreate-an-on-demand-webjob-in-the-portal"></a><a name="CreateOnDemand"></a>ポータルでのオンデマンドの Web ジョブの作成
+## <a name="CreateOnDemand"></a>ポータルでのオンデマンドの Web ジョブの作成
 1. [Azure Portal](https://portal.azure.com) の **[Web アプリ]** ブレードで、**[すべての設定] > [Web ジョブ]** をクリックし、**[Web ジョブ]** ブレードを表示します。
    
     ![[Web ジョブ] ブレード](./media/web-sites-create-web-jobs/wjblade.png)
@@ -60,7 +61,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
    
     ![Web ジョブの実行](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="a-namecreatecontinuousacreate-a-continuously-running-webjob"></a><a name="CreateContinuous"></a>連続的に実行する Web ジョブの作成
+## <a name="CreateContinuous"></a>連続的に実行する Web ジョブの作成
 1. 連続的に実行する Web ジョブを作成するには、一度だけ実行する Web ジョブを作成する場合と同じ手順に従います。ただし、**[実行方法]** ボックスの一覧では **[連続的]** を選択します。
 2. 連続的な Web ジョブを開始または停止するには、一覧で Web ジョブを右クリックし、**[開始]** または **[停止]** をクリックします。
 
@@ -71,7 +72,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 > 
 > 
 
-## <a name="a-namecreatescheduledcronacreate-a-scheduled-webjob-using-a-cron-expression"></a><a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
+## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
 この方法は、Basic、Standard、または Premium モードで実行されている Web Apps に使用できます。この方法を使用するには、アプリで **Always On** 設定が有効になっている必要があります。
 
 オンデマンドの WebJob をスケジュール済みの WebJob に変換するには、単に WebJob zip ファイルの root に `settings.job` ファイルを追加します。 この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
@@ -95,7 +96,7 @@ CRON 式は 6 つのフィールド: `{second} {minute} {hour} {day} {month} {da
 
 **注**: WebJobを Visual Studio からデプロイする場合は、必ず `settings.job` ファイルのプロパティを [新しい場合はコピーする] に設定してください。
 
-## <a name="a-namecreatescheduledacreate-a-scheduled-webjob-using-the-azure-scheduler"></a><a name="CreateScheduled"></a>Azure Scheduler を使用してスケジュール済みの WebJob を作成する
+## <a name="CreateScheduled"></a>Azure Scheduler を使用してスケジュール済みの WebJob を作成する
 次の代替の方法では、Azure Scheduler を使用します。 この場合、WebJob によってスケジュールは直接認識されません。 代わりに、スケジュールに基づいて WebJob をトリガーするように Azure Scheduler を構成します。 
 
 Azure Portal には、スケジュールされた Web ジョブを作成する機能がまだありません。ただし、この機能が追加されるまで、[クラシック ポータル](http://manage.windowsazure.com)を使用して、これを行うことができます。
@@ -133,7 +134,7 @@ Azure Portal には、スケジュールされた Web ジョブを作成する�
     
     ![ジョブの一覧][WebJobsListWithSeveralJobs]
 
-### <a name="a-nameschedulerascheduled-jobs-and-azure-scheduler"></a><a name="Scheduler"></a>スケジュールされたジョブと Azure Scheduler
+### <a name="Scheduler"></a>スケジュールされたジョブと Azure Scheduler
 スケジュールされたジョブは、 [クラシック ポータル](http://manage.windowsazure.com)の Azure Scheduler ページでさらに構成できます。
 
 1. [Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure スケジューラ ポータル ページに移動します。 
@@ -146,7 +147,7 @@ Azure Portal には、スケジュールされた Web ジョブを作成する�
    
     ![Scheduler の [ジョブの操作] ページ][JobActionPageInScheduler]
 
-## <a name="a-nameviewjobhistoryaview-the-job-history"></a><a name="ViewJobHistory"></a>ジョブ履歴の表示
+## <a name="ViewJobHistory"></a>ジョブ履歴の表示
 1. Web ジョブ SDK で作成したジョブを含め、ジョブの実行履歴を表示するには、[Web ジョブ] ブレードの **[ログ]** 列で対応するリンクをクリックします  (必要に応じて、クリップボード アイコンを使用して、ログ ファイル ページの URL をクリップボードにコピーできます)。
    
     ![ログのリンク](./media/web-sites-create-web-jobs/wjbladelogslink.png)
@@ -167,15 +168,15 @@ Azure Portal には、スケジュールされた Web ジョブを作成する�
    
     これらのリンクのいずれかをクリックすると、選択したジョブの Web ジョブ詳細ページに移動します。
 
-## <a name="a-namewhpnotesanotes"></a><a name="WHPNotes"></a>メモ
+## <a name="WHPNotes"></a>メモ
 * scm (デプロイ) サイトへの要求がなく Azure で Web アプリのポータルが開かれていない場合、[無料] モードの Web アプリは 20 分後にタイムアウトすることがあります。 実際のサイトへの要求があっても、この状態はリセットされません。
 * 連続するジョブのコードは、無限ループで実行されるように記述する必要があります。
 * 連続するジョブが連続的に実行されるのは、アプリが稼働状態になっているときのみです。
 * [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web アプリがアイドル状態にならなくなります。
 * デバッグできるのは、連続的に実行する Web ジョブだけです。 スケジュールされた Web ジョブとオンデマンドの Web ジョブのデバッグはサポートされていません。
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>次のステップ
-詳細については、「[Azure Web ジョブの推奨リソース][WebJobsRecommendedResources]」を参照してください。
+## <a name="NextSteps"></a>次のステップ
+詳細については、[Azure WebJobs の推奨リソース][WebJobsRecommendedResources]に関するページをご覧ください。
 
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]:http://go.microsoft.com/fwlink/?LinkId=390226
@@ -203,10 +204,5 @@ Azure Portal には、スケジュールされた Web ジョブを作成する�
 [LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

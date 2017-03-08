@@ -14,8 +14,9 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
-ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
+ms.sourcegitcommit: 71c5a4f1b816fdcfe7ef267c20e6ed42e6cc51e6
+ms.openlocfilehash: 3c3fb275a7c980f71a3a30e6875b9515321bad99
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -42,6 +43,10 @@ ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 の仮想マシン
 
 - Visual Studio で、OS ファミリ 5 (Windows Server 2016) 仮想マシンにクラウド サービスをデプロイできるようになりました。 既存のクラウド サービスの場合は、設定を変更して新しい OS ファミリを対象とすることができます。 新しいクラウド サービスの作成時に .NET 4.6 以降を使用してサービスを作成することを選択すると、サービスで OS ファミリ 5 が既定で使用されるようになります。  詳細については、[ゲスト OS ファミリ サポート表](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/)を参照してください。
+
+#### <a name="known-issues"></a>既知の問題
+
+- Azure .NET SDK 2.9.6 では、バージョン 5 より前の OS ファミリに対して、サポートされていない .NET framework (.NET 4.6 など) を使用したプロジェクトのデプロイがブロックされるという制限があります。 回避策は[こちら](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)です。
 
  
 ### <a name="azure-in-role-cache"></a>Azure In-Role Cache 
@@ -86,10 +91,5 @@ ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
 
 ## <a name="see-also"></a>関連項目
 [Azure SDK 2.9 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

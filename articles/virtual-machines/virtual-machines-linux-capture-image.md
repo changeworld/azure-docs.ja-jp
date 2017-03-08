@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 (プレビュー) を使用して Linux VM をキャプチャする | Microsoft Docs"
-description: "Azure CLI 2.0 (プレビュー) で作成した管理ディスクを使用する Linux ベースの Azure 仮想マシン (VM) のイメージを一般化し、キャプチャする方法"
+title: "Azure CLI 2.0 を使用した Linux VM のキャプチャ | Microsoft Docs"
+description: "Azure CLI 2.0 で作成した管理ディスクを使用する Linux ベースの Azure 仮想マシン (VM) のイメージをキャプチャし、一般化する方法"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,29 +16,25 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 4620ace217e8e3d733129f69a793d3e2f9e989b2
-ms.openlocfilehash: 64b829de4389ba6aa46dc51afd0cff3f40265d68
+ms.sourcegitcommit: 93abc8b1b14f58b0d0be52517a2b63dfe2dc32fb
+ms.openlocfilehash: c72f576d992c9adfa83b9744672397045833c43f
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="how-to-generalize-and-capture-a-linux-virtual-machine-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) で Linux 仮想マシンを一般化してキャプチャする方法
-Azure にデプロイされて構成された仮想マシン (VM) を再利用するには、VM のイメージをキャプチャします。 このプロセスでは、イメージから新しい VM をデプロイする前に、個人アカウント情報を削除するために VM を一般化する必要もあります。 この記事では、Azure Managed Disks を使用する VM を作成するために、Azure CLI 2.0 (プレビュー) で VM イメージをキャプチャする方法について詳しく説明します。 Azure Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 
+# <a name="how-to-generalize-and-capture-a-linux-virtual-machine"></a>Linux 仮想マシンを一般化してキャプチャする方法
+Azure にデプロイされて構成された仮想マシン (VM) を再利用するには、VM のイメージをキャプチャします。 このプロセスでは、イメージから新しい VM をデプロイする前に、個人アカウント情報を削除するために VM を一般化する必要もあります。 この記事では、Azure Managed Disks を使用して、Azure CLI 2.0 で VM に対して VM イメージをキャプチャする方法について詳しく説明します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 この記事では、Azure CLI 2.0 を使用して Linux VM をキャプチャする方法を詳しく説明しています。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 > [!TIP]
 > バックアップまたはデバッグ用に設定した特別な状態の既存の Linux VM のコピーを作成したい場合は、「[Azure で実行されている Linux 仮想マシンのコピーを作成する](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、オンプレミスの VM から Linux VHD をアップロードしたい場合は、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。  
 
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー) - Azure Managed Disks](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
 
 ## <a name="before-you-begin"></a>開始する前に
 次の前提条件が満たされていることを確認します。
 
 * **Resource Manager デプロイメント モデルで作成された Azure VM** - Linux VM を作成していない場合は、[ポータル](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[Azure CLI](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、または [Resource Manager テンプレート](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)し、更新プログラムを適用し、アプリケーションをインストールします。 
 
-さらに、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされて、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要もあります。
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、Azure で Linux VM のイメージをキャプチャするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-steps)。 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myVM`、`myImage` などは、例として使われているパラメーター名です。
@@ -95,7 +91,7 @@ VM を一般化する準備として、Azure VM エージェントを使用し�
 4. コマンドが完了した後、「**exit**」と入力します。 SSH クライアントが閉じられます。
 
 ## <a name="step-2-capture-the-vm"></a>手順 2: VM をキャプチャする
-Azure CLI 2.0 (プレビュー) を使用して、VM を一般化し、キャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、**myResourceGroup**、**myVnet**、**myVM**といったパラメーター名にします。
+Azure CLI 2.0 を使って、VM を一般化してキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、**myResourceGroup**、**myVnet**、**myVM**といったパラメーター名にします。
 
 1. [az vm deallocate](/cli//azure/vm#deallocate) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
    
@@ -153,14 +149,10 @@ az vm show --resource-group myResourceGroup --name myVM --show-details
 ## <a name="next-steps"></a>次のステップ
 ソース VM イメージから複数の VM を作成できます。 イメージに変更を加える必要がある場合は、次の手順を実行します。 
 
-- ソース VM リソースの電源をオンにします。
+- イメージから VM を作成します。
 - 必要な更新または構成の変更を行います。
-- 本記事の手順に従って、再度 VM のプロビジョニングの解除、割り当ての解除、一般化、キャプチャを行います。 
+- 再度本記事の手順に従って、イメージのプロビジョニングの解除、割り当ての解除、一般化、作成を行います。
+- 今後のデプロイには、この新しいイメージを使用します。 必要に応じて、元のイメージを削除します。
 
-CLI を使用して VM を管理する方法の詳細については、[Azure CLI 2.0 (プレビュー)](/cli/azure/overview) に関するページをご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+CLI を使用して VM を管理する方法の詳細については、[Azure CLI 2.0](/cli/azure/overview) に関するページをご覧ください。
 
