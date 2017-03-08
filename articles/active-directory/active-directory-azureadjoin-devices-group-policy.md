@@ -3,7 +3,7 @@ title: "Windows 10 エクスペリエンスのためにドメイン参加済み�
 description: "デバイスを企業ネットワークのドメインに参加させることができるように管理者がグループ ポリシーを構成する方法を説明します。"
 services: active-directory
 documentationcenter: 
-author: markvi
+author: MarkusVi
 manager: femila
 editor: 
 tags: azure-classic-portal
@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 7d141adf04cfb99e57c63ba62de4a7dad9ab8326
 ms.openlocfilehash: 290645b920bc4a83c610e80266854450b6e1509a
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -63,10 +64,5 @@ PKI のデプロイ要件の代替策として、次の操作を実行できま�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 
