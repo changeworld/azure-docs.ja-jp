@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 3/1/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: ce8036b3daf1dc07922cc934b5f269eb0b67b2d3
-ms.openlocfilehash: 789717906481e80c815536ff42cec8bf2fa875a9
+ms.sourcegitcommit: fee25fc1c84a9a32c4c313e06056bb409927f475
+ms.openlocfilehash: 7e84323168705b8900521834c42b358eb34d8afa
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -60,18 +61,14 @@ Yes, just like in Azure, a tenant can upload images in Azure Stack, in addition 
 
 ## <a name="testing"></a>Testing
 ### <a name="can-i-use-nested-virtualization-to-test-the-microsoft-azure-stack-poc"></a>Can I use Nested Virtualization to test the Microsoft Azure Stack POC?
-Nested virtualization is not supported or tested with Azure Stack Technical Preview 2.
+Nested virtualization is not supported or tested with Azure Stack Technical Preview 3.
 
 ## <a name="virtual-machines"></a>Virtual machines
 ### <a name="does-azure-stack-support-dynamic-disks-for-virtual-machines"></a>Does Azure Stack support dynamic disks for virtual machines?
 Azure Stack does not support dynamic disks.
 
+
 ## <a name="next-steps"></a>Next steps
 [Troubleshooting](azure-stack-troubleshooting.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
