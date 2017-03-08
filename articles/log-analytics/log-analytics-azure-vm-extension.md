@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3bb103a8def2e1c56695169568c2d3c64b7f291f
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-azure-virtual-machines-to-log-analytics"></a>Azure 仮想マシンを Log Analytics に接続する
+# <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Log Analytics エージェントで Log Analytics に Azure 仮想マシンを接続する
+
 Windows および Linux コンピューターの場合、ログとメトリックを収集するための推奨される方法は、Log Analytics エージェントをインストールすることです。
 
 Azure 仮想マシンに Log Analytics エージェントをインストールする方法としては、Log Analytics VM 拡張機能を使用するのが最も簡単です。  この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
@@ -33,11 +36,11 @@ Linux 仮想マシンの場合は、*OMS Agent For Linux* という仮想マシ�
 ログ データにエージェント ベースの収集を使用する場合は、[Log Analytics のデータ ソース](log-analytics-data-sources.md)を構成して、収集するログとメトリックを指定する必要があります。
 
 > [!IMPORTANT]
-> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは 2 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集することをお勧めします。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
-> 
-> 
+> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは&2; 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集することをお勧めします。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
+>
+>
 
-Log Analytics 仮想マシン拡張機能は、次の 3 とおりの方法で簡単に有効にすることができます。
+Log Analytics 仮想マシン拡張機能は、次の&3; とおりの方法で簡単に有効にすることができます。
 
 * Azure Portal を使用する方法
 * Azure PowerShell を使用する方法
@@ -47,7 +50,7 @@ Log Analytics 仮想マシン拡張機能は、次の 3 とおりの方法で簡
 [Azure Portal](https://portal.azure.com) を使用して Log Analytics 用のエージェントをインストールし、そのエージェントを実行する Azure 仮想マシンを接続できます。
 
 ### <a name="to-install-the-log-analytics-agent-and-connect-the-virtual-machine-to-a-log-analytics-workspace"></a>Log Analytics エージェントをインストールし、仮想マシンを Log Analytics ワークスペースに接続するには
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. ポータルの左側にある **[参照]** を選択し、**[Log Analytics (OMS)]** に移動して選択します。
 3. Log Analytics ワークスペースの一覧から、Azure VM で使用するワークスペースを選択します。  
    ![OMS ワークスペース](./media/log-analytics-azure-vm-extension/oms-connect-azure-01.png)
@@ -370,7 +373,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 2. 次の手順に従って、Microsoft Monitoring Agent 拡張機能のハート ビート タスクが実行中であることを確認します。
    * 仮想マシンにログインします。
    * タスク スケジューラを開いて `update_azureoperationalinsight_agent_heartbeat` タスクを探します。
-   * タスクが有効になっていて 1 分おきに実行されていることを確認します。
+   * タスクが有効になっていて&1; 分おきに実行されていることを確認します。
    * `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log` にあるハート ビートのログファイルを確認します。
 3. `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` で Microsoft Monitoring Agent VM 拡張機能のログ ファイルを確認します。
 4. 仮想マシンで PowerShell スクリプトを実行できることを確認します。
@@ -400,10 +403,4 @@ Azure 以外の場所にあるコンピューターについては、以下の�
 
 * [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)
 * [Linux コンピューターを Log Analytics に接続する](log-analytics-linux-agents.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

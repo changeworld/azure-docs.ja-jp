@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
-ms.openlocfilehash: 5c43e6c646928ef17e1bf2e5b9bce90f9038d5d0
+ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
+ms.openlocfilehash: 9f3923092e0731b6bc75e9f28d152b1f50ca0848
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -173,7 +174,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 - REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.Resources/v3.1.0/Get-AzureRmResourceProvider?redirectedfrom=msdn)
-- Azure CLI 2.0 (プレビュー) - [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
+- Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
@@ -481,7 +482,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ![拡張機能の状態の確認](./media/virtual-machines-windows-template-description/virtual-machines-show-extensions.png)
 
-また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI 2.0 (プレビュー) コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
+また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI 2.0 コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -498,8 +499,3 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - 「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を読んで、作成した VM を管理する方法を確認します。
-
-
-<!--HONumber=Feb17_HO3-->
-
-

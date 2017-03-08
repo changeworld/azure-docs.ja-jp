@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="deploy-a-3-node-deis-cluster"></a>3 ノード Deis クラスターのデプロイ
+# <a name="deploy-and-configure-a-3-node-deis-cluster-in-azure"></a>Azure での 3 ノード Deis クラスターのデプロイと構成
 この記事では Azure での [Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。 必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション を展開・スケーリングする手順まで、すべての手順を網羅しています。
 
-次の図は、展開済みシステムのアーキテクチャを示します。 システム管理者は **deis** や **deisctl** などの Deis ツールを使ってクラスターを管理します。 接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。 同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。 この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
+次の図は、展開済みシステムのアーキテクチャを示します。 システム管理者は **deis** や **deisctl** などの Deis ツールを使ってクラスターを管理します。 接続は、クラスター上のメンバーノードの&1; つに、接続を転送をする。Azure ロード バランサーを介して確立されます。 同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。 この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
 
   ![デプロイ済みの Desis クラスターのアーキテクチャ図](media/virtual-machines-linux-deis-cluster/architecture-overview.png)
 
@@ -80,7 +82,7 @@ ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
     
         ./deploy-deis.sh -n "[resource group name]" -l "West US" -f ./azuredeploy.json -e ./azuredeploy-parameters.json
         -c ./cloud-config.yaml  
-11. リソース グループがプロビジョニングされると、Azure クラシック ポータルで、グループ内のすべてのリソースを確認できます。 次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の 3 つの VM を伴う仮想ネットワークが含まれます。 このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
+11. リソース グループがプロビジョニングされると、Azure クラシック ポータルで、グループ内のすべてのリソースを確認できます。 次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の&3; つの VM を伴う仮想ネットワークが含まれます。 このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
     
     ![Azure クラシック ポータルでプロビジョニングされているリソース グループ](media/virtual-machines-linux-deis-cluster/resource-group.png)
 
@@ -251,9 +253,4 @@ Deis クラスタをコントロールする **deisctl** が必要となりま�
 [azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

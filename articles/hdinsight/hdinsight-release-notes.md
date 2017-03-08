@@ -13,19 +13,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/18/2017
+ms.date: 2/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e6167db5f9b6c8b2520b1f3c2d443c7497d44552
-ms.openlocfilehash: b3e625852648e15ccde427ec8c5bb8fe0393cb74
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: de252e1d2945f236a4192c5737ed8ec88a6f7444
+ms.openlocfilehash: da5929df1e5db0acae41d757a7e7272014bf9dee
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関するページを参照してください。
+
+##<a name="notes-for-02282017-release-of-spark-21-on-hdinsight-36-preview"></a>HDInsight 3.6 プレビューでの Spark 2.1 の 2017 年 2 月 28 日リリース ノート
+* [Spark 2.1](http://spark.apache.org/releases/spark-release-2-1-0.html) では、以前のバージョンにあった安定性と使いやすさに関するさまざまな問題が改善されます。 Spark Core、SQL、ML、ストリーミングなど、すべての Spark ワークロードに及ぶ新機能も導入します。
+* 構造化ストリーミングでは、イベント時刻の透かしと Kafka 0.10 コネクタのサポートによってスケーラビリティが向上しています。
+* Spark SQL のパーティション分割は、新しいスケーラブルなパーティション処理メカニズムを使用して処理されるようになりました。 アップグレードする方法の詳細については、[ここ](http://spark.apache.org/releases/spark-release-2-1-0.html)を参照してください。
+* Azure HDInsight 3.6 プレビュー上の Spark 2.1 は、現在 ODBC ドライバーを使用した BI ツールの接続をサポートしていません。
+* このプレビューでは、Spark 2.1 クラスターから Azure Data Lake Store へのアクセスはサポートされていません。
+
 
 ##<a name="notes-for-11182016-release-of-spark-201-on-hdinsight-35"></a>HDInsight 3.5 の Spark 2.0.1 の 2016 年 11 月 18 日リリース
 Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) で公開されています。
@@ -346,7 +354,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 
 | タイトル | Description | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 | --- | --- | --- | --- | --- |
-| 既定 HDP バージョンが HDP 2.2 に変更されました |HDInsight Windows クラスターの既定のバージョンが HDP 2.2 に変更されました。 HDInsight バージョン 3.2 (HDP 2.2) が 2015 年 2 月から一般公開されました。 この変更によって、Azure ポータル、PowerShell コマンドレット、または SDK を使用してクラスターをプロビジョニングするときに、クラスター バージョンを明示的に選択していない場合の既定のバージョンのみが変わります。 |サービス |すべて |該当なし |
+| 既定 HDP バージョンが HDP 2.2 に変更されました |HDInsight Windows クラスターの既定のバージョンが HDP 2.2 に変更されました。 HDInsight バージョン 3.2 (HDP 2.2) が 2015 年 2 月から一般公開されました。 この変更によって、Azure Portal、PowerShell コマンドレット、または SDK を使用してクラスターをプロビジョニングするときに、クラスター バージョンを明示的に選択していない場合の既定のバージョンのみが変わります。 |サービス |すべて |該当なし |
 | 1 つの Virtual Network の Linux クラスターに複数の HDInsight をデプロイする場合の VM 名の形式の変更 |今回のリリースで、1 つの仮想ネットワークに複数の HDInsight Linux クラスターをデプロイできるようになりました。 その一環で、クラスター内の仮想マシン名の形式が headnode\*、workernode\*、zookeepernode\* からそれぞれ hn\*、wn\*、zk\* に変更されました。 仮想ネットワーク名は変更される可能性があるため、仮想ネットワーク名の形式に直接依存することは推奨されません。 ローカル コンピューターで "hostname -f" を使用するか、Ambari API を使用して、ホスト一覧と、コンポーネントからホストへのマッピングを取得してください。 詳細については、[https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/hosts.md) と [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/host-components.md) を参照してください。 |サービス |Linux 上の HDInsight クラスター |該当なし |
 | 構成の変更 |HDInsight 3.1 クラスターでは、次の構成が有効になりました。 <ul><li>tez.yarn.ats.enabled および yarn.log.server.url。 これにより、Application Timeline Server とログ サーバーからログを提供できるようになりました。</li></ul>HDInsight 3.2 クラスターでは、次の構成が変更されています。 <ul><li>mapreduce.fileoutputcommitter.algorithm.version が 2 に設定されました。 これにより、V2 バージョンの FileOutputCommitter を使用できるようになりました。</li></ul> |サービス |すべて |該当なし |
 
@@ -1072,7 +1080,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。 Mahout
 </tr>
 <tr>
 <td><a href = "hdinsight-hadoop-customize-cluster.md" target="_blank">クラスターのカスタマイズの一般公開</a></td>
-<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。 この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。 これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。 このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。 この機能の能力を示すために、一般的な <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a>、<a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> モジュールをインストールするプロセスを説明しています。 またこのリリースでは、ユーザーが Azure ポータルを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。 </p></td>
+<td><p>カスタマイズ機能により、Apache Hadoop エコシステムから利用できるプロジェクトで Azure HDInsight クラスターをカスタマイズできます。 この新しい機能により、Hadoop プロジェクトを実験し、Azure HDInsight にデプロイできます。 これは、カスタム スクリプトを使用して、Hadoop クラスターを任意の方法で変更できる **スクリプト アクション** 機能により実現します。 このカスタマイズ機能は、Hadoop、HBase、および Storm などあらゆる種類の HDInsight クラスターで利用できます。 この機能の能力を示すために、一般的な <a href = "hdinsight-hadoop-spark-install.md" target="_blank">Spark</a>、<a href = "hdinsight-hadoop-r-scripts.md" target="_blank">R</a>、<a href = "hdinsight-hadoop-solr-install.md" target="_blank">Solr</a>、<a href = "hdinsight-hadoop-giraph-install.md" target="_blank">Giraph</a> モジュールをインストールするプロセスを説明しています。 またこのリリースでは、ユーザーが Azure Portalを使用してカスタム スクリプト アクションを指定する機能が追加され、ヘルパー メソッドを使用してカスタム スクリプト アクションを作成するためのガイドラインとベスト プラクティスの提供、さらにスクリプト アクションをテストする方法に関するガイドラインが提供されます。 </p></td>
 <td>機能の一般公開</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1313,7 +1321,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
   * 東アジア
   * 米国中北部
   * 米国中南部
-* HDInsight バージョン 1.6 (HDP 1.1、Hadoop 1.0.3) と HDInsight バージョン 2.1 (HDP1.3、Hadoop 1.2) は、Azure ポータルから削除されます。 これらのバージョンの Hadoop クラスターは、Azure PowerShell コマンドレット ([New-AzureRmHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。 詳細については、「 [HDInsight で提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md) 」のページを参照してください。
+* HDInsight バージョン 1.6 (HDP 1.1、Hadoop 1.0.3) と HDInsight バージョン 2.1 (HDP1.3、Hadoop 1.2) は、Azure Portal から削除されます。 これらのバージョンの Hadoop クラスターは、Azure PowerShell コマンドレット ([New-AzureRmHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) または [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) を使用すれば引き続き作成できます。 詳細については、「 [HDInsight で提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md) 」のページを参照してください。
 * このリリースでは、Hortonworks Data Platform (HDP) が以下のように変更されました。
 
 <table border="1">
@@ -1506,7 +1514,7 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 ## <a name="hortonworks-release-notes"></a>Hortonworks リリース ノート
 各バージョンの HDInsight クラスターで使用される Hortonworks Data Platforms (HDP) のリリース ノートは、以下の場所から利用可能です。
 
-* HDInsight バージョン 3.1 は、[Hortonworks Data Platform 2.1.7][hdp-2-1-7] を基盤とする Hadoop ディストリビューションを使用します。 これが、2014 年 11 月 7 日以降の Azure ポータルの使用時に作成される既定の Hadoop クラスターです。 2014 年 11 月 7 日より前に作成された HDInsight 3.1 クラスターは、[Hortonworks Data Platform 2.1.1][hdp-2-1-1] に基づいています。
+* HDInsight バージョン 3.1 は、[Hortonworks Data Platform 2.1.7][hdp-2-1-7] を基盤とする Hadoop ディストリビューションを使用します。 これが、2014 年 11 月 7 日以降の Azure Portal の使用時に作成される既定の Hadoop クラスターです。 2014 年 11 月 7 日より前に作成された HDInsight 3.1 クラスターは、[Hortonworks Data Platform 2.1.1][hdp-2-1-1] に基づいています。
 * HDInsight バージョン 3.0 は、[Hortonworks Data Platform 2.0][hdp-2-0-8] を基盤とする Hadoop ディストリビューションを使用します。
 * HDInsight バージョン 2.1 は、[Hortonworks Data Platform 1.3][hdp-1-3-0] を基盤とする Hadoop ディストリビューションを使用します。
 * HDInsight バージョン 1.6 は、[Hortonworks Data Platform 1.1][hdp-1-1-0] を基盤とする Hadoop ディストリビューションを使用します。

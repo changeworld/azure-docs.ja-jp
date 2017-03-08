@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/01/2017
+ms.date: 03/03/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 3f8ad9bf72555b9ab19af4c7a15f66b982fe66fe
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -118,7 +118,8 @@ V12 には継続的に機能が追加されます。 したがって、Azure の
 | PolyBase | [サポートされています](https://msdn.microsoft.com/library/mt143171.aspx) | [サポートされていません]
 | ポリシー ベースの管理 | [サポートされています](https://msdn.microsoft.com/library/bb510667.aspx) | サポートされていません |
 | 述語 | [サポートされています](https://msdn.microsoft.com/library/ms189523.aspx) | [ほとんど](https://msdn.microsoft.com/library/ms189523.aspx)
-| リソース ガバナー | [サポートされています](https://msdn.microsoft.com/library/bb933866.aspx) | [ビルトイン](sql-database-service-tiers.md) |
+| R Services | [サポートされています](https://msdn.microsoft.com/library/mt604845.aspx)
+| リソース ガバナー | [サポートされています](https://msdn.microsoft.com/library/bb933866.aspx) | サポートされていません |
 | バックアップからデータベースを復元する | [サポートされています](https://msdn.microsoft.com/library/ms187048.aspx#anchor_6) | [ビルトイン バックアップからのみ](sql-database-recovery-using-backups.md) |
 | 行レベルのセキュリティ | [サポートされています](https://msdn.microsoft.com/library/dn765131.aspx) | [サポートされています](https://msdn.microsoft.com/library/dn765131.aspx) |
 | セキュリティ ステートメント | [サポートされています](https://msdn.microsoft.com/library/ff848791.aspx) | [一部](https://msdn.microsoft.com/library/ff848791.aspx) |

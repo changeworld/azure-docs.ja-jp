@@ -81,7 +81,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 -   エクスポートする BLOB (または BLOB プレフィックス) の一覧。
 
 ## <a name="shipping-your-drives"></a>ドライブを発送する
- 次に、Azure Import/Export ツールを使用して、送付する必要があるドライブの数を決定します。これは、エクスポートの対象として選択した BLOB と、ドライブのサイズに基づいて決定します。。 詳しくは、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。
+ 次に、Azure Import/Export ツールを使用して、送付する必要があるドライブの数を決定します。これは、エクスポートの対象として選択した BLOB と、ドライブのサイズに基づいて決定します。 詳しくは、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。
 
  ドライブを&1; つのパッケージに梱包し、前の手順で取得した住所に発送します。 次の手順のために、パッケージの追跡番号をメモしておきます。
 

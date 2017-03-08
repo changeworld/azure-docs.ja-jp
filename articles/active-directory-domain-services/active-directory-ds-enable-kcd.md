@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: ce5ba551f071055a9aaebb99395ada4e96ffcc76
 ms.openlocfilehash: 47e81ad02c544cb269abed0a4936c30fc404f01a
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -62,9 +63,4 @@ Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccoun
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

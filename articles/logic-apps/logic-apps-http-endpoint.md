@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
-ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 6964ff18532ccf4b67eecfe12122bc16819a7b4b
+ms.openlocfilehash: 9b2e0797317c6e0268e8ae90f4091fea96c78726
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ Logic Apps はトリガーとして同期 HTTP エンドポイントをネイテ
 この記事の残りの部分では、例として **request** を取り上げますが、主要事項はすべて他の 2 種類のトリガーにも同様に適用されます。
 
 ## <a name="adding-a-trigger-to-your-definition"></a>定義へのトリガーの追加
-最初の手順として、受信要求を受信できるトリガーをロジック アプリの定義に追加します。  デザイナーで "HTTP 要求" を検索してトリガー カードを追加できます。 要求本文の JSON スキーマを定義することができ、ワークフローを介して manual トリガーからのデータを解析したり渡したりするのに役立つトークンがデザイナーによって生成されます。  サンプル本文のペイロードから JSON スキーマを生成するには、 [jsonschema.net](http://jsonschema.net) などのツールを使用することをお勧めします。
+最初の手順として、受信要求を受信できるトリガーをロジック アプリの定義に追加します。  デザイナーで "HTTP 要求" を検索してトリガー カードを追加できます。 要求本文の JSON スキーマを定義することができ、ワークフローを介して manual トリガーからのデータを解析したり渡したりするのに役立つトークンがデザイナーによって生成されます。 スキーマの準備ができていない場合は、`Use sample payload to generate schema` を選択して、サンプル ペイロードから JSON スキーマを生成します。
 
 ![要求トリガー カード][2]
 
@@ -174,7 +174,7 @@ Logic Apps には直接アクセス エンドポイントのサポートが組�
 | 基本認証または OAuth 認証を構成する |API 管理による |
 | HTTP メソッドを構成する |API 管理による |
 | 相対パスを構成する |API 管理による |
-| 受信本文を `@triggerOutputs().body.Content` を介して参照します。 |`@triggerOutputs().body` |
+| `@triggerOutputs().body.Content` |`@triggerOutputs().body` |
 | **Send HTTP response** アクション |**[HTTP 要求に応答]** をクリックする (API アプリは不要) |
 
 [1]: ./media/logic-apps-http-endpoint/manualtriggerurl.png

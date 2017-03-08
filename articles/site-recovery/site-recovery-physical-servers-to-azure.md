@@ -94,7 +94,7 @@ Azure には、リソースの作成と操作に関して、[Azure Resource Mana
 2. リソース メニューで、**[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/site-recovery-vmware-to-azure/choose-goal-physical.PNG)
-3. **[保護の目標]** で、**[To Azure] (Azure へ)** を選択し、**[非仮想化/その他]** を選択します。
+3. **[保護の目標]** で、**[To Azure] \(Azure へ)** を選択し、**[非仮想化/その他]** を選択します。
 
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
@@ -190,7 +190,7 @@ Azure には、リソースの作成と操作に関して、[Azure Resource Mana
 2. **[ソース]** で [オンプレミス] を選択します。
 3. **[ソースの場所]** で、目的の構成サーバー名を選択します。
 4. **[マシンの種類]** で、**[物理マシン]** を選択します。
-4. **[vCenter/vSphere Hypervisor] (vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。
+4. **[vCenter/vSphere Hypervisor] \(vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。
 5. **[プロセス サーバー]** でプロセス サーバーを選択します。 追加のプロセス サーバーを作成していない場合、ここには構成サーバーが選択されます。 次に、 **[OK]**をクリックします
 
     ![Enable replication](./media/site-recovery-physical-to-azure/chooseVM.png)

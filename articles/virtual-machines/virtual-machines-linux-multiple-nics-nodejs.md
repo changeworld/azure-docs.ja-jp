@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: db3d95cf7efd1caebb9e568ba729b9cbc30e5b78
-ms.openlocfilehash: 22001eec6402054239c9215a686512bd74d9bb9f
+ms.sourcegitcommit: e762497c67e04aa4186094a203796278355de36f
+ms.openlocfilehash: 5da58eebde8ea0d615514755af1c378d16f60bfc
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -30,8 +31,8 @@ Azure では、複数の仮想ネットワーク インターフェイス (NIC) 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
-- [Azure CLI 1.0](#create-supporting-resources) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+- [Azure CLI 1.0](#create-supporting-resources) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
+- [Azure CLI 2.0](virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="create-supporting-resources"></a>関連リソースを作成する
@@ -141,10 +142,5 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を必ず確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
 
 既存の VM に NIC を追加することはできません。VM をデプロイするときに、すべての NIC を作成する必要があります。 デプロイメントの計画時に、初めから必要なすべてのネットワーク接続があることを確認してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

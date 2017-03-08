@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 02/22/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 0e0fe444ef6eab96b134ad042d41a54b436f3aec
+ms.sourcegitcommit: b521c3bb99c9a6980df46eacec4e1ebe72fb01a1
+ms.openlocfilehash: 00f6a7af021029d1795071c930e05f200578fa14
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -243,6 +244,8 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 ## <a name="next-steps"></a>次のステップ
 次のリンク先を使用して、自動スケールの詳細をご確認ください。
 
+[仮想マシン スケール セットの自動スケールに関するトラブルシューティング](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+
 [自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)
 
 [Azure の自動スケールのベスト プラクティス](insights-autoscale-best-practices.md)
@@ -252,9 +255,4 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 [CLI を使用した自動スケールの管理](insights-cli-samples.md#autoscale)
 
 [自動スケールに関する webhook と電子メールの通知の構成](insights-autoscale-to-webhook-email.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

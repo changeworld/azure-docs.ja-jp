@@ -164,7 +164,7 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 既定の規則よりも前に他の規則を挿入するように、同期エンジンに指示できます。 この動作を設定するには、次の手順を実行します。
 
-1. 同期規則エディターで最初の既定同期規則 (**In from AD-User Join **) をマークし、**[エクスポート]** を選択します。 Copy the SR Identifier value.  
+1. 同期規則エディターで最初の既定同期規則 (**In from AD-User Join**) をマークし、**[エクスポート]** を選択します。 Copy the SR Identifier value.  
 ![PowerShell before change](./media/active-directory-aadconnectsync-change-the-configuration/powershell1.png)  
 2. 新しい同期規則を作成します。 同期規則エディターを使用して作成できます。 この規則を PowerShell スクリプトにエクスポートします。
 3. プロパティ **PrecedenceBefore**に、既定規則の識別子の値を挿入します。 **[優先順位]** を **0** に設定します。 識別子の属性が一意であり、別の規則の GUID を再利用していないことを確認します。 また、**ImmutableTag** プロパティが設定されていないことも確認します。このプロパティを設定できるのは既定の規則のみです。 PowerShell スクリプトを保存して実行します。 これにより、カスタム規則に優先順位の値 100 が割り当てられ、他のすべての既定規則の値が 1 つずつ増えます。  

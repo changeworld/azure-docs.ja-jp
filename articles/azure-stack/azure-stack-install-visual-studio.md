@@ -15,13 +15,19 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 777709710c690865db27a5af5f8d12fde5de7304
-ms.openlocfilehash: 16434a79c2e16953bfc9c4ac341495117e395d4c
+ms.sourcegitcommit: bccca8fc837ee87c96dfa6686c737b79d7368b9b
+ms.openlocfilehash: 18cd4439f7ec66078c683edef206ba99bb19bf51
+ms.lasthandoff: 03/02/2017
 
 
 ---
 
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Install Visual Studio and connect to Azure Stack
+
+> [!IMPORTANT] 
+> This topic applies only to Azure Stack Technical Preview 2.
+>
+
 You can use Visual Studio to author and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) in Azure Stack.  Use the following steps to install the supported version for Azure Stack TP2.  
 
 ## <a name="before-you-begin"></a>Before you begin
@@ -29,25 +35,25 @@ You can use Visual Studio to author and deploy Azure Resource Manager [templates
  - You can install on [MAS-CON01](azure-stack-connect-azure-stack.md#connect-with-remote-desktop), or install on a workstation that has [VPN](azure-stack-connect-azure-stack.md#connect-with-vpn) connectivity to Azure Stack.
 
 ## <a name="install-visual-studio"></a>Install Visual Studio
-1.  Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).             
+1.    Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).             
 
-2.  Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**, then click **Add**, and **Install**.
+2.    Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**, then click **Add**, and **Install**.
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png) 
 
-3.  Uninstall the **Microsoft Azure PowerShell** that is installed as part of the Azure SDK.
+3.    Uninstall the **Microsoft Azure PowerShell** that is installed as part of the Azure SDK.
 
       ![Screenshot of add/remove programs interface for Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png) 
 
-4.  Open the Web Platform Installer, search for **Microsoft Azure PowerShell - Azure Stack Technical Preview 2**, click **Add**, and **Install**.
+4.    Open the Web Platform Installer, search for **Microsoft Azure PowerShell - Azure Stack Technical Preview 2**, click **Add**, and **Install**.
 
     ![Screenshot of add/remove programs interface for Azure PowerShell](./media/azure-stack-install-visual-studio/image3.png)
 
-5.  Restart the operating system once the installation completes.
+5.    Restart the operating system once the installation completes.
 
 ## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
 
-1.  Launch Visual Studio.
+1.    Launch Visual Studio.
 
 2.  From the **Edit** menu, select **Cloud Explorer**.
 
@@ -59,9 +65,4 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 ## <a name="next-steps"></a>Next Steps
 
  - [Develop templates for Azure Stack](azure-stack-develop-templates.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

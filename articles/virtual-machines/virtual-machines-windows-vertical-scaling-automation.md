@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 915320ed4a7d9e86a7a9b29dff5c0addfb95f4c0
+ms.sourcegitcommit: 0a888f945a39a8bb88a730a226af6ec21d133f44
+ms.openlocfilehash: 0075160ea9c0dae991fc2344c46d216a8203bec3
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="vertically-scale-azure-virtual-machines-with-azure-automation"></a>Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする
+# <a name="how-to-vertically-scale-virtual-machines-with-azure-automation"></a>Azure Automation で仮想マシンを垂直方向にスケーリングする方法
 垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。 Azure では、仮想マシンのサイズを変更することで実行できます。 これは、次のようなシナリオで役立ちます。
 
 * 仮想マシンが頻繁に使用されていない場合、より小さなサイズに変更して、毎月のコストを削減することができます
@@ -89,10 +91,5 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 ![アラートを仮想マシン 1 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/28/2016
+ms.date: 03/01/2017
 ms.author: mikeray
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 8e59988f24748a82d4e143295bab9bdaa65cf8e4
+ms.lasthandoff: 01/11/2017
 
 
 ---
@@ -154,10 +155,5 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

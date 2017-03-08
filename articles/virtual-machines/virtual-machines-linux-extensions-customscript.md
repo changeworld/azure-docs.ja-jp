@@ -18,6 +18,7 @@ ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: 09c1ace33461eff30fbd4b277e1397934fe5a98a
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -207,7 +208,7 @@ Azure カスタム スクリプト拡張機能は、Resource Manager テンプ�
 Azure スクリプト拡張機能ではログが生成され、そのログもここに保存されます。
 
 ```bash
-/var/log/azure/customscript/handler.log
+/var/log/azure/custom-script/handler.log
 ```
 
 カスタム スクリプト拡張機能の実行状態も、Azure CLI で取得できます。
@@ -230,10 +231,5 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>次のステップ
 他の VM スクリプト拡張機能については、[Linux 用の Azure スクリプト拡張機能の概要](virtual-machines-linux-extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

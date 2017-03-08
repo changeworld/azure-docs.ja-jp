@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
+ms.sourcegitcommit: af3ba5a4d1bd457f19038b9917ce55920e5e882b
+ms.openlocfilehash: 7d97e0f8be183c8858520d795ac28b7ad63a6dae
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、Microsoft Azure File Storage サービスで基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure の File Storage サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で非常に役立ちます。
+このチュートリアルでは、Microsoft Azure File Storage サービスで基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure の File Storage サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で役立ちます。
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
@@ -50,8 +51,8 @@ Install-Package wastorage
 Azure Storage API を使用してファイルにアクセスする C++ ファイルの先頭に、次の include ステートメントを追加します。
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/file.h"
+#include <was/storage_account.h>
+#include <was/file.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
@@ -199,7 +200,7 @@ outfile.close();
 ```
 
 ## <a name="how-to-delete-a-file"></a>ファイルを削除する方法
-もう 1 つの一般的なファイル ストレージ操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
+もう&1; つの一般的なファイル ストレージ操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
 
 ```cpp
 // Get a reference to the root directory for the share.    
@@ -354,12 +355,8 @@ Shared Access Signature の作成方法と使用方法の詳細については�
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
+* [C++ での Azure Storage ファイル サービスのサンプル](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

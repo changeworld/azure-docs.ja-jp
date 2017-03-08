@@ -17,6 +17,7 @@ ms.author: stewu
 translationtype: Human Translation
 ms.sourcegitcommit: ab688288c7ae0d6bebdff5156fad6f7f5e9b4224
 ms.openlocfilehash: e10bf8f7cbae2b81d22823ff74fe652c6bcb2da3
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: e10bf8f7cbae2b81d22823ff74fe652c6bcb2da3
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* ** HDInsight での Hive の実行**。  HDInsight での Hive ジョブの実行については、[HDInsight での Hive の使用に関するページ] (https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-hive) を参照してください。
+* **HDInsight での Hive の実行**。  HDInsight での Hive ジョブの実行については、[HDInsight での Hive の使用に関するページ] (https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-use-hive) を参照してください。
 * **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。
 
 ## <a name="parameters"></a>parameters
@@ -91,9 +92,4 @@ Hive クエリをチューニングする際に役立つ、いくつかのブロ
 * [HDInsight の Hadoop に対する Hive クエリの最適化](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Hive クエリ パフォーマンスのトラブルシューティング](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [HDInsight での Hive の最適化に関する刺激的なトーク](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

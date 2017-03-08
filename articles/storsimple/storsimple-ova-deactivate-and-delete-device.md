@@ -4,7 +4,7 @@ description: "StorSimple デバイスを非アクティブ化して削除する�
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf5ddb32-da4b-446f-ab91-215e9020e1c8
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87aa287acff47ae471830ef09bf674e2c97abddd
+ms.sourcegitcommit: d2008fa396405de99c527a84831a6544cdc0fc1d
+ms.openlocfilehash: d62b484150a6786f0a6abbff1ca2c172e1ad43db
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
+# <a name="deactivate-and-delete-a-storsimple-virtual-array-via-storsimple-manager"></a>StorSimple Manager を介した StorSimple Virtual Array の非アクティブ化と削除
 ## <a name="overview"></a>概要
 StorSimple Virtual Array を非アクティブ化する場合は、デバイスとこれに対応する StorSimple Manager サービスの接続を切断します。 非アクティブ化は永続的な操作であるため、元に戻すことはできません。 非アクティブ化されたデバイスを StorSimple Manager サービスに再び登録することはできません。
 
@@ -85,10 +87,5 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 ## <a name="next-steps"></a>次のステップ
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)」を参照してください。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

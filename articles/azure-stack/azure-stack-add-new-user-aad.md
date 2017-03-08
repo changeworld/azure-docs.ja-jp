@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 3/2/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 814ce84d0df75d13473608602cb74b48a8692378
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3f29753c63b1ec40dd18fef55bab570b5d418b3f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -41,7 +42,7 @@ You must have an Azure subscription to use the Azure portal.
 13. On the **Get temporary password** page, click **Create**.
 14. Copy the **New password**.
 15. Log in to Microsoft Azure with the new account. Change the password when prompted.
-16. Log in to `https://portal.azurestack.local` with the new account to see the tenant portal.
+16. Log in to `https://publicportal.local.azurestack.external` with the new account to see the tenant portal.
 
 ## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Create an Azure Stack tenant account using PowerShell
 If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure Active Directory Module for Windows PowerShell instead.
@@ -69,11 +70,6 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
     ```
 
 1. Sign in to Microsoft Azure with the new account. Change the password when prompted.
-2. Sign in to `https://portal.azurestack.local` with the new account to see the tenant portal.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+2. Sign in to `https://publicportal.local.azurestack.external` with the new account to see the tenant portal.
 
 

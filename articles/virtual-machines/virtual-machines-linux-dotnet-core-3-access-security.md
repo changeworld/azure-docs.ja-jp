@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 59e3402fbeb6356c164a9a7a80728ec06ca7e141
-
+ms.sourcegitcommit: 2fd9fd50be79e8af239101147e5ae0a39eb2dc07
+ms.openlocfilehash: 7cef940b26003578a3b08c453ed4f91d3e617b2e
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのアクセスとセキュリティ
+# <a name="access-and-security-in-azure-resource-manager-templates-for-linux-vms"></a>Linux VM の Azure Resource Manager テンプレートでのアクセスとセキュリティ
+
 Azure でホストされるアプリケーションには、インターネットまたは Azure を使った VPN/ExpressRoute 接続経由でアクセスできることが必要になる場合があります。 ミュージック ストア アプリケーション サンプルでは、パブリック IP アドレスを使ってインターネットで Web サイトを利用できます。 アクセスを確立したら、アプリケーションへの接続と仮想マシン リソース自体へのアクセスをセキュリティで保護する必要があります。 このアクセス セキュリティは、ネットワーク セキュリティ グループで設定します。 
 
 このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストア アプリケーションをどのようにセキュリティで保護しているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。 
@@ -137,10 +139,5 @@ Azure Portal では、ネットワーク セキュリティ グループは次�
 <hr>
 
 [手順 3 - Azure Resource Manager テンプレートでの可用性とスケール](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

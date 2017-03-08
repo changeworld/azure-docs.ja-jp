@@ -5,7 +5,7 @@ services: app-service
 documentationcenter: 
 author: cephalin
 writer: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.service: app-service
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: c002c4588869536810b969aed80da09e60b62525
-ms.openlocfilehash: 9b06b4a7f4b58c586b81d0ad4a40dfdc586dfe6e
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 10b1998789feafaf0c28155bc8a96a28ff78cf02
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -236,7 +237,7 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 * Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、 `azure site -h`を呼び出してください。
 
 > [!NOTE] 
-> デプロイ スロット用の [Azure CLI 2.0 (プレビュー)](https://github.com/Azure/azure-cli) コマンドについては、「[az appservice web deployment slot](/cli/azure/appservice/web/deployment/slot)」(az appservice Web デプロイ スロット) をご覧ください。
+> デプロイ スロット用の [Azure CLI 2.0](https://github.com/Azure/azure-cli) コマンドについては、「[az appservice web deployment slot](/cli/azure/appservice/web/deployment/slot)」(az appservice Web デプロイ スロット) をご覧ください。
 
 - - -
 ### <a name="azure-site-list"></a>azure site list
@@ -291,10 +292,5 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 [Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

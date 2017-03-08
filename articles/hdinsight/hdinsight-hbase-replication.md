@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: ec82fb896bc6c7212660746445af940f52546ad9
-ms.openlocfilehash: 62ded222bc72ded7c6ce51efe911dd84992c05b1
+ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
+ms.openlocfilehash: 83aabe0e5161cd3f94caa996dec29bc020e5308b
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -60,15 +61,17 @@ ms.openlocfilehash: 62ded222bc72ded7c6ce51efe911dd84992c05b1
 
 ### <a name="configure-one-virtual-network"></a>1 つの仮想ネットワークの構成
 
-2 つの HBase クラスターを同じ仮想ネットワーク内に作成するには、次のイメージをクリックします。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
+2 つの HBase クラスターを同じ仮想ネットワーク内に作成するには、次のイメージをクリックします。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/)に格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 ### <a name="configure-two-virtual-networks-in-the-same-region"></a>同じリージョンでの&2; つの仮想ネットワークの構成
 
-次のイメージをクリックして、同じリージョンに、VNet ピアリングされた&2; つの仮想ネットワークと&2; つの HBase クラスターを作成します。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
+次のイメージをクリックして、同じリージョンに、VNet ピアリングされた&2; つの仮想ネットワークと&2; つの HBase クラスターを作成します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)に格納されています。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-replication-with-two-vnets-peering-in-one-region.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+
 
 このシナリオでは、[VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)が必要です。 このテンプレートは、VNet ピアリングを有効にします。   
 
@@ -250,9 +253,4 @@ VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプ�
 [hdinsight-sensor-data]: hdinsight-storm-sensor-data-analysis.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

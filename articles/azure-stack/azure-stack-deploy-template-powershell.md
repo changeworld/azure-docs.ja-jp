@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 03/3/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01a3a508e7abc1aea2c3797be9c97182d57ea16d
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: c5ac70a25e3b80a50c01464895c400f83d1d124d
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -24,9 +25,9 @@ ms.openlocfilehash: 01a3a508e7abc1aea2c3797be9c97182d57ea16d
 Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack POC.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>Run AzureRM PowerShell cmdlets
-In this example, you run a script to deploy a virtual machine to Azure Stack POC using a Resource Manager template.  Before proceeding, ensure you have [installed and configured PowerShell](azure-stack-connect-powershell.md)  
+In this example, you run a script to deploy a virtual machine to Azure Stack POC using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure.md)  
 
-The VHD used in this example template is a default marketplace image (WindowsServer-2012-R2-Datacenter).
+The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
 
 1. Go to <http://aka.ms/AzureStackGitHub>, search for the **101-simple-windows-vm** template, and save it to the following location: c:\\templates\\azuredeploy-101-simple-windows-vm.json.
 2. In PowerShell, run the following deployment script. Replace *username* and *password* with your username and password. On subsequent uses, increment the value for the *$myNum* parameter to prevent overwriting your deployment.
@@ -60,10 +61,5 @@ The VHD used in this example template is a default marketplace image (WindowsSer
 
 ## <a name="next-steps"></a>Next steps
 [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

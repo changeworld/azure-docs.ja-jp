@@ -1,25 +1,30 @@
-<properties
-  pageTitle="Resource Manager テンプレートでの VM の作成 | Microsoft Docs"
-  description="Resource Manager テンプレートと PowerShell を使用して、新しい Windows 仮想マシンを簡単に作成します。"
-  services="virtual-machines-windows" 
-  documentationcenter=""
-  author="davidmu1"
-  manager="timlt"
-  editor=""
-  tags="azure-resource-manager"/>
+---
+title: "Azure でテンプレートから Windows VM を作成する | Microsoft Docs"
+description: "Resource Manager テンプレートと PowerShell を使用して、新しい Windows 仮想マシンを簡単に作成します。"
+services: virtual-machines-windows
+documentationcenter: 
+author: davidmu1
+manager: timlt
+editor: 
+tags: azure-resource-manager
+ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: davidmu
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: c1c301b5687cf35e93698a66fac7103b0cc90aed
+ms.lasthandoff: 03/01/2017
 
-<tags
-  ms.assetid="19129d61-8c04-4aa9-a01f-361a09466805"
-  ms.service="virtual-machines-windows"
-  ms.workload="na"
-  ms.tgt_pltfrm="vm-windows"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.date="01/06/2017"
-  ms.author="davidmu"/>
 
+---
 
-# <a name="create-a-windows-virtual-machine-with-a-resource-manager-template"></a>リソース マネージャー テンプレートで Windows 仮想マシンを作成する
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager テンプレートから Windows 仮想マシンを作成する
 
 この記事では、PowerShell を使用して Azure Resource Manager テンプレートをデプロイする方法を示します。 この[テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)は、1 つのサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する&1; つの仮想マシンをデプロイします。
 
@@ -95,10 +100,5 @@ DeploymentDebugLogLevel :
 ## <a name="next-steps"></a>次のステップ
 * デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[Resource Manager と PowerShell を使用した Azure Virtual Machines の管理](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、作成した仮想マシンを管理する方法を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

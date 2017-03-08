@@ -22,8 +22,3 @@
 # リソース
 ##[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

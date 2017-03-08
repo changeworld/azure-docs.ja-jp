@@ -12,11 +12,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a8f597086aca67d41b23487c384d6d614bc9968a
-ms.openlocfilehash: 17c89493d83bcfbd04c9e7f617c2bb8fa1964636
+ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
+ms.openlocfilehash: dd47e9c8f5c440c72acb60877d556476fe187ddf
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -1241,10 +1242,5 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

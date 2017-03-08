@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3827e74433a859e65071a1041c5ed6c8253db8df
-ms.openlocfilehash: be17b2de227ef6d93f8d326ff060c3c4788eb622
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: 0d998b5347a9da6dd209b0ba106792ab5c34164d
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="install-sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) への SAP HANA のインストール
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
 SAP HANA は自分でインストールする必要があります。新しい SAP HANA on Azure (L インスタンス) サーバーのハンドオフ後、すぐにインストールを実施できます。 ただし、SAP ポリシーに従い、SAP HANA のインストールは、認定 SAP HANA インストーラー (SAP HANA インストールの認定試験である Certified SAP Technology Associate の合格者) または SAP 認定システム インテグレーター (SI) によって実施される必要があります。
 
@@ -80,10 +82,5 @@ SAP は、SAP システムを構成するさまざまなコンポーネントの
 
 SAP HANA on Azure (L インスタンス) の場合、Azure で行われる時刻同期は、L インスタンス スタンプ内のコンピューティング ユニットには適用されません。 Azure (VM 上) でネイティブに SAP アプリケーションを実行する場合は、これは該当しません。Azure ではシステム時刻が適切に同期されるためです。 結果として、別のタイム サーバーを、Azure VM 上で実行される SAP アプリケーション サーバーと、HANA L インスタンス上で実行される SAP HANA データベース インスタンスで使用できるように設定する必要があります。 L インスタンス スタンプ内のストレージ インフラストラクチャの時刻は NTP サーバーと同期されます。
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

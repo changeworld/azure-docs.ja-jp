@@ -1,10 +1,10 @@
 ---
-title: "CLI を使用してクラシック モードで静的プライベート IP を設定する方法 | Microsoft Docs"
-description: "静的プライベート IP (DIP) とそれらを CLI を使用してクラシック モードで管理する方法を理解します。"
+title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure CLI 1.0 | Microsoft Docs"
+description: "Azure コマンドライン インターフェイス (CLI) 1.0 を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 70da85679c6e594278803fb073665a6eeab7df34
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 0d0b896e64dfba0081e2ec23f2181e07226faebe
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-classic-in-azure-cli"></a>Azure CLI での静的プライベート IP アドレス (クラシック) の設定方法
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -117,10 +120,5 @@ ms.openlocfilehash: 70da85679c6e594278803fb073665a6eeab7df34
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

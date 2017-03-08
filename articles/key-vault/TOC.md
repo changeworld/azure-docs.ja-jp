@@ -46,8 +46,3 @@
 ## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [ブログ](http://blogs.technet.com/b/kv/)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

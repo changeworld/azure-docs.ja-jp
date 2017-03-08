@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 719a43426b9e25b8213be042ae3ace36ff1f6c36
-ms.openlocfilehash: 52ee9c68917c10b7d697137a532e8cc2b096f753
+ms.sourcegitcommit: 77705415d24a939f88651ece8f92ad9eba87150b
+ms.openlocfilehash: 8cdad91c3d6d418b52a1fdabd44462d4d83950aa
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Create a plan in Azure Stack
 [Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
-1. In an internet browser, navigate to https://portal.azurestack.local.
+1. In an internet browser, navigate to https://portal.local.azurestack.external.
 2. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack Portal as a service administrator. Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
 
    Service administrators can create offers and plans, and manage users.
@@ -66,9 +67,4 @@ ms.openlocfilehash: 52ee9c68917c10b7d697137a532e8cc2b096f753
 
 ## <a name="next-steps"></a>Next steps
 [Create an offer](azure-stack-create-offer.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f6160c560b951c1355bf956a392dda5b41ac9cd7
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0dfc373cc65033cfb7c2b1882dca41faa7c7bcae
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -28,44 +29,38 @@ ms.openlocfilehash: f6160c560b951c1355bf956a392dda5b41ac9cd7
 
 > [!NOTE]
 > Azure AD ドメイン サービスを使用して作成された管理対象ドメインに、ドメイン管理者またはエンタープライズ管理者の特権がありません。 管理対象ドメインでは、これらの権限はサービスによって予約されており、テナント内でユーザーが使用することはできません。 ただし、この構成タスクで作成した特殊な管理者グループを使用して、特権操作の一部を行うことはできます。 これらの操作には、ドメインへのコンピューターの参加、ドメインに参加しているコンピューターでの管理者グループへの所属、グループ ポリシーの構成などが含まれます。
-> 
-> 
+>
+>
 
 この構成タスクでは、管理グループを作成し、そのグループにディレクトリ内の 1 人以上のユーザーを追加します。 Azure AD ドメイン サービスの管理グループを作成するには、次の手順を実行します。
 
 1. **Azure クラシック ポータル** ([https://manage.windowsazure.com](https://manage.windowsazure.com)) に移動します。
 2. 左ウィンドウで、 **[Active Directory]** を選択します。
 3. Azure AD Domain Services を有効にする Azure AD テナント (ディレクトリ) を選択します。 Azure AD ディレクトリごとに作成できるドメインは 1 つだけです。
-   
+
     ![Select Azure AD Directory](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
 4. **[グループ]** タブをクリックします。
 5. Azure AD テナントにグループを追加するには、ページの下部にある作業ウィンドウの **[グループの追加]** をクリックします。
-   
+
     ![[グループの追加] ボタン](./media/active-directory-domain-services-getting-started/add-group-button.png)
 6. **AAD DC Administrators**という名前のグループを作成します。 **[グループの種類]** を **[セキュリティ]** に設定します。
-   
+
    > [!WARNING]
    > Azure AD Domain Services 管理対象ドメイン内でアクセスを有効にするには、この名前をそのまま使用してグループを作成します。
-   > 
-   > 
-   
+   >
+   >
+
     ![Create administrator group](./media/active-directory-domain-services-getting-started/create-admin-group.png)
 7. Azure AD ドメイン サービス内で管理者特権を付与するためにこのグループが使用されることを他のユーザーが理解できるように、このグループの説明を追加します。
 8. グループが作成されたら、グループの名前をクリックして、このグループのプロパティを表示します。 ユーザーをこのグループのメンバーとして追加するには、下部のパネルの **[メンバーの追加]** をクリックします。
-   
+
     ![[グループ メンバーの追加] ボタン](./media/active-directory-domain-services-getting-started/add-group-members-button.png)
 9. **[メンバーの追加]** ダイアログ ボックスで、このグループのメンバーにするユーザーを選択し、チェック ボックスをオンします。
-   
+
     ![管理者グループへのユーザーの追加](./media/active-directory-domain-services-getting-started/add-group-members.png)
 
 <br>
 
 ## <a name="task-2-create-or-select-an-azure-virtual-network"></a>タスク 2: Azure 仮想ネットワークの作成または選択
 次の構成タスクでは、 [Azure 仮想ネットワークを作成または選択します](active-directory-ds-getting-started-vnet.md)。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

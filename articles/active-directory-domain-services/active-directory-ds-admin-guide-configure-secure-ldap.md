@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 44be67cd5c59a57cafd244ce0a49a6fadf44bdda
 ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 4. **セキュリティで保護された LDAP を有効にするために使用する証明書**。
-   
+
    * **推奨** - 信頼できる開証明機関から証明書を取得します。 この構成方法の方が安全です。
    * または、この記事で後ほど説明するように、 [自己署名証明書を作成](#task-1---obtain-a-certificate-for-secure-ldap) することもできます。
 
@@ -47,8 +48,8 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 
 > [!NOTE]
 > **エンタープライズ証明機関:** Azure AD Domain Services では、現在、組織のエンタープライズ証明機関によって発行された、セキュリティで保護された LDAP 証明書の使用はサポートされていません。 この制限が適用されるのは、サービスが、エンタープライズ CA をルート証明機関として信頼していないためです。 エンタープライズ CA のサポートは今後追加する予定です。 エンタープライズ CA によって発行された証明書を使用する必要がある場合は、対処方法について[お問い合わせください](active-directory-ds-contact-us.md)。
-> 
-> 
+>
+>
 
 <br>
 
@@ -65,8 +66,8 @@ ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
 
 > [!NOTE]
 > セキュリティで保護された LDAP を使用して管理対象ドメインに接続する必要があるクライアント コンピューターでは、セキュリティで保護された LDAP 証明書の発行者を信頼する必要があります。
-> 
-> 
+>
+>
 
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>オプション B - セキュリティで保護された LDAP 用の自己署名証明書を作成する
 公開証明機関からの証明書の使用を見込めない場合は、セキュリティで保護された LDAP 用の自己署名証明書を作成することができます。
@@ -176,8 +177,8 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 
    > [!NOTE]
    > 管理対象ドメインに対してセキュリティで保護された LDAP を有効にするには、約 10 - 15 分かかります。 指定した LDAPS 証明書が必須条件を満たしていない場合、ディレクトリに対してセキュリティで保護された LDAP は有効化されず、エラーが表示されます。 たとえば、ドメイン名が正しくない場合や、証明書の有効期限が切れているか、まもなく切れる場合です。
-   > 
-   > 
+   >
+   >
 
 9. セキュリティで保護された LDAP が管理対象ドメインに対して有効になると、**[保留中...]** のメッセージは表示されなくなり、 証明書の拇印が表示されます。
 
@@ -233,9 +234,4 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [Azure Active Directory Domain Services によって管理されるドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -4,7 +4,7 @@ description: "Azure クラシック ポータルで StorSimple Manager サービ
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: byronr
+manager: timlt
 editor: 
 ms.assetid: bc1d5650-275c-42ed-bc77-cdb596f85943
 ms.service: storsimple
@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f507eb6986f7c62965dc00673ee5ebe38e70f1d7
-ms.openlocfilehash: 1858fa9e1223d0938bb1eb6195c42fb1ec3b007d
+ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
+ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deploy-the-storsimple-manager-service"></a>StorSimple Manager サービスをデプロイする
+# <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Azure クラシック ポータルで StorSimple Manager サービスをデプロイする
+
 ## <a name="overview"></a>概要
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを&1; か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
 
 StorSimple Manager のランディング ページには、StorSimple ストレージ デバイスの管理に使用できるすべての StorSimple Manager サービスの一覧が示されています。 各 StorSimple Manager について、以下の情報が [StorSimple Manager] ページに表示されます。
 
@@ -99,9 +102,4 @@ StorSimple デバイスをデプロイする場合は、 **[簡易作成]** オ�
 * [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-manage-storage-accounts.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

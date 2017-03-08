@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95a79ccb83d5a3ba386d5db2fd47f3887a03fa8a
-ms.openlocfilehash: 4abb2fa6591c0e014e8d9563f69f9586e081e7b2
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 01a19f1070c1096b41599705bba246bd0cc45d09
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -27,10 +28,10 @@ Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護�
 ## <a name="prerequisites"></a>前提条件
 この記事は、Azure に Linux VM があることを前提としています。 VM を作成する必要がある場合は、次のいずれかの方法を実行してください。
 
-- [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-さらに、最新の [Azure CLI 1.0](../xplat-cli-install.md) または [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされており、[アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)にログインする必要があります。
+さらに、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) または [Azure CLI 1.0](../xplat-cli-install.md) がインストールされており、[アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)にログインする必要があります。
 
 
 ## <a name="quick-commands"></a>クイック コマンド
@@ -69,16 +70,7 @@ sudo service xrdp restart
 sudo passwd ops
 ```
 
-Linux VM の SSH セッションを終了します。 ネットワーク セキュリティ グループ ルールを作成して、リモート デスクトップのトラフィックを許可するには、ローカル コンピューターで Azure CLI を使用します。 次の例では、Azure CLI 1.0 を使用して、`myNetworkSecurityGroup`内に `myNetworkSecurityGroupRule`という名前のルールを作成し、tcp ポート 3389 でトラフィックを許可しています。
-
-```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1010 \
-    --destination-port-range 3389 --access allow
-```
-
-または、Azure CLI 2.0 (Preview) で [az network nsg rule create](/cli/azure/network/nsg/rule#create)を使用します。
+Linux VM の SSH セッションを終了します。 ネットワーク セキュリティ グループ ルールを作成して、リモート デスクトップのトラフィックを許可するには、ローカル コンピューターで Azure CLI を使用します。 Azure CLI 2.0 で [az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用します。 次の例では、`myNetworkSecurityGroup` に `myNetworkSecurityGroupRule` という名前の規則を作成して、TCP ポート 3389 でのトラフィックを許可します。
     
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup \
@@ -87,6 +79,15 @@ az network nsg rule create --resource-group myResourceGroup \
     --source-address-prefix '*' --source-port-range '*' \
     --destination-address-prefix '*' --destination-port-range 3389 \
     --access allow
+```
+
+または、Azure CLI 1.0 を使用します。
+
+```azurecli
+azure network nsg rule create --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+    --protocol tcp --direction inbound --priority 1010 \
+    --destination-port-range 3389 --access allow
 ```
 
 特定のリモート デスクトップ クライアントを使用して Linux VM に接続します。
@@ -149,16 +150,7 @@ sudo passwd ops
 
 次の例では、`myNetworkSecurityGroupRule` という名前のネットワーク セキュリティ グループ ルールを作成し、`3389` ポートの `tcp` でのトラフィックを `allow` しています。
 
-- Azure CLI 1.0 を使用します。
-
-    ```azurecli
-    azure network nsg rule create --resource-group myResourceGroup \
-        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-        --protocol tcp --direction inbound --priority 1010 \
-        --destination-port-range 3389 --access allow
-    ```
-
-- または、Azure CLI 2.0 (Preview) で [az network nsg rule create](/cli/azure/network/nsg/rule#create)を使用します。
+- Azure CLI 2.0 で [az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用します。
     
     ```azurecli
     az network nsg rule create --resource-group myResourceGroup \
@@ -169,6 +161,14 @@ sudo passwd ops
         --access allow
     ```
 
+- または、Azure CLI 1.0 を使用します。
+
+    ```azurecli
+    azure network nsg rule create --resource-group myResourceGroup \
+        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+        --protocol tcp --direction inbound --priority 1010 \
+        --destination-port-range 3389 --access allow
+    ```
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux VM をリモート デスクトップ クライアントに接続する
 ローカルのリモート デスクトップ クライアントを開き、Linux VM の DNS 名または IP アドレスに接続します。 VM でユーザー アカウントのユーザー名とパスワードを次のように入力します。
@@ -215,10 +215,5 @@ Red Hat Enterprise Linux SUSE など他の Linux ディストリビューショ�
 Linux VM で SSH キーを作成、使用する方法の詳細については、[Azure での Linux VM の SSH キーの作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 Windows から SSH を使用する方法の詳細については、[Windows での SSH キーの使用方法](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

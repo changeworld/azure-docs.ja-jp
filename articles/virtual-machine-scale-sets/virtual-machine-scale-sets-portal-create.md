@@ -16,14 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: negat
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 35d4c8593dd9698017df85675395430f345f4e86
-ms.openlocfilehash: 17054073e921708cc0c9392ed1b94e9579a9f940
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: 06e7418111762a0388ce1704ba5abaa9c3a10349
+ms.openlocfilehash: e0853070b5a3f9d44baebecac625a5ad6b9ef755
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure ポータルを使用して仮想マシン スケール セットを作成する
+# <a name="how-to-create-a-virtual-machine-scale-set-with-the-azure-portal"></a>Azure Portal を使用して Virtual Machine Scale Set を作成する方法
 このチュートリアルでは、Azure Portal を使用して仮想マシン スケール セットをわずか数分で簡単に作成する方法を示します。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="choose-the-vm-image-from-the-marketplace"></a>Marketplace から VM イメージを選択する

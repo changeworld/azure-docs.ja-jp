@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: febc8fef864f88fa07accf91efc9b87727a48b32
 ms.openlocfilehash: 8b1029075178fbc591645a5fd6a112ad0a7f8b86
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -756,7 +757,7 @@ Data Factory でサポートされている関数とシステム変数の一覧�
 
 ```
 DatasetSlice = [start, end]
-DependecyPeriod = [f(start, end), g(start, end)]
+DependencyPeriod = [f(start, end), g(start, end)]
 ```
 
 **f** と **g** は、各アクティビティ入力の依存関係期間の開始と終了を計算するマップ関数です。
@@ -855,10 +856,5 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 * Data Factory で値が使用されない場合でも、入力データセットと出力データセットの**abailability** (**freqeuncy** と **interval**) は指定します。  
 * ダイアグラム ビューには、1 回限りのパイプラインは表示されません。 この動作は仕様です。
 * 1 回限りのパイプラインを更新することはできません。 1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

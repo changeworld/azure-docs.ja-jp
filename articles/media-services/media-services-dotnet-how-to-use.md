@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9cfa3ecf3788dfd90a7e1d6c79827961d3dbeb54
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 38c7ea11091bb65432589df4d72e5efef3cb7ea3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 9cfa3ecf3788dfd90a7e1d6c79827961d3dbeb54
 * 新規または既存の Azure サブスクリプションで作成した Media Services アカウント。 「[メディア サービス アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
 * オペレーティング システム: Windows 10、Windows 7、Windows Server 2008 R2、または Windows 8。
 * .NET Framework 4.5。
-* Visual Studio 2015、Visual Studio 2013、Visual Studio 2012、または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。
+* 見ることができます。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 このセクションでは、Media Services 開発用に Visual Studio でプロジェクトを作成し、セットアップする方法を説明します。  ここでは C# Windows コンソール アプリケーション プロジェクトを使用していますが、Media Services アプリケーション用に作成できる他の種類のプロジェクト (Windows フォーム アプリケーション、ASP.NET Web アプリケーションなど) についても、同じセットアップ手順を利用できます。
@@ -40,7 +41,7 @@ ms.openlocfilehash: 9cfa3ecf3788dfd90a7e1d6c79827961d3dbeb54
 
 また、GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) と [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) から最新の Media Services .NET SDK bits を取得してソリューションをビルドし、クライアント プロジェクトに参照を追加できます。 必要なすべての依存関係が、自動的にダウンロードされ抽出されることにご注意ください。
 
-1. Visual Studio 2010 SP1 以降で新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
 2. ソリューションをビルドします。
 3. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** をインストールして追加します。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
    
@@ -91,10 +92,5 @@ ms.openlocfilehash: 9cfa3ecf3788dfd90a7e1d6c79827961d3dbeb54
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

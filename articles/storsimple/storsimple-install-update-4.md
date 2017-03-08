@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/21/2017
+ms.date: 03/06/2017
 ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 988d859e2cc9cd723e23704193b6c3bbdce08379
 ms.openlocfilehash: 976aa382e34cdc417a79b513c0e8e063b30d9e01
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -101,10 +102,5 @@ Update 4 のインストールにお勧めの方法は、Azure クラシック �
 
 ## <a name="next-steps"></a>次のステップ
 詳しくは、[Update 4 リリース](storsimple-update4-release-notes.md)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO4-->
 
 

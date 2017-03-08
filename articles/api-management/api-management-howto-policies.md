@@ -17,11 +17,12 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
 ms.openlocfilehash: 3d78af41bbe13bcec9336452110a857d114ad006
+ms.lasthandoff: 12/20/2016
 
 
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
-Azure API Management のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。
+Azure API Management のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の&1; つです。 ポリシーは、API の要求または応答に対して順に実行される一連のステートメントのコレクションです。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられます。 他にも多数のポリシーが標準で提供されています。
 
 ポリシー ステートメントとその設定の一覧については、「[Azure API Management ポリシー リファレンス][Policy Reference]」を参照してください。
 
@@ -34,7 +35,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![[ポリシー] メニュー][policies-menu]
 
-ポリシー エディターは、[ポリシー スコープ] (上部)、ポリシーを編集するための [ポリシー定義] (左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
+ポリシー エディターは、[ポリシー スコープ]\(上部)、ポリシーを編集するための [ポリシー定義]\(左側)、およびステートメントの一覧 (右側) の&3; つのメイン セクションから構成されます。
 
 ![ポリシー エディター][policies-editor]
 
@@ -134,7 +135,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 上のポリシー定義の例では、`cross-domain` ステートメントが上位のポリシーよりも前に実行され、その後に `find-and-replace` ポリシーが続いています。
 
-ポリシー ステートメントの中で同じポリシーが 2 回出現した場合は、最近評価されたポリシーが適用されます。 これを使用して、上位のスコープに定義されているポリシーを上書きできます。 現在のスコープに含まれるポリシーをポリシー エディターに表示するには、 **[選択したスコープの有効なポリシーを再計算する]**をクリックします。
+ポリシー ステートメントの中で同じポリシーが&2; 回出現した場合は、最近評価されたポリシーが適用されます。 これを使用して、上位のスコープに定義されているポリシーを上書きできます。 現在のスコープに含まれるポリシーをポリシー エディターに表示するには、 **[選択したスコープの有効なポリシーを再計算する]**をクリックします。
 
 グローバル ポリシーには親ポリシーがないため、 `<base>` 要素を使用しても効果はありません。 
 
@@ -162,9 +163,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-edit]: ./media/api-management-howto-policies/api-management-policies-edit.png
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

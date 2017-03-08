@@ -12,15 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/26/2017
+ms.date: 3/1/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 4d374a4730e442bc7e75f54f6b3d761ec3d3e783
-ms.openlocfilehash: ed41c795dde761ef854f0349f6e5edd938d182d8
+ms.sourcegitcommit: f851d873abf08c8214dc018091017573f3428432
+ms.openlocfilehash: 7cb1ecd113b003620fbc6b6890c1275ec53840f1
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Deploy templates in Azure Stack using Visual Studio
+
+> [!IMPORTANT] 
+> This topic applies only to Azure Stack Technical Preview 2.
+>
+
 Use Visual Studio to deploy Azure Resource Manager templates to the Azure Stack POC.
 
 1. [Install and connect](azure-stack-install-visual-studio.md) to Azure Stack with Visual Studio.
@@ -28,7 +34,7 @@ Use Visual Studio to deploy Azure Resource Manager templates to the Azure Stack 
 3. Click **File**, click **New**, and in the **New Project** dialog box click **Azure Resource Group**.
 4. Enter a **Name** for the new project, and then click **OK**.
 5. In the **Select Azure Template** dialog box, change the *Show templates from this location* drop-down to **Azure Stack Quickstart**
-6. Click **101-Simple-Windows-VM**, and then click **OK**.  
+6. Click **101-create-storage-account**, and then click **OK**.  
 7. In your new project, you can see a list of the templates available by expanding the **Templates** node in the **Solution Explorer** pane.
 8. In the **Solution Explorer** pane, right-click the name of your project, click **Deploy**, then click **New Deployment**.
 9. In the **Deploy to Resource Group** dialog box, in the **Subscription** drop-down, select your Microsoft Azure Stack subscription.
@@ -40,10 +46,5 @@ Use Visual Studio to deploy Azure Resource Manager templates to the Azure Stack 
 [Deploy templates with the command line](azure-stack-deploy-template-command-line.md)
 
 [Develop templates for Azure Stack](azure-stack-develop-templates.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

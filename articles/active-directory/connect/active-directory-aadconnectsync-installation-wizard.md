@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 902c6ae45e7809e2847c9e45a35803f40c0b0ff3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -38,8 +39,8 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 
 > [!IMPORTANT]
 > インストール ウィザードが開いている間は、同期エンジンでのすべての操作が中断されます。 構成の変更を完了したら、すぐにインストール ウィザードを閉じてください。
-> 
-> 
+>
+>
 
 ## <a name="view-current-configuration"></a>現在の構成を表示する
 このオプションでは、現在構成されているオプションの簡易ビューを表示します。
@@ -81,7 +82,7 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 ## <a name="change-user-sign-in"></a>ユーザー サインインの変更
 このオプションでは、パスワード同期からフェデレーションに、またはその逆に変更することができます。 **[構成しない]**に変更することはできません。
 
-このオプションの詳細については、「 [ユーザーのサインイン](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method)」を参照してください。
+このオプションの詳細については、「 [ユーザーのサインイン](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure AD Connect Sync の同期で使用される構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
@@ -90,10 +91,4 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

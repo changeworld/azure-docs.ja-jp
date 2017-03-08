@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: fc8cb82e952a05b161f00ef9ebfbd4852d3987d4
+ms.sourcegitcommit: c859b789b564ee79022823e8d796775f58eeeccd
+ms.openlocfilehash: 7acd58989da14ea49374e86edb0dba5762557d79
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="upload-a-specialized-vhd-to-azure-to-use-for-creating-a-new-vm"></a>新しい VM の作成に使用するために特殊化された VHD を Azure にアップロードする
+# <a name="how-to-upload-a-specialized-vhd-to-create-a-vm-in-azure"></a>特殊化した VHD をアップロードして Azure に VM を作成する方法
 
 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 特殊化された VHD を Azure にアップロードし、それを使用して、Managed Disks または非管理対象ストレージ アカウントを使用する VM を作成できます。 [Managed Disks](../storage/storage-managed-disks-overview.md) を使用して、Managed Disks で提供される簡略化された管理と追加機能を活用することをお勧めします。
 
@@ -39,7 +41,7 @@ ms.openlocfilehash: fc8cb82e952a05b161f00ef9ebfbd4852d3987d4
 * Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることをご確認ください。 インストールするには次のコマンドを実行します。
+PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -78,7 +80,7 @@ PowerShell バージョン 1.4 以降がまだインストールされていな�
 ## <a name="get-the-storage-account"></a>ストレージ アカウントを取得する
 アップロードした VM イメージを格納するには、Azure にストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
 
-VHD を使用して VM の管理ディスクを作成する場合は、ストレージ アカウントの場所が、VM を作成する場所と同じである必要があります。
+VHD を使用して VM の管理ディスクを作成する場合は、ストレージ アカウントの場所が VM を作成する場所と同じである必要があります。
 
 使用できるストレージ アカウントを表示するには、次のように入力します。
 
@@ -149,7 +151,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="other-options-for-uploading-a-vhd"></a>VHD をアップロードするためのその他のオプション
 
-また、次のいずれかを使用して、VHD をストレージ アカウントにアップロードすることもできます。
+次のいずれかの方法を使用して、ストレージ アカウントに VHD をアップロードすることもできます。
 
 -   [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 
@@ -237,18 +239,18 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
 ## <a name="configure-the-os-disk"></a>OS ディスクの構成
 
-特殊化された OS を [Azure にアップロード](virtual-machines-windows-upload-image.md)した VHD とするか、[既存の Azure VM から VHD をコピー](virtual-machines-windows-vhd-copy.md)できます。 
+特殊化された OS には、[Azure にアップロード](virtual-machines-windows-upload-image.md)した VHD、または[既存の Azure VM の VHD のコピー](virtual-machines-windows-vhd-copy.md)を使用できます。 
 
 次の&2; つのオプションのいずれかを選ぶことができます。
-- **オプション 1**: OS ディスクとして使用する既存のストレージ アカウントで特殊化された VHD から特殊化された管理ディスクを作成します。
+- **オプション 1**: 既存のストレージ アカウントで特殊化された VHD から特殊化された管理ディスクを作成して、OS ディスクとして使用する。
 
 または 
 
-- **オプション 2**: 自分のストレージ アカウントに格納されている特殊化された VHD (非管理対象ディスク) を使用します。 
+- **オプション 2**: 自分のストレージ アカウントに格納されている特殊化された VHD (非管理ディスク) を使用する。 
 
-### <a name="option-1-create-a-managed-disk-from-an-unmanaged-specialized-disk"></a>オプション 1: 非管理対象の特殊化されたディスクからの管理ディスクの作成
+### <a name="option-1-create-a-managed-disk-from-an-unmanaged-specialized-disk"></a>オプション 1: 特殊化された非管理ディスクから管理ディスクを作成する
 
-1. ストレージ アカウント内の既存の特殊化された VHD から管理ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用し、**StandardLRS** ストレージにディスクを挿入し、**https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vh.vhd** をソース VHD の URI として使用します。
+1. ストレージ アカウント内の既存の特殊化された VHD から管理ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用し、**StandardLRS** ストレージにディスクを挿入して、**https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vh.vhd** をソース VHD の URI として使用します。
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName "myOSDisk1" -Disk (New-AzureRmDiskConfig `
@@ -263,21 +265,21 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
-省略可能: 追加の管理ディスクをデータ ディスクとして接続します。 このオプションは、[管理データ ディスクの作成](virtual-machines-windows-create-managed-disk-ps.md)に関する記事に従って管理データ ディスクを作成したことを想定しています。 
+省略可能: 追加の管理ディスクをデータ ディスクとして接続します。 このオプションは、[管理データ ディスクの作成](virtual-machines-windows-create-managed-disk-ps.md)に関する記事に従って管理データ ディスクを作成したと想定しています。 
 
 ```powershell
 $vm = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 ```
 
 
-### <a name="option-2-attach-a-vhd-that-is-in-an-existing-storage-account"></a>オプション 2: 既存のストレージ アカウント内にある VHD の接続
+### <a name="option-2-attach-a-vhd-that-is-in-an-existing-storage-account"></a>オプション 2: 既存のストレージ アカウント内にある VHD を接続する
 
 1. 使用する VHD の URI を設定します。 この例では、**myOsDisk.vhd** という名前の VHD ファイルが **myContainer** というコンテナー内の **myStorageAccount** というストレージ アカウントに保持されています。
 
     ```powershell
     $osDiskUri = $urlOfUploadedImageVhd
     ```
-2. OS ディスクを追加するには、コピー元の OS VHD の URL を使用します。 この例では、OS ディスクの作成時に、"osDisk" という用語が VM 名に追加されて OS ディスク名が作成されます。 この例では、この Windows ベース VHD を OS ディスクとして VM に接続する必要があることも指定します。
+2. コピーした OS VHD の URL を使用して OS ディスクを追加します。 この例では、OS ディスクの作成時に、"osDisk" という語句を VM 名に追加して OS ディスクの名前にしています。 また、この例では、この Windows ベース VHD を OS ディスクとして VM に接続するように指定しています。
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
@@ -291,7 +293,7 @@ $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-ストレージ アカウントを使用する場合、データおよびオペレーティング システム ディスクの URL は `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` のようになります。 ポータルでこれを見つけるには、ターゲット ストレージ コンテナーを参照し、コピーしたオペレーティング システムまたはデータ VHD をクリックして、URL の内容をコピーします。
+ストレージ アカウントを使用する場合、データ ディスクおよびオペレーティング システム ディスクの URL は `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` のようになります。 ポータルでこれを見つけるには、ターゲット ストレージ コンテナーを参照し、コピーしたオペレーティング システムまたはデータ VHD をクリックして、URL の内容をコピーします。
 
 
 ## <a name="create-the-vm"></a>VM の作成
@@ -321,9 +323,4 @@ $vmList.Name
 
 ## <a name="next-steps"></a>次のステップ
 新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 (プレビュー) による既存のネットワークへの Linux VM のデプロイ | Microsoft Docs"
-description: "Azure CLI 2.0 (プレビュー) を使用して Linux 仮想マシンを既存の仮想ネットワークにデプロイする方法を説明します。"
+title: "Azure CLI 2.0 による既存のネットワークへの Linux VM のデプロイ | Microsoft Docs"
+description: "Azure CLI 2.0 を使用して Linux 仮想マシンを既存の仮想ネットワークにデプロイする方法を説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,31 +16,27 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 34e9b401444aeec233d846a6b52f4a452c54cdaf
-ms.openlocfilehash: 106571bf36454ab20e75cb4ee42b2aca787a9d5a
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: c56ad780a1d67102d23c84a18c712ae48cec1eb6
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-virtual-network-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用して既存の仮想ネットワークに Linux VM をデプロイする
+# <a name="deploy-a-linux-vm-into-an-existing-virtual-network"></a>既存の仮想ネットワークに Linux VM をデプロイする
 
-この記事では、Azure CLI 2.0 (プレビュー) を使用して仮想マシン (VM) を既存の仮想ネットワークにデプロイする方法を説明します。 要件は次のとおりです。
+この記事では、Azure CLI 2.0 を使用して仮想マシン (VM) を既存の仮想ネットワークにデプロイする方法を説明します。 要件は次のとおりです。
 
 - [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 - [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+これらの手順は、[Azure CLI 1.0](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。
 
-このカスタム環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+このカスタム環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myVnet`、`myVM` などは、例として使われているパラメーター名です。
 
@@ -62,7 +58,7 @@ az vm create \
 
 仮想ネットワークや ネットワーク セキュリティ グループなどの Azure 資産は、ほとんどデプロイされることのない有効期間の長い静的リソースにすることをお勧めします。 いったん仮想ネットワークをデプロイしておくと、インフラストラクチャに悪影響を及ぼすことなく、新しいデプロイで再利用できます。 仮想ネットワークを従来のハードウェア ネットワーク スイッチと考えると、デプロイごとにまったく新しいハードウェア スイッチを構成する必要はありません。 適切に構成された仮想ネットワークがあれば、新しい VM をその仮想ネットワークに何度もデプロイできます。仮想ネットワークの有効期間中に必要な変更は、あるとしてもごくわずかです。
 
-このカスタム環境を作成するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
+このカスタム環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
 
 次の例では、パラメーター名を独自の値を置き換えます。 `myResourceGroup`、`myVnet`、`myVM` などは、例として使われているパラメーター名です。
 
@@ -149,7 +145,7 @@ az network nic create \
 
 仮想ネットワーク、サブネット、SSH 用のポート 22 を除くすべての受信トラフィックをブロックしてサブネットを保護するファイアウォールとして機能するネットワーク セキュリティ グループの用意ができました。 これで、この既存のネットワーク インフラストラクチャ内に VM をデプロイできます。
 
-[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 完全な VM をデプロイするために Azure CLI 2.0 (プレビュー) で使用するフラグの詳細については、「[Azure CLI を使用して、完全な Linux 環境を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 完全な VM をデプロイするために Azure CLI 2.0 で使用するフラグの詳細については、「[Azure CLI を使用して、完全な Linux 環境を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 次の例では、Azure Managed Disks を使用して VM を作成します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Managed Disks の詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md)」をご覧ください。 非管理対象ディスクを使用する場合は、次の追加のメモを参照してください。
 
@@ -178,9 +174,4 @@ Azure で仮想マシンを作成する方法の詳細については、次の�
 * [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

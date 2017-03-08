@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
-ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -51,7 +51,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 2. Azure AD Web アプリケーションのクライアント ID、クライアント シークレット、トークン エンドポイントを取得します。
 3. 作成する Java アプリケーションからアクセスする Data Lake Store ファイル/フォルダーで、Azure AD Web アプリケーションのアクセスを構成します。
 
-これらの手順を実行する方法については、「[Create an Active Directory application (Active Directory アプリケーションを作成する)](data-lake-store-authenticate-using-active-directory.md#create-an-active-directory-application)」をご覧ください。
+これらの手順を実行する方法については、「[Create an Active Directory application (Active Directory アプリケーションを作成する)](data-lake-store-authenticate-using-active-directory.md)」をご覧ください。
 
 Azure Active Directory には、トークンを取得するための他のオプションも用意されています。 ブラウザーで実行されるアプリケーション、デスクトップ アプリケーションとして配布されるアプリケーション、オンプレミスまたは Azure 仮想マシンで実行されるサーバー アプリケーションなど、実際のシナリオに合わせてさまざまな認証メカニズムの中から選択できます。 また、パスワード、証明書、2 要素認証などの各種資格情報の中から選択することもできます。さらに、Azure Active Directory では、オンプレミスの Active Directory ユーザーをクラウドと同期することも可能です。 詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。 
 

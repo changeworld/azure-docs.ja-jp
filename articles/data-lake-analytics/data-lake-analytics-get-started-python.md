@@ -16,6 +16,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 5618650671badfc54860c3ad8af5d1e727d3d8c9
 ms.openlocfilehash: 40ccfc59cccd86a7634ec89656571b3cd23566b4
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -65,8 +66,8 @@ azure-mgmt-datalake-store モジュールには、Azure Data Lake Store アカ�
         from azure.mgmt.resource.resources.models import ResourceGroup
 
         ## Required for Azure Data Lake Store account management
-        from azure.mgmt.datalake.store.account import DataLakeStoreAccountManagementClient
-        from azure.mgmt.datalake.store.account.models import DataLakeStoreAccount
+        from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+        from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
         ## Required for Azure Data Lake Store filesystem management
         from azure.datalake.store import core, lib, multithread
@@ -205,10 +206,5 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 - U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 - 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 03/02/2017
 ms.author: adsolank
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb99c9139c71221a75d5d4c7db0407a39a8fc39f
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -85,23 +86,64 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 > 
 > 
 
-static bool RunHyperlapseJob(string input, string output, string hyperConfig) { // create asset with input file IAsset asset = context .Assets .CreateAssetAndUploadSingleFile(input, "My Hyperlapse Input", AssetCreationOptions.None);
+        static bool RunHyperlapseJob(string input, string output, string hyperConfig)
+        {
+            // create asset with input file
+            IAsset asset = context
+            .Assets
+            .CreateAssetAndUploadSingleFile(input, "My Hyperlapse Input", AssetCreationOptions.None);
 
-// grab instances of Azure Media Hyperlapse MP IMediaProcessor mp = context .MediaProcessors .GetLatestMediaProcessorByName("Azure Media Hyperlapse");
+            // grab instances of Azure Media Hyperlapse MP
+            IMediaProcessor mp = context
+            .MediaProcessors
+            .GetLatestMediaProcessorByName("Azure Media Hyperlapse");
 
-// create Job with Hyperlapse task IJob job = context .Jobs .Create(String.Format("Hyperlapse {0}", input));
+            // create Job with Hyperlapse task
+            IJob job = context
+            .Jobs
+            .Create(String.Format("Hyperlapse {0}", input));
 
-if (String.IsNullOrEmpty(hyperConfig)) { // config cannot be empty return false; }
+            if (String.IsNullOrEmpty(hyperConfig))
+            {
+            // config cannot be empty
+            return false;
+            }
 
-hyperConfig = File.ReadAllText(hyperConfig);
+            hyperConfig = File.ReadAllText(hyperConfig);
 
-ITask hyperlapseTask = job.Tasks.AddNew("Hyperlapse task", mp, hyperConfig, TaskOptions.None); hyperlapseTask.InputAssets.Add(asset); hyperlapseTask.OutputAssets.AddNew("Hyperlapse output", AssetCreationOptions.None);
+            ITask hyperlapseTask = job.Tasks.AddNew("Hyperlapse task",
+            mp,
+            hyperConfig,
+            TaskOptions.None);
+            hyperlapseTask.InputAssets.Add(asset);
+            hyperlapseTask.OutputAssets.AddNew("Hyperlapse output",
+            AssetCreationOptions.None);
 
-job.Submit();
+            job.Submit();
 
-// Create progress printing and querying tasks Task progressPrintTask = new Task(() => {
+            // Create progress printing and querying tasks
+            Task progressPrintTask = new Task(() =>
+            {
 
-IJob jobQuery = null; do { var progressContext = context; jobQuery = progressContext.Jobs .Where(j => j.Id == job.Id) .First(); Console.WriteLine(string.Format("{0}\t{1}\t{2}", DateTime.Now, jobQuery.State, jobQuery.Tasks[0].Progress)); Thread.Sleep(10000); } while (jobQuery.State != JobState.Finished && jobQuery.State != JobState.Error && jobQuery.State != JobState.Canceled); }); progressPrintTask.Start();
+            IJob jobQuery = null;
+            do
+            {
+                var progressContext = context;
+                jobQuery = progressContext.Jobs
+                .Where(j => j.Id == job.Id)
+                .First();
+                Console.WriteLine(string.Format("{0}\t{1}\t{2}",
+                DateTime.Now,
+                jobQuery.State,
+                jobQuery.Tasks[0].Progress));
+                Thread.Sleep(10000);
+            }
+            while (jobQuery.State != JobState.Finished &&
+                                   jobQuery.State != JobState.Error &&
+                                   jobQuery.State != JobState.Canceled);
+                });
+                
+            progressPrintTask.Start();
 
             Task progressJobTask = job.GetExecutionProgressTask(
                                                  CancellationToken.None);
@@ -172,10 +214,5 @@ IJob jobQuery = null; do { var progressContext = context; jobQuery = progressCon
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

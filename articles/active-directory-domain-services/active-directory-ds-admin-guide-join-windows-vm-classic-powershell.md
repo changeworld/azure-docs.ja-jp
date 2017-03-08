@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: fdc53ee24c623218e218cdda1c24dffbbec50bc5
 ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -24,15 +25,15 @@ ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
 > [!div class="op_single_selector"]
 > * [Azure クラシック ポータル - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
 > * [PowerShell - Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-> 
-> 
+>
+>
 
 <br>
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
-> 
-> 
+>
+>
 
 以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。 この手順に従うと、Windows ベースの Azure 仮想マシンを作成して、Azure AD ドメイン サービスで管理されているドメインに参加させることができます。
 
@@ -156,10 +157,4 @@ VM のサブネットを設定します。
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -3,6 +3,7 @@
 ## [SQL Data Warehouse の概要](sql-data-warehouse-overview-what-is.md)
 ## [データ ウェアハウスのワークロード](sql-data-warehouse-overview-workload.md)
 ## [分散データ](sql-data-warehouse-distributed-data.md)
+## [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 # 作業の開始
 
@@ -10,6 +11,7 @@
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 ## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
+## [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
 
 # 方法
 
@@ -114,7 +116,6 @@
 ### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [クエリ](sql-data-warehouse-manage-monitor.md)
 ### [ワークロード](sql-data-warehouse-develop-concurrency.md)
-### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
 
 ## セキュリティ
 

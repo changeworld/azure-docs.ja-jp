@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 (プレビュー) を使用したカスタム Linux ディスクのアップロード | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルと Azure CLI 2.0 (プレビュー) を使用して、仮想ハード ディスク (VHD) を作成し、Azure にアップロードします"
+title: "Azure CLI 2.0 を使用したカスタム Linux ディスクのアップロード | Microsoft Docs"
+description: "Resource Manager デプロイメント モデルと Azure CLI 2.0 を使用して、仮想ハード ディスク (VHD) を作成し、Azure にアップロードする"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,26 +16,19 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 25ca54a6514b281417ac71a89dac167c94137b18
-ms.openlocfilehash: bbb9a2cd2123a29507f21c11b536ae81368cf8a7
+ms.sourcegitcommit: 374b2601857b3983bcd7b2f2e11d22b187fe7105
+ms.openlocfilehash: 732ebaaf5bf16c02cfc2185d9e7138daf74c71dd
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-by-using-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) を使用してカスタム ディスクをアップロードし、Linux VM を作成する
-この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム ディスクから Linux VM を作成する方法について説明します。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#quick-commands) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
-
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する
+この記事では、Azuer CLI 2.0 を使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム ディスクから Linux VM を作成する方法について説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VHD を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#requirements)。
 
-[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) の最新版がインストールされていることを確認し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 
@@ -100,9 +93,9 @@ myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --os-type linux \
+    --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+    --attach-os-disk https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
 
 ### <a name="unmanaged-disks"></a>非管理対象ディスク
@@ -112,7 +105,8 @@ az vm create --resource-group myResourceGroup --location westus \
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://mystorageaccount.blob.core.windows.net/mydisk/myDisks.vhd
+    --image https://mystorageaccount.blob.core.windows.net/mydisk/myDisks.vhd \
+    --use-unmanaged-disk
 ```
 
 目標のストレージ アカウントは、仮想ディスクのアップロード先と同じである必要があります。 また、**az vm create** コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。 詳細については、 [Resource Manager の CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
@@ -133,7 +127,7 @@ az vm create --resource-group myResourceGroup --location westus \
   * ストレージ アカウントと、カスタム ディスクおよび作成した VM の両方を保持するコンテナーを作成します。
   * VM をすべて作成したら、ディスクを安全に削除することができます。
 
-[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) の最新版がインストールされていることを確認し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 
@@ -221,9 +215,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-vm-from-custom-disk"></a>カスタム ディスクからの VM の作成
-VM を作成するには、Azure Managed Disks または管理されていないディスクを使用します。 いずれのタイプでも、VM の作成時に、管理ディスクまたは管理されないディスクに URI を指定します。 管理されていないディスクの場合、宛先のストレージ アカウントが、カスタム ディスクが保存されているストレージ アカウントと必ず一致するようにします。 Azure 2.0 (プレビュー) または Resource Manager JSON テンプレートを使用して VM を作成することができます。
+VM を作成するには、Azure Managed Disks または管理されていないディスクを使用します。 いずれのタイプでも、VM の作成時に、管理ディスクまたは管理されないディスクに URI を指定します。 管理されていないディスクの場合、宛先のストレージ アカウントが、カスタム ディスクが保存されているストレージ アカウントと必ず一致するようにします。 Azure 2.0 または Resource Manager JSON テンプレートを使用して VM を作成することができます。
 
-### <a name="azure-cli-20-preview---azure-managed-disks"></a>Azure CLI 2.0 (プレビュー) - Azure Managed Disks
+### <a name="azure-cli-20---azure-managed-disks"></a>Azure CLI 2.0 - Azure Managed Disks
 VHD から VM を作成するには最初に、[az disk create](/cli/azure/disk/create) を使用して VHD を管理ディスクに変換する必要があります。 次の例では、指定したストレージ アカウントとコンテナーにアップロードした VHD から `myManagedDisk` という名前の管理ディスクを作成します。
 
 ```azurecli
@@ -250,12 +244,12 @@ myUMDiskFromVHD    https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --os-type linux \
+    --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+    --attach-os-disk https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
 
-### <a name="azure-20-preview---unmanaged-disks"></a>Azure 2.0 (プレビュー) - 管理されていないディスク
+### <a name="azure-20---unmanaged-disks"></a>Azure 2.0 - 非管理対象ディスク
 非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm#create) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
 カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm#create) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
@@ -266,7 +260,8 @@ az vm create --resource-group myResourceGroup --location westus \
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
+    --image https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd \
+    --use-unmanaged-disk
 ```
 
 また、**az vm create** コマンドで求められるその他のパラメーターすべて (ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。
@@ -312,10 +307,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>次のステップ
 カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

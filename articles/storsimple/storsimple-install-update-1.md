@@ -4,7 +4,7 @@ description: "StorSimple 8000 シリーズのデバイスに StorSimple 8000 シ
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 7a513923-eb77-4078-b0ab-f8e90183796a
 ms.service: storsimple
@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/22/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f16ae589c160338450a41857f88fe29763e1b9eb
+ms.sourcegitcommit: 56af9046fff24229298997b169aaf329e1692cc2
+ms.openlocfilehash: 80ff35cc47dfc38089f4c392ef4c90baf9ccc03e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="install-update-12-on-your-storsimple-device"></a>StorSimple デバイスへの Update 1.2 のインストール
-## <a name="overview"></a>Overview
+# <a name="install-update-12-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスに Update 1.2 をインストールする
+## <a name="overview"></a>概要
 このチュートリアルでは、Update 1 より前のソフトウェア バージョンを実行している StorSimple デバイスに Update 1.2 をインストールする方法について説明します。 このチュートリアルではまた、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されている場合にこの更新プログラムに必要な追加の手順についても説明します。
 
 Update 1.2 には、デバイス ソフトウェアの更新プログラム、LSI ドライバーの更新プログラム、ディスク ファームウェアの更新プログラムが含まれます。 デバイス ソフトウェアと LSI ドライバーの更新プログラムは中断を伴わない更新プログラムであるため、Azure クラシック ポータルを使用して適用できます。 ディスク ファームウェアの更新プログラムは中断を伴う更新プログラムであるため、デバイスの Windows PowerShell インターフェイスでのみ適用できます。
@@ -114,10 +116,5 @@ Update 1.2 を適用するには、次の手順を実行します。 **この更
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,4 +1,3 @@
-
 ---
 title: "Data Lake Store のアクセス制御の概要 | Microsoft Docs"
 description: "Azure Data Lake Store のアクセス制御のしくみを理解します"
@@ -13,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 756d51e41c43be2e80f8fce1c3965e1723f7cec8

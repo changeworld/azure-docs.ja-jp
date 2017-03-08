@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a8115205c674221ee3dc46b0c3149c64081135b8
+ms.sourcegitcommit: 53973b27ae6531d5c4eaceb862ca5bd2bc5f9249
+ms.openlocfilehash: dec07803397ec5df17dfb57703e276ba071e942a
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: a8115205c674221ee3dc46b0c3149c64081135b8
 
 [Azure コマンド ライン インターフェイス](../xplat-cli-install.md) を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は Node.js で実装されます。 Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-この記事では、HDInsight での Azure CLI の使用についてのみ説明します。 Azure CLI の使用方法に関する一般的なガイドについては、[Azure CLI のインストールと構成][azure-command-line-tools]に関する記事を参照してください。
+この記事では、HDInsight での Azure CLI の使用についてのみ説明します。 Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストール][azure-command-line-tools]」を参照してください。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
@@ -106,9 +107,4 @@ Hadoop クラスターのサイズを変更するには:
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

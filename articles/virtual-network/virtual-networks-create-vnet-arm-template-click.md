@@ -1,10 +1,10 @@
 ---
-title: "Resource Manager テンプレートで Virtual Network を作成する | Microsoft Docs"
-description: "テンプレートを使用した Virtual Network の作成方法の説明 | Resource Manager"
+title: "Virtual Network を作成する | Azure Resource Manager テンプレート | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して仮想ネットワークを作成する方法を説明します。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 69530861-2f97-4a6e-b336-a7baf2690044
@@ -15,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
-ms.openlocfilehash: be3fbc2c14be06cac2b9213ee2da58545e34fc0e
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 1e1ca336987082e06f172f7eb89036c64d1fec37
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-virtual-network-using-a-template"></a>テンプレートを使用して Virtual Network を作成する
+# <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した仮想ネットワークの作成
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure には、Azure Resource Manager とクラシックという 2 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
+Azure には、Azure Resource Manager とクラシックという&2; 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
  
 この記事では、Azure Resource Manager テンプレートを使用して Resource Manager デプロイメント モデルで VNet を作成する方法について説明します。 他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
@@ -45,7 +47,7 @@ GitHub から直接 ARM テンプレートをデプロイするだけで、変�
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートのダウンロードと理解
-Github から既存のテンプレートをダウンロードして VNet と 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。 これを行うには次の手順を実行します。
+Github から既存のテンプレートをダウンロードして VNet と&2; つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。 これを行うには次の手順を実行します。
 
 1. [サンプル テンプレート ページ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)に移動します。
 2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
@@ -241,9 +243,4 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 - 仮想マシン (VM) を仮想ネットワークに接続する方法。[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関する記事または [Linux VM の作成](../virtual-machines/virtual-machines-linux-quick-create-portal.md)に関する記事をご覧ください。 この記事の手順で VNet とサブネットを作成する代わりに、VM を接続する既存の VNet とサブネットを選択できます。
 - 仮想ネットワークを他の仮想ネットワークに接続する方法。[VNet の接続](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)に関する記事をご覧ください。
 - サイト間の仮想プライベート ネットワーク (VPN) または ExpressRoute 回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続する方法。 詳しくは、[サイト間 VPN を使用したオンプレミスのネットワークへの VNet の接続](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関する記事と「[ExpressRoute 回線への VNet のリンク](../expressroute/expressroute-howto-linkvnet-arm.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

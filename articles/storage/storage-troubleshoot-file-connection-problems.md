@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
-ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
+ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -246,13 +246,15 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 ### <a name="solution"></a>解決策
 "/etc/fstab" エントリで **serverino** を確認します。
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 **sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、そのオプションが使われているかどうかも確認できます。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 **serverino** オプションが見当たらない場合は、**serverino** オプションを選択し、Azure Files のマウントを解除したうえでもう一度マウントします。
+
+パフォーマンス低下のもう&1; つの原因として、キャッシュが無効になっていることが考えられます。 キャッシュが有効になっているかを確認するには、"cache=" を探します。  *cache=none* は、キャッシングが無効になっていることを示します。 既定のマウント コマンドで共有を再マウントするか、明示的に **cache=strict** オプションを追加してコマンドをマウントして、既定のキャッシングまたは "strict" キャッシング モードが有効になっていることを確認してください。
 
 <a id="error112"></a>
 ## <a name="error-112---timeout-error"></a>エラー 112 - タイムアウト エラー
@@ -263,9 +265,10 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 このエラーは、Linux の再接続の問題または、ネットワーク エラーなど再接続を妨げる他の問題によって引き起こされることがあります。 ハード マウントを指定すると、接続が確立されるまで、または明示的に中断されるまで、クライアントが強制的に待機させられます。これはネットワーク タイムアウトによるエラーを防ぐために使用できます。 ただし、ユーザーは、この方法では待機が無期限に続く可能性があることや、必要に応じて接続を一時停止すべきことを認識しなければなりません。
 
+
 ### <a name="workaround"></a>対処法
 
-Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
+Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。 こちらと他に再接続の修正 (4.4.40+ 4.8.16+ 4.9.1+) がされた一般的な Linux カーネルの一覧はこちらです。
 
 <a id="webjobs"></a>
 

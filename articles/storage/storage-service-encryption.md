@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 130100a4f1710a7820c8e9793db73144d7d68808
-ms.openlocfilehash: 26b1f0708b3705297b9a35cce0692d3503b03246
+ms.sourcegitcommit: a5cce0da15941e91cbe74cdd1e0306ebd8db362c
+ms.openlocfilehash: d228ceb1a99e8fe11b59e6372b60bbfc93adac27
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,10 +39,10 @@ SSE は、Azure Storage に書き込まれるデータを書き込みの時点�
 
 Storage Service Encryption - File Storage 内のデータを暗号化するための Files Preview SSE が利用可能になりました。 これは現在プレビューの段階です。 File Storage 向け SSE が利用可能なリージョンの一覧を次に示します。
 
-SSE Files のプレビューへの参加を希望する方は、ssdiscussions@microsoft.com までお問い合わせください。
+SSE Files のプレビューへの参加を希望する方は、ssediscussions@microsoft.com までお問い合わせください。
 
 詳細については、よく寄せられる質問に関するセクションを参照してください。
-File Storage 向け File Storage Storage Service Encryption は、現在、東アジア リージョンで利用可能です。
+File Storage 向け File Storage Storage Service Encryption は、現在、東アジア、北ヨーロッパ、米国東部 2 リージョンで利用可能です。
 
 
 特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
@@ -78,7 +79,7 @@ SSE には次の制限事項があります。
 ## <a name="getting-started"></a>Getting Started (概要)
 ### <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>手順 1: [新しいストレージ アカウントを作成する](storage-create-storage-account.md)
 ### <a name="step-2-enable-encryption"></a>手順 2: 暗号化を有効にする
-[Azure ポータル](https://portal.azure.com)を使用して、暗号化を有効にできます。
+[Azure Portal](https://portal.azure.com) を使用して、暗号化を有効にできます。
 
 > [!NOTE]
 > ストレージ アカウントの Storage Service Encryption をプログラムを使用して有効または無効にする場合は、[Azure Storage Resource Provider REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure CLI](storage-azure-cli.md) を使用します。
@@ -110,7 +111,7 @@ Azure File Storage は、標準の SMB プロトコルを使用したクラウ�
 ### <a name="step-4-query-the-status-of-the-encrypted-data"></a>手順 4: 暗号化されたデータの状態を照会する
 ストレージ クライアント ライブラリの更新バージョンがデプロイされ、オブジェクトの状態を照会して暗号化されているかどうかを判別できるようになります。 これは現在、Blob Storage でのみ使用可能です。 File Storage のサポートはロードマップに含まれています。 
 
-それまでの間は、Azure ポータルで [Get Account Properties](https://msdn.microsoft.com/library/azure/mt163553.aspx) を呼び出して、ストレージ アカウントの暗号化が有効であることを確認したり、ストレージ アカウントのプロパティを表示したりできます。
+それまでの間は、Azure Portal で [Get Account Properties](https://msdn.microsoft.com/library/azure/mt163553.aspx) を呼び出して、ストレージ アカウントの暗号化が有効であることを確認したり、ストレージ アカウントのプロパティを表示したりできます。
 
 ## <a name="encryption-and-decryption-workflow"></a>暗号化と復号化のワークフロー
 ここでは、暗号化/復号化のワークフローを簡単に説明します。
@@ -170,7 +171,7 @@ A: 現時点ではできません。キーは、Microsoft によって完全に�
 
 **Q: 新しいストレージ アカウントを作成すると、SSE は既定で有効になりますか?**
 
-A: SSE は既定では有効になりません。Azure ポータルを使用して有効にできます。 Storage Resource Provider REST API を使用してプログラムでこの機能を有効にすることもできます。
+A: SSE は既定では有効になりません。Azure Portal を使用して有効にできます。 Storage Resource Provider REST API を使用してプログラムでこの機能を有効にすることもできます。
 
 **Q: この機能は Azure ドライブ暗号化とどのように違うのですか?**
 
@@ -198,10 +199,5 @@ A: Storage Service Encryption に関する問題は、 [ssediscussions@microsoft
 
 ## <a name="next-steps"></a>次のステップ
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、 [Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

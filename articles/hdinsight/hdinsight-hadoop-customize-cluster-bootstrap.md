@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
-ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
+ms.sourcegitcommit: c8abf308c20968f184a80b20dc40185b1631105d
+ms.openlocfilehash: 903004ae83d86ddcda13c6f2fce708e71ffa729b
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -40,20 +41,17 @@ ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
 * webhcat-site.xml
 * yarn-site.xml
 
-再イメージ化により、クラスターは変更を保持できません。 再イメージ化については、「 [Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください。 クラスターの有効期間中に変更を保持するには、作成プロセスで HDInsight クラスターのカスタマイズを使用します。 これはクラスターの構成を変更するための推奨方法であり、変更は Azure 再イメージ化再起動イベントを越えて存続します。 これらの構成の変更はサービスが起動される前に適用されるため、サービスを再起動する必要はありません。 
-
-ブートストラップを使用する 3 つの方法があります。
+ブートストラップの使用方法は&3; つあります。
 
 * Azure PowerShell の使用
-  
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 * .NET SDK の使用
 * Azure Resource Manager テンプレートの使用
 
-作成時に HDInsight クラスターへの追加コンポーネントのインストールの詳細については、次を参照してください。
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+作成時に HDInsight クラスターへ追加コンポーネントをインストールする際の詳細については、次を参照してください。
 
 * [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
-* [Script Action を使用して HDInsight をカスタマイズする (Windows)](hdinsight-hadoop-customize-cluster.md)
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 次の PowerShell コードでは、Hive 構成をカスタマイズします。
@@ -74,8 +72,8 @@ ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
         -Location $location `
         -ClusterSizeInNodes $clusterSizeInNodes `
         -ClusterType Hadoop `
-        -OSType Windows `
-        -Version "3.2" `
+        -OSType Linux `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -Config $config 
 
@@ -84,7 +82,7 @@ ms.openlocfilehash: 0bb7af25211ef728055ddb5a6fb826411986dd4e
 **接続を確認するには:**
 
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. 左側のウィンドウで、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックします。
+2. 左側のメニューから、**[HDInsight クラスター]** をクリックします。 表示されない場合は、先に **[その他のサービス]** をクリックします。
 3. PowerShell スクリプトを使用して作成したクラスターをクリックします。
 4. ブレードの上部から **[ダッシュボード]** をクリックし、Ambari UI を開きます。
 5. 左側のメニューで **[Hive]** をクリックします。
@@ -244,7 +242,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
         -ClusterSizeInNodes 1 `
         -ClusterType Hadoop `
         -OSType Linux `
-        -Version "3.2" `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -SshCredential $sshCredential `
         -Config $config
@@ -255,9 +253,4 @@ Resource Manager テンプレートでは、ブートストラップを使用で
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
     #endregion
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

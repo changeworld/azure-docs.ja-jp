@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: f9ea0d14a99a7881b816606058e5ad72a0fef499
-ms.openlocfilehash: 01adbd43c5c77c3a80c5141e06a2ab14a49b8454
+ms.sourcegitcommit: bd67dc463daee2d7763e722f079930d8712fe478
+ms.openlocfilehash: 81a08a3cbd14c4a61efe68d9dd9fcd032dd1e1cd
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -97,14 +98,13 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
 `Set-AzureRmVMCustomScriptExtension` コマンドを使用して、カスタム スクリプト拡張機能を既存の仮想マシンに追加できます。 詳細については、「[Set-AzureRmVMCustomScriptExtension ](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.compute/v2.1.0/set-azurermvmcustomscriptextension)」をご覧ください。
-
 ```powershell
 Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
--VMName myVM `
--Location myLocation `
--FileUri myURL `
--Run 'myScript.ps1' `
--Name DemoScriptExtension
+    -VMName myVM `
+    -Location myLocation `
+    -FileUri myURL `
+    -Run 'myScript.ps1' `
+    -Name DemoScriptExtension
 ```
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
@@ -118,25 +118,35 @@ Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myE
 ```
 
 拡張機能の実行の出力は、ターゲット仮想マシンの次のディレクトリ内のファイルにログ記録されます。
-
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```
 
-スクリプト自体は、ターゲット仮想マシンの次のディレクトリにダウンロードされます。
-
+指定したファイルは、ターゲット仮想マシンの次のディレクトリにダウンロードされます。
 ```cmd
-C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads
+C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
+`<n>` は&10; 進整数であり、拡張機能の実行間で変わる可能性があります。  `1.*` 値は、拡張機能の実際の現在の `typeHandlerVersion` 値と一致します。  たとえば、実際のディレクトリは、`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` になります。  
+
+`commandToExecute` コマンドを実行すると、拡張機能によってこのディレクトリ (例: `...\Downloads\2`) が現在の作業ディレクトリとして設定されます。 これにより、`fileURIs` プロパティを使用してダウンロードされたファイルを見つけるときに相対パスを使用できます。 例については、下記の表を参照してください。
+
+絶対ダウンロード パスは経時的に変わる可能性があるため、可能であれば、`commandToExecute` の文字列では相対スクリプト/ファイル パスを使用することをお勧めします。 次に例を示します。
+```json
+    "commandToExecute": "powershell.exe . . . -File './scripts/myscript.ps1'"
+```
+
+最初の URI セグメントの後のパス情報は、`fileUris` プロパティのリストを使用してダウンロードされたファイル用に保持されます。  次の表に示すように、`fileUris` 値の構造を反映するために、ダウンロードされたファイルはダウンロード サブディレクトリにマップされます。  
+
+#### <a name="examples-of-downloaded-files"></a>ダウンロードされたファイルの例
+
+| fileUris の URI | ダウンロードされた相対的な場所 | ダウンロードされた絶対的な場所* |
+| ---- | ------- |:--- |
+| `https://someAcct.blob.core.windows.net/aContainer/scripts/myscript.ps1` | `./scripts/myscript.ps1` |`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\scripts\myscript.ps1`  |
+| `https://someAcct.blob.core.windows.net/aContainer/topLevel.ps1` | `./topLevel.ps1` | `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\topLevel.ps1` |
+
+\* 上記のように、絶対ディレクトリ パスは VM の有効期間中に変わりますが、CustomScript 拡張機能の&1; 回の実行中に変わることはありません。
 
 ### <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/en-us/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/en-us/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
-
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+この記事についてさらにヘルプが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム] (https://azure.microsoft.com/en-us/support/forums/) で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/en-us/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
 

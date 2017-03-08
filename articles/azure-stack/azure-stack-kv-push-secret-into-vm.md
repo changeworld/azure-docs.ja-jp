@@ -3,8 +3,8 @@ title: Deploy a VM with a securely stored certificate on Azure Stack  | Microsof
 description: Learn how deploy a VM and inject a certificate from Azure Stack Key Vault
 services: azure-stack
 documentationcenter: 
-author: rlfmendes
-manager: natmack
+author: SnehaGunda
+manager: byronr
 editor: 
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
@@ -13,14 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
-ms.author: ricardom
+ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: a3a8b9ff522369ed0f03817585e1666507c95c6e
-ms.openlocfilehash: da4d3c13910a3e1a47592d056af3c8b2a8576ebe
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c263f57241bfc54bc3cd5be071eaba20e27513ce
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="create-vms-and-include-certificates-retrieved-from-key-vault"></a>Create VMs and include certificates retrieved from Key Vault
+
+> [!NOTE]
+> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+
 In Azure Stack, VMs are deployed through Azure Resource Manager, and you can now store certificates in Azure Stack Key Vault. Then Azure Stack (Microsoft.Compute resource provider to be specific) pushes them into your VMs when the VMs are deployed. Certificates can be used in many scenarios, including SSL, encryption, and certificate based authentication.
 
 By using this method, you can keep the certificate safe. It's now not in the VM image, or in the application's configuration files or some other unsafe location. By setting appropriate access policy for the key vault, you can also control who gets access to your certificate. Another benefit is that you can manage all your certificates in one place in Azure Stack Key Vault.
@@ -140,10 +145,5 @@ As an added benefit, you now have one convenient place in Key Vault to manage al
 [Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
 
 [Allow an application to access Key Vault](azure-stack-kv-sample-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

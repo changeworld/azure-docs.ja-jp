@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 02/13/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 408394e529c262c0a47aae680c8f6ea1bc8eb7c6
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -114,9 +115,4 @@ URL で公開元 ID を探します。
 [8]: ./media/marketplace-publishing-report-seller-insights/selectpublisherstab.png
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 3eb5f21eed1c583587cf7642db4e70102c818348
+ms.sourcegitcommit: d72ff7449a87dfa9223b7c5e77446de23502eb84
+ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array--set-up-your-virtual-device-as-an-iscsi-server"></a>StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする
+# <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
 ![iscsi セットアップ プロセス フロー](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
@@ -35,7 +36,7 @@ StorSimple Virtual Array を構成およびセットアップする前に、以�
 
 * 「[StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の説明に従って仮想アレイをプロビジョニングし、そのアレイに接続していること。
 * StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、「[StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」の「**手順 2: サービス登録キーを取得する**」を参照してください。
-* 既存の StorSimple デバイス マネージャー サービスに登録する 2 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、「 **Web UI を使用した StorSimple Virtual Array の管理** 」の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
+* 既存の StorSimple デバイス マネージャー サービスに登録する&2; 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、「 **Web UI を使用した StorSimple Virtual Array の管理** 」の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
 
@@ -96,7 +97,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
     **[Web プロキシ設定]** ページで、以下のことを実行します。
    
-   1. *http://host-IP* アドレスまたは FDQN*:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. *http://*host-IP アドレスまたは FDQN*:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**[ユーザー名]** と **[パスワード]** も指定する必要があります。
    4. **[Apply]**をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
@@ -213,7 +214,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 12. ドライブ文字をボリュームに割り当て、 **[次へ]**をクリックします。
     
     ![新しいボリューム ウィザード 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. ボリュームをフォーマットするパラメーターを入力します。 **Windows Server では、NTFS のみがサポートされています。** アロケーション ユニット サイズを 64 K に設定します。 ボリュームのラベルを指定します。 ベスト プラクティスとして、この名前は、StorSimple Virtual Array で指定したボリューム名と同じにすることをお勧めします。  **[次へ]**にログインします。
+13. ボリュームをフォーマットするパラメーターを入力します。 **Windows Server では、NTFS のみがサポートされています。** アロケーション ユニット サイズを 64 K に設定します。 ボリュームのラベルを指定します。 ベスト プラクティスとして、この名前は、StorSimple Virtual Array で指定したボリューム名と同じにすることをお勧めします。 **[次へ]**にログインします。
     
     ![新しいボリューム ウィザード 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. ボリュームの値を確認し、 **[完了]**をクリックします。
@@ -244,10 +245,5 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

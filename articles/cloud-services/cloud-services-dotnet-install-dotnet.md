@@ -12,19 +12,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/24/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: d67271ebf90ac2a1870787de7cfe6459526fcb37
-ms.openlocfilehash: 60cd63540d91e11729f2a305b999548d5c6b9320
-
+ms.sourcegitcommit: 0ac8ca0c5407925728ed0431294a3234b58d6e63
+ms.openlocfilehash: 04506596ba21c3ebef7237eaad8c5d786ad672fe
+ms.lasthandoff: 02/27/2017
 
 ---
+
 # <a name="install-net-on-a-cloud-service-role"></a>クラウド サービスのロールに .NET をインストールする
 この記事では、クラウド サービスの Web ロールと worker ロールにゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 たとえば、次の手順を使用すると、.NET 4.6 のバージョンが付属しない Azure ゲスト OS ファミリ 4 に .NET 4.6.1 をインストールできます。 ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリース ニュース](cloud-services-guestos-update-matrix.md)を参照してください。
 
 >[!NOTE]
 >ゲスト OS 5 には、.NET 4.6 が含まれています。
+
+>[!IMPORTANT]
+>Azure SDK 2.9 では、ゲスト OS 4 以下における.NET 4.6 のデプロイに制限があります。 修正プログラムは[こちら](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)で入手できます。
 
 .NET を Web ロールや worker ロールにインストールするプロセスとして、クラウド プロジェクトの一部として .NET インストーラー パッケージを含め、ロールのスタートアップ タスクとしてインストーラーを起動します。  
 
@@ -32,7 +36,7 @@ ms.openlocfilehash: 60cd63540d91e11729f2a305b999548d5c6b9320
 * インストールする .NET Framework の Web インストーラーをダウンロードします。
   * [.NET 4.6.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=671729)
 * Web ロールの場合
-  1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下のロールを右クリックし、**[追加]、[新しいフォルダー]** の順に選択します。  *bin*
+  1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下のロールを右クリックし、**[追加]、[新しいフォルダー]** の順に選択します。 *bin*
   2. **bin** フォルダーを右クリックし、**[追加]、[既存の項目]** の順に選択します。 .NET インストーラーを選択して bin フォルダーに追加します。
 * worker ロールの場合
   1. ロールを右クリックし、**[追加]、[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
@@ -189,22 +193,17 @@ ms.openlocfilehash: 60cd63540d91e11729f2a305b999548d5c6b9320
 サービスをデプロイすると、スタートアップ タスクが実行され、またインストールされていない場合、.NET Framework がインストールされます。 Framework のインストール中、ロールはビジー状態になります。また、Framework のインストールで必要な場合、ロールが再起動されることがあります。 
 
 ## <a name="additional-resources"></a>その他のリソース
-* [.NET Framework のインストール][.NET Framework のインストール]
-* [方法 : インストールされている .NET Framework バージョンを確認する][方法 : インストールされている .NET Framework バージョンを確認する]
-* [.NET Framework のインストールおよびアンインストールのブロックのトラブルシューティング][.NET Framework のインストールおよびアンインストールのブロックのトラブルシューティング]
+* [.NET Framework のインストール][Installing the .NET Framework]
+* [方法 : インストールされている .NET Framework バージョンを確認する][How to: Determine Which .NET Framework Versions Are Installed]
+* [.NET Framework のインストールのトラブルシューティング][Troubleshooting .NET Framework Installations]
 
-[方法 : インストールされている .NET Framework バージョンを確認する]: https://msdn.microsoft.com/library/hh925568.aspx
-[.NET Framework のインストール]: https://msdn.microsoft.com/library/5a4x27ek.aspx
-[.NET Framework のインストールおよびアンインストールのブロックのトラブルシューティング]: https://msdn.microsoft.com/library/hh925569.aspx
+[How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
+[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
+[Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

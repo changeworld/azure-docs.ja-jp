@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: b29b7fc56e1797d9daa33ff18df0fe5590b12612
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: 33c658bc15ee266d519a2ca403d2fc0d057b36fd
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -27,7 +28,7 @@ ms.openlocfilehash: b29b7fc56e1797d9daa33ff18df0fe5590b12612
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](#quick-commands) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0 (プレビュー)](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="quick-commands"></a>クイック コマンド
@@ -83,10 +84,5 @@ azure network vnet subnet set --resource-group myResourceGroup \
 * [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)
 * [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 * [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

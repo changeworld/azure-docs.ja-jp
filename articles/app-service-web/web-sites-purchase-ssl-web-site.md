@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
-ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
+ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
+ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -36,7 +37,7 @@ ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
 > 
 > 
 
-## <a name="a-namebkmkoverviewaoverview"></a><a name="bkmk_Overview"></a>概要
+## <a name="bkmk_Overview"></a>概要
 > [!NOTE]
 > 有効なクレジット カードが関連付けられていないサブスクリプションを使用して SSL 証明書を購入しないでください。 お使いのサブスクリプションが無効になる可能性があります。 
 > 
@@ -47,7 +48,7 @@ contoso.comなどのカスタム ドメインに対して HTTPS を有効にす�
 
 SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。 この結果、どのような種類の証明書を取得する必要があるかが決まります。 contoso.com または www.contoso.com のように、ただ&1; つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。 contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
 
-## <a name="a-namebkmkpurchasecertastep-0-place-an-ssl-certificate-order"></a><a name="bkmk_purchasecert"></a>手順 0: SSL 証明書を注文する
+## <a name="bkmk_purchasecert"></a>手順 0: SSL 証明書を注文する
 この手順では、選択した SSL 証明書を注文する方法を説明します。
 
 1. **[Azure Portal](https://portal.azure.com/)**で、[参照] をクリックし、検索バーに「App Service 証明書」と入力し、結果から "App Service 証明書" を選択して、[追加] をクリックします。 
@@ -83,7 +84,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 > 
 > 
 
-## <a name="a-namebkmkstorekeyvaultastep-1-store-the-certificate-in-azure-key-vault"></a><a name="bkmk_StoreKeyVault"></a>手順 1: 証明書を Azure Key Vault に保存する
+## <a name="bkmk_StoreKeyVault"></a>手順 1: 証明書を Azure Key Vault に保存する
 この手順では、選択した Azure Key Vault に購入した SSL 証明書を格納する方法を説明します。
 
 1. SSL 証明書の購入が完了した後は、 **[App Service 証明書]** リソース ブレードを再度参照して手動で開く必要があります (手順 1 を参照)。   
@@ -104,7 +105,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
    
     購入した証明書を選択した Azure Key Vault に格納する手順はこれで完了です。 ブレードを更新すると、この手順に緑のチェック マークが表示されます。
 
-## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>手順 2: ドメインの所有権を検証する
+## <a name="bkmk_VerifyOwnership"></a>手順 2: ドメインの所有権を検証する
 この手順では、注文した SSL 証明書のドメイン所有権を検証する方法を説明します。 
 
 1. **[証明書の構成]** ブレードで **[ステップ 2: 検証]** をクリックします。 App Service 証明書では 3 種類のドメイン検証がサポートされています。
@@ -121,14 +122,23 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
      * 検証メールを再送信する必要がある場合は、 **[電子メールを再送信]** ボタンをクリックします。
    * **手動検証**    
      
-      **DNS TXT レコード検証**
-        
-        * DNS マネージャーを使用して、**‘DZC’** サブドメインに、**ドメイン検証トークン**と同じ値の TXT レコードを作成します。
+      **HTML Web ページの検証 (標準の証明書の SKU でのみ動作)**
+
+        * **"starfield.html"** という名前の HTML ファイルを作成します。
+        * このファイルの内容は、ドメイン確認トークンの名前と正確に同じにする必要があります。 (ドメインの確認の状態のブレードからトークンをコピーすればよい)
+        * ドメインをホストする Web サーバーのルートに、このファイルをアップロードします。**/.well-known/pki-validation/starfield.html**
         * 検証が完了した後、 **[更新]** をクリックして証明書の状態を更新します。 検証が完了するまで数分かかる場合があります。
           
-          たとえば、ホスト名が **\*.contosocertdemo.com** または **\*.subdomain.contosocertdemo.com** でドメイン検証トークンが **cAGgQrKc** であるワイルドカード証明書の検証を実行するには、dzc.contosocertdemo.com に **cAGgQrKc** という値の TXT レコードを作成する必要があります。     
+          たとえば、**tgjgthq8d11ttaeah97s3fr2sh** というドメイン確認トークンで **contosocertdemo.com** の標準の証明書を購入した場合、**http://contosocertdemo.com/.well-known/pki-validation/starfield.html** に対する Web 要求からは **tgjgthq8d11ttaeah97s3fr2sh** が返ります。
 
-## <a name="a-namebkmkassigncertificateastep-3-assign-certificate-to-app-service-app"></a><a name="bkmk_AssignCertificate"></a>手順 3: App Service アプリに証明書を割り当てる
+      **DNS TXT レコード検証**
+        
+        * DNS マネージャーを使用して、**‘@’** サブドメインに、**ドメイン確認トークン**と同じ値の TXT レコードを作成します。
+        * 検証が完了した後、 **[更新]** をクリックして証明書の状態を更新します。 検証が完了するまで数分かかる場合があります。
+          
+          たとえば、ホスト名が**\*.contosocertdemo.com** または **\*.subdomain.contosocertdemo.com** でドメイン確認トークンが **tgjgthq8d11ttaeah97s3fr2sh** であるワイルドカード証明書の検証を実行するには、**contosocertdemo.com** に **tgjgthq8d11ttaeah97s3fr2sh** という値の TXT レコードを作成する必要があります。     
+
+## <a name="bkmk_AssignCertificate"></a>手順 3: App Service アプリに証明書を割り当てる
 この手順では、この新しく購入した証明書を App Service アプリに割り当てる方法を説明します。 
 
 > [!NOTE]
@@ -163,7 +173,7 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 1. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
    ここで、証明書が正しく構成されていることを確認するために、HTTP:// ではなく、HTTPS:// を使用してアプリを参照することができる必要があります。
 
-## <a name="a-namebkmkrekeyarekey-and-sync-the-certificate"></a><a name="bkmk_Rekey"></a>キーを更新して証明書を同期する
+## <a name="bkmk_Rekey"></a>キーを更新して証明書を同期する
 1. セキュリティ上の理由から証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ブレードの **[キーの更新と同期]** オプションを選択します。 
 2. **[キー更新]** ボタンをクリックして処理を開始します。 処理が完了するまでに 1 ～ 10 分かかることがあります。 
    
@@ -185,10 +195,5 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

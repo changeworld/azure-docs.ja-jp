@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 01e1728d9658ac69659e31aca584cb574338a238
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 7196b4eddc8a00cf2c15e8d8447ef8381db738a3
+ms.openlocfilehash: a1ef4ccb6546f011c405a98cab3cae514de813ea
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -155,7 +155,7 @@ ms.lasthandoff: 02/03/2017
    
    **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
    
-   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.&lt;Guid\&gt;.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
+   **出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.&lt;Guid&gt;.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
    
    **folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。 次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。 たとえば、スライスが 2016-09-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2016/09/20 に設定され、fileName は 08.csv に設定されます。 
   
@@ -376,7 +376,7 @@ Visual Studio の Azure Data Factory ツールを更新するには、次の手�
 Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) に関するセクションを参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| トピック | Description |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 * Azure AD Domain Services は、 **Azure Resource Manager を使用して作成された仮想ネットワークでは有効にできません**。
 * Resource Manager ベースの仮想ネットワークを、Azure AD Domain Services が有効になっているクラシック仮想ネットワークに接続できます。 その後、Resource Manager ベースの仮想ネットワークでは Azure AD Domain Services を使用できます。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
 * **リージョン仮想ネットワーク**: 既存の仮想ネットワークを使用する予定がある場合は、リージョン仮想ネットワークであることを確認してください。
-  
+
   * 従来のアフィニティ グループ機構を使った仮想ネットワークは、Azure AD ドメイン サービスでは使用できません。
   * Azure AD Domain Services を使用するには、 [従来の仮想ネットワークをリージョン仮想ネットワークに移行してください](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
 
@@ -45,8 +46,8 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 
 > [!WARNING]
 > Domain Services は、有効にした後、別の仮想ネットワークに移動できません。
-> 
-> 
+>
+>
 
 ## <a name="network-security-groups-and-subnet-design"></a>ネットワーク セキュリティ グループとサブネットの設計
 [ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
@@ -61,8 +62,8 @@ ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
 
 > [!WARNING]
 > Azure AD Domain Services が有効になっているサブネットに NSG を関連付けると、Microsoft によるドメインのサービス提供および管理機能が中断される可能性があります。 さらに、Azure AD テナントと管理対象ドメインの間の同期が中断されます。 **SLA は、Azure AD Domain Services によるドメインの更新と管理をブロックする NSG が適用されているデプロイには適用されません。**
-> 
-> 
+>
+>
 
 ### <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD Domain Services に必要なポート
 Azure AD Domain Services による管理対象ドメインのサービス提供および管理には、次のポートが必要です。 管理対象ドメインを有効にしたサブネットに対してこれらのポートがブロックされていないことを確認してください。
@@ -92,14 +93,14 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 
 ### <a name="network-connection-options"></a>ネットワーク接続オプション
 * **サイト間 VPN 接続を使用した VNet 間接続**: 仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
-  
+
     ![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-  
+
     [関連情報 - VPN ゲートウェイを使用した仮想ネットワークの接続](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * **仮想ネットワーク ピアリングを使用した VNet 間接続**: 仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。 ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。 これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
-  
+
     ![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-  
+
     [関連情報 - 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 
 <br>
@@ -108,10 +109,4 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

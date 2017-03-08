@@ -12,35 +12,41 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/27/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 1f6fd5b4e10e2f94256f5a3dac7609265b1f2cc4
-
+ms.sourcegitcommit: 51338924f5c8eff4234c7d57f7efc0619316bb38
+ms.openlocfilehash: 157a5130755f2092d044f3361e4fb5bc3a7a1053
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="how-to-auto-scale-a-cloud-service"></a>クラウド サービスの自動スケールの方法
+
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 > [!div class="op_single_selector"]
 > * [Azure ポータル](cloud-services-how-to-scale-portal.md)
 > * [Azure クラシック ポータル](cloud-services-how-to-scale.md)
-> 
-> 
 
 スケールインまたはスケールアウトをトリガーするクラウド サービス worker ロールに対して条件を設定することができます。 ロールの条件は、CPU、ディスク、またはロールのネットワークの負荷に基づいて設定できます。 条件はまた、メッセージ キューに基づいて、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいて設定することができます。
 
 > [!NOTE]
 > この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、仮想マシンはクラウド サービスでホストされます。 標準の仮想マシンは、[可用性セット](../virtual-machines/virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関連付けることでスケールを設定でき、手動でオンまたはオフにすることができます。
-> 
-> 
 
 ## <a name="considerations"></a>考慮事項
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
 
-* 規模設定はコア使用量の影響を受けます。 ロール インスタンスが大きいと、使用するコアも多くなります。 アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。 たとえば、サブスクリプションにコア数&20; の制限があり、アプリケーションを&2; つの中規模のクラウド サービスで実行している場合 (合計&4; コア)、サブスクリプション内の他のクラウド サービスのデプロイメントは&16; コアまでしかスケールアップできません。 サイズの詳細については、「 [クラウド サービスのサイズ](cloud-services-sizes-specs.md) 」をご覧ください。
+* 規模設定はコア使用量の影響を受けます。
+
+    ロール インスタンスが大きいと、使用するコアも多くなります。 アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。 たとえば、サブスクリプションのコア数が 20 に制限されているとします。 たとえば、アプリケーションを 2 つの中規模のクラウド サービスで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスのデプロイメントは残りの 16 コアまでしかスケールアップできません。 サイズの詳細については、「[Cloud Service のサイズ](cloud-services-sizes-specs.md)」を参照してください。
+
 * スケールはキュー メッセージのしきい値に基づいて行うことができます。 キューの使用方法の詳細については、 [Queue Storage サービスの使用方法](../storage/storage-dotnet-how-to-use-queues.md)に関するページを参照してください。
+
 * サブスクリプションに関連付けられているその他のリソースについてもスケールを行うことができます。
+
 * アプリケーションの高可用性を可能にするには、アプリケーションを&2; つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+
+> [!WARNING]
+> 自動スケーリングは、従来の Azure Storage アカウントのみで動作します。 Azure Resource Manager Storage アカウントでは動作しません。
+
 
 ## <a name="where-scale-is-located"></a>スケールの設定
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
@@ -103,17 +109,12 @@ ms.openlocfilehash: 1f6fd5b4e10e2f94256f5a3dac7609265b1f2cc4
 
 ![プロファイルとルールを使用したクラウド サービスのスケール設定](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-これにより、ロールから自動スケールが削除され、インスタンス数を直接設定できるようになります。 
+この設定により、ロールから自動スケールが削除され、インスタンス数を直接設定できるようになります。 
 
 1. スケール (手動または自動) オプション。
 2. スケールするインスタンスを設定するロール インスタンス スライダー。
 3. スケールするロールのインスタンス。
 
 スケール設定を構成したら、上部にある **[保存]** アイコンを選択します。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

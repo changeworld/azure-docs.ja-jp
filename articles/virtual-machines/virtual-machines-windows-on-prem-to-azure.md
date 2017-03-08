@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ccde5cf9a45c79cfd441633722960007aad46088
-ms.openlocfilehash: fe00166c443d8db678ec46cfd8b66c327176ddcf
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: bc2a8803bdc875e9f62d9263b16cdbb5cc70ecbf
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="migrate-from-aws-and-other-platforms-to-managed-disks-in-azure"></a>AWS やその他のプラットフォームから Azure の Managed Disks に移行する
+# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
 AWS やオンプレミスの仮想化ソリューションから Azure に VHD ファイルをアップロードして、Managed Disks を利用する VM を作成できます。 Azure Managed Disks では、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 指定する必要があるのは必要なディスクの種類 (Premium または Standard) とサイズだけで、ディスクは Azureによって作成および管理されます。 
 
@@ -47,7 +49,7 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 
 Azure Managed Disks は、ストレージ アカウントを管理する必要をなくして VM 管理をシンプルにします。 Managed Disks では、可用性セット内の VM の信頼性の向上というメリットもあります。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。 ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。 
  
-- [Premium Managed Disks](../storage/storage-premium-storage.md) はソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、入出力集中型のワークロードを実行している仮想マシンで高いパフォーマンス、短い待機時間のディスク サポートを実現します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に利用できます。  
+- [Premium Managed Disks](../storage/storage-premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
 
 - [Standard Managed Disks](../storage/storage-standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。  
 
@@ -62,7 +64,7 @@ Azure Managed Disks を使用できる場所を選びます。 Premium Managed D
 
 ### <a name="vm-sizes"></a>VM サイズ
 
-Premium Managed Disks に移行する場合は、VM のサイズを、VM が配置されているリージョンで利用可能な Premium Storage 対応のサイズに更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)」に記載されています。
+Premium Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)」に記載されています。
 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 ### <a name="disk-sizes"></a>ディスク サイズ
@@ -79,7 +81,7 @@ VM で使える Premium 管理ディスクには&3; 種類あり、それぞれ�
 
 **Standard Managed Disks**
 
-VM で使用できる Standard 管理ディスクには&5; 種類があります。 それぞれ容量が異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard 管理ディスクの種類を選びます。
+VM で使用できる Standard Managed Disks は&5; 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
 
 | Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              |
 |---------------------|------------------|------------------|------------------|------------------|------------------|
@@ -95,15 +97,10 @@ VM で使用できる Standard 管理ディスクには&5; 種類があります
 
 ### <a name="pricing"></a>価格
 
-[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium Unmanaged Disks と同じです。 一方、Standard Managed Disks の価格は、Standard Unmanaged Disks と異なります。
+[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard Managed Disks の価格は、Standard Unmanaged Disks と異なります。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -4,7 +4,7 @@ description: "StorSimple デバイスを非アクティブ化して削除する�
 services: storsimple
 documentationcenter: 
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 155cda38-c5ae-45dc-b7e8-6444494afc9e
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/27/2017
 ms.author: anbacker
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 014d4faeb478690168b44f88e7a0bda2b406cd4b
+ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
+ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
+# <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>StorSimple Manager サービスを介した StorSimple 8000 シリーズ デバイスの非アクティブ化と削除
 ## <a name="overview"></a>概要
 StorSimple デバイスをサービスから切り離したいことがあります (デバイスを交換またはアップグレードする場合や、StorSimple が不要になった場合など)。 その場合は、削除する前に、デバイスを非アクティブ化する必要があります。 非アクティブ化すると、デバイスとこれに対応する StorSimple Manager サービスの接続が切断されます。 このチュートリアルでは、StorSimple デバイスを非アクティブ化した後に削除することによってサービスから削除する方法について説明します。 
 
@@ -93,10 +95,5 @@ StorSimple 仮想デバイスの場合、非アクティブ化すると仮想マ
 * 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「 [デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 * 技術的な詳細については、 [Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

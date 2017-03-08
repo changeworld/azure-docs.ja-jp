@@ -15,6 +15,7 @@ ms.author: joroja
 translationtype: Human Translation
 ms.sourcegitcommit: 4b2cbf5f62ee63bada42b2a06506b793d4349fdb
 ms.openlocfilehash: 7db9a45a4c80ea8d01937837dfa7a15c171fb66b
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -140,9 +141,4 @@ $myReport.Content | Out-File -FilePath b2cUserJourneySummaryEvents.json -Force
 [gog]: http://google.com/        
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/    
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
