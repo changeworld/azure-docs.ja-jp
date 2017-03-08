@@ -17,6 +17,7 @@ ms.author: elbutter;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
 ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -608,7 +609,7 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
         tr.[TaxAmount],
         tr.[TipAmount],
         tr.[TollsAmount],
-        tr.[TotalAmount],
+        tr.[TotalAmount]
     FROM [dbo].[Trip] as tr
         JOIN dbo.[Date] as dt
         ON  tr.DateID = dt.DateID
@@ -671,9 +672,4 @@ savings by pausing and scaling to meet your business needs.
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/
 [SQL Server Management Studio]: https://msdn.microsoft.com/en-us/library/mt238290.aspx
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

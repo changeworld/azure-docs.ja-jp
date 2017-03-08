@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: squillace
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 50f3c56daaa28b1f28e201ec0502a91804313e5f
-ms.openlocfilehash: 111a80548982a1dab529d9dd6fb46eb759b7f908
-ms.lasthandoff: 02/22/2017
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: e46490a75b0b759e94ba8b090f394d0ba3366dc4
+ms.lasthandoff: 03/01/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -36,7 +36,7 @@ Microsoft が VM に設けている 99.95% というサービス レベル ア�
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0 (プレビュー)](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
+Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
  
 また、Azure リージョンごとに&1; つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../storage/storage-managed-disks-overview.md)に関するページをご覧ください。
  
@@ -80,29 +80,18 @@ Azure サブスクリプションにはそれぞれ既定のクォータ制限�
 ## <a name="partners"></a>パートナー
 Microsoft はパートナーと連携し、利用可能なイメージが Azure ランタイム用に更新、最適化されたことを確認します。  パートナーの詳細については、次の Marketplace ページを確認してください。
 
-[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-
-Redhat - [Azure Marketplace - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
-
-Canonical - [Azure Marketplace - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
-
-Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-
-FreeBSD - [Azure Marketplace - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-
-CoreOS - [Azure Marketplace - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
-
-RancherOS - [Azure Marketplace - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
-
-Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
-
-Mesosphere - [Azure Marketplace - Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
-
-Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-
-Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* Redhat - [Azure Marketplace - RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Canonical - [Azure Marketplace - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
+* Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
+* FreeBSD - [Azure Marketplace - FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* CoreOS - [Azure Marketplace - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
+* RancherOS - [Azure Marketplace - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
+* Bitnami - [Bitnami Library for Azure](https://azure.bitnami.com/)
+* Mesosphere - [Azure Marketplace - Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
+* Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
+* Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
 ## <a name="getting-setup-on-azure"></a>Azure の設定
 Azure の使用を開始するには、Azure アカウント、Azure CLI のインストール、および SSH 公開キーと秘密キーのペアが必要です。
@@ -111,7 +100,7 @@ Azure の使用を開始するには、Azure アカウント、Azure CLI のイ�
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0 (プレビュー)](/cli/azure/install) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。

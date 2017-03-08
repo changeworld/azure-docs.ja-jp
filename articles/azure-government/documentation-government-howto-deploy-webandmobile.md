@@ -15,8 +15,9 @@ ms.workload: azure-government
 ms.date: 01/03/2016
 ms.author: sdubeymsft
 translationtype: Human Translation
-ms.sourcegitcommit: 40e2eea5c1a11dadb232c6ac7c224ca5fc847c02
-ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 159c891dedb66dfaa238981b395b4bba074c5716
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio の前提条件] (../app-service-api/app-service-api-dotnet-get-started.md#prerequisites) を参照して、Visual Studio 2015 と Azure SDK をインストールして構成します。
-* [こちらの手順] (documentation-government-manage-subscriptions.md#connecting-via-visual-studio) に従って、Visual Studio を Azure Government アカウントに接続するように構成します。
+* [こちらの手順] (documentation-government-manage-subscriptions.md) に従って、Visual Studio を Azure Government アカウントに接続するように構成します。
 
 ## <a name="open-app-project-in-visual-studio"></a>Visual Studio でプロジェクトを開く
 * Visual Studio で、既存のアプリソリューション/プロジェクトを開くか、[こちらの手順] (../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application) に従ってプロジェクトを作成するか、[こちらの手順] (../app-service-api/app-service-api-dotnet-get-started.md#download-the-sample-application) に従ってサンプル アプリをダウンロードします。
@@ -42,9 +43,4 @@ ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
 
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、[Microsoft Azure Government のブログ](https://blogs.msdn.microsoft.com/azuregov/)をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 
