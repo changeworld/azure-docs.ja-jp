@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: d3327faa5864b721fff5d3a34389d214b0ae29a9
 ms.openlocfilehash: dab95c2b63e18c2cd21ffb33370ce16404237762
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -282,9 +283,4 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
 [203]: ./media/active-directory-saas-oneteam-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-oneteam-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-oneteam-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

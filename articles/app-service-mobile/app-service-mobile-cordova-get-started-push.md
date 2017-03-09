@@ -3,7 +3,7 @@ title: "Azure Mobile Apps を使用した Apache Cordova アプリへのプッ�
 description: "Azure Mobile Apps を使用して Apache Cordova アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: javascript
-manager: erikre
+manager: adrianha
 editor: 
 author: ysxu
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 47063276d7bb6bb3b3aac0cca4290dfbea5488f7
 ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 
 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージを追加する必要があります。 詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][1]」を参照してください。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、Visual Studio 2015 内で開発し、Google Android エミュレーター、Android デバイス、Windows デバイス、iOS デバイスで実行される Apache Cordova アプリケーションについて説明します。
 
 このチュートリアルを完了するには、次のものが必要です。
@@ -41,7 +42,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 * (iOS) [Apple Developer Program メンバーシップ][7]と iOS デバイス (iOS シミュレーターはプッシュ通知をサポートしていません)
 * (Windows) [Windows ストア開発者アカウント][8]と Windows 10 デバイス
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-hub"></a>通知ハブを構成する
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 [このセクションの手順を紹介するビデオを見る][9]
@@ -49,7 +50,7 @@ ms.openlocfilehash: 99b23de962f7ba338fcf3f9b2e96d58c3dcbe7bc
 ## <a name="update-the-server-project"></a>サーバー プロジェクトを更新する
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="a-nameadd-push-to-appamodify-your-cordova-app"></a><a name="add-push-to-app"></a>Cordova アプリを変更する
+## <a name="add-push-to-app"></a>Cordova アプリを変更する
 Cordova プッシュ プラグインとプラットフォーム固有のプッシュ サービスをインストールすることで、Apache Cordova アプリ プロジェクトがプッシュ通知を処理する準備ができていることを確認します。
 
 #### <a name="update-the-cordova-version-in-your-project"></a>プロジェクトで Cordova のバージョンを更新する
@@ -160,12 +161,12 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 ## <a name="optional-configure-and-run-the-app-on-android"></a>(省略可能) Android でアプリを構成して実行する
 このセクションを完了すると、Android 用のプッシュ通知を有効にすることができます。
 
-#### <a name="a-nameenable-gcmaenable-firebase-cloud-messaging"></a><a name="enable-gcm"></a>Firebase Cloud Messaging を有効にする
+#### <a name="enable-gcm"></a>Firebase Cloud Messaging を有効にする
 初期状態で Google Android プラットフォームをターゲットとしているため、Firebase Cloud Messaging を有効にする必要があります。
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="a-nameconfigure-backendaconfigure-the-mobile-app-backend-to-send-push-requests-using-fcm"></a><a name="configure-backend"></a>FCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
+#### <a name="configure-backend"></a>FCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>Android 用に Cordova アプリを構成する
@@ -183,7 +184,7 @@ index.js を開き、コードを更新して、プロジェクト ID (数値) �
             wns: {}
         });
 
-#### <a name="a-nameconfigure-deviceaconfigure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>USB デバッグ用に Android デバイスを構成する
+#### <a name="configure-device"></a>USB デバッグ用に Android デバイスを構成する
 アプリケーションを Android デバイスにデプロイする前に、USB デバッグを有効にする必要があります。  Android フォンで次の手順を実行します。
 
 1. **[設定]** > **[端末情報]** を選択して移動した後、デベロッパー モードが有効になるまで (約 7 回) **[ビルド番号]** をタップします。
@@ -327,7 +328,7 @@ Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラ
 
 項目が追加されたときに、通知が受信されていることを確認します。
 
-## <a name="a-namenext-stepsanext-steps"></a><a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 * プッシュ通知の詳細については、[Notification Hubs][17] に関する記事を参照してください。
 * まだ認証を追加していない場合は、チュートリアルの続きとして、Apache Cordova アプリに[認証を追加][14]してください。
 
@@ -362,9 +363,4 @@ SDK の使用方法を確認してください。
 [19]: https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md
 [20]: https://www.mobizen.com/
 [21]: http://taco.visualstudio.com/en-us/docs/build_ios_cloud/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

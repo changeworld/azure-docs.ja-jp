@@ -4,7 +4,7 @@ description: "設定とアプリ データの同期に関する質問とその�
 services: active-directory
 keywords: "Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問"
 documentationcenter: 
-author: femila
+author: ningtan
 manager: swadhwa
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
 ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -128,9 +129,4 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

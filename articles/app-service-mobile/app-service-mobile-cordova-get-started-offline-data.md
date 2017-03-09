@@ -3,7 +3,7 @@ title: "Azure Mobile Apps (Cordova) に対するオフライン同期の有効�
 description: "App Service Mobile App を使用して、Cordova アプリケーション内のオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: cordova
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 425ad7581ec92aed306d4a1c22fbc00e7105a1c1
 ms.openlocfilehash: af80f8fac043f3c0f4c666fffd60b89c2b43818d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -210,9 +211,4 @@ ms.openlocfilehash: af80f8fac043f3c0f4c666fffd60b89c2b43818d
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

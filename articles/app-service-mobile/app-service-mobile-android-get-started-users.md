@@ -4,7 +4,7 @@ description: "Azure App Service の Mobile Apps 機能を使用して、Google�
 services: app-service\mobile
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 817626dd3fc87db61280075b80cedf8b9ed77684
 ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -26,10 +27,10 @@ ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
 ## <a name="summary"></a>概要
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、Android で todolist クイック スタート プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [Mobile Apps の使用] チュートリアルを完了しておく必要があります。
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>アプリを認証に登録し、Azure App Services を構成する
+## <a name="register"></a>アプリを認証に登録し、Azure App Services を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 * Android Studio で、[Mobile Apps の使用]に関するチュートリアルで完成させたプロジェクトを開きます。 **[Run (実行)]** メニューの **[Run app (アプリの実行)]** をクリックし、アプリの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
@@ -41,7 +42,7 @@ ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
 ## <a name="add-authentication-to-the-app"></a>アプリケーションに認証を追加する
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
-## <a name="a-namecache-tokensacache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>クライアントに認証トークンをキャッシュする
+## <a name="cache-tokens"></a>クライアントに認証トークンをキャッシュする
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -63,9 +64,4 @@ ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
 
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-android-get-started.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

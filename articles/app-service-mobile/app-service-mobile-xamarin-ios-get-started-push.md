@@ -4,7 +4,7 @@ description: "Azure App Service を使用して Xamarin iOS アプリにプッ�
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.service: app-service-mobile
@@ -120,7 +120,7 @@ ms.lasthandoff: 11/17/2016
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-## <a name="a-nametestatest-push-notifications-in-your-app"></a><a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
    
    > [!NOTE]

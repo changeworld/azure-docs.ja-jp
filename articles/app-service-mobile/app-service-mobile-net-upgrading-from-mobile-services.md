@@ -4,7 +4,7 @@ description: "簡単に Mobile Services アプリケーションを App Service 
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -44,7 +44,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 * ASP.NET プロジェクトの他の種類とルートのサポート。 MVC および Web API コントローラーをモバイル バックエンド プロジェクトと同じプロジェクトでホストできるようになりました。
 * 新しい App Service 認証機能のサポート。Web アプリとモバイル アプリの両方で共通の認証構成を使用できます。
 
-## <a name="a-nameoverviewabasic-upgrade-overview"></a><a name="overview"></a>基本的なアップグレードの概要
+## <a name="overview"></a>基本的なアップグレードの概要
 多くの場合、新しい Mobile Apps サーバー SDK に切り替えて、コードを新しい Mobile App インスタンスに再発行するだけで、簡単にアップグレードできます。 ただし、一部のシナリオは、高度な認証シナリオやスケジュールされたジョブの操作など、いくつか追加の構成が必要になります。 これについてはそれぞれ以降のセクションで説明します。
 
 > [!TIP]
@@ -63,7 +63,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 3. クライアント アプリケーションの新しいバージョンをリリースする
 4. (省略可能) 元の移行されたインスタンスを削除する
 
-## <a name="a-namemobile-app-versionacreating-a-second-application-instance"></a><a name="mobile-app-version"></a>2 番目のアプリケーション インスタンスを作成する
+## <a name="mobile-app-version"></a>2 番目のアプリケーション インスタンスを作成する
 アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure Portal] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
 
 次に、 [.NET バックエンドの作成手順](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)に従って、2 番目のアプリケーション インスタンスを作成します。 App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
@@ -215,7 +215,7 @@ CORS を使用する場合の主な懸念事項は、クライアント SDK が�
     ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
     traceWriter.Info("Hello, World");  
 
-## <a name="a-nameauthenticationaauthentication-considerations"></a><a name="authentication"></a>認証に関する考慮事項
+## <a name="authentication"></a>認証に関する考慮事項
 Mobile Services の認証コンポーネントは、App Service の認証/承認機能に移動されました。 これをサイトに対して有効にする方法の詳細については、 [モバイル アプリへの認証の追加](app-service-mobile-ios-get-started-users.md) に関するトピックを参照してください。
 
 AAD、Facebook、Google などの一部のプロバイダーでは、コピー アプリケーションから既存の登録を利用できます。 ID プロバイダーのポータルに移動して、新しいリダイレクト URL を登録に追加するだけです。 その後、クライアント ID とシークレットを使用して、App Service の認証/承認を構成します。
@@ -238,7 +238,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 ### <a name="custom-authentication"></a>カスタム認証
 アプリでカスタム認証ソリューションを使用する場合は、アップグレードされたサイトがシステムにアクセスできることを確認する必要があります。 [.NET サーバー SDK の概要] に示されているカスタム認証の新しい手順に従って、ソリューションを統合します。 カスタム認証コンポーネントはまだプレビュー段階であることに注意してください。
 
-## <a name="a-nameupdating-clientsaupdating-clients"></a><a name="updating-clients"></a>クライアントの更新
+## <a name="updating-clients"></a>クライアントの更新
 モバイル アプリ バックエンドを運用している場合は、それを利用する新しいバージョンのクライアント アプリケーションを使用できます。 Mobile Apps には新しいバージョンのクライアント SDK も含まれ、上記のサーバー アップグレードと同様に、Mobile Apps バージョンをインストールする前に Mobile Services SDK へのすべての参照を削除する必要があります。
 
 バージョン間での主な変更の&1; つは、コンストラクターでアプリケーション キーが不要になったことです。 現在は、モバイル アプリの URL を渡すだけです。 たとえば、.NET クライアントの場合、現在の `MobileServiceClient` コンストラクターは以下のようになります。

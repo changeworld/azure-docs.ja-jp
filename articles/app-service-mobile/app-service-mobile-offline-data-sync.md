@@ -3,7 +3,7 @@ title: "Azure モバイル アプリでのオフライン データ同期 | Micr
 description: "Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
 documentationcenter: windows
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -62,7 +62,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 
 同期コンテキストへのローカル ストアの関連付けは、初期化メソッド ([.NET クライアント SDK] の `IMobileServicesSyncContext.InitializeAsync(localstore)` など) を使用して行います。
 
-## <a name="a-namehow-sync-worksahow-offline-synchronization-works"></a><a name="how-sync-works"></a>オフライン同期のしくみ
+## <a name="how-sync-works"></a>オフライン同期のしくみ
 同期テーブルを使用する場合、クライアント コードによって、ローカルの変更内容が Azure モバイル アプリ バックエンドと同期される時期が制御されます。 ローカルの変更を *プッシュする* 呼び出しが行われるまで、バックエンドには何も送信されません。 同様に、ローカル ストアに新しいデータが入力されるのは、データを *プルする* 呼び出しが行われる場合のみです。
 
 * **プッシュ**: プッシュは同期コンテキストに対する操作であり、最後のプッシュ以降の CUD に関するすべての変更を送信します。 個々のテーブルの変更だけを送信すると操作の順番が間違って送信される可能性があるため、このような送信を行うことができないことに注意してください。 プッシュは Azure モバイル アプリ バックエンドに対して一連の REST 呼び出しを実行し、呼び出しを受けたバックエンドがサーバー データベースを変更します。

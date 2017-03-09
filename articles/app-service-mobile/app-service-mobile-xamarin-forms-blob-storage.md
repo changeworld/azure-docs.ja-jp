@@ -3,7 +3,7 @@ title: "Xamarin.Forms アプリで Azure Storage に接続する"
 description: "Azure Blob Storage に接続することで、Todo リスト Xamarin.Forms モバイル アプリにイメージを追加する"
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: bb1a1437-0a31-46bb-9237-1b692b0ede21
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c8568846837f404eee0293be284c70bd27f06380
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -53,7 +54,7 @@ Azure Storage の SAS トークンの要求に応答するサーバー プロジ
 * [ストレージ コントローラーによって登録されているルート](#routes-registered)
 * [クライアントとサーバーの通信](#client-communication)
 
-### <a name="a-nameadd-controller-codeaadd-a-storage-controller-to-your-server-project"></a><a name="add-controller-code"></a>ストレージ コントローラーをサーバー プロジェクトに追加する
+### <a name="add-controller-code"></a>ストレージ コントローラーをサーバー プロジェクトに追加する
 1. Visual Studio で、.NET サーバー プロジェクトを開きます。 NuGet パッケージ [Microsoft.Azure.Mobile.Server.Files]を追加します。 **[プレリリースを含める]**を選択していることを確認します。
 2. Visual Studio で、.NET サーバー プロジェクトを開きます。 **[コントローラー]** フォルダーを右クリックしてから、**[追加]** -> **[コントローラー]** -> **[Web API 2 コントローラー – 空]** の順にクリックします。 コントローラー `TodoItemStorageController`を指定します。
 3. 次の using ステートメントを追加します。
@@ -95,7 +96,7 @@ Azure Storage の SAS トークンの要求に応答するサーバー プロジ
         config.MapHttpAttributeRoutes();
 7. サーバー プロジェクトをモバイル アプリ バックエンドに発行します。
 
-### <a name="a-nameroutes-registeredaroutes-registered-by-the-storage-controller"></a><a name="routes-registered"></a>ストレージ コントローラーによって登録されているルート
+### <a name="routes-registered"></a>ストレージ コントローラーによって登録されているルート
 新しい `TodoItemStorageController` は、管理するレコードの下で次の&2; つのサブリソースを公開します。
 
 * StorageToken
@@ -112,7 +113,7 @@ Azure Storage の SAS トークンの要求に応答するサーバー プロジ
     
       `/tables/TodoItem/{id}/MobileServiceFiles/{fileid}`
 
-### <a name="a-nameclient-communicationaclient-and-server-communication"></a><a name="client-communication"></a>クライアントとサーバーの通信
+### <a name="client-communication"></a>クライアントとサーバーの通信
 `TodoItemStorageController` には、Blob をアップロードまたはダウンロードするためのルートが *ない* ことに注意してください。 これはモバイル クライアントが、特定の BLOB またはコンテナーに安全にアクセスするために、最初に SAS トークン (Shared Access Signature) を取得した後、これらの操作を実行するために Blob Storage と *直接* 対話するためです。 これは重要なアーキテクチャの仕様で、ストレージにアクセスする場合を除き、モバイル バックエンドのスケーラビリティと可用性の制限を受けます。 代わりに、Azure Storage に直接接続することで、モバイル クライアントが自動パーティション分割や地理的分散などの機能を利用できるようになります。
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。 詳細については、「[Shared Access Signatures (SAS) の使用]」を参照してください。
@@ -138,7 +139,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
 > 
 > 
 
-### <a name="a-nameadd-nugetaadd-nuget-packages"></a><a name="add-nuget"></a>NuGet パッケージを追加する
+### <a name="add-nuget"></a>NuGet パッケージを追加する
 ソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]**を選択します。 次の NuGet パッケージをソリューション内の **すべて** のプロジェクトに追加します。 **[プレリリースを含める]**がオンになっていることを確認します。
 
 * [Microsoft.Azure.Mobile.Client.Files]
@@ -149,7 +150,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
 
 [PCLStorage]: https://www.nuget.org/packages/PCLStorage/
 
-### <a name="a-nameadd-iplatformaadd-iplatform-interface"></a><a name="add-iplatform"></a>IPlatform インターフェイスを追加します。
+### <a name="add-iplatform"></a>IPlatform インターフェイスを追加します。
 メインのポータブル ライブラリ プロジェクトで新しいインターフェイス `IPlatform` を作成します。 これは [Xamarin.Forms DependencyService] パターンに従って、実行時に正しいプラットフォーム固有のクラスをロードします。 後から、各クライアント プロジェクトでプラットフォーム固有の実装を追加します。
 
 1. 次の using ステートメントを追加します。
@@ -170,7 +171,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
             Task DownloadFileAsync<T>(IMobileServiceSyncTable<T> table, MobileServiceFile file, string filename);
         }
 
-### <a name="a-nameadd-filehelperaadd-filehelper-class"></a><a name="add-filehelper"></a>FileHelper クラスを追加する
+### <a name="add-filehelper"></a>FileHelper クラスを追加する
 1. メインのポータブル ライブラリ プロジェクトで新しいクラス `FileHelper` を作成します。 次の using ステートメントを追加します。
    
         using System.IO;
@@ -226,7 +227,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
             }
         }
 
-### <a name="a-namefile-sync-handlera-add-a-file-sync-handler"></a><a name="file-sync-handler"></a> ファイル同期ハンドラーを追加する
+### <a name="file-sync-handler"></a> ファイル同期ハンドラーを追加する
 メインのポータブル ライブラリ プロジェクトで新しいクラス `TodoItemFileSyncHandler` を作成します。 このクラスには、ファイルが追加または削除された場合にコードに通知するための Azure SDK からのコールバックが含まれています。
 
 Azure Mobile クライアント SDK は、実際にはどのファイル データも格納しません。クライアント SDK は `IFileSyncHandler` の実装を呼び出し、この実装がローカル デバイスにファイルを格納するかどうか、およびその格納方法を決定します。
@@ -266,7 +267,7 @@ Azure Mobile クライアント SDK は、実際にはどのファイル デー�
             }
         }
 
-### <a name="a-nameupdate-todoitemmanageraupdate-todoitemmanager"></a><a name="update-todoitemmanager"></a>TodoItemManager を更新する
+### <a name="update-todoitemmanager"></a>TodoItemManager を更新する
 1. **TodoItemManager.cs** で、行 `#define OFFLINE_SYNC_ENABLED` をコメント解除します。
 2. **TodoItemManager.cs**で、次の using ステートメントを追加します。
    
@@ -312,7 +313,7 @@ Azure Mobile クライアント SDK は、実際にはどのファイル デー�
             return await this.todoTable.GetFilesAsync(todoItem);
         }
 
-### <a name="a-nameadd-details-viewaadd-a-details-view"></a><a name="add-details-view"></a>詳細ビューを追加する
+### <a name="add-details-view"></a>詳細ビューを追加する
 このセクションでは、Todo 項目の新しい詳細ビューを追加します。 このビューは、ユーザーが Todo 項目を選択した場合に作成されます。このビューでは、新しいイメージを項目に追加することができます。
 
 1. 以下を実装して、新しいクラス **TodoItemImage** をポータブル ライブラリ プロジェクトに追加します。
@@ -438,7 +439,7 @@ Azure Mobile クライアント SDK は、実際にはどのファイル デー�
             }
         }
 
-### <a name="a-nameupdate-main-viewaupdate-the-main-view"></a><a name="update-main-view"></a>メイン ビューを更新する
+### <a name="update-main-view"></a>メイン ビューを更新する
 Todo 項目が選択されたときに、メイン ビューを更新して詳細ビューを開きます。
 
 **TodoList.xaml.cs** で、`OnSelected` の実装を以下に置き換えます。
@@ -456,7 +457,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
         todoList.SelectedItem = null;
     }
 
-### <a name="a-nameupdate-androidaupdate-the-android-project"></a><a name="update-android"></a>Android プロジェクトを更新する
+### <a name="update-android"></a>Android プロジェクトを更新する
 プラットフォーム固有のコード (ファイルをダウンロードし、カメラを使用して新しいイメージをキャプチャするためのコードも含める) を Android プロジェクトに追加します。 
 
 このコードは Xamarin.Forms [DependencyService](https://developer.xamarin.com/guides/xamarin-forms/dependency-service/) を使用して、実行時に正しいプラットフォーム固有のクラスをロードします。
@@ -525,7 +526,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
    
         App.UIContext = this;
 
-### <a name="a-nameupdate-iosaupdate-the-ios-project"></a><a name="update-ios"></a>iOS プロジェクトを更新する
+### <a name="update-ios"></a>iOS プロジェクトを更新する
 プラットフォーム固有のコードを iOS プロジェクトに追加します。
 
 1. コンポーネント **Xamarin.Mobile** を iOS プロジェクトに追加します。
@@ -585,7 +586,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
         }
 3. **AppDelegate.cs** を編集し、`SQLitePCL.CurrentPlatform.Init()` の呼び出しをコメント解除します。
 
-### <a name="a-nameupdate-windowsaupdate-the-windows-project"></a><a name="update-windows"></a>Windows プロジェクトを更新する
+### <a name="update-windows"></a>Windows プロジェクトを更新する
 1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919)をインストールします。 
    詳細については、「 [Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)」チュートリアルを参照してください。 
 2. **Package.appxmanifest** を編集して、**Web カメラ**機能をチェックします。
@@ -688,9 +689,4 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
 [Shared Access Signatures (SAS) の使用]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Azure Storage アカウントの作成]:  ../storage/storage-create-storage-account.md#create-a-storage-account
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
