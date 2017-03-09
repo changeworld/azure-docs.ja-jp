@@ -1,8 +1,8 @@
----
+﻿---
 layout: HubPage
 hide_bc: true
 title: "Microsoft Azure のドキュメント | Microsoft Docs"
-description: "Microsoft Azure Cloud Services を使用して、強力なアプリケーションを構築し、管理する方法について説明します。 ドキュメント、サンプル コード、チュートリアルなどを入手します。"
+description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します。 ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 translationtype: Human Translation
 ms.sourcegitcommit: a2f5d05e9911e0ceb9a3815245fb92704b0619a7
 ms.openlocfilehash: 989b9a20705290ed6764f2e5857cc1485ced39dc
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/28/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Azure IT オペレーター向けファースト ステップ ガイド</h3>
+                                    <h3>Azure IT 運用者向けファースト ステップ ガイド</h3>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/28/2017
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
-                                    <h3>計算</h3>
+                                    <h3>コンピューティング</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-machines/linux/">
@@ -95,7 +95,7 @@ ms.lasthandoff: 02/28/2017
                                         <li>
                                             <a href="/azure/virtual-machine-scale-sets/">
                                                 <img src="media/index/AvailabilitySetOld.svg" alt="" />
-                                                <p>仮想マシン スケール セット</p>
+                                                <p>Virtual Machine Scale Sets</p>
                                             </a>
                                         </li>
                                         <li>
@@ -119,7 +119,7 @@ ms.lasthandoff: 02/28/2017
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>関数</p>
+                                                <p>Functions</p>
                                             </a>
                                         </li>
                                         <li>
@@ -349,7 +349,7 @@ ms.lasthandoff: 02/28/2017
                                         <li>
                                             <a href="https://docs.botframework.com/en-us/azure-bot-service/">
                                                 <img src="media/index/bot-service.svg" alt="" />
-                                                <p>Azure ボット サービス</p>
+                                                <p>Azure Bot Service</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -390,7 +390,7 @@ ms.lasthandoff: 02/28/2017
                              </li>
                             <li>
                                 <div class="group">
-                                    <h3>Storage</h3>
+                                    <h3>ストレージ</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/28/2017
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>モノのインターネット</h3>
+                                    <h3>Internet of Things</h3>
                                     <ul>
                                         <li>
                                             <a href="https://azure.microsoft.com/develop/iot/">
@@ -527,13 +527,13 @@ ms.lasthandoff: 02/28/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure リソース マネージャー</p>
+                                                <p>Azure Resource Manager</p>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Web + Mobile </h3>
+                                    <h3>Web + モバイル</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/app-service/">
@@ -712,7 +712,7 @@ ms.lasthandoff: 02/28/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>仮想マシン スケール セット</h3>
+                                                    <h3>Virtual Machine Scale Sets</h3>
                                                     <p>Linux および Windows の仮想マシンの管理と数十から数千への拡張</p>
                                                 </div>
                                             </div>
@@ -788,7 +788,7 @@ ms.lasthandoff: 02/28/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>関数</h3>
+                                                    <h3>Functions</h3>
                                                     <p>サーバー不要のコードを使用してイベントを処理します</p>
                                                 </div>
                                             </div>
@@ -1122,7 +1122,7 @@ ms.lasthandoff: 02/28/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>プライベート クラウドの保護と回復の調整します</p>
+                                                    <p>プライベート クラウドの保護と回復を調整します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1649,7 +1649,7 @@ ms.lasthandoff: 02/28/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure ボット サービス</h3>
+                                                    <h3>Azure Bot Service</h3>
                                                     <p>必要に応じて拡大縮小できるインテリジェントなサーバーレス ボット サービス</p>
                                                 </div>
                                             </div>
@@ -1660,7 +1660,7 @@ ms.lasthandoff: 02/28/2017
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">モノのインターネット</a>
+                        <a href="#iot">Internet of Things</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/develop/iot/">
@@ -2264,7 +2264,7 @@ ms.lasthandoff: 02/28/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>プライベート クラウドの保護と回復の調整します</p>
+                                                    <p>プライベート クラウドの保護と回復を調整します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2358,7 +2358,7 @@ ms.lasthandoff: 02/28/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure リソース マネージャー</h3>
+                                                    <h3>Azure Resource Manager</h3>
                                                     <p>Azure リソースをデプロイおよび管理します</p>
                                                 </div>
                                             </div>
@@ -2772,7 +2772,7 @@ ms.lasthandoff: 02/28/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com/">ストレージ エクスプローラー</a>
+                                                    <a href="http://storageexplorer.com/">Storage Explorer</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/">作業開始</a>
