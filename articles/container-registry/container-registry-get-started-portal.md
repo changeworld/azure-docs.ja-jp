@@ -1,28 +1,7 @@
 ---
-title: "Azure コンテナー レジストリの作成 - ポータル | Microsoft Docs"
-description: "Azure Portal を使用した Azure コンテナー レジストリの作成と管理の概要"
-services: container-registry
-documentationcenter: 
-author: stevelas
-manager: balans
-editor: dlepow
-tags: 
-keywords: 
-ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1
-ms.service: container-registry
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2016
-ms.author: stevelas
-translationtype: Human Translation
-ms.sourcegitcommit: d3047cd4cddb23c4daeb9265afc4d7b3fe30d46c
-ms.openlocfilehash: bec138da39696cd93bdc9bf0307108b8ca6eb149
+title: Azure コンテナー レジストリの作成 - ポータル | Microsoft Docs description: Azure Portal を使用した Azure コンテナー レジストリの作成と管理の概要 services: container-registry documentationcenter: '' author: stevelas manager: balans editor: dlepow tags: ''keywords: ''
 
----
-# <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
-Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 プレビュー](container-registry-get-started-azure-cli.md)を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1 ms.service: コンテナー レジストリ ms.devlang: na ms.topic: get 開始記事 ms.tgt_pltfrm: na ms.workload: na ms.date: 11/14/2016 ms.author: stevelas---# Azure Portal を使用したコンテナー レジストリの作成 Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
 
 背景情報と概念については、「[Azure Container Registry とは](container-registry-intro.md)」を参照してください。
 
@@ -52,7 +31,9 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
    > [!IMPORTANT]
    > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
    
-    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 Premium およびクラシック ストレージ アカウントはサポートされていないことに注意してください。
+
+    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 現在、Premium Storage はサポートされていません。
+
 
 ## <a name="manage-registry-settings"></a>レジストリ設定の管理
 レジストリを作成すると、ポータルの **[Container Registries (コンテナー レジストリ)]** ブレードからレジストリ設定を検索できます。 たとえば、レジストリにログインするための設定が必要な場合や、管理者ユーザーを有効または無効にすることが必要な場合があります。
@@ -72,11 +53,5 @@ Azure Portal を使用して、コンテナー レジストリを作成し、そ
 ## <a name="next-steps"></a>次のステップ
 * [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
 
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
