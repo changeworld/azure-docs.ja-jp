@@ -3,7 +3,7 @@ title: "Azure Active Directory プレビューにカスタム ドメイン名を
 description: "Azure Active Directory に会社のドメイン名を追加する方法とドメイン名を検証する方法"
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: d97e57c6-578a-4929-8fb8-42e858a711c7
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 0cf396fb2ce60868383d28afa1c4455aa108b3ba
+ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
+ms.openlocfilehash: 5153926f34961a397ef9632ca1f8ac868ba1986e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 0cf396fb2ce60868383d28afa1c4455aa108b3ba
 > 
 > 
 
-組織にはビジネス向けに使用する 1 つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。 Azure Active Directory (Azure AD) プレビューを使用して、会社のドメイン名を Azure AD にも追加することもできます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) これにより、ディレクトリ内で ‘alice@contoso.com.’ のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。その手順は簡単です。
+組織にはビジネス向けに使用する&1; つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。 Azure Active Directory (Azure AD) プレビューを使用して、会社のドメイン名を Azure AD にも追加することもできます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) これにより、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
 
 1. カスタム ドメイン名をディレクトリに追加する
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
@@ -74,7 +75,7 @@ DNS レコードが反映された後でないと、ドメイン名を検証で�
 ## <a name="troubleshooting"></a>トラブルシューティング
 カスタム ドメイン名を検証できない場合は、次のことを試してください。 以下では、最も一般的な原因から順に列挙します。
 
-1. **1 時間待つ**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 これに 1 時間以上かかる場合があります。
+1. **1 時間待つ**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 これに&1; 時間以上かかる場合があります。
 2. **DNS レコードが正しく入力されていることを確認する**。 ドメインのドメイン名レジストラーの Web サイトで、この手順を実行します。 Azure AD は、DNS エントリが DNS ゾーン ファイルに存在しない場合、または Azure AD によって提供された DNS エントリと完全に一致しない場合は、ドメイン名を検証できません。 ドメインの DNS レコードをドメイン名レジストラーで更新するアクセス権がない場合は、組織内でそのアクセス権を持つ人物またはチームと DNS エントリを共有し、DNS エントリの追加を依頼します。
 3. **Azure AD の他のディレクトリから、そのドメイン名を削除する**。 ドメイン名は、1 つのディレクトリ内だけでしか検証できません。 ドメイン名が以前に他のディレクトリで検証されていた場合は、新しいディレクトリで検証する前に、前のディレクトリ内から削除されている必要があります。 ドメイン名の削除については、[カスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)に関する記事を参照してください。    
 
@@ -83,10 +84,5 @@ DNS レコードが反映された後でないと、ドメイン名を検証で�
 
 ## <a name="next-steps"></a>次のステップ
 [カスタム ドメイン名を管理する](active-directory-domains-manage-azure-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
