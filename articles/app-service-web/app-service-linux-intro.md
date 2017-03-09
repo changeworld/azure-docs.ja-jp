@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 78fbef5aa26c52f5dd264581fd1525ada763d4c6
-ms.openlocfilehash: fa5d210c5e73074803d5cfb874ad7891563aefd0
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f5bc2d4d52e10af6b8393e78a53c4bd983596cda
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -41,6 +41,7 @@ App Service on Linux は現在、次のアプリケーション スタックを�
 * FTP
 * ローカル Git
 * GitHub
+* Bitbucket
 
 アプリケーションのスケーリング方法は次のとおりです。
 
