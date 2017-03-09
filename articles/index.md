@@ -41,7 +41,7 @@ ms.lasthandoff: 02/28/2017
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <h3>Azure IT 運用者向けファースト ステップ ガイド</h3>
+                                    <h3>Azure IT オペレーター向けファースト ステップ ガイド</h3>
                                 </div>
                             </div>
                         </div>
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/28/2017
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Internet of Things</h3>
+                                    <h3>モノのインターネット</h3>
                                     <ul>
                                         <li>
                                             <a href="https://azure.microsoft.com/develop/iot/">
@@ -1660,7 +1660,7 @@ ms.lasthandoff: 02/28/2017
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet of Things</a>
+                        <a href="#iot">モノのインターネット</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/develop/iot/">
