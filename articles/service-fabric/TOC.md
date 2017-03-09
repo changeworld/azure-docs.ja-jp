@@ -81,9 +81,10 @@
 #### [タイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
 #### [イベント](service-fabric-reliable-actors-events.md)
 #### [状態管理](service-fabric-reliable-actors-state-management.md)
-#### [状態プロバイダーの構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
+#### [KvsActorStateProvider の構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [ReliableDictionaryActorStateProvider の構成](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
@@ -106,6 +107,7 @@
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
 ##### [Visual Studio と Azure Resource Manager](service-fabric-cluster-creation-via-visual-studio.md)
+#### [クラスター ネットワークのパターン](service-fabric-patterns-networking.md)
 #### [ノードの種類と VM Scale Sets](service-fabric-cluster-nodetypes.md)
 #### [クラスターを拡張する](service-fabric-cluster-scale-up-down.md)
 #### [クラスターのアップグレード](service-fabric-cluster-upgrade.md)

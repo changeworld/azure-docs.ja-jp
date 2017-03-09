@@ -1,3 +1,4 @@
+
 # 概要
 ## [Azure Government とは](documentation-government-welcome.md)
 ## [ITAR](documentation-government-overview-itar.md)
@@ -31,6 +32,7 @@
 ### [Compute](documentation-government-compute.md)
 ### [Storage](documentation-government-services-storage.md)
 ### [データベース](documentation-government-services-database.md)
+### [インテリジェンス + 分析](documentation-government-services-intelligenceandanalytics.md)
 ### [ネットワーク](documentation-government-networking.md)
 ### [セキュリティ + ID](documentation-government-services-securityandidentity.md)
 ### [監視 + 管理](documentation-government-services-monitoringandmanagement.md)

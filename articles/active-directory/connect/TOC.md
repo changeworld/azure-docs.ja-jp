@@ -60,7 +60,8 @@
 ## トラブルシューティング
 ### [接続](active-directory-aadconnect-troubleshoot-connectivity.md)
 ### [同期中のエラー](active-directory-aadconnect-troubleshoot-sync-errors.md)
-
+### [オブジェクトが同期されない](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
+### [パスワードの同期](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 
 # リファレンス
 ## [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)

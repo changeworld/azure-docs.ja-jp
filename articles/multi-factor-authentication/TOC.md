@@ -1,6 +1,7 @@
 # 概要
 ## [Azure Multi-Factor Authentication とは](multi-factor-authentication.md)
 ## [動作のしくみ](multi-factor-authentication-how-it-works.md)
+## [Azure MFA の入手方法](multi-factor-authentication-versions-plans.md)
 
 # 作業開始
 ## [デプロイする場所を選択する](multi-factor-authentication-get-started.md)
@@ -20,6 +21,7 @@
 #### [高度な VPN 構成](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [モバイル アプリ Web サービス](multi-factor-authentication-get-started-server-webservice.md)
 #### [Windows 認証](multi-factor-authentication-get-started-server-windows.md)
+#### [MFA サーバーをアップグレードする](multi-factor-authentication-server-upgrade.md)
 #### [PhoneFactor からアップグレードする](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## ユーザーの管理
@@ -45,8 +47,3 @@
 ## トラブルシューティング
 ### [FAQ](multi-factor-authentication-faq.md)
 ### [質問する](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
