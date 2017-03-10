@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
+redirect_url: /azure/service-fabric/service-fabric-testability-overview
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 8771556954be77543b0eaa21b7201f93ffa0ed70
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -234,9 +236,4 @@ Start API を正常に呼び出した後で、返される進行状況オブジ�
 [cancel]: https://msdn.microsoft.com/library/azure/mt668910.aspx
 [cancelps]: https://msdn.microsoft.com/library/mt697566.aspx
 [fte]: https://msdn.microsoft.com/library/azure/system.fabric.fabrictransientexception.aspx
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

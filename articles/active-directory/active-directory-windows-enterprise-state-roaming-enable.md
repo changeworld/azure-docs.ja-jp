@@ -5,7 +5,7 @@ description: "Windows デバイスの Enterprise State Roaming の設定に関�
 services: active-directory
 keywords: "Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4

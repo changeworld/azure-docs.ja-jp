@@ -4,7 +4,7 @@ description: "Windows 10 でローミングまたはバックアップされる�
 services: active-directory
 keywords: "Enterprise State Roaming, Windows クラウド"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
