@@ -17,6 +17,7 @@ ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
 ms.openlocfilehash: 6871ab3bc25ab3ec7b3c60852aa06bee047d8e9a
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -116,7 +117,7 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 <!--Image reference-->
 
 <!--Article references-->
-[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md
 
 [Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
@@ -149,9 +150,4 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
