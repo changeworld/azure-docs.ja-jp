@@ -4,7 +4,7 @@ description: "Azure Mobile Apps の認証および承認機能の概念リファ
 services: app-service\mobile
 documentationcenter: 
 author: mattchenderson
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: a46dbf70-867d-48f6-8885-7f5207ad102e
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: mahender
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8b676aee5353d0e5d85224950a537b3fe31f2f29
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -106,9 +107,4 @@ App Service の認証および承認では、**要求が認証されない場合
 [Google ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-google-authentication.md
 [Microsoft アカウント ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-twitter-authentication.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,8 +12,7 @@
 ### [名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 作業の開始
-## [仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md)
-## [仮想ネットワークへの VM のデプロイ](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+## [最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)
 
 # 方法
 ## 計画と設計
@@ -146,8 +145,3 @@
 ## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

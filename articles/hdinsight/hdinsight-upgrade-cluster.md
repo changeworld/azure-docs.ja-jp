@@ -4,8 +4,9 @@ description: "Windows ベースの HDInsight クラスターから Linux ベー�
 services: hdinsight
 documentationcenter: 
 author: bhanupr
+manager: asadk
 editor: bhanupr
-ms.assetid: 
+ms.assetid: 60eb573c-e639-4815-9fc6-ea8b106d8dbc
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -16,6 +17,7 @@ ms.author: bhanupr
 translationtype: Human Translation
 ms.sourcegitcommit: 8c59375290e410c34ba25d4e5d8e8f9f8de0cafe
 ms.openlocfilehash: ceb5f5c639633d7118a057927b236b51b54f8fa7
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -40,21 +42,16 @@ HDInsight クラスターをアップグレードするワークフローは次�
 
 すべて予期したとおりに動作していることを確認したら、移行のダウンタイムをスケジュールします。 このダウンタイム中に、次の操作を実行します。
 
-1.  クラスター ノードでローカルに格納されている一時的なデータをバックアップします。 たとえば、ヘッド ノードに直接データを格納している場合です。
-2.  既存のクラスターを削除します。
-3.  同じ VNET サブネットの中に、前のクラスターで使用していたのと同じ既定のデータ ストアを使用する、最新の (またはサポートされている) バージョンの HDI クラスターを作成します。 これで、新しいクラスターで既存の運用データを引き続き使用できます。
-4.  バックアップしたすべての一時的なデータをインポートします。
-5.  新しいクラスターを使用して、ジョブを開始または処理を続行します。
+1.    クラスター ノードでローカルに格納されている一時的なデータをバックアップします。 たとえば、ヘッド ノードに直接データを格納している場合です。
+2.    既存のクラスターを削除します。
+3.    同じ VNET サブネットの中に、前のクラスターで使用していたのと同じ既定のデータ ストアを使用する、最新の (またはサポートされている) バージョンの HDI クラスターを作成します。 これで、新しいクラスターで既存の運用データを引き続き使用できます。
+4.    バックアップしたすべての一時的なデータをインポートします。
+5.    新しいクラスターを使用して、ジョブを開始または処理を続行します。
 
 ## <a name="next-steps"></a>次のステップ
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
 * [Windows クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-windows.md)
 * [Linux、Unix、または Mac クライアントから SSH を使用して Linux ベースのクラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

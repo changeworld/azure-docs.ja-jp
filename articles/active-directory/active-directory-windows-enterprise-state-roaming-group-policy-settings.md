@@ -5,7 +5,7 @@ description: "会社所有のデバイスで使用すべきグループ ポリ�
 services: active-directory
 keywords: "Enterprise State Roaming 用のグループ ポリシーと MDM 設定とは, Enterprise State Roaming, Windows クラウド"
 documentationcenter: 
-author: markvi
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
@@ -14,11 +14,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6bdec7bf35bb4a233200def36c0e697baaf15fec
 ms.openlocfilehash: 5ca48cf3cc4b2f4d86463e36c73de47e386cff25
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -59,10 +60,5 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

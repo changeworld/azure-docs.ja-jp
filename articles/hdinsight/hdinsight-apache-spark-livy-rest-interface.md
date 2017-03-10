@@ -13,7 +13,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 03/07/2017
 ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
@@ -167,7 +167,7 @@ HDInsight 3.5 クラスターでは、サンプル データ ファイルまた�
 3. ファイル システムへのフル アクセスを許可する場合は、**livy-default** でプロパティ名 `livy.file.local-dir-whitelist` を追加し、その値を **"/"** に設定します。 特定のディレクトリへのアクセスのみを許可する場合は、そのディレクトリへのパスを値として指定します。
 
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ

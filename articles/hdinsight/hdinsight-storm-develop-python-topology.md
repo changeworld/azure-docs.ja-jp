@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -56,7 +57,7 @@ Storm モジュール (https://github.com/apache/storm/blob/master/storm-multila
 
 ## <a name="python-components-with-a-java-topology"></a>Java トポロジを使用する Python コンポーネント
 > [!NOTE]
-> この例は、 [JavaTopology](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) ディレクトリの **https://github.com/Azure-Samples/hdinsight-python-storm-wordcount** にあります。 これは Maven ベースのプロジェクトです。 Maven に慣れていない場合は、Storm トポロジの Maven プロジェクトの作成の詳細について、 [HDInsight での Apache Storm を使用する Java ベース トポロジの開発](hdinsight-storm-develop-java-topology.md) に関するページを参照してください。
+> この例は、 **JavaTopology** ディレクトリの [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) にあります。 これは Maven ベースのプロジェクトです。 Maven に慣れていない場合は、Storm トポロジの Maven プロジェクトの作成の詳細について、 [HDInsight での Apache Storm を使用する Java ベース トポロジの開発](hdinsight-storm-develop-java-topology.md) に関するページを参照してください。
 > 
 > 
 
@@ -183,10 +184,5 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
 
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

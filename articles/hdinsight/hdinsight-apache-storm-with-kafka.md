@@ -277,15 +277,15 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
 
     ![Storm UI](./media/hdinsight-apache-storm-with-kafka/stormui.png)
 
-3. Storm UI で、__[Topology Summary] (トポロジの概要)__ セクションの __[kafka-reader]__ リンクをクリックして、__kafka-reader__ トポロジの情報を表示します。
+3. Storm UI で、__[Topology Summary] \(トポロジの概要)__ セクションの __[kafka-reader]__ リンクをクリックして、__kafka-reader__ トポロジの情報を表示します。
 
-    ![Storm Web UI の [Topology Summary] (トポロジの概要) セクション](./media/hdinsight-apache-storm-with-kafka/topology-summary.png)
+    ![Storm Web UI の [Topology Summary] \(トポロジの概要) セクション](./media/hdinsight-apache-storm-with-kafka/topology-summary.png)
 
-4. __[Bolts (All time)] (ボルト (常時))__ セクションの __[logger-bolt]__ リンクをクリックして、logger-bolt コンポーネントのインスタンスに関する情報を表示します。
+4. __[Bolts (All time)] \(ボルト (常時))__ セクションの __[logger-bolt]__ リンクをクリックして、logger-bolt コンポーネントのインスタンスに関する情報を表示します。
 
     ![ボルト セクションの logger-bolt のリンク](./media/hdinsight-apache-storm-with-kafka/bolts.png)
 
-5. __[Executors] (エグゼキュータ)__ セクションで、__[Port] (ポート)__ 列のリンクをクリックして、コンポーネントのこのインスタンスに関するログ情報を表示します。
+5. __[Executors] \(エグゼキュータ)__ セクションで、__[Port] \(ポート)__ 列のリンクをクリックして、コンポーネントのこのインスタンスに関するログ情報を表示します。
 
     ![エグゼキュータのリンク](./media/hdinsight-apache-storm-with-kafka/executors.png)
 

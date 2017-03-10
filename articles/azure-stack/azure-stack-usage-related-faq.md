@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: alfredop
 translationtype: Human Translation
-ms.sourcegitcommit: 096b752a9a934f6c629ad6e753b482a904ce26c4
-ms.openlocfilehash: d937374aa9b2e24663aa27c753d0740426c8f3f8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 11cbaf6447c5ab87ddadd12ba3ff5df1383929d8
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -43,7 +43,8 @@ Currently, usage is reported for the network, storage, and compute resource prov
 | | EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Requests count in 10,000s |Queue service requests (in 10,000s) |
 | | E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Ingress data in GB |Queue service data ingress in GB | 
 | | DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Outgress in GB |Queue service data egress in GB |
-| **Compute** |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM Size Hours |Virtual machine size | |
+| **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Base VM Size Hours |Virtual core minutes | Number of vcores times minutes the VM ran |
+| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM Size Hours |Virtual core minutes | Number of vcores times minutes the VM ran |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>How do the Azure Stack Usage APIs compare to the [Azure Usage API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (currently in public preview)?
 * The Tenant Usage API is consistent with the Azure API, with one exception: the *showDetails* flag currently is not supported in Azure Stack.

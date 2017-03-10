@@ -4,7 +4,7 @@ description: "Azure サービスを使用して Xamarin.Forms アプリにマル
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
 ms.service: app-service-mobile
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/13/2016
 ## <a name="prerequisites"></a>前提条件
 iOS については、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)と物理 iOS デバイスが必要です。 [iOS シミュレーターでは、プッシュ通知はサポートされていません](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-hub"></a>通知ハブを構成する
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="update-the-server-project-to-send-push-notifications"></a>プッシュ通知を送信するようにサーバー プロジェクトを更新する

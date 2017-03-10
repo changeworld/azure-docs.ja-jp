@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: dc5f98fd548512801c705f942e30df5e6b95d542
 ms.openlocfilehash: 3271db005133bd7849b8a33dd7fa8f11bf5a29c2
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -30,7 +31,7 @@ Mobile Apps を初めて使用する場合は、最初に「[iOS アプリの作
 
 オフライン同期機能の詳細については、[Mobile Apps でのオフライン データ同期]に関する記事をご覧ください。
 
-## <a name="a-namereview-syncareview-the-client-sync-code"></a><a name="review-sync"></a>クライアント同期コードの確認
+## <a name="review-sync"></a>クライアント同期コードの確認
 「[iOS アプリの作成]」チュートリアルでダウンロードしたクライアント プロジェクトには、ローカルの Core Data に基づいたデータベースを使用したオフライン同期をサポートするコードが既に含まれています。 このセクションでは、チュートリアルのコードに既に含まれているものについて簡単に説明します。 機能の概念的な概要については、[Mobile Apps でのオフライン データ同期]に関する記事をご覧ください。
 
 Mobile Apps のオフライン データ同期機能を使用すると、エンド ユーザーは、ネットワークにアクセスできない場合でもローカル データベースを操作できます。 アプリケーションでこれらの機能を使用するには、 `MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。 次に、**MSSyncTable** インターフェイスを使用してテーブルを参照します。
@@ -48,6 +49,7 @@ Mobile Apps のオフライン データ同期機能を使用すると、エン�
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
 * **Swift**:  **ToDoTableViewController.viewDidLoad** メソッドのコードを次に示します。
+
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
@@ -135,7 +137,7 @@ Swift のアプリは、ユーザーが更新操作を実行したときと起�
 
 アプリはデータが変更されたとき (Objective-C) またはアプリの起動時 (Objective-C と Swift) に同期するため、ユーザーがオンラインであることを前提としています。 後のセクションで、ユーザーがオフラインのときでも編集できるようにアプリを更新します。
 
-## <a name="a-namereview-core-dataareview-the-core-data-model"></a><a name="review-core-data"></a>Core Data モデルの確認
+## <a name="review-core-data"></a>Core Data モデルの確認
 Core Data オフライン ストアを使用するときは、データ モデルで特定のテーブルとフィールドを定義する必要があります。 サンプル アプリケーションには、あらかじめ適切な形式でデータ モデルが含まれています。 このセクションでは、これらのテーブルとその使用方法について説明します。
 
 **QSDataModel.xcdatamodeld** を開きます。 4 つのテーブルが定義されています。3 つは SDK で使用され、1 つは To Do 項目自体に使用されます。
@@ -202,7 +204,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 | updatedAt | 日付 | (省略可能) **updatedAt** システム プロパティにマップします。 |
 | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
 
-## <a name="a-namesetup-syncachange-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>アプリケーションの同期動作を変更する
+## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
 このセクションでは、アプリの起動時または項目を挿入および更新したときに同期しないように、アプリを変更します。 更新操作ボタンが実行されたときにのみ同期します。
 
 **Objective-C**:
@@ -231,7 +233,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="a-nametest-appatest-the-app"></a><a name="test-app"></a>アプリケーションをテストする
+## <a name="test-app"></a>アプリケーションをテストする
 ここでは、無効な URL に接続してオフライン シナリオをシミュレートします。 データ項目を追加すると、ローカル Core Data ストアに保持されますが、モバイル アプリ バックエンドとは同期されません。
 
 1. **QSTodoService.m** のモバイル アプリ URL を無効な URL に変更し、アプリをもう一度実行します。
@@ -285,9 +287,4 @@ Core Data ローカル ストアを使用するときは、[正しいシステ�
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/en-us/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

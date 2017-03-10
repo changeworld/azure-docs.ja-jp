@@ -5,7 +5,7 @@ description: "Windows デバイスの Enterprise State Roaming の設定に関�
 services: active-directory
 keywords: "Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法"
 documentationcenter: 
-author: femila
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
@@ -14,11 +14,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 0628dafc9cc4cb05e678f741d913e00116013459
 ms.openlocfilehash: 435f801b254a6c423a6ec3e96037ade62e14af29
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -76,9 +77,4 @@ Azure との間で Enterprise State Roaming を介して同期されるデータ
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

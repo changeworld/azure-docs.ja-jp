@@ -17,6 +17,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
 ms.openlocfilehash: 589b95fdd05478305fa8ef629fc6758bdd716da6
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -50,7 +51,7 @@ BizTalk サービスのバックアップは、 [BizTalk サービスの REST AP
 
 [バックアップのスケジュール](#backupschedule)
 
-#### <a name="a-namebackupnowaon-demand-backup"></a><a name="backupnow"></a>オンデマンド バックアップ
+#### <a name="backupnow"></a>オンデマンド バックアップ
 1. Azure クラシック ポータルで、[ **BizTalk サービス**] を選択してから、バックアップする BizTalk サービスを選択します。
 2. **[ダッシュボード]** タブで、ページの一番下にある **[バックアップ]** を選択します。
 3. バックアップ名を入力します。 たとえば、「*myBizTalkService*BU<*日付*>」と入力します。
@@ -58,7 +59,7 @@ BizTalk サービスのバックアップは、 [BizTalk サービスの REST AP
 
 バックアップが完了すると、入力したバックアップ名が付けられたコンテナーがストレージ アカウントの下に作成されます。 このコンテナーには、BizTalk サービスのバックアップ構成が含まれています。
 
-#### <a name="a-namebackupscheduleaschedule-a-backup"></a><a name="backupschedule"></a>バックアップのスケジュール
+#### <a name="backupschedule"></a>バックアップのスケジュール
 1. Azure クラシック ポータルで、**[BizTalk Services]** を選択し、バックアップのスケジュールを設定する BizTalk サービスを選択した後、**[構成]** タブを選択します。
 2. **[バックアップ ステータス]** を **[自動]** に設定します。 
 3. **[ストレージ アカウント]** で、どのアカウントにバックアップを保存するかを選択し、**[頻度]** にバックアップ作成の間隔を入力し、バックアップを保持する期間の長さを **[リテンション期間の日数]** に入力します。
@@ -68,7 +69,7 @@ BizTalk サービスのバックアップは、 [BizTalk サービスの REST AP
     **メモ**     
    
    * [ **保持日数**] に入力する期間の長さは、バックアップ頻度よりも大きくする必要があります。
-   * **[常に 1 つ以上のバックアップを保存してください]** を選択します。リテンション期間が過ぎてもバックアップが 1 つは存在するようにするためです。
+   * **[常に&1; つ以上のバックアップを保存してください]** を選択します。リテンション期間が過ぎてもバックアップが&1; つは存在するようにするためです。
 4. [ **保存**] を選択します。
 
 スケジュールされたバックアップ ジョブを実行すると、入力したストレージ アカウント内に、(バックアップ データを格納するための) コンテナーが作成されます。 コンテナーの名前は、 *BizTalk サービス名-日付-時刻*となります。 
@@ -79,7 +80,7 @@ BizTalk サービスのダッシュボードにステータスが [ **失敗** ]
 
 このリンクをクリックすると、トラブルシューティングに役立つ管理サービス操作ログのページが開きます。 「 [BizTalk サービス: 操作ログを使用したトラブルシューティング](http://go.microsoft.com/fwlink/p/?LinkId=391211)」を参照してください。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>Restore
 バックアップは、Azure クラシック ポータルから復元することも、 [BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325582)から復元することも実行できます。 このセクションでは、クラシック ポータルを使用して復元する手順を説明します。
 
 #### <a name="before-restoring-a-backup"></a>バックアップを復元する前に
@@ -93,7 +94,7 @@ BizTalk サービスのダッシュボードにステータスが [ **失敗** ]
 2. [ **バックアップ URL**] で、フォルダーのアイコンを選択し、BizTalk サービス構成バックアップが保存されている Azure ストレージ アカウントを展開します。 コンテナーを展開し、右のウィンドウで対応するバックアップの .txt ファイルを選択します。 
    <br/><br/>
    **[Open (開く)]**を選択します。
-3. **[BizTalk サービスのリストア]** ページで、**[BizTalk サービス名]** に名前を入力し、復元される BizTalk サービスの **[ドメイン URL]**、**[エディション]**、**[リージョン]** を確認します。 **新しい SQL データベース インスタンスを作成する** ] を選択します。
+3. **[BizTalk サービスのリストア]** ページで、**[BizTalk サービス名]** に名前を入力し、復元される BizTalk サービスの **[ドメイン URL]**、**[エディション]**、**[リージョン]** を確認します。 **新しい SQL データベース インスタンスを作成する**  を選択します。
    
     ![][RestoreBizTalkService]
    
@@ -109,7 +110,7 @@ BizTalk サービスのダッシュボードにステータスが [ **失敗** ]
 
 復元が正常に完了すると、新しい BizTalk サービスが Azure クラシック ポータルの [BizTalk サービス] ページに "中断" という状態で表示されます。
 
-### <a name="a-namepostrestoreaafter-restoring-a-backup"></a><a name="postrestore"></a>バックアップの復元後
+### <a name="postrestore"></a>バックアップの復元後
 BizTalk サービスは常に、[ **中断** ] 状態で復元されます。 この状態のときは、新しい環境を機能させる前に次のような構成変更を行うことができます。
 
 * Azure BizTalk Services SDK を使用して BizTalk サービス アプリケーションを作成した場合は、そのアプリケーション内の Access Control (ACS) 資格情報が復元後の環境で動作するように更新することが必要になる可能性があります。
@@ -206,13 +207,8 @@ Azure BizTalk Services を Azure クラシック ポータルで作成するに�
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
-[復元]: ./media/biztalk-backup-restore/restore-ui.png
+[Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
