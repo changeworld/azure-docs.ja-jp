@@ -4,7 +4,7 @@ description: "このチュートリアルに従って、Xamarin.iOS 開発用の
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
 ms.service: app-service-mobile

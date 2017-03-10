@@ -1,12 +1,16 @@
 # 概要
 ## [Azure Automation とは](automation-intro.md)
-## [Azure Automation のセキュリティ](automation-security-overview.md)
 # 作業開始
 ## [Runbook を作成する](automation-first-runbook-graphical.md)
 ## [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 ## [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 ## [ロールベースのアクセス制御を管理する](automation-role-based-access-control.md)
 # 方法
+## 認証の設定
+### [Azure Automation での認証](automation-security-overview.md)
+### [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)
+### [Azure サービス管理と Resource Manager](automation-sec-configure-aduser-account.md)
+### [Amazon Web Services](automation-sec-configure-aws-account.md)
 ## Runbook を作成する
 ### [Runbook の種類](automation-runbook-types.md)
 ### [Runbook を作成およびインポートする](automation-creating-importing-runbook.md)
@@ -28,15 +32,11 @@
 ### [Azure Automation データの管理](automation-managing-data.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ## 構成管理のデプロイ (DSC)
-### [望ましい状態への構成 (DSC)](automation-dsc-overview.md)
+### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
 ### [管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 ### [DSC 構成のコンパイル](automation-dsc-compile.md)
 ### [Chocolatey を使用した継続的なデプロイ](automation-dsc-cd-chocolatey.md)
-## 認証の設定
-### [Azure サービス管理と Resource Manager](automation-sec-configure-aduser-account.md)
-### [Amazon Web Services](automation-sec-configure-aws-account.md)
-### [Azure RunAs アカウント](automation-sec-configure-azure-runas-account.md)
 ## Automation 資産の管理
 ### [証明書](automation-certificates.md)
 ### [接続](automation-connections.md)
@@ -47,8 +47,6 @@
 ### [Azure PowerShell モジュールの更新](automation-update-azure-modules.md)
 ## シナリオの自動化
 ### [Runbook ギャラリー](automation-runbook-gallery.md)
-### [仮想マシンの起動/停止](automation-solution-startstopvm-graphical.md)
-### [PowerShell で仮想マシンを起動/停止する](automation-solution-startstopvm-psworkflow.md)
 ### [Amazon Web Service VM を作成する](automation-scenario-aws-deployment.md)
 ### [Azure VM アラートを修復する](automation-azure-vm-alert-integration.md)
 ### [JSON タグを使用して VM を起動/停止する](automation-scenario-start-stop-vm-wjson-tags.md)
@@ -81,8 +79,3 @@
 ## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

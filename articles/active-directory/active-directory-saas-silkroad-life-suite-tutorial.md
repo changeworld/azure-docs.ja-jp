@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
 ms.openlocfilehash: 19707c2b8855db456c69e77603bc6742d799ed2c
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -327,10 +328,5 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
 
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

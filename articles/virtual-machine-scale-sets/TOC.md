@@ -4,6 +4,7 @@
 # 作業の開始
 ## [ポータルでスケール セットを作成する](virtual-machine-scale-sets-portal-create.md)
 ## [Azure CLI を使用してスケール セットを作成する](virtual-machine-scale-sets-linux-create-cli.md)
+## [Resource Manager テンプレートを使用してスケール セットを作成する](virtual-machine-scale-sets-mvss-start.md)
 
 # 方法
 ## 計画と設計
@@ -46,8 +47,3 @@
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

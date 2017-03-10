@@ -9,13 +9,13 @@
 ### [データ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
 ### [Storage のセキュリティ ガイド](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
+### [Azure VM のベスト プラクティス](azure-security-best-practices-vms.md)
 ### [IaaS ワークロードのベスト プラクティス](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [ディスクの暗号化](azure-security-disk-encryption.md)
 ### [Azure VM を暗号化する](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ## [セキュリティの管理と監視](security-management-and-monitoring-overview.md)
 ### [セキュリティ管理](azure-security-management.md)
-### [IaaS でのソフトウェア更新プログラムのベスト プラクティス](azure-security-best-practices-software-updates-iaas.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure ログ統合](security-azure-log-integration-overview.md)
 #### [作業開始](security-azure-log-integration-get-started.md)
@@ -63,8 +63,3 @@
 ###[入力の検証](azure-security-threat-modeling-tool-input-validation.md)
 ###[機微なデータ](azure-security-threat-modeling-tool-sensitive-data.md)
 ###[セッションの管理](azure-security-threat-modeling-tool-session-management.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

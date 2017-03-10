@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
 ms.openlocfilehash: 995086f748dbea7650ced891c8eaa49168a38b7f
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -256,9 +257,4 @@ Kronos アプリケーションは、特定の形式で構成された SAML ア�
 [203]: ./media/active-directory-saas-kronos-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-kronos-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kronos-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -4,7 +4,7 @@ description: "Apache Cordova 開発向けの Azure モバイル アプリ バッ
 services: app-service\mobile
 documentationcenter: javascript
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 tags: 
 keywords: "cordova,javascript,モバイル,クライアント"
@@ -19,6 +19,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
 ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -81,9 +82,4 @@ SDK の使用方法を確認してください。
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

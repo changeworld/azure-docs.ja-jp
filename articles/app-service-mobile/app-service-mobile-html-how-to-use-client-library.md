@@ -4,7 +4,7 @@ description: "Azure Mobile Apps 向け JavaScript SDK の使用方法"
 services: app-service\mobile
 documentationcenter: javascript
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/07/2017
 
 パッケージは Universal JavaScript モジュールとして配布されるので、グローバル、AMD、CommonJS の各形式をサポートします。
 
-## <a name="a-namesetupasetup-and-prerequisites"></a><a name="Setup"></a>セットアップと前提条件
+## <a name="Setup"></a>セットアップと前提条件
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。 このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。
 
 Azure Mobile Apps JavaScript SDK のインストールは、次の `npm` コマンドで行うことができます。
@@ -57,14 +57,14 @@ CDN から直接ダウンロードして、SDK のビルド済みバージョン
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="a-nameauthahow-to-authenticate-users"></a><a name="auth"></a>方法: ユーザーを認証する
+## <a name="auth"></a>方法: ユーザーを認証する
 Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
 
 サーバー フローとクライアント フローの&2; つの認証フローがサポートされます。  サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント フローでは、プロバイダー固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="a-nameconfigure-external-redirect-urlsahow-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
+### <a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の JavaScript アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  次のような機能があります。
 
 * サービスをローカルで実行する。

@@ -79,6 +79,7 @@
 ### [DNS 名前解決のオプション](../virtual-machines-linux-azure-dns.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [VM で Azure DNS を使用する](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [VM で Azure Traffic Manager を使用する](../../traffic-manager/traffic-manager-endpoint-types.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [FreeBSD の PF を使用して NAT ファイアウォールを設定する](../virtual-machines-linux-freebsd-pf-nat.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## デプロイ
 ### [VM をコピーする](../virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

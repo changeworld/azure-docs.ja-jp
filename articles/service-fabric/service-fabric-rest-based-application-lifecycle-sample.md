@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2016
 ms.author: ryanwi
+redirect_url: /rest/api/servicefabric/
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5e328a26ade36e154a0abac9cf3fa7fe9c7f8245
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -707,10 +709,5 @@ namespace ServiceFabricRestCaller
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

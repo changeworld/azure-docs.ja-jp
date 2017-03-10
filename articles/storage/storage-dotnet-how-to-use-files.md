@@ -12,7 +12,7 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-/ms.date: 1/18/2017
+/ms.date: 3/8/2017
 ms.author: renash
 translationtype: Human Translation
 ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5

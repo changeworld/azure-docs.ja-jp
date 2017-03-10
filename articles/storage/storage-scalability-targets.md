@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 2ab1a58aab138cc81b25731a9454b083d54ded81

@@ -4,7 +4,7 @@ description: "設定とアプリ データの同期に関する質問とその�
 services: active-directory
 keywords: "Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問"
 documentationcenter: 
-author: femila
+author: tanning
 manager: swadhwa
 editor: 
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
-ms.author: femila
+ms.date: 03/08/2017
+ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 58a583a761a400d8fa0488fbc4fbfec35ec62c41
 ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -59,9 +60,9 @@ ms.openlocfilehash: ebdf73ad8a7a2f2690a404676e0c81ee01e77357
 ### <a name="verify-the-device-registration-status"></a>デバイスの登録状態を確認する
 Enterprise State Roaming では、デバイスを Azure AD に登録する必要があります。 Enterprise State Roaming に限ったことではありませんが、次の手順を実行すると Windows 10 クライアントが登録されていることを確認できるほか、拇印、Azure AD の設定 URL、NGC の状態、およびその他の情報を確認することができます。
 
-1.  管理者特権を使用せずにコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行] (Win + R) を開き、「cmd」と入力して開きます。
-2.  コマンド プロンプトが開いたら、「*dsregcmd.exe /status*」を入力します。
-3.  期待する出力を得るには、**AzureAdJoined** フィールド値を "YES"、**WamDefaultSet** フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
+1.    管理者特権を使用せずにコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行] (Win + R) を開き、「cmd」と入力して開きます。
+2.    コマンド プロンプトが開いたら、「*dsregcmd.exe /status*」を入力します。
+3.    期待する出力を得るには、**AzureAdJoined** フィールド値を "YES"、**WamDefaultSet** フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
 
 **潜在的な問題**: **WamDefaultSet** と **AzureAdJoined** の両方のフィールド値が "NO" になっており、デバイスはドメインに参加して Azure AD に登録されていますが、同期しません。 このような場合は、デバイスにポリシーが適用されるまで待機する必要があるか、Azure AD に接続するときにデバイスの認証に失敗したと考えられます。 ポリシーが適用されるまでには数時間かかる場合があります。 その他のトラブルシューティング手順としては、サインアウトしてからサインインし直してもう一度自動登録をしてみるか、タスク スケジューラでタスクを起動することなどが挙げられます。 場合によっては、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すことが問題の解決に役立つことがあります。
 
@@ -144,7 +145,7 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>イベント ID 6065: 80070533 このアカウントは現在無効に設定されているため、このユーザーはサインインできません  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>イベント ID 6065: 80070533 このアカウントは現在無効に設定されているため、このユーザーはサインインできません    
 テナントが AzureRMS を自動的にプロビジョニングしなかった場合、SettingSync/デバッグ ログのイベント ビューアーにこのエラーが表示される場合があります。 
 
 **推奨される操作**  
@@ -152,8 +153,8 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>イベント ID 1098: エラー: 0xCAA5001C トークン ブローカーの操作が失敗しました  
-AAD/操作ログのイベント ビューアーに、イベント 1104 とともに、"AAD クラウドの AP プラグイン呼び出しでトークンの取得がエラーを返しました: 0xC000005F" というエラーが表示されることがあります。 アクセス許可や所有権の属性が欠落している場合にこの問題が起こります。  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>イベント ID 1098: エラー: 0xCAA5001C トークン ブローカーの操作が失敗しました    
+AAD/操作ログのイベント ビューアーに、イベント 1104 とともに、"AAD クラウドの AP プラグイン呼び出しでトークンの取得がエラーを返しました: 0xC000005F" というエラーが表示されることがあります。 アクセス許可や所有権の属性が欠落している場合にこの問題が起こります。     
 
 **推奨される操作**  
 [KB3196528](https://support.microsoft.com/kb/3196528) に示された手順を実行します。  
@@ -172,9 +173,4 @@ AAD/操作ログのイベント ビューアーに、イベント 1104 ととも
 * [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

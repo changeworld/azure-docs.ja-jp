@@ -16,15 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
-ms.openlocfilehash: 6eac5dd04cf13e2b36034f07c45f607225b9a2e8
+ms.sourcegitcommit: 2a0db85dc5699b362aa6a920cc26c40bdfdfc28d
+ms.openlocfilehash: 80ffdd66a02f84b844b660e6c88586d4e99ff9e7
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-resource-manager-and-powershell"></a>Resource Manager と PowerShell を使用して ExpressRoute 用の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-howto-add-gateway-resource-manager.md)
-> * [PowerShell - クラシック](expressroute-howto-add-gateway-classic.md)
+> * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
+> * [クラシック - PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
@@ -41,10 +43,5 @@ ms.openlocfilehash: 6eac5dd04cf13e2b36034f07c45f607225b9a2e8
 
 ## <a name="next-steps"></a>次のステップ
 VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。 「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

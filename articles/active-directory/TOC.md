@@ -34,15 +34,13 @@
 ##### [採用戦略](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 #### [次のステップ](active-directory-hybrid-identity-design-considerations-nextsteps.md)
 #### [ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 ## ユーザーの管理
 ### Add users
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
 #### [クラシック ポータル](active-directory-create-users.md)
 
-### 他のディレクトリからユーザーを追加する
-#### [Azure Portal](active-directory-users-create-external-azure-portal.md)
-#### [クラシック ポータル](active-directory-create-users-external.md)
-
+### [他のディレクトリからユーザーを追加する (クラシック ポータル)](active-directory-create-users-external.md)
 ### [ユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 ### [パスワードをリセットする](active-directory-users-reset-password-azure-portal.md)
@@ -67,34 +65,35 @@
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 #### [クラシック ポータル](active-directory-accessmanagement-groups-with-advanced-rules.md)
 ### [グループベースのライセンス](active-directory-licensing-whatis-azure-portal.md)
-#### [グループへのライセンスの割り当て](active-directory-licensing-group-assignment-azure-portal.md)
-#### [グループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
+#### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
+#### [グループのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
-## [アクティビティ レポートの表示](active-directory-view-access-usage-reports.md)
-### [サインイン](active-directory-reporting-activity-sign-ins.md)
-### [監査ログ](active-directory-reporting-activity-audit-logs.md)
+## [レポートの管理](active-directory-reporting-azure-portal.md)
+### [サインイン アクティビティ](active-directory-reporting-activity-sign-ins.md)
+### [監査アクティビティ](active-directory-reporting-activity-audit-logs.md)
 ### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
+### [リスク イベント](active-directory-reporting-risk-events.md)
+### [名前付きネットワーク](active-directory-known-networks-azure-portal.md)
 ### [FAQ](active-directory-reporting-faq.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
-### [既知のネットワーク](active-directory-known-networks.md)
-
-### クラシック ポータル
+### [保持](active-directory-reporting-retention.md)
+###    プログラムによるアクセス
+#### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
+#### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
+#### [前提条件](active-directory-reporting-api-prerequisites.md)
+#### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
+### [クラシック ポータル](active-directory-view-access-usage-reports.md)
 #### [Azure AD レポート](active-directory-reporting-getting-started.md)
 #### [レポート ガイド](active-directory-reporting-guide.md)
-#### [プレビュー](active-directory-reporting-azure-portal.md)
+#### [既知のネットワーク](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
-##### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
-##### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
-##### [前提条件](active-directory-reporting-api-prerequisites.md)
-##### [サインインの参照](active-directory-reporting-api-sign-in-activity-reference.md)
-##### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [イベントを監査する](active-directory-reporting-audit-events.md)
-#### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 #### レポートについて
@@ -108,6 +107,7 @@
 
 ## [パスワードの管理](active-directory-manage-passwords.md)
 ### [自分のパスワードを更新する](active-directory-passwords-update-your-own-password.md)
+### [セルフサービスのパスワード リセットをセットアップする](active-directory-passwords.md)
 ### [パスワード管理について](active-directory-passwords-how-it-works.md)
 ### [パスワードに関するポリシーと制限について](active-directory-passwords-policy.md)
 ### パスワードをリセットする
@@ -117,7 +117,6 @@
 ### パスワード管理を有効にする
 #### [作業開始](active-directory-passwords-getting-started.md)
 #### [デプロイする](active-directory-passwords-best-practices.md)
-#### [セルフサービスのパスワード リセットをセットアップする](active-directory-passwords.md)
 #### [カスタマイズ](active-directory-passwords-customize.md)
 #### [レポートを表示する](active-directory-passwords-get-insights.md)
 #### [詳細情報](active-directory-passwords-learn-more.md)
@@ -128,22 +127,19 @@
 ### [デバイスを登録する](active-directory-conditional-access-device-registration-overview.md)
 #### [自動登録の管理](active-directory-conditional-access-automatic-device-registration.md)
 #### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
-### [デバイスを登録する](active-directory-azureadjoin-personal-device.md)
-### [Windows 10 デバイスを登録する](active-directory-azureadjoin-user-upgrade.md)
+#### [FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### トラブルシューティング
+##### [Windows 10 と Windows Server 2016 のトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+##### [Windows ダウンレベル クライアントのトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [プラン](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
 #### [新しいデバイスを登録する](active-directory-azureadjoin-user-frx.md)
 #### [デプロイする](active-directory-azureadjoin-devices-group-policy.md)
-#### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)
-#### [Windows Hello for Business の有効化](active-directory-azureadjoin-passport-deployment.md)
-
 #### [Windows 10 の統合について](active-directory-azureadjoin-windows10-devices-overview.md)
 #### [Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)
-#### [FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)
-#### トラブルシューティング
-##### [Windows 10 と Windows Server 2016 のトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [Windows ダウンレベル クライアントのトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+#### [デバイスを参加させる](active-directory-azureadjoin-personal-device.md)
+#### [Windows 10 デバイスを参加させる](active-directory-azureadjoin-user-upgrade.md)
 
 ## アプリを管理する
 ### [概要](active-directory-enable-sso-scenario.md)
@@ -237,6 +233,7 @@
 #### [招待の利用](active-directory-b2b-redemption-experience.md)
 #### [B2B ユーザー プロパティ](active-directory-b2b-user-properties.md)
 #### [ゲスト ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
+#### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
 #### [API とカスタマイズ](active-directory-b2b-api.md)
 #### [招待を委任する](active-directory-b2b-delegate-invitations.md)
 #### [動的グループと B2B](active-directory-b2b-dynamic-groups.md)
@@ -284,6 +281,9 @@
 #### [FAQ](active-directory-conditional-faqs.md)
 #### [トラブルシューティング](active-directory-conditional-access-device-remediation.md)
 #### [リファレンス](active-directory-conditional-access-technical-reference.md)
+### Windows Hello
+#### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)
+#### [Windows Hello for Business の有効化](active-directory-azureadjoin-passport-deployment.md)
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

@@ -43,6 +43,7 @@
 ### [Managed Disks への VM の変換の概要](../virtual-machines-windows-migrate-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 #### [Azure PowerShell の使用](../virtual-machines-windows-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [OS ディスクを拡張する](../virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+### [データ ディスクを拡張する](../virtual-machines-windows-expand-data-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [データ ディスクとして D: を使用する](../virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [ディスクの暗号化](../../security/azure-security-disk-encryption.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

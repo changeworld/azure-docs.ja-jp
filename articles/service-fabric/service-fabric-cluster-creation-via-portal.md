@@ -307,7 +307,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/key-vault-get-started.md
-[create-cluster-arm]: https://manage.windowsazure.com
+[create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md

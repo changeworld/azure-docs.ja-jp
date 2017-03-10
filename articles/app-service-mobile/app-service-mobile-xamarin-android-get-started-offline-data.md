@@ -3,7 +3,7 @@ title: "Azure モバイル アプリ (Xamarin Android) に対するオフライ�
 description: "App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
@@ -39,7 +39,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 2. ToDoActivity.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED` の定義をコメント解除します。
 3. Visual Studio で、 **F5** キーを押してクライアント アプリをリビルドして実行します。 アプリは、オフライン同期を有効にする前と同じように動作します。 ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
 
-## <a name="a-nameupdate-syncaupdate-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>アプリを更新してバックエンドから切断する
+## <a name="update-sync"></a>アプリを更新してバックエンドから切断する
 ここでは、オフライン状況をシミュレートするために、モバイル アプリ バックエンドへの接続を解除します。 データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードであることが通知されます。 この状態では、新しい項目はローカル ストアに追加され、プッシュが接続状態で実行されたときに、モバイル アプリ バックエンドに同期されます。
 
 1. 共有プロジェクトの ToDoActivity.cs を編集します。 **applicationURL** を、無効な URL を指すように変更します。
@@ -53,7 +53,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 5. (省略可能) Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]**を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
-## <a name="a-nameupdate-online-appaupdate-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
+## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 ここでは、アプリをモバイル アプリ バックエンドに再接続します。 初めてアプリケーションを実行すると、`OnCreate` イベント ハンドラーが `OnRefreshItemsSelected` を呼び出します。 このメソッドが `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。
 
 1. 共有プロジェクトの ToDoActivity.cs を開き、**applicationURL** プロパティの変更を元に戻します。

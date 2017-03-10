@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 03/06/2017
 ms.author: barclayn
 translationtype: Human Translation
-ms.sourcegitcommit: 3451bdde3be60df0f1e1ed977f23db65d39f535f
-ms.openlocfilehash: 8416de09a4a3c2cdf9c73b9f79e8df9e292514ca
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 774feff39bee6f34b1fb292f130d8240ec070c81
+ms.lasthandoff: 03/07/2017
 
 
 
@@ -194,8 +194,6 @@ Windows 10 Anniversary Update と Windows Server 2016 を含む、サポート�
 ![Azure のマルウェア対策](./media/azure-security-iaas/azantimalware.png)
 
 **最新のセキュリティ更新プログラムをインストールする**: お客様が最初に Azure に移動するワークロードの一部は、ラボと外部向けのシステムです。 インターネットへのアクセスを可能にする必要のあるアプリケーションまたはサービスをホストする仮想マシンを Azure でホストする場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでは、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性もあります。このような問題は、適切な修正プログラム管理が行われていれば簡単に回避できます。
-
-Azure IaaS における修正プログラムの管理の詳細については、「[Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス](azure-security-best-practices-software-updates-iaas.md)」を参照してください。
 
 **バックアップ ソリューションをデプロイしてテストする**
 

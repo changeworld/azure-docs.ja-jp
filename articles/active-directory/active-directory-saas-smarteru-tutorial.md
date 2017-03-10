@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
 ms.openlocfilehash: 058f84f57c18735d42b95a74aee74468ccef0f8d
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -150,10 +151,5 @@ SmarterU の場合、プロビジョニングは手動で行います。
     ![はい](./media/active-directory-saas-smarteru-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

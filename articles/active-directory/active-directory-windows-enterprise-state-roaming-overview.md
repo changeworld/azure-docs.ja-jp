@@ -4,7 +4,7 @@ description: "Windows デバイスの Enterprise State Roaming の設定につ�
 services: active-directory
 keywords: "Enterprise State Roaming とは, エンタープライズ同期, Windows クラウド"
 documentationcenter: 
-author: markvi
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/08/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: ce78b996a5f45b0b074563bc50af5aaab85f2667
 ms.openlocfilehash: 56eacc48102302961132bba6d14838327a899c59
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -37,10 +38,5 @@ Windows 10 では、 [Azure Active Directory (Azure AD)](active-directory-whatis
 | [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md) |Windows 10 では、グループ ポリシーとモバイル デバイス管理 (MDM) のポリシー設定を通じて、設定の同期を制限することができます。 |
 | [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) |Windows 10 でローミングまたはバックアップされる全設定の一覧が掲載されています。 |
 | [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md) |このトピックでは、トラブルシューティングの基本的な手順について説明します。既知の問題の一覧も含まれています。 |
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

@@ -1,6 +1,7 @@
 
 # 概要
 ## [DocumentDB とは](documentdb-introduction.md)
+## [DocumentDB: MongoDB 用 API とは](documentdb-protocol-mongodb.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
 ## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
@@ -14,9 +15,11 @@
 ### [.NET Core コンソール アプリ](documentdb-dotnetcore-get-started.md)
 ### [Java コンソール アプリ](documentdb-java-get-started.md)
 ### [Node.js コンソール アプリ](documentdb-nodejs-get-started.md)
+### [MongoDB API 用の Node.js コンソール アプリ](documentdb-mongodb-samples.md)
 ### [C++ コンソール アプリ](documentdb-cpp-get-started.md)
 ## Web アプリを構築する
 ### [.NET Web アプリ](documentdb-dotnet-application.md)
+### [MongoDB API 用の .NET Web アプリ](documentdb-mongodb-application.md)
 ### [Node.js Web アプリ](documentdb-nodejs-application.md)
 ### [Java Web アプリ](documentdb-java-application.md)
 ### [Python Flask Web アプリ](documentdb-python-application.md)
@@ -34,6 +37,10 @@
 
 ## [管理]
 ### [データのインポート](documentdb-import-data.md)
+### [MongoDB 用 API にインポートする](documentdb-mongodb-migrate.md)
+### [MongoDB アカウントに接続する](documentdb-connect-mongodb-account.md)
+### [MongoChef の使用](documentdb-mongodb-mongochef.md)
+### [Robomongo の使用](documentdb-mongodb-robomongo.md)
 ### [データのモデル化](documentdb-modeling-data.md)
 ### [地理空間のデータを使用する](documentdb-geospatial.md)
 ### [マルチリージョン向けの開発](documentdb-developing-with-multiple-regions.md)
@@ -60,15 +67,6 @@
 ### ベスト プラクティス
 #### [複数のマスターのセットアップ](documentdb-multi-region-writers.md)
 #### [DateTime](documentdb-working-with-dates.md)
-
-## MongoDB 向けの DocumentDB サポートを使用する
-### [MongoDB のプロトコル サポート](documentdb-protocol-mongodb.md)
-### [アカウントの作成](documentdb-create-mongodb-account.md)
-### [アカウントに接続する](documentdb-connect-mongodb-account.md)
-### [データの移行](documentdb-mongodb-migrate.md)
-### [Robomongo の使用](documentdb-mongodb-robomongo.md)
-### [MongoChef の使用](documentdb-mongodb-mongochef.md)
-### [プロトコル サポートのサンプル](documentdb-mongodb-samples.md)
 
 ## ポータルの使用
 ### [データベース アカウントの作成](documentdb-create-account.md)

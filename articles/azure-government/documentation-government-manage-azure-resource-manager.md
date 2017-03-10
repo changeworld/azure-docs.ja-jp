@@ -17,6 +17,7 @@ ms.author: brendal
 translationtype: Human Translation
 ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
 ms.openlocfilehash: 89aa44df74effec7da2eb008faf8f01dda0d27ca
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -127,10 +128,5 @@ Resource Manager のプロバイダー、API のバージョン、およびス�
 
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

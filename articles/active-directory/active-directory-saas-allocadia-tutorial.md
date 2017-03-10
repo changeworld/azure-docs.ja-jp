@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/08/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
 ms.openlocfilehash: e9d59c593c3637d72611516fd8a6b03f3f5f917b
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -285,9 +286,4 @@ Allocadia アプリケーションは、特定の形式で構成された SAML �
 [203]: ./media/active-directory-saas-allocadia-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-allocadia-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-allocadia-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

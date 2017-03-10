@@ -4,7 +4,7 @@ description: "Azure Backup エラー &quot;スナップショットの状態に�
 services: backup
 documentationcenter: 
 author: genlin
-manager: cfreeman
+manager: cshepard
 editor: 
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
@@ -13,10 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
-ms.author: jimpark; markgal; genli
+ms.author: genli;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: 26ea5c6f867165a25dd5aecb01d0a0ce3b213a51
 ms.openlocfilehash: 707d666eb6c23fb926c31711daddfb22979513bc
+ms.lasthandoff: 01/25/2017
 
 ---
 
@@ -118,9 +119,4 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 | 同じクラウド サービスから多数の VM が同時にバックアップするように構成されている。 | 同じクラウド サービスの VM については、バックアップ スケジュールを分散させることをお勧めします。 |
 | VM の CPU またはメモリの使用率が高くなっている。 | VM の CPU 使用率が高い (90% を超える) 場合、またはメモリ使用率が高い場合、スナップショット タスクがキューに配置され、遅延し、最終的にタイムアウトになります。 この場合は、オンデマンド バックアップを試してください。 |
 | VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。  VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。 VM 内の DHCP オプションは有効のままにしておいてください。 詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関するページをご覧ください。 |
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
