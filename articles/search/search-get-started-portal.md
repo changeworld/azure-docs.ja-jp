@@ -16,9 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
-ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -35,11 +35,13 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 
 **予想所要時間:** 約 15 分 (アカウントまたはサービスのサインアップも必要な場合はもう少しかかります)。 
 
-また、「[Azure Search Overview (Azure Search の概要)](https://channel9.msdn.com/Events/Connect/2016/138)」ビデオで、このチュートリアルの手順のデモを見ることができます (約 3 分目から 6 分間)。
+また、準備として、[.NET での Azure Search のプログラミングに関するコード ベースの概要](search-howto-dotnet-sdk.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルでは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)があることを前提としています。 
+
+サービスをすぐにプロビジョニングしない場合は、「[Azure Search Overview (Azure Search の概要)](https://channel9.msdn.com/Events/Connect/2016/138)」ビデオで、このチュートリアルの手順のデモを見ることができます (約 3 分目から 6 分間)。
 
 ## <a name="find-your-service"></a>サービスの検索
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
@@ -57,7 +59,7 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 > ![インデクサーとデータソースのタイル][1]
 >
 
-## <a name="a-namecreate-indexa-create-an-index-and-load-data"></a><a name="create-index"></a>インデックスの作成とデータの読み込み
+## <a name="create-index"></a>インデックスの作成とデータの読み込み
 検索クエリは、*インデックス*を反復処理します。インデックスには、検索可能なデータやメタデータのほか、特定の検索の動作を最適化することを目的とした構造が含まれています。
 
 このタスクをすべてポータル上で実行するために、**データのインポート** ウィザードからインデクサーを使用してクロールできる、組み込みのサンプル データセットを使用します。 
@@ -100,7 +102,7 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 
    ![インデクサーの進行状況のメッセージ][4]
 
-## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a>インデックスのクエリを実行する
+## <a name="query-index"></a>インデックスのクエリを実行する
 以上で検索インデックスの設定は完了しました。インデックスを使ってクエリを実行することができます。 **Search エクスプローラー** は、ポータルに組み込まれたクエリ ツールです。 検索ボックスが備わっており、期待どおりの検索結果が返されるかどうかを確認できます。 
 
 > [!TIP]

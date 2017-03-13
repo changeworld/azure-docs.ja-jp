@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/06/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: fa9b427afff2c12babde30aa354e59d31c8f5b2c
-ms.openlocfilehash: 219fe64481df2c5c5cbfe622afdab11dcc1b7100
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: f709fe00cce61f6766a0a56ea31b023e00c91fce
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -48,12 +48,9 @@ OMS ワークスペースに更新管理ソリューションを追加し、Linu
    a.    次のコマンドを実行して、OMS Agent for Linux の最新バージョンをインストールします。  <Workspace ID> を実際のワークスペース ID、<Key> を実際の主キーまたは&2; 次キーに置き換えてください。
    
         cd ~
-        wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.2.0-75/omsagent-1.2.0-75.universal.x64.sh  
-        sudo bash omsagent-1.2.0-75.universal.x64.sh --upgrade -w <Workspace ID> -s <Key>
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID>  -s <PrimaryKey> -d opinsights.azure.com 
 
-   b. エージェントを削除するには、次のコマンドを実行します。
-   
-        sudo bash omsagent-1.2.0-75.universal.x64.sh --purge
+   b. エージェントを削除するには、「[Uninstalling the OMS Agent for Linux (OMS Agent for Linux のアンインストール)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#uninstalling-the-oms-agent-for-linux)」セクションで説明しているプロセスを使用します。  
 
 ## <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックに伴う構成や保守は不要です。 

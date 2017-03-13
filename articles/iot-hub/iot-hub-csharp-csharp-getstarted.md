@@ -14,20 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
-ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 969e6bd55ca69e293f13b66f1a51f1d5fd1996b7
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="get-started-with-azure-iot-hub-net"></a>Azure IoT Hub の使用 (.NET)
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>.NET を使用してシミュレーション対象デバイスを IoT Hub に接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-このチュートリアルの最後には、次の 3 つの .NET コンソール アプリが完成します。
+このチュートリアルの最後には、次の&3; つの .NET コンソール アプリが完成します。
 
 * **CreateDeviceIdentity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
 * **ReadDeviceToCloudMessages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
-* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して&1; 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
@@ -36,7 +38,7 @@ ms.openlocfilehash: 90ca7089b2ce6a541f6890c6d50e912f2127ff85
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -46,7 +48,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
 このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する .NET コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の ID レジストリに関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateDeviceIdentity**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを新しいソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateDeviceIdentity** という名前を付け、ソリューションに **IoTHubGetStarted** という名前を付けます。
    
     ![New Visual C# Windows Classic Desktop project][10]
 2. ソリューション エクスプローラーで **CreateDeviceIdentity** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
@@ -101,9 +103,9 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 > 
 > 
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **ReadDeviceToCloudMessages**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **ReadDeviceToCloudMessages**という名前を付けます。
    
-    ![New Visual C# Windows Classic Desktop project][10]
+    ![New Visual C# Windows Classic Desktop project][10a]
 2. ソリューション エクスプローラーで **ReadDeviceToCloudMessages** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。 この手順により、[Azure Service Bus][lnk-servicebus-nuget] のダウンロードとインストールが実行され、その参照とすべての依存関係が追加されます。 このパッケージは、アプリケーションが IoT Hub でイベント ハブと互換性のあるエンドポイントに接続できるようにします。
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
@@ -158,9 +160,9 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 ## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリを作成します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **SimulatedDevice**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **SimulatedDevice**という名前を付けます。
    
-    ![New Visual C# Windows Classic Desktop project][10]
+    ![New Visual C# Windows Classic Desktop project][10b]
 2. ソリューション エクスプローラーで **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。その後、**[インストール]** を選択し、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK NuGet パッケージ][lnk-device-nuget]への参照とその依存関係が追加されます。
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
@@ -198,7 +200,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
             }
         }
    
-    このメソッドは、デバイスからクラウドへの新しいメッセージを 1 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
+    このメソッドは、デバイスからクラウドへの新しいメッセージを&1; 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 7. 最後に、 **Main** メソッドに次の行を追加します。
    
         Console.WriteLine("Simulated device\n");
@@ -245,6 +247,8 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
 [10]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp1.png
+[10a]: ./media/iot-hub-csharp-csharp-getstarted/create-receive-csharp1.png
+[10b]: ./media/iot-hub-csharp-csharp-getstarted/create-device-csharp1.png
 [11]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp2.png
 [12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
 
@@ -267,9 +271,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

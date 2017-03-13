@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
-ms.author: dlepow
+ms.date: 03/03/2017
+ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 31aaa122bfca5140dcd22d2a2233c46cd28f27b9
-ms.openlocfilehash: c139fc34d15545ce6a7a91842a3ebdff7c029a01
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
+ms.lasthandoff: 03/06/2017
 
 
 ---
 
-# <a name="get-started-with-windows-containers-in-a-kubernetes-cluster"></a>Kubernetes クラスターで Windows コンテナーを使ってみる
+# <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>Container Service で Kubernetes と Windows コンテナーを使用する
 
 
 この記事では、Windows ノードを含む Azure Container Service で Kubernetes クラスターを作成し、Windows コンテナーを実行する方法について説明します。 
@@ -59,8 +60,14 @@ ms.lasthandoff: 02/23/2017
 Azure Portal を使用して、Windows エージェント ノードを含む [Kubernetes クラスターを作成](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal)できます。 クラスターを作成するときの設定を次に示します。
 
 * **[基本]** ブレードの **[Orchestrator]** で **[Kubernetes]** を選択します。 
-* **[Master configuration (マスター構成)]** ブレードで、Linux マスター ノードに対するユーザーの資格情報とサービス プリンシパルの資格情報を入力します。
+
+  ![Kubernetes オーケストレーターを選択する](media/container-service-kubernetes-windows-walkthrough/portal-select-kubernetes.png)
+
+* **[Master configuration (マスター構成)]** ブレードで、Linux マスター ノードに対するユーザーの資格情報とサービス プリンシパルの資格情報を入力します。 マスター数は 1、3、または 5 を選択します。
+
 * **[エージェント構成]** ブレードの **[オペレーティング システム]** で、**[Windows (プレビュー)]** を選択します。 Windows エージェント ノードの管理者の資格情報を入力します。
+
+  ![Windows エージェントを選択する](media/container-service-kubernetes-windows-walkthrough/portal-select-windows.png)
 
 詳細については、[Azure Container Service クラスターのデプロイ](container-service-deployment.md)に関するページをご覧ください。
 

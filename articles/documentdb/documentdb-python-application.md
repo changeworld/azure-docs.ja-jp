@@ -1,7 +1,7 @@
 ---
-title: "DocumentDB による Python Flask Web アプリケーション開発 | Microsoft Docs"
+title: "Azure DocumentDB を使用した Python Flask Web アプリケーションのチュートリアル | Microsoft Docs"
 description: "DocumentDB を使用してデータを格納し、Azure にホストされた Python Flask Web アプリケーションからそのデータにアクセスする方法をデータベース チュートリアルで確認します。 アプリケーション開発ソリューションを探します。"
-keywords: "アプリケーション開発, データベース チュートリアル, python flask, python web アプリケーション, python web 開発, documentdb, azure, Microsoft azure"
+keywords: "アプリケーション開発, Python Flask, Python Web アプリケーション, Python Web 開発"
 services: documentdb
 documentationcenter: python
 author: syamkmsft
@@ -15,16 +15,19 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="python-flask-web-application-development-with-documentdb"></a>DocumentDB による Python Flask Web アプリケーション開発
+# <a name="build-a-python-flask-web-application-using-documentdb"></a>DocumentDB を使用した Python Flask Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
-> * [Node.js](documentdb-nodejs-application.md)
+> * [MongoDB 用 .NET](documentdb-mongodb-application.md)
+> * [Node.JS](documentdb-nodejs-application.md)
 > * [Java](documentdb-java-application.md)
 > * [Python](documentdb-python-application.md)
 > 
@@ -71,7 +74,7 @@ ms.openlocfilehash: 8dc246755c90686f890d2ac9df05b3a8b2a9341f
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
 <br/>
- 次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
+次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
 
 ## <a name="step-2-create-a-new-python-flask-web-application"></a>手順 2. 新しい Python Flask Web アプリケーションを作成する
 1. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
@@ -199,7 +202,7 @@ def create():
 ```
 
 > [!TIP]
-> **CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。 これを使用すると、コレクションのプランの種類を指定することができます。 offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。 DocumentDB のプランの種類の詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> **CreateCollection** メソッドは、省略可能な&3; 番目のパラメーター **RequestOptions** を受け取ります。 これを使用すると、コレクションのプランの種類を指定することができます。 offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。 DocumentDB のプランの種類の詳細については、「 [DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 > 
 > 
 
@@ -403,16 +406,11 @@ Web アプリケーションに機能を追加する場合は、 [DocumentDB Pyt
 
 Azure、Visual Studio、Python の詳細については、「 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。 
 
-Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
+Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート&1;: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
 
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [2]: https://www.python.org/downloads/windows/
 [3]: https://www.microsoft.com/download/details.aspx?id=44266
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [Azure portal]: http://portal.azure.com
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

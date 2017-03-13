@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 9ee2d2ef7b21fab8cfc4a70561d612be7367d366
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: b66128a2bb0c3237541ae991a98daa09deeff5d5
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 このドキュメントでは、Azure Security Center で利用できるさまざまな種類のセキュリティの警告についてわかりやすく説明します。 警告を管理する方法の詳細については、「 [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」を参照してください。
 
 > [!NOTE]
-> 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。 90 日間の無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] を選択してください。 詳細については、 [価格のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。
+> 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。 60 日間の無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] を選択してください。 詳細については、 [価格のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。
 >
 >
 

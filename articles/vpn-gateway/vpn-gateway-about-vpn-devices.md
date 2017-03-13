@@ -13,39 +13,42 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
+ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: ba659fe42fa2264708833f5674711334845defcc
-ms.openlocfilehash: 283e71f03f3907fd1e72283059ba7acbdac054d4
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN Gateway 接続の VPN デバイスについて
 VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。
 
-> [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
->
->
-
-「[検証済みの VPN デバイス](#devicetable)」の表にデバイスが見つからない場合は、この記事の「[未検証の VPN デバイス](#additionaldevices)」セクションを参照してください。 デバイスは引き続き Azure で動作する可能性があります。 VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
 
 > [!IMPORTANT]
 > オンプレミスの VPN デバイスと Azure VPN ゲートウェイの間で接続の問題が発生している場合は、「[デバイスの互換性に関する既知の問題](#known)」を参照してください。
+> 
+> 
 
-**表を確認するときの注意事項:**
+
+###<a name="items-to-note-when-viewing-the-tables"></a>表を確認するときの注意事項:
 
 * 静的および動的ルーティングの用語に変更がありました。 おそらく、両方の用語が見つかるでしょう。 機能上の変更はありませんが、名前のみが変更されています。
   * 静的ルーティング = PolicyBased
   * 動的ルーティング = RouteBased
 * 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
 
-## <a name="a-namedevicetableavalidated-vpn-devices"></a><a name="devicetable"></a>検証済みの VPN デバイス
+> [!NOTE]
+> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
+>
+>
+
+
+## <a name="devicetable"></a>検証済みの VPN デバイス
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。 「 [VPN Gateway について](vpn-gateway-about-vpngateways.md) 」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
 
-VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
+VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
 
 | **ベンダー名** | **デバイス ファミリ** | **OS の最小バージョン** | **PolicyBased** | **RouteBased** |
 | --- | --- | --- | --- | --- |
@@ -74,13 +77,13 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 (*) ISR 7200 シリーズのルーターは、PolicyBased の VPN だけをサポートしています。
 
-## <a name="a-nameadditionaldevicesanon-validated-vpn-devices"></a><a name="additionaldevices"></a>未検証の VPN デバイス
-検証済みの VPN デバイスの表にデバイスが見つからない場合でも、サイト間接続に利用できる可能性があります。 お使いの VPN デバイスが、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」のゲートウェイの要件に関するセクションに記載されている最小要件を満たしていることを確認してください。 最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
+## <a name="additionaldevices"></a>未検証の VPN デバイス
+検証済み VPN デバイスの表にお使いのデバイスが見つからない場合でも、そのデバイスをサイト間接続に利用できる可能性があります。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
 
-## <a name="editing-device-configuration-samples"></a>デバイス構成のサンプルの編集
+## <a name="editing"></a>デバイス構成のサンプルの編集
 提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。
 
-**サンプルを編集するには:**
+###<a name="to-edit-a-sample"></a>サンプルを編集するには:
 
 1. メモ帳を使用してサンプルを開きます。
 2. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。 < と > を必ず含めてください。 名前を指定する場合、選択する名前は一意である必要があります。 コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
@@ -99,7 +102,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="ipsec-parameters"></a>IPsec パラメーター
+## <a name="IPSec"></a>IPsec パラメーター
 > [!NOTE]
 > 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。 また、MSS は 1350 で固定する必要があります。
 >
@@ -122,7 +125,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | ハッシュ アルゴリズム |SHA1(SHA128)、SHA2(SHA256) |SHA1(SHA128)、SHA2(SHA256) |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) |3,600 秒 |3,600 秒 |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) |102,400,000 KB |- |
-| IPsec SA 暗号化および認証のプラン (優先度順) |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 該当なし |*RouteBased ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン*を参照 (下記) |
+| IPsec SA 暗号化および認証のプラン (優先度順) |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 該当なし |「RouteBased ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン」を参照 (下記) |
 | Perfect Forward Secrecy (PFS) |いいえ |なし (*) |
 | Dead Peer Detection |サポートされていません |サポートされています |
 
@@ -155,7 +158,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 * RouteBased および高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。 Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。  クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 * インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-## <a name="a-nameknownaknown-device-compatibility-issues"></a><a name="known"></a>デバイスの互換性に関する既知の問題
+## <a name="known"></a>デバイスの互換性に関する既知の問題
 
 > [!IMPORTANT]
 > この内容は、サード パーティの VPN デバイスと Azure VPN ゲートウェイの互換性に関する既知の問題です。 Azure チームは、ここに記載されている問題に対処するためにベンダーと積極的に連携しています。 問題が解決されると、このページが最新の情報で更新されるため、 定期的に確認してください。
@@ -165,6 +168,6 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 Azure ルートベースの VPN 用の **Palo Alto Networks の 7.1.4 より前のバージョンのデバイス**: Palo Alto Networks の PAN-OS のバージョンが 7.1.4 より前の VPN デバイスを使用している場合、Azure ルートベースの VPN ゲートウェイへの接続の問題が発生したときは次の手順を実行してください。
 
 1. Palo Alto Networks デバイスのファームウェアのバージョンを確認します。 PAN-OS バージョンが 7.1.4 よりも前の場合は、7.1.4 にアップグレードしてください。
-2. Palo Alto Networks デバイスで、Azure VPN Gateway に接続しているときにフェーズ 2 SA (またはクイック モード SA) の有効期間を 28,800 秒 (8 時間) に変更します。
-3. 接続の問題が解消しない場合は、Azure Portal からサポート リクエストを作成してください。 
+2. Palo Alto Networks デバイスで、Azure VPN ゲートウェイに接続しているときにフェーズ 2 SA (またはクイック モード SA) の有効期間を 28,800 秒 (8 時間) に変更します。
+3. 接続の問題が解消しない場合は、Azure Portal からサポート リクエストを作成してください。
 

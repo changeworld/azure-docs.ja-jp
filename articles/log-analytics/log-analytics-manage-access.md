@@ -1,6 +1,6 @@
 ---
-title: "ワークスペースを管理する | Microsoft Docs"
-description: "ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Azure Log Analytics のワークスペースを管理します。"
+title: "Azure Log Analytics と OMS ポータルでワークスペースを管理する |Microsoft ドキュメント"
+description: "ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Azure Log Analytics と OMS ポータルでワークスペースを管理できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: 1d330362389ee690dc2942c9bb1bc32e1f10e08a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: dd09c109594e0ba86fe2f40625e765494bfc06eb
+ms.openlocfilehash: 1221de9ae16022f7300510b2db67ed0849b61397
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -163,25 +163,16 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>既存のワークスペースを Azure サブスクリプションへリンクする
 2016 年 9 月 26 日より後に作成されたすべてのワークスペースは、作成時に Azure サブスクリプションにリンクする必要があります。 この日付より前に作成されたワークスペースは、次回サインインしたときにワークスペースにリンクする必要があります。 Azure Portal からワークスペースを作成するか、Azure サブスクリプションにワークスペースをリンクすると、Azure Active Directory は組織のアカウントとしてリンクされます。
 
-![Azure サブスクリプションへのリンク](./media/log-analytics-manage-access/required-link.png)
-
-> [!IMPORTANT]
-> ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。  つまり、Azure Portal へのアクセスに使用するアカウントは、ワークスペースへのアクセスに使用するアカウントと **同じ** アカウントである必要があります。 それ以外の場合は、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」をご覧ください。
->
->
-
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>OMS ポータルでワークスペースを Azure サブスクリプションにリンクするには
-OMS ポータルでワークスペースを Azure サブスクリプションにリンクするには、サインインしているユーザーが既に Azure アカウントへの支払いを済ませている必要があります。
 
-1. OMS ポータルで、**[設定]** タイルをクリックします。
-2. **[アカウント]** タブをクリックしてから、**[Azure Subscription & Data Plan (Azure サブスクリプションとデータ プラン)]** タブをクリックします。
-3. 使用するデータ プランをクリックします。
-4. [ **Save**] をクリックします。  
-   ![サブスクリプションとデータ プラン](./media/log-analytics-manage-access/subscription-tab.png)
+- OMS ポータルにサインインすると、Azure サブスクリプションを選択するよう求められます。 ワークスペースにリンクするサブスクリプションを選択し、**[リンク]** をクリックします。  
+    ![Azure サブスクリプションへのリンク](./media/log-analytics-manage-access/required-link.png)
 
-新しいデータ プランは、Web ページの上部にある OMS ポータル リボンに表示されます。
+    > [!IMPORTANT]
+    > ワークスペースをリンクするためには、リンクするワークスペースに Azure アカウントが既にアクセスしていることが必要です。  つまり、Azure Portal へのアクセスに使用するアカウントは、ワークスペースへのアクセスに使用するアカウントと **同じ** アカウントである必要があります。 それ以外の場合は、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」をご覧ください。
 
-![OMS リボン](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Azure Portal でワークスペースを Azure サブスクリプションにリンクするには
 1. [Azure ポータル](http://portal.azure.com)にサインインします。
@@ -236,7 +227,7 @@ Azure サブスクリプションがリンクされているエンタープラ�
 
 ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。  
 
-### <a name="change-a-workspace-to-a-paid-pricing-tier"></a>ワークスペースを有料の価格レベルに変更する
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Azure Portal でワークスペースを有料の価格レベルに変更する
 1. [Azure ポータル](http://portal.azure.com)にサインインします。
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 ワークスペースを選択します。  
@@ -250,6 +241,21 @@ Azure サブスクリプションがリンクされているエンタープラ�
 > ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
 >
 >
+
+## <a name="change-your-data-plan-in-the-oms-portal"></a>OMS ポータルでデータ プランを変更する
+
+OMS ポータルを使用してデータ プランを変更するには、サインインしているユーザーが既に Azure アカウントを所有している必要があります。
+
+1. OMS ポータルで、**[設定]** タイルをクリックします。
+2. **[アカウント]** タブをクリックしてから、**[Azure Subscription & Data Plan (Azure サブスクリプションとデータ プラン)]** タブをクリックします。
+3. 使用するデータ プランをクリックします。
+4. [ **Save**] をクリックします。  
+   ![サブスクリプションとデータ プラン](./media/log-analytics-manage-access/subscription-tab.png)
+
+新しいデータ プランは、Web ページの上部にある OMS ポータル リボンに表示されます。
+
+![OMS リボン](./media/log-analytics-manage-access/data-plan-changed.png)
+
 
 ## <a name="change-how-long-log-analytics-stores-data"></a>Log Analytics でのデータの保持期間を変更する
 
@@ -266,8 +272,8 @@ Standalone および OMS 価格レベルをご利用の場合、データは最�
 2. **[Log Analytics]** を探して選択します。
 3. 既存のワークスペースの一覧が表示されます。 ワークスペースを選択します。  
 4. ワークスペース ブレードの **[全般]** で、**[リテンション期間]** をクリックします。  
-5. スライダーを使用して保持期間の日数を増減し、**[保存]** をクリックします。
-![保持期間の変更](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+5. スライダーを使用してリテンション期間の日数を増減し、**[保存]** をクリックします。  
+    ![リテンション期間の変更](./media/log-analytics-manage-access/manage-access-change-retention01.png)
 
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>ワークスペースの Azure Active Directory 組織を変更する
 

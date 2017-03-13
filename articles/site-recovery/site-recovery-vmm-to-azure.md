@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/21/2017
+ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: dcd7836f1ef84bbf7f45f1a70da1e177d9913a36
-ms.openlocfilehash: 345e5516be0c4de56c0cb104b1a598cd964b41d2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: b1bbe3a43d071b452b7b60e1c56571958b444237
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -129,7 +129,7 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 ## <a name="step-1-choose-your-protection-goals"></a>ステップ 1: 保護の目標を選択する
 レプリケートの対象とレプリケート先を選択します。
 
-1. **[Recovery Services コンテナー]** ブレードでコンテナーを選択し、**[設定]** をクリックします。
+1. **[Recovery Services コンテナー]** ブレードで、コンテナーを選択します。
 2. **[作業の開始]** で、**[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/site-recovery-vmm-to-azure/choose-goals.png)
@@ -143,17 +143,17 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 1. **[手順 2: インフラストラクチャを準備する]** > **[ソース]** の順にクリックします。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source1.png)
-    
+
 2. **[ソースの準備]** で **[+ VMM]** をクリックして、VMM サーバーを追加します。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source2.png)
-    
+
 3. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **System Center VMM サーバー**が表示され、その VMM サーバーが[前提条件と URL 要件](#on-premises-prerequisites)を満たしていることを確認します。
 4. Azure Site Recovery プロバイダーのインストール ファイルをダウンロードします。
 5. 登録キーをダウンロードします。 セットアップを実行する際に、これが必要になります。 キーは生成後&5; 日間有効です。
 
     ![Set up source](./media/site-recovery-vmm-to-azure/set-source3.png)
-    
+
 6. VMM サーバーに Azure Site Recovery プロバイダーをインストールします。
 
 ### <a name="set-up-the-azure-site-recovery-provider"></a>Azure Site Recovery プロバイダーのセットアップ
@@ -180,7 +180,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 9. VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期する場合は、**[Sync cloud metadata (クラウド メタデータの同期)]** を有効にします。 この操作は、各サーバーで&1; 回のみ実行する必要があります。 すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。 **[登録]** をクリックしてプロセスを完了します。
 
     ![サーバー登録](./media/site-recovery-vmm-to-azure/provider16.PNG)
-10. 登録が開始されます。 登録が完了すると、コンテナーの **[設定]** > **[サーバー]** ブレードに、サーバーが表示されます。
+10. 登録が開始されます。 登録が完了すると、**[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** >  **[VMM サーバー]** に、サーバーが表示されます。
 
 #### <a name="command-line-installation-for-the-azure-site-recovery-provider"></a>Azure Site Recovery プロバイダーのコマンド ライン インストール
 Azure Site Recovery プロバイダーは、コマンド ラインからインストールできます。 この方法を使用すると、Windows Server 2012 R2 の Server Core にプロバイダーをインストールできます。
@@ -266,7 +266,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
 
 マッピングは次のように構成します。
 
-1. **[設定]** > **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[ネットワーク マッピング]** > **[ネットワーク マッピング]** の順にクリックし、**[+ ネットワーク マッピング]** アイコンをクリックします。
+1. **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[ネットワーク マッピング]** > **[ネットワーク マッピング]** の順にクリックし、**[+ ネットワーク マッピング]** アイコンをクリックします。
 
     ![ネットワーク マッピング](./media/site-recovery-vmm-to-azure/network-mapping1.png)
 2. **[ネットワーク マッピングの追加]** で、ソース VMM サーバーを選択し、ターゲットとして **[Azure]** を選択します。
@@ -295,7 +295,7 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
 7. **[Azure に格納されるデータの暗号化]**で、Azure ストレージに格納されるデータを暗号化するかどうかを指定します。 次に、 **[OK]**をクリックします
 
     ![Replication policy](./media/site-recovery-vmm-to-azure/gs-replication2.png)
-8. 新しいポリシーを作成すると、自動的に VMM クラウドに関連付けられます。 **[OK]**をクリックします。 追加の VMM クラウド (およびその内部にある VM) を、このレプリケーション ポリシーに関連付けるには、**[設定]** > **[レプリケーション]** > ポリシー名 > **[Associate VMM Cloud (VMM クラウドを関連付ける)]** の順に選択します。
+8. 新しいポリシーを作成すると、自動的に VMM クラウドに関連付けられます。 **[OK]**をクリックします。 追加の VMM クラウド (およびその内部にある VM) を、このレプリケーション ポリシーに関連付けるには、**[レプリケーション]** > ポリシー名 > **[Associate VMM Cloud (VMM クラウドを関連付ける)]** の順に選択します。
 
     ![Replication policy](./media/site-recovery-vmm-to-azure/policy-associate.png)
 
@@ -375,16 +375,16 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
     >
 
 
-8. **[レプリケーションの設定]**  >  **[レプリケーション設定の構成]** で、保護対象の VM に適用するレプリケーション ポリシーを選択します。 次に、 **[OK]**をクリックします レプリケーション ポリシーを変更するには、**[設定]**  >  **[レプリケーション ポリシー]**、ポリシー名、**[設定の編集]** の順にクリックします。 適用する変更は、既にレプリケートしているマシンと、新しいマシンに使用されます。
+8. **[レプリケーションの設定]**  >  **[レプリケーション設定の構成]** で、保護対象の VM に適用するレプリケーション ポリシーを選択します。 次に、 **[OK]**をクリックします レプリケーション ポリシーを変更するには、**[レプリケーション ポリシー]**ポリシー名 > **[設定の編集]** の順にクリックします。 適用する変更は、既にレプリケートしているマシンと、新しいマシンに使用されます。
 
    ![Enable replication](./media/site-recovery-vmm-to-azure/enable-replication7.png)
 
-**[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+**[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 ### <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。
 
-1. **[設定]** > **[保護されたアイテム]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択すると、その詳細が表示されます。
+1. **[保護されたアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンを選択すると、その詳細が表示されます。
 
     ![Enable replication](./media/site-recovery-vmm-to-azure/vm-essentials.png)
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
@@ -438,10 +438,10 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 ## <a name="step-7-test-your-deployment"></a>ステップ 7: デプロイをテストする
 デプロイをテストするために、単一の仮想マシンに対して、または&1; つ以上の仮想マシンを含む復旧計画に対してテスト フェールオーバーを実行できます。
 
-1. 1 つの VM をフェールオーバーする場合は、**[設定]** > **[レプリケートされたアイテム]** で、VM をクリックして **[+ テスト フェールオーバー]** をクリックします。
-1. 復旧計画をフェールオーバーする場合は、**[設定]** > **[復旧計画]** で、計画を右クリックし、**[テスト フェールオーバー]** をクリックします。 復旧計画を作成する場合は、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)。
+1. 1 つの VM をフェールオーバーする場合は、**[レプリケートされたアイテム]** で、VM をクリックして **[+ テスト フェールオーバー]** をクリックします。
+1. 復旧計画をフェールオーバーする場合は、**[復旧計画]** で、計画を右クリックし、**[テスト フェールオーバー]** をクリックします。 復旧計画を作成する場合は、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)。
 1. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続する Azure ネットワークを選択します。
-1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてプロパティを開くか、**[設定]** > **[Site Recovery jobs (Site Recovery ジョブ)]** で **[テスト フェールオーバー]** をクリックします。
+1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてプロパティを開くか、**[Site Recovery ジョブ]** の **[テスト フェールオーバー]** をクリックします。
 1. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
 1. [フェールオーバー後の接続の準備](#prepare-to-connect-to-Azure-VMs-after-failover)が完了したら、Azure VM に接続できるようになります。
 1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
@@ -454,9 +454,9 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 1. コンテナー名をクリックして、 **[要点]** ダッシュボードにアクセスします。 このダッシュボードで、Site Recovery ジョブ、レプリケーションの状態、復旧計画、サーバーの状態、およびイベントを確認できます。  **[要点]** ダッシュボードをカスタマイズして、他の Site Recovery コンテナーや Backup コンテナーの状態など、ニーズに最適なタイルとレイアウトを表示できます。
 
     ![[要点]](./media/site-recovery-vmm-to-azure/essentials.png)
-2. *[正常性]** で、オンプレミス サーバー (VMM または構成サーバー) の問題と、Site Recovery によって過去 24 時間以内に発生したイベントを監視できます。
-3. **[レプリケートされたアイテム]**、**[復旧計画]**、**[Site Recovery Jobs (Site Recovery ジョブ)]** の各タイルで、レプリケーションの管理と監視を実行できます。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックすると、ジョブの詳細を確認できます。
+2. **[正常性]** で、オンプレミス サーバー (VMM または構成サーバー) の問題と、Site Recovery によって過去 24 時間以内に発生したイベントを監視できます。
+3. **[レプリケートされたアイテム]**、**[復旧計画]**、**[Site Recovery Jobs (Site Recovery ジョブ)]** の各タイルで、レプリケーションの管理と監視を実行できます。 **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックすると、ジョブの詳細を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
-デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](site-recovery-failover.md) します。
+デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、 [こちら](site-recovery-failover.md) を参照してください。
 

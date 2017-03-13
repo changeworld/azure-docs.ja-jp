@@ -3,16 +3,21 @@ title: "Azure Event Hubs の説明と使用する理由 | Microsoft Docs"
 description: "Azure Event Hubs の概要 - Web サイト、アプリ、デバイスからのテレメトリをクラウド規模で収集"
 services: event-hubs
 documentationcenter: .net
-author: banisadr
+author: sethmanheim
+manager: timlt
+editor: 
 ms.assetid: 
 ms.service: event-hubs
+ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/29/2016
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/07/2017
 ms.author: sethm; babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 62eefb7a4591c712c5389d3ed7e5ff9675a80042
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 55cc1559189a37741d866d86241426fb73f72e4f
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -33,7 +38,7 @@ Event Hubs は、モバイル アプリでの動作追跡、Web ファームか�
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_full_pipeline.png)
 
-Azure Event Hubs は、低待機時間と高信頼性を確保しながら、クラウド規模のイベントとテレメトリの取り込みを実現するイベント処理サービスです。 Event Hubs はメッセージ ストリーム処理機能を備えていて、従来のエンタープライズ メッセージングとは大きく異なる特性を持っています。 Event Hubs の機能は、高スループットおよびイベント処理のシナリオに基づいて構築されています。 したがって、Event Hubs では、トピックなどのメッセージング エンティティで利用可能なメッセージング機能の一部が実装されていません。
+Azure Event Hubs は、低待機時間と高信頼性を確保しながら、クラウド規模のイベントとテレメトリの取り込みを実現するイベント処理サービスです。 Event Hubs はメッセージ ストリーム処理機能を備えていて、従来のエンタープライズ メッセージングとは異なる特性を持っています。 Event Hubs の機能は、高スループットおよびイベント処理のシナリオに基づいて構築されています。 したがって、Event Hubs では、トピックなどのメッセージング エンティティで利用可能なメッセージング機能の一部が実装されていません。
 
 イベント ハブは名前空間レベルで作成され、プライマリ API インターフェイスとして AMQP と HTTP を使用します。
 
@@ -41,13 +46,13 @@ Azure Event Hubs は、低待機時間と高信頼性を確保しながら、ク
 イベント ハブにデータを送信するエンティティは、いずれも "*イベント発行元*" です。 イベント発行元は、HTTPS または AMQP 1.0 を使用してイベントを発行できます。 イベント発行元は、Shared Access Signature (SAS) トークンを使用してイベント ハブに対して身元を明らかにし、一意の ID を備えることも共通の SAS トークンを使用することもできます。
 
 ### <a name="publishing-an-event"></a>イベントの発行
-AMQP 1.0 または HTTPS を介してイベントを発行することができます。 Service Bus は、.NET クライアントから Event Hub へのイベント発行で使用できる [EventHubClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient) クラスを提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](http://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントであるかバッチであるかにかかわらず、単一パブリケーション (イベント データ インスタンス) には 256 KB の制限があります。 これより大きいイベントを発行すると、エラーが発生します。 発行元にとっては、Event Hub 内のパーティションを意識せずに、次のセクションで説明する *パーティション キー* のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
+AMQP 1.0 または HTTPS を介してイベントを発行することができます。 Service Bus は、.NET クライアントから Event Hub へのイベント発行で使用できる [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) クラスを提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](http://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントであるかバッチであるかにかかわらず、単一パブリケーション (イベント データ インスタンス) には 256 KB の制限があります。 これより大きいイベントを発行すると、エラーが発生します。 発行元にとっては、Event Hub 内のパーティションを意識せずに、次のセクションで説明する *パーティション キー* のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
 
 AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の SSL オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/partition_keys.png)
 
-Event Hubs によって、同じパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 一致しないと、エラーが発生します。
+Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 一致しないと、エラーが発生します。
 
 ### <a name="publisher-policy"></a>発行元ポリシー
 Event Hubs では、 *発行元ポリシー*を介してイベント プロデューサーをきめ細かく制御できます。 発行元ポリシーは、多数の独立したイベント発行元を支援するために設計されたランタイム機能です。 発行元ポリシーでは、次のメカニズムを使用して Event Hub にイベントを発行する際に、各発行元は独自の一意の識別子を使用します。
@@ -71,17 +76,19 @@ Event Hubs は構成されたリテンション期間にわたりデータを保
 
 パーティションの数は作成時に 2 ～ 32 の間で指定する必要があります。 パーティションの数は変更できないため、設定については長期的な規模で検討する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 Event Hubs チームに連絡すれば、パーティションの数を 32 より大きくすることができます。
 
-パーティションは識別可能なため、直接パーティションに送信することもできますが、これはお勧めしません。 その代わり、「[イベント発行元](#event-publishers)」と「[容量](#capacity)」のセクションで紹介する、より高いレベルの構造を使用できます。
+パーティションは識別可能なため、直接パーティションに送信することもできますが、これはお勧めしません。 その代わり、「[イベント発行元](#event-publishers)」と「[容量](#capacity)」のセクションで紹介する、より高いレベルの構造を使用できます。 
 
 パーティションには一連のイベント データが格納されます。イベント データには、イベント本文、ユーザー定義のプロパティ バッグ、メタデータ (パーティションでのオフセットやストリーム シーケンスでの番号など) が含まれます。
 
+パーティションの詳細および可用性と信頼性のトレードオフについては、「[Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md#partition-key)」と「[Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)」をご覧ください。
+
 ### <a name="partition-key"></a>パーティション キー
-パーティション キーを使用すると、データ編成を目的として受信イベント データを特定のパーティションにマップすることができます。 パーティション キーは、送信者によって指定され、Event Hub に渡される値です。 これは、パーティション割り当てを作成する静的なハッシュ関数で処理されます。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。
+[パーティション キー](event-hubs-programming-guide.md#partition-key)を使用すると、データ編成を目的として受信イベント データを特定のパーティションにマップすることができます。 パーティション キーは、送信者によって指定され、Event Hub に渡される値です。 これは、パーティション割り当てを作成する静的なハッシュ関数で処理されます。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。
 
 イベント発行元は、そのパーティション キーのみを認識し、イベントの発行先となるパーティションは認識しません。 このようにキーとパーティションを分離することにより、送信者はダウンストリーム処理について余分な情報を把握しなくてもよくなります。 デバイスごとまたはユーザーの一意の ID は適切なパーティション キーになりますが、地理的条件などのその他の属性を使用して関連するイベントを&1; つのパーティションにまとめることもできます。
 
 ## <a name="sas-tokens"></a>SAS トークン
-Event Hubs は、名前空間とイベント ハブのレベルで利用可能な *Shared Access Signature* を使用します。 SAS トークンは、SAS キーから生成されるものであり、特定の形式でエンコードされた URL の SHA ハッシュです。 Event Hubs は、キー (ポリシー) の名前とトークンを使用することで、ハッシュを再生成し、送信者を認証できます。 通常、イベント発行元の SAS トークンは特定の Event Hub への **送信** 特権のみを付加して作成されます。 この SAS トークン URL のメカニズムは、発行元ポリシーに導入された発行元識別のための基盤です。 SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus-messaging/service-bus-shared-access-signature-authentication.md)」を参照してください。
+Event Hubs は、名前空間とイベント ハブのレベルで利用可能な *Shared Access Signature* を使用します。 SAS トークンは、SAS キーから生成されるものであり、特定の形式でエンコードされた URL の SHA ハッシュです。 Event Hubs は、キー (ポリシー) の名前とトークンを使用することで、ハッシュを再生成し、送信者を認証できます。 通常、イベント発行元の SAS トークンは特定の Event Hub への **送信** 特権のみを付加して作成されます。 この SAS トークン URL のメカニズムは、発行元ポリシーに導入された発行元識別のための基盤です。 SAS を使用する方法の詳細については、「[Service Bus による Shared Access Signature 認証](../service-bus-messaging/service-bus-sas.md)」を参照してください。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
 イベント ハブからイベント データを読み取るエンティティは、いずれも "*イベント コンシューマー*" です。 Event Hubs のすべてのコンシューマーは AMQP 1.0 セッションを介して接続します。イベントは使用可能になると、このセッションを使用して配信されます。 クライアントがデータの可用性をポーリングする必要はありません。
@@ -93,7 +100,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 コンシューマー グループ URI 表記の例を次に示します。
 
-```
+```http
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
 ```
@@ -101,7 +108,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>ストリームのオフセット
-"*オフセット*" は、パーティション内のイベントの位置です。 オフセットは、クライアント側のカーソルと考えることができます。 オフセットはイベントのバイト位置です。 これにより、イベント コンシューマー (リーダー) は、イベント ストリーム内でのイベント読み取りの開始点を指定することができます。 オフセットは、タイムスタンプとして、またはオフセット値として指定することができます。 Event Hubs サービスの外部で独自のオフセット値を格納する場合は、コンシューマーの責任で行います。 パーティション内では、各イベントにオフセットが含まれます。
+"*オフセット*" は、パーティション内のイベントの位置です。 オフセットは、クライアント側のカーソルと考えることができます。 オフセットはイベントのバイト位置です。 このオフセットにより、イベント コンシューマー (リーダー) は、イベント ストリーム内でのイベント読み取りの開始点を指定することができます。 オフセットは、タイムスタンプとして、またはオフセット値として指定することができます。 Event Hubs サービスの外部で独自のオフセット値を格納する場合は、コンシューマーの責任で行います。 パーティション内では、各イベントにオフセットが含まれます。
 
 ![Event Hubs](./media/event-hubs-what-is-event-hubs/partition_offset.png)
 
@@ -114,7 +121,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 すべての Event Hubs コンシューマーは、AMQP 1.0 セッションと、状態に対応する双方向の通信チャネルを介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
 
 #### <a name="connect-to-a-partition"></a>パーティションに接続する
-パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが&1; つだけである可能性があります。 チェックポイント処理、リース、リーダー管理は、.NET クライアントの [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) クラスを使用して簡略化されます。 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) はインテリジェントなコンシューマー エージェントです。
+パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが&1; つだけである可能性があります。 チェックポイント処理、リース、リーダー管理は、.NET クライアントの [EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) クラスを使用して簡略化されます。 イベント プロセッサ ホストはインテリジェントなコンシューマー エージェントです。
 
 #### <a name="read-events"></a>イベントを読み取る
 特定のパーティションに対して AMQP 1.0 のセッションおよびリンクが開かれると、Event Hubs サービスによってイベントが AMQP 1.0 クライアントに配信されます。 この配信メカニズムでは、HTTP GET などのプル ベースのメカニズムよりも高いスループットおよび短い遅延時間を実現します。 イベントがクライアントに送信されるとき、イベント データの各インスタンスには、イベント シーケンスでのチェックポイント処理を容易にするために使用されるオフセットやシーケンス番号などの重要なメタデータが含まれます。
@@ -132,12 +139,12 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 Event Hubs は、拡張性の高い並列アーキテクチャです。サイズ変更やスケーリングを行う場合、考慮すべき重要な要素がいくつかあります。
 
 ### <a name="throughput-units"></a>スループット単位
-Event Hubs のスループット容量は、"*スループット単位*" によって制御されます。 スループット単位とは、購入済みの容量単位のことです。 1 つのスループット単位には、次の内容が含まれます。
+Event Hubs のスループット容量は、"*スループット単位*" によって制御されます。 スループット単位とは、購入済みの容量単位のことです。 1 つのスループット単位には、次の容量が含まれます。
 
 * イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
 * エグレス: 1 秒あたり最大で 2 MB
 
-購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal][Azure portal] の名前空間の **[スケール]** ブレードで管理できます。 Azure API を使用して、プログラムで管理することもできます。
+購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal][Azure portal] の名前空間の **[スケール]** ブレードで管理できます。 Azure API を使用して、プログラムでスループット単位を管理することもできます。
 
 スループット単位は&1; 時間ごとに課金され、事前に購入します。 スループット単位を購入すると、少なくとも&1; 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット単位を購入でき、名前空間内のすべての Event Hubs で共有できます。
 
@@ -150,11 +157,12 @@ Azure サポートに連絡すれば、20 ブロック単位で最大 100 まで
 ## <a name="next-steps"></a>次のステップ
 
 * [Event Hubs の使用に関するチュートリアル][Event Hubs tutorial]
-* [Event Hubs を使用する完全なサンプル アプリケーション]
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
+* [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs を使用するサンプル アプリケーション]
 
 [Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs を使用するサンプル アプリケーション]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 [Azure portal]: https://portal.azure.com
 

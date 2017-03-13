@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 03/07/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1fd0451809c8afca5c330229390ec691f4a25eb5
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 8bea5c13b8657be737cdc135b2d46bd0068b6b88
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,17 +32,11 @@ Data Lake Tools for Visual Studio は、Data Lake Analytics と HDInsight の両
 
 このチュートリアルを完了して、Visual Studio で Data Lake Tools を使用するには、次が必要になります。
 
-* Azure HDInsight クラスター: Linux ベースまたは Windows ベースのクラスターは、このドキュメントの手順で動作します。 クラスター作成の詳細については、次のいずれかをご覧ください。
-  
-  * [Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)
-  * [Hadoop のチュートリアル: Windows 上の HDInsight で Hadoop と Hive クエリを使用する](hdinsight-hadoop-tutorial-get-started-windows.md)
+* Azure HDInsight クラスター: 作成方法については、[Linux ベースの HDInsight を使用する方法](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 * 次のソフトウェアを搭載したワークステーション
   
-  * Windows 8.1、Windows 8、Windows 7
-  * 下記のいずれかのバージョンの Visual Studio
-    
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate の [アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
-    * Visual Studio 2015 (Community/Enterprise)
+  * Windows 10、Windows 8.1、Windows 8、Windows 7
+  * Visual Studio 2013/2015/2017
     
     > [!NOTE]
     > 現時点では Data Lake Tools for Visual Studio は英語版のみになります。
@@ -49,7 +44,8 @@ Data Lake Tools for Visual Studio は、Data Lake Analytics と HDInsight の両
     > 
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール
-Data Lake Tools は、[Web Platform Installer](https://www.microsoft.com/web/downloads/) を使用してインストールすることができます。 お使いの Visual Studio バージョンに対応するものを選択する必要があります。 Visual Studio がインストールされていない場合は、[Web Platform Installer](https://www.microsoft.com/web/downloads/) を使用して、最新の Visual Studio Community と Azure SDK をインストールできます。
+
+Visual Studio 2017 では、Data Lake Tools が既定でインストールされています。 それ以前のバージョンでは、[Web Platform Installer](https://www.microsoft.com/web/downloads/) を使用してインストールできます。 お使いの Visual Studio バージョンに対応するものを選択する必要があります。 Visual Studio がインストールされていない場合は、[Web Platform Installer](https://www.microsoft.com/web/downloads/) を使用して、最新の Visual Studio Community と Azure SDK をインストールできます。
 
 ![Data Lake Tools for Visual Studio Web Platform installer][1]
 
@@ -72,7 +68,7 @@ Data Lake Tools for Visual Studio を使用して、HDInsight クラスターへ
    > 
    > 
 4. Azure サブスクリプションの資格情報を入力し、 **[サインイン]**をクリックします。 この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
-5. サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。 クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成][hdinsight-create-clusters]に関するページを参照してください。
+5. サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。 クラスターが&1; つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成][hdinsight-create-clusters]に関するページを参照してください。
    
    ![Data Lake Tools for Visual Studio サーバー エクスプローラー クラスターの一覧][5]
 6. HDInsight クラスターを展開します。 **Hive データベース**、既定のストレージ アカウント、リンクされたストレージ アカウント、**Hadoop サービス ログ**が表示されます。 さらに、エンティティを展開できます。
@@ -103,7 +99,7 @@ HDInsight クラスターに対して Hive スクリプトをテストするに�
 
 加えて、Data Lake Tools for Visual Studio では、特定の Hive ジョブの YARN ログを収集して表示することで、Hive ジョブの内容を見ることができます。
 
-### <a name="view-the-hivesampletable"></a> **hivesampletable**
+### <a name="view-the-hivesampletable"></a>**hivesampletable**
 すべての HDInsight クラスターには、 *hivesampletable*という Hive テーブルのサンプルが付属します。 このテーブルを使用して Hive テーブルの一覧表示、テーブル スキーマの表示、Hive テーブル内の行の一覧表示を行う方法を説明します。
 
 **Hive テーブルを一覧表示し、Hive テーブル スキーマを表示するには**
@@ -128,8 +124,8 @@ GUI を使用して Hive テーブルを作成するか、Hive クエリを使�
    
     ![Data Lake Tools: HDInsight Visual Studio Tools で Hive テーブルを作成する][7]
 
-### <a name="a-namerunqueriesavalidate-and-run-hive-queries"></a><a name="run.queries"></a>Hive クエリの検証と実行
-Hive クエリを作成して実行するには次の 2 つの方法があります。
+### <a name="run.queries"></a>Hive クエリの検証と実行
+Hive クエリを作成して実行するには次の&2; つの方法があります。
 
 * アドホック クエリを作成する
 * Hive アプリケーションを作成する
@@ -278,9 +274,4 @@ Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 [hdinsight.access.application.logs]: hdinsight-hadoop-access-yarn-app-logs.md
 
 [apache.hive]: http://hive.apache.org
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
