@@ -1,6 +1,6 @@
 ---
-title: "Azure コンテナー レジストリの作成 - CLI | Microsoft Docs"
-description: "Azure CLI 2.0 を使用した Azure コンテナー レジストリの作成と管理の概要"
+title: "プライベート Docker コンテナー レジストリの作成 - Azure CLI | Microsoft Docs"
+description: "Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成と管理についての概要"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 03/03/2017
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 1d5e16952cbc56a381ead23843515cf6ed1d74a9
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 6ef43ed43358357c94460a27d3e2b2c8530b6c54
+ms.lasthandoff: 03/06/2017
 
 ---
-# <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
+# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成
 Linux、Mac、または Windows コンピューターから [Azure CLI 2.0](https://github.com/Azure/azure-cli) のコマンドを使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure Portal](container-registry-get-started-portal.md) を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
 
 
-* 背景情報と概念については、「[Azure Container Registry とは](container-registry-intro.md)」を参照してください。
+* 背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
 * Container Registry CLI コマンド (`az acr` コマンド) に関するヘルプについては、任意のコマンドに `-h` のパラメーターを渡します。
 
 > [!NOTE]
@@ -35,10 +36,10 @@ Linux、Mac、または Windows コンピューターから [Azure CLI 2.0](http
 > 
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure CLI 2.0** - CLI 2.0 をインストールし、利用を開始するには、[インストール手順](https://github.com/Azure/azure-cli/blob/master/README.rst)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。
-* **リソース グループ** - コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 を使用してリソース グループを作成するには、[CLI 2.0 のサンプル](https://github.com/Azure/azure-cli-samples/tree/master/arm)を参照してください。 
-* **ストレージ アカウント** (省略可能) - 同じ場所にコンテナー レジストリをバックアップするには、Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のサンプル](https://github.com/Azure/azure-cli-samples/tree/master/storage)を参照してください。
-* **サービス プリンシパル** (省略可能) - CLI を使用してレジストリを作成する場合、既定でアクセス権は設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てる (または新しく作成して割り当てる) か、レジストリの管理者ユーザー アカウントを有効にします。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。 
+* **Azure CLI 2.0**: CLI 2.0 をインストールし、利用を開始するには、[インストール手順](/cli/azure/install-azure-cli)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。 詳細については、[CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)に関する記事を参照してください。
+* **リソース グループ**: コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 を使用してリソース グループを作成するには、[CLI 2.0 のリファレンス](/cli/azure/group)を参照してください。 
+* **ストレージ アカウント** (省略可能): 同じ場所にコンテナー レジストリをバックアップするには、Azure Standard [ストレージ アカウント](../storage/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のリファレンス](/cli/azure/storage/account)を参照してください。 現在、Premium Storage はサポートされていません。
+* **サービス プリンシパル** (省略可能): CLI を使用してレジストリを作成する場合、既定ではアクセス権が設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てる (または新しく作成して割り当てる) か、レジストリの管理者ユーザー アカウントを有効にします。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 コンテナー レジストリを作成するには、`az acr create` コマンドを実行します。 

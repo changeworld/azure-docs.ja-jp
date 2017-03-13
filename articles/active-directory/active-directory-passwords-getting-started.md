@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d391aeacd5a755c3d344a359cae130788d1a5402
-ms.openlocfilehash: 02c7cd73951b7af83760ee10be4bb8f2da142283
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -80,13 +80,10 @@ ms.lasthandoff: 02/24/2017
 
    ![][003]
 
-5. **[構成]** タブで、下へスクロールして **[ユーザー パスワードのリセット ポリシー]** セクションを表示します。  ここでは、特定のディレクトリについて、ユーザー パスワードのリセット ポリシーのあらゆる側面を構成できます。 *[構成] タブが表示されない場合は、Azure Active Directory Premium または Basic にサインアップ済みであることと、この機能の構成を行う管理者アカウントに**ライセンスを割り当て済み**であることを確認してください。*  
+5. **[構成]** タブで、下へスクロールして **[ユーザー パスワードのリセット ポリシー]** セクションを表示します。  ここでは、特定のディレクトリについて、ユーザー パスワードのリセット ポリシーのあらゆる側面を構成できます。 "*[構成] タブが表示されない場合は、Azure Active Directory Premium または Basic にサインアップ済みであることと、この機能の構成を行う管理者アカウントに__ライセンスを割り当て済み__であることを確認してください。*"  
 
    > [!NOTE]
    > **設定したポリシーが適用されるのは組織内のエンド ユーザーのみで、管理者には適用されません**。 セキュリティ上の理由から、管理者のパスワード リセット ポリシーの管理はマイクロソフトが行います。 現在の管理者用ポリシーでは、携帯電話および電子メール アドレスという&2; つのチャレンジが要求されます。
-
-   >
-   >
 
    ![][004]
 6. ユーザー パスワードのリセット ポリシーを構成するには、**[パスワードのリセットが有効になっているユーザー]** トグルを **[はい]** に設定します。  この操作を行うと、組織のディレクトリでのこの機能の動作を構成するためのさまざまなコントロールが追加表示されます。  組織のニーズに合わせて自由にパスワード リセットをカスタマイズしてください。  パスワード リセット ポリシーの各コントロールの機能の詳細については、 [Customize: Azure AD Password Management (カスタマイズ: Azure AD でのパスワード管理)](active-directory-passwords-customize.md)を参照してください。
@@ -264,13 +261,19 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>手順 3: ファイアウォールを構成する 
-パスワード ライトバックを有効にした後は、Azure AD Connect を実行しているコンピューターが Microsoft のクラウド サービスにアクセスしてパスワード ライトバック要求を受信できるようにする必要があります。 この手順では、ネットワーク アプライアンス (プロキシ サーバー、ファイアウォールなど) の接続規則を更新し、Microsoft が所有する一定の URL および IP アドレスに対して特定のネットワーク ポートを介して行われる送信方向の接続を許可します。 ここに示した変更作業は、Azure AD Connect ツールのバージョンに応じて異なります。 背景情報としての[パスワード ライトバックのしくみ](active-directory-passwords-learn-more.md#how-password-writeback-works)と[パスワード ライトバックのセキュリティ モデル](active-directory-passwords-learn-more.md#password-writeback-security-model)については、別のページで詳細を確認してください。
+パスワード ライトバックを有効にした後は、Azure AD Connect を実行しているコンピューターが Microsoft のクラウド サービスにアクセスしてパスワード ライトバック要求を受信できるようにする必要があります。 この手順では、ネットワーク アプライアンス (プロキシ サーバー、ファイアウォールなど) の接続規則を更新し、[Microsoft が所有する一定の URL および IP アドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)に対して特定のネットワーク ポートを介して行われる送信方向の接続を許可します。 ここに示した変更作業は、Azure AD Connect ツールのバージョンに応じて異なります。 背景情報としての[パスワード ライトバックのしくみ](active-directory-passwords-learn-more.md#how-password-writeback-works)と[パスワード ライトバックのセキュリティ モデル](active-directory-passwords-learn-more.md#password-writeback-security-model)については、別のページで詳細を確認してください。
 
 #### <a name="why-do-i-need-to-do-this"></a>必要な作業
 
 パスワード ライトバックが正しく機能するには、Azure AD Connect を実行しているコンピューターが **.servicebus.windows.net* のほか、Azure が使用している IP アドレス (具体的には、[Microsoft Azure データセンターの IP 範囲リスト](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください) に対して送信方向の HTTPS 接続を確立できるようになっている必要があります。
 
-Azure AD Connect ツールのバージョンが 1.0.8667.0 以上の場合
+Azure AD Connect ツール **1.1.439.0** (最新) 以降の場合:
+
+- 最新バージョンの Azure AD Connect ツールでは、以下のアドレスに対する**送信方向の HTTPS** アクセスが必要になります。
+    - *passwordreset.microsoftonline.com*
+    - *servicbus.windows.net*
+
+Azure AD Connect ツールのバージョンが **1.0.8667.0** ～ **1.1.380.0** の場合:
 
 - **オプション 1:**ポート 443 を介した送信方向の HTTPS 接続をすべて許可する (URL または IP アドレスを使用する)。
     - このオプションを使用する局面
@@ -298,6 +301,9 @@ Azure AD Connect ツールのバージョンが 1.0.8667.0 以上の場合
 > Azure AD Connect のバージョンが 1.0.8667.0 よりも前の場合には、[最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) にアップグレードすることを強くお勧めします。最新バージョンでは、ライトバック ネットワークに関する数々の機能が向上しており、構成を簡単に済ませることができます。
 
 ネットワーク アプライアンスの構成が終わったら、Azure AD Connect ツールを実行しているコンピューターを再起動してください。
+
+#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Azure AD Connect (1.1.439.0 以降) でのアイドル接続
+Azure AD Connect ツールでは、接続が現在も有効であることを確認するために、ping または keepalive が ServiceBus エンドポイントに送信されます。 接続の強制終了がツールであまりにも多く検出される場合は、エンドポイントへの ping の送信頻度が自動的に上がります。 最短の "ping の送信間隔" は 60 秒あたり 1 ping ですが、**プロキシやファイアウォールではアイドル接続を 2 ～ 3 分以上維持できるようにすることを強くお勧めします。** \*これより前のバージョンでは、4 分以上が推奨されます。
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>手順 4: Active Directory の適切な権限を設定する
 パスワードをリセットするユーザーを含むすべてのフォレストについて、構成ウィザードでそのフォレストに対して (初期構成中に) 指定されたアカウントが X である場合、X には、そのフォレスト内の各ドメインで、`lockoutTime` の **[パスワードのリセット]**、**[パスワードの変更]**、**[書き込みアクセス許可]** や、`pwdLastSet` の **[書き込みアクセス許可]** など、ルート オブジェクトの拡張権限を付与する必要があります。 この権限は、すべてのユーザー オブジェクトにより継承されるものとしてマークされます。  

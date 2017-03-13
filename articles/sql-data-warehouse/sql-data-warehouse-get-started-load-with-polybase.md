@@ -4,7 +4,7 @@ description: "データ ウェアハウジングのシナリオに沿って、Po
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
-manager: barbkess
+manager: jhubbard
 editor: 
 ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
-ms.author: cakarst;barbkess
+ms.date: 03/01/2017
+ms.author: cakarst
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 4ca929b2be7fe17e140a9daca01a25ac903e8c76
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 1e3cd48aebf6f00802863c1a1b20fcb625e03c25
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -275,9 +276,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [CREATE CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189522.aspx
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]:https://msdn.microsoft.com/library/ms189450.aspx
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

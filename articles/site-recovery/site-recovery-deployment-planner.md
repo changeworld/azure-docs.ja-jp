@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: f438db1d0129dfb0e2eaa00146147084cd8c11b6
-ms.openlocfilehash: 179e8cf928d83a3a66ed3489173e4c28a2bc9d4f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -63,7 +63,7 @@ Azure Site Recovery Deployment Planner Public Preview はコマンド ライン 
 
 | 要件 | Description|
 |---|---|
-|プロファイリングとスループット測定| <br>オペレーティング システム: Microsoft Windows Server 2012 R2 <br>構成サーバーのマシン構成として推奨される最低限の[サイズ](https://aka.ms/asr-v2a-on-prem-components):<br>8 vCPU、16 GB RAM、300 GB HDD&lt;br&gt; [Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)<br>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)<br>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)<br> このサーバーから Microsoft Azure へのインターネット アクセス<br> Microsoft Azure ストレージ アカウント<Br>サーバー上の管理者アクセス権<br>100 GB 以上の空きディスク領域 (平均 3 枚のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)|
+|プロファイリングとスループット測定| <br>オペレーティング システム: Microsoft Windows Server 2012 R2 <br>少なくとも次の構成サーバー [サイズ](https://aka.ms/asr-v2a-on-prem-components)が満たされていることが望ましい<br>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD<br>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)<br>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)<br>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)<br> このサーバーから Microsoft Azure へのインターネット アクセス<br> Microsoft Azure ストレージ アカウント<Br>サーバー上の管理者アクセス権<br>100 GB 以上の空きディスク領域 (平均 3 枚のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)|
 | レポートの生成| Microsoft Excel 2013 以降がインストールされた任意の Windows PC/Windows Server |
 | ユーザーのアクセス許可 | 読み取り専用アクセス許可 (プロファイリング中、VMware vCenter/vSphere サーバーにアクセスするユーザー アカウントに適用)|
 
@@ -79,12 +79,12 @@ Azure Site Recovery Deployment Planner Public Preview はコマンド ライン 
 
 ツールの実行場所となる Windows Server に zip ファイルをコピーしてください。 このツールは、プロファイリングの対象となる仮想マシンのホスト (VMware vSphere ESXi ホストまたは VMware vCenter サーバー) にネットワークで接続されている任意の Windows Server 2012 R2 から実行できますが、[構成サーバーのサイズ ガイドライン](https://aka.ms/asr-v2a-on-prem-components)に準拠したハードウェア構成のサーバーで実行することをお勧めします。  Azure Site Recovery のコンポーネントをオンプレミスにデプロイ済みである場合は、その構成サーバーからツールを実行する必要があります。 Azure Site Recovery の実際のレプリケーション時のスループットを正確に反映したレポートを得るために、ツールの実行起点となるサーバーには、(プロセス サーバーを一体化した) 構成サーバーと同じハードウェア構成を使用するようお勧めします。つまりスループットの計算は、サーバーで利用可能なネットワーク帯域幅とそのサーバーのハードウェア構成 (CPU、記憶域など) によって左右されます。 その他のサーバーからツールを実行した場合、計算されるのは、そのサーバーから Microsoft Azure へのスループットです。しかもそのサーバーには、構成サーバーとは異なるハードウェア構成が使用されていることが考えられます。そうなると、達成スループットとしてツールから報告される値の精度が低下してしまいます。
 
-zip フォルダーを展開すると、 複数のファイルとサブフォルダーが表示されます。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
+zip フォルダーを展開します。 複数のファイルとサブフォルダーが表示されます。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
 
-たとえば .zip ファイルを E:\ ドライブにコピーします。
-E:\ASR Deployment Planner-Preview_v1.0.zip を展開すると、実行可能ファイル 
+例: .zip ファイルを E:\ ドライブにコピーして展開します。
+E:\ASR Deployment Planner-Preview_v1.0.zip
 
-E:\ASR Deployment Planner-Preview_v1.0\ASR Deployment Planner-Preview_v1.0\ASRDeploymentPlanner.exe が見つかります。
+E:\ASR Deployment Planner-Preview_v1.0\ ASR Deployment Planner-Preview_v1.0\ ASRDeploymentPlanner.exe
 
 ##<a name="capabilities"></a>機能
 このコマンド ライン ツール (ASRDeploymentPlanner.exe) は、次の&3; とおりのモードで実行できます。
@@ -309,7 +309,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 **[To meet RPO 90% of the time (RPO を 90% の時間満たす場合)]**: 必要な RPO を 100% の時間満たす帯域幅を、ブロードバンドのコストなど何らかの理由でプロビジョニングできない場合は、必要な RPO を 90% の時間満たすことのできる水準まで帯域幅を下げてプロビジョニングすることが選択肢として考えられます。 プロビジョニングする帯域幅を引き下げたことによって生じる影響を明らかにするために、レポートには RPO 違反の件数とその期間についての what-if 分析が示されます。
 
-**[Achieved Throughput (達成スループット)]**: GetThroughput コマンドが実行されたサーバーから、Azure Storage アカウントが存在する Microsoft Azure リージョンまでのスループットです。 構成サーバー/プロセス サーバーのストレージとネットワークの特性が、Deployment Planner ツールを実行したサーバーのそれと同じ状態に保たれていることを前提とし、Azure Site Recovery を使用して適合仮想マシンを保護した場合に得られるおおよそのスループットを表しています。 [Achieved Throughput (達成スループット)] は GetThroughput コマンドが実行されたサーバーから、Azure Storage アカウントが存在する Microsoft Azure リージョンまでのスループットです。 構成サーバー/プロセス サーバーのストレージとネットワークの特性が、Deployment Planner ツールを実行したサーバーのそれと同じ状態に保たれていることを前提とし、Azure Site Recovery を使用して適合仮想マシンを保護した場合に得られるおおよそのスループットを表しています。
+**[Achieved Throughput (達成スループット)]**: GetThroughput コマンドが実行されたサーバーから、Azure Storage アカウントが存在する Microsoft Azure リージョンまでのスループットです。 構成サーバー/プロセス サーバーのストレージとネットワークの特性が、Deployment Planner ツールを実行したサーバーのそれと同じ状態に保たれていることを前提とし、Azure Site Recovery を使用して適合仮想マシンを保護した場合に得られるおおよそのスループットを表しています。    
 
 レプリケーションに関しては、RPO を 100% の時間満たすうえで推奨される帯域幅をプロビジョニングしてください。 適切な帯域幅をプロビジョニングしたにもかかわらず、ツールから報告される達成スループットに改善が見られない場合は、次の点を確認してください。
 

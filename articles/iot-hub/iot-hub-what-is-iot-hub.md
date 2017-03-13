@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 249f2dcd852c771d0c48aa223a4596992e5ce3d7
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: ed204c466c5cfb60e5ba250b9dacb2524ca384eb
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
+# <a name="overview-of-the-azure-iot-hub-service"></a>Azure IoT Hub サービスの概要
 Azure IoT Hub へようこそ。 この記事では、Azure IoT Hub の概要と、モノのインターネット (IoT) ソリューションを実装したときに、このサービスを使用する理由について説明します。 Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。 Azure IoT Hub の特長は次のとおりです。
 
 * 一方向メッセージング、ファイル転送、要求/応答メソッドなど、デバイスからクラウドとクラウドからデバイスの複数の通信オプションを提供します。

@@ -18,6 +18,7 @@ ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
 ms.openlocfilehash: 836d72e32e54ecef9691b55214766a1fc3ff9701
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -64,15 +65,15 @@ sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREA
 SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][load sample data]、[開発][develop]、[読み込み][load]、[移行][migrate]の方法を確認したりできます。
 
 <!--Article references-->
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 [how to create a SQL Data Warehouse from the Azure portal]: sql-data-warehouse-get-started-provision.md
 [Query Azure SQL Data Warehouse (Visual Studio)]: sql-data-warehouse-query-visual-studio.md
 [migrate]: sql-data-warehouse-overview-migrate.md
 [develop]: sql-data-warehouse-overview-develop.md
 [load]: sql-data-warehouse-overview-load.md
 [load sample data]: sql-data-warehouse-load-sample-databases.md
-[Create an Azure SQL Database logical server with the Azure Portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
-[Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#complete-azure-powershell-script-to-create-a-server-firewall-rule-and-database
+[Create an Azure SQL database with the Azure Portal]: ../sql-database/sql-database-get-started.md
+[Create an Azure SQL database with PowerShell]: ../sql-database/sql-database-create-and-configure-database-powershell
 [how to create a resource group]: ../azure-resource-manager/resource-group-template-deploy-portal.md#create-resource-group
 [Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
 [sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
@@ -86,9 +87,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

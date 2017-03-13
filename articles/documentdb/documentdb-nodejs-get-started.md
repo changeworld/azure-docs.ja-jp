@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 49b765010be87bacdb486391c28bf58aad1a9d24
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: e955366aa6fb8481fc8a76158b298dd927e855a2
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -26,8 +26,9 @@ ms.lasthandoff: 02/23/2017
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [MongoDB 用 Node.js](documentdb-mongodb-samples.md)
 > * [Node.JS](documentdb-nodejs-get-started.md)
+> * [Java](documentdb-java-get-started.md)
 > * [C++](documentdb-cpp-get-started.md)
 >  
 > 
@@ -64,7 +65,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-## <a name="a-idsetupnodeastep-2-setup-your-nodejs-application"></a><a id="SetupNode"></a>手順 2: Node.js アプリケーションをセットアップする
+## <a id="SetupNode"></a>手順 2: Node.js アプリケーションをセットアップする
 1. お使いのターミナルを開きます。
 2. Node.js アプリケーションを保存するフォルダーまたはディレクトリを見つけます。
 3. 次のコマンドを使用して、2 つの空の JavaScript ファイルを作成します。
@@ -79,7 +80,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 
 そこで、 これでセットアップは終了です。 いくつかのコードの記述を開始しましょう。
 
-## <a name="a-idconfigastep-3-set-your-apps-configurations"></a><a id="Config"></a>手順 3: アプリの構成を設定する
+## <a id="Config"></a>手順 3: アプリの構成を設定する
 普段使用しているテキスト エディターで ```config.js``` を開きます。
 
 次に、以下のコード スニペットをコピーして貼り付け、実際に使用する DocumentDB のエンドポイントの URI とプライマリ キーに合わせて ```config.endpoint``` プロパティと ```config.primaryKey``` プロパティを設定します。 これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
@@ -176,7 +177,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
     // ADD THIS PART TO YOUR CODE
     module.exports = config;
 
-## <a name="a-idconnecta-step-4-connect-to-a-documentdb-account"></a><a id="Connect"></a>手順 4: DocumentDB アカウントに接続する
+## <a id="Connect"></a>手順 4: DocumentDB アカウントに接続する
 テキスト エディターで、空の ```app.js``` ファイルを開きます。 ```documentdb``` モジュールと新たに作成した ```config``` モジュールをインポートするために、以下のコードをコピーして貼り付けます。
 
     // ADD THIS PART TO YOUR CODE
@@ -260,7 +261,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ご利用ありがとうございます。 これで、DocumentDB データベースが作成されました。
 
-## <a name="a-idcreatecollastep-6-create-a-collection"></a><a id="CreateColl"></a>手順 6: コレクションを作成する
+## <a id="CreateColl"></a>手順 6: コレクションを作成する
 > [!WARNING]
 > **CreateDocumentCollectionAsync** は新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
 > 
@@ -314,7 +315,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ご利用ありがとうございます。 これで、DocumentDB コレクションが作成されました。
 
-## <a name="a-idcreatedocastep-7-create-a-document"></a><a id="CreateDoc"></a>手順 7: ドキュメントを作成する
+## <a id="CreateDoc"></a>手順 7: ドキュメントを作成する
 [ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 これで、DocumentDB にドキュメントを挿入できます。
 
 ```config``` オブジェクトに保存された JSON データを追加してドキュメントを作成するために、**getFamilyDocument** 関数をコピーして **getCollection** 関数のすぐ下に貼り付けます。 ここでも、同じ ID を持つドキュメントが存在しないことが確認されます。
@@ -368,7 +369,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ![Node.js チュートリアル - アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図 - ノード データベース](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
-## <a name="a-idqueryastep-8-query-documentdb-resources"></a><a id="Query"></a>手順 8: DocumentDB リソースをクエリする
+## <a id="Query"></a>手順 8: DocumentDB リソースをクエリする
 DocumentDB では、各コレクションに格納された JSON ドキュメントに対する [リッチ クエリ](documentdb-sql-query.md) をサポートしています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
 
 **queryCollection** 関数をコピーして app.js ファイルの **getFamilyDocument** 関数の下に貼り付けます。 以下のとおり、DocumentDB は SQL に似たクエリをサポートしています。 複雑なクエリを構築する方法の詳細については、[Query Playground](https://www.documentdb.com/sql/demo) および[クエリに関するドキュメント](documentdb-sql-query.md)を参照してください。
@@ -425,7 +426,7 @@ DocumentDB クエリのスコープは既に&1; つのコレクションに設�
 
 ご利用ありがとうございます。 DocumentDB ドキュメントのクエリが正常に機能していることを確認できました。
 
-## <a name="a-idreplacedocumentastep-9-replace-a-document"></a><a id="ReplaceDocument"></a>手順 9: ドキュメントを置換する
+## <a id="ReplaceDocument"></a>手順 9: ドキュメントを置換する
 DocumentDB は、JSON ドキュメントの置換をサポートします。
 
 **replaceFamilyDocument** 関数をコピーして app.js ファイルの **queryCollection** 関数の下に貼り付けます。
@@ -472,7 +473,7 @@ DocumentDB は、JSON ドキュメントの置換をサポートします。
 
 ご利用ありがとうございます。 これで、DocumentDB ドキュメントが置換されました。
 
-## <a name="a-iddeletedocumentastep-10-delete-a-document"></a><a id="DeleteDocument"></a>手順 10: ドキュメントを削除する
+## <a id="DeleteDocument"></a>手順 10: ドキュメントを削除する
 DocumentDB は、JSON ドキュメントの削除をサポートしています。
 
 **deleteFamilyDocument** 関数をコピーして **replaceFamilyDocument** 関数の下に貼り付けます。
@@ -516,7 +517,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 ご利用ありがとうございます。 これで、DocumentDB ドキュメントが削除されました。
 
-## <a name="a-iddeletedatabaseastep-11-delete-the-node-database"></a><a id="DeleteDatabase"></a>手順 11: ノード データベースを削除する
+## <a id="DeleteDatabase"></a>手順 11: ノード データベースを削除する
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。
 
 **cleanup** 関数をコピーして **deleteFamilyDocument** 関数の下に貼り付けます。この関数によって、データベースとすべての子リソースが削除されます。
@@ -551,7 +552,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
-## <a name="a-idrunastep-12-run-your-nodejs-application-all-together"></a><a id="Run"></a>手順 12: Node.js アプリケーションの全体的な実行の流れ
+## <a id="Run"></a>手順 12: Node.js アプリケーションの全体的な実行の流れ
 以上の説明をまとめると、定義した関数は次の順に呼び出されます。
 
     getDatabase()
@@ -602,7 +603,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 ご利用ありがとうございます。 以上で Node.js チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
-## <a name="a-idgetsolutionaget-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する
+## <a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する
 このチュートリアルの手順を実行する時間がない場合や、コードをダウンロードするだけの場合は、[Github](https://github.com/Azure-Samples/documentdb-node-getting-started) から入手できます。
 
 この記事のすべてのサンプルを含む GetStarted ソリューションを実行するには、以下が必要です。

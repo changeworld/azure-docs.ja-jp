@@ -12,28 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/23/2017
+ms.date: 02/26/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 31c0d8a3b525d24861090adb0edf0351fae7467e
-ms.openlocfilehash: de89ea7309736ac1636e7950d1cd7e68f9ec2f0e
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: e4bb13a73f6338d2d844a0561edc65063c685d59
+ms.openlocfilehash: e554a0ba87efb0272e092a121ba96edc9d9eb011
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="what-is-site-recovery"></a>Site Recovery とは
 
-Azure Site Recovery サービスへようこそ。
+Azure Site Recovery サービスへようこそ。 この記事では、このサービスの概要を説明し、詳細情報へのリンクを示します。
 
-この記事では、Azure Site Recovery サービスの概要を説明し、詳細情報へのリンクを示します。
+ビジネスの停止は、自然現象や動作障害によって発生します。 組織には、計画されたダウンタイムと計画外のダウンタイム時にデータの安全性とアプリの可用性を維持し、できるだけ速やかに通常の動作状態に復旧させる、ビジネス継続性および障害復旧 (BCDR) 戦略が必要です。
 
-ビジネスの停止は、自然現象や動作障害によって発生します。 組織には、計画されたダウンタイムと計画外のダウンタイム時にアプリケーションとデータの安全性と可用性を維持し、できるだけ速やかに通常の動作状態に復旧させる、ビジネス継続性および障害復旧 (BCDR) 戦略が必要です。
+Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/) は、データを保護し、回復可能な状態に維持します。 Site Recovery は、ワークロードをレプリケート、フェールオーバー、回復することで、障害発生時のデータの可用性を維持します。
 
-Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/) を使用してデータを保護し、データを回復可能な状態に維持します。 Site Recovery を使用して、ワークロードをレプリケート、フェールオーバー、回復することで、障害発生時に可用性を維持します。
-
-## <a name="benefits"></a>メリット
-
-Site Recovery は BCDR 戦略を次のように支援します。
+## <a name="what-does-site-recovery-provide"></a>Site Recovery で提供されるもの
 
 - **クラウドでの障害復旧** - VM や物理サーバーで実行されているワークロードを、セカンダリ サイトではなく Azure にレプリケートできます。 これにより、セカンダリ データセンターの管理に伴うコストと手間が削減されます。
 - **ハイブリッド環境向けの柔軟なレプリケーション** - サポートされているオンプレミスの Hyper-V VM、VMware VM、Windows/Linux 物理サーバーで実行されているワークロードをレプリケートできます。
@@ -45,33 +41,31 @@ Site Recovery は BCDR 戦略を次のように支援します。
 - **アプリケーションの整合性** - マシンでは、アプリケーションの整合性スナップショットを使用してレプリケーションを実行します。 アプリケーションの整合性スナップショットは、ディスク データをキャプチャするだけでなく、メモリのすべてのデータとプロセスのすべてのトランザクションもキャプチャします。
 - **中断なしのテスト** - 運用環境に影響を与えずに、障害復旧の演習をサポートするテスト フェールオーバーを簡単に実行できます。
 - **柔軟なフェールオーバーと復旧** - 予期された停止の場合は、データ損失ゼロの計画されたフェールオーバーを実行できます。予期しない障害が発生した場合は、(レプリケーションの頻度に応じて) データ損失を最小限に抑えて計画外のフェールオーバーを実行できます。 プライマリ サイトには、そのサイトが再度使用できるようになった時点で簡単にフェールバックできます。
-- **豊富な復旧計画を提供** - 復旧計画を使用すると、複数の VM に分散する多層アプリケーションのフェールオーバーと復旧をモデル化およびカスタマイズできます。 計画内のグループに順序付けし、スクリプトと手動アクションを追加します。 復旧計画は、Azure Automation Runbook と統合できます。
+- **カスタマイズされた復旧計画** - 復旧計画を使用すると、複数の VM に分散する多層アプリケーションのフェールオーバーと復旧をモデル化およびカスタマイズできます。 計画内のグループに順序付けし、スクリプトと手動アクションを追加します。 復旧計画は、Azure Automation Runbook と統合できます。
 - **多層アプリケーション** - 多層アプリケーションの順序付けられたフェールオーバーと復旧の復旧計画を作成できます。 復旧計画内でさまざまな層 (データベース、Web、アプリケーションなど) のマシンをグループ化し、各グループのフェールオーバーと起動の方法をカスタマイズできます。
 * **既存の BCDR テクノロジとの統合** - Site Recovery は、他の BCDR テクノロジと統合されています。 たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護でき、可用性グループのフェールオーバーを管理するために SQL Server AlwaysOn のネイティブ サポートも提供されます。
 * **Automation ライブラリとの統合** - 豊富な Azure Automation ライブラリには、運用環境ですぐに使えるアプリケーション固有のスクリプトが用意されています。これらのスクリプトをダウンロードし、Site Recovery と統合できます。
 * **シンプルなネットワーク管理** - Site Recovery と Azure の高度なネットワーク管理により、IP アドレスの予約、ロード バランサーの構成、効率的なネットワーク切り替えを実現する Azure Traffic Manager の統合など、アプリケーション ネットワーク要件が簡略化されます。
 
-## <a name="site-recovery-in-the-azure-portal"></a>Azure ポータルの Site Recovery
+## <a name="which-azure-portal"></a>Azure Portal とは
 
 * Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
 * Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
 * Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
 - クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
-この記事の情報は、クラシック ポータルと Azure ポータルの両方のデプロイに当てはまります。 違いについては、該当する箇所で説明しています。
+## <a name="whats-supported"></a>サポート対象
 
-## <a name="whats-supported"></a>サポートされる操作
-
-**サポート対象** | **詳細**
+**サポートされています** | **詳細**
 --- | ---
-**サポート対象のリージョン** | [サポートされているリージョン](https://azure.microsoft.com/en-us/regions/services/) |
+**Site Recovery のサポート対象のリージョン** | [サポートされているリージョン](https://azure.microsoft.com/en-us/regions/services/) |
 **レプリケート対象** | オンプレミスの VMware VM、Hyper-V VM、Windows および Linux 物理サーバー。
-**レプリケートするマシンのサポート対象のオペレーティング システム** | VMware VM の[オペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> 物理サーバーの[オペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**レプリケート先** | Azure またはセカンダリ データセンター<br/><br/> セカンダリ データセンターにレプリケートできるのは、System Center VMM クラウドで管理されている Hyper-V ホスト上の VM だけです。
+**レプリケート対象のマシンで必要なオペレーティング システム** | VMware VM の[サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> 物理サーバーの[オペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**レプリケート先** | Azure ストレージ、またはセカンダリ データセンター<br/><br/> Hyper-V の場合、セカンダリ データセンターにレプリケートできるのは、System Center VMM クラウドで管理されている Hyper-V ホスト上の VM だけです。
 **必要な VMware サーバー/ホスト** | レプリケートする VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)によって管理できます。
-**レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。
+**レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 ## <a name="next-steps"></a>次のステップ
-* 「 [Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)
-* 「 [Azure Site Recovery のしくみ](site-recovery-components.md)
+* [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。
+* [Site Recovery のアーキテクチャとコンポーネント](site-recovery-components.md)の詳細を確認する。
 

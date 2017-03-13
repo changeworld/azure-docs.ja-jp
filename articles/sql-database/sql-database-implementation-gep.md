@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
-ms.custom: app development case study
+ms.custom: customer implementations
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA

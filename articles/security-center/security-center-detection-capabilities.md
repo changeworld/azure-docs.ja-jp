@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a18ffc2b3b0f317a4209a9d6457bdcc571d9f899
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 8d24ab744715df69c707df5a119fa71c72338b62
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: a18ffc2b3b0f317a4209a9d6457bdcc571d9f899
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソースが今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
 
 > [!NOTE]
-> 高度な検出は、Azure Security Center の Standard レベルで利用できます。 90 日間の無料試用版が提供されています。 アップグレードは、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] の選択から実行できます。 価格の詳細については、 [Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。 
+> 高度な検出は、Azure Security Center の Standard レベルで利用できます。 60 日間の無料試用版が提供されています。 アップグレードは、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] の選択から実行できます。 価格の詳細については、 [Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。 
 > 
 > 
 
@@ -89,10 +90,5 @@ Azure Security Center に寄与するセキュリティ リサーチ チーム�
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
