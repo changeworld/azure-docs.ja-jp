@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/03/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c28391b752c071161796421aee63402899d2a0a4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="frequently-asked-questions-azure-container-service"></a>よく寄せられる質問: Azure Container Service
+# <a name="container-service-frequently-asked-questions"></a>Container Service についてよく寄せられる質問
 
 
 ## <a name="orchestrators"></a>オーケストレーター
@@ -82,6 +83,17 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 ```
 
 Azure Portal や Azure Resource Explorer などの Azure ツールではクラスターの URL が広く使用されています。
+
+### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>どのバージョンのオーケストレーターがクラスターで実行されているかを確認するには、どうすればよいですか。
+
+* DC/OS: [Mesosphere のドキュメント](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-)を参照してください
+* Docker Swarm: `docker version` を実行します
+* Kubernetes: `kubectl version` を実行します
+
+
+### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>デプロイ後にオーケストレーターをアップグレードするには、どうすればよいですか。
+
+現時点で Azure Container Service には、クラスターにデプロイしたオーケストレーターのバージョンをアップグレードするためのツールは用意されていません。 Container Service でそれ以降のバージョンがサポートされている場合は、新しいクラスターをデプロイできます。 他には、オーケストレーターに固有のツールがあれば、それを利用してデプロイ済みのクラスターをアップグレードするという方法もあります。 一例として、[DC/OS のアップグレード](https://dcos.io/docs/1.8/administration/upgrading/)に関するページを参照してください。
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>クラスターへの SSH 接続文字列はどこで確認できますか。
 

@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 349252e6629c0eda4d603399345206903d530578
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -37,7 +38,7 @@ Azure Toolkit for IntelliJ には&2; とおりのインストール方法があ�
 3. [Settings (設定)] ダイアログ ボックスの **[Plugins (プラグイン)]** をクリックし、**[Browse repositories (リポジトリの参照)]** をクリックします。
    
     ![IntelliJ IDEA Settings Dialog Box][02a]
-4. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。 **[Azure Toolkit for IntelliJ]** を強調表示して **[Install (インストール)]** をクリックします。
+4. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。 **Azure Toolkit for IntelliJ** を強調表示して **Install (インストール)** をクリックします。
    
     ![Search for the Azure Toolkit for IntelliJ][03]
    
@@ -62,7 +63,7 @@ Azure Toolkit for IntelliJ には&2; とおりのインストール方法があ�
 3. **[Plugins (プラグイン)]** ダイアログ ボックスで **[Browse repositories (リポジトリの参照)]** をクリックします。
    
     ![Browse IntelliJ IDEA Plugin Repositories][02b]
-4. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。 **[Azure Toolkit for IntelliJ]** を強調表示して **[Install (インストール)]** をクリックします。
+4. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。 **Azure Toolkit for IntelliJ** を強調表示して **Install (インストール)** をクリックします。
    
     ![Search for the Azure Toolkit for IntelliJ][03]
    
@@ -114,9 +115,4 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [05]: ./media/azure-toolkit-for-intellij-installation/05-restart-intellij.png
 [06]: ./media/azure-toolkit-for-intellij-installation/06-intellij-settings-dialog.png
 [07]: ./media/azure-toolkit-for-intellij-installation/07-restart-intellij.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

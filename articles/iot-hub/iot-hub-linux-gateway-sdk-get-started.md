@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/23/2016
 ms.author: andbuc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
-ms.openlocfilehash: 28984e14f5afc27b608ab37daf19d454eb7c3201
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: b3cc8e53b0c8bb7ea40b6ebcebe1f97d4a3e1180
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="get-started-with-the-azure-iot-gateway-sdk-linux"></a>Azure IoT Gateway SDK の使用 (Linux)
+# <a name="explore-the-iot-gateway-sdk-architecture-on-linux"></a>IoT Gateway SDK アーキテクチャについて (Linux)
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>サンプルをビルドする方法
@@ -37,7 +38,7 @@ ms.lasthandoff: 01/19/2017
 > 
 
 ## <a name="how-to-run-the-sample"></a>サンプルを実行する方法
-1. **build.sh** スクリプトは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの**ビルド** フォルダーに出力を生成します。 ここには、このサンプルで使用する 2 つのモジュールが含まれています。
+1. **build.sh** スクリプトは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの**ビルド** フォルダーに出力を生成します。 ここには、このサンプルで使用する&2; つのモジュールが含まれています。
    
     このビルド スクリプトにより、**liblogger.so** が **build/modules/logger/** フォルダーに配置され、**libhello_world.so** が **build/modules/hello_world/** フォルダーに配置されます。 次の JSON 設定ファイルに示すように、 **モジュール パス** の値にはこれらのパスを使用します。
 2. hello_world_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取得します。 サンプルの JSON ファイルは、**azure-iot-gateway-sdk/samples/hello_world/src/hello_world_win.json** でリポジトリの一部として提供されています。以下にコピーします。 既定以外の場所にモジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、そのままで動作します。

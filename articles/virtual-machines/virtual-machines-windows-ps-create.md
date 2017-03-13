@@ -1,6 +1,6 @@
 ---
 title: "PowerShell を使用して Azure VM を作成する | Microsoft Docs"
-description: "Azure PowerShell と Azure Resource Manager を使用すると、Windows Server を実行する VM を簡単に作成できます。"
+description: "Azure PowerShell と Azure Resource Manager を使用して Windows Server VM を簡単に作成できます。"
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -10,20 +10,20 @@ tags: azure-resource-manager
 ms.assetid: 14fe9ca9-e228-4d3b-a5d8-3101e9478f6e
 ms.service: virtual-machines-windows
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
-ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 3de1e04c3ce1d6d465c5a54bc9db676639709371
+ms.lasthandoff: 03/08/2017
 
 ---
 
-# <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Resource Manager と PowerShell を使用して Windows VM を作成する
+# <a name="create-a-windows-vm-using-azure-resource-manager-and-powershell"></a>Azure Resource Manager と PowerShell を使用して Windows VM を作成する
 
-この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Resource Manager](../azure-resource-manager/resource-group-overview.md) と Azure PowerShell を使用してすばやく作成する方法を紹介します。  
+この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) と Azure PowerShell を使用してすばやく作成する方法を紹介します。  
 
-仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。 コマンド内のサンプルのパラメーター値は、ご自分の環境に適した名前に置き換えてください。
+仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。コマンドのコピー、貼り付け、実行にかかる所要時間は約 10 分です。
 
 ## <a name="step-1-install-azure-powershell"></a>手順 1: Azure PowerShell をインストールする
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 02/23/2017
 
 ## <a name="step-4-create-a-virtual-network"></a>手順 4: 仮想ネットワークを作成する
 
-すべての仮想マシンは [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に属します。
+すべての仮想マシンは [仮想ネットワーク](virtual-machines-windows-network-overview.md)に属します。
 
 1. 仮想ネットワークのサブネットを作成します。 次のコマンドを実行すると、10.0.0.0/24 というアドレス プレフィックスを持つ **mySubnet** というサブネットが作成されます。
    

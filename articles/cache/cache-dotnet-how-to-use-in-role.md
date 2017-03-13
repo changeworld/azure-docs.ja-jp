@@ -17,6 +17,7 @@ ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: ec9e12667bc82043fbdc0b3f113533cf518f39be
 ms.openlocfilehash: 9593f49d98794e72728e0683e34a407e39144a5d
+ms.lasthandoff: 01/21/2017
 
 
 ---
@@ -142,9 +143,9 @@ In-Role Cache のキャッシュにアクセスするには、クライアント
 
 ![RoleCache4][RoleCache4]
 
-**[In-Role Cache]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
+**In-Role Cache** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
 
-> 一覧に **[In-Role Cache]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
+> 一覧に **In-Role Cache** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
 > 
 > 
 
@@ -435,10 +436,5 @@ In-Role Cache の出力キャッシュ プロバイダーの使い方の詳細�
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

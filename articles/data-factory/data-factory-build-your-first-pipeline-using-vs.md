@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/15/2016
+ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 0a4eb02e50c90f41bdc4f2db2af87e2b194da25a
-ms.openlocfilehash: cf9a0e3d763efc7d944ebe3688bfef9ae6711520
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 23927acae12f0db13fe6dd24a4e1fde8ced25d40
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/14/2017
 3. コンピューターに以下がインストールされている必要があります。
    * Visual Studio 2013 または Visual Studio 2015
    * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-   * Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックして、プラグインを更新することもできます。
+   * Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 メニューで **[ツール]** -> **[拡張機能と更新プログラム]** -> **[オンライン]** -> **[Visual Studio ギャラリー]** -> **[Microsoft Azure Data Factory Tools for Visual Studio]** -> **[更新]** の順にクリックして、プラグインを更新することもできます。
 
 それでは、Visual Studio を使用して、Azure データ ファクトリを作成しましょう。
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 02/14/2017
 
 1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。
 2. **[HDInsight のオンデマンドのリンクされたサービス]** を選択し、**[追加]** をクリックします。
-3. **JSON** を次のように置き換えます。
+3. **JSON** を次の JSON に置き換えます。
 
     ```JSON
     {
@@ -101,11 +101,11 @@ ms.lasthandoff: 02/14/2017
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
    | プロパティ | 説明 |
-   | --- | --- |
-   |  バージョン |作成された HDInsight のバージョンが 3.2 になるように指定します。 |
-   |  ClusterSize |HDInsight クラスターのサイズを指定します。 |
-   |  TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
-   |  linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
+   | -------- | ----------- |
+   | バージョン | 作成された HDInsight のバージョンが 3.2 になるように指定します。 |
+   | ClusterSize |HDInsight クラスターのサイズを指定します。 |
+   | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
+   | linkedServiceName |HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
 
     以下の点に注意してください。
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 02/14/2017
    * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
    * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
 
-       処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
+       処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
 
      詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 4. **HDInsightOnDemandLinkedService1.json** ファイルを保存します。
@@ -124,9 +124,9 @@ ms.lasthandoff: 02/14/2017
 #### <a name="create-input-dataset"></a>入力データセットの作成
 1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、**[追加]** をポイントして、**[新しい項目]** をクリックします。
 2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **InputDataSet.json** に変更して、**[追加]** をクリックします。
-3. エディターで **JSON** を次のコードに置き換えます。
+3. エディターで **JSON** を次の JSON スニペットに置き換えます。
 
-    この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します
+    この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、`adfgetstarted` という BLOB コンテナーと `inputdata` というフォルダーに入力データが配置されるように指定します。
 
     ```JSON
     {
@@ -154,7 +154,7 @@ ms.lasthandoff: 02/14/2017
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
    | プロパティ | 説明 |
-   |:--- |:--- |
+   | -------- | ----------- |
    | type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
    | linkedServiceName |前に作成した AzureStorageLinkedService1 を参照します。 |
    | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
@@ -169,9 +169,9 @@ ms.lasthandoff: 02/14/2017
 
 1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、**[追加]** をポイントして、**[新しい項目]** をクリックします。
 2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **OutputDataset.json** に変更して、**[追加]** をクリックします。
-3. エディターで **JSON** を次のコードに置き換えます。
+3. エディターで **JSON** を次の JSON に置き換えます。
 
-    この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
+    この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、`adfgetstarted` という BLOB コンテナーと `partitioneddata` というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが&1; か月ごとに生成されることを指定します。
 
     ```JSON
     {
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/14/2017
     ```
      この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する&1; つのアクティビティで構成されるパイプラインを作成します。
 
-    Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (**AzureStorageLinkedService1** という名前で、scriptLinkedService で指定) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
+    Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService で指定されている **AzureStorageLinkedService1** というアカウント) の、`adfgetstarted` コンテナー内にある `script` というフォルダーに保存されます。
 
     **defines** セクションは、Hive 構成値 (例: ${hiveconf:inputtable}、${hiveconf:partitionedtable}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
@@ -272,7 +272,7 @@ ms.lasthandoff: 02/14/2017
 1. **[ソリューション エクスプローラー]** ウィンドウの **[依存関係]** を右クリックし、**[追加]** をポイントして、**[既存の項目]** をクリックします。  
 2. **C:\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。 これら&2; つのファイルは、「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
 
-次の手順でソリューションを発行すると、**adfgetstarted** BLOB コンテナーの scripts フォルダーに **partitionweblogs.hql** ファイルがアップロードされます。   
+次の手順でソリューションを発行すると、`adfgetstarted` BLOB コンテナーの scripts フォルダーに **partitionweblogs.hql** ファイルがアップロードされます。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
 1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。
@@ -280,7 +280,7 @@ ms.lasthandoff: 02/14/2017
 3. 次のダイアログ ボックスが表示されます。
 
    ![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
-4. **[データ ファクトリの構成]** ページで、次の操作を行います。
+4. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
 
    1. **[Data Factory の新規作成]** オプションを選択します。
    2. データ ファクトリの一意の **名前** を入力します。 たとえば、「 **FirstDataFactoryUsingVS09152016**」と入力します。 名前はグローバルに一意である必要があります。
@@ -313,7 +313,7 @@ ms.lasthandoff: 02/14/2017
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 ### <a name="monitor-pipeline-using-diagram-view"></a>ダイアグラム ビューを使用してパイプラインを監視する
-1. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
+1. [Azure Portal](https://portal.azure.com/) にログインし、以下の手順を実行します。
    1. **[More services (その他のサービス)]**、**[データ ファクトリ]** の順にクリックします。
        
         ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
@@ -334,7 +334,7 @@ ms.lasthandoff: 02/14/2017
     ![Open pipeline view](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
     前のビューに戻るには、上部にある階層リンク メニューの **[データ ファクトリ]** をクリックします。
-6. **ダイアグラム ビュー**で、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が [準備完了] と表示されるまでに数分かかる場合があります。 しばらく待っても [準備完了] と表示されない場合は、入力ファイル (input.log) が適切なコンテナー (adfgetstarted) とフォルダー (inputdata) に配置されていることを確認してください。
+6. **ダイアグラム ビュー**で、**AzureBlobInput** データセットをダブルクリックします。 スライスの状態が **[準備完了]** であることを確認します。 スライスの状態が [準備完了] と表示されるまでに数分かかる場合があります。 しばらく待っても準備完了にならない場合は、入力ファイル (input.log) が適切なコンテナー (`adfgetstarted`) とフォルダー (`inputdata`) に配置されているかどうかを確認してください。
 
    ![Input slice in ready state](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. **[X]** をクリックして、**[AzureBlobInput]** ブレードを閉じます。
@@ -349,7 +349,7 @@ ms.lasthandoff: 02/14/2017
    >
 
     ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+10. スライスが**準備完了**状態になったら、BLOB ストレージの `adfgetstarted` コンテナー内にある `partitioneddata` フォルダーで出力データを調べます。  
 
     ![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. スライスをクリックすると、 **[データ スライス]** ブレードに詳細が表示されます。
@@ -376,7 +376,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
     ![アクティビティ ウィンドウの詳細](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 入力ファイルは、スライスが正常に処理された時点で削除されます。 そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
+> 入力ファイルは、スライスが正常に処理された時点で削除されます。 そのため、スライスを再実行したり、このチュートリアルをやり直したりする場合は、`adfgetstarted` コンテナーの `inputdata` フォルダーに入力ファイル (input.log) をアップロードしてください。
 >
 >
 
@@ -390,7 +390,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
     ![データ ファクトリのエクスポート](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studio の Data Factory ツールを更新する
-Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。
+Visual Studio の Azure Data Factory ツールを更新するには、次の手順に従います。
 
 1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。

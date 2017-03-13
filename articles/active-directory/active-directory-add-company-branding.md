@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/03/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
-ms.lasthandoff: 02/13/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -134,6 +134,10 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 
 技術的には、Azure AD でサポートされている各言語に対して多様なセットを構成することができますが、メンテナンス、およびパフォーマンス上の理由から、バリエーションの数は少なくすることをお勧めします。
 
+> [!IMPORTANT]
+> Yammer では、ユーザーがサインインするまで Azure AD にブランド化されたサインイン ページは表示されません。 ユーザーにはまず汎用の Office 365 サインイン ページが表示され、その後にブランド化されたページが表示されます。   
+ 
+ 
 **ディレクトリに会社のブランドを追加するには、次の手順を実行します。**
 
 1. カスタマイズするディレクトリの管理者として、 [Azure クラシック ポータル](https://manage.windowsazure.com) にサインインします。
@@ -149,7 +153,7 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 
 1. カスタマイズするディレクトリの管理者として、 [Azure クラシック ポータル](https://manage.windowsazure.com) にサインインします。
 2. カスタマイズするディレクトリを選択します。
-3. 上部のツール バーで **[構成]**をクリックします。
+fs3。 上部のツール バーで **[構成]**をクリックします。
 4. **[ブランドのカスタマイズ]**をクリックします。
 5. **[特定の言語のブランド設定を追加する]**をクリックします。
 6. ロゴをカスタマイズする言語を選択し、 **[次へ]**をクリックします。

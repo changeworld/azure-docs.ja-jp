@@ -17,6 +17,7 @@ ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
 ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -82,7 +83,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 <!--Image references--> 
 
 <!--Article references--> 
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 
 <!--MSDN references--> 
 
@@ -97,10 +98,5 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 [Microsoft Premier online portal]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

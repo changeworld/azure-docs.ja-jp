@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 31157645006b24e9ed6ee9187c355310356615a7
-ms.openlocfilehash: 7d9dbf3af8e7d84d470bf6f42e2d2be01c5cb27d
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
+ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -84,7 +84,7 @@ Machine Learning Studio の実験にデータをダウンロードする方法�
 
 サポートされているファイル形式の詳細については、[Machine Learning Studio へのトレーニング データのインポート](machine-learning-data-science-import-data.md)に関する記事を参照してください。
 
-#### <a name="a-idmodulelimitahow-large-can-the-data-set-be-for-my-modules"></a><a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
+#### <a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
 Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。 モジュールが 1 つ以上の入力を受け取る場合、10 GB という値はすべての入力サイズの合計です。 Hive または Azure SQL Database のクエリを使用して、さらに大きなデータセットをサンプリングしたり、インジェストの前に、前処理としてカウントによる学習を使用したりすることもできます。  
 
 次の種類のデータは、特徴の正規化の際に、より大きなデータセットに展開できますが、10 GB 未満に制限されています。
@@ -102,7 +102,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 * 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)
 * イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス
 
-#### <a name="a-iduploadlimitawhat-are-the-limits-for-data-upload"></a><a id="UploadLimit"></a>データのアップロードの制限は何ですか。
+#### <a id="UploadLimit"></a>データのアップロードの制限は何ですか。
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、Azure HDInsight を使用する必要があります。
 
 **Amazon S3 からデータを読み取ることはできますか。**
@@ -430,7 +430,11 @@ Standard S1 レベルから開始して、サービスの使用状況を監視�
 
 **新しいプランはどのリージョンで利用できますか?**
 
-リージョン別の提供状況の詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
+新しい課金プランは、新しい Web サービスがサポートされている&3; つの運用リージョンで利用できます。
+
+* 米国中南部
+* 西ヨーロッパ
+* 東南アジア
 
 **私は複数のリージョンに Web サービスを所有しています。すべてのリージョンにプランが必要ですか?**
 
@@ -465,7 +469,13 @@ BES ワークロードの場合も、同じ方法で課金されます。 ただ
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning の Free および Standard レベル
 **Azure Machine Learning の Free レベルには何が含まれますか?**
 
-Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき&1; つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 Free レベルのワークロードは、SQL Server を実行するオンプレミスのサーバーに接続してデータにアクセスすることはできません。
+Azure Machine Learning の Free レベルは、Azure Machine Learning Studio を深く体験していただくためのものです。 サインアップに必要なのは、Microsoft アカウントだけです。 Free レベルには、 [Microsoft アカウント](https://www.microsoft.com/account/default.aspx)1 つにつき&1; つの Azure Machine Learning Studio ワークスペースへの無料アクセスが含まれます。 このレベルでは、最大 10 GB のストレージを使用でき、モデルをステージング API として運用できます。 Free レベルのワークロードは SLA の対象外であり、開発や個人用の目的にのみ使用されます。 
+
+Free レベルのワークスペースには次の制限事項があります。
+
+* ワークロードは、SQL Server を実行するオンプレミスのサーバーに接続してデータにアクセスすることはできません。
+* 新しい Resource Manager ベースの Web サービスをデプロイすることはできません。
+
 
 **Azure Machine Learning の Standard レベルおよびプランには何が含まれますか?**
 

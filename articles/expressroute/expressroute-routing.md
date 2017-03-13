@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2017
+ms.date: 03/03/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
-ms.openlocfilehash: 4acca777cb5e34719c9b8ccef09bd04b82f74ce6
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: e678062429605db34c1e6c835841aaf2508d81a3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -161,6 +162,9 @@ ExpressRoute をトランジット ルーターとして構成することはで
 | インド南部 |12076:51019 |
 | インド西部 |12076:51018 |
 | インド中部 |12076:51017 |
+| **韓国** | |
+| 韓国南部 |12076:51028 |
+| 韓国中部 |12076:51029 |
 
 Microsoft からアドバタイズされるすべてのルートには、適切なコミュニティ値がタグ付けされます。 
 
@@ -212,10 +216,5 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
   * [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
   * [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
   * [クラシック VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

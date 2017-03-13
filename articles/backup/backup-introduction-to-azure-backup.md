@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup とは | Microsoft Docs"
-description: "Azure Backup と Recovery Services を利用すると、Windows Server とワークステーション、System Center DPM サーバーとワークロード、Azure 仮想マシンのデータとアプリケーションをバックアップして、復元できます。"
+description: "Azure Backup を使用して、Windows Server、Windows ワークステーション、System Center DPM サーバー、Azure 仮想マシンのデータとワークロードをバックアップおよび復元します。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,16 +13,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/23/2017
+ms.date: 2/27/2017
 ms.author: markgal;trinadhk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
-ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
+ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="what-is-azure-backup"></a>Azure Backup とは
+# <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure のバックアップ コンテナーにデータをバックアップするときは、、(保護対象がオンプレミス データかクラウドのデータかに関係なく) すべての Azure Backup コンポーネントを使用できます。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
 
 [Azure Backup の概要に関するビデオ](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
@@ -94,17 +95,15 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure IaaS VM のバックアップ |はい |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
-Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください
+Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/storage-premium-storage.md) に関する記事を参照してください。
 
 ### <a name="back-up-premium-storage-vms"></a>Premium Storage VM のバックアップ
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。 "AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。 ストレージ アカウント上の一時的なステージング場所に十分な空き領域があるかどうかを確認します。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)に関する記事をご覧ください。
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。 ストレージ アカウントに、一時的なステージング場所に対応した空き領域があることを確認してください。 詳細については、[Premium Storage の制限](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets)に関する記事をご覧ください。 バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
 
 > [!NOTE]
 > ステージングの場所は変更または編集できません。
 >
 >
-
-バックアップ ジョブが完了したら、ステージングの場所は削除されます。 ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
 
 ### <a name="restore-premium-storage-vms"></a>Premium Storage VM の復元
 Premium Storage VM は、Premium Storage と通常のストレージのどちらかに復元することができます。 Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。 ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。 このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
