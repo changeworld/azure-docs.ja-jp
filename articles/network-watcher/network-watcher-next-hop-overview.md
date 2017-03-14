@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2c25854795b6c577dff38af26543d915f8482240
-ms.openlocfilehash: 0bcbd8d15fb3b4c20ef32e7002249b9ad9ebba1e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 864185e62fb6c3cef4116824b36ee7e5d3447662
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -25,8 +25,7 @@ ms.lasthandoff: 02/22/2017
 
 VM からのトラフィックは、NIC に関連付けられた有効なルートをもとに、送信先に送信されます。 次ホップは、特定の仮想マシンと NIC から次ホップの種類とパケットの IP アドレスを取得します。 これにより、パケットが送信先に向かっているのか、またはトラフィックが失われているのかを判断するのに役立ちます。 ユーザーが不適切なルートを構成して、トラフィックがオンプレミスの場所または仮想アプライアンスに向けられると、接続に関する問題が起こります。 また、次ホップは関連するルート テーブルを返します。 ルートがユーザー定義のルートとして定義されている場合に次ホップをクエリすると、そのルートが返されます。 それ以外の場合、次ホップは "システム ルート" を返します。
 
-> [!NOTE]
-> Network Watcher は現在プレビュー段階です。Network Watcher の機能を使用するには、[機能を登録する必要があります](network-watcher-create.md#register-the-preview-capability)。
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![次ホップの概要][1]
 

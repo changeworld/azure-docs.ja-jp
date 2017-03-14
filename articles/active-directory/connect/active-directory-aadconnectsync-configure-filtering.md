@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d5c8972e539ace9440a166eaed6c95fe93e2792a
-ms.openlocfilehash: 792e6c0d70a4786535174fa9c5f863a72da41143
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: fa9e86552f61693b953f636bff3cd9d869feba23
+ms.openlocfilehash: 14c179d76664876695f2974de44e6bc000942184
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -45,7 +45,7 @@ Azure AD Connect Sync では、いつでもフィルター処理を有効にで�
 
 意図せず多数のオブジェクトを削除してしまうことのないよう、"[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" 機能が既定で有効になっています。 フィルター処理で多数のオブジェクトを削除する場合 (既定では&500; 個)、この記事の手順に従って、削除処理を Azure AD に反映できるようにする必要があります。
 
-November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) より前のビルドを使用し、フィルターの構成を変更して、パスワード同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](active-directory-aadconnectsync-implement-password-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
+November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) より前のビルドを使用し、フィルターの構成を変更して、パスワード同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
 
 フィルター処理のエラーが原因で**ユーザー** オブジェクトが Azure AD から誤って削除された場合、フィルター処理構成を削除することで Azure AD 内にユーザー オブジェクトを再生成できます。 その後、ディレクトリの同期を再実行できます。 この操作により、Azure AD 内のごみ箱からユーザーが復元されます。 ただし、その他の種類のオブジェクトについては削除を取り消すことができません。 たとえば、リソースの ACL に使用されていたセキュリティ グループをうっかり削除すると、そのグループおよび対応する ACL は復元できなくなります。
 

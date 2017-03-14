@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: dariagrigoriu, glenga
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1c740ac1f98a07b08bdf922dde99ce54bac23ee5
-ms.openlocfilehash: e41e246b081efbdf5edf70ee5de86cd2a68043b2
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f4d589382fe337549f117e7c03af6fd5e237491f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -49,6 +49,12 @@ Azure Functions には、従量課金プランと App Service プランの&2; �
 従量課金プランでは、関数アプリ内の関数の実行時の要件に基づいて処理インスタンスを追加することで、CPU とメモリ リソースが自動的にスケーリングされます。 各関数アプリの処理インスタンスには、最大で 1.5 GB のメモリ リソースが割り当てられます。
 
 従量課金プランで実行しているときに関数アプリがアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 Function App が実行されはじめると、BLOB はより早く処理されます。 この初期段階での遅延を回避するには、Always On を有効にした状態で通常の App Service プランを使用するか、別のメカニズムを使用して、BLOB 名を含むキュー メッセージなどの BLOB 処理をトリガーします。 
+
+Function App を作成するときは、BLOB、キュー、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 内部的には、Azure Functions はトリガーの管理や関数実行のログなどの操作に Azure Storage を使用します。 BLOB 専用のストレージ アカウント (Premium Storage を含む) や ZRS レプリケーションを使用する汎用ストレージ アカウントなどの一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントは、新しい Function App の作成時に [ストレージ アカウント] ブレードから除外されます。
+
+従量課金ホスティング プランを使用する場合、Function App のコンテンツ (関数コード ファイルやバインディング構成など) はメイン ストレージ アカウントの Azure Files 共有に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツが削除されて復元できなくなります。
+
+ストレージ アカウントの種類の詳細については、Azure Storage サービスの概要に関する記事 (../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 

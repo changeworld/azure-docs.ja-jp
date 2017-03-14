@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3e7595baa26ba9eebfcb8a2fd5c2744d9c0fbfcb
-ms.openlocfilehash: 350ba23dbc0e8557f9609f7fb3a15169d26c9b4a
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: de48da2c77c65f3e806474ae37ffd00772622b02
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 02/23/2017
 
 ポータルでは、規則が有効、サブネット、ネットワーク インターフェイス、既定に分類されています。 このため、仮想マシンに適用される規則が分かりやすく表示されています。 どのタブからでも [ダウンロード] ボタンを使用でき、すべてのセキュリティ規則を CSV ファイルで簡単にダウンロードできます。
 
-> [!NOTE]
-> Network Watcher は現在プレビュー段階です。Network Watcher の機能を使用するには、[機能を登録する必要があります](network-watcher-create.md#register-the-preview-capability)。
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![セキュリティ グループ ビュー][1]
 
