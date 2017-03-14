@@ -1,6 +1,6 @@
 ---
-title: "その他のタスクに依存するタスクの構成 - Azure Batch | Microsoft Docs"
-description: "MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの正常完了に依存するタスクを作成します。"
+title: "タスクの依存関係を使って、他のタスクの完了に基づきタスクを実行する - Azure Batch | Microsoft Docs"
+description: "MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの完了に依存するタスクを作成します。"
 services: batch
 documentationcenter: .net
 author: tamram
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 32293e15b6f610a3613d6b666bdd0eea0495b2b8
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: d7cca5d71d3db45599b47328755c53a023e9c4ae
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="task-dependencies-in-azure-batch"></a>Azure Batch におけるタスクの依存関係
+# <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
+
 Azure Batch のタスク依存関係機能は、次の処理を行う場合に適しています。
 
 * クラウドでの MapReduce 形式のワークロード。
@@ -166,9 +169,4 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: one-to-one dependency"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: one-to-many dependency"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: task id range dependency"
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Docs"
+title: "Azure AD Connect の Sync Service Manager のメタバース検索 | Microsoft Docs"
 description: "Azure AD Connect の Synchronization Service Manager の [メタバース検索] タブについて説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/27/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 610dab0af17f927d86b677f647acd0dfe2569583
-ms.openlocfilehash: 3b31ff58cab0133fd228e43b9fbe16d64f3e5de9
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 665dc43f9861baeef6fa61968a9dc873ce1dfdbf
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect 同期: Synchronization Service Manager
+# <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager のメタバース検索
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
 
@@ -32,9 +33,4 @@ ms.openlocfilehash: 3b31ff58cab0133fd228e43b9fbe16d64f3e5de9
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
