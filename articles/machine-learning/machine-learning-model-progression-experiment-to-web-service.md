@@ -71,7 +71,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 > 
 
 ### <a name="the-web-service"></a>Web サービス
-予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>一般的でないケース: 非予測 Web サービスの作成
 実験で予測分析モデルをトレーニングしない場合、トレーニング実験とスコア付け実験の両方を作成する必要はありません。実験は&1; つのみになり、この実験を Web サービスとしてデプロイすることができます。 Machine Learning Studio は、使用したモジュールを分析することで、実験に予測モデルが含まれるかどうかを検出します。
@@ -80,7 +80,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 1. **[Web サービスの設定]** をクリックし、**[Retraining Web Service (Web サービスの再トレーニング)]** を選択します。入力ノードと出力ノードが自動的に追加されます。
 2. **[実行]**
-3. **[Web サービスのデプロイ]** をクリックし、デプロイ先の環境に応じて **[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択します。
+3. **[Web サービスのデプロイ]** をクリックし、デプロイ先の環境に応じて **[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。
 
 これで Web サービスがデプロイされます。予測 Web サービスと同様に、アクセスして管理することができます。
 
@@ -91,9 +91,9 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 **入力または出力を変更する場合や、Web サービスでデータを操作する方法を変更する場合**
 
-モデルは変更せず、Web サービスでのデータの処理方法だけを変更する場合は、予測実験を編集して、もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックします。 Web サービスが停止し、更新済みの予測実験がデプロイされ、Web サービスが再び開始されます。
+モデルは変更せず、Web サービスでのデータの処理方法だけを変更する場合は、予測実験を編集して、もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** をクリックします。 Web サービスが停止し、更新済みの予測実験がデプロイされ、Web サービスが再び開始されます。
 
-たとえば、入力データ行全体と予測の結果を返す予測実験があるとします。 Web サービスから結果のみを返すことに決まりました。 結果以外の列を除外するには、予測実験の出力ポートの直前に **プロジェクト列** モジュールを追加します。 もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択したときに、Web サービスが更新されます。
+たとえば、入力データ行全体と予測の結果を返す予測実験があるとします。 Web サービスから結果のみを返すことに決まりました。 結果以外の列を除外するには、予測実験の出力ポートの直前に **プロジェクト列** モジュールを追加します。 もう一度 **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択したときに、Web サービスが更新されます。
 
 **新しいデータでモデルを再トレーニングする必要がある場合**
 

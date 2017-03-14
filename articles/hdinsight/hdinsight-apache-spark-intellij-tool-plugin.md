@@ -50,7 +50,7 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/show-azure-explorer.png)
 2. **Azure Explorer** で **[Azure]** ノードを右クリックし、**[Manage Subscriptions]** (サブスクリプションの管理) をクリックします。
-3. **[Manage Subscriptions] (サブスクリプションの管理)** ダイアログ ボックスで **[Sign in] (サインイン)** をクリックし、Azure 資格情報を入力します。
+3. **[Manage Subscriptions] \(サブスクリプションの管理)** ダイアログ ボックスで **[Sign in] \(サインイン)** をクリックし、Azure 資格情報を入力します。
    
     ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/view-explorer-2.png)
 4. ログイン後、 **[Manage Subscriptions (サブスクリプションの管理)]** ダイアログ ボックスには、資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 ダイアログ ボックスの **[Close (閉じる)]** をクリックします。
@@ -138,7 +138,7 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
         
           ![Spark アプリケーションの送信](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
       * **[Submit]**をクリックします。
-   3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。 [Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+   3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。 [Spark Submission] \(Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
       
        ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
@@ -163,7 +163,7 @@ Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用して
 **Azure Explorer** で、**HDInsight** を展開します。Spark クラスター名を右クリックし、**[Open Cluster Management Portal (Ambari) (クラスター管理ポータルを開く (Ambari))]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。 これらは、クラスターのプロビジョニング時に指定済みである必要があります。
 
 ### <a name="manage-azure-subscriptions"></a>Azure サブスクリプションの管理
-既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。 必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。 **Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions] (サブスクリプションの管理)** をクリックします。 ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、 **[Close (閉じる)]**をクリックします。 Azure サブスクリプションからログオフする場合は、 **[Sign Out (サインアウト)]** をクリックすることもできます。
+既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。 必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。 **Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions] \(サブスクリプションの管理)** をクリックします。 ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、 **[Close (閉じる)]**をクリックします。 Azure サブスクリプションからログオフする場合は、 **[Sign Out (サインアウト)]** をクリックすることもできます。
 
 ## <a name="run-a-spark-scala-application-locally"></a>Spark Scala アプリケーションのローカルでの実行
 Azure Toolkit for IntelliJ の HDInsight ツールを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。 通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
@@ -239,7 +239,7 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 ご提案やフィードバックがある場合、またはこのツールを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
