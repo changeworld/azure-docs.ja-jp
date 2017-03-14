@@ -35,7 +35,7 @@ Container Service を使用して、完全に移植可能なアプリケーシ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Container Service の詳細</h3>
+                        <h3>Azure Container Service の概要</h3>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ Container Service を使用して、完全に移植可能なアプリケーシ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Container Service の概要</h3>
+                        <h3>Azure Container Service の詳細</h3>
                     </div>
                 </div>
             </div>
