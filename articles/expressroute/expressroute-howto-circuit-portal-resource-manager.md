@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/02/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 81face4253f50f17d48b940c1e355565958c829d
-ms.openlocfilehash: 7edda7d64f6bf1d2b8eb03bb6c14db68cc81eca9
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 46b4e1b149a3e9427e1384abc0d95eb616002ab6
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -122,7 +123,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 ![ExpressRoute 回線の状態](./media/expressroute-howto-circuit-portal-resource-manager/listproperties1.png)
 
 ## <a name="modifying-an-expressroute-circuit"></a>ExpressRoute 回線の変更
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 現在、Azure ポータルを使用して ExpressRoute 回線のプロパティを変更することはできません。 ただし、PowerShell を使用すれば回線のプロパティを変更できます。 詳細については、「 [PowerShell を使用した ExpressRoute 回線の変更](expressroute-howto-circuit-arm.md#modify)」セクションを参照してください
+ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。
 
 ダウンタイムなく、次を実行できます。
 
@@ -132,6 +133,19 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 * **従来の操作の許可**を有効または無効にできます。
 
 制限と制約事項の詳細は、「 [ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
+
+ExpressRoute 回線を変更するには、下の図に示すように **[構成]** をクリックします。
+
+![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+
+帯域幅、SKU、課金モデルを変更し、構成ブレード内の従来の操作を許可することができます。
+
+> [!IMPORTANT]
+> 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
+> 
+> Standard 回線で許可されるリソースより多くのリソースを使用する場合、Premium アドオンの無効化操作が失敗することがあります。
+> 
+> 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>ExpressRoute 回線のプロビジョニング解除と削除
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 以下の点に注意してください。
@@ -145,10 +159,5 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-portal-resource-manager.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

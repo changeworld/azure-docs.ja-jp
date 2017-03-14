@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 541c06240f0c437ad92ea955caee67456851a6e1
-ms.openlocfilehash: 59aee407be91279276ec6eaafed608e354030676
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 0e4d560113581dc9dbafd421a1307bff61a2aa9b
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -35,7 +35,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Microsoft Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **ワークステーション** : 手順については、「 [Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)に関するページを参照してください。
+* Visual Studio 2013/2015/2017 がインストールされている**ワークステーション**: 手順については、[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)に関するページを参照してください。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]

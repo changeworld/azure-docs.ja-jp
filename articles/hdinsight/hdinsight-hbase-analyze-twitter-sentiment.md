@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: a62cd616f0abd59c83c834bf13b4ba8549a9c73e
-ms.openlocfilehash: dd47e9c8f5c440c72acb60877d556476fe187ddf
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 8f8b84d600082336fe3659cefa6598210861ce86
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -55,7 +55,7 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
     <tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
     </table>
 
-* **ワークステーション** 。 手順については、 [Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
+* Visual Studio 2013/2015/2017 がインストールされている**ワークステーション**。 手順については、 [Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)を参照してください。
 
 ## <a name="create-a-twitter-application-id-and-secrets"></a>Twitter アプリケーション ID とシークレットを作成する
 Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承認します。 OAuth を使用するための最初の手順は、Twitter 開発者サイトで新しいアプリケーションを作成することです。

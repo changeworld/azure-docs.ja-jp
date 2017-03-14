@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
-ms.author: sethm;jotaub
+ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 8e483b17e453dedf17a21c673d3b2231b9bfba3a
-ms.openlocfilehash: 3c04f0225ec36f700fff59d87c6d0939ab74355c
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/21/2017
 ## <a name="general"></a>全般
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
-Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。 これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。 機能の一覧については、 [Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)を参照してください。
+Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。 これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。 また、Standard は Event Hubs [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) 機能も提供します。機能の一覧については、[Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページをご覧ください。
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs のスループット単位とは何ですか。
 Event Hubs のスループット単位は、Azure Portal または Event Hubs リソース マネージャー テンプレートによってユーザーが明示的に選択します。 スループット単位はイベント ハブ名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
@@ -49,7 +49,7 @@ Event Hubs のスループット単位は、特定の時間に選択された単
 はい。すべての Event Hubs が同じ名前空間にある限り可能です。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
-Event Hubs Standard レベルでは、現在最大 7 日間のリテンション期間をサポートしています。 Event Hubs は永続的なデータ ストアになることを目的としていません。 24 時間を超える保持期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。
+Event Hubs Standard レベルでは、現在最大 7 日間のリテンション期間をサポートしています。 Event Hubs は永続的なデータ ストアになることを目的としていません。 24 時間を超える保持期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージのリテンション期間が必要な場合は、Event Hub で [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) を有効にすると Event Hub から任意のストレージにデータをプルできます。 Archive を有効にすると、購入済みのスループット単位に基づく料金が発生します。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
 Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
@@ -69,7 +69,7 @@ Event Hubs は、コンシューマー グループ&1; つにつきパーティ�
 Event Hubs 料金の詳細については、「 [Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保持する場合に料金はかかりますか。
-Event Hubs Standard レベルでは、24 時間を超えて最大 30 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり&84; GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
+Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保持できます。 保存されたイベントの合計数が選択したスループット単位数のストレージの上限 (スループット単位あたり&84; GB) を超える場合、上限を超えるサイズには公開された Azure Blob ストレージ レートの料金が発生します。 各スループット単位のストレージの上限は、スループット単位が受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
 保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。 1 日の終わりに、ピーク ストレージ サイズが計算されます。 1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。 合計サイズが計算された&1; 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート ( **Locally Redundant Storage (LRS)** ) を使用して課金されます。
@@ -80,7 +80,14 @@ Event Hubs に送信されたイベントは、それぞれが課金対象メッ
 Event Hub や管理操作、チェックポイントなどの制御呼び出しで使用されるイベントは、課金対象受信イベントとしてはカウントされませんが、スループット単位の上限まで蓄積されます。
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>仲介型接続料金は Event Hubs に適用されますか。
-接続料金は AMQP プロトコルが使用されている場合にのみ適用されます。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」ページの各サービス階層に含まれる接続数に関する情報を参照してください。
+接続料金は AMQP プロトコルが使用されている場合にのみ適用されます。 送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。 AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、[Event Hubs の価格情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページで各サービスレベルに含まれる接続数に関する詳細を参照してください。
+
+### <a name="how-is-event-hubs-archive-billed"></a>Event Hubs Archive はどのように課金されますか。
+Archive が有効になるのは、名前空間内のいずれかの Event Hub で Archive 機能が有効になっている場合です。 Archive は購入済みのスループット単位ごとに時間単位で課金されます。 スループット単位数が増減すると、Event Hubs Archive の課金についても、全体の時間の増分にスループット単位数の変化が反映されます。
+Event Hubs Archive の課金の詳細については、[Event Hubs の料金情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページをご覧ください。
+
+### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-archive"></a>Event Hubs Archive 用に選択したストレージ アカウントに対しては課金されますか。
+Event Hub で有効にされた場合、Archive はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、このアカウントに関する変更はお客様の Azure サブスクリプションに課金されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

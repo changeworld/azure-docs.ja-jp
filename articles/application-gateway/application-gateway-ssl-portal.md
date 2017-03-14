@@ -17,6 +17,7 @@ ms.author: gwallace
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: b1852b82875c63fa0e252c14b69b281bd501095f
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -59,11 +60,11 @@ Azure Portal に移動し、既存のアプリケーション ゲートウェイ
 
 **[フロントエンド IP 構成]** - この値は、リスナー用に使用されるフロントエンド IP 構成です。
 
-**[フロントエンド ポート] ([名前]/[ポート])** - アプリケーション ゲートウェイのフロントエンドで使用されるポートのフレンドリ名と、実際に使用されるポートです。
+**[フロントエンド ポート] \([名前]/[ポート])** - アプリケーション ゲートウェイのフロントエンドで使用されるポートのフレンドリ名と、実際に使用されるポートです。
 
 **[プロトコル]** - フロントエンドに https と http のどちらを使用するかを決定するスイッチです。
 
-**[証明書] ([名前]/[パスワード])** - SSL オフロードを使用する場合、この設定に .pfx 証明書が必要で、フレンドリ名とパスワードも必要になります。
+**[証明書] \([名前]/[パスワード])** - SSL オフロードを使用する場合、この設定に .pfx 証明書が必要で、フレンドリ名とパスワードも必要になります。
 
 ![add listener blade][2]
 
@@ -93,9 +94,4 @@ Azure Application Gateway でカスタムの正常性プローブを構成する
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
