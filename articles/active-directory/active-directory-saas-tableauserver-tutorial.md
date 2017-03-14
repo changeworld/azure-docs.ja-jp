@@ -150,7 +150,7 @@ h
    4. [Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。http://tableau_server など。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (http://tableau_server/ など) はサポートされていません。 **[Tableau Server return URL]** をコピーし、手順 3 のように Azure AD の **[サインオン URL]** テキストボックスに貼り付けます。
    5. [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]** をコピーし、手順 3 のように Azure AD の **[識別子]** テキストボックスに貼り付けます。
    6. **[Export Metadata File]** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 手順 3 のように、その URL を Azure AD の **[応答 URL]** に貼り付けます。 
-   7. Tableau Server の [Configiuration] (構成) ページの **[OK]** ボタンをクリックします。
+   7. Tableau Server の [Configiuration] \(構成) ページの **[OK]** ボタンをクリックします。
    
     >[!NOTE] 
     >Tableau Server で SAML を構成する方法について不明な点がある場合は、[SAML の構成](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)に関する記事を参照してください。
