@@ -18,6 +18,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: 7b621733e09a1ba4e21152d7670a8936e3944521
 ms.openlocfilehash: 4503610eb8ef2e690e028667ebbf64e865af7134
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -97,7 +98,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 5. **[追加]**をクリックします。
 6. **[エンドポイントの追加]** ダイアログ ボックスで、**[スタンドアロン エンドポイントの追加]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 7. **[エンドポイントの詳細を指定します]** ダイアログ ボックスで、次の操作を行います。
-   1. エンドポイントの [名前] ( **HttpIn**など) を指定します。
+   1. エンドポイントの [名前] \(**HttpIn**など) を指定します。
    2. プロトコルに **TCP** を指定します。
    3. [パブリック ポート] に **80** を指定します。
    4. [プライベート ポート] に **8080** を指定します。
@@ -152,9 +153,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleAction]: ./media/virtual-machines-windows-classic-java-run-tomcat-app-server/NewRuleAction.png
 [NewRuleName]: ./media/virtual-machines-windows-classic-java-run-tomcat-app-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-windows-classic-java-run-tomcat-app-server/NewRuleProfile.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
