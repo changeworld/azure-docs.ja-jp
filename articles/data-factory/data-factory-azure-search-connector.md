@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 55c988bf74ff0f2e519e895a735dc68f3dc99855
 ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
+ms.lasthandoff: 12/21/2016
 
 ---
 
@@ -37,11 +38,11 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 
 次のサンプルは以下を示しています。
 
-1.  [AzureSearch](#azure-search-linked-service-properties) 型のリンクされたサービス。
-2.  [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)型のリンクされたサービス。
-3.  [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4.  [AzureSearchIndex](#azure-search-index-dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-4.  [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) と [AzureSearchIndexSink](#azure-search-index-sink-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+1.    [AzureSearch](#azure-search-linked-service-properties) 型のリンクされたサービス。
+2.    [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)型のリンクされたサービス。
+3.    [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.    [AzureSearchIndex](#azure-search-index-dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.    [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) と [AzureSearchIndexSink](#azure-search-index-sink-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは、オンプレミスの SQL Server データベースから Azure Search インデックスに時系列データを 1 時間おきにコピーします。 このサンプルで使用される JSON プロパティの説明は、サンプルに続くセクションにあります。
 
@@ -52,13 +53,13 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
 ```JSON
 {
     "name": "AzureSearchLinkedService",
-    "properties": {
+       "properties": {
         "type": "AzureSearch",
-        "typeProperties": {
+           "typeProperties": {
             "url": "https://<service>.search.windows.net",
             "key": "<AdminKey>"
         }
-    }
+       }
 }
 ```
 
@@ -118,7 +119,7 @@ Data Management Gateway では、安全かつ管理された方法でオンプ�
     "properties": {
         "type": "AzureSearchIndex",
         "linkedServiceName": "AzureSearchLinkedService",
-        "typeProperties" : {
+         "typeProperties" : {
             "indexName": "products",
         },
         "availability": {
@@ -327,9 +328,4 @@ Datetime と Datetimeoffset の場合、必要に応じて "culture" と "format
 次の記事を参照してください。
 
 * [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) を参照してください。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
 ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
@@ -31,7 +31,7 @@ Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツ�
 
 Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内の個々の関数を呼び出す機能など、強力な管理機能を提供して Web ジョブの実行をきめ細かく制御できます。 また、ダッシュボードでは、関数の実行時間とログ出力も表示されます。 
 
-## <a name="a-namegetstartedagetting-started-with-webjobs-and-the-webjobs-sdk"></a><a name="getstarted"></a>Web ジョブと Web ジョブ SDK の概要
+## <a name="getstarted"></a>Web ジョブと Web ジョブ SDK の概要
 * [Azure Web ジョブの紹介](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
 * [Azure WebJobs はすごいので、今すぐ使ってみよう!](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Troy Hunt によるブログの投稿です。)
 * [Azure Web ジョブの機能](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
@@ -54,7 +54,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 
 次の「[Web ジョブのデプロイ](#deploy)」および「[Web ジョブのテストとデバッグ](#debug)」セクションも参照してください。
 
-## <a name="a-namedeployadeploying-webjobs"></a><a name="deploy"></a>Web ジョブのデプロイ
+## <a name="deploy"></a>Web ジョブのデプロイ
 * [Visual Studio を使用して Azure WebJobs をデプロイする方法](websites-dotnet-deploy-webjobs.md)
 * [Azure ポータルを使用して WebJobs をデプロイする方法](web-sites-create-web-jobs.md)
 * [Azure Web ジョブのコマンドラインまたは継続的な配信の有効化](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)
@@ -65,14 +65,14 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
   * [Visual Studio 向けの Web ジョブ ツールの概要](http://channel9.msdn.com/Shows/Web+Camps+TV/Introducing-WebJobs-Tooling-for-Visual-Studio-with-Brady-Gaster) 
   * [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
-## <a name="a-namescheduleascheduling-webjobs"></a><a name="schedule"></a>Web ジョブのスケジュール設定
+## <a name="schedule"></a>Web ジョブのスケジュール設定
 * [[Azure Web ジョブの追加] ダイアログ ボックス](websites-dotnet-deploy-webjobs.md#configure)
 * [Azure ポータルでのスケジュール実行の Web ジョブの作成](web-sites-create-web-jobs.md#CreateScheduled)
 * [Hooking up a scheduler job to a WebJob (Web ジョブとスケジューラー ジョブを関連付ける)](http://blog.davidebbo.com/2015/05/scheduled-webjob.html)
 * [Scheduling Azure WebJobs with cron expressions (CRON 式を使用して Azure Web ジョブをスケジュールする)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [Web ジョブ SDK の TimerTrigger を使用した Web ジョブの個々の関数のスケジューリング](websites-dotnet-webjobs-sdk.md#schedule)
 
-## <a name="a-namedebugatesting-and-debugging-webjobs"></a><a name="debug"></a>Web ジョブのテストとデバッグ
+## <a name="debug"></a>Web ジョブのテストとデバッグ
 * [Azure Web ジョブに使用できる Visual Studio の新しい開発者機能とデバッグ機能](http://blogs.msdn.com/b/webdev/archive/2014/11/12/new-developer-and-debugging-features-for-azure-webjobs-in-visual-studio.aspx)
 * [Web ジョブ ダッシュボードの表示](websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
 * [Web ジョブ SDK を使用してログを記述し、ダッシュボードに表示する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)
@@ -84,13 +84,13 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * ビデオ
   * [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
-## <a name="a-namescaleascaling-webjobs"></a><a name="scale"></a>WebJobs のスケーリング
+## <a name="scale"></a>WebJobs のスケーリング
 * [Azure Websites を使用した Web アプリケーションのスケーリング](http://msdn.microsoft.com/magazine/dn786914.aspx)
 * [Azure App Service: 大規模なビジネス対応 Web Apps の設計](https://channel9.msdn.com/Events/Build/2014/3-626)。 Web ジョブ SDK など、Web ジョブを使用した Web アプリのスケール方法について説明します。
 * ビデオ
   * [Web ジョブのスケール アウト](http://channel9.msdn.com/Shows/Azure-Friday/Azure-WebJobs-105-Scaling-out-Web-Jobs)
 
-## <a name="a-nameadditionalaadditional-webjobs-resources"></a><a name="additional"></a>その他の Web ジョブのリソース
+## <a name="additional"></a>その他の Web ジョブのリソース
 * [Magnus Mårtensson 氏による Azure WebJobs GA ブログ記事](http://magnusmartensson.com/azure-webjobs-ga)
 * [Azure App Service での Powershell Web ジョブの実行](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
 * [Azure がトリガーした Web ジョブ完了時の通知の受信](http://blog.amitapple.com/post/2014/03/webjobs-notification/)
@@ -102,7 +102,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
   * [Magnus Mårtensson 氏による Azure Web ジョブ ビデオ](https://www.youtube.com/playlist?list=PLqp1ZOYYUSd81yEzMYLTw8cz91wx_LU9r)
   * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-## <a name="a-nameadditionalsdkaadditional-webjobs-sdk-resources"></a><a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
+## <a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
 * [Web ジョブ SDK リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)
 * [Web ジョブ SDK のソース コード](https://github.com/Azure/azure-webjobs-sdk)
 * [WebJobs SDK の拡張機能のソース コード](https://github.com/Azure/azure-webjobs-sdk-extensions)と、[機能拡張モデルの詳細なガイド](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)  
@@ -114,17 +114,17 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * ビデオ
   * [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
-## <a name="a-namesamplesasample-webjob-applications"></a><a name="samples"></a>サンプル Web ジョブ アプリケーション
+## <a name="samples"></a>サンプル Web ジョブ アプリケーション
 * [GitHub 上で Web ジョブ チームが提供するサンプル アプリケーション](https://github.com/azure/azure-webjobs-sdk-samples)
 * [Web ジョブ SDK を使用した Web ジョブ バックエンドを備えた簡単な Azure Web アプリ](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)
 * [SiteMonitR](http://code.msdn.microsoft.com/SiteMonitR-dd4fcf77)。 スケジュールされたイベント ドリブンの Web ジョブの使用方法を示します。 ブログ記事「 [Azure Web ジョブ SDK を使用した SiteMonitR の再構築](http://www.bradygaster.com/post/rebuilding-the-sitemonitr-using-windows-azure-webjobs)」を参照してください。
 
-## <a name="a-nameblogsablogs"></a><a name="blogs"></a>ブログ
+## <a name="blogs"></a>ブログ
 * [Azure のブログ](/blog)
 * [Amit Apple のブログ](http://blog.amitapple.com/)。 Web ジョブ (SDK ではない) に重点を置いています。
 * [Magnus Mårtensson 氏のブログ](http://magnusmartensson.com/)
 
-## <a name="a-namegethelpagetting-help-with-webjobs"></a><a name="gethelp"></a>Web ジョブに関する支援
+## <a name="gethelp"></a>Web ジョブに関する支援
 * [Web ジョブに関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-webjobs)
 * [Web ジョブ SDK に関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-webjobssdk)
 * [Azure Functions に関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-functions)

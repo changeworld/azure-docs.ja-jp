@@ -18,6 +18,7 @@ ms.author: kasing
 translationtype: Human Translation
 ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
 ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -100,7 +101,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 
 Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する場合は、次のコマンドを使用します。
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> subnetName <vnetName>
+    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
 準備操作が正常に完了したら、詳細出力で VM の移行状態を調べ、VM が `Prepared` 状態であることを確認します。
 
@@ -159,10 +160,5 @@ CLI または Azure ポータルを使用して、準備したストレージ �
 ## <a name="next-steps"></a>次のステップ
 * [プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 * [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

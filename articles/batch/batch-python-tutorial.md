@@ -215,7 +215,7 @@ Batch には、Azure Storage とやり取りするための組み込みのサポ
 
 リストの内包表記を使用し、コレクション内の各ファイルについて `upload_file_to_container` 関数を呼び出し、2 つの [ResourceFile][py_resource_file] コレクションにデータを投入します。 `upload_file_to_container` 関数は次のとおりです。
 
-```
+```python
 def upload_file_to_container(block_blob_client, container_name, file_path):
     """
     Uploads a local file to an Azure Blob storage container.
@@ -572,7 +572,7 @@ def download_blobs_from_container(block_blob_client,
 ## <a name="step-8-delete-containers"></a>手順 8: コンテナーを削除する
 Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 *python_tutorial_client.py* では、[BlockBlobService.delete_container][py_delete_container] を&3; 回呼び出すことによってこの処理を行います。
 
-```
+```python
 # Clean up storage resources
 print('Deleting containers...')
 blob_client.delete_container(app_container_name)

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 9e61eeb9ec7895b4f436534a1fd8b2cb608cf613
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -32,50 +33,50 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 この記事では、Data Factory コピー ウィザードを使用して、1 TB のデータを 1.2 GBps のスループットで 15 分以内に Azure Blob Storage から Azure SQL Data Warehouse に読み込む方法を示します。
 
-この記事では、コピー ウィザードを使用して Azure SQL Data Warehouse にデータを移動するための手順を説明します。 
+この記事では、コピー ウィザードを使用して Azure SQL Data Warehouse にデータを移動するための手順を説明します。
 
 > [!NOTE]
-> Azure SQL Data Warehouse とのデータ移動機能に関する Data Factory の一般的な情報については、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](data-factory-azure-sql-data-warehouse-connector.md)」を参照してください。 
-> 
+> Azure SQL Data Warehouse とのデータ移動機能に関する Data Factory の一般的な情報については、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](data-factory-azure-sql-data-warehouse-connector.md)」を参照してください。
+>
 > Azure ポータル、Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。Azure Data Factory のコピー アクティビティを使用するための手順を含む簡単なチュートリアルについては、 [Azure BLOB から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 方法に関するチュートリアルをご覧ください。  
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>前提条件
 * Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 * [TPC-H](http://www.tpc.org/tpch/) データ: テスト データセットとして TPC-H を使用します。  これを行うには、TPC-H ツールキットの `dbgen` を使用する必要があります。これにより、データセットを簡単に生成できます。  `dbgen` のソース コードを [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) からダウンロードして自分でコンパイルするか、コンパイル済みのバイナリを [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) からダウンロードします。  次のコマンドで dbgen.exe を実行して、10 個のファイルに分散される `lineitem` テーブルの 1 TB のフラット ファイルを生成します。
-  
+
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
   * …
-  * `Dbgen -s 1000 -S **10** -C 10 -T L -v` 
-    
+  * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
+
     次に、生成されたファイルを Azure Blob にコピーします。  ADF コピーを使用した実行方法については、「[Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する](data-factory-onprem-file-system-connector.md)」を参照してください。    
 * Azure SQL Data Warehouse: この実験では、6,000 DWU で作成された Azure SQL Data Warehouse にデータを読み込みます。
-  
+
     SQL Data Warehouse データベースの作成方法の詳細な手順については、「[Azure SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)」を参照してください。  ここでは、PolyBase を使用した SQL Data Warehouse への最高の読み込みパフォーマンスを得るために、パフォーマンス設定で許可される最大数の Data Warehouse ユニット (DWU) を選択しています。その最大数は 6,000 DWU です。
-  
+
   > [!NOTE]
   > Azure Blob からの読み込みでは、データ読み込みのパフォーマンスは SQL Data Warehouse で構成した DWU の数と正比例します。
-  > 
-  > 1 TB を 1,000 DWU の SQL Data Warehouse に読み込むには 87 分かかり (～ 200 MBps のスループット)、2,000 DWU の SQL Data Warehouse に読み込むには 46 分かかり (～ 380 MBps のスループット)、6,000 DWU の SQL Data Warehouse に読み込むには 14 分かかります (～ 1.2 GBps のスループット)。 
-  > 
-  > 
-  
+  >
+  > 1 TB を 1,000 DWU の SQL Data Warehouse に読み込むには 87 分かかり (～ 200 MBps のスループット)、2,000 DWU の SQL Data Warehouse に読み込むには 46 分かかり (～ 380 MBps のスループット)、6,000 DWU の SQL Data Warehouse に読み込むには 14 分かかります (～ 1.2 GBps のスループット)。
+  >
+  >
+
     6,000 DWU の SQL Data Warehouse を作成するには、パフォーマンス スライダーを右端まで移動します。
-  
+
     ![パフォーマンス スライダー](media/data-factory-load-sql-data-warehouse/performance-slider.png)
-  
+
     6,000 DWU で構成されていない既存のデータベースの場合は、Azure ポータルを使用してスケール アップできます。  Azure ポータルで既存のデータベースに移動します。次の図に示すように、**[概要]** パネルに **[スケール]** ボタンがあります。
-  
+
     ![[スケール] ボタン](media/data-factory-load-sql-data-warehouse/scale-button.png)    
-  
+
     **[スケール]** ボタンをクリックして次に示すパネルを開き、スライダーを最大値まで移動し、**[保存]**ボタンをクリックします。
-  
+
     ![[スケール] ダイアログ](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
-  
+
     この実験では、`xlargerc` リソース クラスを使用して Azure SQL Data Warehouse にデータを読み込みます。
-  
+
     最高のスループットを実現するには、`xlargerc` リソース クラスに所属する SQL Data Warehouse ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」で、実行方法を確認してください。  
 * 次の DDL ステートメントを実行して、Azure SQL Data Warehouse データベースに変換先テーブル スキーマを作成します。
 
@@ -109,27 +110,27 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. [Azure ポータル](https://portal.azure.com)にログインします。
-2. 左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックし、**[Data Factory]** をクリックします。 
+2. 左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックし、**[Data Factory]** をクリックします。
 3. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
-   
+
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
        Azure Data Factory の名前はグローバルに一意にする必要があります。 **""LoadIntoSQLDWDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を (yournameLoadIntoSQLDWDataFactory などに) 変更して作成し直します。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
    2. Azure **サブスクリプション**を選択します。
-   3. リソース グループについて、次の手順のいずれかを行います。 
+   3. リソース グループについて、次の手順のいずれかを行います。
       1. **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       2. **[新規作成]** を選択し、リソース グループの名前を入力します。
    4. データ ファクトリの**場所**を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **[作成]**をクリックします。
 4. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
-   
+
    ![データ ファクトリのホーム ページ](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。 
-   
+5. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、**コピー ウィザード**を起動します。
+
    > [!NOTE]
    > 承認中であることを示すメッセージが表示されたまま Web ブラウザーが停止してしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度ウィザードを起動してください。
-   > 
-   > 
+   >
+   >
 
 ## <a name="step-1-configure-data-loading-schedule"></a>手順 1: データの読み込みスケジュールを構成する
 最初の手順は、データの読み込みスケジュールを構成することです。  
@@ -168,7 +169,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     ![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、**[次へ]** をクリックします。 
+2. Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、**[次へ]** をクリックします。
 
     ![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -187,7 +188,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 ![コピー ウィザード - [スキーマ マッピング] ページ](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
 ## <a name="step-5-deploy-and-monitor-load-results"></a>手順 5: デプロイを実行し、読み込み結果を監視する
-1. **[完了]** ボタンをクリックしてデプロイします。 
+1. **[完了]** ボタンをクリックしてデプロイします。
 
     ![コピー ウィザード - [概要] ページ](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
@@ -209,15 +210,9 @@ Azure SQL Data Warehouse データベースを実行するためのいくつか�
 * 読み込み速度を上げるために、一時的なデータに対するヒープの使用を検討します。
 * 統計は、Azure SQL Data Warehouse の読み込みが完了した後で作成します。
 
-詳細については、「[Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)」を参照してください。 
+詳細については、「[Azure SQL Data Warehouse のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。 
+* [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。
 * [コピー アクティビティのパフォーマンスとチューニング ガイド](data-factory-copy-activity-performance.md) - この記事には、参考となるパフォーマンスの測定とチューニングのガイドが含まれています。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
