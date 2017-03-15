@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/16/2017
+ms.date: 03/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
-ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -75,6 +75,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 | 3 |サポート パッケージ |以前のリリースでは、サポート パッケージに関する問題がありました。この問題によって、System.OutOfMemory 例外や、サポート パッケージ作成の失敗につながるその他のエラーが発生していました。 これらのバグは今回のリリースで修正されました。 |はい |はい |
 | 4 |監視 |以前のリリースでは、ローカル固定ボリュームの監視グラフに関する問題がありました。このグラフでは使用量が EB で表示されていました。 このバグは今回のリリースで解決されました。 |はい |はい |
 | 5 |移行 |以前のリリースでは、5000/7000 シリーズから 8000 シリーズ デバイスへの移行の信頼性に関して、いくつかの問題がありました。 これらの問題は今回のリリースで解決されています。 |はい |はい |
+| 6 |更新 |以前のリリースでは、更新エラーが発生するとコントローラーが復旧モードになり、ユーザーは更新プログラムを続行できず、Microsoft サポートに問い合わせる必要がありました。 <br> この動作は、このリリースで変更されました。 両方のコントローラーが同じバージョン (Update 4) を実行している場合は、更新エラーが発生してもコントローラーが復旧モードになることはありません。 更新エラーが発生したら、少し待ってから更新を再試行することをお勧めします。 これにより、再試行が成功する可能性があります。 再試行に失敗した場合は、Microsoft サポートにお問い合わせください。 |はい |はい |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>以前のリリースから存在する Update 4 の既知の問題

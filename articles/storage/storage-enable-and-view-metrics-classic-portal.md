@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 03/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 3c3c7924655f5b932be2a3d947a4df786fc0630d
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: ba615e296c39ccdd15f5867681f7274feb5478b0
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>概要
-既定では、Storage サービスに対してストレージ メトリックは有効になっていません。 [Azure クラシック ポータル](https://manage.windowsazure.com)または Windows PowerShell を使用して監視を有効にできます。また、ストレージ API を使用したプログラムで監視を有効にすることもできます。
+新しいストレージ アカウントを作成すると、ストレージ メトリックが既定で有効になります。 [Azure クラシック ポータル](https://manage.windowsazure.com)または Windows PowerShell を使用して監視を構成できます。また、ストレージ API を使用したプログラムで監視を構成することもできます。
 
 ストレージ メトリックを有効にするとき、データのリテンション期間を選択する必要があります。この期間により、ストレージ サービスがメトリックを保有する期間が決まり、メトリックを保存するために必要な領域に対して課金されます。 一般的には、分単位メトリックには時間単位メトリックより短いリテンション期間を使用してください。分単位メトリックにはかなりの追加領域が必要になるためです。 データを分析し、保存するメトリックをダウンロードし、オフライン分析やレポートを行うために十分な時間が確保されるようにリテンション期間を選択してください。 ストレージ アカウントからメトリック データをダウンロードした場合にも課金されることにご注意ください。
 
@@ -46,7 +47,7 @@ Azure クラシック ポータルでは、現在のところ、ストレージ 
 * ServiceType: 指定可能な値は、Blob、Queue、Table です。
 * MetricsLevel: 指定可能な値は None (Azure クラシック ポータルの [オフ] と同じ)、Service (Azure クラシック ポータルの [最小] と同じ)、ServiceAndApi (Azure クラシック ポータルの [詳細] と同じ) です。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。
+たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを&5; 日間に設定されたリテンション期間でオンにします。
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
@@ -123,7 +124,7 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという 2 つの情報から構成されるタイプの情報を識別します。
+この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという&2; つの情報から構成されるタイプの情報を識別します。
 
 * アクセス タイプは user と system のいずれかになります。user はストレージ サービスに対するすべてのユーザー要求を意味し、system は Storage Analytics により行われる要求を意味します。
 * 要求タイプは、概要行となる all か、QueryEntity や UpdateEntity など特定の API のいずれかになります。
@@ -190,8 +191,3 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>次のステップ:
 [Storage Analytics ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

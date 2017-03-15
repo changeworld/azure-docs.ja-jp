@@ -1,8 +1,8 @@
 ---
-title: "C# クエリによる SQL Database への接続 | Microsoft Docs"
-description: "SQL データベースへのクエリおよび接続を実行するプログラムを C# で作成します。 IP アドレス、接続文字列、セキュリティで保護されたログイン、および無料版の Visual Studio に関する情報。"
+title: "Visual Studio を使用した Azure SQL Database への接続 | Microsoft Docs"
+description: "Visual Studio で Azure SQL データベースに接続する方法について説明します。"
 services: sql-database
-keywords: "C# データベース クエリ, C# クエリ, データベースへの接続, SQL C#"
+keywords: "データベースへの接続"
 documentationcenter: 
 author: stevestein
 manager: jhubbard
@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 03/03/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 6789662847197ff3abb44df2d65a8ab761dfc1e7
+ms.lasthandoff: 03/04/2017
 
 
 ---

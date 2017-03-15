@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 7ca726f5dc67feae7eeccfdcc00b41aa95c38348
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: a6489fd5ff5e60bc3a1c06485d330556250c21cd
+ms.openlocfilehash: eddbdda847d7d0cc12f3e1c6128ce76d15f6f39f
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -118,7 +118,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ### <a name="net-sqlconnection-parameters-for-connection-retry"></a>接続再試行用の .NET SqlConnection パラメーター
-.NET Framework クラスの **System.Data.SqlClient.SqlConnection**を使用してクライアント プログラムから Azure SQL Database に接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降を使用してください。 この機能の詳細については [こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
+.NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから Azure SQL Database に接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 この機能の詳細については [こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.

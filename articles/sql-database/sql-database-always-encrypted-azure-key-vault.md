@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 03/02/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9d654904e06758bc8634efa9b18ea3bac2b64523
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -60,7 +60,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 7. **クライアント ID**をコピーします。 (この値は、後でコードで必要になります)。
 8. **[キー]** セクションの **[時間の選択]** ドロップダウン リストで **[1 年間]** を選択します (手順 13 で保存した後、キーをコピーします)。
 9. スクロール ダウンし、 **[アプリケーションの追加]**をクリックします。
-10. **[表示]** を **[Microsoft アプリ]** の設定のままにし、**[Microsoft Azure Service Management]** を選択します。 チェックマークをクリックして続行します。
+10. **[表示]** を **[Microsoft アプリ]** の設定のままにし、**[Microsoft Azure Service Management API]** を選択します。 チェックマークをクリックして続行します。
 11. **[デリゲートされたアクセス許可]** ドロップダウン リストから、**[Azure Service 管理へのアクセス]** を選択します。
 12. **[保存]**をクリックします。
 13. 保存の完了後、**[キー]** セクションのキー値をコピーします (この値は、後でコードで必要になります)。
