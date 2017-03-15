@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: 071e8056382128f7c5070b46591b2a66ba5b7e41
-ms.openlocfilehash: 57c38c3d19810fd8c2789a27983c521517f2303b
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 904a2251328ec7b2a6ed6f3c91e2aaba33076860
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的なデプロイ
-このチュートリアルでは、 [Azure App Service] アプリ向けに継続的なデプロイ ワークフローを構成する方法について説明します。 App Service と BitBucket、GitHub、Visual Studio Team Services (VSTS) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。 複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
+このチュートリアルでは、 [Azure App Service] アプリ向けに継続的なデプロイ ワークフローを構成する方法について説明します。 App Service と BitBucket、GitHub、[Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。 複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
 
 Azure Portal で一覧表示されていないクラウド リポジトリ ([GitLab](https://gitlab.com/) など) から継続的なデプロイを手動で構成する方法については、「[Setting up continuous deployment using manual steps (手動による手順を使用した継続的デプロイの設定)](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)」を参照してください。
 
-## <a name="a-nameoverviewaenable-continuous-deployment"></a><a name="overview"></a>継続的なデプロイの有効化
+## <a name="overview"></a>継続的なデプロイの有効化
 継続的なデプロイを有効にするには
 
 1. 継続的なデプロイで使用するリポジトリにアプリのコンテンツを発行します。  
@@ -53,7 +53,7 @@ Azure Portal で一覧表示されていないクラウド リポジトリ ([Git
 5. アプリが正常にデプロイされたことを確認するには、Azure Portal でアプリのブレードの上部にある **[URL]** をクリックします。
 6. 継続的なデプロイが選択したリポジトリから実行されていることを確認するために、変更をリポジトリにプッシュします。 リポジトリへのプッシュが完了すると、すぐにアプリは更新され、変更が反映されます。 更新がプルされていることは、アプリの **[デプロイ オプション]** ブレードで確認できます。
 
-## <a name="a-namevssolutionacontinuous-deployment-of-a-visual-studio-solution"></a><a name="VSsolution"></a>Visual Studio ソリューションの継続的なデプロイ
+## <a name="VSsolution"></a>Visual Studio ソリューションの継続的なデプロイ
 Visual Studio ソリューションを Azure App Service にプッシュすることは、単純な index.html ファイルをプッシュすることと同じくらい簡単です。 App Service のデプロイ プロセスでは、NuGet 依存関係の復元やアプリケーション バイナリの構築などのすべての詳細が合理化されます。 Git リポジトリでコードのみを維持し、App Service デプロイメントで残りを処理する、ソース管理のベスト プラクティスに従うことができます。
 
 Visual Studio ソリューションを App Service にプッシュする手順は、ソリューションとリポジトリを次のように構成するのであれば、 [前のセクション](#overview)と同じです。
@@ -65,7 +65,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 説明のとおりにリポジトリを設定し、いずれかのオンライン Git リポジトリからの継続的な発行のために Azure のアプリを構成したら、Visual Studio で ASP.NET アプリケーションをローカルで開発し、オンライン Git リポジトリに変更をプッシュするだけで、コードを継続的にデプロイできます。
 
-## <a name="a-namedisablecdadisable-continuous-deployment"></a><a name="disableCD"></a>継続的なデプロイの無効化
+## <a name="disableCD"></a>継続的なデプロイの無効化
 継続的なデプロイを無効化するには
 
 1. [Azure Portal] のアプリのメニュー ブレードで、**[アプリのデプロイ] > [デプロイ オプション]** の順にクリックします。 **[デプロイ オプション]** ブレードの **[切断]** をクリックします。
@@ -79,9 +79,10 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 * [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]
 * [Git に関するドキュメント]
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
+* [Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET 4 app](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic) (Azure を使用して、ASP.NET 4 アプリをデプロイする CI/CD パイプラインを自動的に生成する)
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](https://azure.microsoft.com/try/app-service/)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 

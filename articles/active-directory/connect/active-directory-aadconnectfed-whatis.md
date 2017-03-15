@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: fd3699e4ce423ae9490d5bf788729c43eaa623eb
-ms.openlocfilehash: 19ebfae5de8576402348e3163f99a54b9308a078
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 39b0b15dba098c0ddc59e39a81bfb6809f8cb2eb
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -39,6 +39,7 @@ Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェ�
 | [新しい AD FS サーバーの追加](active-directory-aadconnect-federation-management.md#addadfsserver) |初期インストール後の追加の AD FS サーバーによる AD FS ファームの拡張 |
 | [新しい AD FS WAP サーバーの追加](active-directory-aadconnect-federation-management.md#addwapserver) |初期インストール後の追加の WAP サーバーによる AD FS ファームの拡張 |
 | [新しいフェデレーション ドメインの追加](active-directory-aadconnect-federation-management.md#addfeddomain) |Azure AD とフェデレーションする別のドメインの追加 |
+| [SSL 証明書の更新](active-directory-aadconnectfed-ssl-update.md)| Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新|
 | **インストール後のタスク** | |
 | [カスタムの会社のロゴまたはイラストの追加](active-directory-aadconnect-federation-management.md#customlogo) |AD FS サインイン ページに表示されるカスタムのロゴを指定して、サインイン エクスペリエンスを変更する |
 | [サインインの説明の追加](active-directory-aadconnect-federation-management.md#addsignindescription) |AD FS サインイン ページのサインインの説明の変更 |

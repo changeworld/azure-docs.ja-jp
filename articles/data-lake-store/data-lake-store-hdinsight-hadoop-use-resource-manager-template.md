@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 98f1c50774c2ee70afd18a1e036b6e3264518552
-ms.openlocfilehash: b67be76eab9b6c467f8ab9760f7ea481f1d6db90
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 40a1d76cc4167858a9bebac9845230473cc71e3e
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレ
 
 サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用します。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
-## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>HDInsight クラスター ストレージでの Data Lake Store の使用
+## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>HDInsight クラスター ストレージで Data Lake Store を使用する
 
 HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
 
@@ -84,8 +84,7 @@ Resource Manager テンプレートでは、新しい Data Lake Store アカウ�
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する
 HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Store にアクセス可能であるかどうかをテストできます。 これを行うには、前に Data Lake Store にアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
-### <a name="for-a-linux-cluster"></a>Linux クラスターの場合
-このセクションでは、クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。 Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
+このセクションでは、HDInsight Linux クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。 Windows クライアントを使用している場合は、[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
@@ -117,60 +116,11 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
    ```
 
-### <a name="for-a-windows-cluster"></a>Windows クラスターの場合
-Hive クエリを実行するには、次のコマンドレットを使用します。 このクエリでは、Data Lake Store 内のデータからテーブルを作成し、作成されたテーブルに対して SELECT クエリを実行します。
-
-```
-$queryString = "DROP TABLE vehicles;" + "CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://$dataLakeStoreName.azuredatalakestore.net:443/';" + "SELECT * FROM vehicles LIMIT 10;"
-
-$hiveJobDefinition = New-AzureRmHDInsightHiveJobDefinition -Query $queryString
-
-$hiveJob = Start-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobDefinition $hiveJobDefinition -ClusterCredential $httpCredentials
-
-Wait-AzureRmHDInsightJob -ResourceGroupName $resourceGroupName -ClusterName $clusterName -JobId $hiveJob.JobId -ClusterCredential $httpCredentials
-```
-
-これによる出力は次のとおりです。 **ExitValue** が 0 の場合は、ジョブが正常に完了したことを示します。
-
-```
-Cluster         : hdiadlcluster.
-HttpEndpoint    : hdiadlcluster.azurehdinsight.net
-State           : SUCCEEDED
-JobId           : job_1445386885331_0012
-ParentId        :
-PercentComplete :
-ExitValue       : 0
-User            : admin
-Callback        :
-Completed       : done
-```
-
-次のコマンドレットを使用して、ジョブから出力を取得します。
-
-```
-Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $hiveJob.JobId -DefaultContainer $containerName -DefaultStorageAccountName $storageAccountName -DefaultStorageAccountKey $storageAccountKey -ClusterCredential $httpCredentials
-```
-
-ジョブの出力は次のようになります。
-
-```
-1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
-1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
-1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
-1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
-1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
-1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
-1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
-1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
-1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
-1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
-```
 
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>HDFS コマンドを使用して Data Lake Store にアクセスする
 Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
-### <a name="for-a-linux-cluster"></a>Linux クラスターの場合
-このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。 Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
+このセクションでは、HDInsight Linux クラスターに SSH でアクセスし、HDFS コマンドを実行します。 Windows クライアントを使用している場合は、[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
@@ -190,29 +140,6 @@ Found 1 items
 
 `hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
-### <a name="for-a-windows-cluster"></a>Windows クラスターの場合
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
-3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
-
-   ![HDInsight へのリモート接続](./media/data-lake-store-hdinsight-hadoop-use-powershell/ADL.HDI.PS.Remote.Desktop.png)
-
-   メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
-4. リモート セッションで、Windows PowerShell を起動し、HDFS ファイル システムのコマンドを使用して、Azure Data Lake Store のファイルを一覧表示します。
-
-   ```
-   hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
-   ```
-
-   これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
-
-   ```
-   15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-   Found 1 items
-   -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/vehicle1_09142014.csv
-   ```
-
-   `hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-wasb-distcp.md)
