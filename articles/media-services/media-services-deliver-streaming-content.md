@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: cd9a73d1830be132a1176fcb6cdeadedcdc96d04
-ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5598a16511713a76193c13c4521e4884d8f5b75d
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -49,6 +50,10 @@ ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
    
    プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。  
 4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
+
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
 ### <a name="use-media-services-net-sdk"></a>Media Services .NET SDK を使用する
 ストリーミング URL を構築する 
@@ -173,10 +178,5 @@ ms.openlocfilehash: 98bfdc49524edd5cedc85b5f94a74ca8c29ae2e9
 ## <a name="see-also"></a>関連項目
 [資産をダウンロードする](media-services-deliver-asset-download.md)
 [資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
