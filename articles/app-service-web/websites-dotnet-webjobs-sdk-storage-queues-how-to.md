@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/16/2017
 * [エラーを処理する方法とタイムアウトを構成する方法](#errors)
 * [次のステップ](#nextsteps)
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-queue-message-is-received"></a><a id="trigger"></a> キュー メッセージを受信したときに関数をトリガーする方法
+## <a id="trigger"></a> キュー メッセージを受信したときに関数をトリガーする方法
 キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、 `QueueTrigger` 属性を使用します。 属性コンストラクターは、ポーリングのためにキューの名前を指定する文字列パラメーター受け取ります。 また、 [キューの名前を動的に設定する](#config)ことも可能です。
 
 ### <a name="string-queue-messages"></a>文字列のキュー メッセージ
@@ -115,7 +115,7 @@ Async 関数は、BLOB をコピーする次の例が示すように、[キャ�
             await blobInput.CopyToAsync(blobOutput, 4096, token);
         }
 
-### <a name="a-idqtattributetypesa-types-the-queuetrigger-attribute-works-with"></a><a id="qtattributetypes"></a> QueueTrigger 属性が連携する種類
+### <a id="qtattributetypes"></a> QueueTrigger 属性が連携する種類
 次の種類の `QueueTrigger` を使用できます。
 
 * `string`
@@ -123,20 +123,20 @@ Async 関数は、BLOB をコピーする次の例が示すように、[キャ�
 * `byte[]`
 * `CloudQueueMessage`
 
-### <a name="a-idpollinga-polling-algorithm"></a><a id="polling"></a> ポーリング アルゴリズム
+### <a id="polling"></a> ポーリング アルゴリズム
 SDK はランダムな指数バックオフ アルゴリズムを実装することで、ストレージ トランザクション コストにおけるアイドル状態のキューのポーリングの影響を軽減しています。  SDK はメッセージを見つけると 2 秒間待ってから別のメッセージを確認します。メッセージが見つからなかった場合は、約 4 秒間待ってから再試行します。 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。 [この最大待機時間の設定は変更可能です](#config)。
 
-### <a name="a-idinstancesa-multiple-instances"></a><a id="instances"></a> 複数のインスタンス
+### <a id="instances"></a> 複数のインスタンス
 Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。 Web ジョブ SDK キュー トリガーにより、関数がキュー メッセージを複数回処理するのを自動的に回避できます。関数はべき等として記述する必要はありません。 ただし、ホスト Web アプリの複数のインスタンスがある場合でも、関数の 1 つのインスタンスのみを実行するには `Singleton` 属性を使用できます。
 
-### <a name="a-idparallela-parallel-execution"></a><a id="parallel"></a> 並列実行
+### <a id="parallel"></a> 並列実行
 異なるキューをリッスンする複数の関数を使用している場合、複数のメッセージを同時に受信したとき、SDK では並行してそれらを呼び出します。
 
 1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。 既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。 [バッチ サイズの設定は変更可能です](#config)。 処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。 そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。 この制限は、 `QueueTrigger` 属性を持つ各関数に個別に適用されます。
 
 1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。 「 **Azure WebJobs SDK 1.1.0 RTM** 」の [キュー処理のさらに詳細な制御](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/)に関するページを参照してください。
 
-### <a name="a-idqueuemetadataaget-queue-or-queue-message-metadata"></a><a id="queuemetadata"></a>キューまたはキュー メッセージ メタデータの取得
+### <a id="queuemetadata"></a>キューまたはキュー メッセージ メタデータの取得
 メソッド シグネチャにパラメーターを追加することで、次のメッセージ プロパティを取得できます。
 
 * `DateTimeOffset` expirationTime
@@ -188,7 +188,7 @@ Azure Storage API を直接操作する場合は、 `CloudStorageAccount` パラ
         queue endpoint=https://contosoads.queue.core.windows.net/
         queueTrigger=Hello world!
 
-### <a name="a-idgracefulagraceful-shutdown"></a><a id="graceful"></a>グレースフル シャットダウン
+### <a id="graceful"></a>グレースフル シャットダウン
 継続的な Web ジョブで実行されている関数は、`CancellationToken` パラメーターを受け取ることができます。これは、Web ジョブの停止がオペレーティング システムによってその関数に通知されるものです。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
 
 次の例では、関数内で Web ジョブの終了が迫っているか確認する方法を示します。
@@ -214,7 +214,7 @@ Azure Storage API を直接操作する場合は、 `CloudStorageAccount` パラ
 
 詳細については、 [Web ジョブのグレースフル シャットダウン](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)に関するページを参照してください。   
 
-## <a name="a-idcreatequeuea-how-to-create-a-queue-message-while-processing-a-queue-message"></a><a id="createqueue"></a> キュー メッセージの処理中にキュー メッセージを作成する方法
+## <a id="createqueue"></a> キュー メッセージの処理中にキュー メッセージを作成する方法
 新しいキュー メッセージを作成する関数を記述するには、 `Queue` 属性を使用します。 `QueueTrigger`のように、キューの名前を文字列として渡すことも、 [キューの名前を動的に設定](#config)することもできます。
 
 ### <a name="string-queue-messages"></a>文字列のキュー メッセージ
@@ -265,7 +265,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。 オ
 * `IAsyncCollector`
 * `CloudQueue` (Azure Storage API を直接使用して、手動でメッセージを作成します)
 
-### <a name="a-idibinderause-webjobs-sdk-attributes-in-the-body-of-a-function"></a><a id="ibinder"></a>関数本体での WebJobs SDK 属性の使用
+### <a id="ibinder"></a>関数本体での WebJobs SDK 属性の使用
 `Queue`、`Blob`、`Table` などの WebJobs SDK 属性を使用する前に関数で何らかの処理を行う必要がある場合は、`IBinder` インターフェイスを使用できます。
 
 次の例では、入力キュー メッセージを取得して同じ内容の新しい出力キュー メッセージを作成します。 出力キュー名は、関数本体のコードによって設定されます。
@@ -282,7 +282,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。 オ
 
 `Table` と `Blob` 属性で `IBinder` インターフェイスを使用することもできます。
 
-## <a name="a-idblobsa-how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a><a id="blobs"></a> キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
+## <a id="blobs"></a> キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
 `Blob` と `Table` 属性を使用して、BLOB と テーブルを読み書きすることができます。 このセクションのサンプルは、BLOB に適用されます。 BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」をご覧ください。
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>BLOB の操作を開始する文字列キュー メッセージ
@@ -311,7 +311,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。 オ
             blobToDelete.Delete();
         }
 
-### <a name="a-idpocoblobsa-poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a><a id="pocoblobs"></a> POCO ( [Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a id="pocoblobs"></a> POCO ( [Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 キュー メッセージに JSON として格納されている POCO では、`Queue` 属性の `blobPath` パラメーターでオブジェクトのプロパティを指定するプレースホルダーを使用できます。 また、 [キュー メタデータのプロパティ名](#queuemetadata) もプレースホルダーとして使用できます。
 
 次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。 キュー メッセージは、`BlobName` と `BlobNameWithoutExtension` プロパティを含む `BlobInformation` オブジェクトです。 プロパティの名前は、 `Blob` 属性の BLOB パスのプレース ホルダーとして使用されます
@@ -332,7 +332,7 @@ SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Ne
 
 BLOB をオブジェクトにバインドする前に関数内でいくつかの処理を行う必要がある場合、 [Queue 属性について前述したように](#ibinder)関数の本体で属性を使用することが可能です。
 
-### <a name="a-idblobattributetypesa-types-you-can-use-the-blob-attribute-with"></a><a id="blobattributetypes"></a> BLOB 属性と連携して使用できる種類
+### <a id="blobattributetypes"></a> BLOB 属性と連携して使用できる種類
 `Blob` 属性は、次の種類で使用できます。
 
 * `Stream` (読み取りまたは書き込み、FileAccess コンス トラクターのパラメーターを使用して指定)
@@ -347,7 +347,7 @@ BLOB をオブジェクトにバインドする前に関数内でいくつかの
 * `CloudBlockBlob` (読み取りまたは書き込み)
 * `CloudPageBlob` (読み取りまたは書き込み)
 
-## <a name="a-idpoisona-how-to-handle-poison-messages"></a><a id="poison"></a> 有害メッセージの処理方法
+## <a id="poison"></a> 有害メッセージの処理方法
 関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。 関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。 SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
 
 ### <a name="automatic-poison-message-handling"></a>有害メッセージの自動処理
@@ -394,14 +394,14 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
             }
         }
 
-## <a name="a-idconfiga-how-to-set-configuration-options"></a><a id="config"></a> 構成オプションの設定方法
+## <a id="config"></a> 構成オプションの設定方法
 `JobHostConfiguration` 型を使用して、次の構成オプションを設定できます。
 
 * コード内で SDK の接続文字列を設定する。
 * 最大 dequeue 回数などの `QueueTrigger` 設定の構成
 * 構成からキューの名前を取得する。
 
-### <a name="a-idsetconnstraset-sdk-connection-strings-in-code"></a><a id="setconnstr"></a>コード内で SDK の接続文字列を設定する
+### <a id="setconnstr"></a>コード内で SDK の接続文字列を設定する
 コード内で SDK の接続文字列を設定することにより、次の例に示すように、構成ファイルまたは環境変数に独自の接続文字列の名前を使用できます。
 
         static void Main(string[] args)
@@ -423,7 +423,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
             host.RunAndBlock();
         }
 
-### <a name="a-idconfigqueueaconfigure-queuetrigger--settings"></a><a id="configqueue"></a>QueueTrigger 設定の構成
+### <a id="configqueue"></a>QueueTrigger 設定の構成
 キュー メッセージの処理に適用される次の設定を構成できます。
 
 * 並列実行のために同時に取得するキュー メッセージの最大数 (既定値は 16)。
@@ -442,7 +442,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
             host.RunAndBlock();
         }
 
-### <a name="a-idsetnamesincodeaset-values-for-webjobs-sdk-constructor-parameters-in-code"></a><a id="setnamesincode"></a>コードの WebJobs SDK コンストラクター パラメーター値の設定
+### <a id="setnamesincode"></a>コードの WebJobs SDK コンストラクター パラメーター値の設定
 キュー名、BLOB 名、コンテナー、テーブル名をハード コーディングではなく、コードに指定する場合もあります。 たとえば、`QueueTrigger` のキュー名を構成ファイルか環境変数に指定します。
 
 `NameResolver` オブジェクトを `JobHostConfiguration` 型に渡して実行します。 WebJobs SDK 属性コンストラクターのパラメーターにパーセント (%) 記号で囲まれた特殊なプレースホルダーを追加し、 `NameResolver` コードでこれらのプレースホルダーの代わりに使用する実際の値を指定します。
@@ -476,7 +476,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 **注:** 関数が呼び出されるたびに、キュー、テーブル、BLOB の名前は解決されますが、BLOB コンテナーの名前はアプリケーションの起動時にのみ解決されます。 ジョブの実行中には、BLOB コンテナーの名前を変更することはできません。
 
-## <a name="a-idmanualahow-to-trigger-a-function-manually"></a><a id="manual"></a>関数を手動でトリガーする方法
+## <a id="manual"></a>関数を手動でトリガーする方法
 関数を手動でトリガーするには、次の例に示すように `JobHost` オブジェクトの `Call` または `CallAsync` メソッド、関数の `NoAutomaticTrigger` 属性を使用します。
 
         public class Program
@@ -498,7 +498,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
             }
         }
 
-## <a name="a-idlogsahow-to-write-logs"></a><a id="logs"></a>ログを書き込む方法
+## <a id="logs"></a>ログを書き込む方法
 ダッシュボードは次の 2 つの場所でログを表示します。Web ジョブのページと特定の Web ジョブの呼び出しのページです。
 
 ![Web ジョブ ページのログ](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
@@ -558,7 +558,7 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 
 独自のロガーにプラグインする必要がある場合は、 [この例](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs)を参照してください。
 
-## <a name="a-iderrorsahow-to-handle-errors-and-configure-timeouts"></a><a id="errors"></a>エラーを処理する方法とタイムアウトを構成する方法
+## <a id="errors"></a>エラーを処理する方法とタイムアウトを構成する方法
 Web ジョブ SDK に含まれる [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) 属性を使用して、指定した時間内に完了しない場合に、関数が取り消されるようにすることもできます。 指定した時間内に発生するエラーの数が多すぎる場合にアラートを生成するには、 `ErrorTrigger` 属性を使用します。 [ErrorTrigger の例](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring)を次に示します。
 
 ```
@@ -577,6 +577,6 @@ public static void ErrorMonitor(
 
 また、アプリ設定または環境変数名である構成スイッチを使用して、トリガーできるかどうかを制御する関数を動的に無効または有効にすることもできます。 サンプル コードについては、[Web ジョブ SDK サンプル リポジトリ](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs)の `Disable` 属性を参照してください。
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「 [Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9faf3e48983ded91016e39992bc03a0b62720c06
-ms.openlocfilehash: 4b46a46e6a9de58b9640830852ca19939b3eabdb
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 01850cbf8967fd5f79db64103fb18c6ec01babea
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -37,10 +38,10 @@ ms.openlocfilehash: 4b46a46e6a9de58b9640830852ca19939b3eabdb
 このチュートリアルの前提条件は次のとおりです。
 
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-* Visual Studio 2015 または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
+* Visual Studio 2017、2015、または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 * コンピューターの管理特権
-* [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) (Microsoft ダウンロード センターからダウンロード)
+* [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) (Microsoft ダウンロード センターからダウンロード)
 * 省略可能: [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
 
 ## <a name="scenario-introduction-hello-toll"></a>シナリオの説明 - "料金所"
@@ -135,7 +136,7 @@ $200 相当の Azure クレジットを利用できるよう、この記事の�
 
 必要なリソースはすべて、GitHub の TollApp フォルダーにある Setup.ps1 スクリプトを使って作成できます。 時間を節約するために、このスクリプトを実行することをお勧めします。 Azure Portal でこれらのリソースを構成する方法については、Azure Portal でチュートリアル リソースを構成する方法について書かれた付録を参照してください。
 
-関連する [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
+関連する [TollApp](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) フォルダーとファイルをダウンロードして保存します。
 
 **[Microsoft Azure PowerShell]** ウィンドウを " *管理者として*" 開きます。 まだ Azure PowerShell をお持ちでない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってインストールしてください。
 
@@ -441,10 +442,5 @@ Azure Stream Analytics の詳細については、 [オンライン ドキュメ
    > 
    > 
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

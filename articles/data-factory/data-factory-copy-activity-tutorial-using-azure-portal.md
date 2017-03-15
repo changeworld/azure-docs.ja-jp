@@ -350,7 +350,7 @@ ms.lasthandoff: 02/03/2017
 4. **[データセット]** ブレードで、**[InputDataset]** をクリックします。 このデータセットは、 **ADFTutorialPipeline**の入力データセットです。
    
     ![Datasets with InputDataset selected](./media/data-factory-copy-activity-tutorial-using-azure-portal/DataSetsWithInputDatasetFromBlobSelected.png)   
-5. **[...] (省略記号)** をクリックし、すべてのデータ スライスを表示します。
+5. **[...] \(省略記号)** をクリックし、すべてのデータ スライスを表示します。
    
     ![All input data slices](./media/data-factory-copy-activity-tutorial-using-azure-portal/all-input-slices.png)  
    
@@ -368,7 +368,7 @@ ms.lasthandoff: 02/03/2017
    
     ![[テーブル] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-table-blade.png) 
 8. 現在の時刻までのデータ スライスが既に生成されており、 **準備完了**になっています。 下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-9. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
+9. **[...] \(省略記号)** をクリックし、すべてのスライスを表示します。
    
     ![[データ スライス] ブレード](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png)
 10. 一覧で任意のデータ スライスをクリックすると、 **[データ スライス]** ブレードが表示されます。

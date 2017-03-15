@@ -15,20 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/29/2016
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: d91873817cf83262e70a66dccbdf3888b9cee1dc
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 3003866a7007668cf5d00f2401ffe764c8d70265
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="deploy-popular-application-frameworks-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ
+# <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a>Windows での Azure Resource Manager テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ 
+
 通常、ワークロードが設計に従って動作するには多くのリソースが必要です。 Azure リソース マネージャー テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。 ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure CLI、または PowerShell を使用したそれらのデプロイについて説明します。 [このトピックの Linux バージョン](virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)もあります。
 
 [!INCLUDE [virtual-machines-common-app-frameworks](../../includes/virtual-machines-common-app-frameworks.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

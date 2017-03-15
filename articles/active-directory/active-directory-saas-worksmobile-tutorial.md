@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Azure Active Directory と WORKS MOBILE の統合 | Microsoft Docs"
+title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
 description: "Azure Active Directory と LINE WORKS の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
@@ -16,6 +16,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 215d1bf1f0f02e08f4d7bd65354d51bae945716e
 ms.openlocfilehash: 4bd654821dfde2a59d9c9fd85166c7e9681791ab
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -73,11 +74,11 @@ Azure AD への LINE WORKS の統合を構成するには、ギャラリーか�
 
     ![アプリケーション][3]
 
-4. 検索ボックスに、「**WORKS MOBILE**」と入力します。
+4. 検索ボックスに、「**LINE WORKS**」と入力します。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_001.png)
 
-5. 結果ウィンドウで **[WORKS MOBILE]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+5. 結果ウィンドウで **[LINE WORKS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_0001.png)
 
@@ -120,7 +121,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
     b. **[識別子]** ボックスに、値として「`worksmobile.com`」と入力します。
 
     > [!NOTE] 
-    > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、https://developers.worksmobile.com/jp/document/1001003?openCategories=1 を参照してください。 
+    > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、[LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡してください。 
 
 4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
 
@@ -142,15 +143,16 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_05.png) 
 
-9. **[WORKS MOBILE Configuration (WORKS MOBILE 構成)]** セクションで、**[Configure WORKS MOBILE (WORKS MOBILE を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
+9. **[LINE WORKS Configuration (LINE WORKS 構成)]** セクションで、**[Configure LINE WORKS (LINE WORKS を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_06.png) 
 
     ![Configure Single Sign-On](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_07.png)
 
-10. アプリケーション用に構成された SSO を入手するには、https://developers.worksmobile.com/jp/document/1001003?openCategories=1 を参照してください。
-    •  ダウンロードした**証明書ファイル**　（拡張子を .pem に変更してください。）
-    
+10. アプリケーション用に構成された SSO を入手するには、[LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に連絡し、次のものを情報として提供してください。 
+
+    •  ダウンロードした**証明書ファイル**
+
     •  **SAML シングル サインオン サービス URL**
 
     •  **SAML エンティティ ID**
@@ -193,7 +195,8 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
 ### <a name="creating-a-works-mobile-test-user"></a>LINE WORKS のテスト ユーザーの作成
 
-このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 LINE WORKS の管理画面からユーザーを作成してください。
+このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 [LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)と連携して、LINE WORKS プラットフォームにユーザーを追加してください。
+
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -207,7 +210,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[WORKS MOBILE]** を選択します。
+2. アプリケーションの一覧で **[LINE WORKS]** を選択します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-worksmobile-tutorial/tutorial_worksmobile_50.png) 
 
@@ -231,7 +234,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [WORKS MOBILE] タイルをクリックすると、LINE WORKS アプリケーションに自動的にサインオンします。
+アクセス パネルで [LINE WORKS] タイルをクリックすると、LINE WORKS アプリケーションに自動的にサインオンします。
 
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -254,8 +257,3 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Jan17_HO5-->
-
-

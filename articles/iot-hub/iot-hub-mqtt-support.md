@@ -12,16 +12,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2016
+ms.date: 03/01/2017
 ms.author: kdotchko
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 47e1d5172dabac18c1b355d8514ae492cd973d32
-ms.openlocfilehash: 5c362af149afd4a204c2705ae3d7f67361d8d528
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: c09caf68b4acf90b5a76d2d715e07fc3a522f18c
+ms.openlocfilehash: 7b9b7e558a95de88dedcb744e2a4b3c18cde35cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="iot-hub-mqtt-support"></a>IoT Hub の MQTT サポート
+# <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 IoT Hub により、デバイスは、ポート 8883 で [MQTT v3.1.1][lnk-mqtt-org] プロトコルを使用するか、ポート 443 で WebSocket プロトコル経由で MQTT v3.1.1 を使用して、IoT Hub デバイス エンドポイントと通信できます。 IoT Hub では、すべてのデバイスの通信を TLS/SSL を使用してセキュリティで保護する必要があります (したがって、IoT Hub では、ポート 1883 経由のセキュリティで保護されていない接続はサポートしません)。
 
 ## <a name="connecting-to-iot-hub"></a>IoT Hub への接続
@@ -92,7 +93,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 - IoT Hub では、Retain メッセージは保持されません。 デバイスが **RETAIN** フラグを 1 に設定してメッセージを送信すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリにそのメッセージを渡します。
 - IoT Hub は、デバイスごとにアクティブな MQTT 接続を&1; つだけサポートします。 同じデバイス ID で新しい MQTT 接続が行われると、IoT Hub は既存の接続を破棄します。
 
-詳細については、[メッセージ開発者ガイド][lnk-messaging]を参照してください。
+詳細については、[メッセージング開発者ガイド][lnk-messaging]をご覧ください。
 
 ### <a name="receiving-cloud-to-device-messages"></a>クラウドからデバイスへのメッセージの受信
 IoT Hub からメッセージを受信するには、デバイスで、`devices/{device_id}/messages/devicebound/#` を**トピック フィルター**として使用してサブスクライブする必要があります。 トピック フィルター内の複数レベルのワイルドカード **#** は、デバイスがトピック名の追加プロパティを受信できるようにするためにのみ使用されます。 IoT Hub では、**#** または **?**  ワイルドカードを使用してサブトピックをフィルター処理することはできません。 IoT Hub はパブリッシャーとサブスクライバー間の汎用メッセージング ブローカーではないため、ドキュメント化されたトピック名とトピック フィルターのみをサポートします。
@@ -107,10 +108,10 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 まずデバイスが、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブします。 次に、デバイスは、空のメッセージをトピック `$iothub/twin/GET/?$rid={request id}` に送信します (**request id** に値を指定します)。 その後サービスが、要求と同じ **request id** を使用して、トピック `$iothub/twin/res/{status}/?$rid={request id}` のデバイス ツイン データを含む応答メッセージを送信します。
 
-request id には、[IoT Hub メッセージ開発者ガイド][lnk-messaging]に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
+request id には、[IoT Hub メッセージング開発者ガイド][lnk-messaging]に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
 応答本文には、デバイス ツインのプロパティ セクションが含まれます。
 
-ID レジストリ エントリの本文は "properties" メンバーに限定されます。
+ID レジストリ エントリの本文は "properties" メンバーに限定されます。以下に例を示します。
 
         {
             "properties": {
@@ -134,7 +135,7 @@ ID レジストリ エントリの本文は "properties" メンバーに限定�
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
-詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]を参照してください。
+詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
 
 ### <a name="update-device-twins-reported-properties"></a>デバイス ツインの報告されるプロパティの更新
 
@@ -163,7 +164,7 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
-詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]を参照してください。
+詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
 
 ### <a name="receiving-desired-properties-update-notifications"></a>必要なプロパティの更新通知の受信
 
@@ -178,9 +179,9 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 
 
 > [!IMPORTANT] 
-> IoT Hub は、デバイスが接続されている場合にのみ変更通知を生成します。IoT Hub とデバイス アプリの間で必要なプロパティを同期させるには、[デバイス再接続フロー][lnk-devguide-twin-reconnection]を必ず実装してください。
+> IoT Hub は、デバイスが接続されている場合にのみ変更通知を生成します。 IoT Hub とデバイス アプリの間で必要なプロパティを同期させるには、[デバイス再接続フロー][lnk-devguide-twin-reconnection]を必ず実装してください。
 
-詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]を参照してください。
+詳細については、[デバイス ツイン開発者ガイド][lnk-devguide-twin]をご覧ください。
 
 ### <a name="respond-to-a-direct-method"></a>ダイレクト メソッドへの応答
 
@@ -188,7 +189,7 @@ JSON ドキュメントの各メンバーは、デバイス ツインのドキ�
 
 デバイスは、応答するために、有効な JSON または空の本文と共にメソッド要求をトピック `$iothub/methods/res/{status}/?$rid={request id}` に送信します。ここで、**request id** は要求メッセージの要求 ID と一致する必要があり、**status** は整数である必要があります。
 
-詳細については、[ダイレクト メソッド開発者ガイド][lnk-methods]を参照してください。
+詳細については、[ダイレクト メソッド開発者ガイド][lnk-methods]をご覧ください。
 
 ### <a name="additional-considerations"></a>追加の考慮事項
 最後の考慮事項として、MQTT プロトコルの動作をクライアント側でカスタマイズする必要がある場合は、[Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway]に関するページを確認してください。IoT Hub と直接やり取りする高性能のカスタム プロトコル ゲートウェイをデプロイできます。 Azure IoT プロトコル ゲートウェイでは、ブラウンフィールド MQTT デプロイメントまたは他のカスタム プロトコルに応じてデバイス プロトコルをカスタマイズすることができます。 ただし、このアプローチでは、カスタム プロトコル ゲートウェイを実行して運用する必要があります。

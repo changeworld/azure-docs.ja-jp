@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/21/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: c8a53cbbfdb0f3d5d5b4b3a1e70f2c08d50c6004
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 042b99a77fae0de2fe65113d9d909a443f5487d4
+ms.openlocfilehash: 3a6020b2c189b4ce9a930a18d78140b7bd8ff8ff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 この記事は、導入した Azure Multi-factor Authentication を管理する際に役立ちます。  ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。  ただし、Azure Multi-factor Authentication のすべてのバージョンですべての機能を使用できるわけではありません。
 
-| 機能 | 説明 | |:--- |:--- || | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスを通報できるように、不正アクセスのアラートを構成して設定できます。 | | [ワンタイム バイパス](#one-time-bypass) |ワンタイム バイパスは、多要素認証を "バイパス" することによって、ユーザーを&1; 回だけ認証できます。 | | [カスタム音声メッセージ](#custom-voice-messages) |カスタム音声メッセージは、独自の録音やあいさつを多要素認証で使用できるようにします。 | | [キャッシュ](#caching-in-azure-multi-factor-authentication) |キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。 | | [信頼できる IP](#trusted-ips) |この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、信頼できる P を使用して、会社のローカル イントラネットからサインインするユーザーの&2; 段階認証をバイパスできます。 | | [アプリ パスワード](#app-passwords) |アプリ パスワードは、MFA を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。 | | [記憶されたデバイスとブラウザーで Multi-Factor Authentication を記憶する](#remember-multi-factor-authentication-for-devices-users-trust) |ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。 | | [選択可能な検証方法](#selectable-verification-methods) |ユーザーが使用できる検証方法を選択できます。 |
+| 機能 | 説明 | |:--- |:--- || | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスを通報できるように、不正アクセスのアラートを構成して設定できます。 | | [ワンタイム バイパス](#one-time-bypass) |ワンタイム バイパスは、多要素認証を "バイパス" することによって、ユーザーを&1; 回だけ認証できます。 | | [カスタム音声メッセージ](#custom-voice-messages) |カスタム音声メッセージは、独自の録音やあいさつを多要素認証で使用できるようにします。 | | [キャッシュ](#caching-in-azure-multi-factor-authentication) |キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。 | | [信頼できる IP](#trusted-ips) |この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、信頼できる P を使用して、会社のローカル イントラネットからサインインするユーザーの&2; 段階認証をバイパスできます。 | | [アプリ パスワード](#app-passwords) |アプリ パスワードは、MFA を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。 | | [記憶されたデバイスとブラウザーで Multi-Factor Authentication を記憶する](#remember-multi-factor-authentication-for-devices-that-users-trust) |ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。 | | [選択可能な検証方法](#selectable-verification-methods) |ユーザーが使用できる検証方法を選択できます。 |
 
 ## <a name="access-the-azure-mfa-management-portal"></a>Azure MFA 管理ポータルを開く
 
@@ -164,7 +164,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 <center>![クラウド](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>信頼できる IP
-信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの&2; 段階認証をバイパスするために使用できる Azure MFA の機能です。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用で、管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication.md#how-to-get-azure-multi-factor-authentication)」を参照してください。
+信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの&2; 段階認証をバイパスするために使用できる Azure MFA の機能です。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用で、管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 | Azure AD テナントの種類 | 使用可能な信頼できる IP オプション |
 |:--- |:--- |
@@ -260,13 +260,18 @@ Azure AD は、オンプレミスの Windows Server Active Directory Domain Serv
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>ユーザーが信頼するデバイスに対する Multi-Factor Authentication を記憶する
 ユーザーが信頼するデバイスとブラウザーに対する Multi-Factor Authentication の記憶は、すべての MFA ユーザー向けの無料の機能です。 ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、MFA を省略できるようにすることが可能です。 これにより、ユーザーが同じデバイスで&2; 段階認証を実行する回数を最小限に抑えることで使いやすさを強化できます。
 
+ただし、アカウントまたはデバイスが侵害された場合、信頼できるデバイスに対する MFA の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。 この操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは&2; 段階認証を再度実行する必要があります。 また、「[2 段階認証設定の管理](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」に書かれている手順で各自のデバイスの MFA を復元するようユーザーに指示してください。
+
+### <a name="how-it-works"></a>動作のしくみ
+
+Multi-Factor Authentication の記憶機能は、ブラウザーでユーザーがサインイン時に "今後 **X** 日間はこのメッセージを表示しない" というチェック ボックスをオンにしたときに永続的な Cookie を設定することによって実現されています。 この場合、Cookie の有効期限が切れるまでは、同じブラウザーからユーザーが MFA を求められることはありません。 そのユーザーが同じデバイスで異なるブラウザーを開くか、または Cookie をクリアした場合は、再度、認証が求められます。 
+
+非ブラウザー アプリでは、先進認証がサポートされているかどうかに関係なく、"今後 **X** 日間はこのメッセージを表示しない" チェック ボックスは表示されません。 そうしたアプリでは、新しいアクセス トークンが&1; 時間おきに支給される更新トークンが使用されます。 更新トークンの検証時に、前回の&2; 段階認証が、設定されている日数内に実行されたことが Azure AD によってチェックされます。 
+
+そのため、信頼済みデバイスで MFA を記憶した場合、(通常は毎回認証メッセージが表示される) Web アプリでは認証回数が減りますが、(通常は 90 日おきに認証メッセージが表示される) 先進認証クライアントでは認証回数が増えます。
+
 > [!NOTE]
-> この機能は、ブラウザーのクッキーのキャッシュとして実装されます。 ブラウザーのクッキーが有効でない場合は機能しません。
-
-ただし、アカウントまたはデバイスが侵害された場合、信頼できるデバイスに対する MFA の記憶はセキュリティに影響する可能性があります。 アカウントのセキュリティを確保するために、すべてのデバイスで Multi-factor Authentication を復元するオプションがあります。 これは、すべてのデバイスで信頼された状態が失われ、ユーザーは&2; 段階認証を再度実行する必要があることを意味します。 次のシナリオに該当する場合は、デバイスに対する Multi-Factor Authentication を復元する必要があります。
-
-* 企業アカウントが侵害されている場合
-* 記憶されたデバイスが紛失または盗まれた場合
+>Azure MFA サーバーまたはサードパーティの MFA ソリューションを介して AD FS の&2; 段階認証を行うとき、Multi-Factor Authentication の記憶機能は、AD FS の "サインインしたままにする" 機能とは互換性がありません。 ユーザーが AD FS の "サインインしたままにする" を選択したうえでさらに、MFA に対して信頼済みデバイスとして指定した場合、"MFA の記憶" 日数が過ぎると本人確認ができなくなります。 Azure AD からは新たに&2; 段階認証を行うよう要求されますが、AD FS からは、2 段階認証を再実行するように求められるのではなく、元の MFA クレームと日付を含んだトークンが返されます。 その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
 1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインします。

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 02/22/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 8afc15321db5c6d3b7c6cae2692a9a0d61ccdf6a
-ms.openlocfilehash: d62431f3fae21388d8ccfc0d411267f69823b700
+ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
+ms.openlocfilehash: 441e2adf6a222a0fc2e7e06c9b0140548655d542
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -58,7 +59,7 @@ DocumentDB でコレクションが格納できる合計データ量には、制
 十分な数のパーティション キーにワークロードをほぼ均等に分散できる場合は、DocumentDB でコレクションがサポートできるスループットの合計量には、制限はありません。
 
 ### <a name="how-much-does-microsoft-azure-documentdb-cost"></a>Microsoft Azure DocumentDB の料金はいくらですか?
-詳細については、「 [DocumentDB 料金](https://azure.microsoft.com/pricing/details/documentdb/) 」ページを参照してください。 DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの消費ストレージとプロビジョニング済みスループットによって決まります。
+詳細については、「[DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」ページを参照してください。 DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの消費ストレージとプロビジョニング済みスループットによって決まります。
 
 ### <a name="is-there-a-free-account-available"></a>無料アカウントを使用できますか?
 Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。 Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり&150; ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。  
@@ -79,7 +80,7 @@ Microsoft Azure DocumentDB は、[Azure Portal][azure-portal]で利用可能で�
 データベースは、[DocumentDB データベース コレクションとデータベースの作成](documentdb-create-collection.md)に関するページで説明されているように [Azure Portal]() を使用するか、いずれかの [DocumentDB SDK](documentdb-sdk-dotnet.md) を使用するか、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して作成できます。  
 
 ### <a name="what-is-a-collection"></a>コレクションとは何ですか?
-コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。 コレクションは課金対象のエンティティであり、その [コスト](documentdb-performance-levels.md) は、使用しているスループットとストレージによって決まります。 コレクションは、1 つまたは複数のパーティション/サーバーにまたがって存在でき、拡張性があるので、扱うことのできるストレージのボリュームやスループットには実質的に制限がありません。
+コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。 コレクションは課金対象のエンティティであり、その[コスト](documentdb-performance-levels.md)は、使用しているスループットとストレージによって決まります。 コレクションは、1 つまたは複数のパーティション/サーバーにまたがって存在でき、拡張性があるので、扱うことのできるストレージのボリュームやスループットには実質的に制限がありません。
 
 コレクションも DocumentDB の課金エンティティです。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「 [DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」を参照してください。  
 
@@ -88,15 +89,18 @@ Microsoft Azure DocumentDB は、[Azure Portal][azure-portal]で利用可能で�
 
 ## <a name="database-questions-about-developing-against-microsoft-azure-documentdb"></a>Microsoft Azure DocumentDB に対する開発についてのデータベース質問
 ### <a name="how-to-do-i-start-developing-against-documentdb"></a>どのようにして DocumentDB に対する開発を開始しますか?
-[SDK](documentdb-sdk-dotnet.md) が利用可能です。  開発者は、 [RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
+[SDK](documentdb-sdk-dotnet.md) が利用可能です。  開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
 
 GitHub では、[.NET](documentdb-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](documentdb-nodejs-samples.md)、[Python](documentdb-python-samples.md) 用の DocumentDB SDK のサンプルを入手できます。
 
 ### <a name="does-documentdb-support-sql"></a>DocumentDB は SQL をサポートしますか?
-DocumentDB SQL クエリ言語は、SQL でサポートされるクエリ機能の強化版サブセットです。 DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。 JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で利用されます。  SQL 文法の使用方法の詳細については、「[DocumentDB のクエリ][query]」を参照してください。
+DocumentDB SQL クエリ言語は、SQL でサポートされるクエリ機能の強化版サブセットです。 DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。 JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で使用されます。  SQL 文法の使用方法の詳細については、[DocumentDB のクエリ][query]に関する記事をご覧ください。
+
+### <a name="does-documentdb-support-sql-aggregation-functions"></a>DocumentDB は SQL の集計関数をサポートしますか?
+DocumentDB は、SQL 文法の集計関数 `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` をサポートしており、任意のスケールで遅延時間を集計できます。 詳細については、「[集計関数](documentdb-sql-query.md#Aggregates)」をご覧ください。
 
 ### <a name="what-are-the-data-types-supported-by-documentdb"></a>DocumentDB でサポートされるデータ型は何ですか?
-DocumentDB でサポートされるプリミティブ データ型は JSON と同じです。 JSON には、文字列、数値 (IEEE754 倍精度)、ブール値 (true、false、Null) で構成されるシンプルな型システムがあります。  { } 演算子で入れ子になったオブジェクトを作成し、[ ] 演算子で配列を作成することにより、さらに複雑なデータ型 (DateTime、Guid、Int64、Geometry など) を JSON と DocumentDB の両方で表現できます。
+DocumentDB でサポートされるプリミティブ データ型は JSON と同じです。 JSON には、文字列、数値 (IEEE754 倍精度)、ブール値 (true、false、Null) で構成されるシンプルな型システムがあります。 DocumentDB は、Point、Polygon、および GeoJSON として表現された LineString の空間型をネイティブでサポートします。 { } 演算子で入れ子になったオブジェクトを作成し、[ ] 演算子で配列を作成することにより、さらに複雑なデータ型 (DateTime、Guid、Int64、Geometry など) を JSON と DocumentDB の両方で表現できます。
 
 ### <a name="how-does-documentdb-provide-concurrency"></a>DocumentDB はどのようにして同時実行を提供しますか?
 DocumentDB では、HTTP エンティティ タグ (または ETag) によるオプティミスティック同時実行制御 (OCC) をサポートしています。 すべての DocumentDB リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 Etag を If-Match ヘッダーと共に使用すると、サーバーでリソースを更新するかどうかを判定できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が現在の値ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントでは、リソースを再フェッチしてリソースの現在の ETag 値を取得する必要があります。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判定することができます。
@@ -121,9 +125,4 @@ DocumentDB にドキュメントを一括挿入するには&3; つの方法が�
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

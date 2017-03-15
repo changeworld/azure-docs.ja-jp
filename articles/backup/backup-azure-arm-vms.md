@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/15/2017
 ms.author: trinadhk;jimpark;markgal;
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
-ms.openlocfilehash: 981c8652629e96f482d9a62b70b0f0992517019f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: 72f1ed52c9e0f39009efc54967d7cc68517182a3
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="back-up-azure-vms-to-a-recovery-services-vault"></a>Recovery Services コンテナーへの Azure VM のバックアップ
+# <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 > [!div class="op_single_selector"]
 > * [Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)
 > * [バックアップ コンテナーへの VM のバックアップ](backup-azure-vms.md)
@@ -52,7 +53,7 @@ Recovery Services コンテナーに関連付けられているバックアッ�
 
   ![項目をバックアップする](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-2. **[バックアップ項目]** ブレードで、項目を選びます。
+2. **[バックアップ項目]** ブレードで、項目を選択します。
 
   ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
@@ -74,7 +75,7 @@ Recovery Services コンテナーに関連付けられているバックアッ�
 
   [今すぐバックアップ] ブレードが開きます。
 
-  ![[今すぐバックアップ] ブレードを表示する](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+  ![[今すぐバックアップ] ブレードが開く](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
 5. [今すぐバックアップ] ブレードでカレンダー アイコンをクリックし、カレンダー コントロールを使ってこの回復ポイントを保持する最終日を選び、**[バックアップ]** をクリックします。
 

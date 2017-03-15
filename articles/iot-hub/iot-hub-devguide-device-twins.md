@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 3c9b3a9509493e8c6900d90b5ab6519de7a0721f
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: e0f03adefe1c04b4d7b8cc2dea18f15eb3f05397
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="device-twins"></a>デバイス ツイン
+# <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 ## <a name="overview"></a>概要
 "*デバイス ツイン*" は、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 この記事では、次のような内容について説明します。
 
@@ -133,7 +135,7 @@ ms.openlocfilehash: 3c9b3a9509493e8c6900d90b5ab6519de7a0721f
 3. ソリューション バックエンドは、デバイス ツインに[クエリを実行][lnk-query]することによって、多数のデバイス間で行われる構成操作の結果を追跡できます。
 
 > [!NOTE]
-> 上記のスニペットは、デバイス構成とその状態をエンコードするための例の 1 つであり、読みやすいように最適化されています。 IoT Hub は、デバイス ツインの必要なプロパティや報告されたプロパティに対して、デバイス ツイン用の特定のスキーマを強制しません。
+> 上記のスニペットは、デバイス構成とその状態をエンコードするための例の&1; つであり、読みやすいように最適化されています。 IoT Hub は、デバイス ツインの必要なプロパティや報告されたプロパティに対して、デバイス ツイン用の特定のスキーマを強制しません。
 > 
 > 
 
@@ -332,9 +334,4 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

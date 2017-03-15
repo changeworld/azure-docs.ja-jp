@@ -12,16 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ed3d5ddbbdff9ec568f513d15ecb1ea28ba8855
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: e9ff351232f68c81122efb74275a1f255b51b72f
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="extend-your-experiment-with-r"></a>R を使用した実験の拡張
-[R スクリプトの実行][execute-r-script]モジュールを使用して、R 言語によって ML Studio 機能を拡張できます。
+[R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張できます。
 
 このモジュールは、複数の入力データセットを受け取り、1 つのデータセットを出力として生成します。 [R スクリプトの実行][execute-r-script]モジュールの **R Script** パラメーターに、R スクリプトを入力できます。
 
@@ -29,10 +30,10 @@ ms.openlocfilehash: 7ed3d5ddbbdff9ec568f513d15ecb1ea28ba8855
 
     dataset1 <- maml.mapInputPort(1)
 
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
 ## <a name="listing-all-currently-installed-packages"></a>現在インストールされているすべてのパッケージを一覧表示する
-インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージと各パッケージの説明が含まれた完全な一覧を取得するには、[R スクリプトの実行][execute-r-script]モジュールに次のコードを入力します。
+インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージの一覧は、「[R Packages Supported by Azure Machine Learning (Azure Machine Learning でサポートされている R パッケージ)](https://msdn.microsoft.com/library/azure/mt741980.aspx)」で確認できます。
+
+また、[R スクリプトの実行][execute-r-script]モジュールに次のコードを入力して、現在インストールされているパッケージの完全な一覧を取得することもできます。
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
@@ -40,19 +41,22 @@ ms.openlocfilehash: 7ed3d5ddbbdff9ec568f513d15ecb1ea28ba8855
 これにより、[R スクリプトの実行][execute-r-script]モジュールの出力ポートにパッケージの一覧が送信されます。
 パッケージの一覧を表示するには、[CSV に変換][convert-to-csv]などの変換モジュールを、[R スクリプトの実行][execute-r-script]モジュールの左側の出力に接続し、実験を実行します。次に、変換モジュールの出力をクリックし、**[ダウンロード]** を選択します。 
 
-![](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+!["CSV に変換" モジュールの出力をダウンロードする](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
+
 
 <!--
 For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
 ## <a name="importing-packages"></a>パッケージをインポートする
-[R スクリプトの実行][execute-r-script]モジュールと圧縮されたパッケージのアーカイブで次のコマンドを使用して、ステージングされた ML Studio リポジトリから、まだインストールされていないパッケージをインポートすることもできます。
+[R スクリプトの実行][execute-r-script]モジュールで次のコマンドを使用して、まだインストールされていないパッケージをインポートできます。
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-ここで、 `my_favorite_package.zip` にはパッケージの zip ファイルが含まれています。
+上記の `my_favorite_package.zip` はパッケージが含まれているファイルです。
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 <!--
 
@@ -511,9 +515,4 @@ To get the complete list of packages that are currently available, see the secti
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

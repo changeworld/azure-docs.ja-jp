@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/22/2017
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
+ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
+ms.openlocfilehash: 7c32d69f3d6d2cc60f830db96b6aea47ce8712ca
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -26,7 +27,11 @@ DocumentDB の [要求ユニット計算ツール](https://www.documentdb.com/ca
 ![Throughput calculator][5]
 
 ## <a name="introduction"></a>はじめに
-この記事では、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)の要求ユニットの概要について説明します。 
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は、JSON ドキュメント用の完全に管理された、スケーラブルな NoSQL データベース サービスです。 DocumentDB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のエンジニアによって運用され、継続的な監視が行われる DocumentDB は、卓越した可用性、パフォーマンス、データ保護を提供します。 DocumentDB のデータは、柔軟で可用性の高いコンテナーであるコレクションに格納されます。 コレクションの CPU、メモリ、IOPS などのハードウェア リソースを考慮したり管理したりする代わりに、1 秒あたりの要求数の観点からスループットを予約できます。 DocumentDB は、コレクションのプロビジョニング、透過的なパーティション分割、スケーリングを自動的に管理して、プロビジョニングされた要求数を処理します。 
+
+DocumentDB は、読み取り、書き込み、クエリ、ストアド プロシージャ実行のための多数の API をサポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、DocumentDB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。
+
+DocumentDB の各コレクションは、スループットで予約できます。これは要求ユニットによっても表されます。 つまり、1 秒あたり 100 要求ユニットのブロックで、1 秒あたり数百から数百万の要求ユニットまで予約できます。 プロビジョニングしたスループットは、そのコレクションの有効期間にわたって、アプリケーションの処理ニーズの変化やアクセス パターンに合わせて調整できます。 
 
 この記事を読むと、次の質問に回答できるようになります。  
 
@@ -47,9 +52,45 @@ DocumentDB では、1 秒間に処理する要求ユニットで、予約済み�
 > 
 
 ## <a name="specifying-request-unit-capacity"></a>要求ユニット量の指定
-DocumentDB コレクションの作成時に、そのコレクション用に予約する&1; 秒ごとの要求ユニット数 (RU) を指定します。  コレクションを作成した後、そのコレクションで使用するために、指定された RU の完全な割り当てが予約されます。  各コレクションは、専用の分離されたスループット特性を持つことが保証されます。  
+DocumentDB コレクションの作成時に、そのコレクション用に予約する&1; 秒ごとの要求ユニット数 (RU/秒) を指定します。 プロビジョニング済みのスループットに基づいて、DocumentDB はコレクションをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
 
-DocumentDB は予約モデルで運用されることに注意してください。つまり、実際に "*使用した*" スループット量ではなく、コレクション用に "*予約した*" スループット量に対する料金が請求されます。  ただし、アプリケーションの負荷やデータ、使用パターンが変化したときに、DocumentDB SDK または [Azure ポータル](https://portal.azure.com)で、予約済み RU の量を簡単にスケールアップまたはスケールダウンできます。  スループットのスケールアップとスケールダウンの詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+DocumentDB では、10,000 以上の要求ユニットでコレクションがプロビジョニングされるとき、パーティション キーを指定する必要があります。 パーティション キーは、今後 10,000 要求ユニットを超えてコレクションのスループットをスケーリングするためにも必要です。 したがって、初期のスループットに関係なく、コレクションの作成時に[パーティション キー](documentdb-partition-data.md)を構成しておくことを強くお勧めします。 データが複数のパーティションに分割される場合があるため、コレクションと要求が DocumentDB によって一様にスケーリングできるように、高基数 (数百から数百万の個別の値) のパーティション キーを選択する必要があります。 
+
+> [!NOTE]
+> パーティション キーは論理境界であり、物理的な境界ではありません。 したがって、個別のパーティション キー値の数を制限する必要はありません。 DocumentDB には他にも負荷分散のオプションがあるので、個別のパーティション キー値は多くしておくことをお勧めします。
+
+次に示すコード スニペットは、.NET SDK を使用して、1 秒あたり 3,000 要求ユニットのコレクションを作成します。
+
+```C#
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 3000 });
+```
+
+DocumentDB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、コレクション用に "*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、DocumentDB SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の量を簡単にスケールアップしたりスケールダウンしたりできます。
+
+各コレクションは、DocumentDB の `Offer` リソースにマップされます。このリソースは、コレクションのプロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コレクションに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コレクションのスループットを 1 秒あたり 5,000 要求ユニットに変更します。
+
+```C#
+// Fetch the resource to be updated
+Offer offer = client.CreateOfferQuery()
+                .Where(r => r.ResourceLink == collection.SelfLink)    
+                .AsEnumerable()
+                .SingleOrDefault();
+
+// Set the throughput to 5000 request units per second
+offer = new OfferV2(offer, 5000);
+
+// Now persist these changes to the database by replacing the original resource
+await client.ReplaceOfferAsync(offer);
+```
+
+スループットを変更しても、コレクションの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
 
 ## <a name="request-unit-considerations"></a>要求ユニットの考慮事項
 DocumentDB コレクション用に予約する要求ユニット数を推定する際は、以下の変数についても検討することが重要です。
@@ -69,6 +110,55 @@ DocumentDB コレクション用に予約する要求ユニット数を推定す
 > 1 KB のドキュメントに対する 1 つの要求ユニットのベースラインは、ドキュメントの self リンクまたは ID による単純な GET に対応します。
 > 
 > 
+
+たとえば、次の表は、3 種類のサイズのドキュメント (1 KB、4 KB、64 KB) を 2 種類のパフォーマンス レベル (500 読み取り/秒 + 100 書き込み/秒と、500 読み取り/秒 + 500 書き込み/秒) でプロビジョニングした場合の要求ユニット数を示しています。 データの一貫性はセッションで構成され、インデックス作成ポリシーはなしに設定されています。
+
+<table border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td valign="top"><p><strong>ドキュメント サイズ</strong></p></td>
+            <td valign="top"><p><strong>読み取り数/秒</strong></p></td>
+            <td valign="top"><p><strong>書き込み数/秒</strong></p></td>
+            <td valign="top"><p><strong>要求ユニット</strong></p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1) + (100 * 5) = 1,000 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>1 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 5) + (100 * 5) = 3,000 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1,350 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>4 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4,150 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>100</p></td>
+            <td valign="top"><p>(500 * 10) + (100 * 48) = 9,800 RU/秒</p></td>
+        </tr>
+        <tr>
+            <td valign="top"><p>64 KB</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>500</p></td>
+            <td valign="top"><p>(500 * 10) + (500 * 48) = 29,000 RU/秒</p></td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="use-the-request-unit-calculator"></a>要求ユニット計算ツールの使用
 スループットをユーザーが緻密に推定できるように、Web ベースの[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が用意されています。たとえば以下に示す標準的な操作で必要になる要求ユニットを見積もることができます。
@@ -99,7 +189,7 @@ DocumentDB コレクション用に予約する要求ユニット数を推定す
 > 
 
 ### <a name="use-the-documentdb-request-charge-response-header"></a>DocumentDB の "要求の使用量" 応答ヘッダーの使用
-DocumentDB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (x-ms-request-charge) が付きます。 このヘッダーには、DocumentDB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure ポータルの DocumentDB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
+DocumentDB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (`x-ms-request-charge`) が付きます。 このヘッダーには、DocumentDB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure ポータルの DocumentDB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
 
 ![Examining RU charges in the Query Explorer][1]
 
@@ -122,53 +212,55 @@ DocumentDB サービスからの各応答には、要求で使用される要求
 ## <a name="a-request-unit-estimation-example"></a>要求ユニット推定の例
 次の&1; KB 未満のドキュメントについて考えてみましょう。
 
+```JSON
+{
+ "id": "08259",
+  "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
+  "tags": [
     {
-     "id": "08259",
-      "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-      "tags": [
-        {
-          "name": "cereals ready-to-eat"
-        },
-        {
-          "name": "kellogg"
-        },
-        {
-          "name": "kellogg's crispix"
-        }
-    ],
-      "version": 1,
-      "commonName": "Includes USDA Commodity B855",
-      "manufacturerName": "Kellogg, Co.",
-      "isFromSurvey": false,
-      "foodGroup": "Breakfast Cereals",
-      "nutrients": [
-        {
-          "id": "262",
-          "description": "Caffeine",
-          "nutritionValue": 0,
-          "units": "mg"
-        },
-        {
-          "id": "307",
-          "description": "Sodium, Na",
-          "nutritionValue": 611,
-          "units": "mg"
-        },
-        {
-          "id": "309",
-          "description": "Zinc, Zn",
-          "nutritionValue": 5.2,
-          "units": "mg"
-        }
-      ],
-      "servings": [
-        {
-          "amount": 1,
-          "description": "cup (1 NLEA serving)",
-          "weightInGrams": 29
-        }
-      ]
+      "name": "cereals ready-to-eat"
+    },
+    {
+      "name": "kellogg"
+    },
+    {
+      "name": "kellogg's crispix"
     }
+  ],
+  "version": 1,
+  "commonName": "Includes USDA Commodity B855",
+  "manufacturerName": "Kellogg, Co.",
+  "isFromSurvey": false,
+  "foodGroup": "Breakfast Cereals",
+  "nutrients": [
+    {
+      "id": "262",
+      "description": "Caffeine",
+      "nutritionValue": 0,
+      "units": "mg"
+    },
+    {
+      "id": "307",
+      "description": "Sodium, Na",
+      "nutritionValue": 611,
+      "units": "mg"
+    },
+    {
+      "id": "309",
+      "description": "Zinc, Zn",
+      "nutritionValue": 5.2,
+      "units": "mg"
+    }
+  ],
+  "servings": [
+    {
+      "amount": 1,
+      "description": "cup (1 NLEA serving)",
+      "weightInGrams": 29
+    }
+  ]
+}
+```
 
 > [!NOTE]
 > ドキュメントは DocumentDB で縮小されるため、システムで計算される上記ドキュメントのサイズは 1 KB をわずかに下回ります。
@@ -209,7 +301,7 @@ DocumentDB サービスからの各応答には、要求で使用される要求
 
 この例では、平均スループット要件を 1,275 RU/s と想定しています。  100 の位で丸めて、このアプリケーションのコレクションに 1,300 RU/s をプロビジョニングすることになります。
 
-## <a name="a-idrequestratetoolargea-exceeding-reserved-throughput-limits"></a><a id="RequestRateTooLarge"></a> 予約されたスループット上限の超過
+## <a id="RequestRateTooLarge"></a> 予約されたスループット上限の超過
 要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。 コレクションに対してプロビジョニングされた要求単位レートをアプリケーションが超過した場合、そのレートが予約されたレベルを下回るまで、コレクションに対する要求は制限されます。 スロットルが発生すると、サーバーはいち早く RequestRateTooLargeException (HTTP 状態コード 429) で要求を終了させ、x-ms-retry-after-ms ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
 
     HTTP Status 429
@@ -236,9 +328,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

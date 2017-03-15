@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Docs"
+title: "Azure AD Connect の MV デザイナー | Microsoft Docs"
 description: "Azure AD Connect の Synchronization Service Manager の [メタバース デザイナー] タブについて説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 610dab0af17f927d86b677f647acd0dfe2569583
-ms.openlocfilehash: a86e9f4a5c0be1486dcbd802ba30c5affe19b729
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 0315e4323ce76bae0fcd09a72201603cfde0608e
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect 同期: Synchronization Service Manager
+# <a name="sync-service-manager-metavese-designer"></a>Sync Service Manager のメタバース デザイナー
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvdesigner.png)
 
@@ -30,9 +31,4 @@ ms.openlocfilehash: a86e9f4a5c0be1486dcbd802ba30c5affe19b729
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

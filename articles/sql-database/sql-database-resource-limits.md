@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.date: 02/24/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
-ms.openlocfilehash: 15fd64f21eb20ae412f4d0cf1930e99e2e9fc62b
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8441a5318bfee3fc45482a61db13adaa034b824a
+ms.openlocfilehash: 7d50a2861e4dae06d4de09417a2208b453fa499b
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -62,8 +62,8 @@ Basic、Standard、および Premium サービス レベルの設計目標の&1;
 | 領域 | 制限 | Description |
 | --- | --- | --- |
 | サブスクリプションあたりの自動エクスポートを使用するデータベース |10 |自動エクスポートを使用すると、カスタム スケジュールを作成して、SQL Database をバックアップできます。 この機能のプレビューは、2017 年 3 月 1 日に終了します。  |
-| サーバーあたりのデータベース |最大 5000 |V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。 |
-| サーバーあたりの DTU |45000 |データベース、エラスティック プール、データ ウェアハウスをプロビジョニングする場合、V12 サーバーではサーバーあたり&45;,000 DTU を使用できます。 |
+| サーバーあたりのデータベース数 |最大 5000 |V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。 |
+| サーバーあたりの DTU |45000 |スタンドアロン データベースとエラスティック プールをプロビジョニングする場合、V12 サーバーではサーバーあたり&45;,000 DTU を使用できます。 サーバーごとに許可されるスタンドアロン データベースとプールの合計数は、サーバーの DTU の数に制限されます。  
 
 > [!IMPORTANT]
 > Azure SQL Database の自動エクスポート機能は現在プレビュー段階であり、2017 年 3 月 1 日に廃止されます。 2016 年 12 月 1 日から、SQL データベースの自動エクスポートを構成することはできなくなります。 既存の自動エクスポート ジョブは、引き続き 2017 年 3 月 1 日まで実行されます。 2016 年 12 月 1 日以降は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)または [Azure Automation](../automation/automation-intro.md) を使用してください。PowerShell を使用して、選択したスケジュールに従って定期的に SQL データベースをアーカイブできます。 サンプル スクリプトは [GitHub からダウンロード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)できます。 

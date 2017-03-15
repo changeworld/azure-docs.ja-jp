@@ -74,7 +74,7 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
     ![ソリューションのワークスペース](./media/log-analytics-get-started/solution-workspace.png)  
 5. 手順 1 ～ 4 を繰り返して、次のサービス オファリングを追加します。
     - [Antimalware Assessment (マルウェア対策評価)] ソリューションと [Security and Audit (セキュリティと監査)] ソリューションが含まれた **[Security & Compliance (セキュリティとコンプライアンス)]** サービス オファリング。
-    - [Automation Hybrid Worker (Automation ハイブリッド worker)] ソリューション、[Change Tracking (変更の追跡)] ソリューション、および [System Update Assessment (システムの更新の評価)](別名 Update Management [更新管理]) ソリューションが含まれた **[Automation & Control (オートメーションと制御)]** サービス オファリング。 ソリューション オファリングを追加する際に Automation アカウントを作成する必要があります。  
+    - [Automation Hybrid Worker (Automation ハイブリッド worker)] ソリューション、[Change Tracking (変更の追跡)] ソリューション、および [System Update Assessment (システムの更新の評価)] \(別名 Update Management [更新管理]) ソリューションが含まれた **[Automation & Control (オートメーションと制御)]** サービス オファリング。 ソリューション オファリングを追加する際に Automation アカウントを作成する必要があります。  
         ![Automation アカウント](./media/log-analytics-get-started/automation-account.png)  
 6. ワークスペースに追加した管理ソリューションを表示するには、**[Log Analytics]** > **[サブスクリプション]** > ***ワークスペース名*** > **[概要]** の順に選択します。 追加した管理ソリューションのタイルが表示されます。  
     >[!NOTE]

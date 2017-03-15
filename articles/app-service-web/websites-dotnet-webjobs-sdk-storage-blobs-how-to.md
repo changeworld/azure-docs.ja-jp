@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 968df0fde8b042cdea369e566ecdb62937a3b8ee
@@ -29,7 +29,7 @@ BLOB を作成する方法を示すコード サンプルについては、「 [
 
 このガイドは、Visual Studio で[ストレージ アカウント](websites-dotnet-webjobs-sdk-get-started.md)または[複数のストレージ アカウント](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs)を指定する接続文字列を使って Web ジョブ プロジェクトを作成する方法を理解していることを前提としています。
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a><a id="trigger"></a> BLOB が作成または更新されたときに、関数をトリガーする方法
+## <a id="trigger"></a> BLOB が作成または更新されたときに、関数をトリガーする方法
 このセクションでは、 `BlobTrigger` 属性を使用する方法を示しています。 
 
 > [!NOTE]
@@ -82,7 +82,7 @@ BLOB を作成する方法を示すコード サンプルについては、「 [
             output = input.ReadToEnd();
         }
 
-## <a name="a-idtypesa-types-that-you-can-bind-to-blobs"></a><a id="types"></a> BLOB にバインドすることができる種類
+## <a id="types"></a> BLOB にバインドすることができる種類
 次の種類の `BlobTrigger` 属性を使用できます。
 
 * `string`
@@ -101,7 +101,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 
 例については、 [GitHub.com の azure-webjobs-sdk リポジトリにある BLOB バインド コード](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/BlobBindingEndToEndTests.cs)を参照してください。
 
-## <a name="a-idstringa-getting-text-blob-content-by-binding-to-string"></a><a id="string"></a> 文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
+## <a id="string"></a> 文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
 テキスト BLOB がある場合は、  `BlobTrigger`を `string` パラメーターに適用できます。 次のコード サンプルでは、テキスト BLOB を `logMessage` という名前の `string` パラメーターにバインドします。 関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュボードに、BLOB の内容を記述します。 
 
         public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
@@ -113,7 +113,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
              logger.WriteLine(logMessage);
         }
 
-## <a name="a-idicbsba-getting-serialized-blob-content-by-using-icloudblobstreambinder"></a><a id="icbsb"></a>ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
+## <a id="icbsb"></a>ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
 次のコード サンプルでは、`ICloudBlobStreamBinder` を実装するクラスを使用して `BlobTrigger` 属性を有効化して BLOB を `WebImage` 型にバインドします。
 
         public static void WaterMark(
@@ -164,7 +164,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
         }
 
 
-## <a name="a-idpoisona-how-to-handle-poison-blobs"></a><a id="poison"></a> 有害な BLOB の処理方法
+## <a id="poison"></a> 有害な BLOB の処理方法
 `BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。 失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。 既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。 5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison*という名前のキューにメッセージを追加します。
 
 再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。 
@@ -208,14 +208,14 @@ SDK は、自動的にJSON メッセージを逆シリアル化します。 こ�
             public string ETag { get; set; }
         }
 
-### <a name="a-idpollinga-blob-polling-algorithm"></a><a id="polling"></a> BLOB のポーリング アルゴリズム
+### <a id="polling"></a> BLOB のポーリング アルゴリズム
 Web ジョブ SDK は、アプリケーションの起動時に `BlobTrigger` 属性が指定するすべてのコンテナーをスキャンします。 大容量のストレージ アカウントでは、このスキャンに時間がかかるため、新しい BLOB が見つかり、 `BlobTrigger` 関数が実行されるまでにしばらく時間がかかります。
 
 アプリケーションの起動後に新しいまたは変更された BLOB を検出するために、SDK は定期的に BLOB ストレージ ログを読み取ります。 BLOB のログはバッファーされ、10 分程度ごとに物理的に記述されるので、BLOB が作成されるか更新され、対応する `BlobTrigger` 関数が実行されるにはかなり時間がかかる可能性があります。 
 
 `Blob` 属性を使用して作成する BLOB には例外があります。 Web ジョブ SDK は新しい BLOB を作成すると、一致するすべての `BlobTrigger` 関数に新しい BLOB をすぐに渡します。 そのため、一連の BLOB 入力と BLOB 出力がある場合は、SDK は効率的に処理できます。 ただし、その他の方法で作成または更新された BLOB に対して 低遅延で実行される BLOB 処理関数を使用する場合は、`BlobTrigger` ではなく `QueueTrigger` をお勧めします。
 
-### <a name="a-idreceiptsa-blob-receipts"></a><a id="receipts"></a> BLOB の配信確認メッセージ
+### <a id="receipts"></a> BLOB の配信確認メッセージ
 Web ジョブ SDK では、 `BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。 これは *BLOB の配信確認メッセージ* を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
 BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。 BLOB の配信確認メッセージには次の情報が含まれています。
@@ -228,7 +228,7 @@ BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が�
 
 BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-queues-article"></a><a id="queues"></a>キューの記事で扱う関連トピック
+## <a id="queues"></a>キューの記事で扱う関連トピック
 キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください 
 
 その記事では、以下のような関連トピックが紹介されています。
@@ -243,7 +243,7 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「 [Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
 

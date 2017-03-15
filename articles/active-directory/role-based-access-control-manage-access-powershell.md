@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/22/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
-ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 32c6224b36c73394c6bbd2aa5f6439f54f39f306
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -26,14 +26,12 @@ ms.lasthandoff: 02/15/2017
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
-> 
-> 
 
 Azure ポータルと Azure リソース管理 API のロールベースの Access Control (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。 この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
-PowerShell を使って RBAC を管理するには、以下を用意しておく必要があります。
+PowerShell を使って RBAC を管理するには、事前に以下の前提条件を用意しておく必要があります。
 
-* Azure PowerShell バージョン 0.8.8 以降。 最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「 [How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](/powershell/azureps-cmdlets-docs)」をご覧ください。
+* Azure PowerShell バージョン 0.8.8 以降。 最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Get started with Azure PowerShell cmdlets (Azure PowerShell コマンドレットの概要)](/powershell/azureps-cmdlets-docs)」をご覧ください。
 * Azure Resource Manager コマンドレット。 PowerShell で [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx) をインストールします。
 
 ## <a name="list-roles"></a>ロールの一覧表示
@@ -132,13 +130,15 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 
 ## <a name="get-actions-from-particular-resource-provider"></a>特定のリソース プロバイダーからアクションを取得する
 カスタム ロールを最初から作成するときは、リソース プロバイダーから可能なすべての操作を理解しておくことが重要です。
-これは、```Get-AzureRMProviderOperation``` コマンドを使って実現できます。 たとえば、仮想マシンで使用可能なすべての操作を確認する場合、コマンドは次のようになります。
+この情報を取得するには、```Get-AzureRMProviderOperation``` コマンドを使います。
+たとえば、仮想マシンで使用可能なすべての操作を確認する場合は、次のコマンドを使います。
 
-```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
-
+```
+Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize
+```
 
 ### <a name="create-role-with-psroledefinitionobject"></a>PSRoleDefinitionObject を使用したロールの作成
-PowerShell を使用してカスタム ロールを作成する場合は、ゼロから始めることも、[組み込みのロール](role-based-access-built-in-roles.md)を出発点として使用することもできます。ここに示す例では、後者の方法を使用しています。 その属性を編集し、必要に応じて *Actions*、*notActions*、*スコープ*を追加して、変更内容を新しいロールとして保存します。
+PowerShell を使ってカスタム ロールを作成する場合は、ゼロから始めることも、[組み込みのロール](role-based-access-built-in-roles.md)を出発点として使うこともできます。 このセクションの例では、組み込みのロールから始めて、さらに多くの権限を持つようにカスタマイズします。 その属性を編集し、必要に応じて *Actions*、*notActions*、*スコープ*を追加して、変更内容を新しいロールとして保存します。
 
 以下の例では、"*仮想マシンの共同作業者*" ロールを土台として、"*仮想マシン オペレーター*" というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは&2; つのサブスクリプションで使用できます。
 
@@ -166,7 +166,7 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ### <a name="create-role-with-json-template"></a>JSON テンプレートを使用したロールの作成
-カスタム ロールのソース定義として JSON テンプレートを使用できます。 次の例では、ストレージと計算リソースへの読み取りアクセス、サポートへのアクセスを許可するカスタム ロールを作成し、そのロールを&2; つのサブスクリプションに追加します。 次の内容を持つ新しいファイル `C:\CustomRoles\customrole1.json` を作成します。 新しい ID が生成されるため、最初のロール作成では Id を `null` に設定してください。 
+カスタム ロールのソース定義として JSON テンプレートを使用できます。 次の例では、ストレージと計算リソースへの読み取りアクセス、サポートへのアクセスを許可するカスタム ロールを作成し、そのロールを&2; つのサブスクリプションに追加します。 次の内容を持つ新しいファイル `C:\CustomRoles\customrole1.json` を作成します。 新しい ID が自動的に生成されるため、最初のロール作成では ID を `null` に設定する必要があります。 
 
 ```
 {
@@ -221,7 +221,7 @@ Set-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell - Set-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
 ### <a name="modify-role-with-json-template"></a>JSON テンプレートを使用したロールの変更
-前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 JSON テンプレートを更新し、次のようにネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されないことに注意してください。つまり、ロールは、テンプレートに指定したとおりに表れます。 さらに、Id をロールの ID に更新する必要もあります。 この値が不明な場合は、`Get-AzureRmRoleDefinition` コマンドレットを使用してこの情報を取得できます。
+前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 次の例のように、JSON テンプレートを更新し、ネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されません。つまり、ロールは、テンプレートに指定したとおりに表れます。 また、Id フィールドをロールの ID で更新する必要もあります。 この値が不明な場合は、`Get-AzureRmRoleDefinition` コマンドレットを使用してこの情報を取得できます。
 
 ```
 {

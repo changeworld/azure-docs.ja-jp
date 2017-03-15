@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/31/2017
+ms.date: 02/01/2017
 ms.author: jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 57175ddc53d5856cd3492d4c631a92d4bf9247c4
-ms.openlocfilehash: 859f87356448041a320c2e126478aabf1efa0d44
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: 8f0870c98f625a56cfddacd91b401206293122f1
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Visual Studio 2015](http://www.visualstudio.com)。
+1. [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。
 
-2. [.NET Core Visual Studio 2015 ツール](http://www.microsoft.com/net/core)。
+2. [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
 
 3. Azure サブスクリプション。
 

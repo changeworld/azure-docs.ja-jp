@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
 ms.openlocfilehash: dba809c8d7021357142ec2832b4660c6fb10ec96
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -44,11 +45,11 @@ Ceridian Dayforce HCM と Azure AD の統合を構成するには、次のもの
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Ceridian Dayforce HCM の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -131,7 +132,7 @@ Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAM
 
     テスト環境では、`https://ssotest.dayforcehcm.com/DayforcehcmNamespace` の URL 形式を使用します。 
 
-    b. 運用環境では、 **** の URL 形式を使用します。  
+    b. **[応答 URL]** テキストボックスで、Azure AD が応答を投稿するために使用する URL を入力します。  
     テスト環境では、 `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2`  
     テスト環境では以下を使用します： `https://fs-test.dayforcehcm.com/sp/ACS.saml2`  
 
@@ -257,9 +258,4 @@ Ceridian Dayforce HCM サポート チームと協力して、Ceridian Dayforce 
 [203]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

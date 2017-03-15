@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 02/22/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: de2b914ddb7238c9939066570d8fba78aa5c231e
-ms.openlocfilehash: 73e9c8491520d47bbc60b1556b97918977d29d7f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
+ms.openlocfilehash: c92a54c40c329e519832f2f8de71aa5d8e15a090
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -53,6 +53,7 @@ ms.lasthandoff: 02/16/2017
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
 ### <a name="a-name11141114httpswwwnugetorgpackagesmicrosoftazuredocumentdb1114"></a><a name="1.11.4"/>[1.11.4](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.4)

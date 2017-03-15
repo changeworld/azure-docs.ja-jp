@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 8c96cacadb34a3d4eca1fe523d8a159c69a0ebe3
-ms.openlocfilehash: 01c855972d66d8ae2e975b206791ab8f9abcec41
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 24410a07995d5ac813b2bf4cdeed320c72ce7e06
+ms.openlocfilehash: 7845b552bd1360927eae414f57fefbd74ac0b7f7
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
 このトピックでは、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Microsoft Azure の FreeBSD は、最新のサーバー、デスクトップ、組み込みプラットフォームを強化するために使用される先進のコンピューター オペレーティング システムです。
 
 Microsoft Corporation では、Azure で利用可能な、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) を事前構成した FreeBSD を用意しています。 現時点では、次のバージョンの FreeBSD がイメージとしてマイクロソフトから提供されています。
@@ -38,10 +38,47 @@ Microsoft Corporation では、Azure で利用可能な、[Azure VM Guest Agent]
 FreeBSD の今後のバージョンについては、最新の機能に対応し、FreeBSD リリース エンジニアリング チームが最新版を公開したらすぐに提供することを目指しています。
 
 ## <a name="deploying-a-freebsd-virtual-machine"></a>FreeBSD 仮想マシンのデプロイ
-FreeBSD 仮想マシンのデプロイは、Azure Marketplace で提供されるイメージを使用した簡単なプロセスです。
+FreeBSD 仮想マシンのデプロイは、Azure Marketplace から提供されたイメージをAzure Portal で使用する簡単なプロセスです。
 
 - [Azure Marketplace の FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
 - [Azure Marketplace の FreeBSD 11.0](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+
+### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>FreeBSD で Azure CLI 2.0 を使用して FreeBSD VM を作成する
+まず、FreeBSD コンピューターで次のコマンドを実行して、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) をインストールする必要があります。
+
+```bash 
+    curl -L https://aka.ms/InstallAzureCli | bash
+```
+
+Bash が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
+
+```
+    sudo pkg install bash
+```
+
+Python が FreeBSD コンピューターにインストールされていない場合は、インストールの前に次のコマンドを実行します。 
+
+```
+    sudo pkg install python35
+    cd /usr/local/bin 
+    sudo rm /usr/local/bin/python 
+    sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
+```
+
+インストール中に、`Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` が表示されます。 `y` と回答し、`a path to an rc file to update` として `/etc/rc.conf` を入力した場合、`ERROR: [Errno 13] Permission denied` が発生することがあります。 この問題を解決するには、`etc/rc.conf` ファイルに対する書き込み権限を現在のユーザーに与える必要があります。
+
+これで、Azure にログインし、FreeBSD VM を作成できます。 FreeBSD 11.0 VM を作成する例を以下に示します。 `--public-ip-address-dns-name` パラメーターを追加して、新しく作成されるパブリック IP に対するグローバルに一意な DNS 名を指定することもできます。 
+
+```azurecli
+    az login 
+    az group create -n myResourceGroup -l westus az vm create -n myFreeBSD11 -g myResourceGroup --image MicrosoftOSTC:FreeBSD:11.0:latest --admin-username azureuser --ssh-key-value /etc/ssh/ssh_host_rsa_key.pub 
+```
+
+その後、上のデプロイで出力された IP アドレスを使用して、FreeBSD VM にログインできます。 
+
+```bash
+    ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
+```   
 
 ## <a name="vm-extensions-for-freebsd"></a>FreeBSD の VM 拡張機能
 FreeBSD でサポートされている VM 拡張機能を以下に示します。
@@ -68,7 +105,8 @@ FreeBSD でサポートされている VM 拡張機能を以下に示します�
 * シェル スクリプトと Python スクリプトで BOM を自動的に削除する。
 * CommandToExecute で機密データを保護する。
 
-[!NOTE]FreeBSD VM は、現在のところ CustomScript バージョン 1.x のみをサポートしています。  
+> [!NOTE]
+> FreeBSD VM は、現在のところ CustomScript バージョン 1.x のみをサポートしています。  
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>認証: ユーザー名、パスワード、SSH キー
 Azure Portal を使用して FreeBSD 仮想マシンを作成するときに、ユーザー名、パスワード、または SSH 公開キーを入力する必要があります。
@@ -79,12 +117,14 @@ Azure に FreeBSD 仮想マシンをデプロイするためのユーザー名�
 Azure での仮想マシン インスタンスをデプロイする際に指定したユーザー アカウントは、特権を持つアカウントです。 公開済みの FreeBSD イメージには、sudo のパッケージがインストールされています。
 このユーザー アカウントを使用してログインすると、コマンド構文を使用して、root としてコマンドを実行できます。
 
+```
     $ sudo <COMMAND>
+```
 
 `sudo -s` を使用して root シェルを取得することもできます。
 
 ## <a name="known-issues"></a>既知の問題
-1. [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.2 については、Azure 上の FreeBSD VM に対してプロビジョニング エラーが発生するという [既知の問題] (https://github.com/Azure/WALinuxAgent/pull/517) が確認されています。 修正プログラムは、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.3 以降のリリースによってキャプチャされました。 
+[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.2 については、Azure 上の FreeBSD VM に対してプロビジョニング エラーが発生するという [既知の問題] (https://github.com/Azure/WALinuxAgent/pull/517) が確認されています。 修正プログラムは、[Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) バージョン 2.2.3 以降のリリースによってキャプチャされました。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) に移動して、FreeBSD VM を作成します。

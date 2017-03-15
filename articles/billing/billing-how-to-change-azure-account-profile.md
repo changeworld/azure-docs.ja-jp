@@ -1,6 +1,6 @@
 ---
-title: "Azure アカウントのプロファイル情報を変更する方法 | Microsoft Docs"
-description: "Azure アカウントのプロファイルを変更する方法と、一般的な質問に対する回答 (Azure アカウント センターで国を変更できない理由など) を掲載しています。"
+title: "Azure アカウントのプロファイル情報を変更する | Microsoft Docs"
+description: "Azure アカウントのプロファイルを変更する方法を説明し、一般的な質問 (Azure アカウント センターで国を変更できない理由など) に回答します"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/01/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8587b157886f2d0f5778573aeec55c072a50bf93
-ms.openlocfilehash: dd28c37bc63d1c457d7c8ffc60b1bad1f2831f31
-
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c4f76065996c7db43ec5503ff76fc7a1bbeb87ed
+ms.lasthandoff: 03/03/2017
 
 ---
-# <a name="how-to-change-profile-information-of-your-azure-account-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法
+# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する
 マイクロソフトは、アカウント管理者のプロファイル内の電子メール アドレスを使用して、お客様にサブスクリプションに関する重要な請求に関する更新情報をお知らせしています。 このため、定期的にチェックする連絡先の電子メール アドレスを指定することをお勧めします。
 
 ## <a name="how-to-change-your-profile-information"></a>プロファイル情報の変更方法
@@ -51,10 +52,5 @@ ms.openlocfilehash: dd28c37bc63d1c457d7c8ffc60b1bad1f2831f31
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

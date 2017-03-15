@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/16/2017
 
 このサンプル アプリケーションは、[Azure キュー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)および [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) と連動します。 また、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) と [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279) にアプリケーションをデプロイする方法も示します。
 
-## <a name="a-idprerequisitesaprerequisites"></a><a id="prerequisites"></a>前提条件
+## <a id="prerequisites"></a>前提条件
 このチュートリアルでは、Visual Studio で [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) プロジェクトを操作する方法を理解していることを前提としています。
 
 このチュートリアルは、Visual Studio 2013 用に作成されました。 Visual Studio をまだお持ちでない場合は、Azure SDK for .NET をインストールすると自動的にインストールされます。
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/16/2017
 >
 >
 
-## <a name="a-idlearnawhat-youll-learn"></a><a id="learn"></a>学習内容
+## <a id="learn"></a>学習内容
 このチュートリアルでは、次のタスクの実行方法を示します。
 
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する。
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/16/2017
 * ファイルを Azure BLOB サービスにアップロードして保存する。
 * Azure Web ジョブ SDK を使用して Azure Storage キューと BLOB を操作する。
 
-## <a name="a-idcontosoadsaapplication-architecture"></a><a id="contosoads"></a>アプリケーションのアーキテクチャ
+## <a id="contosoads"></a>アプリケーションのアーキテクチャ
 サンプル アプリケーションでは、 [キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。 それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の&2; つの URL がデータベースに格納されます。
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/16/2017
 
 このチュートリアルの手順は、Azure SDK for .NET 2.7.1 以降に適用されます。
 
-## <a name="a-idstorageacreate-an-azure-storage-account"></a><a id="storage"></a>Azure ストレージ アカウントの作成
+## <a id="storage"></a>Azure ストレージ アカウントの作成
 Azure ストレージ アカウントは、キューおよび BLOB データをクラウドに格納するためのリソースを提供します。 また、ダッシュボードのログ データを格納するために Web ジョブ SDK によっても使用されます。
 
 現実のアプリケーションでは、通常、アプリケーション データとログ データ、テスト データと運用データに別個のアカウントを作成します。 このチュートリアルでは、アカウントを&1; つだけ使用します。
@@ -101,7 +101,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
     ![新しいストレージ アカウント ](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
-## <a name="a-iddownloadadownload-the-application"></a><a id="download"></a>アプリケーションのダウンロード
+## <a id="download"></a>アプリケーションのダウンロード
 1. [完成したソリューション](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)をダウンロードして解凍します。
 2. Visual Studio を起動します。
 3. **[ファイル]** メニューで **[開く]、[プロジェクト/ソリューション]** の順に選択し、ソリューションをダウンロードした場所に移動して、ソリューション ファイルを開きます。
@@ -110,7 +110,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
     既定では、 *.zip* ファイルに含まれていなかった NuGet パッケージのすべての内容が Visual Studio によって自動的に復元されます。 パッケージが復元されない場合は、**[ソリューションの NuGet パッケージの管理]** ダイアログの右上にある **[復元]** ボタンをクリックしてパッケージを手動でインストールします。
 5. **ソリューション エクスプローラー**で、**ContosoAdsWeb** がスタートアップ プロジェクトとして選択されていることを確認します。
 
-## <a name="a-idconfigurestorageaconfigure-the-application-to-use-your-storage-account"></a><a id="configurestorage"></a>ストレージ アカウントを使用するためのアプリケーションの構成
+## <a id="configurestorage"></a>ストレージ アカウントを使用するためのアプリケーションの構成
 1. ContosoAdsWeb プロジェクトでアプリケーションの *Web.config* ファイルを開きます。
 
     ファイルには、BLOB とキューを操作するための SQL 接続文字列と Azure Storage 接続文字列が含まれます。
@@ -154,7 +154,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 7. 両方のストレージ接続文字列を先ほどコピーした接続文字列で置き換えます。
 8. 変更を保存します。
 
-## <a name="a-idrunarun-the-application-locally"></a><a id="run"></a>ローカルでアプリケーションを実行する
+## <a id="run"></a>ローカルでアプリケーションを実行する
 1. アプリケーションの Web フロントエンドを起動するには、Ctrl キーを押しながら F5 キーを押します。
 
     既定のブラウザーでホーム ページが開きます (Web プロジェクトをスタートアップ プロジェクトとしているため、Web プロジェクトが実行されます)。
@@ -184,7 +184,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 アプリケーションはローカル コンピューター上で実行されており、同じコンピューター上の SQL Server データベースを使用していますが、クラウド内のキューおよび BLOB と連携動作しています。 次のセクションでは、クラウド データベースおよびクラウドの BLOB とキューを使用して、アプリケーションをクラウド内で実行します。  
 
-## <a name="a-idrunincloudarun-the-application-in-the-cloud"></a><a id="runincloud"></a>クラウドでアプリケーションを実行する
+## <a id="runincloud"></a>クラウドでアプリケーションを実行する
 アプリケーションをクラウドで実行するには、次の手順を実行します。
 
 * Web アプリにデプロイします。 Visual Studio では、App Service の新しい Web アプリと SQL Database インスタンスが自動的に作成されます。
@@ -310,7 +310,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 >
 >
 
-## <a name="a-idcreateacreate-the-application-from-scratch"></a><a id="create"></a>アプリケーションを最初から作成する
+## <a id="create"></a>アプリケーションを最初から作成する
 このセクションでは、次のタスクを実行します。
 
 * Web プロジェクトを使用して Visual Studio ソリューションを作成します。
@@ -409,7 +409,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 
 これで、前の説明に従って、アプリケーションをビルド、実行、およびデプロイできます。 ただし、その前に、デプロイ先の最初の Web アプリケーションで実行中の Web ジョブを停止します。 停止しないと、すべてが同じストレージ アカウントを使用しているため、ローカルに作成されたキュー メッセージと新しい Web アプリケーションで実行するアプリケーションによって作成されたキュー メッセージの両方が、その Web ジョブによって処理されます。
 
-## <a name="a-idcodeareview-the-application-code"></a><a id="code"></a>アプリケーション コードを確認する
+## <a id="code"></a>アプリケーション コードを確認する
 以降のセクションでは、Web ジョブ SDK および Azure Storage の BLOB とキューの操作に関連するコードについて説明します。
 
 > [!NOTE]
@@ -638,7 +638,7 @@ HttpPost `Edit` メソッドのコードも似ていますが、ユーザーが�
 
         <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 
-### <a name="a-idprogramcsacontosoadswebjob---programcs"></a><a id="programcs"></a>ContosoAdsWebJob - Program.cs
+### <a id="programcs"></a>ContosoAdsWebJob - Program.cs
 Web ジョブが起動すると、`Main` メソッドが Web ジョブ SDK `JobHost.RunAndBlock` メソッドを呼び出し、現在のスレッド上でトリガーされた関数の実行を開始します。
 
         static void Main(string[] args)
@@ -647,7 +647,7 @@ Web ジョブが起動すると、`Main` メソッドが Web ジョブ SDK `JobH
             host.RunAndBlock();
         }
 
-### <a name="a-idgeneratethumbnailacontosoadswebjob---functionscs---generatethumbnail-method"></a><a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail メソッド
+### <a id="generatethumbnail"></a>ContosoAdsWebJob - Functions.cs - GenerateThumbnail メソッド
 Web ジョブ SDK は、キュー メッセージを受信したときに、このメソッドを呼び出します。 メソッドは、縮小表示を作成し、縮小表示 URL をデータベースに登録します。
 
         public static void GenerateThumbnail(

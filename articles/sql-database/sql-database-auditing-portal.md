@@ -13,15 +13,16 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 2/25/2017
 ms.author: ronitr; giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 2882c41ced74c35e28a9237f3f08b6e6f687b846
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: fb56545df42e997e5960eec73ae59e9334731392
+ms.openlocfilehash: 8c6fa92764cb720a0c71a24d839d3e73ce3ba447
+ms.lasthandoff: 03/02/2017
 
 
 ---
+
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>Azure Portal での SQL Database 監査の構成および管理
 
 以下のセクションでは、Azure Portal を使用して監査を構成および管理する方法について説明します。 PowerShell を用いて監査を構成および管理する方法については、[PowerShell を使用した監査の構成](sql-database-auditing-powershell.md)に関するページを参照してください。 REST API を使用して監査を構成および管理する方法については、[REST API を使用した監査の構成](sql-database-auditing-rest.md)に関するページを参照してください。
@@ -45,7 +46,9 @@ ms.lasthandoff: 02/17/2017
     <a id="storage-screenshot"></a>
     ![ナビゲーション ウィンドウ][4]
 6. 監査対象イベントをカスタマイズする場合は、[PowerShell](sql-database-auditing-powershell.md) または [REST API](sql-database-auditing-rest.md) を使用して行います。
-7. **[保存]**をクリックします。
+7. 監査設定を構成したら、新機能である脅威の検出 (プレビュー) をオンにし、セキュリティの警告を受信するための電子メールを構成します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出](sql-database-threat-detection.md)に関するページを参照してください。
+8. **[保存]**をクリックします。
+
 
 ## <a name="table-auditing"></a>テーブルの監査
 

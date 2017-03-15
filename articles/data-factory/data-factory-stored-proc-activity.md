@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: ec522d843b2827c12ff04afac15d89d525d88676
-ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a42dbefe6805cff5fb2df604265f0e62e2c25f69
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -33,11 +34,11 @@ ms.openlocfilehash: 90bd5b4b6fb58c044b5edaba2c5f3a4bf7346e7d
 > * [.NET カスタム](data-factory-use-custom-activities.md)
 >
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
+Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの&1; つです。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
-ストアド プロシージャ アクティビティを使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます。社内または Azure 仮想マシン (VM) 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。  SQL Server を使用している場合、データベースとのリソースの競合を避けるため、データベースをホストするコンピューターと同じコンピューターまたは別のコンピューター上にデータ管理ゲートウェイをインストールする必要があります。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するソフトウェアです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
+ストアド プロシージャ アクティビティを使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます。社内または Azure 仮想マシン (VM) 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。  SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 
-次のチュートリアルでは、ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL データベース内のストアド プロシージャを呼び出す手順を説明します。 
+次のチュートリアルでは、ストアド プロシージャ アクティビティをパイプラインで使用して、Azure SQL Databases でストアド プロシージャを呼び出します。 
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="sample-table-and-stored-procedure"></a>サンプル テーブルとストアド プロシージャ
@@ -58,7 +59,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     
     ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    このサンプルでは Azure SQL Database を使用しますが、Azure SQL Data Warehouse や SQL Server Database でも同様に機能します。SQL Server データベースでは、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をインストールする必要があります。
+    このサンプルでは、ストアド プロシージャは、Azure SQL Database にあります。 ストアド プロシージャが Azure SQL Data Warehouse と SQL Server Database にある場合の方法は似ています。 SQL Server データベースの場合は、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をインストールする必要があります。
 2. **sampletable** にデータを挿入する、次の**ストアド プロシージャ**を作成します。
 
     ```SQL
@@ -102,13 +103,13 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![新しいデータ ストア](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON スクリプトを次のように変更します。
 
-   1. **&lt;servername&gt;** を、SQL Database サーバーの名前に置き換えます。
-   2. **&lt;databasename&gt;** を、テーブルとストアド プロシージャを作成したデータベースの名前に置き換えます。
-   3. **&lt;username@servername&gt;** を、データベースへのアクセス権を持つユーザー アカウントに置き換えます。
-   4. **&lt;password&gt;** を、ユーザー アカウントのパスワードに置き換えます。
+   1. `<servername>` を、Azure SQL Database サーバーの名前に置き換えます。
+   2. `<databasename>` を、テーブルとストアド プロシージャを作成したデータベースの名前に置き換えます。
+   3. `<username@servername>` を、データベースへのアクセス権を持つユーザー アカウントに置き換えます。
+   4. `<password>` を、ユーザー アカウントのパスワードに置き換えます。
 
       ![新しいデータ ストア](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。 AzureSqlLinkedService が左側のツリー ビューに表示されることを確認します。
+4. リンク サービスをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。 AzureSqlLinkedService が左側のツリー ビューに表示されることを確認します。
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view.png)
 
@@ -134,7 +135,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
         }
     }
     ```
-3. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。 ツリー ビューにデータセットが表示されることを確認します。
+3. データセットをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。 ツリー ビューにデータセットが表示されることを確認します。
 
     ![リンクされたサービスを表示しているツリー ビュー](media/data-factory-stored-proc-activity/tree-view-2.png)
 
@@ -142,7 +143,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
 
 1. **[...More (その他)]** (コマンド バー上) をクリックし、**[新しいパイプライン]** をクリックします。
-2. 次の JSON スニペットをコピーして貼り付けます。 **storedProcedureName** は **sp_sample** に設定します。 パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
+2. 次の JSON スニペットをコピーして貼り付けます。   
 
     ```JSON
     {
@@ -176,8 +177,10 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     }
     ```
 
+    **storedProcedureName** は **sp_sample** に設定します。 パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。
+
     パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。
-3. ツール バーの **[デプロイ]** をクリックしてパイプラインをデプロイします。  
+3. パイプラインをデプロイするには、ツール バーの **[デプロイ]** をクリックします。  
 
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
 1. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
@@ -186,10 +189,10 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 2. **ダイアグラム ビュー**に、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
 
     ![[ダイアグラム] タイル](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. ダイアグラム ビューで、 **sprocsampleout**データセットをダブルクリックします。 スライスが準備完了状態で表示されます。 スライスは、JSON の開始時刻から終了時刻までの間に 1 時間ごとに生成されるため、5 つのスライスがあります。
+3. ダイアグラム ビューで、`sprocsampleout` データセットをダブルクリックします。 スライスが準備完了状態で表示されます。 スライスは、JSON の開始時刻から終了時刻までの間に&1; 時間ごとに生成されるため、5 つのスライスがあります。
 
     ![[ダイアグラム] タイル](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. スライスが**準備完了**状態のときに、Azure SQL Database に対して **select * from sampletable** クエリを実行して、ストアド プロシージャによってデータがテーブルに挿入されていることを確認します。
+4. スライスが**準備完了**状態のときに、Azure SQL Database に対して `select * from sampletable` クエリを実行して、ストアド プロシージャによってデータがテーブルに挿入されていることを確認します。
 
    ![出力データ](./media/data-factory-stored-proc-activity/output.png)
 
@@ -229,7 +232,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | 説明 |アクティビティの用途を説明するテキストです。 |なし |
 | type | **SqlServerStoredProcedure** に設定する必要があります | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |なし |
-| outputs |ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |あり |
+| outputs | ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。 出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 <br/><br/>出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 <br/><br/>出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#run-activities-in-a-sequence)) による後続処理のために、ストアド プロシージャの結果を渡す&1; つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 <br/><br/>出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。 |あり |
 | storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |なし |
 
@@ -332,8 +335,3 @@ END
     }
 }
 ```
-
-
-<!--HONumber=Dec16_HO3-->
-
-

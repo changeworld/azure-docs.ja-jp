@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
-ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
+ms.sourcegitcommit: 0dc0f84ed65e76a95dcac523e42268039212773c
+ms.openlocfilehash: 5032e66556622e44e5f5bba84c4ddf5318b1e194
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -56,6 +57,9 @@ ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
 1. 実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Predictive Web Service (予測 Web サービス)]** を選択します。 これによりモデルがトレーニング済みのモデルとして保存され、Web サービス入力モジュールと Web サービス出力モジュールが追加されます。 
 2. **[実行]**をクリックします。 
 3. 実験の実行が終了したら **[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] (Web サービスのデプロイ [新規])]** を選択します。
+
+> [!NOTE] 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>トレーニング実験をトレーニング Web サービスとしてデプロイする
 トレーニング済みのモデルを再トレーニングするには、再トレーニング Web サービスとして作成したトレーニング実験をデプロイする必要があります。 この Web サービスでは、"*[トレーニング モデル][train-model]*" モジュールにつながっている "*Web サービス出力*" モジュールが必要です。これにより新しいトレーニング済みのモデルを生成できます。
@@ -183,9 +187,4 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

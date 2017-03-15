@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 88b75c2b222ee153c935898dbece0c366c7f198d
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: ff0b234f27e2d5068cc0dcdc73e32e60f8622633
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -42,7 +43,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * アクティブな Azure アカウント。 <br/>アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
@@ -129,7 +130,7 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
 ## <a name="read-from-the-queue-endpoint"></a>キュー エンドポイントからの読み取り
 このセクションでは、キュー エンドポイントからメッセージを読み取ります。
 
-1. 現在の Visual Studio ソリューションで、 **コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# Windows プロジェクトを作成します。 プロジェクトに **ReadCriticalQueue** という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **ReadCriticalQueue** という名前を付けます。
 
 2. ソリューション エクスプローラーで **ReadCriticalQueue** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[NuGet パッケージ マネージャー]** ウィンドウが表示されます。
 
@@ -225,9 +226,4 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 [lnk-classic-portal]: https://manage.windowsazure.com
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

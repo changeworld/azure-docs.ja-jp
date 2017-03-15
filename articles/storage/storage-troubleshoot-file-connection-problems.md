@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
-ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 212b4481affc345cff3e8abd2475c838926f5eda
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -40,14 +40,14 @@ ms.lasthandoff: 02/28/2017
 * [ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する](#slashfails)
 * [アプリケーション/サービスがマウントされた Azure Files ドライブにアクセスできない](#accessfiledrive)
 * [パフォーマンスを最適化するためのその他の推奨事項](#additional)
+* [Azure Files にファイルをアップロードまたはコピーしようとしたときに、"暗号化をサポートしていない宛先に、ファイルをコピーします" というエラーが発生する](#encryption)
 
 **Linux クライアントの問題**
 
-* [Azure Files にファイルをアップロードまたはコピーしようとしたときに、"暗号化をサポートしていない宛先に、ファイルをコピーします" というエラーが発生する](#encryption)
-* [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する](#errorhold)
+* [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する](#errorhold)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
-* ["ls" などのコマンドで Linux VM にランダムな遅延が発生する](#delayproblem)
-* [エラー 112 - タイムアウト エラー](#error112)
+* [Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している](#delayproblem)
+
 
 **他のアプリケーションからのアクセス**
 
@@ -193,7 +193,7 @@ Azure Files では、NTLMv2 認証のみがサポートされています。 グ
 ### <a name="solution"></a>解決策
 アプリケーションが属するのと同じユーザー アカウントからドライブをマウントします。 この操作は、psexec などのツールを使用して実行できます。
 
-また、ネットワーク サービス アカウントまたはシステム アカウントと同じ権限を持つ新しいユーザーを作成し、そのアカウントを使用して **cmdkey** および **net use** を実行することもできます。 ユーザー名はストレージ アカウント名に、パスワードはストレージ アカウント キーにする必要があります。 **net use** の別のオプションとして、**net use** コマンドのユーザー名とパスワードのパラメーターで、ストレージ アカウント名とキーを渡すことができます。
+**net use** の別のオプションとして、**net use** コマンドのユーザー名とパスワードのパラメーターで、ストレージ アカウント名とキーを渡すことができます。
 
 これらの手順に従った後に、次のエラー メッセージが表示される場合があります: "システム エラー 1312 が発生しました。 指定されたログオン セッションは存在しません。 そのセッションは既に終了している可能性があります" (システム/ネットワーク サービス アカウントに対して **net use** を実行した場合)。 このエラーが発生した場合は、**net use** に渡されるユーザー名にドメイン情報 ("[ストレージ アカウント名].file.core.windows.net" など) が含まれていることを確認してください。
 
@@ -219,14 +219,31 @@ File Storage にファイルをコピーするには、最初にファイルの�
 
 <a id="errorhold"></a>
 
-## <a name="host-is-down-error-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています" というエラーが発生するか、シェルが応答を停止する
+## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する
 ### <a name="cause"></a>原因
-このエラーは、Linux クライアントがある超時間アイドル状態である場合に発生します。 このエラーが発生すると、クライアントは切断され、クライアントの接続はタイムアウトになります。
+このエラーは、Linux クライアントがある超時間アイドル状態である場合に発生します。 このエラーが発生すると、クライアントは切断され、クライアントの接続はタイムアウトになります。 このエラーは、既定である "ソフト" マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなる通信エラーです。
+
+このエラーは、古いカーネルの既知のバグにより発生する Linux の再接続の問題があるか、またはネットワーク エラーなど、再接続を妨げているその他の問題があることを示しています。 
 
 ### <a name="solution"></a>解決策
-この問題は、[変更セット](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)の一部として Linux カーネルで修正されており、Linux ディストリビューションへのバックポートを待っている状態です。
 
-この問題を回避し、接続を維持してアイドル状態にならないようにするには、定期的に書き込みを行うファイルを Azure ファイル共有内に保持します。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。
+ハード マウントを指定すると、接続が確立されるまで、または明示的に中断されるまで、クライアントが強制的に待機させられます。これはネットワーク タイムアウトによるエラーを防ぐために使用できます。 ただし、ユーザーは、この方法では待機が無期限に続く可能性があることや、必要に応じて接続を一時停止すべきことを認識しなければなりません。
+
+Linux カーネルのこの再接続の問題は、次の変更に伴い解決されました。
+
+* [ソケットの再接続後、smb3 セッションの再接続を長時間保留しないようにする修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
+
+* [ソケットの再接続後すぐにエコー サービスを呼び出す](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
+
+* [CIFS: 再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+
+* [CIFS: 再接続中にミューテックスのダブルロックが発生する可能性がある問題の修正 (カーネル v4.9 以上)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) 
+
+ただし、この変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 再接続の問題が修正されている一般的な Linux カーネルは、4.4.40 以上、4.8.16 以上、4.9.1 以上です。最新の修正内容が反映されたこれらの推奨バージョンを利用することをお勧めします。
+
+### <a name="workaround"></a>対処法
+最新バージョンのカーネルに移行できない場合は、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込むことで、この問題を回避できます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。 
+
 
 <a id="error15"></a>
 
@@ -239,36 +256,21 @@ Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時
 
 <a id="delayproblem"></a>
 
-## <a name="linux-vm-experiencing-random-delays-in-commands-like-ls"></a>"ls" などのコマンドで Linux VM にランダムな遅延が発生する
-### <a name="cause"></a>原因
-この問題は、mount コマンドに **serverino** オプションが含まれていない場合に発生する可能性があります。 **serverino** がない場合、ls コマンドはすべてのファイルで **stat** を実行します。
+## <a name="azure-file-share-mounted-on-linux-vm-experiencing-slow-performance"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
 
-### <a name="solution"></a>解決策
-"/etc/fstab" エントリで **serverino** を確認します。
+パフォーマンス低下の原因として、キャッシュが無効になっていることが考えられます。 キャッシュが有効になっているかを確認するには、"cache=" を探します。  *cache=none* は、キャッシングが無効になっていることを示します。 既定のマウント コマンドで共有を再マウントするか、明示的に **cache=strict** オプションを追加してコマンドをマウントして、既定のキャッシングまたは "strict" キャッシング モードが有効になっていることを確認してください。
+
+一部のシナリオでは、serverino マウント オプションを指定していると、ls コマンドによってすべてのディレクトリ エントリに対して stat が実行されます。そのため、大規模なディレクトリを一覧表示するときにパフォーマンスが低下します。 "/Etc/fstab" エントリでマウント オプションを確認できます。
 
 `//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-**sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、そのオプションが使われているかどうかも確認できます。
+**sudo mount | grep cifs** コマンドを実行して出力を調べるだけで、正しいオプションが使われているかどうかを確認できます。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs
+(rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,
+dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-**serverino** オプションが見当たらない場合は、**serverino** オプションを選択し、Azure Files のマウントを解除したうえでもう一度マウントします。
-
-パフォーマンス低下のもう&1; つの原因として、キャッシュが無効になっていることが考えられます。 キャッシュが有効になっているかを確認するには、"cache=" を探します。  *cache=none* は、キャッシングが無効になっていることを示します。 既定のマウント コマンドで共有を再マウントするか、明示的に **cache=strict** オプションを追加してコマンドをマウントして、既定のキャッシングまたは "strict" キャッシング モードが有効になっていることを確認してください。
-
-<a id="error112"></a>
-## <a name="error-112---timeout-error"></a>エラー 112 - タイムアウト エラー
-
-このエラーは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなる通信エラーです。
-
-### <a name="cause"></a>原因
-
-このエラーは、Linux の再接続の問題または、ネットワーク エラーなど再接続を妨げる他の問題によって引き起こされることがあります。 ハード マウントを指定すると、接続が確立されるまで、または明示的に中断されるまで、クライアントが強制的に待機させられます。これはネットワーク タイムアウトによるエラーを防ぐために使用できます。 ただし、ユーザーは、この方法では待機が無期限に続く可能性があることや、必要に応じて接続を一時停止すべきことを認識しなければなりません。
-
-
-### <a name="workaround"></a>対処法
-
-Linux の問題が解決されましたが、Linux ディストリビューションにはまだ移植されていません。 問題が Linux の再接続の問題によって引き起こされている場合は、アイドル状態を回避することで対処できます。 これを実現するには、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込みます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。 こちらと他に再接続の修正 (4.4.40+ 4.8.16+ 4.9.1+) がされた一般的な Linux カーネルの一覧はこちらです。
+cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
 
 <a id="webjobs"></a>
 

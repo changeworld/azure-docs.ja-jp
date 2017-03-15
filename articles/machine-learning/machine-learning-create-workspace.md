@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: garye;bradsev;ahgyger
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 647398c1a0994da04845672e89d9f82d5e8b6d21
+ms.sourcegitcommit: 613cf7e34d69afa21b1808ffe57af9a8b64944f5
+ms.openlocfilehash: 182a34822e71d63f4d7229548ae3f59d9f195337
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,86 +30,77 @@ Azure Machine Learning Studio を使用するには、Machine Learning ワーク
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="to-create-a-workspace"></a>ワークスペースを作成するには
-1. [Microsoft Azure クラシック ポータル]にサインインします。
+### <a name="to-create-a-workspace"></a>ワークスペースを作成するには
+1. [Azure ポータル](https://portal.azure.com/)
 
-> [!NOTE]
-> サインインするには、Azure サブスクリプションの管理者である必要があります。 Machine Learning ワークスペースの所有者であっても、 [Microsoft Azure クラシック ポータル]へのアクセス権は付与されません。 詳細については、「 [Azure サブスクリプションとワークスペース所有者の特権](#subscriptionvsworkspace) 」を参照してください。
-> 
-> 
+    > [!NOTE]
+    > サインインしてワークスペースを作成するには、Azure サブスクリプションの管理者である必要があります。 
+    >
+    > 
 
-1. Microsoft Azure サービス パネルで、 **[MACHINE LEARNING]**をクリックします。
-   
-    ![Machine Learning サービス][1]
-2. ウィンドウの下部にある **[+新規]** をクリックします。
-3. **[Data Services]**、**[MACHINE LEARNING]**、**[簡易作成]** の順にクリックします。
-   
-    ![新しいワークスペースの簡易作成][3]
-4. ワークスペースの **[ワークスペース名]** を入力します。
-5. **[場所]** に Azure の場所を指定し、**[ストレージ アカウント]** に既存の Azure のストレージ アカウントを入力するか、**[新しいストレージ アカウントの作成]** を選択して新たに作成します。
-6. **[ML ワークスペースを作成]**をクリックします。
+2. **[+新規]** をクリックします。
 
-Machine Learning ワークスペースが作成されると、 **機械学習** のページの一覧に表示されます。
+3. **[インテリジェンス + 分析]** を選択し、**[Machine Learning ワークスペース]** をクリックして **[作成]** をクリックします。
+
+4. ワークスペースの情報を入力します。
+
+    - *[ワークスペース名]* に使用できる最大文字数は 260 文字です。末尾に空白文字は使用しないでください。 また、`< > * % & : \ ? + /` の各文字は使用できません。
+    - このワークスペースから Web サービスをデプロイした場合、選択 (または作成) した "*Web サービス プラン*" とそれに関連して選択した "*価格レベル*" が使用されます。
+
+    ![新しいワークスペースを作成する](media/machine-learning-create-workspace/create-new-workspace.png)
+
+5. **[作成]**
+
+デプロイしたワークスペースは、Machine Learning Studio で開くことができます。
+
+1. ブラウザーから [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio にアクセスします。
+
+2. 右上隅で該当するワークスペースを選択します。
+
+    ![ワークスペースを選択](media/machine-learning-create-workspace/open-workspace.png)
+
+3. **[my experiments (実験)]** をクリックします。
+
+    ![実験を開く](media/machine-learning-create-workspace/my-experiments.png)
+
+ワークスペースの管理方法の詳細については、「 [Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
+ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続](machine-learning-troubleshooting-creating-ml-workspace.md)」をご覧ください。
+
 
 ## <a name="sharing-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの共有
-Machine Learning ワークスペースを作成した後は、ユーザーをワークスペースに招待し、ワークスペースとそのすべての実験へのアクセス権を共有することができます。 次の 2 つのユーザー ロールがサポートされます。
+Machine Learning ワークスペースを作成した後は、ユーザーをワークスペースに招待し、ワークスペースとそのすべての実験、データセット、ノートブックへのアクセス権を共有することができます。ユーザーは、次のいずれかの役割で追加することができます。
 
-* **ユーザー** - ワークスペース ユーザーは、ワークスペース内のデータセット、実験、Web サービスの作成、表示、変更を行うことができます。
-* **所有者** - 所有者は、ユーザーの招待、削除、ワークスペースへのアクセス権の付与、ユーザーが実行できる操作の登録を行うことができます。 また、所有者には Notebook へのアクセス権もあります。
-
-### <a name="to-share-a-workspace"></a>ワークスペースを共有するには
-1.  [Machine Learning Studio]
-2. Machine Learning Studio パネルの **[設定]**
-3. ウィンドウの下部にある **[ユーザー]**
-4. ウィンドウの下部にある **[その他のユーザーの招待]**
-   
-    ![[その他のユーザーの招待]][4]
-5. 1 つ以上の電子メール アドレスを入力します。 ユーザーには、有効な Microsoft アカウント (name@outlook.com) など) または (Azure Active Directory の) 組織アカウントのみが必要です。
-6. チェック マークのボタンをクリックします。
-
-追加した各ユーザーには、共有ワークスペースにログインする手順が記載された電子メールが送信されます。
-
-ワークスペースの管理方法の詳細については、「 [Azure Machine Learning ワークスペースの管理]」をご覧ください。
-ワークスペースの作成で問題が発生した場合は、「 [Troubleshooting guide: Create and connect to an Machine Learning workspace (トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続)]」をご覧ください。
-
-## <a name="a-namesubscriptionvsworkspaceaprivileges-of-azure-subscription-administrator-and-of-workspace-owner"></a><a name="subscriptionvsworkspace"></a>Azure サブスクリプションとワークスペース所有者の特権
-次の表は、Azure サブスクリプション管理者とワークスペース所有者の違いを説明した一覧です。
-
-| アクション | Azure サブスクリプション管理者 | ワークスペースの所有者 |
-| --- |:---:|:---:|
-|  [Microsoft Azure クラシック ポータル] |はい |なし |
-| 新しいワークスペースを作成する |はい |なし |
-| ワークスペースを削除する |はい |なし |
-| Web サービスにエンドポイントを追加する |はい |なし |
-| Web サービスからエンドポイントを削除する |はい |なし |
-| Web サービスの同時実行を変更する |はい |なし |
-|  [Machine Learning Studio] |なし * |あり |
+* **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
+* **所有者** - ワークスペース ユーザーの招待と削除、ユーザーが実行できる操作の登録を行うことができます。
 
 > [!NOTE]
-> * Azure サブスクリプション管理者は、自分がワークスペース所有者として作成するワークスペースに自動的に追加されます。 ただし、単に Azure サブスクリプション管理者であるというだけでは、そのサブスクリプションのワークスペースへのアクセスは許可されません。
+> ワークスペースを作成した管理者アカウントは、ワークスペースの所有者としてワークスペースに自動的に追加されます。 ただしそのサブスクリプションに含まれる他の管理者またはユーザーについては、ワークスペースへのアクセス権が自動的には付与されません。明示的に招待する必要があります。
 > 
 > 
 
-<!-- ![List of Machine Learning workspaces][2] -->
+### <a name="to-share-a-workspace"></a>ワークスペースを共有するには
 
-<!--Anchors-->
-[ワークスペースを作成するには]: #createworkspace
+1. Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) にサインインします。
 
-<!--Image references-->
-[1]: media/machine-learning-create-workspace/cw1.png
-[2]: media/machine-learning-create-workspace/cw2.png
-[3]: media/machine-learning-create-workspace/cw4.png
-[4]: media/machine-learning-create-workspace/cw5.png
+2. 左側のパネルの **[設定]** をクリックします。
+
+3. **[ユーザー]** タブをクリックします。
+
+4. ページ下部の **[その他のユーザーの招待]** をクリックします。
+
+    ![Studio の設定](media/machine-learning-create-workspace/settings.png)
+
+5. 電子メール アドレスを少なくとも&1; つ入力します。 ユーザーには、有効な Microsoft アカウントまたは (Azure Active Directory の) 組織アカウントが必要です。
+
+6. ユーザーを所有者として追加するか、ユーザーとして追加するかを選択します。
+
+7. チェックマークが表示された **[OK]** ボタンをクリックします。
+
+追加した各ユーザーには、共有ワークスペースへのサインイン方法が記載された電子メールが送信されます。
+
+> [!NOTE]
+> このワークスペースの Web サービスをデプロイしたり管理したりするユーザーは、Azure サブスクリプションの共同作成者または管理者である必要があります。 
 
 
-<!--Link references-->
-[Azure Machine Learning ワークスペースの管理]: machine-learning-manage-workspace.md
-[Troubleshooting guide: Create and connect to an Machine Learning workspace (トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続)]: machine-learning-troubleshooting-creating-ml-workspace.md
-[Machine Learning Studio]: https://studio.azureml.net/  
-[Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

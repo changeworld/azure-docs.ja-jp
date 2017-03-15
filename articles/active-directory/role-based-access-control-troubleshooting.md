@@ -1,5 +1,5 @@
 ---
-title: "ロール ベースのアクセス制御のトラブルシューティング | Microsoft Docs"
+title: "Azure RBAC のトラブルシューティング | Microsoft Docs"
 description: "ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。"
 services: azure-portal
 documentationcenter: na
@@ -12,19 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>ロールベースのアクセス制御のトラブルシューティング
-## <a name="introduction"></a>はじめに
-[ロールベースのアクセス制御](role-based-access-control-configure.md) は強力な機能で、これにより Azure のリソースに対するきめ細かいアクセスを委任できます。 つまり、まさに必要な権限を特定の人物に確実に付与できます。 しかし、Azure リソースのリソース モデルが複雑で、どのようなアクセス許可を付与すればよいのか正確に把握しにくい場合もあります。
 
-このドキュメントでは、Azure ポータルでいくつかのロールを使用する場合に想定されることについて説明します。 次の 3 つのロールは、すべてのリソースの種類に対応しています。
+この記事では、ロールで付与される特定のアクセス権に関する一般的な質問に答えて、Azure Portal でロールを使ったときに予想されることをユーザーが理解し、アクセスの問題をトラブルシューティングできるようにします。 次の&3; つのロールは、すべてのリソースの種類に対応しています。
 
 * 所有者  
 * 共同作成者  
@@ -34,7 +33,7 @@ ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
 
 ## <a name="app-service-workloads"></a>アプリ サービスのワークロード
 ### <a name="write-access-capabilities"></a>書き込みアクセス機能
-1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。 以下の管理機能には、Web アプリに対する **書き込み** アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
+1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。 以下の管理機能には、Web アプリに対する**書き込み**アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
 
 * コマンド (開始や停止など)
 * 一般的な構成、スケール設定、バックアップ設定、監視設定などの設定の変更。
@@ -95,10 +94,5 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 * [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細について説明します。
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

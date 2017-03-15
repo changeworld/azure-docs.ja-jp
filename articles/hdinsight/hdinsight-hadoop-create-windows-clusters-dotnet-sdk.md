@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 03/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
-ms.openlocfilehash: 4f597fad719637e66d64143c302334b1c62e226e
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: a78bd696ead85138331d00d3543fdc88ac01d39b
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -38,7 +39,7 @@ ms.openlocfilehash: 4f597fad719637e66d64143c302334b1c62e226e
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* Visual Studio 2013 または 2015
+* Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -248,9 +249,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     Write-host "Default Storage Account Name: $defaultStorageAccountName"
     Write-host "Default Storage Account Key: $defaultStorageAccountKey"
     Write-host "Default Blob Container Name: $defaultBlobContainerName"
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

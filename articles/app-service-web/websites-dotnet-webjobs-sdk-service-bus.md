@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
@@ -44,7 +44,7 @@ public class Program
 
 [Service Bus の完全なコード例](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Program.cs) は、GitHub.com の azure-webjobs-sdk-samples リポジトリにあります。
 
-## <a name="a-idprerequisitesa-prerequisites"></a><a id="prerequisites"></a> 前提条件
+## <a id="prerequisites"></a> 前提条件
 Service Bus を使用するには、他の WebJobs SDK パッケージに加えて、 [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet パッケージをインストールする必要があります。 
 
 また、ストレージ接続文字列に加えて、AzureWebJobsServiceBus 接続文字列を設定する必要もあります。  次の例で示すように App.config ファイルの `connectionStrings` セクションでこれを行うことができます。
@@ -59,7 +59,7 @@ App.config ファイルに Service Bus の接続文字列を含むサンプル �
 
 接続文字列は Azure 実行時環境でも設定できます。Azure で Web ジョブを実行した場合、Azure 実行時環境の設定は App.config 設定よりも優先されます。詳細については、[Azure Web ジョブ SDK の概要](websites-dotnet-webjobs-sdk-get-started.md#configure-the-web-app-to-use-your-azure-sql-database-and-storage-account)に関するページを参照してください。
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-service-bus-queue-message-is-received"></a><a id="trigger"></a> Service Bus キュー メッセージを受信したときに関数をトリガーする方法
+## <a id="trigger"></a> Service Bus キュー メッセージを受信したときに関数をトリガーする方法
 キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、 `ServiceBusTrigger` 属性を使用します。 この属性コンストラクターは、ポーリングするキューの名前を指定するパラメーターを受け取ります。
 
 ### <a name="how-servicebustrigger-works"></a>ServiceBusTrigger のしくみ
@@ -99,7 +99,7 @@ POCO のプロパティを使って同じ関数の BLOB やテーブルを操作
 ### <a name="types-servicebustrigger-works-with"></a>ServiceBusTrigger で使用できる型
 `string` と POCO の型に加えて、バイト配列か `BrokeredMessage` オブジェクトで `ServiceBusTrigger` 属性を使用できます。
 
-## <a name="a-idcreatea-how-to-create-service-bus-queue-messages"></a><a id="create"></a> Service Bus キュー メッセージの作成方法
+## <a id="create"></a> Service Bus キュー メッセージの作成方法
 新しいキュー メッセージを作成する関数を記述するには、 `ServiceBus` 属性を使用し、属性コンストラクターにキュー名を渡します。 
 
 ### <a name="create-a-single-queue-message-in-a-non-async-function"></a>非同期以外の関数での単一のキュー メッセージの作成
@@ -136,7 +136,7 @@ POCO 型のパラメーターの場合は、関数が終了すると、常にキ
 
 `Add` メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
 
-## <a name="a-idtopicsahow-to-work-with-service-bus-topics"></a><a id="topics"></a>Service Bus トピックの操作方法
+## <a id="topics"></a>Service Bus トピックの操作方法
 Service Bus トピックにメッセージを受信したときに SDK が呼び出す関数を記述するには、以下のコード サンプルに示されているように、 `ServiceBusTrigger` 属性にトピック名とサブスクリプション名を受け取るコンストラクターを指定します。
 
         public static void WriteLog([ServiceBusTrigger("outputtopic","subscription1")] string message,
@@ -157,7 +157,7 @@ Service Bus トピックにメッセージを受信したときに SDK が呼び
 * `ServiceBusConfiguration.MessageOptions` を使用して、`OnMessageOptions` を簡単にカスタマイズできます。
 * `ServiceBusTriggerAttribute`/`ServiceBusAttribute` で、[AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) を指定できます (管理権限がない場合)。 
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-storage-queues-how-to-article"></a><a id="queues"></a>ストレージ キューのハウツー記事で紹介されている関連トピック
+## <a id="queues"></a>ストレージ キューのハウツー記事で紹介されている関連トピック
 Service Bus 以外の WebJobs SDK シナリオについては、「 [WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
 
 その記事では、以下のようなトピックが紹介されています。
@@ -171,7 +171,7 @@ Service Bus 以外の WebJobs SDK シナリオについては、「 [WebJobs SDK
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「 [Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
 
