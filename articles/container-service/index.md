@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Container Service を使用して、DC/OS、Docker Swarm、または Kubernetes でアプリケーション コンテナーをデプロイして管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
 services: container-service
@@ -53,7 +53,7 @@ Container Service を使用して、完全に移植可能なアプリケーシ�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Container Service の作業の開始</h3>
+                        <h3>Azure Container Service の概要</h3>
                     </div>
                 </div>
             </div>
