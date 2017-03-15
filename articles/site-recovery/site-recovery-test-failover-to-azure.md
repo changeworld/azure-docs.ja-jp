@@ -15,13 +15,17 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 753d70b9b9a4c2805033f2f2fb293dbdef7b4db4
-ms.openlocfilehash: 27ee6bbadd2b03ccf60739a276f49783ea68f9d1
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: e2d464c1c70be0bd7d5551c7f76f02b10c20b9ed
+ms.openlocfilehash: e5c42a574b22278586500048efd5b813d64dd4b7
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="test-----failover-to-azure-in-site-recovery"></a>Site Recovery での Azure へのフェールオーバーをテストする
+> [!div class="op_single_selector"]
+> * [Azure へのテスト フェールオーバー](./site-recovery-test-failover-to-azure.md)
+> * [テスト フェールオーバー (VMM から VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
+
 
 この記事では、復旧サイトとして Azure を使う Site Recovery で保護されている仮想マシンと物理サーバーのテスト フェールオーバーまたは DR ドリルを行うための情報と手順について説明します。
 
@@ -37,9 +41,10 @@ ms.lasthandoff: 02/15/2017
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 この手順では、復旧計画のテスト フェールオーバーを実行する方法について説明します。 または、適切なオプションを使うことで、単一マシンに対するテスト フェールオーバーを実行することもできます。
 
-1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **[テスト フェールオーバー]**クリックします。
+![テスト フェールオーバー](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
-    ![[テスト フェールオーバー]](./media/site-recovery-test-failover-to-azure/test-failover1.png)
+
+1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **[テスト フェールオーバー]**クリックします。
 1. フェールオーバーする**復旧ポイント**を選びます。 次のいずれかのオプションを使うことができます。
     1.  **Latest processed (最新の処理済み)**: このオプションは、復旧計画のすべての仮想マシンを、Site Recovery サービスによって既に処理された最新の復旧ポイントにフェールオーバーします。 仮想マシンのテスト フェールオーバーを行っているときは、最新の処理済み復旧ポイントのタイムスタンプも表示されます。 復旧計画のフェールオーバーを行っている場合は、個別の仮想マシンに移動し、**[最新の復旧ポイント]** タイルを見てこの情報を取得できます。 未処理データの処理に時間は費やされないので、このオプションは低 RTO (目標復旧時間) のフェールオーバー オプションを提供します。
     1.    **Latest app-consistent (最新のアプリ整合性)**: このオプションは、復旧計画のすべての仮想マシンを、Site Recovery サービスによって既に処理された最新のアプリケーション整合性復旧ポイントにフェールオーバーします。 仮想マシンのテスト フェールオーバーを行っているときは、最新のアプリ整合性復旧ポイントのタイムスタンプも表示されます。 復旧計画のフェールオーバーを行っている場合は、個別の仮想マシンに移動し、**[最新の復旧ポイント]** タイルを見てこの情報を取得できます。
@@ -57,11 +62,21 @@ ms.lasthandoff: 02/15/2017
 >
 >
 
+## <a name="test-failover-job"></a>テスト フェールオーバー ジョブ
+
+![テスト フェールオーバー](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+
+テスト フェールオーバーを開始すると次の手順が実行されます。
+
+1. 前提条件チェック: フェールオーバーに必要な条件がすべて満たされていることが、この手順で確認されます。
+1. フェールオーバー: この手順でデータが処理され、Azure 仮想マシンを作成する準備が整います。 復旧ポイントとして "**Latest (最新)**" を選択した場合は、Site Recovery サービスに送信済みのデータから復旧ポイントが作成されます。
+1. 開始: 前の手順で処理されたデータを使って Azure 仮想マシンが作成されます。
+
 
 ## <a name="creating-a-network-for-test-failover"></a>テスト フェールオーバー用のネットワークを作成する
 テスト フェールオーバーを行うときは、仮想マシンの **[コンピューティングとネットワーク]** の設定で指定した運用復旧サイト ネットワークから分離されたネットワークを選ぶことをお勧めします。 既定では、作成した Azure 仮想ネットワークは、他のネットワークから分離されます。 このネットワークは、運用ネットワークと同じものにする必要があります。
 
-1. テスト ネットワークは、運用ネットワークと同じ数および同じ名前のサブネットを持つ必要があります。
+1. テスト ネットワークには、運用ネットワークと同じ数および同じ名前のサブネットが存在している必要があります。
 1. テスト ネットワークは、運用ネットワークと同じ IP 範囲を使う必要があります。
 1. **[コンピューティングとネットワーク]** の設定で DNS 仮想マシンのターゲット IP として指定した IP に、テスト用ネットワークの DNS を更新します。 詳細については、 [Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations) を参照してください。
 
@@ -84,10 +99,10 @@ ms.lasthandoff: 02/15/2017
 
 **フェールオーバー** | **場所** | **アクション**
 --- | --- | ---
-**Windows で実行中の Azure VM** | フェールオーバー前にオンプレミスのコンピューターで | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続でアクセスするには、コンピューターで RDP を有効にし、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/> Azure VM エージェントのインストール<br/><br/> オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを実行する前に、IPSec サービスを無効にします。
-**Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で | RDP プロトコル (ポート 3389) のパブリック エンドポイントを追加し、ログインの資格情報を指定します。<br/><br/> パブリック アドレスを使用する仮想マシンへの接続を妨げるドメイン ポリシーを使用していないことを確認します。<br/><br/> 接続を試みます。 接続できない場合は、VM が実行されていることを確認します。 [トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を取得します。<br/><br/> オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを実行する前に、IPSec サービスを無効にします。<br/><br/> コンピューターまたはサブネットに関連付けられているネットワーク セキュリティ グループがある場合、そのグループに HTTP/HTTPS を許可する送信規則が設定されていることを確認します。 VM のフェールオーバー先となるネットワークの DNS が正しく構成されていることを確認します。 これらが行われていない場合、"PreFailoverWorkflow タスクの WaitForScriptExecutionTask がタイムアウトしました" というエラーでタイムアウトになる可能性があります。 [詳細情報](https://github.com/rayne-wiselman/azure-docs-pr/blob/75653b84d6ccbefe7d5230449bea81f498e10a98/articles/site-recovery/site-recovery-monitoring-and-troubleshooting.md#recovery)。
+**Windows で実行中の Azure VM** | フェールオーバー前にオンプレミスのコンピューターで | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続でアクセスするには、コンピューターで RDP を有効にし、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が仮想マシンにないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで仮想マシンにログインできなくなります。 <br/><br/>
+**Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で | クラシック仮想マシンの場合、RDP プロトコルの[パブリック エンドポイントを追加](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)します (ポート 3389)。<br/><br/>  Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> フェールオーバーされる VM とその接続先となる Azure サブネットは、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を参照してください。<br/><br/>
 **Linux で実行中の Azure VM** | フェールオーバー前にオンプレミスのコンピューターで | Azure VM 上の Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。<br/><br/> ファイアウォール規則で SSH 接続が許可されていることを確認します。
-**Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM と接続先の Azure サブネットのネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> SSH ポート (既定では TCP ポート 22) での受信接続を許可するために、パブリック エンドポイントを作成する必要があります。<br/><br/> VM が VPN 接続 (ExpressRoute またはサイト間 VPN) 経由でアクセスされる場合は、クライアントを使用して SSH 経由で直接 VM に接続できます。<br/><br/> コンピューターまたはサブネットに関連付けられているネットワーク セキュリティ グループがある場合、そのグループに HTTP/HTTPS を許可する送信規則が設定されていることを確認します。 VM のフェールオーバー先となるネットワークの DNS が正しく構成されていることを確認します。 これらが行われていない場合、"PreFailoverWorkflow タスクの WaitForScriptExecutionTask がタイムアウトしました" というエラーでタイムアウトになる可能性があります。 [詳細情報](https://github.com/rayne-wiselman/azure-docs-pr/blob/75653b84d6ccbefe7d5230449bea81f498e10a98/articles/site-recovery/site-recovery-monitoring-and-troubleshooting.md#recovery)。
+**Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM と接続先の Azure サブネットのネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> クラシック仮想マシンの場合、SSH ポート (既定では TCP ポート 22) で着信接続を許可するように[パブリック エンドポイントを追加](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/>
 
 
 

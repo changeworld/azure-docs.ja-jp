@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: bc60476253fd3e646fbd08cd6749e06fb403959c
-ms.openlocfilehash: 7ce638ae0cdca9f6114acae458a2cdea38a7793f
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 391943c6057081b48594d74898d798e5365509d3
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -44,11 +45,11 @@ Amazon Web Services (AWS) と Azure AD の統合を構成するには、次の�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Amazon Web Services (AWS) の追加 
 2. Azure AD シングル サインオンの構成とテスト
@@ -145,7 +146,7 @@ Amazon Web Services (AWS) アプリケーションは、特定の形式の SAML 
    
      c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。
    
-     d. ページの下部にある [Next Step]」を参照してください。
+     d. ページの下部にある **[Next Step]**」を参照してください。
 
 10. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。 
     
@@ -161,7 +162,7 @@ Amazon Web Services (AWS) アプリケーションは、特定の形式の SAML 
     
     a. **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。
     
-    b. ページの下部にある [Next Step]」を参照してください。
+    b. ページの下部にある **[Next Step]**」を参照してください。
 
 13. **[Select Role Type]** ダイアログで、次の手順を実行します。 
     
@@ -177,7 +178,7 @@ Amazon Web Services (AWS) アプリケーションは、特定の形式の SAML 
     
      a. SAML プロバイダーとして、前に作成した SAML プロバイダーを選択します (例: *WAAD*)。 
     
-     b. ページの下部にある [Next Step]」を参照してください。
+     b. ページの下部にある **[Next Step]**」を参照してください。
 
 15. **[Verify Role Trust]** ダイアログで、**[Next Step]** をクリックします。 
     
@@ -303,10 +304,15 @@ Amazon Web Services (AWS) アプリケーションは、特定の形式の SAML 
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
-    b. ページの下部にある [完了]」を参照してください。   
+    b. ページの下部にある **[完了]**」を参照してください。   
 
 ### <a name="creating-a-amazon-web-services-aws-test-user"></a>Amazon Web Services (AWS) テスト ユーザーの作成
 このセクションの目的は、Amazon Web Services (AWS) で Britta Simon というユーザーを作成することです。
+
+> [!NOTE]
+> AWS は、SAML で ジャスト イン タイム ユーザー プロビジョニングをサポートします。 これは既定で有効になっているため、AWS でユーザーをプロビジョニングする必要はありません。
+> 
+> 
 
 ### <a name="to-create-a-user-called-britta-simon-in-amazon-web-services-aws-perform-the-following-steps"></a>Amazon Web Services (AWS) で Britta Simon というユーザーを作成するには、次の手順に従います。
 1. 管理者として **Amazon Web Services (AWS)** 企業サイトにログインします。
@@ -421,10 +427,5 @@ Amazon Web Services (AWS) アプリケーションは、特定の形式の SAML 
 
 
 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
