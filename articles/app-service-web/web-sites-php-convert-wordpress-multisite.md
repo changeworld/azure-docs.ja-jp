@@ -17,6 +17,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 45a5c8f16dd70f65967907c18752f4f98ffa75ea
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -68,7 +69,7 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] プラグインを利用すると、ネットワーク上のサイトにカスタム ドメインを簡単に追加できます。 このプラグインを正常に機能させるには、ポータルとドメイン レジストラーで追加のセットアップを行う必要があります。
 
 ## <a name="enable-domain-mapping-to-the-web-app"></a>Web アプリへのドメイン マッピングの有効化
-**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web Apps へのカスタム ドメインの追加はサポートされません。 **Shared** モードまたは** Standard** モードに切り替える必要があります。 これを行うには、次の手順を実行します。
+**無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web Apps へのカスタム ドメインの追加はサポートされません。 **Shared** モードまたは**Standard** モードに切り替える必要があります。 これを行うには、次の手順を実行します。
 
 * Azure ポータルにログインして、自分の Web アプリに移動します。 
 * **[設定]** で **[スケールアップ]** タブをクリックします。
@@ -139,10 +140,5 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
 [wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
