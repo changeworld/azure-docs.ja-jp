@@ -1,9 +1,9 @@
 ---
-title: "カスタマイズ: Azure AD Password Management | Microsoft Docs"
-description: "ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。"
+title: "カスタマイズ: Azure Active Directory のパスワード管理 | Microsoft Docs"
+description: "ニーズに合わせて Azure AD でパスワード管理の外観、動作、および通知をカスタマイズする方法。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 2cddd150-8747-447a-a7cf-1d7d5775c0b3
@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 88a1d39337a8aebf58b6b35841acc4348e1baeae
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>Password Management を組織のニーズに合わせてカスタマイズする
+# <a name="customizing-password-management-to-fit-your-organizations-needs"></a>組織ニーズに合わせたパスワード管理のカスタマイズ
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-> 
-> 
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+>
+>
 
-ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。 **Azure クラシック ポータル** で、 [[Active Directory 拡張機能]](https://manage.windowsazure.com)の [構成] タブに移動することで、今すぐ調査を開始できます。 このトピックでは、 **Azure クラシック ポータル** の中で、ディレクトリの [[構成]](https://manage.windowsazure.com)タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
+ユーザーに最良のエクスペリエンスを与えるため、パスワード管理の使用可能なすべての構成オプションを調べて試してみることをお勧めします。 **Azure クラシック ポータル** で、 [[Active Directory 拡張機能]](https://manage.windowsazure.com)の [構成] タブに移動することで、今すぐ調査を開始できます。 このトピックでは、**Azure クラシック ポータル**の中で、ディレクトリの [[構成]](https://manage.windowsazure.com) タブから管理者として実行できる以下のパスワード管理のカスタマイズについて、そのすべてを説明します。
 
 | トピック |  |
 | --- | --- |
@@ -40,7 +41,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
 | サインイン時にユーザーに登録を強制する方法 |[パスワード リセットの登録ベースのロールアウトの適用](#require-users-to-register-when-signing-in) |
 | 登録内容の定期的な再確認をユーザーに強制する方法 |[設定: ユーザーに認証データの再確認を強制するまでの日数](#number-of-days-before-users-must-confirm-their-contact-data) |
 | ユーザーが管理者に連絡する方法をカスタマイズする方法 |[設定: "管理者に問い合わせてください" リンクをカスタマイズする](#customize-the-contact-your-administrator-link) |
-| パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 |[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| パスワードをリセットせずにオンプレミスの AD アカウントのロックを解除することをユーザーに許可する方法 |[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | ユーザーのパスワード リセット通知を有効にする方法 |[設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | 管理者のパスワード リセット通知を有効にする方法 |[設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) |
 | パスワード リセットの外観をカスタマイズする方法 |[設定: 会社名、ブランド、ロゴ ](#password-management-look-and-feel) |
@@ -135,13 +136,13 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
             </tr>
           </tbody></table>
 
-## <a name="password-management-behavior"></a>Password Management の動作
+## <a name="password-management-behavior"></a>パスワード管理の動作
 次の表は、各コントロールが、パスワード リセットの登録とリセットを行うユーザーのエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションで構成できます。
 
 > [!NOTE]
 > これらのポリシー コントロールを表示するには、使用している管理者アカウントに AAD Premium ライセンスが割り当てられている必要があります。<br><br>これらのポリシー コントロールは、パスワードをリセットするエンド ユーザーにのみ適用されます。管理者には適用されません。  **管理者には、Microsoft が管理者のために指定した連絡用メールと携帯電話の既定のポリシーがあり、これらは変更できません。**
-> 
-> 
+>
+>
 
 <table>
             <tbody><tr>
@@ -283,7 +284,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                 </p>
                 <ul>
                   <li class="unordered">
-少なくとも 1 つのオプションを選択する必要があります。<br><br></li>
+少なくとも&1; つのオプションを選択する必要があります。<br><br></li>
                   <li class="unordered">
 ユーザーがパスワードを柔軟にリセットできるように、少なくとも 2 つのオプションを有効にすることを強くお勧めします。<br><br></li>
                   <li class="unordered">
@@ -302,7 +303,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                   <li class="unordered">
 セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。  安全保護のため、現時点では、管理者がこれらの回答を編集または表示する方法はありません。<br><br></li>
                   <li class="unordered">
-                    <strong>注: </strong>既定では、クラウド属性の [会社電話] と [携帯電話] だけが、オンプレミス ディレクトリからクラウド ディレクトリに同期されます。  クラウドに同期されるオンプレミス属性の詳細については、「<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Azure Active Directory に同期される属性」を参照してください 。</a><br><br></li>
+                    <strong>注: </strong>既定では、クラウド属性の [会社電話] と [携帯電話] だけが、オンプレミス ディレクトリからクラウド ディレクトリに同期されます。  クラウドに同期されるオンプレミス属性の詳細については、「<a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Azure Active Directory に同期される属性</a>」を参照してください。<br><br></li>
                 </ul>
                 <p>
                   <strong>登録ポータル:</strong>
@@ -357,7 +358,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                 </p>
                 <ul>
                   <li class="unordered">
-ユーザーがパスワードをリセットする前に通過する必要がある確認手順の数に影響します。  確認手順は、ユーザーが認証情報の 1 つを使用してアカウントを確認するように定義されます (会社電話番号への電話または連絡用電子メールへのメールなど)。<br><br></li>
+ユーザーがパスワードをリセットする前に通過する必要がある確認手順の数に影響します。  確認手順は、ユーザーが認証情報の&1; つを使用してアカウントを確認するように定義されます (会社電話番号への電話または連絡用電子メールへのメールなど)。<br><br></li>
                   <li class="unordered">
                     <strong>注:</strong> ユーザーのアカウントに、設定されたポリシーに従ってパスワードを問題なくリセットするために必要な認証情報が定義されていない場合は、管理者にパスワードのリセットを依頼することを指示するエラー ページが表示されます。  <br><br></li>
                 </ul>
@@ -455,7 +456,7 @@ ms.openlocfilehash: c02f5a2b0ef127805aed0f8b8b5ec8ccac1f879f
                   <li class="unordered">
 回答の最大文字数は 40 文字です。<br><br></li>
                   <li class="unordered">
-ユーザーは、同じ質問に 2 度回答することはできません。<br><br></li>
+ユーザーは、同じ質問に&2; 度回答することはできません。<br><br></li>
                   <li class="unordered">
 ユーザーは、2 つの異なる質問に同じ回答をすることはできません。<br><br></li>
                   <li class="unordered">
@@ -506,7 +507,7 @@ Unicode 文字を含む任意の文字セットを使用して回答を定義で
                   <li class="unordered">
 回答の最大文字数は 40 文字です。<br><br></li>
                   <li class="unordered">
-ユーザーは、同じ質問に 2 度回答することはできません。<br><br></li>
+ユーザーは、同じ質問に&2; 度回答することはできません。<br><br></li>
                   <li class="unordered">
 ユーザーは、2 つの異なる質問に同じ回答をすることはできません。<br><br></li>
                   <li class="unordered">
@@ -744,17 +745,17 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
                   <li class="unordered">
 スイッチが <strong>[はい]</strong> に設定されている場合、書き戻しは有効になり、フェデレーション ユーザーとパスワード ハッシュ同期ユーザーは、パスワードをリセットできます。<br><br></li>
                 </ul>
-              </td>
+              </td
             </tr>
              <tr>
               <td>
                 <div id="allow-users-to-unlock-accounts-without-resetting-their-password">
-                  <p>パスワードをリセットせずにアカウントのロックを解除することをユーザーに許可する</p>
+                  <p>パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除することをユーザーに許可する</p>
                 </div>
               </td>
               <td>
 
-              <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の 2 つの操作を分離することができます。</p>
+              <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の&2; つの操作を分離することができます。</p>
 
               <p>[はい] に設定すると、ユーザーはパスワードをリセットし、アカウントのロックを解除するか、パスワードをリセットせずにロックを解除するかを選択できます。 </p>
 
@@ -783,7 +784,7 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
             </tr>
           </tbody></table>
 
-## <a name="password-management-notifications"></a>Password Management 通知のカスタマイズ
+## <a name="password-management-notifications"></a>パスワード管理の通知
 次の表は、各コントロールが、パスワード リセット通知を受信するユーザーと管理者のエクスペリエンスに対して、どのように影響するかを説明しています。  これらのオプションは、[Azure の管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブにある **[通知]** セクションで構成できます。
 
 <table>
@@ -864,11 +865,11 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
 <br/>
 <br/>
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
 * [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
@@ -877,9 +878,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

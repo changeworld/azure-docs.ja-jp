@@ -1,5 +1,5 @@
 ---
-title: "ジョブ準備タスクおよびジョブ解放タスクの使用 - Azure Batch | Microsoft Docs"
+title: "コンピューティング ノードでジョブを準備しジョブを完了するタスクの作成 - Azure Batch | Microsoft Docs"
 description: "Azure Batch コンピューティング ノード間のデータ転送を最小にするにはジョブ レベルの準備タスクを使用し、ジョブの完了時にノードをクリーンアップするには解放タスクを使用します。"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 3b34a9665bfab85abbd633d01139ba2da2249bbf
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="run-job-preparation-and-completion-tasks-on-azure-batch-compute-nodes"></a>Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行
+# <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
+
  Azure Batch ジョブでは、タスクの実行前に何らかのセットアップが必要になることがよくあります。また、タスクが完了した後に、ジョブ実行後のメンテナンスが必要になることもよくあります。 場合によっては、タスクに共通する入力データをコンピューティング ノードにダウンロードしたり、ジョブの完了後にタスクの出力データを Azure Storage にアップロードしたりする必要があります。 **ジョブの準備**タスクと**ジョブの解放**タスクを使用して、これらの操作を実行できます。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>ジョブの準備タスクと解放タスク
@@ -222,9 +225,4 @@ Azure Batch チームのメンバーによって投稿されたもので、コ�
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

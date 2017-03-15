@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/24/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
+ms.sourcegitcommit: 0dc1f1ef73334187fe76302ff3bd5a5446dec768
+ms.openlocfilehash: 21370f9c30ac1dcaa979ab9724155c91bda128f7
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-   ![ユーザー管理を開く](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
+   ![[ユーザーとグループ] を開く](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
 
    ![[ユーザー] ブレードを開く](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
@@ -43,9 +44,4 @@ ms.openlocfilehash: bf8930a73c334265c828cd01ca1910201b231f3b
 * [Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
 * [Azure Active Directory プレビューでユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
 * [Azure Active Directory プレビューでディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

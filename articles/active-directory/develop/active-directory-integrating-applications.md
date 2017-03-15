@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: mbaldwin;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: b5dbb8c28bd6b2bdbb53939314348104bbbe4f34
-ms.openlocfilehash: f6ec7634a1d21c7205ac8ae7377a312ed386ee61
+ms.sourcegitcommit: 57383c11682342cb0a6446c79e603843a698fc8c
+ms.openlocfilehash: 835e1c494de59576fd8ac529240729cb33eaa50b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -55,13 +56,13 @@ Azure AD でのユーザーのサインインのサポートだけを必要と�
 Azure AD での認証のしくみの詳細については、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」をご覧ください。
 
 ### <a name="overview-of-the-consent-framework"></a>同意フレームワークの概要
-Azure AD の同意フレームワークを使用すると、クライアント アプリケーションが登録されているものとは異なる、Azure AD テナントによって保護された Web API にアクセスする必要があるマルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションの開発が容易になります。 これらの Web API には、独自の Web API だけでなく、Graph API、Office 365、その他の Microsoft サービスも含まれます。 このフレームワークは、ディレクトリ データへのアクセスを必要とする場合がある、ディレクトリへの登録を要求するアプリケーションに同意するユーザーまたは管理者に基づいています。
+Azure AD の同意フレームワークを使用すると、クライアント アプリケーションが登録されているものとは異なる、Azure AD テナントによって保護された Web API にアクセスする必要があるマルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションの開発が容易になります。 この Web API には、独自の Web API だけでなく、Microsoft Graph API (Azure Active Directory、Intune、および Office 365 のサービスへのアクセスに使用) およびその他の Microsoft サービス API も含まれます。 このフレームワークは、ディレクトリ データへのアクセスを必要とする場合がある、ディレクトリへの登録を要求するアプリケーションに同意するユーザーまたは管理者に基づいています。
 
-たとえば、Web クライアント アプリケーションで Office 365 Web API/リソース アプリケーションを呼び出して、ユーザーに関するカレンダー情報を読み取る必要がある場合、そのユーザーはそのクライアント アプリケーションに同意する必要があります。 ユーザーが同意すると、クライアント アプリケーションはユーザーに代わって Office 365 Web API を呼び出し、必要に応じてカレンダー情報を使用できるようになります。
+たとえば、Web クライアント アプリケーションで Office 365 からユーザーに関するカレンダー情報を読み取る必要がある場合、そのユーザーはそのクライアント アプリケーションに同意する必要があります。 ユーザーが同意すると、クライアント アプリケーションはユーザーに代わって Microsoft Graph API を呼び出し、必要に応じてカレンダー情報を使用できるようになります。 [Microsoft Graph API](https://graph.microsoft.io) により、Office 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブックなど) のほか、Azure AD のユーザーとグループ、Microsoft Cloud Services のその他のデータ オブジェクトにアクセスできます。 
 
 同意フレームワークは、OAuth 2.0 と、パブリック クライアントまたは秘密のクライアントを使用した各種フロー (認証コードの付与やクライアント資格情報の付与など) を基盤としています。 Azure AD は、OAuth 2.0 を使用することで、スマートフォン、タブレット、サーバーなどで実行されるさまざまな種類のクライアント アプリケーションや Web アプリケーションを構築し、必要なリソースにアクセスすることを可能にします。
 
-同意フレームワークの詳細については、[Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) に関するページ、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」、および Office 365 のトピック「[Office 365 API を使用した認証について](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks)」を参照してください。
+同意フレームワークの詳細については、[Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) に関するページと「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。また、Microsoft Graph で Office 365 への承認アクセスの取得については、「[Microsoft Graph でのアプリ認証](https://graph.microsoft.io/docs/authorization/auth_overview)」を参照してください。
 
 #### <a name="example-of-the-consent-experience"></a>同意エクスペリエンスの例
 次の手順は、アプリケーション開発者とユーザーに対して、同意エクスペリエンスがどのように機能するかを示しています。
@@ -88,7 +89,7 @@ Azure AD の同意フレームワークを使用すると、クライアント �
 ### <a name="configuring-a-client-application-to-access-web-apis"></a>Web API にアクセスするためのクライアント アプリケーションの構成
 Web/confidential クライアント アプリケーションが認証を必要とする承認付与フローに参加 (およびアクセス トークンを取得) できるようにするには、セキュリティで保護された資格情報を確立する必要があります。 Azure Portal でサポートされている既定の認証方法は、クライアント ID と対称キーの組み合わせです。 このセクションでは、秘密キーにクライアントの資格情報を提供するのに必要な構成手順について説明します。
 
-さらに、クライアント アプリケーションがリソース アプリケーションによって公開されている Web API (つまり Azure AD Graph API) にアクセスする前に、同意フレームワークにより、要求されたアクセス許可に基づいてクライアントが必要なアクセス許可を取得することが保証されます。 既定では、すべてのアプリケーションが Azure Active Directory (Graph API) と Azure サービス管理 API のアクセス許可を選択できます。Azure AD の "サインオンを有効にし、ユーザーのプロファイルを読み取る" アクセス許可は、既定で既に選択されています。 クライアント アプリケーションが Office 365 Azure AD テナントに登録している場合は、SharePoint Online および Exchange Online に対する Web API とアクセス許可も選択できます。 目的の Web API の横にあるドロップダウン メニューでは、次の [2 種類のアクセス許可](active-directory-dev-glossary.md#permissions)から選択できます。
+さらに、クライアント アプリケーションがリソース アプリケーションによって公開されている Web API (つまり Microsoft Graph API) にアクセスする前に、同意フレームワークにより、要求されたアクセス許可に基づいてクライアントが必要なアクセス許可を取得することが保証されます。 既定では、すべてのアプリケーションが Azure Active Directory (Graph API) と Azure サービス管理 API のアクセス許可を選択できます。Azure AD の "サインオンを有効にし、ユーザーのプロファイルを読み取る" アクセス許可は、既定で既に選択されています。 クライアント アプリケーションが Office 365 Azure AD テナントに登録している場合は、SharePoint Online および Exchange Online に対する Web API とアクセス許可も選択できます。 目的の Web API の横にあるドロップダウン メニューでは、次の [2 種類のアクセス許可](active-directory-dev-glossary.md#permissions)から選択できます。
 
 * アプリケーションのアクセス許可: クライアント アプリケーションは、(ユーザー コンテキストなしで) アプリケーションとして Web API に直接アクセスする必要があります。 この種類のアクセス許可には管理者の同意が必要であり、ネイティブ クライアント アプリケーションでは使用できません。
 * 委任されたアクセス許可: クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要がありますが、選択したアクセス許可によってアクセスが制限されます。 この種類のアクセス許可は、管理者の同意を要求するように構成されていない限り、ユーザーが付与できます。 
@@ -165,13 +166,10 @@ Web API を開発し、アクセス [スコープ](active-directory-dev-glossary
 
 アプリケーション マニフェストの一般的概念の詳細については、「 [Azure Active Directory のアプリケーション マニフェストについて](active-directory-application-manifest.md)」をご覧ください。
 
-### <a name="accessing-the-azure-ad-graph-and-office-365-apis"></a>Azure AD Graph API および Office 365 API へのアクセス
-前に説明したように、独自のリソース アプリケーションで API を公開してアクセスできるようにするだけでなく、Microsoft のリソースによって公開される API にアクセスするようにクライアント アプリケーションを更新することもできます。  Azure AD Graph API (他のアプリケーションに対するアクセス許可のリストでは “Azure Active Directory” と呼ばれます) は、Azure AD に登録されたすべてのアプリケーションが既定で使用できます。 Office 365 によってプロビジョニングされた Azure AD テナントでクライアント アプリケーションを登録する場合は、API によって公開される、さまざまな Office 365 リソースへのすべてのアクセス許可にアクセスできます。
+### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Microsoft Graph API による Azure AD Graph と Office 365 へのアクセス  
+前に説明したように、独自のリソース アプリケーションで API を公開してアクセスできるようにするだけでなく、Microsoft のリソースによって公開される API にアクセスするようにクライアント アプリケーションを更新することもできます。  Microsoft Graph API (他のアプリケーションに対するアクセス許可のリストでは "Microsoft Graph" と呼ばれます) は、Azure AD に登録されたすべてのアプリケーションが使用できます。 Office 365 によってプロビジョニングされた Azure AD テナントでクライアント アプリケーションを登録する場合は、Microsoft Graph API によって公開される、さまざまな Office 365 リソースへのすべてのアクセス許可にアクセスできます。
 
-次のものによって公開されるアクセス スコープの詳細については、各資料を参照してください。  
-
-* Azure AD Graph API: 記事「[アクセス許可スコープ | Graph API 概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)」を参照してください。
-* Office 365 API: 「 [Authentication and Authorization using Common Consent Framework (共通の同意フレームワークを使用した認証と承認)](https://msdn.microsoft.com/office/office365/howto/application-manifest) 」記事をご覧ください。 Office 365 API と統合するクライアント アプリケーションを構築する方法の概要については、「 [Set up your Office 365 development environment (Office 365 開発環境のセットアップ)](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) 」をご覧ください。
+Microsoft Graph API によって公開されるアクセス スコープの詳細については、[アクセス許可スコープ | Microsoft Graph API の概念](https://graph.microsoft.io/docs/authorization/permission_scopes)に関する記事をご覧ください。
 
 > [!NOTE]
 > 現在の制限により、ネイティブ クライアント アプリケーションは、"組織のディレクトリにアクセスする" アクセス許可を使用する場合に、Azure AD Graph API しか呼び出すことはできません。  この制限は、Web アプリケーションには適用されません。
@@ -258,10 +256,5 @@ Web アプリケーションでは、ユーザーにサインアップ エクス
 * アプリ マニフェストの役割の詳細については、「[Azure Active Directory のアプリケーション マニフェストについて](active-directory-application-manifest.md)」を参照してください。
 * Azure Active Directory (AD) の開発者向けの重要な概念の定義については、「[Azure Active Directory 開発者向け用語集](active-directory-dev-glossary.md)」を参照してください。
 * 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](active-directory-developers-guide.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

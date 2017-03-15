@@ -5,18 +5,18 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-editor: na
 ms.assetid: 8e05afa9-2eda-4975-a0cc-6d408065860f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6a60db808388bf1fdf9441518920f2eb4e5fcc4d
-ms.openlocfilehash: bafbfb710d8cdb370d21d9299c447a0dfed3c468
+ms.sourcegitcommit: e5d37e9e723d97d1e6844f0b89ad1c2aae258565
+ms.openlocfilehash: 9ab3ac2cd6643b0e53f1f7853239c90e78f4bf77
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -28,7 +28,7 @@ Boomi と Azure AD の統合には、次の利点があります。
 
 - Boomi にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Boomi にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -47,11 +47,11 @@ Boomi と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Boomi の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -62,31 +62,25 @@ Azure AD への Boomi の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Boomi を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-
-    ![[アプリケーション]][2]
-
-4. ページの下部にある **[追加]** をクリックします。
+    ![アプリケーション][2]
+    
+3. ダイアログの上部にある **[追加]** をクリックします。
 
     ![アプリケーション][3]
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+4. 検索ボックスに、「**Boomi**」と入力します。
 
-    ![アプリケーション][4]
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_000.png)
 
-6. 検索ボックスに、「**Boomi**」と入力します。
+5. 結果ウィンドウで **[Boomi]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_01.png)
-
-7. 結果ウィンドウで **[Boomi]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_02.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_0001.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -106,125 +100,122 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Boomi アプリケーションでシングル サインオンを構成することです。
-
-Boomi アプリケーションでは特定の形式の SAML アサーションが要求されるため、ユーザーのフェデレーション ID で NameIdentifier 属性値を設定する必要があります。 既定では、Azure AD は NameIdentifier 属性に UserPrincipalName を使用します。 ただし、正常に統合するには、Boomi でこの値がユーザーのフェデレーション ID と一致するように調整する必要があります。 これは、以下のスクリーン ショットに示すように **[属性]** タブから変更できます。 統合は、適切なマッピングが完了した後にのみ機能します。
-
-![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_51.png)
+このセクションでは、Microsoft Azure 管理ポータルで Azure AD のシングル サインオンを有効にして、Boomi アプリケーションにシングル サインオンを構成します。
 
 **Boomi で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. クラシック ポータルの **Boomi** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1. Microsoft Azure 管理ポータルの **Boomi** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![Configure Single Sign-On][6] 
+    ![Configure Single Sign-On][4]
 
-2. **[ユーザーの Boomi へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_01.png)
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+3. **[Boomi のドメインと URL]** セクションの **[応答 URL]** ボックスに、`https://platform.boomi.com/sso/<account name>/saml` のパターンを使用して URL を入力します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_02.png)
+
+    > [!NOTE] 
+    > これは実際の値ではないので注意してください。 この値は実際の応答 URL で更新する必要があります。 この値を取得するには、Boomi サポート チームに問い合わせてください。 
+
+4. Boomi アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_03.png)
+
+5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、以下の表に示す行ごとに、次の手順を実行します。
+    
+    | 属性名 | 属性値 |
+    | --- | --- |    
+    | FEDERATION_ID | User.mail |
+
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_04.png)
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[応答 URL]** ボックスに、`https://platform.boomi.com/sso/<account name>/saml` のパターンを使用して URL を入力します。
-
-    b. **[次へ]**をクリックします。
-
-    > [!NOTE] 
-    > これは実際の値ではないので注意してください。 この値は実際の応答 URL で更新する必要があります。 この値を取得するには、Boomi サポート チームに問い合わせてください。
-
-4. **[Boomi でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_05.png) 
-
-    > [!NOTE]
-    > 応答の NameID 要求値が Boomi システムで構成されているフェデレーション ID と一致する必要があることに注意してください。 そのため、Boomi サポートチームと連携して、組織内の適切なユーザー ID をフェデレーション ID としてマッピングしてください。 既定では、Azure AD によって NameIdentifier が UPN 値として設定されます。 これは、以下のスクリーン ショットに示すように [属性] タブから変更できます。 統合は、適切なマッピングが完了した後にのみ機能します。 
+    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_05.png)
     
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_51.png)
+    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    
+    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    
+    d. **[OK]**
 
-5. 別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてログインします。 
+6. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
 
-6. **[会社名]**、**[セットアップ]** の順に進みます。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_06.png)     
 
-7. **[SSO オプション]** タブをクリックして以下の手順に従います。
+7. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_06.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_general_300.png)
+
+8. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_07.png)
+
+9. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_general_400.png)
+
+10. **[SAML 署名証明書]** セクションで、**[Certificate (base64) (証明書 (base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_08.png) 
+
+11. **[Boomi 構成]** セクションで、**[Boomi の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_09.png) 
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_10.png)
+
+12. 別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてログインします。 
+
+13. **[会社名]**、**[セットアップ]** の順に進みます。
+
+14. **[SSO オプション]** タブをクリックして以下の手順に従います。
+
+    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_11.png)
 
     a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Enable SAML Single Sign-On](SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
 
     b. **[インポート]** をクリックして、Azure AD からダウンロードした証明書を **ID プロバーダー証明書** にアップロードします。
     
-    c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[リモート ログイン URL]** の値を入力します。
+    c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーション構成ウィンドウの **[SAML Single Sign-On Service URL (SAML シングル サインオン サービス URL)]** の値を入力します。
 
-    d. **[Federation Id Location]** で、**[Federation Id is in NameID element of the Subject]** オプション ボタンを選択します。 
+    d. **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。 
 
     e. **[保存]** ボタンをクリックします。
-
-8. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
-
-    ![Azure AD のシングル サインオン][10]
-
-9. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
   
-    ![Azure AD のシングル サインオン][11]
-
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][20]
+![Azure AD ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_09.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_01.png) 
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+    
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_02.png) 
 
-3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
-
+3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+ 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_03.png) 
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_05.png) 
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    c. **[次へ]**をクリックします。
-
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_06.png) 
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-
-    e. **[次へ]**をクリックします。
-
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_07.png) 
-
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-boomi-tutorial/create_aaduser_08.png) 
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-
-    b. ページの下部にある **[完了]**」を参照してください。   
+    d. **[作成]**をクリックします。 
 
 
 
@@ -238,13 +229,13 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
 2. **[ユーザー管理]**、**[ユーザー]** の順に進みます。
 
-    ![Users](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "Users")
+    ![ユーザー](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "Users")
 
 3. **+** アイコンをクリックすると **[Add/Maintain User Roles](ユーザーの役割の追加と管理)** ダイアログが開きます。
 
-    ![Users](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "Users")
+    ![ユーザー](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "Users")
 
-    ![Users](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "Users")
+    ![ユーザー](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_003.png "Users")
 
 4. ユーザーの**電子メール アドレス**を入力します。
 
@@ -267,24 +258,28 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
 **Britta Simon を Boomi に割り当てるには、次の手順に従います。**
 
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+1. Microsoft Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で **[Boomi]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_50.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_50.png) 
 
-3. 上部のメニューで **[ユーザー]**をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][203] 
+    ![ユーザーの割り当て][202] 
 
-4. ユーザーの一覧で **[Britta Simon]**を選択します。
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-5. 下部にあるツール バーで **[割り当て]**をクリックします。
+    ![ユーザーの割り当て][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
-    ![ユーザーの割り当て][205]
-
 
 
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
@@ -308,19 +303,9 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 [3]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-boomi-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 080376a50e4cde3d3f9f801408e4a02b75bc72da
-ms.openlocfilehash: 40da274d0dcbf1efb22afc474a1c365f7770fdcb
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 789373189ff0ec1dd9c08bc1725bb781f8b7428b
+ms.openlocfilehash: df25e320e046355bc4a538f8acc4bb9e9cd98d8e
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 * HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
 > [!IMPORTANT]
-> オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分** 以上かかります。
+> オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **20 分**以上かかります。
 > 
 > 
 
@@ -184,6 +184,8 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 * Azure HDInsight
 * Azure Batch
 * Azure Machine Learning
+* Azure Data Lake Analytics
+* Azure SQL DB、Azure SQL DW、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 Azure HDInsight の「リンクされたサービス」を作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -325,7 +327,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
-| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com, @live.com, など)。 |12 時間 |
+| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。 次のセクションのコードを使用して、sessionId と authorization プロパティの値をプログラムで生成することもできます。 

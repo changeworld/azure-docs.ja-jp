@@ -15,13 +15,18 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: c7c26090c34dfa30bf4f7633924bf7b630a0280c
-ms.openlocfilehash: 6ff4db6f273a10fd6616656505f2995d51b0e3d2
-ms.lasthandoff: 11/22/2016
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3946072c1526156af623f8a5d19de4b72be77450
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="install-and-configure-azure-stack-cli"></a>Install and configure Azure Stack CLI
+
+> [!IMPORTANT] 
+> This topic applies only to Azure Stack Technical Preview 2.
+>
+
 In this document, we guide you through the process of using Azure Command-line Interface (CLI) to manage Azure Stack resources on Linux and Mac client platforms.
 
 ## <a name="install-nodejs-and-npm"></a>Install Node.js and npm

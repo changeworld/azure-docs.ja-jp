@@ -3,7 +3,7 @@ title: "Get Insights: Azure AD のパスワード管理レポート | Microsoft 
 description: "この記事では、レポートを使用して、組織内のパスワード管理操作を把握する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 1472b51d-53f4-4b0f-b1be-57f6fa88fa65
@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 50255c1eabc5ac0f51fa8d45851fb632928070cc
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="how-to-get-operational-insights-with-password-management-reports"></a>パスワード管理レポートで運用情報を把握する方法
 > [!IMPORTANT]
 > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-> 
-> 
+>
+>
 
-このセクションでは、Azure  Active Directory のパスワード管理レポートを使用して、ユーザーが組織内でどのようにパスワード リセットや変更を使用しているかを表示する方法について説明します。
+このセクションでは、Azure Active Directory のパスワード管理レポートを使用して、ユーザーが組織内でどのようにパスワード リセットや変更を使用しているかを表示する方法について説明します。
 
 * [**パスワード管理レポートの概要**](#overview-of-password-management-reports)
 * [**パスワード管理レポートを表示する方法**](#how-to-view-password-management-reports)
@@ -34,7 +35,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 * [**組織内のパスワード リセット アクティビティの表示**](#view-password-reset-activity)
 
 ## <a name="overview-of-password-management-reports"></a>パスワード管理レポートの概要
-パスワード リセットをデプロイした後、一般的な手順では、次に組織内でリセットがどのように使用されているかを確認します。  たとえば、ユーザーが登録しているパスワード リセット方法、または過去数日間にパスワード リセットが実行された回数を確認できます。  次に、現在、 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) のパスワード管理レポートを使用して確認できる一般的な項目をいくつか示します。
+パスワード リセットをデプロイした後、一般的な手順では、次に組織内でリセットがどのように使用されているかを確認します。  たとえば、ユーザーが登録しているパスワード リセット方法、または過去数日間にパスワード リセットが実行された回数を確認できます。  次に、現在、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)のパスワード管理レポートを使用して確認できる一般的な項目をいくつか示します。
 
 * パスワード リセットを登録した人数
 * パスワード リセットを登録したユーザー
@@ -48,12 +49,12 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 ## <a name="how-to-view-password-management-reports"></a>パスワード管理レポートを表示する方法
 パスワード管理レポートを参照するには、次の手順に従います。
 
-1. **Microsoft Azure 管理ポータル** で [[Active Directory]](https://manage.windowsazure.com)拡張機能をクリックします。
+1. **Azure クラシック ポータル**で [[Active Directory]](https://manage.windowsazure.com) 拡張機能をクリックします。
 2. ポータルに表示される一覧から、ディレクトリを選択します。
 3. **[レポート]** タブをクリックします。
 4. **[動作状況のログ]** セクションの下で、
 5. **[パスワード リセット アクティビティ]** レポートまたは **[パスワード リセット登録アクティビティ]** レポートのいずれかを選択します。
-   
+
    ![][001]
 
 ## <a name="how-to-access-password-management-reports-from-an-api"></a>API からパスワード管理レポートにアクセスする方法
@@ -72,7 +73,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 * **最大期間**: 1 か月
 * **最大行数**: 無制限
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-  
+
     ![][002]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
@@ -96,7 +97,7 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 * **最大期間**: 1 か月
 * **最大行数**: 無制限
 * **ダウンロードの可否**: CSV ファイルでダウンロードできます。
-  
+
     ![][003]
 
 ### <a name="description-of-report-columns"></a>レポートの列の説明
@@ -159,11 +160,11 @@ ms.openlocfilehash: 9e66d3d4877b0f04d101da73aa819b76857b7e18
 | パスワード リセットが、このテナントですべて無効になっています。 これを解決するには、 [ここ](http://aka.ms/ssprtroubleshoot) を参照してください。 |Failed |
 | ユーザーが、正常にパスワードをリセットしました。 |Succeeded |
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -174,9 +175,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

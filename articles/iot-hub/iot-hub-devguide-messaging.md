@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: b6c79691c75cb01eb4eea4d0e66b01d1792cfb11
-ms.openlocfilehash: 0e3f0166517d3fd0ddd5f04a12afa393d0ac2a92
+ms.sourcegitcommit: 2fb6f4d8330eb62e01af318277bc0e90aee039e0
+ms.openlocfilehash: d3c4d1a91615957764552a985e0dfeba7c10a927
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -44,7 +45,7 @@ IoT Hub と Event Hubs の両サービスの比較については、[IoT Hub と
 ## <a name="device-to-cloud-messages"></a>デバイスからクラウドへのメッセージ
 デバイスからのクラウドへのメッセージはデバイス向けのエンドポイント (**/devices/{deviceId}/messages/events**) を介して送信されます。 次にルーティング ルールに従って、IoT Hub 上のサービス向けエンドポイントの&1; つにメッセージをルーティングします。 ルーティング ルールはハブを通過する D2C メッセージのプロパティを使用して、メッセージのルーティング先を決定します。 既定では、[Event Hubs][lnk-event-hubs] と互換性のある組み込みサービス向けエンドポイント (messages/events) にルーティングされます。 このため、標準的な [Event Hubs の統合と SDK][lnk-compatible-endpoint] を使用して D2C メッセージを受信できます。
 
-IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の D2C メッセージは[Service Bus][lnk-servicebus]* メッセージ*というよりはむしろ [Event Hubs][lnk-event-hubs] の*イベント*であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
+IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の D2C メッセージは[Service Bus][lnk-servicebus] *メッセージ* というよりはむしろ [Event Hubs][lnk-event-hubs] の *イベント* であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
 
 この実装には、次のような意味があります。
 
@@ -88,10 +89,10 @@ IoT Hub でのカスタム エンドポイントの作成の詳細について�
 
 ### <a name="built-in-endpoint-messagesevents"></a>組み込みエンドポイント: messages/events
 
-IoT Hub は、組み込みのメッセージング エンドポイント **messages/events**を制御するための以下のプロパティを公開しています。
+IoT Hub は、Event Hub と互換性のある組み込みのメッセージング エンドポイント **messages/events** を制御するための以下のプロパティを公開しています。
 
-* **パーティション数**。 このプロパティは作成時に設定し、D2C イベントを取り込む場合のパーティション数を定義します。
-* **保存期間**。 このプロパティでは、D2C メッセージのリテンション期間を指定します。 既定は&1; 日ですが、7 日間に増やすことができます。
+* **パーティション数**。 このプロパティは作成時に設定し、D2C イベントを取り込む場合の[パーティション][lnk-event-hub-partitions]数を定義します。
+* **保存期間**。 このプロパティは、IoT Hub によってメッセージが保持される期間を日数で指定します。 既定は&1; 日ですが、7 日間に増やすことができます。
 
 IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。
 
@@ -232,7 +233,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 詳細については、[IoT Hub の作成][lnk-portal] に関するページをご覧ください。
 
 ## <a name="read-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの読み取り
-IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、ハブで受信した D2C メッセージを読み取ります。 エンドポイントは Event Hubs との互換性を持ち、Event Hubs がメッセージの読み取りでサポートするすべてのメカニズムを使用できるようになります。
+IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、ハブで受信した D2C メッセージを読み取ります。 このエンドポイントには Event Hubs との互換性があり、Event Hubs のサービスがメッセージを読み取るためにサポートするすべてのメカニズムを使用できます。
 
 IoT Hub でカスタム エンドポイントを作成することもできます。 IoT Hub は現在、カスタム エンドポイントとして Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。 これらのサービスからの読み取りの詳細については、[Event Hubs][lnk-getstarted-eh]からの読み取り、 [Service Bus キュー][lnk-getstarted-queue]からの読み取り、 [Service Bus トピック][lnk-getstarted-topic]からの読み取りに関する記事を参照してください。
 
@@ -434,9 +435,4 @@ IoT Hub でメッセージを送受信する方法を理解できたら、次の
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+[lnk-event-hub-partitions]: ../event-hubs/event-hubs-what-is-event-hubs.md#partitions

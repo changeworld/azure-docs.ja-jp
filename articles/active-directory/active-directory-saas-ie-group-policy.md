@@ -1,5 +1,5 @@
 ---
-title: "グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法 | Microsoft Docs"
+title: "GPO を使用して IE 用 Azure アクセス パネル拡張機能をデプロイする | Microsoft Docs"
 description: "グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
 services: active-directory
 documentationcenter: 
@@ -11,11 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
+ms.sourcegitcommit: c06c089fb08c19b55246122201c378917a560e14
+ms.openlocfilehash: af36f45e66b68e2e76651eb408682f36ee0cbb68
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -31,20 +33,20 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
 * グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 [詳細情報。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>手順 1: 配布ポイントを作成する
-最初に、拡張機能をリモートでインストールするすべてのコンピューターからアクセスできるネットワークの場所に、インストーラー パッケージを置く必要があります。 そのためには、次の手順に従います。
+最初に、拡張機能をリモートでインストールするコンピューターがアクセスできるネットワークの場所に、インストーラー パッケージを置く必要があります。 そのためには、次の手順に従います。
 
 1. サーバーに管理者としてログオンします。
 2. **[サーバー マネージャー]** ウィンドウで、**[ファイルおよび記憶域サービス]** に移動します。
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. **[共有]** タブに移動します。 **[タスク]** > **[新しい共有...]** の順にクリックします。
+3. **[共有]** タブに移動します。 **[タスク]**  >  **[新しい共有...]** の順にクリックします
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/active-directory-saas-ie-group-policy/shares.png)
 4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
 5. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[[Access Panel Extension.msi]](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
 6. インストーラー パッケージを共有上の目的の場所にコピーします。
    
-    ![.msi ファイルを共有にコピーする](./media/active-directory-saas-ie-group-policy/copy-package.png)
+    ![.msi ファイルを共有にコピーする。](./media/active-directory-saas-ie-group-policy/copy-package.png)
 7. クライアント コンピューターが共有のインストーラー パッケージにアクセスできることを確認します。 
 
 ## <a name="step-2-create-the-group-policy-object"></a>手順 2: グループ ポリシー オブジェクトを作成する
@@ -58,23 +60,23 @@ ms.openlocfilehash: b312e1a37b15e170847fae02e40bae26103b6d6d
    > 組織単位 (OU) を作成または編集する場合は、サーバー マネージャーに戻り、**[ツール]** > **[Active Directory ユーザーとコンピューター]** に移動します。
    > 
    > 
-4. OU を選択して右クリックし、 **[このドメインに GPO を作成し、このコンテナーにリンクする...]**
+4. OU を選択して右クリックし、**[このドメインに GPO を作成し、このコンテナーにリンクする...]** を選択します
    
     ![新しい GPO を作成する](./media/active-directory-saas-ie-group-policy/create-gpo.png)
 5. **[新しい GPO]** プロンプトで、新しいグループ ポリシー オブジェクトの名前を入力します。
    
     ![新しい GPO の名前を設定する](./media/active-directory-saas-ie-group-policy/name-gpo.png)
-6. 作成したグループ ポリシー オブジェクトを右クリックし、 **[編集]**を選択します。
+6. 作成したグループ ポリシー オブジェクトを右クリックし、**[編集]** を選択します。
    
     ![新しい GPO を編集する](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
 ## <a name="step-3-assign-the-installation-package"></a>手順 3: インストール パッケージを割り当てる
-1. **[コンピューターの構成]** と **[ユーザーの構成]** のどちらを基にして拡張機能をデプロイするかを決めます。 [コンピューターの構成](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)を使用すると、コンピューターにログオンしているユーザーに関係なく、拡張機能はコンピューターにインストールされます。 一方、 [ユーザーの構成](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)では、ユーザーがログオンしているコンピューターに関係なく、拡張機能はユーザーに対してインストールされます。
+1. **[コンピューターの構成]** と **[ユーザーの構成]** のどちらを基にして拡張機能をデプロイするかを決めます。 [コンピューターの構成](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)を使用すると、コンピューターにログオンしているユーザーに関係なく、拡張機能はコンピューターにインストールされます。 [ユーザーの構成](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)では、ユーザーがログオンしているコンピューターに関係なく、拡張機能はユーザーに対してインストールされます。
 2. **[グループ ポリシー管理エディター]** の左側のウィンドウで、選択した構成の種類に応じて、次のどちらかのフォルダー パスに移動します。
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. **[ソフトウェアのインストール]** を右クリックして、**[新規]** > **[パッケージ...]** の順に選択します。
+3. **[ソフトウェアのインストール]** を右クリックして、**[新規]**  >  **[パッケージ...]** の順に選択します
    
     ![新しいソフトウェア インストール パッケージを作成する](./media/active-directory-saas-ie-group-policy/new-package.png)
 4. 「 [手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]**をクリックします。
@@ -121,7 +123,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 ユーザーに対してこのメッセージが表示されないようにする場合は、次の手順に従って、パスワードの保存によるオートコンプリートを禁止します。
 
-1. **グループ ポリシー管理エディター** ウィンドウで、次のパスに移動します。 この構成設定は **[ユーザー構成]**でのみ利用できます。
+1. **グループ ポリシー管理エディター** ウィンドウで、次のパスに移動します。 この構成設定は **[ユーザー構成]** でのみ利用できます。
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
 2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]**という名前の設定を見つけます。
@@ -132,7 +134,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
    > 
    
     ![これは [ユーザー設定] から探すことに注意](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
-3. 上記の設定を右クリックし、 **[編集]**を選択します。
+3. 上記の設定を右クリックし、**[編集]** を選択します。
 4. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** というタイトルのウィンドウで、**[無効]** を選択します。
    
     ![[無効] を選択](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
@@ -162,10 +164,5 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

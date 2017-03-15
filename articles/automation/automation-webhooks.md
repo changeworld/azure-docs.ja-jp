@@ -1,5 +1,5 @@
 ---
-title: Azure Automation Webhook | Microsoft Docs
+title: "webhook を使用した Azure Automation の Runbook の開始 | Microsoft Docs"
 description: "HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
 services: automation
 documentationcenter: 
@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 155d89ed6aed0afd2780a017c221bd807ca61ba2
+ms.sourcegitcommit: deb32f98bbfc0032ffbdcf168a2b4c42f1c4ae76
+ms.openlocfilehash: 4cf402877d5ddee8f4944a104163a55025013cc0
+ms.lasthandoff: 02/23/2017
 
 
 ---
-# <a name="azure-automation-webhooks"></a>Azure Automation Webhook
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Visual Studio Team Services、GitHub などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
+# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure Automation API を使用した完全なソリューションを実装しなくても、Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics などの外部サービスやカスタム アプリケーションで Runbook を開始できます。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
+[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
 ## <a name="details-of-a-webhook"></a>Webhook の詳細
 次のテーブルは、Webhook 用に構成する必要があるプロパティについて説明しています。
@@ -33,13 +34,13 @@ ms.openlocfilehash: 155d89ed6aed0afd2780a017c221bd807ca61ba2
 |:--- |:--- |
 | 名前 |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。  これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br>  ベスト プラクティスとして、Webhook を使用するクライアントに関連した名前を Webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。  これは、Webhook を作成するときに自動的に生成されます。  カスタム URL を指定することはできません。 <br> <br>  この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。  セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |
-| 有効期限 |証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。  Webhook の作成後に、この有効期限を変更することはできません。また、有効期限に達した後に、Webhook を再度有効にすることもできません。  この場合、別の Webhook を作成して現在の Webhook を置き換え、クライアントを更新して新しい Webhook を使用する必要があります。 |
+| 有効期限 |証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。  この有効期限は、webhook の作成後に変更できます。 |
 | 有効 |既定では、Webhook は作成時に有効になります。  Disabled に設定した場合、クライアントはそれを使用できなくなります。  **Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
 
 ### <a name="parameters"></a>パラメーター
 Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。 Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。 Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。 1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
-Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。  クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
+Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。  クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という&1; つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
 ![Webhookdata プロパティ](media/automation-webhooks/webhook-data-properties.png)
 
@@ -73,7 +74,6 @@ Webhook の作成時に $WebhookData の値を指定した場合、クライア�
 
 > [!NOTE]
 > すべての入力パラメーターの値は、Runbook のジョブに記録されます。  つまり、Webhook の要求でクライアントから提供された入力はすべて記録され、Automation ジョブにアクセスできるすべてのユーザーが使用できます。  このため、Webhook の呼び出しに機密情報を含める場合には注意する必要があります。
-> 
 > 
 
 ## <a name="security"></a>セキュリティ
@@ -110,7 +110,7 @@ Webhook を作成後に使用する場合、クライアント アプリケー�
 | 404 |見つかりません |次のいずれかの理由で要求が受け入れられませんでした。 <ul> <li>webhook が見つからない。</li> <li>Runbook が見つからない。</li> <li>アカウントが見つからない。</li>  </ul> |
 | 500 |内部サーバー エラー |URL は有効ですが、エラーが発生しました。  要求を再送信してください。 |
 
-要求が成功したと仮定した場合、Webhook の応答には、次のような JSON 形式のジョブ ID が含まれています。 ここに含まれるジョブ ID は 1 つですが、JSON 形式は将来拡張できるようになっています。
+要求が成功したと仮定した場合、Webhook の応答には、次のような JSON 形式のジョブ ID が含まれています。 ここに含まれるジョブ ID は&1; つですが、JSON 形式は将来拡張できるようになっています。
 
     {"JobIds":["<JobId>"]}  
 
@@ -193,7 +193,7 @@ Azure アラートを通知システムとして使用するだけでなく、�
 ![Webhook](media/automation-webhooks/webhook-alert.jpg)
 
 ### <a name="alert-context"></a>アラート コンテキスト
-仮想マシンなどの Azure リソースを例に取ると、このマシンの CPU 使用率は重要なパフォーマンス メトリックの 1 つです。 長期間にわたり CPU 使用率が 100% になるか特定の値を超えた場合、仮想マシンを再起動して問題を解決する必要があります。 この問題は、CPU 使用率をメトリックとするアラート ルールを仮想マシンに構成することで解決できます。 ここで、CPU 使用率はほんの一例であり、Azure リソースに構成できるメトリックは他にも多数あります。また、この問題を解決するために行うアクションは仮想マシンの再起動ですが、他のアクションを実行するように Runbook を構成することもできます。
+仮想マシンなどの Azure リソースを例に取ると、このマシンの CPU 使用率は重要なパフォーマンス メトリックの&1; つです。 長期間にわたり CPU 使用率が 100% になるか特定の値を超えた場合、仮想マシンを再起動して問題を解決する必要があります。 この問題は、CPU 使用率をメトリックとするアラート ルールを仮想マシンに構成することで解決できます。 ここで、CPU 使用率はほんの一例であり、Azure リソースに構成できるメトリックは他にも多数あります。また、この問題を解決するために行うアクションは仮想マシンの再起動ですが、他のアクションを実行するように Runbook を構成することもできます。
 
 このアラート ルールがアクティブになって Webhook 対応の Runbook をトリガーするときに、ルールから Runbook にアラート コンテキストが送信されます。 [アラート コンテキスト](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)には、**SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId**、**Timestamp** など、Runbook がアクション対象のリソースを特定するために必要になる詳細が含まれています。 アラート コンテキストは Runbook に送信される **WebhookData** オブジェクトの本文に埋め込まれており、**Webhook.RequestBody** プロパティを使用して評価することができます
 
@@ -264,13 +264,9 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 
 ## <a name="next-steps"></a>次のステップ
-* Runbook を開始するさまざまな方法については、「 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
-* Runbook ジョブの状態の表示については、「 [Azure Automation での Runbook の実行](automation-runbook-execution.md)
-* Azure Automation を使用して Azure アラートに対処する方法については、 [Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* Runbook を開始するさまざまな方法の詳細については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事をご覧ください。
+* Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」をご覧ください。
+* Azure Automation を使用して Azure アラートに対処する方法については、[Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)に関する記事をご覧ください。
+* OMS Log Analytics のアラートから Runbook を呼び出す方法については、[Log Analytics のアラートでの Runbook アクション](../log-analytics/log-analytics-alerts.md#runbook-actions)に関する記事をご覧ください。
 
 

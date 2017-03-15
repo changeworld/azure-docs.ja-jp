@@ -11,19 +11,20 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: multiple databases
 ms.devlang: NA
-ms.date: 02/01/2017
+ms.date: 02/24/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 65b7e72d2cf0afd57aebd2e5938b540b2a2b4f20
-ms.openlocfilehash: a38e1bf40bde45d0122e07b50c748d57757635a5
+ms.sourcegitcommit: 1cac55acd88babc4ca4b04d2cafc6fa25f1393f0
+ms.openlocfilehash: 59f09d9529e8a97d8a0a4c7d9984a6fed850a57d
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="what-is-an-azure-sql-elastic-pool"></a>Azure SQL エラスティック プールの概要
-SQL エラスティック プールには、Azure 論理サーバー上で、設定価格に合わせて、設定された数の eDTU が与えられます。これらの eDTU は、そのサーバー上のデータベース プール間で共有されます。 SQL DB エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。
+SQL エラスティック プールには、Azure 論理サーバー上で、設定価格に合わせて、設定された数の eDTU が与えられます。これらの eDTU は、そのサーバー上のデータベース プール間で共有されます。 SQL DB エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 エラスティック プールは、[Azure Portal](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md)、および REST API を使用して作成および管理できます。
 
 > [!NOTE]
 > エラスティック プールは、現在プレビュー段階にあるインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。  エラスティック プールは、このリージョンでもできるだけ早く一般公開される予定です。
@@ -98,14 +99,12 @@ Geo リストアは、データベースがホストされているリージョ�
 ### <a name="active-geo-replication"></a>アクティブ geo レプリケーションを選択するとき
 geo リストアよりもアグレッシブな復旧要件があるアプリケーションについては、[Azure Portal](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、または [Transact-SQL](sql-database-geo-replication-transact-sql.md) を使用して、アクティブ geo レプリケーションを構成します。
 
-## <a name="additional-resources"></a>その他のリソース
-* [Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
+## <a name="next-steps"></a>次のステップ
+
+* エラスティック プールは、[Azure Portal](sql-database-elastic-pool-manage-portal.md)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md)、[C#](sql-database-elastic-pool-manage-csharp.md)、および REST API を使用して作成および管理できます。 
+* エラスティック プールを使用するときのガイダンスについては、[エラスティック プールのガイダンス](sql-database-elastic-pool-guidance.md)を参照してください。
+* ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/en-US/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

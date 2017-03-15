@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
+ms.sourcegitcommit: dc279718cbb360e611d7e4cfb6961a087159fb01
+ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
+ms.lasthandoff: 02/24/2017
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
-## <a name="overview"></a>Overview
-このガイドでは、1 つ以上の Azure Active Directory 内のすべてのユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure Active Directory のユーザーが含まれた外部グループを追加することで Azure Active Directory ユーザーのグループを管理する方法についても説明します。
+## <a name="overview"></a>概要
+このガイドでは、Azure Active Directory 内のユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure Active Directory のユーザーが含まれた外部グループを追加することで Azure Active Directory ユーザーのグループを管理する方法についても説明します。
 
 > このガイドの手順を実行するには、アプリケーションの作成先となる Azure Active Directory が事前に必要です。
 > 
@@ -58,7 +59,7 @@ ms.openlocfilehash: bc77893c80e9ede11a60aa7d809ac4311b44f5cc
 
 ![新しい Azure Active Directory アプリケーションのプロパティ][api-management-new-aad-application-2]
 
-チェック マークのボタンをクリックし、新しいアプリケーションを作成して保存します。**[構成]** タブに切り替え、新しいアプリケーションを構成します。
+チェック マークのボタンをクリックし、アプリケーションを作成して保存します。**[構成]** タブに切り替え、新しいアプリケーションを構成します。
 
 ![作成された新しい Azure Active Directory アプリケーション][api-management-new-aad-app-created]
 
@@ -110,19 +111,24 @@ Azure Active Directory の構成に戻り、**[キー]** セクションの **[�
 
 ![[許可されたテナント]][api-management-client-allowed-tenants]
 
-**[許可されたテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するには、全体管理者がアプリケーションにログインして、 **[同意する]**をクリックする必要があります。 次の例では、 `miaoaad.onmicrosoft.com` が **[許可されたテナント]** に追加されており、そのドメインの全体管理者が初めてログインしようとしています。
+
+必要な構成を指定したら、 **[保存]**をクリックします。
+
+![保存][api-management-client-allowed-tenants-save]
+
+変更が保存さたら、指定された Azure Active Directory 内のユーザーは、「[Azure Active Directory アカウントを使用して開発者ポータルにログインする方法][Log in to the Developer portal using an Azure Active Directory account]」の手順に従って開発者ポータルにサインインできます。
+
+**[許可されたテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するには、全体管理者は `https://<URL of your developer portal>/aadadminconsent` (たとえば、https://contoso.portal.azure-api.net/aadadminconsent) に移動し、アクセス許可する Active Directory テナントのドメイン名を入力して、[送信] をクリックします。 次の例では、`miaoaad.onmicrosoft.com` の全体管理者がこの特定の開発者ポータルの権限を付与しようとしています。 
+
+![アクセス許可][api-management-aad-consent]
+
+次の画面で、アクセス許可の付与を確認するメッセージが全体管理者に表示されます。 
 
 ![アクセス許可][api-management-permissions-form]
 
 > 全体管理者がアクセス許可を付与する前に全体管理者以外のユーザーがログインしようとすると、ログインに失敗し、エラー画面が表示されます。
 > 
 > 
-
-必要な構成を指定したら、 **[保存]**をクリックします。
-
-![保存][api-management-client-allowed-tenants-save]
-
-変更が保存さたら、指定された Azure Active Directory 内のユーザーは、「[Azure Active Directory アカウントを使用して開発者ポータルにログインする方法][Log in to the Developer portal using an Azure Active Directory account]」の手順に従って開発者ポータルにログインできます。
 
 ## <a name="how-to-add-an-external-azure-active-directory-group"></a>外部の Azure Active Directory グループを追加する方法
 Azure Active Directory 内のユーザーのアクセスを有効にした後は、Azure Active Directory のグループを API Management に追加することで、グループ内の開発者と目的の成果物の関連付けを管理しやすくすることができます。
@@ -147,7 +153,7 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 ![Azure Active Directory グループの一覧][api-management-aad-groups-list]
 
-**[追加]** をクリックすると、グループ名が検証され、グループが追加されます。 この例では、 **Contoso 5 Developers** という外部グループが追加されました。 
+**[追加]** をクリックすると、グループ名が検証され、グループが追加されます。 この例では、**Contoso 5 Developers** という外部グループが追加されました。 
 
 ![グループが追加された][api-management-aad-group-added]
 
@@ -155,7 +161,7 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 1 つの成果物から Azure Active Directory グループを構成したら、API Management サービス インスタンス内の他の製品でも **[可視性]** タブにこのグループのチェック ボックスが表示されます。
 
-追加した後で外部グループのプロパティの確認や構成を行うには、 **[グループ]** タブでグループの名前をクリックします。
+追加した後で外部グループのプロパティの確認や構成を行うには、**[グループ]** タブでグループの名前をクリックします。
 
 ![グループの管理][api-management-groups]
 
@@ -163,7 +169,7 @@ Azure Active Directory 内のユーザーのアクセスを有効にした後は
 
 ![グループの編集][api-management-edit-group]
 
-構成した Azure Active Directory のユーザーは、開発者ポータルにログインし、次のセクションの指示に従って、可視性を有効化されたグループの表示とサブスクライブを実行できます。
+構成した Azure Active Directory のユーザーは、開発者ポータルにサインインし、次のセクションの指示に従って、可視性を有効化されたグループの表示とサブスクライブを実行できます。
 
 ## <a name="how-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a>Azure Active Directory アカウントを使用して開発者ポータルにログインする方法
 前のセクションで構成した Azure Active Directory アカウントを使用して開発者ポータルにログインするには、Active Directory のアプリケーション構成の**サインオン URL** を使用して新しいブラウザー ウィンドウを開き、**[Azure Active Directory]** をクリックします。
@@ -204,6 +210,7 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 [api-management-aad-app-multi-tenant]: ./media/api-management-howto-aad/api-management-aad-app-multi-tenant.png
 [api-management-aad-reply-url]: ./media/api-management-howto-aad/api-management-aad-reply-url.png
+[api-management-aad-consent]: ./media/api-management-howto-aad/api-management-aad-consent.png
 [api-management-permissions-form]: ./media/api-management-howto-aad/api-management-permissions-form.png
 [api-management-configure-product]: ./media/api-management-howto-aad/api-management-configure-product.png
 [api-management-add-groups]: ./media/api-management-howto-aad/api-management-add-groups.png
@@ -234,10 +241,5 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 [Next steps]: #next-steps
 
 [Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

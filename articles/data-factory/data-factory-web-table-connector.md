@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
+ms.sourcegitcommit: 5046ec3f6a29fb4791cd6badc67c2111a9e3ab2c
+ms.openlocfilehash: 132ecec8aef2f166753214fce410237103583c08
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -186,9 +187,7 @@ WebSource でサポートされるプロパティの一覧については、 [We
 | --- | --- | --- |
 | type |type プロパティを **Web** |はい |
 | Url |Web ソースへの URL |はい |
-| authenticationType |Anonymous または Basic。 |はい |
-| userName |基本認証のユーザー名。 |はい (基本認証用) |
-| パスワード |基本認証のパスワード。 |はい (基本認証用) |
+| authenticationType |Anonymous |はい |
 
 ### <a name="using-anonymous-authentication"></a>匿名認証を使用する
 
@@ -202,25 +201,6 @@ WebSource でサポートされるプロパティの一覧については、 [We
         {
             "authenticationType": "Anonymous",
             "url" : "https://en.wikipedia.org/wiki/"
-        }
-    }
-}
-```
-
-### <a name="using-basic-authentication"></a>基本認証を使用する
-
-```JSON
-{
-    "name": "web",
-    "properties":
-    {
-        "type": "Web",
-        "typeProperties":
-        {
-            "authenticationType": "basic",
-            "url" : "http://myit.mycompany.com/",
-            "userName": "Administrator",
-            "password": "password"
         }
     }
 }
@@ -296,9 +276,4 @@ Excel 2013 を使用している場合、 [Microsoft Power Query for Excel](http
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

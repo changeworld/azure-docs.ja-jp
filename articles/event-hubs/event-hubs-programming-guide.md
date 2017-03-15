@@ -15,8 +15,9 @@ ms.workload: tbd
 ms.date: 02/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: b181c2e325621023753d420d0f005c71822db346
-ms.openlocfilehash: 81aee56a4a6e5759987108effe0f6abef0852852
+ms.sourcegitcommit: 2dfc38070e5c9bbdfc4c74e2465894a221657564
+ms.openlocfilehash: 1ee20b8f546c43d0351a2065b0628bb9d6b31736
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -118,7 +119,7 @@ public void SendBatch(IEnumerable<EventData> eventDataList);
 Event Hub にイベントを非同期送信することもできます。 非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) メソッドと [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) メソッドの両方で [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンを利用できます。 この手法ではスループットが上がりますが、Event Hubs でスロットルされていてもクライアントがイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。 また、クライアントの [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) プロパティを使用し、クライアント側の再試行オプションを制御できます。
 
 ## <a name="create-a-partition-sender"></a>パーティション送信元の作成
-パーティション キーを持つ Event Hub にイベントを送信するのが最も一般的ですが、特定のパーティションにイベントを直接送信することもあります。 次に例を示します。
+パーティション キーを持たない Event Hub にイベントを送信するのが最も一般的ですが、特定のパーティションにイベントを直接送信することもあります。 For example:
 
 ```csharp
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
@@ -190,9 +191,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 [CreateEventHubIfNotExists]: /dotnet/api/microsoft.servicebus.namespacemanager.createeventhubifnotexists
 [PartitionKey]: /dotnet/api/microsoft.servicebus.messaging.eventdata#Microsoft_ServiceBus_Messaging_EventData_PartitionKey
 [EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

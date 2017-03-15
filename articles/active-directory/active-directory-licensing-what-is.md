@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure Active Directory ライセンスとは | Microsoft Docs"
+title: "Azure クラシック ポータルでの Azure Active Directory ユーザーのライセンス | Microsoft Docs"
 description: "Office 365、Microsoft Intune、Azure Active Directory Premium エディションと Basic エディションを含む、Microsoft Azure Active Directory のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
 services: active-directory
 keywords: "Azure AD のライセンス"
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ae4961611195c1574f5b94edbca74e1f182b4361
-ms.openlocfilehash: eb0b428f84dc16abd5cfee73dc8e4191698ebdd6
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 7df8805139b6e3cc23041a8201b496fb7fce8063
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-is-microsoft-azure-active-directory-licensing"></a>Microsoft Azure Active Directory ライセンスとは
+# <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>Azure クラシック ポータルでの Microsoft Azure Active Directory ライセンスとは
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-licensing-get-started-azure-portal.md)
@@ -158,9 +160,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 * [アプリケーションへのグループの割り当て](active-directory-manage-groups.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 * [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Privileged Identity Management |Microsoft Docs
+title: "Azure AD Privileged Identity Management の構成 | Microsoft Docs"
 description: "Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b52a475008c9d15912c0b363d76118df74112107
-ms.openlocfilehash: b289b9befc67d01689fa87db955b1a10c210a724
-ms.lasthandoff: 02/21/2017
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 89174dad8fcd3bcceafd728feb2211926266720a
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
+# <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。  
 
 > [!NOTE]

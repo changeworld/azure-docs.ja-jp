@@ -1,5 +1,5 @@
 ---
-title: "バックアップの管理に Azure ロールベースのアクセス制御を使用する | Microsoft Docs"
+title: "Azure のロールベースのアクセス制を使用したバックアップの管理 | Microsoft Docs"
 description: "ロールベースのアクセス制御を使用して、Recovery Services コンテナーのバックアップ管理操作へのアクセスを管理します。"
 services: backup
 documentationcenter: 
@@ -13,32 +13,33 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/10/2017
-ms.author: markgal; trinadhk
+ms.author: trinadhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 67c782d13742896812e2398dd9d165d5c0f88dd2
-ms.openlocfilehash: 2a0b9b6be5a639d9b05c16b452274ca7efce771b
+ms.sourcegitcommit: 4bf4814c25f09c4c8637f13753316cd9f200fc42
+ms.openlocfilehash: f7e090916dbe6c6db84c1a110a6627feeb7e20ab
+ms.lasthandoff: 02/23/2017
 
 
 ---
 
-# <a name="use-role-based-access-control-for-backup-management"></a>バックアップの管理にロールベースのアクセス制御を使用する
+# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 > [!IMPORTANT]
-> Azure Backup で提供されるロールが実行できるの、Azure Portal または Recovery Services コンテナーの PowerShell コマンドレットで実行できるアクションに制限されています。 これらのロールが、Azure Backup エージェント クライアント UI または System Center Data Protection Manager UI または Azure Backup Server UI で実行されるアクションを使用することはできません。 
+> Azure Backup で提供されるロールが実行できるの、Azure Portal または Recovery Services コンテナーの PowerShell コマンドレットで実行できるアクションに制限されています。 これらのロールが、Azure Backup エージェント クライアント UI または System Center Data Protection Manager UI または Azure Backup Server UI で実行されるアクションを使用することはできません。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。 [Azure RBAC の組み込みのロール](../active-directory/role-based-access-built-in-roles.md)について説明します。
 
-* [バックアップ共同作成者](../active-directory/role-based-access-built-in-roles.md#backup-contributor) - このロールは、Recovery Services コンテナーの作成と他のロールへの権限付与を除き、バックアップの作成と管理のすべての権限を持ちます。 このロールは、すべてのバックアップ管理操作を実行できる、バックアップ管理の管理者と考えてください。 
-* [バックアップ オペレーター](../active-directory/role-based-access-built-in-roles.md#backup-operator) - このロールは、バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作の権限を持ちます。 このロールは共同作成者と同等ですが、データの削除によるバックアップの停止やオンプレミス リソースの登録解除など、削減する操作は実行できません。 
-* [バックアップ リーダー](../active-directory/role-based-access-built-in-roles.md#backup-reader) - このロールは、すべてのバックアップ管理操作を見る権限を持ちます。 このロールは監視役と考えてください。 
+* [バックアップ共同作成者](../active-directory/role-based-access-built-in-roles.md#backup-contributor) - このロールは、Recovery Services コンテナーの作成と他のロールへの権限付与を除き、バックアップの作成と管理のすべての権限を持ちます。 このロールは、すべてのバックアップ管理操作を実行できる、バックアップ管理の管理者と考えてください。
+* [バックアップ オペレーター](../active-directory/role-based-access-built-in-roles.md#backup-operator) - このロールは、バックアップの削除とバックアップ ポリシーの管理を除き、共同作成者が行うすべての操作の権限を持ちます。 このロールは共同作成者と同等ですが、データの削除によるバックアップの停止やオンプレミス リソースの登録解除など、削減する操作は実行できません。
+* [バックアップ リーダー](../active-directory/role-based-access-built-in-roles.md#backup-reader) - このロールは、すべてのバックアップ管理操作を見る権限を持ちます。 このロールは監視役と考えてください。
 
 制御を強化するために独自のロールを定義する場合は、Azure RBAC で [カスタム ロールを作成](../active-directory/role-based-access-control-custom-roles.md)する方法を参照してください。
 
 
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>バックアップ管理アクションへの組み込みバックアップ ロールのマッピング
-次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の RBAC ロールを示します。 
+次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の RBAC ロールを示します。
 
 | 管理操作 | 必要最小限 RBAC ロール |
 | --- | --- |
@@ -61,11 +62,4 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
   * [REST API](../active-directory/role-based-access-control-manage-access-rest.md)
 * [ロールベースのアクセス制御のトラブルシューティング](../active-directory/role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1e88eba53b8ec3388ede1ae69cb290423919fda6
-ms.openlocfilehash: d683e25ef96bbd87a6d5b5ea143754b8f67f288e
+ms.sourcegitcommit: 3b9d269a780e9a4c61263208f26f440b1121c682
+ms.openlocfilehash: f437598b612a145c5dd8b46a1ba340d298a76981
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -62,7 +63,7 @@ vCenter 5.5 または 6.0 (5.5 の機能のみをサポート)  <br/><br/> vSphe
 
 ### <a name="machines-replicate-to-azure"></a>マシン (Azure へのレプリケート)
 
-仮想マシンは [Azure 要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
+仮想マシンは [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしている必要があります。
 
 **要件** | **VMware/物理サーバー** | **Hyper-V (VMM なし)** | **Hyper-V (VMM あり)**
 --- | --- | --- | ---
@@ -163,17 +164,17 @@ RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし | 該当
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい | あり | はい
 記憶域 | なし | はい | はい
 ディスクのホット アド/削除 | なし | いいえ | いいえ
-ディスクの除外 | あり | なし | なし
+ディスクの除外 | はい | あり | はい
 マルチパス (MPIO) | 該当なし | あり | はい
 
 **Azure Storage** | **VMware/物理サーバー** | **Hyper-V (VMM なし)** | **Hyper-V (VMM あり)**
 --- | --- | --- | ---
 LRS | はい | あり | はい
-GRS | はい | あり | はい
+GRS (Standard Storage のみ) | はい | あり | はい
 クール ストレージ | なし | いいえ | なし
 ホット ストレージ| なし | いいえ | いいえ
 保存時の暗号化 | あり | あり | はい
-Premium Storage | はい | なし | なし
+Premium Storage | はい | あり | はい
 インポート/エクスポート サービス | なし | いいえ | いいえ
 
 
@@ -261,10 +262,5 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 
 ## <a name="next-steps"></a>次のステップ
-[デプロイメントの準備をする](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[前提条件を確認する](site-recovery-prereq.md)
 

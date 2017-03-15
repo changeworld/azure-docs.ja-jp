@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
-ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 3d5ad974c01e0ee3954da4f990da87338b2d1756
+ms.openlocfilehash: e41620d3192dbb77a26b79663494e441ccd96d40
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -169,9 +169,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | post_logout_redirect_uri |推奨 |ログアウトの正常終了後にユーザーをリダイレクトする URL。  指定しない場合、ユーザーに汎用メッセージが表示されます。 |
 
 ## <a name="single-sign-out"></a>シングル サインアウト
-Azure AD では、Cookie を使用してユーザーのセッションを識別します。 Web アプリケーションも、アプリケーション内でセッションを管理するために Cookie を設定することがあります。 ユーザーがアプリケーションに初めてサインインすると、Azure AD はユーザーのブラウザーに Cookie を設定します。 ユーザーが後で別のアプリケーションにサインインすると、Azure AD はユーザーを再認証する代わりに、まず Cookie を確認して、ユーザーが Azure AD エンドポイントとの有効なサインオン セッションを持つかどうかを判断します。
-
-同様に、ユーザーがアプリケーションから初めてサインアウトするときに、Azure AD はブラウザーから Cookie を消去します。 ただし、ユーザーは認証に Azure AD を使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがすべてのアプリケーションからサインアウトするようにするために、Azure AD は、ユーザーが現在サインインしているすべてのアプリケーションの `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーのセッションを識別するすべての Cookie を消去して、この要求に応答する必要があります。 `LogoutUrl` は Azure Portal から設定できます。
+ユーザーが `end_session_endpoint` にリダイレクトされると、Azure AD は、ユーザーのセッションをブラウザーからクリアします。 ただし、ユーザーは認証に Azure AD を使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがアプリケーションから同時にサインアウトできるように、Azure AD は、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーを識別するすべてのセッションを消去し、`200` 応答を返すことで、この要求に応答する必要があります。  アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` などを実装する必要があります。  `LogoutUrl` は Azure Portal から設定できます。
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 2. ページの右上隅のアカウントをクリックして、Active Directory を選択します。

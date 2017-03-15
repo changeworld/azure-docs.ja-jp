@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory プレビューで新しいグループを作成する | Microsoft Docs"
-description: "Azure Active Directory でグループを作成し、ユーザー (メンバー) をグループに追加する方法"
+title: "Azure Active Directory プレビューでユーザー グループを作成する | Microsoft Docs"
+description: "Azure Active Directory でグループを作成し、メンバーをそのグループに追加する方法"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,17 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 24a6ae1b259a1524ec3a8542dcbf55ff0450421e
-ms.openlocfilehash: ab74ff51f6dd1af91c4ec4d5de570ca30fb963bd
+ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
+ms.openlocfilehash: 4b85a754dfa9632f27308a3d9234213533dea4c4
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-new-group-in-azure-active-directory-preview"></a>Azure Active Directory プレビューで新しいグループを作成する
+# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
 > [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-groups-create-azure-portal.md)
+> * [Azure ポータル](active-directory-groups-create-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
@@ -58,9 +60,4 @@ ms.openlocfilehash: ab74ff51f6dd1af91c4ec4d5de570ca30fb963bd
 * [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

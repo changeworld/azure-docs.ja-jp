@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 02/15/2017
 ms.author: heidist
-experimental: true
-experiment_id: heidist-experiment1-20170221
+experiment_id: heidist-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: f7e657906d24693dffd84ebbd348d1940f271931
-ms.openlocfilehash: a4e28e17cd3ce2488bd292a4c5e95fb532526a56
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 71694028366f48682881523c0220a4158078a76c
+ms.openlocfilehash: b851f906b57225dce516d9704fdace80c44c4897
+ms.lasthandoff: 02/23/2017
 
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
@@ -50,7 +49,7 @@ Azure Search は、Microsoft の管理されたサービスとしてクラウド
 
 いくつかのクラウド サービス プロバイダーから、カスタム アプリで検索バーを動作させる機能を備えたカスタムの検索エンジンが提供されています。 フルテキスト検索、地理空間検索、検索入力の程度のあいまいさを処理する機能など、同等の基本機能を備えるソリューションもあります。 使用環境に最も合うものを判断する場合、通常は、[特化した機能](#feature-drilldown)か、API、ツール、管理の容易さと全体的な単純さが決め手になります。
 
-他の検索ソリューションと比較した場合、Azure Search は、Azure 上のコンテンツ ストアとデータベースに対するフルテキスト検索のワークロードに関して最も強力であり、コンテンツのナビゲーションを主に検索に依存するアプリに必要な機能層を備えています。 
+他の検索ソリューションと比較した場合、Azure Search は、Azure 上のコンテンツ ストアとデータベースに対するフルテキスト検索のワークロードに関して最も強力であり、情報の取得とコンテンツのナビゲーションを主に検索に依存するアプリに必要な機能層を備えています。 
 
 + インデックス層での Azure データ統合 (クローラー)
 + 中央管理のための Azure Portal
@@ -61,7 +60,9 @@ Azure Search は、Microsoft の管理されたサービスとしてクラウド
 > [!Note]
 > Azure 以外のデータ ソースが完全にサポートされます。 任意の JSON ドキュメント コレクションを Azure Search インデックスにパイプすることができます。
 
-### <a name="a-namefeature-drilldownafeature-drilldown"></a><a name="feature-drilldown"></a>機能のドリルダウン
+Azure Search の機能を最大限利用できるユース ケースには、オンライン カタログ、基幹業務プログラム、およびドキュメント検索アプリケーションが含まれます。
+
+### <a name="feature-drilldown"></a>機能のドリルダウン
 
 #### <a name="full-text-search-and-text-analysis"></a>フルテキスト検索とテキスト分析
 

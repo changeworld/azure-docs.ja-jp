@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: 7ec48138cf18cf50dc34f28e177c8d774034090b
+ms.sourcegitcommit: d4183b73bcb0441c9ad5f12e7a3a1e4d8e31f4b5
+ms.openlocfilehash: 243fbea75c4ba9b280c65a378d6f2d069add1098
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,7 +39,7 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 2. レプリケートされたデータの&1; 日の変更 (チャーン) 率を識別します。 これを行うには、次の手順を実行します。
 
    * Hyper-V の VM をレプリケートする場合、[Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057) をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは&1; 週間に渡って実行して平均をキャプチャすることをお勧めします。
-   * VMware の仮想マシンをレプリケートする場合、 [vSphere キャパシティ プランニング アプライアンス](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance) を使用してチャーン率を算出します。
+   * VMware 仮想マシンをレプリケートする場合、[Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用してチャーン率を算出します。
    * 物理サーバーをレプリケートする場合は、手動で評価を行う必要があります。
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
@@ -49,7 +50,7 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 3. **Capacity Planner** ワークシートに、必要な情報を入力します。 以下のスクリーンショットの赤の丸がついているすべてのフィールドに、入力を行う必要があります。
 
    * **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
-   * **[Average daily data change rate (%) (1 日の平均データ変更率 (%))]** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [vSphere キャパシティ プランニング アプライアンス](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance)を使用して収集した情報を入力します。  
+   * **[Average daily data change rate (%) (1 日の平均データ変更率 (%))]** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。  
    * **[圧縮]** は、Azure に VMware の VM または物理サーバーをレプリケートする場合の圧縮のみに該当します。 30% 以上を見積もりますが、必要に応じて設定を変更することができます。 Hyper-V の VM を Azure の圧縮にレプリケートする場合は、Riverbed などのサードパーティのアプライアンスを使用できます。
    * **[Retention Inputs (保持の入力)]** には、レプリカを保持する期間を指定します。 VMware または物理サーバーをレプリケートする場合は、日数で値を入力します。 Hyper-V をレプリケートする場合は、時間単位で時間を入力します。
    * **[Number of hours in which initial replication for the batch of virtual machines should complete (仮想マシンのバッチの初期レプリケーションを完了させる時間)]** と **[Number of virtual machines per initial replication batch (初期レプリケーションのバッチあたりの仮想マシンの数)]** には、初期レプリケーションの要件の計算に使用した設定を入力します。  Site Recovery をデプロイする際には、初期データ セット全体をアップロードする必要があります。
@@ -119,16 +120,11 @@ AA から AE の列が出力され、各 VM の情報が示されます。
     > Standard Storage および Premium Storage の IOPS は、ディスク レベルではなく VM レベルで計算されます。 標準的な仮想マシンはディスクあたり最大 500 IOPS を処理できます。 ディスクの IOPS が 500 より大きい場合は、Premium Storage が必要になります。 ただし、ディスクの IOPS が 500 を超えても VM ディスクの合計の IOPS がサポートされる標準 Azure VM の制限 (VM サイズ、ディスク数、アダプター数、CPU、メモリ) 内にある場合、プランナーは DS または GS シリーズではなく標準の VM を選択します。 適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
 
 
-1. すべての詳細を定義したら、**[Submit data to the planner tool (データをプランナー ツールに送信)]** をクリックして、**Capacity Planner** を開きます。ワークロードが保護対象かどうかは強調表示によって示されます。
+すべての詳細を定義したら、**[Submit data to the planner tool (データをプランナー ツールに送信)]** をクリックして、**Capacity Planner** を開きます。ワークロードが保護対象かどうかは強調表示によって示されます。
 
 ### <a name="submit-data-in-the-capacity-planner"></a>Capacity Planner でのデータの送信
 1. **Capacity Planner** ワークシートを開くと、指定した設定に基づいてデータが入力されます。 **Infra 入力ソース** セルに 'Workload' という語が表示され、この入力が **Workload Qualification** ワークシートのものであることを示します。
 2. 変更する必要がある場合、**Workload Qualification** ワークシートを変更して、**[Submit data to the planner tool (データをプランナー ツールに送信)]** をもう一度クリックします。  
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

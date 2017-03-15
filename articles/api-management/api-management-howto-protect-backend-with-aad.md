@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: af21253dadd5cd2f64149aa2738e459da9f8325a
+ms.sourcegitcommit: 690f820b3beb6b7d5d68732b94470602a92e9268
+ms.openlocfilehash: bf0d72f97a32771f86bdff62029fb43e279b6842
+ms.lasthandoff: 02/23/2017
 
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -512,7 +513,7 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 ## <a name="next-steps"></a>次のステップ
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
-* バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」と「[VPN または ExpressRoute を経由する接続](api-management-howto-setup-vpn.md)」をご覧ください。
+* バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-protect-backend-with-aad/api-management-management-console.png
 
@@ -562,9 +563,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Manage your first API]: api-management-get-started.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

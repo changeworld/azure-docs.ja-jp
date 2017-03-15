@@ -15,14 +15,16 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/20/2016
-ms.author: wesmc
+ms.author: wesmc, glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 29fa4620885ec787f362966f732510fded600d53
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-twilio-output-binding"></a>Azure Functions の Twilio 出力バインド
+# <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Twilio 出力バインディングを使用した Azure Functions からの SMS メッセージの送信
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Twilio バインドを構成および使用する方法について説明します。 
@@ -31,7 +33,7 @@ ms.openlocfilehash: 29fa4620885ec787f362966f732510fded600d53
 
 Azure Functions では、関数で SMS テキスト メッセージを送信できるように、Twilio 出力バインドをサポートしています。必要なのは、数行のコードと [Twilio](https://www.twilio.com/) アカウントです。 
 
-## <a name="functionjson-for-azure-notification-hub-output-binding"></a>Azure Notification Hub 出力バインドの function.json
+## <a name="functionjson-for-the-twilio-output-binding"></a>Twilio 出力バインディングの function.json
 function.json ファイルは、次のプロパティを提供します。
 
 * `name`: Twilio SMS テキスト メッセージの関数コードで使用される変数名です。
@@ -155,10 +157,5 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

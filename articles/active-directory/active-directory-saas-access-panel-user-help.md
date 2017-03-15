@@ -12,17 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 02/27/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: d99920e1f39567834f7721c6afec6adfceb512f4
-ms.openlocfilehash: 7464d02b94d8119bb932508e0dfcd36bcbfaed3b
+ms.sourcegitcommit: 59be15f2d17bbcbc4db6dd9d291cb1ea5991db2e
+ms.openlocfilehash: a753ac16e3329c85656682314824eb14ad8a4e52
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="common-access-panel-tasks"></a>一般的なアクセス パネル タスク
+# <a name="do-you-need-help-with-myapps"></a>MyApps の操作でお困りですか。
 
-アクセス パネルは、以下を行うことができる Web ポータルです。
+このページでは、MyApps ポータルの使用中に問題が発生を使用した場合のトラブルシューティングをお手伝いします。 問題を解決するにあたり、ヘルプ デスクまたは管理者に連絡しないと問題を解決できない場合もありますが、一般的な質問については、まずはこちらのトピックの手順をお試しください。 
+
+パスワード管理に関連するヘルプについては、[こちら](active-directory-passwords-update-your-own-password.md)をご覧ください。
+  
+
+## <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
+
+
+MyApps とは、以下を行うことができる Web ポータルです。
 
 - クラウド ベースのアプリケーションの管理と起動
 - グループ メンバーシップの管理
@@ -30,66 +39,53 @@ ms.openlocfilehash: 7464d02b94d8119bb932508e0dfcd36bcbfaed3b
 
 ![アクセス パネル][1] 
 
-このトピックでは、一般的なタスクを実行するための手順、および問題のトラブルシューティング方法について説明します。
 
 
 
-## <a name="how-to-troubleshoot-accessing-an-app"></a>アプリへのアクセスのトラブルシューティング方法
+## <a name="how-can-i-change-my-password"></a>パスワードの変更方法
 
-1.  お使いのブラウザーにアクセス パネルの拡張機能が正しくインストールされていることを確認します。  
-IE の拡張機能のトラブルシューティングを行うための[手順](active-directory-saas-ie-troubleshooting.md)に従います。
-2.  お使いのブラウザーがプライベートまたはシークレット モードではないことを確認します。
-3.  それでもアプリにアクセスできない場合は、管理者またはヘルプデスクにお問い合わせください。
-
-## <a name="how-to-change-your-password"></a>パスワードの変更方法
-
-1.  **アクセス パネル**で、右上のユーザー コントロールをクリックしてから、**[プロファイル]** をクリックします。
-2.  **[アカウントの管理]** で、**[パスワードの変更]** をクリックします。
-3.  古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
-4.  **[Submit]**をクリックします。
+1.    **MyApps** で、右上のユーザー コントロールをクリックしてから、**[プロファイル]** をクリックします。
+2.    **[アカウントの管理]** で、**[パスワードの変更]** をクリックします。
+3.    古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
+4.    **[Submit]**をクリックします。
 
 詳細については、「[自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
 
-## <a name="how-to-setup-password-reset"></a>パスワードのリセットの設定方法
+## <a name="how-do-i-setup-password-reset"></a>パスワードのリセットの設定方法
 
-1.  **アクセス パネル**で、右上のユーザー コントロールをクリックしてから、**[プロファイル]** をクリックします。
-2.  **[アカウントの管理]** で、**[セルフ サービス パスワードのリセットを設定]** をクリックします。
-3.  ダイアログ ボックスの手順を実行して送信します。
+1.    **MyApps** で、右上のユーザー コントロールをクリックしてから、**[プロファイル]** をクリックします。
+2.    **[アカウントの管理]** で、**[セルフ サービス パスワードのリセットを設定]** をクリックします。
+3.    ダイアログ ボックスの手順を実行して送信します。
 
 詳細については、「[パスワードをリセットする](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)」を参照してください。
 
 
-## <a name="how-to-add-new-apps-or-request-permission-to-app-access"></a>新しいアプリの追加またはアプリへのアクセス許可を要求する方法
+## <a name="how-can-i-add-a-new-app"></a>新しいアプリの追加方法
 
-1.  **アクセス パネル**で、**[アプリの追加]** をクリックします。
-2.  追加するアプリを検索して、**[追加]** をクリックします。  
-アプリのアクセス許可が必要な場合は、管理者の承認を待機する必要があります。
+1.    **MyApps** で、**[アプリの追加]** をクリックします。
+2.    追加するアプリを検索して、**[追加]** をクリックします。
 
-探しているアプリが見つからない場合は、管理者にお問い合わせください。
+**解説:**
+
+- このオプションには、管理者がアカウントに対して、このオプションを有効にしている場合にのみアクセスできます。
+- アプリのアクセス許可が必要な場合は、管理者の承認を待機する必要があります。
 
 
-## <a name="how-to-manage-your-group-memberships"></a>グループ メンバーシップの管理方法
 
-1. **アクセス パネル**で、**[グループ]** アプリ タイルをクリックします。
-2. グループを作成するには、**[所有しているグループ]** で **[グループの作成]** をクリックし、指示に従います。
-3. グループに参加するには、**[Groups I'm in (登録しているグループ)]** で **[グループに参加]** をクリックし、指示に従います。
+## <a name="how-can-i-manage-group-memberships"></a>グループ メンバーシップの管理方法
 
-**解説**:
-  
+1.    **MyApps** で、**[グループ]** アプリ タイルをクリックします。
+2.    グループを作成するには、**[所有しているグループ]** で **[グループの作成]** をクリックし、指示に従います。
+3.    グループに参加するには、**[Groups I'm in (登録しているグループ)]** で **[グループに参加]** をクリックし、指示に従います。
+
+**解説:**
+
 - メンバーであるグループをクリックすると、詳細を表示したり、グループを抜けたりすることができます。
 - 所有者であるグループをクリックすると、メンバーを追加または削除したり、グループを抜けたりすることができます。
 
 
 
-## <a name="next-steps"></a>次のステップ
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-user-help/01.png
-
-
-
-<!--HONumber=Nov16_HO5-->
-
 

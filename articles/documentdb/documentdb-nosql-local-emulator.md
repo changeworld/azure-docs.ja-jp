@@ -13,11 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/23/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 5f9783232e9b03ca3777a000ffc189863d0956ab
-ms.openlocfilehash: ffc481943a9dc55593fa8b46dffef0098f288eaf
+ms.sourcegitcommit: 92479ddca2c69f1b8630374e88cc5eda9ac8c9ef
+ms.openlocfilehash: 59b2205fcddf48cfbfb8d15e174c385482a21ec9
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -38,9 +39,9 @@ DocumentDB Emulator のハードウェア要件とソフトウェア要件は、
 
 * ソフトウェア要件
   * Windows Server 2012 R2、Windows Server 2016、または Windows 10
-*   最小ハードウェア要件
-  * 2 GB RAM
-  * 10 GB のハードディスク空き容量
+*    最小ハードウェア要件
+  *    2 GB RAM
+  *    10 GB のハードディスク空き容量
 
 ## <a name="installing-the-documentdb-emulator"></a>DocumentDB Emulator のインストール
 [Microsoft ダウンロード センター](https://aka.ms/documentdb-emulator)で DocumentDB Emulator をダウンロードしてインストールできます。 
@@ -117,7 +118,7 @@ X.509 証明書を Java 証明書ストアにインポートするには、「[�
 
 Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
 
-## <a name="a-idcommand-lineadocumentdb-emulator-command-line-tool-reference"></a><a id="command-line"></a>DocumentDB Emulator コマンドライン ツールのリファレンス
+## <a id="command-line"></a>DocumentDB Emulator コマンドライン ツールのリファレンス
 インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
@@ -223,7 +224,7 @@ DocumentDB Emulator は開発者のローカル ワークステーションで�
 * DocumentDB Emulator では、Azure DocumentDB サービスで利用できるサービス クォータの上書き (ドキュメント サイズの制限、パーティション分割コレクション ストレージの増加など) はサポートされません。
 * DocumentDB Emulator のコピーが Azure DocumentDB サービスの最新の変更に対応していない可能性があるため、[DocumentDB キャパシティ プランナー](https://www.documentdb.com/capacityplanner)を使用して、アプリケーションの運用スループット (RU) のニーズを正確に見積もってください。
 
-## <a name="a-idset-partitioncountachange-the-number-of-collections"></a><a id="set-partitioncount"></a>コレクションの数を変更する
+## <a id="set-partitioncount"></a>コレクションの数を変更する
 
 既定では、DocumentDB Emulator を使用して最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 **PartitionCount** の値を変更することにより、最大 250 個の単一パーティション コレクション、10 個のパーティション分割コレクション、または単一パーティションの数が 250 個を超えない範囲でこの 2 つの任意の組み合わせを作成できます (1 個のパーティション分割コレクション = 25 個の単一パーティション コレクション)。
 
@@ -249,9 +250,11 @@ DocumentDB Emulator で使用可能なコレクションの数を変更するに
 
 - DocumentDB Emulator がクラッシュした場合は、c:\Users\user_name\AppData\Local\CrashDumps フォルダーからダンプ ファイルを収集し、それらを圧縮して、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) への電子メールに添付します。
 
+- DocumentDB.StartupEntryPoint.exe でクラッシュが発生した場合、管理者コマンド プロンプトから次のコマンドを実行します。`lodctr /R` 
+
 - 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) への電子メールに添付します。
 
-### <a name="a-idtrace-filesacollect-trace-files"></a><a id="trace-files"></a>トレース ファイルの収集
+### <a id="trace-files"></a>トレース ファイルの収集
 
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
@@ -268,9 +271,4 @@ DocumentDB Emulator で使用可能なコレクションの数を変更するに
 ## <a name="next-steps"></a>次のステップ
 * DocumentDB の詳細については、[Azure DocumentDB の概要](documentdb-introduction.md)に関する記事を参照してください。
 * DocumentDB Emulator に対する開発を開始するには、[サポートされている DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかをダウンロードしてください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

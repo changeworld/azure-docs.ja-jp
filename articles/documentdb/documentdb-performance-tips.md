@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 02/23/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: abf65ccbf8806d6581135f41224ef46840715f85
-ms.openlocfilehash: 51e7188530574703a178c5927092d9bc9d15a45f
+ms.sourcegitcommit: d1ff26fd2d93881d028728bf86197c2dc9835ad7
+ms.openlocfilehash: 01f250b218e348a8bad046ac1ddb8c532aa8267f
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -91,9 +92,9 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
     各 DocumentClient インスタンスはスレッド セーフであり、直接モードで動作しているときには効率的な接続管理とアドレスのキャッシュが実行されます。 DocumentClient による効率的な接続管理とパフォーマンスの向上を実現するために、アプリケーションの有効期間中は、AppDomain ごとに DocumentClient の単一のインスタンスを使用することをお勧めします。
 
    <a id="max-connection"></a>
-3. **ホストあたりの System.Net MaxConnections を増やす**
+3. **ゲートウェイ モードを使用するときはホストあたりの System.Net MaxConnections を増やす**
 
-    DocumentDB の要求は既定で HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxConnections を&100; ～&1000; に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。この値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより大きな値に設定します。  
+    ゲートウェイ モードを使用するときは DocumentDB の要求は HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxConnections を&100; ～&1000; に増やす必要があります。 .NET SDK 1.8.0 以降では、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) の既定値は 50 です。この値を変更するには、[Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) をより大きな値に設定します。   
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 
      DocumentDB .NET SDK Version 1.9.0 以降では、並列クエリがサポートされています。この機能を使用すると、パーティション分割コレクションにクエリを並列的に実行できます (詳細については、 [SDK の操作](documentdb-partition-data.md#working-with-the-sdks)」と、関連する[コード例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)を参照してください)。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。 並列クエリには、ユーザーが要件に合わせて調整できる&2; つのパラメーターが用意されています。(a) MaxDegreeOfParallelism は、並列でクエリを実行できるパーティションの最大数を制御します。(b) MaxBufferedItemCount は、プリフェッチされる結果の数を制御します。
@@ -135,7 +136,7 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
     
 11. **64 ビット ホスト プロセスを使用する**
 
-    DocumentDB SDK は、32 ビット ホスト プロセスで動作します。 ただし、クロス パーティション クエリを使用する場合は、パフォーマンス向上のために 64 ビット ホスト プロセスを使用することをお勧めします。 次の種類のアプリケーションでは 32 ビット ホスト プロセスが既定で使用されるため、64 ビットに変更するには、アプリケーションの種類に基づいて次の手順に従ってください。
+    DocumentDB SDK は、DocumentDB .NET SDK バージョン 1.11.4 以降を使用している場合に、32 ビット ホスト プロセスで動作します。 ただし、クロス パーティション クエリを使用する場合は、パフォーマンス向上のために 64 ビット ホスト プロセスを使用することをお勧めします。 次の種類のアプリケーションでは 32 ビット ホスト プロセスが既定で使用されるため、64 ビットに変更するには、アプリケーションの種類に基づいて次の手順に従ってください。
     
     - 実行可能なアプリケーションの場合、これは **[ビルド]** タブの **[プロジェクトのプロパティ]** ウィンドウで **[32 ビットを優先]** オプションをオフにすることで実行できます。 
     
@@ -215,9 +216,4 @@ Azure DocumentDB は、高速で柔軟性に優れた分散データベースで
 少数のクライアント コンピューターでの高パフォーマンス シナリオで DocumentDB の評価に使用するサンプル アプリケーションについては、「 [Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
 
 また、スケーリングと高パフォーマンスのためのアプリケーションの設計の詳細については、「 [Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

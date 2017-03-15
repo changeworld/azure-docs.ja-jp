@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics を使用して Surface Hub を監視する | Microsoft Docs"
+title: "Azure Log Analytics を使用した Surface Hub の監視 | Microsoft Azure"
 description: "Surface Hub ソリューションを使用して、Surface Hub の正常性を追跡し、Surface Hub がどのように使用されているかを理解します。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 9ba6b1b3fcdaf090eee696ba3cb33be5d94be039
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: d568c52a7cbbe593658fb95203bfa98af13a1554
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="monitor-surface-hubs-with-log-analytics"></a>Log Analytics を使用して Surface Hub を監視する
+# <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
+
 この記事では、Log Analytics の Surface Hub ソリューションを使用して、Microsoft Operations Management Suite (OMS) で Microsoft Surface Hub デバイスを監視する方法について説明します。 Log Analytics は、Surface Hub の正常性を追跡するとともに、それらがどのように使用されているかを理解するために役立ちます。
 
 各 Surface Hub には、Microsoft Monitoring Agent がインストールされます。 そのエージェントを通して、Surface Hub から OMS にデータが送信されます。 Surface Hub からログ ファイルが読み込まれた後、OMS サービスに送信されます。 サーバーのオフライン状態、予定表の非同期、デバイス アカウントで Skype にログインできないなどの問題が、OMS の Surface Hub ダッシュボードに表示されます。 ダッシュボードに表示されるデータを利用して、実行されていないデバイスや問題が発生しているデバイスを識別し、検出された問題に対して修正プログラムを適用できる可能性があります。
@@ -84,9 +87,4 @@ OMS を使用した Surface Hub の監視は、その他の登録済みデバイ
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、Surface Hub の詳細データを表示します。
 * Surface Hub で問題が発生した場合に通知する[アラート](log-analytics-alerts.md)を作成します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

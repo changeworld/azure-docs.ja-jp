@@ -1,5 +1,5 @@
 ---
-title: "Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング | Microsoft Docs"
+title: "IE 用 Azure アクセス パネル拡張機能のトラブルシューティング | Microsoft Docs"
 description: "グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2017
+ms.date: 02/27/2017
 ms.author: markvi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 43768d76e3cdc0dc34a3412675ea4fb84170c021
+ms.sourcegitcommit: f593ecca4f4c82dcbd07e6f57ad120537f7d2134
+ms.openlocfilehash: 4c3f7f95b1052512547a9996019803b6185a3405
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -50,7 +52,7 @@ ms.openlocfilehash: 43768d76e3cdc0dc34a3412675ea4fb84170c021
 ## <a name="check-that-the-access-panel-extension-is-enabled"></a>アクセス パネル拡張機能が有効になっていることを確認する
 Internet Explorer でアクセス パネル拡張機能が有効になっていることを確認するには:
 
-1. Internet Explorer で、ウィンドウの右上隅にある **[歯車]** アイコンをクリックします。 次に、**[インターネット オプション]** を選択します。<br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
+1. Internet Explorer で、ウィンドウの右上隅にある **歯車アイコン**をクリックします。 次に、**[インターネット オプション]** を選択します <br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
    
     ![Go to Tools > Internet Options](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
 2. **[プログラム]** タブをクリックして、**[アドオンの管理]** をクリックします。
@@ -64,7 +66,7 @@ Internet Explorer でアクセス パネル拡張機能が有効になってい�
 ## <a name="enable-extensions-for-inprivate-browsing"></a>InPrivate ブラウズで拡張機能を有効にする
 InPrivate ブラウズ モードを使用している場合:
 
-1. Internet Explorer で、ウィンドウの右上隅にある **[歯車]** アイコンをクリックします。 次に、**[インターネット オプション]** を選択します。<br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
+1. Internet Explorer で、ウィンドウの右上隅にある **歯車アイコン**をクリックします。 次に、**[インターネット オプション]** を選択します <br />(古いバージョンの Internet Explorer では、**[ツール] > [インターネット オプション]** の順にクリックします)。
    
     ![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
 2. **[プライバシー]** タブに移動し、**[InPrivate ブラウズの開始時に、ツール バーと拡張機能を無効にする]** チェック ボックスを**オフ**にします。</p>
@@ -92,10 +94,5 @@ InPrivate ブラウズ モードを使用している場合:
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

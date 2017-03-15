@@ -16,8 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 319e22e2fb423e0fe1fabf95d0018d4fa3232e0b
-ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
+ms.sourcegitcommit: 5e01db2676e3515f41bf98d23595e6509c0d6805
+ms.openlocfilehash: c5f50213be9cd20c82acf8dd94463e7dce0a0195
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -49,6 +50,7 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
     ![新しいサンプル データベースのブレード](./media/sql-database-get-started/new-sample-db-blade.png)
 
 ## <a name="change-the-service-tier-and-performance-level-of-a-single-database"></a>単一データベースのサービス レベルとパフォーマンス レベルの変更
+
 スケールアップまたはスケールダウンするデータベースの [SQL Database] ブレードを開きます。
 
 1. [Azure Portal](https://portal.azure.com) で **[その他のサービス]** > **[SQL Database]** の順にクリックします。
@@ -59,12 +61,11 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
 
 4. 新しい階層を選択し、**[選択]**をクリックします。
    
-   **[選択]** をクリックすると、価格レベルを変更するスケール要求が送信されます。 データベースのサイズに応じて、スケール操作の完了に時間がかかる場合があります (この記事の最初の情報をご覧ください)。
+   **[選択]** をクリックすると、価格レベルを変更するスケール要求が送信されます。 データベースのサイズに応じて、スケール操作の完了に時間がかかる場合があります ([サービス階層](sql-database-service-tiers.md)を参照してください)。
    
    > [!NOTE]
    > データベースの価格レベルを変更しても、データベースの最大サイズは変更されません。 データベースの最大サイズを変更するには、[Transact-SQL (T-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) または [PowerShell](https://msdn.microsoft.com/library/mt619433.aspx) を使用します。
-   > 
-   > 
+   >  
    
    ![価格レベルの選択](./media/sql-database-manage-single-database-portal/choose-tier.png)
 5. 右上の通知アイコン (ベル) をクリックします。
@@ -80,9 +81,4 @@ ms.openlocfilehash: 5d7f11b9b027f86adf3d2382e82f2d382d71ee51
 * SQL Server Management Studio を使用して管理タスクを実行する方法については、「[SQL Server Management Studio を使用した Azure SQL データベースの管理](sql-database-manage-azure-ssms.md)」をご覧ください。
 * SQL Database のサービスについては、「[SQL Database とは](sql-database-technical-overview.md)」をご覧ください。 
 * Azure Database のサーバーとデータベースの機能については、[機能](sql-database-features.md)に関するページをご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

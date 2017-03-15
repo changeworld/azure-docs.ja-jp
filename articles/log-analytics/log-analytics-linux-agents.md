@@ -1,5 +1,5 @@
 ---
-title: "Linux コンピューターを Log Analytics に接続する | Microsoft Docs"
+title: "Azure Log Analytics への Linux コンピューターの接続 | Microsoft Docs"
 description: "Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。"
 services: log-analytics
 documentationcenter: 
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 218ffec4601c5b0b4ee9872b5bbd03489cb3ddcf
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: fba4e68e78b8267ff2413f94d5ca5066325f9c76
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する
-Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。 Linux から収集されたデータを OMS に追加すれば、実質的にどこからでも Linux システムやコンテナー ソリューション (Docker など) を管理できます。 したがって、こうしたデータの生成元は、オンプレミスのデータセンターに物理サーバーとして存在することもあれば、Amazon Web Services (AWS) や Microsoft Azure などのクラウドでホストされるサービス内の仮想コンピューターとして存在することもあります。デスク上のノート PC がデータの生成元となる場合もあるでしょう。 OMS は、Windows コンピューターからもデータを収集するため、紛れもなく異種混合の IT 環境に対応します。
+# <a name="connect-your-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する
+Log Analytics を使用すると、Linux コンピューターから生成されたデータを収集し、そのデータに基づいた行動を起こすことができます。 Linux から収集されたデータを OMS に追加すれば、実質的にどこからでも Linux システムやコンテナー ソリューション (Docker など) を管理できます。 こうしたデータの生成元は、オンプレミスのデータセンターに物理サーバーとして存在することもあれば、Amazon Web Services (AWS) や Microsoft Azure などのクラウドでホストされるサービス内の仮想コンピューターとして存在することもあります。デスク上のノート PC がデータの生成元となる場合もあるでしょう。 OMS は、Windows コンピューターからもデータを収集するため、紛れもなく異種混合の IT 環境に対応します。
 
 OMS の Log Analytics では、こうした種々雑多なソースのデータを単一の管理ポータルで表示し、管理することができます。 そのため監視に必要なシステムの種類や数が減って、データが取り込みやすくなり、ビジネス分析ソリューションや既存のシステムに必要なデータをエクスポートすることができます。
 
@@ -74,7 +76,7 @@ OMS Agent for Linux のパッケージをインストールした後、システ
 | Nagios |![はい](./media/log-analytics-linux-agents/oms-bullet-green.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |着信時 |
 | syslog |![はい](./media/log-analytics-linux-agents/oms-bullet-green.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |10 分 (Azure Storage からデータを収集する場合) または着信時 (エージェントからデータを収集する場合) |
 | Linux パフォーマンス カウンター |![はい](./media/log-analytics-linux-agents/oms-bullet-green.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |スケジュールに基づく頻度 (間隔は 10 秒以上) |
-| 変更の追跡 |![はい](./media/log-analytics-linux-agents/oms-bullet-green.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |1 時間に 1 回 |
+| 変更の追跡 |![はい](./media/log-analytics-linux-agents/oms-bullet-green.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![いいえ](./media/log-analytics-linux-agents/oms-bullet-red.png) |![なし](./media/log-analytics-linux-agents/oms-bullet-red.png) |1 時間に&1; 回 |
 
 ### <a name="package-requirements"></a>パッケージの要件
 | **必須パッケージ** | **説明** | **最小バージョン** |
@@ -96,9 +98,7 @@ omsagent をダウンロードしてチェックサムを検証し、エージ�
 ![workspace details](./media/log-analytics-linux-agents/oms-direct-agent-primary-key.png)
 
 ```
-wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/v1.1.0-28/omsagent-1.1.0-28.universal.x64.sh
-sha256sum ./omsagent-1.1.0-28.universal.x64.sh
-sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
 ```
 
 エージェントは、他にもさまざまな方法でインストールしたりアップグレードしたりすることができます。 詳細については、「 [Steps to install the OMS Agent for Linux (OMS Agent for Linux のインストール手順)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#steps-to-install-the-oms-agent-for-linux)」を参照してください。
@@ -108,7 +108,7 @@ sudo sh ./omsagent-1.1.0-28.universal.x64.sh --upgrade -w <YOUR OMS WORKSPACE ID
 ## <a name="choose-your-linux-data-collection-method"></a>Linux データの収集手段の選択
 収集するデータの種類をどのように選ぶかは、OMS ポータルを使用するか、各種構成ファイルを Linux クライアント上で直接編集するかによって異なります。 ポータルを使用する場合、その構成が自動的にすべての Linux クライアントに送信されます。 Linux クライアントごとに異なる構成が必要な場合は、クライアントのファイルを個別に編集するか、代替手段 (PowerShell DSC、Chef、Puppet など) を使用する必要があります。
 
-収集対象とする syslog イベントとパフォーマンス カウンターは、Linux コンピューター上の構成ファイルで指定できます。 *エージェントの構成ファイルを編集することによってデータの収集を構成する場合は、構成の一元管理を無効にする必要があります。*   以降、エージェントの構成ファイルでデータの収集設定を行う手順と、すべての OMS Agent for Linux または個々のコンピューターに対して構成の一元管理を無効化する手順について説明しています。
+収集対象とする syslog イベントとパフォーマンス カウンターは、Linux コンピューター上の構成ファイルで指定できます。 *エージェントの構成ファイルを編集することによってデータの収集を構成する場合は、構成の一元管理を無効にする必要があります。*  以降、エージェントの構成ファイルでデータの収集設定を行う手順と、すべての OMS Agent for Linux または個々のコンピューターに対して構成の一元管理を無効化する手順について説明しています。
 
 ### <a name="disable-oms-management-for-an-individual-linux-computer"></a>Linux コンピューターの OMS 管理を個別に無効化する
 構成データ収集の一元管理を Linux コンピューターごとに無効化するには、OMS_MetaConfigHelper.py スクリプトを使用します。 この方法は、特殊な構成を一部のコンピューターにのみ適用する必要がある場合に効果的です。
@@ -146,7 +146,7 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 | \* |すべてのインスタンス |
 | (/&#124;/var) |/ または /var という名前のインスタンスと一致します。 |
 
-同様に、親カウンターに対して選択したサンプリング間隔が、そのすべての子カウンターに適用されます。 つまり、すべての子カウンターのサンプリング間隔とインスタンスは 1 つのまとまりとして存在しています。
+同様に、親カウンターに対して選択したサンプリング間隔が、そのすべての子カウンターに適用されます。 つまり、すべての子カウンターのサンプリング間隔とインスタンスは&1; つのまとまりとして存在しています。
 
 ### <a name="add-and-configure-performance-metrics-with-linux"></a>Linux でのパフォーマンス メトリックの追加と構成
 収集するパフォーマンス メトリックは、/etc/opt/microsoft/omsagent/conf/omsagent.conf の構成によって制御されます。 OMS Agent for Linux で利用できるクラスとメトリックについては、「 [Available performance metrics (利用可能なパフォーマンス メトリック)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#appendix-available-performance-metrics) 」を参照してください。
@@ -782,9 +782,4 @@ syslog メッセージを収集するには、rsyslog または syslog-ng が必
 * [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * カスタム検索結果を保存および表示するには、 [ダッシュボード](log-analytics-dashboards.md) を使用します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

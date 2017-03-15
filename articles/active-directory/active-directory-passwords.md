@@ -1,9 +1,9 @@
 ---
-title: "Azure AD でのパスワード リセット | Microsoft Docs"
+title: "Azure Active Directory のパスワード リセット | Microsoft Docs"
 description: "パスワードのリセット、変更、パスワード管理のレポート、ローカルのオンプレミスの Active Directory へのライトバックなど、Azure AD のパスワード管理機能の説明。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: be6164fc-bae1-49df-af76-761329ba70a1
@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a6287228622070d566266f184dc1c32ec6c3dea5
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 760c248c92948af2c7e9ae54b0c42f396f0376f6
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="azure-ad-password-reset-for-it-administrators"></a>IT 管理者の Azure AD のパスワード リセット
+# <a name="azure-active-directory-password-reset-for-it-administrators"></a>IT 管理者のための Azure Active Directory のパスワード リセット
 > [!IMPORTANT]
 > Azure または O365 のパスワードをリセットをしたいとお考えですか。  その場合は、 [このセクション](#users-how-to-manage-your-own-password)にお進みください。
-> 
-> 
+>
+>
 
-セルフ サービスの実現は、コストを削減し労力を節約する手段として、世界中の IT 部門が長年目指してきた大きな目標です。  実際、市場はクラウドまたはオンプレミスから、オンプレミスのグループや、パスワード、ユーザー プロファイルを管理できるようにする製品であふれています。 Azure AD は、現在利用可能な機能の中でも、最も使いやすく強力なセルフ サービス機能を提供することで、これらの製品とは一線を画しています。
+セルフ サービスの実現は、コストを削減し労力を節約する手段として、世界中の IT 部門が長年目指してきた大きな目標です。  実際、市場はクラウドまたはオンプレミスから、オンプレミスのグループや、パスワード、ユーザー プロファイルを管理できるようにする製品であふれています。 Azure Active Directory (Azure AD) は、現在利用可能な機能の中でも、最も使いやすく強力なセルフ サービス機能を提供することで、他の製品とは一線を画しています。
 
 **Azure AD パスワード管理** は、定義するセキュリティ ポリシーに準拠したままで、ユーザーが任意のデバイスで、時間と場所に関係なくパスワードを管理できる一連の機能です。
 
@@ -169,14 +170,14 @@ Azure AD Premium または Basic 料金の詳細については、「 [Active Di
 #### <a name="enforce-password-reset-registration-at-sign-in-to-office-365-apps---november-2015"></a>Office 365 アプリへのサインイン時にパスワード リセット登録を実施する - 2015 年 11 月
 * [強制登録](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) 機能を有効にすることにより、職場または学校のアカウントを使用してサインインした任意の場所で登録を求めることができるようになりました。  これにより、多くの組織がパスワード リセットを使用開始する速度が大幅に上昇します。  この新しい機能により、大規模な組織がわずか 2 週間で利用開始したこともありました。
 
-#### <a name="support-for-unlocking-active-directory-accounts-without-resetting-a-password---november-2015"></a>パスワードをリセットすることなく Active Directory アカウントのロックを解除する機能をサポート - 2015 年 11 月
-* (リセットせずに) ロックのみを解除できることは、今日のヘルプデスクにとっては大きな推進力となります。  実際、多くの組織で、アカウントのロック解除にパスワードのリセット予算を最大 70% 使用しています。  Azure AD のパスワード リセットでは、この需要に対応するために、ユーザーが AD アカウントのロックを解除できる (パスワード リセットからは独立した) 機能を有効にできるようになりました。  これをオンにするには、「 [設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)」を参照してください。
+#### <a name="support-for-unlocking-on-premises-ad-accounts-without-resetting-a-password---november-2015"></a>パスワードをリセットすることなくオンプレミスの AD アカウントのロックを解除する機能をサポート - 2015 年 11 月
+* (リセットせずに) ロックのみを解除できることは、今日のヘルプデスクにとっては大きな推進力となります。  実際、多くの組織で、アカウントのロック解除にパスワードのリセット予算を最大 70% 使用しています。  Azure AD のパスワード リセットでは、この需要に対応するために、ユーザーがオンプレミスの AD アカウントのロックを解除できる (パスワード リセットからは独立した) 機能を有効にできるようになりました。  これをオンにするには、「[設定: ユーザーがパスワードをリセットせずにオンプレミスの AD アカウントのロックを解除できるようにする](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)」を参照してください。
 
 #### <a name="usability-updates-to-registration-page---october-2015"></a>登録ページでの使いやすさの更新 - 2015 年 10 月
 * ユーザーは既に登録されたデータがある場合、電子メールを送信したり電話をかけたりしなくても、[問題なし] をクリックするだけでデータを更新できるようになりました。
 
 #### <a name="improved-reliability-of-password-writeback---september-2015"></a>パスワード ライトバックの信頼性が向上 - 2015 年 9 月
-* Azure AD Connect の 9 月リリースの時点で、パスワード ライトバック エージェントは接続と、より堅牢な追加のフェールオーバー機能とを積極的に再試行するようになります。
+* Azure AD Connect の&9; 月リリースの時点で、パスワード ライトバック エージェントは接続と、より堅牢な追加のフェールオーバー機能とを積極的に再試行するようになります。
 
 #### <a name="api-for-retrieving-password-reset-reporting-data---august-2015"></a>パスワード リセット レポート データを取得するための API - 2015 年 8 月
 * パスワード リセット レポートの背後にあるデータを [Azure AD レポートおよびイベント API](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)で直接取得できるようになりました。
@@ -193,7 +194,7 @@ Azure AD Premium または Basic 料金の詳細については、「 [Active Di
 #### <a name="account-unlock-support-during-password-reset---june-2015"></a>パスワード リセット中のアカウントのロック解除をサポート - 2015 年 6 月
 * パスワード ライトバックを使用している場合、アカウントがロックされている状態でパスワードをリセットすると、Active Directory アカウントが自動的にロック解除されます。
 
-#### <a name="branded-sspr-registration---april-2015"></a>SSPR 登録のブランド化 - 2015 年 4 月
+#### <a name="branded-self-service-password-reset-sspr-registration---april-2015"></a>セルフサービスのパスワード リセット (SSPR) 登録のブランド化 - 2015 年 4 月
 * パスワードのリセットの登録ページは、会社のロゴでブランド化されるようになりました。
 
 #### <a name="security-questions---march-2015"></a>セキュリティの質問 - 2015 年 3 月
@@ -209,11 +210,11 @@ Azure AD Premium または Basic 料金の詳細については、「 [Active Di
 
 * 現在、myapps.microsoft.com へのアクセス時に登録済みデータを更新するようユーザーに喚起する機能をサポートしていますが、すべてのサインインでこれを行う機能を開発中です。
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
-Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+## <a name="next-steps"></a>次のステップ
+Azure AD のパスワード リセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -221,10 +222,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

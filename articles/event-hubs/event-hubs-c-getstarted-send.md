@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: fe331199333d492dbc42c9125c9da96a44066ee1
-ms.openlocfilehash: a6d6db0e0e6b6fe8d8ccbd6cbd3858ae0df5cb2d
+ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
+ms.openlocfilehash: f62c0ca57bfd15a9ad1f767fa8fd59cc73b71c43
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -32,7 +33,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
-* Microsoft Visual Studio Express for Windows
+* Microsoft Visual Studio、または Visual Studio Community エディション
 * アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
@@ -167,9 +168,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

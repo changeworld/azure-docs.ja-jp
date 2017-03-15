@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 02/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 6a854486060c77d743cbdd42b7a341860ab77361
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
+ms.openlocfilehash: 830cc28cdd5ca523c43cf1fa9cdff5131727d71f
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -46,6 +46,13 @@ ms.lasthandoff: 02/17/2017
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをアプリケーションに追加します。
 
 >[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
+
+## <a name="admins-resending-invitations-to-guest-users"></a>招待をゲスト ユーザーに再送信する管理者
+B2B コラボレーション ユーザーのプロファイル ページに移動し、まだ使用していないゲスト ユーザーに招待を再送信できます。
+
+![招待の再送信](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
+
+> ![注] サインインしたユーザーからの招待が再送信され、元の招待が特定のアプリまたはグループ宛てであった場合でも、ユーザーがディレクトリに招待されます。
 
 
 ## <a name="related-articles"></a>関連記事

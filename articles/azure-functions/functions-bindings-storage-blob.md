@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
-ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
+ms.sourcegitcommit: c2c9d84bc6699f4487e82b117d27b19f66313018
+ms.openlocfilehash: cde63b21e4bac8f635ef9125101735a07deb1bc2
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -55,6 +56,8 @@ Azure Storage BLOB トリガーを使用して、新しい BLOB または更新�
 
 * `path` については、「[名前のパターン](#pattern)」を参照し、BLOB 名のパターンを設定する方法を確認してください。
 * `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 このアプリ設定を手動で作成するには、[アプリ設定の手動での構成]()に関する記事を参照してください。 
+
+従量課金プランで実行しているときに Function App がアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 Function App が実行されると、BLOB はより迅速に処理されます。 この初期段階での遅延を回避するには、Always On を有効にした状態で App Service プランを使用するか、別のメカニズムを使用して、BLOB 名を含むキュー メッセージなどの BLOB 処理をトリガーします。 
 
 また、詳細については、次の小見出しのいずれかを参照してください。
 
@@ -368,10 +371,5 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

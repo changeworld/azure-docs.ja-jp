@@ -1,5 +1,5 @@
 ---
-title: "ジョブとタスクの出力の保持 - Azure Batch | Microsoft Docs"
+title: "Azure Storage へのジョブおよびタスクの出力の保持 - Azure Batch | Microsoft Docs"
 description: "Azure Storage を Batch のタスク出力とジョブ出力用の永続的ストアとして使用し、それらの保持された出力を Azure ポータルで確認できるようにする方法について説明します。"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: e5231970b772f7cc043441954ebab6cb1bb6ed8b
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 2c80f9d2bc788c60c5a7b3a5fd0d38cb86cbf838
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="persist-azure-batch-job-and-task-output"></a>Azure Batch のジョブとタスクの出力の保持
+# <a name="persist-results-from-completed-jobs-and-tasks-to-azure-storage"></a>Azure Storage への完了したジョブおよびタスクの結果の保持
+
 通常、Batch で実行されるタスクは出力を生成します。この出力は、格納された後、ジョブ内の他のタスクかジョブを実行したクライアント アプリケーション、またはその両方によって取得される必要があります。 この出力は、入力データを処理して作成されたファイルであるか、タスクの実行に関連付けられたログ ファイルである可能性があります。 この記事では、規則ベースの手法でこのようなタスク出力を Azure BLOB ストレージで保持する .NET クラス ライブラリを紹介し、プール、ジョブ、コンピューティング ノードを削除した後でもタスク出力を使用できるようにします。
 
 この記事の手法を使用して、[Azure Portal][portal] の **[Saved output files (保存された出力ファイル)]** と **[Saved logs (保存されたログ)]** でタスク出力を確認することもできます。
@@ -248,9 +251,4 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 
 [1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
 [2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
