@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
-ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 59798ae9412a7550c94f8fa67c39f504aad8d00c
+ms.openlocfilehash: 3867c57d40a218c80403578d30cb999bf9f6cd38
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -48,17 +48,6 @@ Resource Manager デプロイメント モデルで作成された非管理対�
 2.    SSE が有効化されたことのないストレージ アカウントに OS VHD をコピーします。 ディスクを別のストレージ アカウントにコピーするには、[AzCopy](../storage/storage-use-azcopy.md) を使用します。`AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    管理ディスクを使用する VM を作成します。作成時にその VHD ファイルを OS ディスクとしてアタッチします。
 
-
-## <a name="before-you-begin"></a>開始する前に
-PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-詳細については、[Azure PowerShell のバージョン管理](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)に関するページをご覧ください。
-
-
-
 ## <a name="convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set"></a>可用性セット内の VM を管理対象の可用性セット内の管理ディスクに変換する
 
 管理ディスクに変換する VM が可用性セット内にある場合は、最初に可用性セットを管理対象の可用性セットに変換する必要があります。
@@ -87,7 +76,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="convert-existing-azure-vms-to-managed-disks-of-the-same-storage-type"></a>既存の Azure VM を同じストレージの種類の管理ディスクに変換する
 
 > [!IMPORTANT]
-> 以下の手順を実行した後、既定の /vhds コンテナーにはブロック BLOB が&1; つ残ります。 ファイルの名前は "VMName.xxxxxxx.status" です。 この残っているステータス オブジェクトを削除しないでください。 この問題には今後の作業で対処されます。
+> 以下の手順を実行した後、既定の vhds コンテナーには BLOB が&1; つ残ります。 ファイルの名前は "VMName.xxxxxxx.status" です。 このファイルは、VM に [VM 拡張機能](virtual-machines-windows-classic-agents-and-extensions.md)をインストールした場合にのみ、Azure によって作成されます。 この残っているステータス オブジェクトを削除しないでください。 この問題には今後の作業で対処されます。
 
 このセクションでは、既存の Azure VM をストレージ アカウント内の非管理対象ディスクから管理ディスクに変換する方法 (両者が同じストレージの種類を使用している場合) について説明します。 このプロセスを使って、Premium (SSD) の非管理対象ディスクから Premium 管理ディスクに、または Standard (HDD) の非管理対象ディスクから Standard 管理ディスクに移行できます。 
 
@@ -149,7 +138,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 1. VM を停止 (割り当て解除) します。
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -Force
     ```
 2.  すべてのディスクを Premium Storage にアップグレードします。
 
@@ -168,7 +157,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 1. VM を起動します。
 
     ```powershell
-    Start-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName
+    Start-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
     ```
     
 Standard Storage を使用するディスクと Premium Storage を使用するディスクは混在させることができます。

@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2016
 ms.author: elioda
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 7683a6c6afa3dbec3fccadc9f095480ed90aa039
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: cbff931e7acc88b29ed6f51a16156b44c1596d3f
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="scaling-iot-hub"></a>IoT Hub のスケーリング
+# <a name="scale-your-iot-hub-solution"></a>IoT Hub ソリューションのスケーリング
 Azure IoT Hub は、100 万台のデバイスの同時接続をサポートできます。 詳細については、[IoT Hub の価格][lnk-pricing]に関するページを参照してください。 各 IoT Hub ユニットでは、毎日一定数のメッセージが許可されます。
 
 ソリューションを適切に調整するには、IoT Hub の個別の用途を考慮します。 具体的には、次の操作カテゴリに対して必要なピーク スループットを検討してください。
@@ -38,9 +40,9 @@ IoT Hub ソリューションのサイズを設定する方法として最適な
 
 | レベル | 持続スループット | 持続送信レート |
 | --- | --- | --- |
-| S1 |ユニットあたり最大 1111 KB/分<br/>(1.5 GB/日/ユニット) |ユニットあたり平均 278 メッセージ/分<br/>(ユニットあたり 400,000 メッセージ/日) |
-| S2 |ユニットあたり最大 16 MB/分<br/>(22.8 GB/日/ユニット) |ユニットあたり平均 4,167 メッセージ/分<br/>(ユニットあたり 600 万メッセージ/日) |
-| S3 |ユニットあたり最大 814 MB/分<br/>(1144.4 GB/日/ユニット) |ユニットあたり平均 208,333 メッセージ/分<br/>(ユニットあたり 3 億件のメッセージ/日) |
+| S1 |ユニットあたり最大 1111 KB/分<br/>(1.5 GB/日/ユニット) |ユニットあたり平均 278 メッセージ/分<br/>(ユニットあたり&400;,000 メッセージ/日) |
+| S2 |ユニットあたり最大 16 MB/分<br/>(22.8 GB/日/ユニット) |ユニットあたり平均 4,167 メッセージ/分<br/>(ユニットあたり&600; 万メッセージ/日) |
+| S3 |ユニットあたり最大 814 MB/分<br/>(1144.4 GB/日/ユニット) |ユニットあたり平均 208,333 メッセージ/分<br/>(ユニットあたり&3; 億件のメッセージ/日) |
 
 ## <a name="identity-registry-operation-throughput"></a>ID レジストリ操作のスループット
 IoT Hub の ID レジストリの操作は、ほとんどがデバイス プロビジョニングに関連しているため、ランタイム操作にはなりません。
@@ -61,9 +63,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

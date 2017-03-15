@@ -17,6 +17,7 @@ ms.author: apipm
 translationtype: Human Translation
 ms.sourcegitcommit: fff43da07603be1e54cb9948dfd442491bb8f35a
 ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
 Azure API Management API にお客様の API をできる限りシームレスかつ問題なくインポートできるようにあらゆる努力をしていますが、場合によっては制限をかけるほか、インポートを正常に行うことができるように修正する必要のある問題が判明することがあります。 この記事ではこうした内容について、API のインポート形式別に説明します。
 
 ## <a name="open-api"> </a>Open API/Swagger
-通常、Open API ドキュメントのインポートでエラーが発生した場合は、新しい Azure Portal のデザイナー ([Design] (設計) - [フロントエンド] - [Open API Specification Editor] (Open API 仕様エディター))、または <a href="http://www.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
+通常、Open API ドキュメントのインポートでエラーが発生した場合は、新しい Azure Portal のデザイナー ([Design] \(設計) - [フロントエンド] - [Open API Specification Editor] \(Open API 仕様エディター))、または <a href="http://www.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
 
 * **ホスト名**: ホスト名属性が必要です。
 * **ベース パス**: ベース パス属性が必要です。
@@ -79,9 +80,4 @@ WSDL ファイルは SOAP パススルー API の作成に使用するもので�
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to cache operation results in Azure API Management]: api-management-howto-cache.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

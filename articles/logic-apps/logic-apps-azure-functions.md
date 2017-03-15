@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions を使用したロジック アプリへのカスタム コードの追加 | Microsoft Docs"
-description: "Azure Functions を使用した Azure Logic Apps のカスタム コードの作成"
+title: "Azure Functions を使用した Azure Logic Apps のカスタム コード | Microsoft Docs"
+description: "Azure Functions を使用した Azure Logic Apps のカスタム コードの作成と実行"
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,25 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
+ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: c63dde728eaaf8237970e05cc524c6220b69a074
-ms.openlocfilehash: 8b68f017a2c7a17603508438b0d4bd760bec4f78
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: 8a606e5d009fd210212bd9d7a92ddb3e0cb2e3a2
+ms.openlocfilehash: 1c939e26212b2454cf3e666021036680d5494cfb
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="add-custom-code-to-azure-logic-apps-with-azure-functions"></a>Azure Functions を使用した Azure Logic Apps へのカスタム コードの追加
 
-ロジック アプリで Azure Functions を使用することにより、C# または node.js のカスタム スニペットを実行できます。 
+# <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Azure Functions を使用したロジック アプリのカスタム コードの追加と実行
+
+ロジック アプリで C# または node.js のカスタム スニペットを実行するには、Azure Functions を使用してカスタム関数を作成します。 
 [Azure Functions](../azure-functions/functions-overview.md) は、Microsoft Azure でサーバーを使用しない計算を提供し、以下のタスクを実行するのに便利です。
 
 * ロジック アプリでのフィールドの高度な書式設定や計算
 * ワークフローでの計算の実行
 * C# または node.js でサポートされる関数を使用したロジック アプリ機能の拡張
 
-## <a name="create-functions-for-logic-apps"></a>ロジック アプリ用の関数を作成する
+## <a name="create-custom-functions-for-your-logic-apps"></a>ロジック アプリのカスタム関数を作成する
 
 **汎用 Webhook - Node** または**汎用 Webhook - C#** テンプレートから、Azure Functions ポータルで関数を作成することをお勧めします。 そうすれば、ロジック アプリから `application/json` を受け取るテンプレートが自動的に生成されます。 これらのテンプレートから作成する関数は自動的に検出されて、Logic App デザイナーの **[自分のリージョンの Azure Functions]** に表示されます。
 

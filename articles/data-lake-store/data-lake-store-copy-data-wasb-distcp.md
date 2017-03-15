@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/02/2016
+ms.date: 03/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f1c8c5b9bfa14b817efb635cf812242afaa70e35
-ms.openlocfilehash: d0475ff29da03d2c4a12e72e458175d03ce608fd
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1e66ce0af4d3d33b584f9f3a881c34aa04e783b7
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -39,12 +40,12 @@ Data Lake Store アカウントにアクセスする HDInsight クラスター�
 ## <a name="do-you-learn-fast-with-videos"></a>ビデオで速習する
 [こちらのビデオ](https://mix.office.com/watch/1liuojvdx6sie) をご覧ください。
 
-## <a name="use-distcp-from-remote-desktop-windows-cluster-or-ssh-linux-cluster"></a>リモート デスクトップ (Windows クラスター) または SSH (Linux クラスター) から Distcp を使用します。
+## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから Distcp を使用する
+
 HDInsight クラスターには Distcp ユーティリティが付属しています。これを使用してさまざまなソースから HDInsight クラスターにデータをコピーできます。 追加の記憶域として Data Lake Store を使用する HDInsight クラスターを構成している場合、Distcp ユーティリティをすぐに使用し、Data Lake Store アカウント間でもデータをコピーできます。 このセクションでは、Distcp ユーティリティを使用する方法について説明します。
 
-1. Windows クラスターがある場合、Data Lake Store アカウントにアクセスする HDInsight クラスターにリモート接続します。 手順については、「 [RDP を使用したクラスターへの接続](../hdinsight/hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」を参照してください。 クラスターのデスクトップから、Hadoop コマンド ラインを開きます。
+1. デスクトップから、SSH を使用してクラスターに接続します。 「 [Linux ベースの HDInsight クラスターへの接続](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)」を参照してください。 SSH プロンプトからコマンドを実行します。
 
-    Linux クラスターがある場合は、SSH を使用してクラスターに接続します。 「 [Linux ベースの HDInsight クラスターへの接続](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md#connect)」を参照してください。 SSH プロンプトからコマンドを実行します。
 2. Azure Storage BLOB (WASB) にアクセスできるかどうかを確認します。 次のコマンドを実行します。
 
         hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -68,7 +69,7 @@ HDInsight クラスターには Distcp ユーティリティが付属してい�
 
 ## <a name="performance-considerations-while-using-distcp"></a>DistCp を使用するときのパフォーマンスに関する考慮事項
 
-DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake Store に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 これを制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
+DistCp の最小粒度は&1; ファイルであるため、DistCp を Data Lake Store に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 これを制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
 
 **例**
 
@@ -100,13 +101,13 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 ### <a name="copying-large-datasets"></a>大規模なデータセットのコピー
 
-移動するデータセットのサイズが非常に大きい場合 (例: > 1 TB)、または、さまざまなフォルダーが多数ある場合は、複数の DistCp ジョブを使用することを検討します。 パフォーマンスの向上はないと思われますが、ジョブが分散されるため、あるジョブが失敗したときに、再開する必要があるのは、ジョブ全体ではなく特定のジョブのみになります。
+移動するデータセットのサイズが非常に大きい場合 (例: >&1; TB)、または、さまざまなフォルダーが多数ある場合は、複数の DistCp ジョブを使用することを検討します。 パフォーマンスの向上はないと思われますが、ジョブが分散されるため、あるジョブが失敗したときに、再開する必要があるのは、ジョブ全体ではなく特定のジョブのみになります。
 
 ### <a name="limitations"></a>制限事項
 
 * DistCp では、パフォーマンスを最適化するために、同じようなサイズのマッパーを作成しようとします。 マッパー数を増やしても、必ずしもパフォーマンスが向上するとは限りません。
 
-* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できる同時実行量は制限されます。
+* DistCp では、ファイルあたりのマッパーの数が&1; つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は&1; つだけのため、大きなファイルのコピーに使用できる同時実行量は制限されます。
 
 * 大きなファイルが少数だけ存在する場合は、潜在的な同時実行性を高めるために、そのファイルを 256 MB ファイル チャンクに分割します。 
  
@@ -117,9 +118,4 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

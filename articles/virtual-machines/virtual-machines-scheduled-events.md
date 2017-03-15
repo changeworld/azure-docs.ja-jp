@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 translationtype: Human Translation
-ms.sourcegitcommit: bb4f7c4977de290e6e148bbb1ae8b28791360f96
-ms.openlocfilehash: 1a385de3c00b9288d9e1245f04969a9099bf5b45
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: f67ff1cc18b23c3d4006121e266a5d96933e49bf
+ms.openlocfilehash: d6c4d0b9f9cbf05341d30fe75e9828d0237a1962
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -100,36 +100,63 @@ EventType は、以下の場合に Virtual Machine が受けると想定され�
 
 ## <a name="powershell-sample"></a>PowerShell のサンプル 
 
-次のサンプルでは、スケジュールされたイベントのメタデータ サーバーを読み取り、受信確認を行う前にアプリケーション イベント ログに記録します。
+次の例は、スケジュールされたイベントのメタデータ サーバーを読み込んで、イベントを承認します。
 
 ```PowerShell
-$localHostIP = "169.254.169.254"
-$ScheduledEventURI = "http://"+$localHostIP+"/metadata/latest/scheduledevents"
-
-# Call Azure Metadata Service - Scheduled Events 
-$scheduledEventsResponse =  Invoke-RestMethod -Headers @{"Metadata"="true"} -URI $ScheduledEventURI -Method get 
-
-if ($json.Events.Count -eq 0 )
+# How to get scheduled events 
+function GetScheduledEvents($uri)
 {
-    Write-Output "++No scheduled events were found"
+    $scheduledEvents = Invoke-RestMethod -Headers @{"Metadata"="true"} -URI $uri -Method get
+    $json = ConvertTo-Json $scheduledEvents
+    Write-Host "Received following events: `n" $json
+    return $scheduledEvents
 }
 
-for ($eventIdx=0; $eventIdx -lt $scheduledEventsResponse.Events.Length ; $eventIdx++)
-{
-    if ($scheduledEventsResponse.Events[$eventIdx].Resources[0].ToLower().substring(1) -eq $env:COMPUTERNAME.ToLower())
-    {    
-        # YOUR LOGIC HERE 
-         pause "This Virtual Machine is scheduled for to "+ $scheduledEventsResponse.Events[$eventIdx].EventType
+# How to approve a scheduled event
+function ApproveScheduledEvent($eventId, $uri)
+{    
+    # Create the Scheduled Events Approval Json
+    $startRequests = [array]@{"EventId" = $eventId}
+    $scheduledEventsApproval = @{"StartRequests" = $startRequests} 
+    $approvalString = ConvertTo-Json $scheduledEventsApproval
 
-        # Acknoledge the event to expedite
-        $jsonResp = "{""StartRequests"" : [{ ""EventId"": """+$scheduledEventsResponse.events[$eventIdx].EventId +"""}]}"
-        $respbody = convertto-JSon $jsonResp
-       
-        Invoke-RestMethod -Uri $ScheduledEventURI  -Headers @{"Metadata"="true"} -Method POST -Body $jsonResp 
+    Write-Host "Approving with the following: `n" $approvalString
+
+    # Post approval string to scheduled events endpoint
+    Invoke-RestMethod -Uri $uri -Headers @{"Metadata"="true"} -Method POST -Body $approvalString
+}
+
+# Add logic relevant to your service here
+function HandleScheduledEvents($scheduledEvents)
+{
+
+}
+
+######### Sample Scheduled Events Interaction #########
+
+# Set up the scheduled events uri for VNET enabled VM
+$localHostIP = "169.254.169.254"
+$scheduledEventURI = 'http://{0}/metadata/latest/scheduledevents' -f $localHostIP 
+
+
+# Get the document
+$scheduledEvents = GetScheduledEvents $scheduledEventURI
+
+
+# Handle events however is best for your service
+HandleScheduledEvents $scheduledEvents
+
+
+# Approve events when ready (optional)
+foreach($event in $scheduledEvents.Events)
+{
+    Write-Host "Current Event: `n" $event
+    $entry = Read-Host "`nApprove event? Y/N"
+    if($entry -eq "Y" -or $entry -eq "y")
+    {
+    ApproveScheduledEvent $event.EventId $scheduledEventURI 
     }
 }
-
-
 ``` 
 
 

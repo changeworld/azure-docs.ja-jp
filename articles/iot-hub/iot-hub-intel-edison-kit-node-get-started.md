@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
-ms.openlocfilehash: 66748b2d59396689a5a20ac77f6d0cc5ad7b0b03
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: 43b6efb64c24405ae3638f6d04da5d21e30a55e1
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="get-started-with-intel-edison-nodejs"></a>Intel Edison を使ってみる (Node.js)
+# <a name="connect-your-intel-edison-device-to-your-iot-hub-using-nodejs"></a>Node.js を使用した Intel Edison デバイスの IoT Hub への接続
 > [!div class="op_single_selector"]
 > * [Node.JS](iot-hub-intel-edison-kit-node-get-started.md)
 > * [C](iot-hub-intel-edison-kit-c-get-started.md)
@@ -140,8 +142,3 @@ LED のオンとオフの動作を変更するメッセージをカスタマイ�
 [receive-cloud-to-device-messages]: iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md
 [change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

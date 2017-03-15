@@ -1,6 +1,7 @@
 ---
-title: "Azure の請求書と毎日の使用状況データを取得する方法 | Microsoft Docs"
-description: "Azure の請求書と毎日の使用状況データを取得する方法について説明します"
+title: "Azure の請求書と毎日の使用状況データをダウンロードする | Microsoft Docs"
+description: "Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。"
+keywords: "請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況"
 services: 
 documentationcenter: 
 author: genlin
@@ -13,19 +14,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/28/2017
 ms.author: genli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4d974590ee7677a4f3fcebd9e2474c99a974f663
-ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
+ms.sourcegitcommit: 9c181935e7ba897087d286bea22ebf500ef36e52
+ms.openlocfilehash: 307bfae0e7161782a9ddb97f4ca0d510fc772ab7
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="how-to-get-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データを取得する方法
-オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 請求書は [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードすることもできます。 さらに、[Azure アカウント センター](https://account.windowsazure.com) で使用状況の csv をダウンロードできます。 請求書と使用状況の情報にアクセスする権限があるのは、アカウント管理者のみです。 サブスクリプションのアカウント管理者を確認するには、「[Azure サブスクリプションの所有権の譲渡 - FAQ](billing-subscription-transfer.md#faq)」をご覧ください。
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
+請求書を [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 毎日の使用状況をダウンロードするには、[Azure アカウント センター](https://account.windowsazure.com)にアクセスします。 請求書と使用状況の情報にアクセスする権限があるのは、アカウント管理者のみです。 サブスクリプションのアカウント管理者を確認するには、「[Azure サブスクリプションの所有権の譲渡 - FAQ](billing-subscription-transfer.md#faq)」をご覧ください。
 
-## <a name="get-your-invoice-over-email-pdf"></a>電子メールで請求書を取得する (.pdf)
-1. [[サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。 自分が所有するサブスクリプションごとにオプトインする必要があります。 **[請求書]** をクリックし、**[請求書を送信する]** をクリックします。 アカウント管理者でない場合、このオプションは表示されない可能性があります。
+## <a name="get-your-invoice-in-email-pdf"></a>メールで請求書を入手する (.pdf)
+オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 この機能は、サポート プラン、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。
+
+1. [[サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。 自分が所有するサブスクリプションごとにオプトインします。 **[請求書]** をクリックし、**[請求書を送信する]** をクリックします。 
 
     ![オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
@@ -37,12 +42,8 @@ ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
 
     ![オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-毎月の明細書の通知メールに含まれるリンクから、このブレードにアクセスすることもできます。
+以上の手順を実行してもメールが届かない場合は、[プロファイルの通信設定](https://account.windowsazure.com/profile)のメール アドレスが正しいことを確認してください。
 
-### <a name="i-cant-access-the-email-settings-blade"></a>電子メール設定のブレードにアクセスできない
-* この設定を行うにはアカウント管理者である必要があります。その理由が分からない場合は、 [こちら](billing-add-change-azure-subscription-administrator.md)を参照してください。
-* 月次請求書があるのに電子メールを受信していない場合は、[連絡先メールが正しく設定されている](https://account.windowsazure.com/profile)かどうか確認してください。
-* この機能は、サポート プラン、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Azure Portal から請求書をダウンロードする (.pdf)
 
@@ -86,18 +87,13 @@ ms.openlocfilehash: 60ac57fd22f237b7fe62773486fe46913aca8dd0
 
 毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
 
-## <a name="a-namenoinvoicea-why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
+## <a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
 請求書が表示されない理由はいくつか考えられます。
-- サブスクリプションの月単位のクレジット額がまだ残っているか、無料試用版がある場合。 負債額が発生しないと、請求書は生成されません。
+- サブスクリプションの月単位のクレジット額がまだ残っているか、無料試用版がある場合。 請求書は、負債額がある場合にのみ生成されます。
 - Azure のサブスクリプションを開始してから 30 日以上経過していない。
 - 請求書がまだ生成されていない。 請求期間の終了までお待ちください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics 検索リファレンス | Microsoft Docs"
+title: "Azure Log Analytics 検索リファレンス | Microsoft Docs"
 description: "Log Analytics 検索リファレンスでは、検索言語について説明し、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式の情報を提供します。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 81fd8dfa480fc6365b6373a4eefef1149248d800
-ms.openlocfilehash: 5e4fba6ff82cbe8af0116e35d71c8f9f04474f0f
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a294ef357ea3c656e4e6392e89ad1d90b829e2cb
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -254,7 +256,7 @@ SampleValue:[0..2]
 ```
 
 ### <a name="regular-expressions"></a>正規表現
-Regex キーワードを使用することで、正規表現でフィールドの検索条件を指定できます。
+Regex キーワードを使用することで、正規表現でフィールドの検索条件を指定できます。  正規表現で使用できる構文の詳細な説明については、「[正規表現を使用した Log Analytics のログ検索のフィルター処理](log-analytics-log-searches-regex.md)」をご覧ください。
 
 **構文**
 
@@ -581,7 +583,29 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | me
     Type:Perf CounterName:"% Total Run Time" | Measure max(CounterValue) by Computer | where (AggregatedValue>50 and AggregatedValue<90)
 
 ### <a name="in"></a>IN
-構文:
+**IN** キーワードを使用すると、値のリストから選択することができます。  使用する構文によって、これは自分で指定する単純なリストにすることも、集計を基にした値のリストにすることもできます。
+
+構文 1:
+
+```
+field IN {value1,value2,value3,...}
+```
+
+説明: この構文では、単純なリストにすべての値を含めることができます。
+
+
+
+次に例を示します。
+
+```
+EventID IN {1201,1204,1210}
+```
+
+```
+Computer IN {"srv01.contoso.com","srv02.contoso.com"}
+```
+
+構文 2:
 
 ```
 (Outer Query) (Field to use with inner query results) IN {Inner query | measure count() by (Field to send to outer query)} (rest  of outer query)  
@@ -810,9 +834,4 @@ Type= Perf CounterName="Disk Writes/sec" Computer="BaconDC01.BaconLand.com" | Ex
 
 * [ログ検索](log-analytics-log-searches.md) について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

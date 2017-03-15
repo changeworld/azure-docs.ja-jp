@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/02/2017
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 0371c6ba2434c315db1bdbacab8639fd40d5c999
-ms.openlocfilehash: 1986a4f19d89f1451ca47a94511ff998705ed785
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: d9c85736e9578ff4f821a118a25055e360e33ae9
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -39,7 +39,7 @@ Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリ�
 | --- | --- |
 | ドメイン参加済み HDInsight クラスター |HDInsight クラスターを Azure Active Directory (AAD) のドメインに参加させることで、エンタープライズ レベルのセキュリティを実現します。 Azure Active Directory を使って HDInsight クラスターへのログオンを認証できる従業員の一覧を構成できるようになりました。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成することもできるため、データへのアクセスを必要な分だけに制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。 詳しくは、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関するページをご覧ください。 |
 
-### <a name="cluster-types-supported-for-premium"></a>Premium でサポートされるクラスターの種類
+### <a name="cluster-types-supported-for-hdinsight-premium"></a>HDInsight Premium でサポートされるクラスターの種類
 次の表に、HDInsight クラスターの種類と Premium のサポート状況を示します。
 
 | クラスターの種類 | Standard | Premium |
@@ -48,10 +48,17 @@ Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリ�
 | Spark |はい |いいえ |
 | HBase |あり |いいえ |
 | Storm |あり |いいえ |
-| 対話型 Hive (プレビュー) |はい |いいえ |
-| R Server (プレビュー) |はい |いいえ |
+| R Server  |はい |いいえ |
+| 対話型 Hive (プレビュー) |はい |なし |
+| Kafka (プレビュー)|はい|いいえ| 
 
 HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。
+
+### <a name="features-not-supported-for-hdinsight-premium"></a>HDInsight Premium でサポートされない機能
+
+現時点では、次の機能は HDInsight Premium クラスターでサポートされていません。
+
+* **プライマリ ストレージとしての Azure Data Lake Store の使用**。 ただし、HDInsight Premium クラスターで Azure Data Lake Store をアドオン ストレージとして使用することはできます。
 
 ### <a name="pricing-and-sla"></a>料金と SLA
 HDInsight Premium の料金と SLA の詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
@@ -65,9 +72,22 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 >
 
 
-|コンポーネント |HDInsight version 3.5 (既定値) |HDInsight バージョン 3.4 |HDInsight バージョン 3.3 |HDInsight バージョン 3.2 |HDInsight バージョン 3.1 |HDInsight バージョン 3.0 |
-
-| --- | --- | --- | --- | --- | --- | --- | | Hortonworks Data Platform |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 | | Apache Hadoop & YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 | | Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 | | | Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 | | Apache Hive & HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 | | Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 | | | Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 | | Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 | | Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 | | Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 | | | Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 | | | Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 | | | Apache Spark |1.6.2 + 2.0 (Linux のみ) |1.6.0 (Linux のみ) |1.5.2 (Linux のみ/開発中のビルド) |1.3.1 (Windows のみ) | | |
+| コンポーネント | HDInsight Version 3.5 (既定) | HDInsight Version 3.4 | HDInsight Version 3.3 | HDInsight Version 3.2 | HDInsight Version 3.1 | HDInsight Version 3.0 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Hortonworks Data Platform |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
+| Apache Hadoop & YARN |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
+| Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
+| Apache Pig |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
+| Apache Hive & HCatalog |1.2.1.2.5 |1.2.1 |1.2.1 |0.14.0 |0.13.1 |0.12.0 |
+| Apache HBase |1.1.2 |1.1.2 |1.1.1 |0.98.4 |0.98.0 |-|
+| Apache Sqoop |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
+| Apache Oozie |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
+| Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
+| Apache Storm |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Apache Mahout |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
+| Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
+| Apache Spark |1.6.2 + 2.0 (Linux のみ) |1.6.0 (Linux のみ) |1.5.2 (Linux のみ/試験的ビルド) |1.3.1 (Windows のみ) |-|-|
+| Apache Kafka | 0.10.0 | 0.9.0 |-|-|-|-|
 
 **現在のコンポーネントのバージョンの取得**
 

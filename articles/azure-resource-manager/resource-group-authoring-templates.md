@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
 ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -43,8 +44,7 @@ ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 }
 ```
 
-| 要素名
- | 必須 | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 前の例に示されている URL を使用します。 |
 | contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
@@ -97,8 +97,7 @@ ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 }
 ```
 
-| 要素名
- | 必須 | Description |
+| 要素名 | 必須 | Description |
 |:--- |:--- |:--- |
 | parameterName |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
 | type |はい |パラメーター値の型。 この表の後に示す使用できる型を参照してください。 |
@@ -252,8 +251,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ]
 ```
 
-| 要素名
- | 必須 | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | apiVersion |はい |リソースの作成に使用する REST API バージョン。 |
 | type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
@@ -410,8 +408,7 @@ resources セクションには、デプロイの対象となる一連のリソ�
 }
 ```
 
-| 要素名
- | 必須 | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | outputName |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
@@ -437,9 +434,4 @@ resources セクションには、デプロイの対象となる一連のリソ�
 * 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。 このシナリオは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。 詳細については、 [resourceId 関数](resource-group-template-functions.md#resourceid)に関するセクションをご覧ください。
 
 [deployment2cmdlet]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/new-azurermresourcegroupdeployment
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

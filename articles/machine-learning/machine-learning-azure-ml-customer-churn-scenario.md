@@ -12,23 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/13/2016
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
+ms.sourcegitcommit: 80bede0dc3ad3934d63feabb946744aeb45f334d
+ms.openlocfilehash: f239a2a270df00cecbe263fa61b84af06af817db
+ms.lasthandoff: 12/15/2016
 
 
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れの分析
-## <a name="overview"></a>Overview
-このトピックは、Azure Machine Learning Studio を使用して構築された顧客離れ分析プロジェクトの参照実装を表します。 産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
+## <a name="overview"></a>概要
+この記事では、Azure Machine Learning を使用して構築された顧客離れ分析プロジェクトのリファレンス実装を紹介します。 また、産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。 さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。  
 
 ### <a name="acknowledgements"></a>謝辞
-この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
+この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの&2; 人に感謝いたします。
 
 > [!NOTE]
-> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/)」(Cortana Intelligence ギャラリー) の「[Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」(Telco の顧客離れモデルのテンプレート) を参照してください
+> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」の「[Retail churn model template (小売業の顧客離れモデルのテンプレート)](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)」を参照してください。
 > 
 > 
 
@@ -78,7 +79,7 @@ ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
 
 マルチモデルのアプローチは、離反のグローバル アーキタイプを設計するうえで欠かすことができないものです。 このアプローチのスコア付け (予測) の部分さえもマルチモデルである必要があります。  
 
-次の図は、こちらで作成したプロトタイプです。離反を予測するための Cloud ML Studio の 4 種類のスコア付けアルゴリズムを採用しています。 マルチモデルのアプローチを採用したのは、正確度を高めるためのアンサンブル分類器を作成するためだけではなく、過学習を防ぎ、予測特徴選択を強化するためでもあります。  
+次の図は、こちらで作成したプロトタイプです。離反を予測するための Cloud ML Studio の&4; 種類のスコア付けアルゴリズムを採用しています。 マルチモデルのアプローチを採用したのは、正確度を高めるためのアンサンブル分類器を作成するためだけではなく、過学習を防ぎ、予測特徴選択を強化するためでもあります。  
 
 ![][3]
 
@@ -93,7 +94,7 @@ ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
 
 モデリング機能の選択は、暫定的な有意性を予測子をランダムなフォレストのモジュールを使用するプロセスに含まれる一連のスコアに基づきます。 Cloud ML Studio での実装では、典型的な特徴に対して平均、中央値、範囲を計算しました。 たとえば、ユーザー アクティビティの最小値と最大値など、定性的データの集計を追加しました。    
 
-また、ここ 6 か月間の時間的情報も収集しました。 1 年間のデータを分析した結果、統計的に有意なトレンドが存在したとしても、離反に対する影響は、6 か月経過した後では大幅に小さくなることがわかりました。  
+また、ここ&6; か月間の時間的情報も収集しました。 1 年間のデータを分析した結果、統計的に有意なトレンドが存在したとしても、離反に対する影響は、6 か月経過した後では大幅に小さくなることがわかりました。  
 
 最も重要なのは、ETL、特徴選択、モデリングを含めたプロセス全体が、Microsoft Azure のデータ ソースを使用して Cloud ML Studio で実装されたという点です。   
 
@@ -116,7 +117,7 @@ ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
 > 
 
 ### <a name="algorithms-used-in-the-prototype"></a>プロトタイプで使用されたアルゴリズム
-次の 4 つの機械学習アルゴリズムを使ってプロトタイプを作成しました (カスタマイズはしていません)。  
+次の&4; つの機械学習アルゴリズムを使ってプロトタイプを作成しました (カスタマイズはしていません)。  
 
 1. ロジスティック回帰 (LR)
 2. ブースト デシジョン ツリー (BT)
@@ -132,7 +133,7 @@ ms.openlocfilehash: 4dcbfbfdb02ac52a42b9f1995e39abdfe1bd3368
 ### <a name="scoring-methods"></a>スコア付けの手法
 ラベル付けされたトレーニング データセットを使用して、4 つのモデルのスコアを計算しました。  
 
-SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと 4 つのすべてのマシン ラーニング Studio モデルの精度を測定しました。  
+SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。 SAS モデルと&4; つのすべてのマシン ラーニング Studio モデルの精度を測定しました。  
 
 ## <a name="results"></a>結果
 このセクションでは、スコア付けデータセットに基づいて、モデルの正確度に関してわかったことを紹介します。  
@@ -197,11 +198,11 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
   * **競合に関するデータとビジネス データ**。 顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。
 * 重要度を特徴選択に利用します。 これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。  
 
-この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "*決定論的*" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。 これはもっともらしく思えるものの、残念なことに間違った理解です。 というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。 今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。 だからこそ "*確率論的*" モデルが不可欠なのです。  
+この&4; つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "*決定論的*" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。 これはもっともらしく思えるものの、残念なことに間違った理解です。 というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。 今顧客が離反を検討している理由は、明日には変わる可能性があります。そして&6; か月もすれば確実に変わっています。 だからこそ "*確率論的*" モデルが不可欠なのです。  
 
 この重要な考えは実務では見逃されがちで、一般には BI 指向の分析アプローチが好まれています。その方が販売しやすく、単純な自動化が可能であるというのが、その主な理由です。  
 
-しかし、Machine Learning Studio を使用したセルフサービス分析なら、部門または部署別に分けられた情報の 4 つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。  
+しかし、Machine Learning Studio を使用したセルフサービス分析なら、部門または部署別に分けられた情報の&4; つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。  
 
 Azure Machine Learning にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。 この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。 これは、市場で Azure Machine Learning を差別化している重要な機能です。  
 
@@ -250,9 +251,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [8]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-8.png
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

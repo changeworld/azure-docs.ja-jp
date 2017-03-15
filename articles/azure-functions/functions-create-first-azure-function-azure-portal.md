@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: ab0b218a99ab3ff98edfa075eabbd3eb2c2bd1d4
-ms.openlocfilehash: 996fc80ff926117dc12180efe1949b3dbeba3f91
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 4ee741cbec8db6b6400ff9f27daa2a0120bd2618
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -46,7 +46,12 @@ Azure Functions は、他の Azure サービス、SaaS 製品、オンプレミ�
 
 3. **[作成]** をクリックして、新しい Function App をプロビジョニングし、デプロイします。  
 
-Function App をプロビジョニングしたら、初めての関数を作成できます。
+### <a name="storage-account-requirements"></a>ストレージ アカウントの要件
+
+Function App を作成するときは、BLOB、キュー、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 内部的には、Azure Functions はトリガーの管理や関数実行のログなどの操作に Azure Storage を使用します。 BLOB 専用のストレージ アカウント (Premium Storage を含む) や ZRS レプリケーションを使用する汎用ストレージ アカウントなどの一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントは、新しい Function App の作成時に [ストレージ アカウント] ブレードから除外されます。
+従量課金ホスティング プランを使用する場合、Function App のコンテンツ (関数コード ファイルやバインディング構成など) はメイン ストレージ アカウントの Azure Files 共有に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツが削除されて復元できなくなります。
+
+ストレージ アカウントの種類の詳細については、Azure Storage サービスの概要に関する記事 (../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
 
 ## <a name="create-a-function"></a>関数を作成する
 次の手順では、Azure Functions クイック スタートから関数を作成します。
@@ -56,6 +61,7 @@ Function App をプロビジョニングしたら、初めての関数を作成�
     ![](./media/functions-create-first-azure-function-azure-portal/function-app-quickstart-node-webhook.png)
 
 2. (オプション) クイック スタートのこの時点で、ポータルの Azure Functions 機能のクイック ツアーを開始するかどうか選択することができます。    ツアーを完了するかスキップしたら、HTTP トリガーを使用して新しい関数をテストできます。
+
 
 ## <a name="test-the-function"></a>関数をテストする
 [!INCLUDE [Functions quickstart test](../../includes/functions-quickstart-test.md)]

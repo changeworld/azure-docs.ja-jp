@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/30/2016
+ms.date: 3/1/2016
 ms.author: luywang
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 0cf61b6bb9817bbf9508b10301b5e95b12ecea39
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 106e03a5a99134eb6e5744cbf29ba32efc31f0ba
+ms.openlocfilehash: d76aa3e62c691c4537684bc70d3a91a3dbb8b446
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/23/2017
 
 [Azure Premium Storage](storage-premium-storage.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドの目的は、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行できるようにすることです。
 
-Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび VM のレプリケーションを調整することでビジネス継続性と障害復旧の戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリケーションとワークロードの可用性を維持します。 プライマリ ロケーションが通常の動作に戻ると、その場所にフェールバックします。 Site Recovery では、運用環境に影響を与えずに障害復旧の練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予想外の障害が発生した場合には計画外のフェールオーバーを実行し、データの損失を (レプリケーション頻度に応じて) 最小限に抑えることができます。 Premium Storage に移行するシナリオでは、Azure Site Recovery で[計画外のフェールオーバー](../site-recovery/site-recovery-failover.md)を使用して、ターゲット ディスクを Premium Storage アカウントに移行できます。
+Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび VM のレプリケーションを調整することでビジネス継続性と障害復旧の戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリケーションとワークロードの可用性を維持します。 プライマリ ロケーションが通常の動作に戻ると、その場所にフェールバックします。 Site Recovery では、運用環境に影響を与えずに障害復旧の練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予想外の障害が発生した場合にはフェールオーバーを実行し、データの損失を (レプリケーション頻度に応じて) 最小限に抑えることができます。 Premium Storage に移行するシナリオでは、Azure Site Recovery で [Site Recovery でのフェールオーバー](../site-recovery/site-recovery-failover.md)を使用して、ターゲット ディスクを Premium Storage アカウントに移行できます。
 
 Premium Storage に移行する際は、Site Recovery を使用することをお勧めします。Site Recovery を使えばダウンタイムを最小限に抑えられるほか、ディスクのコピーや新しい VM の作成を手作業で実施する手間を省くことができるからです。 Site Recovery では、フェールオーバー時にディスクが体系的にコピーされ、新しい VM が作成されます。 Site Recovery は、ダウンタイムを最小またはゼロに抑えるため、さまざまな種類のフェールオーバーをサポートしています。 ダウンタイムを計画し、データ損失の量を見積もるときは、Site Recovery の「[フェールオーバーの種類](../site-recovery/site-recovery-failover.md)」の表を参照してください。 [フェールオーバー後に Azure VM に接続する準備](../site-recovery/site-recovery-vmware-to-azure.md#prepare-vms-for-replication)が整っている場合は、フェールオーバー後に RDP を使用して Azure VM に接続できます。
 
@@ -60,7 +60,7 @@ Premium Storage に移行する際は、Site Recovery を使用することを�
 ## <a name="prerequisites"></a>前提条件
 
 * 前のセクションの関連する移行シナリオのコンポーネントを理解している。
-* 「[Site Recovery でのフェールオーバー](../site-recovery/site-recovery-failover.md)」で計画外のフェールオーバーについて学習し、ダウンタイムを計画している。
+* [Site Recovery でのフェールオーバー](../site-recovery/site-recovery-failover.md)について学習し、ダウンタイムを計画している。
 
 ## <a name="setup-and-migration-steps"></a>セットアップと移行の手順
 
@@ -133,9 +133,9 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 また、[Windows](../virtual-machines/virtual-machines-windows-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) および [Linux](../virtual-machines/virtual-machines-linux-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) VM のストレージ レイヤーのベスト プラクティスに従うことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。 VM が&1; つの可用性セットに存在する場合には、すべての VM のディスクを&1; つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行して、同じ可用性セット内の VM が単一のストレージ アカウントを共有しないようにすることを強くお勧めします。 **[レプリケーションを有効にする]** ブレードを使用して、各 VM のターゲット ストレージ アカウントを&1; つずつ設定します。 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイメント モデルとして Resource Manager (RM) を選択した場合は、RM VM を RM VM にフェールオーバーすることができます。また、クラシック VM を RM VM にフェールオーバーすることもできます。
 
-8. **テスト フェールオーバーを実行します**。 レプリケーションが完了したかどうかを確認するには、[Site Recovery] をクリックし、**[設定]** > **[レプリケートされたアイテム]** の順にクリックします。 レプリケーション プロセスの状態と進捗状況が表示されます。 初期レプリケーションが完了したら、テスト フェールオーバーを実行してレプリケーション戦略を検証します。 テスト フェールオーバーの詳細な手順については、[Site Recovery でのテスト フェールオーバーの実行](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover)に関するセクションを参照してください。 テスト フェールオーバーの状態を確認するには、**[設定]** > **[ジョブ]** > **<フェールオーバー計画名>** の順に選択します。 ブレードに、各手順の内訳とその結果 (成功、失敗) が表示されます。 いずれかの手順でテスト フェールオーバーが失敗した場合は、手順をクリックしてエラー メッセージを確認します。 計画外のフェールオーバーを実行する前に、VM とレプリケーション戦略が要件を満たしていることを確認してください。
+8. **テスト フェールオーバーを実行します**。 レプリケーションが完了したかどうかを確認するには、[Site Recovery] をクリックし、**[設定]** > **[レプリケートされたアイテム]** の順にクリックします。 レプリケーション プロセスの状態と進捗状況が表示されます。 初期レプリケーションが完了したら、テスト フェールオーバーを実行してレプリケーション戦略を検証します。 テスト フェールオーバーの詳細な手順については、[Site Recovery でのテスト フェールオーバーの実行](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover)に関するセクションを参照してください。 テスト フェールオーバーの状態を確認するには、**[設定]** > **[ジョブ]** > **<フェールオーバー計画名>** の順に選択します。 ブレードに、各手順の内訳とその結果 (成功、失敗) が表示されます。 いずれかの手順でテスト フェールオーバーが失敗した場合は、手順をクリックしてエラー メッセージを確認します。 フェールオーバーを実行する前に、VM とレプリケーション戦略が要件を満たしていることを確認してください。 テスト フェールオーバーの詳細と手順については、「[Site Recovery での Azure へのフェールオーバーをテストする](../site-recovery/site-recovery-test-failover-to-azure.md)」をご覧ください。
 
-9. **計画外のフェールオーバーを実行します**。 テスト フェールオーバーが完了したら、計画外のフェールオーバーを実行してディスクを Premium Storage へ移行し、VM インスタンスをレプリケートします。 詳細な手順については、[Site Recovery での計画外のフェールオーバーの実行](../site-recovery/site-recovery-failover.md)に関するセクションに従ってください。 このとき、**[Shut down VMs and synchronize the latest data (VM をシャットダウンし、最新のデータを同期する)]** を選択します。こうすることで、Site Recovery では保護された VM をシャットダウンしてからデータの同期を試行するようになるため、最新バージョンのデータをフェールオーバーすることができます。 このオプションを選択しなかった場合、または試行が成功しない場合は、利用可能な最新の回復ポイントから VM のフェールオーバーが実行されます。 Site Recovery では、Premium Storage 対応の VM と同じか類似の種類の VM インスタンスが作成されます。 「[Windows Virtual Machines の料金](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/)」または「[Linux Virtual Machines の料金](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)」で、さまざまな VM インスタンスのパフォーマンスと価格を確認できます。
+9. **フェールオーバーを実行します**。 テスト フェールオーバーが完了したら、フェールオーバーを実行してディスクを Premium Storage へ移行し、VM インスタンスをレプリケートします。 「[Run a failover (フェールオーバーの実行)](../site-recovery/site-recovery-failover.md#run-a-failover)」の詳細な手順に従ってください。 このとき、**[Shut down VMs and synchronize the latest data (VM をシャットダウンし、最新のデータを同期する)]** を選択します。こうすることで、Site Recovery では保護された VM をシャットダウンしてからデータの同期を試行するようになるため、最新バージョンのデータをフェールオーバーすることができます。 このオプションを選択しなかった場合、または試行が成功しない場合は、利用可能な最新の回復ポイントから VM のフェールオーバーが実行されます。 Site Recovery では、Premium Storage 対応の VM と同じか類似の種類の VM インスタンスが作成されます。 「[Windows Virtual Machines の料金](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/)」または「[Linux Virtual Machines の料金](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)」で、さまざまな VM インスタンスのパフォーマンスと価格を確認できます。
 
 ## <a name="post-migration-steps"></a>移行後の手順
 

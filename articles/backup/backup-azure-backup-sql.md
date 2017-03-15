@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 39dcc11dfae33fe85cfbd11dec402e23289103fc
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="azure-backup-for-sql-server-workloads-using-dpm"></a>DPM を使用した SQL Server ワークロード用 Azure Backup
+# <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
 
 SQL Server データベースを Azure にバックアップするには、Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の 3 つの手順が含まれます。
+SQL Server データベースの Azure へのバックアップと Azure からの回復の管理には、次の&3; つの手順が含まれます。
 
 1. SQL Server データベースを保護するための Azure へのバックアップ ポリシーを作成します。
 2. オンデマンドでのバックアップ コピーを Azure に作成します。
@@ -51,7 +52,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Data Protection Method - short term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. **[短期的な目標値の指定]** 画面で、ディスクへのバックアップ ポイントを作成するために必要な入力を含めます。
 
-    ここで、**[保有期間の範囲]** が *5 日間*、**[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
+    ここで、**[保有期間の範囲]** が *5 日間*、**[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後&8; 時&00; 分*に設定されています。
 
     ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -60,13 +61,13 @@ SQL Server データベースの Azure へのバックアップと Azure から�
    >
    >
 
-8.  **[次へ]**
+8. **[次へ]**
 
     DPM は、使用可能なストレージ領域全体と考えられるディスク領域使用率を表示します。
 
     ![Disk allocation](./media/backup-azure-backup-sql/pg-storage.png)
 
-    既定では、DPM は、初期バックアップ コピー用に、データ ソース (SQL Server データベース) ごとに 1 つのボリュームを作成します。 この方法では、論理ディスク マネージャー (LDM) は、DPM 保護を 300 データ ソース (SQL Server データベース) に制限します。 この制限を避けるには、 **[DPM 記憶域プールにデータを併置する]**を選択します。 このオプションを使用すると、DPM では複数のデータ ソースに単一のボリュームを使用して、最大 2000 の SQL データベース を保護できます。
+    既定では、DPM は、初期バックアップ コピー用に、データ ソース (SQL Server データベース) ごとに&1; つのボリュームを作成します。 この方法では、論理ディスク マネージャー (LDM) は、DPM 保護を 300 データ ソース (SQL Server データベース) に制限します。 この制限を避けるには、 **[DPM 記憶域プールにデータを併置する]**を選択します。 このオプションを使用すると、DPM では複数のデータ ソースに単一のボリュームを使用して、最大 2000 の SQL データベース を保護できます。
 
     **[ボリュームを自動的に拡大する]** オプションがオンになっている場合、運用データの増大に伴って DPM がバックアップ ボリュームを増加することができます。 **[ボリュームを自動的に拡大する]** がオフになっている場合は、保護グループ内のデータ ソースに使用するバックアップ ストレージが制限されます。
 9. 管理者は、帯域幅の輻輳を避けるために手動 (オフ ネット) でこの初期バックアップを転送するか、ネットワーク経由で転送するかを選択できます。 最初の転送が行われるときに構成することもできます。 **[次へ]**をクリックします。
@@ -158,9 +159,4 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 ### <a name="next-steps"></a>次のステップ:
 •   [Azure Backup の FAQ](backup-azure-backup-faq.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

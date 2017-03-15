@@ -17,6 +17,7 @@ ms.author: magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 7cd65cd34846122ff14f6d5df61e4f61a7c1ac4f
 ms.openlocfilehash: 56b09c2cfc14813b5efcb364c580787fec1bf639
+ms.lasthandoff: 02/08/2017
 
 ---
 
@@ -35,7 +36,7 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 ## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
 
 1. Azure Portal から Automation アカウントを開き、[Automation アカウント] ブレードの [アカウント] ブレードで、**[Unlink workspace]** (ワークスペースのリンクの解除) を選択します。<br><br> ![[Unlink workspace] (ワークスペースのリンクの解除) オプション](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)<br><br>  
-2. [Unlink workspace] (ワークスペースのリンクの解除) ブレードで、**[Unlink workspace] ** (ワークスペースのリンクの解除) をクリックします。<br><br> ![[Unlink workspace] (ワークスペースのリンクの解除) ブレード](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png)<br><br>  続行するかどうかを確認するプロンプトが表示されます。<br><br>
+2. [Unlink workspace] \(ワークスペースのリンクの解除) ブレードで、**[Unlink workspace] ** \(ワークスペースのリンクの解除) をクリックします。<br><br> ![[Unlink workspace] (ワークスペースのリンクの解除) ブレード](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png)<br><br>  続行するかどうかを確認するプロンプトが表示されます。<br><br>
 3. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
@@ -53,8 +54,3 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 ## <a name="next-steps"></a>次のステップ
 
 Automation アカウントを再構成して OMS Log Analytics と統合する場合は、「[Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

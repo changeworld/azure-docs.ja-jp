@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 6dcc79a2adf81c82d245c99116f28eb4db983396
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -131,18 +132,10 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
                 Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
-                                                                    AccessPermissions.Write | AccessPermissions.List);
-
-                var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
-
                 Console.WriteLine("Upload {0}", assetFile.Name);
 
                 assetFile.Upload(singleFilePath);
                 Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                locator.Delete();
-                accessPolicy.Delete();
 
                 return asset;
             }
@@ -276,9 +269,4 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

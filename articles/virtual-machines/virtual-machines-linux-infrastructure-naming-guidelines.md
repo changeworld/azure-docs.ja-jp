@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
-ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b86bfcbd8b49dfcf383c48d57f237f2433bf20d6
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-infrastructure-naming-guidelines"></a>Azure インフラストラクチャの名前付けのガイドライン
+# <a name="azure-infrastructure-naming-guidelines-for-linux-vms"></a>Linux VM 用の Azure インフラストラクチャの名前付けのガイドライン 
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事は、お使いの環境で論理的かつ簡単に識別できる一連のリソースを構築するための、Azure のすべてのリソースに対する名前付け規則について説明します。

@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 47db68afb8ea938a9861765f9e60c78436569110
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/17/2016
 
 一部のコード スニペットは、[手動で呼び出される](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual)関数で使用される `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。 
 
-## <a name="a-idingressa-how-to-add-entities-to-a-table"></a><a id="ingress"></a> エンティティをテーブルに追加する方法
+## <a id="ingress"></a> エンティティをテーブルに追加する方法
 テーブルにエンティティを追加するには、`Table` 属性を `ICollector<T>` または `IAsyncCollector<T>` パラメーター (`T` は、追加するエンティティのスキーマ) に指定します。 この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。 
 
 次のコード サンプルでは、`Person`Ingress* という名前のテーブルに * エンティティを追加しています。
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/17/2016
 
 Azure Storage API を直接操作する場合は、メソッド シグネチャに `CloudStorageAccount` パラメーターを追加することもできます。
 
-## <a name="a-idmonitora-real-time-monitoring"></a><a id="monitor"></a> リアルタイム監視
+## <a id="monitor"></a> リアルタイム監視
 多くの場合、データの受信関数は大量のデータを処理するため、Web ジョブ SDK のダッシュボードはリアルタイムの監視データを提供します。 **[Invocation Log]** セクションは、関数がまだ実行であるかどうかを示します。
 
 ![実行中の受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
@@ -78,7 +78,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ![完了した受信関数](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a name="a-idmultiplea-how-to-read-multiple-entities-from-a-table"></a><a id="multiple"></a> テーブルから複数のエンティティを読み取る方法
+## <a id="multiple"></a> テーブルから複数のエンティティを読み取る方法
 テーブルの読み取りを行うには、`Table` 属性を `IQueryable<T>` パラメーター (`T` は、`TableEntity` を継承する型か、`ITableEntity` を実装する型) に指定します。
 
 次のコード サンプルは、`Ingress` テーブルからすべての行を読み取り、ログに記録します。
@@ -95,7 +95,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
             }
         }
 
-### <a name="a-idreadonea-how-to-read-a-single-entity-from-a-table"></a><a id="readone"></a> テーブルから 1 つのエンティティを読み取る方法
+### <a id="readone"></a> テーブルから 1 つのエンティティを読み取る方法
 1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ `Table` 属性コンストラクターがあります。
 
 次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた `Person` エンティティのテーブル行を読み取ります。  
@@ -120,7 +120,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 この例の `Person` クラスは、`ITableEntity` を実装する必要はありません。
 
-## <a name="a-idstorageapia-how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a><a id="storageapi"></a> .NET ストレージ API を直接使用して、テーブルを操作する方法
+## <a id="storageapi"></a> .NET ストレージ API を直接使用して、テーブルを操作する方法
 テーブルを操作する際に、`CloudTable` オブジェクトを使用して、より柔軟に `Table` 属性を使用することもできます。
 
 次のコード サンプルは、 `CloudTable` オブジェクトを使用して、1 つのエンティティを *Ingress* テーブルに追加します。 
@@ -141,7 +141,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 `CloudTable` オブジェクトの使用方法の詳細については、「 [.NET からテーブル ストレージを使用する方法](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。 
 
-## <a name="a-idqueuesarelated-topics-covered-by-the-queues-how-to-article"></a><a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
+## <a id="queues"></a>キューのハウツー記事で紹介されている関連トピック
 キュー メッセージによってトリガーされるテーブルの処理の方法、テーブル処理に固有ではない WebJobs SDK のシナリオについては、「 [WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 
 
 その記事では、以下のようなトピックが紹介されています。
@@ -155,7 +155,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 このガイドでは、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「 [Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
 

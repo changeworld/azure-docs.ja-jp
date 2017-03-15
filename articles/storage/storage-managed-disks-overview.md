@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 388e4c8f46662200a0e05db06d417f086ad41b11
-ms.openlocfilehash: b53feeb08d469363a52303cad4577b752a570900
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: c8cd6efc9af5b0022ed5fed315a63395477e1c34
+ms.openlocfilehash: 7b132387468a97b2fb149576092f7867edc43e6e
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -45,7 +45,7 @@ Managed Disks では、1 つのサブスクリプションで最大 10,000 個�
 
 Managed Disks では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
-### <a name="better-security"></a>セキュリティの強化
+### <a name="granular-access-control"></a>詳細なアクセス制御
 
 [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を&1; 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、エクスポート、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 

@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/02/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f76277ab93c58098648ee65ea5aba0757495da68
-ms.openlocfilehash: 1222a670a1bf530871a19c79b7da441c03f8df51
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 353677bc7eb7fe791d23bcfdb79f3a0df6366c6f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -44,6 +44,13 @@ ms.lasthandoff: 02/22/2017
 
 ## <a id="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
+
+## <a name="march-2017-release"></a>2017 年 3 月のリリース
+
+Azure Media Standard を使って、エンコード タスクを作成するときに "アダプティブ ストリーミング" プリセット文字列を指定することにより、[ビットレート ラダーを自動生成](media-services-autogen-bitrate-ladder-with-mes.md)できるようになりました。 Media Services でのストリーミング用にビデオをエンコードする場合は、"アダプティブ ストリーミング" が推奨されるプリセットです。 特定のシナリオ向けにエンコード プリセットをカスタマイズする必要がある場合は、[これら](media-services-mes-presets-overview.md)のプリセットで始めることができます。
+
+Azure Media Standard またはメディア エンコーダー Premium ワークフローを使って、[fMP4 チャンクを生成するエンコード タスクを作成](media-services-generate-fmp4-chunks.md)できるようになりました。 
+
 
 ## <a name="febuary-2017-release"></a>2017 年 2 月のリリース
 

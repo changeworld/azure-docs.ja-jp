@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
-ms.openlocfilehash: 60a94a333ffb4bf674e370972abd6fa0caf37d91
+ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
+ms.openlocfilehash: f73a24993fdeaced422b2f7a1283722a82c2be77
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -36,11 +37,11 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-create-new-resource/01-new.png)
 
-* **アプリケーションの種類**に応じて、概要ブレードに表示されるものと、[メトリック エクスプローラー][metrics]で使用できるプロパティが決まります。 お使いの種類のアプリが表示されない場合は、ASP.NET を選択します。
-* **リソース グループ** は、アクセス制御などのプロパティを管理するのに便利です。 その他の Azure リソースが既に作成されている場合、新しいリソースを同じグループに入れることもできます。
+* **アプリケーションの種類**に応じて、概要ブレードに表示されるものと、[メトリック エクスプローラー][metrics]で使用できるプロパティが決まります。 お使いの種類のアプリが表示されない場合は、[General (汎用)] を選択します。
 * **サブスクリプション** は、Azure での支払いアカウントです。
+* **リソース グループ** は、アクセス制御などのプロパティを管理するのに便利です。 その他の Azure リソースが既に作成されている場合、新しいリソースを同じグループに入れることもできます。
 * **場所** は、データの保存場所です。
-* **スタート画面への追加** は、Azure ホーム ページ上のリソースに対するクイック アクセス タイルを入れます。 推奨。
+* **[ダッシュボードにピン留めする]** をオンにすると、Azure のホーム ページにそのリソースに対するクイック アクセス タイルを追加できます。 推奨。
 
 アプリが作成されると、新しいブレードが開きます。 そのブレードには、アプリに関するパフォーマンスと使用状況データが表示されます。 
 
@@ -58,7 +59,7 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 
 SDK には、コードを記述せずにテレメトリを送信する標準的なモジュールが含まれています。 ユーザーの操作を追跡したり、問題をより詳しく診断したりするには、[API を使用][api]して、独自のテレメトリを送信します。
 
-## <a name="a-namemonitorasee-telemetry-data"></a><a name="monitor"></a>テレメトリ データを参照
+## <a name="monitor"></a>テレメトリ データを参照
 クイック スタート ブレードを閉じ、Azure ポータルのアプリケーション ブレードに戻ります。
 
 [検索] タイルをクリックして [[診断検索]][diagnostic] を確認します。ここには、最初のイベントが表示されます。 
@@ -66,7 +67,7 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
 ## <a name="creating-a-resource-automatically"></a>リソースの自動作成
-[PowerShell スクリプト](app-insights-powershell-script-create-resource.md) を作成して、リソースを自動で作成できます。
+[PowerShell スクリプト](app-insights-powershell.md) を作成して、リソースを自動で作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [ダッシュボードを作成する](app-insights-dashboards.md)
@@ -80,10 +81,5 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 [diagnostic]: app-insights-diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
 [start]: app-insights-overview.md
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

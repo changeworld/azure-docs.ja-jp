@@ -1,5 +1,6 @@
 ---
-title: "属性を使用して Azure Active Directory プレビューのグループ メンバーシップの高度なルールを作成する | Microsoft Docs"
+
+title: "Azure Active Directory プレビューの属性ベースの動的グループ メンバーシップ | Microsoft Docs"
 description: "サポートされている式のルールの演算子とパラメーターを含む、動的グループ メンバーシップの高度なルールを作成する方法。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e5103ccd0cc9ac46a29d98c613b58eead01f5e31
-ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: aa6ab3d2133019203a75b07853908059684bbaae
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="using-attributes-to-create-advanced-rules-for-group-membership-in-azure-active-directory-preview"></a>属性を使用して Azure Active Directory プレビューのグループ メンバーシップの高度なルールを作成する
-Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) この記事では、これらの高度なルールを作成するためのルールの属性と構文について詳しく説明します。
+# <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory-preview"></a>Azure Active Directory プレビューで動的グループ メンバーシップの属性ベースのルールを作成する | Microsoft Docs
+Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 [プレビューの機能については、こちらの記事をご覧ください](active-directory-preview-explainer.md)。 
+
+この記事では、動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
 
 ## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
@@ -186,14 +191,27 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
-| プロパティ | 使用できる値 | 使用法 |
-| --- | --- | --- |
-| displayName |任意の文字列値 |(device.displayName -eq "Rob Iphone”) |
-| deviceOSType |任意の文字列値 |(device.deviceOSType -eq "IOS") |
-| deviceOSVersion |任意の文字列値 |(device.OSVersion -eq "9.1") |
-| isDirSynced |true false null |(device.isDirSynced -eq "true") |
-| isManaged |true false null |(device.isManaged -eq "false") |
-| isCompliant |true false null |(device.isCompliant -eq "true") |
+| プロパティ              | 使用できる値                  | 使用法                                                       |
+|-------------------------|---------------------------------|-------------------------------------------------------------|
+| displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
+| deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
+| isDirSynced             | true false null                 | (device.isDirSynced -eq "true")                             |
+| isManaged               | true false null                 | (device.isManaged -eq "false")                              |
+| isCompliant             | true false null                 | (device.isCompliant -eq "true")                             |
+| deviceCategory          | 任意の文字列値                | (device.deviceCategory -eq "")                              |
+| deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
+| deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
+| deviceOwnership         | 任意の文字列値                | (device.deviceOwnership -eq "")                             |
+| domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
+| isRooted                | true false null                 | (device.deviceOSType -eq "true")                            |
+| managementType          | 任意の文字列値                | (device.managementType -eq "")                              |
+| organizationalUnit      | 任意の文字列値                | (device.organizationalUnit -eq "")                          |
+| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
@@ -203,9 +221,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

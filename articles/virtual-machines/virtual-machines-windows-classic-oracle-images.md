@@ -15,18 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/06/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ed43a0ae9d1b184bfe059103cd2bee00c975537d
-ms.openlocfilehash: 114787bb15e94381f95a717b27aab57209e2d9f1
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: f3870e79252692513e95eab6aa9eb30d953a1ee5
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="list-of-oracle-virtual-machine-images"></a>Oracle 仮想マシン イメージの一覧
+# <a name="list-of-oracle-virtual-machine-images-for-windows"></a>Windows 向けの Oracle 仮想マシン イメージの一覧 
 [!INCLUDE [virtual-machines-common-classic-oracle-images](../../includes/virtual-machines-common-classic-oracle-images.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

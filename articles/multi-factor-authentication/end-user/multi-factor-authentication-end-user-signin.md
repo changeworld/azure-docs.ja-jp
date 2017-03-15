@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: c0af680c83a72a9f2a415999141f9913c8b724a4
-ms.openlocfilehash: 85e0212ed9d7bde001f9b5cd4776d34ad1f01816
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: e972446ea92e8fd31406c9ccff7832b7441f3a2a
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -26,25 +27,34 @@ ms.openlocfilehash: 85e0212ed9d7bde001f9b5cd4776d34ad1f01816
 > この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>さまざまなサインイン エクスペリエンス
-サインインの方法、および多要素認証の使用法によって、エクスペリエンスは異なります。 お客さまの操作内容に最も近いものを選択してください。
+2 番目の要素として使うものに何を選ぶかにより (電話、認証アプリ、またはテキスト)、サインイン エクスペリエンスが異なります。 お客さまの操作内容に最も近いものを選択してください。
 
 | サインインの方法 | 
 | --- |
-| [携帯電話または会社電話を使用してサインインする](#signing-in-with-mobile-or-office-phone) |
+| [携帯電話また職場の電話の呼び出しを使用してサインインする](#signing-in-with-a-phone-call) |
+| [携帯電話へのテキストを使用してサインインする](#signing-in-with-a-text-message)
 | [Microsoft Authenticator アプリの通知を使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
 | [Microsoft Authenticator アプリの確認コードを使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
 | [通常の方法を使用できないので、別の方法でサインインする](#signing-in-with-an-alternate-method) |
 
-## <a name="signing-in-with-mobile-or-office-phone"></a>携帯電話または会社電話を使用してサインインする
-多要素認証で携帯電話または会社電話を使用した場合のエクスペリエンスについて以下に記します。
+## <a name="signing-in-with-a-phone-call"></a>電話の呼び出しを使用してサインインする
+ユーザーの携帯電話または職場の電話への呼び出しによる&2; 段階認証のエクスペリエンスは次のとおりです。
 
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。  
-2. Microsoft からの呼び出しがあります。  
+2. Microsoft がユーザーに電話をかけます。  
 3. 電話に出て、# キーを押します。  
 4. これでサインインできます。  
 
+## <a name="signing-in-with-a-text-message"></a>テキスト メッセージを使用してサインインする
+ユーザーの携帯電話へのテキスト メッセージによる&2; 段階認証のエクスペリエンスは次のとおりです。
+
+1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。 
+2. Microsoft からユーザーに、番号コードを含むテキスト メッセージが送信されます。 
+3. サインイン ページのボックスにコードを入力します。 
+4. これでサインインできます。 
+
 ## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してサインインする 
-2 段階認証で Microsoft Authenticator アプリを使用した場合のエクスペリエンスについて以下に記します。 アプリを使用したサインインの方法は&2; 種類あります。 デバイスでプッシュ通知を受け取るか、アプリを開いて確認コードを取得します。
+2 段階認証に Microsoft Authenticator アプリを使用するエクスペリエンスは次のとおりです。 アプリを使用したサインインの方法は&2; 種類あります。 デバイスでプッシュ通知を受け取るか、アプリを開いて確認コードを取得します。
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの通知を使用してサインインするには
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
@@ -57,7 +67,7 @@ ms.openlocfilehash: 85e0212ed9d7bde001f9b5cd4776d34ad1f01816
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリと確認コードを使用してサインインするには
 
-Microsoft Authenticator アプリを使用して確認コードを取得する場合、アプリを開くとアカウント名の下に番号が表示されます。 この番号は&30; 秒ごとに変更されるので、同じ番号を再度使用することはありません。 確認コードを求められたらアプリを開き、そのとき表示されている番号を入力してください。 
+Microsoft Authenticator アプリを使用して確認コードを取得する場合、アプリを開くとアカウント名の下に番号が表示されます。 この番号は 30 秒ごとに変更されるので、同じ番号を再度使用することはありません。 確認コードを求められたらアプリを開き、そのとき表示されている番号を入力してください。 
 
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft によって確認コードを求めるプロンプトが表示されます。
@@ -84,8 +94,3 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
 SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](microsoft-authenticator-app-how-to.md)」を参照してください。 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

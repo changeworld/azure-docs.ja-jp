@@ -4,10 +4,4 @@
 * [発行とロール ベースのアクセス制御 (RBAC)](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
 
 ## <a name="videos"></a>ビデオ
-* [リリース管理のデプロイメント ワークフローの自動化](/documentation/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+* [リリース管理のデプロイメント ワークフローの自動化](https://azure.microsoft.com/resources/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)

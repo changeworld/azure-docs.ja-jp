@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: c1551b250ace3aa6775932c441fcfe28431f8f57
-ms.openlocfilehash: d9f325c515e0a8e2cdbcbde657c3f7d6b793a9da
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: bd0768b9d46c12c38ecd530ccef8397d1b595d8d
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -25,7 +26,14 @@ ms.openlocfilehash: d9f325c515e0a8e2cdbcbde657c3f7d6b793a9da
 
 ## <a name="enabling-remote-debugging-for-cloud-services"></a>クラウド サービス用にリモート デバッグを有効にする
 1. 「 [Azure のコマンド ライン ビルド](http://msdn.microsoft.com/library/hh535755.aspx)」の説明に従って、ビルド エージェントで Azure の初期環境を設定します。
-2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、[Remote Tools for Visual Studio 2015](http://www.microsoft.com/en-us/download/details.aspx?id=48155) (Visual Studio 2013 を使用している場合は [Remote Tools for Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48156)) をインストールします。 代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
+2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、**Remote Tools for Visual Studio** をインストールします。
+
+    * [Remote Tools for Visual Studio 2017](https://go.microsoft.com/fwlink/?LinkId=746570)
+    * [Remote Tools for Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=615470)
+    * [Remote Tools for Visual Studio 2013 Update 5](https://www.microsoft.com/download/details.aspx?id=48156)
+    
+    代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
+
 3. 「 [Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」の説明に従って、証明書を作成します。 .pfx および RDP 証明書の拇印を保持し、その証明書をターゲット クラウド サービスにアップロードします。
 4. MSBuild コマンド ラインで次のオプションを使用し、リモート デバッグを有効にしてビルドおよびパッケージ化します(山かっこの項目については、システムおよびプロジェクト ファイルの実際のパスに置き換えてください。 )
    
@@ -44,39 +52,48 @@ ms.openlocfilehash: d9f325c515e0a8e2cdbcbde657c3f7d6b793a9da
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。 パスおよび個人用データを自分自身のサブスクリプション名、サービス名、拇印などで置き換えます。
    
    > [!NOTE]
-   > このスクリプトは Visual Studio 2015 用に構成されています。 Visual Studio 2013 を使用している場合は、`RemoteDebugVS2013` (`RemoteDebugVS2015` ではなく) を使用するように次の `$referenceName` および `$extensionName` 割り当てを変更します。
-   > 
-   > 
-   
-    <pre>
+   > このスクリプトは Visual Studio 2015 用に構成されています。 Visual Studio 2013 または Visual Studio 2017 を使用している場合は、次の `$referenceName` および `$extensionName` 割り当てを `RemoteDebugVS2013` または `RemoteDebugVS2017` に変更します。
+
+    ```powershell   
     Add-AzureAccount
-   
+
     Select-AzureSubscription "My Microsoft Subscription"
-   
+
     $vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
-   
-    $endpoints = @(  ,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}  ,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}  )
-   
-    foreach($endpoint in $endpoints)  {  Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort  }
-   
-    $referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"  $publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"  $extensionName = "RemoteDebugVS2015"  $version = "1.*"  $publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
-   
-    $vm | Set-AzureVMExtension `
-    -ReferenceName $referenceName `
-    -Publisher $publisher `
-    -ExtensionName $extensionName `
-    -Version $version `  -PublicConfiguration $publicConfiguration
-   
-    foreach($extension in $vm.VM.ResourceExtensionReferences)  {  if(($extension.ReferenceName -eq $referenceName) `
-    -and ($extension.Publisher -eq $publisher) `
-    -and ($extension.Name -eq $extensionName) `  -and ($extension.Version -eq $version))  {  $extension.ResourceExtensionParameterValues[0].Key = 'config.txt'  break  }  }
-   
-    $vm | Update-AzureVM  </pre>
+
+    $endpoints = @(
+                    ,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
+                    ,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
+                )
+
+    foreach($endpoint in $endpoints)
+    {
+        Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
+    }
+
+    $referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"
+    $publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
+    $extensionName = "RemoteDebugVS2015"
+    $version = "1.*"
+    $publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
+
+    $vm | Set-AzureVMExtension -ReferenceName $referenceName -Publisher $publisher -ExtensionName $extensionName -Version $version -PublicConfiguration $publicConfiguration
+
+    foreach($extension in $vm.VM.ResourceExtensionReferences)
+    {
+        if(($extension.ReferenceName -eq $referenceName) `
+        -and ($extension.Publisher -eq $publisher) `
+        -and ($extension.Name -eq $extensionName) `
+        -and ($extension.Version -eq $version))
+        {
+            $extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
+            break
+        }
+    }
+
+    $vm | Update-AzureVM
+    ```
+
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 12/15/2016
+ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: e650439b4bfd468c4bd7b236b80ce7361de1c6ac
-ms.openlocfilehash: 972a3e88d15be656fd8cd3d51b7e507c7cbb49d5
+ms.sourcegitcommit: c4fb25880584add0832464d9049dc6c78059c48b
+ms.openlocfilehash: 39e91dea775cf03f726db29f27f30142b69f9dfe
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,22 +30,41 @@ ms.openlocfilehash: 972a3e88d15be656fd8cd3d51b7e507c7cbb49d5
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
+こちらに概要を簡単に説明したビデオが用意してありますのでご覧ください。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
+
+フェールバックの完全なプロセスについては、こちらでお読みください。
+
 ## <a name="pre-requisites"></a>前提条件
 再保護を準備する際に対応または考慮する必要がある前提条件の手順を次に示します。
 
-### <a name="reprotect-needs-a-s2s-vpn-or-an-express-route-to-replicate-data-back-to-on-premises"></a>オンプレミスにデータをレプリケートして戻すため、再保護では S2S VPN または ExpressRoute が必要である
-オンプレミスから Azure へのレプリケーションを、インターネット、またはパブリック ピアリングを使用した ExpressRoute 経由で実行できる場合、再保護とフェールバックでは、データをレプリケートするために S2S VPN を設定する必要があります。 ネットワークは、Azure のフェールオーバーされた VM からオンプレミスの構成サーバーに接続できるように指定する必要があります。 フェールオーバーされた VM の Azure ネットワークにプロセス サーバーをデプロイすることもできます。このプロセス サーバーも、オンプレミスの構成サーバーと通信できる必要があります。
+* フェールバックする VM が vCenter サーバーによって管理されている場合、vCenter サーバー上の VM の検出に必要な権限があることを確認する必要があります。 詳細については、[こちら](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)を参照してください。
+* オンプレミスの VM 上にスナップショットがある場合、再保護は失敗します。 スナップショットを削除してから再保護に進むことができます。
+* フェールバックを開始する前に、さらに&2; つのコンポーネントを作成する必要があります。
+  * **プロセス サーバーを作成する**:  プロセス サーバーは、Azure の保護された VM からデータを受け取り、オンプレミスにデータを送信するために使用されます。 そのため、プロセス サーバーは、保護された VM との間の待機時間が短いネットワーク上にあることが必要です。 したがって、プロセス サーバーはオンプレミス (Express Route 接続を使用している場合)、または Azure (VPN を使用している場合) に配置できます。
+  * **マスター ターゲット サーバーを作成する**: マスター ターゲット サーバーは、フェールバック データを受信します。 オンプレミスに作成した管理サーバーには、既定でマスター ターゲット サーバーがインストールされています。 ただし、フェールバック トラフィックの量によっては、フェールバック用に別のマスター ターゲット サーバーを作成する必要があります。 
+        * [Linux VM には Linux のマスター ターゲット サーバーが必要です](site-recovery-how-to-install-linux-master-target.md)。 
+        * Windows VM には、Windows のマスター ターゲットが必要です。 オンプレミスの PS+MT マシンを再利用してもかまいません。
+* フェールバックを実行するときは、構成サーバーがオンプレミスに存在している必要があります。 フェールバック時に仮想マシンが構成サーバー データベースに存在していないと、フェールバックは失敗します。 サーバーを定期的にバックアップするようスケジュールを設定してください。 万一障害が発生した場合は、フェールバックが正常に機能するように、同じ IP アドレスで復元する必要があります。
+* VMware でマスター ターゲット VM の構成パラメーターに disk.enableUUID=true が設定されていることを確認してください。 この行が存在しない場合は追加してください。 これは、一貫性のある UUID を VMDK に提供することで適切なマウントが実行されるようにするために必要です。
+* **マスター ターゲット サーバーをストレージ vMotioned にすることはできません**。 そのようにした場合、フェールバックが失敗する可能性があります。 ディスクが利用可能にならないため、この VM は起動しません。
+* マスター ターゲット サーバーに新しいドライブを追加する必要があります。 このドライブはリテンション ドライブと呼ばれます。 新しいディスクを追加し、ドライブをフォーマットします。
+* マスター ターゲットには他にも、[再保護の前に行うマスター ターゲットの一般的なチェック事項](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-master-target)に記載した前提条件があります。
 
-### <a name="process-server-is-needed-to-replicate-the-data-from-source-vms-to-on-premises"></a>ソース VM からオンプレミスにデータをレプリケートするためにプロセス サーバーが必要である
-<!-- Read more about a process server here.!todo -->
 
-再保護する Azure VM からプロセス サーバーにレプリケーション データを送信します。 Azure VM からプロセス サーバーにアクセスできるようにネットワークを設定する必要があります。
+### <a name="why-do-i-need-a-s2s-vpn-or-an-expressroute-to-replicate-data-back-to-on-premises"></a>オンプレミスにデータをレプリケート バックするために S2S VPN または ExpressRoute が必要な理由
+オンプレミスから Azure へのレプリケーションを、インターネット、またはパブリック ピアリングを使用した ExpressRoute 経由で実行できる場合、再保護とフェールバックでは、データをレプリケートするために S2S VPN を設定する必要があります。 **ネットワークは、Azure のフェールオーバーされた VM からオンプレミスの構成サーバーに接続 (ping) できるように指定する必要があります**。 フェールオーバーされた VM の Azure ネットワークにプロセス サーバーをデプロイすることもできます。このプロセス サーバーも、オンプレミスの構成サーバーと通信できる必要があります。
+
+### <a name="when-should-i-install-a-process-server-in-azure"></a>Azure にプロセス サーバーをインストールするタイミング
+
+
+再保護の対象となる Azure VM は、レプリケーション データをプロセス サーバーに対して送信します。 Azure VM からプロセス サーバーにアクセスできるようにネットワークを設定する必要があります。
 
 Azure でプロセス サーバーをデプロイしたり、フェールオーバーの際に使用した既存のプロセス サーバーを使用したりできます。 考慮すべき重要な点は、Azure VM からプロセス サーバーにデータを送信するときの待機時間です。 
 
 * ExpressRoute を設定している場合は、オンプレミスの PS を使用してデータを送信できます。 これは、VM と PS の間の待機時間が短いためです。
     
-    ![Expressroute のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture.png)
+    ![ExpressRoute のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture.png)
 
 
 
@@ -55,14 +75,17 @@ Azure でプロセス サーバーをデプロイしたり、フェールオー�
 
 レプリケーションは、S2S VPN または、ExpressRoute ネットワークのプライベート ピアリングを介してのみ実行されることに注意してください。 そのネットワーク チャネルで十分な帯域幅を使用できることを確認してください。
 
-### <a name="ports-to-be-opened-on-different-machines-so-that-all-the-components-can-communicate"></a>すべてのコンポーネントが通信できるように、さまざまなコンピューターでポートを開く必要がある
+Azure のプロセス サーバーのインストール方法について詳しくは、[こちら](site-recovery-vmware-setup-azure-ps-resource-manager.md)をご覧ください。
+
+### <a name="what-are-the-different-ports-to-be-open-on-different-components-so-that-reprotect-can-work"></a>再保護が正常に機能するために各コンポーネントで開放されているべきポート
 
 ![すべてのポートのフェールオーバー/フェールバック](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
-### <a name="master-target-needs-to-be-available-on-premises-to-receive-data-from-process-server"></a>マスター ターゲットは、プロセス サーバーからデータを受信するために、オンプレミスで使用できる必要がある
+### <a name="which-master-target-server-to-use-for-reprotect"></a>再保護に使用するマスター ターゲット サーバー
 マスター ターゲット サーバーは、プロセス サーバーからデータを受信してオンプレミスの VM の VMDK に書き込むために、オンプレミスである必要があります。 Windows VM を保護する場合、Windows マスター ターゲット サーバーが必要になります。ここで、オンプレミスの PS+MT <!-- !todo component --> を再利用できます。 Linux VM の場合は、追加の Linux マスター ターゲットをオンプレミスで設定する必要があります。
 
-次のリンクをクリックして、マスター ターゲット サーバーをインストールする方法の手順を確認してください。
+
+次のリンクをクリックして、マスター ターゲット サーバーのインストール手順を確認してください。
 
 * [Windows マスター ターゲット サーバーをインストールする方法](site-recovery-vmware-to-azure.md#run-site-recovery-unified-setup)
 * [Linux マスター ターゲット サーバーをインストールする方法](site-recovery-how-to-install-linux-master-target.md)
@@ -76,21 +99,21 @@ Azure でプロセス サーバーをデプロイしたり、フェールオー�
     
 * **マスター ターゲット サーバーをストレージ vMotioned にすることはできません**。 そのようにした場合、フェールバックが失敗する可能性があります。 ディスクが利用可能にならないため、この VM は起動しません。
 
-* 既存のマスター ターゲット サーバーに新しいドライブを追加する必要があります。 このドライブはリテンション ドライブと呼ばれます。 新しいディスクを追加し、ドライブをフォーマットします。 リテンション ドライブは、VM がオンプレミスにレプリケートされたときの特定の時点で停止するために使用されます。 リテンション ドライブの条件の一部を以下に示します。これらの条件を満たしていない場合、このドライブはマスター ターゲット サーバーに表示されません。
+* 既存の Windows マスター ターゲット サーバーに新しいドライブを追加する必要があります。 このドライブはリテンション ドライブと呼ばれます。 新しいディスクを追加し、ドライブをフォーマットします。 リテンション ドライブは、VM がオンプレミスにレプリケートされたときの特定の時点で停止するために使用されます。 リテンション ドライブの条件の一部を以下に示します。これらの条件を満たしていない場合、このドライブはマスター ターゲット サーバーに表示されません。
    
-   a. ボリュームを他の目的 (レプリケーションのターゲットなど) に使用することはできません。
+   * ボリュームを他の目的 (レプリケーションのターゲットなど) に使用することはできません。
 
-   b. ボリュームをロック モードにすることはできません。
+   * ボリュームをロック モードにすることはできません。
 
-   c. ボリュームをキャッシュ ボリュームにすることはできません。 (そのボリュームに MT インストールが存在してはいけません。 PS + MT カスタム インストール ボリュームは、保持ボリュームの対象ではありません。 ここでは、インストール済みの PS + MT ボリュームが MT のキャッシュ ボリュームです。)
+   * ボリュームをキャッシュ ボリュームにすることはできません。 (そのボリュームに MT インストールが存在してはいけません。 PS + MT カスタム インストール ボリュームは、保持ボリュームの対象ではありません。 ここでは、インストール済みの PS + MT ボリュームが MT のキャッシュ ボリュームです。)
 
-   d. ボリューム ファイル システムの種類として、FAT および FAT32 は使用できません。
+   * ボリューム ファイル システムの種類として、FAT および FAT32 は使用できません。
 
-   e. ボリュームの容量は&0; 以外である必要があります。
+   * ボリュームの容量は&0; 以外である必要があります。
 
-   e. Windows の既定の保持ボリュームは R ボリュームです。
+   * Windows の既定の保持ボリュームは R ボリュームです。
 
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Linux の既定の保持ボリュームは、/mnt/retention/ です。
+   * Linux の既定の保持ボリュームは、/mnt/retention/ です。
 
 * フェールオーバーした Linux VM には Linux のマスター ターゲット サーバーが必要です。 フェールオーバーした Windows VM には Windows のマスター ターゲット サーバーが必要です。
 
@@ -98,18 +121,31 @@ Azure でプロセス サーバーをデプロイしたり、フェールオー�
 
 * vCenter プロパティを使用して MT VM の disk.EnableUUID = True パラメーターを有効にします。 <!-- !todo Needs link. -->
 
+* マスター ターゲットには、VMFS データストアが少なくとも&1; つ接続されている必要があります。 まったく存在しない場合、再保護ページに入力するデータストアが空となり先に進めません。
 
+* マスター ターゲット サーバーのディスクにはスナップショットが一切存在してはいけません。 スナップショットが存在すると再保護/フェールバックが失敗します。
 
-### <a name="failback-policy"></a>フェールバック ポリシー
-オンプレミスにレプリケートするには、フェールバック ポリシーが必要です。 このポリシーは、順方向のポリシーを作成したときに自動的に作成されます。 次の点に注意してください。
+* 準仮想化 SCSI コントローラーを MT に割り当てることはできません。 LSI Logic コントローラー以外は使用できません。 LSI Logic コントローラーがないと再保護は失敗します。
 
-1. このポリシーは、作成時に構成サーバーに自動的に関連付けられます。
-2. このポリシーは編集できません。
-3. ポリシーの設定値は、RPO しきい値 = 15 分、復旧ポイントのリテンション期間 = 24 時間、アプリケーションの整合性スナップショットの取得頻度 = 60 分です。![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
+<!--
+### Failback policy
+To replicate back to on-premises, you will need a failback policy. This policy get automatically created when you create a forward direction policy. Note that
 
+1. This policy gets auto associated with the configuration server during creation.
+2. This policy is not editable.
+3. The set values of the policy are (RPO Threshold = 15 Mins, Recovery Point Retention = 24 Hours, App Consistency Snapshot Frequency = 60 Mins)
+   ![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
 
+-->
 
 ## <a name="steps-to-reprotect"></a>再保護の手順
+
+オンプレミスのマスター ターゲット (Windows または [Linux](site-recovery-how-to-install-linux-master-target.md)) と Azure に[プロセス サーバー](site-recovery-vmware-setup-azure-ps-resource-manager.md)がインストールされていることを再保護の前に確認してください。
+
+> [!NOTE]
+> Azure で VM が起動した後、エージェントが構成サーバーに再度登録されるまでにしばらく時間がかかります (最大 15 分)。 この間は再保護が失敗し、エージェントがインストールされていないというエラー メッセージが表示されます。 数分待ってから再保護操作をやり直してください。
+ 
+ 
 
 1. [コンテナー] の [レプリケートされたアイテム] で、フェールオーバーされた VM を選択し、右クリックして **[再保護]** をクリックします。 マシンをクリックし、コマンド ボタンから再保護を選択することもできます。
 2. ブレードで、保護の方向として [Azure からオンプレミスへ] が既に選択されていることを確認します。
@@ -126,8 +162,7 @@ Azure でプロセス サーバーをデプロイしたり、フェールオー�
 
 > [!NOTE]
 > レプリケーション グループは、同じマスター ターゲットを使用して保護する必要があります。 別のマスター ターゲット サーバーを使用して保護されている場合、共通の時点を取得できません。
-> 
-> 
+ 
 
 正常に再保護できると、VM は保護された状態になります。
 
@@ -135,12 +170,15 @@ Azure でプロセス サーバーをデプロイしたり、フェールオー�
 
 VM が保護された状態になると、フェールバックを開始できます。 フェールバックによって Azure の VM がシャットダウンされ、オンプレミスの VM が起動されます。 そのため、アプリケーションに短時間のダウンタイムが発生します。 したがって、アプリケーションがダウンタイムに対応できるように、フェールバックの時刻を選択します。
 
-[VM のフェールバックを開始する手順](site-recovery-how-to-failback-v2a.md#steps-to-failback)
+[VM のフェールバックを開始する手順](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-failback)
 
 ## <a name="common-issues"></a>一般的な問題 
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+* テンプレートを使用して仮想マシンを作成した場合、各 VM のディスクに一意の UUID が割り当てられていることを、保護する前に確認してください。 オンプレミスの VM とマスター ターゲットとで UUID が (どちらも同じテンプレートから作成したために) 衝突した場合、再保護が失敗します。 同じテンプレートから作成したものではない別のマスター ターゲットをデプロイする必要があります。
+* 読み取り専用ユーザー vCenter の検出を実行し、仮想マシンを保護すると、適切に動作し、フェールオーバーが実行されます。 再保護中は、データストアが検出できないため、フェールオーバーは失敗します。 症状としては、再保護中はデータストアの一覧が表示されません。 この問題を解決するには、適切な権限を持つアカウントを使用して vCenter 資格情報を更新し、ジョブを再試行します。 詳細については、「[Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)」を参照してください。
+* Linux VM をフェールバックしてオンプレミスで実行すると、ネットワーク マネージャー パッケージがマシンからアンインストールされていることを確認できます。 このアンインストールは、Azure で VM が 復旧されるときに、ネットワーク マネージャー パッケージが削除されるために発生します。
+* Linux VM が静的 IP アドレスで構成されているときに Azure にフェールオーバーされると、IP アドレスは DHCP 経由で取得されます。 オンプレミスにフェールオーバーすると、VM は引き続き DHCP を使用して、IP アドレスを取得します。 必要であれば、手動でコンピューターにサインインし、IP アドレスを静的アドレスに設定し直します。 Windows VM は、その静的 IP を再取得できます。
+* ESXi 5.5 無償版または vSphere 6 Hypervisor 無償版のいずれかを使用すると、フェールオーバーは成功しますが、フェールバックは失敗します。 フェールバックを有効にするには、いずれかのプログラムの評価ライセンスにアップグレードしてください。
+* プロセス サーバーから構成サーバーにアクセスできない場合は、構成サーバー コンピューターのポート 443 で Telnet を実行して、構成サーバーへの接続を確認します。 プロセス サーバー コンピューターから構成サーバーに対して ping を試すこともできます。 プロセス サーバーが構成サーバーに接続されるときは、ハートビートも必要です。
+* 代替の vCenter にフェールバックする場合は、新しい vCenter が検出されること、またマスター ターゲット サーバーも検出されることを確認してください。 典型的な症状は、データストアにアクセスできないか、**[再保護]** ダイアログに表示されないことです。
+* 物理オンプレミス コンピューターとして保護されている WS2008R2SP1 コンピューターは、Azure からオンプレミスにフェールバックすることができません。

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2016
+ms.date: 3/01/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 55baaf0984e01f3cbca7b2296f0b24661e70e7b5
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -24,8 +25,6 @@ ms.openlocfilehash: 87fa4373e5496a91d4e808ceb45095a6aea9e884
 > [!div class="op_single_selector"]
 > * [ユーザーまたはグループによるアクセスの管理](role-based-access-control-manage-assignments.md)
 > * [リソースによるアクセスの管理](role-based-access-control-configure.md)
-> 
-> 
 
 Azure Active Directory のロールベースのアクセス制御 (RBAC) のプレビューでは、Azure リソースへのアクセス権を管理できます。 [プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
 
@@ -34,7 +33,7 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) のプ�
 * **スコープ:** RBAC ロールの割り当ては、指定したサブスクリプション、リソース グループ、またはリソースに限られます。 1 つのリソースのアクセス権を付与されたユーザーは、同じサブスクリプションで他のリソースにアクセスすることはできません。
 * **ロール:** 割り当てのスコープ内で、ロールを割り当てることによって、アクセス権がさらに限定されます。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
 
-ロールは、割り当てのスコープであるサブスクリプション、リソース グループ、またはリソース内からのみ割り当てられます。 ただし、特定のユーザーまたはグループのすべてのアクセス権の割り当てを 1 箇所から確認できます。
+ロールは、割り当てのスコープであるサブスクリプション、リソース グループ、またはリソース内からのみ割り当てられます。 ただし、特定のユーザーまたはグループのすべてのアクセス権の割り当てを&1; 箇所から確認できます。
 
 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)方法について参照してください。
 
@@ -57,13 +56,9 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) のプ�
 2. **[削除]** を選択し、**[はい]** を選択して確定します。
     ![アクセス権の割り当ての削除 - スクリーンショット](./media/role-based-access-control-manage-assignments/delete_assignment.png)
 
-## <a name="related-topics"></a>関連トピック
+## <a name="next-steps"></a>次のステップ
+
 * ロールベースのアクセス制御を開始して、 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)
-*  [RBAC の組み込みロール](role-based-access-built-in-roles.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* [RBAC の組み込みロール](role-based-access-built-in-roles.md)
 
 

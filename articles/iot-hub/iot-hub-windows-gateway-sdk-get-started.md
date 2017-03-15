@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
-ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: 4b6cb52c3dcc34c70fd3b86031af48a12573cb8b
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="get-started-with-the-azure-iot-gateway-sdk-windows"></a>Azure IoT Gateway SDK の使用 (Windows)
+# <a name="explore-the-iot-gateway-sdk-architecture-on-windows"></a>Windows での IoT Gateway SDK アーキテクチャの確認
 [!INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
 ## <a name="how-to-build-the-sample"></a>サンプルをビルドする方法
@@ -83,9 +85,4 @@ ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

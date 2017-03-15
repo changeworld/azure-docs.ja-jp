@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: 08ebf8f6f5a2adab90c7de1084bfb5e4aed77fd3
-ms.lasthandoff: 01/05/2017
+ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
+ms.openlocfilehash: a7d6cad6faa5fc3a64fe416b44a03ad3992c7862
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="identity-registry"></a>ID レジストリ
+# <a name="understand-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリの理解
 ## <a name="overview"></a>概要
 すべての IoT Hub には、その IoT Hub への接続が許可されたデバイスに関する情報を保存する ID レジストリがあります。 デバイスを IoT Hub に接続できるようにするには、そのデバイスのエントリが IoT Hub の ID レジストリに存在する必要があります。 さらに、ID レジストリに保存されている資格情報に基づいて、デバイスが IoT Hub で認証される必要があります。
 

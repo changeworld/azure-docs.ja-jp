@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/06/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 183cc2025bd909ea4450564bc3598c2694b1c0db
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 37797743df0e2ce029b65f267a7cea5c8d793773
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -29,13 +30,13 @@ ms.openlocfilehash: 183cc2025bd909ea4450564bc3598c2694b1c0db
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* Visual Studio 2012 または 2013。
+* Visual Studio 2017 または 2015。
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
 * 監視を有効にする必要がある、既存の Stream Analytics ジョブ。
 
 ## <a name="setup-a-project"></a>プロジェクトのセットアップ
 1. Visual Studio C# .Net コンソール アプリケーションを作成します。
-2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。 1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。 2 つ目は、監視を有効にするために使用される Azure Monitor SDK です。 最後の 1 つは、認証で使用する Azure Active Directory クライアントです。
+2. パッケージ マネージャー コンソールで、次のコマンドを実行して NuGet パッケージをインストールします。 1 つ目は、Azure Stream Analytics 管理用 .NET SDK です。 2 つ目は、監視を有効にするために使用される Azure Monitor SDK です。 最後の&1; つは、認証で使用する Azure Active Directory クライアントです。
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
@@ -179,10 +180,5 @@ ms.openlocfilehash: 183cc2025bd909ea4450564bc3598c2694b1c0db
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

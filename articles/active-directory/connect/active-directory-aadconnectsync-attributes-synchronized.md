@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9238141fc56abcb618d71e4bfd1eccb77f282c71
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -32,8 +33,8 @@ ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 
 > [!WARNING]
 > 属性の選択を解除するときは、注意が必要であり、絶対に同期できない属性だけを選択解除する必要があります。 その他の属性の選択を解除すると、機能に悪影響を及ぼす可能性があります。
-> 
-> 
+>
+>
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
 | 属性名 | ユーザー | コメント |
@@ -421,7 +422,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 | 属性名 | ユーザー | 連絡先 | グループ | コメント |
 | --- |:---:|:---:|:---:| --- |
-| msDS ExternalDirectoryObjectID |○ | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 で導入されました。 |
+| msDS ExternalDirectoryObjectID |○ | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
 | msExchArchiveStatus |○ | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |
 | msExchBlockedSendersHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
 | msExchSafeRecipientsHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
@@ -458,10 +459,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

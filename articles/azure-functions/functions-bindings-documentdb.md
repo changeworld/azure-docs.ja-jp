@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c9e736f7ce5330823f3890c669da40e2bb1ecf43
-ms.openlocfilehash: 13b69118c6732ed872bec11e880737db3b8fa3c5
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: e476a80a3846b8c80c35d6803d5518727f008824
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -53,7 +54,7 @@ DocumentDB 入力バインドでは、DocumentDB ドキュメントを取得し�
 以下の点に注意してください。
 
 * `id` は、キュー メッセージの文字列値をドキュメント ID として使用する `{queueTrigger}` と同様のバインドをサポートします。
-* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによってアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する]()必要があります。 
+* `connection` は、(値 `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>` を使用して) DocumentDB アカウントのエンドポイントを指すアプリ設定の名前である必要があります。 Functions ポータルの UI を使用して DocumentDB アカウントを作成すると、アカウント作成プロセスによってアプリ設定が作成されます。 既存の DocumentDB アカウントを使用するには、[このアプリ設定を手動で構成する](functions-how-to-use-azure-function-app-settings.md)必要があります。 
 * 指定されたドキュメントが見つからない場合、関数の名前付き入力パラメーターは `null` に設定されます。 
 
 ## <a name="input-usage"></a>入力の使用方法
@@ -132,7 +133,7 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="a-iddocdboutputadocumentdb-output-binding"></a><a id="docdboutput"></a>DocumentDB 出力バインド
+## <a id="docdboutput"></a>DocumentDB 出力バインド
 DocumentDB 出力バインドを使用すると、Azure DocumentDB データベースに新しいドキュメントを記述できます。 
 
 出力バインドでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。 
@@ -157,7 +158,10 @@ DocumentDB 出力バインドを使用すると、Azure DocumentDB データベ�
 ## <a name="output-usage"></a>出力の使用方法
 このセクションでは、DocumentDB 出力バインドを関数のコードで使用する方法について説明します。
 
-関数の出力パラメーターに書き込むと、既定で新しい文書がデータベースに生成され、自動的に生成された GUID が文書 ID として割り当てられます。 出力ドキュメントのドキュメント ID は、出力パラメーターの `id` JSON プロパティを指定することによって指定できます。 その ID を持つドキュメントが既に存在する場合、既存のドキュメントは出力ドキュメントによって上書きされます。 
+関数の出力パラメーターに書き込むと、既定で新しい文書がデータベースに生成され、自動的に生成された GUID が文書 ID として割り当てられます。 出力ドキュメントのドキュメント ID は、出力パラメーターの `id` JSON プロパティを指定することによって指定できます。 
+
+>[!Note]  
+>既存のドキュメントの ID を指定した場合、既存のドキュメントは新しい出力ドキュメントによって上書きされます。 
 
 出力には、次のいずれかの型で書き込むことができます。
 
@@ -306,9 +310,4 @@ module.exports = function (context) {
   context.done();
 };
 ```
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

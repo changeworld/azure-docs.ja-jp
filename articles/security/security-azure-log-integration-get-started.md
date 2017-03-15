@@ -15,9 +15,9 @@ ums.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 9c27ea02ae341197a70d2b399cf8d534d79c9e4c
-ms.openlocfilehash: 001cc873960733bfe3e37fad95dbac29872ba00a
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 6ec3397f62cb2ae57cd9ce27a0a5022fd876e263
+ms.openlocfilehash: 39bac7d0cc6fee8a99949d167e3aa0c15cfaebc2
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -129,15 +129,22 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
 ## <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory と監査ログの統合
 1. コマンド プロンプトと **cd** を **c:\Program Files\Microsoft Azure Log Integration** に開きます。
-2. 次のコマンドを実行します。.\AZLOG.exe authorizedirectoryreader <TenantID> サンプル - 
+2. tenantID を提供するコマンドを実行します。 コマンドを実行するには、テナント管理者ロールのメンバーである必要があります。
 
-.\AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+AZLOG.exe authorizedirectoryreader tenantId
+
+サンプル - 
+
+AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+
 
 3. 次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。 
 * **C:\Users\azlog\AzureActiveDirectoryJson**   
 * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
 4. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
+
+[Azure Active Directory で監査イベントとして現在記録されるイベントの一覧](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events)
 
 インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして 'Log Integration' を選択します。
 

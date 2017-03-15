@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/22/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
-ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
+ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
+ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,7 +30,7 @@ ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
 * DocumentDB でパーティション分割をどのように構成できるか。
 * パーティション キーとは何か、また、アプリケーションに適切なパーティション キーをどのように選択するか。
 
-最初に、 [DocumentDB Performance Testing Driver サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
+最初に、[DocumentDB Performance Testing Driver サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。 
 
 パーティション分割とパーティション キーについては、Scott Hanselman と DocumentDB プリンシパル エンジニアリング マネージャー Shireesh Thota による次の Azure Friday ビデオでも取り上げています。
 
@@ -41,14 +42,22 @@ DocumentDB では、ミリ秒の応答時間順に任意の規模でスキーマ
 
 パーティション分割は、アプリケーションに対して完全に透過的です。 DocumentDB では、すばやい読み取りと書き込み、SQL および LINQ クエリ、JavaScript ベースのトランザクション ロジック、一貫性レベル、単一のコレクション リソースへの REST API 呼び出しを介したきめ細やかなアクセス制御がサポートされます。 サービスでは、複数のパーティション間でのデータの分散、適切なパーティションへのクエリ要求のルーティングが処理されます。 
 
-しくみ DocumentDB でコレクションを作成するときに、**パーティション キー プロパティ**の構成値を指定できることに注目してください。 これは、DocumentDB が複数のサーバーまたはパーティション間にデータを分散するために使用できるドキュメント内の JSON プロパティ (またはパス) です。 DocumentDB は、パーティション キーの値をハッシュし、ハッシュの結果を使用して、JSON ドキュメントの格納先となるパーティションを特定します。 同じパーティション キーを持つすべてのドキュメントは、同じパーティションに格納されます。 
+しくみ DocumentDB でコレクションを作成するときに、**パーティション キー プロパティ**の構成値を指定できます。 これは、DocumentDB が複数のサーバーまたはパーティション間にデータを分散するために使用できるドキュメント内の JSON プロパティ (またはパス) です。 DocumentDB は、パーティション キーの値をハッシュし、ハッシュの結果を使用して、JSON ドキュメントの格納先となるパーティションを特定します。 同じパーティション キーを持つすべてのドキュメントは、同じパーティションに格納されます。 
 
 たとえば、従業員とその部門に関するデータを DocumentDB に格納するアプリケーションがあるとします。 部門別のデータをスケールアウトするために、パーティション キー プロパティとして `"department"` を選択しましょう。 DocumentDB 内のすべてのドキュメントには、パーティション キー値が同じである (`"Marketing`" など) 各ドキュメントに一意の必須 `"id"` プロパティが含まれている必要があります。 コレクションに格納されたすべてのドキュメントには、パーティション キーと ID の一意の組み合わせ (`{ "Department": "Marketing", "id": "0001" }`、`{ "Department": "Marketing", "id": "0002" }`、`{ "Department": "Sales", "id": "0001" }` など) が必要です。 言い換えると、パーティション キーと ID の複合プロパティはコレクションのプライマリ キーとなります。
 
-## <a name="partition-keys"></a>パーティション キー
-パーティション キーの選択は、設計時に行う必要のある重要な決定事項の&1; つです。 広範囲の値を持ち、場合によっては複数のパターン間に均等に分散されている可能性のある JSON プロパティ名を選択する必要があります。 パーティション キーは JSON のパスとして指定されます。たとえば、`/department` はプロパティ department を表します。 
+DocumentDB は、ストレージ サイズとプロビジョニング済みスループットに基づいて、各コレクションに少数の物理パーティションを作成します。 パーティション キーとして定義するプロパティは、論理パーティションです。 複数のパーティション キー値は通常、1 つの物理パーティションを共有しますが、1 つの値がパーティションにまたがることはありません。 1 つのパーティション キーに多数の値がある場合、DocumentDB はデータやプロビジョニング済みスループットの増加に応じて適切な負荷分散を実行できるので便利です。
 
-パーティション キーの定義とそれぞれに対応する JSON 値の例を次の表に示します。
+たとえば、1 秒あたり 25,000 要求のスループットのコレクションを作成し、DocumentDB が 1 つの物理パーティションで 1 秒あたり 10,000 件の要求をサポートできるとします。 DocumentDB では、コレクションに 3 つの物理パーティション (P1、P2、P3) を作成します。 ドキュメントの挿入中または読み取り中に、DocumentDB サービスは対応する `Department` 値をハッシュして、データを&3; つのパーティション (P1、P2、P3) にマップします。 たとえば、"Marketing" と "Sales" を 1 にハッシュすると、これらは両方とも P1 に格納されます。 P1 がいっぱいになると、DocumentDB は P1 を&2; つの新しいパーティション P4 と P5 に分割します。 分割後、サービスは "Marketing" を P4、"Sales" を P5 に移動し、P1 を削除します。 パーティション間でのパーティション キーのこれらの移動は、アプリケーションに対して透過的であり、コレクションの可用性には影響しません。
+
+## <a name="partition-keys"></a>パーティション キー
+パーティション キーの選択は、設計時に行う必要のある重要な決定事項の&1; つです。 広範囲の値を持ち、場合によっては複数のパターン間に均等に分散されている可能性のある JSON プロパティ名を選択する必要があります。 
+
+> [!NOTE]
+> 多数の個別の値 (少なくとも数百から数千) を持つパーティション キーにすることをお勧めします。 多くの顧客は、DocumentDB を実質的にキー値ストアとして使用しています。ここで、一意の "ID" とは、数百万から数十億もあるパーティション キーのパーティション キーを意味します。
+>
+
+パーティション キーの定義とそれぞれに対応する JSON 値の例を次の表に示します。 パーティション キーは JSON のパスとして指定されます。たとえば、`/department` はプロパティ department を表します。 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -157,21 +166,22 @@ Azure DocumentDB に、 [REST API バージョン 2015-12-16](https://msdn.micro
 
 このサンプルでは、以下のことがわかっているため `deviceId` を選択しています。(a) デバイスの数が多いため、書き込みをパーティション全体に均等に分散し、膨大な量のデータを取り込むためにデータベースの規模を変更する可能性がある。(b) デバイスの最新の読み取りのフェッチなど、多くの要求は単一の deviceId にスコープが制限され、単一のパーティションから取得される。
 
-    DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
-    await client.CreateDatabaseAsync(new Database { Id = "db" });
+```csharp
+DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+await client.CreateDatabaseAsync(new Database { Id = "db" });
 
-    // Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
-    // spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
-    // sorting against any number or string property.
-    DocumentCollection myCollection = new DocumentCollection();
-    myCollection.Id = "coll";
-    myCollection.PartitionKey.Paths.Add("/deviceId");
+// Collection for device telemetry. Here the JSON property deviceId will be used as the partition key to 
+// spread across partitions. Configured for 10K RU/s throughput and an indexing policy that supports 
+// sorting against any number or string property.
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
 
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri("db"),
-        myCollection,
-        new RequestOptions { OfferThroughput = 20000 });
-
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 20000 });
+```
 
 > [!NOTE]
 > SDK を使用してパーティション分割コレクションを作成するには、1 秒あたり 10,100 RU 以上のスループット値を指定する必要があります。 分割コレクションのスループット値を 2,500 ～ 10,000 に設定するには、SDK でまだこれらの新しい比較的小さい値を使用できないため、一時的に Azure Portal を使用する必要があります。
@@ -183,107 +193,118 @@ Azure DocumentDB に、 [REST API バージョン 2015-12-16](https://msdn.micro
 ### <a name="reading-and-writing-documents"></a>ドキュメントの読み取りと書き込み
 では、DocumentDB にデータを挿入してみましょう。 デバイスの新しい読み取りをコレクションに挿入するための、デバイスの読み取りデータを含むサンプル クラスと CreateDocumentAsync への呼び出しを次に示します。
 
-    public class DeviceReading
+```csharp
+public class DeviceReading
+{
+    [JsonProperty("id")]
+    public string Id;
+
+    [JsonProperty("deviceId")]
+    public string DeviceId;
+
+    [JsonConverter(typeof(IsoDateTimeConverter))]
+    [JsonProperty("readingTime")]
+    public DateTime ReadingTime;
+
+    [JsonProperty("metricType")]
+    public string MetricType;
+
+    [JsonProperty("unit")]
+    public string Unit;
+
+    [JsonProperty("metricValue")]
+    public double MetricValue;
+  }
+
+// Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
+await client.CreateDocumentAsync(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
+    new DeviceReading
     {
-        [JsonProperty("id")]
-        public string Id;
-
-        [JsonProperty("deviceId")]
-        public string DeviceId;
-
-        [JsonConverter(typeof(IsoDateTimeConverter))]
-        [JsonProperty("readingTime")]
-        public DateTime ReadingTime;
-
-        [JsonProperty("metricType")]
-        public string MetricType;
-
-        [JsonProperty("unit")]
-        public string Unit;
-
-        [JsonProperty("metricValue")]
-        public double MetricValue;
-      }
-
-    // Create a document. Here the partition key is extracted as "XMS-0001" based on the collection definition
-    await client.CreateDocumentAsync(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"),
-        new DeviceReading
-        {
-            Id = "XMS-001-FE24C",
-            DeviceId = "XMS-0001",
-            MetricType = "Temperature",
-            MetricValue = 105.00,
-            Unit = "Fahrenheit",
-            ReadingTime = DateTime.UtcNow
-        });
-
+        Id = "XMS-001-FE24C",
+        DeviceId = "XMS-0001",
+        MetricType = "Temperature",
+        MetricValue = 105.00,
+        Unit = "Fahrenheit",
+        ReadingTime = DateTime.UtcNow
+    });
+```
 
 パーティション キーと ID でドキュメントを読み込んで、更新してから、最後の手順としてパーティション キーと ID でドキュメントを削除してみましょう。 読み取りには (REST API 内の `x-ms-documentdb-partitionkey` 要求ヘッダーに対応する) PartitionKey 値が含まれることにご注意ください。
 
-    // Read document. Needs the partition key and the ID to be specified
-    Document result = await client.ReadDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```csharp
+// Read document. Needs the partition key and the ID to be specified
+Document result = await client.ReadDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
-    DeviceReading reading = (DeviceReading)(dynamic)result;
+DeviceReading reading = (DeviceReading)(dynamic)result;
 
-    // Update the document. Partition key is not required, again extracted from the document
-    reading.MetricValue = 104;
-    reading.ReadingTime = DateTime.UtcNow;
+// Update the document. Partition key is not required, again extracted from the document
+reading.MetricValue = 104;
+reading.ReadingTime = DateTime.UtcNow;
 
-    await client.ReplaceDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      reading);
+await client.ReplaceDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  reading);
 
-    // Delete document. Needs partition key
-    await client.DeleteDocumentAsync(
-      UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
-
-
+// Delete document. Needs partition key
+await client.DeleteDocumentAsync(
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```
 
 ### <a name="querying-partitioned-collections"></a>パーティション分割コレクションのクエリ
 パーティション分割コレクション内のデータを照会する際に、DocumentDB により、フィルターに指定したパーティション キー値に対応するパーティションにクエリが自動ルーティングされます。 たとえば、ここでのクエリはパーティション キー "XMS-0001" を含むパーティションのみにルーティングされます。
 
-    // Query using partition key
-    IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"))
-        .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
-
+```csharp
+// Query using partition key
+IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"))
+    .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
+```
+    
 次のクエリにはパーティション キー (DeviceId) にフィルターがなく、パーティションのインデックスに対してこのクエリが実行されるすべてのパーティションにファン アウトされます。 パーティション全体に対して SDK にクエリを実行させるために、EnableCrossPartitionQuery (REST API 内の`x-ms-documentdb-query-enablecrosspartition` ) を指定する必要があることにご注意ください。
 
-    // Query across partition keys
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true })
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```csharp
+// Query across partition keys
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true })
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```
+
+DocumentDB は、SDK 1.12.0 以降の SQL を使用した、パーティション分割コレクションに対する[集計関数]([集計関数](documentdb-sql-query.md#Aggregates)) `COUNT`、`MIN`、`MAX`、`SUM`、`AVG` をサポートしています。 クエリには、1 つの集計演算子と、プロジェクション内の&1; つの値を含める必要があります。
 
 ### <a name="parallel-query-execution"></a>並列クエリの実行
 DocumentDB SDK 1.9.0 以降では、並列クエリ実行オプションがサポートされています。そのため、多数のパーティションにタッチする必要がある場合でも、パーティションのコレクションに対して少ない待ち時間でクエリを実行できます。 たとえば、次のクエリはパーティション全体で並列に実行されるように構成されています。
 
-    // Cross-partition Order By Queries
-    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
-        new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
-        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
-        .OrderBy(m => m.MetricValue);
-
+```csharp
+// Cross-partition Order By Queries
+IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
+    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
+    .OrderBy(m => m.MetricValue);
+```
+    
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
 * `MaxDegreeOfParallelism`を設定すると、並列処理次数、つまりコレクションのパーティションに同時ネットワーク接続できる数の上限を制御することができます。 このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。 `MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コレクションのパーティションへのネットワーク接続は 1 つのみです。
-* `MaxBufferedItemCount`を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。 このパラメーターを省略するか、このパラメーターに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
+* `MaxBufferedItemCount` を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。 このパラメーターを省略するか、このパラメーターに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
 コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、DocumentDB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
 
 ### <a name="executing-stored-procedures"></a>ストアド プロシージャの実行
 また、単一のドキュメントでデバイスの集計や最新状態を管理するといった場合に、同じデバイス ID を持つドキュメントに対してアトミック トランザクションを実行することもできます。 
 
-    await client.ExecuteStoredProcedureAsync<DeviceReading>(
-        UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
-        "XMS-001-FE24C");
-
+```csharp
+await client.ExecuteStoredProcedureAsync<DeviceReading>(
+    UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    "XMS-001-FE24C");
+```
+    
 次のセクションでは、単一パーティション コレクションからパーティション分割コレクションへの移動方法について説明します。
 
 <a name="migrating-from-single-partition"></a>
@@ -350,10 +371,5 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
 [3]: ./media/documentdb-partition-data/documentdb-migration-partitioned-collection.png  
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

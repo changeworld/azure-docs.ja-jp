@@ -15,14 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
-ms.openlocfilehash: e3840e6f688d586650d877a854ee81035ce39b48
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 764ef15f631166bf720c846aa3b4f4b6936054d9
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-architecture-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使ったアプリケーション アーキテクチャ
+# <a name="application-architecture-with-azure-resource-manager-templates-for-linux-vms"></a>Linux VM での Azure Resource Manager テンプレートを使用したアプリケーション アーキテクチャ
+
 Azure Resource Manager デプロイを開発する場合は、コンピューティング要件を Azure リソースとサービスにマップする必要があります。 アプリケーションが複数の http エンドポイント、1 つのデータベース、1 つのデータ キャッシュ サービスで構成されている場合は、これらの各コンポーネントをホストする Azure リソースを合理化する必要があります。 たとえば、サンプルのミュージック ストア アプリケーションには、仮想マシンでホストされる Web アプリケーションと Azure SQL Database でホストされる SQL データベースが含まれています。 
 
 このドキュメントでは、サンプルの Azure Resource Manager テンプレートでミュージック ストアのコンピューティング リソースがどのように構成されているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ( [Ubuntu のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)) にあります。 
