@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
 ms.openlocfilehash: 6854ebe781220dfdf957fa1d89ec19d32e6febea
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -34,7 +35,7 @@ VHD を Azure にアップロードする前に、「[Prepare a Windows VHD or V
 PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute -MinimumVersion 2.6.0
 ```
 詳細については、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
 
@@ -347,9 +348,4 @@ New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 
 新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
