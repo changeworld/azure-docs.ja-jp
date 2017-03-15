@@ -3,13 +3,19 @@
 
 1. コマンドライン環境で次のコマンドを実行します。
    
+    ```
     npm install -g iothub-explorer@latest
+    ```
 2. 次に、次のコマンドを実行してハブにログインします。このとき、`{iot hub connection string}` を、前にコピーしておいた IoT Hub 接続文字列に置き換えます。
-   
+
+    ```
     iothub-explorer login "{iot hub connection string}"
+    ```
 3. 最後に、次のコマンドを実行して、`myDeviceId` という新しいデバイス ID を作成します。
    
+    ```
     iothub-explorer create myDeviceId --connection-string
+    ```
 
 結果として得られたデバイスの接続文字列をメモしておきます。 このデバイス接続文字列は、デバイス アプリからデバイスとして IoT Hub に接続する際に使用します。
 
@@ -23,8 +29,3 @@
 [iot-hub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
 
 [lnk-getstarted]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
-
-
-<!--HONumber=Dec16_HO1-->
-
-

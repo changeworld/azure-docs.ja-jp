@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: 1dd5be3ba3a0fbbb4657a2c0b2ca6757a94cc76a
-ms.openlocfilehash: 1c6b4b45b9e0b018a7cb3f28f7868c89ad0fda61
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: b21867e41acb1e0658041bd931327047095bb159
+ms.openlocfilehash: b5ecba98fd5c3061f68f94f5004c7cf00d0dfb36
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -139,7 +139,7 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
 > Azure Disk Encryption は、次の Linux サーバー バージョンでサポートされています: Ubuntu、CentOS、SUSE、SUSE Linux Enterprise Server (SLES) および Red Hat Enterprise Linux。
 
 > [!NOTE]
-> 現時点では、Linux OS ディスク暗号化は、RHEL 7.2、CentOS 7.2n、Ubuntu 16.04 の各 Linux ディストリビューションでサポートされています。
+> 現時点では、Linux OS ディスク暗号化は、RHEL 7.2、RHEL 7.3、CentOS 7.2n、Ubuntu 16.04 の各 Linux ディストリビューションでサポートされています。
 >
 > すべてのリソース (たとえば、Key Vault、ストレージ アカウント、VM など) が同じ Azure リージョンとサブスクリプションに属している必要があります。
 

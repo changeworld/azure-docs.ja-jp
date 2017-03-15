@@ -12,24 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 522496ddcd3cc21501f2390e8cdc158798b6289d
-ms.openlocfilehash: 35d33625badeb0b32079f0487b8bf2a3dd97e141
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 7680aafcefbe6f1e6e3b55137da2e46b42df5a9b
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Azure Security Center での OS の脆弱性の修復
-Azure Security Center では、仮想マシン (VM) のオペレーティング システム (OS) を日々分析して、攻撃に対する VM の脆弱性を高める可能性のある構成を特定し、これらの脆弱性に対処するための構成の変更を推奨しています。 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 Security Center では、VM の OS 構成が推奨される構成規則に適合していない場合に脆弱性を解決するよう推奨します。
+Azure Security Center では、仮想マシン (VM) のオペレーティング システム (OS) を日々分析して、攻撃に対する VM の脆弱性を高める可能性のある構成を特定し、これらの脆弱性に対処するための構成の変更を推奨しています。 Security Center では、VM の OS 構成が推奨される構成規則に適合していない場合に脆弱性を解決するよう推奨します。
+
+> [!NOTE]
+> 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 現時点では、Windows Server 2016 は完全にはサポートされていません。
+>
+>
+
+## <a name="implement-the-recommendation"></a>推奨事項の実装
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
 >
 >
 
-## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[OS の脆弱性の修復]** を選択します。
    ![OS の脆弱性の修復][1]
 

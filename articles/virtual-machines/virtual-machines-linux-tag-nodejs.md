@@ -17,7 +17,7 @@ ms.date: 02/28/2017
 ms.author: memccror
 translationtype: Human Translation
 ms.sourcegitcommit: 2ec95674901130c9c24de331257e40311c88cb6a
-ms.openlocfilehash: 8fad89189ba6836c5748c656457ab25564147550
+ms.openlocfilehash: 90cde1f0d0b503284c26c1032eb59bc52fa6e789
 ms.lasthandoff: 03/01/2017
 
 
@@ -28,21 +28,19 @@ ms.lasthandoff: 03/01/2017
 [!INCLUDE [virtual-machines-common-tag](../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Azure CLI を使用してタグを付ける
-この操作を開始するには、最新の [Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
-
-これらの手順は、[Azure CLI 1.0](virtual-machines-linux-tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
+最初に、[Azure CLI をインストールおよび構成](../xplat-cli-azure-resource-manager.md)し、Resource Manager モードであることを確認します (`azure config mode arm`)。
 
 このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 
-        az vm show --resource-group MyResourceGroup --name MyTestVM
+        azure vm show -g MyResourceGroup -n MyTestVM
 
-Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **--set** を指定して `azure vm update` コマンドを実行できます。
+Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
 
-        az vm update --resource-group MyResourceGroup --name MyTestVM –-set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
+        azure vm set -g MyResourceGroup -n MyTestVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
 
-タグを削除するには、`azure vm update` コマンドで **--remove** パラメーターを使用できます。
+すべてのタグを削除するには、`azure vm set` コマンドで **–T** パラメーターを使用できます。
 
-        az vm update –-resource-group MyResourceGroup –-name MyTestVM --remove tags.myNewTagName1
+        azure vm set – g MyResourceGroup –n MyTestVM -T
 
 
 ここでは、Azure CLI およびポータルを使用してリソースにタグを適用しました。次は、課金ポータルの使用量の詳細でタグを確認してみましょう。

@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/19/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5ef0bd33cb37474573cd136b882ca5141f365476
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -35,12 +36,12 @@ ms.openlocfilehash: 5ef0bd33cb37474573cd136b882ca5141f365476
 ![オンプレミス サイト間のレプリケーションのための Virtual Machine Manager サイトのデプロイ](media/site-recovery-monitoring-and-troubleshooting/image1.png)
 
 ### <a name="virtual-machine-manager-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>オンプレミス サイトの場所と Azure の間のレプリケーションのための Virtual Machine Manager サイトのデプロイ
-オンプレミスの場所と Azure の間でデータベース復旧を設定するときは、Azure Site Recovery プロバイダーをダウンロードして、Virtual Machine Manager サーバーにインストールする必要があります。 また、各 Hyper-V ホストに Azure Recovery Services エージェントをインストールする必要があります。 詳細については、「[サイトと Azure 間の保護について](site-recovery-understanding-site-to-azure-protection.md)」を参照してください。
+オンプレミスの場所と Azure の間でデータベース復旧を設定するときは、Azure Site Recovery プロバイダーをダウンロードして、Virtual Machine Manager サーバーにインストールする必要があります。 また、各 Hyper-V ホストに Azure Recovery Services エージェントをインストールする必要があります。 詳しくは[こちらをご覧ください](site-recovery-hyper-v-azure-architecture.md)。
 
 ![オンプレミス サイトの場所と Azure の間のレプリケーションのための Virtual Machine Manager サイトのデプロイ](media/site-recovery-monitoring-and-troubleshooting/image2.png)
 
 ### <a name="hyper-v-site-deployment-for-replication-between-on-premises-locations-and-azure"></a>オンプレミスの場所と Azure の間のレプリケーションのための Hyper-V サイトのデプロイ
-このプロセスは、Virtual Machine Manager のデプロイに似ています。 唯一の違いは、Azure Site Recovery プロバイダーと Azure Recovery Services エージェントを Hyper-V ホスト自体にインストールする必要があることです。 詳細については、「[サイトと Azure 間の保護について](site-recovery-understanding-site-to-azure-protection.md)」を参照してください。
+このプロセスは、Virtual Machine Manager のデプロイに似ています。 唯一の違いは、Azure Site Recovery プロバイダーと Azure Recovery Services エージェントを Hyper-V ホスト自体にインストールする必要があることです。 [詳細情報](site-recovery-hyper-v-azure-architecture.md)。 で作成できます。
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>構成、保護、復旧操作の監視
 Azure Site Recovery のすべての操作が **[ジョブ]** タブの下で監査され、追跡されます。 構成、保護、復旧でエラーが発生した場合は、**[ジョブ]** タブで障害を探します。
@@ -80,8 +81,8 @@ Azure Portal を使用して、各保護対象エンティティの Azure Site R
 
 > [!NOTE]
 > アクティブな操作が進行中であるか、失敗した場合は、先に述べたように、**[ジョブ]** ビューに移動して、特定のジョブのエラーを確認します。
-> 
-> 
+>
+>
 
 ## <a name="troubleshoot-on-premises-hyper-v-issues"></a>オンプレミスの Hyper-V に関する問題のトラブルシューティング
 オンプレミス Hyper-V マネージャー コンソールに接続し、仮想マシンを選択し、レプリケーション正常性を確認します。
@@ -155,7 +156,7 @@ Azure Site Recovery のサポート チケットを発行するには、Azure �
 
 ### <a name="configuration"></a>構成
 * [保護グループを作成できない: サーバーの一覧を取得中にエラーが発生する。](http://blogs.technet.com/b/somaning/archive/2015/08/12/unable-to-create-the-protection-group-in-azure-site-recovery-portal.aspx)
-* [Hyper-V ホスト クラスターに少なくとも 1 つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
+* [Hyper-V ホスト クラスターに少なくとも&1; つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
 * [操作を完了するための、Virtual Machine Manager のアクセス許可がない。](http://social.technet.microsoft.com/wiki/contents/articles/31110.vmm-does-not-have-permissions-to-complete-an-action.aspx)
 * [保護を構成するときに、サブスクリプション内のストレージ アカウントを選択できない。](http://social.technet.microsoft.com/wiki/contents/articles/32027.can-t-select-the-storage-account-within-the-subscription-while-configuring-protection.aspx)
 
@@ -194,10 +195,4 @@ Azure Site Recovery のサポート チケットを発行するには、Azure �
 ポータルの **[接続]** ボタンが淡色表示され、Express Route やサイト間 VPN 接続で Azure に接続されていない場合は、仮想マシンを作成してパブリック IP アドレスを割り当ててからリモート デスクトップ/共有シェルを使用する必要があります。 その後、仮想マシンのネットワーク インターフェイスでパブリック IP を追加できます。  
 
 ![フェールオーバーされた仮想マシンのネットワーク インターフェイスでのパブリック IP の追加](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

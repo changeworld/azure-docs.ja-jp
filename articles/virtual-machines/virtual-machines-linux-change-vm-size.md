@@ -17,15 +17,15 @@ ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1a218c8b9a1119ed284bc55071eed2a082122802
-ms.openlocfilehash: 78efd3d80f066d6b182b142564dbd0a7a9e01431
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: d149e51441dbf440732b1930245d27a6ff144970
+ms.lasthandoff: 03/03/2017
+
 
 ---
+# <a name="resize-a-linux-virtual-machine-using-cli-20"></a>CLI 2.0 を使用して Linux 仮想マシンのサイズを変更する
 
-# <a name="resize-a-linux-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Linux VM のサイズを変更する
-
-仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 VM をホストしているハードウェア クラスターで目的のサイズが使用できない場合、VM の割り当てを解除する必要があります。 
+仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 VM をホストしているハードウェア クラスターで目的のサイズが使用できない場合、VM の割り当てを解除する必要があります。 この記事では、Azure CLI 2.0 を使用して Linux VM のサイズを変更する方法を詳しく説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。

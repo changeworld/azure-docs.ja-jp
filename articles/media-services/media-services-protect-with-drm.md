@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 3309db6a926c3c2a0ff6340f0ade3d73093f6d6b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 8f11b9a6606e30e323295d4144497fae90040d2a
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -61,7 +61,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 5. 資産の配信ポリシーを構成します。 配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady または Widevine のライセンス取得 URL が含まれます。
 
-    同じ資産の各プロトコルに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
+    同じ資産の各プロトコルに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する&1; つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外となります。 この場合、すべてのプロトコルが平文で許可されます。
 
 6. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
 
@@ -88,17 +88,17 @@ Azure Media Services で Widevine を使用して暗号化するときの制限�
 
 エンコード手順については、「 [Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
 
-## <a name="a-idcreatecontentkeyacreate-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
+## <a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 Media Services では、コンテンツ キーに、資産を暗号化するときに使用するキーが含まれています。
 
 詳細については、 [コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
-## <a name="a-idconfigurekeyauthpolicyaconfigure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
+## <a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。キーがクライアント (プレーヤー) に配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
 
 詳細については、「 [コンテンツ キー承認ポリシーを構成する](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)」を参照してください。
 
-## <a name="a-idconfigureassetdeliverypolicyaconfigure-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
+## <a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
 資産の配信ポリシーを構成します。 資産の配信ポリシーの構成には、次の内容が含まれます。
 
 * DRM ライセンス取得 URL
@@ -107,7 +107,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 詳細については、 [資産の配信ポリシーの構成 ](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
 
-## <a name="a-idcreatelocatoracreate-an-ondemand-streaming-locator-in-order-to-get-a-streaming-url"></a><a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
+## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 Smooth、DASH、HLS のストリーミング URL をユーザーに提供する必要があります。
 
 > [!NOTE]
@@ -134,7 +134,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
-## <a name="a-idexampleaexample"></a><a id="example"></a>例
+## <a id="example"></a>例
 次の例では、Azure Media Services SDK for .Net バージョン 3.5.2 で導入された機能を示します (具体的には、Widevine ライセンス テンプレートを定義し、Azure Media Services に Widevine ライセンスを要求する機能)。 パッケージのインストールには、次の Nuget パッケージ コマンドを使用しました。
 
     PM> Install-Package windowsazure.mediaservices -Version 3.5.2
@@ -160,6 +160,9 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
               </appSettings>
         </configuration>
 7. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
+
+    >[!NOTE]
+    >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
     必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
@@ -276,20 +279,10 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
                     Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                    var policy = _context.AccessPolicies.Create(
-                                            assetName,
-                                            TimeSpan.FromDays(30),
-                                            AccessPermissions.Write | AccessPermissions.List);
-
-                    var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
-
                     Console.WriteLine("Upload {0}", assetFile.Name);
 
                     assetFile.Upload(singleFilePath);
                     Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                    locator.Delete();
-                    policy.Delete();
 
                     return inputAsset;
                 }

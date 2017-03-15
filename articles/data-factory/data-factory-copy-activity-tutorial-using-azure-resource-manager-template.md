@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
 ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -332,7 +333,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 
 1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
-2. 左側のメニューの **[データ ファクトリ]** をクリックするか、**[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** カテゴリの** [データ ファクトリ]** をクリックします。
+2. 左側のメニューの **[データ ファクトリ]** をクリックするか、**[その他のサービス]** をクリックし、**[インテリジェンス + 分析]** カテゴリの**[データ ファクトリ]** をクリックします。
    
     ![[データ ファクトリ] メニュー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
 3. **[データ ファクトリ]** ページで、使用するデータ ファクトリを検索して見つけます。 
@@ -591,8 +592,3 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-
-
-<!--HONumber=Feb17_HO1-->
-
-

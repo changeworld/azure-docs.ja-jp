@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2017
+ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5a73094c90b2a7400a664a827e07d5ada2184952
-ms.openlocfilehash: 372f6413903fbf7344871a136ffcddcadfc81782
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: ea2124e01753b914ebd1691e5d89091ac5cd5859
+ms.lasthandoff: 03/04/2017
 
 
 ---
-# <a name="azure-virtual-machine-cli-samples"></a>Azure Virtual Machine CLI のサンプル
+# <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 
 次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 
@@ -39,6 +39,8 @@ ms.lasthandoff: 02/27/2017
 | [仮想マシン間のネットワーク トラフィックのセキュリティ保護](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 2 つの仮想マシン、すべての関連リソース、および内部と外部のネットワーク セキュリティ グループ (NSG) を作成します。 |
 |**仮想マシンの監視**||
 | [Operations Management Suite による VM の監視](./scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
+|**仮想マシンの再起動**||
+| [VM の再起動](./scripts/virtual-machines-linux-cli-sample-restart-by-tag.md) | VM を作成して再起動します。 |
 |**仮想マシンのトラブルシューティング**||
 | [VM オペレーティング システム ディスクのトラブルシューティング](./scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 1 つ目の VM からオペレーティング システム ディスクを&2; つ目の VM のデータ ディスクとしてマウントします。 |
 | | |

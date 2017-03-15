@@ -10,15 +10,9 @@
 | サブスクリプションあたりの予約済み IP 数 |20 |100 |
 | サブスクリプションあたりのホストされるサービスの証明書数 |400 |400 |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |256 |256 |
-| [Batch](https://azure.microsoft.com/services/batch/) アカウント数 |1 |50 |
 | サブスクリプションあたりのアラート ルール数 |250 |250 |
 
-<sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
+<sup>1</sup>XS のインスタンスで、使用するコア数が&1; コアに満たなくても、コア制限を上限として&1; コアとカウントされます。
 
 <sup>2</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。 必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

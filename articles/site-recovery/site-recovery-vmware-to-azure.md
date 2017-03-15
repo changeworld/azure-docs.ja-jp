@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2017
+ms.date: 03/05/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 9eb2d7f4b431c01983620cb0cfcffd63a9f4d4e2
-ms.openlocfilehash: f7251dffc3dd922a6abeba0faca90843de64430f
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: dc533f46d71ec1bbe49b3e19821e4fc6009773fc
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/22/2017
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-## <a name="steps"></a>手順
+## <a name="deployment-summary"></a>デプロイの概要
 
 次の手順を実行する必要があります。
 
@@ -103,6 +103,7 @@ ms.lasthandoff: 02/22/2017
     - CLI から Windows 用のレジストリ エントリを追加する場合は、次のように入力します。  ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
     - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 [!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
 
@@ -110,11 +111,11 @@ ms.lasthandoff: 02/22/2017
 
 レプリケートの対象とレプリケート先を選択します。
 
-1. **[Recovery Services コンテナー]** > [コンテナー] の順にクリックします。
-2. リソース メニューで、**[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+1. **[Recovery Services コンテナー]** > <vault name> の順にクリックします。
+2. **[作業の開始]** で、**[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/site-recovery-vmware-to-azure/choose-goals.png)
-3. **[保護の目標]** で、**[To Azure] (Azure へ)** を選択し、**[Yes, with VMware vSphere Hypervisor] (はい、VMware vSphere ハイパーバイザーを使用する)** を選択します。
+3. **[マシンをどこにレプリケートしますか?]** で **[Azure へ]** を選び、**[マシンは仮想化されていますか?]** で **[はい (VMware vSphere Hypervisor の場合)]** を選びます。
 
     ![Choose goals](./media/site-recovery-vmware-to-azure/choose-goals2.png)
 
@@ -122,16 +123,16 @@ ms.lasthandoff: 02/22/2017
 
 構成サーバーをセットアップし、コンテナーに登録して、VM を検出します。
 
-1. **[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[ソース]** の順にクリックします。
-2. 構成サーバーがない場合は **[+ 構成サーバー]** をクリックします。
+1. **[手順 1: インフラストラクチャを準備する]** で、**[ソース]** をクリックします。
+2. 構成サーバーがない場合は、**[+ 構成サーバー**] をクリックします。
 
     ![Set up source](./media/site-recovery-vmware-to-azure/set-source1.png)
 3. **[サーバーの追加]** で、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
-4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 このキーは、統合セットアップを実行するときに必要になります。 キーは生成後&5; 日間有効です。
+4. **Microsoft Azure Site Recovery 統合セットアップ** インストール ファイルをダウンロードします。
+5. コンテナー登録キーをダウンロードします。 統合セットアップを実行するときにこのキーが必要です。 キーは生成後&5; 日間有効です。
 
    ![Set up source](./media/site-recovery-vmware-to-azure/set-source2.png)
-6. 構成サーバーの VM でシステム クロックが[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期されていることを確認し、統合セットアップを実行して、構成サーバー、プロセス サーバー、およびマスター対象サーバーをインストールします。
+6. 構成サーバー マシンでシステム クロックが[タイム サーバー](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-2016-accurate-time)と同期されていることを確認し、統合セットアップを実行して、構成サーバー、プロセス サーバー、およびマスター対象サーバーをインストールします。
 
 ## <a name="run-site-recovery-unified-setup"></a>Site Recovery 統合セットアップを実行する
 
@@ -147,7 +148,7 @@ ms.lasthandoff: 02/22/2017
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンド ラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
+> 構成サーバーはコマンド ラインを使用してインストールすることもできます。 [詳細情報](http://aka.ms/installconfigsrv)。
 
 ### <a name="add-the-account-for-automatic-discovery"></a>自動検出用のアカウントを追加する
 
@@ -257,7 +258,7 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
     * VM と物理サーバーがワークロードをミラー化できるように、これらをまとめることをお勧めします。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響を及ぼす可能性があるので、複数のマシンが同じワークロードを実行しており、整合性が必要な場合にのみ使用します。
 
     ![Enable replication](./media/site-recovery-vmware-to-azure/enable-replication7.png)
-13. **[レプリケーションを有効にする]**をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+13. **[レプリケーションを有効にする]**をクリックします。 **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 レプリケーションを有効にした後、プッシュ インストールを設定している場合はモビリティ サービスがインストールされます。 モビリティ サービスが VM でプッシュ インストールされると、保護ジョブが開始されて失敗します。 ジョブの失敗後、各マシンを手動で再起動する必要があります。 その後、保護ジョブが再び開始され、最初のレプリケーションが実行されます。
 
@@ -291,15 +292,15 @@ VM プロパティを確認し、必要な変更を加えることをお勧め�
 すべてのセットアップが完了したら、テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。
 
 
-1. 1 つの仮想マシンをフェールオーバーする場合は、**[設定]** > **[レプリケートされたアイテム]** で、その VM をクリックし、**[+ テスト フェールオーバー]** をクリックします。
+1. 1 つの仮想マシンをフェールオーバーする場合は、**[レプリケートされたアイテム]** で、その VM をクリックし、**[+ テスト フェールオーバー]** をクリックします。
 
     ![[テスト フェールオーバー]](./media/site-recovery-vmware-to-azure/TestFailover.png)
 
-1. 復旧計画をフェールオーバーする場合は、**[設定]** > **[復旧計画]** で、計画を右クリックし、**[テスト フェールオーバー]** をクリックします。 復旧計画を作成する場合は、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)。  
+1. 復旧計画をフェールオーバーする場合は、**[復旧計画]** で、計画を右クリックし、**[テスト フェールオーバー]** をクリックします。 復旧計画を作成する場合は、[こちらの手順に従ってください](site-recovery-create-recovery-plans.md)。  
 
 1. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続する Azure ネットワークを選択します。
 
-1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名、**[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** で **[テスト フェールオーバー]** ジョブをクリックします。
+1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名をクリックし、**[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**[テスト フェールオーバー]** ジョブをクリックします。
 
 1. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
 

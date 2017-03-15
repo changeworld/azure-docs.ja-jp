@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 70e52cefccee4b963e512724b96525bcbacf330c
-ms.openlocfilehash: e8ef1e52dec358fae00096df26b16fb9e3f46c2b
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 37e1783e10bf1cf84431a8d40b1e3d81b47188d2
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="example-azure-infrastructure-walkthrough"></a>サンプルの Azure インフラストラクチャによるチュートリアル
+# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -29,11 +32,11 @@ ms.openlocfilehash: e8ef1e52dec358fae00096df26b16fb9e3f46c2b
 ## <a name="example-workload"></a>ワークロードの例
 Adventure Works Cycles では、以下の項目で構成されるオンライン ストア アプリケーションを Azure に構築する必要があります。
 
-* Web 層でクライアント フロントエンドを実行する 2 台の nginx サーバー
-* アプリケーション層でデータと注文を処理する 2 台の nginx サーバー
-* シャード クラスターの一部であり、データベース層で製品データと注文を格納する 2 台の MongoDB サーバー
-* 認証層の顧客アカウントとサプライヤー用の 2 つの Active Directory ドメイン コントローラー
-* すべてのサーバーは次の 2 つのサブネットに配置されています。
+* Web 層でクライアント フロントエンドを実行する&2; 台の nginx サーバー
+* アプリケーション層でデータと注文を処理する&2; 台の nginx サーバー
+* シャード クラスターの一部であり、データベース層で製品データと注文を格納する&2; 台の MongoDB サーバー
+* 認証層の顧客アカウントとサプライヤー用の&2; つの Active Directory ドメイン コントローラー
+* すべてのサーバーは次の&2; つのサブネットに配置されています。
   * フロント エンド サブネット: Web サーバー用 
   * バック エンド サブネット: アプリケーション サーバー、MongoDB クラスター、およびドメイン コントローラー用
 
@@ -64,7 +67,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。
 
 ## <a name="storage-accounts"></a>ストレージ アカウント
-Adventure Works Cycles は、次の 2 つのストレージ アカウントが必要であると判断しました。
+Adventure Works Cycles は、次の&2; つのストレージ アカウントが必要であると判断しました。
 
 * **adventureazosusesawebapp** : Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの Standard Storage 用。
 * **adventureazosusesadbclust** : MongoDB シャード クラスター サーバーとそれらのデータ ディスクの Premium Storage 用。
@@ -85,7 +88,7 @@ Contoso は、Azure ポータルを使用して次の設定でクラウド専用
   * アドレス空間: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
-オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。
+オンライン ストアの&4; つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の&4; つの可用性セットを採用しました。
 
 * **azos-use-as-web** : Web サーバー用
 * **azos-use-as-app** : アプリケーション サーバー用
@@ -95,14 +98,14 @@ Contoso は、Azure ポータルを使用して次の設定でクラウド専用
 ## <a name="virtual-machines"></a>仮想マシン
 Adventure Works Cycles は、各 Azure VM に対して次の名前を決定しました。
 
-* **azos-use-vm-web01** : 1 番目の Web サーバー用
-* **azos-use-vm-web02** : 2 番目の Web サーバー用
-* **azos-use-vm-app01** : 1 番目のアプリケーション サーバー用
-* **azos-use-vm-app02** : 2 番目のアプリケーション サーバー用
-* **azos-use-vm-db01** : クラスター内の 1 番目の MongoDB サーバー用
-* **azos-use-vm-db02** : クラスター内の 2 番目の MongoDB サーバー用
-* **azos-use-vm-dc01** : 1 番目のドメイン コントローラー用
-* **azos-use-vm-dc02** : 2 番目のドメイン コントローラー用
+* **azos-use-vm-web01** :&1; 番目の Web サーバー用
+* **azos-use-vm-web02** :&2; 番目の Web サーバー用
+* **azos-use-vm-app01** :&1; 番目のアプリケーション サーバー用
+* **azos-use-vm-app02** :&2; 番目のアプリケーション サーバー用
+* **azos-use-vm-db01** : クラスター内の&1; 番目の MongoDB サーバー用
+* **azos-use-vm-db02** : クラスター内の&2; 番目の MongoDB サーバー用
+* **azos-use-vm-dc01** :&1; 番目のドメイン コントローラー用
+* **azos-use-vm-dc02** :&2; 番目のドメイン コントローラー用
 
 完成すると次のような構成になります。
 
@@ -110,9 +113,9 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 この構成には次のものが含まれます。
 
-* クラウド専用仮想ネットワークと 2 つのサブネット (FrontEnd と BackEnd)
+* クラウド専用仮想ネットワークと&2; つのサブネット (FrontEnd と BackEnd)
 * 2 つのストレージ アカウント
-* オンライン ストアの各階層に 1 つずつ、計 4 つの可用性セット
+* オンライン ストアの各階層に&1; つずつ、計&4; つの可用性セット
 * 4 つの階層用の仮想マシン
 * インターネットから Web サーバーへの HTTPS ベースの Web トラフィック用の外部負荷分散セット
 * Web サーバーからアプリケーション サーバーへの暗号化されていない Web トラフィック用の内部負荷分散セット
@@ -120,10 +123,5 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

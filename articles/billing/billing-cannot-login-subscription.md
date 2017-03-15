@@ -18,6 +18,7 @@ ms.author: genli
 translationtype: Human Translation
 ms.sourcegitcommit: 09c18ca6a967c2930ddd2b16d37f0bc606712ea1
 ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
 * 別のインターネット ブラウザーを使用します。
 * Microsoft Internet Explorer を使用している場合は、InPrivate ブラウズ モードを使用して Azure Portal にアクセスします。 
   
-  A.    **[ツール] **ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+  A.    **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
   
   B.    [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
 
@@ -58,14 +59,9 @@ ms.openlocfilehash: fc1c8cb6b7c186e189658cacf218ec7e9261472a
 
 * キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、**[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして [削除] をクリックします。
 * Internet Explorer の設定をリセットして、構成済みの個人設定を元に戻す。 **[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[詳細設定]** の順にクリックし、**[個人設定を削除する]** チェック ボックスをオンにして **[リセット]** を選択します。
-* InPrivate ブラウズ モードで Azure Portal にアクセスする。 **[ツール] **ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+* InPrivate ブラウズ モードで Azure Portal にアクセスする。 **[ツール]**ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
