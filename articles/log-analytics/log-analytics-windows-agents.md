@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/06/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ecee44194c32569f1d50001543ef4b37ecdb5eb3
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 0868eb2269b3675a132e106cd66740b0ce52b00a
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -76,7 +76,7 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
 8. 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 そこでは構成を検証して、エージェントが Operational Insights (OMS) に接続されていることを確認できます。 OMS に接続されると、エージェントにより **Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**
 
 ## <a name="install-the-agent-using-the-command-line"></a>コマンド ラインを使用してエージェントをインストールする
-- コマンド ラインを使用してエージェントをインストールする場合は、次の例を変更してから使用してください。
+- コマンド ラインを使用してエージェントをインストールする場合は、次の例を変更してから使用してください。 この例では、完全なサイレント インストールが実行されます。
 
     >[!NOTE]
     エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 次のセクションを参照してエージェントをアップグレードしてください。
@@ -84,6 +84,8 @@ OMS への Windows コンピューターの接続は、次の 3 つの手順を�
     ```
     MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1"
     ```
+
+エージェントは、`/c` コマンドを使用して、IExpress を自己解凍ツールとして使用します。 [IExpress のコマンドライン スイッチに関するページ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)でコマンド ライン スイッチを調べて、ニーズに合わせてこの例を更新できます。
 
 ## <a name="upgrade-the-agent-and-add-a-workspace-using-a-script"></a>スクリプトによるエージェントのアップグレードとワークスペースの追加
 エージェントのアップグレードとワークスペースの追加は、次の例のように PowerShell コマンドから Log Analytics スクリプト API を使用して実行できます。

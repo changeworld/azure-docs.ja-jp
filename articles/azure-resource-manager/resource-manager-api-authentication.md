@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
-ms.openlocfilehash: cacb2ce368a09c71c6f02548c5a1836ad77f540a
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 32f5959a9b96318208c46789ec406d614081bc8d
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: cacb2ce368a09c71c6f02548c5a1836ad77f540a
 アプリケーションは、次の&2; とおりの方法で Resource Manager API にアクセスできます。
 
 1. **ユーザー + アプリケーション アクセス**: サインインしたユーザーに代わってリソースにアクセスするアプリケーションの場合。 この方法は、Web アプリケーションやコマンド ライン ツールなど、Azure リソースの "対話形式の管理" だけに対応するアプリケーションに適しています。
-2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間の "オフライン アクセス" を必要とするアプリケーションに適しています。
+2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
 このトピックでは、この両方の承認方法を使用するアプリケーションを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)で入手できます。
 
@@ -362,10 +363,5 @@ ASP.NET MVC サンプル アプリケーションの [ServicePrincipalHasReadAcc
 ASP.NET MVC サンプル アプリケーションの [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) メソッドは、この呼び出しを実装しています。
 
 これで完了です。ユーザーは、Azure サブスクリプションをアプリケーションに簡単に接続して管理できるようになりました。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: fbc96a248de20b67a72e6a0150fe4b9b754ec4fe
-ms.openlocfilehash: d61ec29026ae5bbbdf33d7810e2e35c4d6bee1e7
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2e011fbde0ee1b070d51a38b23193a4b48a3a154
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -179,7 +179,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
 | Stream Analytics |[ジョブの診断ログ](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Service Bus |使用可能なスキーマはありません。 |
+| Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
