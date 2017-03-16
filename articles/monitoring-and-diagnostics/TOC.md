@@ -37,6 +37,8 @@
 ### [Resource Manager テンプレートを使用して診断設定を有効にする](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)
 ## REST API の使用
 ### [REST API を使用したチュートリアル](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+## Azure 診断の使用
+### [Application Insights への送信](../monitoring-and-diagnostics/azure-diagnostics-configure-applicationinsights.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
@@ -52,8 +54,3 @@
 ## [PowerShell のサンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
 ## [Azure CLI 1.0 のサンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [サポートされるメトリックスの一覧](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

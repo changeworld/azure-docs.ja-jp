@@ -45,6 +45,7 @@
 
 ## [コンテンツのエンコード](media-services-encode-asset.md)
 ### [エンコーダーの比較](media-services-compare-encoders.md)
+### [エンコードの速度と同時実行の管理](media-services-manage-encoding-speed.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)
 #### [MES を使用したビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)
@@ -120,16 +121,16 @@
 ## [保護](media-services-content-protection-overview.md)
 ### [ポータルでコンテンツ保護を構成する](media-services-portal-protect-content.md)
 ### [ストリームの AES-128 クリア キーを構成する](media-services-protect-with-aes128.md)
-### [AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化](media-services-rest-storage-encryption.md)
+### [REST を使用してストレージ暗号化でコンテンツを暗号化する](media-services-rest-storage-encryption.md)
 ### [Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)
 ### [Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)
 ### [DRM ライセンス配信](media-services-deliver-keys-and-licenses.md)
-### [パートナーを使用して Azure Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
+### [パートナーを使用して Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
 ### [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
-### [Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)
-### [CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装](media-services-cenc-with-multidrm-access-control.md)
-### [Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
-### [castLabs を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
+### [Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)
+### [CENC とマルチ DRM およびアクセス制御](media-services-cenc-with-multidrm-access-control.md)
+### [Axinom を使用して Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
+### [castLabs を使用して Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
 
 ### 資産の配信
 #### 資産配信ポリシーを構成する
@@ -191,7 +192,8 @@
 ### [Microsoft Smooth Streaming Client Porting Kit のライセンス](media-services-sspk.md)
 
 ## 統合
-### [Azure Functions](https://github.com/azure-samples/media-services-dotnet-functions-integration)
+### [Media Services を使用する Azure 関数の使用](media-services-dotnet-how-to-use-azure-functions.md)
+### [Media Services を使用する Azure 関数の例](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
 ## 監視
 ### ジョブの進行状況をチェックする

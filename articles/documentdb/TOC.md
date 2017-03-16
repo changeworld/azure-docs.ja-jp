@@ -4,6 +4,7 @@
 ## [DocumentDB: MongoDB 用 API とは](documentdb-protocol-mongodb.md)
 ## [主要な概念](documentdb-resources.md)
 ## [グローバル配信](documentdb-distribute-data-globally.md)
+## [セキュリティ](documentdb-nosql-database-security.md)
 ## [NoSQL TCO 分析](https://aka.ms/documentdb-tco-paper)
 ## シナリオ
 ### [一般的なユース ケース](documentdb-use-cases.md)
@@ -35,33 +36,34 @@
 ### [NoSQL 対 SQL](documentdb-nosql-vs-sql.md)
 ### [コスト効率の優れた読み取りと書き込み](documentdb-key-value-store-cost.md)
 
-## [管理]
+## 管理
+### [要求ユニット](documentdb-request-units.md)
 ### [データのインポート](documentdb-import-data.md)
 ### [MongoDB 用 API にインポートする](documentdb-mongodb-migrate.md)
 ### [MongoDB アカウントに接続する](documentdb-connect-mongodb-account.md)
 ### [MongoChef の使用](documentdb-mongodb-mongochef.md)
 ### [Robomongo の使用](documentdb-mongodb-robomongo.md)
 ### [データのモデル化](documentdb-modeling-data.md)
-### [地理空間のデータを使用する](documentdb-geospatial.md)
-### [マルチリージョン向けの開発](documentdb-developing-with-multiple-regions.md)
-### [リージョン間フェールオーバー](documentdb-regional-failovers.md)
 ### [データを自動的に期限切れにする](documentdb-time-to-live.md)
-### [インデックスのカスタマイズ](documentdb-indexing-policies.md)
-### [データへのアクセスをセキュリティで保護する](documentdb-secure-access-to-data.md)
 ### [バックアップおよび復元](documentdb-online-backup-and-restore.md)
+### [リージョン間フェールオーバー](documentdb-regional-failovers.md)
+### Automation
+#### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+#### [Azure CLI 1.0: アカウントの作成](documentdb-automation-resource-manager-cli-nodejs.md)
+#### [Azure CLI 1.0: リージョンの追加または削除](documentdb-automation-region-management.md)
+#### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
+### セキュリティ
+#### [データへのアクセスをセキュリティで保護する](documentdb-secure-access-to-data.md)
+#### [ファイアウォールのサポート](documentdb-firewall-support.md)
 ### [S1、S2、S3 の廃止](documentdb-performance-levels.md)
-### [要求ユニット](documentdb-request-units.md)
-### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
-### Azure CLI 1.0
-#### [アカウントの作成](documentdb-automation-resource-manager-cli-nodejs.md)
-#### [リージョンの追加または削除](documentdb-automation-region-management.md)
-### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
-### [ファイアウォールのサポート](documentdb-firewall-support.md)
 
 ## 開発
 ### [SQL query](documentdb-sql-query.md)
 ### [ストアド プロシージャ、トリガー、UDF](documentdb-programming.md)
+### [インデックスのカスタマイズ](documentdb-indexing-policies.md)
+### [複数リージョンのデプロイ](documentdb-developing-with-multiple-regions.md)
 ### [変更フィードによる変更の追跡](documentdb-change-feed.md)
+### [地理空間のデータを使用する](documentdb-geospatial.md)
 ### [パフォーマンス テスト](documentdb-performance-testing.md)
 ### [パフォーマンスに関するヒント](documentdb-performance-tips.md)
 ### ベスト プラクティス

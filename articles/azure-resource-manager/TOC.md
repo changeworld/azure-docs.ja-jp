@@ -38,7 +38,8 @@
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
 ## アクセスを制御する
 ### [PowerShell でサービス プリンシパルを作成する](resource-group-authenticate-service-principal.md)
-### [Azure CLI でサービス プリンシパルを作成する](resource-group-authenticate-service-principal-cli.md)
+### [Azure CLI 2.0 でサービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Azure CLI 1.0 でサービス プリンシパルを作成する](resource-group-authenticate-service-principal-cli.md)
 ### [ポータルでサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)

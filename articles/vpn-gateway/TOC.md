@@ -39,9 +39,10 @@
 ## [PowerShell を使用した Azure VPN Gateway 向けの BGP の構成](vpn-gateway-bgp-resource-manager-ps.md)
 ## [高可用性のアクティブ/アクティブ接続の構成](vpn-gateway-activeactive-rm-powershell.md)
 ## [PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)
-## [ゲートウェイ接続を確認する](vpn-gateway-verify-connection-resource-manager.md)
-## [Azure VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
-## [ポイント対サイト接続の自己署名証明書を操作する方法](vpn-gateway-certificates-point-to-site.md)
+## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
+## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
+## [VPN Gateway の削除](vpn-gateway-delete-vnet-gateway-powershell.md)
+## [P2S 接続用の自己署名ルート証明書の作成](vpn-gateway-certificates-point-to-site.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 
 # リファレンス
@@ -64,8 +65,3 @@
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)
-
-
-<!--HONumber=Jan17_HO5-->
-
-

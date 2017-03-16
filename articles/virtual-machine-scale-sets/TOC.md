@@ -2,13 +2,16 @@
 ## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
 
 # 作業の開始
-## [ポータルでスケール セットを作成する](virtual-machine-scale-sets-portal-create.md)
-## [Azure CLI を使用してスケール セットを作成する](virtual-machine-scale-sets-linux-create-cli.md)
-## [Resource Manager テンプレートを使用してスケール セットを作成する](virtual-machine-scale-sets-mvss-start.md)
+## [ポータルでスケール セットをデプロイする](virtual-machine-scale-sets-portal-create.md)
+## [Azure CLI を使用してスケール セットをデプロイする](virtual-machine-scale-sets-linux-create-cli.md)
+## [Resource Manager テンプレートを使用してスケール セットをデプロイする](virtual-machine-scale-sets-mvss-start.md)
 
 # 方法
 ## 計画と設計
 ### [設計上の考慮事項](virtual-machine-scale-sets-design-overview.md)
+## スケール セット テンプレートの作成
+### [単純なスケール セットをデプロイする](virtual-machine-scale-sets-mvss-start.md)
+### [スケール セットを既存の仮想ネットワークにデプロイする](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## デプロイ
 ### [ポータルを使用したスケール セット](virtual-machine-scale-sets-portal-create.md)
@@ -36,6 +39,9 @@
 
 ## トラブルシューティング
 ### [Autoscale](virtual-machine-scale-sets-troubleshoot.md)
+
+## FAQ
+### [スケール セットの FAQ](virtual-machine-scale-sets-faq.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)

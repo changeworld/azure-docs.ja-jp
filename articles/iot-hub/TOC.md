@@ -96,7 +96,10 @@
 #### [トラブルシューティング](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## Arduino の使用
-### [Node.JS](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+
+### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+
+### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### レッスン 1: デバイスの構成
 ##### [デバイスの構成](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [ツールを入手する (Windows 7 以降)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -116,6 +119,7 @@
 ##### [サンプル アプリケーションを実行してメッセージを受信する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [省略可能: LED の動作を変更する](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [トラブルシューティング](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
+
 
 ## Gateway SDK の使用
 ### [Linux でのシミュレーション](iot-hub-linux-gateway-sdk-get-started.md)
@@ -140,6 +144,8 @@
 ##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
 ##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md)
 
+#### [レッスン 5: 初めての Azure IoT Gateway モジュールの作成](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
+
 #### [トラブルシューティング](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
 ### [SensorTag デバイス](iot-hub-gateway-kit-c-get-started.md)
@@ -159,6 +165,8 @@
 #### レッスン 4: Azure Table ストレージへのメッセージの保存
 ##### [Azure Function App と Azure ストレージ アカウントの作成](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 ##### [Azure Storage ストレージに保持されたメッセージの読み取り](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
+
+#### [レッスン 5: 初めての Azure IoT Gateway モジュールの作成](iot-hub-gateway-kit-c-lesson5-create-gateway-module.md)
 
 ##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
 
@@ -219,7 +227,7 @@
 ## Manage
 ### IoT Hub の作成 
 #### [ポータルの使用](iot-hub-create-through-portal.md)
-#### [CLI 2.0 プレビューの使用](iot-hub-create-using-cli.md)
+#### [CLI 2.0 の使用](iot-hub-create-using-cli.md)
 #### [CLI の使用](iot-hub-create-using-cli-nodejs.md)
 #### [REST API の使用](iot-hub-rm-rest.md)
 #### [PowerShell の使用](iot-hub-rm-template-powershell.md)
