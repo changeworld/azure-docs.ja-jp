@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
@@ -89,7 +90,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 次の手順を実行して、サービス登録キーを取得します。
 
 #### <a name="to-get-the-service-registration-key"></a>サービス登録キーを取得するには
-1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt; ** **[キー]** の順に移動します。
+1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt;** **[キー]** の順に移動します。
    
    ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **[キー]** ブレードに、サービス登録キーが表示されます。 コピー アイコンを使用して、登録キーをコピーします。 
@@ -102,7 +103,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 次の手順を実行して、サービス登録キーを再生成します。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
-1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt; ** **[キー]** の順に移動します。
+1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt;** **[キー]** の順に移動します。
    
    ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **[キー]** ブレードで、**[再生成]** をクリックします。
@@ -120,10 +121,5 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 ## <a name="next-steps"></a>次のステップ
 * StorSimple Virtual Array の[使用を開始](storsimple-virtual-array-deploy1-portal-prep.md)する方法を確認します。
 * [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
