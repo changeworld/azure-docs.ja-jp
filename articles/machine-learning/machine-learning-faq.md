@@ -545,7 +545,7 @@ Machine Learning サービスはマルチテナント サービスです。 バ�
 ### <a name="guest-access"></a>ゲスト アクセス
 **Azure Machine Learning Studio に対するゲスト アクセスとは何ですか?**
 
-ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は&8; 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 https://studio.azureml.net の **[Get started (開始)]** をクリックして [[Guest Access (ゲスト アクセス)]](https://studio.azureml.net) または **[Sign In with Microsoft account (Microsoft アカウントでサインイン)]** を選択し、無料の Machine Learning の機能をお試しください。
+ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は&8; 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の **Get started (開始)** をクリックして **Guest Access (ゲスト アクセス)** または Sign In with Microsoft account (Microsoft アカウントでサインイン) を選択し、無料の Machine Learning の機能をお試しください。
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/
