@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 829a4f6204b9addbe4f4db233a376b6d5c3b7f30
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -84,9 +85,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 [Logon]: virtual-machines-windows-classic-connect-logon.md
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
