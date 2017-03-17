@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
 ms.openlocfilehash: 51eafa16bd918a065f896ba89dec54d2340b5c69
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -55,7 +56,7 @@ Azure AD は、フェデレーション メタデータを監視し、その結�
 >
 >
 
-## <a name="check-if-the-certificates-need-to-be-updated-a-namemanagecertsa"></a>証明書の更新が必要かどうかを確認する <a name="managecerts"></a>
+## 証明書の更新が必要かどうかを確認する <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>手順 1: AutoCertificateRollover の状態を確認する
 AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の値が True に設定されていることを確認します。
 
@@ -95,7 +96,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 \[-] 該当せず
 
-## <a name="renew-the-token-signing-certificate-automatically-recommended-a-nameautorenewa"></a>トークン署名証明書を自動的に更新する (推奨) <a name="autorenew"></a>
+## トークン署名証明書を自動的に更新する (推奨) <a name="autorenew"></a>
 次の&2; 点両方に該当する場合は、手動の手順を実行する必要はありません。
 
 * Web アプリケーション プロキシをデプロイ済みで、エクストラネットからフェデレーション メタデータへのアクセスを有効にできる。
@@ -113,7 +114,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
-## <a name="renew-the-token-signing-certificate-manually-a-namemanualrenewa"></a>トークン署名証明書を手動で更新する <a name="manualrenew"></a>
+## トークン署名証明書を手動で更新する <a name="manualrenew"></a>
 トークン署名証明書を手動で更新することもできます。 たとえば、次のシナリオは手動更新の方が適している場合があります。
 
 * トークン署名証明書が自己署名証明書ではない。 よくある理由に、企業が、組織的な証明機関によって登録された AD FS 証明書を管理していることが挙げられます。
@@ -160,13 +161,8 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 >
 >
 
-## <a name="repair-azure-ad-trust-by-using-azure-ad-connect-a-nameconnectrenewa"></a>Azure AD Connect を使用して Azure AD 信頼を修復する <a name="connectrenew"></a>
+## Azure AD Connect を使用して Azure AD 信頼を修復する <a name="connectrenew"></a>
 Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成した場合は、トークン署名証明書に関して何らかの対処が必要かどうかを Azure AD Connect を使用して検出できます。 証明書を更新する必要がある場合は、Azure AD Connect を使用して更新できます。
 
 詳細については、「 [信頼の修復](active-directory-aadconnect-federation-management.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

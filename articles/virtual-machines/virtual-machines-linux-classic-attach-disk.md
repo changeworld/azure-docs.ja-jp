@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
 ms.openlocfilehash: b78deeeb7fd8d337b83c8e831f51f8e57014cf43
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -234,9 +235,4 @@ Linux VM で TRIM のサポートを有効にする方法は&2; 通りありま�
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-mac-create-ssh-keys.md
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -17,6 +17,7 @@ ms.author: micurd
 translationtype: Human Translation
 ms.sourcegitcommit: 229007db52de53cd50f4d86c145b87d6c2ecf399
 ms.openlocfilehash: e1baa43957ced78b1e25fd632661be2385530db3
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -586,10 +587,5 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

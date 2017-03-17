@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
 ms.openlocfilehash: a36231d9326158068e9460ed4594a79c744d3087
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -58,10 +59,5 @@ Privileged Identity Management (PIM) の監査ログを使用すると、特定�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
