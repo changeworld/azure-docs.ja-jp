@@ -30,11 +30,11 @@ Azure でのディスクと VHD の詳細については、「[仮想マシン�
 ## <a name="prepare-the-vm"></a>VM を準備する
 一般化された VHD と特殊化された VHD のいずれも Azure にアップロードできます。 どちらのタイプも、始める前に VM を準備する必要があります。
 
-* **一般化された VHD ** - 一般化した VHD では、Sysprep を使用して個人アカウント情報がすべて削除されています。 新しい VM を作成するためのイメージとして VHD を使用する場合、以下を行う必要があります。
+* **一般化された VHD** - 一般化した VHD では、Sysprep を使用して個人アカウント情報がすべて削除されています。 新しい VM を作成するためのイメージとして VHD を使用する場合、以下を行う必要があります。
   
   * [Windows VHD の Azure へのアップロードの準備](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
   * [Sysprep を使用した仮想マシンの一般化](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
-* **特殊化された VHD ** - 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 新しい VM を作成するために VHD を使用する場合、以下のステップが完了していることを確認します。 
+* **特殊化された VHD** - 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 新しい VM を作成するために VHD を使用する場合、以下のステップが完了していることを確認します。 
   
   * [Windows VHD の Azure へのアップロードの準備](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 Sysprep を使用して VM を一般化**しないでください**。
   * VM にインストールされたゲストの仮想化ツールやエージェント (VMware tools) の削除。

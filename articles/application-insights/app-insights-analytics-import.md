@@ -41,7 +41,7 @@ Analytics へのインポートは、次の&3; つの状況で役に立ちます
 アップロードの頻度は、データをいつまでにクエリで使用できるようにしたいかに応じて、お客様が定義します。 データは大きなチャンクでアップロードしたほうが効率的ですが、1 GB が上限となります。
 
 > [!NOTE]
-> *分析するデータ ソースの数が多い場合* [*Application Insights へのデータ送信に *logstash* を使用することを検討してください。*](https://github.com/Microsoft/logstash-output-application-insights)
+> *分析するデータ ソースの数が多い場合* [*Application Insights へのデータ送信に *logstash*を使用することを検討してください。*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>開始する前に
