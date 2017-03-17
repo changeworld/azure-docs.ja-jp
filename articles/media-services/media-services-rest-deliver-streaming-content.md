@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4234def6200b8beb6db7e4bd96ca1b8ebcc11c03
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: bb3ae3d26d174d0f37cc348cde570250699bf067
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 4234def6200b8beb6db7e4bd96ca1b8ebcc11c03
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。 [アセットをエンコードする](media-services-rest-encode-asset.md) トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。 コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ( [こちらの](media-services-rest-configure-asset-delivery-policy.md) トピックをご覧ください)。 
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。  
@@ -49,6 +50,10 @@ ms.openlocfilehash: 4234def6200b8beb6db7e4bd96ca1b8ebcc11c03
 5. 書き込みまたは削除アクセス許可を含む AccessPolicy を使用するストリーミング ロケーターは作成できません。
 
 ### <a name="create-an-access-policy"></a>アクセス ポリシーを作成します。
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
 要求:
 
     POST https://media.windows.net/api/AccessPolicies HTTP/1.1
@@ -154,7 +159,7 @@ URL: **Path** + アセット ファイル mp4 名
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a name="a-idtypesaenum-types"></a><a id="types"></a>列挙型
+## <a id="types"></a>列挙型
     [Flags]
     public enum AccessPermissions
     {
@@ -180,10 +185,5 @@ URL: **Path** + アセット ファイル mp4 名
 
 ## <a name="see-also"></a>関連項目
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

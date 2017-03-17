@@ -16,9 +16,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2fafb3c127183c4903ed7ee0da5811988db9116c
-ms.openlocfilehash: 3c0c24a75c82355798bcaa6d8a36f055400a2649
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5dfff8620d66eca0d54763efbc5702e4b4d122d1
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -34,7 +34,7 @@ Azure Logic Apps 用の Visual Studio ツールをインストールして構成
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2015 または Visual Studio 2017](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [最新の Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 以上)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 * Web アクセス (組み込みデザイナー使用時)

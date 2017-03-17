@@ -16,9 +16,9 @@ ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 8a606e5d009fd210212bd9d7a92ddb3e0cb2e3a2
-ms.openlocfilehash: 1c939e26212b2454cf3e666021036680d5494cfb
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 7d21ab1180fcd6df39a5dcc5c095c9521c00f6fd
+ms.lasthandoff: 03/10/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/02/2017
 
 Azure Portal の関数の **[統合]** ウィンドウで、**[モード]** が **[Webhook]**、**[Webhook の種類]** が **[汎用 JSON]** に設定されていることがテンプレートで示される必要があります。 
 
-Webhook 関数は、要求を受け取ると、それを `data` 変数経由でメソッドに渡します。 ペイロードのプロパティにアクセスするには、 `data.foo`のようなドット表記を使用します。 たとえば、DateTime 値を日付文字列に変換する単純な JavaScript 関数は次の例のようになります。
+Webhook 関数は、要求を受け取ると、それを `data` 変数経由でメソッドに渡します。 ペイロードのプロパティにアクセスするには、 `data.function-name`のようなドット表記を使用します。 たとえば、DateTime 値を日付文字列に変換する単純な JavaScript 関数は次の例のようになります。
 
 ```
 function start(req, res){

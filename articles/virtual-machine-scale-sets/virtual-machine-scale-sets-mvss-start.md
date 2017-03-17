@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/14/2017
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 65a400b63688c50fd97c34a5aa5dadc2f5dd286c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: eee63d76941f327304348262f00afafe8413cb6b
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -189,6 +189,4 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 
 ## <a name="next-steps"></a>次のステップ
 
-上記のテンプレートは、[こちらのドキュメント](../azure-resource-manager/resource-group-template-deploy.md)に従ってデプロイできます。
-
-スケール セットの概要については、[スケール セットの概要](./virtual-machine-scale-sets-overview.md)に関するページを参照してください。
+[!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

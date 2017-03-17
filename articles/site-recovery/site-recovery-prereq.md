@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/11/2016
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 080dce21c2c803fc05c945cdadb1edd55bd7fe1c
-ms.openlocfilehash: a8e374c247be49d4b1390fb4061b4c9b1311f58a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b20d1a20119e8bffa3ece7105c38b3ee51c942d5
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -104,6 +104,20 @@ Azure Site Recovery は、クラウド (Azure) またはセカンダリ デー�
 | --- | --- |
 | **Virtual Machine Manager** |  Virtual Machine Manager サーバーをプライマリ サイトとセカンダリ サイトに&1; つずつデプロイすることをお勧めします。<br/><br/> [単一の VMM サーバー上のクラウド間でレプリケート](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)できます。 これを行うには、Virtual Machine Manager サーバーに少なくとも&2; つのクラウドが構成されている必要があります。<br/><br/> Virtual Machine Manager サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 Virtual Machine Manager サーバーに&1; つ以上のクラウドが必要です。 すべてのクラウドには Hyper-V キャパシティ プロファイル セットが必要です。 <br/><br/>クラウドには、1 つ以上の Virtual Machine Manager ホスト グループが含まれる必要があります。 Virtual Machine Manager クラウドの設定に関して詳しくは、「[Azure Site Recovery のデプロイの準備](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)」をご覧ください。 |
 | **Hyper-V** | Hyper-V サーバーでは、Hyper-V ロールを設定済みの Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに&1; つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行する場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールすることをお勧めします。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行し、静的 IP アドレス ベースのクラスターが存在する場合、クラスター ブローカーは自動では作成されません。 クラスター ブローカーを手動で構成する必要があります。 クラスター ブローカーについて詳しくは、「[Configure replica broker role cluster to cluster replication](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)」(レプリカ ブローカー ロールのクラスター間レプリケーションを構成する) をご覧ください。 |
+| **プロバイダー** | Site Recovery をデプロイするときに、Azure Site Recovery プロバイダーを Virtual Machine Manager サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> Virtual Machine Manager サーバーで実行されるプロバイダーには、次の URL へのアクセス権が必要です。<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>プロバイダーは、Virtual Machine Manager サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
 
-| **プロバイダー** | Site Recovery のデプロイ中に、Azure Site Recovery プロバイダーを Virtual Machine Manager サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> Virtual Machine Manager サーバーで実行されるプロバイダーには、次の URL へのアクセス権が必要です。<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>プロバイダーは、Virtual Machine Manager サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
+
+## <a name="url-access"></a>URL アクセス
+これらの URL は、VMware、VMM、および Hyper-V ホスト サーバーから入手できます。
+
+|**URL** | **VMM から VMM** | **VMM から Azure** | **Hyper-V から Azure** | **VMware から Azure** |
+|--- | --- | --- | --- | --- |
+|``*.accesscontrol.windows.net`` | ALLOW | 許可 | 許可 | 許可 |
+|``*.backup.windowsazure.com`` | 必要なし | 許可 | 許可 | 許可 |
+|``*.hypervrecoverymanager.windowsazure.com`` | 許可 | 許可 | 許可 | 許可 |
+|``*.store.core.windows.net`` | 許可 | 許可 | 許可 | 許可 |
+|``*.blob.core.windows.net`` | 必要なし | 許可 | 許可 | 許可 |
+|``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | 必要なし | 必要なし | 必要なし | SQL のダウンロードを許可 |
+|``time.windows.com`` | ALLOW | 許可 | 許可 | 許可|
+|``time.nist.gov`` | 許可 | 許可 | 許可 | ALLOW |
 

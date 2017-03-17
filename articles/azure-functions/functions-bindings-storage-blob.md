@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/11/2017
-ms.author: chrande
+ms.date: 03/06/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c2c9d84bc6699f4487e82b117d27b19f66313018
-ms.openlocfilehash: cde63b21e4bac8f635ef9125101735a07deb1bc2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1c071390fd6cd9bb5889cb225696b7782fe2bd6b
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -238,7 +238,7 @@ C# 関数の場合、入力 BLOB データにバインドするには、関数�
 BLOB を、次のいずれかの型に逆シリアル化できます。
 
 * 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でシリアル化された BLOB データに有効です。
-  カスタム入力型を宣言した場合 (例: `FooType`)、Azure Functions は、指定した型に JSON データを逆シリアル化しようとします。
+  カスタム入力型を宣言した場合 (例: `InputType`)、Azure Functions は、指定した型に JSON データを逆シリアル化しようとします。
 * 文字列 - テキスト BLOB データに有効です。
 
 C# 関数では、次の型のどれにでもバインドすることができ、Functions ランタイムはその型を使用して BLOB データを逆シリアル化しようとします。
@@ -350,7 +350,7 @@ C# 関数の場合、出力 BLOB にバインドするには、関数のシグ�
 出力 BLOB には、次のいずれかの型で書き込むことができます。
 
 * 任意の [Object](https://msdn.microsoft.com/library/system.object.aspx) - JSON でのシリアル化に有効です。
-  カスタム出力型を宣言した場合 (例: `out FooType paramName`)、Azure Functions は、オブジェクトを JSON にシリアル化しようとします。 関数の終了時に出力パラメーターが null の場合、Functions ランタイムは BLOB を null オブジェクトとして作成します。
+  カスタム出力型を宣言した場合 (例: `out OutputType paramName`)、Azure Functions は、オブジェクトを JSON にシリアル化しようとします。 関数の終了時に出力パラメーターが null の場合、Functions ランタイムは BLOB を null オブジェクトとして作成します。
 * 文字列 - (`out string paramName`) テキスト BLOB データに有効です。 Functions ランタイムは、関数の終了時に文字列パラメーターが null でない場合にのみ BLOB を作成します。
 
 C# 関数の場合は、次の型のいずれかに出力することもできます。
@@ -361,8 +361,6 @@ C# 関数の場合は、次の型のいずれかに出力することもでき�
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
-* `ICollector<T>` (複数の BLOB を出力する場合)
-* `IAsyncCollector<T>` (`ICollector<T>` の非同期バージョン)
 
 <a name="outputsample"></a>
 

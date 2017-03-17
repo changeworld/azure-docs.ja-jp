@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 03/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 6aecea32361166d363a412b4e8f2b01d421da5cf
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4d35bdd88998d30435e9e5e916a18b3ce3bc7978
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -42,7 +42,8 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 
 この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。 また、このトピックではエンコーダーを比較します。
 
-既定では、1 つの Media Services アカウントにつき、同時に&1; つのアクティブなエンコーディング タスクを実行できます。 エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに&1; つ) を同時に実行できます。 詳細については、「 [エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
+>[!NOTE]
+>既定では、1 つの Media Services アカウントにつき、同時に&1; つのアクティブなエンコーディング タスクを実行できます。 エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに&1; つ) を同時に実行できます。 詳細については、「 [エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
 
 ## <a name="media-encoder-standard"></a>メディア エンコーダー スタンダード
 ### <a name="how-to-use"></a>使用方法

@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f1b8c68639fd2b778e7e56a6826e91d5bffd4ae8
-ms.openlocfilehash: c6f843e452353edc7c4c7e9bacf653c555145afe
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 52f672dcf42a19bf10935fcf733b8f07ff559a8d
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
-
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 
@@ -52,6 +51,9 @@ REST API を使用して Media Services での開発を始めるには、次の�
 5. 資産を発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する
 6. コンテンツの再生
 
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
 
 このトピックで使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](/rest/api/media/services/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
 
@@ -73,7 +75,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 4. [開始] アイコンをクリックします。
 5. [保存] をクリックして、変更を保存します。
 
-## <a name="a-idconnectaconnect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>REST API で Media Services アカウントに接続する
+## <a id="connect"></a>REST API で Media Services アカウントに接続する
 Azure Media Services にアクセスする際には、Azure Access Control Service (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の&2; つが必要です。 Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
@@ -216,7 +218,7 @@ For example:
 >
 >
 
-## <a name="a-iduploadacreate-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
+## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
 Media Services で、デジタル ファイルを資産にアップロードします。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -540,7 +542,7 @@ Azure ストレージ BLOB の使用の詳細については、 [BLOB サービ�
     HTTP/1.1 204 No Content
     ...
 
-## <a name="a-idencodeaencode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
+## <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
 Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。 高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。 これらのアクティビティはジョブと呼ばれ、各ジョブは、資産ファイルの実際の作業を実行するアトミック タスクで構成されます (詳細については、[ジョブ](/rest/api/media/services/job)と[タスク](/rest/api/media/services/task)の説明を参照してください)。
 
@@ -829,7 +831,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 
 
 
-## <a name="a-idpublishgeturlsapublish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
+## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
 資産をストリーミングまたはダウンロードするにはまず、ロケーターを作成して資産を「発行」する必要があります。 資産に含まれているファイルには、ロケーターを通じてアクセスできます。 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。 SAS ロケーターの詳細については、[こちら](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/)のブログをご覧ください。
 
@@ -1052,7 +1054,7 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a name="a-idplayaplay-your-content"></a><a id="play"></a>コンテンツの再生
+## <a id="play"></a>コンテンツの再生
 ビデオをストリーミングするには、 [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)を使用します。
 
 プログレッシブ ダウンロードをテストするには、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けます。

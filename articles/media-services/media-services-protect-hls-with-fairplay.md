@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
-ms.openlocfilehash: 61ac849c20fa21181bd41289da896b4d53e0b9c3
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: a6f9e1ceb7dfbb13f2f365acf49e09f1c015f4e3
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -166,6 +166,9 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
         </configuration>
 7. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
+    >[!NOTE]
+    >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
         using System;
         using System.Collections.Generic;
         using System.Configuration;
@@ -277,20 +280,10 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
                     Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                    var policy = _context.AccessPolicies.Create(
-                                            assetName,
-                                            TimeSpan.FromDays(30),
-                                            AccessPermissions.Write | AccessPermissions.List);
-
-                    var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
-
                     Console.WriteLine("Upload {0}", assetFile.Name);
 
                     assetFile.Upload(singleFilePath);
                     Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                    locator.Delete();
-                    policy.Delete();
 
                     return inputAsset;
                 }

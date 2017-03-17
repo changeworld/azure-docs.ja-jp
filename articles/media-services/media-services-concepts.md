@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/25/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 672d1518e22c5ab5595fb5c7c708f584e80b68e9
-ms.openlocfilehash: c6117296c8bd12e3bb8f276709bc4d4c2aa81719
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 59ccb7a043e1db750e596f173af0791099ea1827
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -59,6 +59,9 @@ Media Services によって生成された BLOB コンテナーの内容を変�
 
 ### <a name="access-policy"></a>アクセス ポリシー
 [アクセス ポリシー](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) は、資産へのアクセス許可 (読み取り、書き込み、一覧表示など) とアクセス期間を定義します。 通常は、資産に格納されたファイルへのアクセスに用いるロケーターに、AccessPolicy オブジェクトを渡します。
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
 ### <a name="blob-container"></a>BLOB コンテナー
 BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB コンテナーは、アクセス制御のための境界点として Media Services で使用され、Shared Access Signature (SAS) ロケーターとして資産上で使用されます。 Azure Storage アカウントに含めることができる BLOB コンテナー数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。

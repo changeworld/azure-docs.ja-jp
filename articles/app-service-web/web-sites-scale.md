@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: bc0fe3341bc5b698032c56dec836b942ce7fa8be
-ms.openlocfilehash: 3ca6156369bf4ae530a91520e86166592181511a
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 75ddbacbd4dd14597b786d26f0730477f6c85811
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -116,9 +116,9 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 * スケーラブルで回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、 [Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)に関するページを参照してください。
 * App Service アプリのスケーリングに関するビデオについては、以下のリソースを参照してください。
   
-  * [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](https://azure.microsoft.com/en-us/resources/videos/azure-web-sites-free-vs-standard-scaling/)
-  * [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](https://azure.microsoft.com/en-us/resources/videos/auto-scaling-azure-web-sites/)
-  * [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](https://azure.microsoft.com/en-us/resources/videos/how-azure-web-sites-scale/)
+  * [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
+  * [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
+  * [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
 
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/
