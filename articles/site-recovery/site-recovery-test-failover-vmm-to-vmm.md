@@ -12,15 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 1/09/2017
+ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 1c3a3a3e9381e20382bb537299b04993180ee729
-ms.openlocfilehash: 465da7ae1aa3a31400706c28d0516507ddf66ff0
+ms.sourcegitcommit: 6b1a5b2879a7b98ec4ad3e8ebbc9e95c0740d89f
+ms.openlocfilehash: 3aaa005319b1ce2a10cd913c63b31860d31b797e
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Site Recovery でのテスト フェールオーバー (VMM から VMM)
+> [!div class="op_single_selector"]
+> * [Azure へのテスト フェールオーバー](./site-recovery-test-failover-to-azure.md)
+> * [テスト フェールオーバー (VMM から VMM)](./site-recovery-test-failover-vmm-to-vmm.md)
+
 
 この記事では、復旧サイトとして VMM で管理されたオンプレミスのサイトを使う Site Recovery で保護されている仮想マシンと物理サーバーのテスト フェールオーバーまたは DR ドリルを行うための情報と手順について説明します。 
 
@@ -67,6 +72,8 @@ ms.openlocfilehash: 465da7ae1aa3a31400706c28d0516507ddf66ff0
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 この手順では、復旧計画のテスト フェールオーバーを実行する方法について説明します。 別の方法として、 **[仮想マシン]** タブで、単一の仮想マシンまたは物理サーバーに対するフェールオーバーを実行することもできます。
 
+![テスト フェールオーバー](./media/site-recovery-test-failover-vmm-to-vmm/TestFailover.png)
+
 1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **フェールオーバー** > **Test フェールオーバー**で投稿してください。
 1. **[テスト フェールオーバー]** ブレードで、テスト フェールオーバー後に仮想マシンをネットワークに接続する方法を指定します。 詳しくは[ネットワーク オプション](#network-options-in-site-recovery)をご覧ください。
 1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。 
@@ -100,9 +107,4 @@ ms.openlocfilehash: 465da7ae1aa3a31400706c28d0516507ddf66ff0
 
 ## <a name="next-steps"></a>次のステップ
 テスト フェールオーバーが正常に行われた後は、[フェールオーバー](site-recovery-failover.md)を試すことができます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

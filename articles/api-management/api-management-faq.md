@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 8d5c21f8e746a9bcddc2eb9b0294836e0de55bf2
-ms.openlocfilehash: 6300aa7030cfd29ec4b8b1db7b42227855fddbcf
+ms.sourcegitcommit: ea6b80e289f039a5924fcc2ccf9d71dbbb432982
+ms.openlocfilehash: 2f2676d85a513a152832cfd336c3b643577341b9
+ms.lasthandoff: 02/24/2017
 
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
@@ -44,7 +45,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API Management は Azure ExpressRoute と共に使用できますか。](#does-api-management-work-with-azure-expressroute)
 * [あるサブスクリプションから別のサブスクリプションに API Management サービスを移動できますか。](#can-i-move-an-api-management-service-from-one-subscription-to-another)
-* [API のインポートには制限事項や既知の問題はありますか。](#api-management-api-import-restrictions)
+* [API のインポートには制限事項や既知の問題はありますか。](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Microsoft Azure API Management チームに質問するにはどうすればよいですか。
 次の方法のいずれかを使用して、チームに問い合わせることができます。
@@ -62,7 +63,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 * HTTP 基本認証を使用します。 詳細については、「 [API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
 * バックエンド サービスで IP ホワイトリストを使用します。 Standard レベルまたは Premium レベルの API Management インスタンスを使用している場合は、ゲートウェイの IP アドレスが変わることはありません。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
-* API Management インスタンスを Azure Virtual Network に接続します。 詳細については、「 [Azure API Management で VPN 接続を設定する方法](api-management-howto-setup-vpn.md)」を参照してください。
+* API Management インスタンスを Azure Virtual Network に接続します。 
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
 複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 そのための方法は次のとおりです。
@@ -149,9 +150,4 @@ Git Credential Manager を使用しているか、Visual Studio を使用して 
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>API のインポートには制限事項や既知の問題はありますか。
 Open API (Swagger)、WSDL、WADL の形式についての[既知の問題と制限事項](api-management-api-import-restrictions.md)をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

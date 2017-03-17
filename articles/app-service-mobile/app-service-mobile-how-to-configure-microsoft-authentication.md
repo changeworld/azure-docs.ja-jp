@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Microsoft アカウント
 author: mattchenderson
 services: app-service
 documentationcenter: 
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5f9926b09c8d2bb802b1e1a86695e76fd7a54209
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 429e6f32a3bebe0e0759c675f61b9ee588e550d0
+ms.lasthandoff: 03/09/2017
 
 
 ---

@@ -54,6 +54,9 @@
 ### [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
+## 解決方法
+### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
+### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 ## 監視
 ### [Log Analytics に Azure Automation のジョブ データを転送する](automation-manage-send-joblogs-log-analytics.md)
 ### [Log Analytics から Azure Automation アカウントのリンクを解除する](automation-unlink-from-log-analytics.md)

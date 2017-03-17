@@ -17,9 +17,9 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
-ms.openlocfilehash: 92c8f2e0f2dfa35c904a1132d72c037ceb7d3765
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8d4823576fe0d44fa565fdb72e8b229d31dff609
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/11/2017
 
 次の一覧は、インポート処理中に最適なパフォーマンスを得るための推奨事項です。
 
-* 転送のパフォーマンスが最大限に高めるために、予算が許す限り最も高いサービス レベルとパフォーマンス レベルを選択する。 移行の完了後にスケールダウンすることでコストを削減できます。 [Azure Portal を使用した単一データベースのサービス レベルとパフォーマンス レベルの変更](sql-database-manage-single-databases-portal.md#change-the-service-tier-and-performance-level-of-a-single-database)、[PowerShell を使用した単一データベースのサービス レベルとパフォーマンス レベルの変更](sql-database-manage-single-databases-powershell.md#change-the-service-tier-and-performance-level-of-a-single-database)、[Transact-SQL を使用した単一データベースのサービス レベルとパフォーマンス レベルの変更](sql-database-manage-single-databases-tsql.md#change-the-service-tier-and-performance-level-of-a-single-database)に関する記事を参照してください。
+* 転送のパフォーマンスが最大限に高めるために、予算が許す限り最も高いサービス レベルとパフォーマンス レベルを選択する。 移行の完了後にスケールダウンすることでコストを削減できます。 
 * .BACPAC ファイルと移行先のデータ センターの間の距離を最短にする。
 * 移行中の自動統計を無効にする。
 * テーブルとインデックスをパーティション分割する。

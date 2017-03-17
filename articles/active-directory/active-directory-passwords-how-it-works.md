@@ -3,7 +3,7 @@ title: "しくみ: Azure AD でのパスワード管理 | Microsoft Docs"
 description: "ユーザーによるパスワードの登録、リセット、および変更、そして管理者によるオンプレミスの Active Directory パスワードの構成、レポート作成、および管理を含む、Azure AD でのパスワード管理について学習します。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
@@ -12,25 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83d4fb4e8dc53b8b7013b6178b2633f649887fd8
+ms.sourcegitcommit: 3334729cbc4ab4a48e10ece0a15a31595317ca3f
+ms.openlocfilehash: 856d35c0a84ef0aa1f01996ae647b7bb6acc87c2
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="how-password-management-works"></a>パスワード管理のしくみ
+# <a name="how-password-management-works-in-azure-active-directory"></a>Azure Active Directory でのパスワード管理のしくみ
 > [!IMPORTANT]
 > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-> 
-> 
+>
+>
 
-Azure Active Directory でのパスワード管理は、以下に説明するいくつかの論理コンポーネントで構成されます。  コンポーネントの詳細については、各リンクをクリックしてください。
+Azure Active Directory (Azure AD) でのパスワード管理は、以下に説明するいくつかの論理コンポーネントで構成されます。 コンポーネントの詳細については、各リンクを選択してください。
 
 * [**パスワード管理の構成ポータル**](#password-management-configuration-portal) – 管理者は [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [構成] タブから、テナント内のパスワード管理方法のさまざまな側面を制御できます。
 * [**ユーザー登録ポータル**](#user-registration-portal) – ユーザーはこの Web ポータルから、パスワード リセットのための自己登録ができます。
-* [**ユーザー パスワードのリセット ポータル**](#user-password-reset-portal) – ユーザーは、管理者の定めるパスワード リセット ポリシーに従っていくつかのチャレンジをクリアすることにより、自分のパスワードをリセットできます。
+* [**ユーザー パスワードのリセット ポータル**](#user-password-reset-portal) – ユーザーは、管理者の定めるパスワード リセット ポリシーに従ってさまざまなチャレンジをクリアすることにより、自分のパスワードをリセットできます。
 * [**ユーザー パスワードの変更ポータル**](#user-password-change-portal) – ユーザーはこの Web ポータルを使用すると、古いパスワードを入力し、新しいパスワードを選択することにより、自分のパスワードをいつでも変更できます。
 * [**パスワード管理レポート**](#password-management-reports) – 管理者は [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にある自分のディレクトリの [レポート] タブの [活動レポート] セクションから、テナント内のパスワードのリセットと登録のアクティビティを参照および分析できます。
 * [**Password Writeback Component of Azure AD Connect**](#password-writeback-component-of-azure-ad-connect) – 管理者は  Azure AD Connect のインストール時に、必要に応じてパスワード ライトバック機能を有効にし、クラウドからのフェデレーション ユーザーまたはパスワード同期ユーザーのパスワード管理を有効化できます。
@@ -39,7 +41,7 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 特定のディレクトリについて、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)を使用してパスワード管理ポリシーを構成するには、ディレクトリの **[構成]** タブにある **[ユーザー パスワードのリセット ポリシー]** セクションに移動します。  この構成ページでは、パスワードが組織内でどのように管理されるかを、以下をはじめとするさまざまな側面から制御できます。
 
 * ディレクトリのユーザー全員に対してパスワードのリセットの有効と無効を切り替える
-* パスワードをリセットする前にユーザーがクリアする必要があるチャレンジの数 (1 つまたは 2 つ) を設定する
+* パスワードをリセットする前にユーザーがクリアする必要があるチャレンジの数 (1 つまたは&2; つ) を設定する
 * 組織内のユーザーに対して有効にするチャレンジを以下のなかから選択して設定する
   * 携帯電話 (テキストによる確認コードまたは音声通話)
   * 会社電話 (音声通話)
@@ -55,8 +57,8 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 * パスワード ライトバック機能を有効化または無効化する (AAD Connect を使用してパスワード ライトバックがデプロイされている場合)
 * パスワード ライトバック エージェントの状態を表示する (AAD Connect を使用してパスワード ライトバックがデプロイされている場合)
 * パスワードがリセットされた場合のユーザーへの電子メール通知を有効化する ( **Microsoft Azure 管理ポータル** の [ [通知](https://manage.windowsazure.com)] セクションで確認できる)
-* 管理者のパスワードを他の管理者がリセットした場合の管理者への電子メール通知を有効化する ( **Microsoft Azure 管理ポータル** の [ [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
-* テナント ブランド化のカスタマイズ機能 ( **Azure 管理ポータル** の [ [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
+* 管理者のパスワードを他の管理者がリセットした場合の管理者への電子メール通知を有効化する ( **Microsoft Azure 管理ポータル** の  [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
+* テナント ブランド化のカスタマイズ機能 ( **Azure 管理ポータル** の  [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
 組織内のパスワード管理を構成する方法の詳細については、 [概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
@@ -70,7 +72,7 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 詳細については、[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)および [Best Practices: Azure AD Password Management (ベスト プラクティス: Azure AD でのパスワード管理)](active-directory-passwords-best-practices.md) に関する記事を参照してください。
 
 ## <a name="user-password-reset-portal"></a>ユーザー パスワードのリセット ポータル
-セルフサービスのパスワード リセットを有効にして、セルフサービスのパスワード リセットについて組織のポリシーを設定し、ディレクトリに正しいユーザーの連絡先データが含まれることを確認できたら、企業または学校のアカウントを使用してサインインする Web ページ ( [portal.microsoftonline.com](https://portal.microsoftonline.com)など) であればどこからでも、組織内のユーザーがパスワードを自動的にリセットできるようになります。 サインインに組織のアカウントを使用するページでは、[ **アカウントにアクセスできない場合** ] というリンクが表示されます。
+セルフサービスのパスワード リセットを有効にして、セルフサービスのパスワード リセットについて組織のポリシーを設定し、ディレクトリに正しいユーザーの連絡先データが含まれることを確認できたら、企業または学校のアカウントを使用してサインインする Web ページ ([portal.microsoftonline.com](https://portal.microsoftonline.com)など) であればどこからでも、組織内のユーザーがパスワードを自動的にリセットできるようになります。 サインインに組織のアカウントを使用するページでは、**[アカウントにアクセスできない場合]** というリンクが表示されます。
 
   ![][002]
 
@@ -92,7 +94,7 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 ユーザーが自分のオンプレミスの Active Directory パスワードを変更する方法の詳細については、 [概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
 ## <a name="password-management-reports"></a>パスワード管理レポート
-**[レポート]** タブに移動すると、**[アクティビティ ログ]** セクションに、**[パスワード リセット アクティビティ]** および **[パスワード リセット登録アクティビティ]** の 2 つのパスワード管理レポートが表示されます。  これら 2 つのレポートを使用すると、組織内でパスワード リセットに登録しているユーザー、およびパスワード リセットを使用しているユーザーのビューを参照できます。 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でのこれらのレポートの外観を示します。
+**[レポート]** タブに移動すると、**[アクティビティ ログ]** セクションに、**[パスワード リセット アクティビティ]** および **[パスワード リセット登録アクティビティ]** の&2; つのパスワード管理レポートが表示されます。  これら&2; つのレポートを使用すると、組織内でパスワード リセットに登録しているユーザー、およびパスワード リセットを使用しているユーザーのビューを参照できます。 [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でのこれらのレポートの外観を示します。
 
   ![][006]
 
@@ -105,11 +107,8 @@ Azure Active Directory でのパスワード管理は、以下に説明するい
 
 Azure AD Connect の詳細については、 [Azure Active Directory Connect](active-directory-aadconnect.md)を参照してください。 パスワード ライトバックの詳細については、 [概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)を参照してください。
 
-<br/>
-<br/>
-<br/>
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
@@ -128,9 +127,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [005]: ./media/active-directory-passwords-how-it-works/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

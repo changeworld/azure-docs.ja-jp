@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 05/13/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: da9da90e7ccd5d324b8f87a3585555ea5d5ed475
-ms.openlocfilehash: d587ff744fea5393a34d5a576e6af32cac5d2b44
+ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
+ms.openlocfilehash: 6b2473ef6336aea5c9a79aad78e02bcfc38b9018
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -52,6 +53,11 @@ public class MyClass
     public string Id { get; set; }
 }
 ```
+
+> [!TIP]
+>
+> HTTP または WebHook のバインディングを使用する場合は、[HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) に関するこのベスト プラクティスのドキュメントを参照することをお勧めします。
+>
 
 ## <a name="logging"></a>ログの記録
 出力を C# のストリーミング ログにログ記録するために、 `TraceWriter` 型の引数を含めることができます。 これの名前を `log`にすることをお勧めします。 Azure Functions の `Console.Write` は避けることをお勧めします。
@@ -314,10 +320,5 @@ public class Order
 * [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

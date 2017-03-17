@@ -15,12 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: 3a8e5583f213c6d35f8e41dd31fe2ccad7389977
-ms.openlocfilehash: a3c0aaae014619fb3f4a2fffa6063a473da691e1
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 5af1b1bacce2fe189a7b557527520795ed622b54
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="application-gateway-websocket-support"></a>Application Gateway による WebSocket のサポート
+# <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
 Application Gateway では、あらゆる規模のゲートウェイで WebSocket がネイティブにサポートされます。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 これまでどおり標準の HTTPListener をポート 80/443 で使用して WebSocket トラフィックを受信することができます。 WebSocket トラフィックは、アプリケーション ゲートウェイの規則で指定されている適切なバックエンド プールを使用して、WebSocket が有効なバックエンド サーバーに送られます。 [RFC6455](https://tools.ietf.org/html/rfc6455) で標準化された WebSocket プロトコルは、長時間に及ぶ TCP 接続上でサーバーとクライアント間の全二重通信を可能にします。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。  WebSocket は、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 WebSocket プロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
@@ -115,15 +116,10 @@ WebSocket が動作するためには、バックエンドの構成済みのポ�
     Sec-WebSocket-Version: 13
 ```
 
-もう 1 つの理由としては、アプリケーション ゲートウェイのバックエンドの正常性プローブでサポートされるプロトコルが HTTP/HTTPS のみであるという点が挙げられます。 バックエンド サーバーが HTTP/HTTPS プローブに応答しない場合、そのバックエンド サーバーはバックエンド プールから取り除かれます。その結果、WebSocket 要求を含むすべての要求がこのバックエンドに到達できなくなります。
+もう&1; つの理由としては、アプリケーション ゲートウェイのバックエンドの正常性プローブでサポートされるプロトコルが HTTP/HTTPS のみであるという点が挙げられます。 バックエンド サーバーが HTTP/HTTPS プローブに応答しない場合、そのバックエンド サーバーはバックエンド プールから取り除かれます。その結果、WebSocket 要求を含むすべての要求がこのバックエンドに到達できなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 
 WebSocket のサポートについて学習した後は、 [アプリケーション ゲートウェイの作成](application-gateway-create-gateway.md) に関するページに進んで、WebSocket が有効な Web アプリケーションを作成しましょう。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

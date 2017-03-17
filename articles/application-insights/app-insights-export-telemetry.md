@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4df32e7e03f17ec46e46a3f2718d24783424ab9e
-ms.openlocfilehash: fc1f3c7160a4956ed7372a2797c03c2892fbfb65
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 14627391a5df562a70737a71f41fe7cb934c9062
+ms.openlocfilehash: 54f579e5806a2fa5bd4ceace8a8ab46509b4be1e
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -29,67 +29,64 @@ ms.lasthandoff: 02/21/2017
 
 * [[エクスポート] ボタン](app-insights-metrics-explorer.md#export-to-excel) を使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。 
 
-* [Analytics](app-insights-analytics.md) にはテレメトリ用の強力なクエリ言語があり、結果をエクスポートすることもできます。
+* [Analytics](app-insights-analytics.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
 * [Power BI でデータを探索](app-insights-export-power-bi.md)する場合は、連続エクスポートを使用せずに実行できます。
 * [データ アクセス REST API](https://dev.applicationinsights.io/) を使用すると、テレメトリにプログラムでアクセスすることができます。 
 
 連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](app-insights-data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。 
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-"クラシック" ストレージ アカウントがない場合は、ここで作成します。
+## <a name="setup"></a>連続エクスポートを作成する
+1. アプリの Application Insights リソースで、[連続エクスポート] を開き、**[追加]** を選択します。 
 
-1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションのストレージ アカウントを作成します。
-   
-    ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-export-telemetry/030.png)
-2. コンテナーを作成します。
-   
-    ![新しいストレージで、[コンテナー] を選択し、[コンテナー] タイルをクリックし、[追加] を選択します](./media/app-insights-export-telemetry/040.png)
+    ![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
 
-Application Insights のリソースとは異なるリージョンでストレージを作成すると、[データ転送に関する料金](https://azure.microsoft.com/pricing/details/bandwidth/)が発生する可能性があります。
+2. テレメトリをエクスポートするデータ型を選択します。
 
-## <a name="a-namesetupa-set-up-continuous-export"></a><a name="setup"></a> 連続エクスポートの設定
-Application Insights ポータルのアプリケーションの概要ブレードで、[連続エクスポート] を開きます。 
+3. データの保存先となる [Azure ストレージ アカウント](../storage/storage-introduction.md)を作成または選択します。 
 
-![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
+    > [!Warning]
+    > 既定では、ストレージの場所は、Application Insights のリソースと同じ地理的リージョンに設定されます。 別のリージョンに保存する場合は、転送の料金が発生する可能性があります。
 
-連続エクスポートを追加し、エクスポートするイベントの種類を選択します。
+    ![[追加]、[エクスポート先]、[ストレージ アカウント] の順にクリックし、新しいストアを作成するかまたは既存のストアを使用するかを選択します。](./media/app-insights-export-telemetry/02-add.png)
 
-![[追加]、[エクスポート先]、[ストレージ アカウント] の順にクリックし、新しいストアを作成するかまたは既存のストアを使用するかを選択します。](./media/app-insights-export-telemetry/02-add.png)
+4. ストレージにコンテナーを作成するか、選択します。
 
-データの保存先となる [Azure ストレージ アカウント](../storage/storage-introduction.md)を選択または作成します。
+    ![[イベントの種類の選択] をクリックします](./media/app-insights-export-telemetry/create-container.png)
 
-![[イベントの種類の選択] をクリックします](./media/app-insights-export-telemetry/03-types.png)
+エクスポートが作成されると、処理が開始されます  エクスポートを作成した後に到着したデータのみが取得されます。 
 
-エクスポートが作成されると、処理が開始されます  (エクスポートを作成した後に到着したデータのみが取得されます)。 
+ストレージにデータが表示されるまで、約&1; 時間の遅延が発生する可能性があります。
 
-BLOB でデータが表示されるまで、約&1; 時間の遅延が発生する可能性があります。
+### <a name="to-edit-continuous-export"></a>連続エクスポートを編集するには
 
 後でイベントの種類を変更する場合は、単にエクスポートを編集します。
 
 ![[イベントの種類の選択] をクリックします](./media/app-insights-export-telemetry/05-edit.png)
 
-ストリームを停止するには、[無効] をクリックします。 もう一度 [有効] をクリックすると、新しいデータでストリームが再開されます。 エクスポートが無効な場合、ポータルに到着したデータは取得されません。
+### <a name="to-stop-continuous-export"></a>連続エクスポートを停止するには
 
-ストリームを完全に停止するには、エクスポートを削除します。 エクスポートを削除しても、ストレージのデータは削除されません。
+エクスポートを停止するには、[無効] をクリックします。 もう一度 [有効] をクリックすると、新しいデータでエクスポートが再開されます。 エクスポートが無効な場合、ポータルに到着したデータは取得されません。
 
-#### <a name="cant-add-or-change-an-export"></a>エクスポートを追加または変更できない
+エクスポートを完全に停止するには、対象のエクスポートを削除します。 エクスポートを削除しても、ストレージのデータは削除されません。
+
+### <a name="cant-add-or-change-an-export"></a>エクスポートを追加または変更できない
 * エクスポートを追加または変更するには、所有者、共同作成者、または Application Insights 共同作成者のアクセス権が必要になります。 [ロールの詳細については、こちらを参照してください][roles]。
 
-## <a name="a-nameanalyzea-what-events-do-you-get"></a><a name="analyze"></a> 取得されるイベント
+## <a name="analyze"></a> 取得されるイベント
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。 
 
 [サンプリング](app-insights-sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
 
 他の計算メトリックは含まれません。 たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
-データには、セットアップ済みのすべての [利用可能な Web テスト](app-insights-monitor-web-app-availability.md) の結果も含まれます。 
+データには、セットアップ済みのすべての[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。 
 
 > [!NOTE]
-> **サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+> **サンプリング。** アプリケーションで大量のデータを送信すると、サンプリング機能が動作して、生成されたテレメトリのごく一部だけが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 > 
 > 
 
-## <a name="a-namegeta-inspect-the-data"></a><a name="get"></a> データの確認
+## <a name="get"></a> データの確認
 ポータルでストレージを直接検査することができます。 **[参照]** をクリックしてストレージ アカウントを選択し、**[コンテナー]** を開きます。
 
 Visual Studio で Azure ストレージを検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます  (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド] の順に展開して、**[Microsoft Azure SDK for .NET の取得]** を選択します)。
@@ -109,7 +106,7 @@ Where
 * `blobCreationTimeUtc` は、BLOB が内部ステージング ストレージで作成された日時です。
 * `blobDeliveryTimeUtc` は、BLOB がエクスポート先のストレージにコピーされた日時です。
 
-## <a name="a-nameformata-data-format"></a><a name="format"></a> データ形式
+## <a name="format"></a> データ形式
 * それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。 約&30; 秒の間に処理されたテレメトリが含まれています。
 * 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。 詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
@@ -146,7 +143,7 @@ Where
 
 大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 
-## <a name="a-namedeleteadelete-your-old-data"></a><a name="delete"></a>古いデータの削除
+## <a name="delete"></a>古いデータの削除
 必要に応じて古いデータを削除するなどしてストレージ容量を管理する責任があることに注意してください。 
 
 ## <a name="if-you-regenerate-your-storage-key"></a>ストレージ キーを再生成する場合

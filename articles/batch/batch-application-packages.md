@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/30/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 08db84f3f3f66930a81e3627dadebbe181dd7da3
-ms.openlocfilehash: 1c89f86c382d627def6cbaf23d8a67a71cd9e890
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 9c7073e55b98406fc8f9db9a40bf1a6ffc626f47
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="application-deployment-with-azure-batch-application-packages"></a>Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ
+# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
+
 Azure Batch のアプリケーション パッケージ機能を使用すると、タスク アプリケーションの管理と、プール内のコンピューティング ノードへのそのアプリケーションのデプロイが簡単になります。 アプリケーション パッケージを使用すると、タスクで実行される複数のバージョンのアプリケーション (そのサポート ファイルを含む) をアップロードして管理できます。 また、アップロードしたアプリケーションのうち&1; つ以上をプール内のコンピューティング ノードに自動的にデプロイできます。
 
 この記事では、Azure Portal でアプリケーション パッケージをアップロードおよび管理する方法を学習します。 その後、[Batch .NET][api_net] ライブラリを使用して、プールのコンピューティング ノードにそれらをインストールする方法を学習します。
@@ -348,9 +351,4 @@ foreach (ApplicationSummary app in applications)
 [10]: ./media/batch-application-packages/app_pkg_10.png "Choose storage account blade in Azure portal"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Update package blade in Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

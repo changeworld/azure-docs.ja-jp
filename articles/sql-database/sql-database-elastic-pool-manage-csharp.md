@@ -16,15 +16,15 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
-ms.openlocfilehash: c511a73794a4b1333e149d286ae43c6929d58f75
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c83a5aacca6669c4259365fba9f444ecb1b2a6c9
+ms.openlocfilehash: 1e7393537f6c9e4d6af522dd05f149403a85559e
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="create-and-manage-an-elastic-pool-with-cx23"></a>C&#x23; を使用したエラスティック プールの作成と管理
 
-このトピックでは、C＃ を使ってスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を作成および管理する方法について説明します。 Azure エラスティック プールは、[Azure Portal](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
+このトピックでは、C＃ を使ってスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を作成および管理する方法について説明します。 Azure エラスティック プールは、[Azure Portal](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、または REST API を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
 
 > [!NOTE]
 > SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../azure-resource-manager/resource-group-overview.md)を使用している場合にのみサポートされます。そのため、常に最新の **Azure SQL Database Management Library for .NET ([ドキュメント](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))** を使用する必要があります。 以前の[クラシック デプロイメント モデル ベースのライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql)は互換性のためだけにサポートされているため、より新しい Resource Manager ベースのライブラリを使用することをお勧めします。

@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/12/2017
+ms.date: 02/28/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 4b7912b48ef37eac3148582d1d635d8a4c4a4b44
-ms.openlocfilehash: 8ee5dfea961984bd01a24815b9d3c94f486a57d7
-
+ms.sourcegitcommit: ca145339ab14ef29851b53deca9be9ad137317c9
+ms.openlocfilehash: 77d3a4114b23114c0b4bf97a461cee2356d66a4a
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="azure-automation-hybrid-runbook-workers"></a>Azure Automation の Hybrid Runbook Worker
+
+# <a name="automate-resources-in-your-data-center-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker によるデータ センターのリソースの自動化
 Azure Automation の Runbook は、Azure クラウドで実行されるため、ローカル データ センター内のリソースにはアクセスできません。  Azure Automation の Hybrid Runbook Worker 機能を使用すれば、ローカル リソースを管理するために、データ センターに配置されたマシンで Runbook を実行することができます。 Runbook は Azure Automation で格納および管理されてから、1 つ以上のオンプレミス マシンに配信されます。  
 
 次の図にこの機能を示します。<br>  
@@ -34,7 +35,7 @@ Hybrid Runbook Worker をサポートするための受信ファイアウォー�
 > [!NOTE]
 > Hybrid Runbook Worker ロールをサポートするサーバーの構成を Desired State Configuration (DSC) を使用して管理するには、サーバーを DSC ノードとして追加する必要があります。  DSC による管理のためのサーバーのオンボードの詳細については、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。           
 ><br>
->現時点では、[更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)を有効にすると、OMS ワークスペースに接続された Windows コンピューターは自動的に Hybrid Runbook Worker として構成されます。これは、このソリューションに含まれる Runbook をサポートするための措置です。  ただし、Automation アカウントに作成されている ハイブリッド worker グループには登録されません。また、ハイブリッド worker グループに追加して独自の Runbook を実行することもできません。  Windows コンピューターが既に Hybrid Runbook Worker に指定されていて、OMS ワークスペースに接続されている場合は、Runbook が予期したとおりに機能するように、ソリューションを追加する前に OMS ワークスペースから削除する必要があります。  
+>[更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)を有効にすると、このソリューションに含まれる Runbook をサポートするために、OMS ワークスペースに接続された Windows コンピューターは Hybrid Runbook Worker として自動的に構成されます。  ただし、このコンピューターは、Automation アカウントで既に定義されている可能性のあるハイブリッド worker グループには登録されません。  このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用していれば、このコンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートできます。  この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。  
 
 
 ## <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker のグループ
@@ -56,7 +57,7 @@ Hybrid Worker では次の推奨事項を考慮してください。
 * ジョブが完了すると Azure Automation にジョブのデータが返送されるため、Automation アカウントのリージョン内またはその近くに物理的に存在するコンピューターを使用することを検討します。
 
 ### <a name="configure-proxy-and-firewall-settings"></a>プロキシとファイアウォール設定の構成
-オンプレミスの Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) サービスに接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-proxy-firewall.md#configure-proxy-and-firewall-settings-with-the-microsoft-monitoring-agent) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
+オンプレミスの Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) サービスに接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
 Automation と通信するには、次の一覧に示すポートと URL が Hybrid Runbook Worker に必要です。
 
@@ -248,9 +249,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 ## <a name="next-steps"></a>次のステップ
 * Runbook を開始するために使用できるさまざまな方法の詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照して下さい。  
 * テキスト エディターを使用して、Azure Automation で PowerShell Runbook と PowerShell ワークフロー Runbook を操作するためのさまざまな手順については、[Azure Automation での Runbook の編集](automation-edit-textual-runbook.md)を参照してください。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

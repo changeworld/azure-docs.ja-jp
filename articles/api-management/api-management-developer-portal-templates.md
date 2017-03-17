@@ -15,20 +15,28 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 01fb45cc2d2323290427a08e3210fadf27f6cda8
+ms.sourcegitcommit: 2434762c2a1174a40d9c6daad6c317bc3ca8f374
+ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
-Azure API Management には、管理者が [管理者ポータルの外観をカスタマイズ](api-management-customize-portal.md)したり、ページそのものの内容を構成するテンプレート セットを使用して開発者ポータルのページの内容をカスタマイズしたりできる多様なカスタマイズ機能が用意されています。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。
+
+Azure API Management で開発者ポータルをカスタマイズする基本的な方法は&3; つあります。
+
+* [静的なページの内容とページ レイアウト要素を編集する][modify-content-layout]
+* [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
+* [ポータルで生成されるページに使用するテンプレートを変更する][ portal-templates] (このガイドで説明します)
+
+テンプレートは、システムで生成された開発者ポータル ページのコンテンツ (API ドキュメント、製品、ユーザー認証など) をカスタマイズするために使用します。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットを使用して、表示されるページの内容を自由に構成できます。
 
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
-開発者ポータル テンプレートは、API Management サービス インスタンスの管理者によって、管理者ポータルで管理されます。 開発者ポータル テンプレートを管理するには、Azure Portal で API Management サービス インスタンスに移動し、ツールバーの **[開発者ポータル]** をクリックします。
+テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[パブリッシャー ポータル]** をクリックします。
 
-![[管理者ポータル]][api-management-browse]
+![パブリッシャー ポータル][api-management-management-console]
 
-既にパブリッシャー ポータルにいる場合は、 **[管理者ポータル]**をクリックすることで、開発者ポータルにアクセスできます。
+右上にある **[開発者ポータル]** をクリックします。 
 
 ![開発者ポータル メニュー][api-management-developer-portal-menu]
 
@@ -181,6 +189,9 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 ## <a name="next-steps"></a>次のステップ
 開発者ポータル テンプレート、文字列リソース、アイコン、およびページ コントロールのリファレンス情報については、 [API Management 開発者ポータル テンプレート リファレンスに関するページ](api-management-developer-portal-templates-reference.md)を参照してください。
 
+[modify-content-layout]: api-management-modify-content-layout.md
+[customize-styles]: api-management-customize-styles.md
+[portal-templates]: api-management-developer-portal-templates.md
 
 [api-management-customize-menu]: ./media/api-management-developer-portal-templates/api-management-customize-menu.png
 [api-management-templates-menu]: ./media/api-management-developer-portal-templates/api-management-templates-menu.png
@@ -188,6 +199,7 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 [api-management-template]: ./media/api-management-developer-portal-templates/api-management-template.png
 [api-management-template-data]: ./media/api-management-developer-portal-templates/api-management-template-data.png
 [api-management-developer-portal-menu]: ./media/api-management-developer-portal-templates/api-management-developer-portal-menu.png
+[api-management-management-console]: ./media/api-management-developer-portal-templates/api-management-management-console.png
 [api-management-browse]: ./media/api-management-developer-portal-templates/api-management-browse.png
 [api-management-user-profile-templates]: ./media/api-management-developer-portal-templates/api-management-user-profile-templates.png
 [api-management-save-template]: ./media/api-management-developer-portal-templates/api-management-save-template.png
@@ -206,10 +218,5 @@ Azure API Management には、管理者が [管理者ポータルの外観をカ
 
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

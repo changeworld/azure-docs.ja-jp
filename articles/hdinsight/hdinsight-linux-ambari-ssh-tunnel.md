@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 03/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 8045f9d927e9c877573085eb43eaadcd60f96a67
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a09fc0052538316a37a9ff07dfddd89de00cb499
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -51,9 +52,17 @@ Web トラフィックに SSH トンネルを使用するには、以下が必�
   > [!NOTE]
   > `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
 
-* SOCKS プロキシを使用するように構成できる Web ブラウザー
+* SOCKS5 プロキシを使用するように構成できる Web ブラウザー。
 
-## <a name="a-nameusesshacreate-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
+    > [!WARNING]
+    > Windows に組み込まれている SOCKS プロキシのサポートは SOCKS5 をサポートしていないため、このドキュメントの手順では機能しません。 以下のブラウザーは Windows のプロキシ設定に依存するため、現時点ではこのドキュメントの手順には使用できません。
+    > 
+    > * Microsoft Edge
+    > * Microsoft Internet Explorer
+    >
+    > Google Chrome も Windows のプロキシ設定に依存します。 ただし、SOCKS5 をサポートする拡張機能をインストールできます。 [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp) をお勧めします。
+
+## <a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
 
 次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 **USERNAME** は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** は、HDInsight クラスターの名前に置き換えます。
 
@@ -76,7 +85,7 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 コマンドが完了すると、ローカル コンピューター上でポート 9876 に送信されるトラフィックは Secure Sockets Layer (SSL) 経由でクラスターのヘッド ノードにルーティングされるようになり、そのヘッド ノードで生成されたように表示されます。
 
-## <a name="a-nameuseputtyacreate-a-tunnel-using-putty"></a><a name="useputty"></a>PuTTY を使用してトンネルを作成する
+## <a name="useputty"></a>PuTTY を使用してトンネルを作成する
 
 次の手順に従ってPuTTY を使用して、SSH トンネルを作成します。
 
@@ -100,8 +109,8 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
 
 ## <a name="use-the-tunnel-from-your-browser"></a>ブラウザーからトンネルを使用する
 
-> [!NOTE]
-> このセクションの手順では、FireFox ブラウザーを使用します。FireFox は、Linux、UNIX、Macintosh OS X、Windows の各システムで無料で使用できるためです。 SOCKS プロキシの使用をサポートするその他の最新のブラウザーも利用できます。
+> [!IMPORTANT]
+> このセクションの手順では、Mozilla FireFox ブラウザーを使用します。Mozilla FireFox はすべてのプラットフォームで同じプロキシ設定を提供するからです。 その他の最新ブラウザー (Google Chrome など) では、トンネルを使用するために FoxyProxy などの拡張機能が必要になる場合があります。
 
 1. ブラウザーを、**localhost** とトンネルの作成時に使用したポートを **SOCKS v5** プロキシとして使用するように構成します。 Firefox の設定は次のようになります。 9876 以外のポートを使用する場合は、そのポート番号に変更します。
    
@@ -144,6 +153,7 @@ SSH キーを使用してクラスターを構成した場合は、SSH 秘密キ
    > 
 
 ## <a name="next-steps"></a>次のステップ
+
 ここでは、SSH トンネルを作成し、使用する方法について説明しました。Ambari を使用してクラスターを監視および管理する方法については、次を参照してください。
 
 * [Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
@@ -152,10 +162,5 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

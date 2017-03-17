@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics での Active Directory のレプリケーションの状態のソリューション | Microsoft Docs"
+title: "Azure Log Analytics での Active Directory レプリケーションの状態の監視 | Microsoft Docs"
 description: "Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視し、その結果を OMS ダッシュボードにレポートします。"
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 744c4bd37b7b1443cf78586aab8ec2661e02254e
-ms.openlocfilehash: c0fc2ae5318068c204296b9e053c2cc7324e84c7
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ffae86cb963f0df7f879effbace073d7e830cd94
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="active-directory-replication-status-solution-in-log-analytics"></a>Log Analytics での Active Directory のレプリケーションの状態ソリューション
+# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
+
 Active Directory は、エンタープライズ IT 環境の重要なコンポーネントです。 各ドメイン コントローラーには、高い可用性とパフォーマンスを保証するために、Active Directory データベースのコピーが保持されています。 ドメイン コントローラーは、エンタープライズ全体に変更を反映するために、相互にレプリケートを行います。 このレプリケーション処理で失敗すると、エンタープライズ全体でさまざまな問題が発生します。
 
 AD レプリケーションの状態ソリューション パックは、レプリケーションの失敗を Active Directory 環境で定期的に監視し、その結果を OMS ダッシュボードにレポートします。
@@ -150,9 +153,4 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 ## <a name="next-steps"></a>次のステップ
 * Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

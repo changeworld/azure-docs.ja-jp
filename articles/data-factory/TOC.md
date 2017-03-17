@@ -62,12 +62,12 @@
 ### [HDInsight Pig アクティビティ](data-factory-pig-activity.md)
 ### [HDInsight MapReduce アクティビティ](data-factory-map-reduce.md)
 ### [HDInsight Streaming アクティビティ](data-factory-hadoop-streaming-activity.md)
+### [HDInsight Spark アクティビティ](data-factory-spark.md)
 ### [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
 ### [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 ### [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 ### [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 ### [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
-### [Spark プログラムを呼び出す](data-factory-spark.md)
 ### [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ## 開発
 ### [Azure Resource Manager テンプレート](data-factory-how-to-use-resource-manager-templates.md)

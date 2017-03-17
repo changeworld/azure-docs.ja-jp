@@ -1,6 +1,6 @@
 ---
 
-title: "Azure Active Directory のグループのライセンスに関する問題の特定と解決 | Microsoft Docs"
+title: "Azure Active Directory のグループのライセンスに関する問題の解決 | Microsoft Docs"
 description: "Azure Active Directory のグループベースのライセンスを使用して、ライセンス割り当ての問題を特定して解決する方法"
 services: active-directory
 keywords: "Azure AD のライセンス"
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/28/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: 9a434cf35d7934dc5eb759851fb65ad2a9f06eef
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: ac3f563828c5fa379f328392a3f5cf7c7932f534
+ms.openlocfilehash: 4ed83a1af1c31d41860931d363d93c7d61df9c98
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="identifying-and-resolving-license-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題の特定と解決
+# <a name="identifying-and-resolving-license-assignment-problems-when-using-groups-in-azure-active-directory"></a>Azure Active Directory でグループを使用したときのライセンス割り当てに関する問題の特定と解決
 
 
 Azure Active Directory (Azure AD) のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 この記事では、ユーザーがこの状態になる原因を説明します。 (グループベースのライセンスを使用せずに) ライセンスが個別のユーザーに直接割り当てられる場合、割り当て処理が失敗することがあります。 たとえば、管理者があるユーザーに PowerShell コマンドレット `Set-MsolUserLicense` を実行すると、ビジネス ロジックに関するいくつかの理由 (ライセンス数の不足や同時に割り当てられない&2; つのサービス プランの競合など) によって、コマンドレットが失敗する場合があります。 このような問題は、コマンドを実行したユーザーにすぐに報告されます。
@@ -89,5 +90,5 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 * [Azure Active Directory でのグループへのライセンス割り当て](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure Active Directory のグループベースのライセンスとは](active-directory-licensing-whatis-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
-* [Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ](active-directory-licensing-group-advanced.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 

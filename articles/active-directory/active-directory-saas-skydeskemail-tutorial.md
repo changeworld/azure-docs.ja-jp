@@ -99,7 +99,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、SkyDesk Email アプリケーションでシングル サインオンを構成することです。
 
-** Email で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**Email で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. Azure クラシック ポータルの **SkyDesk Email** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    

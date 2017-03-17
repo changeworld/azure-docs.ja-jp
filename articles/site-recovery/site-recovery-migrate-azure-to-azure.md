@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/19/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: c33b69dbdccd2a894b494175dec2bd423af478b1
-ms.openlocfilehash: 0019b64ba545d91cf32ed2945c5c0d4844e264e1
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b0fb6e2b86aa0a47b7250face90be8ab2d06b78e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -35,7 +35,7 @@ Azure Site Recovery へようこそ。 この記事は、Azure VM を Azure リ�
 ## <a name="prerequisites"></a>前提条件
 このデプロイで必要なものを次に示します。
 
-* **構成サーバー**: 構成サーバーとして機能する、Windows Server 2012 R2 を実行するオンプレミス VM。 この VM にも他の Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバーを含む) をインストールします。 詳細については、「[シナリオのアーキテクチャ](site-recovery-components.md#vmware-replication-to-azure)」および「[構成サーバーの前提条件](site-recovery-vmware-to-azure.md#prerequisites)」をご覧ください。
+* **構成サーバー**: 構成サーバーとして機能する、Windows Server 2012 R2 を実行するオンプレミス VM。 この VM にも他の Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバーを含む) をインストールします。 詳細については、「[シナリオのアーキテクチャ](site-recovery-components.md#vmware-to-azure)」および「[構成サーバーの前提条件](site-recovery-vmware-to-azure.md#prerequisites)」をご覧ください。
 * **IaaS 仮想マシン**: 移行する VM。 これらの VM を物理コンピューターとして扱って移行します。
 
 ## <a name="deployment-steps"></a>デプロイメントの手順

@@ -37,6 +37,7 @@
 ### [セキュリティ + ID](documentation-government-services-securityandidentity.md)
 ### [監視 + 管理](documentation-government-services-monitoringandmanagement.md)
 ### [Web + モバイル](documentation-government-services-webandmobile.md)
+### [Media Services](documentation-government-services-media.md)
 
 
 # リソース

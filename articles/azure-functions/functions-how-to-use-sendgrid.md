@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions で SendGrid を使用する方法 | Microsoft Docs"
-description: "Azure Functions で SendGrid を使用する方法を説明します"
+description: "Azure Functions で SendGrid を使用する方法の説明"
 services: functions
 documentationcenter: na
 author: rachelappel
@@ -13,9 +13,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 10ed52a218e542465e834acec7b6d165b1a4e36e
-ms.openlocfilehash: 78ef4c29bc88e05857bbe9e2a223b23db0f5a9e9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: b95fcfa1ed4ea4cf1051f4920b9c05bb40a19cab
+ms.openlocfilehash: 05c9f4e4a4351219da68af8b702c25f21d7d4d02
+ms.lasthandoff: 02/22/2017
 
 
 ---

@@ -36,7 +36,7 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
 「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。 
 
 > [!NOTE]
-> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、****職場または学校の ID と共に `azure login -u` を使うと、"*対話型セッションを使わずに*" ログインすることもできます。 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
+> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、"対話型セッションを使わずに" ログインすることもできます。****** 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
 >
 >
 
@@ -80,7 +80,7 @@ azure config mode arm
 
 Azure リソース グループとその機能の詳細については、「[Azure Resource Manager の概要](../articles/azure-resource-manager/resource-group-overview.md)」を参照してください。 テンプレートの作成に興味がある場合は、「 [Azure リソース マネージャーのテンプレートの作成](../articles/resource-group-authoring-templates.md)」を参照してください。
 
-## <a name="a-idquick-create-a-vm-in-azureatask-quick-create-a-vm-in-azure"></a><a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
+## <a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
 どのようなイメージが必要か理解していて、今すぐそのイメージの VM が必要で、しかもインフラストラクチャにはそれほどこだわらないという場合があります。たとえばクリーンな VM で何かをテストする必要があるような場合です。 そのようなときは、`azure vm quick-create` コマンドを使用し、VM とそのインフラストラクチャの作成に必要な引数を渡します。
 
 まずは、リソース グループを作成します。
@@ -214,7 +214,7 @@ info:    vm quick-create command OK
 
 これで新しい VM が作成されました。
 
-## <a name="a-iddeploy-a-vm-in-azure-from-a-templateatask-deploy-a-vm-in-azure-from-a-template"></a><a id="deploy-a-vm-in-azure-from-a-template"></a>タスク: テンプレートから Azure への VM のデプロイ
+## <a id="deploy-a-vm-in-azure-from-a-template"></a>タスク: テンプレートから Azure への VM のデプロイ
 Azure CLI でテンプレートを使用して新しい Azure VM をデプロイするには、以下のセクションの手順に従います。 このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成しますが、 `azure vm quick-create`とは異なり、何が必要かを正確に記述し、エラーなしでそれを繰り返すことができます。 このテンプレートによって作成されるものを次に示します。
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
@@ -483,7 +483,7 @@ info:    group deployment create command OK
 ```
 
 
-## <a name="a-idcreate-a-custom-vm-imageatask-create-a-custom-vm-image"></a><a id="create-a-custom-vm-image"></a>タスク: カスタム VM イメージの作成
+## <a id="create-a-custom-vm-image"></a>タスク: カスタム VM イメージの作成
 テンプレートの基本的な使用方法は前述したので、同様の手順に従うことで、Azure CLI でテンプレートを使用して、Azure にある特定の .vhd ファイルからカスタム VM を作成できます。 このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成するという点が異なります。
 
 ### <a name="step-1-examine-the-json-file-for-the-template"></a>手順 1. テンプレートの JSON ファイルを確認する
@@ -751,7 +751,7 @@ data:    nicName                        String        myNIC
 info:    group deployment create command OK
 ```
 
-## <a name="a-iddeploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balanceratask-deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a><a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
 このテンプレートでは、ロード バランサーの下に 2 つの仮想マシンを作成し、ポート 80 の負荷分散ルールを構成することができます。 このテンプレートは、ストレージ アカウント、仮想ネットワーク、パブリック IP アドレス、可用性セット、ネットワーク インターフェイスもデプロイします。
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
@@ -1163,7 +1163,7 @@ info:    group deployment create command OK
 
 このテンプレートでは Windows Server イメージをデプロイしますが、Linux イメージに簡単に置き換えることができます。 複数の Swarm マネージャーを備えた Docker クラスターを作成する必要がある場合には、 [こちらから作成できます](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
-## <a name="a-idremove-a-resource-groupatask-remove-a-resource-group"></a><a id="remove-a-resource-group"></a>タスク: リソース グループの削除
+## <a id="remove-a-resource-group"></a>タスク: リソース グループの削除
 リソース グループへの再デプロイは可能ですが、実行した場合は `azure group delete <group name>`を使用してリソース グループを削除できることに注意してください。
 
 ```azurecli
@@ -1174,7 +1174,7 @@ Delete resource group myResourceGroup? [y/n] y
 info:    group delete command OK
 ```
 
-## <a name="a-idshow-the-log-for-a-resource-group-deploymentatask-show-the-log-for-a-resource-group-deployment"></a><a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
+## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
 これは、テンプレートの作成時や使用時によく行われます。 グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます  (デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../articles/azure-resource-manager/resource-manager-common-deployment-errors.md)」を参照してください)。
 
 特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。 次の例では、**jq** を使用して **lbgroup** のデプロイ ログを解析し、エラーを探しています。
@@ -1191,7 +1191,7 @@ azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Fail
 }
 ```
 
-## <a name="a-iddisplay-information-about-a-virtual-machineatask-display-information-about-a-virtual-machine"></a><a id="display-information-about-a-virtual-machine"></a>タスク: 仮想マシンに関する情報の表示
+## <a id="display-information-about-a-virtual-machine"></a>タスク: 仮想マシンに関する情報の表示
 `azure vm show <groupname> <vmname>` コマンドを使用して、リソース グループ内の特定の VM に関する情報を表示できます。 複数の VM がある場合、まずは `azure vm list <groupname>`を使用してグループ内の VM を一覧表示する必要があります。
 
 ```azurecli
@@ -1263,10 +1263,10 @@ info:    vm show command OK
 >
 >
 
-## <a name="a-idlog-on-to-a-linux-based-virtual-machineatask-log-on-to-a-linux-based-virtual-machine"></a><a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
+## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
 通常、Linux マシンは SSH によって接続されます。 詳細については、[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
-## <a name="a-idstop-a-virtual-machineatask-stop-a-vm"></a><a id="stop-a-virtual-machine"></a>タスク: VM の停止
+## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
 次のコマンドを実行します。
 
 ```azurecli
@@ -1278,14 +1278,14 @@ azure vm stop <group name> <virtual machine name>
 >
 >
 
-## <a name="a-idstart-a-virtual-machineatask-start-a-vm"></a><a id="start-a-virtual-machine"></a>タスク: VM の起動
+## <a id="start-a-virtual-machine"></a>タスク: VM の起動
 次のコマンドを実行します。
 
 ```azurecli
 azure vm start <group name> <virtual machine name>
 ```
 
-## <a name="a-idattach-a-data-diskatask-attach-a-data-disk"></a><a id="attach-a-data-disk"></a>タスク: データ ディスクの接続
+## <a id="attach-a-data-disk"></a>タスク: データ ディスクの接続
 新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。 新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
 
 新しいディスクを接続するには、次のコマンドを実行します。

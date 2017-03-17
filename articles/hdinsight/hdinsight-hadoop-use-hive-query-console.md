@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
@@ -32,13 +33,13 @@ ms.lasthandoff: 01/18/2017
 >
 > HDInsight 3.4 以上での Web ブラウザーからの Hive クエリの実行に関する情報については、[Ambari Hive ビューでの Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Windows ベースの HDInsight Hadoop クラスター
 * 最新の Web ブラウザー
 
-## <a name="a-idruna-run-hive-queries-using-the-query-console"></a><a id="run"></a> クエリ コンソールを使用して Hive クエリを実行
+## <a id="run"></a> クエリ コンソールを使用して Hive クエリを実行
 1. Web ブラウザーを開いて **https://CLUSTERNAME.azurehdinsight.net** に移動します。**CLUSTERNAME** は実際の HDInsight クラスターの名前です。 プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 2. ページ上部のリンクから、 **[Hive エディター]**を選択します。 HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
    
@@ -71,12 +72,12 @@ ms.lasthandoff: 01/18/2017
 3. **[Submit]**をクリックします。 ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 4. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。 詳細ページの **[ジョブ出力]** に `[ERROR]    3` が含まれます。 このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、クエリ コンソールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
 Hive クエリ コンソールを使用した Hive ジョブの実行の詳細については、クエリ コンソールの上部にある **[概要]** を選択し、サンプルを使用します。 各サンプルでは順を追って Hive を使用してデータを分析します。また、サンプルで使用されている HiveQL ステートメントについての説明も含まれています。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)

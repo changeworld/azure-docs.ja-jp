@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/15/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9d32b156878ff963e6dac00663fc5f1f272d269b
-ms.openlocfilehash: f86b20d5cf20ff977901d481438292c7b38658da
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 0247e7c8f3803e27b4304dae6af11f18432e76b0
+ms.openlocfilehash: 92ee9f08ff85a85a08a2d1e021cdb7afec0c6de7
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -36,7 +36,7 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Blackboard Learn と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Blackboard Learn Cloud Platform でのシングル サインオンが有効なサブスクリプション
+* Blackboard Learn Cloud Platform でのシングル サインオン (SSO) が有効なサブスクリプション
 
 >[!NOTE]
 >このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
@@ -45,7 +45,7 @@ Blackboard Learn と Azure AD の統合を構成するには、次のものが�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。

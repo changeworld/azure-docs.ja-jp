@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 81549c4bc0cabcf46bc7dc66d7e6662d7f787b1e
 ms.openlocfilehash: df6353f84f898a1722e3e985244a90dbd6b22522
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -73,9 +74,4 @@ Azure AD コネクタで Forefront Identity Manager 2010 または Microsoft Ide
 
 ## <a name="next-steps"></a>次のステップ
 使用するオプションに応じて、左側の目次を使用して、詳細な手順が示されている記事を見つけてください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

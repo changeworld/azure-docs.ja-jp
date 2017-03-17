@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2016
+ms.date: 02/27/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
-ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
+ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
+ms.openlocfilehash: aac56543b2b3b7fa8f8baf1cc719ead79b3c1b00
+ms.lasthandoff: 02/28/2017
 
 ---
 
-# <a name="single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン
+# <a name="provide-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使用してアプリにシングル サインオンを提供
 シングル サインオンは、Azure AD アプリケーション プロキシの重要な要素です。 次の手順で、最適なユーザー エクスペリエンスを提供できます。
 
 1. ユーザーがクラウドにサインインします。  
@@ -110,7 +112,7 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 ### <a name="delegated-login-identity"></a>委任されたログイン ID
 委任されたログイン ID を使用すると、2 つの異なるログイン シナリオに対応できるようになります。
 
-* ユーザー ID を電子メール アドレス (username@domain) ではなく、ユーザー名またはソフトウェア アセット管理アカウント名の形式で通常取得する Windows 以外のアプリケーション。
+* ユーザー ID を電子メール アドレス (username@domain) ではなく、ユーザー名または SAM アカウント名の形式で通常取得する Windows 以外のアプリケーション。
 * Azure AD の UPN とオンプレミスの Active Directory の UPN が異なる代替ログイン構成。
 
 アプリケーション プロキシを使用すると、Kerberos チケットの取得に使用する ID を選択できます。 この設定は、アプリケーションごとに行います。 これらのオプションの中には、電子メール アドレスの形式を受け入れないシステムに適したものもあれば、代替ログイン用に設計されたものもあります。
@@ -124,7 +126,7 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
-* 内部に複数のドメインがあり (joe@us.contoso.com, joe@eu.contoso.com)、クラウドに&1; つのドメインがある (joe@contoso.com)。
+* 内部に複数のドメインがあり (joe@us.contoso.com、joe@eu.contoso.com)、クラウドに&1; つのドメインがある (joe@contoso.com)。
 * 内部にルーティングできないドメイン名があり (joe@contoso.usa)、クラウドに法的なドメイン名がある。
 * 内部でドメイン名を使用していない (joe)。
 * オンプレミスとクラウドで異なるエイリアスを使用している。 例: joe-johns@contoso.com vs. joej@contoso.com  
@@ -159,9 +161,4 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

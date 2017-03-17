@@ -145,12 +145,12 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
 ## <a name="multiple-input-files"></a>複数の入力ファイル
 **メディア エンコーダー プレミアム ワークフロー** に送信するタスクごとに&2; つの資産が必要です。
 
-* 1 つ目は、ワークフロー ファイルを含む "ワークフロー資産" ** です。 ワークフロー ファイルは、 [ワークフロー デザイナー](media-services-workflow-designer.md)を使用して設計できます。
-* 2 つ目は、エンコードするメディア ファイルを含む "メディア資産" ** です。
+* 1 つ目は、ワークフロー ファイルを含む "ワークフロー資産" です。** ワークフロー ファイルは、 [ワークフロー デザイナー](media-services-workflow-designer.md)を使用して設計できます。
+* 2 つ目は、エンコードするメディア ファイルを含む "メディア資産" です。**
 
 複数のメディア ファイルを **メディア エンコーダー プレミアム ワークフロー** エンコーダーに送信する場合は、次の制約が適用されます。
 
-* すべてのメディア ファイルが、同じ "メディア資産" **に含まれている必要があります。 複数のメディア アセットを使用することはできません。
+* すべてのメディア ファイルが、同じ "メディア資産" に含まれている必要があります。** 複数のメディア アセットを使用することはできません。
 * このメディア アセット (理想的には、エンコーダーによる処理が求められているメイン ビデオ ファイル) で、プライマリ ファイルを設定する必要があります。
 * **setRuntimeProperties**、**transcodeSource** などの要素を含む構成データを、プロセッサに渡す必要があります。
   * **setRuntimeProperties** は、ワークフローのコンポーネントでファイル名などのプロパティを上書きするときに使用されます。
@@ -163,11 +163,11 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
 
 ![プライマリ ソース ファイルからメディア ファイル入力への接続なし](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture0_nopin.png)
 
-**
+*"setRuntimeProperties を使用してファイル名のプロパティを設定する場合、プライマリ ファイルとメディア ファイル入力コンポーネントは接続されていません"*
 
 ![クリップ リスト XML からクリック リスト ソースへの接続](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture1_pincliplist.png)
 
-**
+*"クリップ リスト XML をメディア ソースに接続して transcodeSource を使用できます"*
 
 ### <a name="clip-list-xml-customization"></a>クリップ リスト XML のカスタマイズ
 実行時にワークフローでクリップ リスト XML を指定するには、構成文字列 XML で **transcodeSource** を使用します。 それには、ワークフローでクリップ リスト XML ピンをメディア ソース コンポーネントに接続する必要があります。
@@ -198,7 +198,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
   </transcodeRequest>
 ```
 
-このプロパティを使用して "式" で出力ファイルに名前を付けるために、/primarySourceFile プロパティを指定する必要がある場合は、/primarySourceFile の設定によってクリップ リストが上書きされないように、/primarySourceFile プロパティの "後" ** に、クリップ リスト XML をプロパティとして渡すことをお勧めします。
+このプロパティを使用して "式" で出力ファイルに名前を付けるために、/primarySourceFile プロパティを指定する必要がある場合は、/primarySourceFile の設定によってクリップ リストが上書きされないように、/primarySourceFile プロパティの*"後"* に、クリップ リスト XML をプロパティとして渡すことをお勧めします。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -334,7 +334,7 @@ Configuration:
 
 ![レイアウトの種類 = 構成可能な平面](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
-**
+*"レイアウトの種類 = 構成可能な平面"*
 
 次に、ビデオ オーバーレイ コンポーネントを追加し、(圧縮されていない) ビデオ ピンを、メディア ファイル入力の (圧縮されていない) ビデオ ピンに接続します。
 

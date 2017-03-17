@@ -15,14 +15,14 @@ ms.workload: azure-government
 ms.date: 02/13/2017
 ms.author: stemi
 translationtype: Human Translation
-ms.sourcegitcommit: ffe3991f68bbd255ff6f4ffedbd6638f32897d1a
-ms.openlocfilehash: 914870f59b488716bb283162078535849f732018
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 21c2a0faad87b84058093f02c831b374a644b4b6
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="available-services-on-azure-government"></a>Azure Government で利用可能なサービス
-Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、Azure Government で現在ご利用いただけるサービスについて、次の&2; つの主要な情報と共に説明します。
+Azure Government では、利用可能なサービスを継続的に拡大しています。  提供するサービスは、Azure Public と同じコードを使ってデプロイされます。  このセクションでは、Azure Government で現在利用可能なサービスについて、次の&2; つの主要な情報と共に説明します。
 
 * **バリエーション:** 現時点ではまだデプロイされていない機能、または政府機関向けの環境に固有のプロパティ (URL など) によるバリエーションです。  
 * **考慮事項:** データをコンプライアンスの管理境界内にとどめるために必要な政府機関特有の実装の詳細です。
@@ -39,8 +39,7 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 | サービス | リソース マネージャーが有効 | ポータル |
 | --- | --- | --- |
 | [Virtual Machines](documentation-government-compute.md#virtual-machines) | はい | はい |
-| Batch
- | はい | はい |
+| Batch | はい | はい |
 | Cloud Services | はい | はい |
 | Service Fabric | はい | はい |
 | VM スケール セット | はい | はい |
@@ -96,6 +95,12 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 | [Redis Cache](documentation-government-services-database.md#azure-redis-cache) | はい | はい |
 
 
+## <a name="intelligence--analyticsdocumentation-government-services-intelligenceandanalyticsmd"></a>[インテリジェンス + 分析](documentation-government-services-intelligenceandanalytics.md)
+
+| サービス | リソース マネージャーが有効 | ポータル |
+| --- | --- | --- |
+| [HDInsights](documentation-government-services-intelligenceandanalytics.md#hdinsight) | はい | はい |
+| [Power BI Pro](documentation-government-services-intelligenceandanalytics.md#power-bi) | いいえ | いいえ (Office 365 管理ポータル) |
 
 
 ## <a name="internet-of-things-iot"></a>モノのインターネット(IoT)
@@ -123,7 +128,6 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 | Azure Active Directory | はい | はい |
 | [Key Vault](documentation-government-services-securityandidentity.md#key-vault) | はい | なし (近日対応予定) |
 | Multi-Factor Authentication | はい | はい |
-| InTune | はい | いいえ |
 
 
 ## <a name="intelligence--analytics"></a>インテリジェンス + 分析
@@ -150,6 +154,6 @@ Azure Government では、利用可能なサービスを継続的に拡大して
 
 
 ## <a name="next-steps"></a>次のステップ
-補足情報と最新情報については、[Microsoft Azure Government ブログ](https://blogs.msdn.microsoft.com/azuregov/)を講読してください。
+補足情報と最新情報については、[Microsoft Azure Government のブログ](https://blogs.msdn.microsoft.com/azuregov/)をご覧ください。
 
 

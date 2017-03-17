@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: 既存のテナントがある場合 | Microsoft Docs"
+title: "Azure AD Connect: Azure AD が既にある場合 | Microsoft Docs"
 description: "このトピックでは、既存の Azure AD テナントがある場合の Connect の使い方を説明します。"
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 160a3ae7190dab76eee4634bd6babb5b047cd5ac
+ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
+ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -26,7 +27,7 @@ Azure AD Connect の使い方に関するトピックではほとんどの場合
 ## <a name="the-basics"></a>基本
 Azure AD 内のオブジェクトは、クラウド (Azure AD) とオンプレミスのいずれかで管理されます。 単一のオブジェクトでは、一部の属性をオンプレミスで管理し、他の属性を Azure AD で管理するということができません。 各オブジェクトには、オブジェクトが管理されている場所を示すフラグが付いています。
 
-一部のユーザーをオンプレミスで管理して他のユーザーをクラウドで管理することができます。 この構成のよくあるシナリオとしては、オフィス ワーカーとブルー カラー ワーカーが両方存在する組織が挙げられます。 オフィス ワーカーにはオンプレミスの AD アカウントがありますが、ブルー カラー ワーカーにはありません。 オンプレミスで管理するユーザーもいれば、Azure AD で管理するユーザーもいることになります。
+一部のユーザーをオンプレミスで管理して他のユーザーをクラウドで管理することができます。 この構成のよくあるシナリオとしては、経理ワーカーと営業ワーカーが両方存在する組織が挙げられます。 経理ワーカーにオンプレミス AD アカウントがありますが、営業ワーカーにはありません。営業ワーカーは Azure AD にアカウントがあります。 オンプレミスで管理するユーザーもいれば、Azure AD で管理するユーザーもいることになります。
 
 オンプレミスの AD にも存在するユーザーを Azure AD で管理していて、後になって Connect が必要になった場合、いくつか追加の懸念事項を考慮する必要があります。
 
@@ -60,9 +61,4 @@ Connect を新しくインストールする場合、完全一致とあいまい
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

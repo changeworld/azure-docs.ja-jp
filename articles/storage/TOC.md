@@ -169,7 +169,7 @@
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [リソース マネージャー](/dotnet/api/microsoft.azure.management.storage)
-### [データの移動](https://msdn.microsoft.com/library/azure/mt684990.aspx)
+### [データの移動](/dotnet/api/microsoft.windowsazure.storage.datamovement)
 ### [BLOB、キュー、テーブル、ファイル](https://msdn.microsoft.com/library/azure/mt347887.aspx)
 ## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.JS](http://azure.github.io/azure-storage-node)

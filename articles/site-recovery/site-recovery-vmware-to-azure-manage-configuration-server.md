@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 96e6696818a0de2fadd55ff7e0ccee350d2666ad
-ms.openlocfilehash: 0e49b7dded14ab6b76c7c73af714af5f5c854bbc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 73d5f91f31780350c68b3475c2cbbb597f9b438e
+ms.openlocfilehash: 0c8f37055a6c64a54009ecafd883426824dcd901
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -104,11 +104,32 @@ ProxyPassword="Password"
   ```
 
   >[!WARNING]
-  スケールアウト プロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)必要があります。
+  スケールアウト プロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)必要があります。
+
+## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>同じ Recovery Services コンテナーを使用した構成サーバーの再登録
+  1. 構成サーバーにログインします。
+  2. ショートカットを使用して cspsconfigtool.exe を起動します。
+  3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
+  4. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
+        ![register-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/register-csonfiguration-server.png)
+  5. プロキシ サーバーの詳細を入力し、**[登録]** をクリックします。  
+  6. 管理者の PowerShell コマンド ウィンドウを開きます。
+  7. 次のコマンドを実行します。
+
+      ```
+      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+      net stop obengine
+      net start obengine
+      ```
+
+  >[!WARNING]
+  この構成サーバーにスケールアウト プロセス サーバーが接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーを再登録する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)必要があります。
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>異なる Recovery Services コンテナーを使用した構成サーバーの登録
 1. 構成サーバーにログインします。
 2. 管理者のコマンド プロンプトで、次のコマンドを実行します。
+
 ```
 reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
 net stop dra
@@ -152,11 +173,11 @@ net stop dra
 1. 管理者として構成サーバーにログオンします。
 2. コントロール パネルを開き、[プログラム]、[プログラムのアンインストール] の順に移動します。
 3. 次の順序でプログラムをアンインストールします。
+  * Microsoft Azure Recovery Services エージェント
   * Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー
+  * Microsoft Azure Site Recovery プロバイダー
   * Microsoft Azure Site Recovery 構成サーバー/プロセス サーバー
   * Microsoft Azure Site Recovery 構成サーバーの依存関係
-  * Microsoft Azure Recovery Services エージェント
-  * Microsoft Azure Site Recovery プロバイダー
   * MySQL Server 5.5
 4. 管理者のコマンド プロンプトで、次のコマンドを実行します。
   ```

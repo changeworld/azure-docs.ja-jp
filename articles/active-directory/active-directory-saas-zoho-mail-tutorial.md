@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
-ms.author: markvi
+ms.date: 02/22/2017
+ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
+ms.sourcegitcommit: fd79688a66c2b3919b11c0b06d268b60e1d93a8f
+ms.openlocfilehash: 60165d0cd7fea3cd0861f36d9a4a245cedabe07a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -43,17 +44,17 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 ### <a name="to-enable-the-application-integration-for-zoho-mail-perform-the-following-steps"></a>Zoho Mail のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-zoho-mail-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-zoho-mail-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-zoho-mail-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-zoho-mail-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-zoho-mail-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-zoho-mail-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -75,15 +76,15 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **[Zoho Mail]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zoho-mail-tutorial/IC789603.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-zoho-mail-tutorial/IC789603.png "Configure Single Sign-On")
 
 2. **[ユーザーの Zoho Mail へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789604.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-zoho-mail-tutorial/IC789604.png "Configure Single Sign-On")
 
 3. **[アプリケーション URL の構成]** ページで、次の手順を実行します。
    
-    ![Configure App URL](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "Configure App URL")
    
     a. **[Zoho Mail サインオン URL]** ボックスに、`http://<company name>.ZohoMail.com` という形式で URL を入力します。
    
@@ -91,7 +92,7 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 4. **[Zoho Mail でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "Configure Single Sign-On")
 
 5. 別の Web ブラウザー ウィンドウで、Zoho Mail 企業サイトに管理者としてログインします。
 
@@ -101,13 +102,13 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 7. **[SAML 認証]** タブをクリックします。
    
-    ![[SAML 認証]](./media/active-directory-saas-zoho-mail-tutorial/IC789608.png "SAML Authentication")
+    ![SAML Authentication](./media/active-directory-saas-zoho-mail-tutorial/IC789608.png "SAML Authentication")
 
 8. **[SAML 認証の詳細]** セクションで、次の手順に従います。
    
-    ![[SAML 認証の詳細]](./media/active-directory-saas-zoho-mail-tutorial/IC789609.png "SAML Authentication Details")
+    ![SAML 認証の詳細](./media/active-directory-saas-zoho-mail-tutorial/IC789609.png "SAML Authentication Details")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** ボックスに貼り付けます。
+    a. Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** ボックスに貼り付けます。
    
     b. Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** ボックスに貼り付けます。
    
@@ -128,7 +129,7 @@ ms.openlocfilehash: 394777b77cbf2fe9fa779c270eec9dded21bdfae
 
 9. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zoho-mail-tutorial/IC789610.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-zoho-mail-tutorial/IC789610.png "Configure Single Sign-On")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Azure AD ユーザーが Zoho Mail にログインできるようにするには、そのユーザーを Zoho Mail にプロビジョニングする必要があります。  
@@ -147,7 +148,7 @@ Zoho Mail の場合、プロビジョニングは手動で行います。
    
     ![ユーザーの追加](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "Add User")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**電子メール ID**、**パスワード**を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**電子メール ID**、**パスワード**を入力します。
    
     b. **[OK]**をクリックします。  
       
@@ -169,17 +170,12 @@ Zoho Mail の場合、プロビジョニングは手動で行います。
 
 2. **Zoho Mail** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-zoho-mail-tutorial/IC789613.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-zoho-mail-tutorial/IC789613.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
     ![はい](./media/active-directory-saas-zoho-mail-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -1,21 +1,22 @@
 ---
-title: "Application Insights のアプリケーション マップ | Microsoft Docs"
+title: "Azure Application Insights のアプリケーション マップ | Microsoft Docs"
 description: "アプリケーション コンポーネント間の依存関係を、KPI やアラートと共に視覚的に表します。"
 services: application-insights
 documentationcenter: 
 author: SoubhagyaDash
-manager: douge
+manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 02/22/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: fc2d3c3fee5abbab0eab16c106c88c8753e703cc
-ms.openlocfilehash: f7ee8a43c83b1bad53acdb71de7a66d8afaa09b2
+ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
+ms.openlocfilehash: 04a34eb24df356018590b1791ecc7719a550ab51
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,7 +50,7 @@ ms.openlocfilehash: f7ee8a43c83b1bad53acdb71de7a66d8afaa09b2
 ## <a name="spot-problems"></a>問題の特定
 それぞれのノードには、関連するパフォーマンス指標 (対応するコンポーネントの負荷、パフォーマンス、エラー率など) が表示されます。 
 
-問題のリスクは、警告アイコンによって強調表示されます。 オレンジ色の警告は、要求、ページ ビュー、依存関係の呼び出しにおけるエラーの存在を意味します。 赤色は、エラー率が 5% を超えていることを示します。
+問題のリスクは、警告アイコンによって強調表示されます。 オレンジ色の警告は、要求、ページ ビュー、依存関係の呼び出しにおけるエラーの存在を意味します。 赤色は、エラー率が 5% を超えていることを示します。 このしきい値を調整する場合は、[オプション] を開きます。
 
 ![failure icons](./media/app-insights-app-map/04.png)
 
@@ -105,9 +106,6 @@ Azure でホストされるコンポーネントの場合、そのコンポー�
 
 ![MapLink-1 image](./media/app-insights-app-map/13.png)
 
+## <a name="next-steps"></a>次のステップ
 
-
-
-<!--HONumber=Nov16_HO4-->
-
-
+* [Azure ポータル](https://portal.azure.com)

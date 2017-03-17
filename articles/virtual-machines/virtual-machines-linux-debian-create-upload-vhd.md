@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -94,10 +95,5 @@ ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
 
 ## <a name="next-steps"></a>次のステップ
 これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
 ms.openlocfilehash: bd9133fde0c3ebfd915c8ae33daa6d0113b37889
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -80,9 +82,4 @@ YARN ResourceManager UI は、クラスターのヘッドノード上で実行�
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

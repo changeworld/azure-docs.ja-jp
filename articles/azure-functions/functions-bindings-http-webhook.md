@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 29df0e2198be05a64b6a90f1adf30a0c3b218d93
-ms.openlocfilehash: b40fa2d511910668438ba33291d16202dec8c8a8
+ms.sourcegitcommit: d405c58bf658222ceb72cc2b73e71f2ae1e1ed8d
+ms.openlocfilehash: ce7534b9ff675e1ae0902ba936e1ea897d80d936
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,9 +35,14 @@ Azure Functions には、以下のバインドが用意されています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+> [!TIP]
+>
+> [HTTPClient](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md) のベスト プラクティスに関するドキュメントを読むことをお勧めします。
+>
+
 <a name="httptrigger"></a>
 
-## <a name="http-trigger"></a>HTTP trigger
+## <a name="http-trigger"></a>HTTP トリガー
 HTTP トリガーは、HTTP 要求に応答して、関数を実行します。 これを、特定の URL または HTTP メソッドのセットに応答するようにカスタマイズできます。 HTTP トリガーも、webhook に応答するように構成することができます。 
 
 Functions ポータルを使用している場合は、事前作成されたテンプレートをすぐに使用し始めることもできます。 **[新しい関数]** を選択し、**[シナリオ]** ドロップダウンで [API と webhook] を選択します。 いずれかのテンプレートを選択し、**[作成]** をクリックします。
@@ -151,7 +157,7 @@ HTTP トリガーの入力バインドで省略可能な `route` プロパティ
 
     http://<yourapp>.azurewebsites.net/api/products/electronics/357
 
-これにより、関数のコードはアドレス内で "category" と "id" という 2 つのパラメーターをサポートできます。 パラメーターでは任意の [Web API ルート制約](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)を使用できます。 次の C# 関数コードは両方のパラメーターを使用します。
+これにより、関数のコードはアドレス内で "category" と "id" という&2; つのパラメーターをサポートできます。 パラメーターでは任意の [Web API ルート制約](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)を使用できます。 次の C# 関数コードは両方のパラメーターを使用します。
 
 ```csharp
     public static Task<HttpResponseMessage> Run(HttpRequestMessage request, string category, int? id, 
@@ -210,7 +216,7 @@ HttpTrigger は、セキュリティを強化するためにキーを利用で�
 
 キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示するには、新しいキーを作成するか、キーを新しい値にロールし、ポータル内でいずれかの関数に移動して、[管理] を選択します。 
 
-キーには、次の 2 つの種類があります。
+キーには、次の&2; つの種類があります。
 - **ホスト キー**: これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
 - **関数キー**: これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
 
@@ -435,10 +441,5 @@ module.exports = function (context, data) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

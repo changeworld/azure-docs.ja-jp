@@ -18,6 +18,7 @@ ms.author: asaxton
 translationtype: Human Translation
 ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
 ms.openlocfilehash: 60bd5469b4d22bac87e8794bcb6e1d3713645415
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -95,7 +96,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 * ディスク管理のベスト プラクティスとして、データ ファイル、ログ ファイル、バックアップ ファイルは **C**: および **D**: 以外のドライブに保存することをお勧めします。 たとえば、データ ディスク **E**: と **F**: を作成します。
   
   * 既定の **C**: ドライブのドライブ キャッシュ ポリシーは、データ操作に最適でありません。
-  * **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。 **D**: ドライブは永続化されず、BLOB ストレージには保存されません。 仮想マシンのサイズ変更などの管理タスクを行うと、 **D**: ドライブはリセットされます。 tempdb も含め、データベース ファイルには** D**: ドライブを使用**しない**ことをお勧めします。
+  * **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。 **D**: ドライブは永続化されず、BLOB ストレージには保存されません。 仮想マシンのサイズ変更などの管理タスクを行うと、 **D**: ドライブはリセットされます。 tempdb も含め、データベース ファイルには **D**: ドライブを使用**しない**ことをお勧めします。
     
     ディスクの作成と接続の詳細については、「 [データ ディスクを Windows 仮想マシンに接続する方法](../../virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 * 使用する予定がないサービスは、停止またはアンインストールします。 たとえば、仮想マシンを Reporting Services だけに使用する場合は、Analysis Services と SQL Server Integration Services を停止またはアンインストールします。 次の図は、既定で開始されるサービスの例を示しています。
@@ -346,10 +347,5 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 
 ### <a name="community-content"></a>コミュニティ コンテンツ
 * [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

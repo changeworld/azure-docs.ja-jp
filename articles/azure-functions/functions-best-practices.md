@@ -14,26 +14,29 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2016
-ms.author: wesmc
+ms.date: 02/27/2017
+ms.author: glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
+ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
+ms.openlocfilehash: 53dcaea155471d47eb61317c52d38524c05e4600
+ms.lasthandoff: 03/01/2017
+
 
 ---
 
-# <a name="best-practices-for-azure-functions"></a>Azure Functions のベスト プラクティス
+# <a name="tips-for-improving-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を向上させるためのヒント
 
-##<a name="overview"></a>Overview
+##<a name="overview"></a>概要
 
-この記事では、Function App を実装する際に考慮する必要がある一連のベスト プラクティスについて説明します。 Azure Function App は Azure App Service の&1; つであることに注意してください。 そのため、これらのベスト プラクティスが当てはまります。
+この記事では、Function App を実装する際に考慮する必要がある一連のベスト プラクティスについて説明します。 Function App は Azure App Service のアプリの&1; つであることに注意してください。 したがって、App Service のベスト プラクティスも適用されます。
 
 
 ## <a name="avoid-large-long-running-functions"></a>サイズが大きく実行時間の長い関数を使用しない
 
-サイズが大きく実行時間の長い関数では、予期しないタイムアウトの問題が発生する可能性があります。 関数は、Node.js 依存関係の多さからそのサイズが大きくなることがあります。 これらの依存関係をインポートすると、読み込み時間が長くなり、予期しないタイムアウトが発生する可能性があります。 Node.js 依存関係は、コード内の複数の `require()` ステートメントによって明示的に読み込むことができます。 これらの依存関係は、独自の内部依存関係を持つコードによって読み込まれる単一のモジュールに基づいて暗黙的に指定することもできます。  
+サイズが大きく実行時間の長い関数では、予期しないタイムアウトの問題が発生する可能性があります。 関数は、Node.js 依存関係の多さからそのサイズが大きくなることがあります。 これらの依存関係をインポートすると、読み込み時間が長くなり、予期しないタイムアウトが発生する可能性があります。 Node.js 依存関係は、コード内の複数の `require()` ステートメントによって明示的に読み込むことができます。 依存関係は、独自の内部依存関係を持つコードによって読み込まれる単一のモジュールに基づいて暗黙的に指定することもできます。  
 
-大きな関数は、可能な限り、連携して高速な応答を返すより小さな関数セットにリファクタリングしてください。 たとえば、webhook または HTTP トリガー関数では、一定の時間内に確認応答が必要になる場合があります。 この HTTP トリガー ペイロードは、キュー トリガー関数によって処理されるキューに渡すことができます。 このアプローチを使用すると、実際の作業を遅らせて、即座に応答を返すことができます。 webhook は、通常、即座に応答を必要とします。
+可能な限り、大きな関数は、連携して高速な応答を返す、より小さな関数セットにリファクタリングしてください。 たとえば、webhook または HTTP トリガー関数では、一定の時間内に確認応答が必要になる場合があります。 この HTTP トリガー ペイロードは、キュー トリガー関数によって処理されるキューに渡すことができます。 このアプローチを使用すると、実際の作業を遅らせて、即座に応答を返すことができます。 webhook は、通常、即座に応答を必要とします。
 
 
 ## <a name="cross-function-communication"></a>関数間の通信
@@ -71,8 +74,6 @@ ms.openlocfilehash: c638bf42b9adf906f195d77268637d056f7b00a9
 Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、「[Azure Storage キュー トリガー](functions-bindings-storage-queue.md#trigger)」の「**有害キュー メッセージの処理**」を参照してください。
  
 
-
-
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ Function App にテスト コードと運用環境のコードを混在させない
 
 Function App 内の関数はリソースを共有します。 たとえば、メモリは共有されます。 運用環境で Function App を使用している場合は、テストに関連する関数およびリソースを追加しないでください。 これが原因で、運用環境のコードの実行中に予期しないオーバーヘッドが発生する可能性があります。
@@ -103,10 +104,6 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+* [パターンとプラクティスによる HTTP パフォーマンスの最適化](https://github.com/mspnp/performance-optimization/blob/master/ImproperInstantiation/docs/ImproperInstantiation.md)
 
 

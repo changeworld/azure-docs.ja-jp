@@ -3,7 +3,7 @@ title: "トラブルシューティング: Azure AD パスワード管理 | Micr
 description: "リセット、変更、ライトバック、登録、ヘルプを参照する際に含める情報を含む、Azure AD パスワード管理の一般的なトラブルシューティングの手順。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: 18f3dcf7-9314-4a2b-8fed-54b00c0026dd
@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3aa3a2fce46f37b06b60472d296e21fd10e070dc
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="how-to-troubleshoot-password-management"></a>パスワード管理のトラブルシューティングの方法
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
-> 
-> 
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+>
+>
 
 パスワード管理に関する問題が発生した場合は、このページが役立ちます。 発生する可能性がある問題の多くは、簡単なトラブルシューティングの手順で解決できます。デプロイをトラブルシューティングする方法は以下をご覧ください。
 
@@ -46,9 +47,9 @@ ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
 * **ページ** – エラーが表示されたときに、どのページを表示していましたか (URL を含む)。
 * **日付 / 時刻 / タイム ゾーン** – エラーが表示された正確な日時を教えてください (タイム ゾーンを含む)。
 * **サポート コード** – エラーが表示されたときに生成されたサポート コードを教えてください (これを見つけるには、エラーを再現して、画面の下部にあるサポート コードのリンクをクリックします。生成された GUID をサポート エンジニアに送信します)。
-  
+
   * ページの下部にサポート コードが表示されない場合は、F12 キーを押して SID と CID を検索し、この&2; つの結果をサポート エンジニアに送信します。
-    
+
     ![][001]
 * **ユーザー ID** – エラーが表示されたユーザーの ID は何でしたか (例: user@contoso.com)?
 * **ユーザーに関する情報** – そのユーザーはフェデレーション ユーザー、パスワード ハッシュ同期されたユーザー、クラウド ユーザーでしたか。  そのユーザーには、AAD Premium または AAD Basic のライセンスが割り当てられていましたか。
@@ -1455,7 +1456,7 @@ Azure AD Connect 同期サービスを再起動すると、サービスに関す
 2. 検索ボックスに「**services.msc**」と入力し、**Enter** キーを押します。
 3. **[Microsoft Azure AD Connect]** エントリを検索します。
 4. このサービス エントリを右クリックして **[再起動]**をクリックし、処理が完了するまで待機します。
-   
+
    ![][002]
 
 これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。  同期サービスを再起動しても問題が解決しない場合は、次の手段としてパスワード ライトバック機能を無効にしてから再び有効にすることをお勧めします。
@@ -1468,14 +1469,14 @@ Azure AD Connect 同期サービスを再起動すると、サービスに関す
 3. **[AD DS に接続]** ダイアログ ボックスで、**AD ドメイン サービスの管理者の資格情報**を入力します。
 4. **[ユーザーを一意に識別]** ダイアログ ボックスで、**[次へ]** ボタンをクリックします。
 5. **[オプション機能]** ダイアログ ボックスで、**[パスワード ライトバック]** チェックボックスをオフにします。
-   
+
    ![][003]
 6. 他のダイアログ ページは何も変更せずに、**[構成の準備完了]** ページが表示されるまで **[次へ]** をクリックします。
 7. 構成ページで**パスワード ライトバック オプションが無効**になっていることを確認したら、緑色の **[構成]** ボタンをクリックして変更をコミットします。
 8. **[完了]** ダイアログ ボックスで、**[今すぐ同期]** オプションを選択解除し、**[完了]** をクリックしてウィザードを閉じます。
 9. **[Azure AD Connect 構成ウィザード]**をもう一度開きます。
 10. **手順 2 ～ 8 を繰り返します**。ただし、サービスを再度有効にするために **[オプションの機能]** 画面で**パスワード ライトバックのオプションがオン**になっていることを確認します。
-    
+
     ![][004]
 
 これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。
@@ -1496,14 +1497,12 @@ Azure AD Connect パッケージを再インストールすると、クラウド
 
 それでも問題が解決しない場合は、[パスワード ライトバックのトラブルシューティング](#troubleshoot-password-writeback)と「[Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)」に目を通して、その問題が議論されているかどうかをご確認ください。
 
-<br/>
-<br/>
-<br/>
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
@@ -1516,9 +1515,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [002]: ./media/active-directory-passwords-troubleshoot/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

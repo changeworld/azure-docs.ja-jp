@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b24490585019c049af4e1808bf980e36c5143e71
+ms.sourcegitcommit: 0837cb33bf438fb7fd9665d21d411f0170cdd393
+ms.openlocfilehash: 6f217ee0398933cfad713398952a79d39b6020c3
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -43,14 +44,14 @@ ms.openlocfilehash: b24490585019c049af4e1808bf980e36c5143e71
 ### <a name="to-enable-the-application-integration-for-empcenter-perform-the-following-steps"></a>EmpCenter のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-   ![[Active Directory]](./media/active-directory-saas-empcenter-tutorial/IC700993.png "Active Directory")
+   ![Active Directory](./media/active-directory-saas-empcenter-tutorial/IC700993.png "Active Directory")
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-   ![[アプリケーション]](./media/active-directory-saas-empcenter-tutorial/IC700994.png "Applications")
+   ![アプリケーション](./media/active-directory-saas-empcenter-tutorial/IC700994.png "Applications")
 4. ページの下部にある **[追加]** をクリックします。
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-empcenter-tutorial/IC749321.png "Add application")
+   ![アプリケーションの追加](./media/active-directory-saas-empcenter-tutorial/IC749321.png "Add application")
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-empcenter-tutorial/IC749322.png "Add an application from gallerry")
@@ -69,19 +70,19 @@ ms.openlocfilehash: b24490585019c049af4e1808bf980e36c5143e71
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **EmpCenter** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802919.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802919.png "Configure Single Sign-On")
 2. **[ユーザーの EmpCenter へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-empcenter-tutorial/IC802920.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802920.png "Configure Single Sign-On")
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
    
-   ![[アプリケーション設定の構成]](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
+   ![アプリケーションの設定の構成](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
    
    1. **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: *https://partner-authenticati.empcenter.com/workforce/SSO.do*) を入力します。
-   2.  **[次へ]**
+   2. **[次へ]**
 4. **[EmpCenter でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、メタデータ ファイルをコンピューターに保存します。
    
-   ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802922.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802922.png "Configure Single Sign-On")
 5. ダウンロードしたメタデータ ファイルを EmpCenter サポート チームに送信します。
    
    > [!NOTE]
@@ -91,7 +92,7 @@ ms.openlocfilehash: b24490585019c049af4e1808bf980e36c5143e71
    > 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
+   ![シングル サインオンの構成](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
    
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -110,16 +111,11 @@ EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート �
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 2. **EmpCenter** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-empcenter-tutorial/IC802924.png "Assign Users")
+   ![ユーザーの割り当て](./media/active-directory-saas-empcenter-tutorial/IC802924.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
    ![はい](./media/active-directory-saas-empcenter-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

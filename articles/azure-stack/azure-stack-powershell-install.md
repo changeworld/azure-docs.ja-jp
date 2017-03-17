@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: a16803323a4bca0093a66847e49a5b1a21296482
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: c1951d3331a9660ea58fa86cdeea69cb30d23f87
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -25,6 +25,11 @@ ms.lasthandoff: 03/06/2017
 # <a name="install-powershell-for-azure-stack"></a>Install PowerShell for Azure Stack  
 
 Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. In this guide, we walk you through the steps required to install PowerShell in Azure Stack. You can use the steps described in this article either from MAS-CON01, Azure Stack host computer, or from a Windows-based external client if you are connected through VPN. 
+
+   > [!NOTE]
+   > The following steps require PowerShell 5.0.  To check your version, run $PSVersionTable.PSVersion and compare the "Major" version.  
+   > 
+   >
 
 Azure Stack supports the 1.2.8 version of Azure PowerShell. Azure Stack compatible AzureRM commands are installed from the PowerShell Gallery. To verify if PowerShell Gallery is available, open a PowerShell Console on the MAS-CON01 computer or on your local computer if you are connected through VPN and run the following command:  
 
@@ -64,10 +69,10 @@ To install the Azure Stack PowerShell modules on a computer, which doesn’t alr
 2. In addition to the AzureRM modules, you should also install the Azure Stack-specific PowerShell modules such as AzureStackAdmin, AzureStackStorage, etc. by running the following command:
  ```powershell
     # To install the module in current user scope
-    Install-Module -Name AzureStack -Scope CurrentUser
+    Install-Module -Name AzureStack -RequiredVersion 1.2.8 -Scope CurrentUser
     
     # To install the module for all users on your computer. Run this command in an elevated PowerShell session
-    Install-Module -Name AzureStack
+    Install-Module -Name AzureStack -RequiredVersion 1.2.8
 ```
 
 3. To confirm the installation of AzureRM modules, run the following command:

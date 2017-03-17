@@ -1,5 +1,5 @@
 ---
-title: "プールの Linux コンピューティング ノードのプロビジョニング - Azure Batch | Microsoft Docs"
+title: "仮想マシン コンピューティング ノードでの Linux の実行 - Azure Batch | Microsoft Docs"
 description: "Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。"
 services: batch
 documentationcenter: python
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: 85aa18c7eab56c390dc9a9f7865a3468a43739f2
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: 4e0194f98ebcaffba2c5a89833a969112294e83a
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="provision-linux-compute-nodes-in-azure-batch-pools"></a>Azure Batch プールの Linux コンピューティング ノードのプロビジョニング
+# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
+
 Azure Batch を使用すると、Linux と Windows の両方の仮想マシンで並列コンピューティング ワークロードを実行できます。 この記事では、[Batch Python][py_batch_package] と [Batch .NET][api_net] の両方のクライアント ライブラリを使用して、Batch サービスで Linux コンピューティング ノードのプールを作成する方法について説明します。
 
 > [!NOTE]
@@ -348,9 +351,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [py_list_skus]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations.list_node_agent_skus
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

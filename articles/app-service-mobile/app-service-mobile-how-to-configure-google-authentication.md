@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Google 認証を構成す
 services: app-service
 documentationcenter: 
 author: mattchenderson
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 015f26c108a10ca346fc990cf1c6435493e137a4
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 09db38cfb5fb4277d4ca259eb10e388af33f1773
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -43,7 +44,7 @@ ms.openlocfilehash: 015f26c108a10ca346fc990cf1c6435493e137a4
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
 1. [Azure ポータル]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
 2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]**に切り替えます。
-3.  **[Google]**にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]**をクリックします
+3. **[Google]**にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]**をクリックします
    
    ![][1]
    
@@ -68,10 +69,5 @@ ms.openlocfilehash: 015f26c108a10ca346fc990cf1c6435493e137a4
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure ポータル]: https://portal.azure.com/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

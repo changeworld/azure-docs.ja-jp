@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
-ms.openlocfilehash: df8aebc78969ac6ceb00ee8b20a60cb153e8891b
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: fa62c0883b8230e514f60626b59fa3b3b20a6784
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -62,6 +63,9 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 予測実験の準備ができたので、新しい Azure Web サービスとしてデプロイできます。 Web サービスを使用してユーザーはデータをモデルに送信でき、モデルは予測を返します。
 
 予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択します。  Machine Learning Web サービス ポータルの [デプロイ] ページが開きます。
+
+> [!NOTE] 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
 
 #### <a name="machine-learning-web-service-portal-deploy-experiment-page"></a>Machine Learning Web サービス ポータルの [Deploy Experiment (実験のデプロイ)] ページ
 [Deploy Experiment (実験のデプロイ]) ページで、Web サービスの名前を入力します。
@@ -116,7 +120,7 @@ Machine Learning Studio から Web サービスをデプロイすると、サー
 Machine Learning Web サービスへのアクセスの詳細については、 [デプロイされた Azure Machine Learning Web サービスの使用方法](machine-learning-consume-web-services.md)に関するページをご覧ください。
 
 #### <a name="manage-your-new-web-service"></a>新しい Web サービスを管理する
-従来の Web サービスの Machine Learning Web サービス ポータルを管理することができます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]**をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]**をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]**をクリックします。
+新しい Web サービスの Machine Learning Web サービス ポータルを管理することができます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]**をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]**をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]**をクリックします。
 
 ### <a name="deploy-the-predictive-experiment-as-a-classic-web-service"></a>従来の Web サービスとして予測実験をデプロイする
 
@@ -187,9 +191,4 @@ Web サービスを更新するオプションの&1; つに、モデルをプロ
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

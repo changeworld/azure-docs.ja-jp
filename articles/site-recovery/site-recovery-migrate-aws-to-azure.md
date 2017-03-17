@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 02/12/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: c33b69dbdccd2a894b494175dec2bd423af478b1
-ms.openlocfilehash: 61909f588077f3bbdbaf368db1a9138a3b28b117
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c01805f797151f8970e1dcd2fdc58a8634fb0083
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -42,7 +42,7 @@ Site Recovery を使用すると、次のどのオペレーティング シス�
 
 このデプロイで必要なものを次に示します。
 
-* **構成サーバー**: Windows Server 2012 R2 を実行する Amazon EC2 VM が構成サーバーとしてデプロイされています。 既定では、構成サーバーをデプロイするときに、他の Azure Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバー) がインストールされます。 この記事では、Azure Portal での移行手順を説明しています。基となる手順の詳細については、[こちら](site-recovery-components.md#vmware-replication-to-azure)を参照してください。
+* **構成サーバー**: Windows Server 2012 R2 を実行する Amazon EC2 VM が構成サーバーとしてデプロイされています。 既定では、構成サーバーをデプロイするときに、他の Azure Site Recovery コンポーネント (プロセス サーバーとマスター ターゲット サーバー) がインストールされます。 この記事では、Azure Portal での移行手順を説明しています。基となる手順の詳細については、[こちら](site-recovery-components.md#vmware-to-azure)を参照してください。
 
 * **EC2 インスタンス**: 移行対象の Amazon EC2 仮想マシンのインスタンス。
 

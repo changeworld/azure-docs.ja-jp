@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 03/15/2017
 ms.author: sngun
 translationtype: Human Translation
 ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
@@ -37,7 +37,7 @@ You reference the secret from within a parameters file, which passes values to y
     "keyVault": {
     "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
     },
-    "secretName": "sqlAdminPassword"
+    "secretName": "{Secret name}"
 
 
 > [!NOTE]

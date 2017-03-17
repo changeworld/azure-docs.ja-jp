@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/03/2017
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: aea6f0fedb447e953b9db40342e5091bd35486af
-ms.openlocfilehash: 9b80ae8c247480e69025b86fac322166a4d5cb4c
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: b334ba6bbec1d0a7e23a514174bffae01c7fff05
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +60,13 @@ HTTPS の機能の主な特性は次のとおりです。
 >[!IMPORTANT] 
 >HTTPS をカスタム ドメイン上でアクティブにする前に、ドメインの検証を完了する必要があります。 ドメインの承認には 6 営業日が必要です。 6 営業日以内に承認されない場合、要求は取り消されます。  
 
-カスタム ドメインの HTTPS を有効にした後、HTTPS の証明書プロバイダーである DigiCert は、WHOIS 登録者情報に基づいて電子メール (既定) または電話でドメインの登録者に連絡し、ドメインの所有権を検証します。 WHOIS 登録者情報が非公開である場合、DigiCert は検証電子メールを ** admin@*<your-domain-name.com>*** に送信します。
+カスタム ドメインの HTTPS を有効にした後、HTTPS の証明書プロバイダーである DigiCert は、WHOIS 登録者情報に基づいて電子メール (既定) または電話でドメインの登録者に連絡し、ドメインの所有権を検証します。 さらに DigiCert は、次のアドレスに確認メールを送信します。 WHOIS 登録者情報がプライベートである場合は、これらのアドレスのいずれかから直接承認できることを確認してください。
+
+>admin@<your-domain-name.com> administrator@<your-domain-name.com>  
+>webmaster@<your-domain-name.com>  
+>hostmaster@<your-domain-name.com>  
+>postmaster@<your-domain-name.com>
+
 
 この電子メールを受信した場合、検証オプションは&2; つあります。
 
@@ -87,7 +94,7 @@ DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加
     
     現在は使用できませんが、今後使用できるようになる予定です。
 
-3. * DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
+3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
 
     24 時間以内に電子メールが届かない場合は Microsoft に問い合わせてください。
 
@@ -104,10 +111,5 @@ DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加
 
 - [Azure CDN エンドポイントでカスタム ドメイン](./cdn-map-content-to-custom-domain.md)を設定する方法を確認してください。
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

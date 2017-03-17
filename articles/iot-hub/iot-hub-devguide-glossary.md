@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
-ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
+ms.sourcegitcommit: c2b0c6b125ededd30e9db8e7f42796bdf6b413d4
+ms.openlocfilehash: f254b4a9b942004f0d1d1065ec2efb2ea5df8418
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -29,8 +30,8 @@ ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
 ## <a name="azure-cli"></a>Azure CLI
 [Azure CLI](../xplat-cli-install.md) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI バージョン は、Node.js を使用して実装されます。
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー)
-[Azure CLI 2.0 (プレビュー)](https://docs.microsoft.com/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI のプレビュー バージョン は、Python を使用して実装されます。
+## <a name="azure-cli-20"></a>Azure CLI 2.0
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI のプレビュー バージョン は、Python を使用して実装されます。
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
@@ -256,8 +257,3 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 
 ## <a name="x509-client-certificate"></a>X.509 クライアント証明書
 デバイスは X.509 証明書を使用して [IoT Hub](#iot-hub) で認証を受けることができます。 [SAS トークン](#shared-access-signature)の代わりに X.509 証明書を使用できます。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

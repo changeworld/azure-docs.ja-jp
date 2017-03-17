@@ -1,6 +1,7 @@
 # 概要
 ## [Azure Batch とは](batch-technical-overview.md)
 ## [機能の概要](batch-api-basics.md)
+## [API とツール](batch-apis-tools.md)
 ## [クォータと制限](batch-quota-limit.md)
 # 作業の開始
 ## [Batch アカウントを作成する](batch-account-create-portal.md)
@@ -25,7 +26,8 @@
 ### [Batch 診断ログ](batch-diagnostics.md)
 
 # リファレンス
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.3.0/azurerm.batch)
+## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-batch/latest)
@@ -45,9 +47,4 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

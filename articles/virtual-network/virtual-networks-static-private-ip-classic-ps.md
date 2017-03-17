@@ -1,10 +1,10 @@
 ---
-title: "PowerShell を使用してクラシック モードで静的プライベート IP を設定する方法 | Microsoft Docs"
-description: "静的プライベート IP (DIP) とそれらをクラシック モードおよび PowerShell で管理する方法を理解します。"
+title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure PowerShell | Microsoft Docs"
+description: "PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2a3fe657f9d4ed967701cfc91948b3a7ef799dbc
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 5da2992fad89a703086b7645c88f6d8e1a39e4b3
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-classic-in-powershell"></a>PowerShell での静的プライベート IP アドレス (クラシック) の設定方法
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -130,10 +133,5 @@ IP アドレス *192.168.1.101* が *TestVnet* という VNet で使用可能か
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

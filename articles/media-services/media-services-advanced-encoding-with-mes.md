@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 98060e27d72605934d773b3cb6291c7c5d0df6f8
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 01448fcff64e99429e2ee7df916b110c869307fb
+ms.openlocfilehash: 7776ac35f1a8a30c959286a9e31beb666f5fc799
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -29,17 +29,6 @@ ms.lasthandoff: 01/11/2017
 このトピックでは、Media Encoder Standard プリセットをカスタマイズする方法を説明します。 .NET を使ってエンコード タスクと、このタスクを実行するジョブを作成する方法については、「[Media Encoder Standard を使用した高度なエンコード](media-services-custom-mes-presets-with-dotnet.md)」を参照してください。 プリセットをカスタマイズしたら、カスタム プリセットをエンコード タスクに指定します。 
 
 このトピックでは、次のエンコード タスクを実行するカスタム プリセットを実演します。
-
-- [サムネイルを生成する](#thumbnails)
-- [動画をトリミングする (クリッピング)](#trim_video)
-- [オーバーレイを作成する](#overlay)
-- [音声が入力されない場合、無音オーディオ トラックを挿入する](#silent_audio)
-- [自動インターレース解除を無効にする](#deinterlacing)
-- [オーディオのみのプリセット](#audio_only)
-- [複数のビデオ ファイルを連結する](#concatenate)
-- [Media Encoder Standard を使用してビデオをトリミングする](#crop)
-- [入力に映像が含まれていないときにビデオ トラックを挿入する](#no_video)
-- [ビデオを回転させる](#rotate_video)
 
 ## <a name="support-for-relative-sizes"></a>相対サイズのサポート
 
@@ -53,7 +42,7 @@ ms.lasthandoff: 01/11/2017
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a name="a-idthumbnailsagenerate-thumbnails"></a><a id="thumbnails"></a>サムネイルを生成する
+## <a id="thumbnails"></a>サムネイルを生成する
 
 このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。 下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。 [こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを使用し、サムネイルを生成するコードを追加できます。  
 
@@ -66,7 +55,7 @@ ms.lasthandoff: 01/11/2017
 
 必ず「 [考慮事項](#considerations) 」セクションを確認してください。
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON プリセット
+### <a id="json"></a>JSON プリセット
     {
       "Version": 1.0,
       "Codecs": [
@@ -166,7 +155,7 @@ ms.lasthandoff: 01/11/2017
     }
 
 
-### <a name="a-idxmlaxml-preset"></a><a id="xml"></a>XML プリセット
+### <a id="xml"></a>XML プリセット
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -256,12 +245,12 @@ ms.lasthandoff: 01/11/2017
   * 既定: Start:{Best}
 * 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
-## <a name="a-idtrimvideoatrim-a-video-clipping"></a><a id="trim_video"></a>動画をトリミングする (クリッピング)
+## <a id="trim_video"></a>動画をトリミングする (クリッピング)
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。 エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[こちらのブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
 動画をトリミングするには、[こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 次の例では、入力ビデオの開始タイムスタンプは&0; であると想定しています。 **Sources** はプリセットの先頭に配置する必要があります。
 
-### <a name="a-idjsonajson-preset"></a><a id="json"></a>JSON プリセット
+### <a id="json"></a>JSON プリセット
     {
       "Version": 1.0,
       "Sources": [
@@ -498,7 +487,7 @@ ms.lasthandoff: 01/11/2017
       </Outputs>
     </Preset>
 
-## <a name="a-idoverlayacreate-an-overlay"></a><a id="overlay"></a>オーバーレイを作成する
+## <a id="overlay"></a>オーバーレイを作成する
 
 Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。 現在サポートされている形式は png、jpg、gif、bmp です。 下に定義されているプリセットはビデオ オーバーレイの基本例です。
 
@@ -708,7 +697,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     </Preset>
 
 
-## <a name="a-idsilentaudioainsert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
+## <a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
 既定では、映像のみで音声の入っていない入力をエンコーダーに送信すると、映像データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
 入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
@@ -731,7 +720,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="a-iddeinterlacingadisable-auto-de-interlacing"></a><a id="deinterlacing"></a>自動インターレース解除を無効にする
+## <a id="deinterlacing"></a>自動インターレース解除を無効にする
 コンテンツのインターレース解除を自動的に行う場合は、何もする必要はありません。 自動インターレース解除がオンになっていれば (既定値)、MES がインターレース フレームを自動で検出し、解除処理を行います (インターレースとしてマークされているフレームのみが処理されます)。
 
 自動インターレース解除はオフにすることもできますが、 この設定は変更しないことをお勧めします。
@@ -759,7 +748,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     </Sources>
 
 
-## <a name="a-idaudioonlyaaudio-only-presets"></a><a id="audio_only"></a>オーディオのみのプリセット
+## <a id="audio_only"></a>オーディオのみのプリセット
 このセクションでは、2 つのオーディオのみの MES プリセット (AAC Audio と AAC Good Quality Audio) を示します。
 
 ### <a name="aac-audio"></a>AAC Audio
@@ -806,7 +795,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
       ]
     }
 
-## <a name="a-idconcatenateaconcatenate-two-or-more-video-files"></a><a id="concatenate"></a>複数のビデオ ファイルを連結する
+## <a id="concatenate"></a>複数のビデオ ファイルを連結する
 
 複数のビデオ ファイルを連結するプリセットを生成する方法の例を次に示します。 最も一般的なシナリオは、ヘッダーまたはトレーラーをメイン ビデオに追加する場合です。 主な用途は、編集対象の複数のビデオ ファイルがプロパティ (ビデオの解像度、フレーム レート、オーディオ トラック数など) を共有している場合です。 フレーム レートやオーディオ トラック数が異なるビデオを混在させないように注意してください。
 
@@ -916,10 +905,10 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
       ]
     }
 
-## <a name="a-idcropacrop-videos-with-media-encoder-standard"></a><a id="crop"></a>Media Encoder Standard を使用してビデオをトリミングする
+## <a id="crop"></a>Media Encoder Standard を使用してビデオをトリミングする
 「 [Media Encoder Standard を使用してビデオをトリミングする](media-services-crop-video.md) 」をご覧ください。
 
-## <a name="a-idnovideoainsert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>入力に映像が含まれていないときにビデオ トラックを挿入する
+## <a id="no_video"></a>入力に映像が含まれていないときにビデオ トラックを挿入する
 既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 Azure Media Player ( [こちら](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)を参照) など、プレイヤーによっては、このようなストリームを処理できないことがあります。 その場合、この設定を使用することで、モノクロのビデオ トラックを出力に追加するようエンコーダーに強制できます。
 
 > [!NOTE]
@@ -928,7 +917,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 >
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>最も低いビットレートでのみビデオを挿入する
-["H264 複数ビットレート 720p"](https://msdn.microsoft.com/library/mt269960.aspx) などの複数ビットレート エンコード プリセットを使用して、ビデオ ファイルと音声のみのファイルが混在する、ストリーミングの入力カタログ全体をエンコードするとします。 このシナリオでは、入力に映像が含まれていないときに、すべての出力ビットレートでビデオを挿入するのではなく、最も低いビットレートでのみモノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これを実現には、"InsertBlackIfNoVideoBottomLayerOnly" フラグを指定する必要があります。
+["H264 複数ビットレート 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) などの複数ビットレート エンコード プリセットを使用して、ビデオ ファイルと音声のみのファイルが混在する、ストリーミングの入力カタログ全体をエンコードするとします。 このシナリオでは、入力に映像が含まれていないときに、すべての出力ビットレートでビデオを挿入するのではなく、最も低いビットレートでのみモノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これを実現には、"InsertBlackIfNoVideoBottomLayerOnly" フラグを指定する必要があります。
 
 [こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを使用し、次のように変更します。
 
@@ -967,7 +956,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     <StretchMode>AutoSize</StretchMode>
     <Condition>InsertBlackIfNoVideo</Condition>
 
-## <a name="a-idrotatevideoarotate-a-video"></a><a id="rotate_video"></a>ビデオを回転させる
+## <a id="rotate_video"></a>ビデオを回転させる
 [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) は、0/90/180/270 の角度による回転をサポートしています。 既定の動作は "自動" であり、この場合は受信するビデオ ファイルの回転メタデータの検出と、それに対する補正を試みます。 [こちら](media-services-mes-presets-overview.md)のセクションに定義されているいずれかのプリセットに次の **Sources** 要素を含めます。
 
 ### <a name="json-preset"></a>JSON プリセット

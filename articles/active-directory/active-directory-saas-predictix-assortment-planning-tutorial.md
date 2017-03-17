@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d8fefaf3c371a2eb0fb83c59122a7419cff99e79
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 8314db293ac3c9cbc2882c9a981819d0c5c02df3
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: d8fefaf3c371a2eb0fb83c59122a7419cff99e79
 Predictix Assortment Planning と Azure AD の統合には、次の利点があります。
 
 * Predictix Assortment Planning にアクセスできる Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に Predictix Assortment Planning にサインオン (シングル サインオン) できるようにすることが可能です。
+* ユーザーが自分の Azure AD アカウントで自動的に Predictix Assortment Planning にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,27 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Predictix Assortment Planning と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Predictix Assortment Planning でのシングル サインオンが有効なサブスクリプション
+* Predictix Assortment Planning での SSO が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Microsoft Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Predictix Assortment Planning の追加
-2. Microsoft Azure AD シングル サインオンの構成とテスト
+2. Microsoft Azure AD SSO の構成とテスト
 
-## <a name="adding-predictix-assortment-planning-from-the-gallery"></a>ギャラリーからの Predictix Assortment Planning の追加
+## <a name="add-predictix-assortment-planning-from-the-gallery"></a>ギャラリーからの Predictix Assortment Planning の追加
 Azure AD への Predictix Assortment Planning の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Predictix Assortment Planning を追加する必要があります。
 
 **ギャラリーから Predictix Assortment Planning を追加するには、次の手順に従います。**
@@ -80,10 +80,10 @@ Azure AD への Predictix Assortment Planning の統合を構成するには、�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_02.png)
 
-## <a name="configuring-and-testing-microsoft-azure-ad-single-sign-on"></a>Microsoft Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Predictix Assortment Planning で Microsoft Azure AD のシングル サインオンを構成し、テストします。
+## <a name="configure-and-test-microsoft-azure-ad-sso"></a>Microsoft Azure AD SSO の構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Predictix Assortment Planning で Microsoft Azure AD の SSO を構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Predictix Assortment Planning ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Predictix Assortment Planning の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Predictix Assortment Planning ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Predictix Assortment Planning の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を Predictix Assortment Planning の **[Username (ユーザー名)]** の値として割り当てます。
 
@@ -93,12 +93,12 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Microsoft Azure AD シングル サインオンをテストします。
 3. **[Predictix Assortment Planning のテスト ユーザーの作成](#creating-a-predictix-price-reporting-test-user)** - Predictix Assortment Planning で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Microsoft Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-microsoft-azure-ad-single-sign-on"></a>Microsoft Azure AD のシングル サインオンの構成
+### <a name="configure-microsoft-azure-ad-sso"></a>Microsoft Azure AD SSO の構成
 このセクションでは、クラシック ポータルで Microsoft Azure AD のシングル サインオンを有効にして、Predictix Assortment Planning アプリケーションでシングル サインオンを構成します。
 
-**Predictix Assortment Planning で Microsoft Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**Predictix Assortment Planning で Microsoft Azure AD SSO を構成するには、次の手順に従います。**
 
 1. クラシック ポータルの **Predictix Assortment Planning** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -109,34 +109,27 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_04.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが Predictix Assortment Planning アプリケーションへのサインオンに使用する URL を、**https://\<company name-pricing\>.ap.predictix.com/sso/request** 形式で入力します。
-   
-    b. click **[次へ]**
+  1. **[サインオン URL]** ボックスに、ユーザーが Predictix Assortment Planning アプリケーションへのサインオンに使用する URL を、**https://\<company name-pricing\>.ap.predictix.com/sso/request** 形式で入力します。
+  2. click **[次へ]**
 4. **[Predictix Assortment Planning でのシングル サインオンの構成]** ページで、次の手順に従います。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_predictixassortmentplanning_05.png)
-   
-    a. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
+  1. **[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。  
+  2. **[次へ]**をクリックします。
 5. アプリケーション用に構成された SSO を入手するために、Predictix Assortment Planning サポート チームに連絡し、次のものを情報として提供します。
    
-    • ダウンロードした証明書
-   
-    • **エンティティ ID**
-   
-    • **SAML SSO URL**
-   
-    • **シングル サインアウト サービス URL**
-6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+  * ダウンロードした証明書
+  * **エンティティ ID**  
+  * **SAML SSO URL**
+  * **シングル サインアウト サービス URL**
+6. クラシック ポータルで、SSO の構成確認を選択し、**[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
 ![Azure AD ユーザーの作成][20]
@@ -153,39 +146,33 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_05.png) 
-   
-    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_06.png) 
-   
-   a. **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_05.png) 
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_06.png) 
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictix-assortment-planning-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+  1. **[新しいパスワード]** の値を書き留めます。 
+  2. **[完了]** をクリックします。   
 
-### <a name="creating-an-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning のテスト ユーザーの作成
+### <a name="create-an-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning テスト ユーザーの作成
 このセクションでは、Predictix Assortment Planning で Britta Simon というユーザーを作成します。 Predictix Assortment Planning サポート チームと連携し、Predictix Assortment Planning プラットフォームにユーザーを追加してください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 このセクションでは、Britta Simon に Predictix Assortment Planning へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザーの割り当て][200] 
@@ -206,7 +193,7 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 このセクションでは、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Predictix Assortment Planning] タイルをクリックすると、自動的に Predictix Assortment Planning アプリケーションにサインオンします。
@@ -232,9 +219,4 @@ Predictix Assortment Planning で Microsoft Azure AD のシングル サイン�
 [203]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictix-assortment-planning-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

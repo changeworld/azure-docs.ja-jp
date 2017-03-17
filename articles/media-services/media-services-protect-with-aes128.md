@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 5b81c3cdabe7b02a2049d7d1a5e227f5886bdbad
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 3d292501fba980edcb567e7da7c79e8f1d90d1dd
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -71,12 +71,12 @@ Media Services では、キーを要求するユーザーを承認する複数�
 ## <a name="current-limitations"></a>現時点での制限事項
 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
-## <a name="a-idcreateassetacreate-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>資産を作成し、その資産にファイルをアップロードする
+## <a id="create_asset"></a>資産を作成し、その資産にファイルをアップロードする
 ビデオの管理、エンコード、およびストリーミングを行うには、最初にコンテンツを Microsoft Azure Media Services にアップロードする必要があります。 コンテンツをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 詳細については、「 [Media Services アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)」を参照してください。
 
-## <a name="a-idencodeassetaencode-the-asset-containing-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
+## <a id="encode_asset"></a>ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。 詳しくは、[ダイナミック パッケージの概要](media-services-dynamic-packaging-overview.md)に関する記事をご覧ください。
 
 >[!NOTE]
@@ -86,17 +86,17 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 エンコード手順については、「 [Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
 
-## <a name="a-idcreatecontentkeyacreate-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
+## <a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 Media Services では、コンテンツ キーに、資産を暗号化するときに使用するキーが含まれています。
 
 詳細については、 [コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
-## <a name="a-idconfigurekeyauthpolicyaconfigure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
+## <a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。キーがクライアント (プレーヤー) に配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。
 
 詳細については、「 [コンテンツ キー承認ポリシーを構成する](media-services-dotnet-configure-content-key-auth-policy.md)」を参照してください。
 
-## <a name="a-idconfigureassetdeliverypolicyaconfigure-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
+## <a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
 資産の配信ポリシーを構成します。 資産の配信ポリシーの構成には、次の内容が含まれます。
 
 * キー取得 URL。 
@@ -106,7 +106,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 詳細については、 [資産の配信ポリシーの構成 ](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
 
-## <a name="a-idcreatelocatoracreate-an-ondemand-streaming-locator-in-order-to-get-a-streaming-url"></a><a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
+## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 Smooth、DASH、HLS のストリーミング URL をユーザーに提供する必要があります。
 
 > [!NOTE]
@@ -132,7 +132,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
-## <a name="a-idclientrequestahow-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
+## <a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
 以前の手順で、マニフェスト ファイルを参照する URL を構成しました。 クライアントは、キー配信サービスへの要求を実行するために、ストリーミング マニフェスト ファイルから必要な情報を抽出する必要があります。
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
@@ -220,7 +220,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
         return key;
     }
 
-## <a name="a-idexampleaexample"></a><a id="example"></a>例
+## <a id="example"></a>例
 1. 新しいコンソール プロジェクトを作成します。
 2. NuGet を使用して、Azure Media Services .NET SDK Extensions をインストールして追加します。 このパッケージをインストールすると、Media Services .NET SDK が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
 3. アカウント名とキー情報が含まれた構成ファイルを追加します。
@@ -241,7 +241,10 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
         </configuration>
 
 1. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
-   
+ 
+    >[!NOTE]
+    >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+
     必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
         using System;
@@ -372,20 +375,11 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
                     Console.WriteLine("Created assetFile {0}", assetFile.Name);
 
-                    var policy = _context.AccessPolicies.Create(
-                                            assetName,
-                                            TimeSpan.FromDays(30),
-                                            AccessPermissions.Write | AccessPermissions.List);
-
-                    var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
 
                     Console.WriteLine("Upload {0}", assetFile.Name);
 
                     assetFile.Upload(singleFilePath);
                     Console.WriteLine("Done uploading {0}", assetFile.Name);
-
-                    locator.Delete();
-                    policy.Delete();
 
                     return inputAsset;
                 }

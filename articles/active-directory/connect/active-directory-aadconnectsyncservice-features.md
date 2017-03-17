@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: af5a8b4dd87d041282d6a857a505ad6c167caac0
-ms.openlocfilehash: ab1879cc1ef998f889a86ea7e2d4e7143e6c1cc4
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a439f421d726f58b2d21fb4a0e883e16db719364
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,7 +40,6 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 | DirSyncFeature | コメント |
 | --- | --- |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。 |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。 |
 
@@ -56,12 +56,13 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: デバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同期: ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
 | PasswordSync |[Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-synchronization.md) |
 | UnifiedGroupWriteback |[プレビュー: グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |現在、サポートされていません。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重複属性の回復性
-UPN や proxyAddress が重複している場合、そのオブジェクトのプロビジョニングが失敗する代わりに、重複している属性を "検疫" し、一時的な値を割り当てます。 競合が解決されると、一時的な UPN は自動的に適切な値に変更されます。 この動作は、UPN と proxyAddress に個別に有効にできます。 詳細については、「 [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)」を参照してください。
+UPN や proxyAddress が重複している場合、そのオブジェクトのプロビジョニングが失敗する代わりに、重複している属性を "検疫" し、一時的な値を割り当てます。 競合が解決されると、一時的な UPN は自動的に適切な値に変更されます。 詳細については、「 [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)」を参照してください。
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName のあいまい一致
 この機能を有効にすると、[プライマリ SMTP アドレス](https://support.microsoft.com/kb/2641663)に加えて UPN にもあいまい一致が有効になります。プライマリ SMTP アドレスでは、あいまい一致が常に有効になっています。 あいまい一致は、Azure AD 内の既存のクラウド ユーザーをオンプレミスのユーザーと照合するために使用されます。
@@ -107,10 +108,5 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ## <a name="see-also"></a>関連項目
 * [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

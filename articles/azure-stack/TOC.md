@@ -55,6 +55,8 @@
 #### [開始する前に](azure-stack-app-service-before-you-get-started.md)
 #### [App Service リソース プロバイダーのデプロイ](azure-stack-app-service-deploy.md)
 #### [web worker ロールを追加する](azure-stack-app-service-add-worker-roles.md)
+#### [デプロイ ソースを構成する](azure-stack-app-service-configure-deployment-sources.md)
+#### [Azure Stack 上の App Service で FTP を有効にする](azure-stack-app-service-enable-ftp.md)
 ### Marketplace の設定
 #### [Marketplace の概要](azure-stack-marketplace.md)
 #### [Marketplace アイテムをダウンロードする](azure-stack-download-azure-marketplace-item.md)
@@ -110,6 +112,7 @@
 
 # トラブルシューティング
 ## [既知の問題](azure-stack-troubleshooting.md)
+## [Azure Stack の診断](azure-stack-diagnostics.md)
 
 # リソース
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

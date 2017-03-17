@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 27ff53646992308d574dcc2e631cd63b8227f9c8
-ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
+ms.sourcegitcommit: 847a8bdcf880b56f587f6759058825fd1965d29e
+ms.openlocfilehash: 43ab735b91bf3f3f1e9631067827f2c456dd7b72
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="managing-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
-管理者は、ユーザーとデバイスに関する次の設定を管理できます。  
+管理者は、ユーザーとデバイスの次の設定を管理できます。
 
-* [選択したユーザーについて連絡方法の再指定を必須にする](#require-selected-users-to-provide-contact-methods-again)
-* [ユーザーの既存のアプリ パスワードを削除する](#delete-users-existing-app-passwords)
-* [ユーザーのすべての停止中のデバイスで MFA を復元する](#restore-mfa-on-all-suspended-devices-for-a-user)
-
-これは、コンピューターまたはデバイスが紛失または盗難にあった場合や、ユーザーのアクセスを削除する必要がある場合に便利です。
+* 選択したユーザーについて連絡方法の再指定を必須にする
+* ユーザーの既存のアプリ パスワードを削除する
+* ユーザーのすべての停止中のデバイスで MFA を復元する
 
 ## <a name="require-selected-users-to-provide-contact-methods-again"></a>選択したユーザーについて連絡方法の再指定を必須にする
 この設定は、ユーザーのサインイン時に、もう一度登録プロセスを完了することを強制します。 ブラウザー以外のアプリは、ユーザーがアプリ パスワードを持っている場合に引き続き動作しますので注意してください。  ユーザー アプリ パスワードを削除するには、 **[選択したユーザーが生成したすべての既存のアプリ パスワードを削除する]**を選択することもできます。
@@ -62,7 +61,11 @@ ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
 10. [閉じる] をクリックします。
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>ユーザーの記憶されたすべてのデバイスで MFA を復元する
-管理者は、ユーザーのデバイスやブラウザーで Multi-Factor Authentication を復元することができます。 これを実行すると、ユーザーのすべてのデバイスとブラウザーから MFA の記憶が削除されるので、ユーザーは次回サインインするときに MFA を使用する必要があります。
+Azure Multi-Factor Authentication の構成可能な機能の&1; つに、デバイスを信頼済みとしてマークすることをユーザーが選択できる機能があります。 詳細については、「[Azure Multi-Factor Authentication の設定を構成する](multi-factor-authentication-whats-next.md#remember-multi-factor-authentication-for-devices-that-users-trust)」をご覧ください。
+
+ユーザーは通常使用しているデバイスで、構成可能な日数の間、2 段階認証を省略することを選択できます。 アカウントが侵害されたり、信頼済みデバイスを紛失したりした場合、信頼済みの状態を削除し、2 段階認証を再び要求できる必要があります。
+
+**[記憶されているすべてのデバイスに多要素認証を復元]** 設定は、ユーザーがデバイスを信頼済みとしてマークしているかどうかに関係なく、次回のサインイン時に&2; 段階認証の実行を要求することを意味します。 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>ユーザーの中断されたすべてのデバイスで MFA を復元する方法
 1. Azure クラシック ポータルにサインインします。
@@ -76,9 +79,4 @@ ms.openlocfilehash: 826fc2b2eaaf180d922c7a9a4c329ec4379c2ae0
    ![アプリ パスワードの削除](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

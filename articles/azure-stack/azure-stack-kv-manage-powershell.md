@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 3c7f63bccd390e994bfff5d035fcd79e4ef2bc1c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: bf1a5ecc6d1898d025388e57f47c1f50d5afb3f9
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -88,6 +88,17 @@ New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -L
 ![new kv](media/azure-stack-kv-manage-powershell/image4.png)
 
 The output of this command shows the properties of the key vault that you created. When an application accesses this vault, it uses the **Vault URI** property shown in the output. For example, the vault URI here is **https://vault01.vault.local.azurestack.external**. Applications interacting with this key vault through REST API must use this URI.
+
+In ADFS based deployments, when you create a key vault by using PowerShell, you might receive a warning that says "Access policy is not set. No user or application have access permission to use this vault". To resolve this issue, set an access policy for the vault by using the [Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) command:
+
+```PowerShell
+# Obtain the security identifier(SID) of the active directory user
+$adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
+$objectSID = $adUser.SID.Value 
+
+#Set the key vault access policy
+Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation 
+```
 
 ## <a name="manage-keys-and-secrets"></a>Manage keys and secrets
 

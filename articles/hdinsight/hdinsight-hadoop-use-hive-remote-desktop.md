@@ -15,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
 ms.openlocfilehash: 565220fa7b90ac49fd0c9ad01d36ba50fd7f6849
@@ -32,16 +33,16 @@ ms.lasthandoff: 01/18/2017
 >
 > HDInsight 3.4 以上でのクラスターでのコマンド ラインからの直接的な Hive クエリの実行に関する情報については、[HDInsight と Beeline での Hive の使用](hdinsight-hadoop-use-hive-beeline.md)に関するページを参照してください。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Windows ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 * Windows 10、Window 8、Windows 7 を実行するクライアント コンピューター
 
-## <a name="a-idconnectaconnect-with-remote-desktop"></a><a id="connect"></a>リモート デスクトップへの接続
+## <a id="connect"></a>リモート デスクトップへの接続
 「 [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>Hive コマンドの使用
+## <a id="hive"></a>Hive コマンドの使用
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hive を使用します。
 
 1. HDInsight デスクトップから、 **Hadoop コマンド ライン**を起動します。
@@ -96,10 +97,10 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
      3 つのデータ行が返され、各行の t4 列には **[ERROR]** が含まれます。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)

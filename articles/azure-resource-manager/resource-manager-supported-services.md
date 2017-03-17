@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/27/2016
-ms.author: magoedte;tomfitz
+ms.date: 03/06/2017
+ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 53e57807e97671bd279c03ada4c147fc1e7f1e45
-ms.openlocfilehash: c7bfc5584c11a7e69aedeb93f143a78d97c9369a
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c645a8aa317b12d52f0246d0f9205294d56b6a0d
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -32,8 +33,7 @@ Azure ポータルとクラシック ポータルでサポートされている�
 ## <a name="compute"></a>計算
 | サービス | リソース マネージャーが有効 | REST API | スキーマ | クイック スタート テンプレート |
 | --- | --- | --- | --- | --- |
-| Batch
- |あり |[Batch REST](/rest/api/batchservice) |[Batch スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-12-01/Microsoft.Batch.json) | |
+| Batch |あり |[Batch REST](/rest/api/batchservice) |[Batch スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-12-01/Microsoft.Batch.json) | |
 | Container Registry |はい |[Container Registry の REST](/rest/api/containerregistry) |[Container Registry スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-06-27-preview/Microsoft.ContainerRegistry.json) |[Microsoft.ContainerRegistry](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerRegistry%22&type=Code) |
 | Container Service |はい |[コンテナー サービスの REST](/rest/api/compute/containerservices) |[コンテナー スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.ContainerService.json) |[Microsoft.ContainerService](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerService%22&type=Code) |
 | Dynamics Lifecycle Services |あり | | | |
@@ -163,48 +163,41 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 ### <a name="powershell"></a>PowerShell
 使用可能なすべてのリソース プロバイダーを取得する方法を次の例に示します。
 
-    Get-AzureRmResourceProvider -ListAvailable
+```powershell
+Get-AzureRmResourceProvider -ListAvailable
+```
 
 
 次の例では、特定のリソース プロバイダーのリソースの種類を取得しています。
 
-    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
-
-次のように出力されます。
-
-    ResourceTypeName                Locations                                         
-    ----------------                ---------                                         
-    sites/extensions                {Brazil South, East Asia, East US, Japan East...} 
-    sites/slots/extensions          {Brazil South, East Asia, East US, Japan East...} .
-    ...
+```powershell
+(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
+```
 
 リソース プロバイダーを登録するには、名前空間を指定します。
 
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+```powershell
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+```
 
 ### <a name="azure-cli"></a>Azure CLI
 使用可能なすべてのリソース プロバイダーを取得する方法を次の例に示します。
 
-    azure provider list
+```azurecli
+az provider list
+```
 
-次のように出力されます。
+特定のリソース プロバイダーの情報は、次のコマンドで表示できます。
 
-    info:    Executing command provider list
-    + Getting registered providers
-    data:    Namespace                        Registered
-    data:    -------------------------------  -------------
-    data:    Microsoft.ApiManagement          Unregistered
-    data:    Microsoft.AppService             Registered
-    data:    Microsoft.Authorization          Registered
-    ...
-
-特定のリソース プロバイダーの情報は、次のコマンドでファイルに保存できます。
-
-    azure provider show Microsoft.Web -vv --json > c:\temp.json
+```azurecli
+az provider show --namespace Microsoft.Web
+```
 
 リソース プロバイダーを登録するには、名前空間を指定します。
 
-    azure provider register -n Microsoft.ServiceBus
+```azurecli
+az provider register --namespace Microsoft.ServiceBus
+```
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 通常、リソースをデプロイするときはリソースのリージョンを指定する必要があります。 リソース マネージャーはすべてのリージョンでサポートされていますが、デプロイするリソースはすべてのリージョンではサポートされていない場合があります。 さらに、サブスクリプションでの制限により、リソースをサポートする一部のリージョンを使用できない場合があります。 これらの制限事項は、本国での税金に関する問題のため、またはサブスクリプション管理者によって設けられた、使用を特定のリージョンに制限するポリシーの結果である場合があります。 
@@ -230,40 +223,17 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 ### <a name="powershell"></a>PowerShell
 次の例では、Web サイトでサポートされるリージョンを取得する方法を示します。
 
-    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
-
-次のように出力されます。
-
-    Brazil South
-    East Asia
-    East US
-    Japan East
-    Japan West
-    North Central US
-    North Europe
-    South Central US
-    West Europe
-    West US
-    Southeast Asia
-    Central US
-    East US 2
+```powershell
+((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+```
 
 ### <a name="azure-cli"></a>Azure CLI
-次の例では、リソースの種類ごとにサポートされるすべての場所が返されます。
+次の例では、Web サイトでサポートされる場所を取得する方法を示します。
 
-    azure location list
+```azurecli
+az provider show --namespace Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
+```
 
-また、 [jq](https://stedolan.github.io/jq/)などの JSON ユーティリティを使用して場所の結果をフィルターすることもできます。
-
-    azure location list --json | jq '.[] | select(.name == "Microsoft.Web/sites")'
-
-次のような結果が返されます。
-
-    {
-      "name": "Microsoft.Web/sites",
-      "location": "Brazil South,East Asia,East US,Japan East,Japan West,North Central US,
-            North Europe,South Central US,West Europe,West US,Southeast Asia,Central US,East US 2"
-    }
 
 ## <a name="supported-api-versions"></a>サポートされる API バージョン
 テンプレートをデプロイするとき、各リソースの作成に使用する API バージョンを指定する必要があります。 API バージョンは、リリース プロバイダーがリリースする REST API のバージョンに一致します。 リソース プロバイダーは、新しい機能を有効にすると、REST API の新しいバージョンをリリースします。 そのため、テンプレートで指定した API のバージョンにより、テンプレートで指定できるプロパティが変わります。 通常、テンプレートを作成するときは、最新の API バージョンを選択します。 既存のテンプレートの場合、以前の API バージョンの使用を続けるか、テンプレートを最新版に更新して新しい機能を最大限に活用するか決定できます。
@@ -277,35 +247,34 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 ### <a name="powershell"></a>PowerShell
 次の例では、特定のリソースの種類で利用できる API バージョンを取得する方法を示します。
 
+```powershell
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+```
 
 次のように出力されます。
 
-    2015-08-01
-    2015-07-01
-    2015-06-01
-    2015-05-01
-    2015-04-01
-    2015-02-01
-    2014-11-01
-    2014-06-01
-    2014-04-01-preview
-    2014-04-01
+```powershell
+2015-08-01
+2015-07-01
+2015-06-01
+2015-05-01
+2015-04-01
+2015-02-01
+2014-11-01
+2014-06-01
+2014-04-01-preview
+2014-04-01
+```
 
 ### <a name="azure-cli"></a>Azure CLI
-次のコマンドで、リソース プロバイダーの情報 (利用可能な API バージョンを含む) をファイルに保存できます。
+次のコマンドを使用して、リソース プロバイダーで使用可能な API バージョンを取得します。
 
-    azure provider show Microsoft.Web -vv --json > c:\temp.json
-
-ファイルを開き、 **apiVersions** 要素を検索できます。
+```azurecli
+az provider show --namespace Microsoft.Web --query "resourceTypes[?resourceType=='sites'].apiVersions"
+```
 
 ## <a name="next-steps"></a>次のステップ
 * リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * リソースをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

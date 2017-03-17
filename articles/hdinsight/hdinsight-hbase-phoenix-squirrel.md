@@ -14,6 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
 ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340

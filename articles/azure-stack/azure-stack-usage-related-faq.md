@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: alfredop
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 11cbaf6447c5ab87ddadd12ba3ff5df1383929d8
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 9abc054e7979bffb4172f9bcd85d3b5dd222e456
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -28,8 +28,9 @@ This article answers some frequently asked questions about the Azure Stack Usage
 Currently, usage is reported for the network, storage, and compute resource providers.
 
 | **Resource provider** | **Meter ID** | **Meter name** | **Unit** | **Additional info** |
-| --- | --- | --- | --- | --- |
-| **Network** |f114cb19-ea64-40b5-bcd7-aee474b62853 |Public IP Address Usage |IP address |Count of IP addresses used |
+| --- | --- | --- | --- | --- | 
+| **Network** |F271A8A388C44D93956A063E1D2FA80B |Static IP Address Usage |IP addresses|Count of IP addressess used | 
+| |9E2739BA86744796B465F64674B822BA |Dynamic IP Address Usage |IP addresses|Count of IP addressess used | 
 | **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*hours |Total capacity consumed by tables |
 | | B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*hours |Total capacity consumed by page blobs |
 | | B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*hours |Total capacity consumed by queue |
@@ -45,6 +46,7 @@ Currently, usage is reported for the network, storage, and compute resource prov
 | | DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Outgress in GB |Queue service data egress in GB |
 | **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Base VM Size Hours |Virtual core minutes | Number of vcores times minutes the VM ran |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM Size Hours |Virtual core minutes | Number of vcores times minutes the VM ran |
+| |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM size hours |VM hours |Captures both Base and Windows VM. Does not adjust for vcores |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>How do the Azure Stack Usage APIs compare to the [Azure Usage API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (currently in public preview)?
 * The Tenant Usage API is consistent with the Azure API, with one exception: the *showDetails* flag currently is not supported in Azure Stack.

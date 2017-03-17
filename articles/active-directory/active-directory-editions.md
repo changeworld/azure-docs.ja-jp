@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
-ms.openlocfilehash: 8dd4c5ab11c43ca09085004ee4dce3e616b19d8e
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: b875c83ba7d87a572e78625e4038840aadcf9c85
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -144,7 +145,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 **詳細:**
 
-* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
+* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン)
 **種類:** 共通機能
@@ -241,7 +242,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 ## <a name="premium-features"></a>Premium の機能
 
 
-#### <a name="a-nameself-service-groupaself-service-group-and-app-managementself-service-application-additionsdynamic-groups"></a><a name="self-service-group"></a>セルフサービスによるグループとアプリの管理/セルフサービスによるアプリケーションの追加/動的なグループ
+#### <a name="self-service-group"></a>セルフサービスによるグループとアプリの管理/セルフサービスによるアプリケーションの追加/動的なグループ
 **種類:** Premium の機能
 
 **可用性:**
@@ -273,7 +274,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 * [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 
 
-#### <a name="a-namemim-cal-mim-serveramim-cal--mim-server"></a><a name="mim-cal-mim-server"></a>MIM CAL + MIM サーバー
+#### <a name="mim-cal-mim-server"></a>MIM CAL + MIM サーバー
 Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。 Microsoft Identity Manager は Windows Server オペレーティング システム上で実行されるので、サーバーで Windows Server の有効なライセンス版が実行されていれば、そのサーバーに Microsoft Identity Manager をインストールして使用できます。 Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
 
 **種類:** Premium の機能
@@ -344,7 +345,7 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | ![○][12] |![○][12] |![○][12] |![○][12] |
 
 
-#### <a name="a-namemdm-auto-enrollmentamdm-auto-enrollment-self-service-bitlocker-recovery-additional-local-administrators-to-windows-10-devices-via-azure-ad-join"></a><a name="mdm-auto-enrollment"></a>MDM の自動登録、セルフサービスによる Bitlocker 回復、Azure AD Join による Windows 10 デバイスへのローカル管理者の追加
+#### <a name="mdm-auto-enrollment"></a>MDM の自動登録、セルフサービスによる Bitlocker 回復、Azure AD Join による Windows 10 デバイスへのローカル管理者の追加
 **種類:** Azure Active Directory Join – Windows 10 のみの関連機能
 
 **可用性:**
@@ -384,9 +385,4 @@ Azure AD には、Free、Basic、Premium (P1 および P2) の各エディショ
 
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 02/27/2017
 ms.author: curtand
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a9cebafd1ad8f513bfab897970241f7b82b2a53
-ms.openlocfilehash: cea745934c36297f5fe0867f4335a797a3ae2515
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: f8b63e5831897d3a45298b0415bb2d6d44ab0de1
+ms.openlocfilehash: 73727d8d1e5de01794589538bd67d3d698d325a0
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="assigning-licenses-to-a-group-in-azure-active-directory"></a>Azure Active Directory でのグループへのライセンス割り当て
+# <a name="assign-licenses-to-a-group-of-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーのグループへのライセンスの割り当て
 
 この記事では、製品ライセンスをグループに割り当てて、グループのメンバー全員に正しくライセンスを付与できたことを確認するという、基本のシナリオについて説明します。
 
@@ -105,5 +106,5 @@ ms.lasthandoff: 02/22/2017
 * [Azure Active Directory のグループベースのライセンスとは](active-directory-licensing-whatis-azure-portal.md)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
-* [Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ](active-directory-licensing-group-advanced.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: 8f72f2ca66a5d1394e87c7c0f8d8dff9da73732f
-ms.openlocfilehash: 612ef94efb9776ae0ce768de1b59fb208824da93
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 796bf9b1219b7f0e2c68688c5f5b51163ef4b49b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -165,6 +165,26 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
         "details": "ExternalEndpointDisabled"
     }
 
+## <a name="view-events"></a>イベントの表示
+
+*iothub-explorer* ツールを使用すると、IoT Hub が監視イベントを生成していることを簡単にテストできます。 このツールをインストールする方法については、[iothub-explorer][lnk-iothub-explorer] GitHub リポジトリにある手順をご覧ください。
+
+1. **[接続]** 監視カテゴリがポータルで **[詳細]** に設定されていることを確認します。
+
+1. コマンド プロンプトで次のコマンドを実行して、監視エンドポイントから読み取ります。
+
+    ```
+    iothub-explorer monitor-ops --login {your iothubowner connection string}
+    ```
+
+1. 別のコマンド プロンプトで次のコマンドを実行して、デバイスからクラウドへのメッセージをデバイスが送信するようにシミュレートします。
+
+    ```
+    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
+    ```
+
+1. シミュレートされたデバイスが IoT Hub に接続すると、監視イベントが最初のコマンド プロンプトに表示されます。
+
 ## <a name="next-steps"></a>次のステップ
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
@@ -182,4 +202,5 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 

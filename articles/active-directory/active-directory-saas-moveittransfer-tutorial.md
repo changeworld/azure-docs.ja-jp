@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3207124143dbc148206ea33d6030a986226c4d66
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: e1b4cda400205611a957c23d9a9b90c918d260f3
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 3207124143dbc148206ea33d6030a986226c4d66
 MOVEit Transfer と Azure AD の統合には、次の利点があります。
 
 * MOVEit Transfer にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで MOVEit Transfer に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
+* ユーザーが自分の Azure AD アカウントで自動的に MOVEit Transfer にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,7 +36,7 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Azure AD と MOVEit Transfer の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* MOVEit Transfer でのシングル サインオンが有効なサブスクリプション
+* MOVEit Transfer での SSO が有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -45,15 +46,15 @@ Azure AD と MOVEit Transfer の統合を構成するには、次のものが必
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの MOVEit Transfer の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
 ## <a name="adding-moveit-transfer-from-the-gallery"></a>ギャラリーからの MOVEit Transfer の追加
 Azure AD への MOVEit Transfer の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MOVEit Transfer を追加する必要があります。
@@ -80,23 +81,23 @@ Azure AD への MOVEit Transfer の統合を構成するには、ギャラリー
    
     ![ギャラリーでアプリを選択する](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_0001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、MOVEit Transfer で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、MOVEit Transfer で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する MOVEit Transfer ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと MOVEit Transfer の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する MOVEit Transfer ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと MOVEit Transfer の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を MOVEit Transfer の **[Username (ユーザー名)]** の値として割り当てます。
 
-MOVEit Transfer で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+MOVEit Transfer で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[MOVEit Transfer テスト ユーザーの作成](#creating-a-moveit-transfer-test-user)** - MOVEit Transfer で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、MOVEit Transfer アプリケーションでシングル サインオンを構成します。
+### <a name="configuring-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、MOVEit Transfer アプリケーションで SSO を構成します。
 
 **MOVEit Transfer で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -109,71 +110,58 @@ MOVEit Transfer で Azure AD のシングル サインオンを構成してテ�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_04.png)
+  1. **[サインオン URL]** ボックスに、独自のドメインのサインイン URL を入力します。
+  2. **[識別子]** ボックスに、エンティティ ID URL を入力します。
+  3. **[応答 URL]** ボックスに、有効なアサーション コンシューマー インターフェイス URL を入力します。
+  4. **[次へ]**をクリックします。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、独自のドメインのサインイン URL を入力します。
-   
-    b. **[識別子]** ボックスに、エンティティ ID URL を入力します。
-   
-    c. **[応答 URL]** ボックスに、有効なアサーション コンシューマー インターフェイス URL を入力します。
-   
-    d.  **[次へ]**
-   
-   > [!NOTE]
-   > 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、手順 8. で詳細を参照するか、[MOVEit Transfer](https://www.ipswitch.com/support/technical-support) にお問い合わせください。
-   > 
-   > 
+   >[!NOTE]
+   >実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、手順 8. で詳細を参照するか、[MOVEit Transfer](https://www.ipswitch.com/support/technical-support) にお問い合わせください。
+   >  
 4. **[MOVEit Transfer でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_05.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. ページの下部にある [次へ]」を参照してください。
+  ![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_05.png)  
+  1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+  2. **[次へ]**をクリックします。
 5. MOVEit Transfer テナントに管理者としてサインオンします。
 6. 左側のナビゲーション ウィンドウで、 **[Settings (設定)]**をクリックします。
    
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_000.png)
+  ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 7. **[Security Policies (セキュリティ ポリシー)] の [User Auth (ユーザー認証)]** にある、**[Single Signon (シングル サインオン)]** リンクをクリックします。
    
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_001.png)
+  ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 8. メタデータ URL リンクをクリックし、メタデータ ドキュメントをダウンロードします。
    
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_002.png)
-   
-   * **entityID** が手順 3. の **[識別子]** と一致していることを確認します。
-   * **AssertionConsumerService** の場所 URL が手順 3. の **[応答 URL]** の値と一致していることを確認します。
+  ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_002.png)   
+  * **entityID** が手順&3;. の **[識別子]** と一致していることを確認します。
+  * **AssertionConsumerService** の場所 URL が手順&3;. の **[応答 URL]** の値と一致していることを確認します。
      
-     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 9. **[Add Identity Provider (ID プロバイダーの追加)]** ボタンをクリックして新しいフェデレーション ID プロバイダーを追加します。
    
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_003.png)
+  ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_003.png)
 10. **[Browse (参照)]** をクリックし、手順 4. でダウンロードしたメタデータ ファイルを選択します。次に、**[Add Identity Provider (ID プロバイダーの追加)]** をクリックし、ダウンロードしたファイルをアップロードします。 
     
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_004.png)
+  ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_004.png)
 11. **[Edit Federated Identity Provider Settings (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、**[Save (保存)]** をクリックします。
     
-     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_005.png)
-12. **[Edit Federated Identity Provider User Settings (フェデレーション ID プロバイダー ユーザーの設定の編集)]** ページで次の操作を実行し、**[Save (保存)]** をクリックします。
-    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
-    
-    b. **[Full name (フル ネーム)]** で **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに「http://schemas.microsoft.com/identity/claims/displayname」と入力します。
-    
-    c. **[Email (電子メール)]** で **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに「http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress」と入力します。
-    
-    d. **[Auto-create account on signon (サインオン時にアカウントを自動作成する)]** で **[Yes (はい)]** を選択します。
-    
-    e. **[保存]** ボタンをクリックします。
-    
-    ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_006.png)
+   ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_005.png)
+12. **[Edit Federated Identity Provider User Settings (フェデレーション ID プロバイダー ユーザーの設定の編集)]** ページで次の操作を実行し、**[Save (保存)]** をクリックします。   
+  1. **[Login name (ログイン名)]** として **[SAML NameID]** を選択します。 
+  2. **[Full name (フル ネーム)]** で **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに「http://schemas.microsoft.com/identity/claims/displayname」と入力します。 
+  3. **[Email (電子メール)]** で **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに「http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress」と入力します。 
+  4. **[Auto-create account on signon (サインオン時にアカウントを自動作成する)]** で **[Yes (はい)]** を選択します。 
+  5. **[保存]** ボタンをクリックします。
+ 
+   ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_006.png)
 13. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
     
     ![Azure AD のシングル サインオン][10]
 14. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
     
-    ![Azure AD のシングル サインオン][11]
+   ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -193,48 +181,37 @@ MOVEit Transfer で Azure AD のシングル サインオンを構成してテ�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_05.png)
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_06.png)
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_07.png)
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_08.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある [完了]」を参照してください。   
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-moveit-transfer-test-user"></a>MOVEit Transfer テスト ユーザーの作成
+### <a name="create-a-moveit-transfer-test-user"></a>MOVEit Transfer テスト ユーザーの作成
 このセクションの目的は、MOVEit Transfer で Britta Simon というユーザーを作成することです。 MOVEit Transfer では、Just-In-Time プロビジョニングがサポートされています。この設定は有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーが存在しない場合は、MOVEit Transfer へのアクセスを試みたときに、新しいユーザーが自動的に作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、MOVEit Transfer のサポート チームにお問い合わせください。
-> 
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、MOVEit Transfer のサポート チームにお問い合わせください。
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に MOVEit Transfer へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に MOVEit Transfer へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200]
 
@@ -254,8 +231,8 @@ MOVEit Transfer で Azure AD のシングル サインオンを構成してテ�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
 
 アクセス パネルで MOVEit Transfer のタイルをクリックすると、自動的に MOVEit Transfer アプリケーションにサインオンします。
 
@@ -280,9 +257,4 @@ MOVEit Transfer で Azure AD のシングル サインオンを構成してテ�
 [203]: ./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/22/2017
 ms.author: khdang
 translationtype: Human Translation
-ms.sourcegitcommit: 47a54e51fa7378336aabe3fa6f93794852152cfe
-ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
+ms.sourcegitcommit: 64858123a75686ba460de5e0f26b143c29f9f067
+ms.openlocfilehash: 7b7afa0ac55327b83e7ea8983a5e25782bda9f07
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -50,8 +51,12 @@ ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name196196httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb196"></a><a name="1.9.6"/>[1.9.6](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.6)
+* ゲートウェイ モードでクエリに例外を引き起こす可能性のあるクエリ エンジン構成のバグが修正されました。
+* コレクションの作成直後の要求に対して "所有者リソースが見つかりません" という例外を引き起こす可能性のある、セッション コンテナー内のいくつかのバグを修正しました。
+
 ### <a name="a-name195195httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb195"></a><a name="1.9.5"/>[1.9.5](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.5)
-* 集計クエリ (AVG、COUNT、MIN、MAX、および SUM) のサポートを追加しました。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
 * RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。
@@ -151,6 +156,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.9.6](#1.9.6) |2017 年 2 月 21 日 |--- |
 | [1.9.5](#1.9.5) |2017 年 1 月 31 日 |--- |
 | [1.9.4](#1.9.4) |2016 年 11 月 24 日 |--- |
 | [1.9.3](#1.9.3) |2016 年 10 月 30 日 |--- |
@@ -182,10 +188,5 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 ## <a name="see-also"></a>関連項目
 DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

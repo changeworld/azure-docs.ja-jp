@@ -49,6 +49,10 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [テンプレート](virtual-networks-create-vnetpeering-arm-template-click.md)
 
+### [ネットワーク インターフェイス](virtual-network-network-interface.md)
+
+### [パブリック IP アドレス](virtual-network-public-ip-address.md)
+
 ### 仮想マシン
 
 #### 静的パブリック IP アドレス
@@ -123,9 +127,9 @@
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 
 # リファレンス
-## [PowerShell (Resource Manager)](https://msdn.microsoft.com/library/mt163510(v=azure.300))
-## [PowerShell (クラシック)](https://msdn.microsoft.com/library/mt270335(v=azure.300))
-## [Azure CLI](/cli/azure/)
+## [PowerShell (Resource Manager)](/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell (クラシック)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
+## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj157182.aspx)

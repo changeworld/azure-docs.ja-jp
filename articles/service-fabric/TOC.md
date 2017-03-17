@@ -54,7 +54,6 @@
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
-#### [アーキテクチャ](service-fabric-reliable-services-platform-architecture.md)
 #### [Reliable Services のライフサイクル](service-fabric-reliable-services-lifecycle.md)
 #### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 #### [Reliable Collections の使用](service-fabric-work-with-reliable-collections.md)
@@ -78,8 +77,8 @@
 #### [ライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 #### [ポリモーフィズム](service-fabric-reliable-actors-polymorphism.md)
 #### [再入](service-fabric-reliable-actors-reentrancy.md)
+#### [イベント](service-fabric-reliable-actors-events.md) 
 #### [タイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
-#### [イベント](service-fabric-reliable-actors-events.md)
 #### [状態管理](service-fabric-reliable-actors-state-management.md)
 #### [KvsActorStateProvider の構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
@@ -166,7 +165,6 @@
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
-### [一般的な問題のトラブルシューティング](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
 ## アプリケーションをスケール調整する
 ### [Reliable Services のパーティション分割](service-fabric-concepts-partitioning.md)
@@ -181,7 +179,6 @@
 #### [制御された混乱の使用](service-fabric-controlled-chaos.md)
 #### [テスト アクションの使用](service-fabric-testability-actions.md)
 #### [ワークロード中](service-fabric-testability-workload-tests.md)
-#### [データ損失を呼び出す](service-fabric-use-data-loss-api.md)
 #### [テスト シナリオの使用](service-fabric-testability-scenarios.md)
 #### [Node Transition API の使用](service-fabric-node-transition-apis.md)
 ### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)

@@ -17,9 +17,9 @@ ms.date: 03/07/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: aa6ab3d2133019203a75b07853908059684bbaae
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6ef550047a28a6070cad5da2e00cf18fbca3f9fa
+ms.lasthandoff: 03/09/2017
 
 
 ---

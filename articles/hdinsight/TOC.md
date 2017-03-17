@@ -53,6 +53,7 @@
 ### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
 ### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
 ### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## メモリ内の処理への Spark の使用
 ### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)

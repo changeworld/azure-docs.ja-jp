@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/16/2017
+ms.date: 02/23/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 509053c87e84a4dbff78eee503dcf3af149b6f1e
-ms.openlocfilehash: 81d2a746b5e1df2cfd5b8fc465045cb92af01358
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2e26bd81c59fd53a0e8fc693dde30cb403995896
+ms.openlocfilehash: 38d37e45c34c8c0a3bd2ed94f72944208292f466
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/16/2017
 
 Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Ambari は Linux オペレーティング システムを使用する HDInsight クラスターに含まれており、クラスターの監視と構成の変更を行うために使用します。 このドキュメントでは、Ambari REST API の使用方法の基本を説明します。
 
-## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>Ambari とは
+## <a id="whatis"></a>Ambari とは
 
 [Apache Ambari](http://ambari.apache.org) は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
@@ -207,7 +207,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 >
 > HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
 
-IP アドレスを取得する前に、まず、ホストの FQDN を知る必要があります。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
+IP アドレスを取得する前に、ホストの FQDN を知る必要があります。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -293,7 +293,55 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [!NOTE]
 > [Azure PowerShell](https://docs.microsoft.com/powershell/) に用意されている `Get-AzureRmHDInsightCluster` コマンドレットも、クラスターのストレージ情報を返します。
 
-## <a name="example-update-ambari-configuration"></a>例: Ambari 構成の更新
+
+## <a name="example-get-configuration"></a>例: 構成の取得
+
+1. クラスターに使用できる構成を取得します。
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    ```
+
+    ```powershell
+    Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_configs" `
+        -Credential $creds
+    ```
+
+    この例は、クラスターにインストールされているコンポーネントの現在の構成 ( *tag* 値で特定) を含む JSON ドキュメントを返します。 次の例は Spark タイプのクラスターから返されるデータの抜粋です。
+   
+   ```json
+   "spark-metrics-properties" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-fairscheduler" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   },
+   "spark-thrift-sparkconf" : {
+       "tag" : "INITIAL",
+       "user" : "admin",
+       "version" : 1
+   }
+   ```
+
+2. 興味のあるコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
+
+    ```bash
+    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=core-site&tag=INITIAL" `
+        -Credential $creds
+    $resp.Content
+    ```
+
+    この例では、`core-site` コンポーネントの現在の構成を含む JSON ドキュメントが返されます。
+
+## <a name="example-update-configuration"></a>例: 構成の更新
 
 1. Ambari で "desired configuration (望ましい構成)" として格納される現在の構成を取得します。
 
@@ -354,7 +402,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
     * 新しい構成の送信に必要ないため、`href`、`version`、`Config` の各要素が削除されます。
 
-    * 新しい `tag` 要素を追加し、値を `version#################` にします。 数値部分は現在の日付に基づきます。 構成ごとに一意のタグを与える必要があります。
+    * 値を `version#################` に指定して `tag` 要素を追加します。 数値部分は現在の日付に基づきます。 構成ごとに一意のタグを与える必要があります。
      
     最後に、データが `newconfig.json` ドキュメントに保存されます。 ドキュメントの構造は次の例の構造に似たものになります。
      

@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/19/2017
+ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: a13850cf09424f7e4402204d97d1f6755d691550
-ms.openlocfilehash: 0d3f6dc80141d26cace60f177b35d527fd294261
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -30,8 +30,8 @@ ms.lasthandoff: 02/22/2017
 
 * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
-* .NET Framework 4.0 以降
-* Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降のバージョン。
+* .NET Framework 4.0 以降。
+* 見ることができます。
 * [Azure Functions を使用する方法](../azure-functions/functions-overview.md)の説明。 また、「[Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-bindings-http-webhook.md)」を確認します。
 
 このトピックでは、以下のことを行う方法を示します。
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/22/2017
     
 * Webhook をエンコード タスクに追加し、Webhook URL と、この Webhook が応答する秘密キーを指定します。 ここで示す例では、エンコード タスクを作成するコードは、コンソール アプリです。
 
-## <a name="getting-webhook-notifications"></a>Webhook 通知の取得
+## <a name="setting-up-webhook-notification-azure-functions"></a>"webhook 通知" Azure Functions の設定
 
 このセクションのコードは、Webhook である Azure Function の実装を示します。 このサンプルでは、関数が Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。
 
@@ -56,7 +56,20 @@ Webhook は、署名キー (資格情報) が通知エンドポイントを構�
 
 次の Media Services .NET Azure Functions の定義については、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function)を参照してください。
 
-次のコード リストでは、Azure Function に関連付けられている&3; つのファイル (function.json、project.json、および run.csx) の定義を示します。
+次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている&3; つのファイル (function.json、project.json、および run.csx) の定義を示します。
+
+### <a name="application-settings"></a>アプリケーションの設定 
+
+次の表は、このセクションで定義された Azure Functions で使用されるパラメーターを示します。 
+
+|名前|定義|例| 
+|---|---|---|
+|AMSAccount|AMS アカウント名。 |juliakomediaservices|
+|AMSKey |AMS アカウント キー。 | JUWJdDaOHQQqsZeiXZuE76eDt2SO+YMJk25Lghgy2nY=|
+|MediaServicesStorageAccountName |AMS アカウントに関連付けられているストレージ アカウントの名前。| storagepkeewmg5c3peq|
+|MediaServicesStorageAccountKey |AMS アカウントに関連付けられているストレージ アカウントのキー。|
+|SigningKey |署名キー。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | webhook エンドポイント アドレス。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ### <a name="functionjson"></a>function.json
 
@@ -410,7 +423,6 @@ project.json ファイルには、依存関係が含まれています。
                 processor,
                 "Adaptive Streaming",
                 TaskOptions.None);
-
 
                 // Specify the input asset to be encoded.
                 task.InputAssets.Add(newAsset);

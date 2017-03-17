@@ -16,8 +16,9 @@ ms.workload: data-management
 ms.date: 07/31/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: d3456b190d78560dc9380d5ecb56e0e82006e2ea
-ms.openlocfilehash: 209446ae6b1a4f951bc141d95ff481f2f5ab43b0
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 821be267a109bdcb1a1d22107f0ab4c469e6d6aa
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -53,7 +54,7 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 #### <a name="recovery"></a>復旧
 * 障害復旧リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。
-* [計画されたフェールオーバー](sql-database-geo-replication-failover-powershell.md#initiate-a-planned-failover) を実行して、セカンダリ データベースを新しいプライマリにします。
+* [計画されたフェールオーバー](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) を実行して、セカンダリ データベースを新しいプライマリにします。
 * 「 [復旧後のデータベースの構成](sql-database-disaster-recovery.md) 」のガイドに従って、復旧を完了します。
 
 #### <a name="validation"></a>検証
@@ -64,9 +65,4 @@ geo レプリケーションを使用して保護されたデータベースの�
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
 * より迅速な復旧オプションについては、 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)  
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

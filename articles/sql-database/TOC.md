@@ -1,269 +1,212 @@
 # 概要
-## [SQL Database とは](sql-database-technical-overview.md)
+## [SQL DB の概要](sql-database-technical-overview.md)
+## 比較
+### [SQL DB の機能](sql-database-features.md)
+# クイック スタート
+## [DB の作成 - ポータル](sql-database-get-started.md)
+## [DB の作成 - Azure CLI](sql-database-get-started-cli.md)
+## [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+# サンプル
+## [Azure CLI](sql-database-cli-samples.md)
+## [PowerShell](sql-database-powershell-samples.md)
+# Tutorials (チュートリアル)
+## データベース、サーバー、ファイアウォール
+### [PowerShell](sql-database-get-started-powershell.md)
+### [C#](sql-database-get-started-csharp.md)
+## 認証とアクセス
+### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
+### [Azure Active Directory](sql-database-control-access-aad-authentication-get-started.md)
+## バックアップおよび復元
+### [Azure ポータル](sql-database-get-started-backup-recovery-portal.md)
+### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+# 概念
+## データベースとサーバー
+### [データベース](sql-database-overview.md)
+### [サーバー](sql-database-server-overview.md)
+### [エラスティック プール](sql-database-elastic-pool.md)
+### [エラスティック プールを使う局面](sql-database-elastic-pool-guidance.md)
+## コンピューティングとストレージ
 ### [サービス階層](sql-database-service-tiers.md)
 ### [DTU と eDTU](sql-database-what-is-a-dtu.md)
 ### [DTU ベンチマークの概要](sql-database-benchmark-overview.md)
 ### [リソース制限](sql-database-resource-limits.md)
-### [機能](sql-database-features.md)
-### [SQL Database に関する FAQ](sql-database-faq.md)
-## 比較
-### [VM 上の SQL Database と SQL](sql-database-paas-vs-sql-server-iaas.md)
-### [T-SQL の相違点](sql-database-transact-sql-information.md)
-### [SQL と NoSQL](../documentdb/documentdb-nosql-vs-sql.md)
-## [SQL Database ツール](sql-database-manage-overview.md)
-## [SQL Database のチュートリアル](sql-database-explore-tutorials.md)
-## セキュリティ
-### [セキュリティの概要](sql-database-security-overview.md)
+## [開発と管理ツール](sql-database-manage-overview.md)
+## データのパーティション分割
+### [シャード データベース](sql-database-elastic-scale-introduction.md)    
+###    [エラスティック クライアント ライブラリ](sql-database-elastic-database-client-library.md)
+### [シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)
+### [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
+### [資格情報を管理する](sql-database-elastic-scale-manage-credentials.md)
+### [マルチシャード クエリ実行](sql-database-elastic-scale-multishard-querying.md)
+### [エラスティック ツール用語集](sql-database-elastic-scale-glossary.md)
+### [シャード間でデータを移動する](sql-database-elastic-scale-overview-split-and-merge.md)
+### [エラスティック ツールに関する FAQ](sql-database-elastic-scale-faq.md)
+## 複数データベース間のクエリ
+### [概要](sql-database-elastic-query-overview.md)
+### [水平方向にパーティション分割されたデータ](sql-database-elastic-query-horizontal-partitioning.md)
+### [垂直方向にパーティション分割されたデータ](sql-database-elastic-query-vertical-partitioning.md)
+## [データベースにまたがるトランザクション](sql-database-elastic-transactions-overview.md)
+## [複数データベース間のジョブ](sql-database-elastic-jobs-overview.md)
+## データとデータベースのセキュリティ
+### [概要](sql-database-security-overview.md)
 ### [Azure SQL Database の Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-sql-database/)
-### [SQL セキュリティ センター](https://msdn.microsoft.com/library/azure/bb510589)
-# 作業の開始
-## データベースとサーバー
-### 詳細情報
-#### [サーバー](sql-database-server-overview.md)
-#### [単一データベース](sql-database-overview.md)
-#### [複数のデータベース](sql-database-elastic-scale-introduction.md)
-##### テナントのマッピング
-###### [エラスティック クライアント ライブラリ](sql-database-elastic-database-client-library.md)
-###### [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)
-###### [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
-###### [資格情報を管理する](sql-database-elastic-scale-manage-credentials.md)
-###### [マルチシャード クエリ実行](sql-database-elastic-scale-multishard-querying.md)
-##### エラスティック プール (リソース プール)
-###### [エラスティック プールとは](sql-database-elastic-pool.md)
-###### [エラスティック プールを使う局面](sql-database-elastic-pool-guidance.md)
-###### [エラスティック プールの価格](sql-database-elastic-pool-price.md)
-##### シャード データベース
-###### [エラスティック ツール用語集](sql-database-elastic-scale-glossary.md)
-###### [シャード間でデータを移動する](sql-database-elastic-scale-overview-split-and-merge.md)
-###### [エラスティック ツールに関する FAQ](sql-database-elastic-scale-faq.md)
-##### エラスティック クエリ (複数データベース間のクエリ)
-###### [エラスティック クエリとは](sql-database-elastic-query-overview.md)
-##### エラスティック トランザクション (分散トランザクション)
-###### [クラウド データベースにまたがるトランザクション](sql-database-elastic-transactions-overview.md)
-##### エラスティック ジョブ (複数データベース間のジョブ)
-###### [エラスティック ジョブとは](sql-database-elastic-jobs-overview.md)
-#### [Azure RemoteApp を使用して SQL Database に接続する](sql-database-ssms-remoteapp.md)
-#### [Azure Automation サービスを使用した SQL Database の管理](sql-database-manage-automation.md)
-### すべきこと
-#### [Azure Portal を使用して単一データベースを作成する](sql-database-get-started.md)
-#### [PowerShell を使用して単一データベースを作成する](sql-database-get-started-powershell.md)
-#### [C# を使用して単一データベースを作成する](sql-database-get-started-csharp.md)
-#### [シャード化されたアプリケーションを作成する](sql-database-elastic-scale-get-started.md)
-#### [シャード間でデータを移動する](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-#### [エラスティック ジョブの概要](sql-database-elastic-jobs-getting-started.md)
-#### [エラスティック クエリの概要](sql-database-elastic-query-getting-started-vertical.md)
-#### [エラスティック クエリを使用してレポートを作成する](sql-database-elastic-query-getting-started.md)
-#### [各種スキーマを使用してデータベースにクエリを実行する](sql-database-elastic-query-vertical-partitioning.md)
-#### [スケールアウトされたデータベース全体をレポートする](sql-database-elastic-query-horizontal-partitioning.md)
-## データの移行と移動
-### 詳細情報
-#### [データベースを移行する](sql-database-cloud-migrate.md)
-#### [データベースをエクスポートする](sql-database-export.md)
-#### [データ同期](sql-database-get-started-sql-data-sync.md)
-#### [SQL Database をコピーする](sql-database-copy.md)
-## ファイアウォール規則、認証、承認
-### 詳細情報
-#### [アクセス制御](sql-database-control-access.md)
-#### [ファイアウォール規則](sql-database-firewall-configure.md)
-#### [ログインの管理](sql-database-manage-logins.md)
-#### [Add Azure AD 認証](sql-database-aad-authentication.md)
-#### [多要素認証](sql-database-ssms-mfa-authentication.md)
-### すべきこと
-#### [SQL の認証と承認](sql-database-control-access-sql-authentication-get-started.md)
-#### [Azure AD 認証と承認](sql-database-control-access-aad-authentication-get-started.md)
-## データの安全性を確保して保護する
-### 詳細情報
-#### 監査
-##### [監査](sql-database-auditing.md)
-##### [監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)
-#### [脅威の検出](sql-database-threat-detection.md)
-#### データを暗号化する
-##### [透過的なデータ暗号化](https://msdn.microsoft.com/library/azure/dn948096)
-##### [列の暗号化](https://msdn.microsoft.com/library/azure/ms179331)
-#### データをマスクする
-##### [動的データ マスク](sql-database-dynamic-data-masking-get-started.md)
-### すべきこと
-#### [Azure Portal を使用した動的データ マスク](sql-database-dynamic-data-masking-get-started-portal.md)
-#### [Azure Portal を使用した監査の構成](sql-database-auditing-portal.md)
-#### [PowerShell を使用した監査の構成](sql-database-auditing-powershell.md)
-#### [REST API を使用した監査の構成](sql-database-auditing-rest.md)
-#### [Windows 証明書を使用した Always Encrypted](sql-database-always-encrypted.md)
-#### [Azure Key Vault を使用した Always Encrypted](sql-database-always-encrypted-azure-key-vault.md)
+## 認証とアクセス
+### [概要](sql-database-control-access.md)
+### [ファイアウォール規則](sql-database-firewall-configure.md)
+### [Add Azure AD 認証](sql-database-aad-authentication.md)
+### [多要素認証](sql-database-ssms-mfa-authentication.md)
+### [ロールとアクセス許可](sql-database-manage-logins.md)
+## Audit
+### [概要](sql-database-auditing.md)
+### [ダウンレベル クライアントのサポート](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)
+## [脅威の検出](sql-database-threat-detection.md)
+## データの暗号化
+### [透過的なデータ暗号化](https://msdn.microsoft.com/library/azure/dn948096)
+### [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
+### [列の暗号化](https://msdn.microsoft.com/library/azure/ms179331)
+## [データ マスク](sql-database-dynamic-data-masking-get-started.md)
 ## ビジネス継続性
-### 詳細情報
-#### [概要](sql-database-business-continuity.md)
-#### [データベースのバックアップ](sql-database-automated-backups.md)
-#### [長期保存](sql-database-long-term-retention.md)
-#### [バックアップを使用したデータベースの復元](sql-database-recovery-using-backups.md)
-#### [1 つのテーブルの回復](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
-#### [データ センターの停止から回復する](sql-database-disaster-recovery.md)
-#### [障害復旧の認証要件](sql-database-geo-replication-security-config.md)
-#### [ビジネス継続性の設計シナリオ](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-#### [エラスティック プールを使用した障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-#### [ローリング アップグレード](sql-database-manage-application-rolling-upgrade.md)
-#### [障害復旧訓練を実施する](sql-database-disaster-recovery-drills.md)
-#### [アクティブ geo レプリケーションの概要](sql-database-geo-replication-overview.md)
-### すべきこと
-#### [Azure Portal: バックアップと復元](sql-database-get-started-backup-recovery-portal.md)
-#### [PowerShell: バックアップと復元](sql-database-get-started-backup-recovery-powershell.md)
-## アプリケーション開発
-### 詳細情報
-#### [データベース アプリケーションの開発の概要](sql-database-develop-overview.md)
-#### [接続ライブラリ](sql-database-libraries.md)
-#### [マルチテナント SaaS アプリケーション](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-#### [行レベルのセキュリティを使用したマルチテナント SaaS アプリケーションのスケーリング](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-#### [ADO.NET 4.5 で 1433 以外のポートを使用する](sql-database-develop-direct-route-ports-adonet-v12.md)
-#### [アプリケーションの認証に必要な値を取得する](sql-database-client-id-keys.md)
-### すべきこと
-#### アプリケーションを接続する
-##### [.NET](sql-database-develop-dotnet-simple.md)
-##### [C と C++](sql-database-develop-cplusplus-simple.md)
-##### [Java](sql-database-develop-java-simple.md)
-##### [Node.JS](sql-database-develop-nodejs-simple.md)
-##### [PHP](sql-database-develop-php-simple.md)
-##### [Python](sql-database-develop-python-simple.md)
-##### [Ruby](sql-database-develop-ruby-simple.md)
-##### [Excel](sql-database-connect-excel.md)
-#### [Visual Studio に接続する](sql-database-connect-query.md)
-#### [クライアント アプリケーションを構築する](https://www.microsoft.com/sql-server/developer-get-started)
-#### [エラー メッセージを処理する](sql-database-develop-error-messages.md)
-#### [Entity Framework を使用する](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
-#### [Dapper でクライアント ライブラリを使用する](sql-database-elastic-scale-working-with-dapper.md)
-### 顧客実装
-#### [Daxko/CSI ソフトウェア](sql-database-implementation-daxko.md)
-#### [GEP](sql-database-implementation-gep.md)
-#### [SnelStart](sql-database-implementation-snelstart.md)
-#### [Umbraco](sql-database-implementation-umbraco.md)
-## データベース開発
-### 詳細情報
-#### テンポラル テーブル
-##### [テンポラル テーブル](sql-database-temporal-tables.md)
-##### [リテンション期間ポリシー](sql-database-temporal-tables-retention-policy.md)
-#### [JSON データ](sql-database-json-features.md)
-#### [メモリ内の最適化](sql-database-in-memory.md)
-### すべきこと
-#### [SQL Server の開発](https://msdn.microsoft.com/library/ms179422.aspx)
-#### [インメモリ OLTP を導入する](sql-database-in-memory-oltp-migration.md)
+### [概要](sql-database-business-continuity.md)
+### [データベースのバックアップ](sql-database-automated-backups.md)
+### [長期のバックアップ リテンション期間](sql-database-long-term-retention.md)
+### [バックアップを使用したデータベースの復元](sql-database-recovery-using-backups.md)
+### [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+### [障害復旧と認証](sql-database-geo-replication-security-config.md)
+### [ビジネス継続性のためのアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+### [エラスティック プールを使用した障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+### [アプリケーションのローリング アップグレード](sql-database-manage-application-rolling-upgrade.md)
+## 開発
+### [データベース アプリケーションの開発の概要](sql-database-develop-overview.md)
+### [接続ライブラリ](sql-database-libraries.md)
+### [マルチテナント SaaS アプリケーションのアプリケーション設計](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+### [行レベルのセキュリティとマルチテナント SaaS アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+### [ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+### [アプリケーションの認証](sql-database-client-id-keys.md)
+### [エラー メッセージ](sql-database-develop-error-messages.md)
+### [クライアント ライブラリと Dapper](sql-database-elastic-scale-working-with-dapper.md)
+### [JSON データ](sql-database-json-features.md)
+### [メモリ内の最適化](sql-database-in-memory.md)
+## データベース移行
+### [SQL Server データベースを移行する](sql-database-cloud-migrate.md)
+### [移行のための T-SQL の変更](sql-database-transact-sql-information.md)
+## データの移動
+### [SQL Database をコピーする](sql-database-copy.md)
+### [データベースをエクスポートする](sql-database-export.md)
 ## 監視と調整
-### 詳細情報
-#### [単一データベース](sql-database-single-database-monitor.md)
-#### [SQL Database Advisor の概要](sql-database-advisor.md)
-#### [Single Database のガイダンス](sql-database-performance-guidance.md)
-#### [パフォーマンスの洞察: Azure Portal](sql-database-performance.md)
-#### [バッチ処理を使用する](sql-database-use-batching-to-improve-performance.md)
-#### [拡張イベント](sql-database-xevent-db-diff-from-svr.md)
-## SQL Database V11
-### [Web および Business Edition の終了](sql-database-web-business-sunset-faq.md)
-### [Service Tier Advisor](sql-database-service-tier-advisor.md)
-### [エラスティック プール評価ツール](sql-database-elastic-pool-database-assessment-powershell.md)
-### [V12 へアップグレード](sql-database-v12-plan-prepare-upgrade.md)
-#### [Azure Portal を使用したアップグレード](sql-database-upgrade-server-portal.md)
-#### [PowerShell を使用したアップグレード](sql-database-upgrade-server-powershell.md)
-# 方法
-## 作成と管理
-### [Azure Portal を使用した管理](sql-database-manage-portal.md)
-### [PowerShell を使用した管理](sql-database-manage-powershell.md)
-### [SSMS を使用した管理](sql-database-manage-azure-ssms.md)
-### サーバー
-#### [Azure Portal を使用した管理](sql-database-manage-servers-portal.md)
-#### [PowerShell を使用した管理](sql-database-manage-servers-powershell.md)
-### Single Database
-#### [Azure Portal を使用した管理](sql-database-manage-single-databases-portal.md)
-#### [PowerShell を使用した管理](sql-database-manage-single-databases-powershell.md)
-#### [Transact-SQL を使用した管理](sql-database-manage-single-databases-tsql.md)
-### ファイアウォール規則
-#### [Azure Portal を使用した作成](sql-database-configure-firewall-settings.md)
-#### [PowerShell を使用した作成](sql-database-configure-firewall-settings-powershell.md)
-#### [REST API を使用した作成](sql-database-configure-firewall-settings-rest.md)
-#### [T-SQL を使用した作成](sql-database-configure-firewall-settings-tsql.md)
-### 複数のデータベース
-#### [クライアント アプリケーションでクライアント ライブラリをアップグレードする](sql-database-elastic-scale-upgrade-client-library.md)
-#### シャード データベース
-##### [セキュリティ構成](sql-database-elastic-scale-split-merge-security-configuration.md)
-##### [シャードを追加する](sql-database-elastic-scale-add-a-shard.md)
-##### [シャード マップの問題を修正する](sql-database-elastic-database-recovery-manager.md)
-##### [シャード データベースに移行する](sql-database-elastic-convert-to-use-elastic-tools.md)
-##### [シャード マップ マネージャーのパフォーマンス カウンターを作成する](sql-database-elastic-database-perf-counters.md)
-#### エラスティック ジョブ
-##### [インストール方法](sql-database-elastic-jobs-service-installation.md)
-##### [PowerShell を使用した管理](sql-database-elastic-jobs-powershell.md) 
-##### [Azure Portal を使用した管理](sql-database-elastic-jobs-create-and-manage.md)
-##### [アンインストール方法](sql-database-elastic-jobs-uninstall.md)
-#### エラスティック プール
-##### [Azure Portal を使用した管理](sql-database-elastic-pool-manage-portal.md)
-##### [PowerShell を使用した管理](sql-database-elastic-pool-manage-powershell.md)
-##### [C# を使用した管理](sql-database-elastic-pool-manage-csharp.md)
-##### [T-SQL を使用した管理](sql-database-elastic-pool-manage-tsql.md)
-## 認証と承認
-### [Azure AD 認証の構成](sql-database-aad-authentication-configure.md)
-### [多要素認証の構成](sql-database-ssms-mfa-authentication-configure.md)
-## 脅威検出の構成
-### [Azure Portal を使用して脅威検出を構成する](sql-database-threat-detection-portal.md)
-## データを暗号化する
+### [単一データベース](sql-database-single-database-monitor.md)
+### [SQL Database Advisor の概要](sql-database-advisor.md)
+### [Query Performance Insight](sql-database-query-performance.md)
+### [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
+### [クエリ ストアの使用シナリオ](https://msdn.microsoft.com/library/mt614796.aspx)
+### [DMV](sql-database-monitoring-with-dmvs.md)
+### [Single Database のガイダンス](sql-database-performance-guidance.md)
+### [バッチ処理を使用する](sql-database-use-batching-to-improve-performance.md)
+### [拡張イベント](sql-database-xevent-db-diff-from-svr.md)
+### [互換性レベル](sql-database-compatibility-level-query-performance-130.md)
+# ハウツー ガイド
+## ファイアウォール規則の作成および管理
+### [Azure ポータル](sql-database-configure-firewall-settings.md)
+### [PowerShell](sql-database-configure-firewall-settings-powershell.md)
+### [REST API](sql-database-configure-firewall-settings-rest.md)
+### [Transact-SQL](sql-database-configure-firewall-settings-tsql.md)
+## エラスティック プールを管理する
+### [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
+### [PowerShell](sql-database-elastic-pool-manage-powershell.md)
+### [Transact-SQL](sql-database-elastic-pool-manage-tsql.md)
+### [C#](sql-database-elastic-pool-manage-csharp.md)
+## 監査と脅威の検出の構成
+### [Azure Portal: 監査](sql-database-auditing-portal.md)
+### [Azure Portal: 脅威の検出](sql-database-threat-detection-portal.md)
+## データベースを復元する
+### [Azure ポータル](sql-database-restore-database-portal.md)
+## 長期のバックアップ リテンション期間の管理
+### [Azure ポータル](sql-database-manage-long-term-backup-retention-portal.md)
+### [PowerShell](sql-database-manage-long-term-backup-retention-powershell.md)
+## [1 つのテーブルの回復](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
+## geo レプリケーションの構成
+### [Azure ポータル](sql-database-geo-replication-portal.md)
+### [Transact-SQL: 構成](sql-database-geo-replication-transact-sql.md)
+### [Transact SQL: フェールオーバー](sql-database-geo-replication-failover-transact-sql.md)
+## [データ センターの停止から回復する](sql-database-disaster-recovery.md)
+## [障害復旧訓練を実施する](sql-database-disaster-recovery-drills.md)
+## データベースをコピーする
+### [Azure ポータル](sql-database-copy-portal.md)
+### [Transact-SQL](sql-database-copy-transact-sql.md)
+## データベースのインポート
+### [Azure ポータル](sql-database-import-portal.md)
+### [SQLPackage](sql-database-import-sqlpackage.md)
+## データベースのエクスポート
+### [Azure ポータル](sql-database-export-portal.md)
+### [PowerShell](sql-database-export-powershell.md)
+### [SSMS](sql-database-export-ssms.md)
+### [SQLPackage](sql-database-export-sqlpackage.md)
+## データを読み込む
+### [BCP](sql-database-load-from-csv-with-bcp.md)
+### [Azure Data Factory](../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+## [データ同期の構成](sql-database-get-started-sql-data-sync.md)
+## ユーザーの認証と承認
+### [Add Azure AD 認証](sql-database-aad-authentication-configure.md)
+## アプリケーションの接続
+### [.NET](sql-database-develop-dotnet-simple.md)
+### [C と C++](sql-database-develop-cplusplus-simple.md)
+### [Java](sql-database-develop-java-simple.md)
+### [Node.JS](sql-database-develop-nodejs-simple.md)
+### [PHP](sql-database-develop-php-simple.md)
+### [Python](sql-database-develop-python-simple.md)
+### [Ruby](sql-database-develop-ruby-simple.md)
+### [Visual Studio](sql-database-connect-query.md)
+### [Azure RemoteApp を使用した SSMS](sql-database-ssms-remoteapp.md)
+### [Multi-Factor Authentication を使用した SSMS](sql-database-ssms-mfa-authentication-configure.md)
+### [Excel](sql-database-connect-excel.md)
+### [接続のガイダンス](sql-database-connectivity-issues.md)
+### [接続に関する問題の解決](sql-database-troubleshoot-common-connection-issues.md)
+## 暗号化の構成
+### [Windows 証明書を使用してデータを暗号化する](sql-database-always-encrypted.md)
+### [Azure Key Vault を使用してデータを暗号化する](sql-database-always-encrypted-azure-key-vault.md)
 ### [透過的なデータ暗号化](https://msdn.microsoft.com/library/azure/dn948096)
 ### [列の暗号化](https://msdn.microsoft.com/library/azure/ms179331)
+## 動的データ マスクの構成
+### [Azure ポータル](sql-database-dynamic-data-masking-get-started-portal.md)
+## 一時的なテーブルの作成および管理
+### [概要](sql-database-temporal-tables.md)
+### [リテンション期間ポリシー](sql-database-temporal-tables-retention-policy.md)
+## [インメモリ OLTP の構成](sql-database-in-memory-oltp-migration.md)
+## シャード データベースの作成および管理
+### [シャード化されたアプリケーションを作成する](sql-database-elastic-scale-get-started.md)
+### [シャード間でデータを移動する](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+### [セキュリティ構成](sql-database-elastic-scale-split-merge-security-configuration.md)
+### [シャードを追加する](sql-database-elastic-scale-add-a-shard.md)
+### [シャード マップの問題を修正する](sql-database-elastic-database-recovery-manager.md)
+### [既存のシャード データベースの移行](sql-database-elastic-convert-to-use-elastic-tools.md)
+### [パフォーマンス カウンターの作成](sql-database-elastic-database-perf-counters.md)
+### [Entity Framework を使用する](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
+## [Elastic Scale クライアント ライブラリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)
+## エラスティック ジョブの作成と管理
+### [インストール](sql-database-elastic-jobs-service-installation.md)
+### [Azure ポータル](sql-database-elastic-jobs-create-and-manage.md)
+### [PowerShell](sql-database-elastic-jobs-powershell.md) 
+### [複数データベース間のジョブ](sql-database-elastic-jobs-getting-started.md)
+### [アンインストール](sql-database-elastic-jobs-uninstall.md)
+## データのクエリを実行する
+### [SSMS](sql-database-connect-query-ssms.md)
+### [水平方向にパーティション分割されたデータ](sql-database-elastic-query-getting-started.md)
+### [垂直方向にパーティション分割されたデータ](sql-database-elastic-query-getting-started-vertical.md)
 ## 監視と調整
-### [Query Performance Insight](sql-database-query-performance.md)
-### [SQL Database Advisor](sql-database-advisor-portal.md)
-### [DMV](sql-database-monitoring-with-dmvs.md)
-### [互換性レベル](sql-database-compatibility-level-query-performance-130.md)
-### [パフォーマンスのチューニングのヒント](sql-database-troubleshoot-performance.md)
+### [SQL Database Advisor の使用](sql-database-advisor-portal.md)
+### [Query Performance Insight の使用](sql-database-performance.md)
+### [評価とチューニング](sql-database-troubleshoot-performance.md)
 ### [アラートの作成](sql-database-insights-alerts-portal.md)
 ### [インメモリ OLTP ストレージの監視](sql-database-in-memory-oltp-monitoring.md)
-### クエリ ストア
-#### [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
-#### [クエリ ストアの使用シナリオ](https://msdn.microsoft.com/library/mt614796.aspx)
-#### [クエリ ストアの操作](sql-database-operate-query-store.md)
-### 拡張イベント
-#### [イベント ファイル ターゲット コード](sql-database-xevent-code-event-file.md)
-#### [リング バッファー ターゲット コード](sql-database-xevent-code-ring-buffer.md)
-## データの移動
-### SQL Database をコピーする
-#### [Azure Portal を使用したコピー](sql-database-copy-portal.md)
-#### [PowerShell を使用したコピー](sql-database-copy-powershell.md)
-#### [T-SQL を使用したコピー](sql-database-copy-transact-sql.md)
-### データベースを BACPAC ファイルにエクスポートする
-#### [Azure Portal を使用したエクスポート](sql-database-export-portal.md)
-#### [SQL パッケージ ユーティリティを使用したエクスポート](sql-database-export-sqlpackage.md)
-#### [PowerShell を使用したエクスポート](sql-database-export-powershell.md)
-#### [SSMS を使用したエクスポート](sql-database-export-ssms.md)
-## Import data
-### [Azure Portal を使用したインポート](sql-database-import-portal.md)
-### [PowerShell を使用したインポート](sql-database-import-powershell.md)
-### [SQLPackage を使用したインポート](sql-database-import-sqlpackage.md)
-### [BCP を使用して CSV ファイルから読み込む](sql-database-load-from-csv-with-bcp.md)
-## クエリ
-### [SSMS を使用したクエリ](sql-database-connect-query-ssms.md)
-## バックアップと復元
-### 長期のバックアップ リテンション期間
-#### [Azure Portal を使用して長期的なバックアップ保有期間を管理する](sql-database-manage-long-term-backup-retention-portal.md)
-#### [PowerShell を使用して長期的なバックアップ保有期間を管理する](sql-database-manage-long-term-backup-retention-powershell.md)
-### 削除済みデータベースの復元
-#### [Azure Portal を使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-portal.md)
-#### [PowerShell を使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-powershell.md)
-### データベースのポイントインタイム リストア
-#### [Azure Portal を使用したポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)
-#### [PowerShell を使用したデータベースのポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)
-### geo 冗長バックアップからの復元
-### [Azure Portal を使用した geo リストア](sql-database-geo-restore-portal.md)
-### [PowerShell を使用した geo リストア](sql-database-geo-restore-powershell.md)
-## アクティブ geo レプリケーションを選択するとき
-### [Azure Portal を使用した構成](sql-database-geo-replication-portal.md)
-### [PowerShell を使用した構成](sql-database-geo-replication-powershell.md)
-### [T-SQL を使用した構成](sql-database-geo-replication-transact-sql.md)
-### [Azure Portal を使用したフェールオーバー](sql-database-geo-replication-failover-portal.md)
-### [PowerShell を使用したフェールオーバー](sql-database-geo-replication-failover-powershell.md)
-### [T-SQL を使用したフェールオーバー](sql-database-geo-replication-failover-transact-sql.md)
-## トラブルシューティング
-### [接続に関する問題](sql-database-troubleshoot-common-connection-issues.md)
-### [一時的な接続エラー](sql-database-troubleshoot-connection.md)
-### [診断と防止](sql-database-connectivity-issues.md)
-### [アクセス許可](sql-database-troubleshoot-permissions.md)
-### [データベースの移動](sql-database-troubleshoot-moving-data.md)
+### [クエリ ストアの構成](sql-database-operate-query-store.md)
+### [イベント ファイル ターゲットへの拡張イベントのキャプチャ](sql-database-xevent-code-event-file.md)
+### [リング バッファー ターゲットへの拡張イベントのキャプチャ](sql-database-xevent-code-ring-buffer.md)
+### [PowerShell を使ったエラスティック プール テレメトリ](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)
+### [SaaS のためのエラスティック プール カスタム ダッシュボード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard)
+## [Azure Automation サービスを使用した管理](sql-database-manage-automation.md)
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql)
 ## [PowerShell (エラスティック データベース)](/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs)
-## [Azure CLI 2.0](/cli/azure/appservice)
+## [Azure CLI 2.0](/cli/azure/sql)
 ## [.NET](/dotnet/api/microsoft.azure.management.sql.models)
 ## [Java](/java/api/com.microsoft.azure.management.sql)
 ## [Node.JS](https://msdn.microsoft.com/library/mt652093.aspx)
@@ -272,24 +215,28 @@
 ## [PHP](https://msdn.microsoft.com/library/dn865013.aspx)
 ## [T-SQL](https://msdn.microsoft.com/library/bb510741.aspx)
 ## [REST ()](https://msdn.microsoft.com/library/azure/mt163571.aspx)
-
-# 関連項目
-## SQL Database の管理ライブラリ
-### [SQL Database の管理ライブラリ パッケージを取得する](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
-## [SQL Server ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)
-### [ADO.NET](https://msdn.microsoft.com/library/mt657768.aspx)
-### [JDBC](https://msdn.microsoft.com/library/mt484311.aspx)
-### [ODBC](https://msdn.microsoft.com/library/mt654048.aspx)
-
-# リソース
-## [料金](https://azure.microsoft.com/pricing/details/sql-database/)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-azure)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?service=sql-database)
 ## [SQL Server Tools](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 ## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
 ## [BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 ## [SQLCMD](https://msdn.microsoft.com/library/ms162773.aspx)
 ## [SqlPackage](https://msdn.microsoft.com/hh550080.aspx)
+## [SQL Database の管理ライブラリ パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql)
+## [SQL Server ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)
+### [ADO.NET](https://msdn.microsoft.com/library/mt657768.aspx)
+### [JDBC](https://msdn.microsoft.com/library/mt484311.aspx)
+### [ODBC](https://msdn.microsoft.com/library/mt654048.aspx)
+# リソース
+## [FAQ](sql-database-faq.md)
+## [接続の問題のトラブルシューティング](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)
+## [料金](https://azure.microsoft.com/pricing/details/sql-database/)
+## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-azure)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-database)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?service=sql-database)
+## [アーキテクチャのガイダンス](https://docs.microsoft.com/sql/#pivot=architecture)
+## [顧客実装](sql-database-customer-implementations.md)
+## サンプル アプリケーション
+### [Tailspin Surveys サンプル アプリケーション](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md)
+### [Contoso クリニック デモ アプリケーション](https://github.com/Microsoft/azure-sql-security-sample)
+

@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 01/27/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
+ms.sourcegitcommit: 8ffbf7807bdd3d0f9147dcd0237a999386553c37
+ms.openlocfilehash: b84597fb44b28f827a14a1c1b319a766b8a0b4dd
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -55,83 +56,87 @@ ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name11011101a"></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1.10.2"/>1.10.2</a>
+* SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
+* コードの軽微なクリーンアップ。
+
+### <a name="1.10.1"/>1.10.1</a>
 * SDK を使用して emulator(hostname=localhost) を対象とするときに SSL 検証が無効になります。
 * ストアド プロシージャの実行時にスクリプトのログ記録を有効することができるようになりました。
 
-### <a name="a-name11001100a"></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1.10.0"/>1.10.0</a>
 * クロス パーティションの並列クエリのサポートを追加しました。
 * パーティション分割コレクションの TOP/ORDER BY クエリのサポートを追加しました。
 
-### <a name="a-name190190a"></a><a name="1.9.0"/>1.9.0</a>
+### <a name="1.9.0"/>1.9.0</a>
 * スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、DocumentDB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 DocumentDB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
 * DocumentDB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * ConnectionPolicy クラスの RetryOptions プロパティを公開する、RetryOptions クラスが追加されました。これは、一部の既定の再試行オプションをオーバーライドするために使用できます。
 
-### <a name="a-name180180a"></a><a name="1.8.0"/>1.8.0</a>
+### <a name="1.8.0"/>1.8.0</a>
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 
-### <a name="a-name170170a"></a><a name="1.7.0"/>1.7.0</a>
+### <a name="1.7.0"/>1.7.0</a>
 * ドキュメントの有効期限 (TTL) 機能のサポートを追加しました。
 
-### <a name="a-name160160a"></a><a name="1.6.0"/>1.6.0</a>
+### <a name="1.6.0"/>1.6.0</a>
 * [パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)を実装しました。
 
-### <a name="a-name156156a"></a><a name="1.5.6"/>1.5.6</a>
+### <a name="1.5.6"/>1.5.6</a>
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。
 
-### <a name="a-name155155a"></a><a name="1.5.5"/>1.5.5</a>
+### <a name="1.5.5"/>1.5.5</a>
 * hashParitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
 
-### <a name="a-name154154a"></a><a name="1.5.4"/>1.5.4</a>
+### <a name="1.5.4"/>1.5.4</a>
 * 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: DocumentDB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。
 
-### <a name="a-name153153a"></a><a name="1.5.3"/>1.5.3</a>
+### <a name="1.5.3"/>1.5.3</a>
 * 問題 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) を修正します - メディア ID のダッシュを正しく処理します。
 
-### <a name="a-name152152a"></a><a name="1.5.2"/>1.5.2</a>
+### <a name="1.5.2"/>1.5.2</a>
 * 問題 [#95](https://github.com/Azure/azure-documentdb-node/issues/95) を修正します - EventEmitter リスナー リーク警告の問題を修正します。
 
-### <a name="a-name151151a"></a><a name="1.5.1"/>1.5.1</a>
+### <a name="1.5.1"/>1.5.1</a>
 * 問題 [#92](https://github.com/Azure/azure-documentdb-node/issues/90) を修正します - 大文字小文字を区別するシステムのため、Hash フォルダーの名前を hash に変更します。
 
-### <a name="a-name150150a"></a><a name="1.5.0"/>1.5.0</a>
+### <a name="1.5.0"/>1.5.0</a>
 * ハッシュと範囲パーティション リゾルバーを追加することでシャーディングのサポートを実装。
 
-### <a name="a-name140140a"></a><a name="1.4.0"/>1.4.0</a>
+### <a name="1.4.0"/>1.4.0</a>
 * Upsert を実装します。 documentClient の新しい upsertXXX メソッド
 
-### <a name="a-name130130a"></a><a name="1.3.0"/>1.3.0</a>
+### <a name="1.3.0"/>1.3.0</a>
 * 他の SDK とバージョン番号をそろえるため、このリリースはスキップされました。
 
-### <a name="a-name122122a"></a><a name="1.2.2"/>1.2.2</a>
+### <a name="1.2.2"/>1.2.2</a>
 * Q promises ラッパーを新しいリポジトリに分割します。
 * 更新し、npm レジストリのファイルをパッケージ化します。
 
-### <a name="a-name121121a"></a><a name="1.2.1"/>1.2.1</a>
+### <a name="1.2.1"/>1.2.1</a>
 * ID ベースのルーティングを実装します。
 * 問題 [#49](https://github.com/Azure/azure-documentdb-node/issues/49) を修正します - 現在のプロパティがメソッド current() と競合します。
 
-### <a name="a-name120120a"></a><a name="1.2.0"/>1.2.0</a>
+### <a name="1.2.0"/>1.2.0</a>
 * 地理空間インデックスのサポートを追加しました。
 * すべてのリソースの id プロパティを検証します。 リソースの ID には ?、/、#、&#47;&#47; 文字を使えず、終わりの文字をスペースにできません。
 * ResourceResponse に新しいヘッダーの「インデックス変換の進行状況」を追加します。
 
-### <a name="a-name110110a"></a><a name="1.1.0"/>1.1.0</a>
+### <a name="1.1.0"/>1.1.0</a>
 * V2 インデックス作成ポリシーを実装します。
 
-### <a name="a-name103103a"></a><a name="1.0.3"/>1.0.3</a>
+### <a name="1.0.3"/>1.0.3</a>
 * 問題 [#40](https://github.com/Azure/azure-documentdb-node/issues/40) - core および promise SDK で eslint および grunt 構成を実装しました。
 
-### <a name="a-name102102a"></a><a name="1.0.2"/>1.0.2</a>
+### <a name="1.0.2"/>1.0.2</a>
 * 問題 [#45](https://github.com/Azure/azure-documentdb-node/issues/45) - promise ラッパーには、エラーのあるヘッダーが含まれません。
 
-### <a name="a-name101101a"></a><a name="1.0.1"/>1.0.1</a>
+### <a name="1.0.1"/>1.0.1</a>
 * readConflicts、readConflictAsync、queryConflicts を追加し、競合に関して問い合わせる機能を実装しました。
 * API ドキュメントを更新しました。
 * 問題 [#41](https://github.com/Azure/azure-documentdb-node/issues/41) - client.createDocumentAsync エラー。
 
-### <a name="a-name100100a"></a><a name="1.0.0"/>1.0.0</a>
+### <a name="1.0.0"/>1.0.0</a>
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
@@ -145,6 +150,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |
 | [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 10 月 3 日 |--- |
 | [1.9.0](#1.9.0) |2016 年 7 月 7 日 |--- |
@@ -174,10 +180,5 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 ## <a name="see-also"></a>関連項目
 DocumentDB に関する詳細は、 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

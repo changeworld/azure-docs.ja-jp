@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: c4983024e5f5902620c0be7b422bc3d1eaf4a36f
-ms.openlocfilehash: 8142454e1ee8bf439e9186ac94a3feb05b10ae69
+ms.sourcegitcommit: 2924309737f2bc631e4e4f764bc7e8473353e865
+ms.openlocfilehash: 053f6c292f942da6565b24ef5eecdabf85f15525
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -43,17 +44,17 @@ ms.openlocfilehash: 8142454e1ee8bf439e9186ac94a3feb05b10ae69
 ### <a name="to-enable-the-application-integration-for-itrp-perform-the-following-steps"></a>ITRP のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-itrp-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-itrp-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-itrp-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-itrp-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-itrp-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-itrp-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -76,37 +77,37 @@ ITRP のシングル サインオンを構成するには、証明書から拇�
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順に従います。
 1. Azure クラシック ポータルの **ITRP** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure single sign-on](./media/active-directory-saas-itrp-tutorial/IC771709.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-itrp-tutorial/IC771709.png "Configure single sign-on")
 
 2. **[ユーザーの ITRP へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/IC775567.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-itrp-tutorial/IC775567.png "Configure Single Sign-On")
 
 3. **[アプリの URL の構成]** ページで、**[ITRP サインイン URL]** ボックスに、"*https://\<テナント名\>.ITRP.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
    
-    ![Configure App URL](./media/active-directory-saas-itrp-tutorial/IC775568.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-itrp-tutorial/IC775568.png "Configure App URL")
 
 4. **[ITRP でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルを **c:\\ITRP.cer** としてローカルに保存します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-itrp-tutorial/IC775569.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-itrp-tutorial/IC775569.png "Configure Single Sign-On")
 
 5. 別の Web ブラウザー ウィンドウで、ITRP 企業サイトに管理者としてログインします。
 
-6. 上部のツールバーで **[Settings]**をクリックします。
+6. 上部のツールバーで **[設定]**をクリックします。
    
     ![ITRP](./media/active-directory-saas-itrp-tutorial/IC775570.png "ITRP")
 
 7. 左側のナビゲーション ウィンドウで、 **[シングル サインオン]**を選択します。
    
-    ![[シングル サインオン]](./media/active-directory-saas-itrp-tutorial/IC775571.png "Single Sign-On")
+    ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/IC775571.png "Single Sign-On")
 
 8. [シングル サインオン] 構成セクションで、次の手順を実行します。
    
-    ![[シングル サインオン]](./media/active-directory-saas-itrp-tutorial/IC775572.png "Single Sign-On")
+    ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/IC775572.png "Single Sign-On")
     
-    ![[Single Sign-On]](./media/active-directory-saas-itrp-tutorial/IC775573.png "Single Sign-On")
+    ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/IC775573.png "Single Sign-On")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[有効]**をクリックします。
+    a. **[有効]**をクリックします。
    
     b. Azure クラシック ポータルで、**[ITRP でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** ボックスに貼り付けます。
    
@@ -123,7 +124,7 @@ ITRP のシングル サインオンを構成するには、証明書から拇�
 
 9. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/IC775574.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-itrp-tutorial/IC775574.png "Configure Single Sign-On")
    
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 
@@ -135,21 +136,21 @@ ITRP の場合、プロビジョニングは手動で行います。
 
 2. 上部のツールバーの **[レコード]**をクリックします。
    
-    ![管理者](./media/active-directory-saas-itrp-tutorial/IC775575.png "Admin")
+    ![管理](./media/active-directory-saas-itrp-tutorial/IC775575.png "Admin")
 
 3. ポップアップ メニューから **[ユーザー]**を選択します。
    
-    ![[ユーザー]](./media/active-directory-saas-itrp-tutorial/IC775587.png "People")
+    ![ユーザー](./media/active-directory-saas-itrp-tutorial/IC775587.png "People")
 
 4. **[新しいユーザーの追加]** (“+”) をクリックします。
    
-    ![管理者](./media/active-directory-saas-itrp-tutorial/IC775576.png "Admin")
+    ![管理](./media/active-directory-saas-itrp-tutorial/IC775576.png "Admin")
 
 5. [新しいユーザーの追加] ダイアログで、次の手順を実行します。
    
-    ![User](./media/active-directory-saas-itrp-tutorial/IC775577.png "User")
+    ![ユーザー](./media/active-directory-saas-itrp-tutorial/IC775577.png "User")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
+    a. プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
    
     b. [ **Save**] をクリックします。
 
@@ -166,17 +167,12 @@ ITRP の場合、プロビジョニングは手動で行います。
 
 2. **ITRP** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-itrp-tutorial/IC775588.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-itrp-tutorial/IC775588.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
     ![はい](./media/active-directory-saas-itrp-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

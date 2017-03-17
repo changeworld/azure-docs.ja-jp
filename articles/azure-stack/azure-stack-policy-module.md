@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/1/2016
+ms.date: 3/9/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: ab3d1ffaeddf6f0422d1cc45f0057e5b8c60b0d1
-ms.openlocfilehash: 05e6a89b00db023300e74fa5fac25d6d5cb0676b
-ms.lasthandoff: 11/23/2016
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: a80ed2a5b3b8c801912d21c17cbc6494b7178aab
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -25,26 +25,10 @@ ms.lasthandoff: 11/23/2016
 The Azure Stack Policy module allows you to configure an Azure subscription with the same versioning and service availability as Azure Stack.  The module uses the **New-AzureRMPolicyAssignment** cmdlet to create an Azure policy, which limits the resource types and services available in a subscription.  Once complete, you can use your Azure subscription to develop apps for Azure Stack.  
 
 ## <a name="install-the-module"></a>Install the module
-1. [Install the AzureRM module](azure-stack-connect-powershell.md) for Azure Stack.   
-2. Download the Azure Stack Tools scripts.  These support files can be downloaded by either browsing to the [GitHub repository](https://github.com/Azure/AzureStack-Tools), or running the following Windows PowerShell script as an administrator:
-   
-   > [!NOTE]
-   > The following steps require PowerShell 5.0.  To check your version, run $PSVersionTable.PSVersion and compare the "Major" version.  
-   > 
-   > 
-   
-    ```PowerShell
-   
-       #Download the tools archive
-       invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip -OutFile master.zip
-   
-       #Expand the downloaded files. 
-       expand-archive master.zip -DestinationPath . -Force
-   
-       #Change to the tools directory
-       cd AzureStack-Tools-master
-    ````
-3. In the same PowerShell session, navigate to the **Policy** folder, and import the AzureStack.Policy.psm1 module:
+1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md#install-the-required-version).   
+2. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md)  
+     
+3. Navigate to the **Policy** folder located either in AzureStack-Tools-master or AzureStack-Tools folder that is downloaded in step 2 . Import the AzureStack.Policy.psm1 module:
    
    ```PowerShell
    cd Policy

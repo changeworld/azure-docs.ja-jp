@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: c9a5091973395dd888939432292fbd06dcbf0680
-ms.openlocfilehash: c0349b5890a75c6ffaa6b7eca93baa3101912cf6
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 23bdde763de6f437a0dec74c51722cbcfc19b141
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -47,7 +47,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関するセクションを参照してください。
 
-HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 ほとんどの機能は Mono で動作しますが、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントで互換性のない可能性がある機能について確認する必要があります。
+HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 ほとんどの機能は Mono で動作します。 しかし、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントで互換性のない可能性がある機能について確認する必要があります。
 
 C# トポロジは .NET 4.5 も対象にする必要があります。
 
@@ -58,17 +58,17 @@ Microsoft では、Storm トポロジ からの Azure イベント ハブとの�
 > [!IMPORTANT]
 > コンポーネントは Java で記述されていますが、C# トポロジから簡単に使用することができます。
 
-主に扱うコンポーネントは次のとおりです。
+この例では、以下のコンポーネントを使用します。
 
 * __EventHubSpout__: イベント ハブからデータを読み取ります。
 * __EventHubBolt__: イベント ハブにデータを書き込みます。
 * __EventHubSpoutConfig__: EventHubSpout の構成に使用します。
 * __EventHubBoltConfig__: EventHubBolt の構成に使用します。
-* __UnicodeEventDataScheme__: イベント ハブから読み取るときに、UTF-8 のエンコーディングを使用するスパウトを構成するために使用します。 これを使用しない場合、文字列のエンコーディングがスパウトの規定値になります。
+* __UnicodeEventDataScheme__: イベント ハブから読み取るときに、UTF-8 のエンコーディングを使用するスパウトを構成するために使用します。 既定のエンコーディングは文字列です。
 
 ### <a name="example-spout-usage"></a>スパウトの使用例
 
-SCP.NET は、トポロジに EventHubSpout を追加するためのメソッドを提供します。 これらのメソッドにより、Java コンポーネントを追加するための一般的なメソッドを使用した場合よりも、追加が簡単になります。 次の例は、SCP.NET によって提供される __SetEventHubSpout__ メソッドと EventHubSpoutConfig メソッドを使用して新しいスパウトを作成する方法を示します。
+SCP.NET は、トポロジに EventHubSpout を追加するためのメソッドを提供します。 これらのメソッドにより、Java コンポーネントを追加するための一般的なメソッドを使用した場合よりも、追加が簡単になります。 次の例では、SCP.NET によって提供される __SetEventHubSpout__ メソッドと EventHubSpoutConfig メソッドを使用してスパウトを作成する方法を示します。
 
 ```csharp
 topologyBuilder.SetEventHubSpout(
@@ -87,12 +87,12 @@ topologyBuilder.SetEventHubSpout(
     eventHubPartitions);
 ```
 
-前の例では __EventHubSpout__ という名前の新しいスパウト コンポーネントを作成し、これがイベント ハブと通信するように構成しています。 このコンポーネントの並列処理のヒントはイベント ハブのパーティション数に設定されていることに注意してください。 これによって Storm は、パーティションごとに、コンポーネントのインスタンスを作成することができます。
+前の例では __EventHubSpout__ という名前の新しいスパウト コンポーネントを作成し、これがイベント ハブと通信するように構成しています。 このコンポーネントの並列処理のヒントはイベント ハブのパーティション数に設定されています。 この設定によって Storm は、パーティションごとに、コンポーネントのインスタンスを作成することができます。
 
 > [!WARNING]
-> 2017 年 1 月 1 日時点では、SetEventHubSpout メソッドと EventHubSpoutConfig メソッドを使用すると、イベント ハブからデータを読み取るときに文字列のエンコーディングを使用するスパウトが作成されます。 UTF-8 エンコーディングを使用する必要がある場合は、次の例を参照してください。
+> 2017 年 1 月 1 日時点では、SetEventHubSpout メソッドと EventHubSpoutConfig メソッドを使用すると、イベント ハブからデータを読み取るときに文字列のエンコーディングを使用するスパウトが作成されます。
 
-スパウトを作成するときに、一般的な JavaCompoentConstructor メソッドを使用することもできます。 次の例では、JavaComponentConstructor メソッドを使用して新しいスパウトを作成する方法を示します。 また、文字列ではなく UTF-8 エンコーディングを使用してデータを読み取るスパウトを構成する方法も示します。
+スパウトを作成するときに、一般的な JavaCompoentConstructor メソッドを使用することもできます。 次の例では、JavaComponentConstructor メソッドを使用してスパウトを作成する方法を示します。 また、文字列ではなく UTF-8 エンコーディングを使用してデータを読み取るスパウトを構成する方法も示します。
 
 ```csharp
 // Create an instance of UnicodeEventDataScheme
@@ -132,7 +132,7 @@ topologyBuilder.SetJavaSpout("EventHubSpout", eventHubSpout, eventHubPartitions)
 
 ### <a name="example-bolt-usage"></a>ボルトの使用例
 
-ボルトのインスタンスを作成するには、JavaComponmentConstructor メソッドを使用する必要があります。 次の例では、EventHubBolt の新しいインスタンスを作成および構成する方法を示します。
+ボルトのインスタンスを作成するには、JavaComponmentConstructor メソッドを使用します。 次の例では、EventHubBolt の新しいインスタンスを作成および構成する方法を示します。
 
 ```csharp
 //Create constructor for the Java bolt
@@ -160,7 +160,7 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]
-> この例では、スパウトの例で行ったように、独立した EventHubBoltConfig を作成する JavaComponentConstructor を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらでも、最適な方法をお使いください。
+> この例では、スパウトの例で行ったように、EventHubBoltConfig を作成する JavaComponentConstructor を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
@@ -171,7 +171,7 @@ topologyBuilder.SetJavaBolt(
 * [HDInsight クラスター バージョン 3.5 での Apache Storm](hdinsight-apache-storm-tutorial-get-started.md)
 
     > [!WARNING]
-    > このドキュメントで使用している例では、HDInsight バージョン 3.5 での Storm が必要です。 以前のクラスターでのバージョンと HDInsight 3.5 に付属の Storm のバージョン間で、コア Storm コンポーネントに使用されるクラス名に変更がありました。 以前のクラスターで動作するこの例のバージョンについては、[https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。
+    > このドキュメントで使用している例では、HDInsight バージョン 3.5 での Storm が必要です。 クラス名の変更があるため、これは旧バージョンの HDInsight では動作しません。 以前のクラスターで動作するこの例のバージョンについては、[https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。
 
 * [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
@@ -188,15 +188,15 @@ topologyBuilder.SetJavaBolt(
 
 スパウトとボルトは、**eventhubs-storm-spout-#.#-jar-with-dependencies.jar**という名前の&1; つの Java アーカイブ (.jar) ファイルとして配布されます。
 
-HDInsight バージョン 3.5 の Storm で動作する jar ファイルのバージョンは、[https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/) からダウンロードできます。
+このソリューションを HDInsight 3.5 で使用するには、[https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/lib/eventhubs/) にあるバージョン 0.9.5 の jar ファイルを使用します。
 
-`eventhubspout` という名前の新しいディレクトリを作成し、ファイルをディレクトリに保存します。
+`eventhubspout` という名前のディレクトリを作成し、そのディレクトリにファイルを保存します。
 
 ## <a name="configure-event-hubs"></a>Event Hubs を構成する
 
 Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)」ページの「**Event Hub を作成する**」セクションの情報を使用します。
 
-1. Event Hub が作成されたら、Azure Portal の EventHub ブレードを表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** エントリを使用して、次のポリシーを追加します。
+1. Event Hub が作成されたら、Azure Portal の EventHub ブレードを表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
    
    | 名前 | アクセス許可 |
    | --- | --- |
@@ -211,7 +211,7 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 
 1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
-2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。 ソリューションを開き、コード全体をよく見て **EventHubWriter** プロジェクトを確認します。
+2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。
 
 3. **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 以前に構成した Event Hub の情報を使用して、次のキーの値を入力します。
    
@@ -227,9 +227,9 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 
 ## <a name="configure-the-eventhubreader"></a>EventHubReader の構成
 
-1. **EventHubReader** プロジェクトを開き、コード全体をよく見ます。
+1. **EventHubReader** プロジェクトを開きます。
 
-2. **EventHubWriter**の **App.config** を開きます。 以前に構成した Event Hub の情報を使用して、次のキーの値を入力します。
+2. **EventHubReader** の **App.config** を開きます。 以前に構成した Event Hub の情報を使用して、次のキーの値を入力します。
    
    | キー | 値 |
    | --- | --- |
@@ -251,7 +251,7 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
    
     ![送信ダイアログの画像](./media/hdinsight-storm-develop-csharp-event-hub-topology/submit.png)
 
-3. トポロジが送信されると、 **[Storm トポロジ ビューアー]** が表示されます。 ダイアログの左側にある **EventHubReader** トポロジを選択し、トポロジの統計情報を表示します。 Event Hubs に書き込まれたイベントはまだないため、現時点では、何も発生していません。
+3. トポロジが送信されると、**[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
    
     ![ストレージ ビューの例](./media/hdinsight-storm-develop-csharp-event-hub-topology/topologyviewer.png)
 
@@ -261,16 +261,15 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 
 6. トポロジが送信されたら、 **[Storm トポロジ ビューアー]** でトポロジ一覧を最新情報に更新し、両方のトポロジがクラスターで実行中であることを確認します。
 
-7. **[Storm トポロジ ビューアー]** で **EventHubReader** トポロジを選択します。
+7. **[Storm トポロジ ビューアー]** で **[EventHubReader]** トポロジを選択します。
 
-8. グラフ ビューで、**LogBolt** コンポーネントをダブルクリックします。 これによって、ボルトの **[コンポーネントの概要]** ページが開きます。
+8. ボルトの **[コンポーネントの概要]** を開くには、ダイアグラムの **[LogBolt]** コンポーネントをダブルクリックします。
 
-9. **[Executors]** セクションで、**[ポート]** 列のリンクを&1; つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のような情報が記録されています。
+9. **[Executors]** セクションで、**[ポート]** 列のリンクを&1; つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
    
-        2016-10-20 13:26:44.186 m.s.s.b.ScpNetBolt [INFO] Processing tuple: source: com.microsoft.eventhubs.spout.EventHubSpout:7, stream: default, id: {5769732396213255808=520853934697489134}, [{"deviceId":3,"deviceValue":1379915540}]
-        2016-10-20 13:26:44.234 m.s.s.b.ScpNetBolt [INFO] Processing tuple: source: com.microsoft.eventhubs.spout.EventHubSpout:7, stream: default, id: {7154038361491319965=4543766486572976404}, [{"deviceId":3,"deviceValue":459399321}]
-        2016-10-20 13:26:44.335 m.s.s.b.ScpNetBolt [INFO] Processing tuple: source: com.microsoft.eventhubs.spout.EventHubSpout:6, stream: default, id: {513308780877039680=-7571211415704099042}, [{"deviceId":5,"deviceValue":845561159}]
-        2016-10-20 13:26:44.445 m.s.s.b.ScpNetBolt [INFO] Processing tuple: source: com.microsoft.eventhubs.spout.EventHubSpout:7, stream: default, id: {-2409895457033895206=5479027861202203517}, [{"deviceId":8,"deviceValue":2105860655}]
+        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
 
 ## <a name="stop-the-topologies"></a>トポロジの停止
 
@@ -284,7 +283,7 @@ Event Hubs は、この例のデータ ソースです。 「[Event Hubs の使�
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、C# トポロジから Java Event Hubs スパウトおよびボルトを使用して、Azure Event Hub のデータを操作する方法について説明しました。 C# トポロジの作成の詳細については、次の記事を参照してください。
+このドキュメントでは、C# トポロジから Java Event Hubs スパウトおよびボルトを使用して、Azure Event Hub のデータを操作する方法について説明しました。 C# トポロジの作成の詳細については、次のドキュメントをご覧ください。
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [SCP プログラミング ガイド](hdinsight-storm-scp-programming-guide.md)

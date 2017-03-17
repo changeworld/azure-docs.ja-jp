@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: bradsev;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 34441f27e842214d009d64fbc658ff5b7c05df5d
-ms.openlocfilehash: e2aab1363c6a2ffef529f0708cb3bec9c095cf59
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: c7444d457592538a26834091c77f49a3c1ef8591
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -46,7 +47,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 以下のトピックを読む前に、次の項目を用意する必要があります。
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* [推奨] Visual Studio 2013 または 2015。 いずれかのバージョンがインストールされていない場合、無料の Community エディションを [ここ](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)からダウンロードできます。 [Visual Studio] セクションの **[Community 2015 のダウンロード]** ボタンをクリックします。 
+* [推奨] Visual Studio 2013 以降。 いずれかのバージョンがまだインストールされていない場合は、[Visual Studio Community](https://www.visualstudio.com/vs/community/) から無料の Community バージョンをダウンロードできます。
 
 > [!NOTE]
 > Visual Studio ではなく、Azure ポータルを使用して Azure Data Lake クエリを送信することもできます。 Visual Studio とポータルの両方でこの手順を実行する方法については、このページの「 **U-SQL を使用してデータを処理する**」を参照してください。 
@@ -145,8 +146,8 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="a-nameingestadata-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
-Azure BLOB のデータの場所は、****** と指定して参照します。wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_nameExtractors.Csv()** を使用して展開することができます。 次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data_{\*\}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。 
+### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
+Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開できます。 次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data_{\*\}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。 
 
     ///Read in Trip data
     @trip0 =
@@ -169,7 +170,7 @@ Azure BLOB のデータの場所は、****** と指定して参照します。wa
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理したデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使用して Azure Data Lake ストレージに保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。 
+1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理されたデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使用して Azure Data Lake Storage に保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存できます。 
 
     // change data types
     @trip =
@@ -207,7 +208,7 @@ Azure BLOB のデータの場所は、****** と指定して参照します。wa
 
  ![11](./media/machine-learning-data-science-process-data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="a-namequalityadata-quality-checks"></a><a name="quality"></a>データ品質チェック
+### <a name="quality"></a>データ品質チェック
 乗車テーブルと料金テーブルを読み込んだら、次の方法でデータ品質チェックを実行できます。 結果の CSV ファイルは、Azure BLOB Storage または Azure Data Lake Store に出力できます。 
 
 メダリオンの数とメダリオンの一意の数を検索します。
@@ -279,7 +280,7 @@ pickup_longitude に関して無効なレコードを検索します。
 
 
 
-### <a name="a-nameexploreadata-exploration"></a><a name="explore"></a>データの探索
+### <a name="explore"></a>データの探索
 データの探索を実行して、データの理解を深めることができます。
 
 チップが払われた乗車と払われなかった乗車の分布を検索します。
@@ -346,7 +347,7 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv(); 
 
 
-### <a name="a-namejoinajoin-trip-and-fare-tables"></a><a name="join"></a>乗車テーブルと料金テーブルの結合
+### <a name="join"></a>乗車テーブルと料金テーブルの結合
 乗車テーブルと料金テーブルは、medallion、hack_license、pickup_time によって結合できます。
 
     //join trip and fare table
@@ -388,7 +389,7 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv();
 
 
-### <a name="a-namesampleadata-sampling"></a><a name="sample"></a>データのサンプリング
+### <a name="sample"></a>データのサンプリング
 まず、結合したテーブルから 0.1% のデータをランダムに選択します。
 
     //random select 1/1000 data for modeling purpose
@@ -428,7 +429,7 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv(); 
 
 
-### <a name="a-namerunarun-u-sql-jobs"></a><a name="run"></a>U-SQL ジョブの実行
+### <a name="run"></a>U-SQL ジョブの実行
 U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics アカウントを使用してサーバーに送信できます。 **[Data Lake]**、**[ジョブの送信]** の順にクリックし、**[Analytics アカウント]** を選択し、**[並列処理]** を選択して、**[送信]** ボタンをクリックします。  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
@@ -685,10 +686,5 @@ Web サービス ダッシュボードがすぐに表示されます。
 * [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)
 * [Team Data Science Process: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)
 * [Azure HDInsight 上の Spark を使用したデータ サイエンス プロセスの概要](machine-learning-data-science-spark-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

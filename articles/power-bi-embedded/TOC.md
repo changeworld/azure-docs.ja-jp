@@ -13,8 +13,11 @@
 
 ## 管理
 ### [データ ソースへの接続](power-bi-embedded-connect-datasource.md)
-### [IFrame を使用した Power BI レポートの埋め込み](power-bi-embedded-iframe.md)
+### [Power BI レポートの埋め込み](power-bi-embedded-embed-report.md)
 ### [レポートを操作する](power-bi-embedded-interact-with-reports.md)
+### [データセットからの新しいレポートの作成](power-bi-embedded-create-report-from-dataset.md)
+### [レポートの保存](power-bi-embedded-save-reports.md)
+### [表示と編集の切り替え](power-bi-embedded-toggle-mode.md)
 
 ## セキュリティ保護
 ### [認証と承認](power-bi-embedded-app-token-flow.md)
@@ -22,13 +25,17 @@
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.powerbiembedded/v2.3.0/azurerm.powerbiembedded)
-## [.NET](/dotnet/api/microsoft.azure.management.powerbiembedded)
+## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK ダウンロード](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
-## [REST ()](/rest/api/powerbiembedded/)
+## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
+## [管理 REST API](/rest/api/powerbiembedded/)
+## [REST API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
 
 
 # リソース
-## [サンプル](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [サンプル アプリケーション](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
+## [JavaScript の Git リポジトリ](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Power BI C# のGit リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

@@ -79,9 +79,12 @@
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [リスク イベント](active-directory-reporting-risk-events.md)
 ### [名前付きネットワーク](active-directory-known-networks-azure-portal.md)
-### [FAQ](active-directory-reporting-faq.md)
 ### [レポートの移行](active-directory-reporting-migration.md)
 ### [保持](active-directory-reporting-retention.md)
+### [FAQ](active-directory-reporting-faq.md)
+### トラブルシューティング
+#### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
+#### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
 ###    プログラムによるアクセス
 #### [監査のリファレンス](active-directory-reporting-api-audit-reference.md)
 #### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
@@ -124,13 +127,14 @@
 #### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
 
 ## デバイスを管理する
-### [デバイスを登録する](active-directory-conditional-access-device-registration-overview.md)
-#### [自動登録の管理](active-directory-conditional-access-automatic-device-registration.md)
+### [デバイスを登録する](active-directory-device-registration-overview.md)
+#### [自動登録の管理](active-directory-device-registration.md)
 #### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [FAQ](active-directory-conditional-access-automatic-device-registration-faq.md)
+#### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
+#### [FAQ](active-directory-device-registration-faq.md)
 #### トラブルシューティング
-##### [Windows 10 と Windows Server 2016 のトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
-##### [Windows ダウンレベル クライアントのトラブルシューティング](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+##### [Windows 10 と Windows Server 2016 のトラブルシューティング](active-directory-device-registration-troubleshoot-windows.md)
+##### [Windows ダウンレベル クライアントのトラブルシューティング](active-directory-device-registration-troubleshoot-windows-legacy.md)
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [プラン](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
@@ -277,7 +281,6 @@
 #### [サポート対象アプリ](active-directory-conditional-access-supported-apps.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
-#### [オンプレミスにデプロイする](active-directory-conditional-access-on-premises-setup.md)
 #### [FAQ](active-directory-conditional-faqs.md)
 #### [トラブルシューティング](active-directory-conditional-access-device-remediation.md)
 #### [リファレンス](active-directory-conditional-access-technical-reference.md)

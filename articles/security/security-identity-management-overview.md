@@ -1,6 +1,6 @@
 ---
 title: "ID 管理に役立つ Azure のセキュリティ機能 | Microsoft Docs"
-description: " この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証を可能にします。. "
+description: " この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 03/09/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
-ms.openlocfilehash: 9c5af888ec0130ec8506602ab805221f0a83ea47
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: bb9d08d6164ec01ce1d76fc4a23e782213ecfcd9
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -110,15 +110,15 @@ Azure Active Directory B2C を使用すると、コンシューマーは、既�
 * [Azure Active Directory B2C プレビュー: アプリケーションの種類](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>デバイス登録
-Azure AD Device Registration は、デバイスに基づいて[条件付きでアクセス](../active-directory/active-directory-conditional-access-on-premises-setup.md)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
+Azure AD Device Registration は、デバイスに基づいて[条件付きでアクセス](../active-directory/active-directory-conditional-access-device-registration-overview.md)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
 Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
 詳細情報:
 
 * [Azure Active Directory Device Registration の基本](../active-directory/active-directory-conditional-access-device-registration-overview.md)
-* [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory/active-directory-conditional-access-on-premises-setup.md)
 * [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
+* [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management (PIM) を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。

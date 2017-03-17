@@ -14,20 +14,22 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 02/27/2017
 ms.author: chrande; glenga
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b41a5aacec6748af5ee05b01487310cc339af1f9
-ms.openlocfilehash: 542e5378aff893741a68c979bc2c5e8bfe58ba26
+ms.sourcegitcommit: 2542d8c750fc7e1bcc31a9c0eb1672402facfd58
+ms.openlocfilehash: 146884833e968767c14d7e4f924762a592e427e2
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
+# <a name="schedule-code-execution-with-azure-functions"></a>Azure Functions を使用したコード実行のスケジュール設定
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions でタイマー トリガーを構成およびコーディングする方法について説明します。 Azure Functions では、タイマー トリガーをサポートしています。 タイマー トリガーでは、スケジュールに従って関数が 1 回または定期的に呼び出されます。 
+この記事では、Azure Functions でタイマー トリガーを構成およびコーディングする方法について説明します。 Azure Functions には、定義したスケジュールに基づいて関数コードを実行することができるタイマー トリガー バインディングがあります。 
 
-タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。 特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
+タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。 特定のタイマー関数の&1; つのインスタンスが、すべてのインスタンスにわたって実行されます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -45,7 +47,12 @@ ms.openlocfilehash: 542e5378aff893741a68c979bc2c5e8bfe58ba26
 }
 ```
 
-`schedule` の値は、`{second} {minute} {hour} {day} {month} {day of the week}` の 6 個のフィールドが含まれる [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。 オンラインで見つかる CRON 式の多くでは、`{second}` フィールドが省略されています。 それらをコピーした場合は、追加の `{second}` フィールドを調整する必要があります。 具体的な例については、以下の「[スケジュールの例](#examples)」を参照してください。
+`schedule` の値は、次の&6; 個のフィールドが含まれる [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。 
+
+    {second} {minute} {hour} {day} {month} {day-of-week}
+&nbsp;
+>[!NOTE]   
+>オンラインで見つかる CRON 式の多くでは、`{second}` フィールドが省略されています。 それらをコピーした場合は、追加の `{second}` フィールドを調整する必要があります。 具体的な例については、以下の「[スケジュールの例](#examples)」を参照してください。
 
 CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使用するには、Function App 用に `WEBSITE_TIME_ZONE` という名前の新しいアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://msdn.microsoft.com/library/ms912391.aspx)に関するページに示されている目的のタイム ゾーンの名前に設定します。 
 
@@ -53,13 +60,13 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 
 ```json
 "schedule": "0 0 15 * * *",
-``` 
+```    
 
 また、Function App の新しいアプリ設定を `WEBSITE_TIME_ZONE` という名前で追加し、その値を "**東部標準時**" に設定することもできます。  その場合、東部標準時の 10:00 AM を表す次の CRON 式を使用できます。 
 
 ```json
 "schedule": "0 0 10 * * *",
-``` 
+```    
 
 
 <a name="examples"></a>
@@ -67,19 +74,19 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 ## <a name="schedule-examples"></a>スケジュールの例
 `schedule` プロパティに使用できる CRON 式の例をいくつか示します。 
 
-5 分に 1 回トリガーするには、次のように指定します。
+5 分に&1; 回トリガーするには、次のように指定します。
 
 ```json
 "schedule": "0 */5 * * * *"
 ```
 
-毎正時に 1 回トリガーするには、次のように指定します。
+毎正時に&1; 回トリガーするには、次のように指定します。
 
 ```json
 "schedule": "0 0 * * * *",
 ```
 
-2 時間に 1 回トリガーするには、次のように指定します。
+2 時間に&1; 回トリガーするには、次のように指定します。
 
 ```json
 "schedule": "0 0 */2 * * *",
@@ -106,7 +113,7 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 <a name="usage"></a>
 
 ## <a name="trigger-usage"></a>トリガーの使用方法
-タイマー トリガー関数が呼び出されると、[タイマー オブジェクト](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)が関数に渡されます。 次の JSON は、タイマー オブジェクトの 1 つの表現例です。 
+タイマー トリガー関数が呼び出されると、[タイマー オブジェクト](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)が関数に渡されます。 次の JSON は、タイマー オブジェクトの&1; つの表現例です。 
 
 ```json
 {
@@ -184,10 +191,5 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

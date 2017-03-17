@@ -402,7 +402,7 @@ ms.lasthandoff: 03/08/2017
 
 ### <a name="modify-appjs"></a>app.js の変更
 1. プロジェクト ディレクトリ内の **app.js** ファイルを開きます。 これは、先ほどの Express Web アプリケーション作成時に作成されたファイルです。
-2. **app.js**
+2. **app.js** の先頭に次のコードを追加します。
    
         var DocumentDBClient = require('documentdb').DocumentClient;
         var config = require('./config');

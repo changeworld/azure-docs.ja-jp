@@ -5,17 +5,20 @@
 
 # 作業の開始
 ## [ラボの作成](devtest-lab-create-lab.md)
+## [数式の作成](devtest-lab-create-formulas.md)
 ## [VM の作成](devtest-lab-add-vm.md)
+## [ラボの基本ポリシーの管理](devtest-lab-get-started-with-lab-policies.md)
 ## [トレーニング用ラボの作成](devtest-lab-training-lab.md)
 ## [FAQ](devtest-lab-faq.md)
 
 # 方法
 ## ラボの管理
 ### [ラボの所有者とユーザーの追加](devtest-lab-add-devtest-user.md)
-### [ラボのポリシーの定義](devtest-lab-set-lab-policy.md)
+### [ラボのすべてのポリシーの管理](devtest-lab-set-lab-policy.md)
 ### [ポリシーへの権限の付与](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 ### [コスト管理の構成](devtest-lab-configure-cost-management.md)
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)
+### [共有 IP アドレスについて](devtest-lab-shared-ip.md)
 
 ## アーティファクトの管理
 ### [アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)
@@ -33,8 +36,6 @@
 ### [AzCopy を使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-azcopy.md)
 ### [PowerShell を使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-powershell.md)
 ### [ストレージ エクスプローラーを使用して VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-storage-explorer.md)
-
-
 
 # リソース
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
+ms.sourcegitcommit: 4a07f946d396a9263d5b00202cd5229ddc86d1be
+ms.openlocfilehash: 257c1032ed8f1347c17be7e51021b9284b73f4a2
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 583141e7543cb5e824204a49ff4400fe462ff28b
 Asana と Azure AD の統合には、次の利点があります。
 
 * Asana にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで Asana に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
+* ユーザーが自分の Azure AD アカウントでに自動的 Asana にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,23 +36,22 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Asana と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* **Asana** でのシングル サインオンが有効なサブスクリプション
+* **Asana** でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Asana の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
 ## <a name="adding-asana-from-the-gallery"></a>ギャラリーからの Asana の追加
 Azure AD への Asana の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Asana を追加する必要があります。
@@ -78,22 +78,23 @@ Azure AD への Asana の統合を構成するには、ギャラリーから管�
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/tutorial_asana_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Asana で Azure AD のシングル サインオンを構成し、テストします。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Asana で Azure AD の SSO を構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Asana ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Asana の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Asana ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Asana の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Asana の **[Username (ユーザー名)]** の値として割り当てます。
 
 Asana で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Asana テスト ユーザーの作成](#creating-an-Asana-test-user)** - Asana で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Asana アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Asana アプリケーションで SSO を構成することです。
 
 **Asana で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -108,35 +109,30 @@ Asana で Azure AD のシングル サインオンを構成してテストする
     ![[シングル サインオンの構成]](./media/active-directory-saas-asana-tutorial/tutorial_asana_06.png)
 4. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。 
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-asana-tutorial/tutorial_asana_07.png)
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、`https://app.asana.com` という形式で URL を入力します。
-
-    c. **[次へ]**をクリックします。
-
-1. **[Asana でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 また、SAML SSO URL の値をコピーします。
+    ![Configure Single Sign-On](./media/active-directory-saas-asana-tutorial/tutorial_asana_07.png)
+  1. [サインオン URL] ボックスに、`https://app.asana.com` という形式で URL を入力します。
+  2. **[次へ]**をクリックします。
+5. **[Asana でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。 また、SAML SSO URL の値をコピーします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-asana-tutorial/tutorial_asana_08.png)
-2. 証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーします。 これが、SSO の構成に Asana で使用する X.509 証明書です。
-3. 別のブラウザー ウィンドウで、Asana アプリケーションにサインオンします。 Asana で SSO を構成するために、画面の右上隅にあるワークスペース名をクリックして、ワークスペースの設定にアクセスします。 その後、**[\<your workspace name\> Settings (<ワークスペース名> 設定)]** をクリックします。 
+6. 証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーします。 これが、SSO の構成に Asana で使用する X.509 証明書です。
+7. 別のブラウザー ウィンドウで、Asana アプリケーションにサインオンします。 Asana で SSO を構成するために、画面の右上隅にあるワークスペース名をクリックして、ワークスペースの設定にアクセスします。 その後、**[\<your workspace name\> Settings (<ワークスペース名> 設定)]** をクリックします。 
    
     ![Configure Single Sign-On](./media/active-directory-saas-asana-tutorial/tutorial_asana_09.png)
-4. **[Organization settings (組織の設定)]** ウィンドウで **[Administration (管理)]** をクリックします。 その後、 **[Members must log in via SAML (メンバーは SAML でログインする必要がある)]** をクリックして SSO 構成を有効にします。 次の手順に従います。
+8. **[Organization settings (組織の設定)]** ウィンドウで **[Administration (管理)]** をクリックします。 その後、 **[Members must log in via SAML (メンバーは SAML でログインする必要がある)]** をクリックして SSO 構成を有効にします。 次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Sign-in page URL (サインイン ページ URL)]** ボックスに、Azure AD からコピーした SAML サインオン URL を貼り付けます。
-   
-    b. **[X.509 Certificate (X.509 証明書)]** ボックスに、Azure AD からコピーした X.509 証明書を貼り付けます。
-5. [ **Save**] をクリックします。 さらにサポートが必要な場合は、 [SSO の設定に関する Asana ガイド](https://asana.com/guide/help/premium/authentication#gl-saml) をご覧ください。
-6. Azure AD の **[Asana でのシングル サインオンの構成]** ページに移動し、シングル サインオンの構成確認を選択して、**[次へ]** をクリックします。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)  
+  1. **[Sign-in page URL (サインイン ページ URL)]** ボックスに、Azure AD からコピーした SAML サインオン URL を貼り付けます。
+  2. **[X.509 Certificate (X.509 証明書)]** ボックスに、Azure AD からコピーした X.509 証明書を貼り付けます。
+9. [ **Save**] をクリックします。 さらにサポートが必要な場合は、 [SSO の設定に関する Asana ガイド](https://asana.com/guide/help/premium/authentication#gl-saml) をご覧ください。
+10. Azure AD の **[Asana でのシングル サインオンの構成]** ページに移動し、SSO の構成確認を選択して、**[次へ]** をクリックします。
    
     ![Azure AD のシングル サインオン][10]
-7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
+11. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
 ![Azure AD ユーザーの作成][20]
@@ -156,37 +152,27 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/create_aaduser_05.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。   
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+  1. **[新しいパスワード]** の値を書き留めます。 
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-an-asana-test-user"></a>Asana テスト ユーザーの作成
+### <a name="create-an-asana-test-user"></a>Asana テスト ユーザーの作成
 このセクションでは、Asana で Britta Simon というユーザーを作成します。
 
 1. **Asana** の左側のパネルで、**[Teams (チーム)]** セクションに移動します。 プラス記号ボタンをクリックします。 
@@ -195,8 +181,8 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 2. 電子メール アドレス「 britta.simon@contoso.com 」をテキスト ボックスに入力し、 **[Invite (招待)]**を選択します。
 3. **[Send Invite (招待の送信)]**をクリックします。 新しいユーザーの電子メール アカウントに電子メールが届きます。 新しいユーザーは、アカウントを作成、確認する必要があります。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションでは、Britta Simon に Asana へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションでは、Britta Simon に Asana へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
 
 ![ユーザーの割り当て][200] 
 
@@ -216,7 +202,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 このセクションの目的は、Azure AD のシングル サインオンをテストすることです。
 
 Asana のログイン ページに移動します。 電子メール アドレスのボックスに、電子メール アドレスとして「britta.simon@contoso.com」と入力します。 パスワード ボックスは空白のままにして **[Log In (ログイン)]** をクリックします。 Azure AD ログイン ページにリダイレクトされます。 Azure AD 資格情報をすべて入力します。 これで、Asana へのログインが完了しました。
@@ -245,9 +231,4 @@ Asana のログイン ページに移動します。 電子メール アドレ�
 [203]: ./media/active-directory-saas-asana-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-asana-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-asana-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

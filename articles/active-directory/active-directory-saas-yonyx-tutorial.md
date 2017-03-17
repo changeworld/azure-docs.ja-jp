@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 02/26/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 81df166cadd33677cb62823440e04402354eba43
+ms.sourcegitcommit: 4a07f946d396a9263d5b00202cd5229ddc86d1be
+ms.openlocfilehash: 0d2ac97c7f8e42f1e6b847e338d0676592054d93
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 81df166cadd33677cb62823440e04402354eba43
 Yonyx Interactive Guides と Azure AD の統合には、次の利点があります。
 
 * Yonyx Interactive Guides にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に Yonyx Interactive Guides にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に Yonyx Interactive Guides にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,25 +36,24 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Yonyx Interactive Guides と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* Yonyx Interactive Guides でのシングル サインオンが有効なサブスクリプション
+* Yonyx Interactive Guides での SSO が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの Yonyx Interactive Guides の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
 ## <a name="adding-yonyx-interactive-guides-from-the-gallery"></a>ギャラリーからの Yonyx Interactive Guides の追加
 Azure AD への Yonyx Interactive Guides の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Yonyx Interactive Guides を追加する必要があります。
@@ -80,25 +80,25 @@ Azure AD への Yonyx Interactive Guides の統合を構成するには、ギャ
    
     ![ギャラリーでアプリを選択する](./media/active-directory-saas-yonyx-tutorial/tutorial_yonyx_0001.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーをベースに、Yonyx Interactive Guides での Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Yonyx Interactive Guides で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Yonyx Interactive Guides ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Yonyx Interactive Guides の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Yonyx Interactive Guides ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Yonyx Interactive Guides の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Yonyx Interactive Guides の **[Username (ユーザー名)]** の値として割り当てます。
 
-Yonyx Interactive Guides で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Yonyx Interactive Guides で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Yonyx Interactive Guides のテスト ユーザーの作成](#creating-a-yonyx-interactive-guides-test-user)** - Yonyx Interactive Guides で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Yonyx Interactive Guides アプリケーションでシングル サインオンを構成します。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションでは、クラシック ポータルで Azure AD の SSO を有効にして、Yonyx Interactive Guides アプリケーションでシングル サインオンを構成します。
 
-**Yonyx Interactive Guides で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**Yonyx Interactive Guides で Azure AD SSO を構成するには、次の手順に従います。**
 
 1. クラシック ポータルの **Yonyx Interactive Guides** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -109,29 +109,21 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-yonyx-tutorial/tutorial_yonyx_04.png)
+  1. **[サインオン URL]** ボックスに、`https://<company name>.yonyx.com/y/conversation/?id=<guid number>` のパターンを使用して URL を入力します。 
+  2. **[識別子]** ボックスに、`https://<company name>.yonyx.com` のパターンを使用して URL を入力します。
+  3. **[次へ]**をクリックします。
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.yonyx.com/y/conversation/?id=<guid number>` のパターンを使用して URL を入力します。
-   
-    b. **[識別子]** ボックスに、`https://<company name>.yonyx.com` のパターンを使用して URL を入力します。
-   
-    c.  **[次へ]**
-   
-   > [!NOTE]
-   > 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) に問い合わせてください。
-   > 
-   > 
+    >[!NOTE]
+    > 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。 これらの値を取得するには、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) に問い合わせてください。 
+    > 
 4. **[Yonyx Interactive Guides でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-yonyx-tutorial/tutorial_yonyx_05.png)
 5. アプリケーション用に構成された SSO を入手するには、<mailto:support@yonyx.com> を使用して Yonyx Interactive Guides サポート チームに連絡して、次の情報を提供してください。
-   
-    • ダウンロードした**証明書**
-   
-    • **発行者の URL**
-   
-    •  **シングル サインオン サービス URL**
-   
-    •  **シングル サインアウト サービス URL**
+  * ダウンロードした**証明書**
+  * **発行者の URL**
+  * **シングル サインオン サービス URL**
+  * **シングル サインアウト サービス URL**
 6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
@@ -139,7 +131,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -158,49 +150,38 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_04.png)
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_05.png)
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_05.png) 
+ 1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。  
+ 2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。 
+ 3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_06.png)
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_06.png) 
+ 1. **[名]** ボックスに「**Britta**」と入力します。   
+ 2. **[姓]** ボックスに「**Simon**」と入力します。 
+ 3. **[表示名]** ボックスに「**Britta Simon**」と入力します。 
+ 4. **[ロール]** 一覧で **[ユーザー]** を選択します。 
+ 5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_07.png)
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_08.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-yonyx-tutorial/create_aaduser_08.png) 
+ 1. **[新しいパスワード]** の値を書き留めます。
+ 2. **[完了]** をクリックします。   
 
-### <a name="creating-a-yonyx-interactive-guides-test-user"></a>Yonyx Interactive Guides のテスト ユーザーの作成
+### <a name="create-a-yonyx-interactive-guides-test-user"></a>Yonyx Interactive Guides テスト ユーザーの作成
 このセクションの目的は、Yonyx Interactive Guides で Britta Simon というユーザーを作成することです。 Yonyx Interactive Guides では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Yonyx Interactive Guides ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) にお問い合わせください。
-> 
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) にお問い合わせください。 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に Yonyx Interactive Guides へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に Yonyx Interactive Guides へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200]
 
@@ -220,7 +201,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
 
 アクセス パネルで Yonyx Interactive Guides のタイルをクリックすると、自動的に Yonyx Interactive Guides アプリケーションにサインオンします。
@@ -246,9 +227,4 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 [203]: ./media/active-directory-saas-yonyx-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-yonyx-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-yonyx-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

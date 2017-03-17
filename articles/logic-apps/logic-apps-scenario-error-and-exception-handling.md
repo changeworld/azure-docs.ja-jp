@@ -1,6 +1,6 @@
 ---
-title: "Logic Apps のログ記録とエラー処理 | Microsoft Docs"
-description: "Logic Apps を使用した高度なエラー処理とログ記録について実際の使用例を紹介しています。"
+title: "例外処理とエラー ロギングのシナリオ - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps の高度な例外処理とエラー ロギングに関する実際のユース ケースについて説明します"
 keywords: 
 services: logic-apps
 author: hedidin
@@ -13,54 +13,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: b-hoedid
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: fa65d18391aae1cc36f5e8ea54c195ed06b24c00
+ms.sourcegitcommit: 03467542669d9719d2634d20d4c0e7bba265ac6f
+ms.openlocfilehash: dff2c67f5e529d40d31e9bad1af00938ddf547b8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="logging-and-error-handling-in-logic-apps"></a>Logic Apps のログ記録とエラー処理
-この記事では、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
+# <a name="scenario-exception-handling-and-logging-errors-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラー ロギング
+
+このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Azure Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
 
 > [!NOTE]
-> 現在の Logic Apps スキーマには、アクションに対する応答の標準テンプレートが用意されています。
-> これには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
-> 
-> 
+> 現在の Azure Logic Apps スキーマには、アクションに対する応答の標準テンプレートが用意されています。 このテンプレートには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
 
-## <a name="overview-of-the-use-case-and-scenario"></a>ユース ケースとシナリオの概要
-この記事で扱うユース ケースは次のとおりです。
-以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。  すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
+## <a name="scenario-and-use-case-overview"></a>シナリオとユース ケースの概要
+
+このシナリオで使用したユース ケースの背景情報を次に示します。 
+
+以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
 
 このプロジェクトには、主に&2; つの要件がありました。  
 
 * Dynamics CRM Online ポータルから送信されたレコードを記録するメソッド
 * ワークフロー内で発生したエラーを確認する手段
 
-## <a name="how-we-solved-the-problem"></a>問題の解決方法
 > [!TIP]
-> [Integration User Group のサイト](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group")でプロジェクトの概要ビデオ (英語) をご覧いただけます。
-> 
-> 
+> このプロジェクトの概要に関するビデオは、[Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group") のサイトでご覧ください。
 
-ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。 Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-もう&1; つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 これにより、DocumentDB から手動でレコードを削除する手間が省かれました。
+ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-### <a name="creation-of-the-logic-app"></a>ロジック アプリの作成
-最初に行うことは、ロジック アプリを作成してデザイナーに読み込むことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを&1; つ作成します。
-
-Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、要求トリガーを使用する必要があります。
+もう&1; つの要件は、特定の日付を越えたらレコードを消去するというものでした。 DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、DocumentDB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
 > このチュートリアルの作業を行うためには、DocumentDB データベースと&2; つのコレクション (ログとエラー) を作成する必要があります。
-> 
-> 
+
+## <a name="create-the-logic-app"></a>ロジック アプリの作成
+
+最初に行うことは、ロジック アプリを作成し、そのアプリをロジック アプリ デザイナーで開くことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを&1; つ作成します。
+
+Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、**要求**トリガーを使用する必要があります。
 
 ### <a name="logic-app-trigger"></a>ロジック アプリのトリガー
-要求トリガーを次の例のように使用します。
+
+**要求**トリガーを次の例のように使用します。
 
 ```` json
 "triggers": {
@@ -98,33 +99,40 @@ Dynamics CRM Online から送信されたレコードのログを記録するこ
 ````
 
 
-### <a name="steps"></a>手順
+## <a name="steps"></a>手順
+
 Dynamics CRM Online ポータルから送信された患者レコードのソース (要求) を記録する必要があります。
 
 1. まず Dynamics CRM Online から新しい予約レコードを取得する必要があります。
-    CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
+
+    CRM から取得したトリガーによって、**CRM 患者 ID**、 **レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
     CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
+
 2. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります (下図)。
 
-#### <a name="insert-log-entry-designer-view"></a>ログ エントリ挿入のデザイナー ビュー
+### <a name="insert-log-entry-designer-view"></a>ログ エントリ挿入のデザイナー ビュー
+
 ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
-#### <a name="insert-error-entry-designer-view"></a>エラー エントリ挿入のデザイナー ビュー
+### <a name="insert-error-entry-designer-view"></a>エラー エントリ挿入のデザイナー ビュー
+
 ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-#### <a name="check-for-create-record-failure"></a>レコード作成エラーのチェック
+### <a name="check-for-create-record-failure"></a>レコード作成エラーのチェック
+
 ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>ロジック アプリのソース コード
+
 > [!NOTE]
-> 以降に示したコードは、あくまでサンプルです。 このチュートリアルは、現在運用段階の実装がベースになっているため、 **Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。
-> 
-> 
+> 次の例は、あくまでサンプルです。 このチュートリアルは、現在運用段階の実装がベースになっているため、 **Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。 
 
 ### <a name="logging"></a>ログの記録
+
 以下に示したのは、ログ処理の方法を示すロジック アプリのコード サンプルです。
 
 #### <a name="log-entry"></a>ログ エントリ
+
 これはログ エントリを挿入するための、ロジック アプリのソース コードです。
 
 ``` json
@@ -152,6 +160,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 #### <a name="log-request"></a>ログ要求
+
 これは、API アプリにポストされるログ要求メッセージです。
 
 ``` json
@@ -171,6 +180,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 
 #### <a name="log-response"></a>ログ応答
+
 これは、API アプリからのログ応答メッセージです。
 
 ``` json
@@ -208,10 +218,12 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 それでは、エラー処理の手順を見ていきましょう。
 
 ### <a name="error-handling"></a>エラー処理
-以下の Logic Apps のコード サンプルは、エラー処理を実装する方法を示しています。
+
+以下のロジック アプリのコード サンプルは、エラー処理を実装する方法を示しています。
 
 #### <a name="create-error-record"></a>エラー レコードの作成
-これはエラー レコードを作成するための、Logic Apps のソース コードです。
+
+これはエラー レコードを作成するための、ロジック アプリのソース コードです。
 
 ``` json
 "actions": {
@@ -247,6 +259,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 #### <a name="insert-error-into-documentdb--request"></a>DocumentDB へのエラーの挿入 (要求)
+
 ``` json
 
 {
@@ -269,6 +282,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 #### <a name="insert-error-into-documentdb--response"></a>DocumentDB へのエラーの挿入 (応答)
+
 ``` json
 {
     "statusCode": 200,
@@ -307,6 +321,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 #### <a name="salesforce-error-response"></a>Salesforce のエラー応答
+
 ``` json
 {
     "statusCode": 400,
@@ -334,10 +349,12 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 ```
 
-### <a name="returning-the-response-back-to-the-parent-logic-app"></a>親ロジック アプリに応答を返す
-応答を受け取ったら、それを親ロジック アプリに渡します。
+### <a name="return-the-response-back-to-parent-logic-app"></a>親ロジック アプリに応答を返す
 
-#### <a name="return-success-response-to-the-parent-logic-app"></a>親ロジック アプリに成功応答を返す
+応答を受け取ったら、その応答を親ロジック アプリに渡します。
+
+#### <a name="return-success-response-to-parent-logic-app"></a>親ロジック アプリに成功応答を返す
+
 ``` json
 "SuccessResponse": {
     "runAfter":
@@ -358,7 +375,8 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }
 ```
 
-#### <a name="return-error-response-to-the-parent-logic-app"></a>親ロジック アプリにエラー応答を返す
+#### <a name="return-error-response-to-parent-logic-app"></a>親ロジック アプリにエラー応答を返す
+
 ``` json
 "ErrorResponse": {
     "runAfter":
@@ -382,16 +400,15 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 
 ## <a name="documentdb-repository-and-portal"></a>DocumentDB リポジトリとポータル
-ソリューションの機能は、 [DocumentDB](https://azure.microsoft.com/services/documentdb)を使って拡張されています。
+
+ソリューションの機能は、 [DocumentDB](https://azure.microsoft.com/services/documentdb) を使って拡張されています。
 
 ### <a name="error-management-portal"></a>エラー管理ポータル
+
 エラーを表示するには、DocumentDB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作について: DocumentDB では、ドキュメント全体の置き換えが実行されます。
-> **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
-> 
-> 
+> 編集操作について: DocumentDB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
@@ -402,14 +419,17 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ![Error Details](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
 ### <a name="log-management-portal"></a>ログの管理ポータル
-ログを表示するために、MVC Web アプリも作成しました。  これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
+
+ログを表示するために、MVC Web アプリも作成しました。 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
 #### <a name="sample-log-detail-view"></a>ログ詳細表示サンプル
 ![Log Detail View](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
 
 ### <a name="api-app-details"></a>API アプリの詳細
+
 #### <a name="logic-apps-exception-management-api"></a>Logic Apps 例外管理 API
-Microsoft がソース コードを公開している、Logic Apps 例外管理 API アプリには、次の機能が備わっています。
+
+Microsoft がソース コードを公開している、Azure Logic Apps 例外管理 API アプリには、次の機能が備わっています。
 
 コントローラーは&2; つ存在します。
 
@@ -417,11 +437,10 @@ Microsoft がソース コードを公開している、Logic Apps 例外管理 
 * **LogController** は、DocumentDB コレクションにログ レコード (ドキュメント) を挿入します。
 
 > [!TIP]
-> どちらのコントローラーも `async Task<dynamic>` 操作を使用しています。 操作を実行時に解決できるので、DocumentDB スキーマを操作の本体に作成することができます。
-> 
+> 両方のコントローラーで `async Task<dynamic>` 操作が使用されており、操作を実行時に解決できるので、DocumentDB スキーマを操作の本体に作成することができます。 
 > 
 
-DocumentDB 内の各ドキュメントには、一意の ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために切り詰め処理を行っています。
+DocumentDB 内の各ドキュメントには、一意の ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために値の切り詰め処理を行っています。
 
 エラー コント ローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) で参照することができます。
 
@@ -458,24 +477,20 @@ DocumentDB 内の各ドキュメントには、一意の ID が割り当てら�
  }
 ```
 
-前のコード サンプルの式は、*Create_NewPatientRecord* ステータスが **Failed** であるかどうかをチェックしています。
+前のコード サンプルの式は、*Create_NewPatientRecord* ステータスが **Failed** であるかどうかをチェックします。
 
 ## <a name="summary"></a>概要
+
 * ログ処理とエラー処理は、ロジック アプリで簡単に実装できます。
 * ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、DocumentDB を使用できます。
 * ログ レコードとエラー レコードを表示するためのポータルは MVC を使用して作成できます。
 
 ### <a name="source-code"></a>ソース コード
+
 lLogic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")のサイトでプロジェクトの概要ビデオをご覧いただけます。
 
 ## <a name="next-steps"></a>次のステップ
-* [さらに他の Logic Apps の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Logic Apps の監視ツールについて学習する](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+
+* [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [ロジック アプリの自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

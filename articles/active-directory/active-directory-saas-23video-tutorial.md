@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 02/24/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 605ba0aee99b81c07e37e13314e7bc1226e7e161
+ms.sourcegitcommit: a59a0782176f5221bb8b2f590faeee660f4d1101
+ms.openlocfilehash: 2ebc4571cb7ff763449f192f5140c79a65d69833
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル: Azure Active Directory と 23 Video の統合
-このチュートリアルの目的は、23 Video と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
+このチュートリアルの目的は、23 Video と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+
 23 Video と Azure AD の統合には、次の利点があります。 
 
 * 23 Video にアクセスする Azure AD ユーザーを制御できます。 
-* ユーザーが自分の Azure AD アカウントで自動的に 23 Video にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に 23 Video にシングル サインオン (SSO) できるようにします
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -33,24 +35,24 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 23 Video と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* 23 Video でのシングル サインオンが有効なサブスクリプション
+* 23 Video でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。
+
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの 23 Video の追加 
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
 ## <a name="adding-23-video-from-the-gallery"></a>ギャラリーからの 23 Video の追加
 Azure AD への 23 Video の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に 23 Video を追加する必要があります。
@@ -77,13 +79,14 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
    
     ![アプリケーション][25]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、23 Video で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configuring-and-testing-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、23 Video で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する 23 Video ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと 23 Video の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+SSO を機能させるには、Azure AD ユーザーに対応する 23 Video ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと 23 Video の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を 23 Video の **[Username (ユーザー)]** の値として割り当てます。
 
-23 Video で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+23 Video で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
@@ -91,10 +94,10 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、23 Video アプリケーションでシングル サインオンを構成することです。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、23 Video アプリケーションで SSO を構成することです。
 
-**23 Video で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**23 Video で Azure AD SSO を構成するには、次の手順に従います。**
 
 1. Azure クラシック ポータルの **23 Video** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
@@ -104,25 +107,20 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
     ![Azure AD のシングル サインオン][7] 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD Single Sign-On][8] 
+    ![Azure AD のシングル サインオン][8] 
+  1. **[応答 URL]** ボックスに、ユーザーが 23 Video サイトへのサインオンに使用する URL を入力します (例: *https://britta-simon.23Video.com/saml/login*)。
    
-     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[応答 URL]** ボックスに、ユーザーが 23 Video サイトへのサインオンに使用する URL を入力します (例: *https://britta-simon.23Video.com/saml/login*)。
-   
-   > [!NOTE]
-   > SAML 2.0 を使用した Active Directory の統合は、23 Video のすべてのユーザーが使用できます。 関連するメタデータが必要な場合は、サポート ( [support@23company.com](mailto:support@23company.com) ) にお問い合わせください。
-   > 
-   > 
-   
-     b. **[次へ]**をクリックします。
+    >[!NOTE]
+    >SAML 2.0 を使用した Active Directory の統合は、23 Video のすべてのユーザーが使用できます。 関連するメタデータが必要な場合は、サポート ( [support@23company.com](mailto:support@23company.com) ) にお問い合わせください。 
+    > 
+ 
+  2. **[次へ]**をクリックします。
 4. **[23 Video でのシングル サインオンの構成]** ページで、次のステップを実行します。
    
     ![Azure AD のシングル サインオン][9] 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
-   
-    b. 23 Video サポート チーム ([support@23company.com](mailto:support@23company.com)) に連絡して、ダウンロードした証明書、**発行者の URL**、**シングル サインオン サービス URL**、**シングル サインアウト URL** を提供し、23 Video アプリの SSO のセットアップを依頼します。 
-   
-    c. **[次へ]**をクリックします。
+ 1. [証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
+ 2. 23 Video サポート チーム ([support@23company.com](mailto:support@23company.com)) に連絡して、ダウンロードした証明書、**発行者の URL**、**シングル サインオン サービス URL**、**シングル サインアウト URL** を提供し、23 Video アプリの SSO のセットアップを依頼します。    
+ 3. **[次へ]**をクリックします。
 5. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。 
    
     ![Azure AD のシングル サインオン][10]
@@ -130,7 +128,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -150,36 +148,27 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_05.png)  
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+ 1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。 
+ 2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。 
+ 3. **[次へ]**をクリックします。
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
-   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png) 
-   
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   e. **[次へ]**をクリックします。
+   ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png)  
+ 1. **[名]** ボックスに「**Britta**」と入力します。   
+ 2. **[姓]** ボックスに「**Simon**」と入力します。 
+ 3. **[表示名]** ボックスに「**Britta Simon**」と入力します。 
+ 4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+ 5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png)  
+ 1. **[新しいパスワード]** の値を書き留めます。 
+ 2. **[完了]** をクリックします。   
 
-### <a name="creating-a-23-video-test-user"></a>23 Video テスト ユーザーの作成
+### <a name="create-a-23-video-test-user"></a>23 Video テスト ユーザーの作成
 このセクションの目的は、23 Video で Britta Simon というユーザーを作成することです。
 
 **23 Video で Britta Simon というユーザーを作成するには、次の手順に従います。**
@@ -195,13 +184,11 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 5. **[Invite someone to join this site (別のユーザーをこのサイトに招待)]** セクションで、次の手順を実行します。
    
     ![ユーザーの割り当て][402]
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[E-mail addresses (メール アドレス)]** ボックスに、Azure AD の Britta Simon の電子メール アドレスを入力します。
-   
-    b. **[Add the user (ユーザーの追加)]** をクリックします。   
+ 1. **[E-mail addresses (メール アドレス)]** ボックスに、Azure AD の Britta Simon の電子メール アドレスを入力します。  
+ 2. **[Add the user (ユーザーの追加)]** をクリックします。   
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に 23 Video へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に 23 Video へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -221,8 +208,9 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。  
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
+
 アクセス パネルで [23 Video] タイルをクリックすると、自動的に 23 Video アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -258,10 +246,5 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 
 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

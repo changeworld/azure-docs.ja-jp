@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
 ms.openlocfilehash: 0b79b908537e94af62b59a6135dfc16e2b33fee8
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -28,9 +29,4 @@ ms.openlocfilehash: 0b79b908537e94af62b59a6135dfc16e2b33fee8
 ![予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図][image]
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

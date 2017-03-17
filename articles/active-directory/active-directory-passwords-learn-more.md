@@ -1,9 +1,9 @@
 ---
-title: "詳細情報: Azure AD のパスワード管理 | Microsoft Docs"
+title: "詳細情報: Azure Active Directory のパスワード管理 | Microsoft Docs"
 description: "パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。"
 services: active-directory
 documentationcenter: 
-author: asteen
+author: MicrosoftGuyJFlo
 manager: femila
 editor: curtand
 ms.assetid: d3be2912-76c8-40a0-9507-b7b1a7ce2f8f
@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
-ms.author: asteen
+ms.date: 02/28/2017
+ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
+ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
+ms.openlocfilehash: 8a9e412776acf4e08658517b714d9644b172f523
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -121,7 +122,7 @@ ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
      * ライトバックがデプロイされておらず、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは管理者に連絡してパスワードをリセットするように求められます。
 4. ユーザーが自分のパスワードを正常にリセットできると判断された場合は、リセット プロセスの説明がユーザーに示されます。
 
-パスワード ライトバックのデプロイ方法については、「 [概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)」をご覧ください。
+パスワード ライトバックのデプロイ方法については、「[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)」をご覧ください。
 
 ### <a name="what-data-is-used-by-password-reset"></a>パスワードのリセットで使用されるデータ
 次の表は、このデータがパスワードのリセット時に使用される場所と方法を示し、組織に適した認証オプションを決定する際に役立つように作られています。 この表では、このデータを検証しない入力パスからユーザーに代わってデータを指定する場合の形式の要件も示しています。
@@ -257,7 +258,7 @@ ms.openlocfilehash: 534373f72a4181914e3b7ea98ded507418e3d299
             </td>
             <td>
               <p>
-                <a href="mailto:user@domain.com">user@domain.com</a> または 甲斐@黒川.日本</p>
+                <a href="mailto:user@domain.com">user@domain.com</a> または甲斐@黒川.日本</p>
               <ul>
                 <li class="unordered">
 電子メールは標準的な形式に従う必要があります。<br><br></li>
@@ -390,7 +391,7 @@ Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-## <a name="links-to-password-reset-documentation"></a>パスワードのリセットに関するドキュメントへのリンク
+## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
 * **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
@@ -404,9 +405,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 
