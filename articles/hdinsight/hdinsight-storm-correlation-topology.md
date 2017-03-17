@@ -13,31 +13,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
-ms.openlocfilehash: 2f2792c409b579ba721195e5749a38c6396f339d
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a16b3eee9ed52a197b5407dc7ebe71c0710d6fa1
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="correlate-events-that-arrive-at-differnet-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
+# <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
 
 Apache Storm の永続的なデータ ストアを使用して、別々の時刻に到着するデータのエントリを関連付けることができます。 たとえば、ユーザー セッションのログイン イベントとログアウト イベントをリンクして、セッションの継続期間を計算します。
 
-このドキュメントでは、ユーザー セッションのログイン イベントとログアウト イベントを追跡し、セッションの期間を計算する基本的な C# Storm トポロジを作成する方法を学習します。 このトポロジは、永続的なデータ ストアとして HBase を使用します。 HBase では、履歴データに対してバッチのクエリを実行し、特定の期間に開始または終了したユーザー セッションの数などの追加の情報を生成することもできます。
+このドキュメントでは、ユーザー セッションのログイン イベントとログアウト イベントを追跡し、セッションの期間を計算する基本的な C# Storm トポロジを作成する方法を学習します。 このトポロジは、永続的なデータ ストアとして HBase を使用します。 HBase では、履歴データに対してバッチのクエリを実行して、追加の情報を生成することもできます。 たとえば、特定の期間に開始または終了したユーザー セッションの数などです。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Visual Studio および HDInsight Tools for Visual Studio: インストールの情報については、 [HDInsight Tools for Visual Studio の概要](hdinsight-hadoop-visual-studio-tools-get-started.md) に関するページを参照してください。
+* Visual Studio および HDInsight tools for Visual Studio。 詳細については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
-* HDInsight クラスターの Apache Storm (Windows ベース)。 これは Storm トポロジを実行します。受信データが処理され、HBase に格納されます。
+* HDInsight クラスターの Apache Storm (Windows ベース)。
   
   > [!IMPORTANT]
   > SCP.NET トポロジは、2016 年 10 月 28 日以降に作成された Linux ベース Storm クラスタでサポートされます。2016 年 10 月 28 日以降に入手可能な HBase SDK for .NET パッケージは Linux では正常に作動しません。
 
-* HDInsight クラスター (Linux または Windows ベース) の Apache HBase。 これは、この例のデータ ストアです。
+* HDInsight クラスター (Linux または Windows ベース) の Apache HBase。
 
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
@@ -106,7 +106,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 * VERSIONS: 'cf' ファミリが各行の 5 つのバージョンを保持するよう設定されます。
   
   > [!NOTE]
-  > バージョンとは、以前格納された、特定の行キーの値のログです。 既定では、HBase により、行の最新バージョンの値のみが返されます。 この場合は、同じ行がすべてのイベント (START、END) に使用されます。行の各バージョンは、タイムスタンプの値によって識別されます。 これにより、ログに記録された、特定の ID のイベント履歴を表示できます。
+  > バージョンとは、以前格納された、特定の行キーの値のログです。 既定では、HBase により、行の最新バージョンの値のみが返されます。 この場合は、同じ行がすべてのイベント (START、END) に使用されます。行の各バージョンは、タイムスタンプの値によって識別されます。 バージョンにより、ログに記録された、特定の ID のイベント履歴を表示できます。
 
 ## <a name="download-the-project"></a>プロジェクトのダウンロード
 
@@ -148,7 +148,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 2. **[ソリューション エクスプローラー]** で、**[CorrelationTopology]** プロジェクトを右クリックし、[プロパティ] を選択します。
 
-3. [プロパティ] ウィンドウで、 **[設定]** を選択し、次の情報を指定します。 最初の 5 つの項目には、 **SessionInfo** プロジェクトで使用するのと同じ値を指定します。
+3. [プロパティ] ウィンドウで、**[設定]** を選択し、このプロジェクトの構成値を入力します。 最初の 5 つの項目には、**SessionInfo** プロジェクトで使用するのと同じ値を指定します。
    
    * HBaseClusterURL: HBase クラスターの URL。 https://myhbasecluster.azurehdinsight.net など。
 
@@ -156,9 +156,9 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
    * HBaseClusterPassword: 管理者/HTTP ユーザー アカウントのパスワード。
 
-   * HBaseTableName: この例で使用するテーブルの名前。 これは、SessionInfo プロジェクトで使用するのと同じテーブル名を含める必要があります。
+   * HBaseTableName: この例で使用するテーブルの名前。 この値は、SessionInfo プロジェクトで使用するのと同じテーブル名です。
 
-   * HBaseTableColumnFamily: 列ファミリ名。 これは、SessionInfo プロジェクトで使用するのと同じ列ファミリ名を含める必要があります。
+   * HBaseTableColumnFamily: 列ファミリ名。 この値は、SessionInfo プロジェクトで使用するのと同じ列ファミリ名です。
    
    > [!IMPORTANT]
    > HBaseTableColumnNames は変更しないでください。これらの既定値は、データを取得するために **SessionInfo** が使用する名前であるためです。
@@ -174,7 +174,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
    > [!NOTE]
    > 最初にトポロジを送信するときは、HDInsight クラスターの名前を取得するのに数秒かかる場合があります。
 
-7. トポロジがアップロードされてクラスターに送信されると、**[Storm トポロジ ビュー]** が開き、現在実行中のトポロジが表示されます。 **[CorrelationTopology]** を選択し、ページ右上にある [更新] ボタンを使用して、トポロジ情報を更新します。
+7. トポロジがアップロードされてクラスターに送信されると、**[Storm トポロジ ビュー]** が開き、現在実行中のトポロジが表示されます。 データを更新するには、**[CorrelationTopology]** を選択し、ページ右上にある [更新] ボタンを使用します。
    
    ![トポロジ ビューの画像](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
@@ -184,7 +184,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
    > **[Storm トポロジ ビュー]** が自動的に開かない場合は、次の手順を使用して開きます。
    > 
    > 1. **[ソリューション エクスプローラー]** で、**[Azure]**、**[HDInsight]** の順に展開します。
-   > 2. トポロジを実行している Storm クラスターを右クリックし、 **[Storm トポロジの表示]**
+   > 2. トポロジを実行している Storm クラスターを右クリックし、**[Storm トポロジの表示]** を選択します。
 
 ## <a name="query-the-data"></a>データを照会する
 
@@ -196,11 +196,11 @@ HBase では、データは、次のスキーマと設定を使用してテー�
    
     開始時刻と終了時刻を入力するときには、HH:MM と 'am' または 'pm' の形式を使用します。 たとえば、11:20pm です。
    
-    トポロジが開始されたので、開始時刻にはデプロイするよりも以前の時刻、終了時刻には現在の時刻を使用します。 これにより、トポロジの開始時に生成された大部分の START イベントが取り込まれます。 クエリの実行時に、次のようなエントリの一覧が表示されます。
+    ログに記録されたイベントを取得するには、開始時刻には Storm トポロジがデプロイされるよりも前の時刻、終了時刻には現在の時刻を使用します。 返されるデータには、次のテキストのようなエントリが含まれます。
    
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-START イベントと同じ方法で END イベントを検索できます。 ただし、END イベントは、START イベントの後に、1 ～ 5 分の間隔でランダムに生成されます。 よって、END イベントを検索するために、いくつかの時間範囲を試す必要がある場合があります。 END イベントには、セッションの期間も含まれます。これは、START イベントの時刻と END イベントの時刻の差です。 次に、END イベントのデータの例を示します。
+START イベントと同じ方法で END イベントを検索できます。 ただし、END イベントは、START イベントの後に、1 ～ 5 分の間隔でランダムに生成されます。 END イベントを検索するために、いくつかの時間範囲を試す必要がある場合があります。 END イベントには、セッションの期間も含まれます。これは、START イベントの時刻と END イベントの時刻の差です。 次に、END イベントのデータの例を示します。
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 

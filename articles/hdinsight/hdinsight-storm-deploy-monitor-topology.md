@@ -13,12 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/01/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 8da7631d2dfc51e21269d05ace737760e3be61b8
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: ed825353b3a042fe79985f4c79ec476dbd7cf5a5
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -47,6 +48,10 @@ Storm ダッシュボードと HDInsight Tools の Storm 機能は、共に Stor
 
   * Visual Studio 2013 ([Update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
+
+  * Visual Studio 2015 (任意のエディション)
+
+  * Visual Studio 2017 (任意のエディション)
 
 ## <a name="storm-dashboard"></a>Storm ダッシュボード
 

@@ -18,6 +18,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
+ms.lasthandoff: 01/20/2017
 
 
 ---
@@ -160,7 +161,7 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
 これで、アプリケーションを作成する準備ができました。
 
 ### <a name="create-a-model"></a>モデルの作成
-** "モデル" は、アプリケーションでデータを表すオブジェクトです。 このアプリケーションの場合、To Do リストの項目を表す Task オブジェクトが唯一のモデルです。 Task には次のフィールドがあります。
+*"モデル"* は、アプリケーションでデータを表すオブジェクトです。 このアプリケーションの場合、To Do リストの項目を表す Task オブジェクトが唯一のモデルです。 Task には次のフィールドがあります。
 
 * PartitionKey
 * RowKey
@@ -416,7 +417,7 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
         "TABLE_NAME": "tasks"
     }
 
-次のように、 ****tasklist** ディレクトリより "1 つ上位のディレクトリ レベル" にこのファイルを保存します。
+次のように、 **tasklist** ディレクトリより *"1 つ上位のディレクトリ レベル"* にこのファイルを保存します。
 
     parent/
       |-- config.json
@@ -591,9 +592,4 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
 [web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/06/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: aba17fb9f7a07b4d67092875a119ab463da5d273
-ms.openlocfilehash: ffd85e1df173fdbc392339cd169281c1ae3fbb5d
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 66848eee215732803a1070e13d56f35b17e54975
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -159,7 +160,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 | しきい値 (このメトリックの場合、数/秒) |1 |
 | WindowSize (hh:mm:ss 形式) |00:05:00 |
 | アグリゲーター (メトリックの統計。この例では Average を使用) |平均 |
-| カスタム電子メール (文字列配列) |'foo@example.com','bar@example.com' |
+| カスタム電子メール (文字列配列) |'foo@example.com'、'bar@example.com' |
 | 所有者、共同作成者、および閲覧者への電子メールの送信 |-SendToServiceOwners |
 
 Email アクションを作成する
@@ -253,13 +254,13 @@ Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、その�
 まず、インスタンス数を増やしてスケールアウトするルールを作成します。
 
 ```PowerShell
-$rule1 = New-AzureRmAutoscaleRule -MetricName "\Processor(_Total)\% Processor Time" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 0.01 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue 1
+$rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
 次に、インスタンス数を減らしてスケールインするルールを作成します。
 
 ```PowerShell
-$rule2 = New-AzureRmAutoscaleRule -MetricName "\Processor(_Total)\% Processor Time" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 2 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionScaleType ChangeCount -ScaleActionValue 1
+$rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
 ルールのプロファイルを作成します。
@@ -399,9 +400,4 @@ OMS の診断設定を有効にする
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId 76d785fd-d1ce-4f50-8ca3-858fc819ca0f -Enabled $true
 
 ```
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

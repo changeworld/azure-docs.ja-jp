@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c93d0d47721546f25e72d97f4e019886ef801eba
-ms.openlocfilehash: a7ffc5e2547ca7ac52a56ec82b493b14acd7aaaa
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0644efd8753c33c0404b45f567759c0be666bcef
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -42,10 +42,10 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 * **IoT Hub レベルの共有アクセス ポリシー**:  共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] を使用してプログラムによって定義することもできます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
   
   * **iothubowner**: すべてのアクセス許可を持つポリシー。
-  * **service**: ServiceConnect アクセス許可を持つポリシー。
-  * **device**: DeviceConnect アクセス許可を持つポリシー。
-  * **registryRead**: RegistryRead アクセス許可を持つポリシー。
-  * **registryReadWrite**: RegistryRead アクセス許可と RegistryWrite アクセス許可を持つポリシー。
+  * **service**: **ServiceConnect** アクセス許可を持つポリシー。
+  * **device**: **DeviceConnect** アクセス許可を持つポリシー。
+  * **registryRead**: **RegistryRead** アクセス許可を持つポリシー。
+  * **registryReadWrite**: **RegistryRead** アクセス許可と RegistryWrite アクセス許可を持つポリシー。
   * **デバイスごとのセキュリティ資格情報**。 各 IoT Hub には、[ID レジストリ][lnk-identity-registry]が含まれています。 この ID レジストリ内の各デバイスでは、対応するデバイスのエンドポイントを対象として **DeviceConnect** アクセス許可を付与する、セキュリティ資格情報を構成できます。
 
 たとえば、標準的な IoT ソリューションの場合は次のようになります。
@@ -54,6 +54,9 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 * イベント プロセッサ コンポーネントでは *service* ポリシーを使用します。
 * ランタイム デバイス ビジネス ロジック コンポーネントでは *service* ポリシーを使用します。
 * 個々のデバイスは、IoT Hub の ID レジストリに格納されている資格情報を使用して接続します。
+
+> [!NOTE]
+> 詳細については、[権限](#iot-hub-permissions)に関する項目をご覧ください。
 
 ## <a name="authentication"></a>認証
 Azure IoT Hub では、共有アクセス ポリシーと ID レジストリのセキュリティ資格情報に対してトークンを確認することにより、エンドポイントへのアクセスを許可します。
@@ -370,10 +373,10 @@ IoT Hub でカスタム ID レジストリ/認証スキームを実装する場�
 
 | アクセス許可 | メモ |
 | --- | --- |
-| **RegistryRead** |ID レジストリへの読み取りアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 |
-| **RegistryReadWrite** |ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 |
-| **ServiceConnect** |クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの受信、C2D メッセージの送信、対応する配信確認メッセージの取得のアクセス許可をバックエンド クラウド サービスに付与します。 |
-| **DeviceConnect** |デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。 |
+| **RegistryRead** |ID レジストリへの読み取りアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
+| **RegistryReadWrite** |ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
+| **ServiceConnect** |クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。 <br/>デバイスからクラウドへのメッセージの受信、クラウドからデバイスへのメッセージの送信、対応する配信確認メッセージの取得のアクセス許可を付与します。 <br/>ファイル アップロードの配信確認メッセージの取得のアクセス許可を付与します。 <br/>タグおよび必要なプロパティを更新するためのデバイス ツインへのアクセス、報告されるプロパティの取得、クエリの実行のアクセス許可を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
+| **DeviceConnect** |デバイス向けのエンドポイントへのアクセスを許可します。 <br/>デバイスからクラウドへのメッセージの送信、クラウドからデバイスへのメッセージの受信のアクセス許可を付与します。 <br/>デバイスからのファイル アップロードの実行のアクセス許可を付与します。 <br/>デバイス ツインの必要なプロパティ通知の受信と、デバイス ツインの報告されるプロパティの更新のアクセス許可を付与します。 <br/>ファイル アップロードの実行のアクセス許可を付与します。 <br/>このアクセス許可はデバイスによって使用されます。 |
 
 ## <a name="additional-reference-material"></a>参考資料
 IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
