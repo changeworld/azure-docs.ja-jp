@@ -36,8 +36,8 @@
 #### [タスクを使用してクラウド サービス ロールで .NET をインストールする](cloud-services-dotnet-install-dotnet.md)
 
 ### リモート デスクトップの構成
-#### [Visual Studio](cloud-services-role-enable-remote-desktop.md)
-#### [Node.JS](cloud-services-nodejs-enable-remote-desktop.md)
+#### [ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## デプロイ

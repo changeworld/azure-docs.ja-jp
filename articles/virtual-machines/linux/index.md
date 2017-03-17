@@ -13,9 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
-ms.openlocfilehash: 540c213b1228b11fe3c4f77026d71829d16e04d1
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2b6d6cf497987aeb4ff80f2bb22aade44b015fb0
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Linux 仮想マシンのドキュメント
@@ -107,8 +107,8 @@ ms.lasthandoff: 02/27/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
-                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
                         <p><a href="/cli/azure/vm">Azure CLI</a></p>
+                        <p><a href="/powershell/azureps-cmdlets-docs">PowerShell</a></p>
                     </div>
                 </div>
             </div>

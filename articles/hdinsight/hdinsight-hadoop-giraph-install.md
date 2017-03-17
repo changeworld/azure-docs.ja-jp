@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
 ms.openlocfilehash: 2b69ebe544d663ee0b9d25bae482342726b6ffa8

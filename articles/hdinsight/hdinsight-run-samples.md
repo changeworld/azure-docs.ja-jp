@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: d83bfd81768722592565fe924c4d00610b149999
 ms.openlocfilehash: 16801860b78b40cc883393ca4db3ffa208b889fd
@@ -57,7 +58,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳しくは、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
 
-## <a name="a-namehdinsight-sample-wordcountaword-count---java"></a><a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
+## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java
 MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。 ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。  ワード カウント MapReduce プログラムでは&2; つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「 [付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
@@ -123,7 +124,7 @@ Java MapReduce プログラムの開発手順については、「 [HDInsight �
     MapReduce ジョブは、単語と出現回数が記録された *part-r-00000*という名前のファイルを作成します。 スクリプトでは **findstr** コマンドを使用して、*"there"* を含む単語をすべて表示しています。
 3. 最初の&3; つの変数を設定して、スクリプトを実行します。
 
-## <a name="a-namehdinsight-sample-csharp-streamingaword-count---c-streaming"></a><a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
+## <a name="hdinsight-sample-csharp-streaming"></a>ワード カウント - C# ストリーミング
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述できます。
 
 > [!NOTE]
@@ -156,7 +157,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="a-namehdinsight-sample-pi-estimatorapi-estimator"></a><a name="hdinsight-sample-pi-estimator"></a>Pi 推定
+## <a name="hdinsight-sample-pi-estimator"></a>Pi 推定
 Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、Pi の値を推定します。 単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。 Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。 サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
 このサンプルで示したスクリプトでは、Hadoop jar ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。 このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。 参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
@@ -172,7 +173,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
                                 -Arguments "16", "10000000"
     ```
 
-## <a name="a-namehdinsight-sample-10gb-graysorta10-gb-graysort"></a><a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
+## <a name="hdinsight-sample-10gb-graysort"></a>10 GB GraySort
 このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
 このサンプルでは&3; 組の MapReduce プログラムを使用します。

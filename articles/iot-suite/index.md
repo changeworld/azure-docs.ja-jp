@@ -15,6 +15,7 @@ ms.author: carolz
 translationtype: Human Translation
 ms.sourcegitcommit: 29fb247771d662d3abcbf35e95ff0f7a8cf95af1
 ms.openlocfilehash: 461542095d9ef357460e93d65bb9f4dd8fe17c86
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -60,7 +61,7 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
         </a>
     </li>
     <li>
-        <a href="/azure/iot-suite/iot-solution-get-started">
+        <a href="/azure/iot-suite/iot-suite-getstarted-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -100,10 +101,5 @@ Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構�
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

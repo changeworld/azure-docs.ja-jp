@@ -71,7 +71,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
      生成される SAS トークンは、次のような構成になります。`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-     MQTT を使用して接続するために、このトークンの一部を **[Password]`SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802` フィールドとして使用できます: **
+     MQTT を使用して接続するために、このトークンの一部を **[Password]** フィールドとして使用できます: `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
 MQTT の接続および切断パケットでは、IoT Hub は、**操作の監視**チャネルに関するイベントを、接続の問題をトラブルシューティングするために役立つ情報を追加して発行します。
 

@@ -64,8 +64,8 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 <a name="bkmk_getcert"></a>
 
 ## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
-さまざまな種類の SSL 証明書が、さまざまな価格で CA から提供されているため、購入する SSL 証明書の種類を決めることからまず始めます。 1 つのドメイン名 (**www.contoso.com**) を保護する場合は、基本的な証明書で十分です。 複数のドメイン名 (**contoso.com**、****www.contoso.com**、 
-****mail.contoso.com** のすべて) を保護する場合は、[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)、または[サブジェクト代替名](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`) を使用した証明書が必要です。
+さまざまな種類の SSL 証明書が、さまざまな価格で CA から提供されているため、購入する SSL 証明書の種類を決めることからまず始めます。 1 つのドメイン名 (**www.contoso.com**) を保護する場合は、基本的な証明書で十分です。 複数のドメイン名 (**contoso.com**、**www.contoso.com**、 
+**mail.contoso.com** のすべて) を保護する場合は、[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)、または[サブジェクト代替名](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`) を使用した証明書が必要です****。
 
 どの SSL 証明書を購入するかが決まったら、証明書署名要求 (CSR) を CA に送信します。 要求した証明書が CA から送信されてきたら、証明書から .pfx ファイルを生成します。 この手順は任意のツールを使用して実行できます。 一般的なツールでの手順は次のとおりです。
 
@@ -470,7 +470,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 <a name="bkmk_enforce"></a>
 
 ## <a name="enforce-https-on-your-app"></a>アプリに HTTPS を適用する
-HTTP によるアプリへのアクセスを許可する場合は、この手順をスキップしてください。 App Service では ** HTTPS の使用が強制されないため、訪問者は引き続き HTTP を使用してアプリにアクセスできます。 アプリで HTTPS を強制する場合は、アプリの `web.config` ファイルで書き換え規則を定義することができます。 このファイルは、アプリの言語フレームワークに関係なく、すべての App Service アプリに存在します。
+HTTP によるアプリへのアクセスを許可する場合は、この手順をスキップしてください。 App Service では HTTPS の使用が強制されないため、訪問者は引き続き HTTP を使用してアプリにアクセスできます**。 アプリで HTTPS を強制する場合は、アプリの `web.config` ファイルで書き換え規則を定義することができます。 このファイルは、アプリの言語フレームワークに関係なく、すべての App Service アプリに存在します。
 
 > [!NOTE]
 > 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、`web.config` 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます ([セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする方法](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)に関するページを参照してください)。

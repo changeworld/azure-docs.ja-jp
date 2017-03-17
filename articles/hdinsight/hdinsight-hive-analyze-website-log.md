@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2016
 ms.author: nitinme
+ROBOTS: NOINDEX
 translationtype: Human Translation
 ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
 ms.openlocfilehash: 503c8a98ea5437d24ff69f3b8f44c4bfb13e391e
+ms.lasthandoff: 01/19/2017
 
 
 ---
@@ -58,10 +60,5 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md
 
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

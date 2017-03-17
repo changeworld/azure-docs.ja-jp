@@ -135,7 +135,7 @@
 ### [OMS エージェント拡張機能](../virtual-machines-linux-extensions-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## アプリケーションの実行
-## [Cloud Foundry](../virtual-machines-linux-cloudfoundry-get-started.md)
+### [Cloud Foundry](../virtual-machines-linux-cloudfoundry-get-started.md)
 ### [データ サイエンス VM の概要](../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [MongoDB](../virtual-machines-linux-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [MySQL](../virtual-machines-linux-mysql-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

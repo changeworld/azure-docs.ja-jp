@@ -17,6 +17,7 @@ ms.author: magoedte
 translationtype: Human Translation
 ms.sourcegitcommit: 7a2999b3b1a54668f6ef45433efabd5a495418fe
 ms.openlocfilehash: ec84df70d4a77e3b81a88aa286fc492d92e3e753
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: ec84df70d4a77e3b81a88aa286fc492d92e3e753
 
 ## <a name="updating-azure-modules"></a>Azure モジュールの更新
 
-1. Automation アカウントの [モジュール] ブレードに、**[Update Azure Modules] (Azure モジュールの更新)** オプションが追加されました。  このオプションは常に有効です。<br><br> ![[モジュール] ブレードの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. Automation アカウントの [モジュール] ブレードに、**Update Azure Modules (Azure モジュールの更新)** オプションが追加されました。  このオプションは常に有効です。<br><br> ![[モジュール] ブレードの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-2. **[Update Azure Modules] (Azure モジュールの更新)** をクリックすると、操作を続けるかどうかを尋ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-notification.png)
+2. **Update Azure Modules (Azure モジュールの更新)** をクリックすると、操作を続けるかどうかを尋ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-notification.png)
 
 3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。  更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
 
@@ -51,8 +52,3 @@ runbook で Azure PowerShell モジュールのコマンドレットを使用し
 ## <a name="next-steps"></a>次のステップ
 
 統合モジュールの詳細、およびカスタム モジュールを作成して Automation をさらに別のシステム、サービス、またはソリューションと統合する方法については、[統合モジュール](automation-integration-modules.md)に関するページを参照してください。
-
-
-<!--HONumber=Feb17_HO2-->
-
-
