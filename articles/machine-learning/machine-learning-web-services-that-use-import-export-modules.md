@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 0dc02034ea1f3c4f8413aca1ff693838ad1e49bd
+ms.sourcegitcommit: 247d370c1f80729856e53690045991127ad54351
+ms.openlocfilehash: 30a3a6c438bae191605e35c352cf03fd8eaddf0f
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -64,7 +65,7 @@ Azure SQL テーブルからデータを読み取るには:
 ## <a name="create-the-predictive-experiment"></a>予測実験を作成する
 次に、Web サービスの展開元の予測実験を設定します。
 
-1. 実験キャンバスの下部で、**[Web サービスの設定]** をクリックして **[予測 Web サービス] (推奨)** を選択します。
+1. 実験キャンバスの下部で、**[Web サービスの設定]** をクリックして **[予測 Web サービス] \(推奨)** を選択します。
 2. 予測実験から *Web サービス入力モジュール*と *Web サービス出力モジュール*を削除します。 
 3. コンポーネントの検索ボックスで、「エクスポート」と入力します。
 4. 結果の一覧から、 *データのエクスポート* モジュールを実験キャンバスに追加します。
@@ -97,7 +98,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 従来の Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
 1. 実験キャンバスの下部で、[実行] をクリックします。
-2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic] (Web サービスのデプロイ [従来])]** を選択します。
+2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** を選択します。
 3. Web サービス ダッシュボードで、API キーを見つけます。 この API キーをコピーして、後で使用できるように保存します。
 4. **[既定のエンドポイント]** テーブルで、**[バッチ実行]** リンクをクリックして API ヘルプ ページを開きます。
 5. Visual Studio で、C# コンソール アプリケーションを作成します。
@@ -107,7 +108,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 9. 要求の宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
    
         var request = new BatchExecutionRequest() 
-        {           
+        {            
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
@@ -118,10 +119,14 @@ Web サービスとして予測実験をデプロイできるようになりま�
 実行が完了すると、新しいテーブルがスコア付けの結果を含むデータベースに追加されます。
 
 ### <a name="deploy-a-new-web-service"></a>新しい Web サービスのデプロイ
+
+> [!NOTE] 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
+
 新しい Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
 1. 実験キャンバスの下部で、 **[実行]**をクリックします。
-2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New] (Web サービスのデプロイ [新規])]** を選択します。
+2. 実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択します。
 3. [実験のデプロイ] ページで、Web サービスの名前を入力し、料金プランを選択して **[デプロイ]**をクリックします。
 4. **[クイック スタート]** ページで **[使用]** をクリックします。
 5. **[サンプル コード]** セクションで、**[Batch]** をクリックします。
@@ -131,7 +136,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 9. *scoreRequest* 宣言を見つけて、*データのインポート* モジュールと*データのエクスポート* モジュールに渡される Web サービス パラメーターの値を更新します。 この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
    
         var scoreRequest = new
-        {       
+        {        
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -141,10 +146,5 @@ Web サービスとして予測実験をデプロイできるようになりま�
             }
         };
 10. アプリケーションを実行します。 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

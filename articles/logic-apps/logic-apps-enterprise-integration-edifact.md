@@ -1,6 +1,6 @@
 ---
-title: "EDIFACT でのエンタープライズ統合 | Microsoft Docs"
-description: "EDIFACT 契約を使用してロジック アプリを作成する方法について説明しています。"
+title: "エンタープライズ統合用の EDIFACT メッセージ - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps を使用したエンタープライズ統合の EDIFACT メッセージを交換する"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -12,24 +12,28 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: jonfan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 30c26d1fb2dfb7c458789e70f4f8d1a6c39cd0ca
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c5ed4f7413bf8a0b4fd188ca451d4a60b761e886
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="enterprise-integration-with-edifact"></a>EDIFACT でのエンタープライズ統合
+# <a name="exchange-edifact-messages-with-logic-apps"></a>ロジック アプリを使用して EDIFACT メッセージを交換する
+
 > [!NOTE]
-> このページでは、Logic Apps が備えている EDIFACT の機能について取り上げます。 詳細については、[X12](logic-apps-enterprise-integration-x12.md)に関する記事をご覧ください。
-> 
-> 
+> このページでは、Azure Logic Apps が備えている EDIFACT の機能について取り上げます。 詳しくは、[X12](logic-apps-enterprise-integration-x12.md) に関する記事をご覧ください。
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT 契約の作成
 EDIFACT メッセージの交換を始める前に、EDIFACT 契約を作成し、統合アカウントで保管する必要があります。 次の手順では、EDIFACT 契約を作成するプロセスについて説明します。
 
-### <a name="heres-what-you-need-before-you-get-started"></a>開始する前に必要な項目
+### <a name="before-you-get-started"></a>開始する前に
+
+次のものが必要です。
+
 * Azure サブスクリプションで定義されている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
 * 統合アカウントで既に定義されている&2; つ以上の [パートナー](logic-apps-enterprise-integration-partners.md)  
 
@@ -194,10 +198,5 @@ EDIFACT メッセージの交換を始める前に、EDIFACT 契約を作成し�
 
 ## <a name="learn-more"></a>詳細情報
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

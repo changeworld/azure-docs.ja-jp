@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
+ms.sourcegitcommit: 452b6a541309736ee4bd7e1dbbf5288289e70922
+ms.openlocfilehash: 6a48bae7cd5c394f7b400f6870dba4da7f0d19f2
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード
-エンコード ジョブは Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
+エンコード ジョブは Media Services で最も一般的な処理の&1; つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
 
 このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
@@ -41,7 +42,7 @@ ms.openlocfilehash: 775578cb4e89f561449eea10b21a300f20646424
 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ### <a name="input-and-output-metadata"></a>入力メタデータと出力メタデータ
-MES を使用して 1 つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。 出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
+MES を使用して&1; つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。 出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
 
 この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<asset_id>_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。 この入力メタデータ XML のスキーマについては、[こちら](media-services-input-metadata-schema.md)で説明されています。
 
@@ -57,7 +58,7 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 * エンコード ジョブを作成します。
 * Media Encoder Standard エンコーダーの参照を取得します。
-* "H264 Multiple Bitrate 720p" プリセットを使用するように指定します。 すべてのプリセットは、 [こちら](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で確認できます。 また、これらのプリセットが従う必要のあるスキーマについては、 [こちら](https://msdn.microsoft.com/library/mt269962.aspx) のトピックで確認できます。
+* [アダプティブ ストリーミング](media-services-autogen-bitrate-ladder-with-mes.md) プリセットを使用するように指定します。 
 * 1 つのエンコード タスクをジョブに追加します。 
 * エンコードする入力資産を指定します。
 * エンコードされた資産が含まれる出力資産を作成します。
@@ -73,10 +74,10 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
             // Create a task with the encoding details, using a string preset.
-            // In this case "H264 Multiple Bitrate 720p" preset is used.
+            // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
-                "H264 Multiple Bitrate 720p",
+                "Adaptive Streaming",
                 TaskOptions.None);
 
             // Specify the input asset to be encoded.
@@ -146,10 +147,5 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 ## <a name="see-also"></a>関連項目
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)
 [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

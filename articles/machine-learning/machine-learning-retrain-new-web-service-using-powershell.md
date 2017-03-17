@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: e971bd36f9245032296537ea3e0b64e5f3e18ddd
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
 「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」に示されているようにトレーニング実験と予測実験が設定されているものとします。 
 
 > [!IMPORTANT]
-> 予測実験は、Azure Resource Manager (新規) ベースの Machine Learning Web サービスとしてデプロイする必要があります。 
-> 
-> 
+> 予測実験は、Azure Resource Manager (新規) ベースの Machine Learning Web サービスとしてデプロイする必要があります。 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](machine-learning-manage-new-webservice.md)」をご覧ください。 
+
+
 
 Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
 
@@ -108,10 +109,5 @@ Machine Learning PowerShell 管理コマンドレットを使用して、予測 
 
 * 新しいデータでの定期的なモデルの再トレーニング。
 * 自身のデータでモデルを再トレーニングすることを目標としている顧客へのモデルの配布。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio で Azure Logic Apps を作成してデプロイする | Microsoft Docs"
-description: "Azure の Logic Apps を設計、作成、デプロイする Visual Studio プロジェクトを作成します。"
+title: "Visual Studio でロジック アプリを作成してデプロイする - Azure Logic Apps | Microsoft Docs"
+description: "Visual Studio プロジェクトを作成して、Azure Logic Apps を設計、作成、デプロイします。"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,17 +12,21 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: bbee0bae5a20375f0de8adaedadd682dc051fb64
-ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
-
+ms.sourcegitcommit: 2fafb3c127183c4903ed7ee0da5811988db9116c
+ms.openlocfilehash: 3c0c24a75c82355798bcaa6d8a36f055400a2649
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="build-and-deploy-azure-logic-apps-in-visual-studio"></a>Visual Studio で Azure Logic Apps を作成してデプロイする
 
-[Azure Portal](https://portal.azure.com/) には Logic Apps を設計および管理するための優れた機能がありますが、Logic Apps の作成とデプロイには Visual Studio を使う方がよい場合があります。 Visual Studio には豊富なツールが用意されており、Logic Apps デザイナーを使って Logic Apps を作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。
+# <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Visual Studio で Azure Logic Apps を作成してデプロイする
+
+[Azure Portal](https://portal.azure.com/) には Azure Logic Apps を作成および管理するための優れた機能がありますが、Logic Apps の設計、作成、およびデプロイには、Visual Studio を使う方がよい場合があります。 Visual Studio にはロジック アプリ デザイナーなどの高度なツールが用意されており、ユーザーはそれらを使ってロジック アプリを作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。 
+
+Azure Logic Apps の概要については、[Azure Portal で最初にロジック アプリを作成する方法](logic-apps-create-a-logic-app.md)に関するトピックをご覧ください。
 
 ## <a name="installation-steps"></a>インストール手順
 
@@ -30,7 +34,7 @@ Azure Logic Apps 用の Visual Studio ツールをインストールして構成
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Visual Studio 2015 または Visual Studio 2017](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [最新の Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 以上)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 * Web アクセス (組み込みデザイナー使用時)
@@ -39,7 +43,7 @@ Azure Logic Apps 用の Visual Studio ツールをインストールして構成
 
 前提条件をインストールした後、次のようにします。
 
-1. Visual Studio 2015 を開きます。 **[ツール]** メニューの **[拡張機能と更新プログラム]** を選びます。
+1. Visual Studio を開きます。 **[ツール]** メニューの **[拡張機能と更新プログラム]** を選びます。
 2. オンラインで検索できるように **[オンライン]** カテゴリを展開します。
 3. **Azure Logic Apps Tools for Visual Studio** が見つかるまで、「**Logic Apps**」を参照または検索します。
 4. 拡張機能をダウンロードしてインストールするには、**[ダウンロード]** をクリックします。
@@ -69,7 +73,7 @@ Azure Logic Apps 用の Visual Studio ツールをインストールして構成
 
     ![デプロイ ファイル](./media/logic-apps-deploy-from-vs/deployment.png)
 
-## <a name="create-your-logic-app-in-logic-app-designer"></a>ロジック アプリ デザイナーでロジック アプリを作成する
+## <a name="create-your-logic-app-with-logic-app-designer"></a>ロジック アプリ デザイナーでロジック アプリを作成する
 
 ロジック アプリを含む Azure リソース グループ プロジェクトが用意できたら、Visual Studio でロジック アプリ デザイナーを開いてワークフローを作成できます。 
 
@@ -156,7 +160,7 @@ Visual Studio によって、ロジック アプリが機能するために必�
 
 アプリを保存するときにロジック アプリにエラーがある場合は、Visual Studio の **[出力]** ウィンドウに表示されます。
 
-## <a name="deploy-your-logic-app"></a>ロジック アプリをデプロイする
+## <a name="deploy-your-logic-app-from-visual-studio"></a>Visual Studio からロジック アプリをデプロイする
 
 アプリを構成した後は、いくつかの手順で Visual Studio から直接デプロイすることができます。 
 
@@ -201,13 +205,8 @@ Visual Studio によって、ロジック アプリが機能するために必�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Logic Apps の概要については、「[初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)」チュートリアルをご覧ください
+* [Visual Studio Cloud Explorer を使用して Azure Logic Apps を管理する](logic-apps-manage-from-vs.md)
 * [一般的な例とシナリオを確認する](logic-apps-examples-and-scenarios.md)
 * [Azure Logic Apps を使ってビジネス プロセスを自動化する方法を学習する](http://channel9.msdn.com/Events/Build/2016/T694)
 * [Azure Logic Apps を使ってシステムを統合する方法を学習する](http://channel9.msdn.com/Events/Build/2016/P462)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

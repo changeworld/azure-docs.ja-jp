@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 02/28/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
+ms.sourcegitcommit: 1029c7e4c6a17ad2a290ff0783fc88692555b255
+ms.openlocfilehash: ad1314aa4b504bd2cb3285789073d4f1de1f545d
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -32,6 +33,19 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>新しいリソース マネージャー ベースの Web サービスを管理するためのアクセス許可
+
+新しい Web サービスは、Azure リソースとしてデプロイされます。 そのため、新しい Web サービスをデプロイおよび管理するための適切なアクセス許可が必要です。  New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーを共同作成者または管理者ロールに割り当てる必要があります。 
+
+ユーザーが Azure Machine Learning Web サービス ポータル内のリソースにアクセスするための適切なアクセス許可を持っていない場合、Web サービスをデプロイしようとすると、次のような内容のエラーが表示されます。
+
+*Web サービスのデプロイに失敗しました。このアカウントには、ワークスペースを含む Azure サブスクリプションへの十分なアクセス権がありません。Web サービスを Azure にデプロイするには、同じアカウントをワークスペースに招待し、ワークスペースを含む Azure サブスクリプションへのアクセス権を付与する必要があります。*
+
+ワークスペースの作成方法について詳しくは、「[Azure Machine Learning ワークスペースの作成と共有](machine-learning-create-workspace.md)」をご覧ください。
+
+アクセス許可の設定について詳しくは、「[Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー](../active-directory/role-based-access-control-manage-assignments.md)」をご覧ください。
+
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する
 新しい Web サービスを管理するには、次のようにします。
@@ -174,10 +188,5 @@ Machine Learning Studio のワークスペースにアクセスできる追加�
 > **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。 Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。 ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
