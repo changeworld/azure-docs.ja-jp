@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 8245c9d86d7a37bfb12c06b1cb2cbe9dae01d653
-ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
+ms.sourcegitcommit: eac5027f39d15e355d1c9f60a31ded567272d5fa
+ms.openlocfilehash: b94ceac2298509817020b32b65125c5f767d8089
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -59,14 +60,22 @@ ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
         cloudToDeviceMethod: {
             methodName: '<methodName>',
             payload: <payload>,                 
-            timeoutInSeconds: methodTimeoutInSeconds 
+            responseTimeoutInSeconds: methodTimeoutInSeconds 
         },
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
+次に示すように、クエリ条件は&1; つのデバイス ID にもデバイス ID のリストにも設定できます。
+
+**例**
+```
+queryCondition = "deviceId = 'MyDevice1'"
+queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
+queryCondition = "deviceId IN ['MyDevice1']
+```
+IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-query]に関するページをご覧ください。
 
 ## <a name="jobs-to-update-device-twin-properties"></a>デバイス ツインのプロパティを更新するジョブ
 ジョブを使用してデバイス ツインのプロパティを更新するための HTTP 1.1 要求の詳細を次に示します。
@@ -82,8 +91,7 @@ ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
         jobId: '<jobId>',
         type: 'scheduleTwinUpdate', 
         updateTwin: <patch>                 // Valid JSON object
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
@@ -109,8 +117,8 @@ ContinuationToken は、応答から提供されます。
 | プロパティ | 説明 |
 | --- | --- |
 | **jobId** |アプリケーションが提供するジョブの ID。 |
-| **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |
-| **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO 8601)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
+| **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO&8601;)。 |
+| **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO&8601;)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
 | **type** |ジョブの種類: |
 | **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 | |
 | **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 | |
@@ -159,9 +167,4 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

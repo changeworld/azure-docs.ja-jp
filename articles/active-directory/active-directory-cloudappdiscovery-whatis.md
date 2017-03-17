@@ -17,6 +17,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 011cdf5f1e1b78832a8e4f18f4eef0f376860c45
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -50,10 +51,5 @@ Cloud App Discovery の使用を開始するには、 [Cloud App Discovery の�
 * [Cloud App Discovery エージェントの変更ログ ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
 * [Cloud App Discovery に関してよく寄せられる質問](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

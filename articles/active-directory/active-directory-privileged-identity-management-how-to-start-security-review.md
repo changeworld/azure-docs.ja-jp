@@ -3,7 +3,7 @@ title: "アクセス レビューを開始する方法 | Microsoft Docs"
 description: "Azure Privileged Identity Management アプリケーションで特権 ID のアクセス レビューを作成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 3e52b731-55f4-4c8a-ba87-9fd34033f52f
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/02/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8c9bac62a92947ea888f1ccdbd300f5b40cb3e07
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -86,9 +87,4 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
 [2]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_configure.png
 [3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
 [4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

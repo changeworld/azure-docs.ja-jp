@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
+ms.sourcegitcommit: 265bb284d23e42c16c84a718c402b1bc6f6a30f9
+ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
+ms.lasthandoff: 12/19/2016
 
 
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Microsoft Azure Machine Learning のアルゴリズムの選択方法
-「どのような機械学習アルゴリズムを使用すべきか」という質問への答えは、 常に「場合による」です。 データのサイズ、品質、および性質によって異なります。 回答で何を行うかによって異なります。 アルゴリズムの数値演算が使用しているコンピューターの命令にどのように変換されるかによって異なります。 そして、どれだけ時間があるかによって異なります。 最も経験豊富なデータ科学者であっても、試してみる前にどのアルゴリズムが最適か判断することはできません。
+「どのような機械学習アルゴリズムを使用すべきか」という質問への答えは、 常に「場合による」です。 データのサイズ、品質、および性質によって異なります。 得られた回答で何を行うかによって異なります。 アルゴリズムの数値演算が使用しているコンピューターの命令にどのように変換されるかによって異なります。 そして、どれだけ時間があるかによって異なります。 最も経験豊富なデータ科学者であっても、試してみる前にどのアルゴリズムが最適か判断することはできません。
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>機械学習アルゴリズム チート シート
 **Microsoft Azure Machine Learning のアルゴリズム チート シート** を使用すると、Microsoft Azure Machine Learning のアルゴリズム ライブラリから、予測分析ソリューションに適した機械学習アルゴリズムを選択できます。
@@ -55,7 +56,7 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 
 これは、人気のある便利な機械学習の種類です。 1 つの例外を除き、Azure Machine Learning のモジュールはすべて教師あり学習アルゴリズムです。 教師あり学習には複数の種類があり、Azure Machine Learning では分類、回帰、異常検出と表されています。
 
-* **分類**。 カテゴリを予測するためにデータが使用されている場合、教師あり学習は分類とも呼ばれます。 これは、写真を「猫」または「犬」に割り当てるような場合です。 選択肢が 2 つだけの場合、これは **2 クラス分類**または**二項分類**と呼ばれます。 全国高校野球選手権大会の優勝校を予測する場合のように、多くのカテゴリがある場合は、**多クラス分類**と呼ばれます。
+* **分類**。 カテゴリを予測するためにデータが使用されている場合、教師あり学習は分類とも呼ばれます。 これは、写真を「猫」または「犬」に割り当てるような場合です。 選択肢が&2; つだけの場合、これは **2 クラス分類**または**二項分類**と呼ばれます。 全国高校野球選手権大会の優勝校を予測する場合のように、多くのカテゴリがある場合は、**多クラス分類**と呼ばれます。
 * **Regression**」にアクセスしてください。 株価のような値を予測するときの教師あり学習は回帰と呼ばれます。
 * **異常の検出**。 目的が単に異常なデータ ポイントを識別することである場合があります。 たとえば、不正行為の検出では、極めて異常なクレジット カード使用パターンは疑いがあります。 可能性のあるバリエーションは非常に多く、トレーニングの例は少ないので、不正行為がどのようなものになるかを学習するのは不可能です。 異常検出が使用するアプローチは、単に正常な行為がどのようなものかを (非不正取引履歴を使用して) 学習し、それと大きく異なるものを識別するというものです。
 
@@ -69,7 +70,7 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 ## <a name="considerations-when-choosing-an-algorithm"></a>アルゴリズム選択時の考慮事項
 ### <a name="accuracy"></a>精度
 可能な限り最も正確な回答を得ることが常に必要であるとは限りません。
-使用目的によっては、近似の方が適切な場合があります。 その場合は、より大まかな方法を使用することで、処理時間を大幅に削減できることがあります。 近似手法のもう 1 つの利点は、一般に [過剰適合](https://youtu.be/DQWI1kvmwRg)が回避される傾向があることです。
+使用目的によっては、近似の方が適切な場合があります。 その場合は、より大まかな方法を使用することで、処理時間を大幅に削減できることがあります。 近似手法のもう&1; つの利点は、一般に [過剰適合](https://youtu.be/DQWI1kvmwRg)が回避される傾向があることです。
 
 ### <a name="training-time"></a>トレーニング時間
 モデルのトレーニングに必要な分数または時間数は、アルゴリズムによって大きく異なります。 通常、トレーニング時間は精度と密接に関係しています。 さらに、一部のアルゴリズムは他よりデータ ポイントの数に大きく影響を受けます。
@@ -119,7 +120,7 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 | [デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [デシジョン ジャングル ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |低メモリ フットプリント |
 | [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [一対全](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |選択した 2 クラス法のプロパティを参照してください |
+| [一対全](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |選択した&2; クラス法のプロパティを参照してください |
 | **Regression** | | | | | |
 | [線形](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [ベイジアン線形](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
@@ -152,9 +153,9 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 ### <a name="logistic-regression"></a>ロジスティック回帰
 名前に "回帰" が含まれていて紛らわしいのですが、ロジスティック回帰は実際には [2 クラス](https://msdn.microsoft.com/library/azure/dn905994.aspx)分類と[多クラス](https://msdn.microsoft.com/library/azure/dn905853.aspx)分類のための強力なツールです。 高速で単純です。 直線ではなく「S」型の曲線を使用して、グループへのデータの分割に自然に適合します。 ロジスティック回帰は線形クラスの境界を提供するので、使用するときは、線形近似を受け入れ可能なことを確認します。
 
-![特徴が 1 つだけの 2 クラス データに対するロジスティック回帰][4]
+![特徴が&1; つだけの&2; クラス データに対するロジスティック回帰][4]
 
-***特徴が 1 つだけの 2 クラス データへのロジスティック回帰*** *- クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
+***特徴が&1; つだけの&2; クラス データへのロジスティック回帰*** *- クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
 
 ### <a name="trees-forests-and-jungles"></a>ツリー、フォレスト、ジャングル
 デシジョン フォレスト ([回帰](https://msdn.microsoft.com/library/azure/dn905862.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn906008.aspx)、[多クラス](https://msdn.microsoft.com/library/azure/dn906015.aspx))、デシジョン ジャングル ([2 クラス](https://msdn.microsoft.com/library/azure/dn905976.aspx)、[多クラス](https://msdn.microsoft.com/library/azure/dn905963.aspx))、およびブースト デシジョン ツリー ([回帰](https://msdn.microsoft.com/library/azure/dn905801.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn906025.aspx)) はすべて、Machine Learning の基本概念であるデシジョン ツリーに基づきます。 デシジョン ツリーには多くのバリエーションがありますが、行うことはすべて同じで、特徴空間をほとんど同じラベルを持つ領域に分割します。 これらは、分類または回帰のどちらを実行しているかにより、一貫性のあるカテゴリを持つ領域、または定数値です。
@@ -163,7 +164,7 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 
 ***デシジョン ツリーは特徴空間をほぼ同じ値の領域に細分化します***
 
-特徴空間は任意の小さい領域に分割できるので、1 つの領域が 1 つのデータ ポイントになるまで細かく分割することを簡単に想像できます。これは過剰適合の例です。 これを回避するには、ツリーが関連しないように数学的に特別に考慮したツリーの大きなセットを作成します。 この「デシジョン フォレスト」の平均は、過剰適合を回避するツリーです。 デシジョン フォレストは多くのメモリを使用する場合があります。 デシジョン ジャングルは、トレーニング時間が若干長くなるのと引き替えにメモリ消費が少ないバリエーションです。
+特徴空間は任意の小さい領域に分割できるので、1 つの領域が&1; つのデータ ポイントになるまで細かく分割することを簡単に想像できます。これは過剰適合の例です。 これを回避するには、ツリーが関連しないように数学的に特別に考慮したツリーの大きなセットを作成します。 この「デシジョン フォレスト」の平均は、過剰適合を回避するツリーです。 デシジョン フォレストは多くのメモリを使用する場合があります。 デシジョン ジャングルは、トレーニング時間が若干長くなるのと引き替えにメモリ消費が少ないバリエーションです。
 
 ブースト デシジョン ツリーは、分割できる回数、および各領域に許可されるデータ ポイントの最小数を制限することによって、過剰適合を回避します。 このアルゴリズムはツリーのシーケンスを構築し、各ツリーは前のツリーによって残されたエラーを補正するために学習します。 結果は非常に正確ですが、メモリを多く使用する傾向があります。 技術的な詳細については、 [Friedman の原著論文](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf)をご覧ください。
 
@@ -175,7 +176,7 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 ただし、この高パフォーマンスは無料でありません。 ニューラル ネットワークはトレーニングに時間がかかり、多数の特徴を持つ大規模なデータ セットの場合は特にそうです。 また、ほとんどのアルゴリズムよりパラメーターが多く、パラメーター スイープによってトレーニング時間が大幅に延びます。
 また、 [独自のネットワーク構造を指定](http://go.microsoft.com/fwlink/?LinkId=402867)しようとがんばると、無限の可能性があります。
 
-## <a name="boundaries-learned-by-neural-networks6"></a>![ニューラル ネットワークによって学習された境界][6]
+![ニューラル ネットワークによって学習された境界][6]
 ***ニューラル ネットワークによって学習される境界は複雑で不規則になる場合があります***
 
 [2 クラス平均化パーセプトロン](https://msdn.microsoft.com/library/azure/dn906036.aspx) は、急激に増加するトレーニング時間に対するニューラル ネットワークの回答です。 これは、線形クラスの境界を提供するネットワーク構造を使用します。 今日の標準ではほとんど旧式ですが、確実に動作する長い歴史があり、十分に小さいので短時間で学習できます。
@@ -187,12 +188,12 @@ ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
 
 ***標準的なサポート ベクター マシンのクラス境界は、2 つのクラスを分離するマージンを最大化します***
 
-Microsoft Research のもう 1 つの製品である [2 クラスのローカル詳細 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) は、SVM の非線形バリエーションであり、線形バージョンの速度とメモリ効率性をほぼ維持しています。 線形アプローチでは十分に正確な回答を得られない場合に最適です。 速さを維持するために、問題が多数の小さな線形 SVM 問題に分解されています。 仕組みについては、 [詳細な説明](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) をご覧ください。
+Microsoft Research のもう&1; つの製品である [2 クラスのローカル詳細 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) は、SVM の非線形バリエーションであり、線形バージョンの速度とメモリ効率性をほぼ維持しています。 線形アプローチでは十分に正確な回答を得られない場合に最適です。 速さを維持するために、問題が多数の小さな線形 SVM 問題に分解されています。 仕組みについては、 [詳細な説明](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) をご覧ください。
 
 非線形 SVM の巧妙な拡張機能を使用して、 [1 クラス SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) はデータ セット全体の特徴を正確に示す境界を描画します。 異常検出に有効です。 その境界のはるか外側に位置する新しいデータ ポイントは、注目するのに十分な異常値です。
 
 ### <a name="bayesian-methods"></a>ベイズ法
-ベイズ法は高品質であり、過剰適合を回避します。 回答の予想される分布について事前にいくつかの想定を行うことによってこれを実現します。 この方法のもう 1 つの副産物は、パラメーターが非常に少ないことです。 Azure Machine Learning には、分類 ([2 クラスのベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)) と再帰 ([ベイジアン線形回帰](https://msdn.microsoft.com/library/azure/dn906022.aspx)) の両方に対するベイズ アルゴリズムがあります。
+ベイズ法は高品質であり、過剰適合を回避します。 回答の予想される分布について事前にいくつかの想定を行うことによってこれを実現します。 この方法のもう&1; つの副産物は、パラメーターが非常に少ないことです。 Azure Machine Learning には、分類 ([2 クラスのベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)) と再帰 ([ベイジアン線形回帰](https://msdn.microsoft.com/library/azure/dn906022.aspx)) の両方に対するベイズ アルゴリズムがあります。
 これらのアルゴリズムではデータを直線で分割または適合できるものと想定していることに注意してください。
 
 歴史的には、ベイズ ポイント マシンは Microsoft research で開発されました。 いくつかの非常に美しい理論的な処理が背後で行われています。 興味がある場合は、[JMLR のオリジナル記事](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf)および [Chris Bishop による洞察に富むブログ](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)をご覧ください。
@@ -209,15 +210,22 @@ Microsoft Research のもう 1 つの製品である [2 クラスのローカル
 
 ***データ セットは、k-means を使用して 5 つのクラスターにグループ化されます***
 
-集合体の[一対全多クラス分類子](https://msdn.microsoft.com/library/azure/dn905887.aspx)もあります。これは、N クラス分類問題を N-1 2 クラス分類問題に分割します。 精度、トレーニング時間、線形性プロパティは、使用される 2 クラス分類子によって決まります。
+集合体の[一対全多クラス分類子](https://msdn.microsoft.com/library/azure/dn905887.aspx)もあります。これは、N クラス分類問題を N-1&2; クラス分類問題に分割します。 精度、トレーニング時間、線形性プロパティは、使用される&2; クラス分類子によって決まります。
 
-![3 クラス分類子を形成するために組み合わされた 2 クラス分類子][10]
+![3 クラス分類子を形成するために組み合わされた&2; クラス分類子][10]
 
 ***2 クラス分類子のペアの組み合わせで、3 クラス分類子が形成されます***
 
 Azure Machine Learning には、 [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf)のタイトルの下に強力な機械学習フレームワークへのアクセスも含まれます。
 VW はここでの分類には当てはまらず、分類と回帰の両方の問題を学習でき、部分的にラベル付けされていないデータからさえも学習できます。 さまざまな学習アルゴリズム、損失関数、および最適化アルゴリズムのいずれかを使用するように構成できます。 効率的で、並列的で、非常に高速なように一から設計されました。 非常に大きい特徴セットを簡単に処理します。
 Microsoft Research の John Langford による VW は、市販車のようなアルゴリズムの中の F1 です。 VW に適さない問題もありますが、学習する価値は十分にあります。 また、複数の言語で [スタンドアロンのオープン ソース コード](https://github.com/JohnLangford/vowpal_wabbit) として使用することもできます。
+
+## <a name="more-help-with-algorithms"></a>アルゴリズムに関するその他のヘルプ
+* アルゴリズムに関する説明と使用例が記載されたインフォグラフィックのダウンロードについては、「[インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例](machine-learning-basics-infographic-with-algorithm-examples.md)」をご覧ください。
+* Azure Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページをご覧ください。
+* Azure Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプにある [Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list] をご覧ください。
+* Azure Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」をご覧ください。
+
 
 <!-- Media -->
 
@@ -231,9 +239,4 @@ Microsoft Research の John Langford による VW は、市販車のようなア
 [8]: ./media/machine-learning-algorithm-choice/image8.png
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
