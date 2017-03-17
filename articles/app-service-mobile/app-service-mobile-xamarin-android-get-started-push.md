@@ -4,7 +4,7 @@ description: "Azure App Service と Azure Notification Hubs を使用して、Xa
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c9f8c46fa5fba1e69382a383ff94700de07db4ab
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 5c9dd6bd1f9e6338c297af07bfcd1c22f8d6405d
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -34,25 +35,25 @@ ms.openlocfilehash: c9f8c46fa5fba1e69382a383ff94700de07db4ab
 * アクティブな Google アカウント。 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302)で、Google アカウントにサインアップできます。
 * [Google Cloud Messaging のクライアント コンポーネント](http://components.xamarin.com/view/GCMClient/)。
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-hub"></a>通知ハブを構成する
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="a-idregisteraenable-firebase-cloud-messaging"></a><a id="register"></a>Firebase Cloud Messaging を有効にする
+## <a id="register"></a>Firebase Cloud Messaging を有効にする
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
 ## <a name="configure-azure-to-send-push-requests"></a>プッシュ要求を送信するように Azure を構成する
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="a-idupdate-serveraupdate-the-server-project-to-send-push-notifications"></a><a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+## <a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="a-idconfigure-appaconfigure-the-client-project-for-push-notifications"></a><a id="configure-app"></a>プッシュ通知のクライアント プロジェクトを構成する
+## <a id="configure-app"></a>プッシュ通知のクライアント プロジェクトを構成する
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a name="a-idadd-pushaadd-push-notifications-code-to-your-app"></a><a id="add-push"></a>アプリケーションにプッシュ通知コードを追加する
+## <a id="add-push"></a>アプリケーションにプッシュ通知コードを追加する
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="a-nametestatest-push-notifications-in-your-app"></a><a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 エミュレーターで仮想デバイスを使用して、アプリをテストできます。 エミュレーターで実行するときに必要な追加の構成手順があります。
 
 1. 次に示すように Android Virtual Device (AVD) Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
@@ -66,12 +67,7 @@ ms.openlocfilehash: c9f8c46fa5fba1e69382a383ff94700de07db4ab
     ![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
 
 <!-- URLs. -->
-[Xamarin.Android クイック スタート]: app-service-mobile-xamarin-android-get-started.md
-[Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
-[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Xamarin.Android quick start]: app-service-mobile-xamarin-android-get-started.md
+[Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
+[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 

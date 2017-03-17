@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: f7dd06f1fc789a74ec7ce2182824ff759dcf7a9f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 6c711fd3a843604d62d6589d0a742f03a049bc5c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>Password Management のデプロイとユーザー トレーニング
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 >
 >
 
@@ -74,8 +74,8 @@ ms.lasthandoff: 02/24/2017
 2. **Microsoft Azure 管理ポータル** で、 [[ライセンス]](https://manage.windowsazure.com)タブに移動し、パスワード リセットを許可するユーザーに適切なライセンスを割り当てます。
 3. 必要に応じて、**[パスワード リセットへのアクセスの制限]** オプションを **[はい]** に設定し、パスワード リセットを有効にするセキュリティ グループを選択することで、パスワード リセットをユーザー グループに制限して、この機能を時間をかけて展開します (これらのユーザーにはライセンスが割り当てられている必要があります)。
 4. 登録手順を説明した電子メールをユーザーに送信するかアクセス パネルでの強制登録を有効にすることで、ユーザーにパスワード リセットを使用するように指示します。または、DirSync、PowerShell、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)を使用して、ユーザー用の適切な認証データを管理者がアップロードします。  詳細は後述します。
-5. 時間が経過したら、[レポート] タブに移動し、[**[パスワード リセット登録アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) レポートを表示して、ユーザーの登録状況を確認します。
-6. 十分な数のユーザーが登録されたら、[レポート] タブに移動し、[**[パスワード リセット アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-activity) レポートを表示して、ユーザーによるパスワード リセットの使用状況を確認します。
+5. 時間が経過したら、[レポート] タブに移動し、[**[パスワード リセット登録アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-registration-activity-in-the-classic-portal) レポートを表示して、ユーザーの登録状況を確認します。
+6. 十分な数のユーザーが登録されたら、[レポート] タブに移動し、[**[パスワード リセット アクティビティ]**](active-directory-passwords-get-insights.md#view-password-reset-activity-in-the-classic-portal) レポートを表示して、ユーザーによるパスワード リセットの使用状況を確認します。
 
 組織内のユーザーにパスワード リセットの登録とパスワード リセットの使用を実行できることを通知する方法はいくつかあります。  これらを次に説明します。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/24/2017
 
   ![][001]
 
-電子メール テンプレートを [ここ](http://1drv.ms/1xWFtQM)からダウンロードできます。
+電子メール テンプレートを [ここ](https://1drv.ms/f/s!AharQMeRmrWggcNnPlk_7xHInYJzow)からダウンロードできます。
 
 ### <a name="creating-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 パスワード管理機能をデプロイする多くの顧客にとって有効な&1; つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。  
@@ -144,7 +144,7 @@ PowerShell でこのデータの参照と設定を行う方法については、
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。

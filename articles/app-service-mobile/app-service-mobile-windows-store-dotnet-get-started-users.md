@@ -4,7 +4,7 @@ description: "Azure App Service Mobile Apps を使用して、AAD、Google、Fac
 services: app-service\mobile
 documentationcenter: windows
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 17ced2fb19b2beb057b67a0aff2f67fb2bfe49e9
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 96b87d4d6cc1adbc9700102ffd4a989451676d81
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -27,17 +28,17 @@ ms.openlocfilehash: 17ced2fb19b2beb057b67a0aff2f67fb2bfe49e9
 
 このチュートリアルは、Mobile Apps のクイック スタートに基づいています。 事前に [Mobile Apps の使用](app-service-mobile-windows-store-dotnet-get-started.md)に関するチュートリアルを完了している必要があります。
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。 スタートアップ プロジェクトとして設定された UWP アプリ プロジェクトを使用し、アプリをデプロイして実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-## <a name="a-nameadd-authenticationaadd-authentication-to-the-app"></a><a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 1. UWP アプリ プロジェクトの MainPage.cs ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
    
         // Define a member variable for storing the signed-in user. 
@@ -105,7 +106,7 @@ ms.openlocfilehash: 17ced2fb19b2beb057b67a0aff2f67fb2bfe49e9
         </Button>
 5. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
-## <a name="a-nametokensastore-the-authentication-token-on-the-client"></a><a name="tokens"></a>クライアント側で認証トークンを保存する
+## <a name="tokens"></a>クライアント側で認証トークンを保存する
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。 この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。 よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
 
 > [!NOTE]
@@ -119,16 +120,11 @@ ms.openlocfilehash: 17ced2fb19b2beb057b67a0aff2f67fb2bfe49e9
 これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
 
 * [アプリへのプッシュ通知の追加](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-   アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
+  アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-   モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
+  モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 
 <!-- URLs. -->
-[Mobile Apps の使用]: app-service-mobile-windows-store-dotnet-get-started.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
 
 

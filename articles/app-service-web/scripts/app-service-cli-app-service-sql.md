@@ -16,9 +16,9 @@ ms.workload: web
 ms.date: 02/21/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 97ab792a0ad7420e97dbab378736b9815356e8a4
-ms.openlocfilehash: 72c91ef9c59fb42e7a2a233e258622417b2f84ac
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: df3813fc82492f6aa03b5f6df0c3da6816ae3b35
+ms.lasthandoff: 03/11/2017
 
 ---
 
@@ -34,13 +34,7 @@ ms.lasthandoff: 02/27/2017
 
 [!code-azurecli[main](../../../cli_scripts/app-service/connect-to-sql/connect-to-sql.sh?highlight=9-10 "SQL Database")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
-
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、App Service アプリ、およびすべての関連リソースを削除できます。
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>スクリプトの説明
 

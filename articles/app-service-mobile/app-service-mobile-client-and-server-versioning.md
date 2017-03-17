@@ -4,7 +4,7 @@ description: "Mobile Services と Azure Mobile Apps のクライアント SDK �
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1d1ef7821eee67f4b9ace01af7e41bd7fdd28b5e
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d74137dc3c994cb05e02c4f866043eabf134fcdd
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -63,12 +64,12 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 <!-- NOTE: the fwlink to this document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
 
-## <a name="a-name100amobile-services-client-and-server"></a><a name="1.0.0"></a>Mobile Services のクライアントとサーバー
+## <a name="1.0.0"></a>Mobile Services のクライアントとサーバー
 下の表にあるクライアント SDK は **Mobile Services**と互換性があります。
 
 注: Mobile Services クライアント SDK は `ZUMO-API-VERSION` のヘッダー値を送信 "*しません*"。 サービスがこのヘッダーやクエリ文字列値を受け取った場合、前述のように明示的に除外しない限り、エラーが返されます。
 
-### <a name="a-namemobileservicesclientsa-mobile-services-client-sdks"></a><a name="MobileServicesClients"></a> Mobile *Services* クライアント SDK
+### <a name="MobileServicesClients"></a> Mobile *Services* クライアント SDK
 | クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
 | --- | --- | --- |
 | 管理されたクライアント (Windows、Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |該当なし |
@@ -91,8 +92,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | 任意の値 |True |200 - OK |
 | 任意の値 |偽/指定なし |400 - 正しくない要求 |
 
-## <a name="a-name200aazure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure Mobile Apps クライアントとサーバー
-### <a name="a-namemobileappsclientsa-mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
+## <a name="2.0.0"></a>Azure Mobile Apps クライアントとサーバー
+### <a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
 バージョン チェックは **Azure Mobile Apps**の次のバージョンのクライアント SDK から導入されました。
 
 | クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
@@ -127,12 +128,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 [Mobile Apps クライアント]: #MobileAppsClients
 
 
-[Mobile App サーバー SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

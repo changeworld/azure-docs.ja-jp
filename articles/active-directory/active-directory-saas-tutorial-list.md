@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 03/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ca6774310d97cb1c3e72ed43a3340e3bb3d9c70a
-ms.openlocfilehash: 9900183d8207a664b47426209ab3b3b0f6154b2a
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: f6d530064b25cc83355ea4070b0e992ec1e20340
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -242,7 +242,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SanSan.png)| [SanSan](https://go.microsoft.com/fwLink/?LinkID=808007&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SAPBusinessByDesign.png)| [SAP Business ByDesign](https://go.microsoft.com/fwLink/?LinkID=807997&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SAPCloudforCustomer.png)| [SAP Cloud for Customer](https://go.microsoft.com/fwLink/?LinkID=785288&clcid=0x409)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SapHanaCloudPlatform.png)| [SAP HANA Cloud Platform Identity Authentication](https://go.microsoft.com/fwLink/?LinkID=828387&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SapHanaCloudPlatform.png)| [SAP HANA Cloud Platform Identity Authentication](https://go.microsoft.com/fwLink/?LinkID=828369&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SapHanaCloudPlatform.png)| [SAP HANA Cloud Platform](https://go.microsoft.com/fwLink/?LinkID=530219&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SAPNetWeaver.png)| [SAP NetWeaver](https://go.microsoft.com/fwLink/?LinkID=823737&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SCCLifeCycle.png)| [SCC LifeCycle](https://go.microsoft.com/fwLink/?LinkID=530218&clcid=0x409)|
@@ -319,6 +319,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Zscaler.png)| [Zscaler Two](https://go.microsoft.com/fwLink/?LinkID=512734&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Zscaler.png)| [Zscaler ZSCloud](https://go.microsoft.com/fwLink/?LinkID=512735&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Zscaler.png)| [Zscaler](https://go.microsoft.com/fwLink/?LinkID=510254&clcid=0x409)|
+
 
 
 ## <a name="related-articles"></a>関連記事
