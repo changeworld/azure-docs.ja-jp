@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
-ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 03720b926e3a75c5443308f510b38132144318ff
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -32,8 +32,17 @@ Analysis Services では&3; つのデータ プロバイダーが利用されま
 Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは&3; つのデータ プロバイダーがすべてインストールされます。 ただし、Excel のバージョンや、Excel および Power BI Desktop の新バージョンが毎月更新されるかどうかなどによっては、インストールされたデータ プロバイダーが、Azure Analysis Service で必要な最新バージョンに更新されないことがあります。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 これらのアプリケーションでは、プロバイダーを手動でインストールする必要があります。 手動でインストールするためのデータ プロバイダーは、再頒布可能パッケージとして SQL Server Feature Pack に含まれます。ただし、これらは SQL Server のバージョンに対応しており、最新版ではない可能性があります。  
 
 クライアント接続用のデータ プロバイダーは、Azure Analysis Services サーバーをデータ ソースに接続するために必要なデータ プロバイダーとは異なります。 データソース接続について詳しくは、「[Datasource connections](analysis-services-datasource.md)」(データソース接続) をご覧ください。
- 
-## <a name="download-the-latest-data-providers"></a>最新データ プロバイダーのダウンロード  
+
+## <a name="download-the-latest-preview-data-providers"></a>最新**プレビュー** データ プロバイダーのダウンロード  
+次のデータ プロバイダーを使用して、最新のバグ修正と更新プログラムを取得します。 Azure Analysis Services プレビューまたは SQL Server vNext Analysis Services に接続するときには、これらのデータ プロバイダーをお勧めします。
+
+[MSOLAP (amd64) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_OLEDB.msi)</br>
+[MSOLAP (x86) プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x86/SQL_AS_OLEDB.msi)</br>
+[AMO プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_AMO.msi)</br>
+[ADOMD プレビュー](http://download.microsoft.com/download/4/8/2/482E5799-9B8E-4724-8A4C-F301BAE788EE/14.0.304.138/1033/x64/SQL_AS_ADOMD.msi)</br>
+
+## <a name="download-the-latest-rtm-data-providers"></a>最新 **RTM** データ プロバイダーのダウンロード  
+運用環境で、完全にリリースおよびサポートされるバージョンが必要な場合は、次のデータ プロバイダーを使用します。
 
 [MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)</br>
 [MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)</br>

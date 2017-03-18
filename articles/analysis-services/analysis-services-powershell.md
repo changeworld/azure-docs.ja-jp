@@ -12,11 +12,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/28/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: ef3f31c633eeba92f343e2126626bd029aebbf64
-ms.openlocfilehash: 170657601a0ea6b0c0ebabfd34befdce290cebd8
+ms.sourcegitcommit: c0dd85570f052c4a9651faecbaeb3eaa181f9017
+ms.openlocfilehash: b00b2cf1d3a54bba716d7470643aa1a5e6a58633
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -37,13 +38,13 @@ Azure Analysis Services コマンドレットは、[AzureRM.AnalysisServices](ht
 
 |コマンドレット|Description| 
 |------------|-----------------| 
-|Get-AzureRmAnalysisServicesServer|サーバー インスタンスの詳細を取得します。|  
-|New-AzureRmAnalysisServicesServer|新しいサーバー インスタンスを作成します。|
-|Remove-AzureRmAnalysisServicesServer|サーバー インスタンスを削除します。|  
-|Suspend-AzureRmAnalysisServicesServe|サーバー インスタンスを中断します。| 
-|Resume-AzureRmAnalysisServicesServer|サーバー インスタンスを再開します。|  
-|Set-AzureRmAnalysisServicesServer|サーバー インスタンスを変更します。|   
-|Test-AzureRmAnalysisServicesServer|サーバー インスタンスの存在をテストします。| 
+|[Get-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/get-azurermanalysisservicesserver)|サーバー インスタンスの詳細を取得します。|  
+|[New-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/new-azurermanalysisservicesserver)|新しいサーバー インスタンスを作成します。|
+|[Remove-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/remove-azurermanalysisservicesserver)|サーバー インスタンスを削除します。|  
+|[Suspend-AzureRmAnalysisServicesServe](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/suspend-azurermanalysisservicesserver)|サーバー インスタンスを中断します。| 
+|[Resume-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/resume-azurermanalysisservicesserver)|サーバー インスタンスを再開します。|  
+|[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/set-azurermanalysisservicesserver)|サーバー インスタンスを変更します。|   
+|[Test-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.analysisservices/v3.0.0/test-azurermanalysisservicesserver)|サーバー インスタンスの存在をテストします。| 
 
 ## <a name="database-operations"></a>データベース操作
 Azure Analysis Services のデータベース操作では、SQL Server Analysis Services と同じ [SQLASCMDLETS](https://msdn.microsoft.com/library/hh758425.aspx) モジュールが使用されます。 ただし、すべてのコマンドレットが、Azure Analysis Services プレビューでサポートされているわけではありません。 
@@ -64,8 +65,3 @@ SQLASCMDLETS モジュールには、タスク固有のデータベース管理�
 ## <a name="related-information"></a>関連情報
 * [Analysis Services の PowerShell スクリプト](https://msdn.microsoft.com/library/hh213141.aspx)。
 * [互換性レベル 1200 の表形式モデル プログラミング](https://msdn.microsoft.com/library/mt712541.aspx)
-
-
-<!--HONumber=Jan17_HO5-->
-
-

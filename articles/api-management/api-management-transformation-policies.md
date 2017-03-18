@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
-ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 56eb95f5c8dfb34c0dbaec75efc5509f0c930ec3
+ms.lasthandoff: 03/06/2017
 
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
-##  <a name="a-nametransformationpoliciesa-transformation-policies"></a><a name="TransformationPolicies"></a> 変換ポリシー  
+##  <a name="TransformationPolicies"></a> 変換ポリシー  
   
 -   [JSON から XML への変換](api-management-transformation-policies.md#ConvertJSONtoXML) - 要求本文または応答本文を JSON から XML に変換します。  
   
@@ -44,7 +45,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   [XSLT を使用した XML の変換](api-management-transformation-policies.md#XSLTransform) - 要求本文または応答本文に含まれる XML に XSL 変換を適用します。  
   
-##  <a name="a-nameconvertjsontoxmla-convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON から XML への変換  
+##  <a name="ConvertJSONtoXML"></a> JSON から XML への変換  
  `json-to-xml` ポリシーは、要求本文または応答本文を JSON から XML に変換します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -87,7 +88,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-nameconvertxmltojsona-convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML から JSON への変換  
+##  <a name="ConvertXMLtoJSON"></a> XML から JSON への変換  
  `xml-to-json` ポリシーは、要求本文または応答方文を XML から JSON に変換します。 このポリシーを使用すると、XML のみのバックエンド Web サービスに基づく API を最新化することができます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -131,7 +132,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namefindandreplacestringinbodya-find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> 本文内の文字列の検索および置換  
+##  <a name="Findandreplacestringinbody"></a> 本文内の文字列の検索および置換  
  `find-and-replace` ポリシーは、要求または応答内の文字部分列を検索し、別の部分文字列で置き換えます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -166,7 +167,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namemaskurlscontenta-mask-urls-in-content"></a><a name="MaskURLSContent"></a> コンテンツ内の URL のマスク  
+##  <a name="MaskURLSContent"></a> コンテンツ内の URL のマスク  
  `redirect-content-urls` ポリシーは、応答本文内のリンクを、ゲートウェイを経由して同じリンクをポイントするように書き換えます (マスクします)。 応答本文のリンクをゲートウェイにポイントさせる場合は outbound セクションで使用します。 反対の効果を生じさせる場合は inbound セクションで使用します。  
   
 > [!NOTE]
@@ -197,7 +198,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namesetbackendservicea-set-backend-service"></a><a name="SetBackendService"></a> バックエンド サービスの設定  
+##  <a name="SetBackendService"></a> バックエンド サービスの設定  
  `set-backend-service` ポリシーを使用すると、該当する操作の API 設定で指定されているものとは異なるバックエンドに受信要求をリダイレクトできます。 このポリシーでは、受信要求のバックエンド サービスのベース URL をこのポリシーで指定した URL に変更します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -254,7 +255,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namesetbodya-set-body"></a><a name="SetBody"></a> 本文の設定  
+##  <a name="SetBody"></a> 本文の設定  
  着信要求と発信要求のメッセージ本文を設定するには、`set-body` ポリシーを使用します。 メッセージ本文へのアクセスには、ポリシーを inbound セクションと outbound セクションのどちらに記載するかに応じて `context.Request.Body` プロパティまたは `context.Response.Body` を使用します。  
   
 > [!IMPORTANT]
@@ -330,13 +331,71 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   </when>  
 </choose>  
 ```  
-  
+
+### <a name="using-liquid-templates-with-set-body"></a>本文の設定がある Liquid テンプレートの使用 
+`set-body` ポリシーは、[Liquid](https://shopify.github.io/liquid/basics/introduction/) テンプレート作成言語を使用して要求または応答の本文を変換するように構成できます。 これは、メッセージの形式を完全に再構築する必要がある場合にとても効果的な場合があります。
+
+> [!IMPORTANT]
+> `set-body` ポリシーで使用される Liquid の実装は、「C# mode」で構成されます。 これは、フィルター処理などを実行する際に特に重要です。 たとえば、日付フィルターを使用するには、次のような Pascal 形式と C# date 形式を使用する必要があります。
+>
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+
+> [!IMPORTANT]
+> Liquid テンプレートを使用して XML 本文に正しくバインドするには、`set-header` ポリシーを使用して、Content-Type を application/xml、text/xml (または任意の種類の終了 +xml) に設定します。JSON 本文の場合は、application/json、text/json (または任意の種類の終了 +json) にする必要があります。
+
+#### <a name="convert-json-to-soap-using-a-liquid-template"></a>Liquid テンプレートを使用して JSON を SOAP に変換する
+```xml
+<set-body template="liquid">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+            <GetOpenOrders>
+                <cust>{{body.getOpenOrders.cust}}</cust>
+            </GetOpenOrders>
+        </soap:Body>
+    </soap:Envelope>
+</set-body>
+```
+
+#### <a name="tranform-json-using-a-liquid-template"></a>Liquid テンプレートを使用した JSON の変換
+```xml
+{
+"order": {
+    "id": "{{body.customer.purchase.identifier}}",
+    "summary": "{{body.customer.purchase.orderShortDesc}}"
+    }
+}
+```
+
 ### <a name="elements"></a>要素  
   
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|はい|  
+
+### <a name="properties"></a>プロパティ  
   
+|名前|説明|必須|既定値|  
+|----------|-----------------|--------------|-------------|  
+|template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ|liquid|  
+
+要求と応答に関する情報にアクセスするために、Liquid テンプレートは次のプロパティでコンテキスト オブジェクトにバインドできます。 <br />
+<pre>context.
+Request.
+Url Method OriginalMethod OriginalUrl IpAddress MatchedParameters HasBody ClientCertificates Headers
+
+    Response.
+        StatusCode
+        Method
+        Headers
+URL。
+Scheme Host Port Path Query QueryString ToUri ToString
+
+OriginalUrl.
+Scheme Host Port Path Query QueryString ToUri ToString
+</pre>
+
+
+
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
@@ -344,7 +403,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namesethttpheadera-set-http-header"></a><a name="SetHTTPheader"></a> HTTP ヘッダーの設定  
+##  <a name="SetHTTPheader"></a> HTTP ヘッダーの設定  
  `set-header` ポリシーは、既存の応答ヘッダーまたは要求ヘッダーに値を割り当てるか、新しい応答ヘッダーまたは要求ヘッダーを追加します。  
   
  HTTP ヘッダーのリストを HTTP メッセージに挿入します。 受信パイプラインに配置した場合、このポリシーは、ターゲット サービスに渡される要求の HTTP ヘッダーを設定します。 送信パイプラインに配置した場合、このポリシーは、ゲートウェイのクライアントに送信される応答の HTTP ヘッダーを設定します。  
@@ -401,7 +460,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namesetquerystringparametera-set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> クエリ文字列パラメーターの設定  
+##  <a name="SetQueryStringParameter"></a> クエリ文字列パラメーターの設定  
  `set-query-parameter` ポリシーは、要求クエリ文字列パラメーターの追加、値の置換、または削除を行います。 このポリシーを使用すると、オプションであるかまたは要求内に存在しない、バックエンド サービスで必要とされるクエリ パラメーターを渡すことができます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -461,7 +520,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
-##  <a name="a-namerewriteurla-rewrite-url"></a><a name="RewriteURL"></a> URL の書き換え  
+##  <a name="RewriteURL"></a> URL の書き換え  
  `rewrite-uri` ポリシーは、次の例に示すように、要求 URL をパブリックな形式から Web サービスで想定されている形式に変換します。  
   
 -   パブリック URL - `http://api.example.com/storenumber/ordernumber`  
@@ -539,7 +598,7 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 -   **ポリシー スコープ:** 製品、API、操作  
   
-##  <a name="a-namexsltransforma-transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XSLT を使用した XML の変換  
+##  <a name="XSLTransform"></a> XSLT を使用した XML の変換  
  `Transform XML using an XSLT` ポリシーは、要求本文または応答本文に含まれる XML に XSL 変換を適用します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -605,9 +664,4 @@ ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2eba5ecc41342b62601750c19e4bffd8b6e78b51
-ms.openlocfilehash: 7ff2d29b52848f21534b5d540fb3908710534f69
+ms.sourcegitcommit: 64b6447608ecdd9bdd2b307f4bff2cae43a4b13f
+ms.openlocfilehash: cff066ff2943443749ee8eb2ef71c7ca93bb829c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -135,135 +136,9 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 セキュリティと FIPS の詳細については、 [AAD パスワード同期、暗号化、FIPS コンプライアンス](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)
 
 ## <a name="troubleshooting-password-synchronization"></a>パスワード同期のトラブルシューティング
-パスワードが予想どおりに同期していない場合は、ユーザーのサブセットかすべてのユーザーを対象している可能性があります。
-
-* 個々のオブジェクトに問題がある場合は、「 [パスワードを同期していない&1; つのオブジェクトのトラブルシューティング](#troubleshoot-one-object-that-is-not-synchronizing-passwords)」を参照してください。
-* パスワードが同期されない問題がある場合は、「 [パスワードが同期されない問題のトラブルシューティング](#troubleshoot-issues-where-no-passwords-are-synchronized)」を参照してください。
-
-### <a name="troubleshoot-one-object-that-is-not-synchronizing-passwords"></a>パスワードを同期していない&1; つのオブジェクトのトラブルシューティング
-オブジェクトの状態を確認することで、パスワード同期の問題を簡単に解決できます。
-
-まず、 **[Active Directory ユーザーとコンピューター]**を開きます。 ユーザーを検索し、 **[ユーザーは次回ログオン時にパスワード変更が必要]** チェック ボックスがオフになっていることを確認します。
-
-![Active Directory productive passwords](./media/active-directory-aadconnectsync-implement-password-synchronization/adprodpassword.png)  
-
-チェック ボックスがオンになっている場合、ユーザーはサインインしてパスワードを変更するよう求められます。 一時パスワードは、Azure AD に同期されません。
-
-Active Directory で正しく表示されたら、次の手順では、同期エンジンのユーザーをフォローします。 オンプレミスの Active Directory から Azure AD までユーザーをフォローすると、オブジェクトに記述的なエラーが発生しているかどうかを確認できます。
-
-1. **[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)** を起動します。
-2. **[コネクタ]**をクリックします。
-3. ユーザーが存在する **Active Directory コネクタ** を選択します。
-4. **[Search Connector Space (コネクタ スペースの検索)]**を選択します。
-5. 探しているユーザーを特定します。
-6. **[lineage (系列)]** タブを選択し、少なくとも&1; つの同期規則の **[パスワード同期]** に **[True]** と表示されていることを確認します。 既定の構成では、 **[In from AD - User AccountEnabled]**という名前の同期規則です。  
-    ![ユーザーに関する系列情報](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)  
-7. 次に、メタバースを経由し、Azure AD コネクタ スペースまで [ユーザーをフォローします](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system) 。 コネクタ スペース オブジェクトには、**[パスワード同期]** が **True** に設定されている送信規則が必要です。 既定の構成では、 **[Out to AAD - User Join]**という名前の同期規則です。  
-    ![ユーザーのコネクタ スペースのプロパティ](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)  
-8. 過去&1; 週間のオブジェクトのパスワード同期の詳細を確認するには、 **[ログ]**をクリックします。  
-    ![オブジェクトの詳細](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)  
-    オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 イベント ログでエラーを調べてください。
-
-状態列には次の値が入ります。
-
-| 状態 | 説明 |
-| --- | --- |
-| Success |パスワードが正常に同期されました。 |
-| FilteredByTarget |パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]**に設定されています。 パスワードは同期されていません。 |
-| NoTargetConnection |メタバースまたは Azure AD コネクタ スペースなオブジェクトがありません。 |
-| SourceConnectorNotPresent |オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
-| TargetNotExportedToDirectory |Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
-| MigratedCheckDetailsForMoreInfo |ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
-
-### <a name="troubleshoot-issues-where-no-passwords-are-synchronized"></a>パスワードが同期されない問題のトラブルシューティング
-まず、「 [パスワード同期設定の状態の取得](#get-the-status-of-password-sync-settings)」セクションにあるスクリプトを実行します。 これにより、パスワード同期の構成の概要が示されます。  
-![PowerShell script output from password sync settings](./media/active-directory-aadconnectsync-implement-password-synchronization/psverifyconfig.png)  
-この機能が Azure AD で有効ではない場合または同期チャネルの状態が有効ではない場合は、Connect のインストール ウィザードを実行してください。 **[同期オプションのカスタマイズ]** を選択し、パスワード同期の選択を解除します。 この変更により、一時的に機能が無効になります。 その後、もう一度ウィザードを実行し、パスワード同期を再度有効にします。 スクリプトを再実行して、構成が正しいことを確認します。
-
-スクリプトによってハートビートがないことが示されたら、「 [すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」にあるスクリプトを実行します。 このスクリプトは、構成は正しいがパスワードが同期されてない他のシナリオにも使用できます。
-
-設定をカスタマイズして Azure AD Connect をインストールした場合は、AD Connector によって使用されるアカウントに、"ディレクトリの変更のレプリケート" アクセス許可と "ディレクトリの変更をすべてにレプリケート" アクセス許可を与えていることを確認します。 このアカウントが必要とするすべてのアクセス許可については、[アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)を参照してください。 これらのアクセス許可がないと、アカウントは、Active Directory 内のパスワード ハッシュを読み取ることができません。
-
-次に、アプリケーションのイベント ログを調べます。 パスワードの同期にグローバルな問題が存在するが (前の手順で検証したように) サービスは稼働している場合は、エラーの詳細が含まれているはずです。
-
-#### <a name="get-the-status-of-password-sync-settings"></a>パスワード同期設定の状態の取得
-```
-Import-Module ADSync
-$connectors = Get-ADSyncConnector
-$aadConnectors = $connectors | Where-Object {$_.SubType -eq "Windows Azure Active Directory (Microsoft)"}
-$adConnectors = $connectors | Where-Object {$_.ConnectorTypeName -eq "AD"}
-if ($aadConnectors -ne $null -and $adConnectors -ne $null)
-{
-    if ($aadConnectors.Count -eq 1)
-    {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
-        Write-Host
-        Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
-        foreach ($adConnector in $adConnectors)
-        {
-            Write-Host
-            Write-Host "Password sync channel status BEGIN ------------------------------------------------------- "
-            Write-Host
-            Get-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector.Name
-            Write-Host
-            $pingEvents =
-                Get-EventLog -LogName "Application" -Source "Directory Synchronization" -InstanceId 654  -After (Get-Date).AddHours(-3) |
-                    Where-Object { $_.Message.ToUpperInvariant().Contains($adConnector.Identifier.ToString("D").ToUpperInvariant()) } |
-                    Sort-Object { $_.Time } -Descending
-            if ($pingEvents -ne $null)
-            {
-                Write-Host "Latest heart beat event (within last 3 hours). Time " $pingEvents[0].TimeWritten
-            }
-            else
-            {
-                Write-Warning "No ping event found within last 3 hours."
-            }
-            Write-Host
-            Write-Host "Password sync channel status END ------------------------------------------------------- "
-            Write-Host
-        }
-    }
-    else
-    {
-        Write-Warning "More than one Azure AD Connectors found. Please update the script to use the appropriate Connector."
-    }
-}
-Write-Host
-if ($aadConnectors -eq $null)
-{
-    Write-Warning "No Azure AD Connector was found."
-}
-if ($adConnectors -eq $null)
-{
-    Write-Warning "No AD DS Connector was found."
-}
-Write-Host
-```
-
-#### <a name="trigger-a-full-sync-of-all-passwords"></a>すべてのパスワードの完全同期の開始
-次のスクリプトを使用してすべてのパスワードの完全同期を開始できます。
-
-```
-$adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
-$aadConnector = "<CASE SENSITIVE AAD CONNECTOR NAME>"
-Import-Module adsync
-$c = Get-ADSyncConnector -Name $adConnector
-$p = New-Object Microsoft.IdentityManagement.PowerShell.ObjectModel.ConfigurationParameter "Microsoft.Synchronize.ForceFullPasswordSync", String, ConnectorGlobal, $null, $null, $null
-$p.Value = 1
-$c.GlobalParameters.Remove($p.Name)
-$c.GlobalParameters.Add($p)
-$c = Add-ADSyncConnector -Connector $c
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $false
-Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
-```
-
+パスワード同期に問題がある場合は、[パスワード同期のトラブルシューティング](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: f9523ce62fb24b280c8d5869bf394ab279c48f23
-ms.openlocfilehash: 10b8221c873e3510189e7d82e034669f0466cd84
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 9faa28a86c9427a83e8ca4485ebcdc8e8dacd93d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -44,14 +45,18 @@ ms.openlocfilehash: 10b8221c873e3510189e7d82e034669f0466cd84
 この方法を適用するには、次の手順に従います。
 
 1. [準備](#prepare)
-2. [インポートおよび同期](#import-and-synchronize)
-3. [確認](#verify)
-4. [アクティブなサーバーの切り替え](#switch-active-server)
+2. [構成](#configuration)
+3. [インポートおよび同期](#import-and-synchronize)
+4. [確認](#verify)
+5. [アクティブなサーバーの切り替え](#switch-active-server)
 
 #### <a name="prepare"></a>準備
 1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。 このモードにより、同期エンジンを手動で実行することができます。
    ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/readytoconfigure.png)
 2. いったんサインオフし、サインインし直してから、[スタート] メニューの **[Synchronization Service (同期サービス)]**を選択します。
+
+#### <a name="configuration"></a>構成
+プライマリ サーバーにカスタム変更を行い、構成をステージング サーバーと比較する場合は、[Azure AD Connect 構成データベース構造の解析](https://github.com/Microsoft/AADConnectConfigDocumenter)を使用します。
 
 #### <a name="import-and-synchronize"></a>インポートおよび同期
 1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の&1; つ目のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
@@ -62,21 +67,13 @@ ms.openlocfilehash: 10b8221c873e3510189e7d82e034669f0466cd84
 これで、Azure AD とオンプレミスの AD (Exchange ハイブリッド デプロイを使用している) へのエクスポートの変更がステージングされました。 次の手順では、実際にディレクトリへのエクスポートを開始する前に、変更される内容を確認できます。
 
 #### <a name="verify"></a>確認
-1. コマンド プロンプトを起動し、 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. 次のコマンドを実行します: `csexport "Name of Connector" %temp%\export.xml /f:x`  
-   同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
-3. 次のコマンドを実行します: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
-4. %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
-5. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
-
-**export.csv ファイルを理解する**
-
-ファイルのほとんどの部分は、一目瞭然です。 内容の理解に役立つ省略形のいくつかを次に示します。
-
-* OMODT - オブジェクトの変更の種類。 オブジェクト レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
-* AMODT - 属性の変更の種類。 属性レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
-
-属性の値が複数値の場合は、すべての変更が表示されるとは限りません。 追加および削除された値の数のみが表示されます。
+1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
+2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+3. セクション [CSAnalyzer](#Appendix-CSAnalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
+4. PowerShell ウィンドウを開き、PowerShell スクリプトを作成したフォルダーを参照します。
+5. `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` を実行します。
+6. **processedusers1.csv** という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 Azure AD にエクスポートするためにステージングされたすべての変更は、このファイル内にあります。
+7. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
 
 #### <a name="switch-active-server"></a>アクティブなサーバーの切り替え
 1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) に設定します。
@@ -106,7 +103,7 @@ ms.openlocfilehash: 10b8221c873e3510189e7d82e034669f0466cd84
 ### <a name="have-a-spare-standby-server---staging-mode"></a>予備のスタンバイ サーバーを用意する - ステージング モード
 環境がより複雑な場合は、1 つまたは複数のスタンバイ サーバーを持つことをお勧めします。 インストール時、サーバーを **ステージング モード**に設定できます。
 
-詳細については、「 [ステージング モード](#staging-mode)」を参照してください。
+詳しくは、「[ステージング モード](#staging-mode)」をご覧ください。
 
 ### <a name="use-virtual-machines"></a>仮想マシンを使用する
 一般的なサポートされている方法は、仮想マシンで同期エンジンを実行する方法です。 ホストに問題が発生した場合、同期エンジン サーバーを含むイメージを別のサーバーに移行できます。
@@ -114,15 +111,151 @@ ms.openlocfilehash: 10b8221c873e3510189e7d82e034669f0466cd84
 ### <a name="sql-high-availability"></a>SQL 高可用性
 Azure AD Connect に付属している SQL Server Express を使用しない場合は、SQL Server の高可用性も考慮する必要があります。 サポートされている高可用性ソリューションは SQL クラスタリングのみです。 サポートされていないソリューションには、ミラーリングと Always On があります。
 
+## <a name="appendix-csanalyzer"></a>付録 CSAnalyzer
+このスクリプトの使い方については、「[確認](#verify)」をご覧ください。
+
+```
+Param(
+    [Parameter(Mandatory=$true, HelpMessage="Must be a file generated using csexport 'Name of Connector' export.xml /f:x)")]
+    [string]$xmltoimport="%temp%\exportedStage1a.xml",
+    [Parameter(Mandatory=$false, HelpMessage="Maximum number of users per output file")][int]$batchsize=1000,
+    [Parameter(Mandatory=$false, HelpMessage="Show console output")][bool]$showOutput=$false
+)
+
+#LINQ isn't loaded automatically, so force it
+[Reflection.Assembly]::Load("System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089") | Out-Null
+
+[int]$count=1
+[int]$outputfilecount=1
+[array]$objOutputUsers=@()
+
+#XML must be generated using "csexport "Name of Connector" export.xml /f:x"
+write-host "Importing XML" -ForegroundColor Yellow
+
+#XmlReader.Create won't properly resolve the file location,
+#so expand and then resolve it
+$resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
+
+#use an XmlReader to deal with even large files
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader.ReadToDescendant('cs-object')
+do 
+{
+    #create the object placeholder
+    #adding them up here means we can enforce consistency
+    $objOutputUser=New-Object psobject
+    Add-Member -InputObject $objOutputUser -MemberType NoteProperty -Name ID -Value ""
+    Add-Member -InputObject $objOutputUser -MemberType NoteProperty -Name Type -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name DN -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name operation -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name UPN -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name displayName -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name sourceAnchor -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name alias -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name primarySMTP -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name onPremisesSamAccountName -Value ""
+    Add-Member -inputobject $objOutputUser -MemberType NoteProperty -Name mail -Value ""
+
+    $user = [System.Xml.Linq.XElement]::ReadFrom($reader)
+    if ($showOutput) {Write-Host Found an exported object... -ForegroundColor Green}
+
+    #object id
+    $outID=$user.Attribute('id').Value
+    if ($showOutput) {Write-Host ID: $outID}
+    $objOutputUser.ID=$outID
+
+    #object type
+    $outType=$user.Attribute('object-type').Value
+    if ($showOutput) {Write-Host Type: $outType}
+    $objOutputUser.Type=$outType
+
+    #dn
+    $outDN= $user.Element('unapplied-export').Element('delta').Attribute('dn').Value
+    if ($showOutput) {Write-Host DN: $outDN}
+    $objOutputUser.DN=$outDN
+
+    #operation
+    $outOperation= $user.Element('unapplied-export').Element('delta').Attribute('operation').Value
+    if ($showOutput) {Write-Host Operation: $outOperation}
+    $objOutputUser.operation=$outOperation
+
+    #now that we have the basics, go get the details
+
+    foreach ($attr in $user.Element('unapplied-export-hologram').Element('entry').Elements("attr"))
+    {
+        $attrvalue=$attr.Attribute('name').Value
+        $internalvalue= $attr.Element('value').Value
+
+        switch ($attrvalue)
+        {
+            "userPrincipalName"
+            {
+                if ($showOutput) {Write-Host UPN: $internalvalue}
+                $objOutputUser.UPN=$internalvalue
+            }
+            "displayName"
+            {
+                if ($showOutput) {Write-Host displayName: $internalvalue}
+                $objOutputUser.displayName=$internalvalue
+            }
+            "sourceAnchor"
+            {
+                if ($showOutput) {Write-Host sourceAnchor: $internalvalue}
+                $objOutputUser.sourceAnchor=$internalvalue
+            }
+            "alias"
+            {
+                if ($showOutput) {Write-Host alias: $internalvalue}
+                $objOutputUser.alias=$internalvalue
+            }
+            "proxyAddresses"
+            {
+                if ($showOutput) {Write-Host primarySMTP: ($internalvalue -replace "SMTP:","")}
+                $objOutputUser.primarySMTP=$internalvalue -replace "SMTP:",""
+            }
+        }
+    }
+
+    $objOutputUsers += $objOutputUser
+
+    Write-Progress -activity "Processing ${xmltoimport} in batches of ${batchsize}" -status "Batch ${outputfilecount}: " -percentComplete (($objOutputUsers.Count / $batchsize) * 100)
+
+    #every so often, dump the processed users in case we blow up somewhere
+    if ($count % $batchsize -eq 0)
+    {
+        Write-Host Hit the maximum users processed without completion... -ForegroundColor Yellow
+
+        #export the collection of users as as CSV
+        Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
+        $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
+
+        #increment the output file counter
+        $outputfilecount+=1
+
+        #reset the collection and the user counter
+        $objOutputUsers = $null
+        $count=0
+    }
+
+    $count+=1
+
+    #need to bail out of the loop if no more users to process
+    if ($reader.NodeType -eq [System.Xml.XmlNodeType]::EndElement)
+    {
+        break
+    }
+
+} while ($reader.Read)
+
+#need to write out any users that didn't get picked up in a batch of 1000
+#export the collection of users as as CSV
+Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
+$objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
+```
+
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**  
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)  
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
