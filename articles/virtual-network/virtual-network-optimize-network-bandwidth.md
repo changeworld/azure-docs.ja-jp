@@ -17,6 +17,7 @@ ms.author: steveesp
 translationtype: Human Translation
 ms.sourcegitcommit: 50be31e179bf52e009596fbc68339dfb5a1aa1e4
 ms.openlocfilehash: d53b1cae9845be32bd053ef196203ea83df06b10
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -60,8 +61,8 @@ Azure Linux VM では、RSS は既定で常に有効になっています。 201
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04.0-LTS",
-"Version": "16.04.201609071"
+"Sku": "16.04-LTS",
+"Version": "latest"
 ```
 更新が完了したら、次のコマンドを入力して、最新のカーネルを入手します。
 
@@ -92,7 +93,7 @@ apt-get -y upgrade
 ```bash
 sudo yum update
 sudo reboot
-sudo yum install microsoft-hyper-v-4.1.3 kmod-microsoft-hyper-v-4.1.3
+sudo yum install microsoft-hyper-v
 ```
 
 ### <a name="red-hat"></a>Red Hat
@@ -110,13 +111,8 @@ cd lis4.1.3
 wget https://download.microsoft.com/download/7/6/B/76BE7A6E-E39F-436C-9353-F4B44EF966E9/lis-rpms-4.1.3.tar.gz
 tar xvzf lis-rpms-4.1.3.tar.gz
 cd LISISO
-install.sh  #or upgrade.sh if previous LIS was previously installed
+install.sh� #or upgrade.sh if previous LIS was previously installed
 ```
  
 Linux Integration Services Version 4.1 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=51612)を参照してください。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

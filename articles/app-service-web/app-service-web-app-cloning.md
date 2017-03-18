@@ -17,6 +17,7 @@ ms.author: aelnably
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -46,7 +47,7 @@ New-AzureRmWebApp コマンドを使って米国中北部リージョンに新�
 
 関連付けられているすべてのデプロイ スロットを含め、既存の Web アプリを複製するには、IncludeSourceWebAppSlots パラメーターを使用する必要があります。次の PowerShell コマンドでは、New-AzureRmWebApp コマンドでこのパラメーターを使用しています。
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots $true
+    $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
 
 同じリージョン内で既存の Web アプリを複製するには、同じリージョンに新しいリソース グループと新しい App Service プランを作成したうえで、次の PowerShell コマンドを使って Web アプリを複製する必要があります。
 
@@ -112,10 +113,5 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
 * [App Service 環境の概要](app-service-app-service-environment-intro.md)
 * [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
