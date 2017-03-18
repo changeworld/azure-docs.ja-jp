@@ -283,20 +283,20 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  **[Location] (場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] (最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が&4; つに制限されます。 **[Advanced] (詳細設定) ** ボタンを選択します。
+4.  **[Location] \(場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] \(最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が&4; つに制限されます。 **[Advanced] \(詳細設定)** ボタンを選択します。
 
     ![Veeam 管理コンソール、ボリュームを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  **[Storage Compatibility Settings] (ストレージの互換性設定)** ダイアログ ボックスで、**[Use per-VM backup files] (VM ごとのバックアップ ファイルを使用する)** チェック ボックスをオンにします。
+5.  **[Storage Compatibility Settings] \(ストレージの互換性設定)** ダイアログ ボックスで、**[Use per-VM backup files] \(VM ごとのバックアップ ファイルを使用する)** チェック ボックスをオンにします。
 
     ![Veeam 管理コンソール、ストレージの互換性設定](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  **[New Backup Repository] (新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] (マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]**を選択します。
+6.  **[New Backup Repository] \(新しいバックアップ リポ)** ダイアログ ボックスで、**[Enable vPower NFS service on the mount server (recommended)] \(マウント サーバー上で vPower NFS サービスを有効にする (推奨))** チェック ボックスをオンします。 **[次へ]**を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  設定を確認してから、**[Next] (次へ)** を選択します。
+7.  設定を確認してから、**[Next] \(次へ)** を選択します。
 
     ![Veeam 管理コンソール、バックアップ リポジトリ ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
