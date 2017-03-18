@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: aa2aabee72d1ca381502f9332df7fb88cf2384a2
+ms.sourcegitcommit: 3ec7a230a4051d23e741360f3f714cccadf85902
+ms.openlocfilehash: 511021e43e7d5b3247744592cbeab67769758375
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: aa2aabee72d1ca381502f9332df7fb88cf2384a2
 ## <a name="supported-sources-and-sinks"></a>サポートされているソースとシンク
 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) の表をご覧ください。 サポートされる任意のソース データ ストアのデータを、Azure BLOB ストレージに移動したり、Azure BLOB ストレージのデータを、サポートされる任意のシンク データ ストアに移動したりできます。
 
-コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。
+コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。 Azure Premium Storage は、ページ BLOB の所定のシンクとしてサポートされていません。
 
 ## <a name="create-pipeline"></a>パイプラインの作成
 さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。  
@@ -421,7 +422,7 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 | folderPath |BLOB ストレージのコンテナーとフォルダーのパス。 例: myblobcontainer\myblobfolder\ |はい |
 | fileName |BLOB の名前です。 fileName は省略可能で、大文字と小文字を区別します。<br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定の BLOB で動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 詳細と例については、「 [partitionedBy プロパティの使用](#using-partitionedBy-property) 」をご覧ください。 |なし |
-| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |なし |
+| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |
 
 ### <a name="using-partitionedby-property"></a>partitionedBy プロパティの使用
@@ -521,9 +522,4 @@ Azure BLOB ストレージからデータを移動する場合は、コピー �
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

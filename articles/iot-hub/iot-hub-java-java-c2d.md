@@ -12,11 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 02/24/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: bd3b92e044a28237706fb004fdc43cca056047ad
+ms.sourcegitcommit: dc9f9c39a8eb644229887f76b5c441d4211af059
+ms.openlocfilehash: 6bf9136e1d95d4abd98010a1debbe875dc152e3f
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -30,11 +31,11 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 * クラウドからデバイスへのメッセージをデバイスで受信する。
-* IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、ソリューション バックエンドから要求する。
+* IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を、ソリューション バックエンドから要求する。
 
 クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイド][IoT Hub developer guide - C2D]を参照してください。
 
-このチュートリアルの最後に、次の 2 つの Java コンソール アプリを実行します。
+このチュートリアルの最後に、次の&2; つの Java コンソール アプリを実行します。
 
 * **simulated-device**。「[IoT Hub の概要]」で作成されたアプリの修正バージョン。これは、IoT Hub に接続し、C2D メッセージを受信します。
 * **send-c2d-messages**。これは、C2D メッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受信します。
@@ -85,7 +86,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal] で確認できます)。
 
-1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。 このコマンドが&1; つの長いコマンドであることに注意してください。
    
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -97,7 +98,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     <dependency>
       <groupId>com.microsoft.azure.iothub-java-client</groupId>
       <artifactId>iothub-java-service-client</artifactId>
-      <version>1.0.10</version>
+      <version>1.0.11</version>
     </dependency>
     ```
 4. pom.xml ファイルを保存して閉じます。
@@ -114,9 +115,9 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     ```
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "{yourdeviceid}";
-    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQP;
+    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
     ```
-8. **main** メソッドを次のコードに置き換えて、IoT Hub に接続し、デバイスにメッセージを送信して、デバイスがメッセージを受信して処理したことを示す受信確認を待機するようにします。
+8. **main** メソッドを次のコードで置き換えます。 このコードは、IoT Hub に接続し、デバイスにメッセージを送信して、デバイスがメッセージを受信して処理したことを示す受信確認を受け取るまで待機します。
    
     ```
     public static void main(String[] args) throws IOException,
@@ -192,9 +193,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

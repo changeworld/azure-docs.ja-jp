@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/05/2017
 ms.author: rayne
 translationtype: Human Translation
-ms.sourcegitcommit: 6521cada7adeacd98fae46e5119ceffa0351e9b5
-ms.openlocfilehash: a5c6759d9826084ae339dd291140f8383b55b6db
+ms.sourcegitcommit: 993449b7840f5077f23b3809439b89f27759e35d
+ms.openlocfilehash: 1a991d1e4ac20019695fb557310e1981b5b491ec
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -26,22 +27,7 @@ ms.openlocfilehash: a5c6759d9826084ae339dd291140f8383b55b6db
 
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 
-1. Azure Site Recovery Capacity Planner を使用して、レプリケーション環境に関する情報を収集します。 これには、VM、VM あたりのディスク、ディスクあたりの記憶域、に関する情報が含まれます。
-2. お使いの環境でレプリケートされたデータの日次の変更 (チャーン レート) を見積もります。
-
-
-## <a name="gather-information"></a>情報を収集する
-
-1. [Capacity Planner[(https://gallery.technet.microsoft.com/Azure-Recovery-Capacity-d01dc40e)] をダウンロードして実行します。
-2. ツールの実行には、[手順を確認](site-recovery-capacity-planner.md)してください。
-
-
-## <a name="estimate-the-daily-churn-rate"></a>日次のチャーン レートを見積もる
-
-Site Recovery Capacity Planner では、平均の日次データ変更率をパーセントで入力する必要があります。 現在は、[vSphere capacity planning appliance](https://labs.vmware.com/flings/vsphere-replication-capacity-planning-appliance) を使用してこの情報を集めることができます。
-
-このツールでは、vSphere planning tool を すべてのソースの VM に ポイントし、合計の日次変更を取得することで、パーセンテージを計算できます。 これは基本的にネットワーク トラフィックです。 このツールの実行については、[こちら](https://blogs.vmware.com/vsphere/2014/04/vsphere-replication-capacity-planning-appliance.html)を参照してください。
-
+[Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) を使用して、レプリケーション環境に関する情報を収集します。 これには、互換性のある仮想マシンと互換性のない仮想マシンの数、VM ごとのディスク数、ディスクごとのデータ変更頻度、ネットワーク帯域幅要件、レプリケーションとテスト フェールオーバー/フェールオーバーを正常に実行するために必要な Azure インフラストラクチャに関する情報が含まれます。
 
 ## <a name="capacity-considerations"></a>容量に関する考慮事項
 
@@ -55,8 +41,8 @@ Site Recovery Capacity Planner では、平均の日次データ変更率をパ�
 
 **CPU** | **メモリ** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン**
 --- | --- | --- | --- | ---
-8 vCPU (2 ソケット * 4 コア @ 2.5GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシンをレプリケートします。
-12 vCPU (2 ソケット * 6 コア @ 2.5GHz) | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシンをレプリケートします。
+8 vCPU (2 ソケット * 4 コア @ 2.5 GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシンをレプリケートします。
+12 vCPU (2 ソケット * 6 コア @ 2.5 GHz) | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシンをレプリケートします。
 16 vCPU (2 ソケット * 8 コア @ 2.5GHz) | 32 GB | 1 TB (テラバイト) | 1 TB ～ 2 TB | 150 ～ 200 台のマシンをレプリケートします。
 別のプロセス サーバーをデプロイします | | | > 2 TB | 200 台を超えるマシンをレプリケートする場合、または 1 日のデータ変化率が 2 TB を超える場合、追加のプロセス サーバーをデプロイします。
 
@@ -93,7 +79,7 @@ Site Recovery Capacity Planner では、平均の日次データ変更率をパ�
 
 ## <a name="control-network-bandwidth"></a>ネットワーク帯域幅の管理
 
-Capacity Planner を使用して、レプリケーション (初期レプリケーションとその後の差分レプリケーション) に必要な帯域幅を計算できます。 レプリケーションの帯域幅の使用量を制御する方法には、いくつかのオプションがあります。
+[Deployment Planner ツール](https://aka.ms/asr-deployment-planner-doc)を使用して、レプリケーション (初期レプリケーションとその後の差分レプリケーション) に必要な帯域幅を計算できます。 レプリケーションの帯域幅の使用量を制御する方法には、いくつかのオプションがあります。
 
 * **帯域幅を調整する**: Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
 * **帯域幅に影響を与える**: レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
@@ -158,10 +144,5 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

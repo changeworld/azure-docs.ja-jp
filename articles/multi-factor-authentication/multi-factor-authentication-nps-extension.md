@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 02/23/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 68f1088a7303b5eddecc9ff99f7330c0462baafc
-ms.openlocfilehash: 9fb517a08fb56a1adb9e23f820aa2e4aa20eacf6
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 804e811c0db5f72b6764b3cb120eb5ec8898baac
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="augment-your-existing-authentication-infrastructure-with-the-nps-extension-for-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication の NPS 拡張機能を使用して既存の認証インフラストラクチャを強化する - パブリック プレビュー
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合 - パブリック プレビュー
 
 Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、SMS、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
  
@@ -155,9 +156,4 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 ## <a name="next-steps"></a>次のステップ
 
 Azure MFA を [Active Directory](multi-factor-authentication-get-started-server-dirint.md)、[RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)、および [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md) と統合する方法を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

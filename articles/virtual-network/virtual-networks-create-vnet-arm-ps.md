@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用した仮想ネットワークの作成 | Microsoft Docs"
-description: "PowerShell を使用した仮想ネットワークの作成方法を説明 | リソース マネージャー"
+title: "仮想ネットワークの作成 - Azure PowerShell | Microsoft Docs"
+description: "PowerShell を使用した仮想ネットワークの作成方法を説明します。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 33f3a1f490b51123054440b6098de1ae4aca941f
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: d229d6add2c06952eaf662bdacc92a5163b1e945
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -25,7 +27,7 @@ ms.openlocfilehash: 33f3a1f490b51123054440b6098de1ae4aca941f
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure には、Azure Resource Manager とクラシックという 2 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
+Azure には、Azure Resource Manager とクラシックという&2; 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
  
 この記事では、PowerShellを使用して Resource Manager デプロイメント モデルで VNet を作成する方法について説明します。 他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
@@ -180,9 +182,4 @@ Power Shell を使って仮想ネットワークを作成するには、次の�
 - 仮想マシン (VM) を仮想ネットワークに接続する方法。[Windows VM の作成](../virtual-machines/virtual-machines-windows-ps-create.md)に関する記事をご覧ください。 この記事の手順で VNet とサブネットを作成する代わりに、VM を接続する既存の VNet とサブネットを選択できます。
 - 仮想ネットワークを他の仮想ネットワークに接続する方法。[VNet の接続](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)に関する記事をご覧ください。
 - サイト間の仮想プライベート ネットワーク (VPN) または ExpressRoute 回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続する方法。 詳しくは、[サイト間 VPN を使用したオンプレミスのネットワークへの VNet の接続](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)に関する記事と「[ExpressRoute 回線への VNet のリンク](../expressroute/expressroute-howto-linkvnet-arm.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6f9974c109905f432705b85dcc8fc4d3549f16e9
-ms.openlocfilehash: 445bc1259cb3fa6f02fa1cadec11b1ac4b186e78
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: de2e6d201ba54774697356e1cd55c4881664a401
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-computers-and-devices-to-oms-using-the-oms-gateway"></a>OMS ゲートウェイを使って OMS にコンピューターとデバイスを接続する
+# <a name="connect-computers-and-devices-without-internet-access-to-oms-using-the-oms-gateway"></a>インターネット アクセスなしで、OMS ゲートウェイを使って OMS にコンピューターとデバイスを接続する
+
 このドキュメントでは、OMS で管理されたデバイスと System Center Operations Manager (SCOM) で監視されたコンピューターがインターネットにアクセスできないときに OMS サービスにデータを送信する方法を説明します。 OMS ゲートウェイは、これらのデバイスやコンピューターの代わりにデータを収集して OMS サービスに送信できます。
 
 ゲートウェイは HTTP 転送プロキシであり、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートします。 ゲートウェイは、Windows を搭載する 4 コア CPU、16 GB のサーバーで実行した場合、最大 2,000 個の同時接続 OMS デバイスを処理できます。
@@ -277,9 +280,4 @@ Azure Portal にサインインすると、OMS ゲートウェイまたは他の
 
 ## <a name="next-steps"></a>次のステップ
 * [データ ソースを追加](log-analytics-data-sources.md)し、OMS ワークスペース内の接続されたソースからデータを収集して OMS リポジトリに格納します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

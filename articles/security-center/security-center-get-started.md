@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
+ms.sourcegitcommit: 56a61479971c4a03345bee8a044dbc17d16371ce
+ms.openlocfilehash: 8e87f9bd8122ec3c80d11e8ac563849f540e0cc5
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -109,7 +110,7 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 * Azure サブスクリプションのセキュリティ ポリシー を構成します。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」を参照してください。
 * Security Center の推奨事項を使用して、Azure リソースを保護します。 詳細については、「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 * 現在のセキュリティの警告を確認して、管理します。 詳細については、「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
-* Security Center の [Standard レベル](security-center-pricing.md)で利用できる[高度な脅威検出機能](security-center-detection-capabilities.md)について確認します。 Standard レベルでは 90 日間無料試用版を使用できます。
+* Security Center の [Standard レベル](security-center-pricing.md)で利用できる[高度な脅威検出機能](security-center-detection-capabilities.md)について確認します。 Standard レベルは、最初の 60 日間は無料です。
 * Security Center に関する質問がある場合は、[Azure Security Center の FAQ](security-center-faq.md) をご覧ください。
 
 <!--Image references-->
@@ -123,9 +124,4 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 [8]: ./media/security-center-get-started/security-alert-detail.png
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/welcome.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

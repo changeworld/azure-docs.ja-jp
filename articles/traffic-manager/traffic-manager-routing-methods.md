@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 993408c9d008a94dfd4004ed6826a2fe6180b20c
-ms.openlocfilehash: aa3c77c0bf9db1f875dd992c4eb7a494af58c400
+ms.sourcegitcommit: 11a120338a9f76bfb0a56a70d0c566625bc518b9
+ms.openlocfilehash: ee3265032a839b1c35821e60e1143ae772389804
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -46,7 +47,6 @@ Traffic Manager では、次の&3; つのトラフィック ルーティング�
 ## <a name="priority-traffic-routing-method"></a>優先順位トラフィック ルーティング方法
 
 多くの場合、組織ではサービスの信頼性を提供したいと考えており、主要なサービスがダウンした場合に備えて&1; つ以上のバックアップ サービスをデプロイすることでこれを実行しています。 "優先順位" トラフィック ルーティング方法を使用すると、Azure ユーザーはこのフェールオーバー パターンを簡単に実装できます。
-
 ![Azure Traffic Manager の "優先順位" トラフィック ルーティング方法][1]
 
 Traffic Manager プロファイルには、サービス エンドポイントの優先順位リストが含まれます。 Traffic Manager では、既定では、すべてのトラフィックがプライマリ (優先順位が一番高い) エンドポイントに送信されます。 プライマリ エンドポイントを使用できない場合、Traffic Manager は、2 番目のエンドポイントにトラフィックをルーティングします。 プライマリとセカンダリのどちらのエンドポイントも使用できない場合、トラフィックは&3; 番目のエンドポイントに送信されます。以降も同様です。 エンドポイントの可用性は、構成済みのステータス (有効または無効) とエンドポイントの継続的な監視に基づきます。
@@ -58,7 +58,6 @@ Azure Resource Manager では、エンドポイントごとに "priority" プロ
 クラシック インターフェイスでは、エンドポイントの優先順位は暗黙的に構成されます。 この優先順位は、プロファイル定義でエンドポイントが列挙されている順序に基づいて構成されます。
 
 ## <a name="weighted-traffic-routing-method"></a>加重トラフィック ルーティング方法
-
 "重み付け" トラフィック ルーティング方法を使用すると、トラフィックを均等に分散したり、定義済みの重み付けを使用したりできます。
 
 ![Azure Traffic Manager の "重み付け" トラフィック ルーティング方法][2]
@@ -97,7 +96,9 @@ Traffic Manager は、受信 DNS 要求の送信元 IP アドレスをインタ�
 
 [Traffic Manager の動作のしくみ](traffic-manager-how-traffic-manager-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、"最も近い" エンドポイントの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
-Traffic Manager は、インターネット待機時間テーブルを定期的に更新して、グローバル インターネットと新しい Azure リージョンの変化に対応しています。 ただし、アプリケーションのパフォーマンスは、インターネット全体におけるリアルタイムな負荷の変動によって変わります。 パフォーマンスによるトラフィック ルーティングでは、特定のサービス エンドポイントの負荷は監視されません。 ただし、エンドポイントを使用できなくなった場合は、Traffic Manager は DNS クエリの応答でそのエンドポイントを返しません。
+
+Traffic Manager は、インターネット待機時間テーブルを定期的に更新して、グローバル インターネットと新しい Azure リージョンの変化に対応しています。 ただし、アプリケーションのパフォーマンスは、インターネット全体におけるリアルタイムな負荷の変動によって変わります。 パフォーマンスによるトラフィック ルーティングでは、特定のサービス エンドポイントの負荷は監視されません。 ただし、エンドポイントを使用できなくなった場合は、Traffic Manager は DNS クエリの応答にそのエンドポイントを含みません。
+
 
 注意する点:
 
@@ -117,9 +118,4 @@ Traffic Manager は、インターネット待機時間テーブルを定期的�
 [1]: ./media/traffic-manager-routing-methods/priority.png
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

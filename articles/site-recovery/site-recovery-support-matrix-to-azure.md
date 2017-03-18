@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 01/25/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 43e818b0b60045f9e88d587441d39f46ab2fbfad
-ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
+ms.sourcegitcommit: 511e61552ec0a2c862ebd99fd881f87b56b69398
+ms.openlocfilehash: 84eabb9c898d32efeb6e1c4b1f17b683940b4c04
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
 > * [顧客が所有するセカンダリ サイトへのレプリケート](site-recovery-support-matrix-to-sec-site.md)
 
 
-この記事では、Azure へのレプリケートおよび復旧時にサポートされる Azure Site Recovery の構成とコンポーネントをまとめます。 Azure Site Recovery の前提条件について詳しくは、[Site Recovery のベスト プラクティス](site-recovery-best-practices.md)に関する記事をご覧ください。
+この記事では、Azure へのレプリケートおよび復旧時にサポートされる Azure Site Recovery の構成とコンポーネントをまとめます。 Azure Site Recovery の要件の詳細については、[前提条件](site-recovery-prereq.md)に関する記事をご覧ください。
 
 
 ## <a name="support-for-deployment-options"></a>デプロイ オプションのサポート
@@ -64,7 +65,7 @@ ms.openlocfilehash: e529461d3c6e1876572848fbf6af5b0a1c64ac30
 
 ## <a name="support-for-replicated-machine-os-versions"></a>レプリケートされるマシンの OS バージョンのサポート
 
-保護対象の仮想マシンは、Azure にレプリケートされるときは、[Azure の要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
+保護対象の仮想マシンは、Azure にレプリケートされるときは、[Azure の要件](#failed-over-azure-vm-requirements)を満たしている必要があります。
 次の表は、Azure Site Recovery 使用時の、さまざまなデプロイ シナリオにおけるレプリケートされるオペレーティング システムのサポートをまとめたものです。 このサポートは、示された OS で実行される任意のワークロードに適用可能です。
 
  **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
@@ -147,7 +148,7 @@ RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし | 該当
 
 **Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
 --- | --- | --- | ---
-LRS | はい | あり | はい 
+LRS | はい | あり | はい
 GRS | はい | あり | はい
 クール ストレージ | なし | いいえ | なし
 ホット ストレージ| なし | いいえ | なし
@@ -206,10 +207,5 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 
 ## <a name="next-steps"></a>次のステップ
-[デプロイメントの準備をする](site-recovery-best-practices.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[前提条件を確認する](site-recovery-prereq.md)
 

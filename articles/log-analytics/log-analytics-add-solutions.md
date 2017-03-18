@@ -1,5 +1,5 @@
 ---
-title: "Operations Management Suite (OMS) 管理ソリューションの追加 | Microsoft Docs"
+title: "Azure Log Analytics 管理ソリューションの追加 | Microsoft Docs"
 description: "Operations Management Suite (OMS) / Log Analytics 管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。"
 services: log-analytics
 documentationcenter: 
@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: db7bc67a7797bc83450b07c4f32accc3ea7c0354
-ms.openlocfilehash: 757fd850bf1cc9fb058a0a7e0f4b65d95ba3ce03
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: ecb848efd8516ae43d07f8c6ebbf3868b8e20757
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="add-operations-management-suite-oms-management-solutions"></a>Operations Management Suite (OMS) 管理ソリューションの追加
+# <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
 
-Operations Management Suite (OMS) 管理ソリューションには、特定の問題点に関するメトリックを提供する**ロジック**や**視覚化**、**データ取得規則**が集約されています。 この記事では、Log Analytics でサポートされている管理ソリューションの一覧を示し、Azure Portal を使用してワークスペースのソリューションを追加および削除する方法について説明します。 ソリューション ギャラリーを使用して、OMS ポータルでソリューションを追加することもできます。
+Log Analytics 管理ソリューションには、特定の問題点に関するメトリックを提供する**ロジック**や**視覚化**、**データ取得規則**が集約されています。 この記事では、Log Analytics でサポートされている管理ソリューションの一覧を示し、Azure Portal を使用してワークスペースのソリューションを追加および削除する方法について説明します。 ソリューション ギャラリーを使用して、OMS ポータルでソリューションを追加することもできます。
 
 管理ソリューションを使用すると、次の点についてより深い知識が得られます。
 
@@ -61,9 +63,11 @@ Operations Management Suite (OMS) 管理ソリューションには、特定の�
 
 ## <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-次の表に、運用管理とセキュリティの各プランに属する管理ソリューションと、 各管理ソリューションで利用可能な価格レベルを示します。 次の表のソリューションはすべて、Azure Portal 内からと、Log Analytics ポータルのソリューション ギャラリーから利用できます。
+次の表に、運用管理とセキュリティの各プランに属する管理ソリューションと、
+各管理ソリューションで利用可能な価格レベルを示します。
+次の表のソリューションはすべて、Azure Portal 内からと、Log Analytics ポータルのソリューション ギャラリーから利用できます。
 
-| 管理ソリューション                                                                        | プラン                                                                     | 価格レベル<sup>1</sup>                                                    | メモ | 
+| 管理ソリューション                                                                        | プラン                                                                     | 価格レベル<sup>1</sup>                                                    | メモ |
 | ---                                                                                        | ---                                                                       | ---                                                                                                       | ---   |
 | アクティビティ ログ分析                                                                     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> Standard<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)     | 90 日間のデータを無料で使用できます。 |
 | [AD 評価](log-analytics-ad-assessment.md)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> Standard<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)     | |
@@ -74,7 +78,7 @@ Operations Management Suite (OMS) 管理ソリューションには、特定の�
 | Automation ハイブリッド worker                                                                     | <ul><li>Automation and Control</li></ul>                                    | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)                                                                            | Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 |
 | [Azure Application Gateway 分析](log-analytics-azure-networking-analytics.md)      | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> Standard<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)     | |
 | [Azure ネットワーク セキュリティ グループ分析](log-analytics-azure-networking-analytics.md)      | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> Standard<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)     | |
-| Azure の SQL 分析 <br>(プレビュー)                                                         | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br>&nbsp;ノード&nbsp;単位 (OMS)                                                                             | Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。|
+| [Azure SQL Analytics (プレビュー)](log-analytics-azure-sql.md)                                                          | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br>&nbsp;ノード&nbsp;単位 (OMS)                                                                             | Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。|
 | バックアップ                                                                                    | <ul><li>洞察と分析</li></ul>                                     | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)                                                                            | 従来のバックアップ資格情報コンテナーが必要です。 |
 | 容量とパフォーマンス <br>(プレビュー)                                                     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> Standard<br> Premium&nbsp;(OMS)<br> &nbsp;GB&nbsp;単位 (スタンドアロン)<br> &nbsp;ノード&nbsp;単位 (OMS)     | |
 | [変更の追跡](log-analytics-change-tracking.md)                                         | <ul><li>Automation and Control</li></ul>                                    | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)                                                                            | Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 |
@@ -103,7 +107,7 @@ Operations Management Suite (OMS) 管理ソリューションには、特定の�
 
 コミュニティ提供の管理ソリューションは、[Azure テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS))から、または作成者から直接入手していただけます。
 
-| 管理ソリューション                 | プラン                                                                     | 価格レベル                         | メモ | 
+| 管理ソリューション                 | プラン                                                                     | 価格レベル                         | メモ |
 | ---                                 | ---                                                                       | ---                                   | ---   |
 | すべてのコミュニティ提供ソリューション  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>     | 無料<br> &nbsp;ノード&nbsp;単位 (OMS)     |    Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 |
 
@@ -122,7 +126,7 @@ Log Analytics Windows エージェントと System Center Operations Manager エ
 > - Operations Manager が不要であり、なおかつ管理グループを使用して Operations Manager エージェント データが OMS に送信されることが以下の表に示されているときは、Operations Manager エージェント データが常に管理グループを使用して OMS に送信されます。 Windows エージェントは、管理グループをバイパスして、そのデータを直接 OMS に送信します。
 > - Operations Manager エージェント データの送信に管理グループが使用されないときは、データが直接 OMS に送信され、管理グループはバイパスされます。
 
-### <a name="insight--analytics--log-analytics"></a>Insight & Analytics / Log Analytics 
+### <a name="insight--analytics--log-analytics"></a>Insight & Analytics / Log Analytics
 
 | 管理ソリューション | プラットフォーム | Microsoft Monitoring Agent | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -136,8 +140,9 @@ Log Analytics Windows エージェントと System Center Operations Manager エ
 | Application Insights コネクタ (プレビュー) | Azure | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | 通知時 |
 | Azure Application Gateway 分析 | Azure | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分 |
 | Azure ネットワーク セキュリティ グループ分析 | Azure | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分 |
+| Azure SQL Analytics (プレビュー) |Windows |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | 10 分 |
 | 容量管理 |Windows |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![はい](./media/log-analytics-add-solutions/oms-bullet-green.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |1 時間に&1; 回 |
-| コンテナー | Linux | ![[はい]](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 分 |
+| コンテナー | Windows および Linux | ![はい](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | 3 分 |
 | Key Vault Analytics |Windows |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |10 分 |
 | ネットワーク パフォーマンス監視 | Windows | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
 | Office 365 分析 (プレビュー) |Windows |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |通知時 |
@@ -265,9 +270,4 @@ Microsoft では、プレビューに応じたさまざまな方法でお客様�
 
 ## <a name="next-steps"></a>次のステップ
 * [ログを検索](log-analytics-log-searches.md)して、管理ソリューションによって収集された詳細情報を確認します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

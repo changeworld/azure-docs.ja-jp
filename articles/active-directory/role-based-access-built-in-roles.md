@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/31/2017
+ms.date: 02/21/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: becd7fbcfa094257408ed96eda0c62deefceb44d
-ms.openlocfilehash: 59067ef58d276265e0431119986774ff14212067
-
+ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
+ms.openlocfilehash: 404c4c4012eb5b6f8e7acdd7f985009b9f13b9f3
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="rbac-built-in-roles"></a>RBAC: 組み込みのロール
+# <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のための組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
 
 ## <a name="roles-in-azure"></a>Azure におけるロール
@@ -647,9 +648,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 * [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

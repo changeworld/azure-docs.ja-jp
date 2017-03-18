@@ -1,6 +1,6 @@
 ---
 title: "Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Azure Multi-Factor Authentication に関してよく寄せられる質問の一覧を提供します。 Azure Multi-Factor Authentication は、本人確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
+description: "Azure Multi-Factor Authentication に関してよく寄せられる質問と回答。 Azure Multi-Factor Authentication は、本人確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9617cd00ed4a5f8f867542238e5008a9a17663c9
-ms.openlocfilehash: 1e01bdc099af865e01eb2784cf367e482300ade8
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: dfbb5e2358cd857c2a16ded5d4d82c1f246cbe20
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-multi-factor-authentication-faq"></a>Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、課金モデルや使いやすさに関する疑問を含め、よく寄せられる質問に答えます。
 
 ## <a name="general"></a>全般
@@ -62,7 +63,7 @@ Azure Multi-Factor Authentication 経由でユーザーに対して行われる�
 
 ライセンス モデルを使用する場合は、Azure Multi-Factor Authentication ライセンスを購入してユーザーに割り当てます。これは、Office 365 や他のサブスクリプション製品と同様です。
 
-オプションについて詳しくは、「[Azure Multi-Factor Authentication のしくみ](multi-factor-authentication-how-it-works.md#how-to-get-azure-multi-factor-authentication)」をご覧ください
+オプションについて詳しくは、「[Azure Multi-Factor Authentication のしくみ](multi-factor-authentication-how-it-works.md)」をご覧ください
 
 **Q: 管理者用の Azure Multi-Factor Authentication の無料版はありますか。**
 
@@ -166,10 +167,5 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 * このコミュニティで技術的な質問と回答を検索して参照したり、 [Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)で独自の質問を投稿したりできます。
 * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、 [パスワード リセット](mailto:phonefactorsupport@microsoft.com) のリンクを使用してサポート ケースを開いてください。
 * [Azure Multi-Factor Authentication Server (PhoneFactor) のサポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロに問い合わせます。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的な ID、エラーが表示されたユーザーの ID などの情報をご提供ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

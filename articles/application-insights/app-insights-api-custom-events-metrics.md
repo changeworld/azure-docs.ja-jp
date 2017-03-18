@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08e2e0894810693696b326538a7449ddab30d2f8
-ms.openlocfilehash: 7b156e647bbf27fe31d9c89b764c6c1c363a8827
+ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
+ms.openlocfilehash: 6951a50050c5b0c8edb2deb1eb64aef44e94ff96
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -39,7 +40,7 @@ ms.openlocfilehash: 7b156e647bbf27fe31d9c89b764c6c1c363a8827
 
 これらのテレメトリの呼び出しのほとんどに [プロパティとメトリックをアタッチ](#properties) できます。
 
-## <a name="a-nameprepabefore-you-start"></a><a name="prep"></a>開始する前に
+## <a name="prep"></a>開始する前に
 次のことをまだ実行していない場合は、実行します。
 
 * Application Insights SDK をプロジェクトに追加します。
@@ -399,12 +400,12 @@ ASP.NET Web MVC アプリケーションでの例:
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索][diagnostic]することもできます。
 
-## <a name="a-namepropertiesafiltering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
+## <a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
 プロパティと測定値をイベント (およびメトリック、ページ ビュー、その他のテレメトリ データ) に結び付けることができます。
 
 *プロパティ* は、利用状況レポートでテレメトリをフィルター処理するのに使用できる文字列値です。 たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けることで人気のあるゲームを確認できます。
 
-文字列の長さには約 1,000 の制限があります。 (データの大きなチャンクを送信する場合は、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
+文字列の長さには 8,192 の制限があります。 (データの大きなチャンクを送信する場合は、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
 
 *メトリックス*はグラフィカルに表示できる数値です。 たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。 イベントともに送信されるプロパティ別にグラフをセグメント化し、ゲームごとの個別のグラフや積み重ねグラフを表示できます。
 
@@ -516,7 +517,7 @@ ASP.NET Web MVC アプリケーションでの例:
 >
 >
 
-## <a name="a-nametimeda-timing-events"></a><a name="timed"></a> タイミング イベント
+## <a name="timed"></a> タイミング イベント
 アクションの実行にかかる時間をグラフで示す必要が生じることがあります。 たとえば、ユーザーがゲームで選択肢について考える時間について調べるとします。 測定パラメーターを使用することでこの調査を行うことができます。
 
 *C#*
@@ -539,7 +540,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 
 
-## <a name="a-namedefaultsadefault-properties-for-custom-telemetry"></a><a name="defaults"></a>カスタム テレメトリの既定のプロパティ
+## <a name="defaults"></a>カスタム テレメトリの既定のプロパティ
 記述するカスタム イベントのいくつかに既定のプロパティ値を設定する必要がある場合、TelemetryClient インスタンスで設定できます。 既定値は、そのクライアントから送信されたすべてのテレメトリ項目に追加されます。
 
 *C#*
@@ -604,7 +605,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 *選択済みの標準のコレクター* (パフォーマンス カウンター、HTTP 要求、依存関係など) を無効にするには、[ApplicationInsights.config][config] 内の該当する行を削除するか、またはコメントアウトします。 たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-## <a name="a-namedebugadeveloper-mode"></a><a name="debug"></a>開発者モード
+## <a name="debug"></a>開発者モード
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。 テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。 アプリケーションの速度を低下させる可能性があるため、本稼働ではオフにしてください。
 
 *C#*
@@ -616,7 +617,7 @@ ASP.NET Web MVC アプリケーションでの例:
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 
-## <a name="a-nameikeya-setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
+## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
 *C#*
 
     var telemetry = new TelemetryClient();
@@ -624,7 +625,7 @@ ASP.NET Web MVC アプリケーションでの例:
     // ...
 
 
-## <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
+## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成][create]し、それぞれのキーを変更できます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
@@ -709,7 +710,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
     はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](app-insights-export-power-bi.md)や[連続エクスポート](app-insights-export-telemetry.md)などがあります。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>次のステップ
+## <a name="next"></a>次のステップ
 * [イベントおよびログを検索する][diagnostic]
 
 * [サンプルとチュートリアル](app-insights-code-samples.md)
@@ -729,9 +730,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [trace]: app-insights-search-diagnostic-logs.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

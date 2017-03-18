@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して静的プライベート IP アドレスを設定および管理する | Microsoft Docs"
-description: "PowerShell を使用して Azure Resource Manager で静的プライベート IP アドレスを設定および管理する方法について説明します。"
+title: "VM のプライベート IP アドレスの構成 - Azure PowerShell | Microsoft Docs"
+description: "PowerShell を使用して仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,24 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 75dbe164bf0fb4b3aff95954ce619781bbafaa5c
-ms.openlocfilehash: 3b966921bccb8e2bd29412c6e4aa200c606b4bf8
+ms.sourcegitcommit: b1eb8aa6bc822932b9f2abd1c448aca96069fefa
+ms.openlocfilehash: 2810190897c44c944912ef3325b1f40479aa3078
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="set-and-manage-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを設定および管理する
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>PowerShell を使用して仮想マシンのプライベート IP アドレスを構成する
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
-Azure には、Azure Resource Manager とクラシックという 2 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-ps.md)こともできます。
+Azure には、Azure Resource Manager とクラシックという&2; 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-ps.md)こともできます。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 以下の PowerShell のサンプル コマンドでは、上記シナリオに基づいて単純な環境が既に作成されていると想定します。 このドキュメントに表示されているコマンドを実行する場合は、まず、 [vnet の作成](virtual-networks-create-vnet-arm-ps.md)に関する記事に示されているテスト環境を構築します。
 
-## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する
+## <a name="create-a-vm-with-a-static-private-ip-address"></a>静的プライベート IP アドレスを持つ VM を作成する
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
 1. ストレージ アカウント、場所、リソース グループ、および使用する資格情報の変数を設定します。 VM のユーザー名とパスワードを入力する必要があります。 ストレージ アカウントおよびリソース グループが既に存在している必要があります。
@@ -92,7 +95,7 @@ Azure には、Azure Resource Manager とクラシックという 2 種類のデ
         RequestId           : [Id]
         StatusCode          : OK 
 
-## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>VM の静的プライベート IP アドレス情報を取得する
+## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>ネットワーク インターフェイス用の静的プライベート IP アドレス情報を取得する
 上記のスクリプトで作成された VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、*PrivateIpAddress* と *PrivateIpAllocationMethod* の値を確認します。
 
 ```powershell
@@ -139,7 +142,7 @@ Get-AzureRmNetworkInterface -Name TestNIC -ResourceGroupName TestRG
     NetworkSecurityGroup : null
     Primary              : True
 
-## <a name="remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する
+## <a name="remove-a-static-private-ip-address-from-a-network-interface"></a>ネットワーク インターフェイスから静的プライベート IP アドレスを削除する
 上記のスクリプトで VM に追加された静的プライベート IP アドレスを削除するには、次の PowerShell コマンドを実行します。
 
 ```powershell
@@ -188,7 +191,7 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic
     NetworkSecurityGroup : null
     Primary              : True
 
-## <a name="add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する
+## <a name="add-a-static-private-ip-address-to-a-network-interface"></a>ネットワーク インターフェイスに静的プライベート IP アドレスを追加する
 上記のスクリプトを使用して作成した VM に静的プライベート IP アドレスを追加するには、次のコマンドを実行します。
 
 ```powershell
@@ -197,15 +200,31 @@ $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 $nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
+## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>ネットワーク インターフェイスに割り当てられているプライベート IP アドレスの割り当て方法を変更する
+
+プライベート IP アドレスは、静的または動的な割り当て方法を使用して NIC に割り当てられます。 動的 IP アドレスは、以前は停止 (割り当て解除) 状態だった VM を起動した後に変更できます。 VM が停止 (割り当て解除) 状態から再起動された後であっても、同じ IP アドレスを必要とするサービスをホストしている場合は、問題が起こる可能性があります。 静的 IP アドレスは、VM が削除されるまで保持されます。 IP アドレスの割り当て方法を変更するには、割り当て方法を動的から静的に変更する次のスクリプトを実行します。 現在のプライベート IP アドレスの割り当て方法が静的な場合は、スクリプトを実行する前に、*Static* を *Dynamic* に変更します。
+
+```powershell
+$RG = "TestRG"
+$NIC_name = "testnic1"
+
+$nic = Get-AzureRmNetworkInterface -ResourceGroupName $RG -Name $NIC_name
+$nic.IpConfigurations[0].PrivateIpAllocationMethod = 'Static'
+Set-AzureRmNetworkInterface -NetworkInterface $nic 
+$IP = $nic.IpConfigurations[0].PrivateIpAddress
+
+Write-Host "The allocation method is now set to"$nic.IpConfigurations[0].PrivateIpAllocationMethod"for the IP address" $IP"." -NoNewline
+```
+
+NIC の名前がわからない場合は、次のコマンドを入力してリソース グループ内の NIC の一覧を表示することができます。
+
+```powershell
+Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.ProvisioningState -eq 'Succeeded'} 
+```
 
 ## <a name="next-steps"></a>次のステップ
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

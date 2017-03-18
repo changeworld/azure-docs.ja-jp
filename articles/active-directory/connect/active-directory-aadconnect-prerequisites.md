@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 7174da908fda12fbb83a102921d9f223fc3ee17b
-ms.openlocfilehash: 2fb3dffb35a4798942f95df65a9af822dd2485cd
+ms.sourcegitcommit: fe0377fed432ac2c83f7a277ba41d9ffcc138ba7
+ms.openlocfilehash: 8d0533c81866dee7d24f3d5ccc5958b019d55a40
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -52,7 +53,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * 別の SQL Server を使用する場合は、次の要件が適用されます。
   * Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2016 まで、すべてのエディションの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
   * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらは名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は**サポートされていません**。
-  * 1 つのデータベース インスタンスにつき保持できる同期エンジンは&1; つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync とのデータベース インスタンスの共有は **サポートされていません** 。
+  * 1 つの SQL インスタンスにつき保持できる同期エンジンは&1; つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync との SQL インスタンスの共有は**サポートされていません**。
 
 ### <a name="accounts"></a>アカウント
 * 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。 これには**学校または組織のアカウント**を使用する必要があり、**Microsoft アカウント**を使用することはできません。
@@ -200,10 +201,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -1,23 +1,7 @@
----
-title: "Azure 仮想マシンの暗号化 | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。"
-services: security, security-center
-documentationcenter: na
-author: TomShinder
-manager: swadhwa
-editor: 
-ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
-ms.service: security
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/27/2016
-ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
+le--- title: Azure 仮想マシンの暗号化 | Microsoft Docs description: このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。
+services: security、security-center documentationcenter: na author: TomShinder manager: swadhwa editor: ''
 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5 ms.service: security ms.devlang: na ms.topic: hero-article ms.tgt_pltfrm: na ms.workload: na ms.date: 05/27/2016 ms.author: tomsh
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
@@ -26,7 +10,7 @@ ms.openlocfilehash: 83e277fe261338aed960dea8e2ab15cbff3c895e
 ![Disk encryption recommendation](./media/security-center-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
-> このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。
+> このドキュメントの情報は、キー暗号化キー (Azure Backup を使用して仮想マシンをバックアップするために必要) を使用しない仮想マシンの暗号化に適用されます。 キー暗号化キーを使用して、暗号化された Azure Virtual Machines に対して Azure Backup をサポートする方法の詳細については、[Windows と Linux の Azure 仮想マシンの Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) に関する記事を参照してください。
 >
 >
 
@@ -141,7 +125,7 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 
 ![PowerShell の出力](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
-暗号化コマンドを実行して仮想マシンを暗号化する方法は 2 とおりあります。 1 つ目の方法では、PowerShell ISE のコンソールで次のコマンドを入力します。
+暗号化コマンドを実行して仮想マシンを暗号化する方法は&2; とおりあります。 1 つ目の方法では、PowerShell ISE のコンソールで次のコマンドを入力します。
 
 ~~~
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId
@@ -178,9 +162,3 @@ PowerShell ISE に戻ります。 スクリプトが完了すると、次の図�
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -セキュリティの警告の管理および応答の方法について
 * [Azure セキュリティ センターに関する FAQ](security-center-faq.md) 」 – このサービスの使用に関してよく寄せられる質問
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) 」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

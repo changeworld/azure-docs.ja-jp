@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/31/2017
+ms.date: 02/21/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a474aa115425293660ba59ed1c6f7fd2ba4db5ce
-ms.openlocfilehash: 277c97289ba6dd66028394000d17deed80ba6cc6
-
+ms.sourcegitcommit: 53fa0876ce1e3e2b2ac47316f37c5a0de2591d41
+ms.openlocfilehash: c8189af2ebd9cabfa3e20e6b3520ba347d6147ff
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="custom-roles-in-azure-rbac"></a>Azure RBAC のカスタム ロール
+# <a name="create-custom-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のためのカスタム ロールを作成する
 組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。 カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス](role-based-access-control-manage-access-azure-cli.md) (CLI)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションの Azure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
 
 以下は、仮想マシンの監視と再起動を行うためのカスタム ロールの例です。
@@ -120,9 +121,4 @@ azure provider operations show "Microsoft.Network/*"
   * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
   * [REST API](role-based-access-control-manage-access-rest.md)
 * [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細について説明します。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
