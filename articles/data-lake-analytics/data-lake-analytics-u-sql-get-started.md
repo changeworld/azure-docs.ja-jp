@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 96747e898b2d84cbce9251758a90941f85112dd0
-ms.openlocfilehash: 7aa3844b9bdc2c5372c6e54b05296dcde6b1c05f
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dc8c7beaf5b8e8d4f5467ffe22390c41f446d787
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -55,7 +56,7 @@ U-SQL に関する詳しい情報については、「[U-SQL Language Reference 
 
 スクリプトでは、次の概念とキーワードを確認できます。
 
-* 行セットの変数: 行セットを生成する各クエリ式を変数に割り当てることができます。 U-SQL は、スクリプトでは (@searchlog, などの T-SQL 変数命名パターンに従います。
+* 行セットの変数: 行セットを生成する各クエリ式を変数に割り当てることができます。 U-SQL は、スクリプトでは T-SQL 変数命名パターンに従います (例: @searchlog)。
 
  >[!NOTE]
  >この割り当ては実行を強制するものではありません。 単に式に名前を付けるだけなので、より複雑な式を構築することができます。
@@ -64,9 +65,9 @@ U-SQL に関する詳しい情報については、「[U-SQL Language Reference 
 
  >[!NOTE]
  >2 つのパスは相対パスです。 絶対パスを使用することもできます。 次に例を示します。    
- >     adl://<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+ >     adl://\<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
  >
- >リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。  リンクされた Azure ストレージ アカウントに格納されたファイルの構文は次のとおりです。wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+ >リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。  リンクされた Azure ストレージ アカウントに格納されたファイルの構文は次のとおりです。wasb://\<BlobContainerName>@\<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
  >[!NOTE]
  >パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB ストレージ コンテナーは、現在サポートされていません。
@@ -410,9 +411,4 @@ U-SQL では、データベースとスキーマのコンテキストでデー�
 * [機能要求の送信](http://aka.ms/adlafeedback)
 * [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 * [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

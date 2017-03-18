@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする | Microsoft Docs"
-description: "Azure Automation で監視アラートに応じて Windows 仮想マシンを垂直方向にスケーリングする方法"
+title: "Azure Automation を使用して Windows 仮想マシンを垂直方向にスケーリングする | Microsoft Docs"
+description: "Azure Automation による監視アラートに応じて Windows 仮想マシンを垂直方向にスケーリングします"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -17,13 +17,15 @@ ms.date: 03/29/2016
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0a888f945a39a8bb88a730a226af6ec21d133f44
-ms.openlocfilehash: 0075160ea9c0dae991fc2344c46d216a8203bec3
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 861552da68c2268c42122b0da6633c7935bb3502
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="how-to-vertically-scale-virtual-machines-with-azure-automation"></a>Azure Automation で仮想マシンを垂直方向にスケーリングする方法
+
+# <a name="vertically-scale-windows-vms-with-azure-automation"></a>Azure Automation を使用して Windows VM を垂直方向にスケーリングする
+
 垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。 Azure では、仮想マシンのサイズを変更することで実行できます。 これは、次のようなシナリオで役立ちます。
 
 * 仮想マシンが頻繁に使用されていない場合、より小さなサイズに変更して、毎月のコストを削減することができます

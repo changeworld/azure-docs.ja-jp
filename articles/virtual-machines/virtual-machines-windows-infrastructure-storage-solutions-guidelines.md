@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: e4c1dd67dce33c2cb30f6fd3e7163c68c7084e67
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 5c1e2a2170e5373b856caf6da4b9abaea00dc09a
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-storage-infrastructure-guidelines"></a>Azure Storage インフラストラクチャのガイドライン
+# <a name="azure-storage-infrastructure-guidelines-for-windows-vms"></a>Windows VM 用の Azure Storage インフラストラクチャのガイドライン
+
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 この記事は、最適な仮想マシン (VM) のパフォーマンスを実現するための、ストレージのニーズと設計に関する考慮事項について説明します。

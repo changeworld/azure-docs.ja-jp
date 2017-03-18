@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 1/13/2017
+ms.date: 2/28/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
-ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: a04b2f26c8ab34fdbfc7412d47292a560466eb44
+ms.openlocfilehash: c33d50a900be53a3161ad60bc34e2e819fe62947
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -84,7 +84,6 @@ Log Analytics は、Azure Government で一般提供されています。
   * Azure Automation Analytics ソリューション
   * Key Vault Analytics ソリューション
 * オンプレミスのソフトウェアを更新する必要のあるソリューションと機能。これには以下が含まれます。
-  * System Center Operations Manager 2016 との統合 (以前のバージョンの Operations Manager もサポートされます)
   * System Center Configuration Manager のコンピューター グループ
   * Surface Hub ソリューション
 * パブリック Azure のプレビュー段階の機能。これには以下が含まれます。
@@ -104,12 +103,18 @@ Azure Government では、Log Analytics の URL が異なります。
 
 次の Log Analytics 機能は、Azure Government では動作が異なります。
 
-* Windows エージェントは、Azure Government の [Log Analytics ポータル](https://oms.microsoft.us)からダウンロードする必要があります。
 * System Center Operations Manager 管理サーバーを Log Analytics に接続するには、更新された管理パックをダウンロードしてインポートする必要があります。
-  1. [更新された管理パック](http://go.microsoft.com/fwlink/?LinkId=828749)をダウンロードして保存します。
-  2. ダウンロードしたファイルを解凍します。
-  3. 管理パックを Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、Microsoft TechNet Web サイトの「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
-  4. Operations Manager を Log Analytics に接続するには、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」の手順に従ってください。
+  + System Center Operations Manager 2016
+    1. [Update Rollup 2 for System Center Operations Manager 2016](https://support.microsoft.com/help/3209591) をインストールします。
+    2. Update Rollup 2 の一部として含まれている管理パックを、Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、Microsoft TechNet Web サイトの「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
+    3. Operations Manager を Log Analytics に接続するには、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」の手順に従ってください。
+  + System Center Operations Manager 2012 R2 UR3 (またはそれ以降) / Operations Manager 2012 SP1 UR7 (またはそれ以降)
+    1. [更新された管理パック](http://go.microsoft.com/fwlink/?LinkId=828749)をダウンロードして保存します。
+    2. ダウンロードしたファイルを解凍します。
+    3. 管理パックを Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、Microsoft TechNet Web サイトの「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
+    4. Operations Manager を Log Analytics に接続するには、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」の手順に従ってください。
+  
+
 
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問
 * Microsoft Azure の Log Analytics のデータを Azure Government に移行できますか。

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 0f6af54b351235390afa88f1ce156abd839a723f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -34,14 +35,16 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
-この記事では、エンドユーザー認証用の Azure AD Web アプリケーションの作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、「[Service-to-service authentication with Data Lake Store using Azure Active Directory (Data Lake Store での Azure Active Directory を使用したサービス間認証)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
+この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、「[Service-to-service authentication with Data Lake Store using Azure Active Directory (Data Lake Store での Azure Active Directory を使用したサービス間認証)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
 * サブスクリプション ID。 これは Azure ポータルから取得できます。 たとえば、[Data Lake Store アカウント] ブレードから入手できます。
   
     ![サブスクリプション ID の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
-* Azure AD ドメイン名。 Azure ポータルの右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.microsoft.com** であり、丸かっこ内の GUID はテナント ID です。 
+
+* Azure AD ドメイン名。 Azure ポータルの右上隅にマウスを置くことで取得できます。 次のスクリーンショットでは、ドメイン名は **contoso.onmicrosoft.com** であり、丸かっこ内の GUID はテナント ID です。 
   
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -63,77 +66,59 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>この方法を使用するには何が必要か
 * Azure AD ドメイン名。 これは、この記事の前提条件で既に示されています。
-* Azure AD **Web アプリケーション**。
-* Azure AD Web アプリケーションのクライアント ID。
-* Azure AD Web アプリケーションの応答 URI。
+* Azure AD **ネイティブ アプリケーション**
+* Azure AD ネイティブ アプリケーションのクライアント ID
+* Azure AD ネイティブ アプリケーションの応答 URI
 * 委任されたアクセス許可を設定する
 
-AD Web アプリケーションを作成し、上記の要件に合わせて構成する方法については、次の「[Active Directory アプリケーションを作成する](#create-an-active-directory-application)」を参照してください。 
 
-## <a name="create-an-active-directory-application"></a>Active Directory アプリケーションを作成する
-このセクションでは、Azure Active Directory を使用して Azure Data Lake Store でのエンドユーザーの認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。
+## <a name="step-1-create-an-active-directory-web-application"></a>手順 1: Active Directory Web アプリケーションを作成する
 
-### <a name="step-1-create-an-azure-active-directory-application"></a>手順 1. Azure Active Directory アプリケーションを作成する
-> [!NOTE]
-> 以下の手順では、Azure Portal を使用します。 Azure AD アプリケーションは、[Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) または [Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) を使用して作成することもできます。
-> 
-> 
+Azure Active Directory を使用して Azure Data Lake Store でのエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
-1. [クラシック ポータル](https://manage.windowsazure.com/)で Azure アカウントにログインします。
-2. 左側のペインで **[Active Directory]** を選択します。
-   
-     ![Active Directory の選択](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory.png)
-3. 新しいアプリケーションの作成に使用する Active Directory を選択します。 Active Directory が複数ある場合、通常は、該当するサブスクリプションがあるディレクトリにアプリケーションを作成することをお勧めします。 アクセス権を付与できるリソースは、該当するサブスクリプションと同じディレクトリ内にあるアプリケーションのサブスクリプションに含まれるもののみです。  
-   
-     ![ディレクトリの選択](./media/data-lake-store-end-user-authenticate-using-active-directory/active-directory-details.png)
-4. ディレクトリ内のアプリケーションを表示するには、 **[アプリケーション]**をクリックします。
-   
-     ![アプリケーションの表示](./media/data-lake-store-end-user-authenticate-using-active-directory/view-applications.png)
-5. そのディレクトリにアプリケーションを作成したことがない場合、次の図のようなものが表示されます。 **[アプリケーションの追加]** をクリックします。
-   
-     ![[アプリケーションの追加]](./media/data-lake-store-end-user-authenticate-using-active-directory/create-application.png)
-   
-     または下のペインの **[追加]** をクリックします。
-   
-     ![追加](./media/data-lake-store-end-user-authenticate-using-active-directory/add-icon.png)
-6. アプリケーションの名前を入力し、作成するアプリケーションの種類を選択します。 このチュートリアルでは、 **[Web アプリケーションや Web API]** を作成し、[次へ] をクリックします。
-   
-     ![アプリケーションの名前指定](./media/data-lake-store-end-user-authenticate-using-active-directory/tell-us-about-your-application.png)
-7. アプリのプロパティを入力します。 **[サインオン URL]**には、アプリケーションについて説明する Web サイトの URI を指定します。 Web サイトの存在は検証されません。 
-   **[アプリケーション ID/URI]**には、アプリケーションを識別する URI を指定します。
-   
-     ![アプリケーションのプロパティ](./media/data-lake-store-end-user-authenticate-using-active-directory/app-properties.png)
-   
-    チェック マークをクリックしてウィザードを完了して、アプリケーションを作成します。
+上記に示したリンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
 
-### <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>手順 2. クライアント ID と応答 URI を取得し、委任されたアクセス許可を設定する
-1. **[構成]** タブをクリックし、アプリケーションのパスワードを構成します。
-   
-     ![アプリケーションの構成](./media/data-lake-store-end-user-authenticate-using-active-directory/application-configure.png)
-2. **[クライアント ID]**の値をコピーします。
-   
-     ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/client-id.png)
-3. **[シングル サインオン]** セクションで、**応答 URI** をコピーします。
-   
-    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-get-reply-uri.png)
-4. **[他のアプリケーションに対するアクセス許可]** で、**[アプリケーションの追加]** をクリックします。
-   
+![Web アプリの作成](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "ネイティブ アプリの作成")
+
+## <a name="step-2-get-client-id-reply-uri-and-set-delegated-permissions"></a>手順 2. クライアント ID と応答 URI を取得し、委任されたアクセス許可を設定する
+
+Azure AD ネイティブ アプリケーションのクライアント ID (アプリケーション ID とも言います) を取得するには、[クライアント ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページを参照してください。
+
+リダイレクト URI を取得するには、次の手順に従います。
+
+1. Azure Portal で、**[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成したばかりの Azure AD ネイティブ アプリケーションを見つけてクリックします。
+
+2. アプリケーションの **[設定]** ブレードで、**[リダイレクト URI]** をクリックします。
+
+    ![リダイレクト URI の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
+
+3. 表示された値をコピーします。
+
+
+## <a name="step-3-set-permissions"></a>手順 3: アクセス許可を設定する
+
+1. Azure Portal で、**[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成したばかりの Azure AD ネイティブ アプリケーションを見つけてクリックします。
+
+2. アプリケーションの **[設定]** ブレードで、**[必要なアクセス許可]** をクリックし、**[追加]** をクリックします。
+
     ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
-5. **他のアプリケーションに対するアクセス許可**ウィザードで、**[Azure Data Lake]** と **[Windows** **Azure Service Management API]** を選択し、チェックマークをクリックします。
-6. 既定では、新しく追加されたサービスの **[委任されたアクセス許可]** は&0; に設定されます。 Azure Data Lake と Windows Azure Management Service の **[Delegated Permissions (委任されたアクセス許可)]** ドロップダウンをクリックし、[利用可能] チェック ボックスをオンにして、値を 1 に設定します。 結果は次のようになります。
-   
-     ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
-7. [ **Save**] をクリックします。
 
+3. **[API アクセスの追加]** ブレードで、**[API を選択します]** をクリックします。**[Azure Data Lake]** をクリックし、**[選択]** をクリックします。
+
+    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+ 
+4.  **[API アクセスの追加]** ブレードで、**[アクセス許可の選択]** をクリックします。**[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、**[選択]** をクリックします。
+
+    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+
+    **[Done]**をクリックします。
+
+5. 最後の&2; つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
+   
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD Web アプリケーションを作成し、.NET SDK、Java SDK などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Store で認証を行ってからストアで他の操作を実行する方法について説明しています。
 
 * [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 * [Java SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-java-sdk.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

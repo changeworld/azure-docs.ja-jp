@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 0d4a7f8d7f469c43c972a163651688796483f8fc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c3aca63e0810e97cee58d145423d6b3f5edabeb4
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="azure-availability-sets-guidelines"></a>Azure 可用性セットのガイドライン
+# <a name="azure-availability-sets-guidelines-for-windows-vms"></a>Windows VM 用の Azure 可用性セットのガイドライン
+
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 この記事では、計画内または計画外のイベント中にユーザーがアプリケーションを利用できるようにするために必要な可用性セットの計画手順について中心に説明します。
@@ -43,7 +45,9 @@ Azure では、可用性セットと呼ばれる論理的なグループに仮�
 
 ベスト プラクティスとして、複数のアプリケーションを&1; つの VM に配置しないでください。 可用性セットに&1; つの VM しか含まれていない場合、Azure Platform 内の計画済みまたは計画外のイベントから保護されません。 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) では、基になるインフラストラクチャ全体に VM を分散できるように、1 つの可用性セット内に&2; つ以上の VM が必要です。
 
-Azure における基になるインフラストラクチャは、更新ドメインと障害ドメインに分けられます。 これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。 Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。 可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。 詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+Azure における基になるインフラストラクチャは、複数のハードウェア クラスターに分割されます。 各ハードウェア クラスターは、特定の範囲の VM サイズをサポートできます。 可用性セットは、常に&1; つのハードウェア クラスターでのみホストできます。 そのため、1 つの可用性セット内に存在できる VM サイズの範囲は、ハードウェア クラスターによってサポートされる VM サイズの範囲に制限されます。 可用性セット用のハードウェア クラスターは、可用性セット内の最初の VM がデプロイされるとき、またはすべての VM が停止済み (割り当て解除) 状態のときに可用性セット内の最初の VM が起動されるときに選択されます。 次の PowerShell コマンドを使用して、可用性セットで使用できる VM サイズの範囲を決定できます。"Get-AzureRmVMSize -ResourceGroupName \<string\> -AvailabilitySetName \<string\>"
+
+各ハードウェア クラスターは、複数の更新ドメインと障害ドメインに分割されます。 これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。 Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。 可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。 詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 アプリケーション インフラストラクチャを設計する場合は、使用するアプリケーション層について計画します。 目的が同じ VM は、IIS が実行されているフロントエンド VM の可用性セットなど、各可用性セットにまとめます。 SQL Server が実行されているバックエンド VM 用に、別の可用性セットを作成します。 目標は、アプリケーションの各コンポーネントを可用性セットで保護することで、少なくとも&1; つのインスタンスが常に実行されているようにすることです。
 

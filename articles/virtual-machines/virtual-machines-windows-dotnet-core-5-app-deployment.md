@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b4fb534cf18fd17f636e88cc31d6c997a9f09e45
-ms.openlocfilehash: e72afd857025773b3aadc3de124b4e79ec6cd512
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 495ee4a14e779099f828db0c08068bc3772cd7d4
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-deployment-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ
+# <a name="application-deployment-with-azure-resource-manager-templates-for-windows-vms"></a>Windows VM での Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ
+
 すべての Azure インフラストラクチャの要件を特定し、デプロイ テンプレートに変換したら、実際のアプリケーションのデプロイに対処する必要があります。 ここでは、アプリケーションのデプロイは、実際のアプリケーション バイナリを Azure リソースにインストールすることを指します。 ミュージック ストア サンプルでは、.Net Core と IIS を各仮想マシンにインストールして構成する必要があります。 ミュージック ストアのバイナリを仮想マシンにインストールし、ミュージック ストア データベースを事前に作成する必要があります。
 
 このドキュメントでは、仮想マシン拡張機能で Azure 仮想マシンへのアプリケーションのデプロイと構成を自動化する方法について説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ([Windows のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)) にあります。
@@ -124,10 +127,5 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 <hr>
 
 [その他の Azure Resource Manager テンプレートを確認する](https://github.com/Azure/azure-quickstart-templates)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

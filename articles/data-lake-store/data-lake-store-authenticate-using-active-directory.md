@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2017
+ms.date: 03/02/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
-ms.openlocfilehash: dac6c9f3be7b4535f8cb30a9ec0c1e398ca5ff28
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: ae2280f7bd7945f723d88dc6ce3f9a117074e93f
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -34,78 +35,27 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
-この記事では、サービス間認証用の Azure AD Web アプリケーションの作成方法について説明します。 エンドユーザー認証用に Azure AD アプリケーションを構成する方法については、「[End-user authentication with Data Lake Store using Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md)」 (Data Lake Store での Azure Active Directory を使用したエンドユーザー認証) を参照してください。
+この記事では、**サービス間認証用の Azure AD Web アプリケーション**の作成方法について説明します。 エンドユーザー認証用に Azure AD アプリケーションを構成する方法については、「[End-user authentication with Data Lake Store using Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md)」 (Data Lake Store での Azure Active Directory を使用したエンドユーザー認証) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-## <a name="create-an-active-directory-application"></a>Active Directory アプリケーションを作成する
-このセクションでは、Azure Active Directory を使用して Azure Data Lake Store でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 "Active Directory アプリケーション" を作成すると、サービス プリンシパルが作成されます。アプリやコードが実際に作成されるわけではないことに注意してください。
+## <a name="step-1-create-an-active-directory-web-application"></a>手順 1: Active Directory Web アプリケーションを作成する
 
-### <a name="step-1-create-an-azure-active-directory-application"></a>手順 1: Azure Active Directory アプリケーションを作成する
-1. [クラシック ポータル](https://manage.windowsazure.com/)で Azure アカウントにログインします。
-2. 左側のペインで **[Active Directory]** を選択します。
-   
-     ![Active Directory の選択](./media/data-lake-store-authenticate-using-active-directory/active-directory.png)
-3. 新しいアプリケーションの作成に使用する Active Directory を選択します。 Active Directory が複数ある場合、通常は、該当するサブスクリプションがあるディレクトリにアプリケーションを作成することをお勧めします。 アクセス権を付与できるリソースは、該当するサブスクリプションと同じディレクトリ内にあるアプリケーションのサブスクリプションに含まれるもののみです。  
-   
-     ![ディレクトリの選択](./media/data-lake-store-authenticate-using-active-directory/active-directory-details.png)
-4. ディレクトリ内のアプリケーションを表示するには、 **[アプリケーション]**をクリックします。
-   
-     ![アプリケーションの表示](./media/data-lake-store-authenticate-using-active-directory/view-applications.png)
-5. そのディレクトリにアプリケーションを作成したことがない場合、次の画像のように表示されます。 **[アプリケーションの追加]** をクリックします。
-   
-     ![[アプリケーションの追加]](./media/data-lake-store-authenticate-using-active-directory/create-application.png)
-   
-     または下のペインの **[追加]** をクリックします。
-   
-     ![追加](./media/data-lake-store-authenticate-using-active-directory/add-icon.png)
-6. アプリケーションの名前を入力し、作成するアプリケーションの種類を選択します。 このチュートリアルでは、 **[Web アプリケーションや Web API]** を作成し、[次へ] をクリックします。
-   
-     ![アプリケーションの名前指定](./media/data-lake-store-authenticate-using-active-directory/tell-us-about-your-application.png)
+Azure Active Directory を使用して Azure Data Lake Store でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
-    > [!TIP]
-    > 検索しやすくなるようなアプリケーションの名前を指定してください。 チュートリアルの後半で、このアプリケーションを検索して Data Lake Store アカウントに割り当てます。
-    > 
-    > 
+上記に示したリンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[Web アプリ/API]** を必ず選択してください。
 
-7. アプリのプロパティを入力します。 **[サインオン URL]**には、アプリケーションについて説明する Web サイトの URI を指定します。 Web サイトの存在は検証されません。 
-   **[アプリケーション ID/URI]**には、アプリケーションを識別する URI を指定します。
-   
-     ![アプリケーションのプロパティ](./media/data-lake-store-authenticate-using-active-directory/app-properties.png)
-   
-    チェック マークをクリックしてウィザードを完了し、アプリケーションを作成します。
+![Web アプリの作成](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "Web アプリの作成")
 
-### <a name="step-2-get-client-id-client-secret-and-token-endpoint"></a>手順 2: クライアント ID、クライアント シークレット、トークン エンドポイントを取得する
+## <a name="step-2-get-client-id-client-secret-and-tenant-id"></a>手順 2: クライアント ID、クライアント シークレット、およびテナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
-1. **[構成]** タブをクリックし、アプリケーションのパスワードを構成します。
-   
-     ![アプリケーションの構成](./media/data-lake-store-authenticate-using-active-directory/application-configure.png)
-2. **[クライアント ID]**の値をコピーします。
-   
-     ![[クライアント ID]](./media/data-lake-store-authenticate-using-active-directory/client-id.png)
-3. アプリケーションがその独自の資格情報で動作する場合は、下にスクロールして**[キー]** セクションを表示し、パスワードを有効にする期間を選択します。
-   
-     ![キー](./media/data-lake-store-authenticate-using-active-directory/create-key.png)
-4. **[保存]** を選択してキーを作成します。
-   
-    ![[保存]](./media/data-lake-store-authenticate-using-active-directory/save-icon.png)
-   
-    保存されたキーが表示され、それをコピーすることができます。 キーを後から取得することはできないため、この時点でコピーしてください。
-   
-    ![保存されたキー](./media/data-lake-store-authenticate-using-active-directory/save-key.png)
-5. 次のように、画面の下部にある **[エンドポイントの表示]** を選択し、**[OAuth 2.0 トークン エンドポイント]** フィールドの値を取得して、トークン エンドポイントを取得します。  
-   
-    ![テナント ID](./media/data-lake-store-authenticate-using-active-directory/save-tenant.png)
+* アプリケーションのクライアント ID とクライアント シークレットを取得する方法については、「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
 
-#### <a name="note-down-the-following-properties-that-you-will-need-for-the-next-steps"></a>次の手順で必要となる次のプロパティをメモしておきます。
-1. 上記の手順 1.6. で作成した Web アプリケーション ID の名前
-2. 上記の手順 2.2 で取得したクライアント ID
-3. 上記の手順 2.4 で作成したキー
-4. 上記の手順 2.5 で取得したテナント ID
+* テナント ID を取得する方法については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」を参照してください。
 
-### <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder-only-for-service-to-service-authentication"></a>手順 3: Azure AD アプリケーションを Azure Data Lake Store アカウントのファイルまたはフォルダー (サービス間認証用のみ) に割り当てる
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder-only-for-service-to-service-authentication"></a>手順 3: Azure AD アプリケーションを Azure Data Lake Store アカウントのファイルまたはフォルダー (サービス間認証用のみ) に割り当てる
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンし、上記で作成した Azure Active Directory アプリケーションに関連付ける Azure Data Lake Store アカウントを開きます。
 2. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
    
@@ -139,10 +89,5 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 * [サービス プリンシパル認証に証明書認証を使用する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal#create-service-principal-with-certificate)
 * [他の方法で Azure AD に対して認証する](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-authentication-scenarios)
 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
