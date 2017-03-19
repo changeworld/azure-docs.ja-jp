@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/07/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 82abd4724200d71da9ad577a0b0a37b2e8db3481
-ms.openlocfilehash: 4e96a48080ff299172a5f50960dda92dee145ce4
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: faffd356191b7cca124f0a2cd147837078e4150f
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -32,13 +32,6 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 次の管理者ロールを使用できます。
 
-
-- **アプリケーション管理者**: このロールのユーザーは、すべてのアプリケーションの作成と管理、ライセンス割り当ての管理、サービスの正常性の監視、サービス要求の管理を行うことができます。
-
-- **アプリケーション開発者**: このロールのユーザーは、アプリケーションを作成できます。 このロールは、**UsersPermissionToCreateLOBAppsEnabled** フラグ (すべてのユーザーにアプリケーションの作成を許可) が false に設定された場合に、一部のユーザーにはアプリケーションを作成する能力の保持を許可するために使用されます。
-
-- **アプリケーション プロキシ サービス管理者**: このロールのユーザーは、Azure AD でアプリケーション プロキシ サービスのすべての側面を管理するアクセス許可を付与されています。
-
 * **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
 * **全体管理者/会社の管理者**: すべての管理機能にアクセスできます。 Azure アカウントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。 自分のパスワードをリセットするには、パスワード リセット サービス (passwordreset.microsoftonline.com) を使用するか、自分のパスワードを他のグローバル管理者にリセットしてもらう必要があります。
@@ -48,7 +41,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
   >
   >
 
-* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可が付与されており、Office 365 管理センターにアクセスして監査ログを読むことができます。 詳細については、「[Office 365 の管理者ロールについて](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)」を参照してください。
+* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可が付与されており、Office 365 管理センターにアクセスして監査ログを読むことができます。 詳しくは、「[Office 365 の管理者ロールについて](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)」をご覧ください。
 
 * **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
