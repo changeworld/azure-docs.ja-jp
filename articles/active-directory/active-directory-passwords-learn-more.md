@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: aff8831a48d2283daa727db6a8f47a1ff4b8eb4c
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: e9ee2dba57b153d28c80c2d123d41c3048157ba1
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>パスワード管理の詳細情報
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/07/2017
  * [パスワードのリセットで使用されるデータ](#what-data-is-used-by-password-reset)
  * [エンド ユーザーによる登録を必要としないパスワード リセットのデプロイ](#deploying-password-reset-without-requiring-end-user-registration)
  * [パスワードをリセットするためにユーザーの登録時に発生すること](#what-happens-when-a-user-registers)
- * [ユーザーのパスワード リセット データにアクセスする方法](#how-to-access-password-reset-data-for-your-users)
+ * [ユーザーのパスワード リセット データにアクセスする](#how-to-access-password-reset-data-for-your-users)
  * [PowerShell を使用したパスワード リセット データの設定](#setting-password-reset-data-with-powershell)
  * [PowerShell を使用したパスワード リセット データの読み取り](#reading-password-reset-data-with-powershell)
 * [**B2B ユーザーに対するパスワード リセットの動作 **](#how-does-password-reset-work-for-b2b-users)
@@ -629,7 +629,7 @@ Not possible in PowerShell V2
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。

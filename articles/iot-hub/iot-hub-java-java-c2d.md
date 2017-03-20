@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/07/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 017e6942bc49717f98836a2465824c0a42ff8a81
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 624f5947e31f08f689ceb6c48bc572447acd64ac
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -97,9 +97,13 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.0.14</version>
+      <version>1.0.15</version>
     </dependency>
     ```
+
+    > [!NOTE]
+    > [Maven 検索][lnk-maven-service-search]を使用して、**iot-service-client** の最新バージョンを確認できます。
+
 4. pom.xml ファイルを保存して閉じます。
 5. テキスト エディターを使用し、send-c2d-messages\src\main\java\com\mycompany\app\App.java ファイルを開きます。
 6. ファイルに次の **import** ステートメントを追加します。
@@ -192,4 +196,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
+[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

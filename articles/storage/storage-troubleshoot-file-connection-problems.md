@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0479db07710d7ff6037dc692e5387a314bed32ca
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -48,10 +48,6 @@ ms.lasthandoff: 03/08/2017
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * [Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している](#delayproblem)
 
-
-**他のアプリケーションからのアクセス**
-
-* [Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -275,11 +271,6 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
 
-<a id="webjobs"></a>
-
-## <a name="accessing-from-other-applications"></a>他のアプリケーションからのアクセス
-### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?
-AppService サンドボックスで SMB 共有をマウントすることはできません。 この問題を回避するには、マップされたドライブとして Azure ファイル共有をマップし、アプリケーションがドライブ名を使用して Azure ファイル共有にアクセスできるようにします。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)

@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: ce4d51c4ed38645ee81325404ff7214f845d5bf0
 ms.openlocfilehash: 317f3be6cb39da7c7c57f7f368c750672609726e
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -68,9 +69,4 @@ Microsoft Azure Government クラウドに現在ない機能:
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
