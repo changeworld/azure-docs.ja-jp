@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 03/03/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: ef4517191084148ff3810226c927ee45a61b2c49
+ms.lasthandoff: 03/03/2017
 
 
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
-定期的に **Azure Data Catalog** の更新がリリースされます。 すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
+**Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
 
 ## <a name="whats-new-for-the-week-of-september-16-2016-release"></a>2016 年 9 月 16 日の週のリリースの新機能
 2016 年 9 月 16 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -40,7 +41,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-august-5-2016-release"></a>2016 年 8 月 5 日の週のリリースの新機能
 2016 年 8 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Data Catalog ポータルでのプロパティ表示の更新。 すべてのデータ資産のプロパティをサイズ変更可能な 1 つのウィンドウで表示および管理できるようになり、エクスペリエンスの一貫性と検出のしやすさが向上しました。
+* Data Catalog ポータルでのプロパティ表示の更新。 すべてのデータ資産のプロパティをサイズ変更可能な&1; つのウィンドウで表示および管理できるようになり、エクスペリエンスの一貫性と検出のしやすさが向上しました。
 
 ## <a name="whats-new-for-the-week-of-july-29-2016-release"></a>2016 年 7 月 29 日の週のリリースの新機能
 2016 年 7 月 29 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -51,7 +52,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 2016 年 7 月 22 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
 * SQL Server のストアド プロシージャのサポート。 SQL Server データ ソースのストアド プロシージャ オブジェクトの登録と検出を実行できるようになりました。
-* Azure Data Catalog ポータルとデータ ソース登録ツールで対応する言語が追加されました (合計で 18 の言語に対応)。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
+* Azure Data Catalog ポータルとデータ ソース登録ツールで対応する言語が追加されました (合計で 18 の言語に対応)。 Azure Data Catalog ユーザー エクスペリエンスは、Windows または Web ブラウザーに指定された言語設定に基づいてローカライズされます。
 
 ## <a name="whats-new-for-the-week-of-july-8-2016-release"></a>2016 年 7 月 8 日の週のリリースの新機能
 2016 年 7 月 8 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -72,8 +73,8 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-may-20-2016-release"></a>2016 年 5 月 20 日の週のリリースの新機能
 2016 年 5 月 20 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Data Catalog ビジネス用語集の機能強化により、ユーザーが 1 回の操作で複数の用語集の用語を更新できるようになっています。 ユーザーは、複数の用語を選択して次の各フィールドを編集できます。
-  * 親の用語: 新しい親の用語を選択することができ、選択した用語はいずれも選択した親の用語の子になるように更新されます。 選択したすべての用語が同じ親を持つ場合、その親はテキスト ボックスに表示され、それ以外の場合、親の用語フィールドは空白となります。   
+* Data Catalog ビジネス用語集の機能強化により、ユーザーが&1; 回の操作で複数の用語集の用語を更新できるようになっています。 ユーザーは、複数の用語を選択して次の各フィールドを編集できます。
+  * 親の用語: 新しい親の用語を選択することができ、選択した用語はいずれも選択した親の用語の子になるように更新されます。 選択したすべての用語が同じ親を持つ場合、その親はテキスト ボックスに表示され、それ以外の場合、親の用語フィールドには空白が設定されます。   
   * タグと関係者: 複数のデータ資産にタグ付けする場合と同じ操作方法で、複数の用語集の用語に対してタグと関係者を追加および削除できます。
 
 ビジネス用語集の詳細については、「 [管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)  
@@ -81,7 +82,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-may-6-2016-release"></a>2016 年 5 月 6 日の週のリリースの新機能
 2016 年 5 月 6 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* カタログ管理者がビジネス用語と階層を定義し、一般的なビジネス語彙を作成できるビジネス用語集。 ユーザーは、登録したデータ資産に用語集の用語でタグを付けて、カタログの内容を検出しやすく、わかりやすくすることができます。 詳細については、「[管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)」を参照してください。  
+* カタログ管理者がビジネス用語と階層を定義し、一般的なビジネス語彙を作成できるビジネス用語集。 ユーザーは、登録したデータ資産に用語集の用語でタグを付けて、カタログの内容を検出しやすく、わかりやすくすることができます。 詳細については、「 [管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)  
 
 > [!NOTE]
 > ビジネス用語集は、Azure Data Catalog の Standard Edition でのみ使用できます。 無料エディションには、管理タグ付けまたはビジネス用語集の機能がありません。
@@ -91,14 +92,14 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-march-11-2016-release"></a>2016 年 3 月 11 日の週のリリースの新機能
 2016 年 3 月 11 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。 既存の検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止されるため、推奨していません。 API のセマンティクスに変更はありません。エンドポイント URI のみが変更されます。 詳細については、[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)のページを参照してください。 API サンプルについては、[Azure Data Catalog 開発者向けサンプル](data-catalog-samples.md)のページを参照してください。
+* Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。 この検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止され、提供が終了します。 API のセマンティクスに対する変更はありません。 エンドポイント URI だけが変更されます。 詳細については、[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)のページを参照してください。 API サンプルについては、[Azure Data Catalog 開発者向けサンプル](data-catalog-samples.md)のページを参照してください。
 
 ## <a name="whats-new-for-the-week-of-february-19-2016-release"></a>2016 年 2 月 19 日の週のリリースの新機能
 2016 年 2 月 19 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからのユーザーの特定、選択が簡単になりました。
+* Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからの特定と選択が簡単になりました。
 * Azure Data Catalog ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。 英語に加え、Azure Data Catalog 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
+* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで&2; つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
 
 ## <a name="whats-new-for-the-week-of-february-5-2016-release"></a>2016 年 2 月 5 日の週のリリースの新機能
 2016 年 2 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -108,7 +109,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-january-29-2016-release"></a>2016 年 1 月 29 日の週のリリースの新機能
 2016 年 1 月 29 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* 追加のデータ ソースを手動で登録するためのサポート。 ユーザーは Azure Data Catalog ポータルで "手動エントリの作成" を使用したり、Azure Data Catalog REST API を使用して次のデータ ソースを登録したりすることができるようになりました。
+* 追加のデータ ソースを手動で登録するためのサポート。 Azure Data Catalog ポータルで [手動エントリの作成] を使用したり、Azure Data Catalog REST API を使用して次のデータ ソースを登録したりできるようになりました。
   * OData - 関数、エンティティ セット、エンティティ コンテナー
   * HTTP - ファイル、エンドポイント、レポート、サイト
   * ファイル システム - ファイル
@@ -127,12 +128,12 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-january-22-2016-release"></a>2016 年 1 月 22 日の週のリリースの新機能
 2016 年 1 月 22 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* SAP HANA のビューおよびパッケージを登録して検出するためのサポート。 ユーザーは Azure Data Catalog データ ソース登録ツールを使用して SAP HANA データ ソースを登録し、Azure Data Catalog ポータルを使用して登録済み SAP HANA データ ソースの注釈付けや検出を行うことができます。
+* SAP HANA のビューおよびパッケージを登録して検出するためのサポート。 Azure Data Catalog データ ソース登録ツールを使用して SAP HANA データ ソースを登録し、Azure Data Catalog ポータルを使用して登録済み SAP HANA データ ソースの注釈付けや検出を行うことができます。
 
 ## <a name="whats-new-for-the-week-of-january-8-2016-release"></a>2016 年 1 月 8 日の週のリリースの新機能
 2016 年 1 月 8 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Azure Data Catalog ポータルでデータ資産をピン留め/ピン留め解除する機能。 ユーザーはデータ資産のピン留めを選択することで、再検出/再利用しやすくなります。
+* Azure Data Catalog ポータルでデータ資産をピン留め/ピン留め解除する機能。 データ資産のピン留めを選択することで、再検出/再利用しやすくなります。
 * Azure Data Catalog ポータルの新たに再設計されたホーム ページ。 新しいホーム ページには、最近公開またはピン留めされた資産、保存された検索など、現在のユーザーのアクティビティに関する詳細な情報のほか、カタログ全体でのアクティビティに関する詳細な情報も含まれています。
 * Azure Data Catalog ポータルでの固定のユーザー設定のサポート。 ユーザー エクスペリエンスの設定 (グリッドまたはタイル ビュー、ページあたりの結果の数、検索結果の強調表示のオンまたはオフなど) はユーザー セッション間で永続化されます。
 * Azure Data Catalog が、2 つの新しい Azure リージョンで利用できるようになりました。 お客様は Azure Data Catalog を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。 詳細については、「 [Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
@@ -158,7 +159,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 * SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。  
 
 > [!NOTE]
-> [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。 この機能を使用して問題やエラーが発生した場合は、 [PowerBI.com](https://powerbi.com)から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
+> [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。 この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 > 
 > 
 
@@ -179,10 +180,10 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 
 | クエリ構文 | 目的 |
 | --- | --- |
-| has:previews |プレビューを含むデータ資産を検索します。 |
-| has:documentation |ドキュメントが提供されているデータ資産を検索します。 |
-| has:tableDataProfiles |テーブル レベルのデータ プロファイル情報でデータ資産を検索します。 |
-| has:columnsDataProfiles |列レベルのデータ プロファイル情報でデータ資産を検索します。 |
+| `has:previews` |プレビューを含むデータ資産を検索します。 |
+| `has:documentation` |ドキュメントが提供されているデータ資産を検索します。 |
+| `has:tableDataProfiles` |テーブル レベルのデータ プロファイル情報でデータ資産を検索します。 |
+| `has:columnsDataProfiles` |列レベルのデータ プロファイル情報でデータ資産を検索します。 |
 
 ## <a name="whats-new-for-the-week-of-october-30-2015-release"></a>2015 年 10 月 30 日の週のリリースの新機能
 2015 年 10 月 30 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -203,7 +204,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 2015 年 10 月 16 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
 * オンプレミス Hive データ ソースのサポート。 ユーザーは、Hadoop オンプレミス データ ソースで Apache Hive 用の Hive テーブルを登録し、検出できるようになりました。
-* Azure Data Catalog ポータルにおける保存された検索のサポート。 ユーザーは検索語句とフィルター選択項目を保存することで、簡単に以前の検索を繰り返し、カタログのコンテンツの便利なビューを定義することができます。 また、ユーザーは既定の検索として保存した検索をマークすることもできます。 ユーザーが Azure Data Catalog ポータルのホーム ページまたは "概要" ページから "虫眼鏡" の検索アイコンをクリックすると、既定値としてフラグが付けられた保存した検索が直接示されます。
+* Azure Data Catalog ポータルにおける保存された検索のサポート。 ユーザーは検索語句とフィルター選択項目を保存することで、簡単に以前の検索を繰り返し、カタログのコンテンツの便利なビューを定義することができます。 また、ユーザーは既定の検索として保存した検索をマークすることもできます。 ユーザーが Azure Data Catalog ポータルのホーム ページまたは [概要] ページから "虫眼鏡" の検索アイコンをクリックすると、既定値としてフラグが付けられた保存した検索が直接示されます。
 
 ## <a name="whats-new-for-the-week-of-october-9-2015-release"></a>2015 年 10 月 9 日の週のリリースの新機能
 2015 年 10 月 9 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -231,7 +232,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-september-18-2015-release"></a>2015 年 9 月 18 日の週のリリースの新機能
 2015 年 9 月 18 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* Azure Data Catalog ポータルでの新しい "概要" データ ソースの検出エクスペリエンス。 ユーザーが Azure Data Catalog ポータルの "検出" ページで検索語句を入力していない場合、最も頻繁に使用されるタグ、エキスパート、データ ソースの種類とオブジェクトの種類を含むカタログ コンテンツの概要が示されます。
+* Azure Data Catalog ポータルでの新しい "概要" データ ソースの検出エクスペリエンス。 ユーザーが Azure Data Catalog ポータルの [検出] ページで検索語句を入力していない場合、最も頻繁に使用されるタグ、エキスパート、データ ソースの種類、およびオブジェクトの種類を含むカタログ コンテンツの概要が示されます。
 * Azure SQL Data Warehouse のオブジェクトおよびデータベースを登録して検出するためのサポート。 Azure SQL Data Warehouse の詳細については、「 [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)」を参照してください。
 * SQL Server Analysis Services モデルおよび SQL Server Reporting Services サーバーをコンテナーとして登録して検出するためのサポート。 SSAS および SSRS のオブジェクトの登録時に、Azure Data Catalog は、レポートや他のオブジェクトだけでなく、SSAS モデルと SSRS サーバーのエントリも作成します。 コンテナーは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、モデルまたはサーバーのコンテンツを検索し、フィルター処理することもできます。
 
@@ -243,9 +244,9 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 ## <a name="whats-new-for-the-week-of-september-11-2015-release"></a>2015 年 9 月 11 日の週のリリースの新機能
 2015 年 9 月 11 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
+* HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。 ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。 SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS)&8;.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
 * HDInsight で Hive データ ソースをサポートします。 ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。 HDInsight での Hive の詳細については、 [HDInsight ドキュメント センター](../hdinsight/hdinsight-use-hive.md)をご覧ください。
-* Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。 Oracle のテーブルとビューまたは HDFS の登録時に、Azure Data Catalog はテーブルとビューだけでなく、データベースのエントリも作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
+* Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。 Oracle のテーブルとビューまたは HDFS の登録時に、Azure Data Catalog は、データベース、テーブル、およびビューのエントリを作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 
 > [!NOTE]
 > 9 月 11 日以前に登録された Oracle のテーブルおよびビューと、HDFS のファイルおよびディレクトリについては、データベースまたはクラスターのエントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。 データ ソースを再登録しても、Azure Data Catalog ポータルでユーザーによって追加された注釈に影響はありません。
@@ -256,7 +257,7 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 2015 年 9 月 4 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
 * 不明なデータ ソースを手動で登録できるようになりました。 データ ソース登録ツールで明示的にサポートされていないデータ ソースに注釈を付け、検出できるように、Azure Data Catalog ポータルを使用してデータ ソース情報を手動で入力できます。
-* SQL Server データベースをコンテナーとして登録し、検出できるようになりました。 SQL Server のテーブルとビューの登録時に、Azure Data Catalog はテーブルとビューだけでなく、データベースのエントリも作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースのコンテンツを検索し、フィルター処理することもできます。
+* SQL Server データベースをコンテナーとして登録し、検出できるようになりました。 SQL Server のテーブルとビューの登録時に、Azure Data Catalog は、データベース、テーブル、およびビューのエントリを作成します。 データベースは、Azure Data Catalog ポータルを使用して検出し、注釈を付けることができます。 カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースのコンテンツを検索し、フィルター処理することもできます。
 
 > [!NOTE]
 > 9 月 4 日以前に登録された SQL Server のテーブルとビューについては、データベース エントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。 データ ソースを再登録しても、Azure Data Catalog ポータルでユーザーによって追加された注釈に影響はありません。
@@ -277,10 +278,5 @@ ms.openlocfilehash: e507eaf0ffca75317f1fcf9c31d4d9e4b3977f3a
 * 上部のナビゲーション バーに新しい [ユーザー] ボタンとメニューを追加しました。 このメニューを使用すると、ユーザーは Azure Data Catalog へのログオンに使用したアカウントを確認でき、必要な場合はサインアウトできます。 このメニューでは、Azure Data Catalog REST API を使用する開発者に役に立つカタログ名も表示されます。
 * Standard Edition のみ: データ資産に所有者を追加するとき、Azure Data Catalog は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。 選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 * Azure BLOB Storage データ ソースのサポート。 ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

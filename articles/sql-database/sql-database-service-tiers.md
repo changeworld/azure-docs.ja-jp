@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 02/09/2017
+wms.date: 02/21/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
+ms.sourcegitcommit: d830c43f860b70c6f47d94eaff5105b988158cdf
+ms.openlocfilehash: 4add7ad944e0b36e2eded5767b0123af74602e8e
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
-[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベル (**Basic**、**Standard**、**Premium**) といくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが増加し、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、[サービス レベルとパフォーマンス レベルは動的に](sql-database-service-tiers.md)変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 
+
+[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つの[サービス レベル](sql-database-service-tiers.md) (**Basic**、**Standard**、**Premium**) といくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが増加し、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 
 
 選択した[パフォーマンス レベル](sql-database-service-tiers.md#single-database-service-tiers-and-performance-levels)で、専用リソースを含む単一データベースを作成できます。 また、リソースがデータベース間で共有される[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)内で複数のデータベースを管理することもできます。 単一データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) を単位として表現されます。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU (eDTU) を単位として表現されます。 DTU と eDTU の詳細については、[DTU の概要](sql-database-what-is-a-dtu.md)に関する記事を参照してください。 
 
@@ -48,7 +50,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>Single Database サービス階層とパフォーマンス レベル
-単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 ワークロードのニーズに最適なレベルを選択できる柔軟性があります。 スケールアップやスケールダウンが必要な場合は、データベースの階層を簡単に変更することができます。 詳細については、「 [データベースのサービス階層とパフォーマンス レベルの変更](sql-database-service-tiers.md) 」を参照してください。
+単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 [Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。 
 
 ホストされるデータベースの数にかかわらず、データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性には影響しません。
 
@@ -60,7 +62,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 
 ## <a name="scaling-up-or-scaling-down-a-single-database"></a>1 つのデータベースのスケールアップとスケールダウン
 
-最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 
+最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、[Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用してデータベースの階層を簡単に変更することができます。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -96,9 +98,7 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 * 通常、データベースあたりの最小 eDTU またはデータベースあたりの最大 eDTU の変更は、5 分以内で完了します。
 * プール サイズ (eDTU) の変更時間は、プール内のすべてのデータベースを結合したサイズに依存します。 変更の平均時間は、100 GB あたり 90 分以下です。 たとえば、プール内のすべてのデータベースの合計領域が 200 GB の場合、プールあたりの eDTU の変更にかかる想定待機時間は、3 時間以下になります。
 
-> [!IMPORTANT]
-> 詳細な手順については、[Azure Portal を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-portal.md)、[Powershell を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-tsql.md)、[C# を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-csharp.md)に関する記事をそれぞれ参照してください。
->
+詳細な手順については、[Azure Portal を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-portal.md)、[Powershell を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-tsql.md)、[C# を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-csharp.md)に関する記事をそれぞれ参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -106,10 +106,5 @@ ms.openlocfilehash: 920143756a0e0b369cf839681f9c4308f77a4af0
 * [エラスティック プールの監視、管理、およびサイズ変更](sql-database-elastic-pool-manage-portal.md)と[単一データベースのパフォーマンスの監視](sql-database-single-database-monitor.md)を行う方法を確認してください。
 * SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してみてください。また、[初めて SQL データベースを作成するにあたっての方法](sql-database-get-started.md)を確認してください。
 * 移行のシナリオの場合は、[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して必要な DTU 数を見積もります。 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

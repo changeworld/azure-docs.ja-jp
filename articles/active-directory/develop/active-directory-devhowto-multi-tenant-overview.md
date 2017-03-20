@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 01/23/2017
 ms.author: skwan;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
-ms.openlocfilehash: 8daad095d80b244f53b4ee94c48ae9421172f062
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: f87aedd989ab091efeac5f99e198fb60b6781ab2
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -163,6 +164,10 @@ Azure AD では、同意は OAuth、OpenID Connect、WS-Federation、および S
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>マルチテナント アプリケーションとアクセス トークンのキャッシュ
 マルチテナント アプリケーションでは、Azure AD で保護されている API を呼び出すアクセス トークンを取得することもできます。  マルチテナント アプリケーションで Active Directory Authentication Library (ADAL) を使用する際によくあるエラーは、最初は /common を使用してユーザーのトークンを要求し、応答を受信してから、その後も /common を使用して同じユーザーのトークンを要求することです。  Azure AD からの応答は /common ではなくテナントから送信されるため、ADAL ではトークンがテナントから送信されたものとしてキャッシュされます。 ユーザーのアクセス トークンを取得するためのその後の /common への呼び出しでは、キャッシュ エントリが見つからないため、ユーザーはもう一度サインインするように求められます。  キャッシュが見つからない問題を回避するために、サインイン済みのユーザーに対する以降の呼び出しは、テナントのエンドポイントに向けて行われるようにしてください。
 
+## <a name="next-steps"></a>次のステップ
+この記事では、任意の Azure Active Directory テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure Active Directory の間でのシングル サインオンを有効にした後、Office 365 のように、アプリケーションを更新して Microsoft リソースにより公開される API にアクセスすることもできます。 したがって、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure Active Directory と、Exchange、SharePoint、OneDrive、OneNote、Planner、Excel などの Office 365 サービスに対する API 呼び出しについて詳しくは、[Microsoft Graph API][MSFT-Graph-overview] に関する記事をご覧ください。
+
+
 ## <a name="related-content"></a>関連コンテンツ
 * [マルチテナント アプリケーションのサンプル][AAD-Samples-MT]
 * [アプリケーションのブランド化ガイドライン][AAD-App-Branding]
@@ -170,7 +175,7 @@ Azure AD では、同意は OAuth、OpenID Connect、WS-Federation、および S
 * [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]
 * [同意フレームワークの概要][AAD-Consent-Overview]
-* [Microsoft Graph API のアクセス許可スコープ][MSFT-Graph-AAD]
+* [Microsoft Graph API のアクセス許可スコープ][MSFT-Graph-permision-scopes]
 * [Azure AD Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]
 
 Microsoft のコンテンツ改善のため、下部のコメント セクションよりご意見をお寄せください。
@@ -189,7 +194,8 @@ Microsoft のコンテンツ改善のため、下部のコメント セクショ
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-AAD]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
+[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://graph.microsoft.io/en-us/docs/authorization/permission_scopes
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
@@ -235,10 +241,5 @@ Microsoft のコンテンツ改善のため、下部のコメント セクショ
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

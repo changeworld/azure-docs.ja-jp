@@ -1,10 +1,10 @@
 ---
-title: "Azure Portal を使用して ARM モードで NSG を作成する方法 | Microsoft Docs"
-description: "Azure ポータルを使用して ARM で NSG を作成してデプロイする方法について説明します。"
+title: "ネットワーク セキュリティ グループの作成 - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 5bc8fc2e-1e81-40e2-8231-0484cd5605cb
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7c00b45be99d254c1967bff8a1150ad4c1eaab6d
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-manage-nsgs-using-the-azure-portal"></a>Azure ポータルを使用して NSG を管理する方法
+# <a name="create-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループの作成
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
@@ -55,7 +58,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 2. NSG の一覧で、 **NSG-FrontEnd** > **[受信セキュリティ規則]**
    
     ![Azure ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
-3.  [受信セキュリティ規則]をデプロイしてテスト環境を構築してから [追加]することもできます。
+3. **[受信セキュリティ規則]**をデプロイしてテスト環境を構築してから **[追加]**することもできます。
    
     ![Azure ポータル - 規則の追加](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
 4. **[受信セキュリティ規則の追加]** ブレードで、ポート *80* の *TCP* 経由で任意のソースから任意の VM にアクセスできるようにする *web-rule* という名前の規則を *200* の優先度で作成して、**[OK]** をクリックします。 これらの設定のほとんどは、既定値が設定されています。
@@ -90,12 +93,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
 3. 「[NSG を FrontEnd サブネットに関連付ける](#Associate-the-NSG-to-the-FrontEnd-subnet)」の手順を繰り返し、**NSG-Backend** NSG を **BackEnd** サブネットに関連付けます。
 
 ## <a name="next-steps"></a>次のステップ
-*  [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)
+* [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

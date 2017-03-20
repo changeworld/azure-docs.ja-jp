@@ -16,8 +16,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: cea81f16ecc6203f487fdf15310638b123312dde
-ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 75f4792ff2aa2b73ebc3ff976887a74ce09988f3
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: caee6a14bd988f2355c9683519b5f5480428a709
 開始するには、以下が必要です。
 
 * **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][Azure Free Trial]に関するページか [MSDN Azure クレジット][MSDN Azure Credits]に関するページにアクセスしてください。
-* **Azure SQL サーバー**: 詳細については、[Azure Portal での Azure SQL Database 論理サーバーの作成][Create an Azure SQL Database logical server with the Azure portal]に関するセクションを参照してください。
+* **Azure SQL サーバー**: 詳細については、[Azure Portal での Azure SQL データベースの作成][Create an Azure SQL database in the Azure portal]に関する記事を参照してください。
 
 > [!NOTE]
 > SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[SQL Data Warehouse の価格][SQL Data Warehouse pricing]」を参照してください。
@@ -82,11 +83,11 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [ベスト プラクティス][Best practices]も良い参考になります。
 
 <!--Article references-->
-[Create an Azure SQL Database logical server with the Azure portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
-[Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[Create an Azure SQL database in the Azure portal]: ../sql-database/sql-database-get-started.md
+[Create an Azure SQL database with PowerShell]: ../sql-database/sql-database-create-and-configure-database-powershell
 [resource groups]: ../azure-resource-manager/resource-group-template-deploy-portal.md
 [Best practices]: sql-data-warehouse-best-practices.md
-[DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: sql-data-warehouse-overview-what-is.md
 [subscription]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 [T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
@@ -99,9 +100,4 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

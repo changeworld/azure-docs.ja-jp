@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 2b78101f6abd675487c7879de5440021832af181
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 58ba34f8f99b7cd2b6a9a199bc70d79431405100
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 2b78101f6abd675487c7879de5440021832af181
 開始するには、以下が必要です。
 
 * **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][Azure Free Trial]に関するページか [MSDN Azure クレジット][MSDN Azure Credits]に関するページにアクセスしてください。
-* **Azure SQL サーバー**: 詳細については、[Azure Portal での Azure SQL Database 論理サーバーの作成][Create an Azure SQL Database logical server with the Azure Portal]に関するセクションか、[PowerShell を使用した Azure SQL Database 論理サーバーの作成][Create an Azure SQL Database logical server with PowerShell]に関するセクションを参照してください。
+* **Azure SQL サーバー**: 詳細については、[Azure Portal での Azure SQL データベースの作成][Create an Azure SQL database in the Azure Portal]に関する記事か、[PowerShell を使用した Azure SQL データベースの作成][Create an Azure SQL database with PowerShell]に関する記事を参照してください。
 * **リソース グループ**: 使用している Azure SQL Server と同じリソース グループを使用するか、 [リソース グループの作成方法](../azure-resource-manager/resource-group-portal.md)に関するセクションを参照してください。
 * **PowerShell バージョン 1.0.3 以降**: **Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。  最新バージョンは、[Microsoft Web Platform Installer][Microsoft Web Platform Installer] からインストールできます。  最新バージョンのインストールの詳細については、[Azure PowerShell のインストールと構成方法][How to install and configure Azure PowerShell]に関するページを参照してください。
 
@@ -84,7 +85,7 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 <!--Image references-->
 
 <!--Article references-->
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md
 [migrate]: ./sql-data-warehouse-overview-migrate.md
 [develop]: ./sql-data-warehouse-overview-develop.md
 [load]: ./sql-data-warehouse-load-with-bcp.md
@@ -94,8 +95,8 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 
 [How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [how to create a SQL Data Warehouse from the Azure Portal]: ./sql-data-warehouse-get-started-provision.md
-[Create an Azure SQL Database logical server with the Azure Portal]: ../sql-database/sql-database-get-started.md#create-logical-server-bk
-[Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#complete-azure-powershell-script-to-create-a-server-firewall-rule-and-database
+[Create an Azure SQL database in the Azure Portal]: ../sql-database/sql-database-get-started.md
+[Create an Azure SQL database with PowerShell]: ../sql-database/sql-database-get-started-powershell.md
 [how to create a resource group]: ../azure-resource-manager/resource-group-template-deploy-portal.md#create-resource-group
 
 <!--MSDN references-->
@@ -108,9 +109,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

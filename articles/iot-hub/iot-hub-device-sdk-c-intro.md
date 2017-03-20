@@ -17,6 +17,7 @@ ms.author: obloch
 translationtype: Human Translation
 ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
 ms.openlocfilehash: 0033f1cc036e1eef63f0728be8d5d73c8dbbccf6
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -70,7 +71,7 @@ SDK に含まれている [readme ファイル](https://github.com/Azure/azure-i
 
 ここでは、準備ガイドで説明されている手順を完了するのに役立ついくつかのヒントを紹介します。
 
-* **CMake **ユーティリティをインストールするとき、**すべてのユーザー**の PATH システム環境変数に **CMake** を追加するオプションを選択します (**現在のユーザー**に追加しても効果は同じです)。
+* **CMake**ユーティリティをインストールするとき、**すべてのユーザー**の PATH システム環境変数に **CMake** を追加するオプションを選択します (**現在のユーザー**に追加しても効果は同じです)。
   
   ![](media/iot-hub-device-sdk-c-intro/08-CMake.PNG)
 * **開発者コマンド プロンプト for VS2015**を開く前に、Git コマンド ライン ツールをインストールします。 これらのツールをインストールするには、次の手順を実行します。
@@ -143,7 +144,7 @@ static const char* connectionString = "[device connection string]";
 * Microsoft.Azure.IoTHub.IoTHubClient
 * Microsoft.Azure.uamqp
 
-SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport **パッケージを含める必要があります (HTTP と MQTT にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
+SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを含める必要があります (HTTP と MQTT にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
 サンプル アプリケーションの実装は、**iothub\_client\_sample\_amqp.c** ソース ファイル内にあります。
 
@@ -463,9 +464,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

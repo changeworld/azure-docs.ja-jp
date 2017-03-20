@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2017
+ms.date: 03/03/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 83ae00afbcbb5d3ff38ee1f934e3b2f8d1c8f624
-ms.openlocfilehash: 95a6933d64428255eb061e7077c3e0768c72e207
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e166b82e547975a5d44465231da057a9465f81c
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -126,7 +126,7 @@ Azure Automation の診断から、Log Analytics に&2; 種類のレコードが
 | Caller_s |操作を開始したユーザー。  スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
-| ResultType |Runbook ジョブの状態。  次のいずれかの値になります。<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 成功 |
+| ResultType |Runbook ジョブの状態。  次のいずれかの値になります。<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 完了 |
 | カテゴリ | データの種類の分類。  Automation の場合、値は JobLogs です。 |
 | OperationName | Azure で実行された操作の種類を指定します。  Automation の場合、値は Job です。 |
 | リソース | Automation アカウントの名前です。 |
@@ -176,7 +176,7 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)`次の内容を使用して、Runbook 名でグループ化することもできます。`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。  Automation アカウント名は JobLogs の検索のリソース フィールドから派生していることもあります。  
-3. **[アラート ルールの追加]** 画面を開くには、ページの上部にある **[アラート]** をクリックします。 アラートの構成オプションの詳細については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)」を参照してください。
+3. **[アラート ルールの追加]** 画面を開くには、ページの上部にある **[アラート]** をクリックします。 アラートの構成オプションの詳細については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md#creating-alert-rules)」を参照してください。
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>エラーが発生したすべてのジョブを特定する
 エラーに関するアラートだけでなく、Runbook ジョブが終了しないときにもエラーが表示されます。 このような場合、PowerShell ではエラー ストリームが生成されますが、ジョブが終了しないエラーでは、ジョブの中断や失敗は起こりません。    

@@ -17,9 +17,9 @@ ms.date: 02/27/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: 0762f69968e19e55229a9d5b08b202b4ac595a46
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 13b77c10dfe42d39ad3802f0be1b3f6fe75788e5
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -42,6 +42,8 @@ Azure AD のトラブルシューティング ツールの詳細については�
 参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
 
 ## <a name="connector-errors"></a>コネクタのエラー
+
+[Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使用して、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。 
 
 コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 

@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
-ms.openlocfilehash: 866265bfa2eb7bcfebd8c73e14d3344a150aaf09
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: a59b8178fb011b837a402207ca86dd2db4505f74
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-infrastructure-naming-guidelines"></a>Azure インフラストラクチャの名前付けのガイドライン
+# <a name="azure-infrastructure-naming-guidelines-for-windows-vms"></a>Windows VM 用の Azure インフラストラクチャの名前付けのガイドライン
+
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 この記事は、お使いの環境で論理的かつ簡単に識別できる一連のリソースを構築するための、Azure のすべてのリソースに対する名前付け規則について説明します。
@@ -103,10 +106,5 @@ Azure VM の名前と、基になるオペレーティング システムのコ�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

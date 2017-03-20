@@ -15,14 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9f944edcafb55634c9338bc8dd518a5f032f56e0
-ms.openlocfilehash: e714a7e941b25dfb0926934a3dff387363f306d8
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b321683b2080e5af3a112791eae416e03dee0080
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="availability-and-scale-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの可用性とスケール
-可用性とスケールは、アップタイムと、需要に対応する機能を指します。 アプリケーションのアップタイムが 99.9% である必要がある場合は、複数の同時コンピューティング リソースに対応したアーキテクチャが必要です。 たとえば、可用性の高い構成には、単一の Web サイトではなく、同じサイトのインスタンスが複数含まれ、その前面に分散テクノロジが配置されています。 この構成では、アプリケーション インスタンスの 1 つをメンテナンスのために停止し、残りは継続して機能させることができます。 一方、スケールは、需要に対応するアプリケーション機能を指します。 負荷分散されたアプリケーションでは、プールからインスタンスを追加または削除することで、需要に応じてアプリケーションをスケールできます。
+# <a name="availability-and-scale-in-azure-resource-manager-templates-for-windows-vms"></a>Windows VM での Azure Resource Manager テンプレートの可用性とスケール
+
+可用性とスケールは、アップタイムと、需要に対応する機能を指します。 アプリケーションのアップタイムが 99.9% である必要がある場合は、複数の同時コンピューティング リソースに対応したアーキテクチャが必要です。 たとえば、可用性の高い構成には、単一の Web サイトではなく、同じサイトのインスタンスが複数含まれ、その前面に分散テクノロジが配置されています。 この構成では、アプリケーション インスタンスの&1; つをメンテナンスのために停止し、残りは継続して機能させることができます。 一方、スケールは、需要に対応するアプリケーション機能を指します。 負荷分散されたアプリケーションでは、プールからインスタンスを追加または削除することで、需要に応じてアプリケーションをスケールできます。
 
 このドキュメントでは、ミュージック ストア サンプルのデプロイをどのように構成して可用性とスケールを実現しているかについて説明します。 すべての依存関係と固有の構成に焦点を当てます。 最善の結果を得るために、ソリューションのインスタンスを Azure サブスクリプションに事前にデプロイし、Azure Resource Manager テンプレートを手元に用意して取り組んでください。 完全なテンプレートは、こちら ([Windows のミュージック ストア デプロイ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)) にあります。
 
@@ -229,7 +232,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
   }
 ```
 
-コピー関数の現在の反復値には、 `copyIndex()` 関数でアクセスできます。 コピー インデックス関数の値を使って、仮想マシンなどのリソースに名前を付けることができます。 たとえば、仮想マシンのインスタンスを 2 つデプロイする場合、それぞれに異なる名前が必要です。 `copyIndex()` 関数を仮想マシン名の一部として使って、一意の名前を作成できます。 命名に `copyindex()` 関数を使う例については、仮想マシン リソースをご覧ください。 ここでは、コンピューティング名は `vmName` パラメーターと `copyIndex()` 関数を連結した名前になっています。 
+コピー関数の現在の反復値には、 `copyIndex()` 関数でアクセスできます。 コピー インデックス関数の値を使って、仮想マシンなどのリソースに名前を付けることができます。 たとえば、仮想マシンのインスタンスを&2; つデプロイする場合、それぞれに異なる名前が必要です。 `copyIndex()` 関数を仮想マシン名の一部として使って、一意の名前を作成できます。 命名に `copyindex()` 関数を使う例については、仮想マシン リソースをご覧ください。 ここでは、コンピューティング名は `vmName` パラメーターと `copyIndex()` 関数を連結した名前になっています。 
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [コピー インデックス関数](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L309)) をご覧ください。 
 
@@ -241,7 +244,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 }
 ```
 
-`copyIndex` 関数は、ミュージック ストア サンプル テンプレート内で何度も使われています。 `copyIndex` を利用するリソースや関数としては、仮想マシンの 1 つのインスタンスに固有のネットワーク インターフェイスやロード バランサー規則などが挙げられます。いずれも関数に依存します。 
+`copyIndex` 関数は、ミュージック ストア サンプル テンプレート内で何度も使われています。 `copyIndex` を利用するリソースや関数としては、仮想マシンの&1; つのインスタンスに固有のネットワーク インターフェイスやロード バランサー規則などが挙げられます。いずれも関数に依存します。 
 
 コピー関数について詳しくは、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](../azure-resource-manager/resource-group-create-multiple.md)」をご覧ください。
 
@@ -249,10 +252,5 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 <hr>
 
 [手順 4 - Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ](virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

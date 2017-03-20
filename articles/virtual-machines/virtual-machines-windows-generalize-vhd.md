@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: c70793c707252582d4ba77ac8b04c39521b245f8
-ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: a0fca1e2a1d354be9ad34fb3a36714d0bdf393d2
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -40,13 +41,13 @@ ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
     ![Sysprep の開始](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
 6. Sysprep は完了時に仮想マシンをシャットダウンします。 
 
+> [!IMPORTANT]
+> Azure に VHD をアップロードするか VM からイメージを作成するまで、VM を再起動しないでください。 誤って VM を再起動した場合は、もう一度 Sysprep を実行して一般化してください。
+> 
+> 
+
 ## <a name="next-steps"></a>次のステップ
 * VM がオンプレミスの場合、[VHD を Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できるようになりました。
 * VM が既に Azure に存在する場合、[一般化された VM からイメージを作成](virtual-machines-windows-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できるようになりました。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

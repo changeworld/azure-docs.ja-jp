@@ -1,10 +1,10 @@
 ---
-title: "テンプレートを使用して ARM モードで NSG を作成する方法 | Microsoft Azure"
-description: "テンプレートを使用して ARM で NSG を作成してデプロイする方法について"
+title: "ネットワーク セキュリティ グループの作成 - Azure Resource Manager テンプレート | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して、ネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: f3e7385d-717c-44ff-be20-f9aa450aa99b
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 5e5a0283fee79b9068784ad88017e96d3ab8e729
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 627dba0f3a0a65ad75ef2799b7e5df56e9d8bfcb
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-create-nsgs-using-a-template"></a>テンプレートを使用して NSG を作成する方法
+# <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してネットワーク セキュリティ グループを作成する
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
@@ -187,10 +190,5 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
    * **-l (または --location)**。 リソース グループが作成される Azure リージョンです。
    * **-f (または --template-file)**。 ARM テンプレート ファイルへのパスです。
    * **-e (または--parameters-file)**。 ARM パラメーター ファイルへのパスです。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

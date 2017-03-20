@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3e7595baa26ba9eebfcb8a2fd5c2744d9c0fbfcb
-ms.openlocfilehash: 03dbde64aefc12145a589d8b741c67865162b9b5
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: f9e4fededc2bbb069cc653791137f248a7dc3fe8
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -35,6 +35,8 @@ Azure では、VNet、ExpressRoute、Application Gateway、ロード バラン�
 ## <a name="network-watcher"></a>Network Watcher
 
 Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 現在、Network Watcher が備える機能は次のとおりです。
 
@@ -112,7 +114,7 @@ Network Watcher には診断ログ ビューが用意されています。 こ�
 
 ### <a name="resource-health"></a>リソース ヘルス
 
-定期的に、ネットワーク リソースの正常性に関する情報が提供されます。 対象のリソースは、VPN Gateway や VPN トンネルなどです。 Resource Health には、Azure Portal からアクセスできます。 Resource Health の詳細については、[Resource Health の概要](../resource-health/resource-health-overview.md)に関するページを参照してください。
+ネットワーク リソースの正常性に関する情報は定期的に提供されています。 対象のリソースは、VPN Gateway や VPN トンネルなどです。 Resource Health には、Azure Portal からアクセスできます。 Resource Health の詳細については、[Resource Health の概要](../resource-health/resource-health-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

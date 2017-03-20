@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 03/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dd09c109594e0ba86fe2f40625e765494bfc06eb
-ms.openlocfilehash: 1221de9ae16022f7300510b2db67ed0849b61397
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ace5d18cd88d55d167f8447d18d65ca21818ff62
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,7 +35,7 @@ Log Analytics へのアクセスを管理するには、ワークスペースに
 ## <a name="determine-the-number-of-workspaces-you-need"></a>必要なワークスペースの数を決定する
 ワークスペースは、Azure のリソースであり、収集、集計、分析され、Azure Portal に表示されるデータのコンテナーです。
 
-複数のワークスペースを作成して、ユーザーが&1; つまたは複数のワークスペースにアクセスできるようにすることができます。 ワークスペースの数を最小限にすることで、ほとんどのデータに対してクエリを実行し、データを関連付けることができます。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
+Azure サブスクリプションごとに複数のワークスペースを用意できるほか、複数のワークスペースにアクセスできます。 ワークスペースの数を最小限に抑えることで、ほとんどのデータをまたいだクエリと関連付けが可能になります。これは、複数のワークスペースをまたいだクエリの実行ができないためです。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
 
 現時点では、ワークスペースに次の情報が示されます。
 
@@ -52,7 +52,7 @@ Log Analytics へのアクセスを管理するには、ワークスペースに
 * マネージ サービス プロバイダーが、管理する各顧客のログ分析データを他の顧客のデータから切り離しておく必要がある。
 * 管理している複数の顧客、部門、ビジネス グループが (他の顧客、部門、ビジネス グループではなく) 各自のデータを確認できるようにしたい。
 
-エージェントを使用してデータを収集する場合は、1 つ以上のワークスペースにレポートを生成するように各エージェントを構成できます。
+エージェントを使用してデータを収集する場合は、[1 つ以上のワークスペースにレポートを生成するように各エージェントを構成](log-analytics-windows-agents.md)できます。
 
 System Center Operations Manager を使用している場合、各 Operations Manager 管理グループを&1; つのワークスペースのみに接続できます。 Operations Manager を使って管理するコンピューターに Microsoft Monitoring Agent をインストールし、Operations Manager と別の Log Analytics ワークスペースの両方にレポートを生成するようにエージェントを構成できます。
 
@@ -71,34 +71,64 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 
 ## <a name="manage-accounts-and-users"></a>アカウントとユーザーの管理
-各ワークスペースは、ワークスペースごとに複数の Microsoft アカウントと組織アカウントを関連付けることができます。また、各ユーザー アカウントは複数のワークスペースを持つことができます。
+各ワークスペースには、複数のアカウントを関連付けることができます。また、各アカウント (Microsoft アカウントまたは組織アカウント) は、複数のワークスペースへのアクセス権を備えることができます。
 
-既定では、ワークスペースを作成するために使用した Microsoft アカウントや組織アカウントはワークスペースの管理者になります。 管理者は、追加の Microsoft アカウントを招待したり、Azure Active Directory からユーザーを選択したりできます。
+既定では、ワークスペースを作成した Microsoft アカウントまたは組織アカウントは、そのワークスペースの管理者になります。
 
-ワークスペースへのアクセスは&2; か所で管理できます。
+Log Analytics ワークスペースへのアクセスを制御するアクセス許可モデルは&2; 種類あります。
 
-* Azure では、ロールベースのアクセス制御を使って、Azure サブスクリプションとそれに関連する Azure リソースにアクセス権を付与できます。 これらのアクセス許可は、PowerShell と REST API へのアクセスにも使用されます。
-* OMS ポータルでは、Azure サブスクリプションに関連しない、OMS ポータルのみへのアクセスを管理します。
+1. 従来の Log Analytics ユーザー ロール
+2. [Azure のロールベースのアクセス](../active-directory/role-based-access-control-configure.md) 
 
-Backup と Site Recovery のソリューション タイルにデータを表示するには、ワークスペースがリンクされている Azure サブスクリプションに対して管理者または共同管理者のアクセス許可を持っている必要があります。   
+次の表には、各アクセス許可モデルを使用して設定できるアクセス権がまとめてあります。
 
-### <a name="managing-access-to-log-analytics-using-the-azure-portal"></a>Azure ポータルを使用した Log Analytics へのアクセスの管理
-(Azure Portal などで) Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権をユーザーに付与すると、そのユーザーは Log Analytics ポータルにもアクセスできるようになります。 このユーザーが Azure Portal で操作している場合、Log Analytics ワークスペース リソースを表示しているときに **[OMS Portal (OMS ポータル)]** タスクをクリックすると、OMS ポータルに移動できます。
+|                          | Log Analytics ポータル | Azure ポータル | API (PowerShell を含む) |
+|--------------------------|----------------------|--------------|----------------------------|
+| Log Analytics ユーザー ロール | はい                  | なし           | いいえ                         |
+| Azure のロールベースのアクセス  | はい                  | あり          | はい                        |
+
+> [!NOTE]
+> Log Analytics で使用されるアクセス許可モデルは、Log Analytics ユーザー ロールから Azure のロールベースのアクセスに移行しつつあります。
+>
+>
+
+従来の Log Analytics ユーザー ロールでは、[Log Analytics ポータル](https://mms.microsoft.com)で実行されたアクティビティへのアクセスしか制御できません。
+
+Log Analytics ポータルの次のアクティビティにも、Azure のアクセス許可が必要です。
+
+| アクション                                                          | 必要とされる Azure のアクセス許可 | メモ |
+|-----------------------------------------------------------------|--------------------------|-------|
+| 管理ソリューションの追加と削除                        | リソース グループの書き込み <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
+| *Backup* ソリューション タイルと *Site Recovery* ソリューション タイルのデータの表示 | 管理者/共同管理者 | クラシック デプロイメント モデルを使用してデプロイされたリソースにアクセスします |
+ 
+### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics へのアクセスの管理
+Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」の手順に従ってください。
+
+少なくとも Log Analytics ワークスペースに対する Azure の読み取りアクセス許可があれば、Log Analytics ワークスペースを表示する際に **[OMS ポータル]** タスクをクリックして、OMS ポータルを開くことができます。
+
+Log Analytics ポータルを開く場合は、従来の Log Analytics ユーザー ロールの使用に切り替えます。 Log Analytics ポータルのロールが割り当てられていない場合、サービスによって、[ワークスペースに対する Azure のアクセス許可があるかどうかがチェックされます](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource)。 Log Analytics ポータルのロールの割り当ては、次のように決まります。
+
+| 条件                                                   | 割り当て済みの Log Analytics ユーザー ロール | メモ |
+|--------------------------------------------------------------|----------------------------------|-------|
+| アカウントが従来の Log Analytics ユーザー ロールに属している     | 指定された Log Analytics ユーザー ロール | |
+| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> ワークスペースに対する Azure の完全なアクセス許可 (`*` アクセス許可 <sup>1</sup>) | 管理者 ||
+| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> ワークスペースに対する Azure の完全なアクセス許可 (`*` アクセス許可 <sup>1</sup>) <br> `Microsoft.Authorization/*/Delete` と `Microsoft.Authorization/*/Write` の "*操作は除く*" | 共同作成者 ||
+| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> Azure の読み取りアクセス許可 | 読み取り専用 ||
+| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> Azure アクセス許可が認識されない | 読み取り専用 ||
+| クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にある | 管理者 | 通常は CSP の顧客 |
+| クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にない | 共同作成者 | 通常は CSP |
+
+<sup>1</sup> ロール定義の詳細については、[Azure のアクセス許可](../active-directory/role-based-access-control-custom-roles.md)に関するページを参照してください。 ロールの評価時に `*` の操作は `Microsoft.OperationalInsights/workspaces/*` と同等ではありません。 
 
 Azure Portal に関して留意が必要ないくつかの点:
 
-* これは "*ロールベースのアクセス制御*" ではありません。 Azure Portal で Log Analytics ワークスペースに対する "*閲覧者*" アクセス許可がある場合は、OMS ポータルを使用してデータを変更できます。 OMS ポータルには、管理者、共同作成者、読み取り専用ユーザーの概念があります。 サインインに使用したアカウントが Azure Active Directory 内でワークスペースにリンクされている場合、このユーザーは OMS ポータルにおいて "管理者" になります。それ以外の場合、このユーザーは "共同作成者" になります。
-* http://mms.microsoft.com を使用して OMS ポータルにサインインした場合、既定では **[ワークスペースの選択]** 一覧が表示されます。 一覧には OMS ポータルを使用して追加されたワークスペースのみ表示されます。 Azure サブスクリプションを使用してアクセスするワークスペースを表示するには、URL の一部としてテナントを指定する必要があります。 次に例を示します。
-
-  `mms.microsoft.com/?tenant=contoso.com` テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
-* サインインに使用するアカウントが Azure Active Directory テナントのアカウントの場合、このユーザーは OMS ポータルにおいて "*管理者*" になります。 これは CSP としてサインインしている場合を除き、よくあるケースです。  アカウントがテナントの Azure Active Directory に含まれていない場合、このユーザーは OMS ポータルにおいて "*ユーザー*" になります。
+* http://mms.microsoft.com を使用して OMS ポータルにサインインした場合、**[ワークスペースの選択]** 一覧が表示されます。 この一覧には、Log Analytics ユーザー ロールを付与されているワークスペースのみが表示されます。 Azure サブスクリプションを使用してアクセスするワークスペースを表示するには、URL の一部としてテナントを指定する必要があります。 たとえば、「`mms.microsoft.com/?tenant=contoso.com`」のように入力します。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
 * Azure のアクセス許可を使用してアクセスできるポータルに直接移動する場合は、URL の一部としてリソースを指定する必要があります。 この URL は PowerShell を使用して取得できます。
 
   たとえば、「 `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`」のように入力します。
 
   URL は、`https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12` のようになります。
-
-たとえば、管理ソリューションを追加または削除するには、ユーザーは Azure Portal で Azure サブスクリプションの管理者か共同作業者である必要があります。 さらに、OMS ポータルで OMS ワークスペースの作成者または管理者ロールのメンバーになっている必要もあります。
 
 ### <a name="managing-users-in-the-oms-portal"></a>OMS ポータルでのユーザーの管理
 [設定] ページの **[アカウント]** タブにある **[ユーザーの管理]** タブでユーザーとグループを管理します。   
@@ -114,11 +144,11 @@ Azure Portal に関して留意が必要ないくつかの点:
 3. **[ユーザーの管理]** セクションで、追加するアカウントの種類を **[組織アカウント]**、**[Microsoft アカウント]**、または **[Microsoft サポート]** から選択します。
 
    * Microsoft アカウントを選択する場合は、Microsoft アカウントに関連付けられているユーザーのメール アドレスを入力します。
-   * 組織アカウントを選択する場合は、ユーザー名、グループ名、メール エイリアスのどれか一部を入力すると、それに該当するユーザーとグループの一覧がドロップダウン ボックスに表示されます。 ユーザーまたはグループを選択します。
+   * 組織アカウントを選択する場合は、ユーザー名、グループ名、電子メール エイリアスのどれか一部を入力すると、それに該当するユーザーとグループの一覧がドロップダウン ボックスに表示されます。 ユーザーまたはグループを選択します。
    * [Microsoft サポート] は、Microsoft サポート エンジニアなど Microsoft の従業員がトラブルシューティングのためにユーザーのワークスペースに一時的にアクセスすることを許可するために使用します。
 
      > [!NOTE]
-     > 最適なパフォーマンスの結果を得るには、単一の OMS アカウントに関連付けられている Active Directory グループの数を&3; つ (1 つは管理者用に、1 つは共同作成者、もう&1; つは読み取り専用ユーザー用) に制限します。 それ以上のグループを使用すると、Log Analytics のパフォーマンスに影響を与える可能性があります。
+     > 最適なパフォーマンスを発揮するには、単一の OMS アカウントに関連付けられている Active Directory グループの数を&3; つ (1 つは管理者用に、1 つは共同作成者、もう&1; つは読み取り専用ユーザー用) に制限します。 それ以上のグループを使用すると、Log Analytics のパフォーマンスに影響を与える可能性があります。
      >
      >
 4. 追加するユーザーまたはグループの種類を **[管理者]**、**[共同作成者]**、**[読み取り専用ユーザー]** の中から選択します。  
@@ -154,7 +184,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 4. 確認のダイアログ ボックスで **[はい]** をクリックします。
 
 ### <a name="add-a-group-to-an-existing-workspace"></a>既存のワークスペースにグループを追加する
-1. 上の “既存のワークスペースにユーザーを追加するには” の手順 1-4 を実行します。
+1. 前のセクション「既存のワークスペースへのユーザーの追加」の手順 1. ～ 4. を実行します。
 2. **[ユーザー/グループの選択]** で **[グループ]** を選択します。  
    ![add a group to an existing workspace](./media/log-analytics-manage-access/add-group.png)
 3. 追加するグループの表示名または電子メール アドレスを入力します。
@@ -204,7 +234,7 @@ OMS のワークスペースには、**Free**、**Standalone**、**OMS** の&3; 
 ### <a name="using-entitlements-from-an-oms-subscription"></a>OMS サブスクリプションに付属する資格の使用
 OMS E1、OMS E2 OMS、OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の *OMS* プランを選択します。
 
-OMS サブスクリプションを購入すると、マイクロソフト エンタープライズ契約に資格が追加されます。 追加された資格は、この契約下で作成されたすべての Azure サブスクリプションで使用できます。 たとえば、複数のワークスペースで OMS サブスクリプションの資格を利用できます。
+OMS サブスクリプションを購入すると、マイクロソフト エンタープライズ契約に資格が追加されます。 追加された資格は、この契約下で作成されたすべての Azure サブスクリプションで使用できます。 これらのサブスクリプションでは、すべてのワークスペースに OMS の資格が使用されます。
 
 ワークスペースの使用を OMS サブスクリプションからの資格に適用するには、次の作業が必要になります。
 
@@ -212,18 +242,18 @@ OMS サブスクリプションを購入すると、マイクロソフト エン
 2. ワークスペースの *OMS* プランを選択する
 
 > [!NOTE]
-> ご利用のワークスペースが 2016 年 9 月 26 日より前に作成されており、かつ Log Analytics の料金プランが *Premium* である場合、このワークスペースには OMS Add-On for System Center の資格が使用されます。 *OMS* 料金レベルに変更することによって資格を使用することもできます。
+> ご利用のワークスペースが 2016 年 9 月 26 日より前に作成されており、かつ Log Analytics の料金プランが *Premium* である場合、このワークスペースには System Center 用 OMS アドオンの資格が使用されます。 *OMS* 料金レベルに変更することによって資格を使用することもできます。
 >
 >
 
 OMS サブスクリプションの資格は、Azure Portal にも OMS ポータルにも表示されません。 資格と使用状況は、エンタープライズ ポータルで確認できます。  
 
 ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。
-
+to
 ### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>エンタープライズ契約の Azure コミットメントを使用する
 OMS サブスクリプションがない場合、料金は OMS のコンポーネントごとに発生し、その使用状況が Azure の請求書に記載されます。
 
-Azure サブスクリプションがリンクされているエンタープライズ登録に Azure の金銭的コミットがある場合、Log Analytics のすべての使用料金が残りの金銭的コミットから自動的に引き落とされます。
+Azure サブスクリプションがリンクされているエンタープライズ登録に Azure の年額コミットメントがある場合、Log Analytics の使用料金が残りの年額コミットメントから自動的に引き落とされます。
 
 ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。  
 
@@ -242,14 +272,14 @@ Azure サブスクリプションがリンクされているエンタープラ�
 >
 >
 
-## <a name="change-your-data-plan-in-the-oms-portal"></a>OMS ポータルでデータ プランを変更する
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>OMS ポータルでワークスペースを有料の価格レベルに変更する
 
-OMS ポータルを使用してデータ プランを変更するには、サインインしているユーザーが既に Azure アカウントを所有している必要があります。
+OMS ポータルを使用して価格レベルを変更するには、Azure サブスクリプションが必要です。
 
 1. OMS ポータルで、**[設定]** タイルをクリックします。
 2. **[アカウント]** タブをクリックしてから、**[Azure Subscription & Data Plan (Azure サブスクリプションとデータ プラン)]** タブをクリックします。
-3. 使用するデータ プランをクリックします。
-4. [ **Save**] をクリックします。  
+3. 使用する価格レベルをクリックします。
+4. **[保存]**をクリックします。  
    ![サブスクリプションとデータ プラン](./media/log-analytics-manage-access/subscription-tab.png)
 
 新しいデータ プランは、Web ページの上部にある OMS ポータル リボンに表示されます。

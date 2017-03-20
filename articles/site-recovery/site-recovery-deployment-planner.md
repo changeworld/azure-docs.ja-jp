@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2575621d72b7db2b090ba923324697b7fa7b8308
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -82,9 +82,9 @@ Azure Site Recovery Deployment Planner Public Preview はコマンド ライン 
 zip フォルダーを展開します。 複数のファイルとサブフォルダーが表示されます。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
 
 例: .zip ファイルを E:\ ドライブにコピーして展開します。
-E:\ASR Deployment Planner-Preview_v1.0.zip
+E:\ASR Deployment Planner-Preview_v1.1.zip
 
-E:\ASR Deployment Planner-Preview_v1.0\ ASR Deployment Planner-Preview_v1.0\ ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner-Preview_v1.1\ ASR Deployment Planner-Preview_v1.1\ ASRDeploymentPlanner.exe
 
 ##<a name="capabilities"></a>機能
 このコマンド ライン ツール (ASRDeploymentPlanner.exe) は、次の&3; とおりのモードで実行できます。
@@ -199,7 +199,7 @@ ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.cont
 
 
 ##### <a name="example-2-to-generate-report-when-profiled-data-is-on-a-remote-server-user-should-have-readwrite-access-on-the-remote-directory"></a>例 2: レポートを生成する (プロファイリング データがリモート サーバーにある場合)。 ユーザーには、リモート ディレクトリに対する読み取り/書き込みアクセス権が必要です。
-ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “\\\\PS1-W2K12R2\vCenter1_ProfiledData” **-VMListFile** “\\\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 
 ##### <a name="example-3-generate-report-with-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>例 3: 特定の帯域幅と初回レプリケーションの目標所要時間を指定してレポートを生成する
 ASRDeploymentPlanner.exe **-Operation** GenerateReport **-Server** vCenter1.contoso.com **-Directory** “E:\vCenter1_ProfiledData” **-VMListFile** “E:\vCenter1_ProfiledData\ProfileVMList1.txt” **-Bandwidth** 100 **-GoalToCompleteIR** 24
@@ -407,10 +407,10 @@ Azure Site Recovery のレプリケーション用にプロビジョニングで
 
 **[Virtual Machines to Place (配置する仮想マシン)]**: パフォーマンスと稼働率を最大限に引き出すために、指定の Azure Storage アカウントに配置すべき全仮想マシンが一覧表示されます。
 
-##<a name="compatible-vms"></a>Compatible VMs (適合 VM)
+## <a name="compatible-vms"></a>Compatible VMs (適合 VM)
 ![Deployment Planner](./media/site-recovery-deployment-planner/compatible-vms.png)
 
-**[VM 名]**: レポートの生成時に VMListFile で使った仮想マシンの名前または IP アドレスです。 また、仮想マシンにアタッチされたディスク (VMDK) もこの列に一覧表示されます。
+**[VM 名]**: レポートの生成時に VMListFile で使った仮想マシンの名前または IP アドレスです。 また、仮想マシンにアタッチされたディスク (VMDK) もこの列に一覧表示されます。 VCenter 上の仮想マシンの名前または IP アドレスに重複がある場合、各仮想マシンを区別するために ESXi ホスト名が一緒に表示されます。 一覧表示されている ESXi ホストは、プロファイリング期間中にツールが仮想マシンを最初に検出したとき、その仮想マシンが配置されていたホストです。
 
 **[VM Compatibility (VM 適合性)]**: Yes / Yes* の&2; つの値があります。変更頻度が高く IOPS が P20 または P30 カテゴリのディスクを備えた [Premium Azure Storage](https://aka.ms/premium-storage-workload) が適していることをプロファイリング結果は示しているものの、ディスクのサイズが原因で、それよりも低い P10 または P20 にマッピングされている仮想マシンには、Yes* が表示されます。 Azure Storage では、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます (128 GB 未満の場合は P10、128 ～ 512 GB の場合は P20、512 GB ～ 1023 GB の場合は P30)。 したがって、ディスクのワークロード特性上は P20 または P30 に分類されるものの、サイズ上はそれよりも低い Premium Storage ディスク タイプに対応している仮想マシンは、Deployment Planner ツールによって Yes* として表示されます。そのうえで、推奨される適切な Premium Storage ディスク タイプに合わせてレプリケーション元のディスク サイズを変更するか、またはレプリケーション先のディスク タイプをフェールオーバー後に変更するように促されます。
 [ストレージの種類] には、Standard と Premium があります。
@@ -439,7 +439,7 @@ Azure Site Recovery のレプリケーション用にプロビジョニングで
 
 ![Deployment Planner](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
-**[VM 名]**: レポートの生成時に VMListFile で使った仮想マシンの名前または IP アドレスです。 また、仮想マシンにアタッチされたディスク (VMDK) もこの列に一覧表示されます。
+**[VM 名]**: レポートの生成時に VMListFile で使った仮想マシンの名前または IP アドレスです。 また、仮想マシンにアタッチされたディスク (VMDK) もこの列に一覧表示されます。 VCenter 上の仮想マシンの名前または IP アドレスに重複がある場合、各仮想マシンを区別するために ESXi ホスト名が一緒に表示されます。 一覧表示されている ESXi ホストは、プロファイリング期間中にツールが仮想マシンを最初に検出したとき、その仮想マシンが配置されていたホストです。
 
 **[VM Compatibility (VM 適合性)]**: 指定された仮想マシンが、Azure Site Recovery での使用に不適合である理由が表示されます。 理由は仮想マシンの不適合ディスクごとに記述され、公開されている Azure Storage の[制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
 
@@ -483,7 +483,24 @@ Premium P20/P30 ディスク | 16 KB 以上 |10 MB/s    | (ディスクあたり
 
 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なります。 理想的な結果を得るために、デプロイ計画後も必ず、テスト フェールオーバーを使用してアプリケーションのテストを徹底し、パフォーマンスの真の姿を把握することをお勧めします。
 
-##<a name="release-notes"></a>リリース ノート
+## <a name="how-to-update-the-deployment-planner"></a>Deployment Planner を更新する方法
+最新バージョンの Azure Site Recovery Deployment Planner を[ダウンロード](site-recovery-deployment-planner.md#download)します。 zip ファイルを実行するサーバーにコピーします。 zip ファイルを解凍します。
+既に以前のバージョンの Deployment Planner を所持しており、プロファイリングが実行中である場合は、新しいバージョンにプロファイリングの修正がある場合を除き、そのプロファイリングを停止する必要はありません。 リリースにプロファイル コンポーネントの修正プログラムが含まれている場合、以前のバージョンを使用したプロファイリングを停止し、新しいバージョンを使用してプロファイリングを再起動することをお勧めします。 新しいバージョンを使用してプロファイリングを開始するときは、同じ出力ディレクトリ パスを渡す必要があることに注意してください。これにより、ツールがプロファイリング データを既存のファイルに追加できるようになり、プロファイリング データの完全なセットがレポートの生成に使用されるようになります。 異なる出力ディレクトリを渡すと、新しいファイルが作成され、古いプロファイリング データがレポートの生成で使用できなくなります。<br> どの更新も、zip ファイルを使用した累積的な更新プログラムです。 使用にあたり、以前のバージョンのフォルダーに新しいバージョンのファイルをコピーする必要はありません。 新しいフォルダーを使用できます。
+
+
+##<a name="version-history"></a>バージョン履歴
+### <a name="11"></a>1.1
+更新日: 2017 年 3 月 9 日 <br>
+
+次の問題が修正されました。<br>
+
+* 同じ名前または IP アドレスの複数の仮想マシンが異なる ESXi ホストにまたがって vCenter に存在する場合に、仮想マシンをプロファイリングすることができない。<br>
+* 適合 VM シートと不適合 VM シートのコピーと検索が無効。
+
+
+### <a name="10"></a>1.0 
+更新日: 2017 年 2 月 23 日 
+
 Azure Site Recovery Deployment Planner Public Preview 1.0 には、以下に示す既知の問題があります。これらの問題は今後の更新プログラムで解決される予定です。
 
 * このツールの利用は VMware から Azure へのレプリケーション シナリオに限られます。Hyper-V から Azure へのデプロイには利用できません。 Hyper-V から Azure へのシナリオでは、[Hyper-V Capacity Planner ツール](./site-recovery-capacity-planning-for-hyper-v-replication.md)をご利用ください。

@@ -1,5 +1,5 @@
 ---
-title: "並列タスクを実行してノードの使用率を最大化 - Azure Batch | Microsoft Docs"
+title: "タスクの並列実行によるコンピューティング リソースの効率的な使用 - Azure Batch | Microsoft Docs"
 description: "Azure Batch プール内の各ノードで同時実行タスクを実行し、使用するコンピューティング ノードの数を減らすことで、効率を高めて、コストを削減します。"
 services: batch
 documentationcenter: .net
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
-ms.openlocfilehash: 8080c8c43d1e88381cd49bdac6a5f36b6cd82709
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: c4053ded725ad7ab2acc6d5d54e8343ffb961408
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="maximize-azure-batch-compute-resource-usage-with-concurrent-node-tasks"></a>同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
+
 Azure Batch プールでは、各コンピューティング ノードで複数のタスクを同時に実行することによって、リソースの使用率を最大限に高めつつ、プールに必要なノード数を減らすことができます。 ワークロードによっては、ジョブの時間が短縮され、コストを削減できます。
 
 単一のタスクにすべてのノードのリソースを割り当てることでメリットがあるシナリオもありますが、複数のタスクでリソースを共有することにメリットがある状況もあります。
@@ -143,9 +146,4 @@ Azure Batch の[サンプル アプリケーション][github_samples]の&1; つ
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

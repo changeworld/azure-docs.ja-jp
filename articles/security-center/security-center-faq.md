@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 466d4a566ebb426f48e8c271e1305b844842d638
+ms.sourcegitcommit: f07cd15658f7d367bdf364ece449dd5d09b2f9d3
+ms.openlocfilehash: 38503e36f9c0ad981d0239d82a858dbe2c5263a4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure Security Center は Free と Standard の&2; つのプランで提供さ�
 
 Free レベルでは、セキュリティ ポリシーを設定できるほか、必要なコントロールの構成プロセスを紹介するセキュリティ アラート、インシデント、推奨事項を受け取ることができます。 また、Free レベルでは、Azure リソースと、Azure サブスクリプションに統合済みのパートナー ソリューションのセキュリティ状態を監視することもできます。
 
-Standard レベルでは、Free レベルの機能に加えて、高度な検出機能 (脅威インテリジェンス、行動分析、クラッシュ分析、異常検出) を使用できます。 Standard レベルについては 90 日間の無料評価版を利用可能です。 アップグレードを行うには、 [セキュリティ ポリシー](security-center-policies.md#set-security-policies-for-subscriptions)で価格レベルを選択してください。 詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
+Standard レベルでは、Free レベルの機能に加えて、高度な検出機能 (脅威インテリジェンス、行動分析、クラッシュ分析、異常検出) を使用できます。 Standard レベルは、最初の 60 日間は無料です。 60 日目以降もこのサービスを引き続き使用する選択をした場合は、サービスへの課金が自動的に開始されます。 アップグレードを行うには、 [セキュリティ ポリシー](security-center-policies.md#set-security-policies-for-subscriptions)で価格レベルを選択してください。 詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
@@ -161,9 +162,4 @@ Azure Security Center でデータ収集が有効になると、スキャン デ
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。
 データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

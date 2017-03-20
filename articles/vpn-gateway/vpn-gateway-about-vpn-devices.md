@@ -16,33 +16,30 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bea87fce9f1b1587af5a3e0d827a75e93d7bf534
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 13ef48ebe79571c7139e46f9510a5f8d2f504cb7
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN Gateway 接続の VPN デバイスについて
-VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。
+# <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
+
+VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。 このドキュメントには、Azure VPN ゲートウェイに使用される IPsec/IKE パラメーターの一覧と、Azure VPN ゲートウェイに接続する検証済みの VPN デバイスの一覧が掲載されています。
 
 
 > [!IMPORTANT]
-> オンプレミスの VPN デバイスと Azure VPN ゲートウェイの間で接続の問題が発生している場合は、「[デバイスの互換性に関する既知の問題](#known)」を参照してください。
-> 
-> 
+> オンプレミスの VPN デバイスと Azure VPN ゲートウェイの間で接続の問題が発生している場合は、「[デバイスの互換性に関する既知の問題](#known)」を参照してください。 
 
 
 ###<a name="items-to-note-when-viewing-the-tables"></a>表を確認するときの注意事項:
 
-* 静的および動的ルーティングの用語に変更がありました。 おそらく、両方の用語が見つかるでしょう。 機能上の変更はありませんが、名前のみが変更されています。
+* Azure VPN ゲートウェイ関連の用語が変更されています。 おそらく、両方の用語が見つかるでしょう。 機能上の変更はありませんが、名前のみが変更されています。
   * 静的ルーティング = PolicyBased
   * 動的ルーティング = RouteBased
 * 高性能 VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
 
 > [!NOTE]
 > サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。                                                                                                                                                                               
->
->
 
 
 ## <a name="devicetable"></a>検証済みの VPN デバイス
@@ -102,58 +99,80 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="IPSec"></a>IPsec パラメーター
+## <a name="IPSec"></a>IPsec/IKE パラメーター
 > [!NOTE]
-> 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。 また、MSS は 1350 で固定する必要があります。
->
->
+> 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、Azure VPN Gateway の特定のアルゴリズムやパラメーターの組み合わせを指定 (または選択) する機構は現在ありません。 すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。
+> 
+> また、**MSS** は **1350** で固定する必要があります。
 
-### <a name="ike-phase-1-setup"></a>IKE フェーズ 1 セットアップ
-| **プロパティ** | **PolicyBased** | **RouteBased、および Standard または 高性能 VPN ゲートウェイ** |
-| --- | --- | --- |
-| IKE のバージョン |IKEv1 |IKEv2 |
-| Diffie-hellman グループ |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
-| 認証方法 |事前共有キー |事前共有キー |
-| 暗号化アルゴリズム |AES256 AES128 3DES |AES256 3DES |
-| ハッシュ アルゴリズム |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
-| フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) |28,800 秒 |10,800 秒 |
+以下の表で使われている用語について:
 
-### <a name="ike-phase-2-setup"></a>IKE フェーズ 2 セットアップ
-| **プロパティ** | **PolicyBased** | **RouteBased、および Standard または 高性能 VPN ゲートウェイ** |
-| --- | --- | --- |
-| IKE のバージョン |IKEv1 |IKEv2 |
-| ハッシュ アルゴリズム |SHA1(SHA128)、SHA2(SHA256) |SHA1(SHA128)、SHA2(SHA256) |
-| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) |3,600 秒 |3,600 秒 |
-| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) |102,400,000 KB |- |
-| IPsec SA 暗号化および認証のプラン (優先度順) |1.ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. 該当なし |「RouteBased ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン」を参照 (下記) |
-| Perfect Forward Secrecy (PFS) |いいえ |なし (*) |
-| Dead Peer Detection |サポートされていません |サポートされています |
+* SA = セキュリティ アソシエーション (Security Association)
+* IKE フェーズ 1 は "メイン モード" と呼ばれることもあります。
+* IKE フェーズ 2 は "クイック モード" と呼ばれることもあります。
 
-(*) IKE の応答側としての Azure ゲートウェイは、PFS DH グループ 1、2、5、14、24 を受け入れることができます。
+### <a name="ike-phase-1-main-mode-parameters"></a>IKE フェーズ 1 (メイン モード) のパラメーター
+| **プロパティ**          |**PolicyBased**    | **RouteBased**    |
+| ---                   | ---               | ---               |
+| IKE のバージョン           |IKEv1              |IKEv2              |
+| Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
+| 認証方法 |事前共有キー     |事前共有キー     |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| SA の有効期間           |28,800 秒     |10,800 秒     |
 
-### <a name="routebased-gateway-ipsec-security-association-sa-offers"></a>RouteBased ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン
-以下の表に、IPsec SA 暗号化および認証のプランを示します。 プランは提示される、または受け入れられる優先度順に表示されています。
+### <a name="ike-phase-2-quick-mode-parameters"></a>IKE フェーズ 2 (クイック モード) のパラメーター
+| **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
+| ---                           | ---           | ---                                         |
+| IKE のバージョン                   |IKEv1          |IKEv2                                        |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| SA の有効期間 (時間)            |3,600 秒  |3,600 秒                                |
+| SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
+| Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 
-| **IPsec SA 暗号化および認証のプラン** | **発信側としての Azure ゲートウェイ** | **応答側としての Azure ゲートウェイ** |
-| --- | --- | --- |
-| 1 |ESP AES_256 SHA |ESP AES_128 SHA |
-| 2 |ESP AES_128 SHA |ESP 3_DES MD5 |
-| 3 |ESP 3_DES MD5 |ESP 3_DES SHA |
-| 4 |ESP 3_DES SHA |AH SHA1 (ESP AES_128 null HMAC) |
-| 5 |AH SHA1 (ESP AES_256 null HMAC) |AH SHA1 (ESP 3_DES null HMAC) |
-| 6 |AH SHA1 (ESP AES_128 null HMAC) |AH MD5 (ESP 3_DES null HMAC)、有効期間の提示なし |
-| 7 |AH SHA1 (ESP 3_DES null HMAC) |AH SHA1 (ESP 3_DES SHA1)、有効期間なし |
-| 8 |AH MD5 (ESP 3_DES null HMAC)、有効期間の提示なし |AH MD5 (ESP 3_DES MD5)、有効期間なし |
-| 9 |AH SHA1 (ESP 3_DES SHA1)、有効期間なし |ESP DES MD5 |
-| 10 |AH MD5 (ESP 3_DES MD5)、有効期間なし |ESP DES SHA1、有効期間なし |
-| 11 |ESP DES MD5 |AH SHA1 (ESP DES null HMAC)、有効期間の提示なし |
-| 12 |ESP DES SHA1、有効期間なし |AH MD5 (ESP DES null HMAC)、有効期間の提示なし |
-| 13 |AH SHA1 (ESP DES null HMAC)、有効期間の提示なし |AH SHA1 ( ESP DES SHA1)、有効期間なし |
-| 14 |AH MD5 (ESP DES null HMAC)、有効期間の提示なし |AH MD5 (ESP DES MD5)、有効期間なし |
-| 15 |AH SHA1 ( ESP DES SHA1)、有効期間なし |ESP SHA、有効期間なし |
-| 16 |AH MD5 (ESP DES MD5)、有効期間なし |ESP MD5、有効期間なし |
-| 17 |- |AH SHA、有効期間なし |
-| 18 |- |AH MD5、有効期間なし |
+
+### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec セキュリティ アソシエーション (IKE クイック モード SA) プラン
+以下の表は、IPsec SA (IKE クイック モード) プランの一覧です。 プランは提示される、または受け入れられる優先度順に表示されています。
+
+#### <a name="azure-gateway-as-initiator"></a>発信側としての Azure ゲートウェイ
+|-  |**暗号化**|**認証**|**PFS グループ**|
+|---| ---          |---               |---          |
+| 1 |GCM AES256    |GCM (AES256)      |なし         |
+| 2 |AES256        |SHA1              |なし         |
+| 3 |3DES          |SHA1              |なし         |
+| 4 |AES256        |SHA256            |なし         |
+| 5 |AES128        |SHA1              |なし         |
+| 6 |3DES          |SHA256            |なし         |
+
+#### <a name="azure-gateway-as-responder"></a>応答側としての Azure ゲートウェイ
+|-  |**暗号化**|**認証**|**PFS グループ**|
+|---| ---          | ---              |---          |
+| 1 |GCM AES256    |GCM (AES256)      |なし         |
+| 2 |AES256        |SHA1              |なし         |
+| 3 |3DES          |SHA1              |なし         |
+| 4 |AES256        |SHA256            |なし         |
+| 5 |AES128        |SHA1              |なし         |
+| 6 |3DES          |SHA256            |なし         |
+| 7 |DES           |SHA1              |なし         |
+| 8 |AES256        |SHA1              |1            |
+| 9 |AES256        |SHA1              |2            |
+| 10|AES256        |SHA1              |14           |
+| 11|AES128        |SHA1              |1            |
+| 12|AES128        |SHA1              |2            |
+| 13|AES128        |SHA1              |14           |
+| 14|3DES          |SHA1              |1            |
+| 15|3DES          |SHA1              |2            |
+| 16|3DES          |SHA256            |2            |
+| 17|AES256        |SHA256            |1            |
+| 18|AES256        |SHA256            |2            |
+| 19|AES256        |SHA256            |14           |
+| 20|AES256        |SHA1              |24           |
+| 21|AES256        |SHA256            |24           |
+| 22|AES128        |SHA256            |なし         |
+| 23|AES128        |SHA256            |1            |
+| 24|AES128        |SHA256            |2            |
+| 25|AES128        |SHA256            |14           |
+| 26|3DES          |SHA1              |14           |
 
 * RouteBased および高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。 Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。  クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 * インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。

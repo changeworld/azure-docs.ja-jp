@@ -13,35 +13,168 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="getting-started-with-password-management"></a>パスワード管理の概要
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
 ユーザーは、簡単な手順を実行するだけで、自分のクラウドの Azure Active Directory パスワードまたはオンプレミス Active Directory パスワードを管理できるようになります。 いくつかの簡単な前提条件を満たせば、すぐに組織全体のパスワードの変更とリセットが実行できるようになります。 この記事では、次の概念を説明します。
 
+* [**開始する前に読む必要がある、お客様からの重要なヒント**](#top-tips-from-our-customers-to-read-before-you-begin)
+ * [**重要なヒント: ドキュメント ナビゲーション** - 目次とブラウザーの検索機能を使用して、回答を検索する](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+ * [**ヒント 1: ライセンス** - ライセンスの要件を確実に把握する](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+ * [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**ヒント 3: デプロイ** - ユーザーが登録する必要のないように、ユーザーのデータを事前に設定する](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+ * [**ヒント 4: デプロイ** - パスワード リセットを使用して、一時パスワードを連絡する必要性を取り除く](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+ * [**ヒント 5: ライトバック** - パスワード ライトバックのトラブルシューティングを行う際は、AAD Connect マシン上のアプリケーション イベント ログを調べる](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+ * [**ヒント 6: ライトバック** - パスワード ライトバック用の適切なアクセス許可、ファイアウォール規則、および接続設定が有効になっていることを確認する](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+ * [**ヒント 7: レポート** - 誰が登録しているかやパスワードをリセットしているかは Azure AD SSPR 監査ログで確認する](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+ * [**ヒント 8: トラブルシューティング** - さまざまな問題を解決する際は、トラブルシューティング ガイドと FAQ を参照する](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+ * [**ヒント 9: トラブルシューティング** - それでも解決しない場合は、サポートに必要な情報を提供する](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
 * [**Azure Active Directory パスワードのユーザーによるリセットを有効にする方法**](#enable-users-to-reset-their-azure-ad-passwords)
-  * [セルフサービスのパスワード リセットの前提条件](#prerequisites)
-  * [手順 1: パスワードのリセット ポリシーを構成する](#step-1-configure-password-reset-policy)
-  * [手順 2: テスト ユーザー用の連絡先データを追加する](#step-2-add-contact-data-for-your-test-user)
-  * [手順 3: ユーザーとしてパスワードをリセットする](#step-3-reset-your-azure-ad-password-as-a-user)
+ * [セルフサービスのパスワード リセットの前提条件](#prerequisites)
+ * [手順 1: パスワードのリセット ポリシーを構成する](#step-1-configure-password-reset-policy)
+ * [手順 2: テスト ユーザー用の連絡先データを追加する](#step-2-add-contact-data-for-your-test-user)
+ * [手順 3: ユーザーとしてパスワードをリセットする](#step-3-reset-your-azure-ad-password-as-a-user)
 * [**オンプレミス Active Directory パスワードのユーザーによるリセットまたは変更を有効にする方法**](#enable-users-to-reset-or-change-their-ad-passwords)
-  * [パスワード ライトバックの前提条件](#writeback-prerequisites)
-  * [手順 1: Azure AD Connect の最新バージョンをダウンロードする](#step-1-download-the-latest-version-of-azure-ad-connect)
-  * [手順 2: UI または PowerShell を使用して Azure AD Connect でパスワード ライトバックを有効にしてから確認する](#step-2-enable-password-writeback-in-azure-ad-connect)
-  * [手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)
-  * [手順 4: 適切な権限を設定する](#step-4-set-up-the-appropriate-active-directory-permissions)
-  * [手順 5: ユーザーとして AD パスワードをリセットしてから確認する](#step-5-reset-your-ad-password-as-a-user)
+ * [パスワード ライトバックの前提条件](#writeback-prerequisites)
+ * [手順 1: Azure AD Connect の最新バージョンをダウンロードする](#step-1-download-the-latest-version-of-azure-ad-connect)
+ * [手順 2: UI または PowerShell を使用して Azure AD Connect でパスワード ライトバックを有効にしてから確認する](#step-2-enable-password-writeback-in-azure-ad-connect)
+ * [手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)
+ * [手順 4: 適切な権限を設定する](#step-4-set-up-the-appropriate-active-directory-permissions)
+ * [手順 5: ユーザーとして AD パスワードをリセットしてから確認する](#step-5-reset-your-ad-password-as-a-user)
+
+## <a name="top-tips-from-our-customers-to-read-before-you-begin"></a>開始する前に読む必要がある、お客様からの重要なヒント
+お客様の組織にパスワード管理をデプロイする際に役立つと判断した重要なヒントをいくつか次に紹介します。
+
+* [**重要なヒント: ドキュメント ナビゲーション** - 目次とブラウザーの検索機能を使用して、回答を検索する](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
+* [**ヒント 1: ライセンス** - ライセンスの要件を確実に把握する](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
+* [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**ヒント 3: デプロイ** - ユーザーが登録する必要のないように、ユーザーのデータを事前に設定する](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
+* [**ヒント 4: デプロイ** - パスワード リセットを使用して、一時パスワードを連絡する必要性を取り除く](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
+* [**ヒント 5: ライトバック** - パスワード ライトバックのトラブルシューティングを行う際は、AAD Connect マシン上のアプリケーション イベント ログを調べる](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
+* [**ヒント 6: ライトバック** - パスワード ライトバック用の適切なアクセス許可、ファイアウォール規則、および接続設定が有効になっていることを確認する](#tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback)
+* [**ヒント 7: レポート** - 誰が登録しているかやパスワードをリセットしているかは Azure AD SSPR 監査ログで確認する](#tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs)
+* [**ヒント 8: トラブルシューティング** - さまざまな問題を解決する際は、トラブルシューティング ガイドと FAQ を参照する](#tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues)
+* [**ヒント 9: トラブルシューティング** - それでも解決しない場合は、サポートに必要な情報を提供する](#tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you)
+
+### <a name="top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers"></a>重要なヒント: ドキュメント ナビゲーション - 目次とブラウザーの検索機能を使用して、回答を検索する
+どのドキュメントを使用する場合でも、Microsoft では、学習を目的としている管理者にとって興味深い項目へのクイックリンクをすべて目次に表示するよう努めています。 
+
+以下の目次を確認してください。 
+* [Azure AD のパスワード リセット: ドキュメントの目次](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)
+
+### <a name="tip-1-licensing---make-sure-you-understand-the-licensing-requirements"></a>ヒント 1: ライセンス - ライセンスの要件を確実に把握する
+Azure AD のパスワード リセットが機能するには、組織で少なくとも&1; つのライセンスが割り当てられている必要があります。 パスワード リセット機能自体については、ユーザー数によるライセンスを設けていません。ただし、ユーザーにライセンスを割り当てずにこの機能を使用した場合は、Microsoft ライセンス契約に準拠していないと見なされ、それらのユーザーにライセンスを割り当てる必要があります。
+
+パスワード リセットを利用するために必要なライセンスを理解するのに役立つドキュメントをいくつか紹介します。
+* [パスワード リセットのライセンスに関する全般的な情報]()
+* [パスワード リセットのライセンスに関する機能別の情報]()
+* [パスワード ライトバックでサポートされているシナリオ]()
+
+### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>ヒント 2: テスト - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う
+管理者とテストする場合は、以下に示す管理者のパスワード リセット ポリシーが適用されます。  そのため、エンド ユーザー用に構成したポリシーの期待した結果は確認できません。
+
+管理 UX で構成したポリシーは、管理者ではなく、エンド ユーザーにのみ適用されます。 Microsoft では、組織の安全性を確実に維持するために、管理者に対して既定の強力なパスワード リセット ポリシーを適用します。このポリシーは、エンド ユーザーに対して設定したポリシーとは異なる場合があります。
+
+#### <a name="administrator-password-reset-policy"></a>管理者のパスワード リセット ポリシー
+* **適用対象** - すべての管理者ロール (グローバル管理者、ヘルプデスク管理者、パスワード管理者など)
+* **ワン ゲート ポリシーが適用される場合**
+ * 試用版の作成を開始してから最初の 30 日間、**または**
+ * バニティ ドメインが存在しない、**かつ** Azure AD Connect が ID を同期していない
+ * **_必要条件_**: 認証用電子メール、連絡用電子メール アドレス、認証用電話、携帯電話、または会社電話のうちのいずれか **1 つ**の値が存在すること
+* **ツー ゲート ポリシーが適用される場合** 
+ * 試用版の最初の 30 日間が経過した後、**または**
+ * バニティ ドメインが存在する、**または** 
+ * Azure AD Connect がオンプレミス環境から ID を同期できるようにしている
+ * _**必要条件**_: 認証用電子メール、連絡用電子メール アドレス、認証用電話、携帯電話、または会社電話のうちのいずれか **2 つ**の値が存在すること
+
+### <a name="tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register"></a>ヒント 3: デプロイ - ユーザーが登録する必要のないように、ユーザーのデータを事前に設定する
+パスワード リセット機能を使用するうえで、ユーザーによる登録が必要ないことを知らない人がたくさんいます。  ユーザーの電話または電子メールのプロパティを事前に設定しておくと、組織全体にパスワード リセットをすぐに展開できます。ユーザーは何もする必要が**ありません**。
+
+API、PowerShell、または Azure AD Connect を使用してこれを行う方法については、次のドキュメントを参照してください。
+* [ユーザーによる登録を必要としないパスワード リセットのデプロイ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [パスワードのリセットで使用されるデータ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords"></a>ヒント 4: デプロイ - パスワード リセットを使用して、一時パスワードを連絡する必要性を取り除く
+これは、ヒント 3 に関連しています。 ユーザーをパスワード リセット用に事前に構成したら、新入社員が入社した場合のシナリオについて考えてみます。 新入社員に一時パスワードを連絡する代わりに、[Azure AD パスワード リセット ポータル](https://passwordreset.microsoftonline.com)に案内して、パスワードをリセットしてもらうことができます。
+
+ユーザーは、[Windows 10 Azure AD ドメイン参加デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)を使用している場合、Windows 10 の標準のサインイン画面から直接リセットし、新しい PC にアクセスすることもできます。管理者は何もする必要がありません。
+
+API、PowerShell、または Azure AD Connect を使用してこれを行う方法については、次のドキュメントを参照してください。 このデータを事前に設定すると、ユーザーにパスワードをリセットしてもらうことで、ユーザーは自分のアカウントにすぐアクセスできるようになります。
+* [ユーザーによる登録を必要としないパスワード リセットのデプロイ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#deploying-password-reset-without-requiring-end-user-registration)
+* [パスワードのリセットで使用されるデータ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)
+
+### <a name="tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback"></a>ヒント 5: ライトバック - パスワード ライトバックのトラブルシューティングを行う際は、AAD Connect マシン上のアプリケーション イベント ログを調べる
+Azure AD Connect アプリケーション イベント ログには、パスワード ライトバック サービスに関連して発生したほとんどのイベントに関するリアルタイムの豊富なログ情報が含まれています。 このログにアクセスするには、次の手順に従います。
+
+1. **Azure AD Connect** マシンにサインインします。
+2. **[スタート]** ボタンを押し、「**イベント ビューアー**」と入力して、**Windows イベント ビューアー**を開きます。
+3. **アプリケーション** イベント ログを開きます。
+4. **PasswordResetService** または **ADSync** のイベントを探して、発生している可能性のある問題の詳細を確認します。
+
+このログに表示されるイベントの完全な一覧と、パスワード ライトバックのトラブルシューティング ガイダンスについては、次を参照してください。
+* [トラブルシューティング: パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [ライトバックのイベント ログのエラー コード](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [トラブルシューティング: パスワード ライトバックの接続](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [ライトバックのデプロイ - 手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)
+* [ライトバックのデプロイ - 手順 4: 適切な権限を設定する](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-6-writeback---ensure-you-enable-the-correct-permissions-firewall-rules-and-connection-settings-for-password-writeback"></a>ヒント 6: ライトバック - パスワード ライトバック用の適切なアクセス許可、ファイアウォール規則、および接続設定が有効になっていることを確認する
+ライトバックが正常に機能するためには、以下を確認する必要があります。
+
+1. パスワード ライトバックを使用するユーザーに対して適切な **Active Directory のアクセス許可**が設定されており、ユーザーが AD で自分のパスワードおよびアカウントのロック解除フラグを変更する権限を持っている
+2. パスワード ライトバック サービスが送信接続を使用して外部と安全に通信できるように適切な**ファイアウォール ポート**が開いている
+3. Service Bus など、主要なパスワード リセット サービスの URL に対して適切な**ファイアウォール例外**が設定されている
+4. **プロキシとファイアウォールでアイドル状態の送信接続が強制終了されない** (10 分以上をお勧めします)
+
+パスワード ライトバック用のアクセス許可とファイアウォール規則の構成に関するトラブルシューティング ガイダンスおよび固有のガイドラインの完全な一覧については、次を参照してください。
+* [トラブルシューティング: パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)
+* [ライトバックのイベント ログのエラー コード](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
+* [トラブルシューティング: パスワード ライトバックの接続](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)
+* [ライトバックのデプロイ - 手順 3: ファイアウォールを構成する](#step-3-configure-your-firewall)
+* [ライトバックのデプロイ - 手順 4: 適切な権限を設定する](#step-4-set-up-the-appropriate-active-directory-permissions)
+
+### <a name="tip-7-reporting---see-who-is-registering-or-resetting-passwords-with-the-azure-ad-sspr-audit-logs"></a>ヒント 7: レポート - 誰が登録しているかやパスワードをリセットしているかは Azure AD SSPR 監査ログで確認する 
+パスワード リセットがデプロイされて機能したら、次のステップとして、動作していることを確認し、それでも登録が必要なユーザー、リセットした場合にユーザーが直面する一般的な問題、将来の投資収益率を分析します。
+
+Azure AD のパスワード リセット監査ログを使用すると、これ以外にもさまざまなことを Azure Portal、PowerBI、Azure AD Reporting Events API、または PowerShell から実行できます。  これらのレポート機能を使用する方法の詳細については、次を参照してください。
+* [パスワード管理レポートの概要](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#overview-of-password-management-reports)
+* [Azure Portal でパスワード管理レポートを表示する方法](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-view-password-management-reports)
+* [Azure Portal でのセルフ サービスのパスワード管理アクティビティの種類](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#self-service-password-management-activity-types-in-the-new-azure-portal)
+* [Azure AD レポートおよびイベント API からパスワード管理イベントを取得する方法](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api)
+* [PowerShell を使用してパスワード リセット登録イベントをすばやくダウンロードする方法](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-get-insights#how-to-download-password-reset-registration-events-quickly-with-powershell)
+
+### <a name="tip-8-troubleshoot---read-our-troubleshooting-guide-and-faq-to-solve-many-issues"></a>ヒント 8: トラブルシューティング - さまざまな問題を解決する際は、トラブルシューティング ガイドと FAQ を参照する
+パスワード リセットには、豊富なトラブルシューティング ガイダンスと FAQ が用意されています。 質問がある場合は、以下のリンク先で答えを見つけることができます。
+
+さらに、[Azure Portal](https://portal.azure.com) の **[サポートとトラブルシューティング]** ブレードを使用して、(左側のナビゲーション ウィンドウの **[Azure Active Directory]** -> **[ユーザーとグループ]** -> **[パスワードのリセット]** -> **[サポートとトラブルシューティング]** にあるパスワード管理の管理者ユーザー エクスペリエンスから直接) 豊富なトラブルシューティング コンテンツにアクセスすることもできます。
+
+パスワード リセットのトラブルシューティング ガイダンスと FAQ へのリンク:
+* [パスワード管理のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot)
+* [パスワード管理に関する FAQ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-faq)
+
+### <a name="tip-9-troubleshoot---if-you-still-need-help-include-enough-information-for-us-to-assist-you"></a>ヒント 9: トラブルシューティング - それでも解決しない場合は、サポートに必要な情報を提供する
+それでもトラブルシューティングのサポートが必要な場合は、心配は要りません。 サポート ケースを開くか、アカウント管理チームに連絡して、Microsoft に直接問い合わせてもらうことができます。 お気軽にお問い合わせください。
+
+ただし、迅速に解決するために、問い合わせる前に、**以下で求められている情報がすべて集まっていることを確認**してください。
+* [ヘルプが必要な場合に含める情報](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#information-to-include-when-you-need-help)
+
+#### <a name="ways-to-provide-password-reset-feedback"></a>パスワード リセットのフィードバックを提供する方法
+* [機能に関する要求またはトラブルシューティング - Azure AD MSDN フォーラムに投稿する](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
+* [機能に関する要求またはトラブルシューティング - StackOverflow に投稿する](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [機能に関する要求またはトラブルシューティング - @azuread! でツイートする](https://twitter.com/azuread)
+* [機能に関する要求のみ - UserVoice に書き込む](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 ## <a name="enable-users-to-reset-their-azure-ad-passwords"></a>ユーザーによる Azure AD パスワードのリセットを有効にする
 このセクションでは、AAD クラウド ディレクトリに対してセルフサービスのパスワード リセットを有効化し、セルフサービスのパスワード リセットが実行できるようにユーザーを登録し、最後にユーザーとしてセルフサービスのパスワード リセットのテストを実行する方法について説明します。
@@ -267,11 +400,11 @@ Azure AD Connect ツールをダウンロードしたので、パスワード �
 
 パスワード ライトバックが正しく機能するには、Azure AD Connect を実行しているコンピューターが **.servicebus.windows.net* のほか、Azure が使用している IP アドレス (具体的には、[Microsoft Azure データセンターの IP 範囲リスト](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください) に対して送信方向の HTTPS 接続を確立できるようになっている必要があります。
 
-Azure AD Connect ツール **1.1.439.0** (最新) 以降の場合:
+Azure AD Connect ツール **1.1.443.0** (最新) 以降の場合:
 
 - 最新バージョンの Azure AD Connect ツールでは、以下のアドレスに対する**送信方向の HTTPS** アクセスが必要になります。
     - *passwordreset.microsoftonline.com*
-    - *servicbus.windows.net*
+    - *servicebus.windows.net*
 
 Azure AD Connect ツールのバージョンが **1.0.8667.0** ～ **1.1.380.0** の場合:
 
@@ -302,11 +435,11 @@ Azure AD Connect ツールのバージョンが **1.0.8667.0** ～ **1.1.380.0**
 
 ネットワーク アプライアンスの構成が終わったら、Azure AD Connect ツールを実行しているコンピューターを再起動してください。
 
-#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Azure AD Connect (1.1.439.0 以降) でのアイドル接続
+#### <a name="idle-connections-on-azure-ad-connect-114430-and-up"></a>Azure AD Connect (1.1.443.0 以降) でのアイドル接続
 Azure AD Connect ツールでは、接続が現在も有効であることを確認するために、ping または keepalive が ServiceBus エンドポイントに送信されます。 接続の強制終了がツールであまりにも多く検出される場合は、エンドポイントへの ping の送信頻度が自動的に上がります。 最短の "ping の送信間隔" は 60 秒あたり 1 ping ですが、**プロキシやファイアウォールではアイドル接続を 2 ～ 3 分以上維持できるようにすることを強くお勧めします。** \*これより前のバージョンでは、4 分以上が推奨されます。
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>手順 4: Active Directory の適切な権限を設定する
-パスワードをリセットするユーザーを含むすべてのフォレストについて、構成ウィザードでそのフォレストに対して (初期構成中に) 指定されたアカウントが X である場合、X には、そのフォレスト内の各ドメインで、`lockoutTime` の **[パスワードのリセット]**、**[パスワードの変更]**、**[書き込みアクセス許可]** や、`pwdLastSet` の **[書き込みアクセス許可]** など、ルート オブジェクトの拡張権限を付与する必要があります。 この権限は、すべてのユーザー オブジェクトにより継承されるものとしてマークされます。  
+パスワードをリセットするユーザーを含むすべてのフォレストについて、構成ウィザードでそのフォレストに対して (初期構成中に) 指定されたアカウントが X である場合、X には、そのフォレスト内の各ドメインのルート オブジェクトまたは SSPR の対象に含めるユーザー OU に対して、`lockoutTime` の **[パスワードのリセット]**、**[パスワードの変更]**、**[書き込みアクセス許可]** や `pwdLastSet` の **[書き込みアクセス許可]** など、拡張権限を付与する必要があります。  リセットのアクセス許可をドメインのルートに付与することが許容されないために、一連の特定のユーザー オブジェクトのみに限定する場合は、後者のオプションを使用できます。 この権限は、すべてのユーザー オブジェクトにより継承されるものとしてマークされます。  
 
 上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、 **[ソリューションの確認]** オプションをクリックします。  以下のスクリーンショットで、アクセス許可を追加する必要があるアカウントには赤色の下線が表示されています。
 
@@ -361,7 +494,7 @@ Azure AD Connect ツールでは、接続が現在も有効であることを確
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

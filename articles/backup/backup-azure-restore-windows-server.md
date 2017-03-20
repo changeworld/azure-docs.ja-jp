@@ -50,7 +50,7 @@ ms.lasthandoff: 02/02/2017
 2. [ **データの回復** ] をクリックして、ワークフローを開始します。
 
     ![データの回復](./media/backup-azure-restore-windows-server/recover.png)
-3. バックアップ ファイルを同じコンピューターに復元する場合は、**[このサーバー (コンピューター名)]**** オプションを選択します。
+3. バックアップ ファイルを同じコンピューターに復元する場合は、**[このサーバー (*コンピューター名*)]** オプションを選択します。
 
     ![Same machine](./media/backup-azure-restore-windows-server/samemachine.png)
 4. **[ファイルの参照]** または **[ファイルの検索]** を選択します。

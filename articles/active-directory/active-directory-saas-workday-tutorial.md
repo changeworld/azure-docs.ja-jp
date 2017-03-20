@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
+ms.sourcegitcommit: 1c22e4fc17226578aaaf272fdf79178da65c63c2
+ms.openlocfilehash: e6b1c8cbf45fea4f5af16231003ccc07a2a53233
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 ### <a name="to-enable-the-application-integration-for-workday-perform-the-following-steps"></a>Workday のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-workday-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-workday-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -50,7 +51,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 4. **アプリケーション ギャラリー**を開くには、**[アプリケーションの追加]**、**[組織で使用するアプリケーションを追加]** の順にクリックします。
    
-    ![どの操作を行いますか。](./media/active-directory-saas-workday-tutorial/IC700995.png "What do you want to do?")
+    ![実行する作業を選択してください。](./media/active-directory-saas-workday-tutorial/IC700995.png "実行する作業を選択してください。")
 
 5. **検索ボックス**に、「**Workday**」と入力します。
    
@@ -68,15 +69,15 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. **[Workday]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
-    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
 
 2. **[ユーザーの Workday へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
    
-    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
 
 3. **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![Configure App URL](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
    
     a. **[サインオン URL]** ボックスに、ユーザーが Workday へのサインオンに使用する URL を `https://impl.workday.com/<tenant>/login-saml2.htmld` という形式で入力します。
    
@@ -89,7 +90,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 4. **[Workday でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
  
-    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782922.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782922.png "Configure single sign-on")
 
 5. 別の Web ブラウザー ウィンドウで、Workday 企業サイトに管理者としてログインします。
 
@@ -99,7 +100,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 7. **[アカウント管理]**に移動します。
    
-    ![[アカウント管理]](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
+    ![Account Administration](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
 
 8. **[テナントのセットアップの編集 – セキュリティ]**に移動します。
    
@@ -107,7 +108,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 9. **[リダイレクト URL]** セクションで、次の手順を実行します。
    
-    ![[リダイレクト URL]](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
+    ![リダイレクト URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
    
     a. **[行の追加]** をクリックします。
    
@@ -124,7 +125,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 1. **[SAML 設定]** セクションで、次の手順を実行します。
    
-    ![[SAML 設定]](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
+    ![SAML のセットアップ](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
    
     a.  **[Enable SAML Authentication]**を選択します。
    
@@ -144,16 +145,16 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
     e. **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。 
 
-    ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "Create")
+    ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[x509 公開鍵の作成]** をクリックします。 
+    f. **[x509 公開鍵の作成]** をクリックします。 
 
-    ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "Create")
+    ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
 
 
 1. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。 
    
-    ![[x509 公開鍵の表示]](./media/active-directory-saas-workday-tutorial/IC782930.png "View x509 Public Key") 
+    ![x509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "x509 公開鍵の表示") 
    
     a. **[名前]** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
    
@@ -173,7 +174,7 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
     > 
     > 
    
-    e.  Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
+    e.  Base&64; でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
    
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
    
@@ -203,11 +204,11 @@ ms.openlocfilehash: a9b5410785c0d4a979d04483037069cad6a5dfd7
 
 3. Azure クラシック ポータルの **[Workday でのシングル サインオンの構成]** ページで、**[次へ]** をクリックします。 
    
-    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
 
 4. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。 
    
-    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782935111.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782935111.png "Configure single sign-on")
 
 ## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
 Workday にテスト ユーザーをプロビジョニングするには、Workday のサポート チームに連絡する必要があります。  
@@ -221,17 +222,12 @@ Workday のサポート チームにユーザーを作成してもらいます�
 
 2. **Workday** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-workday-tutorial/IC782935.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-workday-tutorial/IC782935.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
     ![はい](./media/active-directory-saas-workday-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

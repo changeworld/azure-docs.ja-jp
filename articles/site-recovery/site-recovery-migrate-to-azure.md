@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 2fb457166b4ebe61c11173aa75bdcd2fbce3f03d
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 981155c38bdc8cb54639d2271be1f3bd3036125c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -26,6 +26,9 @@ ms.lasthandoff: 02/23/2017
 仮想マシンと物理サーバーの移行に Azure Site Recovery サービスを使用する方法の概要については、この記事をご覧ください。
 
 Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。 プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。 詳細については、「 [Site Recovery とは](site-recovery-overview.md) クラウドへの移行を促進し、Azure が提供するさまざまな機能を利用するために、Site Recovery を使用して既存のオンプレミス ワークロードを Azure に移行することもできます。
+
+移行を実行する方法の簡単な概要については、次のビデオを参照してください。
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/ASRHowTo-Video2-Migrate-Virtual-Machines-to-Azure/player]
 
 この記事では、[Azure Portal](https://portal.azure.com) でのデプロイについて説明します。 [Azure クラシック ポータル](https://manage.windowsazure.com/)を使用すると、既存の Site Recovery コンテナーを管理できますが、新しいコンテナーを作成することはできません。
 

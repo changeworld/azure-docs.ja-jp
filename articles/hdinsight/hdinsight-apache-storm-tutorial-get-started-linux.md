@@ -13,7 +13,7 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
@@ -107,7 +107,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
 2. 次のコマンドを実行してトポロジの例を開始します。
    
-        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar storm jar org.apache.storm.starter.WordCountTopology wordcount
+        storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
    
     > [!NOTE]
     > 以前のバージョンの HDInsight では、トポロジのクラス名は `org.apache.storm.starter.WordCountTopology` ではなく `storm.starter.WordCountTopology` です。
@@ -199,7 +199,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 
 この Apache Storm チュートリアルでは、HDInsight での Storm の操作の基本ついて説明しました。 次は、 [Maven を使用して Java ベースのトポロジを開発](hdinsight-storm-develop-java-topology.md)する方法について説明します。
 

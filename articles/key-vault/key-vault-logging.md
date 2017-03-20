@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: 30b30513d5563cf64679e29c4858bf15f65d3a44
-ms.openlocfilehash: 015c997135eae9c936af1a1ec0b0064912baaa04
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -50,7 +50,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 * Azure PowerShell **1.0.1 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。  
 * Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
-## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>サブスクリプションへの接続
+## <a id="connect"></a>サブスクリプションへの接続
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
     Login-AzureRmAccount
@@ -65,9 +65,14 @@ Azure PowerShell セッションを開始し、次のコマンドで Azure ア�
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
+> [!NOTE]
+> これは重要な手順で、アカウントに複数のサブスクリプションが関連付けられている場合に特に便利です。 この手順をスキップすると、Microsoft.Insights を登録する際にエラーが発生する可能性があります。 
+>   
+>
+
 Azure PowerShell の構成の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
-## <a name="a-idstorageacreate-a-new-storage-account-for-your-logs"></a><a id="storage"></a>ログ用に新しいストレージ アカウントを作成する
+## <a id="storage"></a>ログ用に新しいストレージ アカウントを作成する
 既存のストレージ アカウントをログのために使用できますが、Key Vault のログ専用に新しいストレージ アカウントを作成することにします。 後でこれを指定することが必要になる場合に備えて、詳細情報を **sa**という名前の変数に格納します。
 
 また、管理を容易にするために、当該 Key Vault が含まれているリソース グループと同じリソース グループを使用します。 [入門チュートリアル](key-vault-get-started.md)に基づいて、このリソース グループには **ContosoResourceGroup** という名前を付け、東アジアの場所を引き続き使用します。 これらの値は、必要に応じて実際の値に置き換えてください。
@@ -80,13 +85,13 @@ Azure PowerShell の構成の詳細については、「[Azure PowerShell のイ
 > 
 > 
 
-## <a name="a-ididentifyaidentify-the-key-vault-for-your-logs"></a><a id="identify"></a>ログに対する Key Vault を識別する
+## <a id="identify"></a>ログに対する Key Vault を識別する
 入門チュートリアルで、Key Vault の名前は **ContosoKeyVault** としたので、この名前を引き続き使用し、詳細情報を **kv** という名前の変数に格納します。
 
     $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 
-## <a name="a-idenableaenable-logging"></a><a id="enable"></a>ログの有効化
+## <a id="enable"></a>ログの有効化
 Key Vault のログ記録を有効にするために、AzureRmDiagnosticSetting コマンドレットを、新しいストレージ アカウントおよび当該 Key Vault 用に作成した変数と組み合わせて使用します。 また、**-Enabled** フラグを **$true** に設定し、カテゴリを AuditEvent (Key Vault ログ記録専用のカテゴリ) に設定します。
 
     Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
@@ -117,11 +122,16 @@ Key Vault のログ記録を有効にするために、AzureRmDiagnosticSetting 
 * Key Vault 内のキーおよびシークレットに関する操作。これには、キーまたはシークレットの作成、変更、または削除といった操作に加えて、キーの署名、確認、暗号化、複合化、ラップ、およびラップ解除、シークレットの取得、キーとシークレットとこれらのバージョンの一覧表示などの操作も含まれます。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
 
-## <a name="a-idaccessaaccess-your-logs"></a><a id="access"></a>ログへのアクセス
+## <a id="access"></a>ログへのアクセス
 Key Vault のログは、指定したストレージ アカウント内の **insights-logs-auditevent** コンテナーに格納されます。 このコンテナー内のすべての BLOB を一覧表示するには、次のように入力します。
 
-    Get-AzureStorageBlob -Container 'insights-logs-auditevent' -Context $sa.Context
+最初に、コンテナー名の変数を作成します。 この変数は、チュートリアルの残りの部分で使用します。
 
+    $container = 'insights-logs-auditevent'
+
+このコンテナー内のすべての BLOB を一覧表示するには、次のように入力します。
+
+    Get-AzureStorageBlob -Container $container -Context $sa.Context
 出力は次のようになります。
 
 **Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
@@ -172,7 +182,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 * Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
-## <a name="a-idinterpretainterpret-your-key-vault-logs"></a><a id="interpret"></a>Key Vault のログを解釈する
+## <a id="interpret"></a>Key Vault のログを解釈する
 個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`を実行して得られたログ エントリの例を次に示します。
 
     {
@@ -253,11 +263,11 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | SecretList |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
-## <a name="a-idloganalyticsause-log-analytics"></a><a id="loganalytics"></a>Log Analytics を使用する
+## <a id="loganalytics"></a>Log Analytics を使用する
 
 Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault の AuditEvent ログを調査することができます。 詳細については、[Log Analytics の Azure Key Vault ソリューション](../log-analytics/log-analytics-azure-key-vault.md)に関するページをご覧ください。 この記事では、Log Analytics プレビューで提供された以前の Key Vault ソリューションから移行する必要がある場合の手順について説明しました。つまり、最初にログを Azure ストレージ アカウントにルーティングし、そこから読み取ることができるよう Log Analytics を構成しました。
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「 [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」を参照してください。
 
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。

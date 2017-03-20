@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: fc04c5f8a9cdee4b51c67b480d70678c3dca7c93
-ms.openlocfilehash: 49391b604446ae1b08d04ca42c5bdcd132f8cf31
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 1e961eccbc4fb8af90c7da831429c942f92bdf79
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -46,17 +47,25 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
-3. apt キーリングに新しい GPG キーを追加します。
+3. ソース リストに dotnet リポジトリを追加します。
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+4. apt キーリングに新しい GPG キーを追加します。
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
-4. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
+    ```bash
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    ```
+
+5. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
 
     ```bash
     sudo apt-get update
     ```
-
 ## <a name="install-and-set-up-the-sdk"></a>SDK をインストールしてセットアップする
 ソースが更新されたら、SDK をインストールできます。
 
@@ -136,16 +145,19 @@ Java SDK には、Java を使用して Service Fabric サービスを構築す�
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-Eclipse Neon IDE 内から Service Fabric 用 Eclipse プラグインをインストールできます。
+**Eclipse IDE for Java Developers** 内から Service Fabric 用 Eclipse プラグインをインストールできます。
 
-1. Eclipse で、Buildship バージョン 1.0.17 以降がインストールされていることを確認します。 **[Help (ヘルプ)]、[Installation Details (インストールの詳細)]** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、[こちら][buildship-update]の手順に従って更新できます。
+1. 最新の Eclipse **Neon** と Buildship バージョン (1.0.17 以降) がインストールされていることを Eclipse で確認します。 **[Help (ヘルプ)]、[Installation Details (インストールの詳細)]** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、[こちら][buildship-update]の手順に従って更新できます。
 2. **[Help (ヘルプ)]、[Install New Software (新しいソフトウェアのインストール)]** の順に選択して、Service Fabric プラグインをインストールします。
 3. [Work with (作業対象)] ボックスに、「http://dl.windowsazure.com/eclipse/servicefabric」と入力します。
 4. [追加] をクリックします。
-
-    ![Eclipse plugin][sf-eclipse-plugin]
+    ![Eclipse プラグイン][sf-eclipse-plugin]
 5. Service Fabric プラグインを選択し、[Next (次へ)] をクリックします。
 6. 指示に従ってインストールを実行し、使用許諾契約書に同意します。
+
+Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 [``Help => Installation Details``] の順に移動して、より新しいバージョンに更新できるかどうかを確認可能です。 次に、インストールされているプラグインの一覧で Service Fabric を探し、クリックして更新します。 保留中の更新があったら、取り込みとインストールが行われます。
+
+Service Fabric Eclipse プラグインを使用して Service Fabric Java アプリケーションの作成、ビルド、デプロイ、アップグレードを行う方法の詳細については、[Service Fabric での Eclipse の使用](service-fabric-get-started-eclipse.md)に関する詳細なガイドをご覧ください。
 
 ## <a name="install-the-net-core-sdk-optional"></a>.NET Core SDK をインストールする (省略可能)
 .NET Core SDK には、クロスプラットフォームの .NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
@@ -174,7 +186,8 @@ SDK とランタイムを最新バージョンに更新するには、次の手�
 CLI を更新する場合は、CLI をクローンしたディレクトリに移動し、`git pull` を実行して更新します。
 
 ## <a name="next-steps"></a>次のステップ
-* [Linux で最初の Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+* [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
+* [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
 * [Azure CLI を使用した Service Fabric アプリケーションの管理](service-fabric-azure-cli.md)
@@ -189,9 +202,4 @@ CLI を更新する場合は、CLI をクローンしたディレクトリに移
 
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

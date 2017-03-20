@@ -12,15 +12,17 @@ ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
+ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: 15412e67b6785812d00438e1819f24a6cb4fd0a8
+ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
+ms.openlocfilehash: 3a917b34c925965aacd161e8a01284d9a01bebae
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="using-azure-dns-with-other-azure-services"></a>Azure DNS を他の Azure サービスで使用する
+# <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS を他の Azure サービスと使用する方法
 
 Azure DNS は、ホストされる DNS 管理および名前解決サービスです。 このサービスによって、Azure にデプロイしている他のアプリケーションやサービスのパブリック DNS 名を作成できます。 カスタム ドメイン内の Azure サービスの名前の作成は、サービスに適した種類のレコードを追加するだけの単純な作業です。
 
@@ -38,10 +40,5 @@ Azure DNS は、ホストされる DNS 管理および名前解決サービス�
 | App Service |外部 IP |外部 IP アドレスには、DNS A レコードを作成できます。 それ以外の場合は、azurewebsites.net 名にマップする CNAME レコードを作成する必要があります。 詳細については、「 [Azure アプリへのカスタム ドメイン名のマッピング](../app-service-web/web-sites-custom-domain-name.md) |
 | Resource Manager VM |パブリック IP |Resource Manager VM はパブリック IP アドレスを持つことができます。 パブリック IP アドレスを持つ VM は、ロード バランサーの背後に配置されることもあります。 パブリック アドレスの DNS A または CNAME レコードを作成できます。 このカスタム名を使用して、ロード バランサーの VIP をバイパスできます。 |
 | クラシック VM |パブリック IP |PowerShell または CLI は使用して作成したクラシック VM には、動的または静的 (予約済み) 仮想アドレスを構成できます。 それぞれに DNS CNAME または A レコードを作成できます。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

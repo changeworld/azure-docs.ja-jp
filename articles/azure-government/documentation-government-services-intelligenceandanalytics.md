@@ -15,16 +15,16 @@ ms.workload: azure-government
 ms.date: 12/06/2016
 ms.author: MeganYount
 translationtype: Human Translation
-ms.sourcegitcommit: 14fb62669e15873770ef9b8470e34db70f1ca2ca
-ms.openlocfilehash: 2b89d78e20cccee81c9581e762e4c61bacd84fd4
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 0233aa66bc4f4f135456ec15bd09756e63192b14
+ms.lasthandoff: 03/06/2017
 
 
 ---
 # <a name="azure-government-intelligence--analytics"></a>Azure Government のインテリジェンスと分析
 この記事では、Azure Government 環境でのインテリジェンスと分析に関するサービスのバリエーションと、考慮事項の概要を紹介します。
 
-## <a name="azure-hdinsight"></a>Azure HDInsight
+## <a name="hdinsight"></a>HDInsight
 Linux Standard 版の HDInsight は Azure Government で一般提供されています。 HDInsight を使用して Azure Government でデータ中心のソリューションを構築する方法を、<a href=https://channel9.msdn.com/Blogs/Azure/Cognitive-Services-HDInsight-and-Power-BI-on-Azure-Government/>こちら</a>のデモでご覧いただけます。
 
 Linux Premium 版の HDInsight は間もなく提供されます。
@@ -33,7 +33,7 @@ Linux Premium 版の HDInsight は間もなく提供されます。
 HDInsight の次の機能は、Azure Government では現在使用できません。
 
 * HDInsight は Windows では利用できません。
-* Azure Data Lake Store は、Azure Government で現在使用できません。 Azure Blob Storage は、現時点で使用できる唯一のストレージ オプションです。
+* Azure Data Lake Store は、Azure Government で現在使用できません。 Azure Blob Storage は、現在使用できる唯一のストレージ オプションです。
 
 Azure Government では、Log Analytics の URL が異なります。
 

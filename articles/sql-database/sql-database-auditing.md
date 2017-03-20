@@ -3,7 +3,7 @@ title: "Azure SQL Database 監査の使用 | Microsoft Docs"
 description: "SQL Database 監査の使用"
 services: sql-database
 documentationcenter: 
-author: ronitr
+author: giladm
 manager: jhubbard
 editor: giladm
 ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
@@ -13,12 +13,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
-ms.author: ronitr; giladm
+ms.date: 7/3/2017
+ms.author: giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 506fd7b5cbf11dd4d9348962db5e06077953bd51
-ms.openlocfilehash: 185c6aaa2db0820421c8ea3523865bc90a1475f7
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 6b5b357c996f5c4642e61b09c5a7e5e0ec6a93c7
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -42,7 +42,7 @@ SQL Database 監査により、以下のことが可能になります。
 
 **監査方法**は&2; つあります。
 
-* **BLOB の監査** - Azure Blob ストレージにログが書き込まれます。 これは新しいほうの監査方法です。**パフォーマンスが高く**、**細かなオブジェクト レベルの監査が可能**であり、**対費用効果が高く**なります。
+* **BLOB の監査** - Azure Blob Storage にログが書き込まれます。 これは新しいほうの監査方法です。**パフォーマンスが高く**、**細かなオブジェクト レベルの監査が可能**であり、**対費用効果が高く**なります。
 * **テーブルの監査** - Azure Table Storage にログが書き込まれます。
 
 > [!IMPORTANT]
@@ -76,7 +76,8 @@ SQL Database 監査により、以下のことが可能になります。
     <a id="storage-screenshot"></a>
     ![ナビゲーション ウィンドウ][4]
 6. 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[Automation (PowerShell / REST API)](#subheading-7)」セクションを参照してください。
-7. **[保存]**をクリックします。
+7. 監査設定を構成したら、新しい**脅威の検出** (プレビュー) 機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、 [脅威の検出の概要](sql-database-threat-detection-get-started.md) に関するページを参照してください。
+8. **[保存]**をクリックします。
 
 ### <a id="subheading-2-2">テーブルの監査</a>
 
@@ -134,9 +135,9 @@ SQL Database 監査により、以下のことが可能になります。
 **BLOB** 監査ログと**テーブル**監査ログの分析については、以降のセクションを参照してください。
 
 ### <a id="subheading-3-1">BLOB の監査</a>
-BLOB 監査は "**sqldbauditlogs**" という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
+BLOB 監査ログは "**sqldbauditlogs**" という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
 
-BLOB 監査ログのストレージ フォルダー階層、BLOB の命名規則、ログ形式の詳細については、「[BLOB 監査ログ形式のリファレンス (doc ファイルのダウンロード)](https://go.microsoft.com/fwlink/?linkid=829599)」を参照してください。
+BLOB 監査ログのストレージ フォルダー階層、BLOB の命名規則、ログ形式の詳細については、[BLOB 監査ログ形式のリファレンス ](https://go.microsoft.com/fwlink/?linkid=829599)に関するダウンロード版 doc ファイルを参照してください。
 
 BLOB 監査ログはいくつかの方法で表示できます。
 
@@ -282,3 +283,4 @@ Geo レプリケーション対応データベースを使用するとき、監�
 [105]: https://msdn.microsoft.com/library/azure/mt603531(v=azure.200).aspx
 [106]: https://msdn.microsoft.com/library/azure/mt603794(v=azure.200).aspx
 [107]: https://msdn.microsoft.com/library/azure/mt619353(v=azure.200).aspx
+

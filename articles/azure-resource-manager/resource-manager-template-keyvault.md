@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 06/23/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: f72ae06c2e31de5d8a1121a9e265c23f016fffe9
+ms.sourcegitcommit: f2d009477a614c3b2876ce98a355d3775abf772b
+ms.openlocfilehash: 04f2d5d8e501ebf41cf95ea925d238f64b096c1d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
         "properties": {
             "enabledForDeployment": bool,
             "enabledForTemplateDeployment": bool,
-            "enabledForVolumeEncryption": bool,
+            "enabledForDiskEncryption": bool,
             "tenantId": string,
             "accessPolicies": [
                 {
@@ -63,7 +64,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 | --- | --- |
 | type |列挙型<br />必須<br />**Microsoft.KeyVault/vaults**<br /><br />作成するリソースの種類。 |
 | apiVersion |列挙型<br />必須<br />**2015-06-01** または **2014-12-19-preview**<br /><br />リソースの作成に使用する API バージョン。 |
-| 名前 |String<br />必須<br />Azure 全体で一意の名前。<br /><br />作成する Key Vault 名。 以下の例に示すように、名前付け規則で [uniqueString](resource-group-template-functions.md#uniquestring) 関数を使用して一意の名前を作成することを検討してください。 |
+| 名前 |string<br />必須<br />Azure 全体で一意の名前。<br /><br />作成する Key Vault 名。 以下の例に示すように、名前付け規則で [uniqueString](resource-group-template-functions.md#uniquestring) 関数を使用して一意の名前を作成することを検討してください。 |
 | location |string<br />必須<br />Key Vault の有効なリージョン。 有効なリージョンを確認するには、「[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)」を参照します。<br /><br />Key Vault をホストするリージョン。 |
 | プロパティ |オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />作成する Key Vault の種類を指定するオブジェクト。 |
 | resources |array<br />省略可能。<br />使用できる値: [Key Vault のシークレット リソース](resource-manager-template-keyvault-secret.md)<br /><br />Key Vault の子リソース。 |
@@ -75,7 +76,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 | --- | --- |
 | enabledForDeployment |Boolean<br />省略可能。<br />**true** または **false**<br /><br />仮想マシン デプロイまたは Service Fabric デプロイで Key Vault が有効かどうかを指定します。 |
 | enabledForTemplateDeployment |Boolean<br />省略可能。<br />**true** または **false**<br /><br />Resource Manager テンプレート デプロイで Key Vault を使用できるかどうかを指定します。 詳細については、「 [」デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md) |
-| enabledForVolumeEncryption |Boolean<br />省略可能。<br />**true** または **false**<br /><br />Key Vault でボリュームの暗号化が有効かどうかを指定します。 |
+| enabledForDiskEncryption |BOOLEAN<br />省略可能。<br />**true** または **false**<br /><br />Key Vault でボリュームの暗号化が有効かどうかを指定します。 |
 | tenantId |String<br />必須<br />**Globally-unique identifier**<br /><br />サブスクリプションのテナント ID。 これは、 [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell コマンドレットまたは **azure account show** Azure CLI コマンドで取得できます。 |
 | accessPolicies |array<br />必須<br />[accessPolicies object](#accesspolicies)<br /><br />ユーザーまたはサービス プリンシパルのアクセス許可を指定した、最大 16 オブジェクトの配列。 |
 | sku |オブジェクト<br />必須<br />[sku object](#sku)<br /><br />Key Vault の SKU。 |
@@ -169,7 +170,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
                     "description": "Specifies if the vault is enabled for ARM template deployment"
                 }
             },
-            "enableVaultForVolumeEncryption": {
+            "enableVaultForDiskEncryption": {
                 "type": "bool",
                 "defaultValue": false,
                 "metadata": {
@@ -201,7 +202,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
             "properties": {
                 "enabledForDeployment": "[parameters('enabledForDeployment')]",
                 "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-                "enabledForVolumeEncryption": "[parameters('enableVaultForVolumeEncryption')]",
+                "enabledForDiskEncryption": "[parameters('enableVaultForDiskEncryption')]",
                 "tenantId": "[parameters('tenantId')]",
                 "accessPolicies": [
                 {
@@ -240,10 +241,5 @@ Key Vault は、次のクイック スタート テンプレートによって�
 ## <a name="next-steps"></a>次のステップ
 * Key Vault の全般的な情報については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
 * テンプレートをデプロイメントするときに Key Vault のシークレットを参照する例については、「 [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

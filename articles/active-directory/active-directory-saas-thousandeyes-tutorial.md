@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: e0f85965cb884022f665d3664bc2b824095ad0fe
+ms.sourcegitcommit: 2924309737f2bc631e4e4f764bc7e8473353e865
+ms.openlocfilehash: 567917ee7c602a9971cf74367a1f6fcb96002e56
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -42,17 +43,17 @@ ms.openlocfilehash: e0f85965cb884022f665d3664bc2b824095ad0fe
 ### <a name="to-enable-the-application-integration-for-thousandeyes-perform-the-following-steps"></a>ThousandEyes のアプリケーション統合を有効にするには、次の手順に従います。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
-    ![[Active Directory]](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
    
-    ![[アプリケーション]](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "Applications")
 
 4. ページの下部にある **[追加]** をクリックします。
    
-    ![[アプリケーションの追加]](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "Add application")
 
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
    
@@ -79,7 +80,7 @@ ms.openlocfilehash: e0f85965cb884022f665d3664bc2b824095ad0fe
 
 3. **[アプリケーション URL の構成]** ページの **[ThousandEyes のサインオン URL]** テキストボックスに、ユーザーが ThousandEyes アプリケーションにサインオンするときに使用する URL (例: "*https://app.thousandeyes.com/login/sso*") を入力し、**[次へ]** をクリックします。 
    
-    ![Configure App URL](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
 
 4. **[ThousandEyes でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
    
@@ -89,19 +90,19 @@ ms.openlocfilehash: e0f85965cb884022f665d3664bc2b824095ad0fe
 
 6. 上部のメニューで **[Settings]**をクリックします。
    
-    ![[Settings]](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+    ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
 7. ページの下部にある **[Account]**
    
-    ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
 
 8. **[Security & Authentication]** タブをクリックします。
    
-    ![[Security & Authentication]](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
+    ![セキュリティと認証](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
 
 9. **[Setup Single Sign-On]** セクションで、次の手順を実行します。
    
-    ![[Setup Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
+    ![シングル サインオンの設定](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
    
     a. **[シングル サインオンを有効にする]**を選択します。
    
@@ -126,23 +127,23 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
 ### <a name="to-provision-a-user-account-to-thousandeyes-perform-the-following-steps"></a>ユーザー アカウントを ThousandEyes にプロビジョニングするには、次の手順に従います。
 1. ThousandEyes 企業サイトに管理者としてログインします。
 
-2. **[Settings]**をクリックします。
+2. **[設定]**をクリックします。
    
-    ![[Settings]](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+    ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
 3. [ **アカウント**] クリックします。
    
-    ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
 
 4. **[Accounts & Users]** タブをクリックします。
    
-    ![[Accounts & Users]](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
+    ![アカウントとユーザー](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
 
 5. **[Add Users & Accounts]** セクションで、次の手順を実行します。
    
     ![ユーザー アカウントの追加](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 プロビジョニングする有効な Azure Active Directory アカウントの **[Name]**、**[Email]**、その他の詳細を該当するボックスに入力します。
+    a. プロビジョニングする有効な Azure Active Directory アカウントの **[Name]**、**[Email]**、その他の詳細を該当するボックスに入力します。
    
     b. **[Add New User to Account]**をクリックします。
       
@@ -164,17 +165,12 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
 
 2. **ThousandEyes** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
-    ![[ユーザーの割り当て]](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "Assign Users")
 
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
    
     ![はい](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

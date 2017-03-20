@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
-ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -104,7 +104,7 @@ SQL Data Warehouse は、大規模な並列処理用に設計された特殊な�
 
     ![サーバー名を選択する](./media/sql-data-warehouse-get-started-tutorial/select-server.png)
 
-3. SSMS を開き、オブジェクト エクスプローラーで、「[前提条件]」で作成した管理者の資格情報を使用して、このサーバーに接続します。
+3. SSMS を開き、オブジェクト エクスプローラーで、「[前提条件]」で作成したサーバー管理者の資格情報を使用して、このサーバーに接続します。
 
     ![SSMS で接続する](./media/sql-data-warehouse-get-started-tutorial/ssms-connect.png)
 
@@ -415,13 +415,13 @@ Azure Active Directory 管理者アカウントを利用することもできま
         REJECT_VALUE = 0
     )
     ;
-    ```
+```
 
-### Import the data from Azure blob storage.
+### <a name="import-the-data-from-azure-blob-storage"></a>Azure Blob Storage からデータをインポートします。
 
-SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS). This statement creates a new table based on the results of a select statement. The new table has the same columns and data types as the results of the select statement.  This is an elegant way to import data from Azure blob storage into SQL Data Warehouse.
+SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要なステートメントをサポートしています。 このステートメントにより、select ステートメントの結果に基づいた新しいテーブルが作成されます。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。  この方法なら、Azure Blob Storage から SQL Data Warehouse へのデータのインポートが効率よく行えます。
 
-1. Run this script to import your data.
+1. 次のスクリプトを実行して、データをインポートします。
 
     ```sql
     CREATE TABLE [dbo].[Date]
@@ -496,9 +496,9 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
     ;
     ```
 
-2. View your data as it loads.
+2. 読み込んだデータを表示します。
 
-   You’re loading several GBs of data and compressing it into highly performant clustered columnstore indexes. Run the following query that uses a dynamic management views (DMVs) to show the status of the load. After starting the query, grab a coffee and a snack while SQL Data Warehouse does some heavy lifting.
+   数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 動的管理ビュー (DMV) を使用する次のクエリを実行して、読み込みの状態を表示します。 SQL Data Warehouse での処理にはある程度の時間がかかります。クエリを開始したら、完了するまでお待ちください。
     
     ```sql
     SELECT
@@ -528,62 +528,61 @@ SQL Data Warehouse supports a key statement called CREATE TABLE AS SELECT (CTAS)
         gb_processed desc;
     ```
 
-3. View all system queries.
+3. すべてのシステム クエリを表示します。
 
     ```sql
     SELECT * FROM sys.dm_pdw_exec_requests;
     ```
 
-4. Enjoy seeing your data nicely loaded into your Azure SQL Data Warehouse.
+4. Azure SQL Data Warehouse にデータが適切に読み込まれました。
 
-    ![See Data Loaded](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
+    ![データが読み込まれたことを確認する](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
 
 
-## Improve query performance
+## <a name="improve-query-performance"></a>クエリ パフォーマンスの向上
 
-There are several ways to improve query performance and to achieve the high-speed performance that SQL Data Warehouse is designed to provide.  
+クエリ パフォーマンスを向上させ、高速なパフォーマンスを実現するために、SQL Data Warehouse ではいくつかの方法が用意されています。  
 
-### See the effect of scaling on query performance 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>スケーリングによるクエリ パフォーマンスへの効果の確認 
 
-One way to improve query performance is to scale resources by changing the DWU service level for your data warehouse. Each service level costs more, but you can scale back or pause resources at any time. 
+クエリ パフォーマンスを向上させる方法の&1; つは、データ ウェアハウスの DWU サービス レベルを変更することで、リソースをスケーリングすることです。 各サービス レベルでのコストは高くなりますが、スケールバックまたはリソースの一時停止はいつでも実施できます。 
 
-In this step, you compare performance at two different DWU settings.
+この手順では、2 つの異なる DWU 設定におけるパフォーマンスを比較します。
 
-First, let's scale the sizing down to 100 DWU so we can get an idea of how one compute node might perform on its own.
+最初に、1 つのコンピューティング ノード単独でのパフォーマンスがわかるように、サイズを 100 DWU にスケールダウンします。
 
-1. Go to the portal and select your SQL Data Warehouse.
+1. ポータルに移動し、お使いの SQL Data Warehouse を選択します。
 
-2. Select scale in the SQL Data Warehouse blade. 
+2. SQL Data Warehouse ブレードで、スケールを選択します。 
 
-    ![Scale DW From portal](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
+    ![ポータルから DW をスケーリングする](./media/sql-data-warehouse-get-started-tutorial/scale-dw.png)
 
-3. Scale down the performance bar to 100 DWU and hit save.
+3. パフォーマンス バーを 100 DWU にスケールダウンし、保存します。
 
-    ![Scale and save](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
+    ![スケーリングして保存する](./media/sql-data-warehouse-get-started-tutorial/scale-and-save.png)
 
-4. Wait for your scale operation to finish.
+4. スケーリング操作が完了するまで待ちます。
 
     > [!NOTE]
-    > Queries cannot run while changing the scale. Scaling **kills** your currently running queries. You can restart them when the operation is finished.
+    > スケールの変更中は、クエリを実行できません。 スケーリングにより、現在実行中のクエリは**中止**されます。 操作が完了したら、再開できます。
     >
     
-5. Do a scan operation on the trip data, selecting the top million entries for all the columns. If you're eager to move on quickly, feel free to select fewer rows. Take note of the time it takes to run this operation.
+5. すべての列の上位&100; 万エントリを選択して、乗車データに対するスキャン操作を実行します。 早く先へ進みたい場合は、選択する行を少なくしてもかまいません。 この操作の実行にかかった時間を書き留めておきます。
 
     ```sql
     SELECT TOP(1000000) * FROM dbo.[Trip]
     ```
-6. Scale your data warehouse back to 400 DWU. Remember, each 100 DWU is adding another compute node to your Azure SQL Data Warehouse.
+6. データ ウェアハウスを 400 DWU にスケールバックします。 100 DWU ごとに、1 つのコンピューティング ノードが Azure SQL Data Warehouse に追加されることに注意してください。
 
-7. Run the query again! You should notice a significant difference. 
+7. もう一度クエリを実行します。 大きな違いに気付くはずです。 
 
 > [!NOTE]
-> Since SQL Data Warehouse uses massively parallel processing. Queries that scan or perform analytic functions on millions of rows experience the true power of
-> Azure SQL Data Warehouse.
+> Azure SQL Data Warehouse では、超並列処理を使用しています。 Azure SQL Data Warehouse の真価は、特に数百万行のデータに対してスキャンまたは分析機能を実行するクエリにおいて発揮されます。
 >
 
-### See the effect of statistics on query performance
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>統計によるクエリ パフォーマンスへの効果の確認
 
-1. Run a query that joins the Date table with the Trip table
+1. Date テーブルと Trip テーブルを結合するクエリを実行します。
 
     ```sql
     SELECT TOP (1000000) 
@@ -615,10 +614,10 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
         ON  tr.DateID = dt.DateID
     ```
 
-    This query takes a while because SQL Data Warehouse has to shuffle data before it can perform the join. Joins do not have to shuffle data if they are designed to join data in the same way it is distributed. That's a deeper subject. 
+    このクエリの実行には少々時間がかかります。結合を実行する前に、SQL Data Warehouse でデータをシャッフルする必要があるためです。 分散されたときと同じ方法でデータを結合する場合、結合時にデータをシャッフルする必要はありません。 それは別の問題となります。 
 
-2. Statistics make a difference. 
-3. Run this statement to create statistics on the join columns.
+2. 統計のパフォーマンスが向上します。 
+3. 次のステートメントを実行して、結合列の統計を作成します。
 
     ```sql
     CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
@@ -626,48 +625,45 @@ First, let's scale the sizing down to 100 DWU so we can get an idea of how one c
     ```
 
     > [!NOTE]
-    > SQL DW does not automatically manage statistics for you. Statistics are important for query
-    > performance and it is highly recommended you create and update statistics.
+    > SQL DW では、統計は自動的には管理されません。 統計はクエリのパフォーマンスにとって重要なため、統計を作成および更新することを強くお勧めします。
     > 
-    > **You gain the most benefit by having statistics on columns involved in joins, columns
-    > used in the WHERE clause and columns found in GROUP BY.**
+    > **結合に含まれる列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。**
     >
 
-3. Run the query from Prerequisites again and observe any performance differences. While the differences in query performance will not be as drastic as scaling up, you should notice a  speed-up. 
+3. 前提条件のクエリを再実行し、パフォーマンスの違いを観察します。 クエリのパフォーマンスの違いは、スケールアップした場合ほど劇的ではありませんが、高速化したことがわかります。 
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-You're now ready to query and explore. Check out our best practices or tips.
+これで、クエリを実行して探索する準備ができました。 ベスト プラクティスやヒントを確認してください。
 
-If you're done exploring for the day, make sure to pause your instance! In production, you can experience enormous 
-savings by pausing and scaling to meet your business needs.
+一日の作業を終了した場合は、インスタンスを一時停止するようにしてください。 運用環境では、一時停止とビジネス ニーズに合わせたスケーリングによって、さまざまな節約が可能になります。
 
-![Pause](./media/sql-data-warehouse-get-started-tutorial/pause.png)
+![一時停止](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
-## Useful readings
+## <a name="useful-readings"></a>有益な参考情報
 
-[Concurrency and Workload Management][]
+[同時実行とワークロード管理][]
 
-[Best practices for Azure SQL Data Warehouse][]
+[Azure SQL Data Warehouse のベスト プラクティス][]
 
-[Query Monitoring][]
+[クエリ監視][]
 
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse][]
+[大規模なリレーショナル データ ウェアハウスを構築するためのベストプラクティスのトップ 10][]
 
-[Migrating Data to Azure SQL Data Warehouse][]
+[Azure SQL Data Warehouse へのデータの移行][]
 
-[Concurrency and Workload Management]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
-[Best practices for Azure SQL Data Warehouse]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
-[Query Monitoring]: sql-data-warehouse-manage-monitor.md
-[Top 10 Best Practices for Building a Large Scale Relational Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
-[Migrating Data to Azure SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example
+[Azure SQL Data Warehouse のベスト プラクティス]: sql-data-warehouse-best-practices.md#hash-distribute-large-tables
+[クエリ監視]: sql-data-warehouse-manage-monitor.md
+[大規模なリレーショナル データ ウェアハウスを構築するためのベストプラクティスのトップ 10]: https://blogs.msdn.microsoft.com/sqlcat/2013/09/16/top-10-best-practices-for-building-a-large-scale-relational-data-warehouse/
+[Azure SQL Data Warehouse へのデータの移行]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 
 
 [!INCLUDE [Additional Resources](../../includes/sql-data-warehouse-article-footer.md)]
 
 <!-- Internal Links -->
-[Prerequisites]: sql-data-warehouse-get-started-tutorial.md#prerequisites
+[前提条件]: sql-data-warehouse-get-started-tutorial.md#prerequisites
 
 <!--Other Web references-->
 [Visual Studio]: https://www.visualstudio.com/

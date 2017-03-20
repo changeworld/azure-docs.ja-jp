@@ -15,14 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8284fa063d8ffa0d9951b77eb06be14159fc2561
-ms.openlocfilehash: 5b40d5476d85a4eeba65f01320e0ea03ed4debaa
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 3aeefecabb72b57c64fb47aeb5b6523b9ff3239b
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="automating-application-deployments-to-azure-virtual-machines"></a>Azure Virtual Machines へのアプリケーションのデプロイを自動化する
+# <a name="automating-application-deployments-to-windows-virtual-machines"></a>Windows Virtual Machines へのアプリケーションのデプロイを自動化する
+
 この&4; 部構成のシリーズでは、Azure Resource Manager テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。
 
 ## <a name="music-store-application"></a>ミュージック ストア アプリケーション

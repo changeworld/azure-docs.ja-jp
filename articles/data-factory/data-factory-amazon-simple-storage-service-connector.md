@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 02/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
+ms.sourcegitcommit: bf5010537d222045b5bf13d85cab6c48c9659ed0
+ms.openlocfilehash: b055342d8e11e4d38688681b36ef9a1f717fdf15
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -29,9 +30,9 @@ ms.openlocfilehash: 92195f4479f429f0911d9e2ca7be29c1aef7785e
 Amazon S3 からデータをコピーするには、次のアクセス許可が付与されている必要があります。
 
 * Amazon S3 オブジェクトの操作には **s3:GetObject** と **s3:GetObjectVersion**
-* Amazon S3 バケットの操作には **s3:ListBucket** と **s3:ListAllMyBuckets** (コピー ウィザードだけで使用)
+* Amazon S3 バケット操作には **s3:ListBucket**。 コピー ウィザードを使用している場合は、**s3:ListAllMyBuckets** も必要です。
 
-Amazon S3 のアクセス許可の完全な一覧と詳細については、「[Specifying Permissions in a Policy (ポリシーでのアクセス許可の指定)](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
+Amazon S3 のアクセス許可の完全な一覧と詳細については、「[ポリシーでのアクセス許可の指定](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
 Amazon S3 からデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
@@ -238,7 +239,7 @@ Amazon S3 からデータをコピーするパイプラインを作成する最�
 | key |S3 オブジェクト キー。 |string |なし |
 | prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |string |なし |
 | version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |string |なし |
-| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |なし | |
+| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ | |
 
 
@@ -340,9 +341,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 次の記事を参照してください。
 
 * [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

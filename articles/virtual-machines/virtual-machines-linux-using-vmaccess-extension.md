@@ -1,6 +1,6 @@
 ---
-title: "VMAccess 拡張機能と Azure CLI 2.0 (プレビュー) を使用したアクセスのリセット | Microsoft Docs"
-description: "VMAccess 拡張機能と Azure CLI 2.0 (プレビュー) を使用して Linux VM 上のユーザーを管理し、アクセスをリセットする方法"
+title: "VMAccess 拡張機能と Azure CLI 2.0 を使用したアクセスのリセット | Microsoft Docs"
+description: "VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上のユーザーを管理し、アクセスをリセットする方法"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -16,32 +16,25 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 98646daf5a4d2c9aca7dfc02a36f39d12f749443
-ms.openlocfilehash: 7752b486bda4a68b14ff3e8aaf1a369a649c83b5
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
+ms.openlocfilehash: 4fac98d37dde195af69d8bd03fd796c6eeae3734
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20-preview"></a>VMAccess 拡張機能と Azure CLI 2.0 (プレビュー) を使用して、Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
-この記事では、Azure VMAcesss 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、ユーザー アカウントの管理、またはSSHD 構成のリセットを行う方法を説明します。
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0 (プレビュー)](#ways-to-use-the-vmaccess-extension) - Resource Manager デプロイメント モデル用の次世代 CLI (この記事)
+この記事では、Azure VMAcesss 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、ユーザー アカウントの管理、またはSSHD 構成のリセットを行う方法を説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>VMAccess 拡張機能の使用方法
 Linux VM で VMAccess 拡張機能を使用する方法は&2; つあります。
 
-* Azure CLI 2.0 (プレビュー) と必要なパラメーターを使用する。
+* Azure CLI 2.0 と必要なパラメーターを使用する。
 * [VMAccess 拡張機能が処理して、動作の基となる未加工の JSON ファイル](#use-json-files-and-the-vmaccess-extension)を使用する。
 
-以下の例では、[az vm access](/cli/azure/vm/access) と適切なパラメーターを使用します。 これらの手順を実行するには、[Azure CLI 2.0 (プレビュー)](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインする必要があります。
+以下の例では、[az vm access](/cli/azure/vm/access) と適切なパラメーターを使用します。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインする必要があります。
 
 ## <a name="reset-ssh-key"></a>SSH キーのリセット
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーをリセットします。

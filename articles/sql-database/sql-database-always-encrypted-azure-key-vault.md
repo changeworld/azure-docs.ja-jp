@@ -14,12 +14,12 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/06/2017
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 9d654904e06758bc8634efa9b18ea3bac2b64523
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: aa3f2bc04fe33466ca44abd7331a4b3aa7be26fc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -192,9 +192,8 @@ Always Encrypted を設定したので、暗号化された列に対して、*in
 > 
 > 
 
-1. Visual Studio を開き、新しい C# コンソール アプリケーションを作成します。 プロジェクトは必ず **.NET Framework 4.6** 以降に設定してください。
+1. Visual Studio を開き、新しい C# **コンソール アプリケーション** (Visual Studio 2015 以前) または **コンソール アプリケーション (.NET Framework)** (Visual Studio 2017 以降) を作成します。 プロジェクトは必ず **.NET Framework 4.6** 以降に設定してください。
 2. プロジェクトに **AlwaysEncryptedConsoleAKVApp** という名前を付けて、**[OK]** をクリックします。
-   ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/console-app.png)
 3. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に進んで、次の NuGet のパッケージをインストールします。
 
 パッケージ マネージャー コンソールで、次の&2; 行のコードを実行します。

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
+ms.sourcegitcommit: 3152a1306f2c3eeb42dd3b21cff62b696ed01e5d
+ms.openlocfilehash: 75ea0486a1b5abc71df3b7d9e8385717954b89f4
+ms.lasthandoff: 03/01/2017
 
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
@@ -35,12 +36,12 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 > -   このビデオで使用されているポリシー ステートメントをダウンロードするには、 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) github リポジトリをご覧ください。  
   
   
-##  <a name="a-namesyntaxa-syntax"></a><a name="Syntax"></a>構文  
+##  <a name="Syntax"></a>構文  
  単一ステートメントの式は `@(expression)` の形式で囲みます。`expression` は正しい C# 式ステートメントです。  
   
  複数ステートメントの式は `@{expression}` の形式で囲みます。 複数ステートメントの式内のすべてのコード パスは `return` ステートメントで終了している必要があります。  
   
-##  <a name="a-namepolicyexpressionsexamplesa-examples"></a><a name="PolicyExpressionsExamples"></a>例  
+##  <a name="PolicyExpressionsExamples"></a>例  
   
 ```  
 @(true)  
@@ -51,7 +52,7 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
   
 @(Regex.Match(context.Response.Headers.GetValueOrDefault("Cache-Control",""), @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value)  
   
-@(context.Variables.ContainsKey("maxAge")?3600:int.Parse((string)context.Variables["maxAge"]))  
+@(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)  
   
 @{   
   string value;   
@@ -66,13 +67,13 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 }  
 ```  
   
-##  <a name="a-namepolicyexpressionsusagea-usage"></a><a name="PolicyExpressionsUsage"></a>使用法  
+##  <a name="PolicyExpressionsUsage"></a>使用法  
  式は、ポリシー参照で特に指定されていない限り、任意の API Management [ポリシー](api-management-policies.md)で属性値またはテキスト値として使用できます。  
   
 > [!IMPORTANT]
 >  ポリシー式を使用する場合には、ポリシーを定義したときにポリシー式を検証する方法は限られているので、ご注意ください。 式は、ゲートウェイによって受信または送信パイプラインの実行時に実行されるため、ポリシー式によって実行時例外が生成されると、必ず API 呼び出しの実行時エラーが発生します。  
   
-##  <a name="a-nameclrtypesa-net-framework-types-allowed-in-policy-expressions"></a>ポリシー式で使用できる <a name="CLRTypes"></a>.NET framework の型  
+##  ポリシー式で使用できる <a name="CLRTypes"></a>.NET framework の型  
  次の表は、ポリシー式で使用できる .NET Framework の型とメンバーの一覧です。  
   
 |CLR 型|サポートされるメソッド|  
@@ -166,12 +167,12 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 |System.Xml.Linq.XText|すべてのメソッド|  
 |System.Xml.XmlNodeType|すべて|  
   
-##  <a name="a-namecontextvariablesa-context-variable"></a><a name="ContextVariables"></a>コンテキスト変数  
+##  <a name="ContextVariables"></a>コンテキスト変数  
  `context` という名前の変数は、暗黙的にすべてのポリシー[式](api-management-policy-expressions.md#Syntax)で使用できます。 そのメンバーは `\request`に関連する情報を提供します。 すべての `context` メンバーは読み取り専用です。  
   
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> デプロイ<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> 応答<br /><br /> [サブスクリプション]<br /><br /> トレース: bool<br /><br /> ユーザー<br /><br /> 変数: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
+|context|Api: IApi<br /><br /> デプロイ<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> RequestId: 文字列<br /><br /> 応答<br /><br /> [サブスクリプション]<br /><br /> トレース: bool<br /><br /> ユーザー<br /><br /> 変数: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> ServiceUrl: IUrl|  
 |context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  
@@ -201,8 +202,4 @@ ms.openlocfilehash: ed28fcea134bfbeda25abff41a3163471cef4294
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
-
-
-<!--HONumber=Jan17_HO2-->
-
 
