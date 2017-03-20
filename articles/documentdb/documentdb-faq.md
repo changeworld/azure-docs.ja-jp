@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/03/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 4f8235ae743a63129799972ca1024d672faccbe9
-ms.openlocfilehash: 441e2adf6a222a0fc2e7e06c9b0140548655d542
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: cf8db132c7f541017744505bf0fca9393db8b3f9
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -59,7 +59,7 @@ DocumentDB でコレクションが格納できる合計データ量には、制
 十分な数のパーティション キーにワークロードをほぼ均等に分散できる場合は、DocumentDB でコレクションがサポートできるスループットの合計量には、制限はありません。
 
 ### <a name="how-much-does-microsoft-azure-documentdb-cost"></a>Microsoft Azure DocumentDB の料金はいくらですか?
-詳細については、「[DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」ページを参照してください。 DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの消費ストレージとプロビジョニング済みスループットによって決まります。
+詳細については、「[DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」ページを参照してください。 DocumentDB の利用料金は、プロビジョニング済みコレクションの数、コレクションがオンラインであった時間数、および各コレクションのプロビジョニング済みスループットによって決まります。
 
 ### <a name="is-there-a-free-account-available"></a>無料アカウントを使用できますか?
 Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。 Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり&150; ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。  

@@ -12,12 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 22b50dd6242e8c10241b0626b48f8ef842b6b0fd
-ms.openlocfilehash: c33ca9e5292096a0fd96d98da3e89d721463e903
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -28,14 +28,17 @@ ms.lasthandoff: 03/02/2017
 コメントはこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
-## <a name="replication-to-azure"></a>Azure へのレプリケーション
+## <a name="replicate-to-azure"></a>Azure へのレプリケート
 
 以下のものを Azure にレプリケートすることができます。
+
 - **VMware**: [サポートされているホスト](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上で実行されているオンプレミス VMware VM。 [サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)を実行している VMware VM をレプリケートできます。
 - **Hyper-V**: [サポートされているホスト](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)上で実行されているオンプレミス Hyper-V VM。
 - **物理マシン**: [サポートされているオペレーティング システム](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)上で Windows または Linux を実行しているオンプレミス物理サーバー。 [Hyper-V および Azure でサポートされている](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)任意のゲスト オペレーティング システムを実行している Hyper-V VM をレプリケートできます。
 
-## <a name="vmware-replication-to-azure"></a>Azure への VMware レプリケーション
+## <a name="vmware-to-azure"></a>VMware から Azure
+
+VMware VM を Azure にレプリケートするために必要なものを次に示します。
 
 領域 | コンポーネント | 詳細
 --- | --- | ---
@@ -85,14 +88,16 @@ ms.lasthandoff: 03/02/2017
 
 ![フェールバック](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-server-replication-to-azure"></a>Azure への物理サーバーのレプリケーション
+## <a name="physical-to-azure"></a>物理から Azure
 
-このレプリケーション シナリオも、[VMware から Azure へ](#vmware-replication-to-azure)の場合と同じコンポーネントとプロセスを使用しますが、以下の相違点に注意してください。
+オンプレミスの物理サーバーを Azure にレプリケートするときも、[VMware から Azure](#vmware-replication-to-azure) への場合と同じコンポーネントとプロセスが使用されますが、次の違いに注意してください。
 
 - 構成サーバーとして、VMware VM ではなく物理サーバーを使用することができます。
 - フェールバック用にオンプレミスの VMware インフラストラクチャが必要になります。 物理マシンにはフェールバックできません。
 
-## <a name="hyper-v-replication-to-azure"></a>Azure への Hyper-V のレプリケーション
+## <a name="hyper-v-to-azure"></a>Hyper-V から Azure
+
+Hyper-V VM を Azure にレプリケートするために必要なものを次に示します。
 
 **領域** | **コンポーネント** | **詳細**
 --- | --- | ---
@@ -130,7 +135,7 @@ ms.lasthandoff: 03/02/2017
 ![コンポーネント](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replication-to-a-secondary-site"></a>セカンダリ サイトへのレプリケーション
+## <a name="replicate-to-a-secondary-site"></a>セカンダリ サイトへのレプリケート
 
 以下のものをセカンダリ サイトにレプリケートすることができます。
 
@@ -139,13 +144,15 @@ ms.lasthandoff: 03/02/2017
 - **Hyper-V**: VMM クラウドで管理されている、[サポートされている Hyper-V ホスト](site-recovery-support-matrix-to-sec-site.md#on-premises-servers)上で実行されているオンプレミス Hyper-V VM。 [サポートされているホスト](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)。 [Hyper-V および Azure でサポートされている](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)任意のゲスト オペレーティング システムを実行している Hyper-V VM をレプリケートできます。
 
 
-## <a name="vmware-vmphysical-server-replication-to-a-secondary-site"></a>セカンダリ サイトへの VMware VM/物理サーバーのレプリケーション
+## <a name="vmwarephysical-to-a-secondary-site"></a>VMware/物理をセカンダリ サイトに
+
+InMage Scout を使用して、VMware VM または物理サーバーをセカンダリ サイトにレプリケートします。
 
 ### <a name="components"></a>コンポーネント
 
 **領域** | **コンポーネント** | **詳細**
 --- | --- | ---
-**Azure** | InMage Scout を使用してこのシナリオをデプロイします。 | InMage Scout を入手するには、Azure サブスクリプションが必要です。<br/><br/> Recovery Services コンテナーを作成した後、InMage Scout をダウンロードし、最新の更新プログラムをインストールして、デプロイを設定します。
+**Azure** | InMage Scout。 | InMage Scout を入手するには、Azure サブスクリプションが必要です。<br/><br/> Recovery Services コンテナーを作成した後、InMage Scout をダウンロードし、最新の更新プログラムをインストールして、デプロイを設定します。
 **プロセス サーバー** | プライマリ サイトにあります。 | キャッシュ、圧縮、データ最適化を処理するプロセス サーバーをデプロイします。<br/><br/> プロセス サーバーでは、保護するマシンへの統合エージェントのプッシュ インストールも処理します。
 **構成サーバー** | セカンダリ サイトにあります。 | 構成サーバーは、管理 Web サイトまたは vContinuum コンソールを使用して、デプロイを管理、構成、監視します。
 **vContinuum サーバー** | 省略可能。 構成サーバーと同じ場所にインストールされます。 | 保護対象の環境を管理および監視するためのコンソールを提供します。
@@ -166,7 +173,9 @@ ms.lasthandoff: 03/02/2017
 
 
 
-## <a name="hyper-v-vm-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V VM のレプリケーション
+## <a name="hyper-v-to-a-secondary-site"></a>Hyper-V をセカンダリ サイトに
+
+Hyper-V VM をセカンダリ サイトにレプリケートするために必要なものを次に示します。
 
 
 **領域** | **コンポーネント** | **詳細**
@@ -202,25 +211,8 @@ ms.lasthandoff: 03/02/2017
 7. プライマリ サイトをもう一度アクティブな場所にするには、セカンダリからプライマリへの計画フェールオーバーを開始し、続いて別のレプリケーションの反転を実行します。
 
 
-## <a name="hyper-v-replication-workflow"></a>Hyper-V レプリケーションのワークフロー
-
-**ワークフローの段階** | **アクション**
---- | ---
-1.**保護を有効にする** | Hyper-V VM の保護を有効にすると、**保護の有効化**ジョブが開始され、マシンが前提条件に準拠していることを確認します。 このジョブは&2; つのメソッドを呼び出します。<br/><br/> [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx): 構成した設定を使用してレプリケーションを設定します。<br/><br/> [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx): 完全な VM レプリケーションを初期化します。
-2.**初期レプリケーション** |  仮想マシンのスナップショットが取得され、仮想ハード ディスクが、セカンダリの場所にすべてコピーされるまで&1; つずつレプリケートされます。<br/><br/> この所要時間は、VM サイズ、ネットワーク帯域幅、および初期レプリケーション方法によって異なります。<br/><br/> 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーは、Hyper-V レプリケーション ログ (.hrl) を該当するディスクと同じフォルダーに配置して、それらの変更を追跡します。<br/><br/> 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリ ストレージに送信されます。<br/><br/> 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。 初期レプリケーションが終了すると、VM のスナップショットは削除され、ログ内の差分ディスク変更が同期およびマージされます。
-3.**保護の最終処理** | 初期レプリケーションが終了すると、**保護の最終処理**ジョブによって、ネットワークなどのレプリケーション後の設定が構成され、仮想マシンが保護されます。<br/><br/> Azure にレプリケートする場合は、仮想マシンの設定を微調整して、いつでもフェールオーバーできるようにしておくことが必要な場合があります。<br/><br/> この時点で、テスト フェールオーバーを実行して、すべてが想定通りに動作しているかを確認できます。
-4.**レプリケーション** | 初期レプリケーション後は、レプリケーションの設定に従って差分の同期が開始されます。<br/><br/> **レプリケーションの失敗**: 差分レプリケーションに失敗した場合、完全なレプリケーションが帯域幅または時間の観点からコスト高になるときは、再同期が実行されます。 たとえば、.hrl ファイルがディスク サイズの 50% に達した場合、VM には再同期のマークが付けられます。 再同期では、ソースとターゲットの仮想マシンのチェックサムを計算して差分のみを送信することで、送信されるデータの量が最小限に抑えられます。 再同期が完了すると、差分レプリケーションが再開されます。 既定では再同期は業務時間外に自動的に実行するようにスケジュールされますが、手動で仮想マシンを再同期することもできます。<br/><br/> **レプリケーション エラー**: レプリケーション エラーが発生した場合に備えて、組み込み再試行があります。 認証エラーや承認エラーなど回復できないエラーである場合、またはレプリカ マシンが無効な状態にある場合、再試行は行われません。 ネットワーク エラーなどの回復可能なエラーの場合、またはディスクの空き領域やメモリが少ない場合は、再試行が実行されます。回数を重ねるごとに再試行間隔は長くなります (1、2、4、8、10 分と長くなり、その後は 30 分ごとに行われる)。
-5.**計画フェールオーバー/計画外フェールオーバー** | 必要に応じて、計画フェールオーバーまたは計画外フェールオーバーを実行できます。<br/><br/> 予定されたフェールオーバーを実行する場合、データが決して失われないように、ソース側の VM はシャット ダウンされます。<br/><br/> レプリカ VM は、作成後、コミット保留中の状態になります。 フェールオーバーを完了するには、それらをコミットする必要があります。<br/><br/> プライマリ サイトが稼働状態になった後、使用できるようになった時点で、プライマリ サイトにフェールバックすることができます。
-
-
-**図 8: Hyper-V のワークフロー**
-
-![ワークフロー](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
-
-
-
-
 ## <a name="next-steps"></a>次のステップ
 
-[前提条件を確認する](site-recovery-prereq.md)
+- HYPER-V レプリケーション ワークフローの詳細については[こちら](site-recovery-hyper-v-azure-architecture.md)を参照してください。
+- [前提条件を確認する](site-recovery-prereq.md)
 

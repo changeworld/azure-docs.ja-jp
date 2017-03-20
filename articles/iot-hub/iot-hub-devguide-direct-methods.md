@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: nberdy
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d04f073ebf846955fde81434fd015ee4b943f695
-ms.openlocfilehash: 179abb91438fb20cd6b6adebfedb8a25e0127ad7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 37b2a82d7f6043224e68219fde753eef73078ffd
+ms.openlocfilehash: 930be4397a56dc0af0fd13305e0e4171929cb2cc
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="direct-methods"></a>ダイレクト メソッド
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 ## <a name="overview"></a>概要
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 これは、デバイスがオフラインの場合に SMS ウェイクアップを送信するような、デバイスが応答できるかによって、一連の即時のアクションが異なってくるシナリオで便利です (SMS はメソッドの呼び出しよりもコストがかかります)。
 

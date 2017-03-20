@@ -14,9 +14,9 @@ ms.topic: get-started-article
 ms.date: 02/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 46b829ce52994a5112494145a02e78859c5fae2d
-ms.openlocfilehash: d4c7fa2058b1c07671329304c37630d2e6e8e8a7
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: bc7b0d4037effd7bcc8685a357a49de339e31d7b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -34,7 +34,7 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 
 * [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 
-## <a name="a-nameaddacreate-an-application-insights-resource"></a><a name="add"></a>Application Insights リソースの作成
+## <a name="add"></a>Application Insights リソースの作成
 [Azure Portal][portal] にサインインし、Application Insights の新しいリソースを作成します。 Azure の [リソース][roles] は、サービスのインスタンスです。 このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
 ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-nodejs/01-new-asp.png)
@@ -46,7 +46,7 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-nodejs/02-props-asp.png)
 
-## <a name="a-namesdka-install-the-sdk-in-your-application"></a><a name="sdk"></a> アプリケーションに SDK をインストールする
+## <a name="sdk"></a> アプリケーションに SDK をインストールする
 ```
 npm install applicationinsights --save
 ```
@@ -64,10 +64,10 @@ appInsights.setup("<instrumentation_key>").start();
 
 インストルメンテーション キーを空でない文字列に設定することで、テレメトリを送信せずに SDK を試してみることができます。
 
-## <a name="a-nameruna-run-your-project"></a><a name="run"></a> プロジェクトの実行
+## <a name="run"></a> プロジェクトの実行
 アプリケーションを実行して動作を確認します。さまざまなページを開き、テレメトリをいくつか生成します。
 
-## <a name="a-namemonitora-view-your-telemetry"></a><a name="monitor"></a> 利用統計情報を表示する
+## <a name="monitor"></a> 利用統計情報を表示する
 [Azure ポータル](https://portal.azure.com) に戻り、Application Insights のリソースを参照します。
 
 [概要] ページでデータを探します。 最初、1 つまたは&2; つのポイントだけが表示されます。 次に例を示します。
@@ -86,10 +86,7 @@ appInsights.setup("<instrumentation_key>").start();
 ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
 
 #### <a name="no-data-after-you-publish-to-your-server"></a>サーバーに発行した後でデータはありませんか。
-サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
-
-* `dc.services.visualstudio.com:443`
-* `f5.services.visualstudio.com:443`
+[必要なファイアウォール ポートが開かれている](app-insights-ip-addresses.md)ことを確認します。
 
 #### <a name="trouble-on-your-build-server"></a>ビルド サーバーで問題が発生した場合
 [このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 437bbb47a490ecc66c5820eccfc8db8ec28d76be
-ms.openlocfilehash: 0a5aaf64f22e6c116165a63b77618b535dfd3797
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 7018320e601c1e8762e1c8fc409813a113a35044
+ms.lasthandoff: 03/06/2017
 
 ---
 
@@ -26,6 +26,8 @@ ms.lasthandoff: 02/24/2017
 ネットワーク セキュリティ グループのフロー ログの情報は、ネットワーク セキュリティ グループでのイングレスおよびエグレス IP トラフィックについて理解するのに役立ちます。 こうしたフロー ログからは、ルールごとの送信および受信フロー、フローが適用されている NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、およびトラフィックの許可/拒否の状況が分かります。
 
 これらのフロー ログを手動で解析したり、そこから手動で有用な情報を取得したりするのは難しいかもしれません。 しかし、いくつかのオープン ソース ツールによって、こうしたデータを視覚化できます。 この記事では、Elastic Stack を使用してこれらのログを視覚化するソリューションについて説明します。このソリューションによって、Kibana ダッシュボードのフロー ログに簡単にインデックスを作成して視覚化できます。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>シナリオ
 
@@ -156,7 +158,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>Azure Blob Storage 向けの Logstash 入力プラグインのインストール
 
-この Logstash プラグインを使用すると、指定されたストレージ アカウントから、フロー ログに直接アクセスできます。 このプラグインをインストールするには、次のコマンドを実行します。
+この Logstash プラグインを使用すると、指定されたストレージ アカウントから、フロー ログに直接アクセスできます。 このプラグインをインストールするには、既定の Logstash インストール ディレクトリ (この場合、/usr/share/logstash/bin) から、次のコマンドを実行します。
 
 ```
 logstash-plugin install logstash-input-azureblob
@@ -230,7 +232,7 @@ sudo /etc/init.d/logstash start
 1. Flow Tuples (フロー タプル) - 各フロー タプルに含まれる情報と、対応する NSG およびルールを表示する表です。
 
   ![図&7;][7]
-  
+
 ダッシュボードの最上部にあるクエリ バーを使用して、フローのパラメーター (サブスクリプション ID、リソース グループ、ルール、また関連するその他の変数など) に基づいて、ダッシュボードをフィルターできます。 Kibana のクエリとフィルターの詳細については、[公式ドキュメント](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)を参照してください。
 
 ## <a name="conclusion"></a>まとめ
@@ -252,5 +254,4 @@ sudo /etc/init.d/logstash start
 [5]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure5.png
 [6]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure6.png
 [7]: ./media/network-watcher-visualize-nsg-flow-logs-open-source-tools/figure7.png
-
 

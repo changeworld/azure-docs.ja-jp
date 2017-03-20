@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 064c8f7c312aaac94f20224e99b9e29c641e0349
-ms.openlocfilehash: 7099081e7294c64c1b9076b58a2c87f4f7ca7e44
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bdaf5afff8466a189afe96517135b1b347b85550
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -25,13 +25,15 @@ ms.lasthandoff: 03/01/2017
 
 Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 シナリオ レベルの監視により、エンド ツー エンドのネットワーク レベル ビューで問題を診断できるようになります。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 ## <a name="register-the-preview-capability"></a>プレビュー機能の登録
 
 Network Watcher は現在プレビュー段階です。Network Watcher の機能を使用するには、機能を登録する必要があります。 これを行うには、次の PowerShell サンプルを実行します。
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcher -ProviderNamespace Microsoft.Network
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 登録が正しく行われたことを確認するには、次の PowerShell サンプルを実行します。
@@ -48,14 +50,15 @@ FeatureName         ProviderName      RegistrationState
 AllowNetworkWatcher Microsoft.Network Registered
 ```
 
-####<a name="instructions-for-cli"></a>CLI の手順
+### <a name="instructions-for-cli"></a>CLI の手順
 
 次の通り登録します
 
 ```CLI
-azure provider register Microsoft.Network
 azure feature register  Microsoft.Network AllowNetworkWatcher
+azure provider register Microsoft.Network
 ```
+
 登録が正しく行われたことを確認するには、次の CLI コマンドを実行します。
 
 ```CLI
@@ -63,6 +66,7 @@ azure feature show Microsoft.Network AllowNetworkWatcher
 ```
 
 この機能が適切に登録されると、出力は次のようになります。
+
 ```CLI
 info:    Executing command feature show
 data:    Feature Name:       AllowNetworkWatcher
@@ -123,7 +127,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 * [NSG フロー ログの記録](network-watcher-nsg-flow-logging-overview.md)
 * [Virtual Network Gateway のトラブルシューティング](network-watcher-troubleshoot-overview.md)
 
-Network Watcher のインスタンスが作成されると、[アラートがトリガーされたパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関する次の記事に従ってパッケージ キャプチャを構成できるようになります。
+Network Watcher のインスタンスを作成すると、[アラートがトリガーされたパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関する次の記事に従って、パッケージ キャプチャを構成できるようになります。
 
 [1]: ./media/network-watcher-create/figure1.png
 

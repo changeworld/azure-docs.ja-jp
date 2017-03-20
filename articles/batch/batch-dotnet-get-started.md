@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: edda9dc389d670b463d518edf8c4703062ba169d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 08b478b3108f0673f3a130612020408a0e61c815
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/28/2017
 >
 
 ### <a name="visual-studio"></a>Visual Studio
-サンプル プロジェクトをビルドするには、 **Visual Studio 2015** が必要です。 Visual Studio の無料試用版については、[Visual Studio 2015 製品の概要][visual_studio]に関するページを参照してください。
+サンプル プロジェクトをビルドするには、**Visual Studio 2015 以降**が必要です。 Visual Studio の無料試用版については、[Visual Studio 製品の概要][visual_studio]に関するページを参照してください。
 
 ### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* コード サンプル
 [DotNetTutorial][github_dotnettutorial] サンプルは、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの&1; つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、次のフォルダーでソリューションを見つけられます。
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/28/2017
 [Azure Batch Explorer][github_batchexplorer] は、GitHub の [azure-batch-samples][github_samples] リポジトリにある無料ユーティリティです。 このチュートリアルには必要ありませんが、Batch ソリューションの開発とデバッグに有効活用してください。
 
 ## <a name="dotnettutorial-sample-project-overview"></a>DotNetTutorial サンプル プロジェクトの概要
-*DotNetTutorial* コード サンプルは、**DotNetTutorial** と **TaskApplication** という 2 つのプロジェクトから構成される Visual Studio 2015 ソリューションです。
+*DotNetTutorial* コード サンプルは、**DotNetTutorial** と **TaskApplication** という&2; つのプロジェクトから構成される Visual Studio ソリューションです。
 
 * **DotNetTutorial** は、Batch サービスおよび Storage サービスとやり取りして、コンピューティング ノード (仮想マシン) で並列ワークロードを実行するクライアント アプリケーションです。 DotNetTutorial はローカル ワークステーションで実行されます。
 * **TaskApplication** は、Azure のコンピューティング ノードで実際の作業を行うために実行されるプログラムです。 このサンプルの `TaskApplication.exe` では、Azure Storage からダウンロードされたファイル (入力ファイル) のテキストを解析します。 次に、入力ファイル内で出現回数が多い上位&3; つの単語の一覧を含むテキスト ファイル (出力ファイル) を生成します。 出力ファイルを作成した後で、TaskApplication はそのファイルを Azure Storage にアップロードします。 これで、ファイルをクライアント アプリケーションがダウンロードできるようになります。 TaskApplication は、Batch サービスの複数のコンピューティング ノードで並列で実行されます。
@@ -792,7 +792,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [nuget_packagemgr]: https://docs.nuget.org/consume/installing-nuget
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
 [storage_explorers]: http://storageexplorer.com/
-[visual_studio]: https://www.visualstudio.com/products/vs-2015-product-editions
+[visual_studio]: https://www.visualstudio.com/vs/
 
 [1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Azure Storage でコンテナーを作成する"
 [2]: ./media/batch-dotnet-get-started/batch_workflow_02_sm.png "タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする"

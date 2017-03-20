@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/20/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 1f4075d6a3ab81bdbde614bbee400bd23f6cea20
-ms.openlocfilehash: 1fd481d06f355547fd15200999c4bca3a503ec31
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 7e82ac74a8aef4e3cc8aff4dea3c572dcb9d9c40
+ms.lasthandoff: 03/03/2017
 
 ---
 
@@ -82,6 +82,30 @@ Azure Site Recovery を使用してモビリティ サービスのプッシュ �
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-lin](../../includes/site-recovery-prepare-push-install-mob-svc-lin.md)]
 
 
-## <a name="next-steps"></a>次のステップ
+> [!NOTE]
 モビリティ サービスがインストールされたら、Azure Portalで **[+ レプリケート]** ボタンをクリックして、それらの VM の保護を有効化できます。
+
+## <a name="uninstall-mobility-service-on-windows-servers"></a>Windows Server のモビリティ サービスをアンインストールする
+Windows Server のモビリティ サービスをアンインストールする方法は&2; つあります。
+
+### <a name="uninstall-using-graphical-user-interface"></a>グラフィカル ユーザー インターフェイスを使用したアンインストール
+1. [コントロール パネル] を開いて [プログラム] をクリックします。
+2. **Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー**を選択して [アンインストール] をクリックします。
+
+### <a name="uninstall-using-command-line"></a>コマンド ラインを使用したアンインストール
+1. 管理者のコマンド プロンプトを開きます。
+2. 次のコマンドを実行してモビリティ サービスをアンインストールします。
+
+```
+MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
+```
+
+## <a name="uninstall-mobility-service-on-linux-computers"></a>Linux コンピューターのモビリティ サービスをアンインストールする
+1. **ROOT** として Linux サーバーにログインします。
+2. **ターミナル**で /user/local/ASR を参照します。
+3. 次のコマンドを実行してモビリティ サービスをアンインストールします。
+
+```
+uninstall.sh -Y
+```
 

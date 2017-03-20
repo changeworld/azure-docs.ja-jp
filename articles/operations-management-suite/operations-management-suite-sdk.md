@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 03/01/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 47c897afd6321a59f540d1f0cb86602d4ea18ed1
-ms.openlocfilehash: 5aed4eb336d55c2954da563422972644e25d0140
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -40,13 +40,14 @@ ms.lasthandoff: 02/23/2017
 * [Log Analytics のドキュメント](http://azure.microsoft.com/documentation/services/log-analytics)
 * [Log Analytics REST API](/rest/api/loganalytics)
 * [Log Analytics HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md)
-* [ログ検索 API](../log-analytics/log-analytics-log-search-api.md)
-* [アラート API](../log-analytics/log-analytics-api-alerts.md)
+* [Log Search REST  API](../log-analytics/log-analytics-log-search-api.md)
+* [Alert REST API](../log-analytics/log-analytics-api-alerts.md)
 * [Log Analytics PowerShell コマンドレット](https://msdn.microsoft.com/library/mt188224.aspx)
 * [Log Analytics .NET ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/0.16.0-preview)
 
 ## <a name="service-map"></a>サービス マップ
 * [サービス マップのドキュメント](operations-management-suite-service-map.md)
+* [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/)
 
 ## <a name="site-recovery"></a>Site Recovery
 * [Site Recovery PowerShell コマンドレット](https://msdn.microsoft.com/library/mt637930.aspx)
@@ -55,7 +56,7 @@ ms.lasthandoff: 02/23/2017
 * [PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする](../site-recovery/site-recovery-deploy-with-powershell-resource-manager.md)
 
 ## <a name="next-steps"></a>次のステップ
-* [OMS サービスとの統合](operations-management-suite-integration.md)に関するさまざまなオプションを確認します。
-* OMS でカスタム ソリューションを作成します (近日対応予定)。
+* [OMS サービスとの統合](operations-management-suite-integration.md)に関するさまざまなオプションを確認する。
+* [OMS でカスタム ソリューション](operations-management-suite-solutions-creating.md)を作成する。
 
 

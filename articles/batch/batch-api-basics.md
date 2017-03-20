@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 9a17b749a50c0f75890fa71b4ae00391aa63876a
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0682a048429d8e980da529975a24dde28a9812fe
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure Batch プールは、コア Azure コンピューティング プラット
   * worker ロールの場合と同様に、"*OS バージョン*" には `*` を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。 特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。 検証が終わると、プールの "*OS バージョン*" を更新して、新しい OS イメージをインストールできます。その際、実行中のタスクはすべて中断され、再びキューに置かれます。
 * **ノードのサイズ**
 
-    **Cloud Services の構成** のコンピューティング ノードのサイズについては、「 [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。 Batch は、 `ExtraSmall`を除くすべての Cloud Services サイズに対応しています。
+    **Cloud Services の構成** のコンピューティング ノードのサイズについては、「 [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。 Batch は、`ExtraSmall`、`STANDARD_A1_V2`、`STANDARD_A2_V2` を除くすべての Cloud Services サイズに対応しています。
 
     **仮想マシンの構成**のコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」(Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。
 

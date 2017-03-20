@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 5121b2f9d33ebf4749fae6d990feab3bf9244e93
-ms.openlocfilehash: 6b99dbbacd9451285cca29de4a72ffb1473479fc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: fa7c846cf5018b5f0d918e5dc9d9020313833d77
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -53,8 +53,8 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 
    ![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 使用可能な SQL Server テンプレートを確認します。 各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。 
-6. Windows Server 2016 で、SQL Server 2016 SP1 Developer のテンプレートを選択します。
+5. 使用可能な SQL Server イメージを確認します。 各イメージは、SQL Server のバージョンとオペレーティング システムを示しています。 
+6. Windows Server 2016 で、SQL Server 2016 SP1 Developer のイメージを選択します。
 
    > [!TIP]
    > このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。
@@ -97,7 +97,7 @@ SQL Server 仮想マシンを構成するための&5; つのブレードがあ�
     ![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2.仮想マシンのサイズを選択する
-この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したテンプレートに基づいて推奨されるマシン サイズが最初に表示されます。 VM の実行にかかる毎月のコストも見積もられます。
+この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。 VM の実行にかかる毎月のコストも見積もられます。
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 

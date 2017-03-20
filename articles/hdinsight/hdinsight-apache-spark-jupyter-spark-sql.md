@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 03/13/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
-ms.openlocfilehash: d8d9c5111a19bb165c25d2796d6b6e933d75042a
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 33256025811f18529c942fa00726b40191127b7a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,23 +28,11 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
    ![HDInsight で Apache Spark の使用を開始](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight チュートリアルで Apache Spark の使用を開始します。図に示されている手順: ストレージ アカウントを作成し、クラスターを作成して、Spark SQL ステートメントを実行します")
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
 
-* **Secure Shell (SSH) クライアント**: Linux、Unix、OS X システムには、`ssh` コマンドで SSH クライアントを提供していました。 Windows クライアントの場合は、[PuTTY を使用した Windows からの HDInsight の Hadoop での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページを参照してください。Linux、Unix、OS X の場合は、[Linux、Unix、OS X からの HDInsight の Hadoop での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-> [!NOTE]
-> この記事では、Azure Resource Manager テンプレートを基に、[クラスター ストレージとして Azure Storage BLOB](hdinsight-hadoop-use-blob-storage.md) を使用する Spark クラスターを作成します。 既定のストレージとして Azure Storage BLOB を使用し、さらに追加のストレージとして [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) を使用する Spark クラスターを作成することもできます。 手順については、 [Data Lake Store を使用した HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。
->
->
-
-### <a name="access-control-requirements"></a>アクセス制御の要件
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
-## <a name="create-spark-cluster"></a>Spark クラスターを作成する
-このセクションでは、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)を利用して、HDInsight で Spark クラスターを作成します。 HDInsight バージョンとその SLA については、「 [HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+## <a name="create-a-spark-cluster"></a>Spark クラスターの作成
+このセクションでは、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/)を利用して、HDInsight で Spark クラスターを作成します。 その他のクラスター作成方法については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。         
 
@@ -53,24 +42,32 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
     ![Azure Resource Manager テンプレートを使用した HDInsight での Spark クラスターの作成](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Azure Resource Manager テンプレートを使用した HDInsight での Spark クラスターの作成")
 
-   * **サブスクリプション**: このクラスター向けに Azure サブスクリプションを選択します。
-   * **リソース グループ**: 新しいリソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、プロジェクトの Azure リソースを管理するために使用されます。
-   * **場所**: リソース グループの場所を選択します。  この場所は、既定のクラスター ストレージと HDInsight クラスター向けにも使用されます。
-   * **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
-   * **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
-   * **SSH のユーザー名とパスワード**。
+    * **サブスクリプション**: このクラスター向けに Azure サブスクリプションを選択します。
+    * **リソース グループ**: リソース グループを作成するか、既存のリソース グループを選択します。 リソース グループは、プロジェクトの Azure リソースを管理するために使用されます。
+    * **場所**: リソース グループの場所を選択します。  この場所は、既定のクラスター ストレージと HDInsight クラスター向けにも使用されます。
+    * **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
+    * **Spark のバージョン**: クラスターにインストールする Spark バージョンを選択します。
+    * **クラスターのログイン名とパスワード**: 既定のログイン名は admin です。
+    * **SSH のユーザー名とパスワード**。
 
    これらの値を書き留めておいてください。  この情報は後で必要になります。
 
 3. **[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選択し、**[購入]** をクリックします。 "Submitting deployment for Template deployment" という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
-## <a name="run-spark-sql-queries-using-a-jupyter-notebook"></a>Jupyter Notebook を使用して Spark SQL クエリを実行する
-このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる&2; つのカーネルが用意されています。 次のとおりです。
+> [!NOTE]
+> この記事では、[クラスター ストレージとして Azure Storage BLOB](hdinsight-hadoop-use-blob-storage.md) を使用する Spark クラスターを作成します。 既定のストレージとして Azure Storage BLOB を使用し、さらに追加のストレージとして [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) を使用する Spark クラスターを作成することもできます。 手順については、 [Data Lake Store を使用した HDInsight クラスターの作成](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。
+>
+>
+
+## <a name="run-a-spark-sql-query"></a>Spark SQL クエリの実行
+
+このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる&3; つのカーネルが用意されています。 次のとおりです。
 
 * **PySpark** (Python で記述されたアプリケーション用)
+* **PySpark3** (Python3 で記述されたアプリケーション用)
 * **Spark** (Scala で記述されたアプリケーション用)
 
-この記事では、PySpark カーネルを使用します。 この&2; つのカーネルの詳細については、[HDInsight での Apache Spark クラスターと Jupyter Notebook カーネルの使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事を参照してください。 PySpark カーネルを使用した場合の主な利点のいくつかを次に示します。
+この記事では、**PySpark** カーネルを使用します。 これらのカーネルの詳細については、[HDInsight での Apache Spark クラスターと Jupyter Notebook カーネルの使用](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事を参照してください。 PySpark カーネルを使用した場合の主な利点のいくつかを次に示します。
 
 * Spark と Hive のコンテキストが自動的に設定されます。
 * セル マジック (`%%sql` など) を使用すると、コード スニペットを付けずに SQL または Hive クエリが直接実行されます。
@@ -78,12 +75,13 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
 ### <a name="create-jupyter-notebook-with-pyspark-kernel"></a>PySpark カーネルを使用した Jupyter Notebook の作成
 
-1. [Azure ポータル](https://portal.azure.com/)を開きます。
-2. 左側のメニューで **[リソース グループ]** をクリックします。
-3. 前のセクションで作成したリソース グループをクリックします。 リソース グループが多すぎる場合は、検索機能を使用することができます。 グループには、HDInsight クラスターと既定のストレージ アカウントという&2; つのリソースがあります。
-4. クラスターをクリックして開きます。
+1. [Azure Portal](https://portal.azure.com/)を開きます。
 
-2. **クイック リンク**で **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+2. クラスターをダッシュボードにピン留めしている場合は、ダッシュボードから目的のクラスターのタイルをクリックしてクラスター ブレードを起動します。
+
+    クラスターをダッシュボードにピン留めしていない場合は、左側のウィンドウで **[HDInsight クラスター]** をクリックし、作成したクラスターをクリックします。
+
+3. **クイック リンク**で **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    ![HDInsight クラスター ダッシュボード](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-azure-portal-cluster-dashboards.png "HDInsight クラスター ダッシュボード")
 
@@ -93,26 +91,27 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+3. Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-   ![新しい Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook の作成")
+   ![Jupyter Notebook の作成](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "Jupyter Notebook の作成")
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
 4. 上部の Notebook 名をクリックし、目的のわかりやすい名前を入力します。
 
     ![Notebook の名前を指定](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定")
+
 5. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
         from pyspark.sql.types import *
 
-    PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。
+    PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストと Hive コンテキストが自動的に作成されます。
 
     ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
 
     Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
 
-6. 次のコードを実行して、**hvac** という一時テーブルにサンプル データを登録します。
+6. 次のコードを実行してサンプル データセットを一時テーブル (**hvac**) として登録します。
 
         # Load the data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -131,12 +130,12 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
     HDInsight の Spark クラスターにはサンプル データ ファイル **hvac.csv** が付属しています。このファイルは **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。
 
-7. 次のコードを実行してデータを照会します。
+7. データを照会するには、次のコードを実行します。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-   PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
+   PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
 
    次の表形式の出力が既定で表示されます。
 
@@ -146,7 +145,14 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
     ![クエリ結果の領域グラフ](./media/hdinsight-apache-spark-jupyter-spark-sql/area.output.png "クエリ結果の領域グラフ")
 
-9. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放できます。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+9. アプリケーションの実行後は、Notebook をシャットダウンしてクラスター リソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+ここでは、HDInsight クラスターを使用しているときに遭遇する可能性のある一般的な問題を取り上げます。
+
+### <a name="access-control-requirements"></a>アクセス制御の要件
+[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -187,9 +193,4 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

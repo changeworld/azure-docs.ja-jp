@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/02/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: 55adbf800c6312371d937ed2da98a4a5ce704e51
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bd2240678fed44db748ae062bdf91e457159b4a2
+ms.lasthandoff: 03/04/2017
 
 ---
-# <a name="using-connectors-with-the-auzre-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
+# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
@@ -66,48 +66,7 @@ ms.lasthandoff: 02/28/2017
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
 たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
-このグリッドからオブジェクトを選択し、**[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](#follow-an-object-and-its-data-through-the-system)できます。
-
-## <a name="follow-an-object-and-its-data-through-the-system"></a>オブジェクトとそのデータをシステム全体でフォローする
-データの問題を解決するとき、ソース コネクタ スペースから、メタバースを経由し、ターゲット コネクタ スペースまでオブジェクトをフォローすることがデータの値が予想と異なる理由を理解するための鍵となります。
-
-### <a name="connector-space-object-properties"></a>コネクタ スペース オブジェクトのプロパティ
-**インポート**  
-cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/csimport.png)  
-**[古い値]** にはシステムに現在保存されているデータが、**[新しい値]** にはソース システムから受け取り、まだ適用されていないデータが表示されます。 この場合、同期エラーがあるため、変更は適用できません。
-
-**エラー**  
-エラー ページは、オブジェクトに問題がある場合にのみ表示されます。 [同期エラーを解決する](active-directory-aadconnectsync-service-manager-ui-operations.md#troubleshoot-errors-in-operations-tab)方法については、操作ページの詳細を参照してください。
-
-**系列**  
-[Lineage] (系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。 コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineage.png)  
-**[アクション]** 列に、アクションが **[プロビジョニング]** である **[受信]** 同期規則が&1; つ表示されています。 これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。 同期規則の一覧に **[送信]** と **[Provision (プロビジョニング)]** が表示されている場合は、メタバース オブジェクトが削除されたときに、このオブジェクトが削除されることを示しています。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineageout.png)  
-また、**[PasswordSync]** 列を見ると、1 つの同期規則の値が **[True]** に設定されており、受信コネクタ スペースに起因してパスワードが変更される可能性があることがわかります。 このパスワードはその後、受信ルールを経由して Azure AD に送信されます。
-
-[Lineage (系列)] タブで [[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]](#metaverse-object-properties)をクリックすると、メタバースに移動できます。
-
-すべてのタブの一番下に **[Preview (プレビュー)]** ボタンと **[Log (ログ)]** ボタンがあります。
-
-**プレビュー**  
-[プレビュー] ページは、1 つのオブジェクトの同期に使用されます。 顧客の同期ルールの問題を解決しているとき、1 つのオブジェクトに与える変更の影響を確認するのに便利です。 **完全同期**か**差分同期**を選択できます。 **[Generate Preview (プレビューの生成)]** か **[Commit Preview (プレビューのコミット)]** かも選択できます。生成の場合、変更はメモリにのみ保存されます。コミットの場合、すべての変更がターゲット コネクタ スペースにステージングされます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview1.png)  
-オブジェクトを調べ、特定の属性フローに適用されたルールを確認できます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview2.png)
-
-**[[Log]]**  
-ログ ページを使用して、パスワード同期の状態と履歴を確認できます。
-
-### <a name="metaverse-object-properties"></a>[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]
-**属性**  
-[属性] タブには、値と、値を提供したコネクタが表示されます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvattributes.png)  
-**コネクタ**  
-[コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvconnectors.png)  
-このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。
+このグリッドからオブジェクトを選択し、**[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
