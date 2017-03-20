@@ -18,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
 ms.openlocfilehash: ef0757914828128ed4edf569aeb3716300b17dee
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -306,7 +307,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
     004a11a9-0c2c-4bc0-a7d5-2e0ebd947ab9
 
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
@@ -340,9 +341,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

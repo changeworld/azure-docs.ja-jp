@@ -17,6 +17,7 @@ ms.author: swkrish
 translationtype: Human Translation
 ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
 ms.openlocfilehash: 24a1e13b7865d25d56cb5a6f44ba3c9c097174a7
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -65,10 +66,5 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
 > 
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 
