@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 1ce47043f85e30f616c8b22e1107b192d4962d8a
-ms.openlocfilehash: 73c35da427f1e2080ab6fdd086d3168dad495415
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 450755b94d7abab9ab7fa626e02f404a73c97865
+ms.openlocfilehash: ac17a567092b8ecf4908d28e6743ba0816fa214e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -256,6 +256,7 @@ Dependency Agent は、通常、システム メモリの 0.1% とシステム C
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
 | 7.2 | 3.10.0-327 |
+| 7.3 | 3.10.0-514 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 | OS バージョン | カーネル バージョン |
@@ -276,7 +277,7 @@ Dependency Agent は、通常、システム メモリの 0.1% とシステム C
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
 | 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416 |
+| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417 |
 
 #### <a name="oracle-enterprise-linux-w-unbreakable-kernel-uek"></a>Unbreakable Kernel (UEK) を搭載した Oracle Enterprise Linux
 

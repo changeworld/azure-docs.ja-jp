@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/02/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: fadb15a95edb3ec82b284faa594706963618b9eb
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7f50ce0d4842bde809664c392ebee5425a70e6f0
+ms.lasthandoff: 03/08/2017
 
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Sync Service Manager の [操作] タブの使用
@@ -42,19 +42,7 @@ ms.lasthandoff: 02/28/2017
 
 行を選択すると、下の領域が更新され、実行の詳細が表示されます。 下の領域の左端には、 **Step #**(# は番号) という一覧が表示されることがあります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]**(パーティション) という見出しにあります。 **[Synchronization Statistics (同期統計)]**には、処理された変更の数に関する詳細が表示されます。 リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。 オブジェクトにエラーがある場合、 **[Synchronization Errors (同期エラー)]**の下に表示されます。
 
-## <a name="troubleshoot-errors-in-operations-tab"></a>[オペレーション] タブでエラーを解決する
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorsync.png)  
-エラーがある場合、エラーのあるオブジェクトとエラー自体がリンクとなり、クリックすると詳細が表示されます。
-
-まず、エラー文字列をクリックしてみます (上の画像の**sync-rule-error-function-triggered** )。 最初にオブジェクトの概要が表示されます。 実際のエラーを確認するには、 **[スタック トレース]**ボタンをクリックします。 このトレースにより、エラーのデバッグ レベル情報が表示されます。
-
-**ヒント:** **[call stack information (コール スタック情報)]** ボックスで右クリックし、**[select all (すべて選択)]** を選択して、**[copy (コピー)]** を選択します。 次に、スタックをコピーし、メモ帳など、普段利用しているエディターでエラーを確認できます。
-
-* エラー元が **SyncRulesEngine**の場合、コール スタック情報の最初にオブジェクトの全属性の一覧が表示されます。 **InnerException =>** という見出しが表示されるまで下へスクロールします。  
-  ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorinnerexception.png)  
-  その次の行には、エラーが表示されます。 上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
-
-エラー自体から十分な情報が得られない場合、データ自体を見る必要があります。 オブジェクト識別子のあるリンクをクリックし、 [システム全体でオブジェクトとそのデータをフォロー](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)できます。
+詳しくは、[同期していないオブジェクトのトラブルシューティング](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。

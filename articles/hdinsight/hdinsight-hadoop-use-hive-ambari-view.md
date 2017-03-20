@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
 ms.openlocfilehash: a846d5a70451ed3082b90d87b90bef0eb6da5993
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -61,7 +62,7 @@ Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスし
 
 このドキュメントの手順に従ってテーブルを追加した際、データベース エクスプローラーの右上隅にある更新アイコンを使用すると、一覧を更新できます。
 
-## <a name="a-namehivequeryaquery-editor"></a><a name="hivequery"></a>クエリ エディター
+## <a name="hivequery"></a>クエリ エディター
 
 Hive ビューから、次の手順を使用すると、Hive クエリを実行できます。
 
@@ -91,7 +92,7 @@ Hive ビューから、次の手順を使用すると、Hive クエリを実行�
      > [!NOTE]
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作によってです。 外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
 
-2. クエリを開始するには、クエリ エディターの下部にある **[Execute]** ボタンを使用します。 ボタンがオレンジ色に変わり、テキストが **[Stop execution] ** に変わります。 クエリ エディターの下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。
+2. クエリを開始するには、クエリ エディターの下部にある **[Execute]** ボタンを使用します。 ボタンがオレンジ色に変わり、テキストが **[Stop execution]** に変わります。 クエリ エディターの下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。
    
    > [!IMPORTANT]
    > ブラウザーによっては、ログまたは結果の情報が正しく更新されない場合があります。 ジョブを実行したときに、ジョブの実行が続いているにもかかわらずログが更新されたり結果が返されたりしない場合は、Mozilla FireFox または Google Chrome を代わりに使用してください。
@@ -224,7 +225,7 @@ HDInsight において Hive で UDF を使用する方法の詳細について�
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 * [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
@@ -233,10 +234,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

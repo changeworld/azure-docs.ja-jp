@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f7ea1762e3a3ffe8d3c0c6af307b846dc1f3c696
+ms.sourcegitcommit: 52590f0c47954d115f39cbe988e04a0ed3feb94d
+ms.openlocfilehash: cd3352ae30734cce116fda5a838f95e5e0b86a8a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -36,7 +37,7 @@ Azure DevTest Labs における数式とは、仮想マシン (VM) の作成に�
 > 
 
 ## <a name="create-a-formula"></a>数式の作成
-DevTest Labs の *ユーザー* アクセス許可が付与されていれば、だれでも、数式をベースとして使用して VM を作成することができます。 数式を作成する方法は 2 つあります。 
+DevTest Labs の *ユーザー* アクセス許可が付与されていれば、だれでも、数式をベースとして使用して VM を作成することができます。 数式を作成する方法は&2; つあります。 
 
 * ベースから - 数式のすべての特性を定義するときに使用します。
 * 既存のラボ VM から - 既存の VM の設定に基づいて数式を作成するときに使用します。
@@ -95,7 +96,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 7. **[OK]** を選択して数式を作成します。
 
 ## <a name="use-a-formula-to-provision-a-vm"></a>数式を使用した VM のプロビジョニング
-数式を作成したら、その数式に基づいて VM を作成できます。 [アーティファクトを含む VM の追加](devtest-lab-add-vm-with-artifacts.md#add-a-vm-with-artifacts) のセクションでは、そのプロセスについて説明します。
+数式を作成したら、その数式に基づいて VM を作成できます。 「[アーティファクトを含む VM の追加](devtest-lab-add-vm-with-artifacts.md)」の記事では、そのプロセスについて説明します。
 
 ## <a name="modify-a-formula"></a>数式の変更
 数式を変更するには、次の手順に従います。
@@ -133,10 +134,5 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 
 ## <a name="next-steps"></a>次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm-with-artifacts.md)します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

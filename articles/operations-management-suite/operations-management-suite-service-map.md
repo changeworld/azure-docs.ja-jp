@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
-ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 48a0060edf30b53f685f25efebcb896af2c6122b
+ms.openlocfilehash: ee69cc8402cd9321d1f47ceb4be045274376f440
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -138,7 +138,7 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 
 
 ## <a name="oms-performance-integration"></a>OMS のパフォーマンスの統合
-コンピューターのパフォーマンス パネルには、選択したサーバーの標準的なパフォーマンス メトリックが表示されます。  メトリックには、CPU 使用率、メモリ使用率、送受信したネットワークのバイト数、およびネットワークで送受信されたバイト数による上位プロセスの一覧が含まれます。
+コンピューターのパフォーマンス パネルには、選択したサーバーの標準的なパフォーマンス メトリックが表示されます。  メトリックには、CPU 使用率、メモリ使用率、送受信したネットワークのバイト数、およびネットワークで送受信されたバイト数による上位プロセスの一覧が含まれます。  ネットワークのパフォーマンス データを取得するには、OMS で Wire Data 2.0 ソリューションを有効にしておく必要もあります。
 ![[Machine Change Tracking] (コンピューター変更の追跡) パネル](media/oms-service-map/machine-performance.png)
 
 

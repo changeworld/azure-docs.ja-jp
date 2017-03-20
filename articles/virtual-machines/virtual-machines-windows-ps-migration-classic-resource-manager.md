@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
-ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: bd67cb868e57be0d6cb9c3ea37f67de6dca4e307
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -49,7 +49,10 @@ Azure PowerShell のインストールには、[PowerShell ギャラリー](http
 
 <br>
 
-## <a name="step-3-set-your-subscription-and-sign-up-for-migration"></a>手順 3: サブスクリプションを設定し、移行にサインアップする
+## <a name="step-3-ensure-that-you-are-co-administrator-for-the-subscription-in-azure-classic-portal"></a>手順 3: Azure クラシック ポータルでサブスクリプションの共同管理者であることを確認する
+この移行を実行には、[Azure クラシック ポータル](https://manage.windowsazure.com/)で自分をサブスクリプションの共同管理者として追加する必要があります。 これは、[Azure Portal](https://portal.azure.com) で所有者として既に追加されている場合でも必要です。 試しに、[Azure クラシック ポータルでサブスクリプションの共同管理者の追加](../billing/billing-add-change-azure-subscription-administrator.md)を実行して、自分がサブスクリプションの共同管理者になっているかどうかを確認します。 共同管理者を追加できない場合は、サービス管理者またはサブスクリプションの共同管理者に連絡して、追加してもらってください。   
+
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>手順 4: サブスクリプションを設定し、移行するためにサインアップする
 まず PowerShell プロンプトを開始します。 移行の場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。
 
 Resource Manager モデルの自分のアカウントにサインインします。
@@ -111,7 +114,7 @@ RegistrationState が `Registered` であることを確認してから続行し
 
 <br>
 
-## <a name="step-4-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>手順 4: 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
+## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>手順 5: 現在のデプロイまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
 Azure Resource Manager での現在のコア数は、次の PowerShell コマンドを使用して確認できます。 コア クォータの詳細については、「 [制限と Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」をご覧ください。 
 
 この例は、**米国西部**リージョンでの可用性をチェックします。 例のリージョン名を対象のリージョン名に置き換えてください。 
@@ -120,7 +123,7 @@ Azure Resource Manager での現在のコア数は、次の PowerShell コマン
 Get-AzureRmVMUsage -Location "West US"
 ```
 
-## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>手順 5: IaaS リソースを移行するコマンドを実行する
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>手順 6: IaaS リソースを移行するコマンドを実行する
 > [!NOTE]
 > ここで説明するすべての操作がべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。 これによりプラットフォームでアクションが再試行されます。
 > 
@@ -247,6 +250,34 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
 
 ### <a name="migrate-a-storage-account"></a>ストレージ アカウントを移行する
 仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+
+ストレージ アカウントを移行する前に、上記の前提条件の確認を実行してください。
+
+* **クラシック VM ディスクがストレージ アカウントに格納されているかどうかを確認する**
+
+    次のコマンドを使用して、ストレージ アカウントの VM に接続されているクラシック VM ディスクを見つけます。 
+
+    ```powershell
+     $storageAccountName = 'yourStorageAccountName'
+      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+      DiskName | Format-List -Property RoleName, DiskName 
+
+    ```
+    上のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 上のコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
+
+    次のコマンドを使用して、ストレージ アカウントの接続されていないクラシック VM ディスクを見つけます。 
+
+    ```powershell
+        $storageAccountName = 'yourStorageAccountName'
+        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Format-List -Property DiskName  
+
+    ```
+    上のコマンドでディスクが返された場合、次のコマンドを使用してこれらのディスクを削除します。
+
+    ```powershell
+       Remove-AzureDisk -DiskName 'yourDiskName'
+    ```
+     
 
 次のコマンドを使用して、各ストレージ アカウントの移行の準備をします。 この例では、**myStorageAccount** というストレージ アカウント名を使用しています。 例の名前を対象のストレージ アカウントの名前に置き換えてください。 
 

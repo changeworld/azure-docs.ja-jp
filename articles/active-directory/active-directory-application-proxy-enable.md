@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2d5ea8109f5fde5f2b480ceeea34c365b619fab5
-ms.openlocfilehash: 5f42292fa9238dadd717d5c2e9530b22ee10d943
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: c979e6328f09618642aa7a432c873c7ce20c072b
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -46,6 +47,7 @@ ms.openlocfilehash: 5f42292fa9238dadd717d5c2e9530b22ee10d943
   | 9091 |コネクタの信頼証明書の自動更新に使用されます。 |
   
     ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。 また、NT Authority\System に対しては必ずポート 8080 を有効にしてください。
+* [Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使用して、コネクタが、アプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 さらに、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。 
 * 組織でインターネットへの接続にプロキシ サーバーを使用している場合、その構成方法の詳細については、[既存のオンプレミス プロキシ サーバーの操作](https://blogs.technet.microsoft.com/applicationproxyblog/2016/03/07/working-with-existing-on-prem-proxy-servers-configuration-considerations-for-your-connectors/)に関するブログ記事を参照してください。
 
 ## <a name="step-1-enable-application-proxy-in-azure-ad"></a>手順 1: Azure AD でのアプリケーション プロキシの有効化
@@ -87,10 +89,5 @@ ms.openlocfilehash: 5f42292fa9238dadd717d5c2e9530b22ee10d943
 [アプリケーション プロキシを使用してアプリケーションを発行](active-directory-application-proxy-publish.md)する準備がこれで整いました。
 
 別のネットワークや異なる場所にアプリケーションがある場合、コネクタ グループを使用すると、さまざまなコネクタで論理ユニットを編成することができます。 アプリケーション プロキシ コネクタの使用方法の詳細については、 [こちら](active-directory-application-proxy-connectors.md)を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

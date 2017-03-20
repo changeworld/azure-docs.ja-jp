@@ -17,6 +17,7 @@ ms.author: marsma
 translationtype: Human Translation
 ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
 ms.openlocfilehash: 98307e924927655c8a7de0e8fc6a7c0c2b57af00
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -492,9 +493,4 @@ do
 [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
 [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 [How to: Programmatically access Table storage]: #tablestorage
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

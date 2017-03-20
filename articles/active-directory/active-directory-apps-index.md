@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 52316e90cd2207ee20033cd96f981692b20b5ece
-ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
+ms.sourcegitcommit: ed8ef101a0757fd32585f5b3249e49d4fb0e09b4
+ms.openlocfilehash: ea3aa0b94c6a74747f7efa8633d5b6bfff75a230
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -46,8 +47,8 @@ ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 | 動的グループ メンバーシップ |[グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>シングル サインオン (SSO)
-### <a name="federated-single-sign-on-sign-into-many-apps-using-one-identity"></a>フェデレーション シングル サインオン: 1 つの ID を使用した多数のアプリへのサインイン
-シングル サインオンを使用すると、ユーザーは 1 つの資格情報セットだけを使用して、さまざまなアプリやサービスにアクセスできます。 フェデレーションは、シングル サインオンを可能にする 1 つの方法です。 ユーザーは、フェデレーション アプリにサインインしようとすると、Azure Active Directory によって表示される組織の公式サインイン ページにリダイレクトされます。その後、認証が成功すると、元のアプリにリダイレクトされます。
+### <a name="federated-single-sign-on-sign-into-many-apps-using-one-identity"></a>フェデレーション シングル サインオン:&1; つの ID を使用した多数のアプリへのサインイン
+シングル サインオンを使用すると、ユーザーは&1; つの資格情報セットだけを使用して、さまざまなアプリやサービスにアクセスできます。 フェデレーションは、シングル サインオンを可能にする&1; つの方法です。 ユーザーは、フェデレーション アプリにサインインしようとすると、Azure Active Directory によって表示される組織の公式サインイン ページにリダイレクトされます。その後、認証が成功すると、元のアプリにリダイレクトされます。
 
 | 記事の紹介 |  |
 |:---:| --- |
@@ -58,7 +59,7 @@ ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
 | アプリの証明書の有効期限を構成する方法と証明書を更新する方法 |[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](active-directory-sso-certs.md) |
 
-フェデレーション シングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[フェデレーション アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
+フェデレーション シングル サインオンは、Azure AD のすべてのエディションで、ユーザー&1; 人につき最大&10; 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[フェデレーション アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
 
 ### <a name="password-based-single-sign-on-account-sharing-and-sso-for-non-federated-apps"></a>パスワード ベースのシングル サインオン: 非フェデレーション アプリのためのアカウント共有と SSO
 フェデレーションがサポートされていないアプリケーションへのシングル サインオンを有効にするために、Azure AD にはパスワード管理機能があります。この機能では、SaaS アプリにパスワードを安全に格納し、それらのアプリにユーザーを自動的にサインインさせることができます。 新しく作成したアカウントの資格情報を配布したり、チーム アカウントを複数のユーザーと共有したりすることも簡単にできます。 ユーザーは、アクセスを許可されたアカウントの資格情報を必ずしも知っている必要はありません。
@@ -70,7 +71,7 @@ ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 | 定期的に特定のアプリのパスワードを自動的に変更 |[Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド |[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 
-パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。 自動パスワード ロールオーバーは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
+パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー&1; 人につき最大&10; 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。 自動パスワード ロールオーバーは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ### <a name="app-proxy-single-sign-on-and-remote-access-to-on-premises-applications"></a>アプリ プロキシ: オンプレミス アプリケーションへのシングル サインオンとリモート アクセス
 ネットワーク外部のユーザーとデバイスがアクセスする必要のあるアプリケーションがプライベート ネットワーク内にある場合は、Azure AD アプリケーション プロキシを使用して、これらのアプリへの安全なリモート アクセスを実現することができます。
@@ -83,12 +84,12 @@ ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 | 次のシナリオでアプリケーション プロキシを使用する方法についてのガイダンス |[ネイティブ クライアント アプリケーションをサポートする方法](active-directory-application-proxy-native-client.md)<br /><br />[要求に対応するアプリケーションをサポートする方法](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](active-directory-application-proxy-connectors.md) |
 | アプリケーション プロキシのトラブルシューティング ガイド |[アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md) |
 
-アプリケーション プロキシは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
+アプリケーション プロキシは、Azure AD のすべてのエディションで、ユーザー&1; 人につき最大&10; 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
 
 [Azure AD ドメイン サービス](../active-directory-domain-services/active-directory-ds-overview.md)もご確認ください。これを使用すると、オンプレミス アプリケーションを Azure に移行すると同時に、引き続きそれらのアプリケーションの ID ニーズを満たすことができます。
 
 ### <a name="enabling-single-sign-on-between-azure-ad-and-on-premises-ad"></a>Azure AD とオンプレミス AD 間のシングル サインオンの有効化
-組織がオンプレミスの Windows Server Active Directory と、クラウドの Azure Active Directory を保持している場合、これらの 2 つのシステム間でシングル サインオンを有効にすることができます。 Azure AD Connect (この 2 つのシステムを統合するツール) には、ADFS やその他のフェデレーション プロバイダーとのフェデレーションを確立するオプション、パスワード同期を有効にするオプションなど、シングル サインオンを設定するためのオプションが複数用意されています。
+組織がオンプレミスの Windows Server Active Directory と、クラウドの Azure Active Directory を保持している場合、これらの&2; つのシステム間でシングル サインオンを有効にすることができます。 Azure AD Connect (この&2; つのシステムを統合するツール) には、ADFS やその他のフェデレーション プロバイダーとのフェデレーションを確立するオプション、パスワード同期を有効にするオプションなど、シングル サインオンを設定するためのオプションが複数用意されています。
 
 | 記事の紹介 |  |
 |:---:| --- |
@@ -102,14 +103,14 @@ ms.openlocfilehash: d581ecc99220befefcd8c2f14a756debb3ab2eb1
 Azure AD Connect は、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。 Azure AD のセルフサービスによるパスワードのリセットは、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。 オンプレミス AD へのパスワード ライトバックは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。 
 
 ### <a name="conditional-access-enforce-additional-security-requirements-for-high-risk-apps"></a>条件付きアクセス: 危険性の高いアプリに追加のセキュリティ要件を適用
-アプリとリソースへのシングル サインオンを設定したら、機密性の高いアプリケーションのセキュリティを強化することができます。そのためには、該当アプリへの各サインインに特定のセキュリティ要件を適用します。 たとえば、Azure AD を使用すると、特定のアプリへのすべてのアクセスで必ず多要素認証が要求されるようにすることができます。そのアプリ自体がその機能をサポートしているかどうかは関係ありません。 条件付きアクセスのもう 1 つの一般的な例として、特に機密性の高いアプリケーションにアクセスする場合に、ユーザーが組織の信頼できるネットワークに接続していることが要求されます。
+アプリとリソースへのシングル サインオンを設定したら、機密性の高いアプリケーションのセキュリティを強化することができます。そのためには、該当アプリへの各サインインに特定のセキュリティ要件を適用します。 たとえば、Azure AD を使用すると、特定のアプリへのすべてのアクセスで必ず多要素認証が要求されるようにすることができます。そのアプリ自体がその機能をサポートしているかどうかは関係ありません。 条件付きアクセスのもう&1; つの一般的な例として、特に機密性の高いアプリケーションにアクセスする場合に、ユーザーが組織の信頼できるネットワークに接続していることが要求されます。
 
 | 記事の紹介 |  |
 |:---:| --- |
 | Azure AD、Office365、Intune に提供されている条件付きアクセス機能の概要 |[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md) |
 | 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access-on-premises-setup.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
 | デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 |[Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイスの手順](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />— [Windows 7 デバイスの手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
-| 多要素認証に関するポリシーのために Azure Authenticator アプリの Android バージョンを使用する方法 |[Android 用の Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md) |
+| 2 段階認証用に Microsoft Authenticator アプリを使用する方法 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 条件付きアクセスは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
@@ -138,7 +139,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 | プロビジョニング エラーの通知を受け取る |[アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md) |
 | 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する |[スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](active-directory-saas-scoping-filters.md) |
 
-自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
+自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー&1; 人につき最大&10; 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>Azure AD と統合するアプリケーションの構築
 基幹業務 (LoB) アプリケーションを開発または保守している組織や、顧客が Azure Active Directory を使用しているアプリ開発者には、アプリケーションと Azure AD を統合する際に次のチュートリアルが役立ちます。 
@@ -209,10 +210,5 @@ Azure Active Directory の各エディションに付属のレポートを確認
 [Azure Active Directory ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

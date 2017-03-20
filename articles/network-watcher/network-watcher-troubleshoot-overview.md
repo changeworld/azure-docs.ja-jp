@@ -15,15 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 3bde4a676cce8ab914c000c8fef2b07d0c77e380
-ms.openlocfilehash: e172756f60ac1e8361f5481cd9defe61fa5f6448
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dcf8a88ebd66f5e4a5a06538532fbfbae7ce852e
+ms.lasthandoff: 03/04/2017
 
 ---
 
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
 仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
+
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="results"></a>結果
 
@@ -43,7 +45,7 @@ ms.lasthandoff: 02/24/2017
       * **actionUri** - この値には、実施方法に関するドキュメントへの URI が示されます。
       * **actionUriText** - この値は、対策に関するテキストの簡単な説明が示されます。
 
-次の表に、起こり得るさまざまなエラーの種類 (結果に示される上表の id) とエラーによりログが作成されるかどうかを示します。
+次の表に、起こり得るさまざまなエラーの種類 (id は前述の一覧の results のもの) とエラーによりログが作成されるかどうかを示します。
 
 ### <a name="gateway"></a>ゲートウェイ
 
@@ -51,11 +53,11 @@ ms.lasthandoff: 02/24/2017
 |---|---|---|
 | NoFault | エラーが検出されなかった場合。 |はい|
 | GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
-| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |なし|
+| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
 | UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | なし |
-| PlatformInActive | プラットフォームに問題があります。 | いいえ|
-| ServiceNotRunning | 基になるサービスが実行されていません。 | なし|
+| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
+| PlatformInActive | プラットフォームに問題があります。 | なし|
+| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ|
 | NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| なし|
 | ConnectionsNotConnected | どの接続も接続されていません。 これはただの警告です。| はい|
 | GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
@@ -88,7 +90,7 @@ ms.lasthandoff: 02/24/2017
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他にストレージ エクスプローラーがあります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](http://storageexplorer.com/)のリンクに掲載されています。
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 545ec23bc720dc1a17ce3d084642e96c2397d482
-ms.openlocfilehash: e61638db3c6c3acdc58f374b94b28d855161cf59
+ms.sourcegitcommit: e89ec01cb47a87a45378f73d138224095bcbebed
+ms.openlocfilehash: 201d98c4f4ff29393ad308824ed0575f1ff602ee
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -127,9 +128,9 @@ Kubernetes コンテナー アプリを YAML または JSON [サービス構成�
 
 コンテナーの Web アプリへの HTTP または HTTPS トラフィックの負荷を分散し、トランスポート層セキュリティ (TLS) の証明書を管理するには、Kubernetes の[イングレス](https://kubernetes.io/docs/user-guide/ingress/) リソースを使用します。 イングレスは、クラスター サービスに接続する受信接続を許可する規則を集めたものです。 イングレス リソースが機能するには、Kubernetes クラスターで[イングレス コントローラー](https://kubernetes.io/docs/user-guide/ingress/#ingress-controllers)が実行されている必要があります。
 
-Azure Container Service では、Kubernetes イングレス コントローラーは自動的に実装されません。 いくつかのコントローラーの実装を利用できます。 現在、イングレス規則の構成と HTTP および HTTPS トラフィックの負荷分散には [Nginx イングレス コントローラー](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md)をお勧めします。 
+Azure Container Service では、Kubernetes イングレス コントローラーは自動的に実装されません。 いくつかのコントローラーの実装を利用できます。 現在、イングレス規則の構成と HTTP および HTTPS トラフィックの負荷分散には [Nginx イングレス コントローラー](https://github.com/kubernetes/ingress/tree/master/examples/deployment/nginx)をお勧めします。 
 
-詳細と例については [Nginx イングレス コントローラーのドキュメント](https://github.com/kubernetes/contrib/blob/master/ingress/controllers/nginx/README.md)を参照してください。
+詳細については、[Nginx イングレス コントローラーのドキュメント](https://github.com/kubernetes/ingress/tree/master/controllers/nginx/README.md)を参照してください。
 
 > [!IMPORTANT]
 > Nginx イングレス コントローラーを Azure Container Service で使用する場合は、`type: LoadBalancer` を使ってコントローラーのデプロイをサービスとして公開する必要があります。 これにより、Azure Load Balancer がトラフィックをコントローラーにルーティングするように構成されます。 詳細については、前のセクションを参照してください。
@@ -140,10 +141,5 @@ Azure Container Service では、Kubernetes イングレス コントローラ�
 * [Kubernetes ロード バランサーのドキュメント](https://kubernetes.io/docs/user-guide/load-balancer/)を参照する
 * [Kubernetes イングレスとイングレス コントローラー](https://kubernetes.io/docs/user-guide/ingress/)の詳細
 * [Kubernetes の例](https://github.com/kubernetes/kubernetes/tree/master/examples)を参照する
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -16,15 +16,15 @@ ms.workload: big-data
 ms.date: 03/03/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 576d8663f61d344628a38a98bf9902f4194949d0
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 214bd6ca8abb3adc9447536215f28f478959be07
+ms.lasthandoff: 03/07/2017
 
 ---
 
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
-Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 Stream Analytics クエリを記述してデータを分析します。 後で精読するために結果を保存するか、ダッシュボードを利用し、[Power BI](https://powerbi.com/) で洞察をリアルタイム表示します。
+Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 Azure Stream Analytics クエリを記述してデータを分析します。 後で精読するために結果を保存するか、ダッシュボードを利用し、[Power BI](https://powerbi.com/) で洞察をリアルタイム表示します。
 
 ソーシャル メディア分析ツールは、組織がソーシャル メディアへの大量投稿に含まれるトレンディング トピック、重要なテーマや考え方を理解するのに役立ちます。 センチメント分析 (*意見マイニング*ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。 リアルタイム Twitter 傾向分析が優れた例となります。ハッシュタグ サブスクリプション モデルにより、特定のキーワードをリッスンし、フィードに基づいて感情分析を展開できます。
 

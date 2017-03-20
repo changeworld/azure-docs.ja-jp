@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/06/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
-ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 40636aa9d847b97ea872bf4689a1da6e3eb23eb4
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -91,7 +92,7 @@ Azure サブスクリプションとリソース グループのセキュリテ�
    ![Security alerts in Azure Security Center][7]
 
    > [!NOTE]
-   > セキュリティの警告は、Security Center の Standard レベルが有効になっている場合にのみ使用できます。 Standard レベルでは 90 日間無料試用版を使用できます。 Standard レベルを入手する方法については、「[次のステップ](#next-steps)」を参照してください。
+   > セキュリティの警告は、Security Center の Standard レベルが有効になっている場合にのみ使用できます。 Standard レベルでは 60 日間無料試用版を使用できます。 Standard レベルを入手する方法については、「[次のステップ](#next-steps)」を参照してください。
    >
    >
 2. アラートを選択すると詳細な情報が表示されます。 この例では、**[Modified system binary discovered (システム バイナリの改変の検出)]** を選択します。 これによりブレードが開き、警告の詳細情報が表示されます。
@@ -109,7 +110,7 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 * Azure サブスクリプションのセキュリティ ポリシー を構成します。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」を参照してください。
 * Security Center の推奨事項を使用して、Azure リソースを保護します。 詳細については、「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 * 現在のセキュリティの警告を確認して、管理します。 詳細については、「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
-* Security Center の [Standard レベル](security-center-pricing.md)で利用できる[高度な脅威検出機能](security-center-detection-capabilities.md)について確認します。 Standard レベルでは 90 日間無料試用版を使用できます。
+* Security Center の [Standard レベル](security-center-pricing.md)で利用できる[高度な脅威検出機能](security-center-detection-capabilities.md)について確認します。 Standard レベルは、最初の 60 日間は無料です。
 * Security Center に関する質問がある場合は、[Azure Security Center の FAQ](security-center-faq.md) をご覧ください。
 
 <!--Image references-->
@@ -123,9 +124,4 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 [8]: ./media/security-center-get-started/security-alert-detail.png
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/welcome.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

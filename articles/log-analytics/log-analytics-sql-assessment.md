@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics で SQL 評価ソリューションによる環境を最適化する | Microsoft Docs"
-description: "Azure Log Analytics では、SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価できます。"
+title: "Azure Log Analytics での SQL Server 環境の最適化 | Microsoft Docs"
+description: "Azure Log Analytics では、SQL 評価ソリューションを使用して、SQL Server 環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
-ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a78c3877ac64b9376104d853d6b66b90fbb476d8
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="optimize-your-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションによる環境を最適化する
+# <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションを使用して SQL Server 環境を最適化する
+
 SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールするために役立ちます。
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は&6; つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。

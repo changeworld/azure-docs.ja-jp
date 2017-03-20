@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e2d2f6edc8e17ee4e3eff852e6a2608dac7e16a7
+ms.sourcegitcommit: 2d8d925f80830a0d7047e9567fdd413af2e8c5c3
+ms.openlocfilehash: 5cbc31c57c7b478a775835b172690bd979eac63e
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: e2d2f6edc8e17ee4e3eff852e6a2608dac7e16a7
 vxMaintain と Azure AD の統合には、次の利点があります。
 
 * vxMaintain にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に vxMaintain にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に vxMaintain にシングル サインオン (SSO) できるようにします
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,27 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 vxMaintain と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* vxMaintain でのシングル サインオンが有効なサブスクリプション
+* vxMaintain でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 
 > 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
 
 1. ギャラリーからの vxMaintain の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
-## <a name="adding-vxmaintain-from-the-gallery"></a>ギャラリーからの vxMaintain の追加
+## <a name="add-vxmaintain-from-the-gallery"></a>ギャラリーからの vxMaintain の追加
 Azure AD への vxMaintain の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に vxMaintain を追加する必要があります。
 
 **ギャラリーから vxMaintain を追加するには、次の手順に従います。**
@@ -78,23 +78,23 @@ Azure AD への vxMaintain の統合を構成するには、ギャラリーか�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_01.png)
 7. 結果ウィンドウで **[vxMaintain]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、vxMaintain で Azure AD のシングル サインオンを構成し、テストします。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、vxMaintain で Azure AD の SSO を構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する vxMaintain ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと vxMaintain の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する vxMaintain ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと vxMaintain の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を vxMaintain の **[Username (ユーザー名)]** の値として割り当てます。
 
-vxMaintain で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
+vxMaintain で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[vxMaintain テスト ユーザーの作成](#creating-a-vxmaintain-test-user)** - vxMaintain で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、vxMaintain アプリケーションでシングル サインオンを構成します。
+### <a name="configuring-azure-ad-sso"></a>Azure AD SSO の構成
+このセクションでは、クラシック ポータルで Azure AD の SSO を有効にして、vxMaintain アプリケーションで SSO を構成します。
 
 **vxMaintain で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -106,31 +106,25 @@ vxMaintain で Azure AD のシングル サインオンを構成してテスト�
     ![[シングル サインオンの構成]](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_03.png) 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_04.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、**https://\<会社名\>.verisae.com** の形式で URL を入力します。
-   
-    b. **[応答 URL]** ボックスに、**https://\<会社名\>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true** の形式で URL を入力します。 
-   
-    c. click **[次へ]**
+    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_04.png) 
+  1. **[識別子]** ボックスに、**https://\<会社名\>.verisae.com** の形式で URL を入力します。
+  2. **[応答 URL]** ボックスに、**https://\<会社名\>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true** の形式で URL を入力します。 
+  3. click **[次へ]**
 4. **[vxMaintain でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_05.png)
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_05.png)
+  1. **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+  2. **[次へ]**をクリックします。
 5. お使いのアプリケーションに対して SSO を構成するには、Verisae のアカウント責任者に組織の SSO のセットアップのサポートを要請してください。 次の情報を提供します。
-   
-    • ダウンロードした **メタデータ**
-6. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
+  * ダウンロードした**メタデータ**
+6. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]**をクリックします。
    
     ![Azure AD のシングル サインオン][10]
 7. **[シングル サインオンの確認]** ページで、**[完了]** をクリックします。  
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
 ![Azure AD ユーザーの作成][20]
@@ -147,40 +141,34 @@ vxMaintain で Azure AD のシングル サインオンを構成してテスト�
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_05.png) 
-   
-    a. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-   
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   
-    c. ページの下部にある **[次へ]**」を参照してください。
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_06.png) 
-   
-   a. **[名]** ボックスに「**Britta**」と入力します。  
-   
-   b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-   c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-   d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-   e. **[次へ]**をクリックします。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+ ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_05.png) 
+  1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+  2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+ ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_06.png)   
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_07.png) 
+  ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_07.png) 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+  ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_08.png)   
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. **[完了]** をクリックします。   
 
-### <a name="creating-an-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
+### <a name="create-an-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 このセクションでは、vxMaintain で Britta Simon というユーザーを作成します。 vxMaintain プラットフォームにユーザーを追加するには、Verisae のアカウント責任者にサポートを要請してください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションでは、Britta Simon に vxMaintain へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションでは、Britta Simon に vxMaintain へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
 
 ![ユーザーの割り当て][200] 
 
@@ -200,8 +188,8 @@ vxMaintain で Azure AD のシングル サインオンを構成してテスト�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
 アクセス パネルで [vxMaintain] タイルをクリックすると、vxMaintain アプリケーションに自動的にサインオンします。
 
@@ -226,9 +214,4 @@ vxMaintain で Azure AD のシングル サインオンを構成してテスト�
 [203]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

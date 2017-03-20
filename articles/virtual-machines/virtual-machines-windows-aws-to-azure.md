@@ -71,7 +71,7 @@ Sysprep を使用して VM を一般化すると、VHD からマシン固有の�
     --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2.    VHD ファイルを S3 バケットからダウンロードします。 VHD ファイルを選択し、**[Actions] (操作)** > **[Download] (ダウンロード)** の順に選択します。
+2.    VHD ファイルを S3 バケットからダウンロードします。 VHD ファイルを選択し、**[Actions] \(操作)** > **[Download] \(ダウンロード)** の順に選択します。
 
 
 

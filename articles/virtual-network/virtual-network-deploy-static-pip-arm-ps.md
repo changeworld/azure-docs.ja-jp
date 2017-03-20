@@ -1,10 +1,10 @@
 ---
-title: "PowerShell を使用して静的パブリック IP を持つ VM を作成する | Microsoft Docs"
-description: "Azure Resource Manager で PowerShell を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
+title: "静的パブリック IP アドレスを持つ VM を作成する - Azure PowerShell | Microsoft Docs"
+description: "PowerShell を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
-ms.openlocfilehash: 989236033c263bae3cc54260e1b2e6c31c30af03
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: fb071365d8d716085d1b1bd1cb52fffc830fd75c
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-vm-with-a-static-public-ip-using-powershell"></a>PowerShell を使用して静的パブリック IP を持つ VM を作成する
+# <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>PowerShell を使用して静的パブリック IP アドレスを持つ VM を作成する
 
 > [!div class="op_single_selector"]
 - [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
@@ -33,7 +35,7 @@ ms.openlocfilehash: 989236033c263bae3cc54260e1b2e6c31c30af03
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
@@ -245,10 +247,5 @@ VM を作成するには、VM で使用するリソース グループ、VNet、
         EndTime             : [Subscription Id]
         Error               : 
         ErrorText           : 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

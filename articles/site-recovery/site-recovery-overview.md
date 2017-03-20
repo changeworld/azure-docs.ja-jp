@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/26/2017
+ms.date: 03/14/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e4bb13a73f6338d2d844a0561edc65063c685d59
-ms.openlocfilehash: e554a0ba87efb0272e092a121ba96edc9d9eb011
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="what-is-site-recovery"></a>Site Recovery とは
 
-Azure Site Recovery サービスへようこそ。 この記事では、このサービスの概要を説明し、詳細情報へのリンクを示します。
+Azure Site Recovery サービスへようこそ。 この記事では、サービスの概要を簡単に説明します。
 
-ビジネスの停止は、自然現象や動作障害によって発生します。 組織には、計画されたダウンタイムと計画外のダウンタイム時にデータの安全性とアプリの可用性を維持し、できるだけ速やかに通常の動作状態に復旧させる、ビジネス継続性および障害復旧 (BCDR) 戦略が必要です。
+停止が発生する原因は、自然現象や動作障害です。 組織には、予定されたダウンタイムおよび予定外のダウンタイム時にデータを保護し、アプリケーションの可用性を維持して、ビジネスをできるだけ早く通常の状態に復旧させるために、ビジネス継続性および障害復旧 (BCDR) の戦略が必要です。
 
-Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/) は、データを保護し、回復可能な状態に維持します。 Site Recovery は、ワークロードをレプリケート、フェールオーバー、回復することで、障害発生時のデータの可用性を維持します。
+Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/) サービスは、データを保護し、回復可能な状態に維持します。 Site Recovery は、ワークロードをレプリケート、フェールオーバー、回復することで、障害発生時のデータの可用性を維持します。
 
 ## <a name="what-does-site-recovery-provide"></a>Site Recovery で提供されるもの
 
@@ -47,12 +47,6 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 * **Automation ライブラリとの統合** - 豊富な Azure Automation ライブラリには、運用環境ですぐに使えるアプリケーション固有のスクリプトが用意されています。これらのスクリプトをダウンロードし、Site Recovery と統合できます。
 * **シンプルなネットワーク管理** - Site Recovery と Azure の高度なネットワーク管理により、IP アドレスの予約、ロード バランサーの構成、効率的なネットワーク切り替えを実現する Azure Traffic Manager の統合など、アプリケーション ネットワーク要件が簡略化されます。
 
-## <a name="which-azure-portal"></a>Azure Portal とは
-
-* Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
-* Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
-* Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
-- クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
 ## <a name="whats-supported"></a>サポート対象
 
@@ -64,6 +58,14 @@ Azure Recovery Services は BCDR 戦略を支援します。 [Azure Backup](http
 **レプリケート先** | Azure ストレージ、またはセカンダリ データセンター<br/><br/> Hyper-V の場合、セカンダリ データセンターにレプリケートできるのは、System Center VMM クラウドで管理されている Hyper-V ホスト上の VM だけです。
 **必要な VMware サーバー/ホスト** | レプリケートする VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)によって管理できます。
 **レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
+
+
+## <a name="which-azure-portal"></a>Azure Portal とは
+
+* Site Recovery は、新しい [Azure Portal](https://portal.azure.com) と [Azure クラシック ポータル](https://manage.windowsazure.com/)のどちらでもデプロイできます。
+* Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。
+* Azure Portal では、クラシック モデルをサポートすることも、新しい [Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)をサポートすることもできます。
+- クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 * [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。

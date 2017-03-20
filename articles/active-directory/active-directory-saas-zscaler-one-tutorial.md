@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a73d4c057aeff7de712632ec3711f636e6aadf90
+ms.sourcegitcommit: f5640d84774898e1c51c5dcfa52aab781cddf044
+ms.openlocfilehash: 22e6f8f13370ece01e8ef3b186f05033fb767f1b
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -44,14 +45,14 @@ ms.openlocfilehash: a73d4c057aeff7de712632ec3711f636e6aadf90
 ### <a name="to-enable-the-application-integration-for-zscaler-one-perform-the-following-steps"></a>ZScaler One のアプリケーション統合を有効にするには、次の手順を実行します。
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。  
    
-   ![[Active Directory]](./media/active-directory-saas-zscaler-one-tutorial/IC700993.png "Active Directory")  
+   ![Active Directory](./media/active-directory-saas-zscaler-one-tutorial/IC700993.png "Active Directory")  
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。  
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。  
    
-   ![[アプリケーション]](./media/active-directory-saas-zscaler-one-tutorial/IC700994.png "Applications")  
+   ![アプリケーション](./media/active-directory-saas-zscaler-one-tutorial/IC700994.png "Applications")  
 4. ページの下部にある **[追加]** をクリックします。  
    
-   ![[アプリケーションの追加]](./media/active-directory-saas-zscaler-one-tutorial/IC749321.png "Add application")  
+   ![アプリケーションの追加](./media/active-directory-saas-zscaler-one-tutorial/IC749321.png "Add application")  
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。  
    
    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-zscaler-one-tutorial/IC749322.png "Add an application from gallerry")  
@@ -70,13 +71,13 @@ ms.openlocfilehash: a73d4c057aeff7de712632ec3711f636e6aadf90
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
 1. Azure クラシック ポータルの **ZScaler One** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。  
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-one-tutorial/IC800217.png "Configure Single Sign-On")  
+   ![シングル サインオンの構成](./media/active-directory-saas-zscaler-one-tutorial/IC800217.png "Configure Single Sign-On")  
 2. **[ユーザーの ZScaler One へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。  
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-one-tutorial/IC800218.png "Configure Single Sign-On")  
+   ![シングル サインオンの構成](./media/active-directory-saas-zscaler-one-tutorial/IC800218.png "Configure Single Sign-On")  
 3. **[アプリの URL を構成する]** ページの **[ZScaler One サインオン URL]** ボックスに、ユーザーが ZScaler One アプリケーションのサインオンに使用する URL を入力して、**[次へ]** をクリックします。  
    
-   ![Configure App URL](./media/active-directory-saas-zscaler-one-tutorial/IC800219.png "Configure App URL")  
+   ![アプリケーション URL の構成](./media/active-directory-saas-zscaler-one-tutorial/IC800219.png "Configure App URL")  
    
    > [!NOTE]
    > ご使用の環境の実際の値は、ZScaler One サポート チームから入手できます。  
@@ -84,23 +85,23 @@ ms.openlocfilehash: a73d4c057aeff7de712632ec3711f636e6aadf90
    > 
 4. **[ZScaler One でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。  
    
-   ![Configure Single Sign-On](./media/active-directory-saas-zscaler-one-tutorial/IC800220.png "Configure Single Sign-On")  
+   ![シングル サインオンの構成](./media/active-directory-saas-zscaler-one-tutorial/IC800220.png "Configure Single Sign-On")  
 5. 別の Web ブラウザー ウィンドウで、ZScaler One 企業サイトに管理者としてログインします。  
 6. 上部のメニューで **[管理]**をクリックします。  
    
-   ![[管理]](./media/active-directory-saas-zscaler-one-tutorial/IC800206.png "Administration")  
+   ![Administration](./media/active-directory-saas-zscaler-one-tutorial/IC800206.png "Administration")  
 7. **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。  
    
-   ![[ユーザーと認証の管理]](./media/active-directory-saas-zscaler-one-tutorial/IC800207.png "Manage Users & Authentication")  
+   ![ユーザーと認証の管理](./media/active-directory-saas-zscaler-one-tutorial/IC800207.png "Manage Users & Authentication")  
 8. **[組織の認証オプションの選択]** セクションで、次の手順を実行します。  
    
-   ![認証](./media/active-directory-saas-zscaler-one-tutorial/IC800208.png "Authentication")  
+   ![Authentication](./media/active-directory-saas-zscaler-one-tutorial/IC800208.png "Authentication")  
    
    1. **[SAML シングル サインオンを使用した認証]**を選択します。  
    2. **[SAML シングル サインオン パラメーターの構成]**をクリックします。  
 9. **[SAML シングル サインオン パラメーターの構成]** ダイアログ ページで、次の手順に従い、**[完了]** をクリックします。  
    
-   ![[Single Sign-On]](./media/active-directory-saas-zscaler-one-tutorial/IC800209.png "Single Sign-On")  
+   ![シングル サインオン](./media/active-directory-saas-zscaler-one-tutorial/IC800209.png "Single Sign-On")  
    
    1. Azure クラシック ポータルの **[ZScaler One でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[URL of the SAML Portal to which users are sent for authentication (認証のためにユーザーに表示される SAML ポータルの URL)]** ボックスに貼り付けます。  
    2. **[ログイン名を含む属性]** ボックスに「**NameID**」と入力します。  
@@ -108,20 +109,20 @@ ms.openlocfilehash: a73d4c057aeff7de712632ec3711f636e6aadf90
    4. **[SAML 自動プロビジョニングを有効にする]**を選択します。  
 10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。  
     
-    ![[管理]](./media/active-directory-saas-zscaler-one-tutorial/IC800210.png "Administration")  
+    ![Administration](./media/active-directory-saas-zscaler-one-tutorial/IC800210.png "Administration")  
     
     1. **[保存]**をクリックします。  
     2. **[今すぐ認証する]**をクリックします。  
 11. Azure クラシック ポータルの **[ZScaler One でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。  
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-one-tutorial/IC800221.png "Configure Single Sign-On")  
+    ![シングル サインオンの構成](./media/active-directory-saas-zscaler-one-tutorial/IC800221.png "Configure Single Sign-On")  
 
 ## <a name="configuring-proxy-settings"></a>プロキシ設定の構成
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
 1. **Internet Explorer**を開始します。  
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログを開きます。  
    
-   ![[インターネット オプション]](./media/active-directory-saas-zscaler-one-tutorial/IC769492.png "Internet Options")  
+   ![インターネット オプション](./media/active-directory-saas-zscaler-one-tutorial/IC769492.png "Internet Options")  
 3. **[接続]** タブをクリックします。  
    
    ![接続](./media/active-directory-saas-zscaler-one-tutorial/IC769493.png "Connections")  
@@ -145,7 +146,7 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 1. **Zscaler One** テナントにログインします。  
 2. **[管理]**をクリックします。  
    
-   ![[管理]](./media/active-directory-saas-zscaler-one-tutorial/IC781035.png "Administration")  
+   ![Administration](./media/active-directory-saas-zscaler-one-tutorial/IC781035.png "Administration")  
 3. **[ユーザー管理]**をクリックします。  
    
    ![Add](./media/active-directory-saas-zscaler-one-tutorial/IC781037.png "Add")  
@@ -171,16 +172,11 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 1. Azure クラシック ポータルで、テスト アカウントを作成します。  
 2. **ZScaler One** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。  
    
-   ![[ユーザーの割り当て]](./media/active-directory-saas-zscaler-one-tutorial/IC800222.png "Assign Users")  
+   ![ユーザーの割り当て](./media/active-directory-saas-zscaler-one-tutorial/IC800222.png "Assign Users")  
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。  
    
    ![はい](./media/active-directory-saas-zscaler-one-tutorial/IC767830.png "Yes")  
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

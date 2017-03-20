@@ -15,9 +15,9 @@ ms.date: 02/15/2017
 ms.author: heidist
 experiment_id: heidist-20170221
 translationtype: Human Translation
-ms.sourcegitcommit: 71694028366f48682881523c0220a4158078a76c
-ms.openlocfilehash: b851f906b57225dce516d9704fdace80c44c4897
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 8f4947ba2641bc8a39a71945ff2a6818d1ff7830
+ms.lasthandoff: 03/08/2017
 
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
@@ -49,7 +49,7 @@ Azure Search は、Microsoft の管理されたサービスとしてクラウド
 
 いくつかのクラウド サービス プロバイダーから、カスタム アプリで検索バーを動作させる機能を備えたカスタムの検索エンジンが提供されています。 フルテキスト検索、地理空間検索、検索入力の程度のあいまいさを処理する機能など、同等の基本機能を備えるソリューションもあります。 使用環境に最も合うものを判断する場合、通常は、[特化した機能](#feature-drilldown)か、API、ツール、管理の容易さと全体的な単純さが決め手になります。
 
-他の検索ソリューションと比較した場合、Azure Search は、Azure 上のコンテンツ ストアとデータベースに対するフルテキスト検索のワークロードに関して最も強力であり、情報の取得とコンテンツのナビゲーションを主に検索に依存するアプリに必要な機能層を備えています。 
+他の検索ソリューションと比較した場合、Azure Search は、Azure 上のコンテンツ ストアとデータベースに対するフルテキスト検索のワークロードに関して最も強力であり、情報の取得とコンテンツのナビゲーションを主に検索に依存するアプリに必要な機能層を備えています。 以下のような大きな強みがあります。
 
 + インデックス層での Azure データ統合 (クローラー)
 + 中央管理のための Azure Portal

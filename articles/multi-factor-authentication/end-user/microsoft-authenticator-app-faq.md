@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 28846f2effd26c5b7ca7a79fba52d8ba1cb4ea91
-ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
+ms.sourcegitcommit: 7c91ae265dd86e8d7f206c1ada021c40fd8c4479
+ms.openlocfilehash: cb3b7cfefe22176e17064ad6cbb9df4da8c57c0f
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -24,13 +25,19 @@ ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
 
 この記事では、Microsoft Authenticator アプリに関する一般的な質問にお答えします。 質問に対する回答がここで見つからない場合は、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)をご覧ください。 アプリの特定の機能については、[携帯電話でのサインインに関する FAQ](microsoft-authenticator-app-phone-signin-faq.md) もご覧ください。
 
-Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 このアプリは、Windows Phone、Android、iOS で利用できます。
+Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-### <a name="what-happened-to-the-azure-authenticator-multi-factor-auth-and-microsoft-account-apps"></a>Azure Authenticator、多要素認証、および Microsoft アカウント アプリはどうなりましたか。
-これらのアプリは、Microsoft Authenticator アプリに置き換えられています。 Azure Authenticator は Microsoft Authenticator にアップグレードされています。 多要素認証または Microsoft アカウント アプリを使用している場合は、Microsoft Authenticator をインストールし、アカウントをもう一度追加してください。 新しいアプリへのアカウントの追加を完了した後で、古いものを削除してください。
 
-Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
+### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>アプリのコードの目的は何ですか。 番号が常にカウントダウンされるのはなぜですか。
+
+Microsoft Authenticator アプリを開くと、追加したアカウントが表示され、各アカウントのそばに&6; 桁または&8; 桁の番号が表示されます。 30 秒タイマーがカウントダウンしているのがわかります。
+
+これらのコードは、アカウントにサインインするときに使用されます。 ユーザー名とパスワードを入力した後に、確認コードの入力を求められる場合があります。 Microsoft Authenticator アプリを開き、現在表示されているコードをコピーします。 サインイン ページにそのコードを入力すると、操作が完了します。
+
+コードが 30 秒ごとに変更されるのは、同じコードを 2 回使用できないようにするためです。 パスワードとは異なり、コードを覚えておく必要はありません。 つまり、その携帯電話にアクセスできるユーザーにしか確認コードはわからないということです。
+
+コードにはインターネットもデータも不要であるため、電話サービスへのサインインや、アプリがデータ プランを使い果たすことを心配する必要はありません。 アプリを閉じると、アプリがバックグラウンドで動作し続けることはないので、バッテリが消費されることはありません。 アプリを閉じたら、次回サインインするときまでアプリを無視できます。  
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>検証コードで Microsoft Authenticator アプリケーションを既に使用しています。 ワンクリック プッシュ通知に切り替えるにはどうすればよいですか。
 プッシュ通知によるサインインの承認は、個人の Microsoft アカウントと職場または学校の Microsoft アカウントでのみ可能であり、Google や Facebook などのサード パーティのアカウントでは使用できません。 職場または学校の Microsoft アカウントを使用している場合、所属している組織がこのオプションを無効にすることを選択している可能性があります。
@@ -87,10 +94,5 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 * Microsoft アカウントの [2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
 * 職場または学校のアカウントの [2 段階認証で問題が発生した場合](multi-factor-authentication-end-user-troubleshoot.md)
 * [Microsoft Authenticator を使って携帯電話からサインインする](microsoft-authenticator-app-phone-signin-faq.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

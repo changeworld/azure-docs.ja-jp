@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
-ms.openlocfilehash: 98e06e683e6ee473a0747b423ed7cf6ae2b8cfed
+ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
+ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -559,7 +560,7 @@ GO
 5. 関連付けられたコピー アクティビティで `columnMapping` が使用されていないこと。
 
 ### <a name="staged-copy-using-polybase"></a>PolyBase を使用したステージング コピー
-ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でのデータのコピーを有効にすることができます。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
+ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure Blob Storage 経由でのデータのコピーを有効にすることができます (Premium Storage にはできません)。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
 
 > [!NOTE]
 > オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合、Data Management Gateway のバージョンが 2.4 未満であれば、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE (Java ランタイム環境) をインストールする必要があります。 このような依存関係を回避するため、ゲートウェイは最新バージョンにアップグレードすることをお勧めします。
@@ -596,17 +597,13 @@ GO
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の&1; つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
 
-### <a name="row-size-limitation"></a>行のサイズ制限
-Polybase では、32 KB を超える行サイズはサポートされていません。 32 KB を超える行を含むテーブルを読み込もうとすると、次のエラーが発生します。
+### <a name="row-size-and-data-type-limitation"></a>行のサイズとデータ型の制限
+Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
 
-```
-Type=System.Data.SqlClient.SqlException,Message=107093;Row size exceeds the defined Maximum DMS row size: [35328 bytes] is larger than the limit of [32768 bytes],Source=.Net SqlClient
-```
-
-ソース データの行のサイズが 32 KB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
+ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse リソース クラス
-可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](https://acom-sandbox.azurewebsites.net/en-us/documentation/articles/sql-data-warehouse-develop-concurrency/#change-a-user-resource-class-example)」で、実行方法を確認してください。
+可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」で、実行方法を確認してください。
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の tableName
 次の表では、スキーマとテーブル名のさまざまな組み合わせについて、データセットの JSON で **tableName** プロパティを指定する方法の例を示します。
@@ -723,9 +720,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

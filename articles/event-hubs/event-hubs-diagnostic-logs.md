@@ -1,6 +1,6 @@
 ---
 title: "Azure Event Hubs 診断ログ | Microsoft Docs"
-description: "Microsoft Azure で Event Hubs の診断ログを分析する方法について説明します。"
+description: "Azure Event Hubs の診断ログを設定する方法について説明します。"
 keywords: 
 documentationcenter: 
 services: event-hubs
@@ -16,58 +16,66 @@ ms.workload: data-services
 ms.date: 02/01/2017
 ms.author: babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: 4d7d0e1f5ffb395bf91bbdac1ab4b9ec3f9dee1c
-ms.openlocfilehash: cb8c7930ee423543c91366de64220ee55609a4cf
+ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
+ms.openlocfilehash: 87c0f3eab8c09c79de06c2e806830b2f67ea5732
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="event-hub-diagnostic-logs"></a>Event Hubs 診断ログ
+# <a name="event-hubs-diagnostic-logs"></a>Event Hubs 診断ログ
 
-## <a name="introduction"></a>はじめに
-Event Hubs には&2; 種類のログがあります。 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs): 常に有効で、ジョブで実行される操作の洞察が示されます。
-* [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs): ユーザーが構成でき、作成/更新時、実行中、および削除されるまでに開始されたジョブで発生している、あらゆる事象に関する詳細な洞察が示されます。
+Azure Event Hubs の&2; 種類のログを表示できます。
+* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常にオンになっています。
+* **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 ジョブで発生するすべてのイベントを深く洞察するための診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
-## <a name="how-to-enable-diagnostic-logs"></a>診断ログを有効にする方法
-既定では、診断ログは**オフ**になっています。 有効にするには、次の手順に従います。
+## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
+既定では、診断ログは**オフ**になっています。 診断ログを有効にするには:
 
-Azure Portal にサインオンし、ストリーミング ジョブ ブレードに移動して、[監視] の下にある [診断ログ] ブレードを使用します。
+1.    Azure Portal で、[ストリーミング ジョブ] ブレードに移動します。
 
-![ブレードで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)  
+2.    **[監視]** の **[診断ログ]** ブレードに移動します。
 
-次に、[診断を有効にする] リンクをクリックします
+    ![ブレードで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)  
 
-![診断ログを有効にする](./media/event-hubs-diagnostic-logs/image2.png)
+3.    **[診断を有効にする]** を選択します。
 
-開いている診断で、状態を [オン] に変更します。
+    ![診断ログを有効にする](./media/event-hubs-diagnostic-logs/image2.png)
 
-![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
+4.    **[状態]** で、**[オン]** を選択します。
 
-必要なアーカイブ ターゲット (ストレージ アカウント、イベント ハブ、Log Analytics) を構成し、収集するログのカテゴリ (実行、作成) を選択します。 次に、新しい診断の構成を保存します。
+    ![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
 
-保存された構成が有効になるには約 10 分かかります。構成が有効になると、[診断ログ] ブレードの構成済みアーカイブ ターゲットにログが表示されます。
+5.    アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
 
-診断の構成の詳細については、[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)に関するページをご覧ください。
+6.    収集するログのカテゴリを選択します (**実行****オーサリング**など)。
+
+7.    新しい診断設定を保存します。
+
+新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
+
+診断の構成の詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
-現時点で取得できる診断ログのカテゴリは&2; つあります。
+Event Hubs では、2 つのカテゴリの診断ログをキャプチャします。
 
-* **ArchivalLogs:** Event Hubs アーカイブ、特にアーカイブ エラーに関連するログを取得します。
-* **OperationalLogs:** Event Hubs 操作中に発生したこと、特に、Event Hub 作成、使用リソース、操作の状態などの操作の種類を取得します。
+* **ArchivalLogs:** イベント ハブのアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ) を取得します。
+* **OperationalLogs:** イベント ハブの操作中に発生したこと (特にイベント ハブの作成など操作の種類、使用されたリソース、操作の状態) を取得します。
 
 ## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
-すべてのログが JSON 形式で格納され、各エントリには次の形式の文字列フィールドが含まれます。
+すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下の例で説明している形式を使用する文字列フィールドがあります。
 
+### <a name="archive-logs-schema"></a>アーカイブ ログ スキーマ
 
-### <a name="archive-error-schema"></a>アーカイブ エラー スキーマ
-名前 | Description
+アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
+
+名前 | 説明
 ------- | -------
 TaskName | 失敗したタスクの説明
-ActivityId | 追跡目的の内部 ID
-trackingId | 追跡目的の内部 ID
-resourceId | ARM リソース ID
-eventHub | Event Hub の完全名 (名前空間の名前を含む)
-partitionId | Event Hub 内に書き込まれるパーティション
+ActivityId | 内部 ID。追跡目的で使用されます
+trackingId | 内部 ID。追跡目的で使用されます
+resourceId | Azure Resource Manager リソース ID
+eventHub | イベント ハブの完全名 (名前空間の名前を含みます)
+partitionId | 書き込み先のイベント ハブ パーティション
 archiveStep | ArchiveFlushWriter
 startTime | 障害開始時刻
 failures | 障害が発生した回数
@@ -75,7 +83,7 @@ durationInSeconds | 障害の時間
 Message | エラー メッセージ
 カテゴリ | ArchiveLogs
 
-#### <a name="example-archive-log"></a>アーカイブ ログの例
+アーカイブ ログの JSON 文字列の例を次に示します。
 
 ```json
 {
@@ -95,22 +103,25 @@ Message | エラー メッセージ
 ```
 
 ### <a name="operation-logs-schema"></a>操作ログ スキーマ
-名前 | Description
+
+操作ログの JSON 文字列には、次の表に示す要素が含まれます。
+
+名前 | 説明
 ------- | -------
-ActivityId | 追跡目的の内部 ID
-EventName | 操作の名前           
-resourceId | ARM リソース ID
+ActivityId | 内部 ID。追跡目的で使用されます
+EventName | 操作の名前             
+resourceId | Azure Resource Manager リソース ID
 SubscriptionId | サブスクリプション ID
 EventTimeString | 操作時間
 EventProperties | 操作プロパティ
 状態 | 操作の状態
-Caller | 操作の呼び出し元 (ポータルまたは管理クライアント)
-カテゴリ | OperationalLogs
+Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
+category | OperationalLogs
 
-#### <a name="example-operation-log"></a>操作ログの例
+操作ログの JSON 文字列の例を次に示します。
 
 ```json
-Example: 
+Example:
 {
      "ActivityId": "6aa994ac-b56e-4292-8448-0767a5657cc7",
      "EventName": "Create EventHub",
@@ -128,8 +139,4 @@ Example:
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hubs API 概要](event-hubs-api-overview.md)
 * [Event Hubs の使用](event-hubs-csharp-ephcs-getstarted.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
 

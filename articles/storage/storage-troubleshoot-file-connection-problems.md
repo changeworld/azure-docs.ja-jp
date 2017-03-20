@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 212b4481affc345cff3e8abd2475c838926f5eda
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/03/2017
 * [Windows 8.1 または Windows Server 2012 R2 から Azure File Storage にアクセスしたときにパフォーマンスが低下する](#windowsslow)
 * [Azure ファイル共有をマウントしようとしたときに、エラー 53 が発生する](#error53)
 * [エラー 87: Azure ファイル共有をマウントしようとしたときにパラメーターが正しくない](#error87)
-* [net use は成功したが、エクスプローラーで、マウントされた Azure ファイル共有が表示されない](#netuse)
+* [net use は成功したが、エクスプローラー UI で、マウントされた Azure ファイル共有またはドライブ文字が表示されない](#netuse)
 * [ストレージ アカウントに "/" が含まれており、net use コマンドが失敗する](#slashfails)
 * [アプリケーション/サービスがマウントされた Azure Files ドライブにアクセスできない](#accessfiledrive)
 * [パフォーマンスを最適化するためのその他の推奨事項](#additional)
@@ -48,10 +48,6 @@ ms.lasthandoff: 03/03/2017
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * [Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している](#delayproblem)
 
-
-**他のアプリケーションからのアクセス**
-
-* [Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?](#webjobs)
 
 <a id="quotaerror"></a>
 
@@ -221,9 +217,11 @@ File Storage にファイルをコピーするには、最初にファイルの�
 
 ## <a name="host-is-down-error-112-on-existing-file-shares-or-the-shell-hangs-when-you-run-list-commands-on-the-mount-point"></a>マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する
 ### <a name="cause"></a>原因
-このエラーは、Linux クライアントがある超時間アイドル状態である場合に発生します。 このエラーが発生すると、クライアントは切断され、クライアントの接続はタイムアウトになります。 このエラーは、既定である "ソフト" マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなる通信エラーです。
+このエラーは、Linux クライアントがある長時間アイドル状態である場合に発生します。 クライアントが長時間アイドル状態である場合、クライアントが切断され、接続がタイムアウトになります。 
 
-このエラーは、古いカーネルの既知のバグにより発生する Linux の再接続の問題があるか、またはネットワーク エラーなど、再接続を妨げているその他の問題があることを示しています。 
+接続は、さまざまな理由によりアイドル状態になります。 ネットワーク通信エラーの原因の&1; つは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなるためです。
+
+また、古いカーネルに再接続の問題の修正が存在しないことも原因の&1; つと考えられます。
 
 ### <a name="solution"></a>解決策
 
@@ -239,7 +237,8 @@ Linux カーネルのこの再接続の問題は、次の変更に伴い解決�
 
 * [CIFS: 再接続中にミューテックスのダブルロックが発生する可能性がある問題の修正 (カーネル v4.9 以上)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183) 
 
-ただし、この変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 再接続の問題が修正されている一般的な Linux カーネルは、4.4.40 以上、4.8.16 以上、4.9.1 以上です。最新の修正内容が反映されたこれらの推奨バージョンを利用することをお勧めします。
+ただし、この変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 再接続の問題が修正されている一般的な Linux カーネルは、4.4.40 以上、4.8.16 以上、4.9.1 以上です。
+最新の修正内容が反映されたこれらの推奨バージョンを利用することをお勧めします。
 
 ### <a name="workaround"></a>対処法
 最新バージョンのカーネルに移行できない場合は、Azure ファイル共有にファイルを保持して 30 秒以下ごとに書き込むことで、この問題を回避できます。 これは、ファイルに作成日/変更日を再書き込みするなどの書き込み操作である必要があります。 そうでないと、キャッシュされた結果が得られ、操作によって接続がトリガーされない可能性があります。 
@@ -272,11 +271,6 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
 
-<a id="webjobs"></a>
-
-## <a name="accessing-from-other-applications"></a>他のアプリケーションからのアクセス
-### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Webjob を介してアプリケーションの Azure ファイル共有を参照できますか?
-AppService サンドボックスで SMB 共有をマウントすることはできません。 この問題を回避するには、マップされたドライブとして Azure ファイル共有をマップし、アプリケーションがドライブ名を使用して Azure ファイル共有にアクセスできるようにします。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)

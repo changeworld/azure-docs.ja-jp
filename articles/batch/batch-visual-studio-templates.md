@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio テンプレートを使用して Batch プロジェクトをすぐに開始 - Azure | Microsoft Docs"
-description: "Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装し、実行する方法について説明します。"
+title: "Visual Studio プロジェクト テンプレートを使用した Batch ソリューションの構築の開始 - Azure | Microsoft Docs"
+description: "Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装して実行する方法について説明します。"
 services: batch
 documentationcenter: .net
 author: fayora
@@ -12,15 +12,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 02/27/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: d56525e55816595f33b1fcd9ea96e41fe48b55a3
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: dd7c67bf83e4b95b978b793c8169b7e9c98bc939
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="visual-studio-project-templates-for-azure-batch"></a>Azure Batch 用の Visual Studio プロジェクト テンプレート
+# <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
+
 Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**と**タスク プロセッサ**) に用意されているコードを使用すると、多くのコンピューティング処理を要するワークロードを最小限の手間で Batch 上に実装し、実行することができます。 このドキュメントでは、これらのテンプレートについて説明すると共に、その使用方法についての指針を示しています。
 
 > [!IMPORTANT]
@@ -451,9 +454,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

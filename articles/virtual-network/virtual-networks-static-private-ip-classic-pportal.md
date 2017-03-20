@@ -1,6 +1,6 @@
 ---
-title: "静的プライベート IP アドレスの設定| Azure Portal | クラシック | Microsoft Docs"
-description: "静的プライベート IP の概要と、Azure ポータルを使用してクラシック モードで静的プライベート IP を管理する方法について説明します。"
+title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 446a7dd37e6a58875ba0202cb512b4cc661e0c93
-ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: bde6de3495c2909b63b1f85e420a4ff5e7ac2c1a
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-classic-in-the-azure-portal"></a>Azure ポータルで静的プライベート IP アドレスを設定する方法 (クラシック)
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
+
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -79,10 +82,5 @@ ms.openlocfilehash: 162b65cb9cfa9129279c78312eafd73b0ffd8d6e
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

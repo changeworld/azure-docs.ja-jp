@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
-ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: eaf3df69428124127ef3daf134bc948cd0988ec6
+ms.openlocfilehash: c1956e97444077f197ab5d0fd67097ddea0f7244
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -51,11 +51,11 @@ Azure のインフラストラクチャとプラットフォームのセキュ�
 Web ベースのアプリケーションにおけるセキュリティ上の考慮事項に関する詳細な説明は、このドキュメントの対象範囲外です。 アプリケーションをセキュリティで保護するためのさらなるガイダンスを得るための出発点として、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」、特に [top 10 プロジェクト](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)のページを参照してください。OWASP メンバーが選んだ、Web アプリケーションにおける重要なセキュリティ リスクの現在のトップ 10 が記載されています。
 
 ## <a name="perform-penetration-testing-on-your-app"></a>アプリに対して侵入テストを実行する
-App Service アプリの脆弱性のテストを開始する最も簡単な方法は、 [Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) を使用し、1 回のクリックでアプリに対して脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
+App Service アプリの脆弱性のテストを開始する最も簡単な方法は、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して、1 回のクリックでアプリに対して脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://security-forms.azure.com/penetration-testing/terms) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
-## <a name="a-namehttpsa-secure-communication-with-customers"></a><a name="https"></a> 顧客との通信をセキュリティで保護する
+## <a name="https"></a> 顧客との通信をセキュリティで保護する
 App Service アプリ用に作成された **\*.azurewebsites.net** ドメイン名を使用する場合は、SSL 証明書がすべての **\*.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。 サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効にする](web-sites-configure-ssl-certificate.md)ことができます。
 
 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) を有効にすると、アプリとそのユーザー間の通信を狙った MITM 攻撃から保護することができます。
@@ -65,7 +65,7 @@ App Service は SQL Database と高度に統合されます。たとえば、す
 
 ClearDB などのサードパーティのデータベース プロバイダーを使用する場合は、プロバイダーのマニュアルを直接参照してセキュリティのベスト プラクティスを確認する必要があります。  
 
-## <a name="a-namedevelopa-secure-development-and-deployment"></a><a name="develop"></a> 開発とデプロイをセキュリティで保護する
+## <a name="develop"></a> 開発とデプロイをセキュリティで保護する
 ### <a name="publishing-profiles-and-publish-settings"></a>プロファイルの発行と発行の設定
 **Visual Studio**、**Web Matrix**、**Azure PowerShell**、**Azure コマンドライン インターフェイス (Azure CLI)** などのユーティリティを使用して、アプリケーションの開発、管理タスクの実行、タスクの自動化を行っている場合は、*発行設定*ファイルまたは*発行プロファイル*を使用できます。 どちらの種類のファイルも Azure に対する認証に使用されるため、許可されていないアクセスを防ぐためにセキュリティで保護する必要があります。
 

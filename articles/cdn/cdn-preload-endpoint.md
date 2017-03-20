@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 242c3a6bf656da9b029a780e8b80667405b7b92f
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -49,7 +50,11 @@ ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
    > [!TIP]
    > テキストを入力すると、 **[パス]** テキストボックスが追加され、複数の資産の一覧を作成できます。  一覧から資産を削除するには、省略記号 (...) ボタンをクリックします。
    > 
-   > パスは[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)、`^(?:\/[a-zA-Z0-9-_.\u0020]+)+$` に準拠する相対 URL にする必要があります。  資産ごとに独自のパスが必要です。  資産を事前に読み込むためのワイルドカード機能はありません。
+   > パスは、次の[正規表現](https://msdn.microsoft.com/library/az24scfc.aspx)に準拠する相対 URL にする必要があります。  
+   > >1 つのファイルの読み込み: `@"^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$"`  
+   > >クエリ文字列を使用した&1; つのファイルの読み込み: `@"^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$";`  
+   > 
+   > 資産ごとに独自のパスが必要です。  資産を事前に読み込むためのワイルドカード機能はありません。
    > 
    > 
    
@@ -66,10 +71,5 @@ ms.openlocfilehash: df0dec0731031f2dee69719dd03a588ad6589044
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 * [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

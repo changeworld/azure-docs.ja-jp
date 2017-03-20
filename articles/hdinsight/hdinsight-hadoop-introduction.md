@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 12/14/2016
 ms.author: cgronlun
 translationtype: Human Translation
-ms.sourcegitcommit: 10d684bd6c9408f2fbd48a0a8804b011f098d71c
-ms.openlocfilehash: 8f38b9eaf8bcb498a7983756cbf57f3e372d7fe0
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: e0ebb2224c1f3290df2a89cfaeb9797a7dbcc051
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -34,7 +35,7 @@ Apache Hadoop は、本来、ビッグ データ処理のためのオープン �
 
 ビッグ データから実用的な情報や洞察を得るには、関連するデータを収集し、適切な質問をする必要があります。 また、データはアクセス可能であり、クリーンアップと分析を行った後に有用な方法で提示できる必要があります。 そこで、HDInsight の Hadoop のビッグ データ分析の出番となります。
 
-## <a name="a-nameoverviewaoverview-of-the-hadoop-ecosystem-in-hdinsight"></a><a name="overview"></a>HDInsight の Hadoop エコシステムの概要
+## <a name="overview"></a>HDInsight の Hadoop エコシステムの概要
 HDInsight は、急速に拡大を続けているビッグ データ分析用 Apache Hadoop テクノロジ スタックの Microsoft Azure でのクラウド ディストリビューションです。 これには、Apache Spark、HBase、Kafka、Storm、Pig、Hive、Interactive Hive、Sqoop、Oozie、Ambari などの実装が含まれます。 また、HDInsight は、Power BI、Excel、SQL Server Analysis Services、SQL Server Reporting Services などのビジネス インテリジェンス (BI) ツールとも統合されます。
 
 ### <a name="hadoop-hbase-spark-kafka-interactive-hive-storm-customized-and-other-clusters"></a>Hadoop、HBase、Spark、Kafka、Interactive Hive、Storm、カスタマイズ、その他のクラスター
@@ -83,54 +84,54 @@ HDInsight クラスターには、次のコンポーネントとユーティリ�
 >
 >
 
-### <a name="a-nameambariaambari"></a><a name="ambari"></a>Ambari
+### <a name="ambari"></a>Ambari
 Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。 演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。 Linux 上の HDInsight クラスターは、Ambari Web UI と Ambari REST API の両方を提供するのに対し、Windows 上のクラスターは、REST API のサブセットを提供します。 HDInsight クラスターの Ambari ビューでは、プラグイン UI 機能を使用できます。
 
 [Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関する記事 (Linux のみ)、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」、<a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Apache Ambari API リファレンス</a>をご覧ください。
 
-### <a name="a-nameavroaavro-microsoft-net-library-for-avro"></a><a name="avro"></a>Avro (Microsoft .NET Library for Avro)
+### <a name="avro"></a>Avro (Microsoft .NET Library for Avro)
 Microsoft .NET Library for Avro は、Microsoft.NET 環境向けのシリアル化のために、Apache Avro のコンパクトなバイナリ データ交換形式を実装します。 Avro は、<a target="_blank" href="http://www.json.org/">JavaScript Object Notation (JSON)</a> を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。これは、ある言語でシリアル化されたデータを別の言語で読むことができることを意味します。 この形式の詳細については、<a target=_"blank" href="http://avro.apache.org/docs/current/spec.html">Apache Avro の仕様</a>をご覧ください。
 Avro ファイルの形式は、分散 MapReduce プログラミング モデルをサポートしています。 ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルは "分割可能" です。 詳細については、[Microsoft .NET Library for Avro を使用したデータのシリアル化](hdinsight-dotnet-avro-serialization.md)に関する記事をご覧ください。
 
-### <a name="a-namehdfsahdfs"></a><a name="hdfs"></a>HDFS
+### <a name="hdfs"></a>HDFS
 Hadoop 分散ファイル システム (HDFS) は、MapReduce と YARN と共に Hadoop エコシステムの中核を構成する分散ファイル システムです。 HDFS は、HDInsight の Hadoop クラスターの標準ファイル システムです。
 
-### <a name="a-namehiveahive--hcatalog"></a><a name="hive"></a>Hive と HCatalog
+### <a name="hive"></a>Hive と HCatalog
 <a target="_blank" href="http://hive.apache.org/">Apache Hive</a> は、Hadoop に組み込まれているデータ ウェアハウス ソフトウェアで、HiveQL と呼ばれる SQL に似た言語を使って分散ストレージ内の大量のデータセットに対するクエリと管理を可能にします。 Hive は、Pig と同様、MapReduce 上の抽象化部分です。 Hive を実行すると、クエリを一連の MapReduce ジョブに変換します。 Hive は、概念的には Pig よりもリレーショナル データベース管理システムに近いため、より構造化されたデータでの使用に適しています。 非構造化データを操作する場合は Pig が適しています。 「 [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)」をご覧ください。
 
 <a target="_blank" href="https://cwiki.apache.org/confluence/display/Hive/HCatalog/">Apache HCatalog</a> は、Hadoop のテーブルおよびストレージを管理するレイヤーであり、ユーザーにデータのリレーショナル ビューを提供します。 HCatalog では、Hive SerDe (シリアライザー - デシリアライザー) を書き込める任意の形式で、ファイルの読み取りおよび書き込みを実行できます。
 
-### <a name="a-namemahoutamahout"></a><a name="mahout"></a>Mahout
+### <a name="mahout"></a>Mahout
 <a target="_blank" href="https://mahout.apache.org/">Apache Mahout</a> は、Hadoop 上で実行される機械学習アルゴリズムのスケーラブルなライブラリです。 統計の原則を使用して、機械学習アプリケーションは、データから学習すること、および過去の結果から将来の動作を決めることをシステムに教えます。 「 [HDInsight (Hadoop) で Apache Mahout を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)」を参照してください。
 
-### <a name="a-namemapreduceamapreduce"></a><a name="mapreduce"></a>MapReduce
+### <a name="mapreduce"></a>MapReduce
 Hadoop MapReduce は、大規模なデータセットを並列でバッチ処理するアプリケーションを記述するための Hadoop 用のレガシー ソフトウェア フレームワークです。 MapReduce ジョブは、大規模なデータセットを分割し、データを処理のためにキーと値のペアに整理します。
 
 [YARN](#yarn) は、Hadoop の次世代リソース マネージャーとアプリケーション フレームワークであり、MapReduce 2.0 と呼ばれます。 MapReduce ジョブは YARN で実行されます。
 
 MapReduce の詳細については、Hadoop Wiki で「 <a target="_blank" href="http://wiki.apache.org/hadoop/MapReduce">MapReduce</a> 」をご覧ください。
 
-### <a name="a-nameoozieaoozie"></a><a name="oozie"></a>Oozie
+### <a name="oozie"></a>Oozie
 <a target="_blank" href="http://oozie.apache.org/">Apache Oozie</a> は Hadoop ジョブを管理するワークフローと調整システムです。 Hadoop スタックと統合されていて、MapReduce、Pig、Hive、Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。 [Hadoop での Oozie の使用](hdinsight-use-oozie.md)に関するページを参照してください。
 
-### <a name="a-namephoenixaphoenix"></a><a name="phoenix"></a>Phoenix
+### <a name="phoenix"></a>Phoenix
 <a  target="_blank" href="http://phoenix.apache.org/">Apache Phoenix</a> は、HBase 上のリレーショナル データベース レイヤーです。 Phoenix には JDBC ドライバーが含まれており、ユーザーはこれを使用して SQL テーブルを直接クエリおよび管理できます。 Phoenix は、クエリおよびその他のステートメントをネイティブ NoSQL の API 呼び出しに変換します。MapReduce を使用しないため、NoSQL ストア上でアプリケーションを高速化できます。 [HBase クラスターでの Apache Phoenix と SQuirreL の使用](hdinsight-hbase-phoenix-squirrel.md)に関する記事をご覧ください。
 
-### <a name="a-namepigapig"></a><a name="pig"></a>Pig
+### <a name="pig"></a>Pig
 <a  target="_blank" href="http://pig.apache.org/">Apache Pig</a> は、Pig Latin と呼ばれるシンプルなスクリプト言語を使って大規模なデータセットに対して複雑な MapReduce 変換を実行することを可能にする高レベル プラットフォームです。 Pig は、Hadoop 内で実行できるように Pig Latin スクリプトを変換します。 ユーザー定義関数 (UDF) を作成して Pig Latin を拡張できます。 [Hadoop での Pig の使用](hdinsight-use-pig.md)に関するページを参照してください。
 
-### <a name="a-namesqoopasqoop"></a><a name="sqoop"></a>Sqoop
+### <a name="sqoop"></a>Sqoop
 <a  target="_blank" href="http://sqoop.apache.org/">Apache Sqoop</a> は、リレーショナル データベース (SQL など) やその他の構造化データ ストアと Hadoop との間でデータを効率的に一括転送するためのツールです。 「 [HDInsight の Hadoop での Sqoop の使用](hdinsight-use-sqoop.md)」を参照してください。
 
-### <a name="a-nametezatez"></a><a name="tez"></a>Tez
+### <a name="tez"></a>Tez
 <a  target="_blank" href="http://tez.apache.org/">Apache Tez</a> は、一般的なデータ処理で構成される複雑な非循環グラフを実行する Hadoop YARN 上に構築されたアプリケーション フレームワークです。 これは、MapReduce の後を継ぐ柔軟で強力なフレームワークであり、Hive などのデータ量の多い処理を、より効率的かつ大規模に実行することができます。 [Hive と HiveQL の使用に関するページの『パフォーマンスを改善するための Apache Tez の使用』](hdinsight-use-hive.md#usetez)を参照してください。
 
-### <a name="a-nameyarnayarn"></a><a name="yarn"></a>YARN
+### <a name="yarn"></a>YARN
 Apache YARN は次世代の MapReduce (MapReduce 2.0、または MRv2) であり、優れたスケーラビリティとリアルタイム処理によって MapReduce のバッチ処理を超えるデータ処理シナリオをサポートします。 YARN は、リソース管理および分散アプリケーション フレームワークを提供します。 MapReduce ジョブは YARN で実行されます。
 
 YARN の詳細については、「<a target="_blank" href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Apache Hadoop NextGen MapReduce (YARN) (Apache Hadoop の次世代の MapReduce (YARN))</a>」をご覧ください。
 
-### <a name="a-namezookeeperazookeeper"></a><a name="zookeeper"></a>ZooKeeper
+### <a name="zookeeper"></a>ZooKeeper
 <a  target="_blank" href="http://zookeeper.apache.org/">Apache ZooKeeper</a> は、データ レジスタ (znode) の共有階層名前空間を使用して、大規模な分散システムのプロセスを調整します。 znode には、状態、場所、構成など、プロセスを調整するのに必要な少量のメタ情報が含まれます。
 
 ## <a name="programming-languages-on-hdinsight"></a>HDInsight のプログラミング言語
@@ -159,13 +160,13 @@ HDInsight クラスターでは、Hadoop エコシステムに固有の次の言
 * Pig ジョブ用の Pig Latin
 * Hive ジョブ用の HiveQL と SparkSQL
 
-## <a name="a-nameadvantageaadvantages-of-hadoop-in-the-cloud"></a><a name="advantage"></a>クラウドで Hadoop を使用するメリット
+## <a name="advantage"></a>クラウドで Hadoop を使用するメリット
 HDInsight の Hadoop は、Azure クラウド エコシステムの一部としていくつかのメリットを提供します。その一部を次に示します。
 
 * Hadoop クラスターの自動プロビジョニング。 HDInsight クラスターは、手動で Hadoop クラスターを構成するよりも作成がはるかに簡単です。 詳細については、「 [HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」に関するページをご覧ください。
 * 最新の Hadoop コンポーネント。 詳細については、[HDInsight における Hadoop コンポーネント、バージョン、サービス プラン][component-versioning]に関するページを参照してください。
 * クラスターの高い可用性と信頼性。 「 [HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md) 」を参照してください。
-* Hadoop 互換のストレージ オプションの Azure Blob Storage または Azure Data Lake Store によって実現される効率的で経済的なデータ ストレージ。 詳細については、[HDInsight での Hadoop と Azure Blob Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページまたは [Data Lake Store と HDInsight クラスターの使用](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)に関するページを参照してください。
+* Hadoop 互換のストレージ オプションの Azure Storage または Azure Data Lake Store によって実現される効率的で経済的なデータ ストレージ。 詳細については、[HDInsight での Hadoop と Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関するページまたは [Data Lake Store と HDInsight クラスターの使用](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)に関するページを参照してください。
 * [Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/) や [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/) などの他の Azure サービスとの統合。
 * HDInsight クラスターの実行に使用する VM のサイズと種類が豊富。 詳細については、[HDInsight における Hadoop コンポーネント、バージョン、サービス プラン][component-versioning]に関するページを参照してください。
 * クラスター スケーリング。 クラスター スケーリングを使用すると、削除したり、再作成したりしなくても、実行する HDInsight クラスターのノード数を変更できます。
@@ -177,7 +178,7 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
 HDInsight は、ビッグ データのクラウド サービスを Standard と Premium の&2; つのカテゴリで提供します。 HDInsight Standard では、組織がビッグ データのワークロードの実行に使用できる、エンタープライズ規模のクラスターが用意されています。 HDInsight Premium では、これに加えて HDInsight クラスター用の高度な分析機能やセキュリティ機能が用意されています。 詳細については、 [Azure HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)
 
-## <a name="a-idresourcesaresources-for-learning-more-about-big-data-analysis-hadoop-and-hdinsight"></a><a id="resources"></a>ビッグ データ分析、Hadoop、HDInsight に関する情報の収集に役立つリソース
+## <a id="resources"></a>ビッグ データ分析、Hadoop、HDInsight に関する情報の収集に役立つリソース
 クラウドおよびビッグ データ分析での Hadoop への入門は、次のリソースを使用して作成されました。
 
 ### <a name="hadoop-documentation-for-hdinsight"></a>HDInsight の Hadoop ドキュメント
@@ -206,9 +207,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [marketing-page]: https://azure.microsoft.com/services/hdinsight/
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

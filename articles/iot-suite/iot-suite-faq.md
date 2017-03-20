@@ -13,15 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
-ms.openlocfilehash: ff2e371f0c75dca36cceda36f477e30588dea8e4
+ms.sourcegitcommit: 623f502a92dc8eb152a9b01c4f6db0640ce57e54
+ms.openlocfilehash: ab027e1f21e8c2c33829f833395a6872cb7bcdd8
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
+
+### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>事前構成済みソリューションのソース コードはどこで入手できますか?
+ソース コードは、次の GitHub リポジトリに格納されています。
+* [リモート監視の事前構成済みソリューション][lnk-remote-monitoring-github]
+* [予測的なメンテナンスの構成済みソリューション][lnk-predictive-maintenance-github]
+
+### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>IoT Hub デバイス管理機能を使用している、リモート監視の事前構成済みソリューションを最新バージョンに更新するにはどうすればよいですか?
+* https://www.azureiotsuite.com/ サイトから事前構成済みソリューションをデプロイする場合は、常に最新バージョンのソリューションの新しいインスタンスがデプロイされます。
+* コマンド ラインを使用して事前構成済みソリューションをデプロイする場合は、既存のデプロイを新しいコードで更新できます。 GitHub [リポジトリ][lnk-remote-monitoring-github]の[クラウド デプロイ][lnk-cloud-deployment]に関するページを参照してください。
+
+### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>リモート監視の事前構成済みソリューションに新しいデバイス メソッドのサポートを追加するにはどうすればよいですか?
+「[構成済みソリューションのカスタマイズ][lnk-customize]」の記事のセクション「[Add support for a new method to the simulator (シミュレーターに新しいメソッドのサポートを追加する)][lnk-add-method]」を参照してください。
+
+### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>シミュレートされたデバイスで、必要なプロパティの変更が無視されるのはなぜですか?
+リモート監視の事前構成済みソリューションでは、シミュレートされたデバイスのコードは、報告されるプロパティを更新するために、必要なプロパティである **Desired.Config.TemperatureMeanValue** と **Desired.Config.TelemetryInterval** のみを使用します。 他の必要なプロパティの変更要求はすべて無視されます。
+
+### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>ソリューションのダッシュボード内のデバイスの一覧に自分のデバイスが表示されないのはなぜですか?
+ソリューションのダッシュボード内のデバイスの一覧は、クエリを使用してデバイスの一覧を返しています。 現時点では、クエリから 10,000 を超えるデバイスを返すことはできません。 クエリの検索条件を絞り込んでみてください。
+
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Azure ポータルでのリソース グループの削除と、azureiotsuite.com の構成済みソリューションで削除をクリックすることの違いは何ですか?
 * [azureiotsuite.com][lnk-azureiotsuite] で構成済みのソリューションを削除すると、構成済みソリューションの作成時にプロビジョニングしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。 
 * [Azure ポータル][lnk-azure-portal] でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、[Azure クラシック ポータル][lnk-classic-portal]で構成済みソリューションに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
@@ -77,9 +97,8 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-dreamspark]: https://www.dreamspark.com/Product/Product.aspx?productid=99 
 [lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[lnk-cloud-deployment]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
+[lnk-add-method]: iot-suite-guidance-on-customizing-preconfigured-solutions.md#add-support-for-a-new-method-to-the-simulator
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-remote-monitoring-github]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-predictive-maintenance-github]: https://github.com/Azure/azure-iot-predictive-maintenance

@@ -1,10 +1,10 @@
 ---
-title: "Azure Portal を使用して ARM モードで静的プライベート IP を設定する方法 | Microsoft Docs"
-description: "プライベート IP (DIP) の概要と、Azure ポータルを使用して ARM モードでプライベート IP を管理する方法について説明します。"
+title: "VM のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5d56a0d2c9c44d37520c6a9a3db326f9bdc5420e
-ms.openlocfilehash: e4f6d14f79536c58e40d3ac4b48d00a8c397f1b4
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 251a2977d821b710807e00b2aae71992630feb77
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-set-a-static-private-ip-address-in-the-azure-portal"></a>Azure ポータルで静的プライベート IP アドレスを設定する方法
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する
 
 > [!div class="op_single_selector"]
 - [Azure ポータル](virtual-networks-static-private-ip-arm-pportal.md)
@@ -104,10 +106,5 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

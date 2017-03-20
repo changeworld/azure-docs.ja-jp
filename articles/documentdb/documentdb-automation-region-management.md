@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB Automation - リージョンの管理 | Microsoft Docs"
-description: "Azure CLI と Azure Resource Manager を使用して、DocumentDB データベース アカウントのリージョンを管理します。 DocumentDB は、JSON データ用のクラウドベースの NoSQL データベースです。"
+description: "Azure CLI 1.0 と Azure Resource Manager を使用して、DocumentDB データベース アカウントのリージョンを管理します。 DocumentDB は、JSON データ用のクラウドベースの NoSQL データベースです。"
 services: documentdb
 author: dmakwana
 manager: jhubbard
@@ -13,32 +13,33 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 02/17/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: cca2c112924c22846d5a00e0a94181669fb4cbc0
+ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
+ms.openlocfilehash: 70614f7d97466fb7e8a2f325d744f5e1632640a6
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="automate-documentdb-account-region-management-using-azure-cli-and-azure-resource-manager-templates"></a>Azure CLI と Azure Resource Manager テンプレートを使用して DocumentDB アカウントのリージョン管理を自動化する
+# <a name="automate-documentdb-account-region-management-using-azure-cli-10-and-azure-resource-manager-templates"></a>Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して DocumentDB アカウントのリージョン管理を自動化する
 
-この記事では、Azure CLI コマンドと Azure Resource Manager テンプレートを使用して Azure DocumentDB アカウントのリージョンを追加または削除する方法について説明します。 リージョン管理は [Azure Portal](documentdb-portal-global-replication.md) でも行うことができます。 以下のチュートリアルのコマンドでは、さまざまなリージョンのフェールオーバー優先度を変更することはできませんので注意してください。 追加または削除できるのは、読み取りリージョンのみです。 データベース アカウントの書き込みリージョン (フェールオーバー優先度が 0) は、追加も削除もできません。
+この記事では、Azure CLI 1.0 コマンドと Azure Resource Manager テンプレートを使用して Azure DocumentDB アカウントのリージョンを追加または削除する方法について説明します。 リージョン管理は [Azure Portal](documentdb-portal-global-replication.md) でも行うことができます。 以下のチュートリアルのコマンドでは、さまざまなリージョンのフェールオーバー優先度を変更することはできませんので注意してください。 追加または削除できるのは、読み取りリージョンのみです。 データベース アカウントの書き込みリージョン (フェールオーバー優先度が 0) は、追加も削除もできません。
 
-現在のところ、DocumentDB データベース アカウントは、[Azure Resource Manager テンプレートと Azure CLI](documentdb-automation-resource-manager-cli.md) で作成/変更できる唯一の DocumentDB リソースです。
+現在のところ、DocumentDB データベース アカウントは、[Azure Resource Manager テンプレートと Azure CLI 1.0](documentdb-automation-resource-manager-cli.md) で作成/変更できる唯一の DocumentDB リソースです。
 
-## <a name="getting-ready"></a>準備
+## <a name="getting-ready"></a>開発の準備
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。 Azure CLI をインストールしていない場合は、 [インストールします](../xplat-cli-install.md)。
+Azure リソース グループで Azure CLI 1.0 を使用するには、適切な Azure CLI 1.0 バージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、[インストールします](../xplat-cli-install.md)。
 
-### <a name="update-your-azure-cli-version"></a>Azure CLI のバージョンを更新する
+### <a name="update-your-azure-cli-10-version"></a>Azure CLI 1.0 のバージョンを更新する
 
-コマンド プロンプトで「`azure --version`」と入力し、バージョン 0.10.4 以降が既にインストールされているかどうかを確認します。 この手順で Microsoft Azure CLI のデータ収集に参加するように求められる場合があります。y または n を選択して、オプトインまたはオプトアウトできます。
+コマンド プロンプトで「`azure --version`」と入力し、バージョン 0.10.4 以降が既にインストールされているかどうかを確認します。 この手順で Microsoft Azure CLI 1.0 のデータ収集に参加するように求められる場合があります。y または n を選択して、オプトインまたはオプトアウトできます。
 
     azure --version
     0.10.4 (node: 4.2.4)
 
-バージョンが 0.10.4 以降ではない場合、[Azure CLI をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
+バージョンが 0.10.4 以降ではない場合、[Azure CLI 1.0 をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
 
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 
@@ -59,7 +60,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 
 ブラウザーで [https://aka.ms/devicelogin](https://aka.ms/devicelogin) を開き、コマンド出力で生成されたコードを入力します。
 
-![Microsoft Azure CLI のデバイス ログイン画面のスクリーンショット](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
+![Microsoft Azure CLI 1.0 のデバイス ログイン画面のスクリーンショット](media/documentdb-automation-resource-manager-cli/azure-cli-login-code.png)
 
 コードを入力したら、ブラウザーで使用する ID を選択し、必要に応じてユーザー名とパスワードを入力します。
 
@@ -76,11 +77,11 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     +
     info:    login command OK
 
-ここで説明する対話式のログイン方法以外に、Azure CLi でログインする方法もあります。 他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「 [Azure コマンド ライン インターフェイス (Azure CLI) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
+ここで説明する対話式のログイン方法以外に、Azure CLI 1.0 でログインする方法もあります。 他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI 1.0) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
 
-### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Azure CLI リソース グループ モードに切り替える
+### <a name="switch-to-azure-cli-10-resource-group-mode"></a>Azure CLI 1.0 リソース グループ モードに切り替える
 
-既定では、Azure CLI はサービス管理モード (**asm** モード) で起動します。 以下を入力してリソース グループ モードに切り替えます。
+既定では、Azure CLI 1.0 はサービス管理モード (**asm** モード) で起動します。 以下を入力してリソース グループ モードに切り替えます。
 
     azure config mode arm
 
@@ -136,11 +137,11 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 Azure リソース グループとその機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 テンプレートの作成に興味がある場合は、「 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 
-## <a name="a-idadd-region-documentdb-accountatask-add-region-to-a-documentdb-account"></a><a id="add-region-documentdb-account"></a>作業: DocumentDB アカウントにリージョンを追加する
+## <a id="add-region-documentdb-account"></a>作業: DocumentDB アカウントにリージョンを追加する
 
-DocumentDB には、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)にわたって[データをグローバルに分散する][distribute-globally]機能が備わっています。 このセクションの手順では、Azure CLI と Resource Manager テンプレートを使用して既存の DocumentDB アカウントに読み取りリージョンを追加する方法について説明します。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI を使用して行うことができます。
+DocumentDB には、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)にわたって[データをグローバルに分散する][distribute-globally]機能が備わっています。 このセクションの手順では、Azure CLI 1.0 と Resource Manager テンプレートを使用して既存の DocumentDB アカウントに読み取りリージョンを追加する方法について説明します。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
 
-### <a name="a-idadd-region-documentdb-account-clia-add-region-to-a-documentdb-account-using-azure-cli-without-resource-manager-templates"></a><a id="add-region-documentdb-account-cli"></a> Azure CLI を使用して Resource Manager テンプレートなしでリージョンを DocumentDB アカウントに追加する
+### <a id="add-region-documentdb-account-cli"></a> Azure CLI 1.0 を使用して Resource Manager テンプレートなしでリージョンを DocumentDB アカウントに追加する
 
 コマンド プロンプトで下記のコマンドを入力し、新規または既存のリソース グループで既存の DocumentDB アカウントにリージョンを追加します。 "locations" 配列は、追加する新しいリージョンを除き、DocumentDB アカウントにおける現在のリージョンの構成を反映したものにする必要があります。 下記の例では、2 つ目のリージョンをアカウントに追加するコマンドを示します。
 
@@ -183,7 +184,7 @@ DocumentDB アカウントの読み取りリージョンとして米国東部リ
 
 コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
 
-### <a name="a-idadd-region-documentdb-account-cli-arma-add-region-to-a-documentdb-account-using-azure-cli-with-resource-manager-templates"></a><a id="add-region-documentdb-account-cli-arm"></a> Azure CLI と Resource Manager テンプレートを使用してリージョンを DocumentDB アカウントに追加する
+### <a id="add-region-documentdb-account-cli-arm"></a> Azure CLI 1.0 を使用して Resource Manager テンプレートを使ってリージョンを DocumentDB アカウントに追加する
 
 このセクションの手順では、Azure Resource Manager テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用してリージョンを既存の DocumentDB アカウントに追加する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
 
@@ -321,13 +322,13 @@ azuredeploy.parameters.json ファイルの `"databaseAccountName"` の値フィ
 
 コマンドが終了すると、アカウントは数分間 "**作成中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用する準備ができます。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
 
-## <a name="a-idremove-region-documentdb-accountatask-remove-region-from-a-documentdb-account"></a><a id="remove-region-documentdb-account"></a> 作業: DocumentDB アカウントからリージョンを削除する
+## <a id="remove-region-documentdb-account"></a> 作業: DocumentDB アカウントからリージョンを削除する
 
-DocumentDB には、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)にわたって[データをグローバルに分散する][distribute-globally]機能が備わっています。 このセクションの手順では、Azure CLI と Resource Manager テンプレートを使用して、既存の DocumentDB アカウントからリージョンを削除する方法について説明します。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI を使用して行うことができます。
+DocumentDB には、さまざまな [Azure リージョン](https://azure.microsoft.com/regions/#services)にわたって[データをグローバルに分散する][distribute-globally]機能が備わっています。 このセクションの手順では、Azure CLI 1.0 と Resource Manager テンプレートを使用して、既存の DocumentDB アカウントからリージョンを削除する方法について説明します。 この作業は、Resource Manager テンプレートの有無にかかわらず、Azure CLI 1.0 を使用して行うことができます。
 
-### <a name="a-idremove-region-documentdb-account-clia-remove-region-to-a-documentdb-account-using-azure-cli-without-resource-manager-templates"></a><a id="remove-region-documentdb-account-cli"></a> Azure CLI を使用して Resource Manager テンプレートなしでリージョンを DocumentDB アカウントから削除する
+### <a id="remove-region-documentdb-account-cli"></a> Azure CLI 1.0 を使用して Resource Manager テンプレートなしでリージョンを DocumentDB アカウントに削除する
 
-既存の DocumentDB アカウントからリージョンを削除するには、Azure CLI で下記のコマンドを実行します。 "locations" 配列には、そのリージョンを削除した後も残されるリージョンだけが含まれている必要があります。 **省略された場所は DocumentDB アカウントから削除されます**。 コマンド プロンプトで下記のコマンドを入力します。
+既存の DocumentDB アカウントからリージョンを削除するには、Azure CLI 1.0 で下記のコマンドを実行します。 "locations" 配列には、そのリージョンを削除した後も残されるリージョンだけが含まれている必要があります。 **省略された場所は DocumentDB アカウントから削除されます**。 コマンド プロンプトで下記のコマンドを入力します。
 
 いずれかのリージョンの failoverPriority 値は 0 にする必要があります。これは、このリージョンが [DocumentDB アカウントの書き込みリージョン][scaling-globally]として保持されることを表します。 フェールオーバー優先度の値は、各場所間で一意である必要があり、フェールオーバー優先度の最大値は、リージョンの合計数よりも小さくする必要があります。 
 
@@ -366,7 +367,7 @@ DocumentDB には、さまざまな [Azure リージョン](https://azure.micros
 
 コマンドが終了すると、アカウントは数分間 "**更新中**" の状態になります。その後、"**オンライン**" の状態に変化し、使用できるようになります。 [Azure Portal](https://portal.azure.com) の **[DocumentDB アカウント]** ブレードでアカウントの状態を確認できます。
 
-### <a name="a-idremove-region-documentdb-account-cli-arma-remove-region-from-a-documentdb-account-using-azure-cli-with-resource-manager-templates"></a><a id="remove-region-documentdb-account-cli-arm"></a> Azure CLI と Resource Manager テンプレートを使用してリージョンを DocumentDB アカウントから削除する
+### <a id="remove-region-documentdb-account-cli-arm"></a> Azure CLI 1.0 と Resource Manager テンプレートを使用してリージョンを DocumentDB アカウントから削除する
 
 このセクションの手順では、Azure Resource Manager テンプレートとオプションのパラメーター ファイル (いずれも JSON ファイル) を使用してリージョンを既存の DocumentDB アカウントから削除する方法について説明します。 テンプレートを利用すると、誤りなく必要なものを正確に表現し、それを繰り返すことができます。
 
@@ -511,21 +512,16 @@ DocumentDB アカウントを作成できたら、次の手順として Document
 
 データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。 
 
-コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-sql-queries)できます。
+コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#ExecutingSqlQueries)できます。
 
 DocumentDB の詳細については、以下のリソースを参照してください。
 
--   [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
--   [DocumentDB のリソース モデルと概念](documentdb-resources.md)
+-    [DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
+-    [DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
 使用できる他のテンプレートについては、「 [Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [distribute-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally
 [scaling-globally]: https://azure.microsoft.com/en-us/documentation/articles/documentdb-distribute-data-globally/#scaling-across-the-planet
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

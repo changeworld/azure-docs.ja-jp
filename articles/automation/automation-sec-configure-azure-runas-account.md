@@ -4,7 +4,7 @@ description: "Azure Automation のセキュリティ プリンシパル認証の
 services: automation
 documentationcenter: 
 author: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 keywords: "サービス プリンシパル名, setspn, Azure の認証"
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -13,21 +13,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 03/10/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 7230fb1a8d27708c40040950e3ec8950c6c04780
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 15cbf897f3f67b9d1bee0845b4d287fdabe63ba8
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="authenticate-runbooks-with-azure-run-as-account"></a>Azure 実行アカウントを使用した Runbook の認証
-このトピックでは、Azure ポータルから実行アカウント機能を使用して Automation アカウントを構成し、Azure Resource Manager または Azure サービス管理のリソースを管理するための Runbook を認証する方法について説明します。
+このトピックでは、Azure Portal から実行アカウント機能を使用して Automation アカウントを構成し、Azure Resource Manager または Azure サービス管理のリソースを管理するための Runbook を認証する方法について説明します。
 
-Azure ポータルで新しい Automation アカウントを作成すると、次のものが自動的に作成されます。
+Azure Portal で Automation アカウントを作成すると、次のものが自動的に作成されます。
 
-* Azure Active Directory の新しいサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の Contributor ロールを割り当てる実行アカウント。この Contributor ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。   
+* Azure Active Directory のサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の共同作成者ロールを割り当てる実行アカウント。この共同作成者ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。   
 * クラシック実行アカウント。Azure サービス管理リソースまたはクラシック リソースを Runbook で管理する際に使用する管理証明書をアップロードすることで作成されます。  
 
 これによって必要な作業が単純化され、オートメーションのニーズを満たす Runbook をすぐに作成し、デプロイすることができます。      
@@ -48,7 +48,10 @@ Azure Portal からの Automation アカウントの作成方法を紹介する�
 1. これは、クラシック デプロイメント モデルまたは Resource Manager デプロイメント モデルで既に作成した既存の Automation アカウントには影響しません。  
 2. これは、Azure ポータルで作成した Automation アカウントに対してのみ有効です。  クラシック ポータルからアカウントを作成しようとしても、実行アカウントの構成はレプリケートされません。
 3. 現時点で、クラシック リソースを管理するために以前作成された Runbook と資産 (スケジュールや変数など) を所有しており、かつその Runbook を新しいクラシック実行アカウントで認証する場合は、実行アカウント管理を使用してクラシック実行アカウントを作成するか、次の PowerShell スクリプトを使用して既存のアカウントを更新する必要があります。  
-4. 新しい実行アカウントまたはクラシック実行 Automation アカウントを使って認証を行うには、次のサンプル コードを使用して既存の Runbook を変更する必要があります。  **注意してください** 。     
+4. 新しい実行アカウントまたはクラシック実行 Automation アカウントを使って認証を行うには、「[認証コードの例](#authentication-code-examples)」のセクションにあるサンプル コードを使用して既存の Runbook を編集する必要があります。  
+   
+    >[!NOTE] 
+    >実行アカウントは、Resource Manager リソースに対する認証を証明書ベースのサービス プリンシパルを使って行う場合に使用します。これに対し、クラシック実行アカウントは、サービス管理リソースに対する認証を管理証明書を使って行う場合に使用します。     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Azure Portal から新しい Automation アカウントを作成する
 このセクションでは、以下の手順に従って、Azure Portal から新しい Azure Automation アカウントを作成します。  実行アカウントとクラシック実行アカウントの両方を作成します。  
@@ -85,7 +88,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
-| AzureRunAsCertificate |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、証明書資産。  これにより、Azure を使用して認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。  この証明書には、1 年の有効期間があります。 |
+| AzureRunAsCertificate |Automation アカウントの作成時に自動的に作成される証明書資産、または既存のアカウント用に PowerShell スクリプト (後述) を使用して作成される証明書資産。  これにより、Azure を使用して認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。  この証明書には、1 年の有効期間があります。 |
 | AzureRunAsConnection |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、接続資産。 |
 
 クラシック実行アカウントのリソースを次の表に示します。<br>
@@ -184,21 +187,21 @@ Automation ではこうした変更が検出され、アカウントの **[実�
 
 選択する構成オプションに応じて、以下のものが作成されます。
 
-* Azure AD アプリケーション。自己署名証明書またはエンタープライズ証明書で認証され、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションで、このアカウントの共同作成者ロールが割り当てられます (これは所有者など他の任意のロールに変更できます)。  詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」をご覧ください。
-* Automation 証明書資産。指定された Automation アカウントに **AzureRunAsCertificate** という名前で存在し、サービス プリンシパルで使用される証明書が格納されます。
+* Azure AD アプリケーション。自己署名証明書またはエンタープライズ証明書の公開キーでエクスポートされ、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションで、このアカウントの共同作成者ロールが割り当てられます (これは所有者など他の任意のロールに変更できます)。  詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」をご覧ください。
+* Automation 証明書資産。指定された Automation アカウントに **AzureRunAsCertificate** という名前で存在し、Azure AD アプリケーションで使用される証明書の秘密キーが格納されます。
 * Automation 接続資産。指定された Automation アカウントに **AzureRunAsConnection** という名前で存在し、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。    
 
 クラシック実行アカウントの場合:
 
-* Automation 証明書資産。指定された Automation アカウントに **AzureClassicRunAsCertificate** という名前で存在し、Runbook の認証に使用される自己署名証明書またはエンタープライズ CA 発行の証明書が格納されます。
+* Automation 証明書資産。指定された Automation アカウントに **AzureClassicRunAsCertificate** という名前で存在し、管理証明書で使用される証明書の秘密キーが格納されます。  
 * Automation 接続資産。指定された Automation アカウントに **AzureClassicRunAsConnection** という名前で存在し、サブスクリプション名、サブスクリプション ID、証明書資産名が格納されます。
 
-クラシック実行アカウント用に自己署名証明書を使用するオプションを選択した場合は、このスクリプトによって自己署名管理証明書が作成され、コンピューターの一時ファイル フォルダーに保存されます。このフォルダーは、PowerShell セッションの実行に使用されるユーザー プロファイル内に存在します (*%USERPROFILE%\AppData\Local\Temp*)。  スクリプトの実行後に、Automation アカウントが作成されたサブスクリプションの管理ストアに Azure 管理証明書をアップロードする必要があります。  次の手順では、スクリプトを実行して証明書をアップロードする手順を説明します。  
+クラシック実行アカウントを作成するオプションを選択した場合、スクリプトの実行後に、Automation アカウントが作成されたサブスクリプションの管理ストアに公開証明書 (.cer 形式) をアップロードする必要があります。 次の手順では、スクリプトを実行して証明書をアップロードする手順を説明します。    
 
 1. ご使用のコンピューターに次のスクリプトを保存します。  この例では、**New-RunAsAccount.ps1** というファイル名で保存します。  
    
-        #Requires -RunAsAdministrator
-        Param (
+         #Requires -RunAsAdministrator
+         Param (
         [Parameter(Mandatory=$true)]
         [String] $ResourceGroup,
 
@@ -234,11 +237,14 @@ Automation ではこうした変更が検出され、アカウントの **[実�
         [string]$EnvironmentName="AzureCloud",
 
         [Parameter(Mandatory=$false)]
-        [int] $NoOfMonthsUntilExpired = 12
+        [int] $SelfSignedCertNoOfMonthsUntilExpired = 12
         )
 
-        function CreateSelfSignedCertificate([string] $keyVaultName, [string] $certificateName, [string] $selfSignedCertPlainPassword,[string] $certPath, [string] $certPathCer, [string] $noOfMonthsUntilExpired ) {
-        $Cert = New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation cert:\LocalMachine\My -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"
+        function CreateSelfSignedCertificate([string] $keyVaultName, [string] $certificateName, [string] $selfSignedCertPlainPassword, 
+                                      [string] $certPath, [string] $certPathCer, [string] $selfSignedCertNoOfMonthsUntilExpired ) {
+        $Cert = New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation cert:\LocalMachine\My `
+           -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+           -NotAfter (Get-Date).AddMonths($selfSignedCertNoOfMonthsUntilExpired)
 
         $CertPassword = ConvertTo-SecureString $selfSignedCertPlainPassword -AsPlainText -Force
         Export-PfxCertificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPath -Password $CertPassword -Force | Write-Verbose
@@ -292,8 +298,8 @@ Automation ではこうした変更が検出され、アカウントの **[実�
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 2 -and $AzureRMProfileVersion.Minor -ge 1) -or ($AzureRMProfileVersion.Major -gt 2)))
         {
-          Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
-          return
+           Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+           return
         }
  
         Login-AzureRmAccount -EnvironmentName $EnvironmentName
@@ -305,72 +311,72 @@ Automation ではこうした変更が検出され、アカウントの **[実�
         $ConnectionTypeName = "AzureServicePrincipal"
  
         if ($EnterpriseCertPathForRunAsAccount -and $EnterpriseCertPlainPasswordForRunAsAccount) {
-           $PfxCertPathForRunAsAccount = $EnterpriseCertPathForRunAsAccount
-           $PfxCertPlainPasswordForRunAsAccount = $EnterpriseCertPlainPasswordForRunAsAccount
+        $PfxCertPathForRunAsAccount = $EnterpriseCertPathForRunAsAccount
+        $PfxCertPlainPasswordForRunAsAccount = $EnterpriseCertPlainPasswordForRunAsAccount
         } else {
-           $CertificateName = $AutomationAccountName+$CertifcateAssetName
-           $PfxCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".pfx")
-           $PfxCertPlainPasswordForRunAsAccount = $SelfSignedCertPlainPassword
-           $CerCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".cer")
-           CreateSelfSignedCertificate $KeyVaultName $CertificateName $PfxCertPlainPasswordForRunAsAccount $PfxCertPathForRunAsAccount $CerCertPathForRunAsAccount $NoOfMonthsUntilExpired
+          $CertificateName = $AutomationAccountName+$CertifcateAssetName
+          $PfxCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".pfx")
+          $PfxCertPlainPasswordForRunAsAccount = $SelfSignedCertPlainPassword
+          $CerCertPathForRunAsAccount = Join-Path $env:TEMP ($CertificateName + ".cer")
+          CreateSelfSignedCertificate $KeyVaultName $CertificateName $PfxCertPlainPasswordForRunAsAccount $PfxCertPathForRunAsAccount $CerCertPathForRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired 
         }
 
         # Create Service Principal
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-         # Create the automation certificate asset
-         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
+        # Create the automation certificate asset
+        CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-         # Populate the ConnectionFieldValues
-         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
-         $TenantID = $SubscriptionInfo | Select TenantId -First 1
-         $Thumbprint = $PfxCert.Thumbprint
-         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId} 
+        # Populate the ConnectionFieldValues
+        $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
+        $TenantID = $SubscriptionInfo | Select TenantId -First 1
+        $Thumbprint = $PfxCert.Thumbprint
+        $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId} 
 
-         # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
-         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
+        # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
-           # Create Run As Account using Service Principal
-           $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
-           $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
-           $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-           $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
+            # Create Run As Account using Service Principal
+            $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
+            $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
+            $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
+            $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
                     "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
                     "Then click Upload and upload the .cer format of #CERT#" 
  
-            if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
-            $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
-            $PfxCertPlainPasswordForClassicRunAsAccount = $EnterpriseCertPlainPasswordForClassicRunAsAccount
-            $UploadMessage = $UploadMessage.Replace("#CERT#", $PfxCertPathForClassicRunAsAccount)
-         } else {
-            $ClassicRunAsAccountCertificateName = $AutomationAccountName+$ClassicRunAsAccountCertifcateAssetName
-            $PfxCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".pfx")
-            $PfxCertPlainPasswordForClassicRunAsAccount = $SelfSignedCertPlainPassword
-            $CerCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".cer")
-            $UploadMessage = $UploadMessage.Replace("#CERT#", $CerCertPathForClassicRunAsAccount)
-            CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $NoOfMonthsUntilExpired
-         }
+             if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
+             $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
+             $PfxCertPlainPasswordForClassicRunAsAccount = $EnterpriseCertPlainPasswordForClassicRunAsAccount
+             $UploadMessage = $UploadMessage.Replace("#CERT#", $PfxCertPathForClassicRunAsAccount)
+        } else {
+             $ClassicRunAsAccountCertificateName = $AutomationAccountName+$ClassicRunAsAccountCertifcateAssetName
+             $PfxCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".pfx")
+             $PfxCertPlainPasswordForClassicRunAsAccount = $SelfSignedCertPlainPassword
+             $CerCertPathForClassicRunAsAccount = Join-Path $env:TEMP ($ClassicRunAsAccountCertificateName + ".cer")
+             $UploadMessage = $UploadMessage.Replace("#CERT#", $CerCertPathForClassicRunAsAccount)
+             CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired 
+        }
 
-         # Create the automation certificate asset
-         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
+        # Create the automation certificate asset
+        CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-         # Populate the ConnectionFieldValues
-         $SubscriptionName = $subscription.Subscription.SubscriptionName
-         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
+        # Populate the ConnectionFieldValues
+        $SubscriptionName = $subscription.Subscription.SubscriptionName
+        $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-         # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
-         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
+        # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
-         Write-Host -ForegroundColor red $UploadMessage
-         }
+        Write-Host -ForegroundColor red $UploadMessage
+        }
 
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
 3. 管理者特権での PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが含まれているフォルダーに移動し、必要な構成に基づく必要なパラメーター値を設定してスクリプトを実行します。  
 
     **自己署名証明書を使用して Azure 実行アカウントを作成する**  
-    `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword>` 
+    `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false` 
 
     **自己署名証明書を使用して Azure 実行アカウントと Azure クラシック実行アカウントを作成する**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true`
@@ -386,9 +392,15 @@ Automation ではこうした変更が検出され、アカウントの **[実�
     > 
     > 
 
-クラシック実行アカウントを作成した場合は、スクリプトが正常に終了した後にユーザー プロファイルの **Temp** フォルダーに作成された証明書をコピーする必要があります。  Azure クラシック ポータルに[管理 API 証明書をアップロード](../azure-api-management-certs.md)する手順を実行した後、[サンプル コード](#sample-code-to-authenticate-with-service-management-resources)を参照して、サービス管理リソースで資格情報の構成を検証します。  クラシック実行アカウントを作成していない場合は、以下の、Resource Manager リソースを使用した認証と資格情報構成の検証を行う[サンプル コード](#sample-code-to-authenticate-with-resource-manager-resources)か、Service Management リソースを使用して資格情報構成の検証を行う[サンプル コード](#sample-code-to-authenticate-with-service-management-resources)を参照してください。
+クラシック実行アカウントを作成した場合、スクリプトが正常に完了した後、手順に従って Azure クラシック ポータルに [Management API 証明書をアップロード](../azure-api-management-certs.md)します。  自己署名公開証明書 (.cer 形式) を使ってクラシック実行アカウントを作成した場合、コンピューターの一時ファイル フォルダーに証明書のコピーが作成されています。PowerShell セッションの実行に使用されたユーザー プロファイルの下のフォルダー (*%USERPROFILE%\AppData\Local\Temp*) を探してください。  それ以外の場合、エンタープライズ CA (.cer 形式) によって生成された証明書を使うようにクラシック実行アカウントを構成した場合は、その証明書を使用する必要があります。  証明書をアップロードしたら、サービス管理リソースで資格情報の構成を検証する[サンプル コード](#sample-code-to-authenticate-with-service-management-resources)を参照してください。  
 
-## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>Resource Manager リソースで認証を行うサンプル コード
+クラシック実行アカウントを作成しなかった場合は、次の[サンプル コード](#sample-code-to-authenticate-with-resource-manager-resources)を参照し、Resource Manager リソースでの認証と、資格情報の構成の検証を行います。   
+
+##  <a name="authentication-code-examples"></a>認証コードの例
+
+次の例は、Resource Manager リソースまたはクラシック リソースに対する Runbook の認証を実行アカウントを使って行う方法を示しています。
+
+### <a name="authenticate-with-resource-manager-resources"></a>Resource Manager リソースで認証を行う
 **AzureAutomationTutorialScript** のサンプル Runbook から次の更新済みサンプル コードを取得して使用することで、実行アカウントを使用して認証を行い、Runbook で Resource Manager リソースを管理することができます。   
 
     $connectionName = "AzureRunAsConnection"
@@ -423,7 +435,7 @@ Automation ではこうした変更が検出され、アカウントの **[実�
 
 Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccount**) は、 *ServicePrincipalCertificate* パラメーター セットを使用することに注意してください。  認証に使用するのはサービス プリンシパル証明書であり、資格情報ではありません。  
 
-## <a name="sample-code-to-authenticate-with-service-management-resources"></a>サービス管理リソースで認証を行うサンプル コード
+### <a name="authenticate-with-service-management-resources"></a>サービス管理リソースで認証を行う
 サンプルの **AzureClassicAutomationTutorialScript** Runbook から次の更新済みサンプル コードを取得して使用することで、クラシック実行アカウントを使用して認証を行い、Runbook でクラシック リソースを管理することができます。
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"

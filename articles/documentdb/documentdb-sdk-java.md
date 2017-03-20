@@ -1,5 +1,5 @@
 ---
-title: "Java API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
+title: "Azure DocumentDB Java API、SDK、およびリソース | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: java
@@ -14,14 +14,15 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: khdang
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64858123a75686ba460de5e0f26b143c29f9f067
-ms.openlocfilehash: 7b7afa0ac55327b83e7ea8983a5e25782bda9f07
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 50f8f6a2d64959a1981f95bfe821a2a79f6cafc6
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API と SDK
+# <a name="documentdb-java-sdk-release-notes-and-resources"></a>DocumentDB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/23/2017
 > 
 > 
 
-## <a name="documentdb-java-api-and-sdk"></a>DocumentDB Java API と SDK
 <table>
 
 <tr><td>**SDK のダウンロード**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>

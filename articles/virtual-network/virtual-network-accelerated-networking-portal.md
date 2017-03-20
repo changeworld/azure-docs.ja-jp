@@ -4,7 +4,7 @@ description: "Azure Portal を使用して Azure 仮想マシンで Accelerated 
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: af4515c6-4377-4d4a-a104-18fe1348252c
@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 9ace0a47e8b804840ffda3f906bf3fb8584932cf
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: a2e8e0dc40a63c363f295149e35f9823c8e90fa8
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="accelerated-networking-for-a-virtual-machine"></a>仮想マシンの Accelerated Networking
+# <a name="accelerated-networking-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用した仮想マシンの Accelerated Networking
 > [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-accelerated-networking-portal.md)
+> * [Azure ポータル](virtual-network-accelerated-networking-portal.md)
 > * [PowerShell](virtual-network-accelerated-networking-powershell.md)
 > 
 > 
@@ -38,12 +40,12 @@ Accelerated Networking を使用しない場合は、VM に出入りするすべ
 
 Accelerated Networking を使用したネットワーク トラフィックは、ネットワーク カード (NIC) に到達してから VM に転送されます。 Accelerated Networking がない場合に仮想スイッチによって適用されるネットワークポリシーはすべてオフロードされ、ハードウェアに適用されます。 ハードウェアにポリシーを適用することによって、ホストに適用されるポリシーをすべて維持したまま、ホストや仮想スイッチをバイパスして、NIC からネットワーク トラフィックを直接 VM に転送できます。
 
-VM で Accelerated Networking が有効になっている場合のみ、そのメリットを受けられます。 最適な結果を得るには、同じ VNet に接続された 2台以上の VM でこの機能を有効にしておくことをお勧めします。 複数の VNet またはオンプレミスの間で通信する場合、全体的な待機時間に対してこの機能が与える影響は最小限のものになります。
+VM で Accelerated Networking が有効になっている場合のみ、そのメリットを受けられます。 最適な結果を得るには、同じ VNet に接続された&2;台以上の VM でこの機能を有効にしておくことをお勧めします。 複数の VNet またはオンプレミスの間で通信する場合、全体的な待機時間に対してこの機能が与える影響は最小限のものになります。
 
 [!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
 
 ## <a name="benefits"></a>メリット
-* **待機時間の短縮 / 1 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
+* **待機時間の短縮 /&1; 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
 * **ジッターの削減:** 仮想スイッチの処理は、適用するポリシーの量と、処理を行う CPU のワークロードによって異なります。 ハードウェアへのポリシーの適用をオフロードすると、パケットが直接 VM に配信され、ホストと VM 間の通信とソフトウェアによる干渉やコンテキスト スイッチがなくなるため、そのばらつきはなくなります。
 * **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU の使用率を軽減できます。
 
@@ -81,10 +83,5 @@ VM で Accelerated Networking が有効になっている場合のみ、その�
 5. Windows ボタンを右クリックし、 **[デバイス マネージャー]**をクリックします。 次の図のように、**[ネットワーク]** オプションを展開したときに、**Mellanox ConnectX-3 Virtual Function Ethernet Adapter** が表示されることを確認します。
    
     ![[デバイス マネージャー]](./media/virtual-network-accelerated-networking-portal/image2.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 02/24/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: b3972f3d407b3ba9529b36005c0856796c272095
+ms.sourcegitcommit: 04a3866f88b00486c30c578699d34cd6e8e776d7
+ms.openlocfilehash: 056ee5e67b9a6d396586c53b04d50f89e6fbb560
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -26,45 +27,53 @@ ms.openlocfilehash: b3972f3d407b3ba9529b36005c0856796c272095
 ## <a name="copy-copyindex-and-length"></a>copy、copyIndex、length
 複数回作成するリソース内では、反復処理する回数を指定する **copy** オブジェクトを定義できます。 copy は次の形式で指定します。
 
-    "copy": { 
-        "name": "websitescopy", 
-        "count": "[parameters('count')]" 
-    } 
+```json
+"copy": { 
+    "name": "websitescopy", 
+    "count": "[parameters('count')]" 
+} 
+```
 
 現在の反復値には、**copyIndex()** 関数を使用してアクセスすることができます。 次の例では、名前の作成に concat 関数と copyIndex を使用しています。
 
-    [concat('examplecopy-', copyIndex())]
+```json
+[concat('examplecopy-', copyIndex())]
+```
 
 値の配列から複数のリソースを作成する場合は、 **length** 関数を使用して数を指定できます。 length 関数のパラメーターとして、配列を指定します。
 
-    "copy": {
-        "name": "websitescopy",
-        "count": "[length(parameters('siteNames'))]"
-    }
+```json
+"copy": {
+    "name": "websitescopy",
+    "count": "[length(parameters('siteNames'))]"
+}
+```
 
 copy オブジェクトは、最上位のリソースにのみ適用できます。 リソースの種類のプロパティや子リソースには適用できません。 ただし、このトピックでは、プロパティに複数の項目を指定し、子リソースの複数のインスタンスを作成する方法を説明します。 次の擬似コードの例で、copy を適用できる場所を示します。
 
+```json
+"resources": [
+  {
+    "type": "{provider-namespace-and-type}",
+    "name": "parentResource",
+    "copy": {  
+      /* yes, copy can be applied here */
+    },
+    "properties": {
+      "exampleProperty": {
+        /* no, copy cannot be applied here */
+      }
+    },
     "resources": [
       {
-        "type": "{provider-namespace-and-type}",
-        "name": "parentResource",
-        "copy": {  
-          /* yes, copy can be applied here */
-        },
-        "properties": {
-          "exampleProperty": {
-            /* no, copy cannot be applied here */
-          }
-        },
-        "resources": [
-          {
-            "type": "{provider-type}",
-            "name": "childResource",
-            /* copy can be applied if resource is promoted to top level */ 
-          }
-        ]
+        "type": "{provider-type}",
+        "name": "childResource",
+        /* copy can be applied if resource is promoted to top level */ 
       }
-    ] 
+    ]
+  }
+] 
+```
 
 **copy** をプロパティに適用することはできませんが、プロパティは、今までどおりそのプロパティが含まれるリソースの反復の一部です。 したがって、プロパティ内で **copyIndex()** を使用して値を指定することができます。
 
@@ -81,27 +90,29 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 次のテンプレートを使用します。
 
-    "parameters": { 
-      "count": { 
-        "type": "int", 
-        "defaultValue": 3 
-      } 
-    }, 
-    "resources": [ 
-      { 
-          "name": "[concat('examplecopy-', copyIndex())]", 
-          "type": "Microsoft.Web/sites", 
-          "location": "East US", 
-          "apiVersion": "2015-08-01",
-          "copy": { 
-             "name": "websitescopy", 
-             "count": "[parameters('count')]" 
-          }, 
-          "properties": {
-              "serverFarmId": "hostingPlanName"
-          }
-      } 
-    ]
+```json
+"parameters": { 
+  "count": { 
+    "type": "int", 
+    "defaultValue": 3 
+  } 
+}, 
+"resources": [ 
+  { 
+      "name": "[concat('examplecopy-', copyIndex())]", 
+      "type": "Microsoft.Web/sites", 
+      "location": "East US", 
+      "apiVersion": "2015-08-01",
+      "copy": { 
+         "name": "websitescopy", 
+         "count": "[parameters('count')]" 
+      }, 
+      "properties": {
+          "serverFarmId": "hostingPlanName"
+      }
+  } 
+]
+```
 
 ## <a name="offset-index-value"></a>インデックス値のオフセット
 前の例では、インデックス値は 0 から 2 の値を取ります。 インデックス値をオフセットするには、**copyIndex(1)** のように、**copyIndex()** 関数に値を渡します。 実行する反復処理の数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 そのため前の例と同じテンプレートを使用しても、 **copyIndex(1)** を指定すると、次の名前の&3; つの Web サイトがデプロイされます。
@@ -119,115 +130,119 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 次のテンプレートを使用します。
 
-    "parameters": { 
-      "org": { 
-         "type": "array", 
-         "defaultValue": [ 
-             "Contoso", 
-             "Fabrikam", 
-             "Coho" 
-          ] 
-      }
-    }, 
-    "resources": [ 
-      { 
-          "name": "[concat('examplecopy-', parameters('org')[copyIndex()])]", 
-          "type": "Microsoft.Web/sites", 
-          "location": "East US", 
-          "apiVersion": "2015-08-01",
-          "copy": { 
-             "name": "websitescopy", 
-             "count": "[length(parameters('org'))]" 
-          }, 
-          "properties": {
-              "serverFarmId": "hostingPlanName"
-          } 
+```json
+"parameters": { 
+  "org": { 
+     "type": "array", 
+     "defaultValue": [ 
+         "Contoso", 
+         "Fabrikam", 
+         "Coho" 
+      ] 
+  }
+}, 
+"resources": [ 
+  { 
+      "name": "[concat('examplecopy-', parameters('org')[copyIndex()])]", 
+      "type": "Microsoft.Web/sites", 
+      "location": "East US", 
+      "apiVersion": "2015-08-01",
+      "copy": { 
+         "name": "websitescopy", 
+         "count": "[length(parameters('org'))]" 
+      }, 
+      "properties": {
+          "serverFarmId": "hostingPlanName"
       } 
-    ]
+  } 
+]
+```
 
 もちろん、コピー数を配列の長さ以外の値に設定できます。 たとえば、さまざまな値を含む配列を作成し、デプロイする配列要素の数を指定するパラメーターの値を渡すことができます。 この場合は、最初の例に示すようにコピー数を設定します。 
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
 **dependsOn** 要素を使用し、あるリソースを別のリソースの後にデプロイするように指定できます。 ループ内のリソースの集合に依存するリソースをデプロイするには、**dependsOn** 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に&3; つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の **name** が **storagecopy** に設定され、Virtual Machines の **dependsOn** 要素も **storagecopy** に設定されていることに注意してください。
 
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {},
-        "resources": [
-            {
-                "apiVersion": "2015-06-15",
-                "type": "Microsoft.Storage/storageAccounts",
-                "name": "[concat('storage', uniqueString(resourceGroup().id), copyIndex())]",
-                "location": "[resourceGroup().location]",
-                "properties": {
-                    "accountType": "Standard_LRS"
-                 },
-                "copy": { 
-                     "name": "storagecopy", 
-                     "count": 3 
-                  }
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "resources": [
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id), copyIndex())]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "accountType": "Standard_LRS"
             },
-            {
-                "apiVersion": "2015-06-15", 
-                "type": "Microsoft.Compute/virtualMachines", 
-                "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
-                "dependsOn": ["storagecopy"],
-                ...
+            "copy": { 
+                "name": "storagecopy", 
+                "count": 3 
             }
-        ],
-        "outputs": {}
-    }
+        },
+        {
+            "apiVersion": "2015-06-15", 
+            "type": "Microsoft.Compute/virtualMachines", 
+            "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+            "dependsOn": ["storagecopy"],
+            ...
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="create-multiple-instances-of-a-child-resource"></a>子リソースの複数のインスタンスの作成
 子リソースにコピー ループを使用することはできません。 通常他のリソース内の入れ子として定義されるリソースの複数のインスタンスを作成するには、代わりにそのリソースを最上位のリソースとして作成する必要があります。 **type** および **name** の各プロパティを使用して、親リソースとの関係を定義します。
 
 たとえば、通常はデータ ファクトリ内の子リソースとしてデータセットを定義するとします。
 
+```json
+"resources": [
+{
+    "type": "Microsoft.DataFactory/datafactories",
+    "name": "exampleDataFactory",
+    ...
     "resources": [
     {
-        "type": "Microsoft.DataFactory/datafactories",
-        "name": "exampleDataFactory",
-        ...
-        "resources": [
-        {
-            "type": "datasets",
-            "name": "exampleDataSet",
-            "dependsOn": [
-                "exampleDataFactory"
-            ],
-            ...
-        }
-    }]
-
-データセットの複数のインスタンスを作成するには、データ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 **type** および **name** の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、次の形式で完全修飾型を指定する必要があります。
-
- **{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}** 
-
-データ ファクトリのインスタンスを使用して親子関係を確立するには、親リソースの名前を含むデータ セットの名前を指定します。 名前には次の形式を使用します。
-
-**{parent-resource-name}/{child-resource-name}**.  
-
-次の例は、実装を示します。
-
-    "resources": [
-    {
-        "type": "Microsoft.DataFactory/datafactories",
-        "name": "exampleDataFactory",
-        ...
-    },
-    {
-        "type": "Microsoft.DataFactory/datafactories/datasets",
-        "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
+        "type": "datasets",
+        "name": "exampleDataSet",
         "dependsOn": [
             "exampleDataFactory"
         ],
-        "copy": { 
-            "name": "datasetcopy", 
-            "count": "3" 
-        } 
         ...
-    }]
+    }
+}]
+```
+
+データセットの複数のインスタンスを作成するには、データ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 **type** および **name** の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` の形式で完全修飾型を指定する必要があります。
+
+データ ファクトリのインスタンスを使用して親子関係を確立するには、親リソースの名前を含むデータ セットの名前を指定します。 `{parent-resource-name}/{child-resource-name}` の形式で入力します。  
+
+次の例は、実装を示します。
+
+```json
+"resources": [
+{
+    "type": "Microsoft.DataFactory/datafactories",
+    "name": "exampleDataFactory",
+    ...
+},
+{
+    "type": "Microsoft.DataFactory/datafactories/datasets",
+    "name": "[concat('exampleDataFactory', '/', 'exampleDataSet', copyIndex())]",
+    "dependsOn": [
+        "exampleDataFactory"
+    ],
+    "copy": { 
+        "name": "datasetcopy", 
+        "count": "3" 
+    } 
+    ...
+}]
+```
 
 ## <a name="create-multiple-instances-when-copy-wont-work"></a>コピーが動作しない場合の複数のインスタンスの作成
 **copy** は、リソースの種類に対してのみ使用できます。リソースの種類内のプロパティに対して使用することはできません。 この要件により、リソースの一部の複数のインスタンスを作成する場合に問題が発生する可能性があります。 一般的なシナリオでは、仮想マシン用に複数のデータ ディスクを作成します。 **dataDisks** は仮想マシンのプロパティであり、それ自体がリソース タイプではないので、データ ディスクで **copy** を使用することはできません。 代わりに、必要な数のデータ ディスクで配列を作成し、作成するデータ ディスクの実際の数を渡します。 仮想マシンの定義で、**take** 関数を使用し、配列から実際に必要な要素の数のみを取得します。
@@ -236,7 +251,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 デプロイ テンプレートの該当するセクションを次の例に示します。 複数のデータ ディスクの動的な作成に関するセクションがよくわかるように、多くのテンプレートを削除してあります。 作成するディスクの数を渡すことができる **numDataDisks** パラメーターに注意してください。 
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -338,7 +353,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 プロパティの変動的な数の項目とリソースの複数のインスタンスを作成する必要がある場合は、**take** 関数および **copy** 要素を一緒に使用することができます。 たとえば、仮想マシンごとにデータ ディスク数が異なる複数の仮想マシンを作成する必要があるとします。 関連する仮想マシンを識別する名前を各データ ディスクに付けるには、データ ディスクの配列を別のテンプレートに追加します。 仮想マシンの名前と、返されるデータ ディスクの数を表すパラメーターを組み込みます。 outputs セクションで、指定した項目の数を返します。
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -382,7 +397,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 親テンプレートに、仮想マシンの数と、各仮想マシンのデータ ディスクの数の配列を表すパラメーターを含めます。
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -404,7 +419,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 
 resources セクションで、データ ディスクを定義するテンプレートの複数のインスタンスをデプロイします。 
 
-```
+```json
 {
   "apiVersion": "2016-09-01",
   "name": "[concat('nested-', copyIndex())]",
@@ -430,7 +445,7 @@ resources セクションで、データ ディスクを定義するテンプレ
 
 resources セクションで、仮想マシンの複数のインスタンスをデプロイします。 データ ディスクについては、データ ディスクの正しい数とデータ ディスクの正しい名前を格納する入れ子になったデプロイを参照します。
 
-```
+```json
 {
   "type": "Microsoft.Compute/virtualMachines",
   "name": "[concat('myvm', copyIndex())]",
@@ -454,7 +469,7 @@ resources セクションで、仮想マシンの複数のインスタンスを�
 
 最初に、ストレージ アカウントを作成する入れ子になったテンプレートを作成します。 このテンプレートが、BLOB URI の配列パラメーターを受け入れることに注意してください。 このパラメーターを使用して、それまでのデプロイのすべての値に対してラウンド トリップを行います。 テンプレートから出力されるのは、新しい BLOB URI をそれまでの URI に連結した配列です。
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -495,7 +510,7 @@ resources セクションで、仮想マシンの複数のインスタンスを�
 
 ここで、入れ子になったテンプレートの静的インスタンスを&1; つ持ち、入れ子になったテンプレートの残りのインスタンスに対してループする親テンプレートを作成します。 ループされるデプロイのインスタンスごとに、直前のデプロイの出力である配列を渡します。
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -552,10 +567,5 @@ resources セクションで、仮想マシンの複数のインスタンスを�
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * テンプレートで使用できるすべての関数については、「[Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

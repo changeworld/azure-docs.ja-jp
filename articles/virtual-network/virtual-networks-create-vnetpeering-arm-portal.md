@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
-ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a4a770ec6f258c62864cd3fcc79b33b5cac38ace
+ms.openlocfilehash: 8f05957e8c40dee8ceb7fb1355d8d8776935cf5a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -76,7 +76,7 @@ VNet ピアリングの各リンクには、上記のプロパティ セット�
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
 1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. この例では、UserA には SubscriptionA に対する管理アクセス許可が与えられ、UserB には SubscriptionB に対する管理アクセス許可が与えられています。
+2. この例では、UserA には SubscriptionA に対する管理アクセス許可が与えられ、UserB には SubscriptionB に対する管理アクセス許可が与えられています。 両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられています。 別の Azure Active Directory テナントに関連付けられているサブスクリプション間でピアリングを作成することはできません。
 3. ポータルで **[参照]** をクリックし、**[Virtual networks (仮想ネットワーク)]** を選択します。 ピアリングを設定する VNet をクリックします。
 4. 次の図に示すように、選択した VNet のブレードで、**[アクセス制御]** をクリックし、**[追加]** をクリックします。
 

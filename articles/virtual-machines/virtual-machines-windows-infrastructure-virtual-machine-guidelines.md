@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/17/2017
 ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
 ms.openlocfilehash: 513edca959a3a9a8d6a8bf7d7620da9ad8a7d879
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -55,10 +56,5 @@ Azure 環境内の主要なリソースの 1 つは VM です。 このリソー
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

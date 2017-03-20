@@ -22,7 +22,7 @@ ms.lasthandoff: 02/22/2017
 
 
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションに関連付ける
+# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションに追加します。
 個別の Azure サブスクリプションと Office 365 サブスクリプションをリンクして、Azure サブスクリプションから Office 365 テナントにアクセスできるようにします。 サブスクリプションをリンクするには、Azure サービス管理者アカウントで Azure にサインインし、ディレクトリを追加して、Office 365 組織アカウントを Azure Active Directory テナントに追加します。
 
 Azure Active Directory インスタンス内にユーザーの Office 365 サブスクリプションが必要な場合、または Office 365 アカウントはあっても Azure アカウントがない場合は、「[Office 365 アカウントを使用して Azure にサインアップする](billing-use-existing-office-365-account-azure-subscription.md)」をご覧ください。 
@@ -75,7 +75,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
    
     ![ダッシュボードのスクリーンショット](./media/billing-add-office-365-tenant-to-azure-subscription/s314_office-365-tenant-appear-in-azure.png)
 
-### <a name="a-namestep2astep-2-change-the-directory-associated-with-the-azure-subscription"></a><a name="Step2"></a>手順 2: Azure サブスクリプションに関連付けられているディレクトリを変更する
+### <a name="Step2"></a>手順 2: Azure サブスクリプションに関連付けられているディレクトリを変更する
    
 1. **[設定]**を選択します。
    
@@ -114,7 +114,7 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
    
     a. Azure クラシック ポータルからサインアウトします。
    
-    b. [Azure ポータル](https://portal.azure.com/)を開きます。
+    b. [Azure Portal](https://portal.azure.com/)を開きます。
    
     c. 共同管理者の資格情報を入力し、**[サインイン]** を選択します。
    

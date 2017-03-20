@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
+title: "Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
 description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。"
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 02/24/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
+ms.sourcegitcommit: 853177202e4724546242d4e8d1b41b456a444eeb
+ms.openlocfilehash: 2381b7e9ab4514d6668569c2a58d108af5008a7e
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 
 収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。
 
-1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。 
+1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。
 2. **+** をクリックするか、または **Enter** キーを押して、一覧にカウンターを追加します。
 3. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
 4. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
@@ -92,19 +93,9 @@ Log Analytics は、カウンターがインストールされているすべて
 
 ![折りたたまれた [メトリック] ビュー](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
 
-選択した時間範囲が 6 時間以下の場合、グラフは数秒ごとに更新されます。  ライブ データが明るい青色でグラフの右側に表示されます。
-
-![展開された [メトリック] ビューとライブ データ](media/log-analytics-data-sources-performance-counters/metricsexpanded.png)
-
 ログ検索でパフォーマンス データを集計する方法については、「[On-demand metric aggregation and visualization in OMS (OMS におけるオンデマンドのメトリック集計と視覚化)](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](log-analytics-powerbi.md) にエクスポートします。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

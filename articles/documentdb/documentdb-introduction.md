@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 988c887d2d26ab3ab5b287f803c7d598bd6620e3
-ms.openlocfilehash: 23b1780df8ec01c0692e3afd408ea44fc9773b28
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4f6ae0c3c40a10f75b46c6e44b0aa9e8ce440b4d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -46,8 +46,9 @@ Azure DocumentDB が備えている主要な機能と利点は次のとおりで
 * **完全管理**: データベースやコンピューター リソースを管理する手間がかかりません。 Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、スケールの管理、複雑なデータ層のアップグレードを手作業で行う必要はありません。 すべてのデータベースは自動的にバックアップされ、局地的障害から保護されます。 DocumentDB アカウントは簡単に追加し、必要に応じて容量をプロビジョニングすることができます。データベースの運用と管理に煩わされることなく、アプリケーションに専念することが可能です。 
 * **設計に込められたオープンな環境:** 既存のスキルやツールをそのまま活かすことができます。 DocumentDB に対するプログラミングは、シンプルで親しみやすく、新しいツールを導入する必要がないうえ、JSON や JavaScript のカスタム拡張機能への縛りもありません。 CRUD、クエリ、JavaScript 処理を含め、データベースのすべての機能には、単純な RESTful HTTP インターフェイスでアクセスすることができます。 DocumentDB は、既にあるフォーマット、言語、標準を積極的に採用すると共に、それを基盤として価値の高いデータベース機能を提供しています。
 * **自動インデックス作成:** 既定では、DocumentDB がデータベース内のすべてのドキュメントについて自動的にインデックスを作成するため、スキーマや、セカンダリ インデックスの作成は不要です。 すべてにはインデックスを作成したくない場合もあります。 その場合は、 [JSON ファイルでパスを除外](documentdb-indexing-policies.md) することもできます。
+* **MongoDB アプリとの互換性:** DocumentDB: MongoDB 用 API を使用すると、MongoDB 用に作成されたアプリのデータ ストアとして DocumentDB データベースを使用できます。 つまり、MongoDB データベースの既存のドライバーを使用することで、MongoDB 用に記述されたアプリケーションが DocumentDB と通信し、MongoDB データベースではなく DocumentDB データベースを使用できるようになりました。 多くの場合、接続文字列を変更するだけで、MongoDB から DocumentDB に使用を切り替えることができます。 詳細については、「[DocumentDB: MongoDB 用 API とは](documentdb-protocol-mongodb.md)」を参照してください。
 
-## <a name="a-namedata-managementahow-does-documentdb-manage-data"></a><a name="data-management"></a>DocumentDB はどのようにデータを管理しますか。
+## <a name="data-management"></a>DocumentDB はどのようにデータを管理しますか。
 Azure DocumentDB では、明確に定義されたデータベース リソースによって JSON データが管理されます。 これらのリソースは、高可用性を確保するためにレプリケートされ、論理 URI によって一意にアドレス指定されます。 DocumentDB のすべてのリソースには、HTTP ベースのシンプルで RESTful なプログラミング モデルを適用することができます。 
 
 DocumentDB データベース アカウントは、Azure DocumentDB にアクセスできる一意の名前空間です。 データベース アカウントを作成するには、事前に Azure サブスクリプションが必要です。このサブスクリプションで、多様な Azure サービスにアクセスできます。 
@@ -60,8 +61,8 @@ DocumentDB 内のリソースはいずれも、JSON ドキュメントとして�
 
 データベース アカウントは、一連のデータベースから成ります。それぞれのデータベースには、複数のコレクションが含まれており、それぞれのコレクションに、ストアド プロシージャ、トリガー、UDF のほか、ドキュメントおよび関連する添付ファイルが含まれています。 また、データベースにはユーザーが関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連のアクセス許可が関連付けられます。 データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメント、ストアド プロシージャ、トリガー、UDF、添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。  
 
-## <a name="a-namedevelopa-how-can-i-develop-apps-with-documentdb"></a><a name="develop"></a> DocumentDB で、どのようにしてアプリを開発しますか。
-Azure DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。 さらに、DocumentDB にはいくつかの主要な言語のプログラミング ライブラリも用意されています。 アドレスのキャッシュ、例外管理、自動再試行などに伴う細部の処理がライブラリ側で行われるため、Azure DocumentDB の操作が多くの点で単純化されます。 ライブラリは、次の言語およびプラットフォーム用が現在提供されています。  
+## <a name="develop"></a> DocumentDB で、どのようにしてアプリを開発しますか。
+Azure DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。 さらに、DocumentDB にはいくつかの主要な言語のプログラミング ライブラリが用意されており、MongoDB API との互換性があります。 アドレスのキャッシュ、例外管理、自動再試行などに伴う細部の処理がクライアント ライブラリ側で行われるため、Azure DocumentDB の操作が多くの点で単純化されます。 ライブラリは、次の言語およびプラットフォーム用が現在提供されています。  
 
 | ダウンロード | ドキュメント |
 | --- | --- |
@@ -71,6 +72,7 @@ Azure DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を�
 | [JavaScript SDK](http://go.microsoft.com/fwlink/?LinkID=402991) |[JavaScript ライブラリ](http://azure.github.io/azure-documentdb-js/) |
 | 該当なし |[サーバー側の JavaScript SDK](http://azure.github.io/azure-documentdb-js-server/) |
 | [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python ライブラリ](http://azure.github.io/azure-documentdb-python/) |
+| 該当なし | [MongoDB 用 API](documentdb-protocol-mongodb.md)
 
 [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) を使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 DocumentDB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure DocumentDB アカウントの使用に切り替えることができます。
 

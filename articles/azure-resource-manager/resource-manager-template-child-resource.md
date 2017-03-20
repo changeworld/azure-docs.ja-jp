@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/02/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0e56d6e48bef816b38df9d31f93c7d1240580ce8
-ms.openlocfilehash: d8efafb69ed8d60aaf617917183736218e202e4f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: d7560b689d7cea56d40ffa2db9542f74a649f9c1
+ms.lasthandoff: 03/03/2017
 
 
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>Resource Manager テンプレートの子リソースに関する名前と種類の設定
-テンプレートの作成時に、親リソースと関連する子リソースを頻繁に含める必要があります。 たとえば、テンプレートに SQL サーバーとデータベースが含まれているとします。 SQL サーバーは親リソースで、データベースは子リソースです。 
+テンプレートの作成時に、親リソースに関連する子リソースを含めなければならない場合が頻繁にあります。 たとえば、テンプレートに SQL サーバーとデータベースが含まれているとします。 SQL サーバーは親リソースで、データベースは子リソースです。 
 
 子リソースの種類の形式は次の通りです。`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
 子リソースの名前の形式は次の通りです。`{parent-resource-name}/{child-resource-name}`
 
-しかし、テンプレート内の種類と名前の指定方法は、親リソース内で入れ子になっているか、親リソースの最上位レベルにあるかによって異なります。 このトピックでは、この&2; つのアプローチに対する対応方法について説明します。
+しかし、テンプレート内の種類と名前の指定方法は、親リソース内で入れ子になっているか、単独で最上位レベルにあるかによって異なります。 このトピックでは、この&2; つのアプローチに対する対応方法について説明します。
 
 ## <a name="nested-child-resource"></a>入れ子になった子リソース
 子リソースを定義する最も簡単な方法では、親のリソース内で入れ子にすることです。 次の例では、SQL Server 内で入れ子になっている SQL データベースを示します。

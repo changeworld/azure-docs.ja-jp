@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 88b16b0b7c951ab0350649de05c00263ec76e630
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -101,40 +102,22 @@ Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) �
 
 3. 前の手順で見つけたノードをクリックし、[アクション] メニューの **[非アクティブにする (再起動)]** を選択します。 ローカル クラスターの&5; つのノードのいずれかが再起動され、別のノードで実行されているセカンダリ レプリカのいずれかに強制的にフェールオーバーされます。 このアクションを行うときは、テスト クライアントからの出力に注意してください。また、フェールオーバーにかかわらず、カウンターが増加していることに注意してください。
 
-## <a name="build-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Eclipse Neon プラグインによるアプリケーションのビルドとデプロイ
+## <a name="create-and-deploy-an-application-with-the-eclipse-neon-plugin"></a>Eclipse Neon プラグインによるアプリケーションの作成とデプロイ
 
-Eclipse Neon の [Service Fabric プラグイン](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-linux#install-the-java-sdk-and-eclipse-neon-plugin-optional)をインストールした場合は、それを使用して、Java でビルドした Service Fabric アプリケーションを作成、ビルド、およびデプロイすることができます。  Eclipse をインストールするときに、**Java 開発者向け Eclipse IDE** を選択します。
-
-### <a name="create-the-application"></a>アプリケーションを作成する
-
-Service Fabric プラグインは、Eclipse 拡張機能を通じて使用できます。
-
-1. Eclipse で、**[File (ファイル)]、[Other (その他)]、[Service Fabric]** の順に選択します。 アクターとコンテナーを含む、オプションのセットが表示されます。
-
-    ![Service Fabric templates in Eclipse][sf-eclipse-templates]
-
-2. この場合は、ステートレス サービスを選択します。
-
-3. Service Fabric の観点を使用することの確認を求めるメッセージが表示されます。この観点を使用すると、Service Fabric プロジェクトと共に使用される Eclipse が最適化されます。 [Yes (はい)] を選択します。
-
-### <a name="deploy-the-application"></a>アプリケーションのデプロイ
-Service Fabric テンプレートには、アプリケーションをビルドおよびデプロイするための、一連の Gradle タスクが含まれています。これらのタスクは、Eclipse を通じてトリガーできます。
-
-1. **[Run (実行)]、[Run Configurations (構成の実行)]** の順に選択します。
-2. **[local (ローカル)]** または **[cloud (クラウド)]** を指定します。 既定の設定は **[local]** です。 リモート クラスターにデプロイする場合は、**[cloud]** を選択します。
-3. 発行プロファイルに正しい情報が入力されていることを確認し、必要に応じて `local.json` または `cloud.json` を編集します。
-4. **[実行]**をクリックします。
-
-アプリは数分以内にビルド、デプロイされます。 Service Fabric Explorer で、その状況を監視できます。
+Service Fabric では、Eclipse を使用して Service Fabric Java アプリケーションの作成、ビルド、デプロイのプロビジョニングを行うこともできます。 Eclipse をインストールするときに、**Java 開発者向け Eclipse IDE** を選択します。 さらに、Service Fabric では現在、Eclipse **Neon** のプラグインがサポートされています。 [Linux で Eclipse 用の Service Fabric プラグインを使用した最初の Service Fabric Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)に関する詳細なドキュメントをご覧ください。
 
 ## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
 
+### <a name="using-command-line-utility"></a>コマンド ライン ユーティリティを使用する
 `yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfjava:AddService` を実行します。
 
+### <a name="using-service-fabric-eclipse-plugin-for-java-on-linux"></a>Linux で Java 用の Service Fabric Eclipse プラグインを使用する
+Service Fabric Eclipse プラグインを使用して作成された既存のアプリケーションにサービスを追加する場合、[こちら](service-fabric-get-started-eclipse.md#add-new-service-fabric-service-to-your-service-fabric-application)のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+* [Linux で Eclipse 用の Service Fabric プラグインを使用した最初の Service Fabric Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
 * [Azure CLI を使用した Service Fabric クラスターの対話操作](service-fabric-azure-cli.md)
 * [デプロイのトラブルシューティング](service-fabric-azure-cli.md#troubleshooting)
@@ -144,9 +127,4 @@ Service Fabric テンプレートには、アプリケーションをビルド�
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

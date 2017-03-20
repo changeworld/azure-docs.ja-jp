@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/17/2017
+ms.date: 03/01/2017
 ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: afd48a77faeeab6d5a8730934345cb7000a59831
-ms.openlocfilehash: e72e49140aaad55a6e66a9f331ce7fde20b8577c
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 35323a56297c9aaf4939febd32140d6d101ee4e5
+ms.openlocfilehash: 9cb98ad710d82bade25f99d171f49433aea1204c
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -110,8 +110,25 @@ Azure Portal でのコンテキスト ベースのレポートへの移行に伴
 
 ### <a name="security-reports"></a>セキュリティ レポート
 
-セキュリティ レポートは、Azure Active Directory が検出して報告できるすべてのセキュリティ関連リスク イベントのビューの完全な概要を提供できるように統合されました。 詳細については、「[Azure Active Directory リスク イベント](active-directory-identity-protection-risk-events.md)」をご覧ください。  
-このトピックでは、[Azure AD 異常アクティビティ レポート](active-directory-identity-protection-risk-events.md#azure-ad-anomalous-activity-reports)に関するセクションで、Azure Active Directory 異常レポートが Azure AD のリスク イベントをマップする方法の概要を参照できます。
+Azure クラシック ポータルの **Azure AD 異常アクティビティ** セキュリティ レポートは、Azure Active Directory が検出して報告できるすべてのセキュリティ関連リスク イベントの中央ビューを提供できるように統合されました。 
+
+次の表では、さまざまな **Azure AD 異常アクティビティ** セキュリティ レポート、および Azure Portal での相当するリスク イベントの種類を一覧表示しています。 
+
+| Azure AD 異常アクティビティ レポート |  Identity Protection のリスク イベントの種類|
+| :--- | :--- |
+| 資格情報が漏洩したユーザー | 漏洩した資格情報 |
+| 不規則なサインイン アクティビティ | 特殊な場所へのあり得ない移動 |
+| 感染している可能性があるデバイスからのサインイン | 感染しているデバイスからのサインイン|
+| 不明なソースからのサインイン | 匿名の IP アドレスからのサインイン |
+| 不審なアクティビティのある IP アドレスからのサインイン | 不審なアクティビティのある IP アドレスからのサインイン |
+| - | 未知の場所からのサインイン |
+
+以下の Azure AD 異常アクティビティ セキュリティ レポートは Azure AD のリスク イベントには含まれません。 これらのレポートは Azure クラシック ポータルでまだ使用できますが、 ただし、これは将来的に廃止されます。
+
+* 複数のエラー後のサインイン
+* 複数の地域からのサインイン
+
+詳細については、「[Azure Active Directory リスク イベント](active-directory-identity-protection-risk-events.md)」をご覧ください。  
 
 Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク イベントに関するレポートにアクセスできます。 検出されたリスク イベントの追跡状況は、次のレポートで参照できます。   
 
