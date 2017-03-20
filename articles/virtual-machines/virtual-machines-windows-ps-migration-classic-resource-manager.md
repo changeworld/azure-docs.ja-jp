@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 30faf4b99414e5f7b5131c231b4dccf3a7272d25
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: bd67cb868e57be0d6cb9c3ea37f67de6dca4e307
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -250,6 +250,34 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
 
 ### <a name="migrate-a-storage-account"></a>ストレージ アカウントを移行する
 仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+
+ストレージ アカウントを移行する前に、上記の前提条件の確認を実行してください。
+
+* **クラシック VM ディスクがストレージ アカウントに格納されているかどうかを確認する**
+
+    次のコマンドを使用して、ストレージ アカウントの VM に接続されているクラシック VM ディスクを見つけます。 
+
+    ```powershell
+     $storageAccountName = 'yourStorageAccountName'
+      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+      DiskName | Format-List -Property RoleName, DiskName 
+
+    ```
+    上のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 上のコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
+
+    次のコマンドを使用して、ストレージ アカウントの接続されていないクラシック VM ディスクを見つけます。 
+
+    ```powershell
+        $storageAccountName = 'yourStorageAccountName'
+        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Format-List -Property DiskName  
+
+    ```
+    上のコマンドでディスクが返された場合、次のコマンドを使用してこれらのディスクを削除します。
+
+    ```powershell
+       Remove-AzureDisk -DiskName 'yourDiskName'
+    ```
+     
 
 次のコマンドを使用して、各ストレージ アカウントの移行の準備をします。 この例では、**myStorageAccount** というストレージ アカウント名を使用しています。 例の名前を対象のストレージ アカウントの名前に置き換えてください。 
 

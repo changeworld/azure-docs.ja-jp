@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: 842eb16768fd5064bd57a0c3672e7ae57885720e
-ms.openlocfilehash: 6ed0f07268715102be197bb8a6654fb05b52b0c4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 148bc76b7f3e09745cbecfa41710a5e949704948
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -61,6 +61,10 @@ Azure App Service on Linux (現在プレビュー段階) のリリースでは�
 **Q:** コンパイルされていない .NET Core アプリはサポートされていますか。
 
 **A:** いいえ。 コンパイル済みの .NET Core アプリはすべての依存関係と共にデプロイする必要があります。 今後のリリースで、完全なデプロイとビルドのエクスペリエンスを計画しています。
+
+**Q:** PHP アプリの依存関係マネージャーとして Composer はサポートされていますか。
+
+**A:** いいえ。 PHP アプリはすべての依存関係と共にデプロイする必要があります。 今後のリリースで、完全なデプロイ エクスペリエンスを計画しています。
 
 ## <a name="custom-containers"></a>カスタム コンテナー
 

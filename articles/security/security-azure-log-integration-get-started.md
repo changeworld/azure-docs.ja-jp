@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/07/2017
+ms.date: 03/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec3397f62cb2ae57cd9ce27a0a5022fd876e263
-ms.openlocfilehash: 39bac7d0cc6fee8a99949d167e3aa0c15cfaebc2
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: f5f5597e09128236fd659b68c70d587d87a0832a
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="get-started-with-azure-log-integration-preview"></a>Azure ログ統合の使用 (プレビュー)
+# <a name="get-started-with-azure-log-integration"></a>Azure ログ統合の使用
 Azure ログ統合を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
 このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。 このチュートリアルの推定所要時間は&1; 時間です。
@@ -133,13 +133,13 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
 AZLOG.exe authorizedirectoryreader tenantId
 
-サンプル - 
+サンプル -
 
 AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
 
 
-3. 次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。 
-* **C:\Users\azlog\AzureActiveDirectoryJson**   
+3. 次のフォルダーを調べて、Azure Active Directory 監査ログの JSON ファイルが作成されていることを確認します。
+* **C:\Users\azlog\AzureActiveDirectoryJson**  
 * **C:\Users\azlog\AzureActiveDirectoryJsonLD**
 
 4. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。

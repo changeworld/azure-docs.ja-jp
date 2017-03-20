@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: ea2124e01753b914ebd1691e5d89091ac5cd5859
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6d4287d391fee55419cf8bd17f4b48a0e5bbfb81
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -35,6 +35,7 @@ ms.lasthandoff: 03/04/2017
 | [Docker が有効になっている VM の作成](./scripts/virtual-machines-linux-cli-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想マシンを作成し、Docker ホストとしてこの VM を構成し、NGINX コンテナーを実行します。 |
 | [VM の作成と構成スクリプトの実行](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想マシンを作成し、Azure カスタム スクリプトの拡張機能を使用して NGINX をインストールします。 |
 | [WordPress がインストールされている VM の作成](./scripts/virtual-machines-linux-cli-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想マシンを作成し、Azure カスタム スクリプトの拡張機能を使用して WordPress をインストールします。 |
+| [仮想ハード ディスクを使用した VM の作成](./scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想ハード ディスクをストレージ アカウントにアップロードし、これを使用して仮想マシンを作成します。 |
 |**ネットワークの仮想マシン**||
 | [仮想マシン間のネットワーク トラフィックのセキュリティ保護](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 2 つの仮想マシン、すべての関連リソース、および内部と外部のネットワーク セキュリティ グループ (NSG) を作成します。 |
 |**仮想マシンの監視**||
