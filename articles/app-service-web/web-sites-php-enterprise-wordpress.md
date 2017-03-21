@@ -17,6 +17,7 @@ ms.author: sumuth
 translationtype: Human Translation
 ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
 ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -240,12 +241,7 @@ Websites から App Service への変更ガイドについては、「[Azure App
 [searchandreplace]: http://interconnectit.com/124/search-and-replace-for-wordpress-databases/
 [deploy]: web-sites-deploy.md
 [posh]: /powershell/azureps-cmdlets-docs
-[Azure CLI]: ../xplat-cli-install.md
+[Azure CLI]:../cli-install-nodejs.md
 [storesendgrid]: https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/
 [cdn]: ../cdn/cdn-overview.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

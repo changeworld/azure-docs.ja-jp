@@ -2,7 +2,7 @@
 title: "テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | Microsoft Docs"
 description: "Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。"
 services: iot-hub
-documentationcenter: .net
+documentationcenter: 
 author: dominicbetts
 manager: timlt
 editor: 
