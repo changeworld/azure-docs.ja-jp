@@ -5,7 +5,7 @@ keywords: "App Service, Azure App Service, モバイル アプリ, スケール,
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 525659afa7ad73ebdc37fd53ecb0a9c4622302ff
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: bad95e1700c1f85d6b4764e8edc3af98f2f5f804
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 525659afa7ad73ebdc37fd53ecb0a9c4622302ff
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 サーバー SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET リファレンス][1]」を参照してください。
 
-## <a name="a-namecreate-appahow-to-create-a-net-mobile-app-backend"></a><a name="create-app"></a>方法: .NET モバイル アプリ バックエンドを作成する
+## <a name="create-app"></a>方法: .NET モバイル アプリ バックエンドを作成する
 新しいプロジェクトを開始する場合は、 [Azure ポータル] または Visual Studio を使用して、App Service アプリケーションを作成できます。 App Service アプリケーションをローカルで実行することも、プロジェクトをクラウドベースの App Service モバイル アプリに発行することもできます。  
 
 既存のプロジェクトにモバイル機能を追加する場合は、「 [SDK をダウンロードして初期化する](#install-sdk) 」セクションを参照してください。
@@ -56,13 +57,13 @@ Visual Studio で Azure Mobile Apps プロジェクトを作成するには、[A
 5. *ASP.NET 4.5.2 テンプレート*の **[Azure Mobile App]**を選択します。 このプロジェクトの発行先となるクラウドにモバイル バックエンドを作成するために、 **[Host in the cloud (クラウドにホストする)]** チェック ボックスをオンにします。
 6. **[OK]**をクリックします。
 
-## <a name="a-nameinstall-sdkahow-to-download-and-initialize-the-sdk"></a><a name="install-sdk"></a>方法: SDK をダウンロードして初期化する
+## <a name="install-sdk"></a>方法: SDK をダウンロードして初期化する
 SDK は [NuGet.org]で入手できます。 このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。 SDK を初期化するには、 **HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
 
 ### <a name="install-the-sdk"></a>SDK のインストール
 SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server] パッケージを検索してから、**[インストール]** をクリックします。
 
-### <a name="a-nameserver-project-setupa-initialize-the-server-project"></a><a name="server-project-setup"></a> サーバー プロジェクトの初期化
+### <a name="server-project-setup"></a> サーバー プロジェクトの初期化
 .NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。 NuGet パッケージ `Microsoft.Owin.Host.SystemWeb`が参照されていることを確認します。 Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]** > 
 **[新しい項目]**、**[Web]** > **[全般]** > **[OWIN スタートアップ クラス]** の順に選択します。  次の属性を持つクラスが生成されます。
 
@@ -129,7 +130,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
    モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。 構成に追加するには、  **MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 * [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。   
 
-## <a name="a-namepublish-server-projectahow-to-publish-the-server-project"></a><a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
+## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
@@ -149,7 +150,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
    
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="a-namedefine-table-controllera-how-to-define-a-table-controller"></a><a name="define-table-controller"></a> 方法: テーブル コントローラーを定義する
+## <a name="define-table-controller"></a> 方法: テーブル コントローラーを定義する
 SQL テーブルをモバイル クライアントに公開するためのテーブル コントローラーを定義します。  テーブル コントローラーを構成するには、3 つの手順が必要です。
 
 1. データ転送オブジェクト (DTO) クラスを作成する。
@@ -235,7 +236,7 @@ Azure Mobile Apps は、App Service 認証/承認を使用してモバイル バ
 * [方法: 認証されたユーザー情報を取得する](#user-info)
 * [方法: 承認されたユーザーに対するデータ アクセスを制限する](#authorize)
 
-### <a name="a-nameadd-authahow-to-add-authentication-to-a-server-project"></a><a name="add-auth"></a>方法: サーバー プロジェクトに認証を追加する
+### <a name="add-auth"></a>方法: サーバー プロジェクトに認証を追加する
 **MobileAppConfiguration** オブジェクトを拡張し、OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。 [Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、 **UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
 1. Visual Studio で、 [Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。
@@ -248,7 +249,7 @@ Azure Mobile Apps は、App Service 認証/承認を使用してモバイル バ
 
 Mobile Apps バックエンドに対してクライアントを認証する方法については、「 [アプリケーションに認証を追加する](app-service-mobile-ios-get-started-users.md)」をご覧ください。
 
-### <a name="a-namecustom-authahow-to-use-custom-authentication-for-your-application"></a><a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
+### <a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
 App Service 認証/承認プロバイダーの中に使用したいものがない場合は、独自のログイン システムを実装できます。 認証トークンの生成に役立つ [Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。  ユーザー資格情報を検証するための独自のコードを指定します。 たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。 次の例では、(他の場所に定義されている) `isValidAssertion()` メソッドがこれらの照合を実行します。
 
 カスタム認証を公開するには、ApiController を作成し、`register` アクションと `login` アクションを公開します。 クライアントは、カスタム UI を使用してユーザーから情報を収集する必要があります。  その後、この情報は、標準の HTTP POST 呼び出しで API に送信されます。 サーバーでアサーションを検証したら、 `AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行します。  ApiController で `[MobileAppController]` 属性を使用することは**できません**。 
@@ -298,7 +299,7 @@ App Service 認証/承認プロバイダーの中に使用したいものがな�
 > 
 > 
 
-### <a name="a-nameuser-infoahow-to-retrieve-authenticated-user-information"></a><a name="user-info"></a>方法: 認証されたユーザー情報を取得する
+### <a name="user-info"></a>方法: 認証されたユーザー情報を取得する
 ユーザーが App Service によって認証されると、.NET バックエンド コードで、割り当てられたユーザー ID とその他の情報にアクセスできます。 このユーザー情報を使用して、バックエンドで承認の決定を行うことができます。 次のコードは、要求に関連付けられているユーザー ID を取得します。
 
     // Get the SID of the current user.
@@ -335,7 +336,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 **GetAppServiceIdentityAsync** 拡張メソッドを提供するには、`System.Security.Principal` の using ステートメントを追加します。
 
-### <a name="a-nameauthorizeahow-to-restrict-data-access-for-authorized-users"></a><a name="authorize"></a>方法: 承認されたユーザーに対するデータ アクセスを制限する
+### <a name="authorize"></a>方法: 承認されたユーザーに対するデータ アクセスを制限する
 前のセクションでは、認証されたユーザーのユーザー ID を取得する方法について説明しました。 この値に基づいて、データとその他のリソースへのアクセスを制限できます。 たとえば、UserId 列をテーブルに追加して、ユーザー ID によってクエリの結果をフィルター処理すると、承認されたユーザーだけにデータが返されるように簡単に制限できます。 次のコードは、SID が TodoItem テーブルの UserId 列の値と一致する場合にのみデータ行を返します。
 
     // Get the SID of the current user.
@@ -376,7 +377,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。 詳細については、「 [アプリケーションにプッシュ通知を追加する](app-service-mobile-ios-get-started-push.md)」をご覧ください。 Notification Hubs の詳細については、 [Notification Hubs の概要](../notification-hubs/notification-hubs-push-notification-overview.md)に関するページを参照してください。
 
-## <a name="a-nametagsahow-to-enable-targeted-push-using-tags"></a><a name="tags"></a>方法: タグを使用してターゲット プッシュを有効にする
+## <a name="tags"></a>方法: タグを使用してターゲット プッシュを有効にする
 Notification Hubs では、タグを使用して、ターゲットを絞った通知を特定の登録に送信できます。 いくつかのタグは自動的に作成されます。
 
 * インストール ID は、特定のデバイスを識別します。
@@ -398,7 +399,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 
 例については、App Service Mobile Apps の完成したクイックスタート サンプルの[クライアントによって追加されるプッシュ通知タグ][5]に関するセクションを参照してください。
 
-## <a name="a-namepush-userahow-to-send-push-notifications-to-an-authenticated-user"></a><a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
+## <a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
 認証されたユーザーがプッシュ通知を登録すると、ユーザー ID タグが登録に自動的に追加されます。 このタグを使用すると、そのユーザーが登録したすべてのデバイスにプッシュ通知を送信できます。 次のコードでは、要求を行ったユーザーの SID を取得し、そのユーザーのすべてのデバイス登録にテンプレート プッシュ通知を送信します。
 
     // Get the current user SID and create a tag for the current user.
@@ -412,7 +413,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。 詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Push to users (ユーザーへのプッシュ)][6]」を参照してください。
+認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。 詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend」 (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル) の「[Push to users (ユーザーへのプッシュ)][6]」をご覧ください。
 
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>方法: .NET サーバー SDK のデバッグとトラブルシューティングを実行する
 Azure App Service には、ASP.NET アプリケーションのデバッグとトラブルシューティングの方法が複数用意されています。
@@ -437,7 +438,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
 5. 「 [ログをダウンロードする方法](../app-service-web/web-sites-enable-diagnostic-log.md#download)」で説明されているように、ログをダウンロードして評価します。
 
-### <a name="a-namelocal-debugalocal-debugging-with-authentication"></a><a name="local-debug"></a>認証に関するローカル デバッグ
+### <a name="local-debug"></a>認証に関するローカル デバッグ
 クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。 ほとんどの Azure Mobile Apps バックエンドでは、Visual Studio で *F5* キーを押します。 ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
 
 App Service Authentication/Authorization を使用してクラウド ベースのモバイル アプリを構成する必要があります。また、クライアントに代替ログイン ホストとしてクラウド エンドポイントを指定する必要があります。 必要な手順の詳細については、クライアント プラットフォームのドキュメントを参照してください。
@@ -454,7 +455,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 
 前の例では、Web.config ファイル内のアプリケーション設定 *authAudience* と *authIssuer* を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。 同様に、*authSigningKey* をアプリケーションの署名キーの値に設定する必要があります。 署名キーを取得するには、次の手順を実行します。
 
-1.  [Azure ポータル] 
+1. [Azure ポータル] 
 2. **[ツール]**、**[Kudu]**、**[移動]** の順にクリックします。
 3. Kudu 管理サイトで、 **[環境]**をクリックします。
 4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。 
@@ -475,10 +476,5 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
