@@ -4,7 +4,7 @@ description: "Application Insights で Web と worker ロールを効果的に�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
 ms.service: application-insights
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.workload: tbd
-ms.date: 11/02/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 42e4fe54eec414549f09b93a3e12ea130eeee68f
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -98,19 +99,19 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 Application Insights に送信される診断情報のレベルを変更する場合は、[.cscfg ファイルを直接編集](app-insights-azure-diagnostics.md)できます。
 
-## <a name="a-namesdkainstall-the-sdk-in-each-project"></a><a name="sdk"></a>各プロジェクトに SDK をインストールする
+## <a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションを選択すると、アプリケーションの使用状況やパフォーマンスを詳しく分析するためにカスタム ビジネス テレメトリを任意のロールに追加できるようになります。
 
-Visual Studio で、Application Insights SDK を各クラウド アプリ プロジェクトに追加します。
+Visual Studio で、Application Insights SDK を各クラウド アプリ プロジェクト用に構成します。
 
-1. プロジェクトの NuGet パッケージを編集します。
+1. **Web ロール**: プロジェクトを右クリックし、**[Application Insights の構成]** または **[追加] > [Application Insights Telemetry]** を選択します。
    
-    ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-cloudservices/03-nuget.png)
-2. **Web ロール**: [Web 用 Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) を追加します。 SDK のこのバージョンには、HTTP 要求データを収集し、ロール情報などのサーバー コンテキストを追加するモジュールが含まれています。
-   
-    **worker ロール**: [Windows Server 用 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を追加します。
+2. **Worker ロール**: 
+ * プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。
+ * [Windows サーバー用の Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を追加します。
    
     ![Search for "Application Insights"](./media/app-insights-cloudservices/04-ai-nuget.png)
+
 3. データを Application Insights リソースに送信するように SDK を構成します。
    
     適切なスタートアップ関数で、.cscfg ファイル内の構成設定から入手したインストルメンテーション キーを設定します。
@@ -245,9 +246,4 @@ woker ロールの場合、例外を追跡する方法は&2; つあります。
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
