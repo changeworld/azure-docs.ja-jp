@@ -13,12 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 86391212e70a0f0a8ec0e53dce26b11218a5780c
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: a1e45a1ea15f76bcc7c0cd3bceca703818b3a9ff
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -34,20 +34,11 @@ ms.lasthandoff: 01/13/2017
 ## <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
 **Azure SQL で使用する Elastic Database の概要** のページで示したサンプル アプリケーションでは、Azure SQL Elastic Database ツールを使用したシャーディング アプリケーションの開発エクスペリエンスにおける最も重要な側面を紹介しています。 そこでは、主な使用事例として[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)に焦点を当てています。 サンプルをダウンロードして実行するには、次の手順を実行します。 
 
-1. Visual Studio を開き、**[ファイル]、[新規]、[プロジェクト]** の順に選択します。
-2. ダイアログで、 **[オンライン]**をクリックします。
-   
-    ![New Project>Online][2]
-3. 次に、**[サンプル]** の **[Visual C#]** をクリックします。
-   
-    ![Click Visual C#][3]
-4. 検索ボックスに「**elastic db**と入力してサンプルを検索します。 タイトル「**Azure SQL 用 Elastic DB ツール - 概要**が表示されます。
-   
-    ![Search Box][1]
-5. サンプルを選択し、新しいプロジェクトの名前と場所を選び、 **[OK]** をクリックしてプロジェクトを作成します。
-6. サンプル プロジェクトのソリューションで **app.config** ファイルを開き、ファイルの指示に従って使用する Azure SQL データベース サーバー名とログイン情報 (ユーザー名とパスワード) を追加します。
-7. アプリケーションをビルドし、実行します。 確認を求められたら、ソリューションの NuGet パッケージの復元を Visual Studio に許可してください。 これで Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
-8. クライアント ライブラリの機能をより深く知るために、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されますので、動作していたコードをじっくりと検討することができます。
+1. [Elastic DB Tools for Azure SQL - Getting Started のサンプル](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)を MSDN からダウンロードします。 任意の場所にサンプルを解凍します。
+2. **ElasticScaleStarterKit.sln** ソリューションを **C#** ディレクトリから開いてプロジェクトを作成します。
+3. サンプル プロジェクトのソリューションで **app.config** ファイルを開き、ファイルの指示に従って使用する Azure SQL データベース サーバー名とログイン情報 (ユーザー名とパスワード) を追加します。
+4. アプリケーションをビルドし、実行します。 確認を求められたら、ソリューションの NuGet パッケージの復元を Visual Studio に許可してください。 これで Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
+5. クライアント ライブラリの機能をより深く知るために、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されますので、動作していたコードをじっくりと検討することができます。
    
     ![progress][4]
 
@@ -59,10 +50,10 @@ ms.lasthandoff: 01/13/2017
 > 
 
 ### <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
-1. **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardMapManagerSample.cs** ファイルでどのように機能するかを示します。 このトピックの詳細については、「 [Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」を参照してください。  
+1. **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardManagementUtils.cs** ファイルでどのように機能するかを示します。 このトピックの詳細については、「 [Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」を参照してください。  
 2. **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、**DataDependentRoutingSample.cs** に示されます。 詳細については、「 [Data Dependent Routing (データ依存ルーティング)](http://go.microsoft.com/?linkid=9862596)」を参照してください。 
 3. **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、**MultiShardQuerySample.cs** ファイルに示されます。 詳細については、「 [Multi-Shard Querying (マルチシャード クエリ実行)](http://go.microsoft.com/?linkid=9862597)」を参照してください。
-4. **空のシャードの追加**: 新しい空のシャードの反復追加は、**AddNewShardsSample.cs** ファイルのコードによって実行されます。 このトピックの詳細は、「 [Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」に記載されています。
+4. **空のシャードの追加**: 新しい空のシャードの反復追加は、**CreateShardSample.cs** ファイルのコードによって実行されます。 このトピックの詳細は、「 [Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」に記載されています。
 
 ### <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
 1. **既存のシャードの分割**: シャードを分割する機能は、**分割/マージ ツール**を通じて提供されます。 このツールの詳細については、「 [分割/結合ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。

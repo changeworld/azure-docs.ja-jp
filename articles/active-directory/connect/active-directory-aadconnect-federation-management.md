@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: da3b8a375d380a0e2f1c2e243a475f2f3ff94bfc
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,6 +32,7 @@ ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
 | [AD FS サーバーを追加する](#addadfsserver) |追加の AD FS サーバーによる AD FS ファームの拡張 |
 | [AD FS Web アプリケーション プロキシ サーバーを追加する](#addwapserver) |追加の WAP サーバーによる AD FS ファームの拡張 |
 | [フェデレーション ドメインを追加します](#addfeddomain) |フェデレーション ドメインの追加 |
+| [SSL 証明書の更新](active-directory-aadconnectfed-ssl-update.md)| Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新|
 | **AD FS のカスタマイズ** | |
 | [カスタムの会社のロゴまたはイラストを追加する](#customlogo) |会社のロゴとイラストを使用した AD FS サインイン ページのカスタマイズ |
 | [サインインの説明を追加する](#addsignindescription) |サインイン ページの説明の追加 |
@@ -39,7 +41,7 @@ ms.openlocfilehash: 4ed22092621949d53da5b8c961a080270dde1db7
 ## <a name="ad-fs-management"></a>AD FS の管理
 Azure AD Connect には、Azure AD Connect ウィザードを使用してユーザーの介入を最小限に抑えて実行できる、AD FS に関連したさまざまなタスクが用意されています。 ウィザードを実行して Azure AD Connect をインストールした後、もう一度ウィザードを実行するとその他のタスクを実行できます。
 
-### <a name="repair-the-trust-a-namerepairthetrusta"></a>信頼を修復する <a name=repairthetrust></a>
+## 信頼を修復する <a name=repairthetrust></a>
 Azure AD Connect では、AD FS と Azure Active Directory の信頼の現在の正常性を確認し、信頼を修復するための適切な措置を講じることができます。 Azure AD と AD FS の信頼を修復するには、次の手順に従います。
 
 1. 追加タスクの一覧から **[AAD と ADFS 信頼を修復します]** を選択します。
@@ -63,7 +65,8 @@ Azure AD Connect では、AD FS と Azure Active Directory の信頼の現在の
 >
 >
 
-### <a name="add-an-ad-fs-server-a-nameaddadfsservera"></a>AD FS サーバーを追加する <a name=addadfsserver></a>
+## AD FS サーバーを追加する <a name=addadfsserver></a>
+
 > [!NOTE]
 > Azure AD Connect で AD FS サーバーを追加するには、PFX 証明書ファイルが必要です。 そのため、この操作を実行できるのは、Azure AD Connect を使用して AD FS ファームを構成した場合のみです。
 >
@@ -86,7 +89,8 @@ Azure AD Connect では、AD FS と Azure Active Directory の信頼の現在の
 
     ![インストールの完了](media/active-directory-aadconnect-federation-management/AddNewADFSServer8.PNG)
 
-### <a name="add-an-ad-fs-web-application-proxy-server-a-nameaddwapservera"></a>AD FS Web アプリケーション プロキシ サーバーを追加する <a name=addwapserver></a>
+## AD FS Web アプリケーション プロキシ サーバーを追加する <a name=addwapserver></a>
+
 > [!NOTE]
 > Azure AD Connect で Web アプリケーション プロキシ サーバーを追加するには、PFX 証明書ファイルが必要です。 そのため、この操作を実行できるのは、Azure AD Connect を使用して AD FS ファームを構成した場合のみです。
 >
@@ -109,7 +113,8 @@ Azure AD Connect では、AD FS と Azure Active Directory の信頼の現在の
 7. **[インストール]** をクリックして構成を終了します。 構成が完了すると、サーバーへの接続を確認するためのオプションが表示されます。 **[確認]** をクリックして接続を確認します。
    ![インストールの完了](media/active-directory-aadconnect-federation-management/WapServer8.PNG)
 
-### <a name="add-a-federated-domain-a-nameaddfeddomaina"></a>フェデレーション ドメインを追加します <a name=addfeddomain></a>
+## フェデレーション ドメインを追加します <a name=addfeddomain></a>
+
 Azure AD Connect を使用すると、Azure AD とのフェデレーションを設定するドメインを簡単に追加できます。 Azure AD Connect によりフェデレーション用のドメインが追加され、Azure AD とのフェデレーションを設定したドメインが複数ある場合に発行者を正しく反映するように要求規則が変更されます。
 
 1. フェデレーション ドメインを追加するには、 **[Azure AD ドメインを追加します]**タスクを選択します。
@@ -128,11 +133,11 @@ Azure AD Connect を使用すると、Azure AD とのフェデレーションを
 ## <a name="ad-fs-customization"></a>AD FS のカスタマイズ
 以下のセクションでは、AD FS サインイン ページをカスタマイズする際に必要になる可能性のある一般的なタスクの実行方法について詳しく説明します。
 
-### <a name="add-a-custom-company-logo-or-illustration-a-namecustomlogoa"></a>カスタムの会社のロゴまたはイラストを追加する <a name=customlogo></a>
+## カスタムの会社のロゴまたはイラストを追加する <a name=customlogo></a>
 **サインイン** ページに表示される会社のロゴを変更するには、次の Windows PowerShell コマンドレットと構文を使用します。
 
 > [!NOTE]
-> ロゴについては、260 x 35 @ 96 dpi、ファイル サイズ 10 KB 以下をお勧めします。
+> ロゴについては、260 x 35、96 dpi、ファイル サイズ 10 KB 以下をお勧めします。
 >
 >
 
@@ -143,17 +148,17 @@ Azure AD Connect を使用すると、Azure AD とのフェデレーションを
 >
 >
 
-### <a name="add-a-sign-in-description-a-nameaddsignindescriptiona"></a>サインインの説明を追加する <a name=addsignindescription></a>
+## サインインの説明を追加する <a name=addsignindescription></a>
 **サインイン ページ**にサインイン ページの説明を追加するには、次の Windows PowerShell コマンドレットと構文を使用します。
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-### <a name="modify-ad-fs-claim-rules-a-namemodclaimsa"></a>AD FS の要求規則を変更する <a name=modclaims></a>
+## AD FS の要求規則を変更する <a name=modclaims></a>
 AD FS では、カスタム要求規則の作成に使用できる、機能豊富な要求言語がサポートされています。 詳細については、「 [要求規則言語の役割](https://technet.microsoft.com/library/dd807118.aspx)」を参照してください。
 
 以降のセクションでは、Azure AD と AD FS のフェデレーションに関連するいくつかのシナリオ向けにカスタム規則を作成する方法について説明します。
 
-#### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性内に値が存在することを条件とする不変 ID
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>属性内に値が存在することを条件とする不変 ID
 Azure AD Connect では、オブジェクトが Azure AD に同期されるときにソース アンカーとして使用される属性を指定できます。 カスタム属性内の値が空でない場合は、不変 ID 要求を発行することができます。 たとえば、**ms-ds-consistencyguid** をソース アンカーの属性として選択し、その属性に対応する値が含まれている場合は、**ImmutableID** を **ms-ds-consistencyguid** として発行するとします。 属性に対応する値が存在しない場合は、 **objectGuid** を不変 ID として発行します。  以下のセクションで説明する方法により、カスタム要求規則のセットを作成することができます。
 
 **規則 1: 属性を照会する**
@@ -192,7 +197,7 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
 >
 >
 
-#### <a name="sso-with-a-subdomain-upn"></a>サブドメイン UPN を使用した SSO
+### <a name="sso-with-a-subdomain-upn"></a>サブドメイン UPN を使用した SSO
 [新しいフェデレーション ドメインの追加](active-directory-aadconnect-federation-management.md#addfeddomain)に関するセクションで説明しているように、Azure AD Connect を使用して、フェデレーション対象の複数のドメインを追加できます。 フェデレーション ルート ドメインには子ドメインも含まれるため、発行者 ID がサブドメインではなく、ルート ドメインに対応するように、UPN 要求を変更する必要があります。
 
 既定で、発行者の ID の要求規則は次のように設定されます。
@@ -221,9 +226,4 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
 
 ## <a name="next-steps"></a>次のステップ
 [ユーザー サインイン オプション](active-directory-aadconnect-user-signin.md)の詳細を確認します。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

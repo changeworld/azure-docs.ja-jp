@@ -12,16 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 03/07/2017
 ms.author: shvija;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: fffa437acabc2f26cbe285be9aec47c89232948c
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: cab8a4de9d8d98d77094da5d73f29237829e743a
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする
-この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、1 つのイベント ハブを含んだ Event Hubs タイプの名前空間を作成して、イベント ハブの Archive 機能を有効にする方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
@@ -73,7 +74,7 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 ```
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
-イベント ハブでメッセージを保持する日数。 
+イベント ハブにメッセージを保持する日数。 
 
 ```json
 "messageRetentionInDays":{
@@ -133,7 +134,7 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 ```
 
 ### <a name="archivetime"></a>archiveTime
-Azure BLOB ストレージへのデータのアーカイブが開始される時間間隔。
+Azure Blob Storage へのデータのアーカイブが Event Hubs Archive で開始される時間間隔。
 
 ```json
 "archiveTime":{
@@ -148,7 +149,7 @@ Azure BLOB ストレージへのデータのアーカイブが開始される時
 ```
 
 ### <a name="archivesize"></a>archiveSize
-Azure BLOB ストレージへのデータのアーカイブが開始されるサイズ間隔。
+Azure Blob Storage へのデータのアーカイブがArchive で開始されるサイズ間隔。
 
 ```json
 "archiveSize":{
@@ -175,7 +176,7 @@ Azure BLOB ストレージへのデータのアーカイブが開始されるサ
 ```
 
 ### <a name="blobcontainername"></a>blobContainerName
-イベント データのアーカイブ先の BLOB コンテナー。
+イベント データをアーカイブする BLOB コンテナー。
 
 ```json
  "blobContainerName":{
@@ -201,7 +202,7 @@ Azure BLOB ストレージへのデータのアーカイブが開始されるサ
 ```
 
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
-イベント ハブを含む **EventHubs** タイプの名前空間を作成し、アーカイブも有効にします。
+1 つのイベント ハブを含んだ **EventHubs** タイプの名前空間を作成し、Archive も有効にします。
 
 ```json
 "resources":[  
@@ -257,7 +258,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
@@ -276,9 +277,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
 [Azure Resources Naming Conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
 [Event Hub and enable Archive template]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

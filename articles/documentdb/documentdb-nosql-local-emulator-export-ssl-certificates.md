@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2017
 ms.author: tvoellm
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 224897c09073fe36c7d4f9f8c965212c25297271
-ms.openlocfilehash: 3f89e192052bb633190610a4dffbefb930dbc01c
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 5f2fd8810041d47be2ef0b21e1487426a643d541
+ms.lasthandoff: 03/07/2017
 
 
 ---
 
-# <a name="export-the-documentdb-emulator-certificates"></a>DocumentDB Emulator 証明書のエクスポート
+# <a name="export-the-documentdb-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する DocumentDB Emulator 証明書のエクスポート
 
 [**Emulator をダウンロードする**](https://aka.ms/documentdb-emulator)
 
@@ -89,9 +91,4 @@ X.509 証明書を既定の Java 証明書ストアにインポートする場�
 ## <a name="next-steps"></a>次のステップ
 * DocumentDB の詳細については、[Azure DocumentDB の概要](documentdb-introduction.md)に関する記事を参照してください。
 * DocumentDB Emulator に対する開発を開始するには、[サポートされている DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかをダウンロードしてください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

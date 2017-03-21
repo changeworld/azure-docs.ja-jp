@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 175edd2c45319f197d1df65ae22853ca0dc3d310
-ms.lasthandoff: 01/30/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c4c83345596900162826feab9fe549bc261e7d00
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -27,16 +27,16 @@ Linux 上の Service Fabric を使用すると、Windows 上と同じように�
 Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric と同じです (OS の詳細およびプログラミング言語のサポートを除く)。 したがって、 [既存のドキュメント](http://aka.ms/servicefabricdocs) のほとんどがこちらにも適用されるため、テクノロジを理解するうえで役立ちます。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Service-Fabric-Linux-Preview/player]
-> 
-> 
+>
+>
 
 ## <a name="supported-operating-systems-and-programming-languages"></a>サポートされるオペレーティング システムとプログラミング言語
 制限付きプレビューは、Ubuntu Server 16.04 が実行されている Azure でマルチマシン クラスターのほか、ワンボックス開発クラスターとの作成をサポートします。 プレビューでは、ゲスト実行可能ファイルと調整 Docker コンテナーの他に、Reliable Actors と Reliable Stateless Services フレームワークを Java および C# でサポートしています。  
 
 > [!NOTE]
 > Reliable Collection は Linux ではまだサポートされていません。 スタンド アロン クラスターも、サポートされていません。プレビューでは、ワン ボックスと Azure Linux マルチマシン クラスターだけがサポートされています。
-> 
-> 
+>
+>
 
 
 ## <a name="supported-tooling"></a>サポートされているツール
@@ -47,5 +47,5 @@ Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric 
 2. [Linux で開発環境を準備する](service-fabric-get-started-linux.md)
 3. [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
 4. [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
-
+5. [Jenkins と GitHub による Service Fabric の継続的インテグレーションとデプロイの設定](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 

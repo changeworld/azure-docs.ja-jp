@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 5e531c6c23c510936fe7e4e844db2ec3afb170dc
-ms.openlocfilehash: 32d79cf050968738764c2239cbd79c73734ee855
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 41be26b5dc3b7333521f02053ecb4b6ae1b17f73
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -31,7 +32,7 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>新しい Xamarin アプリケーションの作成
-最初に、Android、iOS、および Windows を対象とするアプリケーションを作成します。 このアプリケーションは、コンテナーを作成し、そのコンテナーに BLOB をアップロードします。 ここでは Windows で Visual Studio を使用しますが、Mac OS 上で Xamarin Studio を使ってアプリケーションを作成するときも、同じ操作を適用することができます。
+このチュートリアルでは、Android、iOS、および Windows を対象とするアプリケーションを作成します。 このアプリケーションは、コンテナーを作成し、そのコンテナーに BLOB をアップロードします。 ここでは Windows で Visual Studio を使用しますが、Mac OS で Xamarin Studio を使用しても同じようにアプリケーションを作成できます。
 
 次の手順でアプリケーションを作成します。
 
@@ -241,7 +242,7 @@ namespace XamarinApp.WinPhone
 アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `Hello, world!` が示された BLOB `myblob` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](http://storageexplorer.com/)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Azure Storage を使用する Xamarin に、クロス プラットフォーム アプリケーションを作成する方法について説明しました。 このチュートリアルは、特に Blob Storage の&1; つのシナリオに焦点を合わせています。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くの作業を行うことができます。 詳細については、次の記事を確認してください。
+このチュートリアルでは、Blob Storage の&1; つのシナリオに焦点を当て、Xamarin で Azure Storage を使用するクロスプラットフォームのアプリケーションを作成する方法を学習しました。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くのことを行うことができます。 詳細については、次の記事を確認してください。
 
 * [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
 * [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
@@ -249,10 +250,5 @@ namespace XamarinApp.WinPhone
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

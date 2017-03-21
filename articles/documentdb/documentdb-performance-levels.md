@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: mimig
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b9902de45477bb7970da6c8f2234775bdb6edba8
-ms.openlocfilehash: 65f19191bbb736d3b7fbdd94d73f2308ee6dea83
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 659d6bd63ea996af7b7b172f998884354e5d5858
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="performance-levels-in-documentdb"></a>DocumentDB のパフォーマンス レベル
+# <a name="retiring-the-s1-s2-and-s3-performance-levels-in-documentdb"></a>DocumentDB での S1、S2、および S3 パフォーマンス レベルの提供の中止
 
 > [!IMPORTANT] 
 > この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい DocumentDB コレクションで使用できなくなります。
@@ -178,8 +180,3 @@ Azure DocumentDB の価格設定とデータ管理の詳細については、以
 2.    [DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)。 スループットのプロビジョニングとストレージの使用のコストについて説明しています。
 3.    [要求ユニット](documentdb-request-units.md)。 読み取り、書き込み、クエリなどのさまざまな種類の操作におけるスループットの使用量について説明しています。
 4.    [DocumentDB のデータのモデル化](documentdb-modeling-data.md)。 DocumentDB のデータをモデル化する方法について説明しています。
-
-
-<!--HONumber=Feb17_HO2-->
-
-

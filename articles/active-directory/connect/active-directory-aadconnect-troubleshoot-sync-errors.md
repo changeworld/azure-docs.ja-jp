@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
-ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 6a466937358932a28604cddf7f32cdfd02a5b88d
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -206,13 +207,15 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 Azure Active Directory スキーマで設定されている、使用可能なサイズ制限、長さの制限、または個数制限を属性が超過すると、同期操作は **LargeObject** または **ExceededAllowedLength** 同期エラーで終了します。 通常、このエラーは次の属性について発生します。
 
 * userCertificate
+* userSMIMECertificate
 * thumbnailPhoto
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>考えられるシナリオ
-1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 証明書のハード制限は 50 個ですが、25 個より少なくしておくことをお勧めします。
-2. Active Directory で設定された Bob の thumbnailPhoto が大きすぎ、Azure AD で同期できません。
-3. Active Directory での ProxyAddresses 属性の自動作成時に、500 を超える ProxyAddresses がオブジェクトに割り当てられました。
+1. Bob の userCertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 ハード制限は、証明書 15 個です。
+2. Bob の userSMIMECertificate 属性に格納されている、Bob に割り当てられた証明書の数が多すぎます。 期限切れの古い証明書が含まれている可能性があります。 ハード制限は、証明書 15 個です。
+3. Active Directory で設定された Bob の thumbnailPhoto が大きすぎ、Azure AD で同期できません。
+4. Active Directory での ProxyAddresses 属性の自動作成時に、500 を超える ProxyAddresses がオブジェクトに割り当てられました。
 
 ### <a name="how-to-fix"></a>修正方法
 1. エラーを引き起こした属性が、許可されている制限内になるようにします。
@@ -220,9 +223,4 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 ## <a name="related-links"></a>関連リンク
 * [Locate Active Directory Objects in Active Directory Administrative Center (Active Directory 管理センターで Active Directory オブジェクトを見つける)](https://technet.microsoft.com/library/dd560661.aspx)
 * [Azure Active Directory PowerShell を使用してオブジェクトについて Azure Active Directory を照会する方法に関する記事](https://msdn.microsoft.com/library/azure/jj151815.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

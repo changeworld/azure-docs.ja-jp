@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0921464c10d5ca3d426a535d434eab6cf02013e6
-ms.openlocfilehash: c234958f5fc1ba0dbcb727e18e733d13ad0c7e71
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4af4d30a3378e1aea66309a1d757be1c1da2ea0d
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="regional-failovers-in-azure-documentdb"></a>Azure DocumentDB のリージョン内フェールオーバー
+# <a name="automatic-regional-failovers-for-business-continuity-in-documentdb"></a>DocumentDB でのビジネス継続性のためのリージョン内自動フェールオーバー
 Azure DocumentDB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された[複数リージョンのデータベース アカウント](documentdb-distribute-data-globally.md)が用意されています。 DocumentDB アカウントには、高可用性、10 ミリ秒未満の遅延、[明確に定義された整合性レベル](documentdb-consistency-levels.md)、マルチホーム API による透過的なリージョン内フェールオーバー、世界規模でスループットとストレージを柔軟にスケールする機能が備わっています。 
 
 Azure DocumentDB では、明示的なフェールオーバーおよびポリシーに基づくフェールオーバーの両方がサポートされており、障害発生の際にエンド ツー エンド システムの動作を制御することができます。 この記事では、次のことについて説明します。
@@ -33,7 +35,7 @@ Azure DocumentDB では、明示的なフェールオーバーおよびポリシ
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-## <a name="a-idconfiguremultiregionapplicationsaconfiguring-multi-region-applications"></a><a id="ConfigureMultiRegionApplications"></a>複数リージョンのアプリケーションの構成
+## <a id="ConfigureMultiRegionApplications"></a>複数リージョンのアプリケーションの構成
 フェールオーバー モードを詳しく説明する前に、複数リージョンの可用性を活用し、リージョン内フェールオーバーの際も耐障害性を持つようなアプリケーションを構成する方法について説明します。
 
 * 最初に、複数のリージョンでアプリケーションをデプロイします。
@@ -69,7 +71,7 @@ Azure DocumentDB では、明示的なフェールオーバーおよびポリシ
 
 では、DocumentDB サービスによる自動フェールオーバーを使用したリージョン内障害の処理方法を見てみましょう。 
 
-## <a name="a-idautomaticfailoversaautomatic-failovers"></a><a id="AutomaticFailovers"></a>自動フェールオーバー
+## <a id="AutomaticFailovers"></a>自動フェールオーバー
 Azure のリージョン内障害はまれですが、発生した場合に DocumentDB は、影響を受けたリージョンに存在するすべての DocumentDB アカウントのフェールオーバーを自動的にトリガーします。 
 
 **読み取りリージョンで障害が起きた場合**
@@ -96,7 +98,7 @@ Azure のリージョン内障害はまれですが、発生した場合に Docu
 * このリージョンをクエリし、現在の書き込みリージョン内にあるデータと比較することによって、障害中にレプリケートされなかった書き込みを計算することができます。 アプリケーションの必要性に応じて、マージや競合の解決を実行し、変更内容の最終版を現在の書き込みリージョンに書き戻すことができます。 
 * 変更のマージを完了したら、影響を受けたリージョンを削除してから DocumentDB アカウントに再び追加して、そのリージョンをオンラインに戻すことができます。 リージョンが再び追加されたら、 Azure Portal で手動フェールオーバーを実行するか、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)、そのリージョンを書き込みリージョンとして構成しなおすことができます。
 
-## <a name="a-idmanualfailoversamanual-failovers"></a><a id="ManualFailovers"></a>手動フェールオーバー
+## <a id="ManualFailovers"></a>手動フェールオーバー
 
 自動フェールオーバーに加えて、指定の DocumentDB アカウントの現在の書込みリージョンは、手動で動的に、既存の書込みリージョンのいずれかに変更することができます。 手動フェールオーバーは、Azure Portal から、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)開始することができます。 
 
@@ -114,15 +116,10 @@ Azure のリージョン内障害はまれですが、発生した場合に Docu
 
 この記事では、Azure DocumentDB における手動および自動フェールオーバーの動作の仕組み、グローバルに使用する DocumentDB アカウントとアプリケーションの構成方法を確認しました。 Azure DocumentDB のグローバルなレプリケーション サポートを使用すると、エンド ツー エンドの待機時間を向上させ、リージョンで障害が発生しても高可用性を保証することができます。 
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>次のステップ
+## <a id="NextSteps"></a>次のステップ
 * DocumentDB の[グローバル配布](documentdb-distribute-data-globally.md)サポートについて確認する
 * [DocumentDB とのグローバルな整合性](documentdb-consistency-levels.md)について確認する
 * [Azure DocumentDB SDK](documentdb-developing-with-multiple-regions.md) を使用して複数リージョンで開発する
 * Azure DocumentDB を使用して[複数リージョン ライター アーキテクチャ](documentdb-multi-region-writers.md)を作成する方法を確認する
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

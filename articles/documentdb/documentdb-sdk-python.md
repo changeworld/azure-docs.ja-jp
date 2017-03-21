@@ -1,5 +1,5 @@
 ---
-title: "Python API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
+title: "Azure DocumentDB Python API、SDK、およびリソース | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: python
@@ -14,14 +14,15 @@ ms.devlang: python
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 377b1c5a5f1a3425f255d227c6d2800b9ec61a33
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 4c83bcbf3e5849afd15060947ef5f0faab17ce19
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API と SDK
+# <a name="documentdb-python-sdk-release-notes-and-resources"></a>DocumentDB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 01/24/2017
 > 
 > 
 
-## <a name="documentdb-python-api-and-sdk"></a>DocumentDB Python API と SDK
 <table>
 
 <tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
