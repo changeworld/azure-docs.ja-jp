@@ -13,7 +13,7 @@ ms.custom: authentication and authorization
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
