@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: f78c0fc1959f72164508af9d8945744b67fac68b
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 60219a9c78884e01fcf46e18ac03e2a955787bc5
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="working-with-geospatial-data-in-azure-documentdb"></a>Azure DocumentDB で地理空間データを扱う
+# <a name="working-with-geospatial-and-geojson-location-data-in-documentdb"></a>DocumentDB で地理空間データと GeoJSON 位置データを扱う
 この記事では、 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
 
 * 空間データを Azure DocumentDB に保存する方法
@@ -148,7 +150,7 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
 
 <table>
 <tr>
-  <td><strong>使用法</strong></td>
+  <td><strong>使用方法</strong></td>
   <td><strong>説明</strong></td>
 </tr>
 <tr>
@@ -157,11 +159,11 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
 </tr>
 <tr>
   <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が 2 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。</td>
+  <td>1 つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) が&2; つ目の GeoJSON オブジェクト (Point、Polygon、または LineString) 内に存在するかどうかを示すブール式を返します。</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>指定された 2 つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。</td>
+  <td>指定された&2; つの GeoJSON オブジェクト (Point、Polygon、または LineString) が重なるかどうかを示すブール式を返します。</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
@@ -384,13 +386,8 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 DocumentDB の地理空間機能の基本的な使い方を身に付けたら、次に段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-*  [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-*  [DocumentDB クエリ](documentdb-sql-query.md)
-*  [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
+* [DocumentDB クエリ](documentdb-sql-query.md)
+* [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)
 
 

@@ -3,7 +3,7 @@ title: "Mobile Apps でユニバーサル Windows プラットフォーム (UWP)
 description: "Azure Mobile App を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリでオフライン データをキャッシュおよび同期する方法について説明します。"
 documentationcenter: windows
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c24e9940f8ce9e2a97a9ef88b1ecb09cd6b07c39
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 7da4d87c6225754fe878a1812701c4dbafaea07a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/17/2016
 * [ユニバーサル Windows プラットフォーム開発用 SQLite](http://www.sqlite.org/downloads)
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>オフライン機能をサポートするようにクライアント アプリを更新する
-Azure モバイル アプリのオフライン機能を使用すると、オフラインになっている状況でも、ローカル データベースとやり取りすることができます。 アプリケーションでこれらの機能を使用するには、 [SyncContext][synccontext] をローカル ストアに初期化します。 その後、 [IMobileServiceSyncTable][IMobileServiceSyncTable] インターフェイスを使用してテーブルを参照します。 SQLite は、デバイス上のローカル ストアとして使用されます。
+Azure モバイル アプリのオフライン機能を使用すると、オフラインになっている状況でも、ローカル データベースとやり取りすることができます。 アプリケーションでこれらの機能を使用するには、[SyncContext][synccontext] をローカル ストアに初期化します。 その後、 [IMobileServiceSyncTable][IMobileServiceSyncTable] インターフェイスを使用してテーブルを参照します。 SQLite は、デバイス上のローカル ストアとして使用されます。
 
 1. [ユニバーサル Windows プラットフォーム用の SQLite ランタイム](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)をインストールします。
 2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了した UWP アプリ プロジェクトの NuGet パッケージ マネージャーを開きます。
@@ -51,7 +51,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 4. MainPage.xaml.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED`の定義をコメント解除します。
 5. Visual Studio で、 **F5** キーを押してクライアント アプリをリビルドして実行します。 アプリは、オフライン同期を有効にする前と同じように動作します。 ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
 
-## <a name="a-nameupdate-syncaupdate-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>アプリを更新してバックエンドから切断する
+## <a name="update-sync"></a>アプリを更新してバックエンドから切断する
 ここでは、オフライン状況をシミュレートするために、モバイル アプリ バックエンドへの接続を解除します。 データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードであることが通知されます。 この状態では、新しい項目はローカル ストアに追加され、プッシュが次に接続状態で実行したときに、モバイル アプリ バックエンドに同期されます。
 
 1. 共有プロジェクトで App.xaml.cs を編集します。 **MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
@@ -65,7 +65,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 5. (省略可能) Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]**を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
-## <a name="a-nameupdate-online-appaupdate-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
+## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 ここでは、アプリをモバイル アプリ バックエンドに再接続します。 これらの変更は、アプリでのネットワークの再接続をシミュレートしています。
 
 初めてアプリケーションを実行すると、`OnNavigatedTo` イベント ハンドラーが `InitLocalStoreAsync` を呼び出します。 このメソッドが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。 アプリは起動時に同期しようとします。
@@ -95,9 +95,9 @@ Mobile Apps のオフライン同期機能の詳しい背景情報について�
 * [Azure Mobile Apps .NET SDK HOWTO][8]
 
 <!-- Anchors. -->
-[オフライン機能をサポートするようにアプリケーションを更新する]: #enable-offline-app
-[アプリケーションの同期の動作を更新する]: #update-sync
-[モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する]: #update-online-app
+[Update the app to support offline features]: #enable-offline-app
+[Update the sync behavior of the app]: #update-sync
+[Update the app to reconnect your Mobile Apps backend]: #update-online-app
 [Next Steps]:#next-steps
 
 <!-- Images -->
@@ -118,7 +118,7 @@ Mobile Apps のオフライン同期機能の詳しい背景情報について�
 [IMobileServiceTableQuery]: https://msdn.microsoft.com/library/azure/dn250631(v=azure.10).aspx
 [IMobileServicesSyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.imobileservicesynccontext(v=azure.10).aspx
 [MobileServicePushFailedException]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.mobileservicepushfailedexception(v=azure.10).aspx
-[状態]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.mobileservicepushcompletionresult.status(v=azure.10).aspx
+[Status]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.mobileservicepushcompletionresult.status(v=azure.10).aspx
 [保存]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.sync.mobileservicepushstatus(v=azure.10).aspx
 [PullAsync]: https://msdn.microsoft.com/library/azure/mt667558(v=azure.10).aspx
 [PushAsync]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileservicesynccontextextensions.pushasync(v=azure.10).aspx

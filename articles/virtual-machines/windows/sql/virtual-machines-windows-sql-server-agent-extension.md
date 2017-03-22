@@ -1,5 +1,5 @@
 ---
-title: "SQL Server VM 用 SQL Server Agent 拡張機能 (Resource Manager) | Microsoft Docs"
+title: "SQL VM (Resource Manager) での管理タスクの自動化 | Microsoft Docs"
 description: "このトピックでは、SQL Server Agent 拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。 自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。 この記事では、Resource Manager デプロイ モードを使用します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 9480c6e2d7f58bfa3934c5895dca8c6a82acbfe8
-
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 00832fcabfb3d1f6d9b7b9745335d4154a2caae3
+ms.lasthandoff: 03/07/2017
 
 ---
-# <a name="sql-server-agent-extension-for-sql-server-vms-resource-manager"></a>SQL Server VM 用 SQL Server Agent 拡張機能 (Resource Manager)
+# <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
-> * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
+> * [リソース マネージャー](virtual-machines-windows-sql-server-agent-extension.md)
 > * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
 > 
@@ -76,7 +77,7 @@ OS 専用の Windows Server 仮想マシンを作成する場合は、 **Set-Azu
 > 
 
 ## <a name="status"></a>状態
-拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SQLIaaSExtension** 拡張機能が表示されます。
+拡張機能がインストールされていることを確認する&1; つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SQLIaaSExtension** 拡張機能が表示されます。
 
 ![Azure ポータルでの SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -103,10 +104,5 @@ Azure ポータルで拡張機能をアンインストールするには、仮�
 拡張機能によってサポートされるいずれかのサービスの使用を開始します。 詳細については、この記事の「 [サポートされているサービス](#supported-services) 」で参照されているトピックをご覧ください。
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

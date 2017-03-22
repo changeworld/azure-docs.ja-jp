@@ -4,18 +4,19 @@ description: "開発運用サイクルへの Application Insights の組み込�
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: e5652353d658a5de197d71231f649c75fe3b245b
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 9f837ea815fdd3ea47608dc36029c35e92eda0ae
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -156,7 +157,7 @@ Visual Studio Team Services を使用してアプリのビルドとデプロイ�
 ![注釈の作成](./media/app-insights-devops/070.png)
 
 ### <a name="work-items"></a>作業項目
-Application Insights では、アラートが発生したときに、作業項目追跡システム (現時点では Visual Studio Team Services のみ) に自動的に作業項目を作成できます。
+Application Insights では、アラートが発生したときに、作業項目追跡システムに自動的に作業項目を作成できます。
 
 ## <a name="but-what-about"></a>詳細について
 * [プライバシーと記憶域](app-insights-data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
@@ -170,10 +171,5 @@ Application Insights の操作は簡単です。 主なオプションは次の�
 * 既に実行中の Web アプリをインストルメント化します。 これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。 [Java](app-insights-java-live.md)、[IIS サーバー](app-insights-monitor-performance-live-website-now.md)のほか、[Azure Web Apps](app-insights-azure.md) でも使用できます。
 * 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](app-insights-asp-net.md) または [Java](app-insights-java-get-started.md) アプリだけでなく、[Node.js](app-insights-nodejs.md) や[他の種類](app-insights-platforms.md)のホストでも実行できます。 
 * 短いコード スニペットを追加して、 [任意の Web ページ](app-insights-javascript.md) をインストルメント化します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

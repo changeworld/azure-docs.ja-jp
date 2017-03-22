@@ -15,11 +15,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: add684549056a824e5534d071a5d0215e27f7a0e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -101,10 +102,5 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Pi を登
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ハブのメッセージを処理して格納するための、Azure Function App と Azure Storage アカウントを作成](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

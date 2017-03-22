@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 72d1496fcf353662fa2f7b003ee3757c45b8181e
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -82,8 +83,3 @@ IoT ハブのメッセージを処理する Azure Function App と、それら�
 [arm-template-parameters]: media/iot-hub-intel-edison-lessons/lesson3/arm_para.png
 [created-your-iot-hub-and-registered-intel-edison]: iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md
 [send-device-to-cloud-messages]: iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

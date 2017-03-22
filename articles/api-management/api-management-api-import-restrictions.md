@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: fff43da07603be1e54cb9948dfd442491bb8f35a
-ms.openlocfilehash: 8103c85cf27c46acf2a46d87d73ecc7227723479
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f941f87019a667deba5ec3e5cd054d04318689db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -30,7 +30,7 @@ Azure API Management API にお客様の API をできる限りシームレス�
 
 * **ホスト名**: ホスト名属性が必要です。
 * **ベース パス**: ベース パス属性が必要です。
-* **スキーム**: スキーム配列が必要です。
+* **スキーム**: スキーム配列が必要です。 
 
 ## <a name="wsdl"> </a>WSDL
 WSDL ファイルは SOAP パススルー API の作成に使用するものであり、SOAP-to-REST API のバックエンドとして機能します。
@@ -39,6 +39,7 @@ WSDL ファイルは SOAP パススルー API の作成に使用するもので�
 * **複数の部分を持つメッセージ**: 現時点ではサポートされていません。
 * **WCF wsHttpBinding**: Windows Communication Foundation を使用して作成した SOAP サービスでは、basicHttpBinding または wsHttpBinding を使用する必要があります。
 * **MTOM**: MTOM を使用するサービスは、動作する ”<em>可能性があります</em>”。 現時点では、正式なサポートは提供されていません。
+* **再帰**: 再帰的に定義されている (例: 自身の配列を参照している) 型はサポートされていません。
 
 ## <a name="wadl"> </a>WADL
 現時点では、WADL のインポートに関する既知の問題はありません。

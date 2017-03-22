@@ -4,18 +4,19 @@ description: "Auzre Application Insights にデータが表示されない場合
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
-ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: db8d7b0e117276dd63ee83a1c2337e69253184b8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -35,16 +36,16 @@ ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 
 * 「 [Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)」を参照してください。 
 
-## <a name="a-nameq01ano-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
-*Visual Studio で新しいプロジェクトを作成するときや、ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
+## <a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
+*ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](app-insights-windows-desktop.md)できます。
-* [Visual Studio 2013 Update 3 以降](http://go.microsoft.com/fwlink/?LinkId=397827)を使用しているかご確認ください。 Application Insights Tools がプレインストールされています。
-* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Application Insights Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* [Visual Studio 2013 Update 3 以降](http://go.microsoft.com/fwlink/?LinkId=397827)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
+* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、アンインストールしてから Application Insights Tools を再インストールしてください。
 
-## <a name="a-nameq02aadding-application-insights-failed"></a><a name="q02"></a>Application Insights の追加に失敗する
-*新しい Web プロジェクトを作成するときや、Application Insights を既存のプロジェクトに追加しようとしたときに、エラー メッセージが表示されます。*
+## <a name="q02"></a>Application Insights の追加に失敗する
+*Application Insights を既存のプロジェクトに追加しようとしたときに、エラー メッセージが表示されます。*
 
 考えられる原因:
 
@@ -59,12 +60,12 @@ ms.openlocfilehash: 1911fd24f0873a40a186af217b6f8af317abbbc8
 * [Application Insights を既存のプロジェクトに追加するには](app-insights-asp-net.md): ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
 * 解決しない場合は、 [手動の手順](app-insights-windows-services.md) を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
 
-## <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
+## <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしているとき、またはログ アダプターをインストールしているときに、何かの問題が発生した可能性があります。
 
-ソリューション エクスプローラーで `ApplicationInsights.config` を右クリックし、**[Application Insights の構成]** を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]、[Application Insights の構成]** の順に選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
 
-## <a name="a-namenugetbuilda-nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
+## <a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
 *開発コンピューターでデバッグするときはすべて問題なくビルドされるのに、ビルド サーバーでは NuGet エラーが発生します。*
 
 [NuGet パッケージの復元](http://docs.nuget.org/Consume/Package-Restore)に関するページと[自動パッケージの復元](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)に関するページをご覧ください。
@@ -75,14 +76,14 @@ Application Insights をインストールしているとき、またはログ �
 考えられる原因:
 
 * Application Insights リソースを手動で作成したか、Application Insights Tools ではサポートされない種類のプロジェクトである。
-* Visual Studio で Application Insights Tools が無効にされている。
+* Visual Studio で Developer Analytics Tools が無効にされている。 
 * 使用している Visual Studio が 2013 Update 3 よりも古い。
 
 解決策:
 
 * Visual Studio のバージョンが 2013 Update 3 以降であることを確認してください。
-* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Application Insights Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
-* ソリューション エクスプローラーでプロジェクトを右クリックします。 **[Application Insights の構成]**コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
+* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* ソリューション エクスプローラーでプロジェクトを右クリックします。 **[Application Insights] > [Application Insights の構成]** コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
 
 それ以外の場合、ご使用のプロジェクトは Application Insights Tools で直接サポートされたプロジェクト タイプではありません。 テレメトリを表示するには、 [Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
 
@@ -123,7 +124,7 @@ Application Insights をインストールしているとき、またはログ �
     いくつかのサマリー グラフが表示されます。 それらをクリックしていくと、詳しい情報が表示されます。
 * Visual Studio でアプリをデバッグしているときに、[Application Insights] ボタンをクリックします。
 
-## <a name="a-nameq03a-no-server-data-or-no-data-at-all"></a><a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
+## <a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
 *アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。 
@@ -143,7 +144,7 @@ Application Insights をインストールしているとき、またはログ �
 * [サーバー側 SDK](app-insights-api-custom-events-metrics.md) で作成したコードによって、`TelemetryClient` インスタンス内または `TelemetryContext` 内のインストルメンテーション キーが変更されていないか確認します。 自分が記述した [フィルターやサンプリング構成](app-insights-api-filtering-sampling.md) によって、必要なデータまで排除されていないかも確認してください。
 * ApplicationInsights.config を編集した場合は、 [TelemetryInitializers と TelemetryProcessors](app-insights-api-filtering-sampling.md)の構成を慎重に確認します。 不適切な名前が付けられた型またはパラメーターがあると、SDK によってデータが送信されない場合があります。
 
-## <a name="a-nameq04ano-data-on-page-views-browsers-usage"></a><a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
+## <a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
 *サーバー応答時間グラフとサーバー要求グラフにはデータが表示されますが、[ページ ビューの読み込み時間]、[ブラウザー] ブレードまたは [利用状況] ブレードにはデータが表示されません。*
 
 データは、Web ページのスクリプトによって取得されます。 
@@ -183,10 +184,5 @@ Azure Web サイトでは利用できません。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

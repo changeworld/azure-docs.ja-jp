@@ -14,13 +14,14 @@ ms.topic: article
 ms.date: 05/07/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1520fde6b60546e408772e04488e8a530a9c1344
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 89e3cb3a7e9185d4a2944c1aa9aaf5aee4bd2b24
+ms.lasthandoff: 03/15/2017
 
 
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
-Visual Studio [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を利用し、データの読み取りと更新を実行できる人を制御できます。
+Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
 > リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
@@ -38,14 +39,14 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure のロー�
 
 <a name="resource-group"></a>
 
-* [**リソース グループ**][グループ] - すべてのリソースが 1 つのグループに属します。 関連リソースを管理するとき、特にアクセス制御の場合、グループは便利な方法です。 たとえば、1 つのリソース グループに Web アプリ、そのアプリを監視する Application Insights リソース、エクスポートされたデータを保持する Storage リソースを配置できます。
+* [**リソース グループ**][group] - すべてのリソースが&1; つのグループに属します。 関連リソースを管理するとき、特にアクセス制御の場合、グループは便利な方法です。 たとえば、1 つのリソース グループに Web アプリ、そのアプリを監視する Application Insights リソース、エクスポートされたデータを保持する Storage リソースを配置できます。
 
     ![[参照]、[リソース グループ] を選択し、グループを選択します。](./media/app-insights-resources-roles-access-control/11-group.png)
 
-* [**サブスクリプション**](https://manage.windowsazure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは 1 つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
-* [**Microsoft アカウント**][アカウント] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
+* [**サブスクリプション**](https://manage.windowsazure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは&1; つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
+* [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
 
-## <a name="a-nameaccessa-control-access-in-the-resource-group"></a><a name="access"></a> リソース グループのコントロール制御
+## <a name="access"></a> リソース グループのコントロール制御
 アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはアプリケーションと同じ [リソース グループ](#resource-group) に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
 
 ![Application Insights のリソース](./media/app-insights-resources-roles-access-control/00-resources.png)
@@ -58,14 +59,14 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure のロー�
 ## <a name="to-provide-access-to-another-user"></a>別のユーザーにアクセスを与えるには
 サブスクリプションまたはリソース グループの所有者権限が必要です。
 
-ユーザーは、[Microsoft アカウント][アカウント]を持っているか、または[組織の Microsoft アカウント](../active-directory/sign-up-organization.md)にアクセスする必要があります。 個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
+ユーザーは、[Microsoft アカウント][account]を持っているか、または[組織の Microsoft アカウント](../active-directory/sign-up-organization.md)にアクセスする必要があります。 個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
 
 #### <a name="navigate-to-the-resource-group"></a>リソース グループに移動する
 そこでユーザーを追加します。
 
 ![アプリケーションのリソース ブレードで、Essentials を開き、リソース グループを開き、設定/ユーザーを選択します。 [追加] をクリックします。](./media/app-insights-resources-roles-access-control/01-add-user.png)
 
-あるいは、もう 1 つ上のレベルに進み、ユーザーをサブスクリプションに追加できます。
+あるいは、もう&1; つ上のレベルに進み、ユーザーをサブスクリプションに追加できます。
 
 #### <a name="select-a-role"></a>ロールを選択する
 ![新しいユーザーの役割を選択します。](./media/app-insights-resources-roles-access-control/03-role.png)
@@ -95,13 +96,8 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure のロー�
 
 <!--Link references-->
 
-[アカウント]: https://account.microsoft.com
-[グループ]: ../azure-resource-manager/resource-group-overview.md
+[account]: https://account.microsoft.com
+[group]: ../azure-resource-manager/resource-group-overview.md
 [portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

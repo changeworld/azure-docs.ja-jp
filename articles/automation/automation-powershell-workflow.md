@@ -17,13 +17,14 @@ ms.author: magoedte;bwren
 translationtype: Human Translation
 ms.sourcegitcommit: 480a40bd5ecd58f11b10c27e7e0d2828bcae1f17
 ms.openlocfilehash: 50966ed518b79f2033680790432e29b0c9e7b289
+ms.lasthandoff: 01/24/2017
 
 
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 
 Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いが多数あるため、効果的なワークフローを記述するにはさらに作業が必要になります。  
 
-A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. The benefits of a workflow over a normal script include the ability to simultaneously perform an action against multiple devices and the ability to automatically recover from failures. A Windows PowerShell Workflow is a Windows PowerShell script that leverages Windows Workflow Foundation. ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
+ワークフローとは、時間のかかるタスクを実行したり、複数のデバイスや管理ノードにまたがる複数のステップで調整を必要としたりする手順を、プログラミングで連結してひとつながりにしたものです。 ワークフローが通常のスクリプトよりも優れている点としては、同時に複数のデバイスに対して操作を実行できることや、障害から自動的に復元できることなどがあります。 Windows PowerShell ワークフローは、Windows Workflow Foundation を活用した Windows PowerShell スクリプトです。 ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
 
 この記事のトピックに関する詳細については、「 [Windows PowerShell ワークフローについて](http://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
 
@@ -35,7 +36,7 @@ PowerShell スクリプトを PowerShell ワークフローに変換する最初
        <Commands>
     }
 
-The name of the workflow must match the name of the Automation runbook. Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
+ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
 
 ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
 
@@ -50,7 +51,7 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
 ### <a name="positional-parameters"></a>位置指定パラメーター
 ワークフローのアクティビティおよびコマンドレットでは、位置指定パラメーターを使用できません。  このため、パラメーターを使用する必要があります。
 
-For example, consider the following code that gets all running services.
+たとえば、実行中のすべてのサービスを取得する次のコードを考えてみます。
 
      Get-Service | Where-Object {$_.Status -eq "Running"}
 
@@ -62,7 +63,7 @@ For example, consider the following code that gets all running services.
     }
 
 ### <a name="deserialized-objects"></a>逆シリアル化されたオブジェクト
-ワークフロー内のオブジェクトは逆シリアル化されます。  This means that their properties are still available, but not their methods.  例として、サービス オブジェクトの Stop メソッドを使用してサービスを停止する次の PowerShell コードを考えます。
+ワークフロー内のオブジェクトは逆シリアル化されます。  これは、オブジェクトのプロパティは使用できるけれども、メソッドが使用できないことを意味します。  例として、サービス オブジェクトの Stop メソッドを使用してサービスを停止する次の PowerShell コードを考えます。
 
     $Service = Get-Service -Name MyService
     $Service.Stop()
@@ -89,9 +90,9 @@ For example, consider the following code that gets all running services.
 
 
 ## <a name="inlinescript"></a>InlineScript
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして&1; つまたは複数のコマンドを実行する必要がある場合に便利です。  While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell.
+**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして&1; つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
 
-InlineScript uses the syntax shown below.
+InlineScript は、次に示す構文を使用します。
 
     InlineScript
     {
@@ -139,7 +140,7 @@ InlineScript の使用の詳細については、「[ワークフローでの Wi
 ## <a name="parallel-processing"></a>並列処理
 Windows PowerShell ワークフローの利点の&1; つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
-**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 This uses the syntax shown below. この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。 これには、次に示す構文を使用します。 この場合、Activity1 と Activity2 は同時に開始されます。 Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
     Parallel
     {
@@ -149,13 +150,13 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     <Activity3>
 
 
-例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。  These commands are run sequentially so that one file must finish copying before the next is started.     
+例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。  これらのコマンドは、1 つのファイルのコピーが完了してから次へファイルのコピーが開始されるように、順番に実行されます。     
 
     $Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
     $Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
     $Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
-次のワークフローでは、すべてのコピーが同時に開始されるように、同じコマンドが並列実行されます。  Only after they are all completely copied is the completion message displayed.
+次のワークフローでは、すべてのコピーが同時に開始されるように、同じコマンドが並列実行されます。  すべてのファイルのコピーが完了してはじめて、完了メッセージが表示されます。
 
     Workflow Copy-Files
     {
@@ -170,7 +171,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     }
 
 
-**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 The items in the collection are processed in parallel while the commands in the script block run sequentially. This uses the syntax shown below. この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 For each item, Activity2 will start after Activity1 is complete. Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これには、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -179,7 +180,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     }
     <Activity3>
 
-次の例は、並列でファイルのコピーを行う前の例と似ています。  In this case, a message is displayed for each file after it copies.  Only after they are all completely copied is the final completion message displayed.
+次の例は、並列でファイルのコピーを行う前の例と似ています。  この場合、各ファイルのコピーが完了するたびに、メッセージが表示されます。  すべてのファイルのコピーが完了してはじめて、最終的な完了メッセージが表示されます。
 
     Workflow Copy-Files
     {
@@ -195,7 +196,7 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     }
 
 > [!NOTE]
-> We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.  子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
+> 子 runbook を並列で実行することはお勧めしません。これを行うと、結果の信頼性が低くなることが示されているためです。  子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
 >
 
 ## <a name="checkpoints"></a>チェックポイント
@@ -209,9 +210,9 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
     <Exception>
     <Activity3>
 
-例外を引き起こす可能性があり、ワークフローが再開された場合は繰り返す必要のないアクティビティの後に、ワークフローのチェックポイントを設定する必要があります。 For example, your workflow may create a virtual machine. チェックポイントをコマンドの前後に設定して、仮想マシンを作成できます。 If the creation fails, then the commands would be repeated if the workflow is started again. 作成の成功後にワークフローが失敗した場合、ワークフローが再開されても仮想マシンが再び作成されることはありません。
+例外を引き起こす可能性があり、ワークフローが再開された場合は繰り返す必要のないアクティビティの後に、ワークフローのチェックポイントを設定する必要があります。 たとえば、ワークフローによって仮想マシンが作成される場合があります。 チェックポイントをコマンドの前後に設定して、仮想マシンを作成できます。 作成に失敗した場合、ワークフローが再開されると、コマンドは繰り返し実行されます。 作成の成功後にワークフローが失敗した場合、ワークフローが再開されても仮想マシンが再び作成されることはありません。
 
-次の例では、ネットワーク上の場所に複数のファイルをコピーし、各ファイルの後にチェックポイントを設定します。  If the network location is lost, then the workflow will end in error.  ワークフローを再び開始すると、最後のチェックポイントで再開するので、既にコピーされているファイルだけがスキップされます。
+次の例では、ネットワーク上の場所に複数のファイルをコピーし、各ファイルの後にチェックポイントを設定します。  ネットワーク上の場所が失われた場合は、ワークフローがエラーで終了します。  ワークフローを再び開始すると、最後のチェックポイントで再開するので、既にコピーされているファイルだけがスキップされます。
 
     Workflow Copy-Files
     {
@@ -256,13 +257,8 @@ Windows PowerShell ワークフローの利点の&1; つは、一般的なスク
 
 これは、サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合には必要ありません。  
 
-チェックポイントの詳細については、「 [スクリプト ワークフローへのチェックポイントの追加](http://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
+チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](http://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 

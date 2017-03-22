@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: c1c999e40ecc92a1018067822be66f14b61a8c36
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -104,9 +105,4 @@ LED が&2; 秒間点灯した後、2 秒間消灯します。 最後の "stop" �
 
 ### <a name="summary"></a>概要
 このオプションのセクションでは、サンプル アプリケーションが LED のオンとオフの動作を通常とは異なる方法で制御できるようにメッセージをカスタマイズする方法を紹介しました。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

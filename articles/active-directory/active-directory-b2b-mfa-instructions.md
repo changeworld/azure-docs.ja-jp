@@ -39,12 +39,12 @@ ms.lasthandoff: 02/17/2017
 ## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザー用の MFA のセットアップ
 B2B コラボレーション ユーザー用の MFA のセットアップがいかに簡単かについては、次のビデオをご覧ください。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
 ## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B ユーザーがオファーに応じるための MFA エクスペリエンス
 招待に応じるためのエクスペリエンスについては、次のビデオのアニメーションをご覧ください。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
 ## <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの MFA リセット
 現時点では、管理者は次の PowerShell コマンドレットを使用することによってのみ、B2B コラボレーション ユーザーにもう一度証明を要求できます。 そのため、B2B コラボレーション ユーザーの証明方法をリセットする場合は、以下の PowerShell コマンドレットを使用する必要があります。

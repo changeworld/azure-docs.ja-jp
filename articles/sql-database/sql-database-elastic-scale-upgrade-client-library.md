@@ -12,11 +12,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 03/06/2017
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 0bbbc4f61c37fe4d296221c372bfdf6dd429a32b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -35,6 +36,7 @@ ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
 * Visual Studio ソリューションで **[ツール]** --> **[NuGet Package Manager]** -->  **[Manage NuGet Packages for Solution (ソリューションの NuGet パッケージを管理)]** と選択します。 
 * (Visual Studio 2013) 左側のパネルで **[更新]** を選択し、ウィンドウに表示される **Azure SQL Database Elastic Scale Client Library** パッケージの **[更新]** ボタンを選択します。
 * (Visual Studio 2015) [フィルター] ボックスで **[アップグレード可能]**を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
+* (Visual Studio 2017) ダイアログの上部にある **[更新プログラム]** を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
 * 構築してデプロイします。 
 
 **2.スクリプトをアップグレードします。** シャードの管理に **PowerShell** スクリプトを使用している場合は、[新しいライブラリ バージョンをダウンロード](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)して、スクリプトを実行するディレクトリにコピーします。 
@@ -77,10 +79,5 @@ ms.openlocfilehash: 44c2c181b1ca463c5d2bd92b77e4b92604964ba2
 
 <!--Image references-->
 [1]:./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

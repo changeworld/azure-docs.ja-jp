@@ -138,7 +138,7 @@ To Do List Service の動作を確認できるようにするには、AAD から
 
 3. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 この値は次の手順で必要になるので、アプリケーション ページからコピーします。
 
-4. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 To Do List Service を見つけて選択し、**[Access TodoListService] (TodoListService へのアクセス)** アクセス許可を **[デリゲートされたアクセス許可]** の下に追加し、**[完了]** をクリックします。
+4. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 To Do List Service を見つけて選択し、**Access TodoListService \(TodoListService へのアクセス)** アクセス許可を **[デリゲートされたアクセス許可]** の下に追加し、**[完了]** をクリックします。
 
 5. Visual Studio で、TodoListClient プロジェクトの `App.config` を開いて、`<appSettings>` セクションに構成値を入力します。
 

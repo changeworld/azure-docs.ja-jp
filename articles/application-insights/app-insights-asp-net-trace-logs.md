@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 07/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f2de2b3f4deb702f6cdc4e36b988ef6ea2697787
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f803b44172b068b7ba65047c769421e39445ce10
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -138,9 +138,9 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ### <a name="no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まずログ記録フレームワークをインストールする必要があります。
 * System.Diagnostics.Trace を使用している場合は、[`web.config`で構成済み](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)であることを確認します。
-* 最新バージョンの Application Insights Tools を使用しているか確認します。 Visual Studio の **[ツール]** メニューで **[拡張機能と更新プログラム]** を選択し、**[更新]** タブを開きます。 Application Insights Tools が表示されていたら、クリックして更新します。
+* 最新バージョンの Application Insights を使用しているか確認します。 Visual Studio の **[ツール]** メニューで **[拡張機能と更新プログラム]** を選択し、**[更新]** タブを開きます。 Developer Analytics Tools が表示されていたら、クリックして更新します。
 
-### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
+### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。
 
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
@@ -148,13 +148,13 @@ Application Insights をインストールしないでログ アダプターの 
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>診断検索にトレースが表示されますが、他のイベントがありません
 すべてのイベントと要求がパイプラインを通過するまで時間がかかることがあります。
 
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
+### <a name="limits"></a>保持されるデータの量はどのくらいですか
 各アプリケーションで、1 秒あたり 500 イベントまでです。 イベントは&7; 日間保持されます。
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>予期されるログ エントリの一部が表示されません
 アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>次のステップ
+## <a name="add"></a>次のステップ
 * [可用性と応答性のテストを設定する][availability]
 * [Troubleshooting][qna]
 

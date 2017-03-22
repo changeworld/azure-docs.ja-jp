@@ -1,6 +1,6 @@
 ---
 title: "Azure DocumentDB で mongoimport と mongorestore を使用する | Microsoft Docs"
-description: "mongoimport と mongorestore を使用して、現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントにデータをインポートする方法について説明します。"
+description: "mongoimport と mongorestore を使用して、DocumentDB: MongoDB 用 API アカウントにデータをインポートする方法について説明します"
 keywords: mongoimport, mongorestore
 services: documentdb
 author: AndrewHoh
@@ -13,16 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2af8691326550c631e6668890cb0d6b893fa7740
+ms.lasthandoff: 03/08/2017
 
 
 ---
 # <a name="migrate-data-to-documentdb-by-using-mongoimport-and-mongorestore"></a>mongoimport と mongorestore を使用して DocumentDB にデータを移行する
-MongoDB のプロトコル対応の Azure DocumentDB アカウントにデータを移行するには、以下を実行する必要があります。
+> [!div class="op_single_selector"]
+> * [DocumentDB にインポートする](documentdb-import-data.md)
+> * [MongoDB 用 API にインポートする](documentdb-mongodb-migrate.md)
+>
+>
+
+Azure DocumentDB: MongoDB 用 API アカウントにデータを移行するには、以下を実行する必要があります。
 
 * *mongoimport.exe* または *mongorestore.exe* のいずれかを [MongoDB Download Center](https://www.mongodb.com/download-center) からダウンロードします。
 * [MongoDB 対応 DocumentDB 接続文字列](documentdb-connect-mongodb-account.md)を取得します。
@@ -42,7 +49,7 @@ MongoDB のプロトコル対応の Azure DocumentDB アカウントにデータ
 
     ![[接続文字列] ブレード](./media/documentdb-mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="import-data-to-documentdb-with-protocol-support-for-mongodb-with-mongoimport"></a>mongoimport を使用して MongoDB のプロトコル対応 DocumentDB にデータをインポートする
+## <a name="import-data-to-api-for-mongodb-with-mongoimport"></a>mongoimport を使用した MongoDB 用 API へのデータのインポート
 
 DocumentDB アカウントにデータをインポートするには、次のテンプレートを使用してインポートを実行します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。  
 
@@ -54,7 +61,7 @@ DocumentDB アカウントにデータをインポートするには、次のテ
 
     mongoimport.exe --host anhoh-host.documents.azure.com:10250 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
 
-## <a name="import-data-to-documentdb-with-protocol-support-for-mongodb-with-mongorestore"></a>mongorestore を使用して MongoDB のプロトコル対応 DocumentDB にデータをインポートする
+## <a name="import-data-to-api-for-mongodb-with-mongorestore"></a>mongorestore を使用した MongoDB 用 API へのデータのインポート
 
 DocumentDB アカウントにデータを復元するには、次のテンプレートを使用してインポートを実行します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。
 
@@ -67,10 +74,5 @@ DocumentDB アカウントにデータを復元するには、次のテンプレ
     mongorestore.exe --host anhoh-host.documents.azure.com:10250 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
 
 ## <a name="next-steps"></a>次のステップ
-* 詳細については、「[DocumentDB における MongoDB のプロトコル対応の例](documentdb-mongodb-samples.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* 詳細については、「[DocumentDB: MongoDB 用 API のサンプル](documentdb-mongodb-samples.md)」を参照してください。
 

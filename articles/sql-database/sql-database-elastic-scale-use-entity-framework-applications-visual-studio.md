@@ -13,12 +13,12 @@ ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 03/06/2017
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 2a7229c9658cbbab676801f5c532a50bc0adedce
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -29,13 +29,10 @@ ms.lasthandoff: 01/13/2017
 この記事のコードをダウンロードするには:
 
 * Visual Studio 2012 以降が必要です。 
+* [Elastic DB Tools for Azure SQL - Entity Framework Integration のサンプル](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)を MSDN からダウンロードします。 任意の場所にサンプルを解凍します。
 * Visual Studio を起動します。 
-* Visual Studio で、[ファイル] の [新しいプロジェクト] を選択します。 
-* [新しいプロジェクト] ダイアログ ボックスで、**Visual C#** 用の**オンライン サンプル**に移動し、右上の検索ボックスに「elastic db」と入力します。
-  
-    ![Entity Framework と エラスティック データベースのサンプル アプリ][1] 
-  
-    **Elastic DB Tools for Azure SQL - Entity Framework Integration** という名前のサンプルを選択します。 ライセンスに同意すると、サンプルが読み込まれます。 
+* Visual Studio で、[ファイル]、[プロジェクト / ソリューションを開く] の順に選択します。 
+* **[プロジェクトを開く]** ダイアログ ボックスで、ダウンロードしたサンプルに移動して **[EntityFrameworkCodeFirst.sln]** を選択し、サンプルを開きます。 
 
 このサンプルを実行するには、Azure SQL Database で次の&3; つの空のデータベースを作成する必要があります。
 

@@ -4,7 +4,7 @@ description: "(ローカル VM で実行される) Hortonworks サンドボッ�
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: e3434c45-95d1-4b96-ad4c-fb59870e2ff0
 ms.service: hdinsight
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/10/2017
+ms.date: 02/28/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: a1e6216647b7401183ab2f47f72aaee1f80ccee0
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 599aeb1f38c804c2edf6590140e739c9705ab1ab
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -30,7 +31,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 * 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントに記載されている内容は、Oracle VirtualBox で実行されるサンドボックスを使用してテストされています。また、サンドボックスは、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md)に関するドキュメントに記載された情報を使用して構成されています。
 
-* Visual Studio 2013 または 2015 の任意のエディション。
+* Visual Studio 2013、2015、または 2017 の任意のエディション。
 
 * [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 2.7.1 以降。
 
@@ -38,7 +39,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>サンドボックスのパスワードを構成する
 
-Hortonworks サンドボックスが実行されていることを確認したら、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関するドキュメントに記載された手順に従い、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+Hortonworks サンドボックスが実行されていることを確認したら、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関するドキュメントに記載された手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
@@ -60,7 +61,7 @@ Hortonworks サンドボックスが実行されていることを確認した�
 
     **[次へ]** をクリックして続行します。
 
-5. サービスの検証が完了するのを待ちます。 検証が失敗し、構成を更新するよう求められることがあります。 その場合は、 **[更新]** をクリックし、サービスの構成と検証が完了するのを待ちます。
+5. サービスの検証が完了するのを待ちます。 検証が失敗し、構成を更新するよう求められることがあります。 検証が失敗した場合は、**[更新]** をクリックし、サービスの構成と検証が完了するのを待ちます。
 
     ![Errors and update button](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
@@ -86,7 +87,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     新しいクエリ ウィンドウが開き、短時間でクエリを入力して、ローカル クラスターに送信できます。
 
-2. 新しいクエリ ウィンドウに、次のように入力します。
+2. 新しいクエリ ウィンドウに、次のコマンドを入力します。
 
         select count(*) from sample_08;
 
@@ -94,15 +95,15 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     ![query window and submit button](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
-    **[送信]** の横にあるドロップダウン メニューで **[詳細設定]** を選択することもできます。 これを選択するとダイアログが開き、ジョブを送信するときに利用できる追加のオプションが表示されます。
+    **[送信]** の横にあるドロップダウン メニューで **[詳細設定]** を選択することもできます。 [詳細設定] オプションでは、ジョブを送信するときに利用できる追加のオプションを指定できます。
 
     ![advanced submit](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. クエリを送信すると、ジョブの状態が表示されます。 ここには、Hadoop で処理されているジョブの情報が表示されます。 **[ジョブの状態]** エントリは、ジョブの現在の状態を示します。 状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
+3. クエリを送信すると、ジョブの状態が表示されます。 ここでは、Hadoop で処理されるジョブの情報が表示されます。 **[ジョブの状態]** エントリは、ジョブの状態を示します。 状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
 
     ![Job state](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    **[ジョブの状態]** が **[完了]** に変わったら、有向非巡回グラフ (DAG) が表示されます。 このグラフは、Tez (ローカル クラスター上の Hive の既定の実行エンジン) によって決定される実行パスを示しています。
+    **[ジョブの状態]** が **[完了]** に変わったら、有向非巡回グラフ (DAG) が表示されます。 このダイアグラムは、Tez (ローカル クラスター上の Hive の既定の実行エンジン) によって決定された実行パスを示しています。
 
     > [!NOTE]
     > Linux ベースの HDInsight クラスターを使用する場合も、Tez が既定の実行エンジンです。 Windows ベースの HDInsight では既定ではありません。Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
@@ -122,7 +123,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 ## <a name="create-a-hive-project"></a>Hive プロジェクトを作成する
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。 これは、複数の関連スクリプトを&1; つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
+複数の Hive スクリプトを含むプロジェクトを作成することもできます。 プロジェクトは、複数の関連スクリプトを&1; つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
 
 1. Visual Studio で、**[ファイル]**、**[新規]**、__[プロジェクト]__ の順に選択します。
 
@@ -134,13 +135,13 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 ## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
 
-Hive には構造化データを操作するための SQL に似た言語が用意されていますが、Pig はデータに適用される変換のパイプラインを作成できる言語 (Pig Latin) を備えています。 ローカル クラスターで Pig を使用するには、次の手順に従います。
+Hive には構造化データを操作するための SQL に似た言語が用意されていますが、Pig はデータで変換を実行することによって機能します。 Pig は変換のパイプラインを作成できる言語 (Pig Latin) を備えています。 ローカル クラスターで Pig を使用するには、次の手順に従います。
 
 1. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。 プロジェクトの一覧から、**[テンプレート]**、**[Azure Data Lake]** の順に展開し、**[Pig (HDInsight)]** を選択します。 テンプレートの一覧から、**[Pig Application (Pig アプリケーション)]** を選択します。 名前と場所を入力し、**[OK]** を選択します。
 
     ![Pig (HDInsight) project](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
-2. このプロジェクトで作成した **script.pig** ファイルの内容として、次のコードを入力します。
+2. このプロジェクトで作成した **script.pig** ファイルの内容として、次のテキストを入力します。
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int,
@@ -189,9 +190,9 @@ Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情
 
 ### <a name="database-and-table-properties"></a>データベースとテーブルのプロパティ
 
-お気付きかもしれませんが、データベースまたはテーブルで **[プロパティ]** を選択して表示することができます。 選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。
+お気付きかもしれませんが、データベースまたはテーブルで **[プロパティ]** を選択して表示することができます。 **[プロパティ]** を選択すると、選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。
 
-![[プロパティ]](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![プロパティ](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
 ### <a name="create-a-table"></a>テーブルを作成する
 
@@ -207,9 +208,4 @@ Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情
 
 * [Hortonworks Sandbox の使い方のヒント](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop チュートリアル: HDP の概要](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

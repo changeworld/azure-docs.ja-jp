@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/07/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 16ec322d0c921f97819375cfe52d2c3f02a2c53b
-ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 87c3b66a8789254e962ccfd7fc1eb7842c0db638
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -63,7 +64,7 @@ SAP HANA Cloud Platform Identity Authentication と Azure AD の統合を構成�
 
 現時点では、SAP HANA Cloud Platform Identity Authentication は、SAP アプリケーションへのプロキシ ID プロバイダーとして機能します。 さらに Azure Active Directory は、このセットアップにおける主要な ID プロバイダーとして機能します。 それを次の図に示します。    
 
-![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/architecture-01.png)
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/architecture-01.png)
 
 このセットアップにより、SAP HANA Cloud Platform Identity Authentication テナントは、Azure Active Directory で信頼されたアプリケーションとして構成されます。 
 
@@ -95,11 +96,11 @@ Azure AD への SAP HANA Cloud Platform Identity Authentication の統合を構�
 
 4. 検索ボックスに、「**SAP HANA Cloud Platform Identity Authentication**」と入力します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_01.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_01.png)
 
 5. 結果パネルで **[SAP HANA Cloud Platform Identity Authentication]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_02.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_02.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -123,7 +124,7 @@ SAP HANA Cloud Platform Identity Authentication で Azure AD のシングル サ
 
 SAP HANA Cloud Platform Identity Authentication アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 この属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
 
-![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_03.png)
+![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_03.png)
 
 **SAP HANA Cloud Platform Identity Authentication で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -133,15 +134,15 @@ SAP HANA Cloud Platform Identity Authentication アプリケーションは、�
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]][5]
+    ![Configure Single Sign-On][5]
 
-3. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、SAP アプリケーションに "firstName" などの属性が必要な場合は、[Saml トークン属性] ダイアログで、"firstName" 属性を追加します。
+3. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、SAP アプリケーションに "firstName" などの属性が必要な場合は、 [Saml トークン属性] ダイアログで、"firstName" 属性を追加します。
 
     a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[シングル サインオンの構成]][6]
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_05.png)
     
     b. **[属性名]** ボックスに、属性名 "firstName" を入力します。
 
@@ -152,24 +153,31 @@ SAP HANA Cloud Platform Identity Authentication アプリケーションは、�
 
 4. **[SAP HANA Cloud Platform Identity Authentication のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_06.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_06.png)
 
     a. **[サインオン URL]** ボックスに、SAP アプリケーションのサインオン URL を入力します。
 
-    b. **[識別子]** ボックスに、`<tenant-id>.accounts.ondemand.com` というパターンの値を入力します。 この値がわからない場合は、SAP HANA Cloud Platform Identity Authentication ドキュメントの「[Tenant SAML 2.0 Configuration (テナントの SAML 2.0 の構成)](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)」の手順に従ってください。
+    b. **[識別子]** ボックスに、`<entity-id>.accounts.ondemand.com` というパターンの値を入力します。 この値がわからない場合は、SAP HANA Cloud Platform Identity Authentication ドキュメントの「[Tenant SAML 2.0 Configuration (テナントの SAML 2.0 の構成)](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)」の手順に従ってください。
 
 
 5. **[SAP HANA Cloud Platform Identity Authentication 構成]** セクションで、**[SAP HANA Cloud Platform Identity Authentication の構成]** をクリックして **[サインオンの構成]** ダイアログを開きます。 次に、**[SAML XML Metadata (SAML XML メタデータ)]** をクリックし、ファイルをコンピューターに保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_07.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_07.png) 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_08.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_08.png)
 
 
 6. アプリケーション用に構成された SSO を入手するために、SAP HANA Cloud Platform Identity Authentication Administration コンソールにアクセスします。 URL は `https://<tenant-id>.accounts.ondemand.com/admin` というパターンです。 次に、SAP HANA Cloud Platform Identity Authentication のドキュメントの手順に従って、[SAP HANA Cloud Platform Identity Authentication で Microsoft Azure AD を会社の ID プロバイダーとして構成します](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html)。 
 
-10. Azure 管理ポータルで、**[保存]** ボタンをクリックします。  
-  
+7. Azure 管理ポータルで、**[保存]** ボタンをクリックします。
+8. 次の手順は、もう&1; つの SAP アプリケーションに対して SSO を追加して有効にする場合にのみ行います。 「ギャラリーからの SAP HANA Cloud Platform Identity Authentication の追加」セクションの手順を繰り返し、SAP HANA Cloud Platform Identity Authentication の別のインスタンスを追加します。
+9. Microsoft Azure 管理ポータルの **SAP HANA Cloud Platform Identity Authentication** アプリケーション統合ページで、**[リンクされたサインオン]** をクリックします。
+
+     ![リンクされたサインオンの構成](./media/active-directory-saas-sap-hana-cloud-tutorial/linked_sign_on.png)
+10. 次に、構成を保存します。
+
+>[!NOTE] 
+>新しいアプリケーションでは、前の SAP アプリケーション用の SSO 構成が再利用されます。 SAP HANA Cloud Platform Identity Authentication Administration コンソールで、同じ会社の ID プロバイダーを使用していることを確認してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、新しいポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -178,21 +186,21 @@ SAP HANA Cloud Platform Identity Authentication アプリケーションは、�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_01.png) 
 
 2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_02.png) 
 
 3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_03.png) 
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-hana-cloud-tutorial/create_aaduser_04.png) 
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -227,7 +235,7 @@ SAP HANA Cloud Platform Identity Authentication との ID フェデレーショ�
 
 2. アプリケーションの一覧で、**[SAP HANA Cloud Platform Identity Authentication]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sap_cloud_identity_09.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_sap_cloud_identity_09.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -261,22 +269,16 @@ SAP HANA Cloud Platform Identity Authentication との ID フェデレーショ�
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_05.png
-[6]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_06.png
+[1]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_04.png
+[5]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_05.png
+[6]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_06.png
 
-[100]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_202.png
-[203]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_203.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[200]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sap-hana-cloud-tutorial/tutorial_general_203.png
