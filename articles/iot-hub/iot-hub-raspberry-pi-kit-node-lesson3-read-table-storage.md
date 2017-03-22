@@ -15,11 +15,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 0e35ffda2d5f6698c4e9d96f1991998b36a7f230
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -72,10 +73,5 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
 
 ## <a name="next-steps"></a>次のステップ
 [クラウドからデバイスへのメッセージを受信するサンプル アプリケーションの実行](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

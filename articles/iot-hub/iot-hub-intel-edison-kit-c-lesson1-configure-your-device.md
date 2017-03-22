@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/7/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 800f1aed6d30d2bb871a6a9b55b6b95308932211
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -143,8 +144,3 @@ ms.openlocfilehash: 800f1aed6d30d2bb871a6a9b55b6b95308932211
 
 [troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md
 [get-the-tools]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

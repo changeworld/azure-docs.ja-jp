@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 985ba895bfcad1611bebe80a6c2fc8ffed780da5
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -108,10 +109,5 @@ Pi に接続された LED が&2; 秒間隔で点滅していることを確認�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Storage に保持されたメッセージの読み取り](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

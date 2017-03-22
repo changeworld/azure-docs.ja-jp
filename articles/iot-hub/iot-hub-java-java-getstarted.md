@@ -151,7 +151,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     <dependency> 
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-eventhubs</artifactId> 
-        <version>0.11.0</version> 
+        <version>0.13.0</version> 
     </dependency>
     ```
 

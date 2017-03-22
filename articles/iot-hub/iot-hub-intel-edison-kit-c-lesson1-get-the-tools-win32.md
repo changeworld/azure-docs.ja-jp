@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 79dcbe8cbefe4f607991359fbfc6948b5e90ace9
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -88,9 +89,4 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 [windows]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
 [ubuntu]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md
 [macos]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

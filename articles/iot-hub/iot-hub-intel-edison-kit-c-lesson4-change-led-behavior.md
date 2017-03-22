@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: 278bdf74e2fa8f7074bb8f5ed8eae2d47402b299
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -112,9 +113,4 @@ LED が&2; 秒間点灯した後、2 秒間消灯します。 最後の "stop" �
 [receive-cloud-to-device-messages]: iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md
 [gulpfile]: media/iot-hub-intel-edison-lessons/lesson4/updated_gulpfile_c.png
 [on-and-off]: media/iot-hub-intel-edison-lessons/lesson4/gulp_on_and_off_c.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

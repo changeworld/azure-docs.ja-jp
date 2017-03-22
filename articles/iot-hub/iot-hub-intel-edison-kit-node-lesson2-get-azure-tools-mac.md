@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: a060d4ef335aaab490b2786b6378831b62de3bde
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -81,9 +82,4 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 [windows]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md
 [ubuntu]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md
 [macos]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

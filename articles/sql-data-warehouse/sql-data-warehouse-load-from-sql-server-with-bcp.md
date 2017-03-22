@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 8dc7c2fb833c1c51ecef772ba1cbe5f0405fe494
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -197,9 +199,4 @@ SQL Data Warehouse でのテーブルの作成の詳細については、[テー
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

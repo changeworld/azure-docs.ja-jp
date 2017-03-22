@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a8c557ea07cbccb913bc47c510f6759dd832c861
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -204,9 +206,4 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
 [SQL Server Evaluations]: https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2016
 [Visual Studio Community]: https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx
 [AdventureWorks 2014 Sample Databases]: https://msftdbprodsamples.codeplex.com/releases/view/125550
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
