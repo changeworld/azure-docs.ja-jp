@@ -31,10 +31,10 @@ ms.lasthandoff: 02/17/2017
 
 この記事では、Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。  
 
-Azure Backup サービスでは、VM を保護するために&2; 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。 バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。 Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。 Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
+Azure Backup サービスでは、VM を保護するために 2 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。 バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。 Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。 Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
 >
 >
 
@@ -103,7 +103,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
 
 ## <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。
+ストレージ レプリケーション オプションでは、地理冗長ストレージとローカル冗長ストレージのどちらかを選択できます。 既定では、コンテナーには地理冗長ストレージがあります。 プライマリ バックアップの場合は、オプションが地理冗長ストレージに設定されているままにします。 冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
@@ -112,11 +112,11 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![choose your vault from the list of backup vaults](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-2. **[設定]**ブレードで縦向きのスライダーを使用して、**[管理]** セクションまでスクロールします。 **[バックアップ インフラストラクチャ]** をクリックしてブレードを開きます。 **[全般]** セクションで **[構成のバックアップ]** をクリックしてブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。 既定では、コンテナーには geo 冗長ストレージがあります。 ストレージのレプリケーション タイプを変更するには、**[保存]** をクリックします。
+2. **[設定]**ブレードで縦向きのスライダーを使用して、**[管理]** セクションまでスクロールします。 **[バックアップ インフラストラクチャ]** をクリックしてブレードを開きます。 **[全般]** セクションで **[構成のバックアップ]** をクリックしてブレードを開きます。 **[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。 既定では、コンテナーには地理冗長ストレージがあります。 ストレージのレプリケーション タイプを変更するには、**[保存]** をクリックします。
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/full-blade.png)
+    ![バックアップ コンテナーの一覧](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
-     プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
+     プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き地理冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 [地理冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事をご覧ください。
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
@@ -180,8 +180,8 @@ Azure VM のバックアップで問題が発生する場合は、Azure VM エ�
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/virtual-machines-linux-agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 github から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 github から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/virtual-machines-linux-agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/virtual-machines-linux-update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 GitHub から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 [製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
