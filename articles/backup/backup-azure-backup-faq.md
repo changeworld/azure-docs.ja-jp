@@ -40,8 +40,8 @@ ms.lasthandoff: 03/14/2017
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>別のデータ センターにサーバーを登録する方法を教えてください。<br/>
 バックアップ データは登録されているコンテナーのデータセンターに送信されます。 データセンターを変更する最も簡単な方法は、エージェントをアンインストールしてから再インストールし、変更先のデータセンターに属している新しいコンテナーに登録する方法です。
 
-### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが&1; つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
-同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで&2; 番目、ストレージ サーバーで&3; 番目の暗号化パスフレーズを使用することができます。
+### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
+同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで&2; 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>キャッシュ フォルダーの最小サイズ要件を教えてください。 <br/>
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/14/2017
 残念ながら、Backup コンテナーの内容を Recovery Services コンテナーに移行することはできません。 この機能の追加に取り組んでいますが、現在は使用できません。
 
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Recovery Services コンテナーでサポートされるのはクラシック VM と Resource Manager ベースの VM のどちらですか。 <br/>
-Recovery Services コンテナーでは両方のモデルがサポートされています。  (クラシック ポータルで作成された) クラシック VM または (Azure Portal で作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
+Recovery Services コンテナーでは両方のモデルがサポートされています。  (クラシック ポータルで作成された) クラシック VM または (Azure ポータルで作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
 
 ### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>クラシック VM をバックアップ コンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。
 バックアップ コンテナーのクラシック VM の回復ポイントは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的に移行されません。 VM バックアップを移行するには、次の手順に従います。
@@ -73,7 +73,7 @@ Recovery Services コンテナーでは両方のモデルがサポートされ�
 Windows Server、System Center DPM、または Windows クライアントをバックアップするための最新のエージェントは、 [こちら](http://aka.ms/azurebackup_agent)からダウンロードできます。 仮想マシンをバックアップする場合は、VM エージェントを使用してください (適切な拡張機能が自動的にインストールされます)。 VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。
 
 ### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Azure Backup エージェントを構成するときに、コンテナー資格情報の入力が求められます。 コンテナー資格情報には有効期限がありますか。
-はい。コンテナー資格情報は 48 時間後に有効期限が切れます。 ファイルの有効期限が切れた場合は、Azure Portal にログインし、コンテナーからコンテナー資格情報ファイルをダウンロードしてください。
+はい。コンテナー資格情報は 48 時間後に有効期限が切れます。 ファイルの有効期限が切れた場合は、Azure ポータルにログインし、コンテナーからコンテナー資格情報ファイルをダウンロードしてください。
 
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。<br/>
 サーバーの名前を変更すると、現在構成されているすべてのバックアップが停止します。
@@ -181,7 +181,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>バックアップ ジョブをスケジュール設定できる時刻や回数に制限はありますか。<br/>
-はい。 Windows Server または Windows ワークステーションでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
+はい。 Windows Server または Windows ワークステーションでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
