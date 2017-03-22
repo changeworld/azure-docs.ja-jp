@@ -33,10 +33,10 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 > 無料試用版サブスクリプションは、制限およびクォータ引き上げの適用対象外です。 無料試用版をお持ちの場合、 [従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/) のサブスクリプションにアップグレードしてください。 詳細については、「[Azure 無料試用版を従量課金制にアップグレード](billing-upgrade-azure-subscription.md)」を参照してください。
 > 
 
-## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure リソース マネージャー
-複数の Azure リソースを&1; つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
+## <a name="limits-and-the-azure-resource-manager"></a>制限と Azure Resource Manager
+複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。 リソース グループを使用するとき、グローバルになった制限が Azure Resource Manager によりリージョン レベルでの管理対象になります。 Azure リソース グループの詳細については、「 [Azure Resource Manager の概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-次の制限では、Azure リソース マネージャーを使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が&2; つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
+次の制限では、Azure Resource Manager を使用する際の制限の相違点を反映するために新しい表が追加されました。 たとえば、**サブスクリプションの制限**の表と、**サブスクリプションの制限 - Azure Resource Manager**の表などがあります。 制限が 2 つのシナリオに適用される場合、制限は最初の表にのみ表示されます。 特に記載のない限り、制限はすべてのリージョンに適用されます。
 
 > [!NOTE]
 > Azure リソース グループ内のリソースのクォータは、サブスクリプションごとではなく、サブスクリプションのリージョンごとにアクセスできることに注意してください。また、サービス管理クォータも同様です。 コア クォータを例に説明します。 コア対応のクォータの増量をリクエストする場合、どのリージョンでいくつのコアを使用するかを決めてから、Azure リソース グループのコア クォータの数量と目的のリージョンをリクエストする必要があります。 したがって、西ヨーロッパで 30 のコアを使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 のコアをリクエストしてください。 この場合、他のリージョンのコア クォータは増量されません -- 西ヨーロッパでのみ 30 コア クォータが増量されます。
@@ -87,14 +87,14 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [サブスクリプション](#subscription-limits)
 * [Traffic Manager](#traffic-manager-limits)
 * [Virtual Machines](#virtual-machines-limits)
-* [仮想マシン スケール セット](#virtual-machine-scale-sets-limits)
+* [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>サブスクリプションの制限
 #### <a name="subscription-limits"></a>サブスクリプションの制限
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>サブスクリプションの制限 - Azure Resource Manager
-次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。 Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
+次の制限は、Azure Resource Manager と Azure リソース グループの使用時に適用されます。 Azure Resource Manager で変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
 
 Resource Manager 要求の処理制限については、[Throttling Resource Manager requests (Resource Manager 要求を調整する)](resource-manager-request-limits.md)をご覧ください。
 
@@ -104,15 +104,15 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 ### <a name="virtual-machines-limits"></a>Virtual Machines の制限
-#### <a name="virtual-machine-limits"></a>仮想マシンの制限
+#### <a name="virtual-machine-limits"></a>Virtual Machines の制限
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
-#### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines の制限 - Azure リソース マネージャー
-次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。 Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
+#### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines の制限 - Azure Resource Manager
+次の制限は、Azure Resource Manager と Azure リソース グループの使用時に適用されます。 Azure Resource Manager で変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-### <a name="virtual-machine-scale-sets-limits"></a>仮想マシン スケールセットの制限
+### <a name="virtual-machine-scale-sets-limits"></a>Virtual Machine Scale Sets の制限
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### <a name="networking-limits"></a>ネットワークの制限
@@ -130,10 +130,10 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 #### <a name="dns-limits"></a>DNS の制限
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-### <a name="storage-limits"></a>ストレージの制限
-ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)」を参照してください。
+### <a name="storage-limits"></a>Storage の制限
+Storage アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/storage-scalability-targets.md)」を参照してください。
 <!--like # storage accts --> 
-#### <a name="storage-service-limits"></a>ストレージ サービスの制限
+#### <a name="storage-service-limits"></a>Storage サービスの制限
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
@@ -275,8 +275,8 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 ## <a name="see-also"></a>関連項目
 [Understanding Azure Limits and Increases (Azure の制限と増設について)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
-[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Azure Virtual Machines および Cloud Services のサイズ](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
+[Cloud Services のサイズ](cloud-services/cloud-services-sizes-specs.md)
 
 
