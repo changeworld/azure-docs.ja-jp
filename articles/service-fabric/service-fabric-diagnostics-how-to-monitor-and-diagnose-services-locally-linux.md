@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: a8f077168dbc8660625371a2b988926c69491337
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -36,15 +36,15 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="debugging-service-fabric-java-applications"></a>Service Fabric の Java アプリケーションのデバッグ
 
-Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。  以降では、 `java.util.logging` フレームワークを構成する方法について説明します。 
- 
-java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。 
+Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。  以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
 
-次のコード スニペットに構成例を示します。 
+java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。
 
-```java 
+次のコード スニペットに構成例を示します。
+
+```java
 handlers = java.util.logging.FileHandler
- 
+
 java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
@@ -54,13 +54,17 @@ java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 
 `app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.propertes` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
 
-```sh 
+```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
- 
- 
-この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 **%u** と **%g** を指定することにより、mysfapp0.log や mysfapp1.log などのファイル名でファイルを作成できます。 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
- 
+
+
+この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 このケースでは、ログ ファイルの名前は mysfapp%u.%g.log になります。
+* **%u** は同時 Java プロセス間の競合を解決する一意の番号です。
+* **%g** はログのローテーションを区別する世代番号です。
+
+ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
+
 詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。  
 
 
@@ -78,7 +82,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 カスタム EventListener を使用して、サービス イベントをリッスンし、それらを適切にトレース ファイルにリダイレクトすることができます。 次のコード スニペットは、EventSource とカスタム EventListener を使用したログ記録の実装例を示しています。
 
 
-```c#
+```csharp
 
  public class ServiceEventSource : EventSource
  {
@@ -93,7 +97,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
                 this.Message(finalMessage);
             }
         }
-        
+
         // TBD: Need to add method for sample event.
 
 }
@@ -101,7 +105,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 ```
 
 
-```
+```csharp
    internal class ServiceEventListener : EventListener
    {
 
@@ -112,7 +116,7 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
             using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        {  
+        { 
                  // report all event information               
           Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
                 if (eventData.Message != null)              
@@ -130,11 +134,11 @@ Linux で CoreCLR アプリケーションをトレースするときには、�
 
 上記のスニペットは、`/tmp/MyServiceLog.txt` 内のファイルにログを出力します。 このファイル名は、適切に更新する必要があります。 ログをコンソールにリダイレクトする場合は、カスタマイズされた EventListener クラスで次のスニペットを使用します。
 
-```
+```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-「[C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)」(C# サンプル) のサンプルでは、EventSource とカスタム EventListener を使用してイベントをファイルにログ記録しています。 
+「[C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)」(C# サンプル) のサンプルでは、EventSource とカスタム EventListener を使用してイベントをファイルにログ記録しています。
 
 
 

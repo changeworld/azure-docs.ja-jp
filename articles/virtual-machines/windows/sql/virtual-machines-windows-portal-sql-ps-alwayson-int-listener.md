@@ -1,5 +1,5 @@
 ---
-title: "AlwaysOn 可用性グループ リスナーの構成 – Microsoft Azure"
+title: "AlwaysOn 可用性グループ リスナーの構成 – Microsoft Azure | Microsoft Docs"
 description: "1 つ以上の IP アドレスを持つ内部ロード バランサーを使用して、Azure Resouce Manager モデルで可用性グループ リスナーを構成します。"
 services: virtual-machines
 documentationcenter: na
@@ -15,8 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 12/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: dd6eb530f715d98c39ab8730ee33922887d5f9cc
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1430807db46326779866f57bca3982e5f9448951
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -98,7 +99,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="a-nameadd-ipa-example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> サンプル スクリプト: PowerShell を使用して既存のロード バランサーに IP アドレスを追加する
+## <a name="Add-IP"></a> サンプル スクリプト: PowerShell を使用して既存のロード バランサーに IP アドレスを追加する
 複数の可用性グループを使用するには、ロード バランサーに追加の IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、およびフロント ポートが必要です。
 
 フロントエンド ポートは、アプリケーションが SQL Server インスタンスに接続するために使用するポートです。 複数の異なる可用性グループの IP アドレスで同じフロントエンド ポートを使用できます。
@@ -300,9 +301,4 @@ Azure 仮想マシン用の内部ロード バランサーを作成するには�
 * [New-AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) は、ロード バランサー用のバックエンド アドレス プールを作成します。 
 * [New-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) は、ロード バランサー用のプローブの構成を作成します。
 * [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) は、Azure リソース グループからロード バランサーを削除します。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

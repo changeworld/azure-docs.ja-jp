@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 788a1b9ef6a470c8f696228fd8fe51052c4f7007
-ms.openlocfilehash: 15c5a8be1097253e88af3a9f36b9067f0e2fbba3
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: d6292567bbf7afd71b21be3b236537c609c63644
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="multi-master-database-architectures-with-azure-documentdb"></a>Azure DocumentDB を使用したマルチマスター データベース アーキテクチャ
+# <a name="multi-master-globally-replicated-database-architectures-with-documentdb"></a>DocumentDB を使用したグローバルにレプリケートされたマルチマスター データベース アーキテクチャ
 DocumentDB では、ワークロードであらゆる場所での待機時間の短いアクセスによって複数のリージョンにデータを配布できる、ターンキー [グローバル レプリケーション](documentdb-distribute-data-globally.md)をサポートしています。 このモデルは、1 つの地理的リージョンにライターが存在し、他の複数の (読み取り) リージョンにグローバルに分散したリーダーが存在する発行者/コンシューマー ワークロードに一般に使用されます。 
 
 DocumentDB のグローバル レプリケーションのサポートを使用して、ライターとリーダーがグローバルに分散するアプリケーションを構築することもできます。 このドキュメントでは、Azure DocumentDB を使用して、分散したライターのローカル書き込みアクセスとローカル読み取りアクセスを実現するパターンの概要を説明します。
 
-## <a name="a-idexamplescenarioacontent-publishing---an-example-scenario"></a><a id="ExampleScenario"></a>コンテンツ発行 - シナリオ例
+## <a id="ExampleScenario"></a>コンテンツ発行 - シナリオ例
 DocumentDB でグローバルに分散したマルチリージョン/マルチマスターの読み取り/書き込みパターンを使用する方法を説明するために、実際のシナリオを見てみましょう。 DocumentDB 上に構築されたコンテンツ発行プラットフォームがあるとします。 発行者とコンシューマーの両方の優れたユーザー エクスペリエンスを実現するために、このプラットフォームが満たす必要のある要件がいくつかあります。
 
 * 作成者と購読者はどちらも世界中に分散しています。 
@@ -39,7 +41,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
 
 パーティション分割とパーティション キーの詳細については、「[Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」をご覧ください。
 
-## <a name="a-idmodelingnotificationsamodeling-notifications"></a><a id="ModelingNotifications"></a>通知のモデル化
+## <a id="ModelingNotifications"></a>通知のモデル化
 通知はユーザーに固有のデータ フィードです。 そのため、通知ドキュメントのアクセス パターンは、常に単一ユーザーのコンテキストに存在します。 たとえば、"ユーザーに通知を送信" したり、"特定のユーザーのすべての通知を取得" したりすると考えられます。 そのため、このタイプのパーティション キーの最適な選択肢は `UserId` になります。
 
     class Notification 
@@ -66,7 +68,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
         public string ArticleId { get; set; } 
     }
 
-## <a name="a-idmodelingsubscriptionsamodeling-subscriptions"></a><a id="ModelingSubscriptions">サブスクリプションのモデル化</a>
+## <a id="ModelingSubscriptions">サブスクリプションのモデル化</a>
 サブスクリプションは、興味がある記事の特定のカテゴリや特定の発行者などのさまざまな条件に合わせて作成できます。 したがって、`SubscriptionFilter` がパーティション キーに適しています。
 
     class Subscriptions 
@@ -89,7 +91,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
         } 
     }
 
-## <a name="a-idmodelingarticlesamodeling-articles"></a><a id="ModelingArticles">記事のモデル化</a>
+## <a id="ModelingArticles">記事のモデル化</a>
 通知によって記事が特定されたら、通常、以降のクエリは `ArticleId` に基づきます。 `ArticleID` をパーティション キーとして選択すると、DocumentDB コレクション内に記事を格納するための最適な配布が実現されます。 
 
     class Article 
@@ -118,7 +120,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
         //... 
     }
 
-## <a name="a-idmodelingreviewsamodeling-reviews"></a><a id="ModelingReviews">レビューのモデル化</a>
+## <a id="ModelingReviews">レビューのモデル化</a>
 記事と同様に、レビューのほとんどの書き込みと読み取りは記事のコンテキストで実行されます。 `ArticleId` をパーティション キーとして選択すると、最適に配布され、記事に関連付けられたレビューに効率的にアクセスできます。 
 
     class Review 
@@ -144,7 +146,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
         public int Rating { get; set; } }
     }
 
-## <a name="a-iddataaccessmethodsadata-access-layer-methods"></a><a id="DataAccessMethods"></a>データ アクセス層のメソッド
+## <a id="DataAccessMethods"></a>データ アクセス層のメソッド
 次に、実装する必要がある主なデータ アクセス メソッドを見てみましょう。 `ContentPublishDatabase` に必要なメソッドを次に示します。
 
     class ContentPublishDatabase 
@@ -160,7 +162,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
         public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
     }
 
-## <a name="a-idarchitectureadocumentdb-account-configuration"></a><a id="Architecture"></a>DocumentDB アカウントの構成
+## <a id="Architecture"></a>DocumentDB アカウントの構成
 ローカルの読み取りと書き込みを保証するには、パーティション キーだけでなく、リージョンへの地理的なアクセス パターンにも基づいてデータをパーティション分割する必要があります。 このモデルは、リージョンごとに geo レプリケートされた Azure DocumentDB データベース アカウントがあることに依存します。 たとえば、2 つのリージョンでのマルチリージョンの書き込みのセットアップは次のとおりです。
 
 | アカウント名 | 書き込みリージョン | 読み取りリージョン |
@@ -200,7 +202,7 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
 | `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
 
-## <a name="a-iddataaccessimplementationadata-access-layer-implementation"></a><a id="DataAccessImplementation"></a>データ アクセス層の実装
+## <a id="DataAccessImplementation"></a>データ アクセス層の実装
 次に、2 つの書き込み可能なリージョンでのアプリケーションのデータ アクセス層 (DAL) の実装を見てみましょう。 DAL では次の手順を実装する必要があります。
 
 * アカウントごとに `DocumentClient` の複数のインスタンスを作成します。 2 つのリージョンで、各 DAL インスタンスは `writeClient` と `readClient` を&1; つずつ持ちます。 
@@ -309,15 +311,10 @@ DocumentDB でグローバルに分散したマルチリージョン/マルチ�
 
 そのため、適切なパーティション キーと静的アカウントベースのパーティション分割を選択すれば、Azure DocumentDB を使用したマルチリージョンのローカル書き込み/読み取りを実現できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="NextSteps"></a>次のステップ
+## <a id="NextSteps"></a>次のステップ
 この記事では、サンプル シナリオとしてコンテンツ発行を使用して、グローバルに分散するマルチリージョンの読み取り/書き込みパターンを DocumentDB で使用する方法について説明しました。
 
 * DocumentDB による[グローバル配布](documentdb-distribute-data-globally.md)のサポートのしくみについて確認する
 * [Azure DocumentDB の自動および手動フェールオーバー](documentdb-regional-failovers.md)について確認する
 * [DocumentDB でのグローバルな整合性](documentdb-consistency-levels.md)について確認する
 * [Azure DocumentDB SDK](documentdb-developing-with-multiple-regions.md) を使用して複数のリージョンで開発する
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 5100e6dbd74095f419c1017a3784fac547bf200b
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -76,8 +77,3 @@ Azure Table Storage に格納されたメッセージを読み取るには、次
 [run-the-azure-blink-sample-application-on-intel-edison]: iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md
 [gulp run]: media/iot-hub-intel-edison-lessons/lesson3/gulp_read_message.png
 [receive-cloud-to-device-messages]: iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

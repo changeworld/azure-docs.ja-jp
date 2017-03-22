@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 03/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: e32d21ca410d4107f68f8b72353ca400a26c4523
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: db01dd7ff7590c6cb43b5f8bc39674f585160856
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -37,7 +38,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
-* Visual Studio 2012/2013/2015
+* Visual Studio 2012、2013、2015、または 2017
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 
@@ -47,30 +48,17 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 2. 新しいプロジェクトの場合は、次の値を入力または選択します。
    
-    <table>
-    <tr>
-    <th>プロパティ</th>
-    <th>値</th>
-    </tr>
-    <tr>
-    <th>カテゴリ</th>
-    <th>テンプレート/Visual C#/Windows</th>
-    </tr>
-    <tr>
-    <th>テンプレート</th>
-    <th>コンソール アプリケーション</th>
-    </tr>
-    <tr>
-    <th>名前</th>
-    <th>SubmitPigJob</th>
-    </tr>
-    </table>
+   | プロパティ | 値 |
+   | ------ | ------ |
+   | カテゴリ | テンプレート/Visual C#/Windows |
+   | テンプレート | コンソール アプリケーション |
+   | 名前 | SubmitPigJob |
 
 3. **[OK]** をクリックしてプロジェクトを作成します。
 
 4. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
 
-5. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
+5. .NET SDK パッケージをインストールするには、次のコマンドを使用します。
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
@@ -129,9 +117,9 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
     }
     ```
     
-7. **F5** キーを押してアプリケーションを起動します。
+7. アプリケーションを起動するには、**F5** キーを押します。
 
-8. **ENTER** キーを押してアプリケーションを閉じます。
+8. アプリケーションを終了するには、**Enter** キーを押します。
 
 ## <a name="summary"></a>概要
 
@@ -139,19 +127,12 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight での Pig に関する全般的な情報
+HDInsight での Pig について詳しくは、「[HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-
-HDInsight での Hadoop のその他の使用方法に関する情報
+HDInsight での Hadoop の使用について詳しくは、次のドキュメントを参照してください。
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

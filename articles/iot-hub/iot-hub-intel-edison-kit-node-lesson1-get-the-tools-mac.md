@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 7d8c4ef5cf055930178408ee9751058392a2f894
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -88,9 +89,4 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 [windows]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md
 [ubuntu]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md
 [macos]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

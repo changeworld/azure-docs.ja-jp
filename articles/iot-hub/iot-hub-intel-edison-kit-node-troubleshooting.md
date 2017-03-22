@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: d77ee0be35a3f4b38c50cf9322124e4dfbba6ddc
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -153,8 +154,3 @@ iothub-explorer help
 <!-- Images and links -->
 
 [sample-repository]: https://github.com/Azure-Samples/iot-hub-node-edison-getting-started
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
 ms.openlocfilehash: 7f2a3c4bf8fda9dd235986be8b0ceaa8eb8313e0
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -49,10 +50,5 @@ ms.openlocfilehash: 7f2a3c4bf8fda9dd235986be8b0ceaa8eb8313e0
 **その他のリソース**
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md) 
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

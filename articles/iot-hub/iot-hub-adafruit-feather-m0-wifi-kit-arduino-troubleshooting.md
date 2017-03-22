@@ -13,11 +13,12 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 448dc0370014ad295ed820d796f7af2eb5fe698e
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -107,8 +108,3 @@ iothub-explorer help
 <!-- Images and links -->
 
 [sample-repository]: https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

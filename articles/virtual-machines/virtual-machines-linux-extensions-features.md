@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2016
+ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 31c6cb19827279995502c68ed6d86d23ef9eacd0
-ms.openlocfilehash: 5d98f086b4ccee300b18c8271f940272f618e93e
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: 5d98f086b4ccee300b18c8271f940272f618e93e
 
 Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使用して、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、および Azure Portal を使用して実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
 
-このドキュメントでは、VM 拡張機能の概要と Azure VM 拡張機能を使用する場合の前提条件を示し、VM 拡張機能を検出、管理、および削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、このドキュメントでは一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントを参照してください。
+このドキュメントでは、VM 拡張機能の概要と Azure VM 拡張機能を使用する場合の前提条件を示し、VM 拡張機能を検出、管理、および削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、このドキュメントでは一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントをご覧ください。
 
 ## <a name="use-cases-and-samples"></a>ユース ケースとサンプル
 
@@ -36,7 +37,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 - Datadog 拡張機能を使用して Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 - Docker VM 拡張機能を使用して Azure 仮想マシンで Docker ホストを構成します。 詳細については、[Docker VM 拡張機能](virtual-machines-linux-dockerextension.md)に関するページを参照してください。
 
-プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の Bash スクリプトを使用できます。 これは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](virtual-machines-linux-extensions-customscript.md)に関するページを参照してください。
+プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](virtual-machines-linux-extensions-customscript.md)に関するページを参照してください。
 
 VM 拡張機能がエンド ツー エンドのアプリケーションのデプロイで使用される例については、「[Azure Virtual Machines へのアプリケーションのデプロイを自動化する](virtual-machines-linux-dotnet-core-1-landing.md)」を参照してください。
 
@@ -60,7 +61,7 @@ azure vm extension-image list westus
 
 ## <a name="run-vm-extensions"></a>VM 拡張機能の実行
 
-Azure 仮想マシン拡張機能は既存の仮想マシンで実行できます。これは、構成を変更したり、デプロイ済みの VM で接続を回復したりする必要がある場合に便利です。 また、VM 拡張機能を Azure Resource Manager テンプレートのデプロイにバンドルすることもできます。 Resource Manager テンプレートで拡張機能を使用すると、Azure 仮想マシンをデプロイし、デプロイ後の操作を行わずに構成できます。
+Azure 仮想マシン拡張機能は既存の仮想マシンで実行できます。これは、構成の変更や、デプロイ済みの VM での接続の回復が必要な場合に便利です。 また、VM 拡張機能を Azure Resource Manager テンプレートのデプロイにバンドルすることもできます。 Resource Manager テンプレートで拡張機能を使用すると、Azure 仮想マシンをデプロイし、デプロイ後の操作を行わずに構成できます。
 
 既存の仮想マシンに対して拡張機能を実行するには、次の方法を使用します。
 
@@ -74,7 +75,7 @@ azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensi
   --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 
-出力は次のテキストのようになります。
+このスクリプトでは、次のような出力が表示されます。
 
 ```azurecli
 info:    Executing command vm extension set
@@ -85,15 +86,15 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-VM 拡張機能は、Azure Portal から既存の仮想マシンに適用できます。 そのためには、仮想マシンを選択し、**[拡張機能]** を選択して **[追加]** をクリックします。 これで、使用可能な拡張機能の一覧が表示されます。 必要な拡張機能を選択し、ウィザードの指示に従います。
+VM 拡張機能は、Azure Portal から既存の仮想マシンに適用できます。 そのためには、仮想マシンを選択し、**[拡張機能]** を選択して **[追加]** をクリックします。 利用可能な拡張機能の一覧から必要な拡張機能を選択し、ウィザードの手順に従います。
 
 次の図は、Azure Portal からの Linux カスタム スクリプト拡張機能のインストールを示しています。
 
-![カスタム スクリプト拡張機能](./media/virtual-machines-linux-extensions-features/script-extension-linux.jpg)
+![カスタム スクリプト拡張機能のインストール](./media/virtual-machines-linux-extensions-features/installscriptextensionlinux.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の仮想マシンと Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は Resource Manager テンプレートからの抜粋です。 このテンプレートは負荷分散された一連の仮想マシンと Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールします。 VM 拡張機能はソフトウェアのインストールに対応します。
 
 詳細については、[Resource Manager テンプレート](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)全体を参照してください。
 
@@ -222,7 +223,7 @@ info:    vm extension get command OK         :
 
 ### <a name="rerun-a-vm-extension"></a>VM 拡張機能の再実行
 
-仮想マシン拡張機能の再実行が必要な場合があります。 そのためには、拡張機能を削除し、任意の実行方法を使用して拡張機能を再実行します。 拡張機能を削除するには、Azure CLI を使用して次のコマンドを実行します。 次のコマンドでは、パラメーター名を独自の値に置き換えてください。
+仮想マシン拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、Azure CLI を使用して次のコマンドを実行します。 次のコマンドでは、パラメーター名を独自の値に置き換えてください。
 
 ```azurecli
 azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
@@ -243,9 +244,4 @@ Azure Portal で次の手順を使用して拡張機能を削除できます。
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します。 |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/8/2016
+ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
-ms.openlocfilehash: bb5065d0b541c7f8a51cd4c508b2d5455cc82957
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 2e086311a509432454a7b5e188591605d27c6999
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Azure の Linux VM へのポートとエンドポイントの開放
+# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Azure CLI 使用した Linux VM へのポートとエンドポイントの開放
 サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 2.0 を使用して VM へのポートを開く方法を説明します。 これらの手順は、[Azure CLI 1.0](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 

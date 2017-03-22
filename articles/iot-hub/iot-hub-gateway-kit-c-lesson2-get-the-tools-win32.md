@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 4a854222be9aaf6733f1c256dd75195927299099
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -124,9 +125,4 @@ Visual Studio Code を[ダウンロード](https://code.visualstudio.com/docs/se
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ハブを作成してデバイスを登録する](iot-hub-gateway-kit-c-lesson2-register-device.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

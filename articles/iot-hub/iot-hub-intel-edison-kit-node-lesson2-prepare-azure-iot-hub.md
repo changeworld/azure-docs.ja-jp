@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 384724ccf78dc08b215ef602ff4366dd54801ab5
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -103,8 +104,3 @@ IoT ハブを作成し、デバイス ID を使用して IoT ハブに Edison �
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
 [process-and-store-iot-hub-messages]: iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

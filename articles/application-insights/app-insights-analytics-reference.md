@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2017
+ms.date: 03/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
-ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 651918ba5d1bad4fcec78123a0b09a48b1223906
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -32,9 +32,9 @@ ms.lasthandoff: 02/21/2017
  
 
 ## <a name="index"></a>Index
-**Let** [let](#let-clause)
+**Let** [let](#let-clause) | [materialize](#materialize) 
 
-**クエリと演算子** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
+**クエリと演算子** [as](#as-operator) | [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [getschema](#getschema-operator) | [join](#join-operator) | [limit](#limit-operator) | [make-series](#make-series-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [table](#table-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **集計** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -108,17 +108,74 @@ requests
 | summarize count() by client_City;
 ```
 
-自己結合:
+### <a name="materialize"></a>materialize
 
-    let Recent = events | where timestamp > ago(7d);
-    Recent | where name contains "session_started" 
-    | project start = timestamp, session_id
-    | join (Recent 
-        | where name contains "session_ended" 
-        | project stop = timestamp, session_id)
-      on session_id
-    | extend duration = stop - start 
+let 句の結果がダウンストリームで&2; 回以上使用される場合のパフォーマンスを改善するには、materialize() を使用します。 materialize() は、クエリの実行時に表形式の let 句の結果をキャッシュして、同じクエリが&2; 回以上実行されないようにします。
 
+**構文**
+
+    materialize(expression)
+
+**引数**
+
+* `expresion`: クエリの実行中に評価およびキャッシュされる表形式の式。
+
+**ヒント**
+
+* materialize は、join/union のオペランドに&1; 回実行できる共通のサブクエリがある場合に使用します (下の例を参照)。
+* また、join/union の分岐が必要な場合にも役立ちます。
+* materialize を使用できるのは、let ステートメントでキャッシュ結果に名前を付けている場合のみです。
+* materialize には、5 GB のキャッシュ サイズの制限があります。 この制限はクラスター ノードごとに適用され、すべてのクエリに共通です。
+
+**例: self-join**
+
+
+```AIQL
+let totalPagesPerDay = pageViews
+| summarize by name, Day = startofday(timestamp)
+| summarize count() by Day;
+let materializedScope = pageViews
+| summarize by name, Day = startofday(timestamp);
+let cachedResult = materialize(materializedScope);
+cachedResult
+| project name, Day1 = Day
+| join kind = inner
+(
+    cachedResult
+    | project name, Day2 = Day
+)
+on name
+| where Day2 > Day1
+| summarize count() by Day1, Day2
+| join kind = inner
+    totalPagesPerDay
+on $left.Day1 == $right.Day
+| project Day1, Day2, Percentage = count_*100.0/count_1
+```
+
+キャッシュされていないバージョンでは、結果 `scope` が&2; 回使用されます。
+
+```AIQL
+let totalPagesPerDay = pageViews
+| summarize by name, Day = startofday(timestamp)
+| summarize count() by Day;
+let scope = pageViews
+| summarize by name, Day = startofday(timestamp);
+scope      // First use of this table.
+| project name, Day1 = Day
+| join kind = inner
+(
+    scope  // Second use can cause evaluation twice.
+    | project name, Day2 = Day
+)
+on name
+| where Day2 > Day1
+| summarize count() by Day1, Day2
+| join kind = inner
+    totalPagesPerDay
+on $left.Day1 == $right.Day
+| project Day1, Day2, Percentage = count_*100.0/count_1
+```
 
 ## <a name="queries-and-operators"></a>クエリと演算子
 テレメトリに対するクエリは、ソース ストリームの参照と、それに続くフィルターのパイプラインで構成されます。 次に例を示します。
@@ -149,6 +206,30 @@ requests // The request table starts this pipeline.
 > `T` が使用されています。
 > 
 > 
+
+### <a name="as-operator"></a>as 演算子
+
+表形式の入力式に名前を一時的にバインドします。
+
+**構文**
+
+    T | as name
+
+**引数**
+
+* *name:* テーブルの一時的な名前
+
+**メモ**
+
+* この名前を後から部分式で使用する場合は、*as* の代わりに [let](#let-clause) を使用します。
+* [union](#union-operator)、[find](#find-operator)、または [search](#search-operator) の結果と同じになるようにテーブルの名前を指定するには、*as* を使用します。
+
+**例**
+
+```AIQL
+range x from 1 to 10 step 1 | as T1
+| union withsource=TableName (requests | take 10 | as T2)
+```
 
 ### <a name="count-operator"></a>count 演算子
 `count` 演算子は、入力レコード セットのレコード (行) の数を返します。
@@ -464,7 +545,7 @@ traces
 
 出力テーブルに既定で含まれるものを次に示します。
 
-* `source_` - 各行のソース テーブルのインジケーター。
+* `source_` - 各行のソース テーブルのインジケーター。 この列に表示される名前を指定する場合は、各テーブル式の最後で [as](#as-operator) を使用します。
 * 述語で明示的に示されている列
 * すべての入力テーブルに共通の空ではない列。
 * `pack_` - 他の列からのデータを含むプロパティ バッグ。
@@ -505,7 +586,19 @@ UK からのすべての要求と例外を見つけます。ただし、可用�
 * 時間ベースの用語を `where` 述語に追加します。
 * クエリをインラインに記述するのではなく、`let` 句を使用します。
 
+### <a name="getschema-operator"></a>getschema 演算子
 
+   T | getschema
+   
+入力テーブルの列名とタイプを表示するテーブルを生成します。
+
+```AIQL
+requests
+| project appId, appName, customDimensions, duration, iKey, itemCount, success, timestamp 
+| getschema 
+```
+
+![getschema の結果](./media/app-insights-analytics-reference/getschema.png)
 
 ### <a name="join-operator"></a>join 演算子
     Table1 | join (Table2) on CommonColumn
@@ -593,6 +686,37 @@ UK からのすべての要求と例外を見つけます。ただし、可用�
 `Take` は、インタラクティブに操作しているときに結果のサンプルを見るうえで、シンプルかつ効率的な手段です。 ただし、特定の行を生成したり、特定の順序で生成したりすることはできません。
 
 `take`を使用していなくても、クライアントに返される行の数には暗黙的な制限があります。 この制限を引き上げるには、 `notruncation` クライアント要求オプションを使います。
+
+### <a name="make-series-operator"></a>make-series 演算子
+
+集計を実行します。 [summarize](#summarize-operator) とは異なり、出力はグループごとに&1; 行になります。 結果の列では、各グループの値が配列にまとめられます。 
+
+**構文**
+
+    T | 
+    make-series [Column =] Aggregation default = DefaultValue [, ...] 
+    on AxisColumn in range(start, stop, step) 
+    by [Column =] GroupExpression [, ...]
+
+
+**引数**
+
+* *Column:* 結果列の省略可能な名前。 既定値は式から派生した名前です。
+* *DefaultValue:* AxisColumn と GroupExpression の特定の値を持つ行がない場合、結果では、配列の対応する要素に DefaultValue が割り当てられます。 
+* *Aggregation:* [集計関数](#aggregations)を使用する数値式。 
+* *AxisColumn:* 系列が順序付けられている列。 タイムラインと見なすことができますが、任意の数値タイプを指定できます。
+*start、stop、step:* すべての行について、AxisColumn の値のリストを定義します。 その他すべての結果集計列には、同じ長さの配列が含まれます。 
+* *GroupExpression:* 列に対する式です。個別の値のセットを示します。 GroupExpression の各値が&1; 行で出力されます。 通常は、限られた値のセットが既に指定されている列名です。 
+
+**ヒント**
+
+結果の配列は、対応する集計操作と同じ方法で Analytics のグラフに表示されます。
+
+**例**
+
+requests | make-series sum(itemCount) default=0, avg(duration) default=0 on timestamp in range (ago(7d), now(), 1d) by client_City
+
+![make-series の結果](./media/app-insights-analytics-reference/make-series.png)
 
 ### <a name="mvexpand-operator"></a>mvexpand 演算子
     T | mvexpand listColumn 
@@ -888,7 +1012,8 @@ range timestamp from ago(4h) to now() step 1m
 **引数**
 
 * *ColumnName:* 調べる列。 文字列型である必要があります。
-* *Threshold:* 範囲 {0..1} 内の値。 既定値は 0.001 です。 入力のサイズが大きい場合は、しきい値を小さくする必要があります。 
+* <seg>
+  *Threshold:* 範囲 {0..1} 内の値。</seg> 既定値は 0.001 です。 入力のサイズが大きい場合は、しきい値を小さくする必要があります。 
 
 **戻り値**
 
@@ -961,6 +1086,45 @@ summarize 演算がクエリの制限を超えないことがわかっている�
 let sampleops = toscalar(requests | sample-distinct 10 of OperationName);
 requests | where OperationName in (sampleops) | summarize total=count() by OperationName
 ```
+### <a name="search-operator"></a>search 演算子
+
+複数のテーブルと列内の文字列を検索します。
+
+**構文**
+
+    search [kind=case_sensitive] [in (TableName, ...)] SearchToken
+
+    T | search [kind=case_sensitive] SearchToken
+
+    search [kind=case_sensitive] [in (TableName, ...)] SearchPredicate
+
+    T | search [kind=case_sensitive] SearchPredicate
+
+任意のテーブルの任意の列で、指定されたトークン文字列の出現箇所を検索します。
+ 
+* *TableName:* グローバルに (要求、例外など)、または [let 句](#let-clause)によって定義されているテーブルの名前。 r* などのワイルドカードを使用できます。
+* *SearchToken:* トークン文字列。単語全体と一致する必要があります。 末尾にワイルドカードを使用できます。 "Amster*" は "Amsterdam" に一致しますが、"Amster" には一致しません。
+* *SearchPredicate:* テーブル内の列に対するブール式。 列名で "*" をワイルドカードとして使用できます。
+
+**例**
+
+```AIQL
+search "Amster*"  //All columns, all tables
+
+search name has "home"  // one column
+
+search * has "home"     // all columns
+
+search in (requests, exceptions) "Amster*"  // two tables
+
+requests | search "Amster*"
+
+requests | search name has "home"
+
+```
+
+
+
 
 ### <a name="sort-operator"></a>sort 演算子
     T | sort by country asc, price desc
@@ -1027,6 +1191,32 @@ Traces
 > [!NOTE]
 > 集計式とグループ化式の両方に任意の式を指定できますが、単純な列名を使用するか、 `bin()` を数値列に適用する方がより効率的です。
 
+### <a name="table-operator"></a>table 演算子
+
+    table('pageViews')
+
+テーブルの名前を引数の文字列で指定します。
+
+**構文**
+
+    table(tableName)
+
+**引数**
+
+* *tableName:* 文字列。 テーブルの名前として、静的な値か let 句の結果のいずれかを指定できます。
+
+**例**
+
+    table('requests');
+
+
+    let size = (tableName: string) {
+        table(tableName) | summarize sum(itemCount)
+    };
+    size('pageViews');
+
+
+
 ### <a name="take-operator"></a>take 演算子
 [limit](#limit-operator)
 
@@ -1089,7 +1279,7 @@ Traces
 * `kind`: 
   * `inner` - 結果には、すべての入力テーブルに共通する列のサブセットが含まれます。
   * `outer` - 結果には、入力のいずれかに存在するすべての列が含まれます。 入力行で定義されていなかったセルは `null`に設定されます。
-* `withsource=`*ColumnName:* これを指定した場合は、各行の基になっているソース テーブルを示す値が格納された列 (名前は *ColumnName*) が出力に含まれます。
+* `withsource=`*ColumnName:* これを指定した場合は、各行の基になっているソース テーブルを示す値が格納された列 (名前は *ColumnName*) が出力に含まれます。 この列に表示される名前を指定する場合は、各テーブル式の最後で [as](#as-operator) を使用します。
 
 **戻り値**
 
@@ -1097,38 +1287,28 @@ Traces
 
 行の順序は保証されていません。
 
-**例**
-
-名前が "tt" から始まるすべてのテーブルの和集合:
-
-```AIQL
-
-    let ttrr = requests | where timestamp > ago(1h);
-    let ttee = exceptions | where timestamp > ago(1h);
-    union tt* | count
-```
 
 **例**
 
-過去&1; 日で `exceptions` イベントまたは `traces` イベントを発生させた個別のユーザーの数。 結果の "SourceTable" 列は "Query" または "Command" を指します。
+過去 12 時間で `exceptions` イベントまたは `traces` イベントを発生させた個別のユーザーの数。 結果の "SourceTable" 列は "exceptions" または "traces" を指します。
 
 ```AIQL
-
-    union withsource=SourceTable kind=outer Query, Command
-    | where Timestamp > ago(1d)
-    | summarize dcount(UserId)
+    
+    union withsource=SourceTable kind=outer exceptions, traces
+    | where timestamp > ago(12h)
+    | summarize dcount(user_Id) by SourceTable
 ```
 
 より効率的なこのバージョンでも同じ結果が生成されます。 和集合を作成する前に各テーブルをフィルター処理します。
 
 ```AIQL
-
     exceptions
-    | where Timestamp > ago(12h)
-    | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(12h))
-    | summarize dcount(UserId)
+    | where timestamp > ago(24h) | as exceptions
+    | union withsource=SourceTable kind=outer (requests | where timestamp > ago(12h) | as traces)
+    | summarize dcount(user_Id) by SourceTable 
 ```
+
+ソース列に表示する名前を指定するには、[as](#as-operator) を使用します。
 
 #### <a name="forcing-an-order-of-results"></a>結果の順序を強制する
 

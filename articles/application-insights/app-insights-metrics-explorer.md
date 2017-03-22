@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
-ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ee759149df038ac08f0d5987c3577454a81999db
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/08/2017
 
 ![](./media/app-insights-metrics-explorer/01-overview.png)
 
-Application Insights ポータルでは、あらゆる場所でメトリック グラフが使用されます。 多くの場合、これらはカスタマイズ可能で、ブレードには複数のグラフを追加できます。 概要ブレードから順番にクリックして、 ("サーバー応答" などのタイトルが付いた) より詳細なグラフに進んだり、**[メトリックス エクスプローラー]** をクリックして新しいブレードを開き、カスタム グラフを作成したりすることもできます。
+Application Insights ポータルでは、あらゆる場所でメトリック グラフが使用されます。 多くの場合、これらはカスタマイズ可能で、ブレードには複数のグラフを追加できます。 概要ブレードから順番にクリックして、 ("サーバー" などのタイトルが付いた) より詳細なグラフに進んだり、**[メトリックス エクスプローラー]** をクリックして新しいブレードを開き、カスタム グラフを作成したりすることもできます。
 
 ## <a name="time-range"></a>時間範囲
 任意のブレードのグラフまたはグリッドで使用される時間範囲を変更できます。
@@ -175,16 +175,6 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 [アラートの詳細についてはこちらをご覧ください][alerts]。
 
-## <a name="export-to-excel"></a>Excel へのエクスポート
-メトリックス エクスプローラーに表示されるメトリック データを Excel ファイルにエクスポートできます。 ポータルに示すように、エクスポートされたデータには、すべてのグラフとテーブルからのデータが含まれています。
-
-![メトリックス エクスプローラーで、[アラート ルール]、[アラートの追加] の順に選択します](./media/app-insights-metrics-explorer/31-export.png)
-
-各グラフやテーブルのデータが Excel ファイルの別のワークシートにエクスポートされます。
-
-表示されている内容がエクスポートされます。 エクスポートするデータの範囲を変更する場合は、時間の範囲またはフィルターを変更します。 テーブルの場合で、 **[さらに読み込む]** が表示されている場合は、それをクリックしてから [エクスポート] をクリックすると、より多くのデータをエクスポートできます。
-
-*現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処しています。*
 
 ## <a name="continuous-export"></a>連続エクスポート
 データを外部で処理できるように連続してエクスポートする場合は、 [連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
@@ -193,7 +183,9 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 機能がより豊富なビューでデータを表示する場合は、 [Power BI にエクスポート](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)することができます。
 
 ## <a name="analytics"></a>分析
-[Analytics](app-insights-analytics.md) は、強力なクエリ言語を使用してテレメトリを分析する汎用性に優れた方法です。 メトリックの結果を組み合わせたり計算したりする場合や、アプリの最近のパフォーマンスを詳しく調べる場合は、Analytics を使用します。 一方、自動更新、ダッシュボードのグラフ、アラートが必要な場合は、メトリックス エクスプローラーを使用します。
+[Analytics](app-insights-analytics.md) は、強力なクエリ言語を使用してテレメトリを分析する汎用性に優れた方法です。 メトリックの結果を組み合わせたり計算したりする場合や、アプリの最近のパフォーマンスを詳しく調べる場合は、Analytics を使用します。 
+
+メトリックのグラフで Analytics アイコンをクリックすると、同等の Analytics クエリを直接取得することができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 *グラフにデータが表示されない。*

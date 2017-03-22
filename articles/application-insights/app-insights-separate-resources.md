@@ -4,18 +4,19 @@ description: "開発のさまざまな段階で、アプリケーションのパ
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
-ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 43fb1e764c929be14d42c3d214b051aeb5367d77
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 2eeb22d310a3aa67bacf821d319fb2919d0b536f
 
 まず、質問を理解しておきましょう。 アプリケーションから受け取ったデータは Microsoft Azure *リソース*に格納され、Application Insights によって処理されます。 各リソースは、 *インストルメンテーション キー* (iKey) によって識別されます。 アプリ内で、Application Insights SDK にキーが提供され、これにより、収集したデータを適切なリソースに送信できます。 キーは、コード内または ApplicationInsights.config で指定できます。 SDK 内のキーを変更することで、データをさまざまなリソースに送信できます。 
 
-単純なケースでは、新しいアプリケーションのコードを作成するときに、Application Insights の新しいリソースも作成します。 Visual Studio の [ *新しいプロジェクト* ] ダイアログでこれを行います。
+単純なケースでは、Application Insights にアプリケーションを登録するときに、Application Insights の新しいリソースも作成します。 これは、Visual Studio の *[Application Insights の構成]* ダイアログまたは *[Application Insights の追加]* ダイアログで行います。
 
 大規模な Web サイトでは、複数のサーバー インスタンスにデプロイする場合があります。
 
@@ -61,7 +62,7 @@ Application Insights ポータルのエクスペリエンスの多くは、こ�
 
 (システムが Azure クラウド サービスである場合は、[個別の iKey を設定する別の方法](app-insights-cloudservices.md)もあります。)
 
-### <a name="a-namedynamic-ikeya-dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
+### <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
 *C#*
@@ -115,10 +116,5 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 ![Essentials、インストルメンテーション キーの順にクリックし、Ctrl キーを押しながら C キーを押します。](./media/app-insights-separate-resources/02-props.png)
 
 アプリがデータを送信する宛先のすべてのリソースのインストルメンテーション キーが必要です。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

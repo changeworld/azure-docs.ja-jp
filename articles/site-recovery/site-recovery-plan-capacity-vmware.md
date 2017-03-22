@@ -118,20 +118,20 @@ ms.lasthandoff: 03/01/2017
 1. **Site Recovery のサーバー** で、[構成サーバー]、**[プロセス サーバー]** の順にクリックします。
 
     ![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure/migrate-ps1.png)
-2. **[サーバーの種類]** で、**[Process server (on-premises)] (プロセス サーバー (オンプレミス))** をクリックします。
+2. **[サーバーの種類]** で、**[Process server (on-premises)] \(プロセス サーバー (オンプレミス))** をクリックします。
 
     ![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 3. Site Recovery 統合セットアップ ファイルをダウンロードします。このファイルを実行してプロセス サーバーをインストールし、コンテナーに登録します。
-4. **[開始する前に]** で **[Add additional process servers to scale out deployment] (デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
+4. **[開始する前に]** で **[Add additional process servers to scale out deployment] \(デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
 5. 構成サーバーを [セットアップ](#step-2-set-up-the-source-environment) したときと同様にウィザードを完了します。
 
     ![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure/add-ps1.png)
-6. **[Configuration Server Details] (構成サーバーの詳細)** で、構成サーバーの IP アドレスとパスフレーズを指定します。 パスフレーズを取得するには、構成サーバーで「**<SiteRecoveryInstallationFolder>\home\sysystems\bin\genpassphrase.exe –n**」を実行します。
+6. **[Configuration Server Details] \(構成サーバーの詳細)** で、構成サーバーの IP アドレスとパスフレーズを指定します。 パスフレーズを取得するには、構成サーバーで「**<SiteRecoveryInstallationFolder>\home\sysystems\bin\genpassphrase.exe –n**」を実行します。
 
     ![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure/add-ps2.png)
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>マシンを移行して新しいプロセス サーバーを使用する
-1. **[設定]** > **[Site Recovery servers] (Site Recovery サーバー)** で、構成サーバーをクリックし、**[プロセス サーバー]** を展開します。
+1. **[設定]** > **[Site Recovery servers] \(Site Recovery サーバー)** で、構成サーバーをクリックし、**[プロセス サーバー]** を展開します。
 
     ![プロセス サーバーの更新](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. 現在使用中のプロセス サーバーを右クリックし、**[切り替え]** をクリックします。

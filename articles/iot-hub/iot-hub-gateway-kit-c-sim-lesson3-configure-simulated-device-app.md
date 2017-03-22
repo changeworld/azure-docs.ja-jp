@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
 ms.openlocfilehash: 873f3cef8cb1d115f77f0d3fa2c4b50391f66d91
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -137,8 +138,3 @@ az iot device show-connection-string --hub-name {IoT hub name} --device-id mydev
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ハブからのメッセージの読み取り](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/7/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 203d3976b9ba0960f5a3dbff4e2b1fcdf4c0dc33
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -143,8 +144,3 @@ ms.openlocfilehash: 203d3976b9ba0960f5a3dbff4e2b1fcdf4c0dc33
 
 [troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
 [get-the-tools]: iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

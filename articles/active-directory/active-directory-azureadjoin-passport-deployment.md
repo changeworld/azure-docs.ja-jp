@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 6f08fcdb4ec6dd124760cff54c522d998d5a0327
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -112,10 +113,5 @@ System Center Configuration Manager を使って証明書もデプロイする�
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

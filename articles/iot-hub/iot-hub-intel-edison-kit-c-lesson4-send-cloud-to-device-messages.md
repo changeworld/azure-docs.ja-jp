@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
 ms.openlocfilehash: b4d76eeb1bc0b406800c89c4952900350d8eafa8
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -97,8 +98,3 @@ IoT ハブから Edison にメッセージを送信し、LED を点滅させる�
 [create-an-azure-function-app-and-storage-account]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
 [gulp-command-and-blink-messages]: media/iot-hub-intel-edison-lessons/lesson4/gulp_blink_c.png
 [change-the-on-and-off-behavior-of-the-led]: iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md
-
-
-<!--HONumber=Jan17_HO4-->
-
-

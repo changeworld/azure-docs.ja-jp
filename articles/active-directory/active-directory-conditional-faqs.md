@@ -16,6 +16,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -36,10 +37,5 @@ ms.openlocfilehash: 3980b99206c9f0c81ba3d03778777878e25db7c8
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件付きアクセス ポリシーはサービス アカウントに適用されますか?
 **A:** 条件付きアクセス ポリシーは、すべてのユーザー アカウントに適用されます。 これには、サービス アカウントとして使用されるユーザー アカウントも含まれます。 多くの場合、自動的に実行されるサービス アカウントはポリシーを満たすことができません。 例として、MFA が必要となる場面が挙げられます。 このような場合、条件付きアクセス ポリシーの管理設定を使用して、サービス アカウントをポリシーから除外できます。 ここで、ユーザーへのポリシーの適用についてさらに詳しく説明します。
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

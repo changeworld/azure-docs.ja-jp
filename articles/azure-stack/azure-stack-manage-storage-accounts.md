@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: anirudha
 translationtype: Human Translation
-ms.sourcegitcommit: 8d3d46835991a6d0d98705ebceab2f79c7e5d667
-ms.openlocfilehash: 5199b2701b09ec97f0ce2f7211da910d10a7bcd0
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: e70e512c2404d1d63c1d02a62d4eb358746ffe6e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -27,7 +27,7 @@ Learn how to manage storage accounts in Azure Stack to find, recover, and reclai
 ## <a name="find"></a>Find a storage account
 The list of storage accounts in the region can be viewed in Azure Stack by:
 
-1. In an Internet browser, navigate to https://publicportal.local.azurestack.external.
+1. In an Internet browser, navigate to https://portal.local.azurestack.external.
 2. Sign in to the Azure Stack portal as an administrator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
    
@@ -75,7 +75,7 @@ You may be in a situation where you need to recover a deleted account.
 
 In Azure Stack there is a very simple way to do that:
 
-1. Browse to the storage accounts list. See [Find a storage account](#find-a-storage-account) in this topic for more information.
+1. Browse to the storage accounts list. See [Find a storage account](#find) in this topic for more information.
 2. Locate that particular account in the list. You may need to filter.
 3. Check the *state* of the account. It should say **Deleted**.
 4. Click the account which opens the account details blade.
@@ -103,7 +103,7 @@ The retention period setting allows an administrator to specify a time period in
 
 **To change the retention period:**
 
-1. In an internet browser, navigate to https://publicportal.local.azurestack.external.
+1. In an internet browser, navigate to https://portal.local.azurestack.external.
 2. Sign in to the Azure Stack portal as an administrator (using the credentials you provided during deployment)
 3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
 4. Select **Storage** from the **Resource Providers** list.
@@ -140,15 +140,16 @@ You can also use PowerShell to explicitly override the retention period and imme
    * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
    For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. Run the following cmdlet:
-   
-    ```
-    Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
-    ```
 
-For more details, refer to [Azure Stack powershell documentation](https://msdn.microsoft.com/library/mt637964.aspx)
-> 
 > [!NOTE]
 > If you run this cmdlet you permanently delete the account and its contents. It is not recoverable. Use this with care.
+
+
+        Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
+
+
+For more details, refer to [Azure Stack powershell documentation.](https://msdn.microsoft.com/library/mt637964.aspx)
+ 
 
 ## <a name="migrate-a-container"></a>Migrate a container
 Due to uneven storage use by tenants, an administrator may find one or more underlying tenant shares using more space than others. If this occurs, the administrator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 

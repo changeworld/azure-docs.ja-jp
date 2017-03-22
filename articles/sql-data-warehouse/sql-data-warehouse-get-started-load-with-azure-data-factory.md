@@ -16,9 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
+ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 2f0aa3ab44813529525108758785ea3ceb65311b
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -228,9 +230,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Azure Data Factory learning path]: https://azure.microsoft.com/documentation/learning-paths/data-factory
 [Azure portal]: https://portal.azure.com
 [Download sample data]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

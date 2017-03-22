@@ -13,11 +13,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/8/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: adf5b10721a28432e6b37ef73c6a7e7ec9f93cdd
 ms.openlocfilehash: 182e63d40986b61a12885799b1b33bb570437a3c
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -116,9 +117,4 @@ Edison を操作するために必要なツールをインストールし、Edis
 [repo-structure]: media/iot-hub-intel-edison-lessons/lesson1/repo_structure.png
 [led-blinking]: media/iot-hub-intel-edison-lessons/lesson1/led_blinking.png
 [get-the-azure-tools]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

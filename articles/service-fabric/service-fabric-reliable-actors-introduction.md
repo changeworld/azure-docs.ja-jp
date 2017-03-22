@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 56220f357cbb44946d601167234636a1bce03bfa
-ms.openlocfilehash: bf69d2fdfb80395f9af58d113e4f8838c6bb93be
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 9b6668bf4b3f826a1d41527ce4a7ae8d05936731
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -86,9 +87,21 @@ IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/M
 await myActor.DoWorkAsync();
 ```
 
+```java
+// Create actor ID with some name
+ActorId actorId = new ActorId("Actor1");
+
+// This only creates a proxy object, it does not activate an actor or invoke any methods yet.
+MyActor myActor = ActorProxyBase.create(actorId, new URI("fabric:/MyApp/MyActorService"), MyActor.class);
+
+// This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
+myActor.DoWorkAsync().get();
+```
+
+
 アクター プロキシ オブジェクトの作成には、アクター ID とアプリケーション名という&2; つの情報が使用されていることに注意してください。 アクター ID は、アクターを一意に識別します。アプリケーション名は、アクターがデプロイされている [Service Fabric アプリケーション](service-fabric-reliable-actors-platform.md#application-model)を識別します。
 
-クライアント側の `ActorProxy` クラスは、必要な解決策を実行して、ID によってアクターを検索し、このアクターによって通信チャネルを開きます。 また、 `ActorProxy` は、通信のエラーとフェールオーバーが発生した場合にアクターの検索も再試行します。 その結果、メッセージの配信には次のような特徴があります。
+クライアント側の `ActorProxy`(C#)/`ActorProxyBase`(Java) クラスは、必要な解決策を実行して、ID によってアクターを検索し、このアクターによって通信チャネルを開きます。 また、通信のエラーやフェールオーバーが発生した場合にアクターの検索も再試行します。 その結果、メッセージの配信には次のような特徴があります。
 
 * メッセージ配信は、ベスト エフォートです。
 * アクターは、同じクライアントから重複するメッセージを受け取る可能性があります。
@@ -122,7 +135,7 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 * クライアント要求 *xyz789* に応じて *ActorId2* の代わりに *Method1* を実行しているときに、*ActorId2* に *Method1* を実行するように求める別のクライアント要求 (*abc123*) が到着する場合があります。 しかし、*Method1* の&2; 回目の実行は、前の実行が完了するまで開始されません。 同様に、*Method1* がクライアント要求 *xyz789* に応じて実行されている間に、*ActorId2* によって登録されたアラームが開始されます。 アラームのコールバックが実行されるのは、*Method1* の両方の実行が完了した場合のみです。 これはすべてターンごとの同時実行が *ActorId2* に対して強制されるためです。
 * 同様に、ターンごとの同時実行は *ActorId1* に対しても強制されます。図に示されているように、*ActorId1* の代わりに *Method1*、*Method2*およびタイマーのコールバックが順次実行されます。
 * *ActorId1* の代理としての *Method1* の実行は、*ActorId2* の代理としての実行と重複しています。 これは、ターンごとの同時実行が、アクター全体ではなくアクター内でのみ強制されるためです。
-* メソッドやコールバックのいくつかの実行では、メソッドやコールバックによって返される `Task` は、メソッドが応答した後に完了します。 その他の実行では、メソッドやコールバックが応答するまでに `Task` は既に完了しています。 いずれの場合でも、アクターごとのロックは、メソッドとコールバックが応答し、 `Task` が完了した後にのみ解放されます。
+* メソッドやコールバックのいくつかの実行では、メソッドやコールバックによって返される `Task`(C#)/`CompletableFuture`(Java) は、メソッドが応答した後に完了します。 その他の実行では、メソッドやコールバックが応答するまでに非同期操作は既に完了しています。 いずれの場合でも、アクターごとのロックは、メソッドとコールバックが応答し、非同期操作が完了した後にのみ解放されます。
 
 #### <a name="reentrancy"></a>再入
 アクター ランタイムでは、既定で再入が許可されます。 つまり、*アクター A* のアクター メソッドが*アクター B* に対してメソッドを呼び出してから、アクター B が*アクター A* に対して別のメソッドを呼び出す場合、実行が許可されます。 これは、メソッドが同じ論理呼び出しチェーン コンテキストの一部であるためです。 すべてのタイマーとアラームの呼び出しは新しい論理呼び出しコンテキストで始まります。 詳細については、「 [Reliable Actors の再入](service-fabric-reliable-actors-reentrancy.md) 」を参照してください。
@@ -145,9 +158,4 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

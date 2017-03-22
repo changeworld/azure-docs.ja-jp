@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: 1a82f9f1de27c9197bf61d63dd27c5191fec1544
 ms.openlocfilehash: 3e1bf2372762de474310c78d512a6a073c7a01b6
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -204,9 +206,4 @@ SQL Data Warehouse にデータを移行する方法の詳細については、[
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
 <!-- External Links -->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

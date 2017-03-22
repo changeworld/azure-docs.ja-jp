@@ -13,11 +13,12 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
 ms.openlocfilehash: 4c31bb14f2b32d71f14a89576922b9701b226e66
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -70,10 +71,5 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ハブの作成と Raspberry Pi 3 の登録](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
