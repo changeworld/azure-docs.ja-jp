@@ -32,13 +32,13 @@ Azure には、Azure Resource Manager とクラシックという&2; 種類の�
 この記事では、PowerShellを使用して Resource Manager デプロイメント モデルで VNet を作成する方法について説明します。 他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
 > [!div class="op_single_selector"]
-- [ポータル](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [CLI](virtual-networks-create-vnet-arm-cli.md)
-- [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-- [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
+> * [ポータル](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [CLI](virtual-networks-create-vnet-arm-cli.md)
+> * [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
+> * [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

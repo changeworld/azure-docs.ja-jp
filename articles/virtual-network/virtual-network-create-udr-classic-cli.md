@@ -18,17 +18,18 @@ ms.author: jdial
 translationtype: Human Translation
 ms.sourcegitcommit: 71153e46d1695611c8286d2e57b109db9e7ad9df
 ms.openlocfilehash: 4a610a65b33f91f46d011e07c6cb11523d3dae0d
+ms.lasthandoff: 02/01/2017
 
 
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure CLI](virtual-network-create-udr-arm-cli.md)
-- [テンプレート](virtual-network-create-udr-arm-template.md)
-- [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
-- [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [テンプレート](virtual-network-create-udr-arm-template.md)
+> * [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
+> * [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
@@ -137,10 +138,5 @@ ms.openlocfilehash: 4a610a65b33f91f46d011e07c6cb11523d3dae0d
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd
     ```
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

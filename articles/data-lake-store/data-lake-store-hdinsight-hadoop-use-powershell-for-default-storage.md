@@ -48,8 +48,9 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
 * **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/en-us/downloads)」をご覧ください。 Windows SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**: このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
- >[!NOTE]
- >Azure AD 管理者である場合にのみ、サービス プリンシパルを作成することができます。 Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 「[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)」で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    >[!NOTE]
+    >Azure AD 管理者である場合にのみ、サービス プリンシパルを作成することができます。 Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 「[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate)」で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    >
 
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 Data Lake Store アカウントを作成するには、次の操作を行います。
@@ -68,8 +69,9 @@ Data Lake Store アカウントを作成するには、次の操作を行いま�
         # Register for Data Lake Store
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
- > [!NOTE]
- > Data Lake Store リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Store のホワイトリストに登録されていない可能性があります。 Data Lake Store パブリック プレビューで Azure サブスクリプションを有効にするには、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。
+    > [!NOTE]
+    > Data Lake Store リソース プロバイダーの登録時に `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` のようなエラーが発生した場合は、サブスクリプションが Data Lake Store のホワイトリストに登録されていない可能性があります。 Data Lake Store パブリック プレビューで Azure サブスクリプションを有効にするには、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。
+    > 
 
 2. サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。
 3. Data Lake Store アカウントは、Azure リソース グループに関連付けられます。 まず、リソース グループを作成します。
@@ -217,7 +219,8 @@ HDInsight クラスターを構成した後は、クラスターでテスト ジ
     クエリの結果は SSH コンソールに出力されます。
 
     >[!NOTE]
-       >上の CREATE TABLE コマンドのサンプル データへのパスは `adl:///example/data/` です。`adl:///` にはクラスターのルートを指定します。 このチュートリアルで指定されたクラスターのルートの例に従うと、コマンドは `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` になります。 短縮バージョンを使用するか、またはクラスター ルートへの完全なパスを指定できます。
+    >上の CREATE TABLE コマンドのサンプル データへのパスは `adl:///example/data/` です。`adl:///` にはクラスターのルートを指定します。 このチュートリアルで指定されたクラスターのルートの例に従うと、コマンドは `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` になります。 短縮バージョンを使用するか、またはクラスター ルートへの完全なパスを指定できます。
+    >
 
 ## <a name="access-data-lake-store-by-using-hdfs-commands"></a>HDFS コマンドを使用して Data Lake Store にアクセスする
 Data Lake Store を使用するように HDInsight クラスターを構成したら、Hadoop 分散ファイルシステム (HDFS) シェル コマンドを使用して Data Lake Store にアクセスできます。

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 1738899a271045e37cdcedaaf862553f29ec92f1
 ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
+ms.lasthandoff: 12/19/2016
 
 
 ---
@@ -32,10 +33,5 @@ ms.openlocfilehash: b1c06135cf8628197fb9601affd6a7131b41d0ca
 4. **[OK]** チェックマークをクリックします。
 
 保存が完了すると、ワークスペースのどの実験でもデータセットを使用できるようになります。 データセットは、モジュール パレットの **[保存されたデータセット]** リストから検索できます。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

@@ -97,7 +97,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.0.15</version>
+      <version>1.1.15</version>
     </dependency>
     ```
 
@@ -109,7 +109,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 6. ファイルに次の **import** ステートメントを追加します。
    
     ```
-    import com.microsoft.azure.sdk.iot.service.sdk.*;
+    import com.microsoft.azure.sdk.iot.service.*;
     import java.io.IOException;
     import java.net.URISyntaxException;
     ```

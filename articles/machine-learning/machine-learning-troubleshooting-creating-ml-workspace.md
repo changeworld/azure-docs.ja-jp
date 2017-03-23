@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73

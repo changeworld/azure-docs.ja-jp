@@ -74,7 +74,7 @@ ms.lasthandoff: 02/28/2017
    出力:
 
         Access    Desc                                                    DestPortRange    Direction      Priority
-        --------  ------------------------------------------------------  ---------------  -----------  ----------
+        
         Allow     Allow inbound traffic from all VMs in VNET              *                Inbound           65000
         Allow     Allow inbound traffic from azure load balancer          *                Inbound           65001
         Deny      Deny all inbound traffic                                *                Inbound           65500
@@ -183,10 +183,10 @@ ms.lasthandoff: 02/28/2017
         
     ```azurecli
     az network vnet subnet update \
-    > --vnet-name TestVNET \
-    > --name FrontEnd \
-    > --resource-group testrg \
-    > --network-security-group NSG-FrontEnd
+    --vnet-name TestVNET \
+    --name FrontEnd \
+    --resource-group testrg \
+    --network-security-group NSG-FrontEnd
     ```
    
     予想される出力:

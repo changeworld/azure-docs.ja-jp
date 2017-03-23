@@ -38,13 +38,13 @@ Azure には、Azure Resource Manager とクラシックという&2; 種類の�
     他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
 
 > [!div class="op_single_selector"]
-- [ポータル](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [CLI](virtual-networks-create-vnet-arm-cli.md)
-- [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-- [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
-- [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-- [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
+> * [ポータル](virtual-networks-create-vnet-arm-pportal.md)
+> * [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+> * [CLI](virtual-networks-create-vnet-arm-cli.md)
+> * [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
+> * [ポータル (クラシック)](virtual-networks-create-vnet-classic-pportal.md)
+> * [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+> * [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -65,22 +65,22 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
 
     ```azurecli
     az network vnet create \
-        --name TestVNet \
-        --resource-group TestRG \
-        --location centralus \
-        --address-prefix 192.168.0.0/16 \
-        --subnet-name FrontEnd \
-        --subnet-prefix 192.168.1.0/24
+    --name TestVNet \
+    --resource-group TestRG \
+    --location centralus \
+    --address-prefix 192.168.0.0/16 \
+    --subnet-name FrontEnd \
+    --subnet-prefix 192.168.1.0/24
     ```
 
     予想される出力:
-   
+    
     ```json
     {
         "newVNet": {
             "addressSpace": {
             "addressPrefixes": [
-                "192.168.0.0/16"
+            "192.168.0.0/16"
             ]
             },
             "dhcpOptions": {
@@ -100,7 +100,7 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
                 "resourceGroup": "TestRG"
             }
             ]
-        }
+            }
     }
     ```
 
@@ -121,20 +121,20 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
 
     次の出力が生成されます。
 
-            Where      Name      Group
-            ---------  --------  -------
-            centralus  TestVNet  TestRG
+        Where      Name      Group
+
+        centralus  TestVNet  TestRG
 
 4. サブネットを作成します。
 
     ```azurecli
     az network vnet subnet create \
-        --address-prefix 192.168.2.0/24 \
-        --name BackEnd \
-        --resource-group TestRG \
-        --vnet-name TestVNet
+    --address-prefix 192.168.2.0/24 \
+    --name BackEnd \
+    --resource-group TestRG \
+    --vnet-name TestVNet
     ```
-   
+
     予想される出力:
 
     ```json
@@ -168,11 +168,11 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     --query '{Name:name,Where:location,Group:resourceGroup,Status:provisioningState,SubnetCount:subnets | length(@)}' \
     -o table
     ```
-   
+
     予想される出力:
-   
+
         Name      Where      Group    Status       SubnetCount
-        --------  ---------  -------  ---------  -------------
+
         TestVNet  centralus  TestRG   Succeeded              2
 
 6. サブネットのプロパティを照会します。
@@ -188,7 +188,7 @@ Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次
     予想される出力:
 
         Name      CIDR            Status
-        --------  --------------  ---------
+
         FrontEnd  192.168.1.0/24  Succeeded
         BackEnd   192.168.2.0/24  Succeeded
 
