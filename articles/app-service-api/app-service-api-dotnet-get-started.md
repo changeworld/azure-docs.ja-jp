@@ -3,7 +3,7 @@ title: "App Service で API Apps と ASP.NET を使用する | Microsoft Docs"
 description: "Visual Studio 2015 を使用して、Azure App Service で ASP.NET API アプリを作成、デプロイし、使用する方法について説明します。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: ddc028b2-cde0-4567-a6ee-32cb264a830a
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 09/20/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: c7b4e39e01ae335c3e6a5cf9cb1efe8a64490e35
@@ -199,7 +199,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 > 
 > 
 
-## <a name="a-idcreateapiappa-create-an-api-app-in-azure-and-deploy-code-to-it"></a><a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
+## <a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
 このセクションでは、Visual Studio の **Web を発行** ウィザードに統合されている Azure ツールを使用し、Azure で新しい API アプリを作成します。 次に、ToDoListDataAPI プロジェクトを新しい API アプリにデプロイし、Swagger UI を実行して API を呼び出します。
 
 1. **ソリューション エクスプローラー**で ToDoListDataAPI プロジェクトを右クリックし、**[発行]** をクリックします。
@@ -303,7 +303,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
     
     クライアント コードを生成する API アプリを選択するとき、Visual Studio はこの URL からメタデータを取得します。
 
-## <a name="a-idcodegena-generate-client-code-for-the-data-tier"></a><a id="codegen"></a> データ層のクライアント コードを生成する
+## <a id="codegen"></a> データ層のクライアント コードを生成する
 Azure API アプリと Swagger の統合の利点の&1; つは、自動コード生成です。 生成されたクライアント クラスにより、API アプリを呼び出すコードの記述が容易になります。
 
 ToDoListAPI プロジェクトには既に生成済みのクライアント コードがありますが、次に示す手順では、コードの生成方法を確認するために、いったんそれを削除してから生成し直します。
