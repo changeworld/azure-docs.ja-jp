@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
 ms.openlocfilehash: ae77ce19ff009555e89645c9f02402ae6f8af518
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -83,9 +84,4 @@ Machine Learning Studio の **[EXPERIMENTS]** タブの実験のリストには�
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

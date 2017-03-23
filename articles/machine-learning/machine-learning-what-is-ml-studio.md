@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/12/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
 ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -118,9 +119,4 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 [elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

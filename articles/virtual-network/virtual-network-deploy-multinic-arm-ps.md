@@ -26,11 +26,11 @@ ms.lasthandoff: 02/28/2017
 # <a name="create-a-vm-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM を作成する
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
-- [Azure CLI](virtual-network-deploy-multinic-arm-cli.md)
-- [テンプレート](virtual-network-deploy-multinic-arm-template.md)
-- [PowerShell (クラシック)](virtual-network-deploy-multinic-classic-ps.md)
-- [Azure CLI (クラシック)](virtual-network-deploy-multinic-classic-cli.md)
+> * [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
+> * [Azure CLI](virtual-network-deploy-multinic-arm-cli.md)
+> * [テンプレート](virtual-network-deploy-multinic-arm-template.md)
+> * [PowerShell (クラシック)](virtual-network-deploy-multinic-classic-ps.md)
+> * [Azure CLI (クラシック)](virtual-network-deploy-multinic-classic-cli.md)
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
