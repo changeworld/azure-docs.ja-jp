@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -43,7 +44,7 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの&1; つです�
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「[Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md)」をご覧ください。
 
-## <a name="a-namerecommendationsagenerate-recommendations-by-using-azure-powershell"></a><a name="recommendations"></a>Azure PowerShell を使用したリコメンデーションの生成
+## <a name="recommendations"></a>Azure PowerShell を使用したリコメンデーションの生成
 
 > [!NOTE]
 > このセクションで使用されるジョブは Azure PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Azure PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。 Azure PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
@@ -313,7 +314,7 @@ $recommendations | format-table $recommendationFormat
     Donnie Brasco (1997)                     4.6792455
     Lone Star (1996)                         4.7099237
 
-## <a name="a-nametroubleshootingatroubleshooting"></a><a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="cannot-overwrite-files"></a>ファイルを上書きできない
 
@@ -364,7 +365,7 @@ foreach($blob in $blobs)
 }
 ```
 
-### <a name="a-namenopowershellaclasses-that-do-not-work-with-azure-powershell"></a><a name="nopowershell"></a>Azure PowerShell で動作しないクラス
+### <a name="nopowershell"></a>Azure PowerShell で動作しないクラス
 
 次のクラスを使用する Mahout ジョブを Windows PowerShell から使用すると、さまざまなエラー メッセージが返されます。
 

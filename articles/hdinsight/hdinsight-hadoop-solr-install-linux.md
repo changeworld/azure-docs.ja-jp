@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -30,7 +31,7 @@ ms.lasthandoff: 01/18/2017
 
 このトピックで使用するサンプル スクリプトは、既定の構成で Solr クラスターを作成します。 この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、それに応じてスクリプトと Solr バイナリを変更する必要があります。
 
-## <a name="a-namewhatisawhat-is-solr"></a><a name="whatis"></a>Solr とは何か
+## <a name="whatis"></a>Solr とは何か
 [Apache Solr](http://lucene.apache.org/solr/features.html) は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。 Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。 このトピックでは、HDInsight クラスターをカスタマイズして Solr をインストールする方法を説明します。
 
 > [!WARNING]
@@ -48,7 +49,7 @@ ms.lasthandoff: 01/18/2017
 * **solruser** を `/usr/hdp/current/solr` の所有者として設定します
 * クラスター ノードの再起動時に Solr を開始する [Upstart](http://upstart.ubuntu.com/) 構成を追加します。 Solr は、インストール後にもクラスター ノード上で自動的に開始されます。
 
-## <a name="a-nameinstallainstall-solr-using-script-actions"></a><a name="install"></a>スクリプト アクションを使用した Solr のインストール
+## <a name="install"></a>スクリプト アクションを使用した Solr のインストール
 HDInsight クラスターに Solr をインストールするサンプル スクリプトは、次の場所にあります。
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
@@ -72,7 +73,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 4. 「 [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
-## <a name="a-nameusesolrahow-do-i-use-solr-in-hdinsight"></a><a name="usesolr"></a>HDInsight で Solr を使用する方法
+## <a name="usesolr"></a>HDInsight で Solr を使用する方法
 ### <a name="indexing-data"></a>データのインデックス作成
 最初に、いくつかのデータ ファイルに対し Solr のインデックスを作成する必要があります。 これにより、インデックス付きデータに対して、Solr を使用して検索クエリを実行できます。 以下の手順を使用して Solr にいくつかのサンプル データを追加し、そのデータを照会します。
 

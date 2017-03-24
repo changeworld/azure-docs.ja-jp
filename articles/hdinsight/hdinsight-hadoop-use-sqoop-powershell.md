@@ -9,6 +9,7 @@ tags: azure-portal
 author: mumian
 ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 12bcff92f7d2f877fa90b35fddf88266488c5f78
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -176,9 +178,4 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

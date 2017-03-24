@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 0e919171-03e6-4f5a-ab4e-3eec3e34c347
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
 > Hive コマンドは HDInsight クラスターで利用できますが、Beeline の使用を検討してください。 Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。 使用方法に関する詳細については、「 [Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * HDInsight クラスターでの Linux ベースの Hadoop
@@ -40,7 +42,7 @@ ms.openlocfilehash: 6971e3d36629640d3a550539b29ba7cc4c0da6b7
 
 * SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+## <a id="ssh"></a>SSH を使用した接続
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -58,7 +60,7 @@ Windows ではビルトイン SSH クライアントは提供されません。 
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a name="a-idhiveause-the-hive-command"></a><a id="hive"></a>Hive コマンドの使用
+## <a id="hive"></a>Hive コマンドの使用
 1. 接続したら、次のコマンドを使用して Hive CLI を起動します。
    
         hive
@@ -107,10 +109,10 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
      > 
      > 
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
@@ -153,10 +155,5 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

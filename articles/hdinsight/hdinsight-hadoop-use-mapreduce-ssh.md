@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
 ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -30,7 +32,7 @@ ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
 > [!NOTE]
 > Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
@@ -41,7 +43,7 @@ ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
 
 * SSH クライアント。 SSH クライアントを備えた Linux、Unix、Mac オペレーティング システム Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+## <a id="ssh"></a>SSH を使用した接続
 
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
@@ -61,7 +63,7 @@ HDInsight での SSH の使用に関する詳細については、[Linux、OS X�
 
 PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a name="a-idhadoopause-hadoop-commands"></a><a id="hadoop"></a>Hadoop コマンドの使用
+## <a id="hadoop"></a>Hadoop コマンドの使用
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
    
@@ -108,11 +110,11 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
         wretched        6
         wriggling       1
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 
 このように、Hadoop コマンドを使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ出力を表示できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -122,10 +124,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

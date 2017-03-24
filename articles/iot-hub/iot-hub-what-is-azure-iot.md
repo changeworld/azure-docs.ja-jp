@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 03/24/2017
 ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
@@ -24,6 +24,7 @@ ms.lasthandoff: 01/24/2017
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure IoT Hub は、ソリューション バックエンドと何百万ものデバイスとの間に信頼性のある保護された双方向通信を確立できるサービスです。 これによりソリューション バックエンドから次のことを実行できるようになります。
 
 * デバイスから大量のテレメトリを受信する。
