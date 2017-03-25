@@ -15,22 +15,24 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
-ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: b41d906d6948f0f9e3cdb38b4a478b39f55ce219
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md)  
-> * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
-> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET カスタム](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive アクティビティ](data-factory-hive-activity.md) 
+> * [Pig アクティビティ](data-factory-pig-activity.md)
+> * [MapReduce アクティビティ](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+> * [Spark アクティビティ](data-factory-spark.md)
+> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
+> * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
 
@@ -79,7 +81,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
-| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com, @live.com, など)。 |12 時間 |
+| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[承認する]** ボタンを使用して再承認し、リンクされたサービスを再デプロイします。 次のセクションのコードを使用して、**sessionId** と **authorization** プロパティの値をプログラムで生成することもできます。 

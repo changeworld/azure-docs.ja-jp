@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 3bb103a8def2e1c56695169568c2d3c64b7f291f
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 844f7d6fa4191a54d14010adf974401d3a94ba69
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -64,6 +64,12 @@ Log Analytics 仮想マシン拡張機能は、次の&3; とおりの方法で�
    ![接続中](./media/log-analytics-azure-vm-extension/oms-connect-azure-05.png)
 
 ## <a name="enable-the-vm-extension-using-powershell"></a>PowerShell を使用して VM 拡張機能を有効にする
+PowerShell を使用して仮想マシンを構成する場合は、**ワークスペース ID** と**ワークスペース キー**を指定する必要があります。 JSON 構成では、プロパティ名の**大文字と小文字が区別**されます。
+
+この ID とキーは、OMS ポータルの **[設定]** ページで確認できるほか、前出の例で使用した PowerShell コマンドで確認することができます。
+
+![ワークスペース ID と主キー](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
+
 Azure のクラシック仮想マシンと Resource Manager 仮想マシンとでは、使用するコマンドが異なります。 以下、クラシックと Resource Manager の両方の仮想マシンの例を紹介しています。
 
 クラシック仮想マシンの場合は、次の PowerShell の例を使用します。
@@ -115,9 +121,6 @@ $location = $vm.Location
 
 
 ```
-PowerShell を使用して仮想マシンを構成する場合は、**ワークスペース ID** と**プライマリ キー**を指定する必要があります。 この ID とキーは、OMS ポータルの **[設定]** ページで確認できるほか、前出の例で使用した PowerShell コマンドで確認することができます。
-
-![ワークスペース ID と主キー](./media/log-analytics-azure-vm-extension/oms-analyze-azure-sources.png)
 
 ## <a name="deploy-the-vm-extension-using-a-template"></a>テンプレートを使用して VM 拡張機能をデプロイする
 Azure Resource Manager で、アプリケーションのデプロイと構成を定義する JSON 形式の単純なテンプレートを作成できます。 このテンプレートはリソース マネージャー テンプレートと呼ばれ、デプロイの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
@@ -363,7 +366,20 @@ Resource Manager テンプレートの詳細については、「[Azure Resource
 New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath
 ```
 
-## <a name="troubleshooting-windows-virtual-machines"></a>Windows 仮想マシンのトラブルシューティング
+## <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能のトラブルシューティング
+通常、何らかの問題が発生すると、Azure Portal または Azure PowerShell からメッセージが送信されます。
+
+1. [Azure ポータル](http://portal.azure.com)にサインインします。
+2. VM を検索し、VM の詳細を表示します。
+3. **[拡張機能]** をクリックして、OMS 拡張機能が有効になっているかどうかを確認します。
+
+   ![VM の拡張機能の表示](./media/log-analytics-azure-vm-extension/oms-vmview-extensions.png)
+
+4. *MicrosoftMonitoringAgent* (Windows) 拡張機能または *OmsAgentForLinux* (Linux) 拡張機能をクリックして詳細を表示します。 
+
+   ![VM の拡張機能の詳細](./media/log-analytics-azure-vm-extension/oms-vmview-extensiondetails.png)
+
+### <a name="troubleshooting-windows-virtual-machines"></a>Windows 仮想マシンのトラブルシューティング
 *Microsoft Monitoring Agent* VM エージェント拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題をトラブルシューティングしてください。
 
 1. Azure VM エージェントがインストールされ、正しく動作しているかどうかを [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) の手順に従って確認します。
@@ -383,7 +399,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 
 詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/virtual-machines-windows-extensions-troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
-## <a name="troubleshooting-linux-virtual-machines"></a>Linux 仮想マシンのトラブルシューティング
+### <a name="troubleshooting-linux-virtual-machines"></a>Linux 仮想マシンのトラブルシューティング
 *OMS Agent for Linux* VM エージェント拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題をトラブルシューティングしてください。
 
 1. 拡張機能の状態が "*不明*" になっている場合は、Azure VM エージェントがインストールされて正常に動作しているかどうかを VM エージェントのログ ファイル (`/var/log/waagent.log`) で確認してください。

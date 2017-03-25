@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 64f44c176633db4179f954d2f70cdf26d08b60b4
-ms.openlocfilehash: 28ea238484d86b044899aa9f95861bbdbbf3a06c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 44169ba74f6af2b1c27ea4c2a8fd0214892f90d5
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -421,7 +421,7 @@ GROUP BY の正式な構文は次のとおりです。
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
 | POWER(x,y) | 指定されたべき乗の指定された式の値を返します (x^y)。|
-| SQUARE(x) | 指定された数値の&2; 乗を返します。 |
+| SQUARE(x)    | 指定された数値の&2; 乗を返します。 |
 | CEILING(x) | 指定された数値式以上の最小の整数値を返します。 |
 | FLOOR(x) | 指定された数値式未満の最大の整数を返します。 |
 | SIGN(x) | 指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。|

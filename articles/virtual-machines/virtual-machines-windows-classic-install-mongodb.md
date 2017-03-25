@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 015b152b2e807de6ad92d141d3c8bad6bb8d8eba
-ms.openlocfilehash: e070a2eac2bb356ad8544ec107cab230f8e3637c
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 8245ff39ce191e741fdc54fee0ca039e8571ba8e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/12/2017
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)の&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャーのデプロイ モデルを使用して MongoDB をインストールおよび構成する方法については、[この記事](virtual-machines-windows-install-mongodb.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
-[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープンソースの NoSQL データベースです。 この記事の手順に従って、[Azure クラシック ポータル][AzurePortal]を使用して Windows Server 仮想マシン (VM) を作成します。 その後で、MongoDB をインストールして構成する前に、データ ディスクを作成して VM に接続します。 使用する VM が Azure に既に存在する場合は、 [MongoDB のインストールと構成](#install-and-run-mongodb-on-the-virtual-machine)を直接開始できます。
+[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープンソースの NoSQL データベースです。 この記事では、[Azure Portal][AzurePortal] を使用して Windows Server 仮想マシン (VM) を作成する手順について説明します。 その後で、MongoDB をインストールして構成する前に、データ ディスクを作成して VM に接続します。 使用する VM が Azure に既に存在する場合は、 [MongoDB のインストールと構成](#install-and-run-mongodb-on-the-virtual-machine)を直接開始できます。
 
 ## <a name="create-a-virtual-machine-running-windows-server"></a>Windows Server を実行する仮想マシンの作成
 仮想マシンを作成するには、以下の手順を実行します。
@@ -35,8 +35,8 @@ ms.lasthandoff: 01/12/2017
 
 > [!NOTE]
 > 仮想マシンの作成中に MongoDB のエンドポイントを追加して、**Mongo** という名前を付けることができます。また、プロトコルとして **TCP** を指定し、パブリック ポートとプライベート ポートの両方を **27017** に設定します。
-> 
-> 
+>
+>
 
 ## <a name="attach-a-data-disk"></a>データ ディスクの接続
 仮想マシン用のストレージを用意するため、データ ディスクを接続し、Windows で使用できるように初期化します。 データ ディスクが既にある場合は、その既存のディスクを接続するか、空のディスクを接続することができます。
@@ -53,5 +53,8 @@ ms.lasthandoff: 01/12/2017
 
 [MongoDocs]: http://docs.mongodb.org/manual/
 [MongoDB]: http://www.mongodb.org/
-[AzurePortal]: http://manage.windowsazure.com
+[AzurePortal]: https://portal.azure.com/
+
+<!-- Classic portal. Removed 03/07/2017 -->
+<!-- [AzurePortal]: http://manage.windowsazure.com  -->
 

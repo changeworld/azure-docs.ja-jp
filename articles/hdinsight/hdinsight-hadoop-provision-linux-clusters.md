@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: aaff4a7aa717f42dedb96eceeb4315b31a6e7b17
-ms.openlocfilehash: 1ea77289ead60af067a0d07bac6c2e40a1684a04
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 31821203c18f1310c6a781bd28022efd3da7f03d
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -156,29 +157,29 @@ HDInsight クラスターでは、クラスターの作成時に次の&2; つの
   >
 
 ### <a name="data-source"></a>データ ソース
-元の Hadoop 分散ファイル システム (HDFS) は、クラスター上の多数のローカル ディスクを使用します。 HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。 Azure BLOB ストレージは、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。 HDFS インターフェイスを使用して、HDInsight のすべてのコンポーネントで BLOB ストレージの構造化データまたは非構造化データを直接操作できます。 BLOB ストレージにデータを格納すると、ユーザー データを失わずに、計算に使用されている HDInsight クラスターを安全に削除できます。
 
-構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。 一部の作成プロセスでは、Azure ストレージ アカウントと BLOB ストレージ コンテナーを事前に作成しておく必要があります。 BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。 必要に応じて、クラスターがアクセスできるその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。 また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB ストレージ コンテナーにアクセスすることもできます。  詳細については、[Azure Storage リソースへのアクセスの管理](../storage/storage-manage-access-to-resources.md)に関するページを参照してください。
+元の Hadoop 分散ファイル システム (HDFS) は、クラスター上の多数のローカル ディスクを使用します。 HDInsight は Azure Storage の BLOB を使用します。 Azure Storage は、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。 HDInsight のすべてのコンポーネントは、BLOB に格納された構造化データまたは非構造化データを HDFS インターフェイスを介して直接操作できます。 Azure Storage にデータを格納すると、ユーザー データを失わずに、計算に使用されている HDInsight クラスターを安全に削除できます。
+
+> [!WARNING]
+> __汎用__の Azure Storage アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
+
+構成時に、Azure Storage アカウントと、その Azure Storage アカウントの BLOB コンテナーを指定する必要があります。 一部の作成プロセスでは、Azure Storage アカウントと BLOB コンテナーを事前に作成しておく必要があります。 BLOB コンテナーは、既定の保存先としてクラスターで使用されます。 必要に応じて、クラスターがアクセスできるその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。 クラスターは、完全なパブリック読み取りアクセスまたは BLOB のみを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。  詳細については、[Azure Storage リソースへのアクセスの管理](../storage/storage-manage-access-to-resources.md)に関するページを参照してください。
 
 ![HDInsight ストレージ](./media/hdinsight-provision-clusters/HDInsight.storage.png)
 
 > [!NOTE]
-> 次の図に示すように、BLOB ストレージ コンテナーには、一連の BLOB がまとめられています。
->
->
+> 次の図に示すように、BLOB コンテナーには、一連の BLOB がまとめられています。
 
-![Azure BLOB ストレージ](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
+![Azure BLOB](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
 
-ビジネス データの格納には、既定の BLOB ストレージ コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB ストレージ コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
+ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
 > [!WARNING]
-> 1 つの BLOB ストレージ コンテナーを複数のクラスターで共有することはサポートされていません。
->
->
+> 1 つの BLOB コンテナーを複数のクラスターで共有することはサポートされていません。
 
-セカンダリ BLOB ストレージの使用方法の詳細については、[HDInsight での Azure Blob Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。
+セカンダリ Azure Storage アカウントの使用方法の詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。
 
-Azure Blob Storage に加え、[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) が、HDInsight での HBase クラスターの既定のストレージ アカウントとして、4 つのすべての HDInsight クラスターの種類のリンクされたストレージとして使用できます。 詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+Azure Storage に加え、[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) が、HDInsight での HBase クラスターの既定のストレージ アカウントとして、4 種類すべての HDInsight クラスターのリンクされたストレージとして使用できます。 詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 
 ### <a name="location-region"></a>場所 (リージョン)
 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure の場所に配置されている必要があります。
@@ -250,7 +251,7 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 
 HDInsight クラスターを作成するとき、あるいはクラスターが作成された後に、ストレージ アカウントを追加できます。  「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
-セカンダリ BLOB ストレージの詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 セカンダリ Data Lake Store の詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
+セカンダリ Azure Storage アカウントの詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 セカンダリ Data Lake Store の詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
 
 ## <a name="use-hiveoozie-metastore"></a>Hive/Oozie メタストアの使用
 HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム metastore を使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
@@ -314,7 +315,7 @@ Windows ベースのクラスターでは、クラシック デプロイ モデ�
 ## <a name="customize-clusters-using-script-action"></a>スクリプト アクションを使用したクラスターのカスタマイズ
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
-Mahout や Cascading などの一部のネイティブ Java コンポーネントは、Java アーカイブ (JAR) ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
+Mahout や Cascading などの一部のネイティブ Java コンポーネントは、Java アーカイブ (JAR) ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure Storage に分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
 > [!NOTE]
 > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。

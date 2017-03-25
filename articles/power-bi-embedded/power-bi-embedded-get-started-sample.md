@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/28/2017
+ms.date: 03/02/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 02b905b12344f23e0eb3b8d0a1969bf7c491119e
-ms.openlocfilehash: 0f7412d9ed3cacb043a5cf3f21d6109eeeeb074c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4f60937f9a9dd0e7d9939f85d1a9d442a4b7f266
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -245,5 +245,9 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 
 [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)  
 [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)  
+[レポートの埋め込み](power-bi-embedded-embed-report.md)  
+[データセットからの新しいレポートの作成](power-bi-embedded-create-report-from-dataset.md)  
+[Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
 

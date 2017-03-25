@@ -1,6 +1,6 @@
 Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。 アカウントがない場合、 [ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
-まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、「[Azure CLI のインストール](../articles/xplat-cli-install.md)」を参照して、`azure config mode arm` を実行してモードを `arm` に設定し、`azure login` コマンドを実行して Azure に接続してください。
+まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、「[Azure CLI のインストール](../articles/cli-install-nodejs.md)」を参照して、`azure config mode arm` を実行してモードを `arm` に設定し、`azure login` コマンドを実行して Azure に接続してください。
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI での 基本的な Azure Resource Manager コマンド
 この記事では、Azure サブスクリプションで ARM リソース (主に VM) を管理および操作するために Azure CLI で使用する基本的なコマンドについて説明します。  特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
@@ -36,9 +36,4 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 
 ## <a name="next-steps"></a>次のステップ
 * 基本的な VM 管理の範囲を超えた CLI コマンドのその他の例については、 [Azure Resource Manager での Azure CLI の使用](../articles/virtual-machines/azure-cli-arm-commands.md)に関する記事をご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

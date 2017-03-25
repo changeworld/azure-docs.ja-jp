@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 03/15/2017
 ms.author: sngun
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c263f57241bfc54bc3cd5be071eaba20e27513ce
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 498f4d82fa7d27b743e33f18e901cbaf6e93373c
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -49,10 +49,23 @@ This sample script creates a key vault, and then stores a certificate stored in 
 
     # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-    $fileContentBytes = get-content \$fileName -Encoding Byte
+    $fileContentBytes = get-content $fileName -Encoding Byte
 
-    $fileContentEncoded =
-[System.Convert\]::ToBase64String(\$fileContentBytes) $jsonObject = @" { "data": "\$filecontentencoded", "dataType" :"pfx", "password": "\$certPassword" } @$jsonObjectBytes = [System.Text.Encoding\]::UTF8.GetBytes(\$jsonObject) $jsonEncoded = \[System.Convert\]::ToBase64String(\$jsonObjectBytes) Switch-AzureMode -Name AzureResourceManager New-AzureResourceGroup -Name \$resourceGroup -Location \$location New-AzureKeyVault -VaultName \$vaultName -ResourceGroupName $resourceGroup -Location \$location -sku standard -EnabledForDeployment $secret = ConvertTo-SecureString -String \$jsonEncoded -AsPlainText -Force Set-AzureKeyVaultSecret -VaultName \$vaultName -Name \$secretName -SecretValue \$secret
+    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+    $jsonObject = @"
+    {
+    "data": "$filecontentencoded",
+    "dataType" :"pfx",
+    "password": "$certPassword"
+    }
+    @$jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+    Switch-AzureMode -Name AzureResourceManager
+    New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName
+    $resourceGroup -Location $location -sku standard -EnabledForDeployment
+    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+    Set-AzureKeyVaultSecret -VaultName $vaultName -Name $secretName -SecretValue $secret
 
 The first part of the script reads the .pfx file, and then stores it as a JSON object with the file content base64 encoded. Then the JSON object is also base64 encoded.
 
@@ -117,9 +130,9 @@ Here's sample output from the preceding script:
     https://contosovault.vault.azure.net:443/secrets/servicecert
                       /e3391a126b65414f93f6f9806743a1f7
 
-Now we are ready to deploy a VM template. Note the URI of the secret from the output (as highlighted in the preceding output in green).
+Now we are ready to deploy a VM template. Note the URI of the secret from the output.
 
-You'll need a template located here. The parameters of special interest (besides the usual VM parameters) are the vault name, the vault resource group, and the secret URI. Of course, you can also download it from GitHub and modify as needed.
+You'll need a template located [here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows). The parameters of special interest (besides the usual VM parameters) are the vault name, the vault resource group, and the secret URI. Of course, you can also download it from GitHub and modify as needed.
 
 When this VM is deployed, Azure injects the certificate into the VM.
 On Windows, certificates in the .pfx file are added with the private key not exportable. The certificate is added to the LocalMachine certificate location, with the certificate store that the user provided. On Linux, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file, and &lt;UppercaseThumbprint&gt;.prv for the private key.

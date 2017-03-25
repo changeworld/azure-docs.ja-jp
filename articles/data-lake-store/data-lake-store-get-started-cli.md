@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
-ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
-ms.lasthandoff: 02/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a6ea9510c481518becb52cc571ec62e3b151d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -47,7 +47,7 @@ Azure CLI は Node.js で実装されます。 Windows、Mac、Linux など、No
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure CLI** - インストールと構成に関する情報は、 [Azure CLI のインストールと構成](../xplat-cli-install.md) に関するページを参照してください。 CLI をインストールした後で、コンピューターを再起動してください。
+* **Azure CLI** - インストールと構成に関する情報は、 [Azure CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照してください。 CLI をインストールした後で、コンピューターを再起動してください。
 
 ## <a name="authentication"></a>認証
 この記事では、Data Lake Store に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Store アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Store には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の手順と詳しい情報については、「 [Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
@@ -179,5 +179,5 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-[azure-command-line-tools]: ../xplat-cli-install.md
+[azure-command-line-tools]: ../cli-install-nodejs.md
 

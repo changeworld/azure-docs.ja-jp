@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 2/28/2017
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a04b2f26c8ab34fdbfc7412d47292a560466eb44
-ms.openlocfilehash: c33d50a900be53a3161ad60bc34e2e819fe62947
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4d7de786dc902cb1c32e70a1f69bc74282de44f1
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -39,8 +39,12 @@ Automation の機能のうち以下のものは、Azure Government では現在�
 
 詳細については、「[Azure Government Backup (Azure Government のバックアップ)](documentation-government-services-backup.md)」を参照してください。
 
+## <a name="resource-policy"></a>リソース ポリシー
+
+[Azure リソース ポリシー](../azure-resource-manager/resource-manager-policy.md) は、Azure Government では利用できません。
+
 ## <a name="site-recovery"></a>Site Recovery
-Site Recovery (ASR) は、Azure Government で一般提供されています。
+Azure Site Recovery は、Azure Government で一般提供されています。
 
 詳細については、[Site Recovery のパブリック ドキュメント](../site-recovery/site-recovery-overview.md)をご覧ください。
 
@@ -59,13 +63,13 @@ Site Recovery の機能のうち以下のものは、Azure Government では現�
 >[!NOTE]
 >この表は、米国政府バージニアおよび米国政府アイオワに適用されます。
 
-Azure Government では、ASR の次の URL が異なります。
+Azure Government では、Site Recovery の次の URL が異なります。
 
 | Azure Public | Azure Government | メモ |
 | --- | --- | --- |
-| *.hypervrecoverymanager.windowsazure.com | *.hypervrecoverymanager.windowsazure.us | Site Recovery サービスへのアクセス |
-| *. backup.windowsazure.com  | *.backup.windowsazure.us | 保護サービスへのアクセス |
-| *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | VM スナップショットの格納用 |
+| \*.hypervrecoverymanager.windowsazure.com | \*.hypervrecoverymanager.windowsazure.us | Site Recovery サービスへのアクセス |
+| \*.backup.windowsazure.com  | \*.backup.windowsazure.us | 保護サービスへのアクセス |
+| \*.blob.core.windows.net | \*.blob.core.usgovcloudapi.net | VM スナップショットの格納用 |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | MySQL のダウンロード用 |
 
 ## <a name="log-analytics"></a>Log Analytics
@@ -84,7 +88,6 @@ Log Analytics は、Azure Government で一般提供されています。
   * Azure Automation Analytics ソリューション
   * Key Vault Analytics ソリューション
 * オンプレミスのソフトウェアを更新する必要のあるソリューションと機能。これには以下が含まれます。
-  * System Center Configuration Manager のコンピューター グループ
   * Surface Hub ソリューション
 * パブリック Azure のプレビュー段階の機能。これには以下が含まれます。
   * Power BI へのデータのエクスポート
@@ -106,15 +109,15 @@ Azure Government では、Log Analytics の URL が異なります。
 * System Center Operations Manager 管理サーバーを Log Analytics に接続するには、更新された管理パックをダウンロードしてインポートする必要があります。
   + System Center Operations Manager 2016
     1. [Update Rollup 2 for System Center Operations Manager 2016](https://support.microsoft.com/help/3209591) をインストールします。
-    2. Update Rollup 2 の一部として含まれている管理パックを、Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、Microsoft TechNet Web サイトの「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
+    2. Update Rollup 2 の一部として含まれている管理パックを、Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
     3. Operations Manager を Log Analytics に接続するには、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」の手順に従ってください。
   + System Center Operations Manager 2012 R2 UR3 (またはそれ以降) / Operations Manager 2012 SP1 UR7 (またはそれ以降)
     1. [更新された管理パック](http://go.microsoft.com/fwlink/?LinkId=828749)をダウンロードして保存します。
     2. ダウンロードしたファイルを解凍します。
-    3. 管理パックを Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、Microsoft TechNet Web サイトの「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
+    3. 管理パックを Operations Manager にインポートします。 ディスクから管理パックをインポートする方法については、「[Operations Manager 管理パックのインポート方法](http://technet.microsoft.com/library/hh212691.aspx)」をご覧ください。
     4. Operations Manager を Log Analytics に接続するには、「[Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」の手順に従ってください。
   
-
+* [System Center Configuration Manager 2016 のコンピューター グループ](../log-analytics/log-analytics-sccm.md)を使用するには、[テクニカル プレビュー 1701](https://docs.microsoft.com/en-us/sccm/core/get-started/technical-preview)またはそれ以降を使用する必要があります。
 
 ### <a name="frequently-asked-questions"></a>よく寄せられる質問
 * Microsoft Azure の Log Analytics のデータを Azure Government に移行できますか。

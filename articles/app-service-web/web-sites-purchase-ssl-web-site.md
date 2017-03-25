@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
-ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: edcb6d37eb4d82ff5928ee33cf456c3795eb8131
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -170,8 +170,11 @@ SSL 証明書を要求する前に、その証明書により、どのドメイ�
   
     この IP アドレスは、ドメイン用の A レコードを構成するために以前使用した仮想 IP アドレスとは異なります。 SNI ベースの SSL を使用するように構成する場合、または SSL を使用するように構成しない場合は、このエントリに対してアドレスは表示されません。
 
-1. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
+* ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
    ここで、証明書が正しく構成されていることを確認するために、HTTP:// ではなく、HTTPS:// を使用してアプリを参照することができる必要があります。
+
+## <a name="bkmk_Rekey"></a>App Service 証明書をエクスポートする
+他の Azure サービスで使用できるように、App Service 証明書のローカル PFX コピーを作成することができます。 詳細については、**[こちらのブログ記事を参照してください](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)**。
 
 ## <a name="bkmk_Rekey"></a>キーを更新して証明書を同期する
 1. セキュリティ上の理由から証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ブレードの **[キーの更新と同期]** オプションを選択します。 

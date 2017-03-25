@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: f812ff8fb2b32f89e24d640e0eae8f2da9858a18
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -45,7 +45,7 @@ System Center Operations Manager Assessment ソリューションを使用する
 
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
- - OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。
+ - OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) からソリューションをインストールするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページに説明されている手順に従ってソリューションをインストールしてください。
 
  - ソリューションをワークスペースに追加すると、ダッシュ ボードの System Center Operations Manager Assessment タイルには、追加の構成が必要だというメッセージが表示されます。 タイルをクリックし、ページに表示される構成の手順に従います。
 

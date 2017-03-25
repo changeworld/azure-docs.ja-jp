@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/15/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
-ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 91a2ac08f6daac8cba195454e09bb07afe265046
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -73,7 +74,7 @@ Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) で
 * オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Store に ORC 形式で書き込む。
 * オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
 
-## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>グローバルに使用できるデータの移動
+## <a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。 ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>クラウド データ ストア間でのデータのコピー
@@ -104,7 +105,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | に関するページを参照してください。 | インド西部 | インド中部 |
 | に関するページを参照してください。 | インド南部 | インド中部 |
 
-また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、英国の Azure Store 間でコピーするには、`executionLocation` を "北ヨーロッパ" として指定し、北ヨーロッパ経由でルーティングします。
+また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、英国の Azure Store 間でコピーするには、北ヨーロッパ経由でルーティングされるように `"executionLocation": "North Europe"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
 
 > [!NOTE]
 > コピー先データ ストアのリージョンが前のリストにない場合、または検出できない場合は、`executionLocation` が指定されていないと、既定では代わりのリージョンには移動せず、コピー アクティビティは失敗します。 今後さらに多くのリージョンがサポートされる予定です。
@@ -124,7 +125,7 @@ Azure ポータル、Visual Studio、または Azure PowerShell で Data Factory
 
 JSON プロパティ (名前、説明、入力テーブル、出力テーブル、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 アクティビティの `typeProperties` セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 
-コピー アクティビティの場合、 `typeProperties` セクションはソースとシンクの種類によって異なります。 そのデータ ストアについて、コピー アクティビティでサポートされている type プロパティについては、 [サポートされているソースとシンク](#supported-data-stores) に関するセクションでソース/シンクをクリックしてください。   
+コピー アクティビティの場合、 `typeProperties` セクションはソースとシンクの種類によって異なります。 そのデータ ストアについて、コピー アクティビティでサポートされている type プロパティについては、 [サポートされているソースとシンク](#supported-data-stores-and-formats) に関するセクションでソース/シンクをクリックしてください。
 
 JSON 定義のサンプルを次に示します。
 
@@ -152,10 +153,9 @@ JSON 定義のサンプルを次に示します。
             "type": "BlobSource"
           },
           "sink": {
-            "type": "SqlSink",
-            "writeBatchSize": 10000,
-            "writeBatchTimeout": "60:00:00"
-          }
+            "type": "SqlSink"
+          },
+          "executionLocation": "North Europe"          
         },
         "Policy": {
           "concurrency": 1,
@@ -191,9 +191,4 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 ## <a name="next-steps"></a>次のステップ
 * コピー アクティビティの詳細については、「 [Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 * オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、 [オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

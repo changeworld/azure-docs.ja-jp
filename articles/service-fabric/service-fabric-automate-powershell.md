@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用した Service Fabric アプリケーション管理の自動化 | Microsoft Docs"
+title: "Azure Service Fabric アプリケーション管理の自動化 | Microsoft Docs"
 description: "PowerShell を使用して、Service Fabric アプリケーションをデプロイ、アップグレード、テスト、および削除します。"
 services: service-fabric
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 03/14/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: d4a08f7eec5f57b06d87d13abe46942ddc24b482
-ms.openlocfilehash: d1909225a950b961491d3fe426f1e0d6aa5bdd53
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 59133d11d2d66daa44f28ef5b9aa3aae92e56a1e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -113,7 +113,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/WordCount
 数分で、[Get-ServiceFabricApplicationUpgrade](/powershell/servicefabric/vlatest/get-servicefabricapplicationupgrade) コマンドレットにより、すべてのアップグレード ドメインがアップグレードされた (完了した) ことが示されます。
 
 ## <a name="task-test-a-service-fabric-application"></a>タスク: Service Fabric アプリケーションのテスト
-高品質なサービスのコードを記述するには、開発者は信頼性の低いインフラストラクチャの障害を誘発してサービスの安定性をテストできる必要があります。 Service Fabric を使用すると、開発者は、混乱とフェールオーバーのテスト シナリオを使用して、障害アクションを誘発し、障害のある状態でサービスをテストできます。  追加情報については、「 [Testability の概要](service-fabric-testability-overview.md) 」を参照してください。
+高品質なサービスのコードを記述するには、開発者は信頼性の低いインフラストラクチャの障害を誘発してサービスの安定性をテストできる必要があります。 Service Fabric を使用すると、開発者は、混乱とフェールオーバーのテスト シナリオを使用して、障害アクションを誘発し、障害のある状態でサービスをテストできます。  詳細については、「[Fault Analysis Service の概要](service-fabric-testability-overview.md)」を参照してください。
 
 ### <a name="step-1-run-the-chaos-test-scenario"></a>手順 1: 混乱テスト シナリオの実行
 混乱のテスト シナリオでは、Service Fabric クラスター全体にわたる障害を生成します。 このシナリオには、一般的に数か月間または数年間から数時間で発生するエラーが圧縮されています。 障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。 次の例では、混乱テスト シナリオを60 分間実行します。

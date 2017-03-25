@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/07/2017
 ms.author: vturecek;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 7a79b19bf51c89e19ad67421978dacccddeb5119
-ms.openlocfilehash: 95cb29e3a7fe59fb29189c7e62b5c6c8e77e6a20
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6167f3edd3e99522a8997382d6569c82ea387d5c
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 95cb29e3a7fe59fb29189c7e62b5c6c8e77e6a20
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>ローカルの Service Fabric アプリケーションをデバッグする
-ローカル コンピューターの開発クラスターで Azure Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。 Visual Studio では、アプリケーションをローカル クラスターにデプロイして、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
+ローカル コンピューターの開発クラスターで Azure Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。 Visual Studio 2017 または Visual Studio 2015 では、アプリケーションをローカル クラスターにデプロイし、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
 
 1. 「 [Service Fabric 開発環境の設定](service-fabric-get-started.md)」にある手順に従って、ローカル開発クラスターを開始してください。
 2. **F5** キーを押すか、**[デバッグ]** > **[デバッグの開始]** の順にクリックします
@@ -159,9 +160,4 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
 [viewingstreamingtraces]: ./media/service-fabric-debugging-your-application/viewingstreamingtraces.png
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

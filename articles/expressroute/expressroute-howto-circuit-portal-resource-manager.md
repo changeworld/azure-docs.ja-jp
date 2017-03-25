@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2017
+ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 46b4e1b149a3e9427e1384abc0d95eb616002ab6
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: e74ebd1d18aa3c5d278557940a765fe02c7182ff
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -128,9 +128,9 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 ダウンタイムなく、次を実行できます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。
-* ExpressRoute 回線の帯域幅を増やす。 回線の帯域幅のダウングレードはサポートされていないことに注意してください。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていないことに注意してください。 
 * 課金プランを従量制課金データから無制限データに変更します。 無制限データから従量制課金データへの課金プランの変更はサポートされていないことに注意してください。
-* **従来の操作の許可**を有効または無効にできます。
+* *従来の操作の許可*を有効または無効にできます。
 
 制限と制約事項の詳細は、「 [ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
@@ -141,6 +141,8 @@ ExpressRoute 回線を変更するには、下の図に示すように **[構成
 帯域幅、SKU、課金モデルを変更し、構成ブレード内の従来の操作を許可することができます。
 
 > [!IMPORTANT]
+> 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
+>
 > 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
 > 
 > Standard 回線で許可されるリソースより多くのリソースを使用する場合、Premium アドオンの無効化操作が失敗することがあります。

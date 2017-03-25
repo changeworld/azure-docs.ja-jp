@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: ebfafd5ee9049b5049070ad111c95746b89e755f
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 7ad5eb2e53e846e7f19e9f136249e4ae280bf996
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -73,6 +74,9 @@ IoT Hub は、さまざまな機能にその他の制限を適用します。
 | エンドポイントの追加 | 有料の SKU ハブには、エンドポイントを 10 個追加できます。 無料の SKU ハブには、エンドポイントを&1; 個追加できます。 |
 | メッセージ ルーティング ルール | 有料の SKU ハブには、100 個のルーティング ルールを設定できます。 無料の SKU ハブには、5 個のルーティング ルールを設定できます。 |
 
+> [!NOTE]
+> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/en-us/support/options/)にお問い合わせください。
+
 ## <a name="next-steps"></a>次のステップ
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
@@ -87,9 +91,4 @@ IoT Hub は、さまざまな機能にその他の制限を適用します。
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

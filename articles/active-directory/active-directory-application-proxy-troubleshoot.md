@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 13b77c10dfe42d39ad3802f0be1b3f6fe75788e5
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0051bbeaac458e8df07e5c7aa186fbefb526f50e
+ms.lasthandoff: 03/15/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/03/2017
 * イベント ビューアーを開き、**[アプリケーションとサービス ログ]** > **[Microsoft]** > **[AadApplicationProxy]** > **[コネクタ]** > **[Admin]** の順に移動して、[Admin] の下にあるアプリケーション プロキシ コネクタ イベントを探します。
 * 必要に応じて、分析およびデバッグ ログを有効にし、サービス アプリケーション プロキシ コネクタのセッション ログを有効にすることで、より詳細なログを使用できます。
 
-Azure AD のトラブルシューティング ツールの詳細については、「Troubleshooting tool to validate connector networking prerequisites (コネクタのネットワークの前提条件を検証するためのトラブルシューティング ツール)」(https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites) をご覧ください。
+Azure AD のトラブルシューティング ツールについて詳しくは、「[Troubleshooting tool to validate connector networking prerequisites (コネクタのネットワークの前提条件を検証するためのトラブルシューティング ツール)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites)」をご覧ください。
 
 ## <a name="the-page-is-not-rendered-correctly"></a>ページが正しく表示されない
 特定のエラー メッセージが表示されない場合でも、アプリケーションが正しくレンダリングまたは機能しないことがあります。 これは、記事のパスを発行した場合に発生することがありますが、アプリケーションは、そのパスの外部に存在するコンテンツを必要とします。

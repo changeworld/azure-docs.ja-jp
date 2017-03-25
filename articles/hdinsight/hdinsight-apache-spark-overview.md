@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 858d6115ed3a96e3b6a3362ff8f5c1fc4c279bd2
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: edfdba3105aba1079d3c707e7320770c4a999a32
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -33,7 +33,7 @@ HDInsight で Spark クラスターを作成するときは、Spark をインス
 **Azure HDInsight での Apache Spark の概要** [HDInsight での Spark クラスターの作成と Jupyter を使用したサンプル アプリケーションの実行](hdinsight-apache-spark-jupyter-spark-sql.md)に関するクイック スタートを参照してください。
 
 > [!NOTE]
-> 現在のリリースでの既知の問題と制限事項の一覧については、[Azure HDInsight における Apache Spark の既知の問題](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+> 現在のリリースでの既知の問題と制限事項の一覧については、[Azure HDInsight における Apache Spark の既知の問題](hdinsight-apache-spark-known-issues.md)に関するページを参照してください。
 > 
 > 
 

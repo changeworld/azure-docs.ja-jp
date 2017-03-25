@@ -12,47 +12,61 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/2/2017
+ms.date: 03/02/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 97edd5eaa3cfa4a122556583dff28c4a9b6f5adc
-ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 4ec026a5b95170d0eba244123c37cd3c8fab150a
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Azure アクティビティ ログの概要
 **Azure アクティビティ ログ** では、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
-アクティビティ ログは、リソースによって出力されるログである [診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログでは、そのリソースに対する操作ではなく、そのリソースの特定の操作に関するデータが提供されます。
+![アクティビティ ログとその他の種類のログ ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
+
+図 1: アクティビティ ログとその他の種類のログ
+
+アクティビティ ログは[診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します。
 
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
-詳細については、[アクティビティ ログを紹介したビデオ](https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz)を参照してください。  
 
 > [!WARNING]
-> Azure のアクティビティ ログでは、主に、クラシック/RDFE モデルを使用するアクティビティではなく、Azure Resource Manager で発生したアクティビティを記録します。 一部のクラシック リソース タイプには、Azure Resource Manager にプロキシ リソース プロバイダー (例:  Microsoft.ClassicCompute) があることに注意してください。 ユーザーがこれらのプロキシ リソース プロバイダーを使用して Azure Resource Manager 経由でクラシック リソース タイプを操作すると、これらの操作はアクティビティ ログに表示されます。 ユーザーがクラシック ポータルまたは Azure Resource Manager プロキシの外部でクラシック リソース タイプを操作すると、ユーザー アクションは操作ログに記録されます。この記録には、クラシック ポータルからのみアクセスできます。
+> Azure アクティビティ ログは、主に Azure Resource Manager で発生したアクティビティを記録します。 クラシック/RDFE モデルを使用しているリソースは追跡されません。 一部のクラシック リソース タイプでは、Azure Resource Manager にプロキシ リソース プロバイダー (例: Microsoft.ClassicCompute) が存在します。 これらのプロキシ リソース プロバイダーを使用して Azure Resource Manager 経由でクラシック リソース タイプを操作すると、その操作がアクティビティ ログに表示されます。 クラシック ポータルまたは Azure Resource Manager プロキシの外部でクラシック リソース タイプを操作すると、そのアクションは操作ログにのみ記録されます。 この操作ログには、クラシック ポータルでのみアクセスできます。
 >
 >
+
+アクティビティ ログの概要については、次のビデオを参照してください。
+[!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>アクティビティ ログで実行できること
 アクティビティ ログでは次のことを実行できます。
 
-* **Azure ポータル**でアクティビティ ログを照会して表示する。
-* REST API、PowerShell コマンドレット、または CLI を使用してアクティビティ ログを照会する。
-* [アクティビティ ログ イベントをトリガーする電子メール アラートまたは Webhook アラートを作成する。](insights-auditlog-to-webhook-email.md)
-* [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する。](monitoring-archive-activity-log.md) **ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
-* [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
-* サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、アクティビティ ログを [**Event Hubs** にストリーミング](monitoring-stream-activity-logs-event-hubs.md)する。
+![Azure アクティビティ ログ](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
-設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントまたはイベント ハブ名前空間は、ログを出力するのと同じサブスクリプションに属している必要はありません。
+
+* [アクティビティ ログ イベントをトリガーする電子メール アラートまたは Webhook アラートを作成する。](insights-auditlog-to-webhook-email.md)
+* サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、アクティビティ ログを [**Event Hubs** にストリーミング](monitoring-stream-activity-logs-event-hubs.md)する。
+* [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
+* [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する。](monitoring-archive-activity-log.md) **ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
+* **Azure ポータル**でアクティビティ ログを照会して表示する。
+* PowerShell コマンドレット、CLI、または REST API を使用してアクティビティ ログを照会する。
+
+
+ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
 ## <a name="export-the-activity-log-with-log-profiles"></a>ログ プロファイルを使用したアクティビティ ログのエクスポート
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
 
 * アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
-* 送信するイベント カテゴリ (Write、Delete、Action)。 *ログ プロファイルでの "カテゴリ" の意味は、アクティビティ ログ イベントの "category" プロパティの意味とは異なることに注意してください。ログ プロファイルの "カテゴリ" は操作の種類 (Write、Delete、Action) を表しますが、アクティビティ ログ イベントの "category" プロパティはイベントのソースまたは種類 (Administration、ServiceHealth、Alert など) を表します。*
+* 送信するイベント カテゴリ (Write、Delete、Action)。 "*ログ プロファイルでの "カテゴリ" の意味は、アクティビティ ログ イベントでの意味とは異なります。ログ プロファイルでの "カテゴリ" は、操作の種類 (Write、Delete、Action) を指します。アクティビティ ログ イベントでの "category" プロパティは、イベントのソースまたは種類 (Administration、ServiceHealth、Alert など) を指します。*"
 * エクスポートするリージョン (場所)
-* アクティビティ ログをストレージ アカウントに保持する期間。 リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+* アクティビティ ログをストレージ アカウントに保持する期間。
+    - リテンション期間が&0; 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
+    - リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは&1; つだけです。
 
@@ -60,18 +74,18 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 Azure ポータルの [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
 
 1. ポータルの左側のメニューを使用して、 **[アクティビティ ログ]** ブレードに移動します。
-   
+
     ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
 2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
-   
+
     ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
 3. ブレードが表示されたら、以下を選択できます。  
-   
+
    * イベントをエクスポートするリージョン
    * イベントの保存先となるストレージ アカウント
    * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
    * イベントのストリーミング用にイベント ハブを作成する Service Bus 名前空間。
-     
+
      ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. **[保存]** をクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 
@@ -240,10 +254,4 @@ azure insights logprofile delete --name my_log_profile
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

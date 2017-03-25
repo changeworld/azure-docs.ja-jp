@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/07/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 38c7ea11091bb65432589df4d72e5efef3cb7ea3
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 612b58db48e160cb1b4cfef1f8f4c2b203061064
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -39,14 +39,14 @@ ms.lasthandoff: 03/03/2017
 
 このセクションでは、 **NuGet** を使用して、Media Services .NET SDK と依存するその他のライブラリを追加する方法を説明します。
 
-また、GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) と [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) から最新の Media Services .NET SDK bits を取得してソリューションをビルドし、クライアント プロジェクトに参照を追加できます。 必要なすべての依存関係が、自動的にダウンロードされ抽出されることにご注意ください。
+また、GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) または [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) から最新の Media Services .NET SDK bits を取得してソリューションをビルドし、クライアント プロジェクトに参照を追加できます。 必要な依存関係はすべて自動的にダウンロードされ抽出されます。
 
 1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
 2. ソリューションをビルドします。
 3. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** をインストールして追加します。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
    
     最新バージョンの NuGet がインストールされていることをご確認ください。 詳しい情報とインストール手順については、 [NuGet](http://nuget.codeplex.com/)をご覧ください。
-4. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、[NuGet パッケージの管理…] を選択します。
+4. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、[NuGet パッケージの管理] を選択します。
    
     [NuGet パッケージの管理] ダイアログ ボックスが表示されます。
 5. オンライン ギャラリーで、Azure Media Services Extensions を検索し、[Azure Media Services .NET SDK Extensions] を選択し、[インストール] をクリックします。

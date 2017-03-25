@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
-ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -425,7 +425,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 サービス プリンシパル認証を使用するには、最初に Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与する必要があります。 その後、対応するアプリケーション ID、アプリケーション キー、およびテナント情報によって Azure Data Factory で以下のプロパティを指定して、Data Lake Store との間でデータをコピーできます。 これを設定して、必要な情報を取得する方法については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> コピー ウィザードを使用する場合、フォルダー間を移動するには、サービス プリンシパルで少なくとも ADLS ルート ("/") に対する読み取りアクセス許可か、ADLS アカウントの閲覧者ロールが付与されている必要があります。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
+> コピー ウィザードを使用して作成する場合、フォルダー間を移動するには、サービス プリンシパルで少なくとも ADLS アカウントに対するアクセス制御 (IAM) の閲覧者ロールと、ADLS ルート ("/") とその子に対する読み取りおよび実行アクセス許可が付与されている必要があります。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
 >
 > サービス プリンシパルを AAD から新しく作成/更新した場合は、実際に有効になるまで数分間かかります。 まずサービス プリンシパルと ADLS ACL 構成を再確認し、「提供された資格情報が無効です」というエラーが解消されない場合、しばらく待ってからやり直してください。
 >
@@ -484,7 +484,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
-| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com, @live.com, など)。 |12 時間 |
+| Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
 | Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このトークンの有効期限の前にパスワードを変更すると、トークンが即座に期限切れとなり、前述のエラーが表示されます。
@@ -527,7 +527,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | folderPath |Azure Data Lake Store のコンテナーとフォルダーのパス。 |はい |
-| fileName |Azure Data Lake Store 内のファイルの名前。 fileName は省略可能で、大文字と小文字を区別します。 <br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileName |Azure Data Lake Store 内のファイルの名前。 fileName は省略可能で、大文字と小文字を区別します。 <br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: Data<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 詳細と例については、「 [partitionedBy プロパティの使用](#using-partitionedby-property) 」をご覧ください。 |なし |
 | BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |

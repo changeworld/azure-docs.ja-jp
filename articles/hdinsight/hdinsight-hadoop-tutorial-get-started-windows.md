@@ -17,8 +17,9 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
-ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 8a925c38a561d11f1c0e394b8c993f739e912f54
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -157,8 +158,8 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 2. **[Power Query]** メニューをクリックし、**[その他のデータ ソース]**、**[Azure HDInsight から]** の順にクリックします。
    
     ![Excel PowerQuery Import menu open for Azure HDInsight.][image-hdi-gettingstarted-powerquery-importdata]
-3. クラスターに関連付けられた Azure Blob Storage アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。 (これは、このチュートリアルで作成済みのストレージ アカウントです。)
-4. Azure Blob Storage アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
+3. クラスターに関連付けられた Azure Storage アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。 (これは、このチュートリアルで作成済みのストレージ アカウントです。)
+4. Azure Storage アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
 5. 右側のウィンドウで、BLOB 名をダブルクリックします。 既定で、BLOB名はクラスター名と同じです。
 6. **[名前]** 列で **stdout** を見つけます。 対応する **[フォルダーのパス]** 列の GUID が前にコピーした GUID と一致していることを確認します。 一致している場合、出力データは送信したジョブに対応しています。 **[stdout]** の左側の列の **[バイナリ]** をクリックします。
    
@@ -190,7 +191,7 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 
 * [HDInsight Hadoop Tools for Visual Studio の使用開始][1]
 * [HDInsight Emulator の概要][hdinsight-emulator]
-* [HDInsight での Azure Blob Storage の使用][hdinsight-storage]
+* [HDInsight での Azure Storage の使用][hdinsight-storage]
 * [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
@@ -252,10 +253,5 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

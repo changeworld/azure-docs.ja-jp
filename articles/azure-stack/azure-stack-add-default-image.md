@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 23bffd28d8a2ccf6402a644138b519102522da01
-ms.openlocfilehash: 59fc3ceeec17f054df6a9d99bd69c798acce2527
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 7c59a718967734fb7c73b994b4f27ef678330607
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -28,22 +28,10 @@ Before you can provision virtual machines, you must add the Windows Server VM im
 1. After deploying Azure Stack, sign in to the MAS-CON01 virtual machine.
 2. Go to https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 and download the Windows Server 2016 evaluation. When prompted, select the **ISO** version of the download. Record the path to the download location to use later in these steps.
 3. Open PowerShell ISE as an administrator.
-4. Install the following PowerShell modules:
-
-    ```powershell
-    Install-Module -Name AzureRM -RequiredVersion 1.2.8 -Scope CurrentUser
-    Install-Module -Name AzureStack
-    ```
-5. Download the Azure Stack Tools archive, expand the downloaded files, and changes to the tools directory by running the following script:    
-
-    ```powershell
-    #Download the tools archive
-    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip -OutFile master.zip 
-    #Expand the downloaded files. 
-    expand-archive master.zip -DestinationPath . -Force
-    #Change to the tools directory
-    cd AzureStack-Tools-master 
-    ```
+4. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+5. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md).
+    > [!NOTE]
+    > Make sure that you download and extract the Azure Stack tool repository to a folder that is NOT under the C:\Windows\System32 directory.  
 6. Import the Azure Stack Connect and Compute Modules by using the following script:
 
     ```powershell

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/09/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
-ms.openlocfilehash: 609de3ff0fb14aa98b28572dce1eaeb8a4412d93
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 5e3221395082513f842863615d40f7d3ebf2562e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -31,6 +31,8 @@ ms.lasthandoff: 02/09/2017
 
 * Azure サブスクリプションでリモート監視の事前構成済みソリューションのプロビジョニングを行います。
 * SendGrid アカウントを作成し、ビジネス プロセスをトリガーする電子メールを送信できるようにします。 [SendGrid](https://sendgrid.com/) で **[無料で試す]**をクリックし、無料試用版アカウントにサインアップできます。 無料試用版アカウントに登録したら、SendGrid でメールを送信するアクセス許可を付与する [API キー](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) を作成する必要があります。 この API キーはチュートリアルの後半で必要になります。
+
+このチュートリアルでは、構成済みソリューションのバックエンドのアクションを編集するために Visual Studio 2015 または Visual Studio 2017 が必要となります。
 
 リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure Portal][lnk-azureportal] でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループには、Azure クラシック ポータルにある Azure Active Directory アプリケーション以外の、ソリューション用にプロビジョニングされている Azure リソースがすべて表示されます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
 
@@ -117,8 +119,8 @@ ms.lasthandoff: 02/09/2017
     ```
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
     {
-        { "Send Message", "<Http Post to this UR>" },
-        { "Raise Alarm", "<Http Post to this UR> }
+        { "Send Message", "<Http Post to this URL>" },
+        { "Raise Alarm", "<Http Post to this URL>" }
     };
     ```
 5. ソリューションの変更内容を保存して、Visual Studio を終了します。

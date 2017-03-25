@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2017
+ms.date: 03/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: df9772796796f7383aafc583b01f299a53679d88
-ms.openlocfilehash: 77e05bf2b7a4ab6c6e6d3d82773cc03628f5342c
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3536777690a9b00ded7c7fdf4d5f39638dad71b0
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -28,13 +28,13 @@ ms.lasthandoff: 02/27/2017
 ## <a name="create-a-c-sample-solution-on-windows"></a>Windows で C のサンプル ソリューションを作成する
 次の手順では、リモート監視が事前構成されたソリューションと通信するクライアント アプリケーションを作成する方法を示します。 このアプリケーションは C で記述し、Windows 上でビルドおよび実行します。
 
-Visual Studio 2015 にスタート プロジェクトを作成し、IoT Hub デバイス クライアントの NuGet パッケージを追加します。
+Visual Studio 2015 または Visual Studio 2017 にスタート プロジェクトを作成し、IoT Hub デバイス クライアントの NuGet パッケージを追加します。
 
-1. Visual Studio 2015 で、Visual C++ **Win32 コンソール アプリケーション** テンプレートを使用して、C コンソール アプリケーションを作成します。 プロジェクトの名前として「 **RMDevice**」と入力します。
+1. Visual Studio で、Visual C++ **Win32 コンソール アプリケーション** テンプレートを使用して、C コンソール アプリケーションを作成します。 プロジェクトの名前として「 **RMDevice**」と入力します。
 2. **Win32 アプリケーション ウィザード**の **[アプリケーション設定]** ページで、**[コンソール アプリケーション]** が選択されていることを確認し、**[プリコンパイル済みヘッダー]** と **[Security Development Lifecycle (SDL) checks (Security Development Lifecycle (SDL) チェック)]** をオフにします。
 3. **ソリューション エクスプローラー**で、stdafx.h、targetver.h、stdafx.cpp の各ファイルを削除します。
 4. **ソリューション エクスプローラー**で、RMDevice.cpp ファイルの名前を RMDevice.c に変更します。
-5. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]**をクリックし、次の NuGet パッケージを検索してプロジェクトにインストールします。
+5. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** をクリックし、次の NuGet パッケージを検索してインストールします。
    
    * Microsoft.Azure.IoTHub.Serializer
    * Microsoft.Azure.IoTHub.IoTHubClient

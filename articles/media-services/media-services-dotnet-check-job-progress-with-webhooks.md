@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: c0cf8a3d4e257f88f81fca9a6a1161c158b335b8
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 357a707724266acfef016add97e19d4b1abb41e3
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -54,9 +54,9 @@ Webhook は、署名キー (資格情報) が通知エンドポイントを構�
 
 次のコードでは、**VerifyWebHookRequestSignature** メソッドが、通知メッセージを検証します。 この検証の目的は、メッセージが Azure Media Services によって送信されており、改ざんされていないことを確認することです。 この署名は、トランスポート層セキュリティ (TLS) 経由のクエリ パラメーターとして**コード**値を含んでいるため、Azure Functions では省略可能です。 
 
-次の Media Services .NET Azure Functions の定義については、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/Notification_Webhook_Function)を参照してください。
+Media Services の各種 .NET Azure 関数の定義は、このトピックで紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
 
-次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている&3; つのファイル (function.json、project.json、および run.csx) の定義を示します。
+次のコード リストでは、Azure Functions パラメーターの定義と、Azure Functions に関連付けられている&3; つのファイル (function.json、project.json、run.csx) の定義を示します。
 
 ### <a name="application-settings"></a>アプリケーションの設定 
 
@@ -115,6 +115,10 @@ project.json ファイルには、依存関係が含まれています。
 ### <a name="runcsx"></a>run.csx
 
 次の C# コードは、Webhook である Azure Function の定義を示しています。 この関数は、Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。 
+
+
+>[!NOTE]
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
     ///////////////////////////////////////////////////
     #r "Newtonsoft.Json"
@@ -345,10 +349,10 @@ project.json ファイルには、依存関係が含まれています。
 このセクションでは、タスクに Webhook 通知を追加するコードを示します。 チェーン タスクを使用したジョブでより役立つ可能性のあるジョブ レベル通知を追加することもできます。  
 
 1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 [名前]、[場所]、[ソリューション名] を入力し、[OK] をクリックします。
-2. [Nuget](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
+2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     
-    * 通知を送信する Azure Media Services の名前およびキー 
+    * 通知を送信する Azure Media Services の名前とキー 
     * 通知の取得を想定する Webhook URL 
     * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの Webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
 

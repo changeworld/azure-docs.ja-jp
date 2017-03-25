@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c232e334e60f9205076ba09d9f561c9fb1b42a4c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: c7576ce3e802e66ebea6ba83927609ed81fe0869
+ms.lasthandoff: 03/09/2017
 
 ---
 
@@ -59,7 +59,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Azure Network Watcher を使用したトラブルシューティング
 
-接続を診断するには、Azure PowerShell に接続して `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットを開始します。 このコマンドレットの使用に関する詳細については、Virtual Network Gateway と接続のトラブルシューティング - PowerShell に関する記事をご覧ください。 このコマンドレットの完了には最大で数分かかる場合があります。 
+接続を診断するには、Azure PowerShell に接続して `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットを開始します。 このコマンドレットの使用に関する詳細については、[PowerShell を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング](network-watcher-troubleshoot-manage-powershell.md)に関する記事をご覧ください。 このコマンドレットの完了には最大で数分かかる場合があります。 
 
 コマンドレットが完了したら、コマンドレットの指定されたストレージの場所に移動して、この問題の詳細な情報とログを取得できます。 Azure Network Watcher により、次のログ ファイルを含む zip フォルダーが作成されます。
 
@@ -116,3 +116,4 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 PowerShell と Azure Automation を使用した VPN Gateway の接続の確認については、[Azure Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視](network-watcher-monitor-with-azure-automation.md)に関する記事をご覧ください。
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png
+

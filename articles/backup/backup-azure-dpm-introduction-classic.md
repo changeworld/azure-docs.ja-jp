@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2016
+ms.date: 03/10/2017
 ms.author: nkolli;giridham;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: f4a5412615e23cc90acc54a9c7430b01fe77dbcf
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9d1e68b0e73c60542de566c32c92caf0b3c4630c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -61,11 +62,13 @@ DPM サーバーのバックアップに Azure Backup を使用するビジネ�
 ## <a name="prerequisites"></a>前提条件
 DPM データをバックアップするために Azure Backup を準備するには、次のようにします。
 
-1. **バックアップ コンテナーの作成** — Azure Backup コンソールでコンテナーを作成します。
+1. **バックアップ コンテナーの作成**
+
+  > [!IMPORTANT]
+  > 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。 既にあるバックアップ コンテナーは引き続きサポートされ、[Azure PowerShell を使用してバックアップ コンテナーを作成](./backup-client-automation-classic.md#create-a-backup-vault)することが可能です。 ただし将来的な機能強化は Recovery Services コンテナーに限定されるため、Microsoft では、すべてのデプロイに関して Recovery Services コンテナーを作成することを推奨しています。
+
 2. **コンテナー資格情報のダウンロード** — Azure Backup で、コンテナーに対して作成した管理証明書をダウンロードします。
 3. **Azure Backup エージェントのインストールおよびサーバーの登録** — Azure Backup から、各 DPM サーバーにエージェントをインストールし、バックアップ コンテナーに DPM サーバーを登録します。
-
-[!INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
 
 [!INCLUDE [backup-download-credentials](../../includes/backup-download-credentials.md)]
 
@@ -102,9 +105,4 @@ Azure へのバックアップがサポートされているファイルの種�
 > System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 >
 >
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

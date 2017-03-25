@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: d5caa7a6c1b1a36a4ad08e1b28c7f9157a2c6349
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: d50d25e4ea594b5231d29a862f3a98f07de70324
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -43,7 +43,7 @@ Active Directory 評価ソリューションを使用して、サーバー環境
 
 * エージェントは、評価されるドメインのメンバーであるドメイン コントローラーにインストールする必要があります。
 * Active Directory 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている、サポートされているバージョンの .NET Framework 4 (4.5.2 以降) が必要です。
-* 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って、Active Directory 評価ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
+* Active Directory 評価ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ADAssessmentOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
 
   > [!NOTE]
   > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。

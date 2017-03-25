@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: dd7c67bf83e4b95b978b793c8169b7e9c98bc939
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 53c9b75599af48be82c63bc7a9df31d4c2de13a3
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -68,7 +68,7 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 ## <a name="preparation"></a>準備
 ソリューションを&1; つ作成してそこにジョブ マネージャーとタスク プロセッサを含めることをお勧めします。そうすることで、ジョブ マネージャーとタスク プロセッサのプログラム間でコードを共有しやすくなります。 このソリューションの作成手順は次のとおりです。
 
-1. Visual Studio 2015 を開き、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
+1. Visual Studio を開き、**[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 2. **[テンプレート]** の **[その他のプロジェクトの種類]** を展開し、**[Visual Studio ソリューション]** をクリックして **[空のソリューション]** を選択します。
 3. アプリケーションの内容とこのソリューションの目的とを表す名前を入力します (例: "LitwareBatchTaskPrograms")。
 4. 新しいソリューションを作成する場合は **[OK]**をクリックします。
@@ -87,7 +87,7 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 ### <a name="create-a-job-manager-using-the-template"></a>テンプレートによるジョブ マネージャーの作成
 先ほど作成したソリューションにジョブ マネージャーを追加するには、次の手順を実行します。
 
-1. 既にあるソリューションを Visual Studio 2015 で開きます。
+1. 既にあるソリューションを Visual Studio で開きます。
 2. ソリューション エクスプローラーでソリューションを右クリックし、**[追加]** > **[新しいプロジェクト]** の順にクリックします。
 3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)]** をクリックします。
 4. アプリケーションを表す名前を入力し、このプロジェクトをジョブ マネージャーとして指定します (例: "LitwareJobManager")。
@@ -256,7 +256,7 @@ Batch でタスクを実行するために必ずしもタスク プロセッサ�
 ### <a name="create-a-task-processor-using-the-template"></a>テンプレートを使用してタスク プロセッサを作成する
 先ほど作成したソリューションにタスク プロセッサを追加するには、次の手順を実行します。
 
-1. 既にあるソリューションを Visual Studio 2015 で開きます。
+1. 既にあるソリューションを Visual Studio で開きます。
 2. ソリューション エクスプローラーで該当ソリューションを右クリックして **[追加]** をクリックし、**[新しいプロジェクト]** をクリックします。
 3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Task Processor (Azure Batch タスク プロセッサ)]** をクリックします。
 4. アプリケーションを表す名前を入力し、このプロジェクトをタスク プロセッサとして指定します (例: "LitwareTaskProcessor")。

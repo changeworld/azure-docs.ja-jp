@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 3aa72480898e00cab8ee48e646ea63ade01f347f
-ms.openlocfilehash: 31c7337bdf9dd302ea2f7c5dd0af9d668b23acb2
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/22/2017
 >[!NOTE] 
 > SQL Data Warehouse から Azure Data Lake に接続するには、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。
 
-* SQL Server Management Studio または SQL Server Data Tools。SSMS をダウンロードして接続する方法については、[SSMS に対してクエリを実行する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms.md)方法に関するページを参照してください。
+* SQL Server Management Studio または SQL Server Data Tools。SSMS をダウンロードして接続する方法については、[SSMS に対してクエリを実行する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)方法に関するページを参照してください。
 
 * Azure SQL Data Warehouse。作成方法については、https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision を参照してください。
 
@@ -56,7 +57,7 @@ PolyBase では T-SQL 外部オブジェクトを使用して、外部データ�
 ###  <a name="create-a-credential"></a>資格情報を作成する
 Azure Data Lake Store にアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。
 次に、AAD のサービス プリンシパルの資格情報設定が格納されたデータベース スコープ資格情報を作成します。 資格情報の構文が異なるため、PolyBase を使用して Microsoft Azure Storage BLOB に接続しているユーザーはこの点に注意してください。
-Azure Data Lake Store に接続するには、データベース スコープ認証情報を作成する前に Azure Active Directory アプリケーションを作成する必要があります。
+Azure Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Azure Data Lake のリソースに付与する必要があります。 これらの作業の実行手順については、[こちら](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)を参照してください。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -72,7 +73,7 @@ CREATE MASTER KEY;
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/en-us/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADL_User
+CREATE DATABASE SCOPED CREDENTIAL ADLCredential
 WITH
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
@@ -95,7 +96,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH (
     TYPE = HADOOP,
     LOCATION = 'adl://<AzureDataLake account_name>.azuredatalake.net',
-    CREDENTIAL = AzureStorageCredential
+    CREDENTIAL = ADLCredential
 );
 ```
 

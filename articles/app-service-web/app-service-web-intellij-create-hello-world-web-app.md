@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2687011c449715d2ce5f491c3da501f38035d631
-ms.openlocfilehash: 9c7b708c2bd923733cd034116453fcca2ada949b
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 756c9fa079782f8f0cb194ca07c637d083f9ebd7
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -69,7 +70,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 2. [プロジェクト構造] ダイアログが表示されます。
 
    a. **[プロジェクト設定]** の一覧で、**[Artifacts (アーティファクト)]** をクリックします。
-   b. **[名前]** ボックスのアーティファクトの名前を、空白または特殊文字が含まれるように変更します。この名前が Uniform Resource Identifier (URI) で使用されるため、変更が必要になります。
+   b. **[名前]** ボックスのアーティファクトの名前を、空白または特殊文字が含まれないように変更します。この名前が Uniform Resource Identifier (URI) で使用されるため、変更が必要になります。
    c. **[タイプ]** を **[Web Application: Archive (Web アプリケーション: アーカイブ)]** に変更します。
    d. **[OK]** をクリックして、[プロジェクト構造] ダイアログ ボックスを閉じます。
 
@@ -254,9 +255,4 @@ Azure Web Apps の作成の詳細については、「 [Web Apps の概要]」�
 [16]: ./media/app-service-web-intellij-create-hello-world-web-app/16-Progress-Indicator.png
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

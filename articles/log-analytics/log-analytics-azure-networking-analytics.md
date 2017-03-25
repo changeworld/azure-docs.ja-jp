@@ -15,24 +15,37 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 14df6b49d79aa1bf6f414070c60e7acac6578301
-ms.openlocfilehash: 7267b41d5d1a7903a084eea2c813bc40249fbf6a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 1095267ce0c2a922d4bd9cb95a607ce8993df310
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
 
-Log Analytics の Azure Application Gateway 分析ソリューションを使用して次の内容を確認できます。
+Log Analytics には、ネットワークを監視することを目的とした次のソリューションが用意されています。
+* ネットワーク パフォーマンス モニター (NPM)
+ * ネットワークの正常性の監視
+* Azure Application Gateway 分析によるレビュー
+ * Azure Application Gateway のログ
+ * Azure Application Gateway のメトリック
+* Azure ネットワーク セキュリティ グループ分析によるレビュー
+ * Azure ネットワーク セキュリティ グループのログ
 
-* Azure Application Gateway のログ
-* Azure Application Gateway のメトリック
+## <a name="network-performance-monitor-npm"></a>ネットワーク パフォーマンス モニター (NPM)
+[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。  次の&2; 点間の接続を監視する目的で使用します。
+* パブリック クラウドとオンプレミス 
+* データ センターとユーザー拠点 (支社)
+* 多層アプリケーションの各種階層をホストするサブネット間
 
-Log Analytics の Azure ネットワーク セキュリティ グループ分析ソリューションを使用して次の内容を確認できます。
+ ![ネットワーク パフォーマンス モニターの画像](./media/log-analytics-network-performance-monitor/npm-topology.png)
 
-* Azure ネットワーク セキュリティ グループのログ
+詳細については、[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)に関するページを参照してください。
 
-このソリューションを使用するには、Azure Application Gateway のログおよび Azure ネットワーク セキュリティ グループの診断を有効にし、診断を Log Analytics ワークスペースに送信する必要があります。 Azure Blob Storage にログを書き込む必要はありません。
+## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway とネットワーク セキュリティ グループの分析
+ソリューションを使用するには次の手順に従います。
+1. 管理ソリューションを Log Analytics に追加します。
+2. 診断を有効にして、Log Analytics ワークスペースに診断結果をリダイレクトします。 Azure Blob Storage にログを書き込む必要はありません。
 
 診断を有効にし、Application Gateway とネットワーク セキュリティ グループのいずれかまたは両方に対応するソリューションを有効にすることができます。
 
@@ -68,8 +81,8 @@ Application Gateway に関しては、次のメトリックがサポートされ
 ### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Application Gateway 分析ソリューションのインストールと構成は、次の手順で行います。
 
-1. 監視する [Application Gateway](../application-gateway/application-gateway-diagnostics.md) の診断ログを有効にします。
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Application Gateway 分析ソリューションを有効にします。 
+1. Azure Application Gateway 分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。
+2. 監視する [Application Gateway](../application-gateway/application-gateway-diagnostics.md) の診断ログを有効にします。 
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Azure Application Gateway の診断を Azure Portal で有効にする
 
@@ -131,8 +144,8 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Networking Analytics ソリューションのインストールと構成は、次の手順で行います。
 
-1. 監視する[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)のリソースの診断ログを有効にします。
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。 
+1. Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関する手順で説明されている手順に従って有効にしてください。 
+2. 監視する[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)のリソースの診断ログを有効にします。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Azure Portal で Azure ネットワーク セキュリティ グループの診断を有効にする
 

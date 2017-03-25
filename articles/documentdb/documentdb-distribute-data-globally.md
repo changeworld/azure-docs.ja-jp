@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/20/2017
+ms.date: 03/14/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 72d9c639a6747b0600c5ce3a1276f3c1d2da64b2
-ms.openlocfilehash: 8c3ced706c26e09d709d7cfb4d81534c362e1628
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 8e1fccf953579beb138d47d1897bf702461fc39a
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -91,8 +91,31 @@ DocumentDB では、1 つ以上のリージョンで障害が発生した場合�
 ### <a id="GranularFailover"></a>フェールオーバーのさまざまな粒度に対応する設計
 現在、自動および手動フェールオーバー機能はデータベース アカウントの粒度で公開されています。 内部的には、DocumentDB は、データベース、コレクション、または (さまざまなキーを所有するコレクションの) パーティションというさらに細かい粒度で*自動*フェールオーバーを提供するように設計されています。 
 
-### <a id="MultiHomingAPIs"></a>マルチホーム API
+### <a id="MultiHomingAPIs"></a>DocumentDB のマルチホーム API
 DocumentDB では、論理 (リージョンに依存しない) エンドポイントまたは物理 (リージョン固有の) エンドポイントを使用してデータベースを操作できます。 論理エンドポイントを使用すると、フェールオーバーが発生した場合にアプリケーションを透過的にマルチホームにすることができます。 後者の物理エンドポイントは、読み取りと書き込みを特定のリージョンにリダイレクトするために、アプリケーションにきめ細かい制御を提供します。
+
+### <a id="ReadPreferencesAPIforMongoDB"></a>MongoDB 用 API での構成可能な読み取り設定
+MongoDB 用 API では、グローバル分散データベースのコレクションの読み取り設定を指定することができます。 待機時間の短い読み取りとグローバルな高可用性の両方を得るために、コレクションの読み取り設定には *Nearest* を設定することをお勧めします。 *Nearest* 読み取り設定は、最寄りのリージョンから読み取るように構成します。
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
+```
+
+プライマリ読み取り/書き込みリージョンと障害復旧 (DR) 用のセカンダリ リージョンを使用するアプリケーションでは、コレクションの読み取り設定を *SecondaryPreferred* に設定することをお勧めします。 *SecondaryPreferred* 読み取り設定は、プライマリ リージョンが利用できない場合、セカンダリ リージョンから読み取るように構成します。
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
+```
+
+最後に、読み取るリージョンを手動で指定する場合は、 読み取り設定の中にリージョン タグを設定できます。
+
+```csharp
+var collection = database.GetCollection<BsonDocument>(collectionName);
+var tag = new Tag("region", "Southeast Asia");
+collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
+```
 
 ### <a id="TransparentSchemaMigration"></a>データベース スキーマとインデックスの透過的で一貫性のある移行 
 DocumentDB は完全に[スキーマ非依存](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)です。 データベース エンジンの独自の設計により、スキーマやセカンダリ インデックスを必要とせずに、取り込んだすべてのデータのインデックスを自動的かつ同期的に作成できます。 これにより、データベース スキーマとインデックスの移行を気にしたり、スキーマの変更の複数フェーズのアプリケーション ロールアウトを調整したりしなくても、グローバル分散アプリケーションを迅速に反復処理できます。 DocumentDB では、ユーザーによるインデックス作成ポリシーの明示的な変更によって、パフォーマンスや可用性が低下しないことが保証されます。  
@@ -237,3 +260,4 @@ DocumentDB では、スループット、待機時間、整合性、可用性の
 7. Naor、Wool 共著:  「[The Load, Capacity and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性)](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)」
 8. Herlihy、Wing 共著:  「[Lineralizability: A Correctness Condition for Concurrent Objects (線形化可能性: 同時実行オブジェクトの正確性の条件)](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)」
 9. Azure DocumentDB SLA (最終更新: 2016 年 12 月)
+

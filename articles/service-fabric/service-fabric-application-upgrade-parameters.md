@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5a0362caf0082112b7d9c648c9ecfb893d8ac954
-ms.openlocfilehash: 3f8fb1da14a65454d3c7997de80f399110b3b441
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: aa26d72524f035cca92cd39062873ceb15bffac1
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -63,7 +63,11 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService、MaxPerce
 ## <a name="next-steps"></a>次のステップ
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
-[PowerShell を使用した Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) 」では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
+[PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
+
+[Linux での Azure CLI を使用したアプリケーションのアップグレード](service-fabric-azure-cli.md#upgrading-your-application)に関する記事では、Azure CLI を使用してアプリケーションをアップグレードする方法について説明します。
+
+[Service Fabric Eclipse プラグインを使用したアプリケーションのアップグレード](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application)
 
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 

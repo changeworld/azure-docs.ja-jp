@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/28/2017
+ms.date: 03/08/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 59d4e08d0e93096120cc74deb641385084cfd912
-ms.openlocfilehash: 8a4f3616ff314cb280e6673c71ebdcd5d9b3441c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d5633ffdaba2fa881c2c42361860048cd478a502
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -428,6 +428,8 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
   * P3 (26 GB ～ 260 GB) - 最大 48 のデータベース
   * P4 (53 GB ～ 530 GB) - 最大 64 のデータベース
   * Redis クラスターが有効なすべての Premium キャッシュ - Redis クラスターは、データベース 0 の使用のみをサポートするため、Redis クラスターが有効な Premium キャッシュの `databases` の制限は、実質的に 1 で、 [Select](http://redis.io/commands/select) コマンドは使用できません。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+
+データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」を参照してください
 
 > [!NOTE]
 > `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。

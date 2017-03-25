@@ -14,11 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/10/2017
 ms.author: ankshah
 translationtype: Human Translation
-ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
-ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7acbdda2e8179219c21370d20d30a94feb405fce
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -47,25 +48,32 @@ DocumentDB を使用する中間層サービスのホスティングには、[�
 ## <a name="connections-from-the-internet"></a>インターネットからの接続
 インターネット上のコンピューターから DocumentDB データベース アカウントにアクセスするときは、そのコンピューターのクライアント IP アドレスまたは IP アドレス範囲を DocumentDB データベース アカウントの IP アドレスの許可リストに追加する必要があります。 
 
-## <a name="a-idconfigure-ip-policya-configuring-the-ip-access-control-policy"></a><a id="configure-ip-policy"></a> IP アクセス制御ポリシーの構成
-IP アクセス制御ポリシーは、[Azure CLI](documentdb-automation-resource-manager-cli.md)、[Azure Powershell](documentdb-manage-account-with-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して `ipRangeFilter` プロパティを更新することでプログラムによって設定できます。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません  (例: "13.91.6.132,13.91.6.1/24")。 これらの方法でデータベース アカウントを更新するときは、既定の設定にリセットされないように、必ずすべてのプロパティを設定してください。
+## <a id="configure-ip-policy"></a> IP アクセス制御ポリシーの構成
+IP アクセス制御ポリシーは、Azure Portal で設定するか、[Azure CLI](documentdb-automation-resource-manager-cli.md)、[Azure Powershell](documentdb-manage-account-with-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して `ipRangeFilter` プロパティを更新することでプログラムによって設定できます。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 (例: "13.91.6.132,13.91.6.1/24")。 これらの方法でデータベース アカウントを更新するときは、既定の設定にリセットされないように、必ずすべてのプロパティを設定してください。
 
 > [!NOTE]
 > DocumentDB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 このモデルにより、ポータルからのデータ プレーン操作の閲覧もブロックされ、アクセス制御の整合性が確保されます。
 
+開発をシンプルにするために、Azure Portal では、クライアント コンピューターの IP アドレスを識別して許可リストに追加することができます。これにより、コンピューターで実行中のアプリが DocumentDB アカウントにアクセスすることができます。 ここでのクライアント IP アドレスは、ポータルから見た IP アドレスとして検出されることに注意してください。 コンピューターのクライアント IP アドレスである可能性がありますが、ネットワーク ゲートウェイの IP アドレスである可能性もあります。 運用環境にそれを移行する前に削除することを忘れないでください。
+
+Azure Portal で IP アクセス制御ポリシーを設定するには、DocumentDB アカウント ブレードに移動し、ナビゲーション メニューの **[ファイアウォール]** をクリックし、**[オン]** をクリックします。 
+
+![Azure Portal で [ファイアウォール] ブレードを開く方法を示しているスクリーンショット](./media/documentdb-firewall-support/documentdb-azure-portal-firewall.png)
+
+新しいウィンドウで、Azure Portal がアカウントにアクセスできるかどうかを指定し、必要に応じてその他のアドレスと範囲を追加した後、**[保存]** をクリックします。  
+
+![Azure Portal でファイアウォール設定を構成する方法を示しているスクリーンショット](./media/documentdb-firewall-support/documentdb-azure-portal-firewall-configure.png)
+
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>IP アクセス制御ポリシーのトラブルシューティング
 ### <a name="portal-operations"></a>ポータルの操作
-DocumentDB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 このモデルにより、ポータルからのデータ プレーン操作の閲覧もブロックされ、アクセス制御の整合性が確保されます。 
+DocumentDB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 したがって、ポータルのデータ ウィンドウでコレクションの参照やドキュメントのクエリなどの操作を有効にする場合は、ポータルの **[ファイアウォール]** ブレードを使用して、Azure Portal へのアクセスを明示的に許可する必要があります。 
+
+![Azure Portal へのアクセスを有効にする方法を示しているスクリーンショット](./media/documentdb-firewall-support/documentdb-azure-portal-access-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK と Rest API
 許可リストに追加されていないコンピューターから SDK または REST API 経由でアクセスした場合、セキュリティ上の理由から、詳しい情報を含まない汎用的な 404 Not Found 応答が返されます。 ご使用の DocumentDB データベース アカウントに正しいポリシー構成を適用するために、そのアカウントに対して構成されている IP 許可リストを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 ネットワークに関連したパフォーマンス上のヒントについては、[パフォーマンスに関するヒント](documentdb-performance-tips.md)のページを参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

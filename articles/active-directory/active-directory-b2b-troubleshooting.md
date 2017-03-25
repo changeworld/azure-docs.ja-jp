@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 03/14/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: f85c6bcc2abbd14c7879462f7013a97f550fdca5
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 66c0084c89b5c7510196142afd27b58953d0dc86
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -34,6 +35,11 @@ ms.openlocfilehash: f85c6bcc2abbd14c7879462f7013a97f550fdca5
 
 外部ユーザーが一覧に表示されない場合は、オブジェクトのレプリケートに数分かかっていることがあります。
 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B のゲスト ユーザーが SharePoint Online/OneDrive ユーザー選択ウィンドウに表示されません 
+ 
+SharePoint Online のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
+これは、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この設定は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
+
 ## <a name="invitations-have-been-disabled-for-directory"></a>ディレクトリに対して招待が無効になっています
 
 ユーザーを招待するアクセス許可がないことを示すエラー メッセージが表示される場合は、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。 この操作は、次のように、[ユーザー設定] で行うことができます。
@@ -46,9 +52,9 @@ ms.openlocfilehash: f85c6bcc2abbd14c7879462f7013a97f550fdca5
 
 一般的なエラーの理由は、次のとおりです。
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>招待されたユーザーの管理者が、EmailVerified Users がテナントに作成されることを許可していません。
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>招待されたユーザーの管理者が、メールで確認済みのユーザーをテナント内に作成することを許可していません
 
-Azure Active Directory を使用している組織のユーザーを招待していて、その特定のユーザーのアカウントが存在しない場合 (ユーザーが AAD contoso.com に存在しない場合)、 contoso.com の管理者が、ユーザーが作成されないようにするポリシーを設定している可能性があります。 外部ユーザーは、外部ユーザーが許可されているかどうかを判断するために、管理者に確認する必要があります。外部ユーザーの管理者は、ドメインで "メールで確認されるユーザー" を許可する必要がある場合があります (EmailVerified Users の許可については、この[記事](https://docs.microsoft.com/en-us/powershell/msonline/v1/set-msolcompanysettings#parameters)を参照してください)。
+Azure Active Directory を使用している組織のユーザーを招待していて、その特定のユーザーのアカウントが存在しない場合 (たとえばユーザーが AAD contoso.com に存在しない場合)、 contoso.com の管理者が、ユーザーが作成されないようにするポリシーを設定している可能性があります。 ユーザーは、外部ユーザーが許可されるかどうかを管理者に確認する必要があります。 外部ユーザーの管理者は、メールで確認済みのユーザーをドメインで許可しなければならない場合があります (メールで確認済みのユーザーの許可については、[こちらの記事](https://docs.microsoft.com/powershell/msonline/v1/set-msolcompanysettings#parameters)を参照してください)。
 
 ![](media/active-directory-b2b-troubleshooting/allow-email-verified-users.png)
 
@@ -58,9 +64,9 @@ Azure Active Directory を使用している組織のユーザーを招待して
 
 この問題を解決するには、外部ユーザーの管理者がユーザーのアカウントを Azure Active Directory に同期する必要があります。
 
-## <a name="how-does--which-is-normally-an-invalid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
 
-"\#" は Azure AD B2B コラボレーションまたは外部ユーザーの UPN の予約文字です (つまり、招待された &lt;user@contoso.com&gt; は &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt; になります)。そのため、オンプレミスから来る UPN での \# は、Azure Portal へのサインインでは許可されません。
+"\#" は Azure AD B2B コラボレーションまたは外部ユーザーの UPN の予約文字です (つまり、招待された &lt;user@contoso.com&gt; は &lt;user_contoso.com#EXT@fabrikam.onmicrosoft.com&gt; になります)。そのため、オンプレミスから来る UPN の \# では、Azure Portal へのサインインは許可されません。
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>同期済みグループに外部ユーザーを追加すると、エラー メッセージが表示されます
 
@@ -89,9 +95,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

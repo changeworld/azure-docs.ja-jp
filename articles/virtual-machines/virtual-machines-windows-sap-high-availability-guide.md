@@ -18,9 +18,9 @@ ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
-ms.openlocfilehash: bcad35fe1df9da06e02eceae6a221c40a9d10bac
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 69bce31b59ba3a70b69ab17f91272b45a4f05afc
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/01/2017
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-cli]:../xplat-cli-install.md
+[azure-cli]:../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
 [azure-ps]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -441,7 +441,7 @@ ms.lasthandoff: 03/01/2017
 [vpn-gateway-cross-premises-options]:../vpn-gateway/vpn-gateway-plan-design.md
 [vpn-gateway-site-to-site-create]:../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
 [vpn-gateway-vpn-faq]:../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../xplat-cli-install.md
+[xplat-cli]:../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../xplat-cli-azure-resource-manager.md
 
 
@@ -1241,6 +1241,12 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
   _**図 38:** クラスターを再構成したことを確認する_
 
+Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更するパラメーターは、ブログ (https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) に記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する&2; つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
+- SameSubNetDelay = 2
+- SameSubNetThreshold = 15
+
+これらの設定は、お客様と協力してテストし、十分な回復性という面で妥当な結果が得られました。 一方、SAP ソフトウェアでの実際のエラー状態やノード/VM 障害では、十分な速度のフェールオーバーを提供しました。 
+
 ### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール
 
 これで、Azure で動作する Windows Server フェールオーバー クラスタリング構成が完了しました。 ただし、SAP ASCS/SCS インスタンスをインストールするには、共有ディスク リソースが必要です。 Azure では必要な共有ディスク リソースを作成できません。 サード パーティ製ソリューションの SIOS DataKeeper Cluster Edition を使用して、共有ディスク リソースを作成できます。
@@ -1551,7 +1557,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
   }
   ```
 
-  **SAP <*SID*>** クラスターの役割をオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
+  **SAP <*SID*>**クラスターの役割をオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>
@@ -1651,3 +1657,4 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
   ![図 64: SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
 
   _**図 64:** SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_
+

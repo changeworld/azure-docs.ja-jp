@@ -12,7 +12,7 @@
 * [データ ディスクの接続](#attach-a-data-disk)
 
 ## <a name="getting-ready"></a>準備
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。 Azure CLI がない場合は、 [インストールします](../articles/xplat-cli-install.md)。
+Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。 Azure CLI がない場合は、 [インストールします](../articles/cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-version-to-090-or-later"></a>Azure CLI のバージョンを 0.9.0 以降に更新する
 「 `azure --version` 」と入力し、バージョン 0.9.0 以降が既にインストールされているかどうかを確認します。

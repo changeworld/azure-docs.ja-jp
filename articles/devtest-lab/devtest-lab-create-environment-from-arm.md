@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: bd280fabf22d569f3c4dae9f00f44b08700c8fc4
-ms.openlocfilehash: f034f028b0b1e0011e152b88d304dd54cfbc8320
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c17ea1f078c424d855109da07113a4c2f8f84ab3
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -115,5 +115,5 @@ ms.lasthandoff: 02/21/2017
 
 ## <a name="next-steps"></a>次のステップ
 * VM が作成されたら、その VM のブレードで **[接続]** を選択して VM に接続できます。
-* [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。
+* [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します
 

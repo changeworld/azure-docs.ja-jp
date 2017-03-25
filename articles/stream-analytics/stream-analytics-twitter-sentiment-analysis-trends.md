@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/03/2017
+ms.date: 03/09/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 214bd6ca8abb3adc9447536215f28f478959be07
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 09860b34bf4b1664e8d82af0e049cfd1a2d8defa
+ms.lasthandoff: 03/10/2017
 
 ---
 
@@ -172,7 +172,7 @@ Stream Analytics ジョブで、**[ジョブ トポロジ]** の **[出力]** �
 
 ![PowerBI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
-## <a name="another-query-of-interest--in-this-scenario"></a>このシナリオに関係する別のクエリ
+## <a name="another-query-of-interest-in-this-scenario"></a>このシナリオに関係する別のクエリ
 
 このシナリオのために作成した別のサンプル クエリは、[スライディング ウィンドウ](https://msdn.microsoft.com/library/azure/dn835051.aspx)に基づいています。 トレンディング トピックを特定するには、一定期間にメンションのしきい値を超えるトピックを検索します。 このチュートリアルでは、直近の 5 秒間に 20 回を超えてメンションされたトピックをチェックします。
 
@@ -182,6 +182,19 @@ FROM TwitterStream TIMESTAMP BY CreatedAt
 GROUP BY SLIDINGWINDOW(s, 5), topic
 HAVING COUNT(*) > 20
 ```
+
+## <a name="table-of-the-field-headers"></a>フィールドのヘッダーの表
+
+情報の完全な開示のため、この演習で使用できるフィールド ラベルを次の表に示します。 クエリ エディターで自由にお試しください。
+
+JSON プロパティ | 定義
+--- | ---
+CreatedAt | ツイートが作成された時刻
+Topic | 指定したキーワードと一致するトピック
+SentimentScore | Sentiment140 のセンチメント スコア
+Author | ツイートを送信した Twitter ハンドル
+Text | ツイートの全文
+
 
 ## <a name="get-support"></a>サポートを受ける
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。

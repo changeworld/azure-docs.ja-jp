@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2017
+ms.date: 03/12/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd4fa1c5927fb85a406a99bf5d2dacbb0fcbb2f
-ms.openlocfilehash: 0cdc48927c22292a4637a4e40b4ecd5be5e4478e
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 08dfdb54db0655bc025f8c268988804b069f70c6
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -39,7 +39,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 > * Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は&1; つのみです。
 > * 名前は 260 文字以内で指定する必要があります。
 > * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)のトピックを参照してください。
->
+> * さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 > 
 
 資産を作成する際には、次の暗号化オプションを指定できます。 
@@ -61,13 +61,8 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services 資産にアップロードする方法を説明します。
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Media Services .NET SDK を使用して&1; つのファイルをアップロードする
-以下のサンプル コードでは、.NET SDK を使用して、次のタスクを実行します。 
+以下のサンプル コードは、.NET SDK を使用して&1; つのファイルをアップロードします。 AccessPolicy と Locator の作成と破棄は、Upload 関数によって行います。 
 
-* 空の資産を作成します。
-* 資産に関連付ける AssetFile インスタンスを作成します。
-* 資産へのアクセス許可とアクセス期間を定義する AccessPolicy インスタンスを作成します。
-* 資産へのアクセスを提供する Locator インスタンスを作成します。
-* 単一のメディア ファイルを Media Services にアップロードします。 
 
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
         {
@@ -78,29 +73,18 @@ Media Services で、デジタル ファイルを資産にアップロードし 
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions); 
+            IAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions);
 
             var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
-
-            Console.WriteLine("Created assetFile {0}", assetFile.Name);
-
-            var policy = _context.AccessPolicies.Create(
-                                    assetName,
-                                    TimeSpan.FromDays(30),
-                                    AccessPermissions.Write | AccessPermissions.List);
-
-            var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
 
             Console.WriteLine("Upload {0}", assetFile.Name);
 
             assetFile.Upload(singleFilePath);
             Console.WriteLine("Done uploading {0}", assetFile.Name);
 
-            locator.Delete();
-            policy.Delete();
-
             return inputAsset;
         }
+
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Media Services .NET SDK を使用して複数のファイルをアップロードする
 次のコードは、資産を作成して複数のファイルをアップロードする方法を示します。
@@ -183,7 +167,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 * NumberOfConcurrentTransfers を既定値の 2 から、たとえば 5 のようなより大きな値に増やしてください。 このプロパティの設定は、 **CloudMediaContext**のすべてのインスタンスに影響を与えます。 
 * ParallelTransferThreadCount は、既定値の 10 のままにしてください。
 
-## <a name="a-idingestinbulkaingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み
+## <a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み
 サイズの大きい資産ファイルのアップロードは、資産の作成時に、ボトルネックになることがあります。 資産を一括して取り込む "一括取り込み" の場合、アップロード プロセスから資産の作成を切り離すことが必要です。 一括取り込みを行うには、資産とその関連ファイルを記述するマニフェスト (IngestManifest) を作成します。 その後で、お好みのアップロード方法で、マニフェストの BLOB コンテナーに、関連ファイルをアップロードします。 マニフェストに関連付けられている BLOB コンテナーは、Microsoft Azure Media Services によって監視されます。 ファイルが BLOB コンテナーにアップロードされると、Microsoft Azure Media Services は、マニフェスト (IngestManifestAsset) の資産の構成に基づいてア資産の作成を完了させます。
 
 新しい IngestManifest を作成するには、CloudMediaContext の IngestManifests コレクションで公開されている Create メソッドを呼び出します。 指定されたマニフェスト名で、新しい IngestManifest が作成されます。

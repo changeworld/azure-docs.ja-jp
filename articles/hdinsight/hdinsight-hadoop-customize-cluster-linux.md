@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
-ms.openlocfilehash: 49bec6125bcd76c3bb52f1237b0f0e0ceff85ffb
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 908531e791b3634cb9986946212b8ad8b447b8ce
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -44,7 +45,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## <a name="access-control"></a>Access control
 
-自身が管理者または所有者ではない Azure サブスクリプション (会社所有のサブスクリプションなど) を使用している場合、自身の Azure ログインに、HDInsight クラスターが含まれる Azure リソース グループに対して**共同作成者**以上のアクセスが設定されていることを確認する必要があります。
+自身が管理者または所有者ではない Azure サブスクリプション (会社所有のサブスクリプションなど) を使用している場合、自身の Azure アカウントに、HDInsight クラスターが含まれる Azure リソース グループに対して**共同作成者**以上のアクセスが設定されていることを確認する必要があります。
 
 また、HDInsight クラスターを作成する場合は、**共同作成者**以上のアクセスを持つ別のユーザーがあらかじめ HDInsight のプロバイダーを登録しておく必要があります。 プロバイダーの登録は、サブスクリプションに対する共同作成者アクセス権を持つユーザーが、そのサブスクリプションで初めてリソースを作成したときに行われます。 ただし、[REST を使ってプロバイダーを登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)する方法もあり、その場合、リソースの作成は不要です。
 
@@ -55,7 +56,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## <a name="understanding-script-actions"></a>スクリプト アクションについて
 
-スクリプト アクションは、URI とパラメーターの指定先の Bash スクリプトにすぎず、HDInsight クラスター ノードで実行されます。 スクリプト アクションの特性と機能を次に示します。
+スクリプト アクションの実体は、URI とパラメーターを指定された Bash スクリプトです。 スクリプトは、HDInsight クラスター内のノードで実行されます。 スクリプト アクションの特性と機能を次に示します。
 
 * HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
@@ -66,12 +67,14 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
         > [!NOTE]
         > HDInsight が Data Lake Store へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
 
-    * **Blob Storage アカウント** (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。これによりパブリックではないスクリプト アクションの使用が可能となります。
+    * **Azure Storage アカウント**の BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。これによりパブリックではないスクリプト アクションの使用が可能となります。
 
-    * https://docs.microsoft.com/en-us/azure/service-bus/ (Azure Blob、GitHub、OneDrive、Dropbox など)。
+    * 一般のファイル共有サービス (Azure BLOB、GitHub、OneDrive、Dropbox など)。
 
         BLOB コンテナーに保存されたスクリプト用の (パブリックに読み取り可能な) URI の例については、「 [スクリプト アクションのサンプル スクリプト](#example-script-action-scripts) 」セクションを参照してください。
 
+        > [!WARNING]
+        > __汎用__の Azure Storage アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
 
 * **特定のノード タイプでのみ実行するように** (ヘッド ノードやワーカー ノードなど) に制限できます。
 
@@ -126,7 +129,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 > [!IMPORTANT]
 > スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。 クラスターのプロビジョニング中に、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 >
-> スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。 代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure BLOB ストレージに格納して、クラスターにすばやくダウンロードできるようにします。
+> スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。 代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure Storage に格納して、クラスターにすばやくダウンロードできるようにします。
 
 
 ### <a name="script-action-on-a-running-cluster"></a>実行中のクラスターでのスクリプト アクション
@@ -697,7 +700,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
     ![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
 
-    このエントリを選択してリンクをたどると、クラスターでスクリプトを実行したときに生成される STDOUT と STDERR の出力が表示されます。
+    この run\customscriptaction エントリを選択してリンクをたどると、STDOUT と STDERR の出力が表示されます。 この出力結果はスクリプトの実行時に生成され、有益な情報が含まれていることがあります。
 
 ### <a name="access-logs-from-the-default-storage-account"></a>既定のストレージ アカウントからログにアクセスする
 
@@ -783,9 +786,4 @@ SSH を使用してクラスターに接続する方法の詳細については�
 * [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

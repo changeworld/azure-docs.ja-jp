@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
-ms.openlocfilehash: 4973a2218ec480fb239e3b32e8f34e3fb14454d0
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6a76c399e626ea85581d5f8fb863da878bdbf50b
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -313,7 +314,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         throw new InvalidOperationException("Failed to acquire token");
     }
     ```
-12. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。 この例で予想されるスライスのみが存在します。
+12. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。 この例で予想される&1; つのスライスのみが存在します。
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -478,9 +479,4 @@ TokenCloudCredentials aadTokenCredentials =
     ```PowerShell
 
 Note down the **SubscriptionId** and **TenantId** values.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

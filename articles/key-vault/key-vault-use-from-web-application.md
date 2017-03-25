@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
-ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 2a7f2cb27cb4ed2d23fee09d53f85283a8592b3a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -44,7 +45,7 @@ Key Vault にアクセスする Web アプリケーションは、Azure Active D
 
 このチュートリアルは、Azure 上での Web アプリケーション作成の基本を理解している Web 開発者向けに設計されています。 Azure Web Apps の詳細については、 [Web Apps の概要](../app-service-web/app-service-web-overview.md)に関するページを参照してください。
 
-## <a name="a-idpackagesaadd-nuget-packages"></a><a id="packages"></a>NuGet パッケージの追加
+## <a id="packages"></a>NuGet パッケージの追加
 Web アプリケーションでインストールしておく必要のあるパッケージは&2; つあります。
 
 * Active Directory 認証ライブラリ: Azure Active Directory と対話してユーザー ID を管理するためのメソッドが含まれています。
@@ -58,7 +59,7 @@ Web アプリケーションでインストールしておく必要のあるパ�
     Install-Package Microsoft.Azure.KeyVault
 
 
-## <a name="a-idwebconfigamodify-webconfig"></a><a id="webconfig"></a>web.config の変更
+## <a id="webconfig"></a>web.config の変更
 次のように、web.config ファイルに追加する必要のある&3; つのアプリケーション設定があります。
 
     <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
@@ -71,7 +72,7 @@ Web アプリケーションでインストールしておく必要のあるパ�
 
 今後 Azure の Web アプリとしてアプリケーションをホストしない場合は、web.config に実際のクライアント ID、クライアント シークレット、およびシークレットの URI の値を追加する必要があります。 追加しない場合は、これらのダミーの値をそのままにしてください。セキュリティ レベルを上げるために、Azure ポータルで実際の値を追加する予定です。
 
-## <a name="a-idgettokenaadd-method-to-get-an-access-token"></a><a id="gettoken"></a>アクセス トークンを取得するメソッドの追加
+## <a id="gettoken"></a>アクセス トークンを取得するメソッドの追加
 Key Vault API を使用するには、アクセス トークンが必要です。 Key Vault クライアントによって Key Vault API の呼び出しが処理されますが、アクセス トークンを取得する関数を指定する必要があります。  
 
 Azure Active Directory からアクセス トークンを取得するコードを次に示します。 このコードはアプリケーション内の任意の場所に配置できます。 Utils クラスまたは EncryptionHelper クラスを追加します。  
@@ -103,7 +104,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 > 
 > 
 
-## <a name="a-idappstartaretrieve-the-secret-on-application-start"></a><a id="appstart"></a>アプリケーション起動時のシークレットの取得
+## <a id="appstart"></a>アプリケーション起動時のシークレットの取得
 ここで、Key Vault API を呼び出してシークレットを取得するコードが必要になります。 次のコードは、それが必要になる前に呼び出されれば、どこに配置してもかまいません。 ここでは、このコードを Global.asax の Application Start イベントに配置しました。これにより、コードは起動時に&1; 回実行され、アプリケーションでシークレットを使用できるようになります。
 
     //add these using statements
@@ -120,7 +121,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 
 
 
-## <a name="a-idportalsettingsaadd-app-settings-in-the-azure-portal-optional"></a><a id="portalsettings"></a>Azure ポータルのアプリ設定の追加 (省略可能)
+## <a id="portalsettings"></a>Azure ポータルのアプリ設定の追加 (省略可能)
 Azure の Web アプリがある場合は、Azure ポータルでアプリ設定の実際の値を追加できます。 これにより、実際の値は web.config ファイルに存在しなくなりますが、個別のアクセス制御機能があるポータルによって保護されます。 これらの値は、web.config で入力した値の代わりに使用されます。 名前が同じであるかどうかを確認してください。
 
 ![Azure ポータルに表示されるアプリケーションの設定][1]
@@ -133,10 +134,8 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 3. 証明書を使用する Web アプリにコードを追加する
 4. 証明書を Web アプリに追加する
 
-**証明書を取得または作成する** ここでは、テスト証明書を作成します。 開発者コマンド プロンプトで証明書を作成する場合に使用できる、いくつかのコマンドを次に示します。 証明書ファイルの作成先となるディレクトリを変更します。
-
-    makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2015 -e 07/31/2016 -r
-    pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
+**証明書を取得または作成する** ここでは、テスト証明書を作成します。 開発者コマンド プロンプトで証明書を作成する場合に使用できる、いくつかのコマンドを次に示します。 証明書ファイルの作成先となるディレクトリを変更します。  また、証明書の開始日と終了日は、現在の日付 + 1 年とします。
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
 終了日と .pfx のパスワードをメモしておいてください (この例では、2016 年 7 月 31 日と test123)。 この情報は以下で必要になります。
 
@@ -147,12 +146,12 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $x509.Import("C:\data\KVWebApp.cer")
     $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
+
+    # If you used different dates for makecert then adjust these values
     $now = [System.DateTime]::Now
+    $yearfromnow = $now.AddYears(1)
 
-    # this is where the end date from the cert above is used
-    $yearfromnow = [System.DateTime]::Parse("2016-07-31")
-
-    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
+    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -CertValue $credValue -StartDate $now -EndDate $yearfromnow
 
     $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
@@ -231,15 +230,10 @@ Web アプリに証明書を追加する方法の詳細については、 [Azure
 
 **証明書をシークレットとして Key Vault に追加する** 証明書を Web Apps サービスに直接アップロードするのではなく、Key Vault にシークレットとして保存しておき、そこからデプロイすることができます。 これは&2; 段階のプロセスとなっており、「 [Deploying Azure Web App Certificate through Key Vault (Azure Web アプリの証明書を Key Vault 経由でデプロイする)](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>次のステップ
+## <a id="next"></a>次のステップ
 プログラミング リファレンスについては、 [Azure Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)に関するページを参照してください。
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 
