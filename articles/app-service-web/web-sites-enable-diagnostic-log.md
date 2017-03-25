@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 27bf5b15ebeed13733df2ddd9dbda5d5cfe4e49d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 6a000e84f38e7e2b56f1d79d5c88f1704b6789a0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Azure では、組み込みの診断機能により、 [App Service Web アプ�
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-namewhatisdiagaweb-server-diagnostics-and-application-diagnostics"></a><a name="whatisdiag"></a>Web サーバーの診断とアプリケーション診断
+## <a name="whatisdiag"></a>Web サーバーの診断とアプリケーション診断
 App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に **Web サーバー診断**と**アプリケーション診断**に分けられます。
 
 ### <a name="web-server-diagnostics"></a>Web サーバー診断
@@ -48,7 +48,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。 これは自動的に行われ、展開ログの構成設定はありません。 デプロイ ログでは、デプロイが失敗した理由を特定できます。 たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
-## <a name="a-nameenablediagahow-to-enable-diagnostics"></a><a name="enablediag"></a>診断を有効にする方法
+## <a name="enablediag"></a>診断を有効にする方法
 [Azure Portal](https://portal.azure.com) で診断を有効にするには、Web アプリのブレードに移動し、**[設定]、[診断ログ]** の順にクリックします。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
@@ -90,7 +90,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 >
 >
 
-## <a name="a-namedownloada-how-to-download-logs"></a><a name="download"></a> ログをダウンロードする方法
+## <a name="download"></a> ログをダウンロードする方法
 Web アプリケーション ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。 さらに、Azure PowerShell または Azure コマンド ライン インターフェイスを使用して Zip アーカイブとしてダウンロードすることもできます。
 
 ログが保存されるディレクトリ構造は次のとおりです。
@@ -129,7 +129,7 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 これにより、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
 > [!NOTE]
-> Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure CLI の使用方法](../xplat-cli-install.md)に関するページを参照してください。
+> Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure CLI の使用方法](../cli-install-nodejs.md)に関するページを参照してください。
 >
 >
 
@@ -145,7 +145,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 [Application Insights でのパフォーマンス追跡についての詳細情報](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="a-namestreamlogsa-how-to-stream-logs"></a><a name="streamlogs"></a> ログをストリーミングする方法
+## <a name="streamlogs"></a> ログをストリーミングする方法
 アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。 これは、Azure PowerShell または Azure コマンド ライン インターフェイスを使用して開発環境にログ情報をストリーミングすることで実現できます。
 
 > [!NOTE]
@@ -194,11 +194,11 @@ Visual Studio Application Insights には、ログをフィルターおよび検
     azure site log tail webappname --path http
 
 > [!NOTE]
-> Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure コマンド ライン インターフェイスの使用方法](../xplat-cli-install.md)に関するページを参照してください。
+> Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure コマンド ライン インターフェイスの使用方法](../cli-install-nodejs.md)に関するページを参照してください。
 >
 >
 
-## <a name="a-nameunderstandlogsa-how-to-understand-diagnostics-logs"></a><a name="understandlogs"></a> 診断ログを読む方法
+## <a name="understandlogs"></a> 診断ログを読む方法
 ### <a name="application-diagnostics-logs"></a>アプリケーション診断ログ
 アプリケーション診断では、ファイル システム、テーブル ストレージ、BLOB ストレージのうち、どれにログを保存するかに応じて、.NET アプリケーション向けの一定の形式で情報が保存されます。 格納される一連の基本的なデータは、3 種類のすべてのストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージです。
 
@@ -274,7 +274,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 >
 >
 
-## <a name="a-namenextstepsa-next-steps"></a><a name="nextsteps"></a> 次のステップ
+## <a name="nextsteps"></a> 次のステップ
 * [Web Apps を監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
 * [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

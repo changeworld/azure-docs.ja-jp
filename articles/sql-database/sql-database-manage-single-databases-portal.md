@@ -1,8 +1,8 @@
 ---
-redirect_url: /azure/sql-database/sql-database-get-started
+redirect_url: /azure/sql-database/sql-database-service-tiers
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d0830d1e7685f6223f85dc6427821ff585e38f4f
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 5e82d93e287fe4cdc3ee5555426a36d336440810
+ms.openlocfilehash: 27fa326684be056ea33cab281ad35ac82193609e
+ms.lasthandoff: 03/18/2017
 
 --- 

@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 02/17/2017
+ms.date: 03/14/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: e244432f0e7bbc9133610440de34d3316f465ebb
-ms.openlocfilehash: a5669da2e2334a94acd7354a084f76dd9c8097e2
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: b92db8dd81af0c58861644cc02ca9e56b6a6a832
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -372,8 +372,8 @@ ms.lasthandoff: 02/18/2017
     <tr>
       <td>Postgresql テーブル</td>
       <td>✓</td>
-      <td></td>
-      <td></td>
+      <td>✓ </td>
+      <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
@@ -381,8 +381,8 @@ ms.lasthandoff: 02/18/2017
     <tr>
       <td>Postgresql ビュー</td>
       <td>✓</td>
-      <td></td>
-      <td></td>
+      <td>✓ </td>
+      <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>

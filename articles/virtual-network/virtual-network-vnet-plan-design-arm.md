@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ac0d7d9aaf1208c97e0ae797ac7c2b0ffecb88ae
-ms.openlocfilehash: daa0d0a7a0816f16f62904dc0e407105eb25c4ec
-ms.lasthandoff: 02/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: fef61e6155471a0459957ea0c510698cfa787fdc
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure サブスクリプション、リージョン、ネットワーク リソ�
 * Azure で作成するものはすべて&1; つまたは複数のリソースで構成されます。 仮想マシン (VM) はリソースです。VM で利用されるネットワーク アダプター カード (NIC) はリソースです。NIC で利用されるパブリック IP アドレスはリソースです。NIC の接続先となる VNet はリソースです。
 * リソースを [Azure リージョン](https://azure.microsoft.com/regions/#services) とサブスクリプションの内部に作成します。 リソースの接続先となるのは、それが入っているリージョンとサブスクリプションに存在する VNet だけです。
 * [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)を利用し、VNet を互いに接続できます。 この方法で、リージョンとサブスクリプションをまたいで VNet を接続することもできます。
-* Azure で利用できる[接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)のいずれかを利用し、オンプレミス ネットワークに VNet を接続できます。
+* Azure で利用できる[接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)のいずれかを利用し、オンプレミス ネットワークに VNet を接続できます。
 * 複数のリソースを[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)にグループ化できます。リソースの単位管理が簡単になります。 リソースが同じサブスクリプションに属する限り、リソース グループには複数のリージョンのリソースを含めることができます。
 
 ### <a name="define-requirements"></a>要件の定義
@@ -121,7 +121,7 @@ VNet には、次のプロパティが含まれています。
 
 * **1 つのサブネットですべての NIC のためのプライベート IP アドレスが足りません**。 サブネット アドレス空間にサブネットの NIC 数に足りる IP アドレスがない場合、複数のサブネットを作成する必要があります。 Azure はサブネットにつき 5 つのプライベート IP アドレスを予約します。アドレス空間の最初のアドレスと最後のアドレス (サブネット アドレスとマルチキャスト) とさらに 3 つのアドレス (DHCP と DNS) が内部で使用されます。
 * **セキュリティ**。 サブネットを利用し、複数層の構造を持つワークロードに対して VM のグループを互いから分離し、それらのサブネットに異なる [ネットワーク セキュリティ グループ (NSG)](virtual-networks-nsg.md#subnets) を適用できます。
-* **ハイブリッド接続**。 VPN ゲートウェイと ExpressRoute 回線を利用し、VNet を互いに、またはオンプレミスのデータ センターに[接続](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)できます。 VPN ゲートウェイと ExpressRoute 回線を利用するには、独自のサブネットを作成する必要があります。
+* **ハイブリッド接続**。 VPN ゲートウェイと ExpressRoute 回線を利用し、VNet を互いに、またはオンプレミスのデータ センターに[接続](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)できます。 VPN ゲートウェイと ExpressRoute 回線を利用するには、独自のサブネットを作成する必要があります。
 * **仮想アプライアンス**。 ファイアウォール、WAN アクセラレータ、VPN ゲートウェイなどの仮想アプライアンスを Azure VNet で使用できます。 その場合、それらのアプライアンスに [トラフィックを送信](virtual-networks-udr-overview.md) し、独自のサブネットでアプライアンスを分離する必要があります。
 
 ### <a name="subnet-and-nsg-design-patterns"></a>サブネットと NSG の設計パターン
@@ -250,5 +250,5 @@ VNet ごとにアドレス空間を指定する必要もあります。 オン�
 * [仮想ネットワークをデプロイ](virtual-networks-create-vnet-arm-template-click.md) します。
 * IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
 * [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md) について詳しく学習します。
-* [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-connections)について詳しく学習します。
+* [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)について詳しく学習します。
 

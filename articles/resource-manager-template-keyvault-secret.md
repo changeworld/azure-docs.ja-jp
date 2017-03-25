@@ -1,12 +1,8 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-manager-template-keyvault-secret
+redirect_url: /azure/templates/microsoft.keyvault/vaults
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 32244dfa514eecb37124ebac70ab86a8a961abb4
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 0d38a0fd751175fd62bf795ede7d36b2452a5fa6
+ms.lasthandoff: 03/18/2017
 
 ---
-
-
-<!--HONumber=Nov16_HO4-->
-
-

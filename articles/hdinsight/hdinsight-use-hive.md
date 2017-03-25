@@ -10,6 +10,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2c10f989-7636-41bf-b7f7-c4b67ec0814f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,9 +18,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 18131c083a0dc24eaa6f58445aa61d5872210417
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2f37c2d635920dd286bf0cb5f9a74a01259a786a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 01/18/2017
 
 このチュートリアルでは、HDInsight の Hadoop での Apache Hive の使用方法と、Hive ジョブの実行方法の選択について説明します。 また、HiveQL と、Apache log4j サンプル ファイルを分析する方法についても説明します。
 
-## <a name="a-idwhyawhat-is-hive-and-why-use-it"></a><a id="why"></a>Hive の説明と使用する理由
+## <a id="why"></a>Hive の説明と使用する理由
 [Apache Hive](http://hive.apache.org/) は Hadoop のデータ ウェアハウス システムで、HiveQL (SQL に似たクエリ言語) を使用してデータを集約、照会、および分析することができます。 Hive を使用することで、データを対話的に探索したり、再利用可能なバッチ処理ジョブを作成したりすることができます。
 
 Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、Hive を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。 **HiveQL** (Hive のクエリ言語) では、T-SQL に似たステートメントを使用してクエリを記述することができます。
@@ -55,7 +56,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
 
-## <a name="a-iddataaabout-the-sample-data-an-apache-log4j-file"></a><a id="data"></a>サンプル データ Apache log4j ファイルについて
+## <a id="data"></a>サンプル データ Apache log4j ファイルについて
 この例では、*log4j* サンプル ファイル (Blob Storage コンテナーの **/example/data/sample.log** に格納) を使用します。 ファイル内の各ログは、タイプと重要度を表す `[LOG LEVEL]` フィールドを含むフィールド行で構成されています。以下に例を示します。
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
@@ -78,7 +79,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 > 
 > 
 
-## <a name="a-idjobasample-job-project-columns-onto-delimited-data"></a><a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
+## <a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
 次の HiveQL ステートメントは、**wasbs:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
 
     set hive.execution.engine=tez;
@@ -129,7 +130,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 > 
 > 
 
-## <a name="a-idusetezause-apache-tez-for-improved-performance"></a><a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
+## <a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
 [Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。 HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
 > [!NOTE]
@@ -137,7 +138,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 > 
 > ```set hive.execution.engine=tez;```
 > 
-> これは、クエリの先頭に配置することで、クエリ単位で送信できます。 また、クラスターの作成時に構成値を設定することで、この機能が既定で有効になるようにクラスターを設定できます。 詳細については、「 [HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+> これは、クエリの先頭に配置することで、クエリ単位で送信できます。 また、クラスターの作成時に構成値を設定することで、この機能が既定で有効になるようにクラスターを設定できます。 詳細については、「 [HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 > 
 > 
 
@@ -148,7 +149,7 @@ Tez を使用して実行したジョブのデバッグを支援するために�
 * [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 * [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
-## <a name="a-idrunachoose-how-to-run-the-hiveql-job"></a><a id="run"></a>HiveQL ジョブの実行方法の選択
+## <a id="run"></a>HiveQL ジョブの実行方法の選択
 HDInsight では、さまざまな方法を使用して HiveQL ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
@@ -173,13 +174,11 @@ SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行�
 
 Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
-* [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx

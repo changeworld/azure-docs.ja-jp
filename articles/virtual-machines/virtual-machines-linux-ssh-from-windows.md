@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: ba75d58b6e0ce6a75173c6d38ea27e7917a054c8
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 88351f0c3333fb06b1949a8ab9f63deea7259a41
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -61,9 +61,9 @@ Azure では、長さ 2,048 ビット以上の **ssh-rsa** 形式の公開キー
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** キーは、[Azure Portal](https://portal.azure.com) を使用するすべてのデプロイと、[Azure CLI](../xplat-cli-install.md) を使用する Resource Manager デプロイメントに必要です。
+1. **ssh-rsa** キーは、[Azure Portal](https://portal.azure.com) を使用するすべてのデプロイと、[Azure CLI](../cli-install-nodejs.md) を使用する Resource Manager デプロイメントに必要です。
    * これらのキーは通常、ほとんどすべての人が必要とします。
-2. `.pem` ファイルはクラシック デプロイで VM を作成する場合に必要です。 [Azure Portal](https://portal.azure.com) または [Azure CLI](../xplat-cli-install.md) を使用する場合、クラシック デプロイでこれらのキーがサポートされます。
+2. `.pem` ファイルはクラシック デプロイで VM を作成する場合に必要です。 [Azure Portal](https://portal.azure.com) または [Azure CLI](../cli-install-nodejs.md) を使用する場合、クラシック デプロイでこれらのキーがサポートされます。
    * これらの追加のキーと証明書は、クラシック デプロイメント モデルを使用して作成されたリソースを管理している場合にのみ作成する必要があります。
 
 ## <a name="install-git-for-windows"></a>Git for Windows のインストール

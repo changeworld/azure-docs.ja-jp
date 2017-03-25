@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 908531e791b3634cb9986946212b8ad8b447b8ce
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b615f97484033bb406022e84fbcf50f88458de3c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -543,7 +543,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 
-次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳細については、「 [Azure CLI のインストール](../xplat-cli-install.md)」を参照してください。
+次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳細については、「 [Azure CLI のインストール](../cli-install-nodejs.md)」を参照してください。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 

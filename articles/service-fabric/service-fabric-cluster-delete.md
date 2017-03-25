@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: chackdan
 translationtype: Human Translation
 ms.sourcegitcommit: a957a70be915459baa8c687c92e251c6011b6172
 ms.openlocfilehash: e73334373e9909069641cd4ad2c3280e51b5e2db
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -108,9 +109,4 @@ Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Mic
 [ResourceTags]: ./media/service-fabric-cluster-delete/ResourceTags.png
 
 [TaggedResources]: ./media/service-fabric-cluster-delete/TaggedResources.PNG
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

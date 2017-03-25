@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: 4531aeb00cff7eee12ab0ab9c7466446fc50d5b1
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5f0fc28d034306476c5504a65ddb81193e3e589c
+ms.lasthandoff: 03/21/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
@@ -35,7 +35,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 * **Azure SQL Database**。 保存先データ ストアとして Azure SQL Database を使用します。 SQL Database がない場合は、 [SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
-* **Azure CLI**。 Azure CLI をインストールしていない場合、詳しい手順については、「 [Azure CLI のインストール](../xplat-cli-install.md) 」をご覧ください。
+* **Azure CLI**。 Azure CLI をインストールしていない場合、詳しい手順については、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」をご覧ください。
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 

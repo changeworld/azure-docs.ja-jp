@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a99b55c98f29356fb78e053434f6f3fc5c9d0efc
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +35,7 @@ ms.openlocfilehash: 76c5bdeb2a27b733d8566c7a19f9457feebdc273
 * お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
 * 無人インストール用スクリプトを実行するときに、証明書を使用して認証を自動化できます。
 
-このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定を [Mac、Linux、および Windows 用の Azure CLI](../xplat-cli-install.md) で行う方法を紹介しています。
+このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定を [Mac、Linux、および Windows 用の Azure CLI](../cli-install-nodejs.md) で行う方法を紹介しています。
 
 AD アプリケーションの認証に関して、Azure CLI には次の&2; つの選択肢があります。
 
@@ -372,10 +373,5 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 ## <a name="next-steps"></a>次のステップ
 * アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 * 証明書と Azure CLI の使用方法の詳細については、「 [Certificate-based authentication with Azure Service Principals from Linux command line (Linux コマンド ラインからの Azure サービス プリンシパルの証明書での認証)](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)」を参照してください。 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

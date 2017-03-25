@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: d9ef14d1d83d98de5c1d95b237a2e06ea2506766
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3c8ee4a51d69b7511445d441e28a1014200bdc4a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,7 +32,7 @@ Azure ポータルと Azure Resource Manager API のロールベースの Access
 
 Azure コマンド ライン インターフェイス (CLI) を使用して RBAC を管理するには、事前に以下の前提条件を用意しておく必要があります。
 
-* Azure CLI バージョン 0.8.8 以降。 最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「 [Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照してください。
+* Azure CLI バージョン 0.8.8 以降。 最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「 [Azure CLI のインストールと構成](../cli-install-nodejs.md)」を参照してください。
 * Azure CLI の Azure Resource Manager。 詳細については、 [Resource Manager での Azure CLI の使用](../xplat-cli-azure-resource-manager.md) に関するページをご覧ください。
 
 ## <a name="list-roles"></a>ロールの一覧表示

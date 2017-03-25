@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 6e6f7793e03930cc002183172ccfbed6305378bd
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 74fe2d241dfcd6e572f0f20714f91c6aff970f34
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -38,7 +40,7 @@ Azure BLOB ストレージ コンテナーには、キーと値のペアとし�
 
 たとえば、BLOB のキー名を「 *input/log1.txt*」とします。 この場合、"input" ディレクトリは実際に存在しませんが、キー名でスラッシュ (/) が使用されているのでファイル パスのように見えます。
 
-このため、Azure エクスプローラー ツールを使用すると、サイズが 0 バイトのファイルがあることに気付きます。 これらのファイルには 2 つの目的があります。
+このため、Azure エクスプローラー ツールを使用すると、サイズが 0 バイトのファイルがあることに気付きます。 これらのファイルには&2; つの目的があります。
 
 * 空のフォルダーがある場合、フォルダーの存在をマークします。 Azure BLOB ストレージでは、foo/bar と呼ばれる BLOB が存在している場合、 **foo**と呼ばれるフォルダーも存在すると見なされます。 しかし、 **foo** と呼ばれる空のフォルダーが必要な場合、それを示すには、この特殊な 0 バイトのファイルを配置するしか方法はありません。
 * Hadoop ファイル システムが必要とする特殊なメタデータ、特に、フォルダーのアクセス許可と所有者を保持します。
@@ -58,12 +60,12 @@ Microsoft では、Azure BLOB ストレージを操作する次のユーティ�
 >
 >
 
-### <a name="a-idxplatcliaazure-cli"></a><a id="xplatcli"></a>Azure CLI
+### <a id="xplatcli"></a>Azure CLI
 Azure CLI は、Azure サービスを管理できるクロスプラットフォーム ツールです。 次の手順を使用して、Azure Blob ストレージにデータをアップロードします。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成する](../xplat-cli-install.md)
+1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成する](../cli-install-nodejs.md)
 2. コマンド プロンプト、bash、その他のシェルを開き、次を使用して、Azure サブスクリプションを認証します。
 
         azure login
@@ -97,7 +99,7 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 >
 >
 
-### <a name="a-idpowershellaazure-powershell"></a><a id="powershell"></a>Azure PowerShell
+### <a id="powershell"></a>Azure PowerShell
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。 ワークステーションを構成して Azure PowerShell を実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
@@ -105,7 +107,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 **ローカル ファイルを Azure BLOB ストレージにアップロードするには**
 
 1. Azure PowerShell コンソールを開きます。手順については「[Azure PowerShell のインストールおよび構成](/powershell/azureps-cmdlets-docs)」をご覧ください。
-2. 次のスクリプトで最初の 5 つの変数の値を設定します。
+2. 次のスクリプトで最初の&5; つの変数の値を設定します。
 
         $resourceGroupName = "<AzureResourceGroupName>"
         $storageAccountName = "<StorageAccountName>"
@@ -125,7 +127,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 HDInsight で使用する PowerShell スクリプトの例については、 [HDInsight ツール](https://github.com/blackmist/hdinsight-tools)のページを参照してください。
 
-### <a name="a-idazcopyaazcopy"></a><a id="azcopy"></a>AzCopy
+### <a id="azcopy"></a>AzCopy
 AzCopy は、Azure ストレージ アカウントでデータの送受信タスクが簡単になるコマンドライン ツールです。 スタンドアロン ツールとして使用することも、既存のアプリケーションに組み込むこともできます。 [AzCopy をダウンロード][azure-azcopy-download]してください。
 
 AzCopy の構文は次のとおりです。
@@ -134,7 +136,7 @@ AzCopy の構文は次のとおりです。
 
 詳細については、「[AzCopy - Uploading/Downloading files for Azure Blobs (AzCopy - Azure BLOB のファイルのアップロード/ダウンロードについて)][azure-azcopy]」をご覧ください。
 
-### <a name="a-idcommandlineahadoop-command-line"></a><a id="commandline"></a>Hadoop コマンド ライン
+### <a id="commandline"></a>Hadoop コマンド ライン
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、BLOB ストレージにデータを格納する際にのみ役立ちます。
 
 Hadoop コマンドを使用するためには、まず、次の方法のいずれかを使用してヘッドノードに接続する必要があります。
@@ -159,7 +161,7 @@ HDInsight の既定のファイル システムは Azure BLOB ストレージに
 Hadoop のその他のファイル操作コマンドの一覧については、 [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って 12 GB より大きいデータを書き込むとエラーになります。 詳しくは、後の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
+> HBase クラスターでは、データ書き込み時に使われる既定のブロック サイズは 256 KB です。 HBase API または REST API を使うときは問題なく動きますが、`hadoop` または `hdfs dfs` コマンドを使って&12; GB より大きいデータを書き込むとエラーになります。 詳しくは、後の「[BLOB への書き込みに関するストレージ例外](#storageexception)」セクションをご覧ください。
 >
 >
 
@@ -178,7 +180,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 ### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools for HDInsight
 詳細については、「 [リンクしているリソースへの移動](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources)」を参照してください。
 
-### <a name="a-idstorageexploreraazure-storage-explorer"></a><a id="storageexplorer"></a>Azure Storage Explorer
+### <a id="storageexplorer"></a>Azure Storage Explorer
 *Azure Storage エクスプローラー* は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。 これは、 [http://storageexplorer.com/](http://storageexplorer.com/)からダウンロードできる無料のオープン ソース ツールです。 このリンクからソース コードも入手できます。
 
 Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。 この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法:ストレージ アクセス キーを表示、コピー、再生成する」をご覧ください。
@@ -209,7 +211,7 @@ Azure Data Factory は、Azure BLOB ストレージへのデータの移動や�
 
 詳細については、 [Azure Data Factory のドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)のページを参照してください。
 
-### <a name="a-idsqoopaapache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
+### <a id="sqoop"></a>Apache Sqoop
 Sqoop は、Hadoop とリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。
 
 詳細については、[HDInsight での Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
@@ -227,8 +229,8 @@ Azure BLOB ストレージには、次のプログラミング言語で Azure SD
 Azure SDK のインストールの詳細については、 [Azure のダウンロード](https://azure.microsoft.com/downloads/)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-### <a name="a-idstorageexceptionastorage-exception-for-write-on-blob"></a><a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
-**現象**: `hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のフィルを書き込むと、次のエラーが発生する可能性があります。
+### <a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
+**現象**: `hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで&12; GB 以上のフィルを書き込むと、次のエラーが発生する可能性があります。
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -301,15 +303,10 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[azurecli]: ../xplat-cli-install.md
+[azurecli]: ../cli-install-nodejs.md
 
 
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

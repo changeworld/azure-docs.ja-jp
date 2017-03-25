@@ -8,6 +8,7 @@ author: nitinme
 documentationcenter: 
 ms.assetid: 05efedb5-6456-4552-87ff-156d77fbe2e1
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +18,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 3606df64b619b62f8b9e5aec2abc4efc994c37e3
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -361,10 +363,5 @@ ASM ベースの SDK を使用して操作を実行する方法と、ARM ベー�
 * 新しいコマンド (ARM):
   
         client.Clusters.Delete(resourceGroup, dnsname);
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

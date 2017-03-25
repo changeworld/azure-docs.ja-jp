@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
-ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7c6ca3789e9a5dcde799d9ef40b58bd2f3c8966c
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -98,7 +99,7 @@ class Program
 > 
 
 ## <a name="other-methods"></a>その他の方法
-* [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)
+* [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)
   
     BLOB をアップロードするときに、`-p` スイッチを使用して *cacheControl* プロパティを設定します。  この例では、TTL を&1; 時間 (3,600 秒) に設定します。
   
@@ -118,10 +119,5 @@ BLOB の TTL は簡単に確認できます。  お使いのブラウザーの [
 ## <a name="next-steps"></a>次のステップ
 * [*Cache-Control* ヘッダーに関するページを読みます](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](cdn-manage-expiration-of-cloud-service-content.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

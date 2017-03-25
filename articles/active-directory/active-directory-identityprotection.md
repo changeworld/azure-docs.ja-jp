@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/18/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4232c27926c2d48adb91eedd15884e44cc004ac2
-ms.openlocfilehash: 2fad0a4e7c4ac282802c2bc0dd10c7d86b651e08
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f09aa6cffbbaa2a3df7f84edee2d3e03aa23a719
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -40,7 +40,7 @@ Microsoft は&10; 年以上にわたってクラウド ベースの ID を保護
 
 このため、次が必要です。
 
-- 権限レベルにかかわらず、すべての ID を保護する 
+- 権限レベルにかかわらず、すべての ID を保護する
 
 - 侵害された ID が悪用されるのを事前に防止する
 
@@ -75,12 +75,12 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 ### <a name="vulnerabilities"></a>脆弱性
 
-Azure Active Directory Identity Protection は、構成を分析し、ユーザーの ID に影響する可能性がある脆弱性を検出します。 詳細については、「[Azure Active Directory Identity Protection で検出される脆弱性](active-directory-identityprotection-vulnerabilities.md)」を参照してください。 
+Azure Active Directory Identity Protection は、構成を分析し、ユーザーの ID に影響する可能性がある脆弱性を検出します。 詳細については、「[Azure Active Directory Identity Protection で検出される脆弱性](active-directory-identityprotection-vulnerabilities.md)」を参照してください。
 
 ### <a name="risk-events"></a>リスク イベント
 
 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザーの ID に関連する疑わしいアクションを検出します。 疑わしいアクションが検出されると、アクションごとにレコードが作成されます。 こうしたレコードは、リスク イベントとも呼ばれます。  
-詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](active-directory-identity-protection-risk-events.md)」を参照してください。 
+詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](active-directory-identity-protection-risk-events.md)」を参照してください。
 
 
 ## <a name="investigation"></a>調査
@@ -102,11 +102,11 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## <a name="risky-sign-ins"></a>リスクの高いサインイン
 
-Aure Active Directory で検出される[リスク イベントの種類](active-directory-identity-protection-risk-events.md#risk-event-types)の中には、リアルタイムで検出されるものがあります。 ユーザーのサインイン時に検出されたリアルタイムのリスク イベントはすべて、"*リスクの高いサインイン*" と呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。 リスクの高いサインインは、ユーザーがサインアウトすると終了します。
+Aure Active Directory で検出される[リスク イベントの種類](active-directory-reporting-risk-events.md#risk-event-types)の中には、リアルタイムで検出されるものがあります。 ユーザーのサインイン時に検出されたリアルタイムのリスク イベントはすべて、"*リスクの高いサインイン*" と呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。 リスクの高いサインインは、ユーザーがサインアウトすると終了します。
 
 ### <a name="sign-in-risk-level"></a>サインインのリスク レベル
 
-サイン インのリスク レベルは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。 
+サイン インのリスク レベルは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。
 
 ### <a name="mitigating-sign-in-risk-events"></a>サインイン リスク イベントの軽減
 

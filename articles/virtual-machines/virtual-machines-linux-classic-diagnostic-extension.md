@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 625f4cc08ba023309ac4a9a8b7834d9ab4f4c116
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a3920da0baafa1be0d3a9a8596f19bf7ebc3e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -55,7 +55,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 ## <a name="prerequisites"></a>前提条件
 * **Azure Linux エージェント バージョン 2.0.6 またはそれ以降**。
   大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。 **WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。 VM が 2.0.6 より前のバージョンを実行している場合は、 [GitHub のこちらの説明](https://github.com/Azure/WALinuxAgent "説明") に従って更新できます。
-* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../xplat-cli-install.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
+* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
   
   * ヘルプ情報の詳細については、 **azure vm extension set --help** を実行します。
   * Azure にサインインするには、 **azure login** を実行します。

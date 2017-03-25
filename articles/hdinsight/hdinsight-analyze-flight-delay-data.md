@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jgao
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
-ms.openlocfilehash: d8ea4fb54db5c114aa886a6267b18eba6563d231
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 05e8c264376b976bcdc8f3e1f03ed79cb712991e
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -241,7 +242,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 
 - - -
 
-## <a name="a-idappendix-aaappendix-a---upload-flight-delay-data-to-azure-blob-storage"></a><a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
+## <a id="appendix-a"></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
 データ ファイルと HiveQL スクリプト ファイルをアップロード ( [付録 B](#appendix-b)参照) する前に、いくつか計画を立てる必要があります。 データ ファイルと HiveQL ファイルを保存してから HDInsight クラスターを作成し、Hive ジョブを実行するという考え方です。 2 つのオプションがあります。
 
 * **HDInsight クラスターと既定のファイル システムで、使用する Azure ストレージ アカウントを同じものにする。** HDInsight クラスターにはストレージ アカウントのアクセス キーがあるため、追加の変更は不要です。
@@ -361,7 +362,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 
 - - -
 
-## <a name="a-idappendix-baappendix-b---create-and-upload-a-hiveql-script"></a><a id="appendix-b"></a>付録 B: HiveQL スクリプトを作成してアップロードする
+## <a id="appendix-b"></a>付録 B: HiveQL スクリプトを作成してアップロードする
 Azure PowerShell を使用して、複数の HiveQL ステートメントを一度に実行することも、HiveQL ステートメントをスクリプト ファイルにまとめることもできます。 このセクションでは、HiveQL スクリプトを作成し、Azure PowerShell を使用して Azure BLOB ストレージにアップロードする方法を説明します。 Hive を利用するには、HiveQL スクリプトが Azure BLOB ストレージに格納されている必要があります。
 
 HiveQL スクリプトは、次の作業を実行します。
@@ -560,7 +561,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
    * **$srcDataFolder** と **$dstDataFolder** はそれぞれ "tutorials/flightdelay/data" と "tutorials/flightdelay/output" です。
 
 - - -
-## <a name="a-idappendix-caappendix-c---prepare-an-azure-sql-database-for-the-sqoop-job-output"></a><a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
+## <a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
 **SQL データベースを準備するには (Sqoop スクリプトとマージ)**
 
 1. 次のパラメーターを準備します。
@@ -710,10 +711,10 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 4. **F5** キーを押して、スクリプトを実行します。
 5. スクリプトの出力結果を検証します。 スクリプトが正常に実行されたことを確認してください。
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。 詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
+* [HDInsight の概要][hdinsight-get-started]
 * [HDInsight での Hive の使用][hdinsight-use-hive]
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]

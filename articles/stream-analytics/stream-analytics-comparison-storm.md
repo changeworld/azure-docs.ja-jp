@@ -16,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9dcac84fdc33515ef12ab5b8154f700bb8618290
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -27,6 +28,7 @@ ms.openlocfilehash: 528266346733fff72113104d585540d75512b3a6
 どちらの分析プラットフォームにも PaaS ソリューションのメリットがありますが、2 つのプラットフォームを区別する主な機能がいくつかあります。 2 つのサービスの機能と制限を一覧にまとめました。この一覧を参照して、目標を達成するために必要なソリューションを選択してください。
 
 ## <a name="storm-comparison-to-stream-analytics-general-features"></a>Storm と Stream Analytics の比較: 全般的な機能
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -120,7 +122,7 @@ HDInsight の Apache Storm を使用して、ユーザーは複数のストー�
             </td>
             <td width="204" valign="top">
                 <p>
-Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている 1 時間あたりの) ストリーミング ユニットの数によって請求されます。
+Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている&1; 時間あたりの) ストリーミング ユニットの数によって請求されます。
                 </p>
                 <p>
                     <a href="http://azure.microsoft.com/en-us/pricing/details/stream-analytics/">価格についての詳細は、こちらをご覧ください。</a>
@@ -137,7 +139,9 @@ HDInsight の Apache Storm では、購入単位はクラスター ベースで�
         </tr>
     </tbody>
 </table>
-## 各分析プラットフォームでの作成 ##
+
+## <a name="authoring-on-each-analytics-platform"></a>各分析プラットフォームでの作成 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -221,7 +225,7 @@ Stream Analytics はデバッグの方法として基本的なジョブの状態
             </td>
             <td width="246" valign="top">
                 <p>
-詳細なログは、デバッグ目的で利用できます。 ユーザーにログを表示する には、Visual Studio による方法と、クラスターに RDP 接続してログにアクセスする方法の 2 つの方法があります。
+詳細なログは、デバッグ目的で利用できます。 ユーザーにログを表示する には、Visual Studio による方法と、クラスターに RDP 接続してログにアクセスする方法の&2; つの方法があります。
                 </p>
             </td>
         </tr>
@@ -261,7 +265,9 @@ Stream Analytics では、拡張可能コードのサポートはありません
         </tr>
     </tbody>
 </table>
-## データ ソースと出力 ##
+
+## <a name="data-sources-and-outputs"></a>データ ソースと出力 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -350,7 +356,9 @@ Stream Analytics に使用するための UTF-8 データ形式が必要です�
         </tr>
     </tbody>
 </table>
-## 管理と操作 ##
+
+## <a name="management-and-operations"></a>管理と操作 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -509,7 +517,9 @@ Storm クラスターの アップタイム 99.9% の SLA。 Apache Storm は、
         </tr>
     </tbody>
 </table>
-## 高度な機能 ##
+
+## <a name="advanced-features"></a>高度な機能 ##
+
 <table border="1" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
@@ -585,9 +595,4 @@ Storm Bolt で使用できます。
         </tr>
     </tbody>
 </table>
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

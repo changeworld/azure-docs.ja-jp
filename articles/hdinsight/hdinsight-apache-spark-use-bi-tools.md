@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,15 +17,15 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ba238a5d18dd83e4adb9e5ba737ec0cff135d34e
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 36b7aaf99db48efa1b56b84ac0616cf9ee2830ac
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="use-bi-tools-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での BI ツールと Apache Spark クラスターの使用
 
-Azure HDInsight で Apache Spark を使って生サンプル データセットを分析し、BI ツールを使ってデータを視覚化する方法について説明します。 この記事では、HDInsight Spark クラスターで Power BI や Tableau などの BI ツールを使用する方法について説明します。 
+Azure HDInsight で Apache Spark を使って生サンプル データセットを分析し、BI ツールを使ってデータを視覚化する方法について説明します。 この記事では、HDInsight Spark クラスターで Power BI や Tableau などの BI ツールを使用する方法について説明します。
 
 > [!NOTE]
 > Azure HDInsight 3.6 プレビューの Spark 2.1 では、この記事で説明されている BI ツールとの接続はサポートされていません。 Spark バージョン 1.6 および 2.0 のみ (それぞれ、HDInsight 3.4、3.5 の場合) がサポートされています。
@@ -86,7 +87,7 @@ Azure HDInsight で Apache Spark を使って生サンプル データセット�
         dfw = DataFrameWriter(hvacTable)
         dfw.saveAsTable('hvac')
 
-7. テーブルが正常に作成されたことを確認します。 `%%sql` マジックを使用して、Hive クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
+7. テーブルが正常に作成されたことを確認します。 `%%sql` マジックを使用して、Hive クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
         %%sql
         SHOW TABLES
@@ -160,7 +161,7 @@ Azure HDInsight で Apache Spark を使って生サンプル データセット�
 >
 >
 
-1. このチュートリアルを行っているコンピューターに [Tableau Desktop](http://www.tableau.com/products/desktop) をインストールします。 
+1. このチュートリアルを行っているコンピューターに [Tableau Desktop](http://www.tableau.com/products/desktop) をインストールします。
 
 2. そのコンピューターに Microsoft Spark ODBC ドライバーもインストールされていることを確認します。 ドライバーは [ここ](http://go.microsoft.com/fwlink/?LinkId=616229)からインストールできます。
 

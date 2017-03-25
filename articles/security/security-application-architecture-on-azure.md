@@ -1,6 +1,6 @@
 ---
 title: "Azure のアーキテクチャ設計へのセキュリティの統合 | Microsoft Docs"
-description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャの理解に役立ち、設計および実装へのセキュリティの統合を簡単にします。. "
+description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。 "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
-ms.openlocfilehash: e7ccc71f222d4af9a52cbf55bb6bb446f211e819
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 91e46d690d3e7c298bc3b4020cc383ca99c43c4f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -49,11 +49,11 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 [Visio とシンボルに関するトレーニング ビデオを視聴](http://aka.ms/CnESymbolsVideo)してから、[クラウドおよびエンタープライズ用シンボル セットをダウンロード](http://aka.ms/CnESymbols)すると、Azure、Windows Server、SQL Server、その他について説明する技術資料を作成する際に役に立ちます。 これらのシンボルやアイコンは、アーキテクチャ ダイアグラム、トレーニング資料、プレゼンテーション、データシート、インフォグラフィックス、ホワイトペーパーに加え、サード パーティの書籍でも使用できます (Microsoft 製品の使用が想定された書籍の場合)。 ただし、ユーザー インターフェイスで使用することは、想定されていません。
 
 ## <a name="3d-blueprint-visio-template"></a>3D ブループリント Visio テンプレート
-3D バージョンの [Microsoft アーキテクチャ ブループリント](http://aka.ms/azblueprints) は、当初は非 Microsoft ツールで作成されました。 Visio 2013 (以降) の新しいテンプレートが、2015 年 8 月 5 日に、 [EDX.ORG で配信される Microsoft のアーキテクチャの認定コース](../architecture-overview.md#microsoft-architecture-certification-course)の一部として出荷されました。
+3D バージョンの [Microsoft アーキテクチャ ブループリント](http://aka.ms/azblueprints) は、当初は非 Microsoft ツールで作成されました。 Visio 2013 (以降) の新しいテンプレートが、2015 年 8 月 5 日に、 [EDX.ORG で配信される Microsoft のアーキテクチャの認定コース](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course)の一部として出荷されました。
 
 テンプレートは、このコース以外でも利用もできます。
 
 * [トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo) する
 * [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)
-* 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](../architecture-overview.md#drawing-symbol-and-icon-sets) をダウンロードする
+* 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) をダウンロードする
 

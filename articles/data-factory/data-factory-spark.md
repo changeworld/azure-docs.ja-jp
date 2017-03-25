@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 2af5d275bb331101b370e4a12043e27b6cdf5b68
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 8be5e1525a7c481de5cb02edd26da305af2d4798
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -140,10 +140,7 @@ SparkJob2
 > [!IMPORTANT]
 > 変換アクティビティでパイプラインを作成する方法をさらに詳しく解説したチュートリアルについては、[データを変換するパイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md)に関する記事をご覧ください。 
 
-## <a name="spark-sample-on-github"></a>GitHub 上の Spark サンプル
-Spark アクティビティがサポートされる前は、MapReduce アクティビティを使用して、Spark プログラムを Data Factory パイプラインから実行していました。 引き続き Data Factory パイプラインで [MapReduce アクティビティ](data-factory-map-reduce.md)を使用して、HDInsight Spark クラスターで Spark プログラムを実行できますが、 MapReduce アクティビティではなく、Spark アクティビティを使用することをお勧めします。 
 
-[GitHub 上の Spark - Data Factory サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) は、MapReduce アクティビティを使用して Spark プログラムを起動する方法を示しています。 Spark プログラムは、単に、1 つの Azure BLOB コンテナーから別のコンテナーにデータをコピーします。 
 
 ## <a name="see-also"></a>関連項目
 * [Hive アクティビティ](data-factory-hive-activity.md)

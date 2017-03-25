@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 03/16/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
-ms.openlocfilehash: 4f512601cebcfce7bfac47ed440c96fcb2c91b5f
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6fe5ed03611d68a1201e4fe48580a3499811abeb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -61,18 +61,6 @@ Azure アカウントにサインインし、IoT Hub リソースを操作する
 
     ```azurecli
     az account set --subscription {your subscription name or id}
-    ```
-
-3. Azure CLI _IoT コンポーネント_をインストールします。 以下の、[IoT コンポーネントを追加するコマンド][lnk-az-addcomponent-command]を実行します。
-    
-    ```azurecli
-    az component update --add iot
-    ```
-
-4. IoT リソースをデプロイする前に、IoT プロバイダーを登録します。 以下の、[IoT プロバイダーを登録するコマンド][lnk-az-register-command]を実行します。
-    
-    ```azurecli
-    az provider register -namespace Microsoft.Devices
     ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成

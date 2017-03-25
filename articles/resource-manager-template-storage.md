@@ -1,12 +1,8 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-manager-template-storage
+redirect_url: /azure/templates/microsoft.storage/storageaccounts
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 3dcc9d4a7d9216e03481149485bc559db4f1ff26
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 67436c8278caae37ae68b886c2863285daac2b95
+ms.lasthandoff: 03/18/2017
 
 ---
-
-
-<!--HONumber=Nov16_HO4-->
-
-

@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
-ms.openlocfilehash: f421ebdc81ce413d69f62a3b86563ab4a09b747a
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 76769a10177457d46a280d931b273958fecb142a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -43,7 +43,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
-[最新の Azure CLI 1.0](../xplat-cli-install.md) をインストールし、Azure アカウントにログインし、Resource Manager モード (`azure config mode arm`) になっていることを確認します。
+[最新の Azure CLI 1.0](../cli-install-nodejs.md) をインストールし、Azure アカウントにログインし、Resource Manager モード (`azure config mode arm`) になっていることを確認します。
 
 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。
 

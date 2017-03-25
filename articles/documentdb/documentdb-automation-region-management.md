@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: dimakwan
 translationtype: Human Translation
-ms.sourcegitcommit: 655f501f920e3169450831f501f7183ae46a4a60
-ms.openlocfilehash: 70614f7d97466fb7e8a2f325d744f5e1632640a6
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 19ba92fae63cadef20cd5414fa23bf4821ab6d56
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/27/2017
 
 ## <a name="getting-ready"></a>開発の準備
 
-Azure リソース グループで Azure CLI 1.0 を使用するには、適切な Azure CLI 1.0 バージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、[インストールします](../xplat-cli-install.md)。
+Azure リソース グループで Azure CLI 1.0 を使用するには、適切な Azure CLI 1.0 バージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、[インストールします](../cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-10-version"></a>Azure CLI 1.0 のバージョンを更新する
 
@@ -39,7 +39,7 @@ Azure リソース グループで Azure CLI 1.0 を使用するには、適切�
     azure --version
     0.10.4 (node: 4.2.4)
 
-バージョンが 0.10.4 以降ではない場合、[Azure CLI 1.0 をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
+バージョンが 0.10.4 以降ではない場合、[Azure CLI 1.0 をインストール](../cli-install-nodejs.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
 
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 

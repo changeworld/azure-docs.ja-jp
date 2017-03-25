@@ -16,16 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 0daa75e1d4fccf7d7c7785422a9607787e55ca8b
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f79f6fb82a74d6195491f243dc79db0c6753a894
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Docker VM 拡張機能の使用方法については、[こちら](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した Docker VM 拡張機能の使用方法については、[こちら](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
-このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI で Docker VM 拡張機能を使用して VM を作成する方法について説明します。 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。 コンテナーとその利点に関する概要については、「 [Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
+このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI で Docker VM 拡張機能を使用して VM を作成する方法について説明します。 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの&1; つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。 コンテナーとその利点に関する概要については、「 [Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
 ## <a name="how-to-use-the-docker-vm-extension-with-azure"></a>Azure で Docker VM 拡張機能を使用する方法
 Azure で Docker VM 拡張機能を使用するには、バージョン 0.8.6 以降の [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) をインストールする必要があります (この記事の執筆時点で最新バージョンは 0.10.0 です)。 Azure CLI は Mac、Linux、Windows のいずれにもインストールできます。
@@ -37,7 +38,7 @@ Azure 上で Docker を使用するためのプロセスはシンプルです。
 * ローカルの Docker コマンドを使用して、Azure 上の Docker VM 内の Docker コンテナーを管理する。
 
 ### <a name="install-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) のインストール
-Azure CLI のインストールと構成の方法については、[Azure コマンド ライン インターフェイスのインストール方法](../xplat-cli-install.md)に関するページを参照してください。 インストールを確認するために、コマンド プロンプトで「`azure`」と入力します。しばらくすると、Azure CLI の ASCII アートが表示され、使用可能な基本コマンドが一覧表示されます。 インストールが正常に行われていれば、「`azure help vm`」と入力したときに、一覧表示されたコマンドに "docker" が含まれています。
+Azure CLI のインストールと構成の方法については、[Azure コマンド ライン インターフェイスのインストール方法](../cli-install-nodejs.md)に関するページを参照してください。 インストールを確認するために、コマンド プロンプトで「`azure`」と入力します。しばらくすると、Azure CLI の ASCII アートが表示され、使用可能な基本コマンドが一覧表示されます。 インストールが正常に行われていれば、「`azure help vm`」と入力したときに、一覧表示されたコマンドに "docker" が含まれています。
 
 > [!NOTE]
 > Docker には [Docker Machine](https://docs.docker.com/installation/windows/) という Windows 用ツールが用意されています。このプログラムでは、Docker クライアントの作成を自動化することもできます。作成された Docker クライアントは Docker ホストとして Azure VM との連携に使用できます。
@@ -55,7 +56,7 @@ Azure CLI を使用する前に、プラットフォーム上で Azure アカウ
 ### <a name="install-docker-and-use-the-docker-vm-extension-for-azure"></a>Docker のインストールと Azure 用 Docker VM 拡張機能の使用
 続いては、 [Docker のインストール手順](https://docs.docker.com/installation/#installation) に従って、Docker をコンピューターにローカルにインストールします。
 
-Azure 仮想マシンで Docker を使用するには、VM に使用する Linux イメージに [Azure Linux VM エージェント](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)がインストールされている必要があります。 現在、このエージェントを提供するイメージは次の 2 種類のみです。
+Azure 仮想マシンで Docker を使用するには、VM に使用する Linux イメージに [Azure Linux VM エージェント](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)がインストールされている必要があります。 現在、このエージェントを提供するイメージは次の&2; 種類のみです。
 
 * Azure イメージ ギャラリーで入手できる Ubuntu イメージ
 * インストールされ、構成済みの Azure Linux VM エージェントで作成したカスタム Linux イメージ Azure VM エージェントでカスタム Linux VM を構築する方法の詳細については、「[Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
@@ -78,7 +79,7 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 * *&lt;password&gt;* は、Azure の複雑さの基準を満たした *username* アカウントのパスワードです。
 
 > [!NOTE]
-> 現時点では、パスワードは 8 文字以上で、小文字、大文字、数字、特殊文字 (`!@#$%^&+=` ) を 1 つずつ含める必要があります。ピリオドは特殊文字ではありません。
+> 現時点では、パスワードは 8 文字以上で、小文字、大文字、数字、特殊文字 (`!@#$%^&+=` ) を&1; つずつ含める必要があります。ピリオドは特殊文字ではありません。
 > 
 > 
 
@@ -181,9 +182,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
 [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]:virtual-machines-linux-docker-compose-quickstart.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
