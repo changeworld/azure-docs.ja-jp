@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/23/2017
+ms.date: 3/8/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 244471c5e90a0e2d89c34b255f2da077a94f91cf
-ms.openlocfilehash: 1e87486dc7a186c0ab7147719ac47177c87be148
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 182b03d7075c3161f09f27f265b624897cb7a9cc
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -56,7 +56,7 @@ Windows Server 2016 は、2016 年 11 月 1 日に .NET 4.6 のサポート付�
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-.NET 4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2 をサポートします
+インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2
 
 > [!NOTE]
 > * の付いた日付は変更されることがあります。 

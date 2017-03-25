@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: ffe3e6c5f61f2debee70683990cf26ce094dc64b
-ms.openlocfilehash: 1c8cd0a998d7224caf5dcc70061d288a8e3043ed
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9686a4c7b6a71df20e15653837363e6b69418cc9
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md) 
-> * [Pig](data-factory-pig-activity.md)
-> * [MapReduce](data-factory-map-reduce.md)
-> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET カスタム](data-factory-use-custom-activities.md)
->
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive アクティビティ](data-factory-hive-activity.md) 
+> * [Pig アクティビティ](data-factory-pig-activity.md)
+> * [MapReduce アクティビティ](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+> * [Spark アクティビティ](data-factory-spark.md)
+> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
+> * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 ## <a name="introduction"></a>はじめに
 

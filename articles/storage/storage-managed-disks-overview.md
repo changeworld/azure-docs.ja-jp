@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: d9e79c78f55dc80e113062bf0a134c02787e06a1
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 339df6e5ff05c66e898254f2cd4bb5b596d0c537
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -47,7 +47,7 @@ Managed Disks では、可用性セットの VM のディスクが、単一障�
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を&1; 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、エクスポート、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を&1; 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
 ## <a name="pricing-and-billing"></a>価格と課金 
 

@@ -15,22 +15,24 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 7fc30c4283a96f3202e7010828e178895d3613b6
-ms.openlocfilehash: 08245a850e3c78ce893ef18030ee09e701241d1b
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: afa8c08fc89103a14cc393c62e7f2c9d985426c2
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md)  
-> * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
-> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET カスタム](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive アクティビティ](data-factory-hive-activity.md) 
+> * [Pig アクティビティ](data-factory-pig-activity.md)
+> * [MapReduce アクティビティ](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+> * [Spark アクティビティ](data-factory-spark.md)
+> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
+> * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
@@ -172,7 +174,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが 1 つだけあります。 JSON の重要なプロパティの一部を次に示します。 
+この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが&1; つだけあります。 JSON の重要なプロパティの一部を次に示します。 
 
 | プロパティ | メモ |
 |:--- |:--- |

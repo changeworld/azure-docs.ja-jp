@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 11a1f6ea289db38aeb8c2fff2c9b0e6b1f0f044c
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 625f4cc08ba023309ac4a9a8b7834d9ab4f4c116
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -45,7 +46,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 ## <a name="enable-the-extension"></a>拡張機能を有効にする
 この拡張機能は、 [Azure ポータル](https://portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "URL to the Windows blog"/) に従ってください。
+システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
 
 この記事では、Azure CLI コマンドを使用して、拡張機能を有効にして構成する方法を説明します。 これにより、ストレージ テーブルからデータを直接読み込んで表示することができます。
 
@@ -138,8 +139,8 @@ Rsyslog データは既定で常に収集されます。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
-1. Visual Studio のサーバー エクスプローラー。 ストレージ アカウントに移動します。 VM を約 5 分間実行した後に、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」が表示されます。 データを表示するには、テーブル名をダブルクリックします。
-2. [Azure ストレージ エクスプローラー](https://azurestorageexplorerで指定されているすべてのシステム データ。codeplexで指定されているすべてのシステム データ。com/ "Azure ストレージ エクスプローラー")で指定されているすべてのシステム データ。
+1. Visual Studio のサーバー エクスプローラー。 ストレージ アカウントに移動します。 VM を約&5; 分間実行した後に、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」が表示されます。 データを表示するには、テーブル名をダブルクリックします。
+2. [Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")で指定されているすべてのシステム データ。
 
 ![image](./media/virtual-machines-linux-classic-diagnostic-extension/no1.png)
 
@@ -147,10 +148,5 @@ Rsyslog データは既定で常に収集されます。
 
 ## <a name="known-issues"></a>既知の問題
 * Linux 診断拡張機能の最新バージョン (2.3) の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

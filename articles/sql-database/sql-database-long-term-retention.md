@@ -17,22 +17,23 @@ ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 6abc5c10f6116886ac5d6cbc11f251f083ee2b29
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 0cb96f97358378a723d7528e53f5c5a771e2000b
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="storing-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間の Azure SQL Database のバックアップを格納する
-多くのアプリケーションには規制、コンプライアンス、またはその他のビジネス上の目的があり、SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される、7 - 35 日間を経過した完全なデータベースの自動バックアップを保持する必要があります。
+多くのアプリケーションには規制、コンプライアンス、またはその他のビジネス上の目的があり、SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される、7 - 35 日間を経過した完全なデータベースの自動バックアップを保持する必要があります。 **バックアップの長期保存**機能では、最大で 10 年間の Azure SQL Database のバックアップを Azure Recovery Services の資格情報コンテナーに保存できます。 資格情報コンテナーごとに最大 1000 個のデータベースを格納できます。 新しいデータベースとして復元する任意のバックアップを資格情報コンテナーで選択できます。
 
-**バックアップの長期保存**機能では、最大で 10 年間の Azure SQL Database のバックアップを Azure Recovery Services の資格情報コンテナーに保存できます。 資格情報コンテナーごとに最大 1000 個のデータベースを格納できます。 新しいデータベースとして復元する任意のバックアップを資格情報コンテナーで選択できます。
+> [!IMPORTANT]
+> 長期のバックアップ リテンション期間は現在プレビュー段階にあり、利用可能なリージョンは、オーストラリア東部、オーストラリア南東部、ブラジル南部、米国中部、東アジア、米国東部、米国東部 2、インド中部、インド南部、東日本、西日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、西ヨーロッパ、および米国西部です。
+>
 
 > [!NOTE]
 > 資格情報コンテナーあたり 24 時間で最大 200 個のデータベースを有効にできます。 したがって、この制限の影響を最小限に抑えるため、サーバーごとに個別の資格情報コンテナーを使用することをお勧めします。 
 > 
 > 
-
 ## <a name="how-does-sql-database-long-term-backup-retention-work"></a>SQL Database の長期的なバックアップ保有期間のしくみ
 
 バックアップの長期的なバックアップ保有期間を使うと、Azure SQL Database サーバーを Azure Recovery Services コンテナーに関連付けることができます。 
@@ -40,7 +41,6 @@ ms.lasthandoff: 02/16/2017
 * 資格情報コンテナーは、SQL Server を作成した Azure サブスクリプションで、同じ地理的領域およびリソース グループで作成する必要があります。 
 * その後、任意のデータベースの保持ポリシーを構成します。 このポリシーにより、週単位の完全データベース バックアップが Recovery Services コンテナーにコピーされ、指定された保有期間 (最大で 10 年間) 保持されます。 
 * サブスクリプション内のあらゆるサーバーの新しいデータベースに、これらのバックアップのいずれかから復元することができます。 コピーは、Azure ストレージによって既存のバックアップから実行され、既存のデータベースのパフォーマンスには影響を与えません。
-
 
 > [!TIP]
 > チュートリアルについては、「[データの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-portal.md)」、または「[PowerShell を使用したデータの保護と回復のためのバックアップと復元の概要](sql-database-get-started-backup-recovery-powershell.md)」をご覧ください

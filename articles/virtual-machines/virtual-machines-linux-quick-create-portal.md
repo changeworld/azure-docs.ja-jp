@@ -1,108 +1,77 @@
 ---
-title: "Azure Portal を使用した Linux VM の作成 | Microsoft Docs"
-description: "Azure ポータルを使用して Linux VM を作成します。"
+title: "Azure クイック スタート - ポータルで VM を作成する | Microsoft Docs"
+description: "Azure クイック スタート - ポータルで VM を作成する"
 services: virtual-machines-linux
-documentationcenter: 
-author: iainfoulds
+documentationcenter: virtual-machines
+author: neilpeterson
 manager: timlt
-editor: 
+editor: tysonn
 tags: azure-resource-manager
-ms.assetid: cc5dc395-dc54-4402-8804-2bb15aba8ea2
+ms.assetid: 
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 1/17/2017
-ms.author: iainfou
+ms.topic: article
+ms.tgt_pltfrm: vm-linux
+ms.workload: infrastructure
+ms.date: 03/10/2017
+ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: beff4fb41ed46b016088734054e7a7897fed1a30
-ms.openlocfilehash: 7287b87b1e50e28de06a5363a1f35bd7ac34d51c
-ms.lasthandoff: 02/15/2017
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 348407b57bbb3329d7d27a6f38623e052aecc58b
+ms.lasthandoff: 03/14/2017
 
 ---
-# <a name="create-a-linux-vm-on-azure-using-the-portal"></a>ポータルを使用して Azure に Linux VM を作成する
-この記事では、[Azure Portal](https://portal.azure.com/) を使用して Linux 仮想マシンを作成する方法について説明します。
 
-要件は次のとおりです。
+# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
 
-* [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH パブリック キー ファイルおよびプライベート キー ファイル](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで VM と関連するすべての Azure リソースを作成および構成できます。
 
-## <a name="sign-in"></a>[サインイン]
-Azure アカウント ID で Azure Portal にサインインします。 左上隅にある **[+ 新規]** をクリックします。
+開始する前に、秘密および公開 SSH キーを用意しておく必要があります。 Azure 用 SSH キーの作成の詳細については、[Azure 用 SSH キーの作成](./virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 
-![新しい Azure リソースの作成](./media/virtual-machines-linux-quick-create-portal/create_new_resource.png)
+## <a name="log-in-to-azure"></a>Azure へのログイン 
 
-## <a name="choose-vm"></a>VM の選択
-**[Marketplace]** で **[Compute]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 16.04 LTS]** を選択します。  下部でデプロイメント モデルとして `Resource Manager` が選択されていることを確認してから、 **[作成]**をクリックします。
+Azure Portal (http://portal.azure.com) にログインします。
 
-![Azure Marketplace から仮想マシン イメージを選択](./media/virtual-machines-linux-quick-create-portal/create_new_vm.png)
+## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-## <a name="enter-vm-options"></a>VM オプションの入力
-**[基本]** ページで、以下の項目を入力します。
+2. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 
-* VM の名前
-* VM ディスクの種類 (既定値 [SSD] または [HDD])
-* 管理者ユーザーのユーザー名
-* **[認証の種類]** は **[SSH 公開鍵]** に設定します
-* 文字列で表された SSH 公開鍵 (`~/.ssh/` ディレクトリから取得)
-* リソース グループ名 (または、既存のリソース グループを選択)
+3. **[新規]** ブレードの **[Compute]** を選択し、**[Compute]** ブレードの **[Ubuntu Server 16.04 LTS]** を選択して、**[作成]** ボタンをクリックします。
 
-**[OK]** をクリックして続行します。 ブレードは次のスクリーンショットのようになります。
+4. 仮想マシンの **[基本]** フォームに入力します。 **[認証の種類]** には SSH をお勧めします。 **[SSH 公開キー]** にキーを貼り付けるときに、先頭と末尾の空白は削除するように注意してください。 **[リソース グループ]** では、新しいグループを作成します。 リソース グループとは、Azure リソースの作成と一括管理に使用する論理コンテナーです。 完了したら、**[OK]** をクリックします。
 
-![基本的な Azure VM オプションの入力](./media/virtual-machines-linux-quick-create-portal/enter_basic_vm_details.png)
+    ![ポータルのブレードで VM に関する基本情報を入力する](./media/virtual-machine-quick-start/create-vm-portal-basic-blade.png)  
 
-## <a name="choose-vm-size"></a>VM のサイズの選択
-VM のサイズを選択します。 次の例では、Premium SSD に Ubuntu をインストールする **[DS1_V2 Standard]** を選択します。 VM のサイズの **S** は、SSD のサポートを表します。 **[選択]** をクリックして設定を構成します。
+5. VM のサイズを選択し、**[選択]** をクリックします。 
 
-![Azure VM サイズの選択](./media/virtual-machines-linux-quick-create-portal/select_vm_size.png)
+    ![ポータルのブレードで VM のサイズを選択する](./media/virtual-machine-quick-start/create-vm-portal-size-blade.png)
 
-## <a name="storage-and-network"></a>ストレージとネットワーク
-**[設定]** ブレードで、VM に Azure Managed Disks を使用するよう選択できます。 現在の既定の設定では、非管理対象ディスクを使用します。 Azure Managed Disks は Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks の概要](../storage/storage-managed-disks-overview.md)」をご覧ください。 非管理対象ディスクの場合は、仮想ハード ディスク用のストレージ アカウントを作成または選択する必要があります。
+6. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
 
-![非管理対象ディスク用のストレージ アカウントを選択](./media/virtual-machines-linux-quick-create-portal/configure_non_managed_disks.png)
+7. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 
-Azure Managed Disks の使用を選択した場合は、次の例に示すように、構成する追加のストレージ オプションはありません。
+## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-![ポータルでの Azure Managed Disks オプションの選択](./media/virtual-machines-linux-quick-create-portal/select_managed_disks.png)
+デプロイが完了したら、仮想マシンとの SSH 接続を作成します。
 
-ネットワーク設定の残りの部分は既定値のままにします。
+1. 仮想マシンをクリックします。 VM は、Azure Portal のホーム画面に表示されます。または、左側のメニューで **[Virtual Machines]** を選択すると表示されます。
 
-## <a name="confirm-vm-settings-and-launch"></a>VM 設定の確認と起動
-新しい Ubuntu VM の設定を確認し、 **[OK]**をクリックします。
+2. **[接続]** をクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
 
-![Azure VM 設定の確認と VM の作成](./media/virtual-machines-linux-quick-create-portal/review_final_vm_settings.png)
+    ![ポータル 9](./media/virtual-machine-quick-start/portal-quick-start-9.png) 
 
-## <a name="select-the-vm-resource"></a>VM のリソースの選択
-ポータルのホーム ページを開き、左上隅のメニューから **[リソース グループ]** を選択します。 必要な場合は、メニューの一番上にある&3; 本のバーをクリックすると、次に示すように一覧が展開されます。
+3. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure Portal からコピーしたものに置き換えます。
 
-![リソース グループの一覧を開く](./media/virtual-machines-linux-quick-create-portal/select_resource_group.png)
-
-リソース グループを選択し、新しい VM をクリックします。
-
-![Azure VM の NIC 設定を見つける](./media/virtual-machines-linux-quick-create-portal/select_vm_resource.png)
-
-## <a name="find-the-public-ip"></a>パブリック IP の検出
-VM に割り当てられた**パブリック IP アドレス**を確認します。
-
-![Azure VM のパブリック IP アドレスを入手](./media/virtual-machines-linux-quick-create-portal/view_public_ip_address.png)
-
-## <a name="ssh-to-the-vm"></a>VM への SSH 接続
-SSH 公開キーを使用して、パブリック IP に SSH 接続します。  Mac または Linux のワークステーションでは、端末から直接 SSH 接続できます。 Windows ワークステーションの場合は、Linux に SSH 接続するために、PuTTY、MobaXTerm、または Cygwin を使用する必要があります。  Windows ワークステーションで Linux に SSH 接続するための準備については、以下のドキュメントを参照してください。
-
-[Azure 上の Windows における SSH の使用方法](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+```bash 
+ssh <replace with IP address>
 ```
-ssh -i ~/.ssh/azure_id_rsa ops@40.112.255.214
-```
+## <a name="delete-virtual-machine"></a>仮想マシンの削除
+
+必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ブレードでリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
-テストまたはデモンストレーション用の Linux VM を迅速に作成しました。 インフラストラクチャに合わせてカスタマイズした Linux VM を作成する方法については、次の記事を参照してください。
 
-* [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[可用性が高い仮想マシンの作成のチュートリアル](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
+[VM デプロイ CLI サンプルを探索する](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

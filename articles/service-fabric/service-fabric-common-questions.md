@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2017
+ms.date: 03/08/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 102be620e8812cc551aebafe7c8df4e4eac0ae90
-ms.openlocfilehash: 2ad3bd7b846693c637fd843383802651a619b128
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 6c0c6b24f9d669e7ed45e6b2acf2e75390e5e1f4
+ms.lasthandoff: 03/09/2017
 
 ---
 
@@ -43,6 +43,16 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 今後、更新ドメイン間で連係する完全に自動化された OS 更新ポリシーをサポートして、再起動やその他の予想外の障害が発生した場合でも可用性が維持されることを保証する予定です。
 
 それまでの間は、クラスター管理者が安全に各ノードの修正プログラムの適用を手動で開始するために使うことができる[スクリプトが提供](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/)されています。
+
+### <a name="can-i-use-large-virtual-scale-sets-in-my-sf-cluster"></a>SF クラスターで大規模な仮想マシン スケール セットを使用できますか? 
+
+**簡単な回答** - いいえ。 
+
+**詳しい回答** - 大規模な仮想マシン スケール セット (VMSS) では、最大 1000 台の VM インスタンスにスケーリングできますが、これは配置グループ (PG) を使用して実行されます。 障害ドメイン (FD) とアップグレード ドメイン (UD) は、Service Fabric が FD と UD を使用してサービス レプリカ/サービス インスタンスの配置を決定する配置グループ内でのみ整合性が維持されます。 FD 数と UD 数は配置グループ内でのみ比較可能であるため、SF で使用することはできません。 たとえば、PG1 の VM1 のトロポジが FD=0 であり、PG2 の VM9 のトポロジが FD=4 の場合、VM1 と VM2 が&2; つの異なるハードウェア ラック上にあることを意味するわけではないため、SF はこの例の FD 値を使用して配置を決定することはできません。
+
+レベル&4; の負荷分散をサポートしていないなど、現在、大規模な VMSS に関する問題がほかにもあります。 詳細については、[大規模な VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) に関する記事をご覧ください。
+
+
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric クラスターの最小サイズとは何ですか?  もっと小さくできないのはなぜですか?
 

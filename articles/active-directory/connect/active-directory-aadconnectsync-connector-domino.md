@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da949459f734ea08527fe2380ab2a6a06e6976e7
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -146,6 +147,11 @@ Domino Server のプロパティでは、サーバー名に次の&2; つの形�
 **[Domino サーバーのタイム ゾーン]** パラメーターでは Domino サーバーの場所を定義します。
 
 この構成オプションは、最後の&2; 回のインポート間の変更を同期サービスが特定するのを可能にするため、 **差分インポート** 操作で必要です。
+
+>[!Note]
+2017 年 3 月の更新以降、ユーザーの削除中にユーザーのメール データベースを削除するためのオプションが [グローバル パラメーター] 画面に追加されています。
+
+![ユーザーのメールボックスの削除](./media/active-directory-aadconnectsync-connector-domino/AdminP.png)
 
 #### <a name="import-settings-method"></a>インポート設定および方法
 **[フル インポートの実行方法]** には次のオプションがあります。
@@ -320,7 +326,7 @@ Resource Reservation データベースの設定方法の詳細については�
 ### <a name="mail-in-databases"></a>メールイン データベース
 メールイン データベースは、メールを受信するために設計されたデータベースです。 これは、特定の Lotus Domino ユーザー アカウントに関連付けられていない Lotus Domino のメールボックスです (つまり、このデータベースには自身の ID ファイルとパスワードがありません)。 メールイン データベースには、メールイン データベースとそれ独自のメール アドレスに関連付けられている一意の UserID ("省略名") があります。
 
-自身のメール アドレスに別のユーザーと共有する別のメールボックスが必要な場合は (例: group@contoso.com),、メールイン データベースを作成します。 このメールボックスへのアクセスは、開くことが許可されている Notes ユーザーの名前が含まれたアクセス制御リスト (ACL) を介して制御されています。
+自身のメール アドレスに別のユーザーと共有する別のメールボックスが必要な場合は (例: group@contoso.com)、メールイン データベースを作成します。 このメールボックスへのアクセスは、開くことが許可されている Notes ユーザーの名前が含まれたアクセス制御リスト (ACL) を介して制御されています。
 
 必要な属性の一覧については、この記事の後の「 [必須の属性](#mandatory-attributes) 」セクションをご覧ください。
 
@@ -489,9 +495,4 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

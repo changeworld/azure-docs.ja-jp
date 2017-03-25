@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: de250fbc3982cdc493f74976914290d8ac89bb08
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f26b191d9d98768d766e4c974138c9d191340027
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -41,7 +41,7 @@ Secure Shell (SSH) トンネルを[確立](container-service-connect.md)した�
 ![DC/OS UI](./media/dcos/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Marathon UI について知る
-Marathon UI を表示するには、http://localhost/Marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
+Marathon UI を表示するには、http://localhost/marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
 
 ![Marathon UI](./media/dcos/dcos3.png)
 

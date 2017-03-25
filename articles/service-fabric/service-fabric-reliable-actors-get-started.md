@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/04/2017
+ms.date: 03/06/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 25b24e6d267ac14147f426fce46d609954b7dfc9
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 41f9742befcc034f46f166b1f3f3d81ef67f83e7
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ ms.openlocfilehash: 25b24e6d267ac14147f426fce46d609954b7dfc9
 * ジェネリック インターフェイスはサポートされません。
 
 ## <a name="create-a-new-project-in-visual-studio"></a>Visual Studio での新しいプロジェクトの作成
-Visual Studio 用の Service Fabric ツールをインストールした後、新しいプロジェクトの種類を作成できます。 新しいプロジェクトの種類は、**[新しいプロジェクト]** ダイアログ ボックスの **[クラウド]** カテゴリにあります。
+Visual Studio 2015 または Visual Studio 2017 を管理者として起動し、新しい Service Fabric アプリケーション プロジェクトを作成します。
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
@@ -152,9 +153,4 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
