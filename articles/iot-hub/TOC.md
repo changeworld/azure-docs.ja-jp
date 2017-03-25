@@ -227,10 +227,11 @@
 ## Manage
 ### IoT Hub の作成 
 #### [ポータルの使用](iot-hub-create-through-portal.md)
+#### [PowerShell の使用](iot-hub-create-using-powershell.md)
 #### [CLI 2.0 の使用](iot-hub-create-using-cli.md)
 #### [CLI の使用](iot-hub-create-using-cli-nodejs.md)
 #### [REST API の使用](iot-hub-rm-rest.md)
-#### [PowerShell の使用](iot-hub-rm-template-powershell.md)
+#### [PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
 #### [.NET からテンプレートを使用する](iot-hub-rm-template.md)
 ### [ファイルのアップロードを構成する](iot-hub-configure-file-upload.md)
 ### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)

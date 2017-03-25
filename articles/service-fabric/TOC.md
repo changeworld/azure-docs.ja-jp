@@ -109,11 +109,11 @@
 #### [クラスター ネットワークのパターン](service-fabric-patterns-networking.md)
 #### [ノードの種類と VM Scale Sets](service-fabric-cluster-nodetypes.md)
 #### [クラスターを拡張する](service-fabric-cluster-scale-up-down.md)
+#### [プログラムによるクラスターの拡張](service-fabric-cluster-programmatic-scaling.md)
 #### [クラスターのアップグレード](service-fabric-cluster-upgrade.md)
 #### [クラスターの削除](service-fabric-cluster-delete.md)
 #### [アクセス制御](service-fabric-cluster-security-roles.md)
 #### [クラスターの構成](service-fabric-cluster-fabric-settings.md)
-#### [証明書を使用したクラスターの保護](service-fabric-windows-cluster-x509-security.md)
 #### [クラスター証明書の追加またはロールオーバー](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Party Cluster を無料で試す](http://aka.ms/tryservicefabric)
 
@@ -131,7 +131,8 @@
 
 ## アプリケーションのライフサイクルを管理する
 ### [概要](service-fabric-application-lifecycle.md)
-### [継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
+### [VSTS を使用した継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
+### [Jenkins を使用した Linux Java アプリのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 ### [ImageStoreConnectionString 設定について](service-fabric-image-store-connection-string.md)
 ### アプリケーションをデプロイまたは削除する
 #### [PowerShell](service-fabric-deploy-remove-applications.md)

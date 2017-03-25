@@ -22,13 +22,15 @@
 #### [Mobile Apps のバインド](functions-bindings-mobile-apps.md)
 #### [Notification Hub 出力バインド](functions-bindings-notification-hubs.md)
 #### [キューとトピックの Service Bus トリガーとバインド](functions-bindings-service-bus.md)
+#### [SendGrid のバインド](functions-bindings-sendgrid.md)
 #### Storage のバインド
 ##### [BLOB バインド](functions-bindings-storage-blob.md)
 ##### [キュー バインド](functions-bindings-storage-queue.md)
 ##### [テーブル バインド](functions-bindings-storage-table.md)
+##### [SendGrid のバインド](functions-bindings-sendgrid.md)
 #### [タイマー トリガー](functions-bindings-timer.md)
 #### [Twilio 出力バインド](functions-bindings-twilio.md)
-### [Azure Portal からの関数の作成](functions-create-first-azure-function-azure-portal.md) 
+### [Azure Portal から関数アプリを作成する](functions-create-function-app-portal.md) 
 ### [Azure Functions のテスト](functions-test-a-function.md)
 ### [開発とローカル デバッグ](functions-run-local.md)
 ### [Azure Functions のベスト プラクティス](functions-best-practices.md)
@@ -50,8 +52,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
 ## [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) 
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

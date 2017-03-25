@@ -82,7 +82,6 @@
 
 ### [IIS から移行](web-sites-migration-from-iis-server.md)
 ### [運用環境におけるテスト](app-service-web-test-in-production-get-start.md)
-### [パフォーマンス テストの実行](app-service-web-app-performance-test.md) 
 
 ## DB/リソースへの接続        
 

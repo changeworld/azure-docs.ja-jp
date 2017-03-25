@@ -11,6 +11,7 @@
 ## 開発
 ### [アプリケーション パッケージ](batch-application-packages.md)
 ### [自動スケール コンピューティング ノード](batch-automatic-scaling.md)
+### [Add Azure AD 認証](batch-aad-auth.md)
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
@@ -47,4 +48,5 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
 

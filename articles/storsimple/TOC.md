@@ -161,6 +161,7 @@
 
 ### トラブルシューティング
 #### [デプロイの問題](storsimple-troubleshoot-deployment.md)
+#### [診断ツールの使用](storsimple-8000-diagnostics.md)
 #### [操作上の問題](storsimple-troubleshoot-operational-device.md)
 #### [ハードウェア交換](storsimple-hardware-component-replacement.md)
 ##### [デバイス コントローラーを交換する](storsimple-controller-replacement.md)
@@ -208,7 +209,9 @@
 ### [StorSimple Data Manager の使用](storsimple-data-manager-ui.md)
 
 ## 方法
-### [.NET を使用したデータの変換](storsimple-data-manager-dotnet-jobs.md)
+### [.NET を使用したジョブの開始](storsimple-data-manager-dotnet-jobs.md)
+### [Automation を使用したジョブの開始](storsimple-data-manager-job-using-automation.md)
+### [既定の BLOB パスの変更](storsimple-data-manager-change-default-blob-path.md)
 
 # パートナー向け StorSimple
 ## 概要

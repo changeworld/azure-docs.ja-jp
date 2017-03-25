@@ -41,6 +41,7 @@
 ## [負荷分散サービスの結合](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [複数の IP 構成の使用](load-balancer-multiple-ip.md)
 ### [複数の IP 構成の使用 (CLI)](load-balancer-multiple-ip-cli.md)
+### [複数の IP 構成の使用 (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
 ## [Linux VM の DHCPv6 の設定](load-balancer-ipv6-for-linux.md)
 

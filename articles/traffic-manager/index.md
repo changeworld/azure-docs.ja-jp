@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: c2835e48c1995264af6614fe74fe1594bae86245
-ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 17727bace2ffbe77123e8d027b4a49b6ca92669e
+ms.lasthandoff: 03/18/2017
 
 ---
 #<a name="traffic-manager-documentation"></a>Traffic Manager のドキュメント
@@ -59,7 +60,7 @@ ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
         </a>
     </li>
     <li>
-        <a href="/azure/traffic-manager/traffic-manager-how-traffic-manager-works">
+        <a href="/azure/traffic-manager/traffic-manager-create-profile">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -102,39 +103,35 @@ ms.openlocfilehash: 1dab11c9d6874bba16cc047cfc8b03c82e236a35
 
 <ul class="panelContent cardsW">
     <li>
-        <a href="/powershell/azureps-cmdlets-docs">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>PowerShell</h3>
-                        <p>Azure PowerShell</p>
+                        <h3>言語</h3>
+                        <p><a href="/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager">PowerShell</a></p>
+                        <p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.JS</a></p>
+                        <p><a href="http://www.rubydoc.info/gems/azure_mgmt_traffic_manager">Ruby</a></p>
+                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html">Python</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
     <li>
-        <a href="https://msdn.microsoft.com/library/azure/mt163667">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p>Traffic Manager REST API</p>
+                        <p><a href="https://msdn.microsoft.com/library/mt163667.aspx">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

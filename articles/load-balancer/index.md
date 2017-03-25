@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 7064f4749f4be100b6155ea219284c1ed8fe7eee
-ms.openlocfilehash: 8a225858cc738a8bc04404b0cbf788e77975aa51
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 96da506c8545a1b863e62133706a2687c2498bbd
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -108,7 +109,7 @@ Load Balancer を構成して、高い可用性と優れたネットワーク �
                     <div class="cardText">
                         <h3>コマンド ライン</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/lb">Azure CLI 2.0 (プレビュー)</a></p>
+                        <p><a href="/cli/azure/network/lb">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>
@@ -144,10 +145,5 @@ Load Balancer を構成して、高い可用性と優れたネットワーク �
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -78,8 +78,8 @@
 ### [使用量の測定](logic-apps-pricing.md)
 
 # リファレンス
-## [ワークフロー定義言語](https://docs.microsoft.com/rest/api/logic/definition-language)
-## [ワークフローのアクションとトリガー](https://docs.microsoft.com/rest/api/logic/actions-and-triggers)
+## [ワークフロー定義言語](logic-apps-workflow-definition-language.md)
+## [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
 ## [PowerShell](/powershell/resourcemanager/azurerm.logicapp/v2.3.0/azurerm.logicapp)
 ## スキーマの履歴

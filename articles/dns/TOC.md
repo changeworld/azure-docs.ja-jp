@@ -4,13 +4,11 @@
 
 # 作業の開始
 
-## [DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
-### [PowerShell](dns-getstarted-create-dnszone.md)
-### [Azure CLI](dns-getstarted-create-dnszone-cli.md)
-
-## [DNS レコードの作成](dns-getstarted-create-recordset-portal.md)
-### [PowerShell](dns-getstarted-create-recordset.md)
-### [Azure CLI](dns-getstarted-create-recordset-cli.md)
+## DNS ゾーンとレコードの作成
+### [ポータル](dns-getstarted-portal.md)
+### [PowerShell](dns-getstarted-powershell.md)
+### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
+### [Azure CLI 2.0](dns-getstarted-cli.md)
 
 ## [Azure DNS にドメインを委任する](dns-domain-delegation.md)
 ## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
