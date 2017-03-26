@@ -114,7 +114,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-これらのファイルから 0.1% のサンプルを取得し、trip\_data CVS ファイルと trip\_fare CVS ファイルを、このチュートリアルの入力データセットとして使用される 1 つのデータセットに結合しました。 trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。 データセットの各レコードには、NYC タクシー乗車を表す次の属性が含まれています。
+これらのファイルから 0.1% のサンプルを取得し、trip\_data CSV ファイルと trip\_fare CSV ファイルを、このチュートリアルの入力データセットとして使用される 1 つのデータセットに結合しました。 trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。 データセットの各レコードには、NYC タクシー乗車を表す次の属性が含まれています。
 
 | フィールド | 簡単な説明 |
 | --- | --- |
@@ -143,7 +143,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 | tip_amount |チップの金額 |
 | tolls_amount |通行料金 |
 | total_amount |合計金額 |
-| tipped |チップ (ない場合は&0;、ある場合は&1;) |
+| tipped |チップ (ない場合は 0、ある場合は& ) |
 | tip_class |チップのクラス (0: $0、1: $0 - 5、2: $6 - 10、3: $11 - 20、4: $20 以上) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark クラスターで、Jupyter Notebook からのコードを実行する
@@ -157,12 +157,12 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 
 [PySpark] を選択すると表示されるディレクトリには、PySpark API を使用する、あらかじめパッケージ化された Notebook の例が含まれています。Spark に関連する一連のトピックのコード サンプルが含まれた Notebook は [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
 
-[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から、Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。 ファイル エクスプ ローラーが開きます。 ここで、Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]**をクリックします。 
+[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から、Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。 ファイル エクスプ ローラーが開きます。 ここで、Notebook の GitHub (生コンテンツ) URL を貼り付け、 **[開く]**をクリックします。 
 
 Jupyter ファイルの一覧にファイル名が **[アップロード]** ボタンと共に表示されます。 この **[アップロード]** ボタンをクリックします。 これで、ノートブックがインポートされます。 このチュートリアルの他のノートブックをアップロードするには、この手順を繰り返します。
 
 > [!TIP]
-> ブラウザーの下部にあるリンクを右クリックし、**[リンクのコピー]** を選択すると、GitHub の raw コンテンツ URL を取得できます。 この URL を、Jupyter アップロード ファイル エクスプローラーのダイアログ ボックスに貼り付けることができます。
+> ブラウザーの下部にあるリンクを右クリックし、**[リンクのコピー]** を選択すると、GitHub の生コンテンツ URL を取得できます。 この URL を、Jupyter アップロード ファイル エクスプローラーのダイアログ ボックスに貼り付けることができます。
 > 
 > 
 
