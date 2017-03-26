@@ -26,7 +26,7 @@ ms.lasthandoff: 01/24/2017
 
 この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 これらの理由と課題については、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」をご覧ください。
 
-Jupyter と Spark マジックは大きく&3; つの手順でコンピューターにインストールします。
+Jupyter と Spark マジックは大きく 3 つの手順でコンピューターにインストールします。
 
 * Jupyter Notebook をインストールする
 * PySpark カーネルと Spark カーネルおよび Spark マジックをインストールする
