@@ -60,8 +60,8 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
   | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
-  | worker: 既定の VM サイズ |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
-  | worker: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
+  | ワーカー: 既定の VM サイズ |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
+  | ワーカー: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
   | ZooKeeper: 既定の VM サイズ | |A3 |A2 | | |
   | ZooKeeper: 推奨される VM サイズ | |A3、A4、A5 |A2、A3、A4 | | |
   | エッジ: 既定の VM サイズ | | | | |Windows: D12 v2、Linux: D4 v2 |
@@ -72,8 +72,8 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 |D3 |A3 |D12 |D12 |
   | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
-  | worker: 既定の VM サイズ |D3 |D3 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
-  | worker: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
+  | ワーカー: 既定の VM サイズ |D3 |D3 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
+  | ワーカー: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
   | ZooKeeper: 既定の VM サイズ | |A2 |A2 | | |
   | ZooKeeper: 推奨される VM サイズ | |A2、A3、A4 |A2、A3、A4 | | |
   | エッジ: 既定の VM サイズ | | | | |Windows: D12、Linux: D4 |
@@ -83,7 +83,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 > ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。 worker は、HBase クラスターでは *"リージョン"*、Storm クラスターでは *"スーパーバイザー"* と呼ばれます。
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 
@@ -98,7 +98,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 Azure の仮想ネットワークの HDInsight との併用の詳細については、[Azure の仮想ネットワークを使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページをご覧ください。
 
-Azure の仮想ネットワーク内で&2; つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)に関するページをご覧ください。
+Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)に関するページをご覧ください。
 
 ## <a name="cluster-tiers"></a>クラスター レベル
 Azure HDInsight では、Standard と [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)の&2; つのカテゴリでビッグ データ クラウド サービスを提供します。 HDInsight Premium には、R とその他の追加コンポーネントが含まれています。 HDInsight Premium は、HDInsight バージョン 3.5 でのみサポートされます。
@@ -107,11 +107,11 @@ Azure HDInsight では、Standard と [Premium](hdinsight-component-versioning.m
 
 | クラスターの種類 | Standard | Premium |
 | --- | --- | --- |
-| Hadoop は、 |あり |あり |
-| Spark |あり |あり |
-| HBase |あり |いいえ |
-| Storm |あり |いいえ |
-| R Server on Spark |いいえ |あり |
+| Hadoop は、 |はい |はい |
+| Spark |はい |はい |
+| HBase |はい |いいえ |
+| Storm |はい |いいえ |
+| R Server on Spark |いいえ |はい |
 
 HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。 次のスクリーンショットは、クラスターの種類を選択するための Azure ポータルの情報を示しています。
 
@@ -130,7 +130,7 @@ HDInsight クラスターの作成に使用する基本的な構成オプショ�
 「[クラスターの種類](#cluster-types)」と「[クラスター レベル](#cluster-tiers)」をご覧ください。
 
 ### <a name="operating-system"></a>オペレーティング システム
-次の&2; つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
+次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
 
 * Linux での HDInsight  HDInsight には、Azure で Linux クラスターを構成するためのオプションが用意されています。 Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントと簡単に統合する必要がある場合は、Linux クラスターを構成します。 詳細については、「 [Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 * Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)。
@@ -142,7 +142,7 @@ HDInsight クラスターの作成に使用する基本的な構成オプショ�
 各 HDInsight クラスターは、1 つの Azure サブスクリプションに関連付けられます。
 
 ### <a name="resource-group-name"></a>リソース グループ名
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる&1; つのグループとして使用できます。 アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
+[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。 アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
 
 ### <a name="credentials"></a>資格情報
 HDInsight クラスターでは、クラスターの作成時に次の&2; つのユーザー アカウントを構成できます。
@@ -211,35 +211,35 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 * Standard_A3: Large
 * Standard_A4: ExtraLarge
 
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A3\Large |4 |7 GB |2 |一時ディスク = 285 GB |8 |8 x&500; |
-| Standard_A4\ExtraLarge |8 |14 GB |4 |一時ディスク = 605 GB |16 |16 x&500; |
-| Standard_A6 |4 |28 GB |2 |一時ディスク = 285 GB |8 |8 x&500; |
-| Standard_A7 |8 |56 GB |4 |一時ディスク = 605 GB |16 |16 x&500; |
+| Standard_A3\Large |4 |7 GB |2 |一時ディスク = 285 GB |8 |8 x 500 |
+| Standard_A4\ExtraLarge |8 |14 GB |4 |一時ディスク = 605 GB |16 |16 x 500 |
+| Standard_A6 |4 |28 GB |2 |一時ディスク = 285 GB |8 |8 x 500 |
+| Standard_A7 |8 |56 GB |4 |一時ディスク = 605 GB |16 |16 x 500 |
 
 #### <a name="standard-tier-d-series"></a>Standard レベル: D シリーズ
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3 |4 |14 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4 |8 |28 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12 |4 |28 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13 |8 |56 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14 |16 |112 GB |8 |一時的 (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3 |4 |14 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4 |8 |28 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12 |4 |28 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13 |8 |56 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14 |16 |112 GB |8 |一時的 (SSD) = 800 GB |32 |32 x 500 |
 
 #### <a name="standard-tier-dv2-series"></a>Standard レベル: Dv2 シリーズ
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3_v2 |4 |14 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4_v2 |8 |28 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12_v2 |4 |28 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13_v2 |8 |56 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14_v2 |16 |112 GB |8 |一時的 (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3_v2 |4 |14 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4_v2 |8 |28 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12_v2 |4 |28 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13_v2 |8 |56 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14_v2 |16 |112 GB |8 |一時的 (SSD) = 800 GB |32 |32 x 500 |
 
 これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、 [仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
 
 > [!IMPORTANT]
-> クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> クラスターの作成時または作成後のスケーリングで 32 個を超えるワーカー ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
 >
 >
 
@@ -253,19 +253,19 @@ HDInsight クラスターを作成するとき、あるいはクラスターが�
 セカンダリ BLOB ストレージの詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 セカンダリ Data Lake Store の詳細については、「 [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
 
 ## <a name="use-hiveoozie-metastore"></a>Hive/Oozie メタストアの使用
-HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム metastore を使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
+HDInsight クラスターを削除した後も Hive テーブルを保持する場合は、カスタム メタストアを使用することをお勧めします。 そのメタストアを別の HDInsight クラスターにアタッチすることもできます。
 
 > [!IMPORTANT]
-> あるバージョンの HDInsight クラスター用に作成された HDInsight metastore は、別の HDInsight クラスター バージョン間で共有できません。 HDInsight のバージョンの一覧は、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」をご覧ください。
+> あるバージョンの HDInsight クラスター用に作成された HDInsight メタストアは、別の HDInsight クラスター バージョン間で共有できません。 HDInsight のバージョンの一覧は、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」をご覧ください。
 >
 >
 
-メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。 metastore では Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive metastore が構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive metastore を使用してクラスターを再作成したときにそれらのテーブルが保持されます。
+メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。 metastore では Hive と Oozie メタデータを保持できるため、新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。 既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。 組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。 Hive メタストアが構成された HDInsight クラスターで Hive テーブルを作成すると、同じ Hive メタストアを使用してクラスターを再作成したときにそれらのテーブルが保持されます。
 
 HBase のクラスターの種類では、メタストア構成は使用できません。
 
 > [!IMPORTANT]
-> カスタム metastore を作成するときは、データベース名にダッシュやハイフンを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
+> カスタム メタストア を作成するときは、データベース名にダッシュやハイフンを使用しないでください。 クラスター作成プロセスが失敗する可能性があります。
 >
 >
 
