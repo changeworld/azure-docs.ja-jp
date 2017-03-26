@@ -28,7 +28,7 @@ Azure HDInsight 向けに提供されるサービス レベルと、そこに含
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
 
-Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
+Azure HDInsight では、**Standard** と **Premium** の 2 つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
 
 > [!NOTE]
 > HDInsight Premium は現在プレビューの段階で、Linux クラスターでのみ利用できます。
@@ -44,12 +44,12 @@ Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリ�
 
 | クラスターの種類 | Standard | Premium |
 | --- | --- | --- |
-| Hadoop は、 |はい |はい (HDInsight 3.5 のみ) |
+| Hadoop  |はい |はい (HDInsight 3.5 のみ) |
 | Spark |はい |いいえ |
-| HBase |あり |いいえ |
-| Storm |あり |いいえ |
+| HBase |はい |いいえ |
+| Storm |はい |いいえ |
 | R Server  |はい |いいえ |
-| 対話型 Hive (プレビュー) |はい |なし |
+| 対話型 Hive (プレビュー) |はい |いいえ |
 | Kafka (プレビュー)|はい|いいえ| 
 
 HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。
@@ -106,12 +106,12 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure ポータルでの利用 | サポート有効期限 | 非推奨となる日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい | | |
-| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年&3; 月&29; 日 |はい |12/29/2016 |1/9/2018 |
-| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年&12; 月&2; 日 |あり |2016 年&6; 月&27; 日 |2017 年&7; 月&31; 日 |
-| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年&2; 月&18; 日 |あり |2016 年&3; 月&1; 日 |2017 年&4; 月&1; 日 |
-| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年&6; 月&24; 日 |いいえ |2015 年&5; 月&18; 日 |2016 年&6;月&30; 日 |
-| HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |あり |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
-| HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |あり |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
+| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |はい |3/29/2016 |はい |12/29/2016 |1/9/2018 |
+| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |はい |12/2/2015 |はい |6/27/2016 |7/31/2017 |
+| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |はい | |はい |3/1/2016 |4/1/2017 |
+| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |はい |2014 年&6; 月&24; 日 |いいえ |5/18/2015 |6/30/2016 |
+| HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |はい |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
+| HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |はい |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |いいえ |10/28/2013 |いいえ |04/26/2014 |05/31/2015 |
 
 ##<a name="hdi-version-32-and-33-nearing-deprecation-date"></a>非推奨となる日が近づいている HDI バージョン 3.2 および 3.3
