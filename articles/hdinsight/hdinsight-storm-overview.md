@@ -52,10 +52,10 @@ HDInsight における Apache Storm の主なメリットは次のとおりで�
 * 次の Azure サービスと連携します。
   
     * Event Hubs
-    * 仮想ネットワーク
-    * SQL Database
-    * Azure Storage (Azure Storage)
-    * DocumentDB に保存するものとします。
+    * Virtual Network
+    * SQL Database
+    * Azure Storage
+    * DocumentDB
   
   * Azure Virtual Network を使用して、複数の HDInsight クラスターの機能を安全に組み合わせることができます。HDInsight、HBase、Hadoop クラスターを使用する分析パイプラインを作成できます。
 
@@ -112,9 +112,9 @@ HDInsight クラスター上に新しい Storm を数分でプロビジョニン
 
 Apache Storm は、データ分析が多数のノードにまたがる場合でも、各受信メッセージを完全に処理することを常に保証します。
 
-**Nimbus ノード**は Hadoop JobTracker に同様の機能を提供し、**Zookeeper** を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と ワーカー ノードの **Supervisor** 処理間の通信を容易にします。 処理中のノードの&1; つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
+**Nimbus ノード**は Hadoop JobTracker に同様の機能を提供し、**Zookeeper** を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と ワーカー ノードの **Supervisor** 処理間の通信を容易にします。 処理中のノードの 1 つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
 
-Apache Storm の既定の構成では、Nimbus ノードは&1; つだけです。 HDInsight の Storm では、2 つの Nimbus ノードを実行します。 プライマリ ノードが失敗すると、プライマリ ノードが復旧中は、HDInsight クラスターはセカンダリ ノードに切り替わります。
+Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。 HDInsight の Storm では、2 つの Nimbus ノードを実行します。 プライマリ ノードが失敗すると、プライマリ ノードが復旧中は、HDInsight クラスターはセカンダリ ノードに切り替わります。
 
 ![Nimbus、Zookeeper、スーパーバイザのダイアグラム](./media/hdinsight-storm-overview/nimbus.png)
 
@@ -164,7 +164,7 @@ Storm コンポーネントの詳細については、apache.org の [Storm の�
 
 ## <a name="what-programming-languages-can-i-use"></a>使用できるプログラミング言語
 
-### <a name="c35"></a>C (&)&#35;；
+### <a name="c35"></a>C#；
 
 Data Lake Tools for Visual Studio では、.NET 開発者は、C# のトポロジを設計し、実装できます。 Java と C# のコンポーネントを使用するハイブリッド トポロジを作成することもできます。
 
@@ -172,7 +172,7 @@ Data Lake Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 ### <a name="java"></a>Java
 
-目にすることがあるほとんどの Java の例は、プレーンな Java か Trident です。 Trident は、結合、集計、グループ化、フィルタリングなどの実行を容易にするための、高レベルの抽象概念です。 ただし、Trident は、タプルのバッチに作用し、ここでは未加工の Java ソリューションが&1; 回に&1; タプルずつストリームを処理します。
+目にすることがあるほとんどの Java の例は、プレーンな Java か Trident です。 Trident は、結合、集計、グループ化、フィルタリングなどの実行を容易にするための、高レベルの抽象概念です。 ただし、Trident は、タプルのバッチに作用し、ここでは未加工の Java ソリューションが 1 回に 1 タプルずつストリームを処理します。
 
 Trident の詳細については、apache.org の「 [Trident のチュートリアル](https://storm.apache.org/documentation/Trident-tutorial.html) 」をご覧ください。
 
@@ -188,7 +188,7 @@ Python コンポーネントの使用例については、[HDInsight での Pyth
 
 ### <a name="guaranteed-message-processing"></a>メッセージの処理の保証
 
-Storm は、さまざまなレベルでメッセージの処理を保証します。 たとえば、基本的な Storm アプリケーションは "最低&1; 回" の処理を保証できますが、Trident は "厳密に&1; 回" の処理を保証できます。
+Storm は、さまざまなレベルでメッセージの処理を保証します。 たとえば、基本的な Storm アプリケーションは "最低 1 回" の処理を保証できますが、Trident は "厳密に&1; 回" の処理を保証できます。
 
 詳細については、apache.org の「 [Guarantees on data processing (データ処理の保証)](https://storm.apache.org/about/guarantees-data-processing.html) 」をご覧ください。
 
@@ -198,7 +198,7 @@ Storm は、さまざまなレベルでメッセージの処理を保証しま�
 
 ### <a name="joins"></a>結合
 
-データ ストリームの結合方法は、アプリケーションによって異なります。 たとえば、複数のストリームの各タプルを&1; つの新しいストリームに結合したり、特定のウィンドウに対してのみタプルのバッチを結合したりする場合があります。 いずれの場合も、結合は [fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) を使用して実行されます。これは、ボルトへのタプルのルーティングの定義方法の&1; つです。
+データ ストリームの結合方法は、アプリケーションによって異なります。 たとえば、複数のストリームの各タプルを 1 つの新しいストリームに結合したり、特定のウィンドウに対してのみタプルのバッチを結合したりする場合があります。 いずれの場合も、結合は [fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) を使用して実行されます。これは、ボルトへのタプルのルーティングの定義方法の&1; つです。
 
 次の Java の例では、fieldsGrouping は、 **MyJoiner** ボルトへの、コンポーネント "1"、"2"、"3" から発生したタプルのルーティングに使用されています。
 
