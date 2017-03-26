@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2017
 
 深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段として深層学習を取り入れるようになっています。 
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの&1; つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、Caffe と Apache Spark を組み合わせた [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Spark ETL パイプラインと一緒に既存の Hadoop クラスターで深層学習を簡単に使用できます。これにより、システムの複雑さが軽減され、エンド ツー エンドの学習の待ち時間が短縮されます。
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、Caffe と Apache Spark を組み合わせた [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Spark ETL パイプラインと一緒に既存の Hadoop クラスターで深層学習を簡単に使用できます。これにより、システムの複雑さが軽減され、エンド ツー エンドの学習の待ち時間が短縮されます。
 
 [HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) は、Spark、Hive、MapReduce、HBase、Storm、Kafka、R Server 向けに最適化されたオープン ソース分析クラスターを備え、99.9% の SLA が保証された唯一の完全マネージド クラウド Hadoop サービスです。 これらのビッグ データ テクノロジと ISV アプリケーションはそれぞれ、エンタープライズ級のセキュリティ機能と監視機能を備えたマネージド クラスターとして簡単にデプロイ可能です。
 
@@ -48,7 +48,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1: すべてのノードに必要な依存関係をインストールする
 
-最初に、必要な依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)の Wiki には、YARN モード (HDInsight Spark 用のモード) での Spark の依存関係のインストールに関して非常に有用な情報が掲載されていますが、HDInsight プラットフォーム向けの依存関係をさらにいくつか追加する必要があります。 ここでは、次のスクリプト アクションをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
+最初に、必要な依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)の Wiki には、YARN モード (HDInsight Spark 用のモード) での Spark の依存関係のインストールに関して非常に有用な情報が掲載されていますが、HDInsight プラットフォーム向けの依存関係をさらにいくつか追加する必要があります。 ここでは、次のスクリプト アクションをすべてのヘッド ノードとワーカー ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
@@ -204,7 +204,7 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
 
 ## <a name="monitoring-and-troubleshooting"></a>監視とトラブルシューティング
 
-ここでは YARN クラスター モードを使用しているため、Spark ドライバーが任意のコンテナー (と任意の worker ノード) にスケジュールされたときに、コンソールには次のような出力しか表示されません。
+ここでは YARN クラスター モードを使用しているため、Spark ドライバーが任意のコンテナー (と任意のワーカー ノード) にスケジュールされたときに、コンソールには次のような出力しか表示されません。
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
