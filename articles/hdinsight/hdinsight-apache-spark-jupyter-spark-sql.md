@@ -61,7 +61,7 @@ HDInsight で [Apache Spark](hdinsight-apache-spark-overview.md) クラスター
 
 ## <a name="run-a-spark-sql-query"></a>Spark SQL クエリの実行
 
-このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる&3; つのカーネルが用意されています。 次のとおりです。
+このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。 HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 3 つのカーネルが用意されています。 次のとおりです。
 
 * **PySpark** (Python で記述されたアプリケーション用)
 * **PySpark3** (Python3 で記述されたアプリケーション用)
