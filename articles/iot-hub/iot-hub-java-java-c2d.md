@@ -97,7 +97,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.1.15</version>
+      <version>1.2.16</version>
     </dependency>
     ```
 
