@@ -9,6 +9,7 @@ tags: azure-portal
 author: mumian
 ms.assetid: 50430b96-2329-4775-9713-19c5795b775f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: acce9907fca6e411d8028e87eff7b50ffa04d575
 ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -50,8 +52,3 @@ ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
 ## <a name="see-also"></a>関連項目
 
 - [Azure HDInsight のドキュメント](https://docs.microsoft.com/azure/hdinsight/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

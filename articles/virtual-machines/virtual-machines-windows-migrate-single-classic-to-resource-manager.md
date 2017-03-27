@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: a46db1815b84f0ecf93c805f3ea36e4e3d4282ac
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 42d9e68c3c18d04c02ab818d84a653ece811fc52
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -28,18 +28,10 @@ ms.lasthandoff: 02/11/2017
 
 このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](../storage/storage-managed-disks-overview.md) する方法を説明します。
 
-## <a name="before-you-begin"></a>開始する前に
-PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-詳細については、[Azure PowerShell のバージョン管理に関するページ](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning)をご覧ください。
-
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
 
-このセクションでは、最適な VM とディスクの種類を判断するための情報を示します。
+このセクションでは、VM とディスクの種類に関する最適な決定を行います。
 
 
 ### <a name="location"></a>Location (場所)
@@ -48,14 +40,14 @@ Azure Managed Disks を使用できる場所を選びます。 Premium Managed D
 
 ### <a name="vm-sizes"></a>VM サイズ
 
-Premium Managed Disks に移行する場合は、VM のサイズを、VM を配置するリージョンで利用可能な Premium Storage 対応のサイズに更新する必要があります。 Premium Storage に対応した VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)」に記載されています。
+Premium Managed Disks に移行する場合は、VM が配置されているリージョンで利用できる Premium Storage 対応サイズに合うように VM のサイズを更新する必要があります。 Premium Storage で対応できる VM サイズをご確認ください。 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)」に記載されています。
 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 ### <a name="disk-sizes"></a>ディスク サイズ
 
-**Premium 管理ディスク**
+**Premium Managed Disks**
 
-VM で使える Premium 管理ディスクには&3; 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM に合った Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を検討してください。
+VM で使える Premium 管理ディスクには&3; 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM の Premium ディスクの種類を選ぶ場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
 | Premium ディスクの種類  | P10               | P20               | P30               |
 |---------------------|-------------------|-------------------|-------------------|
@@ -63,9 +55,9 @@ VM で使える Premium 管理ディスクには&3; 種類あり、それぞれ�
 | ディスクあたりの IOPS       | 500               | 2300              | 5000              |
 | ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 |
 
-**Standard 管理ディスク**
+**Standard Managed Disks**
 
-VM で使用できる Standard 管理ディスクは&5; 種類あります。 それぞれ容量が異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard 管理ディスクの種類を選択してください。
+VM で使用できる Standard Managed Disks は&5; 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
 
 | Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              |
 |---------------------|------------------|------------------|------------------|------------------|------------------|
@@ -75,13 +67,13 @@ VM で使用できる Standard 管理ディスクは&5; 種類あります。 �
 
 ### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー 
 
-**Premium 管理ディスク**
+**Premium Managed Disks**
 
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。
 
 ### <a name="pricing"></a>価格
 
-[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)に関するページを参照してください。 Premium 管理ディスクの価格は、Premium 非管理ディスクと同じです。 一方、Standard 管理ディスクの価格は、Standard 非管理ディスクとは異なります。
+[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard 管理ディスクの価格は、Standard 非管理ディスクとは異なります。
 
 
 ## <a name="checklist"></a>チェック リスト

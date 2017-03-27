@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Docs"
-description: "Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成する"
+title: "Azure Portal: SQL Database の geo レプリケーション | Microsoft Docs"
+description: "Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成してフェールオーバーを開始する"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2016
+ms.date: 03/062/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: fe2d2ef731fb94c7e4e8da0e518bcef8c1ada650
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 6f646b3776f0aa0bbfba227c81ac5fc4fde9265f
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
-この記事では、[Azure Portal](http://portal.azure.com) を使用して SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
+この記事では、[Azure Portal](http://portal.azure.com) を使用して SQL Database のアクティブ geo レプリケーションを構成し、フェールオーバーを開始する方法について説明します。
 
 Azure Portal を使用してフェールオーバーを開始するには、「 [Azure Portal を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)」を参照してください。
 
@@ -51,9 +51,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 > [!NOTE]
 > パートナー データベースが既に存在する場合 (たとえば、前の geo レプリケーションのリレーションシップを終了した結果として)、コマンドは失敗します。
 > 
-> 
 
-### <a name="add-secondary"></a>セカンダリ データベースの追加
 1. [Azure Portal](http://portal.azure.com) で、geo レプリケーションについてセットアップするデータベースを参照します。
 2. SQL データベース ページで、**[geo レプリケーション]** を選択し、セカンダリ データベースを作成するリージョンを選択します。 プライマリ データベースをホストしているリージョンでなければどのリージョンを選択してもかまいませんが、[ペア リージョン](../best-practices-availability-paired-regions.md)を選択することをお勧めします。
    
@@ -69,6 +67,26 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 7. シード処理が完了すると、セカンダリ データベースの状態が表示されます。
    
     ![シード処理の完了](./media/sql-database-geo-replication-portal/seeding-complete.png)
+
+## <a name="initiate-a-failover"></a>フェールオーバーの開始
+
+セカンダリ データベースは、プライマリ データベースとして使用するように切り替えることができます。  
+
+1. [Azure Portal](http://portal.azure.com) で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
+2. [SQL Database] ブレードで、**[すべての設定]** > **[geo レプリケーション]** の順に選択します。
+3. **[セカンダリ]** ボックスの一覧で、新しいプライマリとして使用するデータベースを選択し、**[フェールオーバー]** をクリックします。
+   
+    ![[フェールオーバー]](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+4. **[はい]** をクリックして、フェールオーバーを開始します。
+
+このコマンドは、セカンダリ データベースをプライマリ ロールに即座に切り替えます。 
+
+ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 プライマリ データベースに複数のセカンダリ データベースがある場合は、コマンドによって、新しいプライマリに接続するように他のセカンダリが自動的に再構成されます。 通常の状況では、操作全体が完了するのに&1; 分かかりません。 
+
+> [!NOTE]
+> コマンドが発行されたときに、プライマリがオンラインでトランザクションをコミット中の場合、一部のデータが失われる可能性があります。
+> 
+> 
 
 ## <a name="remove-secondary-database"></a>セカンダリ データベースを削除する
 この操作では、セカンダリ データベースへのレプリケーションを完全に終了し、セカンダリ データベースのロールを通常の読み取り/書き込みデータベースに変更します。 セカンダリ データベースへの接続が切断された場合、コマンドは成功しますが、接続が復元するまでセカンダリ データベースは読み取り/書き込み状態になりません。  

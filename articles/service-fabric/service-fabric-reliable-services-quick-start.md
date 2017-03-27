@@ -1,5 +1,5 @@
 ---
-title: "C# で信頼性の高い Azure マイクロサービスを初めて作成する | Microsoft Docs"
+title: "C# で最初の Service Fabric アプリケーションを作成する | Microsoft Docs"
 description: "ステートレス サービスとステートフル サービスを使用して Microsoft Azure Service Fabric アプリケーションを作成する方法。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/06/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 41823b962caf25e1826fc06bc49887fd99876fc4
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 813021d6239ae3cf79bb84b78f77e39c9e0783f6
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,14 +36,14 @@ Azure Service Fabric アプリケーションには、コードを実行する&1
 Reliable Services の使用を開始するには、いくつかの基本的な概念を理解する必要があります。
 
 * **サービスの種類**: 使用するサービス実装です。 `StatelessService` を拡張する記述したクラスと、そこで使用する他のコードまたは依存関係のほか、名前やバージョン番号によって定義されます。
-* **名前付きサービス インスタンス**: サービスを実行するには、サービスの種類の名前付きインスタンスを作成します。これは、クラスの種類のオブジェクト インスタンスを作成するのに似ています。 サービス インスタンスは、実際には、記述するサービス クラスのオブジェクト インスタンスです。 
-* **サービス ホスト**: 作成した名前付きサービス インスタンスは、ホスト内で実行する必要があります。 サービス ホストは単なる&1; プロセスで、ここでサービスのインスタンスを実行できます。
+* **名前付きサービス インスタンス**: サービスを実行するには、サービスの種類の名前付きインスタンスを作成します。これは、クラスの種類のオブジェクト インスタンスを作成するのに似ています。 サービス インスタンスの名前は、"fabric:/MyApp/MyService" のように、"fabric:/" スキームを使用した URI の形式になります。
+* **サービス ホスト**: 作成した名前付きサービス インスタンスは、ホスト プロセス内で実行する必要があります。 サービス ホストは単なる&1; プロセスで、ここでサービスのインスタンスを実行できます。
 * **サービス登録**: 登録はすべてを&1; つにまとめます。 サービス ホストでサービスの種類を Service Fabric ランタイムに登録して、Service Fabric がそのインスタンスを作成して実行できるようにする必要があります。  
 
 ## <a name="create-a-stateless-service"></a>ステートレス サービスの作成
 ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。 ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。 ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。 この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
-Visual Studio 2015 を管理者として起動し、 *HelloWorld*という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
+Visual Studio 2015 または Visual Studio 2017 を管理者として起動し、*HelloWorld* という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric アプリケーションを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
@@ -67,7 +68,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-* 選択した通信スタック (ASP.NET Web API など) をプラグインできる通信エントリ ポイント。 これは、ユーザーおよびその他のサービスからの要求の受信を開始できる場所です。
+* 選択した通信スタック (ASP.NET Core など) を接続できる通信エントリ ポイント。 これは、ユーザーおよびその他のサービスからの要求の受信を開始できる場所です。
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -113,7 +114,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 この調整は、サービスの可用性を高めて適切なバランスを取るために、システムによって管理されます。
 
-`RunAsync()` は同期的なブロックを行いません。 RunAsync の実装はタスクを返すか、長時間にわたって実行される操作またはブロック操作を待機してランタイムを続行できるようにします。前の例の `while(true)` ループでは、タスクを返す `await Task.Delay()` が使用されていることに注意してください。 ワークロードで同期的にブロックする必要がある場合は、`RunAsync` 実装で `Task.Run()` を使用して新しいタスクをスケジュールする必要があります。
+`RunAsync()` は同期的なブロックを行いません。 RunAsync の実装では、タスクを返すか、長時間にわたって実行される操作またはブロック操作を待機して、ランタイムを続行できるようにします。 前の例の `while(true)` ループでは、タスクを返す `await Task.Delay()` が使用されています。 ワークロードで同期的にブロックする必要がある場合は、`RunAsync` 実装で `Task.Run()` を使用して新しいタスクをスケジュールする必要があります。
 
 ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。 システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。 システムからキャンセルが要求された場合は、キャンセル トークンを利用して作業を完了し、できるだけ早く `RunAsync()` を終了することが重要です。
 
@@ -227,10 +228,5 @@ Reliable Collection の操作は *トランザクション*であるため、複
 [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

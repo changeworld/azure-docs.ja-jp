@@ -16,9 +16,9 @@ ms.date: 05/16/2016
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: a70f30f380bf110271cb597d8755611da5d2d78c
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b1fb88277f6da86c023cd63af0d7c2c5681f8be0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,9 +32,9 @@ Azure には、可用性の高いアプリケーションをサポートする�
 この記事では、大きな自然災害や広範囲にわたるサービス中断により、リージョン全体で障害が発生した場合の真の障害復旧シナリオについて説明します。 こうした状況はほとんど発生しませんが、リージョン全体で中断が発生する可能性に対して準備する必要があります。 リージョン全体でサービス中断が発生した場合、データのローカル冗長コピーは、一時的に使用できなくなります。 geo レプリケーションを有効にしてある場合は、Azure Storage の BLOB とテーブルのコピーがさらに&3; つ、別のリージョンに格納されます。 地域的な停電や災害が発生し、プライマリ リージョンを復旧できない場合は、すべての DNS エントリが、geo レプリケートされたリージョンに再マッピングされます。
 
 > [!NOTE]
-> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [障害復旧のためのデータ戦略](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery)に関するセクションをご覧ください。
-> 
-> 
+> ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。 そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。 詳細については、 [障害復旧のためのデータ戦略](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery)に関するセクションをご覧ください。
+>
+>
 
 こうした状況はほとんど発生しませんが、Azure 仮想マシンのアプリケーションがデプロイされているリージョン全体でサービス中断が発生した場合は、Azure 仮想マシンに関する次のガイダンスに従って対応してください。
 
@@ -43,15 +43,15 @@ Azure には、可用性の高いアプリケーションをサポートする�
 
 > [!NOTE]
 > 中断前に Azure Site Recovery、仮想マシンのバックアップ、読み取りアクセス geo 冗長ストレージ、または geo 冗長ストレージを設定しなかった場合は、このオプションを使用することをお勧めします。 VM 仮想ハード ドライブ (VHD) が格納されているストレージ アカウントに対して geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージを設定した場合は、基本イメージ VHD の回復を当てにして、そこから新しい VM のプロビジョニングを試みることができます。 このオプションはお勧めできません。Azure VM バックアップまたは Azure Site Recovery が使用されていない限り、データの同期が保証されていないためです。 そのため、このオプションの動作は保証されません。
-> 
-> 
+>
+>
 
 仮想マシンにすぐにアクセスする必要があるお客様は、次の&2; つのオプションを使用できます。  
 
 > [!NOTE]
 > 次のオプションは両方とも、一部のデータが失われる可能性があることに注意してください。     
-> 
-> 
+>
+>
 
 ## <a name="option-2-restore-a-vm-from-a-backup"></a>オプション 2: バックアップから VM を復元する
 VM バックアップが構成されているお客様の場合は、そのバックアップと回復ポイントから VM を復元できます。
@@ -65,8 +65,8 @@ Azure 仮想マシンのバックアップ インフラストラクチャの計�
 
 > [!NOTE]
 > Azure の仮想マシンのオペレーティング システムとデータ ディスクはセカンダリ VHD にレプリケートされますが、レプリケートの対象が geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージ アカウント内にある場合は、各 VHD のレプリケートは個別に実行されます。 このレベルのレプリケーションでは、レプリケートされた VHD 間の一貫性が保証されません。 こうしたデータ ディスクを使用しているアプリケーション/データベースが相互に依存している場合は、すべての VHD が&1; つのスナップショットとしてレプリケートされるとは限りません。 また、geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージの VHD レプリカを使用した場合、VM を起動できるアプリケーション整合性スナップショットが作成されるとは限りません。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>次のステップ
 障害復旧と高可用性戦略を実装する方法の詳細については、 [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
@@ -78,5 +78,4 @@ Azure 仮想マシンのバックアップ インフラストラクチャの計�
 Azure Site Recovery を使用して、VMWare、HYPER-V 仮想マシン上で実行されている物理的 (および仮想的) な Windows コンピューターと Linux コンピューターの保護を調整し自動化する方法を [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/)で参照します。
 
 不明な点がある場合、または Microsoft による代理操作をご希望の場合は、 [カスタマー サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)までご連絡ください。
-
 

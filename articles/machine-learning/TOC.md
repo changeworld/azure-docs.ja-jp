@@ -159,6 +159,7 @@
 #### [Excel を使用する](machine-learning-consuming-from-excel.md)
 #### [Excel アドインを使用する](machine-learning-excel-add-in-for-web-services.md)
 #### [Web アプリ テンプレートを使用する](machine-learning-consume-web-service-with-web-app-template.md)
+#### [Batch プールを使用する](machine-learning-dedicated-capacity-for-bes-jobs.md)
 
 ## 例
 ### [サンプル実験](machine-learning-sample-experiments.md)
@@ -222,8 +223,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-machine-learning)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 ## [ライブ チャットからヘルプを表示する](machine-learning-live-chat.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

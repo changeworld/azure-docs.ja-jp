@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: c78ec37c-9a8c-4bb6-9e38-0bdb9e89fbd7
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -41,7 +42,7 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの&1; つです�
 
 HDInsight に含まれる Mahout のバージョンについては、[HDInsight のバージョンと Hadoop コンポーネント](hdinsight-component-versioning.md)に関する記事を参照してください。
 
-## <a name="a-namerecommendationsaunderstanding-recommendations"></a><a name="recommendations"></a>リコメンデーションについて
+## <a name="recommendations"></a>リコメンデーションについて
 
 Mahout で提供される機能の&1; つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対する嗜好) の形式で受け付けられます。 Mahout では、共起分析を実行して、*ある項目を嗜好するユーザーが他の項目も嗜好する*ということを判断できます。 次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 

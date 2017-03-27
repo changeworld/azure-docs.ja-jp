@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 2e2978f6e81b3f584eb73ce10fb373b62f7b85ff
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: a5193cb222fab1f3ed3e700d45c4a51676707d5a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -305,7 +305,7 @@ catch (StorageException storageException)
 
 **トラブルシューティングの決定木**
 
-- - -
+---
 問題は、Storage サービスのいずれかのパフォーマンスと関連がありますか。
 
 * [メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]
@@ -313,39 +313,39 @@ catch (StorageException storageException)
 * [メトリックが高い AverageServerLatency を示す]
 * [キューのメッセージ配信で予期しない遅延が発生する]
 
-- - -
+---
 問題は、Storage サービスのいずれかの可用性と関連がありますか。
 
 * [メトリックが PercentThrottlingError の増加を示している]
 * [メトリックが PercentTimeoutError の増加を示す]
 * [メトリックが PercentNetworkError の増加を示す]
 
-- - -
-クライアント アプリケーションは、Storage サービスから HTTP 4XX (404 など) の応答を受信しましたか。
+---
+ クライアント アプリケーションは、Storage サービスから HTTP 4XX (404 など) の応答を受信しましたか。
 
 * [クライアントが HTTP 403 (許可されていません) のメッセージを受け取る]
 * [クライアントが HTTP 404 (見つからない) のメッセージを受け取る]
 * [クライアントが HTTP 409 (競合) のメッセージを受け取る]
 
-- - -
-[メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある]
+---
+[Metrics show low PercentSuccess or analytics log entries have operations with transaction status of ClientOtherErrors]
 
-- - -
+---
 [ストレージ使用量の予期しない増加が容量メトリックに示される]
 
-- - -
-[多数の VHD が接続されている Virtual Machines が予期せず再起動する]
+---
+[You are experiencing unexpected reboots of Virtual Machines that have a large number of attached VHDs]
 
-- - -
+---
 [開発またはテストでのストレージ エミュレーターの使用に起因する問題]
 
-- - -
-[Azure SDK for .NET のインストールで問題が発生する]
+---
+[You are encountering problems installing the Azure SDK for .NET]
 
-- - -
+---
 [Storage サービスで別の問題が発生する]
 
-- - -
+---
 ### <a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い
 [Azure Portal](https://portal.azure.com) 監視ツールに基づいて示されている以下の例の場合、**AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
 

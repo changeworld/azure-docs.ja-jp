@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: acfeb52b-4b81-4a7d-af77-3e9908407404
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -29,7 +30,7 @@ ms.lasthandoff: 01/18/2017
 
 この記事では、HDInsight での Pig の使用方法を説明します。
 
-## <a name="a-idwhyawhy-use-pig"></a><a id="why"></a>Pig を使用する理由
+## <a id="why"></a>Pig を使用する理由
 Hadoop での MapReduce を使用したデータ処理における課題の&1; つは、map と reduce 関数のみを使用する処理ロジックの実装です。 複雑な処理では、多くの場合、望ましい結果を得るために、一緒にチェーンされている複数の MapReduce 操作に処理を分割する必要があります。
 
 Pig では、map と reduce 関数のみの使用を強制するのではなく、データ フローに使用される一連の変換として処理を定義し、目的の出力を生成することができます。
@@ -50,7 +51,7 @@ Pig での UDF の使用例については、以下のドキュメントを参�
 * [HDInsight における Python と Pig および Hive の使用](hdinsight-python.md)
 * [HDInsight における C# と Hive および Pig の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-## <a name="a-iddataaabout-the-sample-data"></a><a id="data"></a>サンプル データについて
+## <a id="data"></a>サンプル データについて
 この例では、*log4j* サンプル ファイル (Blob Storage コンテナーの **/example/data/sample.log** に格納) を使用します。 ファイル内の各ログは、タイプと重要度を表す `[LOG LEVEL]` フィールドを含むフィールド行で構成されています。以下に例を示します。
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
@@ -73,7 +74,7 @@ WASB が HDInsight の既定のストレージであるため、Pig Latin から
 > 
 > 
 
-## <a name="a-idjobaabout-the-sample-job"></a><a id="job"></a>サンプル ジョブについて
+## <a id="job"></a>サンプル ジョブについて
 次の Pig Latin ジョブでは、HDInsight クラスターの既定のストレージから **sample.log** ファイルを読み込みます。 次に、一連の変換を実行します。その結果、入力データの各ログ レベルの出現回数がカウントされます。 この結果は STDOUT にダンプされます。
 
     LOGS = LOAD 'wasbs:///example/data/sample.log';
@@ -88,7 +89,7 @@ WASB が HDInsight の既定のストレージであるため、Pig Latin から
 
 ![変換のグラフィカル表示][image-hdi-pig-data-transformation]
 
-## <a name="a-idrunarun-the-pig-latin-job"></a><a id="run"></a>Pig Latin ジョブを実行する
+## <a id="run"></a>Pig Latin ジョブを実行する
 HDInsight では、さまざまな方法を使用して Pig Latin ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
@@ -110,7 +111,7 @@ SQL Server Integration Services (SSIS) を利用して Pig ジョブを実行す
 
 Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 これで、HDInsight で Pig を使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7185ab62ee0e4383a7128fe731bd68da0ae87e66
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -145,10 +145,25 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 
 **[DN is anchor (DN はアンカー)]**を使用している場合、参照元のオブジェクトの種類と同じ種類を使用する必要があります。 別のオブジェクトの種類を参照することはできません。
 
+>[!NOTE]
+2017 年 3 月の更新以降、[*] オプションを使用できるようになりました。このオプションを選択すると、すべての可能なメンバーの種類がインポートされます。
+
+![グローバルパラメーター3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
+
+
+インポートが完了すると、次の図のような情報が表示されます。
+
+  ![グローバルパラメーター3](./media/active-directory-aadconnectsync-connector-genericsql/after-import.png)
+
+
+
 ### <a name="global-parameters"></a>グローバル パラメーター
 [グローバル パラメーター] ページでは、差分インポート、日付/時刻形式、およびパスワード方法を構成します。
 
 ![グローバルパラメーター1](./media/active-directory-aadconnectsync-connector-genericsql/globalparameters1.png)
+
+>[!IMPORTANT]
+ エクスポート/削除操作では、"*"、つまり "**任意のオプション*" は使用できません。
 
 Generic SQL コネクタでは、差分インポートの次の方法をサポートしています。
 

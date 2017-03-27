@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: c3540d86a12935cea100248f7f6669df34ae2209
-ms.openlocfilehash: cedc52b514eacb6cf7bc32634819573f5ee154c3
-ms.lasthandoff: 01/19/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 81f814ebb977f0f192d450b9c75aab84d2e1c069
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -28,10 +28,10 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。 Azure 診断を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。 Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。 次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
 ### <a name="prerequisites"></a>前提条件
-この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
+この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
 
 ### <a name="step-1-create-a-worker-role"></a>手順 1. worker ロールを作成する
-1. **Visual Studio 2013**を起動します。
+1. **Visual Studio** を起動します。
 2. .NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、新しい **Azure クラウド サービス** プロジェクトを作成します。  プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
 3. **[worker ロール]** を選択して [OK] をクリックします。 プロジェクトが作成されます。
 4. **[ソリューション エクスプローラー]** で、**[WorkerRole1]** プロパティ ファイルをダブルクリックします。
@@ -174,7 +174,7 @@ namespace WorkerRole1
 Web ロールまたは Worker ロールの診断を管理する PowerShell コマンドレットは、Set-AzureServiceDiagnosticsExtension、Get-AzureServiceDiagnosticsExtension、Remove-AzureServiceDiagnosticsExtension です。
 
 1. Azure PowerShell を開きます。
-2. スクリプトを実行して Worker ロールに診断をインストールします ( *StorageAccountKey* を wadexample ストレージ アカウントのストレージ アカウント キーに置き換えます)。
+2. スクリプトを実行して Worker ロールに診断をインストールします (*StorageAccountKey* を wadexample ストレージ アカウントのストレージ アカウント キーに、*config_path* を *WadExample.xml* ファイルへのパスに置き換えます)。
 
 ```powershell
 $storage_name = "wadexample"

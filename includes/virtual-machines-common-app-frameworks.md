@@ -53,7 +53,7 @@ Azure ポータルでは、URL を送信するだけで簡単にテンプレー�
 **New-AzureRmResourceGroupDeployment** コマンドを実行すると、テンプレートのパラメーターの値を入力するよう求められます。 テンプレートによっては、Azure でのリソースのデプロイに時間がかかる場合があります。
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI をインストールし](../articles/xplat-cli-install.md)、ログインして、Resource Manager のコマンドを有効にします。 その方法については、「 [Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。
+[Azure CLI をインストールし](../articles/cli-install-nodejs.md)、ログインして、Resource Manager のコマンドを有効にします。 その方法については、「 [Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。
 
 かっこ内のテキストをリソース グループ名、場所、デプロイメント名、およびテンプレート名に置き換えた後、以下のコマンドを実行してリソース グループとデプロイメントを作成します。
 
@@ -66,9 +66,4 @@ Azure ポータルでは、URL を送信するだけで簡単にテンプレー�
 一般向けに公開されているテンプレートを [GitHub](https://github.com/Azure/azure-quickstart-templates)で探します。
 
 [Azure リソース マネージャー](../articles/resource-group-template-deploy.md)の詳細を確認します。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

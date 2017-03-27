@@ -65,7 +65,7 @@ Recovery Services コンテナーを作成するユーザーは、すべての�
    セキュリティ機能の一部として、Azure Backup で重要な操作を実行する場合は、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。これにより、有効な Azure 資格情報を持ち、2 つ目のデバイスから認証された許可済みのユーザーだけが Azure Portal にアクセスして、そのような重要な操作を実行できるようになります。
 6. 次の図に示すように、トグル ボタンを使用してセキュリティ機能を**有効**にし、上にある **[保存]** ボタンをクリックしてセキュリティの設定を保存します。 **[Enable (有効)]** を選択できるのは、[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)] ドロップダウンで値を選択した後だけです。
 
-    ![セキュリティの設定の有効化](./media/backup-azure-security-feature/enable-security-settings.png)
+    ![セキュリティの設定の有効化](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recovering-deleted-backup-data"></a>削除されたバックアップ データを復旧する
 セキュリティ対策として、Azure Backup は削除されたバックアップ データを 14 日間保持し、バックアップの停止 (バックアップ データの削除操作を含む) を実行した場合でもすぐにはデータを削除しません。 14 日以内にデータを復元するには、次の手順に従ってください。

@@ -12,35 +12,49 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/12/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 2e011fbde0ee1b070d51a38b23193a4b48a3a154
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5675a65e3b48e39f44dc320b7b87910ab759b764
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="overview-of-azure-diagnostic-logs"></a>Azure 診断ログの概要
-**Azure 診断ログ**は、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります (たとえば、Windows イベント システム ログは、VM の診断ログのカテゴリの&1; つであり、BLOB ログ、テーブル ログ、キュー ログは、ストレージ アカウントの診断ログのカテゴリです)。また、診断ログは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られる[アクティビティ ログ (以前の監査ログまたは操作ログ)](monitoring-overview-activity-logs.md) とは異なります。 ここで説明する新しい種類の診断ログは、すべてのリソースでサポートされているわけではありません。 後述のサポートされているサービスの一覧に、新しい診断ログをサポートするリソースの種類が示されています。
+# <a name="collect-and-consume-diagnostic-data-from-your-azure-resources"></a>Azure リソースからの診断データの収集と使用
 
-![診断ログの論理的配置](./media/monitoring-overview-of-diagnostic-logs/logical-placement-chart.png)
+## <a name="what-are-azure-diagnostic-logs"></a>Azure 診断ログとは
+**Azure 診断ログ**は、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、Windows イベント システム ログは、VM、BLOB、テーブルの診断ログのカテゴリの&1; つであり、キューのログは、ストレージ アカウントの診断ログのカテゴリです。
+
+診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](monitoring-overview-activity-logs.md) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
+
+ここで説明する新しい種類の診断ログは、すべてのリソースでサポートされているわけではありません。 この記事には、新しい診断ログをサポートするリソースの種類の一覧を紹介するセクションがあります。
+
+![診断ログとその他の種類のログ ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
+
+図 1: 診断ログとその他の種類のログ
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>診断ログで実行できること
 診断ログでは次のことを実行できます。
+
+![診断ログの論理的配置](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
+
 
 * 監査や手動での検査に使用するために診断ログを[**ストレージ アカウント**](monitoring-archive-diagnostic-logs.md)に保存する。 **診断設定**を使用して、リテンション期間 (日数) を指定できます。
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
 * 診断ログを [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントまたはイベント ハブ名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
+ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
 ## <a name="diagnostic-settings"></a>診断設定
 非コンピューティング リソースの診断ログは、診断設定を使用して構成します。 **診断設定** では、以下を制御します。
 
 * 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS Log Analytics)。
 * 送信するログ カテゴリ。
-* 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間&0; 日の場合、ログは永続的に保持されます。 それ以外の場合、この値は 1 ～ 2,147,483,647 の範囲の数にすることができます。 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+* ログの各カテゴリをストレージ アカウントに保持する期間。
+    - リテンション期間が&0; 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
+    - リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 これらの設定は、Azure Portal 内のリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 
@@ -141,33 +155,33 @@ Log Analytics ワークスペースへの診断ログの送信を有効にする
 Azure Monitor REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
 
 ## <a name="manage-diagnostic-settings-in-the-portal"></a>ポータルでの診断設定の管理
-すべてのリソースを診断設定で確実かつ適切に設定されるようにするには、ポータルで **[監視]** ブレードに移動して、**[診断ログ]** ブレードを開きます。
+すべてのリソースについて診断設定がセットアップされていることを確認してください。 ポータルの **[監視]** ブレードに移動し、**[診断ログ]** ブレードを開きます。
 
 ![ポータルの [診断ログ] ブレード](./media/monitoring-overview-of-diagnostic-logs/manage-portal-nav.png)
 
 [More services (その他のサービス)] をクリックして、[監視] ブレードを見つけます。
 
-このブレードでは、診断ログをサポートするすべてのリソースを表示してフィルター処理し、診断が有効になっているかどうかと、そのログが送信されるストレージ アカウント、イベント ハブ、Log Analytics ワークスペースを確認できます。
+このブレードでは、診断ログをサポートするすべてのリソースを表示し、フィルター処理することで、有効になっている診断があるかどうかを確認できます。 さらに、これらのログがどのストレージ アカウント、イベント ハブ、Log Analytics ワークスペースに送られているかも確認できます。
 
 ![ポータルの [診断ログ] ブレードの結果](./media/monitoring-overview-of-diagnostic-logs/manage-portal-blade.png)
 
-リソースをクリックすると、ストレージ アカウントに保存されているすべてのログのほか、診断を無効にするオプションや、診断設定を変更するオプションが表示されます。 ダウンロード アイコンをクリックすると、特定の期間のログをダウンロードできます。
+リソースをクリックすると、ストレージ アカウントに保存されているすべてのログを表示できるほか、診断設定を無効にしたり、変更したりすることができます。 ダウンロード アイコンをクリックすると、特定の期間のログをダウンロードできます。
 
 ![1 つのリソースの [診断ログ] ブレード](./media/monitoring-overview-of-diagnostic-logs/manage-portal-logs.png)
 
 > [!NOTE]
-> 診断ログは、このビューだけに表示され、診断設定がストレージ アカウントに保存されるように構成した場合にのみダウンロードできます。
+> 診断ログは、このビューだけに表示され、診断ログをストレージ アカウントに保存するように構成した場合にのみダウンロードできます。
 >
 >
 
-**[診断設定]** のリンクをクリックすると [診断設定] ブレードが開き、選択したリソースの診断設定を有効化、無効化、または変更できます。
+**[診断設定]** のリンクをクリックすると [診断設定] ブレードが表示され、選択したリソースの診断設定を有効化、無効化、または変更できます。
 
 ## <a name="supported-services-and-schema-for-diagnostic-logs"></a>診断ログでサポートされているサービスとスキーマ
-診断ログのスキーマは、リソースとログ カテゴリによって異なります。 サポートされているサービスとそのスキーマを次に示します。
+診断ログのスキーマは、リソースとログ カテゴリによって異なります。   
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
-| Load Balancer |[Azure Load Balancer のログ分析 (プレビュー)](../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
@@ -211,7 +225,8 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 |Microsoft.StreamAnalytics/streamingjobs|作成|作成|
 
 ## <a name="next-steps"></a>次のステップ
+
 * [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage.md)
+* [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md)
 

@@ -15,14 +15,18 @@ ms.workload: azure-government
 ms.date: 10/20/2016
 ms.author: brendal
 translationtype: Human Translation
-ms.sourcegitcommit: f245bf964664a0817ba26580aea9990b1767da82
-ms.openlocfilehash: 9b2fee2e98c11ef0468cef3f2bdc81e15698a6fe
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: e2d82497c2ceaa9a6c0a1592b5785449f095f85c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="azure-government-marketplace-images"></a>Azure Government Marketplace のイメージ
 ## <a name="overview"></a>概要
 Microsoft Azure Government Marketplaceの使い心地は Azure Portal と似ています。  Microsoft や Microsoft のパートナーが事前に構築したイメージのデプロイを選択し、自身の VHD にアップロードできます。  これによって、必要に応じて自身のニーズに応じて標準化したイメージを自由にデプロイできるようになります。
+
+## <a name="variations"></a>バリエーション
+* 現時点では、Marketplace イメージは DoD ではサポートされていません。
 
 Azure Government Marketplace 内で利用できるイメージの一覧を次に示します。  事前に構成されたイメージの内いくつかでは、特定のソフトウェアのライセンスに対する支払いも生じます。  詳細は「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/">Virtual Machines 料金</a>」をご確認いただき、Azure Government 特有の料金について Microsoft アカウント チームや販売店にご確認ください。
 
@@ -251,9 +255,4 @@ Readme ファイルで、ページの上部にある [Deploy to Azure Government
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

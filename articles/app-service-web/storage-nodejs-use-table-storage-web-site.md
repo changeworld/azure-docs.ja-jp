@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3f0183c2c88819dfc67886676fd8c69b246537b6
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -568,7 +568,7 @@ Azure ストレージ アカウントを作成します。 アプリでは、こ
 [for free]: http://windowsazure.com
 [Git リモート]: http://git-scm.com/docs/git-remote
 
-[Azure CLI]: ../xplat-cli-install.md
+[Azure CLI]:../cli-install-nodejs.md
 
 [azure]: https://github.com/Azure/azure-sdk-for-node
 [node-uuid]: https://www.npmjs.com/package/node-uuid

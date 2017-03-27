@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: f349dea2ba1a080312cf07f19eded201775c9cd1
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 831b7cc21ee34f900f7e35885a36f6e0faf38211
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -78,7 +79,7 @@ Azure コマンド ライン インターフェイス (CLI) または PowerShell
 
 ### <a name="monitoring-function-app-log-files-with-the-azure-cli"></a>Azure CLI での関数アプリのログ ファイルの監視
 
-開始するには、[Azure CLI をインストール](../xplat-cli-install.md)します。
+開始するには、[Azure CLI をインストール](../cli-install-nodejs.md)します。
 
 以下のコマンドを使用するか、「[Azure CLI から Azure へのログイン](../xplat-cli-connect.md)」で説明されている他のいずれかのオプションを使用して、Azure アカウントにログインします。
 
@@ -124,10 +125,5 @@ Azure コマンド ライン インターフェイス (CLI) または PowerShell
 
 * [関数のテスト](functions-test-a-function.md)
 * [関数のスケール](functions-scale.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,7 +1,24 @@
-le--- title: Azure 仮想マシンの暗号化 | Microsoft Docs description: このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。
-services: security、security-center documentationcenter: na author: TomShinder manager: swadhwa editor: ''
+---
+title: "Azure 仮想マシンの暗号化 | Microsoft Docs"
+description: "このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。"
+services: security, security-center
+documentationcenter: na
+author: TomShinder
+manager: swadhwa
+editor: 
+ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
+ms.service: security
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/15/2017
+ms.author: tomsh
+translationtype: Human Translation
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 5054ea1d5bd17712a4b343319d583e62a256752d
+ms.lasthandoff: 03/15/2017
 
-ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5 ms.service: security ms.devlang: na ms.topic: hero-article ms.tgt_pltfrm: na ms.workload: na ms.date: 05/27/2016 ms.author: tomsh
 
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
@@ -162,3 +179,4 @@ PowerShell ISE に戻ります。 スクリプトが完了すると、次の図�
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -セキュリティの警告の管理および応答の方法について
 * [Azure セキュリティ センターに関する FAQ](security-center-faq.md) 」 – このサービスの使用に関してよく寄せられる質問
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) 」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
+

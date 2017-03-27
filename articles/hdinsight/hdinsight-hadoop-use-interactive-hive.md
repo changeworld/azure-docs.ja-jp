@@ -10,6 +10,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 0957643c-4936-48a3-84a3-5dc83db4ab1a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -19,6 +20,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 6971e123b388eab689e02a5c67809509c2ad29c6
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -63,10 +65,5 @@ Hive クエリは次のいくつかの方法で実行できます。
 * [HDInsight での Hadoop Linux クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md): HDInsight で対話型 Hive クラスターを作成する方法を説明します。
 * [Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md): Beeline を使用して Hive クエリを発行する方法を説明します。
 * [Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-odbc-driver.md): Excel から Hive に接続する方法を説明します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

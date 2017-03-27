@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: c885edd7064f7ee3c9907e6b938d826e181dcae5
-ms.openlocfilehash: 940210325c28252de2f38cfe56e56d4c3ecd28ed
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ae8e531c32b49e121b1c43b15071c138aaacf498
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure CLI は、任意のプラットフォームから Azure インフラスト
 Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
 
 * Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) をほんの少しの時間で作成することができます。
-* [Azure CLI のインストール](../xplat-cli-install.md)を実行します。
+* [Azure CLI のインストール](../cli-install-nodejs.md)を実行します。
 * Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、 `azure login` コマンドを使用して Azure CLI からログインすることができます。 相違点を理解して選択するには、「 [Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」を参照してください。
 * 以下のコマンドを実行する前に、 `azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。 詳細については、「[Azure CLI を使用して Azure のリソースとリソース グループを管理する](../xplat-cli-azure-resource-manager.md)」を参照してください。
 

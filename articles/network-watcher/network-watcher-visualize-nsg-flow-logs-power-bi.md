@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 76e9706051e4f8ab2c7becffed98a41f48968411
-ms.openlocfilehash: 8b50e7c434c6cee0906b7cfad0d3174e164c777c
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: dfb33a30cac74875281645e74339be152d8ef476
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/23/2017
 
 ![トップ トーカー][6]
 
-以下の時系列グラフは、所定の期間におけるフローの数を示しています。 上のグラフはフロー方向ごとに色分けされ、下のグラフは規則に基づく判断 (許可または拒否) ごとに色分けされています。 この視覚的要素を手掛かりにして、時間の経過に伴うトラフィックの傾向を調べたり、トラフィック (または特定の色で示されたトラフィック) に瞬間的に生じる異常な増加や減少を特定したりすることができます。
+以下の時系列グラフは、所定の期間におけるフローの数を示しています。 上のグラフはフロー方向で色分けされ、下のグラフは許可/拒否の判断ごとに色分けされています。 この視覚的要素を手掛かりにして、時間の経過に伴うトラフィックの傾向を調べたり、トラフィック (または特定の色で示されたトラフィック) に瞬間的に生じる異常な増加や減少を特定したりすることができます。
 
 ![所定の期間におけるフロー][7]
 
@@ -137,3 +137,4 @@ Elastick Stack で NSG フロー ログを視覚化する方法については�
 [11]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure11.png
 [12]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure12.png
 [13]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure13.png
+

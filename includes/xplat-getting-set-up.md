@@ -13,13 +13,14 @@ ms.workload: infrastructure
 ms.date: 04/13/2015
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: e664ce9426a2852a35dfdade5d41a9ce8b37a3b7
-ms.openlocfilehash: f18a4705c9fd57790bff9cfdd23c19fd30fe0d32
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 737e4be21eefcbd6fbd31d15a6f77770cd59ca67
+ms.lasthandoff: 03/21/2017
 
 
 ---
 ## <a name="using-azure-cli"></a>Azure CLI の使用
-次の手順を実行すると、適切なサブスクリプションで Azure CLI の最新バージョンを簡単に使用できます。 まず、Azure CLI をインストールし、アカウントに接続する必要があります。[Azure コマンド ライン インターフェイス (Azure CLI)](../articles/xplat-cli-install.md) に関するページを参照してください。
+次の手順を実行すると、適切なサブスクリプションで Azure CLI の最新バージョンを簡単に使用できます。 まず、Azure CLI をインストールし、アカウントに接続する必要があります。[Azure コマンド ライン インターフェイス (Azure CLI)](../articles/cli-install-nodejs.md) に関するページを参照してください。
 
 ### <a name="step-1-update-azure-cli-version"></a>手順 1. Azure CLI のバージョンを更新する
 サービス管理モードで命令型コマンドに Azure CLI を使用するときは、できれば最新バージョンを使用します。 バージョンを確認するには、「 `azure --version`」と入力します。 次のような結果が表示されます。
@@ -42,10 +43,5 @@ Azure CLI のバージョンを更新する場合は、 [Azure CLI](https://gith
 > Azure アカウントはまだ取得しておらず、MSDN サブスクリプションのサブスクリプションのみがある場合は、 [ここから MSDN サブスクリプション会員の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) をアクティブ化して無料の Azure クレジットを取得するか、無料のアカウントを使用できます。 どちらを使用しても Azure にアクセスできます。
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

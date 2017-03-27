@@ -1,6 +1,6 @@
 ---
-title: "フェールオーバー ストリーミング シナリオを実装する | Microsoft Docs"
-description: "このトピックでは、フェールオーバー ストリーミング シナリオを実装する方法を説明します。"
+title: "Azure Media Services でのフェールオーバー ストリーミングの実装 | Microsoft Docs"
+description: "このトピックでは、フェールオーバー ストリーミング シナリオの実装方法について説明します。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
-ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: eaa87671a90ab6b090fb04f346ef551edba4d173
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="implementing-failover-streaming-scenario"></a>フェールオーバー ストリーミング シナリオを実装する
+# <a name="implement-failover-streaming-with-azure-media-services"></a>Azure Media Services でのフェールオーバー ストリーミングの実装
 
-このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、いずれかのデータ センターが停止した場合に&2; つのデータ センター間でフェールオーバーするように CDN を設定する必要のある顧客に役立ちます。
-このチュートリアルでは、次のタスクを、Microsoft Azure Media Services SDK、Microsoft Azure Media Services REST API、Azure Storage SDK を使用して示します。
+このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、2 つのデータセンターのどちらか一方で障害が発生した場合に両者間でフェールオーバーを行うように Azure Content Delivery Network を設定する場合に利用できます。 このチュートリアルでは、Azure Media Services SDK、Azure Media Services REST API、Azure Storage SDK を使用して以下のタスクのデモンストレーションを行います。
 
-1. ”データ センター A” に Media Services アカウントを設定します。
+1. "データ センター A" に Media Services アカウントを設定します。
 2. ソース資産に中間ファイルをアップロードします。
 3. 資産をマルチビット レートの MP4 ファイルにエンコードします。 
-4. ソース資産に関連付けられているストレージ アカウントのコンテナーに読み取りアクセスできるように、ソース資産に読み取り専用 SAS ロケーターを作成します。
-5. 前の手順で作成した読み取り専用 SAS ロケーターからソース資産のコンテナー名を取得します。 この情報は、ストレージ アカウント間で BLOB をコピーするために必要です (これについてはトピック後半で説明しています)。
+4. 読み取り専用の Shared Access Signature ロケーターを作成します。 これは、ソース資産に関連付けられているストレージ アカウントのコンテナーに対し、ソース資産が読み取りアクセスするために使用します。
+5. 前の手順で作成した読み取り専用の Shared Access Signature ロケーターからソース資産のコンテナー名を取得します。 この情報は、ストレージ アカウント間で BLOB をコピーするために必要です (これについてはトピック後半で説明しています)。
 6. エンコード タスクによって作成された資産の配信元ロケーターを作成します。 
 
 次いで、フェールオーバーは以下のように処理します。
 
-1. ”データ センター B” に Media Services アカウントを設定します。
+1. "データ センター B" に Media Services アカウントを設定します。
 2. ターゲットの Media Services アカウントに、空のターゲット資産を作成します。
-3. ターゲット資産に関連付けられているターゲットのストレージ アカウントのコンテナーに書き込みアクセスできるように、空のターゲット資産に書き込み SAS ロケーターを作成します。
-4. Azure Storage SDK を使用し、"データ センター A" のコピー元のストレージ アカウントと "データ センター B" のターゲット ストレージ アカウント間で BLOB (資産ファイル) をコピーします (これらのストレージ アカウントには対象の資産が関連付けられています)。
+3. 書き込み用の Shared Access Signature ロケーターを作成します。 これは、ターゲット資産に関連付けられているターゲットのストレージ アカウントのコンテナーに対し、空のターゲット資産が書き込みアクセスするために使用します。
+4. Azure Storage SDK を使用し、"データ センター A" のコピー元のストレージ アカウントと "データ センター B" のターゲット ストレージ アカウントとの間で BLOB (資産ファイル) をコピーします。 これらのストレージ アカウントには対象の資産が関連付けられています。
 5. ターゲットの BLOB コンテナーにコピーされた BLOB (資産ファイル) をターゲット資産に関連付けます。 
-6. ”データ センター B” の資産の配信元ロケーターを作成し、”データ センター A” の資産用に生成されたロケーター ID を指定します。 
-7. これによりストリーミング URL が提供されます (URL の相対パスは同じです。ベース URL のみが異なります)。 
+6. "データ センター B" の資産の配信元ロケーターを作成し、"データ センター A" の資産用に生成されたロケーター ID を指定します。
 
-次に、障害対応のために、これらの配信元ロケーターの上位に CDN を作成します。 
+これによりストリーミング URL が提供されます (URL の相対パスは同じです。ベース URL のみが異なります)。 
+
+次に、障害対応のために、これらの配信元ロケーターの上位にコンテンツ配信ネットワークを作成します。 
 
 次の考慮事項が適用されます。
 
-* Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 このタスクを実現するには、CreateFileInfos Media Services REST API を使用します。 
+* Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 この情報をプログラムで生成するには、Media Services REST API の CreateFileInfos を使用してください。 
 * (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
 * ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 
@@ -65,11 +65,11 @@ ms.lasthandoff: 01/31/2017
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
-1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「HandleRedundancyForOnDemandStreaming」と入力し、[OK] をクリックします。
-2. HandleRedundancyForOnDemandStreaming.csproj プロジェクト ファイルと同じレベルに SupportFiles フォルダーを作成します。 SupportFiles フォルダーの下に OutputFiles および MP4Files フォルダーを作成します。 MP4Files フォルダーに .mp4 ファイルをコピーします (この例では、BigBuckBunny.mp4 です)。 
-3. **Nuget** を使用して Media Services 関連の DLL に参照を追加します。 Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。 コンソール ウィンドウで「Install-Package windowsazure.mediaservices」と入力し、Enter キーを押します。
+1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「**HandleRedundancyForOnDemandStreaming**」と入力し、**[OK]** をクリックします。
+2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします  (この例では、**BigBuckBunny.mp4** ファイルを使用します)。 
+3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー**で、**[ツール]** > **[ライブラリ パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
 4. このプロジェクト (System.Configuration、System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
-5. 既定で Programs.cs ファイルに追加されたステートメントを使用して、次と置き換えます。
+5. **Programs.cs** ファイルに既定で追加された **using** ステートメントを次の内容に置き換えます。
    
         using System;
         using System.Configuration;
@@ -88,7 +88,7 @@ ms.lasthandoff: 01/31/2017
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. appSettings セクションを .config ファイルに追加し、Media Services、ストレージ キー、名前の値に基づいて値を更新します。 
+6. **appSettings** セクションを **.config** ファイルに追加し、Media Services、ストレージ キー、名前の値に基づいて値を更新します。 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -102,6 +102,8 @@ ms.lasthandoff: 01/31/2017
         </appSettings>
 
 ## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>オンデマンド ストリーミングの冗長性を処理するコードを追加する
+このセクションでは、冗長性を処理するための機能を作成します。
+
 1. 次のクラスレベル フィールドを Program クラスに追加します。
        
         // Read values from the App.config file.
@@ -207,8 +209,11 @@ ms.lasthandoff: 01/31/2017
                 writeSasLocator.Delete();
         }
 
-3. Main から呼び出されるメソッド定義です。
-   
+3. 以下のメソッドの定義は Main から呼び出されます。
+
+    >[!NOTE]
+    >さまざまな Media Services ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使用する場合は、同じポリシー ID を使用する必要があります。 たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー) には同じ ID を使用します。 詳細については、[こちらのトピック](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
+
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
                                                         string singleFilePath)
@@ -471,8 +476,8 @@ ms.lasthandoff: 01/31/2017
 
                 if (sourceCloudBlob.Properties.Length > 0)
                 {
-                    // In AMS, the files are stored as block blobs. 
-                    // Page blobs are not supported by AMS.  
+                    // In Azure Media Services, the files are stored as block blobs. 
+                    // Page blobs are not supported by Azure Media Services.  
                     var destinationBlob = targetContainer.GetBlockBlobReference(fileName);
                     destinationBlob.StartCopyFromBlob(new Uri(sourceBlob.Uri.AbsoluteUri + blobToken));
 
@@ -939,7 +944,7 @@ ms.lasthandoff: 01/31/2017
 
 
 ## <a name="next-steps"></a>次のステップ
-これで、トラフィック マネージャーを使用して&2; つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
+これで、Traffic Manager を使用して&2; つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

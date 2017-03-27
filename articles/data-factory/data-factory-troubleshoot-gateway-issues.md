@@ -2,7 +2,6 @@
 title: "Data Management Gateway に関する問題のトラブルシューティング | Microsoft Docs"
 description: "Data Management Gateway に関連する問題のトラブルシューティングを行うためのヒントを示します。"
 services: data-factory
-documentationcenter: 
 author: linda33wj
 manager: jhubbard
 editor: monicar
@@ -14,10 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2017
 ms.author: jingwang
+published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 03e15660e04e192d9035c25f1a8030310413c118
-ms.openlocfilehash: 738fcd1e2b33bf072f004eb95265ed87e6e931c0
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
@@ -53,7 +53,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="resolution"></a>解決策
 コンピューター上の既存のゲートウェイをアンインストールしてから、**[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>手順&3;.問題点
 新しいゲートウェイを登録するときに、次のエラーが表示される場合があります。
 
 `Error: The gateway has encountered an error during registration.`
@@ -91,10 +91,12 @@ Azure Portal で **[このコンピューターに直接インストールしま
 ![ゲートウェイ キーが無効または空](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>原因
-ポータルでゲートウェイ キーが再生成されているか、ゲートウェイが削除されています。
+Azure Portal でゲートウェイ キーが再生成されているか、ゲートウェイが削除されています。 Data Management Gateway セットアップが最新でない場合にも発生することがあります。
 
 #### <a name="resolution"></a>解決策
-ゲートウェイが存在している場合は、ポータルでゲートウェイ キーを再生成した後、コピー ボタンを使用してキー全体をコピーします。 キーをこのウィンドウに貼り付けてゲートウェイを登録します。 それ以外の場合は、ゲートウェイを再作成して最初からやり直します。
+Data Management Gateway セットアップのバージョンが最新かどうかを確認してください。最新バージョンは、Microsoft [ダウンロード センター](https://go.microsoft.com/fwlink/p/?LinkId=271260)から入手できます。
+
+セットアップが最新で、ゲートウェイがまだポータルに存在している場合は、Azure Portal でゲートウェイ キーを再生成した後、コピー ボタンを使用してキー全体をコピーし、キーをこのウィンドウに貼り付けてゲートウェイを登録します。 それ以外の場合は、ゲートウェイを再作成して最初からやり直します。
 
 ### <a name="6-problem"></a>6.問題点
 ゲートウェイを登録するときに、次のエラー メッセージが表示される場合があります。
@@ -171,7 +173,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 * ゲートウェイのプロキシ設定を構成します。 詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
 * ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>手順&3;.問題点
 次のエラーが表示されます。
 
 `Error: Cloud service cannot connect to gateway through service bus.`
@@ -240,7 +242,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 
 ## <a name="gateway-logs"></a>ゲートウェイ ログ
 ### <a name="send-gateway-logs-to-microsoft"></a>ゲートウェイ ログを Microsoft に送信する
-ゲートウェイに関する問題のトラブルシューティングのために Microsoft サポートに連絡する場合、ゲートウェイ ログの共有を求められる場合があります。 ゲートウェイのリリース版では、Data Management Gateway Configuration Manager でボタンを 2 回クリックすることで、必要なゲートウェイ ログを簡単に共有できます。    
+ゲートウェイに関する問題のトラブルシューティングのために Microsoft サポートに連絡する場合、ゲートウェイ ログの共有を求められる場合があります。 ゲートウェイのリリース版では、Data Management Gateway Configuration Manager でボタンを&2; 回クリックすることで、必要なゲートウェイ ログを簡単に共有できます。    
 
 1. Data Management Gateway Configuration Manager で **[診断]** タブに切り替えます。
 
@@ -250,7 +252,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
     ![Data Management Gateway - ログの送信](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
 3. (省略可能) **[ログの表示]** をクリックしてイベント ビューアーでログを確認します。
 4. (省略可能) **[プライバシー]** をクリックして Microsoft Web サービスのプライバシーに関する声明を表示します。
-5. アップロードする情報に問題がなければ、 **[ログの送信]** をクリックすると、トラブルシューティングのために過去 7 日間のログが Microsoft に実際に送信されます。 ログ送信操作の状態が、次のスクリーンショットのように表示されます。
+5. アップロードする情報に問題がなければ、 **[ログの送信]** をクリックすると、トラブルシューティングのために過去&7; 日間のログが Microsoft に実際に送信されます。 ログ送信操作の状態が、次のスクリーンショットのように表示されます。
 
     ![Data Management Gateway - ログの送信の状態](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. 操作が完了すると、次のスクリーンショットのようなダイアログ ボックスが表示されます。
@@ -284,9 +286,4 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
  ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 
 ![Data Management Gateway - イベント ビューアーに表示されたログ](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

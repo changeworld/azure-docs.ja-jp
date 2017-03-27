@@ -1,12 +1,8 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-manager-template-walkthrough
+redirect_url: /azure/azure-resource-manager/resource-manager-create-first-template
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 3cad019d6e38f6cf924c3bdaa75ed60770e749a4
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 9674d831fcb7c35de2c229398346a961ec476758
+ms.lasthandoff: 03/22/2017
 
 ---
-
-
-<!--HONumber=Nov16_HO4-->
-
-

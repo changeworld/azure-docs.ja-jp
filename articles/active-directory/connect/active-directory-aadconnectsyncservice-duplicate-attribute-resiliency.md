@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 9bf2e87353901a043f01ff7d634e1b174cd6a52a
-ms.openlocfilehash: 3dd67e08951780725c4d81ce54aa841a5d13e59a
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 1209acfb13d53288b1ff0ed232c44c3fdcd3a9f4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,7 +51,8 @@ ms.openlocfilehash: 3dd67e08951780725c4d81ce54aa841a5d13e59a
 ### <a name="enabling-duplicate-attribute-resiliency"></a>重複属性の回復性の有効化
 重複属性の回復性は、すべての Azure Active Directory テナント全体で新しい既定の動作になります。 2016 年 8 月 22 日以降は、最初に同期を有効にしたすべてのテナントについて既定で有効になります。 この日付より前に同期を有効にしたテナントでは、この機能がバッチ処理で有効になります。 この展開は 2016年 9 月に開始し、この機能が有効になると、電子メール通知が特定の日付に各テナントの技術的通知の連絡先に送信されます。
 
-重複属性の回復性をオンにすると、無効にできません。
+> [!NOTE]
+> 重複属性の回復性をオンにすると、無効にできません。
 
 この機能がテナントで有効になっているかどうかを確認するには、Azure Active Directory PowerShell モジュールの最新バージョンをダウンロードして、次のように実行することによって、有効にすることができます。
 
@@ -58,11 +60,8 @@ ms.openlocfilehash: 3dd67e08951780725c4d81ce54aa841a5d13e59a
 
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
-テナントでオンする前にこの機能を事前に有効にする場合は、Azure Active Directory PowerShell モジュールの最新バージョンをダウンロードして、次のように実行することによって、有効にすることができます。
-
-`Set-MsolDirSyncFeature -Feature DuplicateUPNResiliency -Enable $true`
-
-`Set-MsolDirSyncFeature -Feature DuplicateProxyAddressResiliency -Enable $true`
+> [!NOTE]
+> テナントで重複属性の回復機能が有効になる前に、Set-MsolDirSyncFeature コマンドレットを使用してその機能を事前に有効にしておくことはできなくなりました。 この機能をテストするには、新しい Azure Active Directory テナントを作成する必要があります。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>DirSyncProvisioningErrors を持つオブジェクトの特定
 重複するプロパティの競合によってこれらのエラーが発生したオブジェクトを特定するための方法は、現在、2 つあります。それは、Azure Active Directory PowerShell と Office 365 管理ポータルです。 今後のレポートに基づいてポータルを追加する拡張が予定されています。
@@ -174,10 +173,5 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 * [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

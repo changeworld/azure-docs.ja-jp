@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
-ms.openlocfilehash: 10b1998789feafaf0c28155bc8a96a28ff78cf02
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 51aabf4938714c597ae0cfb2ec524f326b6e355a
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -233,7 +233,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 ## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>デプロイ スロット用の Azure コマンド ライン インターフェイス (Azure CLI) コマンド
 Azure CLI には、App Service デプロイ スロットの管理のサポートなど、Azure を使うためのクロスプラットフォーム コマンドが用意されています。
 
-* Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「 [Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
+* Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「 [Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
 * Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、 `azure site -h`を呼び出してください。
 
 > [!NOTE] 

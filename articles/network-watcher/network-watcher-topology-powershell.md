@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: af1bb9618492827bfae5f55a30fd165dbd5be11e
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c8d5fe6177b36aa73febe308b47b1fc330181924
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -60,7 +60,7 @@ Topology REST API のクエリを実行したときに返されるプロパテ�
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher の取得
 
-まず、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、`Get-AzureRmNetworkWatcherTopology` コマンドレットに渡されます。
+最初の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、`Get-AzureRmNetworkWatcherTopology` コマンドレットに渡されます。
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -137,7 +137,7 @@ Resources       : [
 
 ## <a name="next-steps"></a>次のステップ
 
-[Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI で NSG フロー ログを視覚化する方法を確認する
+[Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
 
 
 

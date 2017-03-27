@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bcb4fa81971ee1276cb8e7b0b249e970423bd630
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/31/2017
 ![システム アーキテクチャ](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> このトピックでは [Azure CLI](../xplat-cli-install.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。 また、[認証用に SSH キーを作成]し、.pem ファイルの場所をメモしておく必要があります。
+> このトピックでは [Azure CLI](../cli-install-nodejs.md) ツールを使用するため、Azure CLI ツールをダウンロードし、指示に従って Azure サブスクリプションに接続してください。 Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI コマンド リファレンス](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」をご覧ください。 また、[認証用に SSH キーを作成]し、.pem ファイルの場所をメモしておく必要があります。
 >
 >
 

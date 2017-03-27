@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: a5b078ea62d783f8841e51a86135a10a3dcbcaf6
-ms.openlocfilehash: dee631a528852d6d4637eb7859044bd13e26b987
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: eb2fff3b72646e63c53054a246a47c18df414c60
+ms.lasthandoff: 03/11/2017
 
 ---
 
@@ -59,6 +59,9 @@ docker run -it azuresdk/azure-cli-python:latest bash
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure CLI スクリプトのサンプル](./virtual-machines-linux-cli-samples.md).
+[Azure 仮想マシン用の CLI サンプル](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
+[Azure Web Apps 用の CLI サンプル](../app-service-web/app-service-cli-samples.md)
+
+[Azure SQL 用の CLI サンプル](../sql-database/sql-database-cli-samples.md)
 

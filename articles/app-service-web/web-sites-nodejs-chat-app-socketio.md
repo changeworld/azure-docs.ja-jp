@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: e3de500e3dc64abbbe7a5983db0ad14a0a9b76c8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4f5c04525437aefeccbe58e06b084433d0413dc1
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +66,7 @@ Azure Web アプリを作成し、Git 発行を有効にして、Web アプリ�
 > 
 > 
 
-1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。 「 [Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
+1. Azure コマンド ライン インターフェイス (Azure CLI) をインストールし、Azure サブスクリプションに接続します。 「 [Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
 2. Azure で初めてリポジトリを設定する場合は、ログイン資格情報を作成する必要があります。 Azure CLI で、次のコマンドを入力します。
    
         azure site deployment user set [username] [password]
@@ -283,7 +284,7 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [App Service Web Apps]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Web Apps の料金のページ]: http://go.microsoft.com/fwlink/?LinkId=511643
 [Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する]: ../cloud-services/cloud-services-nodejs-chat-app-socketio.md
-[Install and Configure the Azure CLI]: ../xplat-cli-install.md
+[Install and Configure the Azure CLI]: ../cli-install-nodejs.md
 [Azure App Service と既存の Azure サービス]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Node.js デベロッパー センター]: /develop/nodejs/
 [Azure App Service アプリケーションの作成]: https://azure.microsoft.com/try/app-service/
@@ -299,9 +300,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [chat-example-view]: ./media/web-sites-nodejs-chat-app-socketio/socketio-2.png
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/03/2017
+ms.date: 03/08/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: c682f9eac1a6ff5e3771aa9e4dfa5b5ffefc1223
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ec49b8784eb9b18135c5f7ec7242a2468ac87e50
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -57,9 +57,9 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
 * **FIPS 関連の変更** - このリリースから、Microsoft Azure Government アカウントと Azure パブリック クラウド アカウントの両方について、StorSimple 8000 シリーズの全デバイスで FIPS が既定で有効になっています。
 
-* **更新プログラムの変更** - このリリースから、Microsoft Azure Government アカウントと Azure パブリック クラウド アカウントの両方について、StorSimple 8000 シリーズの全デバイスで FIPS が既定で有効になっています。
+* **変更を更新** - このリリースでは、更新の失敗に関連するバグが修正されました。
 
-* **ディスク障害のアラート** - このリリースでは、ディスク障害の兆候をユーザーに知らせるアラートが新しく追加されました。
+* **ディスク障害のアラート** - このリリースでは、ディスク障害の兆候をユーザーに知らせるアラートが新しく追加されました。 このアラートが発生した場合は、Microsoft サポートに連絡して、交換ディスクを発送してもらってください。
 
 * **コントローラー交換に関する変更** - このリリースでは、ユーザーがコントローラー交換処理の状態を照会するためのコマンドレットが追加されました。 詳細については、[コントローラー交換の状態を照会するコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)に関するページを参照してください。
 

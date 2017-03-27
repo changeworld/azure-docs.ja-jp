@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 47398863e01204b840a965767cf2a022242d92fe
-ms.openlocfilehash: ea4d46e2d555c6572d0d741310abc4ee492767df
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: cd727a02716323c54d1c54a23cd4edd8f4940da1
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -42,8 +42,9 @@ Storage Service Encryption - File Storage 内のデータを暗号化するた�
 SSE Files のプレビューへの参加を希望する方は、ssediscussions@microsoft.com までお問い合わせください。
 
 詳細については、よく寄せられる質問に関するセクションを参照してください。
+
 ### <a name="availability-for-file-storage"></a>File Storage を利用できるリージョン
-File Storage 向け Storage Service Encryption は、現在、東アジア、北ヨーロッパ、米国東部 2 リージョンで利用可能です。
+File Storage 向け Storage Service Encryption は、現在、米国東部、米国東部&2;、米国中部、米国中北部、米国中南部、米国中西部、米国西部、米国西部&2;、東アジア、北ヨーロッパ、西ヨーロッパ、オーストラリア東部、およびオーストラリア南東部リージョンで利用可能です。
 
 
 特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
@@ -174,7 +175,7 @@ A: 現時点ではできません。キーは、Microsoft によって完全に�
 
 A: SSE は既定では有効になりません。Azure Portal を使用して有効にできます。 Storage Resource Provider REST API を使用してプログラムでこの機能を有効にすることもできます。
 
-**Q: この機能は Azure ドライブ暗号化とどのように違うのですか?**
+**Q: この機能は Azure Disk Encryption とどのように違うのですか?**
 
 A: この機能は、Azure Blob Storage のデータの暗号化に使用されます。 Azure Disk Encryption は、IaaS VM の OS ディスクとデータ ディスクの暗号化に使用されます。 詳細については、 [Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 

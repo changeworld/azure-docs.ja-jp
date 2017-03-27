@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/28/2016
+ms.date: 03/27/2017
 ms.author: raynew
 translationtype: Human Translation
 ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
 ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -236,9 +237,4 @@ VMM サーバーを使用せずに Hyper-V VM を Azure にレプリケートし
         $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
         $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
         $replicationService.RemoveReplicationRelationship($vm.__PATH)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

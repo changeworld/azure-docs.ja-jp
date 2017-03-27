@@ -12,22 +12,24 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 10/05/2016
+ms.date: 03/27/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 7688df2aac74d10de7c188ad46f8ab2ec38bbe86
-ms.openlocfilehash: 34c335d17641e9df9b64a7882448afc268e4da7c
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ba801c69cf2d0d542bebf54e99ef981854284ab0
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
-> * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
-> * [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+> * [Azure から VMware/物理マシン](site-recovery-failback-azure-to-vmware.md)
+> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
 
-この記事では、Azure からオンプレミス サイトへ Azure Virtual Machines をフェールバックする方法について説明します。 ここに示す手順は、[このチュートリアル](site-recovery-vmware-to-azure-classic.md)を使用して、VMware 仮想マシンまたは Windows/Linux 物理サーバーをオンプレミス サイトから Azure にフェールオーバーした後に、それらをフェールバックする準備ができたときに実行します。
+この記事では、Azure からオンプレミス サイトへ Azure Virtual Machines をフェールバックする方法について説明します。 ここに示す手順は、[こちら](site-recovery-how-to-reprotect.md)を参照してコンピューターを再保護した後に、VMware 仮想マシンまたは Windows/Linux 物理サーバーをフェールバックする準備ができたときに実行します。
+
+>[!NOTE]
+>従来の Azure Portal を使用している場合は、Azure アーキテクチャへと機能強化された VMware については[こちら](site-recovery-failback-azure-to-vmware-classic.md)の手順を参照し、従来のアーキテクチャについては[こちら](site-recovery-failback-azure-to-vmware-classic-legacy.md)の手順を参照してください。
 
 ## <a name="overview"></a>概要
 このセクションの図では、このシナリオのフェールバック アーキテクチャを示します。

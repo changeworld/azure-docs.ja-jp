@@ -13,17 +13,42 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: fd2649f9936da9f86d4fe24b4fa87ca1733d1f3c
-ms.lasthandoff: 01/07/2017
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 07c53a5d6b1881a4c207a2aefed9fcede0fa069e
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Power BI Embedded の新機能
+
 **Power BI Embedded** の更新は定期的にリリースされます。 ただし、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。一部のリリースでは、バックエンド サービス機能に重点を置いています。 ここでは、ユーザー向けの新機能について説明します。 必ず頻繁に確認してください。
+
+## <a name="march-2017"></a>2017 年 3 月
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/ibuN4DzCl5c?showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+**セルフサービス機能**
+
+* [新しいレポートの作成](power-bi-embedded-create-report-from-dataset.md)
+* [レポートに名前を付けて保存する](power-bi-embedded-save-reports.md)
+* 読み取りモード、編集モード、新規作成モードでのレポートの埋め込み 
+* [レポートの編集モードと読み取りモードの切り替え](power-bi-embedded-toggle-mode.md)
+
+**REST API を使用したデータ接続性**
+
+* [データセットの作成](https://msdn.microsoft.com/library/azure/mt778875.aspx)
+* データのプッシュ 
+
+**管理 API**
+
+* レポートとデータセットの複製
+* 異なるデータセットへのレポートのバインド
+
+**サンプル**
+
+* 更新された [JavaScript によるレポートの埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 ## <a name="december-2016"></a>2016 年 12 月
 

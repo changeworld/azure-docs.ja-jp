@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 02/23/2017
 ms.author: garbrad
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b4fffba6d95f4c9c30ab3a1ecd9dfeb7acd9119d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -57,8 +58,8 @@ DHCP クライアントが提供するフックを使用して、DNS サーバ�
               nsupdate $nsupdatecmds
         fi
 
-        #done
-        exit 0;
+        
+        
 
 *nsupdate* コマンドを利用し、セキュリティ保護された動的 DNS 更新を実行することもできます。 たとえば、Bind DNS サーバーを利用するとき、公開鍵/秘密鍵のペアが [生成されます](http://linux.yyz.us/nsupdate/)。  要求の署名を検証できるように、DNS サーバーは鍵の公開部分で [構成されます](http://linux.yyz.us/dns/ddns-server.html) 。 動的 DNS 更新要求に署名するために、*-k* オプションを利用し、*nsupdate* に鍵のペアを与える必要があります。
 
@@ -67,10 +68,5 @@ Windows DNS サーバーを利用しているとき、Kerberos 認証を利用�
 必要に応じて、DNS 検索サフィックスを VM に追加できます。 DNS サフィックスは、 */etc/resolv.conf* ファイルに指定します。 ほとんどの Linux ディストリビューションはこのファイルの内容を自動的に管理するため、通常は編集できません。 ただし、HCP クライアントの *supersede* コマンドを利用し、サフィックスを上書きできます。 その際、 */etc/dhcp/dhclient.conf*で次を追加します。
 
         supersede domain-name <required-dns-suffix>;
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

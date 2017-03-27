@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
 ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
 ms.openlocfilehash: a17a57c0eb7f35b1fba0d5b7e48fa8db249cd0f0

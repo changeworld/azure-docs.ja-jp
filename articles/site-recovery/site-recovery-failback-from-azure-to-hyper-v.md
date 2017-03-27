@@ -15,13 +15,17 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: 88a09929582e69941101e884697592c91c0f5cfa
-ms.openlocfilehash: 862b80bdb00efcbf8863699df12aacdbab60bcef
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: a1769a522d13926e887e82b8d26b36afb4c80b08
+ms.lasthandoff: 03/09/2017
 
 
 ---
 # <a name="failback-in-site-recovery"></a>Site Recovery でのフェールバック
+> [!div class="op_single_selector"]
+> * [Azure から VMware/物理マシン](site-recovery-failback-azure-to-vmware.md)
+> * [Azure から Hyper-V VM](site-recovery-failback-from-azure-to-hyper-v.md)
+
 この記事では、Site Recovery によって保護された仮想マシンをフェールバックする方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,7 +44,7 @@ Azure は高可用性環境であり、皆さんの仮想マシンはいつで�
 プライマリからセカンダリの場所へのフェールオーバー後は、レプリケートされた仮想マシンは Site Recovery では保護されず、セカンダリの場所が "アクティブな場所" として機能するようになります。 元のプライマリ サイトにフェールバックするには、次の手順に従います。 この手順では、復旧計画の、計画されたフェールオーバーを実行する方法について説明します。 別の方法として、 **[仮想マシン]** タブで、単一の仮想マシンに対するフェールオーバーを実行することもできます。
 
 1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **フェールオーバー** > **Planned フェールオーバー**で投稿してください。
-2. **[計画されたフェールオーバーの確認] **ページで、ソースとターゲットの場所を選択します。 フェールオーバーの方向に注意してください。 プライマリからのフェールオーバーが想定どおりに機能し、すべての仮想マシンがセカンダリの場所にある場合には、これは情報の提供のみを目的としています。
+2. **[計画されたフェールオーバーの確認]**ページで、ソースとターゲットの場所を選択します。 フェールオーバーの方向に注意してください。 プライマリからのフェールオーバーが想定どおりに機能し、すべての仮想マシンがセカンダリの場所にある場合には、これは情報の提供のみを目的としています。
 3. Azure からフェールバックする場合は、 **[データの同期 (Data Synchronization)]**で次の設定を選択してください。
 
    * **[フェールオーバーの前にデータを同期する (差分変更のみを同期する)]** - 仮想マシンをシャットダウンせずに同期するため、仮想マシンのダウンタイムが最小限に抑えられます。 その内容は次のとおりです。

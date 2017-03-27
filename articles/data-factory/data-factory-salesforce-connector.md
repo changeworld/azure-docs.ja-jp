@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 03/14/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 9e70638af1ecdd0bf89244b2a83cd7a51d527037
-ms.openlocfilehash: 98b841e300d5b704d134bcfab0968523f3b9c3f0
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: c5daac3b8374927c094e79299ce52031181ea24d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -33,7 +34,11 @@ ms.openlocfilehash: 98b841e300d5b704d134bcfab0968523f3b9c3f0
 * Salesforce からオンプレミスのデータ ストアにデータをコピーするには、バージョン 2.0 以降の Data Management Gateway がオンプレミス環境にインストールされている必要があります。
 
 ## <a name="salesforce-request-limits"></a>Salesforce の要求の制限
-Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。 同時要求の数が制限を超えると、調整が行われてランダムなエラーが発生します。要求の合計数が制限を超えると、Salesforce アカウントは 24 時間のあいだブロックされます。また、どちらのシナリオにおいても “REQUEST_LIMIT_EXCEEDED“ エラーが発生することがあります。
+Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。 以下の点に注意してください。
+* 同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。
+* 要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。
+
+また、どちらの場合も、"REQUEST_LIMIT_EXCEEDED" エラーが表示されることがあります。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
 Salesforce から、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」を参照してください。
@@ -248,10 +253,12 @@ RelationalSource でサポートされるプロパティの一覧については
 
 ## <a name="query-tips"></a>クエリのヒント
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>DateTime 列に対して where 句を 使ってデータを取得する
-SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 For example:
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 次に例を示します。
 
-* **SOQL サンプル**: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)
-* **SQL サンプル**: $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+* **SOQL サンプル**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL サンプル**:
+    * **コピー ウィザードを使用してクエリを指定:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **JSON 編集を使用してクエリを指定 (char を適切にエスケープ):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Salesforce レポートからのデータの取得
 `{call "<report name>"}` というクエリ (例: `"query": "{call \"TestReport\"}"`) を指定することで、Salesforce レポートからデータを取得できます。
@@ -259,8 +266,8 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>削除済みレコードを Salesforce のごみ箱から取得する
 論理的に削除されたレコードを Salesforce のごみ箱から検索するには、クエリで **"IsDeleted = 1"** と指定します。 たとえば、次のように入力します。
 
-* 削除されたレコードのみを検索するには、"select * from MyTable__c **where IsDeleted= 1**" と指定します。
-* 既存および削除済みを含むすべてのレコードを検索するには、"select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**" と指定します。
+* 削除されたレコードのみを検索するには、"select *from MyTable__c**where IsDeleted= 1**" と指定します。
+* 既存および削除済みを含むすべてのレコードを検索するには、"select *from MyTable__c**where IsDeleted = 0 or IsDeleted = 1**" と指定します。
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -293,9 +300,4 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md) 」をご覧ください。
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

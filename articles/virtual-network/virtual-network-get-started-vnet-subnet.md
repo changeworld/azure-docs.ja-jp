@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 071ef9c0784bdb24c7d29f49c36aee2271f4b524
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 214913cb63e38c5df0ab32ad19629507e5fdb35c
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -160,7 +160,7 @@ Web サーバー VM を作成するには、次の手順を実行します。
 
     ![リソース グループの内容](./media/virtual-network-get-started-vnet-subnet/resource-group-contents.png)
 
-VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が&2; つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが&2; つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface-overview.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される&1; つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
+VM、ディスク、ストレージ アカウントについて詳しくは、[仮想マシン](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ディスク](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ストレージ アカウント](../storage/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の概要に関する記事をご覧ください。 ポータルによって自動的に作成される既定の NSG が&2; つ確認できます。 さらに、ネットワーク インターフェイス (NIC) リソースが&2; つ作成されていることがわかります。 VM は NIC から VNet を通じて他のリソースに接続することができます。 詳しくは、[NIC](virtual-network-network-interface.md) に関する記事をご覧ください。 ポータルによって自動的に作成されるリソースとしては、他にも "パブリック IP アドレス" があります。 パブリック IP アドレスは、特定のパブリック IP アドレス リソースに使用される&1; つの設定です。 パブリック IP アドレスについて詳しくは、[IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)に関する記事をご覧ください。
 
 ## <a name="connect-to-from-vms"></a>VM に接続する
 
@@ -250,7 +250,7 @@ MyDBServer VM にパブリック IP アドレス リソースが割り当てら�
 
 - [仮想ネットワーク](virtual-networks-overview.md)
 - [パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [ネットワーク インターフェイス](virtual-network-network-interface-overview.md)
+- [ネットワーク インターフェイス](virtual-network-network-interface.md)
 - [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 - [仮想マシン](../virtual-machines/virtual-machines-windows-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 

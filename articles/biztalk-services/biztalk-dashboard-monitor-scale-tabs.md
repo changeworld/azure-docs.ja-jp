@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 27fb77bb2a6aadc2ab65f3916eeb68f487ae5fad
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ec1c54c8520170cd19095bf8d752c79c2fd812d8
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,12 +28,12 @@ Azure クラシック ポータルを開くと、自動的に [ **すべての�
 
 新しいウィンドウが開き、次のタブが表示されます。 このトピックでは、これらのタブについて説明します。
 
-## <a name="quick-start-quick-startquickstart"></a>クイック スタート (![クイック スタート][QuickStart])
+## <a name="quickstart-quickstartquickstart"></a>クイック スタート (![クイック スタート][Quickstart])
 BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。 
 
 <table border="1">
     <tr>
-        <td><strong>ツールを入手する</strong></td>
+        <td><strong>ツールの入手</strong></td>
         <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。 これらのテンプレートでは、BizTalk Services にデプロイされる <strong>BizTalk Services</strong> (ブリッジ) と <strong>BizTalk Services アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
         <br/><br/>作業を開始する手順については、
         <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使い始める方法</a>に関するページと、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストール</a>に関するページをご覧ください。
@@ -47,7 +48,7 @@ BizTalk サービスのエディションによっては、ここに示したオ
     </tr>
 
 <tr>
-        <td><strong>BizTalk サービスの詳細</strong></td>
+        <td><strong>BizTalk Services の詳細</strong></td>
         <td>Azure BizTalk Services の詳細については、<a HREF="http://azure.microsoft.com/documentation/services/biztalk-services/">学習センター</a>を参照してください。</td>
 </tr>
 </table>
@@ -58,7 +59,7 @@ BizTalk サービスのエディションによっては、ここに示したオ
 <table border="1">
 
 <tr>
-<td><strong>アプリケーションのデプロイの管理</strong></td>
+<td>アプリケーションのデプロイの<strong>管理</strong></td>
 <td>Azure BizTalk サービス ポータルが開きます。 BizTalk サービス ポータルは、パートナーの追加や X12 契約、AS2 契約および EDIFACT 契約の作成などの EDI 構成を行うためのスタート地点です。
 <br/><br/>
 これは、<strong>[クイック スタート]</strong> タブの <strong>[パートナー契約の作成]</strong> と同じです。
@@ -67,14 +68,14 @@ BizTalk サービスのエディションによっては、ここに示したオ
 </tr>
 
 <tr>
-<td><strong>Access Control 名前空間の接続情報</strong></td>
+<td>Access Control 名前空間の<strong>接続情報</strong></td>
 <td>[接続情報] を選択すると、[Access Control 名前空間]、[既定の発行者]、および [既定のキー] が表示されます。 この値はコピーできます。
 <br/><br/>
 Access Control ポータルを開くこともできます。 Access Control ポータルの詳細については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Access Control 名前空間の作成</a>に関するページを参照してください。</td>
 </tr>
 
 <tr>
-<td><strong>ストレージ アカウントのキーの同期</strong></td>
+<td>ストレージ アカウントの<strong>キーの同期</strong></td>
 <td>ストレージ アカウントを作成すると、プライマリ キーおよびセカンダリ キーが自動的に作成されます。 これらの暗号キーは、ストレージ アカウントへのアクセスを制御します。 BizTalk サービスは自動的にプライマリ キーを使用します。 <strong>キーの同期</strong>によって、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーを切り替えることができます。
 <br/><br/>
 たとえば、BizTalk サービスでストレージ アカウント用に新しいプライマリ キーを使用することができます。 これを行うには、次の手順を実行します。
@@ -90,7 +91,7 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 </tr>
 
 <tr>
-<td><strong>アプリケーションの削除</strong></td>
+<td>アプリケーションの<strong>削除</strong></td>
 <td>[削除] を選択すると、この BizTalk サービスと、この BizTalk サービスにデプロイされたすべてのアイテムが削除されます。</td>
 </tr>
 </table>
@@ -180,7 +181,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 <table border="1">
 
 <tr>
-<td><strong>アプリケーションのデプロイの管理</strong></td>
+<td>アプリケーションのデプロイの<strong>管理</strong></td>
 <td>Azure BizTalk サービス ポータルが開きます。 BizTalk サービス ポータルは、パートナーの追加や X12 契約、AS2 契約および EDIFACT 契約の作成などの EDI 構成を行うためのスタート地点です。
 <br/><br/>
 これは、<strong>[クイック スタート]</strong> タブの <strong>[パートナー契約の作成]</strong> と同じです。
@@ -188,7 +189,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルにおける EDI メッセージングのコンポーネントの構成</a>に関するページを参照してください。</td>
 </tr>
 <tr>
-<td><strong>Access Control 名前空間の接続情報</strong></td>
+<td>Access Control 名前空間の<strong>接続情報</strong></td>
 <td>[Access Control 名前空間]、[既定の発行者]、[既定のキー] が表示されます。これらの値はコピー可能です。
 <br/><br/>
 Access Control ポータルを開くこともできます。 Access Control ポータルは、左のナビゲーション ウィンドウで [Active Directory] オプションを使用するのと同じです。
@@ -196,7 +197,7 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理</a>に関するページでは、Access Control ポータルについて詳しく説明されています。</td>
 </tr>
 <tr>
-<td><strong>ストレージ アカウントのキーの同期</strong></td>
+<td>ストレージ アカウントの<strong>キーの同期</strong></td>
 <td>ストレージ アカウントを作成すると、プライマリ キーおよびセカンダリ キーが自動的に作成されます。 これらの暗号キーは、ストレージ アカウントへのアクセスを制御します。 BizTalk サービスは自動的にプライマリ キーを使用します。 <strong>キーの同期</strong>によって、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーを切り替えることができます。
 <br/><br/>
 たとえば、BizTalk サービスでストレージ アカウント用に新しいプライマリ キーを使用することができます。 これを行うには、次の手順を実行します。
@@ -212,7 +213,7 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 </tr>
 
 <tr>
-<td><strong>アプリケーションの削除</strong></td>
+<td>アプリケーションの<strong>削除</strong></td>
 <td>この BizTalk サービスと、この BizTalk サービスにデプロイされたすべてのアイテムが削除されます。</td>
 </tr>
 </table>
@@ -224,7 +225,7 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 BizTalk サービス名を選択すると、[監視] タブが選択可能になり、次の情報が表示されます。
 
 ##### <a name="metric-graph-displays-the-selected-performance-metrics"></a>メトリック グラフ: 選択されたパフォーマンス メトリックが表示されます。
-これらのメトリックは、BizTalk サービスの正常性状態に関するリアルタイムの値を提供します。 表示されるパフォーマンス メトリックを選択します。 最大で 6 つのパフォーマンス メトリックを同時に表示できます。 
+これらのメトリックは、BizTalk サービスの正常性状態に関するリアルタイムの値を提供します。 表示されるパフォーマンス メトリックを選択します。 最大で&6; つのパフォーマンス メトリックを同時に表示できます。 
 
 **[相対]** と **[絶対]** のいずれの値を表示するかを選択したり、表示するメトリックの時間範囲を **[間隔]** で選択したりすることもできます。 
 
@@ -243,14 +244,14 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
    ![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。 メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。 淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
 
-## <a name="a-namemetricsaavailable-metrics"></a><a name="Metrics"></a>使用可能なメトリック
+## <a name="Metrics"></a>使用可能なメトリック
 次のパフォーマンス カウンター/メトリックを使用できます。
 
 <table border="1">
 
 <tr>
 <td><strong>ラウンドトリップ遅延</strong></td>
-<td>メッセージ 1 件の処理にかかる時間 (そのメッセージが受信された時点から、BizTalk サービスによる処理が完了するまでの時間) の、すべてのブリッジの平均値がミリ秒 (ms) 単位で表示されます。 正常に処理されたメッセージのみがカウントされます。<br/><br/>
+<td>メッセージ&1; 件の処理にかかる時間 (そのメッセージが受信された時点から、BizTalk サービスによる処理が完了するまでの時間) の、すべてのブリッジの平均値がミリ秒 (ms) 単位で表示されます。 正常に処理されたメッセージのみがカウントされます。<br/><br/>
 次のイベントが発生した場合は、タイムスタンプが作成されます。
 <ul>
 <li>メッセージがゲートウェイに入る</li>
@@ -273,7 +274,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 </tr>
 <tr>
 <td><strong>処理の遅延時間</strong></td>
-<td>メッセージ 1 件の処理にかかる時間 (BizTalk サービスによる処理が完了するまでの時間から送信先で費やした時間を差し引いた値) の、すべてのブリッジの平均値がミリ秒 (ms) 単位で表示されます。 正常に処理されたメッセージのみがカウントされます。<br/><br/>
+<td>メッセージ&1; 件の処理にかかる時間 (BizTalk サービスによる処理が完了するまでの時間から送信先で費やした時間を差し引いた値) の、すべてのブリッジの平均値がミリ秒 (ms) 単位で表示されます。 正常に処理されたメッセージのみがカウントされます。<br/><br/>
 次の各イベントが発生した場合は、タイムスタンプが作成されます。
 
 <ul>
@@ -286,17 +287,17 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 [送信先の確認応答がゲートウェイに送信される] - [メッセージがゲートウェイに入る] - [送信先の応答が受信される] + [メッセージが送信先にルーティングされる]</td>
 </tr>
 <tr>
-<td><strong>プロセス内のエラー</strong></td>
+<td><strong>処理中のエラー</strong></td>
 <td>BizTalk サービスによる処理が完了する前にエラーとなったメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。</td>
 </tr>
 <tr>
 <td><strong>送信されたメッセージ</strong></td>
-<td>BizTalk サービスによって送信されたメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 このメトリックは、パイプラインから送信されたメッセージがルートの送信先に到達したときに 1 増えます。 このメトリックは、メッセージが正常に処理されたことを示すものではありません。<br/><br/>
-要求 - 応答シナリオでは、ルート送信先からパイプラインに受信確認が返送されたときにこのメトリックに 1 が加算されます。</td>
+<td>BizTalk サービスによって送信されたメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 このメトリックは、パイプラインから送信されたメッセージがルートの送信先に到達したときに&1; 増えます。 このメトリックは、メッセージが正常に処理されたことを示すものではありません。<br/><br/>
+要求 - 応答シナリオでは、ルート送信先からパイプラインに受信確認が返送されたときにこのメトリックに&1; が加算されます。</td>
 </tr>
 <tr>
 <td><strong>受信したメッセージ</strong></td>
-<td>BizTalk サービスによって受信されたメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 パイプラインによって新しいメッセージが受信されたときに、このメトリックに 1 が加算されます。</td>
+<td>BizTalk サービスによって受信されたメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 パイプラインによって新しいメッセージが受信されたときに、このメトリックに&1; が加算されます。</td>
 </tr>
 <tr>
 <td><strong>処理中のメッセージ</strong></td>
@@ -304,15 +305,15 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 </tr>
 <tr>
 <td><strong>処理されたメッセージ</strong></td>
-<td>BizTalk サービスによる処理が正常に完了したメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 メッセージがパイプラインによって正常に受信されて送信先に正常にルーティングされたときに、このメトリックに 1 が加算されます。</td>
+<td>BizTalk サービスによる処理が正常に完了したメッセージの、すべてのブリッジの合計数を所定の時間範囲内で集計したものが表示されます。 メッセージがパイプラインによって正常に受信されて送信先に正常にルーティングされたときに、このメトリックに&1; が加算されます。</td>
 </tr>
 </table>
 
 
 ## <a name="scale"></a>スケール
-[スケール] タブで、BizTalk サービスで使用されるユニット数を追加または削減できます。 既定では、1 つのユニットが構成されています。 ユニットを追加して BizTalk サービスをスケールできます。 スケールを増やすと、スループットが増えます。 また、デプロイされるブリッジ、契約、LOB 接続、処理能力などのリソース量も増えます。 たとえば、ユニットを 1 から 2 に増やすとします。 この場合、2 倍のブリッジ数をデプロイでき、契約数、LOB 接続数、処理能力をそれぞれ 2 倍にできます。
+[スケール] タブで、BizTalk サービスで使用されるユニット数を追加または削減できます。 既定では、1 つのユニットが構成されています。 ユニットを追加して BizTalk サービスをスケールできます。 スケールを増やすと、スループットが増えます。 また、デプロイされるブリッジ、契約、LOB 接続、処理能力などのリソース量も増えます。 たとえば、ユニットを 1 から 2 に増やすとします。 この場合、2 倍のブリッジ数をデプロイでき、契約数、LOB 接続数、処理能力をそれぞれ&2; 倍にできます。
 
-一部の BizTalk エディションではスケール オプションが提供されません。 この場合、許容されるユニットは 1 つです。 お使いのエディションでスケールできるユニット数については、「 [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)」を参照してください。
+一部の BizTalk エディションではスケール オプションが提供されません。 この場合、許容されるユニットは&1; つです。 お使いのエディションでスケールできるユニット数については、「 [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)」を参照してください。
 
 ユニット数を増やすと、料金に影響する可能性があります。 ユニットを増やした場合は、 **[保存]** を選択したときに、料金に影響があるかどうかを示すメッセージが表示されます。 [OK] をクリックして続行します。 ユニット数を増やすと、BizTalk サービスのステータスがアクティブから更新中に代わります。 更新中というステータスで、BizTalk サービスの実行が続行されます。
 
@@ -325,7 +326,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 [BizTalk サービス: バックアップと復元](biztalk-backup-restore.md) 」に、詳しい説明があります。 
 
-## <a name="a-namehybridconnectionsahybrid-connections"></a><a name="HybridConnections"></a>ハイブリッド接続
+## <a name="HybridConnections"></a>ハイブリッド接続
 "ハイブリッド接続" を使用すると、Azure のアプリケーション (Azure App Service の Web アプリやモバイル アプリなど) を、静的 TCP ポートを使用するオンプレミスのリソース (たとえば、SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) に接続できます。 ハイブリッド接続の管理は、BizTalk Services で、Azure クラシック ポータルを使用して行います。
 
 Azure App Service でのハイブリッド接続については、「[Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。
@@ -346,14 +347,9 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 * [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
-[QuickStart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
+[Quickstart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
 [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

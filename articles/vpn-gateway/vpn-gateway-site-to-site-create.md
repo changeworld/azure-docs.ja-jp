@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: 835968ec5b540890dbe8644038ab7f63b0721847
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 9df9d10d436ac56c881c9547f3095b630d4cb97f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,9 +26,10 @@ ms.lasthandoff: 01/27/2017
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [クラシック - Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 この記事では、クラシック デプロイメント モデルとクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
@@ -51,25 +52,25 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 * VPN デバイスの外部接続用パブリック IP アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 
-## <a name="a-namecreatevnetacreate-your-virtual-network"></a><a name="CreateVNet"></a>仮想ネットワークの作成
+## <a name="CreateVNet"></a>仮想ネットワークの作成
 1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインします。
 2. 画面の左下隅で **[新規]**をクリックします。 ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。 **[カスタム作成]** をクリックして、構成ウィザードを開始します。
 3. VNet を作成するには、次のページで構成設定を入力します。
 
-## <a name="a-namedetailsavirtual-network-details-page"></a><a name="Details"></a>[仮想ネットワークの詳細] ページ
+## <a name="Details"></a>[仮想ネットワークの詳細] ページ
 次の情報を入力します。
 
 * **[名前]**: 仮想ネットワークの名前を指定します。 ここでは、 *EastUSVNet*のように名前を入力します。 VM と PaaS インスタンスをデプロイするときにこの仮想ネットワーク名を使用するため、あまり複雑な名前を付けないようにすることを推奨します。
 * **[場所]**: 場所は、リソース (VM) を配置する物理的な場所 (リージョン) に直接関連します。 たとえば、物理的に *米国東部*に存在する VM をこの仮想ネットワークにデプロイする場合は、その場所を選択します。 仮想ネットワークを作成した後で、その仮想ネットワークに関連付けられたリージョンを変更することはできません。
 
-## <a name="a-namednsadns-servers-and-vpn-connectivity-page"></a><a name="DNS"></a>[DNS サーバーおよび VPN 接続] ページ
+## <a name="DNS"></a>[DNS サーバーおよび VPN 接続] ページ
 次の情報を入力し、矢印をクリックして次へ進みます。
 
 * **[DNS サーバー]**: DNS サーバー名と IP アドレスを入力するか、以前に登録した DNS サーバーをショートカット メニューから選択します。 この設定で、DNS サーバーは作成されません。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。
 * **[サイト間 VPN の構成]**: **[サイト間 VPN の構成]** のチェック ボックスをオンにします。
 * **[ローカル ネットワーク]**: ローカル ネットワークとは、物理的なオンプレミスの場所を表します。 ここでは、以前作成したローカル ネットワークを選択するか、または新しいローカル ネットワークを作成することができます。 ただし、以前作成したローカル ネットワークを使用する場合は、VPN デバイスの IP アドレス (外部に公開されている IPv4 アドレス) が正確であるかどうかを **[ローカル ネットワーク]** 構成ページで確認します。
 
-## <a name="a-nameconnectivityasite-to-site-connectivity-page"></a><a name="Connectivity"></a>[サイト間接続] ページ
+## <a name="Connectivity"></a>[サイト間接続] ページ
 ローカル ネットワークを新しく作成する場合は、 **[サイト間接続]** ページが表示されます。 以前作成したローカル ネットワークを使用する場合は、このページはウィザードで表示されず次のセクションに進みます。
 
 次の情報を入力して、次へ進む矢印をクリックします。
@@ -79,7 +80,7 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 * **[アドレス空間]**: IP アドレスの開始点と CIDR (アドレス数) を指定します。 仮想ネットワーク ゲートウェイからローカルのオンプレミスの場所への接続に使用するアドレス範囲を指定します。 宛先 IP アドレスがここで指定した範囲内に存在する場合は、仮想ネットワーク ゲートウェイを経由してルーティングされます。
 * **[アドレス空間の追加]**: 仮想ネットワーク ゲートウェイでの接続に複数のアドレス範囲を使用する場合は、それぞれのアドレス範囲を追加します。 アドレス範囲は、後から **[ローカル ネットワーク]** ページで追加または削除することができます。
 
-## <a name="a-nameaddressavirtual-network-address-spaces-page"></a><a name="Address"></a>[仮想ネットワーク アドレス空間] ページ
+## <a name="Address"></a>[仮想ネットワーク アドレス空間] ページ
 仮想ネットワークで使用するアドレス範囲を指定します。 これらが動的 IP アドレス (DIPS) として、この仮想ネットワークにデプロイする VM や各種ロール インスタンスに割り当てられます。
 
 オンプレミス ネットワークに使用されている範囲と重複しない範囲を選択することが特に重要です。 ネットワーク管理者と相談して調整する必要があります。 ネットワーク管理者は、場合によっては仮想ネットワークで使用する IP アドレス範囲をオンプレミス ネットワークのアドレス空間の中から確保する必要があるため、ネットワーク管理者との調整が必要です。
@@ -94,7 +95,7 @@ VNet どうしを接続する場合は、「 [クラシック デプロイメン
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="a-namevnetgatewayaconfigure-your-virtual-network-gateway"></a><a name="VNetGateway"></a>仮想ネットワーク ゲートウェイの構成
+## <a name="VNetGateway"></a>仮想ネットワーク ゲートウェイの構成
 仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間接続を作成します。 [Azure クラシック ポータルでの仮想ネットワーク ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ

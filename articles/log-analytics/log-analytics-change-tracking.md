@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/13/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: becb179da6bc6b6df629a07d3ddb5d50edbaa577
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/28/2017
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * 変更を監視する各コンピューターに、[Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md)、または [Linux](log-analytics-linux-agents.md) エージェントが必要です。
-* 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って変更の追跡ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
+* 変更の追跡ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
 
 ### <a name="configure-windows-files-to-track"></a>追跡する Windows ファイルの構成
 次の手順を使用して、Windows コンピューター上で追跡するファイルを構成します。
@@ -66,7 +66,21 @@ ms.lasthandoff: 02/28/2017
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Linux エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows および Linux |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![なし](./media/log-analytics-change-tracking/oms-bullet-red.png) |![いいえ](./media/log-analytics-change-tracking/oms-bullet-red.png) |![はい](./media/log-analytics-change-tracking/oms-bullet-green.png) | 変更の種類に応じて、15 分～ 1 時間 |
+| Windows および Linux |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![あり](./media/log-analytics-change-tracking/oms-bullet-green.png) |![なし](./media/log-analytics-change-tracking/oms-bullet-red.png) |![いいえ](./media/log-analytics-change-tracking/oms-bullet-red.png) |![はい](./media/log-analytics-change-tracking/oms-bullet-green.png) | 5 ～ 50 分 (変更の種類に応じて) 詳細については、以下を参照してください。 |
+
+
+次の表は、変更の種類ごとにデータ収集の頻度を示したものです。
+
+| **変更の種類** | **frequency** | **変更が検出されたときに****エージェント****から相違点が送信されるか** |
+| --- | --- | --- |
+| Windows レジストリ | 50 分 | × |
+| Windows ファイル | 30 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+| Linux ファイル | 約&15; 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+| Windows サービス | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
+| Linux デーモン | 5 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+| Windows ソフトウェア | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
+| Linux ソフトウェア | 5 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
+
 
 ## <a name="use-change-tracking"></a>変更の追跡を使用する
 ソリューションをインストールした後で、OMS の **[概要]** ページにある **[変更の追跡]** タイルを使用すると、監視対象サーバーの変更の概要を確認できます。

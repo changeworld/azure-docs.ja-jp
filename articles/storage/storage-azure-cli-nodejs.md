@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 289bf7ab1ba91bd9edc6288af93e06170d8f2def
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b246d8813a41d353a9c0fa31fe838e025fc93046
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2017
 
 Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。 豊富なデータ アクセス機能だけでなく、 [Azure ポータル](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
 
-このガイドでは、 [Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。 このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
+このガイドでは、 [Azure コマンド ライン インターフェイス (Azure CLI)](../cli-install-nodejs.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。 このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。 また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。 各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
@@ -47,7 +47,7 @@ Azure サブスクリプションの詳細については、「 [Azure Active Di
 
 **Microsoft Azure アカウントとサブスクリプションを作成済みである場合:**
 
-1. [Azure CLI のインストール](../xplat-cli-install.md)に関するページに記載されている手順に従って、Azure CLI をダウンロードしてインストールします。
+1. [Azure CLI のインストール](../cli-install-nodejs.md)に関するページに記載されている手順に従って、Azure CLI をダウンロードしてインストールします。
 2. Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から azure コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 _azure_ コマンドを入力すると、次の出力が表示されます。
 
     ![Azure Command Output][Image1]
@@ -239,7 +239,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 ストレージ リソースを操作するための Azure CLI 1.0 コマンド リファレンスは、以下のページにあります。
 
 * [Resource Manager モードでの Azure CLI コマンド](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Azure サービス管理モードでの Azure CLI コマンド](../xplat-cli-install.md)
+* [Azure サービス管理モードでの Azure CLI コマンド](../cli-install-nodejs.md)
 
 必要に応じて、[Azure CLI 2.0](storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルで使用できます。
 

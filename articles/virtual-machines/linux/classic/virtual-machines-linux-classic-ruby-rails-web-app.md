@@ -18,6 +18,7 @@ ms.author: robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -126,26 +127,21 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 * [Content Delivery Network を使用して高帯域幅コンテンツを配信する][cdn-howto]
 
 <!-- WA.com links -->
-[blobs]: ../../../storage/storage-ruby-how-to-use-blob-storage.md
-[cdn-howto]: https://azure.microsoft.com/develop/ruby/app-services/
-[management-portal]: https://manage.windowsazure.com/
-[tables]: ../../../storage/storage-ruby-how-to-use-table-storage.md
-[vm-instructions]: ../../virtual-machines-linux-classic-createportal.md
+[blobs]:../../../storage/storage-ruby-how-to-use-blob-storage.md
+[cdn-howto]:https://azure.microsoft.com/develop/ruby/app-services/
+[management-portal]:https://manage.windowsazure.com/
+[tables]:../../../storage/storage-ruby-how-to-use-table-storage.md
+[vm-instructions]:createportal.md
 
 <!-- External Links -->
-[rails-guides]: http://guides.rubyonrails.org/
-[sqlite3]: http://www.sqlite.org/
+[rails-guides]:http://guides.rubyonrails.org/
+[sqlite3]:http://www.sqlite.org/
 
 <!-- Images -->
 
-[default-rails-cloud]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/basicrailscloud.png
-[vmlist]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/vmlist.png
-[endpoints]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/endpoints.png
-[new-endpoint]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
-[new-endpoint1]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
+[default-rails-cloud]:./media/virtual-machines-linux-classic-ruby-rails-web-app/basicrailscloud.png
+[vmlist]:./media/virtual-machines-linux-classic-ruby-rails-web-app/vmlist.png
+[endpoints]:./media/virtual-machines-linux-classic-ruby-rails-web-app/endpoints.png
+[new-endpoint]:./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
+[new-endpoint1]:./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
 

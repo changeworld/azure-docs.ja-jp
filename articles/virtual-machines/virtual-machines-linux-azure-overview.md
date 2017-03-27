@@ -3,7 +3,7 @@ title: "Azure での Linux VM の概要 | Microsoft Docs"
 description: "Linux 仮想マシンでの Azure Compute、Storage、Network サービスについて説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: rickstercdn
 manager: timlt
 editor: 
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
-ms.author: squillace
+ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
-ms.openlocfilehash: e46490a75b0b759e94ba8b090f394d0ba3366dc4
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: dbafa7ab292d634d7bd2427803e5a7f78963d7ff
+ms.lasthandoff: 03/14/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -27,12 +27,12 @@ Microsoft Azure は、分析、仮想マシン、データベース、モバイ�
 Amazon の AWS のさまざまな機能を使い慣れている場合は、Azure と AWS の [定義マッピング ドキュメント](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)を調べることができます。
 
 ## <a name="regions"></a>地域
-Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。  2016 年 1 月 1 日時点で米国に 8 つ、ヨーロッパに 2 つ、アジア太平洋地域に 6 つ、中国大陸に 2 つ、インドに 3 つのリージョンが存在します。  すべての Azure リージョンを知りたい場合は、既存のリージョンと新たに発表されたリージョンのリストを公開していますのでご覧ください。
+Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。  世界中で 34 か所のリージョンが一般公開されており、さらに 4 つのリージョンが発表されました。 Microsoft はグローバル カバレッジを拡大し続けているため、既存のリージョンと新たに発表されたリージョンの一覧を常に更新しています。
 
 * [Azure リージョン](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>可用性
-Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、可用性セット内でワークロードを実行する必要があります。 そうすることで、Microsoft のデータ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。 
+Microsoft は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 そうすることで、Microsoft のデータ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。 
 
 ## <a name="managed-disks"></a>Managed Disks
 
@@ -73,7 +73,7 @@ Azure は Linux ディストリビューションの多くで、 [cloud-init](ht
 * [Azure Linux VM 上で cloud-init を使用する](virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quotas"></a>Quotas (クォータ)
-Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。  クォータ制限は、サポート チケットで制限の引き上げを要求することによって引き上げることができます。  クォータ制限の詳細については、次を参照してください。
+Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。  クォータ制限は、制限の引き上げを要求するサポート チケットを申請することで、迅速かつ簡単に引き上げることができます。  クォータ制限の詳細については、次を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
 
@@ -104,7 +104,6 @@ Azure クラウドを使用する最初の手順は、Azure アカウントに�
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。
-
 
 ### <a name="create-a-vm-using-the-cli"></a>CLI を使用して VM を作成する
 CLI を使用して Linux VM を作成すると、作業中のターミナルを離れることなく、すばやく VM をデプロイできます。  Web Portal で指定できるものは、コマンド ライン フラグまたはスイッチからも使用できます。  
@@ -141,6 +140,5 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 ## <a name="next-steps"></a>次のステップ
 これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。
 
-* [ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI を使用した一般的なタスクの増え続けるサンプル スクリプトの一覧を確認する](virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

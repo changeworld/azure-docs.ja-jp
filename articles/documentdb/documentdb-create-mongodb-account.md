@@ -1,29 +1,16 @@
 ---
-title: "MongoDB アプリで使用するための DocumentDB アカウントの作成 | Microsoft Docs"
-description: "このチュートリアルでは、現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントを作成する方法について説明します。"
-keywords: "MongoDB アプリケーション, MongoDB アプリ"
-services: documentdb
-author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 413f3ae1-a68e-43be-b0d7-fa2987644f3e
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/24/2016
-ms.author: anhoh
+redirect_url: https://docs.microsoft.com/azure/documentdb/documentdb-create-account
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 1c9e8d5a00445b31c81547df7bd2dbc55f8feac2
-ms.openlocfilehash: e9176ec520b05e5613eab610fbc96144e9405d07
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 21a388894278c9086b40812e5cfa7dc9b662a5ef
+ms.lasthandoff: 03/10/2017
+
 
 
 ---
 
-# <a name="create-a-documentdb-account-for-use-with-mongodb-apps"></a>MongoDB アプリで使用するための DocumentDB アカウントの作成
+# <a name="create-a-documentdb-account-with-mongodb-api"></a>MongoDB API を使用して DocumentDB アカウントを作成する
 MongoDB 向けに作成されたアプリのデータ ストアとして DocumentDB データベースを使用できるようになりました。 この機能を使用するには、Azure アカウントと DocumentDB アカウントが必要です。 このチュートリアルでは、MongoDB アプリで使用するための DocumentDB アカウントを作成するプロセスについて説明します。 
 
 MongoDB アカウントをサポートする DocumentDB は、Azure Portal を使用するか、Azure CLI で Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Azure Portal を使用して、MongoDB アカウントをサポートする DocumentDB アカウントを作成する方法について説明します。 Azure CLI で Azure Resource Manager を使用してアカウントを作成する方法については、[Azure CLI 2.0 を使用した Azure DocumentDB アカウント管理の自動化](documentdb-automation-resource-manager-cli.md)に関する記事をご覧ください。

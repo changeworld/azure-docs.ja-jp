@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 9e62ed235d872738bc1a99ad33d977745c8b2d08
-ms.openlocfilehash: 417ea0aa6315683f72239fafed0caad5c71ad2d6
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 534397378a4d83414bfe62f2dd2c57678f09c429
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -50,7 +50,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1. **[新しいプロジェクト]** を選択し、**[テンプレート]** を選択します。
+1. **[新しいプロジェクト]** をクリックし、**[テンプレート]** を選択します。
 
    ![新しいプロジェクトを作成する][create-new-project]
 2. **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
@@ -83,9 +83,9 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
 
     var recipients = new List<EmailAddress>
     {
-        new EmailAddress(){ "jeff@example.com", "Jeff Smith" },
-        new EmailAddress(){ "anna@example.com", "Anna Lidman" },
-        new EmailAddress(){ "peter@example.com", "Peter Saddow" }
+        new EmailAddress("jeff@example.com", "Jeff Smith"),
+        new EmailAddress("anna@example.com", "Anna Lidman"),
+        new EmailAddress("peter@example.com", "Peter Saddow")
     };
     msg.AddTos(recipients);
 
@@ -163,7 +163,7 @@ SendGrid では、電子メール設定と追跡設定を使用することで�
 
 次の例に、フッター フィルターとクリック追跡フィルターの使用方法を示します。
 
-### <a name="footer"></a>フッター
+### <a name="footer-settings"></a>フッターの設定
     msg.SetFooterSetting(
                          true,
                          "Some Footer HTML",

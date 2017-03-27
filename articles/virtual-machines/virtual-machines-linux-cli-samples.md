@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: ea9ee62b28069f87404b665151a51c5b73edf353
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 59dfe13e70a5a20da4965f8a698380dc78b21028
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/10/2017
 |**ネットワークの仮想マシン**||
 | [仮想マシン間のネットワーク トラフィックのセキュリティ保護](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 2 つの仮想マシン、すべての関連リソース、および内部と外部のネットワーク セキュリティ グループ (NSG) を作成します。 |
 |**仮想マシンの監視**||
-| [Operations Management Suite による VM の監視](./scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
+| [Operations Management Suite による VM の監視](./scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
 |**仮想マシンのトラブルシューティング**||
 | [VM オペレーティング システム ディスクのトラブルシューティング](./scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 1 つ目の VM からオペレーティング システム ディスクを&2; つ目の VM のデータ ディスクとしてマウントします。 |
 | | |

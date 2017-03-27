@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 48a0060edf30b53f685f25efebcb896af2c6122b
-ms.openlocfilehash: ee69cc8402cd9321d1f47ceb4be045274376f440
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: d616a8574d2087be66bc10dfdf3bf6f5a14c11fd
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -55,10 +55,26 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 
 既定では、サービス マップは、直近 10 分間の依存関係情報を表示します。  左上にある時間コントロールを使用して、マップで過去の時間範囲 (最長&1; 時間まで) を照会すると、インシデントの発生中や変更が発生する前などの過去における依存関係を表示することができます。    サービス マップのデータは、有料のワークスペースで 30 日間、無料のワークスペースでは 7 日間のあいだ保存されます。
 
-## <a name="status-badges"></a>状態バッジ
+## <a name="status-badges-and-border-coloring"></a>状態バッジと枠線の色分け
 マップ内の各サーバーの下部には、サーバーの状態情報を示す状態バッジの一覧が表示されます。  このバッジは、OMS ソリューション統合のいずれかに、サーバー関連情報がいくつかあることを示します。  バッジをクリックすると、右側のパネルに、状態に関する詳細情報が直接表示されます。  現在の可用性の状態バッジには、アラート、変更、セキュリティ、および更新が含まれています。
 
-![失敗した接続](media/oms-service-map/status-badges.png)
+状態バッジの重要度に基づいて、マシン ノードの枠線を赤 (重大)、黄 (警告)、青 (情報) に色分けすることができます。  この色は、状態バッジの中で最も重大な状態を表します。  現在の状態のインジケーターを持たないノードでは、灰色の枠線が表示されます。
+
+![状態バッジ](media/oms-service-map/status-badges.png)
+
+## <a name="role-icons"></a>ロール アイコン
+特定のプロセスは、コンピューターで特定のロール (Web サーバー、アプリケーション サーバー、データベースなど) を担います。サービス マップでは、プロセスとマシン ボックスにロール アイコンで注釈を付け、プロセスまたはサーバーが担っているロールがひとめでわかるようにします。
+
+| ロール アイコン | Description |
+|:--|:--|
+| ![Web サーバー](media/oms-service-map/role-web-server.png) | Web サーバー |
+| ![アプリ サーバー](media/oms-service-map/role-application-server.png) | アプリケーション サーバー |
+| ![データベース サーバー](media/oms-service-map/role-database.png) | データベース サーバー |
+| ![LDAP サーバー](media/oms-service-map/role-ldap.png) | LDAP サーバー |
+| ![SMB サーバー](media/oms-service-map/role-smb.png) | SMB サーバー |
+
+![ロール アイコン](media/oms-service-map/role-icons.png)
+
 
 ## <a name="failed-connections"></a>失敗した接続
 プロセスやコンピューターの失敗した接続は、クライアント システムがプロセスまたはポートのどちらのアクセスに失敗したかを示す赤色の破線でサービス マップに表示されます。  サービス マップ エージェントがデプロイされているシステムで、接続を試みたが失敗した場合、失敗した接続はそのシステムから報告されます。  サービス マップは、接続の確立に失敗した TCP ソケットを監視することで、これを測定します。  原因としては、ファイアウォール、クライアントまたはサーバーの構成の問題、あるいはリモート サービスが利用不可の状態であること、が考えられます。
@@ -158,7 +174,7 @@ Azure Site Recovery を使用していて、お使いのアプリケーション
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 サイト マップのコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-analytics/log-analytics-log-searches.md)できます。  これは、移行計画、容量の分析、探索、暫定的なパフォーマンスのトラブルシューティングといった作業に適用できます。
 
-プロセスまたはコンピューターが起動されたとき、またはサービス マップにオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに&1; 時間当たり&1; つのレコードが生成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap ARM API のマシン リソースのフィールドにマップされます。  ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap ARM API のプロセス リソースのフィールドにマップされます。  ResourceName_s フィールドは、対応する ARM リソースの名前フィールドと一致します。 注: サービス マップ機能を拡張すると、こうしたフィールドは変更される可能性があります。
+プロセスまたはコンピューターが起動されたとき、またはサービス マップにオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに&1; 時間あたり&1; つのレコードが生成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap ARM API のマシン リソースのフィールドにマップされます。  ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap ARM API のプロセス リソースのフィールドにマップされます。  ResourceName_s フィールドは、対応する ARM リソースの名前フィールドと一致します。 注: サービス マップ機能を拡張すると、こうしたフィールドは変更される可能性があります。
 
 
 個々のプロセスとコンピューターの識別に使用できる、内部生成されたプロパティがあります。

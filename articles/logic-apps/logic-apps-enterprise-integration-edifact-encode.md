@@ -1,6 +1,6 @@
 ---
-title: "Azure Logic Apps で EDIFACT メッセージをエンコードする | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack の EDIFACT エンコーダーを使用する方法"
+title: "EDIFACT メッセージをエンコードする - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps で Enterprise Integration Pack の EDIFACT メッセージ エンコーダーを使用して EDI の検証および XML の生成を行います"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,52 +15,70 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 5bc7011d7b0d22a7f8c11a2fee8d002c24d3467c
-ms.openlocfilehash: 94d120cd8a5e33733ecc39af96d2719ad59ab090
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 75eeca842cc31be6807dd6071de6d9a5c327fad3
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="get-started-with-encode-edifact-message"></a>Encode EDIFACT Message を使ってみる
-EDI およびパートナー固有のプロパティを検証する 
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをエンコードする
 
-## <a name="prereqs"></a>前提条件
+Encode EDIFACT Message コネクタでは、EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、技術確認と機能確認のいずれかまたは両方を要求したりできます。
+このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。
+
+## <a name="before-you-start"></a>開始する前に
+
+必要な項目を次に示します。
+
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
-* Encode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[パートナー](logic-apps-enterprise-integration-partners.md)、および [EDIFACT 契約](../logic-apps/logic-apps-enterprise-integration-edifact.md)の作成方法の詳細を確認してください。
+* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Encode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 
+* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>EDIFACT メッセージをエンコードする
-1. [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)。
-2. このコネクタにはトリガーがありません。 ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。  Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。  ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「EDIFACT」と入力します。  [Encode to EDIFACT message by agreement name] (契約名により EDIFACT メッセージにエンコードする) または [Encode to EDIFACT message by identities] (ID により EDIFACT メッセージにエンコードする) を選択します。
+
+1. [ロジック アプリを作成](logic-apps-create-a-logic-app.md)します。
+
+2. Encode EDIFACT Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
+
+3.    検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[契約名で EDIFACT メッセージにエンコードする]** または **[ID で EDIFACT メッセージにエンコードする]** を選択します。
    
     ![search EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
-3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
-   
+
+3. 以前に統合アカウントへの接続を作成していない場合は、ここでその接続を作成するように求められます。 接続の名前を指定し、接続する統合アカウントを選択します。
+
     ![create integration account connection](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
-4. 統合アカウントの詳細を入力します。  アスタリスクが付いているプロパティは必須です。
-   
-   | プロパティ | 詳細 |
-   | --- | --- |
-   | 接続名 * |接続の任意の名前を入力します。 |
-   | 統合アカウント * |統合アカウント名を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
-   
-    入力が完了すると、接続の詳細は次のようになります。
-   
-    ![integration account connection](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
-5. **[作成]**を選択します。
-6. 接続が作成されたことを確認します。
-   
-    ![integration account connection details](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
+
+    アスタリスクが付いているプロパティは必須です。
+
+    | プロパティ | 詳細 |
+    | --- | --- |
+    | 接続名 * |接続の任意の名前を入力します。 |
+    | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
+
+5.    完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+
+    ![integration account connection details](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
+
+    接続が作成されました。
+
+    ![integration account connection created](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>契約名による Encode EDIFACT Message
-エンコードする EDIFACT 契約名と XML メッセージを指定します。
-   
-   ![provide mandatory fields](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
+
+契約名で EDIFACT メッセージをエンコードすることを選択した場合は、**[X12 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
+
+![EDIFACT 契約名とエンコードする XML メッセージの入力](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
 #### <a name="encode-edifact-message-by-identities"></a>ID による Encode EDIFACT Message
-送信者の識別子、送信者の修飾子、受信者の識別子、および受信者の修飾子を、EDIFACT 契約で構成されているとおりに入力します。 エンコードする XML メッセージを選択します。  
-    ![provide mandatory fields](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
+
+ID で EDIFACT メッセージをエンコードすることを選択した場合は、送信者の識別子、送信者の修飾子、受信者の識別子、および受信者の修飾子を、EDIFACT 契約で構成されているとおりに入力します。 エンコードする XML メッセージを選択します。
+
+![送信者と受信者の識別子の指定、エンコードする XML メッセージの選択](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
 ## <a name="edifact-encode-details"></a>EDIFACT エンコードの詳細
-Encode EDIFACT コネクタは次の処理を行います。 
+
+Encode EDIFACT コネクタは次のタスクを実行します。 
 
 * 送信者の修飾子および識別子を受信者の修飾子および識別子と照合することで、契約を解決する
 * XML エンコード メッセージをインターチェンジ内の EDI トランザクション セットに変換して、EDI インターチェンジをシリアル化する
@@ -78,10 +96,5 @@ Encode EDIFACT コネクタは次の処理を行います。
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

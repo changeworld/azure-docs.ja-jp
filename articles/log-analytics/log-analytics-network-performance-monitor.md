@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2b427d37a144b947d8d905e8f310ea35785ddf61
-ms.openlocfilehash: f397266afa269831d3791c625342454054b86ff2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 7e9ca0c15c29fb670b742d939107bb5d4a48245c
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -61,7 +61,19 @@ ms.lasthandoff: 02/23/2017
 
 ### <a name="configure-agents"></a>エージェントの構成
 
-ICMP プロトコルを使用した代理トランザクションを検討している場合は、エージェントを構成する必要はありません。 その場合は、ソリューションの構成に着手することができます。 一方、TCP プロトコルの使用を検討している場合は、エージェントが通信できるようにコンピューターのファイアウォール ポートを開放する必要があります。 [EnableRules.ps1 PowerShell スクリプト](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)をダウンロードし、管理者特権の PowerShell ウィンドウでパラメーターを指定せずにそれを実行する必要があります。
+ICMP プロトコルを使用した代理トランザクションを検討している場合は、ICMP を確実に利用できるよう、次に示すファイアウォールの規則を有効にする必要があります。
+
+```
+netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow
+netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow
+```
+
+
+TCP プロトコルの使用を検討している場合は、エージェントが通信できるようにコンピューターのファイアウォール ポートを開放する必要があります。 [EnableRules.ps1 PowerShell スクリプト](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634)をダウンロードし、管理者特権の PowerShell ウィンドウでパラメーターを指定せずにそれを実行する必要があります。
 
 スクリプトを実行すると、ネットワーク パフォーマンス モニターに必要なレジストリ キーが作成されるほか、エージェントどうしの TCP 接続を可能にする Windows ファイアウォール規則が作成されます。 スクリプトによって作成されたレジストリ キーは、デバッグ ログとログ ファイルのパスを記録するかどうかも指定します。 また、通信で使用されるエージェント TCP ポートを定義します。 これらのキーの値は、スクリプトによって自動的に設定されるため、これらのキーを手動で変更しないようにしてください。
 
@@ -76,7 +88,10 @@ ICMP プロトコルを使用した代理トランザクションを検討して
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 1. ネットワーク パフォーマンス モニター ソリューションは、Windows Server 2008 SP 1 以降、または Windows 7 SP1 以降が実行されているコンピューターからデータを取得します。このコンピューターの要件は Microsoft Monitoring Agent (MMA) と同じです。 Windows デスクトップ/クライアント オペレーティング システム (Windows 10、Windows 8.1、Windows 8、Windows 7) で NPM エージェントを実行することもできます。
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従ってネットワーク パフォーマンス モニター ソリューションをワークスペースに追加します。  
+    >[!NOTE]
+    >Windows Server オペレーティング システムのエージェントは、代理トランザクションのプロトコルとして TCP と ICMP の両方をサポートしています。 一方、Windows クライアント オペレーティング システムのエージェントが代理トランザクションのプロトコルとしてサポートしているのは ICMP のみです。
+
+2. ネットワーク パフォーマンス モニター ソリューションをワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。  
    ![ネットワーク パフォーマンス モニターのシンボル](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 3. OMS ポータルで、**[ネットワーク パフォーマンス モニター]** という名前の新しいタイルが *"このソリューションにはさらに構成が必要です"* というメッセージと共に表示されます。 ソリューションを構成し、エージェントによって検出されたサブネットワークとノードに基づいてネットワークを追加する必要があります。 **[ネットワーク パフォーマンス モニター]** をクリックし、既定のネットワークの構成を開始します。  
    ![追加の構成が必要なソリューション](./media/log-analytics-network-performance-monitor/npm-config.png)
@@ -290,6 +305,11 @@ Windows を実行しているコンピューターのファイアウォール規
 
    次の画像では、赤色のパスとホップを確認することで、問題点の根本原因がネットワークの特定のセクションにあることがはっきりとわかります。 トポロジ マップのノードをクリックすると、FQDN や IP アドレスなど、ノードのプロパティが表示されます。 また、ホップをクリックするとその IP アドレスが表示されます。  
    ![異常なトポロジ - パスの詳細の例](./media/log-analytics-network-performance-monitor/npm-investigation06.png)
+
+## <a name="provide-feedback"></a>フィードバックの提供
+
+- **UserVoice** - ネットワーク パフォーマンス モニターの機能について皆さんのアイデアを投稿できます。 [UserVoice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)をご覧ください。
+- **コーホートへの参加** - Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 ご協力いただける場合は、こちらの[簡単なアンケート](https://aka.ms/npmcohort)への記入をお願いいたします。
 
 ## <a name="next-steps"></a>次のステップ
 * 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](log-analytics-log-searches.md)します。

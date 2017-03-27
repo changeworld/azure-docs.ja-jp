@@ -17,9 +17,9 @@ ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
-ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cb631a1bcbe73c18b06e247b29056a83cfa61a46
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/01/2017
 
 * 有効な Azure サブスクリプション 有効なサブスクリプションがない場合は、[azure.com](https://azure.microsoft.com/) から無償の試用版を取得できます。
 * Azure リソース グループを使用する職場または学校の ID 。 個人のアカウントをお持ちの場合で、Microsoft id を使用してログインする場合 [個人の アカウントから作業の ID を作成する](virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができます。
-* クライアント オペレーティング システムに応じて、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)。
+* クライアント オペレーティング システムに応じて、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または [Mac、Linux、Windows 用の Azure CLI](../cli-install-nodejs.md)。
 * [OpenSSL](https://www.openssl.org/)。 OpenSSL を使用して、必要な証明書が生成されます。
 * [Git Bash](https://git-scm.com/)などの Git クライアント。
 * サンプル アプリケーションをテストするには、DNS サーバーが必要です。 任意の DNS サーバーまたはワイルドカードの A レコードをサポートするサービスを使用することもできます。
@@ -250,7 +250,7 @@ Deis クラスタをコントロールする **deisctl** が必要となりま�
 [Azure CLI の使い方][azure-command-line-tools]  
 [Azure リソース マネージャーでの Azure PowerShell の使用][powershell-azure-resource-manager]  
 
-[azure-command-line-tools]: ../xplat-cli-install.md
+[azure-command-line-tools]: ../cli-install-nodejs.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 

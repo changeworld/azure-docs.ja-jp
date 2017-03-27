@@ -3,7 +3,7 @@ title: "Azure App Service での API Apps の認証と承認 | Microsoft Docs"
 description: "Azure App Service が API Apps 向けに提供している認証サービスと承認サービスについて説明します。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: d620b53a-5a6f-41c9-84c7-f7ef5ff02ae7
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
@@ -77,7 +77,7 @@ App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止�
 
 認証を構成する方法の詳細については、「 [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)」を参照してください。 この記事は API アプリだけでなくモバイル アプリにも適用され、他の認証プロバイダーに関する他の記事へのリンクが記載されています。
 
-## <a name="a-idinternala-service-account-authentication"></a><a id="internal"></a> サービス アカウントの認証
+## <a id="internal"></a> サービス アカウントの認証
 App Service 認証では、内部的なシナリオ (API アプリから別の API アプリを呼び出すなど) を処理します。 このシナリオでは、エンド ユーザーの資格情報ではなく、サービス アカウントの資格情報を使用して、トークンを取得します。 サービス アカウントは、Azure Active Directory では *サービス プリンシパル* とも呼ばれ、このようなアカウントでの認証は、サービス間シナリオとも呼ばれます。 
 
 サービス間シナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを提供します。 クライアント ID とクライアント シークレットを AAD アプリケーションから提供して、トークンを取得します。 Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。 このシナリオについて、ASP.NET API アプリを使った例が、 [API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。

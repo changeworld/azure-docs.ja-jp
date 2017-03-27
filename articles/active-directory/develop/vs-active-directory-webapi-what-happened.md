@@ -12,11 +12,12 @@ ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
+ms.date: 03/01/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: aa055ead3dc039745f48f268fe456ae5dab5bf36
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8ca3234e54d8736aa187195640a103ac6eb145e7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -53,7 +54,7 @@ ms.openlocfilehash: aa055ead3dc039745f48f268fe456ae5dab5bf36
 認証スタートアップ クラス **App_Start/Startup.Auth.cs** が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。
 
 ### <a name="startup-code-was-added-to-your-project"></a>スタートアップ コードがプロジェクトに追加された
-既にプロジェクトに Startup クラスがある場合、**Configuration`ConfigureAuth(app)` メソッドが更新されて ** 呼び出しが含まれています。 それ以外の場合は、Startup クラスがプロジェクトに追加されました。
+既にプロジェクトに Startup クラスがある場合、**Configuration`ConfigureAuth(app)` メソッドが更新されて** 呼び出しが含まれています。 それ以外の場合は、Startup クラスがプロジェクトに追加されました。
 
 ### <a name="your-appconfig-or-webconfig-file-has-new-configuration-values"></a>app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
 次の構成エントリが追加されました。
@@ -107,11 +108,7 @@ NuGet パッケージのリファレンスが削除されるほか、ファイ�
 ### <a name="your-azure-active-directory-app-was-updated"></a>Azure Active Directory アプリが更新された
 Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ida:Password* として使用される追加のキーが作成されました。
 
-[Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
+## <a name="next-steps"></a>次のステップ
+- [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
 

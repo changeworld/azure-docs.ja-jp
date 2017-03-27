@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 9841096da2d16e35878a1c0013a33e9f051e5932
-ms.openlocfilehash: 71b75afc7a31c875672b53c2b2b106220b8c36dd
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6a31b039825acf3033fa58820bb800f53a355ffb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -46,7 +46,7 @@ VM との通信をサポートする次のリソースを作成します。
 
 ## <a name="network-interfaces"></a>ネットワーク インターフェイス
 
-[ネットワーク インターフェイス (NIC)](../virtual-network/virtual-network-network-interface-overview.md) とは、VM と仮想ネットワーク (VNet) の間の相互接続です。 VM には少なくとも&1; つの NIC が必要ですが、作成する VM のサイズによっては複数あってもかまいません。 各 VM サイズでサポートされている NIC の数については、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。 
+[ネットワーク インターフェイス (NIC)](../virtual-network/virtual-network-network-interface.md) とは、VM と仮想ネットワーク (VNet) の間の相互接続です。 VM には少なくとも&1; つの NIC が必要ですが、作成する VM のサイズによっては複数あってもかまいません。 各 VM サイズでサポートされている NIC の数については、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。 
 
 複数の NIC を備えた VM を作成したい場合は、少なくとも&2; つの NIC を備えた VM を作成する必要があります。  作成後、VM サイズでサポートされている数まで、さらに NIC を追加できます。ただし、その VM サイズでサポートされている NIC の数に関係なく、作成時の NIC が&1; つのみの VM には NIC を追加することはできません。 
 
@@ -180,3 +180,4 @@ VM にはデプロイ時に IP アドレスが割り当てられます。 複数
 - [ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)を構成する方法について確認します。 
 - [VNet 間の接続](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)を構成する方法について確認します。
 - [ルートのトラブルシューティング](../virtual-network/virtual-network-routes-troubleshoot-portal.md)の方法について確認します。
+

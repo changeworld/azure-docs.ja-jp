@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 7d804c93933fd53b0a74696391e3ade228e66560
-ms.openlocfilehash: 4895bd1a47a918df8029ef0d2e0343d9b0da0903
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: cdd446dbacb531c3778d232446231bfae08c74ac
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -26,8 +26,8 @@ ms.lasthandoff: 02/27/2017
 この記事では、ホスト名の設定、インストールされているパッケージの更新、およびユーザー アカウントの管理を行う cloud-init スクリプトを作成する方法について説明します。  cloud-init スクリプトは、VM の作成時に Azure CLI から呼び出します。  この記事では以下が必要です。
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
-* `azure login` でログインした [Azure CLI](../xplat-cli-install.md)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である* *"必要があります"。
+* `azure login` でログインした [Azure CLI](../cli-install-nodejs.md)。
+* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である**"必要があります"。
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。

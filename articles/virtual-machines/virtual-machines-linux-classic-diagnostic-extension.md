@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 11a1f6ea289db38aeb8c2fff2c9b0e6b1f0f044c
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e43a3920da0baafa1be0d3a9a8596f19bf7ebc3e
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +46,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 ## <a name="enable-the-extension"></a>拡張機能を有効にする
 この拡張機能は、 [Azure ポータル](https://portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "URL to the Windows blog"/) に従ってください。
+システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
 
 この記事では、Azure CLI コマンドを使用して、拡張機能を有効にして構成する方法を説明します。 これにより、ストレージ テーブルからデータを直接読み込んで表示することができます。
 
@@ -54,7 +55,7 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 ## <a name="prerequisites"></a>前提条件
 * **Azure Linux エージェント バージョン 2.0.6 またはそれ以降**。
   大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。 **WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。 VM が 2.0.6 より前のバージョンを実行している場合は、 [GitHub のこちらの説明](https://github.com/Azure/WALinuxAgent "説明") に従って更新できます。
-* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../xplat-cli-install.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
+* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
   
   * ヘルプ情報の詳細については、 **azure vm extension set --help** を実行します。
   * Azure にサインインするには、 **azure login** を実行します。
@@ -138,8 +139,8 @@ Rsyslog データは既定で常に収集されます。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
-1. Visual Studio のサーバー エクスプローラー。 ストレージ アカウントに移動します。 VM を約 5 分間実行した後に、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」が表示されます。 データを表示するには、テーブル名をダブルクリックします。
-2. [Azure ストレージ エクスプローラー](https://azurestorageexplorerで指定されているすべてのシステム データ。codeplexで指定されているすべてのシステム データ。com/ "Azure ストレージ エクスプローラー")で指定されているすべてのシステム データ。
+1. Visual Studio のサーバー エクスプローラー。 ストレージ アカウントに移動します。 VM を約&5; 分間実行した後に、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」が表示されます。 データを表示するには、テーブル名をダブルクリックします。
+2. [Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")で指定されているすべてのシステム データ。
 
 ![image](./media/virtual-machines-linux-classic-diagnostic-extension/no1.png)
 
@@ -147,10 +148,5 @@ Rsyslog データは既定で常に収集されます。
 
 ## <a name="known-issues"></a>既知の問題
 * Linux 診断拡張機能の最新バージョン (2.3) の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

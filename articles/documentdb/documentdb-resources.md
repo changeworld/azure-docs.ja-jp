@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB 階層型リソース モデルと概念 | Microsoft Docs"
+title: "Azure DocumentDB のリソース モデルと概念 | Microsoft Docs"
 description: "DocumentDB 階層型のデータベース、コレクション、ユーザー定義関数 (UDF)、ドキュメント、リソース管理アクセス許可などについて説明します。"
 keywords: "階層型モデル, documentdb, azure, Microsoft azure"
 services: documentdb
@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2017
+ms.date: 03/14/2017
 ms.author: anhoh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
-ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0c62fc01947e0f2e4b0e45d176d5af04c6250fa8
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="documentdb-hierarchical-resource-model-and-concepts"></a>DocumentDB 階層型リソース モデルと概念
+# <a name="documentdb-hierarchical-resource-model-and-core-concepts"></a>DocumentDB 階層型リソース モデルと主要な概念
 DocumentDB が管理するデータベースのエンティティを **リソース**と呼びます。 各リソースは、論理 URI によって一意に識別されます。 リソースを対話的に扱う際は、標準の HTTP 動詞、要求/応答ヘッダー、状態コードを使用します。 
 
 この記事を読むと、次の質問の答えを見つけることができます。
@@ -160,7 +161,7 @@ DocumentDB データベースは、次の図に示すように、1 つ以上の�
 ![データベース アカウントとコレクションの階層型][2]  
 **データベースはユーザーとコレクションの論理コンテナーです**
 
-データベースに含めることができる、コレクションごとにパーティション分割されるドキュメント ストレージ数は事実上無制限です。ここでは、内包されるドキュメントに対するトランザクション ドメインが構成されます。 
+1 つのデータベースには、実質的には無制限のコレクション内にパーティション分割されたドキュメント ストレージを含めることができます。
 
 ### <a name="elastic-scale-of-a-documentdb-database"></a>DocumentDB データベースの Elastic scale
 DocumentDB データベースは、既定で高い柔軟性を持ち、数 GB から数ペタバイトに上る SSD ベースのドキュメント ストレージとプロビジョニング済みスループットが用意されています。 
@@ -174,7 +175,7 @@ DocumentDB データベースはユーザーのコンテナーでもあります
 DocumentDB リソース モデルの他のリソースと同様に、データベースも [Azure DocumentDB REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) や任意の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成、置換、削除、読み取り、または列挙が簡単にできます。 DocumentDB は、データベース リソースのメタデータの読み取りや照会で強力な一貫性を保証します。 データベースを削除すると、含まれるすべてのコレクションやユーザーに自動的にアクセスできなくなります。   
 
 ## <a name="collections"></a>コレクション
-DocumentDB コレクションは JSON ドキュメントのコンテナーです。 また、コレクションはトランザクションとクエリのスケールの単位でもあります。 
+DocumentDB コレクションは JSON ドキュメントのコンテナーです。 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>弾力性のある SSD ベースのドキュメント ストレージ
 コレクションは性質上弾力性があり、ドキュメントを追加または削除すると自動的に拡大または縮小します。 コレクションは論理リソースであり、1 つ以上の物理パーティションまたはサーバーにまたがることができます。 コレクション内のパーティション数は、ストレージのサイズやコレクションのプロビジョニング済みスループットに基づいて DocumentDB によって決定されます。 DocumentDB のすべてのパーティションには固定された量の SSD を使用したストレージが関連付けられ、またパーティションは可用性を高めるためにレプリケートされます。 パーティションの管理は Azure DocumentDB で完全に行われるため、複雑なコードを記述してパーティションを管理する必要がありません。 DocumentDB コレクションは、ストレージとスループットに関して **事実上制限がありません** 。 
@@ -205,7 +206,7 @@ DocumentDB クエリ モデルは、機能、効率、簡潔さのバランス�
 > 
 > 
 
-### <a name="multi-document-transactions"></a>マルチドキュメント トランザクション
+## <a name="multi-document-transactions"></a>マルチドキュメント トランザクション
 データベース トランザクションは、データの同時変更に対応する、安全で予測可能なプログラミング モデルを提供します。 RDBMS でビジネス ロジックを記述する従来の方法は、**ストアド プロシージャ**と**トリガー**のいずれかまたは両方を記述し、トランザクション実行のためにそれをデータベース サーバーに送信します。 RDBMS では、アプリケーション プログラマーは、次の&2; 種類の異なるプログラミング言語を扱う必要があります。 
 
 * (非トランザクション) アプリケーション プログラミング言語 (例: JavaScript、Python、C#、Java など)

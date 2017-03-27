@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: f517a649a6c6aa65b350767bc66cf4d60c7988b5
-ms.openlocfilehash: 9a114e954d59dcecaf3310e024428770bc4a2349
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9d9c56697a022fac2ad84b7688445cad3e489658
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -64,33 +64,13 @@ Azure 仮想マシン (VM) をバックアップするには、事前に&3; つ�
 ## <a name="create-a-backup-vault-for-a-vm"></a>VM 用のバックアップ資格情報コンテナーの作成
 バックアップ コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。 バックアップ コンテナーには、バックアップ対象の仮想マシンに適用されるバックアップ ポリシーも含まれています。
 
+> [!IMPORTANT]
+> 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。 既にあるバックアップ コンテナーは引き続きサポートされ、[Azure PowerShell を使用してバックアップ コンテナーを作成](./backup-client-automation-classic.md#create-a-backup-vault)することが可能です。 ただし将来的な機能強化は Recovery Services コンテナーに限定されるため、Microsoft では、すべてのデプロイに関して Recovery Services コンテナーを作成することを推奨しています。
+
+
 次の図は、さまざまな Azure Backup エンティティの関係を示しています。    ![Azure Backup のエンティティとの関係](./media/backup-azure-vms-prepare/vault-policy-vm.png)
 
-バックアップ資格情報コンテナーを作成するには:
 
-1. [Azure ポータル](http://manage.windowsazure.com/)にサインインします。
-2. Azure Portal で、**[新規]** > **[ハイブリッド統合]** > **[Backup]** の順にクリックします。 **[バックアップ]**をクリックすると、クラシック ポータルに自動的に切り替わります (「注」の後の図を参照)。
-
-    ![Ibiza ポータル](./media/backup-azure-vms-prepare/Ibiza-portal-backup01.png)
-
-   > [!NOTE]
-   > サブスクリプションがクラシック ポータルで最後に使用されていた場合、クラシック ポータルでそのサブスクリプションが開いていることがあります。 このイベントでは、Backup コンテナーを作成するために、**[新規]** > **[Data Services]** > **[Recovery Services]** > **[Backup コンテナー]** > **[簡易作成]** の順にクリックします (下図を参照)。
-   >
-   >
-
-    ![バックアップ資格情報コンテナーの作成](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
-3. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
-4. **[リージョン]**ボックスで、コンテナーのリージョンを選択します。 資格情報コンテナーは、保護する仮想マシンと同じリージョンにある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンでバックアップ資格情報コンテナーを作成する必要があります。 バックアップ データを格納するストレージ アカウントを指定する必要はありません。バックアップ資格情報コンテナーと Azure Backup サービスはこれを自動的に処理します。
-5. **[サブスクリプション]** で、バックアップ コンテナーに関連付けるサブスクリプションを選択します。 組織アカウントが複数の Azure サブスクリプションに関連付けられている場合にのみ、複数の選択肢が表示されます。
-6. **[資格情報コンテナーの作成]**をクリックします。 バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。 ポータルの下部にある状態通知を監視します。
-
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-prepare/creating-vault.png)
-7. コンテナーが正常に作成されたことを確認するメッセージが表示されています。 **[Recovery Services]** ページに、コンテナーが **[アクティブ]** と表示されます。 コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。 詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#create-a-recovery-services-vault)」をご覧ください。
-
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-prepare/backup_vaultslist.png)
-8. バックアップ資格情報コンテナーをクリックして **[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。
-
-    ![ダッシュボード ページの仮想マシンのバックアップ手順](./media/backup-azure-vms-prepare/vmbackup-instructions.png)
 
 ## <a name="network-connectivity"></a>ネットワーク接続
 拡張機能が VM スナップショットを管理するためには、Azure のパブリック IP アドレスへの接続が必要です。 適切なインターネット接続を利用できない場合、VM からの HTTP 要求はタイムアウトになり、バックアップ操作は失敗します。 (たとえば、ネットワーク セキュリティ グループ (NSG) を使用して) デプロイにアクセス制限が適用されている場合は、次のいずれかのオプションを選択して、バックアップ トラフィックの明確なパスを指定する必要があります。

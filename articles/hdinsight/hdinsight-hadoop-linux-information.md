@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
-ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 207eb60a359be1d9d9b68a92ac0c8255e7217a97
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -51,13 +51,13 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-**PASSWORD** は管理者アカウントのパスワードに、**CLUSTERNAME** はクラスターの名前に置き換えます。 これで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
+**PASSWORD** は管理者アカウントのパスワードに、**CLUSTERNAME** はクラスターの名前に置き換えます。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
 
-特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次の方法を利用します。
+特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次のコマンドを利用します。
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-この要求で、サービスの説明が記載された JSON ドキュメントが返されます。jq により、ホストの `host_name` 値のみが引き出されます。
+このコマンドで、サービスの説明が記載された JSON ドキュメントが返されます。jq により、ホストの `host_name` 値のみが引き出されます。
 
 ## <a name="remote-access-to-services"></a>サービスへのリモート アクセス
 
@@ -68,7 +68,7 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
     認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
     > [!IMPORTANT]
-    > クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。 これは内部ドメイン名で、パブリックではないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生する可能性があります。
+    > クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。 内部ドメイン名はパブリックにアクセスできないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生する可能性があります。
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
@@ -96,25 +96,25 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
 * **2.2.4.9-1**: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号はここに記載されたものと異なる場合があります。
-* **current**: このディレクトリには、**2.2.4.9-1** ディレクトリ下のディレクトリへのリンクが含まれており、(変わる可能性がある) バージョン番号を、ファイルへのアクセスのたびに入力する手間を省くために存在します。
+* **current**: このディレクトリには、**2.2.4.9-1** ディレクトリ下のサブディレクトリへのリンクが含まれています。 このディレクトリは、(変わる可能性のある) バージョン番号をファイルにアクセスするたびに入力しなくて済むように存在します。
 
-サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システム (HDFS) または Azure Blob ストレージの `/example` または `/HdiSamples` にあります。
+サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 
-## <a name="hdfs-blob-storage-and-data-lake-store"></a>HDFS、Blob ストレージ、および Data Lake Store
+## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS、Azure Storage、Data Lake Store
 
-ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。 これは効率的である一方、コンピューティング リソースが時間または分単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
+ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。 ローカル ストレージの使用は効率的である一方、コンピューティング リソースが時間または分単位で課金されるクラウドベースのソリューションではコストが高くなります。
 
-HDInsight は、既定のストアとして Azure Blob ストレージまたは Azure Data Lake Store のいずれかを使用します。 これらには次のような利点があります。
+HDInsight では、既定のストアとして Azure Data Lake Store または Azure Storage の BLOB が使用されます。 これらのサービスには次のような利点があります。
 
 * 低コストの長期ストレージ
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
 
-> [!IMPORTANT]
-> Blob ストレージは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。
->
-> 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
+> [!WARNING]
+> __汎用__の Azure Storage アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
 
-Azure Storage または Data Lake Store を使用している場合、通常は HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Blob ストレージまたは Data Lake Store) に関係なく、そのフォルダー内のファイルの一覧を表示します。
+Azure Storage アカウントは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
+
+Azure Storage または Data Lake Store を使用している場合、HDInsight からデータにアクセスするときに特別な処理を行う必要はありません。 たとえば、次のコマンドは、`/example/data` フォルダーの保存場所 (Azure Storage または Data Lake Store) に関係なく、そのフォルダー内のファイルの一覧を表示します。
 
     hdfs dfs -ls /example/data
 
@@ -122,7 +122,7 @@ Azure Storage または Data Lake Store を使用している場合、通常は 
 
 いくつかのコマンドでは、ファイルにアクセスするときに、URI の一部としてスキームを指定する必要があります。 たとえば、Storm-HDFS コンポーネントでは、スキームを指定する必要があります。 既定ではない記憶域 (記憶域クラスターに "追加の" ストレージとして追加した記憶域) を使用する場合は、URI の一部として常にスキームを使用する必要があります。
 
-__Blob ストレージ__ を使用する場合、スキームには次のいずれかを指定できます。
+__Azure Storage__ を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `wasb:///`: 暗号化されていない通信を使用して既定のストレージにアクセスします。
 
@@ -130,7 +130,7 @@ __Blob ストレージ__ を使用する場合、スキームには次のいず�
 
 * `wasbs://<container-name>@<account-name>.blob.core.windows.net/`: 既定以外のストレージ アカウントを使用して通信するときに使用します  (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Data Lake Store__ を使用する場合、スキームには次のいずれかを指定できます。
+__Data Lake Store__ を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `adl:///`: クラスターの既定の Data Lake Store にアクセスします。
 
@@ -150,7 +150,7 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 > [!NOTE]
 > このコードは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 クラスターの作成後に変更された値を取得する場合は、構成のバージョンを一覧表示した後で最新の構成を取得することが必要になる場合があります。
 
-次のテキストのような値が返されます。
+このコマンドにより、次のような値が返されます。
 
 * Azure Storage アカウントを使用している場合: `wasbs://<container-name>@<account-name>.blob.core.windows.net`
 
@@ -160,17 +160,17 @@ Ambari を使用して、クラスターの既定のストレージ構成を取�
 
     ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
-    次のホスト名が返されます。`<data-lake-store-account-name>.azuredatalakestore.net`.
+    このコマンドからは、ホスト名として `<data-lake-store-account-name>.azuredatalakestore.net` が返されます。
 
     HDInsight のルートであるストア内のディレクトリを取得するには、次の REST 呼び出しを使用します。
 
     ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
 
-    次のようなパスが返されます。`/clusters/<hdinsight-cluster-name>/`
+    このコマンドにより、`/clusters/<hdinsight-cluster-name>/` のようなパスが返されます。
 
 次のように Azure Portal を使用して、ストレージ情報を検索することもできます。
 
-1. [Azure ポータル](https://portal.azure.com/)で HDInsight クラスターを選択します。
+1. [Azure Portal](https://portal.azure.com/) で HDInsight クラスターを選択します。
 
 2. **[プロパティ]** セクションの **[ストレージ アカウント]** を選択します。 クラスターのストレージ情報が表示されます。
 
@@ -203,7 +203,7 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
 
-## <a name="a-namescalingascaling-your-cluster"></a><a name="scaling"></a>クラスターのスケーリング
+## <a name="scaling"></a>クラスターのスケーリング
 
 クラスターのスケール設定機能を使用すると、クラスターによって使用されるデータ ノードの数を、クラスターを削除して再作成することなく、変更できます。 クラスターで他のジョブまたはプロセスを実行している間にスケーリング操作を実行できます。
 
@@ -240,15 +240,15 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
 HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
 
-* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md#scale-clusters)
 * [Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md#scale-clusters)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hue (またはその他の Hadoop コンポーネント) のインストール方法
 
-HDInsight は、管理されたサービスです。つまり、問題が検出された場合、Azure によってクラスター内のノードは自動的に破棄されて、再プロビジョニングされる可能性があります。 そのため、クラスター ノードにコンポーネントを直接、手動でインストールすることは推奨されません。 代わりに、次をインストールする必要がある場合は [HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster.md)を使用します。
+HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後は維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
 
-* Spark や Hue など、サービスや Web サイト。
-* クラスターの複数のノードで構成変更を必要とするコンポーネント。 たとえば、必要な環境変数、ログ ディレクトリの作成、構成ファイルの作成。
+* サービスや Web サイト (Spark、Hue など) をインストールして構成する。
+* クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。 たとえば、必要な環境変数、ログ ディレクトリの作成、構成ファイルの作成。
 
 スクリプト アクションとは、クラスターのプロビジョニング中に実行される Bash スクリプトで、クラスター上に追加のコンポーネントをインストールし、構成するために使用できます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
 
@@ -269,9 +269,9 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
 >
-> 一致する jar ファイルがあれば、そのパスが返されます。
+> このコマンドからは、一致する jar ファイルのパスが返されます。
 
-クラスターがスタンドアロン jar ファイルとしてあるバージョンのコンポーネントを提供するが、別のバージョンを希望する場合、クラスターに新しいバージョンのコンポーネントをアップロードし、ジョブでそれを試すことができます。
+クラスターに付属するバージョンとは異なるバージョンが必要になった場合は、新しいバージョンのコンポーネントをアップロードして、実際のジョブから使用してください。
 
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。

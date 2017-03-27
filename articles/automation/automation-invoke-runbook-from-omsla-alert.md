@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 4ce5ad30d79e92a11231313fe13dd42b94fc2aa4
-ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 8460ed6be3e922fb85f46982662d44eed21dda7c
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -35,7 +36,7 @@ ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>webhook を使用して Runbook を呼び出す
 
-webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#creating-an-alert-rule)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を確認して従い、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
+webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#creating-alert-rules)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を確認して従い、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
 
 ## <a name="calling-a-runbook-directly"></a>直接 Runbook を呼び出す
 
@@ -52,14 +53,14 @@ Log Analytics アラートから Runbook を呼び出す&2; つの方法には�
           [Parameter (Mandatory=$true)]  
           [object] $WebhookData  
          )
-  
+
 *  WebhookData を PowerShell オブジェクトに変換するためのコードが必要です。
 
     `$SearchResults = (ConvertFrom-Json $WebhookData.RequestBody).SearchResults.value`
 
     *$SearchResults* はオブジェクトの配列になります。各オブジェクトには、1 つの検索結果からの値を含むフィールドが含まれています。
 
-### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>webhook オプションと Runbook オプションの間の WebhookData の不一致 
+### <a name="webhookdata-inconsistencies-between-the-webhook-option-and-runbook-option"></a>webhook オプションと Runbook オプションの間の WebhookData の不一致
 
 * webhook を呼び出すようにアラートを構成する際は、Runbook 用に作成した webhook URL を入力し、**[Test Webhook (webhook のテスト)]** をクリックします。  結果として Runbook に送信された WebhookData には、*.SearchResult* または *.SearchResults* が含まれていません。
 
@@ -68,7 +69,7 @@ Log Analytics アラートから Runbook を呼び出す&2; つの方法には�
 
 その結果、上記のコード例では、アラートが webhook を呼び出した場合は *.SearchResult* を取得し、アラートが直接 Runbook を呼び出した場合は *.SearchResults* を取得する必要があります。
 
-## <a name="example-walkthrough"></a>例のチュートリアル 
+## <a name="example-walkthrough"></a>例のチュートリアル
 
 ここでは、次のグラフィカルな Runbook の例を使用してこのしくみを説明します。この Runbook は Windows サービスを開始します。<br><br> ![Windows サービスのグラフィカルな Runbook の開始](media/automation-invoke-runbook-from-omsla-alert/automation-runbook-restartservice.png)<br>
 
@@ -90,9 +91,4 @@ Runbook コード アクティビティ **Get Service Name from LA** は、JSON 
 * Log Analytics のアラートの詳細とアラートの作成方法については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。
 
 * webhook を使用して Runbook をトリガーする方法を理解するには、「[Azure Automation Webhook](automation-webhooks.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

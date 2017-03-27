@@ -1,6 +1,6 @@
 ## <a name="prerequisites"></a>前提条件
 
-まだない場合は、[Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と、[Azure アカウント](../articles/xplat-cli-connect.md)に接続された [Azure CLI 1.0](../articles/xplat-cli-install.md) を入手できます。 次のコマンドを実行して、Azure CLI が Resource Manager モードになっていることを確認します。
+まだない場合は、[Azure サブスクリプションの無料試用版](https://azure.microsoft.com/pricing/free-trial/)と、[Azure アカウント](../articles/xplat-cli-connect.md)に接続された [Azure CLI 1.0](../articles/cli-install-nodejs.md) を入手できます。 次のコマンドを実行して、Azure CLI が Resource Manager モードになっていることを確認します。
 
 ```azurecli
 azure config mode arm

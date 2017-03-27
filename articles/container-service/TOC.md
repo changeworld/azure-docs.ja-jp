@@ -15,6 +15,7 @@
 ### [DC/OS パブリック アクセスを有効にする](container-service-enable-public-access.md)
 ### [DC/OS コンテナーを負荷分散する](container-service-load-balancing.md)
 ### [DC/OS のアプリ/ユーザー固有のオーケストレーター](container-service-application-specific-marathon.md)
+### [ファイル共有を追加する](container-service-dcos-fileshare.md)
 ### DC/OS の監視
 #### [ELK で監視する](container-service-monitoring-elk.md)
 #### [OMS で監視する](container-service-monitoring-oms.md)

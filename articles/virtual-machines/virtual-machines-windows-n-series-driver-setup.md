@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/30/2016
+ms.date: 03/10/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 57d7475db8183cfaad017fc934210d0481868d5f
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2dbd88a2a83643130c336253d2c7a5a21d73671e
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="set-up-gpu-drivers-for-n-series-windows-vms"></a>N シリーズ Windows VM の GPU ドライバーの設定
-Windows Server を実行する Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 [Linux VM](virtual-machines-linux-n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) にも適用されます。
+# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server を実行している N シリーズ VM の GPU ドライバーをセットアップする
+Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 ドライバーのセットアップ情報は、[Linux VM](virtual-machines-linux-n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
 
-基本的な仕様、ストレージの容量、ディスクの詳細については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
-
+基本的な仕様、ストレージの容量、ディスクの詳細については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 「[N シリーズ VM の一般的な考慮事項](#general-considerations-for-n-series-vms)」も参照してください。
 
 
 
@@ -35,25 +34,32 @@ Windows Server を実行する Azure N シリーズ VM の GPU 機能を利用�
 
 リモート デスクトップで N シリーズの各 VM に接続します。 ご使用の Windows オペレーティング システムに、サポートされるドライバーをダウンロード、抽出、インストールします。 
 
-### <a name="nvidia-grid-drivers-for-nv-vms"></a>NV VM 用の NVIDIA GRID ドライバー
-
-* [Windows Server 2016](https://go.microsoft.com/fwlink/?linkid=836843) (.zip)
-
-* [Windows Server 2012 R2](https://go.microsoft.com/fwlink/?linkid=836844) (.zip)
-
-### <a name="nvidia-tesla-drivers-for-nc-vms"></a>NC VM 用の NVIDIA Tesla ドライバー
-
-* [Windows Server 2016](https://go.microsoft.com/fwlink/?linkid=836841) (.zip)
-
-* [Windows Server 2012 R2](https://go.microsoft.com/fwlink/?linkid=836842) (.zip)
+### <a name="nvidia-tesla-drivers-for-nc-vms-tesla-k80"></a>NC VM 用の NVIDIA Tesla ドライバー (Tesla K80)
 
 
 
-## <a name="verify-driver-installation"></a>ドライバーのインストールの確認
+| OS | ドライバーのバージョン |
+| -------- |------------- |
+| Windows Server 2016 | [376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe) |
+| Windows Server 2012 R2 | [376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe) |
+
+
+### <a name="nvidia-grid-drivers-for-nv-vms-tesla-m60"></a>NV VM 用の NVIDIA GRID ドライバー (Tesla M60)
+
+| OS | ドライバーのバージョン |
+| -------- |------------- |
+| Windows Server 2016 | [369.71](https://go.microsoft.com/fwlink/?linkid=836842) (.zip) |
+| Windows Server 2012 R2 | [369.30](https://go.microsoft.com/fwlink/?linkid=836841) (.zip)  |
+
+> [!NOTE]
+> ここで示されているドライバーのダウンロード リンクは、公開時現在のものです。 最新のドライバーについては、[NVIDIA](http://www.nvidia.com/) Web サイトを参照してください。
+>
+
+## <a name="verify-gpu-driver-installation"></a>GPU ドライバーのインストールの確認
 
 Azure NV VM では、ドライバーのインストール後に再起動が必要です。 NC VM では、再起動は必要ありません。
 
-ドライバーのインストールはデバイス マネージャーで確認できます。 次は、Azure NC VM で正しく構成された K80 カードの例です。
+ドライバーのインストールはデバイス マネージャーで確認できます。 次は、Azure NC VM で正しく構成された Tesla K80 カードの例です。
 
 ![GPU ドライバーのプロパティ](./media/virtual-machines-windows-n-series-driver-setup/GPU_driver_properties.png)
 
@@ -61,13 +67,31 @@ GPU デバイスの状態を照会するには、ドライバーとともにイ�
 
 ![NVIDIA デバイスの状態](./media/virtual-machines-windows-n-series-driver-setup/smi.png)  
 
+## <a name="rdma-network-for-nc24r-vms"></a>NC24r VM の RDMA ネットワーク
+
+RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r VM で有効にすることができます。 RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールするには、HpcVmDrivers 拡張機能を追加する必要があります。 VM 拡張機能を NC24r VM に追加するには、Azure Resource Manager 用の [Azure PowerShell](/powershell/azureps-cmdlets-docs) コマンドレットを使用します。
+
+> [!NOTE]
+> 現時点では、NC24r VM 上で RDMA ネットワークをサポートしているのは、Windows Server 2012 R2 のみです。
+> 
+
+米国西部リージョンの既存の RDMA 対応 VM (myVM) に HpcVMDrivers 拡張機能の最新バージョン 1.1 をインストールするには:
+  ```PowerShell
+  Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
+  ```
+  詳細については、「[Windows 用の仮想マシン拡張機能とその機能](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+
+RDMA ネットワークは、[Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) または Intel MPI 5.x で実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 
+
+[!INCLUDE [virtual-machines-n-series-considerations](../../includes/virtual-machines-n-series-considerations.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 * N シリーズ VM の NVIDIA GPU の詳細については、次のサイトをご覧ください。
     * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (Azure NC VM 用)
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (Azure NV VM 用)
 
-* NVIDIA Tesla GPU 向けに GPU アクセラレータを使用したアプリケーションを構築する開発者は、[CUDA Toolkit 8](https://developer.nvidia.com/cuda-downloads) をダウンロードしてインストールできます。
+* NVIDIA Tesla GPU 向けに GPU アクセラレータを使用したアプリケーションを構築する開発者は、[Windows Server 2016](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_win10-exe) または [Windows Server 2012 R2](https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_windows-exe) 用の CUDA Toolkit 8 をダウンロードしてインストールできます。 詳細については、[CUDA インストール ガイド](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)を参照してください。
 
 
 

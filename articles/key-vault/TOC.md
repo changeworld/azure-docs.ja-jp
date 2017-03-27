@@ -28,7 +28,7 @@
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)
-## [Azure 2.0 CLI (プレビュー)](/cli/azure/keyvault)
+## [Azure CLI 2.0](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)

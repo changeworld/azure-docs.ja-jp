@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
-ms.lasthandoff: 01/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: bd6f81ee12a7bb655166cf059236175bfb9994e5
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/14/2017
 Azure コマンド ライン インターフェイス (Azure CLI) は、Resource Manager を使用したリソースのデプロイと管理に使用できるツールの&1; つです。 この記事では、Resource Manager モードで Azure CLI を使用して、Azure のリソースとリソース グループを管理する一般的な方法を紹介します。 CLI を使用したリソースのデプロイの詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。 Azure リソースと Resource Manager に関する背景については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
 
 > [!NOTE]
-> Azure CLI を使用して Azure リソースを管理するには、[Azure CLI をインストール](../xplat-cli-install.md)し、`azure login` コマンドを使用して [Azure にログイン](../xplat-cli-connect.md)する必要があります。 CLI が Resource Manager モードになっていることを確認します (`azure config mode arm` を実行します)。 これらの操作が完了したら、準備は OK です。
+> Azure CLI を使用して Azure リソースを管理するには、[Azure CLI をインストール](../cli-install-nodejs.md)し、`azure login` コマンドを使用して [Azure にログイン](../xplat-cli-connect.md)する必要があります。 CLI が Resource Manager モードになっていることを確認します (`azure config mode arm` を実行します)。 これらの操作が完了したら、準備は OK です。
 > 
 > 
 

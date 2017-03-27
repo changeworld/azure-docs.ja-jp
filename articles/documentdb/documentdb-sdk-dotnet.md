@@ -1,5 +1,5 @@
 ---
-title: ".NET API と SDK のリソース - Azure DocumentDB | Microsoft Docs"
+title: "Azure DocumentDB .NET SDK およびリソース | Microsoft Docs"
 description: "リリース日、提供終了日、DocumentDB .NET SDK の各バージョン間の変更など、.NET API と SDK に関するあらゆる詳細を提供します。"
 services: documentdb
 documentationcenter: .net
@@ -12,16 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: rnagpal
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e37416268802b849f6be350a8d7e0e6b284e830b
-ms.openlocfilehash: c92a54c40c329e519832f2f8de71aa5d8e15a090
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 2de833df26de9a9e160dd0cfcc1589eb0ebb7d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="documentdb-apis-and-sdks"></a>DocumentDB API と SDK
+# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Core](documentdb-sdk-dotnet-core.md)
@@ -34,7 +35,6 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-## <a name="documentdb-net-api-and-sdk"></a>DocumentDB .NET API と SDK
 <table>
 
 <tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
@@ -51,6 +51,12 @@ ms.lasthandoff: 02/22/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11211121httpswwwnugetorgpackagesmicrosoftazuredocumentdb1121"></a><a name="1.12.1"/>[1.12.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.1)
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) の LINQ サポートを追加しました。
+* イベント ハンドラーの使用によって発生した ConnectionPolicy オブジェクトのメモリ リークの問題を修正しました。
+* ETag を使用した場合に UpsertAttachmentAsync が動作しなかった問題を修正しました。
+* 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
 
 ### <a name="a-name11201120httpswwwnugetorgpackagesmicrosoftazuredocumentdb1120"></a><a name="1.12.0"/>[1.12.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.0)
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
@@ -206,6 +212,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.1](#1.12.1) |2017 年 3 月 14 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |
 | [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
 | [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |

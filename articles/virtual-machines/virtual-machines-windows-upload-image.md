@@ -13,17 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/06/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
-ms.openlocfilehash: a2df2169acda706a0fc3e1b7daf743ce29e5f030
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 28a6858729adbef439625864abc2fd7aa77fab35
+ms.lasthandoff: 03/11/2017
 
 
 ---
 # <a name="upload-a-windows-vhd-from-an-on-premises-vm-to-azure"></a>Windows VHD をオンプレミスの VM から Azure にアップロードする
 この記事では、Azure VM を作成するときに使用する Windows の仮想ハード ディスク (VHD) を作成してアップロードする方法を示します。 VHD は、一般化された VM からでも特殊化された VM からでもアップロードできます。 
+
+管理ディスクを使用して新しい VM の準備、アップロード、作成を行う方法の詳しいチュートリアルについては、「[Azure にアップロードされた一般化 VHD から Managed Disks を使用する新しい VM を作成する](virtual-machines-windows-upload-generalized-managed.md)」または[特殊化した VHD をアップロードして Azure に VM を作成する方法](virtual-machines-windows-upload-specialized.md)に関するページを参照してください。
 
 Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 

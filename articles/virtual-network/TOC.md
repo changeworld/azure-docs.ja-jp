@@ -7,9 +7,6 @@
 ## IP アドレス指定
 ### [Resource Manager](virtual-network-ip-addresses-overview-arm.md)
 ### [クラシック](virtual-network-ip-addresses-overview-classic.md)
-## 仮想マシン
-### [ネットワーク インターフェイス](virtual-network-network-interface-overview.md)
-### [名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 # 作業の開始
 ## [最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)
@@ -107,8 +104,9 @@
 ### アクセス制御リスト
 #### [クラシック ポータル](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
+### [VM とクラウド サービスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
-## [管理]
+## 管理
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)

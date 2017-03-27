@@ -12,7 +12,7 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/03/2017
+ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
 ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc

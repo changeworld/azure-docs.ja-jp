@@ -12,30 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 03/10/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: e7d7065513f69bac5f759bfd5f4b3965b26bab5d
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="use-direct-methods-netnode"></a>ダイレクト メソッドを使用する (.NET/Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-このチュートリアルの最後には、.NET および Node.js コンソール アプリが完成します。
+このチュートリアルでは、.NET と Node.js のコンソール アプリを開発します。
 
 * **CallMethodOnDevice.sln**。.NET バックエンド アプリ。シミュレートされたデバイス アプリでメソッドを呼び出し、応答を表示します。
-* **SimulatedDevice.js**: Node.js アプリ。作成済みのデバイス ID を使用して IoT Hub に接続し、クラウドによって呼び出されたメソッドに応答するデバイスをシミュレートします。
+* **SimulatedDevice.js**: Node.js アプリ。作成済みのデバイス ID を使用して IoT ハブに接続し、クラウドによって呼び出されたメソッドに応答するデバイスをシミュレートします。
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、[Azure IoT SDK][lnk-hub-sdks] に関する記事を参照してください。
 > 
 > 
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次のものが必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * Node.js バージョン 0.10.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
@@ -56,7 +57,7 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
     ```
         npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. テキスト エディターを使用して、**simulateddevice** フォルダーに新しい **SimulatedDevice.js** ファイルを作成します。
+3. テキスト エディターを使用して **simulateddevice** フォルダーにファイルを作成し、**SimulatedDevice.js** という名前を付けます。
 4. **SimulatedDevice.js** ファイルの先頭に、次の `require` ステートメントを追加します。
    
     ```
@@ -148,17 +149,18 @@ ms.openlocfilehash: bd2ae99b4e66085590230028ae649502327db50a
 ## <a name="run-the-applications"></a>アプリケーションの実行
 これで、アプリケーションを実行する準備が整いました。
 
-1. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して、IoT Hub からのメソッドの呼び出しのリッスンを開始します。
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。 **[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[CallMethodOnDevice]** プロジェクトを選択します。
+
+2. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して、IoT Hub からのメソッドの呼び出しのリッスンを開始します。
    
     ```
     node SimulatedDevice.js
     ```
-   
-    ![][7]
-2. デバイスが接続され、メソッドの呼び出しのために待機しています。.NET **CallMethodOnDevice** アプリを実行して、シミュレート対象デバイスのアプリを呼び出します。 デバイスの応答がコンソールに書き込まれます。
+   シミュレートされたデバイスが開くまで待ちます。 ![][7]
+3. デバイスが接続され、メソッドの呼び出しのために待機しています。.NET **CallMethodOnDevice** アプリを実行して、シミュレート対象デバイスのアプリを呼び出します。 デバイスの応答がコンソールに書き込まれます。
    
     ![][8]
-3. メッセージと、デバイスからの応答を表示するメソッドを呼び出したアプリケーションを出力することによって、デバイスの対応を確認できます。
+4. メソッドへの応答として、デバイスから次のメッセージが出力されます。
    
     ![][9]
 
@@ -177,8 +179,8 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [8]: ./media/iot-hub-csharp-node-direct-methods/netserviceapp.png
 [9]: ./media/iot-hub-csharp-node-direct-methods/methods-output.png
 
-[10]: ./media/iot-hub-csharp-node-direct-methods/create-identity-csharp1.png
-[11]: ./media/iot-hub-csharp-node-direct-methods/create-identity-csharp2.png
+[10]: ./media/iot-hub-csharp-node-direct-methods/direct-methods-csharp1.png
+[11]: ./media/iot-hub-csharp-node-direct-methods/direct-methods-csharp2.png
 
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
@@ -198,9 +200,4 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
 [Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
 [IoT Hub の使用]: iot-hub-node-node-getstarted.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

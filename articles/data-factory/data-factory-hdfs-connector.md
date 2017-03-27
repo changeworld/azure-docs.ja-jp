@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d49d7e6b4a9485c2371eb02ac8068adfde9bad6b
-ms.openlocfilehash: c7f27fe2560c1800f05c205a73fe738cc609d642
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 8a6050fc52407ab6b974a9698d970248062665c1
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,6 +28,10 @@ Data Factory が現在サポートしているのは、オンプレミスの HDF
 
 ## <a name="enabling-connectivity"></a>接続を有効にする
 Data Factory サービスでは、Data Management Gateway を使用したオンプレミスの HDFS への接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「 [オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。 Azure IaaS VM でホストされている場合でも、HDFS への接続にゲートウェイを使用します。
+
+> [!NOTE]
+> データ管理ゲートウェイが、Hadoop クラスターの**すべて**の [name node server]:[name node port] および [data node servers]:[data node port] にアクセスできることを確認します。 既定の [name node port] は 50070、既定の [data node port] は 50075 です。
+>
 
 ゲートウェイは同じオンプレミスのマシンまたは Azure VM に HDFS としてインストールできますが、別個のマシンおよびAzure IaaS VM にゲートウェイをインストールすることをお勧めします。 ゲートウェイを別のコンピューターにインストールすることで、リソースの競合が減少し、パフォーマンスが向上します。 別のマシンにゲートウェイをインストールすると、そのマシンが HDFS を持つマシンにアクセスできるようになります。
 
@@ -267,7 +272,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * オプション 1: [ゲートウェイ マシンを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="a-namekerberos-join-realmaoption-1-make-gateway-machine-join-kerberos-realm"></a><a name="kerberos-join-realm"></a>オプション 1: ゲートウェイ マシンを Kerberos 領域に参加させる
+### <a name="kerberos-join-realm"></a>オプション 1: ゲートウェイ マシンを Kerberos 領域に参加させる
 
 #### <a name="requirement"></a>要件:
 
@@ -277,7 +282,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
-1.  **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
+1.    **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
 
     Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 必要に応じて、*REALM.COM* を独自の領域に置き換えます。
 
@@ -286,7 +291,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
     これら 2 つのコマンドを実行した後、コンピューターを**再起動**します。
 
-2.  **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
+2.    **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -297,11 +302,11 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 * Kerberos プリンシパル名とパスワードによる **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#hdfs-linked-service-properties)」セクションを参照してください。
 
-### <a name="a-namekerberos-mutual-trustaoption-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
+### <a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
 
 #### <a name="requirement"></a>要件:
-*   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
-*   ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
+*    ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
+*    ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
 
 #### <a name="how-to-configure"></a>構成方法:
 
@@ -310,7 +315,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **KDC サーバーで以下を実行します。**
 
-1.  **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
+1.    **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
 
             [logging]
              default = FILE:/var/log/krb5libs.log
@@ -346,26 +351,26 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
               REALM.COM = .
              }
 
-        **Restart** the KDC service after configuration.
+        構成したら KDC サービスを**再起動**します。
 
-2.  次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
+2.    次のコマンドを使用して、**krbtgt/REALM.COM@AD.COM** という名前のプリンシパルを KDC サーバー内に準備します。
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
+3.    **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
 
 **ドメイン コントローラーで、以下を実行します。**
 
-1.  次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+1.    次の **Ksetup** コマンドを実行して、領域エントリを追加します。
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、** krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
+2.    Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM@AD.COM** プリンシパルのパスワードです。
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Kerberos で使用される暗号化アルゴリズムを選択します。
+3.    Kerberos で使用される暗号化アルゴリズムを選択します。
 
     1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
 
@@ -379,7 +384,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
+4.    Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
     1. 管理ツールを起動し、**[Active Directory ユーザーとコンピュータ]** を選択します。
 
@@ -411,9 +416,9 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>Data<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例:&1; 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| BlobSink の format | 次の形式の種類がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |
 
 > [!NOTE]
@@ -475,9 +480,4 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

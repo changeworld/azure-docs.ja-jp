@@ -13,12 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
-ms.openlocfilehash: 9f3923092e0731b6bc75e9f28d152b1f50ca0848
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: ea363667db5a4ef0dd6c3f06a13f3f8f6c192714
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -31,10 +31,10 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 次の例では、指定された数の VM を作成するためのテンプレートの典型的なリソース セクションを示しています。
 
-```
+```json
 "resources": [
   { 
-    "apiVersion": "2016-03-30", 
+    "apiVersion": "2016-04-30-preview", 
     "type": "Microsoft.Compute/virtualMachines", 
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
@@ -63,10 +63,6 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
         }, 
         "osDisk": { 
           "name": "[concat('myOSDisk', copyindex())]" 
-          "vhd": { 
-            "uri": "[concat('https://', variables('storageName'), 
-              '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-          }, 
           "caching": "ReadWrite", 
           "createOption": "FromImage" 
         }
@@ -75,10 +71,6 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
             "name": "[concat('myDataDisk', copyindex())]",
             "diskSizeGB": "100",
             "lun": 0,
-            "vhd": {
-              "uri": "[concat('https://', variables('storageName'), 
-                '.blob.core.windows.net/vhds/myDataDisk', copyindex(),'.vhd')]"
-            },  
             "createOption": "Empty"
           }
         ] 
@@ -165,7 +157,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 テンプレートを使用してリソースをデプロイする際に、使用する API のバージョンを指定する必要があります。 この例では、次の apiVersion 要素を使用して仮想マシン リソースを示しています。
 
 ```
-"apiVersion": "2016-03-30",
+"apiVersion": "2016-04-30-preview",
 ```
 
 テンプレートで指定した API のバージョンに応じて、テンプレートで定義できるプロパティが変わります。 通常は、テンプレートを作成するときに、最新の API バージョンを選択する必要があります。 既存のテンプレートの場合、以前の API バージョンの使用を続けるか、テンプレートを最新版に更新して新しい機能を最大限に活用するか決定できます。
@@ -236,15 +228,20 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 },
 ```
 
-また、この例では、リソースのいくつかの値を指定する際にループ インデックスが使用されていることにも注意してください。 たとえば、インスタンス数として&3; を入力した場合、vhd の定義によって、ディスク名が myOSDisk1、myOSDisk2、myOSDisk3 となります。
+また、この例では、リソースのいくつかの値を指定する際にループ インデックスが使用されていることにも注意してください。 たとえば、インスタンス数として&3; を入力した場合、オペレーティング システム ディスクの名前は、myOSDisk1、myOSDisk2、myOSDisk3 となります。
 
 ```
-"vhd": { 
-  "uri": "[concat('https://', variables('storageName'), 
-    '.blob.core.windows.net/vhds/myOSDisk', 
-    copyindex(),'.vhd')]" 
-},
+"osDisk": { 
+  "name": "[concat('myOSDisk', copyindex())]" 
+  "caching": "ReadWrite", 
+  "createOption": "FromImage" 
+}
 ```
+
+> [!NOTE] 
+>この例では、仮想マシンの管理ディスクを使用します。
+>
+>
 
 テンプレート内の&1; つのリソースに対してループを作成すると、他のリソースの作成時や他のリソースへのアクセス時にそのループを使用する必要が生じる可能性があることに注意してください。 たとえば、複数の VM では同じネットワーク インターフェイスを使用できないため、テンプレートでループして&3; つの VM を作成する場合は、3 つのネットワーク インターフェイスもループによって作成しなければなりません。 VM にネットワーク インターフェイスを割り当てる際は、それらを識別するためにループ インデックスが使用されます。
 
@@ -278,23 +275,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 }
 ```
 
-このプロパティを設定するには、ネットワーク インターフェイスが存在する必要があります。 したがって、依存関係が必要です。 1 つのリソース (子) が他のリソース (親) の中で定義されている場合も、依存関係を設定する必要があります。 たとえば、診断設定とカスタム スクリプト拡張機能は両方とも、仮想マシンの子リソースとして定義されています。 これらは、仮想マシンが存在しないうちは、作成することができません。 そのため、両方のリソースは、仮想マシンに依存しているとマークされます。 
-
-仮想マシン リソースにストレージ アカウントへの依存関係がないのはなぜか、疑問に思われるかもしれません。 仮想マシンには、ストレージ アカウントを指す要素が含まれています。
-
-```
-"osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-  }, 
-  "caching": "ReadWrite", 
-  "createOption": "FromImage" 
-}
-```
-
-この場合、ストレージ アカウントは既に存在することを前提としています。 ストレージ アカウントが同じテンプレートでデプロイされる場合は、ストレージ アカウントへの依存関係を設定する必要があります。
+このプロパティを設定するには、ネットワーク インターフェイスが存在する必要があります。 したがって、依存関係が必要です。 1 つのリソース (子) が他のリソース (親) の中で定義されている場合も、依存関係を設定する必要があります。 たとえば、診断設定とカスタム スクリプト拡張機能は両方とも、仮想マシンの子リソースとして定義されています。 これらは、仮想マシンが存在しないうちは、作成することができません。 そのため、両方のリソースは、仮想マシンに依存しているとマークされます。
 
 ## <a name="profiles"></a>プロファイル
 
@@ -334,83 +315,64 @@ Linux オペレーティング システムを作成する場合は、次の定�
 },
 ```
 
-ディスクの構成設定は、osDisk 要素で割り当てられます。 次の例では、ストレージ内でのディスクの場所、ディスクのキャッシュ モードに加え、ディスクが[プラットフォーム イメージ](virtual-machines-windows-cli-ps-findimage.md)から作成されていることを定義しています。
+オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しい管理ディスクを定義し、ディスクが[プラットフォーム イメージ](virtual-machines-windows-cli-ps-findimage.md)から作成されるようにします。
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]" 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
-  }, 
+  "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
   "createOption": "FromImage" 
 }
 ```
 
-### <a name="create-new-virtual-machines-from-existing-disks"></a>既存のディスクから新しい仮想マシンを作成する
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>既存の管理ディスクから新しい仮想マシンを作成する
 
 既存のディスクから仮想マシンを作成する場合は、imageReference 要素と osProfile 要素を削除し、次のディスク設定を定義します。
 
 ```
 "osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]", 
   "osType": "Windows",
-  "vhd": { 
-    "[concat('https://', variables('storageName'),
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]" 
+  "managedDisk": { 
+    "id": "[resourceId('Microsoft.Compute/disks', [concat('myOSDisk', copyindex())])]" 
   }, 
   "caching": "ReadWrite",
   "createOption": "Attach" 
 }
 ```
 
-この例では、uri が、新しいファイルの場所の代わりに既存の vhd ファイルを指しています。 createOption は、既存のディスクを接続するように設定されています。
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>管理イメージから新しい仮想マシンを作成する
 
-### <a name="create-new-virtual-machines-from-a-custom-image"></a>カスタム イメージから新しい仮想マシンを作成する
-
-[カスタム イメージ](virtual-machines-windows-upload-image.md)から新しい仮想マシンを作成する場合は、imageReference 要素を削除し、次のディスク設定を定義します。
+管理イメージから仮想マシンを作成する場合は、imageReference 要素を変更し、次のディスク設定を定義します。
 
 ```
-"osDisk": { 
-  "name": "[concat('myOSDisk', copyindex())]",
-  "osType": "Windows", 
-  "vhd": { 
-    "uri": "[concat('https://', variables('storageName'), 
-      '.blob.core.windows.net/vhds/myOSDisk', copyindex(),'.vhd')]"
+"storageProfile": { 
+  "imageReference": {
+    "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
   },
-  "image": {
-    "uri": "[concat('https://', variables('storageName'), 
-      'blob.core.windows.net/images/myImage.vhd"
-  },
-  "caching": "ReadWrite", 
-  "createOption": "FromImage" 
+  "osDisk": { 
+    "name": "[concat('myOSDisk', copyindex())]",
+    "osType": "Windows",
+    "caching": "ReadWrite", 
+    "createOption": "FromImage" 
+  }
 }
 ```
 
-この例では、vhd の uri は新しいディスクが格納される場所を指し、image の uri は使用するカスタム イメージを指しています。
-
 ### <a name="attach-data-disks"></a>データ ディスクを接続する
 
-必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](virtual-machines-windows-sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は&2; です。 次の例では、各 VM に&1; つのデータ ディスクが追加されます。
+必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](virtual-machines-windows-sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は&2; です。 次の例では、各 VM に&1; つの管理データ ディスクが追加されます。
 
 ```
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
     "diskSizeGB": "100",
-    "lun": 0,
-    "vhd": {
-      "uri": "[concat('https://', variables('storageName'), 
-        '.blob.core.windows.net/vhds/myDataDisk', copyindex(),'.vhd')]"
-    },  
+    "lun": 0, 
     "caching": "ReadWrite",
     "createOption": "Empty"
   }
 ]
 ```
-
-この例の vhd は、ディスク用に作成される新しいファイルです。 uri を既存の vhd に設定し、createOption を **Attach** に設定することができます。
 
 ## <a name="extensions"></a>拡張機能
 

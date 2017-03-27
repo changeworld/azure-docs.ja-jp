@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2016
+ms.date: 03/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 3d24c0c29da8c97e5fcff524dc88746982fda77c
-ms.openlocfilehash: a34a30a301e213ad227c21196a0b6299dbc4d357
-ms.lasthandoff: 12/15/2016
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 900f0b4c38f08d1e3017954db01cf32362765578
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/15/2016
 
 * 有効な Azure サブスクリプション アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][lnk_free_trial]をご覧ください。
 * シミュレートされたデバイスを作成するための [Node.js][lnk-node] バージョン 0.12.x 以降。
-* 構成済みソリューションのバックエンドを新しい規則で変更するための Microsoft Visual Studio 2015。
+* 構成済みソリューションのバックエンドを新しい規則で変更するための Visual Studio 2015 または Visual Studio 2017。
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 

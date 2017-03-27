@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/30/2016
+ms.date: 03/08/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: e96941bebe07553f8575be4f5dd4ead3271225c9
-ms.openlocfilehash: 924f3287a2b34103eba56310e8e4c4e3e063a44b
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: df7c127f4ab140cb26c82e723964f1d99f03131a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -99,9 +100,4 @@ Visual Studio Team Services による継続的インテグレーション/継続
 
 ## <a name="next-steps"></a>次のステップ
 これで、Service Fabric のパターンとシナリオについて学習できました。次に、[クラスターを作成して管理する方法](service-fabric-deploy-anywhere.md)、[Cloud Services アプリを Service Fabric に移行する方法](service-fabric-cloud-services-migration-worker-role-stateless-service.md)、[継続的配信を設定する方法](service-fabric-set-up-continuous-integration.md)、[コンテナーをデプロイする方法](service-fabric-containers-overview.md)の詳細を確認します。
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

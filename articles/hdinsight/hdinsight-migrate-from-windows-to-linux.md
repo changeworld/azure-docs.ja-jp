@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: a4d30ffc0a5c5ef9fe7bb892d17f0859ff27f569
-ms.openlocfilehash: bf6ef38ba28d11d7894a30115174582903f84580
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 1a2a08a844f1502d970cb7686d512387263d1d13
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -86,7 +87,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 `Start-AzureStorageBlobCopy` Azure PowerShell コマンドレットを使用して、HDInsight 外のストレージ アカウント間で BLOB をコピーすることもできます。 詳細については、「Azure Storage での Azure PowerShell の使用」の「Azure BLOB の管理方法」セクションを参照してください。
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
-通常、[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure CLI](../xplat-cli-install.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジは、Linux ベースのクラスターでも同じように引き続き機能します。これは、依存する REST API が両方のクラスターの OS タイプで同じであるためです。
+通常、[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジは、Linux ベースのクラスターでも同じように引き続き機能します。これは、依存する REST API が両方のクラスターの OS タイプで同じであるためです。
 
 ## <a name="server-side-technologies"></a>サーバー側のテクノロジ
 次の表では、Windows 固有のサーバー側コンポーネントの移行に関するガイダンスを示します。
@@ -94,7 +95,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 | 使用するテクノロジ | 実行するアクション |
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
-| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 サーバー側スクリプトで必要な場合は、Linux ベースのプラットフォームへのインストールについて、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照してください。 |
+| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 サーバー側スクリプトで必要な場合は、Linux ベースのプラットフォームへのインストールについて、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照してください。 |
 | **.NET コンポーネント** |.Net は、Linux ベースの HDInsight クラスターのすべての種類で全面的にサポートされているわけではありません。 2016 年 10 月 28 日以降に作成された HDInsight クラスター上の Linux ベース Storm は、SCP.NET フレームワークを使用して C# Storm トポロジをサポートします。 .NET のその他のサポートは将来の更新時に追加される予定です。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性のあるバージョンを見つけることができる場合や、代替ソリューションを見つけるかこのコンポーネントを書き換える必要がある場合があります。 |
 

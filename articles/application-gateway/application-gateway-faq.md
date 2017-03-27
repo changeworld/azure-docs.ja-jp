@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: fe38c16f94faa3e7a5a2622ff4eb8a1ae93fba20
-ms.openlocfilehash: 1bf1e323798a702029663953d3a30de174aefc4c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: a673044269016f5d216fa62a3bcc6f3b106838c0
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -65,6 +65,7 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 **Q.IP または DNS は Application Gateway の有効期間内に変更されますか?**
 
 お客様が Application Gateway を停止/起動すると、VIP が変更される可能性があります。 Application Gateway に関連付けられた DNS は、Application Gateway のライフサイクル全体を通して変更されません。 そのため、CNAME エイリアスを使用して Application Gateway の DNS アドレスを参照することをお勧めします。
+
 
 **Q.Application Gateway は静的 IP をサポートしますか?**
 
@@ -123,6 +124,10 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
 [ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。 
+
+**Q.Application Gateway はマルチ テナントのバックエンドもサポートしますか?**
+
+いいえ。現在、Application Gateway は、受信ホスト ヘッダーを保持し、そのヘッダーをバックエンドに送信します。 バックエンドが別のヘッダーを必要とする場合、これは機能しなくなります。 同様に、バックエンドがマルチ テナントで、エンド ツー エンドの SSL が有効になっている場合、バックエンドは SNI 拡張機能のサーバー名を想定します。 Application Gateway では現在、エンド ツー エンドの SSL のシナリオでは、バックエンド要求で SNI ヘッダーを送信しません。これによって、プローブとデータ パスの問題が生じます。 
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -283,3 +288,4 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 ## <a name="next-steps"></a>次のステップ
 
 Application Gateway について詳しくは、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+

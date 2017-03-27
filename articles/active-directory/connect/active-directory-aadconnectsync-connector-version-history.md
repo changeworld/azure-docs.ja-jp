@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 03/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 731dd999e053b98c93c374530599232d4dc5bb92
-ms.openlocfilehash: 9c7a8dc5204a799a8b79fa88b243d981bcd54c74
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 3051ed0385b81892b8495e83817ed8255dbce8cd
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -36,6 +37,61 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [Web サービス コネクタ](http://go.microsoft.com/fwlink/?LinkID=226245) リファレンス ドキュメント
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
+
+## <a name="114430"></a>1.1.443.0
+
+リリース日: 2017 年 3 月
+
+### <a name="enhancements"></a>強化された機能
+* Generic SQL:</br>
+  **シナリオの現象:**&1; つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
+  **ソリューションの説明:** [*] オプションが選択されている参照の処理手順では、オブジェクトの種類の "すべての" 組み合わせが同期エンジンに返されます。
+
+>[!Important]
+- これにより、多数のプレースホルダーが作成されます。
+- オブジェクトの種類全体で名前が一意であることを確認する必要があります。
+
+
+* Generic LDAP:</br>
+ **シナリオ:** 特定のパーティションで少数のコンテナーのみを選択した場合でも、検索はパーティション全体で実行されます。 特定のパーティションは Synchronization Service によってフィルター処理されますが、MA によってフィルター処理されることはありません。これにより、パフォーマンスの低下が発生することがあります。 </br>
+
+ **ソリューションの説明:** パーティション全体を検索する代わりに、各コンテナでオブジェクトを検索できるように GLDAP コネクタのコードを変更しました。
+
+
+* Lotus Domino:
+
+  **シナリオ:** エクスポート時のユーザーの削除で、Domino メールの削除をサポートします。 </br>
+  **ソリューション:** エクスポート時のユーザーの削除で、構成可能な Domino メールの削除をサポートします。
+
+### <a name="fixed-issues"></a>修正された問題:
+* 一般的な Web サービス:
+ * WebService 構成ツールを使用して既定の SAP wsconfig プロジェクト内のサービス URL を変更すると、次のエラーが発生します: パスの一部が見つかりません。
+
+      ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
+
+* Generic LDAP:
+ * Generic SQL のウォーターマーク差分インポートで複数値属性がインポートされないバグを修正した。
+ * GLDAP コネクタは、AD LDS 内のすべての属性を認識しません。
+ * LDAP ディレクトリ スキーマから UPN 属性が検出されない場合、ウィザードは中断します。
+ * "objectclass" 属性が選択されていない場合、デルタ インポートは、フル インポート時には存在しない検出エラーで失敗します。
+ * [パーティションと階層の構成] 構成ページに、その種類が Generic   
+LDAP MA 内の Novel サーバーのパーティションと同じであるオブジェクトが表示されません。 RootDSE パーティションからのオブジェクトのみを表示していました。
+
+
+* Generic SQL:
+ * 複数値属性の削除または追加された値をエクスポートしても、データ ソース内で値が削除または追加されることはありません。  
+
+
+* Lotus Notes:
+ * [完全な名前] フィールドはメタバースに正しく表示されますが、Notes にエクスポートすると、属性の値は Null または空白になります。
+ * 証明者の重複エラーを修正しました。
+ * Lotus Domino コネクタでデータのないオブジェクトと他のオブジェクトを同時に選択すると、フル インポートの実行中に検出エラーが発生します。
+ * Lotus Domino コネクタでデルタ インポートを実行すると、実行の最後に、Microsoft.IdentityManagement.MA.LotusDomino.Service.exe サービスがアプリケーション エラーを返すことがあります。
+ * グループ メンバーシップは全体的に問題なく動作します。ただし、エクスポートの実行時にメンバーシップからユーザーを削除しても、更新では成功したと表示されますが、ユーザーは実際に は Lotus Notes のメンバーシップから削除されていません。
+ * Lotus MA の構成 GUI で、エクスポート モードとして “項目を末尾に追加する” ことを選択できようになりました。このモードでは、複数値属性のエクスポート時に、新しい項目は末尾に追加されます。
+ * コネクタは、メール フォルダーと ID コンテナーからファイルを削除するために必要なロジックを追加します。
+ * NAB メンバー間でのメンバーシップの削除は機能しません。
+ * 値は、複数値属性から正常に削除する必要があります。
 
 ## <a name="111170"></a>1.1.117.0
 リリース日: 2016 年 3
@@ -98,9 +154,4 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -25,9 +25,9 @@
 #### [PhoneFactor からアップグレードする](multi-factor-authentication-get-started-server-upgrade.md)
 
 ## ユーザーの管理
-### [ライセンスを割り当てる](multi-factor-authentication-get-started-assign-licenses.md)
 ### [MFA を有効または無効にする](multi-factor-authentication-get-started-user-states.md)
 ### [ユーザーとデバイスの設定](multi-factor-authentication-manage-users-and-devices.md)
+### [MFA ユーザー ガイド](./end-user/multi-factor-authentication-end-user.md)
 
 ## 統合
 ### [フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)

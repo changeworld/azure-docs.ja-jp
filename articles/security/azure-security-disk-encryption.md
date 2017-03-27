@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: b21867e41acb1e0658041bd931327047095bb159
-ms.openlocfilehash: b5ecba98fd5c3061f68f94f5004c7cf00d0dfb36
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 10cc114451da7e73726772da4159776e76f5b8c9
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -537,7 +537,7 @@ Azure 内にある既存または実行中の IaaS Windows VM での暗号化を
  ```
 
 ### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-in-azure"></a>Azure で既存または実行中の IaaS Linux VM での暗号化を有効にする
-Azure 内にある既存または実行中の IaaS Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quick-start-templates/tree/master/201-encrypt-running-linux-vm)を使用して有効化できます。
+Azure 内にある既存または実行中の IaaS Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)を使用して有効化できます。
 
 1. Azure クイック スタート テンプレートで **[Azure にデプロイ]** をクリックし、**[パラメーター]** ブレードに暗号化構成を入力して、**[OK]** をクリックします。
 
@@ -754,7 +754,7 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
 
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
-* (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」(SELinux ユーザーおよび管理者用ガイド) の「4.4.2. Disabling SELinux」(SELinux の無効化) をご覧ください。
+* (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
 * SELinux を無効にしたら、少なくとも&1; 回、VM を再起動してください。
 
 ##### <a name="steps"></a>手順

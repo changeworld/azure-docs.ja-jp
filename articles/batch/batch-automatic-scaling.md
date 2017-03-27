@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: b8cad4541d4e17f98a35289c6c031b9331ab4a8b
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 9dbfa813ea64666779f1f85b3ccda2b4fa1a755b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -355,7 +355,7 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-technical-overview.md#batch-development-apis)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールの操作を行うこともできます。
+Batch REST API と .NET SDK のほか、その他の [Batch SDK](batch-apis-tools.md#batch-development-apis)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールの操作を行うこともできます。
 
 > [!IMPORTANT]
 > 自動スケール対応のプールを作成する場合は、`targetDedicated` パラメーターを指定**しない**ようにしてください。 また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] など)、最初にプールで自動スケールを**無効**にしてから、プールのサイズを変更する必要があります。
