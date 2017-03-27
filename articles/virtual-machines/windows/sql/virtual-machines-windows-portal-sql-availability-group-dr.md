@@ -1,5 +1,5 @@
 ---
-title: "SQL Server 可用性グループ - Azure Virtual Machines - 障害復旧 | Microsoft Docs"
+title: "SQL Server 可用性グループ - Azure Virtual Machines - 災害復旧 | Microsoft Docs"
 description: "この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。"
 services: virtual-machines
 documentationCenter: na
@@ -25,7 +25,7 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 
 # <a name="configure-a-sql-server-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>異なるリージョンの Azure Virtual Machines に SQL Server Always On 可用性グループを構成する
 
-この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法について説明します。 障害復旧をサポートするには、この構成を使います。
+この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法について説明します。 災害復旧をサポートするには、この構成を使います。
 
 この記事は、Resource Manager モードの Azure Virtual Machines に適用されます。 
 
@@ -42,7 +42,7 @@ ms.openlocfilehash: 22ce8f67cd3546a0983ce395372e8459e895c136
 上の図では、SQL-3 という名前の新しい仮想マシンが示されています。 SQL-3 は別の Azure リージョンにあります。 SQL-3 は、Windows Server フェールオーバー クラスターに追加されています。 SQL-3 は可用性グループのレプリカをホストできます。 最後に、SQL-3 の Azure リージョンに新しい Azure Load Balancer があることに注意してください。
 
 >[!NOTE]
-> 同じリージョン内に複数の仮想マシンがある場合は、Azure 可用性セットが必要です。 リージョン内の仮想マシンが&1; つだけの場合は、可用性セットは必要ありません。 可用性セットに仮想マシンを配置できるのは作成時のみです。 可用性セットに仮想マシンが既に存在する場合は、後で追加レプリカ用の仮想マシンを追加できます。 
+> 同じリージョン内に複数の仮想マシンがある場合は、Azure 可用性セットが必要です。 リージョン内の仮想マシンが 1 つだけの場合は、可用性セットは必要ありません。 可用性セットに仮想マシンを配置できるのは作成時のみです。 可用性セットに仮想マシンが既に存在する場合は、後で追加レプリカ用の仮想マシンを追加できます。 
 
 このアーキテクチャでは、通常、リモート リージョン内のレプリカは非同期コミット可用性モードおよび手動フェールオーバー モードで構成されます。
 
