@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: b171f51d2bdaa9056429fd214809cf7123ba6326
-ms.openlocfilehash: 50a0dfdd9c71dcf54bed7a72f7fdf5a7db532572
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: acfb9345b789df7664075ef0fb6280beedf0dfb9
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -40,7 +40,7 @@ Azure には、Azure Resource Manager とクラシックという&2; 種類の�
 
 Azure CLI を使用して仮想ネットワークを作成するには、次の手順を実行します。
 
-1. [Azure CLI のインストールと構成](../xplat-cli-install.md)に関する記事の手順に従って、Azure CLI をインストールして構成します。
+1. [Azure CLI のインストールと構成](../cli-install-nodejs.md)に関する記事の手順に従って、Azure CLI をインストールして構成します。
 
 2. VNet とサブネットを作成します。
 

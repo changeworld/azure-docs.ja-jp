@@ -12,12 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/13/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 1cde923ad0aef1ce1c91d1240f7b3e3d3c26e105
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: eb77dd2aaaeced8c71c2c89937f7f1cc10c7b292
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -47,7 +47,16 @@ Media Services アカウントは、メディア処理タスクを処理する�
 * 共有プールを使用する (すなわち、予約ユニットを使用しない) 場合のエンコード タスクのパフォーマンスは S1 予約ユニットを使用したときと同等になります。 ただし、タスクがキューに登録された状態である時間の上限はなく、同時に実行されるタスクの数は最大で&1; つのみです。
 * ブラジル南部とインド西部のデータ センターでは、予約ユニットの種類 **S2** は提供されません。
 * インド西部のデータ センターでは、予約ユニットの種類 **S3** は提供されません。
-* コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
+
+## <a name="billing"></a>課金
+
+請求はメディア占有ユニットを実際に使用した時間 (分) に基づいて行われます。 より詳しい例を以下で説明します。 Joe のメディア占有ユニット (RU) がゼロから開始するようになっているとします。ある日の午前 10 時に、Joe は 2 つの S1 RU を使用するようにアカウントを設定しました。 その日の午後に追加のビデオが届いたため、午後 1 時 15 分に Joe は 4 つの S3 RU を使用するようにアカウントを変更しました。 すべてのビデオは午後 4 時に処理され、Joe はその後、アカウントの RU をオフにします (RU の数値をゼロに設定する)。 Joe の使用量は次のように算出されます。
+
+S1 メディア占有ユニット: 2 ユニット x 3.25 時間 (午前 10 時から午後 1 時 15 分) x $0.02/時 = $0.13 S3 メディア占有ユニット: 4 ユニット x 2.75 時間 (午後 1 時 15 分から午後 4 時) x $0.08/時 = $0.88
+
+以上より、Joe がメディア占有ユニットを使用した際の料金総額は $0.13 + $0.88 = $1.01 になります。メディア占有ユニットとは異なり、ストリーミング ユニットは&1; 日ごとにプロビジョニングされるストリーミング ユニットの最大数に基づいて課金されます (高基準値)。
+
+詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」のページをご覧ください。 FAQ のセクションに詳しく説明されています。  
 
 ## <a name="quotas-and-limitations"></a>クォータと制限
 クォータと制限の詳細、サポート チケットを開く方法については、「 [Quotas and limitations (クォータと制限)](media-services-quotas-and-limitations.md)」をご覧ください

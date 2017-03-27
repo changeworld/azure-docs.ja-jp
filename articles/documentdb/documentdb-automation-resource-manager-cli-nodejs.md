@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 9ebf15e5f2ca21f3ec39af9be93253694a97cdf8
-ms.openlocfilehash: ba2f9d965528e69ce2d1fce62e5b16e738263c87
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4725f4200446434bfcb8754aac9bf0d99f8a7526
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/27/2017
 現在のところ、DocumentDB データベース アカウントは、Resource Manager テンプレートと Azure CLI 1.0 で作成できる唯一の DocumentDB リソースです。
 
 ## <a name="getting-ready"></a>開発の準備
-Azure リソース グループで Azure CLI 1.0 を使用するには、適切なバージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、 [インストールします](../xplat-cli-install.md)。
+Azure リソース グループで Azure CLI 1.0 を使用するには、適切なバージョンと Azure アカウントを用意する必要があります。 Azure CLI 1.0 をインストールしていない場合は、 [インストールします](../cli-install-nodejs.md)。
 
 ### <a name="update-your-azure-cli-10-version"></a>Azure CLI 1.0 のバージョンを更新する
 コマンド プロンプトで「`azure --version`」と入力し、バージョン 0.10.4 以降が既にインストールされているかどうかを確認します。 この手順で Microsoft Azure CLI のデータ収集に参加するように求められる場合があります。y または n を選択して、オプトインまたはオプトアウトできます。
@@ -42,7 +42,7 @@ Azure リソース グループで Azure CLI 1.0 を使用するには、適切�
     azure --version
     0.10.4 (node: 4.2.4)
 
-バージョンが 0.10.4 以降ではない場合、[Azure CLI 1.0 をインストール](../xplat-cli-install.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
+バージョンが 0.10.4 以降ではない場合、[Azure CLI 1.0 をインストール](../cli-install-nodejs.md)するか、いずれかのネイティブ インストーラーまたは **npm** で更新する必要があります。更新する場合は「`npm update -g azure-cli`」と入力し、インストールする場合は「`npm install -g azure-cli`」と入力します。
 
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 Azure サブスクリプションをまだ持っていない場合でも、Visual Studio サブスクリプションがあれば、 [Visual Studio サブスクライバー向けの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。 または、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -81,7 +81,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     +
     info:    login command OK
 
-ここで説明する対話式のログイン方法以外に、Azure CLI 1.0 でログインする方法もあります。 他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「 [Azure コマンド ライン インターフェイス (Azure CLI 1.0) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
+ここで説明する対話式のログイン方法以外に、Azure CLI 1.0 でログインする方法もあります。 他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI 1.0) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
 
 ### <a name="switch-to-azure-cli-10-resource-group-mode"></a>Azure CLI 1.0 リソース グループ モードに切り替える
 既定では、Azure CLI 1.0 はサービス管理モード (**asm** モード) で起動します。 以下を入力してリソース グループ モードに切り替えます。

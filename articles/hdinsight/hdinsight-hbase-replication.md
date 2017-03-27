@@ -7,6 +7,7 @@ author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na

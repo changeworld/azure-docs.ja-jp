@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 40dd75832302d7d88e852e2ea93821750675607e
-ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a773e43b28b144dd8341b276eee3fa504d4f1080
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,7 +37,7 @@ App Service には、以前は Azure Websites および Azure Mobile Services �
 App Service のいくつかの主要機能を次に示します。
 
 * **複数の言語とフレームワーク** - App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、 [Windows PowerShell などのスクリプトや実行可能ファイル](../app-service-web/web-sites-create-web-jobs.md) を実行することもできます。
-* **DevOps の最適化** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continuous-deployment.md) を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。 [テスト環境やステージング環境](../app-service-web/web-sites-staged-publishing.md)を介して更新を反映できます。 また、 [A/B テスト](../app-service-web/app-service-web-test-in-production-get-start.md)を実行できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
+* **DevOps の最適化** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continuous-deployment.md) を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。 [テスト環境やステージング環境](../app-service-web/web-sites-staged-publishing.md)を介して更新を反映できます。 また、 [A/B テスト](../app-service-web/app-service-web-test-in-production-get-start.md)を実行できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../cli-install-nodejs.md) を使用します。
 * **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](../app-service-web/web-sites-scale.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP、Siebel、Oracle など)、SaaS サービス (Salesforce や Office 365 など)、インターネット サービス (Facebook や Twitter など) 向けに用意された 50 を超える [コネクタ](../connectors/apis-list.md) から選択できます。 また、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Networks](../app-service-web/web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/TrustCenter/)しています。
@@ -90,10 +91,5 @@ App Service の価格の詳細については、「 [App Service の価格](http
 * [チュートリアル: モバイル アプリの作成](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [チュートリアル: API アプリの作成](../app-service-api/app-service-api-dotnet-get-started.md)
 * [チュートリアル: ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

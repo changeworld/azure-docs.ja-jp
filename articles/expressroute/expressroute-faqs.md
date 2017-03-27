@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2017
+ms.date: 03/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
-ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,9 +27,6 @@ ExpressRoute は、Microsoft のデータセンターとオンプレミスや共
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>ExpressRoute とプライベート ネットワーク接続を使用する利点は何ですか。
 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一貫して短く、高速です。 オンプレミスのデバイスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合があります。
-
-### <a name="what-microsoft-cloud-services-are-supported-over-expressroute"></a>ExpressRoute でサポートされる Microsoft クラウド サービスはどれですか。
-現時点では、Office 365 を含むほとんどの Microsoft Azure サービスが ExpressRoute でサポートされています。  一般公開に関する最新情報をチェックしてください。
 
 ### <a name="where-is-the-service-available"></a>このサービスはどこで使用できますか。
 サービスの場所と提供状況については、 [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
@@ -99,7 +96,7 @@ Microsoft ピアリング
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>ExpressRoute リンクのいずれかに障害が発生すると接続できなくなりますか。
 クロス接続の一方に障害が発生しても、接続が失われることはありません。 ネットワークの負荷に対応できる冗長接続が用意されています。 さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
 
-### <a name="a-nameonep2plinkaif-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を&2; つ注文する必要がありますか。
+### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を&2; つ注文する必要がありますか。
 いいえ、サービス プロバイダーが物理接続経由で&2; つのイーサネット仮想回線を確立できる場合は、必要な物理接続は&1; つだけです。 物理接続 (光ファイバーなど) は、レイヤー 1 (L1) デバイスで終端します (下図を参照)。 2 つのイーサネット仮想回線は、異なる VLAN ID (プライマリ回線とセカンダリ回線の VLAN ID) でタグ付けされます。 これらの VLAN ID は、外部 802.1Q イーサネット ヘッダーに含まれます。 内部 802.1Q イーサネット ヘッダー (ここでは示されていません) は、特定の [ExpressRoute ルーティング ドメイン](expressroute-circuit-peerings.md)にマップされます。 
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
@@ -111,7 +108,10 @@ Microsoft ピアリング
 はい。 1 つのサブスクリプションで、複数の ExpressRoute 回線をご利用いただけます。 専用回線の既定の上限は 10 に設定されています。 上限を増やす必要がある場合は、Microsoft サポートにご連絡ください。
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>別のサービス プロバイダーから ExpressRoute 回線を使用することはできますか。
-はい。 多くのサービス プロバイダーで ExpressRoute 回線をご利用いただけます。 各 ExpressRoute 回線は、1 つのサービス プロバイダーのみに関連付けられます。
+はい。 多くのサービス プロバイダーで ExpressRoute 回線をご利用いただけます。 各 ExpressRoute 回線は、1 つのサービス プロバイダーのみに関連付けられます。 
+
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>同じ場所に複数の ExpressRoute 回線を配置することはできますか。
+はい。 複数の ExpressRoute 回線を同じ場所に配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 ただし、複数の ExpressRoute 回線を同じ仮想ネットワークに接続することはできません。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 基本的な手順の概略は次のとおりです。
@@ -126,7 +126,7 @@ Microsoft ピアリング
 はい。 [ExpressRoute のパートナーと提供地域](expressroute-locations.md) に関するページに、ExpressRoute 回線の接続境界に関する概要が記載されています。 ExpressRoute 回線の接続は、1 つの地理的リージョンに制限されます。 ExpressRoute Premium 機能を有効にすると、地理的リージョンを越えて接続を拡張できます。
 
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>複数の仮想ネットワークを ExpressRoute 回線に接続できますか。
-はい。 最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。
+はい。 標準の ExpressRoute 回線では最大 10 の仮想ネットワークを、[ExpressRoute Premium 回線](#expressroute-premium)では最大 100 の仮想ネットワークを接続できます。 
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>仮想ネットワークを含む複数の Azure サブスクリプションがあります。 個別のサブスクリプション内の仮想ネットワークを&1; つの ExpressRoute 回線に接続できますか。
 はい。 最大 10 個の Azure サブスクリプションで、1 つの ExpressRoute 回線を使用することを承認できます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
@@ -154,6 +154,9 @@ Microsoft ピアリング
 ### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>仮想ネットワークを、サイト間/ポイント対サイト構成から ExpressRoute を使用する構成に移行できますか。
 はい。 仮想ネットワーク内に ExpressRoute ゲートウェイを作成する必要があります。 このプロセスに関連して、わずかにダウンタイムが発生します。
 
+### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>仮想ネットワークで ExpressRoute ゲートウェイに関連付けられているパブリック IP アドレスが存在するのはなぜですか。
+これは内部管理でのみ使用されます。 このパブリック IP アドレスはインターネットには公開されず、仮想ネットワークのセキュリティを損なうものではありません。
+
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>ExpressRoute を経由して Azure Storage に接続するには何が必要ですか。
 ExpressRoute 回線を確立し、パブリック ピアリング用のルートを構成する必要があります。
 
@@ -179,7 +182,7 @@ BGP セッションが切断されます。 プレフィックス数が上限未
    * NSP プロバイダーに依頼して、トラフィックをパブリック ピアリング経由で Azure に U ターンしてもらう。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更できますか。
-はい。 ExpressRoute 回線を切断せずに、帯域幅を増やすことができます。 接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。 ただし、ExpressRoute 回線の帯域幅を減らすことはできなくなります。 帯域幅を減らす必要が生じた場合は、ExpressRoute 回線の切断と再作成が必要になります。
+はい、Azure Portal または PowerShell を使用して、ExpressRoute 回線の帯域幅を増やすことを試すことができます。 回線が作成された物理ポートで使用可能な容量があれば、変更は成功します。 変更が失敗した場合は、現在のポートに十分な容量が残っていないため、帯域幅が大きい新しい ExpressRoute 回線を作成する必要がある、またはその場所には追加の容量がないため、帯域幅を増やすことはできないことを意味します。 また、接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。 ただし、ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅が小さい新しい ExpressRoute 回線を作成し、古い回線を削除する必要があります。
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 専用回線の更新用の API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
@@ -190,7 +193,7 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
 * ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。 詳細については、下の表を参照してください。
-* Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。 **例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。
+* Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。 **例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 **その他の例:** パブリック ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 * Office 365 サービスおよび CRM Online への接続。
 
 ### <a name="how-many-vnets-can-i-link-to-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a>ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。

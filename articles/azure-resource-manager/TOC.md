@@ -7,14 +7,13 @@
 
 # 作業開始
 ## [テンプレートをエクスポートする](resource-manager-export-template.md)
-## [テンプレート チュートリアル](resource-manager-template-walkthrough.md)
+## [最初のテンプレートを作成する](resource-manager-create-first-template.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-## [VS Code と Resource Manager](resource-manager-vs-code.md)
 
 # 方法
 ## テンプレートの作成
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
-### [テンプレートの作成](resource-group-authoring-templates.md)
+### [テンプレート セクション](resource-group-authoring-templates.md)
 ### [テンプレート関数](resource-group-template-functions.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
@@ -62,7 +61,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
-## [テンプレートのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)
+## [テンプレートの形式](/azure/templates/)
 ## [REST ()](/rest/api/resources/)
 
 # リソース

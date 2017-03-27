@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: d6174c08-06aa-42ac-8e9b-8b8718d9978e
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: rashimg
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 5054865a4321bb5d2c188e485b033b16f49cb525
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -199,7 +201,7 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 * **結合の最適化:** 結合の効率を向上させユーザー ヒントの必要性を少なくするための Hive のクエリ実行プランの最適化です。 詳しくは、「[Join optimization (結合の最適化)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)」を参照してください。
 * **Reducer の増加**
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> 次のステップ
+## <a id="nextsteps"></a> 次のステップ
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
@@ -212,9 +214,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

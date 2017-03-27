@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: bruceper
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c52d41bbac22c6a20b1632b529b061ed7e640ea1
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: eec68b1cbfbddf0b72b55376ee11451b25898b68
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +42,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 このチュートリアルを完了するには、以下が必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、 [無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* コマンドライン インターフェイス バージョン 0.9.1 以降。 最新バージョンをインストールして、Azure サブスクリプションに接続するには、「 [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](../xplat-cli-install.md)」を参照してください。
+* コマンドライン インターフェイス バージョン 0.9.1 以降。 最新バージョンをインストールして、Azure サブスクリプションに接続するには、「 [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](../cli-install-nodejs.md)」を参照してください。
 * このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。 サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。 手順については、付属の Readme ファイルをご覧ください。
 
 ## <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Azure クロスプラットフォーム コマンドライン インターフェイスでのヘルプの取得
@@ -59,7 +60,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 
 また、次のチュートリアルを読めば、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure リソース マネージャーについて詳しく理解できます。
 
-* [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](../xplat-cli-install.md)
+* [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](../cli-install-nodejs.md)
 * [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 
 ## <a name="connect-to-your-subscriptions"></a>サブスクリプションへの接続
@@ -86,7 +87,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 
 Microsoft Azure での組織アカウントの使用の詳細については、「 [Microsoft Azure への組織としてのサインアップ](../active-directory/sign-up-organization.md)」をご覧ください。
 
-複数のサブスクリプションがあり、特定の 1 つのサブスクリプションを指定して Azure Key Vault を使用する場合は、次のように入力して自分のアカウントのサブスクリプションを表示します。
+複数のサブスクリプションがあり、特定の&1; つのサブスクリプションを指定して Azure Key Vault を使用する場合は、次のように入力して自分のアカウントのサブスクリプションを表示します。
 
     azure account list
 
@@ -94,7 +95,7 @@ Microsoft Azure での組織アカウントの使用の詳細については、�
 
     azure account set <subscription name>
 
-Azure クロスプラットフォーム コマンドライン インターフェイスの構成方法については、「 [Azure クロスプラットォーム コマンドライン インターフェイスのインストールと構成方法](../xplat-cli-install.md)」をご覧ください。
+Azure クロスプラットフォーム コマンドライン インターフェイスの構成方法については、「 [Azure クロスプラットォーム コマンドライン インターフェイスのインストールと構成方法](../cli-install-nodejs.md)」をご覧ください。
 
 ## <a name="switch-to-using-azure-resource-manager"></a>Azure リソース マネージャーの使用に切り替える
 Key Vault では Azure リソース マネージャーが必要なため、次のように入力して Azure リソース マネージャー モードに切り替えます。
@@ -102,7 +103,7 @@ Key Vault では Azure リソース マネージャーが必要なため、次�
     azure config mode arm
 
 ## <a name="create-a-new-resource-group"></a>新しいリソース グループを作成する
-Azure リソース マネージャーを使用すると、すべての関連するリソースが 1 つのリソース グループ内に作成されます。 このチュートリアルでは、'ContosoResourceGroup' という新しいリソース グループを作成します。
+Azure リソース マネージャーを使用すると、すべての関連するリソースが&1; つのリソース グループ内に作成されます。 このチュートリアルでは、'ContosoResourceGroup' という新しいリソース グループを作成します。
 
     azure group create 'ContosoResourceGroup' 'East Asia'
 
@@ -113,7 +114,7 @@ Key Vault リソース プロバイダーがサブスクリプションに登録
 
 `azure provider register Microsoft.KeyVault`
 
-これは、サブスクリプションごとに 1 回だけ実行する必要があります。
+これは、サブスクリプションごとに&1; 回だけ実行する必要があります。
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 `azure keyvault create` コマンドを使用して、Key Vault を作成します。 このスクリプトには、3 つの必須パラメーター (リソース グループ名、Key Vault 名、地理的な場所) が含まれています。
@@ -122,7 +123,7 @@ Key Vault リソース プロバイダーがサブスクリプションに登録
 
     azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
 
-このコマンドの出力は、作成されたばかりの Key Vault のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
+このコマンドの出力は、作成されたばかりの Key Vault のプロパティを示します。 最も重要な&2; つのプロパティは、次のとおりです。
 
 * **Name**: この例では、これは ContosoKeyVault です。 この名前を他の Key Vault コマンドレットに使用できます。
 * **vaultUri**: この例では、これは https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
@@ -161,12 +162,12 @@ Azure Key Vault に追加したパスワードは、その URI を使用する�
 
 Key Vault を使用するアプリケーションは、Azure Active Directory から取得したトークンを使用して認証する必要があります。 これを行うには、アプリケーションの所有者は、まず Azure Active Directory でアプリケーションを登録する必要があります。 登録の最後に、アプリケーションの所有者は次の値を取得します。
 
-* **アプリケーション ID** (クライアント ID とも呼ばれます) と**認証キー** (共有シークレットとも呼ばれます)。 アプリケーションは、トークンを取得するために、この 2 つの値を Azure Active Directory に示す必要があります。 これを行うようにアプリケーションを構成する方法は、アプリケーションによって異なります。 Key Vault のサンプル アプリケーション用に、アプリケーション所有者は app.config ファイルでこれらの値を設定します。
+* **アプリケーション ID** (クライアント ID とも呼ばれます) と**認証キー** (共有シークレットとも呼ばれます)。 アプリケーションは、トークンを取得するために、この&2; つの値を Azure Active Directory に示す必要があります。 これを行うようにアプリケーションを構成する方法は、アプリケーションによって異なります。 Key Vault のサンプル アプリケーション用に、アプリケーション所有者は app.config ファイルでこれらの値を設定します。
 
 Azure Active Directory にアプリケーションを登録するには:
 
 1. Azure ポータルにサインインします。
-2. 左側で、 **[Active Directory]**をクリックし、アプリケーションを登録するディレクトリを選択します。 <br> <br>  注: Key Vault を作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 ディレクトリが不明な場合は、 **[設定]**をクリックし、Key Vault を作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
+2. 左側で、 **[Active Directory]**をクリックし、アプリケーションを登録するディレクトリを選択します。 <br> <br> 注: Key Vault を作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 ディレクトリが不明な場合は、 **[設定]**をクリックし、Key Vault を作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
 3. **[アプリケーション]**をクリックします。 アプリがディレクトリに追加されていない場合は、このページには **[アプリケーションの追加]** リンクのみが表示されます。 リンクをクリックするか、コマンド バーの **[追加]** をクリックします。
 4. **アプリケーションの追加**ウィザードの **[実行する作業を選択してください。]** ページで、**[組織で開発中のアプリケーションを追加]** をクリックします。
 5. **[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[Web アプリケーションや Web API]** (既定値) を選択します。 [次へ] アイコンをクリックします。
@@ -251,10 +252,5 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 ## <a name="next-steps"></a>次のステップ
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

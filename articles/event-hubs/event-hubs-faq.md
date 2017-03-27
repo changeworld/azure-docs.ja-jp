@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2017
+ms.date: 03/13/2017
 ms.author: sethm;jotaub;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: 59622f283daeca59464dfb7a13ca76c7a0148a21
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7bae4ae6d41e6dc6515a3fcdf574ffd193ae1aa3
+ms.lasthandoff: 03/14/2017
 
 ---
 
@@ -26,7 +26,13 @@ ms.lasthandoff: 03/03/2017
 ## <a name="general"></a>全般
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
-Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。 これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。 また、Standard は Event Hubs [Archive](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview) 機能も提供します。機能の一覧については、[Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページをご覧ください。
+Azure Event Hubs の Standard レベルは、Basic レベルでは使用できない機能を提供します。 Standard レベルには次の機能が含まれています。
+* 長いイベント リテンション期間
+* 追加の仲介型接続。提供される数を超える場合は超過料金が適用されます
+* 複数のコンシューマー グループ
+* [アーカイブ](https://docs.microsoft.com/azure/event-hubs/event-hubs-archive-overview)
+
+専用の Event Hubs を含む価格レベルの詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs のスループット単位とは何ですか。
 Event Hubs のスループット単位は、Azure Portal または Event Hubs リソース マネージャー テンプレートによってユーザーが明示的に選択します。 スループット単位はイベント ハブ名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。

@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: ed8ef101a0757fd32585f5b3249e49d4fb0e09b4
-ms.openlocfilehash: ea3aa0b94c6a74747f7efa8633d5b6bfff75a230
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6017fa3fe2134452bf24d2fc54c8f82b08862dbb
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
 
-主要な機能の領域ごとに、簡単な説明と、探している情報に応じてどの記事を読めばよいかについてのガイダンスが示されています。 
+主要な機能の領域ごとに、簡単な説明と、探している情報に応じてどの記事を読めばよいかについてのガイダンスが示されています。
 
 ## <a name="overview-articles"></a>概要に関する記事
 単に Azure AD のアプリケーション管理機能に関する簡単な説明が必要な場合は、以下の記事を最初に読むことをお勧めします。
@@ -100,7 +100,7 @@ ms.lasthandoff: 02/23/2017
 | SSO を有効にするためのサード パーティ ID プロバイダーの使用についてのガイダンス |[サードパーティ ID プロバイダーを使用してシングル サインオンを実装する](https://aka.ms/ssoproviders) |
 | Windows 10 ユーザーが Azure AD 参加によるシングル サインオンの利点を活用する方法 |[Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md) |
 
-Azure AD Connect は、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。 Azure AD のセルフサービスによるパスワードのリセットは、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。 オンプレミス AD へのパスワード ライトバックは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。 
+Azure AD Connect は、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。 Azure AD のセルフサービスによるパスワードのリセットは、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。 オンプレミス AD へのパスワード ライトバックは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ### <a name="conditional-access-enforce-additional-security-requirements-for-high-risk-apps"></a>条件付きアクセス: 危険性の高いアプリに追加のセキュリティ要件を適用
 アプリとリソースへのシングル サインオンを設定したら、機密性の高いアプリケーションのセキュリティを強化することができます。そのためには、該当アプリへの各サインインに特定のセキュリティ要件を適用します。 たとえば、Azure AD を使用すると、特定のアプリへのすべてのアクセスで必ず多要素認証が要求されるようにすることができます。そのアプリ自体がその機能をサポートしているかどうかは関係ありません。 条件付きアクセスのもう&1; つの一般的な例として、特に機密性の高いアプリケーションにアクセスする場合に、ユーザーが組織の信頼できるネットワークに接続していることが要求されます。
@@ -108,8 +108,8 @@ Azure AD Connect は、 [Azure Active Directory のすべてのエディショ�
 | 記事の紹介 |  |
 |:---:| --- |
 | Azure AD、Office365、Intune に提供されている条件付きアクセス機能の概要 |[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md) |
-| 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access-on-premises-setup.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
-| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 |[Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイスの手順](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />— [Windows 7 デバイスの手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
+| 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
+| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 |[Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイスの手順](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices)<br />— [Windows 7 デバイスの手順](active-directory-device-registration.md#configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices) |
 | 2 段階認証用に Microsoft Authenticator アプリを使用する方法 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
 条件付きアクセスは、 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
@@ -142,7 +142,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー&1; 人につき最大&10; 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
 
 ### <a name="building-applications-that-integrate-with-azure-ad"></a>Azure AD と統合するアプリケーションの構築
-基幹業務 (LoB) アプリケーションを開発または保守している組織や、顧客が Azure Active Directory を使用しているアプリ開発者には、アプリケーションと Azure AD を統合する際に次のチュートリアルが役立ちます。 
+基幹業務 (LoB) アプリケーションを開発または保守している組織や、顧客が Azure Active Directory を使用しているアプリ開発者には、アプリケーションと Azure AD を統合する際に次のチュートリアルが役立ちます。
 
 | 記事の紹介 |  |
 |:---:| --- |
@@ -178,7 +178,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 B2B コラボレーション プレビューは、現在、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で利用できます。
 
 ### <a name="access-panel-a-portal-for-accessing-apps-and-self-service-features"></a>アクセス パネル: アプリやセルフサービス機能にアクセスするためポータル
-Azure AD アクセス パネルでは、エンド ユーザーがアプリを起動したり、アプリとグループ メンバーシップを管理できるセルフサービス機能にアクセスしたりすることができます。 下の一覧には、アクセス パネルのほか、SSO 対応アプリにアクセスするためのその他のオプションも示されています。 
+Azure AD アクセス パネルでは、エンド ユーザーがアプリを起動したり、アプリとグループ メンバーシップを管理できるセルフサービス機能にアクセスしたりすることができます。 下の一覧には、アクセス パネルのほか、SSO 対応アプリにアクセスするためのその他のオプションも示されています。
 
 | 記事の紹介 |  |
 |:---:| --- |
@@ -210,5 +210,4 @@ Azure Active Directory の各エディションに付属のレポートを確認
 [Azure Active Directory ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
-
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2017
+ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 5aa0677e6028c58b7a639f0aee87b04e7bd233a0
-ms.openlocfilehash: 2093c6220ea01a83b7e43b3084d13b719feca3ca
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: b31ecb83665208151e48f81e6148928bbf21d1b5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -48,6 +49,7 @@ ms.openlocfilehash: 2093c6220ea01a83b7e43b3084d13b719feca3ca
 * [承認に失敗する](#authorization-failed)
 * [BadRequest](#badrequest)
 * [DeploymentFailed](#deploymentfailed)
+* [DisallowedOperation](#disallowedoperation)
 * [InvalidContentLink](#invalidcontentlink)
 * [InvalidTemplate](#invalidtemplate)
 * [MissingSubscriptionRegistration](#noregisteredproviderfound)
@@ -122,6 +124,40 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
   ```
 
 UI に表示されたリージョン (またはビジネス ニーズを満たすその他のリージョン) に適切な SKU が見つからない場合は、[Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
+
+### <a name="disallowedoperation"></a>DisallowedOperation
+
+```
+Code: DisallowedOperation
+Message: The current subscription type is not permitted to perform operations on any provider 
+namespace. Please use a different subscription.
+```
+
+このエラーが発生した場合は、Azure Active Directory を除くすべての Azure サービスへのアクセスが許可されていないサブスクリプションを使用していることになります。 クラシック ポータルにアクセスする必要があるものの、リソースのデプロイが許可されていないような場合に、サブスクリプションがこのような状態になることがあります。 この問題を解決するには、リソースをデプロイする権限のあるサブスクリプションを使用する必要があります。  
+
+PowerShell で使用可能なサブスクリプションを表示するには、次のコマンドを使用します。
+
+```powershell
+Get-AzureRmSubscription
+```
+
+さらに、現在のサブスクリプションを設定するには、次のコマンドを使用します。
+
+```powershell
+Set-AzureRmContext -SubscriptionName {subscription-name}
+```
+
+Azure CLI 2.0 で使用可能なサブスクリプションを表示するには、次のコマンドを使用します。
+
+```azurecli
+az account list
+```
+
+さらに、現在のサブスクリプションを設定するには、次のコマンドを使用します。
+
+```azurecli
+az account set --subscription {subscription-name}
+```
 
 ### <a name="invalidtemplate"></a>InvalidTemplate
 このエラーは、さまざまな種類のエラーが原因となって発生する場合があります。
@@ -387,19 +423,19 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 プロバイダーが登録されているかどうかを確認するには、 `azure provider list` コマンドを使用します。
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 リソース プロバイダーを登録するには、 `azure provider register` コマンドを使用し、登録する *名前空間* を指定します。
 
 ```azurecli
-azure provider register Microsoft.Cdn
+az provider register --namespace Microsoft.Cdn
 ```
 
-特定のリソース プロバイダーでサポートされている場所と API バージョンを確認するには、次のコマンドを使用します。
+特定のリソースの種類に対してサポートされている場所と API バージョンを確認するには、次のコマンドを使用します。
 
 ```azurecli
-azure provider show -n Microsoft.Compute --json > compute.json
+az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
 <a id="quotaexceeded" />
@@ -410,18 +446,23 @@ azure provider show -n Microsoft.Compute --json > compute.json
 コアのサブスクリプションのクォータを確認するには、Azure CLI で `azure vm list-usage` コマンドを使用します。 次に、無料試用版アカウントのコア クォータが 4 である例を示します。
 
 ```azurecli
-azure vm list-usage
+az vm list-usage --location "South Central US"
 ```
 
 次のような結果が返されます。
 
 ```azurecli
-info:    Executing command vm list-usage
-Location: westus
-data:    Name   Unit   CurrentValue  Limit
-data:    -----  -----  ------------  -----
-data:    Cores  Count  0             4
-info:    vm list-usage command OK
+[
+  {
+    "currentValue": 0,
+    "limit": 2000,
+    "name": {
+      "localizedValue": "Availability Sets",
+      "value": "availabilitySets"
+    }
+  },
+  ...
+]
 ```
 
 米国西部リージョンで&5; 個以上のコアを作成するテンプレートをデプロイした場合、次のようなデプロイ エラーが発生します。
@@ -479,13 +520,13 @@ Policy identifier(s): '/subscriptions/{guid}/providers/Microsoft.Authorization/p
 **PowerShell** では、そのポリシー識別子を **Id** パラメーターとして指定して、デプロイをブロックしたポリシーの詳細を取得します。
 
 ```powershell
-(Get-AzureRmPolicyAssignment -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
+(Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-**Azure CLI** では、ポリシー定義の名前を指定します。
+**Azure CLI 2.0** では、ポリシー定義の名前を指定します。
 
 ```azurecli
-azure policy definition show regionPolicyDefinition --json
+az policy definition show --name regionPolicyAssignment
 ```
 
 ポリシーについては、「 [ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」をご覧ください。
@@ -522,21 +563,13 @@ azure policy definition show regionPolicyDefinition --json
 
    この情報は、テンプレートの値が正しく設定されているかどうかを確認するのに役立ちます。
 
-- Azure CLI
+- Azure CLI 2.0
 
-   Azure CLI では、**--debug-setting** パラメーターを All、ResponseContent、または RequestContent に設定します。
-
-  ```azurecli
-  azure group deployment create --debug-setting All -f c:\Azure\Templates\storage.json -g examplegroup -n ExampleDeployment
-  ```
-
-   次のコマンドを使用して、ログに記録された要求と応答の内容を確認します。
+   次のコマンドでデプロイ操作を確認します。
 
   ```azurecli
-  azure group deployment operation list --resource-group examplegroup --name ExampleDeployment --json
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
   ```
-
-   この情報は、テンプレートの値が正しく設定されているかどうかを確認するのに役立ちます。
 
 - 入れ子になったテンプレート
 
@@ -625,7 +658,7 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 
 **dependsOn** プロパティから値を削除すると、テンプレートをデプロイするときにエラーが発生することがあります。 エラーが発生した場合は、テンプレートの依存関係を元に戻します。 
 
-このアプローチで循環依存関係が解決しない場合は、デプロイ ロジックの一部 (拡張機能や構成設定など) を子リソースに移行することを検討してください。 それらの子リソースを、循環依存関係に関連するリソースの後にデプロイするように構成します。 たとえば、2 つの仮想マシンをデプロイする場合を考えてみます。それぞれ互いに参照するプロパティを設定する必要があるとします。 次の順序でそれらをデプロイできます。
+このアプローチで循環依存関係が解決しない場合は、デプロイ ロジックの一部 (拡張機能や構成設定など) を子リソースに移行することを検討してください。 それらの子リソースを、循環依存関係に関連するリソースの後にデプロイするように構成します。 たとえば、2 つの仮想マシンをデプロイする場合を考えてみます。それぞれ互いに参照するプロパティを設定する必要があるとします。 この仮想マシンは、次の順序でデプロイできます。
 
 1. vm1
 2. vm2
@@ -662,7 +695,7 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 | Automation |[Azure Automation の共通エラーのトラブルシューティングのヒント](../automation/automation-troubleshooting-automation-errors.md) |
 | Azure Stack |[Microsoft Azure Stack のトラブルシューティング](../azure-stack/azure-stack-troubleshooting.md) |
 | Data Factory |[Data Factory のトラブルシューティング](../data-factory/data-factory-troubleshoot.md) |
-| Service Fabric |[Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング](../service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
+| Service Fabric |[Azure Service Fabric アプリケーションの監視と診断](../service-fabric/service-fabric-diagnostics-overview.md) |
 | Site Recovery |[仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](../site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
 | Storage |[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage/storage-monitoring-diagnosing-troubleshooting.md) |
 | StorSimple |[StorSimple デバイスのデプロイメントのトラブルシューティング](../storsimple/storsimple-troubleshoot-deployment.md) |
@@ -672,9 +705,4 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 ## <a name="next-steps"></a>次のステップ
 * 監査アクションについては、「 [リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
 * デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](resource-manager-deployment-operations.md)に関するページを参照してください。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

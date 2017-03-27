@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/1/2017
+ms.date: 3/16/2017
 ms.author: helaw
 translationtype: Human Translation
-ms.sourcegitcommit: 7b5054701320bfa63f62c06c215119fced63a661
-ms.openlocfilehash: f1636bf8f9d7e7c03bc98465ab2cfc05ab233728
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 3e9b02cf5f4dedd8e8e2a59025187604ab9963df
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -34,7 +34,7 @@ This release provides new features for both tenants and administrators.
 ## <a name="infrastructure-and-operations"></a>Infrastructure and operations
 * Isolated administrator and user portals and APIs provide enhanced security.
 * Use enhanced infrastructure management functionality, such as improved alerting.
-* Using the Windows Azure Pack connector, you can view and manage IaaS virtual machines that are hosted on a Cloud Platform System (CPS) stamp. For this preview release, you can try this only with a CPS environment and additional configuration is required.
+* Using the Windows Azure Pack Connector, you can view and manage IaaS virtual machines that are hosted on Windows Azure Pack. For this preview release, try this only in test environments (both Windows Azure Pack and Azure Stack). Additional configuration is required.
 
 ## <a name="next-steps"></a>Next steps
 * [Understand Azure Stack POC architecture](azure-stack-architecture.md)      

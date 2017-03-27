@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 88bfad219ee0564552ee80da5dc944b7e53320db
-ms.openlocfilehash: aa0837d82f5e938440096cd6d12d80bc42a07528
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 0d57ccb26a3dde16c50d2e837d392ab8e6fea979
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="monitoring-and-diagnostics-documentation"></a>Monitoring and Diagnostics のドキュメント
@@ -159,10 +160,24 @@ Azure の監視と診断のサービスを使用して、パフォーマンス�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure 診断スキーマ</a></h3>
+                        <h3>監視</h3>
+                            <p><a href="/azure/monitoring-and-diagnostics/monitoring-supported-metrics">サポートされるメトリックスの一覧</a></p>
+                            <p><a href="/azure/monitoring-and-diagnostics/monitoring-data-sources">監視データのソース</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>診断</h3>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure 診断スキーマ</a></p>
                         <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot0">Azure 診断スキーマ 1.0</a></p>
                         <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2">Azure 診断スキーマ 1.2</a></p>
-                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-to-1dot5">Azure 診断スキーマ 1.3 ～ 1.5</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later">Azure 診断スキーマ 1.3 ～ 1.5</a></p>
                     </div>
                 </div>
             </div>
@@ -170,10 +185,5 @@ Azure の監視と診断のサービスを使用して、パフォーマンス�
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

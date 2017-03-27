@@ -17,9 +17,9 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31efab60690b54faf7992251fcd01e307c4464f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ Azure CLI は、Azure リソースで使用できるオープン ソース、ク
 * Azure Active Directory によって認証するには、`azure login` CLI コマンドを実行します。 この方法では、両方の[コマンド モード](#cli-command-modes)で CLI コマンドにアクセスできます。 追加のオプションを指定せずにコマンドを実行すると、`azure login` では、Web ポータル経由の対話形式でログインを続行するように求められます。 追加の `azure login` コマンド オプションについては、この記事のシナリオを参照するか、または「`azure login --help`」と入力します。
 * Azure サービス管理モード CLI コマンドのみを使用する (ほとんどの新しいデプロイメントに推奨されません) 必要がある場合は、コンピューターに発行設定ファイルをダウンロードしてインストールできます。
 
-CLI をまだインストールしていない場合は、「 [Azure CLI のインストール](xplat-cli-install.md)」を参照してください。 Azure サブスクリプションがない場合は、 [無料アカウント](http://azure.microsoft.com/free/) を数分で作成することができます。
+CLI をまだインストールしていない場合は、「 [Azure CLI のインストール](cli-install-nodejs.md)」を参照してください。 Azure サブスクリプションがない場合は、 [無料アカウント](http://azure.microsoft.com/free/) を数分で作成することができます。
 
 各種アカウント ID と Azure サブスクリプションに関する背景については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 

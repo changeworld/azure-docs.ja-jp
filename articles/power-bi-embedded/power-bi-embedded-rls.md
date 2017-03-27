@@ -13,16 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: c0b3e2de393c53dab4c9e9341269f792603eec18
-ms.lasthandoff: 01/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 1cde5b9ee4c716af07d427d4d0eb3f0775d456ac
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="row-level-security-with-power-bi-embedded"></a>Power BI Embedded の行レベルのセキュリティ
+
 行レベルのセキュリティ (RLS) を使用すると、レポートやデータセット内の特定のデータへのユーザー アクセスを制限できるため、同じレポートを使用する複数のユーザーにそれぞれ異なるデータを表示することが可能になります。 Power BI Embedded では、RLS を使用して構成されたデータセットがサポートされるようになりました。
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-flow-1.png)
@@ -36,6 +37,7 @@ RLS を利用するには、ユーザー、ロール、ルールの&3; つの主
 **ルール** – ロールにはルールが含まれます。これらのルールは、データに適用される実際のフィルターです。 これは、"Country = USA" のように単純な場合もあれば、もっと動的なものの場合もあります。
 
 ### <a name="example"></a>例
+
 この記事の残りの部分では、RLS を作成し、埋め込みアプリケーション内でその RLS を使用する例を紹介します。 この例では、 [Retail Analysis Sample](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX ファイルを使用します。
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-scenario-2.png)
@@ -82,7 +84,8 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-diagram-view-11.png)
 
-**注** : データに DirectQuery モードを使用している場合は、次の&2; つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
+> [!NOTE]
+> データに DirectQuery モードを使用している場合は、次の&2; つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
 
 1. **[ファイル]** -> **[オプションと設定]** -> **[プレビュー機能]** -> **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]**。
 2. **[ファイル]** -> **[オプションと設定]** -> **[DirectQuery]** -> **[DirectQuery モードで無制限のメジャーを許可する]**。
@@ -113,6 +116,11 @@ to
 ![](media/power-bi-embedded-rls/pbi-embedded-rls-dashboard-13.png)
 
 ## <a name="see-also"></a>関連項目
-[Power の行レベルのセキュリティ (RLS)](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/)
+
+[Power の行レベルのセキュリティ (RLS)](https://powerbi.microsoft.com/en-us/documentation/powerbi-admin-rls/)  
+[Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)  
+[Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
+[JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
+ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
 
 

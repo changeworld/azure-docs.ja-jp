@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
 translationtype: Human Translation
-ms.sourcegitcommit: e0c0d40cc0c198000264623476c05473d9d24eaf
-ms.openlocfilehash: 34c29cb8a6289ab4dcb489e6cb83e7f16a748177
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 66465e74298c08d64b37ab0ede86f3d187068555
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/15/2017
 | Azure Storage (Azure Storage) | <ul><li>[Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する](#secure-keys)</li><li>[Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する](#cors-storage)</li></ul> |
 | WCF | <ul><li>[WCF のサービス調整機能を有効にする](#throttling)</li><li>[WCF - メタデータからの情報の漏えい](#info-metadata)</li></ul> | 
 
-## <a name="a-idcsp-jsaimplement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする
+## <a id="csp-js"></a>コンテンツ セキュリティ ポリシー (CSP) を実装し、インライン javascript を無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -67,7 +67,7 @@ javascript:alert(1);
 Example: var str="alert(1)"; eval(str);
 ```
 
-## <a name="a-idxss-filteraenable-browsers-xss-filter"></a><a id="xss-filter"></a>ブラウザーの XSS フィルターを有効にする
+## <a id="xss-filter"></a>ブラウザーの XSS フィルターを有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -78,7 +78,7 @@ Example: var str="alert(1)"; eval(str);
 | 参照              | [XSS 保護フィルター](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
 | 手順 | <p>ブラウザーのクロスサイト スクリプト フィルターは、X-XSS-Protection 応答ヘッダー構成によって制御されます。 この応答ヘッダーには、次の値を設定できます。</p><ul><li>`0:` フィルターを無効にします</li><li>`1: Filter enabled` クロスサイト スクリプティング攻撃が検出された場合、攻撃を阻止するために、ブラウザーはページをサニタイズします</li><li>`1: mode=block : Filter enabled` クロスサイト スクリプティング (XSS) 攻撃が検出された場合、ブラウザーは、ページをサニタイズするのではなく、レンダリングが行われないようにします</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled` ブラウザーはページをサニタイズして、違反をレポートします。</li></ul><p>これは、任意の URI に詳細情報を送信する CSP 違反レポートを使用する Chromium 機能です。 最後の 2 つのオプションは、安全な値と見なされます。</p>|
 
-## <a name="a-idtrace-deployaaspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする
+## <a id="trace-deploy"></a>デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -89,7 +89,7 @@ Example: var str="alert(1)"; eval(str);
 | 参照              | [ASP.NET デバッグの概要](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET トレースの概要](http://msdn2.microsoft.com/library/bb386420.aspx)、[方法: ASP.NET アプリケーションのトレースを有効にする](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[方法: .NET アプリケーションのデバッグを有効にする](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | 手順 | ページのトレースが有効になっていると、それを要求しているブラウザーも、内部サーバーの状態とワークフローのデータを含むトレース情報をそれぞれ取得します。 それが機密情報であることがあります。 ページでデバッグが有効になっている場合、サーバーでエラーが発生すると、ブラウザーに完全なスタック トレース データのサーバーが提供されます。 そのデータによって、サーバーのワークフローに関する機密情報が公開される場合があります。 |
 
-## <a name="a-idjs-trustedaaccess-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
+## <a id="js-trusted"></a>信頼できるソースのサード パーティ製 javascript にのみアクセスする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -100,7 +100,7 @@ Example: var str="alert(1)"; eval(str);
 | 参照              | 該当なし  |
 | 手順 | サード パーティ製の JavaScript は、信頼できるソースからのみ参照してください。 参照エンドポイントは必ず SSL 上に配置されている必要があります。 |
 
-## <a name="a-idui-defensesaensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-clickjacking-defenses"></a><a id="ui-defenses"></a>認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する
+## <a id="ui-defenses"></a>認証された ASP.NET ページに、UI Redressing (クリックジャッキング) に対する防御が組み込まれていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -135,7 +135,7 @@ X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用し�
     </system.webServer>
 ```
 
-## <a name="a-idcors-aspnetaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
+## <a id="cors-aspnet"></a>ASP.NET Web アプリケーションで CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -166,7 +166,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 重要なのは、"Access-Control-Allow-Origin" 属性のオリジンのリストを、必ず信頼できる有限オリジン セットに設定することです。 この構成が不適切だと (例: "*" に設定する)、悪意のあるサイトが、Web アプリケーションへのクロス オリジン要求を無制限にトリガーできるため、アプリケーションが CSRF 攻撃に対して脆弱になります。 
 
-## <a name="a-idvalidate-aspnetaenable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>ASP.NET ページで ValidateRequest 属性を有効にする
+## <a id="validate-aspnet"></a>ASP.NET ページで ValidateRequest 属性を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -192,7 +192,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 ```
 要求の検証機能はサポートされていないことに注意してください。MVC6 パイプラインにも含まれていません。 
 
-## <a name="a-idlocal-jsause-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>ローカルでホストされている最新の JavaScript ライブラリを使用する
+## <a id="local-js"></a>ローカルでホストされている最新の JavaScript ライブラリを使用する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -203,7 +203,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | 参照              | 該当なし  |
 | 手順 | <p>JQuery などの標準の JavaScript ライブラリを使用している開発者は、セキュリティ上の既知の欠陥がない、一般的な JavaScript ライブラリの承認済みバージョンを使用する必要があります。 最新バージョンのライブラリには、以前のバージョンで見つかった脆弱性に対するセキュリティ更新プログラムが含まれるため、これを使用することをお勧めします。</p><p>互換性の理由により最新リリースを使用できない場合は、以下に示すバージョン以降のライブラリを使用してください。</p><p>許容される最小バージョン:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery Validate 1.9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2.99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**Ajax Control Toolkit**<ul><li>Ajax Control Toolkit 40412</li></ul></li><li>**ASP.NET Web Forms および Ajax**<ul><li>ASP.NET Web Forms および Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>パブリック CDN など、外部サイトからは JavaScript ライブラリを読み込まないでください</p>|
 
-## <a name="a-idmime-sniffadisable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>自動 MIME スニッフィングを無効にする
+## <a id="mime-sniff"></a>自動 MIME スニッフィングを無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -268,7 +268,7 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
-## <a name="a-idstandard-fingeraremove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する
+## <a id="standard-finger"></a>Windows Azure Web サイトで標準的なサーバー ヘッダーを削除して、フィンガープリントを残すことを回避する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -279,7 +279,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | 参照              | [Windows Azure Web サイトでの標準的なサーバー ヘッダーの削除](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
 | 手順 | Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サーバーおよび基盤のテクノロジに関する情報が公開されます。 アプリケーションにフィンガープリントが残らないように、こうしたヘッダーは非表示にすることをお勧めします |
 
-## <a name="a-idfirewall-dbaconfigure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>データベース エンジンにアクセスできるように Windows ファイアウォールを構成する
+## <a id="firewall-db"></a>データベース エンジンにアクセスできるように Windows ファイアウォールを構成する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -290,7 +290,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | 参照              | [Azure SQL データベース ファイアウォールを構成する方法](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043) |
 | 手順 | ファイアウォール システムは、コンピューター リソースへの不正アクセスを防ぐのに役立ちます。 ファイアウォールを経由して SQL Server データベース エンジンのインスタンスにアクセスするには、SQL Server を実行しているコンピューターで、アクセスを許可するようにファイアウォールを構成する必要があります |
 
-## <a name="a-idcors-apiaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
+## <a id="cors-api"></a>ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -478,7 +478,7 @@ public void ConfigureServices(IServiceCollection services)
     }
 ```
 
-## <a name="a-idconfig-sensitiveaencrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>機密データを含む Web API の構成ファイルのセクションを暗号化する
+## <a id="config-sensitive"></a>機密データを含む Web API の構成ファイルのセクションを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -489,7 +489,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | 手順 | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイ タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
-## <a name="a-idadmin-strongaensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>強力な資格情報ですべての管理インターフェイスが保護されていることを確認する
+## <a id="admin-strong"></a>強力な資格情報ですべての管理インターフェイスが保護されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -500,7 +500,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | デバイスまたはフィールド ゲートウェイによって公開される管理インターフェイスすべてを、強力な資格情報を使用して保護する必要があります。 また、WiFi、SSH、ファイル共有、FTP など、他の公開インターフェイスも強力な資格情報で保護します。 既定の脆弱なパスワードは使用しないでください。 |
 
-## <a name="a-idunknown-exeaensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>不明なコードがデバイスで実行できないことを確認する
+## <a id="unknown-exe"></a>不明なコードがデバイスで実行できないことを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -511,7 +511,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | [Windows 10 IoT Core でのセキュア ブートと BitLocker デバイス暗号化の有効化](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
 | 手順 | UEFI セキュア ブートでは、指定された機関によって署名されたバイナリの実行のみを許可するようにシステムを制限します。 この機能により、不明なコードがプラットフォームで実行できなくなり、コードによって、プラットフォームのセキュリティが低下する可能性を排除できます。 UEFI セキュア ブートを有効にして、コードに署名する信頼済み証明機関の一覧を制限し、 信頼された機関のいずれかを使用して、デバイスにデプロイされているすべてのコードに署名します。 |
 
-## <a name="a-idpartition-iotaencrypt-os-and-additional-partitions-of-iot-device-with-bitlocker"></a><a id="partition-iot"></a>Bitlocker で OS と IoT デバイスの追加のパーティションを暗号化する
+## <a id="partition-iot"></a>Bitlocker で OS と IoT デバイスの追加のパーティションを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -522,7 +522,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。Bitlocker を使用して OS のパーティションだけでなく、追加のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
 
-## <a name="a-idmin-enableaensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>デバイスで有効になっているのが最小サービス/機能のみであることを確認する
+## <a id="min-enable"></a>デバイスで有効になっているのが最小サービス/機能のみであることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -533,7 +533,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | ソリューションに不要な機能やサービスは OS で有効にしないでください。つまりオフにします。 たとえば、デバイスで UI をデプロイする必要がない場合は、Windows IoT Core をヘッドレス モードでインストールします。 |
 
-## <a name="a-idfield-bitlockeraencrypt-os-and-additional-partitions-of-iot-field-gateway-with-bitlocker"></a><a id="field-bitlocker"></a>Bitlocker で OS と IoT フィールド ゲートウェイの追加のパーティションを暗号化する
+## <a id="field-bitlocker"></a>Bitlocker で OS と IoT フィールド ゲートウェイの追加のパーティションを暗号化する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -544,7 +544,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | Windows 10 IoT Core は、BitLocker デバイス暗号化の軽量バージョンを実装しており、必要な測定を行う UEFI の必要な preOS プロトコルを含む、プラットフォーム上の TPM の存在に強く依存します。 この preOS 測定により、以降の OS に、OS が起動された方法に関する明確なレコードが確実に保持されます。Bitlocker を使用して OS のパーティションだけでなく、追加のパーティションも暗号化してください。このパーティションにも、機密データが格納されていることがあります。 |
 
-## <a name="a-iddefault-changeaensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する
+## <a id="default-change"></a>インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -555,7 +555,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | インストール中にフィールド ゲートウェイの既定のログイン資格情報が変更されていることを確認します |
 
-## <a name="a-idcloud-firmwareaensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>接続されているデバイスのファームウェアを最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認する
+## <a id="cloud-firmware"></a>接続されているデバイスのファームウェアを最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -566,7 +566,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-device-jobs/) |
 | 手順 | LWM2M は、IoT デバイス管理の Open Mobile Alliance のプロトコルです。 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。 Azure IoT Hub デバイス管理を使用して、デバイスおよびその他の構成データを定期的に最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認します。 |
 
-## <a name="a-idcontrols-policiesaensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する
+## <a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -577,7 +577,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | 該当なし  |
 | 手順 | ディスク レベルの暗号化用の BitLocker、更新された署名を備えたウイルス対策、ホスト ベースのファイアウォール、OS アップグレード、グループ ポリシーなど、デバイスのエンドポイント セキュリティ制御が組織のセキュリティ ポリシーに従って構成されていることを確認します。 |
 
-## <a name="a-idsecure-keysaensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する
+## <a id="secure-keys"></a>Azure ストレージ アクセス キーの管理がセキュリティで保護されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -588,7 +588,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | [Azure Storage セキュリティ ガイド - ストレージ アカウント キーの管理](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
 | 手順 | <p>キー記憶域: Azure ストレージ アクセス キーはシークレットとして Azure Key Vault に格納し、アプリケーションで Key Vault からキーを取得することをお勧めします。 その理由は次のとおりです。</p><ul><li>アプリケーションではストレージ キーが構成ファイルでハードコーディングされないため、特定のアクセス許可を持たない誰かがキーへのアクセス権を取得する抜け道がなくなります</li><li>Azure Active Directory を使用して、キーへのアクセスを制御できます。 つまり、アカウント所有者が、Azure Key Vault からキーを取得する必要があるいくつかのアプリケーションに、アクセス権を付与できます。 アクセス許可が付与されていないアプリケーションが、キーにアクセスすることはできません</li><li>キーの再生成: セキュリティ上の理由から、Azure ストレージ アクセス キーを生成するプロセスを設定することをお勧めします。 キーの再生成を計画する理由と方法の詳細については、Azure Storage セキュリティ ガイドのリファレンス記事を参照してください</li></ul>|
 
-## <a name="a-idcors-storageaensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
+## <a id="cors-storage"></a>Azure Storage で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -599,7 +599,7 @@ public void ConfigureServices(IServiceCollection services)
 | 参照              | [Azure Storage サービスの CORS のサポート](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
 | 手順 | Azure Storage では、CORS (クロス オリジン リソース共有) を有効にできます。 ストレージ アカウントごとに、そのストレージ アカウントのリソースにアクセスできるドメインを指定できます。 既定では、すべてのサービスで CORS が無効です。 CORS を有効にするには、REST API またはストレージ クライアント ライブラリを使用して、サービス ポリシーを設定するいずれかのメソッドを呼び出します。 |
 
-## <a name="a-idthrottlingaenable-wcfs-service-throttling-feature"></a><a id="throttling"></a>WCF のサービス調整機能を有効にする
+## <a id="throttling"></a>WCF のサービス調整機能を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -622,7 +622,7 @@ public void ConfigureServices(IServiceCollection services)
 </system.serviceModel> 
 ```
 
-## <a name="a-idinfo-metadataawcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>WCF - メタデータからの情報の漏えい
+## <a id="info-metadata"></a>WCF - メタデータからの情報の漏えい
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -651,3 +651,4 @@ smb.HttpGetEnabled = false;
 smb.HttpGetUrl = new Uri(EndPointAddress); 
 Host.Description.Behaviors.Add(smb);
 ```
+

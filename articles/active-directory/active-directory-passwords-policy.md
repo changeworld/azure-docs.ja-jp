@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: fc73b667112fe35473872c33bc98423a424c5c65
-ms.openlocfilehash: d6bee5afea6afcd756b53f41baef5dd984423c0a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 52c58c5c8ea35bf29f8b847e5b7d119d6ab85da4
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/17/2017
 この記事では、Azure AD ディレクトリに格納されているユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
 
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+> **サインインに問題がありますか?** その場合は、 [自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
 >
 >
 
@@ -35,7 +35,7 @@ Azure AD 認証システムにサインインする必要があるすべての�
 | プロパティ | UserPrincipalName の要件 |
 | --- | --- |
 | 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> に関するページを参照してください。 - \_ ! \# ^ \~</li></ul> |
-| 使用できない文字 |<ul> <li>ユーザー名とドメインの間以外にある '@' 文字</li> <li>'@' 記号の直前のピリオド文字 "."</li></ul> |
+| 使用できない文字 |<ul> <li>ユーザー名とドメインの間以外にある '@' 文字</li> <li>'@' 記号の直前のピリオド文字 '.'</li></ul> |
 | 長さの制限 |<ul> <li>全体の長さは 113 文字以内にする必要があります</li><li>‘@’ 記号の前に&64; 文字</li><li>‘@’ 記号の後に&48; 文字</li></ul> |
 
 ## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>クラウド ユーザー アカウントにのみ適用されるパスワード ポリシー
@@ -54,7 +54,7 @@ Azure AD 認証システムにサインインする必要があるすべての�
 | アカウントのロックアウト |正しくないパスワードを入力してサインイン試行に 10 回失敗したユーザーを、1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 |
 
 ## <a name="next-steps"></a>次のステップ
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [任意の場所からのパスワードの管理](active-directory-passwords.md)
 * [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
 * [パスワード管理の概要](active-directory-passwords-getting-started.md)

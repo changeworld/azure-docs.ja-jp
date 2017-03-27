@@ -1,6 +1,6 @@
 ---
-title: "Azure Logic Apps で X12 メッセージをデコードする | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack の X12 デコーダーを使用する方法"
+title: "X12 メッセージをデコードする - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps で Enterprise Integration Pack の X12 メッセージ デコーダーを使用して EDI の検証およびトランザクション セットの XML の生成を行います"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,48 +15,61 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 2fa435d5a52ee7a9c18926912a7212ee862b3832
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 717069dbe211ea9cc04925875e0f28c85ef25ac2
+ms.lasthandoff: 03/10/2017
 
 
 ---
-# <a name="get-started-with-decode-x12-messages"></a>Decode X12 Message を使ってみる
-EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、処理したトランザクションの受信確認を生成したりできます。
+# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の X12 メッセージをデコードする
 
-## <a name="prereqs"></a>前提条件
+Decode X12 Message コネクタでは、EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、処理したトランザクションの受信確認を生成したりできます。 このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。
+
+## <a name="before-you-start"></a>開始する前に
+
+必要な項目を次に示します。
+
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
-* Decode X12 Message コネクタを使用するには、統合アカウントが必要です。 [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)、および [X12 契約](../logic-apps/logic-apps-enterprise-integration-x12.md)の作成方法の詳細を確認してください。
+* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Decode X12 Message コネクタを使用するには、統合アカウントが必要です。
+* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている [X12 契約](logic-apps-enterprise-integration-x12.md)
 
 ## <a name="decode-x12-messages"></a>X12 メッセージをデコードする
 
-1. [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事に例が記載されています。
-2. このコネクタにはトリガーがありません。 ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。  Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。  ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「x12」と入力します。  [X12 – Decode X12 message] (X12 – X12 メッセージのデコード) を選択します。
+1. [ロジック アプリを作成](logic-apps-create-a-logic-app.md)します。
+
+2. Decode X12 Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
+
+3.    検索ボックスに、フィルターとして「x12」と入力します。 **[X12 - X12 メッセージをデコードする]** を選択します。
    
-    ![search x12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
-3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
+    !["x12" の検索](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
+
+3. 以前に統合アカウントへの接続を作成していない場合は、ここでその接続を作成するように求められます。 接続の名前を指定し、接続する統合アカウントを選択します。 
+
+    ![統合アカウントの接続の詳細の指定](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
+
+    アスタリスクが付いているプロパティは必須です。
+
+    | プロパティ | 詳細 |
+    | --- | --- |
+    | 接続名 * |接続の任意の名前を入力します。 |
+    | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
+
+5.    完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
    
-    ![integration account connection](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)     
-4. 統合アカウントの詳細を入力します。  アスタリスクが付いているプロパティは必須です。
-   
-   | プロパティ | 詳細 |
-   | --- | --- |
-   | 接続名 * |接続の任意の名前を入力します。 |
-   | 統合アカウント * |統合アカウント名を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
-   
-    入力が完了すると、接続の詳細は次のようになります。
-   
-    ![integration account connection created](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
-5. **[作成]**を選択します。
-6. 接続が作成されたことを確認します。
-   
-    ![integration account connection details](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
-7. デコードする X12 フラット ファイル メッセージを選択します。
-   
-    ![provide mandatory fields](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+    ![integration account connection details](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
+
+6. 接続が作成されたら、次の例に示すように、デコードする X12 フラット ファイル メッセージを選択します。
+
+    ![integration account connection created](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
+
+    次に例を示します。
+
+    ![デコードする X12 フラット ファイル メッセージの選択](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
 ## <a name="x12-decode-details"></a>X12 Decode の詳細
 
-X12 Decode コネクターは次の処理を行います。
+X12 Decode コネクタは次のタスクを実行します。
 
 * 取引パートナー契約と照らし合わせてエンベロープを検証する
 * 各トランザクション セットの XML ドキュメントを生成する
@@ -81,10 +94,5 @@ X12 Decode コネクターは次の処理を行います。
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

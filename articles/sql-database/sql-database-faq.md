@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 02/06/2017
+ms.date: 02/07/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 20183f482b7c7ec10c2b1f2d759b160434c9174c
-ms.openlocfilehash: 208a38aea6b4673f93c4c1fe4252c788e1f3425b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: ef58f595ff58b9156df813cf92e2306654a8b3ed
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -119,4 +119,9 @@ geo セカンダリは非同期レプリカであり、プライマリとの完�
 ## <a name="what-tools-are-available-to-monitor-the-replication-lag-between-the-primary-database-and-geo-secondary"></a>プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するために、どのツールを使用できますか。
 DMV を使ってプライマリ データベースと geo セカンダリの間のリアルタイムのレプリケーションの遅延を公開しています。 詳細については、[sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx) に関するページをご覧ください。
 
+## <a name="to-move-a-database-to-a-different-server-in-the-same-subscription"></a>同じサブスクリプション内の別のサーバーにデータベースを移動するには
+* [Azure Portal](https://portal.azure.com) で **[SQL データベース]** をクリックし、一覧からデータベースを選択してから、**[コピー]** をクリックします。 詳細については、「 [Azure SQL データベースのコピー](sql-database-copy.md) 」を参照してください。
+
+## <a name="to-move-a-database-between-subscriptions"></a>サブスクリプション間でデータベースを移動するには
+* [Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]**をクリックし、移動するリソースと移動先のサブスクリプションを選択します。
 

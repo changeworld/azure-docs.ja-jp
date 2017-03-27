@@ -10,7 +10,7 @@
 ## [ポータルを使用して VM を作成する](../../virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [VM へのログオン](../../virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Azure PowerShell をインストールするには](/powershell/azureps-cmdlets-docs)
-## [Azure CLI のインストール](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [Azure CLI のインストール](../../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 # 方法
 
@@ -85,6 +85,7 @@
 ### [アプリケーションへのアクセス](../../virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [新しい VM の作成に関するクラシック デプロイの問題](../../virtual-machines-windows-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ### [既存の VM の再起動またはサイズ変更に関するクラシック デプロイの問題](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+## [RDP パスワードをリセットする](../../virtual-machines-windows-classic-reset-rdp.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)

@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: d4be6bf16527fa1a08ad758cbccf1329122a5e65
-ms.openlocfilehash: 5cb44681f9bbd07a95eb2eed1d8de08243a18d6d
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 244413be8b094605883445bb3cbf675b538b704e
+ms.lasthandoff: 03/10/2017
 
 
 ---
-#  <a name="use-azure-media-standard-to-auto-generate-a-bitrate-ladder"></a>Azure Media Encoder Standard を使用したビットレート ラダーの自動生成
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Azure Media Encoder Standard を使用したビットレート ラダーの自動生成
 
 ## <a name="overview"></a>概要
 

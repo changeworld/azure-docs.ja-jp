@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: b646a93b-4c51-4ba4-84da-3275d9124ebe
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 271a15d258177c98ad72be007c20ae278df6236b
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -32,7 +34,7 @@ Pig Latin プログラミング言語では、入力データに適用される�
 > Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」をご覧ください。
 
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
+## <a id="prereq"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
@@ -42,7 +44,7 @@ Pig Latin プログラミング言語では、入力データに適用される�
 
 * SSH クライアント SSH クライアントを備えた Linux、Unix、および Mac OS Windows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-## <a name="a-idsshaconnect-with-ssh"></a><a id="ssh"></a>SSH を使用した接続
+## <a id="ssh"></a>SSH を使用した接続
 SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。 FQDN はクラスターに指定した名前で、その後、 **.azurehdinsight.net**が続きます。 以下の例では、 **myhdinsight**という名前のクラスターに接続します。
 
     ssh admin@myhdinsight-ssh.azurehdinsight.net
@@ -60,7 +62,7 @@ Windows ではビルトイン SSH クライアントは提供されません。 
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-## <a name="a-idpigause-the-pig-command"></a><a id="pig"></a>Pig コマンドの使用
+## <a id="pig"></a>Pig コマンドの使用
 1. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。
    
         pig
@@ -137,10 +139,10 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
         (ERROR,6)
         (FATAL,2)
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 このように、Pig コマンドでは、Pig Latin を使用して MapReduce 操作を対話的に実行できるだけでなく、バッチ ファイルに格納されたステートメントも実行できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 HDInsight での Pig に関する全般的な情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
@@ -149,10 +151,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

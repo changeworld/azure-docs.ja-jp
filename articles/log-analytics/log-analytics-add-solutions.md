@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ecb848efd8516ae43d07f8c6ebbf3868b8e20757
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: dc4a28b64620ecc4829d614b9a3c9e1939fd0063
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -38,6 +38,12 @@ Log Analytics 管理ソリューションには、特定の問題点に関する
 この記事では、Azure Portal の Marketplace を使用して管理ソリューションをワークスペースに追加します。 ソリューションを追加すると、データはインフラストラクチャのサーバーから収集され、OMS サービスに送信されます。 OMS サービスによる処理には、通常、数分から&1; 時間かかります。 サービスによってデータが処理されると、OMS でそのデータを表示できます。
 
 不要になった管理ソリューションは、簡単に削除できます。 管理ソリューションを削除すると、そのデータは OMS に送信されません。 ソリューションを削除するとデータ量を削減できるので、Free 価格レベルの場合は&1; 日のデータ使用量をクォータ内に抑えるのに役立ちます。
+
+## <a name="view-available-management-solutions"></a>使用できる管理ソリューションの表示
+
+[Log Analytics 用の管理ソリューション](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)は、Azure Marketplace に一覧表示されます。
+
+Azure Marketplace から各ソリューションの下にある **[Get it now (今すぐ入手する)]** リンクをクリックして管理ソリューションをインストールすることができます。
 
 ## <a name="add-a-management-solution"></a>管理ソリューションの追加
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
@@ -172,7 +178,7 @@ Log Analytics Windows エージェントと System Center Operations Manager エ
 | マルウェア対策評価 |Windows |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |1 時間に&1; 回 |
 | セキュリティおよび監査<sup>1</sup> | Windows および Linux | ![一部](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![一部](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![一部](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![一部](./media/log-analytics-add-solutions/oms-bullet-yellow.png) | 各種 |
 
-<sup>1</sup>セキュリティおよび監査ソリューションは、Windows、Operations Manager、および Linux エージェントからログを収集できます。 データ収集方法については、「[データ ソース](#data-sources)」を参照してください。
+<sup>1</sup> セキュリティと監査ソリューションは、Windows、Operations Manager、Linux エージェントからログを収集できます。 データ収集方法については、「[データ ソース](#data-sources)」を参照してください。
 
 - syslog
 - Windows セキュリティ イベント ログ

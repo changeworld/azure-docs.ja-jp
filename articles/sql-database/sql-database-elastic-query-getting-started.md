@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: cbd1c7e7d915e8a10d69c7a2f1679835dcee23b7
-ms.openlocfilehash: b64129b77385685b41aac55c52a34e9d0495124e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 531fdbbeab09a67be9636b3a70eabbb4148f7400
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -122,15 +122,12 @@ ElasticDBQuery データベースでこのクエリを実行します。
 
 さまざまなシャードに格納されている、 **[Customers]** テーブルからのすべての行が Excel シートに読み込まれます。
 
-## <a name="next-steps"></a>次のステップ
 これで Excel の強力なデータ視覚化機能を使用できるようになりました。 サーバー名、データベース名、および資格情報が含まれる接続文字列を使用して、BI とデータ統合ツールをエラスティック クエリ データベースに接続することができます。 ご使用のツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 エラスティック クエリ データベースおよび外部テーブル (ツールを使用して接続するその他の SQL Server データベースおよび SQL Server テーブルのような) を参照できます。
 
 ### <a name="cost"></a>コスト
 Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。
 
 料金情報については、「 [SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
-
-## <a name="next-steps"></a>次のステップ
 
 ## <a name="next-steps"></a>次のステップ
 

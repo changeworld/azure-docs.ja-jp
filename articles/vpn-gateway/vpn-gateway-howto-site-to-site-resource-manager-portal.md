@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eea00841708212789e14fa8717d83dd81d472bac
-ms.openlocfilehash: c99788aded849933289555dd133b8146d6b2bdf2
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 37311ea17004d8c5cfe9bfc9360c3972e39fb7f5
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,9 +26,10 @@ ms.lasthandoff: 01/27/2017
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [クラシック - Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
-> 
-> 
+>
+>
 
 この記事では、Azure Resource Manager デプロイメント モデルと Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN ゲートウェイ接続を作成する手順について説明します。 サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
@@ -51,7 +52,7 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 * VPN デバイスの外部接続用パブリック IP アドレス。 この IP アドレスを NAT の内側に割り当てることはできません。
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](http://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 
-### <a name="a-namevaluesasample-configuration-values-for-this-exercise"></a><a name="values"></a>この演習のサンプル構成値
+### <a name="values"></a>この演習のサンプル構成値
 以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。
 
 * **VNet の名前:** TestVNet1
@@ -71,22 +72,22 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 * **ローカル ネットワーク ゲートウェイ名:** Site2
 * **接続名:** VNet1toSite2
 
-## <a name="a-namecreatvneta1-create-a-virtual-network"></a><a name="CreatVNet"></a>1.仮想ネットワークの作成
+## <a name="CreatVNet"></a>1.仮想ネットワークの作成
 既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。 特に、他のネットワークと重複している可能性のあるサブネットに注意してください。 サブネットの重複があると、接続が適切に動作しません。 VNet が正しい設定で構成されていたら、「 [DNS サーバーの指定](#dns) 」セクションの手順に進んでください。
 
 ### <a name="to-create-a-virtual-network"></a>仮想ネットワークを作成するには
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="a-namesubnetsa2-add-additional-address-space-and-subnets"></a><a name="subnets"></a>2.アドレス空間とサブネットの追加
+## <a name="subnets"></a>2.アドレス空間とサブネットの追加
 VNet が作成されたら、アドレス空間とサブネットをさらに追加できます。
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="a-namednsa3-specify-a-dns-server"></a><a name="dns"></a>3.DNS サーバーの指定
+## <a name="dns"></a>3.DNS サーバーの指定
 ### <a name="to-specify-a-dns-server"></a>DNS サーバーを指定するには
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## <a name="a-namegatewaysubneta4-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>4.ゲートウェイ サブネットの作成
+## <a name="gatewaysubnet"></a>4.ゲートウェイ サブネットの作成
 仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。 将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。
 
 練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の [値](#values) を参照してください。
@@ -94,13 +95,13 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 ### <a name="to-create-a-gateway-subnet"></a>ゲートウェイ サブネットを作成するには
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="a-namevnetgatewaya5-create-a-virtual-network-gateway"></a><a name="VNetGateway"></a>5.仮想ネットワーク ゲートウェイの作成
+## <a name="VNetGateway"></a>5.仮想ネットワーク ゲートウェイの作成
 練習としてこの構成を作成する場合は、[サンプル構成値](#values)を参照してください。
 
 ### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## <a name="a-namelocalnetworkgatewaya6-create-a-local-network-gateway"></a><a name="LocalNetworkGateway"></a>6.ローカル ネットワーク ゲートウェイの作成
+## <a name="LocalNetworkGateway"></a>6.ローカル ネットワーク ゲートウェイの作成
 "ローカル ネットワーク ゲートウェイ" は、オンプレミスの場所を指します。 Azure から参照できるように、ローカル ネットワーク ゲートウェイに名前を付けます。 
 
 練習としてこの構成を作成する場合は、[サンプル構成値](#values)を参照してください。
@@ -108,10 +109,10 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 ### <a name="to-create-a-local-network-gateway"></a>ローカル ネットワーク ゲートウェイを作成するには
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
-## <a name="a-namevpndevicea7-configure-your-vpn-device"></a><a name="VPNDevice"></a>7.VPN デバイスの構成
+## <a name="VPNDevice"></a>7.VPN デバイスの構成
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-## <a name="a-namecreateconnectiona8-create-a-site-to-site-vpn-connection"></a><a name="CreateConnection"></a>8.サイト間 VPN 接続の作成
+## <a name="CreateConnection"></a>8.サイト間 VPN 接続の作成
 仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。 サンプルの値は必ず実際の値に変更してください。 共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。 
 
 このセクションを開始する前に、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイの作成が完了していることを確認してください。 練習としてこの構成を作成する場合は、接続の作成時に、上記の [値](#values) を参照してください。
@@ -119,7 +120,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 ### <a name="to-create-the-vpn-connection"></a>VPN 接続を作成するには
 [!INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-rm-portal-include.md)]
 
-## <a name="a-nameverifyconnectiona9-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>9.VPN 接続の確認
+## <a name="VerifyConnection"></a>9.VPN 接続の確認
 VPN 接続の確認はポータルで行えるほか、PowerShell を使って確認することもできます。
 
 [!INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]

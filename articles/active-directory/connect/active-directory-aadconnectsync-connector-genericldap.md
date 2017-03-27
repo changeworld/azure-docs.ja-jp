@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/10/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
-ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 9245a2ce63746f039a3015a5a0cda2ff05cf950e
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -228,10 +229,18 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、 **
 
 コネクタでは、インポート元のコンテナーおよび OU と、エクスポート先のコンテナーおよび OU を選択することもできます。
 
+検索を実行すると、検索はパーティション内のすべてのコンテナーで行われます。 多数のコンテナーがある場合、この動作はパフォーマンスの低下につながります。
+
+>[!NOTE]
+Generic LDAP コネクタに対する 2017 年 3 月の更新以降、検索範囲を選択したコンテナーのみに制限することができます。 これは、次の図に示すように、[Search only in selected containers (選択したコンテナーのみ検索)] チェックボックスをオンにすることで実行できます。
+
+![選択したコンテナーのみ検索](./media/active-directory-aadconnectsync-connector-genericldap/partitions-only-selected-containers.png)
+
 ### <a name="configure-anchors"></a>アンカーの構成
 このページには、あらかじめ構成された値が常に表示されるため、ページの内容を変更することはできません。 サーバーのベンダーが明らかになっている場合、このアンカーには変更できない属性 (オブジェクトの GUID など) が設定されている場合があります。 サーバーのベンダーが検出されていない場合、またはそれには変更できない属性がないことがわかっている場合、コネクタはアンカーとして dn (識別名) を使用します。
 
 ![アンカー](./media/active-directory-aadconnectsync-connector-genericldap/anchors.png)
+
 
 使用する LDAP サーバーとアンカーの一覧を次に示します。
 
@@ -261,9 +270,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 * コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「 [How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2017
+ms.date: 03/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
-ms.openlocfilehash: 49c7506b35f661509346dfd8305f10c0d63422eb
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: c9ff71b3b4f1d2190f112b81835cdd98ceb3357e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Microsoft Visual Studio 2015
+* Visual Studio 2015 または Visual Studio 2017。
 * アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます。
 * Azure Resource Manager テンプレート ファイルを保存できる [Azure Storage アカウント][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 以降。
@@ -42,9 +42,9 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio プロジェクトの準備
-1. Visual Studio で、 **コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# Windows のプロジェクトを作成します。 プロジェクトに **CreateIoTHub**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHub**という名前を付けます。
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]**をクリックします。
-3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。 **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、**[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
    

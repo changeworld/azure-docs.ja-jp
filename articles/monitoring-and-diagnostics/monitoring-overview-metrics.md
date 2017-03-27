@@ -2,7 +2,7 @@
 title: "Microsoft Azure のメトリックの概要 | Microsoft Docs"
 description: "Microsoft Azure のメトリックとその使用方法の概要"
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/02/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: b1c3eb101a6eebf43237d1f08a30721e80616adc
-ms.lasthandoff: 03/03/2017
-
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 86e025f9211a1d7ed07e831b7ce4c21be351513b
+ms.lasthandoff: 03/09/2017
 
 ---
+
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
 
 ## <a name="what-are-metrics"></a>メトリックとは
-Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 最も重要な Azure テレメトリ データの種類が、Azure リソースのほとんどから出力されるメトリックで、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
+Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
 ## <a name="what-can-you-do-with-metrics"></a>メトリックで行えること
 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
@@ -40,20 +40,24 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 メトリックの特性を次に示します。
 
 * すべてのメトリックが **1 分間隔**です。 リソースから&1; 分ごとにメトリック値が届くため、リソースの状態と正常性をほぼリアルタイムで把握できます。
-* メトリックは、**オプトインなしですぐに利用できます。**追加の診断を設定する必要もありません。
+* メトリックは**すぐに使用可能です**。 追加の診断を設定する必要もありません。
 * 各メトリックの **30 日間の履歴** にアクセスできます。 リソースのパフォーマンスまたは正常性における最近の傾向や月単位の傾向をすばやく確認できます。
 
 さらに、以下を実行できます。
 
-* リソースを選択して、メトリックをグラフ上にプロットするときに、Azure Portal で検出やアクセスを容易に行えるほか、**すべてのメトリックを表示**できます。
 * 設定したしきい値をメトリックが超えたときに、そのメトリックに対して、**通知を送信するアラート ルール、または自動化されたアクションを実行するアラート ルール**を構成します。 自動スケールは自動化された特別なアクションで、リソースをスケールアウトして、Web サイトまたはコンピューティング リソースの受信要求や負荷に対応します。 しきい値を超えたメトリックに基づいてスケールインまたはスケールアウトするように、自動スケール設定のルールを構成できます。
-* **アーカイブ** するか、オフライン レポートに使用します。 リソースの診断設定を構成するときに、メトリックを Azure Blob Storage にルーティングできます。
-* メトリックを Event Hub に**ストリーミング**します。これにより、メトリックを Azure Stream Analytics またはカスタム アプリにルーティングし、ほぼリアルタイムで分析できます。 これを行うには、診断設定を使用します。
-* すべてのメトリックを Log Analytics (OMS) に**ルーティング**して、リソースのメトリック データでインスタント分析、検索、カスタム アラートを使用できるようにします。
+
+* すべてのメトリックを Application Insights または Log Analytics (OMS) に**ルーティング**して、リソースのメトリック データでインスタント分析、検索、カスタム アラートを使用できるようにします。 メトリックをイベント ハブにストリーミングすることもできます。これにより、メトリックを Azure Stream Analytics またはカスタム アプリにルーティングし、ほぼリアルタイムで分析できます。 イベント ハブへのストリーミングは、診断設定を使用して設定します。
+
+* メトリックは、長期間保持するために**ストレージにアーカイブ**できるほか、オフライン レポートに使用することもできます。 リソースの診断設定を構成するときに、メトリックを Azure Blob Storage にルーティングできます。
+
+* リソースを選択して、メトリックをグラフ上にプロットするときに、Azure Portal で検出やアクセスを容易に行えるほか、**すべてのメトリックを表示**できます。
+
 * 新しい Azure Monitor REST API でメトリックを**使用**します。
+
 * PowerShell コマンドレットまたはクロスプラットフォーム REST API を使用して、メトリックに**クエリ**を実行します。
-  
-  ![Azure Monitor のメトリックのルーティング](./media/monitoring-overview-metrics/MetricsOverview0.png)
+
+  ![Azure Monitor のメトリックのルーティング](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
 ## <a name="access-metrics-via-the-portal"></a>ポータルを使用してメトリックにアクセスする
 ここでは、Azure Portal を使用してメトリック グラフを作成する手順を簡単に説明します。
@@ -63,7 +67,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 2. Azure App Service の Web サイトを作成します。
 3. 作成した Web サイトの **[概要]** ブレードに移動します。
 4. 新しいメトリックは、**[監視]** タイルとして表示されます。 このタイルを編集して、さらに多くのメトリックを選択できます。
-   
+
    ![Azure Monitor のリソースのメトリック](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
 ### <a name="to-access-all-metrics-in-a-single-place"></a>1 か所ですべてのメトリックにアクセスするには
@@ -72,13 +76,13 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 3. ドロップダウン リストから、サブスクリプション、リソース グループ、およびリソースの名前を選択します。
 4. 使用可能なメトリックの一覧を表示します。 次に、対象のメトリックを選択し、プロットします。
 5. それをダッシュボードに固定するには、右上隅にあるピン アイコンをクリックします。
-   
+
    ![Azure Monitor の&1; か所ですべてのメトリックにアクセス](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
 > ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および仮想マシン スケール セットからアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や仮想マシン スケール セットで Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
-> 
-> 
+>
+>
 
 ## <a name="access-metrics-via-the-rest-api"></a>REST API を使用してメトリックにアクセスする
 Azure メトリックには、Azure Monitor API を使用してアクセスできます。 メトリックの検出とアクセスに役立つ API は&2; つあります。
@@ -88,8 +92,8 @@ Azure メトリックには、Azure Monitor API を使用してアクセスで�
 
 > [!NOTE]
 > この記事では、Azure リソースの [メトリックを対象とした新しい API](https://msdn.microsoft.com/library/dn931930.aspx) で使用するメトリックについて説明します。 新しいメトリック定義 API の API バージョンは 2016-03-01 で、メトリック API のバージョンは 2016-09-01 です。 従来のメトリック定義とメトリックには、API バージョン 2014-04-01 でアクセスできます。
-> 
-> 
+>
+>
 
 Azure Monitor REST API を使用した詳細なチュートリアルについては、「[Azure 監視 REST API のチュートリアル](monitoring-rest-api-walkthrough.md)」を参照してください。
 
@@ -114,7 +118,7 @@ Azure リソースの中には、複数のインスタンスをスケールア�
  ![Azure Monitor のメトリックと自動スケール](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>サポートされているサービスとメトリックについて
-Azure Monitor は、新しいメトリック インフラストラクチャです。 この Azure Monitor が、Azure ポータルと新しい Azure Monitor API バージョンでサポートする Azure サービスは次のとおりです。
+Azure Monitor は、新しいメトリック インフラストラクチャです。 Azure Portal と、新しいバージョンの Azure Monitor API で、次の Azure サービスをサポートしています。
 
 * VM (Azure Resource Manager ベース)
 * 仮想マシン スケール セット
@@ -139,5 +143,5 @@ Azure Monitor は、新しいメトリック インフラストラクチャで�
 
 * [自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)
 * [アラート ルールの作成方法](insights-alerts-portal.md)
-
+* [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md)
 

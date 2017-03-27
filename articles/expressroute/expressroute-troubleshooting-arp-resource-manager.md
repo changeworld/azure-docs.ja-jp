@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
-ms.openlocfilehash: 2a5a12899ea3bcc89be0244e252c552515f57150
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: a65b1ba2998eae33b3e73bd2492fbbf025eb5946
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -49,8 +50,8 @@ ARP テーブルの例:
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+         10 On-Prem           10.0.0.1   ffff.eeee.dddd
+          0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
 次のセクションでは、ExpressRoute のエッジ ルーターによって参照される ARP テーブルの表示方法について説明します。 
@@ -83,8 +84,8 @@ Azure プライベート ピアリングの ARP テーブルは、次のコマ�
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
-         10 On-Prem           10.0.0.1 ffff.eeee.dddd
-          0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
+         10 On-Prem           10.0.0.1   ffff.eeee.dddd
+          0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
 ### <a name="arp-tables-for-azure-public-peering"></a>Azure パブリック ピアリングの ARP テーブル
@@ -105,8 +106,8 @@ Azure パブリック ピアリングの ARP テーブルは、次のコマン�
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
-         10 On-Prem           64.0.0.1 ffff.eeee.dddd
-          0 Microsoft         64.0.0.2 aaaa.bbbb.cccc
+         10 On-Prem           64.0.0.1   ffff.eeee.dddd
+          0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>Microsoft ピアリングの ARP テーブル
@@ -127,8 +128,8 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+         10 On-Prem           65.0.0.1   ffff.eeee.dddd
+          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
 ## <a name="how-to-use-this-information"></a>この情報の用途
@@ -142,19 +143,29 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
-         10 On-Prem           65.0.0.1 ffff.eeee.dddd
-          0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+         10 On-Prem           65.0.0.1   ffff.eeee.dddd
+          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
-* ARP テーブルにはエントリが&1; 件しか表示されません。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
+オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが&1; つだけ表示されるか、オンプレミス MAC アドレスがIncomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
-         0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
+         0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+
+または
+       
+       Age InterfaceProperty IpAddress  MacAddress    
+       --- ----------------- ---------  ----------   
+         0 On-Prem           65.0.0.1   Incomplete
+         0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+
 
 > [!NOTE]
-> このような問題の解決については、ご利用の接続プロバイダーにサポート要求を申請してください。 
+> このような問題の解決については、ご利用の接続プロバイダーにサポート要求を申請してください。 ARP テーブルでインターフェイスの IP アドレスが MAC アドレスにマップされていない場合は、次の情報を確認してください。
 > 
+> 1. MSEE-PR と MSEE の間のリンクに割り当てられた /30 サブネットの最初の IP アドレスが MSEE-PR のインターフェイスで使用されている場合は、 Azure では、常に MSEE の&2; 番目の IP アドレスが使用されます。
+> 2. MSEE-PR と MSEE のペアで顧客 (S-Tag) とサービス (S-Tag) VLAN タグの両方が一致することを確認します。
 > 
 
 ### <a name="arp-table-when-microsoft-side-has-problems"></a>マイクロソフト側に問題がある場合の ARP テーブル
@@ -167,10 +178,5 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
   * ExpressRoute でアドバタイズされるプレフィックスをルート テーブルを取得して調べる
 * バイトの入出力を参照してデータ転送を検証する
 * 問題が解消しない場合は [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート チケットを申請する
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 97dd91986751031daef24fc806adc7021b2f94fc
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c6acdf97ee5e947ac48866c003480e393dd4bf35
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/31/2017
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM の仮想ディスクを暗号化するための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#overview-of-disk-encryption)。
 
-[最新の Azure CLI](../xplat-cli-install.md) をインストールし、次のように Resource Manager モードを使ってログインする必要があります。
+[最新の Azure CLI](../cli-install-nodejs.md) をインストールし、次のように Resource Manager モードを使ってログインする必要があります。
 
 ```azurecli
 azure config mode arm
@@ -157,7 +157,7 @@ VM 暗号化のプロセスは次のとおりです。
 * 既に暗号化されている Linux VM での暗号化キーの更新。
 
 ## <a name="create-the-azure-key-vault-and-keys"></a>Azure Key Vault とキーを作成する
-このガイドの残りの部分を行うには、[最新の Azure CLI](../xplat-cli-install.md) をインストールし、次のように Resource Manager モードを使ってログインする必要があります。
+このガイドの残りの部分を行うには、[最新の Azure CLI](../cli-install-nodejs.md) をインストールし、次のように Resource Manager モードを使ってログインする必要があります。
 
 ```azurecli
 azure config mode arm

@@ -17,20 +17,20 @@ ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 0aa12ea5fd7df7bee57aa7bcacd4c1fe4d6542b8
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1bb49c0c03a3103194d068b511fa92ecb996caf3
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して静的パブリック IP アドレスを持つ VM を作成する
 
 > [!div class="op_single_selector"]
-- [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-- [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
+> * [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+> * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
@@ -171,7 +171,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>Azure CLI を使用してテンプレートをデプロイする
 Azure CLI を使用してテンプレートをデプロイするには、次の手順を実行します。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関する記事の手順に従って、Azure CLI をインストールして構成します。
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../cli-install-nodejs.md)に関する記事の手順に従って、Azure CLI をインストールして構成します。
 2. 次に示すように、 `azure config mode` コマンドを実行して、リソース マネージャー モードに切り替えます。
 
     ```azurecli

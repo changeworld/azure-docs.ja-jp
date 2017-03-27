@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dde5397405b64d394cdff9c69c05a565c5427f56
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a0582c71e786ae5365e39a5f161b63e946435b2e
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -51,7 +52,7 @@ SQL Data Warehouse では、ACID トランザクションを実装していま�
 
 トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。 すべての同時実行トランザクションにまたいで適用されることはありません。 そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。 
 
-ログに書き込まれるデータ量を最適化および最小化する方法については、[「トランザクションのベスト プラクティス」][トランザクションのベスト プラクティス]を参照してください。
+ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス][Transactions best practices]に関する記事を参照してください。
 
 > [!WARNING]
 > 最大トランザクション サイズは、HASH または ROUND_ROBIN で分散し、データが均等に分散されたテーブルでのみ達成できます。 トランザクションによりデータが書き込まれ、分散が傾斜する場合、最大トランザクション サイズに到達する前に上限に到達する可能性があります。
@@ -153,7 +154,7 @@ SELECT @xact_state AS TransactionState;
 変更点をまとめると、`CATCH` ブロック内でエラー情報の読み取り前にトランザクションの `ROLLBACK` が発生するようになりました。
 
 ## <a name="errorline-function"></a>Error_Line() 関数
-SQL Data Warehouse では、ERROR_LINE() 関数を実装およびサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 この機能の詳細については、[「ラベル」][ラベル]を参照してください。
+SQL Data Warehouse では、ERROR_LINE() 関数を実装およびサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 この機能の詳細については、[ラベル][LABEL]に関する記事を参照してください。
 
 ## <a name="using-throw-and-raiserror"></a>THROW と RAISERROR の使用
 THROW は、SQL Data Warehouse で例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
@@ -175,23 +176,18 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 * ユーザー定義トランザクション内では `CREATE TABLE` のような DDL はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
-トランザクションの最適化の詳細については、[「トランザクションのベスト プラクティス」][トランザクションのベスト プラクティス]を参照してください。  SQL Data Warehouse のその他のベスト プラクティスについては、[「SQL Data Warehouse のベスト プラクティス」][SQL Data Warehouse のベスト プラクティス]を参照してください。
+トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][Transactions best practices]に関するページを参照してください。  SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse best practices]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
-[開発の概要]: ./sql-data-warehouse-overview-develop.md
-[トランザクションのベスト プラクティス]: ./sql-data-warehouse-develop-best-practices-transactions.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
-[ラベル]: ./sql-data-warehouse-develop-label.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Transactions best practices]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
+[LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

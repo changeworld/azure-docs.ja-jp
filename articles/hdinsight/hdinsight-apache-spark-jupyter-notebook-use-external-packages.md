@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2a8bc545-064e-436f-8b5f-e67c26cfbf98
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -98,7 +99,7 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
    
         df.select("Time").count()
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ

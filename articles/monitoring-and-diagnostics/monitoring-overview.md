@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/02/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
-ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: ca55f1c295d99ff92abaef1a919d4c90d3c33b8a
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -32,13 +32,13 @@ Azure Monitor のビデオ チュートリアルは、
 
 次の図は、Azure での監視の概念、収集できるログの種類、データを使用して行うことができることを示しています。   
 
-![非コンピューティング リソースに対する監視と診断の論理モデル](./media/monitoring-overview/MonitoringAzureResources-non-compute_v3.png)
+![非コンピューティング リソースに対する監視と診断のモデル](./media/monitoring-overview/Monitoring_Azure_Resources-compute_v4.png)
 
 図 1: 非コンピューティング リソースに対する監視と診断の概念モデル
 
 <br/>
 
-![コンピューティング リソースに対する監視と診断の論理モデル](./media/monitoring-overview/MonitoringAzureResources-compute_v3.png)
+![コンピューティング リソースに対する監視と診断のモデル](./media/monitoring-overview/Monitoring_Azure_Resources-non-compute_v4.png)
 
 図 2: コンピューティング リソースに対する監視と診断の概念モデル
 
@@ -114,7 +114,8 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * データを Event Hubs に送り、リアルタイム分析を実行するサードパーティ製ツールにルーティングする
 
 ### <a name="automate"></a>自動化
-アラートはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。 たとえば、次のようになります。
+アラートはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。
+たとえば、次のようになります。
 
 * データを使用し、アプリケーションの負荷に応じてコンピューティング インスタンスを自動でスケールアップまたはスケールダウンする
 * メトリックが事前に定義されているしきい値に達したときにメールを送信する
@@ -131,11 +132,11 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * [.NET SDK](https://msdn.microsoft.com/library/dn802153.aspx)
 
 ## <a name="azures-monitoring-offerings"></a>Azure の監視ソリューション
-Azure では、ベアメタル インフラストラクチャからアプリケーション テレメトリに至るまで、サービスを監視するためのソリューションをいくつか用意しています。 最善の監視戦略は、サービスの正常性に関して包括的かつ詳細な洞察を得るために、以下の&3; つをすべて使用することです。
+Azure では、ベアメタル インフラストラクチャからアプリケーション テレメトリに至るまで、サービスを監視するためのソリューションをいくつか用意しています。 最善の監視戦略は、サービスの正常性に関して包括的かつ詳細な情報を得るために、以下の&3; つをすべて使用することです。
 
 * [Azure Monitor](http://aka.ms/azmondocs) – Azure インフラストラクチャ (アクティビティ ログ) と個々の Azure リソース (診断ログ) から得られたデータを基に視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 この記事は、Azure Monitor ドキュメントの一部です。 Azure Monitor という名前は、9 月 25 日に開催された Ignite 2016 で発表されたものです。  以前の名前は、"Azure Insights" でした。  
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) – Azure の監視により得られたデータを活用して、サービスのアプリケーション レイヤーの問題を検出および診断するものです。 App Service Web Apps では、これが既定の診断プラットフォームとなっています。  データは他のサービスからルーティングできます。  
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/oms/) の一部) – Azure リソースだけでなく、オンプレミスのインフラストラクチャやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える総合的 IT 管理ソリューションです。  Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを&1; 箇所で確認できます。     
+* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/oms/) の一部) – Azure リソースだけでなく、オンプレミスのインフラストラクチャやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える総合的 IT 管理ソリューションです。  Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを&1; か所で確認できます。     
 
 ## <a name="next-steps"></a>次のステップ
 項目ごとに詳しい情報を確認できます。

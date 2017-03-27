@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/09/2017
+ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 251d7b973426afb50206c428873021144b8bffdf
-ms.openlocfilehash: 2d7592680289d9f222f5e0aa36aa66d12f4fa517
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 0f8fc929ad0812e7729f146da7851d5acad55ba9
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -49,12 +49,12 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、OMS Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット OMS ワークスペースのワークスペース ID とワークスペース キーが必要です (これらは OMS ポータルで確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。
+次の JSON は、OMS Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット OMS ワークスペースのワークスペース ID とワークスペース キーが必要です (これらは OMS ポータルで確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
-  "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "<extension-deployment-name>",
+  "type": "extensions",
+  "name": "OMSExtension",
   "apiVersion": "2015-06-15",
   "location": "<location>",
   "dependsOn": [
@@ -90,6 +90,58 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (OMS へのオンボードなど) が必要な仮想マシンを&1; つ以上デプロイするときに最適です。 OMS Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
 
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../azure-resource-manager/resource-manager-template-child-resource.md)に関する記事を参照してください。 
+
+次の例では、OMS 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
+
+```json
+{
+  "type": "extensions",
+  "name": "OMSExtension",
+  "apiVersion": "2015-06-15",
+  "location": "<location>",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+    "type": "OmsAgentForLinux",
+    "typeHandlerVersion": "1.0",
+    "settings": {
+      "workspaceId": "myWorkspaceId"
+    },
+    "protectedSettings": {
+      "workspaceKey": "myWorkSpaceKey"
+    }
+  }
+}
+```
+
+拡張機能 JSON をテンプレートのルートに配置すると、リソース名には親仮想マシンへの参照が含まれて、種類は入れ子になっている構成を反映します。  
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "name": "<parentVmResource>/OMSExtension",
+  "apiVersion": "2015-06-15",
+  "location": "<location>",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+    "type": "OmsAgentForLinux",
+    "typeHandlerVersion": "1.0",
+    "settings": {
+      "workspaceId": "myWorkspaceId"
+    },
+    "protectedSettings": {
+      "workspaceKey": "myWorkSpaceKey"
+    }
+  }
+}
+```
+
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
 Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 OMS Agent 拡張機能をデプロイする前に、public.json ファイルと protected.json ファイルを作成します。 これらのファイルのスキーマについては、このドキュメントで既に説明しています。
@@ -113,9 +165,9 @@ azure vm extension get myResourceGroup myVM
 
 拡張機能の実行の出力は、次のファイルにログ記録されます。
 
-`
+```
 /opt/microsoft/omsagent/bin/stdout
-`
+```
 
 ### <a name="support"></a>サポート
 

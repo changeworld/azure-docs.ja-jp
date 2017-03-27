@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 2/21/2017
 ms.author: juluk
 translationtype: Human Translation
-ms.sourcegitcommit: 59af3469a5b2d5cca68bf18dca1aa1e3ab684adb
-ms.openlocfilehash: 0675b6471e37e89e426df85e2fb696fcff2927fd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: c216b573e91894f2b9e17bf870c03b7d2a0f7161
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="deploy-lamp-stack-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して LAMP スタックをデプロイする
-この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure にデプロイする方法について説明します。 Azure アカウント ([無料試用版を入手してください](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure アカウントに接続](../xplat-cli-connect.md)している [Azure CLI](../xplat-cli-install.md) が必要です。
+この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure にデプロイする方法について説明します。 Azure アカウント ([無料試用版を入手してください](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure アカウントに接続](../xplat-cli-connect.md)している [Azure CLI](../cli-install-nodejs.md) が必要です。
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。

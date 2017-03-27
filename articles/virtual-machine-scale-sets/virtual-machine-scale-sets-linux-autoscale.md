@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 3c00742d9686b986841d676872cc93b58827a8e8
-ms.openlocfilehash: b87b507118244f0f275f54cd65cea13a92cdaec6
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fefd6f08d3150a28f73d7733fb397f7db38aef95
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/09/2017
 
 Resource Manager のリソースの詳細については、「[Azure Resource Manager vs. classic deployment (Azure Resource Manager 対クラシック デプロイ)](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
-このチュートリアルの手順を開始する前に、 [Azure CLI をインストール](../xplat-cli-install.md)してください。
+このチュートリアルの手順を開始する前に、 [Azure CLI をインストール](../cli-install-nodejs.md)してください。
 
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>手順 1: リソース グループとストレージ アカウントの作成
 

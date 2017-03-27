@@ -13,22 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
-ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 6d376b9db07a46c467bd772959de3f7acf9c123d
+ms.lasthandoff: 03/15/2017
 
 
 ---
 
-# <a name="connect-a-mongodb-app-to-a-documentdb-account-using-a-mongodb-connection-string"></a>MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する
+# <a name="connect-an-application-to-documentdb-api-for-mongodb"></a>アプリケーションを DocumentDB に接続する: MongoDB 用の API
 MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB アカウントに接続する方法を確認します。 MongoDB アプリを Azure DocumentDB データベースに接続することで、DocumentDB データベースを MongoDB アプリのデータ ストアとして使用できます。 
 
 このチュートリアルでは、接続文字列情報を取得する&2; とおりの方法を説明します。
 
-- [クイック スタートを使う方法](#QuickStartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です。
+- [クイック スタートを使う方法](#QuickstartConnection)。.NET、Node.js、MongoDB シェル、Java、Python のドライバー向けの方法です。
 - [カスタム接続文字列を使う方法](#GetCustomConnection)。その他のドライバー向けの方法です。
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,18 +36,18 @@ MongoDB 接続文字列を使用して MongoDB アプリを Azure DocumentDB ア
 - Azure アカウント。 Azure アカウントがない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/)を今すぐ作成できます。 
 - DocumentDB アカウント。 手順については、「[MongoDB アプリで使用するための DocumentDB アカウントの作成](documentdb-create-mongodb-account.md)」を参照してください。
 
-## <a name="a-idquickstartconnectionaget-the-mongodb-connection-string-using-the-quick-start"></a><a id="QuickStartConnection"></a> クイック スタートを使用した MongoDB 接続文字列の取得
+## <a id="QuickstartConnection"></a> クイック スタートを使用した MongoDB 接続文字列の取得
 1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[NoSQL (DocumentDB)]** ブレードで、MongoDB のプロトコルに対応した DocumentDB アカウントを選択します。 
+2. **[NoSQL (DocumentDB)]** ブレードで、DocumentDB: MongoDB アカウントの API を選択します。 
 3. [アカウント] ブレードの**左側のナビゲーション** バーで、**[クイック スタート]** をクリックします。 
 4. プラットフォームを選択します ("*.NET ドライバー*"、"*Node.js ドライバー*"、"*MongoDB シェル*"、"*Java ドライバー*"、"*Python ドライバー*")。 ドライバーまたはツールの一覧が表示されなくても、接続コード スニペットは継続的に文書化されますので心配はいりません。 表示を希望するものを下部のコメント欄に記入してください。また、独自の接続を行う方法については、[アカウントの接続文字列情報の取得](#GetCustomConnection)に関するセクションを参照してください。
 5. コード スニペットを MongoDB アプリにコピーして貼り付ければ、準備は完了です。
 
     ![[クイック スタート] ブレードのスクリーン ショット](./media/documentdb-connect-mongodb-account/QuickStartBlade.png)
 
-## <a name="a-idgetcustomconnectiona-get-the-mongodb-connection-string-to-customize"></a><a id="GetCustomConnection"></a> MongoDB 接続文字列を取得してカスタマイズする
+## <a id="GetCustomConnection"></a> MongoDB 接続文字列を取得してカスタマイズする
 1. インターネット ブラウザーで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[NoSQL (DocumentDB)]** ブレードで、MongoDB のプロトコルに対応した DocumentDB アカウントを選択します。 
+2. **[NoSQL (DocumentDB)]** ブレードで、DocumentDB: MongoDB アカウントの API を選択します。 
 3. [アカウント] ブレードの**左側のナビゲーション** バーで、**[接続文字列]** をクリックします。 
 4. **[接続文字列情報]** ブレードが表示され、MongoDB のドライバーを使用してこのアカウントに接続するために必要なすべての情報 (あらかじめ構築された接続文字列も含む) が表示されます。
 
@@ -82,6 +82,6 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@anhohmongo.documents.azure.com:10250/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>次のステップ
-* MongoDB のプロトコル対応の DocumentDB アカウントで [MongoChef を使用](documentdb-mongodb-mongochef.md) する方法を確認します。
-* MongoDB のプロトコル対応 DocumentDB の [サンプル](documentdb-mongodb-samples.md)を体験します。
+* DocumentDB: MongoDB 用 API アカウントで [MongoChef を使用](documentdb-mongodb-mongochef.md)する方法を説明します。
+* DocumentDB: MongoDB 用 API の[サンプル](documentdb-mongodb-samples.md)を確認します。
 

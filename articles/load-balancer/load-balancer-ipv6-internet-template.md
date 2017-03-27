@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 752793ed481b0b69203fa13b214add32e9129dfd
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 95962833f853886476630d703c8959bad1852e50
+ms.lasthandoff: 03/15/2017
 
 ---
 

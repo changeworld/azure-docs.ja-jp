@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
-ms.openlocfilehash: 6e7eac6ae505c627ffa1d63aace76b9006d92c74
-ms.lasthandoff: 02/14/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 6101c58e41202091ac89320177b0ca5bc36483a8
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -28,47 +28,25 @@ ms.lasthandoff: 02/14/2017
 >
 この記事では、Azure ポータルを使用して Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
-
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name="a-name--createacreate-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
+## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
 複数の IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 この記事の上部にある PowerShell または CLI オプションをクリックすると、その方法が表示されます。 「[Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」または「[Linux VM の作成](../virtual-machines/virtual-machines-linux-quick-create-portal.md)」に関する記事の手順に従ってポータルを使用し、1 つの静的プライベート IP アドレスと (必要に応じて)&1; つのパブリック IP アドレスを持つ VM を作成できます。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを変更して、別の IP アドレスを追加できます。
 
-## <a name="a-nameaddaadd-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
+## <a name="add"></a>VM に IP アドレスを追加する
 
 プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#Scenario)で説明している&3; つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
-### <a name="a-namecoreaddacore-steps"></a><a name="coreadd"></a>主な手順
+### <a name="coreadd"></a>主な手順
 
-1. ログインして適切なサブスクリプションを選択した後で、次のコマンドを PowerShell で実行して、プレビューに登録します。
-    ```
-    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
-
-    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
-    
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
-    残りの手順を行う前に、```Get-AzureRmProviderFeature``` コマンドを実行したときに次の出力が表示されるのを確認してください。
-        
-    ```powershell
-    FeatureName                            ProviderName      RegistrationState
-    -----------                            ------------      -----------------      
-    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
-    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
-    ```
-        
-    >[!NOTE] 
-    >これには数分かかることがあります。
-    
-2. 必要に応じて、https://portal.azure.com で Azure Portal を開き、サインインします。
-3. そのポータルで、**[その他のサービス]** をクリックし、フィルター ボックスに「*virtual machines*」と入力して、**[Virtual Machines]** をクリックします。
-4. **[Virtual Machines]** ブレードで、IP アドレスを追加する VM をクリックします。 表示された仮想マシン ブレードで **[ネットワーク インターフェイス]** をクリックして、IP アドレスを追加するネットワーク インターフェイスを選択します。 次の図に示す例では、「*myVM*」という名前の VM の「*myNIC*」という名前の NIC を選択しています。
+1. 必要に応じて、https://portal.azure.com で Azure Portal を開き、サインインします。
+2. そのポータルで、**[その他のサービス]** をクリックし、フィルター ボックスに「*virtual machines*」と入力して、**[Virtual Machines]** をクリックします。
+3. **[Virtual Machines]** ブレードで、IP アドレスを追加する VM をクリックします。 表示された仮想マシン ブレードで **[ネットワーク インターフェイス]** をクリックして、IP アドレスを追加するネットワーク インターフェイスを選択します。 次の図に示す例では、「*myVM*」という名前の VM の「*myNIC*」という名前の NIC を選択しています。
 
     ![ネットワーク インターフェイス](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-5. 選択した NIC について表示されるブレードで、次の図に示すように、**[IP 構成]** をクリックします。
+4. 選択した NIC について表示されるブレードで、次の図に示すように、**[IP 構成]** をクリックします。
 
     ![IP 構成](./media/virtual-network-multiple-ip-addresses-portal/figure2.png)
 
@@ -103,7 +81,7 @@ ms.lasthandoff: 02/14/2017
 > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 > 
 
-### <a name="a-namecreate-public-ipacreate-a-public-ip-address-resource"></a><a name="create-public-ip"></a>パブリック IP アドレス リソースの作成
+### <a name="create-public-ip"></a>パブリック IP アドレス リソースの作成
 
 パブリック IP アドレスは、パブリック IP アドレス リソースの設定の&1; つです。 IP 構成に関連付ける予定で、まだ IP 構成に関連付けられていないパブリック IP アドレス リソースがある場合は、次の手順を省略して、必要に応じてそれに続く手順の&1; つを実行します。 利用できるパブリック IP アドレス リソースがない場合は、次の手順を実行して&1; つ作成します。
 

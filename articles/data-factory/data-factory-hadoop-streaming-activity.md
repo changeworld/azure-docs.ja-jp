@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
-ms.openlocfilehash: 56754bde961708f04477be74e1ae80acddf2c0cd
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2748838279462a493983c397454cbcf13b2a82e6
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md)  
-> * [Pig](data-factory-pig-activity.md)  
-> * [MapReduce](data-factory-map-reduce.md)  
-> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
-> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET カスタム](data-factory-use-custom-activities.md)
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive アクティビティ](data-factory-hive-activity.md) 
+> * [Pig アクティビティ](data-factory-pig-activity.md)
+> * [MapReduce アクティビティ](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+> * [Spark アクティビティ](data-factory-spark.md)
+> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
+> * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 HDInsightStreamingActivity アクティビティを使用して、Azure Data Factory パイプラインから Hadoop ストリーミング ジョブを呼び出すことができます。 次の JSON スニペットは、パイプライン JSON ファイルで HDInsightStreamingActivity を使用する構文です。 
 
@@ -90,7 +93,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 2. アクティビティの種類には **HDInsightStreaming**に設定します。
 3. **mapper** プロパティには、mapper 実行可能ファイルの名前を指定します。 例では、cat.exe が mapper 実行可能ファイルです。
 4. **reducer** プロパティには、reducer 実行可能ファイルの名前を指定します。 例では、wc.exe が reducer 実行可能ファイルです。
-5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。 例の "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
+5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。 例 "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt" では、adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
 6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。 Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
 7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。 例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
 8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
@@ -220,10 +223,5 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

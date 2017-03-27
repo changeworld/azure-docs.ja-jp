@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 6fe3bd55b23432a8fddb1ffeeed33bc113b8bd73
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f63649cc3b6c4acad6e39356f0210d3726548b17
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](virtual-machines-linux-create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した LAMP スタックのデプロイ方法については、[こちら](virtual-machines-linux-create-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。 これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
@@ -32,7 +33,7 @@ Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Py
 この記事では、Azure CLI を使って、クラシック デプロイ モデルを使用して作成された Ubuntu VM に単純な LAMP アプリケーションをデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
-この例では、まず、Ubuntu 14.04 以降を実行している 2 つの Azure VM を作成します。 VM の名前は *script-vm* と *lamp-vm* です。 自分で VM を作成するときは、固有の名前を付けてください。 1 つは CLI コマンドの実行に使用し、もう 1 つは LAMP アプリのデプロイに使用します。
+この例では、まず、Ubuntu 14.04 以降を実行している 2 つの Azure VM を作成します。 VM の名前は *script-vm* と *lamp-vm* です。 自分で VM を作成するときは、固有の名前を付けてください。 1 つは CLI コマンドの実行に使用し、もう&1; つは LAMP アプリのデプロイに使用します。
 
 また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure クラシック ポータルで取得できます)。
 
@@ -40,7 +41,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 インストール コマンドでは Ubuntu が想定されますが、サポートされる Linux ディストリビューションに応じてインストールを調整できます。
 
-仮想マシン script-vm では、Azure に接続できる Azure CLI がインストールされていることが必要です。 詳細については、 [Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
+仮想マシン script-vm では、Azure に接続できる Azure CLI がインストールされていることが必要です。 詳細については、 [Azure コマンド ライン インターフェイスのインストールと構成](../cli-install-nodejs.md)に関するページを参照してください。
 
 ## <a name="upload-a-script"></a>スクリプトのアップロード
 ここでは、カスタム スクリプト拡張機能を使ってリモート VM でスクリプトを実行し、LAMP スタックをインストールして PHP ページを作成します。 Azure BLOB のようにアップロードすれば、どこからでもスクリプトにアクセスできます。
@@ -105,10 +106,5 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

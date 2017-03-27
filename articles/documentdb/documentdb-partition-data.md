@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5ed72d95ae258d6fa8e808cd72ab6e8a665901c9
-ms.openlocfilehash: 0a8b53f7860548a2a013bfc7813cdf798b6a4910
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 67d817c04672979ec8af8a540c5a63eb4df9bf6a
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="partitioning-and-scaling-in-azure-documentdb"></a>Azure DocumentDB でのパーティション分割とスケーリング
+# <a name="partitioning-partition-keys-and-scaling-in-documentdb"></a>DocumentDB でのパーティション分割、パーティション キー、およびスケーリング
+
 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) は、高速で予測可能なパフォーマンスの実現を支援し、アプリケーションの規模の拡大に合わせてシームレスにスケール設定できるように設計されています。 この記事では、DocumentDB でのパーティション分割のしくみの概要と、DocumentDB コレクションを構成してアプリケーションを効率的に拡大/縮小する方法について説明します。
 
 この記事を読むと、次の質問に回答できるようになります。   
@@ -50,6 +52,10 @@ DocumentDB は、ストレージ サイズとプロビジョニング済みス�
 
 たとえば、1 秒あたり 25,000 要求のスループットのコレクションを作成し、DocumentDB が 1 つの物理パーティションで 1 秒あたり 10,000 件の要求をサポートできるとします。 DocumentDB では、コレクションに 3 つの物理パーティション (P1、P2、P3) を作成します。 ドキュメントの挿入中または読み取り中に、DocumentDB サービスは対応する `Department` 値をハッシュして、データを&3; つのパーティション (P1、P2、P3) にマップします。 たとえば、"Marketing" と "Sales" を 1 にハッシュすると、これらは両方とも P1 に格納されます。 P1 がいっぱいになると、DocumentDB は P1 を&2; つの新しいパーティション P4 と P5 に分割します。 分割後、サービスは "Marketing" を P4、"Sales" を P5 に移動し、P1 を削除します。 パーティション間でのパーティション キーのこれらの移動は、アプリケーションに対して透過的であり、コレクションの可用性には影響しません。
 
+## <a name="sharding-in-api-for-mongodb"></a>MongoDB 用 API でのシャーディング
+MongoDB 用 API のシャード コレクションは、DocumentDB のパーティション分割コレクションと同じインフラストラクチャを使用しています。 パーティション分割コレクションと同じように、シャード コレクションも、任意の数のシャードを持つことができ、各シャードには固定容量の SSD ベースのストレージが関連付けられています。 シャード コレクションは、ストレージとスループットに関して、事実上制限がありません 。 MongoDB 用 API のシャード キーは DocumentDB のパーティション キーに相当します。シャード キーを決定する際は、「[パーティション キー](#partition-keys)」セクションと「[パーティション分割の設計](#designing-for-partitioning)」セクションを必ず参照してください。
+
+<a name="partition-keys"></a>
 ## <a name="partition-keys"></a>パーティション キー
 パーティション キーの選択は、設計時に行う必要のある重要な決定事項の&1; つです。 広範囲の値を持ち、場合によっては複数のパターン間に均等に分散されている可能性のある JSON プロパティ名を選択する必要があります。 
 
@@ -158,7 +164,7 @@ DocumentDB では、単一のパーティションとパーティション分割
     </tbody>
 </table>
 
-## <a name="working-with-the-sdks"></a>SDK の操作
+## <a name="working-with-the-documentdb-sdks"></a>DocumentDB SDK の操作
 Azure DocumentDB に、 [REST API バージョン 2015-12-16](https://msdn.microsoft.com/library/azure/dn781481.aspx)による自動パーティション分割のサポートが追加されました。 パーティション分割コレクションを作成するには、サポートされたいずれかの SDK プラットフォーム(.NET、Node.js、Java、Python) で SDK バージョン 1.6.0 以降をダウンロードする必要があります。 
 
 ### <a name="creating-partitioned-collections"></a>パーティション分割コレクションの作成
@@ -274,7 +280,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-DocumentDB は、SDK 1.12.0 以降の SQL を使用した、パーティション分割コレクションに対する[集計関数]([集計関数](documentdb-sql-query.md#Aggregates)) `COUNT`、`MIN`、`MAX`、`SUM`、`AVG` をサポートしています。 クエリには、1 つの集計演算子と、プロジェクション内の&1; つの値を含める必要があります。
+DocumentDB は、SDK 1.12.0 以降の SQL を使用した、パーティション分割コレクションに対する[集計関数 ](documentdb-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、`SUM`、および `AVG` をサポートしています。 クエリには、1 つの集計演算子と、プロジェクション内の&1; つの値を含める必要があります。
 
 ### <a name="parallel-query-execution"></a>並列クエリの実行
 DocumentDB SDK 1.9.0 以降では、並列クエリ実行オプションがサポートされています。そのため、多数のパーティションにタッチする必要がある場合でも、パーティションのコレクションに対して少ない待ち時間でクエリを実行できます。 たとえば、次のクエリはパーティション全体で並列に実行されるように構成されています。
@@ -307,9 +313,34 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     
 次のセクションでは、単一パーティション コレクションからパーティション分割コレクションへの移動方法について説明します。
 
+## <a name="creating-an-api-for-mongodb-sharded-collection"></a>MongoDB シャード コレクション用 API の作成
+MongoDB シャード コレクション用 API を作成する最も簡単な方法は、好みのツール、ドライバー、または SDK を使用することです。 この例では、Mongo シェルを使用してコレクションを作成します。
+
+Mongo シェルで次のコマンドを実行します。
+
+```
+db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+```
+    
+結果:
+
+```JSON
+{
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "admin.people"
+}
+```
+
 <a name="migrating-from-single-partition"></a>
 
-## <a name="migrating-from-single-partition-to-partitioned-collections"></a>単一パーティション コレクションからパーティション分割コレクションへの移行
+## <a name="migrating-from-single-partition-to-partitioned-collections-in-documentdb"></a>DocumentDB での単一パーティション コレクションからパーティション分割コレクションへの移行
+
+> [!IMPORTANT]
+> MongoDB 用 API をインポートする場合は、[こちらの手順](documentdb-mongodb-migrate.md)に従ってください。
+> 
+> 
+
 単一パーティション コレクションを使用するアプリケーションのスループットを増やす必要がある場合 (10,000 RU/秒超)、またはデータ ストレージの容量を増やす必要がある場合 (10 GB 超) は、[DocumentDB データ移行ツール](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)を使用して、単一パーティション コレクションからパーティション分割コレクションにデータを移行できます。 
 
 単一パーティション コレクションからパーティション分割コレクションへの移行方法
@@ -326,6 +357,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 
 ここまで、基礎を学んできました。では、DocumentDB 内のパーティション キーを操作する際の重要な設計上の考慮事項をいくつか見てみましょう。
 
+<a name="designing-for-partitioning"></a>
 ## <a name="designing-for-partitioning"></a>パーティション分割の設計
 パーティション キーの選択は、設計時に行う必要のある重要な決定事項の&1; つです。 このセクションでは、コレクションのパーティション キーの選択に関わるトレードオフについていくつか説明します。
 

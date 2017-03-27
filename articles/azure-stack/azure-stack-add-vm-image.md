@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: mattmcg
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 5299ef3f48b4b13a5cc43140499b49fa1c6a07f1
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: efcdbf0ecb9ab0f00ef0bd34a67db6f6d4bec357
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ If the VM image VHD is available locally on the console VM (or another externall
    
    * For Windows images, the article [Upload a Windows VM image to Azure for Resource Manager deployments](../virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) contains image preparation instructions in the **Prepare the VHD for upload** section.
    * For Linux images, follow the steps to prepare the image or use an existing Azure Stack Linux image as described in the article [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md).
-2. Clone the [Azure Stack Tools repository](https://aka.ms/azurestackaddvmimage), and then import the **ComputeAdmin** module
+2. [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md) and then import the **ComputeAdmin** module
    
     ```powershell
     Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
@@ -115,10 +116,5 @@ Follow the steps from [Upload a Windows VM image to Azure for Resource Manager d
    ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
 3. The VM Image status changes to ‘Succeeded’ when the image is successfully added.
 4. Tenants can deploy the VM Image by specifying the publisher, offer, SKU, and version of the VM image in an Azure Resource Manager template. To make the VM image more readily available for tenant consumption in the UI, it is best to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT への Raspberry Pi (C) の接続 - レッスン 2: Azure ツール (Ubuntu) | Microsoft Docs"
+title: "Azure IoT への Arduino の接続 - レッスン 2: Azure ツール (Ubuntu) | Microsoft Docs"
 description: "Python と Azure コマンド ライン インターフェイス (Azure CLI) を Ubuntu にインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -13,12 +13,12 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: e29f43af1ab46ad9f80137924632b6a975375c1a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: 83c27b2cff79d2528dc419993602caf3874bf451
+ms.lasthandoff: 03/10/2017
 
 
 ---

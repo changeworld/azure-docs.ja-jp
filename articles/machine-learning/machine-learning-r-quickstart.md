@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2d9feed054fb4641e660c685d396260246ed1d54
-ms.openlocfilehash: 6a02bb20ff2ed10ed528bfe2a3aae51ab20e4a60
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 598f5ce445e520b6cdc347c80f7f3dcbc9c2c9e5
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -51,7 +51,7 @@ Azure Machine Learning 環境で R コードを作成、テストし、分析と
 * 用意されたデータを使用し、データセットのいくつかの変数間における相関関係を分析します。
 * 最終的に、牛乳生産の季節的な時系列予測モデルを作成します。
 
-## <a name="a-idmlstudioainteract-with-r-language-in-machine-learning-studio"></a><a id="mlstudio"></a>Machine Learning Studio での R 言語の操作
+## <a id="mlstudio"></a>Machine Learning Studio での R 言語の操作
 このセクションでは、Machine Learning Studio 環境における R プログラミング言語操作の基本を見ていきます。 R 言語は、Azure Machine Learning 環境内でカスタマイズされた分析とデータ操作モジュールを作成するための、強力なツールを提供します。
 
 R コードの小規模な開発、テスト、デバッグを行うには、RStudio を使用します。 このコードを Machine Learning Studio で実行するには、コードを切り取り、[R スクリプトの実行][execute-r-script]モジュールに貼り付けます。  
@@ -132,13 +132,13 @@ RStudio のチュートリアルの手順は、https://support.rstudio.com/hc/se
 
 RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載されています。  
 
-## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
+## <a id="scriptmodule"></a>R スクリプトの実行モジュールでのデータ入出力
 このセクションでは、[R スクリプトの実行][execute-r-script]モジュールでデータを入出力する方法を説明します。 [R スクリプトの実行][execute-r-script]モジュールでさまざまなデータ型の入出力を操作する方法を確認します。
 
 このセクションのすべてのコードは、既にダウンロードした zip ファイルに含まれています。
 
 ### <a name="load-and-check-data-in-machine-learning-studio"></a>Machine Learning Studio でのデータの読み込みとチェック
-#### <a name="a-idloadingaload-the-dataset"></a><a id="loading"></a>データセットの読み込み
+#### <a id="loading"></a>データセットの読み込み
 最初に、 **csdairydata.csv** ファイルを Azure Machine Learning Studio に読み込みます。
 
 * Azure Machine Learning 環境を起動します。
@@ -315,7 +315,7 @@ R デバイス出力を表示するは、ポートをクリックして、 **[�
 
 *図 8: R デバイス ポートからのグラフィックス出力*  
 
-## <a name="a-idfilteringadata-filtering-and-transformation"></a><a id="filtering"></a>データのフィルター処理と変換
+## <a id="filtering"></a>データのフィルター処理と変換
 このセクションでは、カリフォルニア酪農データに対して、基本的なフィルター処理と変換操作を行います。 このセクションの終了までに、データを分析モデルの構築に適した形式にします。  
 
 具体的には、このセクションで一般的なデータ クリーニングと変換タスク (型の変換、データフレームのフィルター処理、新しい計算列の追加、値の変換) を行います。 このような背景情報は、現実の問題で直面するさまざまなバリエーションに対処するのに役立ちます。
@@ -598,7 +598,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 この時点でデータはクリーンアップされ、モデリングの準備が整いました。 [R スクリプトの実行][execute-r-script]モジュールの結果データセット出力に関する視覚化サマリーを調べると、"Month" 列が希望する 12 個の一意値を持つ "Categorical" であることがわかります。
 
-## <a name="a-idtimeseriesatime-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>時系列オブジェクトと相関関係分析
+## <a id="timeseries"></a>時系列オブジェクトと相関関係分析
 このセクションでは、いくつかの基本的な R 時系列オブジェクトについて調べ、変数間の相関関係を分析します。 目標は、いくつかの時間差におけるペアワイズ相関情報を含むデータフレームを出力することです。
 
 このセクションのすべての R コードは、既にダウンロードした zip ファイルに含まれています。
@@ -879,7 +879,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 *図 19: 相関関係分析による結果出力*
 
-## <a name="a-idseasonalforecastingatime-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>時系列の例: 季節的予測
+## <a id="seasonalforecasting"></a>時系列の例: 季節的予測
 現在データは、分析に適したフォームになっており、変数間に有意な相関関係はないと判断しています。 先に進み、時系列予測モデルを作成しましょう。 このモデルを使用し、2013 年の 12 か月のカリフォルニアにおける牛乳生産を予測します。
 
 この予測モデルには、傾向コンポーネントと季節コンポーネントの&2; つのコンポーネントがあります。 これら&2; つのコンポーネントの成果により、完全な予測が可能になります。 このタイプのモデルは、乗法モデルと呼ばれます。 それに代わるものが、加法モデルです。 この分析を容易にするために、対象の変数に既に対数変換を適用しています。
@@ -1209,7 +1209,7 @@ RMS 誤差を測定する関数を準備したので、ビルドを行い、RMS 
 
 これらの結果から、季節因子をモデルに追加すると、RMS 誤差が大幅に少なくなることがわかります。 それほど意外ではありませんが、トレーニング データの RMS 誤差は、予測よりもわずかに少なくなっています。
 
-## <a name="a-idappendixaaappendix-a-guide-to-rstudio"></a><a id="appendixa"></a>付録 A: RStudio ガイド
+## <a id="appendixa"></a>付録 A: RStudio ガイド
 RStudio はドキュメントが非常に整っているため、この付録では、使用を開始するための RStudio ドキュメントの重要なセクションに対するリンクをいくつか示します。
 
 1. プロジェクトの作成
@@ -1226,7 +1226,7 @@ RStudio はドキュメントが非常に整っているため、この付録で
    
    ブレークポイント トラブルシューティング機能のドキュメントは、https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting にあります。
 
-## <a name="a-idappendixbaappendix-b-further-reading"></a><a id="appendixb"></a>付録 B: 参考資料
+## <a id="appendixb"></a>付録 B: 参考資料
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に&2; つの入門書が用意されています。
 
 * Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。  
@@ -1246,7 +1246,8 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 役に立つインターネット リソース:
 
-* DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 R の対話型 チュートリアル (無料) は https://www.datacamp.com/courses/introduction-to-r で利用できます。  
+* DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 R の対話型 チュートリアル (無料) は https://www.datacamp.com/courses/introduction-to-r で利用できます。
+* Programiz による R の概要についてのガイド (https://www.programiz.com/r-programming)
 * Clarkson 大学の Kelly Black 助教授による R クイック チュートリアル (http://www.cyclismo.org/tutorial/R/)
 * 60 件を超える R の資料 (http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)
 

@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: a42dbefe6805cff5fb2df604265f0e62e2c25f69
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 7faa27220bcc07fff0bb2a77e7b90c386cc5ae1e
+ms.lasthandoff: 03/14/2017
 
 
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
-
-> [!div class="op_single_selector"]
-> * [Hive](data-factory-hive-activity.md) 
-> * [Pig](data-factory-pig-activity.md)
-> * [MapReduce](data-factory-map-reduce.md)
-> * [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md)
-> * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
-> * [ストアド プロシージャ](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
-> * [.NET カスタム](data-factory-use-custom-activities.md)
->
+> [!div class="op_single_selector" title1="Transformation Activities"]
+> * [Hive アクティビティ](data-factory-hive-activity.md) 
+> * [Pig アクティビティ](data-factory-pig-activity.md)
+> * [MapReduce アクティビティ](data-factory-map-reduce.md)
+> * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+> * [Spark アクティビティ](data-factory-spark.md)
+> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
+> * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
+> * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
 
 Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの&1; つです。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 

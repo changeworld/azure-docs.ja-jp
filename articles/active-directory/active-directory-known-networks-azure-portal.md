@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 71116ade676677c5b6d14b07a038d043fba46032
-ms.openlocfilehash: 02a1aae805aa36aa68f341197e44b19bc6236b7b
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 161d36f0bef4b3cd1ac1ad85d0844a3dd8e51e16
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -24,26 +25,26 @@ ms.openlocfilehash: 02a1aae805aa36aa68f341197e44b19bc6236b7b
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-known-networks-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-known-networks.md)
-> 
-> 
+>
+>
 
 
 Azure Active Directory では、検出された[リスク イベント](active-directory-identity-protection-risk-events.md)ごとにレコードが作成されます。 Azure Active Directory セキュリティ レポートのリスク イベント情報により、環境内でユーザー アカウントが侵害されている確率を調べることができます。   
 
-Azure Active Directory が、組織が実際に所有する IP アドレスに対して、[リスク イベントの種類](active-directory-identity-protection-risk-events.md#risk-event-types)として "*特殊な場所へのあり得ない移動*" と "*不審なアクティビティを示す IP アドレスからのサインイン*" を誤検出することがあります。 
+Azure Active Directory が、組織が実際に所有する IP アドレスに対して、[リスク イベントの種類](active-directory-reporting-risk-events.md#risk-event-types)として "*特殊な場所へのあり得ない移動*" と "*不審なアクティビティを示す IP アドレスからのサインイン*" を誤検出することがあります。 
 
-これは、たとえば次の場合に起こります。 
+これは、たとえば次の場合に起こります。
 
-- ボストン支社のユーザーがサンフランシスコのデータ センターにリモートでサインインしたときに、"*複数の地域からのサインイン*" リスク イベントが生成される 
+- ボストン支社のユーザーがサンフランシスコのデータ センターにリモートでサインインしたときに、"*複数の地域からのサインイン*" リスク イベントが生成される
 
-- 組織のユーザーが間違ったパスワードで複数回サインインしようとして、"*疑わしいアクティビティを示す IP アドレスからのサインイン*" リスク イベントが生成される 
+- 組織のユーザーが間違ったパスワードで複数回サインインしようとして、"*疑わしいアクティビティを示す IP アドレスからのサインイン*" リスク イベントが生成される
 
 こうした場合に誤解を招くリスク イベントが生成されないようにするには、指定した IP アドレス範囲を組織のパブリック IP アドレスの一覧に追加する必要があります。    
 
 ### <a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>組織のパブリック IP アドレス範囲を追加するには、次の手順に従います。
 
 1. Microsoft Azure 管理ポータルにサインインします。
- 
+
 2. 左側のウィンドウで、 **[Active Directory]**をクリックします。
 
     ![既知のネットワーク](./media/active-directory-known-networks-azure-portal/01.png)
@@ -73,10 +74,4 @@ Azure Active Directory が、組織が実際に所有する IP アドレスに�
 * [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 * [不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -16,14 +16,14 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
-ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: a3acd5f4ec63061254b550737ae9fb4d39b343c6
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="monitor-and-manage-an-elastic-pool-with-transact-sql"></a>Transact-SQL を使用したエラスティック プールの監視と管理
-このトピックでは、Transact-SQL を使用してスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を管理する方法について説明します。  Azure エラスティック プールは、[Azure Portal](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API、または [C#][C# を使用したエラスティック プールの作成と管理](sql-database-elastic-pool-manage-csharp.md) を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
+このトピックでは、Transact-SQL を使用してスケーラブルな[エラスティック プール](sql-database-elastic-pool.md)を管理する方法について説明します。  Azure エラスティック プールは、[Azure Portal](https://portal.azure.com/)、[PowerShell](sql-database-elastic-pool-manage-powershell.md)、REST API、[C#](sql-database-elastic-pool-manage-csharp.md) を使用して作成および管理することもできます。 また、[Transact-SQL](sql-database-elastic-pool-manage-tsql.md) を使用して、データベースを作成したり、エラスティック プールに出し入れしたりすることもできます。
 
 
 データベースをエラスティック プールに作成したりエラスティック プールから移動したりするには、[Create Database (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) コマンドと [Alter Database (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx) コマンドを使います。 これらのコマンドを使用する前に、エラスティック プールが存在している必要があります。 これらのコマンドは、データベースのみに作用します。 T-SQL コマンドを使用して新しいプールを作成したりプールのプロパティ (最小 eDTU、最大 eDTU など) の設定を変更したりすることはできません。

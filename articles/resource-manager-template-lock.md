@@ -1,12 +1,8 @@
 ---
-redirect_url: /azure/azure-resource-manager/resource-manager-template-lock
+redirect_url: /azure/templates/microsoft.authorization/locks
 translationtype: Human Translation
-ms.sourcegitcommit: b97c464b4f3478fbb7f61fe04655c6f3677a81a4
-ms.openlocfilehash: 770249fb336daf8e06b887777599ae20194d5516
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 577ad9485f7b7ab0dee686a00911f38140ced0ec
+ms.lasthandoff: 03/18/2017
 
 ---
-
-
-<!--HONumber=Nov16_HO4-->
-
-

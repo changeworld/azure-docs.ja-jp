@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: c1357e93a1d02e40411696bb36e93fabd1a99400
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: a23ae729e20dcf79ada73f7545861356e31b957e
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -275,7 +275,7 @@ GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マ�
 
 ### <a name="execution"></a>実行
 1. GitHub から [azure-batch-samples][github_samples_zip] をダウンロードします。
-2. Visual Studio 2015 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
+2. Visual Studio 2015 以降で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. **Microsoft.Azure.Batch.Samples.Common** プロジェクトの `AccountSettings.settings` に、Batch と Storage のアカウント資格情報を入力します。

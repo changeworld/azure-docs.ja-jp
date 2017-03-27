@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: abea89ceab4c606a574ad739e9feca5b5dafacf0
-ms.openlocfilehash: bc87bafd1ce6926d787915fae2f72727940bb90e
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 6cf48883d397a4b04e707111306d4596cd7af683
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -35,8 +35,8 @@ Log Analytics の Azure Key Vault ソリューションを使用して、Azure K
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Key Vault ソリューションのインストールと構成は、次の手順で行います。
 
-1. ポータルか PowerShell を使用して、監視する Key Vault リソースの診断ログを有効にします。 
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Key Vault ソリューションを有効にします。 
+1. Azure Key Vault ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。 
+2. [ポータル](#enable-key-vault-diagnostics-in-the-portal)か [PowerShell](#enable-key-vault-diagnostics-using-powershell) を使用して、監視する Key Vault リソースの診断ログを有効にします。 
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>ポータルで Key Vault 診断を有効にする
 
@@ -76,7 +76,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 | Azure |![いいえ](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![あり](./media/log-analytics-azure-keyvault/oms-bullet-green.png) |![なし](./media/log-analytics-azure-keyvault/oms-bullet-red.png) |![なし](./media/log-analytics-azure-keyvault/oms-bullet-red.png) | 着信時 |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
-ソリューションをインストールすると、Log Analytics の **[概要]** ページの **[Azure Key Vault]** タイルをクリックすることで、Key Vault データが表示されます。
+[ソリューションをインストール](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)すると、Log Analytics の **[概要]** ページの **[Azure Key Vault]** タイルをクリックすることで、Key Vault データが表示されます。
 
 ![[Azure Key Vault] タイルの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
 

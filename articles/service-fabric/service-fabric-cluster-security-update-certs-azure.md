@@ -12,12 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 03/09/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 45225c4250539dfeb9f3b4654615acbdd162191b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -54,17 +54,17 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも&1; つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
 > [!NOTE]
-> 操作を理解するため、または出発点として使用できるサンプル テンプレートとパラメーターは、この [git-repo.](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) からダウンロードできます。 
+> 操作を理解するため、または作業の出発点とするために利用できるサンプル テンプレートおよびパラメーターをお探しの場合は、[こちらの Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)からダウンロードできます。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Resource Manager テンプレートを編集する
 
-サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[git-repo.](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) から入手できます。
+サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)から入手できます。
 
 **すべての手順に従う**
 
-**手順 1:** クラスターをデプロイするために使用した Resource Manager テンプレートを開きます。  (上記のリポジトリからサンプルをダウンロードした場合、5-VM-1-NodeTypes-Secure_Step1.JSON を使用してセキュリティで保護されたクラスターをデプロイし、その後そのテンプレートを開きます)。
+**手順 1:** クラスターをデプロイするために使用した Resource Manager テンプレートを開きます。 (上記のリポジトリからサンプルをダウンロードした場合、5-VM-1-NodeTypes-Secure_Step1.JSON を使用してセキュリティで保護されたクラスターをデプロイし、その後そのテンプレートを開きます)。
 
 **手順 2:** 型が "string" の **2 つの新しいパラメーター** "secCertificateThumbprint" と "secCertificateUrlValue" をテンプレートのパラメーター セクションに追加します。 次のコード スニペットをコピーしてテンプレートに追加できます。 テンプレートのソースによっては、これらは既に定義されています。この場合は次の手順に進みます。 
  
@@ -84,7 +84,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 
 ```
 
-**手順 3:** **Microsoft.ServiceFabric/clusters** リソースに変更を加えます。テンプレート内の "Microsoft.ServiceFabric/clusters" リソース定義を検索します。 その定義のプロパティで "Certificate" JSON タグが見つかります。これは次の JSON スニペットのようになります。
+**手順 3:** **Microsoft.ServiceFabric/clusters** リソースに変更を加えます。テンプレート内の "Microsoft.ServiceFabric/clusters" リソース定義を検索します。 その定義のプロパティ内に、次の JSON スニペットのような "Certificate" JSON タグが見つかります。
 
    
 ```JSON
@@ -108,7 +108,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
      }
 ``` 
 
-**証明書をロールオーバー**するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。  この結果、1 つのデプロイ手順で現在のプライマリ証明書が新しい証明書にロールオーバーされます。
+**証明書をロールオーバー**するには、新しい証明書をプライマリに指定し、現在のプライマリをセカンダリに移動します。 この結果、1 つのデプロイ手順で現在のプライマリ証明書が新しい証明書にロールオーバーされます。
 
 ```JSON
       "properties": {

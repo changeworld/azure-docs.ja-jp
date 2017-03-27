@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 18959934c53e2e1c719cc627ffa286acbdcaa967
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 83c063bb003ccda80ba6c1a74aadcd624d77ae47
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -46,7 +47,7 @@ Web Apps を使用できる一般的なアプリケーション シナリオの�
 Web Apps に適用されるいくつかの App Service の主要機能を次に示します。
 
 * **複数の言語とフレームワーク** - App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、 [PowerShell などのスクリプトや実行可能ファイル](web-sites-create-web-jobs.md) を実行することもできます。
-* **DevOps の最適化** - [継続的インテグレーションとデプロイ](app-service-continuous-deployment.md) を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。 [テスト環境やステージング環境](web-sites-staged-publishing.md)を介して更新を反映できます。 また、 [A/B テスト](app-service-web-test-in-production-get-start.md)を実行できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
+* **DevOps の最適化** - [継続的インテグレーションとデプロイ](app-service-continuous-deployment.md) を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。 [テスト環境やステージング環境](web-sites-staged-publishing.md)を介して更新を反映できます。 また、 [A/B テスト](app-service-web-test-in-production-get-start.md)を実行できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../cli-install-nodejs.md) を使用します。
 * **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](web-sites-scale.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP、Siebel、Oracle など)、SaaS サービス (Salesforce や Office 365 など)、インターネット サービス (Facebook や Twitter など) 向けに用意された 50 を超える [コネクタ](../connectors/apis-list.md) から選択できます。 また、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/TrustCenter/)しています。
@@ -74,9 +75,4 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 > Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大&1; 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

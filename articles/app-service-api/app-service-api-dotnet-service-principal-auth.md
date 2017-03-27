@@ -3,7 +3,7 @@ title: "Azure App Service での API Apps のサービス プリンシパルの�
 description: "Azure App Service でサービス間シナリオで API アプリを保護する方法について説明します。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: 7ca0bab2-1d29-4d51-b779-dce0edd34f8b
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: 232446806309148f7958609608d4afc28ffea98d
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/16/2017
 * 「 [Azure App Service でサービス プリンシパル認証を構成する方法](#authconfig) 」セクションでは、一般的に、API アプリの認証を構成する方法と、保護対象の API アプリを使用する方法について説明します。 このセクションは、.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークに同様に適用されます。
 * 「 [.NET 入門チュートリアルの続行](#tutorialstart) 」セクション以降では、App Service で動作する .NET サンプル アプリケーションに対して "内部的なアクセス" を構成する手順を説明します。 
 
-## <a name="a-idauthconfiga-how-to-configure-service-principal-authentication-in-azure-app-service"></a><a id="authconfig"></a> Azure App Service でサービス プリンシパル認証を構成する方法
+## <a id="authconfig"></a> Azure App Service でサービス プリンシパル認証を構成する方法
 ここでは、すべての API アプリに当てはまる一般的な手順を説明します。 To Do List .NET サンプル アプリケーション固有の手順については、「 [.NET 入門チュートリアルの続行](#tutorialstart)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com/) で、保護する API アプリの **[設定]** ブレードに移動して、**[機能]** セクションを探し、**[認証/承認]** をクリックします。
@@ -84,7 +84,7 @@ App Service から提供される `objectidentifier` 要求は、X-MS-CLIENT-PRI
 ### <a name="how-to-protect-the-api-app-from-browser-access"></a>ブラウザー アクセスから API アプリを保護する方法
 保護対象の API アプリのコードで要件を検証せず、保護対象の API アプリに別の Azure AD アプリケーションを使用する場合は、Azure AD アプリケーションの Reply URL が API アプリのベース URL と同じにならないようにします。 Reply URL が保護対象の API アプリを直接示している場合、同じ Azure AD テナント内のユーザーは、API アプリの閲覧、ログオン、API の呼び出しを実行できるようになります。
 
-## <a name="a-idtutorialstarta-continuing-the-net-api-apps-tutorial-series"></a><a id="tutorialstart"></a> .NET API アプリ チュートリアル シリーズの続行
+## <a id="tutorialstart"></a> .NET API アプリ チュートリアル シリーズの続行
 API アプリの Node.js または Java チュートリアル シリーズを読んでいる場合は、「 [次のステップ](#next-steps) 」セクションに進みます。 
 
 この記事では、引き続き .NET API アプリ チュートリアル シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-dotnet-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。

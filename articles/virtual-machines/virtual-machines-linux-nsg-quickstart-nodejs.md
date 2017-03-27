@@ -14,9 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
-ms.openlocfilehash: 33c658bc15ee266d519a2ca403d2fc0d057b36fd
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 96d34c176e028b89617c1f09d7baba7b31eb1601
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/27/2017
 
 
 ## <a name="quick-commands"></a>クイック コマンド
-ネットワーク セキュリティ グループと規則を作成するには、[Azure CLI 1.0](../xplat-cli-install.md) をインストールし、Resource Manager モードで使用する必要があります。
+ネットワーク セキュリティ グループと規則を作成するには、[Azure CLI 1.0](../cli-install-nodejs.md) をインストールし、Resource Manager モードで使用する必要があります。
 
 ```azurecli
 azure config mode arm

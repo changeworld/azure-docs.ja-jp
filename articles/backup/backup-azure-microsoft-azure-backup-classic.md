@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/10/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
-ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 2b278b5c512d3ea0ff045869487d4551118c0e5c
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -53,33 +53,21 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 >
 >
 
-このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
+Azure Backup Server をドメインに参加させる予定がある場合は、Azure Backup Server ソフトウェアをインストールする前に、物理サーバーまたは仮想マシンをドメインに参加させることをお勧めします。 デプロイ後の、新しいドメインへの Azure Backup Server の移動は "*サポートされていません*"。
 
 ## <a name="2-backup-vault"></a>2.バックアップ資格情報コンテナー
 ![step2](./media/backup-azure-microsoft-azure-backup/step2.png)
 
-バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、ソフトウェアを Azure に接続する必要があります。 具体的には、Azure Backup Server マシンをバックアップ資格情報コンテナーに登録する必要があります。
+バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、Azure Backup Server をコンテナーに登録する必要があります。
 
-バックアップ資格情報コンテナーを作成するには:
+> [!IMPORTANT]
+> 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。 既にあるバックアップ コンテナーは引き続きサポートされ、[Azure PowerShell を使用してバックアップ コンテナーを作成](./backup-client-automation-classic.md#create-a-backup-vault)することが可能です。 ただし将来的な機能強化は Recovery Services コンテナーに限定されるため、Microsoft では、すべてのデプロイに関して Recovery Services コンテナーを作成することを推奨しています。
+>
+>
 
-1. [管理ポータル](http://manage.windowsazure.com/)にサインインします。
-2. **[新規]** > **[Data Services]** > **[Recovery Services]** > **[バックアップ コンテナー]** > **[簡易作成]** の順にクリックします。 組織のアカウントに複数のサブスクリプションが関連付けられている場合は、バックアップ コンテナーに関連付ける適切なサブスクリプションを選択してください。
-3. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 これは、サブスクリプションごとに一意である必要があります。
-4. **[リージョン]**ボックスで、コンテナーのリージョンを選択します。 通常、資格情報コンテナーのリージョンは、データの主権またはネットワーク待ち時間の制約に応じて選択します。
 
-    ![バックアップ資格情報コンテナーの作成](./media/backup-azure-microsoft-azure-backup/backup_vaultcreate.png)
-5. **[資格情報コンテナーの作成]**をクリックします。 バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。 ポータルの下部にある状態通知を監視します。
 
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
-6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[復旧サービス] ページに [アクティブ] と表示されます。
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
-
-   > [!IMPORTANT]
-   > コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。 この[概要](../storage/storage-redundancy.md)に記載されている [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)オプションの詳細をご覧ください。
-   >
-   >
-
-## <a name="3-software-package"></a>手順&3;.ソフトウェア パッケージ
+## <a name="3-software-package"></a>3.ソフトウェア パッケージ
 ![step3](./media/backup-azure-microsoft-azure-backup/step3.png)
 
 ### <a name="downloading-the-software-package"></a>ソフトウェア パッケージのダウンロード
@@ -125,6 +113,7 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
    > Azure Backup Server は、リモートの SQL Server インスタンスでは動作しません。 Azure Backup Server に使用されるインスタンスは、ローカルに存在する必要があります。
    >
    >
+
 4. Microsoft Azure Backup サーバーのファイルをインストールする場所を指定し、 **[次へ]**をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)

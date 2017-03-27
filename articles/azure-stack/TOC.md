@@ -32,6 +32,7 @@
 ### [正常性とアラートの監視](azure-stack-monitor-health.md)
 ### [ネットワーク リソースの管理](azure-stack-viewing-public-ip-address-consumption-in-tp2.md)
 ### [ストレージ リソースの管理](azure-stack-manage-storage-accounts.md)
+### [Windows Azure Pack VM の管理](azure-stack-manage-windows-azure-pack.md)
 
 # セキュリティとコンプライアンス
 ## 方法
@@ -86,7 +87,6 @@
 #### [ポータルで管理する](azure-stack-kv-manage-portal.md)
 #### [PowerShell で管理する](azure-stack-kv-manage-powershell.md)
 ### 方法
-#### [パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
 #### [証明書を使用して VM を作成する](azure-stack-kv-push-secret-into-vm.md)
 #### [Key Vault サンプル アプリ](azure-stack-kv-sample-app.md)
 

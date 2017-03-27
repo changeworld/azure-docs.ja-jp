@@ -9,6 +9,7 @@ tags: azure-portal
 author: mumian
 ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
 ms.openlocfilehash: 9cadb72e065f82de8e007b38e909d2bc07d18126
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -120,10 +122,5 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * [HDInsight での Oozie の使用](hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

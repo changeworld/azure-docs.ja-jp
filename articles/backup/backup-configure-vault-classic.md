@@ -1,6 +1,6 @@
 ---
-title: "クラシック デプロイ モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする | Microsoft Docs"
-description: "バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
+title: "Azure への Windows サーバーまたはワークステーションのバックアップ (クラシック モデル) | Microsoft Docs"
+description: "Windows サーバーまたはクライアントを Azure のバックアップ コンテナーにバックアップします。 Azure Backup エージェントを使用してバックアップ コンテナーにファイルとフォルダーを移動して保護するための基本について説明します。"
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,76 +13,41 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 3/10/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: a7b55e3949cf8406f7c62e9dfd6cc1567d3a5996
+ms.lasthandoff: 03/14/2017
 
 
 ---
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする
+# <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>クラシック ポータルを使用して Windows サーバーまたはワークステーションを Azure にバックアップします
 > [!div class="op_single_selector"]
 > * [クラシック ポータル](backup-configure-vault-classic.md)
 > * [Azure ポータル](backup-configure-vault.md)
 >
 >
 
-この記事では、環境を準備し、Windows サーバー (またはクライアント) を Azure にバックアップするための手順について説明します。 また、バックアップ ソリューションのデプロイに関する考慮事項についても説明します。 Azure Backup を初めて使用してみる場合は、この記事ですばやく操作を実習できます。
+この記事では、環境を準備し、Windows サーバー (またはワークステーション) を Azure にバックアップするための手順について説明します。 また、バックアップ ソリューションのデプロイに関する考慮事項についても説明します。 Azure Backup を初めて使用してみる場合は、この記事ですばやく操作を実習できます。
 
-![[コンテナーの作成]](./media/backup-configure-vault-classic/initial-backup-process.png)
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 >
 >
 
 ## <a name="before-you-start"></a>開始する前に
 サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成できます。
 
-## <a name="step-1-create-a-backup-vault"></a>手順 1: バックアップ コンテナーを作成する
+## <a name="create-a-backup-vault"></a>バックアップ資格情報コンテナーの作成
 サーバーまたはクライアントのファイルとフォルダーをバックアップするには、データを保存するリージョンにバックアップ コンテナーを作成する必要があります。
 
-### <a name="to-create-a-backup-vault"></a>バックアップ資格情報コンテナーを作成するには
-1. [クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-2. **[新規]** > **[Data Services]** > **[Recovery Services]** > **[バックアップ コンテナー]** の順にクリックし、**[簡易作成]** を選択します。
-3. **[名前]** パラメーターについては、バックアップ コンテナーの表示名を入力します。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。 この名前は、サブスクリプションごとに一意である必要があります。
-4. **[リージョン]** パラメーターについては、バックアップ資格情報コンテナーの地理的リージョンを選択します。 この選択により、バックアップ データの送信先となるリージョンが決まります。 自分の場所から近いリージョンを選択することによって、Azure にバックアップする際のネットワーク待機時間を短縮できます。
-5. **[資格情報コンテナーの作成]**をクリックします。
+> [!IMPORTANT]
+> 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。 既にあるバックアップ コンテナーは引き続きサポートされ、[Azure PowerShell を使用してバックアップ コンテナーを作成](./backup-client-automation-classic.md#create-a-backup-vault)することが可能です。 ただし将来的な機能強化は Recovery Services コンテナーに限定されるため、Microsoft では、すべてのデプロイに関して Recovery Services コンテナーを作成することを推奨しています。
 
-    ![バックアップ資格情報コンテナーの作成](./media/backup-configure-vault-classic/demo-vault-name.png)
 
-    バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。 状態を確認するには、クラシック ポータルの下部にある通知を監視します。
-
-    バックアップ コンテナーが作成された後、コンテナーが正常に作成されたことを示すメッセージが表示されます。 また、**[Recovery Services]** のリソースの一覧に **[アクティブ]** と表示されます。
-
-    ![Creating Vault status](./media/backup-configure-vault-classic/recovery-services-select-vault.png)
-6. ここで説明する手順に従って、ストレージ冗長オプションを選択します。
-
-   > [!IMPORTANT]
-   > ストレージ冗長オプションを識別する最適なタイミングは、コンテナーの作成直後かつ、いずれかのコンピューターがコンテナーに登録される前です。 項目がコンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
-   >
-   >
-
-    プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、Windows サーバーから Azure にバックアップする場合)、 [geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage) オプション (既定値) の選択を検討する必要があります。
-
-    Azure を第 3 のバックアップ ストレージ エンドポイントとして使用している場合 (オンプレミスのローカル バックアップ コピーには System Center Data Protection Manager を使用し、Azure は長期のリテンション期間に使用する場合など) は、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)の選択を検討します。 これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
-
-    **ストレージ冗長オプションを選択するには:**
-
-    a. 作成したコンテナーをクリックします。
-
-    b. [クイック スタート] ページで、**[構成]** をクリックします。
-
-    ![Configure Vault status](./media/backup-configure-vault-classic/configure-vault.png)
-
-    c. 適切なストレージ冗長オプションを選択します。
-
-    **[geo 冗長]** が既定のオプションであるため、**[ローカル冗長]** を選択した場合は **[保存]** をクリックする必要があります。
-
-    d. 左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックして、[Recovery Services] のリソースの一覧に戻ります。
-
-## <a name="step-2-download-the-vault-credential-file"></a>手順 2: コンテナーの資格情報ファイルをダウンロードする
+## <a name="download-the-vault-credential-file"></a>資格情報コンテナーの資格情報ファイルのダウンロード
 データを Azure にバックアップする前に、オンプレミスのコンピューターをバックアップ コンテナーで認証する必要があります。 認証は *コンテナーの資格情報*を使用して実行されます。 資格情報コンテナーの資格情報ファイルは、セキュリティで保護されたチャネルを介してクラシック ポータルからダウンロードされます。 証明書の秘密キーは、ポータルやサービスには保持されません。
 
 [コンテナーの資格情報を使用した Backup サービスでの認証](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)の詳細を参照してください。
@@ -103,7 +68,7 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
    >
    >
 
-## <a name="step-3-download-install-and-register-the-backup-agent"></a>手順 3: Backup エージェントをダウンロード、インストール、および登録する
+## <a name="download-install-and-register-the-backup-agent"></a>Backup エージェントをダウンロード、インストール、および登録する
 バックアップ コンテナーを作成し、コンテナーの資格情報ファイルをダウンロードした後は、各 Windows コンピューターにエージェントをインストールする必要があります。
 
 ### <a name="to-download-install-and-register-the-agent"></a>エージェントをダウンロード、インストール、登録するには
@@ -130,10 +95,11 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
     > パスフレーズを紛失または忘れた場合、Microsoft はバックアップ データの回復を支援することはできません。 暗号化のパスフレーズはユーザーが所有しており、Microsoft はユーザーが使用するパスフレーズを確認できません。 回復操作中に必要になるため、ファイルは安全な場所に保存してください。
     >
     >
+
 11. 暗号化キーが設定されたら、**[Microsoft Azure Recovery Services Agent の起動]** チェック ボックスをオンのままにし、**[閉じる]** をクリックします。
 
-## <a name="step-4-complete-the-initial-backup"></a>手順 4: 初回バックアップを完了する
-初回バックアップには、次の 2 つの主要なタスクが含まれています。
+## <a name="complete-the-initial-backup"></a>初回バックアップを完了する
+初回バックアップには、次の&2; つの主要なタスクが含まれています。
 
 * バックアップ スケジュールの構成
 * 初回のファイルとフォルダーのバックアップ
@@ -150,10 +116,10 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]**をクリックします。
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]**をクリックします。
 5. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
-6. ページの下部にある [次へ]」を参照してください。
+6. ページの下部にある **[次へ]**」を参照してください。
 7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
-    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
+    毎日 (1 日に最大&3; 回) または毎週のバックアップをスケジュールすることができます。
 
     ![Windows Server のバックアップ項目](./media/backup-configure-vault-classic/specify-backup-schedule-close.png)
 
@@ -161,6 +127,7 @@ ms.openlocfilehash: ddb1eabf88c48228f312d2fb0ac7f6685e448685
    > バックアップ スケジュールを指定する方法の詳細については、「 [Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)」を参照してください。
    >
    >
+
 8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**リテンション期間ポリシー**を選択します。
 
     保有ポリシーは、バックアップを格納する必要がある期間を指定します。 すべてのバックアップ ポイントに "同じポリシー" を指定するのでなく、バックアップが実行されるタイミングに基づいて異なる保持ポリシーを指定できます。 必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
@@ -205,9 +172,4 @@ VM や他のワークロードのバックアップの詳細については、�
 * [IaaS VM のバックアップ](backup-azure-vms-prepare.md)
 * [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
 * [DPM を使用して Azure へのワークロードをバックアップするための準備](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

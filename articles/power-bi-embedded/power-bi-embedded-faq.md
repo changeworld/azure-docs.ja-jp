@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 03/02/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: f57b400dc20dc08221c0a8a770fd78f5885f634c
-ms.openlocfilehash: 0beb98220f043dc7c66cc494c3de00e0993798a6
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: be485debb4d8a2d1f64e1752bc204f1634d53c97
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -89,14 +90,11 @@ Power BI Embedded モデルでは、Azure AD テナントを顧客向けに使�
 今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure Portal から直接 Power BI Embedded をプロビジョニングできます。  また、 [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。 Power BI Embedded サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、 [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472)で提供されている Developer SDK を使用したりできます。 Developer SDK を活用する方法については、サンプルが提供されます。
 
 ## <a name="see-also"></a>関連項目
-* [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
-* [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
+[Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
+[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
+[使用を開始するためのサンプル](power-bi-embedded-get-started-sample.md)   
+[JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

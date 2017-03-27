@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/09/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: 935680e33c1b32619b7acb8d50a61e48b6703402
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 04bab3024474ae521090a8693b6c095e1704d4dc
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -48,14 +48,16 @@ Azure サービスのログとメトリックを収集する方法は&4; 種類�
 | ロード バランサー          | Microsoft.Network/loadBalancers         | 診断 |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 診断 | 診断 | |
 | ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Recovery コンテナー         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (プレビュー)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Search サービス         | Microsoft.Search/searchServices         | 診断 | 診断 | |
-| Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | |
+| Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](log-analytics-service-fabric.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | [Azure SQL Analytics (プレビュー)](log-analytics-azure-sql.md) |
+| Storage                 |                                         |             | スクリプト      | [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | 内線番号   | 内線番号 <br> 診断  | |
 | 仮想マシン スケール セット | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 診断 | |
 | Web サーバー ファーム        | Microsoft.Web/serverfarms               |             | 診断 | |
-| Web サイト               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 診断 | [詳細情報](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring) |
+| Web サイト               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 診断 | [Azure Web Apps Analytics (プレビュー)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
 
 
 > [!NOTE]

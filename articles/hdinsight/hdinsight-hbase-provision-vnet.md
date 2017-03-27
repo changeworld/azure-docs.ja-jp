@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 8de8e446-f818-4e61-8fad-e9d38421e80d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: 938abf03191dec10da8d2fabf27c5db2415d6bc5
 ms.openlocfilehash: 6dd149808a89ccf7da2989751788e074d5340d5c
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -296,9 +298,4 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
 [azure-preview-portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure デプロイでの関連テンプレートの接続 | Microsoft Docs"
+title: "Azure デプロイ用のリンク テンプレート | Microsoft Docs"
 description: "Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: a6c3e0150a60777d9f824cb1e0768bd44a8c981e
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 7bc5e1102b60db0bdf7a8310d0816f65bcfec3a1
 メイン テンプレートからリンクされたテンプレートにパラメーターを渡すことができます。それらのパラメーターは、呼び出し元のテンプレートによって公開されているパラメーターまたは変数に直接マップできます。 リンクされたテンプレートからソース テンプレートに出力変数を渡すこともできます。そのため、テンプレート間で双方向のデータ交換を行うことができます。
 
 ## <a name="linking-to-a-template"></a>テンプレートへのリンク
-2 つのテンプレート間のリンクを作成するには、リンク先のテンプレートを指すデプロイ リソースをメイン テンプレート内に追加します。 **templateLink** プロパティを、リンク先のテンプレートの URI に設定します。 リンクされたテンプレートのパラメーター値を指定するには、テンプレート内で値を直接指定するか、パラメーター ファイルにリンクします。 次の例では、 **parameters** プロパティを使用して、パラメーター値を直接指定しています。
+2 つのテンプレート間のリンクを作成するには、リンク先のテンプレートを指すデプロイ リソースをメイン テンプレート内に追加します。 **templateLink** プロパティを、リンク先のテンプレートの URI に設定します。 リンク先テンプレートのパラメーター値は、テンプレート内またはパラメーター ファイル内で直接指定できます。 次の例では、 **parameters** プロパティを使用して、パラメーター値を直接指定しています。
 
 ```json
 "resources": [ 
@@ -87,7 +88,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
 ],
 ```
 
-トークンがセキュリティで保護された文字列として渡された場合でも、SAS トークンを含むリンクされたテンプレートの URI が、リソース グループのデプロイ操作にログ記録されます。 公開を制限するには、トークンの有効期限を設定します。
+トークンがセキュリティで保護された文字列として渡された場合でも、SAS トークンを含むリンクされたテンプレートの URI が、デプロイ操作中にログに記録されます。 公開を制限するには、トークンの有効期限を設定します。
 
 Resource Manager では、各リンクされたテンプレートは個別のデプロイメントとして処理されます。 リソース グループのデプロイ履歴で、親および入れ子になったテンプレートに個別のデプロイメントを確認できます。
 
@@ -308,26 +309,36 @@ PowerShell では、コンテナーのトークンを取得し、以下を使用
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
+$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。 現時点では、SAS トークンを含むテンプレート URI を使用する場合は、デプロイの名前を指定する必要があります。  
+Azure CLI 2.0 では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
 
+```azurecli
+seconds='@'$(( $(date +%s) + 1800 ))
+expiretime=$(date +%Y-%m-%dT%H:%MZ --date=$seconds)
+connection=$(az storage account show-connection-string \
+    --resource-group ManageGroup \
+    --name storagecontosotemplates \
+    --query connectionString)
+token=$(az storage container generate-sas \
+    --name templates \
+    --expiry $expiretime \
+    --permissions r \
+    --output tsv \
+    --connection-string $connection)
+url=$(az storage blob url \
+    --container-name templates \
+    --name parent.json \
+    --output tsv \
+    --connection-string $connection)
+parameter='{"containerSasToken":{"value":"?'$token'"}}'
+az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
-expiretime=$(date -I'minutes' --date "+30 minutes")  
-azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
-azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
-```
-
-パラメーターとして SAS トークンを指定するように求められます。 トークンの前に **?**を付ける必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 * リソースのデプロイの順序の定義については、「 [Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)
 * リソースを&1; つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

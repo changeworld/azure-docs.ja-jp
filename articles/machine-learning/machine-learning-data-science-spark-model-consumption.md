@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2017
+ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 138c1182ea173ff2f14672e692ff79ae1015dcfc
-ms.openlocfilehash: 52319ff75817e75b31388aa03030a4f0e63c182d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cfab4ea7491d15321d54cd9482e35a89fe7c7275
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/27/2017
 このチュートリアルで説明するセットアップ手順と ML モデルを操作するコードは、HDInsight Spark 1.6 クラスターおよび Spark 2.0 クラスター向けです。 これらの手順のコードは、Jupyter Notebook でも提供されます。
 
 ### <a name="notebook-for-spark-16"></a>Spark 1.6 向け Notebook
-[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter Notebook では、HDInsight クラスターで Python を使用して、保存済みのモデルを操作する方法を示します。 
+[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter Notebook では、HDInsight クラスターで Python を使用して、保存済みのモデルを操作する方法を示します。 
 
 ### <a name="notebook-for-spark-20"></a>Spark 2.0 向け Notebook
 Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラスターで使用するには、Python コード ファイルを[こちらのファイル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)に置き換えます。 このコードは、Spark 2.0 で作成されたモデルを使用する方法を示しています。

@@ -17,9 +17,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 0d0b896e64dfba0081e2ec23f2181e07226faebe
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ed0fe2fea20671063395b9ff089599853278989d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -38,7 +38,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する方法
 上記のシナリオに基づいて、*TestService* という名前の新しいクラウド サービスで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. **azure service create** コマンドを実行して、クラウド サービスを作成します。
    
         azure service create TestService --location uscentral

@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 4787f3cc-a650-4dc3-9d96-a19a67aad046
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -18,6 +19,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: e80bf82df28fbce8a1019c6eb07cfcae4cbba930
 ms.openlocfilehash: 34f5c92dc565e644bd8c569bfbea65e92ace5a19
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -29,7 +31,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
-## <a name="a-idwhatisawhat-is-ambari"></a><a id="whatis"></a>Ambari とは
+## <a id="whatis"></a>Ambari とは
 
 [Apache Ambari](http://ambari.apache.org) は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
@@ -196,7 +198,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
      > [!NOTE]
      > HDInsight クラスターではこの操作は使用しないでください。
 
-### <a name="a-idserviceaservices"></a><a id="service"></a>サービス
+### <a id="service"></a>サービス
 
 **[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して、すべてのサービスを停止し、開始します。
 
@@ -240,10 +242,5 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 * Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 * Tez ビュー: このビューでは、Tez ジョブの実行方法や、ジョブで使用するリソース関する情報を表示することで、ジョブをより良く理解、最適化できます。
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

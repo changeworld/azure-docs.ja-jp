@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/23/2017
+ms.date: 03/08/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 550b4154f0fe510cb37ec4f8bdef251b06f0b495
-ms.openlocfilehash: e739bb129ea2b280803380f3f9c20ca052b3f122
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: af5e181ce254fefe55c847d9988dd8245c75e864
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -44,7 +44,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 
 | Managed Cache Service の機能 | Managed Cache Service のサポート | Azure Redis Cache のサポート |
 | --- | --- | --- |
-| 名前付きキャッシュ |既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大&9; 個の名前付きキャッシュを追加構成できます。 |Azure Redis キャッシュには、名前付きキャッシュに似た機能の実装に使用できるデータベースがあります (データベースの数は既定で 16 個ですが、構成できます)。 詳細については、「 [既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
+| 名前付きキャッシュ |既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大&9; 個の名前付きキャッシュを追加構成できます。 |Azure Redis キャッシュには、名前付きキャッシュに似た機能の実装に使用できるデータベースがあります (データベースの数は既定で 16 個ですが、構成できます)。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。 |
 | 高可用性 |Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。 アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。 セカンダリ キャッシュへの書き込みは同期的に行われます。 |高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。 レプリカへの書き込みは非同期的に行われます。 詳細については、 [Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。 |
 | 通知 |名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。 |クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings) を使用して、同様の通知機能を実現できます。 |
 | ローカル キャッシュ |特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。 |クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。 |

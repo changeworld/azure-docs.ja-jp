@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 11/18/2016
+ms.date: 3/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: ca01baebd755e92aff1ef080af1fcd4606b9a2ec
-ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 146fcd9788bab55e4abd9e70dcfe25741f041d34
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -27,16 +28,18 @@ ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
 ### <a name="variations"></a>バリエーション
 次の製品 (VM) が Azure Government で一般公開されています。
 
-| 製品 (VM) | 米国政府バージニア州 | 米国政府アイオワ州 |
-| --- | --- | --- |
-| A0-A7 |Y |Y |
-| D シリーズ |Y |N |
-| Dv2 シリーズ |Y |Y |
-| DS シリーズ |Y |N |
-| F シリーズ |Y |Y |
-| FS シリーズ |N |N |
-| G シリーズ |Y |N |
-| GS シリーズ |Y |N |
+| 製品 (VM) | 米国政府バージニア州 | 米国政府アイオワ州 | 米国防総省東部 | 米国防総省西部
+| --- | --- | --- |--- |--- |
+| A0-A7 |Y |Y |Y |Y |Y |
+| Av2 |Y |Y |Y |Y |Y |
+| D シリーズ |Y |N |N |N |
+| Dv2 シリーズ |Y |Y |Y |Y |
+| DS シリーズ |Y |N |N |N |
+| DSv2 シリーズ |Y |N |Y |Y |
+| F シリーズ |Y |Y |Y |Y |
+| FS シリーズ |Y |N |Y |Y |
+| G シリーズ |Y |N |N |N |
+| GS シリーズ |Y |N |N |N |
 
 ### <a name="data-considerations"></a>データに関する考慮事項
 以下の情報は、Azure Virtual Machines に関する Azure Government の機能領域について記述したものです。
@@ -47,10 +50,5 @@ ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
 
 ## <a name="next-steps"></a>次のステップ
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を講読してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

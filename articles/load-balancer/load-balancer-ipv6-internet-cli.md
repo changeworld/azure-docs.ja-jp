@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d009cf50be1f597c266fd565c9ff4799c9df6dbb
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -62,7 +63,7 @@ Azure Load Balancer は、第&4; 層 (TCP、UDP) のロード バランサーで
 
 この例では、PowerShell コマンド ウィンドウで CLI ツールを実行しています。 Azure PowerShell コマンドレットは使用しませんが、PowerShell のスクリプト機能を使用して読みやすさを向上させ、再利用できるようにします。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. **azure config mode** コマンドを実行して Resource Manager モードに切り替えます。
 
     ```azurecli
@@ -342,9 +343,4 @@ VM を作成するには、ストレージ アカウントが必要です。 負
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

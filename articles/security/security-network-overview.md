@@ -1,6 +1,6 @@
 ---
 title: "ネットワーク セキュリティの概念および Azure における要件 | Microsoft Docs"
-description: " この記事により、Microsoft Azure がネットワーク セキュリティ分野で提供している事柄を簡単に理解できるようになります。 ネットワーク セキュリティの中核をなす概念と要件の基本的な説明と、各分野で Azure が提供している事柄に関する情報を提供します。. "
+description: " この記事により、Microsoft Azure がネットワーク セキュリティ分野で提供している事柄を簡単に理解できるようになります。 ネットワーク セキュリティの中核をなす概念と要件の基本的な説明と、各分野で Azure が提供している事柄に関する情報を提供します。 "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2017
+ms.date: 03/13/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 8b0266a86221b379a105b87f130cd0a4f97385f7
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 4f8ff754858dfb12a7c1fb6e11b1ea99d99d4aeb
+ms.lasthandoff: 03/14/2017
 
 
 ---
@@ -203,7 +204,7 @@ Azure におけるネットワーク レベルの負荷分散の利点を活用�
 ## <a name="logging"></a>ログの記録
 ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、ネットワーク セキュリティ グループに関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
 
-* 監査ログ – これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。
+* [アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) – このログは、Azure サブスクリプションに送信されたすべての操作を確認する場合に使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は "監査ログ" や "操作ログ" と呼ばれていました。
 * イベント ログ – これらのログは、適用された NSG ルールについての情報を提供します。
 * カウンター ログ – このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
 
@@ -267,9 +268,4 @@ Azure Security Center は、ネットワーク セキュリティの最適化と
 詳細情報:
 
 * [Azure Security Center 入門](../security-center/security-center-intro.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

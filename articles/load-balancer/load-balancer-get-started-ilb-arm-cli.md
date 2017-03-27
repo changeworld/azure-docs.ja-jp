@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: bd1f5e497bcf39a0d8848cc63c718e693f775d63
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/24/2017
 
 ## <a name="set-up-cli-to-use-resource-manager"></a>Resource Manager を使用するための CLI のセットアップ
 
-1. Azure CLI の使用経験がない場合は、「 [Azure CLI をインストールして構成する](../xplat-cli-install.md)」を参照してください。 手順に従い、Azure アカウントとサブスクリプションを選択する段階まで進めます。
+1. Azure CLI の使用経験がない場合は、「 [Azure CLI をインストールして構成する](../cli-install-nodejs.md)」を参照してください。 手順に従い、Azure アカウントとサブスクリプションを選択する段階まで進めます。
 2. 次のように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
     ```azurecli

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: c214e37fb4211e8a2686a2beb18cf84ee77d5783
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5ef5cfeb82eed86fd0a9b6328c803d6a88cd2822
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -270,7 +270,7 @@ Git Shell で、次のコマンドを実行します。
 * [Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [David Ebbo のブログ](http://blog.davidebbo.com/)
 * [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-* [Azure クロスプラットフォーム コマンド ライン ツール](../xplat-cli-install.md)
+* [Azure クロスプラットフォーム コマンド ライン ツール](../cli-install-nodejs.md)
 * [Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 * [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 

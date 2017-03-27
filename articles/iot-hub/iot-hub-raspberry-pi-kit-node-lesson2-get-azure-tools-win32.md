@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 1: ツールの入手 (Windows) | Microsoft Docs"
+title: "Azure IoT への Raspberry Pi (Node) の接続 - レッスン 2: ツールの入手 (Windows) | Microsoft Docs"
 description: "Python と Azure コマンド ライン インターフェイス (Azure CLI) を、Windows 7 以降のバージョンにインストールします。"
 services: iot-hub
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 822ec5c36203a6de5efb25249c2c4a93794b759d
+ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
+ms.openlocfilehash: b2ed91fa40247f188b5f461439807e0dfa573152
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -71,10 +72,5 @@ Azure CLI をインストールしました。 次のタスクでは、Azure CLI
 
 ## <a name="next-steps"></a>次のステップ
 [IoT ハブの作成と Raspberry Pi 3 の登録](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

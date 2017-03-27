@@ -3,7 +3,7 @@ title: "Azure App Service での API Apps のユーザー認証 | Microsoft Docs
 description: "認証されたユーザーのみがアクセスできるよう Azure App Service で API アプリを保護する方法について説明します。"
 services: app-service\api
 documentationcenter: .net
-author: tdykstra
+author: alexkarcher-msft
 manager: erikre
 editor: 
 ms.assetid: 3896760d-46ff-4b67-b98a-edd233f24758
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
-ms.author: rachelap
+ms.author: alkarche
 translationtype: Human Translation
 ms.sourcegitcommit: 16a2c6f8e704528c38054bba394e3d11098077e0
 ms.openlocfilehash: c39e7bca6f339a1797a9344778e6a01ffa8adecc
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/24/2017
 * 「[Azure App Service でユーザー認証を構成する方法](#authconfig)」セクションでは、API アプリ用にユーザー認証を構成する一般的な方法について説明します。この説明は、.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークに適用されます。
 * 「 [.NET API アプリ チュートリアルの続行](#tutorialstart) 」セクション以降では、ユーザー認証に Azure Active Directory を使用するように、.NET バックエンドと AngularJS フロントエンドによりサンプル アプリケーションを構成する方法について説明します。 
 
-## <a name="a-idauthconfiga-how-to-configure-user-authentication-in-azure-app-service"></a><a id="authconfig"></a> Azure App Service でユーザー認証を構成する方法
+## <a id="authconfig"></a> Azure App Service でユーザー認証を構成する方法
 ここでは、すべての API アプリに当てはまる一般的な手順を説明します。 To Do List .NET サンプル アプリケーション固有の手順については、「 [.NET 入門チュートリアルの続行](#tutorialstart)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com/) で、保護する API アプリの **[設定]** ブレードに移動して、**[機能]** セクションを探し、**[認証/承認]** をクリックします。
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/24/2017
 
 呼び出し元が認証された API 呼び出しを行うには、認証プロバイダーの OAuth 2.0 ベアラー トークンを、HTTP 要求の承認ヘッダーに組み込みます。 トークンは、認証プロバイダーの SDK を使用して取得できます。
 
-## <a name="a-idtutorialstarta-continuing-the-net-api-apps-tutorials"></a><a id="tutorialstart"></a> .NET API アプリ チュートリアルの続行
+## <a id="tutorialstart"></a> .NET API アプリ チュートリアルの続行
 API アプリの Node.js または Java チュートリアルに従って学習している場合は、次の記事「 [Azure App Service での API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)」に進みます。 
 
 API アプリの .NET チュートリアルに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[App Service と Azure AD での認証の設定](#azureauth)」セクションに進みます。
@@ -80,7 +80,7 @@ API アプリの .NET チュートリアルに従って学習していて、[1 �
 2. [To Do List サンプル リポジトリ Readme ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)の **[Deploy to Azure (Azure へのデプロイ)]** ボタンを使用して API アプリと Web アプリをデプロイしてください。 作成された Azure リソース グループをメモしておきます。これは後で Web アプリ名と API アプリ名を検索する場合に使用できます。
 3. [To Do List サンプル リポジトリ](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list) をダウンロードまたは複製して、Visual Studio でローカルに使用するコードを取得します。
 
-## <a name="a-idazureautha-set-up-authentication-in-app-service-and-azure-ad"></a><a id="azureauth"></a> App Service と Azure AD での認証の設定
+## <a id="azureauth"></a> App Service と Azure AD での認証の設定
 現在は、Azure App Service で実行しているアプリケーションはユーザーの認証を必要としません。 このセクションでは、次のタスクを実行して認証を追加します。
 
 * 中間層 API アプリを呼び出すために Azure Active Directory (Azure AD) 認証を必要とするように App Service を構成します。

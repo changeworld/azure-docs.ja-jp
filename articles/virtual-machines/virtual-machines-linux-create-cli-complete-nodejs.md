@@ -17,9 +17,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
-ms.openlocfilehash: 03356c0499c595f73221d05d941233de5f01f357
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: e8ee93cacba552bc7a6ec559dd8aa1fb773fadc2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -36,20 +36,20 @@ ms.lasthandoff: 02/27/2017
 
 ![基本的な環境の概要](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) が必要です。 JSON 解析ツールも必要です。 この例では、 [jq](https://stedolan.github.io/jq/)を使用します。
+このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) が必要です。 JSON 解析ツールも必要です。 この例では、 [jq](https://stedolan.github.io/jq/)を使用します。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
 - [Azure CLI 1.0](#quick-commands) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイメント モデル用の次世代 CLI
+- [Azure CLI 2.0](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。
 
-[Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
+[Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
 
 ```azurecli
 azure config mode arm
@@ -273,7 +273,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
 次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。 これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
-[Azure CLI 1.0](../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
+[Azure CLI 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
 
 ```azurecli
 azure config mode arm

@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
 translationtype: Human Translation
-ms.sourcegitcommit: c2ce603e80243584fdc302c545e520b4503f5555
-ms.openlocfilehash: ca2d8d4b277f48ec46156293f73b18b6c2967c51
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 3749d5aac5da83b43d5c6d6b7bd971eac7f07548
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -58,7 +58,7 @@ WMF をインストールした場合は再起動が必要になります。 再
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 Azure Resource Manager またはクラシック デプロイメント モデルと共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。 以下に示すコマンドレットはクラシック デプロイメント モジュールですが、"Azure" を "AzureRm" に置き換えると Azure Resource Manager モデルを使用できます。 たとえば、`Publish-AzureVMDscConfiguration` ではクラシック デプロイメント モデルが使用されますが、`Publish-AzureRmVMDscConfiguration` では Azure Resource Manager が使用されます。 
 
-`Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。 また、 `-ConfigurationArchivePath` パラメーターを使用して、パッケージをローカルに作成することもできます。 それ以外の場合は、Azure BLOB ストレージに .zip ファイルを発行し、SAS トークンを使用して保護します。
+`Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。 また、 `-ConfigurationArchivePath` パラメーターを使用して、パッケージをローカルに作成することもできます。 それ以外の場合は、Azure Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
 
 このコマンドレットによって作成された .zip ファイルでは、アーカイブ フォルダーのルートに .ps1 構成スクリプトがあります。 リソースのモジュール フォルダーは、アーカイブ フォルダーに配置されます。 
 

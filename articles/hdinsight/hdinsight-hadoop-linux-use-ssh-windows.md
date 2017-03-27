@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 639328ca-d800-4fa9-97ed-5664477b88cd
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 744d41a85d39cb468a17ac5a60cd2517f3e60147
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b1806950581e0adbeec52839f12c70599d28100d
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -91,7 +92,7 @@ SSH ユーザーはパスワードと公開キーのいずれかを認証に利�
 
 ## <a name="create-a-linux-based-hdinsight-cluster"></a>Linux ベースの HDInsight クラスターの作成
 
-Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。 Windows ベースのクライアントから、次の 2 つの方法で、Linux ベースの HDInsight クラスターを作成できます。
+Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。 Windows ベースのクライアントから、次の&2; つの方法で、Linux ベースの HDInsight クラスターを作成できます。
 
 * **Azure ポータル** - Web ベースのポータルを使用してクラスターを作成します。
 
@@ -111,7 +112,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 ### <a name="azure-command-line-interface-for-mac-linux-and-windows"></a>Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
-[Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) で、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
+[Mac、Linux、Windows 用の Azure CLI](../cli-install-nodejs.md) で、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「 [カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -126,7 +127,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
    
     ![putty インターフェイス、秘密キーの選択](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
-3. **[カテゴリ]** で **[セッション]** を選択します。 **[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。 クラスターに接続する際に使う可能性がある SSH アドレスは 2 つあります。
+3. **[カテゴリ]** で **[セッション]** を選択します。 **[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。 クラスターに接続する際に使う可能性がある SSH アドレスは&2; つあります。
 
     ![ssh アドレスを入力した putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
@@ -222,7 +223,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 6. これで、新しいユーザー アカウントおよびプライベート キーを使用してサーバーへの認証を行えるようになります。
 
-## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH トンネリング
+## <a id="tunnel"></a>SSH トンネリング
 
 SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。 ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 

@@ -13,15 +13,25 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b7084081381aa9c4211f8bc0d0685541246a5ddb
-ms.openlocfilehash: 7adb6fcb0c9a673523feaad494e6bc8af5c7fe77
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e982e07b6279c1338398980aa07d46ce08ede11c
+ms.lasthandoff: 03/22/2017
 
 ---
 
 # <a name="sql-database-documentation"></a>SQL Database のドキュメント
 
+<div class="introHolder">
+    <div class="intro">
 Microsoft SQL Server エンジンをベースに構築された、クラウドでのサービスとしてのリレーショナル データベースである SQL Database の使用方法を紹介します。 チュートリアル、ビデオ、その他のドキュメントでは、SQL データベースの設定、接続、管理方法を紹介します。
+    </div>
+    <div class="calloutHolder">
+        <div class="callout">
+            <a href="https://azure.microsoft.com/community/training/courses/managing-infrastructure-microsoft-azure-getting-started/">
+                <img src="media/index/pluralsight.svg" /> 無料の PluralSight ビデオ トレーニング - Microsoft Azure を使用したインフラストラクチャの管理 </a>
+        </div>
+    </div>
+</div>
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -128,6 +138,7 @@ Microsoft SQL Server エンジンをベースに構築された、クラウド�
                         <h3>コマンド ライン</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
                         <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (エラスティック データベース)</a></p>
+                        <p><a href="/cli/azure/sql">Azure CLI 2.0</a></p>
                     </div>
                 </div>
             </div>

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: f6e788ed734ce68f4eb9da35bf676f3980e07e62
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 492444304c42a270e638050506e04297c8b17e51
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -57,6 +57,13 @@ DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](do
 > [!NOTE] 
 > DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
 
+### <a name="a-name111111httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore111"></a><a name="1.1.1"/>[1.1.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.1)
+
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) の LINQ サポートを追加しました。
+* イベント ハンドラーの使用によって発生した ConnectionPolicy オブジェクトのメモリ リークの問題を修正しました。
+* ETag を使用した場合に UpsertAttachmentAsync が動作しなかった問題を修正しました。
+* 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
+
 ### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
 
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](documentdb-sql-query.md#Aggregates)に関するトピックを参照してください。
@@ -82,6 +89,7 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |2017 年 3 月 14 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 2 月 16 日 |--- |
 | [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |
 | [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |

@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 03/06/2017
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 1c071390fd6cd9bb5889cb225696b7782fe2bd6b
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 590cb831ad265d9b83713f573c92d8675e64db3d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -100,7 +100,7 @@ BLOB のファイルの種類を制限するには、ファイル拡張子に固
 
 このパスは、*images* コンテナーの *{20140101}-soundfile.mp3* という名前の BLOB を探し、関数コード内の `name` 変数の値は *soundfile.mp3* になります。 
 
-<a name"receipts"></a>
+<a name="receipts"></a>
 
 ### <a name="blob-receipts"></a>BLOB の配信確認メッセージ
 Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について&2; 回以上呼び出されることはありません。 これは "*BLOB の配信確認メッセージ*" を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。

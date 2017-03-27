@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 0035aa17e661a52db371b533b547c88dcb0f0148
-ms.openlocfilehash: 138560f4bc8e400f7b3ca2d5a1b80ea0c25ec4da
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: cdf233c2b141f4c73abcabc199b5fc583f14962c
+ms.lasthandoff: 03/10/2017
 
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 >
 >
 
@@ -35,6 +35,7 @@ ms.lasthandoff: 02/24/2017
 
 * [**パスワード リセット登録に関する質問**](#password-reset-registration)
 * [**パスワード リセットに関する質問**](#password-reset)
+* [**パスワードの変更に関する質問**](#password-change)
 * [**パスワード管理レポートに関する質問**](#password-management-reports)
 * [**パスワード ライトバックに関する質問**](#password-writeback)
 
@@ -169,6 +170,18 @@ ms.lasthandoff: 02/24/2017
   >
   >
 
+## <a name="password-change"></a>パスワードの変更
+* **Q: ユーザーがパスワードを変更するにはどこにアクセスすればよいですか。**
+
+  > **A:** ユーザーは [Office 365](https://portal.office.com) や[アクセス パネル](https://myapps.microsoft.com)など、右上隅にプロフィール画像やアイコンが表示されるページであればどこでもパスワードを変更できます。 ユーザーは[アクセス パネルのプロフィール ページ](https://account.activedirectory.windowsazure.com/r#/profile)からパスワードを変更できます。 また、パスワードの有効期限が切れている場合は、Azure AD のサインイン時に自動的にパスワードを変更するように求められます。 最終的には、[Azure AD のパスワード変更ポータル](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)に直接移動してパスワードを変更できます。
+  >
+  >
+* **Q: ユーザーのオンプレミスのパスワードの有効期限が切れたときに Office ポータルに通知できますか。**
+
+  > **A:** 現時点では ADFS を使用すれば、[ADFS を使用したパスワード ポリシーの要求の送信](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)に関する記事の手順に従って通知できます。 パスワード ハッシュ同期を使用している場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使用してパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
+  >
+  >
+  
 ## <a name="password-management-reports"></a>パスワード管理レポート
 * **Q: データがパスワード管理レポートに表示されるまでにどのくらいの時間がかかりますか。**
 
@@ -184,7 +197,7 @@ ms.lasthandoff: 02/24/2017
   ![][002]
 * **Q: パスワード管理レポートに格納される最大イベント数はどれだけですか**
 
-  > **A:** パスワード管理レポートには、最大で 1,000 個のパスワード リセット イベントまたはパスワード リセット登録イベントが格納されます。  より多くのイベントを格納できるように、この値の拡張に取り組んでいます。
+  > **A:** パスワード管理レポートには、30 日間のバックアップ全体で、最大で 75,000 個のパスワード リセット イベントまたはパスワード リセット登録イベントが格納されます。  より多くのイベントを格納できるように、この値の拡張に取り組んでいます。
   >
   >
 * **Q: パスワード管理レポートには何日前までの操作が表示されますか。**
@@ -194,7 +207,7 @@ ms.lasthandoff: 02/24/2017
   >
 * **Q: パスワード管理レポートに表示できる行の最大数は決まっていますか。**
 
-  > **A:** はい。UI に表示した場合またはダウンロードした場合のいずれでも、パスワード管理レポートに表示できる最大行数は 1,000 行です。 現在、この制限を緩和する方法を検討中です。
+  > **A:** はい。UI に表示した場合またはダウンロードした場合のいずれでも、パスワード管理レポートに表示できる最大行数は 75,000 行です。 現在、この制限を緩和する方法を検討中です。
   >
   >
 * **Q: パスワード リセットまたは登録レポート データにアクセスする API はありますか。**
@@ -233,7 +246,7 @@ ms.lasthandoff: 02/24/2017
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。

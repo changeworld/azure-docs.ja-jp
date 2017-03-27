@@ -16,9 +16,9 @@ ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 50e96211c0655fb0c47929626d7f5cca9985aaee
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ca8c182651e3c9f2f1f3a85b94361755d8e638d4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>フロントエンドのサブネットの NSG を作成する方法
 上記のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
    
         azure config mode arm

@@ -1,9 +1,9 @@
 ---
 title: "PowerShell を使用した Resource Manager への移行 | Microsoft Docs"
-description: "この記事では、Azure PowerShell コマンドを使用して、プラットフォームでサポートされているクラシックから Azure Resource Manager へ IaaS リソースを移行する方法について説明します"
+description: "この記事では、Azure PowerShell コマンドを使用して、プラットフォームでサポートされているクラシックから Azure Resource Manager (ARM) へ仮想マシン (VM)、仮想ネットワーク (VNET)、ストレージ アカウントなどの IaaS リソースを移行する方法について説明します"
 services: virtual-machines-windows
 documentationcenter: 
-author: cynthn
+author: singhkays
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
-ms.author: cynthn
+ms.date: 03/14/2017
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: bd67cb868e57be0d6cb9c3ea37f67de6dca4e307
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: f5ef5242a565358fb4af90cf10bb332b9c942fce
+ms.lasthandoff: 03/10/2017
 
 
 ---
@@ -211,7 +211,9 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
 ```
 
 ### <a name="migrate-virtual-machines-in-a-virtual-network"></a>仮想ネットワークの仮想マシンを移行する
-仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。 仮想マシンは、ネットワークとともに自動的に移行されます。 移行する仮想ネットワークを選択します。 
+仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。 仮想マシンは、仮想ネットワークとともに自動的に移行されます。 移行する仮想ネットワークを選択します。 
+> [!NOTE]
+> [単一の従来の仮想マシンを移行](./virtual-machines-windows-migrate-single-classic-to-resource-manager.md)するには、仮想マシンの VHD (OS とデータ) ファイルを使用して Managed Disks を備えた新しい Resource Manager 仮想マシンを作成します。 
 
 この例では、仮想ネットワーク名を **myVnet** に設定します。 例の仮想ネットワーク名を対象の仮想ネットワークの名前に置き換えてください。 
 
@@ -253,18 +255,17 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
 
 ストレージ アカウントを移行する前に、上記の前提条件の確認を実行してください。
 
-* **クラシック VM ディスクがストレージ アカウントに格納されているかどうかを確認する**
+* **ディスクがストレージ アカウントに格納されている従来の仮想マシンを移行する**
 
-    次のコマンドを使用して、ストレージ アカウントの VM に接続されているクラシック VM ディスクを見つけます。 
-
+    上記のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 上記のコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
     ```powershell
      $storageAccountName = 'yourStorageAccountName'
       Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
       DiskName | Format-List -Property RoleName, DiskName 
 
     ```
-    上のコマンドは、ストレージ アカウント内のすべての クラシック VM ディスクの RoleName および DiskName プロパティを返します。 RoleName はディスクが接続される仮想マシンの名前です。 上のコマンドでディスクが返された場合、これらのディスクが接続される仮想マシンは、ストレージ アカウントを移行する前に移行されています。
-
+* **ストレージ アカウントに格納されている接続されていないクラシック VM ディスクを削除する**
+ 
     次のコマンドを使用して、ストレージ アカウントの接続されていないクラシック VM ディスクを見つけます。 
 
     ```powershell
@@ -277,8 +278,25 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
     ```powershell
        Remove-AzureDisk -DiskName 'yourDiskName'
     ```
-     
+* **ストレージ アカウントに格納されている VM イメージを削除する**
 
+    上記のコマンドは、ストレージ アカウントに格納されたすべての VM イメージと OS ディスクを返します。
+     ```powershell
+        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                } | Select-Object -Property ImageName, ImageLabel
+     ```
+     上記のコマンドは、ストレージ アカウントに格納されたすべての VM イメージとデータ ディスクを返します。
+     ```powershell
+
+        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                        } | Select-Object -Property ImageName, ImageLabel
+     ```
+    上記のコマンドを使用して、上のコマンドによって返されるすべての VM イメージを削除します。
+    ```powershell
+    Remove-AzureVMImage -ImageName 'yourImageName'
+    ```
+    
 次のコマンドを使用して、各ストレージ アカウントの移行の準備をします。 この例では、**myStorageAccount** というストレージ アカウント名を使用しています。 例の名前を対象のストレージ アカウントの名前に置き換えてください。 
 
 ```powershell

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: c9440e26a563ed9315225b34709b009d01e065d7
-ms.openlocfilehash: ff9b0d9e098fd8c6cde7c63c005c8f1906c6e0f2
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4db7d45678c592749831c6b12d38363134da9e93
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -31,7 +32,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure CLI**。 「 [Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
+* **Azure CLI**。 「 [Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
   * このデモを完了するためには、 **プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases) をダウンロードしてインストールします。
 * **認証**。次のコマンドを使用します。
   
@@ -44,7 +45,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Data Lake Analytics アカウントを作成するには、以下を指定する必要があります。
 
-* **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
+* **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数リソースを&1; つのグループとして操作できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
   
     サブスクリプションのリソース グループを列挙するには:
   
@@ -161,10 +162,5 @@ azure datalake analytics job show "<Data Lake Analytics Account Name>" "<Job Id>
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 管理タスクについては、「 [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 * Data Lake Analytics の概要については、「 [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

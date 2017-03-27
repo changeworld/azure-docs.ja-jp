@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
 ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
 ms.openlocfilehash: db0f94bdeefac577765586f6b07ba13f9cfd2867

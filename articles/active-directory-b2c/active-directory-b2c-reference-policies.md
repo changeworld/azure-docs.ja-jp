@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
-ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 7ad7dce6fc7025a6a6e7935d74b3b71a7bfee097
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -130,7 +131,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 2. **[プロファイル編集ポリシー]**をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. **[名前]** によって、アプリケーションで使用されるプロファイル編集ポリシー名が決定されます。 たとえば、「SiPe」を入力します。
-5. **[ID プロバイダー]** をクリックし、[電子メール アドレス] を選択します。 既に構成されている場合は、ソーシャル ID プロバイダーを選択することもできます。 **[OK]**をクリックします。
+5. **[ID プロバイダー]** をクリックし、[ローカル アカウント サインイン] を選択します。 既に構成されている場合は、ソーシャル ID プロバイダーを選択することもできます。 **[OK]**をクリックします。
 6. **[プロファイルの属性]**をクリックします。 ここで、コンシューマーが表示および編集できる属性を選択します。 たとえば、[市町村]、[表示名]、[郵便番号] などを選択します。 **[OK]**をクリックします。
 7. **[アプリケーション クレーム]**をクリックします。 ここで、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻されるトークンで返される要求を選択します。 たとえば、"表示名" および "郵便番号" などを選択します。
 8. **[作成]**をクリックします。 作成したポリシーが **[Profile editing policies (プロファイルの編集ポリシー)]** ブレードに "**B2C_1_SiPe**" として表示されます (**B2C\_1\_** フラグメントが自動的に追加されます)。
@@ -168,10 +169,5 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="additional-resources"></a>その他のリソース
 * [トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)。
 * [コンシューマーのサインアップ時の電子メール検証の無効化](active-directory-b2c-reference-disable-ev.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

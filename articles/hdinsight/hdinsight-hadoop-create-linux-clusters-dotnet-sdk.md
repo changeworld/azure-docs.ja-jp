@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 9c74e3dc-837f-4c90-bbb1-489bc7124a3d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -93,7 +94,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                 private const string NewClusterPassword = "<Enter HTTP User Password>";
                 private const string NewClusterSshUserName = "sshuser";
 
-                // You can use eitehr password or public key.  See https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-windows or https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
+                // You can use eitehr password or public key. See https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
                 private const string NewClusterSshPassword = "<Enter SSH User Password>";
                 private const string NewClusterSshPublicKey = @"---- BEGIN SSH2 PUBLIC KEY ----
                     Comment: ""rsa-key-20150731""

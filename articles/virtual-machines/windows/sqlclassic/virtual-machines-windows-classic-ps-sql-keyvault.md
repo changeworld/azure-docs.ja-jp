@@ -1,5 +1,5 @@
 ---
-title: "Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成 (クラシック)"
+title: "Key Vault と Azure の Windows VM 上の SQL Server との統合 (クラシック) | Microsoft Docs"
 description: "Azure Key Vault で使用するために SQL Server 暗号化の構成を自動化する方法について説明します。 このトピックでは、クラシック デプロイ モデルで作成される SQL Server 仮想マシンで Azure Key Vault 統合を使用する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6a5724d4291a0b1878d528a59f693c046ba960f9
-ms.openlocfilehash: d7133180f4fc9263894c522fcaacaeea4a985847
-
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: e0950a5c2c7d40751664c0c5a60facef68a79b2a
+ms.lasthandoff: 03/15/2017
 
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-classic"></a>Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成 (クラシック)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) 上の SQL Server 向け Azure Key Vault 統合の構成
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](../sql/virtual-machines-windows-ps-sql-keyvault.md)
 > * [クラシック](virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -78,10 +79,5 @@ PowerShell を使用し、Azure Key Vault 統合を構成します。 次のセ�
 SQL IaaS Agent Extension により、この新しい構成で SQL VM が更新されます。
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

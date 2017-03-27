@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/07/2017
+ms.date: 03/14/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 0abe257f3c1c2f35c92fa5f382e9778217f01159
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: 4b7ed095729e810f7f1112d3b6becfaf186bf508
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -72,8 +72,6 @@ B2B コラボレーション ユーザーは、制限付き管理者ロールま
 
   >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
 
-  このビデオが埋め込みで表示されない場合は、[こちら](https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user)からアクセスできます。
-
 ### <a name="what-is-the-timeline-by-which-azure-ad-b2b-collaboration-will-start-support-for-mfa-and-consumer-email-accounts"></a>Azure AD B2B コラボレーションが MFA とコンシューマー電子メール アカウントのサポートを開始する予定はどうなっていますか。
 MFA とコンシューマー電子メール アカウントの両方が、このパブリック プレビューの更新でサポートされるようになりました。
 
@@ -89,8 +87,16 @@ MFA とコンシューマー電子メール アカウントの両方が、この
 ### <a name="does-microsoft-crm-provide-online-support-to-azure-ad-b2b-collaboration"></a>Microsoft CRM は、Azure AD B2B コラボレーションをオンラインでサポートしていますか。
 CRM は、一般公開後、Azure AD B2B コラボレーションをサポートします。
 
+### <a name="are-b2b-collaboration-guest-users-visible-in-sharepoint-onlineonedrive-people-picker"></a>B2B コラボレーションのゲスト ユーザーは、SharePoint Online/OneDrive のユーザー選択ウィンドウに表示されますか。
+ 
+はい。 ただし、SharePoint Online のユーザー選択ウィンドウでの既存のゲスト ユーザーの検索は、従来の動作と一致させるために、既定ではオフになっています。 これは、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この設定は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SharePoint Online サイトには影響しません。
+
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>新しく作成した B2B コラボレーション ユーザー用の初期パスワードの有効期間はどうなっていますか。
 Azure AD には、文字、パスワードの強度、およびアカウント ロックアウトに関する要件の固定セットがあり、これはすべての Azure AD クラウド ユーザー アカウントにも同様に適用されます。 クラウド ユーザー アカウントは、他の ID プロバイダー (Microsoft アカウント、Facebook、ADFS など) や他のクラウド テナント (B2B コラボレーションの場合) とフェデレーションされないアカウントです。 フェデレーション アカウントの場合、パスワード ポリシーは、オンプレミス テナントのポリシーとユーザーの Microsoft アカウント設定に依存します。
+
+### <a name="applications-want-to-differentiate-their-experience-between-a-tenant-user-and-a-guest-user-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-right-model-for-this"></a>アプリケーションのエクスペリエンスをテナント ユーザーとゲスト ユーザーで区別したいと思っています。 これを行うための標準的なガイダンスはありますか。 このモデルに適した ID プロバイダー要求は存在しますか。
+ 
+「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)」で説明しているように、ゲスト ユーザーは、認証用に任意の ID プロバイダーを使用することができます。 このため、判断を行うための適切なプロパティは UserType です。 現在、UserType 要求はトークンには含まれていません。 アプリケーションは、Graph API を使用してディレクトリでユーザーのクエリを実行することで、ユーザーの UserType を取得する必要があります。
 
 ### <a name="next-steps"></a>次のステップ
 

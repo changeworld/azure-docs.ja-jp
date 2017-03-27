@@ -18,9 +18,9 @@ ms.date: 02/27/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 09f0ed3f7624bb242c40868710fb3eae49cda906
-ms.openlocfilehash: a798de49ed08eedaf27267c6bac12f8b0b64739f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 3bad24f35cf7867f1e02e8470c602a7f6a9ce8fb
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -59,7 +59,9 @@ Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入または
 
 有料機能を構成するうえで必要なことはサブスクリプションの入手だけですが、Azure AD の有料機能を使用するには、適切なユーザーにライセンスを配布する必要があります。 一般に、Azure AD の有料機能へのアクセスが必要なユーザーや Azure AD の有料機能で管理されているユーザーには、ライセンスを割り当てる必要があります。 ライセンスの割り当てとは、ユーザーと Azure AD Premium、Basic、Enterprise Mobility Suite などの購入済みのサービスとのマッピングです。
 
-ディレクトリ内のどのユーザーにライセンスを付与する必要があるかは簡単に管理できます。 これは、Azure ポータルを使用してグループにライセンスを割り当てるか、ポータル、PowerShell、または API を使用して適切なユーザーに直接ライセンスを割り当てることで実現できます。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが割り当てられ、グループから削除されたユーザーは該当するライセンスが削除されます。 グループの割り当てには、使用可能な任意のグループ管理を利用できます。これは、アプリケーションへのグループ ベースの割り当てと一貫しています。 この方法を使用して、ディレクトリ内のすべてのユーザーが自動的に割り当てられるようにルールを設定することや、適切な役職を持つすべてのユーザーにライセンスを確実に付与することができます。さらには、組織内の他の管理者に決定を委任することもできます。 高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンス割り当てる方法の詳細については、この記事を参照してください。
+ディレクトリ内のどのユーザーにライセンスを付与する必要があるかは簡単に管理できます。 これは、Azure ポータルを使用してグループにライセンスを割り当てるか、ポータル、PowerShell、または API を使用して適切なユーザーに直接ライセンスを割り当てることで実現できます。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが割り当てられ、グループから削除されたユーザーは該当するライセンスが削除されます。 グループの割り当てには、使用可能な任意のグループ管理を利用できます。これは、アプリケーションへのグループ ベースの割り当てと一貫しています。 この方法を使用して、ディレクトリ内のすべてのユーザーが自動的に割り当てられるようにルールを設定することや、適切な役職を持つすべてのユーザーにライセンスを確実に付与することができます。さらには、組織内の他の管理者に決定を委任することもできます。 
+
+高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンス割り当てる方法の詳細については、[この記事](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-assignment-azure-portal)を参照してください。
 
 ## <a name="getting-started-with-azure-ad-licensing"></a>Azure AD ライセンスの使用
 
@@ -152,6 +154,7 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 * [セルフサービスのグループ管理](active-directory-accessmanagement-self-service-group-management.md)
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [アプリケーションへのグループの割り当て](active-directory-manage-groups.md)
+* [グループへのライセンスの割り当て](active-directory-licensing-group-assignment-azure-portal.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 * [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 

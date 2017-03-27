@@ -102,7 +102,7 @@
 ### [データの移行](sql-data-warehouse-migrate-data.md)
 ### [Premium Storage への移行](sql-data-warehouse-migrate-to-premium-storage.md)
 
-## 一時停止とスケール
+## コンピューティングの管理
 
 ### [概要](sql-data-warehouse-manage-compute-overview.md)
 ### [Azure ポータル](sql-data-warehouse-manage-compute-portal.md)

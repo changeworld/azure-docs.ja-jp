@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: da1a0bb7982b02daa89144c3f5c3f257f14c06c9
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0cee0950055012cef7324f97e1b8a8f3fbd0112c
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -59,7 +59,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
     ```azurecli

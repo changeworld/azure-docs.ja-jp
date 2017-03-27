@@ -1,6 +1,6 @@
 ---
-title: "Azure Logic Apps で EDIFACT メッセージをデコードする | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack の EDIFACT デコーダーを使用する方法"
+title: "EDIFACT メッセージをデコードする - Azure Logic Apps | Microsoft Docs"
+description: "Azure Logic Apps で Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して EDI の検証およびトランザクション セットの XML の生成を行います"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -15,47 +15,62 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
-ms.openlocfilehash: 430a3add46053b5969597aa625df899f4d2e83f6
+ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
+ms.openlocfilehash: 176963837f4f3fc8b89e31000ef8722ef3258b11
+ms.lasthandoff: 03/10/2017
 
 
 ---
 
-# <a name="get-started-with-decode-edifact-message"></a>Decode EDIFACT Message を使ってみる
-Decode EDIFCAT コネクターでは、EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、処理したトランザクションの受信確認を生成したりできます。
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
-## <a name="prereqs"></a>前提条件
+Decode EDIFACT Message コネクタでは、EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、処理したトランザクションの受信確認を生成したりできます。 このコネクタを使用するには、ロジック アプリの既存のトリガーにコネクタを追加する必要があります。
+
+## <a name="before-you-start"></a>開始する前に
+
+必要な項目を次に示します。
+
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
-* Decode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 [統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)、[パートナー](logic-apps-enterprise-integration-partners.md)、および [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)の作成方法の詳細を確認してください。
+* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)。 Decode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。 
+* 統合アカウントで既に定義されている&2; つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>EDIFACT メッセージをデコードする
-1. [ロジック アプリを作成します](logic-apps-create-a-logic-app.md)。
-2. このコネクタにはトリガーがありません。 ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。  Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。  ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「EDIFACT」と入力します。  [Decode EDIFACT message] (EDIFACT メッセージのデコード) を選択します。
+
+1. [ロジック アプリを作成](logic-apps-create-a-logic-app.md)します。
+
+2. Decode EDIFACT Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
+
+3.    検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[EDIFACT メッセージをデコードする]** を選択します。
    
     ![search EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
-3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
+
+3. 以前に統合アカウントへの接続を作成していない場合は、ここでその接続を作成するように求められます。 接続の名前を指定し、接続する統合アカウントを選択します。
    
-    ![create integration account](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)  
-4. 統合アカウントの詳細を入力します。  アスタリスクが付いているプロパティは必須です。
-   
-   | プロパティ | 詳細 |
-   | --- | --- |
-   | 接続名 * |接続の任意の名前を入力します。 |
-   | 統合アカウント * |統合アカウント名を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
-   
-    入力が完了すると、接続の詳細は次のようになります。
-   
-    ![integration account created](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
-5. **[作成]**を選択します。
-6. 接続が作成されたことを確認します。
-   
-    ![integration account connection details](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
-7. デコードする EDIFACT フラット ファイル メッセージを選択します。
-   
-    ![provide mandatory fields](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
+    ![create integration account](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
+
+    アスタリスクが付いているプロパティは必須です。
+
+    | プロパティ | 詳細 |
+    | --- | --- |
+    | 接続名 * |接続の任意の名前を入力します。 |
+    | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
+
+4.    接続の作成が完了したら、**[作成]** を選択します。 接続の詳細は次の例のようになります。
+
+    ![統合アカウントの詳細](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
+
+5. 接続が作成されたら、次の例に示すように、デコードする EDIFACT フラット ファイル メッセージを選択します。
+
+    ![integration account connection created](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
+
+    次に例を示します。
+
+    ![デコードする EDIFACT フラット ファイル メッセージの選択](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
 ## <a name="edifact-decoder-details"></a>EDIFACT デコーダーの詳細
-Decode EDIFACT コネクターは次の処理を行います。 
+
+Decode EDIFACT コネクタは次のタスクを実行します。 
 
 * 送信者の修飾子および識別子を受信者の修飾子および識別子と照合することで、契約を解決する
 * 1 つのメッセージ内の複数のインターチェンジを分割する
@@ -82,10 +97,5 @@ Decode EDIFACT コネクターは次の処理を行います。
 
 ## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -44,7 +45,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 これらの方法を使用したスクリプト アクションの適用の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
-## <a name="a-namebestpracticescriptingabest-practices-for-script-development"></a><a name="bestPracticeScripting"></a>スクリプトの開発におけるベスト プラクティス
+## <a name="bestPracticeScripting"></a>スクリプトの開発におけるベスト プラクティス
 
 HDInsight クラスター向けのカスタム スクリプトを開発する際、留意すべきベスト プラクティスがあります。
 
@@ -62,11 +63,11 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 > [!IMPORTANT]
 > スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。 ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
-### <a name="a-namebps1atarget-the-hadoop-version"></a><a name="bPS1"></a>Hadoop のバージョンを対象にする
+### <a name="bPS1"></a>Hadoop のバージョンを対象にする
 
 HDInsight のバージョンが異なれば、異なるバージョンの Hadoop サービスとコンポーネントがインストールされます。 スクリプトに特定のバージョンのサービスまたはコンポーネントが期待される場合、必要なコンポーネントを含むバージョンの HDInsight スクリプトのみを使用する必要があります。 HDInsight に含まれているコンポーネントのバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-### <a name="a-namebps10a-target-the-os-version"></a><a name="bps10"></a>ターゲット OS バージョン
+### <a name="bps10"></a>ターゲット OS バージョン
 
 Linux ベースの HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作に影響する可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
 
@@ -109,7 +110,7 @@ HDInsight で使用される Ubuntu のバージョンについては、「[HDIn
 
 Systemd と Upstart の違いを理解するには、「[Systemd for Upstart users (Upstart ユーザー向けの Systemd)](https://wiki.ubuntu.com/SystemdForUpstartUsers)」をご覧ください。
 
-### <a name="a-namebps2aprovide-stable-links-to-script-resources"></a><a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
+### <a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
 
 スクリプトとスクリプトで使用されるリソースがクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。 これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
 
@@ -120,24 +121,24 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 
 たとえば、マイクロソフトから提供されるサンプルは、HDInsight チームによって管理される読み取り専用のパブリック コンテナーである、 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。
 
-### <a name="a-namebps4ause-pre-compiled-resources"></a><a name="bPS4"></a>プリコンパイル済みリソースの使用
+### <a name="bPS4"></a>プリコンパイル済みリソースの使用
 
 スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。 代わりに、リソースを事前にコンパイルし、バイナリ バージョンを Azure Blob ストレージに格納して、スクリプトからクラスターにすばやくダウンロードできるようにします。
 
-### <a name="a-namebps3aensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
+### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
 スクリプトが複数回実行された場合に、クラスターが実行されるたびに同じ状態に戻ることをスクリプトが確認するという意味で、スクリプトはべき等であるように設計する必要があります。
 
 たとえば、カスタム スクリプトが最初の実行時にアプリケーションを /usr/local/bin にインストールする場合、その後スクリプトを実行するたびに、スクリプトはアプリケーションが /usr/local/bin に既に存在するかどうかを確認した後で、スクリプト内の他のステップを続行する必要があります。
 
-### <a name="a-namebps5aensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
+### <a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
 
 Linux ベースの HDInsight クラスターは、クラスター内で有効な&2; つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。 インストールするコンポーネントで&1; つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの&2; つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
 
 > [!IMPORTANT]
 > HDInsight の一部としてインストールされている既定のサービスは必要に応じて&2; つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能はスクリプト アクションでインストールされるカスタム コンポーネントには拡張されません。 スクリプト アクションからインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な&2; つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
 
-### <a name="a-namebps6aconfigure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
+### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
 クラスターにインストールするコンポーネントに、Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure BLOB ストレージ (WASB) を使用します。 これは、クラスターが削除された場合でも、データを保持する HDFS 互換ファイル システムを提供します。 HDFS の代わりに WASB を使用するように、インストールするコンポーネントを構成する必要があります。
 
@@ -147,7 +148,7 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-### <a name="a-namebps7awrite-information-to-stdout-and-stderr"></a><a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
+### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
 スクリプトの実行時に STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用して表示することができます。
 
@@ -170,7 +171,7 @@ echo "Getting ready to install Foo"
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="a-namebps8a-save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> LF 行の終わりで、ファイルを ASCII として保存する
+### <a name="bps8"></a> LF 行の終わりで、ファイルを ASCII として保存する
 
 Bash スクリプトは、行が LF で終了する ASCII 形式で保存する必要があります。 ファイルが UTF-8 として保存される場合、ファイルの先頭や、Windows エディターでは一般的な CRLF 行の終わりにバイト オーダー マークが含まれる可能性があるため、スクリプトが次のようなエラーで失敗します。
 
@@ -179,7 +180,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="a-namebps9a-use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> 再試行ロジックを使用して一時的なエラーから回復する
+### <a name="bps9"></a> 再試行ロジックを使用して一時的なエラーから回復する
 
 ファイルのダウンロード時、apt-get を使用したパッケージのインストール時、またはインターネット経由でデータを転送するその他の操作時に、一時的なネットワーク エラーにより、操作に失敗する場合があります。 たとえば、通信対象のリモート リソースが、バックアップ ノードへのフェールオーバー中である可能性があります。
 
@@ -217,7 +218,7 @@ retry ls -ltr foo
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 ```
 
-## <a name="a-namehelpermethodsahelper-methods-for-custom-scripts"></a><a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
+## <a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
 
 スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)で定義されており、次を使用してスクリプトに含めることができます。
 
@@ -241,7 +242,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 | `get_primary_headnode_number` |プライマリ ヘッドノードの数値のサフィックスを取得します。 エラーの場合は、空の文字列が返されます。 |
 | `get_secondary_headnode_number` |セカンダリ ヘッドノードの数値のサフィックスを取得します。 エラーの場合は、空の文字列が返されます。 |
 
-## <a name="a-namecommonusageacommon-usage-patterns"></a><a name="commonusage"></a>一般的な使用パターン
+## <a name="commonusage"></a>一般的な使用パターン
 
 このセクションでは、独自のカスタム スクリプトの書き込み中に発生する可能性がある一般的な使用状況パターンの実装についてのガイダンスを提供します。
 
@@ -310,7 +311,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-## <a name="a-namedeployscriptachecklist-for-deploying-a-script-action"></a><a name="deployScript"></a>スクリプト アクションのデプロイ用チェックリスト
+## <a name="deployScript"></a>スクリプト アクションのデプロイ用チェックリスト
 
 スクリプトのデプロイを準備する際に実行した手順を次に示します。
 
@@ -319,11 +320,11 @@ fi
 * /tmp などの一時ファイル ディレクトリを使用して、スクリプトで使用するダウンロード済みファイルを維持し、スクリプトの実行後にそれらをクリーンアップします。
 * OS レベル設定や Hadoop サービス構成ファイルが変更された場合、スクリプトに設定された環境変数などの OS レベル設定を有効にするために、HDInsight サービスを再起動することをお勧めします。
 
-## <a name="a-namerunscriptactionahow-to-run-a-script-action"></a><a name="runScriptAction"></a>Script Action の実行方法
+## <a name="runScriptAction"></a>Script Action の実行方法
 
 Script Action を使用して、Azure Portal、Azure PowerShell、Azure Resource Manager テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。 手順については、 [スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
-## <a name="a-namesamplescriptsacustom-script-samples"></a><a name="sampleScripts"></a>カスタム スクリプトのサンプル
+## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
 Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 サンプル スクリプトとその使用方法については、以下のリンクから入手できます。
 
@@ -367,7 +368,7 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 上記のコマンドで、 **INFILE** を BOM を含むファイルに置き換えます。 **OUTFILE** は、BOM なしのスクリプトを含む新しいファイルの名前にする必要があります。
 
-## <a name="a-nameseealsoanext-steps"></a><a name="seeAlso"></a>次のステップ
+## <a name="seeAlso"></a>次のステップ
 
 * [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 * [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。

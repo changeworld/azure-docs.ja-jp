@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 503cf4afba4575492984891a681c187a8683a553
-ms.openlocfilehash: 9d8fd7ec594671e1ea7bf06459494f1c3a1adbdf
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
+ms.openlocfilehash: 0184e95ca56e4bc4ffbe860da2b7a5cae9b5a043
+ms.lasthandoff: 03/11/2017
 
 
 ---
@@ -33,7 +33,7 @@ Azure Log Analytics の Azure SQL の監視ソリューションは、SQL Azure 
 
 ## <a name="connected-sources"></a>接続先ソース
 
-他の多くの Log Analytics ソリューションとは異なり、Azure SQL の監視ソリューションでは、Log Analytics サービスに接続するためのエージェントを使用しません。
+Azure SQL の監視ソリューションでは、Log Analytics サービスに接続するためのエージェントを使用しません。
 
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
@@ -42,7 +42,8 @@ Azure Log Analytics の Azure SQL の監視ソリューションは、SQL Azure 
 | [Windows エージェント](log-analytics-windows-agents.md) | いいえ | このソリューションでは、直接の Windows エージェントは使用されません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ | このソリューションでは、直接の Linux エージェントは使用されません。 |
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | はい | Azure のメトリック データは、ストレージ アカウントを使用して Log Analytics に送信されます。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
+| [Azure 診断](log-analytics-azure-storage.md) | はい | Azure のメトリック データは、Azure によって直接 Log Analytics に送信されます。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +55,7 @@ Azure Log Analytics の Azure SQL の監視ソリューションは、SQL Azure 
 
 Azure SQL の監視ソリューションをワークスペースに追加するには、次の手順を実行します。
 
-1. [ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関する記事で説明されている手順に従って、Azure SQL の監視ソリューションをワークスペースに追加します。
+1. Azure SQL Analytics ソリューションをワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページに説明されている手順に従って追加してください。
 2. Azure Portal で **[新規]** (+ 記号) をクリックし、次にリソースの一覧で **[監視 + 管理]** を選択します。  
     ![監視 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
 3. **[監視 + 管理]** の一覧で、**[すべて表示]** をクリックします。

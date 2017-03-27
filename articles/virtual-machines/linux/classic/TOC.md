@@ -6,7 +6,7 @@
 
 # [作業の開始](../../virtual-machines-linux-opensource-links.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [ポータルを使用した Linux VM の作成](../../virtual-machines-linux-classic-createportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-## [Azure CLI のインストール](../../../xplat-cli-install.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+## [Azure CLI のインストール](../../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ## [SSH キーの作成](../../virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 # 方法

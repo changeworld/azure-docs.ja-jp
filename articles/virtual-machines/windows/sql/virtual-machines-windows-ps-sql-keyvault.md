@@ -1,5 +1,5 @@
 ---
-title: "Key Vault と Azure の Windows VM 上の SQL Server との統合 | Microsoft Docs"
+title: "Key Vault と Azure の Windows VM 上の SQL Server との統合 (Resource Manager) | Microsoft Docs"
 description: "Azure Key Vault で使用するために SQL Server 暗号化の構成を自動化する方法について説明します。 このトピックでは、リソース マネージャーで作成される SQL Server 仮想マシンで Azure Key Vault 統合を使用する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/25/2016
+ms.date: 03/14/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7a285920888bdfb46922d8708cf778229efff0a3
-ms.openlocfilehash: 3a10beb423ee0068508ddb06262aeba5e575bf94
+ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
+ms.openlocfilehash: f42e1934ce163e26c1a3f526b4589fb175aac446
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Azure VM で SQL Server 用に Azure Key Vault 統合を構成する (リソース マネージャー)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](virtual-machines-windows-ps-sql-keyvault.md)
 > * [クラシック](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -64,10 +65,5 @@ AKV 統合はプロビジョニング時に有効にできます。または、�
 > 
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 
