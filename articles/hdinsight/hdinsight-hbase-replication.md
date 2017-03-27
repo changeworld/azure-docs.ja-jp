@@ -1,6 +1,6 @@
 ---
 title: "HBase レプリケーションの構成 | Microsoft Docs"
-description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、および障害復旧を実現するために HBase レプリケーションを構成する方法について説明します。"
+description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、および災害復旧を実現するために HBase レプリケーションを構成する方法について説明します。"
 services: hdinsight,virtual-network
 documentationcenter: 
 author: mumian
@@ -22,7 +22,7 @@ ms.lasthandoff: 02/23/2017
 ---
 # <a name="configure-hbase-replication"></a>HBase レプリケーションの構成
 
-1 つの仮想ネットワーク (VNet) 内または&2; つの仮想ネットワーク間で HBase レプリケーションを構成する方法について説明します。
+1 つの仮想ネットワーク (VNet) 内または 2 つの仮想ネットワーク間で HBase レプリケーションを構成する方法について説明します。
 
 クラスターのレプリケーションでは、ソース プッシュの手法が使用されます。 HBase クラスターは、ソースまたはターゲットになることも、両方のロールを同時に満たすこともできます。 レプリケーションは非同期であり、レプリケーションの目的は最終的な整合性です。 レプリケーションが有効になった列ファミリに対する編集をソースが受け取ると、その編集はすべてのターゲット クラスターに伝達されます。 クラスター間でデータがレプリケートされるときは、ソース クラスターとそのデータを既に消費されているすべてのクラスターが追跡されて、レプリケーション ループが防止されます。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/23/2017
 
 2 つの仮想ネットワークでの HBase レプリケーションの使用例:
 
-* 障害復旧
+* 災害復旧
 * アプリケーションの負荷分散とパーティション分割
 * 高可用性
 
@@ -48,11 +48,11 @@ ms.lasthandoff: 02/23/2017
 
 ## <a name="configure-the-environments"></a>環境の構成
 
-可能な構成オプションは&3; つあります。
+可能な構成オプションは 3 つあります。
 
-- 1 つの Azure Virtual Network 内の&2; つの HBase クラスター
-- 同じリージョンの&2; つの異なる仮想ネットワーク内の&2; つの HBase クラスター
-- 2 つの異なるリージョンの&2; つの異なる仮想ネットワーク内の&2; つの HBase クラスター (geo レプリケーション)
+- 1 つの Azure Virtual Network 内の 2 つの HBase クラスター
+- 同じリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター
+- 2 つの異なるリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター (地理レプリケーション)
 
 環境を構成しやすくするために、複数の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を構成する場合は、次の記事を参照してください。
 
@@ -65,9 +65,9 @@ ms.lasthandoff: 02/23/2017
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-### <a name="configure-two-virtual-networks-in-the-same-region"></a>同じリージョンでの&2; つの仮想ネットワークの構成
+### <a name="configure-two-virtual-networks-in-the-same-region"></a>同じリージョンでの 2 つの仮想ネットワークの構成
 
-次のイメージをクリックして、同じリージョンに、VNet ピアリングされた&2; つの仮想ネットワークと&2; つの HBase クラスターを作成します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)に格納されています。
+次のイメージをクリックして、同じリージョンに、VNet ピアリングされた 2 つの仮想ネットワークと&2; つの HBase クラスターを作成します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)に格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -82,7 +82,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューで **[リソース グループ]** をクリックします。
 3. デスティネーション HBase クラスターを含むリソース グループをクリックします。 これは、Resource Manager テンプレートを使用して環境を作成するときに指定したリソース グループです。 フィルターを使用して一覧を絞り込むことができます。 2 つの仮想ネットワークを含むリソースの一覧を表示できます。
-4. デスティネーション HBase クラスターを含む仮想ネットワークをクリックします。 たとえば、**[xxxx-vnet2]** をクリックします。 **nic-zookeepermode-** で始まる名前を持つ&3; つのデバイスを確認できます。 これらのデバイスは、3 つの ZooKeeper VM です。
+4. デスティネーション HBase クラスターを含む仮想ネットワークをクリックします。 たとえば、**[xxxx-vnet2]** をクリックします。 **nic-zookeepermode-** で始まる名前を持つ 3 つのデバイスを確認できます。 これらのデバイスは、3 つの ZooKeeper VM です。
 5. いずれかの ZooKeeper VM をクリックします。
 6. **[IP 構成]** をクリックします。
 7. 一覧の **[ipConfig1]** をクリックします。
@@ -94,9 +94,9 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプト アクションを呼び出すときに **-ip** スイッチを使用する必要があります。
 
-### <a name="configure-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンでの&2; つの仮想ネットワークの構成
+### <a name="configure-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンでの 2 つの仮想ネットワークの構成
 
-2 つの異なるリージョンに&2; つの仮想ネットワークを作成するには、次のイメージをクリックします。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
+2 つの異なるリージョンに 2 つの仮想ネットワークを作成するには、次のイメージをクリックします。 このテンプレートは、パブリック Azure BLOB コンテナーに格納されています。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
