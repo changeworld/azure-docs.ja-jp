@@ -8,15 +8,15 @@
 ## キューの使用
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
-### [Node.JS](service-bus-nodejs-how-to-use-queues.md)
+### [Node.js](service-bus-nodejs-how-to-use-queues.md)
 ### [PHP](service-bus-php-how-to-use-queues.md)
 ### [Python](service-bus-python-how-to-use-queues.md)
 ### [Ruby](service-bus-ruby-how-to-use-queues.md)
-### [REST ()](/rest/api/servicebus/queues)
+### [REST](/rest/api/servicebus/queues)
 ## トピックとサブスクリプションの使用
 ### [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 ### [Java](service-bus-java-how-to-use-topics-subscriptions.md)
-### [Node.JS](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+### [Node.js](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
@@ -28,7 +28,7 @@
 ### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
 ### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
-### [故障と障害の扱い](service-bus-outages-disasters.md)
+### [故障と災害の扱い](service-bus-outages-disasters.md)
 ### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
 
 ## 開発
@@ -56,7 +56,7 @@
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
 ## [PowerShell](/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus)
-## [REST ()](/rest/api/servicebus)
+## [REST](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
 ## [SQLFilter 構文](service-bus-messaging-sql-filter.md)
@@ -69,7 +69,7 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
 ## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
-## [Service Bus エクスプローラー](https://github.com/paolosalvatori/ServiceBusExplorer)
+## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
