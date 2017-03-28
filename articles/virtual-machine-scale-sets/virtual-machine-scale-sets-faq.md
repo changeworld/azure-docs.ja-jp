@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/08/2017
+ms.date: 3/17/2017
 ms.author: negat
 ms.custom: na
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8d0adfb995ecfb56ff33814e462a88f3d1102d58
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 850459a79c723de0eb3249cfe9ea19bc988ca318
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -122,7 +122,7 @@ Windows と Linux の両方がサポートされています。
 
 #### <a name="create-a-self-signed-cert-in-a-keyvault"></a>KeyVault に自己署名証明書を作成する
 
-KeyVault に自己署名証明書を作成する方法の&1; つとして、https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/ の Service Fabric に関する記事の手順に従います。
+KeyVault に自己署名証明書を作成する方法の 1 つとして、https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/ の Service Fabric に関する記事の手順に従います。
 
 PowerShell コマンドは次のとおりです。
 
@@ -229,9 +229,9 @@ keyData | はい | String | Base64 でエンコードされた SSH 公開キー�
  
 ### <a name="when-i-run-update-azurermvmss-after-more-than-one-certificate-from-the-same-keyvault-i-get-the-following-error"></a>同じ KeyVault から複数の証明書を取得した後に Update-AzureRmVmss を実行すると、次のエラーが表示されます。
  
-"Update-AzureRmVmss: リスト secrets の中でインスタンス /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev が繰り返されていますが、これは許可されていません"。 同じ KeyVault から&2; つの証明書を追加できないのはなぜですか?
+"Update-AzureRmVmss: リスト secrets の中でインスタンス /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev が繰り返されていますが、これは許可されていません"。 同じ KeyVault から 2 つの証明書を追加できないのはなぜですか?
  
-この動作は、既存の sourceVault の新しい vaultCertificate ではなく、同じコンテナーを&2; 回追加しようとしている場合に発生する可能性があります。 シークレットをさらに追加する場合、Add-AzureRmVmssSecret は正しく動作しません。
+この動作は、既存の sourceVault の新しい vaultCertificate ではなく、同じコンテナーを 2 回追加しようとしている場合に発生する可能性があります。 シークレットをさらに追加する場合、Add-AzureRmVmssSecret は正しく動作しません。
  
 同じ Key Vault からシークレットをさらに追加する場合は、$vmss.properties.osProfile.secrets[0].vaultCertificates リストを更新する必要があります。
  
@@ -359,7 +359,7 @@ extensionName は `$vmss` で確認できます。
    
 ### <a name="is-there-a-scale-set-template-example-that-integrates-with-oms"></a>OMS と統合するスケール セット テンプレートの例はありますか?
 
-次のページの&2; 番目の例をご覧ください。
+次のページの 2 番目の例をご覧ください。
 
 https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric
    
@@ -467,7 +467,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/ を参照してください。 
  
   
-### <a name="what-is-the-resourceguid-property-on-a-nic-for-its-not-documented-here"></a>NIC の resourceGuid プロパティは何のためのものですか? ここには記載されていません。
+### <a name="what-is-the-resourceguid-property-on-a-nic-for"></a>NIC の resourceGuid プロパティは何のためのものですか?
 
 これは一意の ID です。 将来的に、下位レイヤーでこの ID をログに記録する予定です。 
  
@@ -481,6 +481,9 @@ IP は指定したサブネットから選択されます。
 
 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet を参照してください。 
 
+### <a name="how-do-i-add-a-scale-sets-first-vms-ip-address-to-the-output-of-a-template"></a>スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加するにはどうすればよいですか?
+
+http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips をご覧ください
 
 
 
@@ -488,9 +491,9 @@ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existin
 
 ### <a name="why-would-you-ever-create-a-scale-set-with-fewer-than-2-vms"></a>これまで、2 台未満の VM でスケール セットを作成していたのはなぜですか?
 
-理由の&1; つは、スケール セットのエラスティック プロパティを使用するためです。 たとえば、VM のランニング コストを支払わずにインフラストラクチャを定義するために、VM が含まれていないスケール セットをデプロイできます。 その後、VM をデプロイする準備ができたら、実稼働インスタンス数に合わせてスケール セットの "容量" を増やして VM をデプロイします。
+理由の 1 つは、スケール セットのエラスティック プロパティを使用するためです。 たとえば、VM のランニング コストを支払わずにインフラストラクチャを定義するために、VM が含まれていないスケール セットをデプロイできます。 その後、VM をデプロイする準備ができたら、実稼働インスタンス数に合わせてスケール セットの "容量" を増やして VM をデプロイします。
 
-もう&1; つの理由は、個々の VM で可用性セットを使用する場合と同様に、可用性を気にかけずにスケール セットを使用するためです。 スケール セットにより、代替可能な区別されていないコンピューティング ユニットを使用できるようになります。 この均一性は、スケール セットと可用性セットの主な差別化要素の&1; つです。 多くのステートレス ワークロードでは、個々のユニットは重視されないので、ワークロードが減少したら&1; つのコンピューティング ユニットにスケールダウンし、ワークロードが増加したときに多数のユニットに戻すことができます。
+もう 1 つの理由は、個々の VM で可用性セットを使用する場合と同様に、可用性を気にかけずにスケール セットを使用するためです。 スケール セットにより、代替可能な区別されていないコンピューティング ユニットを使用できるようになります。 この均一性は、スケール セットと可用性セットの主な差別化要素の 1 つです。 多くのステートレス ワークロードでは、個々のユニットは重視されないので、ワークロードが減少したら 1 つのコンピューティング ユニットにスケールダウンし、ワークロードが増加したときに多数のユニットに戻すことができます。
 
 ### <a name="how-do-you-change-the-number-of-vms-in-a-scale-set"></a>スケール セットの VM の数を変更するにはどうすればよいですか?
 

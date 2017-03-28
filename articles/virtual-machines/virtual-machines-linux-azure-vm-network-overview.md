@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 10/25/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9cc4fcb68148ef64829fff6135449a3c0efb75d0
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f5f611ce6944d37e0afcc9a14fa79d0356d55347
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -47,10 +48,10 @@ Resource Manager デプロイ モデルを使用して Azure Portal で仮想マ
 
 * [Azure ポータルでの完全修飾ドメイン名の作成](virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="virtual-nics"></a>仮想 NIC
+## <a name="network-interfaces"></a>ネットワーク インターフェイス
 ネットワーク インターフェイス (NIC) とは、仮想マシン (VM) と基礎となるソフトウェア ネットワーク間の相互接続です。 この記事では、ネットワーク インターフェイスとはなにか、Azure Resource Manager デプロイメント モデルでどのように使用されているかについて説明します。
 
-* [仮想ネットワーク インターフェイスの概要](../virtual-network/virtual-network-network-interface-overview.md)
+* [仮想ネットワーク インターフェイス](../virtual-network/virtual-network-network-interface.md)
 
 ## <a name="virtual-nics-and-dns-labeling"></a>仮想 NIC と DNS ラベル付け
 永続的にする必要があるサーバーが集団として扱われ、頻繁に破棄およびデプロイされる場合は、NIC で DNS ラベル付けを使用すると VNET 上で名前を永続化できます。  次のチュートリアルでは、静的 IP を持つ永続的な名前の NIC をセットアップします。
@@ -66,10 +67,5 @@ Resource Manager デプロイ モデルを使用して Azure Portal で仮想マ
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 * [Azure CLI を使用した内部ロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

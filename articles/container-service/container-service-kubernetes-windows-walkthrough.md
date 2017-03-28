@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/20/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: ef1e790edc4cd329245331bf1178ed1f610e914c
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c43648dae95d90d0ee9f3d6b5bedfad7ab4889ca
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -32,6 +32,7 @@ ms.lasthandoff: 03/06/2017
 
 > [!NOTE]
 > Azure Container Service における Kubernetes での Windows コンテナーのサポートはプレビュー段階です。 Azure Portal または Resource Manager テンプレートを使用して、Windows ノードを含む Kubernetes クラスターを作成します。 この機能は、現在 Azure CLI 2.0 ではサポートされていません。
+>
 
 
 
@@ -81,13 +82,13 @@ Azure Portal を使用して、Windows エージェント ノードを含む [Ku
 
 1. ノードの一覧を表示するには、「`kubectl get nodes`」と入力します。 ノードの詳細が必要な場合は、次を入力します。  
 
-  ```
-  kubectl get nodes -o yaml
-  ```
+    ```
+    kubectl get nodes -o yaml
+    ```
 
 2. `simpleweb.yaml` という名前のファイルを作成し、以下をコピーします。 このファイルにより、[Docker Hub](https://hub.docker.com/r/microsoft/windowsservercore/) から、Windows Server 2016 Server Core のベース OS イメージを使用して Web アプリが設定されます。  
 
-  ```yaml
+```yaml
   apiVersion: v1
   kind: Service
   metadata:
@@ -123,40 +124,44 @@ Azure Portal を使用して、Windows エージェント ノードを含む [Ku
           command:
           - powershell.exe
           - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$ip = (Get-NetIPAddress | where {$$_.IPAddress -Like '*.*.*.*'})[0].IPAddress ; $$url = 'http://'+$$ip+':80/' ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add($$url) ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at {0}...' -f $$url) ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
+          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
         nodeSelector:
           beta.kubernetes.io/os: windows
   ```
 
-3. アプリケーションを起動するには、次のように入力します。
+      
+> [!NOTE] 
+> この構成には `type: LoadBalancer` が含まれます。 この設定により、Azure Load Balancer を介してサービスがインターネットに公開されます。 詳細については、「[Azure Container Service の Kubernetes クラスターのコンテナーで負荷を分散する](container-service-kubernetes-load-balancing.md)」を参照してください。
+>
 
-  ```
-  kubectl apply -f simpleweb.yaml
-  ```
+## <a name="start-the-application"></a>アプリケーションの起動
+
+1. アプリケーションを起動するには、次のように入力します。  
+
+    ```
+    kubectl apply -f simpleweb.yaml
+    ```  
   
-  > [!NOTE] 
-  > この構成には `type: LoadBalancer` が含まれます。 この設定により、Azure Load Balancer を介してサービスがインターネットに公開されます。 詳細については、「[Azure Container Service の Kubernetes クラスターのコンテナーで負荷を分散する](container-service-kubernetes-load-balancing.md)」を参照してください。
   
-4. サービスのデプロイを確認するには (約 30 秒かかります)、次のように入力します。
+2. サービスのデプロイを確認するには (約 30 秒かかります)、次のように入力します。  
 
-  ```
-  kubectl get pods
-  ```
+    ```
+    kubectl get pods
+    ```
 
-5. サービスの実行後は、サービスの内部および外部 IP アドレスを表示するには、次のように入力します。
+3. サービスの実行後は、サービスの内部および外部 IP アドレスを表示するには、次のように入力します。
 
-  ```
-  kubectl get svc
-  ``` 
+    ```
+    kubectl get svc
+    ``` 
+  
+    ![Windows サービスの IP アドレス](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
 
-  ![Windows サービスの IP アドレス](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
+    外部 IP アドレスの追加には数分をかかります。 ロード バランサーによって外部アドレスが構成される前は、`<pending>` のように表示されます。
 
-  外部 IP アドレスの追加には数分をかかります。 ロード バランサーによって外部アドレスが構成される前は、`<pending>` のように表示されます。
+4. 外部 IP アドレスが使用可能になると、Web ブラウザーでサービスに接続できます。
 
-
-6. 外部 IP アドレスが使用可能になると、Web ブラウザーでサービスに接続できます。
-
-  ![ブラウザーでの Windows サーバー アプリ](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+    ![ブラウザーでの Windows サーバー アプリ](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
 
 
 ## <a name="access-the-windows-nodes"></a>Windows ノードへのアクセス
@@ -170,37 +175,31 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
 3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第&1; マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「22」と入力します。
 
-    ![PuTTY configuration 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
+  ![PuTTY configuration 1](media/container-service-kubernetes-windows-walkthrough/putty1.png)
 
 4. **[SSH]、[認証]** の順に選択します。 認証用の秘密キー ファイル (.ppk 形式) のパスを追加します。 [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのツールを使用すると、クラスターの作成に使用された SSH キーからこのファイルを生成できます。
 
-    ![PuTTY configuration 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
+  ![PuTTY configuration 2](media/container-service-kubernetes-windows-walkthrough/putty2.png)
 
 5. **[SSH]、[トンネル]** の順に選択し、転送ポートを構成します。 ローカル Windows コンピューターはポート 3389 を既に使用しているため、次の設定を使用して、Windows ノード 0 と Windows ノード 1 に接続することをお勧めします  (追加の Windows ノードについても、このパターンを引き続き使用します)。
 
-  **Windows ノード 0**
+    **Windows ノード 0**
 
-  * **発信元ポート:** 3390
-  * **移動先:** 10.240.245.5:3389
+    * **発信元ポート:** 3390
+    * **移動先:** 10.240.245.5:3389
 
-  **Windows ノード 1**
+    **Windows ノード 1**
 
-  * **発信元ポート:** 3391
-  * **移動先:** 10.240.245.6:3389
+    * **発信元ポート:** 3391
+    * **移動先:** 10.240.245.6:3389
 
-  ![Windows RDP トンネルの画像](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
+    ![Windows RDP トンネルの画像](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
 
 6. 完了したら、**[セッション]、[保存]** の順にクリックして接続の構成を保存します。
 
 7. PuTTY セッションに接続するには、**[開く]** をクリックします。 マスター ノードへの接続を完了します。
 
 8. リモート デスクトップ接続を開始します。 最初の Windows ノードに接続するには、**コンピューター**の場合は、`localhost:3390` を指定して **[接続]** をクリックします  (次のノードに接続するには、`localhost:3390` を指定します。以降、同様に指定します)。接続を完了するには、デプロイ時に設定したローカル Windows 管理者のパスワードを指定します。
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>次のステップ

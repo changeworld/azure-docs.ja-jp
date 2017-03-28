@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 07d91dfa905d22334bd051f9d5f3d936d38efc88
-ms.openlocfilehash: c6706808df75b7f567bb39f0f0fdce4692af683e
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ecd854842ace5a6472ea30f8cedd2a839f4f6358
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-この記事で紹介するサンプル スクリプトでは、オペレーティング システムが Ubuntu の Azure 仮想マシンを作成します。 スクリプトが正常に実行されると、この仮想マシンへ SSH 経由でアクセスできるようになります。 
+このスクリプトは、オペレーティング システムが Ubuntu で、関連ネットワーク リソースが設定された Azure 仮想マシンを作成します。 スクリプトを実行すると、SSH 経由で仮想マシンにアクセスできるようになります。
 
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/28/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup

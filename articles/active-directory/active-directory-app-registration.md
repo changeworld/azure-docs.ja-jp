@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: bf1b8783ccbc3b3e3185eb10c7f772b58352aab7
-ms.openlocfilehash: 073940bb607b953af324d784a45958977e1af3a2
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 006ebbbc3f6f745f60c5fc6646649097e144beaf
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -35,7 +36,7 @@ Azure Portal を使用して、Azure Active Directory (Azure AD) テナントに
 
 ## <a name="update-application-settings-from-the-azure-portal"></a>Azure Portal からのアプリケーション設定の更新
 
-Azure Portal を使用して、既存のアプリケーションの設定を簡単に変更できます。 たとえば、Azure AD がトークン応答を発行する場所である応答 URL を構成できます。 また、アプリケーションの MS Graph API へのアクセスの許可など、他のアプリケーションに対するアクセス許可を構成することもできます。 これらすべては、アプリケーションの設定ページで行うことができます。
+Azure Portal を使用して、既存のアプリケーションの設定を簡単に変更できます。 たとえば、Azure AD がトークン応答を発行する場所である応答 URL を構成できます。 また、アプリケーションの Microsoft Graph API へのアクセスの許可など、他のアプリケーションに対するアクセス許可を構成することもできます。 これらすべては、アプリケーションの設定ページで行うことができます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD テナントを選択します。
@@ -44,7 +45,7 @@ Azure Portal を使用して、既存のアプリケーションの設定を簡�
   * **[プロパティ]** ページでは、アプリケーションに関する全般的な情報を変更できます。 これには、アプリケーションの名前、サインオン URL、ログアウト URL などが含まれます。
   * **応答 URL** ページでは、Azure AD がトークン応答を送信する場所である応答 URL を追加できます。
   * **[所有者]** ページでは、アプリケーションの所有者を追加できます。
-  * **[アクセス許可]** ページでは、アプリのアクセス許可を構成できます。 たとえば、MS Graph API にアクセスするには、**[追加]** をクリックし、API セレクターの **[Microsoft Graph]** を選択してから、必要なアクセス許可 (**ディレクトリ データの読み取り**など) を選択します。
+  * **[アクセス許可]** ページでは、アプリのアクセス許可を構成できます。 たとえば、Microsoft Graph API にアクセスするには、**[追加]** をクリックし、API セレクターの **[Microsoft Graph]** を選択してから、必要なアクセス許可 (**ディレクトリ データの読み取り**など) を選択します。
   * **[キー]** ページでは、アプリケーション シークレットを追加できます。 シークレットは作成直後にしか表示されないため、後で使用できるようにコピーしておきます。
 
 ## <a name="use-the-inline-manifest-editor"></a>インライン マニフェスト エディターの使用
@@ -61,9 +62,4 @@ Azure Portal を使用して、既存のアプリケーションの設定を簡�
 
 1. Azure AD を使用した認証を実行するアプリケーションの詳細なチュートリアルについては、[クイック スタート](active-directory-developers-guide.md)をご覧ください。
 2. コード サンプルの完全な一覧については、[Github](https://github.com/azure-samples) をご覧ください。
-
-
-
-<!--HONumber=Dec16_HO5-->
-
 

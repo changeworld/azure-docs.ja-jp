@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: ramankum
 translationtype: Human Translation
-ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
-ms.openlocfilehash: c9e43df37784999036c6cf250f27a808f79ebe2f
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 26e78f559fa9a82183a26034580148e39331a214
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,7 +32,7 @@ Premium Storage により、Azure は Dynamics AX、Dynamics CRM、Exchange Serv
 > アプリケーションが最高レベルのパフォーマンスを実現できるように、高い IOPS を必要とする仮想マシン ディスクは Premium Storage に移行することをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 > 
 
-Azure VM の Premium ディスクは、次の&2; とおりの方法で作成できます。
+Azure VM の Premium ディスクは、次の 2 とおりの方法で作成できます。
 
 **非管理対象ディスク**: これは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 
 
@@ -52,14 +52,14 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 ここでは、Premium Storage の機能をいくつか紹介します。
 
-**Premium Storage ディスク**: Azure Premium Storage は、特定のサイズ シリーズの VM (DS、DSv2、GS、Fs) に接続できる VM ディスクをサポートしています。 それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の&3; つのディスク サイズから選択できます。 アプリケーションの要件に応じて、これらのディスクを&1; つ以上 VM に接続できます。 [Premium Storage の拡張性とパフォーマンスの目標 ](#premium-storage-scalability-and-performance-targets) に関する次のセクションで、仕様についてさらに詳しく説明します。
+**Premium Storage ディスク**: Azure Premium Storage は、特定のサイズ シリーズの VM (DS、DSv2、GS、Fs) に接続できる VM ディスクをサポートしています。 それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の 3 つのディスク サイズから選択できます。 アプリケーションの要件に応じて、これらのディスクを 1 つ以上 VM に接続できます。 [Premium Storage の拡張性とパフォーマンスの目標 ](#premium-storage-scalability-and-performance-targets) に関する次のセクションで、仕様についてさらに詳しく説明します。
 
 **Premium ページ BLOB**: Premium Storage ではページ BLOB をサポートしています。ページ BLOBは、VM の永続非管理対象ディスクを格納するために使用されます。 Standard Storage とは異なり、Premium Storage では、ブロック BLOB、追加 BLOB、ファイル、テーブル、キューはサポートしていません。
 Premium Storage アカウントに配置されているオブジェクトはページ BLOB であり、サポートされているプロビジョニング済みサイズのいずれかにスナップされます。 Premium Storage アカウントが小さな BLOB を格納するためのものではないのはこのためです。
 
 **Premium Storage アカウント**: Premium Storage の使用を開始するには、非管理対象ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。 また、[Storage REST API](/rest/api/storageservices/fileservices/Azure-Storage-Services-REST-API-Reference) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](/rest/api/storagerp) (Resource Manager デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium_LRS" を指定することで、Premium Storage アカウントを作成することもできます。 Premium Storage アカウントの制限については、以降の「 [Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets.md)」を参照してください。
 
-**Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを&3; つ保持します。 Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「 [スナップショットと Copy Blob](#snapshots-and-copy-blob) 」を参照してください。
+**Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを 3 つ保持します。 地域的な障害復旧では、[Azure Backup サービス](../backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。 
 
 Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクを使用する Azure DS、DSv2、GS、または Fs VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
 
@@ -77,7 +77,7 @@ Windows VM で使用できる Azure VM の種類やサイズについては、�
 **データ ディスク**: Premium Storage で実行されている同じ VM で、Premium ディスクと Standard ディスクの両方を使用できます。 Premium Storage を使用すると、VM をプロビジョニングし、複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。
 
 > [!NOTE]
-> [記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに&1; つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。 8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。 そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。 たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。 PowerShell の *New-VirtualDisk* コマンドレットの [NumberOfColumns](http://technet.microsoft.com/library/hh848643.aspx) パラメーターを使用して、仮想ディスクが使用する列数を指定できます。 詳しくは、「[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)」および「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
+> [記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。 8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。 そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。 たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。 PowerShell の *New-VirtualDisk* コマンドレットの [NumberOfColumns](http://technet.microsoft.com/library/hh848643.aspx) パラメーターを使用して、仮想ディスクが使用する列数を指定できます。 詳しくは、「[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)」および「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
 > 
 
 **キャッシュ**: Premium Storage をサポートするサイズ シリーズの VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンスを上回る高レベルのスループットと待機時間を実現できます。 Premium Storage ディスクでは、ディスク キャッシュ ポリシーを ReadOnly、ReadWrite、または None として構成できます。 既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。 アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。 たとえば、SQL Server データ ファイルなどの読み取り負荷の高いまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。 SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。 Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」をご覧ください。
@@ -108,10 +108,10 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 
 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
-非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが&1; つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、Managed Disks への移行を検討してください。 Managed Disks に移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションをビルドし、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、多数の VM があり、合計 51 テラバイト (TB) のディスクを接続する場合、Premium Storage アカウント 1 つあたりの上限は 35 TB であるため、ディスクを 2 つのストレージ アカウントに分散させます。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
+非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合は、Managed Disks への移行を検討してください。 Managed Disks に移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションをビルドし、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、多数の VM があり、合計 51 テラバイト (TB) のディスクを接続する場合、Premium Storage アカウント 1 つあたりの上限は 35 TB であるため、ディスクを 2 つのストレージ アカウントに分散させます。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
-Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Premium Storage ディスクには、P10、P20、P30 の&3; 種類があります。 次の表に示すように、それぞれに IOPS とスループットに固有の制限があります。
+Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Premium Storage ディスクには、P10、P20、P30 の 3 種類があります。 次の表に示すように、それぞれに IOPS とスループットに固有の制限があります。
 
 |Premium Storage ディスク タイプ | P10 | P20 | P30 |
 | --- | --- | --- | --- |
@@ -157,10 +157,10 @@ Premium Storage の拡張性とパフォーマンスの目標についか知っ�
 アプリケーションは、P10 ディスク上で、1 秒間に 16 KB サイズの I/O ユニットを 495 回実行しました。 これらは、1 秒間あたり (IOPS) 495 I/O ユニットとしてカウントされます。 同じ 1 秒内に 2 MB の I/O を実行すると、I/O の合計ユニットは 495 + 8 となります。 これは、I/O ユニット サイズが 256 KB であることから、2 MB の I/O は 2048 KB / 256 KB = 8 I/O ユニットとなるためです。 合計の 495 + 8 はディスク制限の 500 IOPS を超過するため、調整が発生します。
 
 ### <a name="example-2"></a>例 2:
-アプリケーションが P10 ディスク上で、256 KB サイズの I/O ユニットを 400 回実行しました。 合計消費帯域幅は、(400 * 256) / 1024 = 100 MB/秒になります。 P10 ディスクには、100 MB/秒というスループット制限があります。 アプリケーションが&1; 秒間あたりにより多くの I/O を実行しようとすると、割り当てられた制限を超過してしまうため、調整が発生します。
+アプリケーションが P10 ディスク上で、256 KB サイズの I/O ユニットを 400 回実行しました。 合計消費帯域幅は、(400 * 256) / 1024 = 100 MB/秒になります。 P10 ディスクには、100 MB/秒というスループット制限があります。 アプリケーションが 1 秒間あたりにより多くの I/O を実行しようとすると、割り当てられた制限を超過してしまうため、調整が発生します。
 
 ### <a name="example-3"></a>例 3:
-DS4 VM に P30 ディスクが&2; つアタッチされています。 P30 ディスク 1 つあたりのスループットは 200 MB/秒です。 しかし、DS4 VM のディスク帯域幅合計は 256 MB/秒が上限です。 したがって、この DS4 VM では、アタッチされたディスクの両方が最大スループットを発揮することはできません。 このことを解決するには、一方のディスクのトラフィックを 200 MB/秒で維持し、他方では 56 MB/秒で維持します。 ディスク トラフィックの合計が 256 MB/秒を超えると、ディスク トラフィックの調整が行われます。
+DS4 VM に P30 ディスクが 2 つアタッチされています。 P30 ディスク 1 つあたりのスループットは 200 MB/秒です。 しかし、DS4 VM のディスク帯域幅合計は 256 MB/秒が上限です。 したがって、この DS4 VM では、アタッチされたディスクの両方が最大スループットを発揮することはできません。 このことを解決するには、一方のディスクのトラフィックを 200 MB/秒で維持し、他方では 56 MB/秒で維持します。 ディスク トラフィックの合計が 256 MB/秒を超えると、ディスク トラフィックの調整が行われます。
 
 > [!NOTE]
 > ディスク トラフィックの大部分が小さなサイズの I/O で構成されていると、アプリケーションがスループット制限に達する前に、IOPS 制限に達してしまう場合がほとんどです。 逆に、ディスク トラフィックの大部分が大きなサイズの I/O で構成されている場合は、IOPS 制限ではなくスループット制限に達してしまうことがほとんどです。 最適なサイズの I/O を使用し、ディスクの保留中の I/O 要求の数を制限することで、アプリケーションの IOPS とスループットを最大化できます。
@@ -208,7 +208,7 @@ Premium Storage で Linux VM を構成するときは、次の重要な手順を
 * Premium Storage ディスクのキャッシュ設定が "ReadWrite" の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
 * VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。 「[Linux VM に管理ディスクを追加する](../virtual-machines/virtual-machines-linux-add-disk.md)」もご覧ください。
 
-次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。 Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも&1; つにアップグレードすることをお勧めします。 また、バージョンによっては最新の Linux Integration Services (LIS) v4.0 for Microsoft Azure が必要になります。 下記のリンクからダウンロードとインストールを行ってください。 マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。 これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。 ワークロードの種類に応じて、異なるイメージをチューニングします。
+次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。 Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。 また、バージョンによっては最新の Linux Integration Services (LIS) v4.0 for Microsoft Azure が必要になります。 下記のリンクからダウンロードとインストールを行ってください。 マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。 これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
 | ディストリビューション | バージョン | サポートされるカーネル | 詳細 |
 | --- | --- | --- | --- |
@@ -261,9 +261,9 @@ Premium Storage、Premium Storage でサポートされる VM、Managed Disks �
 
 ## <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
 
-非管理対象ディスクを使用する仮想マシンは、Azure Backup を使用してバックアップできます。 [詳細についてはこちらをご覧ください](../backup/backup-azure-vms-first-look-arm.md)。
+地域的な障害復旧では、[Azure Backup サービス](../backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。
 
-また、Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成することもできます。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。 
+非管理対象ディスクと Managed Disks の両方で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成することもできます。 これについて詳しくは、[Managed Disks での VM に対する Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)と[非管理対象ディスクでの VM に対する Azure Backup サービスの使用](../backup/backup-azure-vms-first-look-arm.md)に関するページをご覧ください 
 
 ## <a name="next-steps"></a>次のステップ
 Azure Premium Storage の詳細については、以下の記事を参照してください。
@@ -278,3 +278,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 ### <a name="blog-posts"></a>ブログ記事
 * [Azure Premium Storage を一般に提供](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
 * [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
+

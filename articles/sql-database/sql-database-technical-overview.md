@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/20/2016
+ms.date: 03/17/2017
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
-ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c505844cc2b7c745a1106b3c446833fb206ca98a
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>SQL Database とは SQL Database の概要
 SQL Database は、市場をリードする Microsoft SQL Server エンジンとミッション クリティカルなワークロードを処理する機能を基盤とする、Microsoft Cloud のリレーショナル データベース サービスです。 SQL Database は、複数のサービス レベルでの予測可能なパフォーマンス、ダウンタイムなしの動的なスケーラビリティ、組み込みのビジネス継続性、およびデータ保護を提供します。どの機能も、管理作業をほとんど必要としません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database は [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基盤としているので、既存の SQL Server ツール、ライブラリ、および API がサポートされています。 そのため、新たなスキルを学習しなくても、新しいソリューションの開発、既存の SQL Server ソリューションの移動、Microsoft Cloud への既存の SQL Server ソリューションの拡張を簡単に行うことができます。
 
-この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。 ハンズオン チュートリアルに進む準備ができたら、[初めての SQL データベースの作成](sql-database-get-started.md)に関するページか、[エラスティック プールの作成](sql-database-elastic-pool-manage-portal.md)に関するページに移動してください。 短いビデオ デモについては、次のビデオをご覧ください。
+この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。 すぐに始めるには、次のクイック スタートをご覧ください。
+ - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
+ - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)
+ - [PowerShell を使用して SQL データベースを作成する](sql-database-get-started-powershell.md)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-create-DBs-in-seconds/player]
-> 
-> 
+Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
+ - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
+ - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
 
 ## <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
 SQL Database サービスには、Basic、Standard、Premium という&3; つのサービス レベルが用意されています。 各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、 [さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md) を提供しています。 最初にアプリを月数ドルの小規模データベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムで[サービス レベルを変更](sql-database-service-tiers.md)することができます。 その際に、アプリにも顧客にも、ダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。

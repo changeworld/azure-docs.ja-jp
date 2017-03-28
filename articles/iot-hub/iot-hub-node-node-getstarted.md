@@ -12,13 +12,13 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 03/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: cae5694bc8189c525c8ae593eda3e51f5636c439
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e5cfa4c0a6964c3722ecaa6727336f5497565885
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/02/2017
 IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホスト名と IoT Hub 接続文字列が得られました。
 
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
-このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Node.js コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の **ID レジストリ**に関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Node.js コンソール アプリケーションを作成します。 デバイスは、ID レジストリに登録されている場合のみ、IoT ハブに接続することができます。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の **ID レジストリ**に関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
 1. **createdeviceidentity**という名前の新しい空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、**createdeviceidentity** フォルダー内に package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    

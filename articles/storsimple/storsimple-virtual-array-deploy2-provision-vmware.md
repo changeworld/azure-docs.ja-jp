@@ -1,6 +1,6 @@
 ---
 title: "VMware で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイ シリーズの&2; 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
+description: "StorSimple Virtual Array のデプロイ シリーズの 2 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f0ccf2706b5ce514613712fb866dc2d0120b0ad3
-ms.openlocfilehash: fe420fc0d4e5e2b7c625bf3a3d87005fdbcff200
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
@@ -46,7 +46,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
-  * ネットワーク インターフェイス&1; つ。
+  * ネットワーク インターフェイス 1 つ。
   * システム データ用の 500 GB の仮想ディスク。
 
 ### <a name="for-the-network-in-datacenter"></a>データセンターのネットワークの場合
@@ -69,7 +69,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
-  * トラフィックをインターネットにルーティングできるネットワークに接続している&1; つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
+  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
   * データ用の 500 GB の仮想ディスク。
 
 ## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>手順 2: ハイパーバイザーで仮想デバイスをプロビジョニングする
@@ -77,7 +77,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージは、Azure Portal からダウンロードしました。
 
-   1. 最新のイメージ ファイルがダウンロードされていることを確認します。 以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。 最新のイメージには&2; つのファイルがあります (1 つではありません)。
+   1. 最新のイメージ ファイルがダウンロードされていることを確認します。 以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。 最新のイメージには 2 つのファイルがあります (1 つではありません)。
    2. このイメージは後で使用するため、コピー先はメモしておいてください。
 
 2. vSphere client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
@@ -139,7 +139,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 21. **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
-22. **[Network]** ページでネットワーク インターフェイスの数を指定します。 ネットワーク インターフェイスの最小要件は&1; つです。
+22. **[Network]** ページでネットワーク インターフェイスの数を指定します。 ネットワーク インターフェイスの最小要件は 1 つです。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image23.png)
 23. **[SCSI Controller]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
@@ -148,7 +148,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 24. **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした&2; つのファイルがマージされたため、データストアには&1; つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]**をクリックします。
+25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]**をクリックします。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
@@ -166,7 +166,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 30. **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。 **[Disk Provisioning]** で **[Thin Provision]** を選択します。 **[次へ]**をクリックします。
+31. **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[Disk Provisioning]** で **[Thin Provision]** を選択します。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. **[Advanced Options]** ページで既定値をそのまま使用します。

@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 03/14/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 78b476b31f030fba4034dc1f499b020d244e8288
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: bfbd08b40e7d16efd5784497512f9063eb17d808
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -44,10 +45,10 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 はい。 詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
-カナダ中部およびカナダ東部の&2; つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
+カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
 
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>VM の作成後、NIC を VM に追加できますか。
-いいえ。 NIC を追加できるのは VM の作成時のみです。
+はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
 はい。 コンピューター名は最大 64 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](virtual-machines-linux-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 」を参照してください。
@@ -111,9 +112,4 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
         <td style="text-align:center">iloveyou!</td>
     </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

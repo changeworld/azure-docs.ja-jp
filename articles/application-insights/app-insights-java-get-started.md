@@ -4,18 +4,18 @@ description: "Application Insights を使用した Java Web アプリのアプ�
 services: application-insights
 documentationcenter: java
 author: harelbr
-manager: douge
+manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/02/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc4561516490b9b285220e7ae688bf97384fe6e
-ms.openlocfilehash: c900840e419c06b70e3a2f53a6aa8314145324fe
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d2f94ead2e5c7e60037e601ce65a03e809b66dd3
 
 
 ---
@@ -76,7 +76,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 ```
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
-* *新しい SDK に更新する必要がありますか?*  プロジェクトの依存関係を更新します。
+* *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### <a name="if-youre-using-gradle"></a>Gradle を使用している場合:
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
@@ -97,7 +97,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 * *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
 * *新しい SDK に更新するには*
-  *  プロジェクトの依存関係を更新します。
+  * プロジェクトの依存関係を更新します。
 
 #### <a name="otherwise-"></a>それ以外の場合:
 SDK を手動で追加する:
@@ -245,7 +245,7 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 ### <a name="instance-data"></a>インスタンス データ
 個々のインスタンスを表示するには、特定の要求の種類をクリックします。
 
-Application Insights には、2 種類のデータが表示されます。1 つは、格納され、平均、カウント、合計として表示される集計データです。もう 1 つは、HTTP 要求、例外、ページ ビュー、またはカスタム イベントの個々のレポートであるインスタンス データです。
+Application Insights には、2 種類のデータが表示されます。1 つは、格納され、平均、カウント、合計として表示される集計データです。もう&1; つは、HTTP 要求、例外、ページ ビュー、またはカスタム イベントの個々のレポートであるインスタンス データです。
 
 要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
 
@@ -278,7 +278,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 ![Open Settings, Failures](./media/app-insights-java-get-started/21-exceptions.png)
 
-その他の例外に関するデータを収集するには 2 つのオプションがあります。
+その他の例外に関するデータを収集するには&2; つのオプションがあります。
 
 * [TrackException への呼び出しをコードに挿入します][apiexceptions]。
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。 監視するメソッドを指定します。
@@ -337,7 +337,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 * displayName - Application Insights ポータルに表示される名前。
 * categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンターのカテゴリ (パフォーマンス オブジェクト)。
 * counterName - パフォーマンス カウンターの名前。
-* instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
+* instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが&1; つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
 パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
 
@@ -375,6 +375,10 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 ## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
 [Java のトラブルシューティング](app-insights-java-troubleshoot.md)
 
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
 ## <a name="next-steps"></a>次のステップ
 * [依存関係の呼び出しを監視する](app-insights-java-agent.md)
 * [Unix パフォーマンス カウンターを監視する](app-insights-java-collectd.md)
@@ -394,9 +398,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

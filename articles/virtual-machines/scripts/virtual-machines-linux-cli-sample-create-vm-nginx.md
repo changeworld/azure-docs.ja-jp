@@ -16,23 +16,21 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 07d91dfa905d22334bd051f9d5f3d936d38efc88
-ms.openlocfilehash: 94e2593271bd7828aab4dcefc0d0df47086e47ad
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f460662b17e421c0bb07c70f466a7425e5480bf9
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 
-このスクリプトでは、Azure 仮想マシンを作成してから、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して NGINX をインストールします。 このスクリプトを実行すると、仮想マシンのパブリック IP アドレス上のデモ Web サイトに到達できるようになります。
+このスクリプトでは、Azure 仮想マシンを作成し、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して NGINX をインストールします。 このスクリプトを実行すると、仮想マシンのパブリック IP アドレス上のデモ Web サイトにアクセスできるようになります。
 
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
-
-次のスクリプトでは、仮想マシンを作成し、カスタム スクリプト拡張機能を呼び出します。
 
 [!code-azurecli[main](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "VM の簡易作成")]
 
@@ -42,6 +40,8 @@ ms.lasthandoff: 02/28/2017
 
 ```bash
 #!/bin/bash
+
+# update package source
 apt-get -y update
 
 # install NGINX
@@ -50,7 +50,7 @@ apt-get -y install nginx
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup

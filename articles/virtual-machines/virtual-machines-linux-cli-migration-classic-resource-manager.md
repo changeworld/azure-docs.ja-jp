@@ -16,19 +16,24 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
-ms.openlocfilehash: 92211cc98b6d8394ff04bc7c2fe33f7bd710713b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5152367ec4a2ef225f08f2b8d4cb2e92eea8ce26
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
-以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。 この記事では、 [Azure CLI](../xplat-cli-install.md)が必要です。
+以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。 この記事では、 [Azure CLI](../cli-install-nodejs.md)が必要です。
 
 > [!NOTE]
 > ここで説明するすべての操作がべき等です。 サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。 これによりプラットフォームでアクションが再試行されます。
 > 
 > 
+
+<br>
+移行プロセス中に実行する必要のある手順を順番に示すフローチャートを以下に示します
+
+![移行手順を示すスクリーンショット](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-prepare-for-migration"></a>手順 1. 移行を準備する
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
@@ -37,7 +42,7 @@ ms.lasthandoff: 01/26/2017
 * インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。 または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>手順 2. サブスクリプションを設定し、プロバイダーを登録する
-移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。 [Azure CLI をインストール](../xplat-cli-install.md)し、[サブスクリプションを選択](../xplat-cli-connect.md)します。
+移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。 [Azure CLI をインストール](../cli-install-nodejs.md)し、[サブスクリプションを選択](../xplat-cli-connect.md)します。
 
 アカウントにサインインします。
 
@@ -48,7 +53,7 @@ ms.lasthandoff: 01/26/2017
     azure account set "<azure-subscription-name>"
 
 > [!NOTE]
-> 登録は&1; 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます 
+> 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます 
 > 
 > "*BadRequest : 移行の対象サブスクリプションが登録されていません。*" 
 > 
@@ -58,7 +63,7 @@ ms.lasthandoff: 01/26/2017
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-登録が完了するまで&5; 分間お待ちください。 承認の状態を確認するには、次のコマンドを使用します。 RegistrationState が `Registered` であることを確認してから続行してください。
+登録が完了するまで 5 分間お待ちください。 承認の状態を確認するには、次のコマンドを使用します。 RegistrationState が `Registered` であることを確認してから続行してください。
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 

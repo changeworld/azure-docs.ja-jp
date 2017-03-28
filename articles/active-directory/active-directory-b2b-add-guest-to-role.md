@@ -14,20 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 58768cd59a922483bcb37797a6dcd515d159ef4c
-ms.openlocfilehash: f0d8eaef0933a43d5eefb06b1444e74fa5f5b3eb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
 
-Azure Active Directory (Azure AD) B2B コラボレーション ユーザーはゲスト ユーザーとしてディレクトリに追加され、ディレクトリのゲスト アクセス許可は既定で制限されていますが、一部のゲスト ユーザーを組織内の特権ロールに入れる必要がある場合があります。 このような場合をサポートするために、ゲスト ユーザーを組織のニーズに合わせて任意のロールに追加することができます。
+Azure Active Directory (Azure AD) B2B コラボレーション ユーザーはゲスト ユーザーとしてディレクトリに追加され、ディレクトリのゲスト アクセス許可は既定で制限されています。 一部のゲスト ユーザーを組織内の上位の特権ロールに入れる必要がある場合があります。 上位の特権ロールの定義をサポートするために、ゲスト ユーザーを組織のニーズに合わせて任意のロールに追加することができます。
 
 ## <a name="default-role"></a>既定のロール
 

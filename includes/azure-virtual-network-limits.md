@@ -17,7 +17,7 @@
 | デプロイあたりのプライベート VIP (ILB) |1 |1 |
 | エンドポイント アクセス制御リスト (ACL) |50 |50 |
 
-#### <a name="a-nameazure-resource-manager-virtual-networking-limitsanetworking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
+#### <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。
 
 | リソース | 既定の制限 | 上限 |
@@ -26,6 +26,7 @@
 | 仮想ネットワークあたりのサブネット数 |1,000 |サポートにお問い合わせください |
 | 仮想ネットワークあたりの DNS サーバー数 |9 |25 |
 | 仮想ネットワークごとのプライベート IP アドレス |4096 |4096 |
+| ネットワーク インターフェイスごとのプライベート IP アドレス |50 |サポートにお問い合わせください |
 | 仮想マシンまたはロール インスタンスの同時 TCP 接続数 |500K |500K |
 | ネットワーク インターフェイス (NIC) |300 |10000 |
 | ネットワーク セキュリティ グループ (NSG) |100 |400 |
@@ -40,6 +41,7 @@
 | ロード バランサーごとのプライベート フロント エンド IP |10 |サポートにお問い合わせください |
 | 仮想ネットワークあたりの VNet ピアリング |10 |50 |
 | VPN Gateway ごとのポイント対サイト ルート証明書 |20 |20 |
+| 仮想ネットワークごとのセカンダリ IP 構成 |1,000 |サポートにお問い合わせください |
 
 制限値を既定値から引き上げる必要がある場合は、サポートにお問い合せください。
 

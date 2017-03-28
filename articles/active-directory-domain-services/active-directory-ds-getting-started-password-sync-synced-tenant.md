@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 03/17/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9c43a831768684c6458d5f62557c8a06b2c5ca6b
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4969b43831a3813a4e76c6447c252a9c458f371a
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -37,7 +37,14 @@ ms.lasthandoff: 12/08/2016
 <br>
 
 ## <a name="task-5-enable-password-synchronization-to-aad-domain-services-for-a-synced-azure-ad-tenant"></a>タスク 5: AAD ドメイン サービスとのパスワード同期を有効にする (同期された Azure AD テナントの場合)
-同期対象の Azure AD テナントは、Azure AD Connect を使用して組織のオンプレミス ディレクトリと同期するように設定されます。 Azure AD Connect は、既定では NTLM および Kerberos 資格情報ハッシュを Azure AD と同期しません。 Azure AD Domain Services を使用するには、NTLM および Kerberos 認証に必要な資格情報ハッシュを同期するように Azure AD Connect を構成する必要があります。 以下の手順では、必要な資格情報ハッシュの Azure AD テナントとの同期を有効にします。
+同期対象の Azure AD テナントは、Azure AD Connect を使用して組織のオンプレミス ディレクトリと同期するように設定されます。 Azure AD Connect は、既定では NTLM および Kerberos 資格情報ハッシュを Azure AD と同期しません。 Azure AD Domain Services を使用するには、NTLM および Kerberos 認証に必要な資格情報ハッシュを同期するように Azure AD Connect を構成する必要があります。 
+
+> [!WARNING]
+> AAD Domain Services とのパスワード同期は、Azure AD Domain Services を有効にするたびに有効にする必要があります。 以前、Azure AD ディレクトリを使用するために Azure AD Domain Services を有効にし、その後無効にしたことがあるかもしれませんが、 パスワード同期はその場合も、次回ディレクトリを使用するために Azure AD Domain Services を有効にする際に有効にする必要があります。
+>
+>
+
+以下の手順では、必要な資格情報ハッシュの Azure AD テナントとの同期を有効にします。
 
 ### <a name="install-or-update-azure-ad-connect"></a>Azure AD Connect のインストールまたは更新
 Azure AD Connect の最新の推奨リリースをドメイン参加コンピューターにインストールします。 Azure AD Connect の既存のインスタンスが設定されている場合は、Azure AD Connect の最新バージョンを使用するように更新する必要があります。 既に修正されている既知の問題/バグを回避するために、常に最新バージョンの Azure AD Connect を使用してください。
