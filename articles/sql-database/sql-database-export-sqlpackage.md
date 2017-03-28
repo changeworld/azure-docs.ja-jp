@@ -19,6 +19,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 3d04be3d2427bc59d24bfaad227730991b61265b
 ms.openlocfilehash: a17bfa6868ac581dc5ae562b3174f28571d52698
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -52,15 +53,10 @@ BACPAC ファイルへのエクスポートの概要については、[BACPAC �
 
 * To learn about importing a BACPAC using SQLPackage, see [Import a BACPAC to Azure SQL Database using SqlPackage](sql-database-import-sqlpackage.md)
 * To learn about importing a BACPAC using the Azure portal, see [Import a BACPAC to Azure SQL Database using the Azure portal](sql-database-import-portal.md)
-* To learn about importing a BACPAC using PowerShell, see [Import a BACPAC to Azure SQL Database using PowerShell](sql-database-import-powershell.md)
+* To learn about importing a BACPAC using PowerShell, see [Import a BACPAC to Azure SQL Database using PowerShell](scripts/sql-database-import-from-bacpac-powershell.md)
 * For a discussion of the entire SQL Server database migration process, including performance recommendations, see [Migrate a SQL Server database to Azure SQL Database](sql-database-cloud-migrate.md).
 * To learn about long-term backup retention of an Azure SQL database backup as an alternative to exported a database for archive purposes, see [Long term backup retention](sql-database-long-term-retention.md)
 * To learn about importing a BACPAC to a SQL Server database, see [Import a BACPCAC to a SQL Server database](https://msdn.microsoft.com/library/hh710052.aspx)
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
