@@ -25,7 +25,7 @@ ms.lasthandoff: 03/03/2017
 ---
 # <a name="automating-application-deployments-to-linux-virtual-machines"></a>Linux Virtual Machines へのアプリケーションのデプロイを自動化する 
 
-この&4; 部構成のシリーズでは、Azure Resource Manage テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。 
+この 4 部構成のシリーズでは、Azure Resource Manage テンプレートを使った Azure リソースとアプリケーションのデプロイおよび構成について説明します。 このシリーズでは、サンプル テンプレートをデプロイし、デプロイ テンプレートを検証します。 このシリーズの目的は、Azure リソースの関係について学習し、完全に統合された Azure Resource Manager テンプレートのデプロイを実際に体験してみることです。 このドキュメントは、Azure Resource Manager に関する基本的な知識があることを前提としています。このチュートリアルを開始する前に、Azure Resource Manager の基本的な概念について理解を深めてください。 
 
 ## <a name="music-store-application"></a>ミュージック ストア アプリケーション
 このシリーズで使うサンプルは、ミュージック ストアのショッピング体験をシミュレートする .Net Core アプリケーションです。 このアプリケーションは、Linux または Windows の仮想システムにデプロイできます。両方のサンプルのデプロイを作成しています。 このアプリケーションには、Web アプリケーションと SQL データベースが含まれています。 このシリーズの記事を読む前に、このページにあるデプロイ ボタンを使って、アプリケーションをデプロイしてください。 完全にデプロイすると、アプリケーション/Azure のアーキテクチャは次の図のようになります。 
@@ -34,9 +34,9 @@ ms.lasthandoff: 03/03/2017
 
 ![ミュージック ストア アプリケーション](./media/virtual-machines-linux-dotnet-core/music-store.png)
 
-関連するテンプレート JSON を含め、これらの各コンポーネントについては、次の&4; つの記事で確認します。
+関連するテンプレート JSON を含め、これらの各コンポーネントについては、次の 4 つの記事で確認します。
 
-* [**アプリケーション アーキテクチャ**](virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – Web サイトやデータベースなどのアプリケーション コンポーネントは、仮想マシンや Azure SQL データベースなどの Azure コンピューター リソースでホストする必要があります。 このドキュメントでは、コンピューティング ニーズを Azure リソースにマッピングし、Azure Resource Manager テンプレートを使ってこれらのリソースをデプロイする方法について説明します。 
+* [**アプリケーション アーキテクチャ**](virtual-machines-linux-dotnet-core-2-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – Web サイトやデータベースなどのアプリケーション コンポーネントは、仮想マシンや Azure SQL Database などの Azure コンピューター リソースでホストする必要があります。 このドキュメントでは、コンピューティング ニーズを Azure リソースにマッピングし、Azure Resource Manager テンプレートを使ってこれらのリソースをデプロイする方法について説明します。 
 * [**アクセスとセキュリティ**](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – Azure でアプリケーションをホストする場合は、アプリケーションにアクセスする方法とさまざまなアプリケーション コンポーネントが相互にアクセスする方法を検討する必要があります。 このドキュメントでは、アプリケーションへのインターネット アクセスとアプリケーション コンポーネント間のアクセスを提供し、セキュリティで保護する方法について説明します。
 * [**可用性とスケール**](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – 可用性とスケールは、インフラストラクチャのダウンタイム時に実行を維持できるアプリケーション機能と、アプリケーションの需要に応じてコンピューティング リソースをスケールする機能を指します。 このドキュメントでは、負荷分散された高可用性アプリケーションをデプロイするうえで必要なコンポーネントについて説明します。
 * [**アプリケーションのデプロイ**](virtual-machines-linux-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - アプリケーションを Azure Virtual Machines にデプロイする場合は、アプリケーション バイナリを Virtual Machines にインストールする方法を検討する必要があります。 このドキュメントでは、Azure 仮想マシンのカスタム スクリプト拡張機能を使って、アプリケーションのインストールを自動化する方法について説明します。
@@ -52,7 +52,7 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 この Azure Resource Manager テンプレートには、次のパラメーター値が必要です。
 
-| パラメーター名 | Description |
+| パラメーター名 | 説明 |
 | --- | --- |
 | SSHKEYDATA |仮想マシンへのアクセスをセキュリティで保護するために使う SSH キー データ。 SSH キー ペアの作成については、[Azure の Linux VM 用 SSH キーの作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 |
 | ADMINUSERNAME |仮想マシンと Azure SQL Database で使う管理者ユーザー名。 |
