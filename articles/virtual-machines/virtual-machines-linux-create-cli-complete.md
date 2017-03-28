@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2017
 
 環境には以下を含みます。
 
-* 可用性セット内の&2; つの VM
+* 可用性セット内の 2 つの VM
 * ポート 80 の負荷分散規則が構成されたロード バランサー
 * 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/27/2017
 az group create --name myResourceGroup --location westeurope
 ```
 
-この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、ストレージ アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。 (ストレージ アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
+この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 非管理対象ディスクを使用する場合は、[az storage account create](/cli/azure/storage/account#create) を使用して、Storage アカウントを作成する必要があります。 次の例では、`mystorageaccount` という名前の Storage アカウントを作成します。 (Storage アカウント名は一意である必要があるため、独自の一意の名前を入力してください。)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -122,7 +122,7 @@ az network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#create) で、ネットワーク セキュリティ グループの&2; つの受信規則を追加します。 次の例では、2 つの規則 `myNetworkSecurityGroupRuleSSH` と `myNetworkSecurityGroupRuleHTTP` を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#create) で、ネットワーク セキュリティ グループの 2 つの受信規則を追加します。 次の例では、2 つの規則 `myNetworkSecurityGroupRuleSSH` と `myNetworkSecurityGroupRuleHTTP` を作成します。
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup \
@@ -177,7 +177,7 @@ az vm create \
     --admin-username azureuser
 ```
 
-Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順でストレージ アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前のストレージ アカウントに非管理対象ディスクを作成します。 
+Azure Managed Disks を使用する場合は、この手順をスキップします。 非管理対象ディスクを使用して、前の手順で Storage アカウントを作成した場合は、この後のコマンドにいくつかのパラメーターを追加する必要があります。 この後のコマンドに次のパラメーターを追加して、`mystorageaccount` という名前の Storage アカウントに非管理対象ディスクを作成します。 
 
 ```azurecli
   --use-unmanaged-disk \
@@ -232,7 +232,7 @@ Azure リソース グループは、リソース デプロイの論理的な管
 az group create --name myResourceGroup --location westeurope
 ```
 
-既定では、出力は、JSON (JavaScript Object Notation) にあります。 たとえば、一覧またはテーブルとして出力するには [az configure --output](/cli/azure/#configure) を使います。 出力形式で&1; 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例では、**az group create** コマンドからの JSON の出力を示します。
+既定では、出力は、JSON (JavaScript Object Notation) にあります。 たとえば、一覧またはテーブルとして出力するには [az configure --output](/cli/azure/#configure) を使います。 出力形式で 1 回のみ変更するために `--output` を任意のコマンドに追加することもできます。 次の例では、**az group create** コマンドからの JSON の出力を示します。
 
 ```json                       
 {
@@ -246,12 +246,12 @@ az group create --name myResourceGroup --location westeurope
 }
 ```
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>Storage アカウントの作成
 この手順は省略可能です。 Azure CLI 2.0 で VM を作成するときの既定の操作では、Azure Managed Disks を使用します。 これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。 Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../storage/storage-managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 Azure Managed Disks を使用する場合は、「[仮想ネットワークとサブネットの作成](#create-a-virtual-network-and-subnet)」に進んでください。 
 
 非管理対象ディスクを使用する場合は、VM ディスクおよび追加するすべてのデータ ディスク用に、ストレージ アカウントを作成する必要があります。
 
-ここでは、[az storage account create](/cli/azure/storage/account#create) コマンドを使い、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。 次の例では、`mystorageaccount` という名前のストレージ アカウントを作成します。
+ここでは、[az storage account create](/cli/azure/storage/account#create) コマンドを使い、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。 次の例では、`mystorageaccount` という名前の Storage アカウントを作成します。
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -293,7 +293,7 @@ az storage account create --resource-group myResourceGroup --location westeurope
 }
 ```
 
-CLI を使ってストレージ アカウントを調査するには、まず、アカウント名とキーを設定する必要があります。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) を使います。 次の例にあるストレージ アカウントの名前を選択したものに置き換えます。
+CLI を使って Storage アカウントを調査するには、まず、アカウント名とキーを設定する必要があります。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) を使います。 次の例にある Storage アカウントの名前を選択したものに置き換えます。
 
 ```bash
 export AZURE_STORAGE_CONNECTION_STRING="$(az storage account show-connection-string --resource-group myResourceGroup --name mystorageaccount --query connectionString)"
@@ -526,7 +526,7 @@ az network lb inbound-nat-rule create --resource-group myResourceGroup \
 }
 ```
 
-SSH に対する&2; つ目の NAT 規則について、手順を繰り返します。 次の例では、`myLoadBalancerRuleSSH2` という名前の規則を作成して、TCP ポート 4223 をポート 22 にマップします。
+SSH に対する 2 つ目の NAT 規則について、手順を繰り返します。 次の例では、`myLoadBalancerRuleSSH2` という名前の規則を作成して、TCP ポート 4223 をポート 22 にマップします。
 
 ```azurecli
 az network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -991,9 +991,9 @@ az vm availability-set create --resource-group myResourceGroup --location westeu
   --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大&3; つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
+障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。 既定で、可用性セット内に構成された仮想マシンは、最大 3 つの障害ドメイン間で分散されます。 つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。 VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
 
-アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは&1; つのみです。 また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
+アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。 また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
 
 詳細については、「 [VMの可用性管理](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
