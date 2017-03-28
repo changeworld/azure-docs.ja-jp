@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 62d2cd990bff4ffc982eef507ad69c68c00a65ab
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7f719fb38709f4bb7083b7f21a5979f7e0588d0f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/14/2017
 * [断続的な IO エラー - マウント ポイントで list コマンドを実行すると、既存のファイル共有で "ホストがダウンしています (エラー 112)" というエラーが発生するか、シェルが応答を停止する](#errorhold)
 * [Linux VM で Azure Files をマウントしようとしたときに、マウント エラー 115 が発生する](#error15)
 * [Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している](#delayproblem)
-
+* [マウント エラー (11): Ubuntu 4.8+ カーネルにマウントするときにリソースが一時的に使用不能になる](#ubuntumounterror)
 
 <a id="quotaerror"></a>
 
@@ -219,9 +219,9 @@ File Storage にファイルをコピーするには、最初にファイルの�
 ### <a name="cause"></a>原因
 このエラーは、Linux クライアントがある長時間アイドル状態である場合に発生します。 クライアントが長時間アイドル状態である場合、クライアントが切断され、接続がタイムアウトになります。 
 
-接続は、さまざまな理由によりアイドル状態になります。 ネットワーク通信エラーの原因の&1; つは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなるためです。
+接続は、さまざまな理由によりアイドル状態になります。 ネットワーク通信エラーの原因の 1 つは、既定である「ソフト」マウント オプションが使用されたときに、サーバーへの TCP 接続が再確立できなくなるためです。
 
-また、古いカーネルに再接続の問題の修正が存在しないことも原因の&1; つと考えられます。
+また、古いカーネルに再接続の問題の修正が存在しないことも原因の 1 つと考えられます。
 
 ### <a name="solution"></a>解決策
 
@@ -271,6 +271,14 @@ dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=10
 
 cache=strict または serverino オプションが指定されていない場合は、Azure ファイルをマウント解除してから mount コマンドで再マウントし ([ドキュメント](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)を参照)、"/etc/fstab" エントリに適切なオプションがあることを確認します。
 
+<a id="ubuntumounterror"></a>
+## <a name="mount-error11-resource-temporarily-unavailable-when-mounting-to-ubuntu-48-kernel"></a>マウント エラー (11): Ubuntu 4.8+ カーネルにマウントするときにリソースが一時的に使用不能になる
+
+### <a name="cause"></a>原因
+Ubuntu 16.10 カーネル (v.4.8) には、クライアントが暗号化のサポートを要求しているがサポートされていないという既知の問題があります。 
+
+### <a name="solution"></a>解決策
+Ubuntu 16.10 が修正されるまでは、"vers=2.1" マウント オプションを指定するか Ubuntu 16.04 を使用します。
 ## <a name="learn-more"></a>詳細情報
 * [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 * [Linux で Azure File Storage を使用する](storage-how-to-use-files-linux.md)

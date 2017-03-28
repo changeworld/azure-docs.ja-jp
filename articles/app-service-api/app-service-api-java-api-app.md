@@ -17,6 +17,7 @@ ms.author: rachelap;robmcm
 translationtype: Human Translation
 ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
 ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -27,10 +28,10 @@ ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
 
 ## <a name="prerequisites"></a>前提条件
 1. [Java Development Kit 8] \(以降)
-2. [Maven] 
-3. [Git] 
+2. 開発用コンピューターにインストールされた [Maven]
+3. 開発用コンピューターにインストールされた [Git]
 4. [Microsoft Azure] の有料または[無料試用版]サブスクリプション
-5.  [Postman]
+5. [Postman]
 
 ## <a name="scaffold-the-api-using-swaggerio"></a>Swagger.IO を使用して API をスキャフォールディングする
 swagger.io オンライン エディターを使用して、API の構造を表す Swagger JSON または YAML コードを入力できます。 API のセキュリティを設計した後は、さまざまなプラットフォームやフレームワークのコードをエクスポートできます。 次のセクションでは、スキャフォールディングされたコードに変更を加え、モック機能を含めます。 
@@ -314,9 +315,4 @@ Java での Azure の使用の詳細については、 [Azure Java デベロッ�
 [select-git-repo]: ./media/app-service-api-java-api-app/select-git-repo.png
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

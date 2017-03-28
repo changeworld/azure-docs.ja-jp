@@ -15,8 +15,9 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 30f56224a00957127497b6a05a809453294ea94e
-ms.openlocfilehash: ef477af0cfc24233ae9460d6bf020d81d68c87e5
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4dc5ae7d3feae769a8366f68f412f3b79fa8eb00
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -49,7 +50,7 @@ StorSimple は使用量ベースのサービスです。 CSP ルート経由で 
 スタンドアロンの StorSimple サービスと同じ SKU が使用できます。 
 
 ### <a name="is-there-any-difference-between-the-storsimple-directly-purchased-from-microsoft-under-ea-and-storsimple-as-a-part-of-csp"></a>EA で Microsoft から直接購入した StorSimple と CSP の一環として購入した StorSimple の間では、違いがありますか。
-いいえ。 CSP の場合、顧客は StorSimple Virtual Array (SVA) のほかにも、CSP パートナーによって提供されるその他のサービスを&1; つの請求書で購入できます。 StorSimple 8000 シリーズの物理デバイスを調達する場合、顧客は EA ルートを経由する必要があることに注意してください。 
+いいえ。 CSP の場合、顧客は StorSimple Virtual Array (SVA) のほかにも、CSP パートナーによって提供されるその他のサービスを 1 つの請求書で購入できます。 StorSimple 8000 シリーズの物理デバイスを調達する場合、顧客は EA ルートを経由する必要があることに注意してください。 
 
 ### <a name="in-which-markets-is-storsimple-available-for-csp-at-launch"></a>リリース当初に CSP 用の StorSimple を利用できるのはどの市場ですか。
 CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能なすべての市場で利用できます。 詳細については、[StorSimple が利用可能なリージョンの一覧](https://azure.microsoft.com/regions/services/)を参照してください。
@@ -79,7 +80,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>スタンドアロンの StorSimple サブスクリプションを顧客のためにプロビジョニングしました。 デバイスの管理に Azure Portal を使用する必要はありますか。 
 はい。 
 
-### <a name="is-the-microsoft-field-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Microsoft の領域は、CSP を介した StorSimple の販売の結果として補償の対象となりますか。
+### <a name="is-the-microsoft-account-team-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Microsoft アカウント チームは、CSP を介した StorSimple の販売の結果として補償の対象となりますか。
 はい。 パートナーの販売担当役員と最終顧客に対応する顧客アカウント チームは、CSP 販売について支払いを受けます。 パートナーは、差別化された価値とサービスを率先して販売するよう期待されます。
 
 ## <a name="support-for-storsimple-and-csp"></a>StorSimple と CSP のサポート
@@ -98,9 +99,4 @@ CSP の StorSimple の詳細については、以下を参照してください�
 
 ## <a name="next-steps"></a>次のステップ
 StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Traffic Manager の設定のテスト | Microsoft Docs"
-description: "この記事は、Traffic Manager の設定のテストを支援します。"
+title: "Azure Traffic Manager の設定の検証 | Microsoft Docs"
+description: "この記事では、Traffic Manager の設定を検証する方法について説明します"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 713c01f1a15791ad19792bc58a2c32f8ce787720
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="test-your-traffic-manager-settings"></a>Traffic Manager の設定のテスト
+# <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 
 Traffic Manager の設定をテストするには、場所が異なる複数のクライアントからテストを実行する必要があります。 次に、Traffic Manager プロファイルのエンドポイントを 1 つずつダウンさせていきます。
 
@@ -74,9 +75,4 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 * [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 * [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

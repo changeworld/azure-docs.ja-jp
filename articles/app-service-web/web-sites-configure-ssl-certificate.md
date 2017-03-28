@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 46ffa25ff6f90c898b958ee6c5b2c47219c468ab
-ms.lasthandoff: 01/20/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: f7a2066f43219e8748b5c5356ff6c81535b7842a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/20/2017
 
 この記事では、 [Azure App Service](../app-service/app-service-value-prop-what-is.md) でカスタム ドメイン名を使用している Web アプリ、モバイル アプリ バックエンド、または API アプリに対して HTTPS を有効にする方法について説明します。 サーバーのみの認証について取り上げます。 相互認証 (クライアント認証を含む) を使用する必要がある場合は、「 [Web アプリの TLS 相互認証を構成する方法](app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
-カスタム ドメイン名を使用しているアプリのセキュリティを HTTPS で保護するには、そのドメイン名の証明書を追加します。 Azure の既定では、1 つの SSL 証明書を使用して **\*.azurewebsites.net** というワイルドカード ドメインをセキュリティで保護しているため、クライアントは最初から **https://*&lt;アプリ名>*.azurewebsites.net** のアプリにアクセスできるようになっています。ただし、**contoso.com**、**www.contoso.com**、**\*.contoso.com** のようなカスタム ドメインを使用する場合、既定の証明書ではセキュリティを確保できません。 さらに、すべての[ワイルドカード証明書](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)がそうであるように、既定の証明書は、カスタム ドメインを使用し、そのカスタム ドメイン用の証明書を使用する場合ほど安全性は高くありません。   
+カスタム ドメイン名を使用しているアプリのセキュリティを HTTPS で保護するには、そのドメイン名の証明書を追加します。 Azure の既定では、1 つの SSL 証明書を使用して **\*.azurewebsites.net** というワイルドカード ドメインをセキュリティで保護しているため、クライアントは最初から **https://*&lt;アプリ名>*.azurewebsites.net**のアプリにアクセスできるようになっています。ただし、**contoso.com**、**www.contoso.com**、**\*.contoso.com** のようなカスタム ドメインを使用する場合、既定の証明書ではセキュリティを確保できません。 さらに、すべての[ワイルドカード証明書](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)がそうであるように、既定の証明書は、カスタム ドメインを使用し、そのカスタム ドメイン用の証明書を使用する場合ほど安全性は高くありません。   
 
 > [!NOTE]
 > [Azure フォーラム](https://azure.microsoft.com/support/forums/)では、Azure の専門家からいつでもアドバイスを得ることができます。 個別対応のサポートが必要な場合は、 [Azure のサポート](https://azure.microsoft.com/support/options/) にアクセスし、 **[サポートの要求]**をクリックしてください。
@@ -75,7 +75,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 * [OpenSSL を使用した手順](#bkmk_openssl) - [オープン ソースのクロスプラットフォーム ツール](https://www.openssl.org)です。 このツールを使用すると、任意のプラットフォームから SSL 証明書を取得できます。
 * [OpenSSL を使用した subjectAltName 取得の手順](#bkmk_subjectaltname) - `subjectAltName` 証明書を取得するための手順です。
 
-証明書を購入する前に App Service で設定をテストする場合は、 [自己署名証明書](https://en.wikipedia.org/wiki/Self-signed_certificate)を生成することができます。 このチュートリアルでは、それを生成する&2; つの方法を示します。
+証明書を購入する前に App Service で設定をテストする場合は、 [自己署名証明書](https://en.wikipedia.org/wiki/Self-signed_certificate)を生成することができます。 このチュートリアルでは、それを生成する 2 つの方法を示します。
 
 * [Certreq.exe を使用した自己署名証明書の手順](#bkmk_sscertreq)
 * [OpenSSL を使用した自己署名証明書の手順](#bkmk_ssopenssl)
@@ -181,7 +181,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
    
            A challenge password []:
    
-    この処理が完了すると、**myserver.key** と **server.csr** という&2; つのファイルが作業ディレクトリに生成されます。 
+    この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。 
     **server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
 3. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
 4. 要求した証明書が CA から届いたら、作業ディレクトリの **myserver.crt** という名前のファイルに保存します。 CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。 ファイルは次のようになります。
@@ -269,7 +269,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
         Organizational Unit Name (eg, section) []: Azure
         Your common name (eg, domain name) []: www.microsoft.com
    
-    この処理が完了すると、**myserver.key** と **server.csr** という&2; つのファイルが作業ディレクトリに生成されます。 
+    この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。 
     **server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
 4. SSL 証明書を取得するために、CSR を CA に送信します。 Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants (Microsoft が信頼するルート証明書プログラム: 参加者)][cas]」を参照してください。
 5. 要求した証明書が CA から届いたら、 **myserver.crt**という名前のファイルに保存します。 CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。 ファイルは次のようになります。
@@ -409,7 +409,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
    
         openssl req -sha256 -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt -config serverauth.cnf
    
-    このコマンドを実行すると、**myserver.crt** (自己署名証明書) および **myserver.key** (秘密キー) という&2; つのファイルが、**serverauth.cnf** の設定に基づいて作成されます。
+    このコマンドを実行すると、**myserver.crt** (自己署名証明書) および **myserver.key** (秘密キー) という 2 つのファイルが、**serverauth.cnf** の設定に基づいて作成されます。
 3. 次のコマンドを実行して証明書を .pfx ファイルにエクスポートします。
    
         openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
@@ -439,12 +439,16 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
    
     ![SSL バインドのイメージを挿入](./media/web-sites-configure-ssl-certificate/sslbindings.png)
    
-       •    IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional          method of associating SSL certificates with a web server.
-       •    SNI based SSL is an extension to SSL and **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** article on Wikipedia.
+    > [!NOTE] 
+    > **IP ベースの SSL** は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。 これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。 これは SSL 証明書と Web サーバーを関連付ける従来の方式です。  
+    >
+    > **SNI ベースの SSL** は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。 最新のブラウザー (Internet Explorer、Chrome、Firefox、Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。 SNI について詳しくは、Wikipedia の **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事をご覧ください。
+    > 
+
 9. 変更を保存して SSL を有効にするには、 **[Add Binding (バインドの追加)]** をクリックします。
 
 ## <a name="step-3-change-your-domain-name-mapping-ip-based-ssl-only"></a>手順 3. ドメイン名マッピングの変更 (IP ベースの SSL のみ)
-**SNI SSL** バインドを使用する場合にのみ、このセクションをスキップしてください。 アプリに割り当てられている既存の共有 IP アドレスで複数の **SNI SSL** バインドを使用できます。 ただし、**IP ベースの SSL** バインドを作成した場合、App Service はバインドのための専用 IP アドレスを作成します (**IP ベースの SSL** で必要なため)。 専用 IP アドレスは&1; つだけ作成できるので、 **IP ベースの SSL** バインドも&1; つだけ追加できます。
+**SNI SSL** バインドを使用する場合にのみ、このセクションをスキップしてください。 アプリに割り当てられている既存の共有 IP アドレスで複数の **SNI SSL** バインドを使用できます。 ただし、**IP ベースの SSL** バインドを作成した場合、App Service はバインドのための専用 IP アドレスを作成します (**IP ベースの SSL** で必要なため)。 専用 IP アドレスは 1 つだけ作成できるので、 **IP ベースの SSL** バインドも 1 つだけ追加できます。
 
 この専用 IP アドレスのために、次の場合はアプリの追加構成が必要です。
 
@@ -454,7 +458,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
      
       ![Virtual IP address](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
   2. [カスタム ドメイン名の A レコードをこの新しい IP アドレスにマッピングし直します](web-sites-custom-domain-name.md#a)。
-* 既に&1; つ以上の **SNI SSL** バインドがアプリに存在し、**IP ベースの SSL** バインドを追加した場合。 
+* 既に 1 つ以上の **SNI SSL** バインドがアプリに存在し、**IP ベースの SSL** バインドを追加した場合。 
   バインドが完了すると、*&lt;アプリ名>*.azurewebsites.net ドメイン名は新しい IP アドレスを参照するようになります。 
   そのため、既存の [CNAME マッピング](web-sites-custom-domain-name.md#cname) (カスタム ドメインから *&lt;アプリ名>*.azurewebsites.net へのマッピング) は、**SNI SSL** で保護されているものも含めて、**IP ベースの SSL** 専用に作成された新しいアドレスでトラフィックを受信します。 このシナリオでは、次の手順に従って、 **SNI SSL** トラフィックを元の共有 IP アドレスに送り返す必要があります。
   

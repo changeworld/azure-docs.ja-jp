@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: f5f21fa9a0265258b065a844ffd002749c4dee03
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9d3029817cae6570ff8871fbcb068250544595d7
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -127,7 +127,7 @@ Azure Active Directory 管理者アカウントを利用することもできま
 
 - SQL Data Warehouse では、リソース クラスと呼ばれる事前定義されたデータベース ロールを使用して、さまざまな量のメモリ、CPU リソース、および同時実行スロットをユーザーに割り当てます。 各ユーザーは、小規模、中規模、大規模、または超大規模なリソース クラスに属することができます。 ユーザーのリソース クラスにより、ユーザーがクエリを実行して操作を読み込むために使用できるリソースが決定されます。
 
-- データ圧縮を最適化するためには、ユーザーは、通常、大規模または超大規模なリソースを割り当てて読み込む必要があります。 リソース クラスの詳細については、[こちら](./sql-data-warehouse-develop-concurrency.md#resource-classes)を参照してください。
+- データ圧縮を最適化するためには、ユーザーは場合によっては、大規模または超大規模なリソースを割り当てて読み込む必要があります。 リソース クラスの詳細については、[こちら](./sql-data-warehouse-develop-concurrency.md#resource-classes)を参照してください。
 
 ### <a name="create-an-account-that-can-control-a-database"></a>データベースを制御できるアカウントの作成
 

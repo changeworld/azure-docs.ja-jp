@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: e5362b32a0f93433c77c27a6fc116960c45404f9
-ms.openlocfilehash: 8e4068428b814265140b76905bc7f90d9e88f94b
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: eb8b5b66b1cdb7bc7e588292ec714c30e3607bf6
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-vm-with-wordpress"></a>WordPress がインストールされた VM の作成
 
-このスクリプトでは、仮想マシンを作成してから、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して WordPress をインストールします。 このスクリプトを実行すると、`http://<public IP of VM>/wordpress` にある WordPress 構成サイトにアクセスできるようになります。 
+このスクリプトでは、仮想マシンを作成してから、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して WordPress をインストールします。 スクリプトを実行すると、`http://<public IP of VM>/wordpress` にある WordPress 構成サイトにアクセスできるようになります。 
+
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
-
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup

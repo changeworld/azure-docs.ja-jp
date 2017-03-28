@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager による Traffic Manager のサポート | Microsoft Docs"
+title: "PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs"
 description: "Azure Resource Manager での Traffic Manager に対する Powershell の使用"
 services: traffic-manager
 documentationcenter: na
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: f97ba8ebc940d4b3eec5d2610503f8a86af8dbe2
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: c2fb44817f168eee8303d0c07473f043ae30d350
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="azure-resource-manager-support-for-azure-traffic-manager"></a>Azure Resource Manager による Azure Traffic Manager のサポート
+# <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
 Azure Resource Manager は、Azure のサービスの優先管理インターフェイスです。 Azure Traffic Manager ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できます。
 
@@ -30,23 +31,6 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 各 Traffic Manager プロファイルは、'TrafficManagerProfiles' 型のリソースで表されます。 REST API レベルでの各プロファイルの URI は次のとおりです。
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
-
-## <a name="comparison-with-the-azure-traffic-manager-classic-api"></a>Azure Traffic Manager クラシック API との比較
-
-Azure Resource Manager による Traffic Manager のサポートでは、クラシック デプロイ モデルとは異なる用語を使用します。 次の表は、Resource Manager とクラシック モデルの用語の違いを示しています。
-
-| Resource Manager の用語 | クラシックの用語 |
-| --- | --- |
-| トラフィック ルーティング方法 |負荷分散方法 |
-| 優先順位方式 |フェールオーバー方式 |
-| 重み付け方式 |ラウンド ロビン方式 |
-| パフォーマンス方式 |パフォーマンス方式 |
-
-よくある誤解を減らし、より分かりやすくするために、お客様からのフィードバックに従って用語を変更しました。 機能に違いはありません。
-
-## <a name="limitations"></a>制限事項
-
-Web アプリの 'AzureEndpoints' タイプのエンドポイントを参照するとき、Traffic Manager エンドポイントは既定の (運用) [Web アプリ スロット](../app-service-web/web-sites-staged-publishing.md)だけを参照できます。 カスタム スロットはサポートされていません。 回避策として、カスタム スロットは "ExternalEndpoints" タイプを使用して構成できます。
 
 ## <a name="setting-up-azure-powershell"></a>Azure PowerShell の設定
 
@@ -127,11 +111,10 @@ Traffic Manager エンドポイントには、次の 3 種類があります。
 
 ## <a name="adding-azure-endpoints"></a>Azure エンドポイントの追加
 
-Azure エンドポイントは、Azure でホストされるサービスを参照します。 3 種類の Azure エンドポイントがサポートされています。
+Azure エンドポイントは、Azure でホストされるサービスを参照します。 2 種類の Azure エンドポイントがサポートされています。
 
 1. Azure Web Apps 
-2. "クラシック" クラウド サービス (PaaS サービスまたは IaaS 仮想マシンを含めることができます)
-3. Azure PublicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。 PublicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
+2. Azure PublicIpAddress リソース (ロード バランサーまたは仮想マシン NIC に接続できます)。 PublicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
 
 いずれの場合も、次のことが当てはまります。
 
@@ -152,17 +135,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-
-### <a name="example-2-adding-a-classic-cloud-service-endpoint-using-new-azurermtrafficmanagerendpoint"></a>例 2: `New-AzureRmTrafficManagerEndpoint` を使用して 'クラシック' クラウド サービス エンドポイントを追加する
-
-この例では、"クラシック" クラウド サービス エンドポイントが Traffic Manager プロファイルに追加されます。 この例では、プロファイル オブジェクトを渡すのではなく、プロファイル名とリソース グループ名を使用してプロファイルを指定しています。 両方の方法がサポートされています。
-
-```powershell
-$cloudService = Get-AzureRmResource -ResourceName MyCloudService -ResourceType "Microsoft.ClassicCompute/domainNames" -ResourceGroupName MyCloudService
-New-AzureRmTrafficManagerEndpoint -Name MyCloudServiceEndpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type AzureEndpoints -TargetResourceId $cloudService.Id -EndpointStatus Enabled
-```
-
-### <a name="example-3-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>例 3: `New-AzureRmTrafficManagerEndpoint` を使用して、publicIpAddress エンドポイントを追加する
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>例 2: `New-AzureRmTrafficManagerEndpoint` を使用して、publicIpAddress エンドポイントを追加する
 
 この例では、パブリック IP アドレス リソースが Traffic Manager プロファイルに追加されます。 パブリック IP アドレスでは DNS 名が構成されている必要があります。また、パブリック IP アドレスは、VM の NIC、またはロード バランサーにバインドすることができます。
 
@@ -339,9 +312,4 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 [Traffic Manager の監視](traffic-manager-monitoring.md)
 
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

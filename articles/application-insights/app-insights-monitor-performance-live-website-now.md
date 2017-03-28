@@ -14,15 +14,16 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 917f54248f4c9277caa3cf09d92f78593a901e89
-ms.openlocfilehash: fd76f40f5a34b6adf9c6ec3bded604d59b6baa72
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: a0340359dff470551a08a8213f3a704f15f78794
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
 
 
-Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーにアプリがホストされている場合は、Status Monitor をインストールします。アプリが Azure Web アプリであったり、Azure VM で実行されていたりする場合は、Application Insights 拡張機能をインストールできます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
+Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 オンプレミスの IIS サーバーでアプリがホストされている場合は、Status Monitor をインストールします。 アプリが Azure Web アプリの場合や Azure VM で実行されている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます  ([ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。[Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -38,7 +39,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 | --- | --- | --- |
 | 要求と例外 |はい |はい |
 | [より詳細な例外](app-insights-asp-net-exceptions.md) | |はい |
-| [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細。結果コード、SQL コマンド テキスト、HTTP 動詞|
+| [依存関係の診断](app-insights-asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
 | [システム パフォーマンス カウンター](app-insights-performance-counters.md) |はい |はい |
 | [カスタム テレメトリの API][api] |はい | |
 | [トレース ログ統合](app-insights-asp-net-trace-logs.md) |はい | |
@@ -64,7 +65,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 アプリが IIS サーバーでホストされている場合は、Status Monitor を使用して Application Insights を有効にします。
 
 1. IIS Web サーバーで、管理者の資格情報を使用してサインインします。
-2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
+2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
 3. Status Monitor で、監視するインストール済みの Web アプリケーションまたは Web サイトを選択します。 Azure の資格情報でサインインします。
 
     Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。) 
@@ -89,7 +90,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 1. ApplicationInsights.config を編集した場合は、アプリを再発行する前に ApplicationInsights.config のコピーを作成します。
 2. アプリを再発行します。
-3. Application Insights の監視を再度有効にします。 (Azure Web アプリのコントロール パネルか、IIS ホストの Status Monitor のいずれかを適切に使用します。)
+3. Application Insights の監視を再度有効にします。 (Azure Web アプリのコントロール パネルまたは IIS ホストの Status Monitor のいずれか適切な方法を使用します)。
 4. .config ファイルで実行した編集を再開します。
 
 
@@ -97,7 +98,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 ### <a name="cant-connect-no-telemetry"></a>接続できない テレメトリが見つかりませんか?
 
-* Status Monitor が動作するように、サーバーのファイアウォールで [いくつかの送信ポート](app-insights-ip-addresses.md#outgoing-ports) を開く必要があります。
+* Status Monitor が動作するように、サーバーのファイアウォールで、[必要ないくつかの送信ポート](app-insights-ip-addresses.md#outgoing-ports)を開きます。
 
 * Status Monitor を開き、左ウィンドウ枠でアプリケーションを選択します。 「通知の構成」セクションに、このアプリケーションの診断メッセージがあるかどうかを確認します。
 
@@ -105,7 +106,7 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 * サーバーに「権限が不十分」であるという内容のメッセージが表示される場合、次を実行してください。
   * IIS マネージャーで、アプリケーション プールを選択し、**[詳細設定]** を開きます。**[プロセス モデル]** に表示されている ID をメモします。
   * コンピューターの管理コントロール パネルで、この ID をパフォーマンス モニター ユーザー グループに追加します。
-* MMA/SCOM がサーバーにインストールされている場合、一部のバージョンで競合が発生することがあります。 SCOM と Status Monitor の両方をアンインストールし、最新バージョンを再度インストールしてください。
+* MMA/SCOM (Systems Center Operations Manager) がサーバーにインストールされている場合、一部のバージョンで競合が発生することがあります。 SCOM と Status Monitor の両方をアンインストールし、最新バージョンを再度インストールしてください。
 * [トラブルシューティング][qna]に関するページを参照してください。
 
 ## <a name="system-requirements"></a>システム要件
@@ -150,7 +151,7 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 * `-InstrumentationKey` 結果を表示する Application Insights リソースの ikey。
 * このコマンドレットが作用するのは、まだインストルメント化されていないアプリ (SdkState==NotInstrumented) だけです。
 
-    SDK をコードに追加することによってビルド時に、または過去にこのコマンドレットを使用して実行時に既にインストルメント化されているアプリには作用しません。
+    このコマンドレットは、既にインストルメント化されたアプリには作用しません。 SDK をコードに追加することによってビルド時にインストルメント化されたアプリか、過去にこのコマンドレットを使用したことによって実行時にインストルメント化されたアプリかは問題ではありません。
 
     アプリをインストルメント化するときに使用される SDK バージョンは、このサーバーに最近ダウンロードされたバージョンとなります。
 
@@ -183,7 +184,11 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 * 最新の Application Insights SDK をサーバーにダウンロードします。
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>次のステップ
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+## <a name="next"></a>次のステップ
 
 テレメトリの表示:
 
@@ -208,9 +213,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -59,7 +59,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
     ![key][key]
 2. パスワードは、セットアップ時に選択したものです。 変更するには、**[パスワードの変更]** または **[パスワードのリセット]** を選択します。
 
-電子メール配信を管理するには、**[管理]** ボタンをクリックします。 これで、[SendGrid のダッシュボード][SendGrid dashboard]にリダイレクトされます。
+電子メール配信を管理するには、**[管理]** ボタンをクリックします。 これで、SendGrid のダッシュボードにリダイレクトされます。
 
     ![manage][manage]
 
@@ -78,7 +78,6 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
 [key]: ./media/sendgrid-sign-up/key.png
-[SendGrid dashboard]: ./media/sendgrid-sign-up/dashboard.png
 
 <!--Links-->
 
@@ -88,4 +87,3 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html
 [Email API Overview]: https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
-

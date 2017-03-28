@@ -1,5 +1,5 @@
 ---
-title: "Azure クラシック ポータルにおけるロールベースのアクセス制御 | Microsoft Docs"
+title: "Azure Portal におけるロールベースのアクセス制御 | Microsoft Docs"
 description: "Azure ポータルでのロールベースのアクセス制御を使用したアクセス管理の基本について説明します。 ロールの割り当てを使用して、リソースに対するアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 02/17/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: bb894c38de63d0eac4066eeabaed7ba791021cc4
-ms.openlocfilehash: 05da6cd034a387b54eff0790996662223e4b8bab
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c3e3e407eb6a05b208863443bb8ccf3cba701b23
+ms.lasthandoff: 03/22/2017
 
 
 ---

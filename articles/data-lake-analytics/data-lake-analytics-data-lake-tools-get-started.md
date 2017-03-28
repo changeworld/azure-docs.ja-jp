@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/08/2016
-ms.author: edmaca
+ms.date: 03/17/2017
+ms.author: edmaca, yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 2fa2d26b996435c18c2f88396991bf7210350553
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f5a27eba14560a56ad5020daf7741f37ac2cc6f2
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -130,7 +130,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
        カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。 現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
    * **列の*展開**
 
-       * の右側をクリックすると、" ** の下に青い線 *" が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
+       * の右側をクリックすると、" ** の下に青い線*" が表示されます。 青い下線にマウス カーソルを合わせて、下矢印をクリックします。
        ![Data Lake Visual Studio ツールでの * の展開](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
        **[列の展開]**をクリックすると、* が列名に置き換えられます。
@@ -197,71 +197,11 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の�
 Data Lake Tools for Visual Studio にはユーザーが選択できるカラー オーバーレイがあり、各ステージの進行状況、データ I/O、実行時間、I/O スループットがジョブ ビューに表示されます。 これにより、ジョブのプロパティの潜在的な問題と分布が直接かつ直観的にわかります。 ドロップダウン リストから表示するデータ ソースを選択できます。  
 
 ## <a name="run-u-sql-locally"></a>U-SQL のローカル実行
-Visual Studio で U-SQL をローカル実行し、次のことができます。
 
-* C# アセンブリと共に U-SQL スクリプトをローカル実行します。
-* ローカルで C# アセンブリをデバッグします。
-* Azure Data Lake Analytics サービスの場合と同様に、サーバー エクスプローラーでローカルのデータベース、アセンブリ、スキーマ、テーブルの作成、削除、表示を実行します。
+Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この&2; つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。 
 
-*ローカル* アカウントが Visual Studio に表示されます。インストーラーにより、*C:\LocalRunRoot* に *DataRoot* フォルダーが作成されます。 DataRoot フォルダーが使用されます。
+* [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
 
-* テーブル、DB、TVF など、メタデータを保存します。
-* 特定のスクリプトの場合: 入力/出力パスで相対パスが参照される場合、DataRoot が検索されます (入力の場合は、スクリプトのパスも)。
-* アセンブリを登録し、相対パスを利用しようとすると、DataRoot フォルダーは参照されません (詳細については、「ローカル実行時にアセンブリを使用する」を参照してください)。
-
-次のビデオでは、U-SQL ローカル実行機能を説明しています。
-
-> [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/USQL-LocalRun/player]
->
->
-
-### <a name="known-issues-and-limitations"></a>既知の問題と制限
-* ローカル アカウントに対し、サーバー エクスプローラーでテーブル/DB などを作成できません。
-* 相対パスが参照されている場合:
-
-  * スクリプト入力で (EXTRACT * FROM “/path/abc”) - DataRoot パスとスクリプト パスの両方が検索されます。
-  * スクリプト出力で (OUTPUT TO “path/abc”): DataRoot パスが出力フォルダーとして使用されます。
-  * アセンブリ登録で (CREATE ASSEMBLY xyz FROM “/path/abc”): スクリプト パスが検索されます。DataRoot パスではありません。
-  * 登録された TVF/View または他のメタデータ エンティティで: DataRoot パスが検索されます。スクリプト パスではありません。
-
-    Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
-
-### <a name="test-u-sql-scripts-locally"></a>U-SQL スクリプトのローカル テスト
-U-SQL スクリプトの開発方法については、「[U-SQL スクリプトの開発](#develop-and-test-u-sql-scripts)」をご覧ください。 U-SQL スクリプトをローカルで作成し、実行するには、クラスター ドロップダウン リストで **[(ローカル)]** を選択し、**[送信]** をクリックします。 正しいデータを参照していることを確認してください。絶対パスを参照するか、DataRoot フォルダーの下にデータを配置します。
-
-![U-SQL Visual Studio プロジェクトのローカル送信](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-local-run.png)
-
-スクリプトを右クリックし、コンテキスト メニューの **[ローカル プラン実行]** をクリックするか、**CTRL + F5** キーを押してローカル実行をトリガーします。
-
-### <a name="use-assemblies-in-local-run"></a>ローカル実行でアセンブリを使用する
-カスタマイズされた C# ファイルを実行する方法は&2; つあります。
-
-* 分離コード ファイルにアセンブリを記述します。アセンブリは自動的に登録され、スクリプトが完了すると削除されます。
-* C# アセンブリ プロジェクトを作成し、下のようなスクリプトを利用し、ローカル アカウントに出力 dll を登録します。 パスは、DataRoot フォルダーではなく、スクリプトに相対となることに注意してください。
-
-![U-SQL ローカル実行でアセンブリを使用する](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-local-run-assembly.png)
-
-### <a name="debug-scripts-and-c-assemblies-locally"></a>スクリプトと C# アセンブリをローカルでデバッグする
-Azure Data Lake Analytics サービスに提出し、登録しなくても C# アセンブリをデバッグできます。 分離コード ファイルと参照 C# プロジェクトの両方にブレークポイントを設定できます。
-
-**分離コード ファイルのローカル コードをデバッグするには**
-
-1. 分離コード ファイルにブレークポイントを設定します。
-2. **F5** キーを押して、スクリプトをローカルでデバッグします。
-
-次の手順は、Visual Studio 2015 でのみ機能します。 以前の Visual Studio では、pdb ファイルを手動で追加する必要があります。
-
-**参照先の C# プロジェクトのローカル コードをデバッグするには**
-
-1. C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
-2. U-SQL ステートメントを使用して dll を登録します。
-
-    ```
-    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-    ```
-    
-3. C# コードにブレークポイントを設定します。
-4. **F5** キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。  
 
 ## <a name="see-also"></a>関連項目
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下をご覧ください。

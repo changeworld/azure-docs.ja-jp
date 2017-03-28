@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2017
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 13ef48ebe79571c7139e46f9510a5f8d2f504cb7
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ab0a0ecba9d9e930cbc0ec5d4b83e252d2e50f7b
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
-VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。 この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。 このドキュメントには、Azure VPN ゲートウェイに使用される IPsec/IKE パラメーターの一覧と、Azure VPN ゲートウェイに接続する検証済みの VPN デバイスの一覧が掲載されています。
+VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス VPN 接続を構成するには、VPN デバイスが必要です。 サイト間接続は、ハイブリッド ソリューションを作成するときに使用できるほか、オンプレミスのネットワークと仮想ネットワークとの間にセキュリティで保護された接続が必要な場合に使用できます。 この記事には、Azure VPN ゲートウェイに使用される IPsec/IKE パラメーターの一覧と、Azure VPN ゲートウェイに接続する検証済みの VPN デバイスの一覧が掲載されています。
 
 
 > [!IMPORTANT]
@@ -47,30 +47,31 @@ Microsoft では、デバイス ベンダーと協力して一連の標準的な
 
 VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
 
-| **ベンダー名** | **デバイス ファミリ** | **OS の最小バージョン** | **PolicyBased** | **RouteBased** |
-| --- | --- | --- | --- | --- |
-| Allied Telesis |AR シリーズ VPN ルーター |2.9.2 |近日対応予定 |互換性なし |
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall F シリーズ |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[構成の手順](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[構成の手順](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall X シリーズ |Barracuda Firewall 6.5 |[Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |互換性なし |
-| Brocade |Vyatta 5400 vRouter |仮想ルーター 6.6R3 GA |[構成の手順](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |互換性なし |
-| Check Point |セキュリティ ゲートウェイ |R77.30 |[構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco |ASA |8.3 |[Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |互換性なし |
-| Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Cisco のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
-| Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[統合の手順](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
-| Dell SonicWALL |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)<br>[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
-| F5 |BIG-IP シリーズ |12.0 |[構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成の手順](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.4.2 |[構成の手順](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |[構成の手順](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
-| Internet Initiative Japan (IIJ) |SEIL シリーズ |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[構成の手順](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |互換性なし |
-| Juniper |SRX |PolicyBased: JunOS 10.2<br>Routebased: JunOS 11.4 |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
-| Juniper |J シリーズ |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
-| Juniper |ISG |ScreenOS 6.3 |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
-| Juniper |SSG |ScreenOS 6.2 |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
-| Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |[Microsoft のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
-| Open Systems AG |Mission Control Security Gateway |該当なし |[インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
+|**ベンダー名**          |**デバイス ファミリ**     |**OS の最小バージョン** |**PolicyBased** |**RouteBased** |
+| ---                | ---                  | ---                   | ---            | ---           |
+| A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |互換性なし  |[構成ガイド](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
+| Allied Telesis     |AR シリーズ VPN ルーター |2.9.2                  |近日対応予定     |互換性なし  |
+| Barracuda Networks, Inc. |Barracuda NextGen Firewall F シリーズ |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[構成ガイド](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[構成ガイド](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
+| Barracuda Networks, Inc. |Barracuda NextGen Firewall X シリーズ |Barracuda Firewall 6.5 |[構成ガイド](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |互換性なし |
+| Brocade            |Vyatta 5400 vRouter   |仮想ルーター 6.6R3 GA|[構成ガイド](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |互換性なし |
+| Check Point |セキュリティ ゲートウェイ |R77.30 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| Cisco              |ASA       |8.3 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |互換性なし |
+| Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
+| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
+| Dell SonicWALL |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[SonicOS 6.2 の構成ガイド](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[SonicOS 5.9 の構成ガイド](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
+| Fortinet |FortiGate |FortiOS 5.4.2 |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
+| Internet Initiative Japan (IIJ) |SEIL シリーズ |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[構成ガイド](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |互換性なし |
+| Juniper |SRX |PolicyBased: JunOS 10.2<br>Routebased: JunOS 11.4 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
+| Juniper |J シリーズ |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
+| Juniper |ISG |ScreenOS 6.3 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
+| Juniper |SSG |ScreenOS 6.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
+| Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |[構成のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Open Systems AG |Mission Control Security Gateway |該当なし |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan |Openswan |2.6.32 |(近日対応予定) |互換性なし |
-| Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased: 6.1.5 以降<br>RouteBased: 7.1.4 |[構成の手順](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成の手順](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| WatchGuard |すべて |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成の手順](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成の手順](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased: 6.1.5 以降<br>RouteBased: 7.1.4 |[構成ガイド](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成ガイド](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
+| WatchGuard |すべて |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 (*) ISR 7200 シリーズのルーターは、PolicyBased の VPN だけをサポートしています。
 
@@ -118,14 +119,14 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
 | 認証方法 |事前共有キー     |事前共有キー     |
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
-| SA の有効期間           |28,800 秒     |10,800 秒     |
+| SA の有効期間           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE フェーズ 2 (クイック モード) のパラメーター
 | **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | IKE のバージョン                   |IKEv1          |IKEv2                                        |
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
-| SA の有効期間 (時間)            |3,600 秒  |3,600 秒                                |
+| SA の有効期間 (時間)            |3,600 秒  |27,000 秒                                |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
 | Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |

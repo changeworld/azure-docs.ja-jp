@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 05b642949205d7698fbcf791a5d2f06528ff239e
-ms.openlocfilehash: e827bddfa0bcc1c1e46d06c6856033e77859c7fb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: ae869be6ed9f304629498f416ffdda96252bdf9c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/01/2017
 * [実行時の Web アプリのインストルメント化](app-insights-monitor-performance-live-website-now.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
-## <a name="a-nameidea-step-1-add-the-application-insights-sdk"></a><a name="ide"></a>手順 1: Application Insights SDK を追加する
+## <a name="ide"></a>手順 1: Application Insights SDK を追加する
 
 ソリューション エクスプローラーで Web アプリのプロジェクトを右クリックし、**[追加]** を選択して、**[Application Insights Telemetry...]** または **[Application Insights の構成]** を選択します。
 
@@ -53,7 +53,7 @@ Application Insights の構成ページに進みます。
 5. 代わりに、単純にアプリに Application Insights SDK を追加することもできます。 この場合、デバッグ中に、Visual Studio でテレメトリを表示することができます。 この構成ページには後で戻ってくることができます。また、アプリがデプロイされ、[実行時のテレメトリが有効にされる](app-insights-monitor-performance-live-website-now.md)まで待つこともできます。
 
 
-## <a name="a-nameruna-step-2-run-your-app"></a><a name="run"></a>手順 2: アプリを実行する
+## <a name="run"></a>手順 2: アプリを実行する
 F5 キーを押して、アプリを実行します。 ある程度のテレメトリを生成するために、複数のページを開きます。
 
 Visual Studio で、ログに記録されたイベントの数が表示されます。
@@ -124,7 +124,7 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 >
 >
 
-## <a name="a-namelanda-what-does-the-add-application-insights-command-do"></a><a name="land"></a>Application Insights を追加するコマンドを実行するとどうなりますか?
+## <a name="land"></a>Application Insights を追加するコマンドを実行するとどうなりますか?
 Application Insights によって、アプリのテレメトリが (Azure でホストされている) Application Insights ポータルに送信されます。
 
 ![テレメトリの移動のダイアグラム](./media/app-insights-asp-net/01-scheme.png)
@@ -197,6 +197,10 @@ Web アプリに関する追加のテレメトリを取得するために、各 
 Visual Studio Team Services を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
 
 ![グラフのリリース注釈の例のスクリーンショット](./media/app-insights-asp-net/release-annotation.png)
+
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次のステップ
 **[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリ、診断検索、コードのドリル スルーを使用したデバッグについて説明しています。

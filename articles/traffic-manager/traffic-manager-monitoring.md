@@ -1,5 +1,5 @@
 ---
-title: "Traffic Manager エンドポイントの監視とフェールオーバー | Microsoft Docs"
+title: "Azure Traffic Manager エンドポイントの監視 | Microsoft Docs"
 description: "この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。"
 services: traffic-manager
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 03/16/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 69b94c93ad3e9c9745af8485766b4237cac0062c
-ms.openlocfilehash: 4df9f744c7dde9224157eca1f869c0c420036d76
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: cec4f541ebac6202a3880ec7338a9f0a0ac645b5
+ms.lasthandoff: 03/18/2017
 
 ---
 
-# <a name="traffic-manager-endpoint-monitoring-and-failover"></a>Traffic Manager エンドポイントの監視とフェールオーバー
+# <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
 Azure Traffic Manager には、エンドポイントの監視と自動フェールオーバーの機能が組み込まれています。 この機能を使用して、Azure リージョンの障害を含むエンドポイント障害に対する回復性を備えた高可用性アプリケーションを提供できます。
 
@@ -131,84 +132,15 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 失敗した正常性チェックのトラブルシューティングについての詳細については、「 [Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)」を参照してください。
 
-## <a name="faq"></a>FAQ
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Traffic Manager には Azure リージョンの障害に対する回復性がありますか。
-
-トラフィック マネージャーは、Azure での高可用性アプリケーションの配信の重要なコンポーネントです。
-高可用性を実現するには、Traffic Manager は非常に高いレベルの可用性を実現し、地域の障害に対応できる必要があります。
-
-仕様では、Traffic Manager のコンポーネントは、どの Azure リージョン全体の障害に対しても耐障害性を持っています。 この回復性は Traffic Manager のすべての構成要素、つまり、DNS ネーム サーバー、API、ストレージ層、エンドポイント監視サービスに適用されます。
-
-万一 Azure リージョン全体が停止した場合で、Traffic Manager は引き続き正常に機能すると予想されます。 複数の Azure リージョンにデプロイされたアプリケーションは、Traffic Manager を利用して、そのアプリケーションの利用可能なインスタンスにトラフィックを送ることができます。
-
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>リソース グループの場所の選択は Traffic Manager にどのような影響を与えますか。
-
-Traffic Manager は、1 つのグローバル サービスです。 いずれかのリージョンに限定されたものではありません。 リソース グループの場所をどこに選択しても、そのリソース グループにデプロイされる Traffic Manager プロファイルに違いはありません。
-
-Azure Resource Manager では、すべてのリソース グループに対して場所を指定することが求められます。これに基づいて、リソース グループにデプロイされたリソースの既定の場所が決定されます。 Traffic Manager プロファイルを作成するときには、プロファイルはリソース グループ内に作成されます。 Traffic Manager プロファイル自体の場所には、常に **グローバル** が使用され、リソース グループの既定値はオーバーライドされます。
-
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
-
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://msdn.microsoft.com/library/mt125941.aspx)、および [クロスプラットフォームの Azure CLI](../xplat-cli-install.md) を使用して取得することもできます。
-
-Azure では、過去のエンドポイントの正常性に関する履歴情報や、エンドポイントの正常性の変更に関してアラートを生成する機能は提供されません。
-
-### <a name="can-i-monitor-https-endpoints"></a>HTTPS エンドポイントを監視できますか。
-
-はい。 Traffic Manager は、HTTPS 経由のプローブをサポートしています。 監視構成でプロトコルとして **HTTPS** を構成します。
-
-Traffic Manager は、次のように証明書の検証を提供できません。
-
-* サーバー側証明書は検証されません。
-* SNI サーバー側証明書はサポートされていません。
-* クライアント証明書はサポートされていません。
-
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
-
-トラフィック マネージャーは、HTTP および HTTPS の正常性チェックにホスト ヘッダーを使用します。 Traffic Manager で使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイントのターゲットの名前です。 ホスト ヘッダーで使用される値を、ターゲットプロパティとは別に指定することはできません。
-
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>正常性チェックはどの IP アドレスから発信されますか。
-
-次の一覧には、Traffic Manager の正常性チェックの実行元になる IP アドレスが含まれています。 この一覧を使用して、正常性状態をチェックするためにこれらの IP アドレスからの受信接続がエンドポイントで許可されるように設定できます。
-
-* 40.68.30.66
-* 40.68.31.178
-* 137.135.80.149
-* 137.135.82.249
-* 23.96.236.252
-* 65.52.217.19
-* 40.87.147.10
-* 40.87.151.34
-* 13.75.124.254
-* 13.75.127.63
-* 52.172.155.168
-* 52.172.158.37
-* 104.215.91.84
-* 13.75.153.124
-* 13.84.222.37
-* 23.101.191.199
-* 23.96.213.12
-* 137.135.46.163
-* 137.135.47.215
-* 191.232.208.52
-* 191.232.214.62
-* 13.75.152.253
-* 104.41.187.209
-* 104.41.190.203
 
 ## <a name="next-steps"></a>次のステップ
 
- [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
+[Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
 
 Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 
- [Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
+[Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)
 
 [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md) を行う。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

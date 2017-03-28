@@ -4,19 +4,19 @@ description: "Application Insights で Web テストを設定します。 Web �
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 153a97154faf65598141f321bcd33c4503fa30b0
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -34,7 +34,7 @@ Web テストには次の&2; 種類があります。
 
 アプリケーション リソースごとに最大 10 個の Web テストを作成できます。
 
-## <a name="a-namecreatea1-create-a-resource-for-your-test-reports"></a><a name="create"></a>1.テスト レポートのリソースを作成する
+## <a name="create"></a>1.テスト レポートのリソースを作成する
 このアプリケーションに対する [Application Insights リソースの設定][start]が既に終わっていて、同じ場所で可用性レポートを表示する場合は、この手順をスキップします。
 
 [Microsoft Azure](http://azure.com) にサインアップして、[Azure Portal](https://portal.azure.com) に移動し、Application Insights のリソースを作成します。
@@ -44,7 +44,7 @@ Web テストには次の&2; 種類があります。
 
 **[すべてのリソース]** をクリックして新しいリソースの概要ブレードを開きます。
 
-## <a name="a-namesetupa2-create-a-url-ping-test"></a><a name="setup"></a>2.URL の Ping テストを作成する
+## <a name="setup"></a>2.URL の Ping テストを作成する
 Application Insights のリソースで、可用性のタイルを見つけます。 これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
 ![少なくとも自分の Web サイトの URL を入力
@@ -69,7 +69,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 ### <a name="test-more-urls"></a>他の URL のテスト
 さらにテストを追加します。 たとえば、ホーム ページをテストするのに加えて、検索用の URL をテストしてデータベースが稼働していることを確認できます。
 
-## <a name="a-namemonitora3-see-your-web-test-results"></a><a name="monitor"></a>3.Web テストの結果を確認する
+## <a name="monitor"></a>3.Web テストの結果を確認する
 1、2 分後、結果が Web テスト ブレードに表示されます。
 
 ![ホーム ブレード上の概要結果
@@ -79,7 +79,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 これらのグラフでは、このアプリケーションのすべての Web テストの結果が結合されます。
 
-## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>エラーが発生する場合
+## <a name="failures"></a>エラーが発生する場合
 赤い点をクリックします。
 
 ![赤い点をクリックします](./media/app-insights-monitor-web-app-availability/open-instance.png)
@@ -104,7 +104,7 @@ URL の順序に関連するシナリオを監視することができます。 
 > 複数ステップ Web テストは課金対象です。 [価格の詳細](http://azure.microsoft.com/pricing/details/application-insights/)のページをご覧ください。
 > 
 
-複数手順のテストを作成するには、Visual Studio を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。 Application Insights は周期的にそのシナリオを再生し、応答を確認します。
+複数手順のテストを作成するには、Visual Studio Enterprise を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。 Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
 コード化された機能をテストで使用できないことに注意してください。シナリオの手順は、.webtest ファイルにスクリプトとして含まれる必要があります。
 
@@ -113,7 +113,10 @@ Web セッションを記録するには、Visual Studio Enterprise を使用し
 
 1. Web パフォーマンス テストのプロジェクトを作成します。
 
-    ![Visual Studio で、Web パフォーマンス テンプレートとロード テスト テンプレートからプロジェクトを作成します。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![Visual Studio Enterprise Edition で、"Web パフォーマンスとロード テスト プロジェクト" テンプレートからプロジェクトを作成します。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+
+ * "*"Web パフォーマンスとロード テスト プロジェクト" テンプレートが表示されない場合*" は、 Visual Studio Enterprise を閉じます。 **Visual Studio インストーラー**を開き、Visual Studio Enterprise のインストールを変更します。 **[個別のコンポーネント]** で **[Web パフォーマンスとロード テスト ツール]** を選択します。
+
 2. .webtest ファイルを開き、記録を開始します。
 
     ![.webtest ファイルを開き、[記録] をクリックします。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-start.png)
@@ -211,7 +214,7 @@ Web テストが実際のクライアントであること、つまり、独自�
 * トークンをパラメーター化し、トークンが認証システムから返されたときに、パラメーターを設定し、サイトへのクエリでそれを使用します
   (Visual Studio は、テストのパラメーター化を試みますが、トークンを正しくパラメーター化しません)。
 
-## <a name="a-nameedita-edit-or-disable-a-test"></a><a name="edit"></a> テストの編集または無効化
+## <a name="edit"></a> テストの編集または無効化
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
 ![Web テストの編集または無効化
@@ -261,12 +264,12 @@ Web サイトに対してロード テストを実行できます。 可用性�
 
     申し訳ありませんが、それはサポートされていません。
 
-## <a name="a-namevideoavideo"></a><a name="video"></a>ビデオ
+## <a name="video"></a>ビデオ
 > [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Monitoring-Availability-with-Application-Insights/player]
 >
 >
 
-## <a name="a-namenextanext-steps"></a><a name="next"></a>次のステップ
+## <a name="next"></a>次のステップ
 [診断ログを検索する][diagnostic]
 
 [Troubleshooting][qna]

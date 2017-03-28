@@ -1,7 +1,7 @@
 ---
 
 title: "Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法 | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションを使用すると、管理者はパートナー組織のユーザーを Azure AD に追加して、会社のアプリケーションにアクセスできるようにすることができます"
+description: "管理者は、Azure Active Directory B2B コラボレーションを使用してパートナー組織から Azure AD にゲスト ユーザーを追加できます。"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -14,12 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: 830cc28cdd5ca523c43cf1fa9cdff5131727d71f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -52,7 +52,7 @@ B2B コラボレーション ユーザーのプロファイル ページに移�
 
 ![招待の再送信](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
 
-> ![注] サインインしたユーザーからの招待が再送信され、元の招待が特定のアプリまたはグループ宛てであった場合でも、ユーザーがディレクトリに招待されます。
+> ![メモ]招待を再送信する場合、元の招待が特定のアプリまたはグループに送信された場合でも、サインインしたユーザーから個々のユーザーに招待が送信されます。
 
 
 ## <a name="related-articles"></a>関連記事

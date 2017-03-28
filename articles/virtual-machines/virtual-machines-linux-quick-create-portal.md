@@ -10,23 +10,33 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/10/2017
+ms.date: 03/21/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 348407b57bbb3329d7d27a6f38623e052aecc58b
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: bcfd830a5e2f39f36460990cae7e84b04d9a5fbb
+ms.lasthandoff: 03/22/2017
 
 ---
 
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
 
-Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで VM と関連するすべての Azure リソースを作成および構成できます。
+Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、Azure Portal を使用して仮想マシンを作成する方法について説明しています。 
 
-開始する前に、秘密および公開 SSH キーを用意しておく必要があります。 Azure 用 SSH キーの作成の詳細については、[Azure 用 SSH キーの作成](./virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+
+## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
+
+このクイック スタートの作業には SSH キー ペアが必要です。 既存の SSH キー ペアがある場合は、この手順はスキップしてかまいません。 Windows コンピューターを使っている場合は、[こちら](./virtual-machines-linux-ssh-from-windows.md)のインストラクションに従ってください。 
+
+Bash シェルから次のコマンドを実行して画面の指示に従います。 コマンド出力に公開キー ファイルの名前が表示されます。 このファイルの内容は、仮想マシンを作成するときに必要となります。
+
+```bash
+ssh-keygen -t rsa -b 2048
+```
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン 
 
@@ -34,33 +44,33 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-2. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 
-3. **[新規]** ブレードの **[Compute]** を選択し、**[Compute]** ブレードの **[Ubuntu Server 16.04 LTS]** を選択して、**[作成]** ボタンをクリックします。
+2. **[新規]** ブレードの **[Compute]** を選択し、**[Compute]** ブレードの **[Ubuntu Server 16.04 LTS]** を選択して、**[作成]** ボタンをクリックします。
 
-4. 仮想マシンの **[基本]** フォームに入力します。 **[認証の種類]** には SSH をお勧めします。 **[SSH 公開キー]** にキーを貼り付けるときに、先頭と末尾の空白は削除するように注意してください。 **[リソース グループ]** では、新しいグループを作成します。 リソース グループとは、Azure リソースの作成と一括管理に使用する論理コンテナーです。 完了したら、**[OK]** をクリックします。
+3. 仮想マシンの **[基本]** フォームに入力します。 **[Authentication Type]** として **[SSH]** を選択します。 **[SSH 公開キー]** にキーを貼り付けるときに、先頭と末尾の空白は削除するように注意してください。 **[リソース グループ]** では、新しいグループを作成します。 リソース グループとは、Azure リソースの作成と一括管理に使用する論理コンテナーです。 完了したら、**[OK]** をクリックします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/virtual-machine-quick-start/create-vm-portal-basic-blade.png)  
 
-5. VM のサイズを選択し、**[選択]** をクリックします。 
+4. VM のサイズを選択し、**[選択]** をクリックします。 
 
     ![ポータルのブレードで VM のサイズを選択する](./media/virtual-machine-quick-start/create-vm-portal-size-blade.png)
 
-6. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
+5. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
 
-7. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
+6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
+
+7. デプロイの状態を監視するには、仮想マシンをクリックします。 VM は、Azure Portal ダッシュボードに表示されます。または、左側のメニューで **[Virtual Machines]** を選択すると表示されます。 VM が作成されると、状態は **[デプロイ中]** から **[実行中]** に変わります。
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
 デプロイが完了したら、仮想マシンとの SSH 接続を作成します。
 
-1. 仮想マシンをクリックします。 VM は、Azure Portal のホーム画面に表示されます。または、左側のメニューで **[Virtual Machines]** を選択すると表示されます。
-
-2. **[接続]** をクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
+1. 仮想マシンのブレードで、**[接続]** ボタンをクリックします。 仮想マシンへの接続に使用できる SSH 接続文字列が表示されます。
 
     ![ポータル 9](./media/virtual-machine-quick-start/portal-quick-start-9.png) 
 
-3. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure Portal からコピーしたものに置き換えます。
+2. 次のコマンドを実行して、SSH セッションを作成します。 接続文字列を、Azure Portal からコピーしたものに置き換えます。
 
 ```bash 
 ssh <replace with IP address>

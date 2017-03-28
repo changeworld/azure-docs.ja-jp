@@ -18,9 +18,9 @@ ms.date: 03/03/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 682ebb212f9056f3704a6de5dde8d3a35681108f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 3. **[デプロイ履歴]** ブレードで、名前が **microsoft-acs** で始まり、その後にデプロイ日が付加されているデプロイをクリックします。 例: microsoft-acs-201701310000  
 
-4. **[Summary (サマリー)]** ページの **[出力]** に、クラスター リンクがいくつか<provided></provided>。 **SSHMaster0** は、コンテナー サービス クラスター内の&1; つ目のマスターに対する SSH 接続文字列です。 
+4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の&1; つ目のマスターに対する SSH 接続文字列です。 
 
 前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 次に例を示します。
 
@@ -122,3 +122,4 @@ ssh userName@masterFQDN –A –p 22
 
 * Azure Container Service の[概要を確認する](container-service-intro.md)。
 * [ポータル](container-service-deployment.md)または [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。
+

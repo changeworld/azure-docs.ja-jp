@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 710307b01fe64852771c071c070f5fcee59c9579
-ms.openlocfilehash: 494dbaf23de22efa79cfe65aa22bb7c948b3da80
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 1ada403a502972ee0d8cd96af2d62d923d43f6cf
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -30,13 +30,13 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 - 自動的なスケーラビリティのサポート。 Azure では、サブスクリプションあたり最大 10,000 個のディスクをサポートするように、ディスクが作成され、基になるストレージが管理されます。
 - 可用性セットでの信頼性が向上します。 Azure により、VM ディスクが可用性セット内で相互に自動的に分離されます。
-- アクセス制御が向上します。 Managed Disks は、[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) によって制御されるさまざまな操作を公開します。 
+- アクセス制御が向上します。 Managed Disks は、[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) によって制御されるさまざまな操作を公開します。
 
-Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../storage/storage-managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。 
+Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../storage/storage-managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。
 
 [az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
 
-- [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに[仮想ハード ディスク (VHD) をコピー](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks)します。
+- [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに仮想ハード ディスク (VHD) をコピーします。
 - Managed Disks を使う VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。
 - [az vm disk attach](/cli/azure/vm/disk#attach) を使用して、コピーした VHD を管理ディスクで実行中の VM に接続します。
 
@@ -62,7 +62,7 @@ az group create --location westus --name myResourceGroup
 az vm create \
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -76,7 +76,7 @@ az vm create \
 --storage-sku Premium_LRS
 --image credativ:Debian:8:latest \
 --admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub 
+--ssh-key-value ~/.ssh/id_rsa.pub
 --public-ip-address-dns-name manageddisks \
 --resource-group myResourceGroup \
 --location westus \
@@ -125,7 +125,7 @@ Premium Storage の機能
 
 * Premium Storage ディスク: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。
 * Premium ページ BLOB: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使われます。
-* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを&3; つ保持します。
+* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。
 * [Premium Storage](../storage/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Premium Storage でサポートされる VM
@@ -176,16 +176,16 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 * 読み取りアクセス geo 冗長ストレージ (RA-GRS)
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
-ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が&3; 回レプリケートされます。 これらの&3; つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
+ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が 3 回レプリケートされます。 これらの 3 つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
 
 ### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-ゾーン冗長ストレージ (ZRS) では、1 つまたは&2; つのリージョン内の&2; つから&3; つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
+ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の 2 つから 3 つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
 
 ### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
 geo 冗長ストレージ (GRS) では、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータがレプリケートされます。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
 
 ### <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
-読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する&2; つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
+読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する 2 つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
 
 Azure ストレージの冗長性の詳細については、以下をご覧ください。
 
@@ -246,5 +246,4 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 ## <a name="storage-limits"></a>ストレージの制限
 * [ストレージ Service の制限](../azure-subscription-service-limits.md#storage-limits)
-
 

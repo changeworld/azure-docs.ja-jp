@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
-ms.openlocfilehash: 23a65319fe1825e2ba51f2fd5a2d0b65ca499472
-ms.lasthandoff: 02/06/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 3e12b8c988b8971574352e976ad88e2e47f47660
+ms.lasthandoff: 03/16/2017
 
 
 ---
