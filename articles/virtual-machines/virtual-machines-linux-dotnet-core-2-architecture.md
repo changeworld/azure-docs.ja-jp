@@ -62,12 +62,12 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
     }
 ```
 
-デプロイすると、Azure Portal で仮想マシンのプロパティを確認できます。
+デプロイすると、Azure ポータルで仮想マシンのプロパティを確認できます。
 
 ![仮想マシン](./media/virtual-machines-linux-dotnet-core/vm.png)
 
-## <a name="storage-account"></a>ストレージ アカウント
-ストレージ アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、ストレージ アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが&1; つ含まれています。 
+## <a name="storage-account"></a>Storage アカウント
+Storage アカウントには、さまざまなストレージ オプションと機能があります。 Azure Virtual Machines に関しては、Storage アカウントは仮想マシンの仮想ハード ドライブと追加のデータ ディスクを保持します。 ミュージック ストア サンプルには、デプロイ内の各仮想マシンの仮想ハード ドライブを保持するストレージ アカウントが 1 つ含まれています。 
 
 Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [ストレージ アカウント](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L109)) をご覧ください。
 
@@ -88,7 +88,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 
 ストレージ アカウントは、Resource Manager テンプレートの仮想マシンの宣言内で仮想マシンと関連付けられます。 
 
-Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想マシンとストレージ アカウントの関連付け](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L341)) をご覧ください。
+Resource Manager テンプレート内の JSON サンプルを確認するには、こちらのリンク ( [仮想マシンと Storage アカウントの関連付け](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L341)) をご覧ください。
 
 ```json
 "osDisk": {
@@ -101,11 +101,11 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 }
 ```
 
-デプロイすると、Azure Portal でストレージ アカウントを確認できます。
+デプロイすると、Azure Portal で Storage アカウントを確認できます。
 
-![ストレージ アカウント](./media/virtual-machines-linux-dotnet-core/storacct.png)
+![Storage アカウント](./media/virtual-machines-linux-dotnet-core/storacct.png)
 
-ストレージ アカウントの BLOB コンテナーをクリックすると、テンプレートを使ってデプロイされた各仮想マシンの仮想ハード ドライブ ファイルを確認できます。
+Storage アカウントの BLOB コンテナーをクリックすると、テンプレートを使ってデプロイされた各仮想マシンの仮想ハード ドライブ ファイルを確認できます。
 
 ![Virtual Hard Drives](./media/virtual-machines-linux-dotnet-core/vhd.png)
 
@@ -149,7 +149,7 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 }
 ```
 
-Azure Portal では、仮想ネットワークは次の図のように表示されます。 テンプレートを使ってデプロイしたすべての仮想マシンが仮想ネットワークに接続されていることに注意してください。
+Azure ポータルでは、仮想ネットワークは次の図のように表示されます。 テンプレートを使ってデプロイしたすべての仮想マシンが仮想ネットワークに接続されていることに注意してください。
 
 ![仮想ネットワーク](./media/virtual-machines-linux-dotnet-core/vnet.png)
 
@@ -217,14 +217,14 @@ Resource Manager テンプレート内の JSON サンプルを確認するには
 }
 ```
 
-Azure Portal では、ネットワーク インターフェイスは次の図のように表示されます。 内部 IP アドレスと仮想マシンの関連付けは、ネットワーク インターフェイス リソースで確認できます。
+Azure ポータルでは、ネットワーク インターフェイスは次の図のように表示されます。 内部 IP アドレスと仮想マシンの関連付けは、ネットワーク インターフェイス リソースで確認できます。
 
 ![ネットワーク インターフェイス](./media/virtual-machines-linux-dotnet-core/nic.png)
 
 Azure Virtual Network について詳しくは、 [Azure Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページをご覧ください。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
-ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの&2; 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
+ミュージック ストア Web サイトをホストする仮想マシンのほかに、Azure SQL データベースもミュージック ストア データベースをホストするためにデプロイされます。 ここで Azure SQL Database を使う利点は、仮想マシンの 2 番目のセットが不要で、サービスにスケールと可用性が組み込まれていることです。
 
 Azure SQL データベースを追加するには、Visual Studio の新しいリソースの追加ウィザードを使うか、有効な JSON をテンプレートに挿入します。 SQL Server リソースには、SQL インスタンスの管理者権限が付与されているユーザーの名前とパスワードが含まれています。 また、SQL ファイアウォール リソースが追加されています。 既定では、Azure でホストされるアプリケーションは SQL インスタンスに接続できます。 SQL Server Management Studio などの外部アプリケーションが SQL インスタンスに接続できるようにするには、ファイアウォールを構成する必要があります。 ミュージック ストア デモでは、既定の構成で問題ありません。 
 
