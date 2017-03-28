@@ -21,8 +21,8 @@ ms.openlocfilehash: 9cc4fcb68148ef64829fff6135449a3c0efb75d0
 
 ---
 # <a name="azure-and-linux-vm-network-overview"></a>Azure と Linux の VM ネットワークの概要
-## <a name="virtual-networks"></a>Virtual Networks
-Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をさらにサブネットに分割し、Azure IaaS 仮想マシン (VM) や クラウド サービス (PaaS ロール インスタンス) を起動できます。 また、Azure のいずれかの接続オプションを使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。 つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
+## <a name="virtual-networks"></a>Virtual Network
+Azure Virtual Network (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をさらにサブネットに分割し、Azure IaaS 仮想マシン (VM) や クラウド サービス (PaaS ロール インスタンス) を起動できます。 また、Azure のいずれかの接続オプションを使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。 つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
 
 * [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
@@ -36,14 +36,14 @@ Azure CLI を使用して VNet を作成するには、次のチュートリア�
 * [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 * [Azure CLI で NSG を作成する方法](../virtual-network/virtual-networks-create-nsg-arm-cli.md)
 
-## <a name="user-defined-routes"></a>ユーザー定義のルート
+## <a name="user-defined-routes"></a>ユーザー定義ルート
 Azure で仮想マシン (VM) を仮想ネットワーク (VNet) に追加すると、VM どうしがネットワークを介して自動的に通信できることがわかります。 VM が異なるサブネットにあったとしても、ゲートウェイを指定する必要はありません。 VM からパブリック インターネットへの通信も同様であり、Azure からユーザー独自のデータセンターにハイブリッド接続が存在する場合は、オンプレミスのネットワークへの通信でも同様です。
 
-* [ユーザー定義のルートおよび IP 転送とは](../virtual-network/virtual-networks-udr-overview.md)
+* [ユーザー定義ルートおよび IP 転送とは](../virtual-network/virtual-networks-udr-overview.md)
 * [Azure CLI で UDR を作成する](../virtual-network/virtual-network-create-udr-arm-cli.md)
 
 ## <a name="associating-a-fqdn-to-your-linux-vm"></a>Linux VM に FQDN を関連付ける
-Resource Manager デプロイ モデルを使用して Azure Portal で仮想マシン (VM) を作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。 この IP アドレスを使用して、VM にリモートでアクセスします。 ポータルの既定では完全修飾ドメイン名 (FQDN) が作成されませんが、VM の作成後に追加できます。
+Resource Manager デプロイ モデルを使用して Azure ポータルで仮想マシン (VM) を作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。 この IP アドレスを使用して、VM にリモートでアクセスします。 ポータルの既定では完全修飾ドメイン名 (FQDN) が作成されませんが、VM の作成後に追加できます。
 
 * [Azure ポータルでの完全修飾ドメイン名の作成](virtual-machines-linux-portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
