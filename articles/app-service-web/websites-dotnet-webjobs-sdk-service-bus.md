@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: e44199dec6de1e89545f3d122481aa81e97d75ac
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -155,7 +155,7 @@ Service Bus トピックにメッセージを受信したときに SDK が呼び
 * `MessageProcessor` 戦略パターンでは、キュー/トピックごとにプロセッサを指定できます。
 * メッセージ処理の同時実行が既定でサポートされています。 
 * `ServiceBusConfiguration.MessageOptions` を使用して、`OnMessageOptions` を簡単にカスタマイズできます。
-* `ServiceBusTriggerAttribute`/`ServiceBusAttribute` で、[AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) を指定できます (管理権限がない場合)。 
+* `ServiceBusTriggerAttribute`/`ServiceBusAttribute` で、[AccessRights](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/ServiceBus/Functions.cs#L71) を指定できます (管理権限がない場合)。 Azure Web ジョブは、管理 AccessRights がないと、存在しないキューやトピックを自動的にプロビジョニングできません。
 
 ## <a id="queues"></a>ストレージ キューのハウツー記事で紹介されている関連トピック
 Service Bus 以外の WebJobs SDK シナリオについては、「 [WebJobs SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください。 

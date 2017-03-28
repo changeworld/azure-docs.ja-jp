@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2B コラボレーション ユーザーの監査およびレポート | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます"
+description: "ゲスト ユーザーは、Azure Active Directory B2B コラボレーションで構成できます"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -13,19 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e25c0dab34f0977b4511046ad53f4c0b409990
-ms.openlocfilehash: fd2fe0046d0709bc4527cb680795610daae01a87
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 867a1c8dda37815663fa3fb095351fa3854a52cc
+ms.lasthandoff: 03/17/2017
 
 
 ---
 
 
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
-このプレビューでは、ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 以下に、招待されただけの Sam Oogle の招待と使用の履歴の例を示します。
+このプレビューでは、ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 招待された Sam Oogle の招待と使用の履歴の例を示します。
 
 ![監査ログ](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: e5362b32a0f93433c77c27a6fc116960c45404f9
-ms.openlocfilehash: 3693e6f78541caeca8fd1c276028c0f64ca71ddc
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a82b96bd0a669d9798467c837bf34133b3f9cd0c
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-vm-with-docker"></a>Docker がインストールされた VM の作成
 
-このサンプル スクリプトでは、仮想マシンを作成してから、Azure Docker VM 拡張機能を使用して Docker ホストを構成します。 その後、NGINX を実行するコンテナーを Docker VM 拡張機能により作成します。 最後に、ポート 80 のすべての受信トラフィックに対して Azure ネットワーク セキュリティ グループを構成します。 このスクリプトが正常に実行されると、Azure 仮想マシンの FQDN 経由で NGINX Web サーバーにアクセスできるようになります。 
+このスクリプトは、Docker を有効にした仮想マシンを作成し、NGINX を実行する Docker コンテナーを起動します。 このスクリプトを実行すると、Azure 仮想マシンの FQDN 経由で NGINX Web サーバーにアクセスできるようになります。 
 
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/01/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup

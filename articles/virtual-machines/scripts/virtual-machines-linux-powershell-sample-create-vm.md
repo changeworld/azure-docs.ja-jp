@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: a73e26d50fc314fcfff31cef591abcdd62ca5f44
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: ef84d2893bc58b919d7724ce261bc90b44129ed4
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 
-このスクリプトは、オペレーティング システムが Ubuntu で、関連ネットワーク リソースが設定された Azure 仮想マシンを作成します。 スクリプトが正常に実行されると、この仮想マシンへ SSH 経由でアクセスできるようになります。 
+このスクリプトでは、オペレーティング システムが Ubuntu の Azure 仮想マシンを作成します。 スクリプトを実行すると、SSH 経由で仮想マシンにアクセスできるようになります。
 
-このスクリプトを実行する前に、`Login-AzureRmAccount` コマンドを使用して Azure との接続が作成されていることを確認してください。 また、`id_rsa.pub` という名前の SSH 公開キーをユーザー プロファイルの .ssh ディレクトリに保存する必要があります。
+必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。 また、`id_rsa.pub` という名前の SSH 公開キーがユーザー プロファイルの .ssh ディレクトリに必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

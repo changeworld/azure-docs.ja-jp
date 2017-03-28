@@ -1,6 +1,6 @@
 ---
 title: "Hyper-V で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイのこの&2; 番目のチュートリアルでは、Hyper-V で仮想アレイをプロビジョニングします。"
+description: "StorSimple Virtual Array のデプロイのこの 2 番目のチュートリアルでは、Hyper-V で仮想アレイをプロビジョニングします。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8209eb8df45d8c7c42e303ab3377dbde3255154a
-ms.openlocfilehash: 924b3621e03b678e158cd1240864a903db6c8510
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
+ms.lasthandoff: 03/16/2017
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/01/2017
 
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
-  * ネットワーク インターフェイス&1; つ。
+  * ネットワーク インターフェイス 1 つ。
   * データ用の 500 GB の仮想ディスク。
 
 ### <a name="for-the-network-in-the-datacenter"></a>データセンターのネットワークの場合
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/01/2017
 
 * 最小で 4 コア。
 * 少なくとも 8 GB の RAM。 ファイル サーバーとして仮想アレイを構成する予定がある場合、8 GB でサポートできるのは 2 百万個未満のファイルです。 2 百万から 4 百万個のファイルをサポートするには 16 GB の RAM が必要です。
-* ネットワーク インターフェイス&1; つ。
+* ネットワーク インターフェイス 1 つ。
 * システム データ用の 500 GB の仮想ディスク。
 
 ## <a name="step-2-provision-a-virtual-array-in-hypervisor"></a>手順 2: ハイパーバイザーで仮想アレイをプロビジョニングする
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/01/2017
 18. **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。 **[次へ]**にログインします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 **[次へ]**にログインします。
+19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[次へ]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. **[概要]** ページで仮想データ ディスクの詳細を確認し、問題がなければ **[完了]** をクリックしてディスクを作成します。 ウィザードが終了し、仮想ハード ディスクがコンピューターに追加されます。

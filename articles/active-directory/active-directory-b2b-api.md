@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 235b551a716b68c40cc4fe346cc5903d47e6ea74
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6f487e2e8f368240339ef5e0015c85591522e49a
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -79,24 +80,25 @@ API は、以下の承認モードで実行できます。
 
 ### <a name="app-only-mode"></a>アプリのみモード
 アプリのみのコンテキストで招待を成功させるには、アプリに User.ReadWrite.All または Directory.ReadWrite.All スコープが必要です。
-詳細については、https://graph.microsoft.io/ja-jp/docs/authorization/permission_scopes を参照してください。
+
+詳しくは、https://graph.microsoft.io/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell
-PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できるようになりました。 コマンドレットを使用して、新しい招待を作成するだけです。
+PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できるようになりました。 次のコマンドレットを使用して招待を作成します。
 
 ```
 New-AzureADMSInvitation
 ```
 
-次のオプションを使用します。
+以下のオプションを使用できます。
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-これらの説明は、[https://graph.microsoft.io/ja-jp/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) の招待 API リファレンスにあります。
+[https://graph.microsoft.io/ja-jp/docs/api-reference/beta/resources/invitation](https://graph.microsoft.io/en-us/docs/api-reference/beta/resources/invitation) で招待 API リファレンスを確認することもできます
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -113,9 +115,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
 * [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
