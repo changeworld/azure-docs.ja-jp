@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM と Azure Storage | Microsoft Docs"
-description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage と、Managed Disks および Unmanaged Disks について説明します。"
+description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage と、Managed Disks および非管理対象ディスクについて説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -26,7 +26,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 ## <a name="managed-disks"></a>Managed Disks
 
-[Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Azure VM を利用できるようになりました。これにより、[Azure ストレージ アカウント](../storage/storage-introduction.md)を自分で作成または管理しなくても VM を作成できます。 Premium Storage と Standard Storage のどちらが必要かと、ディスクの大きさを指定すると、Azure によって VM ディスクが作成されます。 Managed Disks を使用する VM には、次のような多くの重要な機能があります。
+[Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して Azure VM を利用できるようになりました。これにより、[Azure Storage アカウント](../storage/storage-introduction.md)を自分で作成または管理しなくても VM を作成できます。 Premium Storage と Standard Storage のどちらが必要かと、ディスクの大きさを指定すると、Azure によって VM ディスクが作成されます。 Managed Disks を使用する VM には、次のような多くの重要な機能があります。
 
 - 自動的なスケーラビリティのサポート。 Azure では、サブスクリプションあたり最大 10,000 個のディスクをサポートするように、ディスクが作成され、基になるストレージが管理されます。
 - 可用性セットでの信頼性が向上します。 Azure により、VM ディスクが可用性セット内で相互に自動的に分離されます。
@@ -34,7 +34,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 Managed Disks の価格は、非管理対象ディスクと異なります。 その情報については、[Managed Disks の価格と課金](../storage/storage-managed-disks-overview.md#pricing-and-billing)に関するページをご覧ください。 
 
-[az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、管理ディスクを使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
+[az vm convert](/cli/azure/vm#convert) を使用して、非管理対象ディスクを使用する既存の VM を、Managed Disks を使用するように変換できます。 詳しくは、「[How to convert a Linux VM from unmanaged disks to Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(非管理対象ディスクから Azure Managed Disks に Linux VM を変換する方法) をご覧ください。 現在または過去の任意の時点に、非管理対象ディスクが [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して暗号化されたストレージ アカウントにある場合、非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある、またはあった非管理対象ディスクを変換する方法について詳しく説明します。
 
 - [az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに[仮想ハード ディスク (VHD) をコピー](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks)します。
 - Managed Disks を使う VM を作成し、[az vm create](/cli/azure/vm#create) での作成時にその VHD ファイルを指定します。
@@ -125,7 +125,7 @@ Premium Storage の機能
 
 * Premium Storage ディスク: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。
 * Premium ページ BLOB: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使われます。
-* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを&3; つ保持します。
+* Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。
 * [Premium Storage](../storage/storage-premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Premium Storage でサポートされる VM
@@ -166,26 +166,26 @@ Azure クール ストレージ層は、アクセスされる頻度は低いも�
 | およびトランザクション コスト |およびトランザクション コスト | |
 
 ## <a name="redundancy"></a>冗長性
-Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するために常にレプリケートされており、一時的にハードウェア障害が発生した場合でも Azure Storage SLA が満たされます。
+Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するために常にレプリケートされており、一時的にハードウェア障害が発生した場合でも Azure Storage SLA が満たされます。
 
-ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
+Storage アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
 
 * ローカル冗長ストレージ (LRS)
 * ゾーン冗長ストレージ (ZRS)
-* geo 冗長ストレージ (GRS)
-* 読み取りアクセス geo 冗長ストレージ (RA-GRS)
+* 地理冗長ストレージ (GRS)
+* 読み取りアクセス地理冗長ストレージ (RA-GRS)
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
-ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が&3; 回レプリケートされます。 これらの&3; つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
+ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が 3 回レプリケートされます。 これらの 3 つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
 
 ### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-ゾーン冗長ストレージ (ZRS) では、1 つまたは&2; つのリージョン内の&2; つから&3; つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
+ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の&2; つから&3; つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用の Storage アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
 
-### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
-geo 冗長ストレージ (GRS) では、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータがレプリケートされます。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
+### <a name="geo-redundant-storage"></a>地理冗長ストレージ
+地理冗長ストレージ (GRS) では、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータがレプリケートされます。 ご使用の Storage アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
 
-### <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
-読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する&2; つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
+### <a name="read-access-geo-redundant-storage"></a>読み取りアクセス地理冗長ストレージ
+読み取りアクセス地理冗長ストレージ (RA-GRS) では、GRS が提供する 2 つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、Storage アカウントの可用性が最大限に発揮されます。 プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
 
 Azure ストレージの冗長性の詳細については、以下をご覧ください。
 
@@ -194,36 +194,36 @@ Azure ストレージの冗長性の詳細については、以下をご覧く�
 ## <a name="scalability"></a>拡張性
 Azure Storage は拡張性に富んでいます。科学、財務分析、およびメディアのアプリケーションで求められるビッグ データ シナリオに対応して、数百テラバイトのデータを保存、処理できます。 また、スモール ビジネスの Web サイト用に、少量のデータを保存することもできます。 お客様のニーズがどのような規模であろうとも、料金は保存しているデータ量に応じた金額のみです。 Azure Storage には現在、膨大な数のお客様のプロジェクトが保存され、1 秒間に平均数百万の要求が処理されています。
 
-Standard ストレージ アカウントの場合: Standard ストレージ アカウントには、20,000 IOPS という最大合計要求レートがあります。 Standard ストレージ アカウントの仮想マシン ディスク全体の合計 IOPS は、この制限を超えることはできません。
+Standard Storage アカウントの場合: Standard Storage アカウントには、20,000 IOPS という最大合計要求レートがあります。 Standard Storage アカウントの仮想マシン ディスク全体の合計 IOPS は、この制限を超えることはできません。
 
 Premium Storage アカウントの場合: Premium Storage アカウントの最大合計スループット レートは 50 Gbps です。 すべての VM ディスク全体の合計スループットは、この制限を超えることはできません。
 
 ## <a name="availability"></a>可用性
-マイクロソフトは、Read Access-Geo Redundant ストレージ (RA-GRS) アカウントからのデータの読み取り要求が 99.99% (クール アクセス層の場合 99.9%) 以上、正常に処理されることを保証します。ただし、プライマリ リージョンからのデータの読み取りに失敗した場合、セカンダリ リージョンで読み取りを再試行するものとします。
+マイクロソフトは、読み取りアクセス地理冗長ストレージ (RA-GRS) アカウントからのデータの読み取り要求が 99.99% (クール アクセス層の場合 99.9%) 以上、正常に処理されることを保証します。ただし、プライマリ リージョンからのデータの読み取りに失敗した場合、セカンダリ リージョンで読み取りを再試行するものとします。
 
-マイクロソフトは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および geo 冗長ストレージ (GRS) アカウントからのデータの読み取り要求が 99.9% (クール アクセス層の場合 99%) 以上、正常に処理されることを保証します。
+マイクロソフトは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および地理冗長ストレージ (GRS) アカウントからのデータの読み取り要求が 99.9% (クール アクセス層の場合 99%) 以上、正常に処理されることを保証します。
 
-マイクロソフトは、ローカル冗長ストレージ (LRS) アカウント、ゾーン冗長ストレージ (ZRS) アカウント、geo 冗長ストレージ (GRS) アカウント、および Read Access-Geo Redundant ストレージ (RA-GRS) アカウントへのデータの書き込み要求が 99.9% (クール アクセス層の場合 99%) 以上の時間において、正常に処理されることを保証します。
+マイクロソフトは、ローカル冗長ストレージ (LRS) アカウント、ゾーン冗長ストレージ (ZRS) アカウント、地理冗長ストレージ (GRS) アカウント、および読み取りアクセス地理冗長ストレージ (RA-GRS) アカウントへのデータの書き込み要求が 99.9% (クール アクセス層の場合 99%) 以上の時間において、正常に処理されることを保証します。
 
 * [ストレージに関する Azure の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_1/)
 
-## <a name="regions"></a>地域
+## <a name="regions"></a>リージョン
 Azure は世界中の 30 のリージョンで一般公開され、さらに 4 つのリージョン向けのプランを発表しました。 さらなる地域への展開を行うことでお客様のパフォーマンス向上を実現し、データの保存場所に対するお客様の要件や好みをサポートできるため、これは Azure の優先事項となっています。  提供開始された最新の Azure リージョンはドイツです。
 
 Microsoft Cloud Germany は、既にヨーロッパで提供されているマイクロソフトのクラウド サービスとは異なるオプションを提供し、ドイツ国内や欧州連合 (EU)、欧州自由貿易連合 (EFTA) 圏内の規制の厳しいパートナーやお客様向けに、イノベーションの推進やビジネス拡大のさらなるチャンスを生み出します。
 
 このマクデブルクとフランクフルトの新しいデータセンターに格納されたお客様のデータは、独立したドイツ企業であり Deutsche Telekom の子会社であるデータ トラスティ T-Systems International の管理下に置かれます。 これらのデータセンターで提供されるマイクロソフトの商用クラウド サービスはドイツのデータ取り扱いに関する規制に準拠しているため、お客様のデータの取り扱い方法と場所の選択肢がさらに広がります。
 
-* [Azure リージョンのマップ](https://azure.microsoft.com/regions/)
+* [Azure リージョンの地図](https://azure.microsoft.com/regions/)
 
 ## <a name="security"></a>セキュリティ
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。 アプリケーションと Azure の間で送信されるデータを、クライアント側暗号化、HTTPS、または SMB 3.0 使用して保護できます。 Storage Service Encryption (SSE) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。 仮想マシンに使用する OS とデータ ディスクを、Azure Disk Encryption を使用して暗号化されるように設定できます。 Shared Access Signature を使用して、Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権を付与できます。
+Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 Storage アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。 アプリケーションと Azure の間で送信されるデータを、クライアント側暗号化、HTTPS、または SMB 3.0 使用して保護できます。 Storage Service Encryption (SSE) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。 仮想マシンに使用する OS とデータ ディスクを、Azure Disk Encryption を使用して暗号化されるように設定できます。 共有アクセス署名を使用して、Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権を付与できます。
 
 ### <a name="management-plane-security"></a>管理プレーンのセキュリティ
-管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
+管理プレーンは、Storage アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、Storage アカウント キーの管理とその再生成方法についても説明します。
 
 ### <a name="data-plane-security"></a>データ プレーンのセキュリティ
-このセクションでは、Shared Access Signature と Stored Access Policy を使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
+このセクションでは、共有アクセス署名と共有アクセスポリシーを使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、共有アクセス署名が期限切れになる前に無効にする方法についても説明します。
 
 ## <a name="encryption-in-transit"></a>転送中の暗号化
 このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。 Azure のファイル共有用の SMB 3.0 に使用される HTTPS と暗号化の推奨される使用方法について説明します。 また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
