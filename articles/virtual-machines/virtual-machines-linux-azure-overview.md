@@ -26,7 +26,7 @@ Microsoft Azure は、分析、仮想マシン、データベース、モバイ�
 
 Amazon の AWS のさまざまな機能を使い慣れている場合は、Azure と AWS の [定義マッピング ドキュメント](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)を調べることができます。
 
-## <a name="regions"></a>地域
+## <a name="regions"></a>リージョン
 Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。  世界中で 34 か所のリージョンが一般公開されており、さらに 4 つのリージョンが発表されました。 Microsoft はグローバル カバレッジを拡大し続けているため、既存のリージョンと新たに発表されたリージョンの一覧を常に更新しています。
 
 * [Azure リージョン](https://azure.microsoft.com/regions/)
@@ -36,9 +36,9 @@ Microsoft は、単一インスタンス仮想マシン向けに、業界をリ�
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
+Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、Storage アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定するだけで、Azure がディスクを作成し、管理します。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または Azure ポータルを使用して、管理 OS ディスクと管理データ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
  
-また、Azure リージョンごとに&1; つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../storage/storage-managed-disks-overview.md)に関するページをご覧ください。
+また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../storage/storage-managed-disks-overview.md)に関するページをご覧ください。
  
 ## <a name="azure-virtual-machines--instances"></a>Azure Virtual Machines とインスタンス
 Microsoft Azure は、現在普及しているさまざまな Linux ディストリビューションに対応します。Microsoft の多数のパートナーが、それらのディストリビューションを提供、管理しています。  Azure Marketplace からは、Red Hat Enterprise、CentOS、Debian、Ubuntu、CoreOS、RancherOS、FreeBSD などのディストリビューションが提供されています。 Microsoft はさまざまな Linux コミュニティと積極的に連携し、[Azure 動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) リストを拡充しています。
@@ -62,17 +62,17 @@ Azure に VM をデプロイするとき、あらかじめ用意された一連�
 
 * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)
 
-## <a name="automation"></a>Automation
-適切な DevOps カルチャを実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます (Phoenix サーバー)。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要なオートメーション ツールと連携します。  Azure には、自動化のための独自のツールもあります。
+## <a name="automation"></a>自動化
+適切な DevOps 文化を実現するには、すべてのインフラストラクチャがコードである必要があります。  すべてのインフラストラクチャがコードである場合、簡単に再作成できます (Phoenix サーバー)。  Azure は、Ansible、Chef、SaltStack、Puppet などのすべての主要な自動化ツールと連携します。  Azure には、自動化のための独自のツールもあります。
 
 * [Azure テンプレート](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure VMAccess](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Azure は Linux ディストリビューションの多くで、 [cloud-init](http://cloud-init.io/) のサポートを展開しています。  現在、既定で有効になっている cloud-init で、Canonical の Ubuntu VM がデプロイされています。  RedHats RHEL、CentOS、Fedora は cloud-init をサポートしますが、RedHat で保持される Azure のイメージに cloud-init はインストールされていません。  RedHat family OS で cloud-init を使用するには、インストールされている cloud-init でカスタム イメージを作成する必要があります。
+Azure は Linux ディストリビューションの多くで、 [cloud-init](http://cloud-init.io/) のサポートを展開しています。  現在、既定で有効になっている cloud-init で、Canonical の Ubuntu VM がデプロイされています。  Red Hat RHEL、CentOS、Fedora は cloud-init をサポートしますが、Red Hat で保持される Azure のイメージに cloud-init はインストールされていません。  Red Hat ファミリー OS で cloud-init を使用するには、インストールされている cloud-init でカスタム イメージを作成する必要があります。
 
 * [Azure Linux VM 上で cloud-init を使用する](virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="quotas"></a>Quotas (クォータ)
+## <a name="quotas"></a>クォータ
 Azure サブスクリプションにはそれぞれ既定のクォータ制限が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。  クォータ制限は、制限の引き上げを要求するサポート チケットを申請することで、迅速かつ簡単に引き上げることができます。  クォータ制限の詳細については、次を参照してください。
 
 * [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)
@@ -100,13 +100,13 @@ Azure の使用を開始するには、Azure アカウント、Azure CLI のイ�
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure ポータルの使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。
+これで Azure アカウント、Azure Web ポータル、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。
 
 ### <a name="create-a-vm-using-the-cli"></a>CLI を使用して VM を作成する
-CLI を使用して Linux VM を作成すると、作業中のターミナルを離れることなく、すばやく VM をデプロイできます。  Web Portal で指定できるものは、コマンド ライン フラグまたはスイッチからも使用できます。  
+CLI を使用して Linux VM を作成すると、作業中のターミナルを離れることなく、すばやく VM をデプロイできます。  Web ポータルで指定できるものは、コマンド ライン フラグまたはスイッチからも使用できます。  
 
 * [CLI を使用して Linux VM を作成する](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -116,7 +116,7 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 * [ポータルを使用して Linux VM を作成する](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="login-using-ssh-without-a-password"></a>パスワードを使わずに SSH を使用してログインする
-これで VM が Azure 上で実行され、ログインする準備ができました。  パスワードを使用して SSH からログインする方法は、安全ではなく、時間がかかります。  ログインの手段として最も安全性が高く、かつすばやい方法は、SSH キーを使用することです。  ポータルまたは CLI から Linux VM を作成する場合、認証の選択肢が&2; つあります。  SSH のパスワードを選択した場合、Azure はパスワードによるログインを許可するように VM を構成します。  SSH 公開キーを選択した場合、Azure は SSH キーを使用したログインのみを許可するように VM を構成し、パスワードのログインは無効になります。 SSH キーのログインのみを許可することにより Linux VM をセキュリティで保護するには、Portal または CLI で VM を作成するときに SSH 公開キーのオプションを使用します。
+これで VM が Azure 上で実行され、ログインする準備ができました。  パスワードを使用して SSH からログインする方法は、安全ではなく、時間がかかります。  ログインの手段として最も安全性が高く、かつすばやい方法は、SSH キーを使用することです。  ポータルまたは CLI から Linux VM を作成する場合、認証の選択肢が 2 つあります。  SSH のパスワードを選択した場合、Azure はパスワードによるログインを許可するように VM を構成します。  SSH 公開キーを選択した場合、Azure は SSH キーを使用したログインのみを許可するように VM を構成し、パスワードのログインは無効になります。 SSH キーのログインのみを許可することにより Linux VM をセキュリティで保護するには、ポータルまたは CLI で VM を作成するときに SSH 公開キーのオプションを使用します。
 
 * [SSHD の構成により Linux VM で SSH パスワードを無効化する](virtual-machines-linux-mac-disable-ssh-password-usage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
