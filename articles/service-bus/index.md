@@ -69,7 +69,7 @@ Service Bus を使用して、オンプレミスとクラウド環境間で接�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal で Service Bus を使ってみる</h3>
+                        <h3>Azure ポータルで Service Bus を使ってみる</h3>
                     </div>
                 </div>
             </div>
@@ -225,7 +225,7 @@ Service Bus を使用して、オンプレミスとクラウド環境間で接�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/servicebus">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
