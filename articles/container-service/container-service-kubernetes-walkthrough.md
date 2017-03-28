@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2464901d22bb91cbf396ef60f4bda6d979b578b7
-ms.openlocfilehash: 49602804cc6b4d4f98c802c1a3b651dda2634bb7
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: d342e21e8e0bd78b713f3a6b2f7b3c319185eb43
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -142,7 +142,7 @@ Kubernetes Web インターフェイスを表示するには、次のコマン�
 ```console
 kubectl proxy
 ```
-このコマンドは、ローカルホスト上で簡単な認証済みのプロキシを実行します。これを使用して、[Kubernetes Web UI](http://localhost:8001/ui) を表示することができます。 詳細については、「[Azure Container Service で Kubernetes Web UI を使用する](container-service-kubernetes-ui.md)」を参照してください。
+このコマンドは、localhost 上で簡単な認証済みのプロキシを実行します。これを使用して、[http://localhost:8001/ui](http://localhost:8001/ui) で実行されている Kubernetes Web UI を表示することができます。 詳細については、「[Azure Container Service で Kubernetes Web UI を使用する](container-service-kubernetes-ui.md)」を参照してください。
 
 ![Kubernetes ダッシュボードの画像](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
 
@@ -157,13 +157,13 @@ kubectl get pods
 ポッドの名前を使用すると、ポッドに対してリモート コマンドを実行できます。  次に例を示します。
 
 ```console
-kubectl exec nginx-701339712-retbj date
+kubectl exec <pod name> date
 ```
 
 `-it` フラグを使用して、完全な対話型セッションを取得することもできます。
 
 ```console
-kubectl exec nginx-701339712-retbj -it bash
+kubectl exec <pod name> -it bash
 ```
 
 ![コンテナー内のリモート セッション](media/container-service-kubernetes-walkthrough/kubernetes-remote.png)

@@ -10,21 +10,21 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/10/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3ad45837a8c3f0e37e8571fb9b894df53ecb5f56
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c1d7cfe614ab4e677e7fff989e79eb09acb3feed
+ms.lasthandoff: 03/22/2017
 
 ---
 
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli-20"></a>Azure CLI 2.0 で Linux 仮想マシンを作成する
+# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI で Linux 仮想マシンを作成する
 
-Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Ubuntu 14.04 LTS を実行する仮想マシンをデプロイする方法について詳しく説明します。
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Ubuntu 16.04 LTS を実行する仮想マシンをデプロイする方法について詳しく説明します。
 
 開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。 
 
@@ -92,3 +92,4 @@ az group delete --name myResourceGroup
 [可用性が高い仮想マシンの作成のチュートリアル](./virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [VM デプロイ CLI サンプルを探索する](./virtual-machines-linux-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+

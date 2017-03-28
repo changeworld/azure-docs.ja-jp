@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/27/2017
-ms.author: markgal;trinadhk
+ms.date: 3/13/2017
+ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
-ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 0be8f1f9fb96bce445c4a91520b9a847b205a519
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -92,7 +92,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure Backup (MARS) エージェント |なし (Windows ベースのエージェントのみ) |
 | System Center DPM |Hyper-V でのファイル整合性バックアップのみ<br/> (Azure VM では不可) |
 | Azure Backup Server |Hyper-V でのファイル整合性バックアップのみ<br/> (Azure VM では不可) |
-| Azure IaaS VM のバックアップ |はい |
+| Azure IaaS VM のバックアップ |あり ([事前スクリプトおよび事後スクリプト フレームワーク](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を使用するアプリケーション整合性バックアップ) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/storage-premium-storage.md) に関する記事を参照してください。

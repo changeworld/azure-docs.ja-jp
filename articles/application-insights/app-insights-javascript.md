@@ -1,21 +1,22 @@
 ---
-title: "JavaScript Web アプリのための Application Insights | Microsoft Docs"
+title: "JavaScript Web アプリのための Azure Application Insights | Microsoft Docs"
 description: "ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 601045a6048266cbd317f3a8ff328caa7edf877f
-ms.openlocfilehash: a7b17961ea23c109dc840192fa3f7cea1d88326e
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: c4e1ecc824b09fd7523cdc7a29559adca19488f3
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -97,7 +98,7 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 
 
-## <a name="a-namerunarun-your-app"></a><a name="run"></a>アプリを実行する
+## <a name="run"></a>アプリを実行する
 Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。 **F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
 Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで**F12** です)。 データは dc.services.visualstudio.com に送信されます。
@@ -107,7 +108,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
-*まだデータが表示されませんか?ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
+*まだデータが表示されませんか?ページの上部にある**[更新]**をクリックします。まだは何も表示されませんか?「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
@@ -167,6 +168,7 @@ Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに�
 
 ![](./media/app-insights-javascript/37.png)
 
+
 [ `...` ] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
 
 ### <a name="no-ajax-calls-reported"></a>AJAX 呼び出しが報告されない場合
@@ -180,6 +182,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ブラウザーの例外がまったく表示されない場合は、コード スニペットで `disableExceptionTracking` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
 
 ## <a name="inspect-individual-page-view-events"></a>個別のページ ビュー イベントを調査する
+
 通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。 ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
@@ -217,19 +220,16 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [使用状況の追跡について](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 
-#### <a name="a-namevideoa-video-tracking-usage"></a><a name="video"></a> 動画: 使用状況の追跡
-> [!VIDEO https://channel9.msdn.com/Series/Application-Insights-on-Azure-Preview-Portal/Tracking-Usage-with-Application-Insights/player]
-> 
-> 
+## <a name="video"></a> ビデオ
 
-## <a name="a-namenexta-next-steps"></a><a name="next"></a> 次のステップ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+
+
+
+## <a name="next"></a> 次のステップ
 * [利用状況を追跡する](app-insights-web-track-usage.md)
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

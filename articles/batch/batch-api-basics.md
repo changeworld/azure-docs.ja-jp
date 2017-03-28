@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 03/08/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0682a048429d8e980da529975a24dde28a9812fe
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 1ebe72255697af16fc28191a102a7c0487968eda
 ms.lasthandoff: 03/15/2017
 
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 
 ここでは、Azure Batch サービスの主要コンポーネントについて簡単に紹介し、Batch を使って大規模な並列コンピューティング ソリューションを開発する際に利用できる主な機能とリソースについて取り上げます。
 
-[REST API][batch_rest_api] を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-technical-overview.md#batch-development-apis) を使う場合も、この記事で紹介するさまざまなリソースや機能を活用することができます。
+[REST API][batch_rest_api] を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-apis-tools.md#batch-development-apis) を使う場合も、この記事で紹介するさまざまなリソースや機能を活用することができます。
 
 > [!TIP]
 > Batch サービスの基本については、「 [Azure Batch の基礎](batch-technical-overview.md)」を参照してください。
@@ -427,6 +427,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 >
 
 ## <a name="next-steps"></a>次のステップ
+* Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * 「 [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。 Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md) のチュートリアルも用意されています。
 * Batch ソリューションを開発するときに使用する [Batch Explorer][github_batchexplorer] サンプル プロジェクトをダウンロードしてビルドする。 Batch Explorer を使用すると、次のようなことを実行できます。
 
