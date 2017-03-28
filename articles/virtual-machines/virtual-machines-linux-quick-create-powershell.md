@@ -37,8 +37,7 @@ Azure PowerShell モジュールは、PowerShell コマンド ラインやスク
 Login-AzureRmAccount
 ```
 
-## <a name="create-resource-group"></a>Create resource group
-
+## <a name="create-resource-group"></a>リソース グループの作成
 Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 ```powershell
