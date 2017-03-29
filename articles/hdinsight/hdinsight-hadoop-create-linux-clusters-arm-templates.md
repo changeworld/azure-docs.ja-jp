@@ -1,6 +1,6 @@
 ---
 title: "テンプレートを使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して Azure の Azure HDInsight のクラスターを作成する方法について説明します。"
+description: "Azure リソース管理テンプレートを使用して Azure の Azure HDInsight のクラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -9,27 +9,29 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 00a80dea-011f-44f0-92a4-25d09db9d996
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2017
+ms.date: 03/14/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
-ms.openlocfilehash: 1816b7f5bb95669197891315ca57f93fd779c5c3
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 37567bf014d1deb5bcd36af94924948550d55f8e
+ms.lasthandoff: 03/21/2017
 
 
 ---
-# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して、HDInsight で Hadoop クラスターを作成する
+# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-management-templates"></a>Azure リソース管理テンプレートを使用して、HDInsight で Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「 [クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure リソース管理テンプレートを使用して HDInsight クラスターを作成する方法について説明します。 詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」を参照してください。 その他のクラスター作成のツールと機能について調べるには、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-creation-methods)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-この記事の手順を開始する前に、次の項目を用意する必要があります。
+この記事の手順を開始する前に、次の前提条件を用意する必要があります。
 
 * [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * Azure PowerShell/Azure CLI
@@ -39,25 +41,41 @@ Azure Resource Manager テンプレートを使用して HDInsight クラスタ�
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
-## <a name="resource-manager-templates"></a>リソース マネージャーのテンプレート
-Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が&1; 回の連携した操作で容易になります。 テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
+## <a name="resource-management-templates"></a>リソース管理テンプレート
+Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。 テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
-HDInsight クラスターと依存 Azure Storage アカウントを作成するための Resource Manager テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。 クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [Resource Manager の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存します。 テンプレートを呼び出すさまざまな方法について説明します。
+HDInsight テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight)で見つけることができます。 クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [Resource Manager の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存します。 テンプレートを呼び出すさまざまな方法について説明します。
 
-Resource Manager テンプレートの詳細については、以下を参照してください
+Resource Manager テンプレートの詳細については、以下の記事を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure リソース管理テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 
-特定の要素の JSON スキーマを確認するには、次の手順に従います:
+## <a name="generate-templates"></a>テンプレートを生成する
 
-1. [Azure Portal](https://porta.azure.com) を開き、HDInsight クラスターを作成します。  「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
-2. 必要な要素、および JSON スキーマを必要とする要素を構成します。
-3. **[作成]** をクリックする前に、次のスクリーン ショットにのように **[自動化オプション]** をクリックします。
+Azure Portal を使用して、クラスターのすべてのプロパティを構成し、展開する前にテンプレートを保存できます。  これで、テンプレートを再利用できます。
 
-    ![HDInsight Hadoop で、クラスターのResource Manager テンプレート スキーマの自動化オプションが作成されます](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-automation-option.png)
+**Azure Portal を使用してテンプレートを生成するには**
 
-    ポータルでは、構成に基づいた Resource Manager テンプレートが作成されます。
+1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+2. 左側のメニューの **[新規]** をクリックし、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
+3. プロパティを入力する手順に従います。 **[簡易作成]** または**[カスタム]** オプションを使用できます。
+4. [概要] タブで、**[テンプレートおよびパラメーターをダウンロードする]** をクリックします。
+
+    ![HDInsight Hadoop で、クラスターのリソース管理テンプレートがダウンロード用に作成される](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download.png)
+
+    テンプレート ファイル、パラメーター ファイル、およびテンプレートをデプロイするコード サンプルが一覧表示されます。
+
+    ![HDInsight Hadoop で、クラスターのリソース管理テンプレートのダウンロード オプションが作成される](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download-options.png)
+
+    ここでは、テンプレートのダウンロード、テンプレート ライブラリへの保存、テンプレートのデプロイを行うことができます。
+
+    ライブラリにあるテンプレートにアクセスするには、左側のメニューで **[その他のサービス]** をクリックし、(**[その他]** カテゴリの下にある) **[テンプレート]** をクリックします。
+
+> [!Note]
+> テンプレートは、パラメーター ファイルと共に使用する必要があります。  そうしない場合、予期しない結果が生じる可能性があります。  たとえば、テンプレートをダウンロードする前に指定した値とは無関係に、clusterKind プロパティの既定値が常に hadoop となります。
+
+
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
@@ -117,11 +135,11 @@ Resource Manager テンプレートの詳細については、以下を参照し
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
 
-    この PowerShell スクリプトは、クラスター名のみを構成します。 ストレージ アカウント名はテンプレートにハードコーディングされています。 クラスターのユーザー パスワード (デフォルトのユーザー名は *admin*)、および SSH ユーザー パスワード (デフォルトの SSH ユーザー名は *sshuser*) の入力が求められます。  
+    この PowerShell スクリプトは、クラスター名のみを構成します。 ストレージ アカウント名はテンプレートにハードコーディングされています。 クラスターのユーザー パスワード (既定のユーザー名は *admin*) および SSH ユーザー パスワード (既定の SSH ユーザー名は *sshuser*) の入力が求められます。  
 
 詳細については、「[PowerShell でデプロイする](../azure-resource-manager/resource-group-template-deploy.md#deploy)」を参照してください。
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
+## <a name="deploy-with-cli"></a>CLI を使用したデプロイ
 次のサンプルでは、Resource Manager テンプレートを呼び出すことによって、クラスターとその依存ストレージ アカウントとコンテナーが作成されます:
 
     azure login
@@ -129,7 +147,7 @@ Resource Manager テンプレートの詳細については、以下を参照し
     azure group create -n hdi1229rg -l "East US"
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
 
-クラスター名、クラスターのユーザー パスワード (デフォルトのユーザー名は *admin*)、および SSH ユーザー パスワード (デフォルトの SSH ユーザー名は *sshuser*) の入力が求められます。 次のようにインライン パラメーターで指定します:
+クラスター名、クラスターのユーザー パスワード (既定のユーザー名は *admin*)、および SSH ユーザー パスワード (既定の SSH ユーザー名は *sshuser*) の入力が求められます。 次のようにインライン パラメーターで指定します:
 
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{\"clusterName\":{\"value\":\"hdi1229\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"},\"sshPassword\":{\"value\":\"Pass@word1\"}}'
 
@@ -356,9 +374,4 @@ Visual Studio とリソース グループの使用の概要については、�
         }
     }
     }
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

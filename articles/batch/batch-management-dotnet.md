@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 03/15/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: c47e9263e1eefe8d1c3c0e164a186f095ca88a80
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f635bbd8652b97c1067473e56565bf7c6520a2ba
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/28/2017
 > 
 
 ## <a name="create-and-delete-batch-accounts"></a>Batch アカウントを作成および削除します
-前述のように、Batch Management API の主要な機能の&1; つは、Azure リージョン内の Batch アカウントの作成と削除です。 これらを行うには、[BatchManagementClient.Account.CreateAsync][net_create] および [DeleteAsync][net_delete]、またはこれらの同期版を使用します。
+前述のように、Batch Management API の主要な機能の 1 つは、Azure リージョン内の Batch アカウントの作成と削除です。 これらを行うには、[BatchManagementClient.Account.CreateAsync][net_create] および [DeleteAsync][net_delete]、またはこれらの同期版を使用します。
 
 次のコード例では、アカウントを作成し、新しく作成されたアカウントを Batch サービスから取得して、削除します。 次のスニペットとこの記事の他のスニペットでは、`batchManagementClient` は [BatchManagementClient][net_mgmt_client] の完全に初期化されたインスタンスです。
 
@@ -147,43 +147,20 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 > 
 > 
 
-## <a name="batch-management-net-azure-ad-and-resource-manager"></a>Batch Management .NET、Azure AD、リソース マネージャー
-Batch Management .NET ライブラリを使用するときは通常、[Azure Active Directory][aad_about] (Azure AD) と [Azure Resource Manager][resman_overview] も使用します。 以下で説明するサンプル プロジェクトでは、Azure Active Directory と Resource Manager の両方を使用して、Batch Management .NET API の動作を示しています。
+## <a name="use-azure-ad-with-batch-management-net"></a>Batch Management .NET で Azure AD を使用する
 
-### <a name="azure-active-directory"></a>Azure Active Directory
-Azure AD は、顧客、サービス管理者、組織のユーザーを認証するために、Azure 自体で使用されています。 Batch Management .NET のコンテキストでは、サブスクリプション管理者または共同管理者の認証を行うために Azure AD を使用します。 これにより、Batch サービスに対するクエリとこの記事で取り上げる操作の実行が管理ライブラリに許可されます。
-
-以下で説明するサンプル プロジェクトでは、Azure の [Active Directory Authentication Library][aad_adal] (ADAL) を使用して、ユーザーに Microsoft の資格情報の入力を求めます。 サービス管理者または共同管理者の資格情報が提供されると、それにより、アプリケーションは Azure にサブスクリプションのリストを照会し、リソース グループと Batch アカウントの両方を作成および削除できます。
-
-### <a name="resource-manager"></a>リソース マネージャー
-Batch Management .NET ライブラリで Batch アカウントを作成するときは通常、[リソース グループ][resman_overview]内でそれらを作成します。 リソース グループは、プログラムから [Resource Manager .NET][resman_api] ライブラリの [ResourceManagementClient][resman_client] クラスを使用して作成できます。 または、[Azure Portal][azure_portal] を使用して過去に作成した既存のリソース グループにアカウントを追加することもできます。
+Batch Management .NET ライブラリは Azure リソース プロバイダー クライアントであり、[Azure Resource Manager][resman_overview] と共に使用してアカウント リソースをプログラムで管理します。 Azure AD は、Batch Management .NET ライブラリなどの Azure リソース プロバイダー クライアントや、[Azure Resource Manager][resman_overview] を通じて行われた要求の認証に必要です。 Batch Management .NET ライブラリで Azure AD を使用する方法については、[Azure Active Directory を使用した Batch ソリューションの認証](batch-aad-auth.md)に関する記事をご覧ください。 
 
 ## <a name="sample-project-on-github"></a>GitHub のサンプル プロジェクト
-Batch Management .NET の動作を確認するには、GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトを確認してください。 このコンソール アプリケーションでは、[BatchManagementClient][net_mgmt_client] と [ResourceManagementClient][resman_client] の作成と使用を示しています。 また、両方のクライアントで必要な Azure [Active Directory Authentication Library][aad_adal] (ADAL) の使用も示しています。
 
-サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。 「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application)」の手順に従って、独自のアカウントで既定のディレクトリ内にサンプル アプリケーションを登録してください。 アプリケーションの種類には必ず **[ネイティブ クライアント アプリケーション]** を選択してください。**[リダイレクト URI]** には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。リアル エンドポイントにする必要はありません。
-
-アプリケーションを追加したら、ポータルのアプリケーションの設定で、 **Windows Azure サービス管理 API** アプリケーションに「 *組織として Azure サービス管理にアクセスする* 」許可を委任します。
-
-![Azure ポータルのアプリケーション アクセス許可][2]
-
-> [!TIP]
-> *[他のアプリケーションに対するアクセス許可]* の下に **[Windows Azure Service Management API]** が表示されない場合、**[アプリケーションの追加]** をクリックして **[Windows Azure Service Management API]** を選択し、チェック ボックスをオンにします。 次に、上で指定したアクセス許可を委任します。
-> 
-> 
-
-上記のようにアプリケーションを追加したら、アプリケーションのリダイレクト URI とクライアント ID を利用し、[AccountManagment][acct_mgmt_sample] サンプル プロジェクトで `Program.cs` を更新します。 アプリケーションの **[構成]** タブにこれらの値があります。
-
-![Azure ポータルのアプリケーション構成][3]
-
-[AccountManagment][acct_mgmt_sample] サンプル アプリケーションでは、次の操作が示されています。
+Batch Management .NET の動作を確認するには、GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトを確認してください。 AccountManagment サンプル アプリケーションでは、次の操作が示されています。
 
 1. [ADAL][aad_adal] を使用して Azure AD からセキュリティ トークンを取得します。 ユーザーがまだサインインしていない場合は、Azure 資格情報の入力を求められます。
-2. Azure AD から取得したセキュリティ トークンを使用して、[SubscriptionClient][resman_subclient] を作成し、Azure に対して、アカウントに関連付けられているサブスクリプションの一覧を照会します。 サブスクリプションが複数見つかった場合はいずれかを選択できます。
-3. 選択したサブスクリプションに関連付けられた資格情報オブジェクトを作成します。
-4. 資格情報を使用して、[ResourceManagementClient][resman_client] を作成します。
-5. [ResourceManagementClient][resman_client] を使用して、リソース グループを作成します。
-6. [BatchManagementClient][net_mgmt_client] を使用して、いくつかの Batch アカウント操作を実行します。
+2. Azure AD から取得したセキュリティ トークンを使用して、[SubscriptionClient][resman_subclient] を作成し、アカウントに関連付けられているサブスクリプションの一覧を Azure に照会します。 一覧に複数のサブスクリプションが含まれている場合、ユーザーはサブスクリプションを選択できます。
+3. 選択したサブスクリプションに関連付けられている資格情報を取得します。
+4. 資格情報を使用して、[ResourceManagementClient][resman_client] オブジェクトを作成します。
+5. [ResourceManagementClient][resman_client] オブジェクトを使用して、リソース グループを作成します。
+6. [BatchManagementClient][net_mgmt_client] オブジェクトを使用して、いくつかの Batch アカウント操作を実行します。
    * 新しいリソース グループに Batch アカウントを作成します。
    * Batch サービスから新しく作成されたアカウントを取得します。
    * 新しいアカウントのアカウント キーを出力します。
@@ -194,11 +171,10 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
    * 新しく作成されたアカウントを削除します。
 7. リソース グループを削除します。
 
-新しく作成した Batch アカウントおよびリソース グループを削除する前に、[Azure Portal][azure_portal] で両方を調べることができます。
+新しく作成した Batch アカウントとリソース グループを削除する前に、[Azure Portal][azure_portal] でこれらを確認できます。
 
-![リソース グループと Batch アカウントが表示された Azure Portal][1]
-<br />
-"*新しいリソース グループと Batch アカウントが表示された Azure Portal*"
+サンプル アプリケーションを正常に実行するには、Azure Portal で Azure AD テナントに登録し、Azure Resource Manager API にアクセス許可を付与しておく必要があります。 [Azure AD を使用した Batch 管理アプリケーションの認証](batch-aad-auth.md#use-azure-ad-with-batch-service-solutions)に関するセクションに記載されている手順に従います。
+
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Azure Active Directory とは"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
@@ -221,7 +197,7 @@ Batch Management .NET の動作を確認するには、GitHub の [AccountManagm
 [net_mgmt_subscriptions]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.batchmanagementclient.subscriptions.aspx
 [net_mgmt_listaccounts]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.batch.iaccountoperations.listasync.aspx
 [resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
-[resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspxs
+[resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
 [resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
 [resman_overview]: ../azure-resource-manager/resource-group-overview.md
 

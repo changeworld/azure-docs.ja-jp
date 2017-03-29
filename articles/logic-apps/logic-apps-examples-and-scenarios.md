@@ -1,79 +1,81 @@
 ---
-title: "Logic Apps の例とシナリオ | Microsoft Docs"
-description: "ロジック アプリの一般的な例のほか、一般的なシナリオを実装する方法について説明します。"
+title: "例とシナリオ - Azure Logic Apps | Microsoft Docs"
+description: "一般的なシナリオのロジック アプリの例を確認します"
 services: logic-apps
-documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
 editor: 
+documentationcenter: .net,nodejs,java
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 10/18/2016
+ms.date: 03/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: ebdac3845e3b635ea6be7de41df9b389915e5d39
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cbe7011f827418c1094c4e262e016cb93d6d224c
+ms.lasthandoff: 03/17/2017
 
 
 ---
-# <a name="logic-apps-examples-and-common-scenarios"></a>Logic Apps の例と一般的なシナリオ
-このドキュメントでは、ロジック アプリを使用してビジネス プロセスを自動化する方法を理解するのに役立つ一般的なシナリオと例について詳しく説明します。 
+# <a name="examples-and-common-scenarios-for-azure-logic-apps"></a>Azure Logic Apps の例と一般的なシナリオ
 
-## <a name="custom-triggers-and-actions"></a>カスタムのトリガーとアクション
-別のアプリケーションからロジック アプリをトリガーする方法は複数あります。 いくつかの一般的な例を次に示します。
+ここでは、Azure Logic Apps に用意されている数多くのパターンと機能を理解するうえで役立つ、一般的な例とシナリオを紹介します。
 
-* [カスタム トリガーまたはカスタム アクションの作成](../logic-apps/logic-apps-create-api-app.md)
-* [実行時間の長いアクション](../logic-apps/logic-apps-create-api-app.md)
-* [HTTP 要求トリガー (POST)](logic-apps-http-endpoint.md)
-* [Webhook のトリガーとアクション](../logic-apps/logic-apps-create-api-app.md)
-* [ポーリング トリガー](../logic-apps/logic-apps-create-api-app.md)
+## <a name="key-scenarios-for-logic-apps"></a>ロジック アプリの主要シナリオ
 
-### <a name="scenarios"></a>シナリオ
-* [要求への同期応答](logic-apps-http-endpoint.md)
-* [SMS での要求 - 応答](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+Azure Logic Apps には、さまざまなサービスに対して、耐障害性のあるオーケストレーションと統合を提供します。 Logic Apps サービスは "サーバーレス" であるため、スケールやインスタンスについて心配する必要はありません。必要なのは、ワークフロー (トリガーとアクション) を定義することだけです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 複数のアクションを、特に複数のシステムで調整する必要があるシナリオはすべて、Azure Logic Apps のユースケースとして適しています。 そのパターンと例をいくつか次に示します。
 
-## <a name="error-handling-and-logging"></a>エラー処理とログ記録
-* [例外とエラー処理](logic-apps-exception-handling.md)
+## <a name="respond-to-triggers-and-extend-actions"></a>トリガーへの応答とアクションの拡張
+
+すべてのロジック アプリがトリガーによって開始します。 たとえば、ワークフローは、スケジュール イベント、手動の呼び出し、または外部システムからのイベント ( "ファイルが FTP サーバーに追加されたとき" トリガーなど) によって開始できます。 Azure Logic Apps では、オンプレミスの SAP から Azure Cognitive Services まで、現在 100 を超えるすぐに使用可能なコネクタがサポートされています。 コネクタを発行していない可能性があるシステムおよびサービスについては、ロジック アプリを拡張することもできます。
+
+* [チュートリアル: AI で動くソーシャル ダッシュボードを Logic Apps と Power BI を使用して数分で構築する](http://aka.ms/logicappsdemo)
+* [カスタムのトリガーまたはアクションを作成する](../logic-apps/logic-apps-create-api-app.md)
+* [ワークフロー実行に対して実行時間の長いアクションを設定する](../logic-apps/logic-apps-create-api-app.md)
+* [webhook で外部イベントとアクションに応答する](../logic-apps/logic-apps-create-api-app.md)
+* [HTTP 要求に対する同期応答によってワークフローを呼び出したり、トリガーしたり、または入れ子にする](logic-apps-http-endpoint.md)
+* [チュートリアル: Twilio SMS webhook に応答してテキストで返信する](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+
+## <a name="error-handling-logging-and-control-flow-capabilities"></a>エラー処理、ログ、および制御フローの機能
+
+ロジック アプリには、条件、スイッチ、ループ、スコープなど、高度な制御フローの機能が多数用意されています。 耐障害性を備えたソリューションを実現するために、ワークフローにエラーおよび例外処理を実装することもできます。 ワークフロー実行ステータスの通知および診断ログについては、Azure Logic Apps によって監視やアラートも提供されます。
+
+* [スイッチ ステートメントでさまざまなアクションを実行する](logic-apps-switch-case.md)
+* [ロジック アプリのループとバッチを使用して配列とコレクションで項目を処理する](logic-apps-loops-and-scopes.md)
+* [ワークフローでエラーおよび例外処理を作成する](logic-apps-exception-handling.md)
 * [Azure アラートと Azure 診断の構成](logic-apps-monitor-your-logic-apps.md)
+* [ユース ケース: 医療関連企業が HL7 FHIR ワークフローのロジック アプリの例外処理を使用する方法](logic-apps-scenario-error-and-exception-handling.md)
 
-### <a name="scenarios"></a>シナリオ
-* [使用例: エラーと例外の処理](logic-apps-scenario-error-and-exception-handling.md)
+## <a name="deploy-and-manage-logic-apps"></a>ロジック アプリのデプロイと管理
 
-## <a name="deploying-and-managing"></a>デプロイと管理
-* [自動化されたデプロイの作成](../logic-apps/logic-apps-create-deploy-template.md)
+Visual Studio、Visual Studio Team Services、またはその他のソース管理および自動ビルド ツールで、ロジック アプリを完全に開発しデプロイできます。 リソース テンプレートでワークフローおよび依存接続のデプロイをサポートするために、ロジック アプリでは、Azure リソース デプロイ テンプレートが使用されます。 こうしたテンプレートは、Visual Studio ツールによって自動的に生成され、バージョン管理のためにソース管理機能にチェックインできます。
+
+* [自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
 * [Visual Studio でのロジック アプリのビルドとデプロイ](logic-apps-deploy-from-vs.md)
-* [ロジック アプリの監視](logic-apps-monitor-your-logic-apps.md)
+* [ロジック アプリの正常性を監視する](logic-apps-monitor-your-logic-apps.md)
 
-## <a name="content-types-conversions-and-transformations"></a>コンテンツ タイプ、変換
-Logic Apps の [ワークフロー定義言語](http://aka.ms/logicappsdocs) には、さまざまなコンテンツ タイプを変換して操作できるように多くの関数が用意されています。 また、エンジンは、データがワークフローを移動する間にコンテンツ タイプを維持するために、可能な処理をすべて行います。
+## <a name="content-types-conversions-and-transformations-within-a-run"></a>実行時のコンテンツ タイプ、変換
 
-* [コンテンツ タイプの処理](../logic-apps/logic-apps-content-type.md) (application/json、application/xml、text/plain など)
-* [ワークフロー定義の作成](../logic-apps/logic-apps-author-definitions.md)
-* [ワークフロー定義言語のリファレンス](http://aka.ms/logicappsdocs)
+Azure Logic Apps [ワークフロー定義言語](http://aka.ms/logicappsdocs)でさまざまな関数を使用して、複数のコンテンツ タイプにアクセスしたり、そのコンテンツ タイプを変換したりできます。 たとえば、文字列、JSON、および XML を、`@json()` および `@xml()` ワークフロー式に変換することができます。 Logic Apps エンジンではコンテンツ タイプが保持され、サービス間での無損失のコンテンツ転送がサポートされます。
 
-## <a name="batches-and-looping"></a>バッチとループ
-* [SplitOn](logic-apps-loops-and-scopes.md)
-* [ForEach](logic-apps-loops-and-scopes.md)
-* [Until](logic-apps-loops-and-scopes.md)
+* [JSON 以外のコンテンツ タイプを処理する](../logic-apps/logic-apps-content-type.md)。`application/xml`、`application/octet-stream`、`multipart/formdata` など
+* [ロジック アプリでのワークフロー式の動作](../logic-apps/logic-apps-author-definitions.md)
+* [リファレンス: Azure Logic Apps ワークフロー定義言語](http://aka.ms/logicappsdocs)
 
-## <a name="integrating-with-azure-functions"></a>Azure Functions との統合
-* [Azure Functions の統合](../logic-apps/logic-apps-azure-functions.md)
+## <a name="other-integrations-and-capabilities"></a>その他の統合と機能
 
-### <a name="scenarios"></a>シナリオ
-* [Service Bus のトリガーとしての Azure Functions](logic-apps-scenario-function-sb-trigger.md)
+ロジック アプリにより、Azure Functions、Azure API Management、Azure App Service 、カスタム HTTP エンドポイント (例: REST、SOAP) など、多くのサービスとの統合も実現します。
 
-## <a name="http-rest-and-soap"></a>HTTP、REST、SOAP
-* [SOAP の呼び出し](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [ロジック アプリから Azure Functions を呼び出す](../logic-apps/logic-apps-azure-functions.md)
+* [シナリオ: Azure Functions を使用してロジック アプリをトリガーする](logic-apps-scenario-function-sb-trigger.md)
+* [ブログ: ロジック アプリから SOAP エンドポイントを呼び出す](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
-このドキュメントには、今後も引き続き例とシナリオを追加します。 ご希望の例やシナリオがありましたら、以下のコメント セクションを使用してお知らせください。
+## <a name="next-steps"></a>次のステップ
 
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+- [ロジック アプリでエラーと例外を処理する](logic-apps-exception-handling.md)
+- [ワークフロー定義言語でワークフロー定義を作成する](logic-apps-author-definitions.md)
+- [Azure Logic Apps を強化する方法に関するコメント、質問、フィードバック、提案を送信する](https://feedback.azure.com/forums/287593-logic-apps)
