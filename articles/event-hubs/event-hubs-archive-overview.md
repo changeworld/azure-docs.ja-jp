@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2016
+ms.date: 03/22/2017
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: 7f5652aa39d6681b4a96cac00daac904dce2e537
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 95a927d8c2fbfbcb6aa663985d078d5146c489aa
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure Event Hubs Archive の概要
 Azure Event Hubs Archive を利用すると、Event Hubs のストリーミング データを任意の BLOB ストレージ アカウントに自動的に配信できます。その際、時間やサイズを柔軟に指定可能です。 Archive の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-what-is-event-hubs.md#capacity)に応じて自動的にスケールします。 Event Hubs Archive は Azure にストリーミング データを読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
 
-Azure Event Hubs Archive を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 そのため、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Archive ならストリーミング データの操作が容易です。
+Event Hubs Archive を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 そのため、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Archive ならストリーミング データの操作が容易です。
 
 ## <a name="how-event-hubs-archive-works"></a>Event Hubs Archive の機能のしくみ
 Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs におけるスケールの鍵となるのは、 [パーティション分割されたコンシューマー モデル](event-hubs-what-is-event-hubs.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
@@ -33,7 +34,7 @@ Event Hubs Archive では、アーカイブされたデータを格納するた�
 アーカイブされたデータは [Apache Avro][Apache Avro] 形式で書き込まれます。これはコンパクトで高速なバイナリ形式で、インライン スキーマを備えた便利なデータ構造になっています。 この形式は Hadoop エコシステムで幅広く使用されているほか、Stream Analytics や Azure Data Factory でも使用されています。 Avro の操作の詳細は、この記事の後半に記載してあります。
 
 ### <a name="archive-windowing"></a>アーカイブのウィンドウ設定
-Event Hubs Archive では、アーカイブを制御するウィンドウを設定することができます。 このウィンドウは "先に来たものが優先されるポリシー" が適用される最小サイズと時間の構成です。つまり、先に生じたトリガーによってアーカイブ操作が行われます。 15 分/100 MB のアーカイブ ウィンドウを設定してあるときに 1 MB/秒で送信する場合、サイズのウィンドウが時間のウィンドウよりも前にトリガーとなります。 各パーティションのアーカイブは個別に行われ、完了したブロック BLOB がアーカイブ時に (アーカイブが実行されるタイミングとなったときに) 書き込まれます。 名前付け規則は次のとおりです。
+Event Hubs Archive では、アーカイブを制御する "ウィンドウ" を設定することができます。 このウィンドウは "先に来たものが優先されるポリシー" が適用される最小サイズと時間の構成です。つまり、先に生じたトリガーによってアーカイブ操作が行われます。 15 分/100 MB のアーカイブ ウィンドウを設定してあるときに 1 MB/秒で送信する場合、サイズのウィンドウが時間のウィンドウよりも前にトリガーとなります。 各パーティションのアーカイブは個別に行われ、完了したブロック BLOB がアーカイブ時に (アーカイブが実行されるタイミングとなったときに) 書き込まれます。 名前付け規則は次のとおりです。
 
 ```
 [Namespace]/[EventHub]/[Partition]/[YYYY]/[MM]/[DD]/[HH]/[mm]/[ss]
@@ -45,14 +46,14 @@ Event Hubs のトラフィックは [スループット単位](event-hubs-what-i
 Event Hubs Archive は、構成後、最初のイベントを送信するとすぐに自動的に実行されます。 そして常時実行された状態が続きます。 ダウンストリーム処理で処理が行われていることを把握しやすいように、Event Hubs はデータがないときは空のファイルを書き込みます。 これにより、バッチ プロセッサに提供可能な、予測しやすいパターンとマーカーが得られます。
 
 ## <a name="setting-up-event-hubs-archive"></a>Event Hubs Archive の設定
-Event Hubs Archive は、ポータルまたは Azure Resource Manager を使用して、イベント ハブの作成時に構成できます。 Archive は、 **[オン]** ボタンをクリックするだけで有効化できます。 ストレージ アカウントとコンテナーを構成するには、ブレードの **[コンテナー]** セクションをクリックします。 Event Hubs Archive ではストレージとのサービス対サービスの認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
+イベント ハブの作成時に、ポータルまたは Azure Resource Manager を使用して Archive を構成できます。 Archive は、 **[オン]** ボタンをクリックするだけで有効化できます。 ストレージ アカウントとコンテナーを構成するには、ブレードの **[コンテナー]** セクションをクリックします。 Event Hubs Archive ではストレージとのサービス対サービスの認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
 
 既定の時間ウィンドウは 5 分です。 最小値は 1、最大値は 15 です。 **サイズ** ウィンドウの範囲は 10 ～ 500 MB です。
 
 ![][1]
 
 ## <a name="adding-archive-to-an-existing-event-hub"></a>既存のイベント ハブへの Archive の追加
-Event Hubs 名前空間内の既存のイベント ハブで Archive を構成できます。 この機能は以前の **Messaging** または **Mixed** 型の名前空間では利用できません。 既存のイベント ハブで Archive を有効にするか、Archive の設定を変更するには、名前空間をクリックして **[要点]** ブレードを読み込み、Archive の有効化または Archive 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているブレードの **[プロパティ]** セクションをクリックします。
+Event Hubs 名前空間内の既存の Event Hubs で Archive を構成できます。 この機能は以前の **Messaging** または **Mixed** 型の名前空間では利用できません。 既存のイベント ハブで Archive を有効にするか、Archive の設定を変更するには、名前空間をクリックして **[要点]** ブレードを読み込み、Archive の有効化または Archive 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているブレードの **[プロパティ]** セクションをクリックします。
 
 ![][2]
 
@@ -120,9 +121,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

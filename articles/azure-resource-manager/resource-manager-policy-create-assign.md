@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2017
+ms.date: 03/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: 944eafeb67df4baefa99172c1082259a95e84afe
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 5560b22f3f92a8e0a7cb8b973ef2e4c66bc32c06
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/21/2017
 2. 前の手順で作成した JSON から、サブスクリプションにポリシー定義を作成します。 この手順では、ポリシーが割り当て可能になりますが、お使いのサブスクリプションに規則は適用されません。
 3. スコープ (サブスクリプションまたはリソース グループなど) にポリシーを割り当てます。 これで、ポリシーの規則が設定されました。
 
-Azure には、いくつか定義済みのポリシーが用意されているので、定義が必要なポリシーの数を減らすことができます。 定義済みのポリシーが自分のシナリオで動作する場合は、最初の&2; つの手順をスキップし、スコープに定義済みのポリシーを割り当てます。
+Azure には、いくつか定義済みのポリシーが用意されているので、定義が必要なポリシーの数を減らすことができます。 定義済みのポリシーが自分のシナリオで動作する場合は、最初の 2 つの手順をスキップし、スコープに定義済みのポリシーを割り当てます。
 
 このトピックでは、ポリシー定義を作成してその定義をスコープに割り当てる手順について説明します。 ポリシー定義を作成する構文については説明しません。 ポリシーの構文については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 
@@ -97,7 +97,7 @@ PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Micr
     "displayName":"West US only policy assignment on the subscription ",
     "description":"Resources can only be provisioned in West US regions",
     "parameters": {
-      "listOfAllowedLocations": { "value": ["West US", "West US 2"] }
+      "allowedLocations": { "value": ["northeurope", "westus"] }
      },
     "policyDefinitionId":"/subscriptions/{subscription-id}/providers/Microsoft.Authorization/policyDefinitions/{definition-name}",
       "scope":"/subscriptions/{subscription-id}"
@@ -146,17 +146,26 @@ GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015
 `New-AzureRmPolicyDefinition` コマンドレットを使用してポリシー定義を作成することができます。 以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定するポリシー定義を作成します。
 
 ```powershell
-$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{    
-  "if" : {
-    "not" : {
-      "field" : "location",
-      "in" : ["northeurope" , "westeurope"]
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}'
+$policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{
+   "if": {
+     "not": {
+       "field": "location",
+       "in": "[parameters(''allowedLocations'')]"
+     }
+   },
+   "then": {
+     "effect": "deny"
+   }
+ }' -Parameter '{
+     "allowedLocations": {
+       "type": "array",
+       "metadata": {
+         "description": "An array of permitted locations for resources.",
+         "strongType": "location",
+         "displayName": "List of locations"
+       }
+     }
+ }'
 ```            
 
 出力は、ポリシー割り当ての際に使用される `$policy` オブジェクトに格納されます。 
@@ -172,18 +181,32 @@ $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description 
 `New-AzureRmPolicyAssignment` コマンドレットを使用して、目的のスコープでポリシーを適用します。
 
 ```powershell
-New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $policy -Scope /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
+$rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+$array = @("West US", "West US 2")
+$param = @{"allowedLocations"=$array}
+New-AzureRMPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param
 ```
 
-### <a name="view-policy-assignment"></a>ポリシーの割り当ての表示
+### <a name="view-policies"></a>ポリシーの表示
 
-ポリシーを取得するには、次のコマンドレットを使用します。
+すべてのポリシー割り当てを取得するには、次のコマンドを使用します。
 
 ```powershell
-(Get-AzureRmPolicyAssignment -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/{definition-name}").Properties.policyRule | ConvertTo-Json
+Get-AzureRmPolicyAssignment
 ```
 
-ポリシー定義の JSON が返されます。
+特定のポリシーを取得するには、次のコマンドを使用します。
+
+```powershell
+$rg = Get-AzureRmResourceGroup -Name "ExampleGroup"
+(Get-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope $rg.ResourceId
+```
+
+ポリシー定義用のポリシー規則を表示するには、次のコマンドを使用します。
+
+```powershell
+(Get-AzureRmPolicyDefinition -Name regionPolicyDefinition).Properties.policyRule | ConvertTo-Json
+```
 
 ### <a name="remove-policy-assignment"></a>ポリシーの割り当ての削除 
 

@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: fa3de6226b59c4f80e71c55a0aad20c19693642d
-ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 18010864160ceb2d76aea37196e6944bbe426457
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -35,6 +35,8 @@ ms.lasthandoff: 01/28/2017
 3. **[Upload a new dataset]** ダイアログ ボックスで、アップロードするファイルを参照します。
 4. 名前を入力し、データ型を指定したら、必要に応じて説明を入力します。 データの特徴を記録しておくと、後でデータを使用する際に参照できるため、説明を入力しておくことをお勧めします。
 5. チェックボックス **[This is the new version of an existing dataset]** をオンにしておくことにより、新しいデータで既存のデータセットを更新できます。 このチェックボックスをクリックし、既存のデータセット名を入力します。
+
+![新しいデータセットのアップロード](media/machine-learning-import-data-from-local-file/upload-dataset.png)
 
 アップロードする際に、ファイルがアップロードされていることを示すメッセージが表示されます。 アップロード時間は、データのサイズと、サービスへの接続速度に依存します。 ファイルのアップロードに時間がかかる場合、待機している間に Machine Learning Studio で他の作業も実行できます。 ただし、ブラウザーを閉じるとデータのアップロードに失敗します。
 

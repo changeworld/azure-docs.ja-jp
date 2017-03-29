@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/16/2017
 ms.author: casoper
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: b4ae6b16880e4a5e53c8f94dc814e25254c20d73
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 905357b9e2262b86cde31874287cc0b89eef4815
+ms.lasthandoff: 03/17/2017
 
 ---
 
@@ -27,7 +27,7 @@ Azure DevTest Labs では共有 IP アドレスを使用して、ラボの個別
 
 ## <a name="shared-ip-setting"></a>共有 IP 設定
 
-新しいラボは、仮想ネットワークのサブネットに作成されます。  既定では、このサブネットは、**[Enable shared public IP (共有パブリック IP を有効にする)]** が "*はい*" に設定されている状態で作成されます。  この構成では、サブネット全体に対して&1; つのパブリック IP アドレスが作成されます。  ラボを作成したら、[こちらの記事の手順](devtest-lab-configure-vnet.md)に従って、この設定をオフにできます。
+新しいラボは、仮想ネットワークのサブネットに作成されます。  既定では、このサブネットは、**[Enable shared public IP (共有パブリック IP を有効にする)]** が "*はい*" に設定されている状態で作成されます。  この構成では、サブネット全体に対して 1 つのパブリック IP アドレスが作成されます。  仮想ネットワークとサブネットの構成について詳しくは、「[Azure DevTest Labs で仮想ネットワークを構成する](devtest-lab-configure-vnet.md)」をご覧ください。
 
 ![新しいラボのサブネット](media/devtest-lab-shared-ip/lab-subnet.png)
 

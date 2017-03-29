@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
-ms.openlocfilehash: 09ec6d1aae5dc893e92b7c4ca1c30a251d02443d
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e00d453e9ae34cafb5ce753f63c253e954d6b09a
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -64,6 +65,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```
+
 ...
 
 {
@@ -73,7 +75,8 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
     "dependsOn": [
         "[resourceId('Microsoft.Web/sites/', variables('siteName'))]"
     ],
-    "properties": {
+
+"properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
         "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
     }
@@ -110,8 +113,6 @@ Web アプリがローカル キャッシュを使用している場合、最新
 ### <a name="i-have-local-cache-enabled-but-my-web-app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>ローカル キャッシュを有効にした後も、Web アプリが再起動されるのは なぜですか? ローカル キャッシュを使用すると、アプリが頻繁に再起動しないと思っていました。
 ローカル キャッシュを使用した場合、ストレージ関連の Web アプリの再起動回数が減りますが、 VM の計画的なインフラストラクチャのアップグレード時には、Web アプリが引き続き再起動する可能性があります。 ローカル キャッシュを有効にした場合、アプリ全体の再起動回数は減ります。
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>高速なローカル ドライブへのコピー時にローカル キャッシュで除外されるディレクトリはありますか?
+ストレージ コンテンツをコピーする手順の一環として、リポジトリという名前が付けられたフォルダーはすべて除外されます。 これは、サイトのコンテンツに Web アプリの日常業務で必要にならないソース管理リポジトリを含める可能性のあるシナリオで役立ちます。 
 

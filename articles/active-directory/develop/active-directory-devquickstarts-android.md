@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: f9809095128d0069d076d18486cae05b65498fa8
-ms.openlocfilehash: bde8ef9c4f51c38f8e5b41857be02ade43260824
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9ae8852c02361ff11c302f86cb5c53e01a48068a
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -62,8 +63,9 @@ Active Directory は、2 種類のアプリケーションの追加をサポー�
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. たとえば **TodoListService** など、アプリケーションのわかりやすい名前を入力し、**[Web アプリケーションや Web API]** を選択して、**[次へ]** をクリックします。
 6. サインオン URL には、サンプルのベース URL を入力します。 既定では、これは `https://localhost:8080` です。
-7. アプリケーション ID URI には、「`https://<your_tenant_name>/TodoListService`」を入力します。 `<your_tenant_name>` を Azure AD テナントの名前に置き換えます。 **[OK]** をクリックして登録を完了します。
+7. **[OK]** をクリックして登録を完了します。
 8. 引き続き Azure Portal で、アプリケーション ページに移動し、アプリケーションの ID 値を探してコピーします。 この値は後でアプリケーションを構成するときに必要です。
+9. **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新し、「`https://<your_tenant_name>/TodoListService`」を入力します。 `<your_tenant_name>` を Azure AD テナントの名前に置き換えます。
 
 ## <a name="step-3-register-the-sample-android-native-client-application"></a>手順 3. サンプルの Android ネイティブ クライアント アプリケーションを登録する
 このサンプルでは、Web アプリケーションを登録する必要があります。 これにより、アプリケーションは登録した Web API と通信できるようになります。 Azure AD は、登録されていないアプリケーションに対して、サインインを要求することさえも拒否します。 モデル化されたセキュリティの一環としてそのようになります。
@@ -71,7 +73,7 @@ Active Directory は、2 種類のアプリケーションの追加をサポー�
 ここでは、前述のサンプル アプリケーションを登録していると仮定します。 ただし、この手順は、開発しているあらゆるアプリに対して機能します。
 
 > [!NOTE]
-> アプリケーションと Web API の両方を&1; テナントに配置しているのはなぜなのか不思議に思われるかもしれません。 ご想像のとおり、別のテナントから Azure AD に登録されている外部 API にアクセスするアプリを構築することができます。 そのようにすると、お客様に対してアプリケーションでの API の使用に同意が求められることになります。 iOS 向け Active Directory 認証ライブラリはユーザーに代わって同意に対応します。 より高度な機能を知るにつれて、これが、Azure、Office、および他のすべてのサービス プロバイダーから一連の Microsoft API にアクセスするために必要な処理の重要な部分であることがわかるようになります。 この時点では、同じテナントに Web API とアプリケーションの両方を登録しているので、同意のプロンプトは表示されません。 これは、通常、自社のみで使用するアプリケーションを開発している場合に当てはまります。
+> アプリケーションと Web API の両方を 1 テナントに配置しているのはなぜなのか不思議に思われるかもしれません。 ご想像のとおり、別のテナントから Azure AD に登録されている外部 API にアクセスするアプリを構築することができます。 そのようにすると、お客様に対してアプリケーションでの API の使用に同意が求められることになります。 iOS 向け Active Directory 認証ライブラリはユーザーに代わって同意に対応します。 より高度な機能を知るにつれて、これが、Azure、Office、および他のすべてのサービス プロバイダーから一連の Microsoft API にアクセスするために必要な処理の重要な部分であることがわかるようになります。 この時点では、同じテナントに Web API とアプリケーションの両方を登録しているので、同意のプロンプトは表示されません。 これは、通常、自社のみで使用するアプリケーションを開発している場合に当てはまります。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナントを選択します。
@@ -243,7 +245,7 @@ Maven リポジトリから JAR ファイルを取得して、プロジェクト
 ### <a name="broker"></a>ブローカー
 Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。 アカウントは、AccountManager で作成されます。 アカウントの種類は、"com.microsoft.workaccount" です。 AccountManager では、単一の SSO アカウントのみが許可されます。 いずれかのアプリに対するデバイスのチャレンジが完了した後に、このユーザーの SSO Cookie が作成されます。
 
-この認証システムで&1; つのユーザー アカウントが作成され、ユーザーがこれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。 次のように指定してブローカー ユーザーをスキップできます。
+この認証システムで 1 つのユーザー アカウントが作成され、ユーザーがこれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。 次のように指定してブローカー ユーザーをスキップできます。
 
    `AuthenticationSettings.Instance.setSkipBroker(true);`
 
@@ -384,9 +386,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 「[Android で ADAL を使用してクロス アプリ SSO を有効にする方法](active-directory-sso-android.md)」を確認してください。  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -12,33 +12,23 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: ab4be9d9a03001789bed90e58d62fe1891608823
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8d9e90cc43df74968c7b9dc30d268f3e6228adcc
+ms.lasthandoff: 03/21/2017
 
 ---
 
 
 # <a name="create-a-web-app-with-deployment-from-github"></a>GitHub からのデプロイで Web アプリを作成する
 
-このサンプル スクリプトでは、Azure CLI 2.0 を使用して次の操作を行います。
+このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、(継続的なデプロイは行わずに) パブリックの GitHub リポジトリから Web アプリのコードをデプロイします。 継続的なデプロイを使用した GitHub でのデプロイについては、「[GitHub からの継続的なデプロイで Web アプリを作成する](app-service-cli-continuous-deployment-github.md)」を参照してください。
 
-* 西ヨーロッパ Azure リージョンの Azure App Service で Web アプリを作成する。
-* GitHub から Web アプリ コードをデプロイする。
-* デプロイした Azure Web アプリをブラウザーで表示する。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。 また、Web アプリのコードを含む GitHub リポジトリへのリンクも必要です。
 
-## <a name="prerequisites"></a>前提条件
-
-* `az login` を実行して Azure にログインします。
-* GitHub リポジトリに Web アプリ コードを配置します。
-
-> [!NOTE]
-> 自分のものではないパブリックの GitHub リポジトリを使用する場合、App Service ではその GitHub リポジトリからコードがデプロイされますが、継続的なデプロイに必要な SSH キーと webhook を設定することはできません。
->
->
+このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows クライアントで実行する方法については、[Windows での Azure CLI の実行](../../virtual-machines/virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
 ## <a name="create-app-sample"></a>サンプル アプリの作成
 

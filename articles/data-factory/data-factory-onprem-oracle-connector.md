@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a4b067e732bccb01faa96f23dbfd2ed65b7711a0
-ms.openlocfilehash: 62326da2e801a7c6e01d29e2298bd3552f331647
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a27ec9e1ebfde3493e41c493b85c0dc7f0ada2a0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,17 +33,13 @@ Data Factory は、Data Management Gateway を使用したオンプレミスの 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
 Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
-- **Microsoft Driver for Oracle** は、バージョン 2.7 以降の Data Management Gateway にバンドルされています。 このドライバーを使用することを**お勧め**します。 このドライバーにより、ゲートウェイだけをインストールすれば Oracle に接続することができ、コピーのパフォーマンスが向上することも実感できます。 Oracle Database バージョン 10g リリース 2 以降がサポートされています。
+- **Microsoft Driver for Oracle** は、バージョン 2.7 以降の Data Management Gateway にバンドルされています。 このドライバーを使用することを**お勧め**します。 ゲートウェイだけをインストールすれば Oracle に接続することができ、コピーのパフォーマンスが向上することも実感できます。 Oracle Database バージョン 10g リリース 2 以降がサポートされています。
 
     > [!NOTE]
     > 現在 Microsoft Driver for Oracle でサポートされているのは、Oracle からのデータ コピーだけです。Oracle への書き込みはサポートされていません。 また、Data Managemetn Gateway の [診断] タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
     >
 
-- **Oracle Data Provider for .NET**: Oracle Data Provider を使用して、Oracle との間でデータをコピーすることもできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているコンピューターに、適切なバージョン (32/64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
-
-    "XCopy インストール" を選択した場合は、readme.htm の手順に従います。 UI を備えたインストーラー (XCopy 以外のインストーラー) を選択することをお勧めします。
-
-    プロバイダーのインストール後、サービス アプレット (または Data Management Gateway 構成マネージャー) を使用して、コンピューターで Data Management Gateway ホスト サービスを**再開**します。  
+- **Oracle Data Provider for .NET:** このコンポーネントは、Data Management Gateway バージョン 2.7 以降に含まれているため、別途インストールする必要はありません。 2.7 より前のバージョンのゲートウェイを使用する場合は、最新バージョンのゲートウェイを[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からインストールすることをお勧めします。 Data Management Gateway Configuration Manager のヘルプ ページで、ゲートウェイのバージョンを確認できます ("Data Management Gateway" で検索)。
 
 ## <a name="copy-data-wizard"></a>データのコピー ウィザード
 Oracle データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
@@ -60,7 +57,7 @@ Oracle データベースから、サポートされているシンク データ
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. source として [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に&1; 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
 
 **Oracle のリンクされたサービス:**
 
@@ -247,7 +244,7 @@ Oracle データベースから、サポートされているシンク データ
 4. [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. source として [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から&1; 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
 
 **Oracle のリンクされたサービス:**
 ```json
@@ -339,7 +336,7 @@ Oracle データベースから、サポートされているシンク データ
 
 **Oracle 出力データセット:**
 
-このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Oracle にテーブルを作成します。 新しい行は&1; 時間ごとにテーブルに追加されます。
+このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Oracle にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```json
 {
@@ -415,7 +412,7 @@ Oracle データベースから、サポートされているシンク データ
 | --- | --- | --- |
 | type |type プロパティを **OnPremisesOracle** |はい |
 | driverType | Oracle Database との間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** または **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ |
-| connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 次の例を参照してください。 | はい |
+| connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | はい |
 | gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
 オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
@@ -465,7 +462,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 > [!NOTE]
-> コピー アクティビティは入力を&1; つだけ受け取り、出力を&1; つだけ生成します。
+> コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 >
 >
 
@@ -476,7 +473,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable |いいえ (**データセット**の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: select *from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select* from MyTable |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 ### <a name="oraclesink"></a>パイプライン
 **OracleSink** では次のプロパティがサポートされます。
@@ -505,7 +502,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 1. Oracle 用の .NET Provider をインストールしていない場合は [インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
 2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の手順を実行します。
    1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config
-   2. **Oracle Data Provider for .NET** を検索すると、次のサンプルに示すように、**system.data** -> **DbProviderFactories** の下に&1; つのエントリが見つかります: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />」というハウツー ガイドを参照してください。
+   2. **Oracle Data Provider for .NET** を検索すると、次のサンプルに示すように、**system.data** -> **DbProviderFactories** の下に 1 つのエントリが見つかります: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />」というハウツー ガイドを参照してください。
 3. このエントリを、v4.0 フォルダーの machine.config ファイル (<system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
 4. `gacutil /i [provider path]` を実行して、"<ODP.NET インストール パス>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll" をグローバル アセンブリ キャッシュ (GAC) にインストールします。## トラブルシューティングのヒント
 
@@ -566,9 +563,4 @@ Oracle からデータを移動すると、Oracle データ型から .NET 型へ
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

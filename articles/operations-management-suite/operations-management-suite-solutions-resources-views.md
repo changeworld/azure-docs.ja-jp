@@ -15,29 +15,30 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: deed3fbd7cd27f54767ae9b26c27c1e1a0106208
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Operations Management Suite (OMS) 管理ソリューションのビュー (プレビュー)
 > [!NOTE]
 > 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。    
-> 
-> 
+>
+>
 
 [Operations Management Suite (OMS) の管理ソリューション](operations-management-suite-solutions.md)には、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、[ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)で作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。  
 
 > [!NOTE]
-> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。 
-> 
-> 
+> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。
+>
+>
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、[管理ソリューションの作成方法](operations-management-suite-solutions-creating.md)およびソリューション ファイルの構造を理解していることを前提としています。
 
 ## <a name="overview"></a>概要
-ビューを管理ソリューションに含めるには、[ソリューション ファイル](operations-management-suite-solutions-creating.md)でビューの**リソース**を作成します。  ただし、ビューの詳細な構成を表す JSON は通常複雑で、典型的なソリューション作成者が手動で作成できるものではありません。  [ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)を使用してビューの作成とエクスポートを行い、詳細な構成をソリューションに追加するのが最も一般的な方法です。 
+ビューを管理ソリューションに含めるには、[ソリューション ファイル](operations-management-suite-solutions-creating.md)でビューの**リソース**を作成します。  ただし、ビューの詳細な構成を表す JSON は通常複雑で、典型的なソリューション作成者が手動で作成できるものではありません。  [ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)を使用してビューの作成とエクスポートを行い、詳細な構成をソリューションに追加するのが最も一般的な方法です。
 
 ビューをソリューションに追加する基本的な手順は次のとおりです。  各手順の詳細については、以降のセクションで詳しく説明します。
 
@@ -46,7 +47,7 @@ ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
 3. ビューの詳細を追加します。
 
 ## <a name="export-the-view-to-a-file"></a>ビューをファイルにエクスポートする
-[Log Analytics ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)の指示に従って、ビューをファイルにエクスポートします。  エクスポートされたファイルは JSON 形式で、[ソリューション ファイルと同じ要素](operations-management-suite-solutions-creating.md#management-solution-files)が含まれています。  
+[Log Analytics ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)の指示に従って、ビューをファイルにエクスポートします。  エクスポートされたファイルは JSON 形式で、[ソリューション ファイルと同じ要素](operations-management-suite-solutions-solution-file.md)が含まれています。  
 
 ビュー ファイルの**resources** 要素には、OMS ワークスペースを表す **Microsoft.OperationalInsights/workspaces** 型のリソースがあります。  この要素には、ビューを表し、その詳細な構成を含む**views** 型のサブ要素があります。  この要素の詳細をコピーしてからソリューションにコピーします。
 
@@ -69,11 +70,11 @@ ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
             "Author": "[variables('ViewAuthor')]",
             "Source": "Local",
             "Dashboard": ,
-            "OverviewTile": 
+            "OverviewTile":
         }
     }
 
-次の変数をソリューション ファイルの [variables](operations-management-suite-solutions-creating.md#variables) 要素に追加して、値をソリューションの値に置き換えます。
+次の変数をソリューション ファイルの variables 要素に追加して、値をソリューションの値に置き換えます。
 
     "LogAnalyticsApiVersion": "2015-11-01-preview",
     "ViewAuthor": "Your name."
@@ -91,7 +92,7 @@ ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
 * 変数はソリューションで定義され、適切なプロパティで使用する必要があります。
 
 ## <a name="add-the-view-details"></a>ビューの詳細を追加する
-エクスポートしたビュー ファイル内のビュー リソースには、**properties** 要素に、ビューの詳細な構成を含む 2 つの要素 (**Dashboard** と **OverviewTile**) が含まれています。  これら 2 つの要素とその内容を、ソリューション ファイル内のビュー リソースの **properties** 要素にコピーします。 
+エクスポートしたビュー ファイル内のビュー リソースには、**properties** 要素に、ビューの詳細な構成を含む 2 つの要素 (**Dashboard** と **OverviewTile**) が含まれています。  これら 2 つの要素とその内容を、ソリューション ファイル内のビュー リソースの **properties** 要素にコピーします。
 
 ## <a name="example"></a>例
 たとえば次のサンプルは、ビューを含むシンプルなソリューション ファイルを示しています。  スペース上の理由から、**Dashboard** と **OverviewTile** の内容には省略記号 (...) が表示されています。
@@ -179,10 +180,4 @@ ms.openlocfilehash: ae4e75c7ac318a414672cf791bb35d1615f45dea
 ## <a name="next-steps"></a>次のステップ
 * [管理ソリューション](operations-management-suite-solutions-creating.md)の作成についての詳細を参照する。
 * [Automation Runbook を管理ソリューションに](operations-management-suite-solutions-resources-automation.md)含める。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

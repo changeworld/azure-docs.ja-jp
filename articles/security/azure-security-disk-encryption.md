@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 10cc114451da7e73726772da4159776e76f5b8c9
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f52b9064d4771c714b829a409037ef6f03c54161
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -177,7 +177,7 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
   > Azure Disk Encryption は、[Azure PowerShell SDK Version 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) ではサポートされていません。 Azure PowerShell 1.1.0 の使用に関連するエラーが発生する場合は、「[Azure Disk Encryption Error Related to Azure PowerShell 1.1.0 (Azure PowerShell 1.1.0 に関連する Azure Disk Encryption エラー)](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx)」をご覧ください。
 
 * Azure CLI コマンドのいずれかを実行して、Azure サブスクリプションに関連付けるには、まず、以下のように Azure CLI をインストールする必要があります。
-  * Azure CLI をインストールして、Azure サブスクリプションに関連付ける場合は、[Azure CLI のインストールおよび構成方法](../xplat-cli-install.md)に関するページを参照してください。
+  * Azure CLI をインストールして、Azure サブスクリプションに関連付ける場合は、[Azure CLI のインストールおよび構成方法](../cli-install-nodejs.md)に関するページを参照してください。
   * Mac、Linux、および Windows 用の Azure CLI を Azure Resource Manager で使用する場合は、「[Resource Manager モードでの Azure CLI コマンド](../virtual-machines/azure-cli-arm-commands.md)」をご覧ください。
 * Azure Disk Encryption ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。 VM がドメインに参加している場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、「[BitLocker Group Policy Reference](https://technet.microsoft.com/library/ee706521)」(BitLocker グループ ポリシー リファレンス) をご覧ください。
 * Azure AD アプリケーションを作成するか、Key Vault を作成するか、または既存の Key Vault をセットアップして暗号化を有効にする場合は、「[Azure Disk Encryption prerequisite PowerShell script](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)」(Azure Disk Encryption の前提条件となる PowerShell スクリプト) をご覧ください。
@@ -338,7 +338,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 | ARM | Azure リソース マネージャー |
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) は、Windows IaaS VM でディスク暗号化を有効にするために使用される業界公認の Windows ボリューム暗号化テクノロジです。 |
 | BEK | BitLocker 暗号化キーは、OS ブート ボリュームとデータ ボリュームの暗号化に使用されます。 BitLocker キーは、Key Vault でシークレットとして保護されます。 |
-| CLI | [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)に関する記事をご覧ください。 |
+| CLI | [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)に関する記事をご覧ください。 |
 | DM-Crypt |[DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) は、Linux IaaS VM でディスク暗号化を有効にするために使用される Linux ベースの透過的なディスク暗号化サブシステムです。 |
 | KEK | キー暗号化キーは、シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳しくは、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントをご覧ください。 |
 | PS コマンドレット | [Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)に関する記事をご覧ください。 |
@@ -560,7 +560,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 > _KeyEncryptionKeyURL_ は省略可能なパラメーターです。 独自の KEK を使用して、Key Vault でデータ暗号化キー (パスフレーズ シークレット) の保護を強化することができます。
 
 #### <a name="cli-commands"></a>CLI コマンド
-暗号化された VHD でのディスク暗号化は、[CLI コマンド](../xplat-cli-install.md)をインストールして使用することで有効化できます。 Azure 内にある既存または実行中の IaaS Linux VM での暗号化を CLI コマンドによって有効化するには、次の操作を行います。
+暗号化された VHD でのディスク暗号化は、[CLI コマンド](../cli-install-nodejs.md)をインストールして使用することで有効化できます。 Azure 内にある既存または実行中の IaaS Linux VM での暗号化を CLI コマンドによって有効化するには、次の操作を行います。
 
 1. Key Vault のアクセス ポリシーを設定します。
 
@@ -634,7 +634,7 @@ _Get-AzureRmVMDiskEncryptionStatus_ の出力から、暗号化キーの URL を
 OSVolumeEncrypted と DataVolumesEncrypted の設定値は _Encrypted_ に設定されています。これは、両方のボリュームが Azure Disk Encryption を使用して暗号化されることを示します。 Azure Disk Encryption での暗号化を PowerShell コマンドレットによって有効化する方法については、ブログ投稿「[Explore Azure Disk Encryption with Azure PowerShell - Part 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx)」(Azure PowerShell を使用した Azure Disk Encryption の操作 - パート 1) および「[Explore Azure Disk Encryption with Azure PowerShell - Part 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)」(Azure PowerShell を使用した Azure Disk Encryption の操作 - パート 2) をご覧ください。
 
 > [!NOTE]
-> Linux VM では、`Get-AzureRmVMDiskEncryptionStatus` コマンドレットで暗号化状態が返されるまでに&3; ～&4; 分かかります。
+> Linux VM では、`Get-AzureRmVMDiskEncryptionStatus` コマンドレットで暗号化状態が返されるまでに 3 ～ 4 分かかります。
 
 #### <a name="get-the-encryption-status-of-the-iaas-vm-from-the-disk-encryption-cli-command"></a>ディスク暗号化 CLI コマンドから IaaS VM の暗号化状態を取得する
 IaaS VM の暗号化状態は、ディスク暗号化 CLI コマンド `azure vm show-disk-encryption-status` を使用して取得できます。 VM の暗号化設定を取得するには、Azure CLI セッションで以下のように入力します。
@@ -755,7 +755,7 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
 * (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
-* SELinux を無効にしたら、少なくとも&1; 回、VM を再起動してください。
+* SELinux を無効にしたら、少なくとも 1 回、VM を再起動してください。
 
 ##### <a name="steps"></a>手順
 1. 上記のディストリビューションのいずれかを使用して、VM を作成します。
@@ -791,7 +791,7 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
 再起動する前に、VM の[ブート診断](https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/)を保存することをお勧めします。
 
 #### <a name="monitoring-os-encryption-progress"></a>OS 暗号化の進行状況の監視
-OS 暗号化の進行状況を監視するには、次の&3; つの方法があります。
+OS 暗号化の進行状況を監視するには、次の 3 つの方法があります。
 
 * `Get-AzureRmVmDiskEncryptionStatus` コマンドレットを使用して、ProgressMessage フィールドを確認する。
     ```
@@ -828,7 +828,7 @@ OS 暗号化の進行状況を監視するには、次の&3; つの方法があ�
 
     /var/log/azure/Microsoft.Azure.Security.AzureDiskEncryptionForLinux
 
- OS 暗号化の進行中は、VM にサインインしないでください。 ログのコピーは、他の&2; つの方法が失敗した場合にのみ行ってください。
+ OS 暗号化の進行中は、VM にサインインしないでください。 ログのコピーは、他の 2 つの方法が失敗した場合にのみ行ってください。
 
 #### <a name="prepare-a-pre-encrypted-linux-vhd"></a>事前に暗号化された Linux VHD を準備する
 ##### <a name="ubuntu-16"></a>Ubuntu 16

@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 03/20/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: f2586eae5ef0437b7665f9e229b0cc2749bff659
-ms.openlocfilehash: 894856c6386b26610ca5078238a88adcdd2d9a03
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5ad5c688bae7b20ce6e5830e8c7b8dfa9c6df701
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="working-with-the-change-feed-support-in-azure-documentdb"></a>Azure DocumentDB での Change Feed サポートの使用
-[Azure DocumentDB](documentdb-introduction.md) は、大量のトランザクション データや運用データの保存に利用される高速かつ柔軟な NoSQL データベース サービスで、読み取り/書き込み処理を&10; ミリ秒未満の予測可能な待機時間で実行します。 このため、IoT、ゲーム、小売、操作ログといったアプリケーションに最適です。 こうしたアプリケーションでは多くの場合、DocumentDB のデータに対する変更を追跡し、その変更内容に基づいて、具体化されたビューの更新、リアルタイム分析の実行、通知のトリガーなどさまざまなアクションを実行する必要があります。 DocumentDB の **Change Feed サポート**により、こうしたパターンに対応できる効率性と拡張性に優れたソリューションを構築できます。
+[Azure DocumentDB](documentdb-introduction.md) は、大量のトランザクション データや運用データの保存に利用される高速かつ柔軟な NoSQL データベース サービスで、読み取り/書き込み処理を 10 ミリ秒未満の予測可能な待機時間で実行します。 このため、IoT、ゲーム、小売、操作ログといったアプリケーションに最適です。 こうしたアプリケーションでは多くの場合、DocumentDB のデータに対する変更を追跡し、その変更内容に基づいて、具体化されたビューの更新、リアルタイム分析の実行、通知のトリガーなどさまざまなアクションを実行する必要があります。 DocumentDB の **Change Feed サポート**により、こうしたパターンに対応できる効率性と拡張性に優れたソリューションを構築できます。
 
 Change Feed サポートにより、DocumentDB コレクション内のドキュメントの一覧が更新日時順に並べ替えられて表示されます。 このフィードを利用すれば、コレクション内のデータに対する変更をリッスンし、以下のようなアクションを実行できます。
 
@@ -56,7 +57,7 @@ DocumentDB では、DocumentDB コレクションに対する更新を増分的�
 
 * 変更内容は DocumentDB 内で保持され、非同期で処理できます。
 * コレクション内のドキュメントへの変更は、Change Feed ですぐに利用できます。
-* 各ドキュメントに対する変更は Change Feed に&1; 回だけ反映されます。 変更ログには、特定のドキュメントの最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
+* 各ドキュメントに対する変更は Change Feed に 1 回だけ反映されます。 変更ログには、特定のドキュメントの最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
 * Change Feed はパーティション キー値ごとに変更日時順に並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。
 * 変更の同期は任意の時点から行うことが可能です。つまり、変更内容を利用できるデータ保持期間は固定されていません。
 * 変更内容は、パーティション キーの範囲として利用できます。 この機能により、大規模コレクションの変更を複数のコンシューマーやサーバーで並行処理できるようになります。
@@ -66,10 +67,10 @@ DocumentDB の Change Feed はすべてのアカウントについて既定で�
 
 ![DocumentDB の Change Feed の分散処理](./media/documentdb-change-feed/changefeedvisual.png)
 
-次のセクションでは、DocumentDB REST API と SDK を使用して Change Feed にアクセスする方法について説明します。
+次のセクションでは、DocumentDB REST API と SDK を使用して Change Feed にアクセスする方法について説明します。 .NET アプリケーションでは、Change Feed のイベントの処理に [Change Feed プロセッサ ライブラリ]()を使用することをお勧めします。
 
-## <a name="working-with-the-rest-api-and-sdk"></a>REST API と SDK の使用
-DocumentDB では、**コレクション**と呼ばれるストレージとスループットの柔軟なコンテナーを提供します。 コレクション内のデータはスケーラビリティとパフォーマンスのために、[パーティション キー](documentdb-partition-data.md)を使用して論理的にグループ化されます。 DocumentDB ではこうしたデータへのアクセスに、ID 別の検索 (Read/Get)、クエリ、読み取りフィード (スキャン) を含む、さまざまな API を提供します。 Change Feed は DocumentDB の `ReadDocumentFeed` API に新しい要求ヘッダーを&2; 個設定することで取得でき、さまざまなパーティション キー範囲で並行して処理できます。
+## <a id="rest-apis"></a>REST API と SDK の使用
+DocumentDB では、**コレクション**と呼ばれるストレージとスループットの柔軟なコンテナーを提供します。 コレクション内のデータはスケーラビリティとパフォーマンスのために、[パーティション キー](documentdb-partition-data.md)を使用して論理的にグループ化されます。 DocumentDB ではこうしたデータへのアクセスに、ID 別の検索 (Read/Get)、クエリ、読み取りフィード (スキャン) を含む、さまざまな API を提供します。 Change Feed は DocumentDB の `ReadDocumentFeed` API に新しい要求ヘッダーを 2 個設定することで取得でき、さまざまなパーティション キー範囲で並行して処理できます。
 
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed API
 ReadDocumentFeed のしくみを簡単に説明します。 DocumentDB は、`ReadDocumentFeed` API を通じてコレクション内でドキュメントのフィードの読み取りをサポートします。 たとえば、次の要求は、`serverlogs` コレクション内でドキュメントのページを返します。 
@@ -88,8 +89,6 @@ ReadDocumentFeed のしくみを簡単に説明します。 DocumentDB は、`Re
 
 **ドキュメント フィードの逐次読み取り**
 
-![DocumentDB ReadDocumentFeed の逐次実行](./media/documentdb-change-feed/readfeedserial.png)
-
 また、サポートされている [DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかを使用してドキュメントのフィードを取得できます。 たとえば次のスニペットは、.NET で ReadDocumentFeed を実行する方法を示します。
 
     FeedResponse<dynamic> feedResponse = null;
@@ -99,15 +98,10 @@ ReadDocumentFeed のしくみを簡単に説明します。 DocumentDB は、`Re
     }
     while (feedResponse.ResponseContinuation != null);
 
-> [!NOTE]
-> Change Feed では 1.11.0 以降の SDK バージョンが必要になります (現在はプライベート プレビューで利用可能)
-
 ### <a name="distributed-execution-of-readdocumentfeed"></a>ReadDocumentFeed の分散実行
 数テラバイト以上のデータを含んでいるか、大量の更新を取り込むコレクションでは、1 台のクライアント マシンにフィードの読み取りを直列処理させるのが現実的に難しい場合があります。 DocumentDB はこれらのビッグ データのシナリオをサポートするために API を提供し、複数のクライアント リーダー/コンシューマーの間で透過的に `ReadDocumentFeed` 呼び出しを分散します。 
 
 **ドキュメント フィードの分散読み取り**
-
-![DocumentDB ReadDocumentFeed の分散実行](./media/documentdb-change-feed/readfeedparallel.png)
 
 増分の変更に拡張性のある処理を提供するため、DocumentDB はパーティション キー範囲に基づいた Change Feed API でスケール アウト モデルをサポートします。
 
@@ -258,10 +252,10 @@ ReadDocumentFeed は、DocumentDB コレクションの変更の増分処理で�
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-変更は、パーティション キー範囲に含まれる各パーティション キー値内の時間に基づいて並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。 結果が&1; ページに収まりきらない場合、前回の応答から `etag` に等しい価値の `If-None-Match` ヘッダーで要求を再送信すると、結果の次のページを読み取ることができます。 ストアド プロシージャまたはトリガー内でトランザクションを使用して複数のドキュメントが挿入または更新された場合、それらのドキュメントはすべて同じ応答ページ内で返されます。
+変更は、パーティション キー範囲に含まれる各パーティション キー値内の時間に基づいて並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。 結果が 1 ページに収まりきらない場合、前回の応答から `etag` に等しい価値の `If-None-Match` ヘッダーで要求を再送信すると、結果の次のページを読み取ることができます。 ストアド プロシージャまたはトリガー内でトランザクションを使用して複数のドキュメントが挿入または更新された場合、それらのドキュメントはすべて同じ応答ページ内で返されます。
 
 > [!NOTE]
-> Change Feed を使用すると、ストアド プロシージャまたはトリガー内で複数のドキュメントが挿入または更新された場合に、`x-ms-max-item-count` で指定した数よりも多くの項目が&1; ページで返される場合があります。 
+> Change Feed を使用すると、ストアド プロシージャまたはトリガー内で複数のドキュメントが挿入または更新された場合に、`x-ms-max-item-count` で指定した数よりも多くの項目が 1 ページで返される場合があります。 
 
 .NET SDK には、コレクションに加えられた変更にアクセスする、[CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) および [ChangeFeedOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.changefeedoptions.aspx) ヘルパー クラスが用意されています。 次のスニペットは、単一のクライアントから .NET SDK を使用して開始からのすべての変更を取得する方法を示します。
 
@@ -315,7 +309,7 @@ ReadDocumentFeed は、DocumentDB コレクションの変更の増分処理で�
         return checkpoints;
     }
 
-また次のスニペットは、Change Feed サポートと上記の関数を使用して DocumentDB で変更をリアルタイムで処理する方法を示します。 最初の呼び出しは、コレクション内のすべてのドキュメントを返し、2 つ目の呼び出しは最後のチェックポイント以降に作成された&2; つのドキュメントのみが返されます。
+また次のスニペットは、Change Feed サポートと上記の関数を使用して DocumentDB で変更をリアルタイムで処理する方法を示します。 最初の呼び出しは、コレクション内のすべてのドキュメントを返し、2 つ目の呼び出しは最後のチェックポイント以降に作成された 2 つのドキュメントのみが返されます。
 
     // Returns all documents in the collection.
     Dictionary<string, string> checkpoints = await GetChanges(client, collection, new Dictionary<string, string>());
@@ -337,15 +331,27 @@ ReadDocumentFeed は、DocumentDB コレクションの変更の増分処理で�
         // trigger an action, like call an API
     }
 
+## <a id="change-feed-processor"></a>Change Feed プロセッサ ライブラリ
+[DocumentDB Change Feed プロセッサ ライブラリ](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor)を使用して、複数のコンシューマー全体に Change Feed からイベント処理を配布できます。 .NET プラットフォームで Change Feed リーダーを作成するときには、この実装を使用する必要があります。 `ChangeFeedProcessorHost` クラスはイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
+
+[`ChangeFeedProcessorHost`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/ChangeFeedEventHost.cs) クラスを使用するには、[`IChangeFeedObserver`](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/ChangeFeedProcessor/DocumentDB.ChangeFeedProcessor/IChangeFeedObserver.cs) を実装できます。 このインターフェイスには 3 つのメソッドが含まれています。
+
+* OpenAsync
+* CloseAsync
+* ProcessEventsAsync
+
+イベント処理を開始するには、ChangeFeedProcessorHost をインスタンス化し、DocumentDB コレクションの適切なパラメーターを提供します。 次に、`RegisterObserverAsync` を呼び出し、`IChangeFeedObserver` 実装をランタイムに登録します。 この時点で、ホストは "どん欲な" アルゴリズムを利用して DocumentDB コレクションにあるすべてのパーティション キー範囲でリースの取得を試行します。 これらのリースは一定の期間存続し、その後、更新する必要があります。 新しいノード (この場合は worker インスタンス) がオンラインになると、新しいノードはリースを予約し、時間と共にリースの追加取得を試行し、負荷がノード間を移動します。
+
+![DocumentDB Change Feed プロセッサ ホストを使用する](./media/documentdb-change-feed/changefeedprocessor.png)
+
+時間と共に、均衡が確立されます。 この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケールがコンシューマーに適用されます。 コンシューマーが処理できる速度より速く DocumentDB で変更を利用できれば、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
+
+ChangeFeedProcessorHost クラスは、別の DocumentDB リース コレクションを使用して、チェックポイント処理メカニズムも実装します。 このメカニズムはパーティションごとにオフセットを保存します。そのため、各コンシューマーは前回のコンシューマーが保存した内容から、最後のチェックポイントを判断できます。 パーティションがリースによってノード間を移動するにつれて、負荷移動を円滑にする同期メカニズムとなります。
+
 この記事では、DocumentDB における Change Feed のサポートと、DocumentDB REST API や SDK を使用して DocumentDB データに加えられた変更を追跡する方法について説明しました。 
 
 ## <a name="next-steps"></a>次のステップ
 * [Github で DocumentDB Change フィード コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed)を使ってみる
 * [DocumentDB のリソースと階層](documentdb-resources.md)についての詳細を確認する
 * [DocumentDB SDK](documentdb-sdk-dotnet.md) や [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) でコーディングを開始する
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

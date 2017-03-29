@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9755319296f960cf85eac13f98d139d086664de2
-ms.openlocfilehash: 6fea13d0c7e00032183b3b3ea4ea0f6e401d1e93
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 3b029b67e52b212d604e3d645fe7a451b5a60b3e
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -99,7 +100,7 @@ Application Insights を Web アプリにインストールし、[可用性 Web 
 * テレメトリによる確かな証拠に基づいて次の開発サイクルを決定します。
 
 ## <a name="get-started"></a>作業開始
-Application Insights は、Microsoft Azure でホストされる多数のサービスの&1; つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](http://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
+Application Insights は、Microsoft Azure でホストされる多数のサービスの 1 つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](http://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
 
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
 
@@ -140,15 +141,10 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 
 ## <a name="videos"></a>ビデオ
+
 [![Animated introduction](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/218/player]
->
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/231/player]
->
-> [!VIDEO https://channel9.msdn.com/Series/ConnectOn-Demand/222/player]
->
->
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 <!--Link references-->
 
@@ -165,9 +161,4 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

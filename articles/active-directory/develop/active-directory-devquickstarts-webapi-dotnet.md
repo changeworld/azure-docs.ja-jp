@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: e2e1c68b83e9b9ec5a3865e89a98b80cf59cdfad
-ms.openlocfilehash: 038b862a355310d264dacb4c619fb6558a0edffc
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b028a75836f7c762431bfb9e3fc30822b7dee885
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -54,9 +54,10 @@ To Do List API を構築するには、まず次の手順を実行する必要�
 5. 画面の指示に従い、新しい **Web アプリケーションか Web API (またはその両方)** を作成します。
   * **[名前]** には、ユーザーがアプリケーションの機能を把握できる名前を入力します。 「**To Do List Service**」と入力します。
   * **[リダイレクト URI]** には、Azure AD が、アプリから要求されたトークンを返すために使用するスキームと文字列の組み合わせを設定します。 この値として、「 `https://localhost:44321/` 」を入力します。
-  * **[AppID URI]** には、テナント固有の識別子を入力します。 たとえば、「 `https://contoso.onmicrosoft.com/TodoListService`」のように入力します。
-  
-6. 構成を保存します。 今後の手順でクライアント アプリケーションも登録する必要があるため、ポータルは開いたままにします。
+
+6. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 テナント固有の識別子を入力します。 たとえば、「 `https://contoso.onmicrosoft.com/TodoListService`」のように入力します。
+
+7. 構成を保存します。 今後の手順でクライアント アプリケーションも登録する必要があるため、ポータルは開いたままにします。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2: OWIN 認証パイプラインを使用するようにアプリを設定する
 受信した要求およびトークンを検証するために、アプリケーションを Azure AD と通信するように設定する必要があります。
@@ -104,7 +105,7 @@ To Do List API を構築するには、まず次の手順を実行する必要�
     {
     ```
 
-    承認呼び出し元が `TodoListController` API の&1; つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。 OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
+    承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。 OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
 
 6. Web API の一般的な要件に、トークンに存在する "スコープ" の検証があります。 この検証により、To Do List Service へのアクセスに必要なアクセス許可に対してユーザーが同意したことを確認できます。
 

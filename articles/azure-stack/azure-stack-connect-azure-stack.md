@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 596ac7af83187e363fbc1cd18adabf3ae7c86113
-ms.openlocfilehash: 3bc12680d062a22948af7193cf1da47442587a42
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: a383369385a042d2ec4b4a57d7dac968e24e05bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -70,27 +70,26 @@ Set-ExecutionPolicy Unrestricted
 To create a VPN connection to the Azure Stack PoC computer, use the following steps:
 
 
-1.    Add the Azure Stack PoC computer’s host IP address & certificate authority(CA) to the list of trusted hosts on your client computer by running the following commands in an elevated PowerShell session:  
+1. Add the Azure Stack PoC computer’s host IP address & certificate authority (CA) to the list of trusted hosts on your client computer by running the following commands in an elevated PowerShell session:
 
     ```PowerShell
     Set-Item wsman:\localhost\Client\TrustedHosts -Value $hostIP -Concatenate
-    Set-Item wsman:\localhost\Client\TrustedHosts -Value mas-ca01.azurestack.local -Concatenate  
+    Set-Item wsman:\localhost\Client\TrustedHosts -Value mas-ca01.azurestack.local -Concatenate
     ```
 
-
-2.    Assign the Azure Stack host IP address and administrator password to the **$hostIP** and **$Password** variables by running the following PowerShell commands and make sure that you populate the administrator password and fields:  
+2. Assign the Azure Stack host IP address and administrator password to the **$hostIP** and **$Password** variables by running the following PowerShell commands and make sure that you populate the administrator password and fields:
 
     ```PowerShell
     #Change the IP address in the following command to match your Azure Stack host IP address
     $hostIP = "<Azure Stack host IP address>"
-
     # Change the password in the following command to administrator password that is provided when deploying Azure Stack. 
     $Password = ConvertTo-SecureString "<Administrator password provided when deploying Azure Stack>" -AsPlainText -Force
     ```
-
+    
 3. Get the Azure Stack host computer’s NAT IP address. If you do not remember the NAT IP address of the Azure Stack PoC instance you are trying to connect to, you can get it by using the **Get-AzureStackNatServerAddress** command:
 
     ```PowerShell
+    # Get host computer's NAT IP address
     $natIp = Get-AzureStackNatServerAddress -HostComputer $hostIP -Password $Password
     ```
     ![get NAT IP](media/azure-stack-connect-azure-stack/image1.png)  
@@ -111,10 +110,12 @@ To create a VPN connection to the Azure Stack PoC computer, use the following st
 
 5.    Connect to the Azure Stack instance by using either of the following methods:  
 
-    a.    **Connect-AzureStackVpn** command:  
+    a.    **Connect-AzureStackVpn** command: 
+    
     ```PowerShell
     Connect-AzureStackVpn -Password $Password
     ```
+    
     ![connect with cmd](media/azure-stack-connect-azure-stack/image4.png)  
 
     When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** into your local computer’s certificate store. (the prompt might appear behind the PowerShell session window). 

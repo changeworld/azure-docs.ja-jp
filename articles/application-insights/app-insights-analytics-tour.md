@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: ca96cd4ddf1be5ab70475d40fa65e73d248fd67b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 132576ca394fe475000449ea58871726c36d078f
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -190,7 +190,7 @@ ms.lasthandoff: 03/07/2017
 
 * `['...']` や `["..."]` のように角かっこで囲まれている場合は、[列名](app-insights-analytics-reference.md#names)にスペースまたは記号を含めることができます。
 * `%` は一般的なモジュロ演算子です。
-* `1d` (数字の&1; の後に "d" が付加されている) は&1; 日を意味する期間リテラルです。 期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
+* `1d` (数字の 1 の後に "d" が付加されている) は 1 日を意味する期間リテラルです。 期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
 * `floor` (エイリアスは `bin`) は、指定した基準値の最も近い倍数に値を切り捨てます。 したがって、 `floor(aTime, 1s)` の場合、最も近い秒数に時間を切り捨てます。
 
 [式](app-insights-analytics-reference.md#scalars)には、一般的な演算子 (`+` や `-` など) をすべて含めることができ、各種の便利な関数があります。
@@ -230,7 +230,7 @@ ms.lasthandoff: 03/07/2017
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作名) は、結果のテーブルに&1; 列で表示されます。
+`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作名) は、結果のテーブルに 1 列で表示されます。
 
 結果を時間帯でグループ分けすることもできます。
 
@@ -295,7 +295,7 @@ ms.lasthandoff: 03/07/2017
 ## <a name="multiple-series"></a>複数の系列
 `summarize` 句の複数の式によって複数の列が作成されます。
 
-`by` 句の複数の式によって複数の行 (値の組み合わせごとに&1; つ) が作成されます。
+`by` 句の複数の式によって複数の行 (値の組み合わせごとに 1 つ) が作成されます。
 
 ```AIQL
 
@@ -689,7 +689,9 @@ Application Insights エージェントがインストールされていない�
 ### <a name="traces-table"></a>トレース テーブル
 TrackTrace() を使用してアプリが送信したテレメトリ、または [他のログ記録フレームワーク](app-insights-asp-net-trace-logs.md)が含まれています。
 
-
+## <a name="video"></a>ビデオ 
+ 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="next-steps"></a>次のステップ
 * [Analytics 言語リファレンス](app-insights-analytics-reference.md)

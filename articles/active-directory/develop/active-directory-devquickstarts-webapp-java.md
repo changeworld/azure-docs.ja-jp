@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: ade6b7d9fa195ebea8f8587b01e4cc0ba71a0a83
-ms.openlocfilehash: fa5c367d7b8f46349b4bdc1de2af35050329a650
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: a20017a63ebed745e2d101d556e93594325533dc
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -37,20 +37,20 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
 * [アプリのスケルトン](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip)をダウンロードするか、[完全なサンプル](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip)をダウンロードします。
 * アプリの登録先となる Azure AD テナントも必要です。 Azure AD テナントがない場合は、[テナントの取得方法](active-directory-howto-tenant.md)に関するページを参照して取得してください。
 
-準備ができたら、次の&9; つのセクションの手順を実行します。
+準備ができたら、次の 9 つのセクションの手順を実行します。
 
 ## <a name="step-1-register-the-new-app-with-azure-ad"></a>手順 1: Azure AD に新しいアプリを登録する
 ユーザー認証を行うようにアプリを設定するには、まず次の手順でテナントにアプリを登録する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com)にサインインします。
 2. 上部のバーで、自分のアカウント名をクリックします。 **[ディレクトリ]** リストから、アプリを登録する Active Directory テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従い、**Web アプリケーションまたは WebAPI** (またはその両方) を作成します。
   * **[名前]** は、ユーザーに対して表示されるアプリ名です。
   * **[サインオン URL]** は、アプリのベース URL です。 スケルトンの既定の URL は http://localhost:8080/adal4jsample/ です。
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 名前は、`https://<tenant-domain>/<app-name>` のように付けます (例: `http://localhost:8080/adal4jsample/`)。
 6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 次のセクションで使用するために、アプリのページからこの値をコピーします。
+7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 名前は、`https://<tenant-domain>/<app-name>` のように付けます (例: `http://localhost:8080/adal4jsample/`)。
 
 アプリ用のポータルで、**[設定]** ページからアプリ用のキーを作成してコピーします。 このキーはすぐに必要になります。
 
