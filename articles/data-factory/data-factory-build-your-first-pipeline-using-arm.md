@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 1820b25f1cf426d0a81588a00dc5f26073ebb9f8
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 38e8320c09c5aa870018081a29911611f09a3e3a
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -50,9 +51,9 @@ ms.openlocfilehash: 1820b25f1cf426d0a81588a00dc5f26073ebb9f8
 | HDInsight のオンデマンドのリンクされたサービス |オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 クラスターは、データ処理のために自動的に作成され、処理が終了すると削除されます。 |
 | Azure BLOB の入力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、入力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
 | Azure BLOB の出力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、出力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
-| データ パイプライン |パイプラインには、HDInsightHive 型のアクティビティが&1; つ含まれています。このアクティビティは、入力データセットを使用し、出力データセットを生成します。 |
+| データ パイプライン |パイプラインには、HDInsightHive 型のアクティビティが 1 つ含まれています。このアクティビティは、入力データセットを使用し、出力データセットを生成します。 |
 
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の&2; 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を&1; つ含むパイプラインを作成します。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 2 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を 1 つ含むパイプラインを作成します。
 
 次のセクションでは、このチュートリアルを速やかに実行し、テンプレートをテストできるように、Data Factory エンティティを定義するための完全な Resource Manager テンプレートを提供します。 各 Data Factory エンティティを定義する方法については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」をご覧ください。
 
@@ -390,15 +391,15 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
     "type": "linkedservices",
     "name": "[variables('azureStorageLinkedServiceName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]"
+          "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureStorage",
-        "description": "Azure Storage linked service",
-        "typeProperties": {
+          "type": "AzureStorage",
+          "description": "Azure Storage linked service",
+          "typeProperties": {
             "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
-        }
+          }
     }
 }
 ```
@@ -412,18 +413,18 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
     "type": "linkedservices",
     "name": "[variables('hdInsightOnDemandLinkedServiceName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]"
+          "[variables('dataFactoryName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "HDInsightOnDemand",
-        "typeProperties": {
+          "type": "HDInsightOnDemand",
+          "typeProperties": {
             "clusterSize": 1,
             "version": "3.2",
             "timeToLive": "00:05:00",
             "osType": "windows",
             "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-        }
+          }
     }
 }
 ```
@@ -438,64 +439,64 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 
 #### <a name="azure-blob-input-dataset"></a>Azure BLOB の入力データセット
-入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。 
+入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。 
 
 ```json
 {
     "type": "datasets",
     "name": "[variables('blobInputDatasetName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-        "typeProperties": {
+          "type": "AzureBlob",
+          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+          "typeProperties": {
             "fileName": "[parameters('inputBlobName')]",
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'))]",
             "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
             }
-        },
-        "availability": {
+          },
+          "availability": {
             "frequency": "Month",
             "interval": 1
-        },
-        "external": true
+          },
+          "external": true
     }
 }
 ```
 この定義では、パラメーター テンプレートで定義されているパラメーター blobContainer、inputBlobFolder、および inputBlobName が使用されます。 
 
 #### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
-出力データを格納する BLOB コンテナーとフォルダーの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。  
+出力データを格納する BLOB コンテナーとフォルダーの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。  
 
 ```json
 {
     "type": "datasets",
     "name": "[variables('blobOutputDatasetName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
-        "typeProperties": {
+          "type": "AzureBlob",
+          "linkedServiceName": "[variables('azureStorageLinkedServiceName')]",
+          "typeProperties": {
             "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'))]",
             "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ","
+                  "type": "TextFormat",
+                  "columnDelimiter": ","
             }
-        },
-        "availability": {
+          },
+          "availability": {
             "frequency": "Month",
             "interval": 1
-        }
+          }
     }
 }
 ```
@@ -510,51 +511,51 @@ HDInsight のオンデマンドのリンクされたサービスを定義する�
     "type": "datapipelines",
     "name": "[variables('pipelineName')]",
     "dependsOn": [
-        "[variables('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('hdInsightOnDemandLinkedServiceName')]",
-        "[variables('blobInputDatasetName')]",
-        "[variables('blobOutputDatasetName')]"
+          "[variables('dataFactoryName')]",
+          "[variables('azureStorageLinkedServiceName')]",
+          "[variables('hdInsightOnDemandLinkedServiceName')]",
+          "[variables('blobInputDatasetName')]",
+          "[variables('blobOutputDatasetName')]"
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-        "description": "Pipeline that transforms data using Hive script.",
-        "activities": [
+          "description": "Pipeline that transforms data using Hive script.",
+          "activities": [
         {
-            "type": "HDInsightHive",
-            "typeProperties": {
+              "type": "HDInsightHive",
+              "typeProperties": {
                 "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
                 "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
                 "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                      "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                      "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
                 }
-            },
-            "inputs": [
+              },
+              "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                  "name": "[variables('blobInputDatasetName')]"
             }
-            ],
-            "outputs": [
+              ],
+              "outputs": [
             {
-                "name": "[variables('blobOutputDatasetName')]"
+                  "name": "[variables('blobOutputDatasetName')]"
             }
-            ],
-            "policy": {
+              ],
+              "policy": {
                 "concurrency": 1,
                 "retry": 3
-            },
-            "scheduler": {
+              },
+              "scheduler": {
                 "frequency": "Month",
                 "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
+              },
+              "name": "RunSampleHiveActivity",
+              "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
         }
-        ],
-        "start": "2016-10-01T00:00:00Z",
-        "end": "2016-10-02T00:00:00Z",
-        "isPaused": false
+          ],
+          "start": "2016-10-01T00:00:00Z",
+          "end": "2016-10-02T00:00:00Z",
+          "isPaused": false
     }
 }
 ```
@@ -613,16 +614,11 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 このテンプレートでは、GatewayUsingARM という名前のゲートウェイで GatewayUsingArmDF という名前のデータ ファクトリを作成しています。 
 
 ## <a name="see-also"></a>関連項目
-| トピック | Description |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

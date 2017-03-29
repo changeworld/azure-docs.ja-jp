@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/6/2017
+ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
-ms.openlocfilehash: 304acc7d2bfdefffde700ecd469b6335b08b85e6
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: a56749a5ac1098db3970140a76b71c77c1f74c07
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,11 +31,12 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 * アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の [Office 365 固有の要件](#office-365-specific-requirements)に関するセクションを参照してください。
 
 ## <a name="connectivity-provider"></a>接続プロバイダー
+
 * [ExpressRoute 接続パートナー](expressroute-locations.md#partners) と連携して Microsoft Cloud に接続することができます。 [3 とおりの方法](expressroute-introduction.md)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
-* プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#nonpartners)を通じて Microsoft Cloud に接続できます。
+* プロバイダーが ExpressRoute 接続パートナーではない場合でも、 [クラウド エクスチェンジ プロバイダー](expressroute-locations.md#c1partners)を通じて Microsoft Cloud に接続できます。
 
 ## <a name="network-requirements"></a>ネットワークの要件
-* **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。 Microsoft の要件では、 [クラウド エクスチェンジへの物理接続が&1; つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。 
+* **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。 Microsoft の要件では、 [クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。
 * **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで [ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
 * **NAT**: Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。 オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
 * **QoS**: Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
@@ -65,5 +66,4 @@ ExpressRoute で CRM Online を有効にする予定がある場合は、以下�
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
   * [ルーティングの構成](expressroute-howto-routing-classic.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
-
 

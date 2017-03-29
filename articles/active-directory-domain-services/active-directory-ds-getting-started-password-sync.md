@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: e4b1907b95576468654703c843a5f6e06846814b
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f994edd71c6d8ca8a2c3f5de370115747f87da57
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -68,7 +68,7 @@ Azure AD Domain Services では、管理対象ドメインでユーザーを認�
 <br>
 
 ## <a name="related-content"></a>関連コンテンツ
-* [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)
+* [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md#reset-your-password)
 * [Azure AD でのパスワード管理の概要](../active-directory/active-directory-passwords-getting-started.md)
 * [AAD Domain Services とのパスワード同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)

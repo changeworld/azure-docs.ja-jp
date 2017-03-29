@@ -15,9 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/14/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 73d5f91f31780350c68b3475c2cbbb597f9b438e
-ms.openlocfilehash: 0c8f37055a6c64a54009ecafd883426824dcd901
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3a02171d52b6d963a93a654d2506269e29f1be8e
+ms.lasthandoff: 03/18/2017
 
 ---
 
@@ -128,7 +128,7 @@ ProxyPassword="Password"
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>異なる Recovery Services コンテナーを使用した構成サーバーの登録
 1. 構成サーバーにログインします。
-2. 管理者のコマンド プロンプトで、次のコマンドを実行します。
+2. 管理者のコマンド プロンプトで、次のコマンドを実行します
 
 ```
 reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
@@ -185,7 +185,7 @@ net stop dra
   ```
 
 ## <a name="renew-configuration-server-secure-socket-layerssl-certificates"></a>構成サーバーの Secure Socket Layer (SSL) 証明書の更新
-構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 構成サーバーの Web サーバーは、SSL 証明書を使用してそのクライアントを認証します。 この証明書の有効期限は&3; 年間で、次の方法でいつでも更新できます。
+構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 構成サーバーの Web サーバーは、SSL 証明書を使用してそのクライアントを認証します。 この証明書の有効期限は 3 年間で、次の方法でいつでも更新できます。
 
 > [!WARNING]
 証明書の有効期限は、バージョン 9.4.XXXX.X 以上でのみ適用できます。 証明書の更新ワークフローを開始する前に、すべての Azure Site Recovery コンポーネント (構成サーバー、プロセス サーバー、マスター ターゲット サーバー、モビリティ サービス) をアップグレードしてください。
@@ -202,7 +202,7 @@ net stop dra
 > [!NOTE]
 2016 年 5 月以前に発生したすべてのインストールの SSL 証明書は、有効期間が 1 年間に設定されていました。 そのため、証明書の有効期限切れに関する通知が Azure Portal に表示されます。
 
-1. 構成サーバーの SSL 証明書の有効期限が切れる&2; か月前になると、Azure Portal と電子メール (Azure Site Recovery 通知をサブスクライブする必要があります) を介してユーザーへの通知が開始されます。 コンテナーのリソース ページに通知バナーが表示されます。
+1. 構成サーバーの SSL 証明書の有効期限が切れる 2 か月前になると、Azure Portal と電子メール (Azure Site Recovery 通知をサブスクライブする必要があります) を介してユーザーへの通知が開始されます。 コンテナーのリソース ページに通知バナーが表示されます。
 
   ![certificate-notification](./media/site-recovery-vmware-to-azure-manage-configuration-server/ssl-cert-renew-notification.png)
 2. バナーをクリックすると、証明書の有効期限の詳細が表示されます。

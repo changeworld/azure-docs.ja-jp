@@ -10,16 +10,11 @@ Azure Resource Manager テンプレートでは、リソース間の依存関係
 
 ### <a name="prerequisites"></a>前提条件
 1. お使いのオペレーティング システムの Azure コマンドライン ツールを[ここ](https://azure.microsoft.com/downloads/)からダウンロードします。
-2. スクリプトが既存の VM で実行される場合、VM エージェントがその VM 上で有効であることをご確認ください。そうでない場合は、[Linux](../articles/virtual-machines/virtual-machines-linux-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) または [Windows](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) のガイダンスに従ってインストールしてください。
+2. スクリプトが既存の VM で実行される場合、VM エージェントがその VM 上で有効であることをご確認ください。そうでない場合は、[Linux](../articles/virtual-machines/linux/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) または [Windows](../articles/virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) のガイダンスに従ってインストールしてください。
 3. VM で実行するスクリプトを Azure Storage にアップロードします。 スクリプトは、1 つか複数のストレージ コンテナーから取得できます。
 4. スクリプトを GitHub アカウントにアップロードすることもできます。
 5. スクリプトは、拡張機能によって起動されるエントリ スクリプトが、他のスクリプトを順に起動するように記述されている必要があります。
 
 ## <a name="using-the-custom-script-extension"></a>カスタム スクリプト拡張機能の使用
 テンプレートを使用したデプロイでは、Azure サービス管理 API で使用できるバージョンと同じバージョンのカスタム スクリプト拡張機能を使用します。 拡張機能では、同じパラメーターとシナリオ (Azure ストレージ アカウントまたは GitHub へのファイルのアップロードなど) をサポートします。 テンプレートで使用する際の重要な違いは、拡張機能のバージョンを majorversion.* 形式で指定するのではなく、正確なバージョンを指定する必要があることです。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

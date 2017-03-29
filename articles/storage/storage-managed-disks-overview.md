@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 339df6e5ff05c66e898254f2cd4bb5b596d0c537
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6ec77968a0f264b8bf1fa56a23e4cc7faef614da
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -37,9 +37,9 @@ Azure Managed Disks は、VM ディスクに関連付けられている[スト�
 
 ### <a name="simple-and-scalable-vm-deployment"></a>シンプルでスケーラブルな VM のデプロイ
 
-Managed Disks はバックグラウンドでストレージを管理します。 これまでは、Azure VM のディスク (VHD ファイル) を保持するストレージ アカウントを作成する必要がありました。 スケールアップするときは、それぞれのディスクでストレージの IOPS の上限を超えないように、追加のストレージ アカウントを作成する必要がありました。 Managed Disks でストレージを管理すれば、ストレージ アカウントの制限 (アカウントあたり 20,000 IOPS など) に縛られることはなくなります。 また、カスタム イメージ (VHD ファイル) を複数のストレージ アカウントにコピーする必要もなくなります。 カスタム イメージを&1; か所 (Azure リージョンごとに&1; つのストレージ アカウント) で管理し、これらのイメージを使用して&1; つのサブスクリプションで数百台の VM を作成できます。
+Managed Disks はバックグラウンドでストレージを管理します。 これまでは、Azure VM のディスク (VHD ファイル) を保持するストレージ アカウントを作成する必要がありました。 スケールアップするときは、それぞれのディスクでストレージの IOPS の上限を超えないように、追加のストレージ アカウントを作成する必要がありました。 Managed Disks でストレージを管理すれば、ストレージ アカウントの制限 (アカウントあたり 20,000 IOPS など) に縛られることはなくなります。 また、カスタム イメージ (VHD ファイル) を複数のストレージ アカウントにコピーする必要もなくなります。 カスタム イメージを 1 か所 (Azure リージョンごとに 1 つのストレージ アカウント) で管理し、これらのイメージを使用して 1 つのサブスクリプションで数百台の VM を作成できます。
 
-Managed Disks では、1 つのサブスクリプションで最大 10,000 個の VM **ディスク**を作成できるので、1 つのサブスクリプションで数千台の **VM** を作成できます。 また、この機能により、Marketplace のイメージを使用して[仮想マシン スケール セット (VMSS)](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) に最大&1;,000 台の VM を作成することが可能となるため、VMSS のスケーラビリティがさらに向上します。
+Managed Disks では、1 つのサブスクリプションで最大 10,000 個の VM **ディスク**を作成できるので、1 つのサブスクリプションで数千台の **VM** を作成できます。 また、この機能により、Marketplace のイメージを使用して[仮想マシン スケール セット (VMSS)](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) に最大 1,000 台の VM を作成することが可能となるため、VMSS のスケーラビリティがさらに向上します。
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性セットの信頼性の向上
 
@@ -47,7 +47,10 @@ Managed Disks では、可用性セットの VM のディスクが、単一障�
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を&1; 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+
+### <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
+Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成できます。 Managed Disks は、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを 3 つ保持します。 地域的な障害復旧では、[Azure Backup サービス](../backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。 
 
 ## <a name="pricing-and-billing"></a>価格と課金 
 
@@ -100,7 +103,7 @@ Managed Disks の価格の詳細については、「[Managed Disks の価格](h
 
 ## <a name="images"></a>イメージ
 
-Managed Disks では、管理対象カスタム イメージの作成もサポートしています。 イメージは、ストレージ アカウント内のカスタム VHD から作成することも、一般化された (sysprep 済み) VM から直接作成することもできます。 OS ディスクとデータ ディスクを含め、VM に関連付けられているすべての管理ディスクが&1; つのイメージにキャプチャされます。 これにより、ストレージ アカウントのコピーや管理を必要とせずに、カスタム イメージを使用して数百台の VM を作成できます。
+Managed Disks では、管理対象カスタム イメージの作成もサポートしています。 イメージは、ストレージ アカウント内のカスタム VHD から作成することも、一般化された (sysprep 済み) VM から直接作成することもできます。 OS ディスクとデータ ディスクを含め、VM に関連付けられているすべての管理ディスクが 1 つのイメージにキャプチャされます。 これにより、ストレージ アカウントのコピーや管理を必要とせずに、カスタム イメージを使用して数百台の VM を作成できます。
 
 イメージの作成方法については、次の記事をご覧ください。
 * [Azure の汎用化された VM の管理対象イメージをキャプチャする方法](../virtual-machines/virtual-machines-windows-capture-image-resource.md)
@@ -108,25 +111,27 @@ Managed Disks では、管理対象カスタム イメージの作成もサポ�
 
 ## <a name="images-versus-snapshots"></a>イメージとスナップショット
 
-VM では "イメージ" という言葉がよく使用されますが、"スナップショット" も使用されるようになりました。 この&2; つの違いを理解しておくことが重要です。 Managed Disks では、割り当てが解除された、汎用化された VM のイメージを取得できます。 このイメージには、VM に接続されているすべてのディスクが含まれます。 このイメージを使用して新しい VM を作成できます。作成された VM にはすべてのディスクが含まれます。
+VM では "イメージ" という言葉がよく使用されますが、"スナップショット" も使用されるようになりました。 この 2 つの違いを理解しておくことが重要です。 Managed Disks では、割り当てが解除された、汎用化された VM のイメージを取得できます。 このイメージには、VM に接続されているすべてのディスクが含まれます。 このイメージを使用して新しい VM を作成できます。作成された VM にはすべてのディスクが含まれます。
 
-スナップショットでは、特定の時点のディスクのコピーが作成されます。 スナップショットは&1; つのディスクにのみ適用されます。 VM が使用しているディスク (OS) が&1; つしかない場合、スナップショットまたはイメージを作成し、そのスナップショットまたはイメージから VM を作成できます。
+スナップショットでは、特定の時点のディスクのコピーが作成されます。 スナップショットは 1 つのディスクにのみ適用されます。 VM が使用しているディスク (OS) が 1 つしかない場合、スナップショットまたはイメージを作成し、そのスナップショットまたはイメージから VM を作成できます。
 
-VM が&5; つのディスクを使用しており、それらのディスクがストライピングされている場合はどうなるのでしょうか。 それぞれのディスクのスナップショットは作成できますが、VM 内の全ディスクの状態は認識されません。スナップショットに保存されるのは、対象の&1; つのディスクの状態だけです。 この場合、スナップショットを相互に調整する必要がありますが、これは現在サポートされていません。
+VM が 5 つのディスクを使用しており、それらのディスクがストライピングされている場合はどうなるのでしょうか。 それぞれのディスクのスナップショットは作成できますが、VM 内の全ディスクの状態は認識されません。スナップショットに保存されるのは、対象の 1 つのディスクの状態だけです。 この場合、スナップショットを相互に調整する必要がありますが、これは現在サポートされていません。
 
-## <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート 
+## <a name="managed-disks-and-encryption"></a>Managed Disks と暗号化
 
-非管理対象ディスクを使用する仮想マシンは、Azure Backup を使用してバックアップできます。 [詳細についてはこちらをご覧ください](../backup/backup-azure-vms-first-look-arm.md)。
+Managed Disks に関して説明する暗号化には 2 つの種類があります。 1 つ目は、ストレージ サービスによって実行される Storage Service Encryption (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption です。 
 
-また、Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成することもできます。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。 
+### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-## <a name="managed-disks-and-storage-service-encryption-sse"></a>Managed Disks と Storage Service Encryption (SSE)
-
-Azure Storage では、ストレージ アカウントに書き込まれたデータの自動暗号化をサポートしています。 詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」をご覧ください。 管理ディスク上のデータはどうでしょうか。 現時点では、Managed Disks で Storage Service Encryption を有効にすることはできませんが、この機能は今後リリースされる予定です。 それまでの間は、暗号化されたストレージ アカウント内に存在し、それ自体も暗号化されている VHD ファイルの使用方法を理解しておく必要があります。 
+Azure Storage では、ストレージ アカウントに書き込まれたデータの自動暗号化をサポートしています。 詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」をご覧ください。 管理ディスク上のデータはどうでしょうか。 現時点では、Managed Disks で Storage Service Encryption を有効にすることはできません。 ただし、今後リリースされる予定です。 それまでの間は、暗号化されたストレージ アカウント内に存在し、それ自体も暗号化されている VHD ファイルの使用方法を理解しておく必要があります。 
 
 SSE では、ストレージ アカウントに書き込まれたデータを暗号化します。 SSE によって暗号化されたことがある VHD ファイルがある場合、その VHD ファイルを使用して Managed Disks を使用する VM を作成することはできません。 また、暗号化された非管理対象ディスクを管理ディスクに変換することもできません。 該当のストレージ アカウントで暗号化を無効にしても、VHD ファイルが元の状態に戻り、暗号化が解除されるわけではありません。 
 
 暗号化されたディスクを使用するには、まず、暗号化されたことのないストレージ アカウントに VHD ファイルをコピーする必要があります。 これで、Managed Disks を使用する VM を作成し、作成時にその VHD ファイルを指定できるようになります。また、コピーした VHD ファイルを Managed Disks を使用する実行中の VM にアタッチすることもできます。 
+
+### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+
+Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用される OS とデータ ディスクを暗号化できます。 これには、Managed Disks も含まれます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 DM-Crypt は Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 詳細については、「[Windows および Linux IaaS VM の Azure Disk Encryption](../security/azure-security-disk-encryption.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

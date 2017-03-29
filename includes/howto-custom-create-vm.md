@@ -35,7 +35,7 @@
 14. 仮想マシンを可用性セットに追加する場合、**[可用性セット]** で **[可用性セットの作成]** を選択するか、仮想マシンを既存の可用性セットに追加します。
     
     **注記**: 可用性セットの仮想マシンは別の障害ドメインにデプロイされます。 可用性セットに複数の仮想マシンがあると、ネットワークやローカル ハード ディスクで問題が発生した場合、または予定されたシステム停止時にもアプリケーションを使用できます。
-15. **[エンドポイント]**で、リモート デスクトップや Secure Shell (SSH) クライアントなどを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。 ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。 後でエンドポイントを作成する手順については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。
+15. **[エンドポイント]**で、リモート デスクトップや Secure Shell (SSH) クライアントなどを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。 ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。 後でエンドポイントを作成する手順については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。
 16. **[VM エージェント]**では、VM エージェントをインストールするかどうかを決定します。 このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。 詳細については、「 [拡張機能の管理](http://go.microsoft.com/FWLink/p/?LinkID=390493)」を参照してください。
 17. 矢印をクリックして、仮想マシンを作成します。
     
@@ -45,10 +45,5 @@
 仮想マシンは、作成し終わると、自動的に開始されます。 ポータルのステータスが実行中であれば、仮想マシンにログインできます。 手順については、次のいずれかの記事を参照してください。
 
 * [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 

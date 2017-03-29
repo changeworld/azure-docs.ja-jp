@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+ms.custom: loading
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9edad2037787a7a2da4e2a6fcce15ace51d41032
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: cc5ec6022cede019541d697905aa068b88d25ee4
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>SQL Data Warehouse へのサンプル データのロード
-次の簡単な手順で Adventure Works サンプル データベースをロードしてクエリを実行します。 これらのスクリプトでは、まず sqlcmd を使用して、テーブルとビューを作成する SQL を実行します。 テーブルが作成されると、スクリプトは bcp を使用してデータを読み込みます。  まだ sqlcmd と bcp をインストールしていない場合は、リンクに従って [bcp をインストール][bcp をインストール] し、[sqlcmd をインストール][sqlcmd をインストール] します。
+次の簡単な手順で Adventure Works サンプル データベースをロードしてクエリを実行します。 これらのスクリプトでは、まず sqlcmd を使用して、テーブルとビューを作成する SQL を実行します。 テーブルが作成されると、スクリプトは bcp を使用してデータを読み込みます。  まだ sqlcmd と bcp をインストールしていない場合は、リンクに従って [bcp をインストール][install bcp]し、[sqlcmd をインストール][install sqlcmd]します。
 
 ## <a name="load-sample-data"></a>サンプル データの読み込み
-1. [SQL Data Warehouse の Adventure Works サンプル スクリプト][SQL Data Warehouse の Adventure Works サンプル スクリプト] zip ファイルをダウンロードします。
+1. [SQL Data Warehouse の Adventure Works サンプル スクリプト][Adventure Works Sample Scripts for SQL Data Warehouse]の zip ファイルをダウンロードします。
 2. ダウンロードした zip からローカル コンピューターのディレクトリにファイルを抽出します。
 3. 抽出したファイル aw_create.bat を編集し、ファイルの先頭にある以下の変数を設定します。  "=" とパラメーターの間にスペースを入れないようにします。  編集内容の例を次に示します。
    
@@ -44,7 +46,7 @@ ms.openlocfilehash: 9edad2037787a7a2da4e2a6fcce15ace51d41032
    * Adventure Works の各テーブルのすべての列の統計情報を収集します
 
 ## <a name="query-sample-data"></a>サンプル データのクエリ
-SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリをすぐに実行できます。  クエリを実行するには、Azure SQL DW に新しく作成した Adventure Works データベースに Visual Studio と SSDT を使用して接続します (詳しくは、[Visual Studio を使用したクエリ][Visual Studio を使用したクエリ] に関するドキュメントを参照)。
+SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリをすぐに実行できます。  クエリを実行するには、Azure SQL DW に新しく作成した Adventure Works データベースに Visual Studio と SSDT を使用して接続します (詳しくは、[Visual Studio を使用したクエリ][query with Visual Studio]に関するドキュメントを参照)。
 
 従業員のすべての情報を取得する簡単な SELECT ステートメントの例:
 
@@ -71,27 +73,22 @@ GROUP BY OrderDateKey
 ORDER BY OrderDateKey;
 ```
 
-SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQL 構造をサポートします。  相違点については、[コードの移行][コードの移行] ドキュメントを参照してください。
+SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQL 構造をサポートします。  相違点については、[コードの移行][migrate code]ドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-サンプル データをクエリしたので、SQL Data Warehouse の [開発][開発]、[ロード][読み込み]、[移行][移行] の方法を確認してください。
+サンプル データをクエリしたので、SQL Data Warehouse の[開発][develop]、[ロード][load]、[移行][migrate]の方法をご確認ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[移行]: sql-data-warehouse-overview-migrate.md
-[開発]: sql-data-warehouse-overview-develop.md
-[読み込み]: sql-data-warehouse-overview-load.md
-[Visual Studio を使用したクエリ]: sql-data-warehouse-query-visual-studio.md
-[コードの移行]: sql-data-warehouse-migrate-code.md
-[bcp をインストール]: sql-data-warehouse-load-with-bcp.md
-[sqlcmd をインストール]: sql-data-warehouse-get-started-connect-sqlcmd.md
+[migrate]: sql-data-warehouse-overview-migrate.md
+[develop]: sql-data-warehouse-overview-develop.md
+[load]: sql-data-warehouse-overview-load.md
+[query with Visual Studio]: sql-data-warehouse-query-visual-studio.md
+[migrate code]: sql-data-warehouse-migrate-code.md
+[install bcp]: sql-data-warehouse-load-with-bcp.md
+[install sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
-[SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Adventure Works Sample Scripts for SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 

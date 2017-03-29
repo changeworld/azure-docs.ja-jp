@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2966177f7dd36c5b25b29ad238aa5bcef52f3b52
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7835797bc353a64c934b362c31fdcd9b448aca34
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,18 +27,17 @@ ms.openlocfilehash: 2966177f7dd36c5b25b29ad238aa5bcef52f3b52
 この記事では、まず、ADF コピー、SSIS、および bcp の単純な移行シナリオについて説明します。 次に、移行を最適化する方法についてもう少し詳細に検討していきます。
 
 ## <a name="azure-data-factory-adf-copy"></a>Azure Data Factory (ADF) コピー
-[ADF コピー][ADF コピー] は [Azure Data Factory][Azure Data Factory] の一部です。 ADF コピーを使用して、ローカル ストレージに置かれているフラット ファイル、Azure BLOB ストレージに保持されているリモート フラット ファイル、または SQL Data Warehouse 内のディレクトリにデータをエクスポートできます。
+[ADF コピー][ADF Copy]は [Azure Data Factory][Azure Data Factory] の一部として組み込まれています。 ADF コピーを使用して、ローカル ストレージに置かれているフラット ファイル、Azure BLOB ストレージに保持されているリモート フラット ファイル、または SQL Data Warehouse 内のディレクトリにデータをエクスポートできます。
 
-データがフラット ファイルで始まる場合、SQL Data Warehouse へのロードを開始する前に、まず、Asure ストレージ BLOB にそのフラット ファイルを転送する必要があります。 データが Azure BLOB Storage に転送されたら、[ADF コピー][ADF コピー] を使用するようにもう一度選択して、SQL Data Warehouse にデータをプッシュすることができます。
+データがフラット ファイルで始まる場合、SQL Data Warehouse へのロードを開始する前に、まず、Asure ストレージ BLOB にそのフラット ファイルを転送する必要があります。 データが Azure BLOB ストレージに転送されたら、[ADF コピー][ADF Copy]を使用するようにもう一度選択して、SQL Data Warehouse にデータをプッシュすることができます。
 
 PolyBase には、データをロードするための非常に高いパフォーマンスのオプションも用意されています。 ただし、これは 1 つではなく、2 つのツールを使用するという意味です。 最高のパフォーマンスが必要であれば、PolyBase を使用してください。 1 つのツールのみを使用する場合は (および、データが大規模ではない場合は)、ADF を使用してください。
 
-> [!NOTE]
-> PolyBase では、データ ファイルは UTF-8 である必要があります。 これは ADF コピーの既定のエンコーディングであるため、変更することはできません。 ADF コピーの規定の動作は変更しないでください。
+
 > 
 > 
 
-それでは、いくつかのすばらしい [ADF の例][ADF の例] に関する次の記事に進みましょう。
+それでは、いくつかのすばらしい [ADF の例][ADF samples]に関する次の記事に進みましょう。
 
 ## <a name="integration-services"></a>Integration Services
 Integration Services (SSIS) は、強力で柔軟な抽出、変換、ロード (ETL) ツールであり、複雑なワークフロー、データの変換、およびいくつかのデータ ロード オプションをサポートします。 SSIS を使用して単にデータを Azure に転送したり、より広範囲にわたる移行の一部として転送したりします。
@@ -47,7 +47,7 @@ Integration Services (SSIS) は、強力で柔軟な抽出、変換、ロード 
 > 
 > 
 
-SSIS は、SQL Server のデプロイメントに接続する場合と同様に、SQL Data Warehouse に接続します。 ただし、接続には ADO.NET 接続マネージャーを使用する必要があります。 また、"使用可能な場合は一括挿入を使用する" 設定を構成してスループットを最大化することを検討する必要もあります。 このプロパティの詳細については、[「ADO NET 変換先エディター」][ADO NET 変換先エディター] をご覧ください。
+SSIS は、SQL Server のデプロイメントに接続する場合と同様に、SQL Data Warehouse に接続します。 ただし、接続には ADO.NET 接続マネージャーを使用する必要があります。 また、"使用可能な場合は一括挿入を使用する" 設定を構成してスループットを最大化することを検討する必要もあります。 このプロパティについて詳しくは、「[ADO NET 変換先エディター][ADO.NET destination adapter]」をご覧ください
 
 > [!NOTE]
 > OLEDB を使用した Azure SQL Data Warehouse への接続はサポートされていません。
@@ -56,7 +56,7 @@ SSIS は、SQL Server のデプロイメントに接続する場合と同様に�
 
 さらに、調整やネットワークの問題が原因で、パッケージが失敗する可能性は常にあります。 パッケージを設計するときは、失敗する前に完了していた作業をやり直さなくても済むように、失敗した時点でパッケージを再開できるように設計してください。
 
-詳細については、[SSIS のドキュメント][SSIS のドキュメント]を参照してください。
+詳しくは、[SSIS のドキュメント][SSIS documentation]をご覧ください。
 
 ## <a name="bcp"></a>bcp
 bcp は、フラット ファイル データのインポートとエクスポート用に設計されたコマンド ライン ユーティリティです。 データのエクスポート時にはいくつかの変換を実行できます。 単純な変換を実行するには、クエリを使用してデータを選択し、変換します。 エクスポートが完了したら、フラット ファイルをターゲットである SQL Data Warehouse のデータベースに直接ロードできます。
@@ -74,12 +74,11 @@ bcp の利点は次のとおりです。
 bcp の制限は次のとおりです。
 
 * bcp は表形式のフラット ファイルのみで動作します。 xml や JSON などのファイルでは機能しません
-* bcp では、UTF-8 へのエクスポートはサポートされません。 これにより、bcp でエクスポートされたデータで PolyBase を使用できない場合があります
 * データ変換機能はエクスポート段階のみに限定されており、本質的に単純です
 * インターネット経由でデータをロードする場合、bcp は堅牢な構成になりません。 ネットワークが不安定になると、ロードでエラーが発生する可能性があります。
 * bcp はロードの前に対象のデータベースに存在していたスキーマに依存します
 
-詳細については、[「bcp を使用した SQL Data Warehouse へのデータのロード」][bcp を使用した SQL Data Warehouse へのデータのロード]を参照してください。
+詳しくは、「[bcp を使用した SQL Data Warehouse へのデータのロード][Use bcp to load data into SQL Data Warehouse]」をご覧ください。
 
 ## <a name="optimizing-data-migration"></a>データの移行の最適化
 SQLDW データ移行処理は、事実上、次の 3 つの別個のステップに分割できます。
@@ -98,14 +97,9 @@ SQLDW データ移行処理は、事実上、次の 3 つの別個のステッ�
 3. データ ファイルの場所
 
 ### <a name="encoding"></a>エンコード
-PolyBase では、データ ファイルは UTF-8 形式でエンコードされている必要があります。 つまり、データをエクスポートする場合、この要件に準拠する必要があります。 データに基本 ASCII 文字しか含まれていない場合 (拡張 ASCII は含まれていない場合)、これらは UTF-8 標準に直接マップされるため、エンコードについてそれほど気にすることはありません。 ただし、データにウムラウト、アクセント、または記号などの特殊文字が含まれている場合や、データでラテン語以外の言語がサポートされている場合は、エクスポート ファイルが適切に UTF-8 形式にエンコードされていることを確認する必要があります。
+PolyBase では、データ ファイルは UTF-8 または UTF-16FE 形式でエンコードされている必要があります。 
 
-> [!NOTE]
-> bcp では、UTF-8 へのデータのエクスポートはサポートされません。 このため、データのエクスポートには Integration Services か ADF コピーのいずれかを使用するのが最適です。 データ ファイルでは UTF-8 バイト オーダー マーク (BOM) は必要ないことも重要な点です。
-> 
-> 
 
-UTF-16 を使用してエンコードされたファイルにはすべて、データ転送の***前に***再度書き込みを行う必要があります。
 
 ### <a name="format-of-data-files"></a>データ ファイルの形式
 PolyBase では、固定行ターミネータとして \n または改行を使用する必要があります。 データ ファイルは、この標準に準拠する必要があります。 文字列または列のターミネータに関する制限はありません。
@@ -134,7 +128,7 @@ SQL Data Warehouse は、PolyBase を使用して Azure BLOB ストレージの�
 
 [ExpressRoute][ExpressRoute] は移行だけではなく、さまざまな状況で役に立ちます。
 
-ご興味がおありでしたら、 詳細や価格については、[ExpressRoute に関するドキュメント][ExpressRoute のドキュメント]を参照してください。
+ご興味がおありでしたら、 詳細や価格については、[ExpressRoute に関するドキュメント][ExpressRoute documentation]をご覧ください。
 
 ### <a name="azure-import-and-export-service"></a>Azure Import/Export サービス
 Azure Import/Export サービスは、大規模なデータ (GB (ギガバイト) 単位) から巨大なデータ (TB (テラバイト) 単位) を Azure に転送するために設計されたデータ転送プロセスです。 これには、データをディスクに書き込む作業や、それらを Azure データ センターに送付する作業も含まれています。 ディスクの内容は、自動的に Azure Storage BLOB にロードされます。
@@ -152,7 +146,7 @@ Azure Import/Export サービスは、大規模なデータ (GB (ギガバイト
 ### <a name="azcopyazcopy-utility"></a>[AZCopy][AZCopy] ユーティリティ
 [AZCopy][AZCopy] ユーティリティは、Azure Storage BLOB に転送されたデータを取得するための優れたツールです。 これは、小規模なデータ (MB 単位) から非常に大規模なデータ (GB 単位) の転送用に設計されています。 [AZCopy] は Azure にデータを転送するときに、適切な回復力のあるスループットが提供されるようにも設計されているため、データ転送に最適です。 一度転送したら、PolyBase を使用して SQL Data Warehouse にデータをロードできます。 プロセスの実行タスクを使用して、SSIS パッケージに AZCopy を組み込むこともできます。
 
-AZCopy を使用するには、最初にダウンロードしてインストールする必要があります。 [製品バージョン][製品バージョン] と [プレビュー バージョン][プレビュー バージョン] を使用できます。
+AZCopy を使用するには、最初にダウンロードしてインストールする必要があります。 [製品バージョン][production version]と[プレビュー バージョン][preview version]を使用できます。
 
 ファイル システムからファイルをアップロードするには、次のようなコマンドが必要です。
 
@@ -172,10 +166,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 ## <a name="optimizing-data-export"></a>データ エクスポートの最適化
 PolyBase によって生じる要件にエクスポートが準拠していることを確認するほかに、データのエクスポートを最適化してプロセスをさらに改善することもできます。
 
-> [!NOTE]
-> PolyBase ではデータが UTF-8 形式である必要があるため、bcp を使用してデータのエクスポートを実行することはほとんどありません。 bcp は、UTF-8 へのデータ ファイルの出力はサポートされていません。 SSIS や ADF コピーのほうが、この種のデータ エクスポートを実行するのに非常に適しています。
-> 
-> 
+
 
 ### <a name="data-compression"></a>データ圧縮
 PolyBase は、gzip 圧縮データを読み取ることができます。 gzip ファイルにデータを圧縮できる場合は、ネットワーク経由でプッシュされるデータ量が最小限に抑えられます。
@@ -185,24 +176,24 @@ PolyBase は、gzip 圧縮データを読み取ることができます。 gzip 
 
 PolyBase では、「再帰的なフォルダー トラバーサル」と呼ばれる機能もサポートされています。 この機能を使用して、エクスポートされたデータの編成をさらに拡張し、データ管理を改善できます。
 
-PolyBase を使用したデータ ロードの詳細については、[「PolyBase を使用したデータのロード」][PolyBase を使用したデータのロード]を参照してください。
+PolyBase を使用したデータ ロードについて詳しくは、「[PolyBase を使用したデータのロード][Use PolyBase to load data into SQL Data Warehouse]」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-移行の詳細については、[「SQL Data Warehouse へのソリューションの移行」][SQL Data Warehouse へのソリューションの移行]を参照してください。
-開発に関するその他のヒントについては、[「開発の概要」][開発の概要]をご覧ください。
+移行について詳しくは、「[SQL Data Warehouse へのソリューションの移行][Migrate your solution to SQL Data Warehouse]」をご覧ください。
+開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 [AZCopy]: ../storage/storage-use-azcopy.md
-[ADF コピー]: ../data-factory/data-factory-data-movement-activities.md 
-[ADF の例]: ../data-factory/data-factory-samples.md
-[ADF コピーの例]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
-[開発の概要]: sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse へのソリューションの移行]: sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要) (SQL Data Warehouse の開発の概要)]: sql-data-warehouse-overview-develop.md
-[bcp を使用した SQL Data Warehouse へのデータのロード]: sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: sql-data-warehouse-get-started-load-with-polybase.md
+[ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
+[ADF samples]: ../data-factory/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[development overview]: sql-data-warehouse-overview-develop.md
+[Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
+[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
 
 
 <!--MSDN references-->
@@ -210,15 +201,10 @@ PolyBase を使用したデータ ロードの詳細については、[「PolyBa
 <!--Other Web references-->
 [Azure Data Factory]: http://azure.microsoft.com/services/data-factory/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-[ExpressRoute のドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
+[ExpressRoute documentation]: http://azure.microsoft.com/documentation/services/expressroute/
 
-[製品バージョン]: http://aka.ms/downloadazcopy/
-[プレビュー バージョン]: http://aka.ms/downloadazcopypr/
-[ADO NET 変換先エディター]: https://msdn.microsoft.com/library/bb934041.aspx
-[SSIS のドキュメント]: https://msdn.microsoft.com/library/ms141026.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[production version]: http://aka.ms/downloadazcopy/
+[preview version]: http://aka.ms/downloadazcopypr/
+[ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
+[SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
 

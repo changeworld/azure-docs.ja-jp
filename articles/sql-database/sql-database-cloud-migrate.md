@@ -17,16 +17,16 @@ ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 8d4823576fe0d44fa565fdb72e8b229d31dff609
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2d72731304aee0952abbb1f3b2c24b620118fc6c
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server データベースのクラウド内の SQL Database への移行
 この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database に移行するための 2 つの主な方法について説明します。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
 
-どちらの場合も、ソース データベースに Azure SQL Database との互換性があることを確認する必要があります。 SQL Database V12 では、SQL Server との[機能の同等性](sql-database-features.md)を目指していますが、サーバーレベルの操作とデータベース間の操作に関連した問題は残っています。 データベースやアプリケーションで、[部分的にしかサポートされていない機能またはサポートされていない機能](sql-database-transact-sql-information.md)を使用している場合には、SQL Server データベースの移行前に[リエンジニアリングを実施してこれらの非互換性を修正する](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)必要があります。
+どちらの場合も、[Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用してソース データベースに Azure SQL Database との互換性があることを確認する必要があります。 SQL Database V12 は、SQL Server との[機能の同等性](sql-database-features.md)を目指していますが、サーバーレベルの操作とデータベース間の操作に関連した問題は残っています。 データベースやアプリケーションで、[部分的にしかサポートされていない機能またはサポートされていない機能](sql-database-transact-sql-information.md)を使用している場合には、SQL Server データベースの移行前に[リエンジニアリングを実施してこれらの非互換性を修正する](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)必要があります。
 
 > [!NOTE]
 > Microsoft Access、Sybase、MySQL Oracle、DB2 などの SQL Server 以外のデータベースを Azure SQL Database に移行する場合は、 [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2016/12/22/released-sql-server-migration-assistant-ssma-v7-2/)チームのブログ記事を参照してください。

@@ -1,6 +1,6 @@
 ---
 title: "SQL Database の Azure PowerShell サンプル | Microsoft Docs"
-description: "Azure CLI サンプル - Azure SQL Database サーバー、エラスティック プール、データベース、ファイアウォールを作成し、管理します。"
+description: "Azure PowerShell サンプル - Azure SQL Database サーバー、エラスティック プール、データベース、ファイアウォールの作成と管理で役立つスクリプト。"
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: f8e11c348da1d783b691a60c68055f2d394e6a94
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: abcccabbfc56102c97ef2408fb812755e21b467c
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -36,8 +36,8 @@ ms.lasthandoff: 03/10/2017
 | [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)| 単一の Azure SQL データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
 | [アクティブ geo レプリケーションを使用して、プールされているデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)| エラスティック プール内の Azure SQL データベース用にアクティブ geo レプリケーションを構成し、その データベースをセカンダリ レプリカにフェールオーバーします。 |
 |**単一のデータベースとエラスティック プールをスケーリングする**||
-| [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md) | Azure SQL データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの&1; つにアラート ルールを作成します。 |
-| [エラスティック プールをスケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md) | エラスティック プールのパフォーマンス メトリックを監視し、そのプールを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの&1; つにアラート ルールを作成します。  |
+| [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md) | Azure SQL データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。 |
+| [エラスティック プールをスケーリングする](scripts/sql-database-monitor-and-scale-pool-powershell.md) | エラスティック プールのパフォーマンス メトリックを監視し、そのプールを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成します。  |
 | **監査と脅威の検出** |
 | [監査と脅威検出を構成する](scripts/sql-database-auditing-and-threat-detection-powershell.md)| Azure SQL データベースの監査と脅威検出ポリシーを構成します。 |
 | **データベースを復元、コピー、インポートする**||

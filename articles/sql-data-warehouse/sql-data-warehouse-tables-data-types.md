@@ -15,24 +15,25 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 616bb450217573ebd45060234313af418f525f89
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7757de96601c426ff07e94cfa0c12d4dec8f06f5
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルのデータ型
 > [!div class="op_single_selector"]
-> * [概要][概要]
-> * [データ型][データ型]
-> * [分散][分散]
+> * [概要][Overview]
+> * [データ型][Data Types]
+> * [分散][Distribute]
 > * [インデックス][Index]
 > * [パーティション][Partition]
-> * [統計][統計]
-> * [一時的な][一時]
+> * [統計][Statistics]
+> * [一時][Temporary]
 > 
 > 
 
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。  SQL Data Warehouse でサポートされるデータ型の一覧を以下に示します。  データ型のサポートの詳細については、[CREATE TABLE][CREATE TABLE] に関するページを参照してください。
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。  SQL Data Warehouse でサポートされるデータ型の一覧を以下に示します。  データ型のサポートについて詳しくは、[テーブルの作成][create table]に関するページをご覧ください。
 
 | **サポートされているデータ型** |  |  |
 | --- | --- | --- |
@@ -49,15 +50,15 @@ SQL Data Warehouse では、最もよく使用されるデータ型がサポー�
  列の型を定義するときに、データをサポートする最小のデータ型を使用すると、クエリのパフォーマンスが向上します。 これは、CHAR および VARCHAR 列の場合に特に重要です。 列の最長の値が 25 文字の場合は、列を VARCHAR(25) として定義します。 すべての文字列を既定の長さで定義しないようにします。 さらに、VARCHAR で済む場合は、[NVARCHAR][NVARCHAR] を使用せずに、列を VARCHAR として定義します。  可能なときは、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
 
 ## <a name="polybase-limitation"></a>Polybase の制限事項
-テーブルの読み込みに Polybase を使用している場合は、可変長列の全長を含め、行の最大サイズが 32,767 バイトを超えないように、テーブルを定義します。  この幅を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはできません。  行のサイズが大きな Polybase のサポートはまもなく追加されます。
+テーブルの読み込みに Polybase を使用している場合は、データの長さが 1 MB を超えていないことを確認します。  この幅を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはできません。  
 
 ## <a name="unsupported-data-types"></a>サポートされていないデータ型
 Azure SQL Database などの別の SQL プラットフォームからデータベースを移行する場合は、一部のデータ型が SQL Data Warehouse でサポートされていない可能性があります。  以下に、サポートされていないデータ型とサポートされていないデータ型の代わりに使用できるデータ型をいくつか示します。
 
 | データ型 | 対処法 |
 | --- | --- |
-| [ジオメトリ][ジオメトリ] |[varbinary][varbinary] |
-| [地理][地理] |[varbinary][varbinary] |
+| [geometry][geometry] |[varbinary][varbinary] |
+| [geography][geography] |[varbinary][varbinary] |
 | [hierarchyid][hierarchyid] |[nvarchar][nvarchar](4000) |
 | [image][ntext,text,image] |[varbinary][varbinary] |
 | [text][ntext,text,image] |[varchar][varchar] |
@@ -66,7 +67,7 @@ Azure SQL Database などの別の SQL プラットフォームからデータ�
 | [table][table] |一時テーブルに変換します。 |
 | [timestamp][timestamp] |[datetime2][datetime2] と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。  定数のみが既定値としてサポートされているため、current_timestamp を既定の制約として定義できません。 timestamp で型指定された列から行バージョンの値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に [BINARY][BINARY](8) または [VARBINARY][BINARY](8) を使用します。 |
 | [xml][xml] |[varchar][varchar] |
-| [ユーザー定義型][ユーザー定義型] |可能な限り、ネイティブ型に変換します。 |
+| [ユーザー定義型][user defined types] |可能な限り、ネイティブ型に変換します。 |
 | 既定値 |既定値では、リテラルと定数のみがサポートされます。  `GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。 |
 
 Azure SQL Data Warehouse でサポートされていない列を識別するために、現在の SQL データベースで以下の SQL を実行できます。
@@ -81,24 +82,24 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[テーブルの概要][概要]、[テーブルの分散][分散]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][統計]、[一時テーブル][一時]に関する各記事で詳細をご覧ください。  その他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse のベスト プラクティス] に関するページをご覧ください。
+[テーブルの概要][Overview]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
 
 <!--Article references-->
-[概要]: ./sql-data-warehouse-tables-overview.md
-[データ型]: ./sql-data-warehouse-tables-data-types.md
-[分散]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[一時]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
+[create table]: https://msdn.microsoft.com/library/mt203953.aspx
 [bigint]: https://msdn.microsoft.com/library/ms187745.aspx
 [binary]: https://msdn.microsoft.com/library/ms188362.aspx
 [bit]: https://msdn.microsoft.com/library/ms177603.aspx
@@ -109,8 +110,8 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 [datetimeoffset]: https://msdn.microsoft.com/library/bb630289.aspx
 [decimal]: https://msdn.microsoft.com/library/ms187746.aspx
 [float]: https://msdn.microsoft.com/library/ms173773.aspx
-[ジオメトリ]: https://msdn.microsoft.com/library/cc280487.aspx
-[地理]: https://msdn.microsoft.com/library/cc280766.aspx
+[geometry]: https://msdn.microsoft.com/library/cc280487.aspx
+[geography]: https://msdn.microsoft.com/library/cc280766.aspx
 [hierarchyid]: https://msdn.microsoft.com/library/bb677290.aspx
 [int]: https://msdn.microsoft.com/library/ms187745.aspx
 [money]: https://msdn.microsoft.com/library/ms179882.aspx
@@ -131,10 +132,5 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 [varbinary]: https://msdn.microsoft.com/library/ms188362.aspx
 [varchar]: https://msdn.microsoft.com/library/ms186939.aspx
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
-[ユーザー定義型]: https://msdn.microsoft.com/library/ms131694.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[user defined types]: https://msdn.microsoft.com/library/ms131694.aspx
 

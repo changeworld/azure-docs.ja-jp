@@ -100,7 +100,7 @@ Azure では先ごろ、[Azure リソース管理](../articles/resource-manager-
 
 Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) を提供しています。 また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/)も有効なシステムです。 DCOS は、 [Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが&1; つのアドレス可能サービスとして扱われます。 DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。 Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。 また、 **swarm** をオーケストレーション エンジンとして使用することもできます。
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/)も有効なシステムです。 DCOS は、 [Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。 DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。 Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。 また、 **swarm** をオーケストレーション エンジンとして使用することもできます。
 
 [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。 [Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
@@ -146,8 +146,8 @@ Docker on Microsoft Azure:
 
 * [Azure での Linux 用 Docker VM 拡張機能](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
-* [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Azure で docker マシンを使用する方法](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 上の Swarm における Docker の使用方法](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure での Docker および Compose の概要](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

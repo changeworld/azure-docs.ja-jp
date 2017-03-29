@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
-ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 634b4c99b746ad0b8b3238e11b3c305d2cf7082f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 この記事では、Log Analytics の入門編として、サービスの使用を開始できるよう Azure への最小限のデプロイを行う手順について簡単に説明します。 Azure の管理データが保存された論理的なコンテナーを、ワークスペースと呼びます。 情報を確認し、評価を完了した後は、評価に使用したワークスペースを削除できます。 この記事はチュートリアルであるため、ビジネス要件、計画、アーキテクチャのガイダンスには触れていません。
 
 >[!NOTE]
->Microsoft Azure Government Cloud を使用している場合は、この記事の代わりに [Azure Government 監視 + 管理に関するドキュメント](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)を参照してください。
+>Microsoft Azure Government Cloud を使用している場合は、この記事の代わりに [Azure Government 監視 + 管理に関するドキュメント](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics)を参照してください。
 
 ワークスペースの使用を開始するプロセスの概要は、次のようになります。
 
@@ -49,7 +49,7 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
     ![Azure ポータル](./media/log-analytics-get-started/log-analytics-portal.png)
 2. **[作成]**をクリックし、次の項目について選択します。
    * **OMS ワークスペース** - ワークスペースの名前を入力します。
-   * **[サブスクリプション]** - 複数のサブスクリプションがある場合は、新しいワークスペースに関連付けるサブスクリプションを&1; つ選択します。
+   * **[サブスクリプション]** - 複数のサブスクリプションがある場合は、新しいワークスペースに関連付けるサブスクリプションを 1 つ選択します。
    * **[リソース グループ]**
    * **場所**
    * **[価格レベル]**  
@@ -113,7 +113,7 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 ### <a name="to-view-security-and-audit-data"></a>セキュリティと監査に関するデータを表示するには
 
 1. ワークスペースのブレードで、**[全般]** にある **[概要]** をクリックします。  
-2. **[Security and Audit (セキュリティと監査)]** タイルをクリックします。 この例では、注目すべき問題が&2; つあることがわかります。1 つは重要な更新プログラムが適用されていないコンピューターが&1; 台あること、もう&2; つは保護が不十分なコンピューターが&1; 台あることです。  
+2. **[Security and Audit (セキュリティと監査)]** タイルをクリックします。 この例では、注目すべき問題が 2 つあることがわかります。1 つは重要な更新プログラムが適用されていないコンピューターが 1 台あること、もう 2 つは保護が不十分なコンピューターが 1 台あることです。  
     ![セキュリティと監査](./media/log-analytics-get-started/security-audit.png)
 3. この例の場合は、**[Notable Issues (注目すべき問題)]** の **[Computers missing critical updates (重要な更新プログラムが適用されていないコンピューター)]** をクリックすると、[ログ検索] 画面が開き、重要な更新プログラムが適用されていないコンピューターに関する詳細情報が表示されます。 この例では、重要な更新プログラムが適用されていないコンピューターが 1 台ある以外に、他の更新プログラムが適用されていないコンピューターが 63 台あります。  
     ![セキュリティと監査に関するログ検索](./media/log-analytics-get-started/security-audit-log-search.png)
@@ -121,9 +121,9 @@ Azure Log Analytics は、IT インフラから運用に関する詳細情報を
 ### <a name="to-view-and-act-on-system-update-data"></a>システム更新に関するデータを表示して操作するには
 
 1. ワークスペースのブレードで、**[全般]** にある **[概要]** をクリックします。  
-2. **[System Update Assessment (システムの更新の評価)]** タイルをクリックします。 この例では、*getstarted* という名前の Windows コンピューターに重要な更新プログラムを適用する必要があることと、定義ファイルの更新が必要なコンピューターが&1; 台あることがわかります。  
+2. **[System Update Assessment (システムの更新の評価)]** タイルをクリックします。 この例では、*getstarted* という名前の Windows コンピューターに重要な更新プログラムを適用する必要があることと、定義ファイルの更新が必要なコンピューターが 1 台あることがわかります。  
     ![システムの更新](./media/log-analytics-get-started/system-updates.png)
-3. この例では、**[Missing Updates (更新プログラムが適用されていない)]** の **[重要な更新プログラム]** をクリックすると、[ログ検索] 画面が開き、重要な更新プログラムが適用されていないコンピューターに関する詳細情報が表示されます。 この例では、更新プログラムが適用されていないコンピューターが&1; 台と、必要な更新が適用されていないコンピューターが&1; 台あることがわかります。  
+3. この例では、**[Missing Updates (更新プログラムが適用されていない)]** の **[重要な更新プログラム]** をクリックすると、[ログ検索] 画面が開き、重要な更新プログラムが適用されていないコンピューターに関する詳細情報が表示されます。 この例では、更新プログラムが適用されていないコンピューターが 1 台と、必要な更新が適用されていないコンピューターが 1 台あることがわかります。  
     ![システムの更新に関するログ検索](./media/log-analytics-get-started/system-updates-log-search.png)
 4. [Operations Management Suite](http://microsoft.com/oms) の Web サイトにアクセスし、Azure アカウントを使用してサインインします。 サインインすると、Azure Portal で表示されるのと同様のソリューション情報が表示されます。  
     ![OMS ポータル](./media/log-analytics-get-started/oms-portal.png)
