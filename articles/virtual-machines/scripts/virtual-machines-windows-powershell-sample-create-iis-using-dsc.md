@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - IIS | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - IIS"
+title: "Azure PowerShell のサンプル スクリプト - DSC を使用する IIS | Microsoft Docs"
+description: "Azure PowerShell のサンプル スクリプト - DSC を使用する IIS"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -17,20 +17,72 @@ ms.date: 03/01/2017
 ms.author: nepeters
 translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5269bd54e2dc9604c855cc9ff061cca26db1bf44
+ms.openlocfilehash: 71baed7a4d8dbc26f8ba26b1d61e4b22d3532199
 ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
 
-このスクリプトでは、Windows Server 2016 を実行する Azure 仮想マシンを作成してから、Azure 仮想マシンのカスタム スクリプト拡張機能を使用して IIS をインストールします。 このスクリプトを実行すると、仮想マシンのパブリック IP アドレス上にあるの既定 IIS Web サイトにアクセスできるようになります。
+このスクリプトでは、Windows Server 2016 を実行する Azure 仮想マシンを作成してから、Azure 仮想マシンの DSC 拡張機能を使用して IIS をインストールします。 このスクリプトを実行すると、仮想マシンのパブリック IP アドレス上にあるの既定 IIS Web サイトにアクセスできるようになります。
 
 必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-iis/create-windows-vm-iis.ps1 "VM IIS を作成する")]
+```powershell
+# Variables for common values
+$resourceGroup = "myResourceGroup"
+$location = "westeurope"
+$vmName = "myVM"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# Create a subnet configuration
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+
+# Create a virtual network
+$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+
+# Create a public IP address and specify a DNS name
+$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+
+# Create an inbound network security group rule for port 80
+$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleHTTP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 80 -Access Allow
+
+# Create a network security group
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH
+
+# Create a virtual network card and associate with public IP address and NSG
+$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration
+$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
+Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
+Add-AzureRmVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+
+# Install IIS
+$PublicSettings = '{"ModulesURL":"https://github.com/Azure/azure-quickstart-templates/raw/master/dsc-extension-iis-server-windows-vm/ContosoWebsite.ps1.zip", "configurationFunction": "ContosoWebsite.ps1\\ContosoWebsite", "Properties": {"MachineName": "myVM"} }'
+
+Set-AzureRmVMExtension -ExtensionName "DSC" -ResourceGroupName $resourceGroup -VMName $vmName `
+  -Publisher "Microsoft.Powershell" -ExtensionType "DSC" -TypeHandlerVersion 2.19 `
+  -SettingString $PublicSettings -Location $location
+
+```
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

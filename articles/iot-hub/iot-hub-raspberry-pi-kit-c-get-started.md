@@ -13,13 +13,13 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 3/21/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: c74e8c40ba259df8d22c11f930073ab83e900c62
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 1d78a77ab28989bbac031e7dd967c050b1322ad7
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -29,6 +29,9 @@ ms.lasthandoff: 03/02/2017
 > * [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 
 このチュートリアルでは、まず Raspbian を実行する Raspberry Pi 3 の操作の基礎について説明します。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](http://www.windowsondevices.com/)を参照してください。
+
+> [!NOTE]
+> Docker が好みですか、それともホスト コンピューターでソース コードを構築する方がいいですか。 Docker がよければ、[GitHub](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-docker) で Docker ベースのソリューションを試してください。
 
 ## <a name="lesson-1-configure-your-device"></a>レッスン 1: デバイスの構成
 ![レッスン 1 のエンド ツー エンドのダイアグラム](media/iot-hub-raspberry-pi-lessons/e2e-lesson1.png)
@@ -50,7 +53,7 @@ Raspberry Pi 3 の最初のアプリケーションをビルドしてデプロ�
 「[ツールの入手](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)」に移動してください。
 
 ### <a name="create-and-deploy-the-blink-application"></a>点滅アプリケーションを作成してデプロイする
-GitHub のサンプル C 点滅アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を&2; 秒間隔で点滅させます。
+GitHub のサンプル C 点滅アプリケーションを複製し、gulp を使ってこのアプリケーションを Raspberry Pi 3 ボードにデプロイします。 このサンプル アプリケーションでは、ボードに接続された LED を 2 秒間隔で点滅させます。
 
 *推定所要時間: 5 分*
 

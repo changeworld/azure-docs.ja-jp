@@ -1,5 +1,5 @@
 ---
-title: "テンプレートを使用してルーティングと仮想アプライアンスを制御する | Microsoft Docs"
+title: "Azure でルーティングと仮想アプライアンスを制御する - テンプレート | Microsoft Docs"
 description: "Azure Resource Manager テンプレートを使用してルーティングと仮想アプライアンスを制御する方法について説明します。"
 services: virtual-network
 documentationcenter: na
@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 344391589a926cad5d06bf8dff095a97565ca123
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>テンプレートを使用してユーザー定義のルート (UDR) を作成する
 
 > [!div class="op_single_selector"]
-- [PowerShell](virtual-network-create-udr-arm-ps.md)
-- [Azure CLI](virtual-network-create-udr-arm-cli.md)
-- [テンプレート](virtual-network-create-udr-arm-template.md)
-- [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
-- [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
+> * [PowerShell](virtual-network-create-udr-arm-ps.md)
+> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [テンプレート](virtual-network-create-udr-arm-template.md)
+> * [PowerShell (クラシック)](virtual-network-create-udr-classic-ps.md)
+> * [CLI (クラシック)](virtual-network-create-udr-classic-cli.md)
 
 > [!IMPORTANT]
 > Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-resource-manager/resource-manager-deployment-model.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。 
@@ -175,7 +176,7 @@ ms.openlocfilehash: 6e6afd1088ef02fcad6126dfe6b6e3f0b4dff31d
 
 Azure CLI を使用して ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../xplat-cli-install.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次のコマンドを実行して、Resoursce Manager モードに切り替えます。
 
     ```azurecli
@@ -186,7 +187,7 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
         info:    New mode is arm
 
-3. ブラウザから **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして使用しているコンピューター上の新しいファイルにコピーします。 このシナリオでは、次の値を **c:\udr\azuredeploy.parameters.json**** という名前のファイルにコピーします。
+3. ブラウザから **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして使用しているコンピューター上の新しいファイルにコピーします。 このシナリオでは、次の値を **c:\udr\azuredeploy.parameters.json** という名前のファイルにコピーします。
 
     ```json
         {
@@ -406,9 +407,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 > [!TIP]
 > すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイのプロビジョニング状態が *Succeded* になっていることを確認します。
 > 
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

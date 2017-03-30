@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 03/14/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 623eda189cf3fd08a17417df65485a3717f88ace
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: a05059a51113ccaf71b735b1b32a0f3fb7411282
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/15/2017
 
 このスクリプトでは、Azure 仮想マシンを作成し、Operations Management Suite (OMS) エージェントをインストールして、システムを OMS ワークスペースに登録します。 このスクリプトを実行すると、仮想マシンが OMS コンソールに表示されるようになります。
 
-このスクリプトを実行する前に、`Login-AzureRmAccount` コマンドを使用して Azure との接続が作成されていることを確認してください。 また、スクリプトに記載されている OMS ワークスペース ID とワークスペース キーを、環境に合わせて変更する必要があります。
+必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。 また、OMS ワークスペース ID とワークスペース キーを更新する必要があります。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

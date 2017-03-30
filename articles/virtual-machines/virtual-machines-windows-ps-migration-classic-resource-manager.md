@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: f5ef5242a565358fb4af90cf10bb332b9c942fce
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 3f7a33f947913bf4b5ce9db20cacf746e4f7f169
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -30,6 +30,11 @@ ms.lasthandoff: 03/10/2017
 * サポートされる移行シナリオの背景については、「 [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。 
 * 詳細なガイダンスと移行のチュートリアルについては、「 [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)」を参照してください。
 * [Review most common migration errors](virtual-machines-migration-errors.md) (移行の一般的なエラーを確認する)
+
+<br>
+移行プロセス中に実行する必要のある手順を順番に示すフローチャートを以下に示します。
+
+![移行手順を示すスクリーンショット](./media/virtual-machines-windows-migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-plan-for-migration"></a>手順 1: 移行を計画する
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
@@ -43,7 +48,7 @@ ms.lasthandoff: 03/10/2017
 > 
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>手順 2: Azure PowerShell の最新バージョンをインストールする
-Azure PowerShell のインストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) という&2; つの主なオプションがあります。 WebPI は月次の更新プログラムを受け取ります。 PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。 この記事は、Azure PowerShell バージョン 2.1.0 に基づいています。
+Azure PowerShell のインストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) という 2 つの主なオプションがあります。 WebPI は月次の更新プログラムを受け取ります。 PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。 この記事は、Azure PowerShell バージョン 2.1.0 に基づいています。
 
 インストール指示については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
 
@@ -74,7 +79,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 ```
 
 > [!NOTE]
-> 登録は&1; 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます。 
+> 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます。 
 > 
 > "*BadRequest : 移行の対象サブスクリプションが登録されていません。*" 
 > 
@@ -86,7 +91,7 @@ Resource Manager モデルの自分のアカウントにサインインします
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-登録が完了するまで&5; 分間お待ちください。 承認の状態は、次のコマンドで確認できます。
+登録が完了するまで 5 分間お待ちください。 承認の状態は、次のコマンドで確認できます。
 
 ```powershell
     Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
@@ -129,7 +134,7 @@ Get-AzureRmVMUsage -Location "West US"
 > 
 > 
 
-### <a name="migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
+## <a name="step-61-migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>手順 6.1: クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
 次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。 クラウド サービスの VM が仮想ネットワーク内にある場合、または Web ロールか worker ロールを持つ場合は、コマンドではエラー メッセージが返されます。
 
 ```powershell
@@ -210,7 +215,7 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="migrate-virtual-machines-in-a-virtual-network"></a>仮想ネットワークの仮想マシンを移行する
+## <a name="step-62-migrate-virtual-machines-in-a-virtual-network"></a>手順 6.2: 仮想ネットワークの仮想マシンを移行する
 仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。 仮想マシンは、仮想ネットワークとともに自動的に移行されます。 移行する仮想ネットワークを選択します。 
 > [!NOTE]
 > [単一の従来の仮想マシンを移行](./virtual-machines-windows-migrate-single-classic-to-resource-manager.md)するには、仮想マシンの VHD (OS とデータ) ファイルを使用して Managed Disks を備えた新しい Resource Manager 仮想マシンを作成します。 
@@ -250,7 +255,7 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="migrate-a-storage-account"></a>ストレージ アカウントを移行する
+## <a name="step-63-migrate-a-storage-account"></a>手順 6.3: ストレージ アカウントを移行する
 仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
 
 ストレージ アカウントを移行する前に、上記の前提条件の確認を実行してください。

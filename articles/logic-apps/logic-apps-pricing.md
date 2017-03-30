@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
-ms.openlocfilehash: e14d55ad96187dc8ec6e6aac04463b58280783aa
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 10a2c7771d9d2ec57f3e57e1d6bb4f82c55aa7f1
+ms.lasthandoff: 03/17/2017
 
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps の料金モデル
@@ -30,7 +30,7 @@ Azure Logic Apps を使用すると、クラウドにおける統合ワークフ
 トリガーは、特定のイベントが発生したときにロジック アプリの新しいインスタンスを作成する特殊なアクションと考えることができます。  トリガーには複数の動作が存在し、それによってロジック アプリの課金方法が変わる場合があります。
 * **ポーリング トリガー** – ロジック アプリのインスタンスを作成するうえでの基準を満たしたメッセージを受け取るまで絶えずエンドポイントをポーリングするトリガーです。  ポーリング間隔は、ロジック アプリ デザイナーのトリガーで構成できます。  ロジック アプリのインスタンスが作成されたかどうかに関係なく、個々のポーリング要求がアクションの実行としてカウントされます。
 * **Webhook トリガー** – クライアントから送信される要求を特定のエンドポイントで待機するトリガーです。  Webhook のエンドポイントに送信された個々の要求がアクションの実行としてカウントされます。 Request と HTTP Webhook トリガーはどちらも Webhook トリガーです。
-* **定期実行のトリガー** – トリガーに対して構成された繰り返しの間隔に基づいてロジック アプリのインスタンスを作成するトリガーです。  たとえば、3 日に&1; 回や&1; 分間に&1; 回の頻度で実行するように定期実行のトリガーを構成することができます。
+* **定期実行のトリガー** – トリガーに対して構成された繰り返しの間隔に基づいてロジック アプリのインスタンスを作成するトリガーです。  たとえば、3 日に 1 回や 1 分間に 1 回の頻度で実行するように定期実行のトリガーを構成することができます。
 
 トリガーの実行は、Logic Apps のリソース ブレードの [トリガーの履歴] 領域で確認できます。
 
@@ -44,10 +44,10 @@ Azure Logic Apps を使用すると、クラウドにおける統合ワークフ
 従量制プランに含まれている統合アカウントに加えて、標準の統合アカウントを作成することもできます。このアカウントには上記の制限がなく、標準の Logic Apps SLA が適用されます。 詳しくは、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」をご覧ください。
 
 ## <a name="app-service-plans"></a>App Service プラン
-以前に作成したロジック アプリのうち、App Service プランを参照しているものは、今後もこれまでと同様に動作します。 これらのアプリは、選択したプランに応じて既定された&1; 日あたりの実行数を過えると制限されますが、料金はアクション実行メーターを使用して課金されます。
+以前に作成したロジック アプリのうち、App Service プランを参照しているものは、今後もこれまでと同様に動作します。 これらのアプリは、選択したプランに応じて既定された 1 日あたりの実行数を過えると制限されますが、料金はアクション実行メーターを使用して課金されます。
 サブスクリプションに App Service プランが含まれている場合 (ロジック アプリに明示的に関連付けられている必要はありません)、その EA カスタマーには使用量特典が提供されます。  たとえば、EA サブスクリプションに Standard App Service プランが含まれていて、同じサブスクリプションにロジック アプリが含まれている場合、1 日あたりのアクション実行が 10,000 回を超えるまでは、料金は課金されません(以下の表をご覧ください)。 
 
-App Service プランと&1; 日に許可されているアクションの実行数:
+App Service プランと 1 日に許可されているアクションの実行数:
 |  | Free/Shared/Basic | 標準 | プレミアム |
 | --- | --- | --- | --- |
 | 1 日あたりのアクションの実行数 |200 |10,000 |50,000 |
@@ -58,6 +58,10 @@ App Service プランが関連付けられているロジック アプリを従�
 
 ## <a name="next-steps"></a>次のステップ
 * [Logic Apps の概要][whatis]
-* [最初のロジック アプリの作成][create] [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/ [whatis]: logic-apps-what-are-logic-apps.md [create]: logic-apps-create-a-logic-app.md
+* [初めてのロジック アプリの作成][create]
+
+[pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
+[whatis]: logic-apps-what-are-logic-apps.md
+[create]: logic-apps-create-a-logic-app.md
 
 

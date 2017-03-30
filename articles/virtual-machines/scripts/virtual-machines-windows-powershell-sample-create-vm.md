@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: fc02a169bf38de911401a390c3157e400ec74578
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: b62637150773bdfb48ff654675af5c4ffdd67919
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 
-このスクリプトは、Windows オペレーティング システムと関連ネットワーク リソースが設定された Azure 仮想マシンを作成します。 スクリプトが正常に実行されると、この仮想マシンへ SSH 経由でアクセスできるようになります。 
+このスクリプトは、Windows Server 2016 を実行する Azure 仮想マシンを作成します。 スクリプトを実行すると、SSH 経由で仮想マシンにアクセスできるようになります。
 
-このスクリプトを実行する前に、`Login-AzureRmAccount` コマンドを使用して Azure との接続が作成されていることを確認してください。
+必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/15/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
