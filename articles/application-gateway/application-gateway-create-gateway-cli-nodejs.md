@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: edc6b5f7a90babaa1f50b14f40eaed1e8582cd2e
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: f550ec9a8d254378d165f0c842459fd50ade7945
+ms.openlocfilehash: 9ea999ea483543beda8d258f58dc8fba479aa603
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -38,7 +38,7 @@ Azure Application Gateway はレイヤー&7; のロード バランサーです�
 
 ## <a name="prerequisite-install-the-azure-cli"></a>前提条件: Azure CLI のインストール
 
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストール](../cli-install-nodejs.md)し、[Azure にログオン](../xplat-cli-connect.md)する必要があります。 
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストール](../xplat-cli-install.md)し、[Azure にログオン](../xplat-cli-connect.md)する必要があります。 
 
 > [!NOTE]
 > Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/sign-up-organization.md)にサインアップしてください。
