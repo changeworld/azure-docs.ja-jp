@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Services 向けの Application Insights"
+title: "Azure Cloud Services 向けの Application Insights | Microsoft Docs"
 description: "Application Insights で Web と worker ロールを効果的に監視する"
 services: application-insights
 documentationcenter: 
@@ -15,9 +15,9 @@ ms.workload: tbd
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 42e4fe54eec414549f09b93a3e12ea130eeee68f
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 5ea258a8c790dd94e019243e77f2ff694c2515d7
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -66,7 +66,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 通常、ブラウザーのテレメトリはサーバー側の Web ロールと同じリソースに含まれています。
 
-さまざまなコンポーネント用の Application Insights リソースを&1; つのリソース グループに配置します。 これにより、まとめて管理することが簡単になります。 
+さまざまなコンポーネント用の Application Insights リソースを 1 つのリソース グループに配置します。 これにより、まとめて管理することが簡単になります。 
 
 ### <a name="separating-development-test-and-production"></a>開発、テスト、および運用の分離
 前のバージョンがライブである間に次の機能用のカスタム イベントを開発する場合、開発に関するテレメトリを別の Application Insights リソースに送信する必要があります。 そうしないと、ライブ サイトからのすべてのトラフィックの中からテストに関するテレメトリを見つけることは難しくなります。
@@ -79,25 +79,25 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 各ロール用に別個のリソースを作成する (場合によっては各ビルド構成用に別個のセットも作成する) ことにした場合は、Application Insights ポータルでそのすべてを作成するのが最も簡単です。 (リソースを多く作成する場合は、[プロセスを自動化](app-insights-powershell.md)できます。
 
 1. [Azure Portal][portal] で、新しい Application Insights リソースを作成します。 アプリケーションの種類として ASP.NET アプリを選択します。 
-   
-   ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-cloudservices/01-new.png)
+
+    ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-cloudservices/01-new.png)
 2. 各リソースはインストルメンテーション キーによって識別されることに注意してください。 これは、後で SDK を手動で構成する場合や SDK の構成を確認する場合に必要になる可能性があります。
-   
-   ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-cloudservices/02-props.png) 
+
+    ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Set up Azure Diagnostics for each role (各ロール用の Azure 診断を設定する)
 このオプションは、Application Insights でアプリを監視する場合に設定します。 Web ロールの場合は、これによってパフォーマンスの監視、アラート、診断に加え、使用状況の分析が提供されます。 その他のロールの場合は、再起動、パフォーマンス カウンター、System.Diagnostics.Trace への呼び出しなどの Azure 診断を検索して監視できます。 
 
 1. Visual Studio ソリューション エクスプローラーで、&lt;[YourCloudService]&gt; の [ロール] から、各ロールのプロパティを開きます。
 2. **[構成]** で **[Application Insights への診断データの送信]** を設定してから、先ほど作成した該当する Application Insights リソースを選択します。
-   
-   * 各ビルド構成に対して別個の Application Insights リソースを使用することにした場合は、まず構成を選択します。
+
+各ビルド構成に対して別個の Application Insights リソースを使用することにした場合は、まず構成を選択します。
 
 ![各 Azure ロールのプロパティで、Application Insights を構成します。](./media/app-insights-cloudservices/configure-azure-diagnostics.png)
 
 これにより、Application Insights のインストルメンテーション キーが `ServiceConfiguration.*.cscfg` という名前のファイルに挿入されます  ([サンプル コード](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg))。
 
-Application Insights に送信される診断情報のレベルを変更する場合は、[.cscfg ファイルを直接編集](app-insights-azure-diagnostics.md)できます。
+Application Insights に送信される診断情報のレベルを変更する場合は、[`.cscfg` ファイルを直接編集](app-insights-azure-diagnostics.md)できます。
 
 ## <a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションを選択すると、アプリケーションの使用状況やパフォーマンスを詳しく分析するためにカスタム ビジネス テレメトリを任意のロールに追加できるようになります。
@@ -105,17 +105,17 @@ Application Insights に送信される診断情報のレベルを変更する�
 Visual Studio で、Application Insights SDK を各クラウド アプリ プロジェクト用に構成します。
 
 1. **Web ロール**: プロジェクトを右クリックし、**[Application Insights の構成]** または **[追加] > [Application Insights Telemetry]** を選択します。
-   
+
 2. **Worker ロール**: 
  * プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。
  * [Windows サーバー用の Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を追加します。
-   
+
     ![Search for "Application Insights"](./media/app-insights-cloudservices/04-ai-nuget.png)
 
 3. データを Application Insights リソースに送信するように SDK を構成します。
-   
+
     適切なスタートアップ関数で、.cscfg ファイル内の構成設定から入手したインストルメンテーション キーを設定します。
-   
+ 
     ```C#
    
      TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
@@ -125,7 +125,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
    
    * [Web ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
    * [worker ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-   * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)   
+   * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。 
    
     (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。 ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。 これにより、ポータルでロールが正確に識別されます)。
@@ -152,7 +152,7 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 
 ![Azure 診断のデータ](./media/app-insights-cloudservices/23-wad.png)
 
-[検索](app-insights-diagnostic-search.md) を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ロールでハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされた場合、Windows イベント ログのアプリケーション チャネルにその情報が表示されます。 検索機能を使用して、Windows イベント ログのエラーを確認し、例外のスタック トレース全体を取得することで、問題の根本原因を発見できます。
+[検索](app-insights-diagnostic-search.md)または [Analytics クエリ](app-insights-analytics-tour.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 ユーザーは、検索を使用して Windows イベント ログのエラーを確認し、例外の完全なスタック トレースを取得できます。 この機能は、問題の根本原因の発見に役立ちます。
 
 ![Azure 診断の検索](./media/app-insights-cloudservices/25-wad.png)
 
@@ -162,22 +162,22 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 ## <a name="track-requests-from-worker-roles"></a>ワーカー ロールからの要求を追跡する
 Web ロールでは、HTTP 要求に関するデータが要求モジュールによって自動的に収集されます。 既定の収集動作をオーバーライドする方法の例については、 [サンプルの MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) をご覧ください。 
 
-HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。 Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。 SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
+HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。 Application Insights では、"要求" 型のテレメトリは、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。 SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
 
-要求を報告するためにインストルメント化された&2; つのサンプル worker ロール ([WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) と [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)) を参照してください。
+要求を報告するためにインストルメント化された 2 つのサンプル worker ロール ([WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) と [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)) を参照してください。
 
 ## <a name="exceptions"></a>例外
 各種 Web アプリケーションから未処理の例外を収集する方法の詳細については、 [Application Insights での例外の監視](app-insights-asp-net-exceptions.md) に関するページをご覧ください。
 
-サンプルの web ロールには MVC5 コントローラーおよび Web API 2 コントローラーが含まれています。 この 2 つからの未処理の例外は、以下を使用してキャプチャされます。
+サンプルの web ロールには MVC5 コントローラーおよび Web API 2 コントローラーが含まれています。 この 2 つからのハンドルされない例外は、以下のハンドラーを使用してキャプチャされます。
 
 * MVC5 コントローラー向けの [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) セットアップ ([こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12)を参照)
 * Web API 2 コントローラー向けの [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) セットアップ ([こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25)を参照)
 
-woker ロールの場合、例外を追跡する方法は&2; つあります。
+worker ロールの場合、例外を追跡する方法は 2 つあります。
 
 * TrackException(ex)
-* Application Insights トレース リスナー NuGet パッケージを追加した場合は、System.Diagnostics.Trace を使用して例外を記録できます。 [コード例はこちらです。](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+* Application Insights トレース リスナー NuGet パッケージを追加した場合は、**System.Diagnostics.Trace** を使用して例外を記録できます。 [コード例はこちらです。](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 既定では、次のカウンターが収集されます。
@@ -189,13 +189,13 @@ woker ロールの場合、例外を追跡する方法は&2; つあります。
     * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
     * \Processor(_Total)\% Processor Time
 
-また、web ロールの場合は次も収集されます。
+Web ロールの場合、以下のカウンターも収集されます。
 
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec    
+    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
     * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-[こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)
+追加のカスタム パフォーマンス カウンターやその他の Windows パフォーマンス カウンターは、[この例のように](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14) ApplicationInsights.config を編集することで指定できます。
 
   ![パフォーマンス カウンター](./media/app-insights-cloudservices/OLfMo2f.png)
 
@@ -205,7 +205,7 @@ woker ロールの場合、例外を追跡する方法は&2; つあります。
 その方法は次のとおりです。
 
 * [こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)に示すように、CallContext に関連付け ID を設定します。 このケースでは、要求 ID を関連付け ID として使用しています。
-* カスタムの TelemetryInitializer 実装を追加します。これにより、上で設定した correlationId に Operation.Id が設定されます。 こちらをご覧ください ([ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13))。
+* カスタムの TelemetryInitializer 実装を追加します。これにより、上で設定した correlationId に Operation.Id が設定されます。 例についてはこちらをご覧ください ([ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13))。
 * カスタムのテレメトリ初期化子を追加します。 これは、ApplicationInsights.config ファイル内か、 [こちら](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
 
 これで完了です。 ポータル エクスペリエンスは既に、関連付けられたすべてのテレメトリを一目で確認できるように設定されています。
@@ -226,10 +226,14 @@ woker ロールの場合、例外を追跡する方法は&2; つあります。
 クライアント モバイル アプリがある場合は、主要なユーザー操作の際にカスタム イベントを送信するコードを挿入してから、[HockeyApp ブリッジ](app-insights-hockeyapp-bridge-app.md)を作成します。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
-[この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと&2; つの worker ロールが含まれたサービスを監視します。
+[この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
 .NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。 アプリを実行する前に、[各ロールに 4.6 をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)してください。
+
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次のステップ
 * [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)

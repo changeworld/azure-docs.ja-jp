@@ -21,7 +21,7 @@ ms.lasthandoff: 01/24/2017
 
 ---
 
-# <a name="a-nameget-startedacreating-an-internet-facing-load-balancer-in-resource-manager-by-using-powershell"></a><a name="get-started"></a>Resource Manager で PowerShell を使用したインターネットに接続するロード バランサーの作成
+# <a name="get-started"></a>Resource Manager で PowerShell を使用したインターネットに接続するロード バランサーの作成
 
 > [!div class="op_single_selector"]
 > * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -255,7 +255,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 2. 変数にバックエンド構成を読み込みます。
 
     ```powershell
-    $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+    $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
     ```
 
 3. 変数に作成済みのネットワーク インターフェイスを読み込みます。 変数名は **$nic**です。 ネットワーク インターフェイス名は、前述の例と同じです。
@@ -283,7 +283,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 1. 前述の例のロード バランサーを使用し、ロード バランサーのオブジェクトを `Get-AzureLoadBalancer` を使って変数 **$slb** に割り当てます。
 
     ```powershell
-    $slb = get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+    $slb = get-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
     ```
 
 2. 次の例では、フロント エンド プールでポート 81、バック エンド プールでポート 8181 を使用し、既存のロード バランサーに新しい受信 NAT 規則を追加します。
@@ -303,7 +303,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 `Remove-AzureLoadBalancer` コマンドを使用して、**NRP-RG** というリソース グループから、以前に作成された**NRP-LB** という名前のロード バランサーを削除します。
 
 ```powershell
-Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]

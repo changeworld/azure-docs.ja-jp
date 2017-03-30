@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 03/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: b8f354b34e1a3a581dd2e41df4b80cbdbcd9a705
-ms.openlocfilehash: 3033df7c69a1c4211c906c6f3bdcd7868dedde13
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: fb61a2d622b0d829a134b6ce5dfef6e9fb44fa1e
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -47,11 +47,11 @@ OfficeSpace Software と Azure AD の統合を構成するには、次のもの�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の試用版を入手できます。
+- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの OfficeSpace Software の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -148,43 +148,31 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
     
     d. **[OK]** をクリックします。
 
-6. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
+6. **[SAML 署名証明書]** セクションで、**[Certificate (base64) (証明書 (base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_06.png)     
+    ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_08.png) 
 
-7. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
+7. **[Save]**をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_general_300.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
 
-8. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_07.png)
-
-9. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
-
-    ![Configure Single Sign-On](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
-
-10. **[SAML 署名証明書]** セクションで、**[Certificate (base64) (証明書 (base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
-
-    ![Configure Single Sign-On](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_08.png) 
-
-11. **[OfficeSpace Software Configuration (OfficeSpace Software 構成)]** セクションで **[Configure OfficeSpace Software (OfficeSpace Software の構成)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
+8. **[OfficeSpace Software Configuration (OfficeSpace Software 構成)]** セクションで **[Configure OfficeSpace Software (OfficeSpace Software の構成)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_09.png) 
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_10.png)
 
-12. 別の Web ブラウザーのウィンドウで、管理者として OfficeSpace Software テナントにログインします。
+9. 別の Web ブラウザーのウィンドウで、管理者として OfficeSpace Software テナントにログインします。
 
-13. **[設定]** に移動して、**[コネクタ]**をクリックします。
+10. **[設定]** に移動して、**[コネクタ]**をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
-14. **[SAML 承認]**をクリックします。
+11. **[SAML 認証]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_003.png)
 
-15. **[SAML 承認]** セクションで、次の手順に従います。
+12. **[SAML Authentication]** セクションで、次の手順に従います。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 
@@ -201,13 +189,13 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
   
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
+このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-officespace-tutorial/create_aaduser_01.png) 
 
