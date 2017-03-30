@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 0a6a6e5b76e03eba113600b5be558daa8c924f0f
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 62faba3827e9fc33e9788cd2d487adf04d760791
+ms.lasthandoff: 03/15/2017
 
 
 ---
-# <a name="create-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Azure Monitor での Azure サービス アラートの作成 - クロスプラットフォーム CLI 
+# <a name="create-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitorでの Azure サービス アラートの作成 
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -146,9 +147,4 @@ ms.openlocfilehash: 0a6a6e5b76e03eba113600b5be558daa8c924f0f
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログ収集の概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手して、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

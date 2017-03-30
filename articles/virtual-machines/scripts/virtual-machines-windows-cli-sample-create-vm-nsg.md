@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された&2; つの VM の作成 | Microsoft Docs"
-description: "Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された&2; つの VM の作成"
+title: "Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成 | Microsoft Docs"
+description: "Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 82d40c30c92f5da090e7ec4e2f25ead3908cc603
-ms.openlocfilehash: 69a06ba68e9a92ab63fd7c86a80eb9c4718f6679
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 061aaa9fbd2f01029bb174378fb7c4571ede4785
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/02/2017
 
 このスクリプトでは、2 つの仮想マシンを作成し、両マシンへの受信トラフィックをセキュリティで保護します。 1 つ目の仮想マシンはインターネット上でアクセス可能にし、ポート 3389 とポート 80 のトラフィックを許可するようにネットワーク セキュリティ グループ (NSG) を構成します。 2 つ目の仮想マシンはインターネット上でアクセスできないようにし、1 つ目の仮想マシンからのトラフィックのみを許可するように NSG を構成します。 
 
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。 また、スクリプトの冒頭にある $AdminPassword 変数を、一意かつパスワードの複雑性要件を満たしたものに変更してください。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows で実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup --yes

@@ -1,7 +1,7 @@
 ---
 title: "Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス | Microsoft Docs"
 description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
-services: active-directory
+services: active-directory.
 documentationcenter: 
 author: MarkusVi
 manager: femila
@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
@@ -21,7 +21,9 @@ ms.lasthandoff: 03/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
+
 ## <a name="services-enabled-with-conditional-access"></a>条件付きアクセスで有効になっているサービス
+
 条件付きアクセス規則は、さまざまな Azure AD アプリケーションの種類でサポートされています。 たとえば、次のような種類です。
 
 
@@ -36,6 +38,13 @@ ms.lasthandoff: 03/02/2017
 * Microsoft Power BI 
 * Azure AD アプリケーション ギャラリーのパスワード SSO アプリケーション
 * Visual Studio Online
+
+
+
+
+
+
+
 
 
 ## <a name="enable-access-rules"></a>アクセス規則の有効化

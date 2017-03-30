@@ -1,22 +1,22 @@
 ---
-title: "Analytics の使用 - Application Insights の強力な検索ツール | Microsoft Docs"
+title: "Analytics の使用 - Azure Application Insights の強力な検索ツール | Microsoft Docs"
 description: "Application Insights の強力な診断検索ツールである Analytics を使用します。 "
 services: application-insights
 documentationcenter: 
 author: danhadari
-manager: douge
+manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
-ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d7f6f9582a3d15563c19d69845836a92a35ee95e
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -81,7 +81,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 ![Arrange columns](./media/app-insights-analytics-using/030.png)
 
 ### <a name="sort-and-filter-items"></a>項目の並べ替えとフィルター処理を行う
-結果を並べ替えるには、列のヘッダーをクリックします。 もう一度クリックすると、もう&1; つの方法で並べ替えられ、3 回目のクリックで、クエリから返された元の順序に戻ります。
+結果を並べ替えるには、列のヘッダーをクリックします。 もう一度クリックすると、もう 1 つの方法で並べ替えられ、3 回目のクリックで、クエリから返された元の順序に戻ります。
 
 検索を絞り込むには、フィルター アイコンを使用します。
 
@@ -131,10 +131,10 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
 つまり、Web サービスのパフォーマンスや使用状況の監視に利用するダッシュボードを構成するときに、複雑な分析を他のメトリックに一緒に組み込むことができます。 
 
-列の数が&4; 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。 最初の&7; 行のみが表示されます。
+列の数が 4 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。 最初の 7 行のみが表示されます。
 
 ### <a name="dashboard-refresh"></a>ダッシュボードの更新
-ダッシュボードにピン留めされているグラフは、約&2; 時間おきにクエリが再実行されるときに自動的に更新されます。
+ダッシュボードにピン留めされているグラフは、約 2 時間おきにクエリが再実行されるときに自動的に更新されます。
 
 ### <a name="automatic-simplifications"></a>自動簡略化
 
@@ -196,7 +196,7 @@ CSV ファイルからデータをインポートすることができます。 
 ### <a name="define-your-data-schema"></a>データ スキーマを定義する
 
 1. **[設定]** (左上にある) に続けて **[データ ソース]** をクリックします。 
-2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも&10; 行が含まれる必要がある) を提供するよう要求されます。 その後でスキーマを修正します。
+2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも 10 行が含まれる必要がある) を提供するよう要求されます。 その後でスキーマを修正します。
 
 これにより、個々 のテーブルをインポートするために使用できるデータ ソースが定義されます。
 
@@ -209,7 +209,7 @@ CSV ファイルからデータをインポートすることができます。 
 
 ### <a name="use-the-table"></a>テーブルを使用する
 
-データ ソース定義の名前が `usermap` で、`realName` および `user_AuthenticatedId` の&2; つのフィールドが含まれているとします。 `requests` テーブルにも `user_AuthenticatedId` という名前のフィールドがあるため、簡単に結合を実行できます。
+データ ソース定義の名前が `usermap` で、`realName` および `user_AuthenticatedId` の 2 つのフィールドが含まれているとします。 `requests` テーブルにも `user_AuthenticatedId` という名前のフィールドがあるため、簡単に結合を実行できます。
 
 ```AIQL
 
@@ -223,7 +223,9 @@ CSV ファイルからデータをインポートすることができます。 
 
 [LogStash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html) を使用する場合は、Analytics を使用してログのクエリを実行できます。 [Analytics にデータをパイプするプラグイン](https://github.com/Microsoft/logstash-output-application-insights)を使用してください。 
 
+## <a name="video"></a>ビデオ
 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 

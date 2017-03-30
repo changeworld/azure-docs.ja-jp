@@ -17,21 +17,21 @@ ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: 251a2977d821b710807e00b2aae71992630feb77
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 672462fad715758e50680fa5bade4b1f9d50e6e5
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する
 
 > [!div class="op_single_selector"]
-- [Azure ポータル](virtual-networks-static-private-ip-arm-pportal.md)
-- [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-- [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
-- [Azure Portal (クラシック)](virtual-networks-static-private-ip-classic-pportal.md)
-- [PowerShell (クラシック)](virtual-networks-static-private-ip-classic-ps.md)
-- [Azure CLI (クラシック)](virtual-networks-static-private-ip-classic-cli.md)
+> * [Azure ポータル](virtual-networks-static-private-ip-arm-pportal.md)
+> * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
+> * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
+> * [Azure Portal (クラシック)](virtual-networks-static-private-ip-classic-pportal.md)
+> * [PowerShell (クラシック)](virtual-networks-static-private-ip-classic-ps.md)
+> * [Azure CLI (クラシック)](virtual-networks-static-private-ip-classic-cli.md)
 
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
@@ -100,7 +100,7 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する方法
 上記で作成した VM から静的プライベート IP アドレスを削除するには、以下の手順に従います。
 
-1. 上記の **[IP アドレス]** ブレードで、**[割り当て]** の下にある **[動的]** をクリックしてから、**[保存]** をクリックします。
+上記の **[IP アドレス]** ブレードで、**[割り当て]** の下にある **[動的]** をクリックしてから、**[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。

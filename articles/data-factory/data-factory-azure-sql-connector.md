@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 02/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8144b0a65c18fb98cb410cfd83ad9812c6ed2a
-ms.openlocfilehash: 5cb04849a3346777a124fc3c0d3464843efaca52
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 90f8a2c0a30c9cce411215e1b98954de0ed9b787
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -350,7 +351,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 **Azure SQL の出力データセット**
 
-このサンプルは Azure SQL の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは Azure SQL の「MyOutputTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {
@@ -512,7 +513,7 @@ GO
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/>  例: "00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
@@ -666,9 +667,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

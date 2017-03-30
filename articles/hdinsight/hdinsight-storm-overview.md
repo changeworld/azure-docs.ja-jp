@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 72d54080-1e48-4a5e-aa50-cce4ffc85077
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 01/11/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 0cf2d7f4cbbed730d690693fd006665355155c22
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 0aa2a7075f64b353f6b052ab6b973a06622a9339
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -42,21 +43,21 @@ HDInsight における Apache Storm の主なメリットは次のとおりで�
 * 作成中または作成後にクラスターに対してスクリプトを実行することで、簡単にカスタマイズできます。 詳細については、[スクリプト アクションを使った HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 
 * Storm コンポーネントは、言語選択の自由度が高く、**Java** や **C#**、**Python** などのさまざまな言語で作成することができます。
-  
+
   * C# トポロジの開発、管理、監視を目的とした、Visual Studio と HDInsight の統合。 詳細については、[HDInsight Tools for Visual Studio を使用した C# Storm トポロジの開発](hdinsight-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
 
-  * **Trident** Java インターフェイスをサポートします。 このインターフェイスにより、メッセージの "厳密に&1; 回" 処理、"トランザクション" のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジの作成が可能になります。
+  * **Trident** Java インターフェイスをサポートします。 このインターフェイスにより、メッセージの "厳密に 1 回" 処理、"トランザクション" のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジの作成が可能になります。
 
 * クラスターのスケールアップとスケールダウンが容易です。Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。
 
 * 次の Azure サービスと連携します。
-  
+
     * Event Hubs
     * 仮想ネットワーク
     * SQL Database
     * Azure Storage (Azure Storage)
     * DocumentDB に保存するものとします。
-  
+
   * Azure Virtual Network を使用して、複数の HDInsight クラスターの機能を安全に組み合わせることができます。HDInsight、HBase、Hadoop クラスターを使用する分析パイプラインを作成できます。
 
 リアルタイムの分析ソリューション用の Apache Storm を使用している企業の一覧については、「 [Companies Using Apache Storm (Apache Stormを使用している企業)](https://storm.apache.org/documentation/Powered-By.html)」をご覧ください。
@@ -80,7 +81,7 @@ HDInsight クラスター上に新しい Storm を数分でプロビジョニン
 
 * __Web 接続__: HDInsight クラスターでは Ambari Web UI が提供されます。 Ambari Web UI を使用すれば、クラスター上のサービスの監視、構成、管理を簡単に行うことができます。 HDInsight における Storm では Storm UI も提供されます。これを使用すれば、お使いのブラウザーから Storm トポロジの実行を監視および管理できます。
 
-  詳細については、[Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関する記事と、「[Storm UI を使用して監視および管理する](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-using-the-storm-ui)」を参照してください。
+  詳細については、[Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関する記事と、「[Storm UI を使用して監視および管理する](hdinsight-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui)」を参照してください。
 
 * __Azure PowerShell および CLI__: Azure PowerShell と Azure CLI はいずれも、HDInsight やその他の Azure サービスを操作するためにクライアント システムから使用できるコマンド ライン ユーティリティです。
 
@@ -112,9 +113,9 @@ HDInsight クラスター上に新しい Storm を数分でプロビジョニン
 
 Apache Storm は、データ分析が多数のノードにまたがる場合でも、各受信メッセージを完全に処理することを常に保証します。
 
-**Nimbus ノード**は Hadoop JobTracker に同様の機能を提供し、**Zookeeper** を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と ワーカー ノードの **Supervisor** 処理間の通信を容易にします。 処理中のノードの&1; つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
+**Nimbus ノード**は Hadoop JobTracker に同様の機能を提供し、**Zookeeper** を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と ワーカー ノードの **Supervisor** 処理間の通信を容易にします。 処理中のノードの 1 つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
 
-Apache Storm の既定の構成では、Nimbus ノードは&1; つだけです。 HDInsight の Storm では、2 つの Nimbus ノードを実行します。 プライマリ ノードが失敗すると、プライマリ ノードが復旧中は、HDInsight クラスターはセカンダリ ノードに切り替わります。
+Apache Storm の既定の構成では、Nimbus ノードは 1 つだけです。 HDInsight の Storm では、2 つの Nimbus ノードを実行します。 プライマリ ノードが失敗すると、プライマリ ノードが復旧中は、HDInsight クラスターはセカンダリ ノードに切り替わります。
 
 ![Nimbus、Zookeeper、スーパーバイザのダイアグラム](./media/hdinsight-storm-overview/nimbus.png)
 
@@ -144,16 +145,16 @@ HDInsight の Storm には、完全なエンタープライズ レベルの 24 �
 
 ## <a name="how-is-data-in-hdinsight-storm-processed"></a>HDInsight Storm のデータの処理方法
 
-Apache Storm は、HDInsight や Hadoop から使用することが一般的な MapReduce ジョブではなく、 **トポロジ** を処理します。 HDInsight クラスターの Storm には、**Nimbus** を実行するヘッド ノードと **Supervisor** を実行するワーカー ノードの&2; 種類のノードが含まれます。
+Apache Storm は、HDInsight や Hadoop から使用することが一般的な MapReduce ジョブではなく、 **トポロジ** を処理します。 HDInsight クラスターの Storm には、**Nimbus** を実行するヘッド ノードと **Supervisor** を実行するワーカー ノードの 2 種類のノードが含まれます。
 
-* **Nimbus**- Hadoop の JobTracker 同様、クラスター全体へのコードの配布、仮想マシンへのタスクの割り当て、障害の監視を処理します。 HDInsight は&2; つの Nimbus ノードを提供するため、HDInsight の Storm クラスターに単一障害点が生じません。
+* **Nimbus**- Hadoop の JobTracker 同様、クラスター全体へのコードの配布、仮想マシンへのタスクの割り当て、障害の監視を処理します。 HDInsight は 2 つの Nimbus ノードを提供するため、HDInsight の Storm クラスターに単一障害点が生じません。
 * **Supervisor**: 各ワーカー ノードの supervisor は、ノードの**ワーカー プロセス**の開始と停止を処理します。
 * **ワーカー プロセス**: **トポロジ**のサブセットを実行します。 実行中のトポロジは、クラスター内の多くのワーカー プロセスに分散されます。
 * **トポロジ**: データ **ストリーム**を処理する計算処理のグラフを定義します。 MapReduce ジョブとは異なり、トポロジは停止されるまで実行されます。
 * **ストリーム**: **タプル**のバインドされていないコレクション。 ストリームは、**スパウト**と**ボルト**により生成され、**ボルト**によって利用されます。
 * **タプル**: 動的に型指定される値の名前付きのリスト
 * **スパウト**: データ ソースのデータを利用し、1 つ以上の**ストリーム**を発します。
-  
+
   > [!NOTE]
   > 多くの場合、データは、Kafka、Azure Event Hubs などのキューから読み取られます。 システムが停止した場合、キューが確実にデータを保持します。
 
@@ -164,7 +165,7 @@ Storm コンポーネントの詳細については、apache.org の [Storm の�
 
 ## <a name="what-programming-languages-can-i-use"></a>使用できるプログラミング言語
 
-### <a name="c35"></a>C (&)&#35;；
+### <a name="c35"></a>C (&) #35；
 
 Data Lake Tools for Visual Studio では、.NET 開発者は、C# のトポロジを設計し、実装できます。 Java と C# のコンポーネントを使用するハイブリッド トポロジを作成することもできます。
 
@@ -172,7 +173,7 @@ Data Lake Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 ### <a name="java"></a>Java
 
-目にすることがあるほとんどの Java の例は、プレーンな Java か Trident です。 Trident は、結合、集計、グループ化、フィルタリングなどの実行を容易にするための、高レベルの抽象概念です。 ただし、Trident は、タプルのバッチに作用し、ここでは未加工の Java ソリューションが&1; 回に&1; タプルずつストリームを処理します。
+目にすることがあるほとんどの Java の例は、プレーンな Java か Trident です。 Trident は、結合、集計、グループ化、フィルタリングなどの実行を容易にするための、高レベルの抽象概念です。 ただし、Trident は、タプルのバッチに作用し、ここでは未加工の Java ソリューションが 1 回に 1 タプルずつストリームを処理します。
 
 Trident の詳細については、apache.org の「 [Trident のチュートリアル](https://storm.apache.org/documentation/Trident-tutorial.html) 」をご覧ください。
 
@@ -188,7 +189,7 @@ Python コンポーネントの使用例については、[HDInsight での Pyth
 
 ### <a name="guaranteed-message-processing"></a>メッセージの処理の保証
 
-Storm は、さまざまなレベルでメッセージの処理を保証します。 たとえば、基本的な Storm アプリケーションは "最低&1; 回" の処理を保証できますが、Trident は "厳密に&1; 回" の処理を保証できます。
+Storm は、さまざまなレベルでメッセージの処理を保証します。 たとえば、基本的な Storm アプリケーションは "最低 1 回" の処理を保証できますが、Trident は "厳密に 1 回" の処理を保証できます。
 
 詳細については、apache.org の「 [Guarantees on data processing (データ処理の保証)](https://storm.apache.org/about/guarantees-data-processing.html) 」をご覧ください。
 
@@ -198,7 +199,7 @@ Storm は、さまざまなレベルでメッセージの処理を保証しま�
 
 ### <a name="joins"></a>結合
 
-データ ストリームの結合方法は、アプリケーションによって異なります。 たとえば、複数のストリームの各タプルを&1; つの新しいストリームに結合したり、特定のウィンドウに対してのみタプルのバッチを結合したりする場合があります。 いずれの場合も、結合は [fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) を使用して実行されます。これは、ボルトへのタプルのルーティングの定義方法の&1; つです。
+データ ストリームの結合方法は、アプリケーションによって異なります。 たとえば、複数のストリームの各タプルを 1 つの新しいストリームに結合したり、特定のウィンドウに対してのみタプルのバッチを結合したりする場合があります。 いずれの場合も、結合は [fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) を使用して実行されます。これは、ボルトへのタプルのルーティングの定義方法の 1 つです。
 
 次の Java の例では、fieldsGrouping は、 **MyJoiner** ボルトへの、コンポーネント "1"、"2"、"3" から発生したタプルのルーティングに使用されています。
 

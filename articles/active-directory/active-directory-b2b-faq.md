@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/14/2017
+ms.date: 03/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 4b7ed095729e810f7f1112d3b6becfaf186bf508
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 995f185f99c80809a5c4c2925b8d594b1d5568ff
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -65,7 +65,7 @@ B2B コラボレーション ユーザーは、制限付き管理者ロールま
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
 はい。 ただし、このポリシーを構成する際に、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
-ゲスト ユーザーによる [Azure Portal](https://portal.azure.com) へのアクセスは、Windows Azure Service Management API の条件付きアクセス ポリシーを通じて、次の&3; つの手順でブロックできます。
+ゲスト ユーザーによる [Azure Portal](https://portal.azure.com) へのアクセスは、Windows Azure Service Management API の条件付きアクセス ポリシーを通じて、次の 3 つの手順でブロックできます。
 1. **[すべてのユーザー]** グループを、メンバーのみが含まれるように変更します。![](media/active-directory-b2b-faq/modify-all-users-group.png)
 2. ゲスト ユーザーを含む動的グループを作成します。![](media/active-directory-b2b-faq/group-with-guest-users.png)
 3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。
@@ -97,6 +97,13 @@ Azure AD には、文字、パスワードの強度、およびアカウント �
 ### <a name="applications-want-to-differentiate-their-experience-between-a-tenant-user-and-a-guest-user-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-right-model-for-this"></a>アプリケーションのエクスペリエンスをテナント ユーザーとゲスト ユーザーで区別したいと思っています。 これを行うための標準的なガイダンスはありますか。 このモデルに適した ID プロバイダー要求は存在しますか。
  
 「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)」で説明しているように、ゲスト ユーザーは、認証用に任意の ID プロバイダーを使用することができます。 このため、判断を行うための適切なプロパティは UserType です。 現在、UserType 要求はトークンには含まれていません。 アプリケーションは、Graph API を使用してディレクトリでユーザーのクエリを実行することで、ユーザーの UserType を取得する必要があります。
+
+### <a name="where-can-find-a-b2b-collaboration-community-to-share-solutions-and-submit-ideas"></a>ソリューションを共有し、アイデアを提供するための B2B コラボレーション コミュニティにはどこからアクセスできますか。
+
+B2B コラボレーションを向上させる方法に関するフィードバックは絶えず受け付けています。 マイクロソフトはお客様に、ディスカッションや、ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関するご意見の共有への参加を [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) で招待しています。
+ 
+また、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) サイトでも、ご意見の送信や、今後の機能への投票を行うことができます。
+
 
 ### <a name="next-steps"></a>次のステップ
 

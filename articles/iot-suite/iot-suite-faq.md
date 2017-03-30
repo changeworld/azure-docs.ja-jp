@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 623f502a92dc8eb152a9b01c4f6db0640ce57e54
-ms.openlocfilehash: ab027e1f21e8c2c33829f833395a6872cb7bcdd8
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: ce37bb41babb7bf894c23add994bf2c144ee6549
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -53,14 +53,14 @@ ms.lasthandoff: 02/27/2017
 50 個です。 [Azure サポート チケット][link-azuresupportticket]を作成してこの上限を引き上げることができますが、既定では、サブスクリプションごとにプロビジョニングできる DocumentDB インスタンスは 50 個のみです。 
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる無料の Bing マップ API の数はいくつですか?
-2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大&2; 個です。
+2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大 2 個です。
 
 ### <a name="i-have-a-remote-monitoring-solution-deployment-with-a-static-map-how-do-i-add-an-interactive-bing-map"></a>静止マップを含むリモート監視ソリューションのデプロイがあります。これに対話型の Bing マップを追加するにはどうすればよいですか。
 1. [Azure Portal][lnk-azure-portal] から Bing Maps API for Enterprise の QueryKey を取得してください。 
    
    1. [Azure Portal][lnk-azure-portal] で、Bing Maps API for Enterprise が含まれるリソース グループに移動します。
    2. **[すべての設定]**、**[キーの管理]** の順にクリックします。 
-   3. **MasterKey** と **QueryKey** という&2; つのキーが表示されます。 **QueryKey** の値をコピーします。
+   3. **MasterKey** と **QueryKey** という 2 つのキーが表示されます。 **QueryKey** の値をコピーします。
       
       > [!NOTE]
       > Bing Maps API for Enterprise アカウントがない場合は、 [Azure Portal][lnk-azure-portal] で [+ 新規] をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
@@ -75,6 +75,9 @@ ms.lasthandoff: 02/27/2017
 
 ### <a name="can-i-create-a-preconfigured-solution-if-i-have-microsoft-azure-for-dreamspark"></a>Microsoft Azure for DreamSpark があれば、構成済みソリューションを作成できますか?
 現時点では、[Microsoft Azure for DreamSpark][lnk-dreamspark] アカウントを使用して構成済みソリューションを作成することはできません。 ただし、[Azure の無料試用版アカウント][lnk-30daytrial]を数分で作成して、構成済みソリューションを作成できるようにすることはできます。
+
+### <a name="can-i-create-a-preconfigured-solution-if-i-have-cloud-solution-provider-csp-subscription"></a>クラウド ソリューション プロバイダー (CSP) のサブスクリプションがある場合、構成済みのソリューションを作成できますか?
+現在、クラウド ソリューション プロバイダー (CSP) のサブスクリプションで構成済みのソリューションを作成することはできません。 ただし、[Azure の無料試用版アカウント][lnk-30daytrial]を数分で作成して、構成済みソリューションを作成できるようにすることはできます。
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>AAD テナントはどうすれば削除できますか?
 [Azure AD テナントの削除方法][lnk-delete-aad-tennant]に関する Eric Golpe のブログ投稿を参照してください。

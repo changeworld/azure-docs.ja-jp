@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 03/17/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: aada5b96eb9ee999c5b1f60b6e7b9840fd650fbe
-ms.openlocfilehash: 2831416bbb290905835396835db2eb6cb5e7b46f
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e7d2d0063b1555e098c43b95272c78eaf4678af9
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -32,8 +32,7 @@ ms.lasthandoff: 02/24/2017
 Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[Data Factory を使用した SQL Data Warehouse へのデータの読み込み](../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)に関するページをご覧ください。
 
 > [!TIP]
-> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory はコピー元のスキーマを使ったテーブルの自動作成をサポートします。 コピー ウィザードを使って試してみてください。詳しくは、「[テーブルの自動作成](#auto-table-creation)」をご覧ください。
->
+> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、SQL Data Warehouse にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。 
 
 以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SQL Data Warehouse と Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
@@ -46,7 +45,7 @@ Azure SQL Data Warehouse との間でデータをコピーするパイプライ�
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [SqlDWSource](#copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは時系列 (時間単位、日単位など) のデータを&1; 時間おきに Azure SQL Data Warehouse データベースのテーブルから BLOB にコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは時系列 (時間単位、日単位など) のデータを 1 時間おきに Azure SQL Data Warehouse データベースのテーブルから BLOB にコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL Data Warehouse のリンクされたサービス:**
 
@@ -232,7 +231,7 @@ Azure SQL Data Warehouse との間でデータをコピーするパイプライ�
 4. [AzureSqlDWTable](#dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [SqlDWSink](#copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure SQL Data Warehouse データベースのテーブルから Azure BLOB に時系列データ (時間単位、日単位など) を&1; 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure SQL Data Warehouse データベースのテーブルから Azure BLOB に時系列データ (時間単位、日単位など) を 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL Data Warehouse のリンクされたサービス:**
 
@@ -330,7 +329,7 @@ Azure SQL Data Warehouse との間でデータをコピーするパイプライ�
 ```
 **Azure SQL Data Warehouse の出力データセット:**
 
-このサンプルは Azure SQL Data Warehouse の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL Data Warehouse にテーブルを作成する必要があります。 新しい行は&1; 時間ごとにテーブルに追加されます。
+このサンプルは Azure SQL Data Warehouse の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL Data Warehouse にテーブルを作成する必要があります。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {
@@ -427,7 +426,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 > [!NOTE]
-> コピー アクティビティは入力を&1; つだけ受け取り、出力を&1; つだけ生成します。
+> コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 >
 >
 
@@ -507,7 +506,7 @@ GO
 **PolyBase** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 詳細な比較については、[コピー パフォーマンスの参考数値](data-factory-copy-activity-performance.md#performance-reference)に関するページを参照してください。
 
 * ソース データが PolyBase と互換性のある形式の場合は、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーできます。 詳細については、「**[PolyBase を使用して直接コピーする](#direct-copy-using-polybase)**」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
-* ソース データの形式が本来は PolyBase でサポートされていない形式の場合、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)**を活用することで、まず自動的にデータが PolyBase 互換の形式に変換され、Azure BLOB ストレージに格納されてから SQL Data Warehouse に読み込まれるため、同様にスループットが向上します。
+* ソース データの形式が本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)**を使用できます。 これによりデータが自動的に PolyBase に対応する形式に変換されたうえで、Azure Blob Storage に格納されるため、スループットも向上します。 その後、データは SQL Data Warehouse に読み込まれます。
 
 次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、`allowPolyBase` プロパティを **true** に設定します。 allowPolyBase を true に設定すると、`polyBaseSettings` プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。 polyBaseSettings で使用できるプロパティの詳細については、上記の「 [SqlDWSink](#SqlDWSink) 」をご覧ください。
 
@@ -595,7 +594,7 @@ GO
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
-PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の&1; つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
+PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
 
 ### <a name="row-size-and-data-type-limitation"></a>行のサイズとデータ型の制限
 Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
@@ -622,7 +621,7 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 ```
 
 ### <a name="columns-with-default-values"></a>既定値を持つ列
-現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の&1; つには既定値が定義されているとします。 そのような場合にも、入力データには&4; つの列を含める必要があります。 3 列の入力データセットを指定すると、次のメッセージのようなエラーが発生します。
+現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているとします。 そのような場合にも、入力データには 4 つの列を含める必要があります。 3 列の入力データセットを指定すると、次のメッセージのようなエラーが発生します。
 
 ```
 All columns of the table must be specified in the INSERT BULK statement.
@@ -630,9 +629,9 @@ All columns of the table must be specified in the INSERT BULK statement.
 null 値は、特殊な形式の既定値です。 列が null 値を許容している場合は、その列の (BLOB 内の) 入力データが空である可能性があります (入力データセットからなくすことはできません)。 PolyBase は、その列の null 値を Azure SQL Data Warehouse に挿入します。  
 
 ## <a name="auto-table-creation"></a>テーブルの自動作成
-SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory はコピー ウィザードを使って作成するときにコピー元のスキーマを使ったテーブルの自動作成をサポートします。
+コピー ウィザードを使用して SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、ソース テーブルに対応するテーブルがコピー先ストアにが存在しない場合、Data Factory では、ソース テーブル スキーマを使用して、そのテーブルをデータ ウェアハウスに自動的に作成できます。 
 
-Data Factory は、コピー元と同じ名前を使ってコピー先にテーブルを作成し、以下のマッピングで列のデータ型を作成して、ラウンド ロビンのテーブル分散を使います。 コピー元とコピー先のストアの非互換性を修正する必要がある場合、適切なデータ型変換が行われることに注意してください。
+Data Factory は、コピー元データ ストアのテーブルと同じ名前を使って、コピー先にテーブルを作成します。 列のデータ型は、次の型マッピングに基づいて選択されます。 必要に応じて型変換が実行され、コピー元とコピー先のストアの非互換性が修正されます。 また、ラウンド ロビン テーブルのディストリビューションも使用されます。 
 
 | コピー元 SQL Database の列の型 | コピー先 SQL DW の列の型 (サイズ制限) |
 | --- | --- |

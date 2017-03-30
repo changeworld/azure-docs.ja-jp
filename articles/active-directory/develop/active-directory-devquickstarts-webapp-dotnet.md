@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 4094759caba015b9d609b616d5099a6e109bf1d4
-ms.openlocfilehash: 6ac0c3b2893b96f93bf2aeadd61b263654957477
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
 * [アプリのスケルトンをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)するか、[完全なサンプルをダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip)します。
 * アプリの登録先となる Azure AD テナントも必要です。 Azure AD テナントがない場合は、[テナントの取得方法](active-directory-howto-tenant.md)に関するページを参照して取得してください。
 
-準備ができたら、次の&4; つのセクションの手順を実行します。
+準備ができたら、次の 4 つのセクションの手順を実行します。
 
 ## <a name="step-1-register-the-new-app-with-azure-ad"></a>手順 1: Azure AD に新しいアプリを登録する
 ユーザー認証を行うようにアプリを設定するには、まず次の手順でテナントにアプリを登録する必要があります。
@@ -46,8 +46,8 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
 5. 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI** (またはその両方) を作成します。
   * **[名前]** は、ユーザーに対して表示されるアプリ名です。
   * **[サインオン URL]** は、アプリのベース URL です。 スケルトンの既定の URL は https://localhost:44320/ です。
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 名前は、`https://<tenant-domain>/<app-name>` のように付けます (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
 6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 次のセクションで使用するために、アプリのページからこの値をコピーします。
+7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 名前は、`https://<tenant-domain>/<app-name>` のように付けます (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2: OWIN 認証パイプラインを使用するようにアプリを設定する
 この手順では、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。 OWIN は、サインイン要求およびサインアウト要求の発行、ユーザー セッションの管理、ユーザー情報の取得などに使用します。

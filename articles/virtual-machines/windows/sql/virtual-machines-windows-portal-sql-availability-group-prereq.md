@@ -14,18 +14,19 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 4326cc342088ff16a72b8c460245bda1f2cd17c9
-ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 96f42929c3f4d0ccf4f2f1fbc206dddd90d6d3d1
+ms.lasthandoff: 03/18/2017
 
 
 ---
 
 # <a name="complete-prerequisites-for-creating-always-on-availability-groups-in-azure-virtual-machines"></a>Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす
 
-このチュートリアルでは、[Azure Virtual Machines で SQL Server Always On 可用性グループ](virtual-machines-windows-portal-sql-availability-group-tutorial.md)を作成するための前提条件を満たす方法を説明します。 前提条件が満たされると、1 つのリソース グループ内に&1; つのドメイン コントローラー、2 つの SQL サーバー、および&1; つの監視サーバーがあることになります。
+このチュートリアルでは、[Azure Virtual Machines で SQL Server Always On 可用性グループ](virtual-machines-windows-portal-sql-availability-group-tutorial.md)を作成するための前提条件を満たす方法を説明します。 前提条件が満たされると、1 つのリソース グループ内に 1 つのドメイン コントローラー、2 つの SQL サーバー、および 1 つの監視サーバーがあることになります。
 
 **推定所要時間**: 前提条件が満たすまでに数時間かかる場合があります。 この時間の大半は、仮想マシンの作成に費やされます。
 
@@ -66,7 +67,7 @@ ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
 ## <a name="create-network-and-subnets"></a>ネットワークとサブネットの作成
 次は、Azure リソース グループにネットワークとサブネットを作成します。
 
-ここでは、1 つの仮想ネットワークと&2; つのサブネットを使用します。 Azure におけるネットワークの詳細については、「 [Virtual Network の概要](../../../virtual-network/virtual-networks-overview.md) 」を参照してください。
+ここでは、1 つの仮想ネットワークと 2 つのサブネットを使用します。 Azure におけるネットワークの詳細については、「 [Virtual Network の概要](../../../virtual-network/virtual-networks-overview.md) 」を参照してください。
 
 仮想ネットワークを作成するには、次の手順に従います。
 
@@ -87,7 +88,7 @@ ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
    | **アドレス空間** |10.33.0.0/24 |
    | **サブネット名** |[Admin] |
    | **サブネットのアドレス範囲** |10.33.0.0/29 |
-   | **サブスクリプション** |使用するサブスクリプションを指定します。 ご利用のサブスクリプションが&1; つだけの場合、**[サブスクリプション]** は空になります。 |
+   | **サブスクリプション** |使用するサブスクリプションを指定します。 ご利用のサブスクリプションが 1 つだけの場合、**[サブスクリプション]** は空になります。 |
    | **場所** |Azure の場所を指定します。 |
    
    アドレス空間とサブネット アドレス範囲は、この表とは異なる場合があります。 サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲がポータルで提示されます。 アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。 
@@ -101,7 +102,7 @@ ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
 新しいネットワークが作成されると、画面がポータル ダッシュボードに切り替わって通知が表示されます。
 
 ### <a name="create-a-second-subnet"></a>2 つ目のサブネットの作成
-新しい仮想ネットワークには、**Admin** という名前のサブネットが&1; つあります。 このサブネットはドメイン コントローラーが使用します。 SQL Server には、**SQL** というもう&1; つのサブネットを使用します。 このサブネットを構成するには、次のようにします。
+新しい仮想ネットワークには、**Admin** という名前のサブネットが 1 つあります。 このサブネットはドメイン コントローラーが使用します。 SQL Server には、**SQL** というもう 1 つのサブネットを使用します。 このサブネットを構成するには、次のようにします。
 
 1. ダッシュボードで、先ほど作成したリソース グループ ( **SQL-HA-RG**) をクリックします。 このリソース グループ内のネットワークを **[リソース]**から探します。
    
@@ -137,11 +138,11 @@ ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
 
 仮想マシンを作成する前に、可用性セットを作成する必要があります。 計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムは、可用性セットによって短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 [仮想マシンの可用性管理](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-可用性セットは&2; つ必要です。 1 つ目はドメイン コントローラー用です。 2 つ目は SQL Server 用です。
+可用性セットは 2 つ必要です。 1 つ目はドメイン コントローラー用です。 2 つ目は SQL Server 用です。
 
 可用性セットを作成するには、リソース グループに移動して **[追加]** をクリックします。 「**可用性セット**」と入力して結果をフィルター処理し、 その中の **[可用性セット]** をクリックして、 **[作成]**をクリックします。
 
-次の表のパラメーターに従って&2; つの可用性セットを構成します。
+次の表のパラメーターに従って 2 つの可用性セットを構成します。
 
 | **フィールド** | ドメイン コントローラーの可用性セット | SQL Server の可用性セット |
 | --- | --- | --- |
@@ -172,7 +173,7 @@ ms.openlocfilehash: 3e0c58af3566ea443efaa012495e5b736fafb46d
   > 
   > 
 
-次の表に、この&2; つのマシンの設定を示します。
+次の表に、この 2 つのマシンの設定を示します。
 
 | **フィールド** | 値 |
 | --- | --- |
@@ -241,7 +242,7 @@ Azure で仮想マシンが作成されます。
 
 DNS 用に、プライマリ ドメイン コントローラーを使用します。 プライマリ ドメイン コントローラーの IP アドレスを記録しておきます。
 
-プライマリ ドメイン コントローラーの IP アドレスを取得する方法の&1; つでは、Azure Portal を使用します。 
+プライマリ ドメイン コントローラーの IP アドレスを取得する方法の 1 つでは、Azure Portal を使用します。 
 
 1. Azure Portal で、リソース グループを開きます。 
 
@@ -254,7 +255,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 このサーバーのプライベート IP アドレスを記録してください。 
 
 ### <a name="configure-the-second-domain-controller"></a>2 番目のドメイン コントローラーの構成
-プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。 これは高可用性を確保するための任意の手順です。 次の手順に従って&2; つ目のドメイン コントローラーを構成します。
+プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。 これは高可用性を確保するための任意の手順です。 次の手順に従って 2 つ目のドメイン コントローラーを構成します。
 
 1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-secondary-dc** マシンを選択します。 **[ad-secondary-dc]** ブレードで **[接続]** をクリックし、リモート デスクトップ アクセス用の RDP ファイルを開きます。
 4. 構成した管理者アカウント (**BUILTIN\DomainAdmin**) とパスワード (**Contoso!0000**) を使用して、VM にログインします。
@@ -296,7 +297,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 サーバーによる構成の変更が完了したら、サーバーを再起動します。 
 
-### <a name="a-namedomainaccountsa-configure-domain-accounts"></a><a name=DomainAccounts></a> ドメイン アカウントの構成
+### <a name=DomainAccounts></a> ドメイン アカウントの構成
 
 次の手順では、Active Directory (AD) アカウントを構成します。 次の表は、各アカウントを示しています。
 
@@ -333,11 +334,11 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
      ![CORP ユーザー権限](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
 12. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。 corp のプロパティ ウィンドウを閉じます。
 
-これで Active Directory オブジェクトとユーザー オブジェクトの構成が終了したので、2 つの SQL Server VM と&1; つの監視サーバー VM を作成します。 その後、3 つすべてをドメインに参加させます。
+これで Active Directory オブジェクトとユーザー オブジェクトの構成が終了したので、2 つの SQL Server VM と 1 つの監視サーバー VM を作成します。 その後、3 つすべてをドメインに参加させます。
 
 ## <a name="create-sql-servers"></a>SQL Server を作成する
 ### <a name="create-and-configure-the-sql-server-vms"></a>SQL Server VM の作成と構成
-次に、2 つの SQL Server VM と&1; つの WSFC クラスター ノードの合計&3; つの VM を作成します。 それぞれの VM を作成するには、**SQL-HA-RG** リソース グループに戻って **[追加]** をクリックし、適切なギャラリー項目 (**仮想マシン**) を検索して、**[ギャラリーから]** をクリックします。 次の表の情報を使用すると、VM の作成に役立ちます。
+次に、2 つの SQL Server VM と追加クラスター ノード用の 1 つの VM の合計 3 つの VM を作成します。 それぞれの VM を作成するには、**SQL-HA-RG** リソース グループに戻って **[追加]** をクリックし、適切なギャラリー項目 (**仮想マシン**) を検索して、**[ギャラリーから]** をクリックします。 次の表の情報を使用すると、VM の作成に役立ちます。
 
 | ページ | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -354,7 +355,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 > 
 > 
 
-3 つの VM が完全にプロビジョニングされたら、その&3; つの VM を **corp.contoso.com** ドメインに参加させて、それらに対する管理者権限を CORP\Install に付与する必要があります。
+3 つの VM が完全にプロビジョニングされたら、その 3 つの VM を **corp.contoso.com** ドメインに参加させて、それらに対する管理者権限を CORP\Install に付与する必要があります。
 
 ### <a name="set-dns-on-each-server"></a>各サーバーでの DNS の設定
 まず、各メンバー サーバーの優先 DNS サーバーのアドレスを変更します。 次の手順に従います。
@@ -377,7 +378,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 すべてのサーバーに対して、これらの手順を繰り返します。
 
-### <a name="a-namejoindomainajoin-the-servers-to-the-domain"></a><a name="joinDomain"></a>ドメインへのサーバーの参加
+### <a name="joinDomain"></a>ドメインへのサーバーの参加
 
 これで、VM を **corp.contoso.com**に参加させることができるようになりました。 両方の SQL Server とファイル共有監視サーバーに対して、次の手順を実行します。 
 
@@ -408,7 +409,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 7. **[OK]** をクリックして **[管理者のプロパティ]** ダイアログ ボックスを閉じます。
 8. 以上の手順を **sqlserver-1** と **cluster-fsw** で繰り返します。
 
-### <a name="a-namesetserviceaccountaset-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
+### <a name="setServiceAccount"></a>SQL Server サービス アカウントの設定
 
 各 SQL Server で、SQL Server サービス アカウントを設定します。 [ドメイン アカウントの構成](#DomainAccounts)時に作成したアカウントを使用します。
 
@@ -506,9 +507,4 @@ SQL Server 可用性グループでは、各 SQL Server をドメイン アカ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Virtual Machines で SQL Server Always On 可用性グループを作成する](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

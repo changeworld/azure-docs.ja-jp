@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 03/16/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 51901a28878f25292ba3d09848bc45a04f867345
-ms.openlocfilehash: 75fb695ea2ce9d859119445ae42eb170a9493876
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e86af029422340bdfa38ba233f0ed61f6f1d8ca2
+ms.lasthandoff: 03/17/2017
 
 
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-vm"></a>DevTest ラボ VM のカスタム アーティファクトの作成
-> [AZURE.VIDEO how-to-author-custom-artifacts] 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
 > 
 > 
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 02/24/2017
 
 1. JSON エディターのインストール - アーティファクト定義ファイルを操作するには、JSON エディターが必要です。 Windows、Linux、および OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/)を使用することをお勧めします。
 2. サンプルの artifactfile.json の取得 - [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、Azure DevTest Labs チームが作成したアーティファクトを確認します。このリポジトリには、独自のアーティファクトの作成に役立つ豊富なアーティファクト ライブラリが用意されています。 アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
-3. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、 **targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という&2; つの選択肢が表示されます。
+3. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。 要素の値のさまざまなオプションを確認することもできます。 たとえば、 **targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という 2 つの選択肢が表示されます。
 4. Git リポジトリへのアーティファクトの格納
    
    1. アーティファクトごとに個別のディレクトリを作成します。ディレクトリ名は、アーティファクト名と同じにします。

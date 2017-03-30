@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
 translationtype: Human Translation
-ms.sourcegitcommit: 4860c818c5eba800ea9eaedc4c109ebd459a8c16
-ms.openlocfilehash: 2fa745672fe1b6aec9a2144774eb32fa029073e1
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d3ac737604e9483c313b4c1fcb522cb449dd84d8
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2017
 
 深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段として深層学習を取り入れるようになっています。 
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの&1; つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、Caffe と Apache Spark を組み合わせた [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Spark ETL パイプラインと一緒に既存の Hadoop クラスターで深層学習を簡単に使用できます。これにより、システムの複雑さが軽減され、エンド ツー エンドの学習の待ち時間が短縮されます。
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、Caffe と Apache Spark を組み合わせた [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Spark ETL パイプラインと一緒に既存の Hadoop クラスターで深層学習を簡単に使用できます。これにより、システムの複雑さが軽減され、エンド ツー エンドの学習の待ち時間が短縮されます。
 
 [HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) は、Spark、Hive、MapReduce、HBase、Storm、Kafka、R Server 向けに最適化されたオープン ソース分析クラスターを備え、99.9% の SLA が保証された唯一の完全マネージド クラウド Hadoop サービスです。 これらのビッグ データ テクノロジと ISV アプリケーションはそれぞれ、エンタープライズ級のセキュリティ機能と監視機能を備えたマネージド クラスターとして簡単にデプロイ可能です。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/27/2017
 
 以前に Caffe をインストールしたことがある方なら、このフレームワークをインストールするのに多少の困難が伴うことに気が付くことでしょう。 このブログでは最初に、[CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) を HDInsight クラスター用にインストールする方法を説明します。次に、組み込みの MNIST デモを使用して、CPU 上で HDInsight Spark を使用して分散型深層学習を使用する方法を実演します。
 
-HDInsight での実行に必要な&4; つの主要な手順を次に示します。
+HDInsight での実行に必要な 4 つの主要な手順を次に示します。
 
 1. すべてのノードに必要な依存関係をインストールする
 2. ヘッド ノードで HDInsight 用 CaffeOnSpark をビルドする
@@ -176,7 +176,7 @@ Caffe では "表現的アーキテクチャ" が使用されており、ほと�
 
 CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロジの例が用意されています。 CaffeOnSpark の設計上の優れた点として、ネットワーク アーキテクチャ (ネットワークのトポロジ) と最適化が分離されています。 この場合、2 つのファイルが必要になります。 
 
-"ソルバー" ファイル (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) は、最適化を監視し、パラメーターの更新を生成するために使用されます。 たとえば、CPU と GPU のどちらを使用するか、モーメンタムは何か、処理を何回繰り返すか、などを定義します。また、プログラムで使用するニューロン ネットワーク トポロジも定義します (これは、必要な&2; 番目のファイルです)。 ソルバーの詳細については、[Caffe のドキュメント](http://caffe.berkeleyvision.org/tutorial/solver.html)を参照してください。
+"ソルバー" ファイル (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) は、最適化を監視し、パラメーターの更新を生成するために使用されます。 たとえば、CPU と GPU のどちらを使用するか、モーメンタムは何か、処理を何回繰り返すか、などを定義します。また、プログラムで使用するニューロン ネットワーク トポロジも定義します (これは、必要な 2 番目のファイルです)。 ソルバーの詳細については、[Caffe のドキュメント](http://caffe.berkeleyvision.org/tutorial/solver.html)を参照してください。
 
 この例では、GPU ではなく CPU を使用するため、最後の行を次のように変更する必要があります。
 

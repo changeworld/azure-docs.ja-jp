@@ -1,5 +1,5 @@
 ---
-title: "証明書を使用した Windows でのクラスターの保護 | Microsoft Docs"
+title: "証明書を使用して Windows 上の Azure Service Fabric クラスターを保護する | Microsoft Docs"
 description: "この記事では、スタンドアロンまたはプライベートのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 03/15/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
-ms.openlocfilehash: 48fd90c7ffb6748642ed02804117ff92cb060016
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2bca90f45e994752ddc3569635ea053f9ef1adaf
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,49 +27,51 @@ ms.openlocfilehash: 48fd90c7ffb6748642ed02804117ff92cb060016
 ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御などのクラスター セキュリティの詳細については、 [クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
 ## <a name="which-certificates-will-you-need"></a>必要な証明書
-まず、クラスターのノードの&1; つに [スタンドアロン クラスター パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) します。 ダウンロードしたパッケージの中に、 **ClusterConfig.X509.MultiMachine.json** ファイルがあります。 このファイルを開き、**properties** セクションの下にある **security** のセクションを確認します:
+まず、クラスターのノードの 1 つに [スタンドアロン クラスター パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage) します。 ダウンロードしたパッケージの中に、 **ClusterConfig.X509.MultiMachine.json** ファイルがあります。 このファイルを開き、**properties** セクションの下にある **security** のセクションを確認します:
 
-    "security": {
-        "metadata": "The Credential type X509 indicates this is cluster is secured using X509 Certificates. The thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
-        "ClusterCredentialType": "X509",
-        "ServerCredentialType": "X509",
-        "CertificateInformation": {
-            "ClusterCertificate": {
-                "Thumbprint": "[Thumbprint]",
-                "ThumbprintSecondary": "[Thumbprint]",
-                "X509StoreName": "My"
-            },
-            "ServerCertificate": {
-                "Thumbprint": "[Thumbprint]",
-                "ThumbprintSecondary": "[Thumbprint]",
-                "X509StoreName": "My"
-            },
-            "ClientCertificateThumbprints": [
-                {
-                    "CertificateThumbprint": "[Thumbprint]",
-                    "IsAdmin": false
-                }, 
-                {
-                    "CertificateThumbprint": "[Thumbprint]",
-                    "IsAdmin": true
-                }
-            ],
-            "ClientCertificateCommonNames": [
-                {
-                    "CertificateCommonName": "[CertificateCommonName]",
-                    "CertificateIssuerThumbprint" : "[Thumbprint]",
-                    "IsAdmin": true
-                }
-            ]
-            "ReverseProxyCertificate":{
-                "Thumbprint": "[Thumbprint]",
-                "ThumbprintSecondary": "[Thumbprint]",
-                "X509StoreName": "My"
+```JSON
+"security": {
+    "metadata": "The Credential type X509 indicates this is cluster is secured using X509 Certificates. The thumbprint format is - d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
+    "ClusterCredentialType": "X509",
+    "ServerCredentialType": "X509",
+    "CertificateInformation": {
+        "ClusterCertificate": {
+            "Thumbprint": "[Thumbprint]",
+            "ThumbprintSecondary": "[Thumbprint]",
+            "X509StoreName": "My"
+        },
+        "ServerCertificate": {
+            "Thumbprint": "[Thumbprint]",
+            "ThumbprintSecondary": "[Thumbprint]",
+            "X509StoreName": "My"
+        },
+        "ClientCertificateThumbprints": [
+            {
+                "CertificateThumbprint": "[Thumbprint]",
+                "IsAdmin": false
+            }, 
+            {
+                "CertificateThumbprint": "[Thumbprint]",
+                "IsAdmin": true
             }
+        ],
+        "ClientCertificateCommonNames": [
+            {
+                "CertificateCommonName": "[CertificateCommonName]",
+                "CertificateIssuerThumbprint" : "[Thumbprint]",
+                "IsAdmin": true
+            }
+        ]
+        "ReverseProxyCertificate":{
+            "Thumbprint": "[Thumbprint]",
+            "ThumbprintSecondary": "[Thumbprint]",
+            "X509StoreName": "My"
         }
     }
+}
+```
 
-このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 クラスター証明書を指定する場合は、**ClusterCredentialType** の値を _ **X509**_ に設定します。 外部接続用にサーバー証明書を指定する場合は、**ClusterCredentialType** を _ **X509**_ に設定します。 必須ではありませんが、これらの証明書はどちらも、正しくセキュリティで保護されたクラスターにすることをお勧めします。 これらの値を *X509* に設定する場合は、対応する証明書を指定する必要があります。または、Service Fabric が例外をスローします。 一部のシナリオでは、_ClientCertificateThumbprints_ または _ReverseProxyCertificate_ のみを指定することがあります。 これらのシナリオでは、_ClusterCredentialType_ または _ServerCredentialType_ を _X509_ に設定する必要がありません。
+このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。 クラスター証明書を指定する場合は、**ClusterCredentialType** の値を _**X509**_ に設定します。 外部接続用にサーバー証明書を指定する場合は、**ClusterCredentialType** を _**X509**_ に設定します。 必須ではありませんが、これらの証明書はどちらも、正しくセキュリティで保護されたクラスターにすることをお勧めします。 これらの値を *X509* に設定する場合は、対応する証明書を指定する必要があります。または、Service Fabric が例外をスローします。 一部のシナリオでは、_ClientCertificateThumbprints_ または _ReverseProxyCertificate_ のみを指定することがあります。 これらのシナリオでは、_ClusterCredentialType_ または _ServerCredentialType_ を _X509_ に設定する必要がありません。
 
 
 > [!NOTE]
@@ -88,7 +91,7 @@ ms.openlocfilehash: 48fd90c7ffb6748642ed02804117ff92cb060016
 
 次に、クラスター、サーバー、クライアント証明書が指定されているクラスター構成の例を示します。
 
- ```
+ ```JSON
  {
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
@@ -186,18 +189,18 @@ ms.openlocfilehash: 48fd90c7ffb6748642ed02804117ff92cb060016
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>省略可能: 自己署名証明書の作成
-正しく保護できる自己署名証明書を作成する方法の&1; つが、*C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* ディレクトリの Service Fabric SDK フォルダーにある *CertSetup.ps1* スクリプトを使用する方法です。 このファイルを編集して、証明書のデフォルト名を変更します (* CN = ServiceFabricDevClusterCert * の値を探します)。 このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
+正しく保護できる自己署名証明書を作成する方法の 1 つが、*C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure* ディレクトリの Service Fabric SDK フォルダーにある *CertSetup.ps1* スクリプトを使用する方法です。 このファイルを編集して、証明書のデフォルト名を変更します (*CN = ServiceFabricDevClusterCert* の値を探します)。 このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
 
 次に、保護されたパスワードを含む PFX ファイルにその証明書をエクスポートします。 まず、証明書の拇印を取得します。 *[スタート]* メニューから、*[コンピューター証明書の管理]* を実行します。 **Local Computer\Personal** フォルダーに移動して、先ほど作成した証明書を探します。 その証明書をダブルクリックして開き、 [*詳細*] タブを選択して、下にスクロールして [*拇印*] を表示します。 拇印の値を次の PowerShell コマンドにコピーします。スペースは削除してください。  保護のために `String` 値を適切で安全なパスワードに変更して、PowerShell で以下を実行します。
 
-```   
+```powershell   
 $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
 Get-ChildItem -Path cert:\localMachine\my\<Thumbprint> | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $pswd
 ```
 
 コンピューターにインストールされている証明書の詳細を表示するには、次の PowerShell コマンドを実行できます。
 
-```
+```powershell
 $cert = Get-Item Cert:\LocalMachine\My\<Thumbprint>
 Write-Host $cert.ToString($true)
 ```
@@ -210,14 +213,14 @@ Write-Host $cert.ToString($true)
 1. .pfx ファイルをノードにコピーします。
 2. 管理者として PowerShell ウィンドウを開き、次のコマンドを入力します。 *$pswd* を、この証明書の作成に使用したパスワードに置き換えます。 *$PfxFilePath* を、そのノードにコピーした .pfx の完全なパスに置き換えます。
    
-    ```
+    ```powershell
     $pswd = "1234"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
 3. 次に、この証明書に対するアクセス制御を設定し、Network Service アカウントで実行される Service Fabric プロセスが次のスクリプトを実行することでそれを使用できるようにします。 証明書とサービス アカウントの "NETWORK SERVICE" の拇印を指定します。 証明書を *[スタート]* > *[コンピューター証明書の管理]* で開いて、*[すべてのタスク]* > *[秘密キーの管理]* を表示することで、証明書の ACL が正しいかどうか確認できます。
    
-    ```
+    ```powershell
     param
     (
     [Parameter(Position=1, Mandatory=$true)]
@@ -257,23 +260,23 @@ Write-Host $cert.ToString($true)
 ## <a name="create-the-secure-cluster"></a>セキュリティで保護されたクラスターの作成
 **ClusterConfig.X509.MultiMachine.json** ファイルの **security** セクションを構成した後は、「[クラスターの作成](service-fabric-cluster-creation-for-windows-server.md#createcluster)」セクションに進んで、ノードの構成とスタンドアロン クラスターの作成を行います。 クラスターを作成する際は、必ず **ClusterConfig.X509.MultiMachine.json** ファイルを使用してください。 たとえば、コマンドは次のようになります。
 
-```
+```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用して、セキュリティで保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connectsecurecluster)」を参考にして、クラスターに接続してください。 次に例を示します。
 
-```
+```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、`Get-ServiceFabricNode` を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
+これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/servicefabric/vlatest/get-servicefabricnode.md) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
 
 
 クラスターを削除するには、Service Fabric パッケージをダウンロードしたクラスターのノードに接続し、コマンド ラインを開いてパッケージ フォルダーに移動します。 そして次のコマンドを実行します。
 
-```
+```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
@@ -281,10 +284,5 @@ Connect-ServiceFabricCluster $ConnectArgs
 > 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ *[アプリケーションとサービス ログ]* > *[Microsoft Service Fabric]*を参照してください。
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

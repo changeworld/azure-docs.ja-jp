@@ -1,22 +1,22 @@
 ---
-title: "Application Insights のリソース、役割、アクセス制御"
+title: "Azure Application Insights のリソース、ロール、アクセス制御 | Microsoft Docs"
 description: "組織の insights の所有者、共同作成者、閲覧者。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2016
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 89e3cb3a7e9185d4a2944c1aa9aaf5aee4bd2b24
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 50a3cb726646c46d1f46767b51428eb751e6d3fe
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,17 +33,17 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 * **リソース** - Microsoft Azure サービスのインスタンス。 Application Insights リソースはアプリケーションから送られてくる利用統計情報データを収集し、分析し、表示します。  その他の種類の Azure リソースには Web アプリ、データベース、VM があります。
   
-    すべてのリソースを表示するには、[Azure Portal][portal] に進み、サインインし、[参照] をクリックします。
+    リソースを表示するには、[Azure Portal][portal] を開き、サインインし、[すべてのリソース] をクリックします。 リソースを見つけるには、フィルター フィールドに名前の一部を入力します。
   
-    ![[参照] を選択し、[すべて] と [Application Insights でフィルター処理] のいずれかを選択します。](./media/app-insights-resources-roles-access-control/10-browse.png)
+    ![Azure リソースの一覧](./media/app-insights-resources-roles-access-control/10-browse.png)
 
 <a name="resource-group"></a>
 
-* [**リソース グループ**][group] - すべてのリソースが&1; つのグループに属します。 関連リソースを管理するとき、特にアクセス制御の場合、グループは便利な方法です。 たとえば、1 つのリソース グループに Web アプリ、そのアプリを監視する Application Insights リソース、エクスポートされたデータを保持する Storage リソースを配置できます。
+* [**リソース グループ**][group] - すべてのリソースが 1 つのグループに属します。 関連リソースを管理するとき、特にアクセス制御の場合、グループは便利な方法です。 たとえば、1 つのリソース グループに Web アプリ、そのアプリを監視する Application Insights リソース、エクスポートされたデータを保持する Storage リソースを配置できます。
 
     ![[参照]、[リソース グループ] を選択し、グループを選択します。](./media/app-insights-resources-roles-access-control/11-group.png)
 
-* [**サブスクリプション**](https://manage.windowsazure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは&1; つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
+* [**サブスクリプション**](https://manage.windowsazure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは 1 つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
 * [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
 
 ## <a name="access"></a> リソース グループのコントロール制御
@@ -66,7 +66,7 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 ![アプリケーションのリソース ブレードで、Essentials を開き、リソース グループを開き、設定/ユーザーを選択します。 [追加] をクリックします。](./media/app-insights-resources-roles-access-control/01-add-user.png)
 
-あるいは、もう&1; つ上のレベルに進み、ユーザーをサブスクリプションに追加できます。
+あるいは、もう 1 つ上のレベルに進み、ユーザーをサブスクリプションに追加できます。
 
 #### <a name="select-a-role"></a>ロールを選択する
 ![新しいユーザーの役割を選択します。](./media/app-insights-resources-roles-access-control/03-role.png)
@@ -86,12 +86,12 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 * 連続エクスポート
 
 #### <a name="select-the-user"></a>ユーザーを選択する
-![新しいユーザーの電子メール アドレスを入力します。 ユーザーを選択する](./media/app-insights-resources-roles-access-control/04-user.png)
 
 対象のユーザーがディレクトリにない場合、Microsoft アカウントを持つユーザーを招待できます。
 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
 
-## <a name="users-and-roles"></a>ユーザーと役割
+## <a name="related-content"></a>関連コンテンツ
+
 * [Azure の役割基準のアクセス制御](../active-directory/role-based-access-control-configure.md)
 
 <!--Link references-->

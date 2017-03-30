@@ -1,5 +1,5 @@
 ---
-title: "Azure VM での AlwaysOn 可用性グループの構成 - クラシック"
+title: "Azure VM (クラシック) での AlwaysOn 可用性グループの構成 | Microsoft Docs"
 description: "Azure Virtual Machines で AlwaysOn 可用性グループを作成します。 このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,27 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 1390a0caf4e9cfe2af8bd6171a4d07f58da4bc43
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm---classic"></a>Azure VM での AlwaysOn 可用性グループの構成 - クラシック
+# <a name="configure-always-on-availability-group-in-azure-vm-classic"></a>Azure VM (クラシック) での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
-> * [Resource Manager: テンプレート](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager: 手動](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 > * [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 > * [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
-
 <br/>
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 
+
+Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮想マシン上の SQL Server Always On 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関する記事をご覧ください。
 
 このエンド ツー エンドのチュートリアルでは、Azure 仮想マシンで実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
@@ -42,14 +40,14 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 * 複数のサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
 * Active Directory (AD) ドメインを持つドメイン コントローラー
 * バックエンド サブネットにデプロイされ、AD ドメインに参加している 2 つの SQL Server VM
-* 3 ノードの WSFC クラスター (ノード マジョリティ クォーラム モデル)
+* 3 ノードのフェールオーバー クラスター (ノード マジョリティ クォーラム モデル)
 * 可用性データベースの 2 つの同期コミット レプリカを含む可用性グループ
 
 このソリューションをグラフィカルに表すと、次の図のようになります。
 
 ![Azure での AG 向けテスト ラボ アーキテクチャ](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC791912.png)
 
-これは、考えられる 1 つの構成であることに注意してください。 たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。 この方法では、上記の構成よりも VM 数が 1 つ減少します。
+これは、考えられる 1 つの構成であることに注意してください。 たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードのクラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。 この方法では、上記の構成よりも VM 数が 1 つ減少します。
 
 このチュートリアルでは、次のことを前提としています。
 
@@ -150,7 +148,7 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
    | **その他のパスワード オプション** |オン |
    | **パスワードを無期限にする** |オン |
 5. **[OK]** をクリックして **Install** ユーザーを作成します。 このアカウントは、フェールオーバー クラスターと可用性グループの構成に使用されます。
-6. 同じ手順を使用して、さらに 2 つのユーザー (**CORP\SQLSvc1** と **CORP\SQLSvc2**) を作成します。 これらのアカウントは、SQL Server インスタンスに使用されます。次に、Windows Server フェールオーバー クラスタリング (WSFC) を構成するために必要なアクセス許可を **CORP\Install** に付与する必要があります。
+6. 同じ手順を使用して、さらに 2 つのユーザー (**CORP\SQLSvc1** と **CORP\SQLSvc2**) を作成します。 これらのアカウントは、SQL Server インスタンスに使用されます。次に、Windows フェールオーバー クラスタリングを構成するために必要なアクセス許可を **CORP\Install** に付与する必要があります。
 7. **[Active Directory 管理センター]** で、左側のウィンドウの **[corp (ローカル)]** を選択します。 その後、右側の **[タスク]** ウィンドウで、**[プロパティ]** をクリックします。
    
     ![CORP ユーザー プロパティ](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784627.png)
@@ -165,7 +163,7 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 これで Active Directory とユーザー オブジェクトの構成が完了したので、3 つの SQL Server VM を作成してこのドメインに参加させます。
 
 ## <a name="create-the-sql-server-vms"></a>SQL Server VM の作成
-次に、3 つの VM (WSFC クラスター ノードと 2 つの SQL Server VM) を作成します。 各 VM を作成するには、Azure クラシック ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。 その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
+次に、3 つの VM (クラスター ノードと 2 つの SQL Server VM) を作成します。 各 VM を作成するには、Azure クラシック ポータルに戻り、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。 その後、次の表のテンプレートを使用すると、VM の作成に役立ちます。
 
 | ページ | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
@@ -230,15 +228,15 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 
 これで SQL Server VM がプロビジョニングされ、実行されている状態になりましたが、これらは SQL Server と共に既定のオプションでインストールされています。
 
-## <a name="create-the-wsfc-cluster"></a>WSFC クラスターの作成
-このセクションでは、後で作成する可用性グループをホストする WSFC クラスターを作成します。 ここまでに、WSFC クラスター内で使用する 3 つの VM に対して、次の操作を行いました。
+## <a name="create-the-failover-cluster"></a>フェールオーバー クラスターを作成する
+このセクションでは、後で作成する可用性グループをホストするフェールオーバー クラスターを作成します。 ここまでに、フェールオーバー クラスター内で使用する 3 つの VM に対して、次の操作を行いました。
 
 * Azure で完全にプロビジョニングする
 * VM をドメインに参加させる
 * ローカルの Administrators グループに **CORP\Install** を追加する
 * フェールオーバー クラスタリング機能を追加する
 
-これらはすべて、WSFC クラスターに参加させるための各 VM の前提条件です。
+これらはすべて、フェールオーバー クラスターに参加させるための各 VM の前提条件です。
 
 また、Azure Virtual Network の動作は、オンプレミス ネットワークとは異なることに注意してください。 クラスターは、次の順序で作成する必要があります。
 
@@ -341,7 +339,7 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 ### <a name="create-the-mydb1-database-on-contososql1"></a>ContosoSQL1 に MyDB1 データベースを作成する
 1. **ContosoSQL1** と **ContosoSQL2** のリモート デスクトップ セッションからまだログアウトしていない場合は、今すぐログアウトします。
 2. **ContosoSQL1** の RDP ファイルを起動し、**CORP\Install** としてログインします。
-3. **エクスプローラー**で、**C:\** ドライブの下に **backup* というディレクトリを作成します。 このディレクトリは、データベースのバックアップと復元に使用します。
+3. **エクスプローラー**で、**C:\** ドライブの下に**backup* というディレクトリを作成します。 このディレクトリは、データベースのバックアップと復元に使用します。
 4. 次に示すように、新しいディレクトリを右クリックして **[共有]** をポイントし、**[特定のユーザー]** をクリックします。
    
     ![バックアップ フォルダーの作成](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665521.gif)
@@ -407,7 +405,7 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
      ![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665534.gif)
 
 > [!WARNING]
-> フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、 [WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
+> フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、[フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
 > 
 > 
 
@@ -415,10 +413,5 @@ ms.openlocfilehash: 87f16f54958b20b8b321d09c734923269bd0503e
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

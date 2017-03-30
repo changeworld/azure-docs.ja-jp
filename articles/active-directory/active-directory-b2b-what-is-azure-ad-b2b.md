@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/18/2017
+ms.date: 03/18/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 1f6ce516629fd32b5efabce8682b45a3e575eaab
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 4bfd76a00ba694096ef0b045b14beb757ba0809f
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -32,7 +32,7 @@ IT プロフェッショナルのユーザーもインフォメーション ワ�
 
 ## <a name="how-b2b-collaboration-works"></a>B2B コラボレーションのしくみ
 
-現在のプレビュー リリースでは、IT プロフェッショナルとインフォメーション ワーカーは、パートナー組織のユーザーを Azure Portal または Invitation Manager API を使用して一度に&1; 人または数人追加することで、その組織との関係を確立しています。
+現在のプレビュー リリースでは、IT プロフェッショナルとインフォメーション ワーカーは、パートナー組織のユーザーを Azure Portal または Invitation Manager API を使用して一度に 1 人または数人追加することで、その組織との関係を確立しています。
 
 管理者は、Azure Portal の新しいポータル エクスペリエンス (https://portal.azure.com) と PowerShell を使用して、関係を確立できます。
 
@@ -89,6 +89,12 @@ Azure Portal が開きます。
 * B2B コラボレーション用の PowerShell のサポートを提供します。
 
 * 監査およびレポート機能を提供します。
+
+## <a name="help-us-shape-your-features"></a>機能に関するフィードバック送信のお願い
+ 
+B2B コラボレーションを向上させる方法に関するフィードバックは絶えず受け付けています。 マイクロソフトはお客様に、ディスカッションや、ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関するご意見の共有への参加を [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) で招待しています。
+ 
+また、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) サイトでも、ご意見の送信や、今後の機能への投票を行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

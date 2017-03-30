@@ -11,45 +11,45 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/15/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 3203358dce9cba95d325ec786e7ba12dd45f5ca1
-ms.openlocfilehash: f2cd7f0882f31de5f4bb99f772c38a0fff28cd59
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f32f61824de6a0195fc57b8cb0d73a89c7a06067
+ms.lasthandoff: 03/16/2017
 
 
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-## <a name="overview"></a>概要
 診断とトラブルシューティングは、Microsoft Azure Storage を使用してクライアント アプリケーションを構築し、サポートするうえでの重要なスキルです。 Azure アプリケーションの分散型の性質により、エラーやパフォーマンスの問題に対する診断とトラブルシューティングは、従来の環境で実施するよりも複雑になる場合があります。
 
-このチュートリアルでは、クライアント アプリケーションの最適化を目的に、パフォーマンスに影響する可能性のあるクライアントのエラーを特定すると共に、Microsoft と Azure Storage が提供するツールを使用して、これらのエラーについてエンド ツー エンドのトラブルシューティングを実施する方法を説明します。
+このチュートリアルでは、クライアント アプリケーションの最適化を目的に、パフォーマンスに影響する可能性のある特定のエラーを特定すると共に、Microsoft と Azure Storage が提供するツールを使用して、これらのエラーについてエンド ツー エンドのトラブルシューティングを実施する方法を説明します。
 
 このチュートリアルでは、エンド ツー エンド トラブルシューティングのシナリオを実践的に学ぶことができます。 Azure Storage アプリケーションのトラブルシューティングに関する詳細な概念ガイドについては、「 [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。
 
 ## <a name="tools-for-troubleshooting-azure-storage-applications"></a>Azure Storage アプリケーションのトラブルシューティングに使用するツール
 Microsoft Azure Storage を使用してクライアント アプリケーションのトラブルシューティングを実施する場合、問題がいつ発生したのか、原因は何なのかを見極めるために複数のツールを組み合わせて使用することができます。 これには以下のツールが含まれます。
 
-* **Azure Storage Analytics**。 [Azure Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) では、Azure Storage 向けのメトリックとログが利用できます。
+* **Azure Storage Analytics**。 [Azure Storage Analytics](/rest/api/storageservices/fileservices/Storage-Analytics) では、Azure Storage 向けのメトリックとログが利用できます。
   
-  * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](http://msdn.microsoft.com/library/azure/hh343264.aspx) 」を参照してください。
-  * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](http://msdn.microsoft.com/library/azure/hh343259.aspx) 」を参照してください。
+  * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/fileservices/Storage-Analytics-Metrics-Table-Schema) 」を参照してください。
+  * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](/rest/api/storageservices/fileservices/Storage-Analytics-Log-Format) 」を参照してください。
 
 > [!NOTE]
 > 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。 
 > 
 > 
 
-* **Azure ポータル**。 [Azure ポータル](https://portal.azure.com)では、ストレージ アカウントのメトリックとログを構成することができます。 アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
+* **Azure Portal** [Azure Portal](https://portal.azure.com) では、ストレージ アカウントのメトリックとログを構成することができます。 アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
   
-    Azure ポータルでの監視の構成については、「 [Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md) 」をご覧ください。
+    Azure Portal での監視の構成については、「[Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」をご覧ください。
 * **AzCopy**。 Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。 AzCopy の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 * **Microsoft Message Analyzer**。 Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。 Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)を参照してください。
 
 ## <a name="about-the-sample-scenario"></a>サンプル シナリオについて
-このチュートリアルでは、Azure Storage を呼び出すアプリケーションの成功率に関して、Azure Storage メトリックが低い割合を示すシナリオについて調べます。 低い成功率メトリック ( **PercentSuccess** として [Azure ポータル](https://portal.azure.com) とメトリック テーブル内に表示される) では、成功した操作を追跡しますが、299 を超える数字の HTTP 状態コードを返します。 サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors**のトランザクション状態で記録されます。 低い成功率メトリックの詳細については、「 [メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)」を参照してください。
+このチュートリアルでは、Azure Storage を呼び出すアプリケーションの成功率に関して、Azure Storage メトリックが低い割合を示すシナリオについて調べます。 低い成功率メトリック (**PercentSuccess** として [Azure Portal](https://portal.azure.com) とメトリック テーブル内に表示される) では、成功した操作を追跡しますが、299 を超える数字の HTTP 状態コードを返します。 サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors**のトランザクション状態で記録されます。 低い成功率メトリックの詳細については、「 [メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)」を参照してください。
 
 Azure Storage の操作では、その通常の機能の一部として 299 を超える数字の HTTP 状態コードを返す場合があります。 しかしこれらのエラーは、クライアント アプリケーションのパフォーマンスを最適化できる可能性があることを示している場合もあります。
 
@@ -81,23 +81,23 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 * 指定されたリース ID がコンテナーまたは BLOB のリース ID と一致しない場合に発生します。
 
 ## <a name="generate-log-files-for-analysis"></a>分析用にログ ファイルを生成する
-このチュートリアルでは、Message Analyzer を使用して&3; 種類のログ ファイルを操作しますが、実際にはどれか&1; つを選択して操作できます。
+このチュートリアルでは、Message Analyzer を使用して 3 種類のログ ファイルを操作しますが、実際にはどれか 1 つを選択して操作できます。
 
-* **サーバー ログ**は、Azure Storage ログを有効にすると作成されます。 サーバー ログには、Azure Storage サービスの&1; つ、つまり BLOB、キュー、テーブル、ファイルに対して呼び出された各操作についてのデータが含まれます。 サーバー ログは、どの操作が呼び出され、どの状態コードが返されたかに加え、要求と応答に関するその他の詳細を示します。
+* **サーバー ログ**は、Azure Storage ログを有効にすると作成されます。 サーバー ログには、Azure Storage サービスの 1 つ、つまり BLOB、キュー、テーブル、ファイルに対して呼び出された各操作についてのデータが含まれます。 サーバー ログは、どの操作が呼び出され、どの状態コードが返されたかに加え、要求と応答に関するその他の詳細を示します。
 * **.NET クライアント ログ**は、.NET アプリケーション内部からクライアント側のログを有効にした場合に作成されます。 このクライアント ログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
 * **HTTP ネットワーク トレース ログ**は、HTTP/HTTPS の要求および応答データを収集しますが、これには Azure Storage に対する操作についてのデータも含まれます。 このチュートリアルでは、Message Analyzer を使用してネットワーク トレースを生成します。
 
 ### <a name="configure-server-side-logging-and-metrics"></a>サーバー側のログとメトリックを構成する
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure ポータル](https://portal.azure.com)や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成について詳しくは、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」をご覧ください。
+まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure Portal](https://portal.azure.com) や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成について詳しくは、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」をご覧ください。
 
-**Azure ポータルの使用**
+**Azure Portal の使用**
 
 [Azure Portal](https://portal.azure.com) を使用してストレージ アカウントのログとメトリックを構成するには、「[Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」の手順に従ってください。
 
 > [!NOTE]
-> Azure ポータルを使用して分単位メトリックを設定することはできません。 ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。 分単位メトリックは、PowerShell (以下を参照)、プログラム、ストレージ クライアント ライブラリのいずれかを使用して設定できます。
+> Azure Portal を使用して分単位メトリックを設定することはできません。 ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。 分単位メトリックは、PowerShell (以下を参照)、プログラム、ストレージ クライアント ライブラリのいずれかを使用して設定できます。
 > 
-> Azure ポータルで表示できるのは時間単位メトリックのみであり、分単位メトリックは表示できない点に注意してください。
+> Azure Portal で表示できるのは時間単位メトリックのみであり、分単位メトリックは表示できない点に注意してください。
 > 
 > 
 
@@ -171,15 +171,17 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 詳細については、Technet の [ネットワーク トレース機能の使用](http://technet.microsoft.com/library/jj674819.aspx) に関するページを参照してください。
 
-## <a name="review-metrics-data-in-the-azure-portal"></a>Azure ポータルでメトリック データを確認する
-アプリケーションが動作を開始してから一定の時間が経過すると、 [Azure ポータル](https://portal.azure.com) に表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。 最初に、Azure ポータルでストレージ アカウントに移動し、 **[成功のパーセンテージ]** メトリックのチャートを追加します。
+## <a name="review-metrics-data-in-the-azure-portal"></a>Azure Portal でメトリック データを確認する
+アプリケーションが動作を開始してから一定の時間が経過すると、[Azure Portal](https://portal.azure.com) に表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。
 
-Azure ポータルの監視チャート内には、他の追加済みのメトリックと共に **[成功のパーセンテージ]** が表示されています。 次に調査するシナリオでは Message Analyzer でログを分析しますが、成功率が 100% をいくらか下回っています。
+まず、Azure Portal のストレージ アカウントに移動します。 既定では、**成功のパーセンテージ** メトリック付きの監視グラフが [アカウント] ブレードに表示されます。 別のメトリックを表示するようにグラフを変更している場合は、**成功のパーセンテージ** メトリックを追加します。
 
-監視ページへのメトリックの追加の詳細については、「 [方法: メトリック テーブルへのメトリックの追加](storage-monitor-storage-account.md#how-to-add-metrics-to-the-metrics-table)」を参照してください。
+これで、監視グラフに **成功のパーセンテージ**が、追加した他のメトリックと共に表示されます。 次に調査するシナリオでは Message Analyzer でログを分析しますが、成功率が 100% をいくらか下回っています。
+
+メトリック グラフへの追加とカスタマイズの詳細については、「[メトリック グラフのカスタマイズ](storage-monitor-storage-account.md#customize-metrics-charts)」を参照してください。
 
 > [!NOTE]
-> ストレージ メトリックを有効にした後、Azure ポータルにメトリック データが表示されるまでには少し時間がかかる場合があります。 これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure ポータルに表示されないためです。 また、分単位メトリックについては現在のところ Azure ポータルには表示されません。 つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で&2; 時間を要する可能性があります。
+> ストレージ メトリックを有効にした後、Azure Portal にメトリック データが表示されるまでには少し時間がかかる場合があります。 これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure Portal に表示されないためです。 また、分単位メトリックについては現在のところ Azure Portal には表示されません。 つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
 > 
 > 
 
@@ -241,7 +243,7 @@ Message Analyzer はログ ファイルをメモリに読み込むという点�
 Microsoft Message Analyzer に対するログ データのインポートの詳細については、TechNet の [メッセージ データの取得](http://technet.microsoft.com/library/dn772437.aspx) に関するページを参照してください。
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>クライアント要求 ID を使用してログ ファイル データを関連付ける
-Azure ストレージ クライアント ライブラリは、すべての要求に対して自動的に一意のクライアント要求 ID を生成します。 この値はクライアント ログ、サーバー ログ、ネットワーク トレースに書き込まれるため、Message Analyzer 内の&3; 種類のログすべてにわたって、この値をデータの関連付けに使用することができます。 クライアント要求 ID の詳細については、「 [クライアント要求 ID](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) 」を参照してください。
+Azure ストレージ クライアント ライブラリは、すべての要求に対して自動的に一意のクライアント要求 ID を生成します。 この値はクライアント ログ、サーバー ログ、ネットワーク トレースに書き込まれるため、Message Analyzer 内の 3 種類のログすべてにわたって、この値をデータの関連付けに使用することができます。 クライアント要求 ID の詳細については、「 [クライアント要求 ID](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) 」を参照してください。
 
 以下のセクションでは、定義済みのカスタム レイアウト ビューを使用して、クライアント要求 ID に基づきデータの関連付けとグループ化を行う方法について説明します。
 
@@ -293,7 +295,7 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 クライアント ログに **StatusCode** 列が含まれていないため、このフィルターを適用した後は、クライアント ログの行が除外されていることがわかります。 まず、サーバーおよびネットワーク トレース ログを確認して 404 エラーを見つけてから、クライアント ログに戻ってそのエラーを引き起こしたクライアント操作を調べます。
 
 > [!NOTE]
-> ステータス コードが null であるログ エントリを含むフィルターに式を追加すると、 **[StatusCode]** 列によるフィルターを適用しつつ、クライアント ログを含む&3; つのログすべてのデータを表示することができます。 このフィルター式を作成するには、以下を使用します:
+> ステータス コードが null であるログ エントリを含むフィルターに式を追加すると、 **[StatusCode]** 列によるフィルターを適用しつつ、クライアント ログを含む 3 つのログすべてのデータを表示することができます。 このフィルター式を作成するには、以下を使用します:
 > 
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 > 
@@ -324,7 +326,7 @@ Storage アセットには定義済みのフィルターが含まれており、
 
 ![フィルター選択されたサーバーとネットワークのトレース ログ](./media/storage-e2e-troubleshooting/server-filtered-404-error.png)
 
-次に、このクライアント要求 ID とクライアント ログ データを関連付けて、エラーが発生した際にクライアントがどのように対処していたかを確認します。 このセッションのために新しい Analysis Grid ビューを表示してクライアント ログ データを確認することができますが、このビューは&2; 番目のタブに開きます。
+次に、このクライアント要求 ID とクライアント ログ データを関連付けて、エラーが発生した際にクライアントがどのように対処していたかを確認します。 このセッションのために新しい Analysis Grid ビューを表示してクライアント ログ データを確認することができますが、このビューは 2 番目のタブに開きます。
 
 1. まず、 **ClientRequestId** フィールドの値をクリップボードにコピーします。 コピーするには、**ClientRequestId** フィールドにあるどちらかの行を選択し、データ値を右クリックして **[Copy 'ClientRequestId']** を選択します。
 2. ツール バー リボンで、**[New Viewer]**、**[Analysis Grid]** の順に選択して新しいタブを開きます。 新しいタブは、ログ ファイル内のすべてのデータを、グループ化やフィルター、カラー ルールを適用せずに表示します。
@@ -339,7 +341,7 @@ Message Analyzer は、検索条件がクライアント要求 ID に一致す�
 
 ![404 エラーを示すクライアント ログ](./media/storage-e2e-troubleshooting/client-log-analysis-grid1.png)
 
-これら&2; つのタブのビュー レイアウトに表示されているデータを使用することで、要求データを分析して何がエラーを引き起こしたのかを判断することができます。 また、これに先行する要求を確認して、以前のイベントが 404 エラーを引き起こした可能性があるかどうかを調べることもできます。 たとえば、このクライアント要求 ID に先行するクライアント ログを確認して、BLOB が削除されていないか、あるいはクライアント アプリケーションがコンテナーまたは BLOB に対して CreateIfNotExists API を呼び出したことがエラーの発生原因ではないかを判断できます。 クライアント ログでは、**Description** フィールドに BLOB のアドレスが表示されます。サーバーおよびネットワーク トレース ログの場合、この情報は **Summary** フィールドに表示されます。
+これら 2 つのタブのビュー レイアウトに表示されているデータを使用することで、要求データを分析して何がエラーを引き起こしたのかを判断することができます。 また、これに先行する要求を確認して、以前のイベントが 404 エラーを引き起こした可能性があるかどうかを調べることもできます。 たとえば、このクライアント要求 ID に先行するクライアント ログを確認して、BLOB が削除されていないか、あるいはクライアント アプリケーションがコンテナーまたは BLOB に対して CreateIfNotExists API を呼び出したことがエラーの発生原因ではないかを判断できます。 クライアント ログでは、**Description** フィールドに BLOB のアドレスが表示されます。サーバーおよびネットワーク トレース ログの場合、この情報は **Summary** フィールドに表示されます。
 
 404 エラーを引き起こした BLOB のアドレスが判明したら、さらに調査を進めることができます。 同じ BLOB に対する操作に関連付けられた他のメッセージのログ エントリを検索した場合、クライアントが事前にそのエンティティを削除していたかどうかが確認できます。
 
@@ -369,11 +371,6 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 
 * [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 * [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
-* [Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 * [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

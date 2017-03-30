@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 03/21/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 452b6a541309736ee4bd7e1dbbf5288289e70922
-ms.openlocfilehash: 6a48bae7cd5c394f7b400f6870dba4da7f0d19f2
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 9acb23c679e4a8279c944a384d142b1cccf0f4d2
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード
-エンコード ジョブは Media Services で最も一般的な処理の&1; つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
+エンコード ジョブは Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
 
 このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/02/2017
 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ### <a name="input-and-output-metadata"></a>入力メタデータと出力メタデータ
-MES を使用して&1; つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。 出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
+MES を使用して 1 つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。 出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
 
 この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<asset_id>_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。 この入力メタデータ XML のスキーマについては、[こちら](media-services-input-metadata-schema.md)で説明されています。
 
@@ -51,7 +51,7 @@ MES を使用して&1; つ (または複数) の入力資産をエンコード�
 2 つのメタデータ ファイルのいずれかを確認したい場合は、SAS ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。 Media Services .NET SDK Extensions を使って SAS ロケータ―を作成し、ファイルをダウンロードする方法の例をご覧ください。
 
 ## <a name="download-sample"></a>サンプルのダウンロード
-[ここ](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)からサンプルを取得し、実行します。
+MES を使用したエンコード方法を示すサンプルを[こちら](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)から取得して実行できます。
 
 ## <a name="example"></a>例
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。

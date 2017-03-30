@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3893c98ed72ee7b4ed5aa879047293285e9af071
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: b4b0a8139b69a31e4af40e1f8231d4d7772fee0b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -82,13 +82,13 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 
 
 ### <a name="high-level-steps"></a>手順の概要
-このチュートリアルの一環として実行する&2; つの大まかな手順を次に示します。 
+このチュートリアルの一環として実行する 2 つの大まかな手順を次に示します。 
 
 1. シンプルなデータ変換/処理ロジックが含まれまるカスタム アクティビティを作成します。
 2. カスタム アクティビティを使用するパイプラインを備えた Azure Data Factory を作成します。
 
 ## <a name="create-a-custom-activity"></a>カスタム アクティビティの作成
-.NET カスタム アクティビティを作成するには、その **IDotNetActivity** インターフェイスを実装したクラスを含む **.NET クラス ライブラリ**プロジェクトを作成します。 このインターフェイスには、 [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) という&1; つのメソッドのみが含まれ、そのシグネチャは次のとおりです。
+.NET カスタム アクティビティを作成するには、その **IDotNetActivity** インターフェイスを実装したクラスを含む **.NET クラス ライブラリ**プロジェクトを作成します。 このインターフェイスには、 [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) という 1 つのメソッドのみが含まれ、そのシグネチャは次のとおりです。
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -99,7 +99,7 @@ public IDictionary<string, string> Execute(
 ```
 
 
-このメソッドには次の&4; つのパラメーターがあります。
+このメソッドには次の 4 つのパラメーターがあります。
 
 - **linkedServices**。 このプロパティは、このアクティビティの入力/出力データセットで参照される、データ ストアのリンクされたサービスの列挙可能なリストです。   
 - **datasets**。 このプロパティは、このアクティビティの入力/出力データセットの列挙可能なリストです。 このパラメーターを使用すると、入力と出力のデータセットに定義されている場所とスキーマを取得できます。
@@ -120,7 +120,7 @@ public IDictionary<string, string> Execute(
      <li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
    </ol>
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-手順&3;. パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories**をインポートします。
+手順 3. パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories**をインポートします。
 
     ```PowerShell
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -381,7 +381,7 @@ public IDictionary<string, string> Execute(
 15. AzureStorageLinkedService によって参照される**汎用** Azure Blob Storage (ホット/クール BLOB ストレージでない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
 
 > [!NOTE]
-> この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の&2; つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-activity-tutorial-using-visual-studio.md)」を参照してください。  
+> この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-activity-tutorial-using-visual-studio.md)」を参照してください。  
 
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。 
@@ -395,9 +395,9 @@ public IDictionary<string, string> Execute(
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-入力フォルダーに複数のファイルが含まれている場合でも、入力フォルダーは Azure Data Factory の&1; つのスライスに対応します。 パイプラインで各スライスが処理されるときに、カスタム アクティビティでは、そのスライスの入力フォルダー内にあるすべての BLOB が反復処理されます。
+入力フォルダーに複数のファイルが含まれている場合でも、入力フォルダーは Azure Data Factory の 1 つのスライスに対応します。 パイプラインで各スライスが処理されるときに、カスタム アクティビティでは、そのスライスの入力フォルダー内にあるすべての BLOB が反復処理されます。
 
-adftutorial\customactivityoutput folder フォルダーには、1 つ以上の行 (入力フォルダーの BLOB と同じ数) が含まれた&1; つの出力ファイルが作成されます。
+adftutorial\customactivityoutput folder フォルダーには、1 つ以上の行 (入力フォルダーの BLOB と同じ数) が含まれた 1 つの出力ファイルが作成されます。
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
@@ -500,7 +500,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 
    このチュートリアルでは、開始時刻が 2016-11-16T00:00:00Z、終了時刻が 2016-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを毎時生成するようにスケジュールされているので、5 つの入力/出力スライスがあります (**00**:00:00 -> **05**:00:00)。
 
-   入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に&1; つの入力スライスを利用できます。 このサンプルでは、intputfolder の同じファイル (file.txt) です。
+   入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に 1 つの入力スライスを利用できます。 このサンプルでは、intputfolder の同じファイル (file.txt) です。
 
    次に各スライスの開始時刻を示します。これは上記の JSON スニペットの SliceStart システム変数で表されます。
 3. ツール バーの **[デプロイ]** をクリックし、**InputDataset** を作成してデプロイします。 エディターのタイトル バーに **"テーブルが正常に作成されました"** というメッセージが表示されていることを確認します。
@@ -539,7 +539,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 
      出力場所は **adftutorial/customactivityoutput/** で、出力ファイル名は yyyy-MM-dd-HH.txt です。この yyyy-MM-dd-HH は、スライスが生成された年、月、日、時間です。 詳細については、「[開発者用リファレンス][adf-developer-reference]」のページをご覧ください。
 
-    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、**adftutorial\customactivityoutput** という&1; つのフォルダーに生成されます。
+    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、**adftutorial\customactivityoutput** という 1 つのフォルダーに生成されます。
 
    | スライス | 開始時刻 | 出力ファイル |
    |:--- |:--- |:--- |
@@ -549,7 +549,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    入力フォルダー内のすべてのファイルは、前述の開始時刻であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された&1; 行を生成します。 inputfolder に 3 つのファイルがある場合、1 時間ごとの各スライスの出力ファイル (2016-11-16-00.txt、2016-11-16:01:00:00.txt など) に 3 つの行が含まれます。
+    入力フォルダー内のすべてのファイルは、前述の開始時刻であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された 1 行を生成します。 inputfolder に 3 つのファイルがある場合、1 時間ごとの各スライスの出力ファイル (2016-11-16-00.txt、2016-11-16:01:00:00.txt など) に 3 つの行が含まれます。
 3. **OutputDataset** をデプロイするには、コマンド バーの **[デプロイ]** をクリックします。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>カスタム アクティビティを使用するパイプラインの作成と実行
@@ -604,7 +604,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
     以下の点に注意してください。
 
    * **Concurrency** を **2** に設定し、Azure Batch プール内の 2 つの VM で 2 つのスライスが並列処理されるようにします。
-   * activities セクションには、 **DotNetActivity**型のアクティビティが&1; つあります。
+   * activities セクションには、 **DotNetActivity**型のアクティビティが 1 つあります。
    * **AssemblyName** を DLL の名前 (**MyDotnetActivity.dll**) に設定します。
    * **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。
    * **PackageLinkedService** は **AzureStorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。 入力/出力ファイルとカスタム アクティビティ zip ファイルに異なる Azure Storage アカウントを使用している場合は、Azure Storage の別のリンクされたサービスを作成します。 この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
@@ -612,7 +612,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    * カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
    * カスタム アクティビティの linkedServiceName プロパティは、**AzureBatchLinkedService** を示します。これによって、Azure Batch VM でカスタム アクティビティが実行する必要がある Azure Data Factory がわかります。
    * **isPaused** プロパティは、既定で **false** に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを true に設定すると、パイプラインを一時停止できます。また false に設定し直すと再開されます。
-   * **start** 時刻と **end** 時刻は **5** 時間離れており、スライスは&1; 時間ごとに生成されるので、パイプラインによって&5; つのスライスが生成されます。
+   * **start** 時刻と **end** 時刻は **5** 時間離れており、スライスは 1 時間ごとに生成されるので、パイプラインによって 5 つのスライスが生成されます。
 3. パイプラインをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。
 
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
@@ -644,7 +644,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx*
 
 ![Azure Data Factory - Batch ジョブ](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
-スライスのアクティビティの実行ごとに、1 つのタスクが作成されます。 5 個のスライスを処理する準備ができた場合、このジョブに&5; 個のタスクが作成されています。 Batch プール内に複数のコンピューティング ノードがある場合は、2 つ以上のスライスを並列で実行できます。 コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
+スライスのアクティビティの実行ごとに、1 つのタスクが作成されます。 5 個のスライスを処理する準備ができた場合、このジョブに 5 個のタスクが作成されています。 Batch プール内に複数のコンピューティング ノードがある場合は、2 つ以上のスライスを並列で実行できます。 コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
 
 ![Azure Data Factory - Batch ジョブのタスク](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
 
@@ -668,9 +668,9 @@ Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx*
 
    名前が一致する場合は、zip ファイルの **ルート フォルダー** にすべてのバイナリが含まれていることを確認します。 つまり、zip ファイルを開くと、サブ フォルダーではなく、ルート フォルダーにすべてのファイルが表示されます。   
 3. 入力スライスが **[準備完了]**に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに **file.txt** が存在することを確認します。
-3. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは、ユーザー ログ ファイル (user-0.log、user-1.log、user-2.log などの名前が付けられた&1; つ以上のファイル) に表示されます。
+3. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは、ユーザー ログ ファイル (user-0.log、user-1.log、user-2.log などの名前が付けられた 1 つ以上のファイル) に表示されます。
 
-   **[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。 そのスライスの **アクティビティの実行** が表示されます。 このスライスには&1; 回のアクティビティの実行が表示されます。 コマンド バーの [実行] をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。
+   **[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。 そのスライスの **アクティビティの実行** が表示されます。 このスライスには 1 回のアクティビティの実行が表示されます。 コマンド バーの [実行] をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。
 
    アクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ブレードにログ ファイルの一覧が表示されます。 user_0.log ファイルにログに記録されたメッセージが表示されます。 パイプライン/アクティビティ JSON で再試行回数が 3 に設定されているので、エラーが発生した場合、3 つのアクティビティの実行が表示されます。 アクティビティの実行をクリックすると、ログ ファイルが表示されます。このファイルを確認して、エラーのトラブルシューティングを行うことができます。
 
@@ -742,14 +742,14 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 **自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
 
-保留中のタスクにつき一度に&1; つの VM (例: 保留中のタスクが&5; つ ->&5; つの VM):
+保留中のタスクにつき一度に 1 つの VM (例: 保留中のタスクが 5 つ -> 5 つの VM):
 
 ```
 pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
 $TargetDedicated = max(pendingTaskSampleVector);
 ```
 
-保留中のタスクの数に関係なく、最大で一度に&1; つの VM:
+保留中のタスクの数に関係なく、最大で一度に 1 つの VM:
 
 ```
 pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
@@ -772,7 +772,7 @@ $TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
 Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。 また、独自のクラスターを使って同じ処理を行うことも可能です。 オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。 一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。 そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。
 
 > [!NOTE]
-> 実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの&1; つの worker ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。 .NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
+> 実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つの worker ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。 .NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
 >
 >
 

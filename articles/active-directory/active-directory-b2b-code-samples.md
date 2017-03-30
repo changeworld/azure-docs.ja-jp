@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 03/15/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c05cd490ee9125f7e5182cb502db6f4e9390094
-ms.openlocfilehash: 1287a44fcf450023d4544202bd5db51dc99768ab
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 51c0f98e3d3ad09e3e6675b2692bc2a8888db9a7
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 1287a44fcf450023d4544202bd5db51dc99768ab
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
 
 ## <a name="code-sample"></a>サンプル コード
-このサンプルは、招待 API を "アプリのみ" モードで呼び出して、B2B ユーザーを招待するリソースの使用 URL を取得する方法を示しています。 目的は、カスタム招待メールを送信することです。 HTTP クライアントでどのようにメールが作成されるかがわかるので、メールの外見をカスタマイズし、Graph API を通じて送信することができます。
+ここでは、招待 API を "アプリのみ" モードで呼び出して、B2B ユーザーを招待するリソースの使用 URL を取得する方法を示しています。 目的は、カスタム招待メールを送信することです。 電子メールは HTTP クライアントで構成できるので、メールの外見をカスタマイズし、Graph API を通じて送信することができます。
 
 ```
 namespace SampleInviteApp
@@ -162,7 +163,7 @@ namespace SampleInviteApp
 ```
 
 ## <a name="powershell-example"></a>PowerShell の例
-次の例は、.CSV ファイルに格納した電子メール アドレスを使用して、外部ユーザーを組織に一括で招待する方法を具体的に示しています。
+.CSV ファイルに格納した電子メール アドレスを使用して、外部ユーザーを組織に一括で招待することができます。
 
 1. .CSV ファイルを準備します。新しい CSV ファイルを作成して、invitations.csv という名前を付けます。 この例では、ファイルは C:\data に保存します。 CSV ファイルは、次のようになります。
 
@@ -189,7 +190,10 @@ namespace SampleInviteApp
     foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InviteRedirectUrl http://microsoft.com -SendInvitationMessage $true}
   ```
 
-これで、invitations.csv の電子メール アドレスに招待が送信されます。 このコマンドレットの追加機能には、電子メール メッセージ内のテキストのカスタマイズ、招待されるユーザーの表示名の付記、CC へのメッセージの送信、すべての電子メール メッセージの送信の停止などがあります。
+このコマンドレットは、invitations.csv の電子メール アドレスに招待を送信します。 このコマンドレットの追加機能には、次のようなものがあります。
+- 電子メール メッセージでのテキストのカスタマイズ
+- 招待されるユーザーの表示名の付記
+- CC へのメッセージの送信、またはすべての電子メール メッセージの送信の停止
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -205,9 +209,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 * [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
 * [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 * [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 17eadb8e502c0836b38661caf2a275af0e90bdfe
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: d7a8d669e75991f6707641e4ce53c9b63d04853c
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/15/2017
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
 
 ## <a name="run-time-or-build-time"></a>実行時またはビルド時
-監視は、アプリを次の&2; つの方法のどちらかでインストルメント化することによって構成できます。
+監視は、アプリを次の 2 つの方法のどちらかでインストルメント化することによって構成できます。
 
 * **実行時** - Web アプリが既に実行されているときにパフォーマンス監視拡張機能を選択できます。 アプリを再構築または再インストールする必要はありません。 応答時間、成功率、例外、依存関係などを監視するパッケージの標準セットを利用できます。 
 * **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。 これは、汎用性が高い方法です。 同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。 アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。 
@@ -57,7 +57,7 @@ Application Insights では、アプリへの SDK のインストールによっ
    
     サインインが要求されたら、Azure アカウントの資格情報を使用します。
    
-    この操作には、次の&2; つの効果があります。
+    この操作には、次の 2 つの効果があります。
    
    1. Azure に Application Insights リソースが作成されます。このリソースでテレメトリが格納、分析、表示されます。
    2. Application Insights NuGet パッケージがコードに追加され (まだ追加されていない場合)、テレメトリを Azure リソースに送信するように構成されます。
@@ -69,7 +69,7 @@ Application Insights では、アプリへの SDK のインストールによっ
 * Visual Studio でプロジェクトを右クリックし、**[Application Insights の構成]** を選択して、目的のリソースを選択します。 新しいリソースを作成するオプションが表示されます。 リビルドして再デプロイします。
 
 ## <a name="explore-the-data"></a>データを検索する
-1. Web アプリのコントロール パネルの Application Insights ブレードで Live Metrics を確認します。Live Metrics には、要求と失敗が発生後&1; ～&2; 秒以内に表示されます。 問題をすぐに確認できるため、この表示はアプリを再発行する際に非常に役立ちます。
+1. Web アプリのコントロール パネルの Application Insights ブレードで Live Metrics を確認します。Live Metrics には、要求と失敗が発生後 1 ～ 2 秒以内に表示されます。 問題をすぐに確認できるため、この表示はアプリを再発行する際に非常に役立ちます。
 2. すべての Application Insights リソースをクリックします。
 
     ![クリックする](./media/app-insights-azure-web-apps/view-in-application-insights.png)
@@ -90,6 +90,10 @@ Application Insights では、アプリへの SDK のインストールによっ
     [検索をカスタマイズ](app-insights-diagnostic-search.md)できます。
 
 テレメトリに対するより強力な検索については、 [Analytics クエリ言語](app-insights-analytics-tour.md)を使用してください。
+
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure 診断](app-insights-azure-diagnostics.md) が Application Insights に送信されるように設定します。

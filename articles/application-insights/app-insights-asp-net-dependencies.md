@@ -1,22 +1,22 @@
 ---
-title: "Application Insights での依存関係の追跡"
+title: "Azure Application Insights における依存関係の追跡 | Microsoft Docs"
 description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d15c4ca8-4c1a-47ab-a03d-c322b4bb2a9e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 35817adde713995ec82eead033f058ee109bf900
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -34,6 +34,8 @@ ms.lasthandoff: 02/02/2017
   * Azure DocumentDb、テーブル、Blob Storage、およびキュー
 * Web ページ
   * AJAX 呼び出し
+
+監視は、選択したメソッドに関する[バイト コードのインストルメンテーション](https://msdn.microsoft.com/library/z9z62c29.aspx)を使用することにより動作します。 パフォーマンスのオーバーヘッドは最小限になります。
 
 [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) を使用して他の依存関係を監視するために、クライアントとサーバーの両方のコードで、独自の SDK 呼び出しを記述することもできます。
 
@@ -54,7 +56,7 @@ ms.lasthandoff: 02/02/2017
 * 依存関係データのクエリを実行するには、[Analytics](#analytics) を使用できます。
 
 ## <a name="application-map"></a>アプリケーション マップ
-アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。 これは、アプリから送信されたテレメトリから自動的に生成されます。 この例では、ブラウザー スクリプトからの AJAX 呼び出しとサーバー アプリから&2; つの外部サービスへの REST 呼び出しが示されています。
+アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。 これは、アプリから送信されたテレメトリから自動的に生成されます。 この例では、ブラウザー スクリプトからの AJAX 呼び出しとサーバー アプリから 2 つの外部サービスへの REST 呼び出しが示されています。
 
 ![アプリケーション マップ](./media/app-insights-asp-net-dependencies/08.png)
 
@@ -82,7 +84,7 @@ ms.lasthandoff: 02/02/2017
 ## <a name="ajax-calls"></a>AJAX 呼び出し
 [ブラウザー] ブレードには、[Web ページ内の JavaScript](app-insights-javascript.md) からの AJAX 呼び出しの期間とエラー率が示されます。 これらは依存関係として示されます。
 
-## <a name="a-namediagnosisa-diagnose-slow-requests"></a><a name="diagnosis"></a> 低速なリクエストの診断
+## <a name="diagnosis"></a> 低速なリクエストの診断
 各要求イベントは、依存関係呼び出し、例外、およびアプリでの要求の処理中に追跡されるその他のイベントに関連しています。 そのため、いくつかのリクエストが正しく実行されない場合は、それが依存関係からの応答が遅いためかどうかを調べることができます。
 
 ひとつの例を見てみましょう。
@@ -202,6 +204,10 @@ ms.lasthandoff: 02/02/2017
 * 最新バージョンの SDK にアップグレードしてください。 .NET バージョンが 4.6 未満の場合は、次のようにします。
   * IIS ホスト: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)をホスト サーバーにインストールします。
   * Azure Web アプリ: Web アプリのコントロール パネルで [Application Insights] タブを開き、Application Insights をインストールします。
+
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>次のステップ
 * [例外](app-insights-asp-net-exceptions.md)

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ee0cee5e653cb8900936e12e87c56cfee5639bc5
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 582cb9dee06c6ec4b030ded866a0f92a575b93ed
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -45,7 +45,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 4. [AzureDataLakeStore](#azure-data-lake-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](#azure-blob-copy-activity-type-properties) と [AzureDataLakeStoreSink](#azure-data-lake-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure BLOB ストレージから Azure Data Lake Store に時系列データを&1; 時間おきに コピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure BLOB ストレージから Azure Data Lake Store に時系列データを 1 時間おきに コピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure Storage のリンクされたサービス:**
 
@@ -149,7 +149,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 
 **Azure Data Lake 出力データセット:**
 
-このサンプルは Azure Data Lake Store にデータをコピーします。 新しいデータが&1; 時間おきに Data Lake Store にコピーされます。
+このサンプルは Azure Data Lake Store にデータをコピーします。 新しいデータが 1 時間おきに Data Lake Store にコピーされます。
 
 ```JSON
 {
@@ -230,7 +230,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 4. [AzureBlob](#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [AzureDataLakeStoreSource](#azure-data-lake-copy-activity-type-properties) と [BlobSink](#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure Data Lake Store から Azure BLOB に時系列データを&1; 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure Data Lake Store から Azure BLOB に時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure Data Lake Store のリンクされたサービス:**
 
@@ -417,24 +417,23 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **AzureDataLakeStore** | はい |
-| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 **https://[アカウント名].azuredatalakestore.net/webhdfs/v1** or **adl://[アカウント名].azuredatalakestore.net/** という形式で指定します。 | はい |
+| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
 
 ### <a name="using-service-principal-authentication-recommended"></a>サービス プリンシパル認証の使用 (推奨)
-サービス プリンシパル認証を使用するには、最初に Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与する必要があります。 その後、対応するアプリケーション ID、アプリケーション キー、およびテナント情報によって Azure Data Factory で以下のプロパティを指定して、Data Lake Store との間でデータをコピーできます。 これを設定して、必要な情報を取得する方法については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
+サービス プリンシパル認証を使用するには、Azure Active Directory (AAD) でアプリケーション エンティティを登録して、Data Lake Store へのアクセス権を付与します。 詳細な手順については、[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。 **アプリケーション ID**、**アプリケーション キー**、および**テナント ID** の値をメモします。 この情報は、リンクされたサービスを定義するときに使用します。 
 
 > [!IMPORTANT]
-> コピー ウィザードを使用して作成する場合、フォルダー間を移動するには、サービス プリンシパルで少なくとも ADLS アカウントに対するアクセス制御 (IAM) の閲覧者ロールと、ADLS ルート ("/") とその子に対する読み取りおよび実行アクセス許可が付与されている必要があります。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
+> コピー ウィザードを使用してデータ パイプラインを作成する場合は、サービス プリンシパルに、少なくとも Data Lake Store アカウントに対するアクセス制御 (IAM) の閲覧者ロールと、Data Lake Store ルート ("/") とその子に対する読み取りおよび実行アクセス許可を必ず付与します。 付与されていない場合、"提供された資格情報が無効" であることを示すエラーが表示されることがあります。
 >
-> サービス プリンシパルを AAD から新しく作成/更新した場合は、実際に有効になるまで数分間かかります。 まずサービス プリンシパルと ADLS ACL 構成を再確認し、「提供された資格情報が無効です」というエラーが解消されない場合、しばらく待ってからやり直してください。
->
+> AAD でサービス プリンシパルを作成/更新した後、その変更が実際に有効になるまで数分かかる場合があります。 まず、サービス プリンシパルと Data Lake Store の ACL 構成を再確認します。 "指定された資格情報が無効です" というエラーが引き続き表示される場合は、しばらく待ってからやり直してください。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 | はい |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure ポータルの右上隅にマウスを置くことで取得できます。 | はい |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | はい |
 
 **例: サービス プリンシパル認証の使用**
 ```json
@@ -455,7 +454,7 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 ```
 
 ### <a name="using-user-credential-authentication"></a>ユーザー資格情報認証の使用
-また、以下のプロパティを指定することで、ユーザー資格情報認証を使用して、Data Lake Store との間でデータをコピーすることもできます。
+また、次のプロパティを指定することで、ユーザー資格情報認証を使用して、Data Lake Store との間でデータをコピーすることもできます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -480,12 +479,16 @@ Azure Data Lake Store との間でデータをコピーするパイプライン�
 ```
 
 #### <a name="token-expiration"></a>トークンの有効期限
-**[承認する]** ボタンを使用して生成した承認コードは、いずれ有効期限が切れます。 さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。 認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります: "資格情報の操作エラー: invalid_grant - AADSTS70002: 資格情報の検証中にエラーが発生しました。 AADSTS70008: 指定されたアクセス権の付与は期限が切れているか、失効しています。 トレース ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相関 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 タイムスタンプ: 2015-12-15 21-09-31Z"
+**[承認する]** ボタンを使用して生成した承認コードは、いずれ有効期限が切れます。 さまざまな種類のユーザー アカウントの有効期限については、次の表を参照してください。 認証**トークンの有効期限が切れる**と、次のエラー メッセージが表示される場合があります。
+ 
+```
+"Credential operation error: invalid_grant - AADSTS70002: Error validating credentials. AADSTS70008: The provided access grant is expired or revoked. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z".
+```
 
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など)。 |12 時間 |
-| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このトークンの有効期限の前にパスワードを変更すると、トークンが即座に期限切れとなり、前述のエラーが表示されます。
 
@@ -530,7 +533,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | fileName |Azure Data Lake Store 内のファイルの名前。 fileName は省略可能で、大文字と小文字を区別します。 <br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定のファイルで動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: Data<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 詳細と例については、「 [partitionedBy プロパティの使用](#using-partitionedby-property) 」をご覧ください。 |なし |
 | BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](#specifying-textformat)、[Json Format](#specifying-jsonformat)、[Avro Format](#specifying-avroformat)、[Orc Format](#specifying-orcformat)、[Parquet Format](#specifying-parquetformat) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[圧縮の指定](#specifying-compression)」セクションを参照してください。 |いいえ |
 
 ### <a name="using-partitionedby-property"></a>partitionedBy プロパティの使用
 **partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用して、時系列データの動的な folderPath と fileName を指定できます。
@@ -581,7 +584,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| copyBehavior |コピー動作を指定します。 |**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/>**FlattenHierarchy**: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/>**MergeFiles:** ソース フォルダーのすべてのファイルを&1; つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ |
+| copyBehavior |コピー動作を指定します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ |
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -590,8 +593,5 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 [!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
-
-Azure Data Factory には、大量の履歴データまたは増分運用データのロードで初期データ移動が計画されているかどうかに応じて、こうしたタスクのパフォーマンスを向上させるオプションが用意されています。 **コピー アクティビティ**に含まれる同時実行パラメーターは、さまざまなアクティビティ ウィンドウがどのように並行処理されるかを定義します。 **parallelCopies** パラメーターでは、1 つのアクティビティ実行の並列処理が定義されます。 最適なスループットを得られるように、Azure Data Factory でデータ移動パイプラインを設計するときに、こうしたパラメーターの使用を検討することが重要です。
-
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 

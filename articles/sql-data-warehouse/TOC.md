@@ -26,11 +26,11 @@
 ## 接続
 
 ### [概要](sql-data-warehouse-connect-overview.md)
-### [接続文字列](sql-data-warehouse-connection-strings.md)
-### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Visual Studio のインストール](sql-data-warehouse-install-visual-studio.md)
+### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+### [接続文字列](sql-data-warehouse-connection-strings.md)
 
 ## 作成
 ### [Azure ポータル](sql-data-warehouse-get-started-provision.md)

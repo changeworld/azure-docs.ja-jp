@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 2289c99ddd08c1e7ba356e233180cf59d99de182
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 121be952ea49a8ff47f7e2528adbc87e05359a15
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/14/2017
 - Data Factory パイプラインを使用してワークフローを作成できます。 たとえば、パイプラインを使用して、オンプレミスの SQL Server から Azure BLOB ストレージにデータをコピーし、オンデマンドの HDInsight Hadoop クラスターで Hive スクリプトと Pig スクリプトを実行してデータを処理することができます。 次に、BI アプリケーションで使用するために、結果データを Azure SQL Data Warehouse にコピーします。
 - 定期的 (毎時、毎日、毎週、毎月など) に実行されるように、ワークフローのスケジュールを設定することができます。
 
-Azure Data Factory では、データ ファクトリに&1; つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 アクティビティには、[データ移動アクティビティ](../data-factory/data-factory-data-movement-activities.md)と[データ変換アクティビティ](../data-factory/data-factory-data-transformation-activities.md)の&2; 種類があります。 データ移動アクティビティ (現在はコピー アクティビティのみ) は、ソース データ ストアからコピー先データ ストアにデータを移動するために使用します。 データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの&1; つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。 
+Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 アクティビティには、[データ移動アクティビティ](../data-factory/data-factory-data-movement-activities.md)と[データ変換アクティビティ](../data-factory/data-factory-data-transformation-activities.md)の 2 種類があります。 データ移動アクティビティ (現在はコピー アクティビティのみ) は、ソース データ ストアからコピー先データ ストアにデータを移動するために使用します。 データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。 
 
 Hive アクティビティを構成して、独自の HDInsight Hadoop クラスターまたはオンデマンドの HDInsight Hadoop クラスターを使用することができます。 このチュートリアルでは、データ ファクトリ パイプラインの Hive アクティビティが、オンデマンドの HDInsight クラスターを使用するように構成されています。 したがって、アクティビティを実行してデータ スライスを処理するとき、次の処理が実行されます。 
 
@@ -53,7 +53,7 @@ Hive アクティビティを構成して、独自の HDInsight Hadoop クラス
 2014-03-01,02:01:10,SAMPLEWEBSITE,GET,/blogposts/mvc4/step7.png,X-ARR-LOG-ID=d7472a26-431a-4a4d-99eb-c7b4fda2cf4c,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,30184,871
 ```
 
-この HiveQL スクリプトは、生データを年と月で分割します。 このスクリプトは、前の入力に基づいて&3; つの出力フォルダーを作成します。 各フォルダーには、各月のエントリを含むファイルが格納されます。
+この HiveQL スクリプトは、生データを年と月で分割します。 このスクリプトは、前の入力に基づいて 3 つの出力フォルダーを作成します。 各フォルダーには、各月のエントリを含むファイルが格納されます。
 
 ```
 adfgetstarted/partitioneddata/year=2014/month=1/000000_0
@@ -75,19 +75,19 @@ Hive アクティビティと Data Factory データ変換アクティビティ�
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 ### <a name="prepare-storage-account"></a>ストレージ アカウントの準備
-このシナリオでは、最大&3; つのストレージ アカウントを使用できます。
+このシナリオでは、最大 3 つのストレージ アカウントを使用できます。
 
 - HDInsight クラスターの既定のストレージ アカウント
 - 入力データ用のストレージ アカウント
 - 出力データ用のストレージ アカウント
 
-ここでは、このチュートリアルを簡単にするために、この&3; つの目的に&1; つのストレージ アカウントを使用します。 このセクションで紹介する Azure PowerShell のサンプル スクリプトでは、次のタスクを実行します。
+ここでは、このチュートリアルを簡単にするために、この 3 つの目的に 1 つのストレージ アカウントを使用します。 このセクションで紹介する Azure PowerShell のサンプル スクリプトでは、次のタスクを実行します。
 
 1. Azure にログインします。
 2. Azure リソース グループを作成します。
 3. Azure ストレージ アカウントを作成します。
 4. ストレージ アカウントに BLOB コンテナーを作成します。
-5. BLOB コンテナーに次の&2; つのファイルをコピーします。
+5. BLOB コンテナーに次の 2 つのファイルをコピーします。
 
    * 入力データ ファイル: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log)
    * HiveQL スクリプト: [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)
@@ -181,9 +181,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
 2. 左側のウィンドウの **[リソース グループ]** をクリックします。
 3. PowerShell スクリプトで作成したリソース グループの名前をダブルクリックします。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
-4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが&1; つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
+4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
 5. **[BLOB]** タイルをクリックします。
-6. **adfgetstarted** コンテナーをクリックします。 **inputdata** と **script** の&2; つのフォルダーが表示されます。 
+6. **adfgetstarted** コンテナーをクリックします。 **inputdata** と **script** の 2 つのフォルダーが表示されます。 
 7. フォルダーを開き、フォルダー内のファイルを確認します。 inputdata には入力データを含む input.log ファイルが含まれ、script フォルダーには HiveQL スクリプト ファイルが含まれています。 
 
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>Resource Manager テンプレートを使用したデータ ファクトリの作成
@@ -198,9 +198,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 5. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 6. **[ダッシュボードにピン留めする]** オプションをオンにします。 
 6. **[Purchase/Create (購入/作成)]** をクリックします。 ダッシュボードに "**テンプレートのデプロイのデプロイ中**" というタイルが表示されます。 対象のリソース グループの**リソース グループ** ブレードが開くまで待ちます。 また、対象のリソース グループの名前が付けられたタイルをクリックしてリソース グループ ブレードを開くこともできます。 
-6. リソース グループ ブレードがまだ開いていない場合は、タイルをクリックしてリソース グループを開きます。 これで、ストレージ アカウント リソースのほかに、もう&1; つデータ ファクトリ リソースが表示されます。
+6. リソース グループ ブレードがまだ開いていない場合は、タイルをクリックしてリソース グループを開きます。 これで、ストレージ アカウント リソースのほかに、もう 1 つデータ ファクトリ リソースが表示されます。
 7. データ ファクトリの名前 (**[データ ファクトリ名]** パラメーターに指定した値) をクリックします。
-8. [Data Factory] ブレードで、**[ダイアグラム]** タイルをクリックします。 このダイアグラムには、1 つの入力データセットと&1; つの出力データセットを持つ&1; つのアクティビティが示されます。
+8. [Data Factory] ブレードで、**[ダイアグラム]** タイルをクリックします。 このダイアグラムには、1 つの入力データセットと 1 つの出力データセットを持つ 1 つのアクティビティが示されます。
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline diagram](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
 
@@ -210,7 +210,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 ### <a name="check-the-data-factory-output"></a>データ ファクトリの出力を確認する
 
-1. 前のセクションと同じ手順を使用して、adfgetstarted コンテナーのコンテナーを確認します。 **adfgetsarted**に加えて、次の&2; つの新しいコンテナーがあります。
+1. 前のセクションと同じ手順を使用して、adfgetstarted コンテナーのコンテナーを確認します。 **adfgetsarted**に加えて、次の 2 つの新しいコンテナーがあります。
 
    * `adf<yourdatafactoryname>-linkedservicename-datetimestamp` 形式の名前が付いたコンテナー。 このコンテナーは、HDInsight クラスターの既定のコンテナーです。 
    * adfjobs: このコンテナーは、ADF ジョブ ログのコンテナーです。
@@ -221,7 +221,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
 
-    一覧を展開すると、1 月、2 月、3 月に対応する&3; つのフォルダーが表示されます。 さらに、月ごとのログがあります。
+    一覧を展開すると、1 月、2 月、3 月に対応する 3 つのフォルダーが表示されます。 さらに、月ごとのログがあります。
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-month.png)
 
@@ -277,7 +277,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 * [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを&1; つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。 
+Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを 1 つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。 
 
 ```json
 {

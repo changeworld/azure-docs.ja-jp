@@ -1,5 +1,5 @@
 ---
-title: "Application Insights を使用したメトリックの探索 | Microsoft Docs"
+title: "Azure Application Insights を使用したメトリックの探索 | Microsoft Docs"
 description: "メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。"
 services: application-insights
 documentationcenter: 
@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: ee759149df038ac08f0d5987c3577454a81999db
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 8005e1c485b9ce2e19e134a12206058ef54a5a8b
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -195,6 +195,10 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
     グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。 その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
 * メトリックで定義されていないプロパティでグラフをグループ化すると、グラフに何も表示されなくなります。 "group by" をクリアするか、別のグループ化プロパティを選択してみます。
 * パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) で使用できます。 Azure Web サイトでは利用できません。
+
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>次のステップ
 * [Application Insights による使用状況の監視](app-insights-overview-usage.md)

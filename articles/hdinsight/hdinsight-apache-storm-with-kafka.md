@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/10/2017
+ms.date: 03/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: fb2fe0efe00a7ef7fd1c22ca94c76b2d5f4c5510
-ms.openlocfilehash: 0ab556f074700b7e26be002bc894914a1d429e79
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 3f0d284e122704ba01676c4b0028e196fe47bca8
+ms.lasthandoff: 03/21/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>HDInsight での Strom に Apache Kafka (プレビュー) を使用する
@@ -127,7 +127,7 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
 
 ## <a name="create-a-kafka-topic"></a>Kafka トピックの作成
 
-1. SSH を使用して Kafka クラスターに接続します。 **USERNAME** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
+1. SSH を使用して Kafka クラスターに接続します。 `USERNAME` は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 `BASENAME` は、クラスターの作成時に使用したベース名に置き換えます。
    
         ssh USERNAME@kafka-BASENAME-ssh.azurehdinsight.net
    
@@ -139,36 +139,62 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
 
     * [Linux ベースの HDInsight で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-2. Kafka クラスターに SSH で接続した状態で、次のコマンドを使用して Ambari から Zookeeper ノードを取得します。
+2. Kafka クラスターに SSH で接続した状態で、次のコマンドを使用して HTTP ログインとクラスター名に変数を設定します。 これらの値は、このセクションの他の手順で使用します。
 
-        # Install JQ to make working with JSON easier
-        sudo apt -y install jq
-        # Query Ambari for 
-        KAFKAZKHOSTS=`curl -u admin:PASSWORD -G "http://headnodehost:8080/api/v1/clusters/kafka-BASENAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
-    
-    __PASSWORD__ は、クラスターの作成時に使用した管理者パスワードに置き換えます。 __BASENAME__ は、クラスターの作成時に使用したベース名に置き換えます。
+  ```bash
+  ADMIN='admin' #replace with the name of the admin account for the cluster
+  PASSWORD='password' #replace with the password for the admin account
+  ```
 
-    このコマンドでは、Ambari から Zookeeper ホストの値を読み取って KAFKAZKHOSTS 変数に格納しています。 これらの値を表示するには次のコマンドを使用します。
+3. 次のコマンドを使用して、`jq` ユーティリティをインストールし、クラスター名を取得して、`KAFKAZKHOSTS` 変数を設定します。
 
-        echo $KAFKAZKHOSTS
-    
+  ```bash
+  sudo apt -y install jq
+  CLUSTERNAME=`curl -u $ADMIN:$PASSWORD -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name'`
+  KAFKAZKHOSTS=`curl -u $ADMIN:$PASSWORD -G "http://headnodehost:8080/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+  ```
+
+    次のコマンドを使用して、クラスター名を取得します。
+
+  ```bash
+  echo $CLUSTERNAME
+  ```
+
     このコマンドの出力は次の例のようになります。
 
-        zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk3-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181
+  ```bash
+  kafka-myhdi
+  ```
 
-    このコマンドで返された値は、Storm クラスターでトポロジを起動するときに使用するので保存しておいてください。
+    `KAFKAZKHOSTS` が正しく設定されていることを確認するには、次のコマンドを使用します。
+
+  ```bash
+  echo $KAFKAZKHOSTS
+  ```
+
+    このコマンドの出力は次の例のようになります。
+
+  ```bash
+  zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk3-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181
+  ```
+
+    Kafka クラスター名と Zookeeper ホスト情報を保存します。これらの値は、Storm クラスターでトポロジを起動するときに使用します。
 
     > [!NOTE]
-    > 上記のコマンドでは、__http://headnodehost:8080/__ を使用して Ambari に直接接続しています。 前記の情報をクラスターの外部からインターネット経由で取得する必要がある場合は、代わりに __https://kafka-BASENAME/__ を使用してください。
+    > 上記のコマンドでは、__http://headnodehost:8080/__ を使用して Ambari に直接接続しています。 前記の情報をクラスターの外部からインターネット経由で取得する必要がある場合は、代わりに __https://kafka-BASENAME.azurehdinsight.net/__ を使用してください。
 
-3. 次のコマンドを使用して、Kafka にトピックを作成します。
-   
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic stormtest --zookeeper $KAFKAZKHOSTS
-   
+4. 次のコマンドを使用して、Kafka にトピックを作成します。
+
+  ```bash
+  /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic stormtest --zookeeper $KAFKAZKHOSTS
+  ```
+
     このコマンドでは、`$KAFKAZKHOSTS` に格納されているホスト情報を使用して Zookeeper に接続してから、**stormtest** という名前の Kafka トピックを作成します。 トピックを一覧表示する次のコマンドを使用して、トピックが作成されたことを確認できます。
-   
-        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
-   
+
+  ```bash
+  /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
+  ```
+
     このコマンドの出力では Kafka トピックが一覧表示され、**stromtest** トピックも表示されます。
 
 Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへのメッセージの書き込みが行われていることを確認するために使用するので、アクティブなままにしてください。
@@ -176,45 +202,55 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
 ## <a name="download-and-compile-the-project"></a>プロジェクトのダウンロードおよびコンパイル
 
 1. 開発環境で、[https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) からプロジェクトをダウンロードし、コマンドラインを開いてプロジェクトをダウンロードした場所に移動します。
-   
+
     少し時間を取ってコードに目を通し、プロジェクトの仕組みを理解してください。
 
 2. **hdinsight-storm-java-kafka** ディレクトリで次のコマンドを使用して、プロジェクトをコンパイルしデプロイ用のパッケージを作成します。
-   
-        mvn clean package
-   
+
+  ```bash
+  mvn clean package
+  ```
+
     このパッケージ処理では、`target` ディレクトリに `KafkaTopology-1.0-SNAPSHOT.jar` という名前のファイルが作成されます。
 
 3. 次のコマンドを使用して、HDInsight の Storm クラスターにパッケージをコピーします。 **USERNAME** は、クラスターの SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
-   
-        scp ./target/KafkaTopology-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
-   
+
+  ```bash
+  scp ./target/KafkaTopology-1.0-SNAPSHOT.jar USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+  ```
+
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
 
 4. 次のコマンドを使用して、`set-env-variables.sh` ファイルをプロジェクトの `scripts` ディレクトリから Storm クラスターにコピーします。
 
-        scp ./scripts/set-env-variables.sh USERNAME@storm-BASENAME-ssh.azurehdinsight.net:set-env-variables.sh
-    
+  ```bash
+  scp ./scripts/set-env-variables.sh USERNAME@storm-BASENAME-ssh.azurehdinsight.net:set-env-variables.sh
+  ```
+
     このスクリプトは、Kafka クラスターとの通信に Strom トポロジが用いる環境変数を設定するために使用します。
 
 ## <a name="start-the-writer"></a>ライターの起動
 
 1. 次のコマンドを使用して、SSH で Storm クラスターに接続します。 **USERNAME** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
-   
-        ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
-   
+
+  ```bash
+  ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
+  ```
+
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
-   
+
     HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
+
     * [Linux ベースの HDInsight で Linux、Unix、Mac OS、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
     * [Linux ベースの HDInsight で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 2. Storm クラスターに SSH で接続してから、次のコマンドを使用して `set-env-variables.sh` スクリプトを実行します。
 
-        chmod +x set-env-variables.sh
-        . ./set-env-variables.sh KAFKACLUSTERNAME PASSWORD
+  ```bash
+  chmod +x set-env-variables.sh
+  . ./set-env-variables.sh KAFKACLUSTERNAME PASSWORD
+  ```
 
     __KAFKACLUSTERNAME__ は、Kafka クラスターの名前に置き換えます。 __PASSWORD__ は、Kafka クラスターの管理者のログイン パスワードに置き換えます。
 
@@ -229,25 +265,27 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
         $KAFKAZKHOSTS=zk1-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk3-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181,zk5-storm.4rf4ncirvydube02fuj0gpxp4e.ex.internal.cloudapp.net:2181
 
 3. Storm クラスターに SSH で接続してから、次のコマンドを使用してライター トポロジを起動します。
-   
+
         storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writer.yaml -e
-   
+
     このコマンドで使用されているパラメーターの意味は次のとおりです。
-   
-    * **org.apache.storm.flux.Flux**: Flux を使用してこのトポロジを構成および実行します。
-   
-    * **--remote**: トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
-   
-    * **-R /writer.yaml**: **writer.yaml** を使用してトポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
-   
-    * **-e**: 環境変数の代入を使用します。 Flux では、先ほど設定した $KAFKABROKERS と $KAFKATOPIC の値を取得し、reader.yaml ファイル内でこれらの値を `${ENV-KAFKABROKER}` エントリおよび `${ENV-KAFKATOPIC}` エントリの代わりとして使用します。
+
+    * `org.apache.storm.flux.Flux`: Flux を使用してこのトポロジを構成および実行します。
+
+    * `--remote`: トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
+
+    * `-R /writer.yaml`: `writer.yaml` ファイルを使用して、トポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
+
+    * `-e`: 環境変数の代入を使用します。 Flux では、先ほど設定した $KAFKABROKERS と $KAFKATOPIC の値を取得し、reader.yaml ファイル内でこれらの値を `${ENV-KAFKABROKER}` エントリおよび `${ENV-KAFKATOPIC}` エントリの代わりとして使用します。
 
 5. トポロジが起動したら、Kafka クラスターへの SSH 接続に切り替えて次のコマンドを使用し、**stormtest** トピックに書き込まれたメッセージを表示します。
-   
-         /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtest
-   
+
+  ```bash
+  /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtest
+  ```
+
     このコマンドでは、Kafka に付属のスクリプトを使用してトピックを監視します。 少ししてから、トピックに書き込まれたランダムな文が返され始めます。 出力は次の例のようになります。
-   
+
         i am at two with nature             
         an apple a day keeps the doctor away
         snow white and the seven dwarfs     
@@ -262,14 +300,16 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
         snow white and the seven dwarfs     
         i am at two with nature             
         an apple a day keeps the doctor away
-   
+
     スクリプトを停止するには Ctrl+C キーを押します。
 
 ## <a name="start-the-reader"></a>リーダーの起動
 
 1. Storm クラスターへの SSH セッションで、次のコマンドを使用してリーダー トポロジを起動します。
-   
-        storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml -e
+
+  ```bash
+  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml -e
+  ```
 
 2. トポロジが起動したら、Storm UI を開きます。 この Web UI は、https://storm-BASENAME.azurehdinsight.net/stormui にあります。 __BASENAME__ は、クラスターの作成時に使用したベース名に置き換えます。 
 
@@ -305,8 +345,10 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
 
 Storm クラスターへの SSH セッションで、次のコマンドを使用して Storm の各トポロジを停止します。
 
-    storm kill kafka-writer
-    storm kill kafka-reader
+  ```bash
+  storm kill kafka-writer
+  storm kill kafka-reader
+  ```
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

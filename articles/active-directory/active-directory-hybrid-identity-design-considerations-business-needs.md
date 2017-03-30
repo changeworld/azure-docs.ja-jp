@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2017
+ms.date: 03/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73b5a52b143d17283f677ce3181d8381db41d3c4
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 60f1ec092635910ae8c98cc0197fdfbf358f01be
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/29/2016
 * 現在、その統合は運用中ですか、パイロットですか。
 
 > [!NOTE]
-> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 このツールにアクセスするには、 [https://appdiscovery.azure.com](https://appdiscovery.azure.com/)
+> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 作業を開始するには、「[Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)」をご覧ください。
 > 
 > 
 

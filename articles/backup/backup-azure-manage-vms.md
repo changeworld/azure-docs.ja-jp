@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: f8cb0030290d200ab79e340b9b0fe8f5765d49f0
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -71,7 +72,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 
     ![Open backup items tile](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-    **[バックアップ項目]** ブレードに、項目ごとの最新のバックアップ ジョブが一覧表示されます。 この例では、このコンテナーによって保護されている仮想マシンが&1; つ存在します (demovm-markgal)。  
+    **[バックアップ項目]** ブレードに、項目ごとの最新のバックアップ ジョブが一覧表示されます。 この例では、このコンテナーによって保護されている仮想マシンが 1 つ存在します (demovm-markgal)。  
 
     ![Backup items tile](./media/backup-azure-manage-vms/backup-items-blade.png)
 
@@ -95,7 +96,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
    * 仮想マシンの保護の停止 <br\>
    * 仮想マシンの保護の再開 <br\>
    * バックアップ データ (または復旧ポイント) の削除 <br\>
-   * [バックアップ (または復旧ポイント) の復元](backup-azure-arm-restore-vms.md#restore-a-recovery-point) <br\>
+   * [バックアップ ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  <br\>
 
 次の手順は、コンテナー項目のダッシュボードを表示したところから始めます。
 
@@ -140,7 +141,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
     バックアップ ジョブによって、復旧ポイントが作成されます。 復旧ポイントのリテンション期間は、仮想マシンに関連付けられているポリシーで指定されるリテンション期間と同じです。 ジョブの進行状況を追跡するには、コンテナーのダッシュボードで **[バックアップ ジョブ]** タイルをクリックします。  
 
 ## <a name="stop-protecting-virtual-machines"></a>仮想マシンの保護を停止する
-仮想マシンの保護を中止するように選択した場合、復旧ポイントを保持するかどうかを確認するメッセージが表示されます。 仮想マシンの保護を中止する方法は&2; つあります。
+仮想マシンの保護を中止するように選択した場合、復旧ポイントを保持するかどうかを確認するメッセージが表示されます。 仮想マシンの保護を中止する方法は 2 つあります。
 
 * 将来のバックアップ ジョブをすべて停止したうえで、すべての復旧ポイントを削除する方法と、
 * 将来のバックアップ ジョブをすべて停止して、復旧ポイントを保持する方法です。 <br/>
@@ -220,9 +221,4 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 
 ## <a name="next-steps"></a>次のステップ
 復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 イベントの監視については、「 [Monitor alerts for Azure virtual machine backups (Azure 仮想マシンのバックアップ アラートの監視)](backup-azure-monitor-vms.md)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ce40a93372205a4b7c6b0c753ebf30c2b3d51d7a
-ms.openlocfilehash: 86cd149d351cc957577d213d77db732bd5e16658
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,6 +34,9 @@ Azure Application Gateway の構成後に発生する可能性があるエラー
 * VM スケール セットのバックエンド VM またはインスタンスが既定の正常性プローブに応答していない。
 * カスタムの正常性プローブの構成が無効または不適切である。
 * 要求がタイムアウトしたか、ユーザー要求に関して接続の問題がある。
+
+> [!note]
+> Application Gateway は、受信ホスト ヘッダーを保持し、そのヘッダーをバックエンドに送信します。 バックエンドが別のヘッダーを必要とする場合、これは機能しなくなります。 同様に、バックエンドがマルチ テナントで、エンド ツー エンドの SSL が有効になっている場合、バックエンドは SNI 拡張機能のサーバー名を想定します。 Application Gateway では現在、エンド ツー エンドの SSL のシナリオでは、バックエンド要求で SNI ヘッダーを送信しません。これによって、プローブとデータ パスの問題が生じます。
 
 ## <a name="empty-backendaddresspool"></a>空の BackendAddressPool
 
@@ -150,10 +154,5 @@ Application Gateway では、ユーザーは BackendHttpSetting でこの設定�
 ## <a name="next-steps"></a>次のステップ
 
 前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

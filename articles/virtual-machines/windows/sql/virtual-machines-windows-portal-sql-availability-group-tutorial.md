@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/10/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 5e41a20f563eab6b236eaa6eaf0ce1d20ebfa493
-ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 81de52ac95aaf1b6d02572a70a4c1a84fb541401
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -89,7 +90,7 @@ ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
 3. **[静的 IP アドレス]** を選択し、SQL Server が存在しているサブネットから使用できるアドレスを [アドレス] ボックスで指定します。 次に、 **[OK]**をクリックします
 4. **[クラスター コア リソース]** セクションで、クラスター名を右クリックして、**[オンラインにする]** をクリックします。 両方のリソースがオンラインになるまで待ちます。 クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。 この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使います。
 
-### <a name="a-nameaddnodeaadd-the-other-sql-server-to-cluster"></a><a name="addNode"></a>他の SQL Server をクラスターに追加する
+### <a name="addNode"></a>他の SQL Server をクラスターに追加する
 
 他の SQL Server をクラスターに追加します。
 
@@ -154,7 +155,7 @@ ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
 
 次に、クラスター クォーラムを設定します。
 
-1. リモート デスクトップで&1; 番目のクラスター ノードに接続します。
+1. リモート デスクトップで 1 番目のクラスター ノードに接続します。
 
 1. **フェールオーバー クラスター マネージャー**で、クラスターを右クリックし、**[他の操作]** をポイントして、**[クラスター クォーラム設定の構成...]** をクリックします。
 
@@ -222,9 +223,9 @@ Repeat these steps on the second SQL Server.
 7. **オブジェクト エクスプローラー**で、**[データベース]** を右クリックし、**[新しいデータベース]** をクリックします。
 8. **[データベース名]** に「**MyDB1**」と入力し、**[OK]** をクリックします。
 
-### <a name="a-namebackupsharea-create-a-backup-share"></a><a name="backupshare"></a>バックアップ共有を作成する
+### <a name="backupshare"></a>バックアップ共有を作成する
 
-1. **サーバー マネージャー**の&1; 番目の SQL Server で、**[ツール]** をクリックします。 **[コンピューターの管理]** を開きます。
+1. **サーバー マネージャー**の 1 番目の SQL Server で、**[ツール]** をクリックします。 **[コンピューターの管理]** を開きます。
 
 1. **[共有フォルダー]** をクリックします。
 
@@ -263,7 +264,7 @@ Repeat these steps on the second SQL Server.
 
 * 1 番目の SQL Server でデータベースを作成する
 * データベースの完全バックアップとトランザクション ログ バックアップの両方を作成する
-* **NORECOVERY** オプションを使って、完全バックアップとログ バックアップを&2; 番目の SQL Server に復元する
+* **NORECOVERY** オプションを使って、完全バックアップとログ バックアップを 2 番目の SQL Server に復元する
 * 同期コミット、自動フェールオーバー、読み取り可能なセカンダリ レプリカを含む可用性グループ (**AG1**) を作成する
 
 ### <a name="create-the-availability-group"></a>可用性グループを作成する
@@ -279,7 +280,7 @@ Repeat these steps on the second SQL Server.
 3. **[データベースの選択]** ページで、データベースを選び、**[次へ]** をクリックします。
 
    >[!NOTE]
-   >対象とするプライマリ レプリカで完全バックアップを少なくとも&1; つは作成しているため、このデータベースは可用性グループの前提条件を満たしています。
+   >対象とするプライマリ レプリカで完全バックアップを少なくとも 1 つは作成しているため、このデータベースは可用性グループの前提条件を満たしています。
 
    ![新しい AG ウィザード、データベースの選択](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/60-newagselectdatabase.png)
 4. **[レプリカの指定]** ページで **[レプリカの追加]** をクリックします。
@@ -287,7 +288,7 @@ Repeat these steps on the second SQL Server.
    ![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
 5. **[サーバーに接続]** ダイアログが表示されます。 2 番目のサーバーの名前を **[サーバー名]** に入力します。 **[接続]**をクリックします。
 
-   **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に&2; 番目のサーバーが表示されていることがわかります。 次に示すようにレプリカを構成します。
+   **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に 2 番目のサーバーが表示されていることがわかります。 次に示すようにレプリカを構成します。
 
    ![新しい可用性グループ ウィザード、レプリカの指定 (完了)](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/64-newagreplica.png)
 
@@ -298,7 +299,7 @@ Repeat these steps on the second SQL Server.
 8. **[最初のデータ同期を選択]** ページで、**[完全]** を選び、共有ネットワークの場所を指定します。 この場所としては、[先に作成したバックアップ共有](#backupshare)を使います。 この例では、**\\\\\<1 番目の SQL Server\>\Backup\** でした。**[次へ]** をクリックします。
 
    >[!NOTE]
-   >完全同期では、SQL Server の&1; 番目のインスタンスにあるデータベースの完全バックアップが作成されて、2 番目のインスタンスに復元されます。 大規模なデータベースの場合、完全同期は長い時間がかかることがあるのでお勧めできません。 手動でデータベースのバックアップを作成し、`NO RECOVERY` で復元することにより、この時間を短縮できます。 可用性グループを構成する前に&2; 番目の SQL Server のデータベースが `NO RECOVERY` で既に復元されている場合は、**[参加のみ]** を選びます。 可用性グループを構成した後でバックアップを作成する場合は、**[最初のデータ同期をスキップ]** を選びます。
+   >完全同期では、SQL Server の 1 番目のインスタンスにあるデータベースの完全バックアップが作成されて、2 番目のインスタンスに復元されます。 大規模なデータベースの場合、完全同期は長い時間がかかることがあるのでお勧めできません。 手動でデータベースのバックアップを作成し、`NO RECOVERY` で復元することにより、この時間を短縮できます。 可用性グループを構成する前に 2 番目の SQL Server のデータベースが `NO RECOVERY` で既に復元されている場合は、**[参加のみ]** を選びます。 可用性グループを構成した後でバックアップを作成する場合は、**[最初のデータ同期をスキップ]** を選びます。
 
     ![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
 
@@ -331,10 +332,10 @@ Repeat these steps on the second SQL Server.
    ![フェールオーバー クラスター マネージャー内のAG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、 [WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
+   > フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。 すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード** から実行する必要があります。 詳細については、[フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
     >
 
-この時点で、SQL Server の&2; つのインスタンス上にレプリカを持つ可用性グループができています。 可用性グループは、インスタンス間で移動できます。 リスナーがないため、可用性グループにまはだ接続できません。 Azure Virtual Machines では、リスナーにはロード バランサーが必要です。 次に、Azure でロード バランサーを作成します。
+この時点で、SQL Server の 2 つのインスタンス上にレプリカを持つ可用性グループができています。 可用性グループは、インスタンス間で移動できます。 リスナーがないため、可用性グループにまはだ接続できません。 Azure Virtual Machines では、リスナーにはロード バランサーが必要です。 次に、Azure でロード バランサーを作成します。
 
 <a name="configure-internal-load-balancer"></a>
 
@@ -381,7 +382,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
    | --- | --- |---
    | **名前** | テキストの名前を入力します | SQLLBBE
    | **可用性セット** | SQL Server の仮想マシンが含まれる可用性セットの名前を使います | sqlAvailabilitySet |
-   | **仮想マシン** |Azure SQL Server VM の&2; つの名前です | sqlserver-0、sqlserver-1
+   | **仮想マシン** |Azure SQL Server VM の 2 つの名前です | sqlserver-0、sqlserver-1
 
 1. バックエンド プールの名前を入力します。
 
@@ -433,12 +434,12 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. **[OK]** をクリックして、負荷分散規則を設定します。
 
-## <a name="a-nameconfigure-listenera-configure-the-listener"></a><a name="configure-listener"></a> リスナーを構成する
+## <a name="configure-listener"></a> リスナーを構成する
 
 次の手順は、フェールオーバー クラスター上の可用性グループ リスナーの構成です。
 
 > [!NOTE]
-> このチュートリアルでは、1 つの ILB IP アドレスを持つ&1; つのリスナーを作成する方法を示します。 1 つまたは複数の IP アドレスを使って&1; つまたは複数のリスナーを作成する方法については、[Azure での可用性グループ リスナーとロード バランサーの作成に関するページ](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
+> このチュートリアルでは、1 つの ILB IP アドレスを持つ 1 つのリスナーを作成する方法を示します。 1 つまたは複数の IP アドレスを使って 1 つまたは複数のリスナーを作成する方法については、[Azure での可用性グループ リスナーとロード バランサーの作成に関するページ](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 >
 >
 
@@ -454,7 +455,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。 リスナー名を右クリックし、 **[プロパティ]**をクリックします。
 
-1. **[ポート]** ボックスで、以前に使った $EndpointPort (既定値は&1433;) を使い、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
+1. **[ポート]** ボックスで、以前に使った $EndpointPort (既定値は 1433) を使い、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
 
 これで、SQL Server 可用性グループが Resource Manager モードの Azure 仮想マシンにデプロイされました。
 
@@ -502,9 +503,4 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 ## <a name="next-steps"></a>次のステップ
 
 - [2 番目の可用性グループのロード バランサーに IP アドレスを追加](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP)します。
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -16,17 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 82d40c30c92f5da090e7ec4e2f25ead3908cc603
-ms.openlocfilehash: b1af197b425b0f8951e011f24609b9bf4769f931
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 1d84fa975d29386bc021d7446ecea1553ca6418d
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの作成
 
-このスクリプトでは、オペレーティング システムが Windows Server 2016 で、関連ネットワーク リソースが設定された Azure 仮想マシンを作成します。 スクリプトが正常に実行されると、この仮想マシンへ RDP でアクセスできるようになります。
+このスクリプトは、Windows Server 2016 を実行する Azure 仮想マシンを作成します。 スクリプトを実行すると、リモート デスクトップ接続で仮想マシンにアクセスできるようになります。
 
-このスクリプトを実行する前に、`az login` コマンドを使用して Azure との接続が作成されていることを確認してください。 また、スクリプトの冒頭にある $AdminPassword 変数を、一意かつパスワードの複雑性要件を満たしたものに変更してください。
+必要に応じて、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従って Azure CLI をインストールし、`az login` を実行して、Azure との接続を作成します。
 
 このサンプルは、bash シェルに対応しています。 Azure CLI スクリプトを Windows で実行する方法については、[Windows での Azure CLI の実行](../virtual-machines-windows-cli-options.md)に関する記事を参照してください。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/02/2017
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
+次のコマンドを実行して、リソース グループ、VM、すべての関連リソースを削除します。
 
 ```azurecli
 az group delete --name myResourceGroup --yes

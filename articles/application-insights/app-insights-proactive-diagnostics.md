@@ -1,5 +1,5 @@
 ---
-title: "Application Insights のスマート検出 | Microsoft Docs"
+title: "Azure Application Insights のスマート検出 | Microsoft Docs"
 description: "Application Insights は、アプリのテレメトリの詳細な分析を自動的に実行し、潜在的なパフォーマンスの問題について警告します。"
 services: application-insights
 documentationcenter: windows
@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: fe2596a7fed52118425c612ebf50c01134928bf6
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -47,6 +48,10 @@ ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
 
 (各通知のヘルプ リンクをクリックすると関連する記事が表示されます)。
 
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
 ## <a name="next-steps"></a>次のステップ
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
@@ -58,10 +63,5 @@ ms.openlocfilehash: 30124e697af5f7560e8070ce43c5a985bd2c403b
 
 * [手動で構成するメトリックのアラート](app-insights-alerts.md)
 * [可用性 Web テスト](app-insights-monitor-web-app-availability.md) 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

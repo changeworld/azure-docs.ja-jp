@@ -1,6 +1,6 @@
 ---
 title: "Azure での Windows クライアント イメージの使用 | Microsoft Docs"
-description: "Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7/8/10 を開発/テストのシナリオにデプロイする方法"
+description: "Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオにデプロイする方法"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/28/2016
+ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 568bd06d1dfd0e253b960dcf2fb5409a390da91b
-ms.openlocfilehash: 2116abf974974c285d94d673b6a614360edbc593
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: f0ca7996e52a9b295fff571a270c60520f58101e
+ms.lasthandoff: 03/16/2017
 
 
 ---
-# <a name="using-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
+# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオに使用できます。 この記事では、Azure で実行中の Windows クライアントの資格要件と、Azure ギャラリーのイメージの使用について説明します。
 
 ## <a name="subscription-eligibility"></a>サブスクリプションの資格
@@ -55,10 +56,5 @@ ms.openlocfilehash: 2116abf974974c285d94d673b6a614360edbc593
 
 ## <a name="next-steps"></a>次のステップ
 これで、[PowerShell](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、[Resource Manager テンプレート](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)、または [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

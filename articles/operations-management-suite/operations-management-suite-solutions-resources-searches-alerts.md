@@ -11,15 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/24/2017
+ms.date: 03/20/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: aaf5c442ef85edbc498aa2fd7815171f4701f960
-ms.openlocfilehash: 262beba30c760335aafdf903d9f5cac6b0dd9669
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: e47aacd1a188649a3b424981c20a6c2b736b2d89
+ms.lasthandoff: 03/22/2017
+
 
 ---
 
-# <a name="log-analytics-saved-searches-and-alerts-in-oms-solutions-preview"></a>OMS ソリューションでの Log Analytics の保存された検索条件とアラート (プレビュー)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを OMS 管理ソリューションに追加する (プレビュー)
 
 > [!NOTE]
 > 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
@@ -35,7 +38,7 @@ ms.openlocfilehash: 262beba30c760335aafdf903d9f5cac6b0dd9669
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#oms-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。  これは、次の savedsearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
 
@@ -75,11 +78,11 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ## <a name="alerts"></a>アラート
 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)は、定期的に保存された検索条件を実行するアラート ルールによって作成されます。  クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、1 つまたは複数のアクションが実行されます。  
 
-管理ソリューションのアラート ルールは、次の&3; つの異なるリソースで構成されます。
+管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
 
 - **保存された検索条件**。  実行されるログ検索を定義します。  複数のアラート ルールで、1 つの保存された検索条件を共有できます。
-- **スケジュール**。  ログ検索の実行頻度を定義します。  各アラート ルールには、スケジュールがただ&1; つだけあります。
-- **アラート アクション**。  各アラート ルールには **Alert** 型のアクション リソースが&1; つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。  アクション リソースでは、必要に応じて、メールと Runbook の応答が定義されます。
+- **スケジュール**。  ログ検索の実行頻度を定義します。  各アラート ルールには、スケジュールがただ 1 つだけあります。
+- **アラート アクション**。  各アラート ルールには **Alert** 型のアクション リソースが 1 つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。  アクション リソースでは、必要に応じて、メールと Runbook の応答が定義されます。
 - **webhook アクション (省略可能)**。  アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加アクション リソースが必要です。    
 
 保存された検索条件リソースについては、上で説明してあります。  他のリソースについては以下で説明します。
@@ -87,10 +90,10 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 ### <a name="schedule-resource"></a>スケジュール リソース
 
-保存された検索条件は&1; つ以上のスケジュールを持つことができ、各スケジュールは異なるアラート ルールを表します。 スケジュールでは、検索を実行する頻度と、データを取得する期間が定義されています。  スケジュール リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 型であり、次のような構造をしています。 
+保存された検索条件は 1 つ以上のスケジュールを持つことができ、各スケジュールは異なるアラート ルールを表します。 スケジュールでは、検索を実行する頻度と、データを取得する期間が定義されています。  スケジュール リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` 型であり、次のような構造をしています。 
 
     {
-      "name": "<name-of-schedule>",
+      "name": "<name-of-schedule-resource>",
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
       "apiVersion": "<api-version-of-resource>",
       "dependsOn": [
@@ -100,7 +103,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
         "etag": "*",               
         "interval": <schedule-interval-in-minutes>,
         "queryTimeSpan": <query-timespan-in-minutes>,
-        "enabled": <schedule-interval-in-minutes>       
+        "enabled": <schedule-enabled>       
       }
     }
 
@@ -117,13 +120,13 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 
 ### <a name="actions"></a>アクション
-**Type** プロパティによって指定される&2; 種類のアクション リソースがあります。  スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。  アラートから webhook を呼び出す必要がある場合は、**Webhook** アクションを含むこともできます。  
+**Type** プロパティによって指定される 2 種類のアクション リソースがあります。  スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。  アラートから webhook を呼び出す必要がある場合は、**Webhook** アクションを含むこともできます。  
 
 アクション リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 型です。  
 
 #### <a name="alert-actions"></a>アラート アクション
 
-すべてのスケジュールが&1; つの**アラート** アクションを持ちます。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
+すべてのスケジュールが 1 つの**アラート** アクションを持ちます。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
 
 アラート アクションの構造は次のとおりです。
 
@@ -209,7 +212,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
 ##### <a name="emailnotification"></a>EmailNotification
- このセクションは省略可能です。アラートで&1; 人以上の受信者にメールを送信する場合に指定します。
+ このセクションは省略可能です。アラートで 1 人以上の受信者にメールを送信する場合に指定します。
 
 | 要素名
  | 必須 | Description |
@@ -265,7 +268,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 
 
-### <a name="sample"></a>サンプル
+## <a name="sample"></a>サンプル
 
 以下のリソースを含むソリューションのサンプルを次に示します。
 
@@ -274,7 +277,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 - アラート アクション
 - webhook アクション
 
-このサンプルでは、リソースの定義に値をハードコーディングするのではなく、ソリューションでよく使われる[標準ソリューション パラメーター](operations-management-suite-solutions-creating.md#parameters)の変数を使っています。
+このサンプルでは、リソースの定義に値をハードコーディングするのではなく、ソリューションでよく使われる[標準ソリューション パラメーター](operations-management-suite-solutions-solution-file.md#parameters)の変数を使っています。
 
     {
         "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
@@ -512,10 +515,5 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 ## <a name="next-steps"></a>次のステップ
 * 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](operations-management-suite-solutions-resources-automation.md)。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

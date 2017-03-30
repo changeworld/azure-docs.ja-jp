@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2017
+ms.date: 03/17/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 0df7bba472daf2c499f3ccff1296b8a9ee8ab89d
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 31a267963199518ed6db4610830062099ed0dde4
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,7 +41,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-required"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、必要に応じてより高速にバーストすることはできますか。
-はい。 ExpressRoute 回線は、購入した帯域幅の&2; 倍まで無料でバーストできるように構成されています。 サービス プロバイダーがこの機能をサポートしているかどうかをご確認ください。
+はい。 ExpressRoute 回線は、購入した帯域幅の 2 倍まで無料でバーストできるように構成されています。 サービス プロバイダーがこの機能をサポートしているかどうかをご確認ください。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>同じプライベート ネットワーク接続を、Virtual Network や他の Azure サービスに同時に使用できますか。
 はい。 ExpressRoute 回線のセットアップが完了すると、1 本の回線で仮想ネットワーク内のサービスや他の Azure サービスに同時にアクセスできるようになります。 仮想ネットワークにはプライベート ピアリング パス経由で接続し、他のサービスにはパブリック ピアリング パス経由で接続します。
@@ -52,27 +52,25 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 ## <a name="supported-services"></a>サポートされているサービス
 ExpressRoute は、さまざまな種類のサービスのために、[3 つのルーティング ドメイン](expressroute-circuit-peerings.md)をサポートしています。
 
-プライベート ピアリング
+### <a name="private-peering"></a>プライベート ピアリング
 * すべての仮想マシンとクラウド サービスを含む、仮想ネットワーク
 
-パブリック ピアリング
-* 以下のいくつかの例外を除く、ほとんどの Azure サービス
+### <a name="public-peering"></a>パブリック ピアリング
 * Power BI
 * Dynamics 365 for Operations (旧称 Dynamics AX Online)
+* 以下のいくつかの例外を除く、ほとんどの Azure サービス
+  * CDN
+  * Visual Studio Team Services のロード テスト
+  * Multi-factor Authentication
+  * Traffic Manager
 
-Microsoft ピアリング
+### <a name="microsoft-peering"></a>Microsoft ピアリング
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * ほとんどの Dynamics 365 サービス (旧称 CRM Online)
   * Dynamics 365 for Sales
   * Dynamics 365 for Customer Service
   * Dynamics 365 for Field Service
   * Dynamics 365 for Project Service
-
-以下の Azure サービスは、ExpressRoute ではサポートされていません
-* CDN
-* Visual Studio Team Services のロード テスト
-* Multi-factor Authentication
-* Traffic Manager
 
 ## <a name="data-and-connections"></a>データおよび接続
 ### <a name="are-there-limits-on-the-amount-of-data-that-i-can-transfer-using-expressroute"></a>ExpressRoute を使用して転送できるデータの量に制限はありますか。
@@ -96,8 +94,8 @@ Microsoft ピアリング
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>ExpressRoute リンクのいずれかに障害が発生すると接続できなくなりますか。
 クロス接続の一方に障害が発生しても、接続が失われることはありません。 ネットワークの負荷に対応できる冗長接続が用意されています。 さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
 
-### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を&2; つ注文する必要がありますか。
-いいえ、サービス プロバイダーが物理接続経由で&2; つのイーサネット仮想回線を確立できる場合は、必要な物理接続は&1; つだけです。 物理接続 (光ファイバーなど) は、レイヤー 1 (L1) デバイスで終端します (下図を参照)。 2 つのイーサネット仮想回線は、異なる VLAN ID (プライマリ回線とセカンダリ回線の VLAN ID) でタグ付けされます。 これらの VLAN ID は、外部 802.1Q イーサネット ヘッダーに含まれます。 内部 802.1Q イーサネット ヘッダー (ここでは示されていません) は、特定の [ExpressRoute ルーティング ドメイン](expressroute-circuit-peerings.md)にマップされます。 
+### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
+いいえ、サービス プロバイダーが物理接続経由で 2 つのイーサネット仮想回線を確立できる場合は、必要な物理接続は 1 つだけです。 物理接続 (光ファイバーなど) は、レイヤー 1 (L1) デバイスで終端します (下図を参照)。 2 つのイーサネット仮想回線は、異なる VLAN ID (プライマリ回線とセカンダリ回線の VLAN ID) でタグ付けされます。 これらの VLAN ID は、外部 802.1Q イーサネット ヘッダーに含まれます。 内部 802.1Q イーサネット ヘッダー (ここでは示されていません) は、特定の [ExpressRoute ルーティング ドメイン](expressroute-circuit-peerings.md)にマップされます。 
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
@@ -128,7 +126,7 @@ Microsoft ピアリング
 ### <a name="can-i-link-to-more-than-one-virtual-network-to-an-expressroute-circuit"></a>複数の仮想ネットワークを ExpressRoute 回線に接続できますか。
 はい。 標準の ExpressRoute 回線では最大 10 の仮想ネットワークを、[ExpressRoute Premium 回線](#expressroute-premium)では最大 100 の仮想ネットワークを接続できます。 
 
-### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>仮想ネットワークを含む複数の Azure サブスクリプションがあります。 個別のサブスクリプション内の仮想ネットワークを&1; つの ExpressRoute 回線に接続できますか。
+### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>仮想ネットワークを含む複数の Azure サブスクリプションがあります。 個別のサブスクリプション内の仮想ネットワークを 1 つの ExpressRoute 回線に接続できますか。
 はい。 最大 10 個の Azure サブスクリプションで、1 つの ExpressRoute 回線を使用することを承認できます。 ExpressRoute Premium 機能を有効にすると、この上限を増やすことができます。
 
 詳細については、「 [複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
@@ -177,9 +175,10 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 
 1. ExpressRoute 回線用にパブリック ピアリングを確立します。
 2. DNS 参照を実行し、 **kms.core.windows.net**
-3. 次の&2; つの項目のいずれかを実行すると、Azure からのライセンス認証要求がキー管理サービスによって認識され、要求が受け付けられます。
+3. 次の 3 つの項目のいずれかを実行すると、Azure からのライセンス認証要求がキー管理サービスによって認識され、要求が受け付けられます。
    * オンプレミス ネットワークで、(手順 2 で取得した) IP アドレス宛てのトラフィックをパブリック ピアリング経由で Azure にルーティングする。
    * NSP プロバイダーに依頼して、トラフィックをパブリック ピアリング経由で Azure に U ターンしてもらう。
+   * 次ホップとしてのインターネットを持つその IP をポイントするユーザー定義ルートを作成し、これをこれらの仮想マシンがあるサブネットに適用します。
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更できますか。
 はい、Azure Portal または PowerShell を使用して、ExpressRoute 回線の帯域幅を増やすことを試すことができます。 回線が作成された物理ポートで使用可能な容量があれば、変更は成功します。 変更が失敗した場合は、現在のポートに十分な容量が残っていないため、帯域幅が大きい新しい ExpressRoute 回線を作成する必要がある、またはその場所には追加の容量がないため、帯域幅を増やすことはできないことを意味します。 また、接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。 ただし、ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅が小さい新しい ExpressRoute 回線を作成し、古い回線を削除する必要があります。

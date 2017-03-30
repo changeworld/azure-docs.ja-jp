@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 03/11/2017
+ms.date: 03/20/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 1fb7b268e83da66a4bb9fe6d3e053b7a673d3555
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 0b5f7a2c3fd16ac32b0bc382616ca6600d378bb8
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/14/2017
 **Power BI Embedded** は、ISV やアプリケーション開発者がアプリケーション内で Power BI データ エクスペリエンスを実現することを可能にする Azure サービスです。 開発者が作成したアプリケーションは、それぞれにユーザーが存在し、異なる機能セットを備えています。 これらのアプリケーションには、Microsoft Power BI Embedded に対応できるようになったグラフやレポートなどのデータ要素が組み込まれていることもあります。 Power BI アカウントがなくても、アプリケーションを使用できます。 これまでと同様にアプリケーションにサインインし、Power BI のレポートを表示して操作することができます。追加のライセンスは不要です。
 
 ## <a name="licensing-for-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded のライセンス
-**Microsoft Power BI Embedded** の使用モデルでは、Power BI のライセンスはエンドユーザーの責任ではありません。  代わりに、ビジュアルを使用するアプリケーションの開発者が**セッション**を購入します。レンダーの料金は、それらのリソースを所有するサブスクリプションに課金されます。 詳細については、価格に関するページ (https://azure.microsoft.com/ja-jp/pricing/details/power-bi-embedded/) を参照してください。
+**Microsoft Power BI Embedded** の使用モデルでは、Power BI のライセンスはエンドユーザーの責任ではありません。  代わりに、ビジュアルを使用するアプリケーションの開発者が**セッション**を購入します。レンダーの料金は、それらのリソースを所有するサブスクリプションに課金されます。 追加の情報については、[価格](https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/)に関するページをご覧ください。
 
 ## <a name="microsoft-power-bi-embedded-conceptual-model"></a>Microsoft Power BI Embedded の概念モデル
 
@@ -59,7 +59,7 @@ Azure の他のサービスと同様に、[Azure Resource Manager API](https://m
 
 ![](media/powerbi-embedded-whats-is/app-tokens.png)
 
-**アプリケーション認証トークン (アプリ トークン)** は、**Microsoft Power BI Embedded** に対する認証に使用されます。  **アプリ トークン**には、次の&3; 種類があります。
+**アプリケーション認証トークン (アプリ トークン)** は、**Microsoft Power BI Embedded** に対する認証に使用されます。  **アプリ トークン**には、次の 3 種類があります。
 
 1. プロビジョニング用トークン - **ワークスペース コレクション**に新しい**ワークスペース**をプロビジョニングするときに使用されます。
 2. 開発用トークン - **Power BI REST API**

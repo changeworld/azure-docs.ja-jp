@@ -144,7 +144,7 @@ ms.lasthandoff: 03/02/2017
     ```
     var methodParams = {
         methodName: methodName,
-        payload: 'a line to be written',
+        payload: 'hello world',
         timeoutInSeconds: 30
     };
    

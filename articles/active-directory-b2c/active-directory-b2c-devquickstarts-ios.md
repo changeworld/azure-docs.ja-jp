@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: saeeda
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 84f5ba5b3836f8524aafd9ca5e30978cc2702c1f
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 992bbf513ac87b0d955f9dc4b27984ef03050b83
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -40,18 +40,18 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 ## <a name="create-an-application"></a>アプリケーションの作成
 次に、B2C ディレクトリにアプリを作成する必要があります。 アプリを登録すると、Azure AD がアプリと安全に通信するために必要な情報が提供されます。 モバイル アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
-* **モバイル デバイス** をアプリケーションに含めます。
+* アプリケーションに**ネイティブ クライアント**を含めます。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この GUID は後で必要になります。
 * カスタム スキーマを使用する**リダイレクト URI** を設定します (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)。 この URI は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
-Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた&1; つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成する必要があります。 ポリシーを作成するときは、以下の操作を必ず実行してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成します。 ポリシーを作成するときは、以下の操作を必ず実行してください。
 
-* ポリシーで、 **[表示名]** とサインアップ属性を選択します。
-* すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。 その他のクレームも選択できます。
-* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 名前には、 `b2c_1_`というプレフィックスが付加されています。  このポリシー名は後で必要になります。
+* **[サインアップ属性]** で、属性 **[表示名]** を選択します。  他の属性を選択することもできます。
+* **[アプリケーション クレーム]** で、要求の**表示名**と**ユーザーのオブジェクト ID** を選択します。 他の要求を選択することもできます。
+* ポリシーの作成後、各ポリシーの **名前** をコピーしておきます。 ポリシーを保存するときに、ポリシー名の先頭に `b2c_1_` が付加されます。  このポリシー名は後で必要になります。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -128,12 +128,13 @@ appDelegate.currentAuthorizationFlow =
 
 カスタム スキームを使用する URI へのリダイレクトを処理するようにアプリケーションを設定するには、Info.pList の 'URL スキーム' の一覧をを更新する必要があります。
 * Info.pList を開きます。
-* 'Bundle creator OS Type Code' のような行の上にマウス ポインタ―を置き、\+ 記号をクリックします。
+* 'Bundle OS Type Code' のような行の上にマウス ポインタ―を置き、\+ 記号をクリックします。
 * 新しい行の 'URL types' の名前を変更します。
-* 'URL types' の左側にある矢印をクリックします。
-* Item 0 の値の名前を 'URL Schemes' に変更します。
-* 'URL Schemes' の下の 'Item 0' の値を編集して、アプリケーションの一意のスキーマの値を設定します。  OIDAuthorizationRequest オブジェクトの作成時の redirectURL のスキームと一致させる必要があります。
-* この例では、''com.onmicrosoft.fabrikamb2c.exampleapp' スキームを使用しています。
+* 'URL types' の左側にある矢印をクリックしてツリーを開きます。
+* 'Item 0' の左側にある矢印をクリックしてツリーを開きます。
+* Item 0 の下の最初の項目の名前を 'URL Schemes' に変更します。
+* 'URL Schemes' の左側にある矢印をクリックしてツリーを開きます。
+* 'Value' 列には、 'URL Schemes' の下の 'Item 0' の左側に空のフィールドがあります。  アプリケーションの一意のスキームの値を設定します。  値は、OIDAuthorizationRequest オブジェクトの作成時に redirectURL で使用するスキームと一致させる必要があります。  この例では、''com.onmicrosoft.fabrikamb2c.exampleapp' スキームを使用しています。
 
 残りのプロセスを完了する方法については、[AppAuth ガイド](https://openid.github.io/AppAuth-iOS/)を参照してください。 動作するアプリをすぐに開始する必要がある場合は、[用意されているサンプル](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)をチェックしてください。 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の手順に従って、独自の Azure AD B2C 構成を入力してください。
 

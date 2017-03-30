@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 37b9b600-d7f8-4cb1-a04a-0b3a827c6dcc
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: a4d30ffc0a5c5ef9fe7bb892d17f0859ff27f569
-ms.openlocfilehash: 85fd87c1523eb2beb59e2ef36e604063a3f373aa
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: afd43fb536278d6aa76acaf7c9d18714bc5acd2b
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -84,7 +85,7 @@ Linux ベースのクラスターでは、Azure Resource Manager Virtual Network
 
 ### <a name="custom-dns"></a>カスタム DNS
 
-仮想ネットワークを作成するとき、そのネットワークにインストールされている Azure サービス (HDInsight) には Azure によって既定の名前解決が行われます。 ただしクロス ネットワーク ドメイン名解決など、状況によっては独自のドメイン ネーム システム (DNS) を使用しなければならないこともあります。 たとえば、参加している&2; つの仮想ネットワークに置かれているサービス間の通信が挙げられます。 HDInsight は、Azure Virtual Network と組み合わせて使用した場合、既定の Azure の名前解決とカスタム DNS をサポートします。
+仮想ネットワークを作成するとき、そのネットワークにインストールされている Azure サービス (HDInsight) には Azure によって既定の名前解決が行われます。 ただしクロス ネットワーク ドメイン名解決など、状況によっては独自のドメイン ネーム システム (DNS) を使用しなければならないこともあります。 たとえば、参加している 2 つの仮想ネットワークに置かれているサービス間の通信が挙げられます。 HDInsight は、Azure Virtual Network と組み合わせて使用した場合、既定の Azure の名前解決とカスタム DNS をサポートします。
 
 カスタム DNS サーバーの使用方法の詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」をご覧ください。
 
@@ -154,6 +155,12 @@ __その他のすべてのリージョン__:
 > 着信トラフィックを幅広くブロックするカスタム ルール (**すべて拒否**のルールなど) がある場合は、これらの例での優先順位値を調整する必要が生じることがあります。 例に含まれるルールは、アクセスをブロックするルールよりも前に実行される必要があります。 そうしないと、**すべて拒否**のルールが最初にテストされて、この例に含まれるルールが適用されなくなります。 また、Azure Virtual Network の既定のルールをブロックしないでください。 たとえば、既定の **ALLOW VNET INBOUND** ルール (優先順位 65000) よりも前に適用される、**すべて拒否**のルールを作成するべきではありません。
 > 
 > ネットワーク セキュリティ グループのルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事をご覧ください。
+
+**Azure Resource Manager テンプレートの使用**
+
+[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)から次のリソース管理テンプレートを使用して、ネットワーク構成がセキュリティ保護された VNet で HDInsight クラスターを作成します。
+
+[Deploy a secured Azure VNet and an HDInsight Hadoop cluster within the VNet (セキュリティで保護された Azure VNet と HDInsight Hadoop クラスターを VNet 内にデプロイする)](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
 **Azure PowerShell の使用**
 
@@ -366,7 +373,7 @@ ZooKeeper クォーラム アドレスを取得するには、次のいずれか
 
 ### <a name="verify-network-connectivity"></a>ネットワーク接続の確認
 
-SQL Server などの一部のサービスでは、着信ネットワーク接続数が制限される場合があります。 HDInsight からサービスへのアクセスで問題が発生した場合は、サービスのドキュメントを参照して、ネットワーク アクセスが有効になっていることを確認してください。 ネットワーク アクセスを確認するもう&1; つの方法は、同じ仮想ネットワーク上に Azure 仮想マシンを作成することです。 その後、Virtual Machine 上でクライアント ユーティリティを使用して仮想マシンが仮想ネットワーク経由でサービスに接続できることを確認します。
+SQL Server などの一部のサービスでは、着信ネットワーク接続数が制限される場合があります。 HDInsight からサービスへのアクセスで問題が発生した場合は、サービスのドキュメントを参照して、ネットワーク アクセスが有効になっていることを確認してください。 ネットワーク アクセスを確認するもう 1 つの方法は、同じ仮想ネットワーク上に Azure 仮想マシンを作成することです。 その後、Virtual Machine 上でクライアント ユーティリティを使用して仮想マシンが仮想ネットワーク経由でサービスに接続できることを確認します。
 
 ## <a id="nextsteps"></a>次のステップ
 

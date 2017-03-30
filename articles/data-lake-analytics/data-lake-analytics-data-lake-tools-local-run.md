@@ -15,15 +15,15 @@ ms.workload: big-data
 ms.date: 11/15/2016
 ms.author: yanacai
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: ffa31e7eee7642c29a846658b999828434347316
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7e8aed4f56471bb2946c610ca63b0ec50ee1b57e
+ms.lasthandoff: 03/21/2017
 
 
 ---
 # <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ
 
-Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この&2; つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。
+Azure Data Lake Tools for Visual Studio と Azure Data Lake U-SQL SDK を使用して、U-SQL ジョブを、Azure Data Lake サービスで実行するときと同じように、ワークステーションで実行することができます。 この 2 つのローカル実行機能により、U-SQL ジョブのテストとデバッグにかかる時間を節約できます。
 
 前提条件:
 
@@ -81,13 +81,35 @@ Data Lake Tools インストーラーによって C:\LocalRunRoot フォルダ�
 
     ![Data Lake Tools for Visual Studio ローカル実行のジョブの送信](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
 
+### <a name="debug-scripts-and-c-assemblies-locally"></a>スクリプトと C# アセンブリをローカルでデバッグする
+
+Azure Data Lake Analytics サービスに提出し、登録しなくても C# アセンブリをデバッグできます。 分離コード ファイルと参照 C# プロジェクトの両方にブレークポイントを設定できます。
+
+#### <a name="to-debug-local-code-in-code-behind-file"></a>分離コード ファイルのローカル コードをデバッグするには
+
+1. 分離コード ファイルにブレークポイントを設定します。
+2. F5 キーを押して、スクリプトをローカルでデバッグします。
+
+> [!NOTE]
+   > 次の手順は、Visual Studio 2015 でのみ機能します。 以前の Visual Studio では、pdb ファイルを手動で追加する必要があります。  
+   >
+   >
+
+#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>参照先の C# プロジェクトのローカル コードをデバッグするには
+
+1. C# アセンブリ プロジェクトを作成してビルドし、出力 dll を生成します。
+2. U-SQL ステートメントを使用して dll を登録します。
+
+        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+        
+3. C# コードにブレークポイントを設定します。
+4. F5 キーを押し、C# dll をローカルで参照してスクリプトをデバッグします。
+
 ## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Data Lake U-SQL SDK からのローカル実行の使用
 
 Visual Studio を使用してローカルで U-SQL スクリプトを実行するだけでなく、Azure Data Lake U-SQL SDK を使用して、コマンド ラインとプログラミング インターフェイスによってローカルで U-SQL スクリプトを実行できます。 これにより、U-SQL ローカル テストを拡張することができます。
 
 詳細については、「[Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md)」を参照してください。
-
-
 
 
 ## <a name="next-steps"></a>次のステップ
