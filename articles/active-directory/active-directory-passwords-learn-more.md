@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
-ms.openlocfilehash: 0de0590c1cf5c71a7174fdcca84847b378aa40f8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: dca6f5189693fc98cec4f92eac81b6985e691889
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="learn-more-about-password-management"></a>パスワード管理の詳細情報
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)。
 >
 >
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 03/15/2017
 ### <a name="supported-clients"></a>サポートされるクライアント
 パスワード ライトバックを使用する場合は、Azure AD Connect の自動更新機能を使用するか、最新バージョンの [Azure AD Connect](connect/active-directory-aadconnect.md#install-azure-ad-connect) をインストールすることを常にお勧めしています。
 
-* **DirSync (任意のバージョン > 1.0.6862)** - "_未サポート_" - 基本的なライトバック機能のみをサポートします。製品グループによるサポートは終了しています。 
+* **DirSync (任意のバージョン > 1.0.6862)** - "_未サポート_" - 基本的なライトバック機能のみをサポートします。製品グループによるサポートは終了しています。
 * **Azure AD Sync** - "_非推奨_" - 基本的なライトバック機能のみをサポートします。アカウントのロック解除機能、豊富なログ記録、および Azure AD Connect で行われた信頼性の改善はありません。 そのため、アップグレードすることを**強く**お勧めします。
 * **Azure AD Connect** - "_完全サポート_" - すべてのライトバック機能をサポートします。最善の新機能と最高の安定性/信頼性を取得するには、最新バージョンにアップグレードしてください。
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 03/15/2017
 * **Enterprise Moblity Suite**: パスワード ライトバックの使用に制限なし
 * **Enterprise Cloud Suite**: パスワード ライトバックの使用に制限なし
 
-試用または有料にかかわらず、Office 365 のライセンス プランではパスワード ライトバックを使用することはできません。 この機能を使用するためには、上記のプランのいずれかにアップグレードする必要があります。 
+試用または有料にかかわらず、Office 365 のライセンス プランではパスワード ライトバックを使用することはできません。 この機能を使用するためには、上記のプランのいずれかにアップグレードする必要があります。
 
 Office 365 SKU でパスワード ライトバックを有効にする予定はありません。
 
@@ -166,7 +166,7 @@ Office 365 SKU でパスワード ライトバックを有効にする予定は�
 * **サポートされない管理者の操作**
  * [Microsoft Office 管理ポータル](https://portal.office.com)から管理者が開始したエンドユーザーのパスワードのリセット
  * PowerShell v1、v2、または Azure AD Graph API から管理者が開始したエンド ユーザーのパスワードのリセット
- 
+
 マイクロソフトでは、これらの制限を取り除くための作業を続けていますが、共有できる予定はまだありません。
 
 ## <a name="password-writeback-security-model"></a>パスワード ライトバックのセキュリティ モデル
@@ -180,9 +180,9 @@ Office 365 SKU でパスワード ライトバックを有効にする予定は�
 ### <a name="password-writeback-encryption-details"></a>パスワード ライトバックの暗号化の詳細
 次に示すのは、ユーザーがパスワード リセット要求を送信した後、その要求がオンプレミス環境に到着するまでに実行される暗号化の手順です。これらの手順によって、最大限のサービスの信頼性とセキュリティが確保されます。
 
-* **手順 1 - 2048 ビット RSA キーによるパスワードの暗号化**: ユーザーがオンプレミスにライトバックするためにパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使用して暗号化されます。 
+* **手順 1 - 2048 ビット RSA キーによるパスワードの暗号化**: ユーザーがオンプレミスにライトバックするためにパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使用して暗号化されます。
 
-* **手順 2 - AES-GCM によるパッケージ レベルの暗号化**: 次に、AES-GCM を使用して、パッケージ全体 (パスワード + 必要なメタデータ) が暗号化されます。 これにより、ServiceBus チャネルに直接アクセスできる人物による内容の表示/改ざんを防止します。 
+* **手順 2 - AES-GCM によるパッケージ レベルの暗号化**: 次に、AES-GCM を使用して、パッケージ全体 (パスワード + 必要なメタデータ) が暗号化されます。 これにより、ServiceBus チャネルに直接アクセスできる人物による内容の表示/改ざんを防止します。
 
 * **手順 3 - すべての通信は TLS / SSL 経由で行われる**: さらに、ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 これにより、権限がないサード パーティからの保護が保証されます。
 
@@ -623,13 +623,13 @@ Not possible in PowerShell V2
 1. **既存の Azure AD テナントがあるパートナー組織のユーザー**: パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、**そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます**。 パスワード リセットを機能させるためにパートナー組織が実行する必要があるのは、Azure AD SSPR が有効であることを確認するだけです。有効にしても O365 顧客に追加料金は発生しません。「[パスワード管理の概要](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)」ガイドの手順に従って有効にすることができます。
 2. **[セルフ サービス サインアップ](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)を使用してサインアップしたユーザー**: パートナーを組んでいる組織が[セルフ サービス サインアップ](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)機能を使用してテナントに参加している場合は、登録された電子メールを使用して、追加設定なしでパスワードをリセットできます。
 3. **B2B ユーザー**: 新しい [Azure AD B2B 機能](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)を使用して作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使用して、追加設定なしで自分のパスワードをリセットできます。
- 
+
 これらをテストするには、いずれかのパートナー ユーザーとして http://passwordreset.microsoftonline.com に移動します。  連絡用電子メールまたは認証用電子メールが定義されている限り、パスワードのリセットは予想どおりに機能します。  ここで SSPR によって使用されるデータの詳細については、「[パスワードのリセットで使用されるデータ](https://azure.microsoft.com/en-us/documentation/articles/active-directory-passwords-learn-more/#what-data-is-used-by-password-reset)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。

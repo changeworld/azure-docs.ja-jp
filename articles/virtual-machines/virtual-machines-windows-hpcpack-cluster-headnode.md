@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 3d8300bbb54bd88e6ff3844208ec5d5fa25c5e8d
-ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 84d909b3eaa17cb4a1b8a4465615001896000dca
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
 Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)と Azure Portal を使用して、HPC クラスターのヘッド ノードを作成します。 この HPC Pack VM イメージは、HPC Pack 2012 R2 更新プログラム 3 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。 このヘッド ノードを Azure の HPC Pack の概念実証デプロイとして利用し、 クラスターにコンピューティング ノードを追加して HPC ワークロードを実行できます。
 
 > [!TIP]
-> ヘッド ノードと計算ノードが含まれる完全な HPC Pack 2012 R2 クラスターを Azure にデプロイする場合には、自動化手法を利用することをお勧めします。 オプションには、[HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)と、[Windows ワークロードの HPC Pack クラスター](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)のような Resource Manager テンプレートが含まれます。 [Microsoft HPC Pack 2016 クラスター](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates)用の Resource Manager テンプレートも利用できます。 
+> ヘッド ノードと計算ノードが含まれる完全な HPC Pack 2012 R2 クラスターを Azure にデプロイする場合には、自動化手法を利用することをお勧めします。 オプションには、[HPC Pack IaaS デプロイ スクリプト](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)と、[Windows ワークロードの HPC Pack クラスター](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)のような Resource Manager テンプレートが含まれます。 [Microsoft HPC Pack 2016 クラスター](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates)用の Resource Manager テンプレートも利用できます。 
 > 
 > 
 
@@ -34,7 +35,7 @@ Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](
 
 ![HPC Pack ヘッド ノート][headnode]
 
-* **Active Directory ドメイン**: VM 上で HPC サービスを開始する前に、HPC Pack 2012 R2 ヘッド ノードを Azure の Active Directory ドメインに参加させる必要があります。 この記事で示すように、概念実証デプロイとして、HPC サービスを開始する前に、ヘッド ノードに作成した VM をドメイン コントローラーとして昇格できます。 もう&1; つの選択肢としては、別個のドメイン コントローラー/フォレストを Azure にデプロイし、それにヘッド ノード VM を参加させます。
+* **Active Directory ドメイン**: VM 上で HPC サービスを開始する前に、HPC Pack 2012 R2 ヘッド ノードを Azure の Active Directory ドメインに参加させる必要があります。 この記事で示すように、概念実証デプロイとして、HPC サービスを開始する前に、ヘッド ノードに作成した VM をドメイン コントローラーとして昇格できます。 もう 1 つの選択肢としては、別個のドメイン コントローラー/フォレストを Azure にデプロイし、それにヘッド ノード VM を参加させます。
 
 * **デプロイメント モデル**: 最新のデプロイメントでは、Resource Manager デプロイメント モデルを使用することをお勧めします。 この記事では、このデプロイメント モデルを使用することを前提としています。
 
@@ -75,15 +76,10 @@ Azure Marketplace の [Microsoft HPC Pack 2012 R2 仮想マシン イメージ](
 
 ## <a name="next-steps"></a>次のステップ
 * これで、HPC Pack クラスターのヘッド ノードを操作できます。 たとえば、HPC クラスター マネージャーを起動し、 [デプロイ作業一覧](https://technet.microsoft.com/library/jj884141.aspx)の作業を完了します。
-* オンデマンドでクラスター コンピューティング能力を向上させる場合には、クラウド サービスに [Azure バースト ノード](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を追加します。 
+* オンデマンドでクラスター コンピューティング能力を向上させる場合には、クラウド サービスに [Azure バースト ノード](windows/classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を追加します。 
 * クラスターでテスト ワークロードを実行してみます。 たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
 
 <!--Image references-->
 [headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
 [marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

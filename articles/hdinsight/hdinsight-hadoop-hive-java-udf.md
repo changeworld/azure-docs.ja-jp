@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c593bca61f8f1cc7c81e4744409f8b4a2c23df64
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -165,14 +166,12 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
         scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
    
     **myuser** をクラスターの SSH ユーザー アカウントに置き換えます。 **mycluster** をクラスター名に置き換えます。 SSH アカウントをセキュリティで保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
-3. SSH を使用したクラスターへの接続 
+3. SSH を使用してクラスターに接続します。 
    
         ssh myuser@mycluster-ssh.azurehdinsight.net
    
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
-   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 4. SSH セッションで jar ファイルを HDInsight ストレージにコピーします。
    
         hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars

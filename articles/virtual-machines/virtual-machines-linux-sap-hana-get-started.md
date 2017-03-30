@@ -17,9 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: bd70596bcc34684a6f751076e71cb3d0aa3877dd
-ms.openlocfilehash: 4c40fd95f42f4e89e86d829c8a32583a0398c74e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 24a01d243cda0d04b6b179ab3f87f1d5fcdce61b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,9 +37,9 @@ ms.lasthandoff: 02/22/2017
 
 ガイドの内容は運用環境以外のシステムに制限されるので、高可用性 (HA)、バックアップ障害復旧 (DR)、高パフォーマンス、特別なセキュリティの考慮事項などのトピックについては説明しません。
 
-SAP-Linux-Azure は、Azure Resource Manager でのみサポートされ、クラシック デプロイメント モデルではサポートされません。 そのため、Azure Resource Manager モデルを通じて分散 SAP NetWeaver インストールを実行するために&2; つの仮想マシンを使ってサンプル セットアップを実行しました。 Resource Manager について詳しくは、このガイドの末尾の「General information」(一般情報) セクションをご覧ください。
+SAP-Linux-Azure は、Azure Resource Manager でのみサポートされ、クラシック デプロイメント モデルではサポートされません。 そのため、Azure Resource Manager モデルを通じて分散 SAP NetWeaver インストールを実行するために 2 つの仮想マシンを使ってサンプル セットアップを実行しました。 Resource Manager について詳しくは、このガイドの末尾の「General information」(一般情報) セクションをご覧ください。
 
-サンプルのインストールでは、次の&2; つのテスト VM を使いました。
+サンプルのインストールでは、次の 2 つのテスト VM を使いました。
 
 * NetWeaver 7.5 ABAP SSAP Central Services (ASCS) インスタンスと PAS をホストする hana-appsrv (タイプ DS3)
 * HANA SP12 をホストする hana-dbsrv (タイプ GS4)
@@ -48,14 +48,14 @@ VM はどちらも 1 つの Azure 仮想ネットワーク (azure-hana-test-vnet
 
 2016 年 7 月時点では、SAP HANA が完全にサポートされているのは Azure VM タイプ GS5 上の OLAP (BW) 運用システムのみです。 公式の SAP サポートを想定していないテスト目的の場合は、GS4 などの比較的小規模なタイプを使ってもかまいません。 Azure 上の SAP HANA では、HANA データ ファイルとログ ファイルのための Azure Premium Storage を常に使います (このガイドで後述する「ディスクのセットアップ」セクションをご覧ください)。 Azure でサポートされている SAP 製品について詳しくは、このガイドの末尾にある「General information」(一般情報) セクションをご覧ください。
 
-このガイドでは、Azure VM に SAP HANA を手動でインストールする&2; とおりの方法について説明します。
+このガイドでは、Azure VM に SAP HANA を手動でインストールする 2 とおりの方法について説明します。
 
 * NetWeaver 分散インストールの一環として、"データベース インスタンスのインストール" の手順で SAP Software Provisioning Manager (SWPM) を使う。
 * HANA ライフサイクル管理ツール hdblcm を使い、その後 NetWeaver をインストールする。
 
 SWPM を使ってすべてのコンポーネント (SAP HANA、SAP アプリケーション サーバー、ASCS インスタンス、SAP GUI) を単一の VM にインストールすることもできます。 このガイドではこのオプションについて説明しませんが、考慮する必要のある事項は同じです。
 
-インストールを開始する前に、SAP HANA のインストールに関する&2; つのチェックリストの直後にある「SAP HANA を手動でインストールするための Azure VM の準備」を必ずお読みください。 そうすると、既定の Azure VM 構成のみを使う場合に発生する可能性のあるいくつかの基本的なミスを防ぐのに役立ちます。
+インストールを開始する前に、SAP HANA のインストールに関する 2 つのチェックリストの直後にある「SAP HANA を手動でインストールするための Azure VM の準備」を必ずお読みください。 そうすると、既定の Azure VM 構成のみを使う場合に発生する可能性のあるいくつかの基本的なミスを防ぐのに役立ちます。
 
 ## <a name="checklist-for-sap-hana-installation-using-sap-swpm"></a>SAP SWPM を使った SAP HANA のインストールのチェックリスト
 ここでは、SAP SWPM を使って SAP NetWeaver 7.5 の分散インストールを実行するときに、デモやプロトタイプ作成の目的で単一インスタンスの SAP HANA を手動でインストールするための主要な手順を示します。 個々の項目については、ガイドの中で示されているスクリーンショットでより詳しく説明しています。
@@ -69,7 +69,7 @@ SWPM を使ってすべてのコンポーネント (SAP HANA、SAP アプリケ�
 * 新しい XFS ファイル システムを OS レベルでマウントする。 一方のファイル システムは SAP ソフトウェア全体を保持するために使います。もう一方のファイル システムは /sapmnt ディレクトリに使うほか、場合によってはバックアップに使います。 SAP HANA DB サーバーで、Premium Storage ディスクに XFS ファイル システムを /hana および /usr/sap としてマウントします。 このプロセスは、Linux Azure VM では容量が少ないルート ファイル システムがいっぱいになるのを防ぐために必要です。
 * テスト VM のローカル IP アドレスを /etc/hosts に入力する。
 * /etc/fstab に nofail パラメーターを入力する。
-* HANA SLES&12; SAP Note に従ってカーネル パラメーターを設定する。 詳しくは、「カーネルパラメーター」のセクションをご覧ください。
+* HANA SLES 12 SAP Note に従ってカーネル パラメーターを設定する。 詳しくは、「カーネルパラメーター」のセクションをご覧ください。
 * スワップ領域を追加する。
 * 必要に応じて、テスト VM にグラフィカル デスクトップをインストールする。 インストールしない場合は、リモート SAPinst インストールを使います。
 * SAP サービス マーケットプレースで SAP ソフトウェアをダウンロードする。
@@ -91,7 +91,7 @@ SWPM を使ってすべてのコンポーネント (SAP HANA、SAP アプリケ�
 * 新しい XFS ファイル システムを OS レベルでマウントする。 一方のファイル システムは SAP ソフトウェア全体を保持するために使います。もう一方のファイル システムは /sapmnt ディレクトリに使うほか、場合によってはバックアップに使います。 SAP HANA DB サーバーで、Premium Storage ディスクに XFS ファイル システムを /hana および /usr/sap としてマウントします。 このプロセスは、Linux Azure VM では容量が少ないルート ファイル システムがいっぱいになるのを防ぐために必要です。
 * テスト VM のローカル IP アドレスを /etc/hosts に入力する。
 * /etc/fstab に nofail パラメーターを入力する。
-* HANA SLES&12; SAP Note に従ってカーネル パラメーターを設定する。 詳しくは、「カーネルパラメーター」のセクションをご覧ください。
+* HANA SLES 12 SAP Note に従ってカーネル パラメーターを設定する。 詳しくは、「カーネルパラメーター」のセクションをご覧ください。
 * スワップ領域を追加する。
 * 必要に応じて、テスト VM にグラフィカル デスクトップをインストールする。 インストールしない場合は、リモート SAPinst インストールを使います。
 * SAP サービス マーケットプレースで SAP ソフトウェアをダウンロードする。
@@ -153,21 +153,21 @@ VM 作成用の JSON のサンプル テンプレートを検索するには、�
 
 PowerShell または CLI を使って SUSE イメージを検索する方法と、UUID を使ってディスクをアタッチすることの重要性については、「[Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行](virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
-システムのサイズとスループット要件に応じて、1 つではなく複数のディスクをアタッチし、後でこれらのディスクにまたがるストライプ セットを OS レベルで作成することが必要になる場合があります。 次の&2; つの理由から、複数の Azure ディスクにまたがるストライプ セットを作成します。
+システムのサイズとスループット要件に応じて、1 つではなく複数のディスクをアタッチし、後でこれらのディスクにまたがるストライプ セットを OS レベルで作成することが必要になる場合があります。 次の 2 つの理由から、複数の Azure ディスクにまたがるストライプ セットを作成します。
 
 * スループットを高めることができる。
 * 現在の Azure ディスクサイズの制限は 1 TB (2016年 7 月時点) であるため、1 TB を超える単一ファイル システムが必要である。
 
-ストライピングを構成するための&2; つの主要なツールについて詳しくは、次の記事をご覧ください。
+ストライピングを構成するための 2 つの主要なツールについて詳しくは、次の記事をご覧ください。
 
 * [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure で Linux VM の LVM を構成する](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-テスト環境で、次のスクリーンショットに示すように&2; つの Azure Standard Storage ディスクが SAP アプリ サーバー VM にアタッチされています。 1 つのディスクには、インストールで SAP ソフトウェア全体が格納されます (NetWeaver 7.5、SAP GUI、SAP HANA など)。 2 つ目のディスクは、追加の要件 (バックアップとテスト データなど) に対して十分な空き領域を使用可能にするため、また同じ SAP ランドスケープに属するすべての VM 間で /sapmnt ディレクトリ (つまり、SAP プロファイル) を共有するためのものです。
+テスト環境で、次のスクリーンショットに示すように 2 つの Azure Standard Storage ディスクが SAP アプリ サーバー VM にアタッチされています。 1 つのディスクには、インストールで SAP ソフトウェア全体が格納されます (NetWeaver 7.5、SAP GUI、SAP HANA など)。 2 つ目のディスクは、追加の要件 (バックアップとテスト データなど) に対して十分な空き領域を使用可能にするため、また同じ SAP ランドスケープに属するすべての VM 間で /sapmnt ディレクトリ (つまり、SAP プロファイル) を共有するためのものです。
 
 ![2 つのデータ ディスクとそのサイズを表示している SAP HANA アプリ サーバーの [ディスク] ウィンドウ](./media/virtual-machines-linux-sap-hana-get-started/image003.jpg)
 
-アプリ サーバー VM のシナリオとは異なり、4 つのディスクは、次のスクリーンショットに示すように SAP HANA サーバー VM にアタッチされています。 2 つのディスクは SAP ソフトウェアの格納に使われ (NFS を使って SAP ソフトウェア ディスクを共有することもできます)、十分な空き領域を利用できるようにします (たとえば、バックアップのため)。 追加の&2; つのディスクは、SAP HANA データ ファイル、ログ ファイル、/usr/sap ディレクトリが格納される Azure Premium Storage ディスクです。
+アプリ サーバー VM のシナリオとは異なり、4 つのディスクは、次のスクリーンショットに示すように SAP HANA サーバー VM にアタッチされています。 2 つのディスクは SAP ソフトウェアの格納に使われ (NFS を使って SAP ソフトウェア ディスクを共有することもできます)、十分な空き領域を利用できるようにします (たとえば、バックアップのため)。 追加の 2 つのディスクは、SAP HANA データ ファイル、ログ ファイル、/usr/sap ディレクトリが格納される Azure Premium Storage ディスクです。
 
 ![4 つのデータ ディスクとそのサイズを表示している SAP HANA アプリ サーバーの [ディスク] ウィンドウ](./media/virtual-machines-linux-sap-hana-get-started/image004.jpg)
 
@@ -196,11 +196,11 @@ SAP HANA カーネル設定を永続的な設定にするには、SLES 12 で gr
 ![YaST ブート ローダーの [カーネル パラメーター] 設定タブ](./media/virtual-machines-linux-sap-hana-get-started/image007.jpg)
 
 ### <a name="file-systems"></a>ファイル システム
-次のスクリーンショットは、SAP アプリ サーバー VM にアタッチされた&2; つの Azure Standard Storage ディスクに作成された&2; つのファイル システムを示しています。 どちらのファイル システムの種類も XFS であり、/sapdata と /sapsoftware にマウントされています。
+次のスクリーンショットは、SAP アプリ サーバー VM にアタッチされた 2 つの Azure Standard Storage ディスクに作成された 2 つのファイル システムを示しています。 どちらのファイル システムの種類も XFS であり、/sapdata と /sapsoftware にマウントされています。
 
 この方法でファイル システムを構成することは必須ではありません。 ディスク領域を構築するための他のオプションもあります。 最も重要な考慮事項は、ルート ファイル システムの空き領域の不足を防ぐことです。
 
-![SAP アプリ サーバー VM に作成された&2; つのファイル システム](./media/virtual-machines-linux-sap-hana-get-started/image008.jpg)
+![SAP アプリ サーバー VM に作成された 2 つのファイル システム](./media/virtual-machines-linux-sap-hana-get-started/image008.jpg)
 
 SAP HANA DB VM に関して重要なのは、SAPinst (SWPM) と単純で "一般的な" インストール オプションを使う場合、データベース インストールのときに、既定では /hana と /usr/sap にデータがインストールされるという点を理解することです。 既定の設定では、SAP HANA ログ バックアップは /usr/sap に格納されます。 この場合もルート ファイル システムの記憶域スペースの不足を防ぐことが重要であるため、SWPM を使って SAP HANA をインストールする前に /hana と /usr/sap に十分な空き領域があることを確認します。
 
@@ -215,7 +215,7 @@ SAP HANA の標準のファイルシステム レイアウトの説明は、「[
 
 
 ### <a name="etchosts"></a>/etc/hosts
-SAP のインストールを開始する前に念頭におく必要のあるもう&1; つの重要な点は、SAP VM のホスト名と IP アドレスを /etc/hosts ファイルに含めておくことです。 1 つの Azure 仮想ネットワーク内ですべての SAP VM をデプロイし、内部 IP アドレスを使います。
+SAP のインストールを開始する前に念頭におく必要のあるもう 1 つの重要な点は、SAP VM のホスト名と IP アドレスを /etc/hosts ファイルに含めておくことです。 1 つの Azure 仮想ネットワーク内ですべての SAP VM をデプロイし、内部 IP アドレスを使います。
 
 ![/etc/hosts ファイルに表示される SAP VM のホスト名と IP アドレス](./media/virtual-machines-linux-sap-hana-get-started/image011.jpg)
 
@@ -273,7 +273,7 @@ SAP MC を開始するための URL は、<server>:5<instance_number>13 です�
 
 ![見つからない Java ブラウザー プラグインを示すエラー メッセージ](./media/virtual-machines-linux-sap-hana-get-started/image013.jpg)
 
-問題を解決する方法の&1; つは、次のスクリーン ショットに示すように、YaST を使って見つからないプラグインをインストールすることです。
+問題を解決する方法の 1 つは、次のスクリーン ショットに示すように、YaST を使って見つからないプラグインをインストールすることです。
 
 ![YaST を使った、見つからないプラグインのインストール](./media/virtual-machines-linux-sap-hana-get-started/image014.jpg)
 
@@ -281,14 +281,14 @@ SAP 管理コンソールの URL を繰り返すと、プラグインのアク�
 
 ![プラグインのアクティブ化を要求するダイアログ ボックス](./media/virtual-machines-linux-sap-hana-get-started/image015.jpg)
 
-発生する可能性のある&1; つの別の問題は、見つからないファイル javafx.properties に関するエラー メッセージです。 これは、SAP GUI 7.4 の Oracle Java 1.8 の要件に関連しています。 [SAP Note 2059429 をご覧ください。](https://launchpad.support.sap.com/#/notes/2059424)IBM Java バージョンにも、SLES/SLES-for-SAP Applications 12 と共に配信された openjdk パッケージにも、必要な javafx は含まれていません。 解決策は、Oracle から Java SE8 をダウンロードしてインストールすることです。
+発生する可能性のある 1 つの別の問題は、見つからないファイル javafx.properties に関するエラー メッセージです。 これは、SAP GUI 7.4 の Oracle Java 1.8 の要件に関連しています。 [SAP Note 2059429 をご覧ください。](https://launchpad.support.sap.com/#/notes/2059424)IBM Java バージョンにも、SLES/SLES-for-SAP Applications 12 と共に配信された openjdk パッケージにも、必要な javafx は含まれていません。 解決策は、Oracle から Java SE8 をダウンロードしてインストールすることです。
 
 OpenSUSE と openjdk の同様の問題に関する記事は「[SAPGui 7.4 Java for openSUSE 42.1 Leap (openSUSE 42.1 Leap の SAPGui 7.4 Java)](https://scn.sap.com/thread/3908306)」をご覧ください。
 
 ## <a name="install-sap-hana-manually-by-using-swpm-as-part-of-a-netweaver-75-installation"></a>NetWeaver 7.5 インストールの一環として実行する、SWPM を使った SAP HANA の手動インストール
 このセクションの一連のスクリーンショットは、SWPM (SAPinst) を使う場合に SAP NetWeaver 7.5 と SAP HANA SP12 をインストールするための主要な手順を示しています。 NW 7.5 インストールの一環として、SWPM では HANA データベースを単一インスタンスとしてインストールすることもできます。
 
-サンプルのテスト環境で、ABAP (Advanced Business Application Programming) アプリ サーバーを&1; つだけインストールしました。 次のスクリーンショットに示すように、[分散システム] オプションを使って、1 つの Azure VM に ASCS インスタンスとプライマリ アプリケーション サーバー インスタンスをインストールし、別の Azure VM に SAP HANA をデータベース システムとしてインストールしました。
+サンプルのテスト環境で、ABAP (Advanced Business Application Programming) アプリ サーバーを 1 つだけインストールしました。 次のスクリーンショットに示すように、[分散システム] オプションを使って、1 つの Azure VM に ASCS インスタンスとプライマリ アプリケーション サーバー インスタンスをインストールし、別の Azure VM に SAP HANA をデータベース システムとしてインストールしました。
 
 ![[分散システム] オプションを使ってインストールされた ASCS インスタンスとプライマリ アプリケーション サーバー インスタンス](./media/virtual-machines-linux-sap-hana-get-started/image012.jpg)
 
@@ -351,7 +351,7 @@ ABAP 分散インストールの最後の手順は、"プライマリ アプリ�
 ## <a name="install-sap-hana-manually-by-using-the-hana-lifecycle-management-tool-hdblcm"></a>HANA ライフサイクル管理ツール (hdblcm) を使った SAP HANA の手動インストール
 SWPM を使って SAP HANA を分散インストールの一部としてインストールすることに加えて、hdblcm を使って HANA スタンドアロンを最初にインストールできます。 その後、たとえば SAP NetWeaver 7.5 をインストールできます。 次のスクリーンショットは、このプロセスのしくみを示しています。
 
-HANA hdblcm ツールに関する&3; つの情報源を次に示します。
+HANA hdblcm ツールに関する 3 つの情報源を次に示します。
 
 * [タスクに適した SAP HANA HDBLCM の選択](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)
 * [SAP HANA ライフサイクル管理ツール](http://saphanatutorial.com/sap-hana-lifecycle-management-tools/)
@@ -402,7 +402,7 @@ SWPM データベース インスタンスのインストールが完了した�
 
 ## <a name="about-sap-azure-certifications-and-running-sap-hana-on-azure"></a>SAP Azure 認定と Azure での SAP HANA の実行について
 詳しくは、次のドキュメントをご覧ください。
-* Windows OS を備えた Azure (クラシック モード) での SAP の実行に関する一般的な SAP Azure 情報: [Azure での Windows 仮想マシンにおける SAP の使用](virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+* Windows OS を備えた Azure (クラシック モード) での SAP の実行に関する一般的な SAP Azure 情報: [Azure での Windows 仮想マシンにおける SAP の使用](windows/classic/sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 * ユーザーが使用できる既存の SAP テンプレートについての情報: [SAP 用の Azure クイックスタート テンプレート](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 * Linux OS を備えた Azure (Azure Resource Manager モデル) での SAP の実行に関する一般的な SAP Azure 情報: [Linux 仮想マシン (VM) における SAP の使用](virtual-machines-linux-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 運用環境でサポートされている Azure VM の種類の一覧が記載された認定済み SAP HANA ハードウェア ディレクトリ: [認定済み SAP HANA® ハードウェア ディレクトリ](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)。

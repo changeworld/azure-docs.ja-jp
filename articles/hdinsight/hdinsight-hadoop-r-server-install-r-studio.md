@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2df17cddf629cb72b7fa4d590dfaa69311c96aa4
-ms.openlocfilehash: 8a73f04b0b2d6e308f7b2888ef14d48c50c13ce1
-ms.lasthandoff: 01/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 970419650e1d3e22637733fdb4fba72ff27f5339
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -44,10 +44,8 @@ ms.lasthandoff: 01/10/2017
 
    * ヘッド ノード `CLUSTERNAME-ssh.azurehdinsight.net`
    * エッジ ノード `CLUSTERNAME-ed-ssh.azurehdinsight.net` 
-2. 上記の命名パターンを使用して、クラスターのエッジ ノードに SSH でログインします。 
+2. 上記の命名パターンを使用して、クラスターのエッジ ノードに SSH でログインします。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-   * Linux クライアントから接続する場合は、[Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
-   * Windows クライアントから接続する場合は、[PuTTY を使用した Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。
 3. 接続したら、クラスターのルート ユーザーになります。 SSH セッションでは、次のコマンドを使用します。
 
         sudo su -
@@ -81,7 +79,7 @@ ms.lasthandoff: 01/10/2017
        **USERNAME** は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** は、HDInsight クラスターの名前に置き換えます。`-i id_rsa_key` を追加して、パスワードではなく、SSH キーも使用することもできます        
    * PuTTY を使用する Windows クライアントの場合
 
-     1. PuTTY を開き、接続情報を入力します。 HDInsight で PuTTY を使用する方法については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md) 」を参照してください。
+     1. PuTTY を開き、接続情報を入力します。
      2. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** を選択します。
      3. **[SSH ポートの転送を管理するオプション]** フォームに次の情報を入力します。
 

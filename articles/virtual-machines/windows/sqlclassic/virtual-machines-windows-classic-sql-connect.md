@@ -15,15 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: c6c716c4dce810f190ed66d633524472ba665256
-ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: edc013dee657cbda7c0d9020b6ff4ccda0580dcd
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](../sql/virtual-machines-windows-sql-connect.md)
-> * [クラシック](virtual-machines-windows-classic-sql-connect.md)
+> * [クラシック](../classic/sql-connect.md)
 > 
 > 
 
@@ -31,7 +32,7 @@ ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](../sql/virtual-machines-windows-sql-connect.md)に関する記事をご覧ください。
 
 ## <a name="connection-scenarios"></a>接続のシナリオ
 クライアントから仮想マシンで実行されている SQL Server に接続する方法は、クライアントの場所と、マシンやネットワークの構成によって異なります。 これらのシナリオは、次のとおりです。
@@ -46,7 +47,7 @@ ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>同一クラウド サービス内の SQL Server に接続する方法
-同じクラウド サービス内で複数の仮想マシンを作成できます。 このような仮想マシンのシナリオについては、「 [仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](../../virtual-machines-windows-classic-connect-vms.md#connect-vms-in-a-standalone-cloud-service)」を参照してください。 このシナリオでは、ある仮想マシン上のクライアントから、同じクラウド サービス内の別の仮想マシンで実行されている SQL Server に接続しようとする場合を取り上げます。
+同じクラウド サービス内で複数の仮想マシンを作成できます。 このような仮想マシンのシナリオについては、「 [仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法](../classic/connect-vms.md#connect-vms-in-a-standalone-cloud-service)」を参照してください。 このシナリオでは、ある仮想マシン上のクライアントから、同じクラウド サービス内の別の仮想マシンで実行されている SQL Server に接続しようとする場合を取り上げます。
 
 このシナリオでは、VM の**名前** (ポータル内では**[コンピューター名]** または **[ホスト名]** とも表示されます) を使用して接続できます。 この名前は、作成時に VM に指定した名前です。 たとえば、SQL VM に **mysqlvm**という名前を付けた場合、同じクラウド サービス内のクライアント VM では次のような文字列を使用して接続できます。
 
@@ -61,7 +62,7 @@ ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 
     "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 
-これでクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。 外部のクライアントは、ユーザー名とパスワードを修正する必要があります。 セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。 また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../../virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
+これでクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。 外部のクライアントは、ユーザー名とパスワードを修正する必要があります。 セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。 また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
 
 > [!NOTE]
 > この手法を使用して SQL Server と通信する場合、Azure データセンターからすべての送信データには、通常の [送信データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/)が適用されることに注意してください。
@@ -101,17 +102,12 @@ ms.openlocfilehash: 60d74f1a8dff6441aa461cdc740b5aadc6b77be3
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## <a name="next-steps"></a>次のステップ
-高可用性と障害復旧のために AlwaysOn 可用性グループを使用する予定もある場合、リスナーの実装を検討してください。 データベース クライアントは、SQL Server インスタンスの&1; つに直接接続せずに、リスナーに接続します。 その上でリスナーがクライアントを可用性グループのプライマリ レプリカにルーティングします。 詳細については、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」を参照してください。
+高可用性と障害復旧のために AlwaysOn 可用性グループを使用する予定もある場合、リスナーの実装を検討してください。 データベース クライアントは、SQL Server インスタンスの 1 つに直接接続せずに、リスナーに接続します。 その上でリスナーがクライアントを可用性グループのプライマリ レプリカにルーティングします。 詳細については、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」を参照してください。
 
 Azure の仮想マシンで実行されている SQL Server のセキュリティに関するベスト プラクティスをすべて確認することが重要です。 詳細については、「 [Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](../sql/virtual-machines-windows-sql-security.md)」をご覧ください。
 
 [ラーニング パスをご覧ください](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。 
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c6c92f0d357909921a9f3ee2f484ff355ddde0be
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: ef28ca0a43d7e07fa87d5afdd3f0428f28a310f0
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ VM 拡張機能がエンド ツー エンドのアプリケーションのデプ
 
 Azure VM エージェントは、Azure 仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。 VM エージェントは、Azure Virtual Machines のデプロイと管理の多くの機能面を担当します (VM 拡張機能の実行など)。 Azure VM エージェントは、Azure Marketplace イメージにプレインストールされており、サポートされているオペレーティング システムに手動でインストールすることができます。
 
-サポートされているオペレーティング システムおよびインストール手順については、「[仮想マシンのエージェントおよび拡張機能について](virtual-machines-linux-classic-agents-and-extensions.md)」を参照してください。
+サポートされているオペレーティング システムおよびインストール手順については、「[仮想マシンのエージェントおよび拡張機能について](linux/classic/agents-and-extensions.md)」を参照してください。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
