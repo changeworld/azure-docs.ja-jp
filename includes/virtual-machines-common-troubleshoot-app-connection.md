@@ -62,7 +62,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 
 Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-a** コマンドを使用してアクティブなリスニング ポートを表示します。 アプリケーションがリッスンしているポートの出力を確認します。 アプリケーションを再起動するか、必要であれば、正しいポートを使用するように構成を変更し、アプリケーションのローカルでのアクセスを試みます。
 
-## <a name="a-idstep2astep-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a> 2: 同じ仮想ネットワークの別の VM からアプリケーションにアクセスする
+## <a id="step2"></a> 2: 同じ仮想ネットワークの別の VM からアプリケーションにアクセスする
 同じ仮想ネットワーク内の異なる VM からアプリケーションにアクセスしてみます。その VM のホスト名または Azure 割り当てのパブリック、プライベート、またはプロバイダー IP アドレスを使用します。 クラシック デプロイ モデルを使用して作成された VM の場合、クラウド サービスのパブリック IP アドレスは使用しないでください。
 
 ![start application from a different VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -82,7 +82,7 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 
 Windows ベースの仮想マシンについては、セキュリティ強化機能搭載 Windows ファイアウォールを使用して、ファイアウォール規則がアプリケーションの受信トラフィックと送信トラフィックを除外していないかどうかを確認してください。
 
-## <a name="a-idstep3astep-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>手順 3: 仮想ネットワーク外からアプリケーションにアクセスする
+## <a id="step3"></a>手順 3: 仮想ネットワーク外からアプリケーションにアクセスする
 アプリケーションが実行されている VM の仮想ネットワーク外のコンピューターから、アプリケーションへのアクセスを試行してください。 元のクライアント コンピューターには別のネットワークを使用します。
 
 ![start application from a computer outside the virtual network](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -95,7 +95,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
   
   * VM のエンドポイント構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
   * エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうかを確認します。
-  * 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+  * 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 * Resource Manager デプロイメント モデルを使用して作成された VM:
   
   * VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
@@ -118,9 +118,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

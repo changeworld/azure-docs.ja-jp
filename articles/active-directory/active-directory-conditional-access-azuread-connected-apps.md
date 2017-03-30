@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 4720d168f5ecd3a5e39cdcad812efb52755fb59a
+ms.lasthandoff: 12/29/2016
 
 
 ---
@@ -85,10 +86,5 @@ ms.openlocfilehash: 4720d168f5ecd3a5e39cdcad812efb52755fb59a
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

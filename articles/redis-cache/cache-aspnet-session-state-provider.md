@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/14/2017
+ms.date: 03/22/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 70341f4a14ee807a085931c3480a19727683e958
-ms.openlocfilehash: 34e54378a8626e36fd56ef3fe52f0748a3fec2a2
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 56a55bc10c9cf16751c713da302dcd59362ab80f
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -27,18 +27,18 @@ Azure Redis Cache には、セッション状態プロバイダーが用意さ�
 ユーザー セッションの状態をなんらかの形で格納しないのは、実際のクラウド アプリケーションでは実用的でない場合が多いですが、方法によっては、パフォーマンスとスケーラビリティに与える影響が大きくなります。 状態を格納する必要がある場合は、状態の量を少なくし、Cookie に格納することをお勧めします。 この方法を利用できない場合は、ASP.NET セッション状態と分散型メモリ内キャッシュのプロバイダーを使用することを次にお勧めします。 パフォーマンスとスケーラビリティの観点から最もお勧めできないのが、データベースを利用したセッション状態プロバイダーを使用する方法です。 このトピックでは、Azure Redis Cache の ASP.NET セッション状態プロバイダーを使用する方法について説明します。 その他のセッション状態のオプションについては、 [ASP.NET セッション状態のオプション](#aspnet-session-state-options)に関するトピックを参照してください。
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>ASP.NET セッション状態をキャッシュに格納する
-Visual Studio で Redis Cache Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+Visual Studio で Redis Cache Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-![Azure Redis Cache Manage NuGet パッケージ](./media/cache-aspnet-session-state-provider/redis-cache-manage-nuget-menu.png)
-
-検索ボックスに「**RedisSessionStateProvider**」と入力し、結果の中からそのプロバイダーを選択して、**[インストール]** をクリックします。
+[`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
+    
+```
+Install-Package Microsoft.Web.RedisSessionStateProvider
+```
 
 > [!IMPORTANT]
-> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。
+> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。 この記事の更新時点での、このパッケージの最新バージョンは 2.2.3 です。
 > 
 > 
-
-![Azure Redis Cache セッション状態プロバイダー](./media/cache-aspnet-session-state-provider/redis-cache-session-state-provider.png)
 
 Redis セッション状態プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。 StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。
 
@@ -81,7 +81,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 * **ssl** : キャッシュとクライアント間の通信を SSL で保護する場合は true、保護しない場合は false を指定します。 必ず適切なポートを指定してください。
   * 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に true を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 * **throwOnError**: 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。 静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。 既定値は true です。
-* **retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に&1; 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
+* **retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
 * **databaseId** : キャッシュ出力データに使用するデータベースを指定します。 指定されていない場合は、既定値の 0 が使用されます。
 * **applicationName**: キーが `{<Application Name>_<Session ID>}_Data` として Redis に格納されます。 この命名規則により、複数のアプリケーションで同じキーを共有できます。 このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
 * **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定を上書きすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。

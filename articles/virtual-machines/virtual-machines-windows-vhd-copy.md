@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e5bacb7ce32845b97e06cb0d35cc62935a3c86f6
-ms.openlocfilehash: 79b597fb1d76ec0dd7bdfca701a16f885d245b94
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 9fa8835003b1d8a0dbc56bf9ff8996e48fc41acf
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -94,7 +94,7 @@ Elapsed time:            00.00:13:07
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-* AZCopy の使用時に、サーバーが要求の認証に失敗したことを示すエラーが発生した場合は、Authorization ヘッダーの値が署名を含む正しい形式であることを確認し、Key 2 (セカンダリ ストレージ キー) を使用している場合は、プライマリ ストレージ キー (最初のストレージ キー) を使ってみてください。
+* AZCopy の使用時に、[サーバーが要求の認証に失敗しました] というエラーが発生した場合は、Authorization ヘッダーの値が署名を含む正しい形式であることを確認します。 Key 2 (セカンダリ ストレージ キー) を使用している場合は、プライマリ ストレージ キー (最初のストレージ キー) を使ってみてください。
 
 ## <a name="next-steps"></a>次のステップ
 * [VHD のコピーを OS ディスクとして VM に接続する](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことで、新しい VM を作成できます。

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 51913b5e0d43514f50f2d51500f2149438d87045
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4e6d859ee621a730e0d2c1062d3a31e7c053e798
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -50,8 +51,8 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 5. 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI**を作成します。
   * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
   * **[サインオン URL]** は、アプリのベース URL です。  スケルトンの既定値は、 `http://localhost:8080/adal4jsample/`です。
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` (たとえば、`http://localhost:8080/adal4jsample/`) です。
 6. 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。  この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
+7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` (たとえば、`http://localhost:8080/adal4jsample/`) です。
 
 アプリケーションのポータルで、**[設定]** ページからアプリケーション用の**キー**を作成し、コピーします。  このプロジェクトはすぐに必要になります。
 
@@ -267,10 +268,5 @@ public class PublicClient {
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

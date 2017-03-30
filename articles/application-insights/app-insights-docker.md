@@ -1,21 +1,22 @@
 ---
-title: "Application Insights で Docker アプリケーションを監視する"
+title: "Application Insights で Docker アプリケーションを監視する | Microsoft Docs"
 description: "Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 2051bd0d749ccad0fc1280ce03b88fd9e2af7c08
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: b888f3e7fd56aaf8104c1b76264a3753ca37f7c9
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -109,7 +110,7 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 ![例](./media/app-insights-docker/15.png)
 
-## <a name="q-a"></a>Q & A
+## <a name="q--a"></a>Q & A
 *Docker からは取得できず、Application Insights からは取得できるものは何ですか*
 
 * コンテナーおよびイメージ別のパフォーマンス カウンターの詳細情報です。
@@ -118,12 +119,15 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 *アプリ自体からテレメトリを取得するにはどうすればよいですか*
 
-* Application Insights SDK をアプリにインストールします。 
-  詳細情報: [Java Web アプリ](app-insights-java-get-started.md)、[Windows Web アプリ](app-insights-asp-net.md)。
+* Application Insights SDK をアプリにインストールします。 詳細情報: [Java Web アプリ](app-insights-java-get-started.md)、[Windows Web アプリ](app-insights-asp-net.md)。
 
+## <a name="video"></a>ビデオ
 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
+## <a name="next-steps"></a>次のステップ
 
-<!--HONumber=Nov16_HO3-->
-
+* [Java 向けの Application Insights](app-insights-java-get-started.md)
+* [Node.js 向けの Application Insights](app-insights-nodejs.md)
+* [ASP.NET 向けの Application Insights](app-insights-asp-net.md)
 

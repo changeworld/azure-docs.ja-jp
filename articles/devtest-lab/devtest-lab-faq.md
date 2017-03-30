@@ -12,12 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: fee6c375f93e1e669c031d8ca63470f7f48fadf2
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/08/2017
 
 ## <a name="security"></a>セキュリティ
 * [Azure DevTest Labs の各種セキュリティ レベルはどのようなものですか。](#what-are-the-different-security-levels-in-azure-devtest-labs)
-* [特定の&1; つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。](#how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task)
+* [特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。](#how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task)
 
 ## <a name="cicd-integration--automation"></a>CI/CD 統合と自動化
 * [Azure DevTest Labs は、CI/CD ツールチェーンと統合されますか。](#does-azure-devtest-labs-integrate-with-my-cicd-toolchain)
@@ -65,6 +65,7 @@ ms.lasthandoff: 03/08/2017
 * [VM の作成時にアーティファクトでエラーが発生しました。どのようにトラブルシューティングすればよいですか。](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [既存の仮想ネットワークが正しく保存されないのはなぜですか。](#why-isnt-my-existing-virtual-network-saving-properly)
 * [PowerShell からプロビジョニングするときに、"親リソースが見つからない" というエラーが発生する理由を教えてください。](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
+* [VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
@@ -74,7 +75,7 @@ ms.lasthandoff: 03/08/2017
 * 機能要求を作成する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信します。
 
 ### <a name="why-should-i-use-azure-devtest-labs"></a>なぜ Azure DevTest Labs を使用する必要があるのですか。
-Azure DevTest Labs を使用すると、チームの時間と費用を節約できます。 開発者は、複数のベースを使用して各自の環境を作成し、アーティファクトを使用してアプリケーションを迅速に展開および構成できます。 カスタム イメージとフォーミュラを使用して、仮想マシンをテンプレートとして保存して簡単に再現できます。 さらに、Labs では複数の構成可能なポリシーが提供されており、これによりラボ管理者は無駄を削減してチームの環境を管理することができます。 これらのポリシーには、自動シャットダウン、コストのしきい値、ユーザーごとの最大 VM 数、最大 VM サイズなどが含まれます。 Azure DevTest Labs の詳細については、[概要](devtest-lab-overview.md)を参照するか[入門ビデオ](/documentation/videos/videos/what-is-azure-devtest-labs)をご覧ください。
+Azure DevTest Labs を使用すると、チームの時間と費用を節約できます。 開発者は、複数のベースを使用して各自の環境を作成し、アーティファクトを使用してアプリケーションを迅速に展開および構成できます。 カスタム イメージとフォーミュラを使用して、仮想マシンをテンプレートとして保存して簡単に再現できます。 さらに、Labs では複数の構成可能なポリシーが提供されており、これによりラボ管理者は無駄を削減してチームの環境を管理することができます。 これらのポリシーには、自動シャットダウン、コストのしきい値、ユーザーごとの最大 VM 数、最大 VM サイズなどが含まれます。 Azure DevTest Labs の詳細については、[概要](devtest-lab-overview.md)を確認するか、[入門ビデオ](/documentation/videos/videos/what-is-azure-devtest-labs)をご覧ください。
 
 ### <a name="what-does-worry-free-self-service-mean"></a>「worry free, self-service (心配無用のセルフ サービス)」とはどのような意味ですか。
 "心配無用のセルフ サービス” とは、開発者およびテスト担当者が必要に応じて各自の環境を作成し、管理者は Azure DevTest Labs によって無駄を最小化して管理コストを制御できる安心感を得られることを示します。 管理者は、許可される VM のサイズ、VM の最大数、VM の起動およびシャットダウン時間を指定できます。 Azure DevTest Labs では、ラボ内のリソースがどのように使用されているかを把握するために、コストを監視してアラートを設定することも容易になります。
@@ -84,7 +85,7 @@ Azure DevTest Labs は、開発環境やテスト環境が必要であり、迅�
 
 お客様が Azure DevTest Labs を使用しているシナリオのいくつかを次に示します。
 
-* 開発環境およびテスト環境を&1; か所で管理し、ポリシーを使用してコストを削減し、カスタム イメージを使用してチーム全体でビルドを共有します。
+* 開発環境およびテスト環境を 1 か所で管理し、ポリシーを使用してコストを削減し、カスタム イメージを使用してチーム全体でビルドを共有します。
 * 開発段階全体にわたってディスクの状態を保存するために、カスタム イメージを使用してアプリケーションを開発します。
 * 進行状況に関連してコストを追跡します。
 * 品質保証テスト用の大容量テスト環境を作成します。
@@ -101,14 +102,14 @@ Azure DevTest Labs は、無料サービスです。つまり、ラボの作成�
 * **ロール** - ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、"サブスクリプション所有者" ロールは、サブスクリプション内のすべてのリソースにアクセスできます。
 * **スコープ** - スコープとは、Azure リソースの階層内のレベルのことです。 たとえば、リソース グループや単一のラボ、またはサブスクリプション全体などがスコープになります。
 
-Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可を定義する&2; 種類のロールがあります。ラボ所有者とラボ ユーザーです。
+Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可を定義する 2 種類のロールがあります。ラボ所有者とラボ ユーザーです。
 
 * **ラボ所有者** - ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 そのため、ポリシーの変更、任意の VM の読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
 * **ラボ ユーザー**: ラボ ユーザーは VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できますが、他のユーザーが作成したポリシーまたは VM を変更することはできません。 Azure DevTest Labs にカスタム ロールを作成することもできます。実施方法については、記事「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。
 
 スコープは階層構造を持つため、ユーザーが特定のスコープのアクセス許可を持つ場合は、含まれているすべての下位のスコープでそのアクセス許可が自動的に付与されます。 たとえば、ユーザーにサブスクリプション所有者のロールが割り当てられている場合、ユーザーはサブスクリプションのすべてのリソースにアクセスできます。 これには、すべての仮想マシン、すべての仮想ネットワーク、およびすべてのラボが含まれます。てのリソースにアクセスできます。 このため、サブスクリプション所有者は、ラボ所有者のロールを自動的に継承します。 ただし、その逆は真ではありません。 ラボ所有者はラボにアクセスできます。これはサブスクリプション レベルよりも下位のスコープです。 そのため、ラボ所有者はラボの外にある仮想マシン、仮想ネットワーク、またはいずれのリソースも表示できません。
 
-### <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>特定の&1; つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
+### <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
 カスタム ロールを作成し、そのロールにアクセス許可を割り当てる方法についての包括的な記事がこちらにあります。 ラボ内のすべての VM を開始および停止するアクセス許可を持つロール "DevTest Labs Advanced User" を作成するスクリプトの例を次に示します。
 
     $policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User"
@@ -157,7 +158,12 @@ VM の作成中に [VSTS タスク拡張機能](https://marketplace.visualstudio
 VM への複数ディスクの接続はサポートされています。  
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>テストに Windows OS イメージを使用する場合、MSDN サブスクリプションを購入する必要はありますか。
-はい、テストでクライアント OS イメージ (Windows 7 以降) を使用する必要がある場合、[MSDN サブスクリプションを購入](https://www.visualstudio.com/products/how-to-buy-vs)する必要があります。 各 MSDN サービスの Azure クレジットやその他の詳細情報については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+Azure での開発またはテストにクライアント OS イメージ (Windows 7 以降) を使用する場合は、購入する必要があります。次のいずれかを行ってください。
+
+- [MSDN サブスクリプションを購入する](https://www.visualstudio.com/products/how-to-buy-vs)。 
+- エンタープライズ契約をご利用の場合は、[Enterprise Dev/Test プラン](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
+
+各 MSDN サービスの Azure クレジットの詳細については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 ### <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>カスタム イメージを作成するために VHD ファイルをアップロードするプロセスを自動化するにはどうすればよいですか。
 2 つのオプションがあります。
@@ -176,7 +182,7 @@ VM への複数ディスクの接続はサポートされています。
 7. AzCopy コマンドで、コピー先としてこの **URL** を使用します。
 
 ### <a name="how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>ラボ内の VM をすべて削除するプロセスを自動化するにはどうすればよいですか。
-Azure Portal でラボから VM を削除できる以外に、PowerShell スクリプトを使用してラボ内の VM をすべて削除することもできます。 次の例の **Values to change** コメントの下のパラメーター値を変更するだけです。 `subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
+Azure Portal でラボから VM を削除できる以外に、PowerShell スクリプトを使用してラボ内の VM をすべて削除することもできます。 次の例で、**Values to change** コメントの下のパラメーター値を変更してください。 `subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
 
     # Delete all the VMs in a lab
 
@@ -231,7 +237,7 @@ Azure Portal でラボから VM を削除できる以外に、PowerShell スク�
 2. お使いのブラウザーからラボの URL をコピーし、ラボ ユーザーと共有します。
 
 > [!NOTE]
-> ラボ ユーザーが、 [MSA アカウント](#what-is-a-microsoft-account) を持つ外部ユーザーであり、会社の Active Directory に属していない場合、指定されたリンクに移動するとエラーが表示される可能性があります。 エラーが表示された場合は、Azure Portal の右上隅に表示されている自分の名前をクリックし、メニューの **[ディレクトリ]** セクションからラボが存在するディレクトリを選択するように、ユーザーに指示してください。
+> ラボ ユーザーが、[Microsoft アカウント](#what-is-a-microsoft-account)を持つ外部ユーザーであり、会社の Active Directory に属していない場合、指定されたリンクに移動するとエラーが表示される可能性があります。 エラーが表示された場合は、Azure Portal の右上隅に表示されている自分の名前をクリックし、メニューの **[ディレクトリ]** セクションからラボが存在するディレクトリを選択するように、ユーザーに指示してください。
 >
 >
 
@@ -244,7 +250,7 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 >
 
 ### <a name="my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it"></a>VM の作成時にアーティファクトでエラーが発生しました。 どのようにトラブルシューティングすればよいですか。
-障害が発生したアーティファクトに関するログを取得する方法については、MVP の&1; 人によるブログ記事「[How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs 内のアーティファクトの障害をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)」をご覧ください。
+障害が発生したアーティファクトに関するログを取得する方法については、MVP の 1 人によるブログ記事「[How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs 内のアーティファクトの障害をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)」をご覧ください。
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>既存の仮想ネットワークが正しく保存されないのはなぜですか。
 仮想ネットワーク名にピリオドが含まれていることが原因となっている可能性があります。 その場合は、ピリオドを削除するかハイフンに置き換えてから、仮想ネットワークをもう一度保存してみてください。
@@ -252,5 +258,10 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングするときに、"親リソースが見つからない" ことを示すエラーが発生する理由を教えてください。
 あるリソースが別のリソースの親である場合、子リソースを作成する前に親リソースが存在する必要があります。 存在しない場合、**ParentResourceNotFound** エラーが発生します。 親リソースに依存関係を指定しなかった場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell を介して ARM テンプレートを使用してデプロイした場合、PowerShell スクリプトで指定されるリソース グループ名は、ラボのリソース グループ名である必要があります。 詳しくは、「[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)」をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell を介して Azure リソース テンプレートを使用してデプロイした場合、PowerShell スクリプトで指定されるリソース グループ名は、ラボのリソース グループ名である必要があります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
+
+### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
+VM デプロイのエラーは、アクティビティ ログに記録されます。 VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics (仮想マシン診断)]** で確認できます。このブレードは、**[My virtual machines (マイ仮想マシン)]** の一覧から VM を選択すると表示されます。 
+
+VM デプロイの開始前、たとえば、VM で作成されたリソースのサブスクリプション制限を超えたときなどに、デプロイ エラーが発生することがあります。 この場合、エラーの詳細は、**[構成とポリシー]** 設定の下部にある、ラボ レベルの**アクティビティ ログ**に記録されます。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit)」を参照してください。
 

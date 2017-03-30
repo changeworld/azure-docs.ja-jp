@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7bd6eddcdb20e3ea49cd29d46bb4f98d73ee9cc8
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: fd3d28b133ef8e646f5c2f1c1127f654daa61b95
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -41,10 +42,10 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 ## <a name="php-client-libraries-for-azure"></a>Microsoft Azure 用 PHP クライアント ライブラリ
 Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。 これらのライブラリは、Composer からインストールできます。
 
-Azure 用 PHP クライアント ライブラリを使用する方法については、[BLOB Service を使用する方法][blob-service]に関するページ、[Table Service を使用する方法][table-service]に関するページ、[Queue サービスを使用する方法][queue-service]に関するページをご覧ください。
+Azure 用 PHP クライアント ライブラリを使用する方法については、「[BLOB サービスの使用方法][blob-service]」、「[テーブル サービスの使用方法][table-service]」、および「[キュー サービスの使用方法][queue-service]」を参照してください。
 
 ### <a name="install-via-composer"></a>Composer 経由でインストールする
-1. [Git をインストールします][install-git]。
+1. [Git をインストール][install-git]します。
 
     > [AZURE.NOTE] Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
@@ -65,10 +66,10 @@ Azure PowerShell は、Cloud Services や Virtual Machines などの Azure サ�
 
 Azure PowerShell と Azure エミュレーターは、[Microsoft Web プラットフォーム インストーラー][download-wpi]を使用してインストールすることをお勧めします。 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
 
-Azure PowerShell の使用方法については、[Azure PowerShell の使用方法][powershell-tools]に関するページをご覧ください。
+Azure PowerShell の使用方法については、「[Azure PowerShell の使用方法][powershell-tools]」を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
-Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。 Azure CLI のインストール方法については、「 [Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
+Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。 Azure CLI のインストール方法については、「 [Azure CLI のインストール](cli-install-nodejs.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
@@ -87,9 +88,4 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

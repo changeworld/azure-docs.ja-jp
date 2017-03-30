@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: ryancraw
 translationtype: Human Translation
 ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
 ms.openlocfilehash: 3753846e955308a7607d92ed25648d75b9cc3a35
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -204,9 +205,4 @@ Microsoft Azure を初めてお使いになる場合は、 [Azure 無料試用�
 [servicebus-getstarted]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 [use-rediscache]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md
 [functions-getstarted]: ../azure-functions/functions-create-first-azure-function.md
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

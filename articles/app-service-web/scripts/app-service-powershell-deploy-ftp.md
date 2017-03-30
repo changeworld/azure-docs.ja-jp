@@ -12,26 +12,20 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 5f3bf8087fa6601ae410d6db907471fd6faa2742
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: f4729e9daf788220358e7cca2508c820a1f2006a
+ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP を使用して Web アプリにファイルをアップロードする
 
-このサンプル スクリプトでは、Azure PowerShell を使用して次の操作を行います。 
+このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、FTP ([WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx) 経由) を使用して Web アプリのコードをデプロイします。
 
-* 西ヨーロッパ Azure リージョンの Azure App Service で Web アプリを作成する。
-* Web アプリから FTP の接続情報を取得する。
-* FTP を使用して ([WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx) を介して) Web アプリ コードをデプロイする。
-
-## <a name="prerequisites"></a>前提条件
-
-* `Login-AzureRmAccount` を実行して Azure にログインします。
+必要に応じて、[Azure PowerShell ガイド](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

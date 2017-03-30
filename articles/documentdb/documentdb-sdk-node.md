@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/16/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 36b3eab758d006710467d23a30f889b605df1583
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: dd6e6184dd755ea356cae1c4d50a2b7ba39da9fb
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -55,6 +55,14 @@ ms.lasthandoff: 03/07/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="1.11.0"/>1.11.0</a>
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
+* クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
+* DocumentDB エミュレーターに対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
+* パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました (github #107)。
+* 0 を単一パラメーター として処理する際の executeStoredProcedure バグを修正しました (github #155)。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
@@ -150,6 +158,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.11.0](#1.11.0) |2017 年 3 月 16 日 |--- |
 | [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |
 | [1.10.1](#1.10.1) |2016 年 12 月 22 日 |--- |
 | [1.10.0](#1.10.0) |2016 年 10 月 3 日 |--- |

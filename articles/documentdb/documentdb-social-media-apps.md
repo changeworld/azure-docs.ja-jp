@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/17/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
-ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a49021d7887ee91da902e5c3dea8cbc6cb3de29d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -39,12 +39,12 @@ ms.lasthandoff: 02/23/2017
 
 誤解しないでください。私は SQL データベースを長年使用してきました。SQL データベースは優れていますが、他のあらゆるパターン、手法、ソフトウェア プラットフォームと同様に、すべてのシナリオに最適というわけではありません。
 
-このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった&1; つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
+このシナリオで SQL が最適な選択肢でないのはなぜでしょうか。 1 つの投稿の構造を見てみましょう。Web サイトやアプリケーションでその投稿を表示する場合、たった 1 つの投稿を表示するために  8 つのテーブルを結合してクエリを実行しなければなりません。動的に読み込まれ、画面に表示される投稿のストリームを想像してみてください。そうすれば、私が目指しているものがおわかりいただけると思います。
 
 コンテンツを提供するために、こうした多数の結合を使用する何千ものクエリを解決できるだけの能力を備えた巨大な SQL インスタンスを使用することもできますが、実際のところ、よりシンプルなソリューションが存在するのに、そのようなインスタンスをわざわざ使用する必要があるでしょうか。
 
 ## <a name="the-nosql-road"></a>NoSQL への道
-[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような&1; つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
+[Azure で実行](http://neo4j.com/developer/guide-cloud-deployment/#_windows_azure) できる特殊なグラフ データベースがありますが、これらは安価ではなく、IaaS サービス (サービスとしてのインフラストラクチャ、主に Virtual Machines) とメンテナンスを必要とします。 この記事では、Azure の NoSQL データベースである [DocumentDB](https://azure.microsoft.com/services/documentdb/)で実行され、ほとんどのシナリオに対応できる低コストのソリューションに照準を合わせます。 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) のアプローチの採用、JSON 形式でのデータの保存、[非正規化](https://en.wikipedia.org/wiki/Denormalization)の適用により、これまで複雑であった投稿を次のような 1 つの[ドキュメント](https://en.wikipedia.org/wiki/Document-oriented_database)に変換できます。
 
     {
         "id":"ew12-res2-234e-544f",
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/23/2017
         ]
     }
 
-また、投稿を&1; つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
+また、投稿を 1 つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
 Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)も可能な自動インデックス作成機能によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。DocumentDB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
@@ -103,7 +103,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して DocumentDB に対して&1; つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームや、過去 24 時間により多くの「いいね」を獲得した投稿を含む "最もホットな" ストリームを取得することもできます。また、フォロワーや関心事などのロジックに基づいたユーザーごとのカスタム ストリームも実装できますが、やはり投稿のリストに過ぎません。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](documentdb-sql-query.md#WhereClause)を使用して DocumentDB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Services](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service-web/web-sites-create-web-jobs.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。 
 
@@ -197,7 +197,7 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 ## <a name="the-search-box"></a>検索ボックス
 ユーザーは、幸いにも大量のコンテンツを生成します。 コンテンツのストリームに直接存在しない可能性のあるコンテンツを検索して見つける機能を提供できる必要があります。作成者をフォローするのではなく、6 か月前に行われた古い投稿を見つけようとしているだけだからです。
 
-Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを&1; 行も入力せずに検索エンジンを数分で簡単に実装できます。
+Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを 1 行も入力せずに検索エンジンを数分で簡単に実装できます。
 
 これが非常に簡単なのはなぜでしょうか。
 
@@ -219,6 +219,27 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 これらの Machine Learning シナリオは、さまざまなソースからの情報を取り込むために [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) を使用し、その情報の処理と Azure Machine Learning で処理できる出力の生成に [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) を使用することで実現できます。
 
 利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
+
+## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
+最後に触れなければならない重要なトピックは**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 DocumentDB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
+
+DocumentDB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](documentdb-partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
+
+特筆すべきは、DocumentDB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
+
+トラフィックやリソースの消費量 ([RU](documentdb-request-units.md) (要求ユニット) で測定) は、時間の経過と共に増加します。 ユーザーベースが拡大し、ユーザーによるコンテンツの作成や読み取りが多くなり始めると、ご自身の読み書きの頻度も増えるため、**スループットの拡張**機能が重要になってきます。 RU は非常に簡単に増やすことができます。RU を増やすには、Azure Portal で数回クリックするか [API でコマンドを発行](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer)します。
+
+![スケールアップとパーティション キーの定義](./media/documentdb-social-media-apps/social-media-apps-scaling.png)
+
+状況がこのまま好転し続け、ご自身のプラットフォームが、他のリージョン、国、または大陸のユーザーの目に留まり、使われるようになったらどうでしょう。嬉しい驚きですね。
+
+でも、待ってください... やがては、プラットフォームのユーザー エクスペリエンスが最適ではないことに気が付きます。自分のリージョンからかなり離れた場所にユーザーがいる場合、その待ち時間は相当なものになります。でも、そのユーザーにはプラットフォームの使用をやめてほしくありません。 簡単に**グローバル展開**できる手段さえあれば、と思うでしょう... ところが、手段はあるのです。
+
+DocumentDB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](documentdb-portal-global-replication.md)し、使用可能なリージョンの中で、[クライアント コード](documentdb-developing-with-multiple-regions.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](documentdb-regional-failovers.md)を確保できることも意味します。 
+
+データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service のクローンを作成して、[パフォーマンス構成](../app-service-web/web-sites-traffic-manager.md)を使用しながら、拡張されたグローバル カバレッジをサポートできます。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの DocumentDB レプリカに接続されます。
+
+![ソーシャル プラットフォームへのグローバル カバレッジの追加](./media/documentdb-social-media-apps/social-media-apps-global-replicate.png)
 
 ## <a name="conclusion"></a>まとめ
 この記事では、低コストのサービスを使用して Azure で完全なソーシャル ネットワークを構築し、多層ストレージ ソリューションと "ラダー" と呼ばれるデータ分散の使用を促進することによって優れた結果をもたらす代替手段を明らかにすることを試みています。

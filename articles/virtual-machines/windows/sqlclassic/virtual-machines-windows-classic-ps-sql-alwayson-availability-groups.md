@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成"
+title: "PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Docs"
 description: "このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure で AlwaysOn 可用性グループを作成します。"
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/22/2016
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 9504b2f74fa0161b6c4dfb6a510913256b99629a
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 50167d167a1e0dda93d389997d67904e18f248bc
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
-> * [Resource Manager: テンプレート](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-> * [Resource Manager: 手動](../sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 > * [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 > * [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
-> 
-> 
+<br/>
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 
+
+Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮想マシン上の SQL Server Always On 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関する記事をご覧ください。
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムを低いコストで実装できます。 このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用して、可用性グループを実装する方法について説明します。 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
 * 複数のサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
 * Active Directory (AD) ドメインを持つドメイン コントローラー
 * バックエンド サブネットにデプロイされ、AD ドメインに参加している 2 つの SQL Server VM
-* 3 ノードの WSFC クラスター (ノード マジョリティ クォーラム モデル)
+* 3 ノードの Windows フェールオーバー クラスター (ノード マジョリティ クォーラム モデル)
 * 可用性データベースの 2 つの同期コミット レプリカを含む可用性グループ
 
-このシナリオは、Azure での費用対効果などの要因ではなく、単純さを重視して選択されています。 たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。 この方法では、上記の構成よりも VM 数が 1 つ減少します。
+このシナリオは、Azure での費用対効果などの要因ではなく、単純さを重視して選択されています。 たとえば、Azure でのコンピューティング時間を節約するために、2 ノードのフェールオーバー クラスターでドメイン コントローラーをクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループの VM 数を最小限に抑えることができます。 この方法では、上記の構成よりも VM 数が 1 つ減少します。
 
 このチュートリアルでは、冒頭に挙げたソリューションをセットアップするために必要な手順を紹介します。個々の手順について深く掘り下げて説明することはしません。 したがって、GUI での構成手順は示さず、それぞれの手順を手早く実行できるように PowerShell スクリプトを使用しています。 次のことを前提としています。
 
@@ -221,7 +221,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
             -ChangePasswordAtLogon $false `
             -Enabled $true
    
-    **CORP\Install** は、SQL Server サービスのインスタンス、WSFC クラスター、および可用性グループに関連するすべての構成に使用されます。 **CORP\SQLSvc1** と **CORP\SQLSvc2** は、2 つの SQL Server VM の SQL Server サービス アカウントとして使用されます。
+    **CORP\Install** は、SQL Server サービス インスタンス、フェールオーバー クラスター、および可用性グループに関連するすべての構成に使用されます。 **CORP\SQLSvc1** と **CORP\SQLSvc2** は、2 つの SQL Server VM の SQL Server サービス アカウントとして使用されます。
 7. 次に、以下のコマンドを実行して、ドメインにコンピューター オブジェクトを作成する権限を **CORP\Install** に付与します。
    
         Cd ad:
@@ -233,7 +233,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
    
-    上記で指定した GUID は、コンピューター オブジェクト タイプの GUID です。 **CORP\Install** アカウントには、WSFC クラスターの Active Directory オブジェクトを作成するための **Read All Properties** 権限と **Create Computer Objects** 権限が必要です。 **Read All Properties** 権限については、CORP\Install に既定で割り当てられるため、明示的に付与する必要はありません。 WSFC クラスターを作成するために必要な権限の詳細については、「 [フェールオーバー クラスター ステップ バイ ステップ ガイド: Active Directory のアカウントの構成](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)」を参照してください。
+    上記で指定した GUID は、コンピューター オブジェクト タイプの GUID です。 フェールオーバー クラスターの Active Directory オブジェクトを作成するために、**CORP\Install** アカウントには、"**すべてのプロパティの読み取り**" アクセス許可と "**コンピューター オブジェクトの作成**" アクセス許可が必要です。 **Read All Properties** 権限については、CORP\Install に既定で割り当てられるため、明示的に付与する必要はありません。 フェールオーバー クラスターを作成するために必要なアクセス許可の詳細については、「[Failover Cluster Step-by-Step Guide: Configuring Accounts in Active Directory (フェールオーバー クラスター ステップ バイ ステップ ガイド: Active Directory のアカウントの構成)](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)」をご覧ください。
    
     これで Active Directory オブジェクトとユーザー オブジェクトの構成が終了したので、2 つの SQL Server VM を作成し、このドメインに参加させます。
 
@@ -252,7 +252,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
    
     IP アドレス **10.10.0.4** は、通常、Azure Virtual Network の **10.10.0.0/16** サブネットに作成する最初の VM に割り当てられます。 **IPCONFIG**を実行して、これが DC サーバーのアドレスであることを確認します。
-2. 以下のパイプ処理されたコマンドを実行して、WSFC クラスターの最初の VM を **ContosoQuorum**という名前で作成します。
+2. 次のパイプ処理されたコマンドを実行して、フェールオーバー クラスターの最初の VM を **ContosoQuorum** という名前で作成します。
    
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -371,8 +371,8 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
    
     これで SQL Server VM がプロビジョニングされ、実行されている状態になりましたが、これらは SQL Server と共に既定のオプションでインストールされています。
 
-## <a name="initialize-the-wsfc-cluster-vms"></a>WSFC クラスター VM の初期化
-このセクションでは、WSFC クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的には次の処理が行われます。
+## <a name="initialize-the-failover-cluster-vms"></a>フェールオーバー クラスター VM の初期化
+このセクションでは、フェールオーバー クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的には次の処理が行われます。
 
 * (すべてのサーバー) **フェールオーバー クラスタリング** 機能をインストールする必要があります。
 * (すべてのサーバー) コンピューターの**管理者**として **CORP\Install** を追加する必要があります。
@@ -476,8 +476,8 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. **Azure VM に AlwaysOn 可用性グループの WSFC クラスターを作成する** 方法に関するページから [CreateAzureFailoverCluster.ps1](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、必要最小限の WSFC クラスターを作成できます。 WSFC と Azure ネットワークのやり取りに関する重要な情報については、 [Azure Virtual Machines の SQL Server の高可用性と障害復旧](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)に関するページを参照してください。
-8. 作業ディレクトリに移動し、ダウンロードしたスクリプトで WSFC クラスターを作成します。
+7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
+8. 作業ディレクトリに移動し、ダウンロードしたスクリプトを使用してフェールオーバー クラスターを作成します。
    
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
@@ -563,10 +563,5 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

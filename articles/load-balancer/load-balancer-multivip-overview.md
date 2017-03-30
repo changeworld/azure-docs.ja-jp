@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2016
 ms.author: chkuhtz
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: e9ffa674363b250a5e286c6e34200fa2b3323173
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
+ms.lasthandoff: 03/21/2017
 
 ---
 
@@ -95,7 +96,7 @@ Floating IP は、Direct Server Return (DSR) と呼ばれるものの一部で�
 
 このシナリオでは、バックエンド プール内のすべての VM に次の 3 つのネットワーク インターフェイスがあります。
 
-* DIP: VM に関連付けられている仮想 NIC (Azure の NIC リソース)
+* DIP: VM に関連付けられている仮想 NIC (Azure の NIC リソースの IP 構成)
 * VIP1: VIP1 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 * VIP2: VIP2 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 
@@ -135,9 +136,4 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 * Floating IP 規則では、お使いアプリケーションは送信フローに DIP を使用する必要があります。 お使いのアプリケーションがゲスト OS のループバック インターフェイスに構成されている VIP アドレスにバインドされると、SNAT が送信フローを書き換えることができないため、フローが失敗します。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-subscription-service-limits.md#networking-limits) 」を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

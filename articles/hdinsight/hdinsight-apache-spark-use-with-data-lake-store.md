@@ -8,16 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 1f174323-c17b-428c-903d-04f0e272784c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 03/21/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: d9efecfaf0b9e461182328b052252b114d78ce39
-ms.openlocfilehash: 840db75456e8383cf4343e2170a55dc50cbb68dd
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: c801dc221d4aaa2c3ed0a7d10c5d58065b26e427
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -34,14 +35,13 @@ ms.lasthandoff: 02/24/2017
 
 * Data Lake Store をストレージとして使用する Azure HDInsight Spark クラスター。 手順については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
 
-    > [!IMPORTANT]
-       > クラスターのプライマリ ストレージに Data Lake Store を使用している場合は、確実に Spark 1.6 クラスターを作成してください。
-      >
-       >
-
+    
 ## <a name="prepare-the-data"></a>データを準備する
 
-Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要うはありません。クラスター作成処理で、クラスター作成中に指定する Data Lake Store アカウントにいくつかのサンプル データが追加されるためです。
+> [!NOTE]
+> Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要はありません。 クラスター作成処理で、クラスター作成中に指定する Data Lake Store アカウントにいくつかのサンプル データが追加されるためです。 スキップして、「[Data Lake Store を使用する HDInsight Spark クラスターを使用する](#use-an-hdinsight-spark-cluster-with-data-lake-store)」に進みます。
+>
+>
 
 Data Lake Store を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Store アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](http://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
 
@@ -98,7 +98,7 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
     * Data Lake Store を既定のストレージとしている場合、HVAC.csv は次の URL と同じようなパスになります。
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
-    
+
         または、次のように簡略化された形式を使用することもできます。
 
             adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
@@ -111,20 +111,20 @@ Data Lake Store を追加ストレージとして使用し、Azure Storage Blob 
 
             # Load the data. The path below assumes Data Lake Store is default storage for the Spark cluster
             hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-            
+
             # Create the schema
             hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
-            
+
             # Parse the data in hvacText
             hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
-            
+
             # Create a data frame
             hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
-            
+
             # Register the data fram as a table to run queries against
             hvacdf.registerTempTable("hvac")
 
-6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
+6. PySpark カーネルを使用しているため、`%%sql` マジックを使用して、作成した一時テーブル **hvac** に対して SQL クエリを直接実行できます。 `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関する記事を参照してください。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"

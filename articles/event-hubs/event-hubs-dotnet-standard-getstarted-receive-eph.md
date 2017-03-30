@@ -1,6 +1,6 @@
 ---
 title: ".NET Standard を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs"
-description: ".NET standard で EventProcessorHost を使用したメッセージ受信を開始する"
+description: ".NET Standard で EventProcessorHost を使用したメッセージ受信を開始する"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/03/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 7506430f4ec5522165274f05a2fd5b77e3d6252d
-ms.lasthandoff: 03/06/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 65ed5164b8d010453ed34e8b8cdf68915e136007
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -26,39 +26,39 @@ ms.lasthandoff: 03/06/2017
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) で入手できます。
 
-このチュートリアルでは、**EventProcessorHost** を使用して Event Hub からメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) ソリューションをそのまま実行するには、文字列を Event Hub とストレージ アカウントの値に置き換えるか、このチュートリアルの手順に従って独自のものを作成します。 
+このチュートリアルでは、**EventProcessorHost** を使用して Event Hub からメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/SampleEphReceiver) ソリューションをそのまま実行するには、文字列を Event Hub とストレージ アカウントの値に置き換えます。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
-2. [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
-3. Azure サブスクリプション。
-4. Event Hubs 名前空間。
-5. Azure Storage のアカウント
+* [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
+* [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
+* Azure サブスクリプション。
+* Azure Event Hubs 名前空間。
+* Azure ストレージ アカウント。
 
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間と Event Hub を作成する  
-  
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hub 型の名前空間を作成し、アプリケーションが Event Hub と通信するために必要な管理資格情報を取得します。 名前空間および Event Hub を作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。  
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する  
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成  
+最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。  
 
-1. [Azure Portal](https://portal.azure.com) にログオンします。  
+## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成  
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。  
 2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
 3. ストレージ アカウントのブレードで、フィールドを入力し、**[作成]** をクリックします。
-  
-    ![][1]
 
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、**[要点]** ブレードで **[BLOB]** をクリックします。 **[Blob service]** ブレードが開いたら、上部にある **[+ Container (+ コンテナー)]** をクリックします。 コンテナーに名前を付け、**[Blob service]** ブレードを閉じます。  
+    ![[ストレージ アカウントの作成]][1]
+
+4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、 **[要点]** ブレードで **[BLOB]** をクリックします。 **[Blob service]** ブレードが開いたら、上部にある **[+ Container (+ コンテナー)]** をクリックします。 コンテナーに名前を付け、**[Blob service]** ブレードを閉じます。  
 5. 左のブレードにある **[アクセス キー]** をクリックして、ストレージ コンテナーとストレージ アカウントの名前、および **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。  
-    
+
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
-1. Visual Studio を起動します。 [ファイル] メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。 .NET Core コンソール アプリケーションを作成します。
+1. Visual Studio を起動します。 **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。 .NET Core コンソール アプリケーションを作成します。
 
-    ![][2]
+    ![新しいプロジェクト][2]
 
 2. ソリューション エクスプローラーで、**project.json** ファイルをダブルクリックして、Visual Studio エディターでそのファイルを開きます。
-3. 文字列 `"portable-net45+win8"` を `"frameworks`" セクション内の `"imports"` 宣言に追加します。 セクションの表示は次のようになります。 この文字列は、Azure Storage の OData に対する依存関係のために必要です。
+3. 文字列 `"portable-net45+win8"` を `"frameworks"` セクション内の `"imports"` 宣言に追加します。 セクションの表示は次のようになります。 この文字列は、Azure Storage の OData に対する依存関係のために必要です。
 
     ```json
     "frameworks": {
@@ -71,20 +71,20 @@ ms.lasthandoff: 03/06/2017
     }
     ```
 
-4. [ファイル] メニューの **[すべて保存]** をクリックします。
+4. **[ファイル]** メニューの **[すべて保存]** をクリックします。
 
-このチュートリアルでは .NET Core アプリケーションの記述方法を説明していますが、完全な .NET Framework を対象にする場合は、`"frameworks"` セクションで project.json ファイルに次のコード行を追加します。
+このチュートリアルでは .NET Core アプリケーションの記述方法を説明していますが、 完全な .NET Framework を対象にする場合は、`"frameworks"` セクションで project.json ファイルに次のコード行を追加します。
 
 ```json
 "net451": {
 },
-``` 
+```
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-* 次の NuGet パッケージをプロジェクトに追加します。
-  * [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
-  * [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
+次の NuGet パッケージをプロジェクトに追加します。
+* [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)
+* [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/)
 
 ## <a name="implement-the-ieventprocessor-interface"></a>IEventProcessor インターフェイスの実装
 
@@ -108,19 +108,19 @@ ms.lasthandoff: 03/06/2017
             Console.WriteLine($"Processor Shutting Down. Partition '{context.PartitionId}', Reason: '{reason}'.");
             return Task.CompletedTask;
         }
-    
+
         public Task OpenAsync(PartitionContext context)
         {
             Console.WriteLine($"SimpleEventProcessor initialized. Partition: '{context.PartitionId}'");
             return Task.CompletedTask;
         }
-    
+
         public Task ProcessErrorAsync(PartitionContext context, Exception error)
         {
             Console.WriteLine($"Error on Partition: {context.PartitionId}, Error: {error.Message}");
             return Task.CompletedTask;
         }
-    
+
         public Task ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
         {
             foreach (var eventData in messages)
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/06/2017
                 var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
                 Console.WriteLine($"Message received. Partition: '{context.PartitionId}', Data: '{data}'");
             }
-    
+
             return context.CheckpointAsync();
         }
     }
@@ -137,13 +137,13 @@ ms.lasthandoff: 03/06/2017
 ## <a name="write-a-main-console-method-that-uses-the-simpleeventprocessor-class-to-receive-messages"></a>SimpleEventProcessor クラスを使用するメイン コンソール メソッドを記述してメッセージを受信
 
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
-  
+
     ```csharp
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
     ```
 
-2. Event Hubs 接続文字列、Event Hub 名、ストレージ コンテナー名、ストレージ アカウント名、およびストレージ アカウント キーの `Program` クラスに定数を追加します。 プレースホルダーを対応する値に置き換えて、次のコードを追加します。
+2. Event Hubs 接続文字列、Event Hub 名、ストレージ アカウント コンテナー名、ストレージ アカウント名、およびストレージ アカウント キーの `Program` クラスに定数を追加します。 プレースホルダーを対応する値に置き換えて、次のコードを追加します。
 
     ```csharp
     private const string EhConnectionString = "{Event Hubs connection string}";
@@ -191,7 +191,7 @@ ms.lasthandoff: 03/06/2017
     ```csharp
     namespace SampleEphReceiver
     {
-    
+
         public class Program
         {
             private const string EhConnectionString = "{Event Hubs connection string}";
@@ -199,41 +199,41 @@ ms.lasthandoff: 03/06/2017
             private const string StorageContainerName = "{Storage account container name}";
             private const string StorageAccountName = "{Storage account name}";
             private const string StorageAccountKey = "{Storage account key}";
-    
+
             private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
-    
+
             public static void Main(string[] args)
             {
                 MainAsync(args).GetAwaiter().GetResult();
             }
-    
+
             private static async Task MainAsync(string[] args)
             {
                 Console.WriteLine("Registering EventProcessor...");
-    
+
                 var eventProcessorHost = new EventProcessorHost(
                     EhEntityPath,
                     PartitionReceiver.DefaultConsumerGroupName,
                     EhConnectionString,
                     StorageConnectionString,
                     StorageContainerName);
-    
+
                 // Registers the Event Processor Host and starts receiving messages
                 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
-    
+
                 Console.WriteLine("Receiving. Press ENTER to stop worker.");
                 Console.ReadLine();
-    
+
                 // Disposes of the Event Processor Host
                 await eventProcessorHost.UnregisterEventProcessorAsync();
             }
         }
     }
     ```
-  
+
 4. プログラムを実行し、エラーがないことを確認します。
-  
-お疲れさまでした。 EventProcessorHost を使用して、Event Hub からメッセージを受信しました。
+
+お疲れさまでした。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
@@ -244,3 +244,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcore.png
+

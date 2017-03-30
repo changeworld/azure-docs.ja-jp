@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
-ms.openlocfilehash: f355ea88f4d14e48d9523a0ac7aff965171bed4b
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: ba0fc8849a7131a2dee8c9e7db546ca1a22e05df
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -26,7 +26,9 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
 
 * Microsoft R Server Developer エディション
 * 一般的なデータ分析ライブラリを含む Anaconda Python ディストリビューション (バージョン 2.7 および 3.5)
-* JupyterHub - R、Python、Julia カーネルをサポートするマルチユーザー Jupyter Notebook サーバー
+* JuliaPro - 一般的な科学的およびデータ分析ライブラリを含む Julia 言語の管理されたディストリビューション
+* スタンドアロン Spark インスタンスと単一ノードの Hadoop (HDFS、Yarn)
+* JupyterHub - R、Python、PySpark、Julia カーネルをサポートするマルチユーザー Jupyter Notebook サーバー
 * Azure ストレージ エクスプローラー
 * Azure リソースを管理するための Azure コマンド ライン インターフェイス (CLI)
 * PostgresSQL データベース
@@ -37,7 +39,8 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
   * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
-* 開発ツールおよびエディター (Eclipse、Emacs、gedit、vi)
+* 開発ツールとエディター (RStudio、PyCharm、IntelliJ、Emacs、gedit、vi)
+
 
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
@@ -117,32 +120,38 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
 ## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンにインストールされているツール
-### <a name="microsoft-r-open"></a>Microsoft R Open
-R は、データ分析と機械学習に最もよく使われる言語の&1; つです。 分析に R を使用する場合は、VM に Microsoft R Open (MRO) と Math Kernel Library (MKL) が用意されています。 MKL は、分析アルゴリズムの一般的な算術演算を最適化します。 MRO は CRAN-R と完全に互換性があり、CRAN で公開されているすべての R ライブラリを MRO にインストールできます。 R プログラムは、vi、Emacs、gedit など、既定のいずれかのエディターで編集することができます。 [RStudio](http://www.rstudio.com)などの他の IDE をダウンロードして使用することもできます。 利便性を考えて、 **/dsvm/tools** ディレクトリには、RStudio をインストールする簡単なスクリプト (installRStudio.sh) が用意されています。 Emacs エディターを使用している場合、Emacs エディター内での R ファイルの操作を簡素化する Emacs パッケージの ESS (Emacs Speaks Statistics) がプレインストールされています。
+### <a name="microsoft-r-server"></a>Microsoft R Server
+R は、データ分析と機械学習に最もよく使われる言語の 1 つです。 分析に R を使用する場合は、VM に Microsoft R Server (MRS)、Microsoft R Open (MRO)、および Math Kernel Library (MKL) が用意されています。 MKL は、分析アルゴリズムの一般的な算術演算を最適化します。 MRO は CRAN-R と完全に互換性があり、CRAN で公開されているすべての R ライブラリを MRO にインストールできます。 MRS は R モデルのスケーリングと運用化を Web サービスにもたらします。 R プログラムは、RStudio、vi、Emacs、gedit など、既定のいずれかのエディターで編集することができます。 Emacs エディターを使用している場合、Emacs エディター内での R ファイルの操作を簡素化する Emacs パッケージの ESS (Emacs Speaks Statistics) がプレインストールされています。
 
-R を起動するには、シェルで「**R**」と入力します。 入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs、vi、gedit などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE 環境で R プログラムを開発できます。
+R コンソールを起動するには、シェルで「**R**」と入力します。 入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs、vi、gedit などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE 環境で R プログラムを開発できます。
 
 必要な場合に備えて、 [上位 20 の R パッケージ](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
 
 ### <a name="python"></a>Python
 Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
 
-Python 2.7 と 3.5 の両方が用意されているため、現在のセッションで利用する目的の Python バージョンを明示的にアクティブ化する必要があります。 アクティブ化プロセスにより、PATH 変数は Python の目的のバージョンに設定されます。
+Python 2.7 と 3.5 の両方が用意されているため、現在のセッションで利用する目的の Python バージョン (conda 環境) を明示的にアクティブ化する必要があります。 アクティブ化プロセスにより、PATH 変数は Python の目的のバージョンに設定されます。
 
-Python 2.7 をアクティブ化するには、シェルから次のコマンドを実行します。
+Python 2.7 conda 環境をアクティブ化するには、シェルで次のコマンドを実行します。
 
     source /anaconda/bin/activate root
 
 Python 2.7 は、 */anaconda/bin*にインストールされています。
 
-Python 3.5 をアクティブ化するには、シェルから次のコマンドを実行します。
+Python 3.5 conda 環境をアクティブ化するには、シェルで次のコマンドを実行します。
 
     source /anaconda/bin/activate py35
 
 
 Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされています。
 
-シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「 **spyder** 」と入力して Python IDE を起動します。
+シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
+
+追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 For example:
+
+    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用してサインインします。
@@ -161,14 +170,33 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 > 
 > 
 
-サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ&1; つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
+サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ 1 つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
+
+### <a name="apache-spark-standalone"></a>Apache Spark スタンドアロン 
+Apache Spark のスタンドアロン インスタンスが Linux DSVM にプレインストールされているため、Spark アプリケーションをテストして大規模なクラスターにデプロイする前に、まずローカルで開発することができます。 Jupyter カーネルを使用して PySpark プログラムを実行できます。 Jupyter を開いて [新規] ボタンをクリックすると、利用可能なカーネルの一覧が表示されます。 "Spark-Python"は、Python 言語を使用して Spark アプリケーションを構築するのに便利な PySpark カーネルです。 また PyCharm や Spyder などの Python IDE を使用して Spark プログラムを作成することもできます。 スタンドアロン インスタンスであるため、Spark スタックは呼び出し元のクライアント プログラム内で実行します。 これにより、Spark クラスターでの開発に比べて、問題のトラブルシューティングが高速かつ容易になります。 
+
+サンプルの PySpark Notebook は、Jupyter のホーム ディレクトリ下の "SparkML" ディレクトリ ($HOME/notebooks/SparkML/pySpark) で提供されます。 
+
+R で Spark のプログラミングをする場合は、Microsoft R Server、SparkR、sparklyr を使用できます。 
+
+Microsoft R Server で Spark コンテキストで実行する前に、1 回限りのセットアップ手順を実行して、単一ノードのローカル Hadoop (HDFS と Yarn) インスタンスを有効にする必要があります。 Hadoop サービスはインストールされていますが、既定では DSVM で無効になっています。 これを有効にするには、最初に次のコマンドを root 権限で実行する必要があります。
+
+    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+    chmod 0600 ~hadoop/.ssh/authorized_keys
+    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+
+Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
-コード エディターには、いくつかの選択肢があります。 選択肢として、vi/VIM、Emacs、gEdit、Eclipse があります。 gEdit と Eclipse はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。
+コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse、IntelliJ が含まれます。 gEdit、Eclipse、IntelliJ、RStudio、および PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。
 
 **VIM** と **Emacs** はテキスト ベースのエディターです。 Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。 詳細については、 [ESS](http://ess.r-project.org/)に関するページをご覧ください。
 
-**Eclipse** は、複数の言語をサポートする拡張可能なオープン ソースの IDE です。 VM にインストールされているインスタンスは、Java 開発者用のエディションです。 一般的な言語向けのプラグインがいくつか用意されています。それらのプラグインをインストールすると、Eclipse 環境を拡張できます。 **Azure Toolkit for Eclipse** と呼ばれる Eclipse にインストールされたプラグインもあります。 このプラグインを使用すると、Java などの言語がサポートされる Eclipse 開発環境で Azure アプリケーションの作成、開発、テスト、デプロイを行うことができます。 また、**Azure SDK for Java** を使用すると、Java 環境内からさまざまな Azure サービスにアクセスすることができます。 Azure Toolkit for Eclipse の詳細については、「[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md)」をご覧ください。
+**Eclipse** は、複数の言語をサポートする拡張可能なオープン ソースの IDE です。 VM にインストールされているインスタンスは、Java 開発者用のエディションです。 一般的な言語向けのプラグインがいくつか用意されています。それらのプラグインをインストールすると環境を拡張できます。 **Azure Toolkit for Eclipse** と呼ばれる Eclipse にインストールされたプラグインもあります。 このプラグインを使用すると、Java などの言語がサポートされる Eclipse 開発環境で Azure アプリケーションの作成、開発、テスト、デプロイを行うことができます。 また、**Azure SDK for Java** を使用すると、Java 環境内からさまざまな Azure サービスにアクセスすることができます。 Azure Toolkit for Eclipse の詳細については、「[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md)」をご覧ください。
 
 **LaTex** は、texlive パッケージによって、Emacs アドオンである [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) パッケージと共にインストールされます。auctex を使用すると、Emacs 内での LaTex ドキュメント作成が容易になります。  
 
@@ -188,7 +216,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 詳細については、「 [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)」をご覧ください。
 
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Microsoft SQL Server にアクセスするためのコマンド ライン ツール
-SQL Server の ODBC ドライバー パッケージには、次の&2; つのコマンド ライン ツールも付属しています。
+SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
 **bcp**- bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
 
@@ -221,7 +249,7 @@ VM には、次の Azure ツールがインストールされています。
 * **Microsoft Azure ストレージ エクスプローラー**: Microsoft Azure ストレージ エクスプローラーは、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりする際に使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
 * **Azure Libraries**: 次のライブラリがプレインストールされています。
   
-  * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の&3; つのライブラリを使用すると、Azure ストレージ サービス、Azure Machine Learning、Azure DocumentDB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
+  * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の 3 つのライブラリを使用すると、Azure ストレージ サービス、Azure Machine Learning、Azure DocumentDB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
   * **R**: R のインストール済みの Azure 関連ライブラリは、**AzureML** と **RODBC** です。
   * **Java**: Azure Java ライブラリのリストは、VM の **/dsvm/sdk/AzureSDKJava** ディレクトリにあります。 主要なライブラリは、Azure Storage と管理 API、DocumentDB、SQL Server の JDBC ドライバーです。  
 
@@ -234,7 +262,7 @@ Azure Machine Learning Studio にサインインすると、実験キャンバ�
 
 VM で R または Python を使ってモデルを作成し、Azure Machine Learning の運用環境にデプロイすることもできます。 この機能を有効にするために、R (**AzureML**) と Python (**azureml**) にライブラリがインストールされています。
 
-R と Python のモデルを Azure Machine Learning にデプロイする方法については、「 [データ サイエンス仮想マシンでできる&10; のこと](machine-learning-data-science-vm-do-ten-things.md) 」の「R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする」をご覧ください。
+R と Python のモデルを Azure Machine Learning にデプロイする方法については、「 [データ サイエンス仮想マシンでできる 10 のこと](machine-learning-data-science-vm-do-ten-things.md) 」の「R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする」をご覧ください。
 
 > [!NOTE]
 > これらの手順は、Windows バージョンのデータ サイエンス VM 向けに書かれたものです。 ただし、これらに記載されている Azure Machine Learning へのモデルのデプロイに関する情報は Linux VM にも適用されます。
@@ -252,19 +280,15 @@ VM には、いくつかの機械学習ツールとアルゴリズムがプリ�
   
         install.packages(<lib name>)
 
-上記の最初の&3; つの機械学習ツールに関する追加情報を次に示します。
+上記の最初の 3 つの機械学習ツールに関する追加情報を次に示します。
 
 #### <a name="cntk"></a>CNTK
 これは、オープン ソースのディープ ラーニング ツールキットです。 コマンド ライン ツール (cntk) で、既に PATH 内にあります。
 
 基本的なサンプルを実行するには、シェルで次のコマンドを実行します。
 
-    # Copy samples to your home directory and execute cntk
-    cp -r /dsvm/tools/CNTK-2016-02-08-Linux-64bit-CPU-Only/Examples/Other/Simple2d cntkdemo
-    cd cntkdemo/Data
-    cntk configFile=../Config/Simple.cntk
-
-モデルは、 *~/cntkdemo/Output/Models*に出力されます。
+    cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
+    cntk configFile=lr_bs.cntk makeMode=false command=Train
 
 詳細については、[GitHub](https://github.com/Microsoft/CNTK) の CNTK セクションと [CNTK の Wiki](https://github.com/Microsoft/CNTK/wiki) をご覧ください。
 

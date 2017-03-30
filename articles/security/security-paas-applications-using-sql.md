@@ -1,9 +1,9 @@
 ---
 title: "SQL Database と SQL Data Warehouse を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する | Microsoft Docs"
-description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。. "
+description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。 "
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: techlake
 manager: MBaldwin
 editor: 
 ms.assetid: 
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b3db1281bbd37fcfbec54bdeb998e6338bb08369
-ms.openlocfilehash: 39f841c0f3c8bed1bd640dfd644a58a764422aff
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: be00c1427d57b96506ec8b0ac881b7c1bd09e4de
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -35,7 +36,7 @@ ms.openlocfilehash: 39f841c0f3c8bed1bd640dfd644a58a764422aff
 
 ### <a name="use-a-centralized-identity-repository-for-authentication-and-authorization"></a>認証と承認に一元化された ID レポジトリを使用する
 
-Azure SQL Database は、次の&2; 種類の認証のいずれかを使用するように構成できます。
+Azure SQL Database は、次の 2 種類の認証のいずれかを使用するように構成できます。
 
 - **SQL 認証**では、ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
 
@@ -76,7 +77,7 @@ Azure SQL ファイアウォールと IP の制限については、次を参照
 - [Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](../sql-database/sql-database-configure-firewall-settings.md)
 
 ### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は、SQL Server、Azure SQL Database、Azure SQL Data Warehouse などのデータ ファイルを暗号化します。これは、保存データの暗号化として知られています。 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護するいくつかの対策を講じることができます。 ただし、物理メディア (ドライブやバックアップ テープなど) が盗まれたシナリオでは、悪意のある第三者がデータベースを復元したりデータベースを乗っ取って、データを閲覧する可能性があります。 ソリューションの&1; つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 これにより、キーを持たないユーザーによるデータの使用を防ぐことができます。ただし、このような保護は事前に計画する必要があります。
+[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は、SQL Server、Azure SQL Database、Azure SQL Data Warehouse などのデータ ファイルを暗号化します。これは、保存データの暗号化として知られています。 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護するいくつかの対策を講じることができます。 ただし、物理メディア (ドライブやバックアップ テープなど) が盗まれたシナリオでは、悪意のある第三者がデータベースを復元したりデータベースを乗っ取って、データを閲覧する可能性があります。 ソリューションの 1 つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 これにより、キーを持たないユーザーによるデータの使用を防ぐことができます。ただし、このような保護は事前に計画する必要があります。
 
 TDE は、保存データ、つまりデータとログ ファイルを保護します。 多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。 これにより、ソフトウェア開発者は既存のアプリケーションを変更することなく、業界標準の暗号化アルゴリズムを使用してデータを暗号化できます。
 
@@ -91,9 +92,4 @@ Azure SQL が提供する行や列に対する暗号化は、権限のある ([R
 
 - [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)
 - [Azure App Services を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-app-services.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

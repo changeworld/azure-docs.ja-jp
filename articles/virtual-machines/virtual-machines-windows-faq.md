@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 5f6d8a5bb0209f1dbc0de682b185089e87a1574b
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 6e84a567e8875a8db3f66bc19340557cff75cf1d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/11/2017
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Azure VM では何を実行できますか。
 すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 Microsoft サーバー ソフトウェアを Azure で実行するためのサポートポリシーの詳細については、「 [Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)
 
-MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。 詳細については、「 [Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください 
+MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7、Windows 8.1、および Windows 10 が利用可能となっています。 詳細については、「 [Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -37,7 +37,7 @@ MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
-Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立します。 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 最大&2; つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
+Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立します。 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 
 リモート デスクトップで問題が発生した場合は、 [Windows ベースの Azure Virtual Machine へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。 
 
@@ -65,12 +65,13 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
 
-カナダ中部およびカナダ東部の&2; つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
+カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
 
 ## <a name="does-azure-support-linux-vms"></a>Azure では Linux VM がサポートされていますか?
 はい。 Linux VM をすばやく作成して試してみるには、「 [ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>VM の作成後、NIC を VM に追加できますか。
-いいえ。 NIC を追加できるのは VM の作成時のみです。
+はい、できるようになりました。 VM の割り当て解除を最初に停止する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
 はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。

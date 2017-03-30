@@ -1,6 +1,6 @@
 ---
 title: "一般化した VHD からの VM の作成 | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで、Azure PowerShell を使用して、一般化した VHD イメージから Windows 仮想マシンを作成する方法について説明します。"
+description: "Azure PowerShell を使用して、ストレージ アカウントで一般化した VHD イメージから Windows 仮想マシンを作成する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -13,20 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: cb7f3a1bf44a18141294ab03677f7e733177c1b8
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 12832620d94226b6cfe391471c22fad2d1e3cf7e
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="create-a-vm-from-a-generalized-vhd-image"></a>一般化した VHD イメージからの VM の作成
-一般化した VHD イメージでは、[Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してすべての個人アカウント情報が削除されています。 一般化した VHD を作成するには、オンプレミスの VM で Sysprep を実行してから [VHD を Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)するか、既存の Azure VM で Sysprep を実行してから [VHD をコピー](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。
+# <a name="create-a-vm-from-a-generalized-vhd-image-in-a-storage-account"></a>ストレージ アカウントでの一般化した VHD イメージからの VM の作成 
 
-特殊な VHD から VM を作成する場合は、「[Create a VM from a specialized VHD (特殊な VHD からの VM の作成)](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+このトピックでは、ストレージ アカウント内にある一般化された非管理対象ディスクから VM を作成する方法について説明します。 一般化した VHD イメージでは、[Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用してすべての個人アカウント情報が削除されています。 一般化した VHD を作成するには、オンプレミスの VM で Sysprep を実行してから [VHD を Azure にアップロード](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)するか、既存の Azure VM で Sysprep を実行してから [VHD をコピー](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)します。
 
-一般化した VHD から VM を作成する最も簡単な方法は、[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)を使用する方法です。 
+ストレージ アカウント内の特殊な VHD から VM を作成する場合は、「[Create a VM from a specialized VHD (特殊な VHD からの VM の作成)](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+
+ストレージ アカウント内のディスクではなく Managed Disks を使用する方法の詳細は、[管理対象 VM イメージの作成](virtual-machines-windows-capture-image-resource.md)に関するページと[管理対象イメージからの VM の作成](virtual-machines-windows-create-vm-generalized-managed.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 オンプレミスの VM からアップロードされた VHD (Hyper-V を使用して作成された VHD など) を使用する場合は、「[Windows VHD の Azure へのアップロードの準備](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の指示に従ってください。 
@@ -34,6 +36,7 @@ ms.openlocfilehash: cb7f3a1bf44a18141294ab03677f7e733177c1b8
 アップロードされた VHD と既存の Azure VM VHD は両方とも一般化しないと、この方法を使用して VM を作成することはできません。 詳細については、「[Sysprep を使用した Windows 仮想マシンの一般化](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 
 ## <a name="set-the-uri-of-the-vhd"></a>VHD の URI の設定
+
 使用する VHD の URI は、https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd という形式になります。 この例では、**myVHD** という名前の VHD がストレージ アカウント **mystorageaccount** のコンテナー **mycontainer** にあります。
 
 ```powershell
@@ -171,10 +174,5 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ## <a name="next-steps"></a>次のステップ
 Azure PowerShell で新しい仮想マシンを管理する方法については、 [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: cc25d521b4de64643c8920d45ec9aa6c07b94302
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 977fcf74c86e2ab312d99b3f1821cfb7efbe9745
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -55,9 +55,9 @@ ms.lasthandoff: 02/03/2017
 | Azure SQL Database のリンクされたサービス |Azure SQL Database をデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL Database を指定します。 |
 | Azure BLOB の入力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、入力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
 | Azure SQL の出力データセット |Azure SQL のリンクされたサービスを参照します。 Azure SQL のリンクされたサービスは、Azure SQL サーバーを参照します。Azure SQL データセットは、出力データを保持するテーブルの名前を指定します。 |
-| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが&1; つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL Database のテーブルにデータをコピーします。 |
+| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが 1 つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL Database のテーブルにデータをコピーします。 |
 
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の&2; 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を&1; つ含むパイプラインを作成します。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 2 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を 1 つ含むパイプラインを作成します。
 
 ![Azure BLOB から Azure SQL Database へのコピー](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
 
@@ -314,7 +314,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
 1. **Azure PowerShell** を起動し、次のコマンドを実行します。
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
     ```PowerShell
-    Login-AzureRmAccount    
+    Login-AzureRmAccount       
     ```  
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
     ```PowerShell
@@ -409,7 +409,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStroageLinkedService、dataFactoryName の各変数も使用しています。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
-このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関するセクションをご覧ください。  
+このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。  
 
 ```json
 {
@@ -432,7 +432,7 @@ connectionString では、storageAccountName パラメーターと storageAccoun
 connectionString では、sqlServerName、databaseName、sqlServerUserName、sqlServerPassword の各パラメーターを使用しています。これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートの azureSqlLinkedServiceName、dataFactoryName の各変数も使用しています。
 
 #### <a name="azure-blob-dataset"></a>Azure BLOB データセット
-入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。 
+入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。 
 
 ```json
 {
@@ -474,7 +474,7 @@ connectionString では、sqlServerName、databaseName、sqlServerUserName、sql
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL データセット
-Azure Blob Storage からコピーしたデータを保持する、Azure SQL Database のテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties)に関するセクションをご覧ください。 
+Azure Blob Storage からコピーしたデータを保持する、Azure SQL Database のテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#dataset-properties)に関するセクションをご覧ください。 
 
 ```json
 {

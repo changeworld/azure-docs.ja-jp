@@ -1,5 +1,5 @@
 ---
-title: "クラウドのバッチと HPC のワークロードのリソース | Microsoft Docs"
+title: "Azure クラウドのバッチと HPC のリソース | Microsoft Docs"
 description: "Azure で大規模並列、Batch、高性能コンピューティング (HPC) ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
 services: batch, cloud-services, virtual-machines
 documentationcenter: 
@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-compute
-ms.date: 01/23/2017
+ms.date: 03/17/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
-ms.openlocfilehash: edcf34610e7517f9ca16f8c239e4080c475933f4
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 5e605c8c509c93feb822781257ad979a0dea00aa
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -59,7 +59,15 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 * [SLURM クラスターの起動](https://azure.microsoft.com/documentation/templates/slurm/)と[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 * [トルク クラスターの起動](https://azure.microsoft.com/documentation/templates/torque-cluster/)
+* [PBS Professional によるグリッド テンプレートの計算](https://github.com/xpillons/azure-hpc/tree/master/Compute-Grid-Infra)
+
+## <a name="hpc-storage"></a>HPC ストレージ
+* [Azure での HPC ストレージの並列ファイル システム](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
 * [Intel Cloud Edition for Lustre Software - Eval](https://azure.microsoft.com/marketplace/partners/intel/lustre-cloud-edition-evaleval-lustre-2-7/)
+* [CentOS 7.2 テンプレートでの BeeGFS](https://github.com/smith1511/hpc/tree/master/beegfs-shared-on-centos7.2)
+
+
+
 
 ## <a name="microsoft-mpi"></a>Microsoft MPI
 [Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) は、Windows プラットフォームで並列アプリケーションを開発して実行するための、Microsoft が実装する標準 Message Passing Interface です。
@@ -69,14 +77,17 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [MPI フォーラム](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>コンピューティング集中型インスタンス
-Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。
+Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
+GPU 集中型ワークロードの場合は、[NC および NV サイズ](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/)に関する記事を参照してください。
+
 ## <a name="samples-and-demos"></a>サンプルとデモ
 * [Azure Batch C# および Python のコード サンプル](https://github.com/Azure/azure-batch-samples)
 * バッチ型の Dockerized ワークロードを Azure Batch に簡単にデプロイするための [Batch Shipyard](https://azure.github.io/batch-shipyard/) ツールキット
+* [doAzureParallel](http://www.github.com/Azure/doAzureParallel) Azure Batch の上に構築された R パッケージ
 * [体験版 SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
 ## <a name="related-azure-services"></a>関連する Azure サービス

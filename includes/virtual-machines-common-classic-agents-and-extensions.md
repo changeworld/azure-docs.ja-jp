@@ -12,9 +12,9 @@ VM 拡張機能により以下を実行できます。
 ## <a name="azure-vm-agents-for-windows-and-linux"></a>Windows および Linux 用 Azure VM エージェント
 Azure Virtual Machines エージェント (VM エージェント) はセキュリティで保護された軽量のプロセスであり、Azure Virtual Machines のインスタンスに対して VM 拡張機能のインストール、構成、削除を行います。 VM エージェントは、安全な Azure VM のローカル制御サービスとして機能します。 エージェントから読み込まれるされる拡張機能によって、インスタンスを使用して生産性を向上させる機能が提供されます。
 
-Azure VM エージェントには、Windows VM 向けと Linux VM 向けの&2; 種類があります。
+Azure VM エージェントには、Windows VM 向けと Linux VM 向けの 2 種類があります。
 
-仮想マシン インスタンスで&1; つまたは複数の VM 拡張機能を使用する場合は、インスタンスに VM エージェントがインストールされている必要があります。 Azure Portal と **Marketplace** から入手したイメージを使用して作成された仮想マシン イメージについては、作成プロセスで VM エージェントが自動的にインストールされます。 仮想マシン インスタンスに VM エージェントがない場合は、仮想マシン インスタンスの作成後に VM エージェントをインストールできます。 または、カスタム VM イメージにエージェントをインストールしてからアップロードすることもできます。
+仮想マシン インスタンスで 1 つまたは複数の VM 拡張機能を使用する場合は、インスタンスに VM エージェントがインストールされている必要があります。 Azure Portal と **Marketplace** から入手したイメージを使用して作成された仮想マシン イメージについては、作成プロセスで VM エージェントが自動的にインストールされます。 仮想マシン インスタンスに VM エージェントがない場合は、仮想マシン インスタンスの作成後に VM エージェントをインストールできます。 または、カスタム VM イメージにエージェントをインストールしてからアップロードすることもできます。
 
 > [!IMPORTANT]
 > これらの VM エージェントは、仮想マシン インスタンスを安全に管理できる非常に軽量なサービスです。 VM エージェントを必要としない場合もあります。 この場合には、Azure CLI または PowerShell を使用して、VM エージェントがインストールされていない VM を作成する必要があります。 VM エージェントは物理的に削除できますが、インスタンス上での VM 拡張機能の動作は定義されていません。 そのため、インストール済みの VM エージェントの削除はサポートされていません。
@@ -41,4 +41,4 @@ VM エージェントは、次のような状況で有効化されます。
 >
 
 ## <a name="find-add-update-and-remove-vm-extensions"></a>VM 拡張機能の検索、追加、更新、および削除
-これらのタスクの詳細については、[VM 拡張機能の追加、検索、更新、および削除](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+これらのタスクの詳細については、[VM 拡張機能の追加、検索、更新、および削除](../articles/virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。

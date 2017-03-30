@@ -1,22 +1,22 @@
 ---
-title: "Application Insights の価格とデータ ボリュームの管理 | Microsoft Docs"
+title: "Azure Application Insights の価格とデータ ボリュームの管理 | Microsoft Docs"
 description: "Application Insights でテレメトリの量を管理し、コストを監視します。"
 services: application-insights
 documentationcenter: 
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
-ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3f0c890056c2ee00151ebc4cc74106368a56ba2f
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -31,7 +31,7 @@ Application Insights の各リソースは個々のサービスとして課金�
 
 Application Insights の課金の仕組みについてご質問があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)に気軽に投稿してください。 
 
-## <a name="the-pricing-plans"></a>価格プラン
+## <a name="the-price-plans"></a>価格プラン
 
 お客様の通貨での現在の料金については、[Application Insights の価格ページ][pricing]を参照してください。
 
@@ -63,13 +63,13 @@ Basic プランは新しい Application Insights リソースを作成する場�
 |:---------------------------------------|:----------------:|
 | 1 つのアプリケーションで 3つの Azure App Service インスタンスと 1 つの仮想サーバーが使用されている。 | 4 |
 | 3 つのアプリケーションが 2 つの VM で実行され、これらのアプリケーションの Application Insights リソースが、同じサブスクリプションの Enterprise プランにある。 | 2 | 
-| Applications Insights リソースが同じサブスクリプションにある&4; つのアプリケーション。 各アプリケーションが 2 つのインスタンスをピーク時以外の 16 時間実行し、4 つのインスタンスをピーク時の 8 時間実行している。 | 13.33 | 
+| Applications Insights リソースが同じサブスクリプションにある 4 つのアプリケーション。 各アプリケーションが 2 つのインスタンスをピーク時以外の 16 時間実行し、4 つのインスタンスをピーク時の 8 時間実行している。 | 13.33 | 
 | Cloud Services に 1 つの Worker ロールと 1 つの Web ロールが含まれ、それぞれ 2 つのインスタンスを実行している。 | 4 | 
 | 5 つのノードがある Service Fabric クラスターが 50 のマイクロサービスを実行し、各マイクロサービスが 3 つのインスタンスを実行している。 | 5|
 
 * 正確なノード カウントの動作は、アプリケーションで使用している Application Insights SDK によって異なります。 
-  * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方で各アプリケーション ホストがノードとして報告されます (例: 物理サーバーと VM ホストのコンピューター名、または Cloud Services の場合はインスタンス名)。  唯一の例外は [.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。この場合はホスト名が使用できないため、すべてのホストについて報告されるのは&1; つのノードのみです。 
-  * 以前のバージョンの SDK である [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく&1; つのノードのみ報告します。 
+  * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方で各アプリケーション ホストがノードとして報告されます (例: 物理サーバーと VM ホストのコンピューター名、または Cloud Services の場合はインスタンス名)。  唯一の例外は [.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。この場合はホスト名が使用できないため、すべてのホストについて報告されるのは 1 つのノードのみです。 
+  * 以前のバージョンの SDK である [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。 
   * アプリケーションで SDK を使用してロール インスタンスをカスタム値に設定すると、既定でノード数の決定に同じ値が使用されることに注意してください。 
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、ノードのカウントが (多数のクライアント コンピューターやモバイル デバイスから) 非常に大きい数値を返す可能性があります。 
 
@@ -106,7 +106,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 *アプリがスロットル レートを超えるとどうなりますか。*
 
-* アプリから送信されるデータ量は分単位で評価されます。 1 分間で平均して&1; 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。 SDK はデータをバッファー処理し、再送信を試みるので、数分間にわたってデータ量が増加します。 アプリが常にスロットル レートを超えてデータを送信した場合、一部のデータが破棄されます  (ASP.NET、Java、JavaScript SDK はこの方法で再送信を試みますが、その他の SDK は調整されたデータを単に破棄します)。
+* アプリから送信されるデータ量は分単位で評価されます。 1 分間で平均して 1 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。 SDK はデータをバッファー処理し、再送信を試みるので、数分間にわたってデータ量が増加します。 アプリが常にスロットル レートを超えてデータを送信した場合、一部のデータが破棄されます  (ASP.NET、Java、JavaScript SDK はこの方法で再送信を試みますが、その他の SDK は調整されたデータを単に破棄します)。
 
 スロットルが発生した場合、この状況が発生したことを通知する警告が表示されます。
 
@@ -157,10 +157,9 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 保持されている各レコードで、 `itemCount` は、それが表す元のレコードの数 (1 + 以前に破棄されたレコードの数と同じ) を示します。 
 
 
-## <a name="transition-from-the-old-pricing-tiers"></a>旧価格レベルからの切り替え
+## <a name="automation"></a>Automation
 
-既存のアプリケーションについては、2017 年 2 月まで、旧価格レベルを引き続き使用できます。 この期限までに、多くのアプリケーションは自動的に Basic プランへと移行されます。 連続エクスポートや OMS Log Analytics のコネクタを使用しているアプリケーションは、Enterprise プランに移行されます。
-
+Azure Resource 管理を使用して、価格プランを設定するスクリプトを記述することができます。 方法については、[こちら](app-insights-powershell.md#price)をご覧ください。
 
 ## <a name="limits-summary"></a>制限の概要
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]

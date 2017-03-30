@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 03/17/2017
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 5675a65e3b48e39f44dc320b7b87910ab759b764
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: be27a3541caa1620af432dcff438f70cb9b1074b
+ms.lasthandoff: 03/18/2017
 
 
 ---
 # <a name="collect-and-consume-diagnostic-data-from-your-azure-resources"></a>Azure リソースからの診断データの収集と使用
 
 ## <a name="what-are-azure-diagnostic-logs"></a>Azure 診断ログとは
-**Azure 診断ログ**は、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、Windows イベント システム ログは、VM、BLOB、テーブルの診断ログのカテゴリの&1; つであり、キューのログは、ストレージ アカウントの診断ログのカテゴリです。
+**Azure 診断ログ**は、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、Windows イベント システム ログは、VM、BLOB、テーブルの診断ログのカテゴリの 1 つであり、キューのログは、ストレージ アカウントの診断ログのカテゴリです。
 
 診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](monitoring-overview-activity-logs.md) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
 
@@ -52,9 +52,9 @@ ms.lasthandoff: 03/14/2017
 * 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS Log Analytics)。
 * 送信するログ カテゴリ。
 * ログの各カテゴリをストレージ アカウントに保持する期間。
-    - リテンション期間が&0; 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
+    - リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
     - リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
-    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが&1; 日の場合、その日が始まった時点で、一昨日のログは削除されます。
+    - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 これらの設定は、Azure Portal 内のリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 
@@ -199,8 +199,10 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|カテゴリ|カテゴリの表示名|
 |---|---|---|
+|Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
 |Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
 |Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
+|Microsoft.Automation/automationAccounts|DscNodeStatus|DSC ノードの状態|
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
@@ -208,16 +210,19 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 |Microsoft.DataLakeStore/accounts|要求数|要求ログ|
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
+|Microsoft.EventHub/namespaces|AutoScaleLogs|自動スケール ログ|
 |Microsoft.KeyVault/vaults|AuditEvent|Audit Logs|
 |Microsoft.Logic/workflows|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
 |Microsoft.ServerManagement/nodes|RequestLogs|要求ログ|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|

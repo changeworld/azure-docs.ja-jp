@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
-ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: cd4de75743ee46bb07aec2cf23fa7687f4f20f43
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -120,6 +120,8 @@ ms.lasthandoff: 02/27/2017
 > [!NOTE] 
 > 現時点では、VPN Gateway を含む Virtual Network は、ゲートウェイが一時的に削除されるまでは移動できません。 削除すれば、仮想ネットワークを正常に移動でき、ゲートウェイを作成できます。
 >
+> 現在、ピアリングされた Virtual Network は、VNet ピアリングを無効にするまで移動することはできません。 無効にすれば、Virtual Network を正常に移動し、VNet ピアリングを有効にできるようになります。
+>
  
 ## <a name="services-that-do-not-enable-move"></a>移動が不可能なサービス
 現在、リソースの移動が不可能なサービスは、次のとおりです。
@@ -135,6 +137,7 @@ ms.lasthandoff: 02/27/2017
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * セキュリティ
 * 証明書が Key Vault に格納されている Virtual Machines
+* Managed Disks を使用する Virtual Machines
 * Virtual Machines スケール セット
 * Virtual Networks (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * VPN Gateway
@@ -161,13 +164,13 @@ App Service アプリを使用している場合、App Service プランのみ�
 
 これ以外のすべての組み合わせでは、移動できないリソースの種類 (Application Insights) の移動、または App Service プランの移動時に残しておくことができないリソースの種類 (すべての種類の App Service リソース) の保持のどちらかが行われます。
 
-Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を&2; 段階で行う必要があります。 次に例を示します。
+Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 次に例を示します。
 
 * **web-group** に存在する **web-a**
 * **plan-group** に存在する **plan-a**
 * **web-a** と **plan-a** を **combined-group** に配置しようとしている
 
-この移動を実行するには、次の順序で&2; つの移動操作を個別に実行します。
+この移動を実行するには、次の順序で 2 つの移動操作を個別に実行します。
 
 1. **web-a** を **plan-group** に移動します
 2. **web-a** と **plan-a** を **combined-group** に移動します
@@ -198,8 +201,8 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 * Virtual Networks (クラシック) を移動することはできません。
 * Virtual Machines (クラシック) はクラウド サービスで移動する必要があります。 
 * クラウド サービスは、移動にその仮想マシンがすべて含まれている場合にのみ移動できます。
-* 一度に移動できるクラウド サービスは&1; つだけです。
-* 一度に移動できるストレージ アカウント (クラシック) は&1; つだけです。
+* 一度に移動できるクラウド サービスは 1 つだけです。
+* 一度に移動できるストレージ アカウント (クラシック) は 1 つだけです。
 * ストレージ アカウント (クラシック) は、仮想マシンまたはクラウド サービスと同じ操作では移動できません。
 
 クラシック リソースを同じサブスクリプション内の新しリソース グループに移動する場合は、[ポータル](#use-portal)、[Azure PowerShell](#use-powershell)、[Azure CLI](#use-azure-cli)、または [REST API](#use-rest-api) の標準の移動操作を使用します。 Resource Manager のリソースの移動に使用した方法と同じ操作を使用します。

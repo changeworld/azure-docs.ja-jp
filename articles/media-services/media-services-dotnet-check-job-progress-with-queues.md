@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 876b6a81c5fba7cd9567f913860dd5bdc2391c15
-ms.lasthandoff: 01/13/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 0ddac6ef30439e6bea04d63c41662bc49309de2c
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 進行状況は Azure キュー ストレージを使用して Media Services ジョブ通知を監視する (このトピックで説明) か、StateChanged イベント ハンドラーを定義する ( [この](media-services-check-job-progress.md) トピックで説明) ことにより確認できます。  
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 進行状況は Azure Queue Storage を使用して Azure Media Services ジョブ通知を監視する (この記事で説明) ことにより確認できます。 また、「[.NET を使用したジョブの進行状況の監視](media-services-check-job-progress.md)」の説明に従って、**StateChanged** イベント ハンドラーを定義することもできます。  
 
-## <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications"></a>Azure キュー ストレージを使用して Media Services ジョブ通知を監視する
-Microsoft Azure Media Services には、メディア ジョブを処理する際に [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) に通知メッセージを配信する機能があります。 このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
+## <a name="use-queue-storage-to-monitor-media-services-job-notifications"></a>Queue Storage を使用して Media Services ジョブ通知を監視する
+メディア ジョブの処理時に、Media Services は [Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) に通知を配信することができます。 このトピックでは、キュー ストレージからこれらの通知メッセージを取得する方法について説明します。
 
-キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。 Azure キュー メッセージング アーキテクチャは、信頼性と拡張性に優れています。 キュー ストレージのポーリングには、他のメソッドを使用することをお勧めします。
+キュー ストレージに配信されたメッセージは、世界中のどこからでもアクセスできます。 Queue Storage メッセージング アーキテクチャは、信頼性と拡張性に優れています。 Queue Storage のメッセージのポーリングには、他のメソッドを使用することをお勧めします。
 
-Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発しているかどうかです (ワークフローの次の手順のトリガーや、コンテンツの発行など)。
+Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発している場合です (ワークフローの次の手順のトリガーや、コンテンツの発行など)。
 
 ### <a name="considerations"></a>考慮事項
-Azure ストレージ キューを使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
+Queue Storage を使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
 
-* キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
-* Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。
+* Queue Storage では、先入先出法 (FIFO) の順次配送を保証しません。 詳細については、「 [Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
+* Queue Storage はプッシュ サービスではありません。 キューをポーリングする必要があります。
 * キューの数に制限はありません。 詳細については、「 [Queue サービスの REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/Queue-Service-REST-API)」をご覧ください。
-* Azure Storage キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)」を参照してください。
+* Queue Storage には、注意すべきいくつかの制限事項と特性があります。 これらについては、[Azure キューと Azure Service Bus キューの比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)に関する記事で説明しています。
 
 ### <a name="code-example"></a>コード例
 このセクションのコード例では、次の処理を行います。
 
 1. 通知メッセージの形式にマップする **EncodingJobMessage** クラスを定義します。 このコードは、キューから受信したメッセージを **EncodingJobMessage** 型のオブジェクトに逆シリアル化します。
-2. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。 この情報を使用して、**CloudMediaContext** オブジェクトと **CloudQueue** オブジェクトを作成します。
+2. Media Services とストレージのアカウント情報を app.config ファイルから読み込みます。 コード例ではこの情報を使用して、**CloudMediaContext** オブジェクトと **CloudQueue** オブジェクトを作成します。
 3. エンコード ジョブに関する通知メッセージを受信するキューを作成します。
 4. キューにマップされる通知エンドポイントを作成します。
 5. ジョブに通知エンドポイントを添付し、エンコード ジョブを送信します。 複数の通知エンドポイントをジョブに添付できます。
-6. この例では、ジョブ処理の最終状態のみを対象としているので、**NotificationJobState.FinalStatesOnly** を **AddNew** メソッドに渡します。
+6. **NotificationJobState.FinalStatesOnly** を **AddNew** メソッドに渡します (この例では、ジョブ処理の最終状態にのみ関心があります)。
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. NotificationJobState.All を渡す場合は、すべての状態変更通知 (キューに登録 -> スケジュール済み -> 処理中 -> 完了) を受信することが予想されます。 ただし、前述のように、Azure ストレージ キュー サービスでは、順次配送を保証しません。 タイムスタンプ プロパティ (次の例の EncodingJobMessage 型で定義) を使用してメッセージの順序を指定できます。 通知メッセージを重複して受信する可能性があります。 重複を確認するには、ETag プロパティ (EncodingJobMessage 型で定義) を使用してください。 一部の状態変更通知がスキップされる可能性もあります。
+7. **NotificationJobState.All** を渡すと、次のすべての状態変更通知 (キューに登録、スケジュール済み、処理中、完了) を受信します。 ただし、前述のように、Queue Storage では順次配送を保証しません。 メッセージの順序を指定するには、**Timestamp** プロパティ (次の例の **EncodingJobMessage** 型で定義) を使用します。 メッセージが重複している可能性があります。 重複を確認するには、**ETag プロパティ** (**EncodingJobMessage** 型で定義) を使用します。 一部の状態変更通知がスキップされる可能性もあります。
 8. 10 秒ごとにキューをチェックし、ジョブが完了状態になるまで待機します。 処理が終了したら、メッセージを削除します。
 9. キューと通知エンドポイントを削除します。
 

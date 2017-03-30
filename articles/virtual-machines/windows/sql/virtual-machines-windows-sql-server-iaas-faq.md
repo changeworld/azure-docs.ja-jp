@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/07/2017
+ms.date: 03/17/2017
 ms.author: v-shysun
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 42b3e222f24e9b5c1bb26f7e1e36b1e11c2f48b8
-ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
-
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 498291fbf49e8bc119d93bb2dd4118e62ebdc71c
+ms.lasthandoff: 03/18/2017
 
 ---
-# <a name="sql-server-on-azure-virtual-machines-faq"></a>Azure Virtual Machines における SQL Server に関する FAQ
+# <a name="frequently-asked-questions-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server についてよく寄せられる質問
 このトピックでは、 [Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)に関して特に多く寄せられる質問への回答を示します。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
@@ -36,7 +37,7 @@ ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
 3. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
    
     まず SQL Server インスタンスで、Azure 仮想マシンを作成します。 次に、オンプレミス データベースをそのインスタンスに移行します。 データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。
-4. **インストールされている機能を変更したり、同じ VM に SQL Server の&2; つ目のインスタンスをインストールしたりできますか?**
+4. **インストールされている機能を変更したり、同じ VM に SQL Server の 2 つ目のインスタンスをインストールしたりできますか?**
    
     はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。
 5. **Azure VM で SQL Server の新しいバージョン/エディションにアップグレードするにはどうすればよいですか?**
@@ -51,7 +52,7 @@ ms.openlocfilehash: 7a8d1451fc1b5ace2996faec22090b1f872bf547
 
 7. **SQL Server フェールオーバー クラスター インスタンス (FCI) は Azure VM でサポートされますか?**
 
-   はい。 [Windows Server フェールオーバー クラスター \(WSFC\) を Windows Server 2016 上で作成](virtual-machines-windows-portal-sql-create-failover-cluster.md)し、クラスター ストレージとして Storage Spaces Direct (S2D) を使用できます。 または、[Azure 仮想マシンでの SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
+   はい。 [Windows フェールオーバー クラスターを Windows Server 2016 上で作成](virtual-machines-windows-portal-sql-create-failover-cluster.md)し、クラスター ストレージとして Storage Spaces Direct (S2D) を使用できます。 または、[Azure 仮想マシンでの SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)に関する記事の説明に従って、サードパーティのクラスタリング ソリューションまたは記憶域ソリューションを使用できます。
 
 7. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
    
@@ -77,10 +78,5 @@ Azure Virtual Machines 上の SQL Server の概要については、ビデオ「
 * [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

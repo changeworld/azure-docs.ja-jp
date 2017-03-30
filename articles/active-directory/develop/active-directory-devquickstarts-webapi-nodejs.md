@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 682f6d0919df20cd3643abf04e1d5192be116399
-ms.openlocfilehash: f20c2c2c37692d439ca8e023cf9d5a48cd42c973
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 707bb2b7cd9796e0e05234aa08002bbc1820f871
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/24/2017
 このサンプルを使用するには、Azure Active Directory テナントが必要です。 テナントについて不明な場合、または取得方法が不明な場合は、「[Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)」を参照してください。
 
 ## <a name="step-2-create-an-application"></a>手順 2: アプリケーションの作成
-次に、ディレクトリにアプリを作成します。このディレクトリによって、アプリと安全に通信するために必要な情報を Azure AD に提供します。  ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が&1; つの論理アプリを構成するためです。  アプリを作成するには、 [こちらの手順](active-directory-how-applications-are-added.md)に従ってください。 基幹業務アプリケーションを作成する場合、[この追加手順が役に立つ場合があります](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+次に、ディレクトリにアプリを作成します。このディレクトリによって、アプリと安全に通信するために必要な情報を Azure AD に提供します。  ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。  アプリを作成するには、 [こちらの手順](active-directory-how-applications-are-added.md)に従ってください。 基幹業務アプリケーションを作成する場合、[この追加手順が役に立つ場合があります](../active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 アプリケーションを作成するには:
 
@@ -70,11 +70,11 @@ ms.lasthandoff: 02/24/2017
 
       * **[サインオン URL]** は、アプリのベース URL です。  サンプル コードの既定の URL は、`https://localhost:8080` です。
 
-      * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 形式は、`https://<tenant-domain>/<app-name>` (たとえば `https://contoso.onmicrosoft.com/my-first-aad-app`) です。
-
 6. 登録が完了すると、Azure AD によってアプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーします。
 
-7. **[設定]** ページでアプリケーション用の**キー**を作成し、どこかにコピーしておきます。 すぐ後で必要になります。
+7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 形式は、`https://<tenant-domain>/<app-name>` (たとえば `https://contoso.onmicrosoft.com/my-first-aad-app`) です。
+
+8. **[設定]** ページでアプリケーション用の**キー**を作成し、どこかにコピーしておきます。 すぐ後で必要になります。
 
 ## <a name="step-3-download-nodejs-for-your-platform"></a>手順 3. プラットフォーム用の Node.js をダウンロードする
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
@@ -335,7 +335,7 @@ server.js ファイルは、Web API サーバーのほとんどの機能を提�
 4. ファイルを保存します。
 
 ## <a name="step-13-add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>手順 13. Mongoose を使用して MongoDB のモデルとスキーマ情報を追加する
-これら&3; つのファイルを REST API サービスに組み込むと、これまでの準備の効果が得られるようになります。
+これら 3 つのファイルを REST API サービスに組み込むと、これまでの準備の効果が得られるようになります。
 
 このチュートリアルでは、手順 4. で説明したように、MongoDB を使用してタスクを格納します。
 

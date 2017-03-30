@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: d31d4c390d5e03c8b206284c3ae75defed2a38af
-ms.openlocfilehash: 83bedb42e8e685f5ea65e160ab7bfe128236ef82
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 2d5201a335e96cc8595de834858750f6aac884a3
+ms.lasthandoff: 03/17/2017
 
 
 ---
 # <a name="azure-log-integration-frequently-asked-questions-faq"></a>Azure ログ統合のよく寄せられる質問 (FAQ)
 この FAQ では、Azure ログ統合に関する質問に回答します。このサービスを使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
+
+## <a name="is-the-azure-log-integration-software-free"></a>Azure ログ統合ソフトウェアは無料ですか。
+はい。 Azure ログ統合ソフトウェアに料金はかかりません。 
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>Azure ログ統合が Azure VM を取得しているストレージ アカウントを表示するには、どうすればよいですか。
 **azlog source list**コマンドを実行します。

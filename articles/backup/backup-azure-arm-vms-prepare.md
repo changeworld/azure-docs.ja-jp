@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/7/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
-ms.openlocfilehash: 5d68b7f1f57da07685c27d592620c1785269f9d8
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 27d8da9df87dc5e93272be0bb6584e90971fb461
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -31,10 +31,10 @@ ms.lasthandoff: 02/17/2017
 
 この記事では、Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。  
 
-Azure Backup サービスでは、VM を保護するために&2; 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。 バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。 Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。 Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
+Azure Backup サービスでは、VM を保護するために 2 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。 バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。 Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。 Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
 >
 >
 
@@ -44,6 +44,7 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 * シナリオを選択し、バックアップ ポリシーを定義し、保護する項目を定義します。
 * 仮想マシンに VM エージェントがインストールされていることを確認します。
 * ネットワーク接続を確認します。
+* Linux VM の場合、アプリケーション整合性バックアップのバックアップ環境をカスタマイズする場合は、[プリスナップショット スクリプトおよびポストスナップショット スクリプトを構成するための手順](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)を実行してください。
 
 これらの条件が既に環境内で満たされている場合は、 [VM のバックアップに関する記事](backup-azure-vms.md)に進んでください。 これらの前提条件のいずれかをセットアップまたは確認する必要がある場合は、この記事に前提条件を満たすための手順が説明されているので参照してください。
 
@@ -151,7 +152,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
     これにより、VM 拡張機能がコンテナーに登録されます。 [バックアップの目標] ブレードが閉じ、**[バックアップ ポリシー]** ブレードが開きます。
 
     ![Open Scenario blade](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
-4. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選びます。
+4. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択します。
 
     ![Select backup policy](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
@@ -213,7 +214,7 @@ VM をバックアップする際、バックアップ拡張機能は HTTPS API 
 >
 >
 
-次の図は、HTTP プロキシを使用するために必要な&3; つの構成手順を示しています。
+次の図は、HTTP プロキシを使用するために必要な 3 つの構成手順を示しています。
 
 * アプリケーション VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングします。
 * プロキシ VM では、仮想ネットワーク内の VM からの着信トラフィックを許可します。

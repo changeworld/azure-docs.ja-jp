@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 03/14/2017
 ms.author: mithal;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
-ms.openlocfilehash: 86f8b18e06fdc5a24797b0c90f09f0e053e4569c
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: d109c50be94a227efd39f151c01070a8e30b237d
+ms.lasthandoff: 03/17/2017
 
 
 ---

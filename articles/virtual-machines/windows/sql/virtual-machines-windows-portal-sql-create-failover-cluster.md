@@ -14,11 +14,12 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/11/2017
+ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 6f0fe474787efc15db5c75266cde369725832aab
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -33,10 +34,10 @@ ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
 
 この図は、次を示しています。
 
-- Windows Server フェールオーバー クラスター (WSFC) 内の&2; つの Azure 仮想マシン。 WSFC 内にある仮想マシンのことは "*クラスター ノード*" または "*ノード*" と呼びます。
+- Windows フェールオーバー クラスター内の 2 つの Azure 仮想マシン。 仮想マシンがフェールオーバー クラスター内にある場合、仮想マシンは "*クラスター ノード*" または "*ノード*" とも呼ばれます。
 - 各仮想マシンには、2 つ以上のデータ ディスクがあります。
 - S2D は、データ ディスク上のデータを同期し、同期されたストレージを記憶域プールとして提供します。 
-- 記憶域プールは、WSFC にクラスターの共有ボリューム (CSV) を提供します。
+- 記憶域プールは、クラスターの共有ボリューム (CSV) をフェールオーバー クラスターに提供します。
 - SQL Server FCI のクラスター ロールは、CSV をデータ ドライブ用に使用します。 
 - SQL Server FCI の IP アドレスを保持するための Azure ロード バランサー。
 - Azure 可用性セットにより、すべてのリソースが保持されます。
@@ -46,7 +47,7 @@ ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
 
 S2D の詳細については、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) に関する記事を参照してください。 
 
-S2D では、コンバージド型とハイパー コンバージド型の&2; 種類のアーキテクチャがサポートされています。 このドキュメントでのアーキテクチャは、ハイパー コンバージド型です。 ハイパー コンバージド インフラストラクチャでは、クラスター化されたアプリケーションをホストしている同じサーバーにストレージが配置されます。 このアーキテクチャでは、ストレージは各 SQL Server FCI ノード上にあります。
+S2D では、コンバージド型とハイパー コンバージド型の 2 種類のアーキテクチャがサポートされています。 このドキュメントでのアーキテクチャは、ハイパー コンバージド型です。 ハイパー コンバージド インフラストラクチャでは、クラスター化されたアプリケーションをホストしている同じサーバーにストレージが配置されます。 このアーキテクチャでは、ストレージは各 SQL Server FCI ノード上にあります。
 
 ### <a name="example-azure-template"></a>Azure テンプレートの例
 
@@ -76,11 +77,11 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
 - Azure 仮想マシン内にオブジェクトを作成する権限を持つアカウント。
 - 十分な IP アドレス空間を持つ、次のコンポーネント用の Azure 仮想ネットワークとサブネット。
    - 両方の仮想マシン。
-   - WSFC の IP アドレス。
+   - フェールオーバー クラスターの IP アドレス。
    - 各 FCI の IP アドレス。
 - Azure ネットワーク上で構成された、ドメイン コントローラーを指す DNS。 
 
-これらの前提条件が整ったら、WSFC の構築を開始できます。 最初の手順で、仮想マシンを作成します。 
+これらの前提条件が整ったら、フェールオーバー クラスターの構築を開始できます。 最初の手順で、仮想マシンを作成します。 
 
 ## <a name="step-1-create-virtual-machines"></a>手順 1. 仮想マシンを作成する
 
@@ -106,7 +107,7 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
 
 1. 可用性セット内に仮想マシンを作成します。
 
-   Azure 可用性セット内に&2; つの SQL Server 仮想マシンをプロビジョニングします。 手順については、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。 
+   Azure 可用性セット内に 2 つの SQL Server 仮想マシンをプロビジョニングします。 手順については、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。 
 
    両方の仮想マシンを配置します。
    
@@ -124,7 +125,7 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
    
    SQL Server ライセンスのご希望の課金方法に従って、適切なイメージを選択します。 
 
-   - **従量課金のライセンス**: これらのイメージの&1; 分あたりのコストに SQL Server のライセンスが含まれます。
+   - **従量課金のライセンス**: これらのイメージの 1 分あたりのコストに SQL Server のライセンスが含まれます。
       - **SQL Server 2016 Enterprise on Windows Server Datacenter 2016**
       - **SQL Server 2016 Standard on Windows Server Datacenter 2016**
       - **SQL Server 2016 Developer on Windows Server Datacenter 2016**
@@ -135,15 +136,15 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
       - **{BYOL} SQL Server 2016 Standard on Windows Server Datacenter 2016** 
    
    >[!IMPORTANT]
-   >仮想マシンを作成した後、事前にインストールされていたスタンドアロンの SQL Server インスタンスを削除します。 WSFC と S2D を構成した後、事前にインストールされていた SQL Server メディアを使用して、SQL Server FCI を作成します。 
+   >仮想マシンを作成した後、事前にインストールされていたスタンドアロンの SQL Server インスタンスを削除します。 フェールオーバー クラスターと S2D を構成したら、プレインストールされた SQL Server メディアを使用して SQL Server FCI を作成します。 
 
-   または、オペレーティング システムだけを含む Azure Marketplace イメージを使用することができます。 WSFC と S2D を構成した後で、**Windows Server 2016 Datacenter** イメージを選択して SQL Server FCI をインストールします。 このイメージには、SQL Server インストール メディアは含まれません。 各サーバーへの SQL Server のインストールを実行できる場所に、インストール メディアを配置します。
+   または、オペレーティング システムだけを含む Azure Marketplace イメージを使用することができます。 フェールオーバー クラスターと S2D の構成後、**Windows Server 2016 Datacenter** イメージを選択し、SQL Server FCI をインストールします。 このイメージには、SQL Server インストール メディアは含まれません。 各サーバーへの SQL Server のインストールを実行できる場所に、インストール メディアを配置します。
 
 1. Azure によって仮想マシンが作成されたら、RDP で各仮想マシンに接続します。 
 
    RDP で最初に仮想マシンに接続する際、コンピューターによって、この PC をネットワーク上で検出可能にするかどうかが確認されます。 **[はい]**をクリックします。 
 
-1. SQL Server ベースの仮想マシン イメージの&1; つを使用している場合は、SQL Server インスタンスを削除します。
+1. SQL Server ベースの仮想マシン イメージの 1 つを使用している場合は、SQL Server インスタンスを削除します。
 
    - **[プログラムと機能]** で **[Microsoft SQL Server 2016 (64 ビット)]** を右クリックし、**[アンインストールと変更]** をクリックします。 
    - **[削除]**をクリックします。 
@@ -165,13 +166,13 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
 
 1. 仮想マシンにストレージを追加します。 詳細については、[ストレージの追加](../../../storage/storage-premium-storage.md)に関するページを参照してください。
 
-   両方の仮想マシンに、少なくとも&2; つのデータ ディスクが必要です。
+   両方の仮想マシンに、少なくとも 2 つのデータ ディスクが必要です。
 
    NTFS でフォーマットされたディスクではなく、フォーマットされていないディスクを接続します。 
       >[!NOTE]
       >NTFS でフォーマットされたディスクを接続する場合、ディスクの適格性チェックをしない S2D しか有効にできません。  
    
-   最小で&2; つの Premium Storage (SSD ディスク) を各 VM に接続します。 少なくとも P30 (1 TB) のディスクをお勧めします。
+   最小で 2 つの Premium Storage (SSD ディスク) を各 VM に接続します。 少なくとも P30 (1 TB) のディスクをお勧めします。
 
    [ホスト キャッシュ] を **[読み取り専用]** に設定します。
 
@@ -179,15 +180,15 @@ S2D では、コンバージド型とハイパー コンバージド型の&2; �
 
 1. [既存のドメインに仮想マシンを追加します](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain)。
 
-仮想マシンの作成および構成後に、WSFC を構成できます。
+仮想マシンを作成して構成したら、フェールオーバー クラスターを構成できます。
 
-## <a name="step-2-configure-the-windows-server-failover-cluster-wsfc-with-s2d"></a>手順 2. S2D が有効な Windows Server フェールオーバー クラスター (WSFC) を構成する
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>手順 2. S2D が有効な Windows フェールオーバー クラスターを構成する
 
-次の手順では、S2D が有効な WSFC を構成します。 この手順では、次のサブ手順を実行します。
+次に、S2D が有効なフェールオーバー クラスターを構成します。 この手順では、次のサブ手順を実行します。
 
 1. Windows フェールオーバー クラスタリング機能を追加する
 1. クラスターを検証する
-1. WSFC を作成する
+1. フェールオーバー クラスターを作成する
 1. クラウド監視を作成する
 1. ストレージを追加する
 
@@ -240,34 +241,34 @@ PowerShell を使用してクラスターを検証するには、いずれかの
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
-クラスターを検証した後、WSFC を作成します。
+クラスターの検証後、フェールオーバー クラスターを作成します。
 
-### <a name="create-the-wsfc"></a>WSFC を作成する
+### <a name="create-the-failover-cluster"></a>フェールオーバー クラスターを作成する
 
-このガイドは、[WSFC の作成](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)に関するセクションの手順に沿っています。
+このガイドは、[フェールオーバー クラスターの作成](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)に関するセクションの手順に沿っています。
 
-WSFC を作成するには、次のものが必要です。 
+フェールオーバー クラスターを作成するには、以下が必要です。 
 - クラスター ノードになる仮想マシンの名前。 
-- WSFC の名前。 有効なものを使用します。 
-- WSFC の IP アドレス。 クラスター ノードと同じ Azure 仮想ネットワークおよびサブネットでは使用されていない IP アドレスを使用することができます。 
+- フェールオーバー クラスターの名前。
+- フェールオーバー クラスターの IP アドレス。 クラスター ノードと同じ Azure 仮想ネットワークおよびサブネットでは使用されていない IP アドレスを使用することができます。 
 
-次の PowerShell を実行すると、WSFC が作成されます。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。 
+次の PowerShell を実行すると、フェールオーバー クラスターが作成されます。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。 
 
 ```PowerShell
-New-Cluster -Name <WSFC-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
 ### <a name="create-a-cloud-witness"></a>クラウド監視を作成する
 
 クラウド監視とは、Azure Storage Blob に格納されている、新しい種類のクラスター クォーラム監視です。 これにより、監視の共有をホストする個別の VM が不要になります。
 
-1. [WSFC のクラウド監視を作成します](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 
+1. [フェールオーバー クラスターのクラウド監視を作成](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)します。 
 
 1. BLOB コンテナーを作成します。 
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. WSFC クラスター クォーラム監視を構成します。 UI で [ユーザー インターフェイスでのクォーラム監視の構成](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
+1. フェールオーバー クラスターのクラスター クォーラム監視を構成します。 UI で [ユーザー インターフェイスでのクォーラム監視の構成](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
 
 ### <a name="add-storage"></a>ストレージを追加する
 
@@ -285,7 +286,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
 1. [ボリュームを作成します](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
 
-   S2D の機能の&1; つに、ユーザーが有効化した場合に、記憶域プールを自動的に作成するというものがあります。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、書式設定、クラスターへの追加、クラスターの共有ボリューム (CSV) 作成などのボリューム作成プロセスを自動化するものです。 次の例では、800 ギガバイト (GB) の CSV を作成します。 
+   S2D の機能の 1 つに、ユーザーが有効化した場合に、記憶域プールを自動的に作成するというものがあります。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、書式設定、クラスターへの追加、クラスターの共有ボリューム (CSV) 作成などのボリューム作成プロセスを自動化するものです。 次の例では、800 ギガバイト (GB) の CSV を作成します。 
 
    ```PowerShell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
@@ -297,13 +298,13 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-wsfc-failover"></a>手順 3. WSFC のフェールオーバーのテスト
+## <a name="step-3-test-failover-cluster-failover"></a>手順 3. クラスター フェールオーバーのテスト フェールオーバーを実行する
 
-フェールオーバー クラスター マネージャーで、ストレージ リソースを他のクラスター ノードに移動できることを確認します。 **フェールオーバー クラスター マネージャー**で、WSFC への接続と、1 つのノードから他のノードへのストレージの移動ができるようになったら、FCI を構成することができます。 
+フェールオーバー クラスター マネージャーで、ストレージ リソースを他のクラスター ノードに移動できることを確認します。 **フェールオーバー クラスター マネージャー**を使用してフェールオーバー クラスターに接続し、ノード間でストレージを移動できれば、FCI を構成することができます。 
 
 ## <a name="step-4-create-sql-server-fci"></a>手順 4. SQL Server FCI を作成する
 
-WSFC と、ストレージを含むすべてのクラスター コンポーネントを構成したら、SQL Server FCI を作成できます。 
+フェールオーバー クラスターと、ストレージを含むすべてのクラスター コンポーネントを構成したら、SQL Server FCI を作成できます。 
 
 1. RDP で最初の仮想マシンに接続します。 
 
@@ -321,7 +322,7 @@ WSFC と、ストレージを含むすべてのクラスター コンポーネ�
 
 1. ウィザードを完了すると、セットアップにより、SQL Server FCI が最初のノードにインストールされます。 
 
-1. セットアップで FCI が最初のノードに正常にインストールされたら、RDP で&2; 番目のノードに接続します。
+1. セットアップで FCI が最初のノードに正常にインストールされたら、RDP で 2 番目のノードに接続します。
 
 1. **[SQL Server インストール センター]** を開きます。 **[インストール]** をクリックします。
 
@@ -332,7 +333,7 @@ WSFC と、ストレージを含むすべてのクラスター コンポーネ�
 
 ## <a name="step-5-create-azure-load-balancer"></a>手順 5. Azure ロード バランサーを作成する
 
-Azure 仮想マシンでは、クラスターは、一度に&1; つのクラスター ノードに存在する必要がある IP アドレスを保持するためにロード バランサーを使用します。 このソリューションでは、ロード バランサーは SQL Server FCI の IP アドレスを保持します。 
+Azure 仮想マシンでは、クラスターは、一度に 1 つのクラスター ノードに存在する必要がある IP アドレスを保持するためにロード バランサーを使用します。 このソリューションでは、ロード バランサーは SQL Server FCI の IP アドレスを保持します。 
 
 [Azure のロード バランサーを作成し、構成します](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)。
 
@@ -384,7 +385,7 @@ Azure 仮想マシンでは、クラスターは、一度に&1; つのクラス�
 
 1. **[仮想マシンの選択]** ブレードで **[選択]** をクリックします。
 
-1. **[OK]** を&2; 回クリックします。 
+1. **[OK]** を 2 回クリックします。 
 
 ### <a name="configure-a-load-balancer-health-probe"></a>ロード バランサーの正常性プローブを構成する
 
@@ -444,7 +445,7 @@ PowerShell でクラスターのプローブ ポート パラメーターを設�
 
 FCI のフェールオーバーをテストして、クラスターの機能を検証します。 次の手順を実行します。
 
-1. SQL Server FCI クラスターのノードの&1; つに RDP で接続します。
+1. SQL Server FCI クラスターのノードの 1 つに RDP で接続します。
 
 1. **フェールオーバー クラスター マネージャー**を開きます。 **[ロール]** をクリックします。 SQL Server FCI ロールを所有しているノードを確認します。 
 
@@ -473,10 +474,5 @@ Azure 仮想マシンでは、Microsoft の分散トランザクション コー
 [記憶域スペース ダイレクトの概要](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [SQL Server での S2D のサポート](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

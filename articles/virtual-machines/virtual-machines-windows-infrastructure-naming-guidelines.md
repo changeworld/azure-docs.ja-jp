@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
+ms.date: 03/17/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: a59b8178fb011b837a402207ca86dd2db4505f74
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: e335ecafdd6347bf8b839f50bf36e3d5e2cd42fa
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -98,7 +98,7 @@ Azure で作成作業を始める前に、適切な名前付け規則を用意�
 Azure VM の名前と、基になるオペレーティング システムのコンピューター名を同じにすることをお勧めします。
 
 ## <a name="storage-account-names"></a>ストレージ アカウント名
-ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳しくは、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
+個別のストレージ アカウントを作成しないため、このセクションは [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) には適用されません。 非管理対象ディスクの場合、ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳しくは、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
 
 * mystorageaccount.blob.core.windows.net
 * mystorageaccount.table.core.windows.net

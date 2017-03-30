@@ -1,21 +1,22 @@
 ---
-title: "Azure Application Insights を利用し、Web アプリの障害と例外を診断する | Microsoft Docs"
+title: "Azure Application Insights を利用して Web アプリの障害と例外を診断する | Microsoft Docs"
 description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
-ms.openlocfilehash: c4a20fe310d9a70bb3a954bd936daf6f3d432db9
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 2f046ff687985a5c4f83ca7236ce832b4c81ea6e
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -49,31 +50,25 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 *例外が表示されませんか?[例外のキャプチャ](#exceptions)に関するセクションをご覧ください。*
 
 例外レポートをクリックしてスタック トレースを表示します。
+関連コード ファイルを開くには、スタック トレース内の明細行参照をクリックします。  
 
-![例外をクリックします。](./media/app-insights-asp-net-exceptions/35.png)
+コードでは、CodeLens により例外に関するデータが示されています。
 
-関連ファイルを開くには、スタック トレース内の明細行参照をクリックします。  
+![例外の CodeLens 通知。](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Azure ポータルを使用して障害を診断する
 アプリの Application Insights の概要の [障害] タイルには、例外と失敗した HTTP 要求のグラフ、最も頻繁に発生する障害の原因となる要求 URL の一覧が表示されます。
 
 ![[設定]、[障害] を選択する](./media/app-insights-asp-net-exceptions/012-start.png)
 
-一覧にある失敗した要求の種類を&1; つクリックし、障害の個別発生を表示します。 そこからさらにクリックし、例外またはそれに関連付けられているトレース データを表示します。
+一覧で失敗したいずれかの例外の種類をクリックして、例外の個々の発生の情報を取得します。これにより、詳細とスタック トレースを確認できます。
 
 ![失敗した要求のインスタンスを選択し、例外の詳細で、例外のインスタンスを表示します。](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**あるいは、** [障害] ブレードのさらに下にある例外の一覧から開始できます。 個別の例外が表示されるまでクリックしてください。
-
-![ドリル スルー](./media/app-insights-asp-net-exceptions/040-exception-drill.png)
+**または**、要求の一覧から開始して、それに関連する例外を検索することもできます。
 
 *例外が表示されませんか?[例外のキャプチャ](#exceptions)に関するセクションをご覧ください。*
 
-そこからスタック トレースと各例外の詳細プロパティを確認し、関連するログのトレースまたはその他のイベントを検索できます。
-
-![ドリル スルー](./media/app-insights-asp-net-exceptions/050-exception-properties.png)
-
-[診断検索の詳細については、こちらをご覧ください](app-insights-diagnostic-search.md)。
 
 ## <a name="custom-tracing-and-log-data"></a>カスタムのトレースとログ データ
 アプリに固有の診断データを取得するには、独自のテレメトリ データを送信するコードを挿入します。 これは、要求、ページ ビュー、およびその他の自動収集されたデータとともに、診断検索に表示されます。
@@ -103,7 +98,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="a-nameexceptionsa-capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> 例外と関連する診断データをキャプチャする
+## <a name="exceptions"></a> 例外と関連する診断データをキャプチャする
 最初、ポータルにはアプリの障害の原因となる例外の一部しか表示されません。 ブラウザーの例外はすべて表示されます (Web ページで [JavaScript SDK](app-insights-javascript.md) を使用している場合)。 ただし、ほとんどのサーバー例外は IIS によりキャッチされます。それを確認するには、簡単なコードを記述する必要があります。
 
 そのための方法は次のとおりです。
@@ -437,13 +432,12 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 この値は、TrackException レポートをカウントすることにより、Application Insights ポータルで算出される「例外」数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+
 ## <a name="next-steps"></a>次のステップ
 * [REST、SQL、および依存関係へのその他の呼び出しを監視する](app-insights-asp-net-dependencies.md)
 * [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](app-insights-javascript.md)
 * [パフォーマンス カウンターを監視する](app-insights-performance-counters.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
+ROBOTS: NOINDEX,NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: b5f5df4e9f816f5d1f02cd1ebe1a77abfb2fff5f
 ms.lasthandoff: 11/17/2016
-
 
 ---
 # <a name="the-fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎

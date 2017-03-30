@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
 ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: bf7dd55be2b0e6ae43fc148ff36d8d2141a2f12b
 1. Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
 2. Active Directory PowerShell モジュールがインストールされていない場合は、次のコマンドを使用してインストールします。
    
-   `Install-WindowsFeature –Name AD-Domain-Services –IncludeManagementTools`
+   `Add-WindowsFeature RSAT-AD-PowerShell`
 3. Azure Active Directory PowerShell モジュールがインストールされていない場合、 [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297)からそれをダウンロードしてインストールします。 このコンポーネントには、Azure AD Connect と一緒にインストールされるサインイン アシスタントへの依存関係があります。
 4. エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
    
@@ -138,10 +139,5 @@ Active Directory の構成を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

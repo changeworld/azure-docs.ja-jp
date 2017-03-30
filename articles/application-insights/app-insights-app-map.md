@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 1330d8be444f596b0d1ed2038eaeb1200e8b9285
-ms.openlocfilehash: 04a34eb24df356018590b1791ecc7719a550ab51
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 9fc7a41dcca3d9e51b8c67b86ef61443945b6bad
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -100,11 +100,15 @@ Azure でホストされるコンポーネントの場合、そのコンポー�
 > [!NOTE] 
 > エンド ツー エンドのシステム マップ アプリはプレビュー段階です。 SDK の特別なバージョンでコンポーネントをインストルメント化する必要があり、特別な URL を使用してアプリ マップを表示する必要があります。 [エンド ツー エンドのシステム アプリ マップを設定する方法をご覧ください](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-app-map-preview.md)。
 
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="feedback"></a>フィードバック
 [ご意見やご感想は、ポータルのフィードバック オプションからお寄せください](app-insights-get-dev-support.md)。
 
 ![MapLink-1 image](./media/app-insights-app-map/13.png)
+
 
 ## <a name="next-steps"></a>次のステップ
 

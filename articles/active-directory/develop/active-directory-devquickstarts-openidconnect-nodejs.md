@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 7950cc1df19ddf0a5d12ff8cba8615bb920e58ba
-ms.openlocfilehash: 37666c8c2e1214f8754375efab1f8e6020dbb2e8
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 27f9c5a18b85c0cc2f918ccefeb063f58cc967c6
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -56,9 +57,8 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 
   * **[サインオン URL]** は、アプリのベース URL です。  スケルトンの既定値は `http://localhost:3000/auth/openid/return` です。
 
-  * **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 `https://<tenant-domain>/<app-name>` の形式を使用します (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
-
 6. 登録が完了すると、Azure AD によってアプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーしておきます。
+7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 `https://<tenant-domain>/<app-name>` の形式を使用します (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>手順 2: ディレクトリに前提条件を追加する
 1. コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
@@ -417,9 +417,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 [Azure AD を使用することによる Web API の保護](active-directory-devquickstarts-webapi-nodejs.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

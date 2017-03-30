@@ -18,9 +18,9 @@ ms.date: 02/28/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9c181935e7ba897087d286bea22ebf500ef36e52
-ms.openlocfilehash: 307bfae0e7161782a9ddb97f4ca0d510fc772ab7
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: c920627e11e801bde88b47fc7c7e128e06f59ea8
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/02/2017
 
 5. 毎日の使用状況を表示するには、請求期間をクリックします。 
 
-請求書の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
+請求書の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing-getting-started.md)」をご覧ください。
 
 ## <a name="download-usage-from-the-account-center-csv"></a>アカウント センターから使用状況をダウンロードする (.csv)
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/02/2017
 
     ![Screenshot that shows billing history option](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
-4. 過去&6; 回の請求期間と、現行の未請求期間の明細も確認できます。 
+4. 過去 6 回の請求期間と、現行の未請求期間の明細も確認できます。 
 
     ![Screenshot that shows billing periods, options to download invoice and daily usage, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 03/02/2017
 
     ![Screenshot that shows the Download Usage option](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
+毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](billing-getting-started.md)」をご覧ください。
 
 ## <a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
 請求書が表示されない理由はいくつか考えられます。
