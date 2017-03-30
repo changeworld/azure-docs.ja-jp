@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/27/2017
+ms.date: 03/21/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
-ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 5e7520f8a023cd5feb8401483161e7296a413b02
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
 * [Azure アカウント](#azure-account)
-* [Visual Studio 2015 と Azure SDK for .NET](#visual-studio-2015-with-the-azure-sdk-for-net)
+* [Visual Studio 2017 と Azure SDK for .NET](#visual-studio-2017-with-the-azure-sdk-for-net)
 
 ### <a name="azure-account"></a>Azure アカウント
 このチュートリアルを完了するには、Azure アカウントが必要です。 そのための方法は次のとおりです。
@@ -53,22 +54,23 @@ ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 * [無料で Azure アカウントを開きます](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
 * [Visual Studio サブスクライバーの特典を有効にします](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
-### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015 と Azure SDK for .NET
-このチュートリアルは、Visual Studio 2015 と [Azure SDK for .NET](../dotnet-sdk.md) 2.8.2 以降向けに書かれています。 [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio をまだ持っていない場合は、SDK と共に自動的にインストールされます。
+### <a name="visual-studio-2017-with-the-azure-sdk-for-net"></a>Visual Studio 2017 と Azure SDK for .NET
+このチュートリアルは、Visual Studio 2017 と [Azure SDK for .NET](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#azuretools) 向けに書かれています。 Azure SDK 2.9.5 は、Visual Studio インストーラーに付属しています。
+
+Visual Studio 2015 を使用している場合は、[Azure SDK for .NET](../dotnet-sdk.md) 2.8.2 以降でチュートリアルを実行できます。 [最新の Azure SDK for Visual Studio 2015 はここからダウンロードしてください](http://go.microsoft.com/fwlink/?linkid=518003)。 Visual Studio をまだ持っていない場合は、SDK と共に自動的にインストールされます。 一部の画面は、このチュートリアルに例示されている画像と異なる場合があります。
 
 Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visual Studio 2013 をダウンロード](http://go.microsoft.com/fwlink/?LinkID=324322)できます。 一部の画面は、このチュートリアルに例示されている画像と異なる場合があります。
-
-> [!NOTE]
-> マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から&30; 分以上) かかる場合があります。
-> 
-> 
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 1. Visual Studio を開き、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
 2. **[テンプレート]** リストの **[Visual C#]** ノードを展開し、**[クラウド]** を選択して **[ASP.NET Web アプリケーション]** をクリックします。 **[.NET Framework 4.5.2]** 以降が選択されていることを確認します。  **[名前]** ボックスに「**ContosoTeamStats**」と入力し、**[OK]** をクリックします。
    
     ![Create project][cache-create-project]
-3. プロジェクトの種類として、 **[MVC]** を選択します。 **[クラウド内のホスト]** チェック ボックスをオフにします。 このチュートリアルの以降の手順では、[Azure リソースをプロビジョニング](#provision-the-azure-resources)し、[アプリケーションを Azure に発行](#publish-the-application-to-azure)します。 Visual Studio から **[クラウド内のホスト]** チェック ボックスをオンにした状態で App Service Web アプリをプロビジョニングする例については、 [ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用](../app-service-web/web-sites-dotnet-get-started.md)に関する記事を参照してください。
+3. プロジェクトの種類として、 **[MVC]** を選択します。 
+
+    **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定値が他の値に設定されている場合があります。 これを変更するには、**[認証の変更]** をクリックし、**[認証なし]** を選択します。
+
+    Visual Studio 2015 で実行している場合は、**[クラウドにホストする]** チェック ボックスをオフにします。 このチュートリアルの以降の手順では、[Azure リソースをプロビジョニング](#provision-the-azure-resources)し、[アプリケーションを Azure に発行](#publish-the-application-to-azure)します。 Visual Studio から **[クラウド内のホスト]** チェック ボックスをオンにした状態で App Service Web アプリをプロビジョニングする例については、 [ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用](../app-service-web/web-sites-dotnet-get-started.md)に関する記事を参照してください。
    
     ![Select project template][cache-select-template]
 4. **[OK]** をクリックしてプロジェクトを作成します。
@@ -76,9 +78,21 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 ## <a name="create-the-aspnet-mvc-application"></a>ASP.NET MVC アプリケーションの作成
 このセクションでは、データベースからチームの統計情報を読み取って表示する基本的なアプリケーションを作成します。
 
+* [Entity Framework NuGet パッケージの追加](#add-the-entity-framework-nuget-package)
 * [モデルの追加](#add-the-model)
 * [コントローラーの追加](#add-the-controller)
 * [ビューの構成](#configure-the-views)
+
+### <a name="add-the-entity-framework-nuget-package"></a>Entity Framework NuGet パッケージの追加
+
+1. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
+    
+    ```
+    Install-Package EntityFramework
+    ```
+
+このパッケージの詳細については、[EntityFramework](https://www.nuget.org/packages/EntityFramework/) に関する NuGet ページを参照してください。
 
 ### <a name="add-the-model"></a>モデルの追加
 1. **ソリューション エクスプローラー**で **Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。 
@@ -172,21 +186,27 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 1. **ソリューション エクスプローラー**で、**web.config** をダブルクリックして開きます。
    
     ![web.config][cache-web-config]
-2. 次の接続文字列を `connectionStrings` セクションに追加します。 接続文字列の名前は、Entity Framework のデータベース コンテキスト クラス ( `TeamContext`) の名前と一致している必要があります。
-
-    ```xml   
-    <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
-    ```
-
-    追加後の `connectionStrings` セクションは、次の例のようになります。
+2. 次の `connectionStrings` セクションを追加します。 接続文字列の名前は、Entity Framework のデータベース コンテキスト クラス ( `TeamContext`) の名前と一致している必要があります。
 
     ```xml
     <connectionStrings>
-        <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
-            providerName="System.Data.SqlClient" />
         <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
+
+    次の例に示すように、`configSections` の後に続けて、新しい `connectionStrings` セクションを追加できます。
+
+    ```xml
+    <configuration>
+      <configSections>
+        <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+        <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+      </configSections>
+      <connectionStrings>
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+      </connectionStrings>
+      ...
+      ```
 
 ### <a name="add-the-controller"></a>コントローラーの追加
 1. **F6** キーを押して、プロジェクトをビルドします。 
@@ -261,14 +281,14 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 * [キャッシュと連動するように Teams Index ビューを更新する](#update-the-teams-index-view-to-work-with-the-cache)
 
 ### <a name="configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成する
-1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
+    
+    ```
+    Install-Package StackExchange.Redis
+    ```
    
-    ![Manage NuGet packages][redis-cache-manage-nuget-menu]
-2. 検索ボックスに「**StackExchange.Redis**」と入力し、検索結果から必要なバージョンを選択して、**[インストール]** をクリックします。
-   
-    ![StackExchange.Redis NuGet package][redis-cache-stack-exchange-nuget]
-   
-    クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
+    クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。 `StackExchange.Redis` クライアント ライブラリの厳密な名前を持つバージョンを使用する場合は、`StackExchange.Redis.StrongName` パッケージをインストールします。
 3. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、**TeamsController.cs** をダブルクリックして開きます。
    
     ![Teams controller][cache-teamscontroller]
@@ -670,7 +690,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
     ```
    
-    この行には、現在の操作に関するステータス レポートを保持する `ViewBag.Msg` の値が表示されます。ステータス レポートは、前の手順のいずれかのアクション リンクをクリックしたときに設定されます。   
+    この行は、`ViewBag.Msg` の値を表示します。これには、現在の操作に関する状態レポートが含まれています。 `ViewBag.Msg` は、前の手順のいずれかのアクション リンクをクリックしたときに設定されます。   
    
     ![Status message][cache-status-message]
 2. **F6** キーを押して、プロジェクトをビルドします。
@@ -698,7 +718,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 ![Azure へのデプロイ][cache-deploy-to-azure-step-1]
 
 1. **[基本]** セクションで、使用する Azure サブスクリプションを選択し、既存のリソース グループを選択するか新しいリソース グループを作成して、リソース グループの場所を指定します。
-2. **[設定]** セクションで、管理者アカウントの名前 (**admin** ではなく **ADMINISTRATORLOGIN**)、管理者のログイン パスワード (**ADMINISTRATORLOGINPASSWORD**)、データベース名 (**DATABASENAME**) を指定します。 その他のパラメーターは、Free App Service ホスティング プランを使用するように構成し、Free レベルに付属しない SQL Database と Azure Redis Cache については、コストを低く抑えるように設定しています。
+2. **[設定]** セクションで、**管理者のログイン** (**admin** は使用しないでください)、**管理者のログイン パスワード**、**データベース名**を指定します。 その他のパラメーターは、Free App Service ホスティング プランを使用するように構成し、Free レベルに付属しない SQL Database と Azure Redis Cache については、コストを低く抑えるように設定しています。
 
     ![Azure へのデプロイ][cache-deploy-to-azure-step-2]
 
@@ -725,18 +745,14 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 1. Visual Studio で **ContosoTeamStats** プロジェクトを右クリックし、**[発行]** を選択します。
    
-    ![Publish][cache-publish-app]
-2. **[Microsoft Azure App Service]**をクリックします。
+    ![[発行]][cache-publish-app]
+2. **[Microsoft Azure App Service]** をクリックし、**[既存のものを選択]** を選択して、**[発行]** をクリックします。
    
     ![[発行]][cache-publish-to-app-service]
-3. Azure リソースを作成するときに使用したサブスクリプションを選択し、そのリソースを含んでいるリソース グループを展開して、必要な Web アプリを選択し、 **[OK]**をクリックします。 **[Deploy to Azure (Azure へのデプロイ)]** ボタンを使用した場合、Web アプリの名前は **webSite** から始まります。
+3. Azure リソースを作成するときに使用したサブスクリプションを選択し、そのリソースが含まれているリソース グループを展開して、目的の Web アプリを選択します。 **[Deploy to Azure (Azure へのデプロイ)]** ボタンを使用した場合、Web アプリの名前は **webSite** から始まります。
    
     ![Select Web App][cache-select-web-app]
-4. **[接続の検証]** をクリックして設定を検証し、**[発行]** をクリックします。
-   
-    ![Publish][cache-publish]
-   
-    しばらくすると発行プロセスが完了し、ブラウザーが起動してサンプル アプリケーションが実行されます。 検証時または発行時に DNS エラーが発生した場合で、かつアプリケーションに必要な Azure リソースのプロビジョニング プロセスが完了した直後である場合は、しばらく待ってからもう一度実行してください。
+4. **[OK]** をクリックして発行プロセスを開始します。 しばらくすると発行プロセスが完了し、ブラウザーが起動してサンプル アプリケーションが実行されます。 検証時または発行時に DNS エラーが発生した場合で、かつアプリケーションに必要な Azure リソースのプロビジョニング プロセスが完了した直後である場合は、しばらく待ってからもう一度実行してください。
    
     ![Cache added][cache-added-to-application]
 
@@ -848,10 +864,5 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-publish]: ./media/cache-web-app-howto/cache-publish.png
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

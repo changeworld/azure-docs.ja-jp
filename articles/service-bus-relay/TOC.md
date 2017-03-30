@@ -4,30 +4,29 @@
 
 # 作業の開始
 ## [名前空間を作成する](relay-create-namespace-portal.md)
-## [ハイブリッド接続の概要](relay-hybrid-connections-dotnet-get-started.md)
-## [WCF Relay の概要](service-bus-dotnet-how-to-use-relay.md)
-## [Shared Access Signatures](../service-bus-messaging/service-bus-sas-overview.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [WCF Relay ハイブリッドのチュートリアル](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## [WCF Relay .NET のチュートリアル](service-bus-relay-tutorial.md)
-## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)
+## Hybrid Connections
+### [.NET](relay-hybrid-connections-dotnet-get-started.md)
+### [Node](relay-hybrid-connections-node-get-started.md)
+## [WCF リレー](relay-wcf-dotnet-get-started.md)
 
 # 方法
-## [認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [故障と障害に対する計画](../service-bus-messaging/service-bus-outages-disasters.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json)
-## [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
-## [一般的な例外](relay-exceptions.md)
+## 計画と設計
+### [認証とセキュリティ](relay-authentication-and-authorization.md)
+### [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
+## 開発
+### [利用可能な API](relay-api-overview.md)
+#### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
+#### [Node](relay-hybrid-connections-node-ws-api-overview.md)
 
 # リファレンス
-## [サンプル](service-bus-relay-samples.md)
-## [ハイブリッド接続 .NET API](/dotnet/api/microsoft.servicebus)
-## [WCF Relay .NET API](/dotnet/api/microsoft.servicebus)
-## [ポートの設定](service-bus-relay-port-settings.md)
+## .NET
+### [Microsoft.Azure.Relay](/dotnet/api/microsoft.azure.relay)
+### [Microsoft.ServiceBus](/dotnet/api/Microsoft.ServiceBus)
+## [例外](relay-exceptions.md)
+## [ポートの設定](relay-port-settings.md)
 
 # リソース
-## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
-## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
 ## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
-## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-bus/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
+## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

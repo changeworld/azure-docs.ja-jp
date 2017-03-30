@@ -1,3 +1,4 @@
+
 # 概要
 ## [Service Fabric とは](service-fabric-overview.md)
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
@@ -22,11 +23,13 @@
 ### [パターンとシナリオ](service-fabric-patterns-and-scenarios.md)
 ### 基本
 #### [アプリケーション モデル](service-fabric-application-model.md)
+#### [アプリケーションのパッケージ化](service-fabric-package-apps.md)
 #### [サポートされるプログラミング モデル](service-fabric-choose-framework.md)
 #### [サービスの状態](service-fabric-concepts-state.md)
 #### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
 #### [Web フロントエンドの追加](service-fabric-add-a-web-frontend.md)
 #### [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
+#### [Java 開発用の Eclipse プラグインの使用](service-fabric-get-started-eclipse.md)
 #### [Visual Studio でアプリを管理する](service-fabric-manage-application-in-visual-studio.md)
 #### [Visual Studio でセキュリティ保護された接続を構成する](service-fabric-visualstudio-configure-secure-connections.md)
 #### デバッグ
@@ -62,7 +65,7 @@
 #### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
 #### [Reliable Services を使用した通信](service-fabric-reliable-services-communication.md)
 #### [Reliable Services を使用した通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
-##### [ASP.NET](service-fabric-reliable-services-communication-webapi.md)
+##### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 ##### [サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
 ##### [リバース プロキシ](service-fabric-reverseproxy.md)
@@ -88,6 +91,7 @@
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
 ### [Service Fabric への移行](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+### [推奨事例](/azure/architecture/service-fabric/migrate-from-cloud-services)
 
 ## クラスターを作成および管理する
 

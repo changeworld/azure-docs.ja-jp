@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 310cb63756806c8fab208c47bce6c7292ea5e5d7
-ms.openlocfilehash: 61e8a49475129486505111bd595f98af955ed809
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: efd70d9843f3d8db0c2396c79eacb230fcdfa467
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,9 +38,9 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
     詳細については、[Windows を実行する VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 2. VM に接続し、RemoteApp を使用して共有するアプリをインストールして構成します。 アプリに必要な追加の Windows の構成も実行してください。
    
-    詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+    詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 3. いずれかの Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。 スクリプトを実行するには、デスクトップ上にある **ValidateRemoteAppImage** をダブルクリックします。 次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
-4. SYSPREP は、イメージを一般化してキャプチャします。 手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+4. SYSPREP は、イメージを一般化してキャプチャします。 手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
 ## <a name="import-the-image-into-the-azure-remoteapp-image-library"></a>Azure RemoteApp イメージ ライブラリへのイメージのインポート
 次の手順を使用して、新しいイメージを Azure RemoteApp にインポートします。
@@ -58,10 +59,5 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 > 
 
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

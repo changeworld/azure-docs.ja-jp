@@ -98,6 +98,11 @@
 ## Arduino の使用
 
 ### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
+#### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
+#### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### レッスン 1: デバイスの構成
@@ -233,7 +238,9 @@
 #### [REST API の使用](iot-hub-rm-rest.md)
 #### [PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
 #### [.NET からテンプレートを使用する](iot-hub-rm-template.md)
-### [ファイルのアップロードを構成する](iot-hub-configure-file-upload.md)
+### ファイルのアップロードを構成する
+#### [ポータルの使用](iot-hub-configure-file-upload.md)
+#### [PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
 ### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
 ### [使用状況のメトリック](iot-hub-metrics.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)

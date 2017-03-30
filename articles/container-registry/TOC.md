@@ -6,6 +6,7 @@
 ## [ポータルでのレジストリの作成](container-registry-get-started-portal.md)
 ## [Azure CLI 2.0 を使用したレジストリの作成](container-registry-get-started-azure-cli.md)
 ## [イメージのプッシュとプル](container-registry-get-started-docker-cli.md)
+## [リポジトリの表示](container-registry-repositories.md)
 
 # 方法
 

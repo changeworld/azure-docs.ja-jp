@@ -16,14 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
-ms.openlocfilehash: 084200ba25f0eb213100c638d164441c2618efe0
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8f85a4cee6a59316eb5c321007b5b9d562c71302
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。 ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
 
@@ -37,7 +38,7 @@ ReportViewer を Microsoft Azure Web サイトに組み込むには、次のタ�
 * **発行する** 
 
 ## <a name="prerequisites"></a>前提条件
-「 [Azure Virtual Machines での SQL Server Business Intelligence](virtual-machines-windows-classic-ps-sql-bi.md)」の「一般的な推奨事項とベスト プラクティス」セクションを参照してください。
+「 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)」の「一般的な推奨事項とベスト プラクティス」セクションを参照してください。
 
 > [!NOTE]
 > ReportViewer コントロールは、Standard Edition 以上のエディションの Visual Studio に含まれています。 Web Developer Express Edition を使用している場合、ReportViewer ランタイム機能を使用するには、 [Microsoft Report Viewer 2012 Runtime](https://www.microsoft.com/download/details.aspx?id=35747) をインストールする必要があります。
@@ -82,20 +83,15 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 > [!IMPORTANT]
 > [Azure デプロイ プロジェクトの追加] または [Azure クラウド サービス プロジェクトの追加] コマンドがソリューション エクスプローラーのショートカット メニューに表示されない場合は、必要に応じてプロジェクトの [ターゲット フレームワーク] を .NET Framework 4 に変更してください。
 > 
-> これら&2; つのコマンド機能は、実質的には同じです。 インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
+> これら 2 つのコマンド機能は、実質的には同じです。 インストールされている Microsoft Azure SDK のバージョンに合わせて応じて、いずれか一方のコマンドがショートカット メニューに表示されます。
 > 
 > 
 
 ## <a name="resources"></a>リソース
 [Microsoft レポート](http://go.microsoft.com/fwlink/?LinkId=205399)
 
-[Azure Virtual Machines での SQL Server Business Intelligence](virtual-machines-windows-classic-ps-sql-bi.md)
+[Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)
 
-[ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-windows-classic-ps-sql-report.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
+[ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](../classic/ps-sql-report.md)
 
 

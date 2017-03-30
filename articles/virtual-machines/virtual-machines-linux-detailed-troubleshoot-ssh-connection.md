@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 03/07/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2df9b83132711e199b58fa92841a3dca74c7282a
-ms.openlocfilehash: 0164ad801b11a6c6124df8106bd7b71b737f81f1
-ms.lasthandoff: 11/30/2016
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 81f73e6c1c4fa48c0235cb497fa9e15b0c92a668
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -120,7 +120,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 * **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Resource Manager デプロイ モデルを使用して作成された VM では、Azure Portal で **[仮想マシン]** > *[VM 名]* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
 * **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
-問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 
 <a id="nsg"></a>
 
@@ -133,7 +133,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![Linux ベースの Azure 仮想マシンを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする](virtual-machines-linux-classic-reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
+[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする](linux/classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
 
 もう一度、コンピューターから接続を試みてください。 引き続き接続できない場合は、以下の問題が考えられます。
 

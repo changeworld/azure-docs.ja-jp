@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 12df603e22c8c735bf5c3f892575e79725f7313e
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9fc96d70592bd55685ebbf1b80f6017b74f58925
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -45,7 +46,7 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 ## <a name="considerations-for-securing-connections-to-azure-virtual-machine"></a>Azure 仮想マシンへの接続のセキュリティ保護に関する注意事項:
 * 仮想マシンの管理には、パブリック RDP ポートではなく、 [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) を使用することを検討してください。
 * [ネットワーク セキュリティ グループ](../../../virtual-network/virtual-networks-nsg.md) (NSG) を使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。 これを行う方法については、 [PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](../../../virtual-network/virtual-networks-acl-powershell.md)を参照してください。
-* エンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../../virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
+* エンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
 * Azure Virtual Machines の SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にします。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192.aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
 * 仮想マシンが特定のネットワークからのみアクセスされる場合は、Windows ファイアウォールを使用して、特定の IP アドレスまたはネットワーク サブネットへのアクセスを制限します。
 
@@ -53,10 +54,5 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

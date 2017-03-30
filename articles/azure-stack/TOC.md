@@ -36,8 +36,9 @@
 
 # セキュリティとコンプライアンス
 ## 方法
-### [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
+### [RBAC の管理](azure-stack-manage-permissions.md)
 ### [AD FS のユーザーの追加](azure-stack-add-users-adfs.md)
+### [サービス プリンシパルの作成](Azure-stack-create-service-principals.md)
 
 # サービスの提供
 ## 作業開始
@@ -113,6 +114,9 @@
 # トラブルシューティング
 ## [既知の問題](azure-stack-troubleshooting.md)
 ## [Azure Stack の診断](azure-stack-diagnostics.md)
+
+# リファレンス
+## [API バージョンのプロファイルの管理](azure-stack-version-profiles.md)
 
 # リソース
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack)  

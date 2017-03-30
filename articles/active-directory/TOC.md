@@ -160,6 +160,8 @@
 #### アプリを発行する
 ##### [Azure ポータル](application-proxy-publish-azure-portal.md)
 ##### [クラシック ポータル](active-directory-application-proxy-publish.md)
+
+#### [PingAccess for Azure AD](application-proxy-ping-access.md)
 #### [セキュリティ](application-proxy-security-considerations.md)
 #### [ネットワーク](application-proxy-network-topology-considerations.md)
 #### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)

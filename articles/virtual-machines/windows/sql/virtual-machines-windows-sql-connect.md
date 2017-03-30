@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 02/28/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 699d0c37adb9618827b6b39d74d09c2f9ba92913
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 37b0abfa38282d7e8789ba5687f0937a60262464
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-resource-manager"></a>Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-connect.md)
-> * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-connect.md)
+> * [クラシック](../classic/sql-connect.md)
 > 
 > 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/11/2017
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンについては、[Azure クラシックでの SQL Server 仮想マシンへの接続](../sqlclassic/virtual-machines-windows-classic-sql-connect.md)に関する記事をご覧ください。
+この記事のクラシック バージョンについては、[Azure クラシックでの SQL Server 仮想マシンへの接続](../classic/sql-connect.md)に関する記事をご覧ください。
 
 プロビジョニングと接続の両方に関する完全なチュートリアルについては、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 

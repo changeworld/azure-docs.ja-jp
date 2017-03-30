@@ -17,9 +17,9 @@ ms.date: 02/07/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5f0fc28d034306476c5504a65ddb81193e3e589c
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: bd3032b3df92c43b6cc6431eff19bd7cc0cc47bd
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
@@ -68,10 +68,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
    
     ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
    
-    Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
-   
-   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 3. 接続したら、次のコマンドを使用して .zip ファイルを解凍します。
    

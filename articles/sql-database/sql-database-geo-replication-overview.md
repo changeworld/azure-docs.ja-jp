@@ -16,9 +16,9 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
-ms.openlocfilehash: 26eac30a08db2e224f9e9018817a18c3a4405b7f
-ms.lasthandoff: 03/16/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: bd3aea04266baebbba1b953d5a2b7c4b2fb41a87
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/16/2017
 
 何らかの理由でプライマリ データベースにエラーが発生したか、単にプライマリ データベースをオフラインにする必要がある場合、任意のセカンダリ データベースに *フェールオーバー* させることができます。 セカンダリ データベースの 1 つに対してフェールオーバーがアクティブな場合、その他すべてのセカンダリ データベースは新しいプライマリ データベースに自動的にリンクします。
 
-[Azure Portal](sql-database-geo-replication-failover-portal.md)、[PowerShell](sql-database-geo-replication-failover-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 計画されたフェールオーバー](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)、または[REST API - 計画されていないフェールオーバー](https://msdn.microsoft.com/library/azure/mt582027.aspx)を使用して、セカンダリにフェールオーバーできます。
+[Azure Portal](sql-database-geo-replication-failover-portal.md)、[PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)、[Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)、[REST API - 計画されたフェールオーバー](https://msdn.microsoft.com/library/mt575007.aspx)、または[REST API - 計画されていないフェールオーバー](https://msdn.microsoft.com/library/mt582027.aspx)を使用して、セカンダリにフェールオーバーできます。
 
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
@@ -107,10 +107,10 @@ ms.lasthandoff: 03/16/2017
 ### <a name="powershell"></a>PowerShell
 | コマンドレット | 説明 |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx) |1 つまたは複数のデータベースを取得します。 |
+| [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) |1 つまたは複数のデータベースを取得します。 |
 | [New-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt619393.aspx) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
-| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/en-us/library/mt603457.aspx) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
+| [Remove-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603457.aspx) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
 | [Get-AzureRmSqlDatabaseReplicationLink](https://msdn.microsoft.com/library/mt619330.aspx) |Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
 |  | |
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 03/16/2017
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx) |復元操作中にステータスを返します。 |
-| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) |geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。 |
+| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://msdn.microsoft.com/library/azure/mt575007.aspx) |geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。 |
 | [Set Secondary Database as Primary (計画されていないフェールオーバー)](https://msdn.microsoft.com/library/azure/mt582027.aspx) |セカンダリ データベースに強制的にフェールオーバーして、セカンダリをプライマリに設定します。 |
 | [Get Replication Links](https://msdn.microsoft.com/library/azure/mt600929.aspx) |geo レプリケーション パートナーシップで指定された SQL データベースのすべてのレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
 | [Get Replication Link](https://msdn.microsoft.com/library/azure/mt600778.aspx) |geo レプリケーション パートナーシップで指定された SQL データベースの特定のレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |

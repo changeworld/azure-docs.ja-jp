@@ -62,6 +62,7 @@
 ### [同期中のエラー](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [オブジェクトが同期されない](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [パスワードの同期](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [LocalDB の 10 GB 制限からの回復方法](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # リファレンス
 ## [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)

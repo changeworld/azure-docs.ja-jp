@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 7cf81f2081e7927e4d68b7d0c8ca185f891fdc8d
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 16b659bf07cc44d56234bb5532f931d5ca6fb0a6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -37,7 +37,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 | 領域 | 最適化 |
 | --- | --- |
-| [VM サイズ](#vm-size-guidance) |SQL Enterprise Edition: [DS3](../../virtual-machines-windows-sizes.md#ds-series) 以上<br/><br/>SQL Standard Edition および Web Edition: [DS2](../../virtual-machines-windows-sizes.md#ds-series) 以上 |
+| [VM サイズ](#vm-size-guidance) |SQL Enterprise Edition: [DS3](../../virtual-machines-windows-sizes-memory.md) 以上<br/><br/>SQL Standard Edition および Web Edition: [DS2](../../virtual-machines-windows-sizes-memory.md) 以上 |
 | [Storage](#storage-guidance) |[Premium Storage](../../../storage/storage-premium-storage.md) を使用します。 標準ストレージは、開発/テストにのみ使用することをお勧めします。<br/><br/>[ストレージ アカウント](../../../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで [Azure geo 冗長ストレージ](../../../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。 |
 | [ディスク](#disks-guidance) |少なくとも 2 つの [P30 ディスク](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) (ログ ファイル用とデータ ファイルおよび TempDB 用) を使用します。<br/><br/>データベース ストレージまたはログに、オペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>重要: Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを向上させます。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。 |
 | [I/O](#io-guidance) |データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。 |
@@ -130,7 +130,7 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 * **Azure 内の SQL Server データ ファイル**: [Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。 Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
 
 ## <a name="next-steps"></a>次のステップ
-SQL Server と Premium Storage についてさらに詳しく調べたい場合は、「[Virtual Machines 上での Azure Premium Storage と SQL Server の使用](../sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage.md)」をご覧ください。
+SQL Server と Premium Storage についてさらに詳しく調べたい場合は、「[Virtual Machines 上での Azure Premium Storage と SQL Server の使用](../classic/sql-server-premium-storage.md)」をご覧ください。
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 

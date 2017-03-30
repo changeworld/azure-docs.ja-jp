@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: kyliel
 translationtype: Human Translation
-ms.sourcegitcommit: 24410a07995d5ac813b2bf4cdeed320c72ce7e06
-ms.openlocfilehash: 7845b552bd1360927eae414f57fefbd74ac0b7f7
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: d0fc5de34f7d9e5a607495eb97d9e35dc9eb21f9
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -110,7 +110,7 @@ FreeBSD でサポートされている VM 拡張機能を以下に示します�
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>認証: ユーザー名、パスワード、SSH キー
 Azure Portal を使用して FreeBSD 仮想マシンを作成するときに、ユーザー名、パスワード、または SSH 公開キーを入力する必要があります。
-Azure に FreeBSD 仮想マシンをデプロイするためのユーザー名は、仮想マシン ("root" など) に既に存在するシステム アカウント (UID は&100; 未満) の名前とは同じにしないでください。
+Azure に FreeBSD 仮想マシンをデプロイするためのユーザー名は、仮想マシン ("root" など) に既に存在するシステム アカウント (UID は 100 未満) の名前とは同じにしないでください。
 現在サポートされているのは、RSA SSH キーだけです。 複数行の SSH キーは、`---- BEGIN SSH2 PUBLIC KEY ----`で始まり、`---- END SSH2 PUBLIC KEY ----`で終わる必要があります。
 
 ## <a name="obtaining-superuser-privileges"></a>スーパーユーザー権限の取得
@@ -128,5 +128,5 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) に移動して、FreeBSD VM を作成します。
-* 独自の FreeBSD を Azure で使用する場合は、「[FreeBSD VHD の作成と Azure へのアップロード](./virtual-machines-linux-classic-freebsd-create-upload-vhd.md)」をご覧ください。
+* 独自の FreeBSD を Azure で使用する場合は、「[FreeBSD VHD の作成と Azure へのアップロード](linux/classic/freebsd-create-upload-vhd.md)」をご覧ください。
 

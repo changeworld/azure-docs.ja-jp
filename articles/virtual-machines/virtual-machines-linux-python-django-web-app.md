@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 11/17/2015
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 48644685a296875b8884cd4357f49391e30f034a
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 25a6507e3d7b473d9985114de4061da8c602e987
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="django-hello-world-web-application-on-a-linux-vm"></a>Linux VM での Django Hello World Web アプリケーション
 > [!div class="op_single_selector"]
-> * [Windows](virtual-machines-windows-classic-python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+> * [Windows](windows/classic/python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 > * [Mac/Linux](virtual-machines-linux-python-django-web-app.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
@@ -112,10 +113,5 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 ## <a name="shutting-down-your-azure-virtual-machine"></a>Azure の仮想マシンのシャットダウン
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
