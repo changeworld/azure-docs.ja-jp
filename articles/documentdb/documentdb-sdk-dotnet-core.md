@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 03/20/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 492444304c42a270e638050506e04297c8b17e51
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 43a09fc208bee29c41776df402c5be664bb38e18
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -57,6 +57,11 @@ DocumentDB .NET Core SDK には最新バージョンの [DocumentDB .NET SDK](do
 > [!NOTE] 
 > DocumentDB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールでお問い合わせください。
 
+### <a name="a-name112112httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore112"></a><a name="1.1.2"/>[1.1.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.2)
+
+* WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
+* ReadDocumentAsync API に新しいオーバーロードを追加することで、型指定されたドキュメントを直接読み取るサポートを追加しました。
+
 ### <a name="a-name111111httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore111"></a><a name="1.1.1"/>[1.1.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.1)
 
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) の LINQ サポートを追加しました。
@@ -89,6 +94,7 @@ DocumentDB .NET Core Preview SDK には最新バージョンの [DocumentDB .NET
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.1.2](#1.1.2) |2017 年 3 月 20 日 |--- |
 | [1.1.1](#1.1.1) |2017 年 3 月 14 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 2 月 16 日 |--- |
 | [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |

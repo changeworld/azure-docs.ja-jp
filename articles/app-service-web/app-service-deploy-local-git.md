@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 5842188b5d0a66436db7ab0f6b85bf14b4759c50
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 657554ee3929572632dc007d1a6500e59e2a6b97
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/16/2017
 > 
 > 
 
-## <a name="a-namestep1astep-1-create-a-local-repository"></a><a name="Step1"></a>手順 1: ローカル リポジトリを作成する
+## <a name="Step1"></a>手順 1: ローカル リポジトリを作成する
 次のタスクを実行して、新しい Git リポジトリを作成します。
 
 1. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ライン ツールを起動します。 OS X システムでは、 **ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/16/2017
    
         git init
 
-## <a name="a-namestep2astep-2-commit-your-content"></a><a name="Step2"></a>手順 2: コンテンツをコミットする
+## <a name="Step2"></a>手順 2: コンテンツをコミットする
 App Service では、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。 
 
 1. リポジトリに既にコンテンツが含まれている場合は、このポイントをスキップし、以下のポイント 2 に進みます。 リポジトリにまだコンテンツが含まれていない場合は、静的 .html ファイルにより値を次のように設定します。 
@@ -60,7 +60,7 @@ App Service では、さまざまなプログラミング言語で作成され�
    
         git commit -m "Hello Azure App Service"
 
-## <a name="a-namestep3astep-3-enable-the-app-service-app-repository"></a><a name="Step3"></a>手順 3: App Service アプリのリポジトリを有効にする
+## <a name="Step3"></a>手順 3: App Service アプリのリポジトリを有効にする
 次に示している手順を実行して、App Service アプリに対して Git リポジトリを有効にします。
 
 1. [ローカル Git]にログインします。
@@ -71,7 +71,7 @@ App Service では、さまざまなプログラミング言語で作成され�
    
     ![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
-## <a name="a-namestep4astep-4-deploy-your-project"></a><a name="Step4"></a>手順 4: プロジェクトをデプロイする
+## <a name="Step4"></a>手順 4: プロジェクトをデプロイする
 次に示している手順に従って、ローカル Git を使用してアプリを App Service に発行します。
 
 1. Azure Portal の対象アプリのブレードで、**[設定]、[プロパティ]** の順にクリックし、**[Git URL (Git の URL)]** を確認します。
@@ -97,7 +97,7 @@ App Service では、さまざまなプログラミング言語で作成され�
     ![](./media/app-service-deploy-local-git/deployment_history.png)
 6. アプリのブレード上部の **[参照]** ボタンをクリックして、コンテンツがデプロイされていることを確認します。 
 
-## <a name="a-namestep5atroubleshooting"></a><a name="Step5"></a>トラブルシューティング
+## <a name="Step5"></a>トラブルシューティング
 Git を使用して Azure の App Service に発行する場合に発生する一般的なエラーまたは問題を以下に示します。
 
 - - -
@@ -128,9 +128,18 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
-**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 次に例を示します。
+**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 For example:
 
     git push azure master
+
+- - -
+**症状**: RPC failed; result=22, HTTP code = 502
+
+**原因**: このエラーは、HTTPS 経由で大規模な Git リポジトリをプッシュしようとした場合に発生します。
+
+**解決策**: ローカル コンピューター上の Git 構成を変更して postBuffer を増やします。
+
+    git config --global http.postBuffer 524288000
 
 - - -
 **症状**: エラー - 変更がリモート リポジトリにコミットされましたが、Web アプリは更新されていません。
@@ -152,7 +161,7 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 * [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
 * [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)
 * [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)](/powershell/azureps-cmdlets-docs)
-* [Azure コマンド ライン インターフェイスの使用方法](../xplat-cli-install.md)
+* [Azure コマンド ライン インターフェイスの使用方法](../cli-install-nodejs.md)
 
 [Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
 [Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/

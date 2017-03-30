@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
+ROBOTS: NOINDEX
 translationtype: Human Translation
-ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
-ms.openlocfilehash: 51a9ebdee38c14eb3dc1148070004e6792369b39
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: e7a2fef8860984c2e4e3749202868940b836ca9f
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,7 +34,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 ## <a name="requirements"></a>必要条件
 * [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
 * [Maven](http://maven.apache.org/)
-* [Windows ベースの HDInsight クラスターと HBase](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
+* Windows ベースの HDInsight クラスターと HBase
 
     > [!NOTE] 
     > このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。 例で指定される既定値は、HDInsight 3.3 クラスターに対応しています。
@@ -568,7 +569,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         # Only export the verb-phrase things
         export-modulemember *-*
    
-    このファイルには&2; つのモジュールが含まれます。
+    このファイルには 2 つのモジュールが含まれます。
    
    * **Add-HDInsightFile** - HDInsight へのファイルのアップロードに使用されます
    * **Start-HBaseExample** - 前に作成されたクラスの実行に使用されます

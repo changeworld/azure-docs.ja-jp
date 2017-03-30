@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 4e5d915d474d7ea161f467def931e3013255f843
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 202684a1ae1106d79b9cee4e4ebf20ffa283f41b
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -45,6 +45,13 @@ Microsoft Azure DocumentDB サービス用のクライアント管理ビュー�
 DoQmentDB は Node.js promise ベースのクライアントであり、DocumentDB の上に MongoDB タイプの層を与えます。
 
 [GitHub](https://github.com/a8m/doqmentdb) および [npm](https://www.npmjs.com/package/doqmentdb) でご覧ください。
+
+### <a name="typescript-api"></a>TypeScript API
+*作成者: Jelmer Cormont*
+
+TypeScript で記述された Node.js クライアントのラッパーです (プレーンな JavaScript でも機能します)。 `async/await` および簡略化された API に対応します。
+
+[GitHub](https://github.com/jcormont/documentdb-typescript) および [npm](https://www.npmjs.com/package/documentdb-typescript) でご覧ください。
 
 ### <a name="swagger-rest-api-for-documentdb"></a>DocumentDB 用 Swagger REST API
 *作者: Howard Edidin*

@@ -1,5 +1,5 @@
 ---
-title: "Operations Management Suite (OMS) での管理ソリューションの作成 | Microsoft Docs"
+title: "OMS での管理ソリューションの構築 | Microsoft Docs"
 description: "管理ソリューションは、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、 Operations Management Suite (OMS) の機能を拡張します。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。"
 services: operations-management-suite
 documentationcenter: 
@@ -12,263 +12,77 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 03/20/2017
 ms.author: bwren
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fc8b76bf996060e226ac3f508a1ecffca6fc3c98
-ms.openlocfilehash: caa2f96d452174ebb13c5cbf67737f20e2a2134d
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 9d1a89e84b7340bf4bb3d759b4ae856431efcc0e
+ms.lasthandoff: 03/22/2017
 
 
 ---
-# <a name="creating-management-solutions-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの作成 (プレビュー)
+# <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
->
->
+> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   j
 
-管理ソリューションは、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、 Operations Management Suite (OMS) の機能を拡張します。  この記事では、お使いの環境で使用したりコミュニティを通じて顧客に提供したりできる独自の管理ソリューションを作成する方法について、詳しく説明します。
+[管理ソリューション](operations-management-suite-solutions.md)は、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、Operations Management Suite (OMS) の機能を拡張します。  この記事では、最も一般的な要件に適した管理ソリューションを設計および構築する基本的な手順について説明します。  管理ソリューションを初めて構築する場合は、このプロセスを出発点として使用し、要件の変化に応じてより複雑なソリューションの概念を活用できます。
 
-## <a name="planning-your-management-solution"></a>管理ソリューションの設計
-OMS の管理ソリューションには、特定の管理シナリオをサポートする複数のリソースが含まれます。  ソリューションを設計する際は、実現したいシナリオに焦点を当て、そのために必要なすべてのリソースに集中する必要があります。  各ソリューションは自己完結している必要があります。つまり、1 つまたは複数のリソースが他のソリューションでも定義されているとしても、必要なリソースをすべて定義する必要があります。  管理ソリューションのインストール時には、既に存在している場合を除き、各リソースが作成されます。ソリューションが削除されたときのリソースに対する動作を定義することができます。  
+## <a name="what-is-a-management-solution"></a>管理ソリューションとは
 
-たとえば、管理ソリューションには、[スケジュール](../automation/automation-schedules.md)を使って Log Analytics リポジトリにデータを収集する [Azure Automation Runbook](../automation/automation-intro.md) と、収集したデータのさまざまな視覚エフェクトを提供する[ビュー](../log-analytics/log-analytics-view-designer.md)を含めることができます。  同じスケジュールを、別のソリューションに使用することもできます。  管理ソリューションの作成者としては、3 つすべてのリソースを定義して、ソリューション削除時には Runbook とビューは自動的に削除されるように指定することもできます。    スケジュールも定義しますが、他のソリューションで使われている可能性を考慮して、ソリューション削除時にでもそのまま残すように指定することもあるでしょう。
+管理ソリューションには OMS と Azure のリソースが含まれており、それらが連携することで特定の監視シナリオを実現します。  管理ソリューションは、[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
 
-## <a name="management-solution-files"></a>管理ソリューション ファイル
-管理ソリューションは[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されています。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソース定義の方法について、詳細を説明します。
-
-管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
-
-    {
-       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "",
-       "parameters": {  },
-       "variables": {  },
-       "resources": [  ],
-       "outputs": {  }
-    }
-
-## <a name="parameters"></a>パラメーター
-[パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
-
-ユーザーが [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) または [Azure クイック スタート テンプレート](operations-management-suite-solutions.md#finding-and-installing-management-solutions) から管理ソリューションをインストールすると、[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions-creating.md#oms-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
-
-ユーザーが[別の方法で](operations-management-suite-solutions.md#finding-and-installing-management-solutions)ソリューションをインストールすると、標準パラメーターと追加のパラメーターのすべてに値を入力する必要があります。
-
-サンプル パラメーターを次に示します。
-
-    "Daily Start Time": {
-        "type": "string",
-        "metadata": {
-            "description": "Enter time for starting VMs by resource group.",
-            "control": "datetime",
-            "category": "Schedule"
-        }
-
-次の表で、パラメーターの属性について説明します。
-
-| Attribute | Description |
-|:--- |:--- |
-| type |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
-| カテゴリ |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
-| control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
-| description |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
-
-### <a name="standard-parameters"></a>標準パラメーター
-次の表に、すべての管理ソリューションの標準パラメーターを一覧表示します。  Azure Marketplace や クイック スタート テンプレートからソリューションをインストールすると、ユーザーに設定が求められることはなく、これらの値が設定されます。  ソリューションを別の方法でインストールした場合、ユーザーは値を入力する必要があります。
-
-> [!NOTE]
-> Azure Marketplace と クイック スタート テンプレートのユーザー インターフェイスには、表に記載したパラメーター名が必要です。  別のパラメーター名を使用すると、ユーザーに表のパラメーター名を設定するよう求めるメッセージが表示されます。パラメーター名は自動的に設定されません。
->
->
-
-| パラメーター | 型 | 説明 |
-|:--- |:--- |:--- |
-| accountName |string |Azure automation アカウント名。 |
-| pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
-| regionId |string |Azure Automation アカウントのリージョン。 |
-| solutionName |string |ソリューションの名前。 |
-| workspaceName |string |Log Analytics ワークスペース名。 |
-| workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
-
-### <a name="sample"></a>サンプル
-以下に、ソリューションのパラメーター エンティティのサンプルを示します。  これは、すべての標準パラメーターと、同じカテゴリ内の&2; つの追加のパラメーターを含みます。
-
-    "parameters": {
-        "workspaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "A valid Log Analytics workspace name"
-            }
-        },
-        "accountName": {
-               "type": "string",
-               "metadata": {
-                   "description": "A valid Azure Automation account name"
-               }
-        },
-        "workspaceRegionId": {
-               "type": "string",
-               "metadata": {
-                   "description": "Region of the Log Analytics workspace"
-            }
-        },
-        "regionId": {
-            "type": "string",
-            "metadata": {
-                "description": "Region of the Azure Automation account"
-            }
-        },
-        "pricingTier": {
-            "type": "string",
-            "metadata": {
-                "description": "Pricing tier of both Log Analytics workspace and Azure Automation account"
-            }
-        },
-        "jobIdGuid": {
-        "type": "string",
-            "metadata": {
-                "description": "GUID for a runbook job",
-                "control": "guid",
-                "category": "Schedule"
-            }
-        },
-        "startTime": {
-            "type": "string",
-            "metadata": {
-                "description": "Time for starting the runbook.",
-                "control": "datetime",
-                "category": "Schedule"
-            }
-        }
+管理ソリューションの構築は、基本的には、Azure 環境内で個々のコンポーネントを作成することから開始します。  正常に機能したら、それらのコンポーネントを[管理ソリューション ファイル](operations-management-suite-solutions-solution-file.md)にパッケージ化できます。 
 
 
-ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')**の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
+## <a name="design-your-solution"></a>ソリューションの設計
+管理ソリューションの最も一般的なパターンを次の図に示します。  このパターンのさまざまなコンポーネントについては、以下で説明します。
 
-## <a name="variables"></a>変数
-**Variables** 要素には、その他の管理ソリューションで使用する値が含まれています。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に&1; つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
-
-次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。
-
-    "variables": {
-        "SolutionVersion": "1.1",
-        "SolutionPublisher": "Contoso",
-        "SolutionName": "My Solution",
-        "LogAnalyticsApiVersion": "2015-11-01-preview",
-        "AutomationApiVersion": "2015-10-31"
-    },
-
-構文**variables('variable name')**ソリューションの変数値を参照します。  たとえば、SolutionName 変数にアクセスするには、**variables('solutionName')**を使います。
-
-## <a name="resources"></a>リソース
-**resources** 要素は、管理ソリューションに含まれる異なるリソースを定義します。  この部分が、テンプレートの大半を占め、最も複雑な部分です。  リソースは、次の構造で定義します。  
-
-    "resources": [
-        {
-            "name": "<name-of-the-resource>",            
-            "apiVersion": "<api-version-of-resource>",
-            "type": "<resource-provider-namespace/resource-type-name>",        
-            "location": "<location-of-resource>",
-            "tags": "<name-value-pairs-for-resource-tagging>",
-            "comments": "<your-reference-notes>",
-            "dependsOn": [
-                "<array-of-related-resource-names>"
-            ],
-            "properties": "<unique-settings-for-the-resource>",
-            "resources": [
-                "<array-of-child-resources>"
-            ]
-        }
-    ]
-
-### <a name="dependencies"></a>依存関係
-**dependsOn** 要素は、他のリソースの[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](operations-management-suite-solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](operations-management-suite-solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
-
-### <a name="oms-workspace-and-automation-account"></a>OMS ワークスペースと Automation アカウント
-管理ソリューションでは、ビューを格納するために [OMS ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#oms-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
-
-## <a name="solution-resource"></a>ソリューションのリソース
-各ソリューションは、ソリューション自体を定義する**resources**要素の中にリソース エントリが必要です。  これは**Microsoft.OperationsManagement/solutions** の&1; つを有します。  以下に、ソリューション リソースの例を示します。  異なる要素については、以降のセクションで説明します。
-
-    "name": "[concat(variables('SolutionName'), '[ ' ,parameters('workspacename'), ' ]')]",
-    "location": "[parameters('workspaceRegionId')]",
-    "tags": { },
-    "type": "Microsoft.OperationsManagement/solutions",
-    "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-    "dependsOn": [
-        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/', variables('RunbookName'))]",
-        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/schedules/', variables('ScheduleName'))]",
-        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/views/', variables('ViewName'))]"
-    ]
-    "properties": {
-        "workspaceResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
-        "referencedResources": [
-            "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/schedules/', variables('ScheduleName'))]"
-        ],
-        "containedResources": [
-            "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/', variables('RunbookName'))]",
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/views/', variables('ViewName'))]"
-        ]
-    },
-    "plan": {
-        "name": "[concat(variables('SolutionName'), '[' ,parameters('workspacename'), ']')]",
-        "Version": "[variables('SolutionVersion')]",
-        "product": "AzureSQLAnalyticSolution",
-        "publisher": "[variables('SolutionPublisher')]",
-        "promotionCode": ""
-    }
-
-### <a name="solution-name"></a>ソリューション名
-ソリューション名は、Azure サブスクリプション内で一意である必要があります。 使用する推奨値は以下のとおりです。  名前が一意であるように、これはベース名に **SolutionName** という変数を使用し、**workspaceName** パラメーターを使用しています。
-
-    [concat(variables('SolutionName'), ' [' ,parameters('workspaceName'), ']')]
-
-これは次のような名前になります。
-
-    My Solution Name [MyWorkspace]
+![OMS ソリューションの概要](media/operations-management-suite-solutions/solution-overview.png)
 
 
-### <a name="dependencies"></a>依存関係
-ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
+### <a name="data-sources"></a>データ ソース
+ソリューションを設計する最初の手順では、Log Analytics リポジトリから取得する必要があるデータを決定します。  このデータは[データ ソース](../log-analytics/log-analytics-data-sources.md)や[別のソリューション](operations-management-suite-solutions.md)から収集できます。また、データを収集するプロセスを自分のソリューションに追加することが必要な場合もあります。
 
-### <a name="properties"></a>プロパティ
-このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
+「[Log Analytics のデータ ソース](../log-analytics/log-analytics-data-sources.md)」で説明しているように、Log Analytics リポジトリではさまざまなデータ ソースからデータを収集できます。  これには、Windows イベント ログのイベントや、Syslog によって生成されたイベントのほか、Windows と Linux の両方のクライアントのパフォーマンス カウンターがあります。  また、Azure Monitor によって収集された Azure のリソースからデータを収集することもできます。  
 
-| プロパティ | 説明 |
-|:--- |:--- |
-| workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、OMS ワークスペースの ID。 |
-| referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
-| containedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
+利用できるどのデータ ソースからもアクセスできないデータが必要な場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使用できます。この API を使用すると、REST API を呼び出すことができる任意のクライアントから Log Analytics リポジトリにデータを書き込むことができます。  管理ソリューションにおけるカスタム データ収集の最も一般的な方法は、Azure または外部のリソースから必要なデータを収集し、データ コレクター API を使用してリポジトリに書き込む [Azure Automation の Runbook](../automation/automation-runbook-types.md) を作成することです。  
 
-上記の例は、Runbook、スケジュール、およびビューを含むソリューションが対象です。  スケジュールと Runbook は **properties** 要素で*参照されている*ため、ソリューションが削除されても、削除されません。  ビューが *含まれている* ので、ソリューションが削除されたときでも、削除されません。
+### <a name="log-searches"></a>ログ検索
+[ログ検索](../log-analytics/log-analytics-log-searches.md)は、Log Analytics リポジトリ内のデータの抽出および分析に使用します。  ビューやアラートで使用されるほか、ユーザーがリポジトリ内のデータに対してアドホック分析を実行することもできます。  
 
-### <a name="plan"></a>プラン
-ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
+ビューやアラートで使用されていない場合でも、ユーザーにとって便利だと思われるすべてのクエリを定義する必要があります。  こうしたクエリはポータルで保存された検索として利用でき、カスタム ビューの [[クエリのリスト] 視覚エフェクト パーツ](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part)に含めることもできます。
 
-| プロパティ | Description |
-|:--- |:--- |
-| name |ソリューションの名前。 |
-| version |作成者によって決定されるソリューションのバージョン。 |
-| product |ソリューションを特定する一意の文字列。 |
-| publisher |ソリューションの発行者。 |
+### <a name="alerts"></a>Alerts
+[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
 
-## <a name="other-resources"></a>その他のリソース
-管理ソリューションに共通するリソースについての詳細とサンプルは、次の記事をご覧ください。
+自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
 
-* [ビューとダッシュボード](operations-management-suite-solutions-resources-views.md)
-* [Automation リソース](operations-management-suite-solutions-resources-automation.md)
+アラートに対する応答でソリューションに外部の機能が必要な場合は、[webhook の応答](../log-analytics/log-analytics-alerts-actions.md)を使用できます。  これにより、アラートから情報を送信する外部 Web サービスを呼び出すことができます。
 
-## <a name="testing-a-management-solution"></a>管理ソリューションのテスト
-管理ソリューションをデプロイする前に、[Test-AzureRmResourceGroupDeployment](../azure-resource-manager/resource-group-template-deploy.md#deploy) を使ってテストすることをお勧めします。  これにより、ソリューション ファイルを検証し、デプロイする前に問題を検出することができます。
+### <a name="views"></a>ビュー
+Log Analytics のビューは、Log Analytics リポジトリのデータを視覚化するために使用します。  各ソリューションには、通常、ユーザーのメイン ダッシュボードに表示される[タイル](../log-analytics/log-analytics-view-designer-tiles.md)を使用した 1 つのビューを含めます。  ビューには任意の数の[視覚エフェクト パーツ](../log-analytics/log-analytics-view-designer-parts.md)を含めて、収集したデータをさまざまな形で視覚化してユーザーに表示できます。
+
+[ビュー デザイナーを使用してカスタム ビューを作成](../log-analytics/log-analytics-view-designer.md)し、後でエクスポートしてソリューション ファイルに含めることができます。  
+
+
+## <a name="create-solution-file"></a>ソリューション ファイルの作成
+ソリューションのコンポーネントを構成し、テストしたら、[ソリューション ファイルを作成](operations-management-suite-solutions-solution-file.md)できます。  ファイル内の他のリソースとリレーションシップがある[ソリューション リソース](operations-management-suite-solutions-solution-file.md#solution-resource)を含む [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)にソリューションのコンポーネントを実装します。  
+
+
+## <a name="test-your-solution"></a>ソリューションのテスト
+ソリューションを開発している場合は、ワークスペースにインストールしてテストする必要があります。  これには、[Resource Manager テンプレートをテストおよびインストール](../azure-resource-manager/resource-group-template-deploy.md)できる方法であればどれでも使用できます。
+
+## <a name="publish-your-solution"></a>ソリューションを発行する
+ソリューションが完成してテストしたら、次のソースを使用して、顧客がソリューションを利用できるようにします。
+
+- **Azure クイック スタート テンプレート**。  [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)は、GitHub を通じてコミュニティから提供された一連の Resource Manager テンプレートです。  [投稿に関するガイド](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)の情報に従って、ソリューションを利用できるようにすることができます。
+- **Azure Marketplace**。  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) では、ソリューションを他の開発者、ISV、IT プロフェッショナルに配布および販売することができます。  Azure Marketplace にソリューションを発行する方法については、「[Azure Marketplace でプランを発行して管理する方法](../marketplace-publishing/marketplace-publishing-getting-started.md)」を参照してください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
-* 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。
-* 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
-* 管理ソリューションに [Automation Runbook とその他のリソースを追加する](operations-management-suite-solutions-resources-automation.md)。
+* 管理ソリューションの[ソリューション ファイルの作成](operations-management-suite-solutions-solution-file.md)方法について
 * [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

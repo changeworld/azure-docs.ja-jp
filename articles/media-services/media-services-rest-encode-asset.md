@@ -1,6 +1,6 @@
 ---
-title: "Media Encoder Standard を使用して資産をエンコードする方法 | Microsoft Docs"
-description: "Media Encoder Standard を使用して Media Services でメディア コンテンツをエンコードする方法について説明します。 コード サンプルでは REST API を使用しています。"
+title: "Media Encoder Standard を使用して Azure 資産をエンコードする方法 | Microsoft Docs"
+description: "Media Encoder Standard を使用して Azure Media Services でメディア コンテンツをエンコードする方法について説明します。 コード サンプルでは REST API を使用しています。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 6a0fcc28a3eadaba6bb28d23ab1f4632bea60652
-ms.lasthandoff: 01/11/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 4e56b8d97a650813dcea1fde9d74ddc29154605d
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="how-to-encode-an-asset-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST ()](media-services-rest-encode-asset.md)
 > * [ポータル](media-services-portal-encode.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>概要
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。 デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。 エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブは Media Services で最も一般的な処理の&1; つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。 使用できるプリセットの種類を確認する場合は、「[Task Presets for Media Encoder Standard (Media Encoder Standard のタスク プリセット)](http://msdn.microsoft.com/library/mt269960)」を参照してください。
+エンコード ジョブは Azure Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。 さらに、Media Services パートナーで提供されるエンコーダーを使用することもできます。 サード パーティのエンコーダーは Azure Marketplace から入手できます。 エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。 使用できるプリセットの種類を確認する場合は、「[Task Presets for Media Encoder Standard (Media Encoder Standard のタスク プリセット)](http://msdn.microsoft.com/library/mt269960)」を参照してください。
 
-各ジョブは実行する処理の種類に応じて&1; つまたは複数のタスクを持つことができます。 REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。
+各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。 REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。
 
-* タスクは、Job エンティティの Tasks ナビゲーション プロパティまたは
-* OData バッチ処理を使用して、インラインで定義できます。
+* タスクは、Job エンティティの Tasks ナビゲーション プロパティを使用して、インラインで定義できます。
+* OData バッチ処理を使用します。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
-出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「 [アセット配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
+出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「[方法: アセットの配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
 
 > [!NOTE]
-> メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
-> 
-> 
+> メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
+>
+>
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>1 つのエンコード タスクを持つジョブの作成
 > [!NOTE]
 > Media Services REST API を使用する場合は、次のことに考慮します。
-> 
-> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
-> 
+>
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+>
 > https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
-> 
+>
 > JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
-> 
-> 
+>
+>
 
 次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 Media Encoder Standard でエンコードするときは、 [こちら](http://msdn.microsoft.com/library/mt269960)で指定されているタスク構成のプリセットを使用できます。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/11/2017
 
     HTTP/1.1 201 Created
 
-    . . . 
+    . . .
 
 ### <a name="set-the-output-assets-name"></a>出力アセットの名前を設定します。
 次の例では、assetName 属性を設定する方法を示します。
@@ -93,18 +93,18 @@ ms.lasthandoff: 01/11/2017
 * タスクは、複数の出力資産を持つことができます。 1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 * タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 * タスクは、サイクルを形成することはできません。
-* JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。 実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
-* Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"__metadata : uri" の名前と値のペアによって参照されます。
+* JobInputAsset または JobOutputAsset に渡す値パラメーターは、資産のインデックス値を表します。 実際の資産は、ジョブ エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。
+* Media Services は OData v3 上に構築されるため、InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"__metadata : uri" の名前と値のペアによって参照されます。
 * InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。 OutputMediaAssets はシステムによって作成されます。 既存の資産は参照しません。
-* OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。 この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。 たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。 ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。 
+* OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。 この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。 たとえば、"Sample" に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。 ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。
 
 ## <a name="create-a-job-with-chained-tasks"></a>チェーン タスクによるジョブの作成
-アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。 Media Services では、一連のチェーン タスクを作成できます。 各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。 チェーン タスクでは、あるタスクから別のタスクに資産を渡しながら一連のタスクを順番に実行できます。 ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。 チェーン タスクを作成するときは、一連の **ITask** オブジェクトは&1; つの **IJob** オブジェクト内で作成されます。
+アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。 Media Services では、一連のチェーン タスクを作成できます。 各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。 チェーン タスクでは、あるタスクから別のタスクに資産を渡しながら一連のタスクを順番に実行できます。 ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。 チェーン タスクを作成するときは、一連の **ITask** オブジェクトは 1 つの **IJob** オブジェクト内で作成されます。
 
 > [!NOTE]
 > 現時点では、ジョブごとに設定できるタスクは 30 までです。 30 以上のタスクをつなげる必要がある場合、別のジョブを作成してタスクを設定します。
-> 
-> 
+>
+>
 
     POST https://media.windows.net/api/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -206,10 +206,10 @@ ms.lasthandoff: 01/11/2017
 
 
 
-## <a name="create-a-job-using-a-jobtemplate"></a>JobTemplate を使用したジョブの作成
-共通する一連のタスクを使って複数のアセットを処理するときは、JobTemplates を使用して、既定のタスク プリセットやタスクの順序などを指定すると便利です。
+## <a name="create-a-job-by-using-a-jobtemplate"></a>JobTemplate を使用したジョブの作成
+共通する一連のタスクを使って複数のアセットを処理するときは、JobTemplates を使用して、既定のタスク プリセットを指定したり、タスクの順序を設定したりします。
 
-次の例では、TaskTemplate をインラインで定義して JobTemplate を作成しています。 この TaskTemplate では、Media Encoder Standard を MediaProcessor として、アセット ファイルをエンコードしていますが、他の MediaProcessors を使用してもかまいません。 
+次の例では、TaskTemplate をインラインで定義して JobTemplate を作成しています。 この TaskTemplate では、Media Encoder Standard を MediaProcessor として、アセット ファイルをエンコードしています。 ただし、他の MediaProcessors を使用してもかまいません。
 
     POST https://media.windows.net/API/JobTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -226,8 +226,8 @@ ms.lasthandoff: 01/11/2017
 
 > [!NOTE]
 > GUID 識別子は、他の Media Services エンティティとは異なり、TaskTemplate ごとに新たに定義し、要求本文の taskTemplateId と Id プロパティに設定する必要があります。 コンテンツ ID スキームについては、「Azure Media Services エンティティの識別」で説明されているスキームに従ってください。 また、JobTemplates を更新することはできません。 最新の変更内容を基に新たに作成する必要があります。
-> 
-> 
+>
+>
 
 成功した場合、次の応答が返されます。
 
@@ -236,7 +236,7 @@ ms.lasthandoff: 01/11/2017
     . . .
 
 
-次の例では、JobTemplate ID を参照してジョブを作成する方法を示します。
+次の例では、JobTemplate ID を参照するジョブを作成する方法を示します。
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -255,7 +255,7 @@ ms.lasthandoff: 01/11/2017
 
     HTTP/1.1 201 Created
 
-    . . . 
+    . . .
 
 
 
@@ -266,9 +266,8 @@ ms.lasthandoff: 01/11/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
-これで、資産をエンコードするジョブの作成方法がわかりました。次は、[Media Services でジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[Media Services でジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックを参照してください。
 
 ## <a name="see-also"></a>関連項目
 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)
-
 

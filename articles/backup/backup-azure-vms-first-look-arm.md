@@ -17,9 +17,9 @@ ms.date: 02/15/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 05a3b32e6d059c219b1b99df02536c5b287c29fd
-ms.openlocfilehash: 9a73f361ba80c7c4219de68d39026b936a77aa05
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 763a10b0275d360fa62e5bce7f8c099160f4109a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -38,8 +38,9 @@ ms.lasthandoff: 03/02/2017
 * Premium Storage VM
 * Managed Disks で実行されている VM
 * Azure Disk Encryption を使用して BEK と KEK で暗号化された VM
+* VSS を使用する Windows VM と、カスタム プリスナップショット スクリプトおよびポストスナップショット スクリプトを使用する Linux VM のアプリケーション整合性バックアップ
 
-Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。
+Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、[事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)に関するページを参照してください。
 
 > [!NOTE]
 > このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。
@@ -48,7 +49,7 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-保護する仮想マシンの数に応じて、さまざまな開始点から開始できます。 1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、[コンテナーのダッシュボードからバックアップ ジョブを開始](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault)します。 バックアップする仮想マシンが&1; 台の場合は、VM 管理ブレードからバックアップ ジョブを開始できます。
+保護する仮想マシンの数に応じて、さまざまな開始点から開始できます。 1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、[コンテナーのダッシュボードからバックアップ ジョブを開始](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault)します。 バックアップする仮想マシンが 1 台の場合は、VM 管理ブレードからバックアップ ジョブを開始できます。
 
 ## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>VM 管理ブレードからのバックアップ ジョブの構成
 
@@ -129,7 +130,7 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 Recovery Services コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。 Recovery Services コンテナーには、保護される VM に適用されるバックアップ ポリシーも含まれます。
 
 > [!NOTE]
-> VM のバックアップはローカルの処理です。 ある場所から別の場所にある Recovery Services コンテナーに VM をバックアップすることはできません。 そのため、バックアップする VM がある Azure の場所ごとに、少なくとも&1; つの Recovery Services コンテナーが存在する必要があります。
+> VM のバックアップはローカルの処理です。 ある場所から別の場所にある Recovery Services コンテナーに VM をバックアップすることはできません。 そのため、バックアップする VM がある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
 >
 >
 
@@ -153,7 +154,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 4. **[名前]**ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
-5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが&1; つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
 6. **[リソース グループ]** セクションで、次のことを行います。
 
@@ -317,9 +318,9 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-この情報は、必要な場合に備えて提供されます。 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 ただし、VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。 このような場合は、VM エージェントをインストールする必要があります。 Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (以下の表を参照)。 カスタム VM を作成する場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)してください。
+この情報は、必要な場合に備えて提供されます。 バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 ただし、VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。 このような場合は、VM エージェントをインストールする必要があります。 Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (以下の表を参照)。 カスタム VM を作成する場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)してください。
 
-詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事をご覧ください。
+詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)および[インストール方法](../virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事をご覧ください。
 
 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 

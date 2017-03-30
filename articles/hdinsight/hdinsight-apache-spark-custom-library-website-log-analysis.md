@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 8c61c70f-fe7f-4f0f-a4ab-0cccee5668c9
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
-ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3f5b7409c5245ee975b0208f812668a0c35ff1c3
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -187,7 +189,7 @@ ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
 
    ![SQL クエリ出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/sql.output.png "SQL クエリ出力")
 
-   `%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、 [Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#choose-between-the-kernels)に関する記事を参照してください。
+   `%%sql` マジックについて詳しくは、「[%%sql マジックでサポートされるパラメーター](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)」をご覧ください。
 7. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。 プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
 
        %%local
@@ -203,7 +205,7 @@ ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
    ![Matplotlib の出力](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdi-apache-spark-web-log-analysis-plot.png "Matplotlib の出力")
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
@@ -227,9 +229,4 @@ ms.openlocfilehash: 382b4929f0587906bd7256380cae4eb641f108bb
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

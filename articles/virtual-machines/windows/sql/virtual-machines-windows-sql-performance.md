@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/09/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 407b189af12116d633ed505facf4bcfde9be5822
-ms.openlocfilehash: 609f2a06b1091a61cd95c54ea9f62888e11f16c1
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 7cf81f2081e7927e4d68b7d0c8ca185f891fdc8d
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -61,9 +62,9 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。 ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。 代わりに、2 つの Azure データ センター間で SQL Server 障害復旧テクノロジを構成することを検討します。 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」をご覧ください。
 
 ## <a name="disks-guidance"></a>ディスクのガイダンス
-Azure VM には、次の&3; 種類のメイン ディスクがあります。
+Azure VM には、次の 3 種類のメイン ディスクがあります。
 
-* **OS ディスク**: Azure Virtual Machine を作成すると、プラットフォームによって、オペレーティング システム ディスク用に少なくとも&1; つのディスク (**C** ドライブとしてラベル付けされる) が VM に接続されます。 このディスクは、ページ BLOB としてストレージに格納されている VHD です。
+* **OS ディスク**: Azure Virtual Machine を作成すると、プラットフォームによって、オペレーティング システム ディスク用に少なくとも 1 つのディスク (**C** ドライブとしてラベル付けされる) が VM に接続されます。 このディスクは、ページ BLOB としてストレージに格納されている VHD です。
 * **一時ディスク**: Azure Virtual Machines には、一時ディスクと呼ばれる別のディスク (**D**: ドライブとしてラベル付けされる) が含まれています。 これは、スクラッチ領域に使用できるノード上のディスクです。
 * **データ ディスク**: 追加のディスクをデータ ディスクとして仮想マシンに接続することもできます。これらのディスクは、ページ BLOB としてストレージに格納されます。
 
@@ -79,15 +80,15 @@ Azure VM には、次の&3; 種類のメイン ディスクがあります。
 
 D シリーズ、Dv2 シリーズ、および G シリーズの VM では、これらの VM 上の一時ドライブは SSD ベースです。 一時オブジェクトや複雑な結合などのワークロードで TempDB が多用される場合、TempDB を **D** ドライブに格納すると、TempDB のスループットが向上し、TempDB の遅延時間が短縮される可能性があります。
 
-Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB を格納することをお勧めします。 この推奨事項には例外が&1; つあります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、パフォーマンスを向上させることができます。これも、マシン サイズに基づく SSD ベースです。
+Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB を格納することをお勧めします。 この推奨事項には例外が 1 つあります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、パフォーマンスを向上させることができます。これも、マシン サイズに基づく SSD ベースです。
 
 ### <a name="data-disks"></a>データ ディスク
-* **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を格納します。
-* **ディスク ストライピング**: スループットを向上させるには、データ ディスクをさらに追加して、ディスク ストライピングを使用します。 データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。 詳細については、[ディスクへの Premium Storage の使用](../../../storage/storage-premium-storage.md)に関する記事で [VM サイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)およびディスク サイズごとの IOPS を示す表をご覧ください。 次のガイドラインに従ってください。
+* **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../../../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets) を使用し、一方のディスクにログ ファイル、もう一方にデータと TempDB ファイルを格納します。 [ディスクでの Premium Storage の使用](../../../storage/storage-premium-storage.md)に関する記事で説明しているように、各 Premium Storage ディスクでは、サイズに応じた IOPS 数と帯域幅 (MB/s) が提供されます。 
+* **ディスク ストライピング**: スループットを向上させるには、データ ディスクをさらに追加して、ディスク ストライピングを使用します。 データ ディスク数を決定するには、ログ ファイルおよびデータと TempDB ファイルのために必要な IOPS 数と帯域幅を分析する必要があります。 VM サイズが異なると、サポートされる IOPS 数と帯域幅の制限も変わります。[VM サイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ごとの IOPS ついて表を参照してください。 次のガイドラインに従ってください。
 
   * Windows 8 と Windows Server 2012 以降では、 [記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用します。 ストライプ サイズを、OLTP ワークロードでは 64 KB、データ ウェアハウス ワークロードでは 256 KB にそれぞれ設定して、パーティションの不適切な配置に起因するパフォーマンスの低下を防ぎます。 また、列数を物理ディスクの数に設定します。 8 個以上のディスクで記憶域スペースを構成するには、(サーバー マネージャーの UI ではなく) PowerShell を使用して、ディスクの数に一致する列数を明示的に設定する必要があります。 [記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)の構成方法の詳細については、[Windows PowerShell の記憶域スペース コマンドレット](https://technet.microsoft.com/library/jj851254.aspx)に関するページをご覧ください。
   * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 Windows 8 および Windows Server 2012 の時点で、このオプションは使用されていません。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)に関するページでサポートに関する声明をご覧ください。
-  * ワークロードで大量のログが発生するわけではなく、専用の IOPS を必要としない場合は、記憶域プールを&1; つだけ構成します。 それ以外の場合は、記憶域プールを&2; つ作成して、1 つをログ ファイルに使用し、もう&1; つをデータ ファイルと TempDB に使用します。 負荷予測に基づいて、各記憶域プールに関連付けるディスクの数を決定します。 接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。 詳細については、[仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+  * ワークロードで大量のログが発生するわけではなく、専用の IOPS を必要としない場合は、記憶域プールを 1 つだけ構成します。 それ以外の場合は、記憶域プールを 2 つ作成して、1 つをログ ファイルに使用し、もう 1 つをデータ ファイルと TempDB に使用します。 負荷予測に基づいて、各記憶域プールに関連付けるディスクの数を決定します。 接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。 詳細については、[仮想マシンのサイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
   * Premium Storage (開発/テスト シナリオ) を使用しない場合は、ご使用の [VM サイズ](../../virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。
 * **キャッシュ ポリシー**: Premium Storage データ ディスクの場合は、データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。 Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。 ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
 
@@ -134,9 +135,4 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 
 SQL Server Virtual Machines に関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

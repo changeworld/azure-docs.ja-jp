@@ -9,6 +9,7 @@ author: nitinme
 tags: azure-portal
 ms.assetid: a363e5f6-dd75-476a-87fa-46beb480c1fe
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 2/28/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: de252e1d2945f236a4192c5737ed8ec88a6f7444
-ms.openlocfilehash: da5929df1e5db0acae41d757a7e7272014bf9dee
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 7a9e23e8d06bc73855058242cdebd315c9d4d243
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -75,7 +76,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 * R Server 8.0.5 - 主にバグの修正プログラムのリリースです。 詳細については、 [R Server リリース ノート](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) を参照してください。
 * エッジ ノードでの AzureML パッケージ – [この R パッケージ](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)により、R モデルが Azure ML Web サービスとして発行され、使用されます。  詳細については、「[HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)」の記事の「[モデルの運用化](hdinsight-hadoop-r-server-overview.md#operationalize-a-model)」のセクションを参照してください。
 * [上位 100 の最も一般的な R パッケージ](https://github.com/metacran/cranlogs) の Linux の依存関係 – これらの Linux パッケージの依存関係は、あらかじめインストールされています。
-* オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。 詳細については、「[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)」の「[R パッケージをインストールする](hdinsight-hadoop-r-server-get-started.md#install-r-packages)」セクションを参照してください。
+* オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。 詳しくは、「[HDInsight での R Server の概要](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。
 * クラスターが作成されるときの、R Server のプロビジョニングの信頼性が向上しました。
 
 ## <a name="notes-for-08012016-release-of-hdinsight"></a>HDInsight の 2016 年 8 月 1 日リリース ノート
@@ -230,7 +231,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 | タイトル | Description | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 | --- | --- | --- | --- | --- |
 | すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました |このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。 HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。 |サービス |すべての Linux クラスター |該当なし |
-| HDInsight Premium |HDInsight は、Standard と Premium の&2; つのカテゴリで利用できるようになりました。 HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。 詳細については、 [こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)を参照してください。 |サービス |Linux 上の Hadoop および Spark |該当なし |
+| HDInsight Premium |HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。 HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。 詳細については、 [こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)を参照してください。 |サービス |Linux 上の Hadoop および Spark |該当なし |
 | Microsoft R Server |HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。 詳細については、 [HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)に関するページをご覧ください。 |サービス |Linux 上の Hadoop および Spark |該当なし |
 | Spark 1.6.0 |HDInsight 3.4 クラスターに Spark 1.6.0 が導入されました |サービス |Linux 上の Spark クラスター |該当なし |
 | Jupyter Notebook の拡張機能 |Spark クラスターで使用できる Jupyter Notebook に、追加の Spark カーネルが備わりました。 また、%%magic の使用、自動視覚化、Python 視覚ライブラリ (matplotlib など) との統合などの拡張機能も含まれています。 詳細については、 [Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関するページをご覧ください。 |サービス |Linux 上の Spark クラスター |該当なし |
@@ -759,7 +760,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 </tr>
 <tr>
 <td>クラスターのプロビジョニング中にリモート デスクトップ資格情報を有効にする機能</td>
-<td>クラスターの作成中にリモート デスクトップの資格情報をプログラムで有効にします。 これにより、クラスターを最初にプロビジョニングしてからリモート デスクトップを有効にするといった&2; 段階のプロセスが削除されます。</td>
+<td>クラスターの作成中にリモート デスクトップの資格情報をプログラムで有効にします。 これにより、クラスターを最初にプロビジョニングしてからリモート デスクトップを有効にするといった 2 段階のプロセスが削除されます。</td>
 <td>SDK</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1021,7 +1022,7 @@ Spark 2.0.1 は、現在 Spark クラスター (HDInsight バージョン 3.5) �
 </tr>
 <tr>
 <td>Twitter の傾向分析と Mahout に基づく映画のリコメンデーションのサンプル</td>
-<td><p>このリリースでは、HDInsight クエリ コンソールに&2; つの追加のサンプルがあります。</p>
+<td><p>このリリースでは、HDInsight クエリ コンソールに 2 つの追加のサンプルがあります。</p>
 
 <p><b>Twitter の傾向分析</b><br>
 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。 このチュートリアルで Hive を使用して、特定の単語を含むツイートを最も多く送信した Twitter ユーザーの一覧を取得する方法について説明します。 </p>
@@ -1156,7 +1157,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。 Mahout
 </tr>
 <tr>
 <td>IHdInsightClient.DeleteCluster でのリージョン名の指定 </td>
-<td>Azure HDInsight SDK で **DeleteCluster** の使用時にリージョン名を指定できます。 これまでは、別々のリージョンに同じ名前のリソースが&1; つずつある場合に、どちらかだけを削除することはできませんでした。この更新では、そのような問題が解消します。</td>
+<td>Azure HDInsight SDK で **DeleteCluster** の使用時にリージョン名を指定できます。 これまでは、別々のリージョンに同じ名前のリソースが 1 つずつある場合に、どちらかだけを削除することはできませんでした。この更新では、そのような問題が解消します。</td>
 <td>SDK</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1210,7 +1211,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 </table>
 
 > [!NOTE]
-> クラスターのカスタマイズによって利用が可能になる新機能の例として、スクリプト アクションを使ってクラスターに Spark と R の&2; つのモジュールをインストールする手順が文書化されています。 詳細については、以下を参照してください。
+> クラスターのカスタマイズによって利用が可能になる新機能の例として、スクリプト アクションを使ってクラスターに Spark と R の 2 つのモジュールをインストールする手順が文書化されています。 詳細については、以下を参照してください。
 
 * [HDInsight クラスターに Spark 1.0 をインストールして使用する](hdinsight-hadoop-spark-install.md)
 * [HDInsight Hadoop クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts.md)
@@ -1240,7 +1241,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 このアプリケーション情報は、ヘッド ノードから URI (http://headnodehost:8188) にアクセスするか、YARN コマンド (yarn application -list -appStates ALL) を実行すると取得できます。
 
-この情報は、REST API (https://{ClusterDnsName}. azurehdinsight.net/ws/v1/applicationhistory/) からリモートで取得することもできます。
+この情報は、REST API を使って https://{ClusterDnsName}. azurehdinsight.net/ws/v1/applicationhistory/ からリモートで取得することもできます。
 
 詳細については、「<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a>」を参照してください。</td>
 <td>サービス、YARN</td>
@@ -1275,11 +1276,11 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 <tr><td> yarn.scheduler.maximum-allocation</td><td>6144 MB (変更なし)</td></tr>
 <tr><td>yarn.nodemanager.resource.memory</td><td>6144 MB (変更なし)</td></tr>
 <tr><td>mapreduce.map.memory</td><td>768 MB (以前は 512 MB)</td></tr>
-<tr><td>mapreduce.map.java.opts</td><td>opts=-X m x&512; m (以前は -X m x&410; m)</td></tr>
+<tr><td>mapreduce.map.java.opts</td><td>opts=-X m x 512 m (以前は -X m x 410 m)</td></tr>
 <tr><td>mapreduce.reduce.memory</td><td>1536 MB (以前は 1024 MB)</td></tr>
-<tr><td>mapreduce.reduce.java.opts</td><td>opts=-X m x&1024; m (以前は -X m x&819; m)</td></tr>
+<tr><td>mapreduce.reduce.java.opts</td><td>opts=-X m x 1024 m (以前は -X m x 819 m)</td></tr>
 <tr><td>yarn.app.mapreduce.am.resource</td><td>768 MB (以前は 1024 MB)</td></tr>
-<tr><td>yarn.app.mapreduce.am.command</td><td>opts=-X m x&512; m (以前は -X m x&819; m)</td></tr>
+<tr><td>yarn.app.mapreduce.am.command</td><td>opts=-X m x 512 m (以前は -X m x 819 m)</td></tr>
 <tr><td>mapreduce.task.io.sort</td><td>256 MB (以前は 200 MB)</td></tr>
 <tr><td>tez.am.resource.memory</td><td>1536 MB (変更なし)</td></tr>
 </table>
@@ -1317,7 +1318,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。 HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。 最新の HDInsight SDK へは [NuGet][nuget-link] からアクセスできます。 [Microsoft Web Platform インストーラー][webpi-link]から Azure PowerShell ツールにアクセスできます。
 
 ## <a name="notes-for-7282014-release"></a>2014 年 7 月 28 日リリース
-* **このリージョン利用可能な HDInsight**: HDInsight の地理的なプレゼンスを以下の&3; つのリージョンに拡張しています。 HDInsight の顧客は、これらのリージョンでクラスターを作成できます。
+* **このリージョン利用可能な HDInsight**: HDInsight の地理的なプレゼンスを以下の 3 つのリージョンに拡張しています。 HDInsight の顧客は、これらのリージョンでクラスターを作成できます。
   * 東アジア
   * 米国中北部
   * 米国中南部

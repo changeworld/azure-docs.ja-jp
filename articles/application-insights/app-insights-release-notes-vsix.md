@@ -4,23 +4,121 @@ description: "開発者分析用 Visual Studio ツールの更新内容。"
 services: application-insights
 documentationcenter: 
 author: acearun
-manager: douge
+manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/09/2016
+ms.date: 03/20/2017
 ms.author: aruna
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 73e9c2bdc8e7851f8de8bcddb0babeb732d8ce15
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 5edd37a3a042f710e7d1b9e148c24d9a548a4fea
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools のリリース ノート
-新機能: Visual Studio での Application Insights と HockeyApp の分析
+
+## <a name="version-718-visual-studio-2015"></a>Version 7.18 (Visual Studio 2015)
+
+* トースト通知の再設計
+* Application Insights の検索のイベントの詳細ビューの "除外" フィルター
+* バグの修正
+
+## <a name="version-86-visual-studio-2017-rtw-and-rc4-and-version-717-visual-studio-2015"></a>Version 8.6 (Visual Studio 2017 RTW と RC4) および Version 7.17 (Visual Studio 2015)
+
+* Visual Studio からアプリを発行するときに付ける注釈が Azure Portal のメトリックス エクスプローラーのデータに対して可能に
+* コード ファイルのスクロール バーへのマーカーの追加、Application Insights からの赤色と黄色の CodeLens 警告に対応
+* 構成ウィンドウの価格情報の更新
+* バグの修正
+
+[こちらの詳細な注記を参照してください。](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#devanalytics)
+
+## <a name="version-716-visual-studio-2015"></a>Version 7.16 (Visual Studio 2015)
+
+* バグの修正
+
+## <a name="version-85-visual-studio-2017-rc3-and-version-715-visual-studio-2015"></a>Version 8.5 (Visual Studio 2017 RC3) および Version 7.15 (Visual Studio 2015)
+
+* Application Insights リソースにデータを送信するプロジェクトのデバッグとライブの両方のテレメトリ データを CodeLens で新たに表示
+* Application Insights の価格情報を構成ウィンドウで新たに表示
+* Visual Basic で記述された ASP.NET プロジェクトを、要求や例外のための CodeLens でサポート
+* サンプリングされているイベントに対してサンプリングされていないイベントのカウントを、Application Insights の検索で表示
+* バグの修正
+
+## <a name="version-714-visual-studio-2015"></a>Version 7.14 (Visual Studio 2015)
+
+* 可用性 (Web テスト) およびページ ビュー イベントを、検索でサポート
+* 可用性 (Web テスト) およびページ ビュー イベントを、傾向でサポート
+* 診断ツールおよび SDK アダプティブ サンプリング用のイベントの詳細のラベル
+* バグの修正
+
+## <a name="version-712-visual-studio-2015"></a>Version 7.12 (Visual Studio 2015)
+
+* 新しい発行通知形式
+* バグの修正
+
+## <a name="version-84-visual-studio-2017-rc2-and-version-711-visual-studio-2015"></a>Version 8.4 (Visual Studio 2017 RC2) および Version 7.11 (Visual Studio 2015)
+
+* Application Insights SDK を使用したプロジェクトのローカル デバッグ セッションの要求を、CodeLens で表示
+* CodeLens で Application Analytics に直接アクセスして、ユーザーへの影響を表示
+* JavaScript を挿入して、ページ ビューを収集
+* バグの修正
+
+## <a name="version-710-visual-studio-2015"></a>Version 7.10 (Visual Studio 2015)
+
+* Application Insights の構成ウィンドウの新しいデザイン
+* バグの修正
+
+## <a name="version-79-visual-studio-2015"></a>Version 7.9 (Visual Studio 2015)
+
+* Application Insights SDK を使用したプロジェクトのローカル デバッグ セッション中に発生した例外を、CodeLens で表示
+* バグの修正
+
+## <a name="version-83-visual-studio-2017-rc-and-version-78-visual-studio-2015"></a>Version 8.3 (Visual Studio 2017 RC) および Version 7.8 (Visual Studio 2015)
+
+* 構成ウィンドウで Application Insights を追加するための新しい操作方法
+* バグの修正
+
+## <a name="version-77-visual-studio-2015"></a>Version 7.7 (Visual Studio 2015)
+
+* カスタム ASP.NET ルーティングを使用して、テレメトリ イベントからメソッドにより正確にマッピング
+* バグの修正
+
+## <a name="version-76-visual-studio-2015"></a>Version 7.6 (Visual Studio 2015)
+
+* 検索ツールのイベントに関して、新しい [操作の追跡] タブからの操作にイベント分析が関与
+* バグの修正
+
+## <a name="version-75-visual-studio-2015"></a>Version 7.5 (Visual Studio 2015)
+
+* 診断ツールでの、要求に関する運用テレメトリ情報
+* 検索ツールでの、関連項目からの作業項目の作成
+* バグの修正
+
+## <a name="version-74-visual-studio-2015"></a>Version 7.4 (Visual Studio 2015)
+
+* 傾向のフィルター ウィンドウのサイズ変更
+* バグの修正
+
+## <a name="version-73-visual-studio-2015"></a>Version 7.3 (Visual Studio 2015)
+
+* CodeLens における要求
+* 構成ウィンドウ
+* HockeyApp SDK を v4.2.2 に更新
+* バグの修正
+
+## <a name="version-72-visual-studio-2015"></a>Version 7.2 (Visual Studio 2015)
+
+* バグの修正
+
+## <a name="version-71-visual-studio-2015"></a>Version 7.1 (Visual Studio 2015)
+
+* [Application Insights の傾向] の [テレメトリの準備状態] インジケーター
+* バグの修正
 
 ## <a name="version-70"></a>Version 7.0
 ### <a name="azure-application-insights-trends"></a>Application Insights Trends
@@ -197,10 +295,4 @@ Visual Studio の [診断ツール] ページで、ローカルにあるテレ�
 HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。 現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。 詳細については、 [ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

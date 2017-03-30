@@ -17,9 +17,9 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: cd3e6c548fd1f7dccaf478d3324efc8d768e3064
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/28/2017
 Azure に仮想マシン (VM) を作成し、複数のネットワーク インターフェイス (NIC) を各 VM にアタッチできます。 複数 NIC では、複数の NIC 全体にトラフィック タイプを分散できます。 たとえば、インターネットと通信する NIC もあれば、インターネットに接続されていない内部リソースとのみ通信する NIC もあるとします。 アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスでは、複数の NIC 間にネットワーク トラフィックを分散できる必要があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-deploy-multinic-arm-ps.md)を使用してこれらの手順を実行する方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-deploy-multinic-arm-ps.md)を使用してこれらの手順を実行する方法について説明します。
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -47,7 +47,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 
 * **バックエンド サブネット**。 データベース サーバーは、トラフィックを分離するために、別のサブネットに含まれます。 次のスクリプトでは、このサブネットが *WTestVnet*という名前の Vnet に存在する必要があります。
 * **データ ディスクのストレージ アカウント**。 パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。 デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
-* **可用性セット**。 メンテナンス中に少なくとも&1; つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
+* **可用性セット**。 メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
 
 ### <a name="step-1---start-your-script"></a>手順 1 - スクリプトの開始
 使用するすべての PowerShell スクリプトは、 [ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1)からダウンロードできます。 以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
@@ -115,7 +115,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 ### <a name="step-3---create-vms"></a>手順 3 - VM の作成
 ループを使用して必要な数の VM を作成し、必要な NIC と VM をループ内に作成します。 NIC と VM を作成するには、次の手順を実行します。
 
-1. `$numberOfVMs` 変数の値に基づいて、`for` ループを開始して、1 つの VM と&2; つの NIC を作成するコマンドを必要な回数繰り返します。
+1. `$numberOfVMs` 変数の値に基づいて、`for` ループを開始して、1 つの VM と 2 つの NIC を作成するコマンドを必要な回数繰り返します。
 
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
@@ -146,7 +146,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     Set-AzureStaticVNetIP     -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
-5. 各 VM の&2; つめの NIC を追加します。
+5. 各 VM の 2 つめの NIC を追加します。
 
     ```powershell
     Add-AzureNetworkInterfaceConfig -Name ("RemoteAccessNIC"+$suffixNumber) `
@@ -187,14 +187,13 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 1. スクリプトを保存し、それを **PowerShell** コマンド プロンプトまたは **PowerShell ISE** から実行します。 次のように、最初の出力が表示されます。
 
         OperationDescription    OperationId                          OperationStatus
-        --------------------    -----------                          ---------------
-        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
-        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded      
 
+        New-AzureService        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
+        
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. 資格情報プロンプトに必要な情報を入力して、 **[OK]**をクリックします。 次の出力が表示されます。
+2. 資格情報プロンプトに必要な情報を入力して、 **[OK]**をクリックします。 次に示す出力が返されます。
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-
 

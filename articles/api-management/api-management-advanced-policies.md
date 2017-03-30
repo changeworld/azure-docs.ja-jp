@@ -15,20 +15,23 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: bfadac7b34eca2ef1f9bcabc6e267ca9572990b8
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
-##  <a name="a-nameadvancedpoliciesa-advanced-policies"></a><a name="AdvancedPolicies"></a> 高度なポリシー  
+##  <a name="AdvancedPolicies"></a> 高度なポリシー  
   
 -   [制御フロー](api-management-advanced-policies.md#choose) - ブール[式](api-management-policy-expressions.md)の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。  
   
 -   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。  
   
--   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。  
+-   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 
+
+-   [Mock response (モック応答)](#mock-response) - パイプラインの実行を中止し、モック応答を呼び出し元に直接返します。
   
 -   [再試行](#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。  
   
@@ -48,10 +51,10 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
   
-##  <a name="a-namechoosea-control-flow"></a><a name="choose"></a> 制御フロー  
+##  <a name="choose"></a> 制御フロー  
  `choose` ポリシーは、プログラミング言語の if-then-else や switch 構造のように、ブール式の評価結果に基づいて、含まれているポリシー ステートメントを適用します。  
   
-###  <a name="a-namechoosepolicystatementa-policy-statement"></a><a name="ChoosePolicyStatement"></a> ポリシー ステートメント  
+###  <a name="ChoosePolicyStatement"></a> ポリシー ステートメント  
   
 ```xml  
 <choose>   
@@ -71,12 +74,12 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="examples"></a>例  
   
-####  <a name="a-namechooseexamplea-example"></a><a name="ChooseExample"></a> 例  
- 次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと&2; つの制御フロー ポリシーを示しています。  
+####  <a name="ChooseExample"></a> 例  
+ 次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フロー ポリシーを示しています。  
   
  変数の設定ポリシーは inbound セクションにあり、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を作成します。  
   
- 最初の制御フロー ポリシーも inbound セクションにあり、`isMobile` コンテキスト変数の値に応じて&2; つの[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーのうち&1; つを条件付きで適用します。  
+ 最初の制御フロー ポリシーも inbound セクションにあり、`isMobile` コンテキスト変数の値に応じて 2 つの[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーのうち 1 つを条件付きで適用します。  
   
  2 番目の制御フロー ポリシーは outbound セクションにあり、`isMobile` が `true` に設定されている場合に [XML から JSON への変換](api-management-transformation-policies.md#ConvertXMLtoJSON)ポリシーを条件付きで適用します。  
   
@@ -110,7 +113,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ```  
   
 #### <a name="example"></a>例  
- 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky (クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky 天気予報 API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。  
+ 次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。  
   
 ```xml  
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
@@ -130,7 +133,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |choose|ルート要素。|はい|  
 |when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|はい|  
@@ -142,14 +145,14 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 |---------------|-----------------|--------------|  
 |condition="ブール式 &#124; ブール型定数"|含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。|はい|  
   
-###  <a name="a-namechooseusagea-usage"></a><a name="ChooseUsage"></a> 使用法  
+###  <a name="ChooseUsage"></a> 使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-nameforwardrequesta-forward-request"></a><a name="ForwardRequest"></a> 要求を転送する  
+##  <a name="ForwardRequest"></a> 要求を転送する  
  `forward-request` ポリシーは、要求[コンテキスト](api-management-policy-expressions.md#ContextVariables)に指定されたバックエンド サービスに着信要求を転送します。 バックエンド サービスの URL は API [設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)で指定され、[バックエンド サービスの設定](api-management-transformation-policies.md)ポリシーを使用して変更できます。  
   
 > [!NOTE]
@@ -242,7 +245,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |forward-request|ルート要素。|はい|  
   
@@ -260,7 +263,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namelog-to-eventhuba-log-to-event-hub"></a><a name="log-to-eventhub"></a> イベント ハブにログを記録する  
+##  <a name="log-to-eventhub"></a> イベント ハブにログを記録する  
  `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。  
   
 > [!NOTE]
@@ -310,9 +313,51 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
   
 -   **ポリシー スコープ:** すべてのスコープ  
+
+##  <a name="mock-response"></a> モック応答  
+`mock-response` は名前が示すとおり、API と操作の模擬テストを実行するために使用します。 通常のパイプライン実行を中止し、モック応答を呼び出し元に返します。 ポリシーは常に、再現性が最も高い応答を返そうとします。 使用可能な場合は常に、応答コンテキストの例が優先されます。 スキーマが提供され、例が提供されていない場合、ポリシーはスキーマからサンプルの応答を生成します。 例もスキーマも見つからない場合、コンテキストなしの応答が返されます。
   
-##  <a name="a-nameretrya-retry"></a><a name="Retry"></a> 再試行  
- `retry` ポリシーは、子ポリシーを&1; 回実行し、再試行 `condition` が `false` になるか再試行 `count` に達するまで実行を再試行します。  
+### <a name="policy-statement"></a>ポリシー ステートメント  
+  
+```xml  
+<mock-response status-code="code" content-type="media type"/>  
+  
+```  
+  
+### <a name="examples"></a>例  
+  
+```xml  
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code. First found content type is used. If no example or schema is found, the content is empty. -->
+<mock-response/>
+
+<!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
+status code and media type. If no example or schema found, the content is empty. -->
+<mock-response status-code='200' content-type='application/json'/>  
+```  
+  
+### <a name="elements"></a>要素  
+  
+|要素|Description|必須|  
+|-------------|-----------------|--------------|  
+|mock-response|ルート要素。|はい|  
+  
+### <a name="attributes"></a>属性  
+  
+|Attribute|Description|必須|既定値|  
+|---------------|-----------------|--------------|--------------|  
+|status-code|応答の状態コードを指定し、対応する例またはスキーマを選択するために使用します。|なし|200|  
+|content-type|`Content-Type` 応答のヘッダー値を指定し、対応する例またはスキーマを選択するために使用します。|なし|なし|  
+  
+### <a name="usage"></a>使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** inbound、outbound、on-error  
+  
+-   **ポリシー スコープ:** すべてのスコープ
+
+##  <a name="Retry"></a> 再試行  
+ `retry` ポリシーは、子ポリシーを 1 回実行し、再試行 `condition` が `false` になるか再試行 `count` に達するまで実行を再試行します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -331,7 +376,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ```  
   
 ### <a name="example"></a>例  
- 次の例では、要求の転送が、指数再試行アルゴリズムを使用して&10; 回まで再試行されます。 `first-fast-retry` が false に設定されているため、すべての再試行が指数再試行アルゴリズムの対象になります。  
+ 次の例では、要求の転送が、指数再試行アルゴリズムを使用して 10 回まで再試行されます。 `first-fast-retry` が false に設定されているため、すべての再試行が指数再試行アルゴリズムの対象になります。  
   
 ```xml  
   
@@ -376,7 +421,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namereturnresponsea-return-response"></a><a name="ReturnResponse"></a> 応答を返す  
+##  <a name="ReturnResponse"></a> 応答を返す  
  `return-response` ポリシーは、パイプラインの実行を中止し、既定またはカスタムの応答を呼び出し元に返します。 既定の応答は、本文のない `200 OK` です。 コンテキスト変数またはポリシー ステートメントを使用して、カスタムの応答を指定できます。 その両方を指定した場合、コンテキスト変数に含まれる応答が、呼び出し元に返される前にポリシー ステートメントによって変更されます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -404,7 +449,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |return-response|ルート要素。|はい|  
 |set-header|[set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。|いいえ|  
@@ -424,7 +469,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namesendonewayrequesta-send-one-way-request"></a><a name="SendOneWayRequest"></a>&1; 方向の要求を送信する  
+##  <a name="SendOneWayRequest"></a> 1 方向の要求を送信する  
  `send-one-way-request` ポリシーは、指定された URL に指定された要求を送信します。応答は待機しません。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -470,21 +515,21 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |send-one-way-request|ルート要素。|はい|  
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
 |静的メソッド|要求の HTTP メソッド。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
-|ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|いいえ|  
+|ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|なし|  
 |body|要求本文。|いいえ|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|説明|必須|既定値|  
+|Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|なし|新規|  
+|mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ|新規|  
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
-|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> - override - 既存のヘッダーの値を置き換えます。<br />- skip - 既存のヘッダーの値を置き換えません。<br />- append - 既存のヘッダーの値に値を追加します。<br />- delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|  
+|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|なし|override|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -493,7 +538,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namesendrequesta-send-request"></a><a name="SendRequest"></a> 要求を送信する  
+##  <a name="SendRequest"></a> 要求を送信する  
  `send-request` ポリシーは、設定されたタイムアウト値以内の待機時間で、指定された要求を指定された URL に送信します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -510,7 +555,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ```  
   
 ### <a name="example"></a>例  
- この例は、承認サーバーを使用して参照トークンを検証する&1; つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
+ この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
   
 ```xml  
 <inbound>  
@@ -566,7 +611,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 |timeout="整数"|URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ|60|  
 |ignore-error|true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値を格納します。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。|いいえ|false|  
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
-|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> - override - 既存のヘッダーの値を置き換えます。<br />- skip - 既存のヘッダーの値を置き換えません。<br />- append - 既存のヘッダーの値に値を追加します。<br />- delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|なし|override|  
+|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|なし|override|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -575,16 +620,16 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-nameset-variablea-set-variable"></a><a name="set-variable"></a> 変数の設定  
+##  <a name="set-variable"></a> 変数の設定  
  `set-variable` ポリシーは、[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数を宣言し、[式](api-management-policy-expressions.md)または文字列リテラルによって指定された値をこの変数に割り当てます。 リテラルが含まれている式は文字列に変換され、値の型は `System.String` になります。  
   
-###  <a name="a-nameset-variablepolicystatementa-policy-statement"></a><a name="set-variablePolicyStatement"></a> ポリシー ステートメント  
+###  <a name="set-variablePolicyStatement"></a> ポリシー ステートメント  
   
 ```xml  
 <set-variable name="variable name" value="Expression | String literal" />  
 ```  
   
-###  <a name="a-nameset-variableexamplea-example"></a><a name="set-variableExample"></a> 例  
+###  <a name="set-variableExample"></a> 例  
  次の例は、inbound セクションの変数の設定ポリシーを示しています。 この変数の設定ポリシーは、`User-Agent` 要求ヘッダーにテキスト `iPad` または `iPhone` が含まれる場合に true に設定される `isMobile` ブール型[コンテキスト](api-management-policy-expressions.md#ContextVariables)引数を作成します。  
   
 ```xml  
@@ -593,13 +638,13 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |set-variable|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|説明|必須|  
+|Attribute|Description|必須|  
 |---------------|-----------------|--------------|  
 |name|変数の名前。|はい|  
 |値|変数の値。 式またはリテラル値を指定できます。|はい|  
@@ -611,7 +656,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-###  <a name="a-nameset-variableallowedtypesa-allowed-types"></a><a name="set-variableAllowedTypes"></a> 使用できる型  
+###  <a name="set-variableAllowedTypes"></a> 使用できる型  
  `set-variable` ポリシーで使用する式は、次の基本的な型のいずれかを返す必要があります。  
   
 -   System.Boolean  
@@ -676,7 +721,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   System.DateTime?  
   
-##  <a name="a-namesetrequestmethoda-set-request-method"></a><a name="SetRequestMethod"></a> 要求メソッドを設定する  
+##  <a name="SetRequestMethod"></a> 要求メソッドを設定する  
  `set-method` ポリシーでは、要求の HTTP 要求メソッドを変更できます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -728,7 +773,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namesetstatusa-set-status-code"></a><a name="SetStatus"></a> 状態コードを設定する  
+##  <a name="SetStatus"></a> 状態コードを設定する  
  `set-status` ポリシーは、HTTP 状態コードを指定された値に変更します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -757,7 +802,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |set-status|ルート要素。|はい|  
   
@@ -775,7 +820,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-nametracea-trace"></a><a name="Trace"></a> トレース  
+##  <a name="Trace"></a> トレース  
  `trace` ポリシーは、[API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。 このポリシーは、トレースがトリガーされたときにのみ実行されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、`true` に設定されている場合、および `Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、管理者アカウントに関連付けられた有効なキーを保持している場合が該当します。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -807,7 +852,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-##  <a name="a-namewaita-wait"></a><a name="Wait"></a> 待機  
+##  <a name="Wait"></a> 待機  
  `wait` ポリシーは、直接の子ポリシーを並列で実行し、その直接の子ポリシーのすべてまたはいずれかが完了するまで完了を待機します。 待機ポリシーには、[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、および[制御フロー](api-management-advanced-policies.md#choose)のポリシーを直接の子ポリシーとして含めることができます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
@@ -821,7 +866,7 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ```  
   
 ### <a name="example"></a>例  
- 次の例では、`wait` ポリシーの直接の子ポリシーとして&2; つの `choose` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`for` 属性が `all` に設定されているため、すべての直接の子ポリシーが完了するまで、`wait` ポリシーは完了しません。   この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。  
+ 次の例では、`wait` ポリシーの直接の子ポリシーとして 2 つの `choose` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`for` 属性が `all` に設定されているため、すべての直接の子ポリシーが完了するまで、`wait` ポリシーは完了しません。   この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。  
   
 ```xml  
 <wait for="all">  
@@ -857,13 +902,13 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|説明|必須|既定値|  
+|Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |for|`wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> -   `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。|いいえ|すべて|  
   
@@ -878,9 +923,4 @@ ms.openlocfilehash: f1158f363a4796518997633847470f21a5864131
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 -    [API Management のポリシー](api-management-howto-policies.md) 
 -    [ポリシー式](api-management-policy-expressions.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

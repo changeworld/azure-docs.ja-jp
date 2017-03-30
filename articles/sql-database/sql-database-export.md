@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 2461f706f8fc1150e69312098640c0676206a531
-ms.openlocfilehash: 4edd728fe4798450106a4991b353b9dac9de0d88
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 7b96e8b144f329819596e3ff63e6febbbcc1ffb0
+ms.lasthandoff: 03/18/2017
 
 
 ---

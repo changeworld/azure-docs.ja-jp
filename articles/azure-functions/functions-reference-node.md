@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 05/13/2016
 ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: e660f3313ba6805356eef30b3a17ac609fc9043e
-ms.openlocfilehash: 880fdbd6fc51f16add2f2497402d8b01047d0847
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 2c2d352a8aaf572612e64bd69e6e45616c15891d
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -35,7 +36,7 @@ Azure Functions の JavaScript エクスペリエンスを利用すると、ラ�
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
-すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を&1; つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
+すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。 この関数には、常に `context` オブジェクトを含める必要があります。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -163,6 +164,8 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
+キャッシュされたパッケージを関数が共有できるように、ノードの Function App のルートに `package.json` が必要です。 バージョンの競合がある場合は、関数レベルで `package.json` を追加できますが、 パフォーマンス上の理由でこれを実行することはお勧めしません。 
+
 ## <a name="environment-variables"></a>環境変数
 環境変数またはアプリ設定値を取得するには、次のコード例のように、 `process.env`を使用します。
 
@@ -194,10 +197,5 @@ function GetEnvironmentVariable(name)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

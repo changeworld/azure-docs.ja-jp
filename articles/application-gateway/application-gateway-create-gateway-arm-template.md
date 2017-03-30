@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 02b758b06332abe190b322c83da7c4135d358fa4
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: f550ec9a8d254378d165f0c842459fd50ade7945
+ms.openlocfilehash: 5cdd26529ed06b7903ae232ab8da4527e79a8a68
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -165,7 +165,7 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 ### <a name="step-1"></a>手順 1
 
-Azure CLI を初めて使用する場合は、 [Azure CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+Azure CLI を初めて使用する場合は、 [Azure CLI のインストールと構成](../xplat-cli-install.md) に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 ### <a name="step-2"></a>手順 2.
 

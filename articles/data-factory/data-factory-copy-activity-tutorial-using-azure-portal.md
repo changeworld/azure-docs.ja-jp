@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
-ms.openlocfilehash: 299a55865c1c91e664d67095de76708f444d30b9
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: a4658f1eee3cdd24b3da47b4c7319c61ea39cb34
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -46,8 +46,8 @@ ms.lasthandoff: 02/03/2017
 | 手順 | 説明 |
 | --- | --- |
 | [Azure Data Factory を作成する](#create-data-factory) |この手順では、 **ADFTutorialDataFactory**という名前の Azure データ ファクトリを作成します。 |
-| [リンクされたサービスの作成](#create-linked-services) |この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の&2; つのリンクされたサービスを作成します。 <br/><br/>AzureStorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。 パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。 そのため、これら&2; つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。 |
-| [入力データセットと出力データセットを作成する](#create-datasets) |前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。 この手順では、**InputDataset** と **OutputDataset** の&2; つのデータセットを定義します。これらはデータ ストアに格納されている入力/出力データを表します。 <br/><br/>InputDataset にはソース データがある BLOB が含まれた BLOB コンテナーを指定し、OutputDataset には出力データが格納される SQL テーブルを指定します。 また、構造、可用性、ポリシーなど、他のプロパティも指定します。 |
+| [リンクされたサービスの作成](#create-linked-services) |この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。 <br/><br/>AzureStorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。 パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。 そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。 |
+| [入力データセットと出力データセットを作成する](#create-datasets) |前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。 この手順では、**InputDataset** と **OutputDataset** の 2 つのデータセットを定義します。これらはデータ ストアに格納されている入力/出力データを表します。 <br/><br/>InputDataset にはソース データがある BLOB が含まれた BLOB コンテナーを指定し、OutputDataset には出力データが格納される SQL テーブルを指定します。 また、構造、可用性、ポリシーなど、他のプロパティも指定します。 |
 | [パイプラインを作成する。](#create-pipeline) |この手順では、 **ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。 <br/><br/>Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする **コピー アクティビティ** を、パイプラインに追加します。 コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」をご覧ください。 |
 | [パイプラインの監視](#monitor-pipeline) |この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。 |
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 02/03/2017
 ## <a name="create-linked-services"></a>リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスの一覧については、「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 このチュートリアルでは、コンピューティング サービスは使用しません。 
 
-この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の&2; つのリンクされたサービスを作成します。 リンクされたサービス AzureStorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory**にリンクします。 このチュートリアルの後半では、AzureStorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。 リンクされたサービス AzureStorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory**にリンクします。 このチュートリアルの後半では、AzureStorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
 
 ### <a name="create-a-linked-service-for-the-azure-storage-account"></a>Azure ストレージ アカウント用にリンクされたサービスを作成する
 1. **[Data Factory]** ブレードで、**[作成およびデプロイ]** タイルをクリックして、データ ファクトリの**エディター**を起動します。
@@ -126,12 +126,12 @@ ms.lasthandoff: 02/03/2017
 4. **AzureSqlLinkedService** がツリー ビューに表示されることを確認します。 
 
 > [!NOTE]
-> JSON プロパティの詳細については、 [Azure SQL Database に対するデータの移動](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) に関するページを参照してください。
+> JSON プロパティの詳細については、 [Azure SQL Database に対するデータの移動](data-factory-azure-sql-connector.md#linked-service-properties) に関するページを参照してください。
 > 
 > 
 
 ## <a name="create-datasets"></a>データセットを作成する
-前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL データベースを **ADFTutorialDataFactory** というデータ ファクトリにリンクしました。 この手順では、**InputDataset** と **OutputDataset** の&2; つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。 InputDataset にはソース データがある BLOB が含まれた BLOB コンテナーを指定し、OutputDataset には出力データが格納される SQL テーブルを指定します。 
+前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL データベースを **ADFTutorialDataFactory** というデータ ファクトリにリンクしました。 この手順では、**InputDataset** と **OutputDataset** の 2 つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。 InputDataset にはソース データがある BLOB が含まれた BLOB コンテナーを指定し、OutputDataset には出力データが格納される SQL テーブルを指定します。 
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
 この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **InputDataset** という名前のデータセットを作成します。
@@ -179,8 +179,8 @@ ms.lasthandoff: 02/03/2017
    * **linkedServiceName** は **AzureStorageLinkedService** に設定されています。 このリンクされたサービスは手順 2. で作成しました。
    * **folderPath** は **adftutorial** コンテナーに設定されています。 **fileName** プロパティを使用して、フォルダー内の BLOB の名前を指定することもできます。 BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
    * format の **type** は **TextFormat** に設定されています。
-   * テキスト ファイル内に&2; つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
-   * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを&1; 時間ごとに検索します。 
+   * テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。    
+   * **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。 そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
      
      **入力**データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。 JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
      
@@ -202,7 +202,7 @@ ms.lasthandoff: 02/03/2017
 3. ツール バーの **[デプロイ]** をクリックし、**InputDataset** データセットを作成してデプロイします。 ツリー ビューに **InputDataset** が表示されることを確認します。
 
 > [!NOTE]
-> JSON プロパティの詳細については、 [Azure BLOB に対するデータの移動](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) に関するページを参照してください。
+> JSON プロパティの詳細については、 [Azure BLOB に対するデータの移動](data-factory-azure-blob-connector.md#dataset-properties) に関するページを参照してください。
 > 
 > 
 
@@ -243,12 +243,12 @@ ms.lasthandoff: 02/03/2017
    * データセットの **type** は **AzureSQLTable** に設定されています。
    * **linkedServiceName** は **AzureSqlLinkedService** (手順 2. で作成した、リンクされたサービス) に設定されています。
    * **tablename** は **emp** に設定されています。
-   * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の&3; つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
-   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに&1; 時間ごとに出力データ スライスを生成します。
+   * データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
+   * **availability** は **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。  Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 3. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** データセットを作成してデプロイします。 ツリー ビューに **OutputDataset** が表示されることを確認します。 
 
 > [!NOTE]
-> JSON プロパティの詳細については、 [Azure SQL Database に対するデータの移動](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) に関するページを参照してください。
+> JSON プロパティの詳細については、 [Azure SQL Database に対するデータの移動](data-factory-azure-sql-connector.md#linked-service-properties) に関するページを参照してください。
 > 
 > 
 
@@ -303,7 +303,7 @@ ms.lasthandoff: 02/03/2017
     
     以下の点に注意してください。
    
-   * activities セクションに、**type** が **Copy** に設定されたアクティビティが&1; つだけあります。
+   * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
    * アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。
    * **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
      
@@ -331,10 +331,10 @@ ms.lasthandoff: 02/03/2017
 3. ダイアグラム ビューで **[ADFTutorialPipeline]** を右クリックして **[パイプラインを開く]** をクリックします。 
    
     ![パイプラインを開く](./media/data-factory-copy-activity-tutorial-using-azure-portal/DiagramView-OpenPipeline.png)
-4. パイプライン内のアクティビティに加えて、アクティビティの入力データセットと出力データセットが表示されます。 このチュートリアルでは、パイプラインのアクティビティ (コピー アクティビティ) は、入力データセットとして InputDataset、出力データセットとして OutputDataset が含まれたもの&1; つのみです。   
+4. パイプライン内のアクティビティに加えて、アクティビティの入力データセットと出力データセットが表示されます。 このチュートリアルでは、パイプラインのアクティビティ (コピー アクティビティ) は、入力データセットとして InputDataset、出力データセットとして OutputDataset が含まれたもの 1 つのみです。   
    
     ![Opened pipeline view](./media/data-factory-copy-activity-tutorial-using-azure-portal/DiagramView-OpenedPipeline.png)
-5. 左上にある階層リンクで **[Data Factory]** をクリックして、ダイアグラム ビューに戻ります。 ダイアグラム ビューには、すべてのパイプラインが表示されます。 この例では&1; つのパイプラインのみ作成しました。   
+5. 左上にある階層リンクで **[Data Factory]** をクリックして、ダイアグラム ビューに戻ります。 ダイアグラム ビューには、すべてのパイプラインが表示されます。 この例では 1 つのパイプラインのみ作成しました。   
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 この手順では、Azure ポータルを使用して、Azure データ ファクトリの状況を監視します。 
@@ -391,7 +391,7 @@ ms.lasthandoff: 02/03/2017
 1. データ ファクトリのホーム ページの **[監視と管理]** タイルをクリックします。
    
     ![Monitor & Manage tile](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-manage-tile.png) 
-2. **監視と管理アプリケーション**が表示されます。 パイプラインの開始時刻 (2016 年&7; 月&12; 日) と終了時刻 (2016 年&7; 月&13; 日) が含まれるように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。 
+2. **監視と管理アプリケーション**が表示されます。 パイプラインの開始時刻 (2016 年 7 月 12 日) と終了時刻 (2016 年 7 月 13 日) が含まれるように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。 
    
     ![Monitor & Manage App](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-and-manage-app.png) 
 3. **[アクティビティ ウィンドウ]** 一覧でアクティビティ ウィンドウを選択し、詳細を確認します。 
@@ -408,7 +408,7 @@ ms.lasthandoff: 02/03/2017
 4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。  
 
 ## <a name="see-also"></a>関連項目
-| トピック | Description |
+| トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

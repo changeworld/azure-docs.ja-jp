@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 3021ebbe88705b0c5a1691a45ed0ba400af6dd34
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
+ms.openlocfilehash: 0753fb3a4b08b3bda9da1f5a31c577b354197588
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -31,7 +31,7 @@ Azure Service Fabric クラスターを Azure の他のネットワーク機能�
 
 Service Fabric は標準の仮想マシン スケール セットで実行されます。 仮想マシン スケール セットで使用できる機能は、Service Fabric クラスターでも使用できます。 仮想マシン スケール セットと Service Fabric のAzure Resource Manager テンプレートのネットワーク セクションは同じです。 既存の仮想ネットワークにデプロイしたら、Azure ExpressRoute、Azure VPN Gateway、ネットワーク セキュリティ グループ、仮想ネットワーク ピアリングなどの他のネットワーク機能を簡単に組み込むことができます。
 
-Service Fabric には、他のネットワーク機能とは異なる点が&1; つあります。 [Azure Portal](https://portal.azure.com) がService Fabric リソース プロバイダーを内部で使用してクラスターを呼び出し、ノードとアプリケーションに関する情報を取得します。 Service Fabric リソース プロバイダーは、管理エンドポイントの受信 HTTP ゲートウェイ ポート (既定では 19080) にパブリックにアクセスできる必要があります。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) では、管理エンドポイントを使用してクラスターを管理します。 また、Service Fabric リソース プロバイダーは、このポートを使用してクラスターに関する情報を照会し、Azure Portal に表示します。 
+Service Fabric には、他のネットワーク機能とは異なる点が 1 つあります。 [Azure Portal](https://portal.azure.com) がService Fabric リソース プロバイダーを内部で使用してクラスターを呼び出し、ノードとアプリケーションに関する情報を取得します。 Service Fabric リソース プロバイダーは、管理エンドポイントの受信 HTTP ゲートウェイ ポート (既定では 19080) にパブリックにアクセスできる必要があります。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) では、管理エンドポイントを使用してクラスターを管理します。 また、Service Fabric リソース プロバイダーは、このポートを使用してクラスターに関する情報を照会し、Azure Portal に表示します。 
 
 Service Fabric リソース プロバイダーからポート 19080 にアクセスできない場合、ポータルに "*ノードが見つかりません*" などのメッセージが表示され、ノードとアプリケーションの一覧が空になります。 Azure Portal でクラスターを確認する場合は、ロード バランサーでパブリック IP アドレスを公開し、ネットワーク セキュリティ グループでポート 19080 の受信トラフィックを許可する必要があります。 セットアップがこれらの要件を満たしていない場合、Azure Portal にクラスターの状態は表示されません。
 
@@ -79,7 +79,7 @@ DnsSettings              : {
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>既存の仮想ネットワークまたはサブネット
 
-1. サブネットのパラメーターを既存のサブネットの名前に変更し、既存の仮想ネットワークを参照する&2; つの新しいパラメーターを追加します。
+1. サブネットのパラメーターを既存のサブネットの名前に変更し、既存の仮想ネットワークを参照する 2 つの新しいパラメーターを追加します。
 
     ```
         "subnet0Name": {
@@ -378,14 +378,14 @@ DnsSettings              : {
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-デプロイが完了すると、ロード バランサーでプライベート静的 IP アドレス (10.0.0.250) が使用されます。 同じ仮想ネットワーク内に別のマシンがある場合は、内部の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) エンドポイントに移動できます。 このエンドポイントは、ロード バランサーの背後にあるノードの&1; つに接続しています。
+デプロイが完了すると、ロード バランサーでプライベート静的 IP アドレス (10.0.0.250) が使用されます。 同じ仮想ネットワーク内に別のマシンがある場合は、内部の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) エンドポイントに移動できます。 このエンドポイントは、ロード バランサーの背後にあるノードの 1 つに接続しています。
 
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部ロード バランサーと外部ロード バランサー
 
 このシナリオでは、既存の単一ノード タイプの外部ロード バランサーを使用し、同じノード タイプの内部ロード バランサーを追加します。 バックエンド アドレス プールに接続されたバックエンド ポートは、1 つのロード バランサーにのみ割り当てることができます。 アプリケーション ポートを配置するロード バランサーと、管理エンドポイント (ポート 19000 と 19080) を配置するロード バランサーを選択します。 管理エンドポイントを内部ロード バランサーに配置する場合は、前述の Service Fabric リソースプロバイダーの制限に注意してください。 ここで使用する例では、管理エンドポイントは引き続き外部ロード バランサーに配置しています。 また、アプリケーション ポート 80 を追加して内部ロード バランサーに配置します。
 
-2 ノード タイプのクラスターでは、ノード タイプの&1; つを外部ロード バランサーに配置し、 もう&1; つのノード タイプを内部ロード バランサーに配置します。 2 ノード タイプのクラスターを使用するには、ポータルで作成された (2 つのロード バランサーを含む)&2; ノード タイプ テンプレートで、2 つ目のロード バランサーを内部ロード バランサーに切り替えます。 詳細については、「[内部ロード バランサー](#internallb)」をご覧ください。
+2 ノード タイプのクラスターでは、ノード タイプの 1 つを外部ロード バランサーに配置し、 もう 1 つのノード タイプを内部ロード バランサーに配置します。 2 ノード タイプのクラスターを使用するには、ポータルで作成された (2 つのロード バランサーを含む) 2 ノード タイプ テンプレートで、2 つ目のロード バランサーを内部ロード バランサーに切り替えます。 詳細については、「[内部ロード バランサー](#internallb)」をご覧ください。
 
 1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します  (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
 
@@ -595,7 +595,7 @@ DnsSettings              : {
     New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-デプロイが完了すると、リソース グループに&2; つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
+デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 [クラスターの作成](service-fabric-cluster-creation-via-arm.md)

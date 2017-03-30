@@ -9,15 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 21b56d32-1785-4d44-8ae8-94467c12cfba
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/19/2017
+ms.date: 03/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: f3be777497d842f019c1904ec1990bd1f1213ba2
-ms.openlocfilehash: c2bed4f1fddf99183faa0730f052ee79cf77f9f8
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 9eafaca75bbf3db639a42c8206d2ac506c255273
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -27,9 +29,7 @@ ms.openlocfilehash: c2bed4f1fddf99183faa0730f052ee79cf77f9f8
 
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
 
-## <a name="a-idprereqaprerequisites"></a><a id="prereq"></a>前提条件
-
-この記事の手順を完了するには、次のものが必要です。
+## <a id="prereq"></a>前提条件
 
 * **Azure HDInsight (HDInsight で Hadoop を使用) クラスター**
 
@@ -38,7 +38,7 @@ ms.openlocfilehash: c2bed4f1fddf99183faa0730f052ee79cf77f9f8
 
 * **Azure PowerShell を実行できるワークステーション**。
 
-## <a name="a-idpowershellarun-a-mapreduce-job-using-azure-powershell"></a><a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
+## <a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
 
 Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実行できる *コマンドレット* が提供されます。 これは、HDInsight クラスター上で実行される [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) への REST 呼び出し (旧称: Templeton) を内部的に使用することで機能します。
 
@@ -57,71 +57,8 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 
 1. エディターを使用して、次のコードを **mapreducejob.ps1** として保存します。
-    
-    ```powershell
-    # Login to your Azure subscription
-    # Is there an active Azure subscription?
-    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-    if(-not($sub))
-    {
-        Add-AzureRmAccount
-    }
 
-    # Get cluster info
-    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-    $creds=Get-Credential -Message "Enter the login for the cluster"
-
-    #Get the cluster info so we can get the resource group, storage, etc.
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-    $resourceGroup = $clusterInfo.ResourceGroup
-    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-    $container=$clusterInfo.DefaultStorageContainer
-    $storageAccountKey=(Get-AzureRmStorageAccountKey `
-        -Name $storageAccountName `
-    -ResourceGroupName $resourceGroup)[0].Value
-
-    #Create a storage content and upload the file
-    $context = New-AzureStorageContext `
-        -StorageAccountName $storageAccountName `
-        -StorageAccountKey $storageAccountKey
-
-    #Define the MapReduce job
-    #NOTE: If using an HDInsight 2.0 cluster, use hadoop-examples.jar instead.
-    # -JarFile = the JAR containing the MapReduce application
-    # -ClassName = the class of the application
-    # -Arguments = The input file, and the output directory
-    $wordCountJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-        -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
-        -ClassName "wordcount" `
-        -Arguments `
-            "wasb:///example/data/gutenberg/davinci.txt", `
-            "wasb:///example/data/WordCountOutput"
-
-    #Submit the job to the cluster
-    Write-Host "Start the MapReduce job..." -ForegroundColor Green
-    $wordCountJob = Start-AzureRmHDInsightJob `
-        -ClusterName $clusterName `
-        -JobDefinition $wordCountJobDefinition `
-        -HttpCredential $creds
-
-    #Wait for the job to complete
-    Write-Host "Wait for the job to complete..." -ForegroundColor Green
-    Wait-AzureRmHDInsightJob `
-        -ClusterName $clusterName `
-        -JobId $wordCountJob.JobId `
-        -HttpCredential $creds
-    # Download the output
-    Get-AzureStorageBlobContent `
-        -Blob 'example/data/WordCountOutput/part-r-00000' `
-        -Container $container `
-        -Destination output.txt `
-        -Context $context
-    # Print the output of the job.
-    Get-AzureRmHDInsightJobOutput `
-        -Clustername $clusterName `
-        -JobId $wordCountJob.JobId `
-        -HttpCredential $creds
-    ```
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
 2. **Azure PowerShell** コマンド プロンプトを開きます。 ディレクトリを **mapreducejob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
    
@@ -129,7 +66,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
    
     スクリプトを実行すると、HDInsight クラスターの名前と、クラスターの HTTPS/管理者アカウント名およびパスワードの入力を求められます。 Azure サブスクリプションの認証が求められる場合もあります。
 
-3. コマンドが完了すると、次のような出力が返されます。
+3. ジョブが完了すると、次のような出力が返されます。
     
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -155,7 +92,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 > [!NOTE]
 > MapReduce ジョブの出力ファイルは変更できません。 そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-## <a name="a-idtroubleshootingatroubleshooting"></a><a id="troubleshooting"></a>トラブルシューティング
+## <a id="troubleshooting"></a>トラブルシューティング
 
 ジョブの完了時に情報が返されない場合は、処理中にエラーが発生した可能性があります。 このジョブに関するエラーを表示するには、次のコマンドを **mapreducejob.ps1** ファイルの末尾に追加して保存し、再実行します。
 
@@ -169,13 +106,13 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-これにより、ジョブの実行時にサーバー上の STDERR に書き込まれた情報が返されるため、ジョブ失敗の特定に役立ちます。
+このコマンドレットは、ジョブの実行時にサーバー上の STDERR に書き込まれた情報を返します。これは、ジョブ失敗の特定に役立ちます。
 
-## <a name="a-idsummaryasummary"></a><a id="summary"></a>概要
+## <a id="summary"></a>概要
 
 このように、Azure PowerShell を使用すると、HDInsight クラスターで簡単に MapReduce ジョブを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 HDInsight での MapReduce ジョブに関する全般的な情報:
 
@@ -185,10 +122,5 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

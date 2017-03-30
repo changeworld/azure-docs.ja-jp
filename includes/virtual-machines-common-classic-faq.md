@@ -33,8 +33,8 @@ Azure のストレージ アカウントでは、オペレーティング シス
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>どのようなタイプの仮想ハード ディスクを使用できますか。
 Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。 Azure で VHDX を使用する場合は、最初に、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレットを使用して形式を変換する必要があります。 その後、 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
 
-* Linux での手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
-* Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+* Linux での手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
+* Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>これらの仮想マシンは、HYPER-V 仮想マシンと同じですか。
 多くの点で "第 1 世代" の Hyper-V VM と似ていますが、まったく同じというわけではありません。 いずれのタイプも仮想化されたハードウェアを提供し、VHD 形式の仮想ハードディスクと互換性があります。 つまり、Hyper-V と Azure の間で移動させることができます。 HYPER-V ユーザーに驚かれることの多い主な違いは次の 3 点です。
@@ -51,7 +51,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 ## <a name="how-can-i-access--my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
 Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対するリモート デスクトップ接続を使用してリモート接続を確立し、仮想マシンにログオンする必要があります。 手順については、次の項目を参照してください。
 
-* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
+* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 * [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 SSH では、既定で最大 10 の同時接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
 
 リモート デスクトップまたは SSH について問題が発生する場合は、 [VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能をインストールして使用し、問題を修正してください。
@@ -60,7 +60,7 @@ Windows VM の場合は、次のオプションもあります。
 
 * Azure クラシック ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
 * [「Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine (Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング)」](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照する。
-* Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+* Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
 Hyper-V に慣れている場合は、VMConnect と同様のツールを検討されるかもしれませんが、 Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
 
@@ -68,7 +68,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 一時ディスク (Windows のデフォルトは D: ドライブ、Linux は /dev/sdb1) にデータを保存することはできません。 一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。 このようなことは、仮想マシンを別のホストに移動するときに発生する可能性があります。 仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>一時ディスクのドライブ文字を変更する方法について教えてください。
-Windows 仮想マシンでは、ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+Windows 仮想マシンでは、ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](../articles/virtual-machines/virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="how-can-i-upgrade-the-guest-operating-system"></a>ゲスト オペレーティング システムのアップグレード方法について教えてください。
 アップグレードという言葉は一般に、オペレーティング システムを現在のハードウェアのままで新しいリリースに移行することを指します。 Azure VM の場合、新しいリリースに移行するプロセスは Windows や Linux の場合と異なります。
@@ -128,9 +128,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 [Linux 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-linux-creation-choices.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

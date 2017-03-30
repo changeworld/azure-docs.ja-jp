@@ -18,13 +18,13 @@ ms.date: 03/01/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 3ffb5d9828c167953c6553ff34e2d0dcdfe701b0
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 55c195754f18cd52fc098061f0e16607292a1948
+ms.lasthandoff: 03/17/2017
 
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
-Azure アカウント ポータルで、[無料試用版](https://azure.microsoft.com/free/)または [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションを[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードします。 
+Azure アカウント ポータルで、[無料試用版](https://azure.microsoft.com/free/)または [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションを[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードします。 アップグレードはそれ自体では課金されません。使用したサービスに対してのみ料金が発生します。
 
 1. [Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にサインインし、**[サブスクリプション]** タブに移動します。
 2. サブスクリプションの状態のセクションで **[今すぐアップグレード]** バナーを選択します。

@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 03/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
-ms.openlocfilehash: 1ef09170f9d5dd28005f70913df2c945f8e4ac12
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: fd35f1774ffda3d3751a6fa4b6e17f2132274916
+ms.openlocfilehash: 5e3cf1407079a166fbe5e24abae2248ef467ebbb
+ms.lasthandoff: 03/16/2017
 
 
 ---
@@ -167,15 +167,19 @@ Application Insights SDK によって送信される標準のテレメトリに�
 
 [ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](app-insights-search-diagnostic-logs.md)。
 
-## <a name="a-namequestionsaq--a"></a><a name="questions"></a>Q & A
-### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
+## <a name="questions"></a>Q & A
+### <a name="limits"></a>保持されるデータの量はどのくらいですか
 
 「[制限の概要](app-insights-pricing.md#limits-summary)」を参照してください。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>サーバーの要求の POST データを表示するにはどうしたらよいですか
 POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](app-insights-search-diagnostic-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
 
-## <a name="a-nameaddanext-steps"></a><a name="add"></a>次のステップ
+## <a name="video"></a>ビデオ
+
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+
+## <a name="add"></a>次のステップ
 * [Analytics で複雑なクエリを作成する](app-insights-analytics-tour.md)
 * [Application Insights にログとカスタム テレメトリを送信する](app-insights-search-diagnostic-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)

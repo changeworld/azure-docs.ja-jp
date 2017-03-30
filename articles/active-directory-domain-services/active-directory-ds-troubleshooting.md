@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
-ms.openlocfilehash: 30248b5f00aaf2d81db79b5a690760f816384723
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -129,7 +129,7 @@ Domain Services could not be enabled in this Azure AD tenant. (この Azure AD �
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD ドメイン サービスの管理対象ドメインにサインインできない
 Azure AD テナントの 1 人または複数のユーザーが、新しく作成された管理対象ドメインにサインインすることができない場合、次のトラブルシューティングの手順を実行します。
 
-* **UPN 形式でのサインイン:** SAMAccountName 形式 (CONTOSO\joeuser) ではなく UPN 形式 ('joeuser@contoso.com') など) でサインインを試みます。 UPN プレフィックスが極端に長いか、管理対象ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
+* **UPN 形式でのサインイン:** SAMAccountName 形式 (CONTOSO\joeuser) ではなく UPN 形式 ('joeuser@contoso.com' など) でサインインを試みます。 UPN プレフィックスが極端に長いか、管理対象ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
 
 > [!NOTE]
 > UPN 形式を使用して、Azure AD Domain Services の管理対象ドメインにサインインすることをお勧めします。
@@ -137,7 +137,7 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 >
 
 * ファースト ステップ ガイドで説明されている手順に従って [パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md) ことを確認します。
-* **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com') など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーは管理対象ドメインにサインインできません。
+* **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com' など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーは管理対象ドメインにサインインできません。
 * **同期されるアカウント:** 影響を受けているユーザー アカウントがオンプレミスのディレクトリから同期されている場合は、次について確認します。
 
   * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をデプロイまたは更新している。
@@ -151,6 +151,8 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Azure AD テナントから削除されたユーザーが管理対象ドメインから削除されない
 Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作が管理対象ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能により、後でユーザー アカウントを回復する (削除を取り消す) ことができます。
+
+ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、管理対象ドメイン内で無効な状態のままです。 管理対象ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
 
 管理対象ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 こちらの[MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、-RemoveFromRecycleBin オプションを指定した Remove-MsolUser PowerShell コマンドレットを使用します。
 

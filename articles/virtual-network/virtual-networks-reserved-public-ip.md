@@ -1,5 +1,5 @@
 ---
-title: "PowerShell を使用して予約済み IP アドレス (クラシック) を管理する | Microsoft Docs"
+title: "Azure 予約済み IP アドレス (クラシック) の管理 - PowerShell | Microsoft Docs"
 description: "予約済み IP アドレス (クラシック) の概要と、PowerShell を使用して管理する方法について説明します。"
 services: virtual-network
 documentationcenter: na
@@ -15,19 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
-ms.openlocfilehash: 55071ffe1bcc17b2181b4c52f51d28571a2f0eff
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 276b1bcebbe3c32d6fead8ee240dd1ddfb01c872
+ms.lasthandoff: 03/22/2017
 
 
 ---
 # <a name="reserved-ip-addresses-classic"></a>予約済み IP アドレス (クラシック)
 
 > [!div class="op_single_selector"]
-- [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
-- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-- [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
-- [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
+> * [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
+> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+> * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
+> * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
 Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。 これは、特定のクラウド サービス (VIP) に使用される IP アドレス、または VM やロール インスタンスへの直接アクセスに使用される IP アドレスが、リソースがシャット ダウンまたは割り当て解除された場合に変更される場合があるということです。
 
@@ -164,10 +165,5 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
 * クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md) の仕組みを理解します。
 * [予約済みプライベート IP アドレス](virtual-networks-reserved-private-ip.md)について理解する。
 * [インスタンス レベル パブリック IP (ILPIP) アドレス](virtual-networks-instance-level-public-ip.md)について理解する。
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

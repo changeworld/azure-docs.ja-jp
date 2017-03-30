@@ -1,6 +1,6 @@
 ---
 title: "既存の NPS サーバーを使用して Azure MFA 機能を提供する | Microsoft Docs"
-description: "Azure Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、クラウド ベースの&2; 段階認証機能を既存の認証インフラストラクチャに追加するシンプルなソリューションです。"
+description: "Azure Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、クラウド ベースの 2 段階認証機能を既存の認証インフラストラクチャに追加するシンプルなソリューションです。"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -16,9 +16,9 @@ ms.date: 02/23/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: 804e811c0db5f72b6764b3cb120eb5ec8898baac
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 9c587378bc8ffe43f6153c6424748e814c7a1d89
+ms.lasthandoff: 03/18/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合 - パブリック プレビュー
@@ -88,7 +88,7 @@ Azure MFA の NPS 拡張機能をインストールするには:
 
 ### <a name="configurations-limitations"></a>構成の制限事項
 
-- NPS 拡張機能は既存のデプロイメントで使用するものであり、新しいデプロイメント用ではありません。 このため、Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。
+- NPS 拡張機能は新規デプロイ用であり、既存のデプロイメントで使用するものではありません。 このため、Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。
 
 - NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。 代替ログイン ID や カスタム AD フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することはできません。  
 
@@ -98,7 +98,7 @@ NPS 拡張機能を使用して RADIUS クライアントに対して MFA を有
 
 ### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>MFA に登録されていないユーザーのための準備
 
-MFA に登録されていないユーザーがいる場合は、そのユーザーが認証しようとしたときの動作を決める必要があります。 レジストリ パス *HKLM\Software\Microsoft\AzureMFA* にあるレジストリ設定 *REQUIRE_USER_MATCH* を使用して、この機能の動作を制御します。 この設定の構成オプションは&1; つだけです。
+MFA に登録されていないユーザーがいる場合は、そのユーザーが認証しようとしたときの動作を決める必要があります。 レジストリ パス *HKLM\Software\Microsoft\AzureMFA* にあるレジストリ設定 *REQUIRE_USER_MATCH* を使用して、この機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
 
 | キー | 値 | 既定値 |
 | --- | ----- | ------- |

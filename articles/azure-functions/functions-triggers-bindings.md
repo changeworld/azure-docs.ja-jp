@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
-ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: a56d71d437814ed08b2e0a05d9acc8448f6b9ae5
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -32,13 +33,13 @@ ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
 | --- | --- | --- | --- |  
 | [HTTP/webhook](functions-bindings-http-webhook.md) | [Timer](functions-bindings-timer.md) | [Mobile Apps](functions-bindings-mobile-apps.md) | [Service Bus](functions-bindings-service-bus.md)  |  
 | [DocumentDB](functions-bindings-documentdb.md) |  [Storage Blob](functions-bindings-storage-blob.md) | [ストレージ キュー](functions-bindings-storage-queue.md) |  [ストレージ テーブル](functions-bindings-storage-table.md) |  
-| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [SendGrid](functions-bindings-sendgrid.md) | [Twilio](functions-bindings-twilio.md) |   
 | | | | |  
 
 これらの記事は、「[Azure Functions developer reference (Azure Functions 開発者用リファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md)、または [Node.js](functions-reference-node.md) の開発者用リファレンスを既に読んでいることを前提としています。
 
 ## <a name="overview"></a>概要
-トリガーは、カスタム コードをトリガーするために使用されるイベント応答です。 これにより、Azure プラットフォーム全体またはオンプレミスのイベントに応答できます。 バインドは、コードを目的のトリガーや関連する入出力データに接続するために使用される必要なメタデータを表します。 各関数の *function.json* ファイルには、すべての関連バインドが含まれます。 関数の入力バインドと出力バインドの数に制限はありません。 ただし、各関数でサポートされるトリガーのバインドは&1; つのみです。  
+トリガーは、カスタム コードをトリガーするために使用されるイベント応答です。 これにより、Azure プラットフォーム全体またはオンプレミスのイベントに応答できます。 バインドは、コードを目的のトリガーや関連する入出力データに接続するために使用される必要なメタデータを表します。 各関数の *function.json* ファイルには、すべての関連バインドが含まれます。 関数の入力バインドと出力バインドの数に制限はありません。 ただし、各関数でサポートされるトリガーのバインドは 1 つのみです。  
 
 Azure Function アプリに統合できるさまざまなバインドの詳細については、以下の表を参照してください。
 
@@ -385,10 +386,5 @@ public static async Task Run(string input, Binder binder)
 
 * [関数のテスト](functions-test-a-function.md)
 * [関数のスケール](functions-scale.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

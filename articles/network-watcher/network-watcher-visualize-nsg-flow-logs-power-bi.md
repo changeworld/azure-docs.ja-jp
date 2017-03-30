@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: dfb33a30cac74875281645e74339be152d8ef476
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
+ms.openlocfilehash: 7cac733717b4af048e58cf3d574c5743889100c1
+ms.lasthandoff: 03/22/2017
 
 ---
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 03/14/2017
 
 ## <a name="setup"></a>[Setup]
 
-最初に、アカウント内の少なくとも&1; つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフローをログに記録する方法)](network-watcher-nsg-flow-logging-overview.md)」の記事をご覧ください。
+最初に、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、そのフローのログ記録を有効にする必要があります。 ネットワーク セキュリティのフローのログ記録を有効にする手順については、「[Introduction to flow logging for Network Security Groups (ネットワーク セキュリティ グループのフローをログに記録する方法)](network-watcher-nsg-flow-logging-overview.md)」の記事をご覧ください。
 
 また、ご利用のコンピューターに Power BI Desktop クライアントがインストールされていること、そしてストレージ アカウントに存在するログ データをダウンロードして読み込めるだけの空き領域がそのコンピューターにあることが必要です。
 
@@ -96,9 +96,9 @@ ms.lasthandoff: 03/14/2017
  
 以下のグラフには、ログに存在する NSG や、所定の期間にキャプチャされたフロー数、最も早い時期にキャプチャされたログの日付についての情報が表示されています。 ログの対象になっている NSG やフローの日付範囲は、この情報から把握することができます。
 
-![情報グラフ&1;][11]
+![情報グラフ 1][11]
 
-![情報グラフ&2;][12]
+![情報グラフ 2][12]
 
 このテンプレートには、関心のあるデータだけを表示する手段として以下のスライサーが備わっています。 リソース グループや NSG、各種規則に対してフィルターを適用することが可能です。 さらに、送信元 IP、送信先 IP、送信元ポート、送信先ポート、プロトコル、許可/拒否の判断、ログが記録された日時を条件としてフィルター処理することもできます。
 

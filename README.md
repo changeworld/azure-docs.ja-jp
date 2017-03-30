@@ -1,3 +1,8 @@
+## <a name="microsoft-open-source-code-of-conduct"></a>Microsoft オープン ソースの倫理規定
+
+このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。
+詳細については、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)を参照するか、[opencode@microsoft.com](mailto:opencode@microsoft.com) 宛てに質問またはコメントをお送りください。
+
 # <a name="azure-technical-documentation-contributor-guide"></a>Azure 技術ドキュメント作成協力者ガイド
 この GitHub リポジトリには、[https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) で公開されている Azure 技術ドキュメントのソースが格納されています。
 
@@ -20,9 +25,6 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 
 * GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。 目的の記事をこのリポジトリで見つけるか、[https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) で記事にアクセスして GitHub 内のソースにアクセスするためのリンクをクリックしてください。
 * 既存の記事に大幅な変更を加える場合、画像を追加または変更する場合、新しい記事を投稿する場合は、このリポジトリのフォーク、Git Bash と Markdown Pad のインストール、いくつかの Git コマンドの習得が必要になります。
-
-## <a name="code-of-conduct"></a>倫理規定
-このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。 詳細については、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)を参照するか、[opencode@microsoft.com](mailto:opencode@microsoft.com) 宛てに質問またはコメントをお送りください。
 
 ## <a name="about-your-contributions-to-azure-content"></a>Azure コンテンツの作成協力について
 ### <a name="minor-corrections"></a>軽微な修正
@@ -56,7 +58,7 @@ azure-docs リポジトリ内のコンテンツは、https://docs.microsoft.com/
 GitBash をインストールしてローカルで作業する場合は、[記事の新規作成または既存の記事の更新のための Git コマンド](contributor-guide/git-commands-for-master.md)に関するトピックに記載されている、ローカルの作業ブランチを新たに作成し、変更を加え、その変更をメイン ブランチに送信する手順をご覧ください。
 
 ### <a name="branches"></a>ブランチ
-ローカルの作業ブランチを作成する際は、変更のスコープを明確に設定することをお勧めします。 作業の流れを効率の良いものにし、マージが競合する可能性を減らすために、各ブランチではコンセプトや記事を&1; つに制限してください。  新しいブランチのスコープに適しているのは、次のような作業です。
+ローカルの作業ブランチを作成する際は、変更のスコープを明確に設定することをお勧めします。 作業の流れを効率の良いものにし、マージが競合する可能性を減らすために、各ブランチではコンセプトや記事を 1 つに制限してください。  新しいブランチのスコープに適しているのは、次のような作業です。
 
 * 記事 (および関連する画像) の新規作成
 * 記事の誤字脱字や文法の編集

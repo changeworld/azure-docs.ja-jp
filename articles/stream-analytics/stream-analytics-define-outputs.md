@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/24/2017
+ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
 ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -334,9 +335,4 @@ Service Bus キューには、送信者から受信者への&1; 対&1; の通信
 [stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

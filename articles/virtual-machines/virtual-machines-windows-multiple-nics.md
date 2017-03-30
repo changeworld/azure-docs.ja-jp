@@ -12,21 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/27/2016
+ms.date: 03/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: 46156a3331585b47761432c13462dffeb0b7eeb5
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: 95b2820d2f68be34cca7b8d414c581ba44a29804
+ms.lasthandoff: 03/17/2017
 
 
 ---
-# <a name="creating-a-windows-vm-with-multiple-nics"></a>複数の NIC を持つ Windows VM の作成
+# <a name="create-a-windows-vm-with-multiple-nics"></a>複数の NIC を持つ Windows VM の作成
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 独自の PowerShell スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-ps.md)に関する記事を参照してください。 [VM のサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
-
-> [!WARNING]
-> VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。 [元の仮想ディスクに基づいて VM を作成](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)し、VM をデプロイするときに複数の NIC を作成できます。
-> 
-> 
 
 ## <a name="create-core-resources"></a>コア リソースの作成
 [最新の Azure PowerShell がインストールおよび構成](/powershell/azureps-cmdlets-docs)されていることを確認します。 Azure アカウントにログインします。
@@ -132,6 +128,66 @@ $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $diskName -VhdUri $osDiskUri
 New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "WestUS"
 ```
 
+## <a name="add-a-nic-to-an-existing-vm"></a>既存の VM への NIC の追加
+
+既存の仮想マシンに NIC を追加できるようになりました。 この機能を使用するには、この後の Stop-AzureRmVM コマンドレットを使用して、まず VM の割り当てを解除する必要があります。
+
+```powershell
+Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+```
+
+次に、Get-AzureRmVM コマンドレットを使用して、VM の既存の構成を取得します。
+
+```powershell
+$vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+```
+
+新しい NIC は、この記事の最初で説明したように **VM と同じ VNET** に作成できます。または、既存の NIC にアタッチできます。 VNET 内の既存の NIC `MyNic3` にアタッチすると仮定します。 
+
+```powershell
+$nicId = (Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" -Name "MyNic3").Id
+Add-AzureRmVMNetworkInterface -VM $vm -Id $nicId -Primary | Update-AzureRmVm -ResourceGroupName "myResourceGroup"
+```
+
+> [!NOTE]
+> マルチ NIC VM 内の NIC の 1 つをプライマリにする必要があるため、新しい NIC をプライマリとして設定します。 VM 上の以前の NIC がプライマリである場合は、-Primary スイッチを指定する必要はありません。 VM 上のプライマリ NIC を切り替える場合は、次の手順に従います。
+
+```powershell
+$vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+
+# Find out all the NICs on the VM and find which one is Primary
+$vm.NetworkProfile.NetworkInterfaces
+
+# Set the NIC 0 to be primary
+$vm.NetworkProfile.NetworkInterfaces[0].Primary = $true
+$vm.NetworkProfile.NetworkInterfaces[1].Primary = $false
+
+# Update the VM state in Azure
+Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroup"
+```
+
+## <a name="remove-a-nic-from-an-existing-vm"></a>既存の VM からの NIC の削除
+
+NIC を VM から削除することもできます。 この機能を使用するには、この後の Stop-AzureRmVM コマンドレットを使用して、まず VM の割り当てを解除する必要があります。
+
+```powershell
+Stop-AzureRmVM -Name "myVM" -ResourceGroupName "myResourceGroup"
+```
+
+次に、Get-AzureRmVM コマンドレットを使用して、VM の既存の構成を取得します。
+
+```powershell
+$vm = Get-AzureRmVm -Name "myVM" -ResourceGroupName "myResourceGroup"
+```
+
+ここで、VM 上のすべての NIC を表示し、削除する NIC の名前をコピーします。
+
+```powershell
+$vm.NetworkProfile.NetworkInterfaces
+
+Remove-AzureRmNetworkInterface -Name "myNic3" -ResourceGroupName "myResourceGroup"
+```
+
 ## <a name="creating-multiple-nics-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して複数の NIC を作成する
 Azure Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。 Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 *copy* を使用して、作成するインスタンスの数を指定します。
 
@@ -155,11 +211,5 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 ## <a name="next-steps"></a>次のステップ
 複数 NIC を持つ VM を作成するときは必ず「 [Windows VM のサイズ](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」をご覧ください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
 
-既存の VM に NIC を追加することはできません。VM をデプロイするときに、すべての NIC を作成する必要があります。 デプロイメントの計画時に、初めから必要なすべてのネットワーク接続があることを確認してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Windows VM からデータ ディスクを切断する | Microsoft Docs"
+title: "Windows VM からデータ ディスクを切断する - Azure | Microsoft Docs"
 description: "Resource Manager デプロイ モデルを使用する Azure 仮想マシンから、データ ディスクを切断する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 03/21/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 730672a8b52ef37c759b5c92bc1e36d8477da3f3
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 7274a86ada8115e86156592cf034d0350f59ebab
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -33,12 +34,14 @@ ms.openlocfilehash: 730672a8b52ef37c759b5c92bc1e36d8477da3f3
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 1. ポータル ハブで **[仮想マシン]**を選択します。
-2. 切断するデータ ディスクが接続されている仮想マシンを選択し、 **[すべての設定]**をクリックします。
-3. **[設定]** ブレードで、**[ディスク]** を選択します。
-4. **[ディスク]** ブレードで、切断するデータ ディスクを選択します。
-5. データ ディスクのブレードで、 **[切断]**をクリックします。
+2. 切断するデータ ディスクが接続されている仮想マシンを選択し、**[停止]** をクリックして VM の割り当てを解除します。
+3. 仮想マシンのブレードで、**[ディスク]** を選択します。
+4. **[ディスク]** ブレードの上部で、**[編集]** を選択します。
+5. **[ディスク]** ブレードで、切断するデータ ディスクの右端にある ![切断ボタン イメージ](./media/virtual-machines-common-detach-disk/detach.png) 切断ボタンをクリックします。
+5. ディスクが削除されたら、ブレードの上部にある [保存] をクリックします。
+6. [仮想マシン] ブレードで **[概要]** をクリックし、ブレードの上部にある **[開始]** ボタンをクリックして VM を再起動します。
 
-    ![[切断] ボタンが表示されたスクリーンショット。](./media/virtual-machines-windows-detach-disk/detach-disk.png)
+
 
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
@@ -55,15 +58,9 @@ Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3"
 Update-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" -VM $VirtualMachine
 ```
 
-
-詳細については、「 [Remove-AzureRmVMDataDisk](https://msdn.microsoft.com/library/mt603614.aspx)
+詳細については、「[Remove-AzureRmVMDataDisk](/powershell/remove-azurermvmdatadisk)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 データ ディスクを再利用する場合は、 [別の VM にそのデータ ディスクをアタッチ](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

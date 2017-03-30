@@ -69,16 +69,18 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
     ```csharp
-    using System.Threading;
     using System.Configuration;
     using System.Collections.ObjectModel;
+    using System.Threading;
+    using System.Threading.Tasks;
 
+    using Microsoft.Azure;
     using Microsoft.Azure.Management.DataFactories;
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Common.Models;
 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.Azure;
+
     ```
 6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、入力データセットと出力データセット、およびパイプラインを作成します。 また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。
 
@@ -87,10 +89,9 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
     string resourceGroupName = "resourcegroupname";
     string dataFactoryName = "APITutorialFactorySP";
     
-    TokenCloudCredentials aadTokenCredentials =
-        new TokenCloudCredentials(
+    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
             ConfigurationManager.AppSettings["SubscriptionId"],
-            GetAuthorizationHeader());
+        GetAuthorizationHeader().Result);
     
     Uri resourceManagerUri = new Uri(ConfigurationManager.AppSettings["ResourceManagerEndpoint"]);
     
@@ -111,7 +112,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             {
                 Name = dataFactoryName,
                 Location = "westus",
-                Properties = new DataFactoryProperties() { }
+                Properties = new DataFactoryProperties()
             }
         }
     );
@@ -250,7 +251,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                         Name = "BlobToBlob",
                         Inputs = new List<ActivityInput>()
                         {
-                            new ActivityInput() {
+                            new ActivityInput()
+                {
                                 Name = Dataset_Source
                             }
                         },
@@ -280,36 +282,17 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 11. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。 このメソッドは、Azure Portal へのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
 
     ```csharp
-    public static string GetAuthorizationHeader()
+    public static async Task<string> GetAuthorizationHeader()
     {
-        AuthenticationResult result = null;
-        var thread = new Thread(() =>
-        {
-            try
-            {
-                var context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
-
-                result = context.AcquireToken(
-                    resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                    clientId: ConfigurationManager.AppSettings["AdfClientId"],
-                    redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                    promptBehavior: PromptBehavior.Always);
-            }
-            catch (Exception threadEx)
-            {
-                Console.WriteLine(threadEx.Message);
-            }
-        });
-
-        thread.SetApartmentState(ApartmentState.STA);
-        thread.Name = "AcquireTokenThread";
-        thread.Start();
-        thread.Join();
+        var context = new AuthenticationContext(ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] + ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+        AuthenticationResult result = await context.AcquireTokenAsync(
+            resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+            clientId: ConfigurationManager.AppSettings["AdfClientId"],
+            redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+            promptBehavior: PromptBehavior.Always);
 
         if (result != null)
-        {
             return result.AccessToken;
-        }
 
         throw new InvalidOperationException("Failed to acquire token");
     }
@@ -359,14 +342,13 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
     Console.ReadKey();
     
     var datasliceRunListResponse = client.DataSliceRuns.List(
-            resourceGroupName,
-            dataFactoryName,
-            Dataset_Destination,
-            new DataSliceRunListParameters()
-            {
-                DataSliceStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString()
-            }
-        );
+        resourceGroupName,
+        dataFactoryName,
+        Dataset_Destination,
+        new DataSliceRunListParameters()
+        {
+            DataSliceStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString()
+        });
     
     foreach (DataSliceRun run in datasliceRunListResponse.DataSliceRuns)
     {
@@ -409,12 +391,18 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 GetAuthorizationHeaderNoPopup メソッドを作成します。
 
 ```csharp
-public static string GetAuthorizationHeaderNoPopup()
+public static async Task<string> GetAuthorizationHeaderNoPopup()
 {
     var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
     var context = new AuthenticationContext(authority.AbsoluteUri);
-    var credential = new ClientCredential(ConfigurationManager.AppSettings["AdfClientId"], ConfigurationManager.AppSettings["AdfClientSecret"]);
-    AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings["WindowsManagementUri"], credential).Result;
+    var credential = new ClientCredential(
+        ConfigurationManager.AppSettings["AdfClientId"],
+    ConfigurationManager.AppSettings["AdfClientSecret"]);
+    
+    AuthenticationResult result = await context.AcquireTokenAsync(
+        ConfigurationManager.AppSettings["WindowsManagementUri"],
+    credential);
+
     if (result != null)
         return result.AccessToken;
 
@@ -428,7 +416,7 @@ public static string GetAuthorizationHeaderNoPopup()
 TokenCloudCredentials aadTokenCredentials =
     new TokenCloudCredentials(
     ConfigurationManager.AppSettings["SubscriptionId"],
-    GetAuthorizationHeaderNoPopup());
+    GetAuthorizationHeaderNoPopup().Result);
 ```
 
 次に、Active Directory アプリケーションとサービス プリンシパルを作成した後、それを Data Factory 共同作成者ロールに割り当てる方法を示します。

@@ -560,6 +560,6 @@ ms.lasthandoff: 03/08/2017
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/
-[Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
+[GitHub]: https://github.com/Azure-Samples/documentdb-node-todo-app
 
 

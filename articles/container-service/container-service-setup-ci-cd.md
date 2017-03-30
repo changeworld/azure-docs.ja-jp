@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 65fc37a1fd1d1d0149b98767117f8faafb5dcd2b
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -91,7 +91,7 @@ ms.lasthandoff: 02/22/2017
 * `/service-b` は .NET Core サービスであり、`service-a` によって REST 経由で呼び出されます。
 * `service-a` と `service-b` の両方で、それぞれ Node.js ベースと .NET Core ベースのコンテナー イメージを表す各ディレクトリに `Dockerfile` が含まれています。 
 * `docker-compose.yml` は、ビルドしてデプロイするサービスのセットを宣言します。
-* `service-a` と `service-b` のほか、`cache` という名前の&3; 番目のサービスによって、`service-a` で使用できる Redis Cache が実行されます。 `cache` は、ソース リポジトリにコードがないという点で、最初の&2; つのサービスと異なります。 その代わり、事前に作成された `redis:alpine` イメージを Docker Hub から取得して ACS にデプロイします。
+* `service-a` と `service-b` のほか、`cache` という名前の 3 番目のサービスによって、`service-a` で使用できる Redis Cache が実行されます。 `cache` は、ソース リポジトリにコードがないという点で、最初の 2 つのサービスと異なります。 その代わり、事前に作成された `redis:alpine` イメージを Docker Hub から取得して ACS にデプロイします。
 * `/service-a/server.js` には、`service-a` が `service-b` と `cache` の両方を呼び出すコードが含まれています。 `docker-compose.yml` で付けられた名前で、`service-a` コードが `service-b` と `cache` を参照することに注意してください。 `docker-compose` を使ってローカル コンピューター上でこれらのサービスを実行すると、Docker によって、すべてのサービスが適切にネットワーク接続され、名前で互いを検出します。 負荷分散されたネットワークを使用してクラスター環境でサービスを実行すると、通常、ローカルで実行するよりもかなり複雑になります。 さいわい、CI/CD フローを設定する Azure CLI コマンドを使用すると、この簡単なサービス検出コードが ACS でそのまま実行されます。 
 
     ![複数コンテナー サンプル アプリの概要](media/container-service-setup-ci-cd/multi-container-sample-app-overview.PNG)
@@ -119,7 +119,7 @@ ms.lasthandoff: 02/22/2017
 * `vstsProject`: [Visual Studio Team Services](https://www.visualstudio.com/team-services/) (VSTS) は、ワークフローを "*進める*" ように構成されています (実際のビルド タスクとデプロイ タスクは ACS のコンテナー内で実行されます)。 特定の VSTS アカウントとプロジェクトを使用したい場合は、`--vsts-account-name` パラメーターと `--vsts-project-name` パラメーターを使用して定義できます。
 * `buildDefinition`: 各ビルドで実行されるタスクを定義します。 コンテナー イメージは、docker-compose.yml で定義されているサービスごとに生成され、Docker コンテナー レジストリにプッシュされます。 
 * `containerRegistry`: Azure Container Registry は、Docker コンテナー レジストリを実行する管理されたサービスです。 新しい Azure コンテナー レジストリは、既定の名前で作成されます。代わりに、`--registry-name` パラメーターを使用して Azure コンテナー レジストリの名前を指定することもできます。
-* `releaseDefinition`: 各デプロイで実行されるタスクを定義します。 docker-compose.yml で定義されているサービスのコンテナー イメージは、コンテナー レジストリからプルされ、ACS クラスターにデプロイされます。 既定では、"*開発*"、"*テスト*"、"*運用*" の&3; つの環境が作成されます。 リリース定義は、ビルドが正常に完了するたびに "*開発*" に自動的にデプロイされるよう既定で構成されています。 リリースは、ビルドし直すことなく "*テスト*" または "*運用*" に手動で昇格できます。 既定のフローは VSTS でカスタマイズできます。 
+* `releaseDefinition`: 各デプロイで実行されるタスクを定義します。 docker-compose.yml で定義されているサービスのコンテナー イメージは、コンテナー レジストリからプルされ、ACS クラスターにデプロイされます。 既定では、"*開発*"、"*テスト*"、"*運用*" の 3 つの環境が作成されます。 リリース定義は、ビルドが正常に完了するたびに "*開発*" に自動的にデプロイされるよう既定で構成されています。 リリースは、ビルドし直すことなく "*テスト*" または "*運用*" に手動で昇格できます。 既定のフローは VSTS でカスタマイズできます。 
 * `containerService`: ターゲット ACS クラスター (DC/OS 1.8 を実行している必要があります)。
 
 
@@ -232,7 +232,7 @@ DC/OS ダッシュボードを表示している間に、サービスをスケ�
 1. 実行中の Web アプリに戻り、*[Say It Again]* ボタンを繰り返しクリックします。 `service-b` の呼び出しが、ホスト名のコレクションでラウンドロビンを開始することがわかります。一方、`service-a` の単一インスタンスは同じホストを報告し続けます。   
 
 ## <a name="promote-a-release-to-downstream-environments-without-rebuilding-container-images"></a>コンテナー イメージをビルドし直すことなく下流の環境にリリースを昇格する
-既定では、VSTS リリース パイプラインによって "*開発*"、"*テスト*"、"*運用*" の&3; つの環境が設定されます。 ここまで、"*開発*" へのデプロイを行いました。 コンテナー イメージをビルドし直すことなく、次の下流の環境である "*テスト*" にリリースを昇格する方法について見ていきます。 このワークフローを実行することで、前の環境でテストしたのとまったく同じイメージをデプロイできます。この概念は "*不変のサービス*" と呼ばれ、未検出のエラーが運用環境に入り込む可能性を低くします。
+既定では、VSTS リリース パイプラインによって "*開発*"、"*テスト*"、"*運用*" の 3 つの環境が設定されます。 ここまで、"*開発*" へのデプロイを行いました。 コンテナー イメージをビルドし直すことなく、次の下流の環境である "*テスト*" にリリースを昇格する方法について見ていきます。 このワークフローを実行することで、前の環境でテストしたのとまったく同じイメージをデプロイできます。この概念は "*不変のサービス*" と呼ばれ、未検出のエラーが運用環境に入り込む可能性を低くします。
 
 1. VSTS Web UI で **[Releases (リリース)]** に移動します。
 
@@ -288,6 +288,7 @@ VSTS でビルド定義を開くと、次のように表示されます。
     ```
 
     * ラベルの値には、ACS エージェントの完全修飾ドメイン名 (FQDN) の URL か、カスタム ドメイン (例: app.contoso.com) を指定できます。 ACS エージェントの FQDN を確認するには、`az acs list` コマンドを実行し、プロパティで `agentPoolProfiles.fqdn` を確認します。 たとえば、「 `myacsagents.westus.cloudapp.azure.com`」のように入力します。
+    * サンプル アプリは既定で、ポート 80 をリッスンします。使用する Docker アプリケーションが他のポートをリッスンするユーザーの場合、インスタンス `port 8080` または `443` について、ポート番号を FQDN にアタッチしてください。 たとえば、「 `myacsagents.westus.cloudapp.azure.com:8080`」のように入力します。 ただし、外部からアプリケーションにアクセスしようとした場合、ポート 80 で照会する必要があります。
     * docker-compose.env.<*環境名*>.yml というファイル名の規則に従うと、これらの設定のみが名前付きの環境に影響します (例では、"*運用*" という名前の環境)。 VSTS でリリース定義を確認します。各環境のデプロイ タスクは、この規則に従って名付けられた docker-compose ファイルからの読み取りに設定されています。
 
 1. マスター ソース リポジトリにファイルをコミットしてプッシュし、別のビルドを開始します。
@@ -331,7 +332,7 @@ ACS クラスターを削除します。
 
 Azure コンテナー レジストリを削除します。Azure Portal で、Azure コンテナー レジストリを検索して削除します。 
 
-[Visual Studio Team Services アカウントには、最初の&5; ユーザーを無料で使用できる Basic アクセス レベルが用意されています](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/)が、ビルドとリリースの定義を削除できます。
+[Visual Studio Team Services アカウントには、最初の 5 ユーザーを無料で使用できる Basic アクセス レベルが用意されています](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/)が、ビルドとリリースの定義を削除できます。
 
 VSTS ビルド定義を削除します。
         

@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/13/2017
+ms.date: 03/21/2017
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: 3b9dfffe17272296ef10a78b3cf25570109679c7
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 183425e296f91bba47094c9b35be67fb6299c569
+ms.lasthandoff: 03/22/2017
 
 ---
 # <a name="use-maven-to-develop-a-java-based-word-count-topology-for-storm-on-hdinsight"></a>Maven を使用して HDInsight で Storm の Java ベースのワード カウント トポロジを開発する
@@ -199,7 +199,7 @@ resources セクションには、トポロジ内のコンポーネントに必�
 
 ## <a name="create-the-topology"></a>トポロジを作成する
 
-Java ベースの Storm トポロジは、作成か依存関係として参照する必要のある&3; つのコンポーネントで構成されます。
+Java ベースの Storm トポロジは、作成か依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
 
 * **スパウト**: 外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
@@ -284,11 +284,11 @@ public class RandomSentenceSpout extends BaseRichSpout {
 コードのコメントに目を通して、スパウトの仕組みを理解してください。
 
 > [!NOTE]
-> このトポロジでは&1; つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
+> このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
 
 ### <a name="create-the-bolts"></a>ボルトを作成する
 
-ボルトは、データの処理を扱います。 このトポロジでは、次の&2; つのボルトを使用します。
+ボルトは、データの処理を扱います。 このトポロジでは、次の 2 つのボルトを使用します。
 
 * **SplitSentence**: **RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
@@ -297,7 +297,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]
 > ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、実にあらゆる操作が可能です。
 
-`src\main\java\com\microsoft\example` ディレクトリに、`SplitSentence.java` と `WordCount.Java` という&2; つの新しいファイルを作成します。 ファイルの内容として、次のテキストを使用します。
+`src\main\java\com\microsoft\example` ディレクトリに、`SplitSentence.java` と `WordCount.Java` という 2 つの新しいファイルを作成します。 ファイルの内容として、次のテキストを使用します。
 
 **SplitSentence**
 
@@ -557,7 +557,7 @@ Log4j のログの記録を構成する方法の詳細については、 [http:/
 
 WordCount ボルトで出力されたログを見ると、and が 113 回出力されたことがわかります。 スパウトから同じセンテンスが継続的に出力されるため、トポロジが実行される限り、カウントは上がり続けます。
 
-単語とカウントは 5 秒間隔で出力されます。 **WordCount** コンポーネントは、tick タプルを受信したときにのみ情報を出力するように構成されており、これらのタプルが既定で&5; 秒ごとにしか配信されないことを要求します。
+単語とカウントは 5 秒間隔で出力されます。 **WordCount** コンポーネントは、tick タプルを受信したときにのみ情報を出力するように構成されており、これらのタプルが既定で 5 秒ごとにしか配信されないことを要求します。
 
 ## <a name="convert-the-topology-to-flux"></a>トポロジを Flux に変換する
 
@@ -565,63 +565,47 @@ Flux は、構成と実装が分離可能な、Storm 0.10.0 以降で使用で�
 
 YAML ファイルでは、トポロジに使用するコンポーネント、そのコンポーネント間でデータをやり取りする方法、コンポーネントの初期化の際に使用する値を定義します。 jar ファイルの一部として YAML ファイルを含めることも、外部 YAML ファイルを使用することもできます。
 
+> [!WARNING]
+> Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)のインストールが必要になる場合があります。
+
 1. `WordCountTopology.java` ファイルをプロジェクトの外部に移動します。 以前は、このファイルでトポロジを定義していましたが、Flux では不要です。
 
 2. `resources` ディレクトリに `topology.yaml` という名前のファイルを作成します。 このファイルの内容として、次のテキストを使用します。
-    
-    ```yaml
-    # topology definition
 
-    # name to be used when submitting. This is what shows up...
-    # in the Storm UI/storm command line tool as the topology name
-    # when submitted to Storm
-    name: "wordcount"
-
-    # Topology configuration
-    config:
-    # Hint for the number of workers to create
-    topology.workers: 1
-
-    # Spout definitions
-    spouts:
-    - id: "sentence-spout"
-        className: "com.microsoft.example.RandomSentenceSpout"
-        # parallelism hint
-        parallelism: 1
-
-    # Bolt definitions
-    bolts:
-    - id: "splitter-bolt"
-        className: "com.microsoft.example.SplitSentence"
-        parallelism: 1
-
-    - id: "counter-bolt"
-        className: "com.microsoft.example.WordCount"
-        constructorArgs:
-        - 10
-        parallelism: 1
-
-    # Stream definitions
-    streams:
-    - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-        # The stream emitter
-        from: "sentence-spout"
-        # The stream consumer
-        to: "splitter-bolt"
-        # Grouping type
-        grouping:
-        type: SHUFFLE
-
-    - name: "Splitter -> Counter"
-        from: "splitter-bolt"
-        to: "counter-bolt"
-        grouping:
-        type: FIELDS
-        # field(s) to group on
-        args: ["word"]
-    ```
-
-    一読して、各セクションの実行内容と、 **WordCountTopology.java** ファイルの Java ベースの定義との関係を確認します。
+        name: "wordcount"       # friendly name for the topology
+        
+        config:                 # Topology configuration
+        topology.workers: 1     # Hint for the number of workers to create
+        
+        spouts:                 # Spout definitions
+        - id: "sentence-spout"
+            className: "com.microsoft.example.RandomSentenceSpout"
+            parallelism: 1      # parallelism hint
+        
+        bolts:                  # Bolt definitions
+        - id: "splitter-bolt"
+            className: "com.microsoft.example.SplitSentence"
+            parallelism: 1
+         
+        - id: "counter-bolt"
+            className: "com.microsoft.example.WordCount"
+            constructorArgs:
+                - 10
+            parallelism: 1
+        
+        streams:                # Stream definitions
+            - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
+            from: "sentence-spout"       # The stream emitter
+            to: "splitter-bolt"          # The stream consumer
+            grouping:                    # Grouping type
+                type: SHUFFLE
+          
+            - name: "Splitter -> Counter"
+            from: "splitter-bolt"
+            to: "counter-bolt"
+            grouping:
+            type: FIELDS
+                args: ["word"]           # field(s) to group on
 
 3. `pom.xml` ファイルに次の変更を加えます。
    
@@ -693,8 +677,11 @@ YAML ファイルでは、トポロジに使用するコンポーネント、そ
     PowerShell を使用している場合は、次のコマンドを使用します。
    
         mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
+
+    > [!WARNING]
+    > トポロジが Storm 1.0.1 を使っている場合、このコマンドは失敗します。 これは、[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) によるものです。 代わりに、[開発環境に Storm をインストール](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)し、次の情報を使ってください。
    
-    Linux、Unix、OS X システムを使用している場合は、 [開発環境に Storm がインストールされている](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)と、代わりに次のコマンドを使用することができます。
+    [開発環境に Storm がインストールされている](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)場合、代わりに次のコマンドを使うことができます。
    
         mvn compile package
         storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
@@ -724,7 +711,7 @@ YAML ファイルでは、トポロジに使用するコンポーネント、そ
    
         mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
    
-    または、Linux、Unix、OS X の開発環境で Storm を使用している場合は、次のコマンドを使用します。
+    または、開発環境に Storm がある場合は次のようにします。
    
         storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
    

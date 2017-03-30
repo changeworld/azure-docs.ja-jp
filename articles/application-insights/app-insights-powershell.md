@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
-ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: 3ad42c2f982446445402f176ff913833e01c42d6
+ms.lasthandoff: 03/18/2017
 
 
 ---
-# <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
-この記事では、Azure で [Application Insights](app-insights-overview.md) リソースを自動的に作成する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラートの設定](app-insights-alerts.md)、その他の Azure リソースの作成を行うことができます。
+#  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
+この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
 これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md) の JSON テンプレートです。 簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
@@ -37,106 +37,118 @@ ms.lasthandoff: 01/25/2017
 新しい .json ファイルを作成します (この例では、 `template1.json` と呼びます)。 ファイルに、次のコンテンツをコピーします。
 
 ```JSON
-{
-          "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
+    {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
             "appName": {
-              "type": "string",
-              "metadata": {
-                "description": "Enter the application name."
-              }
+                "type": "string",
+                "metadata": {
+                    "description": "Enter the application name."
+                }
             },
-            "applicationType": {
-              "type": "string",
-              "defaultValue": "ASP.NET web application",
-              "allowedValues": [ "ASP.NET web application", "Java web application", "HockeyApp bridge application", "Other (preview)" ],
-              "metadata": {
-                "description": "Enter the application type."
-              }
+            "appType": {
+                "type": "string",
+                "defaultValue": "web",
+                "allowedValues": [
+                    "web",
+                    "java",
+                    "HockeyAppBridge",
+                    "other"
+                ],
+                "metadata": {
+                    "description": "Enter the application type."
+                }
             },
             "appLocation": {
-              "type": "string",
-              "defaultValue": "East US",
-              "allowedValues": [ "South Central US", "West Europe", "East US", "North Europe" ],
-              "metadata": {
-                "description": "Enter the application location."
-              }
+                "type": "string",
+                "defaultValue": "East US",
+                "allowedValues": [
+                    "South Central US",
+                    "West Europe",
+                    "East US",
+                    "North Europe"
+                ],
+                "metadata": {
+                    "description": "Enter the application location."
+                }
             },
             "priceCode": {
-              "type": "int",
-              "defaultValue": 1,
-              "allowedValues": [ 1, 2 ],
-              "metadata": {"description": "1 = Basic, 2 = Enterprise"}
+                "type": "int",
+                "defaultValue": 1,
+                "allowedValues": [
+                    1,
+                    2
+                ],
+                "metadata": {
+                    "description": "1 = Basic, 2 = Enterprise"
+                }
             },
             "dailyQuota": {
-              "type": "int",
-              "defaultValue": 100,
-              "minValue": 1,
-              "metadata": {
-                "description": "Enter daily quota in GB."
-              }
+                "type": "int",
+                "defaultValue": 100,
+                "minValue": 1,
+                "metadata": {
+                    "description": "Enter daily quota in GB."
+                }
             },
             "dailyQuotaResetTime": {
-              "type": "int",
-              "defaultValue": 24,
-              "metadata": {
-                "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
-              }
+                "type": "int",
+                "defaultValue": 24,
+                "metadata": {
+                    "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
+                }
             },
             "warningThreshold": {
-              "type": "int",
-              "defaultValue": 90,
-              "minValue": 1,
-              "maxValue": 100,
-              "metadata": {
-                "description": "Enter the % value of daily quota after which warning mail to be sent. "
-              }
-            }
-          },
-
-         "variables": {
-           "priceArray": [ "Basic", "Application Insights Enterprise" ],
-           "pricePlan": "[take(variables('priceArray'),parameters('priceCode'))]",
-           "billingplan": "[concat(parameters('appName'),'/', variables('pricePlan')[0])]"
-          },
-
-          "resources": [
-            {
-              "apiVersion": "2014-08-01",
-              "location": "[parameters('appLocation')]",
-              "name": "[parameters('appName')]",
-              "type": "microsoft.insights/components",
-              "properties": {
-                "Application_Type": "[parameters('applicationType')]",
-                "ApplicationId": "[parameters('appName')]",
-                "Name": "[parameters('appName')]",
-                "Flow_Type": "Redfield",
-                "Request_Source": "ARMAIExtension"
-              }
-            },
-            {
-              "name": "[variables('billingplan')]",
-              "type": "microsoft.insights/components/CurrentBillingFeatures",
-              "location": "[parameters('appLocation')]",
-              "apiVersion": "2015-05-01",
-              "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('appName'))]"
-              ],
-              "properties": {
-                "CurrentBillingFeatures": "[variables('pricePlan')]",
-                "DataVolumeCap": {
-                  "Cap": "[parameters('dailyQuota')]",
-                  "WarningThreshold": "[parameters('warningThreshold')]",
-                  "ResetTime": "[parameters('dailyQuotaResetTime')]"
+                "type": "int",
+                "defaultValue": 90,
+                "minValue": 1,
+                "maxValue": 100,
+                "metadata": {
+                    "description": "Enter the % value of daily quota after which warning mail to be sent. "
                 }
-              }
+            }
+        },
+        "variables": {
+            "priceArray": [
+                "Basic",
+                "Application Insights Enterprise"
+            ],
+            "pricePlan": "[take(variables('priceArray'),parameters('priceCode'))]",
+            "billingplan": "[concat(parameters('appName'),'/', variables('pricePlan')[0])]"
+        },
+        "resources": [
+            {
+                "type": "microsoft.insights/components",
+                "kind": "[parameters('appType')]",
+                "name": "[parameters('appName')]",
+                "apiVersion": "2014-04-01",
+                "location": "[parameters('appLocation')]",
+                "tags": {},
+                "properties": {
+                    "ApplicationId": "[parameters('appName')]"
+                },
+                "dependsOn": []
             },
-
-          "__comment":"web test, alert, and any other resources go here"
-          ]
-        }
-
+            {
+                "name": "[variables('billingplan')]",
+                "type": "microsoft.insights/components/CurrentBillingFeatures",
+                "location": "[parameters('appLocation')]",
+                "apiVersion": "2015-05-01",
+                "dependsOn": [
+                    "[resourceId('microsoft.insights/components', parameters('appName'))]"
+                ],
+                "properties": {
+                    "CurrentBillingFeatures": "[variables('pricePlan')]",
+                    "DataVolumeCap": {
+                        "Cap": "[parameters('dailyQuota')]",
+                        "WarningThreshold": "[parameters('warningThreshold')]",
+                        "ResetTime": "[parameters('dailyQuotaResetTime')]"
+                    }
+                }
+            }
+        ]
+    }
 ```
 
 
@@ -161,20 +173,26 @@ ms.lasthandoff: 01/25/2017
 
 その他のパラメーターを追加することもできます。テンプレートのパラメーター セクションに説明があります。
 
-## <a name="enterprise-price-plan"></a>Enterprise 料金プラン
+<a id="price"></a>
+## <a name="set-the-price-plan"></a>料金プランの設定
+
+[料金プラン](app-insights-pricing.md)を設定できます。
 
 上記のテンプレートを使用して、Enterprise 料金プランを使ったアプリ リソースを作成するには、次のコマンドを実行します。
 
 ```PS
-   
-
         New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp
 ```
 
-* 既定の Basic 価格プランのみを使用する場合は、テンプレートから料金プラン リソースを除外することができます。
+|priceCode|プラン|
+|---|---|
+|1|Basic|
+|2|Enterprise|
+
+* 既定の Basic 料金プランのみを使用する場合は、テンプレートから CurrentBillingFeatures リソースを除外することができます。
 
 
 ## <a name="to-get-the-instrumentation-key"></a>インストルメンテーション キーを取得するには
@@ -409,7 +427,7 @@ ms.lasthandoff: 01/25/2017
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>リソース間の依存関係の設定
-Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に&1; つの設定を完了するために、依存関係の行を追加します。
+Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
 
 * 可用性テスト リソース
   
