@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure AD Connect: パススルー認証 | Microsoft Docs"
 description: "このトピックでは、Azure AD パススルー認証をオンプレミス Active Directory (AD) で使用して、Azure Active Directory (Azure AD) と接続済みサービスへのアクセス権限を提供する方法を説明します。"
 services: active-directory
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/30/2017
 # <a name="what-is-azure-ad-pass-through-authentication"></a>Azure AD パススルー認証とは
 会社のリソースとクラウド ベースのサービスへのアクセスに同じ資格情報 (ユーザー名とパスワード) を使用すると、ユーザーはさまざまな資格情報を覚えておく必要がなくなります。 これにより、ユーザーがサインインの方法を忘れる可能性が低減され、パスワードをリセットする際のヘルプ デスクの関与が減るというメリットもあります。
 
-多くの組織が、Azure AD の[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)を使用して、ユーザーが&1; つの資格情報だけでオンプレミスとクラウドのサービスにアクセスできるようにしていますが、各部署が担当するサービスごとにパスワード (場合によってはハッシュ形式のパスワード) を必要とする組織もあります。
+多くの組織が、Azure AD の[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)を使用して、ユーザーが 1 つの資格情報だけでオンプレミスとクラウドのサービスにアクセスできるようにしていますが、各部署が担当するサービスごとにパスワード (場合によってはハッシュ形式のパスワード) を必要とする組織もあります。
 
 Azure AD パススルー認証は、このようなお客様にシンプルなソリューションを提供します。 パススルー認証では、オンプレミス Active Directory に対して Azure AD サービスのパスワード検証を実行できます。 複雑なネットワーク インフラストラクチャを導入したり、クラウドに何らかの形でオンプレミス パスワードが存在したりする必要なく、パスワードを検証できます。
 
@@ -91,11 +91,11 @@ Azure AD のパススルー認証を有効にして使用するには、次の�
 ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。 また、NT Authority\System に対しては必ずポート 8080 を有効にしてください。
 
 ## <a name="enabling-pass-through-authentication"></a>パススルー認証の有効化
-Azure AD パススルー認証は Azure AD Connect を通じて有効にできます。 パススルー認証を有効にすると、Azure AD Connect と同じサーバーに&1; つ目のコネクタがデプロイされます。 Azure AD Connect をインストールするときに、カスタム インストールを選択し、サインインのオプション ページでパススルー認証を選択します。 詳細については、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
+Azure AD パススルー認証は Azure AD Connect を通じて有効にできます。 パススルー認証を有効にすると、Azure AD Connect と同じサーバーに 1 つ目のコネクタがデプロイされます。 Azure AD Connect をインストールするときに、カスタム インストールを選択し、サインインのオプション ページでパススルー認証を選択します。 詳細については、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
 
 ![シングル サインオン](./media/active-directory-aadconnect-sso/sso3.png)
 
-既定では、1 つ目のパススルー認証コネクタは Azure AD Connect サーバーにインストールされます。 認証要求の高可用性と負荷分散を利用する場合は、別のコンピューターに&2; つ目のコネクタをデプロイする必要があります。
+既定では、1 つ目のパススルー認証コネクタは Azure AD Connect サーバーにインストールされます。 認証要求の高可用性と負荷分散を利用する場合は、別のコンピューターに 2 つ目のコネクタをデプロイする必要があります。
 
 2 つ目のコネクタをデプロイするには、次の手順を実行します。
 
