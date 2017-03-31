@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2017
+ms.date: 03/20/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 5627cd7370ce6d9503b4c98b15a19592b8f228de
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: aafcfb9800a0d3ca9cf259617645da5ab6539c5b
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -140,7 +140,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 1. クライアント証明書をエクスポートするには、 **certmgr.msc**を開きます。 エクスポートするクライアント証明書を右クリックして、**[すべてのタスク]**、**[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。
 2. ウィザードで **[次へ]** をクリックし、**[はい、秘密キーをエクスポートします]** を選択して、**[次へ]** をクリックします。
-3. **[エクスポート ファイルの形式]** ページでは、既定値をそのまま使用します。 その後、 **[次へ]**をクリックします。 
+3. **[エクスポート ファイルの形式]** ページでは、既定値をそのまま使用します。 **[証明のパスにある証明書を可能であればすべて含む]** がオンになっていることを確認します。 その後、 **[次へ]**をクリックします。 
 4. **[セキュリティ]** ページでは、秘密キーを保護する必要があります。 パスワードを使用する場合は、この証明書に設定したパスワードを必ず記録しておくか、覚えておいてください。 その後、 **[次へ]**をクリックします。
 5. **[エクスポートするファイル]** で、**[参照]** をクリックして証明書をエクスポートする場所を選択します。 **[ファイル名]**に証明書ファイルの名前を指定します。 その後、 **[次へ]**をクリックします。
 6. **[完了]** をクリックして、証明書をエクスポートします。   
@@ -185,10 +185,7 @@ VPN クライアント パッケージには、Windows に組み込まれてい�
     ![VPN クライアントのダウンロード 1](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/downloadvpnclient1.png)
 2. クライアント用の適切なパッケージを選択して、**[ダウンロード]** をクリックします。 構成パッケージ ファイルを保存します。 これを、仮想ネットワークに接続する各クライアント コンピューターにインストールします。
 
-    ![VPN クライアントのダウンロード 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/client.png)
-
-   * 64 ビット クライアントの場合は、**[AMD64]** を選択します。
-   * 32 ビット クライアントの場合は、**[x86]** を選択します。
+    ![VPN クライアントのダウンロード 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/vpnclient.png)
 
 ### <a name="step-2---install-the-client-configuration-package"></a>手順 2 - クライアント構成パッケージをインストールする
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: b875c83ba7d87a572e78625e4038840aadcf9c85
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e5a33f58dfb07b82d4acab533d68135d8ed6a446
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -96,7 +96,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 #### <a name="directory-objects"></a>ディレクトリ オブジェクト
 **種類:** 共通機能
 
-既定の使用量クォータは 150,000 オブジェクトです。 1 個のオブジェクトは、一意の識別名によって表される、ディレクトリ サービス内の&1; つのエントリです。 オブジェクトの例としては、認証目的に使用されるユーザー エントリなどがあります。 この既定のクォータを超えるオブジェクト数が必要な場合は、サポートにお問い合わせください。 Office 365、Microsoft Intune、および Azure Active Directory をディレクトリ サービスの基盤とするその他の有料 Microsoft オンライン サービスには 500,000 オブジェクト制限は適用されません。
+既定の使用量クォータは 150,000 オブジェクトです。 1 個のオブジェクトは、一意の識別名によって表される、ディレクトリ サービス内の 1 つのエントリです。 オブジェクトの例としては、認証目的に使用されるユーザー エントリなどがあります。 この既定のクォータを超えるオブジェクト数が必要な場合は、サポートにお問い合わせください。 Office 365、Microsoft Intune、および Azure Active Directory をディレクトリ サービスの基盤とするその他の有料 Microsoft オンライン サービスには 500,000 オブジェクト制限は適用されません。
 
 **可用性:**
 
@@ -145,7 +145,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 **詳細:**
 
-* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)
+* [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md#reset-your-password)
 
 #### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン)
 **種類:** 共通機能

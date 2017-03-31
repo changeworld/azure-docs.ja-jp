@@ -28,6 +28,7 @@
 ### [サービス プリンシパルの構成](container-service-kubernetes-service-principal.md)
 ### [コンテナー管理 - Kubernetes UI](container-service-kubernetes-ui.md)
 ### [Kubernetes コンテナーを負荷分散する](container-service-kubernetes-load-balancing.md)
+### [ACS Kubernetes と Jenkins の統合](container-service-kubernetes-jenkins.md)
 ### Kubernetes の監視
 #### [OMS で監視する](container-service-kubernetes-oms.md)
 #### [Datadog で監視する](container-service-kubernetes-datadog.md)

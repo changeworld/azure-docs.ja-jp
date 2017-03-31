@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 207eb60a359be1d9d9b68a92ac0c8255e7217a97
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 792907646a602004904eef5c4000f464881c6c4b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -212,10 +213,7 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 * **Hadoop**: クラスター内のノードの数をスケール ダウンすると、クラスター内のサービスの一部が再起動されます。 これにより、スケーリング操作の完了時に、実行中および保留中のジョブが失敗する可能性があります。 ただし、操作が完了した時点で、ジョブを再送信できます。
 * **HBase**: リージョンのサーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョンのサーバーを手動で調整するには、次の手順を使用します。
 
-    1. SSH を使用して HDInsight クラスターに接続します。 HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントを参照してください。
-
-        * [Linux、Unix、Mac OS X から HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-        * [Windows から HDInsight で SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    1. SSH を使用して HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
     2. HBase シェルを開始するには、次のコマンドを使用します。
 

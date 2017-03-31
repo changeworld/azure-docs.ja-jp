@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 334819e0819206d1bd928c0861b25cc59dd29fa7
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e4e9e16c62ab1262021d1a719f5aa15d936f4843
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="how-to-get-operational-insights-with-password-management-reports"></a>パスワード管理レポートで運用情報を把握する方法
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 >
 >
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/10/2017
 
 * グローバル管理者
 
-会社のグローバル管理者がこれらのレポートを読み取るには、事前に&1; 回以上レポート タブまたは監査ログにアクセスして、このデータを組織の利益のために収集することを選択しておく必要があります。 この選択を行うまでは、データが組織のために収集されません。
+会社のグローバル管理者がこれらのレポートを読み取るには、事前に 1 回以上レポート タブまたは監査ログにアクセスして、このデータを組織の利益のために収集することを選択しておく必要があります。 この選択を行うまでは、データが組織のために収集されません。
 
 ディレクトリ ロールと各ロールが実行できる操作の詳細については、「[Azure Active Directory での管理者ロールの割り当て](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-assign-admin-roles)」をご覧ください。
 
@@ -94,10 +94,10 @@ ms.lasthandoff: 03/10/2017
 * [**Reset password (self-service) (パスワードのリセット (セルフサービス))**](#activity-type-reset-password-self-service) - ユーザーが[Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から自分のパスワードのリセットに成功したことを示します。
 * [**Self serve password reset flow activity progress (セルフサービスのパスワード リセット フロー アクティビティの進行状況)**](#activity-type-self-serve-password-reset-flow-activity-progress) - ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
 * [**Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))**](#activity-type-unlock-user-account-self-service) - ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から[リセットなしの AD アカウントのロック解除](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password)機能を使用して、自分のパスワードをリセットせずに自分の Active Directory アカウントのロック解除に成功したことを示します。
-* [**User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)**](#activity-type-user-registered-for-self-service-password-reset) - ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。 
+* [**User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)**](#activity-type-user-registered-for-self-service-password-reset) - ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>アクティビティの種類: Blocked from self-service password reset (セルフサービスのパスワード リセットのブロック)
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - ユーザーが 24 時間以内に合計 5 回以上、パスワードのリセット、特定のゲートの使用、または電話番号の確認を試行したことを示します。
 * **アクティビティのアクター** - 追加のリセット操作の実行を禁止されたユーザー。 エンドユーザーまたは管理者である可能性があります。
@@ -107,7 +107,7 @@ ms.lasthandoff: 03/10/2017
 * **アクティビティの状態が失敗になった理由** - 該当なし
 
 ### <a name="activity-type-change-password-self-service"></a>アクティビティの種類: Change password (self-service) (パスワードの変更 (セルフサービス))
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - ユーザーが自発的または (期限切れにより) 強制的にパスワードの変更を実行したことを示します。
 * **アクティビティのアクター** - 自分のパスワードを変更したユーザー。 エンドユーザーまたは管理者である可能性があります。
@@ -115,11 +115,11 @@ ms.lasthandoff: 03/10/2017
 * **使用できるアクティビティの状態**
  * _成功_ - ユーザーが自分のパスワードの変更に成功したことを示します。
  * _失敗_ - ユーザーが自分のパスワードの変更に失敗したことを示します。 行をクリックすると **[Activity Status Reason (アクティビティの状態の理由)]** カテゴリが表示され、失敗の原因について詳しく知ることができます。
-* **アクティビティの状態が失敗になった理由** - 
+* **アクティビティの状態が失敗になった理由** -
  * _FuzzyPolicyViolationInvalidPassword_ - ユーザーが選択したパスワードが、マイクロソフトの禁止されたパスワードの検出機能によって一般的すぎるパスワードまたは特に脆弱なパスワードと見なされたため、自動的に禁止されました。
 
 ### <a name="activity-type-reset-password-by-admin"></a>アクティビティの種類: Reset password (by admin) (パスワードのリセット (管理者))
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - 管理者が Azure Portal からユーザーに代わってパスワードのリセットを実行したことを示します。
 * **アクティビティのアクター** -別のエンドユーザーまたは管理者に代わってリセットを実行した管理者。 グローバル管理者、パスワード管理者、ユーザー管理者、ヘルプデスク管理者のいずれかである可能性があります。
@@ -129,7 +129,7 @@ ms.lasthandoff: 03/10/2017
  * _失敗_ - 管理者がユーザーのパスワードのリセットに失敗したことを示します。 行をクリックすると **[Activity Status Reason (アクティビティの状態の理由)]** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
 ### <a name="activity-type-reset-password-self-service"></a>アクティビティの種類: Reset password (self-service) (パスワードのリセット (セルフサービス))
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - ユーザーが[Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から自分のパスワードのリセットに成功したことを示します。
 * **アクティビティのアクター** - 自分のパスワードをリセットしたユーザー。 エンドユーザーまたは管理者である可能性があります。
@@ -137,11 +137,11 @@ ms.lasthandoff: 03/10/2017
 * **使用できるアクティビティの状態**
  * _成功_ - ユーザーが自分のパスワードのリセットに成功したことを示します。
  * _失敗_ - ユーザーが自分のパスワードのリセットに失敗したことを示します。 行をクリックすると **[Activity Status Reason (アクティビティの状態の理由)]** カテゴリが表示され、失敗の原因について詳しく知ることができます。
-* **アクティビティの状態が失敗になった理由** - 
+* **アクティビティの状態が失敗になった理由** -
  * _FuzzyPolicyViolationInvalidPassword_ - 管理者が選択したパスワードが、マイクロソフトの禁止されたパスワードの検出機能によって一般的すぎるパスワードまたは特に脆弱なパスワードと見なされたため、自動的に禁止されました。
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>アクティビティの種類: Self serve password reset flow activity progress (セルフサービスのパスワード リセット フロー アクティビティの進行状況)
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
 * **アクティビティのアクター** - パスワード リセット フローの一部を実行したユーザー。 エンドユーザーまたは管理者である可能性があります。
@@ -153,7 +153,7 @@ ms.lasthandoff: 03/10/2017
  * [使用可能なすべてのリセット アクティビティの状態の理由](#allowed-values-for-details-column)については、下の表をご覧ください。
 
 ### <a name="activity-type-unlock-user-account-self-service"></a>アクティビティの種類: Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
 * **アクティビティの説明** - ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から[リセットなしの AD アカウントのロック解除](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-customize#allow-users-to-unlock-accounts-without-resetting-their-password)機能を使用して、自分のパスワードをリセットせずに自分の Active Directory アカウントのロック解除に成功したことを示します。
 * **アクティビティのアクター** - 自分のパスワードをリセットせずに自分のアカウントをロック解除したユーザー。 エンドユーザーまたは管理者である可能性があります。
@@ -163,13 +163,13 @@ ms.lasthandoff: 03/10/2017
  * _失敗_ - ユーザーが自分のアカウントのロック解除に失敗したことを示します。 行をクリックすると **[Activity Status Reason (アクティビティの状態の理由)]** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>アクティビティの種類: User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)
-このアクティビティの詳しい説明は次のとおりです。 
+このアクティビティの詳しい説明は次のとおりです。
 
-* **アクティビティの説明** - ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。 
+* **アクティビティの説明** - ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
 * **アクティビティのアクター** - パスワード リセットに登録したユーザー。 エンドユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット** - パスワード リセットに登録したユーザー。 エンドユーザーまたは管理者である可能性があります。
 * **使用できるアクティビティの状態**
- * _成功_ - ユーザーが現在のポリシーに従ってパスワード リセットの登録に成功したことを示します。 
+ * _成功_ - ユーザーが現在のポリシーに従ってパスワード リセットの登録に成功したことを示します。
  * _失敗_ - ユーザーがパスワード リセットの登録に失敗したことを示します。 行をクリックすると **[Activity Status Reason (アクティビティの状態の理由)]** カテゴリが表示され、失敗の原因について詳しく知ることができます。 注 - これはユーザーが自分のパスワードをリセットできないということではなく、単に登録プロセスを完了しなかったことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用することができます。 詳細については、「[ユーザーの登録時に発生すること](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)」をご覧ください。
 
 ## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Azure AD レポートおよびイベント API からパスワード管理イベントを取得する方法
@@ -184,9 +184,9 @@ ms.lasthandoff: 03/10/2017
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): パスワード リセット登録イベントで利用可能な列を一覧します。
 
 ### <a name="reporting-api-data-retrieval-limitations"></a>レポート API によるデータ取得の制限事項
-現時点では、Azure AD レポートおよびイベント API で取得できるのは**過去 30 日間**の [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) および [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) タイプの最大 **75,000 個のイベント**です。 
+現時点では、Azure AD レポートおよびイベント API で取得できるのは**過去 30 日間**の [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) および [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) タイプの最大 **75,000 個のイベント**です。
 
-この枠を超えてデータを取得および保存する必要がある場合は、データを外部データベースに保存し、結果として作成されたデルタを API を使用してクエリすることをお勧めします。 ベスト プラクティスの&1; つは、組織内でパスワード リセット登録プロセスを開始したときにこのデータの取得を開始し、データを外部に永続的に保存してからそれ以降のデルタを追跡し続けることです。
+この枠を超えてデータを取得および保存する必要がある場合は、データを外部データベースに保存し、結果として作成されたデルタを API を使用してクエリすることをお勧めします。 ベスト プラクティスの 1 つは、組織内でパスワード リセット登録プロセスを開始したときにこのデータの取得を開始し、データを外部に永続的に保存してからそれ以降のデルタを追跡し続けることです。
 
 ## <a name="how-to-download-password-reset-registration-events-quickly-with-powershell"></a>PowerShell を使用してパスワード リセット登録イベントをすばやくダウンロードする方法
 Azure AD レポートおよびイベント API を直接使用する方法に加えて、以下の PowerShell スクリプトを使用してディレクトリ内の最近の登録イベントをダウンロードすることもできます。 この方法は、最近登録したユーザーを表示したい場合や、パスワード リセットのロールアウトが想定どおりに実行されていることを確認したい場合に便利です。
@@ -300,8 +300,8 @@ Azure AD レポートおよびイベント API を直接使用する方法に加
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

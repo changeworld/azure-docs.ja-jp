@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f504db7d67fdf196fbdaaaba2e09d989449b101
-ms.openlocfilehash: 2e76b380ae928bc6935f15546d73a302ed32bcd3
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: f0c174d7d845dd7e48de6388270dde2469d89a12
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -65,8 +66,8 @@ Symantec End Point Protection (SEP) も、Azure でサポートされていま�
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](azure-security-antimalware.md)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/windows/classic/install-trend.md)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/windows/classic/install-symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -129,9 +130,4 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8df7eff135b6cb316562a503bb938b051d87562f
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 5d99c53ab5a6c71446b971fb19c6ca4ac4164e2b
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -232,7 +232,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 * 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
   
     この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。
-* [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-classic-reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) の指示に従って、以下の操作を行います。
+* [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](linux/classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) の指示に従って、以下の操作を行います。
   
   * パスワードまたは SSH キーをリセットする
   * *sudo* ユーザー アカウントを作成する
@@ -243,6 +243,6 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ## <a name="additional-resources"></a>その他のリソース
 * 上記の手順を実行しても VM に SSH 接続できない場合は、「[SSH の詳細なトラブルシューティング手順](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照して、問題を解決するための追加の手順を確認します。
 * アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
-* クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、 [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-classic-reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+* クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、 [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](linux/classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
 
 

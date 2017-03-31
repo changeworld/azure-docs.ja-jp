@@ -2,28 +2,26 @@
 ## [ExpressRoute とは](expressroute-introduction.md)
 ## [ExpressRoute の FAQ](expressroute-faqs.md)
 ## [接続モデル](expressroute-connectivity-models.md)
+## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
 ## [場所とパートナー](expressroute-locations.md)
 ### [場所別のプロバイダー](expressroute-locations-providers.md)
 ### [プロバイダー別の場所](expressroute-locations.md)
+## [ExpressRoute 用の仮想ネットワーク ゲートウェイ](expressroute-about-virtual-network-gateways.md)
 
 # 作業の開始
-## [ワークフロー](expressroute-workflows.md)
 ## [前提条件](expressroute-prerequisites.md)
-## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
+## [ワークフロー](expressroute-workflows.md)
 ## [ルーティングの要件](expressroute-routing.md)
-## [ルーティングを最適化する](expressroute-optimize-routing.md)
 ## [NAT の要件](expressroute-nat.md)
 ## [QoS の要件](expressroute-qos.md)
 ## [クラシックから Resource Manager への回線の移行](expressroute-move.md)
-## [ExpressRoute 用の仮想ネットワーク ゲートウェイ](expressroute-about-virtual-network-gateways.md)
 
 # 方法
 ## 回線の作成と変更
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
-### [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
-## ルーティング構成を作成および変更する
-### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+## ピアリング構成の作成と変更
+### [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 ## ExpressRoute 回線への仮想ネットワークのリンク
@@ -38,11 +36,12 @@
 ### [PowerShell (クラシック)](expressroute-howto-coexist-classic.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## ExpressRoute のルーターの構成
-### [ルーター構成設定のサンプル](expressroute-config-samples-routing.md)
+### [ルーターの構成](expressroute-config-samples-routing.md)
 ### [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)
 
 ## ベスト プラクティス
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
+## [ルーティングを最適化する](expressroute-optimize-routing.md)
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
 
 ## トラブルシューティング

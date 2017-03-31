@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/17/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 218d7dcf14ebbb28ac043e50e6f9248ecb942aaa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.openlocfilehash: 7706fd453ef8be4ebe65b65da643ec38b7c18433
 ## <a name="overview"></a>概要
 このチュートリアルでは、 **Azure Resource Manager** デプロイメント モデルと Azure PowerShell コマンドレットを使用して単一の Azure 仮想マシンを作成する方法について説明します。 このチュートリアルでは、SQL ギャラリー内のイメージから、単一のディスク ドライブを使用して 1 台の仮想マシンを作成します。 仮想マシンで使用するストレージ、ネットワーク、コンピューティング リソース用のプロバイダーは新たに作成します。 これらのリソースのプロバイダーが既にある場合は、既存のプロバイダーを使用してもかまいません。
 
-同じ作業をクラシック デプロイメント モデルで行う方法については、「 [Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)](../sqlclassic/virtual-machines-windows-classic-ps-sql-create.md)」を参照してください。
+同じ作業をクラシック デプロイメント モデルで行う方法については、「 [Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)](../classic/ps-sql-create.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルには次のものが必要です。
@@ -190,7 +191,7 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
     $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-次に、仮想マシンに使用するオペレーティング システムのプロパティを設定します。 この設定には [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) コマンドレットを使用します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../../virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
+次に、仮想マシンに使用するオペレーティング システムのプロパティを設定します。 この設定には [Set-AzureRmVMOperatingSystem](https://msdn.microsoft.com/library/mt603843.aspx) コマンドレットを使用します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのプロパティが設定されます。
 
@@ -295,10 +296,5 @@ Azure ポータルでこのマシンを表示すると、 [対応するパブリ
 
 ## <a name="next-steps"></a>次のステップ
 仮想マシンを作成したら、RDP を使用してその仮想マシンに接続し、接続のセットアップを行うことができます。 詳細については、「 [Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-windows-sql-connect.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

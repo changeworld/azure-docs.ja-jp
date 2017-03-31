@@ -3,22 +3,21 @@
 
 # 作業の開始
 ## [ポータルでスケール セットをデプロイする](virtual-machine-scale-sets-portal-create.md)
-## [Azure CLI を使用してスケール セットをデプロイする](virtual-machine-scale-sets-linux-create-cli.md)
-## [Resource Manager テンプレートを使用してスケール セットをデプロイする](virtual-machine-scale-sets-mvss-start.md)
+## [PowerShell または Azure CLI を使用してスケール セットをデプロイする](virtual-machine-scale-sets-create.md)
 
 # 方法
 ## 計画と設計
 ### [設計上の考慮事項](virtual-machine-scale-sets-design-overview.md)
-## スケール セット テンプレートの作成
-### [単純なスケール セットをデプロイする](virtual-machine-scale-sets-mvss-start.md)
-### [スケール セットを既存の仮想ネットワークにデプロイする](virtual-machine-scale-sets-mvss-existing-vnet.md)
+
+## テンプレートの作成
+### [スケール セット テンプレートについて](virtual-machine-scale-sets-mvss-start.md)
+### [仮想ネットワークの追加](virtual-machine-scale-sets-mvss-existing-vnet.md)
 
 ## デプロイ
-### [ポータルを使用したスケール セット](virtual-machine-scale-sets-portal-create.md)
+### [ポータルでの作成](virtual-machine-scale-sets-portal-create.md)
+### [Visual Studio での作成](virtual-machine-scale-sets-vs-create.md)
+### [PowerShell または Azure CLI での作成](virtual-machine-scale-sets-create.md)
 ### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
-### [Visual Studio を使用したスケール セット](virtual-machine-scale-sets-vs-create.md)
-### [PowerShell を使用したスケール セット](virtual-machine-scale-sets-windows-create.md)
-### [Azure CLI を使用したスケール セット](virtual-machine-scale-sets-linux-create-cli.md)
 ### [自動スケールを使用した Linux スケール セット](virtual-machine-scale-sets-linux-autoscale.md)
 ### [自動スケールを使用した Windows スケール セット](virtual-machine-scale-sets-windows-autoscale.md)
 ### [スケール セット上のアプリケーション](virtual-machine-scale-sets-deploy-app.md)

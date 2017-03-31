@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 5f61a5422fc36b2468585e601823f292680142ec
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 94c4929c84a671eca210a0e6b53eda5019cc0951
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -81,7 +81,7 @@ Azure PowerShell を使用すると、 [Azure 環境の作成とデプロイを�
 
 * [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services/cloud-services-dotnet-get-started.md)
 * [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/windows/classic/web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [PowerShell デプロイメント スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
 * [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)
 * サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する

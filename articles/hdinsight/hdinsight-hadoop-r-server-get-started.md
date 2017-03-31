@@ -8,16 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: b5e111f3-c029-436c-ba22-c54a4a3016e3
 ms.service: HDInsight
+ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: c4315f75ff8e2b822aeab14a8211bb45ddbdb5b1
-ms.openlocfilehash: 5f9db46e5ab8fd6216e0386f96a011b2bb24dae9
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 2c9877f84873c825f96b62b492f49d1733e6c64e
+ms.openlocfilehash: 383a325bfd2620f6c4fd25ce2f3a66522131efef
+ms.lasthandoff: 03/15/2017
 
 
 ---
@@ -40,11 +41,11 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
 
 ## <a name="create-the-cluster"></a>クラスターを作成する
 > [!NOTE]
-> このドキュメントの手順では、基本的な構成情報を使用して HDInsight クラスターで R サーバーを作成する方法について説明します。 その他のクラスター構成設定 (追加ストレージの追加、Azure 仮想ネットワークの使用、Hive 用のメタストアの使用など) については、 [Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+> このドキュメントの手順では、基本的な構成情報を使用して HDInsight クラスターで R サーバーを作成する方法について説明します。 その他のクラスター構成設定 (追加ストレージの追加、Azure 仮想ネットワークの使用、Hive 用のメタストアの使用など) については、 [Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 Azure Resource Manager テンプレートを使用して R Server を作成するには、「[Deploy an R-server HDInsight cluster (R Server HDInsight クラスターのデプロイ)](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/)」を参照してください。
 >
 > 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選びます。
 
@@ -84,7 +85,7 @@ HDInsight には、HDInsight クラスターに R Server を統合するオプ�
    
    ![SSH ディレクトリ](./media/hdinsight-getting-started-with-r/dir.png)
 
-   * 次に HDI クラスターの資格情報を割り当てるときに公開キー ファイル (*.pub) を指定し、最後に、リソース グループとリージョンを確認して **[次へ]** を選択します。
+   * 次に HDI クラスターの資格情報を割り当てるときに公開キー ファイル (*.pub) を指定し、最後に、リソース グループとリージョンを確認して**[次へ]** を選択します。
    
    ![[資格情報] ブレード](./media/hdinsight-getting-started-with-r/publickeyfile.png)  
    
@@ -516,16 +517,16 @@ SSH を使用した後、ディレクトリを次のディレクトリに変更�
 
 Microsoft R Server の運用化をワンボックス構成で構成するには、次の操作を行います。
 
-* “1.  Configure R Server for Operationalization” を選択します。
-* “A.  One-box (web + compute nodes)” を選択します。
+* "1.  Configure R Server for Operationalization" を選択します。
+* "A.  One-box (web + compute nodes)" を選択します。
 * **admin** ユーザーのパスワードを入力します。
 
 ![ワンボックス操作](./media/hdinsight-hadoop-r-server-get-started/admin-util-one-box-.png)
 
 省略可能な手順として、次のように診断テストを実行することで、診断チェックを実行できます。
 
-* “6.  Run diagnostic tests” を選択します。
-* “A.  Test configuration” を選択します。
+* "6.  Run diagnostic tests" を選択します。
+* "A.  Test configuration" を選択します。
 * Username として admin を、パスワードとして前の手順で入力したパスワードを入力します。
 * Overall Health が pass になっていることを確認します。
 * 管理ユーティリティを終了します。
@@ -601,8 +602,8 @@ Microsoft R Server は、現時点では Yarn を通じて管理されません�
  
 * 使用停止されたワーカー ノードに SSH 接続します。
 * 以下を使用して管理ユーティリティを実行します。`dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll`
-* 「1」を入力して、オプションの "1. Configure R Server for Operationalization" を選択します。
-* 「c」を入力して、オプションの "C. Compute node" を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
+* 「1」を入力して、オプション "1.  Configure R Server for Operationalization" を選択します。
+* 「c」を入力して、オプション "C.  Compute node" を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
 * 管理ユーティリティを終了します。
  
 ### <a name="add-compute-nodes-details-on-web-node"></a>Web ノードにコンピューティング ノードの詳細を追加する

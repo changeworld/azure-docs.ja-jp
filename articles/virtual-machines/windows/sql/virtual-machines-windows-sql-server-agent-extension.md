@@ -17,15 +17,15 @@ ms.date: 01/09/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 00832fcabfb3d1f6d9b7b9745335d4154a2caae3
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 56e3b3cd94a1fb7b4d05c06bc652b37d8a57c9e2
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](virtual-machines-windows-sql-server-agent-extension.md)
-> * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
+> * [クラシック](../classic/sql-server-agent-extension.md)
 > 
 > 
 
@@ -33,7 +33,7 @@ SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを�
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンを確認するには、「[SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)」をご覧ください。
+この記事のクラシック バージョンを確認するには、「[SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)](../classic/sql-server-agent-extension.md)」をご覧ください。
 
 ## <a name="supported-services"></a>サポートされているサービス
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。
@@ -77,7 +77,7 @@ OS 専用の Windows Server 仮想マシンを作成する場合は、 **Set-Azu
 > 
 
 ## <a name="status"></a>状態
-拡張機能がインストールされていることを確認する&1; つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SQLIaaSExtension** 拡張機能が表示されます。
+拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SQLIaaSExtension** 拡張機能が表示されます。
 
 ![Azure ポータルでの SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 

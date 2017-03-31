@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/03/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 376415d34592d18de00513ee9142512eb716e426
-ms.lasthandoff: 03/04/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 514319dfcb532ab3708352b2467c095d7775b714
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -181,10 +181,9 @@ bolts:
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    
-    メッセージが表示されたら、クラスターの SSH ユーザーの作成時に使用したパスワードを入力します。 パスワードではなく公開キーを使用している場合は、 `-i` パラメーターを使用して、対応する秘密キーのパスを指定することが必要な場合があります。
+    メッセージが表示されたら、クラスターの SSH ユーザーの作成時に使用したパスワードを入力します。 パスワードではなく公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーのパスを指定することが必要な場合があります。
    
-   > [!NOTE]
-   > 開発に Windows クライアントを使用している場合は、クラスターへの接続に PuTTY クライアントを使用するための情報について、 [SSH による Windows から Linux ベースの HDInsight への接続](hdinsight-hadoop-linux-use-ssh-windows.md) に関するページをご覧ください。
+   詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 3. 接続したら、次のコマンドを使用して `dev.properties` という名前のファイルを作成します。
 

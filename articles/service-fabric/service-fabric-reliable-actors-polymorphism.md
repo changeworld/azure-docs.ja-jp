@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2016
+ms.date: 03/28/2017
 ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: 2fbce8754a5e3162e3f8c999b34ff25284911021
 ms.openlocfilehash: 731c6542ba6d1385eeffa89a6f62e5bcf57a5c1e
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -72,9 +73,4 @@ public class Circle : Shape, ICircle
 <!-- Image references -->
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

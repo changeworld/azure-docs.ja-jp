@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: d96140483edffb1f94add16598bf0dc0a85dd6da
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 38728a20527be060e63d2dbdea923263b3d6c7fa
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -84,16 +85,11 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 > 
 
 ## <a name="create-an-availability-group-listener"></a>可用性グループ リスナーの作成
-可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。 リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。 リスナーについて詳しくは、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
+可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。 リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。 リスナーについて詳しくは、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 **Azure レプリカの追加ウィザード** を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。 まず、「[Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

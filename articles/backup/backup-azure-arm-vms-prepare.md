@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 2/7/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 27d8da9df87dc5e93272be0bb6584e90971fb461
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c059d39840ae268da647cffd2bfcb937f006356a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -175,7 +175,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 仮想マシンの登録に問題がある場合は、VM エージェントのインストールやネットワーク接続に関するこの後の情報を参照してください。 Azure によって作成された仮想マシンを保護している場合、次の情報はおそらく必要ないでしょう。 ただし、仮想マシンを Azure に移行した場合は、VM エージェントを正しくインストールしていることと、仮想マシンが仮想ネットワークで通信できることを確認してください。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 この情報は、使用している VM が Azure ギャラリーから作成したものでは " *なく* "、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。 詳しくは、「[Windows および Linux 用 Azure VM エージェント](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)」をご覧ください。
+バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。 VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。 この情報は、使用している VM が Azure ギャラリーから作成したものでは " *なく* "、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。 詳しくは、「[Windows および Linux 用 Azure VM エージェント](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)」をご覧ください。
 
 Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 

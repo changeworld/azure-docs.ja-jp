@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 7e77858b36d07049333422d4454c29a9e1acb748
-ms.openlocfilehash: bdec7eb0b32cd8853dc01791466abf48c61a5fe8
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 465c24cf16f52ee068c875ac7d8ce8b4ebec4a1a
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -132,7 +132,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、 [http://cloud
 9. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
+これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
 
 ## <a name="references"></a>参照
 Ubuntu HardWare Enablement (HWE) カーネル:

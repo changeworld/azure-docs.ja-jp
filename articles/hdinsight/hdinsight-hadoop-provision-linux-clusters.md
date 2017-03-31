@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 31821203c18f1310c6a781bd28022efd3da7f03d
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: bc047ba2aacbbea6d47d3870ee70d9d9a068f83a
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -32,7 +32,7 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="cluster-types"></a>クラスターの種類
-現在、Azure HDInsight では、それぞれ特定の機能を提供する一連のコンポーネントを備えた&5; 種類のクラスターを提供しています。
+現在、Azure HDInsight では、それぞれ特定の機能を提供する一連のコンポーネントを備えた 5 種類のクラスターを提供しています。
 
 | クラスターの種類 | 機能 |
 | --- | --- |
@@ -99,10 +99,10 @@ Hadoop クラスターは、クラスターでのタスクの分散処理に使�
 
 Azure の仮想ネットワークの HDInsight との併用の詳細については、[Azure の仮想ネットワークを使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページをご覧ください。
 
-Azure の仮想ネットワーク内で&2; つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)に関するページをご覧ください。
+Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)に関するページをご覧ください。
 
 ## <a name="cluster-tiers"></a>クラスター レベル
-Azure HDInsight では、Standard と [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)の&2; つのカテゴリでビッグ データ クラウド サービスを提供します。 HDInsight Premium には、R とその他の追加コンポーネントが含まれています。 HDInsight Premium は、HDInsight バージョン 3.5 でのみサポートされます。
+Azure HDInsight では、Standard と [Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)の 2 つのカテゴリでビッグ データ クラウド サービスを提供します。 HDInsight Premium には、R とその他の追加コンポーネントが含まれています。 HDInsight Premium は、HDInsight バージョン 3.5 でのみサポートされます。
 
 次の表に、HDInsight クラスターの種類と HDInsight Premium のサポート状況を示します。
 
@@ -131,7 +131,7 @@ HDInsight クラスターの作成に使用する基本的な構成オプショ�
 「[クラスターの種類](#cluster-types)」と「[クラスター レベル](#cluster-tiers)」をご覧ください。
 
 ### <a name="operating-system"></a>オペレーティング システム
-次の&2; つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
+次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
 
 * Linux での HDInsight  HDInsight には、Azure で Linux クラスターを構成するためのオプションが用意されています。 Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントと簡単に統合する必要がある場合は、Linux クラスターを構成します。 詳細については、「 [Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 * Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)。
@@ -143,13 +143,13 @@ HDInsight クラスターの作成に使用する基本的な構成オプショ�
 各 HDInsight クラスターは、1 つの Azure サブスクリプションに関連付けられます。
 
 ### <a name="resource-group-name"></a>リソース グループ名
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる&1; つのグループとして使用できます。 アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
+[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。 アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
 
 ### <a name="credentials"></a>資格情報
-HDInsight クラスターでは、クラスターの作成時に次の&2; つのユーザー アカウントを構成できます。
+HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。
 
 * HTTP ユーザー。 既定のユーザー名は *admin* です。 Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" と呼ばれることもあります。
-* SSH ユーザー (Linux クラスター)。 SSH 経由でクラスターに接続する際に使用します。 「[Linux、Unix、またはOS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従ってクラスターを作成した後に、追加の SSH ユーザー アカウントを作成できます。
+* SSH ユーザー (Linux クラスター)。 SSH 経由でクラスターに接続する際に使用します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
   > [!NOTE]
   > Windows ベースのクラスターでは、RDP を使用してクラスターに接続する RDP ユーザーを作成できます。
@@ -191,7 +191,7 @@ HDInsight クラスターとその既定のストレージ アカウントは、
 ### <a name="node-pricing-tiers"></a>ノード価格レベル
 クラスターの有効期間中、これらのノードの使用量に対して課金されます。 課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。 クラスターを割り当て解除または保留にすることはできません。
 
-クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。 たとえば、Hadoop クラスターの種類には&2; つの "*ヘッド ノード*" と&4; つの "*データ ノード*" (既定) がありますが、Storm クラスターの種類には&2; つの "*Nimbus ノード*"、3 つの "*ZooKeeper ノード*" と&4; つの "*Supervisor ノード*" (既定) があります。 HDInsight クラスターのコストは、ノード数とノードの仮想マシンのサイズによって決まります。 たとえば、大量のメモリを必要とする操作を実行することがわかっている場合は、より多くのメモリを持つコンピューティング リソースを選択できます。 学習目的の場合は、1 つのデータ ノードを使用することをお勧めします。 HDInsight の価格の詳細については、「 [HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
+クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。 たとえば、Hadoop クラスターの種類には 2 つの "*ヘッド ノード*" と 4 つの "*データ ノード*" (既定) がありますが、Storm クラスターの種類には 2 つの "*Nimbus ノード*"、3 つの "*ZooKeeper ノード*" と 4 つの "*Supervisor ノード*" (既定) があります。 HDInsight クラスターのコストは、ノード数とノードの仮想マシンのサイズによって決まります。 たとえば、大量のメモリを必要とする操作を実行することがわかっている場合は、より多くのメモリを持つコンピューティング リソースを選択できます。 学習目的の場合は、1 つのデータ ノードを使用することをお勧めします。 HDInsight の価格の詳細については、「 [HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
 > [!NOTE]
 > クラスター サイズの制限は、Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。
@@ -212,30 +212,30 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 * Standard_A3: Large
 * Standard_A4: ExtraLarge
 
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A3\Large |4 |7 GB |2 |一時ディスク = 285 GB |8 |8 x&500; |
-| Standard_A4\ExtraLarge |8 |14 GB |4 |一時ディスク = 605 GB |16 |16 x&500; |
-| Standard_A6 |4 |28 GB |2 |一時ディスク = 285 GB |8 |8 x&500; |
-| Standard_A7 |8 |56 GB |4 |一時ディスク = 605 GB |16 |16 x&500; |
+| Standard_A3\Large |4 |7 GB |2 |一時ディスク = 285 GB |8 |8 x 500 |
+| Standard_A4\ExtraLarge |8 |14 GB |4 |一時ディスク = 605 GB |16 |16 x 500 |
+| Standard_A6 |4 |28 GB |2 |一時ディスク = 285 GB |8 |8 x 500 |
+| Standard_A7 |8 |56 GB |4 |一時ディスク = 605 GB |16 |16 x 500 |
 
 #### <a name="standard-tier-d-series"></a>Standard レベル: D シリーズ
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3 |4 |14 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4 |8 |28 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12 |4 |28 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13 |8 |56 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14 |16 |112 GB |8 |一時的 (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3 |4 |14 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4 |8 |28 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12 |4 |28 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13 |8 |56 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14 |16 |112 GB |8 |一時的 (SSD) = 800 GB |32 |32 x 500 |
 
 #### <a name="standard-tier-dv2-series"></a>Standard レベル: Dv2 シリーズ
-| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク&1;,023 GB) | 最大 IOPS (各ディスク&500;) |
+| サイズ | CPU コア数 | メモリ | NIC (最大) | 最大 ディスク サイズ | 最大 データ ディスク数 (各ディスク 1,023 GB) | 最大 IOPS (各ディスク 500) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D3_v2 |4 |14 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D4_v2 |8 |28 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D12_v2 |4 |28 GB |4 |一時的 (SSD) =&200; GB |8 |8 x&500; |
-| Standard_D13_v2 |8 |56 GB |8 |一時的 (SSD) =&400; GB |16 |16 x&500; |
-| Standard_D14_v2 |16 |112 GB |8 |一時的 (SSD) =&800; GB |32 |32 x&500; |
+| Standard_D3_v2 |4 |14 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D4_v2 |8 |28 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D12_v2 |4 |28 GB |4 |一時的 (SSD) = 200 GB |8 |8 x 500 |
+| Standard_D13_v2 |8 |56 GB |8 |一時的 (SSD) = 400 GB |16 |16 x 500 |
+| Standard_D14_v2 |16 |112 GB |8 |一時的 (SSD) = 800 GB |32 |32 x 500 |
 
 これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、 [仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
 

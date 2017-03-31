@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 34445eff89ff7ff513893d5b36b937075b09f599
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 138c90a1a9cbf3b85856f372beeb4472edb9e2e8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -49,10 +49,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 * [Java と JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): Storm トポロジの開発に使用されます。
 * [Maven](http://maven.apache.org/what-is-maven.html): プロジェクトのビルドとコンパイルに使用されます。
 * [Git](http://git-scm.com/): GitHub からプロジェクトをダウンロードするために使用されます。
-* **SSH** クライアント: Linux ベースの HDInsight クラスターに接続するために使用されます。 HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-  
-  * [HDInsight で Windows クライアントから SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
-  * [HDInsight で Linux、Unix、OS X、または Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+* **SSH** クライアント: Linux ベースの HDInsight クラスターに接続するために使用されます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
     
     > [!NOTE]
     > `scp` コマンドへのアクセス権も必要です。このコマンドは、ローカルの開発環境と、SSH を使用する HDInsight クラスターの間でファイルをコピーする場合に使用されます。

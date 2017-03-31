@@ -17,6 +17,7 @@ ms.author: milanga;juliako;johndeu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: fb8ec19434d4e8cc54b831bb4abf049c057da8df
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,7 +31,7 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 次の図には、 **Media Analytics** のほか、Media Services プラットフォームの他の主要な部分が示されています。 
 
-![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
+![VoD ワークフロー](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
 Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。 
 
@@ -129,9 +130,4 @@ Media Services のラーニング パスを確認します。
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

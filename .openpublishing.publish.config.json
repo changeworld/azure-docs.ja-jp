@@ -24,7 +24,7 @@
     "master-sync-work"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.ja-jp",
-  "git_repository_branch_open_to_public_contributors": "master",
+  "git_repository_branch_open_to_public_contributors": "live",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "dependent_repositories": [

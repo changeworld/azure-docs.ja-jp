@@ -16,8 +16,9 @@ ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 71c896673706fad3eb215f12893b65af7b697843
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4f5ae7c1750d697e7dae3f03ea5d3936c9fee52b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -29,7 +30,7 @@ Azure の [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) �
 ![Azure のクラスターにジョブを送信する][jobsubmit]
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)や [Azure PowerShell スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)などの自動ツールを使用して、ヘッド ノードとクラスターをデプロイすることをお勧めします。 この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
+* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)や [Azure PowerShell スクリプト](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)などの自動ツールを使用して、ヘッド ノードとクラスターをデプロイすることをお勧めします。 この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
 * **クライアント コンピューター** - HPC Pack クライアント ユーティリティを実行する Windows または Windows Server クライアント コンピューターが必要になります ([システム要件](https://technet.microsoft.com/library/dn535781.aspx)に関するページを参照)。 ジョブを送信する目的だけで HPC Pack Web ポータルまたは REST API を使用する場合、自分で選んだクライアント コンピューターを利用できます。
 * **HPC Pack インストール メディア** - HPC Pack クライアント ユーティリティをインストールするには、HPC Pack (HPC Pack 2012 R2) の最新バージョンの無料インストール パッケージを [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=328024)から入手できます。 必ず、ヘッド ノード VM にインストールされている HPC Pack と同じバージョンをダウンロードしてください。
 
@@ -39,7 +40,7 @@ REST インターフェイスを有効にして HTTPS でクラスターにジ�
 詳細な手順については、「 [Microsoft HPC Pack Web コンポーネントのインストール](http://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
 
 > [!TIP]
-> 一部の HPC Pack 用 Azure クイックスタート テンプレートでは、Web コンポーネントが自動的にインストールされ、構成されます。 [HPC Pack IaaS デプロイ スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を利用してクラスターを作成する場合、デプロイの一環として任意で Web コンポーネントをインストールし、構成します。
+> 一部の HPC Pack 用 Azure クイックスタート テンプレートでは、Web コンポーネントが自動的にインストールされ、構成されます。 [HPC Pack IaaS デプロイ スクリプト](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)を利用してクラスターを作成する場合、デプロイの一環として任意で Web コンポーネントをインストールし、構成します。
 > 
 > 
 
@@ -173,9 +174,4 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-windows-hpcpack-cluster-submit-jobs/jobsubmit.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
