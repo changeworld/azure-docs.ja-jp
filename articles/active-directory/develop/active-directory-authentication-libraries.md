@@ -15,9 +15,9 @@ ms.workload: identity
 ms.date: 01/13/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b4bfd0288f611ba1f5f1c30d402614d34c473457
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 2ad287d383f65ea66382d1f449a76db596963f46
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -30,13 +30,13 @@ ADAL は、さまざまなプラットフォームで使用できます。
 
 | プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
 | --- | --- | --- | --- | --- | --- |
-| .NET クライアント、Windows ストア、UWP、Xamarin iOS、Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [デスクトップ アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-dotnet) |[リファレンス](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory) | 
-| .NET クライアント、Windows ストア、Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.2) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.2) | [デスクトップ アプリ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) |[リファレンス](https://docs.microsoft.com/en-us/active-directory/adal//v2/microsoft.identitymodel.clients.activedirectory) | 
-| JavaScript |ADAL.js |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[シングル ページ アプリケーション](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
-| iOS、macOS |ADAL |[CocoaPods](http://cocoadocs.org/docsets/ADAL/) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[iOS アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-ios) | [リファレンス](http://cocoadocs.org/docsets/ADAL/)|
-| Android |ADAL |[中央リポジトリ](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
-| Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | | |
-| Java |ADAL4J |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Github](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java Web アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapp-java) | |
+| .NET クライアント、Windows ストア、UWP、Xamarin iOS、Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [デスクトップ アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-dotnet) |[リファレンス](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory) | 
+| .NET クライアント、Windows ストア、Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.2) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.2) | [デスクトップ アプリ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) |[リファレンス](https://docs.microsoft.com/en-us/active-directory/adal//v2/microsoft.identitymodel.clients.activedirectory) | 
+| JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[シングル ページ アプリケーション](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
+| iOS、macOS |ADAL |[CocoaPods](http://cocoadocs.org/docsets/ADAL/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[iOS アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-ios) | [リファレンス](http://cocoadocs.org/docsets/ADAL/)|
+| Android |ADAL |[中央リポジトリ](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
+| Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | | |
+| Java |ADAL4J |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java Web アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapp-java) | |
 
 ### <a name="server-libraries"></a>サーバー ライブラリ 
 
@@ -44,15 +44,15 @@ ADAL は、さまざまなプラットフォームで使用できます。
 | --- | --- | --- | --- | --- | --- |
 | .NET |OWIN for AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |[MVC アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |OWIN for OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[Web アプリ](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
-| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[Github](https://github.com/AzureAD/passport-azure-ad) | [Web API](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
+| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web API](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
 | .NET |OWIN for WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[CodePlex](http://katanaproject.codeplex.com) |[MVC Web アプリ](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
-| .NET |Identity Protocol Extensions for .NET 4.5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[Github](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| .NET |JWT Handler for .NET 4.5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[Github](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET |Identity Protocol Extensions for .NET 4.5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET |JWT Handler for .NET 4.5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 
 
 
 ## <a name="scenarios"></a>シナリオ
-ADAL を認証に使用できる&3; つの一般的なシナリオを以下に示します。  
+ADAL を認証に使用できる 3 つの一般的なシナリオを以下に示します。  
 
 ### <a name="authenticating-users-of-a-client-application-to-a-remote-resource"></a>リモート リソースに対してクライアント アプリケーションのユーザーを認証する
 このシナリオでは、開発者は Azure AD によって保護されたリモート リソース (Web API など) にアクセスする必要があるクライアント (WPF アプリケーションなど) を使用しています。 また、Azure サブスクリプションを持ち、ダウンストリーム Web API を呼び出す方法と、Web API が使用する Azure AD テナントを知っています。 そのため、ADAL を使用して、ADAL に認証エクスペリエンスを完全に委任するか、ユーザー資格情報を明示的に処理することで、Azure AD による認証を容易にすることができます。 ADAL により、ユーザーを認証し、Azure AD からアクセス トークンと更新トークンを取得し、そのアクセス トークンを使用して Web API への要求を行うことが容易になります。

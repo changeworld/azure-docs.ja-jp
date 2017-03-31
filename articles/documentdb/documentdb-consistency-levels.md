@@ -1,6 +1,6 @@
 ---
 title: "Azure DocumentDB の一貫性レベル | Microsoft Docs"
-description: "DocumentDB には、結果的な一貫性、可用性、待機時間のトレードオフを調整できる&4; つの一貫性レベルがあります。"
+description: "DocumentDB には、結果的な一貫性、可用性、待機時間のトレードオフを調整できる 4 つの一貫性レベルがあります。"
 keywords: "eventual 一貫性, documentdb, azure, Microsoft azure"
 services: documentdb
 author: syamkmsft
@@ -17,20 +17,20 @@ ms.date: 11/16/2016
 ms.author: syamk
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: 839f8c8669c06e22635b68018d816a669aec895b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: af8e53d7cc074bf669b967014223ee88476d1686
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="tunable-data-consistency-levels-in-documentdb"></a>DocumentDB の調整可能なデータの整合性レベル
-Azure DocumentDB は、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証、可用性が 99.99% の SLA、明確に定義された複数の緩やかな一貫性モデルが提供されます。 DocumentDB では現在、Strong、Bounded-Staleness、Session、Eventual の&4; つの一貫性レベルが用意されています。 その他の NoSQL データベースが一般的に提供している **Strong** と **Eventual の一貫性**モデルに加え、DocumentDB では、注意深く体系化、運用化された一貫性モデルがさらに&2; つ提供されます (**Bounded Staleness** モデルと **Session** モデル)。現実のユース ケースに対するその有用性は DocumentDB によって検証されています。 これら&4; つの一貫性レベルが揃っているため、一貫性、可用性、待機時間の最適なトレードオフを根拠を持って検討することができます。 
+Azure DocumentDB は、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証、可用性が 99.99% の SLA、明確に定義された複数の緩やかな一貫性モデルが提供されます。 DocumentDB では現在、Strong、Bounded-Staleness、Session、Eventual の 4 つの一貫性レベルが用意されています。 その他の NoSQL データベースが一般的に提供している **Strong** と **Eventual の一貫性**モデルに加え、DocumentDB では、注意深く体系化、運用化された一貫性モデルがさらに 2 つ提供されます (**Bounded Staleness** モデルと **Session** モデル)。現実のユース ケースに対するその有用性は DocumentDB によって検証されています。 これら 4 つの一貫性レベルが揃っているため、一貫性、可用性、待機時間の最適なトレードオフを根拠を持って検討することができます。 
 
 ## <a name="scope-of-consistency"></a>一貫性のスコープ
 一貫性の粒度の対象は、単一のユーザー要求です。 書き込み要求は、挿入、置換、アップサート、または削除のトランザクション (関連付けられたプリトリガーまたはポストトリガーの実行を伴うもの、伴わないもの) に対応している場合があります。 また、パーティション内の複数のドキュメントに対して動作する JavaScript ストアド プロシージャのトランザクション実行に対応している場合もあります。 書き込みと同様に、読み取り/クエリ トランザクションの対象も単一のユーザー要求です。 ユーザーは複数のパーティションにまたがって大規模な結果セットを読み込む必要がありますが、各読み取りトランザクションは単一のページを対象とし、単一のパーティション内から提供されます。
 
 ## <a name="consistency-levels"></a>一貫性レベル
-データベース アカウントには既定の一貫性レベルを構成できます。既定の一貫性レベルは、対象となるデータベース アカウント下のすべての (全データベースの) コレクションに適用されます。 既定では、ユーザー定義リソースに対して発行されたすべての読み取りとクエリに、データベース アカウントに指定された既定の一貫性レベルが使用されます。 ただし、[[x-ms-consistency-level]](https://msdn.microsoft.com/library/azure/mt632096.aspx) という要求ヘッダーを指定すれば、特定の読み取り/クエリ要求の一貫性レベルを緩和することもできます。 次に示すように、DocumentDB のレプリケーション プロトコルによって&4; 種類の一貫性レベルがサポートされており、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフを実現しています。
+データベース アカウントには既定の一貫性レベルを構成できます。既定の一貫性レベルは、対象となるデータベース アカウント下のすべての (全データベースの) コレクションに適用されます。 既定では、ユーザー定義リソースに対して発行されたすべての読み取りとクエリに、データベース アカウントに指定された既定の一貫性レベルが使用されます。 ただし、[[x-ms-consistency-level]](https://msdn.microsoft.com/library/azure/mt632096.aspx) という要求ヘッダーを指定すれば、特定の読み取り/クエリ要求の一貫性レベルを緩和することもできます。 次に示すように、DocumentDB のレプリケーション プロトコルによって 4 種類の一貫性レベルがサポートされており、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフを実現しています。
 
 ![DocumentDB offers multiple, well defined (relaxed) consistency models to choose from][1]
 
@@ -44,7 +44,7 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 **Bounded Staleness**: 
 
 * Bounded Staleness 一貫性では、最大でドキュメントの *K* 個のバージョンまたはプレフィックスあるいは期間 *t* の分だけ、読み取りが書き込みに対し遅れることが保証されます。 
-* このため、Bounded Staleness を選択する場合、"staleness" は&2; つの方法で構成できます。 
+* このため、Bounded Staleness を選択する場合、"staleness" は 2 つの方法で構成できます。 
   * ドキュメントのバージョンの数 *K* (書き込みに対する読み取りの遅れ)
   * 期間 *t* 
 * Bounded Staleness では、"staleness 期間" 内を除いてトータルなグローバル順序が実現されます。 リージョン内では、"staleness 期間" 内外の両方でモノトニックな読み取り保証が実現されることに注意してください。 
@@ -77,7 +77,7 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 | **一貫性のあるプレフィックスの保証** |はい |あり |あり |はい |
 | **モノトニックな読み取り** |あり |はい (リージョン間は staleness 期間外のみ、リージョン内は常時) |いいえ (特定のセッションの間) |なし |
 | **モノトニックな書き込み** |はい |あり |あり |はい |
-| **自身の書き込みの読み取り** |はい |はい |はい (書き込みリージョン内) |なし |
+| **自身の書き込みの読み取り** |はい |はい (書き込みリージョン内) | はい |なし |
 
 ## <a name="configuring-the-default-consistency-level"></a>既定の一貫性レベルの構成
 1. [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB (NoSQL)]**をクリックします。

@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 441caf3cc9a3b9074bd263f4a4c45763967fa580
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
+ms.openlocfilehash: ee46da891ab50a64c649b0370cb9231dd3448ea1
+ms.lasthandoff: 03/17/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/15/2017
 * [**開始する前に読む必要がある、お客様からの重要なヒント**](#top-tips-from-our-customers-to-read-before-you-begin)
  * [**重要なヒント: ドキュメント ナビゲーション** - 目次とブラウザーの検索機能を使用して、回答を検索する](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
  * [**ヒント 1: ライセンス** - ライセンスの要件を確実に把握する](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
- * [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+ * [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
  * [**ヒント 3: デプロイ** - ユーザーが登録する必要のないように、ユーザーのデータを事前に設定する](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
  * [**ヒント 4: デプロイ** - パスワード リセットを使用して、一時パスワードを連絡する必要性を取り除く](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
  * [**ヒント 5: ライトバック** - パスワード ライトバックのトラブルシューティングを行う際は、AAD Connect マシン上のアプリケーション イベント ログを調べる](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/15/2017
 
 * [**重要なヒント: ドキュメント ナビゲーション** - 目次とブラウザーの検索機能を使用して、回答を検索する](#top-tip-documentation-navigation---use-our-table-of-contents-and-your-browsers-find-feature-to-find-answers)
 * [**ヒント 1: ライセンス** - ライセンスの要件を確実に把握する](#tip-1-licensing---make-sure-you-understand-the-licensing-requirements)
-* [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-a-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
+* [**ヒント 2: テスト** - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う](#tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users)
 * [**ヒント 3: デプロイ** - ユーザーが登録する必要のないように、ユーザーのデータを事前に設定する](#tip-3-deployment---pre-populate-data-for-your-users-so-they-dont-have-to-register)
 * [**ヒント 4: デプロイ** - パスワード リセットを使用して、一時パスワードを連絡する必要性を取り除く](#tip-4-deployment---use-password-reset-to-obviate-the-need-to-communicate-temporary-passwords)
 * [**ヒント 5: ライトバック** - パスワード ライトバックのトラブルシューティングを行う際は、AAD Connect マシン上のアプリケーション イベント ログを調べる](#tip-5-writeback---look-at-the-application-event-log-on-your-aad-connect-machine-to-troubleshoot-password-writeback)
@@ -78,9 +78,9 @@ ms.lasthandoff: 03/15/2017
 Azure AD のパスワード リセットが機能するには、組織で少なくとも&1; つのライセンスが割り当てられている必要があります。 パスワード リセット機能自体については、ユーザー数によるライセンスを設けていません。ただし、ユーザーにライセンスを割り当てずにこの機能を使用した場合は、Microsoft ライセンス契約に準拠していないと見なされ、それらのユーザーにライセンスを割り当てる必要があります。
 
 パスワード リセットを利用するために必要なライセンスを理解するのに役立つドキュメントをいくつか紹介します。
-* [パスワード リセットのライセンスに関する全般的な情報]()
-* [パスワード リセットのライセンスに関する機能別の情報]()
-* [パスワード ライトバックでサポートされているシナリオ]()
+* [パスワード リセットのライセンスに関する全般的な情報](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-customize#what-customization-options-are-available)
+* [パスワード リセットのライセンスに関する機能別の情報](https://docs.microsoft.com/azure/active-directory/active-directory-passwords#pricing-and-availability)
+* [パスワード ライトバックでサポートされているシナリオ](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#scenarios-supported-for-password-writeback)
 
 ### <a name="tip-2-testing---test-with-an-end-user-not-an-administrator-and-pilot-with-a-small-set-of-users"></a>ヒント 2: テスト - 管理者ではなく、エンド ユーザーとテストを実施し、少数のユーザーによる試験運用を行う
 管理者とテストする場合は、以下に示す管理者のパスワード リセット ポリシーが適用されます。  そのため、エンド ユーザー用に構成したポリシーの期待した結果は確認できません。
@@ -310,6 +310,7 @@ Azure AD のパスワード リセット監査ログを使用すると、これ�
 ライトバックを有効にして使用する前に、次の前提条件を満たす必要があります。
 
 * Azure AD テナントで Azure AD Premium が有効になっている。  詳細については、 [Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
+* パスワード ライトバックを機能させるには、Azure AD Connect をプライマリ ドメイン コントローラー エミュレーターに接続する必要があります。  必要に応じて、プライマリ ドメイン コントローラーを使用するよう Azure AD Connect を構成できます。そのためには、Active Directory 同期コネクタの**プロパティ**を右クリックして **[configure directory partitions (ディレクトリ パーティションの構成)]** を選択します。 そこで **[domain controller connection settings (ドメイン コントローラーの接続の設定)]** セクションを探して、**[only use preferred domain controllers (優先ドメイン コントローラーのみを使用する)]** というチェック ボックスをオンにします。  注: 優先 DC が PDC エミュレーターでない場合も、Azure AD Connect はパスワード ライトバックのために PDC に接続されます。
 * テナントでパスワード リセットが構成され、有効になっている。  詳細については、 [ユーザーによる Azure AD パスワードのリセットを有効にする](#enable-users-to-reset-their-azure-ad-passwords)
 * 管理者アカウントと、この機能をテストするために使用できる Azure AD Premium ライセンスが付与されたテスト ユーザー アカウントが少なくとも&1; つずつある。  詳細については、 [Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 

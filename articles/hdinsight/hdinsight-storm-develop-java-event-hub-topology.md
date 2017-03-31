@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: 85f56e223210f14615f7e4e1c87e35111b238aac
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: fcca957dc365d8c38b5a08991939860c5af96813
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -46,11 +46,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
   > [!NOTE]
   > お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。 お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
   
-  * SSH クライアント。 詳細については、次のいずれかのドキュメントを参照してください。
-    
-    * [HDInsight 上の Linux ベースの Hadoop で Linux、Unix、OS X、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+  * SSH クライアント。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 * SCP クライアント。 `scp` コマンドは、Linux、Unix、OS X システム (Bash on Windows 10 を含む) すべてに付属しています。`scp` コマンドがない Windows システムでは、PSCP をお勧めします。 PSCP は、[PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)から入手できます。
 
@@ -287,7 +283,7 @@ Event Hubs は、この例のデータ ソースです。 イベント ハブを
     ![ウィザード ページ 2](./media/hdinsight-storm-develop-csharp-event-hub-topology/wiz2.png)
 
 4. Event Hub が作成されたら、名前空間を選択し、 **[Event Hubs]**を選択して、先ほど作成した Event Hub を選択します。
-5. **[構成]** を選択し、次の情報を使用して新しいアクセス ポリシーを&2; つ作成します。
+5. **[構成]** を選択し、次の情報を使用して新しいアクセス ポリシーを 2 つ作成します。
    
     <table>
     <tr><th>名前</th><th>アクセス許可</th></tr>
@@ -313,7 +309,7 @@ Event Hubs は、この例のデータ ソースです。 イベント ハブを
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
-このプロジェクトで作成される jar には、**com.microsoft.example.EventHubWriter** と **com.microsoft.example.EventHubReader** という&2; つのトポロジが含まれます。 EventHubWriter トポロジを最初に開始する必要があります。これは、Event Hub にイベントが出力され、その出力が EventHubReader から読み取られるためです。
+このプロジェクトで作成される jar には、**com.microsoft.example.EventHubWriter** と **com.microsoft.example.EventHubReader** という 2 つのトポロジが含まれます。 EventHubWriter トポロジを最初に開始する必要があります。これは、Event Hub にイベントが出力され、その出力が EventHubReader から読み取られるためです。
 
 1. SCP を使用して、HDInsight クラスターに jar パッケージをコピーします。 USERNAME には、使用するクラスターの SSH ユーザーを指定します。 CLUSTERNAME には、使用する HDInsight クラスター名を指定します。
    

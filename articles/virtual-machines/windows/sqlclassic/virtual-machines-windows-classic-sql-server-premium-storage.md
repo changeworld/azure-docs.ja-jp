@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d055a859ec89ef7fec23db9bf1d574dd8cb76293
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 67ee949acaed274a3a1522008e833d86c8442a23
 [Azure Premium Storage](../../../storage/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
@@ -148,7 +149,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。 高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。 たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。 ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
 ## <a name="new-deployments"></a>新しいデプロイ
-次の&2; つのセクションでは、SQL Server VM を Premium Storage にデプロイする方法を示します。 前述のように、必ずしも Premium Storage に OS ディスクを配置する必要はありません。 IO 集中型ワークロードを OS VHD に配置する場合、これを行うことができます。
+次の 2 つのセクションでは、SQL Server VM を Premium Storage にデプロイする方法を示します。 前述のように、必ずしも Premium Storage に OS ディスクを配置する必要はありません。 IO 集中型ワークロードを OS VHD に配置する場合、これを行うことができます。
 
 最初の例では、既存の Azure ギャラリー イメージを利用する場合を示します。 2 番目の例では、既存の Standard Storage アカウント内にあるカスタム VM イメージを使用する方法を示します。
 
@@ -270,7 +271,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 
 #### <a name="step-3-use-existing-image"></a>手順 3. 既存のイメージを使用する
-既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../../virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
+既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS*マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
 
     #Get storage account keys:
     #Standard Storage account
@@ -364,13 +365,13 @@ SQL Server が外部からアクセスされる場合、クラウド サービ�
 >
 >
 
-このセクションでは最初に、Always On が Azure ネットワークとやり取りする方法を見ていきます。 その後、移行を&2; つのシナリオに分割します。ある程度のダウンタイムを許容できる移行と、ダウンタイムを最小限にする必要がある移行です。
+このセクションでは最初に、Always On が Azure ネットワークとやり取りする方法を見ていきます。 その後、移行を 2 つのシナリオに分割します。ある程度のダウンタイムを許容できる移行と、ダウンタイムを最小限にする必要がある移行です。
 
 オンプレミス SQL Server Always On 可用性グループは、仮想 DNS 名と共に、1 つまたは複数の SQL Server で共有される IP アドレスを登録する、オンプレミスのリスナーを使用します。 クライアントは、接続するとき、リスナーの IP を経由してプライマリ SQL Server にルーティングされます。 これは、その時点で Always On の IP リソースを所有しているサーバーです。
 
 ![DeploymentsUseAlways On][6]
 
-Microsoft Azure ではただ&1; つの IP アドレスを VM の NIC に割り当てることができるので、オンプレミスと同じ抽象階層を実現するため、Azure は内部/外部ロード バランサー (ILB/ELB) に割り当てられた IP アドレスを使用します。 サーバー間で共有される IP リソースは、ILB/ELB と同じ IP に設定されます。 これが、DNS で発行され、クライアント トラフィックは ILB/ELB を介して SQL Server のプライマリ レプリカに渡されます。 ILB/ELB はプローブを使用して Always On の IP リソースを調査するため、どの SQL Server がプライマリかを認識しています。 前の例では、ELB/ILB によって参照されるエンドポイントを持つ各ノードをプローブし、プライマリ SQL Server が応答します。
+Microsoft Azure ではただ 1 つの IP アドレスを VM の NIC に割り当てることができるので、オンプレミスと同じ抽象階層を実現するため、Azure は内部/外部ロード バランサー (ILB/ELB) に割り当てられた IP アドレスを使用します。 サーバー間で共有される IP リソースは、ILB/ELB と同じ IP に設定されます。 これが、DNS で発行され、クライアント トラフィックは ILB/ELB を介して SQL Server のプライマリ レプリカに渡されます。 ILB/ELB はプローブを使用して Always On の IP リソースを調査するため、どの SQL Server がプライマリかを認識しています。 前の例では、ELB/ILB によって参照されるエンドポイントを持つ各ノードをプローブし、プライマリ SQL Server が応答します。
 
 > [!NOTE]
 > ILB と ELB はどちらも特定の Azure クラウド サービスに割り当てられ、そのため、Azure のクラウド移行は多くの場合ロード バランサーの IP が変更されることを意味します。
@@ -378,7 +379,7 @@ Microsoft Azure ではただ&1; つの IP アドレスを VM の NIC に割り�
 >
 
 ### <a name="migrating-always-on-deployments-that-can-allow-some-downtime"></a>ある程度のダウンタイムが許容される Always On のデプロイの移行
-ある程度のダウンタイムが許容される Always On のデプロイを移行するには&2; つの方法があります。
+ある程度のダウンタイムが許容される Always On のデプロイを移行するには 2 つの方法があります。
 
 1. **既存の Always On クラスターにセカンダリ レプリカを追加する**
 2. **新しい Always On クラスターに移行する**
@@ -434,7 +435,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * 新しいマシンを並行して実行しながらの移行には追加コストがかかります。
 
 #### <a name="2-migrate-to-a-new-always-on-cluster"></a>2.新しい Always On クラスターに移行する
-もう&1; つの方法は、新しいクラウド サービスに新しいノードで新しい Always On クラスターを作成し、それを使用するようにクライアントをリダイレクトすることです。
+もう 1 つの方法は、新しいクラウド サービスに新しいノードで新しい Always On クラスターを作成し、それを使用するようにクライアントをリダイレクトすることです。
 
 ##### <a name="points-of-downtime"></a>ダウンタイムのポイント
 新しい Always On リスナーにアプリケーションとユーザーを転送するときにダウンタイムがあります。 ダウンタイムは以下に依存します。
@@ -454,13 +455,13 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * 新しい環境を実行しながらの移行には追加コストがかかります。
 
 ### <a name="migrating-always-on-deployments-for-minimal-downtime"></a>最小限のダウンタイムでの Always On のデプロイの移行
-ダウンタイムを最小限にして Always On のデプロイを移行するには&2; つの方法があります。
+ダウンタイムを最小限にして Always On のデプロイを移行するには 2 つの方法があります。
 
 1. **既存のセカンダリを利用する: シングルサイト**
 2. **既存のセカンダリ レプリカを利用する: マルチサイト**
 
 #### <a name="1-utilize-an-existing-secondary-single-site"></a>1.既存のセカンダリを利用する: シングルサイト
-ダウンタイムを最小限にする&1; つの方法は、既存のクラウドをセカンダリにし、現在のクラウド サービスから削除することです。 その後、新しい Premium Storage アカウントに VHD をコピーし、新しいクラウド サービスに VM を作成します。 次に、クラスターおよびフェールオーバーでリスナーを更新します。
+ダウンタイムを最小限にする 1 つの方法は、既存のクラウドをセカンダリにし、現在のクラウド サービスから削除することです。 その後、新しい Premium Storage アカウントに VHD をコピーし、新しいクラウド サービスに VM を作成します。 次に、クラスターおよびフェールオーバーでリスナーを更新します。
 
 ##### <a name="points-of-downtime"></a>ダウンタイムのポイント
 * 負荷分散エンドポイントで最後のノードを更新するときにダウンタイムが発生します。
@@ -474,7 +475,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 
 ##### <a name="advantages"></a>長所
 * 移行中に追加コストが発生しません。
-* 1 対&1; の移行です。
+* 1 対 1 の移行です。
 * 複雑さが軽減されます。
 * Premium Storage SKU による IOPS の増加に対応します。 ディスクを VM からデタッチして新しいクラウド サービスにコピーするとき、サード パーティのツールを使用して VHD のサイズを増やし、スループットを上げることができます。 VHD のサイズの拡大については、この [フォーラム ディスカッション](https://social.msdn.microsoft.com/Forums/azure/4a9bcc9e-e5bf-4125-9994-7c154c9b0d52/resizing-azure-data-disk?forum=WAVirtualMachinesforWindows)を参照してください。
 
@@ -503,7 +504,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * 手順 5ii を使用する場合、追加される IP アドレス リソースの実行可能な所有者として SQL1 追加します。
 * フェールオーバーをテストします。
 
-#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>手順&2;.既存のセカンダリ レプリカを利用する: マルチサイト
+#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>手順 2.既存のセカンダリ レプリカを利用する: マルチサイト
 複数の Azure データセンター (DC) にノードがある場合、またはハイブリッド環境がある場合は、その環境で Always On 構成を使用してダウンタイムを最小にできます。
 
 そのためには、オンプレミスまたはセカンダリの Azure DC の Always On 同期を同期に変更し、その SQL Server にフェールオーバーします。 その後、Premium Storage アカウントに VHD をコピーし、新しいクラウド サービスにマシンを再デプロイします。 リスナーを更新し、フェールバックします。
@@ -518,7 +519,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * 既存のインフラストラクチャを利用できます。
 * DR Azure DC で最初に Azure ストレージを事前アップグレードできます。
 * DR Azure DC ストレージを再構成できます。
-* テスト フェールオーバーを除き、移行の間のフェールオーバーが最小限&2; つです。
+* テスト フェールオーバーを除き、移行の間のフェールオーバーが最小限 2 つです。
 * バックアップおよび復元で SQL Server のデータを移動する必要がありません。
 
 ##### <a name="disadvantages"></a>短所
@@ -550,8 +551,8 @@ Always On の高可用性が期待どおりに機能することを確認する�
 
 ### <a name="environment"></a>環境
 * Windows 2k12/SQL 2k12
-* SP に&1; 個の DB ファイル
-* ノードごとに&2; 個の記憶域プール
+* SP に 1 個の DB ファイル
+* ノードごとに 2 個の記憶域プール
 
 ![Appendix1][11]
 
@@ -603,18 +604,18 @@ Always On の高可用性が期待どおりに機能することを確認する�
 #### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>手順 2： リソースに対して許可するエラーを増やす <Optional>
 Always On 可用性グループに属する特定のリソースでは、クラスター サービスがリソース グループの再起動を試みる前に一定期間中に発生できるエラー数に制限があります。 手動によるフェールオーバーおよびマシンのシャットダウンによるフェールオーバーのトリガーを行わない場合はこの制限に近づくことがあるので、この手順を実行する間は制限を大きくすることをお勧めします。
 
-許可するエラーを&2; 倍にするのが賢明です。フェールオーバー クラスター マネージャーでこれを行うには、Always On リソース グループのプロパティに移動します。
+許可するエラーを 2 倍にするのが賢明です。フェールオーバー クラスター マネージャーでこれを行うには、Always On リソース グループのプロパティに移動します。
 
 ![Appendix3][13]
 
 最大エラー数 6 に変更します。
 
 #### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3: クラスター グループに IP アドレス リソースを追加する <Optional>
-クラスター グループの IP アドレスが&1; つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 これが発生した場合、その他のクラスター リソースを更新をできません。
+クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 これが発生した場合、その他のクラスター リソースを更新をできません。
 
 #### <a name="step-4-dns-configuration"></a>手順 4. DNS を構成する
 円滑な移行の実装は、DNS が利用および更新される方法に依存します。
-Always On は、インストールされるときに Windows クラスター リソース グループを作成します。フェールオーバー クラスター マネージャーを開くと、少なくとも&3; つのリソースがあることがわかり、次の&2; つがドキュメントで参照されています。
+Always On は、インストールされるときに Windows クラスター リソース グループを作成します。フェールオーバー クラスター マネージャーを開くと、少なくとも 3 つのリソースがあることがわかり、次の 2 つがドキュメントで参照されています。
 
 * Virtual Network 名 (VNN) – これは、Always On 経由で SQL Server に接続するときにクライアントが接続する DNS 名です。
 * IP アドレス リソース – これは、VNN に関連付けられている IP アドレスです。複数の IP アドレス リソースを使用できます。マルチサイト構成では、サイト/サブネットごとに IP アドレスがあります。
@@ -1126,9 +1127,4 @@ IP アドレスの追加については、 [付録](#appendix-migrating-a-multis
 [23]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_13.png
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

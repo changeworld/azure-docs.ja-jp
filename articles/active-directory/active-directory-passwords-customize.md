@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: b6794425e233508ae72cb3b541738e56044453c1
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 06d94b4f0f2c5cc979fe7ecb061fee7d8dde8972
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="customizing-password-management-to-fit-your-organizations-needs"></a>組織ニーズに合わせたパスワード管理のカスタマイズ
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 >
 >
 
@@ -334,7 +334,7 @@ ms.lasthandoff: 03/10/2017
                 </p>
                 <ul>
                   <li class="unordered">
-少なくとも&1; つのオプションを選択する必要があります。<br><br></li>
+少なくとも 1 つのオプションを選択する必要があります。<br><br></li>
                   <li class="unordered">
 ユーザーがパスワードを柔軟にリセットできるように、少なくとも 2 つのオプションを有効にすることを強くお勧めします。<br><br></li>
                   <li class="unordered">
@@ -414,7 +414,7 @@ ms.lasthandoff: 03/10/2017
                 </p>
                 <ul>
                   <li class="unordered">
-ユーザーがパスワードをリセットする前に通過する必要がある確認手順の数に影響します。  確認手順は、ユーザーが認証情報の&1; つを使用してアカウントを確認するように定義されます (会社電話番号への電話または連絡用電子メールへのメールなど)。<br><br></li>
+ユーザーがパスワードをリセットする前に通過する必要がある確認手順の数に影響します。  確認手順は、ユーザーが認証情報の 1 つを使用してアカウントを確認するように定義されます (会社電話番号への電話または連絡用電子メールへのメールなど)。<br><br></li>
                   <li class="unordered">
                     <strong>注:</strong> ユーザーのアカウントに、設定されたポリシーに従ってパスワードを問題なくリセットするために必要な認証情報が定義されていない場合は、管理者にパスワードのリセットを依頼することを指示するエラー ページが表示されます。  <br><br></li>
                 </ul>
@@ -533,7 +533,7 @@ ms.lasthandoff: 03/10/2017
                   <li class="unordered">
 回答の最大文字数は 40 文字です。<br><br></li>
                   <li class="unordered">
-ユーザーは、同じ質問に&2; 度回答することはできません。<br><br></li>
+ユーザーは、同じ質問に 2 度回答することはできません。<br><br></li>
                   <li class="unordered">
 ユーザーは、2 つの異なる質問に同じ回答をすることはできません。<br><br></li>
                   <li class="unordered">
@@ -590,7 +590,7 @@ Unicode 文字を含む任意の文字セットを使用して回答を定義で
                   <li class="unordered">
 回答の最大文字数は 40 文字です。<br><br></li>
                   <li class="unordered">
-ユーザーは、同じ質問に&2; 度回答することはできません。<br><br></li>
+ユーザーは、同じ質問に 2 度回答することはできません。<br><br></li>
                   <li class="unordered">
 ユーザーは、2 つの異なる質問に同じ回答をすることはできません。<br><br></li>
                   <li class="unordered">
@@ -844,7 +844,7 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
                 </div>
               </td>
               <td>
-              <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の&2; つの操作を分離することができます。</p>
+              <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の 2 つの操作を分離することができます。</p>
               <p>[はい] に設定すると、ユーザーはパスワードをリセットし、アカウントのロックを解除するか、パスワードをリセットせずにロックを解除するかを選択できます。 </p>
               <p>[いいえ] に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できなくなります。</p>
                 <br>
@@ -978,8 +978,8 @@ URL を指定した場合、リンクは、その URL を新しいタブで開�
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
 * [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。

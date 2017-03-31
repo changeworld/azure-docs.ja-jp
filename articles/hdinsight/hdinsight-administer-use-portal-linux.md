@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 8c439591dae0bd561ba4f079aba9f2073d1e954b
-ms.openlocfilehash: dc94c3f428200f107f7e953a57cf4e0e83bc7de1
-ms.lasthandoff: 02/04/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 82c12f4a2a24e190babfd88ff667e24d6c45ebac
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -79,7 +80,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    * **[クラスター ログイン]**: クラスターのログイン情報を表示します。
    * **[サブスクリプションのコアの利用状況]**: サブスクリプションの使用されたコアと利用可能なコアを表示します。 
    * **[クラスターのスケーリング]**: クラスターの worker ノードの数を増減します。 「[クラスターのスケール](hdinsight-administer-use-management-portal.md#scale-clusters)」を参照してください。
-   * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」と「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+   * **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
    * **[HDInsight パートナー]**: 現在の HDInsight パートナーを追加または削除します。
    * **[外部メタストア]**: Hive メタストアと Oozie メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。 「[Hive/Oozie メタストアの使用](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)」を参照してください。
    * **[スクリプト アクション]**: クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
@@ -144,7 +145,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
   
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
   
-    バランス再調整は、次の&2; つの方法で実行できます。
+    バランス再調整は、次の 2 つの方法で実行できます。
   
   * Storm Web UI
   * コマンド ライン インターフェイス (CLI) ツール
@@ -229,7 +230,7 @@ Ambari Web UI を使用してクラスターのユーザー パスワードを�
    | 名前 |SSH パスワードの変更 |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
    | ノード (ヘッド、worker、Nimbus、Supervisor、Zookeeper など) |表示するすべてのノード型に ✓ |
-   | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを&1; つ入れる必要があります。 |
+   | パラメーター |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |
    | このスクリプト アクションを保持する… |このフィールドはオフのままにします。 |
 5. **[作成]** を選択してスクリプトを適用します。 スクリプトの完了後は、新しいパスワードで SSH を使用して、クラスターに接続することができます。
 

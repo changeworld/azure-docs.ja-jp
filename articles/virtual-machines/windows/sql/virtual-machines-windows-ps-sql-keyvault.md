@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/14/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: f42e1934ce163e26c1a3f526b4589fb175aac446
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7dd5261960d3f93f01e221c5f5d7a397bc77d590
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](virtual-machines-windows-ps-sql-keyvault.md)
-> * [クラシック](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
+> * [クラシック](../classic/ps-sql-keyvault.md)
 > 
 > 
 

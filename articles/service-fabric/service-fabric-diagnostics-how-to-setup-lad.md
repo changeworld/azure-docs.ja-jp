@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
-ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
-ms.lasthandoff: 01/12/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 46b62b0ebc5b81241815e3b5b4fa3fe275b88af1
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、**[診断]** を **[オン]** に設定します。 クラスターを作成した後、ポータルを使用してこの設定を変更することはできません。
 
-次に、ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、ストレージ アカウントに配置します。 このプロセスについては、 [LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。 この手順に従うと、トレースへのアクセスを取得できます。 トレースは、好みのビジュアライザーにアップロードできます。
+次に、ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、ストレージ アカウントに配置します。 このプロセスについては、 [LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。 この手順に従うと、トレースへのアクセスを取得できます。 トレースは、好みのビジュアライザーにアップロードできます。
 
 診断拡張機能は Azure Resource Manager を使用してデプロイすることもできます。 このプロセスは、Windows と Linux とで似ています。Windows クラスター向けのプロセスについては、「[Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)」を参照してください。
 
@@ -48,6 +48,6 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 この構成を完了すると、指定されたログ ファイルが LAD エージェントによって監視されます。 新しい行がファイルに追加されるたびに、指定したストレージに送信される syslog エントリが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
-問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
 
 

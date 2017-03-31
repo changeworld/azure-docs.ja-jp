@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: 450bf3c23eecc356ad21c7f8ed07ca99619c17b7
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 722fc88763fb5c9b79008706c9352a9bc8c8eaa7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -48,11 +48,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     Azure PowerShell のインストール方法の詳細については、[Azure PowerShell の使用](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)に関するページを参照してください。
 
-    HDInsight での SSH と SCP の使用方法の詳細については、次のドキュメントを参照してください。
-  
-    * [HDInsight 上の Linux ベースの Hadoop で Linux、OS X、Unix、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
@@ -622,7 +618,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
     export-modulemember *-*
    ```
 
-    このファイルには&2; つのモジュールが含まれます。
+    このファイルには 2 つのモジュールが含まれます。
    
    * **Add-HDInsightFile** - HDInsight へのファイルのアップロードに使用されます
    * **Start-HBaseExample** - 前に作成されたクラスの実行に使用されます

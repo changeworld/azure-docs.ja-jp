@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 12/15/2015
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d6e668f5ceffc6e78ac19f83b6022118d5abbb55
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 78d8908a144dadb5fe9d4c48491abf153defe118
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -42,9 +43,9 @@ Azure 診断データを Application Insights に送信するには、次の手�
 
 ![サービス構成の選択][4]
 
-**APPINSIGHTS_INSTRUMENTATIONKEY** 構成設定は、発行時に適切な Application Insights リソース情報で診断の拡張機能を構成するために、Visual Studio によって使用されます。 この構成設定は、さまざまなサービス構成に異なるインストルメンテーション キーを定義するときに便利な方法です。 この設定は、発行時に Visual Studio によって変換され、診断の拡張機能のパブリック構成に挿入されます。 PowerShell を使用して診断の拡張機能を構成するプロセスを単純化するために、Visual Studio から出力されたパッケージには、該当する Application Insights インストルメンテーション キーを格納したパブリック構成 XML も含まれます。 このパブリック構成ファイルは、PaaSDiagnostics.<RoleName>.PubConfig.xml という名前で拡張機能フォルダーに作成されます。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
+**APPINSIGHTS_INSTRUMENTATIONKEY** 構成設定は、発行時に適切な Application Insights リソース情報で診断の拡張機能を構成するために、Visual Studio によって使用されます。 この構成設定は、さまざまなサービス構成に異なるインストルメンテーション キーを定義するときに便利な方法です。 この設定は、発行時に Visual Studio によって変換され、診断の拡張機能のパブリック構成に挿入されます。 PowerShell を使用して診断の拡張機能を構成するプロセスを単純化するために、Visual Studio から出力されたパッケージには、該当する Application Insights インストルメンテーション キーを格納したパブリック構成 XML も含まれます。 このパブリック構成ファイルは、PaaSDiagnostics<RoleName>.PubConfig.xml という名前で拡張機能フォルダーに作成されます。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
 
-5) **[診断データを Application Insights に送信する]** チェック ボックスをオンにすると、Azure 診断エージェントによって収集されるすべてのパフォーマンス カウンターとエラー レベルのログを Application Insights に送信するように、Azure 診断が自動的に構成されます。 Application Insights に送信されるデータを細かく構成する場合は、ロールごとに *diagnostics.wadcfgx* ファイルを手動で編集する必要があります。 構成を手動で更新する方法の詳細については、「 [Application Insights にデータを送信するための Azure Diagnostics の構成](../azure-diagnostics-configure-applicationinsights.md) 」を参照してください。
+5) **[診断データを Application Insights に送信する]** チェック ボックスをオンにすると、Azure 診断エージェントによって収集されるすべてのパフォーマンス カウンターとエラー レベルのログを Application Insights に送信するように、Azure 診断が自動的に構成されます。 Application Insights に送信されるデータを細かく構成する場合は、ロールごとに *diagnostics.wadcfgx* ファイルを手動で編集する必要があります。 構成を手動で更新する方法の詳細については、「 [Application Insights にデータを送信するための Azure Diagnostics の構成](#configure-azure-diagnostics-to-send-data-to-application-insights) 」を参照してください。
 
 Azure 診断データを Application Insights に送信するようにクラウド サービスを構成したら、通常と同じように Azure にデプロイし、Azure 診断の拡張機能が有効なことを確認できます。 詳細については、 [Visual Studio を使用したクラウド サービスの発行](../vs-azure-tools-publishing-a-cloud-service.md)に関するトピックを参照してください。  
 
@@ -77,9 +78,4 @@ Application Insights で Azure 診断データを表示するには:
 [4]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/role-designer-appinsights-serviceconfig.png
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

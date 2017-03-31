@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 106a6f5f44882fd80f7d92f392dbe4bc71004a4f
-ms.openlocfilehash: 8610582803d65d6118cbc2a2c3bc29c50405a26a
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 6a02baabc4b11d80cebfd8c65fc95006716e5d98
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -184,6 +184,6 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 15. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Oracle Linux .vhd を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
+これで、Oracle Linux .vhd を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
 
 

@@ -16,38 +16,39 @@ ms.workload: iaas-sql-server
 ms.date: 11/28/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 64d3f55445c82bf2be3ca8e64d7ea5d19e70310b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d9138b17e54aa1c4bf1982b09d3d0ad10e936d4c
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Azure での AlwaysOn 可用性グループの外部リスナーの構成
 > [!div class="op_single_selector"]
-> * [内部リスナー](virtual-machines-windows-classic-ps-sql-int-listener.md)
-> * [外部リスナー](virtual-machines-windows-classic-ps-sql-ext-listener.md)
+> * [内部リスナー](../classic/ps-sql-int-listener.md)
+> * [外部リスナー](../classic/ps-sql-ext-listener.md)
 > 
 > 
 
 このトピックでは、インターネット上で外部からアクセス可能な、AlwaysOn 可用性グループのリスナーを構成する方法について説明します。 これは、クラウド サービスの **パブリック仮想 IP (VIP)** アドレスをリスナーに関連付けることにより可能になります。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 
-可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。 Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。 後述の手順では、既に[可用性グループは構成している](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)ものの、リスナーは構成していないと仮定しています。
+可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。 Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。 後述の手順では、既に[可用性グループは構成している](../classic/portal-sql-alwayson-availability-groups.md)ものの、リスナーは構成していないと仮定しています。
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>外部リスナーのガイドラインと制限事項
 クラウド サービスのパブリック VIP アドレスを使用してデプロイしている場合は、Azure での可用性グループ リスナーに関する次のガイドラインを確認してください。
 
 * 可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 でサポートされます。
 * クライアント アプリケーションは、可用性グループ VM が含まれるクラウド サービスとは異なるクラウド サービスに存在する必要があります。 Azure では、同じクラウド サービスに存在するクライアントとサーバーによる Direct Server Return はサポートされません。
-* 既定では、この記事の手順により、クラウド サービスの仮想 IP (VIP) アドレスを使用するリスナーが&1; つ構成されます。 ただし、クラウド サービスに対して複数の VIP アドレスを予約して作成することができます。 これにより、この記事の手順を使用して、別の VIP にそれぞれ関連付けられている複数のリスナーを作成することができます。 複数の VIP アドレスを作成する方法の詳細については、「 [クラウド サービスごとの複数の VIP](../../../load-balancer/load-balancer-multivip.md)」を参照してください。
+* 既定では、この記事の手順により、クラウド サービスの仮想 IP (VIP) アドレスを使用するリスナーが 1 つ構成されます。 ただし、クラウド サービスに対して複数の VIP アドレスを予約して作成することができます。 これにより、この記事の手順を使用して、別の VIP にそれぞれ関連付けられている複数のリスナーを作成することができます。 複数の VIP アドレスを作成する方法の詳細については、「 [クラウド サービスごとの複数の VIP](../../../load-balancer/load-balancer-multivip.md)」を参照してください。
 * ハイブリッド環境でのリスナーを作成する場合、オンプレミスのネットワークは、Azure 仮想ネットワークを使用したサイト間 VPN への接続に加えて、パブリック インターネットへの接続が必要です。 Azure のサブネットでは、可用性グループ リスナーは個々 のクラウド サービスのパブリック IP アドレスによってのみ到達可能です。
 * 内部ロード バランサー (ILB) を使用する内部リスナーも含まれるクラウド サービスに外部リスナーを作成することはできません。
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>リスナーのアクセシビリティを決定する
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-この記事では、 **外部負荷分散**を使用するリスナーの作成を中心に説明します。 仮想ネットワーク専用のリスナーが必要な場合は、この記事の、[ILB を使用するリスナー](virtual-machines-windows-classic-ps-sql-int-listener.md)を設定するための手順を説明するバージョンをご覧ください。
+この記事では、 **外部負荷分散**を使用するリスナーの作成を中心に説明します。 仮想ネットワーク専用のリスナーが必要な場合は、この記事の、[ILB を使用するリスナー](../classic/ps-sql-int-listener.md)を設定するための手順を説明するバージョンをご覧ください。
 
 ## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Direct Server Return を使用して負荷分散 VM エンドポイントを作成する
 外部負荷分散では、VM をホストするクラウド サービスのパブリック仮想 IP アドレスを使用します。 そのため、この場合はロード バランサーを作成または構成する必要はありません。
@@ -66,7 +67,7 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
    
     発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
     
-1. 次の PowerShell スクリプトをテキスト エディターにコピーし、環境に合わせて変数の値を設定します (一部のパラメーターには既定値が指定されています)。 可用性グループが複数の Azure リージョンにまたがっている場合、各データセンターにおいて、そのデータセンターに存在するクラウド サービスおよびノードごとにスクリプトを&1; 回ずつ実行する必要があることに注意してください。
+1. 次の PowerShell スクリプトをテキスト エディターにコピーし、環境に合わせて変数の値を設定します (一部のパラメーターには既定値が指定されています)。 可用性グループが複数の Azure リージョンにまたがっている場合、各データセンターにおいて、そのデータセンターに存在するクラウド サービスおよびノードごとにスクリプトを 1 回ずつ実行する必要があることに注意してください。
    
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -88,7 +89,7 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 ## <a name="create-the-availability-group-listener"></a>可用性グループ リスナーを作成する
 
-可用性グループ リスナーを&2; つの手順で作成します。 まず、クライアント アクセス ポイントのクラスター リソースを作成し、依存関係を構成します。 次に、PowerShell を使用してクラスター リソースを構成します。
+可用性グループ リスナーを 2 つの手順で作成します。 まず、クライアント アクセス ポイントのクラスター リソースを作成し、依存関係を構成します。 次に、PowerShell を使用してクラスター リソースを構成します。
 
 ### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>クライアント アクセス ポイントを作成してクラスターの依存関係を構成する
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
@@ -132,10 +133,5 @@ AlwaysOn レプリカが別のサブネットにある場合、クライアン�
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [Listener-Next-Steps](../../../../includes/virtual-machines-ag-listener-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

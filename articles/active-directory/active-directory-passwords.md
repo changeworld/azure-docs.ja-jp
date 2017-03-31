@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 68334eab580e7117cf0b18f84ba56ed699fea12e
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 4904a3e21a54a2c60ee8b35a46370a9759a029f3
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="azure-active-directory-password-reset-for-it-administrators"></a>IT 管理者のための Azure Active Directory のパスワード リセット
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 >
 >
 
@@ -177,7 +177,7 @@ Azure AD Premium または Basic 料金の詳細については、「 [Active Di
 * ユーザーは既に登録されたデータがある場合、電子メールを送信したり電話をかけたりしなくても、[問題なし] をクリックするだけでデータを更新できるようになりました。
 
 #### <a name="improved-reliability-of-password-writeback---september-2015"></a>パスワード ライトバックの信頼性が向上 - 2015 年 9 月
-* Azure AD Connect の&9; 月リリースの時点で、パスワード ライトバック エージェントは接続と、より堅牢な追加のフェールオーバー機能とを積極的に再試行するようになります。
+* Azure AD Connect の 9 月リリースの時点で、パスワード ライトバック エージェントは接続と、より堅牢な追加のフェールオーバー機能とを積極的に再試行するようになります。
 
 #### <a name="api-for-retrieving-password-reset-reporting-data---august-2015"></a>パスワード リセット レポート データを取得するための API - 2015 年 8 月
 * パスワード リセット レポートの背後にあるデータを [Azure AD レポートおよびイベント API](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)で直接取得できるようになりました。
@@ -213,8 +213,8 @@ Azure AD Premium または Basic 料金の詳細については、「 [Active Di
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワード リセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

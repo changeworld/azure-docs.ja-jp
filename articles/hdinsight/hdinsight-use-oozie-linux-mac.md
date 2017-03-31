@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: dc22bfee0471da2d61d1d3d720e26d5fc785f832
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e4f38a061129b2bb8a840d4eec8d224bcbc22e83
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -32,7 +32,7 @@ Apache Oozie を使用して、Hive と Sqoop を使用するワークフロー�
 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトなど、システムに固有のジョブのスケジュールを設定する際にも使用できます。
 
 > [!NOTE]
-> HDInsight でワークフローを定義するもう&1; つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
+> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,11 +107,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-
-    * [Linux、OS X、Unix、または Windows から Linux ベースの HDInsight (Hadoop) で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md): このドキュメントは、`ssh` コマンドにアクセスできることを前提としています。
-
-    * [Windows で PuTTY から HDInsight (Hadoop) で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md): このドキュメントは、PuTTY SSH クライアントを使用していることを前提としています。
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. SSH 接続から、次のコマンドを使用して、新しいファイルを作成します。
 
@@ -128,7 +124,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
     INSERT OVERWRITE TABLE ${hiveTableName} SELECT deviceplatform, COUNT(*) as count FROM hivesampletable GROUP BY deviceplatform;
     ```
 
-    このスクリプトでは、次の&2; つの変数を使用しています。
+    このスクリプトでは、次の 2 つの変数を使用しています。
 
     * **${hiveTableName}**: 作成されるテーブルの名前が含まれます。
 

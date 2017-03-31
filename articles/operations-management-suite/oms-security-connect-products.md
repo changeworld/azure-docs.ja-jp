@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -89,7 +90,7 @@ OMS セキュリティでは、Syslog と [Cisco ASA](https://blogs.technet.micr
     ```
 6. 次のコマンドを入力し、結果を調べて、OMS エージェント ログにエラーがないことを確認します。
 
-    ``` 
+    ```    
     tail /var/opt/microsoft/omsagent/log/omsagent.log
     ```
 
@@ -110,10 +111,5 @@ OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 まででドメ�
 * [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Azure AD Connect インストール ウィザードの再実行 | Microsoft Docs"
 description: "2 回目のインストール ウィザードの実行時の動作について説明します。"
-keywords: "Azure AD Connect インストール ウィザードの&2; 回目の実行では、メンテナンス設定を構成できます。"
+keywords: "Azure AD Connect インストール ウィザードの 2 回目の実行では、メンテナンス設定を構成できます。"
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: 902c6ae45e7809e2847c9e45a35803f40c0b0ff3
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f18e11ac7482b78925d1885ceb20696146603ad2
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの&2; 回目の実行
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
 初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。 インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
 
 インストール ウィザードは、[スタート] メニューに **[Azure AD Connect]**という名前で表示されます。
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/03/2017
 
 ![その他のタスクの一覧を含むページ](./media/active-directory-aadconnectsync-installation-wizard/additionaltasks.png)
 
-Azure AD Connect を使用して ADFS をインストールした場合は、これら以外のオプションも表示されます。 ADFS の追加オプションについては、「 [ADFS management (ADFS 管理)](active-directory-aadconnect-federation-management.md#ad-fs-management)」を参照してください。
+Azure AD Connect を使用して ADFS をインストールした場合は、これら以外のオプションも表示されます。 ADFS の追加オプションについては、「 [ADFS management (ADFS 管理)](active-directory-aadconnect-federation-management.md#manage-ad-fs)」を参照してください。
 
 いずれかのタスクを選択し、 **[次へ]** をクリックして続行します。
 

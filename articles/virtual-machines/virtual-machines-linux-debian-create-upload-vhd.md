@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
-ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 93d30941af689e19e48c9ee204867c96348ecc5f
+ms.lasthandoff: 03/27/2017
 
 
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件
-このセクションでは、 [Debian Web サイト](https://www.debian.org/distrib/) から仮想ハード ディスクにダウンロードした .iso ファイルから Debian Linux オペレーティング システムを既にインストールしているものと想定しています。 .vhd ファイルを作成するためのツールは複数あり、Hyper-V は&1; つの例にすぎません。 Hyper-V の使い方の詳細については、 [Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
+このセクションでは、 [Debian Web サイト](https://www.debian.org/distrib/) から仮想ハード ディスクにダウンロードした .iso ファイルから Debian Linux オペレーティング システムを既にインストールしているものと想定しています。 .vhd ファイルを作成するためのツールは複数あり、Hyper-V は 1 つの例にすぎません。 Hyper-V の使い方の詳細については、 [Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
 
 ## <a name="installation-notes"></a>インストールに関する注記
 * Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
@@ -94,6 +94,6 @@ ms.lasthandoff: 01/26/2017
 4. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ
-これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
+これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「 [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」の手順 2 と 3 をご覧ください。
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 5b3ff989c31f45f3344d406f9f419510dd380f8b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 5e113af94c1ac27d759a75ff35bb9eb29fa08bf6
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -165,7 +165,7 @@ Windows ベースの HDInsight クラスターを使用するには、**osType**
 | zookeeperNodeSize |Zookeeper ノードのサイズを指定します。 既定値は Standard_D3 です。 |なし |
 
 #### <a name="specifying-node-sizes"></a>ノードのサイズの指定
-上記のプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fdata-factory%2ftoc.json#size-tables)に関するページを参照してください。 値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
+上記のプロパティで指定する必要がある文字列値については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に関するページを参照してください。 値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。 この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。 
 
 D4 サイズのヘッド ノードとワーカー ノードを作成する場合は、headNodeSize プロパティと dataNodeSize プロパティの値として **Standard_D4** を指定する必要があります。 
 
@@ -248,7 +248,7 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 "accountName": "mybatchaccount.eastus"
 ```
 
-もう&1; つの選択肢は下のように batchUri エンドポイントを指定することです。  
+もう 1 つの選択肢は下のように batchUri エンドポイントを指定することです。  
 
 ```json
 "accountName": "adfteam",
@@ -328,7 +328,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 | ユーザー タイプ | 有効期限 |
 |:--- |:--- |
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com、@outlook.com など)。 |12 時間 |
-| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から&14; 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント |スライスの最後の実行から 14 日後。 <br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
 
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。 次のセクションのコードを使用して、sessionId と authorization プロパティの値をプログラムで生成することもできます。 
 
@@ -364,12 +364,12 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、および「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。 WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。 
 
 ## <a name="azure-sql-linked-service"></a>Azure SQL のリンクされたサービス
-Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) に関する記事を参照してください。
+Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL コネクタ](data-factory-azure-sql-connector.md#linked-service-properties) に関する記事を参照してください。
 
 ## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
 Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) に関する記事をご覧ください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
-SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [SQL Server コネクタ](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) に関する記事をご覧ください。
+SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [SQL Server コネクタ](data-factory-sqlserver-connector.md#linked-service-properties) に関する記事をご覧ください。
 
 

@@ -17,15 +17,15 @@ ms.workload: data-management
 wms.date: 03/06/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 4307797b3961d8efef4045590e340268f0ad226d
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: ab637f9910523cc8d8967dd1507dbcfad9f7ae88
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="sql-database-options-and-performance-understand-whats-available-in-each-service-tier"></a>SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 
-[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の&4; つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
+[Azure SQL Database](sql-database-technical-overview.md) には、**Basic**、**Standard**、**Premium**、**Premium RS** の 4 つのサービス レベルが用意されています。 各サービス レベルには、さまざまなワークロードに対応するために、いくつかのパフォーマンス レベルが用意されています。 パフォーマンス レベルが高くなるほど提供されるリソースが追加され、スループットが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベルとパフォーマンス レベルは動的に変更できます。 Basic、Standard、Premium のサービス レベルは、いずれも稼働時間の SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 Premium RS レベルでは、SLA が少ないにも関わらず、Premium レベルと同じレベルのパフォーマンス、セキュリティ機能およびビジネス継続性機能が用意されています。
 
 > [!IMPORTANT]
 > Premium RS のデータベースは、Premium または Standard の各データベースよりも少ない冗長コピーで実行されます。 そのため、サービスで障害が発生した場合は、5 分以内にバックアップからデータベースを復旧する必要があります。
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/10/2017
 
 | サービス階層 | 対象のワークロード |
 | :--- | --- |
-| **Basic** | 小規模なデータベースに最適です。通常は、一度に&1; つのアクティブな操作をサポートします。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションなどに使用するデータベースがこれに該当します。 |
+| **Basic** | 小規模なデータベースに最適です。通常は、一度に 1 つのアクティブな操作をサポートします。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションなどに使用するデータベースがこれに該当します。 |
 | **Standard** |IO パフォーマンス要件が低～中程度のクラウド アプリケーションに適しています。複数の同時クエリをサポートします。 たとえば、ワークグループや Web アプリケーションなどです。 |
 | **Premium** | IO パフォーマンス要件が高く、トランザクション量が膨大な場合に合わせて設計されています。多数の同時ユーザーをサポートしています。 たとえば、ミッション クリティカルなアプリケーションをサポートするデータベースなどです。 |
 | **Premium RS** | 最高レベルの可用性の保証を必要としない I/O 集中型のワークロード向けに設計されています。 例としては、高パフォーマンス ワークロードまたはデータベースがレコードのシステムではない分析ワークロードのテストが含まれます。 |
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/10/2017
 最小限のサービス レベルを決定したら、データベースのパフォーマンス レベル (DTU 数) を決定できるようになります。 多くの場合、出発点として Standard S2 および S3 というパフォーマンス レベルが適しています。 CPU または IO の要件が高いデータベースの場合は、Premium のパフォーマンス レベルが出発点として適しています。 Premium では、より多くの CPU が提供されるため、最も高い Standard パフォーマンス レベルと比較して 10 倍超える IO から始まります。
 
 ## <a name="single-database-service-tiers-and-performance-levels"></a>Single Database サービス階層とパフォーマンス レベル
-単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 [Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。 
+単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルがあります。 [Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用して、ワークロードの需要に最も合ったレベルを選択できる柔軟性があります。 
 
 ホストされるデータベースの数にかかわらず、データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性には影響しません。
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="scaling-up-or-scaling-down-a-single-database"></a>1 つのデータベースのスケールアップとスケールダウン
 
-最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、[Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](sql-database-manage-single-databases-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用してデータベースの階層を簡単に変更することができます。 
+最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、1 つのデータベースを動的にスケールアップまたはスケールダウンすることができます。 スケールアップまたはスケールダウンする必要がある場合は、[Azure Portal](sql-database-manage-single-databases-portal.md)、[PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL](sql-database-manage-single-databases-tsql.md)、C#、および REST API を使用してデータベースの階層を簡単に変更することができます。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
@@ -89,7 +89,7 @@ ms.lasthandoff: 03/10/2017
 * データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
 > [!IMPORTANT]
-> 詳細な手順については、[Azure Portal での単一データベースの管理](sql-database-manage-single-databases-portal.md)、[PowerShell を使用した単一データベースの管理](sql-database-manage-single-databases-powershell.md)、[Transact-SQL を使用した単一のデータベースの管理](sql-database-manage-single-databases-tsql.md)に関する記事をそれぞれ参照してください。
+> 詳細な手順については、[Azure Portal での単一データベースの管理](sql-database-manage-single-databases-portal.md)、[PowerShell を使用した単一データベースの管理](scripts/sql-database-monitor-and-scale-database-powershell.md)、[Transact-SQL を使用した単一のデータベースの管理](sql-database-manage-single-databases-tsql.md)に関する記事をそれぞれ参照してください。
 >
 
 ## <a name="elastic-pool-service-tiers-and-performance-in-edtus"></a>エラスティック プール サービス階層と eDTU のパフォーマンス
@@ -109,7 +109,7 @@ ms.lasthandoff: 03/10/2017
 * 通常、データベースあたりの最小 eDTU またはデータベースあたりの最大 eDTU の変更は、5 分以内で完了します。
 * プール サイズ (eDTU) の変更時間は、プール内のすべてのデータベースを結合したサイズに依存します。 変更の平均時間は、100 GB あたり 90 分以下です。 たとえば、プール内のすべてのデータベースの合計領域が 200 GB の場合、プールあたりの eDTU の変更にかかる想定待機時間は、3 時間以下になります。
 
-詳細な手順については、[Azure Portal でのエラスティック プールの管理](sql-database-elastic-pool-manage-portal.md)、[PowerShell を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-powershell.md)、[Transact-SQL を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-tsql.md)、または [C# を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-csharp.md)に関する記事をそれぞれ参照してください。
+詳細な手順については、[Azure Portal でのエラスティック プールの管理](sql-database-elastic-pool-manage-portal.md)、[PowerShell を使用したエラスティック プールの管理](scripts/sql-database-monitor-and-scale-pool-powershell.md)、[Transact-SQL を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-tsql.md)、または [C# を使用したエラスティック プールの管理](sql-database-elastic-pool-manage-csharp.md)に関する記事をそれぞれ参照してください。
 
 ## <a name="creating-or-upgrading-to-4tb"></a>4 TB の作成またはアップグレード
 

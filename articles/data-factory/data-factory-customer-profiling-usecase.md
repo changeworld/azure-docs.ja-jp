@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 2/24/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: abc3fa751b3926dbbb9dc040abc40632e316e2a0
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: a03f097d0106ac153ef45e0c10b677597c76207a
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -31,7 +32,7 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 このソリューションでは、Contoso が、最近開始したマーケティング キャンペーンの効果を評価したいと考えています。 未処理のゲーム ログから開始し、そのログを処理しながら、地理位置情報のデータで強化し、広告参照データに結合していきます。そして、最後に Azure SQL Database にコピーして、キャンペーンの影響を分析します。
 
 ## <a name="deploy-solution"></a>ソリューションのデプロイ
-このシンプルな使用事例にアクセスして試すにあたり必要となるのは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/storage-create-storage-account#create-a-storage-account)、および [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started) です。 顧客プロファイリング パイプラインは、Data Factory のホーム ページにある **[サンプル パイプライン]** タイルからデプロイします。
+このシンプルな使用事例にアクセスして試すにあたり必要となるのは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob Storage アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)、および [Azure SQL Database](../sql-database/sql-database-get-started.md) です。 顧客プロファイリング パイプラインは、Data Factory のホーム ページにある **[サンプル パイプライン]** タイルからデプロイします。
 
 1. データ ファクトリを作成するか、既存のデータ ファクトリを開きます。 データ ファクトリを作成する手順については、「[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 2. データ ファクトリの **[Data Factory]** ブレードで、**[サンプル パイプライン]** タイルをクリックします。
@@ -67,10 +68,5 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 
 ## <a name="benefits"></a>メリット
 ゲーム会社は、ユーザー プロファイルの分析を最適化してビジネス目標と一致させることで、迅速に使用状況パターンを収集し、マーケティング キャンペーンの効果を分析できます。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

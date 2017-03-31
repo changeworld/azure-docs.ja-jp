@@ -15,8 +15,9 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 814292d76601452493c1d708c39d42da909036d9
-ms.openlocfilehash: 1e436978da0f2fc8c122a1a99bd891fe82929f50
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: be73e3d009cfcbdd585d81512afaed752ae07364
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -51,7 +52,7 @@ Azure Search には、パブリック インターネット接続経由のすべ
 Azure Search に必要な、暗号化された接続を設定した後は、Azure VM 上の SQL Server に固有の追加の構成手順があります。 その構成手順をまだ実行していない場合は、以下のいずれかの記事を参照して構成を実行します。
 
 * **Resource Manager** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure using Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)」(Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続) をご覧ください。 
-* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect.md)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
+* **クラシック** VM の場合は、「 [Connect to a SQL Server Virtual Machine on Azure Classic](../virtual-machines/windows/classic/sql-connect.md)」(Azure クラシックでの SQL Server 仮想マシンへの接続) をご覧ください。
 
 特に、各記事の、インターネット経由での接続に関するセクションを確認してください。
 
@@ -74,9 +75,9 @@ IP アドレスの指定ではいくつかの課題が生じる可能性があ�
 SQL Azure VM をすべての接続要求に広く開放するのではなく、ACL で Search サービスの IP アドレスへのアクセスを制限することを強くお勧めします。 IP アドレスは、Search サービスの FQDN ( `<your-search-service-name>.search.windows.net`など) に ping を実行することで、簡単に確認できます。
 
 #### <a name="managing-ip-address-fluctuations"></a>IP アドレスの変動の管理
-Search サービスに検索ユニットが&1; つ (1 つのレプリカと&1; つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
+Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
 
-その後で生じる接続エラーを回避する方法の&1; つは、Azure Search で複数のレプリカと&1; つのパーティションを使用することです。 それによってコストは増加しますが、IP アドレスの問題も解決します。 Azure Search では、複数の検索ユニットがあるときには IP アドレスが変更されません。
+その後で生じる接続エラーを回避する方法の 1 つは、Azure Search で複数のレプリカと 1 つのパーティションを使用することです。 それによってコストは増加しますが、IP アドレスの問題も解決します。 Azure Search では、複数の検索ユニットがあるときには IP アドレスが変更されません。
 
 2 つめの方法は、接続を失敗させた後で NSG 内の ACL を再構成することです。 平均すると、IP アドレスは数週間おきに変更されると想定されます。 管理されたインデックス作成をめったに行わないお客様の場合は、この方法を実行できる可能性があります。
 
@@ -87,10 +88,5 @@ Azure Portal を使用してインデクサーを作成する場合は、作成�
 
 ## <a name="next-steps"></a>次のステップ
 これで構成が完了し、Azure VM 上 の SQL Server を Azure Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、「 [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
