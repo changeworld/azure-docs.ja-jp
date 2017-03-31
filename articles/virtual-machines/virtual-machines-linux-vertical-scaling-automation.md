@@ -69,7 +69,7 @@ ms.lasthandoff: 03/03/2017
 
 インポートする必要がある Runbook を次の図に示します
 
-![Runbook のインポート](./media/virtual-machines-vertical-scaling-automation/scale-runbooks.png)
+![Runbook のインポート](./windows/media/vertical-scaling-automation/scale-runbooks.png)
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Webhook を Runbook に追加する
 Runbook をインポートしたら、仮想マシンからのアラートによって Webhook がトリガーされるように、Runbook に追加する必要があります。 Runbook で Webhook を作成する方法の詳細は、次の記事を参照してください。
@@ -88,8 +88,8 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 7. 手順 5 と 6 で選択した条件としきい値を監視サービスが確認する期間を選択する
 8. 前のセクションからコピーした Webhook を貼り付ける
 
-![アラートを仮想マシン 1 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
+![アラートを仮想マシン 1 に追加](./windows/media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
+![アラートを仮想マシン 2 に追加](./windows/media/vertical-scaling-automation/add-alert-webhook-2.png)
 
 

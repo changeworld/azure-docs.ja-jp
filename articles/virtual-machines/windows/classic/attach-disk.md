@@ -68,7 +68,7 @@ Refernce article:
 1. 仮想マシンへの接続 手順については、「 [Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 2. 仮想マシンにログオンした後、 **サーバー マネージャー**を開きます。 左側のウィンドウで、 **[ファイル サービスと記憶域サービス]**を選択します。
 
-    ![サーバー マネージャーを開く](./media/attach-disk/fileandstorageservices.png)
+    ![サーバー マネージャーを開く](../media/attach-disk-portal/fileandstorageservices.png)
 
 3. **[ディスク]** を選択します。
 4. **[ディスク]** セクションにディスクが一覧表示されます。 多くの場合、仮想マシンには、disk 0、disk 1、disk 2 があります。 disk 0 はオペレーティング システム ディスク、disk 1 は一時ディスク、disk 2 は新しく仮想マシンにアタッチしたデータ ディスクです。 データ ディスクではパーティションが **[不明]** として一覧表示されます。
