@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 808343035c2554a3cd01cf3fe0ef6ebba2c54e23
-ms.openlocfilehash: 5b4443a8746bc8c88e2c5b58068c200aafc4beea
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 53e053fe12ea6753b6a47443ab91948c9a753a17
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -34,7 +35,7 @@ Azure が一時ディスクを使用する方法については、 [Microsoft Az
 最初に、仮想マシンにデータ ディスクをアタッチする必要があります。 
 
 * ポータルの使用方法については、「[Azure ポータルでデータ ディスクを接続する方法](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* クラシック ポータルの使用方法については、[データ ディスクを Windows 仮想マシンにアタッチする方法](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。 
+* クラシック ポータルの使用方法については、[データ ディスクを Windows 仮想マシンにアタッチする方法](windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。 
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>一時的に pagefile.sys を C ドライブに移動します。
 1. 仮想マシンへの接続 
@@ -69,10 +70,5 @@ Azure が一時ディスクを使用する方法については、 [Microsoft Az
 
 ## <a name="next-steps"></a>次のステップ
 * [追加のデータ ディスクをアタッチする](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことで、仮想マシンに使用できる記憶域を増やすことができます。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

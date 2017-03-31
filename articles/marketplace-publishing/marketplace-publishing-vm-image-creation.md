@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: e801d966e7461be7ec6101941c7b70912ad8c403
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 62e9f34216f25bc1feab3bc76f78a9c1ab07ab9c
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/21/2017
 * Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
 * Azure プレビュー ポータル: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
-SKU は、VM イメージの取引名です。 VM イメージには、1 個のオペレーティング システム ディスクと&0; 個以上のデータ ディスクが含まれます。 これは、仮想マシンに欠かせない完全なストレージ プロファイルです。 ディスクごとに&1; つの VHD が必要です。 空のデータ ディスクにも VHD を作成する必要があります。
+SKU は、VM イメージの取引名です。 VM イメージには、1 個のオペレーティング システム ディスクと 0 個以上のデータ ディスクが含まれます。 これは、仮想マシンに欠かせない完全なストレージ プロファイルです。 ディスクごとに 1 つの VHD が必要です。 空のデータ ディスクにも VHD を作成する必要があります。
 
 どのオペレーティング システムを使っているかにかかわらず、SKU に必要な最小数のデータ ディスクのみを追加します。 顧客はデプロイメント時にイメージの一部であるディスクを削除できませんが、必要に応じて、デプロイメント中またはデプロイメント後にディスクを追加できます。
 
@@ -59,9 +59,9 @@ SKU は、VM イメージの取引名です。 VM イメージには、1 個の�
 3. Windows ベースの SKU を使用する場合、表示されたリンクに従って、Windows Server の承認されたバージョンを取得します。
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.Azure と互換性のある VHD の作成 (Linux ベース)
-このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。 詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
+このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。 詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 
-## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>手順&3;.Azure と互換性のある VHD の作成 (Windows ベース)
+## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>手順 3.Azure と互換性のある VHD の作成 (Windows ベース)
 このセクションでは、Azure Marketplace 用の Windows Server に基づいて SKU を作成するためのステップについて説明します。
 
 ### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 正しい基本 VHD を使用していることの確認
@@ -175,10 +175,10 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 
         sysprep.exe /generalize /oobe /shutdown
 
-  OS を sysprep する方法のガイダンスについては、MSDN の記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」の手順を参照してください。
+  OS を sysprep する方法のガイダンスについては、MSDN の記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」の手順を参照してください。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.VHD からの VM のデプロイ
-VHD (汎用化されたオペレーティング システム VHD および&0; 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。 その後、そのイメージをテストできます。 オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
+VHD (汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。 その後、そのイメージをテストできます。 オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
 
 VM イメージの詳細については、次のブログを参照してください。
 
@@ -216,7 +216,7 @@ API/PowerShell/Azure CLI を使って VM をキャプチャする方法につい
 2. **[マイ イメージ]**に移動し、VM のデプロイ元の VM イメージを選択します。
 
    1. **[マイ イメージ]** ビューにはオペレーティング システム イメージと VM イメージの両方が表示されるため、イメージを選択する際には注意が必要です。
-   2. ほとんどの VM イメージに&1; つ以上のディスクが含まれるため、ディスクの数に注目すると、デプロイするイメージの種類を特定する際に役立ちます。 ただし、 **[ディスク数]** が 1 に設定された、オペレーティング システム ディスクが 1 つのみの VM イメージを選択することもできます。
+   2. ほとんどの VM イメージに 1 つ以上のディスクが含まれるため、ディスクの数に注目すると、デプロイするイメージの種類を特定する際に役立ちます。 ただし、 **[ディスク数]** が 1 に設定された、オペレーティング システム ディスクが 1 つのみの VM イメージを選択することもできます。
 
       ![図][img-manage-vm-select]
 3. VM 作成ウィザードに従って、VM 名、VM サイズ、場所、ユーザー名、パスワードを指定します。
@@ -292,7 +292,7 @@ Linux または Windows ベースの VM イメージに適したオプション�
 作成した Shared Access Signature URI は次の要件を満たす必要があります。
 
 * VHD の Shared Access Signature URI の作成時に、一覧表示および読み取りアクセス許可が付与されていること。 書き込みまたは削除アクセス権を付与しないでください。
-* アクセス許可の期間は、Shared Access Signature URI の作成時から最低&3; 週間必要です。
+* アクセス許可の期間は、Shared Access Signature URI の作成時から最低 3 週間必要です。
 * UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
 
 Azure Marketplace の VHD を共有する複数の方法で、SAS URL を生成できます。
@@ -446,7 +446,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 
     c. **`<Permission Start Date>`**: UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2016 年 10 月 26 日の場合は、2016 年 10 月 25 日にしてください。
 
-    d. **`<Permission End Date>`**: **開始日**から少なくとも 3 週間後の日付を選択します。 値は **2016 年&11; 月&2;日** にする必要があります。
+    d. **`<Permission End Date>`**: **開始日**から少なくとも 3 週間後の日付を選択します。 値は **2016 年 11 月 2日** にする必要があります。
 
     適切なパラメーターに更新した後のコード例を次に示します。
 
@@ -496,7 +496,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 4. **[SKU]** セクションでプロパティを入力します。
 5. **[オペレーティング システム ファミリ]**でオペレーティング システム VHD に関連付けられたオペレーティング システムの種類をクリックします。
 6. **[オペレーティング システム]** ボックスにオペレーティング システムの詳細を入力します。 オペレーティング システム ファミリ、種類、バージョン、更新の形式で記載してください。 たとえば、「Windows Server Datacenter 2014 R2」などと入力します。
-7. 最大&6; 個の推奨される仮想マシン サイズを選択します。 これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。 **これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
+7. 最大 6 個の推奨される仮想マシン サイズを選択します。 これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。 **これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
 8. バージョンを入力します。 バージョン フィールドには、製品とその更新プログラムを識別するためのセマンティック バージョンがカプセル化されています。
    * バージョンの形式は X.Y.Z で、X、Y、Z は整数です。
    * 異なる SKU のイメージは、メジャー バージョンおよびマイナー バージョンが異なっていてもかまいません。

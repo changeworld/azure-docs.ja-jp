@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
-ms.openlocfilehash: e6a3e91e5821e761af0ff710da2a817eb7c185bb
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 32e86b0c3e7c0091b1a0510aa682419d2d030dd8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -40,10 +40,8 @@ HDInsight クラスターと Azure SQL Database または SQL Server データ�
 ## <a name="install-freetds"></a>FreeTDS のインストール
 1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。 接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
 
-    SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-   * **Linux、Unix または OS X クライアント**: 「 [Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * **Windows クライアント**: 「 [Windows からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md)
 2. 次のコマンドを使用して FreeTDS をインストールします。
 
         sudo apt-get --assume-yes install freetds-dev freetds-bin

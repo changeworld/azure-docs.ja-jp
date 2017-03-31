@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 6c711fd3a843604d62d6589d0a742f03a049bc5c
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 629fa1cc52963a844ee3bd7f8031ef2e5c340ae5
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="deploying-password-management-and-training-users-to-use-it"></a>Password Management のデプロイとユーザー トレーニング
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 >
 >
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/10/2017
    * オンプレミスのユーザー (フェデレーション ユーザーまたはハッシュ同期ユーザー) の場合は、 **AAD Premium ライセンスが割り当てられていること**。
 3. ユーザーが現在のパスワード リセット ポリシーに従って、 **認証データの最小セットを定義していること** 。
    * 認証データは、ディレクトリ内の対応するフィールドに適切な形式のデータが含まれている場合に定義されたとみなされます。
-   * 認証データの最小セットは、ワン ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも&1; つ**が、ツー ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも&2; つ**が構成されたときに定義されます。
+   * 認証データの最小セットは、ワン ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも 1 つ**が、ツー ゲート ポリシーが構成される場合は有効な認証オプションの**少なくとも 2 つ**が構成されたときに定義されます。
 4. ユーザーがオンプレミスのアカウントを使用している場合は、 [Password Writeback](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) が有効化され、オンになっていること。
 
 ### <a name="ways-to-populate-authentication-data"></a>認証データを設定する方法
@@ -87,9 +87,9 @@ ms.lasthandoff: 03/10/2017
 電子メール テンプレートを [ここ](https://1drv.ms/f/s!AharQMeRmrWggcNnPlk_7xHInYJzow)からダウンロードできます。
 
 ### <a name="creating-your-own-password-portal"></a>独自のパスワードのポータルを作成する
-パスワード管理機能をデプロイする多くの顧客にとって有効な&1; つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。  
+パスワード管理機能をデプロイする多くの顧客にとって有効な 1 つの手法は、1 つの場所でパスワードに関係するすべてのことを管理するのに使用できる単一の「パスワード ポータル」を作成することです。  
 
-最大規模のお客様の多くは、Azure AD パスワード リセット ポータル、パスワード リセット登録ポータル、およびパスワード変更ページへのリンクを使用して、https://passwords.contoso.com のようなルート DNS エントリを作成する方法を選択します。  この方法では、ユーザーがサービスの使用を開始するまでに少し時間がある場合にアクセス可能な覚えやすい URL を&1; つ、送信する任意の電子メールまたは広告に含めることができます。
+最大規模のお客様の多くは、Azure AD パスワード リセット ポータル、パスワード リセット登録ポータル、およびパスワード変更ページへのリンクを使用して、https://passwords.contoso.com のようなルート DNS エントリを作成する方法を選択します。  この方法では、ユーザーがサービスの使用を開始するまでに少し時間がある場合にアクセス可能な覚えやすい URL を 1 つ、送信する任意の電子メールまたは広告に含めることができます。
 
 ここでは、最新の応答性の高い UI 設計パラダイムを使用する単純なページを作成してあります。これは、すべてのブラウザーおよびモバイル デバイスで動作します。
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 03/10/2017
 ### <a name="using-enforced-registration"></a>強制登録の使用
 ユーザー自身にパスワード リセットの登録を行ってもらう場合は、ユーザーがアクセス パネル ( [http://myapps.microsoft.com](http://myapps.microsoft.com)) にサインインしたときに、登録を強制することもできます。  このオプションは、ディレクトリの **[構成]** タブで **[ユーザーが初めてアクセス パネルにサインインするときに登録を要求しますか?]** オプションを有効にすることで、有効にできます。  
 
-必要に応じて、 **[ユーザーによる連絡先データの確認が必要になるまでの日数]** オプションを&0; 以外の値に変更することで、構成可能な期間の後でユーザーに再登録を求めるかどうかを定義することもできます。 詳細については、「 [User Password Management の動作のカスタマイズ](active-directory-passwords-customize.md#password-management-behavior) 」を参照してください。
+必要に応じて、 **[ユーザーによる連絡先データの確認が必要になるまでの日数]** オプションを 0 以外の値に変更することで、構成可能な期間の後でユーザーに再登録を求めるかどうかを定義することもできます。 詳細については、「 [User Password Management の動作のカスタマイズ](active-directory-passwords-customize.md#password-management-behavior) 」を参照してください。
 
   ![][002]
 
@@ -144,8 +144,8 @@ PowerShell でこのデータの参照と設定を行う方法については、
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。

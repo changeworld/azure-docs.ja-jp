@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 04ed5f52a36f5d6483ed197d0886f3a908d393c5
-ms.openlocfilehash: 53bc2f6e0be0af13f95968272aa1f97f1d0918a2
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 488b16623300d80a53a61badee420de106c418b0
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/28/2017
 Azure クラシック ポータルの [スケール] ページでは、Web ロールまたは worker ロールの自動スケール設定を構成できます。 また、ルールベースの自動スケールの代わりに、手動スケーリングを構成することもできます。
 
 > [!NOTE]
-> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、その仮想マシンはクラウド サービスでホストされます。 この情報の一部は、このような種類の仮想マシンに適用されます。 仮想マシンの可用性セットのスケーリングは、構成したスケール ルールに基づいて仮想マシンをアップダウンしているだけです。 Virtual Machines と可用性セットの詳細については、[Virtual Machines の可用性の管理](../virtual-machines/virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、その仮想マシンはクラウド サービスでホストされます。 この情報の一部は、このような種類の仮想マシンに適用されます。 仮想マシンの可用性セットのスケーリングは、構成したスケール ルールに基づいて仮想マシンをアップダウンしているだけです。 Virtual Machines と可用性セットの詳細については、[Virtual Machines の可用性の管理](../virtual-machines/windows/classic/configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
 
@@ -41,10 +41,10 @@ Azure クラシック ポータルの [スケール] ページでは、Web ロ�
 
 * クラウド サービスにリンクされたリソースの規模を設定できます。 リソースのリンクの詳細については、「 [方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#how-to-link-a-resource-to-a-cloud-service)」を参照してください。
 
-* アプリケーションの高可用性を可能にするには、アプリケーションを&2; つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+* アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 > [!WARNING]
-> 自動スケーリングは、従来の Azure ストレージ アカウントのみで動作します。 Azure Resource Manager ストレージ アカウントでは動作しません。
+> 自動スケーリングは、従来の Azure Storage アカウントのみで動作します。 Azure Resource Manager ストレージ アカウントでは動作しません。
 
 ## <a name="schedule-scaling"></a>スケールのスケジュール
 既定では、すべてのロールが特定のスケジュールに従っていません。 そのため、変更した設定はすべての時間およびすべての日に年間を通じて適用されます。 必要に応じて、次のいずれかのモードに対して手動スケールまたは自動スケールを設定できます。

@@ -16,9 +16,9 @@ ms.date: 10/10/2016
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 844f7d6fa4191a54d14010adf974401d3a94ba69
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 5bb3a67c999c1d41c50b2b660a97a53125511633
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,11 +36,11 @@ Linux 仮想マシンの場合は、*OMS Agent For Linux* という仮想マシ�
 ログ データにエージェント ベースの収集を使用する場合は、[Log Analytics のデータ ソース](log-analytics-data-sources.md)を構成して、収集するログとメトリックを指定する必要があります。
 
 > [!IMPORTANT]
-> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは&2; 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集することをお勧めします。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
+> [Azure 診断](log-analytics-azure-storage.md)を使用してログ データのインデックスを作成するように Log Analytics を構成したうえで、さらに同じログを収集するようにエージェントを構成した場合、ログは 2 回収集されます。 両方のデータ ソースに対して料金が発生します。 エージェントをインストールした場合は、エージェントのみでログ データを収集することをお勧めします。ログ データを Azure 診断から収集するように Log Analytics を構成することは避けてください。
 >
 >
 
-Log Analytics 仮想マシン拡張機能は、次の&3; とおりの方法で簡単に有効にすることができます。
+Log Analytics 仮想マシン拡張機能は、次の 3 とおりの方法で簡単に有効にすることができます。
 
 * Azure Portal を使用する方法
 * Azure PowerShell を使用する方法
@@ -385,11 +385,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Templa
 1. Azure VM エージェントがインストールされ、正しく動作しているかどうかを [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) の手順に従って確認します。
    * さらに VM エージェントのログ ファイル (`C:\WindowsAzure\logs\WaAppAgent.log`) を確認します。
    * ログが存在しない場合、VM エージェントがインストールされていません。
-     * [クラシック VM に Azure VM エージェントをインストールします。](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+     * [クラシック VM に Azure VM エージェントをインストールします。](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 2. 次の手順に従って、Microsoft Monitoring Agent 拡張機能のハート ビート タスクが実行中であることを確認します。
    * 仮想マシンにログインします。
    * タスク スケジューラを開いて `update_azureoperationalinsight_agent_heartbeat` タスクを探します。
-   * タスクが有効になっていて&1; 分おきに実行されていることを確認します。
+   * タスクが有効になっていて 1 分おきに実行されていることを確認します。
    * `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log` にあるハート ビートのログファイルを確認します。
 3. `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` で Microsoft Monitoring Agent VM 拡張機能のログ ファイルを確認します。
 4. 仮想マシンで PowerShell スクリプトを実行できることを確認します。

@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c48e23c1904d824ce2360f83c9df9c8e17d6200a
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
-> * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
+> * [クラシック](../classic/sql-automated-patching.md)
 > 
 > 
 
@@ -32,7 +33,7 @@ ms.openlocfilehash: b092b8a746f4f94add9727dc17c6b8fc198b6404
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)」をご覧ください。
+この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../classic/sql-automated-patching.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動修正を使用するには、次の前提条件を検討してください。
@@ -126,10 +127,5 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。
 
 Azure VM で SQL Server を実行する方法の詳細については、 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

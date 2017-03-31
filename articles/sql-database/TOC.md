@@ -5,20 +5,17 @@
 ## [DB の作成 - ポータル](sql-database-get-started-portal.md)
 ## [DB の作成 - Azure CLI](sql-database-get-started-cli.md)
 ## [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
-## 接続
+## 管理
 ### [SSMS](sql-database-connect-query-ssms.md)
 ### [VS Code](sql-database-connect-query-vscode.md)
+## 接続
 ### [C#](sql-database-connect-query-dotnet.md)
 # サンプル
 ## [Azure CLI](sql-database-cli-samples.md)
 ## [PowerShell](sql-database-powershell-samples.md)
 # Tutorials (チュートリアル)
-## アクセス
-### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
-### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
-## 復旧
-### [ポータル](sql-database-get-started-backup-recovery-portal.md)
-### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+## [データベースの設計](sql-database-design-first-database.md)
+
 # 概念
 ## データベースとサーバー
 ### [データベース](sql-database-overview.md)
@@ -110,6 +107,9 @@
 ### [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 ### [Transact-SQL](sql-database-elastic-pool-manage-tsql.md)
 ### [C#](sql-database-elastic-pool-manage-csharp.md)
+## DB へのアクセス 
+### [SQL Server](sql-database-control-access-sql-authentication-get-started.md)
+### [Azure AD](sql-database-control-access-aad-authentication-get-started.md)
 ## データのセキュリティ保護
 ### [Azure AD 認証](sql-database-aad-authentication-configure.md)
 ### [監査](sql-database-auditing-portal.md)
@@ -117,11 +117,13 @@
 ### [暗号化 - 証明書ストア](sql-database-always-encrypted.md)
 ### [暗号化 - Key Vault](sql-database-always-encrypted-azure-key-vault.md)
 ### [マスクの構成](sql-database-dynamic-data-masking-get-started-portal.md)
-## バックアップおよび復元
-### [復元 - ポータル](sql-database-restore-database-portal.md)
+## 復旧
+### [ポータル](sql-database-get-started-backup-recovery-portal.md)
+### [PowerShell](sql-database-get-started-backup-recovery-powershell.md)
+### [1 つのテーブル](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
+## 保持
 ### [保有期間 - ポータル](sql-database-manage-long-term-backup-retention-portal.md)
 ### [保有期間 - PowerShell](sql-database-manage-long-term-backup-retention-powershell.md)
-### [1 つのテーブルの回復](sql-database-cloud-migrate-restore-single-table-azure-backup.md)
 ## データの geo レプリケーション
 ### [ポータル](sql-database-geo-replication-portal.md)
 ### [T-SQL - 構成](sql-database-geo-replication-transact-sql.md)

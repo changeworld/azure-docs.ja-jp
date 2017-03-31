@@ -14,11 +14,11 @@
 ## テンプレートの作成
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [テンプレート セクション](resource-group-authoring-templates.md)
-### [テンプレート関数](resource-group-template-functions.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
+### [場所を設定する](resource-manager-template-location.md)
+### [タグを割り当てる](resource-manager-template-tags.md)
 ### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
 ### [リソースの種類の複数インスタンスを作成する](resource-group-create-multiple.md)
-### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
@@ -28,6 +28,7 @@
 ### [ポータル](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 ## 管理
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
@@ -56,6 +57,7 @@
 ### [デプロイ操作の表示](resource-manager-deployment-operations.md)
 
 # リファレンス
+## [テンプレート関数](resource-group-template-functions.md)
 ## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

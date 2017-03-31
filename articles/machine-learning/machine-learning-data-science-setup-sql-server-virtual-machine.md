@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 497b683b1058e134c3c79dbc8c8a119ff20e330b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +34,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
   > 
   > 
 
-## <a name="a-nameprovisionaconnect-to-the-azure-classic-portal-and-provision-an-sql-server-virtual-machine"></a><a name="Provision"></a>Azure クラシック ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
+## <a name="Provision"></a>Azure クラシック ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
 1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/) にログインします。
    Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 2. Azure クラシック ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
@@ -83,7 +84,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
    * 実行中 (プロビジョニング)
    * 実行中
 
-## <a name="a-nameremotedesktopaopen-the-virtual-machine-using-remote-desktop-and-complete-setup"></a><a name="RemoteDesktop"></a>リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する
+## <a name="RemoteDesktop"></a>リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する
 1. プロビジョニングが完了したら、仮想マシンの名前をクリックして [ダッシュボード] ページに移動します。 ページの下部にある **[接続]**をクリックします。
 2. Windows リモート デスクトップ プログラム (`%windir%\system32\mstsc.exe`) を使用して rpd ファイルを開くよう選択します。
 3. **[Windows セキュリティ]** ダイアログ ボックスで、先ほど指定したローカル管理者アカウントのパスワードを入力します
@@ -92,7 +93,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 Windows リモート デスクトップで仮想マシンに接続したら、仮想マシンは他のコンピューターと同様に使用できます。 SQL Server Management Studio (仮想マシン上で実行) を使用して、通常どおりに SQL Server の既定インスタンスに接続します。
 
-## <a name="a-nameinstallipythonainstall-ipython-notebook-and-other-supporting-tools"></a><a name="InstallIPython"></a>IPython Notebook とその他のサポート ツールをインストールする
+## <a name="InstallIPython"></a>IPython Notebook とその他のサポート ツールをインストールする
 IPython Notebook サーバーとして機能するよう新しい SQL Server VM を構成し、AzCopy、Azure ストレージ エクスプローラー、便利な Data Science Python パッケージその他のサポート ツールを追加でインストールできるよう、特別なカスタマイズ スクリプトが用意されています。 インストールするには、次のようにします。
 
 * Windows の **[スタート]** アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
@@ -113,7 +114,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 * 任意のローカルまたはリモート ブラウザーから、URL 形式 `https://<virtual_machine_DNS_name>:<port>`を使用して IPython Notebook にアクセスし実行することができます (ポートは仮想マシンのプロビジョニング中に選択した IPython パブリック ポート)。
 * IPython Notebook サーバーはバックグラウンド サービスとして実行され、仮想マシンの再起動時に自動的に再起動されます。
 
-## <a name="a-nameoptionalaattach-data-disk-as-needed"></a><a name="Optional"></a>必要に応じて、データ ディスクをアタッチする
+## <a name="Optional"></a>必要に応じて、データ ディスクをアタッチする
 データ ディスク、つまり C ドライブ (OS ディスク) と D ドライブ (一時的なディスク) 以外のディスクが VM イメージに含まれない場合、データを格納するために 1 つ以上のデータ ディスクを追加する必要があります。 SQL Server 2012 SP2 Enterprise Optimized for DataWarehousing Workloads 用の VM イメージは、SQL Server データおよびログ ファイル用の追加のディスク付きで事前構成されています。
 
 > [!NOTE]
@@ -121,12 +122,12 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 > 
 > 
 
-追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](../virtual-machines/virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」で説明されている次のような手順に従います。
+追加のデータ ディスクをアタッチするには、「[Windows 仮想マシンにデータ ディスクをアタッチする方法](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」で説明されている次のような手順に従います。
 
 1. 前の手順でプロビジョニングされた仮想マシンに 1 つ以上の空のディスクをアタッチする
 2. 仮想マシンでの新しいディスクの初期化
 
-## <a name="a-namessmsaconnect-to-sql-server-management-studio-and-enable-mixed-mode-authentication"></a><a name="SSMS"></a>SQL Server Management Studio に接続し、混合モード認証を有効にする
+## <a name="SSMS"></a>SQL Server Management Studio に接続し、混合モード認証を有効にする
 ドメイン環境がない場合、SQL Server Database エンジンで Windows 認証を使用することはできません。 別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。 混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます データのインポート モジュールを使用して [Azure Machine Learning Studio](https://studio.azureml.net) で SQL Server VM データベースからデータを直接取り込むには、SQL 認証モードが必要です。
 
 1. リモート デスクトップを使用して仮想マシンに接続している間に、Windows **[検索]** ウィンドウを使用して「**SQL Server Management Studio** (SMSS)」と入力します。 クリックして SQL Server Management Studio (SSMS) を開始します。 SSMS のショートカットをデスクトップ上に作成して、将来使用することができます。
@@ -166,7 +167,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
    ![再起動][9]
 5. **[SQL Server Management Studio]** ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
 
-## <a name="a-nameloginsacreate-sql-server-authentication-logins"></a><a name="Logins"></a>SQL Server 認証ログインを作成する
+## <a name="Logins"></a>SQL Server 認証ログインを作成する
 別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。  
 
 新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。 SQL 認証の新しい sysadmin ユーザーをプログラムで作成するには、 **[新規クエリ]** を開始し、次のスクリプトを実行します。 <new user name\> と <new password\> を任意の <*ユーザー名*> と <*パスワード*> に置き換えます。 
@@ -209,7 +210,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
     ![[sysadmin]][12]
 12. [OK] をクリックします。
 
-## <a name="a-namednsadetermine-the-dns-name-of-the-virtual-machine"></a><a name="DNS"></a>仮想マシンの DNS 名を特定する
+## <a name="DNS"></a>仮想マシンの DNS 名を特定する
 別のコンピューターから SQL Server Database エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります
 
 (これは、仮想マシンを識別するためにインターネットで使用される名前です。 IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。 DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
@@ -217,7 +218,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 1. Azure クラシック ポータルで (または前の手順から)、 **[仮想マシン]**を選択します。
 2. **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします (名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
-## <a name="a-namecdeaconnect-to-the-database-engine-from-another-computer"></a><a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
+## <a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
 1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
 2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、先のタスクで決定した仮想マシンの DNS 名とパブリック エンドポイントのポート番号を "*DNS 名,ポート番号*" という形式で入力します (例: **tutorialtestVM.cloudapp.net,57500**)。
 3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
@@ -225,7 +226,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 5. **[パスワード]** ボックスに、前のタスクで作成したログインのパスワードを入力します。
 6. **[接続]**をクリックします。
 
-## <a name="a-nameamlconnectaconnect-to-the-database-engine-from-azure-machine-learning"></a><a name="amlconnect"></a>Azure Machine Learning からデータベース エンジンに接続します
+## <a name="amlconnect"></a>Azure Machine Learning からデータベース エンジンに接続します
 この後の Team Data Science Process 手順で、 [Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。 トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、 **Azure Machine Learning Studio** の新しい実験で [データのインポート](https://studio.azureml.net) モジュールを使用します。 このトピックの詳細は、Team Data Science Process のガイド リンクに記載されています。 概要については、「 [Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
 1. [データのインポート モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
@@ -235,7 +236,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
    
    ![Azure Machine Learning の [データのインポート]][13]
 
-## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>使用されていないときは仮想マシンをシャット ダウンし割り当てを解除する
+## <a name="shutdown"></a>使用されていないときは仮想マシンをシャット ダウンし割り当てを解除する
 Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用しないときに課金されないようにするには、 **[停止 (割り当て解除)]** 状態にする必要があります。
 
 > [!NOTE]
@@ -273,10 +274,5 @@ Azure Virtual Machines の料金は **従量課金制**です。 仮想マシン
 [12]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

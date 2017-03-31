@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 891d950c7d4984b39f2e03af3d0f66af5594a348
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 66ddcea180395b830cdb5310446e1dbc02e7d784
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 891d950c7d4984b39f2e03af3d0f66af5594a348
 > 
 > 
 
-ACL は、PowerShell または管理ポータルを使用して構成できます。 PowerShell を使用してネットワーク ACL を構成するには、「 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。 管理ポータルを使用してネットワーク ACL を構成するには、「 [仮想マシンに対してエンドポイントを設定する方法](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+ACL は、PowerShell または管理ポータルを使用して構成できます。 PowerShell を使用してネットワーク ACL を構成するには、「 [PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。 管理ポータルを使用してネットワーク ACL を構成するには、「 [仮想マシンに対してエンドポイントを設定する方法](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 
 ネットワーク ACL を使用すると、次の操作を実行できます。
 
@@ -90,10 +91,5 @@ ACL は、ルールの一覧が格納されたオブジェクトです。 ACL �
 
 ## <a name="next-steps"></a>次のステップ
 [PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](virtual-networks-acl-powershell.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

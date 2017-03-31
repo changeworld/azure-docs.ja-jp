@@ -31,9 +31,9 @@ ms.lasthandoff: 03/22/2017
 
 2. Quick Open (Ctrl + P) にアクセスして以下のコードを実行し、拡張機能 [Azure Resource Manager ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)をインストールします。 
 
-  ```
-  ext install msazurermtools.azurerm-vscode-tools
-  ```
+   ```
+   ext install msazurermtools.azurerm-vscode-tools
+   ```
 
 3. 拡張機能を有効にするように求められたら、VS Code を再起動します。
 
@@ -45,15 +45,15 @@ ms.lasthandoff: 03/22/2017
 
 2. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  },
-    "variables": {  },
-    "resources": [  ],
-    "outputs": {  }
-  }
+   ```json
+   {
+     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {  },
+     "variables": {  },
+     "resources": [  ],
+     "outputs": {  }
+   }
    ```
 
 3. このファイルを **azuredeploy.json** という名前で保存します。 
@@ -63,43 +63,43 @@ ms.lasthandoff: 03/22/2017
 
 3. コピーした JSON をテンプレートの **resources** セクションに貼り付けます。次の例では、その結果を示しています。 
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {  },
-    "variables": {  },
-    "resources": [
-      {
-        "name": "string",
-        "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2016-05-01",
-        "sku": {
-          "name": "string"
-        },
-        "kind": "string",
-        "location": "string",
-        "tags": {},
-        "properties": {
-          "customDomain": {
-            "name": "string",
-            "useSubDomain": boolean
-          },
-          "encryption": {
-            "services": {
-              "blob": {
-                "enabled": boolean
-              }
-            },
-            "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "string"
-        }
-      }
-    ],
-    "outputs": {  }
-  }
-  ```
+   ```json
+   {
+     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {  },
+     "variables": {  },
+     "resources": [
+       {
+         "name": "string",
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2016-05-01",
+         "sku": {
+           "name": "string"
+         },
+         "kind": "string",
+         "location": "string",
+         "tags": {},
+         "properties": {
+           "customDomain": {
+             "name": "string",
+             "useSubDomain": boolean
+           },
+           "encryption": {
+             "services": {
+               "blob": {
+                 "enabled": boolean
+               }
+             },
+             "keySource": "Microsoft.Storage"
+           },
+           "accessTier": "string"
+         }
+       }
+     ],
+     "outputs": {  }
+   }
+   ```
 
   上の例ではプレースホルダーが多数使われていますが、実際のストレージ アカウントでは必要のないプロパティも一部存在します。
 
@@ -111,37 +111,37 @@ ms.lasthandoff: 03/22/2017
 
 2. **properties** 要素にある **customDomain**、**encryption**、**accessTier** の&3; つはいずれも、必ずしも必要ないことがわかります。 シナリオによってはこの&3; つの値が重要になることもありますが、例を簡潔にするため、今回は削除します。
 
-  ```json
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "string",
-      "location": "string",
-      "tags": {},
-      "properties": {
-      }
-    }
-  ],
-  ```
+   ```json
+   "resources": [
+     {
+       "name": "string",
+       "type": "Microsoft.Storage/storageAccounts",
+       "apiVersion": "2016-05-01",
+       "sku": {
+         "name": "string"
+       },
+       "kind": "string",
+       "location": "string",
+       "tags": {},
+       "properties": {
+       }
+     }
+   ],
+   ```
 
 3. **kind** 要素には現在、プレース ホルダーの値 ("string") が設定されています。 VS Code では、テンプレートで使用する値の特定に役立つ機能が多数用意されており、 この値についても、有効でないことを示すメッセージが表示されます。 "string" にカーソルを合わせると、**kind** で有効な値が `Storage` または `BlobStorage` であることがわかります。 
 
-  ![VS Code による有効な値の表示](./media/resource-manager-create-first-template/vs-code-show-values.png)
+   ![VS Code による有効な値の表示](./media/resource-manager-create-first-template/vs-code-show-values.png)
 
-  使用可能な値を確認するには、二重引用符に囲まれた文字を削除してから、**Ctrl + Space** を押します。 表示されたオプションから **Storage** を選択します。
+   使用可能な値を確認するには、二重引用符に囲まれた文字を削除してから、**Ctrl + Space** を押します。 表示されたオプションから **Storage** を選択します。
   
-  ![IntelliSense の表示](./media/resource-manager-create-first-template/intellisense.png)
+   ![IntelliSense の表示](./media/resource-manager-create-first-template/intellisense.png)
 
-  VS Code を使用していない場合には、ストレージ アカウントのテンプレート リファレンス ページを参照してください。 説明のところに、有効な値として上の&2; つが書かれています。 要素を **Storage** に設定します。
+   VS Code を使用していない場合には、ストレージ アカウントのテンプレート リファレンス ページを参照してください。 説明のところに、有効な値として上の&2; つが書かれています。 要素を **Storage** に設定します。
 
-  ```json
-  "kind": "Storage",
-  ```
+   ```json
+   "kind": "Storage",
+   ```
 
 ここまでの作業が終わった時点で、テンプレートは以下のようになります。
 
@@ -186,8 +186,6 @@ ms.lasthandoff: 03/22/2017
 
 関数は角かっこで囲まれていることに注目してください。 この [resourceGroup](resource-group-template-functions.md#resourcegroup) 関数は、`location` というプロパティを備えたオブジェクトを返すものです。 リソース グループは、ソリューションに関連するあらゆるリソースを保持しています。 location プロパティには "Central US" のような値をハードコーディングすることもできますが、そうすると、テンプレートのデプロイ先を変更する場合に、手作業が必要になります。 `resourceGroup` 関数を使用すると、このテンプレートのデプロイ先を別の場所にある別のリソース グループに簡単に変更することができます。
 
-
-
 ここまでの作業が終わった時点で、テンプレートは以下のようになります。
 
 ```json
@@ -222,71 +220,71 @@ ms.lasthandoff: 03/22/2017
 
 1. 名前付け規則に合致するプレフィックスを渡すには、テンプレートの **parameters** セクションに移動します。 テンプレートに、ストレージ アカウント名のプレフィックスを受け取るパラメーターを追加します。
 
-  ```json
-  "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageNamePrefix": {
+       "type": "string",
+       "maxLength": 11,
+       "defaultValue": "storage",
+       "metadata": {
+         "description": "The value to use for starting the storage account name."
+       }
+     }
+   },
+   ```
 
   `uniqueString` により返される文字が 13 文字であり、名前の文字数が 24 文字を超えることができないことから、プレフィックスは最大 11 文字とします。 デプロイ中にこのパラメーターに値を渡さなかった場合には、既定の値が使用されます。
 
 2. テンプレートの **variables** セクションに移動します。 プレフィックスと一意の文字列から名前を作成するには、次の変数を追加します。
 
-  ```json
-  "variables": {
-    "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
-  },
-  ```
+   ```json
+   "variables": {
+     "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
+   },
+   ```
 
 3. **resources** セクションで、ストレージ アカウント名としてその変数を設定します。
 
-  ```json
-  "name": "[variables('storageName')]",
-  ```
+   ```json
+   "name": "[variables('storageName')]",
+   ```
 
 3. ストレージ アカウントの別の SKU に渡す処理を有効にするには、**parameters** セクションに移動します。 ストレージ名のプレフィックスのパラメーターの後に、使用できる SKU の値と既定値を指定したパラメーターを追加します。 使用できる値は、テンプレートのリファレンス ページまたは VS Code で確認できます。 次の例では、有効な SKU の値をすべて入れてあります。 これに対して、使用できる値をこのテンプレートを使ってデプロイする SKU の種類だけに限定することもできます。
 
-  ```json
-  "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    },
-    "storageSKU": {
-      "type": "string",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ],
-      "defaultValue": "Standard_LRS",
-      "metadata": {
-        "description": "The type of replication to use for the storage account."
-      }
-    }
-  },
-  ```
+   ```json
+   "parameters": {
+     "storageNamePrefix": {
+       "type": "string",
+       "maxLength": 11,
+       "defaultValue": "storage",
+       "metadata": {
+         "description": "The value to use for starting the storage account name."
+       }
+     },
+     "storageSKU": {
+       "type": "string",
+       "allowedValues": [
+         "Standard_LRS",
+         "Standard_ZRS",
+         "Standard_GRS",
+         "Standard_RAGRS",
+         "Premium_LRS"
+       ],
+       "defaultValue": "Standard_LRS",
+       "metadata": {
+         "description": "The type of replication to use for the storage account."
+       }
+     }
+   },
+   ```
 
 3. SKU のプロパティを、パラメーターの値を使用するように変更します。
 
-  ```json
-  "sku": {
-    "name": "[parameters('storageSKU')]"
-  },
-  ```    
+   ```json
+   "sku": {
+     "name": "[parameters('storageSKU')]"
+   },
+   ```    
 
 4. ファイルを保存します。
 

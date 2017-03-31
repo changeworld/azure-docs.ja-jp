@@ -17,31 +17,31 @@ ms.date: 01/18/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: ca346405590d7caa63a888aa139ab1a6f21e365b
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 4082fe7baad4f9d40746410024e071f34f458a40
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent 拡張機能 (クラシック) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](../sql/virtual-machines-windows-sql-server-agent-extension.md)
-> * [クラシック](virtual-machines-windows-classic-sql-server-agent-extension.md)
+> * [クラシック](../classic/sql-server-agent-extension.md)
 > 
 >
  
 SQL Server IaaS Agent 拡張機能 (SQLIaaSAgent) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。 このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の&2; 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../sql/virtual-machines-windows-sql-server-agent-extension.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの SQL Server VM 用 SQL Server Agent 拡張機能](../sql/virtual-machines-windows-sql-server-agent-extension.md)に関する記事をご覧ください。
 
 ## <a name="supported-services"></a>サポートされているサービス
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。
 
 | 管理機能 | 説明 |
 | --- | --- |
-| **SQL Automated Backup** |VM 内の SQL Server の既定のインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。 |
-| **SQL Automated Patching** |VM の更新プログラムを実行できるメンテナンス期間を構成します。これにより、ワークロードのピーク時の更新を回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。 |
-| **Azure Key Vault の統合** |SQL Server VM に Azure Key Vault を自動的にインストールして構成できます。 詳細については、「 [Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成 (クラシック)](virtual-machines-windows-classic-ps-sql-keyvault.md)」を参照してください。 |
+| **SQL Automated Backup** |VM 内の SQL Server の既定のインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](../classic/sql-automated-backup.md)」をご覧ください。 |
+| **SQL Automated Patching** |VM の更新プログラムを実行できるメンテナンス期間を構成します。これにより、ワークロードのピーク時の更新を回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../classic/sql-automated-patching.md)」を参照してください。 |
+| **Azure Key Vault の統合** |SQL Server VM に Azure Key Vault を自動的にインストールして構成できます。 詳細については、「 [Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成 (クラシック)](../classic/ps-sql-keyvault.md)」を参照してください。 |
 
 ## <a name="prerequisites"></a>前提条件
 VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
@@ -83,7 +83,7 @@ Windows PowerShell を起動し、 **Add-AzureAccount** コマンドを使用し
 > 
 
 ## <a name="status"></a>状態
-拡張機能がインストールされていることを確認する&1; つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシン ブレードの一覧で仮想マシンを選び、**[拡張機能]** をクリックします。 **SQLIaaSAgent** 拡張機能が表示されます。
+拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシン ブレードの一覧で仮想マシンを選び、**[拡張機能]** をクリックします。 **SQLIaaSAgent** 拡張機能が表示されます。
 
 ![Azure ポータルでの SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
 

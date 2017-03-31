@@ -16,9 +16,9 @@ ms.tgt_pltfrm: NA
 ms.date: 12/22/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: f234e50d194c1b8b8deed8282a6ab1250b53d075
-ms.openlocfilehash: d055e40305b277338ae85e8d6c53d3d76a78d235
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: fa4cf56c10f885a2fd4b62e08a369a51d1280ab3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -91,10 +91,6 @@ ms.lasthandoff: 02/16/2017
 14. **[保存]** をクリックして、構成した Azure Recovery Services コンテナーに対して、この新しいポリシーを使用して長期的なバックアップ保有期間を有効にします。
 
    ![保持ポリシーの定義](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
-
-14. 長期的なバックアップ保有期間が有効になったら、**[Recovery Services コンテナー]** ブレードを開きます (**[すべてのリソース]** に移動し、サブスクリプションのリソースの一覧から選択します)。
-
-   ![Recovery Services コンテナーの表示](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault.png)
 
 
 ## <a name="restore-from-long-term-backup-retention-using-the-azure-portal"></a>Azure Portal を使用して長期のバックアップ リテンション期間から復元する

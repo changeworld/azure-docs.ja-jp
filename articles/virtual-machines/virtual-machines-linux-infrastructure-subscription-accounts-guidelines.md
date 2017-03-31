@@ -50,19 +50,19 @@ Azure を使用するには、1 つまたは複数の Azure サブスクリプ�
 
 アカウント/サブスクリプションの関係での&2; つの階層レベルの制限のため、アカウントとサブスクリプションの名前付け規則を課金のニーズに合わせることが重要です。 たとえば、世界規模の企業が Azure を使用する場合、リージョンごとに&1; つのアカウントを使用し、リージョン レベルでサブスクリプションを管理できます。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
 たとえば、次のような構造を使用できます。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
 リージョンで特定のグループに複数のサブスクリプションを関連付ける場合は、名前付け規則に、アカウントまたはサブスクリプション名で追加データをエンコードする仕組みが組み込まれている必要があります。 次の組織では、請求レポートの間にメッセージ請求データで新しいレベルの階層を生成できます。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
 組織は次の例のようになります。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
+![](windows/media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
 単一アカウントまたはエンタープライズ アグリーメントのすべてのアカウントについて、詳細な課金情報が記載されたファイルをダウンロードできます。
 

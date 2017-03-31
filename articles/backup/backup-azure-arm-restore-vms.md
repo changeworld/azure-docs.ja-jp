@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 3/12/2017
 ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: b64978da0513ac5daf8e7c4699cf6e3501d63fd9
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 1dc2883056eab9764cda674b42fa40c517550ccd
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -34,11 +34,11 @@ ms.lasthandoff: 03/15/2017
 ![3-ways-restore-from-vm-backup](./media/backup-azure-arm-restore-vms/azure-vm-backup-restore.png)
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 >
 >
 
-VM バックアップから VM またはすべてのディスクを復元するには、次の&2; つの手順を実行します。
+VM バックアップから VM またはすべてのディスクを復元するには、次の 2 つの手順を実行します。
 
 1. 復元を行うための復元ポイントを選択する
 2. 復元タイプの選択 - 新しい VM を作成するかディスクを復元し、必要なパラメーターを指定する。 
@@ -98,7 +98,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 1. 現在 **[復元]** ブレードを表示していない場合は、表示します。 いずれかの[復元ポイントが選択されている](#select-restore-point-for-restore)状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
 
     ![recovery configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
-2. **[復元の構成]** ブレードには、次の&2; つの選択肢があります。
+2. **[復元の構成]** ブレードには、次の 2 つの選択肢があります。
    * 完全な仮想マシンの復元
    * バックアップ ディスクの復元
 
@@ -190,7 +190,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
    ![テンプレート デプロイの送信](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
 ## <a name="post-restore-steps"></a>復元後の手順
-* Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/virtual-machines-linux-classic-reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
+* Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
 * バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合、拡張機能を再インストールしてください。 
 * バックアップされる VM に静的 IP がある場合は、復元後、復元された VM を作成するときの競合を避けるため、復元される VM には動的 IP が設定されます。 [復元された VM に静的 IP を追加する](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)方法を参照してください。
 * 復元された VM には可用性の値が設定されていません。 復元ディスク オプションを使い、復元されたディスクを使って PowerShell またはテンプレートから VM を作成するときに[可用性セットを追加する](../virtual-machines/virtual-machines-windows-create-availability-set.md#use-powershell-to-create-an-availability-set)ことをお勧めします。 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 12/16/2016
 ms.author: amsriva
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cacc20da7945421f31ce69a9c0b34056c009d9e7
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: d61e50b7440dcd107df3e5dd085a36b149779553
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -34,9 +34,6 @@ Azure Application Gateway の構成後に発生する可能性があるエラー
 * VM スケール セットのバックエンド VM またはインスタンスが既定の正常性プローブに応答していない。
 * カスタムの正常性プローブの構成が無効または不適切である。
 * 要求がタイムアウトしたか、ユーザー要求に関して接続の問題がある。
-
-> [!note]
-> Application Gateway は、受信ホスト ヘッダーを保持し、そのヘッダーをバックエンドに送信します。 バックエンドが別のヘッダーを必要とする場合、これは機能しなくなります。 同様に、バックエンドがマルチ テナントで、エンド ツー エンドの SSL が有効になっている場合、バックエンドは SNI 拡張機能のサーバー名を想定します。 Application Gateway では現在、エンド ツー エンドの SSL のシナリオでは、バックエンド要求で SNI ヘッダーを送信しません。これによって、プローブとデータ パスの問題が生じます。
 
 ## <a name="empty-backendaddresspool"></a>空の BackendAddressPool
 
@@ -109,7 +106,7 @@ BackendAddressPool のインスタンスがすべて異常である場合、Appl
 * BackendHttpSetting で 80 以外のポートが指定されている場合、既定のサイトはポート 80 でリッスンするように構成する必要があります。
 * http://127.0.0.1:port の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
 * 構成済みのポートを開き、構成済みのポートでの送受信トラフィックをブロックするファイアウォール規則または Azure ネットワーク セキュリティ グループが存在しないようにします。
-* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する [エンドポイント](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) を必ず開いてください。
+* FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する [エンドポイント](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) を必ず開いてください。
 * Azure Resource Manager を介して VM を構成しており、Application Gateway がデプロイされた VNet の外側に VM がある場合、 [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) は、目的のポートにアクセスできるように構成する必要があります。
 
 ## <a name="problems-with-custom-health-probe"></a>カスタムの正常性プローブに関する問題

@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
-ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dae5491962b22453c517da35539ce09463d8802d
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -53,7 +54,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 1. Azure Import/Export サービスでの使用要件を満たしているハード ディスクを調達します。
 2. Azure ストレージ アカウントを指定します。データは、Azure データセンターへの発送後そのアカウントにコピーされます。
 3. コマンドライン ユーティリティの一種である [Azure Import/Export ツール](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)を使用します。 ツールの使用方法を示すサンプル スニペットを次に示します。
-   
+
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
@@ -187,7 +188,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
 }
 ````
-詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)に関するページを参照してください。
+詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md#example-copy-data-from-azure-blob-to-azure-data-lake-store)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Azure Data Lake Store 内でデータ ファイルを再構築する
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Store 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
@@ -211,10 +212,4 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

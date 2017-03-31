@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: c2e8f2d2f26bb93af5c2858242392b3dc207beb4
-ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: ba07b1bf1b49ebb24a7d5cfbaad71f5f17c49192
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
 これらのコンポーネントで Reliable Actors フレームワークが構成されます。 
 
 ## <a name="service-layering"></a>サービスのレイヤー
-アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージ化](service-fabric-application-model.md#package-an-application)、[デプロイメント](service-fabric-deploy-remove-applications.md)、アップグレード、スケーリングの各概念は、すべてアクター サービスにも同様に適用されます。 
+アクター サービス自体は Reliable Service であるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージ化](service-fabric-package-apps.md)、[デプロイメント](service-fabric-deploy-remove-applications.md)、アップグレード、スケーリングの各概念は、すべてアクター サービスにも同様に適用されます。 
 
 ![Actor Service layering][1]
 
@@ -89,7 +90,7 @@ static class Program
 アクター サービスは `IActorService` を実装し、それが `IService` を実装します。 これは、Reliable Services リモート処理によって使用されるインターフェイスであり、サービス メソッドでのリモート プロシージャ呼び出しを可能にします。 これには、サービスのリモート処理によってリモートで呼び出すことのできるサービスレベルのメソッドが含まれます。
 
 #### <a name="enumerating-actors"></a>アクターの列挙
-アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。 アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。 各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。 ページはすべてのページが読み取られるまでループされます。 次の例は、アクター サービスの&1; つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
+アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。 アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。 各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。 ページはすべてのページが読み取られるまでループされます。 次の例は、アクター サービスの 1 つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -248,9 +249,4 @@ GUID と文字列を使用した場合、値は Int64 にハッシュされま�
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

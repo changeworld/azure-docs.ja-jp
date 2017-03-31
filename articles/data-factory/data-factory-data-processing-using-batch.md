@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb4188bed4839aea6d19c49a8f0e6d154a343ec1
-ms.openlocfilehash: e0f77f88ee91b263c49a148197e418fdf64cca0b
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 9702f179a65754be88646987f868385b02a9f2d7
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -67,9 +68,9 @@ Data Factory には、ソース データ ストアからコピー先のデー�
 2. **Azure Data Factory インスタンスを作成** します。
 3. Data Factory パイプラインに**カスタム .NET アクティビティを作成**します。 このアクティビティは、Azure Batch プールで実行されるユーザー コードです。
 4. **Azure ストレージに大量の入力データを BLOB として格納**します。 データは、論理スライス (通常は時間) に分割されます。
-5. **並行して処理されるデータを Data Factory が&2; 次拠点にコピー**します。
+5. **並行して処理されるデータを Data Factory が 2 次拠点にコピー**します。
 6. **Data Factory は、Batch によって割り当てられたプールを使用してカスタム アクティビティを実行**します。 Data Factory は、アクティビティを同時に実行できます。 各アクティビティは、データのスライスを処理します。 結果は Azure Storage に格納されます。
-7. アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を&3; 次拠点に移動**させます。
+7. アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を 3 次拠点に移動**させます。
 
 ## <a name="implementation-of-sample-solution"></a>サンプル ソリューションの実装
 ここではサンプル ソリューションを意図的にシンプルにして、データセットの処理に Data Factory と Batch を一緒に使用する方法を示しています。 ソリューションでは、タイム シリーズで編成された入力ファイルで、検索語句 ("Microsoft") の出現数をカウントします。 出力ファイルにその数を出力します。
@@ -131,7 +132,7 @@ Microsoft Visual Studio 2012 以降をインストールして、Data Factory �
 ### <a name="create-the-custom-activity"></a>カスタム アクティビティの作成
 Data Factory のカスタム アクティビティは、このサンプル ソリューションの核となる機能です。 サンプル ソリューションでは、Azure Batch を使用して、カスタム アクティビティを実行します。 カスタム アクティビティを開発し、Azure Data Factory パイプラインで使用する方法の基本情報は、「 [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md) 」を参照してください。
 
-Azure Data Factory パイプラインで使用できる .NET カスタム アクティビティを作成するには、**IDotNetActivity** インターフェイスを実装したクラスを含む **.NET Class Library** プロジェクトを作成する必要があります。 このインターフェイスには、 **Execute**という&1; つのメソッドのみが含まれます。 このメソッドのシグネチャを次に示します。
+Azure Data Factory パイプラインで使用できる .NET カスタム アクティビティを作成するには、**IDotNetActivity** インターフェイスを実装したクラスを含む **.NET Class Library** プロジェクトを作成する必要があります。 このインターフェイスには、 **Execute**という 1 つのメソッドのみが含まれます。 このメソッドのシグネチャを次に示します。
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -143,9 +144,9 @@ public IDictionary<string, string> Execute(
 
 このメソッドには、理解しておく必要がある重要な要素がいくつかあります。
 
-* このメソッドには次の&4; つのパラメーターがあります。
+* このメソッドには次の 4 つのパラメーターがあります。
 
-  1. **linkedServices**。 入力/出力データ ソース (例: Azure Blob Storage) を Data Factory にリンクする、リンクされたサービスの列挙可能な一覧です。 このサンプルでは、入力と出力の両方に使用される Azure Storage 型のリンクされたサービスは&1; つのみです。
+  1. **linkedServices**。 入力/出力データ ソース (例: Azure Blob Storage) を Data Factory にリンクする、リンクされたサービスの列挙可能な一覧です。 このサンプルでは、入力と出力の両方に使用される Azure Storage 型のリンクされたサービスは 1 つのみです。
   2. **datasets**。 データセットの列挙可能な一覧です。 このパラメーターを使用すると、入力と出力のデータセットに定義されている場所とスキーマを取得できます。
   3. **activity**。 このパラメーターは、現在のコンピューティング エンティティ (この場合は Azure Batch サービス) を表します。
   4. **logger**。 logger を使用すると、パイプラインの "User" ログとして表示されるデバッグ コメントを作成できます。
@@ -448,7 +449,7 @@ public IDictionary<string, string> Execute(
 
 カスタム アクティビティの入力データセットは、Blob Storage の入力フォルダー (mycontainer\\inputfolder) 内にある BLOB (ファイル) を表します。 アクティビティの出力データセットは、Blob Storage の出力フォルダー (mycontainer\\outputfolder) 内にある出力 BLOB を表します。
 
-次のように、入力フォルダーに&1; つ以上のファイルをドロップします。
+次のように、入力フォルダーに 1 つ以上のファイルをドロップします。
 
 ```
 mycontainer -\> inputfolder
@@ -459,7 +460,7 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-たとえば、次の内容を含む&1; つのファイル (file.txt) を各フォルダーにドロップします。
+たとえば、次の内容を含む 1 つのファイル (file.txt) を各フォルダーにドロップします。
 
 ```
 test custom activity Microsoft test custom activity Microsoft
@@ -467,7 +468,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 入力フォルダーに複数のファイルが含まれている場合でも、各入力フォルダーは Azure Data Factory のスライスに相当します。 パイプラインで各スライスが処理されるときに、カスタム アクティビティでは、そのスライスの入力フォルダー内にあるすべての BLOB が反復処理されます。
 
-同じ内容の&5; つの出力ファイルが表示されます。 たとえば、2015-11-16-00 フォルダーのファイルを処理して出力されるファイルには、次の内容が含まれます。
+同じ内容の 5 つの出力ファイルが表示されます。 たとえば、2015-11-16-00 フォルダーのファイルを処理して出力されるファイルには、次の内容が含まれます。
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
@@ -481,9 +482,9 @@ test custom activity Microsoft test custom activity Microsoft
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file3.txt.
 ```
 
-出力ファイルには&3; 行あり、スライス (2015-11-16-00) に関連付けられているフォルダー内の入力ファイル (BLOB) ごとに&1; 行あります。
+出力ファイルには 3 行あり、スライス (2015-11-16-00) に関連付けられているフォルダー内の入力ファイル (BLOB) ごとに 1 行あります。
 
-アクティビティの実行ごとに、1 つのタスクが作成されます。 このサンプルでは、パイプラインにアクティビティが&1; つだけあります。 スライスがパイプラインによって処理されると、カスタム アクティビティはスライスを処理する Azure Batch 上で実行されます。 スライスが&5; 個あるため (スライスごとに複数の BLOB またはファイルを持つことができます)、Azure Batch でタスクが&5; 個作成されます。 タスクが Batch 上で実行されると、タスクは実際に実行されているカスタム アクティビティです。
+アクティビティの実行ごとに、1 つのタスクが作成されます。 このサンプルでは、パイプラインにアクティビティが 1 つだけあります。 スライスがパイプラインによって処理されると、カスタム アクティビティはスライスを処理する Azure Batch 上で実行されます。 スライスが 5 個あるため (スライスごとに複数の BLOB またはファイルを持つことができます)、Azure Batch でタスクが 5 個作成されます。 タスクが Batch 上で実行されると、タスクは実際に実行されているカスタム アクティビティです。
 
 次のチュートリアルでは、追加情報を示します。
 
@@ -609,7 +610,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     このチュートリアルでは、開始時刻が 2015-11-16T00:00:00Z、終了時刻が 2015-11-16T05:00:00Z のパイプラインを後ほど作成します。 データを**毎時**生成するようにスケジュールされているので、5 つの入力/出力スライスがあります (**00**:00:00 -\> **05**:00:00)。
 
-    入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に&1; つの入力スライスを利用できます。
+    入力データセットの **frequency** と **interval** はそれぞれ **Hour** と **1** に設定されています。つまり、1 時間に 1 つの入力スライスを利用できます。
 
     次に各スライスの開始時刻を示します。これは上記の JSON スニペットの **SliceStart** システム変数で表されます。
 
@@ -667,7 +668,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、**mycontainer\\outputfolder** という&1; つの出力フォルダーに生成されます。
+    各入力スライスの出力 BLOB/ファイルが生成されます。 次に、各スライスの出力ファイルの命名方法を示します。 すべての出力ファイルは、**mycontainer\\outputfolder** という 1 つの出力フォルダーに生成されます。
 
     | **スライス** | **開始時刻**          | **出力ファイル**       |
     |-----------|-------------------------|-----------------------|
@@ -677,7 +678,7 @@ test custom activity Microsoft test custom activity Microsoft
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-    入力フォルダー (例: 2015-11-16-00) 内のすべてのファイルは、開始時刻が 2015-11-16-00 であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された&1; 行を生成します。 2015-11-16-00 フォルダーに 3 つのファイルがある場合は、出力ファイル (2015-11-16-00.txt) に 3 行が出力されます。
+    入力フォルダー (例: 2015-11-16-00) 内のすべてのファイルは、開始時刻が 2015-11-16-00 であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 (“Microsoft”) の出現回数が記述された 1 行を生成します。 2015-11-16-00 フォルダーに 3 つのファイルがある場合は、出力ファイル (2015-11-16-00.txt) に 3 行が出力されます。
 
 1. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** を作成してデプロイします。
 
@@ -689,7 +690,7 @@ test custom activity Microsoft test custom activity Microsoft
 >
 >
 
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。 このコマンドが表示されない場合は、**...(省略記号)** をクリックすると表示されます。
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。 このコマンドが表示されない場合は、**[...](省略記号)** をクリックすると表示されます。
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
     ```json
@@ -737,7 +738,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
    次の点に注意してください。
 
-   * パイプラインには、 **DotNetActivity**型のアクティビティが&1; つだけあります。
+   * パイプラインには、 **DotNetActivity**型のアクティビティが 1 つだけあります。
    * **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
    * **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。 基本的に、コード内の \<namespace\>.\<classname\> です。
    * **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。 入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。 この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
@@ -749,12 +750,12 @@ test custom activity Microsoft test custom activity Microsoft
 
     -   **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを true に設定すると、パイプラインを一時停止できます。また false に設定し直すと再開されます。
 
-    -   **start** 時刻と **end** 時刻は&5; 時間離れており、スライスは&1; 時間ごとに生成されるので、パイプラインによって&5; つのスライスが生成されます。
+    -   **start** 時刻と **end** 時刻は 5 時間離れており、スライスは 1 時間ごとに生成されるので、パイプラインによって 5 つのスライスが生成されます。
 
 1. コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。
 
 #### <a name="step-5-test-the-pipeline"></a>手順 5: パイプラインをテストする
-この手順では、ファイルを入力フォルダーにドロップして、パイプラインをテストします。 入力フォルダーごとに&1; つのファイルを使用して、パイプラインをテストしましょう。
+この手順では、ファイルを入力フォルダーにドロップして、パイプラインをテストします。 入力フォルダーごとに 1 つのファイルを使用して、パイプラインをテストしましょう。
 
 1. Azure ポータルの [Data Factory] ブレードで、 **[ダイアグラム]**をクリックします。
 
@@ -766,7 +767,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image12.png)
 4. **[ダイアグラム]** ビューで、**OutputDataset** をクリックします。
-5. スライスが生成されると、準備完了状態の出力スライスが&5; 個表示されます。
+5. スライスが生成されると、準備完了状態の出力スライスが 5 個表示されます。
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
 6. Azure Portal を使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を確認します。 詳細については、「 [Data Factory と Batch の統合](#data-factory-and-batch-integration) 」をご覧ください。
@@ -774,12 +775,12 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image15.png)
 
-   出力ファイルが&5; 個 (入力スライスごとに&1; 個) 表示されます。 出力ファイルごとに、次の出力のようなコンテンツがあります。
+   出力ファイルが 5 個 (入力スライスごとに 1 個) 表示されます。 出力ファイルごとに、次の出力のようなコンテンツがあります。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
-   次のダイアグラムでは、Data Factory のスライスを Azure Batch のタスクにマップする方法を示します。 この例では、スライスごとに&1; つだけを実行します。
+   次のダイアグラムでは、Data Factory のスライスを Azure Batch のタスクにマップする方法を示します。 この例では、スライスごとに 1 つだけを実行します。
 
    ![](./media/data-factory-data-processing-using-batch/image16.png)
 8. フォルダー内の複数のファイルを試してみましょう。 フォルダー **2015-11-06-01** にある file.txt と同じ内容で、　**file2.txt**、**file3.txt**、**file4.txt**、および **file5.txt** のファイルを作成します。
@@ -787,7 +788,7 @@ test custom activity Microsoft test custom activity Microsoft
 10. **[OutputDataset]** ブレードで、**[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックして、**[実行]** をクリックし、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
     ![](./media/data-factory-data-processing-using-batch/image17.png)
-11. スライスを実行して、その状態が **[準備完了]** になると、Blob Storage の **mycontainer** の **outputfolder** で、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 スライスのファイルごとに&1; 行あります。
+11. スライスを実行して、その状態が **[準備完了]** になると、Blob Storage の **mycontainer** の **outputfolder** で、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 スライスのファイルごとに 1 行あります。
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -809,7 +810,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
 
 スライスのアクティビティの実行ごとに、1 つのタスクがジョブに作成されます。 10 個のスライスを処理する準備ができたとき、ジョブには 10 個のタスクが作成されています。 プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。 コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
 
-この例では、スライスが&5; 個あるため、Azure Batch には&5; 個のタスクがあります。 Azure Data Factory のパイプライン JSON の **concurrency** を **5** に設定し、**2** つの VM が含まれた Azure Batch プールの **[Maximum tasks per VM (VM ごとの最大タスク数)]** を **2** に設定すると、タスクが高速で実行されるようになります (タスクの開始時刻と終了時刻を確認してください)。
+この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。 Azure Data Factory のパイプライン JSON の **concurrency** を **5** に設定し、**2** つの VM が含まれた Azure Batch プールの **[Maximum tasks per VM (VM ごとの最大タスク数)]** を **2** に設定すると、タスクが高速で実行されるようになります (タスクの開始時刻と終了時刻を確認してください)。
 
 ポータルを使用して、 **スライス** に関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を確認します。
 
@@ -823,7 +824,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
    ![](./media/data-factory-data-processing-using-batch/image3.png)
 2. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは user\_0.log ファイルに表示されます。
 
-   **[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。 そのスライスの **アクティビティの実行** が表示されます。 このスライスには&1; 回のアクティビティの実行が表示されます。 コマンド バーの **[実行]** をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。
+   **[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。 そのスライスの **アクティビティの実行** が表示されます。 このスライスには 1 回のアクティビティの実行が表示されます。 コマンド バーの **[実行]** をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。
 
    アクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ブレードにログ ファイルの一覧が表示されます。 **user\_0.log** ファイルにログに記録されたメッセージが表示されます。 パイプライン/アクティビティ JSON で再試行回数が 3 に設定されているので、エラーが発生した場合、3 つのアクティビティの実行が表示されます。 アクティビティの実行をクリックすると、ログ ファイルが表示されます。このファイルを確認して、エラーのトラブルシューティングを行うことができます。
 
@@ -869,14 +870,14 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 3. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、Data Factory ソリューションで、Azure Batch のリンクされたサービスを更新します。 (**VM ごとの最大タスク**の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
 4. **[自動スケール]** 機能で、Azure Batch プールを作成します。 Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
 
-   保留中のタスクにつき一度に&1; つの VM (例: 保留中のタスクが&5; つ ->&5; つの VM):
+   保留中のタスクにつき一度に 1 つの VM (例: 保留中のタスクが 5 つ -> 5 つの VM):
     
     ```
     pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
     $TargetDedicated = max(pendingTaskSampleVector);
     ```
 
-   保留中のタスクの数に関係なく、最大で一度に&1; つの VM:
+   保留中のタスクの数に関係なく、最大で一度に 1 つの VM:
 
     ```
     pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
@@ -891,10 +892,10 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 ### <a name="next-steps-consume-the-data"></a>次の手順: データの処理
 データを処理した後、 **Microsoft Power BI** などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
-* [Power BI でのデータセットの参照](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-data/)
-* [Power BI Desktop の概要](https://powerbi.microsoft.com/en-us/documentation/powerbi-desktop-getting-started/)
-* [Power BI でのデータの更新](https://powerbi.microsoft.com/en-us/documentation/powerbi-refresh-data/)
-* [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)
+* [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+* [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
+* [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>参照
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
@@ -911,9 +912,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

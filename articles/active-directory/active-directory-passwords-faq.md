@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: cdf233c2b141f4c73abcabc199b5fc583f14962c
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 636e76e6732287ac78b6c025cc936602a38f49af
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 > [!IMPORTANT]
-> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
 >
 >
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 03/10/2017
   > **A:** はい。セキュリティの質問に対して重複する回答は拒否されます。
   >
   >
-* **Q: ユーザーが同じセキュリティの質問を&2; 回以上登録することはできますか。**
+* **Q: ユーザーが同じセキュリティの質問を 2 回以上登録することはできますか。**
 
   > **A:** いいえ。ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
   >
@@ -181,11 +181,11 @@ ms.lasthandoff: 03/10/2017
   > **A:** 現時点では ADFS を使用すれば、[ADFS を使用したパスワード ポリシーの要求の送信](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)に関する記事の手順に従って通知できます。 パスワード ハッシュ同期を使用している場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使用してパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
   >
   >
-  
+
 ## <a name="password-management-reports"></a>パスワード管理レポート
 * **Q: データがパスワード管理レポートに表示されるまでにどのくらいの時間がかかりますか。**
 
-  > **A:** データは、5 ～ 10 分以内にパスワード管理レポートに表示されます。 場合によっては、最大&1; 時間かかることもあります。
+  > **A:** データは、5 ～ 10 分以内にパスワード管理レポートに表示されます。 場合によっては、最大 1 時間かかることもあります。
   >
   >
 * **Q: パスワード管理レポートをフィルター処理するにはどうすればよいですか。**
@@ -246,8 +246,8 @@ ms.lasthandoff: 03/10/2017
 ## <a name="next-steps"></a>次のステップ
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password)にお進みください。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの&6; つの異なるコンポーネントとそれぞれの機能について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md#reset-your-password)にお進みください。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) - ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。

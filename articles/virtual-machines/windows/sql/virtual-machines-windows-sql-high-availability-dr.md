@@ -16,9 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: eabba7daa746a836592f775858782aa77fcebd9b
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8a6b48437eecd9f2f5c3fe8447b31192d8318149
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -102,7 +102,7 @@ Azure の RFC に準拠しない DHCP サービスが原因で、特定のフェ
 可用性グループが複数の Azure サブネットにまたがっている場合 (たとえば、複数の Azure リージョンにわたるデプロイメント)、クライアント接続文字列には "**MultisubnetFailover=True**" を含める必要があります。 これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。 リスナーの設定方法については、次を参照してください。
 
 * [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
-* [Azure での AlwaysOn 可用性グループの外部リスナーの構成](../sqlclassic/virtual-machines-windows-classic-ps-sql-ext-listener.md)
+* [Azure での AlwaysOn 可用性グループの外部リスナーの構成](../classic/ps-sql-ext-listener.md)
 
 この場合でも、サービス インスタンスに直接接続することで、各可用性レプリカに個別に接続できます。 また、AlwaysOn 可用性グループはデータベース ミラーリング クライアントとの下位互換性があるため、次のように、レプリカがデータベース ミラーリングと同様に構成されていれば、データベース ミラーリング パートナーのように可用性レプリカに接続できます。
 

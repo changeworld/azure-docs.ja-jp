@@ -15,9 +15,9 @@ ms.date: 01/25/2017
 ms.author: jingwang
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 4bc78bdf71c6de0c35197e84f4bb800d13bda6c0
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: d04bf7c5a457b90c5128050642bee6a2623787a0
+ms.lasthandoff: 03/29/2017
 
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/14/2017
 #### <a name="resolution"></a>解決策
 ファイアウォール プロキシ サーバーの設定を調べ、コンピューターから[ダウンロード センター](https://download.microsoft.com/)へのネットワーク接続をブロックしている設定があれば適切に更新します。
 
-または、ダウンロード センターにアクセスできる別のコンピューターで、[ダウンロード センター](https://www.microsoft.com/en-US/download/details.aspx?id=39717)から最新のゲートウェイのインストール ファイルをダウンロードすることができます。 次に、インストーラー ファイルをゲートウェイ ホスト コンピューターにコピーし、手動で実行してゲートウェイをインストールおよび更新することができます。
+または、ダウンロード センターにアクセスできる別のコンピューターで、[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新のゲートウェイのインストール ファイルをダウンロードすることができます。 次に、インストーラー ファイルをゲートウェイ ホスト コンピューターにコピーし、手動で実行してゲートウェイをインストールおよび更新することができます。
 
 ### <a name="2-problem"></a>2.問題点
 Azure Portal で **[このコンピューターに直接インストールします]** をクリックしてゲートウェイをインストールしようとすると、次のエラーが表示されます。
@@ -53,7 +53,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="resolution"></a>解決策
 コンピューター上の既存のゲートウェイをアンインストールしてから、**[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
-### <a name="3-problem"></a>手順&3;.問題点
+### <a name="3-problem"></a>手順 3.問題点
 新しいゲートウェイを登録するときに、次のエラーが表示される場合があります。
 
 `Error: The gateway has encountered an error during registration.`
@@ -173,7 +173,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 * ゲートウェイのプロキシ設定を構成します。 詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
 * ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
-### <a name="3-problem"></a>手順&3;.問題点
+### <a name="3-problem"></a>手順 3.問題点
 次のエラーが表示されます。
 
 `Error: Cloud service cannot connect to gateway through service bus.`
@@ -242,7 +242,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 
 ## <a name="gateway-logs"></a>ゲートウェイ ログ
 ### <a name="send-gateway-logs-to-microsoft"></a>ゲートウェイ ログを Microsoft に送信する
-ゲートウェイに関する問題のトラブルシューティングのために Microsoft サポートに連絡する場合、ゲートウェイ ログの共有を求められる場合があります。 ゲートウェイのリリース版では、Data Management Gateway Configuration Manager でボタンを&2; 回クリックすることで、必要なゲートウェイ ログを簡単に共有できます。    
+ゲートウェイに関する問題のトラブルシューティングのために Microsoft サポートに連絡する場合、ゲートウェイ ログの共有を求められる場合があります。 ゲートウェイのリリース版では、Data Management Gateway Configuration Manager でボタンを 2 回クリックすることで、必要なゲートウェイ ログを簡単に共有できます。    
 
 1. Data Management Gateway Configuration Manager で **[診断]** タブに切り替えます。
 
@@ -252,7 +252,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
     ![Data Management Gateway - ログの送信](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
 3. (省略可能) **[ログの表示]** をクリックしてイベント ビューアーでログを確認します。
 4. (省略可能) **[プライバシー]** をクリックして Microsoft Web サービスのプライバシーに関する声明を表示します。
-5. アップロードする情報に問題がなければ、 **[ログの送信]** をクリックすると、トラブルシューティングのために過去&7; 日間のログが Microsoft に実際に送信されます。 ログ送信操作の状態が、次のスクリーンショットのように表示されます。
+5. アップロードする情報に問題がなければ、 **[ログの送信]** をクリックすると、トラブルシューティングのために過去 7 日間のログが Microsoft に実際に送信されます。 ログ送信操作の状態が、次のスクリーンショットのように表示されます。
 
     ![Data Management Gateway - ログの送信の状態](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. 操作が完了すると、次のスクリーンショットのようなダイアログ ボックスが表示されます。

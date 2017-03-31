@@ -16,9 +16,9 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
-ms.openlocfilehash: 3ade1f2850b2a67f68e8a4a7f519b7dc7ba1de10
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: e8d71d7b6b4302f177732381ad19e6a645bc5474
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,13 +27,13 @@ ms.lasthandoff: 02/11/2017
 次の手順では、Transact-SQL を使用して、同じサーバーまたは別のサーバーに SQL データベースをコピーする方法を説明します。 このデータベースのコピー操作では、 [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) ステートメントを使用します。 
 
 > [!NOTE]
-> [Azure Portal](sql-database-copy-portal.md) または [PowerShell](sql-database-copy-powershell.md) を使用して SQL データベースをコピーすることもできます。
+> [Azure Portal](sql-database-copy-portal.md) または [PowerShell](scripts/sql-database-copy-database-to-new-server-powershell.md) を使用して SQL データベースをコピーすることもできます。
 >
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合、このページの上部の **無料評価版** をクリックしてからこの記事に戻り、最後まで完了してください。
-* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って&1; つ作成してください。
+* Azure SQL Database。 SQL Database がない場合は、「 [最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 * [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms174173.aspx)。 SSMS を入手していない場合、またはこの記事で説明する機能を使用できない場合は、 [最新版をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)してください。
 
 ## <a name="copy-your-sql-database"></a>SQL データベースのコピー

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 4582049fa1d369ea63395514336d26a524dbfdbe
-ms.openlocfilehash: b3f1b2b4e257fea0dd9324b02ea9aad3e1a645e4
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2703a7ae9274e6bef38e530839c1a7c5ad69fb88
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -29,13 +29,13 @@ ms.lasthandoff: 02/08/2017
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。
 
-このガイドでは、Azure Premium Storage の新しいユーザーが現在のシステムから Premium Storage への円滑な移行に向けて周到に準備できるようにすることを目的としています。 このガイドでは、このプロセスを構成する重要な&3; つの部分を説明します。
+このガイドでは、Azure Premium Storage の新しいユーザーが現在のシステムから Premium Storage への円滑な移行に向けて周到に準備できるようにすることを目的としています。 このガイドでは、このプロセスを構成する重要な 3 つの部分を説明します。
 
 * [Premium Storage への移行を計画する](#plan-the-migration-to-premium-storage)
 * [仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
 * [Premium Storage を使って Azure 仮想マシンを作成する](#create-azure-virtual-machine-using-premium-storage)
 
-他のプラットフォームから Azure Premium Storage への VM の移行、または Standard Storage から Premium Storage への既存の Azure VM の移行が可能です。 このガイドでは、これら&2; つのシナリオの手順について説明します。 状況に応じて、関連するセクションに示されている手順に従ってください。
+他のプラットフォームから Azure Premium Storage への VM の移行、または Standard Storage から Premium Storage への既存の Azure VM の移行が可能です。 このガイドでは、これら 2 つのシナリオの手順について説明します。 状況に応じて、関連するセクションに示されている手順に従ってください。
 
 > [!NOTE]
 > Premium Storage の機能と価格の概要については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」をご覧ください。 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
@@ -43,7 +43,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 
 移行プロセス全体を完了するには、このガイドで説明する手順の前後で追加の操作が必要になる場合があります。 たとえば、アプリケーションをしばらく停止することが必要になる場合がある、仮想ネットワークやエンドポイントの構成や、アプリケーション内部のコード変更などがあります。 これらの操作は、アプリケーションごとに異なります。Premium Storage への完全な移行をできる限りシームレスに行うには、このガイドで説明する手順と共に、これらの必要な操作を完了してください。
 
-## <a name="a-nameplan-the-migration-to-premium-storageaplan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>Premium Storage への移行を計画する
+## <a name="plan-the-migration-to-premium-storage"></a>Premium Storage への移行を計画する
 このセクションでは、この記事の移行手順を実行できる状態にし、VM およびディスクの種類について最適な決定を行うことができるようにします。
 
 ### <a name="prerequisites"></a>前提条件
@@ -58,7 +58,7 @@ Azure VM では複数の Premium Storage ディスクをアタッチすること
 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されています。 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 #### <a name="disk-sizes"></a>ディスク サイズ
-VM で使えるディスクには&3; 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
+VM で使えるディスクには 3 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
 | Premium Storage ディスク タイプ | P10 | P20 | P30 |
 |:---:|:---:|:---:|:---:|
@@ -66,7 +66,7 @@ VM で使えるディスクには&3; 種類あり、それぞれに特定の IOP
 | ディスクあたりの IOPS |500 |2300 |5000 |
 | ディスクあたりのスループット |100 MB/秒 |150 MB/秒 |200 MB/秒 |
 
-ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに&1; つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
+ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 
 #### <a name="storage-account-scalability-targets"></a>ストレージ アカウントのスケーラビリティ ターゲット
 Premium Storage アカウントには、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)に加えて、次のスケーラビリティ ターゲットがあります。 アプリケーションの要件が単一のストレージ アカウントのスケーラビリティ ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。
@@ -89,7 +89,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 ### <a name="optimization"></a>最適化
 「[Azure Premium Storage: 高パフォーマンスのための設計](storage-premium-storage-performance.md)」では、Azure Premium Storage を使う高パフォーマンスのアプリケーションを構築するためのガイドラインが示されています。 ガイドラインは、アプリケーションで使われているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使えます。
 
-## <a name="a-nameprepare-and-copy-virtual-hard-disks-vhds-to-premium-storageaprepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
+## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
 このセクションでは、VM からの VHD の準備と、Azure Storageへの VHD のコピーに関するガイドラインを提供します。
 
 * [シナリオ 1: "既存の Azure VM を Azure Premium Storage に移行している"](#scenario1)
@@ -111,7 +111,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 >
 >
 
-### <a name="a-namescenario1ascenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>シナリオ 1: "既存の Azure VM を Azure Premium Storage に移行している"
+### <a name="scenario1"></a>シナリオ 1: "既存の Azure VM を Azure Premium Storage に移行している"
 既存の Azure VM を移行する場合は、VM を停止し、VHD の種類に応じて VJD を準備した後、AzCopy または PowerShell で VHD をコピーします。
 
 クリーンな状態を移行するため、VM を完全にダウンする必要があります。 移行が完了するまではダウンタイムになります。
@@ -163,8 +163,8 @@ VHD を管理するためにストレージ アカウントを作成します。
 
 データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持することもできますが、運用ワークロード用のすべてのデータを、Premium Storage を使うように移動することを強くお勧めします。
 
-#### <a name="a-namecopy-vhd-with-azcopy-or-powershellastep-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
-これら&2; つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナーの URL は、"https://myaccount.blob.core.windows.net/mycontainer/" のようになります。
+#### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
+これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナーの URL は、"https://myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1: AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
@@ -185,11 +185,11 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
-   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
+   * **/Source:*&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:*&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:*&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:*&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Pattern:*&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -218,7 +218,7 @@ C:\PS> $destinationContext = New-AzureStorageContext  –StorageAccountName "des
 C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="a-namescenario2ascenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>シナリオ 2: "他のプラットフォームの VM を Azure Premium Storage に移行している"
+### <a name="scenario2"></a>シナリオ 2: "他のプラットフォームの VM を Azure Premium Storage に移行している"
 Azure 以外のクラウド ストレージから Azure へ VHD を移行する場合は、最初に VHD をローカル ディレクトリにエクスポートする必要があります。 VHD が格納されているローカル ディレクトリの完全なソース パスを用意し、AzCopy を使って Azure Storage にアップロードします。
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>手順 1. VHD をローカル ディレクトリにエクスポートする
@@ -279,12 +279,12 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Source:*&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:*&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:*&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:*&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
    * **/BlobType: page:** コピー先がページ BLOB であることを指定。
-   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
+   * **/Pattern:*&lt;file-name&gt;:*** コピーする VHD のファイル名を指定。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -302,7 +302,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 >
 >
 
-## <a name="a-namecreate-azure-virtual-machine-using-premium-storageacreate-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Storage を使って Azure VM を作成する
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Storage を使って Azure VM を作成する
 目的のストレージ アカウントに VHD がアップロードまたはコピーされたら、このセクションの手順に従って、シナリオに応じて VHD を OS イメージまたは OS ディスクとして登録し、その VHD から VM インスタンスを作成します。 作成後に、データ ディスク VHD を VM に接続できます。
 移行スクリプトの例は、このセクションの最後にあります。 この簡単なスクリプトは、すべてのシナリオには対応しません。 特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。 このスクリプトが実際のシナリオに適用できるかどうかを確認するには、「[サンプル移行スクリプト](#a-sample-migration-script)」をご覧ください。
 
@@ -325,7 +325,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 OS VHD から VM を作成するか、新しい VM にデータ ディスクを接続するには、最初に VHD を登録する必要があります。 VHD のシナリオに応じて次の手順に従います。
 
 #### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>複数の Azure VM インスタンスを作成するために一般化されたオペレーティング システム VHD
-一般化された OS イメージ VHD をストレージ アカウントにアップロードした後、そのVHD を **Azure VM イメージ**として登録すると、そこから&1; つ以上の VM インスタンスを作成できます。 次の PowerShell コマンドレットを使用して、VHD を Azure VM OS イメージとして登録します。 VHD のコピー先の完全なコンテナー URL を入力します。
+一般化された OS イメージ VHD をストレージ アカウントにアップロードした後、そのVHD を **Azure VM イメージ**として登録すると、そこから 1 つ以上の VM インスタンスを作成できます。 次の PowerShell コマンドレットを使用して、VHD を Azure VM OS イメージとして登録します。 VHD のコピー先の完全なコンテナー URL を入力します。
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
@@ -430,7 +430,7 @@ Update-AzureVM  -VM $vm
 
 最後に、アプリケーションのニーズに応じて、新しい VM のバックアップとメンテナンスのスケジュールを計画します。
 
-### <a name="a-namea-sample-migration-scriptaa-sample-migration-script"></a><a name="a-sample-migration-script"></a>サンプル移行スクリプト
+### <a name="a-sample-migration-script"></a>サンプル移行スクリプト
 移行する VM が複数ある場合は、PowerShell スクリプトを使用した自動化が便利です。 次に示すサンプルは、VM の移行を自動化するサンプル スクリプトです。 このスクリプトはほんの一例であり、現在の VM ディスクについていくつかの仮定が含まれていることに注意してください。 特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。
 
 前提条件は次のとおりです。
@@ -738,7 +738,7 @@ Update-AzureVM  -VM $vm
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="a-nameoptimizationaoptimization"></a><a name="optimization"></a>最適化
+#### <a name="optimization"></a>最適化
 現在の VM の構成は、Standard ディスクで問題なく動作するようにカスタマイズされている可能性があります。 たとえば、パフォーマンスを向上させるために、ストライプ ボリュームで多くのディスクを使用しています。 たとえば、Premium Storage では、4 つのディスクを個別に使うのではなく、1 つのディスクを使うことによって、コストを最適化できる場合があります。 このような最適化は個々のケースに応じて処理する必要があり、移行後にカスタム手順が必要になります。 このプロセスは、セットアップ時に定義されたディスク レイアウトに依存するデータベースおよびアプリケーションではうまく機能しない可能性があることに注意してください。
 
 ##### <a name="preparation"></a>準備
@@ -760,8 +760,8 @@ Update-AzureVM  -VM $vm
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
 * [ストレージ アカウント間での Azure 仮想マシンの移行](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Amazon AWS から Microsoft Azure への仮想マシンの移行](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。

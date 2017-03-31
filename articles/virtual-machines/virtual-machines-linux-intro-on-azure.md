@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: dc61f74a10fed1ba9e3959326e0020cf2b4440ea
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 554d1d504205767a287c690d82f03808047b1961
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ Azure クラシック ポータルを使用して Linux 仮想マシンを作成
 * 参照: [Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 参照: [Azure 上の Linux における SSH の使用方法](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="obtaining-superuser-privileges-using-sudo"></a> `sudo`
+## <a name="obtaining-superuser-privileges-using-sudo"></a>`sudo`
 Azure での仮想マシン インスタンスをデプロイする際に指定したユーザー アカウントは、特権を持つアカウントです。 このアカウントは、Azure Linux エージェントによって `sudo` ユーティリティを使用して権限を root (スーパーユーザー アカウント) に昇格できるように構成されます。 このユーザー アカウントを使用してログインすると、コマンド構文を使用して、root としてコマンドを実行できるようになります。
 
     # sudo <COMMAND>
@@ -42,7 +43,7 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 ## <a name="firewall-configuration"></a>ファイアウォールの構成
 Azure では、Azure クラシック ポータルで指定されたポートに接続を制限する受信パケット フィルターが用意されています。 既定では、許可されている唯一のポートは SSH です。 Azure クラシック ポータルでエンドポイントを構成することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
 
-* 参照: [Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* 参照: [Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 既定では、Azure ギャラリー内の Linux のイメージを使用して *iptables* ファイアウォールを有効にすることはできません。 必要があれば、このファイアウォールにフィルターを追加するように構成することはできます。
 
@@ -60,7 +61,7 @@ Azure Linux エージェントには、この名前の変更を自動的に検�
 ### <a name="cloud-init"></a>Cloud-Init
 **Ubuntu** イメージと **CoreOS** イメージでは、仮想マシンをブートストラップするための追加機能を提供する Azure の cloud-init を使用します。
 
-* [カスタム データを挿入する方法](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [カスタム データを挿入する方法](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [Microsoft Azure のカスタム データと Cloud-Init](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
 * [Cloud-Init を使用した Azure スワップ パーティションの作成](https://wiki.ubuntu.com/AzureSwapPartitions)
 * [Azure で CoreOS を使用する方法](https://coreos.com/os/docs/latest/booting-on-azure.html)
@@ -72,7 +73,7 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 2. 仮想マシンをシャットダウン/電源オフします。
 3. Azure クラシック ポータルで *[キャプチャ]* をクリックするか、Powershell ツールまたは CLI ツールを使用して仮想マシンをイメージとしてキャプチャします。
    
-   * 参照: [Linux を実行する仮想マシンのイメージをキャプチャする方法](virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+   * 参照: [Linux を実行する仮想マシンのイメージをキャプチャする方法](linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="attaching-disks"></a>ディスクの接続
 各仮想マシンには、一時的なローカル *リソース ディスク* が接続されています。 リソース ディスク上のデータには、再起動を行った場合の持続性がないため、仮想マシン上で実行されているアプリケーションやプロセスは、多くの場合、このディスクを過渡的および **一時的な** ストレージとして使用します。 また、オペレーティング システムがページ ファイルやスワップ ファイルを格納する場合にも使用されます。
@@ -84,13 +85,8 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
 > 
 > 
 
-Linux では、データ ディスクはカーネルによって `/dev/sdc`という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。 ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」で詳しく説明しています。
+Linux では、データ ディスクはカーネルによって `/dev/sdc`という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。 ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」で詳しく説明しています。
 
 * **関連項目:** 「[Linux でのソフトウェア RAID の構成」](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & 「[Azure で Linux VM の LVM を構成する](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
