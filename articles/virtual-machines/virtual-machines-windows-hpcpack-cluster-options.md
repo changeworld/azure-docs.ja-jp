@@ -16,9 +16,9 @@ ms.workload: big-compute
 ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
-ms.openlocfilehash: 5124f9253950b032fa39c805cb355cc8bfb718c5
-ms.lasthandoff: 02/07/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b008f11070077372487f8aede604017033ae21e4
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/07/2017
 * [Windows Server 2012 R2 上の HPC Pack コンピューティング ノードと Excel](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
 
 ### <a name="powershell-deployment-script"></a>PowerShell デプロイメント スクリプト
-* [HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ### <a name="tutorials"></a>Tutorials (チュートリアル)
 * [チュートリアル: Azure に HPC Pack 2016 クラスターをデプロイする](virtual-machines-windows-hpcpack-2016-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -56,8 +56,8 @@ ms.lasthandoff: 02/07/2017
 * [Marketplace イメージを利用し、Azure VM で HPC Pack クラスターのヘッド ノードを作成する](virtual-machines-windows-hpcpack-cluster-headnode.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="cluster-management"></a>クラスターの管理
-* [Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する](windows/classic/hpcpack-cluster-node-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する](windows/classic/hpcpack-cluster-node-autogrowshrink.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 * [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [HPC Pack でのジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)
 * [Azure Active Directory を使用して Azure の HPC Pack クラスターを管理する](virtual-machines-windows-hpcpack-cluster-active-directory.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
@@ -65,12 +65,12 @@ ms.lasthandoff: 02/07/2017
 ## <a name="add-worker-role-nodes-to-an-hpc-pack-cluster"></a>HPC Pack クラスターへの worker ロールの追加
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 * [Azure で HPC Pack を使用してハイブリッド クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)
-* [Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加](windows/classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="integrate-with-azure-batch"></a>Azure Batch との統合
 * [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)
 
 ## <a name="create-rdma-clusters-for-mpi-workloads"></a>MPI ワークロードのための RDMA のクラスターの作成
-* [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

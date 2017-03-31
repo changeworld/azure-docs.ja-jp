@@ -16,15 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 01/30/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 253c504fa433c7ca37c0065ebf01d13dafc76231
-ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 1b9401d7c2f756081d585b9432ceef412ab1f807
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](virtual-machines-windows-sql-automated-backup.md)
-> * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-automated-backup.md)
+> * [クラシック](../classic/sql-automated-backup.md)
 > 
 > 
 
@@ -32,7 +33,7 @@ ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](../sqlclassic/virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
+この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](../classic/sql-automated-backup.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動バックアップを使用するには、次の前提条件を検討してください。
@@ -73,7 +74,7 @@ ms.openlocfilehash: c4cf6ab29ebf5b3397017cf754ee04bf57ab1555
 | 設定 | 範囲 (既定値) | 説明 |
 | --- | --- | --- |
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2014 Standard または Enterprise を実行している Azure VM で、自動バックアップを有効または無効にします。 |
-| **保有期間** | 1 ～&30; 日 (30 日) | バックアップを保持する日数。 |
+| **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
 | **ストレージ アカウント** | Azure ストレージ アカウント | 自動バックアップのファイルを BLOB ストレージに保存するために使用する Azure ストレージ アカウント。 この場所にコンテナーが作成され、すべてのバックアップ ファイルが保存されます。 バックアップ ファイルの名前付け規則には、日付、時刻、およびコンピューター名が含まれます。 |
 | **暗号化** | 有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントの同じ `automaticbackup` コンテナー内に、同じ名前付け規則を使用して配置されます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
 | **パスワード** | パスワード テキスト | 暗号化キーのパスワード。 暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
@@ -149,10 +150,5 @@ Azure VM の SQL Server のバックアップと復元に関するその他の�
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。
 
 Azure VM で SQL Server を実行する方法の詳細については、 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

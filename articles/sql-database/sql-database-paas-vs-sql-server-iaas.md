@@ -17,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
-ms.openlocfilehash: bdcf28703f007d32144278c7f0956fe4c27c3b27
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
+ms.openlocfilehash: ed725a12c04646a62cb0737266e24b6035522f20
+ms.lasthandoff: 03/18/2017
 
 
 ---
@@ -124,7 +124,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 
 **Azure VM 上で実行される SQL Server**では、仮想マシンのみを対象に、可用性 99.95% の SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも&2; つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、 [AlwaysOn 可用性グループ](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ&99;.99% のデータベース可用性が実現されます。
 
-### <a name="a-namemarketatime-to-market"></a><a name="market"></a>製品化に要する時間
+### <a name="market"></a>製品化に要する時間
 **SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。 プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。 たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell コマンドレット](http://msdn.microsoft.com/library/mt740629.aspx)を使用して、数千のデータベースの管理の操作を自動化して管理できます。 [エラスティック プール](sql-database-elastic-pool.md)などの機能を使用すると、アプリケーション層に注目し、ソリューションをより早く市場に提供することができます。
 
 **Azure VM 上で実行される SQL Server** は、既存または新規のアプリケーションに、大規模なデータベース、相互に関連するデータベース、SQL Server または Windows の全機能へのアクセスのいずれかが必要な場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)に関するページを参照してください。

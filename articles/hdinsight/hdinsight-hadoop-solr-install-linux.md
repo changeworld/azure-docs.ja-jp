@@ -17,9 +17,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
-ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2214315f084aec80986fe30ebcaff6813162c5f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -81,10 +81,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
-   
-   * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
      
      > [!IMPORTANT]
      > このドキュメントの後半の手順で、SSL トンネルを使用して Solr Web UI に接続します。 これらの手順を使用するには、SSL トンネルを確立し、それをブラウザーで使用するように構成する必要があります。
@@ -105,7 +102,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
    
-    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という&2; つのサンプル ドキュメントで Solr のインデックスを作成します。 これらは、Solr 内の **collection1** に格納されます。
+    post.jar ユーティリティは、**solr.xml** と **monitor.xml** という 2 つのサンプル ドキュメントで Solr のインデックスを作成します。 これらは、Solr 内の **collection1** に格納されます。
 3. 次のコマンドを使用して、Solr によって公開される REST API を照会します。
    
         curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
@@ -173,10 +170,8 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
    
    1. ポート 22 で SSH を使用してクラスターに接続します。 たとえば、`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` を使用して、**USERNAME** に SSH ユーザー名を、**CLUSTERNAME** にクラスターの名前を指定します。
       
-       SSH の使用方法の詳細については、次のドキュメントを参照してください。
-      
-      * [Linux、Unix、または Mac OS X クライアントから Linux ベースの HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-      * [Windows クライアントから Linux ベースの HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+       詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
    2. 次のコマンドを使用して、完全修飾ホスト名を取得します。
       
            hostname -f
@@ -201,7 +196,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
      
      ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
      
-     これによる出力は、Solr のインデックス作成のために使用した&2; つのドキュメントを返します。 出力結果は、以下のようになります。
+     これによる出力は、Solr のインデックス作成のために使用した 2 つのドキュメントを返します。 出力結果は、以下のようになります。
      
            "response": {
                "numFound": 2,

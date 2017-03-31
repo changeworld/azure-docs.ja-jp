@@ -17,9 +17,9 @@ ms.topic: support-article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 9ca20f34d812e15a7f1e6f5dd032ec05c464046d
-ms.openlocfilehash: 53920a551e24f29274133315b463c6c69605da10
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 19247b7d8333e8bd73d33a7838e99180369b8681
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -72,7 +72,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
    
     ![Azure Portalで VM のネットワーク インターフェイスを表示する](./media/virtual-machines-windows-troubleshoot-rdp-connection/select-network-interfaces.png)
    
-    一覧からネットワーク インターフェイスを選択します (通常は&1; つのみ)。
+    一覧からネットワーク インターフェイスを選択します (通常は 1 つのみ)。
    
     ![Azure Portal でネットワーク インターフェイスを選択する](./media/virtual-machines-windows-troubleshoot-rdp-connection/select-interface.png)
    
@@ -90,7 +90,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
     この記事では、具体的なトラブルシューティング手順については説明しませんが、RDP 接続に影響を与える、より広範な問題は示す場合があります。 コンソール ログと VM のスクリーン ショットの確認について詳しくは、「[VM のブート診断 (ブログの投稿)](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)」をご覧ください。
 4. **VM リソース ヘルスを確認する**。 このトラブルシューティングの手順では、VM への接続に影響を受ける可能性のある Azure プラットフォームで既知の問題がないことを確認します。
    
-    Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能] **と表示されます。
+    Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]**と表示されます。
    
     ![Azure Portal で VM リソース ヘルスを確認する](./media/virtual-machines-windows-troubleshoot-rdp-connection/check-resource-health.png)
 5. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、ローカル管理者アカウントのパスワードをリセットします。
@@ -216,13 +216,13 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
    
    ![Azure Portal で Cloud Services エンドポイントを確認する](./media/virtual-machines-windows-troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   RDP トラフィックを許可するエンドポイントがない場合、[ エンドポイントを作成します](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 プライベート ポート 3389 に TCP を許可します。
+   RDP トラフィックを許可するエンドポイントがない場合、[ エンドポイントを作成します](windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 プライベート ポート 3389 に TCP を許可します。
 3. **VM のブート診断を確認する**。 このトラブルシューティングの手順では、VM コンソール ログを確認し、VM が問題を報告しているかどうかを確認します。 すべての VM でブート診断を有効にしているとは限らないため、このトラブルシューティングの手順は省略できます。
    
     この記事では、具体的なトラブルシューティング手順については説明しませんが、RDP 接続に影響を与える、より広範な問題は示す場合があります。 コンソール ログと VM のスクリーン ショットの確認について詳しくは、「[VM のブート診断 (ブログの投稿)](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)」をご覧ください。
 4. **VM リソース ヘルスを確認する**。 このトラブルシューティングの手順では、VM への接続に影響を受ける可能性のある Azure プラットフォームで既知の問題がないことを確認します。
    
-    Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能] **と表示されます。
+    Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]**と表示されます。
    
     ![Azure Portal で VM リソース ヘルスを確認する](./media/virtual-machines-windows-troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、指定したローカル管理者アカウントのパスワードをリセットします。

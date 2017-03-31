@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: 0f750cb3021f04ade9d639e2de14e1b119cde36e
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 38e7454c22b1e675e8da99da1eaa0f86b9549216
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/10/2017
 
 この PowerShell のサンプル スクリプトでは、新しいサーバーに既存のデータベースのコピーを作成します。 
 
-このスクリプトを実行する前に、`Add-AzureRmAccount` コマンドレットを使用して Azure との接続が作成されていることを確認してください。
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="copy-a-database-to-a-new-server"></a>新しいサーバーにデータベースをコピーする
 

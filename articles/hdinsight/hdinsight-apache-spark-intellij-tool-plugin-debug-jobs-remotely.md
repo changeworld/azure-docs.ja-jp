@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 55fb454f-c7dc-46de-a978-e242e9a94f4c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,8 +17,9 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9b822da3d8fd2706bc65ab842d063be66904649f
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -75,7 +77,7 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
            192.xxx.xx.xx hn1-nitinp
            192.xxx.xx.xx hn1-nitinp.lhwwghjkpqejawpqbwcdyp3.gx.internal.cloudapp.net
 6. HDInsight クラスターで使用されている Azure 仮想ネットワークに接続したコンピューターから、両方のヘッドノードに対して IP アドレスとホスト名を使用して ping を実行できることを確認します。
-7. [SSH を使用した HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)に関するセクションの手順に従い、クラスターのヘッドノードに SSH で接続します。 クラスターのヘッドノードから、デスクトップ コンピューターの IP アドレスに ping を実行します。 コンピューターに割り当てられた両方の IP アドレスの接続をテストする必要があります。一方はネットワーク接続のための IP アドレスで、もう一方はコンピューターが接続されている Azure 仮想ネットワーク用の IP アドレスです。
+7. [SSH を使用した HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md)に関するセクションの手順に従い、クラスターのヘッドノードに SSH で接続します。 クラスターのヘッドノードから、デスクトップ コンピューターの IP アドレスに ping を実行します。 コンピューターに割り当てられた両方の IP アドレスの接続をテストする必要があります。一方はネットワーク接続のための IP アドレスで、もう一方はコンピューターが接続されている Azure 仮想ネットワーク用の IP アドレスです。
 8. もう一方のヘッドノードについても同じ手順を繰り返します。 
 
 ## <a name="step-4-create-a-spark-scala-application-using-the-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>手順 4. Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成し、リモート デバッグ用に構成する
@@ -173,7 +175,7 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
           }
         }
 
-1. 上の手順 8. と手順 9. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。 このクラスには次のコードを追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の&7; 番目の列で&1; 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
+1. 上の手順 8. と手順 9. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。 このクラスには次のコードを追加します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
    
        import org.apache.spark.SparkContext
    
@@ -254,7 +256,7 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
    
     ![Run the program in debug mode](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete.png)
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>関連項目
+## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
@@ -279,10 +281,5 @@ ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

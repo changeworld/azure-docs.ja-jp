@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 50167d167a1e0dda93d389997d67904e18f248bc
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 261e90106e8aac520d2360de2c02d5d33d478d5d
+ms.lasthandoff: 03/25/2017
 
 
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
-> * [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-> * [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+> * [クラシック: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [クラシック: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 > [!IMPORTANT] 
@@ -560,7 +560,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
              -Database $db
 
 ## <a name="next-steps"></a>次のステップ
-これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
+これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「 [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 

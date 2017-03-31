@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/14/2017
 ms.author: adshar;victorh
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 8287eb87c90a98fb8976ea4a0e50e3dfbbdb0ca8
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7ff7ba379fb4a2c810c182b4b1c083ab0c17fee7
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -153,6 +153,10 @@ A few things to note:
     -    Failover Cluster and Hyper-V event logs are collected in the *Storage* role.
     -    ACS logs are collected in the *Storage* and *ACS* roles.
 * For more details, you can refer to the customer configuration file. Investigate the `<Logs>` tags for the different roles.
+
+> [!NOTE]
+> We are enforcing size and age limits to the logs collected as it is essential to ensure efficient utilization of your storage space to make sure it doesn't get flooded with logs. Having said that, when diagnosing a problem you will often need logs that might not exist anymore due to these limits being enforced. Hence, it is **highly recommended** that you offload your logs to an external storage space (a storage account in public Azure, an additional on-prem storage device etc.) every 8 to 12 hours and keep them there for 1 - 3 months depending on your requirements.
+
 
 ## <a name="next-steps"></a>Next steps
 [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md)

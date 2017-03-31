@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/23/2017
+ms.date: 03/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: 9f29b451ef76a318a7778a8d20e292e311191298
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 01294f8f8fdaa65a5f33dbf6d35c0baa342cacc8
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -60,7 +60,7 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 ![サブスクリプションの関係性][2]
 
 ## <a name="administrator-structure"></a>管理者の構造
-Azure AD 認証を使用すると、SQL Database サーバーの管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の&2; つになります。 同じ概念が SQL Data Warehouse にも適用されます。 ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。 Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。 管理者がグループ アカウントの場合は、SQL Server インスタンスに複数の Azure AD 管理者を有効にすることで、すべてのグループ メンバーがそのアカウントを使用できます。 グループ アカウントを管理者として使用すると、SQL Database でユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は&1; つだけです。
+Azure AD 認証を使用すると、SQL Database サーバーの管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の 2 つになります。 同じ概念が SQL Data Warehouse にも適用されます。 ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。 Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。 管理者がグループ アカウントの場合は、SQL Server インスタンスに複数の Azure AD 管理者を有効にすることで、すべてのグループ メンバーがそのアカウントを使用できます。 グループ アカウントを管理者として使用すると、SQL Database でユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。 いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
 
 ![admin structure][3]
 
@@ -90,7 +90,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 ### <a name="additional-considerations"></a>追加の考慮事項
 
 * さらに管理しやすくするには、管理者として専用の Azure AD グループをプロビジョニングすることをお勧めします。   
-* Azure SQL Server または Azure SQL Data Warehouse 用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は&1; つだけです。   
+* Azure SQL Server または Azure SQL Data Warehouse 用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。   
 * Azure Active Directory アカウントを使用して最初に Azure SQL Server または Azure SQL Data Warehouse に接続できるのは、SQL Server の Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。   
 * 接続のタイムアウトを 30 秒に設定することをお勧めします。   
 * SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています  (Azure AD 認証は、**.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および .bacpac) の最新のバージョンでは、Azure AD 認証を使用できます。   
@@ -99,7 +99,6 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 * SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) で表示してください。   
 * [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](https://msdn.microsoft.com/library/ms378988.aspx)」もご覧ください。   
 * PolyBase では Azure AD 認証を使用した認証は行えません。   
-* BI や Excel など、一部のツールはサポートされていません。   
 * SQL Database の Azure AD 認証は、Azure Portal の **[データベースのインポート]** ブレードと **[データベースのエクスポート]** ブレードでサポートされています。 Azure AD 認証を使用したインポートとエクスポートは、PowerShell コマンドでもサポートされています。   
 
 ## <a name="next-steps"></a>次のステップ

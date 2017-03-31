@@ -12,11 +12,12 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 03/30/2017
 ms.author: yurid
 translationtype: Human Translation
 ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
 ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -56,7 +57,7 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 
 パートナー ソリューションのデプロイが完了したら、Security Center のメイン ダッシュボードにあるパートナー ソリューションのタイルから、ソリューションの正常性に関する情報を確認したり、基本的な管理タスクを実行したりできます。 Security Center でのパートナー ソリューションの管理の詳細については、「[Monitoring partner solutions with Azure Security Center (Azure Security Center を使用したパートナー ソリューションの監視)](security-center-partner-solutions.md)」を参照してください。
 
-![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1.png)
+![パートナー統合](./media/security-center-partner-integration/security-center-partner-integration-fig1-new.png)
 
 
 ## <a name="see-also"></a>関連項目
@@ -69,9 +70,4 @@ Azure 環境の構成と定義されたセキュリティ ポリシーに応じ�
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

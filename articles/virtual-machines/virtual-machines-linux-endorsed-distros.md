@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: 6ac9ccd5510c7cdc8748767281965345a5fa0637
-ms.openlocfilehash: 04294bf682ec2e6cf294ebdb686e1fd58e6c58e4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: cd6c3be6a2667807f29156900b0a5f1fc63704d3
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/22/2017
 > 
 > 
 
-Azure ギャラリーまたは Marketplace にある Linux イメージは多くのパートナーから提供されており、Microsoft はさまざまな Linux コミュニティと協力して、動作保証済みディストリビューションの一覧をよりいっそう充実させようと努めています。 ギャラリーから利用できないディストリビューションの場合も、 [このページ](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)の指針に従うことにより、いつでも独自の Linux を展開することができます。
+Azure ギャラリーまたは Marketplace にある Linux イメージは多くのパートナーから提供されており、Microsoft はさまざまな Linux コミュニティと協力して、動作保証済みディストリビューションの一覧をよりいっそう充実させようと努めています。 ギャラリーから利用できないディストリビューションの場合も、 [このページ](linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)の指針に従うことにより、いつでも独自の Linux を展開することができます。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -61,7 +61,7 @@ OpenLogic は、クラウドおよびデータ センター向けの企業オー
 
 CoreOS Web サイトから入手:
 
-*CoreOS はセキュリティ、一貫性、信頼性を実現するように設計されています。yum や apt でパッケージをインストールする代わりに、Linux コンテナーを使用して、より抽象的なレベルでサービスを管理します。コンテナーには&1; つのサービス コードとすべての依存関係がパッケージ化されており、1 つまたは複数の CoreOS マシン上で実行できます。*
+*CoreOS はセキュリティ、一貫性、信頼性を実現するように設計されています。yum や apt でパッケージをインストールする代わりに、Linux コンテナーを使用して、より抽象的なレベルでサービスを管理します。コンテナーには 1 つのサービス コードとすべての依存関係がパッケージ化されており、1 つまたは複数の CoreOS マシン上で実行できます。*
 
 ### <a name="credativ"></a>Credativ
 [http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](http://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)

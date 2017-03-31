@@ -17,9 +17,9 @@ ms.workload: database
 ms.date: 03/07/2017
 ms.author: janeng
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: dcb02d8162d7dfe7ea414a4cce1920c9b98deaa9
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 4af8e4e1030aa44a149b5ac011cc185df850603b
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 03/10/2017
 
 この PowerShell のサンプル スクリプトでは、Azure SQL Database を作成し、サーバー レベルのファイアウォール規則を構成します。 スクリプトが正常に実行されると、すべての Azure サービスおよび構成済み IP アドレスから SQL Database へアクセスできるようになります。 
 
-このスクリプトを実行する前に、`Add-AzureRmAccount` コマンドレットを使用して Azure との接続が作成されていることを確認してください。
+[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/sql-database/create-and-configure-database/create-and-configure-database.ps1 "SQL データベースの作成")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/create-and-configure-database/create-and-configure-database.ps1?highlight=7-8 "SQL データベースの作成")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

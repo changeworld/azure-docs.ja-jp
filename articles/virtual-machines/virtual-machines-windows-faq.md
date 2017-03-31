@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 01/17/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6e84a567e8875a8db3f66bc19340557cff75cf1d
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: ae831f5d21e3f7d78a1c0307f34a220288acfaa5
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -46,11 +46,11 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>一時ディスク (既定では D: ドライブ) をデータを格納するために使用できますか。
 データの格納に一時ディスクを使用しないでください。 一時ディスクは一時的なストレージであるため、データ損失の発生時にデータを復旧できない恐れがあります。 データ損失は、仮想マシンを別のホストに移動するときに発生する可能性があります。 仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
 
-アプリケーションで D: ドライブ文字を使用する必要がある場合は、一時ディスクで D: 以外を使用するようにドライブ文字を再割り当てできます。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+アプリケーションで D: ドライブ文字を使用する必要がある場合は、一時ディスクで D: 以外を使用するようにドライブ文字を再割り当てできます。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>一時ディスクのドライブ文字を変更する方法について教えてください。
-ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>既存の VM を可用性セットに追加できますか。
 いいえ。 VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。 作成後に VM を可用性セットに追加する方法は現在ありません。
@@ -71,7 +71,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 はい。 Linux VM をすばやく作成して試してみるには、「 [ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>VM の作成後、NIC を VM に追加できますか。
-はい、できるようになりました。 VM の割り当て解除を最初に停止する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
+はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
 はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、「 [インフラストラクチャの名前付けガイドライン](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 」を参照してください。

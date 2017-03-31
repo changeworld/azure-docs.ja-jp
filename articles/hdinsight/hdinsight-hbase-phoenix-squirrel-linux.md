@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: b829f21dbc212cd951f5e417ad56f7eb724a9d56
-ms.openlocfilehash: 42d64d58fab19fc564fbcbf19f464bce8cf46eb7
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 04e078d662c861d5c587c571a42478603e291587
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -50,7 +50,8 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 **SQLLine を使用するには**
 
-1. SSH を使用したクラスターへの接続 手順については、ご使用のクライアント コンピューターの OS に応じて、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+1. SSH を使用してクラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
 2. SSH から次のコマンドを実行して、SQLLine を実行します。
 
         cd /usr/hdp/2.2.9.1-7/phoenix/bin
@@ -74,7 +75,7 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 * [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 * 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」:&2; つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
 * 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[感情分析](http://en.wikipedia.org/wiki/Sentiment_analysis)を実行する方法について説明します。
 
 [azure-portal]: https://portal.azure.com

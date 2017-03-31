@@ -9,6 +9,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 121be952ea49a8ff47f7e2528adbc87e05359a15
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: a77aa4a44bbb7dafffa4269c3713153df9bbced9
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -335,7 +336,7 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
 > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
 
 #### <a name="azure-blob-input-dataset"></a>Azure BLOB の入力データセット
-入力データセット定義では、入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。 
+入力データセット定義では、入力データを格納する BLOB コンテナー、フォルダー、ファイルの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。 
 
 ```json
 
@@ -377,7 +378,7 @@ JSON 定義内の次の設定に注目してください。
 ```
 
 #### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
-出力データセット定義では、出力データを格納する BLOB コンテナーとフォルダーの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)に関するセクションをご覧ください。  
+出力データセット定義では、出力データを格納する BLOB コンテナーとフォルダーの名前を指定します。 Azure BLOB データセットの定義に使用する JSON プロパティの詳細については、[Azure BLOB データセットのプロパティ](../data-factory/data-factory-azure-blob-connector.md#dataset-properties)に関するセクションをご覧ください。  
 
 ```json
 

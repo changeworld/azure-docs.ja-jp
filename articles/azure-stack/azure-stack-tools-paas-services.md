@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: erikje
 translationtype: Human Translation
-ms.sourcegitcommit: 41b6e45a7f1f253eca4f792558b8e86d678140d2
-ms.openlocfilehash: 80bd1cb2b97713074177ebc313bac850be123d84
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 1b751162631611f43841019d7c3f0af8aa3373c0
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -34,7 +35,7 @@ You can deploy [Platform as a Service](https://azure.microsoft.com/overview/what
 
 
 ## <a name="template-tools"></a>Template tools
-### <a name="azure-stack-github-templates"></a>Azure Stack Github templates
+### <a name="azure-stack-github-templates"></a>Azure Stack GitHub templates
 Explore the growing collection of [Azure Stack GitHub Templates](https://github.com/Azure/AzureStack-QuickStart-Templates). Just like [Azure](https://github.com/Azure/azure-quickstart-templates), these “Quick Start” Azure Resource Manager templates aim to get you started with simple building blocks and examples, ready to deploy on the Microsoft Azure Stack Technical Preview Proof of Concept Environment. Included are first party workload examples for [ad-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha), [sql-2014-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha), [sharepoint-2013-non-ha](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha), as well as several simple 101 templates like [101-simple-windows-vm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm).
 
 ### <a name="marketplace-item-packaging-tool-and-sample"></a>Marketplace item packaging tool and sample
@@ -72,10 +73,5 @@ Quickly install the Azure Command-Line Interface (Azure CLI) to use a set of ope
 > * If you're getting certificate validation issues, run the command `set NODE_TLS_REJECT_UNAUTHORIZED=0`
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

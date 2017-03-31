@@ -16,8 +16,9 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8f62547316e4ecc02da0341aab94010d880115f8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -77,7 +78,7 @@ ms.openlocfilehash: b036296a4b4ce8ba3e6707226642a928381bcf31
    * **[エンドポイント]**: **[リモート デスクトップ]** エンドポイントと **[PowerShell]** エンドポイントを保持し、環境に応じて HTTP または HTTPS エンドポイントを追加します。
      
      * **[HTTP]**: 既定のパブリック ポートとプライベート ポートは **80** です。 80 以外のプライベート ポートを使用する場合は、HTTP スクリプトの **$HTTPport = 80** を変更します。
-     * **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](../../virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
+     * **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。 セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。 エンドポイントの詳細については、「 [仮想マシンに対してエンドポイントを設定する方法](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。 443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
    * [次へ] をクリックします。 ![[次へ]](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. ウィザードの最後のページでは、既定の **[VM エージェントのインストール]** が選択されている状態のままにしておきます。 このトピックの手順では、VM エージェントを使用しませんが、この VM を保持する場合は、VM エージェントと拡張機能により CM を機能強化することができます。  VM エージェントの詳細については、「[VM エージェントと拡張機能 - パート 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/)」をご覧ください。 インストールされ、実行されている既定の拡張機能の 1 つに "BGINFO" 拡張機能があります。この機能により、内部 IP やドライブの空き領域などのシステム情報が VM デスクトップに表示されます。
 9. [完了] をクリックします。 ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
@@ -607,10 +608,5 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ### <a name="links-to-other-resources-for-sql-server-in-azure-vms"></a>Azure VM の SQL Server に関するその他のリソースへのリンク
 [Azure Virtual Machines における SQL Server の概要](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

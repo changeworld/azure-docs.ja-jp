@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 81f814ebb977f0f192d450b9c75aab84d2e1c069
-ms.lasthandoff: 03/15/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 226e86703843b026d20123543cf5311a5355aad4
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -145,7 +145,7 @@ namespace WorkerRole1
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
 
-4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する&4; つのイベントを定義します。
+4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -197,7 +197,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-[仮想マシンに関連する Azure 診断に関する記事の一覧](../azure-diagnostics.md#cloud-services-using-azure-diagnostics) をご覧ください。
+[仮想マシンに関連する Azure 診断に関する記事の一覧](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) をご覧ください。
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

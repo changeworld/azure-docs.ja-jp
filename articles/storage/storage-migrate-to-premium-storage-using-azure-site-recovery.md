@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 3/1/2016
 ms.author: luywang
 translationtype: Human Translation
-ms.sourcegitcommit: 106e03a5a99134eb6e5744cbf29ba32efc31f0ba
-ms.openlocfilehash: d76aa3e62c691c4537684bc70d3a91a3dbb8b446
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 41e3db2762998bd042c0a23fccd03e599bd237a5
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -35,7 +35,7 @@ Premium Storage に移行する際は、Site Recovery を使用することを�
 
 **この移行シナリオに関連する Site Recovery コンポーネント:**
 
-* **構成サーバー**: 通信を調整し、データのレプリケーションおよび回復プロセスを管理する Azure VM です。 この VM ではセットアップ ファイルを&1; つ実行し、構成サーバーと、レプリケーションのゲートウェイとなる追加のコンポーネント (プロセス サーバー) をインストールします。 [構成サーバーの前提条件](../site-recovery/site-recovery-vmware-to-azure.md#prerequisites)に関するセクションを参照してください。 構成サーバーは、1 回構成するだけで同じリージョンへのすべての移行に使用できます。
+* **構成サーバー**: 通信を調整し、データのレプリケーションおよび回復プロセスを管理する Azure VM です。 この VM ではセットアップ ファイルを 1 つ実行し、構成サーバーと、レプリケーションのゲートウェイとなる追加のコンポーネント (プロセス サーバー) をインストールします。 [構成サーバーの前提条件](../site-recovery/site-recovery-vmware-to-azure.md#prerequisites)に関するセクションを参照してください。 構成サーバーは、1 回構成するだけで同じリージョンへのすべての移行に使用できます。
 
 * **プロセス サーバー**: ソース VM からレプリケーション データを受け取り、キャッシュ、圧縮、および暗号化によりデータを最適化してからストレージ アカウントに送信するレプリケーション ゲートウェイです。 また、ソース VM へのモビリティ サービスのプッシュ インストールを処理し、ソース VM の自動検出も実行します。 既定のプロセス サーバーは、構成サーバーにインストールされます。 追加のスタンドアロン プロセス サーバーをデプロイすることでデプロイメントを拡張できます。 [プロセス サーバーのデプロイに関するベスト プラクティス](https://azure.microsoft.com/en-us/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)および[追加のプロセス サーバーのデプロイ](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)に関する説明を参照してください。 プロセス サーバーは、1 回構成するだけで同じリージョンへのすべての移行に使用できます。
 
@@ -96,7 +96,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   ![][8]
   
-  インストールが完了すると、**[Microsoft Azure Site Recovery 構成サーバー]** ウィンドウが表示されます。 **[アカウントの管理]** タブを使用して、Site Recovery が自動検出に使用できるアカウントを作成します  (物理マシンの保護に関するシナリオでは、アカウントの設定は必要ありません。ただし、以降の手順のいずれかを実行するには少なくとも&1; つのアカウントが必要です。 アカウントを作成する場合には、アカウント名とパスワードに任意の文字列を使用してかまいません)。**[Vault Registration (コンテナーの登録)]** タブを使用して、コンテナー資格情報ファイルをアップロードします。
+  インストールが完了すると、**[Microsoft Azure Site Recovery 構成サーバー]** ウィンドウが表示されます。 **[アカウントの管理]** タブを使用して、Site Recovery が自動検出に使用できるアカウントを作成します  (物理マシンの保護に関するシナリオでは、アカウントの設定は必要ありません。ただし、以降の手順のいずれかを実行するには少なくとも 1 つのアカウントが必要です。 アカウントを作成する場合には、アカウント名とパスワードに任意の文字列を使用してかまいません)。**[Vault Registration (コンテナーの登録)]** タブを使用して、コンテナー資格情報ファイルをアップロードします。
   
   ![][9]
 
@@ -104,7 +104,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   ![][10]
 
-  Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが&1; つ以上あるかどうかが確認されます。 レプリケートされたデータに Premium Storage アカウントを使用している場合は、レプリケーション ログを格納するために、追加の Standard Storage アカウントを設定する必要があります。
+  Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。 レプリケートされたデータに Premium Storage アカウントを使用している場合は、レプリケーション ログを格納するために、追加の Standard Storage アカウントを設定する必要があります。
 
 5. **レプリケーション設定をセットアップします**。 [このページ](../site-recovery/site-recovery-vmware-to-azure.md#set-up-replication-settings)の手順に従って、作成したレプリケーション ポリシーに構成サーバーが正常に関連付けられていることを確認します。
 
@@ -116,7 +116,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   ![][12]
   
-  フェールオーバーされる VM には&2; つの一時ディスクが存在します。1 つはプライマリ VM の一時ディスク、もう&1; つは回復リージョンでの VM のプロビジョニング中に作成された一時ディスクです。 レプリケーションの前に一時ディスクを除外するには、レプリケーションを有効にする前に、モビリティ サービスをインストールします。 一時ディスクを除外する方法の詳細については、「[レプリケーションからディスクを除外する](../site-recovery/site-recovery-vmware-to-azure.md#exclude-disks-from-replication)」を参照してください。
+  フェールオーバーされる VM には 2 つの一時ディスクが存在します。1 つはプライマリ VM の一時ディスク、もう 1 つは回復リージョンでの VM のプロビジョニング中に作成された一時ディスクです。 レプリケーションの前に一時ディスクを除外するには、レプリケーションを有効にする前に、モビリティ サービスをインストールします。 一時ディスクを除外する方法の詳細については、「[レプリケーションからディスクを除外する](../site-recovery/site-recovery-vmware-to-azure.md#exclude-disks-from-replication)」を参照してください。
 **次に、レプリケーションを有効にします。**
   * **[アプリケーションをレプリケートする]** > **[ソース]** の順にクリックします。 レプリケーションを初めて有効にした後は、コンテナーで [+ レプリケート] をクリックして、追加のマシンのレプリケーションを有効にします。
   * 手順 1 で、ソースをプロセス サーバーとして設定します。
@@ -131,7 +131,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
   
   ![][13]
   
-  Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 また、[Windows](../virtual-machines/virtual-machines-windows-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) および [Linux](../virtual-machines/virtual-machines-linux-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) VM のストレージ レイヤーのベスト プラクティスに従うことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。 VM が&1; つの可用性セットに存在する場合には、すべての VM のディスクを&1; つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行して、同じ可用性セット内の VM が単一のストレージ アカウントを共有しないようにすることを強くお勧めします。 **[レプリケーションを有効にする]** ブレードを使用して、各 VM のターゲット ストレージ アカウントを&1; つずつ設定します。 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイメント モデルとして Resource Manager (RM) を選択した場合は、RM VM を RM VM にフェールオーバーすることができます。また、クラシック VM を RM VM にフェールオーバーすることもできます。
+  Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 また、[Windows](../virtual-machines/virtual-machines-windows-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) および [Linux](../virtual-machines/virtual-machines-linux-manage-availability.md#use-multiple-storage-accounts-for-each-availability-set) VM のストレージ レイヤーのベスト プラクティスに従うことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。 VM が 1 つの可用性セットに存在する場合には、すべての VM のディスクを 1 つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行して、同じ可用性セット内の VM が単一のストレージ アカウントを共有しないようにすることを強くお勧めします。 **[レプリケーションを有効にする]** ブレードを使用して、各 VM のターゲット ストレージ アカウントを 1 つずつ設定します。 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイメント モデルとして Resource Manager (RM) を選択した場合は、RM VM を RM VM にフェールオーバーすることができます。また、クラシック VM を RM VM にフェールオーバーすることもできます。
 
 8. **テスト フェールオーバーを実行します**。 レプリケーションが完了したかどうかを確認するには、[Site Recovery] をクリックし、**[設定]** > **[レプリケートされたアイテム]** の順にクリックします。 レプリケーション プロセスの状態と進捗状況が表示されます。 初期レプリケーションが完了したら、テスト フェールオーバーを実行してレプリケーション戦略を検証します。 テスト フェールオーバーの詳細な手順については、[Site Recovery でのテスト フェールオーバーの実行](../site-recovery/site-recovery-vmware-to-azure.md#run-a-test-failover)に関するセクションを参照してください。 テスト フェールオーバーの状態を確認するには、**[設定]** > **[ジョブ]** > **<フェールオーバー計画名>** の順に選択します。 ブレードに、各手順の内訳とその結果 (成功、失敗) が表示されます。 いずれかの手順でテスト フェールオーバーが失敗した場合は、手順をクリックしてエラー メッセージを確認します。 フェールオーバーを実行する前に、VM とレプリケーション戦略が要件を満たしていることを確認してください。 テスト フェールオーバーの詳細と手順については、「[Site Recovery での Azure へのフェールオーバーをテストする](../site-recovery/site-recovery-test-failover-to-azure.md)」をご覧ください。
 
@@ -140,7 +140,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ## <a name="post-migration-steps"></a>移行後の手順
 
 1. **レプリケートされた VM を可用性セットに構成します (該当する場合)**。 Site Recovery では、VM を可用性セットと併せて移行する操作はサポートされていません。 レプリケートされた VM のデプロイに応じて、次のいずれかを実行してください。
-  * クラシック デプロイメント モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../virtual-machines/virtual-machines-windows-classic-configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set)」を参照してください。
+  * クラシック デプロイメント モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../virtual-machines/windows/classic/configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set)」を参照してください。
   * Resource Manager デプロイメント モデルの場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトの制限事項を確認し、スクリプトを実行する前にダウンタイムを計画してください。
 
 2. **以前の VM とディスクを削除します**。 これらを削除する前に、Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認してください。 Resource Manager (RM) デプロイメント モデルの場合、Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 クラシック デプロイメント モデルの場合は、クラシック ポータルまたは Azure Portal で VM とディスクを削除できます。 VM を削除してもディスクが削除されない問題が発生した場合は、[RM デプロイで VHD を削除するときに生じるエラーのトラブルシューティング](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)または[クラシック デプロイメントでの VHD の削除に関するトラブルシューティング](storage-cannot-delete-storage-account-container-vhd.md)のページを参照してください。
@@ -157,8 +157,8 @@ Site Recovery を使用して、リージョン間または同じリージョン
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
 * [ストレージ アカウント間での Azure 仮想マシンの移行](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Amazon AWS から Microsoft Azure への仮想マシンの移行](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。

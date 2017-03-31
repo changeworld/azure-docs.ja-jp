@@ -15,9 +15,9 @@ ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5e605c8c509c93feb822781257ad979a0dea00aa
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 671d5c3e88585d7874dbfb0b03adc3cd9374ceca
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -79,8 +79,8 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 ## <a name="compute-intensive-instances"></a>コンピューティング集中型インスタンス
 Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)が用意されています。たとえば、[コンピューティング集中型 H シリーズ](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) インスタンスはバックエンド RDMA ネットワークに接続できます。 
 
-* [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 GPU 集中型ワークロードの場合は、[NC および NV サイズ](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/)に関する記事を参照してください。
 

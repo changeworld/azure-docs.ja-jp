@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
-ms.openlocfilehash: a8540a541d05d1d8a0afeb2aeb42c77951ebf8c2
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9916eb7deaae6acb784cac1b7b64d93a03f3c590
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -76,7 +76,7 @@ Azure RemoteApp イメージの作成方法の詳細については、「 [How t
 ### <a name="4-capture-image"></a>4.イメージをキャプチャする
 VM の実行が停止したら、現在のポータルで探してキャプチャします。
 
-イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines/virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ### <a name="5-add-to-azure-remoteapp-template-images"></a>5.Azure RemoteApp テンプレート イメージに追加する
 現在のポータルの Azure RemoteApp セクションで、[テンプレート イメージ] タブに移動して、[追加] をクリックします。 ポップアップ ボックスで [Virtual Machines ライブラリからイメージをインポートします] を選択し、先に作成したイメージを選びます。
@@ -115,7 +115,7 @@ Azure AD Premium がない場合は、ディレクトリの [ライセンス] �
 Azure Active Directory でユーザーに移動すると、[アクティビティ] タブに移動して Azure RemoteApp へのログイン情報を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
-以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。 アプリケーションの&1; つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
+以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。 アプリケーションの 1 つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
 
 SQL Database に接続する方法の詳細については、「 [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 

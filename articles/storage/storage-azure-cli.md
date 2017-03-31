@@ -10,20 +10,18 @@ ms.assetid:
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/18/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
-ms.openlocfilehash: 5008bb0292bc7513a6264ff1768976fd5ba11bfa
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: be44ca9d14d6dbb7a50d5c42c163bc66531bb90f
+ms.lasthandoff: 03/30/2017
 
 
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
-
-## <a name="overview"></a>概要
 
 オープンソースであるクロスプラットフォーム Azure CLI 2.0 には、Azure Platform で使用できるさまざまなコマンドが用意されています。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
 
@@ -176,7 +174,7 @@ echo "Done"
 
 5. スクリプトを実行します。 たとえば Bash の場合は次のようになります。 `./my_storage_sample.sh`
 
-下記のような出力が表示され、スクリプトで指定した ** \<destination_file\>** がローカル コンピューターに表示されるはずです。
+下記のような出力が表示され、スクリプトで指定した **\<destination_file\>** がローカル コンピューターに表示されるはずです。
 
 ```
 Creating the container...
@@ -219,14 +217,14 @@ az storage account create -l <location> -n <account_name> -g <resource_group> --
   * `Standard_ZRS`
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>既定の Azure ストレージ アカウント環境変数を設定する
-Azure サブスクリプションでは複数のストレージ アカウントを持つことができます。 それらの&1; つを選んですべての後続のストレージ コマンドに使用するには、下記のように環境変数を設定します。
+Azure サブスクリプションでは複数のストレージ アカウントを持つことができます。 それらの 1 つを選んですべての後続のストレージ コマンドに使用するには、下記のように環境変数を設定します。
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_ACCESS_KEY=<key>
 ```
 
-既定のストレージ アカウントを設定するもう&1; つの方法としては、接続文字列の使用があります。 まず、`show-connection-string` コマンドで接続文字列を取得します。
+既定のストレージ アカウントを設定するもう 1 つの方法としては、接続文字列の使用があります。 まず、`show-connection-string` コマンドで接続文字列を取得します。
 
 ```azurecli
 az storage account show-connection-string -n <account_name> -g <resource_group>

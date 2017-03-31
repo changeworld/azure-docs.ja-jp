@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 6f5a94588e20e62775ffddea0d711bb01e3db4ef
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 032beeb624fb86450e051a9486baf4d04c632da1
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -83,7 +83,7 @@ Resource Manager Azure Portal は、重み付けトラフィック ルーティ�
 
 Traffic Manager は、受信 DNS 要求の送信元 IP アドレスをインターネット待機時間テーブルで見つけます。 Traffic Manager は、その IP アドレス範囲について待機時間が最も短くなる Azure データ センター内の使用可能なエンドポイントを選び、DNS 応答でそのエンドポイントを返します。
 
-[Traffic Manager の動作のしくみ](traffic-manager-how-traffic-manager-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、"最も近い" エンドポイントの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
+[Traffic Manager の動作のしくみ](traffic-manager-overview.md#how-traffic-manager-works)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、"最も近い" エンドポイントの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
 
 Traffic Manager は、インターネット待機時間テーブルを定期的に更新して、グローバル インターネットと新しい Azure リージョンの変化に対応しています。 ただし、アプリケーションのパフォーマンスは、インターネット全体におけるリアルタイムな負荷の変動によって変わります。 パフォーマンスによるトラフィック ルーティングでは、特定のサービス エンドポイントの負荷は監視されません。 ただし、エンドポイントを使用できなくなった場合は、Traffic Manager は DNS クエリの応答にそのエンドポイントを含みません。

@@ -70,6 +70,9 @@
 ### [Surface Hub](log-analytics-surface-hubs.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 ### [VMware](log-analytics-vmware.md)
+### Windows Analytics
+#### [更新プログラムのコンプライアンス](https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started)
+#### [Upgrade Readiness](https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started)
 ### [ワイヤ データ](log-analytics-wire-data.md)
 ## 開発
 ### [データ コレクター API](log-analytics-data-collector-api.md)
@@ -83,6 +86,6 @@
 ## [REST ()](/rest/api/loganalytics)
 
 # リソース
-## [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
+## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
 ## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)

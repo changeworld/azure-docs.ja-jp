@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
-ms.openlocfilehash: 3ad511b55e33653ea0cf7df2c885d27c1c07441d
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eb53ed852b6175fbc7faea44a243e8c7d5ce1753
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -130,7 +131,7 @@ IP フィルターは、ゲスト仮想マシンによる以下の動作を防�
 * [**ユーザー定義のルーティング**](../virtual-network/virtual-networks-udr-overview.md)。 仮想ネットワーク セキュリティ アプライアンスに到達するように特定のサブネットに送信されるパケットの次のホップを指定するユーザー定義のルートを作成することによって、仮想アプライアンスを通じてパケットのルーティングを制御できます。
 * [**IP 転送**](../virtual-network/virtual-networks-udr-overview.md)。 仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。 仮想マシンが自分以外の宛先へのトラフィックを受信できるようにするには、仮想マシンの IP 転送を有効にします。
 * [**強制トンネリング**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。 強制トンネリングでは、検査と監査のために、仮想ネットワーク内の仮想マシンによって生成されたインターネットへのすべてのトラフィックを、サイト間 VPN トンネルを介してオンプレミスの場所にリダイレクトまたは "強制的に" 戻すことができます。
-* [**エンドポイント ACL**](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 エンドポイント ACL を定義することで、どのコンピューターがインターネットから仮想ネットワーク上の仮想マシンへの着信接続を許可されるかを制御できます。
+* [**エンドポイント ACL**](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 エンドポイント ACL を定義することで、どのコンピューターがインターネットから仮想ネットワーク上の仮想マシンへの着信接続を許可されるかを制御できます。
 * [**パートナー ネットワーク セキュリティ ソリューション**](https://azure.microsoft.com/marketplace/)。 Azure Marketplace から、多くのパートナー ネットワーク セキュリティ ソリューションにアクセスできます。
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Azure での仮想ネットワークとファイアウォールの実装方法
@@ -147,7 +148,7 @@ Azure で通常業務の一環として、または障害発生時に、顧客�
 ## <a name="secure-remote-access"></a>セキュリティで保護されたリモート アクセス
 クラウドに格納されたデータは、悪用されず、転送中の機密性と整合性が維持されるように、十分に保護されている必要があります。 たとえば、組織のポリシー ベースの監査可能な ID およびアクセス管理メカニズムと結び付いたネットワーク制御などです。
 
-組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。 [リモート デスクトップ セッション](../virtual-machines/virtual-machines-windows-classic-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および Azure Portal を介した仮想マシンへの管理者アクセスは、常に暗号化されます。
+組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。 [リモート デスクトップ セッション](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および Azure Portal を介した仮想マシンへの管理者アクセスは、常に暗号化されます。
 
 オンプレミス データセンターをクラウドに安全に拡張するために、Azure には[サイト間 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) と[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) のほか、[ExpressRoute](../expressroute/expressroute-introduction.md) との専用リンクが用意されています (VPN 経由での Azure Virtual Networks への接続は暗号化されます)。
 
@@ -194,9 +195,4 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 03/20/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
-ms.openlocfilehash: c081f31acb7d8767343f41be59d75616fa14b2da
-ms.lasthandoff: 02/08/2017
+ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
+ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
+ms.lasthandoff: 03/21/2017
 
 
 ---
@@ -33,34 +33,13 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
-| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「 [8020 のサポートされるリージョン](#supported-regions-for-8020) |
+| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートするすべての Azure リージョン<br></br>Premium Storage リージョンの一覧については、[Azure のリージョン別サービス](https://azure.microsoft.com/en-us/regions/services)に関するページを参照してください。 VM シリーズ DS、DSV2、Fs、GS がサポートされているリージョンを確認します。 |
 | **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
 
 <sup>2</sup> *8010 も 8020 も共に、クラウド層には Azure Standard Storage が使用されます。デバイス内のローカル層にのみ違いがあります*。
-
-#### <a name="supported-regions-for-8020"></a>8020 のサポートされるリージョン
-8020 で現在サポートされている Premium Storage リージョンを下の表にまとめています。 このリストは、Premium Storage が使用できるリージョンの追加に伴って、継続的に更新されます。
-
-| 連続 番号 | 現在サポートされているリージョン |
-| --- | --- |
-| 1 |米国中央部 |
-| 2 |米国東部 |
-| 3 |米国東部 2 |
-| 4 |米国西部 |
-| 5 |北ヨーロッパ |
-| 6 |西ヨーロッパ |
-| 7 |東南アジア |
-| 8 |東日本 |
-| 9 |西日本 |
-| 10 |オーストラリア東部 |
-| 11 |オーストラリア南東部* |
-| 12 |東アジア* |
-| 13 |米国中南部* |
-
-*Premium Storage はこれらの地域で最近提供が開始されました。
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。 この記事を読むと、次のことができます。
 
@@ -90,7 +69,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 現在 8020 でサポートされているリージョンの詳細については、 [こちら](#supported-regions-for-8020)をご覧ください。
+* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium Storage リージョンの一覧については、[Azure のリージョン別サービス](https://azure.microsoft.com/en-us/regions/services)に関するページを参照してください。 VM シリーズ DS、DSV2、Fs、GS がサポートされているリージョンを確認します。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 * 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             

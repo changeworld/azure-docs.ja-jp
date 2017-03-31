@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 2/15/2017
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: dcb259f04f2b0b1aeec10699b4e7b739ac0926ba
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 2aed07ff82c33111ef1abc9c9cc6b0ba2a9d3718
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/18/2017
 1. **Azure 仮想ネットワーク**を選びます。テスト用の仮想マシンが作成される Azure 仮想ネットワークを指定します。 Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** の設定で提供されたものと同じ名前のサブネットに、同じ IP を使って、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に提供された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。 同じ IP をサブネットで使うことができない場合、仮想マシンはサブネットで利用できる別の IP アドレスを受け取ります。 [詳しく](#creating-a-network-for-test-failover)は、このセクションをご覧ください。
 1. Azure にフェールオーバーしていて、データ暗号化が有効になっている場合は、**[暗号化キー]** で、プロバイダーのインストール中にデータ暗号化を有効にしたときに発行された証明書を選びます。 仮想マシンで暗号化を有効にしていない場合は、この手順を省略できます。
 1. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。 テスト レプリカ マシンも Azure ポータルで確認できます。
-1. 仮想マシンで RDP 接続を開始するには、フェールオーバーされる仮想マシンのネットワーク インターフェイスで、[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)する必要があります。 クラシック仮想マシンにフェールオーバーする場合は、ポート 3389 で[エンドポイントを追加](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)する必要があります。
+1. 仮想マシンで RDP 接続を開始するには、フェールオーバーされる仮想マシンのネットワーク インターフェイスで、[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)する必要があります。 クラシック仮想マシンにフェールオーバーする場合は、ポート 3389 で[エンドポイントを追加](../virtual-machines/windows/classic/setup-endpoints.md)する必要があります。
 1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
 
@@ -100,9 +100,9 @@ ms.lasthandoff: 03/18/2017
 **フェールオーバー** | **場所** | **アクション**
 --- | --- | ---
 **Windows で実行中の Azure VM** | フェールオーバー前にオンプレミスのコンピューターで | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続でアクセスするには、コンピューターで RDP を有効にし、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が仮想マシンにないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで仮想マシンにログインできなくなります。 <br/><br/>
-**Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で | クラシック仮想マシンの場合、RDP プロトコルの[パブリック エンドポイントを追加](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)します (ポート 3389)。<br/><br/>  Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> フェールオーバーされる VM とその接続先となる Azure サブネットは、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を参照してください。<br/><br/>
+**Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で | クラシック仮想マシンの場合、RDP プロトコルの[パブリック エンドポイントを追加](../virtual-machines/windows/classic/setup-endpoints.md)します (ポート 3389)。<br/><br/>  Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> フェールオーバーされる VM とその接続先となる Azure サブネットは、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を参照してください。<br/><br/>
 **Linux で実行中の Azure VM** | フェールオーバー前にオンプレミスのコンピューターで | Azure VM 上の Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。<br/><br/> ファイアウォール規則で SSH 接続が許可されていることを確認します。
-**Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM と接続先の Azure サブネットのネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> クラシック仮想マシンの場合、SSH ポート (既定では TCP ポート 22) で着信接続を許可するように[パブリック エンドポイントを追加](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/>
+**Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM と接続先の Azure サブネットのネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> クラシック仮想マシンの場合、SSH ポート (既定では TCP ポート 22) で着信接続を許可するように[パブリック エンドポイントを追加](../virtual-machines/windows/classic/setup-endpoints.md)する必要があります。<br/><br/> Resource Manager 仮想マシンの場合、その[パブリック IP を追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> Resource Manager 仮想マシンの場合、**[ブート診断]** をチェックして、仮想マシンのスクリーンショットを見ることができます。<br/><br/>
 
 
 

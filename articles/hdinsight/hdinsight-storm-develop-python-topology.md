@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
-ms.lasthandoff: 01/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8b32aa77e1dbe18076d73e10914b59be107c3588
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -52,7 +52,7 @@ Storm モジュール (https://github.com/apache/storm/blob/master/storm-multila
 また、Storm クラスターは分散環境で実行されるため、Python コンポーネントで必要なすべてのモジュールが、クラスター内のすべての worker ノードで使用できることを確認する必要があります。 Storm の場合、多言語リソースではこれを容易に行うことはできません。つまり、トポロジの jar ファイルの一部として依存関係をすべて含めるか、クラスター内の各 worker ノードに依存関係を手動でインストールする必要があります。
 
 ### <a name="java-vs-clojure-topology-definition"></a>Java とClojure トポロジの定義
-トポロジを定義する&2; つの方法の&1; つである Clojure は、トポロジ定義で Python コンポーネントを直接参照できるため、非常に簡単でわかりやすい方法です。 Java ベースのトポロジ定義の場合、Python コンポーネントから返されるタプルでのフィールド宣言などを処理する Java コンポーネントを定義する必要もあります。
+トポロジを定義する 2 つの方法の 1 つである Clojure は、トポロジ定義で Python コンポーネントを直接参照できるため、非常に簡単でわかりやすい方法です。 Java ベースのトポロジ定義の場合、Python コンポーネントから返されるタプルでのフィールド宣言などを処理する Java コンポーネントを定義する必要もあります。
 
 このドキュメントでは両方の方法について説明し、プロジェクト例も示します。
 
@@ -157,10 +157,8 @@ Apache Storm を実行して HDInsight クラスターにプロジェクトを�
              scp wordcount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:wordcount-1.0-SNAPSHOT.jar
         
          USERNAME は HDInsight クラスターの SSH ユーザーに、CLUSTERNAME は HDInsight クラスター名に置き換えます。
-     2. ファイルがクラスターにコピーされたら、SSH を使用してクラスターに接続し、ジョブを送信します。 HDInsight での SSH の使用方法については、以下のいずれかの記事を参照してください。
-        
-        * [Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-        * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+     2. ファイルがクラスターにコピーされたら、SSH を使用してクラスターに接続し、ジョブを送信します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+     
      3. 接続したら、次のコマンドを使用してトポロジを開始します。
         
              storm jar wordcount-1.0-SNAPSHOT.jar wordcount.core wordcount
