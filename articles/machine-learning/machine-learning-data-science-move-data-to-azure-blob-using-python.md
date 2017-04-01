@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
 ms.openlocfilehash: fb34986d947175ae4b4212e5bd0a1e90836ed170
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -128,9 +129,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
             blob_service.get_blob_to_path(CONTAINER_NAME, blob.name, local_file)
         except:
             print "something wrong happened when downloading the data %s"%blob.name
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

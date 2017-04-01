@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 78f367de862e4fa9203cc794549abb935f117848
+ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
 ms.openlocfilehash: a91da330e677c85f16f6f4e506613576b6507d7c
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -33,8 +33,6 @@ ms.lasthandoff: 02/22/2017
 このシナリオでは、仮想マシンについて返されるセキュリティ グループ ビューの結果と既知の適切な基準を比較します。
 
 このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>シナリオ
 

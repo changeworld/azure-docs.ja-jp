@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;ankarlof
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: c7564326426a4b40e4c6ab471b9c315f1633ebb6
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -370,10 +371,5 @@ R スクリプトの実行環境では、 **Execute R Script** モジュール�
 
 * 非永続的なファイル システム: カスタム モジュールの実行時に書き込まれるファイルは、同じモジュールの複数の実行間で保持されません。
 * ネットワーク アクセスはありません。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

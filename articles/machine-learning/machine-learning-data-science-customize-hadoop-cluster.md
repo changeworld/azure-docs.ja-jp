@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: hangzh;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
 ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 
 [!INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-## <a name="a-namecustomizeacustomize-azure-hdinsight-hadoop-cluster"></a><a name="customize"></a>Azure HDInsight Hadoop クラスターのカスタマイズ
+## <a name="customize"></a>Azure HDInsight Hadoop クラスターのカスタマイズ
 カスタマイズされた HDInsight Hadoop クラスターを作成するには、[**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログオンすることから始めます。左下隅にある **[新規]** をクリックした後、[Data Services]、[HDInsight]、**[カスタム作成]** の順に選択して **[クラスターの詳細]** ウィンドウを表示します。 
 
 ![ワークスペースの作成](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
@@ -66,7 +67,7 @@ ms.openlocfilehash: 9104c45508afdb5682c44db64576a0cdae95d75f
 
 ![ワークスペースの作成](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
-## <a name="a-nameheadnodea-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> Hadoop クラスターのヘッド ノードへのアクセス
+## <a name="headnode"></a> Hadoop クラスターのヘッド ノードへのアクセス
 RDP を介して Hadoop クラスターのヘッド ノードにアクセスするには、その前に Azure での Hadoop クラスターへのリモート アクセスを有効にする必要があります。 
 
 1. [**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択します。クラスターのリストから Hadoop クラスターを選択し、**[構成]** タブをクリックします。次に、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
@@ -88,10 +89,5 @@ RDP を介して Hadoop クラスターのヘッド ノードにアクセスす�
 高度な分析プロセスの次のステップは、「[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」をご覧ください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

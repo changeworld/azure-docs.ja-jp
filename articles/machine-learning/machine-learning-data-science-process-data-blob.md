@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: ba61d00f277af579c87a130336ead9879b82a6de
 ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
+ms.lasthandoff: 12/13/2016
 
 
 ---
-# <a name="a-nameheadingaprocess-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
+# <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
@@ -50,7 +51,7 @@ ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-## <a name="a-nameblob-dataexplorationadata-exploration"></a><a name="blob-dataexploration"></a>データの探索
+## <a name="blob-dataexploration"></a>データの探索
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
 1. 行と列の数を調べる 
@@ -95,10 +96,10 @@ ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="a-nameblob-featuregenafeature-generation"></a><a name="blob-featuregen"></a>特徴の生成
+## <a name="blob-featuregen"></a>特徴の生成
 次のように、Python を使用して特徴を生成できます。
 
-### <a name="a-nameblob-countfeatureaindicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>
+### <a name="blob-countfeature"></a>
 カテゴリの特徴は、次のように作成できます。
 
 1. カテゴリの列の分布を検査します。
@@ -117,7 +118,7 @@ ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="a-nameblob-binningfeatureabinning-feature-generation"></a><a name="blob-binningfeature"></a>ビン分割特徴の生成
+### <a name="blob-binningfeature"></a>ビン分割特徴の生成
 ビン分割特徴を生成するには、次のように進めます。
 
 1. 数値列をビン分割する列のシーケンスを追加します。
@@ -131,7 +132,7 @@ ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="a-namesql-featuregenawriting-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
+## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
 データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。 
 
 1. ローカル ファイルへのデータ フレームの書き込み
@@ -167,10 +168,5 @@ ms.openlocfilehash: 0678c47b28cff54986b79b901c7d2a92136610fc
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
