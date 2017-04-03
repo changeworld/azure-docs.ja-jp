@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 53bd995e8ee68b9dd76bf792e4420e0c52f5ebac
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -179,9 +180,4 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

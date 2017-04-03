@@ -111,7 +111,7 @@
 ### [価格とクォータの管理](app-insights-pricing.md)
 ### [SCOM での Application Insights を使用したアプリケーション パフォーマンス監視](app-insights-scom.md)
 
-##エクスポート
+## エクスポート
 ### [連続エクスポート](app-insights-export-telemetry.md)
 ### [データのエクスポート モデル](app-insights-export-data-model.md)
 ### [Power BI へのエクスポート](app-insights-export-power-bi.md)
@@ -159,10 +159,5 @@
 ### [サポート](app-insights-get-dev-support.md)
 
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=application-insights)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

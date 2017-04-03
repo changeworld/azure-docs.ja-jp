@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
 ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -41,7 +42,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 > 
 > 
 
-## <a name="a-namesmalllocalascenario-1-small-to-medium-tabular-dataset-in-a-local-files"></a><a name="smalllocal"></a>シナリオ \#1: ローカル ファイルの小規模から中規模の表形式のデータセット
+## <a name="smalllocal"></a>シナリオ \#1: ローカル ファイルの小規模から中規模の表形式のデータセット
 ![小規模から中規模のローカル ファイル][1]
 
 #### <a name="additional-azure-resources-none"></a>その他の Azure リソース: なし
@@ -49,7 +50,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 2. データセットをアップロードします。
 3. アップロードされたデータセットで始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="a-namesmalllocalprocessascenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>シナリオ \#2: 処理が必要なローカル ファイルの小規模から中規模のデータセット
+## <a name="smalllocalprocess"></a>シナリオ \#2: 処理が必要なローカル ファイルの小規模から中規模のデータセット
 ![処理中の小規模から中規模のローカル ファイル][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (IPython Notebook サーバー)
@@ -62,7 +63,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 7. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 8. 統合されたデータセットで始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="a-namelargelocalascenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>シナリオ \#3: ローカル ファイルの大規模データセット (Azure BLOB を対象)
+## <a name="largelocal"></a>シナリオ \#3: ローカル ファイルの大規模データセット (Azure BLOB を対象)
 ![大規模なローカル ファイル][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (IPython Notebook サーバー)
@@ -77,7 +78,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 9. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 10. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="a-namesmalllocaltodbascenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>シナリオ \#4: ローカル ファイルの小規模から中規模のデータセット (Azure VM の SQL Server を対象)
+## <a name="smalllocaltodb"></a>シナリオ \#4: ローカル ファイルの小規模から中規模のデータセット (Azure VM の SQL Server を対象)
 ![Azure の SQL DB への小規模から中規模のローカル ファイル][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
@@ -107,7 +108,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 10. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 11. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="a-namelargelocaltodbascenario-5-large-dataset-in-a-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>シナリオ \#5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
+## <a name="largelocaltodb"></a>シナリオ \#5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
 ![Azure の SQL DB への大規模なローカル ファイル][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
@@ -148,7 +149,7 @@ ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 9. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
-## <a name="a-namelargedbtodbascenario-6-large-dataset-in-a-sql-server-database-on-prem-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>シナリオ \#6: オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
+## <a name="largedbtodb"></a>シナリオ \#6: オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
 ![Azure の SQL DB へのオンプレミスの大規模な SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
@@ -196,7 +197,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
 [デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="a-namelargedbtohiveascenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>シナリオ \#7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
+## <a name="largedbtohive"></a>シナリオ \#7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 ![ローカル ターゲット Hive のビッグ データ][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース: Azure HDInsight Hadoop クラスターと Azure 仮想マシン (IPython Notebook サーバー)
@@ -240,7 +241,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 9. [データのインポート][import-data] モジュールを使用して、`Hive Queries` から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 10. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
-## <a name="a-namedecisiontreeadecision-tree-for-scenario-selection"></a><a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
+## <a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
 - - -
 次の図は、上記で説明したシナリオと、各シナリオを選択するための Advanced Analytics Process and Technology の選択肢をまとめたものです。 データ処理、探索、特徴エンジニアリング、およびサンプリングは、1 つ以上のメソッド/環境 (ソース、中間、またはターゲット環境) で発生する場合があり、必要に応じて繰り返し実行される可能性があります。 図は、考えられるフローの一部のみを示しており、すべてを網羅しているわけではありません。
 
@@ -265,9 +266,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

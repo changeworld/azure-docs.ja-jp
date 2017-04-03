@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
 ms.openlocfilehash: a258404e659bd6d6e7e0f468a5f3ce5e184be2a3
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -54,10 +55,5 @@ Azure ストレージ エクスプローラーは、Windows、MacOS、Linux で 
 7. コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** をクリックします。![Storage アカウント](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする&1; つ以上のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. データをダウンロードするには、対応するコンテナー内の BLOB を選択し、 **[ダウンロード]**をクリックします。 ![ファイルのダウンロード](./media/machine-learning-data-science-move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

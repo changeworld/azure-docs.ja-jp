@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
+ms.lasthandoff: 12/20/2016
 
 
 ---
-# <a name="a-nameheadingasample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
+# <a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
 このドキュメントでは、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。
 
 次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。 
@@ -68,7 +69,7 @@ ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
 
 これで、上記の 1 パーセントのサンプルのデータ フレームを操作して、さらなる探索および特徴の生成を行えるようになりました。
 
-## <a name="a-nameheadingaupload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>データをアップロードし、Azure Machine Learning で読み取る
+## <a name="heading"></a>データをアップロードし、Azure Machine Learning で読み取る
 次のサンプル コードを使用すると、次のようにデータをダウンサンプリングして、 Azure Machine Learning で直接使用できます。
 
 1. データ フレームをローカル ファイルに書き込む
@@ -100,10 +101,5 @@ ms.openlocfilehash: 7873ad084c9d77eea556ae3fec846bebd4c99ebd
 3. 次のスクリーン ショットに示すように、Azure Machine Learning の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)を使用して Azure BLOB からデータを読み取ります。
 
 ![リーダー BLOB](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

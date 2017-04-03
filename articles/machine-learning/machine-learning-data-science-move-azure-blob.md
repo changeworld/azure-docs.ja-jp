@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev;sachouks
 translationtype: Human Translation
 ms.sourcegitcommit: 9b32c0d9c3bc19a187873eebd6ab21036ee06db8
 ms.openlocfilehash: 1e773a1332d14109e9f50fb7db17528d061a98f2
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -48,10 +49,5 @@ ms.openlocfilehash: 1e773a1332d14109e9f50fb7db17528d061a98f2
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、「 [Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

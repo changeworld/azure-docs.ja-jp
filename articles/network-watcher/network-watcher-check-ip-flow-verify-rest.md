@@ -37,8 +37,6 @@ PowerShell を使用している REST API を呼び出すには、ARMClient を�
 
 このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って、Network Watcher を作成済みであることを前提としています。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>シナリオ
 
 このシナリオでは、IP フロー検証を使用して、仮想マシンがポート 443 で別のマシンと通信可能かどうかを確認します。 トラフィックが拒否されている場合は、そのトラフィックを拒否するセキュリティ規則が返されます。 IP フロー検証の詳細については、[IP フロー検証の概要](network-watcher-ip-flow-verify-overview.md)をご覧ください。
