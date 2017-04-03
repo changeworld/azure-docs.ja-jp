@@ -13,13 +13,14 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: loading
 ms.date: 02/08/2017
 ms.author: jingwang;kevin;barbkess
-ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: 6474104846eefa1aa7e137e7914b7a7f1ee8a83a
 ms.openlocfilehash: aad76a633b127d23d59dae995d7a503023c5eac7
 ms.lasthandoff: 02/09/2017
+
 
 
 ---

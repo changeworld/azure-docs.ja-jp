@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/31/2017
 ms.author: haining;garye
 translationtype: Human Translation
 ms.sourcegitcommit: de2c4d3d354ef3665134302655f602b043aa8ab0
 ms.openlocfilehash: 106efcd5580f91d6d1ed926b19c142d8ea0b0c7c
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -113,10 +114,5 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 **ユーザーのコンペティション ソリューション/エントリは保持されますか。**
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。 詳細については、 [契約条件](http://aka.ms/comptermsandconditions) を参照してください。
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

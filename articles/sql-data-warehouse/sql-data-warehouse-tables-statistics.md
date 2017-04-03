@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b2b99ec031ea26b4ab19e7327da035788661a0a8
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -494,9 +496,4 @@ MSDN の [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] に関するページで�
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
 
 <!--Other Web references-->  
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: partners
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -150,9 +152,4 @@ ms.openlocfilehash: 91b3f016497b268d9f7e9d305ec4f69f0a1cd856
 [tableau_twitter]:https://twitter.com/tableau
 [targit_twitter]:https://twitter.com/TARGIT
 [yellowfin_twitter]:https://twitter.com/YellowfinBI
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

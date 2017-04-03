@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0d2ff3ce90c355ba63f3fb66982baa621091ae6e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -373,9 +375,4 @@ DROP TABLE #partitions;
 
 
 <!-- Other web references -->
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

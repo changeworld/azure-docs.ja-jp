@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
 ms.openlocfilehash: 66b61e4619518619aac644f6833c597cb9a7408e
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -198,10 +199,5 @@ Machine Learning Studio で作成した他のすべての実験のように、�
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

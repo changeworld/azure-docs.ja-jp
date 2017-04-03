@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: tables
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -62,7 +64,7 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 ### <a name="can-i-view-the-compute-nodes"></a>コンピューティング ノードを見ることはできますか?
 各コンピューティング ノードはノード ID を持っており、SQL Data Warehouse および Parallel Data Warehouse に関するシステム ビューで表示できます。  名前が sys.pdw_nodes で始まるシステム ビューで node_id 列を検索することにより、コンピューティング ノードを見ることができます。 システム ビューの一覧については、[MPP のシステム ビューに関する記事](sql-data-warehouse-reference-tsql-statements.md)をご覧ください。
 
-## <a name="a-namereplicatedareplicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>Parallel Data Warehouse のレプリケート テーブル
+## <a name="Replicated"></a>Parallel Data Warehouse のレプリケート テーブル
 適用対象: Parallel Data Warehouse
 
 分散テーブルを使用する以外に、Parallel Data Warehouse にはテーブルをレプリケートするオプションがあります。 "*レプリケート テーブル*" とは、各コンピューティング ノードに全体が格納されるテーブルです。 テーブルをレプリケートすると、結合または集計でテーブルを使用する前にコンピューティング ノード間でテーブルの行を転送する必要がなくなります。 各コンピューティング ノードに完全なテーブルを格納するために余分な記憶域が必要になるため、レプリケート テーブルは小さなテーブルにのみ使用できます。  
@@ -73,10 +75,5 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 
 ## <a name="next-steps"></a>次のステップ
 分散テーブルを効果的に使用する方法については、「[SQL Data Warehouse のテーブルの分散](sql-data-warehouse-tables-distribute.md)」を参照してください。  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
