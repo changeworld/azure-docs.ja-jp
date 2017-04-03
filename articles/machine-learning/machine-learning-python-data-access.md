@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: huvalo;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 045e40bccad59586987c0a18253dafff2f955a93
 ms.openlocfilehash: ea5005e7cff775c798b030748324781ef7dcfe7d
+ms.lasthandoff: 12/06/2016
 
 
 ---
@@ -32,7 +33,7 @@ Microsoft Azure Machine Learning Python クライアント ライブラリのプ
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 Python クライアント ライブラリは、次の環境でテストされています。
 
 * Windows、Mac、Linux
@@ -46,7 +47,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 
 [Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
-### <a name="a-nameinstallationahow-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
+### <a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
 また、このトピックで説明するタスクを完了するためには Azure Machine Learning Python クライアント ライブラリをインストールする必要があります。 [Python Package Index](https://pypi.python.org/pypi/azureml)から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
 
     pip install azureml
@@ -60,12 +61,12 @@ Python クライアント ライブラリは、次の環境でテストされて
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="a-namedatasetaccessause-studio-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
+## <a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
 Studio Web インターフェイスから、ローカル マシンでデータ セットを Pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
-### <a name="a-namesecurityasecurity-for-data-access"></a><a name="security"></a>データ アクセスのためのセキュリティ
+### <a name="security"></a>データ アクセスのためのセキュリティ
 Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio で **[設定]** の下の **[ユーザー]** ページに表示されます。
@@ -86,7 +87,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 認証トークンは、**[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
-### <a name="a-nameaccessingdatasetsaaccess-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
+### <a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]**をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
@@ -99,7 +100,7 @@ Python クライアント ライブラリで使用するために Studio で提�
    
     ![ノートブック][ipython-dataset]
 
-## <a name="a-nameaccessingintermediatedatasetsaaccess-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
+## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
 Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
@@ -143,7 +144,7 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
     
     ![ヒストグラム][ipython-histogram]
 
-## <a name="a-nameclientapisause-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
+## <a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
 ### <a name="workspace"></a>ワークスペース
 ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 ワークスペース ID と認証トークンを使って `Workspace` クラスを提供し、インスタンスを作成します。
 
@@ -334,10 +335,5 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 <!-- Module References -->
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

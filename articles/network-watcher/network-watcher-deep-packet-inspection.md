@@ -31,8 +31,6 @@ Network Watcher のパケット キャプチャ機能を使用すると、Azure 
 
 このシナリオは、仮想マシンでパケット キャプチャが実行済みであることを前提としています。 パケット キャプチャの作成方法については、[ポータルを使用したパケット キャプチャの管理](network-watcher-packet-capture-manage-portal.md)に関するページか、[REST API を使用したパケット キャプチャの管理](network-watcher-packet-capture-manage-rest.md)に関するページをご覧ください。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ## <a name="scenario"></a>シナリオ
 
 このシナリオでは次のことを行います。

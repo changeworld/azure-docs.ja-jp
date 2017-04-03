@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 03/24/2017
 ms.author: xibingao;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
 ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
+ms.lasthandoff: 12/20/2016
 
 
 ---
@@ -43,10 +44,5 @@ ms.openlocfilehash: 4de0683f2f58cc598a5c37e74a30b7e17aa7fd0d
 > Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用していないときに課金されないようにするには、 **Azure クラシック ポータル** から、その仮想マシンを [[停止 (割り当て解除)]](http://manage.windowsazure.com/)状態にする必要があります。 仮想マシンの割り当てを解除する方法については、「[未使用時に仮想マシンをシャットダウンして割り当てを解除する](machine-learning-data-science-setup-virtual-machine.md#shutdown)」を参照してください。
 > 
 > 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

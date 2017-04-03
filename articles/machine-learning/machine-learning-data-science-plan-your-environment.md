@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: f497366f8e66ba79b0e5978fde54d0b33048aa8d
 ms.openlocfilehash: d11f023f263b0bb504e2ecb0ff69bb0cc726618b
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -104,10 +105,5 @@ Azure Machine Learning 環境を例とします。
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>高度な分析シナリオの特定
 前のセクションの質問に答えたら、現在の状況に最適なシナリオを決定する準備が整います。 サンプル シナリオは、「 [Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)」に記載されています。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -29,8 +29,6 @@ IP フロー検証では、仮想マシンのネットワーク インターフ�
 
 Network Watcher のインスタンスは、IP フロー検証を実行する予定のすべてのリージョンに作成する必要があります。 Network Watcher はリージョン別のサービスであり、同じリージョン内のリソースに対してのみ実行できます。 NIC に関連付けられたルートは返されるため、リージョンの制限は IP フロー検証の結果には影響しません。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 ![1][1]
 
 ## <a name="next-steps"></a>次のステップ

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: a1199ae3eccc5268006587fa47f2ca4fad362bdc
+ms.sourcegitcommit: d60b1d44844c449e0f66dc0107a25531569d097b
 ms.openlocfilehash: 82d5e525859ebe03b152c63e4debbae469049c12
-ms.lasthandoff: 02/24/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/24/2017
 パケット キャプチャは、ネットワークの侵入検出システム (IDS) を実装し、ネットワーク セキュリティ監視 (NSM) を実行するうえで重要なコンポーネントです。 パケット キャプチャを処理し、ネットワークへの侵入と悪意のあるアクティビティの可能性を示すシグネチャを検出するオープン ソース IDS ツールは複数公開されています。 Network Watcher で取得したパケット キャプチャを使用して、害のある侵入または脆弱性に関してネットワークを分析できます。
 
 そのようなオープン ソース ツールの&1; つに Suricata があります。これは、ルール セットを使用してネットワーク トラフィックを監視し、疑わしいイベントが発生したときにアラートをトリガーする IDS エンジンです。 Suricata にはマルチスレッド エンジンがあるため、高速かつ高効率なネットワーク トラフィック分析を実行することができます。 Suricata とその機能の詳細については、Suricata の Web サイト (https://suricata-ids.org/) を参照してください。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>シナリオ
 
