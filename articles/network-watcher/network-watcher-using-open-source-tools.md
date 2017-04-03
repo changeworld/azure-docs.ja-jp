@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 05fb0b7e80684737277626c12468ca9c754a0ac9
+ms.sourcegitcommit: 50d82847fb629880f298f79f9ab791a13836f01c
 ms.openlocfilehash: e27bb694d0cbcf1ff7c9d8ca4682a79c8b5c5cb1
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 03/31/2017
 
 ---
 
@@ -26,8 +26,6 @@ ms.lasthandoff: 02/22/2017
 パケット キャプチャ データには、ネットワーク フォレンジクスやディープ パケット インスペクションに必要なネットワーク データが含まれています。 パケット キャプチャ データを分析することでネットワークに関する洞察を得ることができ、また、それを目的としたオープン ソース ツールも数多く存在します。 オープン ソースのパケット キャプチャ視覚化ツール、CapAnalysis も、そのようなツールの&1; つです。 パケット キャプチャ データを視覚化することは、ネットワーク内のパターンや異常に関する洞察をすばやく得ることのできる有益な手段です。 視覚化には、利用しやすい形でそのような洞察を共有できるという側面もあります。
 
 Azure の Network Watcher には、ネットワーク上でパケット キャプチャを実行することによって、こうした有益なデータをキャプチャする機能が備わっています。 この記事では、CapAnalysis と Network Watcher を使い、パケット キャプチャ データを視覚化して洞察を得る方法についてわかりやすく説明しています。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ## <a name="scenario"></a>シナリオ
 

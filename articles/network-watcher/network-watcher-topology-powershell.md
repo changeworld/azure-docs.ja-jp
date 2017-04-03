@@ -31,8 +31,6 @@ ms.lasthandoff: 03/22/2017
 Network Watcher のトポロジ機能では、サブスクリプションのネットワーク リソースを視覚的に表現します。 ポータルに、視覚化された情報が自動的に表示されます。 ポータルのトポロジ ビューの背後の情報は、PowerShell を使用して取得できます。
 この機能により、データを他のツールで視覚化して使用できるため、トポロジの情報の汎用性が高まります。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
-
 相互接続は、2 つのリレーションシップでモデル化されます。
 
 - **含有** - 例: VNet にサブネットが含まれ、サブネットに NIC が含まれる

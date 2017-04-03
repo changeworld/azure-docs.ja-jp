@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/24/2017
 ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e1563db23e687f772eaff2e90ce9853c9d8b87de
 ms.openlocfilehash: f87df28a5a44b7ab3c1d9a48d43c8d1354c48830
+ms.lasthandoff: 11/23/2016
 
 
 ---
@@ -196,10 +197,5 @@ VM には複数の Azure ツールがインストールされます。
 * 「 [データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com) では、Cortana Intelligence Suite を使用した機械学習やデータ分析のサンプルを入手できます。 このギャラリーへは、 **[スタート]** メニューや仮想マシンのデスクトップにもアイコンが用意されています。
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

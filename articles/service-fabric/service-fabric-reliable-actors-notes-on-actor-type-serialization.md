@@ -17,6 +17,7 @@ ms.author: vturecek
 translationtype: Human Translation
 ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
 ms.openlocfilehash: f08fc1df10506dead5d049fb2c6cdc29c8f89d90
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -30,6 +31,13 @@ ms.openlocfilehash: f08fc1df10506dead5d049fb2c6cdc29c8f89d90
 public interface IVoiceMailBoxActor : IActor
 {
     Task<VoicemailBox> GetMailBoxAsync();
+}
+```
+
+```Java
+public interface VoiceMailBoxActor extends Actor
+{
+    CompletableFuture<VoicemailBox> getMailBoxAsync();
 }
 ```
 
@@ -47,6 +55,23 @@ public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
     public Task<VoicemailBox> GetMailboxAsync()
     {
         return this.StateManager.GetStateAsync<VoicemailBox>("Mailbox");
+    }
+}
+
+```
+
+```Java
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxActor
+{
+    public VoiceMailBoxActorImpl(ActorService actorService, ActorId actorId)
+    {
+         super(actorService, actorId);
+    }
+
+    public CompletableFuture<VoicemailBox> getMailBoxAsync()
+    {
+         return this.stateManager().getStateAsync("Mailbox");
     }
 }
 
@@ -73,6 +98,19 @@ public class Voicemail
     public DateTime ReceivedAt { get; set; }
 }
 ```
+```Java
+public class Voicemail implements Serializable
+{
+    private static final long serialVersionUID = 42L;
+
+    private UUID id;                    //getUUID() and setUUID()
+
+    private String message;             //getMessage() and setMessage()
+
+    private GregorianCalendar receivedAt; //getReceivedAt() and setReceivedAt()
+}
+```
+
 
 ```csharp
 [DataContract]
@@ -90,6 +128,22 @@ public class VoicemailBox
     public string Greeting { get; set; }
 }
 ```
+```Java
+public class VoicemailBox implements Serializable
+{
+    static final long serialVersionUID = 42L;
+    
+    public VoicemailBox()
+    {
+        this.messageList = new ArrayList<Voicemail>();
+    }
+
+    private List<Voicemail> messageList;   //getMessageList() and setMessageList()
+
+    private String greeting;               //getGreeting() and setGreeting()
+}
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
@@ -98,9 +152,4 @@ public class VoicemailBox
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
