@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 30dcbe33b359afc3f118effce07f6574bb35d5d5
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -134,9 +136,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 <!--Other Web references-->
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

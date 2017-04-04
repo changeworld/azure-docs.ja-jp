@@ -33,7 +33,7 @@
 3. 仮想ネットワーク オブジェクトを変数として格納します。
    
         $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
-4. ゲートウェイ サブネットを Virtual Network に追加します。 ゲートウェイ サブネット名は、"GatewaySubnet " にする必要があります。 /27 以上 (/26、/25 など) のゲートウェイを作成するとします。
+4. ゲートウェイ サブネットを Virtual Network に追加します。 ゲートウェイ サブネット名は、"GatewaySubnet " にする必要があります。 /27 以上 (/26、/25 など) のゲートウェイ サブネットを作成する必要があります。
    
         Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
 5. 構成を設定します。
@@ -72,8 +72,3 @@
 ゲートウェイを削除するには、次のコマンドを使用します。
 
     Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
-
-
-<!--HONumber=Nov16_HO3-->
-
-

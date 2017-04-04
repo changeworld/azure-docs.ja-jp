@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/14/2016
+ms.date: 03/20/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: de2c52f8db5445e3e2eee62f673109f6d38cffa0
-ms.openlocfilehash: c58ee1c07e454a711ab0d6365a5cd432b0d939c8
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: 0539e9d04c61d35de56a29d350c07654c095c576
+ms.lasthandoff: 03/22/2017
 
 
 ---
@@ -62,9 +63,9 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 <br/>
 "***Machine Learning Studio へのサインイン***"
 
-## <a name="five-steps-to-create-an-experiment"></a>実験を作成する&5; つの手順
+## <a name="five-steps-to-create-an-experiment"></a>実験を作成する 5 つの手順
 
-この機械学習のチュートリアルでは、Machine Learning Studio で&5; つの基本的なステップに従って、モデルを作成、トレーニング、スコア付けする実験を構築します。
+この機械学習のチュートリアルでは、Machine Learning Studio で 5 つの基本的なステップに従って、モデルを作成、トレーニング、スコア付けする実験を構築します。
 
 - **モデルの作成**
     - [手順 1: データを取得する]
@@ -159,7 +160,10 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
    " ***"normalized-losses" 列が除外されたことを示すプロパティ ウィンドウ***"
 
     > [!TIP]
-    > モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 この例では、[データセット内の列の選択][select-columns]モジュールをダブルクリックして、「正規化された損失を除外する」というコメントを入力します。
+    モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 この例では、[データセット内の列の選択][select-columns]モジュールをダブルクリックして、「正規化された損失を除外する」というコメントを入力します。
+    >
+    >
+
 
     ![モジュールをダブルクリックしてコメントを追加][add-comment]
     <br/>
@@ -188,7 +192,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ## <a name="step-3-define-features"></a>手順 3: 特徴を定義する
 
-機械学習において *特徴* とは、関心のある項目を個別に測定できるプロパティです。 この例のデータセットでは、各行が&1; つの車種を表し、各列がその車種の特徴に対応します。
+機械学習において *特徴* とは、関心のある項目を個別に測定できるプロパティです。 この例のデータセットでは、各行が 1 つの車種を表し、各列がその車種の特徴に対応します。
 
 予測モデルの作成に役立つ特徴を見つけるには、解決する問題に関する実験と知識が必要です。 一部の特徴は、他よりも対象を予測することに優れています。 また、他の特徴と強い相関関係があって削除できる特徴もあります。 たとえば、city-mpg と highway-mpg は密接に関連しているため、予測に大きな影響を及ぼすことなく一方を残して他方を削除することができます。
 
@@ -229,7 +233,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 予測したい価格は数値であるため、回帰アルゴリズムを使用することになります。 この例では単純な "*線形回帰*" を使用します。
 
 > [!TIP]
-> さまざまな種類の機械学習アルゴリズムの詳細とその使用場面について知りたい場合は、初心者向けデータ サイエンス シリーズの最初のビデオ「[データ サイエンスが回答する&5; つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)」をご覧ください。 [Machine Learning の基礎とアルゴリズムの使用例](machine-learning-basics-infographic-with-algorithm-examples.md)が含まれたインフォグラフィックを参照することもできます。または、[機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)をご確認ください。
+> さまざまな種類の機械学習アルゴリズムの詳細とその使用場面について知りたい場合は、初心者向けデータ サイエンス シリーズの最初のビデオ「[データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)」をご覧ください。 [Machine Learning の基礎とアルゴリズムの使用例](machine-learning-basics-infographic-with-algorithm-examples.md)が含まれたインフォグラフィックを参照することもできます。または、[機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)をご確認ください。
 
 価格が含まれた一連のデータを指定してモデルをトレーニングします。 モデルによってデータがスキャンされ、自動車の特徴と価格の相関関係が検出されます。 次にモデルのテストを行います。よく知っている自動車の特徴のセットをモデルに与え、モデルが既知の価格を予測する精度を確認します。
 
@@ -292,7 +296,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 3. 最後に、結果の品質をテストします。 [モデルの評価][evaluate-model]モジュールを選択して実験キャンバスにドラッグし、[モデルのスコア付け][score-model]モジュールの出力を、[モデルの評価][evaluate-model]の左側の入力に接続します。
 
     > [!TIP]
-    > [モデルの評価][evaluate-model]モジュールには&2; つの入力ポートがあります。これは、2 つのモデルの対照比較に使用できるためです。 後で別のアルゴリズムを実験に追加し、[モデルの評価][evaluate-model]を使用してどちらの結果が良いかを確認できます。
+    > [モデルの評価][evaluate-model]モジュールには 2 つの入力ポートがあります。これは、2 つのモデルの対照比較に使用できるためです。 後で別のアルゴリズムを実験に追加し、[モデルの評価][evaluate-model]を使用してどちらの結果が良いかを確認できます。
 
 4. 実験を実行します。
 
@@ -310,7 +314,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 - **相対二乗誤差**: 実際の値とすべての実際の値の平均との二乗差を基準にした二乗誤差の平均です。
 - **決定係数**: **R-2 乗値**ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
 
-エラーの各統計情報を小さくすることをお勧めします。 小さい値は、予測が実際の値をより厳密に照合することを示します。 **決定係数**では、値が&1; (1.0) に近づくほど、予測の精度が高くなります。
+エラーの各統計情報を小さくすることをお勧めします。 小さい値は、予測が実際の値をより厳密に照合することを示します。 **決定係数**では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
 
 ## <a name="final-experiment"></a>最終的な実験
 
@@ -377,9 +381,4 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

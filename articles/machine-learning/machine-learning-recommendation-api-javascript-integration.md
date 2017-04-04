@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
 ms.sourcegitcommit: dc07007eec860e0ad7342a4926c6797341719c5b
 ms.openlocfilehash: 20791d5729a65497b5f76f929bf331906ac65818
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -232,9 +235,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [1]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing1.png
 [2]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing2.png
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-/ms.date: 3/8/2017
+ms.date: 03/27/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 4e81088857c0e9cacaf91342227ae63080fc90c5
-ms.openlocfilehash: 780066b1e71d967c64da0a1c1a284ffd5d1b7481
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fcdeac53c79551000b48a47a1afc65e082bcc692
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -46,7 +46,7 @@ File Storage のスケーラビリティおよびパフォーマンスのター�
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
 この概要チュートリアルでは、Microsoft Azure File Storage の基本的な使用方法を説明します。 このチュートリアルでは、次のことを行います。
 
-* Azure ポータルまたは PowerShell を使用して、新しい Azure File 共有の作成、ディレクトリの追加、共有へのローカル ファイルのアップロード、ディレクトリ内のファイルの一覧表示を実行します。
+* Azure Portal または PowerShell を使用して、新しい Azure ファイル共有の作成、ディレクトリの追加、共有へのローカル ファイルのアップロード、ディレクトリ内のファイルの一覧表示を実行します。
 * SMB 共有をマウントする場合と同じように、ファイル共有をマウントします。
 * .NET 用 Azure Storage クライアント ライブラリを使用して、オンプレミスのアプリケーションからファイル共有にアクセスします。 コンソール アプリケーションを作成し、ファイル共有で次の操作を実行します。
   * 共有内のファイルの内容をコンソール ウィンドウに書き込む
@@ -58,8 +58,8 @@ File Storage のスケーラビリティおよびパフォーマンスのター�
 
 File Storage は、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。 新しいストレージ アカウントの作成については、 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account) に関するセクションを参照してください。
 
-## <a name="use-the-azure-portal-to-manage-a-file-share"></a>ファイル共有を管理するための Azure ポータルの使用
-[Azure ポータル](https://portal.azure.com) には、顧客がファイル共有を管理するためのユーザー インターフェイスが用意されています。 ポータルでは、次の操作を実行できます。
+## <a name="use-the-azure-portal-to-manage-a-file-share"></a>Azure Portal を使用したファイル共有の管理
+[Azure Portal](https://portal.azure.com) には、ユーザーがファイル共有を管理するためのユーザー インターフェイスが用意されています。 ポータルでは、次の操作を実行できます。
 
 * ファイル共有の作成
 * ファイル共有からのファイルのアップロードおよびダウンロード
@@ -86,7 +86,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
     ![Screenshot that shows how to create file share in the portal](./media/storage-dotnet-how-to-use-files/files-create-share-4.png)
 
 ### <a name="upload-and-download-files"></a>ファイルのアップロードとダウンロード
-1. 既に作成した&1; つのファイル共有を選択します。
+1. 既に作成した 1 つのファイル共有を選択します。
    
     ![Screenshot that shows how to upload and download files from the portal](./media/storage-dotnet-how-to-use-files/files-upload-download-1.png)
 2. **[アップロード]** をクリックして、ファイルをアップロードするためのユーザー インターフェイスを開きます。
@@ -211,8 +211,8 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 ### <a name="mount-the-file-share-from-an-azure-virtual-machine-running-windows"></a>Windows を実行する Azure の仮想マシンからのファイル共有のマウント
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
-1. 最初に、 [Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページの説明に従って、Azure の仮想マシンを新規作成します。
-2. 次に、「 [Azure ポータルを使用して Windows 仮想マシンにログオンする](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の説明に従って仮想マシンにリモート接続します。
+1. 最初に、[Azure Portal での Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページの手順に従って、新しい Azure 仮想マシンを作成します。
+2. 次に、[Azure Portal を使用した Windows 仮想マシンへのログオン](../virtual-machines/virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページの手順に従って、仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
 ### <a name="persist-your-storage-account-credentials-for-the-virtual-machine"></a>ストレージ アカウントの資格情報を仮想マシンに適用
@@ -264,17 +264,29 @@ net use z: \\samples.file.core.windows.net\logs /u:AZURE\samples <storage-accoun
 File Storage を呼び出すコードを作成する場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。 このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、 [.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/mt347887.aspx) を使用してファイル共有を操作する方法を示します。
 
 ### <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
-Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage Client Library を含む NuGet パッケージをインストールするには、次の手順を実行します。
+Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明しますが、この手順は Visual Studio の他のバージョンでも同様です。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション] をクリックします。
-2. コンソール アプリケーションの名前を入力して、 **[OK]**をクリックします。
-3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]**をクリックします。 "WindowsAzure.Storage" をオンラインで検索し、 **[インストール]** をクリックして Azure Storage Client Library for .NET のパッケージと依存関係をインストールします。
+1. **[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
+2. **[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** の順に選択します。
+3. **[コンソール アプリ (.NET Framework)]** を選択します。
+4. **[名前]** フィールドに、アプリケーションの名前を入力します。
+5. **[OK]** を選択します。
 
-また、この記事のコード例では、 [Microsoft Azure Configuration Manager Library](https://msdn.microsoft.com/library/azure/mt634646.aspx) も使用して、コンソール アプリケーションの app.config ファイルからストレージ接続文字列を取得します。 Azure Configuration Manager を使用すると、アプリケーションが Microsoft Azure で実行されているか、デスクトップ、モバイル、Web アプリケーションから実行されているかに関係なく、実行時に接続文字列を取得できます。
+このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
 
-Azure Configuration Manager パッケージをインストールするには、ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]**を選択します。 "ConfigurationManager" をオンラインで検索し、 **[インストール]** をクリックしてパッケージをインストールします。
+Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure ストレージ クライアント ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
-Azure Configuration Manager の使用はオプションです。 また、.NET Framework の [ConfigurationManager クラス](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)などの API を使用することもできます。
+### <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
+このチュートリアルを完了するには、プロジェクトで参照する必要があるパッケージが 2 つあります。
+
+* [.NET 用 Microsoft Azure ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/): このパッケージを使用すると、ストレージ アカウント内のデータ リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+
+NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
+
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. "WindowsAzure.Storage" をオンラインで検索し、 **[インストール]** をクリックしてストレージ クライアント ライブラリとその依存関係をインストールします。
+3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックして Azure Configuration Manager をインストールします。
 
 ### <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>ストレージ アカウントの資格情報を app.config ファイルに保存
 次に、プロジェクトの app.config ファイルに資格情報を保存します。 次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
@@ -296,8 +308,8 @@ Azure Configuration Manager の使用はオプションです。 また、.NET F
 > 
 > 
 
-### <a name="add-namespace-declarations"></a>名前空間宣言の追加
-ソリューション エクスプローラーで `program.cs` ファイルを開き、このファイルの先頭に次の名前空間宣言を追加します。
+### <a name="add-using-directives"></a>using ディレクティブを追加する
+ソリューション エクスプローラーで `Program.cs` ファイルを開き、次の using ディレクティブをファイルの先頭に追加します。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -542,11 +554,11 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ## <a name="troubleshooting-file-storage-using-metrics"></a>メトリックを使用した File Storage のトラブルシューティング
 Azure ストレージ分析で File Storage のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure ポータル](https://portal.azure.com)から File Storage のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの&1; つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure Portal](https://portal.azure.com) から File Storage のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、File Storage のメトリックを有効にする方法を示します。
 
-最初に、次の `using` ステートメントを program.cs ファイルと、上で追加したファイルに追加します。
+まず、`Program.cs` ファイルで、先ほど追加したディレクティブに加え、次の `using` ディレクティブを追加します。
 
 ```csharp
 using Microsoft.WindowsAzure.Storage.File.Protocol;
@@ -622,7 +634,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 7. **オンプレミスの仮想マシンから Azure File Storage への接続は、Azure ExpressRoute に依存していますか。**
    
     いいえ。 ExpressRoute がない場合も、インターネット アクセス用にポート 445 (TCP 送信) が開いている場合は、オンプレミスからファイル共有にアクセスできます。 ただし、必要であれば File Storage で ExpressRoute を使用できます。
-8. **Azure File Storage の&1; つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
+8. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
    
     現在これはサポートされていません。
 9. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**  
@@ -645,7 +657,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     File Storage に大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 15. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
     
-    Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。 詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/en-us/kb/3114025)」を参照してください。
+    Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。 詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/kb/3114025)」を参照してください。
 16. **IBM MQ での Azure File Storage の使用**
     
     IBM は、IBM MQ ユーザーが IBM のサービスで Azure File Storage を構成する際にガイドとなるドキュメントを公開しました。 詳細については、「 [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure File サービスでセットアップする方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
@@ -653,11 +665,12 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
     
     エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File のトラブルシューティングに関する記事](storage-troubleshoot-file-connection-problems.md)を参照してください。               
 
-18. **Azure ファイルのサーバー側の暗号化を有効にするにはどうすればよいですか。**
+18. **Azure Files のサーバー側暗号化を有効にするにはどうすればよいですか。**
 
-    [サーバー側の暗号化](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption)は、現在プレビューの段階です。 プレビュー期間中は、この機能は新しく作成した Azure Resource Manager (ARM) のストレージ アカウントに対してのみ有効にできます。
-    この機能を Azure Resource Manager のストレージ アカウントで有効にするには、Azure Portal を使用します。 2 月末までには、File Storage の暗号化に [Azure Powershell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx)、[Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs)、[Microsoft Azure Storage リソース プロバイダー API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) が利用できるようになる予定です。 この機能の有効化については、追加料金は発生しません。 Azure File Storage のストレージ サービスの暗号化を有効にすると、データは自動的に暗号化されます。 
-    詳細については、ストレージ サービスの暗号化に関するページを参照してください。 プレビューについて他に質問がある場合は、ssediscussions@microsoft.com に問い合わせることもできます。
+    Azure Files の[サーバー側暗号化](storage-service-encryption.md)は、現在プレビューの段階です。 プレビュー期間中、この機能は、[Azure Portal](https://portal.azure.com) を使用して作成された新しい Azure Resource Manager ストレージ アカウントのみで有効にすることができます。 この機能の有効化については、追加料金は発生しません。 Azure File Storage の Storage サービスの暗号化を有効にすると、データは自動的に暗号化されます。 
+    
+    今後、[Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage)、[Azure CLI](storage-azure-cli.md)、[Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) を使用して File Storage を暗号化できるようにサポートする予定です。 
+    Azure Storage での保存時の暗号化の詳細については、[Storage Service Encryption](storage-service-encryption.md) に関する記事を参照してください。プレビュー期間中に質問が発生した場合は ssediscussions@microsoft.com までお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure File Storage の詳細については、次のリンクを参照してください。
@@ -670,7 +683,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 * [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
 * [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
 * [Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)
-* [Azure File Storage に関する問題のトラブルシューティング](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
+* [Azure File Storage に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)

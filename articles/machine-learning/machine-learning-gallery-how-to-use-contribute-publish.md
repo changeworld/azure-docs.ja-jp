@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 03/31/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: db1ccf3a2dfecb7b30e38a614a1f5454c2a012ca
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -92,10 +93,5 @@ Disqus などのディスカッション ツールを使ってログインする
 ![フィードバック](./media/machine-learning-gallery-how-to-use-contribute-publish/feedback.png)
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

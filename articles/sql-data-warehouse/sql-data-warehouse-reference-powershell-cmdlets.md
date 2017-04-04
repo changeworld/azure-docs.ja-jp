@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 96ac017b469405e0eb106bf5eb391b5273600ab2
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -118,9 +120,4 @@ PowerShell で自動化できるタスクの一覧については、[Azure SQL D
 
 <!--Other Web references-->
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
 ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -181,9 +183,4 @@ go
 <!--Other Web references-->
 [Premium Storage for greater performance predictability]: https://azure.microsoft.com/en-us/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
