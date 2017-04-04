@@ -12,12 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/08/2016
+ms.date: 03/27/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 98307e924927655c8a7de0e8fc6a7c0c2b57af00
-ms.lasthandoff: 12/09/2016
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 7a9a28ce8be7587c84a1188d643c990cc4fb7355
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -36,7 +36,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 **前提条件:**
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
 * [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
@@ -52,8 +52,8 @@ Table Storage を使用したその他の例については、「 [Getting Start
 
 [!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
-### <a name="add-namespace-declarations"></a>名前空間宣言の追加
-次の **using** ステートメントを `program.cs` ファイルの先頭に追加します。
+### <a name="add-using-directives"></a>using ディレクティブを追加する
+次の **using** ディレクティブを `Program.cs` ファイルの先頭に追加します。
 
 ```csharp
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
@@ -65,7 +65,7 @@ using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 [!INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-table-service-client"></a>Table サービス クライアントを作成する
-**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 サービス クライアントを作成する方法の&1; つを次に示します。
+**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
 
 ```csharp
 // Create the table client.
@@ -141,7 +141,7 @@ table.Execute(insertOperation);
 ## <a name="insert-a-batch-of-entities"></a>エンティティのバッチを挿入する
 1 回の書き込み操作でエンティティのバッチをテーブルに挿入できます。 バッチ操作に関しては、次の事項にも留意してください。
 
-* 更新、削除、および挿入を同じ&1; 回のバッチ操作で実行できます。
+* 更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
 * 1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
 * 1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
 * クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。

@@ -18,13 +18,13 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 31897e11abfe70ed08381f0d13c6bdabe56c28ed
-ms.openlocfilehash: 05ff751255000220be3b59d013b6106473e4732b
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 25a35912b72f7f44b83ccd49f298b44665318418
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="make-a-remote-connection-to-a-kuburnetes-dcos-or-docker-swarm-cluster"></a>Kuburnetes、DC/OS、または Docker Swarm クラスターへのリモート接続を確立する
+# <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Kubernetes、DC/OS、または Docker Swarm クラスターへのリモート接続を確立する
 Azure Container Service クラスターを作成したら、クラスターに接続してワークロードのデプロイと管理を行う必要があります。 この記事では、リモート コンピューターからクラスターのマスター VM に接続する方法について説明します。 
 
 Kubernetes クラスター、DC/OS クラスター、Docker Swarm クラスターはローカルで HTTP エンドポイントを提供します。 Kubernetes では、このエンドポイントがセキュリティ保護されてインターネット上に公開されているため、インターネットに接続されている任意のコンピューターから `kubectl` コマンド ライン ツールを実行することによってアクセスできます。 
@@ -59,7 +59,7 @@ az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 または、[Kubernetes リリース ページ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md)から最新のクライアントを直接ダウンロードすることもできます。 詳細については、「[Installing and Setting up kubectl (kubectl のインストールとセットアップ)](https://kubernetes.io/docs/user-guide/prereqs/)」を参照してください。
 
 ### <a name="download-cluster-credentials"></a>クラスターの資格情報のダウンロード
-`kubectl` をインストールしたら、クラスターの資格情報をコンピューターにコピーする必要があります。 資格情報を取得する&1; つの方法は、`az acs kubernetes get-credentials` コマンドを使用することです。 リソース グループの名前とコンテナー サービス リソースの名前を渡します。
+`kubectl` をインストールしたら、クラスターの資格情報をコンピューターにコピーする必要があります。 資格情報を取得する 1 つの方法は、`az acs kubernetes get-credentials` コマンドを使用することです。 リソース グループの名前とコンテナー サービス リソースの名前を渡します。
 
 
 ```azurecli
@@ -102,7 +102,7 @@ Kubernetes UI は現在、`http://localhost:8001/ui` で利用できます。
 Azure Container Service によってデプロイされた DC/OS と Docker Swarm クラスターを使用するには、次の手順に従って、ローカルの Linux、OS X、または Windows システムから Secure Shell (SSH) トンネルを作成してください。 
 
 > [!NOTE]
-> ここでの手順では、SSH 経由の TCP トラフィックのトンネリングに重点を置いています。 また、内部クラスター管理システムの&1; つを使用して対話型の SSH セッションを開始することもできますが、これはお勧めしません。 内部システムで直接作業すると、意図せずに構成を変更してしまうおそれがあります。  
+> ここでの手順では、SSH 経由の TCP トラフィックのトンネリングに重点を置いています。 また、内部クラスター管理システムの 1 つを使用して対話型の SSH セッションを開始することもできますが、これはお勧めしません。 内部システムで直接作業すると、意図せずに構成を変更してしまうおそれがあります。  
 > 
 
 ### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>Linux または OS X での SSH トンネルの作成
@@ -175,7 +175,7 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
 2. アプリケーションを実行します。
 
-3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第&1; マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「2200」と入力します。
+3. ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。 **[ホスト名]** は `adminuser@PublicDNSName` のようになります。 **[ポート]** に「2200」と入力します。
 
     ![PuTTY configuration 1](media/putty1.png)
 

@@ -15,10 +15,10 @@
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。
+2. ハイブリッド接続の接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した適切な値に置き換えます。 必ず完全修飾名前空間名を使用してください。
    
     ```csharp
-    private const string RelayNamespace = "{RelayNamespace}";
+    private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
     private const string ConnectionName = "{HybridConnectionName}";
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
@@ -138,7 +138,7 @@
    
         public class Program
         {
-            private const string RelayNamespace = "{RelayNamespace}";
+            private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
             private const string ConnectionName = "{HybridConnectionName}";
             private const string KeyName = "{SASKeyName}";
             private const string Key = "{SASKey}";
@@ -239,9 +239,4 @@
         }
     }
     ```
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

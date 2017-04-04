@@ -1,5 +1,5 @@
 ---
-title: "共存する ExpressRoute とサイト間 VPN の接続の構成 | Microsoft Docs"
+title: "共存する ExpressRoute とサイト間 VPN の接続の構成: クラシック: Azure | Microsoft Docs"
 description: "この記事では、クラシック デプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。"
 documentationcenter: na
 services: expressroute
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7e866a218c003390e0281f1adce7c0d843d006c0
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-for-the-classic-deployment-model"></a>クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - クラシック](expressroute-howto-coexist-classic.md)
@@ -29,6 +30,8 @@ ms.openlocfilehash: aae9215ea67ff254bb3b67c5b113ad55eb3b1ca2
 > 
 
 サイト間 VPN と ExpressRoute が構成可能な場合、いくつかの利点があります。 ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続したりできます。 この記事では、両方のシナリオを構成する手順について説明します。 この記事は、クラシック デプロイ モデルに適用されます。 この構成は、ポータルで使用できません。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Azure のデプロイ モデルについて**
 
@@ -76,7 +79,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   
     この手順では、共存できる接続を作成するために、ゲートウェイを削除する必要があるので、新しいゲートウェイを構成します。 これは、ゲートウェイを削除して接続を再作成する間、クロスプレミス接続でダウンタイムが発生しますが、VM やサービスを新しい仮想ネットワークに移行する必要がないことを意味します。 移行するように構成されている場合でも、VM やサービスは、ゲートウェイの構成中にロード バランサーを経由して通信できます。
 
-## <a name="a-namenewato-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
+## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
 1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。 必ず、これらの手順で指定されているコマンドレットを使用してください。 
@@ -182,7 +185,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="a-nameaddato-configure-coexsiting-connections-for-an-already-existing-vnet"></a><a name="add"></a>既存の VNet の共存する接続を構成するには
+## <a name="add"></a>既存の VNet の共存する接続を構成するには
 既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やしてください。 このセクションの手順で、その方法を説明します。
 
 ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの [手順 6、サイト間 VPN ゲートウェイの作成手順](#vpngw) に進みます。
@@ -222,10 +225,5 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute の FAQ](expressroute-faqs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

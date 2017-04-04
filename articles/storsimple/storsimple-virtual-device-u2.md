@@ -4,7 +4,7 @@ description: "Microsoft Azure 仮想ネットワークで StorSimple 仮想デ�
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: f37752a5-cd0c-479b-bef2-ac2c724bcc37
 ms.service: storsimple
@@ -12,12 +12,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/20/2017
+ms.date: 03/22/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 8b07ac76ebf40cd9bcf428711c2c0f3f3d917388
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 48d9d8ae97eb763932dd6a59a7df01ae92c92eff
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -33,7 +33,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
-| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートするすべての Azure リージョン<br></br>Premium Storage リージョンの一覧については、[Azure のリージョン別サービス](https://azure.microsoft.com/en-us/regions/services)に関するページを参照してください。 VM シリーズ DS、DSV2、Fs、GS がサポートされているリージョンを確認します。 |
+| **利用可能なリージョン** |すべての Azure リージョン |Premium Storage をサポートするすべての Azure リージョン<br></br> Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。 |
 | **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/storage-premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
@@ -69,7 +69,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium Storage リージョンの一覧については、[Azure のリージョン別サービス](https://azure.microsoft.com/en-us/regions/services)に関するページを参照してください。 VM シリーズ DS、DSV2、Fs、GS がサポートされているリージョンを確認します。
+* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 * 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             
@@ -135,7 +135,7 @@ Windows PowerShell インターフェイスを使用して仮想デバイスに�
 ## <a name="connect-remotely-to-the-virtual-device"></a>仮想デバイスへのリモート接続
 Windows PowerShell インターフェイス経由での仮想デバイスへのリモート アクセスは既定では有効になっていません。 リモート管理は、まず仮想デバイスで有効にして、次に、仮想デバイスへのアクセスに使用するクライアントで有効にする必要があります。
 
-リモートで接続するための&2; 段階のプロセスについては、以下で詳しく説明します。
+リモートで接続するための 2 段階のプロセスについては、以下で詳しく説明します。
 
 ### <a name="step-1-configure-remote-management"></a>手順 1. リモート管理の構成
 StorSimple 仮想デバイスのリモート管理を構成するには、次の手順を実行します。
@@ -202,7 +202,7 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 仮想デバイスを始めからやり直したい場合は、非アクティブにしてから削除し、新しく作成し直します。 物理デバイスをリセットするときと同様に、新しい仮想デバイスには更新プログラムがインストールされていないため、使用する前に更新プログラムを必ず確認してください。
 
 ## <a name="fail-over-to-the-virtual-device"></a>仮想デバイスへのフェールオーバー
-障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの&1; つです。 このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。 さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。 DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。 DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
+障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの 1 つです。 このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。 さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。 DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。 DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
 
 > [!NOTE]
 > * 仮想デバイスを DR のセカンダリ デバイスとして使用する場合は、8010 には 30 TB の Standard Storage があり、8020 には 64 TB の Premium Storage があることに注意してください。 より容量が多い 8020 仮想デバイスは、DR シナリオにより適しています。

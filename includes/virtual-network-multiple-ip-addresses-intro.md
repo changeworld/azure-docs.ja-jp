@@ -14,4 +14,4 @@ Azure 仮想マシン (VM) には、1 つ以上のネットワーク インタ�
 
 VM に接続された各 NIC には、1 つ以上の IP 構成が関連付けられています。 各構成には、1 つの静的または動的プライベート IP アドレスが割り当てられています。 また、1 つのパブリック IP アドレス リソースが関連付けられている場合もあります。 パブリック IP アドレス リソースには、動的または静的なパブリック IP アドレスが割り当てられています。 Azure における IP アドレスの詳細については、「[Azure 内の IP アドレス](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 
 
-最大 250 個のプライベート IP アドレスを各 NIC に割り当てることができます。 各 NIC に複数のパブリック IP アドレスを割り当てることができますが、Azure サブスクリプションで使用できるパブリック IP アドレスの数には制限があります。 詳細については、[Azure の制限](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事を参照してください。
+NIC に割り当てることができるプライベート IP アドレスの数には上限があります。 また、Azure サブスクリプションで使用できるパブリック IP アドレスの数にも上限があります。 詳細については、[Azure の制限](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。

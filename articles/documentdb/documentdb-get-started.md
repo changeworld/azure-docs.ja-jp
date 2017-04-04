@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 03/19/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 639eb424c31abea4106cf37b14fee99a8fd9d307
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 648aa01beaffccf69250f1028e27bc13ed70837c
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -100,7 +100,7 @@ DocumentDB アカウントを作成しましょう。 使用するアカウン�
 > 
 > 
 
-次に、これら&2; つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
+次に、これら 2 つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
 
     public class Program
     {
@@ -211,7 +211,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 おめでとうございます。 これで、DocumentDB ドキュメント コレクションが作成されました。  
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで&1; つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをデータベースにインポートできます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをデータベースにインポートできます。
 
 まず、この例の DocumentDB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 **GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
 
@@ -291,7 +291,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
         }
     }
 
-さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう&1; つは Wakefield Family のドキュメントです。
+さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう 1 つは Wakefield Family のドキュメントです。
 
 次のコードをコピーし、**GetStartedDemo** メソッドのドキュメント コレクションの作成処理の後に追加してください。
 
@@ -411,7 +411,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
             Console.ReadKey();
     }
 
-次のコードをコピーし、**GetStartedDemo** メソッドの&2; つ目のドキュメント作成処理の後に追加します。
+次のコードをコピーし、**GetStartedDemo** メソッドの 2 つ目のドキュメント作成処理の後に追加します。
 
     await this.CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
 
@@ -426,7 +426,7 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-DocumentDB クエリのスコープは既に&1; つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
+DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
 ## <a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
 DocumentDB は、JSON ドキュメントの置換をサポートします。  
@@ -470,7 +470,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
          Console.WriteLine("Deleted Family {0}", documentName);
     }
 
-次のコードをコピーし、**GetStartedDemo** メソッドの末尾にある&2; つ目のクエリ実行処理の後に貼り付けます。
+次のコードをコピーし、**GetStartedDemo** メソッドの末尾にある 2 つ目のクエリ実行処理の後に貼り付けます。
 
     await this.ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "Andersen.1", andersenFamily);
     
@@ -529,7 +529,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 ご利用ありがとうございます。 この NoSQL チュートリアルを完了し、実用的な C# コンソール アプリケーションを入手しました。
 
 ## <a id="GetSolution"></a> 完全な NoSQL チュートリアル ソリューションを入手する
-このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[Github](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) から入手できます。 
+このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) から入手できます。 
 
 GetStarted ソリューションをビルドするには、以下のものが必要です。
 
