@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: partners
 ms.date: 12/27/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 70bc2363172199455785e90753560cc2281432b1
 ms.openlocfilehash: eeb858514af80d1e6074b7c86ead5955f0d22ad2
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -97,9 +99,4 @@ ms.openlocfilehash: eeb858514af80d1e6074b7c86ead5955f0d22ad2
 [sql_sentry_twitter]:https://twitter.com/SQLSentry
 
 <!--Video links-->
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

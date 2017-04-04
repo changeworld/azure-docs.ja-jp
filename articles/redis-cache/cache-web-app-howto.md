@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/21/2017
+ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 5e7520f8a023cd5feb8401483161e7296a413b02
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 02e30f7fcbe0782528460b542a75f1d11c7286a1
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/22/2017
 > 
 > 
 
-このチュートリアルでは、Visual Studio 2015 を使用して ASP.NET Web アプリケーションを作成し Azure App Service の Web アプリにデプロイする方法を紹介します。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示します。また Azure Redis Cache を使用して、キャッシュにデータを保存したりキャッシュからデータを取得したりするための各種の方法を紹介しています。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
+このチュートリアルでは、Visual Studio 2017 を使用して ASP.NET Web アプリケーションを作成し Azure App Service の Web アプリにデプロイする方法を紹介します。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示します。また Azure Redis Cache を使用して、キャッシュにデータを保存したりキャッシュからデータを取得したりするための各種の方法を紹介しています。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
 
 学習内容:
 
@@ -222,7 +222,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 5. **ソリューション エクスプローラー**で **Global.asax** を展開し、**Global.asax.cs** をダブルクリックして開きます。
    
     ![Global.asax.cs][cache-global-asax]
-6. ファイルの上部に次の&2; つの `using` ステートメントを、他の `using` ステートメントに続けて追加します。
+6. ファイルの上部に次の 2 つの `using` ステートメントを、他の `using` ステートメントに続けて追加します。
 
     ```c#
     using System.Data.Entity;
@@ -248,7 +248,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
         url: "{controller}/{action}/{id}",
         defaults: new { controller = "Teams", action = "Index", id = UrlParameter.Optional }
     );
-```
+    ```
 
 
 ### <a name="configure-the-views"></a>ビューの構成
@@ -292,14 +292,14 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 3. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、**TeamsController.cs** をダブルクリックして開きます。
    
     ![Teams controller][cache-teamscontroller]
-4. 次の&2; つの `using` ステートメントを **TeamsController.cs** に追加します。
+4. 次の 2 つの `using` ステートメントを **TeamsController.cs** に追加します。
 
     ```c#   
     using System.Configuration;
     using StackExchange.Redis;
     ```
 
-5. 次の&2; つのプロパティを `TeamsController` クラスに追加します。
+5. 次の 2 つのプロパティを `TeamsController` クラスに追加します。
 
     ```c#   
     // Redis Connection string info
@@ -411,7 +411,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. 以下の&3; つのメソッドを `TeamsController` クラスに追加して、前のコード スニペットで追加した switch ステートメントにある&3; 種類のアクション (`playGames`、`clearCache`、`rebuildDB`) を実装します。
+1. 以下の 3 つのメソッドを `TeamsController` クラスに追加して、前のコード スニペットで追加した switch ステートメントにある 3 種類のアクション (`playGames`、`clearCache`、`rebuildDB`) を実装します。
    
     `PlayGames` メソッドは、あるシーズンのゲームをシミュレートすることでチームの統計情報を更新し、結果をデータベースに保存して、古くなったデータをキャッシュから消去します。
 
@@ -460,7 +460,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. キャッシュやデータベースからチームの統計情報を取得する各種の方法を実装するために、以下の&4; つのメソッドを `TeamsController` クラスに追加します。 いずれのメソッドも戻り値は `List<Team>` で、それがビューに表示されます。
+1. キャッシュやデータベースからチームの統計情報を取得する各種の方法を実装するために、以下の 4 つのメソッドを `TeamsController` クラスに追加します。 いずれのメソッドも戻り値は `List<Team>` で、それがビューに表示されます。
    
     `GetFromDB` メソッドは、データベースからチームの統計情報を読み取ります。
    
@@ -572,7 +572,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 ### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する
-このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この&3; つのメソッドに変更を加えます。
+このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この 3 つのメソッドに変更を加えます。
 
 1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
 
@@ -773,7 +773,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 いくつかのアクションをクリックし、各種のソースからデータを取得してみてください。 それぞれの方法で、データベースやキャッシュからデータを取得するのにかかる時間の違いをよく観察してください。
 
 ## <a name="delete-the-resources-when-you-are-finished-with-the-application"></a>アプリケーションを使い終わったときにリソースを削除する
-チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 「 **Azure リソースのプロビジョニング** 」セクションの [[Deploy to Azure (Azure へのデプロイ)]](#provision-the-azure-resources) ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを&1; 回の操作でまとめて削除できます。
+チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 「 **Azure リソースのプロビジョニング** 」セクションの [[Deploy to Azure (Azure へのデプロイ)]](#provision-the-azure-resources) ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを 1 回の操作でまとめて削除できます。
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]**をクリックします。
 2. リソース グループの名前を **[フィルター項目]** ボックスに入力します。

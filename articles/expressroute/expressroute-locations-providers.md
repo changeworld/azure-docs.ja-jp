@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 03/22/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9e89f7d362a61f39af2a6e2a94241f99b95806a4
+ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
+ms.openlocfilehash: ccb33119c7fb87cf3d56c02d2a9ac727c347fed6
 ms.lasthandoff: 03/22/2017
 
 ---
@@ -34,7 +34,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 ![場所のマップ][0]
 
-地理的リージョン内の少なくとも&1; つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
+地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
 
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
@@ -74,10 +74,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **釜山** |LG CNS+ |
 | **チェンナイ** |Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **シカゴ** |AT&T NetBond、Comcast、Equinix、Level 3 Communications、Verizon、Zayo Group |
-| **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon |
+| **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
 | **ダブリン** |Colt、Telecity Group |
 | **香港** |British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
-| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone |
+| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **ラスベガス** |Level 3 Communications+、Megaport |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
@@ -109,6 +109,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ダラス** |Equinix、Megaport、Verizon |
 | **ニューヨーク** |Equinix、Level 3 Communications+、Verizon |
 | **シリコン バレー** | Equinix |
+| **シアトル** | Equinix+ |
 | **ワシントン DC** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
 ### <a name="china"></a>中国
@@ -125,7 +126,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ベルリン** |Colt+、e-shelter、Megaport+ |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
-## <a name="nonpartners"></a>一覧にないサービス プロバイダー経由の接続
+## <a name="c1partners"></a>一覧にないサービス プロバイダー経由の接続
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
@@ -144,11 +145,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
 | **アムステルダム** | Equinix | Eurofiber |
-| **ロンドン** | Equinix | Exponential E、HSO |
+| **ダラス** | Equinix、Megaport | C3ntro、Data Foundry |
+| **ロンドン** | Equinix | Exponential E、HSO、NexGen Networks |
 | **ニューヨーク** |Equinix |Lightower |
 | **シアトル** |Equinix |Alaska Communications |
 | **シリコン バレー** |Equinix |XO Communications |
-| **シンガポール** |Equinix |1CLOUDSTAR |
+| **シンガポール** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited |
 | **シドニー** | Megaport | Macquarie Telecom Group|
 | **東京** | Equinix | アルテリア・ネットワークス株式会社 |
 | **ワシントン DC** |Equinix | Lightower、Masergy |
@@ -160,7 +162,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | --- | --- |
 | **アジア** |Avanade Inc.、OneAs1a |
 | **オーストラリア** | IT Consultancy |
-| **ヨーロッパ** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite |
+| **ヨーロッパ** |Avanade Inc.、Dotnet Solutions、MSG Services、Nelite、sol-tec |
 | **北米** |Avanade Inc.、Equinix Professional Services、Perficient、Project Leadership |
 | **南アメリカ** |Avanade Inc. |
 ## <a name="next-steps"></a>次のステップ

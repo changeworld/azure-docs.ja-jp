@@ -67,9 +67,9 @@ azure config mode arm
 ```
 
 ## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Azure リソース テンプレートおよびリソース グループについて
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを&1; つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。 既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。 この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを&1; つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に&1; コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを&1; つのグループとしてデプロイするよう指示します。
+ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。 何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフ サイクル全体を管理できます。
 
@@ -230,7 +230,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 * VM の管理者ユーザー名。
 * パスワード。
 * 外部で使用されるドメイン名。
-* Ubuntu Server のバージョン番号。ただし、リストのうち&1; つだけを許可します。
+* Ubuntu Server のバージョン番号。ただし、リストのうち 1 つだけを許可します。
 
 [ユーザー名とパスワードの要件](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
 
@@ -677,9 +677,9 @@ info:    group deployment create command OK
 ### <a name="step-2-obtain-the-vhd"></a>手順 2. VHD を取得する
 当然ながら、これには .vhd が必要になります。 既に Azure にあるものを使用するか、アップロードすることができます。
 
-Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-Linux ベースの仮想マシンについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
+Linux ベースの仮想マシンについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
 ### <a name="step-3-create-the-virtual-machine-by-using-the-template"></a>手順 3. テンプレートを使用して仮想マシンを作成する
 これで、.vhd に基づく新しい仮想マシンを作成する準備が整いました。 デプロイ先のグループを作成するには、次のように `azure group create <location>` を使用します。
@@ -759,7 +759,7 @@ info:    group deployment create command OK
 Azure PowerShell コマンドで GitHub テンプレート リポジトリのリソース マネージャー テンプレートを使用して、仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、次の手順に従います。
 
 ### <a name="step-1-examine-the-json-file-for-the-template"></a>手順 1. テンプレートの JSON ファイルを確認する
-テンプレートの JSON ファイルの内容を次に示します。 最新のバージョンについては、 [Github リポジトリのテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)をご覧ください。 このトピックでは、テンプレートの呼び出しに `--template-uri` スイッチを使用しますが、ローカル バージョンを渡すために `--template-file` スイッチを使用することもできます。
+テンプレートの JSON ファイルの内容を次に示します。 最新のバージョンについては、[GitHub リポジトリのテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)をご覧ください。 このトピックでは、テンプレートの呼び出しに `--template-uri` スイッチを使用しますが、ローカル バージョンを渡すために `--template-file` スイッチを使用することもできます。
 
 ```json
 {
@@ -1182,7 +1182,7 @@ info:    group delete command OK
 ```azurecli
 azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 ```
-発生している問題をすばやく見つけて、修正し、やり直すことができます。 次のケースでは、テンプレートによって&2; つの VM が同時に作成されたため、.vhd にロックがかけられています。 (テンプレートの修正後、デプロイは速やかに正常終了しました)。
+発生している問題をすばやく見つけて、修正し、やり直すことができます。 次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。 (テンプレートの修正後、デプロイは速やかに正常終了しました)。
 
 ```json
 {

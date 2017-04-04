@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/06/2017
+ms.date: 03/23/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 35e193a49aac7e3aaf91e2a4798b6eeed8377aae
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: c8a915055318697ade229837653df4c105279299
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -47,6 +47,8 @@ Azure DocumentDB .NET Core SDK の NoSQL チュートリアルへようこそ。
 * データベースを削除する
 
 時間がなくても 心配はありません。 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started) で完全なソリューションを入手できます。 簡単な手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
+
+DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成する方法については、 [DocumentDB を使用した Xamarin モバイル アプリケーションの構築](documentdb-mobile-apps-with-xamarin.md)に関するページを参照してください。
 
 その後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。 マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
@@ -105,7 +107,7 @@ using Newtonsoft.Json;
 > [!IMPORTANT]
 > この NoSQL チュートリアルを完成させるには、上記の依存関係を追加します。
 
-次に、これら&2; つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
+次に、これら 2 つの定数と *client* 変数をパブリック クラス *Program* の下に追加します。
 
 ```csharp
 class Program
@@ -226,7 +228,7 @@ private async Task GetStartedDemo()
 ご利用ありがとうございます。 これで、DocumentDB ドキュメント コレクションが作成されました。  
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで&1; つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の [データ移行ツール](documentdb-import-data.md)を使用できます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の [データ移行ツール](documentdb-import-data.md)を使用できます。
 
 まず、この例の DocumentDB 内に格納するオブジェクトの **Family** クラスを作成する必要があります。 さらに、**Family** 内で使用するサブクラスとして、**Parent**、**Child**、**Pet**、**Address** を作成します。 ドキュメントには、JSON で **id** としてシリアル化される **Id** プロパティが必要であることに注意してください。 **GetStartedDemo** の後に次の内部サブクラスを追加することで、これらのクラスを作成します。
 
@@ -310,7 +312,7 @@ private async Task CreateFamilyDocumentIfNotExists(string databaseName, string c
 }
 ```
 
-さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう&1; つは Wakefield Family のドキュメントです。
+さらに、2 つのドキュメントを挿入します。1 つは Andersen Family のドキュメント、もう 1 つは Wakefield Family のドキュメントです。
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメント コレクションの作成処理のすぐ下に追加してください。
 
@@ -450,7 +452,7 @@ this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/documentdb-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
 
-DocumentDB クエリのスコープは既に&1; つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
+DocumentDB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](documentdb-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 DocumentDB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
 ## <a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
 DocumentDB は、JSON ドキュメントの置換をサポートします。  
@@ -589,6 +591,7 @@ Visual Studio で DocumentDB .NET Core SDK への参照を復元するには、�
 
 ## <a name="next-steps"></a>次のステップ
 * さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「 [DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
+* DocumentDB .NET Core SDK を使用して Xamarin iOS、Android、またはフォーム アプリケーションを作成する方法については、 [DocumentDB を使用した Xamarin モバイル アプリケーションの構築](documentdb-mobile-apps-with-xamarin.md)に関するページを参照してください。
 * DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
 * [DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 * [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。

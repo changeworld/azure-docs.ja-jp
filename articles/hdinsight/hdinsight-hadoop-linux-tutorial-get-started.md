@@ -17,21 +17,21 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: d038245747ff8cfd2c80d7a7e0f05373ccb1e5fe
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 24bb7e2ffd212594f50bab735e86d74ab95d8c62
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop チュートリアル: HDInsight で Hadoop を使用する
 
-この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には&6; つのクラスターの種類があります。[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md)、[Interactive Hive (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)、[R Server](hdinsight-hadoop-r-server-overview.md) です。  クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は&6; つのクラスターの種類すべてでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。  
+この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には 6 つのクラスターの種類があります。[Hadoop](hdinsight-hadoop-introduction.md)、[Spark](hdinsight-apache-spark-overview.md)、[HBase](hdinsight-hbase-overview.md)、[Storm](hdinsight-storm-overview.md)、[Interactive Hive (プレビュー)](hdinsight-hadoop-use-interactive-hive.md)、[R Server](hdinsight-hadoop-r-server-overview.md) です。  クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は 6 つのクラスターの種類すべてでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション**:&1; か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free)で作成できます。
+* **Azure サブスクリプション**: 1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free)で作成できます。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -95,7 +95,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。 クラスター�
    > 
 5. **[実行]**をクリックします。 クエリ エディターの下に **[Query Process Results]** セクションが表示され、ジョブに関する情報が表示されます。 
    
-    クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。 **hivesampletable**という名前のテーブルが&1; つ表示されます。 このサンプルの Hive テーブルにはすべての HDInsight クラスターが付属します。
+    クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。 **hivesampletable**という名前のテーブルが 1 つ表示されます。 このサンプルの Hive テーブルにはすべての HDInsight クラスターが付属します。
    
     ![HDInsight Hive ビュー](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png)に関するページを参照してください。
 6. 手順 4. と手順 5 を繰り返し、次のクエリを実行します。
@@ -131,7 +131,7 @@ HDInsight でデータを分析する方法の詳細については、次を参�
 
 * Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Hive の使用][hdinsight-use-hive]に関する記事を参照してください。
 * データの変換に使用される言語 Pig の詳細については、[HDInsight での Pig の使用][hdinsight-use-pig]に関する記事を参照してください。
-* Hadoop 上のデータを処理するプログラムを作成する方法の&1; つである MapReduce の詳細については、[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]に関する記事を参照してください。
+* Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]に関する記事を参照してください。
 * HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下を参照してください。

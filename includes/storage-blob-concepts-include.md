@@ -14,7 +14,7 @@ BLOB サービスには、次のコンポーネントが含まれます。
 
 ![BLOB アーキテクチャ](./media/storage-blob-concepts-include/blob1.png)
 
-* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 このストレージ アカウントは、**汎用ストレージ アカウント**にすることも、オブジェクト/BLOB の格納に特化した **BLOB ストレージ アカウント**にすることもできます。 ストレージ アカウントの詳細については、「 [Azure ストレージ アカウント](../articles/storage/storage-create-storage-account.md)」を参照してください。
+* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 このストレージ アカウントは、**汎用ストレージ アカウント**にすることも、オブジェクト/BLOB の格納に特化した **BLOB ストレージ アカウント**にすることもできます。 詳細については、「[Azure ストレージ アカウントについて](../articles/storage/storage-create-storage-account.md)」を参照してください。
 * **コンテナー** : コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。 コンテナー名は小文字で入力する必要があります。
 * **BLOB** : 任意の種類およびサイズのファイルです。 Azure ストレージが提供する BLOB には、ブロック BLOB とページ BLOB (ディスク)、追加 BLOB の 3 種類があります。
   
@@ -22,10 +22,5 @@ BLOB サービスには、次のコンポーネントが含まれます。
   
     *ページ BLOB* は最大 1 TB のサイズにすることができます。読み取り/書き込み操作を頻繁に実行する場合はこの BLOB が効率的です。 Azure の仮想マシンでは、ページ BLOB を OS とデータ ディスクとして使用します。
   
-    コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](https://msdn.microsoft.com/library/azure/dd135715.aspx)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+    コンテナーと BLOB の名前付け規則については、「 [コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」を参照してください。
 

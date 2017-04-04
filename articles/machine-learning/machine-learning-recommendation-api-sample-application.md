@@ -12,8 +12,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/31/2017
 ms.author: luisca
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: machine-learning-datamarket-deprecation
 translationtype: Human Translation
 ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
 ms.openlocfilehash: 9afbae9b7c24c72cbb2ef64e693f7a317dc81a46

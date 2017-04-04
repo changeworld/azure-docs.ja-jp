@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
-ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: 9366bae67be7d1abf932d07971d2062c7bd29f3c
 ms.openlocfilehash: 49825cc7455ae082ef750a2a31abbd2d71693c79
 ms.lasthandoff: 02/27/2017
+
 
 
 ---

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
-ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 102eab0e2e915521f8702b526dda886a2502f40b
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -67,7 +67,7 @@ Azure Portal を使用して仮想ネットワーク間を接続する場合、�
 
 VNet 間接続の詳細については、この記事の最後にある「[VNet 間の考慮事項](#faq)」を参照してください。
 
-### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>設定例
+### <a name="values"></a>設定例
 以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。 ここでは、例として示すために VNet ごとに複数のアドレス空間を使用しますが、 VNet 間構成に複数のアドレス空間は必要ありません。
 
 **TestVNet1 の値:**
@@ -116,18 +116,18 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
   * 名前: TestVNet4toTestVNet1
   * 共有キー: 独自の共有キーを作成できます。 この例では、abc123 を使用します。 ここで重要なのは、VNet 間の接続を作成するときに、この値を一致させることです。
 
-## <a name="a-namecreatvneta1-create-and-configure-testvnet1"></a><a name="CreatVNet"></a>1.TestVNet1 の作成と構成
+## <a name="CreatVNet"></a>1.TestVNet1 の作成と構成
 既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。 特に、他のネットワークと重複している可能性のあるサブネットに注意してください。 サブネットの重複があると、接続が適切に動作しません。 VNet が正しい設定で構成されていたら、「 [DNS サーバーの指定](#dns) 」セクションの手順に進んでください。
 
 ### <a name="to-create-a-virtual-network"></a>仮想ネットワークを作成するには
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="a-namesubnetsa2-add-additional-address-space-and-create-subnets"></a><a name="subnets"></a>2.アドレス空間の追加とサブネットの作成
+## <a name="subnets"></a>2.アドレス空間の追加とサブネットの作成
 VNet が作成されたら、アドレス空間をさらに追加してサブネットを作成することができます。
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="a-namegatewaysubneta3-create-a-gateway-subnet"></a><a name="gatewaysubnet"></a>3.ゲートウェイ サブネットの作成
+## <a name="gatewaysubnet"></a>3.ゲートウェイ サブネットの作成
 仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。 将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。
 
 練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の[設定例](#values)を参照してください。
@@ -137,21 +137,21 @@ VNet が作成されたら、アドレス空間をさらに追加してサブネ
 ### <a name="to-create-a-gateway-subnet"></a>ゲートウェイ サブネットを作成するには
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## <a name="a-namednsservera4-specify-a-dns-server-optional"></a><a name="DNSServer"></a>4.DNS サーバーの指定 (省略可能)
-VNet にデプロイされた仮想マシン用に名前解決が必要な場合は、DNS サーバーを指定する必要があります。
+## <a name="DNSServer"></a>4.DNS サーバーの指定 (省略可能)
+VNet 間接続に DNS は不要です。 ただし仮想ネットワークにデプロイされたリソースで名前解決を使用する場合は、DNS サーバーを指定する必要があります。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。 この設定で、DNS サーバーは作成されません。
 
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## <a name="a-namevnetgatewaya5-create-a-virtual-network-gateway"></a><a name="VNetGateway"></a>5.仮想ネットワーク ゲートウェイの作成
+## <a name="VNetGateway"></a>5.仮想ネットワーク ゲートウェイの作成
 この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 完了までに最大で 45 分かかることがあります。 練習としてこの構成を作成する場合は、[設定例](#values)を参照してください。
 
 ### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## <a name="a-namecreatetestvnet4a6-create-and-configure-testvnet4"></a><a name="CreateTestVNet4"></a>6.TestVNet4 の作成と構成
+## <a name="CreateTestVNet4"></a>6.TestVNet4 の作成と構成
 TestVNet1 を構成したら、前の手順を繰り返して TestVNet4 を作成します。使用する値は TestVNet4 の値に置き換えてください。 TestVNet1 の仮想ネットワーク ゲートウェイの作成が完了するまで待つ必要はありません。すぐに TestVNet4 を構成できます。 独自の値を使用する場合は、接続先とするどの VNet ともアドレス空間が重複しないようにしてください。
 
-## <a name="a-nametestvnet1connectiona7-configure-the-testvnet1-connection"></a><a name="TestVNet1Connection"></a>7.TestVNet1 の接続の構成
+## <a name="TestVNet1Connection"></a>7.TestVNet1 の接続の構成
 TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成が両方とも完了したら、仮想ネットワーク ゲートウェイの接続を作成できます。 このセクションでは、VNet1 から VNet4 への接続を作成します。
 
 1. **[すべてのリソース]** から VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、**[TestVNet1GW]** に移動します。 **[TestVNet1GW]** をクリックして仮想ネットワーク ゲートウェイのブレードを開きます。
@@ -173,10 +173,10 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
     ![共有キー](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "共有キー")
 10. ブレード下部の **[OK]** をクリックして、変更を保存します。
 
-## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8.TestVNet4 の接続の構成
+## <a name="TestVNet4Connection"></a>8.TestVNet4 の接続の構成
 次は、TestVNet4 から TestVNet1 への接続を作成します。 TestVNet1 から TestVNet4 への接続を作成したときと同じ方法で作成できます。 必ず同一の共有キーを使用してください。
 
-## <a name="a-nameverifyconnectiona9-verify-your-connection"></a><a name="VerifyConnection"></a>9.接続を確認する
+## <a name="VerifyConnection"></a>9.接続を確認する
 接続を確認します。 仮想ネットワーク ゲートウェイごとに、次の操作を行います。
 
 1. 仮想ネットワーク ゲートウェイのブレードを見つけます。 たとえば、**TestVNet4GW** のブレードとします。 
@@ -190,7 +190,7 @@ TestVNet1 と TestVNet4 の仮想ネットワーク ゲートウェイの作成�
 
 ![要点](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "要点")
 
-## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>VNet 間の考慮事項
+## <a name="faq"></a>VNet 間の考慮事項
 VNet 間接続に関するその他の情報についてよく寄せられる質問の詳細を示します。
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]

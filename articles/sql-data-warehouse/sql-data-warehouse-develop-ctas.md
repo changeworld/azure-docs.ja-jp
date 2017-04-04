@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: queries
 ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 68655fff239bfd76f93ab9177d161d9534cbb901
 ms.openlocfilehash: 150113dda95ab021dd7ad8696b5886373ba982b8
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -45,7 +47,7 @@ CREATE TABLE [dbo].[FactInternetSales_new]
 WITH
 (
     DISTRIBUTION = ROUND_ROBIN
-,   CLUSTERED COLUMNSTORE INDEX
+,    CLUSTERED COLUMNSTORE INDEX
 )
 AS
 SELECT  *
@@ -450,9 +452,4 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

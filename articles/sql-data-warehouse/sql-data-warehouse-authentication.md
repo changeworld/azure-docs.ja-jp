@@ -13,6 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
+ms.custom: security
 ms.date: 03/21/2017
 ms.author: rickbyh;barbkess
 translationtype: Human Translation

@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: backup-restore
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess;sonyama
 translationtype: Human Translation
 ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
 ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
+ms.lasthandoff: 12/21/2016
 
 
 ---
@@ -111,9 +113,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 
 <!--Other Web references-->
 [Azure portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 
