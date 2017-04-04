@@ -26,7 +26,7 @@
 これらのテンプレートだけでなく、 [ギャラリー テンプレート](https://azure.microsoft.com/documentation/templates/)を検索できます。
 
 ## <a name="azure-portal"></a>Azure ポータル
-Azure ポータルでは、URL を送信するだけで簡単にテンプレートをデプロイできます。 テンプレートをデプロイするには、テンプレート ファイルの名前が必要です。 テンプレート ギャラリーのページまたは Github リポジトリで名前を検索できます。 次の URL の {template name} をデプロイするテンプレートの名前に変更した後、ブラウザーに入力します。
+Azure ポータルでは、URL を送信するだけで簡単にテンプレートをデプロイできます。 テンプレートをデプロイするには、テンプレート ファイルの名前が必要です。 テンプレート ギャラリーのページまたは GitHub リポジトリで名前を検索できます。 次の URL の {template name} をデプロイするテンプレートの名前に変更した後、ブラウザーに入力します。
 
     https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F{template name}%2Fazuredeploy.json
 

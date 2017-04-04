@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: develop
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
 ms.openlocfilehash: 37344b7916d8ceb2ad3b6a34df9fc8681af4dff7
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -77,9 +79,4 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

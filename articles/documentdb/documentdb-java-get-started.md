@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 74af5fda495adc726bfa85ad48a407fd61d4dd88
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: da7907ffc515ea2e3040075c93bcd53840cf3ff5
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -119,7 +119,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDocument-java.lang.String-java.lang.Object-com.microsoft.azure.documentdb.RequestOptions-boolean-) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで&1; つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをデータベースにインポートできます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](http://azure.github.io/azure-documentdb-java/com/microsoft/azure/documentdb/DocumentClient.html#createDocument-java.lang.String-java.lang.Object-com.microsoft.azure.documentdb.RequestOptions-boolean-) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをデータベースにインポートできます。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

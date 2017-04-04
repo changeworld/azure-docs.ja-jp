@@ -17,9 +17,9 @@ ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 translationtype: Human Translation
-ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
-ms.openlocfilehash: 4950dbe528290c7d839c97cc8770db4ae0ec08c6
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 5d74f2c130eeddb1022acf9673c6a2006af2db58
+ms.lasthandoff: 03/25/2017
 
 ---
 #<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Storm Starter サンプルを使用した Linux ベースの HDInsight でのビッグ データ分析の概要
@@ -35,11 +35,7 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* **SSH と SCP を熟知していること**。 HDInsight での SSH と SCP の使用方法の詳細については、次のドキュメントを参照してください。
-  
-    * [HDInsight の Linux ベースの Hadoop で Windows 10、Linux、Unix、または OS X の Bash から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+* **SSH と SCP を熟知していること**。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ### <a name="access-control-requirements"></a>アクセス制御の要件
 
@@ -99,11 +95,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
    
     SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
    
-    Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
-   
-    * [HDInsight の Linux ベースの Hadoop で Windows 10、Linux、Unix、または OS X の Bash から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを実行してトポロジの例を開始します。
    

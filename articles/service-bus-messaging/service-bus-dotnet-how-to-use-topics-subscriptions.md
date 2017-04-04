@@ -1,5 +1,5 @@
 ---
-title: "Service Bus トピックの使用 (.NET) | Microsoft Docs"
+title: "Azure Service Bus トピックの使用 (.NET) | Microsoft Docs"
 description: "Azure における Service Bus のトピックとサブスクリプションを .NET で使用する方法について学習します。 コード サンプルは .NET アプリケーション向けに作成されています。"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 12/21/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: add228c8a24fbd36ab05f55570abf1374f519822
-ms.openlocfilehash: 9927de3bba251a2cc135657f00b789c7522fc05c
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: bec18e91ef8798a791d4b1fe93bd529593197e01
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -33,10 +34,10 @@ ms.openlocfilehash: 9927de3bba251a2cc135657f00b789c7522fc05c
 Service Bus を使用するアプリケーションを作成するときには、Service Bus アセンブリに対する参照を追加して、対応する名前空間を含める必要があります。 これを行う最も簡単な方法は、適切な [NuGet](https://www.nuget.org) パッケージをダウンロードすることです。
 
 ## <a name="get-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの取得
-[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、必要な Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。 Service Bus NuGet パッケージをプロジェクトにインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、必要な Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。 Service Bus NuGet パッケージをプロジェクトにインストールするには、次のステップを行います。
 
 1. [ソリューション エクスプローラー] で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-2. "Service Bus" を検索して、 **[Microsoft Azure Service Bus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
+2. **[参照]** をクリックし、"Azure Service Bus" を検索して、**Microsoft Azure Service Bus** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
    ![][7]
 
@@ -97,7 +98,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 前に説明したように、[Azure Portal][Azure portal] から取得した SAS 名とキー値を使用します。
 
 ## <a name="create-a-topic"></a>トピックを作成する
-[NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) クラスを使用して Service Bus のトピックとサブスクリプションに対する管理操作を実行できます。 このクラスにはトピックの作成、列挙、削除のためのメソッドが用意されています。
+[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) クラスを使用して Service Bus のトピックとサブスクリプションに対する管理操作を実行できます。 このクラスにはトピックの作成、列挙、削除のためのメソッドが用意されています。
 
 次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus 名前空間のベース アドレスと、それを管理するためのアクセス許可を備えた適切な SAS 資格情報で構成されます。 この接続文字列は、次のようになっています。
 
@@ -121,7 +122,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-[CreateTopic](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) メソッドにはオーバーロードがあり、トピックのプロパティを設定できるようになっています。たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定することができます。 このような設定は、[TopicDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription) クラスを使用して適用します。 次の例では、名前が **TestTopic**、最大サイズが 5 GB、既定のメッセージ TTL が 1 分であるトピックを作成する方法を示します。
+[CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager) メソッドにはオーバーロードがあり、トピックのプロパティを設定できるようになっています。たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定することができます。 このような設定は、[TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) クラスを使用して適用します。 次の例では、名前が **TestTopic**、最大サイズが 5 GB、既定のメッセージ TTL が 1 分であるトピックを作成する方法を示します。
 
 ```csharp
 // Configure Topic Settings.
@@ -143,12 +144,12 @@ if (!namespaceManager.TopicExists("TestTopic"))
 ```
 
 > [!NOTE]
-> [NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトで [TopicExists](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_TopicExists_System_String_) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
+> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトで [TopicExists](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_TopicExists_System_String_) メソッドを使用することで、指定した名前のトピックが名前空間に既に存在するかどうかを確認できます。
 > 
 > 
 
 ## <a name="create-a-subscription"></a>サブスクリプションの作成
-トピック サブスクリプションは、[NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) クラスを使用して作成することもできます。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
+トピック サブスクリプションは、[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) クラスを使用して作成することもできます。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
 > [!IMPORTANT]
 > サブスクリプションでメッセージを受信するためには、トピックにメッセージを送信する前に、そのサブスクリプションを作成しておく必要があります。 トピックに対するサブスクリプションが存在しない場合、それらのメッセージはトピックで破棄されます。
@@ -203,9 +204,9 @@ namespaceManager.CreateSubscription("TestTopic",
 これでメッセージが `TestTopic` に送信されると、そのメッセージは **AllMessages** トピック サブスクリプションをサブスクライブした受信者に必ず配信され、さらにメッセージの内容に応じて、**HighMessages** と **LowMessages** トピック サブスクリプションをサブスクライブしている受信者に対して選択的に配信されます。
 
 ## <a name="send-messages-to-a-topic"></a>メッセージをトピックに送信する
-アプリケーションで Service Bus トピックにメッセージを送信するには、接続文字列を使用して [TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトを作成します。
+アプリケーションで Service Bus トピックにメッセージを送信するには、接続文字列を使用して [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトを作成します。
 
-次のコードでは、前の例で [CreateFromConnectionString](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.topicclient#Microsoft_ServiceBus_Messaging_TopicClient_CreateFromConnectionString_System_String_System_String_) API を使用して作成した **TestTopic** トピックのために [TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトを作成する方法を示しています。
+次のコードでは、前の例で [CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.topicclient#Microsoft_ServiceBus_Messaging_TopicClient_CreateFromConnectionString_System_String_System_String_) API を使用して作成した **TestTopic** トピックのために [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトを作成する方法を示しています。
 
 ```csharp
 string connectionString =
@@ -217,9 +218,9 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-Service Bus トピックに送信されたメッセージは、[BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのインスタンスです。 **BrokeredMessage** オブジェクトには、([Label](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label)、[TimeToLive](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、**BrokeredMessage** オブジェクトのコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。 この方法に代わって、**System.IO.Stream** オブジェクトを使用できます。
+Service Bus トピックに送信されたメッセージは、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのインスタンスです。 **BrokeredMessage** オブジェクトには、([Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label)、[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、**BrokeredMessage** オブジェクトのコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切な **DataContractSerializer** を使用してオブジェクトをシリアル化します。 この方法に代わって、**System.IO.Stream** オブジェクトを使用できます。
 
-以下の例では、上のコード例で取得した **TestTopic** [TopicClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトにテスト メッセージを&5; 件送信する方法を示しています。 各メッセージの [MessageId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) プロパティ値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
+以下の例では、上のコード例で取得した **TestTopic** [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) オブジェクトにテスト メッセージを 5 件送信する方法を示しています。 各メッセージの [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) プロパティ値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
 
 ```csharp
 for (int i=0; i<5; i++)
@@ -238,13 +239,13 @@ for (int i=0; i<5; i++)
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 パーティション分割が有効な場合、上限が高くなります。 詳細については、「 [パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する方法
-サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) オブジェクトの使用です。 **SubscriptionClient** オブジェクトには、2 つの動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
+サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) オブジェクトの使用です。 **SubscriptionClient** オブジェクトには、2 つの動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
 
-**ReceiveAndDelete** モードを使用する場合、受信は&1; 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+**ReceiveAndDelete** モードを使用する場合、受信は 1 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**PeekLock** モード (既定のモード) では、受信処理が&2; 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) を呼び出して受信処理の第&2; 段階を完了します。 Service Bus が **Complete** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
+**PeekLock** モード (既定のモード) では、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) を呼び出して受信処理の第 2 段階を完了します。 Service Bus が **Complete** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
 
-次の例では、既定の **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 別の [ReceiveMode](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 値を指定する場合には、[CreateFromConnectionString](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_CreateFromConnectionString_System_String_System_String_System_String_Microsoft_ServiceBus_Messaging_ReceiveMode_) に別のオーバーロードを使用できます。 この例では、[OnMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) コールバックを使用して **HighMessages** サブスクリプションにメッセージが到着するたびに処理しています。
+次の例では、既定の **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 別の [ReceiveMode](/dotnet/api/microsoft.servicebus.messaging.receivemode) 値を指定する場合には、[CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_CreateFromConnectionString_System_String_System_String_System_String_Microsoft_ServiceBus_Messaging_ReceiveMode_) に別のオーバーロードを使用できます。 この例では、[OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) コールバックを使用して **HighMessages** サブスクリプションにメッセージが到着するたびに処理しています。
 
 ```csharp
 string connectionString =
@@ -281,14 +282,14 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-この例では、[OnMessageOptions](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions) オブジェクトを使用して、[OnMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) コールバックを構成します。 [AutoComplete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoComplete) は **false** に設定され、受信したメッセージで [Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) を呼び出すタイミングを手動で制御できるようになります。 [AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) は 1 分に設定され、クライアントは自動更新機能が終了するまで最大で 1 分間待機し、新しい呼び出しを行ってメッセージを確認します。 このプロパティ値により、メッセージを取得しない課金対象呼び出しをクライアントが行う回数が減ります。
+この例では、[OnMessageOptions](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions) オブジェクトを使用して、[OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) コールバックを構成します。 [AutoComplete](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoComplete) は **false** に設定され、受信したメッセージで [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) を呼び出すタイミングを手動で制御できるようになります。 [AutoRenewTimeout](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) は 1 分に設定され、クライアントは自動更新機能が終了するまで最大で 1 分間待機し、新しい呼び出しを行ってメッセージを確認します。 このプロパティ値により、メッセージを取得しない課金対象呼び出しをクライアントが行う回数が減ります。
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージで ([Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) メソッドの代わりに) [Abandon](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon_System_Collections_Generic_IDictionary_System_String_System_Object__) メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によりサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージで ([Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) メソッドの代わりに) [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon_System_Collections_Generic_IDictionary_System_String_System_Object__) メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によりサブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
 
 サブスクリプション内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-メッセージが処理された後、[Complete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが&1; 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの [MessageId](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、[Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
 ## <a name="delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する
 次の例では、**TestTopic** という名前のトピックを **HowToSample** サービス名前空間から削除する方法を示しています。
@@ -319,13 +320,8 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Topic filters sample]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
-[SqlFilter]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter
-[SqlFilter.SqlExpression]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
 [Service Bus brokered messaging .NET tutorial]: service-bus-brokered-tutorial-dotnet.md
 [Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

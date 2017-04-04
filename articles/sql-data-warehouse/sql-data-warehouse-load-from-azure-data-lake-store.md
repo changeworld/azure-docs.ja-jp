@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: loading
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
-ms.custom: loading
 translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: aca0e4cfdcfb3e3ed2e69ad8153b4c965b299806
 ms.lasthandoff: 03/15/2017
+
 
 
 ---

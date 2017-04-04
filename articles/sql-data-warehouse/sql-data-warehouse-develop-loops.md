@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
 ms.openlocfilehash: d6409f1eb87787e5e023aa53b7b264116c9d8026
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -84,9 +86,4 @@ DROP TABLE #tbl;
 
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

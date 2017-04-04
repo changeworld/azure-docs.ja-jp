@@ -12,11 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
+ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 translationtype: Human Translation
 ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
 ms.openlocfilehash: 902929fba9e2486d97323ab52505ba6db3fe0aab
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -78,9 +80,4 @@ SQL Data Warehouse のビューはメタデータ専用です。  そのため�
 [CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
 
 <!--Other Web references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

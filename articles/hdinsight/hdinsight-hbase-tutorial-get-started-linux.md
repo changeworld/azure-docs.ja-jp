@@ -9,16 +9,17 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/09/2017
+ms.date: 03/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: bdc00541e55ea68f0b18456f8fa1a1ac51116d69
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 21d8dff230e045607b70013f4eabf1bfe8ec3993
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -64,7 +65,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 > 
 
 ## <a name="create-tables-and-insert-data"></a>テーブルを作成してデータを挿入する
-SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データの照会を行うことができます。 SSH の使用方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+SSH を使用して HBase クラスターに接続し、HBase シェルを使用して HBase テーブルの作成、データの挿入、データの照会を行うことができます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 多くの場合、データは次のような表形式で表示されます。
 
@@ -98,7 +99,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
    
         get 'Contacts', '1000'
    
-    行は&1; 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
+    行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
    
     HBase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。 HBase コマンドの詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」を参照してください。
 5. シェルを終了します。
@@ -223,6 +224,11 @@ Hive を使用して HBase テーブルのデータを照会できます。 こ�
         -v
 
 HBase Rest の詳細については、「 [Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
+
+>
+> [!NOTE]
+> Thrift は、HDInsight での HBase ではサポートされていません。
+>
 
 ## <a name="check-cluster-status"></a>クラスターの状態の確認
 HDInsight の HBase には、クラスターを監視するための Web UI が付属します。 この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
