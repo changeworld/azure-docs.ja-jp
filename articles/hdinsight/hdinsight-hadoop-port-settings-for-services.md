@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: dd14aed9-ec25-4bb3-a20c-e29562735a7d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,9 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b65e9e6b196965a7df1e4979219117fb87cedbd7
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 693e3aebad339b1a9b5e0afbe7770197ea70dcf6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -40,22 +42,22 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 | サービス | ポート | プロトコル | Description |
 | --- | --- | --- | --- | --- |
-| sshd |22 |SSH |プライマリ ヘッドノードの sshd にクライアントを接続します。  [Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md) |
-| sshd |22 |SSH |エッジ ノードの sshd にクライアントを接続します (HDInsight Premium のみ)。  [HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md) |
-| sshd |23 |SSH |セカンダリ ヘッドノードの sshd にクライアントを接続します。  [Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md) |
-| Ambari |443 |HTTPS |Ambari Web UI。  [Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambari REST API。  [Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| sshd |22 |SSH |プライマリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
+| sshd |22 |SSH |エッジ ノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
+| sshd |23 |SSH |セカンダリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
+| Ambari |443 |HTTPS |Ambari Web UI。 [Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari REST API。 [Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md) |
 | WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Hive の使用](hdinsight-hadoop-use-pig-curl.md)、[Curl での Pig の使用](hdinsight-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hdinsight-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
 | HiveServer2 |443 |ODBC |ODBC を使用して Hive に接続します。 [Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
-| HiveServer2 |443 |JDBC |JDBC を使用して Hive に接続します。  [Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hdinsight-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |JDBC を使用して Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hdinsight-connect-hive-jdbc-driver.md) |
 
 次のポートは、特定のクラスターの種類で使用できます。
 
 | サービス | ポート | プロトコル | クラスターの種類 | Description |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API。  [HBase の使用開始](hdinsight-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API。  [Livy を使用した Spark ジョブのリモートでの送信](hdinsight-apache-spark-livy-rest-interface.md) |
-| Storm |443 |HTTPS |Storm |Storm Web UI。  [HDInsight での Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |HBase REST API。 [HBase の使用開始](hdinsight-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API。 [Livy を使用した Spark ジョブのリモートでの送信](hdinsight-apache-spark-livy-rest-interface.md) |
+| Storm |443 |HTTPS |Storm |Storm Web UI。 [HDInsight での Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>認証
 インターネット上で公開されるすべてのサービスを認証する必要があります。
@@ -138,10 +140,5 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | --- | --- | --- | --- | --- |
 | ブローカー |ワーカー ノード |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

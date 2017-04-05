@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: ca2d4bf2b1e1cb56910fa3ee7af6e45b6b77b450
-ms.openlocfilehash: 3a6882e52b8ad966f81de45395bf5f56d751f050
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 67bdfa8c2cd0f8314c82e2b334a3fa3a5c520c66
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="using-the-azure-importexport-tool-v1"></a>Azure Import/Export ツール (v1) の使用
 
-Azure Import/Export ツール (WAImportExport.exe) は、Azure Import/Export サービスのジョブを作成および管理するために使用されます。これによりお客様は、Azure Blob Storage との間で大量のデータを転送できるようになります。
+Azure Import/Export ツール (WAImportExport.exe) は、Azure Import/Export サービスのジョブを作成、管理するために使用されます。これによりお客様は、Azure Blob Storage との間で大量のデータを転送できるようになります。
 
 このドキュメントは、Azure Import/Export ツールの v1 を対象としています。 同ツールの最新バージョンの使用方法については、「[Azure Import/Export ツールの使用](storage-import-export-tool-how-to.md)」をご覧ください。
 
@@ -36,8 +37,6 @@ Azure Import/Export ツール (WAImportExport.exe) は、Azure Import/Export サ
 - エクスポート ジョブを修復する。 
 - Azure Import/Export ツールのトラブルシューティングを行う (処理中に問題が発生した場合)。 
 
+## <a name="next-steps"></a>次のステップ
 
-
-<!--HONumber=Dec16_HO3-->
-
-
+* [Setting up the WAImportExport tool](storage-import-export-tool-how-to.md) (WAImportExport ツールの設定)

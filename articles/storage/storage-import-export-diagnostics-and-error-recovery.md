@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export ジョブの診断とエラーからの回復 | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービス ジョブの詳細ログを有効にする方法について説明します"
+description: "Microsoft Azure Import/Export サービス ジョブの詳細ログを有効にする方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
-ms.openlocfilehash: 88c42ff541aac2e43724fe62f99e3ddea56afc3c
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -31,7 +31,9 @@ Azure Import/Export サービスでは、処理対象の各ドライブについ
 
 ログ データは、次の問題を特定するために使用できます。
 
-**ドライブ エラー**
+## <a name="drive-errors"></a>ドライブ エラー
+
+ドライブ エラーとして分類される項目は次のとおりです。
 
 -   マニフェスト ファイルへのアクセス時や読み取り時に発生したエラー
 
@@ -39,7 +41,9 @@ Azure Import/Export サービスでは、処理対象の各ドライブについ
 
 -   ドライブの読み取り/書き込みエラー
 
-**BLOB エラー**
+## <a name="blob-errors"></a>BLOB エラー
+
+BLOB エラーとして分類される項目は次のとおりです。
 
 -   不適切または競合する BLOB や名前
 
@@ -55,8 +59,9 @@ Azure Import/Export サービスでは、処理対象の各ドライブについ
 
 -   BLOB プロパティ/メタデータ ファイルに対する不正なスキーマ
 
-インポートまたはエクスポート ジョブの一部が正常に完了しなかった場合でも、全体的なジョブは完了する場合があります。 その場合は、データの不足部分をネットワーク経由でアップロードまたはダウンロードするか、新しいジョブを作成してデータを転送することができます。 ネットワーク経由でデータを修復する方法については、 「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。
+インポートまたはエクスポート ジョブの一部が正常に完了しなかった場合でも、全体的なジョブは完了する場合があります。 その場合は、データの不足部分をネットワーク経由でアップロードまたはダウンロードするか、新しいジョブを作成してデータを転送することができます。 ネットワーク経由でデータを修復する方法については、[Azure Import/Export ツールのリファレンス](storage-import-export-tool-how-to-v1.md)をご覧ください。
 
-## <a name="see-also"></a>関連項目
-[Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>次のステップ
+
+* [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
 

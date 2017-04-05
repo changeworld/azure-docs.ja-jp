@@ -39,7 +39,7 @@
 Azure VM が Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。 また、カスタム データ ファイルがスクリプトの場合は、cloud-init でスクリプトを実行できます。
 
 ### <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Image
-ほとんどの Azure Linux イメージでは、"/etc/waagent.conf" を編集して、一時的なリソース ディスクとスワップ ファイルを構成します。 詳細については、[Azure Linux エージェント ユーザー ガイド](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
+ほとんどの Azure Linux イメージでは、"/etc/waagent.conf" を編集して、一時的なリソース ディスクとスワップ ファイルを構成します。 詳細については、[Azure Linux エージェント ユーザー ガイド](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
 ただし、Ubuntu Cloud Image では、cloud-init を使用して、リソース ディスク ("一時" ディスク) とスワップ パーティションを構成する必要があります。 詳細については、Ubuntu Wiki の [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)をご覧ください。
 
@@ -51,9 +51,4 @@ Azure VM が Ubuntu イメージまたは CoreOS イメージから作成され�
 [ロールの追加](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

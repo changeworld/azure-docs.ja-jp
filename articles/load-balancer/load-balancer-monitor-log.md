@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 93640e208c99db41d922399d42c80622022287eb
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 638ecd5e02889bd8cb6e7429dfcec335feaac4a3
+ms.lasthandoff: 03/29/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/09/2017
 Azure の各種ログを使用して、ロード バランサーの管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、Excel や PowerBI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
 * **監査ログ:** [Azure 監査ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその状態を表示できます。 監査ログは既定で有効になっており、Azure ポータルで表示できます。
-* **アラート イベント ログ:** ロード バランサーによって生成されたアラートは、このログで確認できます。 ロード バランサーの状態は&5; 分ごとに収集されます。 このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
+* **アラート イベント ログ:** ロード バランサーによって生成されたアラートは、このログで確認できます。 ロード バランサーの状態は 5 分ごとに収集されます。 このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
 > [!IMPORTANT]
@@ -137,7 +137,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 イベント ログと正常性プローブ ログの場合は、自身のストレージ アカウントに接続して JSON ログ エントリを取得する必要があります。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
 > [!TIP]
-> Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、Github から入手できる [ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter) を使用できます。
+> Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

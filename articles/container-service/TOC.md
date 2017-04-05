@@ -16,6 +16,7 @@
 ### [DC/OS コンテナーを負荷分散する](container-service-load-balancing.md)
 ### [DC/OS のアプリ/ユーザー固有のオーケストレーター](container-service-application-specific-marathon.md)
 ### [ファイル共有を追加する](container-service-dcos-fileshare.md)
+### [Azure Container Registry を使用する](container-service-dcos-acr.md)
 ### DC/OS の監視
 #### [ELK で監視する](container-service-monitoring-elk.md)
 #### [OMS で監視する](container-service-monitoring-oms.md)
@@ -36,6 +37,7 @@
 ## Docker Swarm による管理
 ### [Docker および Docker Compose](container-service-docker-swarm.md)
 ### [Docker Swarm 継続的インテグレーション](container-service-docker-swarm-setup-ci-cd.md)
+## [コンテナーをセキュリティ保護する](container-service-security.md)
 # リファレンス
 ## [Azure CLI 2.0](/cli/azure/acs)
 ## [REST ()](/rest/api/compute/containerservices)
@@ -43,3 +45,4 @@
 ## [利用可能なリージョン](https://azure.microsoft.com/regions/services/)
 ## [料金](https://azure.microsoft.com/pricing/details/container-service/)
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-service)

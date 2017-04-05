@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2016
+ms.date: 03/23/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
-ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: c5127a457e99772a52b76e28e7fd3a3e4dd861b0
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -86,7 +87,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
 ```  
   
-これは、文字で始まり、その後に&1; つ以上のアンダースコア/文字/数字が続くことを意味します。  
+これは、文字で始まり、その後に 1 つ以上のアンダースコア/文字/数字が続くことを意味します。  
   
 `[:IsLetter:]` は、Unicode の文字として分類される任意の Unicode 文字を表します。 `c` が Unicode の文字の場合、`System.Char.IsLetter(c)` は `true` を返します。  
   
@@ -94,7 +95,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
   
 `<regular_identifier>` に予約済みのキーワードを指定することはできません。  
   
-`<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは&2; つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
+`<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは 2 つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
   
 ```  
 [Property With Space]  
@@ -102,7 +103,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
   
 ```  
   
-`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は&2; つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
+`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
   
 ```  
 "Contoso & Northwind"  
@@ -119,9 +120,9 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
--   `%`:&0; 個以上の文字から成る任意の文字列。  
+-   `%`: 0 個以上の文字から成る任意の文字列。  
   
--   `_`:&1; つの任意の文字。  
+-   `_`: 1 つの任意の文字。  
   
 ## <a name="escapechar"></a>escape_char  
   
@@ -221,7 +222,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
   
     -   プロパティが存在しないか、プロパティの値が `null` の場合、`property IS NULL` は `true` として評価されます。  
   
-プロパティ評価セマンティクスは次のとおりです。  
+### <a name="property-evaluation-semantics"></a>プロパティ評価セマンティクス  
   
 -   存在しないシステム プロパティを評価しようとすると、[FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 例外がスローされます。  
   
@@ -273,7 +274,7 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 +---+---+---+---+  
 ```  
   
-演算子結合セマンティクスは次のとおりです。  
+### <a name="operator-binding-semantics"></a>演算子結合セマンティクス
   
 -   比較演算子 (`>`、`>=`、`<`、`<=`、`!=`、`=` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。  
   
@@ -283,8 +284,3 @@ ms.openlocfilehash: c983a1cb4120e22834ffd2924b113b198f9b04e1
 
 - [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

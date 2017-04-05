@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
 translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 1095267ce0c2a922d4bd9cb95a607ce8993df310
-ms.lasthandoff: 03/11/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9b0936299d506e951e45d54f630657c187ec6820
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -33,12 +33,10 @@ Log Analytics には、ネットワークを監視することを目的とした
  * Azure ネットワーク セキュリティ グループのログ
 
 ## <a name="network-performance-monitor-npm"></a>ネットワーク パフォーマンス モニター (NPM)
-[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。  次の&2; 点間の接続を監視する目的で使用します。
+[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。  次の 2 点間の接続を監視する目的で使用します。
 * パブリック クラウドとオンプレミス 
 * データ センターとユーザー拠点 (支社)
 * 多層アプリケーションの各種階層をホストするサブネット間
-
- ![ネットワーク パフォーマンス モニターの画像](./media/log-analytics-network-performance-monitor/npm-topology.png)
 
 詳細については、[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)に関するページを参照してください。
 

@@ -9,16 +9,17 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/27/2017
 ms.author: bprakash
 translationtype: Human Translation
-ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
-ms.openlocfilehash: d9c85736e9578ff4f821a118a25055e360e33ae9
-ms.lasthandoff: 03/03/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: c753eac8caed139250a0db85b639fca57c1e9ea6
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -28,7 +29,7 @@ Azure HDInsight 向けに提供されるサービス レベルと、そこに含
 
 ## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
 
-Azure HDInsight では、**Standard** と **Premium** の&2; つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
+Azure HDInsight では、**Standard** と **Premium** の 2 つのカテゴリでビッグ データ クラウド サービスを提供します。 以下の表に、**Premium でのみ**利用できる機能を示します。 この表に明示的に書かれていない機能は、Standard の機能として提供されています。
 
 > [!NOTE]
 > HDInsight Premium は現在プレビューの段階で、Linux クラスターでのみ利用できます。
@@ -88,10 +89,11 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 | Apache Phoenix |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |1.6.2 + 2.0 (Linux のみ) |1.6.0 (Linux のみ) |1.5.2 (Linux のみ/試験的ビルド) |1.3.1 (Windows のみ) |-|-|
 | Apache Kafka | 0.10.0 | 0.9.0 |-|-|-|-|
+| Mono |4.2.1 |3.2.8 |-|-|-|-|
 
 **現在のコンポーネントのバージョンの取得**
 
-HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する&1; つの方法は、Ambari REST API を使用することです。 **GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。 詳細については、[Ambari のドキュメント][ambari-docs]を参照してください。 この情報を取得するもう&1; つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
+HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。 利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。 **GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。 詳細については、[Ambari のドキュメント][ambari-docs]を参照してください。 この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
 
 **リリース ノート**
 
@@ -105,14 +107,18 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure ポータルでの利用 | サポート有効期限 | 非推奨となる日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| HDI 3.6 プレビュー |HDP 2.6 |Ubuntu 16 |はい |2017 年 2 月 28 日 |はい | | |
 | HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい | | |
-| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年&3; 月&29; 日 |はい |12/29/2016 |1/9/2018 |
-| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年&12; 月&2; 日 |あり |2016 年&6; 月&27; 日 |2017 年&7; 月&31; 日 |
-| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年&2; 月&18; 日 |あり |2016 年&3; 月&1; 日 |2017 年&4; 月&1; 日 |
-| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年&6; 月&24; 日 |いいえ |2015 年&5; 月&18; 日 |2016 年&6;月&30; 日 |
+| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |はい |12/29/2016 |1/9/2018 |
+| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS または Windows Server 2012R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
+| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年 2 月 18 日 |あり |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
+| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6月 30 日 |
 | HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |あり |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
 | HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |あり |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |いいえ |10/28/2013 |いいえ |04/26/2014 |05/31/2015 |
+
+##<a name="hdi-36-preview-with-apache-spark-21"></a>Apache Spark 2.1 でのHDI 3.6 プレビュー
+プレビューの HDI 3.6 は、2017 年 2 月 28 日にリリースされます。 これは、Apache Spark 2.1 のプレビューで使用できます。 詳細については、[Apache Spark 2.1 でのHDI 3.6 プレビュー](https://azure.microsoft.com/en-us/blog/announcing-preview-of-azure-hdinsight-3-6-with-apache-spark-2-1/)に関するページを参照してください。
 
 ##<a name="hdi-version-32-and-33-nearing-deprecation-date"></a>非推奨となる日が近づいている HDI バージョン 3.2 および 3.3
 HDI 3.2 クラスターは、2016 年 3 月 1 日にサポート期間が終了しており、2017 年 4 月 1 日に非推奨となります。 HDI 3.3 クラスターは、2016 年 6 月 27 日にサポート期間が終了しており、2017 年 7 月 31 日に非推奨となります。 HDI 3.2 または HDI 3.3 クラスターを利用している場合は、すぐにクラスターを HDI 3.5 (最新バージョン) にアップグレードしてください。

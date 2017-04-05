@@ -2,10 +2,10 @@
 title: "Azure Service Bus 診断ログ | Microsoft Docs"
 description: "Service Bus の診断ログを設定する方法について説明します。"
 keywords: 
-documentationcenter: 
+documentationcenter: .net
 services: service-bus-messaging
 author: banisadr
-manager: 
+manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-bus-messaging
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/17/2017
-ms.author: babanisa
+ms.date: 03/23/2017
+ms.author: babanisa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
-ms.openlocfilehash: 65fe81dc90f2dc7a251860adfdd8374912cb8d73
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: b8ed786fe0c049d9be7ba1ca1cb6adef1950b8e9
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
-Azure Service Bus の&2; 種類のログを表示できます。
-* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常にオンになっています。
-* **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 ジョブで発生するすべてのイベントを深く洞察するための診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+Azure Service Bus の 2 種類のログを表示できます。
+* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
+* **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
-既定では、診断ログは**オフ**になっています。 診断ログを有効にするには:
+既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.    Azure Portal で、[ストリーミング ジョブ] ブレードに移動します。
+1.    [Azure Portal](https://portal.azure.com) で、[ストリーミング ジョブ] ブレードに移動します。
 
 2.    **[監視]** の **[診断ログ]** ブレードに移動します。
 
     ![ブレードで診断ログに移動する](./media/service-bus-diagnostic-logs/image1.png)  
 
-3.    **[診断を有効にする]** を選択します。
+3.    **[診断を有効にする]** をクリックします。
 
     ![診断ログを有効にする](./media/service-bus-diagnostic-logs/image2.png)
 
-4.    **[状態]** で、**[オン]** を選択します。
+4.    **[状態]** で、**[オン]** をクリックします。
 
     ![診断ログの状態を変更する](./media/service-bus-diagnostic-logs/image3.png)
 
 5.    アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
 
-6.    収集するログのカテゴリを選択します (**実行****オーサリング**など)。
+6.    収集するログのカテゴリを選択します (**実行**、**作成**など)。
 
 7.    新しい診断設定を保存します。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
 
-診断の構成の詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
 
@@ -96,5 +96,5 @@ Example:
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Bus の概要](service-bus-messaging-overview.md)
-* [Service Bus の使用](service-bus-create-namespace-portal.md)
+* [Service Bus の使用](service-bus-dotnet-get-started-with-queues.md)
 

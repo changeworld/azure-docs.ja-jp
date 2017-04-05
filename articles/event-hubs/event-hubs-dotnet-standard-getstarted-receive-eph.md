@@ -1,6 +1,6 @@
 ---
 title: ".NET Standard を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs"
-description: ".NET Standard で EventProcessorHost を使用したメッセージ受信を開始する"
+description: ".NET standard で EventProcessorHost を使用したメッセージ受信を開始する"
 services: event-hubs
 documentationcenter: na
 author: jtaubensee
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 03/27/2017
 ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 65ed5164b8d010453ed34e8b8cdf68915e136007
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: c86a1feee02bbf8580a40119ac140528217e435d
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -53,32 +53,9 @@ ms.lasthandoff: 03/22/2017
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
-1. Visual Studio を起動します。 **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。 .NET Core コンソール アプリケーションを作成します。
+Visual Studio を起動します。 **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。 .NET Core コンソール アプリケーションを作成します。
 
-    ![新しいプロジェクト][2]
-
-2. ソリューション エクスプローラーで、**project.json** ファイルをダブルクリックして、Visual Studio エディターでそのファイルを開きます。
-3. 文字列 `"portable-net45+win8"` を `"frameworks"` セクション内の `"imports"` 宣言に追加します。 セクションの表示は次のようになります。 この文字列は、Azure Storage の OData に対する依存関係のために必要です。
-
-    ```json
-    "frameworks": {
-      "netcoreapp1.0": {
-        "imports": [
-          "dnxcore50",
-          "portable-net45+win8"
-        ]
-      }
-    }
-    ```
-
-4. **[ファイル]** メニューの **[すべて保存]** をクリックします。
-
-このチュートリアルでは .NET Core アプリケーションの記述方法を説明していますが、 完全な .NET Framework を対象にする場合は、`"frameworks"` セクションで project.json ファイルに次のコード行を追加します。
-
-```json
-"net451": {
-},
-```
+![新しいプロジェクト][2]
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
@@ -93,9 +70,9 @@ ms.lasthandoff: 03/22/2017
 2. SimpleEventProcessor.cs ファイルを開き、ファイルの先頭に `using` ステートメントを追加します。
 
     ```csharp
-    using System.Text;
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
+    using System.Threading.Tasks;
     ```
 
 3. `IEventProcessor` インターフェイスを実装します。 `SimpleEventProcessor` クラスの内容全体を次のコードに置き換えます。
@@ -141,6 +118,7 @@ ms.lasthandoff: 03/22/2017
     ```csharp
     using Microsoft.Azure.EventHubs;
     using Microsoft.Azure.EventHubs.Processor;
+    using System.Threading.Tasks;
     ```
 
 2. Event Hubs 接続文字列、Event Hub 名、ストレージ アカウント コンテナー名、ストレージ アカウント名、およびストレージ アカウント キーの `Program` クラスに定数を追加します。 プレースホルダーを対応する値に置き換えて、次のコードを追加します。

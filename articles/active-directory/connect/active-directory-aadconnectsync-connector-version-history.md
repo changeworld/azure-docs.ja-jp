@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 03/28/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 3051ed0385b81892b8495e83817ed8255dbce8cd
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 244ca634cfd47ee37e3845380ac05dc68d406621
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -44,7 +44,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 
 ### <a name="enhancements"></a>強化された機能
 * Generic SQL:</br>
-  **シナリオの現象:**&1; つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
+  **シナリオの現象:** 1 つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
   **ソリューションの説明:** [*] オプションが選択されている参照の処理手順では、オブジェクトの種類の "すべての" 組み合わせが同期エンジンに返されます。
 
 >[!Important]
@@ -70,15 +70,15 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
       ``'C:\Users\cstpopovaz\AppData\Local\Temp\2\e2c9d9b0-0d8a-4409-b059-dceeb900a2b3\b9bedcc0-88ac-454c-8c69-7d6ea1c41d17\cfg.config\cloneconfig.xml'. ``
 
 * Generic LDAP:
- * Generic SQL のウォーターマーク差分インポートで複数値属性がインポートされないバグを修正した。
  * GLDAP コネクタは、AD LDS 内のすべての属性を認識しません。
  * LDAP ディレクトリ スキーマから UPN 属性が検出されない場合、ウィザードは中断します。
  * "objectclass" 属性が選択されていない場合、デルタ インポートは、フル インポート時には存在しない検出エラーで失敗します。
- * [パーティションと階層の構成] 構成ページに、その種類が Generic   
-LDAP MA 内の Novel サーバーのパーティションと同じであるオブジェクトが表示されません。 RootDSE パーティションからのオブジェクトのみを表示していました。
+ * [パーティションと階層の構成] 構成ページに、その種類が Generic LDAP MA 内の Novel サーバーのパーティションと同じであるオブジェクトが表示されません  
+。 RootDSE パーティションからのオブジェクトのみを表示していました。
 
 
 * Generic SQL:
+ * Generic SQL のウォーターマーク差分インポートで複数値属性がインポートされないバグを修正した。
  * 複数値属性の削除または追加された値をエクスポートしても、データ ソース内で値が削除または追加されることはありません。  
 
 
@@ -107,7 +107,7 @@ LDAP MA 内の Novel サーバーのパーティションと同じであるオ�
   * csEntryChangeResult アクティビティと setImportErrorCode アクティビティが更新され、オブジェクト レベルのエラーを同期エンジンに返すことができるようになりました。
   * SAP6 テンプレートと SAP6User テンプレートが更新され、新しいオブジェクト レベルのエラー機能を利用できるようになりました。
 * Lotus Domino コネクタ:
-  * エクスポート用として、アドレス帳ごとに&1; 人の証明者が必要です。 すべての証明に同じパスワードを利用できるようになり、管理が簡単になりました。
+  * エクスポート用として、アドレス帳ごとに 1 人の証明者が必要です。 すべての証明に同じパスワードを利用できるようになり、管理が簡単になりました。
 
 **修正された問題:**
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 553d474c8a9cbd7b8452daf85e1bb74b294b5699
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 579015f419ac0ee886f8e8497760a562ab324c24
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 553d474c8a9cbd7b8452daf85e1bb74b294b5699
 > 
 > 
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除など**) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 ## <a name="WhatIs"> </a>サービス管理とは
 Service Management API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。 Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
@@ -34,7 +35,7 @@ Service Management API を使用すると、[Azure クラシック ポータル]
 Service Management API を使用するには、 [Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
 
 ## <a name="Concepts"> </a>概念
-Azure SDK for Python は、REST API である [Azure Service Management API][svc-mgmt-rest-api] をラップしています。 すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
+Azure SDK for Python は、REST API である [Azure Service Management API][svc-mgmt-rest-api] をラップします。 すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
 
 ## <a name="Installation"> </a>インストール
 `azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](../python-how-to-install.md)に関する記事をご覧ください。
@@ -123,7 +124,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 * オーストラリア南東部
 
 ## <a name="CreateCloudService"> </a>方法: クラウド サービスを作成する
-アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス][クラウド サービス]と呼びます (以前にリリースした Azure では*ホストされるサービス*と呼ばれていました)。 **create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス][cloud service]と呼びます (以前にリリースした Azure では*ホストされるサービス*と呼ばれていました)。 **create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
     from azure import *
     from azure.servicemanagement import *
@@ -399,42 +400,37 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
         role_size='Small',
         vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法の詳細については、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+Linux 仮想マシンをキャプチャする方法の詳細については、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
 
-Windows 仮想マシンをキャプチャする方法の詳細については、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+Windows 仮想マシンをキャプチャする方法の詳細については、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
 ## <a name="What's Next"> </a>次のステップ
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
 
 詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
 
-[サービス管理とは]: #WhatIs
-[概念]: #Concepts
-[方法: サービス管理に接続する]: #Connect
-[方法: 利用可能な場所を列挙する]: #ListAvailableLocations
-[方法: クラウド サービスを作成する]: #CreateCloudService
-[方法: クラウド サービスを削除する]: #DeleteCloudService
-[方法: デプロイを作成する]: #CreateDeployment
-[方法: デプロイを更新する]: #UpdateDeployment
-[方法: ステージング環境と運用環境の間でデプロイを移動する]: #MoveDeployments
-[方法: デプロイの削除]: #DeleteDeployment
-[方法: ストレージ サービスを作成する]: #CreateStorageService
-[方法: ストレージ サービスを削除する]: #DeleteStorageService
-[方法: 利用可能なオペレーティング システムを列挙する]: #ListOperatingSystems
-[方法: オペレーティング システム イメージを作成する]: #CreateVMImage
-[方法: オペレーティング システム イメージを削除する]: #DeleteVMImage
-[方法: 仮想マシンを作成する]: #CreateVM
-[方法: 仮想マシンを削除する]: #DeleteVM
+[What is Service Management]: #WhatIs
+[Concepts]: #Concepts
+[How to: Connect to service management]: #Connect
+[How to: List available locations]: #ListAvailableLocations
+[How to: Create a cloud service]: #CreateCloudService
+[How to: Delete a cloud service]: #DeleteCloudService
+[How to: Create a deployment]: #CreateDeployment
+[How to: Update a deployment]: #UpdateDeployment
+[How to: Move deployments between staging and production]: #MoveDeployments
+[How to: Delete a deployment]: #DeleteDeployment
+[How to: Create a storage service]: #CreateStorageService
+[How to: Delete a storage service]: #DeleteStorageService
+[How to: List available operating systems]: #ListOperatingSystems
+[How to: Create an operating system image]: #CreateVMImage
+[How to: Delete an operating system image]: #DeleteVMImage
+[How to: Create a virtual machine]: #CreateVM
+[How to: Delete a virtual machine]: #DeleteVM
 [Next Steps]: #NextSteps
 [management-portal]: https://manage.windowsazure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[クラウド サービス]:/services/cloud-services/
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+[cloud service]:/services/cloud-services/
 
 

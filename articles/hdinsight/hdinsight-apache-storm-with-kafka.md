@@ -8,6 +8,7 @@ manager: paulettm
 editor: cgronlun
 ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/20/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 3f0d284e122704ba01676c4b0028e196fe47bca8
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: dcda5e27cbcadff054c8085b72a1b6fb1c07b889
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>HDInsight での Strom に Apache Kafka (プレビュー) を使用する
@@ -40,11 +41,7 @@ Apache Kafka は、HDInsight で利用可能な発行/サブスクライブ メ�
 
 * テキスト エディターまたは Java IDE
 
-* SSH クライアント (`ssh` コマンドと `scp` コマンドが必要) - HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-  
-  * [Linux ベースの HDInsight で Linux、Unix、Mac OS、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-  * [Linux ベースの HDInsight で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+* SSH クライアント (`ssh` と `scp` コマンドが必要です) - 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
@@ -133,11 +130,7 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
    
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
    
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-   
-    * [Linux ベースの HDInsight で Linux、Unix、Mac OS、Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [Linux ベースの HDInsight で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. Kafka クラスターに SSH で接続した状態で、次のコマンドを使用して HTTP ログインとクラスター名に変数を設定します。 これらの値は、このセクションの他の手順で使用します。
 
@@ -238,12 +231,8 @@ Kafka クラスターへの SSH 接続は、Storm トポロジでトピックへ
   ```
 
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
-
-    HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-
-    * [Linux ベースの HDInsight で Linux、Unix、Mac OS、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [Linux ベースの HDInsight で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+   
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. Storm クラスターに SSH で接続してから、次のコマンドを使用して `set-env-variables.sh` スクリプトを実行します。
 

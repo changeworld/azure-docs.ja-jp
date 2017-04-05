@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2016
+ms.date: 03/24/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 08871f5984697370cefe47efa597f7e067f32ae3
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: ff771abc26c08f0adb977c29739d2f5c91924b21
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>DevTest ラボのカスタム イメージと数式の比較
-## <a name="overview"></a>Overview
-[カスタム イメージ](devtest-lab-create-template.md)と[数式](devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](devtest-lab-add-vm-with-artifacts.md) のベースとして使用することができます。 ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワークとサブネット、アーティファクトなどの構成済み設定 *に加え* 、VHD に基づくイメージであるという重要な相違点があります。 これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。 この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
+[カスタム イメージ](devtest-lab-create-template.md)と[数式](devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](devtest-lab-add-vm-with-artifacts.md) のベースとして使用することができます。 ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワーク、サブネット、アーティファクトなどの構成済み設定*に加え*、VHD に基づくイメージであるという重要な相違点があります。 これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。 この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
 
 ## <a name="custom-image-pros-and-cons"></a>カスタム イメージの長所と短所
-カスタム イメージでは、必要な環境から VM を作成するための静的で不変な方法が提供されます。 
+カスタム イメージでは、必要な環境から VM を作成するための静的で不変の方法が提供されます。 
 
 **長所**
 
@@ -54,9 +54,5 @@ ms.openlocfilehash: 08871f5984697370cefe47efa597f7e067f32ae3
 ## <a name="related-blog-posts"></a>関連するブログ記事
 * [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+## <a name="next-steps"></a>次のステップ
+- [DevTest Labs に関する FAQ](devtest-lab-faq.md)

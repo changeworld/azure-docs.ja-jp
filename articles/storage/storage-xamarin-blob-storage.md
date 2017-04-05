@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
-ms.openlocfilehash: 41be26b5dc3b7333521f02053ecb4b6ae1b17f73
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2ef27dc58e12d1b9e8eed54239332a53860ddd52
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -32,7 +32,7 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>新しい Xamarin アプリケーションの作成
-このチュートリアルでは、Android、iOS、および Windows を対象とするアプリケーションを作成します。 このアプリケーションは、コンテナーを作成し、そのコンテナーに BLOB をアップロードします。 ここでは Windows で Visual Studio を使用しますが、Mac OS で Xamarin Studio を使用しても同じようにアプリケーションを作成できます。
+このチュートリアルでは、Android、iOS、および Windows を対象とするアプリケーションを作成します。 このアプリケーションは、コンテナーを作成し、そのコンテナーに BLOB をアップロードします。 ここでは Windows で Visual Studio を使用しますが、macOS で Xamarin Studio を使用しても同じようにアプリケーションを作成できます。
 
 次の手順でアプリケーションを作成します。
 
@@ -85,7 +85,7 @@ namespace XamarinApp
 
 "Your_account_name_here" と "your_account_key_here" は、実際のアカウント名とアカウント キーに置き換えます。 
 
-iOS、Android、および Windows Phone プロジェクトすべてが、ポータブル プロジェクトを参照します。つまり、すべての共有コードを&1; か所に記述して、すべてのプロジェクトで使用できます。 これで、次のコード行を各プロジェクトに追加して、利用を開始することができます: `MyClass.performBlobOperation()`
+iOS、Android、および Windows Phone プロジェクトすべてが、ポータブル プロジェクトを参照します。つまり、すべての共有コードを 1 か所に記述して、すべてのプロジェクトで使用できます。 これで、次のコード行を各プロジェクトに追加して、利用を開始することができます: `MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -242,7 +242,7 @@ namespace XamarinApp.WinPhone
 アプリケーションを実行すると、コンテナー `mycontainer` がストレージ アカウントに作成されます。 これには、テキスト `Hello, world!` が示された BLOB `myblob` が含まれています。 これを確認するには、 [Microsoft Azure ストレージ エクスプ ローラー](http://storageexplorer.com/)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Blob Storage の&1; つのシナリオに焦点を当て、Xamarin で Azure Storage を使用するクロスプラットフォームのアプリケーションを作成する方法を学習しました。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くのことを行うことができます。 詳細については、次の記事を確認してください。
+このチュートリアルでは、Blob Storage の 1 つのシナリオに焦点を当て、Xamarin で Azure Storage を使用するクロスプラットフォームのアプリケーションを作成する方法を学習しました。 ただし、Blob Storage だけでなく、Table Storage、File Storage、および Queue Storage を使用すると、さらに多くのことを行うことができます。 詳細については、次の記事を確認してください。
 
 * [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
 * [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)

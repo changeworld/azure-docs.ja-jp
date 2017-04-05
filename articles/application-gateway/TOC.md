@@ -1,13 +1,14 @@
 # 概要
 ## [Application Gateway とは](application-gateway-introduction.md)
 ## [Application Gateway の FAQ](application-gateway-faq.md)
-## [Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)
+## [Web アプリケーション ファイアウォール](application-gateway-web-application-firewall-overview.md)
+### [重要な規則セットと規則](application-gateway-crs-rulegroups-rules.md)
 ## [正常性の監視](application-gateway-probe-overview.md)
 ## [URL ルーティング](application-gateway-url-route-overview.md)
 ## [マルチサイト](application-gateway-multi-site-overview.md)
 ## [エンド ツー エンド SSL](application-gateway-backend-ssl.md)
 ## [WebSocket](application-gateway-websocket.md)
-## [サービスの制限](../azure-subscription-service-limits.md#application-gateway-limits?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 作業開始
 ## Application Gateway を作成する
 ### パブリック
@@ -23,6 +24,8 @@
 ## Web アプリケーション ファイアウォールを構成する
 ### [ポータル](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
+## Web アプリケーション ファイアウォール規則のカスタマイズ
+### [ポータル](application-gateway-customize-waf-rules-portal.md)
 ## SSL オフロードを構成する
 ### [ポータル](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)

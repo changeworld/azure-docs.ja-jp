@@ -60,7 +60,7 @@ ms.lasthandoff: 03/18/2017
 ### <a name="verify-the-device-registration-status"></a>デバイスの登録状態を確認する
 Enterprise State Roaming では、デバイスを Azure AD に登録する必要があります。 Enterprise State Roaming に限ったことではありませんが、次の手順を実行すると Windows 10 クライアントが登録されていることを確認できるほか、拇印、Azure AD の設定 URL、NGC の状態、およびその他の情報を確認することができます。
 
-1.    管理者特権を使用せずにコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行] (Win + R) を開き、「cmd」と入力して開きます。
+1.    管理者特権を使用せずにコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行] \(Win + R) を開き、「cmd」と入力して開きます。
 2.    コマンド プロンプトが開いたら、「*dsregcmd.exe /status*」を入力します。
 3.    期待する出力を得るには、**AzureAdJoined** フィールド値を "YES"、**WamDefaultSet** フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
 

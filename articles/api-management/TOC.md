@@ -44,6 +44,7 @@
 ### [ユーザー アカウントを管理する](api-management-howto-create-or-invite-developers.md)
 ### [Automation を使用して管理する](automation-manage-api-management.md)
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
+### [Azure Monitor を使用して監視する](api-management-howto-use-azure-monitor.md)
 # リファレンス
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [REST ()](/rest/api/apimanagement/)

@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export ツールの設定 | Microsoft Docs"
-description: "ドライブの準備および修復用のツール (Azure Import/Export サービス) を設定する方法について説明します"
+description: "Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: cc7107ce89c063ae69184039893d9c28c912db08
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2aebded82fcf67bf9ad4a00a703e62eb12e2370c
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 
-Microsoft Azure Import/Export ツールは、ドライブの準備および修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。
+Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。
 
 * インポート ジョブを作成する前に、このツールを使用して、Azure データ センターに発送するハード ドライブにデータをコピーできます。
 * インポート ジョブが完了したら、このツールを使用して、壊れている BLOB、不足している BLOB、または他の BLOB と競合している BLOB を修復できます。
@@ -74,7 +75,7 @@ Azure Import/Export ツールは次のファイルで構成されます。
 コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。
 
 ```
-WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013
+WAImportExport, a client tool for Windows Azure Import/Export service. Microsoft (c) 2013
 
 
 Copy directories and/or files with a new copy session:
@@ -177,7 +178,7 @@ Parameters:
     /ExportBlobListFile:<ExportBlobListFile>
         - Required. Path to the XML file containing list of blob paths or blob path
           prefixes for the blobs to be exported. The file format is the same as the
-          blob list blob format in the Put Job operation of the Import/Export Service
+          blob list blob format in the Put Job operation of the Import/Export service
           REST API.
     /DriveSize:<DriveSize>
         - Required. Size of drives to be used for export. For example, 500GB, 1.5TB.
@@ -223,9 +224,4 @@ Examples:
 * [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

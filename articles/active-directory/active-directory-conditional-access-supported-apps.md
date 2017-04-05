@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory の条件付きアクセス規則を使用するアプリケーション | Microsoft Docs"
+title: "Azure Active Directory の条件付きアクセス規則を使用するアプリケーションとブラウザー | Microsoft Docs"
 description: "Azure Active Directory の条件付きアクセス制御では、ユーザーを認証するときやアプリケーションのアクセスを許可するために特定の条件がチェックされます。"
 services: active-directory
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 6dea1af021599eb530a4feb3257238e088191d5f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7dc79fad1a87f015475cd2643c8bec55192b2a15
+ms.lasthandoff: 03/28/2017
 
 
 ---
-# <a name="applications-that-use-conditional-access-rules-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス規則を使用するアプリケーション
+# <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス規則を使用するアプリケーションとブラウザー
+
 条件付きアクセス規則は、Azure Active Directory (Azure AD) 接続アプリケーションやフェデレーションが事前に統合されている SaaS (Software as a Service) アプリケーション、パスワード シングル サインオン (SSO) を使用するアプリケーション、業務アプリケーション、Azure AD アプリケーション プロキシを使用するアプリケーションでサポートされます。 条件付きアクセスへの対応状況を詳しく記載したアプリケーション一覧については、「[条件付きアクセスで有効になっているサービス](active-directory-conditional-access-technical-reference.md)」を参照してください。 条件付きアクセスの対象となるのは、先進認証を使用するモバイル アプリケーションとデスクトップ アプリケーションです。 この記事では、モバイル アプリとデスクトップ アプリにおける条件付きアクセスの動作について取り上げます。
 
 先進認証を使用するアプリケーションでは、Azure AD のサインイン ページを使用することができます。 ユーザーは、サインイン ページで多要素認証を求められます。 ユーザーのアクセスがブロックされた場合は、メッセージが表示されます。 Azure AD でデバイスの認証を行うためには先進認証が必須であり、それによってデバイス ベースの条件付きアクセス ポリシーが評価されます。
@@ -48,7 +49,7 @@ Office 365 をはじめとする Azure AD 接続サービス アプリケーシ�
 | Office 365 SharePoint Online |Mac OS X |Office 2016 アプリ (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定) |
 | Office 365 Yammer |Windows 10、iOS (Android サポートは将来サポート予定) |Office Yammer アプリ |
 | Dynamics CRM |Windows 10、Windows 8.1、Windows 7、iOS、Android |Dynamics CRM アプリ |
-| PowerBI サービス |Windows 10、Windows 8.1、Windows 7、iOS|PowerBI アプリ (Andoird アプリはサポートされていません) |
+| PowerBI サービス |Windows 10、Windows 8.1、Windows 7、iOS、Android |PowerBI アプリ |
 | Azure Remote App サービス |Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X |Azure リモート アプリ |
 | 任意のマイ アプリ アプリ サービス |Android および iOS |任意のマイ アプリ アプリ サービス |
 
@@ -109,4 +110,35 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
     c1:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork", Value == "false"] &&
     c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"]
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
+
+
+## <a name="supported-browsers"></a>サポートされているブラウザー
+
+
+| OS                     | ブラウザー                 | サポート |
+| :--                    | :--                      | :-:     |
+| Windows 10                 | IE、Edge                 | ![○][1] |
+| Windows 10                 | Chrome                   | 近日対応予定 |
+| Windows 8/8.1            | IE                       | ![○][1] |
+| Windows 7                  | IE                       | ![○][1] |
+| iOS                     | Safari                   | ![○][1] |
+| Android                | Chrome                   | ![○][1] |
+| Windows Phone               | IE、Edge                 | ![○][1] |
+| Windows Server 2016    | IE、Edge                 | ![○][1] |
+| Windows Server 2012 R2 | IE                       | ![○][1] |
+| Windows Server2008 R2     | IE                       | ![○][1] |
+| Mac OS                 | Safari                   | ![○][1] |
+| Mac OS                 | Chrome                   | 近日対応予定 |
+
+
+## <a name="next-steps"></a>次のステップ
+
+詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)」を参照してください。
+
+
+
+<!--Image references-->
+[1]: ./media/active-directory-conditional-access-supported-apps/ic195031.png
+
+
 

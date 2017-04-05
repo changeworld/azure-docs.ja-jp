@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 11/22/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: eb34bf45fde1fdaa1d7938967e659a13515a0f56
-ms.openlocfilehash: 914d391fa314de5893da462af3e9b59e6f8ce185
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: f64c41733f8fa7e34a0b0dfbbff2b565af7cf7db
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -69,7 +69,7 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 1. **Azure** > **Cloud Services** > **<クラウド サービスの名前>** ノードを展開します。
 2. **[ステージング]** と **[運用]** のいずれかを展開します。
 3. 個々のロールを展開します。
-4. ロール インスタンスの&1; つを右クリックして **[リモート デスクトップを使用して接続]**をクリックし、ユーザー名とパスワードを入力します。
+4. ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]**をクリックし、ユーザー名とパスワードを入力します。
 
 ![サーバー エクスプローラーとリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
 
@@ -135,4 +135,5 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 ## <a name="additional-resources"></a>その他のリソース
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
+[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md#remote-desktop)
 

@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 02/23/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: dbd4dd3cadf162ea18d58639d31589f7b9b8efc3
-ms.openlocfilehash: 2dfdcd08501a63d62ec6ba565d1abc7d42c8c680
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 4e3840f68c93998a52fa2956c2ea9d0976e0f627
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/27/2017
 
 <br/>
 
-[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の&3; つの手順が含まれます。
+[アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の 3 つの手順が含まれます。
 
 1. アプリケーション パッケージのイメージ ストアへのアップロード
 2. アプリケーションの種類を登録する
@@ -54,7 +54,11 @@ PS C:\>Connect-ServiceFabricCluster
 Azure Active Directory、X509 証明書、Windows Active Directory で保護されたクラスターまたはリモート クラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」をご覧ください。
 
 ## <a name="upload-the-application-package"></a>アプリケーション パッケージをアップロードする
-アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。  アプリケーション パッケージは、[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) コマンドでクラスター イメージ ストアにアップロードします。 Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
+アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。
+アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。
+
+アプリケーション パッケージは、[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) コマンドでクラスター イメージ ストアにアップロードします。
+Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
@@ -65,7 +69,8 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 アプリケーション パッケージの内容を一覧表示するには、次のコマンドを使用します。
 
 ```powershell
-PS C:\> tree /f 'C:\Users\user\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug'
+PS C:\> $path = 'C:\Users\user\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug'
+PS C:\> tree /f $path
 Folder PATH listing for volume OSDisk
 Volume serial number is 0459-2393
 C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\PKG\DEBUG
@@ -91,14 +96,52 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
             Settings.xml
 ```
 
+アプリケーション パッケージが大きい場合や含まれるファイルの数が多い場合は、アプリケーション パッケージを[圧縮](service-fabric-package-apps.md#compress-a-package)できます。 圧縮により、ファイルのサイズを小さくし、ファイル数を減らすことができます。
+その副次的な作用として、アプリケーションの種類の登録と登録解除が高速になります。 現時点で、特にパッケージを圧縮する時間を含めると、アップロード操作が遅くなることがあります。 
+
+パッケージを圧縮するには、同じ [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) コマンドを使用します。 圧縮は、`SkipCopy` フラグを使用することによってアップロードとは別に実行することも、アップロード操作と一緒に実行することもできます。 圧縮済みのパッケージに圧縮を適用した場合、何の操作も行われません。
+圧縮されているパッケージの圧縮を解除するには、同じ [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) コマンドを `UncompressPackage` スイッチと共に使用します。
+
+次のコマンドレットでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 このパッケージには、`Code` パッケージと `Config` パッケージの zip 圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、zip 圧縮されません。 マニフェストを zip 圧縮すると、これらの操作が非効率的になります。
+
+```
+PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
+PS C:\> tree /f $path
+Folder PATH listing for volume OSDisk
+Volume serial number is 0459-2393
+C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\PKG\DEBUG
+|   ApplicationManifest.xml
+|
+└───Stateless1Pkg
+       Code.zip
+       Config.zip
+       ServiceManifest.xml
+```
+
+大規模なアプリケーション パッケージでは、圧縮に時間がかかります。 最良の結果を得るには、高速の SSD ドライブを使用してください。 圧縮時間と圧縮後のパッケージ サイズもパッケージの内容によって異なります。
+例として、いくつかのパッケージの圧縮に関する統計情報を次に示します。ここには、初期パッケージ サイズ、圧縮後のパッケージ サイズ、および圧縮時間が示されています。
+
+|初期サイズ (MB)|ファイル数|圧縮時間|圧縮後のパッケージ サイズ (MB)|
+|----------------:|---------:|---------------:|---------------------------:|
+|100|100|00:00:03.3547592|60|
+|512|100|00:00:16.3850303|307|
+|1024|500|00:00:32.5907950|615|
+|2048|1,000|00:01:04.3775554|1,231|
+|5,012|100|00:02:45.2951288|3,074|
+
+圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイ メカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
+
+
 以下の例では、先ほどのパッケージをイメージ ストアの "MyApplicationV1" という名前のフォルダーにアップロードしています。
 
 ```powershell
-PS C:\> $path = 'C:\Users\user\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest))
+PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
 ```
 
 *-ApplicationPackagePathInImageStore* パラメーターを指定しなかった場合は、イメージ ストアの "Debug" フォルダーにアプリ パッケージがコピーされます。
+
+パッケージのアップロードにかかる時間は、さまざまな要素に応じて変わってきます。 これらの要素として、パッケージに含まれるファイルの数、パッケージ サイズ、ファイル サイズなどがあります。 ソース コンピューターと Service Fabric クラスターの間のネットワーク速度もアップロード時間に影響を与えます。 [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) の既定のタイムアウトは 30 分です。
+説明した要素に応じて、タイムアウトを長くすることが必要になる場合があります。 コピーの呼び出しでパッケージを圧縮する場合は、圧縮時間も考慮する必要があります。
 
 イメージ ストアとイメージ ストア接続文字列に関する補足情報は、[イメージ ストア接続文字列の理解](service-fabric-image-store-connection-string.md)に関するページを参照してください。
 
@@ -114,9 +157,10 @@ Register application type succeeded
 
 "MyApplicationV1" は、アプリ パッケージが格納されるイメージ ストア内のフォルダーです。 アプリケーション タイプ名 "MyApplicationType"、バージョン "1.0.0" (どちらもアプリケーション マニフェストに記述されます) としてアプリケーションの種類がクラスターに登録されます。
 
-[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。  アプリケーション パッケージが大規模でタイムアウトが発生する場合、**-Async** パラメーターを使用します。
+[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。
 
-[Get-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) コマンドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。
+アプリケーション パッケージが大規模な場合やタイムアウトが発生する場合は、**-Async** パラメーターを使用します。 このコマンドを実行すると、クラスターが登録コマンドを受け入れたときに制御が返されます。処理は必要に応じて続行されます。
+[Get-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) コマンドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -178,7 +222,7 @@ PS C:\> Get-ServiceFabricApplication
 ```
 
 ## <a name="unregister-an-application-type"></a>アプリケーションの種類の登録解除
-特定のバージョンのアプリケーションの種類が不要になったときは、[Unregister-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) コマンドレットを使用してその登録を解除する必要があります。 使用していないアプリケーションの種類について、その登録を解除すると、イメージ ストアによって使用されているストレージ領域が解放されます。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
+特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/unregister-servicefabricapplicationtype) コマンドレットを使用してアプリケーションの種類の登録を解除する必要があります。 使用していないアプリケーションの種類について、その登録を解除すると、イメージ ストアによって使用されているストレージ領域が解放されます。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
 
 現在クラスターに登録されているアプリケーションの種類を確認するには、[Get-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/get-servicefabricapplicationtype) を実行します。
 
@@ -196,6 +240,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```powershell
 PS C:\> Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
+
 ## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
 不要になったアプリケーション パッケージは、イメージ ストアから削除して、システム リソースを解放することができます。
 
@@ -224,6 +269,32 @@ ImageStoreConnectionString は、クラスター マニフェスト内にあり�
 
     [...]
 ```
+
+イメージ ストアとイメージ ストア接続文字列に関する補足情報は、[イメージ ストア接続文字列の理解](service-fabric-image-store-connection-string.md)に関するページを参照してください。
+
+### <a name="deploy-large-application-package"></a>大規模なアプリケーション パッケージをデプロイする
+問題: (GB 単位の) 大規模なアプリケーション パッケージで [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) がタイムアウトする。
+次の操作を試してください。
+- `TimeoutSec` パラメーターを使用して、[Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) コマンドのタイムアウト値を大きくします。 既定では、タイムアウトは 30 分です。
+- ソース コンピューターとクラスターの間のネットワーク接続を確認します。 接続が低速な場合は、ネットワーク接続が高速なコンピューターを使用することを検討してください。
+クライアント コンピューターがクラスターとは別のリージョンにある場合は、クラスターと同じかより近いリージョンにあるクライアント コンピューターの使用を検討してください。
+- 外部で調整されていないかどうかを確認してください。 たとえば、イメージ ストアが Azure Storage を使用するように構成されている場合、アップロードが調整される可能性があります。
+
+問題: パッケージのアップロードが正常に完了したが、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) がタイムアウトする。
+次の操作を試してください。
+- イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。
+圧縮によってファイル サイズが小さくなりファイル数が減るため、トラフィックの量と Service Fabric が実行する必要のある処理が減ります。 (圧縮時間を含めた場合は特に) アップロード操作が遅くなる場合がありますが、アプリケーションの種類の登録と登録解除は高速になります。
+- `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドのタイムアウト値を大きくします。
+- [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) に `Async` スイッチを指定します。 このコマンドを実行すると、クラスターがコマンドを受け入れたときに制御が返されます。プロビジョニングは非同期で継続されます。
+このため、この場合にはより大きなタイムアウト値を指定する必要はありません。
+
+### <a name="deploy-application-package-with-many-files"></a>多数のファイルを含むアプリケーション パッケージをデプロイする
+問題: (数千個の) 多数のファイルを持つアプリケーション パッケージに対する [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) がタイムアウトする。
+次の操作を試してください。
+- イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。 圧縮により、ファイル数を減らすことができます。
+- `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドのタイムアウト値を大きくします。
+- [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) に `Async` スイッチを指定します。 このコマンドを実行すると、クラスターがコマンドを受け入れたときに制御が返されます。プロビジョニングは非同期で継続されます。
+このため、この場合にはより大きなタイムアウト値を指定する必要はありません。 
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)

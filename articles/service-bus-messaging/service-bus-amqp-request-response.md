@@ -1,5 +1,5 @@
 ---
-title: "Service Bus における AMQP 1.0: 要求/応答ベースの操作 | Microsoft Docs"
+title: "Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作 | Microsoft Docs"
 description: "Microsoft Azure Service Bus の要求/応答ベースの操作の一覧。"
 services: service-bus-messaging
 documentationcenter: na
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/23/2016
+ms.date: 03/22/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 05c5c8e8c12357fd150be10def6cd9a272d613e2
-ms.openlocfilehash: 4df8ce114600abfa7abe8e70959a2cd51e2cd8a6
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: a09aefd00a89c48acdc885f98e34d7faa9c5629a
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -46,10 +47,10 @@ AMQP メッセージにマップされている Service Bus のメッセージ�
 要求を送信するために管理ノードへのリンクを作成します。  
   
 ```  
-requestLink = session.attach(     
+requestLink = session.attach(       
 role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
+       target: { address: "<entity address>/$management" },   
+       source: { address: ""<my request link unique address>" }   
 )  
   
 ```  
@@ -59,10 +60,10 @@ role: SENDER,
 管理ノードからの応答を受信するためのリンクを作成します。  
   
 ```  
-responseLink = session.attach(    
+responseLink = session.attach(      
 role: RECEIVER,   
     source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
+       target: { address: "<my response link unique address>" }   
 )  
   
 ```  
@@ -96,13 +97,13 @@ responseMessage = responseLink.receiveTransfer()
   
 ```  
 Message(  
-properties: {     
+properties: {      
         correlation-id: <request id>  
     },  
     application-properties: {  
             "statusCode" -> <status code>,  
             "statusDescription" -> <status description>,  
-           },         
+           },          
 )  
   
 ```  
@@ -129,8 +130,8 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|あり|`com.microsoft:renew-lock`|  
-|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|operation|string|はい|`com.microsoft:renew-lock`|  
+|`com.microsoft:server-timeout`|uint|なし|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
  要求メッセージの本文は、次のエントリが含まれたマップを含む amqp-value セクションで構成されている必要があります。  
   
@@ -144,8 +145,8 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|string|なし|ステータスの説明。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む amqp-value セクションで構成されている必要があります。  
   
@@ -164,7 +165,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|はい|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|`com.microsoft:server-timeout`|uint|なし|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -180,13 +181,13 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|string|なし|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|最大配信数|マップのリスト|はい|各マップが表すメッセージのリスト。|  
+|最大配信数|マップのリスト|あり|各マップが表すメッセージのリスト。|  
   
 メッセージを表すマップには、次のエントリが含まれている必要があります。  
   
@@ -229,7 +230,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|string|なし|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -262,8 +263,8 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
-|statusDescription|string|なし|ステータスの説明。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -283,7 +284,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|あり|`com.microsoft:renew-session-lock`|  
+|operation|string|はい|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|なし|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -298,7 +299,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
 |statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
@@ -317,7 +318,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|あり|`com.microsoft:peek-message`|  
+|operation|string|はい|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|なし|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -347,7 +348,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|message|byte 型の配列|あり|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
+|message|byte 型の配列|はい|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 ### <a name="set-session-state"></a>セッションの状態の設定  
 
@@ -366,7 +367,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|string|はい|セッション ID。|  
+|session-id|string|あり|セッション ID。|  
 |session-state|バイト配列|あり|非透過的なバイナリ データ。|  
   
 #### <a name="response"></a>応答  
@@ -375,8 +376,8 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|なし|ステータスの説明。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 ### <a name="get-session-state"></a>セッションの状態の取得  
 
@@ -404,7 +405,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|なし|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -422,7 +423,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|あり|`com.microsoft:get-message-sessions`|  
+|operation|string|はい|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|なし|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -440,7 +441,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
-|statusDescription|string|なし|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -466,7 +467,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|string|あり|ルール名。サブスクリプションとトピックの名前は含まれません。|  
+|rule-name|string|はい|ルール名。サブスクリプションとトピックの名前は含まれません。|  
 |rule-description|map|あり|次のセクションで指定されたルールの説明。|  
   
 **rule-description** マップには、次のエントリが含まれている必要があります。**sql-filter** と **correlation-filter** を同時に含めることはできません。  
@@ -495,7 +496,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |session-id|string|なし||  
 |reply-to-session-id|string|なし||  
 |content-type|string|なし||  
-|プロパティ|map|いいえ|Service Bus の [BrokeredMessage.Properties](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) へのマップ。|  
+|プロパティ|map|いいえ|Service Bus の [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties) へのマップ。|  
   
 **sql-rule-action** マップには、次のエントリが含まれている必要があります。  
   
@@ -509,8 +510,8 @@ sql-filter マップには、次のエントリが含まれている必要があ
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|なし|ステータスの説明。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 ### <a name="remove-rule"></a>ルールの削除  
   
@@ -535,7 +536,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
 |statusDescription|string|いいえ|ステータスの説明。|  
   
 ## <a name="deferred-message-operations"></a>遅延メッセージ操作  
@@ -566,8 +567,8 @@ sql-filter マップには、次のエントリが含まれている必要があ
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|なし|ステータスの説明。|  
+|StatusCode|int|あり|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -602,7 +603,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |disposition-status|string|はい|完了<br /><br /> abandoned<br /><br /> suspended|  
 |lock-tokens|UUID の配列|はい|廃棄状態を更新するメッセージ ロック トークン。|  
 |deadletter-reason|string|なし|廃棄状態が **suspended** に設定されている場合に設定できます。|  
-|deadletter-description|string|いいえ|廃棄状態が **suspended** に設定されている場合に設定できます。|  
+|deadletter-description|string|なし|廃棄状態が **suspended** に設定されている場合に設定できます。|  
 |properties-to-modify|map|いいえ|変更する Service Bus ブローカー メッセージのプロパティのリスト。|  
   
 #### <a name="response"></a>応答  
@@ -624,8 +625,3 @@ AMQP と Service Bus の詳細については、次のリンクを参照して�
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.asp
-
-
-<!--HONumber=Nov16_HO4-->
-
-

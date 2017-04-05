@@ -1,5 +1,5 @@
 ---
-title: "Azure Import ジョブ用にハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs"
+title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー | Microsoft Docs"
 description: "Azure Import/Export サービスでインポート ジョブ用のドライブを準備するプロセスの手順について説明します。"
 author: muralikk
 manager: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
-ms.openlocfilehash: ebed1f1d4cb6cca96e02322d2f76abd6e9810ecc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2e522fabf9be5af7477e556ee0c2bf66f41c28fe
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -76,11 +76,11 @@ X,Format,SilentMode,Encrypt,
 Y,Format,SilentMode,Encrypt,
 ```
 
-ツールにより、最適化された方法で&2; つのハード ドライブにデータが分配されます。
+ツールにより、最適化された方法で 2 つのハード ドライブにデータが分配されます。
 
 さらに、すべてのファイルの次のメタデータを設定できます。
 
-* **UploadMethod:** Windows Azure Import/Export Service
+* **UploadMethod:** Windows Azure Import/Export サービス
 * **DataSetName:** SampleData
 * **CreationDate:** 10/1/2013
 
@@ -89,7 +89,7 @@ Y,Format,SilentMode,Encrypt,
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Metadata>
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>
     <DataSetName>SampleData</DataSetName>
     <CreationDate>10/1/2013</CreationDate>
 </Metadata>
@@ -114,7 +114,7 @@ Y,Format,SilentMode,Encrypt,
 
 ## <a name="run-the-azure-importexport-tool-waimportexportexe"></a>Azure Import/Export ツール (WAImportExport.exe) を実行する
 
-これで、Azure Import/Export ツールを実行して&2; つのハード ドライブを準備できます。
+これで、Azure Import/Export ツールを実行して 2 つのハード ドライブを準備できます。
 
 **最初のセッション:**
 
@@ -130,7 +130,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-コピー セッションが完了したら、コピー用コンピューターから&2; つのドライブを切断し、適切な Azure データ センターに送付できます。 Azure Portal でインポート ジョブを作成するときに、`<FirstDriveSerialNumber>.xml` と `<SecondDriveSerialNumber>.xml` の&2; つのジャーナル ファイルをアップロードします。
+コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Azure データ センターに送付できます。 Azure Portal でインポート ジョブを作成するときに、`<FirstDriveSerialNumber>.xml` と `<SecondDriveSerialNumber>.xml` の 2 つのジャーナル ファイルをアップロードします。
 
 ## <a name="next-steps"></a>次のステップ
 

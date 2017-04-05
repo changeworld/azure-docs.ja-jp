@@ -261,10 +261,17 @@
   - name: "仮想マシン スケール セット"
     tocHref: /azure/virtual-machine-scale-sets/
     topicHref: /azure/virtual-machine-scale-sets/
-  - name: "[Virtual Machines]"
+  - name: "Virtual Machines"
     tocHref: /azure/virtual-machines/
     topicHref: /azure/virtual-machines/
     items:
+      - name: "ワークロード"
+        tocHref: /azure/virtual-machines/workloads/
+        topicHref: /azure/virtual-machines/workloads/sap/get-started
+        items:
+          - name: "SAP"
+            tocHref: /azure/virtual-machines/workloads/sap/
+            topicHref: /azure/virtual-machines/workloads/sap/get-started
       - name: "Linux"
         tocHref: /azure/virtual-machines/linux/
         topicHref: /azure/virtual-machines/linux/

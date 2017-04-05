@@ -15,49 +15,91 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
-ms.openlocfilehash: b4b60c9134fd491184b02593c32659d2dcdfed8a
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: d5f94685c1d14b282b9f6bc4025b20ce00b5b8a8
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase と他のデータ ストアとの間でデータを移動する方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Sybase データベースからデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
+オンプレミスの Sybase ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory は、現時点では Sybase データ ストアから他のデータ ストアへのデータ移動のみをサポートし、他のデータ ストアから Sybase データ ストアへのデータ移動に関してはサポートしていません。 
+
+## <a name="prerequisites"></a>前提条件
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの Sybase ソースへの接続をサポートします。 Data Management Gateway の詳細およびゲートウェイの設定手順については、「 [オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。
 
-> [!NOTE]
-> Sybase データベースが Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。 ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
->
->
+Sybase データベースが Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。 ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 
-Data Factory は、他のデータ ストアから Sybase へのデータの移動ではなく、Sybase から他のデータ ストアへのデータの移動のみをサポートします。
+> [!NOTE]
+> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
 Data Management Gateway で Sybase データベースに接続するには、[Sybase iAnywhere.Data.SQLAnywhere のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)の 16 以降を Data Management Gateway と同じシステムにインストールする必要があります。 Sybase バージョン 16 以降がサポートされています。
 
-> [!NOTE]
-> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
->
->
+## <a name="getting-started"></a>使用の開始
+さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-## <a name="copy-data-wizard"></a>データのコピー ウィザード
-Sybase データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+
+1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Sybase データ ストアからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: Sybase から Azure Blob へのデータのコピー](#json-example-copy-data-from-sybase-to-azure-blob)」をご覧ください。 
+
+次のセクションでは、Sybase データ ストアに固有のデータ ファクトリ エンティティの定義に使用される JSON プロパティについて詳しく説明します。
+
+## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
+次の表は、Sybase のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| type |type プロパティを **OnPremisesSybase** |はい |
+| server |Sybase サーバーの名前です。 |はい |
+| database |Sybase データベースの名前です。 |はい |
+| schema |データベース内のスキーマの名前です。 |いいえ |
+| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |はい |
+
+## <a name="dataset-properties"></a>データセットのプロパティ
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
+
+typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Sybase データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| tableName |リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
+
+## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+
+source の種類が **RelationalSource** (Sybase を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| --- | --- | --- | --- |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+
+
+## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON の使用例: Sybase から Azure Blob へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Sybase データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
-
-## <a name="sample-copy-data-from-sybase-to-azure-blob"></a>サンプル: Sybase から Azure BLOB にデータをコピーする
-このサンプルは、Sybase データベースから Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#sybase-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 型のリンクされたサービス。
-3. [RelationalTable](data-factory-onprem-sybase-connector.md#sybase-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [RelationalSource](data-factory-onprem-sybase-connector.md#sybase-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 型のリンクされたサービス。
+3. [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5. [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは Sybase データベースのクエリ結果のデータを BLOB に&1; 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは Sybase データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 最初の手順として、データ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 
@@ -232,44 +274,6 @@ Sybase データベースから、サポートされているシンク データ
 }
 ```
 
-## <a name="sybase-linked-service-properties"></a>Sybase のリンクされたサービスのプロパティ
-次の表は、Sybase のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| type |type プロパティを **OnPremisesSybase** |はい |
-| server |Sybase サーバーの名前です。 |はい |
-| database |Sybase データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 |いいえ |
-| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
-| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
-| gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |あり |
-
-オンプレミスの Sybase データ ソースの資格情報の設定について詳しくは、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
-
-## <a name="sybase-dataset-type-properties"></a>Sybase データセットの type プロパティ
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
-
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Sybase データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| tableName |リンクされたサービスが参照する Sybase データベース インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
-
-## <a name="sybase-copy-activity-type-properties"></a>Sybase のコピー アクティビティの type プロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
-
-一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
-
-source の種類が **RelationalSource** (Sybase を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
-
-| プロパティ | 説明 | 使用できる値 | 必須 |
-| --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
-
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
-
 ## <a name="type-mapping-for-sybase"></a>Sybase の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
@@ -278,9 +282,11 @@ source の種類が **RelationalSource** (Sybase を含む) である場合は�
 
 Sybase では、T-SQL と T-SQL 型をサポートします。 sql 型から .NET 型のマッピング テーブルについては、「 [Azure SQL コネクタ](data-factory-azure-sql-connector.md) 」の記事を参照してください。
 
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

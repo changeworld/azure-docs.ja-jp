@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2017
+ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 62ecd4cc2eed8623cab75777605d621e16b99977
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: efdec32e565bf1d11b562d283e56bd8ed5d292b9
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
+# <a name="create-and-modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の作成と変更 (クラシック)
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
@@ -44,20 +44,25 @@ ms.lasthandoff: 03/14/2017
 ### <a name="step-1-review-the-prerequisites-and-workflow-articles"></a>手順 1. 前提条件とワークフローに関する記事を確認する
 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。  
 
-### <a name="step-2-install-the-latest-versions-of-the-azure-powershell-modules"></a>手順 2. Azure PowerShell モジュールの最新バージョンをインストールする
-Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs) 」の手順に従ってください。
+### <a name="step-2-install-the-latest-versions-of-the-azure-service-management-sm-powershell-modules"></a>手順 2. Azure サービス管理 (SM) PowerShell モジュールの最新版をインストールしてください
+Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell コマンドレットの概要](/powershell/azureps-cmdlets-docs)」の手順に従ってください。
 
 ### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>手順 3. Azure アカウントにログインしてサブスクリプションを選択する
-1. 管理者特権の Windows PowerShell プロンプトで、次のコマンドレットを実行します。
-   
+1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
+
+        Login-AzureRmAccount
+
+2. アカウントのサブスクリプションを確認します。
+
+        Get-AzureRmSubscription
+
+3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
+
+        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+
+4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
+
         Add-AzureAccount
-2. 表示されたサインイン画面で自分のアカウントにサインインします。
-3. サブスクリプションの一覧を取得します。
-   
-        Get-AzureSubscription
-4. 使用するサブスクリプションを選択します。
-   
-        Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>手順 1. ExpressRoute 用の PowerShell モジュールをインポートする
@@ -183,7 +188,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 > 
 
 ### <a name="step-8-link-a-virtual-network-to-an-expressroute-circuit"></a>手順 8. ExpressRoute 回線への仮想ネットワークのリンク
-次に、ExpressRoute 回線に仮想ネットワークをリンクします。 詳細な手順については、「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md) 」を参照してください。 ExpressRoute のクラシック デプロイメント モデルを使用して仮想ネットワークを作成する必要がある場合、手順については、「 [クラシック ポータルでの ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md) 」をご覧ください。
+次に、ExpressRoute 回線に仮想ネットワークをリンクします。 詳細な手順については、「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md) 」を参照してください。 ExpressRoute のクラシック デプロイメント モデルを使用して仮想ネットワークを作成する必要がある場合、手順については、「[クラシック ポータルでの ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md)」をご覧ください。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>ExpressRoute 回線の状態の取得
 この情報は、 `Get-AzureCircuit` コマンドレットを使用していつでも取得できます。 パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。

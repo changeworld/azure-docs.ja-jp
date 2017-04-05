@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 02/10/2017
 ms.author: vturecek
+redirect_url: /azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc0a7dfa74e9100a61fbc45fda908e9227cf54da
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 73b7e1c0cb93ae7c54780a3aab837b0e5bcdb0a0
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -36,17 +38,11 @@ Web API アプリケーション自体には違いはありません。 これ�
 ## <a name="create-the-application"></a>アプリケーションを作成する
 Visual Studio 2015 で、1 つのステートレス サービスと新しい Service Fabric アプリケーションを作成することから始めます。
 
-![Create a new Service Fabric application](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
-
 Web API を使用するステートレス サービス用の Visual Studio テンプレートを使用できます。 このチュートリアルでは、このテンプレートを選択した場合に入手できる Web API プロジェクトを最初から作成します。
 
 空のステートレス サービス プロジェクトを選択して、Web API プロジェクトを最初から作成する方法を学習するか、ステートレス サービス Web API テンプレートを使用して開始し、手順に従うことができます。  
 
-![Create a single stateless service](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
-
 最初の手順は、Web API のいくつかの NuGet パッケージを取得することです。 使用するパッケージは Microsoft.AspNet.WebApi.OwinSelfHost です。 このパッケージには、必要なすべての Web API パッケージと、 *ホスト* パッケージが含まれます。 これは後で重要になります。
-
-![NuGet パッケージ マネージャーを使用した Web API の作成](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
 パッケージがインストールされたら、基本的な Web API プロジェクト構造の構築を開始できます。 Web API を使用していた場合、プロジェクトの構造は非常に馴染みがあるように見えるはずです。 まず、 `Controllers` ディレクトリと単純な Values コントローラーを追加します。
 
@@ -628,14 +624,10 @@ namespace WebService
 
 すべての部分を適切に配置したら、プロジェクトは、Reliable Services API エントリ ポイントと OWIN ホストのある一般的な Web API アプリケーションのようになったはずです。
 
-![Reliable Services API エントリ ポイントと OWIN ホストを使用した Web API](media/service-fabric-reliable-services-communication-webapi/webapi-projectstructure.png)
-
 ## <a name="run-and-connect-through-a-web-browser"></a>Web ブラウザーによる実行と接続
 [開発環境を設定](service-fabric-get-started.md)していない場合は、設定します。
 
 これでサービスを構築し、デプロイできます。 Visual Studio で **F5** キーを押して、アプリケーションを構築し、デプロイします。 [診断イベント] ウィンドウに、Web サーバーが http://localhost:8281/ で開かれたことを示すメッセージが表示されます。
-
-![Visual Studio 診断イベント ウィンドウ](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
 
 > [!NOTE]
 > ポートが既に、コンピューターの別のプロセスによって開かれている場合、ここでエラーが表示されます。 これは、リスナーを開けなかったことを示します。 その場合は、ServiceManifest.xml のエンドポイント構成で、別のポートを使用してください。
@@ -671,10 +663,5 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 
 ## <a name="next-steps"></a>次のステップ
 [Visual Studio による Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

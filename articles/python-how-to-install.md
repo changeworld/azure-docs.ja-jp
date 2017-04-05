@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f4c30c4653d8a14c7bf68ec6935c26725c6f623c
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c2d6999c6c6e8d9168e2417309207dd14bf4f6f2
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -88,7 +89,7 @@ Azure サービスごとに個別にインストールできます。
 ```
 
 ## <a name="getting-more-packages"></a>その他のパッケージの入手
-「[Python Package Index (PyPI) (Python パッケージ インデックス (PyPI))][Python Package Index]」では、Python ライブラリから豊富なリソースを選べます。  ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施できます。
+「[Python Package Index][Python Package Index] (PyPI)」には、Python ライブラリの豊富な選択肢があります。  ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施できます。
 
 ## <a name="python-tools-for-visual-studio"></a>Python Tools for Visual Studio
 [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用できます。
@@ -110,7 +111,7 @@ Linux または MacOS の場合は、主に次の Azure シナリオがサポー
 
 最初のシナリオでは、Azure REST API 用の Python ラッパーを介して Azure の PaaS 機能 ([BLOB ストレージ](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[キュー ストレージ](storage/storage-python-how-to-use-queue-storage.md)、[テーブル ストレージ](storage/storage-python-how-to-use-table-storage.md)など) を利用する優れた Web アプリケーションを作成できます。 これらは、Windows、Mac、Linux とまったく同じように動作します。  また、ローカルの開発マシンや Linux 仮想マシンからこれらのクライアント ライブラリを使うこともできます。
 
-VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows/Mac/Linux コンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。 詳細については、「[Azure での IPython Notebook](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
+VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows、Mac、または Linux のコンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。 詳細については、「[Azure での IPython Notebook](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
 
 Linux 仮想マシンのセットアップの詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
 
@@ -120,52 +121,47 @@ Azure Websites を開発して公開する詳細については、[Django を使
 
 ## <a name="additional-software-and-resources"></a>その他のソフトウェアとリソース:
 * [Azure SDK for Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
-* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+* [Azure SDK for Python GitHub](https://github.com/Azure/azure-sdk-for-python)
 * [Python 用の Azure 公式サンプル](https://azure.microsoft.com/documentation/samples/?platform=python)
-* [Continuum Analytics Python Distribution (Continuum Analytics Python ディストリビューション)][Continuum Analytics Python Distribution (Continuum Analytics Python Distribution ディストリビューション)]
-* [Enthought Python Distribution (Enthought の Python ディストリビューション)][Enthought Python Distribution (Enthought の Python ディストリビューション)]
-* [ActiveState Python Distribution (ActiveState の Python ディストリビューション)][ActiveState Python Distribution (ActiveState の Python ディストリビューション)]
-* [SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)][SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)]
-* [NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)][NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)]
-* [Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)][Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)]
-* [IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)][IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)]
+* [Continuum Analytics Python ディストリビューション][Continuum Analytics Python Distribution]
+* [Enthought の Python ディストリビューション][Enthought Python Distribution]
+* [ActiveState の Python ディストリビューション][ActiveState Python Distribution]
+* [SciPy - Python の科学技術計算ライブラリのパッケージ][SciPy - A suite of Scientific Python libraries]
+* [NumPy - Python の数値計算ライブラリ][NumPy - A numerics library for Python]
+* [Django Project - 進化した Web フレームワーク/CMS][Django Project - A mature web framework/CMS]
+* [IPython - 高度な Python 用 REPL/Notebook][IPython - an advanced REPL/Notebook for Python]
 * [Azure での IPython Notebook](virtual-machines/virtual-machines-linux-jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Python Tools for Visual Studio on GitHub に関するページ][Python Tools for Visual Studio on GitHub に関するページ]
+* [GitHub の Python Tools for Visual Studio][Python Tools for Visual Studio on GitHub]
 * [Python デベロッパー センター](/develop/python/)
 
-[Continuum Analytics Python Distribution (Continuum Analytics Python Distribution ディストリビューション)]: http://continuum.io
-[Enthought Python Distribution (Enthought の Python ディストリビューション)]: http://www.enthought.com
-[ActiveState Python Distribution (ActiveState の Python ディストリビューション)]: http://www.activestate.com
+[Continuum Analytics Python Distribution]: http://continuum.io
+[Enthought Python Distribution]: http://www.enthought.com
+[ActiveState Python Distribution]: http://www.activestate.com
 [www.python.org]: http://www.python.org
 [www.continuum.io]: http://continuum.io
 [www.enthought.com]: http://www.enthought.com
 [www.activestate.com]: http://www.activestate.com
-[SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)]: http://www.scipy.org
-[NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)]: http://www.numpy.org
-[Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)]: http://www.djangoproject.com
-[IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)]: http://ipython.org
+[SciPy - A suite of Scientific Python libraries]: http://www.scipy.org
+[NumPy - A numerics library for Python]: http://www.numpy.org
+[Django Project - A mature web framework/CMS]: http://www.djangoproject.com
+[IPython - an advanced REPL/Notebook for Python]: http://ipython.org
 [IPython]: http://ipython.org
-[Azure での IPython Notebook]: virtual-machines-linux-jupyter-notebook.md
+[IPython Notebook on Azure]: virtual-machines-linux-jupyter-notebook.md
 [Cloud Services]: cloud-services-python-ptvs.md
 [Websites]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio on GitHub に関するページ]: https://github.com/microsoft/ptvs
+[Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
 [Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
-[Azure Portal による Linux VM の設定]: create-and-configure-opensuse-vm-in-portal.md
-[Azure コマンド ライン インターフェイスの使用方法]: crossplat-cmd-tools.md
-[Linux を実行する仮想マシンの作成]: virtual-machines-linux-quick-create-cli.md
-[Django を使用した Web サイトの作成]: web-sites-python-create-deploy-django-app.md
-[Bottle を使用した Web サイトの作成]: web-sites-python-create-deploy-bottle-app.md
-[Flask を使った Websites の作成]: web-sites-python-create-deploy-flask-app.md
-[Azure Websites での Python の構成]: web-sites-python-configure.md
-[テーブル ストレージ]: storage-python-how-to-use-table-storage.md
-[キュー ストレージ]: storage-python-how-to-use-queue-storage.md
-[BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
+[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
+[Create a Virtual Machine Running Linux]: virtual-machines-linux-quick-create-cli.md
+[Creating Websites with Django]: web-sites-python-create-deploy-django-app.md
+[Creating Websites with Bottle]: web-sites-python-create-deploy-bottle-app.md
+[Creating Websites with Flask]: web-sites-python-create-deploy-flask-app.md
+[Configuring Python with Azure Websites]: web-sites-python-configure.md
+[table storage]: storage-python-how-to-use-table-storage.md
+[queue storage]: storage-python-how-to-use-queue-storage.md
+[blob storage]: storage-python-how-to-use-blob-storage.md
 

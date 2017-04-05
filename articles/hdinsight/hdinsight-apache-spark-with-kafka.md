@@ -8,6 +8,7 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: 
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,8 +16,9 @@ ms.workload: big-data
 ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
-ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: c56decc1f7603795e027ce20363c387c593999ae
+ms.lasthandoff: 03/25/2017
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>HDInsight での Kafka (プレビュー) に Apache Spark を使用する
@@ -32,11 +34,7 @@ Apache Spark は、Apache Kafka 内外へのデータのストリームに使用
 
 * Azure サブスクリプション
 
-* SSH クライアント (`ssh` コマンドと `scp` コマンドが必要) - HDInsight での SSH の使用方法の詳細については、次のドキュメントを参照してください。
-
-    * [Linux、Unix、および Mac OS から Linux ベースの HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-    * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+* SSH クライアント (`ssh` と `scp` コマンドが必要です) - 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 * [cURL](https://curl.haxx.se/) - HTTP 要求を行うためのクロス プラットフォーム ユーティリティ。
 
@@ -116,7 +114,7 @@ Notebook のコードは次のタスクを実行します。
 
 プロジェクト内の各セルには、コードの機能を説明するコメントやテキスト セクションが含まれています。
 
-##<a name="a-idkafkahostsakafka-host-information"></a><a id="kafkahosts"></a>Kafka ホスト情報
+##<a id="kafkahosts"></a>Kafka ホスト情報
 
 HDInsight 上の Kafka で動作するアプリケーションを作成する場合は、まず Kafka クラスターで使用する Kafka ブローカーと Zookeeper ホストの情報を取得する必要があります。 この情報は、クライアント アプリケーションによって Kafka との通信に使用されます。
 
@@ -183,10 +181,5 @@ HDInsight 上の Kafka で動作するアプリケーションを作成する場
 * [HDInsight での Apache Kafka の使用](hdinsight-apache-kafka-get-started.md)
 * [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](hdinsight-apache-kafka-mirroring.md)
 * [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

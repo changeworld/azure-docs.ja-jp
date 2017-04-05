@@ -1,7 +1,6 @@
 ---
-
-title: "インポート ジョブ用のハード ドライブを準備する | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのインポート ジョブ用に、1 つ以上のハード ドライブを準備する方法について学習します"
+title: "Azure Import/Export のインポート ジョブ用のハード ドライブを準備する - v1 | Microsoft Docs"
+description: "WAImportExport v1 ツールを使用して Azure Import/Export サービスのインポート ジョブを作成するためのハード ドライブを準備する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -16,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: d4894b4168a524d2378048f2da091298fb010d67
-ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 5ec2f1346e7c9723aeca45f1c278d0731b3a43b5
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -35,16 +35,16 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 
  サンプル ワークフローについては、「[インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)」をご覧ください。
 
-##  <a name="a-nameprepareharddrivesidentifythedatatobeimporteda-identify-the-data-to-be-imported"></a><a name="PrepareHardDrives_IdentifytheDatatoBeImported"></a> インポートするデータを特定する
- インポート ジョブを作成するには、まずインポートするディレクトリとファイルを決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブの対象となります。
+## <a name="identify-the-data-to-be-imported"></a>インポートするデータを特定する
+ インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブの対象となります。
 
 > [!NOTE]
 >  親ディレクトリが含まれる場合、サブディレクトリは再帰的に含まれるので、親ディレクトリのみを指定します。 サブディレクトリは一切指定しないでください。
 >
 >  現時点で、Microsoft Azure Import/Export ツールには次の制限事項があります: ハード ドライブに収容できるよりも多くのデータがディレクトリに含まれている場合は、ディレクトリをより小さなディレクトリに分割する必要があります。 たとえば、ディレクトリに 2.5 TB のデータが含まれているのに対し、ハード ドライブの容量が 2 TB しかない場合には、2.5 TB のディレクトリをより小さなディレクトリに分割する必要があります。 この制限は、今後のバージョンで解決される予定です。
 
-##  <a name="a-nameprepareharddrivesidentifythedestinationlocationsintheblobservicea-identify-the-destination-locations-in-the-blob-service"></a><a name="PrepareHardDrives_IdentifytheDestinationLocationsintheBlobService"></a> Blob Service 内の宛先の場所を特定する
- インポートするディレクトリまたはファイルごとに、Azure Blob service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを Azure Import/Export ツールの入力値として使用します。 ディレクトリはスラッシュ (/) で区切ってください。
+## <a name="identify-the-destination-locations-in-the-blob-service"></a>BLOB サービス内の宛先の場所を特定する
+ インポートするディレクトリまたはファイルごとに、Azure BLOB service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを Azure Import/Export ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
 
  次の表は、BLOB ターゲットの例を示しています。
 
@@ -55,7 +55,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
 |\\\myshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
 
-##  <a name="a-nameprepareharddrivesdeterminehowmanydrivesareneededa-determine-how-many-drives-are-needed"></a><a name="PrepareHardDrives_DetermineHowManyDrivesAreNeeded"></a> 必要なドライブの数を決定する
+## <a name="determine-how-many-drives-are-needed"></a>必要なドライブの数を決定する
  次に、以下のこと確認する必要があります。
 
 -   データの格納に必要なハード ドライブの数。
@@ -64,8 +64,8 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 
  転送するデータを格納するためのハード ドライブが必要数あることを確認してください。
 
-##  <a name="a-nameprepareharddrivescopydatatoasingleharddrivea-copy-data-to-your-hard-drive"></a><a name="PrepareHardDrives_CopyDatatoaSingleHardDrive"></a> データをハード ドライブにコピーする
- このセクションでは、Azure Import/Export ツールを呼び出して、1 つ以上のハード ドライブにデータをコピーする方法について説明します。 Azure Import/Export ツールを呼び出す際には、その都度新しい*コピー セッション*を作成します。 データのコピー先となる各ドライブに対し、少なくとも 1 つのコピー セッションを作成します。場合によっては、すべてのデータを 1 つのドライブにコピーするために、複数のコピー セッションが必要になることもあります。 複数のコピー セッションが必要になる理由を次に示します。
+## <a name="copy-data-to-your-hard-drive"></a>データをハード ドライブにコピーする
+ このセクションでは、Azure Import/Export ツールを呼び出して、1 つまたは複数のハード ドライブにデータをコピーする方法について説明します。 Azure Import/Export ツールを呼び出す際には、その都度新しい*コピー セッション*を作成します。 データのコピー先となる各ドライブに対し、少なくとも 1 つのコピー セッションを作成します。場合によっては、すべてのデータを 1 つのドライブにコピーするために、複数のコピー セッションが必要になることもあります。 複数のコピー セッションが必要になる理由を次に示します。
 
 -   コピー先となるドライブごとに、個別のコピー セッションを作成する必要があります。
 
@@ -79,7 +79,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
  Azure Import/Export ツールでは、準備したハード ドライブごとに 1 つのジャーナル ファイルが作成されます。 インポート ジョブを作成するには、すべてのドライブからのジャーナル ファイルが必要です。 また、ツールが中断された場合に、このジャーナル ファイルを使用してドライブの準備を再開することもできます。
 
 ### <a name="azure-importexport-tool-syntax-for-an-import-job"></a>インポート ジョブの Azure Import/Export ツール構文
- インポート ジョブ用のドライブを準備するには、**PrepImport** コマンドを使用して Azure Import/Export ツールを呼び出します。 どのパラメーターを指定するかは、それが最初のコピー セッションか、それともそれ以降のコピー セッションかによって異なります。
+ インポート ジョブ用のドライブを準備するには、**PrepImport** コマンドを使用して Azure Import/Export ツールを呼び出します。 追加するパラメーターは、最初のコピー セッションかそれ以降のコピー セッションかによって異なります。
 
  ドライブの最初のコピー セッションでは、いくつか追加パラメーターを指定して、ストレージ アカウント キー、対象のドライブ文字、ドライブをフォーマットする必要があるかどうか、ドライブを暗号化する必要があるかどうか、暗号化する場合の BitLocker キー、およびログ ディレクトリを指定する必要があります。 ディレクトリまたは単一ファイルをコピーするための最初のコピー セッションの構文を次に示します。
 
@@ -118,7 +118,7 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |**/silentmode**|`Optional.` ターゲット ドライブをフォーマットする際の確認を表示しないようにするには、このパラメーターを指定します。|
 |**/encrypt**|`Optional.` ドライブがまだ BitLocker で暗号化されておらず、このツールで暗号化する必要がある場合は、このパラメーターを指定します。 ドライブが既に BitLocker で暗号化されている場合は、このパラメーターを省略して `/bk` パラメーターを指定し、既存の BitLocker キーを入力します。<br /><br /> `/format` パラメーターを指定する場合は、`/encrypt` パラメーターも指定する必要があります。|
 |**/bk:**<BitLockerKey\>|`Optional.` `/encrypt` を指定した場合、このパラメーターは省略します。 `/encrypt` を省略する場合は、ドライブが既に BitLocker で暗号化されている必要があります。 このパラメーターは、BitLocker キーを指定するために使用します。 BitLocker 暗号化は、インポート ジョブのすべてのハード ドライブに対して必須です。|
-|**/logdir:**<LogDirectory\>|`Optional.` ログ ディレクトリは、詳細ログや一時的なマニフェスト ファイルの保存に使用するディレクトリを指定するものです。 指定しなかった場合は、現在のディレクトリがログ ディレクトリとして使用されます。|
+|**/logdir:**<LogDirectory\>|`Optional.` ログ ディレクトリは、詳細ログや一時的なマニフェスト ファイルの保存に使用するディレクトリを指定するものです。 指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|
 
 ### <a name="parameters-required-for-all-copy-sessions"></a>すべてのコピー セッションに必要なパラメーター
  ジャーナル ファイルには、ハード ドライブのすべてのコピー セッションの状態が格納されます。 また、インポート ジョブの作成に必要な情報も含まれています。 Azure Import/Export ツールを実行する場合は、ジャーナル ファイルとコピー セッション ID を必ず指定してください。
@@ -138,8 +138,8 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |**/dstdir:**<DestinationBlobVirtualDirectory\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。<br /><br /> 指定できるのは、コンテナーか BLOB プレフィックス (例: `music/70s/`) です。 インポート先ディレクトリは、コンテナー名の後にスラッシュ (/) を付けて指定します。 仮想 BLOB ディレクトリ (省略可能) を追加する場合は、その末尾にも "/" を付けます。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、ルート コンテナーを (スラッシュ付きで) 明示的に指定する必要があります (例: `$root/`)。 ルート コンテナーの下にある BLOB の名前に "/" を含めることはできないので、インポート先のディレクトリがルート コンテナーである場合、ソース ディレクトリのサブディレクトリはコピーされません。<br /><br /> コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。|
 |**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定したアドレスを持つ BLOB が既に存在する場合の動作を指定します。 このパラメーターの有効値は、`rename`、`no-overwrite`、および `overwrite` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `rename` が使用されます。<br /><br /> このパラメーターで指定した値は、`/srcdir` パラメーターによって指定されたディレクトリ内のすべてのファイルに影響を及ぼします。|
 |**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` インポート先 BLOB の BLOB タイプを指定します。 有効値は `BlockBlob` と `PageBlob` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `BlockBlob` が使用されます。<br /><br /> ほとんどの場合は、`BlockBlob` を使用することをお勧めします。 `PageBlob` を指定する場合、ディレクトリ内の各ファイルの長さは 512 の倍数である必要があります (ページ BLOB のページのサイズ)。|
-|**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳しくは、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。|
-|**/MetadataFile:**<MetadataFile\>|`Optional.` インポート先 BLOB のメタデータ ファイルへのパス。 詳しくは、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。|
+|**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
+|**/MetadataFile:**<MetadataFile\>|`Optional.` インポート先 BLOB のメタデータ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
 
 ### <a name="parameters-for-copying-a-single-file"></a>1 つのファイルをコピーするためのパラメーター
  1 つのファイルをコピーする際には、次の必須パラメーターとオプション パラメーターが適用されます。
@@ -150,8 +150,8 @@ ms.openlocfilehash: ec7a6df6a39cd1ee7a452439e3580496cfb98adc
 |**/dstblob:**<DestinationBlobPath\>|`Required.` Microsoft Azure ストレージ アカウント内の、インポート先 BLOB へのパス。 BLOB が既に存在しているかどうかは、場合によって異なります。<br /><br /> BLOB 名は先頭をコンテナー名にして指定します。 BLOB 名の先頭を "/" やストレージ アカウント名にすることはできません。 BLOB の名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/fileservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。<br /><br /> インポート先のコンテナーがルート コンテナーである場合は、`$root` をコンテナーとして明示的に指定する必要があります (例: `$root/sample.txt`)。 なお、ルート コンテナーの下にある BLOB の名前に "/" を含めることはできません。|
 |**/Disposition:**<rename&#124;no-overwrite&#124;overwrite>|`Optional.` 指定したアドレスを持つ BLOB が既に存在する場合の動作を指定します。 このパラメーターの有効値は、`rename`、`no-overwrite`、および `overwrite` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `rename` が使用されます。|
 |**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` インポート先 BLOB の BLOB タイプを指定します。 有効値は `BlockBlob` と `PageBlob` です。 これらの値では、大文字と小文字が区別されます。 値を設定しなかった場合は、既定値として `BlockBlob` が使用されます。<br /><br /> ほとんどの場合は、`BlockBlob` を使用することをお勧めします。 `PageBlob` を指定する場合、ディレクトリ内の各ファイルの長さは 512 の倍数である必要があります (ページ BLOB のページのサイズ)。|
-|**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳しくは、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。|
-|**/MetadataFile:**<MetadataFile\>|`Optional.` インポート先 BLOB のメタデータ ファイルへのパス。 詳しくは、「[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」をご覧ください。|
+|**/PropertyFile:**<PropertyFile\>|`Optional.` インポート先 BLOB のプロパティ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
+|**/MetadataFile:**<MetadataFile\>|`Optional.` インポート先 BLOB のメタデータ ファイルへのパス。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)」を参照してください。|
 
 ### <a name="resuming-an-interrupted-copy-session"></a>中断されたコピー セッションの再開
  何らかの理由でコピー セッションが中断された場合は、ジャーナル ファイルのみを指定してツールを実行することでセッションを再開できます。
@@ -163,29 +163,25 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /ResumeSession
  再開できるのは、直近のコピー セッションだけです (異常終了した場合)。
 
 > [!IMPORTANT]
->  コピー セッションを再開する場合は、ファイルを追加したり削除したりして、ソース データのファイルやディレクトリを変更しないようにしてください。
+>  コピー セッションを再開する場合は、ファイルを追加または削除してソース データ ファイルとディレクトリを変更しないでください。
 
 ### <a name="aborting-an-interrupted-copy-session"></a>中断されたコピー セッションの中止
- コピー セッションが中断され、再開できない場合 (たとえば、ソース ディレクトリにアクセスできない場合) には、現在のセッションを中止する必要があります。これにより、セッションをロールバックし、新しいコピー セッションを開始できるようになります。
+ コピー セッションが中断されて再開できない場合 (ソース ディレクトリにアクセスできない場合など) は、現在のセッションを中止し、ロールバックして新しいコピー セッションを開始できるようにする必要があります。
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 ```
 
- 中止できるのは最後のコピー セッションだけです (異常終了した場合)。 ドライブの最初のコピー セッションは中止できません。 新しいジャーナル ファイルを使用してコピー セッションを再開する必要があります。
+ 中止できるのは最後のコピー セッションだけです (異常終了した場合)。 ドライブの最初のコピー セッションは中止できません。 その代わりに、新しいジャーナル ファイルを使用してコピー セッションを再開する必要があります。
 
-## <a name="see-also"></a>関連項目
- [Setting Up the Azure Import-Export Tool (Azure Import-Export ツールの設定)](storage-import-export-tool-setup-v1.md)
- [Setting Properties and Metadata during the Import Process (インポート プロセス時のプロパティとメタデータの設定)](storage-import-export-tool-setting-properties-metadata-import-v1.md)
- [Sample Workflow to Prepare Hard Drives for an Import Job (インポート ジョブで使用するハード ドライブの準備 - サンプル ワークフロー)](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
- [Quick Reference for Frequently Used Commands (よく使用されるコマンドのクイック リファレンス)](storage-import-export-tool-quick-reference-v1.md) 
- [Reviewing Job Status with Copy Log Files (コピー ログ ファイルを使用したジョブ状態の確認)](storage-import-export-tool-reviewing-job-status-v1.md)
- [Repairing an Import Job (インポート ジョブの修復)](storage-import-export-tool-repairing-an-import-job-v1.md)
- [Repairing an Export Job (エクスポート ジョブの修復)](storage-import-export-tool-repairing-an-export-job-v1.md)
- [Troubleshooting the Azure Import-Export Tool (Azure Import-Export ツールのトラブルシューティング)](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>次のステップ
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)
+* [インポート処理中にプロパティとメタデータを設定する](storage-import-export-tool-setting-properties-metadata-import-v1.md)
+* [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)
+* [頻繁に使用するコマンドのクイック リファレンス](storage-import-export-tool-quick-reference-v1.md) 
+* [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)
+* [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
+* [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
 

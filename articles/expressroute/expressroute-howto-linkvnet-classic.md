@@ -16,12 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 1276a64d375ff452f3d29a8f7910475256499ac8
-ms.openlocfilehash: 0c16907f306228c4361e55d21dcb0c834ce7de25
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9601ff3152e62baf95794919fdc5a7fc43204d52
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-linkvnet-arm.md)
@@ -31,6 +32,8 @@ ms.openlocfilehash: 0c16907f306228c4361e55d21dcb0c834ce7de25
 > 
 
 この記事では、クラシック デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
+
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **Azure のデプロイ モデルについて**
 
@@ -74,7 +77,7 @@ ms.openlocfilehash: 0c16907f306228c4361e55d21dcb0c834ce7de25
 
 **承認の作成**
 
-回線所有者は、その他のサブスクリプションの管理者が指定された回線を使用することを承認します。 次の例では、回線 (Contoso IT) の管理者は、別のサブスクリプション (Dev-Test) の管理者が最大&2; 個の仮想ネットワークを回線にリンクできるようにします。 Contoso IT 管理者がこれを行うとき、Dev-Test Microsoft ID を指定します。 コマンドレットは、指定された Microsoft ID に電子メールを送信しません。 回線所有者が、承認が完了したことをその他のサブスクリプション所有者に明示的に通知する必要があります。
+回線所有者は、その他のサブスクリプションの管理者が指定された回線を使用することを承認します。 次の例では、回線 (Contoso IT) の管理者は、別のサブスクリプション (Dev-Test) の管理者が最大 2 個の仮想ネットワークを回線にリンクできるようにします。 Contoso IT 管理者がこれを行うとき、Dev-Test Microsoft ID を指定します。 コマンドレットは、指定された Microsoft ID に電子メールを送信しません。 回線所有者が、承認が完了したことをその他のサブスクリプション所有者に明示的に通知する必要があります。
 
     New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
 
@@ -159,10 +162,5 @@ ms.openlocfilehash: 0c16907f306228c4361e55d21dcb0c834ce7de25
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

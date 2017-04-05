@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager と PowerShell を使用した ExpressRoute の仮想ネットワークへの VNet ゲートウェイの追加 | Microsoft Docs"
-description: "この記事では、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します"
+title: "ExpressRoute の VNet への仮想ネットワーク ゲートウェイの追加: PowerShell: Azure | Microsoft Docs"
+description: "この記事では、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します。"
 documentationcenter: na
 services: expressroute
 author: charwen
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 03/24/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 2a0db85dc5699b362aa6a920cc26c40bdfdfc28d
-ms.openlocfilehash: 80ffdd66a02f84b844b660e6c88586d4e99ff9e7
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8abcb506243d0cc86d3d65431cd40b3a6d08063c
+ms.lasthandoff: 03/25/2017
 
 
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-resource-manager-and-powershell"></a>Resource Manager と PowerShell を使用して ExpressRoute 用の仮想ネットワーク ゲートウェイを構成する
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [クラシック - PowerShell](expressroute-howto-add-gateway-classic.md)

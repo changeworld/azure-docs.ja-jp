@@ -9,6 +9,7 @@ editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 86a0f6f2bc27f1411652b273325e73144582eee0
-ms.openlocfilehash: b0122a87ec64d16d6e026f9b37a563125a5f1920
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 424ee513afce6ab689c8804594754b1b49234754
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -404,11 +406,6 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
 ## <a name="next-steps"></a>次のステップ
 * Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成については、「[Configure Domain-joined HDInsight clusters use Azure PowerShell (Azure PowerShell を使ったドメイン参加済み HDInsight クラスターの構成)](hdinsight-domain-joined-configure-use-powershell.md)」をご覧ください。
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
-* SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO5-->
+* SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、[HDInsight での SSH キーの使用](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関するページを参照してください。
 
 

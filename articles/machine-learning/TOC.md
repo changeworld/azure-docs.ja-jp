@@ -29,7 +29,7 @@
 ### [6: Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
 ## 初心者向けデータ サイエンス解説
-### [1:&5; つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+### [1: 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
 ### [2: データは準備できていますか](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
 ### [3: 適切な質問を投稿する](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
 ### [4: 回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
@@ -114,7 +114,6 @@
 #### [Hive クエリを使用する](machine-learning-data-science-create-features-hive.md)
 #### [TDSP の特徴選択](machine-learning-data-science-select-features.md)
 ### モデルの作成とトレーニング
-#### [スコア付けに変換する](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 #### [実験のライフサイクル管理](machine-learning-version-control.md)
 #### [反復回数を管理する](machine-learning-manage-experiment-iterations.md)
 #### [PowerShell でモデルを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)
@@ -133,19 +132,20 @@
 ##### [カスタム R モジュールを作成する](machine-learning-custom-r-modules.md)
 ##### [Python スクリプトを実行する](machine-learning-execute-python-scripts.md)
 
-## モデルのデプロイと使用
+## モデルの運用化
 ### [概要](machine-learning-deploy-consume-web-service-guide.md)
 ### モデルをデプロイする
-#### [動作のしくみ](machine-learning-model-progression-experiment-to-web-service.md)
 #### [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
+#### [動作のしくみ](machine-learning-model-progression-experiment-to-web-service.md)
+#### [デプロイメントの準備をする](machine-learning-convert-training-experiment-to-scoring-experiment.md)
 #### [外部データを取得する](machine-learning-web-services-that-use-import-export-modules.md)
 #### [複数の地域にデプロイする](machine-learning-how-to-deploy-to-multiple-regions.md)
 #### [Web サービス パラメーターを使用する](machine-learning-web-service-parameters.md)
 #### [ログ記録を有効化する](machine-learning-web-services-logging.md)
 ### Web サービスを管理する
-#### [エンドポイントを作成する](machine-learning-create-endpoint.md)
 #### [Web サービス ポータルを使用する](machine-learning-manage-new-webservice.md)
 #### [API を管理する](machine-learning-manage-web-service-endpoints-using-api-management.md)
+#### [エンドポイントを作成する](machine-learning-create-endpoint.md)
 #### [スケーリング](machine-learning-scaling-webservice.md)
 ### モデルの再トレーニング
 #### [概要](machine-learning-retrain-machine-learning-model.md)
@@ -198,12 +198,6 @@
 #### [異常の検出](machine-learning-apps-anomaly-detection-api.md)
 #### [テキスト分析](machine-learning-apps-text-analytics.md)
 #### [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
-#### 推奨事項
-##### [概要](machine-learning-recommendation-api-sample-application.md)
-##### [クイック スタート](machine-learning-recommendation-api-quick-start-guide.md)
-##### [リファレンス](machine-learning-recommendation-api-documentation.md)
-##### [JavaScript を使用する](machine-learning-recommendation-api-javascript-integration.md)
-##### [FAQ](machine-learning-recommendation-api-faq.md)
 #### 予測的なメンテナンス
 ##### [概要](cortana-analytics-playbook-predictive-maintenance.md)
 ##### [アーキテクチャ](cortana-analytics-architecture-predictive-maintenance.md)

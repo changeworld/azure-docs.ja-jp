@@ -60,7 +60,7 @@ Batch を使用して、大規模な並列コンピューティングやハイ�
         </a>
     </li>
     <li>
-        <a href="/azure/Batch/batch-account-create-portal">
+        <a href="/azure/batch/batch-account-create-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

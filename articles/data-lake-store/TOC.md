@@ -48,6 +48,7 @@
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)
 ### [Data Catalog で使用する](data-lake-store-with-data-catalog.md)
+### [SQL Data Warehouse で PolyBase を使用する](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
 ## 管理

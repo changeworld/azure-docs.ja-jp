@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/20/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 46eb4a20c85140a7893d77984f375d6abf3e7634
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 7dc5143086e3a73e0536408a41468b8cdd40bd12
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -39,8 +39,8 @@ Azure ポータルとクラシック ポータルでサポートされている�
 | Container Service |はい |[コンテナー サービスの REST](/rest/api/compute/containerservices) |[コンテナー サービスのリソース](/azure/templates/microsoft.containerservice/containerservices) |
 | Dynamics Lifecycle Services |あり | | |
 | スケール セット |あり |[スケール セットの REST](/rest/api/compute/virtualmachinescalesets) |[スケール セットのリソース](/azure/templates/microsoft.compute/virtualmachinescalesets) |
-| Service Fabric |あり |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-09-01/Microsoft.ServiceFabric.json) |
-| [Virtual Machines] |あり |[VM REST](/rest/api/compute/virtualmachines) |[VM のリソース](/azure/templates/microsoft.compute/virtualmachines) |
+| Service Fabric |あり |[Service Fabric Rest](/rest/api/servicefabric) | [Service Fabric のリソース](/azure/templates/microsoft.servicefabric/clusters) |
+| Virtual Machines |あり |[VM REST](/rest/api/compute/virtualmachines) |[VM のリソース](/azure/templates/microsoft.compute/virtualmachines) |
 | Virtual Machines (クラシック) |制限あり |- |- |
 | リモート アプリ |いいえ |- |- |
 | Cloud Services (クラシック) |制限あり (下記参照) |- |- |
@@ -118,11 +118,11 @@ Cloud Services (クラシック) は、他のクラシック リソースと共�
 | CDN |あり |[CDN REST](/rest/api/cdn) |[CDN のリソース](/azure/templates/microsoft.cdn/profiles) |
 | メディア サービス |あり |[Media Services REST](/rest/api/media) |[メディアのリソース](/azure/templates/microsoft.media/mediaservices) |
 
-## <a name="hybrid-integration"></a>ハイブリッド統合
+## <a name="enterprise-integration"></a>エンタープライズ統合
 | サービス | リソース マネージャーが有効 | REST API | テンプレートの形式 |
 | --- | --- | --- | --- |
 | BizTalk Services |はい | |[BizTalk スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01/Microsoft.BizTalkServices.json) |
-| Recovery Service |はい |[Recovery Services REST](/rest/api/recoveryservices) |[Recovery Services のリソース](/azure/templates/microsoft.recoveryservices/vaults) |
+| リレー | はい |  | [リレーのリソース](/azure/templates/microsoft.relay/namespaces) |
 | Service Bus |はい |[Service Bus REST](/rest/api/servicebus) |[Service Bus のリソース](/azure/templates/microsoft.servicebus/namespaces) |
 
 ## <a name="identity--access-management"></a>ID 管理とアクセス管理
@@ -140,10 +140,11 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 | サービス | リソース マネージャーが有効 | REST API | テンプレートの形式 |
 | --- | --- | --- | --- |
 | Advisor | はい | [Advisor REST](/rest/api/advisor/) | - |
-| Automation |あり |[Automation REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[Automation スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-31/Microsoft.Automation.json) |
+| Automation |あり |[Automation REST](https://msdn.microsoft.com/library/azure/mt662285.aspx) |[Automation リソース](/azure/templates/microsoft.automation/automationaccounts) |
 | 課金 | はい | [課金 REST](/rest/api/billing/) | - |
 | Key Vault |あり |[Key Vault](/rest/api/keyvault) |[Key Vault のリソース](/azure/templates/microsoft.keyvault/vaults) |
-| Operational Insights |あり | | |
+| Operational Insights |はい | | |
+| Recovery Service |はい |[Recovery Services REST](/rest/api/recoveryservices) |[Recovery Services のリソース](/azure/templates/microsoft.recoveryservices/vaults) |
 | Scheduler |あり |[Scheduler REST](/rest/api/scheduler) |[Scheduler のリソース](/azure/templates/microsoft.scheduler/jobcollections) |
 | セキュリティ |はい |[Security REST](https://msdn.microsoft.com/library/azure/mt704034.aspx) | |
 | Server Management | はい | [Server Management REST](/rest/api/servermanagement/) | [Server Management のリソース](/azure/templates/microsoft.servermanagement/gateways) |

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 404e621bc1d16d15aeb705a1055ed4c2b9e251a2
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 02add070405f3f00d3631362a2b139239d44c34d
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -28,22 +28,22 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-topology-cli.md)
 > - [REST API](network-watcher-topology-rest.md)
 
-Network Watcher の Topology 機能では、サブスクリプションのネットワーク リソースを視覚的に確認できます。 ポータルでは、視認できる形で自動的に表示されます。 ポータルのトポロジ ビューに含まれる情報は、PowerShell 経由で取得することもできます。
+Network Watcher のトポロジ機能では、サブスクリプションのネットワーク リソースを視覚的に表現します。 ポータルに、視覚化された情報が自動的に表示されます。 ポータルのトポロジ ビューの背後の情報は、PowerShell を使用して取得できます。
 この機能により、データを他のツールで視覚化して使用できるため、トポロジの情報の汎用性が高まります。
 
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
 
 相互接続は、2 つのリレーションシップでモデル化されます。
 
 - **含有** - 例: VNet にサブネットが含まれ、サブネットに NIC が含まれる
 - **関連付け** - 例: NIC が VM に関連付けられている
 
-Topology REST API のクエリを実行して返されるプロパティの一覧は次のとおりです。
+Topology REST API のクエリを実行したときに返されるプロパティは次のとおりです。
 
 * **name** - リソースの名前。
 * **id** - リソースの URI。
 * **location** - リソースのある場所。
-* **associations** - 参照されたオブジェクトへの関連付けの一覧。
+* **associations** - 参照されたオブジェクトへの関連付けのリスト。
     * **name** - 参照されたリソースの名前。
     * **resourceId** - 関連付けで参照されているリソースの URI。
     * **associationType** - 子オブジェクトと親のリレーションシップを参照する値。 有効な値は **Contains** または **Associated**。
@@ -52,7 +52,7 @@ Topology REST API のクエリを実行して返されるプロパティの一�
 
 このシナリオでは、`network watcher topology` コマンドレットでトポロジ情報を取得します。 [REST API でネットワーク トポロジを取得する](network-watcher-topology-rest.md)方法を説明している記事もあります。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -68,7 +68,7 @@ azure network watcher topology -g resourceGroupName -n networkWatcherName -r top
 
 ## <a name="results"></a>結果
 
-返される結果には "Resources" というプロパティ名が付いています。これには、`network watcher topology` コマンドレットの JSON 応答の本文が含まれます。  この応答には、ネットワーク セキュリティ グループのリソースとその関連付け (つまり Contains と Associated) が含まれています。
+返される結果には "Resources" というプロパティ名が付いています。これには、`network watcher topology` コマンドレットの JSON 応答の本文が含まれます。  この応答には、ネットワーク セキュリティ グループのリソースとその関連付け (Contains、Associated) が含まれています。
 
 ```json
 {

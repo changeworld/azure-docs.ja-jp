@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: a2dec2daa4be60a4a53a98164265171bf898cafb
-ms.openlocfilehash: 7f03d376b1785637261b58fc34a0f0e1c1e25f5f
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: b478251715076a254fe87abee1d709f47e2b3886
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -65,12 +66,11 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 
 4. **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 
-## <a name="next-steps"></a>次のステップ
+>[!NOTE]
+> クラウド サービスが NSG の背後にある場合は、ポート **20000** を開くルールを作成する必要があることがあります。
+
+## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
-
-
-
-<!--HONumber=Nov16_HO5-->
-
+[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md#remote-desktop)
 

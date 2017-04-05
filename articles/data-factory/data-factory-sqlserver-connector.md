@@ -15,35 +15,19 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 60d9284bd7deaeb5ba4078cfa889a516a7cf75e2
-ms.openlocfilehash: 1352e6f145a099dfd3ec7003132172dcbeb90d94
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 3ab6d21263ee2f4082cae8d772e715ed04d7d7c0
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
-この記事では、コピー アクティビティを使用して SQL Server と他のデータ ストアの間でデータを移動する方法について説明します。 この記事は、データ移動の概要と、ソースおよびシンクとしてサポートされているデータ ストアについて紹介している、 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの SQL Server データベースとの間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
-## <a name="supported-versions"></a>サポートされているバージョン
-この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされている下記バージョンのインスタンスとの間でのデータのコピーをサポートしています。
+サポートされる任意のソース データ ストアのデータを、SQL Server データベースにデータをコピーしたり、SQL Server データベースのデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 
 
-* SQL Server 2016
-* SQL Server 2014
-* SQL Server 2012
-* SQL Server 2008 R2
-* SQL Server 2008
-* SQL Server 2005
-
-## <a name="create-pipeline"></a>パイプラインの作成
-さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。  
-
-* コピー ウィザード
-* Azure ポータル
-* Visual Studio
-* Azure PowerShell
-* .NET API
-* REST API
-
-さまざまな方法でコピー アクティビティによってパイプラインを作成する手順については、 [コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) をご覧ください。
+## <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
+この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされている、次のバージョンのインスタンスとの間でのデータのコピーをサポートしています: SQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005
 
 ## <a name="enabling-connectivity"></a>接続を有効にする
 オンプレミスまたは Azure IaaS (サービスとしてのインフラストラクチャ) VM でホストされている SQL Server と接続するために必要な概念と手順は同じです。 いずれの場合でも、接続には Data Management Gateway を使用する必要があります。
@@ -52,26 +36,149 @@ Data Management Gateway の詳細およびゲートウェイの設定手順に�
 
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターにインストールすることをお勧めします。 ゲートウェイと SQL Server を別のコンピューターにインストールすることで、リソースの競合が減少します。
 
-## <a name="copy-data-wizard"></a>データのコピー ウィザード
-SQL Server データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+## <a name="getting-started"></a>使用の開始
+さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して **ここ** から開始したいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。     
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
 
-## <a name="sample-copy-data-from-sql-server-to-azure-blob"></a>サンプル: SQL Server から Azure BLOB にデータをコピーする
+**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+
+ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+
+1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  オンプレミスの SQL Server データベースとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples)」を参照してください。 
+
+次のセクションでは、SQL Server に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。 
+
+## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
+サンプルでは、 **OnPremisesSqlServer** 型のリンクされたサービスを使用して、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| type |type プロパティは、 **OnPremisesSqlServer**に設定されます。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |なし |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |なし |
+
+**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。  
+
+```JSON
+"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
+```
+
+### <a name="samples"></a>サンプル
+**SQL 認証を使用している場合の JSON**
+
+```json
+{
+    "name": "MyOnPremisesSQLDB",
+    "properties":
+    {
+        "type": "OnPremisesSqlLinkedService",
+        "typeProperties": {
+            "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
+            "gatewayName": "<gateway name>"
+        }
+    }
+}
+```
+**Windows 認証を使用している場合の JSON**
+
+ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+
+```json
+{
+     "Name": " MyOnPremisesSQLDB",
+     "Properties":
+     {
+         "type": "OnPremisesSqlLinkedService",
+         "typeProperties": {
+             "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
+             "username": "<domain\\username>",
+             "password": "<password>",
+             "gatewayName": "<gateway name>"
+        }
+     }
+}
+```
+
+## <a name="dataset-properties"></a>データセットのプロパティ
+サンプルでは、 **SqlServerTable** 型のデータセットを使用して、SQL データベースのテーブルを表しています。  
+
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、すべてのデータセット型 (SQL Server 、Azure BLOB、Azure テーブルなど) で同じです。
+
+typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **SqlServerTable** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| tableName |リンクされたサービスが参照する SQL Server Database インスタンスのテーブルまたはビューの名前です。 |はい |
+
+## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+SQL Server データベースからデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource**に設定します。 同様に、SQL Server データベースにデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink**に設定します。 このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
+
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+
+> [!NOTE]
+> コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
+
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+
+### <a name="sqlsource"></a>SqlSource
+コピー アクティビティで、source の種類が **SqlSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| --- | --- | --- | --- |
+| SqlReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 入力データセットによって参照されるデータベースから複数のテーブルを参照する場合があります。 指定されていない場合に実行される SQL ステートメント: select from MyTable |いいえ |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
+| storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
+
+SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
+
+または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+
+SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+
+> [!NOTE]
+> **sqlReaderStoredProcedureName** を使用する場合でも、データセット JSON の **tableName** プロパティの値を指定する必要があります。 ただし、このテーブルに対して実行される検証はありません。
+
+### <a name="sqlsink"></a>パイプライン
+**SqlSink** では次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| --- | --- | --- | --- |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ |
+| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |クエリ ステートメント。 |いいえ |
+| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
+| sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
+| storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
+| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |なし |
+
+
+## <a name="json-examples"></a>JSON の使用例
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。     
+
+## <a name="example-copy-data-from-sql-server-to-azure-blob"></a>例: SQL Server から Azure BLOB へのデータのコピー
 次のサンプルは以下を示しています。
 
-1. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)型のリンクされたサービス。
-3. [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+1. [OnPremisesSqlServer](#linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
+3. [SqlServerTable](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5. [SqlSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは、SQL Server テーブルから Azure BLOB に時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 最初の手順として、データ管理ゲートウェイを設定します。 設定手順は、 [オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md) に関する記事に記載されています。
 
 **SQL Server のリンクされているサービス**
-```JSON
+```json
 {
   "Name": "SqlServerLinkedService",
   "properties": {
@@ -85,7 +192,7 @@ SQL Server データベースから、サポートされているシンク デ�
 ```
 **Azure BLOB ストレージのリンクされたサービス**
 
-```JSON
+```json
 {
   "name": "StorageLinkedService",
   "properties": {
@@ -102,7 +209,7 @@ SQL Server データベースから、サポートされているシンク デ�
 
 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-```JSON
+```json
 {
   "name": "SqlServerInput",
   "properties": {
@@ -130,7 +237,7 @@ SQL Server データベースから、サポートされているシンク デ�
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
-```JSON
+```json
 {
   "name": "AzureBlobOutput",
   "properties": {
@@ -189,12 +296,12 @@ SQL Server データベースから、サポートされているシンク デ�
 
 パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
-    "start":"2014-06-01T18:00:00",
-    "end":"2014-06-01T19:00:00",
+    "start":"2016-06-01T18:00:00",
+    "end":"2016-06-01T19:00:00",
     "description":"pipeline for copy activity",
     "activities":[  
       {
@@ -239,22 +346,22 @@ SQL Server データベースから、サポートされているシンク デ�
 
 SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
-SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
+SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) に関する記述を参照してください。
 
-## <a name="sample-copy-data-from-azure-blob-to-sql-server"></a>サンプル: Azure BLOB から SQL Server にデータをコピーする
+## <a name="example-copy-data-from-azure-blob-to-sql-server"></a>例: Azure BLOB から SQL Server へのデータのコピー
 次のサンプルは以下を示しています。
 
-1. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 型のリンクされたサービス。
-3. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
+1. [OnPremisesSqlServer](#linked-service-properties)型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 型のリンクされたサービス。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と [SqlSink](#sql-server-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは、Azure BLOB から SQL Server テーブルに時系列データを 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **SQL Server のリンクされているサービス**
 
-```JSON
+```json
 {
   "Name": "SqlServerLinkedService",
   "properties": {
@@ -268,7 +375,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ```
 **Azure BLOB ストレージのリンクされたサービス**
 
-```JSON
+```json
 {
   "name": "StorageLinkedService",
   "properties": {
@@ -283,7 +390,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
-```JSON
+```json
 {
   "name": "AzureBlobInput",
   "properties": {
@@ -351,7 +458,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 このサンプルは SQL Server の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される数の列で SQL Server にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
-```JSON
+```json
 {
   "name": "SqlServerOutput",
   "properties": {
@@ -371,7 +478,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
@@ -417,118 +524,6 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
    }
 }
 ```
-## <a name="sql-server-linked-service-properties"></a>SQL Server のリンクされたサービスのプロパティ
-サンプルでは、 **OnPremisesSqlServer** 型のリンクされたサービスを使用して、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| type |type プロパティは、 **OnPremisesSqlServer**に設定されます。 |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
-| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |なし |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |なし |
-
-**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。  
-
-```JSON
-"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
-```
-
-### <a name="samples"></a>サンプル
-**SQL 認証を使用している場合の JSON**
-
-```JSON
-{
-    "name": "MyOnPremisesSQLDB",
-    "properties":
-    {
-        "type": "OnPremisesSqlLinkedService",
-        "typeProperties": {
-            "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
-            "gatewayName": "<gateway name>"
-        }
-    }
-}
-```
-**Windows 認証を使用している場合の JSON**
-
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
-
-```JSON
-{
-     "Name": " MyOnPremisesSQLDB",
-     "Properties":
-     {
-         "type": "OnPremisesSqlLinkedService",
-         "typeProperties": {
-             "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
-             "username": "<domain\\username>",
-             "password": "<password>",
-             "gatewayName": "<gateway name>"
-        }
-     }
-}
-```
-
-SQL Server データ ソースの資格情報の設定の詳細については、[資格情報とセキュリティの設定](data-factory-data-management-gateway.md#encrypting-credentials)に関するセクションを参照してください。
-
-## <a name="sql-server-dataset-type-properties"></a>SQL Server データセットの type プロパティ
-サンプルでは、 **SqlServerTable** 型のデータセットを使用して、SQL データベースのテーブルを表しています。  
-
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、すべてのデータセット型 (SQL Server 、Azure BLOB、Azure テーブルなど) で同じです。
-
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **SqlServerTable** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| tableName |リンクされたサービスが参照する SQL Server Database インスタンスのテーブルまたはビューの名前です。 |はい |
-
-## <a name="sql-server-copy-activity-type-properties"></a>SQL Server のコピー アクティビティの type プロパティ
-SQL Server データベースからデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource**に設定します。 同様に、SQL Server データベースにデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink**に設定します。 このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
-
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
-
-> [!NOTE]
-> コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
->
->
-
-一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
-
-### <a name="sqlsource"></a>SqlSource
-コピー アクティビティで、source の種類が **SqlSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
-
-| プロパティ | 説明 | 使用できる値 | 必須 |
-| --- | --- | --- | --- |
-| SqlReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 入力データセットによって参照されるデータベースから複数のテーブルを参照する場合があります。 指定されていない場合に実行される SQL ステートメント: select from MyTable |いいえ |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
-
-SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
-
-または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
-
-SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
-
-> [!NOTE]
-> **sqlReaderStoredProcedureName** を使用する場合でも、データセット JSON の **tableName** プロパティの値を指定する必要があります。 ただし、このテーブルに対して実行される検証はありません。
->
->
-
-### <a name="sqlsink"></a>パイプライン
-**SqlSink** では次のプロパティがサポートされます。
-
-| プロパティ | 説明 | 使用できる値 | 必須 |
-| --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/>  例: "00:30:00" (30 分)。 |いいえ |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |クエリ ステートメント。 |いいえ |
-| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
-| sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
-| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |いいえ |
 
 ## <a name="troubleshooting-connection-issues"></a>接続の問題のトラブルシューティング
 1. リモート接続を許可するよう、SQL Server を構成します。 **SQL Server Management Studio** を起動し、**サーバー**を右クリックして、**[プロパティ]** をクリックします。 一覧から **[接続]** を選択し、**[このサーバーへのリモート接続を許可する]** をオンにします。
@@ -544,7 +539,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP のプロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。 下へスクロールして **[IPAll]** セクションを表示します。 **[TCP ポート]** の値をメモしておきます (既定値は **1433** です)。
 5. コンピューターに **Windows Firewall のルール** を作成し、このポート経由の受信トラフィックを許可します。  
-6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 "<machine>.<domain>.corp.<company>.com,1433" などを使用します。
+6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 "<machine><domain>.corp<company>.com,1433" などを使用します。
 
    > [!IMPORTANT]
 
@@ -560,7 +555,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 **ソース テーブル:**
 
-```SQL
+```sql
 create table dbo.SourceTbl
 (
        name varchar(100),
@@ -569,7 +564,7 @@ create table dbo.SourceTbl
 ```
 **対象テーブル:**
 
-```SQL
+```sql
 create table dbo.TargetTbl
 (
        identifier int identity(1,1),
@@ -582,7 +577,7 @@ create table dbo.TargetTbl
 
 **ソース データセット JSON の定義**
 
-```JSON
+```json
 {
     "name": "SampleSource",
     "properties": {
@@ -603,7 +598,7 @@ create table dbo.TargetTbl
 ```
 **対象データセット JSON の定義**
 
-```JSON
+```json
 {
     "name": "SampleTarget",
     "properties": {
@@ -629,15 +624,18 @@ create table dbo.TargetTbl
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
-次に、ソース データセットの列をターゲット データセットの列にマップします。 例については、「 [列マッピングの例](#column-mapping-samples) 」を参照してください。
+## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
+ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-[!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
+## <a name="repeatable-copy"></a>反復可能なコピー
+SQL Server Database にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 代わりに UPSERT を実行するには、「[SqlSink への反復可能な書き込み](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink)」を参照してください。 
 
-[!INCLUDE [data-factory-sql-invoke-stored-procedure](../../includes/data-factory-sql-invoke-stored-procedure.md)]
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+## <a name="invoke-stored-procedure-from-sql-sink"></a>SQL シンクからのストアド プロシージャの呼び出し
+パイプラインのコピー アクティビティで SQL シンクからストアド プロシージャを呼び出す例については、[コピー アクティビティでの SQL シンクのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。
 
-### <a name="type-mapping-for-sql-server--azure-sql"></a>SQL Server と Azure SQL の型のマッピング
+## <a name="type-mapping-for-sql-server--azure-sql"></a>SQL Server と Azure SQL の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
@@ -682,15 +680,9 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | varchar |String、Char[] |
 | xml |xml |
 
-[!INCLUDE [data-factory-type-conversion-sample](../../includes/data-factory-type-conversion-sample.md)]
-
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
+## <a name="mapping-source-to-sink-columns"></a>ソース列からシンク列へのマッピング
+ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

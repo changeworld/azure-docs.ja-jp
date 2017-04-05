@@ -61,7 +61,7 @@ ms.lasthandoff: 02/17/2017
         </a>
     </li>
     <li>
-        <a href="/azure/Stream-Analytics/">
+        <a href="/azure/stream-analytics/">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -79,7 +79,7 @@ ms.lasthandoff: 02/17/2017
         </a>
     </li>
      <li>
-        <a href="/azure/Stream-Analytics/stream-analytics-build-an-iot-solution-using-stream-analytics">
+        <a href="/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -97,7 +97,7 @@ ms.lasthandoff: 02/17/2017
         </a>
     </li>
      <li>
-        <a href="/azure/Stream-Analytics/stream-analytics-twitter-sentiment-analysis-trends">
+        <a href="/azure/stream-analytics/stream-analytics-twitter-sentiment-analysis-trends">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/17/2017
         </a>
     </li>
      <li>
-        <a href="/azure/Stream-Analytics/stream-analytics-machine-learning-integration-tutorial">
+        <a href="/azure/stream-analytics/stream-analytics-machine-learning-integration-tutorial">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

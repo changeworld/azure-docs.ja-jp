@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/13/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 3992e327bbe887338234fc2d516b053f0750a151
-ms.openlocfilehash: 118ea84abb0de095ac515ee98a643718ca54c043
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: eccc181e2203a97de58005f9597613775338ebcc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -41,7 +41,7 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 
 ## <a name="get-the-server-name"></a>サーバー名の取得
 
-接続する前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、**[概要]** > **[サーバー名]** のサーバー名全体をコピーします。 社内の他のユーザーもこのサーバーに接続する場合は、このサーバー名をそれらのユーザーと共有してください。 サーバー名を指定するときは、パス全体を使用する必要があります。
+接続する前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、**[概要]** > **[サーバー名]** のサーバー名全体をコピーします。 組織内の他のユーザーもこのサーバーに接続する場合は、このサーバー名を他のユーザーと共有できます。 サーバー名を指定するときは、パス全体を使用する必要があります。
 
 ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -52,11 +52,11 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 > 
 > 
 
-1. [Power BI Desktop](https://powerbi.microsoft.com/desktop/) で、**[データの取得]** > **[データベース]** > **[Azure Analysis Services]** をクリックします。
+1. [Power BI Desktop](https://powerbi.microsoft.com/desktop/) で、**[データの取得]** > **[Azure]** > **[Microsoft Azure Analysis Services データベース]** をクリックします。
 2. **[サーバー]** に、クリップボードからサーバー名を貼り付けます。
 3. **[データベース]** には、接続先の表形式モデル データベースまたはパースペクティブの名前がわかっている場合はその名前を貼り付けます。 それ以外の場合、このフィールドは空にしておくことができます。 次の画面でデータベースまたはパースペクティブを選択できます。
 4. 既定の **[ライブ接続]** オプションが選択された状態のままで、**[接続]** をクリックします。 アカウントの入力を求められた場合は、会社のアカウントを入力します。
-5. **[ナビゲーター]** で、サーバーを展開し、接続先のモデルまたはパースペクティブを選択してから **[接続]** をクリックします。 モデルまたはパースペクティブを&1; 回クリックすると、そのビューのすべてのオブジェクトが表示されます。
+5. **[ナビゲーター]** で、サーバーを展開し、接続先のモデルまたはパースペクティブを選択してから **[接続]** をクリックします。 モデルまたはパースペクティブをクリックすると、そのビューのすべてのオブジェクトが表示されます。
 
 ## <a name="connect-in-power-bi"></a>Power BI での接続
 
@@ -68,14 +68,14 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 Excel での Azure Analysis Services サーバーへの接続は、Excel 2016 の Get Data または以前のバージョンの Power Query を使用してサポートされます。 [MSOLAP.7 プロバイダー](analysis-services-data-providers.md)が必要です。 Power Pivot での [テーブルのインポート] ウィザードを使用した接続はサポートされません。
 
 > [!NOTE]
-> 一部の会社は、段階的提供チャネルで Office 365 の更新プログラムをデプロイします。つまり、現在のバージョンからの更新が最長で 4 か月遅れることになります。 Excel 2016 ビルド 1609.7369.2115 以前または Excel 2013 の場合は、Office データ接続 (.odc) ファイルを作成して、Azure Analysis Services サーバーに接続するための MSOLAP.7 プロバイダーを手動で更新できます。 詳細については、「[.odc ファイルの作成](analysis-services-odc.md)」をご覧ください。
+> 一部の会社は、段階的提供チャネルで Office 365 の更新プログラムをデプロイします。つまり、現在のバージョンからの更新が最長で 4 か月遅れることになります。 Excel 2016 バージョン 1609.7369.2115 以前または Excel 2013 の場合は、.odc ファイルを作成して、MSOLAP.7 プロバイダーを手動で更新してサーバーに接続できます。 詳細については、「[Office データ接続 (.odc) ファイルの作成](analysis-services-odc.md)」を参照してください。
 > 
 > 
 
 **Excel 2016 から接続するには**
 
 1. Excel 2016 では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[From Analysis Services (Analysis Services)]** をクリックします。
-2. データ接続ウィザードで、**[サーバー名]** にクリップボードのサーバー名を貼り付けます。 その後、**[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、会社でのユーザー名 (たとえば nancy@adventureworks.com,) とパスワードを入力します。
+2. データ接続ウィザードで、**[サーバー名]** にクリップボードのサーバー名を貼り付けます。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
 
     ![Excel での接続、ログオン](./media/analysis-services-connect/aas-connect-excel-logon.png)
 3. **[データベースとテーブルの選択]** で、データベースとモデルまたはパースペクティブを選択し、**[完了]** をクリックします。
@@ -91,7 +91,7 @@ Excel での Azure Analysis Services サーバーへの接続は、Excel 2016 �
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>;"
 ```
-統合認証では、Azure Active Directory 資格情報キャッシュが使用されます (ある場合)。 ない場合は、Azure ログイン ウィンドウが表示されます。
+統合認証では、Azure Active Directory 資格情報キャッシュがあればそれが使用されます。 ない場合は、Azure ログイン ウィンドウが表示されます。
 
 ###### <a name="azure-active-directory-authentication-with-username-and-password"></a>ユーザー名とパスワードによる Azure Active Directory の認証
 

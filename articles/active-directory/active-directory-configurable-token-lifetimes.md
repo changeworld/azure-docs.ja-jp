@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/17/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: c239c12dd9fcc849a6b90ec379ebb8690bd049fc
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 7d0c5f83d907af9109e27d69806d6106d4bc3214
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -47,7 +47,7 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 Confidential クライアントとパブリック クライアントを区別することは重要です。 さまざまな種類のクライアントの詳細については、[RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1) を参照してください。
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Confidential クライアントの更新トークンの有効期間
-Confidential クライアントは、クライアント パスワード (シークレット) を安全に格納できるアプリケーションです。 それらは、要求が悪意のあるアクターからではなく、クライアント アプリケーションから送信されていることを証明できます。 たとえば、Web アプリは、Web サーバーにクライアント シークレットを格納できるため、Confidential クライアントです。 これは公開されません。 これらのフローは安全性をより高めているため、フローに対して発行される更新トークンの既定の有効期間は長く、ポリシーを使用して変更することはできません。
+Confidential クライアントは、クライアント パスワード (シークレット) を安全に格納できるアプリケーションです。 それらは、要求が悪意のあるアクターからではなく、クライアント アプリケーションから送信されていることを証明できます。 たとえば、Web アプリは、Web サーバーにクライアント シークレットを格納できるため、Confidential クライアントです。 これは公開されません。 これらのフローは安全性をより高めているため、フローに対して発行される更新トークンの既定の有効期間は `until-revoked` で、ポリシーを使用して変更することはできず、任意にパスワードをリセットしても取り消されません。
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>パブリック クライアントの更新トークンの有効期間
 
@@ -203,7 +203,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     Connect-AzureAD -Confirm
     ```
 
-3. 組織に作成されているすべてのポリシーを表示するには、次のコマンドを実行します。 このコマンドは、次のシナリオでほとんどの操作の後に実行します。 コマンドの実行は、ポリシーの **ObjectId** を取得する場合にも役立ちます。
+3. 組織に作成されているすべてのポリシーを表示するには、次のコマンドを実行します。 このコマンドは、次のシナリオでほとんどの操作の後に実行します。 コマンドの実行は、ポリシーの ** ** を取得する場合にも役立ちます。
 
     ```PowerShell
     Get-AzureADPolicy
@@ -243,9 +243,8 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     この例で設定する最初のポリシーは、サービスに求められるほど厳密にしないようにすることもできます。 単一要素更新トークンを 2 日で期限が切れるように設定するには、次のコマンドを実行します。
 
     ```PowerShell
-    Set-AzureADPolicy -ObjectId <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
+    Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
-
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>例: Web サインインのポリシーを作成する
 
@@ -274,7 +273,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     2.  サービス プリンシパルの **ObjectId** がある場合、次のコマンドを実行します。
 
         ```PowerShell
-        Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+        Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
         ```
 
 
@@ -300,7 +299,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
    アプリの **ObjectId** がある場合、次のコマンドを実行します。
 
         ```PowerShell
-        Add-AzureADApplicationPolicy -ObjectId <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
+        Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
         ```
 
 
@@ -330,13 +329,13 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     2.  サービス プリンシパルの **ObjectId** がある場合、次のコマンドを実行します。
 
             ```PowerShell
-            Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+            Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
             ```
         
 3. `IsOrganizationDefault` フラグを false に設定します。
 
     ```PowerShell
-    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
+    Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
 4. 新しい組織の既定のポリシーを作成します。
@@ -380,7 +379,7 @@ Get-AzureADPolicy
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> [省略可能] |目的のポリシーの **ObjectId**。 |`-ObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [省略可能] |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -388,12 +387,12 @@ Get-AzureADPolicy
 ポリシーにリンクされたすべてのアプリとサービス プリンシパルを取得します。
 
 ```PowerShell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of Policy>
+Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |目的のポリシーの **ObjectId**。 |`-ObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -401,12 +400,12 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of Policy>
 既存のポリシーを更新します。
 
 ```PowerShell
-Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName <string>
+Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |目的のポリシーの **ObjectId**。 |`-ObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;Definition</code> [省略可能] |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;IsOrganizationDefault</code> [省略可能] |True の場合は、組織の既定のポリシーとして、ポリシーを設定します。 False の場合は、何もしません。 |`-IsOrganizationDefault $true` |
@@ -419,12 +418,12 @@ Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName <string>
 指定したポリシーを削除します。
 
 ```PowerShell
- Remove-AzureADPolicy -ObjectId <ObjectId of Policy>
+ Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |目的のポリシーの **ObjectId**。 | `-ObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 | `-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -435,12 +434,12 @@ Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName <string>
 指定したポリシーをアプリケーションにリンクします。
 
 ```PowerShell
-Add-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -RefObjectId <ObjectId of Policy>
+Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -449,12 +448,12 @@ Add-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -RefObjectId <O
 アプリケーションに割り当てられているポリシーを取得します。
 
 ```PowerShell
-Get-AzureADApplicationPolicy -ObjectId <ObjectId of Application>
+Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -462,12 +461,12 @@ Get-AzureADApplicationPolicy -ObjectId <ObjectId of Application>
 アプリケーションからポリシーを削除します。
 
 ```PowerShell
-Remove-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -PolicyId <ObjectId of Policy>
+Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
 
 </br></br>
@@ -479,12 +478,12 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of Application> -PolicyId <O
 指定したポリシーをサービス プリンシパルにリンクします。
 
 ```PowerShell
-Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
+Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -493,12 +492,12 @@ Add-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal> -RefO
 指定したサービス プリンシパルにリンクされている任意のポリシーを取得します。
 
 ```PowerShell
-Get-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal>
+Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -506,11 +505,11 @@ Get-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal>
 指定したサービス プリンシパルからポリシーを削除します。
 
 ```PowerShell
-Remove-AzureADServicePrincipalPolicy -ObjectId <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
+Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
 | parameters | 説明 | 例 |
 | --- | --- | --- |
-| <code>&#8209;ObjectId</code> |アプリケーションの **ObjectId**。 | `-ObjectId <ObjectId of Application>` |
+| <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
 

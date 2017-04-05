@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: ad6401c1d18d44f56e0db9e7277f7ded995386bc
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 404b1784717d7a2e56e4154dd8995093b37a3bc1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -42,7 +42,7 @@ Docker VM 拡張機能を使用すると、VM が自動的に Docker ホスト�
 az group create --name myResourceGroup --location westus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [Github の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 `newStorageAccountName`、`adminUsername`、`adminPassword`、`dnsNameForPublicIP` に、該当する値を入力します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 `newStorageAccountName`、`adminUsername`、`adminPassword`、`dnsNameForPublicIP` に、該当する値を入力します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -67,7 +67,7 @@ az vm show --resource-group myResourceGroup --name myDockerVM \
 ### <a name="azure-cli-10"></a>Azure CLI 1.0
 最新の [Azure CLI 1.0](../cli-install-nodejs.md) をインストールし、Azure アカウントにログインします。 Resource Manager モードで VM を作成しているか確認します (`azure config mode arm`)。
 
-以下の例では、`myResourceGroup` という名前のリソース グループを `West US` に作成し、Azure Docker VM 拡張機能がインストールされた VM をデプロイします。 [Github の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)を使用して、環境をデプロイします。
+以下の例では、`myResourceGroup` という名前のリソース グループを `West US` に作成し、Azure Docker VM 拡張機能がインストールされた VM をデプロイします。 [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)を使用して、環境をデプロイします。
 
 ```azurecli
 azure group create --name myResourceGroup --location "West US" \
@@ -133,7 +133,7 @@ db:
 docker-compose up -d
 ```
 
-このコマンドにより、 `docker-compose.yml`で指定された Docker コンテナーが起動されます。 この手順は、完了までに&1; ～&2; 分かかります。 次の例のような出力が表示されます。
+このコマンドにより、 `docker-compose.yml`で指定された Docker コンテナーが起動されます。 この手順は、完了までに 1 ～ 2 分かかります。 次の例のような出力が表示されます。
 
 ```bash
 Creating wordpress_db_1...

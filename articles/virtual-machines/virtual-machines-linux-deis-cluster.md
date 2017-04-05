@@ -17,16 +17,16 @@ ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: cb631a1bcbe73c18b06e247b29056a83cfa61a46
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c0fc55d24506f669a74d67a803304ebf0b53bf21
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="deploy-and-configure-a-3-node-deis-cluster-in-azure"></a>Azure での 3 ノード Deis クラスターのデプロイと構成
 この記事では Azure での [Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。 必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション を展開・スケーリングする手順まで、すべての手順を網羅しています。
 
-次の図は、展開済みシステムのアーキテクチャを示します。 システム管理者は **deis** や **deisctl** などの Deis ツールを使ってクラスターを管理します。 接続は、クラスター上のメンバーノードの&1; つに、接続を転送をする。Azure ロード バランサーを介して確立されます。 同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。 この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
+次の図は、展開済みシステムのアーキテクチャを示します。 システム管理者は **deis** や **deisctl** などの Deis ツールを使ってクラスターを管理します。 接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。 同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。 この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
 
   ![デプロイ済みの Desis クラスターのアーキテクチャ図](media/virtual-machines-linux-deis-cluster/architecture-overview.png)
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 03/21/2017
     
         ./deploy-deis.sh -n "[resource group name]" -l "West US" -f ./azuredeploy.json -e ./azuredeploy-parameters.json
         -c ./cloud-config.yaml  
-11. リソース グループがプロビジョニングされると、Azure クラシック ポータルで、グループ内のすべてのリソースを確認できます。 次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の&3; つの VM を伴う仮想ネットワークが含まれます。 このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
+11. リソース グループがプロビジョニングされると、Azure クラシック ポータルで、グループ内のすべてのリソースを確認できます。 次のスクリーン ショットが示すように、リソース グループには、同じ可用性セットに参加している次の 3 つの VM を伴う仮想ネットワークが含まれます。 このグループには関連付けられているパブリック IP を持つ Load Balancer も含まれます。
     
     ![Azure クラシック ポータルでプロビジョニングされているリソース グループ](media/virtual-machines-linux-deis-cluster/resource-group.png)
 
@@ -178,7 +178,7 @@ Deis クラスタをコントロールする **deisctl** が必要となりま�
         ssh-keygen (press [Enter]s to use default file names and empty passcode)
 4. GitHub に id_rsa.pub または任意の公開キーを追加します。 これは、SSH キー構成画面で SSH キー追加 ボタンを使用して実行できます。
    
-   ![Github キー](media/virtual-machines-linux-deis-cluster/github-key.png)
+   ![GitHub キー](media/virtual-machines-linux-deis-cluster/github-key.png)
    
    <p />
 5. 新しいユーザーの登録

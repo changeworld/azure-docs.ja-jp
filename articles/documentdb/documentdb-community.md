@@ -15,9 +15,9 @@ ms.workload: data-services
 ms.date: 03/07/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 202684a1ae1106d79b9cee4e4ebf20ffa283f41b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: a7c366d29cf163c9c30c72751a992a0ebb3462cd
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -37,7 +37,7 @@ DocumentDB 内のストアド プロシージャとしての集計 (グループ
 
 Microsoft Azure DocumentDB サービス用のクライアント管理ビューアーとエクスプローラー。
 
-[Github](https://github.com/mingaliu/DocumentDBStudio)でご覧ください。
+[GitHub](https://github.com/mingaliu/DocumentDBStudio) でご覧ください。
 
 ### <a name="doqmentdb"></a>DoQmentDB
 *作者: Ariel Mashraki*
@@ -58,7 +58,7 @@ TypeScript で記述された Node.js クライアントのラッパーです (�
 
 API アプリとして簡単にデプロイできる DocumentDB REST API Swagger ファイル。
 
-[Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi)でご覧ください。
+[GitHub](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
 
 ### <a name="fluent-plugin-documentdb"></a>fluent-plugin-documentdb
 *作成者: Yoichi Kawasaki*
@@ -220,14 +220,14 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 以下のプロジェクトは、Azure DocumentDB チームによって、オープン ソース コミュニティと共同で自発的に開発されています。
 
 ### <a name="sdks"></a>SDK
-| プラットフォーム | Github | パッケージ |
+| プラットフォーム | GitHub | パッケージ |
 | --- | --- | --- |
 | Node.js |[azure-documentdb-node](https://github.com/Azure/azure-documentdb-node) |[npm](https://www.npmjs.com/package/documentdb) |
 | Java |[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb%22) |
 | Python |[azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) |[PyPI](https://pypi.python.org/pypi/pydocumentdb) |
 
 ### <a name="other-projects"></a>その他のプロジェクト
-| 名前 | Github | Web サイト |
+| 名前 | GitHub | Web サイト |
 | --- | --- | --- |
 | ドキュメント |[azure-content](https://github.com/Azure/azure-content/tree/master/articles/documentdb) |[ドキュメント Web サイト](https://azure.microsoft.com/documentation/services/documentdb/) |
 | Hadoop コネクタ |[azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) |[Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |

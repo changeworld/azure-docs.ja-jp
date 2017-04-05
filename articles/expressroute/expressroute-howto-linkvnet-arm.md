@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 03/24/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 75b7cee2485d1d68fee8dcd65ade84995dcdb9be
-ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 32b12bcb7410fcc74450422767e9d92fef38ebdc
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: fc5bc67fd38fe8a8c4499257a29bc0f0ec71468c
 > 
 > 
 
-この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
+この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。 この記事では、仮想ネットワークのリンクを更新する方法も示します。 
 
 **Azure のデプロイ モデルについて**
 
@@ -69,7 +70,7 @@ ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回�
 ![サブスクリプション間接続](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>管理
-*回線所有者* は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、 *回線ユーザー*が利用できる承認を作成できます。 *回線ユーザー* は、(ExpressRoute 回線とは別のサブスクリプション内にある) 仮想ネットワーク ゲートウェイの所有者です。 *回線ユーザー* は、承認を利用できます (仮想ネットワークごとに&1; つの承認)。
+*回線所有者* は、ExpressRoute 回線リソースの権限のあるパワー ユーザーです。 回線所有者は、 *回線ユーザー*が利用できる承認を作成できます。 *回線ユーザー* は、(ExpressRoute 回線とは別のサブスクリプション内にある) 仮想ネットワーク ゲートウェイの所有者です。 *回線ユーザー* は、承認を利用できます (仮想ネットワークごとに 1 つの承認)。
 
 *回線所有者* は、承認をいつでも変更し、取り消す権限を持っています。 承認を取り消すと、アクセスが取り消されたサブスクリプションからすべてのリンク接続が削除されます。
 
@@ -147,12 +148,19 @@ ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回�
 
 ExpressRoute 回線を仮想ネットワークにリンクしている接続を削除することで、承認を解除できます。
 
+## <a name="modify-a-virtual-network-connection"></a>仮想ネットワーク接続を変更する
+仮想ネットワーク接続の特定のプロパティを更新することができます。 
+
+### <a name="update-the-connection-weight"></a>接続の重みを更新する
+仮想ネットワークは、複数の ExpressRoute 回線に接続できます。 複数の ExpressRoute 回線から同じプレフィックスを受け取る場合があります。 このプレフィックスを宛先とするトラフィックをどの接続が送信するかを選択するには、接続の *RoutingWeight* を変更します。 *RoutingWeight* が最も高い接続でトラフィックが送信されます。
+
+    $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
+    $connection.RoutingWeight = 100
+    Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+
+*RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。 
+
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

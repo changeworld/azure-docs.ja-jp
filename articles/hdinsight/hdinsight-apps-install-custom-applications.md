@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 44786974a86a8cef9bfbaa9ea2a131b11747b01e
-ms.lasthandoff: 03/18/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 275b1cd91347fdfcc36e0e8a6448ccd8818a507d
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -84,7 +85,7 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 3. アプリケーションをインストールしたクラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 **[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
 5. 一覧の **[hue]** をクリックしてプロパティを一覧表示します。  
-6. Web ページ リンクをクリックして Web サイトを検証します。具体的には、ブラウザーで HTTP エンドポイントを開いて Hue の Web UI が正しく表示されることを確認し、[PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) などの [SSH クライアント](hdinsight-hadoop-linux-use-ssh-unix.md)を使用して SSH エンドポイントを開きます。
+6. Web ページ リンクをクリックして Web サイトを検証します。具体的には、ブラウザーで HTTP エンドポイントを開いて Hue の Web UI が正しく表示されることを確認し、SSH 使用して SSH エンドポイントを開きます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="troubleshoot-the-installation"></a>インストールのトラブルシューティング
 アプリケーションのインストールの状態は、ポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。

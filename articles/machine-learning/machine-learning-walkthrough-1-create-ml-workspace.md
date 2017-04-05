@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 03/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
-ms.openlocfilehash: 116dbf0ee30497d82c984b10e61ae02301e820a4
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8ca42ef8f5314866301f5c9e93caa90dc837a66e
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -46,7 +47,7 @@ Machine Learning Studio を使用するには、Microsoft Azure Machine Learning
 
 ワークスペースの作成と、所有者または共同作成者としてのユーザーの追加は、Azure サブスクリプションの管理者が実行する必要があります。 詳細については、「[Azure Machine Learning ワークスペースの作成と共有](machine-learning-create-workspace.md)」を参照してください。
 
-ワークスペースが作成された後、Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 ユーザーのワークスペースが 1 つだけある場合は、そのワークスペースが Studio によって自動的に開きます。 複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
+ワークスペースが作成された後、Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) を開きます。 ワークスペースが複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
 
 ![Studio でのワークスペースの選択][2]
 
@@ -62,9 +63,4 @@ Machine Learning Studio を使用するには、Microsoft Azure Machine Learning
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 [2]: ./media/machine-learning-walkthrough-1-create-ml-workspace/open-workspace.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

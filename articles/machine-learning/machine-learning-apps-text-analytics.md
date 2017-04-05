@@ -12,11 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2017
 ms.author: onewth
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: ../cognitive-services/cognitive-services-text-analytics-quick-start
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: f4389705a81b531bd706cbabc0b4c3b171febd5f
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -360,10 +363,5 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 | ID |レコードの識別子。 入力に含まれる ID と同じです。 |
 | TopicId |レコードが割り当てられているトピック ID。 |
 | Distance |レコードがトピックに属する確実性。 Distance がゼロに近ければ、それだけ確実性が高くなります。 |
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

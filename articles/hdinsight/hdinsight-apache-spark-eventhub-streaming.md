@@ -1,6 +1,6 @@
 ---
 title: "Azure HDInsight での Apache Spark を使用した Event Hubs からのデータのストリーミング | Microsoft Docs"
-description: "Azure Event Hub にデータ ストリームを送信し、Scala アプリケーションを使用して Spark でイベントを受信する方法の詳細な手順を説明します"
+description: "Azure Event Hub にデータ ストリームを送信し、Scala アプリケーションを使用して HDInsight Spark でイベントを受信する方法の詳細な手順を説明します"
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,89 +14,109 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/27/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: ef0757914828128ed4edf569aeb3716300b17dee
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 91c60e944dd3b72f5bf1137d93ba2ae70537b2f7
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="spark-streaming-process-events-from-azure-event-hubs-with-apache-spark-cluster-on-hdinsight"></a>Spark ストリーミング: HDInsight で Apache Spark クラスターを使用して Azure Event Hubs からのイベントを処理する
-Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。 多くのソースからデータを取り込むことができます。 この記事では、Azure Event Hubs を使用してデータを取り込みます。 Event Hubs は、スケーラブルなインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。 
 
-このチュートリアルでは、Azure Event Hubs を作成する方法、Java のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および Scala で記述された Spark アプリケーションを使用してメッセージを並列に取得する方法について説明します。 このアプリケーションでは、Event Hubs を通してストリーミングされたデータを処理し、さまざまな出力 (Azure Storage BLOB、Hive テーブル、および SQL テーブル) にルーティングします。
+この記事では、Apache Spark を使用したストリーミングに関連するいくつかの概念を理解し、以下の手順を含むストリーミング ソリューションを作成します。
 
-> [!NOTE]
-> この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。 イベント ハブを作成するには、 [Azure クラシック ポータル](https://manage.windowsazure.com)を使用します。 HDInsight Spark クラスターを操作するには、 [Azure ポータル](https://portal.azure.com/)を使用します。  
-> 
-> 
+1. スタンドアロン アプリケーションを使用して、Azure Event Hub にメッセージを取り込みます。
 
-**前提条件:**
+2. Azure HDInsight の Spark クラスターで実行されているアプリケーションを使用して、Event Hub からリアルタイムでメッセージを取得します。
 
-次のものが必要です。
+3. Azure Storage Blob、Hive テーブル、SQL テーブルなどのさまざまな出力にデータを送信します。 
+
+## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
-* Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
-* Java IDE。 この記事では、IntelliJ IDEA 15.0.1 を使用します。 [ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
-* Microsoft JDBC Driver for SQL Server (v4.1 以降)。 SQL Server データベースにイベント データを書き込むために必要です。 [ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からインストールできます。
-* Azure SQL Database。 手順については、[数分での SQL データベースの作成](../sql-database/sql-database-get-started.md)に関する記事を参照してください。
+
+## <a name="spark-streaming-concepts"></a>Spark ストリーミングの概念
+
+Apache Spark でのストリーミングの処理方法の詳細については、[Apache Spark ストリーミングの概要](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)を参照してください。 HDInsight は、Azure の Spark クラスターに同じストリーミング機能をもたらします。  
 
 ## <a name="what-does-this-solution-do"></a>このソリューションの内容
-ストリーミング ソリューションのフローを次に示します。
+
+この記事では、ストリーミング ソリューションを作成するために、次の手順を実行します。
 
 1. イベントのストリームを受信する Azure Event Hub を作成します。
+
 2. イベントを生成し、それを Azure Event Hub にプッシュするローカルのスタンドアロン アプリケーションを実行します。 サンプル アプリケーションは [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples)に公開されています。
+
 3. Azure Event Hub からストリーミング イベントを読み取り、さまざまな場所 (Azure BLOB、Hive テーブル、および SQL データベース テーブル) にプッシュするリモート ストリーミング アプリケーションを Spark クラスター上で実行します。 
 
 ## <a name="create-azure-event-hub"></a>Azure Event Hub の作成
-1. [Azure Portal](https://manage.windowsazure.com) で、**[新規作成]** > **[Service Bus]** > **[イベント ハブ]** > **[カスタム作成]** の順に選択します。
-2. **[新しい Event Hub の追加]** 画面で **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。 **矢印** をクリックして続行します。
-   
-    ![ウィザード ページ 1](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub.png "Azure Event Hub を作成します")
-   
-   > [!NOTE]
-   > 待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
-   > 
-   > 
-3. **[イベント ハブの構成]** 画面で、**[パーティション数]** と **[メッセージのリテンション期間]** の値を入力して、チェック マークをクリックします。 この例では、パーティション カウントに 10 を、メッセージ保持に 1 を使用します。 パーティション数を書き留めておきます。この値は後で必要になります。
-   
-    ![ウィザード ページ 2](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.create.event.hub2.png "Event Hub のパーティション サイズおよびリテンション期間を指定します")
-4. 作成した Event Hub をクリックし、 **[構成]**をクリックして、Event Hub 用に&2; つのアクセス ポリシーを作成します。
-   
-    <table>
-    <tr><th>名前</th><th>アクセス許可</th></tr>
-    <tr><td>mysendpolicy</td><td>送信</td></tr>
-    <tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-    </table>
-   
-    アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。 これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
-   
-    ![ポリシー](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policies.png "Event Hub のポリシーを作成します")
-5. 同じページで、2 つのポリシーに対して生成されるポリシー キーを記録しておきます。 後で使用するので、これらのキーを保存します。
-   
-    ![ポリシー キー](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.keys.png "ポリシー キーを保存します")
-6. **[ダッシュボード]** ページで、下部にある **[接続情報]** をクリックして、2 つのポリシーを使用するイベント ハブに接続文字列を取得し、保存します。
-   
-    ![ポリシー キー](./media/hdinsight-apache-spark-eventhub-streaming/hdispark.streaming.event.hub.policy.connection.strings.png "ポリシーの接続文字列を保存します")
 
-## <a name="use-a-scala-application-to-send-messages-to-event-hub"></a>Scala アプリケーションを使用して、Event Hub にメッセージを送信する
-このセクションでは、ローカルのスタンドアロン Scala アプリケーションを使用して、イベントのストリームを、前の手順で作成した Azure Event Hub に送信します。 このアプリケーションは GitHub ( [https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)) で入手できます。 ここに示す手順は、この GitHub リポジトリが既にフォークされていることを前提とします。
+1. [Azure Portal](https://manage.windowsazure.com) にログインし、画面の左上にある **[新規]** をクリックします。
 
-1. IntelliJ IDEA で、アプリケーション **EventhubsSampleEventProducer**を開きます。
-2. プロジェクトをビルドします。 **[Build] \(ビルド)** メニューの **[Make Project] \(プロジェクトの作成)** をクリックします。 出力 jar が **\out\artifacts** の下に作成されます。
+2. **[モノのインターネット]**、**[イベント ハブ]** の順にクリックします。
+   
+    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub9.png)
 
-> [!TIP]
-> IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。 その方法については、ガイダンスの次のセクションに記載された手順を参照してください。 そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。 For example:
-> 
-> * Spark バージョンを取り込むときに POM を更新する必要はありません。 それは、このアプリケーションを作成するための依存関係が Spark に存在しないからです。
-> * プロジェクト ライブラリにいくつかの依存関係 jar を追加する必要はありません。 このプロジェクトで、それらの jar は必要ないからです。
-> 
-> 
+3. **[名前空間の作成]** ブレードで、名前空間の名前を入力します。 価格レベル (Basic または Standard) を選択します。 Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。 **[作成]** をクリックして、名前空間を作成します。
+   
+    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub1.png)
 
-## <a name="update-the-scala-streaming-application-for-receiving-the-events"></a>イベントを受信するための Scala ストリーミング アプリケーションを更新する
+    > [!NOTE]
+       > 待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
+       > 
+       > 
+
+4. Event Hubs 名前空間の一覧で、新しく作成された名前空間をクリックします。      
+   
+    
+5. 名前空間ブレードで **[Event Hubs]** をクリックし、**[+ Event Hub]** をクリックして新しいイベント ハブを作成します。
+   
+    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub3.png)
+
+6. Event Hub の名前を入力して、パーティションの数を 10 に設定し、メッセージのリテンション期間を 1 に設定します。 このソリューション内のメッセージはアーカイブされていないため、残りを既定値のままにして、**[作成]** をクリックできます。
+   
+    ![イベント ハブの作成](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub5.png)
+
+7. 新しく作成した Event Hub が Event Hub のブレードに表示されます。
+    
+     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub6.png)
+
+8. 名前空間ブレード (特定のイベント ハブ ブレードではなく) に戻り、**[共有アクセス ポリシー]** をクリックし、**[RootManageSharedAccessKey]** をクリックします。
+    
+     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub7.png)
+
+9. コピー ボタンをクリックして **RootManageSharedAccessKey** プライマリ キーと接続文字列をクリップボードにコピーします。 このチュートリアルの後半で使用するためにこれらを保存します。
+    
+     ![](./media/hdinsight-apache-spark-eventhub-streaming/create-event-hub8.png)
+
+## <a name="send-messages-to-an-azure-event-hub-using-a-scala-application"></a>Scala アプリケーションを使用して Azure Event Hub にメッセージを送信する
+
+このセクションでは、イベントのストリームを生成するローカルのスタンドアロン Scala アプリケーションを使用して、前の手順で作成した Azure Event Hub に送信します。 このアプリケーションは GitHub ( [https://github.com/hdinsight/eventhubs-sample-event-producer](https://github.com/hdinsight/eventhubs-sample-event-producer)) で入手できます。 ここに示す手順は、この GitHub リポジトリが既にフォークされていることを前提とします。
+
+1. このアプリケーションを実行するコンピューターに次のソフトウェアがインストールされていることを確認します。
+
+    * Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
+    * Java IDE。 この記事では、IntelliJ IDEA 15.0.1 を使用します。 [こちら](https://www.jetbrains.com/idea/download/)からインストールできます。
+
+
+2. IntelliJ IDEA で、アプリケーション **EventhubsSampleEventProducer**を開きます。
+
+3. プロジェクトをビルドします。 **[Build] \(ビルド)** メニューの **[Make Project] \(プロジェクトの作成)** をクリックします。 IntelliJ IDEA の構成に応じて、出力 jar が **\classes\artifacts** の下に作成されます。
+
+    > [!TIP]
+    > IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。 その方法については、ガイダンスの次のセクションに記載された手順を参照してください。 そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。 次に例を示します。
+    > 
+    > * Spark バージョンを取り込むときに POM を更新する必要はありません。 それは、このアプリケーションを作成するための依存関係が Spark に存在しないからです。
+    > * プロジェクト ライブラリにいくつかの依存関係 jar を追加する必要はありません。 このプロジェクトで、それらの jar は必要ないからです。
+    > 
+    > 
+
+## <a name="receive-messages-from-the-event-hub-using-a-streaming-application-running-on-spark-cluster"></a>Spark クラスターで実行されているストリーミング アプリケーションを使用して Event Hub からメッセージを受信する
+
 イベントを受信し、それをさまざまな宛先にルーティングするサンプル Scala アプリケーションは、 [https://github.com/hdinsight/spark-streaming-data-persistence-examples](https://github.com/hdinsight/spark-streaming-data-persistence-examples)で入手できます。 以下の手順に従ってアプリケーションを更新し、出力 jar を作成してください。
 
 1. IntelliJ IDEA を起動し、起動画面から **[Check out from Version Control]\(バージョン管理からチェックアウト)** を選択し、**[Git]** をクリックします。
@@ -111,22 +131,14 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 4. アプリケーション コードが Java8 でコンパイルされるように設定します。 このためには、**[File] \(ファイル)**、**[Project Structure] \(プロジェクトの構造)** の順にクリックし、**[Project] \(プロジェクト)** タブで [Project language level] \(プロジェクトの言語レベル) を **[8 - Lambdas, type annotations, etc.] \(8 - ラムダ、型注釈など)** に設定します。
    
     ![プロジェクト構造](./media/hdinsight-apache-spark-eventhub-streaming/java-8-compiler.png)
-5. **pom.xml** を開き、Spark のバージョンが正しいことを確認します。 DNS サーバー <properties> ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
+5. **pom.xml** を開き、Spark のバージョンが正しいことを確認します。 `<properties>` ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
    
-        <scala.version>2.10.4</scala.version>
-        <scala.compat.version>2.10.4</scala.compat.version>
-        <scala.binary.version>2.10</scala.binary.version>
-        <spark.version>1.6.2</spark.version>
-6. アプリケーションでは、次の&2; つの依存関係 jar が必要です。
-   
-   * **EventHub receiver jar**。 Spark で Event Hub からメッセージを受信するために必要です。 この jar を使用するために、**pom.xml** で `<dependencies>` の下に次のコードを追加します。
-     
-           <dependency>
-             <groupId>com.microsoft.azure</groupId>
-             <artifactId>spark-streaming-eventhubs_2.10</artifactId>
-             <version>1.6.0</version>
-           </dependency> 
-   * **JDBC driver jar**。 Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。 この jar ファイルの v4.1 以降を、 [ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からダウンロードできます。 プロジェクト ライブラリでこの jar への参照を追加します。 次の手順に従います。
+        <scala.version>2.11.8</scala.version>
+        <scala.compat.version>2.11.8</scala.compat.version>
+        <scala.binary.version>2.11</scala.binary.version>
+        <spark.version>2.0.0</spark.version>
+
+6. アプリケーションでは、**JDBC driver jar** と呼ばれる依存関係 jar が必要です。 Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。 この jar ファイルの v4.1 以降を、 [ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からダウンロードできます。 プロジェクト ライブラリでこの jar への参照を追加します。 次の手順に従います。
      
      1. アプリケーションが開かれている IntelliJ IDEA ウィンドウで、**[File] \(ファイル)**、**[Project Structure] \(プロジェクトの構造)**、**[Libraries] \(ライブラリ)** の順にクリックします。 
      2. 追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、 **[Java]**をクリックして、JDBC driver jar をダウンロードした場所に移動します。 画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
@@ -142,14 +154,14 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
    3. **[Select Main Class] \(メイン クラスの選択)** ダイアログ ボックスで、使用可能なクラスのいずれかを選択し、**[OK]** をクリックします。
       
        ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-2.png)
-   4. **[Create JAR from Modules] \(モジュールから JAR を作成)** ダイアログ ボックスで、**[extract to the target JAR] \(ターゲット JAR に抽出する)** オプションが選択されていることを確認し、**[OK]** をクリックします。 これにより、すべての依存関係を持つ&1; つの JAR が作成されます。
+   4. **[Create JAR from Modules] \(モジュールから JAR を作成)** ダイアログ ボックスで、**[extract to the target JAR] \(ターゲット JAR に抽出する)** オプションが選択されていることを確認し、**[OK]** をクリックします。 これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
       
        ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/create-jar-3.png)
-   5. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の&1; つ (**microsoft-spark-streaming-examples compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、**[Delete] \(削除)** アイコン (![削除アイコン](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png)) をクリックします。
+   5. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**microsoft-spark-streaming-examples compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、**[Delete] \(削除)** アイコン (![削除アイコン](./media/hdinsight-apache-spark-eventhub-streaming/delete-icon.png)) をクリックします。
       
        ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/delete-output-jars.png)
       
-       **[Build on make] \(作成時にビルド)** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply] \(適用)**、**[OK]** の順にクリックします。
+       **[Build on make] \(作成時にビルド)** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]**をクリックします。
    6. **[Output Layout] \(出力レイアウト)** タブで、右側にある **[Available Elements] \(利用可能な要素)** ボックスの下部に、先ほどプロジェクト ライブラリに追加した SQL JDBC jar があります。 これは **[Output Layout (出力レイアウト)]** タブに追加する必要があります。 jar ファイルを右クリックし、 **[Extract Into Output Root (出力ルートに抽出)]**をクリックします。
       
        ![依存関係 jar の抽出](./media/hdinsight-apache-spark-eventhub-streaming/extract-dependency-jar.png)  
@@ -159,34 +171,37 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
        ![[最終出力] タブ](./media/hdinsight-apache-spark-eventhub-streaming/final-output-tab.png)        
       
        **[Project Structure] \(プロジェクトの構造)** ダイアログ ボックスで、**[Apply] \(適用)** をクリックし、**[OK]** をクリックします。    
-   7. メニュー バーの **[Build] \(ビルド)** をクリックし、**[Make Project] \(プロジェクトの作成)** をクリックします。 **[Build Artifact (アーティファクトのビルド)]** をクリックして、jar を作成することもできます。 出力 jar が **\out\artifacts** の下に作成されます。
+   7. メニュー バーの **[Build] \(ビルド)** をクリックし、**[Make Project] \(プロジェクトの作成)** をクリックします。 **[Build Artifact (アーティファクトのビルド)]** をクリックして、jar を作成することもできます。 出力 jar が **\classes\artifacts** の下に作成されます。
       
        ![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/output.png)
 
 ## <a name="run-the-applications-remotely-on-a-spark-cluster-using-livy"></a>Livy を使用して Spark クラスターでアプリケーションをリモートで実行する
+
 Livy を使用して Spark クラスターでストリーミング アプリケーションをリモートで実行します。 HDInsight Spark クラスターで Livy を使用する方法の詳細については、「 [Azure HDInsight の Apache Spark クラスターへのジョブのリモート送信](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。 Spark を使用してイベントをストリーミングするリモート ジョブを実行するには、事前にいくつかの操作を実行する必要があります。
 
 1. ローカルのスタンドアロン アプリケーションを起動して、イベントを生成し、Event Hub に送信します。 それを行うには、次のコマンドを使用します。
    
-        java -cp EventhubsSampleEventProducer.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
-2. ストリーミング jar (**microsoft-spark-streaming-examples.jar**) を、クラスターに関連付けられた Azure Blob ストレージにコピーします。 これにより、jar で Livy にアクセスできるようになります。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+        java -cp com-microsoft-azure-eventhubs-client-example.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
+
+2. ストリーミング jar (**spark-streaming-data-persistence-examples.jar**) を、クラスターに関連付けられた Azure Blob Storage にコピーします。 これにより、jar で Livy にアクセスできるようになります。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 3. これらのアプリケーションを実行するコンピューターに CURL をインストールします。 CURL を使用して、ジョブをリモートで実行する Livy エンドポイントを呼び出します。
 
 ### <a name="run-the-applications-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>Azure Storage BLOB へのイベントをテキストとして受信するアプリケーションを実行する
+
 コマンド プロンプトを開き、CURL をインストールしたディレクトリに移動し、次のコマンドを実行します (ユーザー名/パスワードおよびクラスター名を置き換える)。
 
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\inputBlob.txt "https://mysparkcluster.azurehdinsight.net/livy/batches"
 
 **inputBlob.txt** ファイル内のパラメーターは次のように定義されています。
 
-    { "file":"wasbs:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsEventCount", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
+    { "file":"wasbs:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsEventCount", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
 入力ファイル内のパラメーターについて説明します。
 
 * **file** は、クラスターに関連付けられた Azure ストレージ アカウントにあるアプリケーション jar ファイルへのパスです。
 * **className** は、jar 内のクラスの名前です。
 * **args** は、クラスに必要な引数の一覧です。
-* **numExecutors** は、ストリーミング アプリケーションを実行するときに Spark が使用するコアの数です。 これは常に Event Hub パーティションの数の少なくとも&2; 倍になる必要があります。
+* **numExecutors** は、ストリーミング アプリケーションを実行するときに Spark が使用するコアの数です。 これは常に Event Hub パーティションの数の少なくとも 2 倍になる必要があります。
 * **executorMemory**、**executorCores**、**driverMemory** は、必要なリソースをストリーミング アプリケーションに割り当てるために使用するパラメーターです。
 
 > [!NOTE]
@@ -220,7 +235,7 @@ Livy を使用して Spark クラスターでストリーミング アプリケ�
 
 **inputJSON.txt** ファイル内のパラメーターは次のように定義されています。
 
-    { "file":"wasbs:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureBlobAsJSON", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-store-folder", "/EventStore10"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
+    { "file":"wasbs:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureBlobAsJSON", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-store-folder", "/EventStore10"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
 パラメーターは、前の手順でテキスト出力用に指定したものと似ています。 繰り返しになりますが、パラメーターとして使用される出力フォルダー (EventCheckpoint、EventCount/EventCount10) を作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。
 
@@ -244,7 +259,7 @@ Hive テーブルにイベントをストリーミングするアプリケーシ
 
 **inputHive.txt** ファイル内のパラメーターは次のように定義されています。
 
-    { "file":"wasbs:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToHiveTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-hive-table", "EventHiveTable10" ], "jars":["wasbs:///example/jars/datanucleus-api-jdo-3.2.6.jar", "wasbs:///example/jars/datanucleus-rdbms-3.2.9.jar", "wasbs:///example/jars/datanucleus-core-3.2.10.jar"], "files":["wasbs:///example/jars/hive-site.xml"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
+    { "file":"wasbs:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToHiveTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--event-hive-table", "EventHiveTable10" ], "jars":["wasbs:///example/jars/datanucleus-api-jdo-3.2.6.jar", "wasbs:///example/jars/datanucleus-rdbms-3.2.9.jar", "wasbs:///example/jars/datanucleus-core-3.2.10.jar"], "files":["wasbs:///example/jars/hive-site.xml"], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
 パラメーターは、前の手順でテキスト出力用に指定したものと似ています。 繰り返しになりますが、パラメーターとして使用される出力フォルダー (EventCheckpoint、EventCount/EventCount10) または出力 Hive テーブル (EventHiveTable10) を作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。 **jars** および **files** オプションには、ストレージ アカウントにコピーした .jar ファイルおよび hive-site.xml へのパスが含まれています。
 
@@ -278,7 +293,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 
 ### <a name="run-the-applications-to-receive-the-events-into-an-azure-sql-database-table"></a>Azure SQL データベース テーブルへのイベントを受信するアプリケーションを実行する
-この手順を実行する前に、Azure SQL データベースが作成されていることを確認してください。 データベース名、データベース サーバー名、およびデータベース管理者の資格情報がパラメーターとして必要です。 ただし、データベース テーブルを作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。
+この手順を実行する前に、Azure SQL データベースが作成されていることを確認してください。 手順については、[数分での SQL データベースの作成](../sql-database/sql-database-get-started.md)に関する記事を参照してください。 このセクションを完了するには、データベース名、データベース サーバー名、およびデータベース管理者の資格情報がパラメーターとして必要です。 ただし、データベース テーブルを作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。
 
 コマンド プロンプトを開き、CURL をインストールしたディレクトリに移動し、次のコマンドを実行します。
 
@@ -286,7 +301,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 **inputSQL.txt** ファイル内のパラメーターは次のように定義されています。
 
-    { "file":"wasbs:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureSQLTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--sql-server-fqdn", "<database-server-name>.database.windows.net", "--sql-database-name", "mysparkdatabase", "--database-username", "sparkdbadmin", "--database-password", "<put-password-here>", "--event-sql-table", "EventContent" ], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
+    { "file":"wasbs:///example/jars/spark-streaming-data-persistence-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureSQLTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--sql-server-fqdn", "<database-server-name>.database.windows.net", "--sql-database-name", "mysparkdatabase", "--database-username", "sparkdbadmin", "--database-password", "<put-password-here>", "--event-sql-table", "EventContent" ], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
 アプリケーションが正常に実行していることを確認するには、SQL Server Management Studio を使用して Azure SQL データベースに接続します。 手順については、「 [Connect to SQL Database with SQL Server Management Studio (SQL Server Management Studio を使用して SQL Database に接続する)](../sql-database/sql-database-connect-query-ssms.md)」を参照してください。 データベースに接続したら、ストリーミング アプリケーションによって作成された **EventContent** テーブルに移動します。 簡単なクエリを実行してテーブルからデータを取得します。 次のクエリを実行します。
 

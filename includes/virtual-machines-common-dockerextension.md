@@ -1,6 +1,6 @@
 
 
-[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 [Azure Linux エージェント](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、アプリケーション データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 [Azure Linux エージェント](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に対して [Azure Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
 このトピックの内容:
 
@@ -50,9 +50,9 @@ Docker 対応 VM の作成をすぐに開始するには、以下を参照して
 * [Azure クラシック ポータルで Docker VM 拡張機能を使用する方法]
 
 ## <a name="virtual-machine-extensions-for-linux-and-windows"></a>Linux および Windows 向けの仮想マシン拡張機能
-[Azure 向けの Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)は、特殊な動作を提供する数ある VM 拡張機能のうちの 1 つにすぎません。現在、他にも多くの機能が開発中です。 たとえば、[Linux VM エージェント拡張機能](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の中には、セキュリティ機能やカーネルとネットワークの機能など、仮想マシンの変更と管理を実行できるものがあります。 また VMAccess 拡張機能では、管理者のパスワードまたは SSH キーをリセットできます。
+[Azure 向けの Docker VM 拡張機能](https://github.com/Azure/azure-docker-extension/blob/master/README.md)は、特殊な動作を提供する数ある VM 拡張機能のうちの 1 つにすぎません。現在、他にも多くの機能が開発中です。 たとえば、[Linux VM エージェント拡張機能](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の中には、セキュリティ機能やカーネルとネットワークの機能など、仮想マシンの変更と管理を実行できるものがあります。 また VMAccess 拡張機能では、管理者のパスワードまたは SSH キーをリセットできます。
 
-詳しい一覧については、[Azure VM 拡張機能](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
+詳しい一覧については、[Azure VM 拡張機能](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事を参照してください。
 
 <!--Anchors-->
 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
@@ -61,8 +61,3 @@ Docker 対応 VM の作成をすぐに開始するには、以下を参照して
 [Docker と Linux コンテナー]: #Docker-and-Linux-Containers
 [Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
 [Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
-
-
-<!--HONumber=Jan17_HO3-->
-
-

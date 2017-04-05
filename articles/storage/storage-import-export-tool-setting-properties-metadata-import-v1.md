@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export を使ったプロパティとメタデータの設定 | Microsoft Docs"
-description: "Import/Export ツールを実行してドライブを準備中に、目的の BLOB で設定するプロパティとメタデータを指定する方法について説明します。"
+title: "Azure Import/Export - v1 を使ったプロパティとメタデータの設定 | Microsoft Docs"
+description: "Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
-ms.openlocfilehash: 8e1152a03eee01244dd469586848c396a7f689cc
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 6455ce57572f9ec36d0ebae88c1ddd9f40f237bf
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>インポート処理中にプロパティとメタデータを設定する
-Microsoft Azure Import/Export ツールを実行してドライブを準備する場合は、目的の BLOB で設定するプロパティとメタデータを指定できます。 次の手順に従います。  
+Microsoft Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定できます。 次の手順に従います。  
   
 1.  BLOB のプロパティを設定するには、プロパティの名前と値を指定するテキスト ファイルをローカル コンピューターで作成します。  
   
@@ -54,7 +54,7 @@ BLOB のプロパティを指定するには、ローカル テキスト ファ�
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <Metadata>  
-    <UploadMethod>Windows Azure Import/Export Service</UploadMethod>  
+    <UploadMethod>Windows Azure Import/Export service</UploadMethod>  
     <DataSetName>SampleData</DataSetName>  
     <CreationDate>10/1/2013</CreationDate>  
 </Metadata>  
@@ -63,12 +63,13 @@ BLOB のプロパティを指定するには、ローカル テキスト ファ�
 ファイルをローカルの場所 (`C:\WAImportExport\ImportMetadata.txt` など) に保存します。  
   
 ## <a name="create-a-copy-session-including-the-properties-or-metadata-files"></a>プロパティ ファイルまたはメタデータ ファイルを含むコピー セッションを作成する  
-Azure Import/Export ツールを実行してインポート ジョブの準備をする場合、`PropertyFile` パラメーターを使用してコマンド ラインでプロパティ ファイルを指定します。 `/MetadataFile` パラメーターを使用してコマンド ラインでメタデータ ファイルを指定します。 両方のファイルを指定した例は次の通りです。  
+Azure Import/Export ツールを実行してインポート ジョブの準備をする際は、`PropertyFile` パラメーターを使用してコマンド ラインでプロパティ ファイルを指定します。 `/MetadataFile` パラメーターを使用してコマンド ラインでメタデータ ファイルを指定します。 両方のファイルを指定した例は次の通りです。  
   
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  
 ```
   
-## <a name="see-also"></a>関連項目  
-[インポート/エクスポート サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)
+## <a name="next-steps"></a>次のステップ
+
+* [Import/Export サービスのメタデータとプロパティ ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)
 

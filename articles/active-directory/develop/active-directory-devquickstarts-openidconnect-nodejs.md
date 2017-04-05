@@ -209,8 +209,9 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 
 6. Finally, let's add the routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:
 
-```JavaScript
-
+       
+       ```JavaScript
+ 
         // Our Auth routes (section 3)
 
         // GET /auth/openid

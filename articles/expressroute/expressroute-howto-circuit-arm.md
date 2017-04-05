@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: ced4347baf7eca4dd8fc9cf1c8c0b451314f0ad2
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 212de47a9cc4f2130b94ac1e622eabe0c0cb781a
+ms.lasthandoff: 03/24/2017
 
 
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
+# <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-circuit-arm.md)
-> * [クラシック - PowerShell](expressroute-howto-circuit-classic.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
 >
@@ -38,13 +37,13 @@ ms.lasthandoff: 03/14/2017
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
-* Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) を入手します。 PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」の手順に従ってください。
+* Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。 詳細については、[Azure PowerShell コマンドレットの概要](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
-構成を始めるには、Azure アカウントにサインインします。 PowerShell の詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。 接続については、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 接続については、次の例を参照してください。
 
     Login-AzureRmAccount
 
@@ -56,7 +55,7 @@ ExpressRoute 回線を作成するサブスクリプションを選択します�
 
     Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>手順&2;.サポートされるプロバイダー、場所、帯域幅のリストを取得する
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>手順 2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
 PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実行すると、この情報が返されます。この情報は、後のステップで使用します。

@@ -2,8 +2,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: c5fc68fb25a4cb2166e0c0a72871d16c71397852
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0ca716857733290fad4278e3be5059408bb75393
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -51,7 +52,7 @@ Books.ShippingDetails.Weight などのドキュメント内の入れ子になっ
 DocumentDB では、クエリあたり、1 つの数値プロパティ、文字列プロパティ、またはブール プロパティでの順序付けがサポートされています。これに近日公開予定のクエリの種類が加わります。 詳細については、「[今後予定された機能](#Whats_coming_next)」を参照してください。
 
 ## <a name="configure-an-indexing-policy-for-order-by"></a>Order By のインデックス作成ポリシーの構成
-DocumentDB では&2; 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この&2; つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。 DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。 
+DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この 2 つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。 DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。 
 
 > [!NOTE]
 > 文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。 文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
@@ -77,7 +78,7 @@ DocumentDB では&2; 種類のインデックス (ハッシュと範囲) がサ�
 > 
 
 ### <a name="indexing-for-order-by-for-a-single-property"></a>1 つのプロパティに対する Order By のインデックス作成
-Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。 2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう&1; つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。                    
+Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。 2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう 1 つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。                    
 
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
@@ -90,7 +91,7 @@ Title プロパティ (文字列) のみに対する Order By のインデック
 
 
 ## <a name="samples"></a>サンプル
-この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。 サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。 投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。  
+この [GitHub サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。 サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。 投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。  
 
 ## <a name="faq"></a>FAQ
 **Order By クエリの予測される要求単位 (RU) の消費はどのくらいですか?**
@@ -123,17 +124,12 @@ Order By は、現在、Azure Portal でクエリ エクスプローラーを使
 Order By がサポートされていないというエラー メッセージが表示される場合は、Order By がサポートされている [SDK](documentdb-sdk-dotnet.md) のバージョンを使用していることを確認してください。 
 
 ## <a name="next-steps"></a>次のステップ
-[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) をフォークして、データの並べ替えを始めましょう。 
+[GitHub サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) をフォークして、データの並べ替えを始めましょう。 
 
 ## <a name="references"></a>参照
 * [DocumentDB クエリのリファレンス](documentdb-sql-query.md)
 * [DocumentDB インデックス作成ポリシー リファレンス](documentdb-indexing-policies.md)
 * [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

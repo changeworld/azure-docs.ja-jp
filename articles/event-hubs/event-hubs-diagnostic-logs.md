@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 02/01/2017
-ms.author: babanisa
+ms.date: 03/27/2017
+ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: abcb0eee979853948cf6d981ff8f3a457eeeeef0
-ms.openlocfilehash: 87c0f3eab8c09c79de06c2e806830b2f67ea5732
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 8b0484b2d4f6474be728531fbda65896f30eccc4
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs 診断ログ
 
-Azure Event Hubs の&2; 種類のログを表示できます。
-* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常にオンになっています。
+Azure Event Hubs の 2 種類のログを表示できます。
+* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
 * **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 ジョブで発生するすべてのイベントを深く洞察するための診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
-既定では、診断ログは**オフ**になっています。 診断ログを有効にするには:
+既定では、診断ログは**オフ**になっています。 診断ログを有効にするには
 
 1.    Azure Portal で、[ストリーミング ジョブ] ブレードに移動します。
 
@@ -47,19 +47,19 @@ Azure Event Hubs の&2; 種類のログを表示できます。
 
 5.    アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
 
-6.    収集するログのカテゴリを選択します (**実行****オーサリング**など)。
+6.    収集するログのカテゴリを選択します (**実行**、**作成**など)。
 
 7.    新しい診断設定を保存します。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
 
-診断の構成の詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 Event Hubs では、2 つのカテゴリの診断ログをキャプチャします。
 
-* **ArchivalLogs:** イベント ハブのアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ) を取得します。
-* **OperationalLogs:** イベント ハブの操作中に発生したこと (特にイベント ハブの作成など操作の種類、使用されたリソース、操作の状態) を取得します。
+* **ArchivalLogs**: イベント ハブのアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ)。
+* **OperationalLogs**: イベント ハブの操作中に発生したことに関する情報 (特にイベント ハブの作成など操作の種類、使用されたリソース、操作の状態)。
 
 ## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
 すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下の例で説明している形式を使用する文字列フィールドがあります。
@@ -70,17 +70,17 @@ Event Hubs では、2 つのカテゴリの診断ログをキャプチャしま�
 
 名前 | 説明
 ------- | -------
-TaskName | 失敗したタスクの説明
-ActivityId | 内部 ID。追跡目的で使用されます
-trackingId | 内部 ID。追跡目的で使用されます
-resourceId | Azure Resource Manager リソース ID
-eventHub | イベント ハブの完全名 (名前空間の名前を含みます)
-partitionId | 書き込み先のイベント ハブ パーティション
+TaskName | 失敗したタスクの説明。
+ActivityId | 内部 ID。追跡目的で使用されます。
+trackingId | 内部 ID。追跡目的で使用されます。
+resourceId | Azure Resource Manager リソース ID。
+eventHub | イベント ハブの完全名 (名前空間の名前を含みます)。
+partitionId | 書き込み先のイベント ハブ パーティション。
 archiveStep | ArchiveFlushWriter
-startTime | 障害開始時刻
-failures | 障害が発生した回数
-durationInSeconds | 障害の時間
-Message | エラー メッセージ
+startTime | 障害開始時刻。
+failures | 障害が発生した回数。
+durationInSeconds | 障害の時間。
+Message | エラー メッセージ。
 カテゴリ | ArchiveLogs
 
 アーカイブ ログの JSON 文字列の例を次に示します。
@@ -106,17 +106,17 @@ Message | エラー メッセージ
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-名前 | 説明
+名前 | Description
 ------- | -------
-ActivityId | 内部 ID。追跡目的で使用されます
-EventName | 操作の名前             
-resourceId | Azure Resource Manager リソース ID
-SubscriptionId | サブスクリプション ID
-EventTimeString | 操作時間
-EventProperties | 操作プロパティ
-状態 | 操作の状態
-Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
-category | OperationalLogs
+ActivityId | 内部 ID。追跡目的で使用されます。
+EventName | 操作の名前。     
+resourceId | Azure Resource Manager リソース ID。
+SubscriptionId | [サブスクリプション ID] が表示されます。
+EventTimeString | 操作時間。
+EventProperties | 操作プロパティ。
+[Status] | 操作の状態。
+Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)。
+カテゴリ | OperationalLogs
 
 操作ログの JSON 文字列の例を次に示します。
 
