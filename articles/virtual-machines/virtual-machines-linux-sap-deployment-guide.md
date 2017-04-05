@@ -327,7 +327,7 @@ Azure における SAP デプロイのトポロジとアーキテクチャを定
 * SAP システムをデプロイする仮想ネットワーク
 * SAP システムをデプロイするリソース グループ
 * SAP システムをデプロイする Azure リージョン
-* SAP 構成 (2 層または&3; 層)
+* SAP 構成 (2 層または 3 層)
 * VM サイズと、VM にマウントする追加の仮想ハード ディスク (VHD) の数
 * SAP 移送/修正システム (CTS) 構成
 
@@ -426,12 +426,12 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>テンプレートを使用した仮想マシンの作成
 [azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートのいずれかを使用して仮想マシンを作成できます。 また、[Azure Portal][virtual-machines-windows-tutorial]、[PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]、または [Azure CLI][virtual-machines-linux-tutorial] を使用して、仮想マシンを手動で作成することもできます。
 
-* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image]
 
-  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+  仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
 * [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-marketplace-image)][sap-templates-3-tier-marketplace-image]
 
-  複数の仮想マシンを使用して&3; 層システムを作成する場合は、このテンプレートを使用します。
+  複数の仮想マシンを使用して 3 層システムを作成する場合は、このテンプレートを使用します。
 
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
@@ -450,7 +450,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
     新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   * **システムの可用性** (3 層テンプレートのみ): システムの可用性。
 
-    高可用性インストールに適した構成用の **HA** を選択します。 ABAP SAP Central Services (ASCS) 用の&2; つのデータベース サーバーと&2; つのサーバーが作成されます。
+    高可用性インストールに適した構成用の **HA** を選択します。 ABAP SAP Central Services (ASCS) 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
   * **ストレージの種類** (2 層テンプレートのみ): 使用するストレージの種類。
 
     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
@@ -505,7 +505,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 >
 
 - - -
-カスタム イメージを作成し、そのイメージを使用して複数の新しい VM を作成できます。 方法については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事をご覧ください。 SAP Software Provision Manager を使用して新しい SAP システムをインストールし、仮想マシンに接続されている VHD からデータベース バックアップを復元するか、Azure Storage からデータベース バックアップを直接復元して (DBMS でサポートされている場合)、データベース コンテンツを設定します。 詳細については、[Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事をご覧ください。 オンプレミス VM (特に&2; 層システム) に SAP システムが既にインストールされている場合は、SAP Software Provisioning Manager でサポートされているシステムの名前変更手順に従って、Azure VM のデプロイ後に SAP システム設定を調整できます (SAP Note [1619720])。 それ以外の場合は、Azure VM のデプロイ後に SAP ソフトウェアをインストールできます。
+カスタム イメージを作成し、そのイメージを使用して複数の新しい VM を作成できます。 方法については、[Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事をご覧ください。 SAP Software Provision Manager を使用して新しい SAP システムをインストールし、仮想マシンに接続されている VHD からデータベース バックアップを復元するか、Azure Storage からデータベース バックアップを直接復元して (DBMS でサポートされている場合)、データベース コンテンツを設定します。 詳細については、[Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事をご覧ください。 オンプレミス VM (特に 2 層システム) に SAP システムが既にインストールされている場合は、SAP Software Provisioning Manager でサポートされているシステムの名前変更手順に従って、Azure VM のデプロイ後に SAP システム設定を調整できます (SAP Note [1619720])。 それ以外の場合は、Azure VM のデプロイ後に SAP ソフトウェアをインストールできます。
 
 次のフローチャートは、カスタム イメージから VM をデプロイする際の SAP 固有の一連の手順を示しています。
 
@@ -514,12 +514,12 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 #### <a name="create-the-virtual-machine"></a>仮想マシンの作成
 Azure Portal からプライベート OS イメージを使用してデプロイを作成するには、次のいずれかの SAP テンプレートを使用します。 これらのテンプレートは、[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されています。 また、[PowerShell][virtual-machines-upload-image-windows-resource-manager] を使用して、仮想マシンを手動で作成することもできます。
 
-* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-user-image)][sap-templates-2-tier-user-image]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-user-image)][sap-templates-2-tier-user-image]
 
-  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+  仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
 * [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-user-image)][sap-templates-3-tier-user-image]
 
-  複数の仮想マシンまたは独自の OS イメージを使用して&3; 層システムを作成する場合は、このテンプレートを使用します。
+  複数の仮想マシンまたは独自の OS イメージを使用して 3 層システムを作成する場合は、このテンプレートを使用します。
 
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
@@ -535,7 +535,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
     新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   * **システムの可用性** (3 層テンプレートのみ): システムの可用性。
 
-    高可用性インストールに適した構成用の **HA** を選択します。 ASCS 用の&2; つのデータベース サーバーと&2; つのサーバーが作成されます。
+    高可用性インストールに適した構成用の **HA** を選択します。 ASCS 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
   * **ストレージの種類** (2 層テンプレートのみ): 使用するストレージの種類。
 
     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
@@ -607,9 +607,9 @@ Azure VM エージェントの詳細については、次のリソースを参�
 #### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 Azure Portal からプライベート OS ディスクを使用してデプロイを作成する場合、[azure-quickstart-templates GitHub リポジトリ][azure-quickstart-templates-github]で公開されている SAP テンプレートを使用します。 また、PowerShell を使用して仮想マシンを手動で作成することもできます。
 
-* [**2 層構成 (仮想マシン&1; 台のみ) テンプレート** (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
 
-  仮想マシンを&1; 台だけ使用して&2; 層システムを作成する場合は、このテンプレートを使用します。
+  仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
 
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
@@ -764,7 +764,7 @@ Azure VM エージェントを更新する際にユーザーの操作は不要�
 
 エージェントが既にインストールされている場合、Azure Linux エージェントを更新するには、[VM 上の Azure Linux エージェントを GitHub で最新バージョンに更新する方法][virtual-machines-linux-update-agent]に関する記事に記載されている手順を実行します。
 
-### <a name="baccae00-6f79-4307-ade4-40292ce4e02d">プロキシの構成</a>
+### <a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>プロキシの構成
 プロキシを構成する手順は、Windows と Linux で異なります。
 
 #### <a name="windows"></a>Windows
@@ -776,7 +776,7 @@ Azure VM エージェントを更新する際にユーザーの操作は不要�
 4. **[接続]** タブの **[LAN の設定]** をクリックします。
 5. **[設定を自動的に検出する]** チェック ボックスをオフにします。
 6. **[LAN にプロキシ サーバーを使用する]** チェック ボックスをオンにし、プロキシのアドレストとポートを入力します。
-7. **[Advanced] (詳細設定) ** ボタンを選択します。
+7. **[Advanced] \(詳細設定)** ボタンを選択します。
 8. **[例外]** ボックスに、IP アドレスとして「**168.63.129.16**」と入力します。 **[OK]**を選択します。
 
 #### <a name="linux"></a>Linux
@@ -845,8 +845,8 @@ PowerShell を使用して Azure Enhanced Monitoring Extension for SAP をイン
 スクリプトの出力には次の情報が含まれています。
 
 * (OS を含む) ベース VHD と VM にマウントされているその他のすべての VHD の監視が構成されたことが確認されます。
-* 次の&2; つのメッセージで、特定のストレージ アカウントのストレージ メトリックの構成が確認されます。
-* 出力の&1; つの行に、監視構成の実際の更新の状態が示されます。
+* 次の 2 つのメッセージで、特定のストレージ アカウントのストレージ メトリックの構成が確認されます。
+* 出力の 1 つの行に、監視構成の実際の更新の状態が示されます。
 * 出力の別の行で、構成がデプロイまたは更新されたことが確認されます。
 * 出力の最後の行は情報提供です。 この行には、監視構成をテストするためのオプションが示されます。
 * Azure Enhanced Monitoring のすべての手順が正常に実行されたことと、Azure インフラストラクチャから必要なデータが提供されていることを確認するには、「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」の説明に従って、Azure Enhanced Monitoring Extension for SAP の適合性チェックを実行します。
@@ -927,7 +927,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 | azperflib.exe の結果の値 | Azure 監視の正常性状態 |
 | --- | --- |
 | **API Calls - not available (API 呼び出し － 使用不可)** | "not available" であるカウンターは、仮想マシン構成に適用できないか、エラーであると考えられます。 「**Health status**」を参照してください。 |
-| **Counters total - empty** |次の&2; つの Azure Storage カウンターは空の場合があります。 <ul><li>Storage Read Op Latency Server msec</li><li>Storage Read Op Latency E2E msec</li></ul>他のすべてのカウンターには値が含まれている必要があります。 |
+| **Counters total - empty** |次の 2 つの Azure Storage カウンターは空の場合があります。 <ul><li>Storage Read Op Latency Server msec</li><li>Storage Read Op Latency E2E msec</li></ul>他のすべてのカウンターには値が含まれている必要があります。 |
 | **Health status** |リターン状態が **OK** の場合にのみ、"OK" と表示されます。 |
 | **診断** |正常性状態に関する詳細情報。 |
 
@@ -945,7 +945,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
  b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` を実行します。
 
-   **予想される結果**: エラーが **none** である&1; 行が返されます (例: **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**)。
+   **予想される結果**: エラーが **none** である 1 行が返されます (例: **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**)。
 
   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` を実行します。
 
@@ -961,7 +961,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
   b.  `ps -ax | grep waagent` を実行します。
 
-   **予想される結果**: `python /usr/sbin/waagent -daemon` のようなエントリが&1; つ表示されます。
+   **予想される結果**: `python /usr/sbin/waagent -daemon` のようなエントリが 1 つ表示されます。
 
 2. Linux Diagnostic Extension がインストールされ、有効になっていることを確認します。
 
@@ -971,7 +971,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
  b. `ps -ax | grep diagnostic` を実行します。
 
-   **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon` のようなエントリが&1; つ表示されます。
+   **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon` のようなエントリが 1 つ表示されます。
 
 3.   Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
 
@@ -981,7 +981,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
   b. `ps -ax | grep AzureEnhanced` を実行します。
 
-     **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon` のようなエントリが&1; つ表示されます。
+     **予想される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon` のようなエントリが 1 つ表示されます。
 
 3. SAP Note [1031096] の説明に従って SAP Host Agent をインストールし、`saposcol` の出力を確認します。
 
@@ -1043,7 +1043,7 @@ azperflib.exe の出力で次のエラーがスローされます。
 ###### <a name="solution"></a>解決策
 サービスが存在しない場合、Azure Enhanced Monitoring Extension for SAP が正しくインストールされていません。 [Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの該当するデプロイ シナリオの手順に従って、拡張機能を再デプロイします。
 
-拡張機能をデプロイしたら、Azure VM 内で Azure パフォーマンス カウンターが提供されているかどうかを&1; 時間後にもう一度確認します。
+拡張機能をデプロイしたら、Azure VM 内で Azure パフォーマンス カウンターが提供されているかどうかを 1 時間後にもう一度確認します。
 
 ##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Azure Enhanced Monitoring のサービスは存在するが、起動に失敗する
 

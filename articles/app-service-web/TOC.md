@@ -15,13 +15,6 @@
 ## [PowerShell](app-service-powershell-samples.md) 
 
 # Tutorials (チュートリアル)
-## [Web アプリへの機能の追加](app-service-web-get-started-2.md)
-## [SQL データベースを使用した ASP.NET アプリ](web-sites-dotnet-get-started.md)
-## [MySQL を使用した Laravel アプリ](app-service-web-php-get-started.md)
-## [NOSQL DB を使用した Sails.js アプリ](app-service-web-nodejs-sails.md)
-## [Eclipse を使用した Java アプリ](app-service-web-eclipse-create-hello-world-web-app.md)
-## [IntelliJ を使用した Java アプリ](app-service-web-intellij-create-hello-world-web-app.md)
-## [MySQL を使用した Django アプリ](web-sites-python-ptvs-django-mysql.md)
 
 # 概念
 ## [App Service の特長](../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json)    
@@ -34,20 +27,25 @@
 # ハウツー ガイド
 ## アプリの開発    
 ### ASP.NET
-
+#### [SQL データベースを使用した ASP.NET アプリ](web-sites-dotnet-get-started.md)
 #### [VS Code による ASP.NET Core アプリの開発](web-sites-create-web-app-using-vscode.md)
 ### PHP
+#### [MySQL を使用した Laravel アプリ](app-service-web-php-get-started.md)
 #### [PHP プロジェクトの設定](web-sites-php-configure.md)
 #### [WordPress マルチサイトの設定](web-sites-php-convert-wordpress-multisite.md) 
 ### Node.js
+#### [NOSQL DB を使用した Sails.js アプリ](app-service-web-nodejs-sails.md)
 #### [io.js の使用](web-sites-nodejs-iojs.md)
 #### [Node.js アプリのデバッグ](web-sites-nodejs-debug.md)
 ### Java
-
+#### [Eclipse を使用した Java アプリ](app-service-web-eclipse-create-hello-world-web-app.md)
+#### [IntelliJ を使用した Java アプリ](app-service-web-intellij-create-hello-world-web-app.md)
 #### [Azure SDK for Java の使用](java-create-azure-website-using-java-sdk.md)
 #### [既存のアプリのアップロード](web-sites-java-add-app.md)
 #### [Eclipse のリモート デバッグ](app-service-web-debug-java-web-app-in-eclipse.md)
 #### [IntelliJ のリモート デバッグ](app-service-web-debug-java-web-app-in-intellij.md)
+### Python
+#### [MySQL を使用した Django アプリ](web-sites-python-ptvs-django-mysql.md)
 
 ### [SendGrid を使用した電子メールの送信](sendgrid-dotnet-how-to-send-email.md)
 
@@ -82,6 +80,7 @@
 
 ### [IIS から移行](web-sites-migration-from-iis-server.md)
 ### [運用環境におけるテスト](app-service-web-test-in-production-get-start.md)
+### [Web アプリへの機能の追加](app-service-web-get-started-2.md)
 
 ## DB/リソースへの接続        
 

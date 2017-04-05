@@ -41,7 +41,7 @@ Decode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 2. Decode EDIFACT Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
-3.    検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[EDIFACT メッセージをデコードする]** を選択します。
+3. 検索ボックスに、フィルターとして「EDIFACT」と入力します。 **[EDIFACT メッセージをデコードする]** を選択します。
    
     ![search EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -56,7 +56,7 @@ Decode EDIFACT Message コネクタでは、EDI およびパートナー固有�
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-4.    接続の作成が完了したら、**[作成]** を選択します。 接続の詳細は次の例のようになります。
+4. 接続の作成が完了したら、**[作成]** を選択します。 接続の詳細は次の例のようになります。
 
     ![統合アカウントの詳細](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 

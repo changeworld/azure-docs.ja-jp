@@ -54,7 +54,7 @@ Function App を作成するときは、BLOB、キュー、および Table Stora
 
 従量課金ホスティング プランを使用する場合、関数アプリのコンテンツ (関数コード ファイルやバインディング構成など) はメイン ストレージ アカウントの Azure Files 共有に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
-ストレージ アカウントの種類の詳細については、Azure Storage サービスの概要に関する記事 (../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
+ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要に関する記事] (../storage/storage-introduction.md#introducing-the-azure-storage-services) をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 
