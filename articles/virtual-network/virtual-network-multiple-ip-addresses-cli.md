@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 80ea942cc8119050474ee5c8332925e5452d264e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 90f1f63beac199bc88397951896fe28e3824ee64
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -40,12 +40,13 @@ ms.lasthandoff: 03/22/2017
 4. 以下のスクリプトを Linux または Mac コンピューターで実行して、VM を作成します。 このスクリプトは、リソース グループ、1 つの仮想ネットワーク (VNet)、3 つの IP 構成を持つ 1 つの NIC、この NIC が関連付けられた VM を作成します。 NIC、パブリック IP アドレス、仮想ネットワーク、および VM リソースはすべて、同一の場所およびサブスクリプション内に存在する必要があります。 すべてのリソースが同一のリソース グループ内に存在する必要はありませんが、以下のスクリプトでは同一グループ内に配置しています。
 
 ```bash
+    
 #!/bin/sh
-
+    
 RgName="myResourceGroup"
 Location="westcentralus"
 az group create --name $RgName --location $Location
-
+    
 # Create a public IP address resource with a static IP address using the `--allocation-method Static` option. If you
 # do not specify this option, the address is allocated dynamically. The address is assigned to the resource from a pool
 # of IP adresses unique to each Azure region. Download and view the file from
@@ -79,7 +80,7 @@ az network vnet create \
 --subnet-prefix $VnetSubnetPrefix
 
 # Create a network interface connected to the subnet and associate the public IP address to it. Azure will create the
-# first IP configuration with a dynamic private IP address and will associate the public IP address resource to it.
+# first IP configuration with a static private IP address and will associate the public IP address resource to it.
 
 NicName="MyNic1"
 az network nic create \
@@ -87,9 +88,10 @@ az network nic create \
 --resource-group $RgName \
 --location $Location \
 --subnet $VnetSubnet1Name \
+--private-ip-address 10.0.0.4
 --vnet-name $VnetName \
 --public-ip-address $PipName
-
+    
 # Create a second public IP address, a second IP configuration, and associate it to the NIC. This configuration has a
 # static public IP address and a static private IP address.
 
@@ -107,12 +109,12 @@ az network nic ip-config create \
 --private-ip-address 10.0.0.5 \
 --public-ip-name myPublicIP2
 
-# Create a third IP configuration, and associate it to the NIC. This configuration has a dynamic private IP address and
-# no public IP address.
+# Create a third IP configuration, and associate it to the NIC. This configuration has  static private IP address and    # no public IP address.
 
 azure network nic ip-config create \
 --resource-group $RgName \
 --nic-name $NicName \
+--private-ip-address 10.0.0.6 \
 --name IPConfig-3
 
 # Note: Though this article assigns all IP configurations to a single NIC, you can also assign multiple IP configurations
@@ -124,13 +126,13 @@ azure network nic ip-config create \
 VmName="myVm"
 
 # Replace the value for the following **VmSize** variable with a value from the
-# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. The script fails if the VM size
-# is not supported in the location you select. Run the `azure vm sizes --location westcentralus` command to get a full list
+# https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes rticle. The script fails if the VM size
+# is not supported in the location you select. Run the `azure vm sizes --location estcentralus` command to get a full list
 # of VMs in US West Central, for example.
 
 VmSize="Standard_DS1"
 
-# Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
+# Replace the value for the OsImage variable value with a value for *urn* from the utput returned by entering the
 # `az vm image list` command.
 
 OsImage="credativ:Debian:8:latest"
@@ -174,7 +176,7 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
 
     **プライベート IP アドレスを追加する**
     
-    NIC にプライベート IP アドレスを追加するには、次のコマンドを使用して IP 構成を作成する必要があります。 動的プライベート IP アドレスを追加する場合は、コマンドを入力する前に、`-PrivateIpAddress 10.0.0.7` を削除します。 静的 IP アドレスを指定するときは、サブネットの未使用のアドレスを指定する必要があります。
+    NIC にプライベート IP アドレスを追加するには、次のコマンドを使用して IP 構成を作成する必要があります。 静的 IP アドレスは、サブネットの未使用のアドレスである必要があります。
 
     ```bash
     az network nic ip-config create \
@@ -204,13 +206,14 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
         --dns-name mypublicdns3
         ```
 
-         動的プライベート IP アドレスと、関連付けられた *myPublicIP3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
+         静的プライベート IP アドレスと、関連付けられた *myPublicIP3* パブリック IP アドレス リソースで新しい IP 構成を作成するには、次のコマンドを入力します。
 
         ```bash
         az network nic ip-config create \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
         --name IPConfig-5 \
+        --private-ip-address 10.0.0.8
         --public-ip-address myPublicIP3
         ```
 
@@ -264,11 +267,11 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
 
     返される出力: <br>
     
-        Name        PrivateIpAddress    PrivateIpAllocationMethod    PublicIpAddressId
+        Name        PrivateIpAddress    PrivateIpAllocationMethod   PublicIpAddressId
         
-        ipconfig1   10.0.0.4            Dynamic                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
-        IPConfig-2  10.0.0.5            Static                       /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
-        IPConfig-3  10.0.0.6            Dynamic                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
+        ipconfig1   10.0.0.4            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP1
+        IPConfig-2  10.0.0.5            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
+        IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
 4. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」の手順に従って、NIC に追加したプライベート IP アドレスを、VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。

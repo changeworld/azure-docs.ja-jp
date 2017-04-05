@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2464901d22bb91cbf396ef60f4bda6d979b578b7
-ms.openlocfilehash: a0cbf24c2e2f1e6f3a1d2097e6146c09b4eee4fe
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 1dad536939f179cd8231d0f8805c1ff4335850d5
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -76,12 +76,12 @@ az group create -n acsrg1 -l "westus"
 
 
 ### <a name="quick-acs-create-using-defaults"></a>既定値を使用した簡単な `acs create`
-SSH RSA 公開キー ファイル `id_rsa.pub` が既定の場所にある (あるいは、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) 用に作成した) 場合は、次のようなコマンドを使用します。
+SSH RSA 公開キー ファイル `id_rsa.pub` が既定の場所にある (あるいは、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) 用に作成した) 場合は、次のようなコマンドを使用します。
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
 ```
-SSH 公開キーがない場合は、次の&2; つ目のコマンドを使用します。 このコマンドの `--generate-ssh-keys` スイッチで、キーが自動的に作成されます。
+SSH 公開キーがない場合は、次の 2 つ目のコマンドを使用します。 このコマンドの `--generate-ssh-keys` スイッチで、キーが自動的に作成されます。
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys

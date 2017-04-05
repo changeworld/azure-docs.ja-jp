@@ -65,10 +65,11 @@
 #### [Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)
 #### [カスタム仮想マシン イメージを追加する](azure-stack-add-vm-image.md)
 #### [Linux 仮想マシンをデプロイする](azure-stack-linux.md)
-### 課金と配賦
-#### [課金と配賦の概要](azure-stack-billing-and-chargeback.md)
-#### [プロバイダー リソース使用量 API](azure-stack-provider-resource-api.md)
-#### [テナント リソース使用量 API](azure-stack-tenant-resource-usage-api.md)
+### 使用量と課金
+#### [概要](azure-stack-billing-and-chargeback.md)
+#### [使用量データ レポート](azure-stack-usage-reporting.md)
+#### [プロバイダー使用量 API](azure-stack-provider-resource-api.md)
+#### [テナント使用量 API](azure-stack-tenant-resource-usage-api.md)
 #### [使用量に関する FAQ](azure-stack-usage-related-faq.md)
 
 # サービスの使用

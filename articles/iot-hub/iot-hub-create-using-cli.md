@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2017
+ms.date: 03/23/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6fe5ed03611d68a1201e4fe48580a3499811abeb
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 159aed19b4c5e381ef15c40c15cf6bd7694d2fa3
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -41,7 +41,7 @@ Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub をプログラムで作�
 
 ## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
 
-Azure アカウントにサインインし、IoT Hub リソースを操作する Azure CLI を構成します。
+Azure アカウントにサインインしてサブスクリプションを選択する。
 
 1. コマンド プロンプトで、[ログイン コマンド][lnk-login-command]を実行します。
     
@@ -96,7 +96,7 @@ Azure CLI を使用して、IoT Hub など、[個々のリソースを削除][ln
 IoT Hub を削除するには、次のコマンドを実行します。
 
 ```azurecli
-az resource delete --name {your iot hub name} --resource-group {your resource group name} --resource-type Microsoft.Devices/IotHubs
+az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
 リソース グループとそのすべてのリソースを削除するには、次のコマンドを実行します。

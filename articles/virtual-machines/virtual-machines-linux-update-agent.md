@@ -1,6 +1,6 @@
 ---
 title: "GitHub から Azure Linux エージェントを更新する | Microsoft Docs"
-description: "Azure の Linux VM で使用する Azure Linux エージェントを Github の最新バージョンに更新する方法について説明します。"
+description: "Azure の Linux VM で使用する Azure Linux エージェントを GitHub の最新バージョンに更新する方法について説明します"
 services: virtual-machines-linux
 documentationcenter: 
 author: SuperScottz
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/14/2015
 ms.author: mingzhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e5baf0c89325abbef33bbabf1cfe29b878079e44
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d35e70c1d50bd4cb2d47188585354aa3e3d740d4
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -190,10 +191,5 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 これで、Azure Linux エージェントのバージョンが新しいバージョンに更新されたことが確認できます。
 
 Azure Linux エージェントの詳細については、 [Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent)を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

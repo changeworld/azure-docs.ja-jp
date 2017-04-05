@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 3c0287783e3f2b7acaeefd87acbda30885f93c22
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 73d398613fc726ebd51ab6b107dc46c44caffdcc
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -29,17 +29,17 @@ ms.lasthandoff: 02/23/2017
 > - [CLI](network-watcher-check-ip-flow-verify-cli.md)
 > - [Azure REST API](network-watcher-check-ip-flow-verify-rest.md)
 
-IP フロー検証は Network Watcher の機能であり、仮想マシンから送受信されるトラフィックが許可されているかどうかを検証できます。 このシナリオは、仮想マシンが現在外部リソースまたはバックエンドと通信可能な状態にあるかを確認する際に役立ちます。 IP フロー検証を使用すると、ネットワーク セキュリティ グループ (NSG) 規則が適切に構成されているかを検証し、NSG 規則によってブロックされているフローのトラブルシューティングを行うことができます。 ブロック対象のトラフィックが NSG により適切にブロックされているかどうかを確認することも、IP フロー検証を使用する別の理由として挙げられます。
+IP フロー検証は Network Watcher の機能であり、仮想マシンから送受信されるトラフィックが許可されているかどうかを検証できます。 このシナリオは仮想マシンが現在、外部リソースまたはバックエンドと通信可能な状態にあるかを確認する際に役立ちます。 IP フロー検証を使用すると、ネットワーク セキュリティ グループ (NSG) 規則が適切に構成されているかを検証し、NSG 規則によってブロックされているフローのトラブルシューティングを行うことができます。 ブロック対象のトラフィックが NSG により適切にブロックされているかどうかを確認することも、IP フロー検証を使用する別の理由として挙げられます。
+
+この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する手順を参照して Network Watcher を作成済みであるか、または既存の Network Watcher インスタンスがあることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って Network Watcher を作成済みであること、または既存の Network Watcher インスタンスを保持していることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
-このシナリオでは、IP フロー検証を使用して仮想マシンが既知の Bing IP アドレスと通信可能かどうかを検証します。 トラフィックが拒否されている場合、そのトラフィックを拒否するセキュリティ規則が返されます。 IP フロー検証の詳細については、[IP フロー検証の概要](network-watcher-ip-flow-verify-overview.md)に関する記事を参照してください。
+このシナリオでは、IP フロー検証を使用して仮想マシンが既知の Bing IP アドレスと通信可能かどうかを検証します。 トラフィックが拒否されている場合は、そのトラフィックを拒否するセキュリティ規則が返されます。 IP フロー検証の詳細については、[IP フロー検証の概要](network-watcher-ip-flow-verify-overview.md)に関する記事を参照してください。
 
 
 ## <a name="get-a-vm"></a>VM の取得
@@ -52,7 +52,7 @@ azure vm show -g resourceGroupName -n virtualMachineName
 
 ## <a name="get-the-nics"></a>NIC の取得
 
-仮想マシンの NIC の IP アドレスが必要になります。この例では、仮想マシン上の NIC を取得します。 仮想マシン上のテスト対象 IP アドレスを既にわかっている場合、この手順は省略できます。
+仮想マシンの NIC の IP アドレスが必要になります。この例では、仮想マシン上の NIC を取得します。 仮想マシン上のテスト対象 IP アドレスが既にわかっている場合、この手順は省略できます。
 
 ```
 azure network nic show -g resourceGroupName -n nicName
@@ -60,7 +60,7 @@ azure network nic show -g resourceGroupName -n nicName
 
 ## <a name="run-ip-flow-verify"></a>IP フロー検証の実行
 
-コマンドレットの実行に必要な情報が揃ったので、`network watcher ip-flow-verify` コマンドレットを実行してトラフィックをテストします。 この例では、1 番目の NIC の最初の IP アドレスを使用します。
+コマンドレットの実行に必要な情報が揃ったため、`network watcher ip-flow-verify` コマンドレットを実行してトラフィックをテストします。 この例では、1 番目の NIC の最初の IP アドレスを使用します。
 
 ```
 azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
@@ -71,7 +71,7 @@ azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName 
 
 ## <a name="review-results"></a>結果の確認
 
-`network watcher ip-flow-verify` を実行すると結果が返されます。次の例に、前の手順で返された結果を示します。
+`network watcher ip-flow-verify` を実行すると結果が返されます。以下の例は、前の手順で返された結果です。
 
 ```
 data:    Access                          : Deny

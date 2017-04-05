@@ -57,16 +57,19 @@
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)
 ##### [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
-#### [Reliable Services のライフサイクル](service-fabric-reliable-services-lifecycle.md)
+#### [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)
+#### [Reliable Services のライフサイクル - Java](service-fabric-reliable-services-lifecycle-java.md)
 #### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 #### [Reliable Collections の使用](service-fabric-work-with-reliable-collections.md)
 #### [構成](service-fabric-reliable-services-configuration.md)
 #### [Notifications](service-fabric-reliable-services-notifications.md)
 #### [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
 #### [Reliable Services を使用した通信](service-fabric-reliable-services-communication.md)
-#### [Reliable Services を使用した通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
+#### [Reliable Services を使用した通信のセキュリティ保護 - C#](service-fabric-reliable-services-secure-communication.md)
+#### [Reliable Services を使用した通信のセキュリティ保護 - Java](service-fabric-reliable-services-secure-communication-java.md)
 ##### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
-##### [サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)
+##### [サービスのリモート処理 - C#](service-fabric-reliable-services-communication-remoting.md)
+##### [サービスのリモート処理 - Java](service-fabric-reliable-services-communication-remoting-java.md)
 ##### [WCF](service-fabric-reliable-services-communication-wcf.md)
 ##### [リバース プロキシ](service-fabric-reverseproxy.md)
 #### [詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
@@ -104,6 +107,7 @@
 #### [Azure CLI を使用したクラスターの管理](service-fabric-azure-cli.md) 
 #### [クラスターの保護](service-fabric-cluster-security.md)
 #### [障害復旧](service-fabric-disaster-recovery.md)
+#### [Linux と Windows での機能の違い](service-fabric-linux-windows-differences.md)
 
 ### Azure 上のクラスター
 #### Azure でのクラスターの作成

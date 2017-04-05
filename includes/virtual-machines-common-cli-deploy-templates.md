@@ -36,7 +36,7 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
 「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../articles/xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。 
 
 > [!NOTE]
-> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、"対話型セッションを使わずに" ログインすることもできます。****** 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
+> 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、"対話型セッションを使わずに" ログインすることもできます。****** 職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成 して](../articles/virtual-machines/windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)同じ方法でログインできます。
 >
 >
 
@@ -100,7 +100,7 @@ data:
 info:    group create command OK
 ```
 
-次に、イメージが必要になります。 Azure CLI でイメージを検索するには、 [PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。 ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。 この簡易作成には、CoreOS の安定版イメージを使用します。
+次に、イメージが必要になります。 Azure CLI でイメージを検索するには、 [PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。 ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。 この簡易作成には、CoreOS の安定版イメージを使用します。
 
 > [!NOTE]
 > ComputeImageVersion では、テンプレートの言語と Azure CLI の両方のパラメーターとして "latest" を指定することもできます。 こうすることで、スクリプトやテンプレートを変更しなくても、常にパッチが適用された最新バージョンのイメージを使用できます。 一般的なイメージを以下に示します。
@@ -232,7 +232,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 * 外部で使用されるドメイン名。
 * Ubuntu Server のバージョン番号。ただし、リストのうち 1 つだけを許可します。
 
-[ユーザー名とパスワードの要件](../articles/virtual-machines/virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
+[ユーザー名とパスワードの要件](../articles/virtual-machines/linux/faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
 
 これらの値が決まると、グループを作成し、Azure サブスクリプションにこのテンプレートをデプロイする準備が整います。
 
@@ -1264,7 +1264,7 @@ info:    vm show command OK
 >
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
-通常、Linux マシンは SSH によって接続されます。 詳細については、[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
+通常、Linux マシンは SSH によって接続されます。 詳細については、[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 ## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
 次のコマンドを実行します。
@@ -1305,4 +1305,4 @@ azure vm disk attach <resource-group> <vm-name> [vhd-url]
 ## <a name="next-steps"></a>次のステップ
 **arm** モードでの Azure CLI のその他の使用例については、「 [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。 Azure リソースとその概念の詳細については、「[Azure Resource Manager の概要](../articles/azure-resource-manager/resource-group-overview.md)」を参照してください。
 
-使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/linux/app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。

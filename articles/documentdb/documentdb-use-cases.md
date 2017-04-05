@@ -1,6 +1,6 @@
 ---
 title: "Azure DocumentDB の一般的なユース ケースと NoSQL シナリオ | Microsoft Docs"
-description: "DocumentDB の上位&5; つのユース ケースとして、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。"
+description: "DocumentDB の上位 5 つのユース ケースとして、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。"
 services: documentdb
 author: h0n
 manager: jhubbard
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 03/23/2017
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 912d5af4231dee6aa8bc2f32d7950f59377fe90f
-ms.openlocfilehash: dbd5448c94577e6a21a2433a00e7a2f75afcc4a0
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 9a0ba106b4c2aded8aaac673dfba3610bd4ca0fb
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -65,7 +66,7 @@ DocumentDB は、カタログ データを格納するために、小売業界�
 
  ![Azure DocumentDB 小売注文リファレンス アーキテクチャ](./media/documentdb-use-cases/documentdb-retail-orders.png)
 ## <a name="gaming"></a>ゲーム
-データベース層は、ゲーム アプリケーションの重要なコンポーネントです。 最近のゲームはモバイル/コンソール クライアントでグラフィック処理を行いますが、ゲーム内統計、ソーシャル メディア統合、スコアボードなどの個人向けにカスタマイズされたコンテンツの配信は、クラウドに依存しています。 多くの場合、ゲームでは魅力的なゲーム内エクスペリエンスを提供するために、読み取り/書き込みの待機時間を&1; ミリ秒にする必要があります。 ゲーム データベースは高速であることが必要であり、新しいゲームのリリース時や機能の更新時に、要求レートの急増に対処できる必要があります。
+データベース層は、ゲーム アプリケーションの重要なコンポーネントです。 最近のゲームはモバイル/コンソール クライアントでグラフィック処理を行いますが、ゲーム内統計、ソーシャル メディア統合、スコアボードなどの個人向けにカスタマイズされたコンテンツの配信は、クラウドに依存しています。 多くの場合、ゲームでは魅力的なゲーム内エクスペリエンスを提供するために、読み取り/書き込みの待機時間を 1 ミリ秒にする必要があります。 ゲーム データベースは高速であることが必要であり、新しいゲームのリリース時や機能の更新時に、要求レートの急増に対処できる必要があります。
 
 DocumentDB は、[Next Games](http://www.nextgames.com/) の「[The Walking Dead: No Man's Land](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)」や「[Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)」などのゲームで使用されています。 DocumentDB はゲーム開発者に次の利点をもたらします。
 
@@ -78,7 +79,7 @@ DocumentDB は、[Next Games](http://www.nextgames.com/) の「[The Walking Dead
 ![Azure DocumentDB ゲーム リファレンス アーキテクチャ](./media/documentdb-use-cases/documentdb-gaming-architecture.png)
 
 ## <a name="web-and-mobile-applications"></a>Web アプリケーションとモバイル アプリケーション
-DocumentDB は、通常、Web アプリケーションおよびモバイル アプリケーションで使用されます。特に、ソーシャル インタラクションのモデル化、サード パーティ サービスとの統合、豊富でカスタマイズされたエクスペリエンスの構築に適しています。 
+DocumentDB は、通常、Web アプリケーションおよびモバイル アプリケーションで使用されます。特に、ソーシャル インタラクションのモデル化、サード パーティ サービスとの統合、豊富でカスタマイズされたエクスペリエンスの構築に適しています。 DocumentDB SDK を使用すると、一般的な [Xamarin フレームワーク](documentdb-mobile-apps-with-xamarin.md)を使って豊富な iOS および Android アプリケーションを構築できます。  
 
 ### <a name="social-applications"></a>ソーシャル アプリケーション
 DocumentDB の一般的なユース ケースとして、Web アプリケーションやモバイル アプリケーション、特にソーシャル メディア アプリケーション向けにユーザーが生成したコンテンツ (UGC) の保存とクエリの実行があります。 UGC の例には、チャット セッション、ツイート、ブログの投稿、評価、コメントなどがあります。 ソーシャル メディア アプリケーション内の UGC は、多くの場合、厳格な構造による制約のない、自由形式のテキスト、プロパティ、タグ、およびリレーションシップが組み合わさったものです。 チャット、コメント、投稿などのコンテンツは DocumentDB に格納でき、変換や複雑なオブジェクト リレーショナル マッピング層は必要ありません。  開発者がアプリケーション コードを反復処理する際、要件に合うようにデータのプロパティを簡単に追加または変更できるため、迅速な開発が促進されます。  
@@ -115,9 +116,4 @@ DocumentDB の利用を開始するには、[アカウント](https://azure.micr
 * [Orange Tribes](https://customers.microsoft.com/en-US/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth)。 そこには、目に映るフード アプリ以上のものがあります。
 * [Real Madrid](https://customers.microsoft.com/en-US/story/real-madrid-brings-the-stadium-closer-to-450-million-f)。 Real Madrid は、Microsoft Cloud により、世界中から 4 億 5,000 万人近くのファンをスタジアムに動員しています。
 * [Tuku](https://customers.microsoft.com/en-US/story/tuku-makes-car-buying-fun-with-help-from-azure-services)。 TUKU では、Azure サービスを利用して自動車を快適に購入できます。 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
-ms.openlocfilehash: c3be1b3459e10281bdbe949b0d303d117d48979f
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 137d30ba26fd8b9bb433fb2c3a13906afa4efedb
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -123,7 +123,7 @@ sudo chkconfig mongod on
 
 
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>テンプレートを使って CentOS に基本的な MongoDB インスタンスを作成する
-Github にある次の Azure クイックスタート テンプレートを使って、単一の CentOS VM に基本的な MongoDB インスタンスを作成できます。 このテンプレートは、Linux 用のカスタム スクリプト拡張機能を使って、新しく作成した CentOS VM に `yum` リポジトリを追加してから、MongoDB をインストールします。
+GitHub にある次の Azure クイックスタート テンプレートを使って、単一の CentOS VM に基本的な MongoDB インスタンスを作成できます。 このテンプレートは、Linux 用のカスタム スクリプト拡張機能を使って、新しく作成した CentOS VM に `yum` リポジトリを追加してから、MongoDB をインストールします。
 
 * [CentOS 上の基本的な MongoDB インスタンス](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
@@ -180,7 +180,7 @@ test
 
 
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>テンプレートを使って CentOS に複雑な MongoDB シャード化クラスターを作成する
-Github にある次の Azure クイックスタート テンプレートを使って、複雑な MongoDB シャード化クラスターを作成できます。 このテンプレートは、[MongoDB シャード化クラスターのベスト プラクティス](https://docs.mongodb.com/manual/core/sharded-cluster-components/)に従って、冗長性と高可用性を提供します。 このテンプレートは、2 つのシャードと、各レプリカ セット内に&3; つのノードを作成します。 3 つのノードを含む&1; つの構成サーバー レプリカ セットも作成され、さらに&2; つの `mongos` ルーター サーバーが作成されてシャード全体のアプリケーションの一貫性が提供されます。
+GitHub にある次の Azure クイックスタート テンプレートを使って、複雑な MongoDB シャード化クラスターを作成できます。 このテンプレートは、[MongoDB シャード化クラスターのベスト プラクティス](https://docs.mongodb.com/manual/core/sharded-cluster-components/)に従って、冗長性と高可用性を提供します。 このテンプレートは、2 つのシャードと、各レプリカ セット内に 3 つのノードを作成します。 3 つのノードを含む 1 つの構成サーバー レプリカ セットも作成され、さらに 2 つの `mongos` ルーター サーバーが作成されてシャード全体のアプリケーションの一貫性が提供されます。
 
 * [CentOS 上の MongoDB シャード化クラスター](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
@@ -214,7 +214,7 @@ az group deployment create --resource-group myResourceGroup \
   --name myMongoDBCluster --no-wait
 ```
 
-すべての VM インスタンスのデプロイと構成には&1; 時間以上かかることがあります。 前のコマンドの最後で `--no-wait` フラグを使用しているので、Azure プラットフォームでテンプレートのデプロイが受け入れられたら、コマンド プロンプトの制御権が戻ります。 そこで [az group deployment show](/cli/azure/group/deployment#show) を実行してデプロイの状態を確認できます。 次の例では、`myResourceGroup` リソース グループの `myMongoDBCluster` デプロイメントの状態を表示します。
+すべての VM インスタンスのデプロイと構成には 1 時間以上かかることがあります。 前のコマンドの最後で `--no-wait` フラグを使用しているので、Azure プラットフォームでテンプレートのデプロイが受け入れられたら、コマンド プロンプトの制御権が戻ります。 そこで [az group deployment show](/cli/azure/group/deployment#show) を実行してデプロイの状態を確認できます。 次の例では、`myResourceGroup` リソース グループの `myMongoDBCluster` デプロイメントの状態を表示します。
 
 ```azurecli
 az group deployment show --resource-group myResourceGroup --name myMongoDBCluster \

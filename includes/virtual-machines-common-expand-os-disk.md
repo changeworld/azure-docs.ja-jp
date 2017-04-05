@@ -5,7 +5,7 @@
 2. オンプレミスから OS ドライブの大きい物理 PC または仮想マシンを移行する場合。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、リソース マネージャー モデルの使用について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、リソース マネージャー モデルの使用について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
 > 
 > 
 
@@ -69,7 +69,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 ## <a name="next-steps"></a>次のステップ
-この記事では VM の OS ディスクの拡張に主に重点を置きましたが、作成したスクリプトは、コードを&1; 行変更するだけで、VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、```StorageProfile``` の ```OSDisk``` オブジェクトを ```DataDisks``` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
+この記事では VM の OS ディスクの拡張に主に重点を置きましたが、作成したスクリプトは、コードを 1 行変更するだけで、VM に接続されたデータ ディスクの拡張にも使用できます。 たとえば、VM に接続されている最初のデータ ディスクを拡張するには、```StorageProfile``` の ```OSDisk``` オブジェクトを ```DataDisks``` 配列に置き換え、数値インデックスを使用して接続されている最初のデータ ディスクへの参照を取得します。次に例を示します。
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
@@ -80,5 +80,5 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-Azure Resource Manager VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
+Azure Resource Manager VM にディスクを接続する方法については、こちらの[記事](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
 

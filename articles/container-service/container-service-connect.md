@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 25a35912b72f7f44b83ccd49f298b44665318418
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 3dfa2c56dd6d3e0fe7757995d284cebe172eabc4
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -35,7 +35,7 @@ DC/OS と Docker Swarm では、内部システムに対する Secure Shell (SSH
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure Container Service にデプロイされている](container-service-deployment.md) Kubernetes、DC/OS、または Swarm クラスター。
-* SSH RSA 秘密キー ファイル (デプロイ時にクラスターに追加された公開キーに対応)。 これらのコマンドは、SSH 秘密キーがコンピューター上の `$HOME/.ssh/id_rsa` に存在することを想定しています。 詳細については、[OS X と Linux 用](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)または [Windows 用](../virtual-machines/virtual-machines-linux-ssh-from-windows.md)の手順を参照してください。 SSH 接続が動作していない場合は、[SSH キーのリセット](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)が必要になることがあります。
+* SSH RSA 秘密キー ファイル (デプロイ時にクラスターに追加された公開キーに対応)。 これらのコマンドは、SSH 秘密キーがコンピューター上の `$HOME/.ssh/id_rsa` に存在することを想定しています。 詳細については、[OS X と Linux 用](../virtual-machines/linux/mac-create-ssh-keys.md)または [Windows 用](../virtual-machines/linux/ssh-from-windows.md)の手順を参照してください。 SSH 接続が動作していない場合は、[SSH キーのリセット](../virtual-machines/linux/troubleshoot-ssh-connection.md)が必要になることがあります。
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Kubernetes クラスターへの接続
 

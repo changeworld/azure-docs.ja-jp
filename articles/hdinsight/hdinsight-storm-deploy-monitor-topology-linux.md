@@ -16,9 +16,9 @@ ms.workload: big-data
 ms.date: 03/22/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 8fd6f5ffc076ea861ed29d992a7a94b6cd2c700b
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 00fa4810e41bdbc19d0a2663cfe1437c6e678ab3
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -36,11 +36,7 @@ ms.lasthandoff: 03/22/2017
 
 * **HDInsight クラスター上の Linux ベースの Storm**: クラスターの作成手順については、「 [HDInsight での Apache Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md) 」を参照してください。
 
-* (省略可能) **SSH と SCP を熟知していること**: HDInsight で SSH と SCP を使用する方法については、以下のドキュメントを参照してください。
-  
-  * [HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-  * [Windows 上で PuTTY から HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+* (省略可能) **SSH と SCP を熟知していること**: 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 * (省略可能) **Visual Studio**: Azure SDK 2.5.1 以降と Data Lake Tools for Visual Studio。 詳細については、[Data Lake Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
@@ -85,11 +81,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    SSH を使用して HDInsight クラスターに接続する方法の詳細については、次のドキュメントを参照してください。
-   
-   * [HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-   * [Windows 上で PuTTY から HDInsight の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    SSH を使用して HDInsight クラスターに接続する方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを実行してトポロジの例を開始します。
    

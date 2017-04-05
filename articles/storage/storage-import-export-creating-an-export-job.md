@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export のエクスポート ジョブを作成する | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのエクスポート ジョブを作成する方法について説明します"
+description: "Microsoft Azure Import/Export サービスのエクスポート ジョブを作成する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
-ms.openlocfilehash: 55a45cf4169056d9426141a533dd1d32fe8064c4
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3440d7e80e6a806c4119dff687fb9c590b8f0d14
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -83,7 +83,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 ## <a name="shipping-your-drives"></a>ドライブを発送する
  次に、Azure Import/Export ツールを使用して、送付する必要があるドライブの数を決定します。これは、エクスポートの対象として選択した BLOB と、ドライブのサイズに基づいて決定します。 詳しくは、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。
 
- ドライブを&1; つのパッケージに梱包し、前の手順で取得した住所に発送します。 次の手順のために、パッケージの追跡番号をメモしておきます。
+ ドライブを 1 つのパッケージに梱包し、前の手順で取得した住所に発送します。 次の手順のために、パッケージの追跡番号をメモしておきます。
 
 > [!NOTE]
 >  ドライブは、サポートされている配送サービスを通じて発送する必要があります。そうすることで、パッケージの追跡番号が提供されます。
@@ -94,6 +94,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 ## <a name="receiving-the-package"></a>パッケージを受け取る
  エクスポート ジョブの処理が完了したら、データが暗号化された状態で、ドライブが返送されます。 お客様は、[Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作呼び出すことで各ドライブの BitLocker キーを取得できます。 その後、そのキーを使用してドライブのロックを解除できます。 各ドライブのドライブ マニフェスト ファイルには、ドライブ上のファイルの一覧と、各ファイルの元の BLOB アドレスが含まれています。
 
-## <a name="see-also"></a>関連項目
- [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>次のステップ
+
+* [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
 

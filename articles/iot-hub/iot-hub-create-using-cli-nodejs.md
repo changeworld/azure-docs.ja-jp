@@ -12,19 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 03/24/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
-ms.openlocfilehash: 1be7dc038f1bc864e7c6461b616449d75ecda439
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 8ac82da36b2edb71fcd0599dac12a3ed18e33b6f
+ms.lasthandoff: 03/24/2017
 
 
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
+
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>はじめに
+
 Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムによって作成および管理できます。 この記事では、Azure CLI (azure.js) を使用して IoT ハブを作成する方法を説明します。
 
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
@@ -36,84 +38,84 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
 
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure CLI 0.10.4][lnk-CLI-install] 以降。 既に Azure CLI がインストールされている場合は、コマンド プロンプトで次のコマンドを使用して、現在のバージョンを確認できます。
-  ```
-    azure --version
-  ```
+
+```azurecli
+azure --version
+```
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。 Azure CLI は、Azure Resource Manager モードである必要があります。
-> 
-> ```
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 Azure CLI は、Azure Resource Manager モードである必要があります。
+>
+> ```azurecli
 > azure config mode arm
 > ```
-> 
-> 
 
 ## <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
+
 1. コマンド プロンプトで、次のコマンドを入力してログインします。
-   
-   ```
+
+   ```azurecli
     azure login
    ```
+
    認証には、推奨される Web ブラウザーとコードを使用します。
-2. 複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドを使用すると、すべての Azure サブスクリプションを表示でき、既定のサブスクリプションも識別できます。
-   
-   ```
-    azure account list 
+1. 複数の Azure サブスクリプションがある場合は、Azure に接続すると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドを使用すると、すべての Azure サブスクリプションを表示でき、既定のサブスクリプションも識別できます。
+
+   ```azurecli
+    azure account list
    ```
 
    コマンドの残りの部分を実行するサブスクリプションのコンテキストを設定するには、次を使用します。
 
-   ```
+   ```azurecli
     azure account set <subscription name>
    ```
 
-3. リソース グループがない場合は、**exampleResourceGroup** という名前のリソース グループを作成できます。
-   ```
+1. リソース グループがない場合は、**exampleResourceGroup** という名前のリソース グループを作成できます。
+
+   ```azurecli
     azure group create -n exampleResourceGroup -l westus
    ```
 
 > [!TIP]
-> 「[Azure CLI を使用して Azure のリソースとリソース グループを管理する][lnk-CLI-arm]」の記事に、Azure CLI を使用して Azure リソースを管理する方法の詳細が記載されています。 
-> 
-> 
+> 「[Azure CLI を使用して Azure のリソースとリソース グループを管理する][lnk-CLI-arm]」の記事に、Azure CLI を使用して Azure リソースを管理する方法の詳細が記載されています。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
+
 必要なパラメーターは以下のとおりです。
 
+```azurecli
+azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u <units>
 ```
- azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u <units>  
-    - <resourceGroup> The resource group name (case insensitive alphanumeric, underscore and hyphen, 1-64 length)
-    - <name> (The name of the IoT hub to be created. The format is case insensitive alphanumeric, underscore and hyphen, 3-50 length )
-    - <location> (The location (azure region/datacenter) where the IoT hub will be provisioned.
-    - <sku-name> (The name of the sku, one of: [F1, S1, S2, S3] etc. For the latest full list refer to the pricing page for IoT Hub.
-    - <units> (The number of provisioned units. Range : F1 [1-1] : S1, S2 [1-200] : S3 [1-10]. IoT Hub units are based on your total message count and the number of devices you want to connect.)
-```
+
+* **resource-group**。 リソース グループ名。 形式は、英数字 (大文字と小文字を区別しない)、アンダー スコア、ハイフン、長さが 1 ~ 64 です。
+* **name**。 作成する IoT Hub の名前。 形式は、英数字 (大文字と小文字を区別しない)、アンダー スコア、ハイフン、長さが 3 ~ 50 です。
+* **location**。 IoT Hub をプロビジョニングする場所 (Azure リージョン/データ センター)。
+* **sku-name**。 SKU の名前。次のいずれかから選択: [F1, S1, S2, S3]。 最新の完全な一覧については、IoT Hub の料金に関するページを参照してください。
+* **units**。 プロビジョニングしたユニットの数。 範囲は: F1 [1-1] : S1, S2 [1-200] : S3 [1-10]。 IoT Hub 単位は、メッセージの合計数と接続するデバイスの数に基づきます。
+
 作成に使用できるすべてのパラメーターを表示するには、コマンド プロンプトで help コマンドを使用します。
 
+```azurecli
+azure iothub create -h
 ```
-    azure iothub create -h 
-```
-簡単な例:
 
- リソース グループ **exampleResourceGroup** に **exampleIoTHubName** という名前の IoT Hub を作成するには、次のコマンドを実行します。
+簡単な例: リソース グループ **exampleResourceGroup** に **exampleIoTHubName** という名前の IoT Hub を作成するには、次のコマンドを実行します。
 
-```
-    azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1 -u 1
+```azurecli
+azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1 -u 1
 ```
 
 > [!NOTE]
 > この Azure CLI コマンドでは、課金の対象とする S1 Standard IoT Hub を作成します。 次のコマンドを使用すると、IoT Hub **exampleIoTHubName** を削除できます。
-> 
-> ```
+>
+> ```azurecli
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
 > ```
-> 
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
-IoT Hub の開発に関する詳細については、以下を参照してください
+
+IoT Hub の開発に関する詳細は、以下の記事をご覧ください。
 
 * [IoT SDK][lnk-sdks]
 

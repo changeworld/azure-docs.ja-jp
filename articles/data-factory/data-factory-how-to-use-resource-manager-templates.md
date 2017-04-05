@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
-ms.openlocfilehash: db7066fb87175caa165d741b63f9b0e3f9ed851c
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 2faab833724bf4bb3f3262517e1d724868f7524d
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -39,8 +40,8 @@ Resource Manager テンプレートを使用して Data Factory エンティテ�
 * [チュートリアル: Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [チュートリアル: Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
 
-## <a name="data-factory-templates-on-github"></a>Github の Data Factory テンプレート
-Github の次の Azure クイック スタート テンプレートもご覧ください。
+## <a name="data-factory-templates-on-github"></a>GitHub の Data Factory テンプレート
+GitHub の次の Azure クイック スタート テンプレートもご覧ください。
 
 * [データ ファクトリを作成して Azure Blob Storage から Azure SQL Database にデータをコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [Azure HDInsight クラスターで Hive アクティビティを伴うデータ ファクトリを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
@@ -252,9 +253,4 @@ dataFactoryName は以下のように "変数" で定義します。
 > 既存のデータ ファクトリのテンプレートのエクスポートはまだサポートされていません。現在開発中です。
 >
 >
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

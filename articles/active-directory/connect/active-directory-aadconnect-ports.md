@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 935246ad590af0dcdb6d52257a94169f94dd66e5
-ms.openlocfilehash: 3ff7256578cffd30ae9b75ead2dd7f08babca171
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: ee4a47cf53898803e0080d3f9d00cf7617fe4ce8
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -33,10 +33,10 @@ ms.lasthandoff: 02/17/2017
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |送信先フォレストでの DNS 参照です。 |
 | Kerberos |88 (TCP/UDP) |AD フォレストに対する Kerberos 認証です。 |
-| MS-RPC |135 (TCP/UDP) |Azure AD Connect ウィザードを AD フォレストにバインドするときの初期構成中に使用されます。 |
+| MS-RPC |135 (TCP/UDP) |Azure AD Connect ウィザードを AD フォレストにバインドするときの初期構成中に使用され、パスワードの同期中にも使用されます。 |
 | LDAP |389 (TCP/UDP) |AD からのデータのインポートに使用されます。 データは Kerberos の署名およびシールによって暗号化されます。 |
 | LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 SSL を使用する場合にのみ使用されます。 |
-| RPC |49152- 65535 (ランダム ハイ RPC ポート)(TCP/UDP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
+| RPC |49152- 65535 (ランダム ハイ RPC ポート)(TCP/UDP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect と Azure AD
 この表は、Azure AD Connect サーバーと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。

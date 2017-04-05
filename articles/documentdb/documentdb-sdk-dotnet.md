@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 03/29/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 5bded9c15ef6ec5464952d533c6681801f137749
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: c953615ef370dc89ed09bb8a32dc2caf7a7bcc3b
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -51,6 +51,12 @@ ms.lasthandoff: 03/21/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11311131httpswwwnugetorgpackagesmicrosoftazuredocumentdb1131"></a><a name="1.13.1"/>[1.13.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.1)
+* いくつかの非同期 API を ASP.NET のコンテキスト内で使用する場合にデッドロックの原因となった問題を修正しました。
+
+### <a name="a-name11301130httpswwwnugetorgpackagesmicrosoftazuredocumentdb1130"></a><a name="1.13.0"/>[1.13.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.13.0)
+* 特定の条件で自動フェールオーバーするために SDK の耐障害性を改善しました。
 
 ### <a name="a-name11221122httpswwwnugetorgpackagesmicrosoftazuredocumentdb1122"></a><a name="1.12.2"/>[1.12.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.12.2)
 * WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
@@ -216,6 +222,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.13.1](#1.13.1) |2017 年 3 月 29 日 |--- |
+| [1.13.0](#1.13.0) |2017 年 3 月 24 日 |--- |
 | [1.12.2](#1.12.2) |2017 年 3 月 20 日 |--- |
 | [1.12.1](#1.12.1) |2017 年 3 月 14 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |

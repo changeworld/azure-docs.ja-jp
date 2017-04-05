@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 229007db52de53cd50f4d86c145b87d6c2ecf399
-ms.openlocfilehash: e1baa43957ced78b1e25fd632661be2385530db3
-ms.lasthandoff: 01/28/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: 2ba94e4dd931b6d385101c7dadccfa3583b5296e
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -26,9 +26,9 @@ ms.lasthandoff: 01/28/2017
 ## <a name="overview"></a>概要
 Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB およびファイルの高パフォーマンスのアップロード、ダウンロード、およびコピーを実現するように設計された、クロスプラットフォームのオープン ソース ライブラリです。 このライブラリは、[AzCopy](storage-use-azcopy.md) を動作させているコア データ移動フレームワークです。 Data Movement Library には、従来の [.NET Azure Storage クライアント ライブラリ](storage-dotnet-how-to-use-blobs.md)では使用できない便利な方法が用意されています。 たとえば、並列操作数を設定する、転送の進行状況を追跡する、取り消された転送を簡単に再開する、などの操作を行うことができます。  
 
-また、.NET Core が採用されているため、Windows、Linux、MacOS 向け .NET アプリを構築するときにも、このライブラリを使用できます。 .NET Core の詳細については、[.NET Core のドキュメント](https://dotnet.github.io/)を参照してください。 このライブラリは、Windows 用の従来の .NET Framework アプリにも利用できます。 
+また、.NET Core が採用されているため、Windows、Linux、macOS 向け .NET アプリを構築するときにも、このライブラリを使用できます。 .NET Core の詳細については、[.NET Core のドキュメント](https://dotnet.github.io/)を参照してください。 このライブラリは、Windows 用の従来の .NET Framework アプリにも利用できます。 
 
-このドキュメントでは、Windows、Linux、および MacOS で実行される .NET Core コンソール アプリケーションを作成する方法を説明し、次のシナリオを実行します。
+このドキュメントでは、Windows、Linux、macOS で実行される .NET Core コンソール アプリケーションを作成する方法を説明し、次のシナリオを実行します。
 
 - ファイルとディレクトリを Blob Storage にアップロードする。
 - データを転送するときに、並列操作の数を定義する。
@@ -53,7 +53,7 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 2. コマンド ラインで、プロジェクトのディレクトリを作成します。 このディレクトリに移動し、「`dotnet new`」と入力して、C# コンソール プロジェクトを作成します。
 3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、「`code .`」と入力します。  
 4. Visual Studio Code Marketplace から [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) をインストールします。 Visual Studio Code を再起動します。 
-5. この時点で&2; つのプロンプトが表示されます。 1 つは "ビルドとデバッグに必要なアセット" を追加するよう求めるプロンプトで、 [はい] をクリックします。 もう&1; つは、未解決の依存関係を復元するように求めるプロンプトで、 [復元] をクリックします。
+5. この時点で 2 つのプロンプトが表示されます。 1 つは "ビルドとデバッグに必要なアセット" を追加するよう求めるプロンプトで、 [はい] をクリックします。 もう 1 つは、未解決の依存関係を復元するように求めるプロンプトで、 [復元] をクリックします。
 6. アプリケーションの `.vscode` ディレクトリには `launch.json` ファイルがあります。 このファイルで、`externalConsole` 値を `true` に変更します。
 7. Visual Studio Code を使用すると、.NET Core アプリケーションをデバッグできます。 `F5` キーを押してアプリケーションを実行し、セットアップが動作していることを確認します。 "Hello World!" が コンソールに表示されます。 
 
@@ -278,7 +278,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 ```
 
 ## <a name="track-transfer-progress"></a>転送の進捗状況の追跡
-データの転送にかかった時間がわかっていると便利ですが、 転送操作 "*の間に*" 転送の進捗状況を確認できると、さらに役に立ちます。 このシナリオを実現するには、`TransferContext` オブジェクトを作成する必要があります。 `TransferContext` オブジェクトには `SingleTransferContext` と `DirectoryTransferContext` の&2; つのフォームがあります。 前者は&1; つのファイルを転送するためのフォーム (現在の操作) で、後者はファイルのディレクトリを転送するためのフォームです (後で追加します)。
+データの転送にかかった時間がわかっていると便利ですが、 転送操作 "*の間に*" 転送の進捗状況を確認できると、さらに役に立ちます。 このシナリオを実現するには、`TransferContext` オブジェクトを作成する必要があります。 `TransferContext` オブジェクトには `SingleTransferContext` と `DirectoryTransferContext` の 2 つのフォームがあります。 前者は 1 つのファイルを転送するためのフォーム (現在の操作) で、後者はファイルのディレクトリを転送するためのフォームです (後で追加します)。
 
 `GetSingleTransferContext` メソッドと `GetDirectoryTransferContext` メソッドを `Program.cs` に追加します。 
 
@@ -384,7 +384,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 これまでは、`checkpoint` 値は常に `null` に設定されていました。 ここで、転送を取り消すと、転送の最後のチェックポイントが取得され、この新しいチェックポイントが転送コンテキストで使用されます。 
 
 ## <a name="transfer-local-directory-to-azure-blob-directory"></a>Azure BLOB ディレクトリへのローカル ディレクトリの転送
-Data Movement Library で転送できるのが一度に&1; ファイルだとすると残念です。 幸い、そうではありません。 Data Movement Library には、ファイルのディレクトリとそのサブディレクトリすべてを転送する機能が用意されています。 それを実現するコードを追加してみましょう。
+Data Movement Library で転送できるのが一度に 1 ファイルだとすると残念です。 幸い、そうではありません。 Data Movement Library には、ファイルのディレクトリとそのサブディレクトリすべてを転送する機能が用意されています。 それを実現するコードを追加してみましょう。
 
 最初に、`GetBlobDirectory` メソッドを `Program.cs` に追加します。
 
@@ -581,7 +581,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 これでデータ移動アプリケーションが完成しました。 [完全なコード サンプルは GitHub で入手できます](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。 
 
 ## <a name="next-steps"></a>次のステップ
-この入門では、Azure Storage とやり取りし、Windows、Linux、および MacOS で実行されるアプリケーションを作成しました。 この入門では、Blob Storage を重点的に取り上げていますが、 これと同じ情報は File Storage にも適用できます。 詳細については、[Azure Storage Data Movement Library のリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)を参照してください。
+この入門では、Azure Storage とやり取りし、Windows、Linux、macOS で実行されるアプリケーションを作成しました。 この入門では、Blob Storage を重点的に取り上げていますが、 これと同じ情報は File Storage にも適用できます。 詳細については、[Azure Storage Data Movement Library のリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)を参照してください。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 

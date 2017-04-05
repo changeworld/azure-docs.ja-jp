@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/24/2017
 ms.author: chackdan;maburlik
 translationtype: Human Translation
-ms.sourcegitcommit: af121309be44852ee51f34130330533adf19d586
-ms.openlocfilehash: d833fb81a903ed9577bcfa64ee27d94cf428729d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 3389684dca62a1b3c8297600c7c09ffef642c854
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -38,6 +38,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 * [Service Fabric の専門家によるサポート](http://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
 * [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。
 * 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)」を参照してください。
+* サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](https://go.microsoft.com/fwlink/?linkid=842487) を実行します。
 
 <a id="downloadpackage"></a>
 
@@ -56,7 +57,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>クラスターを作成する
-[サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)に含まれる "*ClusterConfig.Unsecure.DevCluster.json*" ファイルを使用すると、Service Fabric を&1; 台のマシンから成る開発クラスターにデプロイできます。
+[サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)に含まれる "*ClusterConfig.Unsecure.DevCluster.json*" ファイルを使用すると、Service Fabric を 1 台のマシンから成る開発クラスターにデプロイできます。
 
 スタンドアロン パッケージをマシンに解凍してサンプルの構成ファイルをローカル マシンにコピーしてから、管理者権限の PowerShell セッションでスタンドアロン パッケージのフォルダーにある *CreateServiceFabricCluster.ps1* スクリプトを実行します。
 ### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>手順 1A: セキュリティで保護されないローカルの開発クラスターを作成する
@@ -145,7 +146,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>収集されるテレメトリ データとオプトアウトの方法
 製品品質の向上を図るために、Service Fabric の使用状況に関するテレメトリが既定で収集されます。 セットアップの過程で実行されるベスト プラクティス アナライザーは、 [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)に対する接続の可否をチェックします。 この URL に到達できなかった場合、テレメトリを無効にしない限り、セットアップは失敗します。
 
-1. テレメトリ パイプラインは、以下のデータを&1; 日に&1; 回、[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) にアップロードしようと試みます。 アップロードはベスト エフォートで実行され、クラスターの動作には一切影響しません。 テレメトリの送信元になるのは、Failover Manager プライマリを実行しているノードだけです。 それ以外のノードからはテレメトリが送信されません。
+1. テレメトリ パイプラインは、以下のデータを 1 日に 1 回、[https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) にアップロードしようと試みます。 アップロードはベスト エフォートで実行され、クラスターの動作には一切影響しません。 テレメトリの送信元になるのは、Failover Manager プライマリを実行しているノードだけです。 それ以外のノードからはテレメトリが送信されません。
 2. テレメトリは次のデータで構成されています。
 
 * サービスの数

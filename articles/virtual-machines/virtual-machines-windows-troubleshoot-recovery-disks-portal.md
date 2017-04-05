@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 12/12/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0997b2c2eec9070cf8043b09e69d0a4d1ae6e56a
-ms.openlocfilehash: 668ab8121a40aa2300d5cb13e561745fc51b545f
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: bc3013541fdb32f252339140fe61ff7c515a264e
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -151,8 +152,4 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Windows VM でのアプリケーションの接続の問題のトラブルシューティング](virtual-machines-windows-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
-
-
-<!--HONumber=Dec16_HO3-->
-
 

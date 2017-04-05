@@ -9,6 +9,7 @@ documentationcenter:
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: Java
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 110f3aa9ce4848c9350ea2e560205aa762decf7a
-ms.openlocfilehash: e9b31ebc4c63cb779c8573511101aef991cbbe4a
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: a8623991dda4192d700d35ef3970d416e315c5c6
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.lasthandoff: 02/21/2017
 
 Apache Maven を使用して Java ベースの MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。
 
-## <a name="a-nameprerequisitesaprerequisites"></a><a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
     
@@ -244,7 +245,7 @@ Java と JDK をインストールするときに、次のような環境変数�
    > [!NOTE]
    > `wordcountjava-1.0-SNAPSHOT.jar` ファイルは uber jar です。これには、WordCount ジョブだけでなく、ジョブの実行時に必要な依存関係も含まれます。
 
-## <a name="a-iduploadaupload-the-jar"></a><a id="upload"></a>jar をアップロードする
+## <a id="upload"></a>jar をアップロードする
 
 次のコマンドを使用して、HDInsight ヘッドノードに jar ファイルをアップロードします。
 
@@ -260,12 +261,9 @@ Java と JDK をインストールするときに、次のような環境変数�
 > SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。 SSH キーを使用している場合は、 `-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。 たとえば、「 `scp -i /path/to/private/key wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`」のように入力します。
 
 
-## <a name="a-namerunarun-the-mapreduce-job"></a><a name="run"></a>MapReduce ジョブを実行する
+## <a name="run"></a>MapReduce ジョブを実行する
 
-1. 次の記事の説明に従って、SSH を使用して HDInsight に接続します。
-   
-   * [HDInsight 上の Linux ベースの Hadoop で Linux、Unix、OS X、Bash on Windows 10 から SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+1. SSH を使用して HDInsight に接続する。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. SSH セッションから、次のコマンドを使用して MapReduce アプリケーションを実行します。
    
@@ -287,7 +285,7 @@ Java と JDK をインストールするときに、次のような環境変数�
         zelus   1
         zenith  2
 
-## <a name="a-idnextstepsanext-steps"></a><a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。 HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 

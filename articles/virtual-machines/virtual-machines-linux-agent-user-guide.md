@@ -17,9 +17,9 @@ ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 07ee32a293d53dd9c0e0afa5da2bac7ec146a536
-ms.openlocfilehash: c7f39a5396f0f9b6f9a577a3225ccadff1fd0dc9
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: b95d2f268548b48a1e31f2a35de8feaab251a485
+ms.lasthandoff: 03/29/2017
 
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
@@ -65,7 +65,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
   * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通信
-プラットフォームからエージェントへの情報の流れは&2; つのチャンネルを経由します。
+プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
 
 * 起動時に接続される IaaS デプロイ用 DVD。 この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
 * デプロイとトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
@@ -105,7 +105,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 ## <a name="installation"></a>インストール
 使用しているディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
 
-ソースからカスタムの場所へのインストールやプレフィックスなどの高度なインストール オプションについては、[Github の Azure Linux Agent リポジトリ](https://github.com/Azure/WALinuxAgent)にあるドキュメントを参照してください。
+ソースからカスタムの場所へのインストールやプレフィックスなどの高度なインストール オプションについては、[GitHub の Azure Linux Agent リポジトリ](https://github.com/Azure/WALinuxAgent)にあるドキュメントを参照してください。
 
 ## <a name="command-line-options"></a>コマンド ライン オプション
 ### <a name="flags"></a>フラグ
@@ -158,7 +158,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
     HttpProxy.Host=None
     HttpProxy.Port=None
 
-さまざまな構成オプションについて次に詳述します。 構成オプションには、ブール、文字列、整数の&3; つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
+さまざまな構成オプションについて次に詳述します。 構成オプションには、ブール、文字列、整数の 3 つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
 **Provisioning.Enabled:**  
 型: ブール  
@@ -211,7 +211,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 **Provisioning.PasswordCryptId**  
 型: 文字列  
-既定:&6;
+既定: 6
 
 パスワード ハッシュの生成時に、crypt によって使用されるアルゴリズム。  
  1 - MD5  
@@ -221,7 +221,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 **Provisioning.PasswordCryptSaltLength**  
 型: 文字列  
-既定:&10;
+既定: 10
 
 パスワード ハッシュの生成時に使用されるランダム salt の長さ。
 
@@ -229,7 +229,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 型: ブール  
 既定: y
 
-設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。 ファイルシステムの種類が Linux (83) の&1; つのパーティションがディスク上で使用可能になります。 このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
+設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。 ファイルシステムの種類が Linux (83) の 1 つのパーティションがディスク上で使用可能になります。 このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
 
 **ResourceDisk.Filesystem:**  
 型: 文字列  
@@ -305,6 +305,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 * プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するときは、次のリソースを参照してください。
   
   * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+  * [Azure の仮想マシンにカスタム データを挿入する](windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 

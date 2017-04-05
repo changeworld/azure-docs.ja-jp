@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,9 +17,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: ff27749800319517a8f635530f0f16b928692575
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -31,13 +32,13 @@ ms.lasthandoff: 02/09/2017
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Window での HDInsight の廃止](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date)に関する記事を参照してください。
 
-## <a name="a-namewhatisawhat-is-giraph"></a><a name="whatis"></a>Giraph とは
+## <a name="whatis"></a>Giraph とは
 
 [Apache Giraph](http://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフでは、オブジェクト間の関係 (インターネットのような大規模ネットワークでのルーター間の接続など) や、ソーシャル ネットワークでの人々の関係 (ソーシャル グラフとも呼ばれる) をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
 
 * 現在の関係に基づいて潜在的な友人を識別する
 
-* ネットワーク内の&2; 台のコンピューター間の最短ルートを識別する
+* ネットワーク内の 2 台のコンピューター間の最短ルートを識別する
 
 * Web ページのページ順位を計算する
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 02/09/2017
 
 * `/example/jars/giraph-examples.jar` のように、`giraph-examples.jar` ファイルをクラスターの既定のストレージ (WASB) にコピーする。
 
-## <a name="a-nameinstallainstall-giraph-using-script-actions"></a><a name="install"></a>スクリプト アクションを使用した Giraph のインストール
+## <a name="install"></a>スクリプト アクションを使用した Giraph のインストール
 
 HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、次の場所にあります。
 
@@ -86,7 +87,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターの作成を続行します。
 
-## <a name="a-nameusegiraphahow-do-i-use-giraph-in-hdinsight"></a><a name="usegiraph"></a>HDInsight で Giraph を使用する方法
+## <a name="usegiraph"></a>HDInsight で Giraph を使用する方法
 
 クラスターの作成が完了したら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。 ここでは、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 実装を使用します。
 
@@ -94,11 +95,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
    
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    
-    HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
-   
-   * [Linux、Unix、OS X、Windows から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-   * [HDInsight の Linux ベースの Hadoop で Windows から SSH (PuTTY) を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+    詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. 次のコマンドを使用して、**tiny_graph.txt** という名前の新しいファイルを作成します。
    
@@ -116,7 +113,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
     [4,0,[[3,4],[2,4]]]
     ```
    
-    このデータは、`[source_id, source_value,[[dest_id], [edge_value],...]]` の形式を使用して、有向グラフ内のオブジェクト間の関係を示しています。 各行は、`source_id` オブジェクトと&1; つ以上の `dest_id` オブジェクトとの関係を表現しています。 `edge_value` (重み) は、`source_id` と `dest\_id` の間のつながりの強さまたは距離であると考えられます。
+    このデータは、`[source_id, source_value,[[dest_id], [edge_value],...]]` の形式を使用して、有向グラフ内のオブジェクト間の関係を示しています。 各行は、`source_id` オブジェクトと 1 つ以上の `dest_id` オブジェクトとの関係を表現しています。 `edge_value` (重み) は、`source_id` と `dest\_id` の間のつながりの強さまたは距離であると考えられます。
    
     この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
    

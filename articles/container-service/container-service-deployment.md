@@ -18,9 +18,9 @@ ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2464901d22bb91cbf396ef60f4bda6d979b578b7
-ms.openlocfilehash: 003d975f57d63bcb95d6b0de9dcfaf8816fcdd6f
-ms.lasthandoff: 03/02/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 2e8ff5304d4ccc63f92567b22c0508e3fc7b9bcf
+ms.lasthandoff: 04/03/2017
 
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-portal"></a>Azure Portal を使用して Docker コンテナーのホスティング ソリューションをデプロイする
@@ -38,7 +38,7 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 * **Azure サブスクリプション**: お持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップしてください。 
 
-* **SSH RSA 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための公開キーを指定する必要があります。 Secure Shell (SSH) RSA キーを作成するには、[OS X と Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) または [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md) のガイダンスを参照してください。 
+* **SSH RSA 公開キー**: ポータルまたはいずれかの Azure クイックスタート テンプレートを通じてデプロイする場合は、Azure Container Service 仮想マシンに対する認証のための公開キーを指定する必要があります。 Secure Shell (SSH) RSA キーを作成するには、[OS X と Linux](../virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
 
 * **サービス プリンシパル クライアント ID とシークレット** (Kubernetes のみ): Azure Active Directory サービス プリンシパルの作成の詳細とガイダンスについては、[Kubernetes クラスターのサービス プリンシパル](container-service-kubernetes-service-principal.md)に関するページを参照してください。
 
@@ -80,7 +80,7 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 5. **[エージェント構成]** ブレードで、次の情報を入力します。
 
-    * **[Agent count (エージェント数)]**: Docker Swarm と Kubernetes の場合、この値はエージェント スケール セットのエージェントの初期数になります。 DC/OS の場合は、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが、DC/OS 用に作成されます。 このパブリック スケール セットのエージェント数は、クラスター内のマスター数によって決まります (1 マスターに&1; パブリック エージェント、3 または&5; マスターに&2; パブリック エージェント)。
+    * **[Agent count (エージェント数)]**: Docker Swarm と Kubernetes の場合、この値はエージェント スケール セットのエージェントの初期数になります。 DC/OS の場合は、プライベート スケール セットのエージェントの初期数です。 また、事前に決められた数のエージェントを含むパブリック スケール セットが、DC/OS 用に作成されます。 このパブリック スケール セットのエージェント数は、クラスター内のマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
     * **[Agent virtual machine size (エージェント仮想マシン サイズ)]**: エージェント仮想マシンのサイズ。
     * **[オペレーティング システム]**: 現在、この設定は Kubernetes オーケストレーターを選択した場合にのみに使用できます。 エージェントで実行するオペレーティング システムとして、Linux ディストリビューションまたは Windows Server のいずれかを選択します。 この設定によって、Linux または Windows のどちらのコンテナー アプリをクラスターで実行できるかが決まります。 
 

@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1d0136b044f6049e59fa09d824cf244cac703c45
-ms.openlocfilehash: 625618d200d1049b419128879a49f9e58f3a7627
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 49939946f887c51fbc2a135c28236407f5569f48
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,19 +31,19 @@ ms.lasthandoff: 02/23/2017
 > - [Azure REST API](network-watcher-check-next-hop-rest.md)
 
 
-Next Hop は Network Watcher の機能の&1; つで、指定された仮想マシンに基づいて、次ホップの種類と IP アドレスを取得します。 この機能は、仮想マシンからのトラフィックがゲートウェイ、インターネット、または仮想ネットワークを経由して宛先に到達するかどうかを判断する際に役立ちます。
+Next Hop は Network Watcher の機能の 1 つであり、指定された仮想マシンに基づいて次ホップの種類と IP アドレスを取得できます。 この機能は、仮想マシンからのトラフィックがゲートウェイ、インターネット、または仮想ネットワークを経由して宛先に到達するかどうかを判断する際に役立ちます。
+
+この記事では、Windows、Mac、Linux で使用できるクロスプラット フォーム Azure CLI 1.0 を使います。 Network Watcher では、CLI サポートの Azure CLI 1.0 が使用されています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 このシナリオでは Azure CLI を使用して、次ホップの種類と IP アドレスを検索します。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンのあるリソース グループを使用することも前提としています。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
-この記事で説明するシナリオでは、リソースの次ホップの種類と IP アドレスを探す、Next Hop という Network Watcher の機能を使用します。 Next Hop の詳細については、[Next Hop の概要](network-watcher-next-hop-overview.md)に関するページをご覧ください。
+この記事で説明するシナリオでは、リソースの次ホップの種類と IP アドレスを調べる、Next Hop という Network Watcher の機能を使用します。 Next Hop の詳細については、[Next Hop の概要](network-watcher-next-hop-overview.md)に関するページをご覧ください。
 
 
 ## <a name="get-next-hop"></a>次ホップの取得
@@ -70,15 +70,15 @@ info:    network watcher next-hop command OK
 
 **次ホップの種類**
 
-* Internet
+* インターネット
 * VirtualAppliance
 * VirtualNetworkGateway
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* None
+* なし
 
 ## <a name="next-steps"></a>次のステップ
 
-[Network Watcher での NSG 監査](network-watcher-nsg-auditing-powershell.md)に関するページから、プログラムを使用してネットワーク セキュリティ グループの設定を確認する方法を見る
+[Network Watcher での NSG 監査](network-watcher-nsg-auditing-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの設定をプログラムで確認する方法を見る
 

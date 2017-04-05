@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: gokuma;weig;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1072ab3d7c8cc472258925baaa2ef82cdfb17eed
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 3b608f341278ceaef9dd112cea38f138be69ee44
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -30,7 +31,7 @@ Microsoft データ サイエンス仮想マシン (DSVM) は、データの探�
 3. R や Python を使って構築されたモデルを Azure Machine Learning で運用可能な状態にし、クライアント アプリケーションからシンプルな Web サービス インターフェイスを使ってモデルにアクセスできるようにする
 4. Azure Portal または PowerShell を使用して Azure リソースを管理する
 5. DSVM にマウント可能なドライブとして Azure File Storage を作成することによって記憶域を拡張し、大規模なデータセット/コードをチーム全体で共有する
-6. Github を使ってチームでコードを共有し、プレインストールされる Git クライアント (Git Bash、Git GUI) を使ってリポジトリにアクセスする
+6. GitHub を使ってチームでコードを共有し、プレインストールされる Git クライアント (Git Bash、Git GUI) を使ってリポジトリにアクセスする。
 7. Azure Blob Storage、Azure Data Lake、Azure HDInsight (Hadoop)、Azure DocumentDB、Azure SQL Data Warehouse、Azure SQL データベースなど、Azure のさまざまなデータ サービスと分析サービスにアクセスする
 8. DSVM にプレインストールされる Power BI Desktop を使ってレポートとダッシュボードを作成し、クラウドにデプロイする
 9. DSVM を動的に拡張してプロジェクトのニーズを満たす
@@ -237,19 +238,19 @@ Azure File Service の共有場所は、Azure PowerShell を使用して作成�
 これで、このドライブには、VM 上の通常のドライブとしてアクセスすることができます。
 
 ## <a name="6-share-code-with-your-team-using-github"></a>6.GitHub を使ってチームでコードを共有する
-GitHub は、開発者コミュニティが共有するコードのリポジトリです。さまざまなテクノロジを利用した各種ツール用のサンプル コードとソースが豊富に格納されています。 GitHub には、コード ファイルのバージョンを追跡して保存する技術として Git が使用されています。 GitHub は、独自のリポジトリを作成するためのプラットフォームとしても利用できます。チームで共有されるコードやドキュメントを保存したり、バージョン管理を導入したり、コードを閲覧できるユーザーとコードを投稿できるユーザーを制御したりすることができます。 Git の使用の詳細については、[GitHub のヘルプ ページ](https://help.github.com/)を参照してください。 GitHub は、チームで協業したり、コミュニティによって開発されたコードを利用したり、逆にコードをコミュニティに投稿したりするための一つの方法として活用できます。
+GitHub は、開発者コミュニティが共有するコードのリポジトリです。さまざまなテクノロジを利用した各種ツール用のサンプル コードとソースが豊富に格納されています。 GitHub には、コード ファイルのバージョンを追跡して保存する技術として Git が使用されています。 GitHub は、独自のリポジトリを作成するためのプラットフォームとしても利用できます。チームで共有されるコードやドキュメントを保存したり、バージョン管理を導入したり、コードを閲覧できるユーザーとコードを投稿できるユーザーを制御したりすることができます。 Git の使用の詳細については、[GitHub のヘルプ ページ](https://help.github.com/)をご覧ください。 GitHub は、チームで協業したり、コミュニティによって開発されたコードを利用したり、逆にコードをコミュニティに投稿したりするための一つの方法として活用できます。
 
 DSVM には、GitHub リポジトリにアクセスするためのクライアント ツールとして、コマンド ライン版と GUI 版が付属しています。 Git と GitHub を扱うためのコマンド ライン ツールは、Git Bash と呼ばれています。 DSVM にインストールされている Visual Studio には、Git 拡張機能が備わっています。 これらのツールを起動するためのアイコンは、[スタート] メニューとデスクトップにあります。
 
-GitHub リポジトリからコードをダウンロードするには、 ```git clone``` コマンドを使用します。 たとえば、マイクロソフトが発行しているデータ サイエンス リポジトリを現在のディレクトリにダウンロードするには、 ```git-bash```から次のコマンドを実行します。
+GitHub リポジトリからコードをダウンロードするには、```git clone``` コマンドを使います。 たとえば、マイクロソフトが発行しているデータ サイエンス リポジトリを現在のディレクトリにダウンロードするには、 ```git-bash```から次のコマンドを実行します。
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git および GitHub ツールにアクセスする方法を示しています。
+Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git と GitHub ツールにアクセスする方法を示しています。
 
 ![Git in Visual Studio](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
-Git を使用した GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースを参照してください。 [チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
+Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。 [チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7.Azure のさまざまなデータ サービスと分析サービスにアクセスする
 ### <a name="azure-blob"></a>Azure BLOB
@@ -865,10 +866,5 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 ## <a name="summary"></a>概要
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。 他にもさまざまな手段で分析環境を強化することができます。
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

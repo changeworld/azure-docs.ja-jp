@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c22a8f4a895efc86abc328c6cf82685d7db8c19c
-ms.openlocfilehash: 33de5839e1e8fa70f75636488a0769f7aebf8b95
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 27cc51d3f9220756fc1188f978dc158f17037bc3
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -73,21 +73,13 @@ ms.lasthandoff: 02/24/2017
 **Q: 既存の Azure AD グループ/連絡先オブジェクトに対して手動で設定された ImmutableId 属性とオンプレミスの AD グループ/連絡先オブジェクトとの完全一致はサポートされていますか。**  
 いいえ。現在これはサポートされていません。
 
-## <a name="security"></a>セキュリティ
-**Q: 何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか。**</br>
-アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  
 
-**Q: (一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか。**</br>
-これは、パスワードが、"Password"、"123456" など、一般的によく使用されるものであることを意味します。
-
-**Q: 不審なソース (ボットネット、tor エンドポイント) からのサインイン要求は B2C テナントでブロックされますか。また、これには Basic または Premium Edition のテナントが必要ですか。**</br>
-要求をフィルター処理するゲートウェイによって、ボットネットからの保護を提供します。また、これは B2C テナントすべてに適用されます。 
 
 ## <a name="custom-configuration"></a>カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。**  
 このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
-**Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。**  
+***Q:*Synchronization Service Manager** の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。  
 いいえ。 このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 「[スウィング移行](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)」を参照してください。
 
 **Q: Azure サインイン ページではパスワードがキャッシュされますか。また、パスワード入力要素のオートコンプリート属性を "false" に設定することで、これを防ぐことはできますか。**</br>

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: cfab4ea7491d15321d54cd9482e35a89fe7c7275
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -113,7 +113,7 @@ Jupyter Notebook で提供される PySpark カーネルには、コンテキス
 * sc: Spark 用 
 * sqlContext: Hive 用
 
-PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは&2; つ使用されています。
+PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
 * **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。 コードは有効な Python コードにする必要があります。
 * **%%sql -o <variable name>** 
@@ -196,7 +196,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) によって、ラベルの文字列型の列をラベル インデックスの列にエンコードします。 インデックスの順序は、ラベルの頻度順になります。 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) によって、ラベル インデックスの列をバイナリのベクトルの列にマッピングします。値は最大でも&1; つのみです。 このエンコードによって、ロジスティック回帰などの連続する値を持つ特徴を受け取るアルゴリズムをカテゴリの特徴に適用できます。
+[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) によって、ラベル インデックスの列をバイナリのベクトルの列にマッピングします。値は最大でも 1 つのみです。 このエンコードによって、ロジスティック回帰などの連続する値を持つ特徴を受け取るアルゴリズムをカテゴリの特徴に適用できます。
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -401,7 +401,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ## <a name="score-classification-and-regression-random-forest-models"></a>分類と回帰のランダム フォレスト モデルのスコア付け
 このセクションのコードでは、Azure Blob Storage に保存されている分類と回帰のランダム フォレスト モデルを読み込み、標準の分類方法と回帰方法でそのパフォーマンスをスコア付けした後、結果を Blob Storage に保存する方法を示します。
 
-[ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストによって、カテゴリの特徴を処理し、多クラス分類の設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの&1; つです。
+[ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストによって、カテゴリの特徴を処理し、多クラス分類の設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
 
 [spark.mllib](http://spark.apache.org/mllib/) は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類および多クラス分類と回帰のためのランダム フォレストをサポートします。 
 

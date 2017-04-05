@@ -85,6 +85,7 @@
 
 
 ## 統合
+### [Spark に接続する](documentdb-spark-connector.md)
 ### [Azure App Service で Web アプリをデプロイする](documentdb-create-documentdb-website.md)
 ### [Logic Apps を使用したアプリケーション ログ記録](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 ### [Azure Functions へのバインド](../azure-functions/functions-bindings-documentdb.md)

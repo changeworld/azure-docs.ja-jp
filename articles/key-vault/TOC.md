@@ -24,7 +24,8 @@
 
 ## 自動化
 ### [Azure Automation](automation-manage-key-vault.md)
-### [CLI を使用して作成および管理する](key-vault-manage-with-cli.md)
+### [CLI を使用した作成と管理](key-vault-manage-with-cli.md)
+### [CLI 2.0 を使用した作成と管理](key-vault-manage-with-cli2.md)
 
 # リファレンス
 ## [PowerShell](/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault)

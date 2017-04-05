@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 23c49393a115d9cd0ac3a1b0f146e9dcc780347e
-ms.openlocfilehash: 42be5d71d8f22a2eb06f7ca0ebd4c33fb3d8bebe
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 025e8c9e575123a3ad9863a35061ebd0af212486
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -138,6 +138,16 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 
 - - -
+## <a name="security"></a>セキュリティ
+**Q: 何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか。**</br>
+アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  
+
+**Q: (一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか。**</br>
+これは、パスワードが、"Password"、"123456" など、一般的によく使用されるものであることを意味します。
+
+**Q: 不審なソース (ボットネット、tor エンドポイント) からのサインイン要求は B2C テナントでブロックされますか。また、これには Basic または Premium Edition のテナントが必要ですか。**</br>
+要求をフィルター処理するゲートウェイによって、ボットネットからの保護を提供します。また、これは B2C テナントすべてに適用されます。 
+
 ## <a name="application-access"></a>アプリケーション アクセス
 **Q: Azure AD とその機能にあらかじめ統合されているアプリケーションの一覧はどこにありますか?**
 

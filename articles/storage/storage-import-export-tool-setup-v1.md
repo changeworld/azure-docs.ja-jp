@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export ツール v1 の設定 | Microsoft Docs"
-description: "Azure Import/Export 用のドライブ準備および修復ツールを設定する方法について説明します"
+description: "Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
-ms.openlocfilehash: 2d30d0da6055a66b60ed5a836dd897a87d564237
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 39d7e9a71a290ace6f6f4caf48f1ec5e46fe9a48
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
-Microsoft Azure Import/Export ツールは、ドライブの準備および修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
+Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
   
 -   インポート ジョブを作成する前に、このツールを使用して、Microsoft Azure データ センターに発送するハード ドライブにデータをコピーできます。  
   
@@ -38,7 +38,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備および修�
   
 -   インポートするファイルを保存するための十分な空き領域を持つストレージ アカウントがサブスクリプションに含まれている必要があります。  
   
--   ストレージ アカウントのアカウント キーが少なくとも&1; つ必要です。  
+-   ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。  
   
 -   Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システムがインストールされているコンピューター ("コピー用コンピューター") が必要です。  
   
@@ -84,7 +84,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備および修�
  コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。  
   
 ```  
-WAImportExport, a client tool for Microsoft Azure Import/Export Service. Microsoft (c) 2013, 2014  
+WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
   
 Copy a Directory:  
     WAImportExport.exe PrepImport  
@@ -200,7 +200,7 @@ Parameters:
     /ExportBlobListFile:<ExportBlobListFile>  
         - Required. Path to the XML file containing list of blob paths or blob path  
           prefixes for the blobs to be exported. The file format is the same as the  
-          blob list blob format in the Put Job operation of the Import/Export Service  
+          blob list blob format in the Put Job operation of the Import/Export service  
           REST API.  
     /DriveSize:<DriveSize>  
         - Required. Size of drives to be used for export. For example, 500GB, 1.5TB.  
@@ -254,11 +254,12 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="see-also"></a>関連項目  
- [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- [エクスポート ジョブのドライブ使用率のプレビュー](storage-import-export-tool-previewing-drive-usage-export-v1.md)   
- [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
- [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
- [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)   
- [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+## <a name="next-steps"></a>次のステップ
+
+* [インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [エクスポート ジョブのドライブ使用率のプレビュー](storage-import-export-tool-previewing-drive-usage-export-v1.md)   
+* [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)   
+* [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
 

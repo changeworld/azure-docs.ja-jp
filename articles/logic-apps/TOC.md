@@ -16,9 +16,9 @@
 ### [Azure Functions を使用してカスタム コードを追加する](logic-apps-azure-functions.md)
 ### [ループ、スコープ、データの分割処理](logic-apps-loops-and-scopes.md)
 ### [ロジック アプリの定義を作成する](logic-apps-author-definitions.md)
+### [ロジック アプリを呼び出し、トリガーし、入れ子にする](logic-apps-http-endpoint.md)
 ### [ロジック アプリ用のカスタム API を作成する](logic-apps-create-api-app.md)
 ### [ロジック アプリ用のカスタム API を呼び出す](logic-apps-custom-hosted-api.md)
-### [ロジック アプリのエンドポイントをトリガーとして呼び出す](logic-apps-http-endpoint.md)
 ### [エラーと例外を処理する](logic-apps-exception-handling.md)
 ### [コンテンツ タイプを処理する](logic-apps-content-type.md)
 ### [ロジック アプリをセキュリティで保護する](logic-apps-securing-a-logic-app.md)
@@ -47,6 +47,7 @@
 ### [X12 のエンタープライズ統合](logic-apps-enterprise-integration-x12.md)
 ### [X12 のエンコード](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12 のデコード](logic-apps-enterprise-integration-x12-decode.md)
+### [障害復旧](logic-apps-enterprise-integration-b2b-business-continuity.md)
 
 ## オンプレミスのデータへのアクセス
 ### [オンプレミスのデータに接続する](logic-apps-gateway-connection.md)
@@ -69,6 +70,7 @@
 
 ## 例、シナリオ、チュートリアル
 ### [概要](logic-apps-examples-and-scenarios.md)
+### [サーバーなしのソーシャル ダッシュ ボードを作成する](logic-apps-scenario-social-serverless.md)
 ### [Azure Functions を使用してロジック アプリを呼び出す](logic-apps-scenario-function-sb-trigger.md)
 ### [エラーと例外の処理を追加する](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B の処理](logic-apps-enterprise-integration-b2b.md)

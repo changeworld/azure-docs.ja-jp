@@ -9,6 +9,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 4208deca-d64a-45e1-8948-2673d5d7678c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2dd64398fce3a85f92492b01951008eab31a2c3f
-ms.openlocfilehash: a566fe935da98d303f1260cbc2a2009e5702530a
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 44e418e52fc18dd22820331f7d921e789da62832
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -58,13 +60,10 @@ Azure PowerShell を使用して HDInsight クラスターを作成するには�
 * Azure BLOB コンテナーの作成
 * HDInsight クラスターの作成
 
-Linux クラスターを作成するために設定する必要がある最も重要な&2; つのパラメーターは、OS の種類と SSH ユーザーの詳細を指定するパラメーターです。
+Linux クラスターを作成するために設定する必要がある最も重要な 2 つのパラメーターは、OS の種類と SSH ユーザーの詳細を指定するパラメーターです。
 
 * **-OSType** パラメーターを **Linux** として指定していることを確認します。
-* クラスターのリモート セッションで SSH を使用するには、SSH ユーザー パスワードまたは SSH 公開キーを指定します。 SSH ユーザー パスワードと SSH 公開キーを両方とも指定すると、キーが無視されます。 リモート セッションで SSH キーを使用する場合は、入力を求められたら、空の SSH パスワードを指定する必要があります。 HDInsight での SSH の使用方法の詳細については、次の記事のいずれかをご覧ください。
-  
-  * [Linux、Unix、OS X から HDInsight 上の Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-  * [HDInsight の Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+* クラスターのリモート セッションで SSH を使用するには、SSH ユーザー パスワードまたは SSH 公開キーを指定します。 SSH ユーザー パスワードと SSH 公開キーを両方とも指定すると、キーが無視されます。 リモート セッションで SSH キーを使用する場合は、入力を求められたら、空の SSH パスワードを指定する必要があります。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 次のスクリプトでは、新しいクラスターを作成する方法を示します。
 
@@ -187,10 +186,5 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

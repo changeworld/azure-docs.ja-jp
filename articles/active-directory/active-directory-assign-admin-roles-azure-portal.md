@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
-ms.openlocfilehash: faffd356191b7cca124f0a2cd147837078e4150f
-ms.lasthandoff: 03/07/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: e8d3eb7e336383eb639e55656b26d881e8c2adb0
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -34,29 +34,30 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 * **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
-* **全体管理者/会社の管理者**: すべての管理機能にアクセスできます。 Azure アカウントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。 自分のパスワードをリセットするには、パスワード リセット サービス (passwordreset.microsoftonline.com) を使用するか、自分のパスワードを他のグローバル管理者にリセットしてもらう必要があります。
+* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可を持ちます。 詳しくは、「[Office 365 の管理者ロールについて](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)」をご覧ください。
+
+* **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+
+* **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル コンピューター管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
+
+* **ディレクトリ リーダー**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+
+* **ディレクトリ同期アカウント**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
+
+* **ディレクトリ ライター**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
+
+* **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+
+* **グローバル管理者/会社の管理者**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory とフェデレーションするサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
   >
   >
 
-* **コンプライアンス管理者**: このロールが割り当てられたユーザーは、Office 365 セキュリティ/コンプライアンス センターと Exchange 管理センター内で管理アクセス許可が付与されており、Office 365 管理センターにアクセスして監査ログを読むことができます。 詳しくは、「[Office 365 の管理者ロールについて](https://microsoft.sharepoint.com/teams/adiamteam/_layouts/15/WopiFrame.aspx?sourcedoc={dae8d6f3-5990-46a2-b12b-4c0e561bc7cc}&action=view&wdAccPdf=1)」をご覧ください。
+* **ゲスト招待元**: このロールが割り当てられたユーザーは、"メンバーは招待ができる" ユーザー設定が "いいえ" に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーション プレビューについて](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
 
-* **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
-
-* **カスタマー ロックボックス アクセスの承認者**: ロックボックス サービスが有効になっている場合、このロールが割り当てられたユーザーは、Microsoft のエンジニアによる会社情報へのアクセス要求を承認できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
-
-* **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスで管理者になります。
-
-* **ディレクトリ リーダー**: これは、 [同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
-
-* **ディレクトリ同期アカウント**: 使用しないでください。 このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
-* **ディレクトリ ライター**: これは、 [同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
-
-* **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
-
-* **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。
 
 * **メールボックス管理者**: このロールは、RIM Blackberry デバイスの Exchange Online 電子メール サポートの一部としてのみ使用されます。 組織が RIM Blackberry デバイスの Exchange Online 電子メールを使用していない場合、このロールは使用しません。
 
@@ -64,43 +65,35 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 * **Partner Tier 2 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **ゲストの招待元**: このロールが割り当てられたユーザーは、ゲストの招待を管理することができます。 その他の権限は含まれません。
-
-* **パスワード管理者/ヘルプデスク管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。 パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
+* **パスワード管理者/ヘルプデスク管理者**: このロールが割り当てられたユーザーは、パスワードのリセット、サービス要求の管理、サービス正常性の監視を行うことができます。 パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
   > [!NOTE]
-  > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
+  > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
   >
   >
-* **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+  
+* **Power BI サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/en-us/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-001&ad=US)」をご覧ください。
 
-- **Skype for Business サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「Office 365 の管理者ロールについて」を参照してください。 このロールは、以前は Lync サービス管理者ロールと呼ばれていました。
+* **特権ロール管理者**: このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
 
-- **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 セキュリティ/コンプライアンス センター) について、セキュリティ リーダー ロールのすべての読み取り専用アクセス許可に加えて、さまざまな管理アクセス許可を持ちます。
+* **セキュリティ管理者**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Privileged Identity Management、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
-- **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、監査ログ、Office 365 サービス正常性の監視、Office 365 のセキュリティ/コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
+* **セキュリティ閲覧者**: このロールが割り当てられたユーザーは、Azure Active Directory、Identity Protection、Privileged Identity Management 内のすべての情報を含め、グローバルな読み取り専用アクセス権を持ち、Azure Active Directory のサインイン レポートと監査ログを閲覧できます。 また、このロールには、Office 365 セキュリティ/コンプライアンス センターでの読み取り専用アクセス許可が付与されます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/en-us/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
-* **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。 セキュリティ リーダー ロールのすべての読み取り専用アクセス許可を持ちます (たとえば、監査ログを読むことができます)。
+* **サービス サポート管理者**: このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、Azure Portal と Office 365 管理ポータルで、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+
+* **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+
+* **Skype for Business/Lync サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
   > [!NOTE]
-  > サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
+  > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Lync サービス管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"Skype for Business サービス管理者" になります。
   >
   >
-* **ユーザー アカウント管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。 ユーザー管理の管理者の権限には、いくつかの制限が適用されます。 たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。 ユーザー、他のパスワード管理者、他のユーザー管理者のパスワードをリセットすることはできますが、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることはできません。
+
+* **ユーザー アカウント管理者**: このロールが割り当てられたユーザーは、ユーザーとグループを作成し、全側面を管理できます。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視できます。 ただし、いくつかの制限が適用されます。 たとえば、このロールはグローバル管理者を削除することはできません。また、管理者以外のパスワードは変更できますが、グローバル管理者または他の特権管理者のパスワードを変更することはできません。
 
 ## <a name="administrator-permissions"></a>管理者の権限
-
-### <a name="application-administrator"></a>アプリケーション管理者
-| できること | できないこと |
-| --- | --- |
-| <p>アプリケーションの作成 </p><p>所有しているアプリケーションの管理 </p>|<p>ユーザー パスワードのリセット </p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理 </p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートや監査ログの表示</p>|
-
-###<a name="application-developer"></a>アプリケーション開発者
-
-| できること | できないこと |
-| --- | --- |
-|<p>ディレクトリ情報の表示 </p><p>すべてのアプリケーションの作成と管理 </p><p>ライセンスの割り当てとアプリケーションへのアクセス </p><p>Office サポート チケットの管理とサービスの正常性の監視</p><p>Office 製品の課金操作と購入操作の実行</p><p>レポートや監査ログの表示</p>|<p>ユーザー パスワードのリセット </p><p>ユーザー ビューの作成と管理 </p><p>ユーザーとグループの作成、編集、削除</p><p>ドメインの管理 </p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任 </p><p>ディレクトリ同期の使用</p>|
-
 
 ### <a name="billing-administrator"></a>課金管理者
 

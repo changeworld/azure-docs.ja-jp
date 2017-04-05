@@ -1,4 +1,4 @@
-# Overview
+# 概要
 ## [概要](active-directory-b2c-overview.md)
 ## [アプリケーションの種類](active-directory-b2c-apps.md)
 ## [運用スケールとプレビューの B2C テナント](active-directory-b2c-reference-tenant-type.md)
@@ -45,6 +45,8 @@
 ## [認証プロトコル](active-directory-b2c-reference-protocols.md)
 ## [トークン](active-directory-b2c-reference-tokens.md)
 
+## [脅威管理](active-directory-b2c-reference-threat-management.md)
+
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
@@ -55,7 +57,3 @@
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [サポート](active-directory-b2c-support.md)
-
-<!--HONumber=Nov16_HO4-->
-
-

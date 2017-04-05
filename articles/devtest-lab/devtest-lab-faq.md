@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 4fc454a8c7974b8f53cd6621639dd5b575cc66f7
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c427ddbe408fc42403eb6738d1983c220e899a7
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -65,7 +65,7 @@ ms.lasthandoff: 03/22/2017
 * [VM の作成時にアーティファクトでエラーが発生しました。どのようにトラブルシューティングすればよいですか。](#my-artifact-failed-during-vm-creation-how-do-i-troubleshoot-it)
 * [既存の仮想ネットワークが正しく保存されないのはなぜですか。](#why-isnt-my-existing-virtual-network-saving-properly)
 * [PowerShell からプロビジョニングするときに、"親リソースが見つからない" というエラーが発生する理由を教えてください。](#why-do-i-get-a-parent-resource-not-found-error-when-provisioning-a-vm-from-powershell)  
-* [VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか](#where-can-i-find-more-error-information-when-vm-deployment-is-failed)  
+* [VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。](#where-can-i-find-more-error-information-if-a-vm-deployment-fails)  
 
 ### <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
@@ -160,7 +160,7 @@ VM への複数ディスクの接続はサポートされています。
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>テストに Windows OS イメージを使用する場合、MSDN サブスクリプションを購入する必要はありますか。
 Azure での開発またはテストにクライアント OS イメージ (Windows 7 以降) を使用する場合は、購入する必要があります。次のいずれかを行ってください。
 
-- [MSDN サブスクリプションを購入する](https://www.visualstudio.com/products/how-to-buy-vs)。 
+- [MSDN サブスクリプションを購入する](https://www.visualstudio.com/products/how-to-buy-vs)。
 - エンタープライズ契約をご利用の場合は、[Enterprise Dev/Test プラン](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
 
 各 MSDN サービスの Azure クレジットの詳細については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)」を参照してください。
@@ -219,7 +219,7 @@ Azure Portal でラボから VM を削除できる以外に、PowerShell スク�
 アーティファクトは、最新のビットまたは開発用ツールを VM 上にデプロイするために使用できるカスタマイズ可能な要素です。 いくつかの簡単なクリック操作で作成時に VM に接続され、VM がプロビジョニングされると、アーティファクトによって VM がデプロイおよび構成されます。 [パブリック GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)には、様々な既存のアーティファクトが存在しますが、[独自のアーティファクトの作成](devtest-lab-artifact-author.md)も簡単です。
 
 ### <a name="how-do-i-create-a-lab-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートからラボを作成するにはどうすればよいですか。
-弊社が提供する[ラボの Azure Resource Manager テンプレートの Github リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を、そのままの状態でデプロイしたり、修正してラボ用のカスタム テンプレートを作成したりできます。 各テンプレートにはリンクが含まれます。このリンクをクリックすると、Azure サブスクリプションにラボをそのままデプロイできます。また、テンプレートをカスタマイズし、[PowerShell や Azure CLI を使用してデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することもできます。
+弊社が提供する[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を、そのままの状態でデプロイしたり、修正してラボ用のカスタム テンプレートを作成したりできます。 各テンプレートにはリンクが含まれます。このリンクをクリックすると、Azure サブスクリプションにラボをそのままデプロイできます。また、テンプレートをカスタマイズし、[PowerShell や Azure CLI を使用してデプロイ](../azure-resource-manager/resource-group-template-deploy.md)することもできます。
 
 ### <a name="why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups"></a>別々のリソース グループに作成した VM が任意の名前を持つのはなぜですか。 これらのリソース グループの名前や内容を変更できますか。
 リソース グループは、Azure DevTest Labs がユーザーのアクセス許可と仮想マシンへのアクセスを管理するため、ご質問で述べられたように作成されます。 VM を別のリソース グループに移動してご希望の名前を使用することはできますが、この方法はお勧めではありません。 柔軟性の向上を目指して、機能の改善に取り組んでいます。   
@@ -261,7 +261,7 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 VM は、リソース グループ内のラボの下の子リソースです。 PowerShell を介して Azure リソース テンプレートを使用してデプロイした場合、PowerShell スクリプトで指定されるリソース グループ名は、ラボのリソース グループ名である必要があります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
-VM デプロイのエラーは、アクティビティ ログに記録されます。 VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics (仮想マシン診断)]** で確認できます。このブレードは、**[My virtual machines (マイ仮想マシン)]** の一覧から VM を選択すると表示されます。 
+VM デプロイのエラーは、アクティビティ ログに記録されます。 VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics (仮想マシン診断)]** で確認できます。このブレードは、**[My virtual machines (マイ仮想マシン)]** の一覧から VM を選択すると表示されます。
 
 VM デプロイの開始前、たとえば、VM で作成されたリソースのサブスクリプション制限を超えたときなどに、デプロイ エラーが発生することがあります。 この場合、エラーの詳細は、**[構成とポリシー]** 設定の下部にある、ラボ レベルの**アクティビティ ログ**に記録されます。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit)」を参照してください。
 

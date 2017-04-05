@@ -9,6 +9,7 @@ editor: cgronlun
 tags: 
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,8 +17,9 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e2b2e8d6110062efb99201f4daac1e1295d9b904
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -107,11 +109,6 @@ ms.openlocfilehash: 78382cf83ed5e94507854d41293a95fd529964c1
 
 ## <a name="next-steps"></a>次のステップ
 * ドメイン参加済み HDInsight クラスターの構成については、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関する記事を参照してください。
-* Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関するページを参照してください。
-* ドメイン参加済み HDInsight クラスターで SSH を使用して Hive クエリを実行する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+* Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)に関する記事をご覧ください。
+* SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)に関するページをご覧ください。
 

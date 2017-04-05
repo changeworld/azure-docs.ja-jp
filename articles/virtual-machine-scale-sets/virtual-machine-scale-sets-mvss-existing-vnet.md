@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシン スケール セット: 既存の仮想ネットワーク テンプレート | Microsoft Docs"
-description: "既存の仮想ネットワークを使用するスケール セット テンプレートを作成する方法を説明します。"
+title: "Azure スケール セット テンプレートでの仮想ネットワークの参照 | Microsoft Docs"
+description: "仮想ネットワークを既存の Azure 仮想マシン スケール セット テンプレートに追加する方法について説明します。"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -16,18 +16,17 @@ ms.topic: article
 ms.date: 3/06/2017
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: ddb3e1789e49d138e744c2238679236134b69324
-ms.lasthandoff: 03/09/2017
-
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: f300537943b76e53b0e7c271e65293e585a2cd32
+ms.lasthandoff: 03/24/2017
 
 ---
 
-# <a name="about-this-article"></a>この記事の内容
+# <a name="add-reference-to-a-virtual-network-to-an-azure-scale-set-template"></a>仮想ネットワークへのリファレンスを Azure スケール セット テンプレートに追加する
 
 この記事では、[実行可能な最小のスケール セット テンプレート](./virtual-machine-scale-sets-mvss-start.md)を変更して、新しい仮想ネットワークを作成するのではなく、既存の仮想ネットワークにデプロイする方法について説明します。
 
-## <a name="modifying-the-minimum-viable-scale-set-to-deploy-into-an-existing-virtual-network"></a>実行可能な最小のスケール セットを変更して既存の仮想ネットワークにデプロイする
+## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 
 実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、スケール セットを既存の仮想ネットワークにデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff master minimum-viable-scale-set`) を項目ごとに確認しましょう。
 

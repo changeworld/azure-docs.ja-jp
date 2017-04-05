@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
-ms.openlocfilehash: 88203f84752d464b63ef31fc77d668cb8b3497e3
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 88c919b64513c8441ab73e2750e7ddfb12fcb63e
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -45,7 +46,7 @@ ms.openlocfilehash: 88203f84752d464b63ef31fc77d668cb8b3497e3
 * **解凍** します。
 * **Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする方法** に関する記事に記載されている手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルを [アップロード](machine-learning-data-science-customize-hadoop-cluster.md) します。 ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この [ページ](machine-learning-data-science-process-hive-walkthrough.md#upload)をご覧ください。
 
-## <a name="a-namesubmitahow-to-submit-hive-queries"></a><a name="submit"></a>Hive クエリを送信する方法
+## <a name="submit"></a>Hive クエリを送信する方法
 Hive クエリは、以下のものを使用して送信できます。
 
 1. [Hadoop クラスターのヘッド ノードで Hadoop コマンド ラインを使用して Hive クエリを送信する](#headnode)
@@ -56,12 +57,12 @@ Hive クエリは SQL に似ています。 SQL を使い慣れている場合�
 
 Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
 
-### <a name="a-nameheadnodea-1-submit-hive-queries-through-hadoop-command-line-in-headnode-of-hadoop-cluster"></a><a name="headnode"></a> 1.Hadoop クラスターのヘッドノードで Hadoop コマンド ラインを使用して Hive クエリを送信する
+### <a name="headnode"></a> 1.Hadoop クラスターのヘッドノードで Hadoop コマンド ラインを使用して Hive クエリを送信する
 Hive クエリが複雑な場合、Hadoop クラスターのヘッド ノードに直接クエリを送信することにより、通常、Hive エディターまたは Azure PowerShell スクリプトを使用して送信するよりも速度が上がります。
 
 Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、コマンド `cd %hive_home%\bin`を入力します。
 
-Hadoop コマンド ラインで Hive クエリを送信する場合、次の&3; つの方法があります。
+Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 つの方法があります。
 
 * 直接
 * .hql ファイルの使用
@@ -116,14 +117,14 @@ Azure ストレージ エクスプローラーを使用して Hadoop クラス�
 
 ![ワークスペースの作成](./media/machine-learning-data-science-move-hive-tables/output-hive-results-3.png)
 
-### <a name="a-namehive-editora-2-submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
+### <a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
 *https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
-### <a name="a-namepsa-3-submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
+### <a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
 PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-hadoop-use-hive-powershell.md)」を参照してください。
 
-## <a name="a-namecreate-tablesacreate-hive-database-and-tables"></a><a name="create-tables"></a>Hive データベースとテーブルの作成。
-Hive クエリは、 [Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) 内で共有されており、そこからダウンロードできます。
+## <a name="create-tables"></a>Hive データベースとテーブルの作成。
+Hive クエリは、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) 内で共有されており、そこからダウンロードできます。
 
 Hive テーブルを作成する Hive クエリを次に示します。
 
@@ -149,19 +150,19 @@ Hive テーブルを作成する Hive クエリを次に示します。
 * **&#60;ストレージの場所>**: Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION &#60;ストレージの場所>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、*'wasb:///&#60;ディレクトリ 1>/'* や *'wasb:///&#60;directory 1>/&#60;ディレクトリ 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
 * **TBLPROPERTIES("skip.header.line.count"="1")**: データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
-## <a name="a-nameload-dataaload-data-to-hive-tables"></a><a name="load-data"></a>Hive テーブルへのデータの読み込み
+## <a name="load-data"></a>Hive テーブルへのデータの読み込み
 Hive テーブルにデータを読み込む Hive クエリを次に示します。
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60;BLOB データのパス>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*&#60;BLOB データのパス>* は *'wasb:///&#60;このコンテナー内のディレクトリ>/&#60;BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*&#60;BLOB データのパス>* は *'wasb://&#60;コンテナー name>@&#60;storage アカウント名>.blob.core.windows.net/&#60;BLOB ファイル名>'* の形式にする必要があります。
+* **&#60;BLOB データのパス>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*&#60;BLOB データのパス>* は *'wasb:///&#60;このコンテナー内のディレクトリ>/&#60;BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*&#60;BLOB データのパス>* は *'wasb://&#60;コンテナー名>@&#60;ストレージ アカウント名>.blob.core.windows.net/&#60;BLOB ファイル名>'* の形式にする必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。
   >
   >
 
-## <a name="a-namepartition-orcaadvanced-topics-partitioned-table-and-store-hive-data-in-orc-format"></a><a name="partition-orc"></a>拡張トピック: パーティション分割テーブルと ORC 形式での Hive データの格納
+## <a name="partition-orc"></a>拡張トピック: パーティション分割テーブルと ORC 形式での Hive データの格納
 データのサイズが大きい場合、テーブルのいくつかのパーティションのみをスキャンすればよいクエリでは、テーブルをパーティション分割すると効果的です。 たとえば、Web サイトのログ データを日付別にパーティション分割することができます。
 
 Hive テーブルをパーティション分割することに加え、Optimized Row Columnar (ORC) 形式で Hive データを格納することも効果的です。 詳細については、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">Hive によるデータの読み取り、書き込み、および処理時における ORC ファイルを使用したパフォーマンスの向上</a>に関するページをご覧ください。
@@ -186,7 +187,7 @@ Hive テーブルをパーティション分割することに加え、Optimized
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="a-nameorcastore-hive-data-in-orc-format"></a><a name="orc"></a>ORC 形式での Hive データの格納
+### <a name="orc"></a>ORC 形式での Hive データの格納
 ORC 形式で格納されているデータを BLOB ストレージから Hive テーブルに直接読み込むことはできません。 ORC 形式で格納されているデータを Azure BLOB から Hive テーブルに読み込むために実行する必要がある手順を以下に示します。
 
 外部テーブル **STORED AS TEXTFILE** を作成し、データを BLOB ストレージからテーブルに読み込みます。
@@ -235,9 +236,4 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

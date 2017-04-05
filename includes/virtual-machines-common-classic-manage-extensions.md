@@ -5,7 +5,7 @@
 Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の支援 (たとえば、 **WebDeployForVSDevTest** 拡張機能により Visual Studio は Azure VM に Web デプロイできるようになります)、または他のいくつかの動作をサポートするための VM の操作機能の提供 (たとえば、Azure CLI という PowerShell の VM アクセス拡張機能と REST クライアントを使用すると、Azure VM のリモート アクセス値をリセットまたは変更できます) を行う、動作や機能を実装します。
 
 > [!IMPORTANT]
-> サポートする機能別の拡張機能の完全な一覧については、[Azure VM 拡張機能とその機能](../articles/virtual-machines/virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 各 VM 拡張機能は特定の機能をサポートするため、拡張機能を使用して実行可能なことと不可能なことはその拡張機能によって異なります。 したがって、VM を変更する前に、使用する VM 拡張機能についてのドキュメントを必ず読んでください。 VM 拡張機能の中には削除がサポートされていないものがあり、また別の拡張機能には VM の動作を根本から変更するように設定できるプロパティがあります。
+> サポートする機能別の拡張機能の完全な一覧については、[Azure VM 拡張機能とその機能](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 各 VM 拡張機能は特定の機能をサポートするため、拡張機能を使用して実行可能なことと不可能なことはその拡張機能によって異なります。 したがって、VM を変更する前に、使用する VM 拡張機能についてのドキュメントを必ず読んでください。 VM 拡張機能の中には削除がサポートされていないものがあり、また別の拡張機能には VM の動作を根本から変更するように設定できるプロパティがあります。
 > 
 > 
 
@@ -105,9 +105,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 > 拡張機能では、JSON で定義された構成も使用できます。 これらの種類の拡張機能を使用する場合、 **SampleConfig** 要素だけが使用されます。
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

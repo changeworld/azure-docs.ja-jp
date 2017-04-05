@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 6a7e0964a3a6e9be534a6bd683446d3da5edcecd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
+ms.openlocfilehash: 96fb170e7a079fbb4bcfb4a6b1e98970a709406f
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -87,13 +87,14 @@ Azure AD Connect:
 | 手順 1: サービス接続ポイントの構成 | ![○][1]                            | ![○][1]                    | ![○][1]        |
 | 手順 2: 要求の発行のセットアップ           |                                        | ![○][1]                    | ![○][1]        |
 | 手順 3: 非 Windows 10 デバイスの有効化      |                                        |                                | ![○][1]        |
-
+| 手順 4: デプロイとロールアウトの制御     | ![○][1]                            | ![○][1]                    | ![○][1]        |
+| 手順 5: 登録されたデバイスの検証          | ![○][1]                            | ![○][1]                    | ![○][1]        |
 
 
 
 ## <a name="step-1-configure-service-connection-point"></a>手順 1: サービス接続ポイントの構成
 
-サービス接続ポイント (SCP) オブジェクトは、登録中に Azure AD テナント情報を検出するために、デバイスによって使用されます。 オンプレミス Active Directory (AD) で、ドメイン参加済みデバイスの自動登録の SCP オブジェクトは、コンピューターのフォレストの構成名前付けコンテキストのパーティションに存在する必要があります。 各フォレストには、構成名前付けコンテキストが&1; つだけあります。 複数フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが含まれているすべてのフォレストにサービス接続ポイントが存在している必要があります。
+サービス接続ポイント (SCP) オブジェクトは、登録中に Azure AD テナント情報を検出するために、デバイスによって使用されます。 オンプレミス Active Directory (AD) で、ドメイン参加済みデバイスの自動登録の SCP オブジェクトは、コンピューターのフォレストの構成名前付けコンテキストのパーティションに存在する必要があります。 各フォレストには、構成名前付けコンテキストが 1 つだけあります。 複数フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが含まれているすべてのフォレストにサービス接続ポイントが存在している必要があります。
 
 フォレストの構成名前付けコンテキストを取得するには、[**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) コマンドレットを使用することができます。  
 
@@ -179,7 +180,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-既に ImmutableID 要求 (たとえば、代替ログイン ID) を発行した場合は、コンピューターに&1; つの対応する要求を提供する必要があります。
+既に ImmutableID 要求 (たとえば、代替ログイン ID) を発行した場合は、コンピューターに 1 つの対応する要求を提供する必要があります。
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -249,7 +250,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 ### <a name="issue-issuerid-for-computer-when-multiple-verified-domain-names-in-azure-ad"></a>Azure AD に複数の検証済みドメイン名があるときにコンピューターの issuerID を発行する
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`** - この要求には、トークンを発行しているオンプレミスのフェデレーション サービス (AD FS またはサード パーティ) と接続するいずれかの検証済みドメイン名の Uniform Resource Identifier (URI) が含まれている必要があります。 AD FS では、次のような発行変換規則を、上の規則の後に特定の順序で追加できます。 ユーザーに対する規則を明示的に発行する&1; つの規則が必要であることに注意してください。 以下の規則では、ユーザーの認証かコンピューターの認証かを特定する最初の規則が追加されています。
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`** - この要求には、トークンを発行しているオンプレミスのフェデレーション サービス (AD FS またはサード パーティ) と接続するいずれかの検証済みドメイン名の Uniform Resource Identifier (URI) が含まれている必要があります。 AD FS では、次のような発行変換規則を、上の規則の後に特定の順序で追加できます。 ユーザーに対する規則を明示的に発行する 1 つの規則が必要であることに注意してください。 以下の規則では、ユーザーの認証かコンピューターの認証かを特定する最初の規則が追加されています。
 
     @RuleName = "Issue account type with the value User when its not a computer"
     NOT EXISTS(
@@ -292,8 +293,13 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
         Value = "http://<verified-domain-name>/adfs/services/trust/"
     );
 
-> [!NOTE]
-> 上の規則のコンピューターに対する issuerID 要求には、Azure AD のいずれかの検証済みドメイン名が含まれている必要があります。 これは、AD FS サービスの URL ではありません。
+
+上記の要求では、
+
+- `$<domain>` は、AD FS サービスの URL です。
+- `<verified-domain-name>` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。
+
+
 
 確認済みのドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-add-domain.md)」を参照してください。  
 確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](https://docs.microsoft.com/powershell/msonline/v1/get-msoldomain) コマンドレットを使用できます。 
@@ -447,7 +453,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 ### <a name="remarks"></a>解説 
 
-- このスクリプトは、既存の規則に規則を追加します。 このスクリプトは&2; 回実行しないでください。規則のセットが&2; 回追加されてしまいます。 スクリプトを再実行する前に、これらの要求に対応する規則が (対応する条件の下に) ないことを確認してください。
+- このスクリプトは、既存の規則に規則を追加します。 このスクリプトは 2 回実行しないでください。規則のセットが 2 回追加されてしまいます。 スクリプトを再実行する前に、これらの要求に対応する規則が (対応する条件の下に) ないことを確認してください。
 
 - (Azure AD ポータルまたは Get-MsolDomains コマンドレットで示されるとおり) 複数の検証済みドメイン名がある場合は、スクリプトで **$multipleVerifiedDomainNames** の値を **$true** に設定します。 また、Azure AD Connect やその他の方法で作成された可能性がある既存の issuerid 要求を必ず削除します。 この規則の例を次に示します。
 
@@ -486,7 +492,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
     which decoded is {"Properties":[{"Key":"acr","Value":"wiaormultiauthn"}]}
 
-このような要求を受けたら、オンプレミス フェデレーション サービスは、統合 Windows 認証を使用してユーザーを認証する必要があります。認証に成功した場合は、以下の&2; つの要求を発行する必要があります。
+このような要求を受けたら、オンプレミス フェデレーション サービスは、統合 Windows 認証を使用してユーザーを認証する必要があります。認証に成功した場合は、以下の 2 つの要求を発行する必要があります。
 
     http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows
     http://schemas.microsoft.com/claims/wiaormultiauthn

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
-ms.openlocfilehash: f12bf7ef4f608e01115a7e7d12b734d65ccc40e5
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 55e3f99cd3202abc012d310b43358d3795c8531e
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -53,10 +53,10 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 * pickup\_datetime です。
 
 ## <a name="mltasks"></a>3 種類の予測タスクに対応する
-3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく&3; つの予測の問題を編成しました。
+3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
 1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
-2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の&5; つの箱つまりクラスに分割します。
+2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -105,7 +105,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。** 手順については、 [Azure Machine Learning のワークスペースの作成](machine-learning-create-workspace.md)に関するページをご覧ください。
 
 ## <a name="getdata"></a>SQL Data Warehouse へのデータの読み込み
-Windows PowerShell コマンド コンソールを開きます。 以下の PowerShell コマンドを実行して、サンプルの SQL スクリプト ファイルを *-DestDir* パラメーターで指定したローカル ディレクトリにダウンロードします。このファイルは Github で共有されています。 *-DestDir* パラメーターの値は任意のローカル ディレクトリに変更できます。 *-DestDir* が存在しない場合は、PowerShell スクリプトによって作成されます。
+Windows PowerShell コマンド コンソールを開きます。 以下の PowerShell コマンドを実行して、サンプルの SQL スクリプト ファイルを *-DestDir* パラメーターで指定したローカル ディレクトリにダウンロードします。このファイルは GitHub で共有されています。 *-DestDir* パラメーターの値は任意のローカル ディレクトリに変更できます。 *-DestDir* が存在しない場合は、PowerShell スクリプトによって作成されます。
 
 > [!NOTE]
 > **DestDir** ディレクトリに対する作成または書き込みに管理者特権が必要な場合は、以下の PowerShell スクリプトを実行するときに *管理者として実行* しなければならない場合があります。
@@ -333,14 +333,14 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 > 
 > 
 
-また、この Powershell スクリプトは、データ探索のサンプル ファイルである SQLDW_Explorations.sql、SQLDW_Explorations.ipynb、および SQLDW_Explorations_Scripts.py に Azure SQL DW の情報を取り込み、PowerShell スクリプトが完了したらすぐにこれら&3; つのファイルを試せるようにします。
+また、この Powershell スクリプトは、データ探索のサンプル ファイルである SQLDW_Explorations.sql、SQLDW_Explorations.ipynb、および SQLDW_Explorations_Scripts.py に Azure SQL DW の情報を取り込み、PowerShell スクリプトが完了したらすぐにこれら 3 つのファイルを試せるようにします。
 
 正しく実行されると、画面は次のようになります。
 
 ![][20]
 
 ## <a name="dbexplore"></a>Azure SQL Data Warehouse でのデータの探索と特徴エンジニアリング
-このセクションでは、 **Visual Studio Data Tools**を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、Github のファイルには Azure SQL DW の情報は含まれていません。
+このセクションでは、 **Visual Studio Data Tools**を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure SQL DW の情報は含まれていません。
 
 Visual Studio で、SQL DW ログイン名とパスワードを使用して Azure SQL DW に接続し、 **SQL オブジェクト エクスプローラー** を開いて、データベースとテーブルがインポートされていることを確認します。 *SQLDW_Explorations.sql* ファイルを取得します。
 
@@ -566,7 +566,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 2. 構築するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しい SQL DW テーブルに保持し、Azure Machine Learning の[データのインポート][import-data] モジュールでその新しいテーブルを使用します。 これは、前の手順の PowerShell スクリプトで既に行われています。 データのインポート モジュールでは、このテーブルから直接読み取ることできます。
 
 ## <a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
-このセクションでは、以前作成した SQL DW に対して Python と SQL の両方のクエリを使用して、データの探索と特徴の生成を行います。 **SQLDW_Explorations.ipynb** という名前のサンプルの IPython Notebook および **SQLDW_Explorations_Scripts.py** という Python スクリプト ファイルは、ローカル ディレクトリにダウンロードされています。 これらは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)からも入手できます。 これら&2; つのファイルは、Python スクリプトでは同一です。 IPython Notebook サーバーがない場合は、Python スクリプト ファイルが提供されます。 これら 2 つのサンプルの Python ファイルは、 **Python 2.7**で設計されています。
+このセクションでは、以前作成した SQL DW に対して Python と SQL の両方のクエリを使用して、データの探索と特徴の生成を行います。 **SQLDW_Explorations.ipynb** という名前のサンプルの IPython Notebook および **SQLDW_Explorations_Scripts.py** という Python スクリプト ファイルは、ローカル ディレクトリにダウンロードされています。 これらは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)からも入手できます。 これら 2 つのファイルは、Python スクリプトでは同一です。 IPython Notebook サーバーがない場合は、Python スクリプト ファイルが提供されます。 これら 2 つのサンプルの Python ファイルは、 **Python 2.7**で設計されています。
 
 ローカル マシンにダウンロードされたサンプルの IPython Notebook と Python スクリプト ファイルで必要な Azure SQL DW の情報は、PowerShell スクリプトによって既に取り込まれています。 これらは変更しなくても実行できます。
 
@@ -701,7 +701,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 ![プロット #2][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>視覚化: 棒と線のプロット
-この例では、乗車距離を&5; つの箱にビン分割し、ビン分割の結果を視覚化します。
+この例では、乗車距離を 5 つの箱にビン分割し、ビン分割の結果を視覚化します。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
     df1['trip_distance']
@@ -766,7 +766,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 ![プロット #26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>探索:&1; 日ごとの乗車の分布
+#### <a name="exploration-daily-distribution-of-trips"></a>探索: 1 日ごとの乗車の分布
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -848,7 +848,7 @@ SQL Data Warehouse データベースから直接データを読み取る、二�
 ![Azure ML トレーニング][10]
 
 > [!IMPORTANT]
-> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の&2; つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 > 
 > 不要な列またはターゲット リークを除外するために、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページをご覧ください。
 > 
@@ -872,7 +872,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 2. 予想される入力データ スキーマを表す論理 **入力ポート** を特定する。
 3. 予想される Web サービスの出力スキーマを表す論理 **出力ポート** を特定する。
 
-スコア付け実験が作成されたら、確認して、必要に応じて調整します。 一般的な調整は、入力データセットまたはクエリを、ラベル フィールドを除外した入力データセットまたはクエリに置き換えることです。これらはサービスが呼び出されると使用できなくなるためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な&2;、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル**と**スコアリングした確率**のみを出力に含めます。
+スコア付け実験が作成されたら、確認して、必要に応じて調整します。 一般的な調整は、入力データセットまたはクエリを、ラベル フィールドを除外した入力データセットまたはクエリに置き換えることです。これらはサービスが呼び出されると使用できなくなるためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル**と**スコアリングした確率**のみを出力に含めます。
 
 サンプルのスコア付け実験を次の図に示します。 デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 

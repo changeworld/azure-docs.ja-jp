@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 3c07980e09362eabdfc80483213b62912e64ecf6
-ms.openlocfilehash: b57dc0b699d7f7e6d539d6622b3d2769adf4257d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: c18d17d40dff658a8fc47ef2126dd2c21b68606a
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -33,7 +34,7 @@ DocumentDB は、ネイティブの [JSON](http://www.json.org) データ モデ
 * JSON に格納されている日付を人間が判読できます。
 * この方法では、高速クエリ パフォーマンスのために DocumentDB のインデックスを利用できます。
 
-たとえば、次のスニペットは、.NET SDK を使用して&2; つの DateTime プロパティ (`ShipDate` と `OrderDate`) を含む`Order` オブジェクトをドキュメントとして格納します。
+たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`ShipDate` と `OrderDate`) を含む`Order` オブジェクトをドキュメントとして格納します。
 
     public class Order
     {
@@ -66,7 +67,7 @@ DocumentDB は、ネイティブの [JSON](http://www.json.org) データ モデ
 または、DateTimes を Unix タイムスタンプ (1970 年 1 月 1 日からの経過秒数を表す数値) として格納することもできます。 DocumentDB の内部 Timestamp (`_ts`) プロパティはこの方法を使用しています。 [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) クラスを使用して、DateTime を数値としてシリアル化できます。 
 
 ## <a name="indexing-datetimes-for-range-queries"></a>範囲クエリ用の DateTimes のインデックス作成
-範囲クエリは DateTime 値でよく使用されます。 たとえば、昨日からのすべての注文を探す必要がある場合、または&5; 分以内に出荷されたすべての注文を探す必要がある場合は、範囲クエリを実行します。 このようなクエリを効率的に実行するには、文字列に対する範囲インデックス作成用のコレクションを構成する必要があります。
+範囲クエリは DateTime 値でよく使用されます。 たとえば、昨日からのすべての注文を探す必要がある場合、または 5 分以内に出荷されたすべての注文を探す必要がある場合は、範囲クエリを実行します。 このようなクエリを効率的に実行するには、文字列に対する範囲インデックス作成用のコレクションを構成する必要があります。
 
     DocumentCollection collection = new DocumentCollection { Id = "orders" };
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
@@ -88,12 +89,7 @@ DocumentDB の SQL 言語と LINQ プロバイダーについては、[DocumentD
 この記事では、DocumentDB での DateTime の格納、インデックス作成、クエリの方法について説明しました。
 
 ## <a name="next-steps"></a>次のステップ
-* [Github のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行
+* [GitHub のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行
 * [DocumentDB クエリ](documentdb-sql-query.md)
 * [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

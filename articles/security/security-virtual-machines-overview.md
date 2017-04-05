@@ -1,6 +1,6 @@
 ---
 title: "Azure Virtual Machines で使用される Azure のセキュリティ機能 | Microsoft Docs"
-description: " Azure Virtual Machines で使用できる Azure のコア セキュリティ機能の概要について説明します。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。. "
+description: " Azure Virtual Machines で使用できる Azure のコア セキュリティ機能の概要について説明します。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 70d22ae8d7f67f1e12a233e004f1eb749927e7d8
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -70,8 +71,8 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](azure-security-antimalware.md)
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/windows/classic/install-trend.md)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/windows/classic/install-symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 * [Azure Marketplace のセキュリティ ソリューション](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -105,7 +106,7 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 * [Azure Backup サービス - FAQ](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも&2; 次拠点からワークロードとアプリを利用できます。
+組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
 Site Recovery:
 
@@ -151,9 +152,4 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 
 * [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 * [信頼されるクラウド: Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

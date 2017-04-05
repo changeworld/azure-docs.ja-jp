@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/16/2017
+ms.date: 3/24/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
-ms.openlocfilehash: 056968900d8078dfe53948a2da1daa26cb04a713
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: 01c0d7e8430df758749f7a524dd3b7771b24fac1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -43,10 +44,19 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 ## <a name="packaging-a-docker-container-with-yeoman"></a>yeoman での Docker コンテナーのパッケージ化
 Linux 上でコンテナーをパッケージ化する際は、yeoman テンプレートを使用するか、それとも[アプリケーション パッケージを手動で作成](#manually)するかを選択できます。
 
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすコンテナーを&1; つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、アプリケーションを作成したり、コンテナー イメージを追加したりする作業が簡単になります。 Yeoman を使用し、Docker コンテナーを&1; つだけ持った新しいアプリケーション *SimpleContainerApp* を作成してみましょう。 生成されたマニフェスト ファイルを編集することで、サービスは後から追加できます。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすコンテナーを 1 つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、アプリケーションを作成したり、コンテナー イメージを追加したりする作業が簡単になります。 Yeoman を使用し、Docker コンテナーを 1 つだけ含むアプリケーション *SimpleContainerApp* を作成してみましょう。 生成されたマニフェスト ファイルを編集することで、サービスは後から追加できます。
+
+## <a name="install-docker-on-your-development-box"></a>開発マシンに Docker をインストールする
+
+次のコマンドを実行して、Linux 開発マシンに Docker をインストールします (OS X 上で Vagrant イメージを使用している場合は、Docker はインストール済みです)。
+
+```bash
+    sudo apt-get install wget
+    wget -qO- https://get.docker.io/ | sh
+```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-1. ターミナルで、「**yo azuresfguest**」と入力します。
+1. ターミナルで、「`yo azuresfguest`」と入力します。
 2. フレームワークには **[コンテナー]** を選択します。
 3. アプリケーションに名前を付けます (例: SimpleContainerApp)。
 4. DockerHub リポジトリにあるコンテナー イメージの URL を指定します。 イメージ パラメーターは、<リポジトリ>/<イメージ名> の形式で指定してください。
@@ -58,26 +68,30 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 1. ローカルの Service Fabric クラスターに接続します。
 
-    ```bash
+```bash
     azure servicefabric cluster connect
-    ```
+```
+
 2. テンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
-    ```bash
+```bash
     ./install.sh
-    ```
+```
+
 3. ブラウザーを開き、http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。
 4. Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 5. アプリケーション インスタンスを削除し、その種類のアプリケーションの登録を解除するには、テンプレートに指定されているアンインストール スクリプトを使用します。
 
-    ```bash
+```bash
     ./uninstall.sh
-    ```
-アプリケーションの例については、[GitHub にある Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)を参照してください。
+```
+
+アプリケーションの例については、[GitHub にある Service Fabric コンテナーのコード サンプルをご覧ください](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
 
 `yo` を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。 
+
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfguest:AddService` を実行します。
 
@@ -110,7 +124,7 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 コンテナー内で実行されるコンマ区切りの一連のコマンドによりオプションの `Commands` 要素を指定することで、入力コマンドを指定することができます。
 
 ## <a name="understand-resource-governance"></a>リソース ガバナンスについて
-リソース ガバナンスは、コンテナー機能の&1; つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言するために使用します。 次のリソースのリソースの制限を設定できます。
+リソース ガバナンスは、コンテナー機能の 1 つです。コンテナーがホスト上で使用できるリソースを制限します。 アプリケーション マニフェストで指定された `ResourceGovernancePolicy` は、サービス コード パッケージのリソース制限を宣言するために使用します。 次のリソースのリソースの制限を設定できます。
 
 * メモリ
 * MemorySwap
@@ -179,7 +193,7 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>コンテナー間での検出と通信の構成
-次の例に示すように、`PortBinding` ポリシーを使用して、コンテナー ポートをサービス マニフェストの `Endpoint` にマップすることができます。 エンドポイント `Endpoint1` は固定ポート (たとえば、ポート 80) を指定できます。 ポートをまったく指定せずにいることもでき、その場合はクラスターのアプリケーションのポート範囲からランダムにポートが選択されます。
+`PortBinding` ポリシーを使うことで、コンテナー ポートをサービス マニフェストの `Endpoint` にマップできます。 エンドポイント `Endpoint1` は固定ポート (たとえば、ポート 80) を指定できます。 ポートをまったく指定せずにいることもでき、その場合はクラスターのアプリケーションのポート範囲からランダムにポートが選択されます。
 
 エンドポイントを指定する場合、Service Fabric は、サービス マニフェストの `Endpoint` タグを使用して、このエンドポイントをネーム サービスに自動的に発行することができます。 これにより、クラスター内で実行されているその他のサービスが解決のための REST クエリを使用してこのコンテナーを検出できます。
 
@@ -301,10 +315,5 @@ Service Fabric の [アプリケーション モデル](service-fabric-applicati
 * [Azure CLI を使用した Service Fabric クラスターの対話操作](service-fabric-azure-cli.md)
 
 <!-- Images -->
-[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+[sf-yeoman]: ./media/service-fabric-deploy-container-linux/sf-container-yeoman1.png
 

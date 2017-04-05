@@ -37,7 +37,7 @@
     ```
    
    > [!NOTE]
-   > Linux 仮想マシンの場合は、`vm create` で `-e` オプションを指定する必要があります。 仮想マシンを作成した後に SSH を有効にすることはできません。 SSH の詳細については、[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
+   > Linux 仮想マシンの場合は、`vm create` で `-e` オプションを指定する必要があります。 仮想マシンを作成した後に SSH を有効にすることはできません。 SSH の詳細については、[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 5. `azure vm show` コマンドを使用して、VM の属性を確認できます。 次の例では、`myVM` という名前の VM の情報が一覧表示されます。
 

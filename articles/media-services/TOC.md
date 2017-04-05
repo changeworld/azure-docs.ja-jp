@@ -41,6 +41,7 @@
 #### [.NET](media-services-dotnet-upload-files.md)
 #### [REST ()](media-services-rest-upload-files.md)
 ### [Aspera を使用した大きなファイルのアップロード](media-services-upload-files-with-aspera.md)
+### [StorSimple を使用したファイルのアップロード](media-services-upload-files-from-storsimple.md)
 ### [既存の BLOB のコピー](media-services-copying-existing-blob.md)
 
 ## [コンテンツのエンコード](media-services-encode-asset.md)

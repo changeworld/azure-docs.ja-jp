@@ -4,6 +4,7 @@
 # 作業の開始
 ## [ポータルでスケール セットをデプロイする](virtual-machine-scale-sets-portal-create.md)
 ## [PowerShell または Azure CLI を使用してスケール セットをデプロイする](virtual-machine-scale-sets-create.md)
+## [テンプレートを使用して自動スケール アプリをデプロイする](virtual-machine-scale-sets-deploy-scaling-app-template.md)
 
 # 方法
 ## 計画と設計

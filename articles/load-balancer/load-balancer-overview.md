@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 93577703dd2bc1409250c3df12c2d6265f3f4634
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 2f0b7a04f4b732277abc65dd5fe0844d6e906496
+ms.lasthandoff: 03/30/2017
 
 ---
 
@@ -111,7 +112,7 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 
     仮想マシンによって開始された新しい送信接続ごとに、送信ポートもロード バランサーによって割り当てられます。 外部ホストは、仮想 IP (VIP) の割り当てポートでトラフィックを認識します。 大量の送信接続が必要なシナリオでは、VM が SNAT 専用の送信 IP アドレスを使用できるように、 [インスタンスレベル パブリック IP](../virtual-network/virtual-networks-instance-level-public-ip.md) アドレスを使用することをお勧めします。 これにより、ポートの枯渇のリスクが軽減されます。
 
-    VIP またはインスタンスレベル パブリック IP (PIP) で使用できるポートの最大数は、64,000 です。 これは TCP の標準的な限度です。
+    このトピックの詳細については、[送信接続](load-balancer-outbound-connections.md)に関する記事をご覧ください。
 
 ### <a name="support-for-multiple-load-balanced-ip-addresses-for-virtual-machines"></a>仮想マシンの複数の負荷分散された IP アドレスのサポート
 負荷分散された複数のパブリック IP アドレスを、一連の仮想マシンに割り当てることができます。 この機能を使用して、複数の SSL Web サイトや複数の SQL Server AlwaysOn 可用性グループ リスナーを同じ仮想マシン セット上にホストすることができます。 詳細については、[クラウド サービスごとの複数の VIP](load-balancer-multivip.md) に関する記事をご覧ください。
@@ -125,10 +126,5 @@ Resource Manager デプロイメント モデルでは、クラウド サービ�
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 
 [インターネットに接続するロード バランサーの作成の開始](load-balancer-get-started-internet-arm-ps.md)
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

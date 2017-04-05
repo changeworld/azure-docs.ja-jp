@@ -1,12 +1,12 @@
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-|  [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
+| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> |リージョンあたり 10,000 |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
 | [Storage アカウント](../articles/storage/storage-create-storage-account.md) 数 |200 |200<sup>2</sup> |
 | サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |
-| [可用性セット](../articles/virtual-machines/virtual-machines-windows-manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 数 |リージョンあたり 2000 件 |リージョンあたり 2000 件 |
+| [可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 数 |リージョンあたり 2000 件 |リージョンあたり 2000 件 |
 | リソース マネージャー API 読み取り数 |1 時間あたり 15000 |1 時間あたり 15000 |
 | リソース マネージャー API 書き込み数 |1 時間あたり 1200 |1 時間あたり 1200 |
 | リソース マネージャー API 要求のサイズ |4194304 バイト |4194304 バイト |
@@ -24,9 +24,4 @@
 > <!-- -->
 > 
 > 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

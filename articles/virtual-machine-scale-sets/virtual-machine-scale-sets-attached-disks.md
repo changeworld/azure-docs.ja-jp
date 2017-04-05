@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 2/6/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 2939de432fcb5dbf4a7316343c3c6ae102b579e8
-ms.openlocfilehash: 5b34969f9c854775587d402acbedee12f236ab7a
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 91d36d5321f455a2af31093fa460ddf6640942d4
+ms.lasthandoff: 03/31/2017
 
 
 ---
@@ -28,7 +29,7 @@ Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets
 >  接続されたデータ ディスクが定義されたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 これを行う便利な方法は、標準スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用することです。
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>接続されたデータ ディスクを備えたスケール セットの作成
-接続されたディスクを備えたスケール セットを簡単に作成する方法の&1; つに、[Azure CLI](https://github.com/Azure/azure-cli) の _vmss create_ コマンドを使う方法があります。 次の例では、Azure リソース グループと、それぞれ 50 GB と 100 GB の 2 つの接続されたデータ ディスクを備えた 10 台の Ubuntu VM の VM スケール セットを作成します。
+接続されたディスクを備えたスケール セットを簡単に作成する方法の 1 つに、[Azure CLI](https://github.com/Azure/azure-cli) の _vmss create_ コマンドを使う方法があります。 次の例では、Azure リソース グループと、それぞれ 50 GB と 100 GB の 2 つの接続されたデータ ディスクを備えた 10 台の Ubuntu VM の VM スケール セットを作成します。
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
@@ -37,7 +38,7 @@ _vmss create_ コマンドでは、構成値を指定しない場合に既定で
 ```bash
 az vmss create --help
 ```
-接続されたデータ ディスクを備えたスケール セットを作成するもう&1; つの方法として、Azure Resource Manager テンプレートにスケール セットを定義し、_storageProfile_ に _dataDisks_ セクションを含め、テンプレートをデプロイする方法があります。 上記の 50 GB および 100 GB のディスクの例をテンプレートで定義するには、次のように記述します。
+接続されたデータ ディスクを備えたスケール セットを作成するもう 1 つの方法として、Azure Resource Manager テンプレートにスケール セットを定義し、_storageProfile_ に _dataDisks_ セクションを含め、テンプレートをデプロイする方法があります。 上記の 50 GB および 100 GB のディスクの例をテンプレートで定義するには、次のように記述します。
 ```json
 "dataDisks": [
     {
@@ -62,7 +63,7 @@ Azure CLI の _az vmss disk attach_ コマンドを使うと、データ ディ�
 az vmss disk attach -g dsktest -n dskvmss --size-gb 50 --lun 3
 ```
 > [!NOTE]
-> VM サイズが異なると、サポートされる接続されたドライブの数に関する制限も異なります。 新しいディスクを追加する前に、[仮想マシンのサイズ特性](../virtual-machines/virtual-machines-windows-sizes.md)を確認してください。
+> VM サイズが異なると、サポートされる接続されたドライブの数に関する制限も異なります。 新しいディスクを追加する前に、[仮想マシンのサイズ特性](../virtual-machines/windows/sizes.md)を確認してください。
 
 また、スケール セット定義の _storageProfile_ の _dataDisks_ プロパティに新しいエントリを追加し、その変更を適用してディスクを追加する方法もあります。 これをテストするには、[Azure リソース エクスプローラー](https://resources.azure.com/)で既存のスケール セット定義を見つけます。 _[編集]_ を選択し、データ ディスクの一覧に新しいディスクを追加します。 例: ここでは、上の例を使用しています。
 ```json
@@ -106,10 +107,5 @@ Azure Managed Disks と、スケール セットに接続されたデータ デ�
 
 スケール セット内の接続されたデータ ディスクに対する Azure Portal でのサポートは、最初は制限されています。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
