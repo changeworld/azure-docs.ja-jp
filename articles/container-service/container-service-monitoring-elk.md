@@ -4,7 +4,7 @@ description: "ELK (Elasticsearch、Logstash、Kibana) を使って Azure Contain
 services: container-service
 documentationcenter: 
 author: sauryadas
-manager: dan.lepow
+manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: "コンテナー, DC/OS, Azure, 監視, ELK"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 03/27/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 9433eb9f734dbe1b815074f86b9a691b4d16b5c8
-ms.openlocfilehash: c372c4a04de61f1eace81418ec6dea054007ec1f
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fa17900f8a752d692a62e47d301651cc4f435f06
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -63,12 +64,10 @@ Kibana ダッシュボードはポート 5601 でデプロイされるため、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Elasticsearch、Logstash、Kibana に関する詳細については、[エラスティック スタックに関するドキュメント](https://www.elastic.co/guide/index.html)を参照してください。
+* システムおよびアプリケーションのログ転送とセットアップについては、「[Log Management in DC/OS with ELK (ELK での DC/OS のログ管理)](https://docs.mesosphere.com/1.8/administration/logging/elk/)」を参照してください。
+
+* ログをフィルター処理するには、「[Filtering Logs with ELK (ELK でのログのフィルター処理)](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/)」を参照してください。 
+
  
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

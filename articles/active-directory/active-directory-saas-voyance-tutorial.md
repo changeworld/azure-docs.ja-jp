@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d316178b9d3451eaefe88a8245538aef42b57a85
-ms.openlocfilehash: 466b16cf391f6de101b6d212ad51d296d77cc804
-ms.lasthandoff: 12/07/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 0746f010e8d001a66f8de0a32ea0147774da657b
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/07/2016
 Voyance と Azure AD の統合には、次の利点があります。
 
 - Voyance にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Voyance にサインオン (シングル サインオン) できるようにします。
+- ユーザーが自分の Azure AD アカウントで自動的に Voyance シングル サインオン (SSO) にサインオンできるようにできます。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -37,27 +37,25 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Azure AD と Voyance の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Voyance でのシングル サインオンが有効なサブスクリプション
+- Voyance での SSO が有効なサブスクリプション
 
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Voyance の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
-
-## <a name="adding-voyance-from-the-gallery"></a>ギャラリーからの Voyance の追加
+## <a name="add-voyance-from-the-gallery"></a>ギャラリーからの Voyance の追加
 Azure AD への Voyance の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Voyance を追加する必要があります。
 
 **ギャラリーから Voyance を追加するには、次の手順に従います。**
@@ -89,10 +87,10 @@ Azure AD への Voyance の統合を構成するには、ギャラリーから�
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_0001.png)
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Voyance で Azure AD のシングル サインオンを構成し、テストします。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Voyance で Azure AD の SSO を構成しテストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Voyance ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Voyance の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Voyance ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Voyance の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を、Voyance の **[Username]** の値として割り当てます。
 
@@ -102,9 +100,9 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Voyance のテスト ユーザーの作成](#creating-a-voyance-test-user)** - Voyance で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Voyance アプリケーションでシングル サインオンを構成します。
 
@@ -122,23 +120,19 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_03.png)
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.nyansa.com` のパターンを使用して URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://<company name>.nyansa.com/saml/create/` のパターンを使用して URL を入力します。
-
-    c. **[次へ]** をクリックします。
+  1. **[識別子]** ボックスに、`https://<company name>.nyansa.com` のパターンを使用して URL を入力します。
+  2. **[応答 URL]** ボックスに、`https://<company name>.nyansa.com/saml/create/` のパターンを使用して URL を入力します。
+  3. **[次へ]**をクリックします。
 
 4. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** をクリックし、**サインオン URL** を入力して、**[次へ]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_04.png)
+  1. **[サインオン URL]** ボックスに、`https://<company name>.nyansa.com/` のパターンを使用して URL を入力します。
+  2. **[次へ]**をクリックします。
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.nyansa.com/` のパターンを使用して URL を入力します。
-
-    b. ページの下部にある **[次へ]**」を参照してください。
-
-    > [!NOTE]
-    > 実際のサインオン URL、識別子、応答 URL で値を更新する必要があることに注意してください。 これらの値を取得するには、[Voyance サポート チーム](emaiLto:support@nyansa.com)に問い合わせてください。
+      >[!NOTE]
+      >実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。 これらの値を取得するには、[Voyance サポート チーム](emaiLto:support@nyansa.com)に問い合わせてください。
+      >
 
 5. **[Voyance でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -150,7 +144,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
     
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_001.png) 
 
-8. **[管理の設定]** をクリックします。
+8. **[管理者設定]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_002.png)
 
@@ -158,21 +152,17 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_003.png)
 
-10. **[SSO is disabled](SSO の無効化)** ボタンをクリックして、Azure AD を SAML 2.0 を使用する IdP として構成します。
+10. **[SSO is disabled]** (SSO は無効) ボタンをクリックして、SAML 2.0 を使用する IdP として Azure AD を構成します。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_004.png)
 
 11. **SAML V2** セクションに移動して、次の手順を実行します。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_005.png)
-
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Enabled]**を選択します。
-
-    b. **[IdP Login URL](IdP ログイン URL)** ボックスに、Azure AD アプリケーションの構成ウィザードの **[SAML SSO URL]** の値を入力します。
-
-    c. Base64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[IdP 証明書]** ボックスに貼り付けます。
-
-    d. **[保存]** ボタンをクリックします。
+ 1. **[Enabled]**を選択します。
+ 2. **IdP Login URL \(IdP ログイン URL)** ボックスに、Azure AD アプリケーションの構成ウィザードの **[SAML SSO URL]** の値を入力します。
+ 3. Base64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[IdP 証明書]** ボックスに貼り付けます。
+ 4. **[Save]**をクリックします。
 
 12. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
 
@@ -183,7 +173,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
     ![Azure AD のシングル サインオン][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -207,26 +197,18 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-voyance-tutorial/create_aaduser_05.png) 
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-
-    c. **[次へ]**をクリックします。
+ 1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+ 2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+ 3. **[次へ]**をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-voyance-tutorial/create_aaduser_06.png) 
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-
-    e. **[次へ]**をクリックします。
+ 1. **[名]** ボックスに「**Britta**」と入力します。  
+ 2. **[姓]** ボックスに「**Simon**」と入力します。
+ 3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+ 4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+ 5. **[次へ]**をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
@@ -235,24 +217,20 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-voyance-tutorial/create_aaduser_08.png) 
+ 1. **[新しいパスワード]** の値を書き留めます。
+ 2. ページの下部にある **[完了]**」を参照してください。   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-
-    b. ページの下部にある **[完了]**」を参照してください。   
-
-
-
-### <a name="creating-a-voyance-test-user"></a>Voyance のテスト ユーザーの作成
+### <a name="create-a-voyance-test-user"></a>Voyance のテスト ユーザーの作成
 
 このセクションの目的は、Voyance で Britta Simon というユーザーを作成することです。 Voyance では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Voyance ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、[Voyance のサポート チーム](emaiLto:support@nyansa.com)にお問い合わせください。
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、[Voyance のサポート チーム](emaiLto:support@nyansa.com)にお問い合わせください。
+>
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Voyance へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -279,8 +257,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
     ![ユーザーの割り当て][205]
 
 
-
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 

@@ -15,8 +15,9 @@ ms.workload: identity
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2048c2786cbe7e237f7a72f5a73a4b135ed60088
-ms.openlocfilehash: cf4ee6d18d5ab3b0f53ec5e8ab80d6e91864a103
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 48531d69fcefed27785e0e1ae667274fa48ea1d2
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -57,19 +58,15 @@ Azure AD にエクスポートするようにステージングされた削除�
 
 すべての削除が望まれる場合、次のように操作します。
 
-1. この保護を一時的に無効にし、それらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold`を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
+1. 現在の削除のしきい値を取得するには、PowerShell コマンドレット `Get-ADSyncExportDeletionThreshold` を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。 既定値は 500 です。
+2. この保護を一時的に無効にし、それらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold`を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
    ![資格情報](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/credentials.png)
-2. Azure Active Directory Connector が選択されている状態で、**[実行]** アクションを選択し、**[エクスポート]** を選択します。
-3. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold`を実行します。
+3. Azure Active Directory Connector が選択されている状態で、**[実行]** アクションを選択し、**[エクスポート]** を選択します。
+4. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`を実行します。 現在の削除のしきい値を取得する場合、500 を通知する値に置き換えます。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
 
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

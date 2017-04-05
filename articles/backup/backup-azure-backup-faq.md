@@ -17,9 +17,9 @@ ms.topic: get-started-article
 ms.date: 3/10/2017
 ms.author: markgal;giridham;arunak;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 463e2a8af1fd319b396c6a769896344cac5f9f32
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: 87d500d886feb2dbd61d15d5a980ab2c4018c2f2
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -40,8 +40,8 @@ ms.lasthandoff: 03/14/2017
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>別のデータ センターにサーバーを登録する方法を教えてください。<br/>
 バックアップ データは登録されているコンテナーのデータセンターに送信されます。 データセンターを変更する最も簡単な方法は、エージェントをアンインストールしてから再インストールし、変更先のデータセンターに属している新しいコンテナーに登録する方法です。
 
-### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが&1; つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
-同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで&2; 番目、ストレージ サーバーで&3; 番目の暗号化パスフレーズを使用することができます。
+### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
+同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>キャッシュ フォルダーの最小サイズ要件を教えてください。 <br/>
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。 キャッシュ フォルダーは、データの格納に必要なスペースの 5% に設定する必要があります。
@@ -181,7 +181,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 はい、Backup サービスには、PowerShell スクリプトで使用できるイベント ベースのアラートがいくつかあります。 詳細については、[通知の構成](backup-azure-monitor-vms.md#configure-notifications)に関するページをご覧ください。
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>バックアップ ジョブをスケジュール設定できる時刻や回数に制限はありますか。<br/>
-はい。 Windows Server または Windows ワークステーションでは、1 日に最大&3; 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大&2; 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に&1; 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
+はい。 Windows Server または Windows ワークステーションでは、1 日に最大 3 回バックアップ ジョブを実行できます。 System Center DPM では、1 日に最大 2 回バックアップ ジョブを実行できます。 IaaS VM では、1 日に 1 回バックアップ ジョブを実行できます。 Windows Server または Windows ワークステーションのスケジューリング ポリシーを使用して毎日または毎週のスケジュールを指定することができます。 System Center DPM を使用した場合、スケジュールには毎日、毎週、毎月、毎年を指定できます。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップしたデータよりも小さいのはなぜでしょうか。<br/>
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、バックアップ コンテナー内のデータは 30 ～ 40% 小さくなります。
@@ -213,7 +213,7 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 
 **Azure VM バックアップのサポート:**
 
-* **Linux**: Azure Backup は、 [Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md) をサポートしています (Core OS Linux を除く)。  他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
+* **Linux**: Azure Backup は、 [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md) をサポートしています (Core OS Linux を除く)。  他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
 * **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 
 
@@ -231,9 +231,9 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 
 | データソース | 詳細 |
 |:---:|:--- |
-| ボリューム |サーバーまたはクライアント コンピューターの&1; つのボリュームからバックアップされるデータの量 |
+| ボリューム |サーバーまたはクライアント コンピューターの 1 つのボリュームからバックアップされるデータの量 |
 | Hyper-V 仮想マシン |バックアップ対象の仮想マシンのすべての VHD のデータの合計 |
-| Microsoft SQL Server データベース |バックアップ対象の&1; つの SQL データベースのサイズ |
+| Microsoft SQL Server データベース |バックアップ対象の 1 つの SQL データベースのサイズ |
 | Microsoft SharePoint |バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計 |
 | Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
 | BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
-ms.openlocfilehash: 19bd7971e172f32367ee2dae903389e52709a306
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 44b5314a250d88f7ea2f8db2c1270a9090f083cd
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -32,16 +32,17 @@ ms.lasthandoff: 12/14/2016
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. Sprinklr のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-sprinklr-tutorial/IC782900.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-sprinklr"></a>Sprinklr のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-sprinklr"></a>Sprinklr のアプリケーション統合の有効化
 このセクションでは、Sprinklr のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-sprinklr-perform-the-following-steps"></a>Sprinklr のアプリケーション統合を有効にするには、次の手順に従います。
+**Sprinklr のアプリケーション統合を有効にするには、次の手順に従います。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Active Directory](./media/active-directory-saas-sprinklr-tutorial/IC700993.png "Active Directory")
@@ -68,12 +69,16 @@ ms.lasthandoff: 12/14/2016
    
     ![Sprinklr](./media/active-directory-saas-sprinklr-tutorial/IC782902.png "Sprinklr")
 
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Sprinklr で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。  
+## <a name="configure-single-sign-on"></a>Configure single sign-on
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Sprinklr で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。 
+
+
 この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順に従います。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **Sprinklr** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "Configure single sign-on")
@@ -107,41 +112,30 @@ ms.lasthandoff: 12/14/2016
 9. **[Single Sign on]** ページで、次の手順に従います。
    
     ![Single Sign-Ons](./media/active-directory-saas-sprinklr-tutorial/IC782910.png "Single Sign-Ons")
-   
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Name]** テキスト ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
-   
-    b. **[Enabled]**を選択します。
-   
-    c. **[Use new SSO Certificate]**を選択します。
-
-    d. ダウンロードした証明書から **base-64 でエンコードされた** ファイルを作成します。  
-      
-    > [!TIP]
-    > 詳細については、 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
-    > 
-    > 
-   
-    e. base-64 でエンコードされた証明書をノートパッドで開き、その内容をクリップボードにコピーして、 **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
-   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure クラシック ポータルの **[Sprinklr でのシングル サインオンの構成]** ダイアログ ページで、**ID プロバイダーの ID** の値をコピーし、**[エンティティ ID]** ボックスに貼り付けます。
-   
-    g. Azure クラシック ポータルで、**[Sprinklr でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[Identity Provider Login URL (ID プロバイダーのログイン URL)]** ボックスに貼り付けます。
-   
-    h. Azure クラシック ポータルで、**[Sprinklr でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Identity Provider Logout URL (ID プロバイダーのログアウト URL)]** ボックスに貼り付けます。
-   
-    i. **[SAML User ID Type]** として**[Assertion contains User”s sprinklr.com username]** を選択します。
-   
-    j. **[SAML User ID Location]** として **[User ID is in the Name Identifier element of the Subject statement]** を選択します。
-   
-    k. **[Save]**をクリックします。
+  1. **[Name]** テキスト ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
+  2. **[Enabled]**を選択します。
+  3. **[Use new SSO Certificate]**を選択します。
+  4. ダウンロードした証明書から **base-64 でエンコードされた** ファイルを作成します。  
+  
+     >[!TIP]
+     >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。 
+     >    
+     
+  5. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
+  6. Azure クラシック ポータルの **[Sprinklr での SSO の構成]** ダイアログ ボックスで、次の手順を実行します。
+     *  **[プロバイダー ID の識別]** の値をコピーし、**[エンティティ ID]** テキストボックスに貼り付けます。
+     * **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダーのログイン URL]** テキストボックスに貼り付けます。
+     * **[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダーのログアウト URL]** テキストボックスに貼り付けます。
+  7. **[SAML User ID Type]** として**[Assertion contains User”s sprinklr.com username]** を選択します。
+  8. **[SAML User ID Location]** として **[User ID is in the Name Identifier element of the Subject statement]** を選択します。
+  9. **[Save]**をクリックします。
        
     ![SAML](./media/active-directory-saas-sprinklr-tutorial/IC782911.png "SAML")
-
 10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
     
     ![シングル サインオンの構成](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "Configure single sign-on")
 
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 AAD ユーザーがサインインできるようにするには、ユーザーを Sprinklr アプリケーションにプロビジョニングする必要があります。  
 このセクションでは、Sprinklr で AAD ユーザー アカウントを作成する方法について説明します。
 
@@ -162,43 +156,35 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 5. **[Edit user]** ダイアログで、次の手順に従います。
    
-    ![Edit user](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user")
+    ![Edit user](./media/active-directory-saas-sprinklr-tutorial/IC782916.png "Edit user") 
+  1. **[Email]**、**[First Name]**、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
+  2. **[Password Disabled]**を選択します。
+  3. **[Language]**を選択します。
+  4. **[User Type]**を選択します。
+  5. **[Update]**をクリックします。
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Email]**、**[First Name]**、および **[Last Name]** テキスト ボックスに、プロビジョニングする Azure AD のユーザー アカウントの情報を入力します。
-   
-    b. **[Password Disabled]**を選択します。
-   
-    c. **[Language]**を選択します。
-   
-    d. **[User Type]**を選択します。
-   
-    e. **[Update]**をクリックします。
-   
-    > [!IMPORTANT]
-    > **[[Password Disabled]]** を選択する必要があります。
-    > 
-    > 
+     >[!IMPORTANT]
+     >**[[Password Disabled]]** を選択する必要があります。 
+     > 
 
 6. **[Role]**に移動して、次の手順に従います。
    
     ![Partner Roles](./media/active-directory-saas-sprinklr-tutorial/IC782917.png "Partner Roles")
-   
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Global]** ボックスの一覧から、**[ALL\_Permissions]** を選択します。
-    
-    b. **[Update]**をクリックします。
+ 1. **[Global]** ボックスの一覧から、**[ALL\_Permissions]** を選択します。  
+ 2. **[Update]**をクリックします。
 
-> [!NOTE]
-> Sprinklr から提供されている他の Sprinklr ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>Sprinklr から提供されている他の Sprinklr ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-sprinklr-perform-the-following-steps"></a>ユーザーを Sprinklr に割り当てるには、次の手順に従います。
+**ユーザーを Sprinklr に割り当てるには、次の手順に従います。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2. **Sprinklr** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2. **Sprinklr ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
     ![ユーザーの割り当て](./media/active-directory-saas-sprinklr-tutorial/IC782918.png "Assign users")
 
@@ -206,6 +192,6 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
    
     ![はい](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
 

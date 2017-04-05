@@ -39,7 +39,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 ## <a name="what-are-the-characteristics-of-metrics"></a>メトリックの特性
 メトリックの特性を次に示します。
 
-* すべてのメトリックが **1 分間隔**です。 リソースから&1; 分ごとにメトリック値が届くため、リソースの状態と正常性をほぼリアルタイムで把握できます。
+* すべてのメトリックが **1 分間隔**です。 リソースから 1 分ごとにメトリック値が届くため、リソースの状態と正常性をほぼリアルタイムで把握できます。
 * メトリックは**すぐに使用可能です**。 追加の診断を設定する必要もありません。
 * 各メトリックの **30 日間の履歴** にアクセスできます。 リソースのパフォーマンスまたは正常性における最近の傾向や月単位の傾向をすばやく確認できます。
 
@@ -77,7 +77,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 4. 使用可能なメトリックの一覧を表示します。 次に、対象のメトリックを選択し、プロットします。
 5. それをダッシュボードに固定するには、右上隅にあるピン アイコンをクリックします。
 
-   ![Azure Monitor の&1; か所ですべてのメトリックにアクセス](./media/monitoring-overview-metrics/MetricsOverview2.png)
+   ![Azure Monitor の 1 か所ですべてのメトリックにアクセス](./media/monitoring-overview-metrics/MetricsOverview2.png)
 
 > [!NOTE]
 > ホスト レベルのメトリックには、VM (Azure Resource Manager ベース) および仮想マシン スケール セットからアクセスできます。その際、追加の診断設定は不要です。 この新しいホスト レベルのメトリックは、Windows と Linux のインスタンスで使用できます。 VM や仮想マシン スケール セットで Azure 診断をオンにしている場合にアクセスできる、ゲスト OS レベルのメトリックと混同しないでください。 Azure 診断の構成の詳細については、「[What is Microsoft Azure Diagnostics (Microsoft Azure 診断とは)](../azure-diagnostics.md)」を参照してください。
@@ -85,7 +85,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 >
 
 ## <a name="access-metrics-via-the-rest-api"></a>REST API を使用してメトリックにアクセスする
-Azure メトリックには、Azure Monitor API を使用してアクセスできます。 メトリックの検出とアクセスに役立つ API は&2; つあります。
+Azure メトリックには、Azure Monitor API を使用してアクセスできます。 メトリックの検出とアクセスに役立つ API は 2 つあります。
 
 * [Azure Monitor メトリック定義 REST API](https://msdn.microsoft.com/library/mt743621.aspx) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
 * [Azure Monitor メトリック REST API](https://msdn.microsoft.com/library/mt743622.aspx) を使用すると、実際のメトリック データにアクセスできます。
@@ -123,7 +123,6 @@ Azure Monitor は、新しいメトリック インフラストラクチャで�
 * VM (Azure Resource Manager ベース)
 * 仮想マシン スケール セット
 * Batch
-
 * Event Hubs 名前空間
 * Service Bus 名前空間 (Premium SKU のみ)
 * SQL Database (バージョン 12)

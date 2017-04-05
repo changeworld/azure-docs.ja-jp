@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: cc095b419eae7e85590cdd323a5cf3809c45452e
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 8c4c8db3cf57537dd77d33b3ded2dc24167f511f
+ms.lasthandoff: 03/25/2017
 
 ---
 
@@ -67,27 +67,39 @@ Traffic Manager では、バニティ DNS 名をマッピングするために D
 
 Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。 この機能を要求するためにサポートを登録するには、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。 
+いいえ。現時点では、Traffic Manager は地理的なルーティング方法とパフォーマンスによるルーティング方法で検索を実行するときに、受信する DNS クエリの送信元 IP アドレス (ほとんどの場合、DNS リゾルバーの IP アドレス) のみを考慮します。  
+具体的には、クライアントのサブネット アドレスをサポートするリゾルバーから DNS サーバーにクライアントのサブネット アドレスを伝えることができる [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) を提供する [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871) は、Traffic Manager では現在サポートされていません。 この機能を要求する場合は、[コミュニティ フィードバック サイト](https://feedback.azure.com/forums/217313-networking)で支持を表明してください。
+
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager の地理的トラフィック ルーティング方法
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>地理的ルーティングが役立つ例を教えてください。 
-地理的ルーティング タイプは、Azure をご利用のお客様がそのユーザーを地理的リージョンに基づいて識別する必要がある状況で役立ちます。 たとえば特定の地域のユーザーにのみ、他の地域とは異なったエクスペリエンスを提供することができます。 また別の例として、ローカル データの主権性に関する (特定の地域のユーザーに対し、その地域のエンドポイントからのみサービスを提供する) 義務への準拠が挙げられます。
+地理的ルーティング タイプは、Azure をご利用のお客様が地理的リージョンに基づいてユーザーを識別する必要がある場合に使用できます。 たとえば、地理的トラフィック ルーティング方法を使用して、特定のリージョンのユーザーに、他のリージョンとは異なるユーザー エクスペリエンスを提供できます。 また別の例として、ローカル データの主権性に関する (特定の地域のユーザーに対し、その地域のエンドポイントからのみサービスを提供する) 義務への準拠が挙げられます。
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Traffic Manager の地理的ルーティングがサポートされる地域を教えてください。 
-Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新に保たれ、変更があれば反映されます。また、同じ情報は [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使ってプログラムから取得することもできます。 
+Traffic Manager によって使用される国/地域階層は、[こちら](traffic-manager-geographic-regions.md)でご覧いただけます。 このページは常に最新の状態に保たれ、変更があれば反映されます。また、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、同じ情報をプログラムで取得することもできます。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>ユーザーがどこからクエリを実行しているのかを Traffic Manager はどのようにして判別しているのですか。 
 Traffic Manager は、クエリの送信元 IP (これは通常、ユーザーの代わりにクエリを実行するローカル DNS リゾルバになります) を調べ、地域と IP とを対応付ける内部マップを使って場所を特定します。 このマップは、インターネットにおける変化を考慮して絶えず更新されます。 
+
+### <a name="is-it-guaranteed-that-traffic-manager-will-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Traffic Manager では、どのような場合でもユーザーの正確な地理的場所を正しく特定することが保証されていますか。
+いいえ。次の理由から、Traffic Manager では、DNS クエリの送信元 IP アドレスから推測される地理的リージョンがユーザーの場所に常に対応していることを保証できるわけではありません。 
+
+- 第 1 に、前の FAQ で説明するように、送信元 IP アドレスはユーザーの代わりに検索を実行する DNS リゾルバーの IP アドレスです。 DNS リゾルバーの地理的な場所は、ユーザーの地理的な場所に適したプロキシですが、この DNS リゾルバー サービスとお客様が使用する DNS リゾルバー サービスのフットプリントによっては、DNS リゾルバーの地理的な場所が異なる場合もあります。 たとえば、マレーシアのお客様が、シンガポールの DNS サーバーを使用してユーザー/デバイスのクエリ解決を処理する DNS リゾルバー サービスを使用することをデバイスの設定で指定しているとします。 この場合、Traffic Manager は、シンガポールの場所に対応するリゾルバーの IP アドレスのみを認識します。 このページのクライアント サブネット アドレスのサポートに関する FAQ もご覧ください。
+
+- 第 2 に、Traffic Manager は内部マップを使用して、IP アドレスの地理的リージョンへの変換を実行します。 このマップは、インターネットの進化し続ける特性を考慮し、精度を高めるために継続的に検証され、更新されていますが、その情報が一部の IP アドレスの地理的な場所を正確に表していない可能性もあります。
+
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>地理的ルーティングでは、エンドポイントが、その構成に使用された地域と物理的に同じ地域に存在する必要があるのですか。 
 いいえ。どの地域をエンドポイントにマッピングできるかが、エンドポイントの場所によって制限されることはありません。 たとえば米国中部の Azure リージョンのエンドポイントに、インドからのすべてのユーザーを誘導することもできます。
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>地理的ルーティングを行うための構成がなされていないプロファイルのエンドポイントにリージョンを割り当てることはできますか。 
-はい。[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使えば、プロファイルのルーティング方法が地理的ルーティングではない場合でも、そのプロファイルのエンドポイントにリージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、それらのマッピングが Traffic Manager によって使われるようになります。
+はい。プロファイルのルーティング方法が地理的ルーティングではない場合でも、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使用して、そのプロファイルのエンドポイントに地理的リージョンを割り当てることができます。 プロファイルのルーティング タイプが地理的ルーティングではない場合、この構成は無視されます。 そのようなプロファイルを後から地理的ルーティング タイプに変更した場合、それらのマッピングが Traffic Manager によって使われるようになります。
 
 
 ### <a name="when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic-i-am-getting-an-error"></a>既存のプロファイルのルーティング方法を地理的ルーティングに変更しようとした場合、エラーは発生しますか。
-地理的ルーティングが適用されているプロファイル下のすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントをその地理的リージョン マッピングと共に追加します。 
+地理的ルーティングが適用されているプロファイルのすべてのエンドポイントには、少なくとも 1 つのリージョンが対応付けられている必要があります。 既にあるプロファイルを地理的ルーティング タイプに変換するにはまず、[Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を使って、そのすべてのエンドポイントにリージョンを関連付ける必要があります。そのうえでルーティング タイプを地理的ルーティングに変更してください。 ポータルを使用する場合は、まずエンドポイントを削除し、プロファイルのルーティング方法を地理的ルーティングに変更してから、エンドポイントをその地理的リージョン マッピングと共に追加します。 
 
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>地理的ルーティングを有効にしたプロファイルには、エンドポイントではなく、入れ子にしたプロファイルを作成することが強く推奨されているのはなぜですか。 
@@ -95,7 +107,7 @@ Traffic Manager は、クエリの送信元 IP (これは通常、ユーザー�
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>このルーティング タイプをサポートする API バージョンに制限はありますか。
 
-はい。地理的ルーティング タイプのサポートは、API バージョン 2017-03-01 以降に限られます。 それより前の API バージョンで地理的ルーティング タイプのプロファイルを作成したりエンドポイントに地理的リージョンを割り当てたりすることはできません。 以前のバージョンの API を使って Azure サブスクリプションからプロファイルを取得した場合、地理的ルーティング タイプのプロファイルは返されません。 加えて、以前のバージョンの API を使用して取得したプロファイルは、そのエンドポイントにリージョンが割り当てられていても、リージョンの割り当ては表示されません。
+はい。地理的ルーティング タイプのサポートは、API バージョン 2017-03-01 以降に限られます。 それより前の API バージョンを使用して、地理的ルーティング タイプのプロファイルを作成したり、エンドポイントに地理的リージョンを割り当てたりすることはできません。 以前の API バージョンを使用して Azure サブスクリプションからプロファイルを取得した場合、地理的ルーティング タイプのプロファイルは返されません。 加えて、以前のバージョンの API を使用して取得したプロファイルは、そのエンドポイントにリージョンが割り当てられていても、リージョンの割り当ては表示されません。
 
 
 

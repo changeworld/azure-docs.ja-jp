@@ -129,10 +129,5 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 2. ショートカット メニューで **[シャットダウン]** コマンドをクリックするか、**[構成]** をクリックして仮想マシンの構成ページを表示してから **[シャットダウン]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
-仮想マシンの作成の詳細については、[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページおよび [Azure プレビュー ポータルでの Windows を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+仮想マシンの作成の詳細については、[Linux を実行する仮想マシンの作成](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページおよび [Azure プレビュー ポータルでの Windows を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 

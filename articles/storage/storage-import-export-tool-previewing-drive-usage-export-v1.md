@@ -1,6 +1,6 @@
 ---
-title: "エクスポート ジョブのドライブ使用率のプレビュー | Microsoft Docs"
-description: "Azure Import-Export サービスでエクスポート ジョブに選択した BLOB の一覧をプレビューする方法について説明します"
+title: "Azure Import/Export エクスポート ジョブのドライブ使用率のプレビュー - v1 | Microsoft Docs"
+description: "Azure Import/Export サービスでエクスポート ジョブに選択した BLOB の一覧をプレビューする方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 358e3f2574cab0150c59f96b9bc4d32d959e94a8
-ms.openlocfilehash: 9ba9a3970925466285ae1df4676501fbdd24bd66
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 7bf74247090f91e17f81a9bc98ebfa78334c8c10
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -25,17 +25,23 @@ ms.lasthandoff: 02/16/2017
 # <a name="previewing-drive-usage-for-an-export-job"></a>エクスポート ジョブのドライブ使用率のプレビュー
 エクスポート ジョブを作成する前に、エクスポートする一連の BLOB を選択する必要があります。 Microsoft Azure Import/Export サービスを使用すると、BLOB のパスの一覧や BLOB プレフィックスを使用して、選択した BLOB を表すことができます。  
   
- 次に送信する必要があるドライブの数を決定する必要があります。 Microsoft Azure Import/Export ツールでは、使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューする `PreviewExport` コマンドを提供します。 次のパラメーターを指定できます。  
-  
-|コマンド ライン オプション|Description|  
+次に、送信する必要があるドライブの数を決定する必要があります。 Import/Export ツールでは、使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューする `PreviewExport` コマンドを提供します。
+
+## <a name="command-line-parameters"></a>コマンドライン パラメーター
+
+Import/Export ツールの `PreviewExport` コマンドを使用するときに、次のパラメーターを使用できます。
+
+|コマンド ライン パラメーター|説明|  
 |--------------------------|-----------------|  
 |**/logdir:**<LogDirectory\>|省略可能。 ログ ディレクトリです。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
 |**/sn:**<StorageAccountName\>|必須。 エクスポート ジョブのストレージ アカウント名です。|  
 |**/sk:**<StorageAccountKey\>|コンテナー SAS が指定されていない場合のみ必須。 エクスポート ジョブのストレージ アカウントのアカウント キーです。|  
 |**/csas:**<ContainerSas\>|ストレージ アカウント キーが指定されていない場合のみ必須。 エクスポート ジョブでエクスポートされる BLOB を一覧表示するためのコンテナー SAS です。|  
-|**/ExportBlobListFile:**<ExportBlobListFile\>|必須。 エクスポートする BLOB の BLOB のパスや BLOB のプレフィックスの一覧を含む XML ファイルへのパスです。 Import/Export サービス REST API の [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
+|**/ExportBlobListFile:**<ExportBlobListFile\>|必須。 エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 インポート/エクスポート サービス REST API の [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作の `BlobListBlobPath` 要素で使用されるファイル形式です。|  
 |**/DriveSize:**<DriveSize\>|必須。 エクスポート ジョブに使用するドライブのサイズ (*例:* 500 GB、1.5 TB)。|  
-  
+
+## <a name="command-line-example"></a>コマンドラインの例
+
 次の例は `PreviewExport` コマンドを示しています。  
   
 ```  
@@ -71,6 +77,7 @@ Number of drives needed:        3
         Drive #3:       blobs = 2, occupied space = 131.28 GB    
 ```  
   
-## <a name="see-also"></a>関連項目  
-[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Import/Export ツールの参照](storage-import-export-tool-how-to-v1.md)
 

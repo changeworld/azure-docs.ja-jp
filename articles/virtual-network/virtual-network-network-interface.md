@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: c3e5ad8b7c8325049cb53d709673c7c7ad58108f
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f691f3886fce217ea784237f03a4f02ed58e12ee
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,17 +31,17 @@ ms.lasthandoff: 03/22/2017
 
 この記事では、この図に示した概念を使用する方法について説明します。 次の概念のうちいずれかをクリックすると、記事の中でそのセクションに直接移動できます。
 
-- [ネットワーク インターフェイス](#nics): NIC は Azure Virtual Network (VNet) 内の 1 つのサブネットに接続されています。 図では、**VM1** には 2 つの NIC がアタッチされ、**VM2** には 1 つの NIC がアタッチされています。 各 NIC は、同じ VNet に接続されていますがサブネットは異なります。 このセクションでは、既存の NIC の一覧表示、および NIC の作成、変更、削除を行う手順について説明します。 
-- [IP 構成](#ip-configs): 1 つ以上の IP 構成が各 NIC に関連付けられています。 各 IP 構成には、プライベート IP アドレスが割り当てられています。 IP 構成には、パブリック IP アドレスが割り当てられている場合があります。 図では、**NIC1** と **NIC3** には、いずれも 1 つの IP 構成が関連付けられ、**NIC2** には 2 つの IP 構成が関連付けられています。 NIC1 と NIC3 に割り当てられた IP 構成にはパブリック IP アドレスが割り当てられていますが、NIC2 に割り当てられた IP 構成はどちらにもパブリック IP アドレスが割り当てられていません。 このセクションでは、静的および動的な割り当て方法によってプライベート IP アドレスが割り当てられた IP 構成の作成、変更、削除を行う手順を説明します。 また、IP 構成に対するパブリック IP アドレスの関連付けや関連付け解除の手順も説明します。 
+- [ネットワーク インターフェイス](#nics): NIC は Azure Virtual Network (VNet) 内の 1 つのサブネットに接続されています。 図では、**VM1** には 2 つの NIC がアタッチされ、**VM2** には 1 つの NIC がアタッチされています。 各 NIC は、同じ VNet に接続されていますがサブネットは異なります。 このセクションでは、既存の NIC の一覧表示、および NIC の作成、変更、削除を行う手順について説明します。
+- [IP 構成](#ip-configs): 1 つ以上の IP 構成が各 NIC に関連付けられています。 各 IP 構成には、プライベート IP アドレスが割り当てられています。 IP 構成には、パブリック IP アドレスが割り当てられている場合があります。 図では、**NIC1** と **NIC3** には、いずれも 1 つの IP 構成が関連付けられ、**NIC2** には 2 つの IP 構成が関連付けられています。 NIC1 と NIC3 に割り当てられた IP 構成にはパブリック IP アドレスが割り当てられていますが、NIC2 に割り当てられた IP 構成はどちらにもパブリック IP アドレスが割り当てられていません。 このセクションでは、静的および動的な割り当て方法によってプライベート IP アドレスが割り当てられた IP 構成の作成、変更、削除を行う手順を説明します。 また、IP 構成に対するパブリック IP アドレスの関連付けや関連付け解除の手順も説明します。
 - [ネットワーク セキュリティ グループ](#nsgs): ネットワーク セキュリティ グループ (NSG) には、1 つまたは複数の受信または送信セキュリティ規則が含まれています。 これらの規則は、ネットワーク インターフェイス、サブネット、または両方から送受信できるネットワーク トラフィックのタイプを制御します。 図では、**NIC1** と **NIC3** には NSG が関連付けられていますが、**NIC2** には関連付けられていません。 このセクションでは、NIC に適用された NSG の表示、NIC への NSG の追加、NIC からの NSG の削除を行う手順を説明します。
-- [仮想マシン](#vms): VM には少なくとも 1 つの NIC がアタッチされます。VM のサイズによっては複数の NIC をアタッチできます。 各サイズの VM でサポートされる NIC の数を確認するには、[Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json#size-tables) と [Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json#size-tables) の VM のサイズに関する記事をご覧ください。 このセクションでは、単一または複数の NIC の VM を作成する手順、既存の VM に対して NIC のアタッチおよびデタッチする手順を説明します。
+- [仮想マシン](#vms): VM には少なくとも 1 つの NIC がアタッチされます。VM のサイズによっては複数の NIC をアタッチできます。 各サイズの VM でサポートされる NIC の数を確認するには、[Windows](../virtual-machines/virtual-machines-windows-sizes.md) と [Linux](../virtual-machines/virtual-machines-linux-sizes.md) の VM のサイズに関する記事をご覧ください。 このセクションでは、単一または複数の NIC の VM を作成する手順、既存の VM に対して NIC のアタッチおよびデタッチする手順を説明します。
 
-Azure で NIC と VM を初めて使用する場合は、この記事を読む前に、[初めての Azure Virtual Network の作成](virtual-network-get-started-vnet-subnet.md)に関する記事で演習を行うことをお勧めします。 この演習は VNet と VM を理解することに役立ちます。 
+Azure で NIC と VM を初めて使用する場合は、この記事を読む前に、[初めての Azure Virtual Network の作成](virtual-network-get-started-vnet-subnet.md)に関する記事で演習を行うことをお勧めします。 この演習は VNet と VM を理解することに役立ちます。
 
 この記事は、Azure Resource Manager デプロイメント モデルを通じて作成された VM と NIC を対象としています。 クラシック デプロイメント モデルではなく、Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いについてご不明な点がある場合は、[Azure デプロイメント モデルについて](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の記事をご覧ください。
 
 以降、この記事の各セクションで、NIC に関連したさまざまなタスクの手順を紹介します。 各セクションの内容は次のとおりです。
-- Azure Portal 内からタスクを実行する手順。 これらの手順を行うには、[Azure Portal](http://portal.azure.com) にログインする必要があります。 まだアカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
+- Azure Portal 内でタスクを実行する手順。 これらの手順を行うには、[Azure Portal](http://portal.azure.com) にログインする必要があります。 まだアカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - Azure PowerShell を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従い、PowerShell をインストールして構成してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
 - Azure コマンド ライン インターフェイス (CLI) を使用してタスクを実行するためのコマンドとそのコマンド リファレンスへのリンク。 [Azure CLI 2.0 のインストールと構成の方法](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事の手順に従って、Azure CLI をインストールしてください。 CLI コマンドのヘルプを表示するには、「`az <command> -h`」と入力します。
 
@@ -58,7 +58,7 @@ NIC を作成するには、次の手順を実行します。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。
 3. **[ネットワーク インターフェイス]** ブレードが表示されたら、**[+ 追加]** をクリックします。
 4. 表示された **[ネットワーク インターフェイスの作成]** ブレードで以下の設定の値を入力するか選択し、**[作成]** をクリックします。
-    
+
     |**設定**|**必須**|**詳細**|
     |---|---|---|
     |**名前**|はい|名前は、NIC の作成後に変更することはできません。 選択したリソース グループ内で一意となる名前を使用してください。 名前の付け方については、[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)に関する記事をご覧ください。|
@@ -70,7 +70,7 @@ NIC を作成するには、次の手順を実行します。
     |**[リソース グループ]**|はい| NIC は、アタッチ先の VM や接続先の Vnet と、同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
     |**場所**|はい|NIC のアタッチ先の VM と接続先の Vnet は、同じ場所に存在していることが必要です。|
 
-Azure Portal によって、動的プライベート IP アドレスを使った **ipconfig1** という名前のプライマリ IP 構成が作成され、ユーザーが作成した NIC に関連付けられます。 IP 構成について詳しくは、この記事の「[IP 構成](#ip-configs)」セクションをご覧ください。 NIC を作成するとき、ポータルによって作成される IP 構成の名前の指定、静的なプライベート IP アドレスの割り当て、またはパブリック IP アドレスの割り当てを行うことはできません。 PowerShell または CLI を使用して NIC を作成する場合は、IP 構成名の指定および静的 IP アドレスやパブリック IP アドレスの割り当てを行うことができます。 プライベート IP アドレスを割り当てる方法や、NIC の作成後にパブリック IP アドレスを NIC に関連付けるかどうかを変更することはできます。 NIC の作成後に設定を変更するには、この記事の「[IP 構成の変更](#change-ip-config)」セクションの手順を実行します。 
+Azure Portal によって、動的プライベート IP アドレスを使った **ipconfig1** という名前のプライマリ IP 構成が作成され、ユーザーが作成した NIC に関連付けられます。 IP 構成について詳しくは、この記事の「[IP 構成](#ip-configs)」セクションをご覧ください。 NIC を作成するとき、ポータルによって作成される IP 構成の名前の指定、静的なプライベート IP アドレスの割り当て、またはパブリック IP アドレスの割り当てを行うことはできません。 PowerShell または CLI を使用して NIC を作成する場合は、IP 構成名の指定および静的 IP アドレスやパブリック IP アドレスの割り当てを行うことができます。 プライベート IP アドレスを割り当てる方法や、NIC の作成後にパブリック IP アドレスを NIC に関連付けるかどうかを変更することはできます。 NIC の作成後に設定を変更するには、この記事の「[IP 構成の変更](#change-ip-config)」セクションの手順を実行します。
 
 >[!Note]
 > Azure によって MAC アドレスが NIC に割り当てられるのは、NIC が VM にアタッチされ、VM が最初に起動した後です。 Azure が NIC に割り当てる MAC アドレスは指定できません。 MAC アドレスが NIC に割り当てられると、NIC が削除されるか、プライマリ NIC のプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 IP 構成について詳しくは、この記事の「[IP 構成](#ip-configs)」セクションをご覧ください。
@@ -124,7 +124,7 @@ IP 転送を使用すると、NIC がアタッチされている VM で次が可
 - NIC に割り当てられた IP 構成のいずれかに割り当てられた IP アドレスの 1 つが宛先として指定されていなくても、ネットワーク トラフィックを受信できます。
 - IP 構成のいずれかに割り当てられた IP アドレスとは異なる送信元 IP アドレスを使用してネットワーク トラフィックを送信できます。
 
-トラフィックを受け取る VM と転送を行う必要がある VM にアタッチされているすべての NIC で、設定を有効にする必要があります。 VM は、アタッチされている NIC が 1 つでも複数でも、トラフィックを転送できます。 IP 転送は Azure の設定ですが、ファイアウォール、WAN 最適化、負荷分散アプリケーションなど、トラフィックを転送できるアプリケーションを VM が実行する必要があります。 ネットワーク アプリケーションを実行する VM は、しばしばネットワーク仮想アプライアンス (NVA) と呼ばれます。 すぐにデプロイできる NVA の一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) をご覧ください。 通常、IP 転送はユーザー定義ルートで使用されます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。 
+トラフィックを受け取る VM と転送を行う必要がある VM にアタッチされているすべての NIC で、設定を有効にする必要があります。 VM は、アタッチされている NIC が 1 つでも複数でも、トラフィックを転送できます。 IP 転送は Azure の設定ですが、ファイアウォール、WAN 最適化、負荷分散アプリケーションなど、トラフィックを転送できるアプリケーションを VM が実行する必要があります。 ネットワーク アプリケーションを実行する VM は、しばしばネットワーク仮想アプライアンス (NVA) と呼ばれます。 すぐにデプロイできる NVA の一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) をご覧ください。 通常、IP 転送はユーザー定義ルートで使用されます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事をご覧ください。
 
 NIC の IP 転送設定を変更するには、次の手順を実行します。
 
@@ -188,7 +188,7 @@ NIC に複数の IP アドレスを割り当てると、次のようなシナリ
 ### <a name="create-ip-config"></a>NIC へのセカンダリ IP 構成の追加
 
 [Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事に示されている制限内であれば、必要に応じて任意の数の IP 構成を NIC に追加できます。 NIC に IP 構成を追加するには、次の手順を実行します。
- 
+
 1. IP 構成を追加する NIC について、この記事の[ネットワーク インターフェイス設定の表示](#view-nics)に関するセクションの手順 1 - 3 を実行します。
 2. 選択した NIC のブレードで **[IP 構成]** をクリックします。
 3. IP 構成に対して開くブレードで、**[+ 追加]** をクリックします。
@@ -199,7 +199,7 @@ NIC に複数の IP アドレスを割り当てると、次のようなシナリ
     |**名前**|はい|NIC に対して一意である必要があります。|
     |**型**|はい|IP 構成を既存の NIC に追加しており、各 NIC には必ずプライマリ IP 構成があるため、選択できるオプションは **[セカンダリ]** のみです。|
     |**[プライベート IP アドレスの割り当て]**|はい|**[動的]** アドレスは、VM が停止 (割り当て解除) 状態になってから再起動した場合に変化することがあります。 **[静的]** アドレスは、NIC が削除されるまで解放されません。 別の IP 構成で現在使用されていないサブネット アドレス空間の範囲から IP アドレスを指定します。|
-    |パブリック IP アドレス|なし|**[無効]:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **[有効]:** 既存のパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create)」(パブリック IP アドレス) の記事をご覧ください。|
+    |**パブリック IP アドレス**|いいえ|**[無効]:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **[有効]:** 既存のパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create)」(パブリック IP アドレス) の記事をご覧ください。|
 5. セカンダリ プライベート IP アドレスを VM オペレーティング システムに手動で追加します。これは、[仮想マシンへの複数 IP アドレスの割り当て](virtual-network-multiple-ip-addresses-portal.md#os-config)に関する記事の手順を実行して行います。 VM オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 |**ツール**|**コマンド**|
@@ -249,14 +249,14 @@ NSG を NIC に関連付けたり、NSG と NIC の関連付けを解除する�
 1. NSG との関連付けや関連付け解除を行う NIC について、この記事の「[ネットワーク インターフェイスと設定の表示および変更](#view-nics)」セクションの手順 1 - 3 を実行します。
 2. 選択した NIC のブレードで **[ネットワーク セキュリティ グループ]** をクリックします。 **[編集]** が一番上にあるブレードが表示されます。 現在 NIC に関連付けられている NSG がない場合は、**[ネットワーク セキュリティ グループ]** に "*なし*" が表示されます。 現在 NSG が NIC に関連付けられている場合は、**[ネットワーク セキュリティ グループ]** に <*NSG-Name*> (NSG-Name は NIC に現在関連付けられている NSG の名前) が表示されます。
 3. **[編集]**をクリックします。
-4. **[ネットワーク セキュリティ グループ]** をクリックします。 ネットワーク セキュリティ グループがサブスクリプションに存在していないときは一覧表示されません。 NSG を作成するには、[ネットワーク セキュリティ グループ](virtual-networks-create-nsg-arm-pportal.md)に関連する記事の手順を実行します。 
+4. **[ネットワーク セキュリティ グループ]** をクリックします。 ネットワーク セキュリティ グループがサブスクリプションに存在していないときは一覧表示されません。 NSG を作成するには、[ネットワーク セキュリティ グループ](virtual-networks-create-nsg-arm-pportal.md)に関連する記事の手順を実行します。
 5. 表示される **[ネットワーク セキュリティ グループの選択]** ブレードで、一覧表示内の既存の NSG をクリックして、その NSG を NIC に関連付けます。または、**[なし]** をクリックして、NIC に現在関連付けられている NSG を解除します。
 6. **[Save]**をクリックします。
 
 |**ツール**|**コマンド**|
 |---|---|
 |**CLI**|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)]|
+|**PowerShell**|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/v3.4.0/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vms"></a>仮想ネットワークへの NIC のアタッチとデタッチ
 
@@ -269,12 +269,13 @@ VM を作成して既存の NIC をその VM にアタッチできます。ま�
 
 PowerShell または CLI を使用すると、ポータルで対処できなかったすべての属性を設定して NIC または VM を作成できます。 この後のセクションのタスクを実行する前に、次の制約と動作について検討してください。
 
-- VM サイズで複数の NIC がサポートされている必要があります。 各サイズの VM でサポートされる NIC の数を確認するには、[Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json#size-tables) と [Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json#size-tables) の VM のサイズに関する記事をご覧ください。
+- VM のサイズによって、サポートされる NIC の数は異なります。 各サイズの VM でサポートされる NIC の数について詳しくは、[Linux](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM のサイズに関する記事をご覧ください。 
 - 既定では、VM にアタッチされる最初の NIC が "*プライマリ*" NIC と定義されます。 VM にアタッチされるそれ以外のすべての NIC は "*セカンダリ*" NIC です。
 - 既定では、VM からのすべての送信トラフィックで、プライマリ NIC のプライマリ IP 構成に割り当てられたプライマリ IP アドレスが使用されます。 もちろん、VM のオペレーティング システム内で送信トラフィックに使用する IP アドレスを制御できます。
 - かつては、同じ可用性セット内のすべての VM で、アタッチする NIC を 1 つにするか複数にするかを統一する必要がありました。 現在は、NIC の数に関係なく VM が同じ可用性セットに存在できます。 ただし、VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットについて詳しくは、「[Azure での Windows 仮想マシンの可用性の管理](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)」の記事をご覧ください。
 - 同じ VM にアタッチされた NIC を VNet 内の別のサブネットに接続することはできますが、そのような NIC はすべて同じ VNet に接続する必要があります。
 - 任意のプライマリまたはセカンダリ NIC の任意の IP 構成の任意の IP アドレスを Azure Load Balancer バックエンド プールに追加できます。 以前は、プライマリ NIC のプライマリ IP アドレスのみをバックエンド プールに追加できました。
+- VM を削除しても VM にアタッチされた NIC は削除されません。 VM を削除すると、NIC は VM からデタッチされます。 この NIC を別の VM にアタッチしたり、削除することができます。
 
 ### <a name="vm-create"></a>仮想マシン作成時の 1 つ以上の NIC のアタッチ
 

@@ -15,8 +15,9 @@ ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: ae5719c60c6ed2d3467f162f3b273d5bfdcf0073
-ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: d2b6b3d9483f230ad25ae47255a4f28c1a67e064
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 
 ## <a name="net-sample-index"></a>.NET サンプルのインデックス
 
-次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが Github で表示されます。
+次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">エンドポイント</th><th style="font-size:110%">シナリオ</th><th style="font-size:110%">サンプル コード</th></tr></thead><tbody> 
 <tr> 
@@ -83,11 +84,11 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 <tr> 
 <td>SAS</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr>   
+</tr>     
 <tr> 
 <td>サービスのプロパティ</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr>           
+</tr>             
 <tr> 
 <td>Snapshot Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">Azure 仮想マシン ディスクを増分スナップショットでバックアップする</a></td>
@@ -136,7 +137,7 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 </tr> 
 <tr> 
 <td>クライアント側の暗号化</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage .NET キュー クライアント側の暗号化</a></td> 
+<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage .NET Queue のクライアント側の暗号化</a></td> 
 </tr> 
 <tr> 
 <td>キューの作成</td> 
@@ -165,31 +166,31 @@ ms.openlocfilehash: 2056597abd1d1e895b85770a5525d05c9526b71d
 <tr> 
 <td rowspan="7"><b>テーブル</b></td>
 <td>テーブルの作成</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application (Azure Storage での同時実行制御の管理 - サンプル アプリケーション)</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 <tr> 
 <td>エンティティ/テーブルの削除</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.NET での Azure Table Storage の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティの挿入/マージ/置換</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application (Azure Storage での同時実行制御の管理 - サンプル アプリケーション)</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 <tr> 
 <td>エンティティのクエリ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.NET での Azure Table Storage の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
 </tr> 
 <tr> 
 <td>テーブルの照会</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.NET での Azure Table Storage の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
 </tr> 
 <tr> 
 <td>テーブルの ACL/プロパティ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">.NET での Azure Table Storage の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">.Net での Azure Table Storage の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティの更新</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Managing Concurrency using Azure Storage - Sample Application (Azure Storage での同時実行制御の管理 - サンプル アプリケーション)</a></td> 
+<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage での同時実行制御の管理 - サンプル アプリケーション</a></td> 
 </tr> 
 </tbody> 
 </table>
@@ -216,8 +217,4 @@ Azure Storage ライブラリのインストール方法と概要については
 
 * Java: [Java を使用した Azure Storage サンプル](storage-samples-java.md)
 * その他のすべての言語: [Azure Storage のサンプル](storage-samples.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
 

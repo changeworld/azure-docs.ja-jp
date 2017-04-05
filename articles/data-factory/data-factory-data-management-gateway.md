@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/25/2017
 ms.author: abnarain
 translationtype: Human Translation
-ms.sourcegitcommit: 3d66640481d8e1f96d3061077f0c97da5fa6bf4e
-ms.openlocfilehash: a0ccdffa5347c4f3cda16ec75b75da3eb3199539
-ms.lasthandoff: 02/02/2017
+ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
+ms.openlocfilehash: dfa78d1773afd0094ff98a5761a771101016ee13
+ms.lasthandoff: 03/27/2017
 
 
 ---
@@ -55,10 +55,10 @@ Data Management Gateway には次の機能があります。
 6. ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはその逆に、データをコピーします。 この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信します。
 
 ### <a name="considerations-for-using-gateway"></a>ゲートウェイの使用に関する注意点
-* Data Management Gateway の&1; つのインスタンスを、複数のオンプレミス データ ソースに使用できますが、 **1 つの Gateway インスタンスはただ&1; つの Azure Data Factory に関連付けられており**、別の Data Factory と共有することはできません。
-* 1 台のコンピューターには、 **Data Management Gateway のインスタンスを&1; つだけ** インストールできます。 たとえば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが&2; つあるとすると、オンプレミスのコンピューター&2; 台にゲートウェイをインストールする必要があります。 つまり、ゲートウェイが、特定のデータ ファクトリに関連付けられています
+* Data Management Gateway の 1 つのインスタンスを、複数のオンプレミス データ ソースに使用できますが、 **1 つの Gateway インスタンスはただ 1 つの Azure Data Factory に関連付けられており**、別の Data Factory と共有することはできません。
+* 1 台のコンピューターには、 **Data Management Gateway のインスタンスを 1 つだけ** インストールできます。 たとえば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、オンプレミスのコンピューター 2 台にゲートウェイをインストールする必要があります。 つまり、ゲートウェイが、特定のデータ ファクトリに関連付けられています
 * **ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、 データ ソースの近くにあると、ゲートウェイがデータ ソースに接続するときの時間が短縮されます。 ゲートウェイは、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにインストールすることをお勧めします。 ゲートウェイとデータ ソースが異なるコンピューターにあると、ゲートウェイと、データ ソースのリソースで競合が発生しません。
-* **同じオンプレミス データ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。 たとえば、2 つのデータ ファクトリを提供する&2; つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。
+* **同じオンプレミス データ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。 たとえば、2 つのデータ ファクトリを提供する 2 つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。
 * **Power BI** シナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、**Azure Data Factory 用のゲートウェイ**を別のコンピューターにインストールします。
 * **ExpressRoute**を使用する場合でも、ゲートウェイを使用する必要があります。
 * **ExpressRoute**を使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱います。 ゲートウェイを使用してサービスとデータ ソースの間の接続を確立します。
@@ -128,30 +128,41 @@ Data Management Gateway は、次の方法でインストールすることが�
 システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、ゲートウェイ/更新操作の状態の詳細がポップアップ ウィンドウに表示されます。
 
 ### <a name="ports-and-firewall"></a>ポートとファイアウォール
-考慮する必要がある&2; つのファイアウォールがあります。組織の中央ルーターで実行している**企業ファイアウォール**と、ゲートウェイがインストールされているローカル コンピューター上のデーモンとして構成されている **Windows ファイアウォール**です。  
+考慮する必要がある 2 つのファイアウォールがあります。組織の中央ルーターで実行している**企業ファイアウォール**と、ゲートウェイがインストールされているローカル コンピューター上のデーモンとして構成されている **Windows ファイアウォール**です。  
 
-![ファイアウォール](./media/data-factory-data-management-gateway/firewalls.png)
+![ファイアウォール](./media/data-factory-data-management-gateway/firewalls2.png)
 
 企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
 
 | ドメイン名 | ポート | 説明 |
 | --- | --- | --- |
-| *.servicebus.windows.net |443、80 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *.servicebus.windows.net |9350-9354, 5671 |TCP 経由でのオプションの Service Bus Relay |
-| *.core.windows.net |443 |HTTPS |
-| *.clouddatahub.net |443 |HTTPS |
-| graph.windows.net |443 |HTTPS |
-| login.windows.net |443 |HTTPS |
+| *.servicebus.windows.net |443、80 |Data Movement Service のバックエンドとの通信に使用 |
+| *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
+| *frontend.clouddatahub.net |443 |Data Movement Service のバックエンドとの通信に使用 |
+
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。 有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
+
+> [!NOTE]
+> 1. お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業や Windows のファイアウォールのホワイトリストに追加する必要があります。
+> 2. 一部のクラウド データベース ( [SQL Azure データベース](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) など) では、そのファイアウォールの構成でゲートウェイ コンピューターの IP アドレスをホワイトリストに追加する必要があります。
+>
+>
+
 
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>ソース データ ストアからシンク データ ストアへのデータのコピー
 ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールがゲートウェイ コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認します。 このルールを有効にすると、ゲートウェイは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
 
 たとえば、 **Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするには、以下の手順を実行します。
 
-* 送信 **TCP** 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート **1433** 上で許可します
+* 送信 **TCP** 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート **1433** 上で許可します。
 * ゲートウェイ コンピューターの IP アドレスが、許可された IP アドレスの一覧に追加されるように、Azure SQL サーバーのファイアウォール設定を構成します。
+
+> [!NOTE]
+> ファイアウォールで送信ポート 1433 を許可していない場合、ゲートウェイは Azure SQL に直接アクセスすることはできません。 この場合は、SQL Azure データベースや SQL Azure DW に[ステージング コピー](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) が必要であるだけです。
+>
+>
+
 
 ### <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
 企業ネットワーク環境でプロキシ サーバーを使用してインターネットにアクセスしている場合は、適切なプロキシ設定を使用するように Data Management Gateway を構成します。 プロキシは、初期登録フェーズ中に設定できます。
@@ -186,7 +197,7 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 >
 >
 
-### <a name="configure-proxy-server-settings"></a>プロキシ サーバーの設定を構成する 
+### <a name="configure-proxy-server-settings"></a>プロキシ サーバーの設定を構成する
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config と diawp.exe.config のプロキシ設定を使用します。  diahost.exe.config と diawp.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を次に示します。  
 
 1. ファイル エクスプ ローラーで、C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
@@ -211,7 +222,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 
 > [!IMPORTANT]
 > diahost.exe.config と diawp.exe.config の**両方**を忘れずに更新してください。  
-     
+
 
 この点に加えて、Microsoft Azure が会社のホワイトリストにあることを確認する必要もあります。 有効な Microsoft Azure の IP アドレスの一覧は、 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=41653)からダウンロードできます。
 
@@ -260,12 +271,12 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
 2. C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -off
     ```
 4. オンに戻すには、次のコマンドを実行します。
-    
+
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -on  
     ```
@@ -367,8 +378,8 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
                 "connectionString": "data source=myserver;initial catalog=mydatabase;Integrated Security=False;EncryptedCredential=eyJDb25uZWN0aW9uU3R",
                 "gatewayName": "adftutorialgateway"
             }
-        }
-    }
+         }
+     }
     ```
 ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。 アプリケーションがゲートウェイ コンピューターに到達できない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。  
 
@@ -380,14 +391,14 @@ API を使用して資格情報を暗号化した方がよい場合は、 [New-A
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 ```
 
-Data Factory エディターを使用して資格情報を設定するもう&1; つの方法があります。 エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、Data Factory が所有する証明書で暗号化されます。 ゲートウェイで使用するように構成されている証明書は使用されません。 この方法は、場合によっては少し高速ですが、セキュリティは低下します。 したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
+Data Factory エディターを使用して資格情報を設定するもう 1 つの方法があります。 エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、Data Factory が所有する証明書で暗号化されます。 ゲートウェイで使用するように構成されている証明書は使用されません。 この方法は、場合によっては少し高速ですが、セキュリティは低下します。 したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
 
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 このセクションでは、Azure PowerShell コマンドレットを使用して、ゲートウェイを作成し登録する方法について説明します。
 
 1. 管理者モードで **Azure PowerShell** を起動します。
 2. 次のコマンドを実行して Azure 資格情報を入力することにより、Azure アカウントにログインします。
-    
+
     ```PowerShell
     Login-AzureRmAccount
     ```
@@ -414,7 +425,7 @@ Data Factory エディターを使用して資格情報を設定するもう&1; 
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた**RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -435,13 +446,13 @@ Data Factory エディターを使用して資格情報を設定するもう&1; 
 **Remove-AzureRmDataFactoryGateway** コマンドレットを使用して、ゲートウェイを削除できます。また、**Set-AzureRmDataFactoryGateway** コマンドレットを使用して、ゲートウェイの記述を更新できます。 これらのコマンドレットの文法やその他の詳細については「Data Factory Cmdlet Reference (Data Factory コマンドレット リファレンス)」を参照してください。  
 
 ### <a name="list-gateways-using-powershell"></a>PowerShell を使用したゲートウェイの一覧表示
-    
+
 ```PowerShell
 Get-AzureRmDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>PowerShell を使用したゲートウェイの削除
-    
+
 ```PowerShell
 Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```

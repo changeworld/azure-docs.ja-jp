@@ -128,7 +128,6 @@
 
 ## デバイスを管理する
 ### [デバイスを登録する](active-directory-device-registration-overview.md)
-#### [自動登録の管理](active-directory-device-registration.md)
 #### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [FAQ](active-directory-device-registration-faq.md)
@@ -161,7 +160,6 @@
 ##### [Azure ポータル](application-proxy-publish-azure-portal.md)
 ##### [クラシック ポータル](active-directory-application-proxy-publish.md)
 
-#### [PingAccess for Azure AD](application-proxy-ping-access.md)
 #### [セキュリティ](application-proxy-security-considerations.md)
 #### [ネットワーク](application-proxy-network-topology-considerations.md)
 #### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
@@ -174,7 +172,8 @@
 #### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
 #### [アプリへのアクセス](active-directory-appssoaccess-whatis.md)
 ##### [Azure ポータル](application-proxy-sso-azure-portal.md)
-#### [シングル サインオン](active-directory-application-proxy-sso-using-kcd.md)
+#### [KCD を使用した SSO](active-directory-application-proxy-sso-using-kcd.md)
+#### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
 #### [要求に対応するアプリケーション](active-directory-application-proxy-claims-aware-apps.md)
 #### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
 #### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)

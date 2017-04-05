@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: aad6bcd3eb704f090156d2ace80d2540a9543bd7
-ms.lasthandoff: 12/29/2016
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 9f8d21f6964d26a2e17e31d1f2947e7eb07c177d
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/29/2016
 この記事では、Azure クラシック ポータルを使用して、Windows Server 2012 R2 を実行する仮想マシンを、Azure AD ドメイン サービスによって管理されているドメインに参加させる方法を示します。
 
 ## <a name="step-1-create-the-windows-server-virtual-machine"></a>ステップ 1: Windows Server 仮想マシンを作成する
-「[Windows を実行する仮想マシンを Azure クラシック ポータルで作成する](../virtual-machines/virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」チュートリアルで説明されている手順に従います。 新しく作成した仮想マシンが、Azure AD Domain Services を有効にしたのと同じ仮想ネットワークに確実に参加していることが重要です。 [簡易作成] オプションを使用すると、仮想マシンを仮想ネットワークに参加させることができません。 そのため、[ギャラリーから] オプションを使用して仮想マシンを作成する必要があります。
+「[Windows を実行する仮想マシンを Azure クラシック ポータルで作成する](../virtual-machines/windows/classic/tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」チュートリアルで説明されている手順に従います。 新しく作成した仮想マシンが、Azure AD Domain Services を有効にしたのと同じ仮想ネットワークに確実に参加していることが重要です。 [簡易作成] オプションを使用すると、仮想マシンを仮想ネットワークに参加させることができません。 そのため、[ギャラリーから] オプションを使用して仮想マシンを作成する必要があります。
 
 Azure AD Domain Services を有効にした仮想ネットワークに参加する Windows 仮想マシンを作成するには、次の手順を実行します。
 

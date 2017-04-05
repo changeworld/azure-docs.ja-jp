@@ -11,12 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: d3327faa5864b721fff5d3a34389d214b0ae29a9
-ms.openlocfilehash: dab95c2b63e18c2cd21ffb33370ce16404237762
-ms.lasthandoff: 12/16/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: f72a2b50fd315d4fa97bd3ca1a65eff062ee05bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/16/2016
 Oneteam と Azure AD の統合には、次の利点があります。
 
 - Oneteam にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Oneteam にサインオン (シングル サインオン) できるようにします。
+- ユーザーが自分の Azure AD アカウントで自動的に Oneteam にシングル サインオン (SSO) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -37,27 +37,27 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Oneteam と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Oneteam でのシングル サインオンが有効なサブスクリプション
+- Oneteam での SSO が有効なサブスクリプション
 
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD SSO をテストします。 
+
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Oneteam の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD SSO の構成とテスト
 
-
-## <a name="adding-oneteam-from-the-gallery"></a>ギャラリーからの Oneteam の追加
+## <a name="add-oneteam-from-the-gallery"></a>ギャラリーからの Oneteam の追加
 Azure AD への Oneteam の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Oneteam を追加する必要があります。
 
 **ギャラリーから Oneteam を追加するには、次の手順に従います。**
@@ -88,25 +88,24 @@ Azure AD への Oneteam の統合を構成するには、ギャラリーから�
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_0001.png)
 
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Oneteam で Azure AD の SSO を構成し、テストします。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Oneteam で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Oneteam ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Oneteam の関連ユーザーの間で、リンク関係が確立されている必要があります。
+SSO を機能させるには、Azure AD ユーザーに対応する Oneteam ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Oneteam の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンク関係は、Azure AD の **[ユーザー名]** の値を、Oneteam の **[Username (ユーザー名)]** の値として割り当てることで確立されます。
 
-Oneteam で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Oneteam で Azure AD の SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Oneteam のテスト ユーザーの作成](#creating-a-oneteam-test-user)** - Oneteam で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Oneteam アプリケーションでシングル サインオンを構成します。
+このセクションでは、クラシック ポータルで Azure AD の SSO を有効にして、Oneteam アプリケーションでシングル サインオンを構成します。
 
 
 **Oneteam で Azure AD シングル サインオンを構成するには、次の手順に従います。**
@@ -122,23 +121,19 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_03.png)
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://api.one-team.io/teams/<team name>/auth/saml/issuer` のパターンを使用して URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://api.one-team.io/teams/<team name>/auth/saml/callback` のパターンを使用して URL を入力します。
-
-    c. **[次へ]** をクリックします。
+  1. **[識別子]** ボックスに、`https://api.one-team.io/teams/<team name>/auth/saml/issuer` のパターンを使用して URL を入力します。
+  2. **[応答 URL]** ボックスに、`https://api.one-team.io/teams/<team name>/auth/saml/callback` のパターンを使用して URL を入力します。
+  3. **[次へ]**をクリックします。
 
 4. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** をクリックし、**サインオン URL** を入力して、**[次へ]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-oneteam-tutorial/tutorial_oneteam_04.png)
+  1. **[サインオン URL]** ボックスに、`https://<team name>.one-team.io/` のパターンを使用して URL を入力します。
+  2. **[次へ]**をクリックします。
 
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<team name>.one-team.io/` のパターンを使用して URL を入力します。
-
-    b. ページの下部にある **[次へ]**」を参照してください。
-
-    > [!NOTE]
-    > 実際のサインオン URL、識別子、応答 URL で値を更新する必要があることに注意してください。 <a href="https://support.one-team.com/hc/en-us/requests/new">ここ</a>から Oneteam へのサポート チケットを上げて、これらの値を取得できます。
+    >[!NOTE]
+    >実際のサインオン URL、識別子、応答 URL で値を更新する必要があることに注意してください。 <a href="https://support.one-team.com/hc/en-us/requests/new">ここ</a>から Oneteam へのサポート チケットを上げて、これらの値を取得できます。
+    >
 
 5. **[Oneteam でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターにファイルを保存します。
 
@@ -154,8 +149,7 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
   
     ![Azure AD のシングル サインオン][11]
 
-
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -179,26 +173,18 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oneteam-tutorial/create_aaduser_05.png) 
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-
-    b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-
-    c. **[次へ]**をクリックします。
+ 1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+ 2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
+ 3. **[次へ]**をクリックします。
 
 6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oneteam-tutorial/create_aaduser_06.png) 
-
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-
-    e. **[次へ]**をクリックします。
+ 1. **[名]** ボックスに「**Britta**」と入力します。  
+ 2. **[姓]** ボックスに「**Simon**」と入力します。
+ 3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+ 4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+ 5. **[次へ]**をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
@@ -207,24 +193,19 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-oneteam-tutorial/create_aaduser_08.png) 
+ 1. **[新しいパスワード]** の値を書き留めます。
+ 2. **[完了]** をクリックします。   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-
-    b. ページの下部にある **[完了]**」を参照してください。   
-
-
-
-### <a name="creating-a-oneteam-test-user"></a>Oneteam テスト ユーザーの作成
+### <a name="create-a-oneteam-test-user"></a>Oneteam テスト ユーザーの作成
 
 このセクションの目的は、Oneteam で Britta Simon というユーザーを作成することです。 Oneteam では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Oneteam ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、<a href="https://support.one-team.com/hc/en-us/requests/new">ここ</a>から Oneteam サポート チームへのサポート チケットを上げることができます。
+>[!NOTE]
+>ユーザーを手動で作成する必要がある場合は、<a href="https://support.one-team.com/hc/en-us/requests/new">ここ</a>から Oneteam サポート チームへのサポート チケットを上げることができます。
 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Oneteam へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
@@ -250,11 +231,9 @@ Oneteam で Azure AD のシングル サインオンを構成してテストす�
     
     ![ユーザーの割り当て][205]
 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、アクセス パネルを使用して Azure AD の SSO 構成をテストします。
 
 アクセス パネルで [Oneteam] タイルをクリックすると、自動的に Oneteam アプリケーションにサインオンします。
 

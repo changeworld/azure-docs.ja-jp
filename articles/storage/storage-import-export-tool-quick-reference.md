@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export ツールのインポート ジョブのコマンドのクイック リファレンス | Microsoft Docs"
-description: "インポート ジョブで頻繁に使用される Azure Import/Export ツールのコマンドのコマンド リファレンスです"
+description: "Azure Import/Export ツールで頻繁に使用されるインポート ジョブ コマンドのコマンド リファレンスです。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: 79b1d3f92671638ba43bac2f5428a1f903d11080
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e9377e0c5001cf5be220e19e06ff96c1e058e853
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -24,33 +25,31 @@ ms.openlocfilehash: 79b1d3f92671638ba43bac2f5428a1f903d11080
 
 この記事では、頻繁に使用するいくつかのコマンドのクイック リファレンスを提供します。 詳細な使用方法については、「[インポート ジョブ用のハード ドライブを準備する](storage-import-export-tool-preparing-hard-drives-import.md)」を参照してください。
 
-## <a name="import-job-quick-reference"></a>インポート ジョブのクイック リファレンス
-
-最初のセッション:
+## <a name="first-session"></a>最初のセッション
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-2 番目のセッション:
+## <a name="second-session"></a>2 番目のセッション
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /DataSet:dataset-2.csv
 ```
 
-最新のセッションの中止:
+## <a name="abort-latest-session"></a>最新のセッションの中止
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /AbortSession
 ```
 
-最新の中断されたセッションの再開:
+## <a name="resume-latest-interrupted-session"></a>中断された最新のセッションの再開
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /ResumeSession
 ```
 
-最新のセッションへのドライブの追加:
+## <a name="add-drives-to-latest-session"></a>最新のセッションへのドライブの追加
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveSet:driveset-2.csv
@@ -58,10 +57,5 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveS
 
 ## <a name="next-steps"></a>次のステップ
 
-[インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+* [インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
 

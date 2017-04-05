@@ -17,9 +17,9 @@ ms.workload: big-data
 ms.date: 02/08/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ecc141c9afa46f23d31de4356068ef4f98a92aa
-ms.openlocfilehash: 79e04b1569f6e3ca221b673ebe4eb9825d89abe1
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: e696906adf604ebdb665a7a29fd1bba25095e842
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -55,13 +55,7 @@ HDInsight クラスターの作成時に **SSH 認証に証明書キーを指定
 
 **HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-HDInsight での SSH の使用に関する詳細については、[Linux、OS X、Unix、Bash on Windows 10 から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する方法に関するページ](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
-
-### <a name="putty-windows-clients"></a>PuTTY (Windows クライアント)
-
-以前のバージョンの Windows ではビルトイン SSH クライアントは提供されません。 **http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html**からダウンロードできる [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を使用することをお勧めします。
-
-PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 ## <a id="hadoop"></a>Hadoop コマンドの使用
 
@@ -89,7 +83,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
     hdfs dfs -ls /example/data/WordCountOutput
     ```
    
-    ここでは、**_SUCCESS** と **part-r-00000** の&2; つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
+    ここでは、**_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。 **part-r-00000** ファイルには、このジョブの出力が含まれています。
    
     > [!NOTE]
     > 一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。 このとき、ファイルの順番を特定するには ##### サフィックスを使用します。

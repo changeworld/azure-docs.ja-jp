@@ -14,15 +14,16 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: afe143848fae473d08dd33a3df4ab4ed92b731fa
-ms.openlocfilehash: 6a14e5e0cab25b26782ebd45b52aa7542b7e24d5
-ms.lasthandoff: 03/17/2017
+ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
+ms.openlocfilehash: cf62f0676740c82d58d5ac5644ceffb8daf1a4f2
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
-この記事では、Azure Data Factory パイプラインのコピー アクティビティを使用して、SAP Business Warehouse と他のデータ ストアとの間でデータを移動する方法について説明します。 この記事は、「 [データ移動アクティビティ](data-factory-data-movement-activities.md) 」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。 Data Factory が現在サポートしているのは、SAP Business Warehouse から他のデータ ストアへの移動だけで、他のデータ ストアから SAP Business Warehouse へのデータの移動はサポートしていません。
+この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの SAP Business Warehouse (BW) からデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
+オンプレミスの SAP Business Warehouse データ ストアから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 Data Factory は、現時点では SAP Business Warehouse から他のデータ ストアへの移動のみをサポートし、他のデータ ストアから SAP Business Warehouse へのデータ移動に関してはサポートしていません。 
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
 このコネクタは、SAP Business Warehouse バージョン 7.x のほか、 MDX クエリを使用した、InfoCubes および QueryCubes (BEx クエリなど) からのデータ コピーをサポートしています。
@@ -31,25 +32,66 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 - **Data Management Gateway**: Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP Business Warehouse を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP Business Warehouse が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 - **SAP NetWeaver ライブラリ**: ゲートウェイ コンピューターにインストールします。 SAP Netweaver ライブラリは SAP 管理者から入手します。また、[SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)から直接取得することもできます。 最新のバージョンをダウンロードできる場所は、"**SAP Note #1025361**" を検索して確認してください。 SAP NetWeaver ライブラリ (32 ビットまたは 64 ビット) のアーキテクチャが、ゲートウェイのインストールと一致していることを確認してから、 SAP Note に従って、SAP NetWeaver RFC SDK に含まれるすべてのファイルをインストールします。 SAP NetWeaver ライブラリは、SAP Client Tools のインストールにも含まれます。
 
-## <a name="supported-sinks"></a>サポート対象シンク
-コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。 SAP Business Warehouse のデータを、サポートされる任意のシンク データ ストアに移動できます。 
+## <a name="getting-started"></a>使用の開始
+さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-## <a name="copy-data-wizard"></a>データのコピー ウィザード
-SAP Business Warehouse から、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+
+1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP Business Warehouse からデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: SAP Business Warehouse から Azure BLOB へのデータのコピー](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob)」をご覧ください。 
+
+次のセクションでは、SAP BW データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
+
+## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
+次の表は、SAP Business Warehouse (BW) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+プロパティ | 説明 | 使用できる値 | 必須
+-------- | ----------- | -------------- | --------
+server | SAP BW インスタンスが存在するサーバーの名前。 | string | はい
+systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
+clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
+username | SAP サーバーにアクセスするユーザーの名前 | string | はい
+password | ユーザーのパスワード。 | string | はい
+gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
+encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
+
+## <a name="dataset-properties"></a>データセットのプロパティ
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
+
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型の SAP BW データセットに対して、サポートされている型固有のプロパティはありません。 
+
+
+## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+
+一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+
+コピー アクティビティのソースの種類が **RelationalSource** (SAP BW を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| --- | --- | --- | --- |
+| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
+
+
+## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON の使用例: SAP Business Warehouse から Azure BLOB へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP Business Warehouse からAzure Blob Storage にデータをコピーする方法を示しています。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
 > [!IMPORTANT]
 > このサンプルでは、JSON のスニペットを使用します。 データ ファクトリを作成する手順は含まれてません。 手順については、記事「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。
 
-## <a name="sample-copy-data-from-sap-business-warehouse-to-azure-blob"></a>サンプル: SAP Business Warehouse から Azure BLOB にデータをコピーする
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1. [SapBw](#sap-bw-linked-service) 型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service)型のリンクされたサービス。
-3. [RelationalTable](#sap-bw-dataset) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. [RelationalSource](#sap-bw-source-in-copy-activity) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
+1. [SapBw](#linked-service-properties) 型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
+3. [RelationalTable](#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5. [RelationalSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)
 
 このサンプルでは、SAP Business Warehouse インスタンスから Azure BLOB に 1 時間おきにデータをコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -227,35 +269,6 @@ external プロパティを true に設定すると、このテーブルが Data
 ```
 
 
-## <a name="sap-bw-linked-service"></a>SAP BW のリンクされたサービス
-次の表は、SAP Business Warehouse (BW) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
-
-プロパティ | 説明 | 使用できる値 | 必須
--------- | ----------- | -------------- | --------
-server | SAP BW インスタンスが存在するサーバーの名前。 | string | はい
-systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
-clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
-username | SAP サーバーにアクセスするユーザーの名前 | string | はい
-password | ユーザーのパスワード。 | string | はい
-gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
-encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
-
-## <a name="sap-bw-dataset"></a>SAP BW データセット
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
-
-**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型の SAP BW データセットに対して、サポートされている型固有のプロパティはありません。 
-
-
-## <a name="sap-bw-source-in-copy-activity"></a>コピー アクティビティの SAP BW のソース
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
-
-一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
-
-コピー アクティビティのソースの種類が **RelationalSource** (SAP BW を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
-
-| プロパティ | 説明 | 使用できる値 | 必須 |
-| --- | --- | --- | --- |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW の型マッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
@@ -290,9 +303,15 @@ DATS | String
 NUMC | String
 TIMS | String
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
-[!INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
-[!INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
+> [!NOTE]
+> ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+
+
+## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+
+## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

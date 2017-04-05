@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/09/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 57c649e974cc0514d3a534a5977d537bdd2bb7c5
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 044769ca5a74b90843cb29510b66d9ce7e90566c
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -31,16 +31,17 @@ ms.lasthandoff: 12/08/2016
 このチュートリアルを完了すると、Syncplicity に割り当てた Azure AD ユーザーは、Syncplicity 企業サイト (サービス プロバイダーが開始したサインオン) で、または Azure AD アクセス パネルを使用して、アプリケーションにシングル サインオンできるようになります。
 
 1. Syncplicity のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-syncplicity-tutorial/IC769524.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-syncplicity"></a>Syncplicity のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-syncplicity"></a>Syncplicity のアプリケーション統合の有効化
 このセクションでは、Syncplicity のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-syncplicity-perform-the-following-steps"></a>Syncplicity のアプリ統合を有効にするには、次の手順に従います。
+**Syncplicity のアプリ統合を有効にするには、次の手順に従います。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Active Directory](./media/active-directory-saas-syncplicity-tutorial/IC700993.png "Active Directory")
@@ -67,10 +68,11 @@ ms.lasthandoff: 12/08/2016
    
     ![Syncplicity](./media/active-directory-saas-syncplicity-tutorial/IC769533.png "Syncplicity")
 
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Syncplicity で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **Syncplicity** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "Configure single sign-on")
@@ -97,30 +99,24 @@ ms.lasthandoff: 12/08/2016
 
 7. **[Single Sign-On (SSO)]** ダイアログ ページで、次の手順に従います。
    
-    ![Single Sign-On \(SSO\)](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \\\(SSO\\\)")
-   
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Custom Domain]** テキスト ボックスに、ドメインの名前を入力します。
-   
-    b. **[Single Sign-On Status]** として **[Enabled]** を選択します。
-   
-    c. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ダイアログ ページで **[エンティティ ID]** の値をコピーし、**[Entity Id]** テキスト ボックスに貼り付けます。
-   
-    d. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン ページ URL]** ボックスに貼り付けます。
-   
-    e. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[Logout page URL]** テキスト ボックスに貼り付けます。
-   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Azure クラシック ポータルからダウンロードした証明書をアップロードします。
-   
-    g. **[変更を保存]**をクリックします。
+    ![Single Sign-On \(SSO\)](./media/active-directory-saas-syncplicity-tutorial/IC769550.png "Single Sign-On \\\(SSO\\\)")   
+  1. **[Custom Domain]** テキスト ボックスに、ドメインの名前を入力します。
+  2. **[Single Sign-On Status]** として **[Enabled]** を選択します。
+  3. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ダイアログ ページで **[エンティティ ID]** の値をコピーし、**[Entity Id]** テキスト ボックスに貼り付けます。
+  4. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン ページ URL]** ボックスに貼り付けます。
+  5. Azure クラシック ポータルの **[Syncplicity でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[Logout page URL]** テキスト ボックスに貼り付けます。
+  6. **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Azure クラシック ポータルからダウンロードした証明書をアップロードします。 
+  7. **[変更を保存]**をクリックします。
 
 8. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
    
     ![Confirmation](./media/active-directory-saas-syncplicity-tutorial/IC769554.png "Confirmation")
 
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 AAD ユーザーがサインインできるようにするには、ユーザーを Syncplicity アプリケーションにプロビジョニングする必要があります。 このセクションでは、Syncplicity で AAD ユーザー アカウントを作成する方法について説明します。
 
-### <a name="to-provision-a-user-account-to-syncplicity-perform-the-following-steps"></a>ユーザー アカウントを Syncplicity にプロビジョニングするには、次の手順に従います。
+**ユーザー アカウントを Syncplicity にプロビジョニングするには、次の手順に従います。**
+
 1. **Syncplicity** テナント (例: *https://company.Syncplicity.com*) にログインします。
 
 2. **[Admin]** をクリックし、**[user accounts]** を選択します。
@@ -133,33 +129,31 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
    
     ![Account Information](./media/active-directory-saas-syncplicity-tutorial/IC769765.png "Account Information")
    
-    > [!NOTE]
-    > AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。
-    > 
+    >[!NOTE]
+    >AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。 
     > 
 
 5. 新しいユーザーがそのメンバーになる社内のグループを選択し、 **[次へ]**をクリックします。
    
     ![Group Membership](./media/active-directory-saas-syncplicity-tutorial/IC769772.png "Group Membership")
    
-    > [!NOTE]
-    > 表示されるグループがない場合は、 **[次へ]**だけをクリックします。
-    > 
+    >[!NOTE]
+    >表示されるグループがない場合は、 **[次へ]**だけをクリックします。 
     > 
 
 6. ユーザーのコンピューターで Syncplicity の制御下に置くフォルダーを選択し、 **[次へ]**をクリックします。
    
     ![Syncplicity Folders](./media/active-directory-saas-syncplicity-tutorial/IC769773.png "Syncplicity Folders")
 
-> [!NOTE]
-> Syncplicity から提供されている他の Syncplicity ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>Syncplicity から提供されている他の Syncplicity ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-syncplicity-perform-the-following-steps"></a>ユーザーを Syncplicity に割り当てるには、次の手順に従います。
+**ユーザーを Syncplicity に割り当てるには、次の手順に従います。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2. **Syncplicity** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。

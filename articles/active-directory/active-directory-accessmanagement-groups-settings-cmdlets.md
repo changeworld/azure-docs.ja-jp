@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 5c30f459d9fed71fede2da71306a9b48892566f3
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 0553c29e12d7cb09c8edd291d3bfb36c4fd2ffcc
+ms.lasthandoff: 03/29/2017
 
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
-注: このコンテンツが該当するのは、統合グループ、別名 Office365 グループのみです。
+注: このコンテンツが該当するのは、統合グループ、別名 Office365 グループのみです。 これらのコマンドレットは、この時点で、パブリック プレビュー中です。
 
 Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。 つまり、ディレクトリは既定の設定で構成されています。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリのグループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループのグループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、グループへのゲストのアクセスを管理するために使用します。 
 
-コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 このモジュールの詳細と、モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azuread/)」を参照してください。
+コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 このモジュールの詳細と、モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azuread/)」を参照してください。 これらのコマンドレットは現時点ではパブリック プレビュー中のため、モジュールのプレビュー リリースをインストールする必要があることに注意してください。このモジュールは、[ここ](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.85)にあります。
 
 ## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
 次の手順では、ディレクトリ内のすべての統合グループに適用される設定をディレクトリ レベルで作成します。

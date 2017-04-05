@@ -21,13 +21,12 @@
 #### [HTTP と webhook のバインド](functions-bindings-http-webhook.md)
 #### [Mobile Apps のバインド](functions-bindings-mobile-apps.md)
 #### [Notification Hub 出力バインド](functions-bindings-notification-hubs.md)
-#### [キューとトピックの Service Bus トリガーとバインド](functions-bindings-service-bus.md)
+#### [Service Bus のバインド](functions-bindings-service-bus.md)
 #### [SendGrid のバインド](functions-bindings-sendgrid.md)
 #### Storage のバインド
 ##### [BLOB バインド](functions-bindings-storage-blob.md)
 ##### [キュー バインド](functions-bindings-storage-queue.md)
 ##### [テーブル バインド](functions-bindings-storage-table.md)
-##### [SendGrid のバインド](functions-bindings-sendgrid.md)
 #### [タイマー トリガー](functions-bindings-timer.md)
 #### [Twilio 出力バインド](functions-bindings-twilio.md)
 ### [Azure Portal から関数アプリを作成する](functions-create-function-app-portal.md) 
@@ -35,6 +34,8 @@
 ### [開発とローカル デバッグ](functions-run-local.md)
 ### [Azure Functions のベスト プラクティス](functions-best-practices.md)
 ### [スケジュールされたクリーンアップ タスクを Azure Functions で実行する](functions-scenario-database-table-cleanup.md)
+### [OpenAPI 定義 (プレビュー) を作成する](functions-api-definition-getting-started.md)
+#### [Functions での OpenAPI 2.0 のリファレンス](functions-api-definition.md)
 
 ## 管理
 ### [関数アプリの設定を構成する](functions-how-to-use-azure-function-app-settings.md)

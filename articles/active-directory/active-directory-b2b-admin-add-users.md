@@ -32,20 +32,20 @@ ms.lasthandoff: 03/17/2017
 ## <a name="admins-adding-guest-users-to-the-directory"></a>ゲスト ユーザーをディレクトリに追加する管理者
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをディレクトリに追加します。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
 
 
 ## <a name="admins-adding-guest-users-to-a-group"></a>ゲスト ユーザーをグループに追加する管理者
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをグループに追加します。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
 
 
 ## <a name="admins-adding-guest-users-to-an-application"></a>ゲスト ユーザーをアプリケーションに追加する管理者
 
 次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをアプリケーションに追加します。
 
->[!ビデオ https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
 
 ## <a name="admins-resending-invitations-to-guest-users"></a>招待をゲスト ユーザーに再送信する管理者
 B2B コラボレーション ユーザーのプロファイル ページに移動し、まだ使用していないゲスト ユーザーに招待を再送信できます。

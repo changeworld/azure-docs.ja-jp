@@ -4,7 +4,7 @@ description: "Windows Server 2012 R2 を実行するホストに接続されて�
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 879fd0f9-c763-4fa0-a5ba-f589a825b2df
 ms.service: storsimple
@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/17/2016
+ms.date: 03/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: d07d1c838d99d0de0c5b62aaf42330b447df102c
-ms.openlocfilehash: 4483a395659a09e88fc4174e622143d9acaedf61
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 7b484c27157bd0a261adbf81d66b73a78e252955
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -52,7 +53,7 @@ Windows Server ホストにこの機能をインストールするには、次�
 3. **役割と機能の追加** ウィザードで、次の手順を実行します。
    
    * **[開始する前に]** ページで **[次へ]** をクリックします。
-   * **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。  **[次へ]**」を参照してください。![役割と機能の追加ウィザード 2](」を参照してください。/media/storsimple-configure-mpio-windows-server/IC740999」を参照してください。png)
+   * **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。 **[次へ]**」を参照してください。![役割と機能の追加ウィザード 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
    * **[対象サーバーの選択]** ページで、**[サーバー プールからサーバーを選択]** を選択します。 使用中のホスト サーバーが自動的に検出されます。 **[次へ]**をクリックします。
    * **[サーバーの役割の選択]** ページで、**[次へ]**をクリックします。
    * **[機能の選択]** ページで、**[マルチパス I/O]** を選択し、**[次へ]** をクリックします。![役割と機能の追加ウィザード 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
@@ -126,18 +127,17 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 
 > [!NOTE]
 > **既定のパラメーターは変更しないでください。**
-> 
-> 
+
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>手順 4. 高可用性と負荷分散のために MPIO を構成する
 高可用性と負荷分散を基にしたマルチパスでは、複数のセッションを手動で追加し、利用可能なさまざまなパスを宣言する必要があります。 たとえば、ホストの 2 つのインターフェイスが SAN に接続されていて、デバイスの 2 つのインターフェイスが SAN に接続されている場合は、4 つのセッションに適切なパスの順列を構成する必要があります (各 DATA インターフェイスおよびホスト インターフェイスが異なる IP サブネット上にあってルーティング可能ではない場合は、必要なセッションは 2 つだけです)。
 
+**デバイスとアプリケーション ホスト間で少なくとも 4 つのアクティブな並行セッションがあることをお勧めします。** これを実現するには、Windows Server システムで 4 つのネットワーク インターフェイスを有効にします。 Windows Server ホスト上のハードウェアまたはオペレーティング システム レベルで、物理ネットワーク インターフェイスかネットワーク仮想化テクノロジを使用します。 デバイスで 2 つのネットワーク インターフェイスを使用するこの構成では、8 つのセッションのうち、アクティブ コントローラーに接続している 4 つのセッションがアクティブになり、パッシブ コントローラーに接続している 4 つのセッションがパッシブになります。 この構成により、デバイスとクラウドのスループットが最適化されます。
+
 > [!IMPORTANT]
 > **1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 種類のネットワーク インターフェイスを使用する場合は、どちらも同じ種類である必要があります。**
-> 
-> 
 
-次の手順では、2 つのネットワーク インターフェイスを持つ StorSimple デバイスが 2 つのネットワーク インターフェイスを持つホストに接続されている場合に、セッションを追加する方法について説明します。
+次の手順では、2 つのネットワーク インターフェイスを持つ StorSimple デバイスが 2 つのネットワーク インターフェイスを持つホストに接続されている場合に、セッションを追加する方法について説明します。 この場合、アクティブなセッションは 2 つだけです。 2 つのネットワーク インターフェイスを持つ StorSimple デバイスが 4 つのネットワーク インターフェイスを持つホストに接続されている場合にも、これと同じ手順を使用します。 ただし、ここで説明する 4 つのセッションではなく、8 つのセッションを構成する必要があります。
 
 ### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>高可用性と負荷分散のために MPIO を構成するには
 1. ターゲットの検出を実行します。**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスの **[探索]** タブで、**[ポータルの探索]** をクリックします。
@@ -169,10 +169,5 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

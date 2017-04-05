@@ -1,6 +1,6 @@
 ---
 title: "Azure Import/Export のインポート ジョブを作成する | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのインポート ジョブを作成する方法について説明します"
+description: "Microsoft Azure Import/Export サービスのインポート ジョブを作成する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: syadav
@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
-ms.openlocfilehash: 84ba5256c3ee485af9a1a6bccc0571f93c9c0ab7
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: 3a0ac3de9828903b7ca66c15e5422d1228e2a731
+ms.lasthandoff: 03/30/2017
 
 
 ---
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/16/2017
 
 REST API を使用して Microsoft Azure Import/Export サービスのインポート ジョブを作成するには、次の手順を実行します。
 
--   Azure Import/Export ツールを使用してドライブを準備する。
+-   Azure Import/Export ツールを使ってドライブを準備する。
 
 -   ドライブの発送先となる場所を取得する。
 
@@ -41,7 +41,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 インポート ジョブのドライブを準備する手順は、ジョブの作成にポータルを使用する場合でも、REST API を使用する場合でも同じです。
 
-次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Microsoft Azure Import/Export ツールは、[こちら](http://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
+次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Azure Import/Export ツールは、[こちら](http://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
 
 ドライブの準備には次の手順が含まれます。
 
@@ -49,7 +49,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 -   Windows Azure Storage 内のインポート先 BLOB を特定する。
 
--   Azure Import/Export ツールを使用して、1 台以上のハード ドライブにデータをコピーする。
+-   Azure Import/Export ツールを使用して、1 台または複数のハード ドライブにデータをコピーする。
 
  Azure Import/Export ツールでは、ドライブの準備中に各ドライブのマニフェスト ファイルも生成されます。 マニフェスト ファイルには次の情報が含まれています。
 
@@ -105,6 +105,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>インポート ジョブの発送情報を更新する
 追跡番号を入手したら、[Update Job Properties](/api/storageimportexport/jobs#Jobs_Update) 操作を呼び出して、ジョブの配送業者名、追跡番号、および返送時の配送業者アカウント番号を更新します。 オプションで、ドライブ数、および発送日を指定することもできます。
 
-## <a name="see-also"></a>関連項目
-[Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
+## <a name="next-steps"></a>次のステップ
+
+* [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)
 

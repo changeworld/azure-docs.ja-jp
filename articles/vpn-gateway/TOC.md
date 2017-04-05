@@ -23,6 +23,7 @@
 ## VNet 間の接続の構成
 ### [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+### [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ### [クラシック ポータル (クラシック)](virtual-networks-configure-vnet-to-vnet-connection.md)
 ## デプロイメント モデル間の VNet 間接続の構成
 ### [Azure ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -42,6 +43,7 @@
 ## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
 ## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
 ## VPN ゲートウェイの削除
+### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [P2S 接続用の自己署名ルート証明書の作成](vpn-gateway-certificates-point-to-site.md)

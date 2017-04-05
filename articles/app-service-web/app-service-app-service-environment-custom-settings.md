@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a1271acd3d9132048de39173e43c805a372c909
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 687475fae0c90713c15e8abbb92b71059eae81c0
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -53,7 +54,7 @@ Resource Manager テンプレートに **clusterSettings** 属性を含めて、
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Azure リソース エクスプローラーを使った App Service Environment の更新
 App Service Environment は、 [Azure リソース エクスプローラー](https://resources.azure.com)を使って更新することもできます。  
 
-1. Resource Explorer で、App Service Environment のノードに移動します (**subscriptions** > **resourceGroups** > **providers** > **Micrososft.Web** > **hostingEnvironments** の順に移動)。 次に、更新する App Service Environment をクリックします。
+1. Resource Explorer で、App Service Environment のノードに移動します (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments** の順に移動)。 次に、更新する App Service Environment をクリックします。
 2. 右側のペインで、上部のツールバーの **[読み取り/書き込み]** をクリックし、リソース エクスプローラーでの対話型の編集を許可します。  
 3. 青色の **[編集]** ボタンをクリックし、Resource Manager テンプレートを編集可能にします。
 4. 右側のペインの一番下までスクロールします。 **clusterSettings** 属性は一番下にあります。ここで、値の入力または更新ができます。
@@ -96,9 +97,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 <!-- LINKS -->
 
 <!-- IMAGES -->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

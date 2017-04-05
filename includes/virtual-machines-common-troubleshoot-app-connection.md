@@ -2,8 +2,8 @@ Azure 仮想マシン (VM) で実行されているアプリケーションを�
 
 RDP または SSH を使用した VM への接続で問題が発生している場合は、最初に、次のいずれかの記事を参照してください。
 
-* [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../articles/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
@@ -21,8 +21,8 @@ RDP または SSH を使用した VM への接続で問題が発生している�
   * [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 * 別の Azure 仮想ネットワークなどの別の場所から接続します。
 * 仮想マシンを再デプロイします。
-  * [Windows VM の再デプロイ](../articles/virtual-machines/virtual-machines-windows-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-  * [Linux VM の再デプロイ](../articles/virtual-machines/virtual-machines-linux-redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  * [Windows VM の再デプロイ](../articles/virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+  * [Linux VM の再デプロイ](../articles/virtual-machines/linux/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * 仮想マシンを再作成します。
 
 詳細については、「 [Troubleshooting Endpoint Connectivity (RDP/SSH/HTTP, etc. failures) (エンドポイントの接続のトラブルシューティング (RDP/SSH/HTTP などの障害))](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)」を参照してください。
@@ -115,7 +115,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 * Azure 仮想マシンからのアプリケーション応答受信トラフィック。
 
 ## <a name="additional-resources"></a>その他のリソース
-[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 183b28ad9b9d0d0cf30d057a15fdd1e9e902d249
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: 09ccdaa18d383569747612c33b63595c06a0131e
+ms.lasthandoff: 03/28/2017
 
 ---
 
@@ -321,7 +321,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |startOfHour|渡された文字列タイムスタンプに時刻の開始を返します。 例: `2017-03-15T13:00:00Z`<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br />**パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |startOfDay|渡された文字列タイムスタンプに 1 日の開始を返します。 例: `2017-03-15T00:00:00Z`<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br />**パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。| 
 |startOfMonth|渡された文字列タイムスタンプに月の開始を返します。 例: `2017-03-01T00:00:00Z`<br /><br /> `startOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br />**パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。| 
-|dayOfWeek|文字列タイムスタンプの曜日部分を返します。 例: `Wednesday`<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。| 
+|dayOfWeek|文字列タイムスタンプの曜日部分を返します。  日曜日は 0、月曜日は 1 などです。 例: `3`<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。| 
 |dayOfMonth|文字列タイムスタンプの日付部分を返します。 例: `15`<br /><br /> `dayOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。| 
 |dayOfYear|文字列タイムスタンプの年間通算日数部分を返します。 例: `74`<br /><br /> `dayOfYear('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。| 
 |ticks|文字列タイムスタンプの刻みプロパティを返します。 例: `1489603019`<br /><br /> `ticks('2017-03-15T18:36:59Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。| 

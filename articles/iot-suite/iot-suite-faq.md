@@ -16,9 +16,9 @@ ms.workload: na
 ms.date: 02/15/2017
 ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: ce37bb41babb7bf894c23add994bf2c144ee6549
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
+ms.openlocfilehash: 8fa08ca6cefc10c1e1b47a7a498f69aca7de882e
+ms.lasthandoff: 03/23/2017
 
 
 ---
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/22/2017
 * [Azure ポータル][lnk-azure-portal] でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、[Azure クラシック ポータル][lnk-classic-portal]で構成済みソリューションに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる IoT Hub インスタンスはいくつですか?
-サブスクリプションごとに 10 個の IoT Hub をプロビジョニングできます。 この上限は、[Azure サポート チケット][link-azuresupportticket]を作成して引き上げることができます。ただし、[Azure サブスクリプションの制限][link-azuresublimits]に関するページで説明されているように、既定ではサブスクリプションごとにプロビジョニングできる IoT Hub は 10 個のみです。 よって、構成済みソリューションごとに新しい IoT Hub をプロビジョニングするため、特定のサブスクリプションでプロビジョニングできる構成済みソリューションの数は最大 10 個になります。 
+既定では、[サブスクリプションごとに 10 個の IoT Hub][link-azuresublimits] をプロビジョニングできます。 この上限は、[Azure サポート チケット][link-azuresupportticket]を作成して引き上げることができます。 よって、構成済みソリューションごとに新しい IoT Hub をプロビジョニングするため、特定のサブスクリプションでプロビジョニングできる構成済みソリューションの数は最大 10 個になります。 
 
 ### <a name="how-many-documentdb-instances-can-i-provision-in-a-subscription"></a>サブスクリプションには何個の DocumentDB インスタンスをプロビジョニングできますか?
 50 個です。 [Azure サポート チケット][link-azuresupportticket]を作成してこの上限を引き上げることができますが、既定では、サブスクリプションごとにプロビジョニングできる DocumentDB インスタンスは 50 個のみです。 

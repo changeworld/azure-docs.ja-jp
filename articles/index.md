@@ -4,9 +4,9 @@ hide_bc: true
 title: "Microsoft Azure のドキュメント | Microsoft Docs"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 1dc4b5b0613a76a90c566dedf3ff41be1f68f744
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
+ms.openlocfilehash: 24a921e6ccb73d3092e774243d51085f2d7835b9
+ms.lasthandoff: 03/31/2017
 
 ---
 <div id="main" class="v2">
@@ -525,9 +525,15 @@ ms.lasthandoff: 03/22/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/resource-health">
+                                                <img src="media/index/resource-health.svg" alt="" />
+                                                <p>Azure Resource Health</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure Resource Manager</p>
+                                                <p>Azure リソース マネージャー</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2348,6 +2354,25 @@ ms.lasthandoff: 03/22/2017
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/resource-health/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/resource-health.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Resource Health</h3>
+                                                    <p>リソースに影響を及ぼす Azure の問題が発生した際の診断とサポート利用を支援します。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-resource-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2358,7 +2383,7 @@ ms.lasthandoff: 03/22/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Manager</h3>
+                                                    <h3>Azure リソース マネージャー</h3>
                                                     <p>Azure リソースをデプロイおよび管理します</p>
                                                 </div>
                                             </div>

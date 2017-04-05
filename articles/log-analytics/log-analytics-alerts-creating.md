@@ -1,5 +1,5 @@
 ---
-title: "OMS Log Analytics のアラート ルールの作成 | Microsoft Docs"
+title: "OMS Log Analytics のアラートの作成 | Microsoft Docs"
 description: "Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
+ms.date: 03/23/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: fdf22ff85a3a76be5de50632c4948df44c2312df
-ms.openlocfilehash: 9778c79ca887e154ad2796ce5d90d953643b8067
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: eec118430c6262626728c3156634361c977ccb4b
+ms.lasthandoff: 03/29/2017
 
 
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-the-oms-portal"></a>OMS ポータルを使用して Log Analytics でアラート ルールを作成して管理する
-[Log Analytics のアラート](log-analytics-alerts.md)は、ログ検索を一定の間隔で自動的に実行するアラート ルールによって作成されます。  結果が特定の条件に一致する場合に、アラート レコードが作成されます。  さらに、アラートを事前に通知したり、別のプロセスを呼び出したりするために、1 つ以上のアクションを自動的に実行できます。   
+# <a name="working-with-alert-rules-in-log-analytics"></a>Log Analytics のアラート ルールの操作
+アラートは、ログ検索を一定の間隔で自動的に実行するアラート ルールによって作成されます。  結果が特定の条件に一致する場合に、アラート レコードが作成されます。  さらに、アラートを事前に通知したり、別のプロセスを呼び出したりするために、1 つ以上のアクションを自動的に実行できます。   
 
 この記事では、OMS ポータルを使用してアラート ルールを作成して編集するプロセスについて説明します。  さまざまな設定と必要なロジックの実装方法の詳細については、[Log Analytics のアラートの概要](log-analytics-alerts.md)に関するページを参照してください。
 
@@ -79,27 +78,41 @@ OMS ポータルでアラート ルールを作成または編集するときは
 
 アラート ルールの時間枠を指定すると、その時間枠内で検索条件に一致した既存のレコードの数が表示されます。  これにより、期待する数の結果が得られる頻度を判断できます。
 
-#### <a name="threshold"></a>しきい値
-
-| プロパティ | Description |
-|:--- |:---|
-| 結果の数 |クエリによって返されるレコード数が、指定した値より**大きい**または**小さい**場合に、アラートが作成されます。  |
-
-### <a name="alert-frequency"></a>Alert frequency (アラートの頻度)
+### <a name="schedule"></a>スケジュール
 検索クエリを実行する頻度を定義します。
 
 | プロパティ | Description |
 |:--- |:---|
 | Alert frequency (アラートの頻度) | クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、時間枠の値以下にする必要があります。  この値が時間枠の値よりも大きい場合、レコードを見落とすおそれがあります。<br><br>たとえば、時間枠が 30 分、頻度が 60 分であるとします。  クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。  次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。  つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。 |
+
+
+### <a name="generate-alert-based-on"></a>基づくアラートの生成
+アラート作成の必要があるかどうかを判断ための、検索クエリ結果を評価する基準を定義します。  これらの詳細は、選択したアラート ルールの種類に応じて異なります。  さまざまなアラート ルールの種類の詳細については、「[アラートを使用した Log Analytics の問題への対応](log-analytics-alerts.md)」をご覧ください。
+
+| プロパティ | 説明 |
+|:--- |:---|
 | Suppress alerts (アラートの抑制) | アラート ルールの抑制を有効にすると、新しいアラートを作成した後、定義された期間の間、ルールのアクションが無効になります。 ルールは引き続き実行され、条件が満たされればアラート レコードが作成されます。 このオプションは、問題を修正している間、同じアクションが繰り返し実行されるのを防ぐために用意されています。 |
 
+#### <a name="number-of-results-alert-rules"></a>結果の数のアラート ルール
+
+| プロパティ | Description |
+|:--- |:---|
+| 結果の数 |クエリによって返されるレコード数が、指定した値より**大きい**または**小さい**場合に、アラートが作成されます。  |
+
+#### <a name="metric-measurement-alert-rules"></a>メトリック測定のアラート ルール
+
+| プロパティ | Description |
+|:--- |:---|
+| 集計値 | 結果の各集計値が、違反と見なされるために超える必要のあるしきい値。 |
+| 基づくトリガー アラート | アラートが作成されるための違反の数。  結果セット全体での違反の任意の組み合わせについて**違反総数**を指定するか、または、違反が連続したサンプルで発生しなければならない必要な**連続する違反**を指定できます。 |
 
 ### <a name="actions"></a>アクション
-しきい値に達すると、アラート ルールは常に[アラート レコード](#alert-records)を作成します。  電子メールの送信、Runbook の開始など、実行される&1; つ以上のアクションを定義することもできます。  アクションの構成の詳細については、[Log Analytics のアラート ルールへのアクションの追加](log-analytics-alerts-actions.md)に関するページを参照してください。 
+しきい値に達すると、アラート ルールは常に[アラート レコード](#alert-records)を作成します。  電子メールの送信、Runbook の開始など、実行される 1 つまたは複数の応答を定義することもできます。
+
 
 
 #### <a name="email-actions"></a>電子メール アクション
-電子メール アクションは、アラートの詳細を記載した電子メールを&1; 人以上の受信者に送信します。
+電子メール アクションは、アラートの詳細を記載した電子メールを 1 人以上の受信者に送信します。
 
 | プロパティ | Description |
 |:--- |:---|
@@ -115,7 +128,7 @@ Webhook アクションは、1 つの HTTP POST 要求を使用して外部の�
 | Webhook |アラートがトリガーされたときに Webhook を呼び出す場合は、 **[Yes]** (はい) を指定します。 |
 | Webhook URL |Webhook の URL。 |
 | Include custom JSON payload (カスタム JSON ペイロードを含める) |既定のペイロードをカスタム ペイロードに置き換える場合は、このオプションを選択します。 |
-| Enter your custom JSON payload (カスタム JSON ペイロードの入力) |webhook に送信するカスタム ペイロード。  |
+| Enter your custom JSON payload (カスタム JSON ペイロードの入力) |Webhook のカスタム ペイロード。  詳細については、前のセクションを参照してください。 |
 
 #### <a name="runbook-actions"></a>Runbook アクション
 Runbook アクションは、Azure Automation で Runbook を開始します。 

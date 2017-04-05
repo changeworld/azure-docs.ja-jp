@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 2/25/2017
 ms.author: ronitr;giladm
 translationtype: Human Translation
-ms.sourcegitcommit: 97acd09d223e59fbf4109bc8a20a25a2ed8ea366
-ms.openlocfilehash: d1350081aa4f70660802c61a77250496e1e7fc2a
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
+ms.openlocfilehash: e20a30a565198c01f213895a87fe8807a37272cb
+ms.lasthandoff: 03/30/2017
 
 
 ---
 
 # <a name="configure-and-manage-sql-database-auditing-in-the-azure-portal"></a>Azure Portal での SQL Database 監査の構成および管理
 
-以下のセクションでは、Azure Portal を使用して監査を構成および管理する方法について説明します。 PowerShell を用いて監査を構成および管理する方法については、[PowerShell を使用した監査の構成](sql-database-auditing-powershell.md)に関するページを参照してください。 
+以下のセクションでは、Azure Portal を使用して監査を構成および管理する方法について説明します。 PowerShell を用いて監査を構成および管理する方法については、[PowerShell を使用した監査の構成](scripts/sql-database-create-and-configure-database-powershell.md)に関するページを参照してください。 
 
 監査の概要については、[SQL Database 監査](sql-database-auditing.md)に関するページを参照してください。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 03/10/2017
 
 geo レプリケーション対応データベースを使用する場合、監査の種類に応じてプライマリ データベースとセカンダリ データベースのいずれか (または両方) に監査を設定できます。
 
-**テーブルの監査:**&2; つのデータベース (プライマリとセカンダリ) のそれぞれについて、データベース レベルまたはサーバー レベルで個別のポリシーを構成できます。
+**テーブルの監査:** 2 つのデータベース (プライマリとセカンダリ) のそれぞれについて、データベース レベルまたはサーバー レベルで個別のポリシーを構成できます。
 
 **BLOB 監査**: 次の指示に従ってください。
 
@@ -114,7 +114,7 @@ BLOB 監査ログはいくつかの方法で表示できます。
 
    * Azure ストレージ エクスプローラーを利用すると、複数のファイルを同時にダウンロードできます。特定のサブフォルダー (特定の日付のログ ファイルをすべて含むサブフォルダーなど) を右クリックし、**[名前を付けて保存]** を選択してローカルのフォルダーに保存します。
 
-       数個のファイル (あるいは上の説明にあるように丸&1; 日分) をダウンロードしたら、それらをローカルで次のように結合できます。
+       数個のファイル (あるいは上の説明にあるように丸 1 日分) をダウンロードしたら、それらをローカルで次のように結合できます。
 
        **[SSMS]、[ファイル]、[開く]、[Merge Extended Events (拡張イベントの結合)] の順に開き、結合するすべてのファイルを選択する**
    * プログラムを使用する:
@@ -188,7 +188,7 @@ BLOB 監査ログはいくつかの方法で表示できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell を用いて監査を構成および管理する方法については、[PowerShell を使用したデータベース監査の構成](sql-database-auditing-powershell.md)に関するページを参照してください。
+* PowerShell を用いて監査を構成および管理する方法については、[PowerShell を使用したデータベース監査の構成](scripts/sql-database-create-and-configure-database-powershell.md)に関するページを参照してください。
 * 監査の概要については、[データベース監査](sql-database-auditing.md)に関するページを参照してください。
 
 

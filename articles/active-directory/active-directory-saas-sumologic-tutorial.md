@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 3/07/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 49352a5e8255468bbc54c02e0cd9242d49002dbd
-ms.openlocfilehash: 040974883f96ac05fccd38d933090ed4aa932e95
-ms.lasthandoff: 12/08/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 3fbf55ddc13e6489e81eb04c962e833600bfc846
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル: Azure Active Directory と SumoLogic の統合
 このチュートリアルでは、Azure と SumoLogic の統合について説明します。  
+
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 * 有効な Azure サブスクリプション
@@ -32,16 +33,17 @@ ms.lasthandoff: 12/08/2016
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
 1. SumoLogic のアプリケーション統合の有効化
-2. シングル サインオンの構成
+2. シングル サインオン (SSO) の構成
 3. ユーザー プロビジョニングの構成
 4. ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-sumologic-tutorial/IC778549.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-sumologic"></a>SumoLogic のアプリケーション統合の有効化
+## <a name="enable-the-application-integration-for-sumologic"></a>SumoLogic のアプリケーション統合の有効化
 このセクションでは、SumoLogic のアプリケーション統合を有効にする方法を説明します。
 
-### <a name="to-enable-the-application-integration-for-sumologic-perform-the-following-steps"></a>SumoLogic のアプリ統合を有効にするには、次の手順に従います。
+**SumoLogic のアプリ統合を有効にするには、次の手順に従います。**
+
 1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
    
     ![Active Directory](./media/active-directory-saas-sumologic-tutorial/IC700993.png "Active Directory")
@@ -68,12 +70,15 @@ ms.lasthandoff: 12/08/2016
    
     ![SumoLogic](./media/active-directory-saas-sumologic-tutorial/IC778551.png "SumoLogic")
 
-## <a name="configuring-single-sign-on"></a>シングル サインオンの構成
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、SumoLogic で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。  
+
 この手順の途中で、base-64 でエンコードされた証明書を SumoLogic テナントにアップロードする必要があります。  
+
 この手順に慣れていない場合は、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>シングル サインオンを構成するには、次の手順を実行します。
+**シングル サインオンを構成するには、次の手順に従います。**
+
 1. Azure クラシック ポータルの **SumoLogic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Configure single sign-on")
@@ -106,42 +111,33 @@ ms.lasthandoff: 12/08/2016
 
 9. **[Configure SAML 2.0]** ダイアログで、次の手順に従います。
    
-    ![Configure SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778559.png "Configure SAML 2.0")
-   
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。
-    
-    b. **[Debug Mode]**を選択します。
-   
-    c. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキスト ボックスに貼り付けます。
-   
-    d. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[Authn Request URL (認証要求 URL)]** テキスト ボックスに貼り付けます。
-   
-    e. ダウンロードした証明書から **Base-64 でエンコードされた** ファイルを作成します。  
+    ![Configure SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778559.png "Configure SAML 2.0")   
+  1. **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。 
+  2. **[Debug Mode]**を選択します。
+  3. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキスト ボックスに貼り付けます。
+  4. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[Authn Request URL (認証要求 URL)]** テキスト ボックスに貼り付けます。
+  5. ダウンロードした証明書から **Base-64 でエンコードされた** ファイルを作成します。  
       
-    > [!TIP]
-    > 詳細については、 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)
-    > 
-    > 
-   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
-   
-    g. **[Email Attribute]** として、**[Use SAML subject]** を選択します。
-   
-    h. **[SP initiated Login Configuration]**を選択します。
-   
-    i. **[Login Path]** テキスト ボックスに、「**Azure**」と入力します。
-   
-    j. [ **Save**] をクリックします。
+     >[!TIP]
+     >詳細については、「 [How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+     >  
+
+  6. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
+  7. **[Email Attribute]** として、**[Use SAML subject]** を選択します。  
+  8. **[SP initiated Login Configuration]**を選択します。
+  9. **[Login Path]** テキスト ボックスに、「**Azure**」と入力し、**[保存]**.をクリックします。
 
 10. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
     
     ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778560.png "Configure single sign-on")
 
-## <a name="configuring-user-provisioning"></a>ユーザー プロビジョニングの構成
+## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
 Azure AD ユーザーが SumoLogic にログインできるようにするには、そのユーザーを SumoLogic にプロビジョニングする必要があります。  
-SumoLogic の場合、プロビジョニングは手動で行います。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+* SumoLogic の場合、プロビジョニングは手動で行います。
+
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+
 1. **SumoLogic** テナントにログインします。
 
 2. **[管理]\>[ユーザー]** の順に移動します。
@@ -154,25 +150,21 @@ SumoLogic の場合、プロビジョニングは手動で行います。
 
 4. **[New User]** ダイアログ ページで、次の手順に従います。
    
-    ![New User](./media/active-directory-saas-sumologic-tutorial/IC778563.png "New User")
-   
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]**、**[Last Name]**、および **[Email]** テキスト ボックスに入力します。
-   
-    b. ロールを選択します。
-   
-    c. **[Status]** として、**[Active]** を選択します。
-   
-    d. [ **Save**] をクリックします。
+    ![New User](./media/active-directory-saas-sumologic-tutorial/IC778563.png "New User")  
+  1. プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]**、**[Last Name]**、および **[Email]** テキスト ボックスに入力します。
+  2. ロールを選択します。
+  3. **[Status]** として、**[Active]** を選択します。
+  4. **[Save]**をクリックします。
 
-> [!NOTE]
-> SumoLogic から提供されている他の SumoLogic ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
-> 
+>[!NOTE]
+>SumoLogic から提供されている他の SumoLogic ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
 > 
 
-## <a name="assigning-users"></a>ユーザーの割り当て
+## <a name="assign-users"></a>[ユーザーの割り当て]
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-sumologic-perform-the-following-steps"></a>ユーザーを SumoLogic に割り当てるには、次の手順に従います。
+**ユーザーを SumoLogic に割り当てるには、次の手順に従います。**
+
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2. **SumoLogic** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。

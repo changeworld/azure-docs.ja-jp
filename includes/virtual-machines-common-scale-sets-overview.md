@@ -23,7 +23,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 容量を変更するためにテンプレートを再デプロイする場合は、SKU と更新された容量だけが含まれている、非常に小さいテンプレートを定義できます。 その例は、 [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json)にあります。
 
-自動的にサイズを増減するスケール セットの作成手順については、「 [仮想マシン スケール セットでのマシンの自動スケール](../articles/virtual-machines/virtual-machines-windows-vmss-powershell-creating.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+自動的にサイズを増減するスケール セットの作成手順については、「 [仮想マシン スケール セットでのマシンの自動スケール](../articles/virtual-machines/windows/vmss-powershell-creating.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="monitoring-your-vm-scale-set"></a>VM スケール セットの監視
 現時点では、 [Azure リソース エクスプローラー](https://resources.azure.com) を使用して VM スケール セットを表示するようお勧めします。 VM スケール セットは、Microsoft.Compute の下のリソースなので、このサイトから以下のリンクを展開すると表示できます。
@@ -114,10 +114,5 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **Q.** VM スケール セットは、Azure 可用性セットと連携できますか?
 
-**A.** はい。 VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。 virtualMachineProfile の下のものは、何も構成する必要はありません。 今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では&1; つの可用性セットです。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+**A.** はい。 VM スケール セットは、3 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。 virtualMachineProfile の下のものは、何も構成する必要はありません。 今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 

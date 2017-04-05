@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 1/30/2017
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2ed6b838608f0f2249ef16b62ff2fb0159fc6e7f
+ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
+ms.openlocfilehash: 34148a8fe2fe5b9ebd2ff4a01ff523f7f5a74c67
+ms.lasthandoff: 03/24/2017
 
 
 ---
@@ -104,7 +105,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 * type が AzureSqlTable に設定されています。
 * (AzureSqlTable 型に固有の) 型プロパティ tableName が MyTable に設定されています。
-* linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。 次のリンクされたサービスの定義を参照してください。
+* linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。これは、次の JSON スニペットで定義されています。
 * availability の frequency が Day に、interval が 1 に設定されています。これはスライスが毎日生成されることを意味します。  
 
 AzureSqlLinkedService は次のように定義されます。
@@ -134,11 +135,11 @@ AzureSqlLinkedService は次のように定義されます。
 >
 >
 
-## <a name="a-nametypea-dataset-type"></a><a name="Type"></a> データセットの型
+## <a name="Type"></a> データセットの型
 サポートされるデータ ソースとデータセットの型が並んでいます。 データセットの型と構成については、 [データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事で参照されているトピックを参照してください。 たとえば、Azure SQL データベースのデータを使用している場合は、サポートされるデータ ストアの一覧にある Azure SQL Database をクリックして、詳細を確認してください。  
 
-## <a name="a-namestructureadataset-structure"></a><a name="Structure"></a>データセット構造
-**structure** セクションでは、データセットのスキーマを定義します。 このセクションには列の名前とデータ型のコレクションが含まれています。  次の例では、データセットに slicetimestamp、projectname、pageviews の 3 つの列があります。各列の型は、String、String、Decimal です。
+## <a name="Structure"></a>データセット構造
+**structure** セクションは、データセットのスキーマを定義する **optional** セクションです。 このセクションには列の名前とデータ型のコレクションが含まれています。 structure セクションは、**型変換**のために型情報を提供したり、**列マッピング**を実行したりするために使用します。 次の例では、データセットに `slicetimestamp`、`projectname`、`pageviews` の 3 つの列があり、それぞれの列の型は、String、String、Decimal です。
 
 ```json
 structure:  
@@ -149,7 +150,28 @@ structure:
 ]
 ```
 
-## <a name="a-nameavailabilitya-dataset-availability"></a><a name="Availability"></a> データセットの可用性
+各列には次のプロパティが含まれます。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| name |列の名前です。 |あり |
+| type |列のデータ型です。  |いいえ |
+| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は “en-us” です。 |いいえ |
+| BlobSink の format |型を指定するときに使用される書式指定文字列。.NET 型の `Datetime` または `Datetimeoffset` です。 |なし |
+
+"structure" 情報を含めるタイミングと、**structure** セクションに含める内容については、次のガイドラインに従ってください。
+
+* データ自体と共にデータ スキーマと型情報を格納する**構造化データ ソースの場合** (SQL Server、Oracle、Azure テーブルなどのソース)、ソース列をシンク列とマップする必要があり、その列名が同じでない場合にのみ、"structure" セクションを指定します。 
+  
+    構造化データ ソースに対して型情報が既に使用可能なので、"structure" セクションを含める場合は、型情報を含めないでください。
+* **読み取りデータ ソースのスキーマの場合 (具体的には Azure BLOB)**、データと共にスキーマや型情報を保存せずに、データを保存することができます。 このような種類のデータ ソースの場合は、ソース列をシンク列にマップするとき (または) データセットがコピー アクティビティの入力データセットのとき、ソース データセットのデータ型をシンクのネイティブ型に変換する必要がある場合にのみ、"structure" 列を含めます。 
+    
+    Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS 準拠の .NET ベースの型値をサポートしています。
+
+また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。 
+  
+
+## <a name="Availability"></a> データセットの可用性
 データセットの **availability** セクションでは、データセットの処理時間枠 (時間単位、日単位、週単位など) またはスライシング モデルを定義します。 データセットのスライシングと依存関係モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関するページを参照してください。
 
 次の availability セクションでは、出力データセットが 1 時間ごとに生成されるか、入力データセットが 1 時間ごとに使用可能となるように指定されます。
@@ -166,11 +188,11 @@ structure:
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| frequency |データセット スライス生成の時間単位を指定します。<br/><br/>**サポートされている頻度**は、Minute、Hour、Day、Week、Month です。 |はい |該当なし |
-| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、**frequency** を **Hour** に設定し、**interval** を **1** に設定します。<br/><br/>**注:** frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 |はい |該当なし |
+| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされている頻度</b>は、Minute、Hour、Day、Week、Month です。 |はい |該当なし |
+| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>Frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>注</b>: Frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |該当なし |
 | style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |なし |EndOfInterval |
-| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/>**注:** AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。 <br/><br/>たとえば、**間隔**が**時間単位** (frequency が Hour で interval が 1) で、**AnchorDateTime** に**分と秒**が含まれる場合、AnchorDateTime の**分と秒**部分は無視されます。 |なし |01/01/0001 |
-| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/>**注:** anchorDateTime と offset の両方が指定されている場合、結果的にシフトが結合されます。 |なし |該当なし |
+| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>注</b>: AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency が Hour で interval が 1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ |01/01/0001 |
+| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>注</b>: anchorDateTime と offset の両方が指定されている場合、結果的にシフトが結合されます。 |なし |該当なし |
 
 ### <a name="offset-example"></a>offset 例
 既定の設定である真夜中ではなく、毎日午前 6 時にスライスを開始する例です。
@@ -220,7 +242,7 @@ structure:
 }
 ```
 
-## <a name="a-namepolicyadataset-policy"></a><a name="Policy"></a>データセット ポリシー
+## <a name="Policy"></a>データセット ポリシー
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
 ### <a name="validation-policies"></a>検証ポリシー
@@ -365,9 +387,4 @@ structure:
     }
 }
 ```
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

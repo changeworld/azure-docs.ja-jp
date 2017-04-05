@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 3206c076350c2105e92d320ce30ce73448ccd3bd
-ms.lasthandoff: 03/10/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: d0d283f21caf53406c51670e75bf2796a175be51
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/10/2017
 
 ## <a name="content-type-header"></a>Content-Type ヘッダー
 
-まずは簡単なものから見ていきましょう。ロジック アプリでの使用時に変換やキャストを必要としない&2; つの `Content-Types`、つまり `application/json` と `text/plain` を確認します。
+まずは簡単なものから見ていきましょう。ロジック アプリでの使用時に変換やキャストを必要としない 2 つの `Content-Types`、つまり `application/json` と `text/plain` を確認します。
 
 ## <a name="applicationjson"></a>Application/JSON
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/10/2017
 
 ### <a name="schema-and-schema-generator"></a>スキーマとスキーマ ジェネレーター
 
-要求トリガーでは、受信するペイロードの JSON スキーマを入力することができます。 利用者が要求の内容を取り出すことができるよう、このスキーマに基づくトークンがデザイナーによって生成されます。 スキーマの準備ができていない場合は、[`Use sample payload to generate schema`] を選択して、サンプル ペイロードから JSON スキーマを生成してください。
+要求トリガーでは、受信するペイロードの JSON スキーマを入力することができます。 利用者が要求の内容を取り出すことができるよう、このスキーマに基づくトークンがデザイナーによって生成されます。 スキーマが準備できていない場合は、**[サンプルのペイロードを使用してスキーマを生成する]** を選択すると、サンプル ペイロードから JSON スキーマを生成できます。
 
 ![スキーマ](./media/logic-apps-http-endpoint/manualtrigger.png)
 

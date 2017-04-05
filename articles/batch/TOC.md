@@ -37,8 +37,8 @@
 
 # 関連項目
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
+## [Batch と Data Factory を使用したデータ処理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Azure クラウドでの Batch ソリューションと HPC ソリューション](batch-hpc-solutions.md)
-## [Azure の Big Compute: テクニカル リソース](big-compute-resources.md)
 
 # リソース
 ## [料金](https://azure.microsoft.com/pricing/details/batch/)
@@ -48,5 +48,8 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [CLI のサンプル](batch-cli-samples.md)
+## [大規模なコンピューティング リソース](big-compute-resources.md)
 ## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
+
 

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2017
+ms.date: 03/28/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
-ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: 31659a7394a34cf8fb5b6ff11c955bdc9f8b65bb
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -81,7 +82,7 @@ Azure AD でデバイスベースの証明機関ポリシーを構成する方�
 
 ### <a name="multi-factor-authentication-and-location-policies"></a>多要素認証と場所のポリシー
 * [グループ、場所、および多要素認証ポリシーに基づく Azure AD 接続アプリへの条件付きアクセスの概要](active-directory-conditional-access-azuread-connected-apps.md)
-* [サポートされているアプリケーション](active-directory-conditional-access-supported-apps.md)
+* [サポートされているアプリケーションとブラウザー](active-directory-conditional-access-supported-apps.md)
 
 ### <a name="device-based-conditional-access"></a>デバイス ベースの条件付きアクセス
 * [Azure Active Directory 接続アプリケーションに対するアクセス制御に関するデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)
@@ -95,10 +96,5 @@ Azure AD でデバイスベースの証明機関ポリシーを構成する方�
 ### <a name="next-steps"></a>次のステップ
 * [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 * [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
-
-
-
-
-<!--HONumber=Dec16_HO5-->
 
 

@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
-ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
-ms.lasthandoff: 01/26/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 7287cb1709b7c863cd046edfb995e23455398ec2
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -61,12 +61,39 @@ Azure では、証明書の使用中にその証明書を削除することは�
 ### <a name="disable-ssl-30"></a>SSL 3.0 の無効化
 SSL 3.0 を無効にして TLS セキュリティを使用するには、次のブログの投稿に示されているスタートアップ タスクを作成します。https://azure.microsoft.com/en-us/blog/how-to-disable-ssl-3-0-in-azure-websites-roles-and-virtual-machines/
 
-## <a name="scale-a-cloud-service"></a>クラウド サービスの規模の設定
+### <a name="add-nosniff-to-your-website"></a>Web サイトに **nosniff** を追加する
+クライアントが MIME の種類をスニッフィングできないように、*web.config* ファイルに設定を追加します。
+
+```xml
+<configuration>
+   <system.webServer>
+      <httpProtocol>
+         <customHeaders>
+            <add name="X-Content-Type-Options" value="nosniff" />
+         </customHeaders>
+      </httpProtocol>
+   </system.webServer>
+</configuration>
+```
+
+これは、IIS に設定として追加することもできます。 [一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)に関する記事を参照して、次のコマンドを使用します。
+
+```cmd
+%windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
+```
+
+### <a name="customize-iis-for-a-web-role"></a>IIS の Web ロールをカスタマイズする
+[一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)に関する記事にある IIS スタートアップ スクリプトを使用します。
+
+## <a name="scaling"></a>スケーリング
 ### <a name="i-cannot-scale-beyond-x-instances"></a>X 個のインスタンスを超えて拡張できない
 Azure サブスクリプションには、使用できるコアの数に制限があります。 使用可能なすべてのコアを既に使用している場合、スケーリングは機能しません。 たとえば、コア数が 100 に制限されている場合、これは、クラウド サービスでは A1 サイズの仮想マシン インスタンスを 100 個、または A2 サイズの仮想マシン インスタンスを 50 個使用できることを意味します。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="networking"></a>ネットワーク
 ### <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>マルチ VIP クラウド サービスの IP アドレスを予約できません
 まず、IP アドレスを予約しようとしている仮想マシン インスタンスが有効であることを確認してください。 次に、ステージング デプロイメントと運用環境デプロイメントの両方で予約済みの IP を使っていることを確認します。 **変更しない** でください。
 
+## <a name="remote-desktop"></a>リモート デスクトップ
+### <a name="how-do-i-remote-desktop-when-i-have-an-nsg"></a>NSG がある場合にリモート デスクトップを使用するには
+ポート **20000** を転送するルールを NSG に追加します。
 

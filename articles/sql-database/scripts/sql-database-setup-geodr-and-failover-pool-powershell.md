@@ -27,7 +27,7 @@ ms.lasthandoff: 03/30/2017
 
 この PowerShell のサンプル スクリプトは、エラスティック プール内のデータベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-scripts"></a>サンプル スクリプト
 

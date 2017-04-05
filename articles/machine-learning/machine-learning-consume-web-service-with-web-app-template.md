@@ -46,7 +46,7 @@ Azure Marketplace で入手できる Web アプリ テンプレートを使用�
 
 Web サービスの API キーと要求 URI を取得する手順は次のとおりです。
 
-1. 新しい Web サービスの [Web サービス ポータル](https://services.azureml.net/quickstart)で、上部の **[Web サービス]** をクリックします。 クラシック Web サービスの場合は、**[Classic Web Services](クラシック Web サービス)** をクリックします。
+1. 新しい Web サービスの [Web サービス ポータル](https://services.azureml.net/quickstart)で、上部の **[Web サービス]** をクリックします。 クラシック Web サービスの場合は、**[Classic Web Services]\(クラシック Web サービス)** をクリックします。
 2. アクセスする Web サービスをクリックします。
 3. クラシック Web サービスの場合は、アクセスするエンドポイントをクリックします。
 4. 上部の **[使用]** をクリックします。

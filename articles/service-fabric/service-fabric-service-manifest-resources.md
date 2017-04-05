@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 193bbedca440302ead00eaac0df62fb7fe767515
-ms.lasthandoff: 11/17/2016
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -93,7 +93,7 @@ HTTP エンドポイントは Service Fabric によって自動的に ACL に登
 HTTPS プロトコルはサーバー認証を提供し、また、クライアント/サーバー間通信の暗号化に使用されます。 Service Fabric サービスで HTTPS を有効にするには、サービス マニフェストの "*リソース -> エンドポイント -> エンドポイント*" セクションにプロトコルを指定します (前述のエンドポイント *ServiceEndpoint3* を参照してください)。
 
 > [!NOTE]
-> アプリケーションのアップグレード中にサービスのプロトコルを変更すると、それは重大な変更と見なされます。
+> アプリケーションのアップグレード中はサービスのプロトコルを変更することはできません。 アップグレード中に変更する場合、これは重大な変更です。
 > 
 > 
 

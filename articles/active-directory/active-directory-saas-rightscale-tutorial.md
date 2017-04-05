@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 3/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 451369e21e7471180b6cd8c77d62b157d0bcddff
-ms.openlocfilehash: d9264e4268bb0418d64d4da680bd6e8b756a9ea6
-ms.lasthandoff: 12/14/2016
+ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
+ms.openlocfilehash: adcc4e35f8febe1d0dc1bc093954dee56bf34652
+ms.lasthandoff: 03/28/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル: Azure Active Directory と RightScale の統合
-このチュートリアルの目的は、RightScale と Azure Active Directory (Azure AD) を統合する方法を説明することです。  
+このチュートリアルの目的は、RightScale と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+
 RightScale と Azure AD の統合には、次の利点があります。
 
 * RightScale にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで自動的に RightScale にサインオン (シングル サインオン) できるようにします。
+* ユーザーが自分の Azure AD アカウントで自動的に RightScale にシングル サインオン (SSO) できるようにします。
 * 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -35,26 +36,26 @@ SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active
 Azure AD と RightScale の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション
-* RightScale でのシングル サインオンが有効なサブスクリプション
+* RightScale でのシングル サインオン (SSO) が有効なサブスクリプション
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-> 
-> 
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+>  
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 * 必要な場合を除き、運用環境は使用しないでください。
-* Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から&1; か月の評価版を入手できます。
+* Azure AD の評価環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。  
-このチュートリアルで説明するシナリオは、主に次の&2; つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD の SSO をテストできるようにすることです。 
+
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの RightScale の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオン (SSO) の構成とテスト
 
-## <a name="adding-rightscale-from-the-gallery"></a>ギャラリーからの RightScale の追加
+## <a name="add-rightscale-from-the-gallery"></a>ギャラリーからの RightScale の追加
 Azure AD への RightScale の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に RightScale を追加する必要があります。
 
 **ギャラリーから RightScale を追加するには、次の手順に従います。**
@@ -84,21 +85,21 @@ Azure AD への RightScale の統合を構成するには、ギャラリーか�
 7. 結果ウィンドウで **[RightScale]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、RightScale で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、RightScale で Azure AD の SSO を構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する RightScale ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと RightScale の関連ユーザーの間で、リンク関係が確立されている必要があります。  
+SSO を機能させるには、Azure AD ユーザーに対応する RightScale ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと RightScale の関連ユーザーの間で、リンク関係が確立されている必要があります。  
 
 RightScale で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[RightScale のテスト ユーザーの作成](#creating-a-rightscale-test-user)** - RightScale で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-このセクションの目的は、クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、RightScale アプリケーションでシングル サインオンを構成することです。
+このセクションの目的は、クラシック ポータルで Azure AD の SSO を有効にすることと、RightScale アプリケーションで SSO を構成することです。
 
 **RightScale で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
@@ -112,63 +113,49 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行し、**[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_04.png) 
-
-    a. [応答 URL] ボックスに、`https://login.rightscale.com/login/saml2/consume` の形式で URL を入力します。
-
-    b. **[次へ]**
+    ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_04.png) 
+  1. [応答 URL] ボックスに、`https://login.rightscale.com/login/saml2/consume` の形式で URL を入力します。
+  2. **[次へ]**をクリックします。
 
 1. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** をクリックし、**サインオン URL** を入力して、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_06.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。`https://login.rightscale.com/`
-   
-    b. **[次へ]**
+  1. [サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。`https://login.rightscale.com/`
+  2. **[次へ]**をクリックします。
 
 2. **[RightScale シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_05.png) 
-   
-    a. **[証明書のダウンロード]** をクリックし、コンピューターに Base-64 でエンコードされた証明書ファイルを保存します。
-   
-    b. **[次へ]**をクリックします。
+  1. **[証明書のダウンロード]** をクリックし、コンピューターに Base-64 でエンコードされた証明書ファイルを保存します。
+  2. **[次へ]**をクリックします。
 
 3. アプリケーションに合わせて SSO を構成するには、管理者として RightScale テナントにサインオンする必要があります。
-   
-    a. 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
+  1. 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_001.png) 
+  2. **[new]** ボタンをクリックして、**SAML ID プロバイダー**を追加します。
    
-    b. **[new]** ボタンをクリックして、**SAML ID プロバイダー**を追加します。
+    ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_002.png)  
+  3. **[Display Name]** テキスト ボックスに会社名を入力します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_002.png) 
-   
-    c. **[Display Name]** テキスト ボックスに会社名を入力します。
-   
-    ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_003.png) 
-   
-    d. **[Allow RightScale-initiated SSO using a discovery hint]** を選択して、下のテキストボックスに**ドメイン名**を入力します。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_003.png) 
+  4. **[Allow RightScale-initiated SSO using a discovery hint]** を選択して、下のテキストボックスに**ドメイン名**を入力します。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_004.png)
-   
-    e. Azure AD から RightScale の **[SAML SSO Endpoint]** に SAML SSO URL をコピーします。
+  5. Azure AD から RightScale の **[SAML SSO Endpoint]** に SAML SSO URL をコピーします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_005.png)
    
-    ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_006.png)
-   
-    f. Azure AD から RightScale の **[AML EntityID]** にエンティティ ID をコピーします。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_006.png)
+  6. Azure AD から RightScale の **[AML EntityID]** にエンティティ ID をコピーします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_007.png)
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_008.png)
-   
-    g. **[Browser]** ボタンをクリックして、手順&4; でダウンロードした証明書をアップロードします。
+  7. **[Browser]** ボタンをクリックして、手順 4 でダウンロードした証明書をアップロードします。
    
     ![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_009.png)
-   
-    h. **[Save]**をクリックします。
+  8. **[Save]**をクリックします。
 
 4. クラシック ポータルで、シングル サインオンの構成確認を選択し、 **[次へ]**をクリックします。
    
@@ -178,7 +165,7 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
    
     ![Azure AD のシングル サインオン][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
@@ -202,26 +189,18 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_05.png) 
-   
-    a. **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
-   
-    b. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-   
-    c. **[次へ]**をクリックします。
+  1. **[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
+  2. **[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+  3. **[次へ]**をクリックします。
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_06.png) 
-   
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。  
-   
-    b. **[姓]** ボックスに「**Simon**」と入力します。
-   
-    c. **[表示名]** ボックスに「**Britta Simon**」と入力します。
-   
-    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   
-    e. **[次へ]**をクリックします。
+  1. **[名]** ボックスに「**Britta**」と入力します。  
+  2. **[姓]** ボックスに「**Simon**」と入力します。
+  3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
+  4. **[ロール]** 一覧で **[ユーザー]** を選択します。
+  5. **[次へ]**をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
@@ -229,17 +208,15 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_08.png) 
-   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
-   
-    b. ページの下部にある **[完了]**」を参照してください。   
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_08.png)  
+  1. **[新しいパスワード]** の値を書き留めます。
+  2. ページの下部にある **[完了]**」を参照してください。   
 
-### <a name="creating-a-rightscale-test-user"></a>RightScale のテスト ユーザーの作成
+### <a name="create-a-rightscale-test-user"></a>RightScale のテスト ユーザーの作成
 このセクションでは、RightScale で Britta Simon というユーザーを作成します。 support@rightscale.com から RightScale サポート チームと連携し、RightScale プラットフォームにユーザーを追加してください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-このセクションの目的は、Britta Simon に RightScale へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+このセクションの目的は、Britta Simon に RightScale へのアクセスを許可し、このユーザーが Azure の SSO を使用できるようにすることです。
 
 ![ユーザーの割り当て][200] 
 
@@ -263,8 +240,9 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
    
     ![ユーザーの割り当て][205]
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。  
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。  
+
 アクセス パネルで [RightScale] タイルをクリックすると、自動的に RightScale アプリケーションにサインオンします。
 
 ## <a name="additional-resources"></a>その他のリソース

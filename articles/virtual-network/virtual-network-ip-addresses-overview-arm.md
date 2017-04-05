@@ -16,19 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3de0b167d0ad32de17093caf7e66a6d08f5c1c61
-ms.openlocfilehash: 762b048056752abd24328433ceb57de492dbf884
+ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
+ms.openlocfilehash: 0506de98119576aae8f55cc6067f0bee95334c87
+ms.lasthandoff: 03/31/2017
 
 
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
-Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、次の&2; 種類があります。
+Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、次の 2 種類があります。
 
 * **パブリック IP アドレス**: Azure の公開されたサービスを含め、インターネットとの通信に使用します。
 * **プライベート IP アドレス**: VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミスのネットワーク内での通信に使用します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
 > 
 
 クラシック デプロイメント モデルの知識がある場合は、[クラシック デプロイメントと Resource Manager での IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
@@ -44,7 +45,7 @@ Azure リソース マネージャーで、 [パブリック IP](resource-groups
 * アプリケーション ゲートウェイ
 
 ### <a name="allocation-method"></a>割り当て方法
-IP アドレスを*パブリック* IP リソースに割り当てる方法には、*動的*と*静的*の&2; 種類があります。 既定の割り当て方法は *動的*で、IP アドレスの作成時に割り当ては **行われません** 。 代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。 IP アドレスは、リソースを停止 (または削除) すると解放されます。 これにより、リソースの停止および開始の際に IP アドレスが変更されます。
+IP アドレスを*パブリック* IP リソースに割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は *動的*で、IP アドレスの作成時に割り当ては **行われません** 。 代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。 IP アドレスは、リソースを停止 (または削除) すると解放されます。 これにより、リソースの停止および開始の際に IP アドレスが変更されます。
 
 関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に *静的*に設定できます。 この場合、IP アドレスが即座に割り当てられます。 IP アドレスはリソースを削除するか、その割り当て方法を *動的*に変更した場合にのみ解放されます。
 
@@ -71,7 +72,7 @@ IP アドレスを*パブリック* IP リソースに割り当てる方法に�
 >
 
 ### <a name="virtual-machines"></a>仮想マシン
-パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/virtual-machines-windows-about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM に関連付けることができます。 複数のネットワーク インターフェイスを備える VM の場合、*プライマリ* ネットワーク インターフェイスのみに割り当てることができます。 VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
+パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/windows/about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM に関連付けることができます。 複数のネットワーク インターフェイスを備える VM の場合、*プライマリ* ネットワーク インターフェイスのみに割り当てることができます。 VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
 
 ### <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 パブリック IP アドレスをロード バランサーの [フロント エンド](../load-balancer/load-balancer-overview.md)構成に割り当てることで、 **Azure Load Balancer** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md) シナリオを有効にすることもできます。
@@ -104,7 +105,7 @@ Azure Resource Manager デプロイメント モデルでは、プライベー�
 ### <a name="allocation-method"></a>割り当て方法
 プライベート IP アドレスは、リソースが関連付けられているサブネットのアドレス範囲から割り当てられます。 サブネット自体のアドレス範囲は、VNet のアドレス範囲に含まれます。
 
-プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の&2; 種類があります。 既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。 リソースを停止して起動すると、この IP アドレスが変更される場合があります。
+プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。 リソースを停止して起動すると、この IP アドレスが変更される場合があります。
 
 IP アドレスが変わらないようにするため、割り当て方法を *静的* に設定することができます。 この場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
 
@@ -115,7 +116,7 @@ IP アドレスが変わらないようにするため、割り当て方法を *
 * IP アドレスを使用して他のアプリ/リソースからアクセスされるリソース。
 
 ### <a name="virtual-machines"></a>仮想マシン
-プライベート IP アドレスは、[Windows](../virtual-machines/virtual-machines-windows-about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM の**ネットワーク インターフェイス**に割り当てます。 複数のネットワーク インターフェイスを備える VM の場合、各インターフェイスにプライベート IP アドレスが割り当てられます。 ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
+プライベート IP アドレスは、[Windows](../virtual-machines/windows/about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM の**ネットワーク インターフェイス**に割り当てます。 複数のネットワーク インターフェイスを備える VM の場合、各インターフェイスにプライベート IP アドレスが割り当てられます。 ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
 
 #### <a name="internal-dns-hostname-resolution-for-vms"></a>内部 DNS ホスト名の解決 (VM の場合)
 カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure VM が [Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) で構成されます。 これらの DNS サーバーは、同じ VNet 内に存在する VM の内部名前解決を可能にします。
@@ -146,9 +147,4 @@ IP アドレス指定に対する制限は、Azure の[ネットワークの制�
 * [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-portal.md)
 * [テンプレートを使用した静的パブリック IP を持つ VM のデプロイ](virtual-network-deploy-static-pip-arm-template.md)
 * Azure ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-arm-pportal.md)します。
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

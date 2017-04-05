@@ -9,16 +9,17 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 2817b779-1594-486b-8759-489379ca907d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 03/24/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: 3c349aecc87e28275045828a84e0ea3f89400b9e
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
+ms.openlocfilehash: 6cb0da6d7b3aafeb9a8079b427e31c66811a6281
+ms.lasthandoff: 03/25/2017
 
 
 ---
@@ -165,6 +166,16 @@ HDInsight 3.5 クラスターでは、サンプル データ ファイルまた�
 2. 左側のナビゲーションで、**[Livy]**、**[Configs]** の順にクリックします。
 
 3. ファイル システムへのフル アクセスを許可する場合は、**livy-default** でプロパティ名 `livy.file.local-dir-whitelist` を追加し、その値を **"/"** に設定します。 特定のディレクトリへのアクセスのみを許可する場合は、そのディレクトリへのパスを値として指定します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Spark クラスターへのリモート ジョブ送信に Livy を使用する際に、問題が発生する可能性があります。
+
+### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>追加のストレージからの外部 jar の使用がサポートされない
+
+**問題:** クラスターに関連付けられている追加のストレージからの外部 jar を参照する Livy を使用して Spark ジョブを実行すると、ジョブが失敗します。
+
+**解決方法:** 使用する jar が、HDInsight クラスターに関連付けられている既定のストレージで使用可能か確認してください。
 
 
 ## <a name="seealso"></a>関連項目

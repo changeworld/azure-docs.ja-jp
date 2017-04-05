@@ -100,9 +100,17 @@
 ### [Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
 #### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
 #### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+#### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+
 ### [Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
 #### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+#### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+
 
 ### [Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### レッスン 1: デバイスの構成

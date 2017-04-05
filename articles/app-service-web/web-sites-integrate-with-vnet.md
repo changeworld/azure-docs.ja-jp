@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1184277f90dce4215de2add8b48c022e013d191d
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -95,7 +95,7 @@ VNET にゲートウェイとポイント対サイトのどちらもない場合
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Resource Manager VNET でのポイント対サイトの有効化
-Resource Manager VNET でゲートウェイとポイント対サイトを構成するには、[PowerShell を使用した仮想ネットワークへのポイント対サイト接続の構成][V2VNETP2S]に関するページに示されているとおり、PowerShell を使う必要があります。  この機能のための UI はまだ利用できません。 
+Resource Manager VNET をゲートウェイとポイント対サイトで構成するには、「[PowerShell を使用した VNet へのポイント対サイト接続の構成][V2VNETP2S]」に従って PowerShell を使用するか、「[Azure Portal を使用した VNet へのポイント対サイト接続の構成][V2VNETPortal]」に従って Azure Portal を使用します。  この機能のための UI はまだ利用できません。 
 
 ### <a name="creating-a-pre-configured-vnet"></a>事前構成された VNET の作成
 ゲートウェイとポイント対サイトが構成された新しい VNET は App Service のネットワーク UI を使って作成できますが、この機能は Resource manager VNET にしか対応していません。  ゲートウェイとポイント対サイトが構成されたクラシック VNET を作成する場合は、ネットワーク ユーザー インターフェイスから手動で行う必要があります。 
@@ -300,4 +300,5 @@ App Service Environment 機能を使用すると、VNET で Azure App Service �
 [IntPowershell]: http://azure.microsoft.com/documentation/articles/app-service-vnet-integration-powershell/
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
+[V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
 

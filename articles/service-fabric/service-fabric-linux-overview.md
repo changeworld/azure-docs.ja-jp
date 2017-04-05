@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 03/02/2017
 ms.author: SubramaR
 translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: c4c83345596900162826feab9fe549bc261e7d00
-ms.lasthandoff: 03/08/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 62d7e0088c66a538dff7f3b99882ebef4949211b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -48,4 +48,5 @@ Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric 
 3. [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
 4. [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
 5. [Jenkins と GitHub による Service Fabric の継続的インテグレーションとデプロイの設定](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+6. [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
 

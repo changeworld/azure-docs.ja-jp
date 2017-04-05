@@ -1,16 +1,16 @@
-# [概要](../../virtual-machines-linux-azure-overview.md)
+# [概要](../overview.md)
 ## [イメージ](about-images.md)
 ## [VM 拡張機能](agents-and-extensions.md)
 ## [可用性](configure-availability.md)
 ## [FAQ](faq.md)
 
-# [作業の開始](../../virtual-machines-linux-opensource-links.md)
+# [作業の開始](../opensource-links.md)
 ## [ポータルを使用した Linux VM の作成](createportal.md)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
-## [SSH キーの作成](../../virtual-machines-linux-mac-create-ssh-keys.md)
+## [SSH キーの作成](../mac-create-ssh-keys.md)
 
 # 方法
-## [Compute](../../virtual-machines-linux-intro-on-azure.md)
+## [Compute](../intro-on-azure.md)
 ### [カスタム VM の作成](create-custom.md)
 ### [VM のキャプチャ](capture-image.md)
 ### [Linux VM でリモート デスクトップを使用する](remote-desktop.md)

@@ -13,12 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 04/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
-ms.openlocfilehash: eadf0611ca46a975c364a1b073828c6c3faf5f77
-ms.lasthandoff: 01/24/2017
+ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
+ms.openlocfilehash: 9e6e0a696ba27c7758c21fa46754a8539ae2255b
+ms.lasthandoff: 03/29/2017
 
 
 ---
@@ -27,27 +27,15 @@ ms.lasthandoff: 01/24/2017
 Apache Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用して Spark ジョブを実行する方法について説明します。
 
 > [!IMPORTANT]
-> HDInsight 3.5 で Spark 1.6 クラスターをプロビジョニングした場合は、 「[HDInsight Linux の Apache Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)」の手順を使用することで、既定で Zeppelin Notebook にアクセスできます。 HDInsight クラスター バージョン 3.3、3.4 で Zeppelin 使用したり、HDInsight 3.5 で Spark 2.0 を使用したりする場合は、この記事の手順に従って Zeppelin をインストールする必要があります。
+> HDInsight 3.5 に Spark 1.6 クラスターをプロビジョニングした場合は、「[Azure HDInsight の Apache Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)」の手順に従うことで、既定で Zeppelin にアクセスできます。 HDInsight クラスター バージョン 3.3 または 3.4 で Zeppelin を使用する場合は、この記事の手順に従って Zeppelin をインストールする必要があります。
 >
->
+> この記事のスクリプトは、Spark 2.0 クラスターでの Zeppelin のインストールをサポートしていません。
 
-**前提条件:**
+## <a name="prerequisites"></a>前提条件
 
-* このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
-* SSH クライアント。 Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh` コマンドが用意されています。 Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-  > [!NOTE]
-  > `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
-  >
-  >
-* SOCKS プロキシを使用するように構成できる Web ブラウザー
-* **(省略可能)**: [FoxyProxy](http://getfoxyproxy.org/,) などのプラグイン。FoxyProxy は、トンネル経由で特定の要求のみをルーティングするルールを適用できます。
-
-  > [!WARNING]
-  > FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。 その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
-  >
-  >
 
 ## <a name="install-zeppelin-on-a-spark-cluster"></a>Spark クラスターへの Zeppelin のインストール
 Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。 スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。 HDInsight .NET SDK を使用するか、または Azure PowerShell を使用すると、カスタム スクリプトを使用して、Azure ポータルから Zeppelin をインストールできます。 スクリプトによる Zeppelin のインストールは、クラスター作成の一環として、またはクラスターの稼働後に実行できます。 これを行う方法については、以降のセクションのリンクで説明します。

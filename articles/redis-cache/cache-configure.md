@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 03/08/2017
+ms.date: 03/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: d5633ffdaba2fa881c2c42361860048cd478a502
-ms.lasthandoff: 03/09/2017
+ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
+ms.openlocfilehash: fb9d9d06eb746e720a17d87d7ab45c29c6543e8f
+ms.lasthandoff: 03/28/2017
 
 
 ---
@@ -75,7 +75,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
+キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの処理の詳細については、[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)に関するページを参照してください。 Azure Redis Cache イベントの監視の詳細については、「 [処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
@@ -278,7 +278,7 @@ Premium Azure Redis Cache のファイアウォール ルールを表示して�
 
 ![ファイアウォール](./media/cache-configure/redis-firewall-rules.png)
 
-IP アドレス範囲の開始アドレスと終了アドレスで、ファイアウォール ルールを指定できます。 ファイアウォール ルールを構成すると、指定した IP アドレス範囲からのクライアント接続のみがキャッシュに接続できます。 ファイアウォール ルールを保存してからルールが有効になるまでに、短い遅延があります。 通常、この遅延は&1; 分未満です。
+IP アドレス範囲の開始アドレスと終了アドレスで、ファイアウォール ルールを指定できます。 ファイアウォール ルールを構成すると、指定した IP アドレス範囲からのクライアント接続のみがキャッシュに接続できます。 ファイアウォール ルールを保存してからルールが有効になるまでに、短い遅延があります。 通常、この遅延は 1 分未満です。
 
 > [!IMPORTANT]
 > ファイアウォール ルールが構成されている場合でも、Azure Redis Cache 監視システムからの接続は常に許可されます。
@@ -406,7 +406,7 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 | `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | `maxclients` |価格レベルによって異なります。<sup>2</sup> |これは、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory ポリシーとは、`maxmemory` (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。 Azure Redis Cache の既定の設定は `volatile-lru` で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。 この設定は、Azure ポータルで構成できます。 詳細については、「 [maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。 |
-| `maxmemory-sample`s |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、メモリを節約するための近似アルゴリズムです。 既定では、Redis はキーを&3; つ確認し、直近の使用頻度が比較的低いものを&1; つ選択します。 |
+| `maxmemory-sample`s |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、メモリを節約するための近似アルゴリズムです。 既定では、Redis はキーを 3 つ確認し、直近の使用頻度が比較的低いものを 1 つ選択します。 |
 | `lua-time-limit` |5,000 |Lua スクリプトの最大実行時間 (ミリ秒)。 最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。 |
 | `lua-event-limit` |500 |スクリプト イベント キューの最大サイズです。 |
 | `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。 詳細については、 [http://redis.io/topics/clients](http://redis.io/topics/clients)を参照してください。 |

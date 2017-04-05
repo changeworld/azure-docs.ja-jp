@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 4dc9491f3645b071640262af3f1ffcb480cfabef
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
+ms.openlocfilehash: d1c327e90ca3343703784c22aba93280d4599723
+ms.lasthandoff: 04/03/2017
 
 
 ---
@@ -43,7 +43,7 @@ Python で作成された小さな Batch アプリケーションについて考
 * **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ### <a name="code-sample"></a>サンプル コード
-Python チュートリアルの[コード サンプル][github_article_samples]は、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの&1; つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、このチュートリアルで使う&2; つのスクリプトが `article_samples` ディレクトリに展開されます。
+Python チュートリアルの[コード サンプル][github_article_samples]は、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、このチュートリアルで使う 2 つのスクリプトが `article_samples` ディレクトリに展開されます。
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
@@ -95,8 +95,8 @@ Batch パッケージと Storage パッケージをインストールするに�
 Batch Python チュートリアルのコード サンプルは、2 つの Python スクリプトといくつかのデータ ファイルで構成されています。
 
 * **python_tutorial_client.py**: Batch サービスおよび Storage サービスとやり取りして、コンピューティング ノード (仮想マシン) で並列ワークロードを実行します。 *python_tutorial_client.py* スクリプトは、ローカル ワークステーションで実行します。
-* **python_tutorial_task.py**: Azure のコンピューティング ノードで実際の作業を行うために実行されるスクリプトです。 このサンプルの *python_tutorial_task.py* では、Azure Storage からダウンロードされたファイル (入力ファイル) のテキストを解析します。 次に、入力ファイル内で出現回数が多い上位&3; つの単語の一覧を含むテキスト ファイル (出力ファイル) を生成します。 *python_tutorial_task.py* は出力ファイルの作成後、そのファイルを Azure Storage にアップロードします。 ローカル ワークステーションで実行されているクライアント スクリプトは、ここから出力ファイルをダウンロードすることができます。 *python_tutorial_task.py* スクリプトは、Batch サービス内の複数のコンピューティング ノードで並列に実行されます。
-* **./data/taskdata\*.txt**: コンピューティング ノード上で実行されるタスクの入力として、この&3; つのテキスト ファイルを使用します。
+* **python_tutorial_task.py**: Azure のコンピューティング ノードで実際の作業を行うために実行されるスクリプトです。 このサンプルの *python_tutorial_task.py* では、Azure Storage からダウンロードされたファイル (入力ファイル) のテキストを解析します。 次に、入力ファイル内で出現回数が多い上位 3 つの単語の一覧を含むテキスト ファイル (出力ファイル) を生成します。 *python_tutorial_task.py* は出力ファイルの作成後、そのファイルを Azure Storage にアップロードします。 ローカル ワークステーションで実行されているクライアント スクリプトは、ここから出力ファイルをダウンロードすることができます。 *python_tutorial_task.py* スクリプトは、Batch サービス内の複数のコンピューティング ノードで並列に実行されます。
+* **./data/taskdata\*.txt**: コンピューティング ノード上で実行されるタスクの入力として、この 3 つのテキスト ファイルを使用します。
 
 次の図は、クライアント スクリプトとタスク スクリプトによって実行される主な処理を示しています。 この基本ワークフローは、Batch で作成する多くのコンピューティング ソリューションの中でも一般的なものです。 Batch サービスで使用できるすべての機能を網羅しているわけではありませんが、同様のワークフローは、ほぼすべての Batch シナリオに含まれます。
 
@@ -151,13 +151,13 @@ if __name__ == '__main__':
 ![Azure Storage でコンテナーを作成する][1]
 <br/>
 
-Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *python_tutorial_client.py* スクリプトではまず、[Azure Blob Storage](../storage/storage-introduction.md#blob-storage) に&3; つのコンテナーを作成します。
+Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *python_tutorial_client.py* スクリプトではまず、[Azure Blob Storage](../storage/storage-introduction.md#blob-storage) に 3 つのコンテナーを作成します。
 
 * **application**: このコンテナーには、タスクによって実行される Python スクリプト (*python_tutorial_task.py*) が格納されます。
 * **input**: タスクで、 *input* コンテナーから処理対象のデータ ファイルをダウンロードします。
 * **output**: タスクで入力ファイルの処理を完了した後に、結果を *output* コンテナーにアップロードします。
 
-ストレージ アカウントを使用してコンテナーを作成するために、[azure-storage][pypi_storage] パッケージを使用して [BlockBlobService][py_blockblobservice] オブジェクト ("BLOB クライアント") を作成します。 そのうえで BLOB クライアントを使用してストレージ アカウントに&3; つのコンテナーを作成します。
+ストレージ アカウントを使用してコンテナーを作成するために、[azure-storage][pypi_storage] パッケージを使用して [BlockBlobService][py_blockblobservice] オブジェクト ("BLOB クライアント") を作成します。 そのうえで BLOB クライアントを使用してストレージ アカウントに 3 つのコンテナーを作成します。
 
 ```python
  # Create the blob client, for use in obtaining references to
@@ -365,12 +365,12 @@ def create_pool(batch_service_client, pool_id,
 * プールの **ID** (*id* - 必須)<p/>Batch のほとんどのエンティティと同様、新しいプールには、Batch アカウント内で一意となる ID が必要です。 このプールをコードから参照するときには、対応する ID を使用します。[Azure Portal][azure_portal] でも、このようにしてプールを識別することになります。
 * **コンピューティング ノード数** (*target_dedicated* - 必須)<p/>プールにデプロイする VM の数を指定するプロパティです。 すべての Batch アカウントには、1 つの Batch アカウントで使用できる**コア**数 (つまり、コンピューティング ノード数) に上限を設ける既定の**クォータ**が割り当てられています。 既定のクォータと、[クォータを増やす](batch-quota-limit.md#increase-a-quota)手順 (Batch アカウントの最大コア数を増やす方法など) については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。 なぜかプール内のノードが一定数を超えない、と疑問を感じている場合、 このコア クォータが原因である可能性があります。
 * ノードの**オペレーティング システム** (*virtual_machine_configuration* **または** *cloud_service_configuration* - 必須)<p/>*python_tutorial_client.py* では、[VirtualMachineConfiguration][py_vm_config] を使用して、Linux ノードのプールを作成します。 `common.helpers` の `select_latest_verified_vm_image_with_node_agent_sku` 関数を使用すると、[Azure Virtual Machines Marketplace][vm_marketplace] イメージの操作を簡素化できます。 Marketplace イメージの使用の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
-* **コンピューティング ノードのサイズ** (*vm_size* - 必須)<p/>ここでは [VirtualMachineConfiguration][py_vm_config] に Linux ノードを指定するため、[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に基づいて VM サイズ (このサンプルでは `STANDARD_A1`) を指定します。 詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
+* **コンピューティング ノードのサイズ** (*vm_size* - 必須)<p/>ここでは [VirtualMachineConfiguration][py_vm_config] に Linux ノードを指定するため、[Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に基づいて VM サイズ (このサンプルでは `STANDARD_A1`) を指定します。 詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md) 」を参照してください。
 * **開始タスク** (*start_task* - 任意)<p/>前に示した物理ノードのプロパティに加え、必要に応じてプールの [StartTask][py_starttask] も指定できます。 各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。 StartTask は、タスクの実行に使用するコンピューティング ノードを準備する (たとえばタスクで実行するアプリケーションをインストールする) 場合に特に有効です。<p/>このサンプル アプリケーションでは、StartTask が、StartTask "*作業ディレクトリ*" の Storage からダウンロードするファイル (StartTask の **resource_files** プロパティを使用して指定します) を、ノードで実行されるすべてのタスクからアクセスできる "*共有*" ディレクトリにコピーします。 基本的に、これはノードがプールに参加するときに各ノードの共有ディレクトリに `python_tutorial_task.py` をコピーし、ノードで実行するすべてのタスクがアクセスできるようにします。
 
 `wrap_commands_in_shell` ヘルパー関数の呼び出しに注目してください。 これは、独立した複数のコマンドのコレクションを引数として受け取り、タスクのコマンド ライン プロパティに適した単一のコマンド ラインを作成する関数です。
 
-また、上記のコード スニペットでは、StartTask の **command_line** プロパティで `AZ_BATCH_TASK_WORKING_DIR` と `AZ_BATCH_NODE_SHARED_DIR` という&2; つの環境変数を使用している点についても注目してください。 Batch プールの各コンピューティング ノードには、Batch に固有の環境変数がいくつか自動的に構成されます。 また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
+また、上記のコード スニペットでは、StartTask の **command_line** プロパティで `AZ_BATCH_TASK_WORKING_DIR` と `AZ_BATCH_NODE_SHARED_DIR` という 2 つの環境変数を使用している点についても注目してください。 Batch プールの各コンピューティング ノードには、Batch に固有の環境変数がいくつか自動的に構成されます。 また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
 
 > [!TIP]
 > Batch プールのコンピューティング ノードで使用できる環境変数と、タスクの作業ディレクトリの詳細については、[Azure Batch 機能の概要](batch-api-basics.md)に関するページの「**タスクの環境設定**」と「**ファイルとディレクトリ**」を参照してください。
@@ -417,7 +417,7 @@ def create_job(batch_service_client, job_id, pool_id):
 
 Batch の **タスク** は、コンピューティング ノードで実行される独立した作業単位です。 タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。 コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。 このサンプルでは、各タスクで処理するファイルは&1; つだけです。 したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。 コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。 このサンプルでは、各タスクで処理するファイルは 1 つだけです。 したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -570,7 +570,7 @@ def download_blobs_from_container(block_blob_client,
 >
 
 ## <a name="step-8-delete-containers"></a>手順 8: コンテナーを削除する
-Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 *python_tutorial_client.py* では、[BlockBlobService.delete_container][py_delete_container] を&3; 回呼び出すことによってこの処理を行います。
+Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 *python_tutorial_client.py* では、[BlockBlobService.delete_container][py_delete_container] を 3 回呼び出すことによってこの処理を行います。
 
 ```python
 # Clean up storage resources
